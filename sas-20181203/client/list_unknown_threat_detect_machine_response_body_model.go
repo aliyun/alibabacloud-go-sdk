@@ -84,6 +84,11 @@ func (s *ListUnknownThreatDetectMachineResponseBody) Validate() error {
 }
 
 type ListUnknownThreatDetectMachineResponseBodyData struct {
+	// The number of days the policy has been in effect.
+	//
+	// example:
+	//
+	// 0
 	EffectDays *int64 `json:"EffectDays,omitempty" xml:"EffectDays,omitempty"`
 	// The instance name.
 	//
@@ -102,25 +107,42 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	// example:
 	//
 	// 10.42.XX.XX
-	IntranetIp            *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	MaliciousProcessCount *int64  `json:"MaliciousProcessCount,omitempty" xml:"MaliciousProcessCount,omitempty"`
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The number of malicious processes.
+	//
+	// example:
+	//
+	// 0
+	MaliciousProcessCount *int64 `json:"MaliciousProcessCount,omitempty" xml:"MaliciousProcessCount,omitempty"`
 	// Deprecated
-	NormalEventCount *int64  `json:"NormalEventCount,omitempty" xml:"NormalEventCount,omitempty"`
-	PluginStatus     *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
+	//
+	// The number of normal events.
+	//
+	// example:
+	//
+	// 0
+	NormalEventCount *int64 `json:"NormalEventCount,omitempty" xml:"NormalEventCount,omitempty"`
+	// The plug-in status.
+	PluginStatus *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
 	// The number of processes.
 	//
 	// example:
 	//
 	// 1
-	ProcessCount                 *int32 `json:"ProcessCount,omitempty" xml:"ProcessCount,omitempty"`
+	ProcessCount *int32 `json:"ProcessCount,omitempty" xml:"ProcessCount,omitempty"`
+	// The number of recent deviation behaviors.
+	//
+	// example:
+	//
+	// 0
 	RecentDeviationBehaviorCount *int64 `json:"RecentDeviationBehaviorCount,omitempty" xml:"RecentDeviationBehaviorCount,omitempty"`
-	// The running status of the machine. Valid values:
+	// The machine running status. Valid values:
 	//
-	// - **monitoring**: Warning.
+	// - **monitoring**: warning in progress
 	//
-	// - **blocking**: Blocking.
+	// - **blocking**: under control
 	//
-	// - **studying**: Learning.
+	// - **studying**: learning in progress
 	//
 	// example:
 	//
@@ -135,8 +157,13 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	// example:
 	//
 	// hash
-	StudyMode       *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
-	StudyRemainDays *int64  `json:"StudyRemainDays,omitempty" xml:"StudyRemainDays,omitempty"`
+	StudyMode *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
+	// The number of remaining learning days.
+	//
+	// example:
+	//
+	// 0
+	StudyRemainDays *int64 `json:"StudyRemainDays,omitempty" xml:"StudyRemainDays,omitempty"`
 	// The timestamp when learning started.
 	//
 	// example:
@@ -290,19 +317,19 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectMachineResponseBodyPageInfo struct {
-	// The number of entries on the current page when using paging.
+	// The number of entries displayed on the current page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page when using paging.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page when using paging.
+	// The maximum number of entries to display per page in a paged query.
 	//
 	// example:
 	//

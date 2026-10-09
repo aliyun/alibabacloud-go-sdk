@@ -24,29 +24,29 @@ type iDescribeVulListPageRequest interface {
 }
 
 type DescribeVulListPageRequest struct {
-	// The number of the page to return.
+	// The number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
+	// The CVE ID of the vulnerability.
 	//
 	// example:
 	//
 	// CVE-2022-44702
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to display per page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the application protection feature is supported. Valid values:
+	// Specifies whether runtime application self-protection (RASP) is supported. Valid values:
 	//
-	// - **0**: no.
+	// - **0**: Not supported.
 	//
-	// - **1**: yes.
+	// - **1**: Supported.
 	//
 	// example:
 	//
@@ -56,15 +56,15 @@ type DescribeVulListPageRequest struct {
 	//
 	// example:
 	//
-	// 远程代码执行漏洞
+	// Remote code execute vulnerability
 	VulNameLike *string `json:"VulNameLike,omitempty" xml:"VulNameLike,omitempty"`
-	// The type of the vulnerabilities. Valid values:
+	// The type of vulnerability to query. Valid values:
 	//
-	// - **cve**: Linux software vulnerability.
+	// - cve: Linux software vulnerability
 	//
-	// - **sys**: Windows system vulnerability.
+	// - sys: Windows system vulnerability
 	//
-	// - **app**: Application vulnerability that is detected by using web scanner.
+	// - app: application vulnerability
 	//
 	// example:
 	//

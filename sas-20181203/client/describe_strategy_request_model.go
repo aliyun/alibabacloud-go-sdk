@@ -20,21 +20,21 @@ type iDescribeStrategyRequest interface {
 }
 
 type DescribeStrategyRequest struct {
-	// The type of the baseline check policy that you want to query. Valid values:
+	// The type of the policies to query. Valid values:
 	//
-	// 	- **common**: standard baseline check policy
+	// - **common**: standard policy
 	//
-	// 	- **custom**: custom baseline check policy
+	// - **custom**: custom policy
 	//
 	// example:
 	//
 	// custom
 	CustomType *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeStrategyRequest struct {
 	//
 	// 1.2.X.X
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The ID of the baseline check policy that you want to query. Separate multiple IDs with commas (,).
+	// The IDs of the policies to query. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

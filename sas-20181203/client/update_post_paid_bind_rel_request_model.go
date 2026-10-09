@@ -26,7 +26,7 @@ type iUpdatePostPaidBindRelRequest interface {
 }
 
 type UpdatePostPaidBindRelRequest struct {
-	// Specifies whether to automatically bind new assets. Valid values:
+	// Specifies whether to automatically bind newly added assets. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -36,7 +36,7 @@ type UpdatePostPaidBindRelRequest struct {
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// The edition that is automatically bound when new assets are added. Valid values:
+	// The edition to automatically bind when new assets are added. Valid values:
 	//
 	// - **1**: Free Edition
 	//
@@ -52,17 +52,21 @@ type UpdatePostPaidBindRelRequest struct {
 	//
 	// 3
 	AutoBindVersion *int32 `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
-	// The binding action parameter.
+	// The action parameters for the binding operation.
 	BindAction []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run of the request. Valid values: true: performs only a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The abbreviation of the cloud service. Valid values:
+	// The client token used to ensure the idempotence of the request. Use a different token for different requests. Only ASCII characters are supported. The token cannot exceed 64 characters in length.
 	//
-	// - **sas**: Security Center
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-0016e04115b
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run. Valid values: true: performs only a dry run without executing the actual operation. false: sends the request normally. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The abbreviated name of the cloud service. Valid values:
+	//
+	// - **sas**: Security Center.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Specifies whether to forcibly upgrade the edition.
+	// Specifies whether to force an edition upgrade.
 	//
 	// example:
 	//
@@ -157,9 +161,9 @@ func (s *UpdatePostPaidBindRelRequest) Validate() error {
 type UpdatePostPaidBindRelRequestBindAction struct {
 	// Specifies whether to bind all servers. Default value: **false**. Valid values:
 	//
-	// - **true**: Bind all servers.
+	// - **true**: Yes.
 	//
-	// - **false**: Do not bind all servers.
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -167,9 +171,9 @@ type UpdatePostPaidBindRelRequestBindAction struct {
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
 	// The free quota type.
 	FreeType *string `json:"FreeType,omitempty" xml:"FreeType,omitempty"`
-	// The list of server UUIDs.
+	// The list of UUIDs of the specified servers.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
-	// The protection edition of Security Center to bind. Valid values:
+	// The Security Center protection edition to bind. Valid values:
 	//
 	// - **1**: Free Edition
 	//

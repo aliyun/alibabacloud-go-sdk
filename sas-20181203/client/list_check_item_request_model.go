@@ -20,14 +20,13 @@ type iListCheckItemRequest interface {
 }
 
 type ListCheckItemRequest struct {
-	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+	// The page number from which query results are displayed. Default value: **1**, which means results start from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
-	//
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//

@@ -30,29 +30,29 @@ type iListCloudAssetInstancesRequest interface {
 }
 
 type ListCloudAssetInstancesRequest struct {
-	// The data list queried by keyword.
+	// The data list to query by keyword.
 	CloudAssetQueryData []*ListCloudAssetInstancesRequestCloudAssetQueryData `json:"CloudAssetQueryData,omitempty" xml:"CloudAssetQueryData,omitempty" type:"Repeated"`
-	// The list of cloud asset instance types.
+	// The asset list of cloud asset instances.
 	CloudAssetTypes []*ListCloudAssetInstancesRequestCloudAssetTypes `json:"CloudAssetTypes,omitempty" xml:"CloudAssetTypes,omitempty" type:"Repeated"`
-	// The search conditions for assets. This parameter is in JSON format and contains the following fields:
+	// The search criteria for assets. This parameter is in JSON format and contains the following fields:
 	//
-	// - **name**: The search item.
+	// - **name**: The search field.
 	//
-	// - **value**: The value of the search item.
+	// - **value**: The value of the search field.
 	//
-	// - **logicalExp**: The logical relationship between multiple search item values. Valid values:
+	// - **logicalExp**: The logical relationship between multiple search field values. Valid values:
 	//
-	//     - **OR**: The search item values are evaluated using the OR operator.
+	//     - **OR**: Multiple search field values are evaluated using an OR relationship.
 	//
-	//     - **AND**: The search item values are evaluated using the AND operator.
+	//     - **AND**: Multiple search field values are evaluated using an AND relationship.
 	//
-	// > You can call the [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~) operation to query the supported search conditions.
+	// > You can call [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~) to query the supported search criteria.
 	//
 	// example:
 	//
 	// [{\\"name\\":\\"internetIp\\",\\"value\\":\\"192.168\\",\\"logicalExp\\":\\"OR\\"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The page number of the current page in a paging query.
+	// The page number to return in a paged query.
 	//
 	// example:
 	//
@@ -64,31 +64,31 @@ type ListCloudAssetInstancesRequest struct {
 	//
 	// - **false**: Does not return sale-related data.
 	IsSaleData *bool `json:"IsSaleData,omitempty" xml:"IsSaleData,omitempty"`
-	// The logical relationship between multiple search conditions. Valid values:
+	// The logical relationship between multiple search criteria. Valid values:
 	//
-	// - **OR**: The search conditions are evaluated using the OR operator.
+	// - **OR**: Multiple search criteria are evaluated using an OR relationship.
 	//
-	// - **AND**: The search conditions are evaluated using the AND operator.
+	// - **AND**: Multiple search criteria are evaluated using an AND relationship.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The maximum number of entries per page. Maximum value: 100. Default value: 20.
+	// The maximum number of rows per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud account of the resource folder member accounts.
+	// The ID of the main account of the resource folder member accounts.
 	//
-	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > Call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
@@ -210,7 +210,7 @@ type ListCloudAssetInstancesRequestCloudAssetQueryData struct {
 	//
 	// 163.8.8.9
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The query operator. Currently, only INCLUDE is supported.
+	// The query operator. Only INCLUDE is supported.
 	//
 	// example:
 	//
@@ -249,9 +249,9 @@ func (s *ListCloudAssetInstancesRequestCloudAssetQueryData) Validate() error {
 }
 
 type ListCloudAssetInstancesRequestCloudAssetTypes struct {
-	// The subtype of the cloud service.
+	// The subtype of the cloud product.
 	//
-	// > For specific meanings, refer to the AssetSubType parameter in the [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~) operation.
+	// > For more information, see the AssetSubType field in [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~).
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type ListCloudAssetInstancesRequestCloudAssetTypes struct {
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
 	// The type of the cloud asset.
 	//
-	// > For specific meanings, refer to the AssetType parameter in the [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~) operation.
+	// > For more information, see the AssetType field in [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~).
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ type ListCloudAssetInstancesRequestCloudAssetTypes struct {
 	//
 	// - **0**: Alibaba Cloud asset
 	//
-	// - **1**: Non-cloud asset
+	// - **1**: off-cloud asset
 	//
 	// - **2**: IDC asset
 	//
-	// - **3**, **4**, **5**, **7**: Third-party cloud asset
+	// - **3**, **4**, **5**, **7**: other cloud assets
 	//
-	// - **8**: Lightweight asset
+	// - **8**: lightweight asset
 	//
 	// example:
 	//

@@ -30,17 +30,17 @@ type iListAgentlessAssetRequest interface {
 }
 
 type ListAgentlessAssetRequest struct {
-	// The page number in a paginated query.
+	// The page number in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The type of the cloud disk. Values:
+	// The type of the cloud disk. Valid values:
 	//
-	// - **system**: System disk
+	// - **system**: system cloud disk
 	//
-	// - **data**: Data disk
+	// - **data**: data cloud disk
 	//
 	// example:
 	//
@@ -51,7 +51,8 @@ type ListAgentlessAssetRequest struct {
 	// example:
 	//
 	// s-bp1g6wxdwps7s9dz****
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of asset instance IDs to query.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The name of the asset instance.
 	//
@@ -59,7 +60,7 @@ type ListAgentlessAssetRequest struct {
 	//
 	// ca_cpm_******
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum number of items to return per page in a paginated query.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -77,11 +78,11 @@ type ListAgentlessAssetRequest struct {
 	//
 	// cn-beijing
 	ScanRegionId *string `json:"ScanRegionId,omitempty" xml:"ScanRegionId,omitempty"`
-	// The type of the detection target. Values:
+	// The object type of the detection target. Valid values:
 	//
-	// - **3**: User snapshot
+	// - **3**: user snapshot
 	//
-	// - **4**: User-defined image
+	// - **4**: user-defined image
 	//
 	// example:
 	//

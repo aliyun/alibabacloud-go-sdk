@@ -28,11 +28,15 @@ type iModifyOperateVulRequest interface {
 }
 
 type ModifyOperateVulRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token used to ensure request idempotence. Use a different token for each request. Only ASCII characters are supported. The value can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
+	// Specifies whether to perform only a dry run for this request. Valid values: true: performs only a dry run without executing the actual operation. false: sends the request normally. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The source identifier of the request. Set the value to **sas**.
+	// The source identifier of the request. Set this parameter to **sas**.
 	//
 	// example:
 	//
@@ -42,9 +46,9 @@ type ModifyOperateVulRequest struct {
 	//
 	// - **name**: The name of the vulnerability.
 	//
-	// - **uuid**: The UUID of the server on which the vulnerability is detected.
+	// - **uuid**: The UUID of the server that has the vulnerability.
 	//
-	// - **tag**: The tag of the vulnerability. Valid values:
+	// - **tag**: The label of the vulnerability. Valid values:
 	//
 	//     - **oval**: Linux software vulnerability
 	//
@@ -52,15 +56,15 @@ type ModifyOperateVulRequest struct {
 	//
 	//     - **cms**: Web-CMS vulnerability
 	//
-	// > For other vulnerability types, call the [DescribeVulList](~~DescribeVulList~~) operation to obtain the vulnerability information.
+	// > For other vulnerability types, call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
 	//
-	// - **isFront**: Specifies whether the Windows patch is a prerequisite patch. This parameter is required only when handling Windows system vulnerabilities and can be ignored for other vulnerability types. Valid values:
+	// - **isFront**: Specifies whether the Windows patch is a prerequisite patch. Set this parameter only when handling Windows system vulnerabilities. You can ignore this parameter for other vulnerability types. Valid values:
 	//
 	//     - **0**: No.
 	//
 	//     - **1**: Yes.
 	//
-	// > Batch processing of vulnerabilities is supported. Separate multiple vulnerability entries with commas (,). Call the [DescribeVulList](~~DescribeVulList~~) operation to obtain the vulnerability information.
+	// > Batch processing is supported. Separate multiple vulnerability entries with commas (,). Call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
 	//
 	// This parameter is required.
 	//
@@ -86,19 +90,17 @@ type ModifyOperateVulRequest struct {
 	//
 	// vul_fix
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The reason for ignoring the vulnerability.
-	//
-	// > This parameter is required only when the operation type is **ignore*	- (that is, **OperateType*	- is set to **vul_ignore**).
+	// The reason for ignoring the vulnerability. This parameter is required only when the operation is set to **ignore*	- (that is, **OperateType*	- is set to **vul_ignore**).
 	//
 	// example:
 	//
 	// not operate
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	// The ID of the Alibaba Cloud account associated with a member account in the resource directory.
 	//
-	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The type of the vulnerability to handle. Valid values:
+	// The type of vulnerability to handle. Valid values:
 	//
 	// - **cve**: Linux software vulnerability
 	//
@@ -106,13 +108,13 @@ type ModifyOperateVulRequest struct {
 	//
 	// - **cms**: Web-CMS vulnerability
 	//
-	// - **emg**: emergency vulnerability
+	// - **emg**: Emergency vulnerability
 	//
-	// - **app**: application vulnerability
+	// - **app**: Application vulnerability
 	//
-	// - **sca**: software constituency parsing vulnerability
+	// - **sca**: Software constituency parsing vulnerability
 	//
-	// > Emergency vulnerabilities (emg), application vulnerabilities (app), and software constituency parsing vulnerabilities (sca) do not support the vulnerability fix operation. You cannot execute the fix operation for these types.
+	// > Fix operations are not supported for emergency vulnerabilities (emg), application vulnerabilities (app), or software constituency parsing vulnerabilities (sca). These vulnerability types do not support the execute vulnerability fix operation.
 	//
 	// This parameter is required.
 	//

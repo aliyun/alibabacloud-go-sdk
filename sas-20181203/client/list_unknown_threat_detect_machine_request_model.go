@@ -30,14 +30,14 @@ type iListUnknownThreatDetectMachineRequest interface {
 }
 
 type ListUnknownThreatDetectMachineRequest struct {
-	// The page number of the current page when using paging.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The maximum number of entries per page when using paging.
+	// The maximum number of entries to display per page in a paged query.
 	//
 	// example:
 	//
@@ -49,15 +49,15 @@ type ListUnknownThreatDetectMachineRequest struct {
 	//
 	// test-ecs
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The running status of the machine. Valid values:
+	// The machine running status. Valid values:
 	//
-	// - **monitoring**: Warning.
+	// - **monitoring**: warning in progress
 	//
-	// - **blocking**: Blocking.
+	// - **blocking**: under control
 	//
-	// - **studying**: Learning.
+	// - **studying**: learning in progress
 	//
-	// - **study_finish**: Learning completed.
+	// - **study_finish**: learning completed
 	//
 	// example:
 	//

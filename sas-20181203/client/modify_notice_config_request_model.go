@@ -37,6 +37,10 @@ type ModifyNoticeConfigRequest struct {
 	// cms
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//

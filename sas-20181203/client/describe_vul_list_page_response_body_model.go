@@ -20,13 +20,13 @@ type iDescribeVulListPageResponseBody interface {
 type DescribeVulListPageResponseBody struct {
 	// The response parameters.
 	Data []*DescribeVulListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4347E985-6E64-467B-96EC-30D4EA9E32FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,51 +83,51 @@ func (s *DescribeVulListPageResponseBody) Validate() error {
 }
 
 type DescribeVulListPageResponseBodyData struct {
-	// The common vulnerabilities and exposures (CVE) ID of the vulnerability.
+	// The CVE ID.
 	//
 	// example:
 	//
 	// CVE-2022-42836
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	// The extended field for Server Guard.
+	// The Server Guard extended field.
 	//
 	// example:
 	//
 	// {\\"relatedType\\":[{\\"type\\":\\"sys\\"}]}
 	ExtAegis *string `json:"ExtAegis,omitempty" xml:"ExtAegis,omitempty"`
-	// The primary key ID of the database.
+	// The primary key ID in the database.
 	//
 	// example:
 	//
 	// 40586
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the vulnerability was detected based on version comparison. Valid values:
+	// Indicates whether version comparison is supported. Valid values:
 	//
-	// - 1: The vulnerability was detected based on version comparison.
+	// - 1: Yes.
 	//
-	// - 0: The vulnerability was not detected based on version comparison.
+	// - 0: No.
 	//
 	// example:
 	//
 	// 1
 	IsAegis *int32 `json:"IsAegis,omitempty" xml:"IsAegis,omitempty"`
-	// Indicates whether the vulnerability was detected based on proof of concept (POC) verification. Valid values:
+	// Indicates whether proof-of-concept (PoC) verification is supported. Valid values:
 	//
-	// - 1: The vulnerability was detected based on POC verification.
+	// - 1: Yes.
 	//
-	// - 0: The vulnerability was not detected based on POC verification.
+	// - 0: No.
 	//
 	// example:
 	//
 	// 0
 	IsSas *int32 `json:"IsSas,omitempty" xml:"IsSas,omitempty"`
-	// The ID of the vulnerability.
+	// The ID.
 	//
 	// example:
 	//
 	// AVD-2018-8218
 	OtherId *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
-	// The time when the vulnerability was disclosed.
+	// The release time in UTC (ISO 8601 format), for example, 2022-12-13T08:00Z.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeVulListPageResponseBodyData struct {
 	//
 	// example:
 	//
-	// Windows 终端远程代码执行漏洞
+	// Windows Terminal remote code execute vulnerability
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

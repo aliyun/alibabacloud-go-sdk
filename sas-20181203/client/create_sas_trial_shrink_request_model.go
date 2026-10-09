@@ -26,42 +26,41 @@ type iCreateSasTrialShrinkRequest interface {
 }
 
 type CreateSasTrialShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token used to ensure request idempotence. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run. true: performs only a dry run without performing the actual request. false: performs the actual request. Default value: false.
+	// Specifies whether to perform only a dry run for this request. Valid values: true: performs only a dry run without executing the actual operation. false: executes the request normally. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether the request is from the ECS console. Valid values:
+	// Specifies whether the request originates from the ECS console. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes
 	//
-	// - **false**
+	// - **false**: No
 	//
 	// example:
 	//
 	// true
 	FromEcs *bool `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
-	// The language of the request and response. Valid values:
+	// The language of the request and response messages. Valid values:
 	//
-	// - **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The reason for applying for the trial. This parameter is required for a second trial.
+	// The reason for applying for a trial. A reason is required for a second trial.
 	RequestFormShrink *string `json:"RequestForm,omitempty" xml:"RequestForm,omitempty"`
 	// The trial type. Valid values:
 	//
-	// - **0**: Trial is not allowed.
+	// - **0**: Trial not allowed.
 	//
-	// - **1**: First trial.
+	// - **1**: First-time trial.
 	//
 	// - **2**: Second trial.
 	//
-	//
-	// > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter. The trial can be started only when the value is not 0.
+	// > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to retrieve this parameter. You can start a trial only when this value is not 0.
 	//
 	// example:
 	//
@@ -69,11 +68,11 @@ type CreateSasTrialShrinkRequest struct {
 	TryType *int32 `json:"TryType,omitempty" xml:"TryType,omitempty"`
 	// The trial edition. Valid values:
 	//
-	// - **3**: Enterprise Edition.
+	// - **3**: Enterprise Edition
 	//
-	// - **7**: Ultimate Edition.
+	// - **7**: Ultimate Edition
 	//
-	// >Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
+	// >Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to retrieve this parameter.
 	//
 	// example:
 	//

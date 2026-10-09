@@ -97,6 +97,10 @@ type ModifyServerlessAuthToMachineRequest struct {
 	// The list of asset UUIDs to bind.
 	BindUuidList []*string `json:"BindUuidList,omitempty" xml:"BindUuidList,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
 	//

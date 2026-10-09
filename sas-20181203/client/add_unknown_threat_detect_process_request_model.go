@@ -20,12 +20,17 @@ type iAddUnknownThreatDetectProcessRequest interface {
 }
 
 type AddUnknownThreatDetectProcessRequest struct {
-	// The list of specified event IDs.
-	EventIdList  []*int64 `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
-	HandleRemark *string  `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
+	// The list of event IDs.
+	EventIdList []*int64 `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	// The handling remarks.
+	//
+	// example:
+	//
+	// Confirmed
+	HandleRemark *string `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
 	// The list of processes.
 	ProcessList []*AddUnknownThreatDetectProcessRequestProcessList `json:"ProcessList,omitempty" xml:"ProcessList,omitempty" type:"Repeated"`
-	// The list of asset UUIDs for which processes are to be added.
+	// The list of asset UUIDs for which the process is to be added.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
@@ -93,7 +98,7 @@ type AddUnknownThreatDetectProcessRequestProcessList struct {
 	//
 	// e59b63ae983377f131ab20ec0d******
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The process path.
+	// The path of the process.
 	//
 	// example:
 	//

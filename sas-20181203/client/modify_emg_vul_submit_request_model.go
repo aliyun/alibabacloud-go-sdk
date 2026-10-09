@@ -24,11 +24,15 @@ type iModifyEmgVulSubmitRequest interface {
 }
 
 type ModifyEmgVulSubmitRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token used to ensure the idempotence of the request. Use a different token for different requests. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values: true: performs a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+	// Specifies whether to perform only a dry run for this request. Valid values: true: performs only a dry run without executing the actual operation. false: executes the request normally. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The language type of the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -46,19 +50,19 @@ type ModifyEmgVulSubmitRequest struct {
 	//
 	// scan:ASCV-2019-032401
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the member account in the resource directory (Alibaba Cloud account).
+	// The ID of the member accounts in the resource directory (Alibaba Cloud account).
 	//
-	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Specifies whether to perform vulnerability detection. Valid values:
+	// Specifies whether to run vulnerability detection. Valid values:
 	//
-	// - **yes**: Perform vulnerability detection.
+	// - **yes**: Run.
 	//
-	// - **no**: Do not perform vulnerability detection.
+	// - **no**: Do not run.
 	//
 	// This parameter is required.
 	//

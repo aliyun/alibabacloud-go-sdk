@@ -55,15 +55,15 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	//
 	// 1766185894104675
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The anti-ransomware capacity assigned to the member. Unit: GB.
+	// The anti-ransomware capacity allocated to the member, in GB.
 	//
 	// example:
 	//
 	// 10
 	AntiRansomwareCapacity *int64 `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty"`
-	// The billing type. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **PREPAID**: upfront.
+	// 	- **PREPAID**: subscription.
 	//
 	// 	- **POSTPAID*	- (default): pay-as-you-go.
 	//
@@ -71,26 +71,27 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	//
 	// PREPAID
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of cloud platform configuration check scans assigned to the member. Unit: scans per month.
+	// The number of Cloud Security Posture Management (CSPM) scans allocated to the member. Unit: scans per month.
 	//
 	// example:
 	//
 	// 0
-	CspmCapacity         *int64 `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty"`
+	CspmCapacity *int64 `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty"`
+	// The number of platform configuration check instance authorizations allocated to the member accounts.
 	CspmInstanceCapacity *int64 `json:"CspmInstanceCapacity,omitempty" xml:"CspmInstanceCapacity,omitempty"`
-	// The number of honeypot quotas assigned to the member.
+	// The number of cloud honeypot authorizations allocated to the member.
 	//
 	// example:
 	//
 	// 0
 	HoneypotCapacity *int64 `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
-	// The number of image scan quotas assigned to the member.
+	// The number of image scan authorizations allocated to the member.
 	//
 	// example:
 	//
 	// 1
 	ImageScanCapacity *int64 `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	// The Security Center instance ID purchased by the member accounts.
+	// The instance ID of the Security Center instance purchased by the member accounts.
 	//
 	// example:
 	//
@@ -98,29 +99,29 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - **ADD**: increase
+	// - **ADD**: adds an authorization.
 	//
-	// - **CHANGE**: update
+	// - **CHANGE**: modifies an authorization.
 	//
-	// - **DEL**: delete
+	// - **DEL**: deletes an authorization.
 	//
 	// example:
 	//
 	// CHANGE
 	OptType *string `json:"OptType,omitempty" xml:"OptType,omitempty"`
-	// The number of application protection quotas assigned to the member. Unit: quotas per month.
+	// The number of application protection authorizations allocated to the member. Unit: instances per month.
 	//
 	// example:
 	//
 	// 0
 	RaspCapacity *int64 `json:"RaspCapacity,omitempty" xml:"RaspCapacity,omitempty"`
-	// The number of malicious file detection SDK quotas assigned to the member.
+	// The number of malicious file detection SDK authorizations allocated to the member.
 	//
 	// example:
 	//
 	// 10
 	SdkCapacity *int64 `json:"SdkCapacity,omitempty" xml:"SdkCapacity,omitempty"`
-	// The log storage capacity assigned to the member. Unit: GB.
+	// The log storage capacity allocated to the member, in GB.
 	//
 	// example:
 	//
@@ -136,13 +137,13 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The threat analysis capacity assigned to the member. Unit: GB.
+	// The threat analysis capacity allocated to the member. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	ThreatAnalysisCapacity *int64 `json:"ThreatAnalysisCapacity,omitempty" xml:"ThreatAnalysisCapacity,omitempty"`
-	// The log ingestion traffic for threat detection and response assigned to the member. Unit: GB/day.
+	// The log ingestion traffic for threat detection and response allocated to the member. Unit: GB/day.
 	//
 	// example:
 	//
@@ -150,15 +151,15 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	ThreatAnalysisFlow *int64 `json:"ThreatAnalysisFlow,omitempty" xml:"ThreatAnalysisFlow,omitempty"`
 	// The Security Center edition to bind. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Advanced Edition.
 	//
-	// - **6**: Anti-virus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **7**: Ultimate Edition
+	// - **7**: Ultimate Edition.
 	//
 	// example:
 	//
@@ -166,7 +167,7 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The authorization usage information of the member accounts.
 	VersionSummary []*UpdateMultiUserInstancesRequestMemberInstancesVersionSummary `json:"VersionSummary,omitempty" xml:"VersionSummary,omitempty" type:"Repeated"`
-	// The number of web tamper-proofing authorization quotas assigned to the member.
+	// The number of web tamper-proofing authorizations allocated to the member.
 	//
 	// example:
 	//
@@ -358,13 +359,13 @@ func (s *UpdateMultiUserInstancesRequestMemberInstances) Validate() error {
 }
 
 type UpdateMultiUserInstancesRequestMemberInstancesVersionSummary struct {
-	// The number of authorized cores assigned to the member.
+	// The number of core authorizations allocated to the member.
 	//
 	// example:
 	//
 	// 6
 	CoreCount *int64 `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
-	// The number of authorized instances assigned to the member.
+	// The number of instance authorizations allocated to the member.
 	//
 	// example:
 	//
@@ -372,19 +373,19 @@ type UpdateMultiUserInstancesRequestMemberInstancesVersionSummary struct {
 	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
 	// The Security Center edition of the member accounts. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Premium Edition
+	// - **5**: Premium Edition.
 	//
-	// - **6**: Anti-virus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **7**: Ultimate Edition
+	// - **7**: Ultimate Edition.
 	//
-	// - **8**: multi-edition
+	// - **8**: multi-edition.
 	//
-	// - **10**: value-added services only
+	// - **10**: value-added services only.
 	//
 	// example:
 	//

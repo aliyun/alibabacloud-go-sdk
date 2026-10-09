@@ -48,7 +48,7 @@ type iGetAuthSummaryResponseBody interface {
 }
 
 type GetAuthSummaryResponseBody struct {
-	// Indicates whether on-demand authorization purchase is allowed during initial purchase. Valid values:
+	// Specifies whether pay-as-you-go authorization is allowed when purchasing. Valid values:
 	//
 	// - **0**: Not allowed.
 	//
@@ -58,7 +58,7 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 1
 	AllowPartialBuy *int32 `json:"AllowPartialBuy,omitempty" xml:"AllowPartialBuy,omitempty"`
-	// Indicates whether upgrading to on-demand authorization purchase is allowed during an upgrade. Valid values:
+	// Specifies whether upgrading to pay-as-you-go authorization is allowed during an upgrade. Valid values:
 	//
 	// - **0**: Not allowed.
 	//
@@ -68,7 +68,7 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 1
 	AllowUpgradePartialBuy *int32 `json:"AllowUpgradePartialBuy,omitempty" xml:"AllowUpgradePartialBuy,omitempty"`
-	// Indicates whether immediate unbinding of all bound assets is allowed. Valid values:
+	// Specifies whether immediately unbinding all bound assets is allowed. Valid values:
 	//
 	// - **0**: No.
 	//
@@ -78,7 +78,7 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 1
 	AllowUserUnbind *int32 `json:"AllowUserUnbind,omitempty" xml:"AllowUserUnbind,omitempty"`
-	// Indicates whether new subscription assets are automatically bound when the host and container security subscription service is activated. Valid values:
+	// Specifies whether newly added assets are automatically bound when you activate the subscription-based host and container security service. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -88,7 +88,7 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// Indicates whether cluster nodes require agent version verification. Valid values:
+	// Specifies whether cluster nodes require machine version verification. Valid values:
 	//
 	// - **0**: Not required.
 	//
@@ -98,7 +98,7 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 1
 	ClusterNodeCheck *int32 `json:"ClusterNodeCheck,omitempty" xml:"ClusterNodeCheck,omitempty"`
-	// Indicates whether all assets are authorized by default. Valid values:
+	// Specifies whether all assets are authorized by default. Valid values:
 	//
 	// - **0**: No.
 	//
@@ -107,9 +107,10 @@ type GetAuthSummaryResponseBody struct {
 	// example:
 	//
 	// 1
-	DefaultAuthToAll *int32                                `json:"DefaultAuthToAll,omitempty" xml:"DefaultAuthToAll,omitempty"`
-	EdrSummary       *GetAuthSummaryResponseBodyEdrSummary `json:"EdrSummary,omitempty" xml:"EdrSummary,omitempty" type:"Struct"`
-	// Indicates whether a pre-bindingasset configuration exists. Pre-binding refers to the asset binding configuration selected in advance during purchase. Valid values:
+	DefaultAuthToAll *int32 `json:"DefaultAuthToAll,omitempty" xml:"DefaultAuthToAll,omitempty"`
+	// The EDR authorization summary information.
+	EdrSummary *GetAuthSummaryResponseBodyEdrSummary `json:"EdrSummary,omitempty" xml:"EdrSummary,omitempty" type:"Struct"`
+	// Specifies whether a pre-binding asset configuration exists. Pre-binding refers to the asset binding configuration selected in advance at the time of purchase. Valid values:
 	//
 	// - **0**: Does not exist.
 	//
@@ -119,13 +120,13 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 1
 	HasPreBindSetting *bool `json:"HasPreBindSetting,omitempty" xml:"HasPreBindSetting,omitempty"`
-	// The highest purchased edition of Security Center. Valid values:
+	// The highest edition of Security Center that you have purchased. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
 	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Premium Edition.
+	// - **5**: Advanced Edition.
 	//
 	// - **6**: Anti-virus Edition.
 	//
@@ -133,27 +134,27 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// - **10**: Value-added services only.
 	//
-	// > If a single edition is purchased, this value indicates the corresponding edition. If multiple editions are purchased, this value indicates the highest sub-edition.
+	// > If you purchased a single edition, this value indicates that edition. If you purchased multiple editions, this value indicates the highest edition among all sub-editions.
 	//
 	// example:
 	//
 	// 1
 	HighestVersion *int32 `json:"HighestVersion,omitempty" xml:"HighestVersion,omitempty"`
-	// The binding validity status. Valid values:
+	// The binding effective status. Valid values:
 	//
-	// - **NORMAL**: Valid.
+	// - **NORMAL**: valid.
 	//
-	// - **INVALID_NODE_VERSION**: Invalid.
+	// - **INVALID_NODE_VERSION**: invalid.
 	//
 	// example:
 	//
 	// INVALID_NODE_VERSION
 	InvalidBindStatus *string `json:"InvalidBindStatus,omitempty" xml:"InvalidBindStatus,omitempty"`
-	// Indicates whether multiple versions exist. Valid values:
+	// Specifies whether multiple versions exist. Valid values:
 	//
-	// - **0**: No.
+	// - **0**: Does not exist.
 	//
-	// - **1**: Yes.
+	// - **1**: Exists.
 	//
 	// example:
 	//
@@ -161,13 +162,13 @@ type GetAuthSummaryResponseBody struct {
 	IsMultiVersion *int32 `json:"IsMultiVersion,omitempty" xml:"IsMultiVersion,omitempty"`
 	// The asset authorization statistics information.
 	Machine *GetAuthSummaryResponseBodyMachine `json:"Machine,omitempty" xml:"Machine,omitempty" type:"Struct"`
-	// The protection edition of the host and container security pay-as-you-go service. This is the highest protection edition among all bound hosts. Valid values:
+	// The highest protection edition among all hosts bound to the pay-as-you-go host and container security service. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
 	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Premium Edition.
+	// - **5**: Advanced Edition.
 	//
 	// - **6**: Anti-virus Edition.
 	//
@@ -177,7 +178,7 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 7
 	PostPaidHighestVersion *string `json:"PostPaidHighestVersion,omitempty" xml:"PostPaidHighestVersion,omitempty"`
-	// Indicates whether automatic binding of new hosts is enabled for the host and container security pay-as-you-go service. Valid values:
+	// Specifies whether newly added hosts are automatically bound to the pay-as-you-go host and container security service. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -187,13 +188,13 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 1
 	PostPaidHostAutoBind *string `json:"PostPaidHostAutoBind,omitempty" xml:"PostPaidHostAutoBind,omitempty"`
-	// The edition to which new assets are automatically bound for the host and container security pay-as-you-go service. Valid values:
+	// The edition to which newly added assets are automatically bound under the pay-as-you-go host and container security service. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
 	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Premium Edition.
+	// - **5**: Advanced Edition.
 	//
 	// - **6**: Anti-virus Edition.
 	//
@@ -203,9 +204,9 @@ type GetAuthSummaryResponseBody struct {
 	//
 	// 7
 	PostPaidHostAutoBindVersion *string `json:"PostPaidHostAutoBindVersion,omitempty" xml:"PostPaidHostAutoBindVersion,omitempty"`
-	// The service authorization statistics for the host and container security pay-as-you-go service.
+	// The service authorization statistics for the pay-as-you-go host and container security service.
 	PostPaidVersionSummary []*GetAuthSummaryResponseBodyPostPaidVersionSummary `json:"PostPaidVersionSummary,omitempty" xml:"PostPaidVersionSummary,omitempty" type:"Repeated"`
-	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier generated by Alibaba Cloud for the request. You can use the ID to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -418,9 +419,12 @@ func (s *GetAuthSummaryResponseBody) Validate() error {
 }
 
 type GetAuthSummaryResponseBodyEdrSummary struct {
-	BoundCount         *string `json:"BoundCount,omitempty" xml:"BoundCount,omitempty"`
+	// The number of EDR authorizations that have been bound.
+	BoundCount *string `json:"BoundCount,omitempty" xml:"BoundCount,omitempty"`
+	// The automatic binding status of hybrid-paid EDR instances.
 	HybridPaidAutoBind *string `json:"HybridPaidAutoBind,omitempty" xml:"HybridPaidAutoBind,omitempty"`
-	PostPaidAutoBind   *string `json:"PostPaidAutoBind,omitempty" xml:"PostPaidAutoBind,omitempty"`
+	// The automatic binding status of pay-as-you-go EDR instances.
+	PostPaidAutoBind *string `json:"PostPaidAutoBind,omitempty" xml:"PostPaidAutoBind,omitempty"`
 }
 
 func (s GetAuthSummaryResponseBodyEdrSummary) String() string {
@@ -463,25 +467,25 @@ func (s *GetAuthSummaryResponseBodyEdrSummary) Validate() error {
 }
 
 type GetAuthSummaryResponseBodyMachine struct {
-	// The number of cores of assets that are bound with authorization.
+	// The number of cores of assets that are bound to authorizations.
 	//
 	// example:
 	//
 	// 10
 	BindCoreCount *int32 `json:"BindCoreCount,omitempty" xml:"BindCoreCount,omitempty"`
-	// The number of bound assets.
+	// The number of assets that are bound to authorizations.
 	//
 	// example:
 	//
 	// 10
 	BindEcsCount *int32 `json:"BindEcsCount,omitempty" xml:"BindEcsCount,omitempty"`
-	// The number of cores of assets bound with pay-as-you-go authorization.
+	// The number of cores of assets that are bound to pay-as-you-go authorizations.
 	//
 	// example:
 	//
 	// 10
 	PostPaidBindCoreCount *int32 `json:"PostPaidBindCoreCount,omitempty" xml:"PostPaidBindCoreCount,omitempty"`
-	// The number of assets bound with pay-as-you-go authorization.
+	// The number of assets that are bound to pay-as-you-go authorizations.
 	//
 	// example:
 	//
@@ -499,7 +503,7 @@ type GetAuthSummaryResponseBodyMachine struct {
 	//
 	// 10
 	RiskEcsCount *int32 `json:"RiskEcsCount,omitempty" xml:"RiskEcsCount,omitempty"`
-	// The total number of asset cores.
+	// The total number of cores of all assets.
 	//
 	// example:
 	//
@@ -511,13 +515,13 @@ type GetAuthSummaryResponseBodyMachine struct {
 	//
 	// 10
 	TotalEcsCount *int32 `json:"TotalEcsCount,omitempty" xml:"TotalEcsCount,omitempty"`
-	// The number of cores of unbound assets.
+	// The number of cores of assets that are not bound to authorizations.
 	//
 	// example:
 	//
 	// 10
 	UnBindCoreCount *int32 `json:"UnBindCoreCount,omitempty" xml:"UnBindCoreCount,omitempty"`
-	// The number of unbound assets.
+	// The number of assets that are not bound to authorizations.
 	//
 	// example:
 	//
@@ -628,28 +632,31 @@ func (s *GetAuthSummaryResponseBodyMachine) Validate() error {
 }
 
 type GetAuthSummaryResponseBodyPostPaidVersionSummary struct {
-	// The type of authorization consumed during binding. Valid values:
+	// The type of authorization consumed when binding. Valid values:
 	//
-	// - **ASSET**: consumes authorized asset count.
+	// - **ASSET**: consumes authorization units.
 	//
-	// - **CORE**: consumes authorized core count.
+	// - **CORE**: consumes authorization cores.
 	//
-	// - **ASSET_AND_CORE**: consumes both authorized asset count and authorized core count.
+	// - **ASSET_AND_CORE**: consumes both authorization units and authorization cores.
 	//
 	// example:
 	//
 	// ASSET
-	AuthBindType  *string `json:"AuthBindType,omitempty" xml:"AuthBindType,omitempty"`
-	FreeCoreCount *int32  `json:"FreeCoreCount,omitempty" xml:"FreeCoreCount,omitempty"`
-	FreeEcsCount  *int32  `json:"FreeEcsCount,omitempty" xml:"FreeEcsCount,omitempty"`
-	FreeType      *string `json:"FreeType,omitempty" xml:"FreeType,omitempty"`
-	// The index of the current edition. A larger value indicates a higher edition. This field is used for sorting. Valid values:
+	AuthBindType *string `json:"AuthBindType,omitempty" xml:"AuthBindType,omitempty"`
+	// The number of free authorization cores.
+	FreeCoreCount *int32 `json:"FreeCoreCount,omitempty" xml:"FreeCoreCount,omitempty"`
+	// The number of free authorization units.
+	FreeEcsCount *int32 `json:"FreeEcsCount,omitempty" xml:"FreeEcsCount,omitempty"`
+	// The type of free quota.
+	FreeType *string `json:"FreeType,omitempty" xml:"FreeType,omitempty"`
+	// The index of the current edition. A higher value indicates a higher edition. This field is used for sorting. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
 	// - **2**: Anti-virus Edition.
 	//
-	// - **3**: Premium Edition.
+	// - **3**: Advanced Edition.
 	//
 	// - **4**: Enterprise Edition.
 	//
@@ -659,29 +666,29 @@ type GetAuthSummaryResponseBodyPostPaidVersionSummary struct {
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The number of authorized cores that have been used.
+	// The number of authorization cores that have been used.
 	//
-	// > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to CORE or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	UsedCoreCount *int64 `json:"UsedCoreCount,omitempty" xml:"UsedCoreCount,omitempty"`
-	// The number of authorized assets that have been used.
+	// The number of authorization units that have been used.
 	//
-	// > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to ASSET or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	UsedEcsCount *int64 `json:"UsedEcsCount,omitempty" xml:"UsedEcsCount,omitempty"`
-	// The pay-as-you-go edition bound to host assets. Valid values:
+	// The pay-as-you-go edition bound to the host asset. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
 	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Premium Edition.
+	// - **5**: Advanced Edition.
 	//
 	// - **6**: Anti-virus Edition.
 	//
@@ -778,25 +785,25 @@ func (s *GetAuthSummaryResponseBodyPostPaidVersionSummary) Validate() error {
 }
 
 type GetAuthSummaryResponseBodyVersionSummary struct {
-	// The type of authorization consumed during binding. Valid values:
+	// The type of authorization consumed when binding. Valid values:
 	//
-	// - ASSET: consumes authorized asset count.
+	// - ASSET: consumes authorization units.
 	//
-	// - CORE: consumes authorized core count.
+	// - CORE: consumes authorization cores.
 	//
-	// - ASSET_AND_CORE: consumes both authorized asset count and authorized core count.
+	// - ASSET_AND_CORE: consumes both authorization units and authorization cores.
 	//
 	// example:
 	//
 	// ASSET
 	AuthBindType *string `json:"AuthBindType,omitempty" xml:"AuthBindType,omitempty"`
-	// The index of the current edition. A larger value indicates a higher edition. This field is used for sorting. Valid values:
+	// The index of the current edition. A higher value indicates a higher edition. This field is used for sorting. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
 	// - **2**: Anti-virus Edition.
 	//
-	// - **3**: Premium Edition.
+	// - **3**: Advanced Edition.
 	//
 	// - **4**: Enterprise Edition.
 	//
@@ -806,83 +813,83 @@ type GetAuthSummaryResponseBodyVersionSummary struct {
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The total number of authorized cores.
+	// The total number of authorization cores.
 	//
-	// > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to CORE or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	TotalCoreAuthCount *int32 `json:"TotalCoreAuthCount,omitempty" xml:"TotalCoreAuthCount,omitempty"`
-	// The total number of authorized assets for the current edition.
+	// The total number of authorization units for the current edition.
 	//
-	// > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to ASSET or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of authorized assets.
+	// The total number of authorization units.
 	//
-	// > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to ASSET or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	TotalEcsAuthCount *int32 `json:"TotalEcsAuthCount,omitempty" xml:"TotalEcsAuthCount,omitempty"`
-	// The number of unused authorized assets.
+	// The number of unused authorization units.
 	//
-	// > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to ASSET or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	UnUsedCount *int32 `json:"UnUsedCount,omitempty" xml:"UnUsedCount,omitempty"`
-	// The number of unused authorized cores.
+	// The number of unused authorization cores.
 	//
-	// > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to CORE or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	UnusedCoreAuthCount *int32 `json:"UnusedCoreAuthCount,omitempty" xml:"UnusedCoreAuthCount,omitempty"`
-	// The number of unused authorized assets.
+	// The number of unused authorization units.
 	//
-	// > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to ASSET or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	UnusedEcsAuthCount *int32 `json:"UnusedEcsAuthCount,omitempty" xml:"UnusedEcsAuthCount,omitempty"`
-	// The number of authorized cores that have been used.
+	// The number of authorization cores that have been used.
 	//
-	// > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to CORE or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	UsedCoreCount *int32 `json:"UsedCoreCount,omitempty" xml:"UsedCoreCount,omitempty"`
-	// The number of authorized assets that have been used.
+	// The number of authorization units that have been used.
 	//
-	// > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
+	// > This parameter is valid when AuthBindType is set to ASSET or ASSET_AND_CORE.
 	//
 	// example:
 	//
 	// 10
 	UsedEcsCount *int32 `json:"UsedEcsCount,omitempty" xml:"UsedEcsCount,omitempty"`
-	// The purchased edition of Security Center. Valid values:
+	// The edition of Security Center that you have purchased. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
 	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Premium Edition.
+	// - **5**: Advanced Edition.
 	//
 	// - **6**: Anti-virus Edition.
 	//
 	// - **7**: Ultimate Edition.
 	//
-	// - **8**: Multi-version.
+	// - **8**: Multiple editions.
 	//
 	// - **10**: Value-added services only.
 	//

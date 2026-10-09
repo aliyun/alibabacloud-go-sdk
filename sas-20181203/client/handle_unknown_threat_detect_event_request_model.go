@@ -19,8 +19,13 @@ type iHandleUnknownThreatDetectEventRequest interface {
 
 type HandleUnknownThreatDetectEventRequest struct {
 	// The list of event IDs.
-	EventIdList  []*string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
-	HandleRemark *string   `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
+	EventIdList []*string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	// The handling remarks.
+	//
+	// example:
+	//
+	// Confirmed and handled
+	HandleRemark *string `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
 	// The event handling status. Valid values:
 	//
 	// - **1**: Unhandled.

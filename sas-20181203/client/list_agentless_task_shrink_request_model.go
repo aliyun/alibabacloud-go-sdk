@@ -5,45 +5,45 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iListAgentlessTaskRequest interface {
+type iListAgentlessTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCurrentPage(v int32) *ListAgentlessTaskRequest
+	SetCurrentPage(v int32) *ListAgentlessTaskShrinkRequest
 	GetCurrentPage() *int32
-	SetEndTime(v int64) *ListAgentlessTaskRequest
+	SetEndTime(v int64) *ListAgentlessTaskShrinkRequest
 	GetEndTime() *int64
-	SetInternetIp(v string) *ListAgentlessTaskRequest
+	SetInternetIp(v string) *ListAgentlessTaskShrinkRequest
 	GetInternetIp() *string
-	SetIntranetIp(v string) *ListAgentlessTaskRequest
+	SetIntranetIp(v string) *ListAgentlessTaskShrinkRequest
 	GetIntranetIp() *string
-	SetLang(v string) *ListAgentlessTaskRequest
+	SetLang(v string) *ListAgentlessTaskShrinkRequest
 	GetLang() *string
-	SetMachineName(v string) *ListAgentlessTaskRequest
+	SetMachineName(v string) *ListAgentlessTaskShrinkRequest
 	GetMachineName() *string
-	SetPageSize(v int32) *ListAgentlessTaskRequest
+	SetPageSize(v int32) *ListAgentlessTaskShrinkRequest
 	GetPageSize() *int32
-	SetRootTask(v bool) *ListAgentlessTaskRequest
+	SetRootTask(v bool) *ListAgentlessTaskShrinkRequest
 	GetRootTask() *bool
-	SetRootTaskId(v string) *ListAgentlessTaskRequest
+	SetRootTaskId(v string) *ListAgentlessTaskShrinkRequest
 	GetRootTaskId() *string
-	SetStartTime(v int64) *ListAgentlessTaskRequest
+	SetStartTime(v int64) *ListAgentlessTaskShrinkRequest
 	GetStartTime() *int64
-	SetStatus(v int32) *ListAgentlessTaskRequest
+	SetStatus(v int32) *ListAgentlessTaskShrinkRequest
 	GetStatus() *int32
-	SetTargetName(v string) *ListAgentlessTaskRequest
+	SetTargetName(v string) *ListAgentlessTaskShrinkRequest
 	GetTargetName() *string
-	SetTargetType(v int32) *ListAgentlessTaskRequest
+	SetTargetType(v int32) *ListAgentlessTaskShrinkRequest
 	GetTargetType() *int32
-	SetTaskId(v string) *ListAgentlessTaskRequest
+	SetTaskId(v string) *ListAgentlessTaskShrinkRequest
 	GetTaskId() *string
-	SetTaskIdList(v []*string) *ListAgentlessTaskRequest
-	GetTaskIdList() []*string
-	SetUuid(v string) *ListAgentlessTaskRequest
+	SetTaskIdListShrink(v string) *ListAgentlessTaskShrinkRequest
+	GetTaskIdListShrink() *string
+	SetUuid(v string) *ListAgentlessTaskShrinkRequest
 	GetUuid() *string
 }
 
-type ListAgentlessTaskRequest struct {
+type ListAgentlessTaskShrinkRequest struct {
 	// The page number of the current page in a paging query.
 	//
 	// example:
@@ -149,7 +149,7 @@ type ListAgentlessTaskRequest struct {
 	// d7b2acf8d362742123e4a84e1bf8****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The list of task IDs to return. You can specify up to 100 IDs. You must specify RootTask and cannot specify this parameter together with TaskId. If RootTask is set to true, root tasks are queried. If RootTask is set to false, subtasks are queried, and cross-root task queries are allowed. If RootTaskId is specified, the intersection is returned.
-	TaskIdList []*string `json:"TaskIdList,omitempty" xml:"TaskIdList,omitempty" type:"Repeated"`
+	TaskIdListShrink *string `json:"TaskIdList,omitempty" xml:"TaskIdList,omitempty"`
 	// The UUID of the server to query.
 	//
 	// example:
@@ -158,158 +158,158 @@ type ListAgentlessTaskRequest struct {
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
-func (s ListAgentlessTaskRequest) String() string {
+func (s ListAgentlessTaskShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s ListAgentlessTaskRequest) GoString() string {
+func (s ListAgentlessTaskShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListAgentlessTaskRequest) GetCurrentPage() *int32 {
+func (s *ListAgentlessTaskShrinkRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
-func (s *ListAgentlessTaskRequest) GetEndTime() *int64 {
+func (s *ListAgentlessTaskShrinkRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
 
-func (s *ListAgentlessTaskRequest) GetInternetIp() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetInternetIp() *string {
 	return s.InternetIp
 }
 
-func (s *ListAgentlessTaskRequest) GetIntranetIp() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetIntranetIp() *string {
 	return s.IntranetIp
 }
 
-func (s *ListAgentlessTaskRequest) GetLang() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetLang() *string {
 	return s.Lang
 }
 
-func (s *ListAgentlessTaskRequest) GetMachineName() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetMachineName() *string {
 	return s.MachineName
 }
 
-func (s *ListAgentlessTaskRequest) GetPageSize() *int32 {
+func (s *ListAgentlessTaskShrinkRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
-func (s *ListAgentlessTaskRequest) GetRootTask() *bool {
+func (s *ListAgentlessTaskShrinkRequest) GetRootTask() *bool {
 	return s.RootTask
 }
 
-func (s *ListAgentlessTaskRequest) GetRootTaskId() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetRootTaskId() *string {
 	return s.RootTaskId
 }
 
-func (s *ListAgentlessTaskRequest) GetStartTime() *int64 {
+func (s *ListAgentlessTaskShrinkRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
-func (s *ListAgentlessTaskRequest) GetStatus() *int32 {
+func (s *ListAgentlessTaskShrinkRequest) GetStatus() *int32 {
 	return s.Status
 }
 
-func (s *ListAgentlessTaskRequest) GetTargetName() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetTargetName() *string {
 	return s.TargetName
 }
 
-func (s *ListAgentlessTaskRequest) GetTargetType() *int32 {
+func (s *ListAgentlessTaskShrinkRequest) GetTargetType() *int32 {
 	return s.TargetType
 }
 
-func (s *ListAgentlessTaskRequest) GetTaskId() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetTaskId() *string {
 	return s.TaskId
 }
 
-func (s *ListAgentlessTaskRequest) GetTaskIdList() []*string {
-	return s.TaskIdList
+func (s *ListAgentlessTaskShrinkRequest) GetTaskIdListShrink() *string {
+	return s.TaskIdListShrink
 }
 
-func (s *ListAgentlessTaskRequest) GetUuid() *string {
+func (s *ListAgentlessTaskShrinkRequest) GetUuid() *string {
 	return s.Uuid
 }
 
-func (s *ListAgentlessTaskRequest) SetCurrentPage(v int32) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetCurrentPage(v int32) *ListAgentlessTaskShrinkRequest {
 	s.CurrentPage = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetEndTime(v int64) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetEndTime(v int64) *ListAgentlessTaskShrinkRequest {
 	s.EndTime = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetInternetIp(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetInternetIp(v string) *ListAgentlessTaskShrinkRequest {
 	s.InternetIp = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetIntranetIp(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetIntranetIp(v string) *ListAgentlessTaskShrinkRequest {
 	s.IntranetIp = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetLang(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetLang(v string) *ListAgentlessTaskShrinkRequest {
 	s.Lang = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetMachineName(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetMachineName(v string) *ListAgentlessTaskShrinkRequest {
 	s.MachineName = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetPageSize(v int32) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetPageSize(v int32) *ListAgentlessTaskShrinkRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetRootTask(v bool) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetRootTask(v bool) *ListAgentlessTaskShrinkRequest {
 	s.RootTask = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetRootTaskId(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetRootTaskId(v string) *ListAgentlessTaskShrinkRequest {
 	s.RootTaskId = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetStartTime(v int64) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetStartTime(v int64) *ListAgentlessTaskShrinkRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetStatus(v int32) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetStatus(v int32) *ListAgentlessTaskShrinkRequest {
 	s.Status = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetTargetName(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetTargetName(v string) *ListAgentlessTaskShrinkRequest {
 	s.TargetName = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetTargetType(v int32) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetTargetType(v int32) *ListAgentlessTaskShrinkRequest {
 	s.TargetType = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetTaskId(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetTaskId(v string) *ListAgentlessTaskShrinkRequest {
 	s.TaskId = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetTaskIdList(v []*string) *ListAgentlessTaskRequest {
-	s.TaskIdList = v
+func (s *ListAgentlessTaskShrinkRequest) SetTaskIdListShrink(v string) *ListAgentlessTaskShrinkRequest {
+	s.TaskIdListShrink = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) SetUuid(v string) *ListAgentlessTaskRequest {
+func (s *ListAgentlessTaskShrinkRequest) SetUuid(v string) *ListAgentlessTaskShrinkRequest {
 	s.Uuid = &v
 	return s
 }
 
-func (s *ListAgentlessTaskRequest) Validate() error {
+func (s *ListAgentlessTaskShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }

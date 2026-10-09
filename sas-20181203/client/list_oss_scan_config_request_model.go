@@ -20,7 +20,7 @@ type iListOssScanConfigRequest interface {
 }
 
 type ListOssScanConfigRequest struct {
-	// The page number of the current page in a paged query.
+	// The current page number for paged queries.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListOssScanConfigRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries per page in a paged query.
+	// The maximum number of entries to display on each page for paged queries.
 	//
 	// example:
 	//

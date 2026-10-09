@@ -1411,7 +1411,7 @@ func (client *Client) AddUninstallClientsByUuidsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Adds processes for intelligent behavior analytics.
+// Adds a process to behavior analytics.
 //
 // @param request - AddUnknownThreatDetectProcessRequest
 //
@@ -5641,7 +5641,11 @@ func (client *Client) CreateRestoreJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Starts a free trial of Security Center.
+// Starts a Security Center trial.
+//
+// Description:
+//
+// Starts a Security Center trial. Before calling this operation, call GetCanTrySas to check trial eligibility and retrieve the TryVersion and TryType values. You can start a trial only when TryType is not 0.
 //
 // @param tmpReq - CreateSasTrialRequest
 //
@@ -11717,11 +11721,11 @@ func (client *Client) DescribeClientProblemTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries asset information by settings conditional query criteria, such as asset instance name or asset instance region. Both paging and NextToken methods are supported. The NextToken method is recommended.
+// Queries assets that match specified search criteria by using conditional query settings such as asset instance name and region. Supports both paging and NextToken methods. The NextToken method is recommended.
 //
 // Description:
 //
-// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set logical relationships between different search conditions to search for assets that meet multiple criteria.
+// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other criteria. You can also set logical relationships between different search criteria to find assets that match multiple conditions.
 //
 // @param request - DescribeCloudCenterInstancesRequest
 //
@@ -22157,7 +22161,7 @@ func (client *Client) DescribeSoarSubscribedStrategyWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the details about baseline check policies.
+// Queries baseline check policies.
 //
 // @param request - DescribeStrategyRequest
 //
@@ -24441,7 +24445,7 @@ func (client *Client) DescribeVulListWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the vulnerabilities that can be detected.
+// Queries the list of vulnerabilities supported for detection.
 //
 // @param request - DescribeVulListPageRequest
 //
@@ -27251,11 +27255,11 @@ func (client *Client) GetAgentlessTaskCountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves agentless detection risk statistics for resources in batches of 1 to 100 resources per request.
+// Retrieves the agentless detection risk statistics for 1 to 100 resources in a single batch.
 //
 // Description:
 //
-// Only Alibaba Cloud accounts that have activated the pay-as-you-go billing method for Security Center agentless detection can call this operation. UuidList can contain up to 100 UUIDs. Duplicate UUIDs are deduplicated based on the order of first occurrence. The returned Data is keyed by UUID and does not aggregate results across multiple resources. RiskMachine, ScanMachine, and LastTaskTime are account-level statistics and remain consistent across all resources in the same request.
+// Only Alibaba Cloud accounts that have activated the pay-as-you-go billing method for the agentless detection feature of Security Center can call this operation. The UuidList parameter can contain up to 100 UUIDs. Duplicate UUIDs are deduplicated based on the order of their first appearance. The returned Data is keyed by UUID, and the results for multiple resources are not aggregated. RiskMachine, ScanMachine, and LastTaskTime are account-level statistics, and the results for each resource in the same request remain consistent.
 //
 // @param request - GetAgentlessTaskCountBatchRequest
 //
@@ -28273,7 +28277,7 @@ func (client *Client) GetCheckRiskStatisticsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves the sales information of cloud service configuration check, including the number of authorized quotas and consumed quotas.
+// Retrieves the sales information for cloud product configuration checks, including the number of authorized assets and consumed authorized assets.
 //
 // @param request - GetCheckSaleRequest
 //
@@ -31982,7 +31986,7 @@ func (client *Client) GetSwitchRegionDetailWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves statistics information on intelligent behavior analytics.
+// Retrieves behavior analytics statistics information.
 //
 // @param request - GetUnknownThreatDetectStatisticRequest
 //
@@ -32603,7 +32607,7 @@ func (client *Client) HandleSimilarSecurityEventsWithContext(ctx context.Context
 
 // Summary:
 //
-// Handles alerting from intelligent behavior analytics.
+// Handles alerts for behavior analytics.
 //
 // @param request - HandleUnknownThreatDetectEventRequest
 //
@@ -33321,7 +33325,11 @@ func (client *Client) ListAegisForLingjunStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Query agentless detection assets.
+// Queries agentless detection assets.
+//
+// Description:
+//
+// Queries the list of assets for agentless detection.
 //
 // @param request - ListAgentlessAssetRequest
 //
@@ -33625,20 +33633,26 @@ func (client *Client) ListAgentlessRiskUuidWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the list of agentless detection tasks.
+// Retrieves a list of agentless detection tasks.
 //
-// @param request - ListAgentlessTaskRequest
+// @param tmpReq - ListAgentlessTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAgentlessTaskResponse
-func (client *Client) ListAgentlessTaskWithContext(ctx context.Context, request *ListAgentlessTaskRequest, runtime *dara.RuntimeOptions) (_result *ListAgentlessTaskResponse, _err error) {
+func (client *Client) ListAgentlessTaskWithContext(ctx context.Context, tmpReq *ListAgentlessTaskRequest, runtime *dara.RuntimeOptions) (_result *ListAgentlessTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListAgentlessTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TaskIdList) {
+		request.TaskIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIdList, dara.String("TaskIdList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
@@ -33694,6 +33708,10 @@ func (client *Client) ListAgentlessTaskWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskIdListShrink) {
+		query["TaskIdList"] = request.TaskIdListShrink
 	}
 
 	if !dara.IsNil(request.Uuid) {
@@ -34503,7 +34521,7 @@ func (client *Client) ListCheckInstanceResultWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the list of check items that can be configured with custom settings.
+// Retrieves the list of check items that support custom configuration.
 //
 // @param request - ListCheckItemRequest
 //
@@ -35263,7 +35281,7 @@ func (client *Client) ListClientUserDefineRulesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the list of cloud service assets.
+// Retrieves the asset list of cloud products.
 //
 // @param request - ListCloudAssetInstancesRequest
 //
@@ -41816,7 +41834,7 @@ func (client *Client) ModifyDingTalkStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Performs emergency vulnerability detection.
+// Runs an emergency vulnerability detection.
 //
 // @param request - ModifyEmgVulSubmitRequest
 //
@@ -42774,7 +42792,7 @@ func (client *Client) ModifyOpenLogShipperWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Handles detected vulnerabilities. Supported operations include fix, verify, and ignore.
+// Handles detected vulnerabilities. Supported operations include fixing, verifying, and ignoring vulnerabilities.
 //
 // @param request - ModifyOperateVulRequest
 //
@@ -45034,7 +45052,7 @@ func (client *Client) OperateBucketScanTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Configures a global switch based on the specified type.
+// Sets the global switch based on the specified type.
 //
 // @param request - OperateCommonOverallConfigRequest
 //
@@ -50514,7 +50532,7 @@ func (client *Client) UpdateMaliciousFileWhitelistConfigWithContext(ctx context.
 
 // Summary:
 //
-// Manages authorization assignments for member accounts in multi-account authorization management.
+// Manages multi-account authorization by editing allocation assignments in the administrator account.
 //
 // @param request - UpdateMultiUserInstancesRequest
 //
@@ -51042,7 +51060,7 @@ func (client *Client) UpdatePublishGraySwitchWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the key that corresponds to a specified type.
+// Modifies the key corresponding to the specified type.
 //
 // @param request - UpdateSelectionKeyByTypeRequest
 //
