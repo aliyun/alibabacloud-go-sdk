@@ -20,7 +20,7 @@ type iCreateExternalCACertificateResponseBody interface {
 }
 
 type CreateExternalCACertificateResponseBody struct {
-	// The content of the certificate.
+	// The certificate content.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateExternalCACertificateResponseBody struct {
 	//
 	// -----END CERTIFICATE-----
 	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	// The unique identifier for the certificate.
+	// The unique identifier of the certificate.
 	//
 	// example:
 	//

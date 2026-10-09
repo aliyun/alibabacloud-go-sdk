@@ -28,7 +28,7 @@ type iDescribeCACertificateListRequest interface {
 }
 
 type DescribeCACertificateListRequest struct {
-	// The status of the CA. Valid values:
+	// The current status of the CA. Valid values:
 	//
 	// - issue: enabled.
 	//
@@ -44,15 +44,15 @@ type DescribeCACertificateListRequest struct {
 	//
 	// - root: root CA.
 	//
-	// - subRoot: intermediate CA.
+	// - subRoot: subordinate CA.
 	//
-	// - externalCa: an imported external CA.
+	// - externalCa: externally imported CA.
 	//
 	// example:
 	//
 	// subRoot
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The page number. Default value: 1.
+	// The page number of the current page in a paging query. Settings: specify the desired page number. Default value: **1**.
 	//
 	// example:
 	//
@@ -60,19 +60,19 @@ type DescribeCACertificateListRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The unique identifier of the CA certificate.
 	//
-	// > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) to query the unique identifiers of all CA certificates.
+	// > You can call [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) to query the unique identifiers of all CA certificates.
 	//
 	// example:
 	//
 	// 1ee47e24-c51b-67cc-aa6b-1f7561cf9d9a
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The issuer of the CA. Valid values:
+	// The issuing authority of the CA. Valid values:
 	//
 	// - local: private certificate.
 	//
-	// - iTrusChina: a trusted CA.
+	// - iTrusChina: compliance CA.
 	//
-	// - external: an imported external CA.
+	// - external: externally imported.
 	//
 	// example:
 	//
@@ -84,17 +84,17 @@ type DescribeCACertificateListRequest struct {
 	//
 	// rg-ae******4wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of CA certificates per page in a paging query. Settings: specify the desired number of entries per page. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The validity status of the CA. Valid values:
+	// The time-based validity status of the CA. Valid values:
 	//
-	// - valid: The CA certificate is valid.
+	// - valid: The CA is within its validity period.
 	//
-	// - notValid: The CA certificate has expired.
+	// - notValid: The CA has expired.
 	//
 	// example:
 	//

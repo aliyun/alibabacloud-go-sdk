@@ -22,7 +22,7 @@ type GetCaInstanceCrlAddressRequest struct {
 	//
 	// 1f0167b4-ee84-XXX-49bc4d39fa68
 	CaIdentifier *string `json:"CaIdentifier,omitempty" xml:"CaIdentifier,omitempty"`
-	// The zone ID of the China CAS instance.
+	// The zone ID of the China Application Security (CAS) instance.
 	//
 	// example:
 	//

@@ -77,13 +77,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("cas.aliyuncs.com"),
 		"us-east-1":                   dara.String("cas.aliyuncs.com"),
 		"us-west-1":                   dara.String("cas.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("cas.ap-southeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("cas.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("cas.ap-southeast-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("cas.eu-central-1.aliyuncs.com"),
-		"me-central-1":                dara.String("cas.me-central-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("cas.ap-south-1.aliyuncs.com"),
-		"me-east-1":                   dara.String("cas.me-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -118,13 +111,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Assigns the certificate quota to a subordinate certificate authority (CA) instance.
+// Queries the number of allocated certificates.
 //
 // Description:
 //
-// ## QPS limit
+// Queries the number of CA certificates that you have created, including root CA certificates and subordinate CA certificates.
 //
-// This API operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, the system throttles your API calls, which can affect your business. Plan your calls accordingly.
+// ## QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - AssignCertificateCountRequest
 //
@@ -139,6 +134,10 @@ func (client *Client) AssignCertificateCountWithOptions(request *AssignCertifica
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CaIdentifier) {
+		query["CaIdentifier"] = request.CaIdentifier
+	}
+
 	if !dara.IsNil(request.CertTotalCount) {
 		query["CertTotalCount"] = request.CertTotalCount
 	}
@@ -172,13 +171,15 @@ func (client *Client) AssignCertificateCountWithOptions(request *AssignCertifica
 
 // Summary:
 //
-// Assigns the certificate quota to a subordinate certificate authority (CA) instance.
+// Queries the number of allocated certificates.
 //
 // Description:
 //
-// ## QPS limit
+// Queries the number of CA certificates that you have created, including root CA certificates and subordinate CA certificates.
 //
-// This API operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, the system throttles your API calls, which can affect your business. Plan your calls accordingly.
+// ## QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - AssignCertificateCountRequest
 //
@@ -200,7 +201,7 @@ func (client *Client) AssignCertificateCount(request *AssignCertificateCountRequ
 //
 // Description:
 //
-// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue client certificates.
+// Before calling this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate. Only sub-CA certificates can issue client certificates.
 //
 // ## QPS limit
 //
@@ -342,7 +343,7 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 //
 // Description:
 //
-// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue client certificates.
+// Before calling this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate. Only sub-CA certificates can issue client certificates.
 //
 // ## QPS limit
 //
@@ -372,7 +373,7 @@ func (client *Client) CreateClientCertificate(request *CreateClientCertificateRe
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Call this operation as appropriate.
 //
 // @param request - CreateClientCertificateWithCsrRequest
 //
@@ -508,7 +509,7 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Call this operation as appropriate.
 //
 // @param request - CreateClientCertificateWithCsrRequest
 //
@@ -684,23 +685,23 @@ func (client *Client) CreateCustomCertificate(request *CreateCustomCertificateRe
 
 // Summary:
 //
-// Create and issue an external subordinate CA certificate using a CSR and API parameters.
+// Creates and issues an external subordinate CA certificate based on a CSR and API parameters.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - Creates an external subordinate CA certificate from a certificate signing request (CSR) and optional API pass-through parameters.
+// - This operation creates an external subordinate CA certificate based on the provided certificate signing request (CSR) and optional pass parameter configurations through the API.
 //
-// - The required `InstanceId` parameter specifies the instance ID of the external subordinate CA.
+// - `InstanceId` is required and specifies the instance ID of the external subordinate CA instance to activate.
 //
-// - The `Csr` parameter must contain a valid certificate signing request.
+// - The `Csr` field must contain a valid certificate signing request.
 //
-// - The `Validity` parameter specifies the certificate\\"s validity period and accepts values in either relative or absolute time formats.
+// - The `Validity` parameter defines the certificate validity period and supports both relative time and absolute time formats.
 //
-// - The `ApiPassthrough` parameter lets you override information in the CSR, such as subject information, or add certificate extensions.
+// - You can use `ApiPassthrough` to overwrite certain information in the CSR or add additional certificate extensions, such as Subject and Extensions.
 //
-// - Note: For end-entity CA certificates, set the `pathLenConstraint` parameter to 0.
+// - Note: For EndEntity CA certificates, the Settings of `pathLenConstraint` should be 0.
 //
 // @param tmpReq - CreateExternalCACertificateRequest
 //
@@ -774,23 +775,23 @@ func (client *Client) CreateExternalCACertificateWithOptions(tmpReq *CreateExter
 
 // Summary:
 //
-// Create and issue an external subordinate CA certificate using a CSR and API parameters.
+// Creates and issues an external subordinate CA certificate based on a CSR and API parameters.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - Creates an external subordinate CA certificate from a certificate signing request (CSR) and optional API pass-through parameters.
+// - This operation creates an external subordinate CA certificate based on the provided certificate signing request (CSR) and optional pass parameter configurations through the API.
 //
-// - The required `InstanceId` parameter specifies the instance ID of the external subordinate CA.
+// - `InstanceId` is required and specifies the instance ID of the external subordinate CA instance to activate.
 //
-// - The `Csr` parameter must contain a valid certificate signing request.
+// - The `Csr` field must contain a valid certificate signing request.
 //
-// - The `Validity` parameter specifies the certificate\\"s validity period and accepts values in either relative or absolute time formats.
+// - The `Validity` parameter defines the certificate validity period and supports both relative time and absolute time formats.
 //
-// - The `ApiPassthrough` parameter lets you override information in the CSR, such as subject information, or add certificate extensions.
+// - You can use `ApiPassthrough` to overwrite certain information in the CSR or add additional certificate extensions, such as Subject and Extensions.
 //
-// - Note: For end-entity CA certificates, set the `pathLenConstraint` parameter to 0.
+// - Note: For EndEntity CA certificates, the Settings of `pathLenConstraint` should be 0.
 //
 // @param request - CreateExternalCACertificateRequest
 //
@@ -1170,11 +1171,11 @@ func (client *Client) CreateServerCertificate(request *CreateServerCertificateRe
 //
 // Description:
 //
-// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue server certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate. Only sub-CA certificates can issue server certificates.
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateServerCertificateWithCsrRequest
 //
@@ -1302,11 +1303,11 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 //
 // Description:
 //
-// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue server certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate. Only sub-CA certificates can issue server certificates.
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateServerCertificateWithCsrRequest
 //
@@ -1324,17 +1325,17 @@ func (client *Client) CreateServerCertificateWithCsr(request *CreateServerCertif
 
 // Summary:
 //
-// Creates a subordinate certificate authority (CA) certificate under an existing root CA.
+// Creates a subordinate CA certificate.
 //
 // Description:
 //
-// This operation issues an intermediate CA certificate from an existing root CA certificate. You can use the intermediate CA certificate to issue client and server certificates.
+// This operation issues a subordinate CA certificate by using an existing root CA certificate. The subordinate CA certificate can be used to issue client and server certificates.
 //
-// Before calling this operation, you must call the [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) operation to create a root CA certificate.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per user. Calls that exceed this limit are throttled. This may affect your business. Plan your calls accordingly.
+// The China site (aliyun.com) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site.
 //
 // @param request - CreateSubCACertificateRequest
 //
@@ -1444,17 +1445,17 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 
 // Summary:
 //
-// Creates a subordinate certificate authority (CA) certificate under an existing root CA.
+// Creates a subordinate CA certificate.
 //
 // Description:
 //
-// This operation issues an intermediate CA certificate from an existing root CA certificate. You can use the intermediate CA certificate to issue client and server certificates.
+// This operation issues a subordinate CA certificate by using an existing root CA certificate. The subordinate CA certificate can be used to issue client and server certificates.
 //
-// Before calling this operation, you must call the [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) operation to create a root CA certificate.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per user. Calls that exceed this limit are throttled. This may affect your business. Plan your calls accordingly.
+// The China site (aliyun.com) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site (Chinese): The China site (Chinese) and China site.
 //
 // @param request - CreateSubCACertificateRequest
 //
@@ -1554,13 +1555,13 @@ func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRe
 //
 // Description:
 //
-// This operation queries the details of a root CA certificate or sub-CA certificate by using the unique identifier of the certificate. The details include the serial number, subject information, and certificate content of the CA certificate.
+// This operation queries the details of a root CA certificate or sub-CA certificate by using the unique identifier of the certificate. For example, you can query the serial number, subject information, and certificate content of a CA certificate.
 //
-// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate.
+// Before you call this operation, you must have created a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and created a sub-CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html).
 //
 // ## QPS limit
 //
-// The China site (aliyun.com) allows up to 10 queries per second (QPS) for a single user. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. Call this operation as appropriate.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeCACertificateRequest
 //
@@ -1608,13 +1609,13 @@ func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertif
 //
 // Description:
 //
-// This operation queries the details of a root CA certificate or sub-CA certificate by using the unique identifier of the certificate. The details include the serial number, subject information, and certificate content of the CA certificate.
+// This operation queries the details of a root CA certificate or sub-CA certificate by using the unique identifier of the certificate. For example, you can query the serial number, subject information, and certificate content of a CA certificate.
 //
-// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate.
+// Before you call this operation, you must have created a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and created a sub-CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html).
 //
 // ## QPS limit
 //
-// The China site (aliyun.com) allows up to 10 queries per second (QPS) for a single user. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. Call this operation as appropriate.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeCACertificateRequest
 //
@@ -1693,15 +1694,15 @@ func (client *Client) DescribeCACertificateCount() (_result *DescribeCACertifica
 
 // Summary:
 //
-// Queries all root and subordinate certificate authority (CA) certificates.
+// Queries information about all root CA certificates and subordinate CA certificates.
 //
 // Description:
 //
-// You can call this operation to query the details of all your root and intermediate CA certificates by page. The details include the unique identifier, serial number, subject information, and content of each certificate.
+// You can invoke this operation to query detailed information about all CA certificates (including root CA certificates and subordinate CA certificates) that you have created by using paging. The information includes the unique identifier, sequence number, subject information, and certificate content of each CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled. This may affect your business. We recommend that you call this operation a reasonable number of times.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - DescribeCACertificateListRequest
 //
@@ -1773,15 +1774,15 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 
 // Summary:
 //
-// Queries all root and subordinate certificate authority (CA) certificates.
+// Queries information about all root CA certificates and subordinate CA certificates.
 //
 // Description:
 //
-// You can call this operation to query the details of all your root and intermediate CA certificates by page. The details include the unique identifier, serial number, subject information, and content of each certificate.
+// You can invoke this operation to query detailed information about all CA certificates (including root CA certificates and subordinate CA certificates) that you have created by using paging. The information includes the unique identifier, sequence number, subject information, and certificate content of each CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled. This may affect your business. We recommend that you call this operation a reasonable number of times.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - DescribeCACertificateListRequest
 //
@@ -2021,23 +2022,23 @@ func (client *Client) DescribeClientCertificate(request *DescribeClientCertifica
 //
 // Summary:
 //
-// Retrieves the details of multiple client or server certificates by serial number.
+// Queries the details of client certificates or server certificates in batch by certificate serial number.
 //
 // Description:
 //
-// # Usage
+// # Description
 //
-// Retrieves the details of multiple client or server certificates by serial number. The response includes each certificate\\"s serial number, subject information, content, and status.
+// This operation allows you to query the details of client certificates or server certificates in batch by certificate serial number. The details include the serial number, subject information, content, and status of the certificates.
 //
-// Before calling this operation, ensure you have created a client certificate or a server certificate.
+// Before you call this operation, you must have created client certificates or server certificates.
 //
-// To create a client certificate, see:
+// For information about how to call an API operation to create a client certificate, see:
 //
 // - [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
 //
 // - [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
 //
-// To create a server certificate, see:
+// For information about how to call an API operation to create a server certificate, see:
 //
 // - [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
 //
@@ -2045,7 +2046,7 @@ func (client *Client) DescribeClientCertificate(request *DescribeClientCertifica
 //
 // # QPS limit
 //
-// The QPS limit for this operation is 10 calls per second per account. Exceeding this limit triggers throttling, which can impact your business. Plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeClientCertificateForSerialNumberRequest
 //
@@ -2091,23 +2092,23 @@ func (client *Client) DescribeClientCertificateForSerialNumberWithOptions(reques
 //
 // Summary:
 //
-// Retrieves the details of multiple client or server certificates by serial number.
+// Queries the details of client certificates or server certificates in batch by certificate serial number.
 //
 // Description:
 //
-// # Usage
+// # Description
 //
-// Retrieves the details of multiple client or server certificates by serial number. The response includes each certificate\\"s serial number, subject information, content, and status.
+// This operation allows you to query the details of client certificates or server certificates in batch by certificate serial number. The details include the serial number, subject information, content, and status of the certificates.
 //
-// Before calling this operation, ensure you have created a client certificate or a server certificate.
+// Before you call this operation, you must have created client certificates or server certificates.
 //
-// To create a client certificate, see:
+// For information about how to call an API operation to create a client certificate, see:
 //
 // - [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
 //
 // - [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
 //
-// To create a server certificate, see:
+// For information about how to call an API operation to create a server certificate, see:
 //
 // - [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
 //
@@ -2115,7 +2116,7 @@ func (client *Client) DescribeClientCertificateForSerialNumberWithOptions(reques
 //
 // # QPS limit
 //
-// The QPS limit for this operation is 10 calls per second per account. Exceeding this limit triggers throttling, which can impact your business. Plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeClientCertificateForSerialNumberRequest
 //
@@ -2134,15 +2135,15 @@ func (client *Client) DescribeClientCertificateForSerialNumber(request *Describe
 
 // Summary:
 //
-// Queries the status of a client certificate or server certificate by its unique identifier.
+// Queries the status information of client certificates and server certificates by their unique identifiers.
 //
 // Description:
 //
-// This operation queries the status of multiple client or server-side certificates in a batch using their unique identifiers. For example, you can check whether a certificate is revoked.
+// This operation allows you to query the status of client certificates or server certificates in batches by their unique identifiers. For example, you can check whether a certificate has been revoked.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// This operation is limited to 10 queries per second (QPS) for each user. API calls that exceed this limit are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeClientCertificateStatusRequest
 //
@@ -2186,15 +2187,15 @@ func (client *Client) DescribeClientCertificateStatusWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the status of a client certificate or server certificate by its unique identifier.
+// Queries the status information of client certificates and server certificates by their unique identifiers.
 //
 // Description:
 //
-// This operation queries the status of multiple client or server-side certificates in a batch using their unique identifiers. For example, you can check whether a certificate is revoked.
+// This operation allows you to query the status of client certificates or server certificates in batches by their unique identifiers. For example, you can check whether a certificate has been revoked.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// This operation is limited to 10 queries per second (QPS) for each user. API calls that exceed this limit are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeClientCertificateStatusRequest
 //
@@ -2212,15 +2213,15 @@ func (client *Client) DescribeClientCertificateStatus(request *DescribeClientCer
 
 // Summary:
 //
-// Queries the status of client and server-side certificates using their serial numbers.
+// Queries the status of client certificates and server certificates by certificate serial number.
 //
 // Description:
 //
-// This operation queries the status of one or more client or server certificates by their serial numbers. For example, you can check whether a certificate is revoked.
+// This operation allows you to query the status of client certificates or server certificates in batches by certificate serial number. For example, you can check whether a certificate has been revoked.
 //
 // ## QPS limit
 //
-// You can make up to 10 API calls per second per account. Exceeding this limit triggers throttling, which can impact your business. Plan your calls accordingly.
+// The China QPS limit for this operation is 10 calls per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeClientCertificateStatusForSerialNumberRequest
 //
@@ -2264,15 +2265,15 @@ func (client *Client) DescribeClientCertificateStatusForSerialNumberWithOptions(
 
 // Summary:
 //
-// Queries the status of client and server-side certificates using their serial numbers.
+// Queries the status of client certificates and server certificates by certificate serial number.
 //
 // Description:
 //
-// This operation queries the status of one or more client or server certificates by their serial numbers. For example, you can check whether a certificate is revoked.
+// This operation allows you to query the status of client certificates or server certificates in batches by certificate serial number. For example, you can check whether a certificate has been revoked.
 //
 // ## QPS limit
 //
-// You can make up to 10 API calls per second per account. Exceeding this limit triggers throttling, which can impact your business. Plan your calls accordingly.
+// The China QPS limit for this operation is 10 calls per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeClientCertificateStatusForSerialNumberRequest
 //
@@ -2290,15 +2291,15 @@ func (client *Client) DescribeClientCertificateStatusForSerialNumber(request *De
 
 // Summary:
 //
-// Returns all your certification authority (CA) certificates. These include certificates generated by Private CA and imported external certificates.
+// Returns all CA certificates for the user, including certificates generated internally by PCA and imported external certificates.
 //
 // Description:
 //
-// This operation performs a paged query to retrieve the details of all your CA certificates, including root and subordinate CA certificates. These details include the unique identifier, serial number, subject information, and certificate content.
+// Invokes this operation to query the detailed information of all CA certificates (including root CA certificates and subordinate CA certificates) that you have created by using paging. The information includes the unique identifier, serial number, subject information, and certificate content of each CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10. The system throttles API calls that exceed this limit, which may affect your business. To prevent throttling, call this operation within the stated limit.
+// The single-user QPS limit for this API is 10 invokes per second. If this limit is exceeded, the API invokes are throttled, which may affect your business. Invoke this API appropriately.
 //
 // @param request - DescribePcaAndExternalCACertificateListRequest
 //
@@ -2354,15 +2355,15 @@ func (client *Client) DescribePcaAndExternalCACertificateListWithOptions(request
 
 // Summary:
 //
-// Returns all your certification authority (CA) certificates. These include certificates generated by Private CA and imported external certificates.
+// Returns all CA certificates for the user, including certificates generated internally by PCA and imported external certificates.
 //
 // Description:
 //
-// This operation performs a paged query to retrieve the details of all your CA certificates, including root and subordinate CA certificates. These details include the unique identifier, serial number, subject information, and certificate content.
+// Invokes this operation to query the detailed information of all CA certificates (including root CA certificates and subordinate CA certificates) that you have created by using paging. The information includes the unique identifier, serial number, subject information, and certificate content of each CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10. The system throttles API calls that exceed this limit, which may affect your business. To prevent throttling, call this operation within the stated limit.
+// The single-user QPS limit for this API is 10 invokes per second. If this limit is exceeded, the API invokes are throttled, which may affect your business. Invoke this API appropriately.
 //
 // @param request - DescribePcaAndExternalCACertificateListRequest
 //
@@ -2470,13 +2471,13 @@ func (client *Client) GetCAInstanceStatus(request *GetCAInstanceStatusRequest) (
 //
 // Description:
 //
-// Queries the status information of a private CA instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of digital certificates included, and the number of digital certificates issued.
+// Queries the status information of a private CA instance that you purchased through the SSL Certificate Service console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
 //
-// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must have purchased a private CA through the [Digital Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, throttling is triggered. This may affect your business. Invoke this operation as needed.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - GetCaInstanceCrlAddressRequest
 //
@@ -2528,13 +2529,13 @@ func (client *Client) GetCaInstanceCrlAddressWithOptions(request *GetCaInstanceC
 //
 // Description:
 //
-// Queries the status information of a private CA instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of digital certificates included, and the number of digital certificates issued.
+// Queries the status information of a private CA instance that you purchased through the SSL Certificate Service console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
 //
-// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must have purchased a private CA through the [Digital Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, throttling is triggered. This may affect your business. Invoke this operation as needed.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - GetCaInstanceCrlAddressRequest
 //
@@ -2732,7 +2733,11 @@ func (client *Client) ListCACertificateLog(request *ListCACertificateLogRequest)
 //
 // Description:
 //
-// The QPS limit for this API is 10 per user. If you exceed this limit, your API calls will be throttled. To avoid impacting your business, please plan your calls accordingly.
+// Queries the list of certificates. If you want to query certificates by a specific intermediate CA and do not have the unique identifier of the CA certificate, call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) first and pass the returned Identifier as the ParentIdentifier parameter.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ListCertRequest
 //
@@ -2816,7 +2821,11 @@ func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *dar
 //
 // Description:
 //
-// The QPS limit for this API is 10 per user. If you exceed this limit, your API calls will be throttled. To avoid impacting your business, please plan your calls accordingly.
+// Queries the list of certificates. If you want to query certificates by a specific intermediate CA and do not have the unique identifier of the CA certificate, call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) first and pass the returned Identifier as the ParentIdentifier parameter.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ListCertRequest
 //

@@ -32,19 +32,19 @@ type iListCertRequest interface {
 }
 
 type ListCertRequest struct {
-	// Filters certificates modified after this date.
+	// The host record bound to the certificate, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
-	// 2024-05-13 12:59:45
+	// 2024-05-13
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// Filters certificates modified before this date.
+	// The modification time of the certificate, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2025-09-04
 	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The page number. Default value: 1.
+	// The page number of the current page.
 	//
 	// example:
 	//
@@ -62,29 +62,29 @@ type ListCertRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. This is the NextToken value from a previous response. If unspecified, the first page is returned.
+	// The token for the next query. If this parameter is empty, no more results exist.
 	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The identifier of the intermediate CA that issued the certificate.
+	// The identifier of the intermediate CA that issued the certificate. You can call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) to query the unique identifier of a CA certificate.
 	//
 	// example:
 	//
 	// 273ae6bb538d538c70c01f81jh2****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	// The page size. Default value: 50.
+	// The total size of the certificate. Unit: bytes.
 	//
 	// example:
 	//
 	// 50
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
 	//
-	// - ISSUE: Active
+	// - ISSUE: Normal.
 	//
-	// - REVOKE: Revoked
+	// - REVOKE: Revoked.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type ListCertRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The certificate type. Valid values:
 	//
-	// - SERVER: Server certificate
+	// - SERVER: server certificate.
 	//
-	// - CLIENT: Client certificate
+	// - CLIENT: client certificate.
 	//
-	// - END_ENTITY: End-entity certificate
+	// - END_ENTITY: end-entity certificate.
 	//
 	// example:
 	//

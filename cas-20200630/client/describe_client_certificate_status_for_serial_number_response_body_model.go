@@ -16,7 +16,7 @@ type iDescribeClientCertificateStatusForSerialNumberResponseBody interface {
 }
 
 type DescribeClientCertificateStatusForSerialNumberResponseBody struct {
-	// An array of objects, where each object contains the status of a queried certificate.
+	// The certificate status details.
 	CertificateStatus []*DescribeClientCertificateStatusForSerialNumberResponseBodyCertificateStatus `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *DescribeClientCertificateStatusForSerialNumberResponseBody) Validate() 
 }
 
 type DescribeClientCertificateStatusForSerialNumberResponseBodyCertificateStatus struct {
-	// The time when the certificate was revoked.
+	// The date when the certificate was revoked. This value is a UNIX timestamp in milliseconds.
 	//
-	// > This parameter is returned only when **Status*	- is **revoked**.
+	// > This parameter is returned only when **Status*	- is **revoked*	- (indicating that the certificate has been revoked).
 	//
 	// example:
 	//
-	// 2021-01-01T00:00
+	// 1787539908871
 	RevokeTime *int64 `json:"RevokeTime,omitempty" xml:"RevokeTime,omitempty"`
 	// The serial number of the certificate.
 	//
@@ -82,9 +82,9 @@ type DescribeClientCertificateStatusForSerialNumberResponseBodyCertificateStatus
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The current status of the certificate. Valid values:
 	//
-	// - **good**: The certificate is not revoked.
+	// - **good**: The certificate has not been revoked.
 	//
-	// - **revoked**: The certificate is revoked.
+	// - **revoked**: The certificate has been revoked.
 	//
 	// - **unknown**: The server cannot determine the status of the certificate.
 	//

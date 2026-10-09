@@ -32,7 +32,7 @@ type DescribePcaAndExternalCACertificateListResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries in the list.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type DescribePcaAndExternalCACertificateListResponseBody struct {
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries to return on each page. Default value: 50.
+	// The number of records to display per page. Default value: 50.
 	//
 	// example:
 	//
 	// 10
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -134,31 +134,31 @@ func (s *DescribePcaAndExternalCACertificateListResponseBody) Validate() error {
 }
 
 type DescribePcaAndExternalCACertificateListResponseBodyCertificateList struct {
-	// The expiration time of the certificate.
+	// The certificate expiration time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
-	// 2022-08-23T16:15Z
+	// 1787539908871
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The algorithm of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The time at which the certificate is issued.
+	// The certificate issuance time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
-	// 2021-01-01T00:00Z
+	// 1787539908871
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The type of the certificate.
+	// The certificate type.
 	//
 	// example:
 	//
 	// SUB_ROOT
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The primary domain name that is bound to the certificate.
+	// The primary domain name bound to the certificate.
 	//
 	// example:
 	//
@@ -170,97 +170,123 @@ type DescribePcaAndExternalCACertificateListResponseBodyCertificateList struct {
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 05e148d8d3ecc9976d9ecd2b2f25****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The key size of the certificate. Unit: bits.
+	// The size of the certificate key. Unit: GB.
 	//
 	// example:
 	//
 	// 2048
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	// The city in which the organization is located.
+	// The primary domain name bound to the certificate.
 	//
 	// example:
 	//
 	// Hangzhou
 	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	// The MD5 value of the certificate.
+	// The MD5 value bound to the certificate.
 	//
 	// example:
 	//
 	// 05e148d8d3ecc9976d9ecd2b2f25****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The organization to which the certificate belongs.
+	// The certificate organization.
 	//
 	// example:
 	//
-	// 阿里云计算有限公司
+	// Alibaba Cloud Computing Co., Ltd
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// The certification authority that issued the certificate.
 	//
 	// example:
 	//
 	// Security
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	// The ID of the parent certificate.
+	// The parent certificate ID.
 	//
 	// example:
 	//
 	// 1a83bcbb89e562885e40aa0108f5****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	// All domain names that are bound to the certificate.
+	// All domain names bound to the certificate.
 	//
 	// example:
 	//
 	// [ {"Type": 7, "Value": "192.0.XX.XX"}, {"Type": 2, "Value": "www.aliyundoc.com"}, ]
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
 	// 62b2b943a32d96883a6650e672ea0276****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The primary domain name that is bound to the certificate.
+	// The primary domain name bound to the certificate.
 	//
 	// example:
 	//
 	// 14dcc8afc7578e1fcec36d658f7e20de18f6957bbac42b373a66bc9de4e9****
 	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	// The signature algorithm of the certificate. Valid values:
+	// The certificate signature algorithm. Valid values:
+	//
+	// - **prefix**: Prefix match.
+	//
+	// - **match**: Exact match.
+	//
+	// - **any**: Match all.
 	//
 	// example:
 	//
 	// SHA256WITHRSA
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate state. Valid values:
+	//
+	// - **success**: Effective.
+	//
+	// - **checking**: Checking whether the domain name is on Alibaba Cloud Dynamic Route for CDN.
+	//
+	// - **cname_error**: The domain name is not pointed to an Alibaba Cloud Global Accelerator (GA) instance.
+	//
+	// - **domain_invalid**: The domain name contains invalid characters.
+	//
+	// - **unsupport_wildcard**: Wildcard domain names are not supported.
 	//
 	// example:
 	//
 	// Zhejiang
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
+	//
+	// - **payed**: Paid.
+	//
+	// - **checking**: Being reviewed.
+	//
+	// - **issued**: Issued.
+	//
+	// - **revoked**: Revoked.
+	//
+	// - **checked_fail**: Review failed.
 	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subject of the certificate.
+	// The certificate subject (owner), represented in DN format.
 	//
 	// example:
 	//
-	// C=CN,O=阿里云计算有限公司,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
+	// C=CN,O=Alibaba Cloud Computing Co. Ltd.,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
 	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
-	// The content of the X.509 certificate.
+	// The x.509 certificate.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- …… -----END CERTIFICATE-----
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
-	// The validity period of the certificate, in years.
+	// The number of years for which the certificate was purchased.
 	//
 	// example:
 	//

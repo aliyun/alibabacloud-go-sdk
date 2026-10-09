@@ -9,6 +9,8 @@ type iAssignCertificateCountRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCaIdentifier(v string) *AssignCertificateCountRequest
+	GetCaIdentifier() *string
 	SetCertTotalCount(v int32) *AssignCertificateCountRequest
 	GetCertTotalCount() *int32
 	SetId(v int64) *AssignCertificateCountRequest
@@ -16,13 +18,19 @@ type iAssignCertificateCountRequest interface {
 }
 
 type AssignCertificateCountRequest struct {
+	// The identifier of the CA certificate.
+	//
+	// example:
+	//
+	// 1f0167b4-ee84-XXX-49bc4d39fa68
+	CaIdentifier *string `json:"CaIdentifier,omitempty" xml:"CaIdentifier,omitempty"`
 	// The total number of certificate records.
 	//
 	// example:
 	//
 	// 5
 	CertTotalCount *int32 `json:"CertTotalCount,omitempty" xml:"CertTotalCount,omitempty"`
-	// The ID of the data source.
+	// The ID of the data source to which the certificate belongs.
 	//
 	// example:
 	//
@@ -38,12 +46,21 @@ func (s AssignCertificateCountRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AssignCertificateCountRequest) GetCaIdentifier() *string {
+	return s.CaIdentifier
+}
+
 func (s *AssignCertificateCountRequest) GetCertTotalCount() *int32 {
 	return s.CertTotalCount
 }
 
 func (s *AssignCertificateCountRequest) GetId() *int64 {
 	return s.Id
+}
+
+func (s *AssignCertificateCountRequest) SetCaIdentifier(v string) *AssignCertificateCountRequest {
+	s.CaIdentifier = &v
+	return s
 }
 
 func (s *AssignCertificateCountRequest) SetCertTotalCount(v int32) *AssignCertificateCountRequest {

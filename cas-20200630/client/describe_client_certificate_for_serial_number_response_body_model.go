@@ -16,9 +16,9 @@ type iDescribeClientCertificateForSerialNumberResponseBody interface {
 }
 
 type DescribeClientCertificateForSerialNumberResponseBody struct {
-	// Details of the client or server certificates.
+	// The details of the client certificates or server certificates.
 	CertificateList []*DescribeClientCertificateForSerialNumberResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ func (s *DescribeClientCertificateForSerialNumberResponseBody) Validate() error 
 }
 
 type DescribeClientCertificateForSerialNumberResponseBodyCertificateList struct {
-	// The expiration time of the certificate.
+	// The expiration date of the certificate. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2022-08-23T16:15Z
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The encryption algorithm of the certificate. Valid values:
+	// The encryption algorithm type of the certificate. Valid values:
 	//
-	// - **RSA**: The RSA algorithm.
+	// - **RSA**: RSA algorithm.
 	//
-	// - **ECC**: The ECC algorithm.
+	// - **ECC**: ECC algorithm.
 	//
-	// - **SM2**: The SM2 algorithm.
+	// - **SM2**: SM2 algorithm.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The issuance time of the certificate.
+	// The issuance date of the certificate. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type DescribeClientCertificateForSerialNumberResponseBodyCertificateList struct 
 	//
 	// aliyun.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The two-letter country code of the issuer.
+	// The code of the country where the organization associated with the subordinate CA certificate that issued this certificate is located.
 	//
-	// For more information about country codes, see the **Country codes*	- section in [Manage company profiles](https://help.aliyun.com/document_detail/198289.html).
+	// For more information about country codes, see the **International codes*	- section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeClientCertificateForSerialNumberResponseBodyCertificateList struct 
 	//
 	// 4096
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	// The city of the issuer.
+	// The name of the city where the organization associated with the subordinate CA certificate that issued this certificate is located.
 	//
 	// example:
 	//
@@ -134,39 +134,39 @@ type DescribeClientCertificateForSerialNumberResponseBodyCertificateList struct 
 	//
 	// d3b95700998e47afc4d95f886579****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The organization of the issuer.
+	// The name of the organization associated with the subordinate CA certificate that issued this certificate.
 	//
 	// example:
 	//
-	// 阿里云计算有限公司
+	// Alibaba Cloud Computing Co., Ltd
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	// The organizational unit of the issuer.
+	// The name of the department in the organization associated with the subordinate CA certificate that issued this certificate.
 	//
 	// example:
 	//
 	// Security
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	// The identifier of the issuer. This parameter is returned only if the certificate is issued by Alibaba Cloud.
+	// If this parameter is not empty, the client certificate is issued by Alibaba Cloud.
 	//
 	// example:
 	//
 	// 1a83bcbb89e562885e40aa0108f5****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	// The subject alternative name (SAN) extension, which specifies identifiers such as email addresses, domain names, URIs, and IP addresses.
+	// The Subject Alternative Name (SAN) extension of the certificate, which indicates other domain names or IP addresses associated with the certificate.
 	//
-	// A JSON string that represents an array of SAN objects. Each object contains the following parameters:
+	// This parameter is represented as a string converted from a JSON array. Each element in the JSON array is a structure that corresponds to a SAN extension. Each SAN extension structure contains the following parameters:
 	//
-	// - **Type**: The type of the extension. This parameter is an integer. Valid values:
+	// - **Type**: An Integer value that indicates the type of the extension. Valid values:
 	//
-	//   - **1**: email address.
+	// 	- **1**: an email address.
 	//
-	//   - **2**: domain name.
+	// 	- **2**: a domain name.
 	//
-	//   - **6**: uniform resource identifier (URI).
+	// 	- **6**: a Uniform Resource Identifier (URI).
 	//
-	//   - **7**: IP address.
+	// 	- **7**: an IP address.
 	//
-	// - **Value**: The content of the extension. This parameter is a string.
+	// - **Value**: A String value that indicates the content of the extension.
 	//
 	// example:
 	//
@@ -190,9 +190,9 @@ type DescribeClientCertificateForSerialNumberResponseBodyCertificateList struct 
 	//
 	// SHA256WITHRSA
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	// <props="china">The state or province of the issuer.
+	// <props="china">The name of the province, municipality, or autonomous region where the organization associated with the subordinate CA certificate that issued this certificate is located.
 	//
-	// <props="intl">The state or province of the issuer.
+	// <props="intl">The name of the province or state where the organization associated with the subordinate CA certificate that issued this certificate is located.
 	//
 	// example:
 	//
@@ -200,51 +200,41 @@ type DescribeClientCertificateForSerialNumberResponseBodyCertificateList struct 
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The status of the certificate. Valid values:
 	//
-	// - **ISSUE**: The certificate is issued.
+	// - **ISSUE**: issued.
 	//
-	// - **REVOKE**: The certificate is revoked.
+	// - **REVOKE**: revoked.
 	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The distinguished name (DN) of the certificate. The DN contains information about the certificate subject, including:
+	// The distinguished name (DN) attribute of the certificate, which indicates the subject of the certificate. The DN contains the following information:
 	//
-	// - **C**: Country.
+	// - **C**: The country.
 	//
-	// - **O**: Organization.
+	// - **O**: The organization.
 	//
-	// - **OU**: Organizational unit.
+	// - **OU**: The department.
 	//
-	// - **L**: City.
+	// - **L**: The city.
 	//
-	// <props="china">
+	// <props="china">- **ST**: The province, municipality, or autonomous region.
 	//
-	// - **ST**: State or province.
+	// <props="intl">- **ST**: The province or state.
 	//
-	//
-	//
-	//
-	// <props="intl">
-	//
-	// - **ST**: State or province.
-	//
-	//
-	//
-	//
-	// - **CN**: Common name.
+	// - **CN**: The common name.
 	//
 	// example:
 	//
-	// C=CN,O=阿里云计算有限公司,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
+	// C=CN,O=Alibaba Cloud Computing Co., Ltd.,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
 	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
-	// The certificate content.
+	// The content of the certificate.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----  ...... -----END CERTIFICATE-----
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
-	// This parameter is deprecated.
+	// The validity period of the certificate. Unit: years.
 	//
 	// example:
 	//

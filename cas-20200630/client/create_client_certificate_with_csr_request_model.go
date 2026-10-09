@@ -80,7 +80,7 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// - **SM2_256**: The signature algorithm is SM3WithSM2.
 	//
-	// The encryption algorithm of the client certificate must be the same as that of the sub-CA certificate, but the key length can be different. For example, if the key algorithm of the sub-CA certificate is RSA_2048, the key algorithm of the client certificate must be RSA_1024, RSA_2048, or RSA_4096.
+	// The encryption algorithm of the client certificate must be the same as that of the sub-CA certificate, but the key length can be different. For example, if the key algorithm of the sub-CA certificate is RSA_2048, the key algorithm of the client certificate must be one of RSA_1024, RSA_2048, or RSA_4096.
 	//
 	// >You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to query the key algorithm of the sub-CA certificate.
 	//
@@ -96,7 +96,7 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// false
 	AsynchronousFlag *bool `json:"AsynchronousFlag,omitempty" xml:"AsynchronousFlag,omitempty"`
-	// The issuance time of the client certificate in UNIX timestamp format. Default value: the time when you call this operation. Unit: seconds.
+	// The issuance time of the client certificate in UNIX timestamp format. The default value is the time when you call this operation. Unit: seconds.
 	//
 	// >The **BeforeTime*	- and **AfterTime*	- parameters must both be empty or both be specified.
 	//
@@ -118,7 +118,7 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The CSR content. You can use OpenSSL or Keytool to generate a CSR. For more information, see [How to create a CSR file](https://help.aliyun.com/document_detail/42218.html).
+	// The CSR content. You can use OpenSSL or Keytool to generate a CSR. For more information, see [How do I create a CSR file](https://help.aliyun.com/document_detail/42218.html).
 	//
 	// <props="china">You can also create a CSR in the SSL Certificates Service console. For more information, see [Create a CSR](https://help.aliyun.com/document_detail/313297.html).
 	//
@@ -150,9 +150,9 @@ type CreateClientCertificateWithCsrRequest struct {
 	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
 	// Specifies whether to include the Certificate Revocation List (CRL) address. Valid values:
 	//
-	// - 0: No.
+	// - 0: no.
 	//
-	// - 1: Yes.
+	// - 1: yes.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type CreateClientCertificateWithCsrRequest struct {
 	Immediately *int32 `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
 	// The name of the city where the certificate organization is located. Chinese characters, English characters, and other characters are supported.
 	//
-	// Default value: the name of the city where the sub-CA certificate organization that issues this certificate is located.
+	// The default value is the name of the city where the sub-CA certificate organization that issues this certificate is located.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// - **7**: iPAddress (7): IP address.
 	//
-	// - **8**: registeredID (8): registered ID (object identifier OID).
+	// - **8**: registeredID (8): registered ID (Object Identifier, OID).
 	//
 	// example:
 	//
@@ -238,9 +238,9 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// 1. otherName (0): other name
 	//
-	// - Example: 1.3.6.1.4.1.311.20.2.3 (OID) + user@domain.com (UPN - User Principal Name)
+	// - Example: 1.3.6.1.4.1.311.20.2.3 (OID) + user@domain.com (UPN, User Principal Name)
 	//
-	// - Description: A custom extension type that typically consists of a specific OID (object identifier) and a corresponding value. In Windows environments, it is commonly used to store UPN (User Principal Name), such as zhangsan@company.com for smart card logon.
+	// - Description: A custom extension type that typically consists of a specific OID (Object Identifier) and a corresponding value. In Windows environments, it is commonly used to store UPN (User Principal Name), such as zhangsan@company.com for smart card logon.
 	//
 	// 2. rfc822Name (1): RFC 822 name (email address)
 	//
@@ -264,13 +264,13 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// - Example: CN=IT Department, OU=Tech, O=Company Ltd, L=Beijing, ST=Beijing, C=CN
 	//
-	// - Description: A standard X.500 distinguished name (DN). It is typically used to explicitly identify the complete hierarchical information of an organization, department, or entity in a certificate. It is commonly found in enterprise internal root certificates or specific government digital certificates.
+	// - Description: A standard X.500 distinguished name (DN). It is typically used to explicitly identify the full hierarchical information of an organization, department, or entity in a certificate. It is commonly found in enterprise internal root certificates or specific government digital certificates.
 	//
 	// 5. ediPartyName (5): EDI party name
 	//
 	// - Example: nameAssigner=GlobalTradeOrg, partyName=SupplierA
 	//
-	// - Description: Used specifically in the Electronic Data Interchange (EDI) domain. It identifies a specific party in business message exchanges (such as order and invoice transmissions) and typically includes the assigning organization (nameAssigner) and the party name (partyName).
+	// - Description: Used specifically in the Electronic Data Interchange (EDI) domain. It identifies a specific party in business message exchanges (such as order and invoice transmissions) and typically includes the name-assigning authority (nameAssigner) and the party name (partyName).
 	//
 	// 6. uniformResourceIdentifier (6): Uniform Resource Identifier (URI)
 	//
@@ -284,7 +284,7 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// - Description: Directly binds to a server IP address. It is commonly used for internal systems without domain names, API servers, or specific services that can only be accessed through a public IP address. Note: Public IP certificates typically require strict Organization Validation (OV).
 	//
-	// 8. registeredID (8): registered ID (object identifier OID)
+	// 8. registeredID (8): registered ID (Object Identifier, OID)
 	//
 	// - Example: 1.2.3.4.55.6.5.99, 2.5.29.17
 	//
@@ -294,9 +294,9 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// somebody@example.com
 	SanValue *string `json:"SanValue,omitempty" xml:"SanValue,omitempty"`
-	// <props="china">The name of the province, municipality, or autonomous region where the certificate organization is located. Chinese characters, English characters, and other characters are supported. Default value: the name of the province, municipality, or autonomous region where the sub-CA certificate organization that issues this certificate is located.
+	// <props="china">The name of the province, municipality, or autonomous region where the certificate organization is located. Chinese characters, English characters, and other characters are supported. The default value is the name of the province, municipality, or autonomous region where the sub-CA certificate organization that issues this certificate is located.
 	//
-	// <props="intl">The name of the province or state where the certificate organization is located. Chinese characters, English characters, and other characters are supported. Default value: the name of the province or state where the sub-CA certificate organization that issues this certificate is located.
+	// <props="intl">The name of the province or state where the certificate organization is located. Chinese characters, English characters, and other characters are supported. The default value is the name of the province or state where the sub-CA certificate organization that issues this certificate is located.
 	//
 	// example:
 	//
