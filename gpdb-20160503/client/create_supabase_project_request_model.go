@@ -13,8 +13,12 @@ type iCreateSupabaseProjectRequest interface {
 	GetAccountPassword() *string
 	SetAutoScale(v bool) *CreateSupabaseProjectRequest
 	GetAutoScale() *bool
+	SetBackupId(v string) *CreateSupabaseProjectRequest
+	GetBackupId() *string
 	SetClientToken(v string) *CreateSupabaseProjectRequest
 	GetClientToken() *string
+	SetCreateOptions(v string) *CreateSupabaseProjectRequest
+	GetCreateOptions() *string
 	SetDiskPerformanceLevel(v string) *CreateSupabaseProjectRequest
 	GetDiskPerformanceLevel() *string
 	SetEngineVersion(v string) *CreateSupabaseProjectRequest
@@ -33,6 +37,8 @@ type iCreateSupabaseProjectRequest interface {
 	GetRegionId() *string
 	SetSecurityIPList(v string) *CreateSupabaseProjectRequest
 	GetSecurityIPList() *string
+	SetSrcProjectId(v string) *CreateSupabaseProjectRequest
+	GetSrcProjectId() *string
 	SetStorageSize(v int64) *CreateSupabaseProjectRequest
 	GetStorageSize() *int64
 	SetTags(v []*CreateSupabaseProjectRequestTags) *CreateSupabaseProjectRequest
@@ -48,7 +54,7 @@ type iCreateSupabaseProjectRequest interface {
 }
 
 type CreateSupabaseProjectRequest struct {
-	// The password of the initial account.
+	// The initial account password.
 	//
 	// Password rules:
 	//
@@ -64,19 +70,33 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// TestPassword123!
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// Specifies whether to enable auto start/stop. If this parameter is not specified, the default value is false.
+	// Specifies whether to enable auto-start and auto-stop. If you do not specify this parameter, the default value is false.
 	//
 	// example:
 	//
 	// false
 	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
+	// The backup set ID.
+	//
+	// > You can call [ListSupabaseDataBackups](https://help.aliyun.com/document_detail/3064623.html) to view the IDs of all backup sets under the target Supabase project.
+	//
+	// example:
+	//
+	// 2176307784
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The client token. It is used to ensure idempotence and prevent duplicate requests from executing the same operation.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The performance level (PL) of the cloud disk. If this parameter is not specified, the default value PL0 is used.
+	// The optional creation parameters. The default value is empty.
+	//
+	// example:
+	//
+	// {}
+	CreateOptions *string `json:"CreateOptions,omitempty" xml:"CreateOptions,omitempty"`
+	// The performance level of the cloud disk. If you do not specify this parameter, the default value is PL0.
 	//
 	// Valid values:
 	//
@@ -92,7 +112,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
-	// The DPI engine version. If this parameter is not specified, the default value PG15 is used. PG17 and later versions support the data sandbox (branch) feature.
+	// The DPI engine version. If you do not specify this parameter, the default value is PG15. PostgreSQL 17 and later versions support the data sandbox (branch) feature.
 	//
 	// Valid values:
 	//
@@ -104,22 +124,27 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// PG15
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Lightweight   *bool   `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
-	// The billing type. If this parameter is not specified, the default value Free is used.
+	// Specifies whether the project is the lightweight edition.
+	//
+	// example:
+	//
+	// false
+	Lightweight *bool `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
+	// The billing method. If you do not specify this parameter, the default value is Free.
 	//
 	// Valid values:
 	//
-	// - Free: Free tier.
+	// - Free: the free billing method.
 	//
-	// - Postpaid: Pay-as-you-go.
+	// - Postpaid: pay-as-you-go.
 	//
-	// - Prepaid: Subscription.
+	// - Prepaid: subscription.
 	//
 	// example:
 	//
 	// Free
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value Month is used.
+	// The unit of the subscription duration. This parameter takes effect only when PayType is set to Prepaid. If you do not specify this parameter, the default value is Month.
 	//
 	// Valid values:
 	//
@@ -137,7 +162,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// - The name must be 1 to 128 characters in length.
 	//
-	// - The name can contain letters, digits, hyphens (-), and underscores (_).
+	// - The name can contain only letters, digits, hyphens (-), and underscores (_).
 	//
 	// - The name must start with a letter or an underscore (_).
 	//
@@ -147,7 +172,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// supabase_demo
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The specifications of the Supabase project. The Free billing type uses free-tier specifications. For paid billing types, the specifications must match those available in the console.
+	// The specifications of the Supabase project. The free billing method uses the free specifications. For paid billing methods, the specifications must be consistent with those available in the console.
 	//
 	// This parameter is required.
 	//
@@ -155,13 +180,13 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// 2C4G
 	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
-	// The region ID. Specifies the region in which to create the project.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP address whitelist. Separate multiple IP addresses or CIDR blocks with commas (,). If this parameter is not specified, the default value 0.0.0.0/0 is used.
+	// The IP address whitelist. Separate multiple IP addresses or CIDR blocks with commas (,). If you do not specify this parameter, the default value 0.0.0.0/0 is used.
 	//
 	// This parameter is required.
 	//
@@ -169,14 +194,21 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// 0.0.0.0/0
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The storage size, in GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
+	// The ID of the Supabase project to which the backup set belongs.
+	//
+	// example:
+	//
+	// spb-xxxxxxxx
+	SrcProjectId *string `json:"SrcProjectId,omitempty" xml:"SrcProjectId,omitempty"`
+	// The storage capacity. Unit: GB. If you do not specify this parameter for a non-free billing method, the default value is 1.
 	//
 	// example:
 	//
 	// 50
-	StorageSize *int64                              `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	Tags        []*CreateSupabaseProjectRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The list of tags.
+	Tags []*CreateSupabaseProjectRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The subscription duration of the resource. This parameter takes effect only when PayType is set to Prepaid. If you do not specify this parameter, the default value is 1.
 	//
 	// example:
 	//
@@ -198,7 +230,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// vpc-bp1234567890
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as this parameter value.
+	// The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -224,8 +256,16 @@ func (s *CreateSupabaseProjectRequest) GetAutoScale() *bool {
 	return s.AutoScale
 }
 
+func (s *CreateSupabaseProjectRequest) GetBackupId() *string {
+	return s.BackupId
+}
+
 func (s *CreateSupabaseProjectRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateSupabaseProjectRequest) GetCreateOptions() *string {
+	return s.CreateOptions
 }
 
 func (s *CreateSupabaseProjectRequest) GetDiskPerformanceLevel() *string {
@@ -264,6 +304,10 @@ func (s *CreateSupabaseProjectRequest) GetSecurityIPList() *string {
 	return s.SecurityIPList
 }
 
+func (s *CreateSupabaseProjectRequest) GetSrcProjectId() *string {
+	return s.SrcProjectId
+}
+
 func (s *CreateSupabaseProjectRequest) GetStorageSize() *int64 {
 	return s.StorageSize
 }
@@ -298,8 +342,18 @@ func (s *CreateSupabaseProjectRequest) SetAutoScale(v bool) *CreateSupabaseProje
 	return s
 }
 
+func (s *CreateSupabaseProjectRequest) SetBackupId(v string) *CreateSupabaseProjectRequest {
+	s.BackupId = &v
+	return s
+}
+
 func (s *CreateSupabaseProjectRequest) SetClientToken(v string) *CreateSupabaseProjectRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetCreateOptions(v string) *CreateSupabaseProjectRequest {
+	s.CreateOptions = &v
 	return s
 }
 
@@ -348,6 +402,11 @@ func (s *CreateSupabaseProjectRequest) SetSecurityIPList(v string) *CreateSupaba
 	return s
 }
 
+func (s *CreateSupabaseProjectRequest) SetSrcProjectId(v string) *CreateSupabaseProjectRequest {
+	s.SrcProjectId = &v
+	return s
+}
+
 func (s *CreateSupabaseProjectRequest) SetStorageSize(v int64) *CreateSupabaseProjectRequest {
 	s.StorageSize = &v
 	return s
@@ -392,7 +451,23 @@ func (s *CreateSupabaseProjectRequest) Validate() error {
 }
 
 type CreateSupabaseProjectRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. Limits:
+	//
+	// - It cannot be an empty string.
+	//
+	// - It can be up to 128 characters in length.
+	//
+	// - It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// test-key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The value can be an empty string. It can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -4430,11 +4430,85 @@ func (client *Client) CreateStreamingJob(request *CreateStreamingJobRequest) (_r
 
 // Summary:
 //
+// Creates a backup job for a specified Supabase instance and returns the backup job ID.
+//
+// Description:
+//
+// The instance must be in the Running state. After a successful call, you can call ListSupabaseBackupJobs to query the progress of the backup job and call ListSupabaseDataBackups to query backup sets.
+//
+// @param request - CreateSupabaseBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSupabaseBackupResponse
+func (client *Client) CreateSupabaseBackupWithOptions(request *CreateSupabaseBackupRequest, runtime *dara.RuntimeOptions) (_result *CreateSupabaseBackupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSupabaseBackup"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSupabaseBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a backup job for a specified Supabase instance and returns the backup job ID.
+//
+// Description:
+//
+// The instance must be in the Running state. After a successful call, you can call ListSupabaseBackupJobs to query the progress of the backup job and call ListSupabaseDataBackups to query backup sets.
+//
+// @param request - CreateSupabaseBackupRequest
+//
+// @return CreateSupabaseBackupResponse
+func (client *Client) CreateSupabaseBackup(request *CreateSupabaseBackupRequest) (_result *CreateSupabaseBackupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSupabaseBackupResponse{}
+	_body, _err := client.CreateSupabaseBackupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Supabase project.
 //
 // Description:
 //
-// Creates a Supabase project in a specified region and zone. This operation supports the Free, pay-as-you-go, and subscription billing methods. You can specify the network, specifications, storage, access IP address whitelist, DPI engine version, and auto start/stop configurations.
+// Creates a Supabase project in a specified region and active zone. This operation supports the free, pay-as-you-go, and subscription billing methods. You can specify the network, specifications, storage, access whitelist, DPI engine version, and auto-start and auto-stop configurations.
 //
 // @param request - CreateSupabaseProjectRequest
 //
@@ -4457,8 +4531,16 @@ func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabasePr
 		query["AutoScale"] = request.AutoScale
 	}
 
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CreateOptions) {
+		query["CreateOptions"] = request.CreateOptions
 	}
 
 	if !dara.IsNil(request.DiskPerformanceLevel) {
@@ -4495,6 +4577,10 @@ func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabasePr
 
 	if !dara.IsNil(request.SecurityIPList) {
 		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !dara.IsNil(request.SrcProjectId) {
+		query["SrcProjectId"] = request.SrcProjectId
 	}
 
 	if !dara.IsNil(request.StorageSize) {
@@ -4550,7 +4636,7 @@ func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabasePr
 //
 // Description:
 //
-// Creates a Supabase project in a specified region and zone. This operation supports the Free, pay-as-you-go, and subscription billing methods. You can specify the network, specifications, storage, access IP address whitelist, DPI engine version, and auto start/stop configurations.
+// Creates a Supabase project in a specified region and active zone. This operation supports the free, pay-as-you-go, and subscription billing methods. You can specify the network, specifications, storage, access whitelist, DPI engine version, and auto-start and auto-stop configurations.
 //
 // @param request - CreateSupabaseProjectRequest
 //
@@ -13202,6 +13288,80 @@ func (client *Client) DescribeStreamingJob(request *DescribeStreamingJobRequest)
 
 // Summary:
 //
+// Queries the data backup cycle, backup time, backup retention period, and automatic recovery point configurations of a specified Supabase instance.
+//
+// Description:
+//
+// To modify the policy, call ModifySupabaseBackupPolicy.
+//
+// @param request - DescribeSupabaseBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupabaseBackupPolicyResponse
+func (client *Client) DescribeSupabaseBackupPolicyWithOptions(request *DescribeSupabaseBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupabaseBackupPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSupabaseBackupPolicy"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSupabaseBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data backup cycle, backup time, backup retention period, and automatic recovery point configurations of a specified Supabase instance.
+//
+// Description:
+//
+// To modify the policy, call ModifySupabaseBackupPolicy.
+//
+// @param request - DescribeSupabaseBackupPolicyRequest
+//
+// @return DescribeSupabaseBackupPolicyResponse
+func (client *Client) DescribeSupabaseBackupPolicy(request *DescribeSupabaseBackupPolicyRequest) (_result *DescribeSupabaseBackupPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSupabaseBackupPolicyResponse{}
+	_body, _err := client.DescribeSupabaseBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the features that are supported by an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeSupportFeaturesRequest
@@ -15435,6 +15595,150 @@ func (client *Client) GetSupabaseProjectDashboardAccount(request *GetSupabasePro
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetSupabaseProjectDashboardAccountResponse{}
 	_body, _err := client.GetSupabaseProjectDashboardAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the available specifications for Supabase projects.
+//
+// Description:
+//
+// Queries the specifications and zones available for creating Supabase projects in a specified region.
+//
+// @param request - GetSupabaseProjectSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSupabaseProjectSpecResponse
+func (client *Client) GetSupabaseProjectSpecWithOptions(request *GetSupabaseProjectSpecRequest, runtime *dara.RuntimeOptions) (_result *GetSupabaseProjectSpecResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSupabaseProjectSpec"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSupabaseProjectSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the available specifications for Supabase projects.
+//
+// Description:
+//
+// Queries the specifications and zones available for creating Supabase projects in a specified region.
+//
+// @param request - GetSupabaseProjectSpecRequest
+//
+// @return GetSupabaseProjectSpecResponse
+func (client *Client) GetSupabaseProjectSpec(request *GetSupabaseProjectSpecRequest) (_result *GetSupabaseProjectSpecResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSupabaseProjectSpecResponse{}
+	_body, _err := client.GetSupabaseProjectSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the upgradable versions for a Supabase project.
+//
+// Description:
+//
+// This operation queries the currently recommended stable version and the latest upgradable version for a specified Supabase project.
+//
+// @param request - GetSupabaseUpdateVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSupabaseUpdateVersionResponse
+func (client *Client) GetSupabaseUpdateVersionWithOptions(request *GetSupabaseUpdateVersionRequest, runtime *dara.RuntimeOptions) (_result *GetSupabaseUpdateVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSupabaseUpdateVersion"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSupabaseUpdateVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the upgradable versions for a Supabase project.
+//
+// Description:
+//
+// This operation queries the currently recommended stable version and the latest upgradable version for a specified Supabase project.
+//
+// @param request - GetSupabaseUpdateVersionRequest
+//
+// @return GetSupabaseUpdateVersionResponse
+func (client *Client) GetSupabaseUpdateVersion(request *GetSupabaseUpdateVersionRequest) (_result *GetSupabaseUpdateVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSupabaseUpdateVersionResponse{}
+	_body, _err := client.GetSupabaseUpdateVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18312,6 +18616,190 @@ func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_res
 
 // Summary:
 //
+// Queries the backup tasks and task progress of a specified Supabase instance.
+//
+// @param request - ListSupabaseBackupJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupabaseBackupJobsResponse
+func (client *Client) ListSupabaseBackupJobsWithOptions(request *ListSupabaseBackupJobsRequest, runtime *dara.RuntimeOptions) (_result *ListSupabaseBackupJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupMode) {
+		query["BackupMode"] = request.BackupMode
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSupabaseBackupJobs"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSupabaseBackupJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the backup tasks and task progress of a specified Supabase instance.
+//
+// @param request - ListSupabaseBackupJobsRequest
+//
+// @return ListSupabaseBackupJobsResponse
+func (client *Client) ListSupabaseBackupJobs(request *ListSupabaseBackupJobsRequest) (_result *ListSupabaseBackupJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSupabaseBackupJobsResponse{}
+	_body, _err := client.ListSupabaseBackupJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Supabase data backups.
+//
+// @param request - ListSupabaseDataBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupabaseDataBackupsResponse
+func (client *Client) ListSupabaseDataBackupsWithOptions(request *ListSupabaseDataBackupsRequest, runtime *dara.RuntimeOptions) (_result *ListSupabaseDataBackupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !dara.IsNil(request.BackupMode) {
+		query["BackupMode"] = request.BackupMode
+	}
+
+	if !dara.IsNil(request.BackupStatus) {
+		query["BackupStatus"] = request.BackupStatus
+	}
+
+	if !dara.IsNil(request.DataType) {
+		query["DataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSupabaseDataBackups"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSupabaseDataBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Supabase data backups.
+//
+// @param request - ListSupabaseDataBackupsRequest
+//
+// @return ListSupabaseDataBackupsResponse
+func (client *Client) ListSupabaseDataBackups(request *ListSupabaseDataBackupsRequest) (_result *ListSupabaseDataBackupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSupabaseDataBackupsResponse{}
+	_body, _err := client.ListSupabaseDataBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tags of a Supabase instance.
 //
 // Description:
@@ -21174,6 +21662,100 @@ func (client *Client) ModifySupabaseAutoScalePolicy(request *ModifySupabaseAutoS
 
 // Summary:
 //
+// Modifies the data backup cycle, backup time, backup retention period, and automatic recovery point configurations of a specified Supabase instance.
+//
+// Description:
+//
+// You can call DescribeSupabaseBackupPolicy to query the current backup policy, and then call this operation again to confirm the configurations after the modification.
+//
+// @param request - ModifySupabaseBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySupabaseBackupPolicyResponse
+func (client *Client) ModifySupabaseBackupPolicyWithOptions(request *ModifySupabaseBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifySupabaseBackupPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupRetentionPeriod) {
+		query["BackupRetentionPeriod"] = request.BackupRetentionPeriod
+	}
+
+	if !dara.IsNil(request.EnableRecoveryPoint) {
+		query["EnableRecoveryPoint"] = request.EnableRecoveryPoint
+	}
+
+	if !dara.IsNil(request.PreferredBackupPeriod) {
+		query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
+	}
+
+	if !dara.IsNil(request.PreferredBackupTime) {
+		query["PreferredBackupTime"] = request.PreferredBackupTime
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RecoveryPointPeriod) {
+		query["RecoveryPointPeriod"] = request.RecoveryPointPeriod
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySupabaseBackupPolicy"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySupabaseBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the data backup cycle, backup time, backup retention period, and automatic recovery point configurations of a specified Supabase instance.
+//
+// Description:
+//
+// You can call DescribeSupabaseBackupPolicy to query the current backup policy, and then call this operation again to confirm the configurations after the modification.
+//
+// @param request - ModifySupabaseBackupPolicyRequest
+//
+// @return ModifySupabaseBackupPolicyResponse
+func (client *Client) ModifySupabaseBackupPolicy(request *ModifySupabaseBackupPolicyRequest) (_result *ModifySupabaseBackupPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySupabaseBackupPolicyResponse{}
+	_body, _err := client.ModifySupabaseBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the description of a Supabase project.
 //
 // Description:
@@ -21960,7 +22542,7 @@ func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (
 
 // Summary:
 //
-// Retrieves vectors and metadata from a specified document collection using natural language queries.
+// Retrieves vectors and metadata from a specified document collection by using natural language.
 //
 // @param tmpReq - QueryContentRequest
 //
@@ -22007,10 +22589,6 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
-	}
-
-	if !dara.IsNil(request.Filter) {
-		query["Filter"] = request.Filter
 	}
 
 	if !dara.IsNil(request.GraphEnhance) {
@@ -22098,6 +22676,10 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 		body["Content"] = request.Content
 	}
 
+	if !dara.IsNil(request.Filter) {
+		body["Filter"] = request.Filter
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
@@ -22124,7 +22706,7 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 // Summary:
 //
-// Retrieves vectors and metadata from a specified document collection using natural language queries.
+// Retrieves vectors and metadata from a specified document collection by using natural language.
 //
 // @param request - QueryContentRequest
 //
@@ -24958,6 +25540,84 @@ func (client *Client) UpdateSaasServiceVersion(request *UpdateSaasServiceVersion
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateSaasServiceVersionResponse{}
 	_body, _err := client.UpdateSaasServiceVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Upgrades the version of a Supabase project.
+//
+// Description:
+//
+// Upgrades a specified Supabase project to a target minor version. You can query the supported target versions by calling GetSupabaseUpdateVersion.
+//
+// @param request - UpdateSupabaseVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSupabaseVersionResponse
+func (client *Client) UpdateSupabaseVersionWithOptions(request *UpdateSupabaseVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSupabaseVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MinorVersion) {
+		query["MinorVersion"] = request.MinorVersion
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSupabaseVersion"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSupabaseVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Upgrades the version of a Supabase project.
+//
+// Description:
+//
+// Upgrades a specified Supabase project to a target minor version. You can query the supported target versions by calling GetSupabaseUpdateVersion.
+//
+// @param request - UpdateSupabaseVersionRequest
+//
+// @return UpdateSupabaseVersionResponse
+func (client *Client) UpdateSupabaseVersion(request *UpdateSupabaseVersionRequest) (_result *UpdateSupabaseVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSupabaseVersionResponse{}
+	_body, _err := client.UpdateSupabaseVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
