@@ -1225,6 +1225,58 @@ func (client *Client) PublishSkillVersionWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 重新编辑版本
+//
+// @param request - RedraftSkillVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RedraftSkillVersionResponse
+func (client *Client) RedraftSkillVersionWithContext(ctx context.Context, request *RedraftSkillVersionRequest, runtime *dara.RuntimeOptions) (_result *RedraftSkillVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.SkillVersion) {
+		query["SkillVersion"] = request.SkillVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RedraftSkillVersion"),
+		Version:     dara.String("2026-03-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RedraftSkillVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Publishes a draft version of a prompt as an official version. The specified version must be a draft version.
 //
 // @param request - SubmitPromptVersionRequest

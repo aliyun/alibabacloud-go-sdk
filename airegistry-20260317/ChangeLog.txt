@@ -1,3 +1,7 @@
+2026-10-09 Version: v1.1.0
+- Support API RedraftSkillVersion.
+
+
 2026-09-20 Version: v1.0.1
 - Update API GetNamespace: add response parameters Body.Data.IpWhitelist.
 - Update API GetNamespace: add response parameters Body.Data.PublicAccessEnabled.
