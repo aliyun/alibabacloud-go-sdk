@@ -161,12 +161,20 @@ type ListContextStoresResponseBodyResults struct {
 	//
 	// ["order-service","payment-service"]
 	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// trajectory
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The status of the context store. Valid values: ACTIVE, INITIALIZING, and FAILED.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// upsert
+	StorageMode *string `json:"storageMode,omitempty" xml:"storageMode,omitempty"`
 	// The time when the context store was last updated, in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -213,8 +221,16 @@ func (s *ListContextStoresResponseBodyResults) GetServiceNames() []*string {
 	return s.ServiceNames
 }
 
+func (s *ListContextStoresResponseBodyResults) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *ListContextStoresResponseBodyResults) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListContextStoresResponseBodyResults) GetStorageMode() *string {
+	return s.StorageMode
 }
 
 func (s *ListContextStoresResponseBodyResults) GetUpdateTime() *string {
@@ -256,8 +272,18 @@ func (s *ListContextStoresResponseBodyResults) SetServiceNames(v []*string) *Lis
 	return s
 }
 
+func (s *ListContextStoresResponseBodyResults) SetSourceType(v string) *ListContextStoresResponseBodyResults {
+	s.SourceType = &v
+	return s
+}
+
 func (s *ListContextStoresResponseBodyResults) SetStatus(v string) *ListContextStoresResponseBodyResults {
 	s.Status = &v
+	return s
+}
+
+func (s *ListContextStoresResponseBodyResults) SetStorageMode(v string) *ListContextStoresResponseBodyResults {
+	s.StorageMode = &v
 	return s
 }
 

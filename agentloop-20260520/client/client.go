@@ -1238,8 +1238,14 @@ func (client *Client) DeleteContextStoreWithOptions(agentSpace *string, contextS
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteOutputDataset) {
+		query["deleteOutputDataset"] = request.DeleteOutputDataset
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteContextStore"),
@@ -3049,6 +3055,10 @@ func (client *Client) ListContextStoresWithOptions(agentSpace *string, request *
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.SourceType) {
+		query["sourceType"] = request.SourceType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -4209,6 +4219,10 @@ func (client *Client) SearchContextWithOptions(agentSpace *string, contextStoreN
 		body["formatted"] = request.Formatted
 	}
 
+	if !dara.IsNil(request.IncludeInactive) {
+		body["includeInactive"] = request.IncludeInactive
+	}
+
 	if !dara.IsNil(request.Limit) {
 		body["limit"] = request.Limit
 	}
@@ -4219,6 +4233,10 @@ func (client *Client) SearchContextWithOptions(agentSpace *string, contextStoreN
 
 	if !dara.IsNil(request.RetrievalOption) {
 		body["retrievalOption"] = request.RetrievalOption
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["scope"] = request.Scope
 	}
 
 	if !dara.IsNil(request.Threshold) {
@@ -4412,7 +4430,7 @@ func (client *Client) UpdateAgentSpace(agentSpace *string, request *UpdateAgentS
 
 // Summary:
 //
-// Modifies the configuration of a context store.
+// Updates the context store configuration.
 //
 // @param request - UpdateContextStoreRequest
 //
@@ -4434,6 +4452,10 @@ func (client *Client) UpdateContextStoreWithOptions(agentSpace *string, contextS
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChangeNote) {
+		body["changeNote"] = request.ChangeNote
+	}
+
 	if !dara.IsNil(request.Config) {
 		body["config"] = request.Config
 	}
@@ -4477,7 +4499,7 @@ func (client *Client) UpdateContextStoreWithOptions(agentSpace *string, contextS
 
 // Summary:
 //
-// Modifies the configuration of a context store.
+// Updates the context store configuration.
 //
 // @param request - UpdateContextStoreRequest
 //

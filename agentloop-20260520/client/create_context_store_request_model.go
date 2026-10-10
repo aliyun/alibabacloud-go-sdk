@@ -117,6 +117,8 @@ func (s *CreateContextStoreRequest) Validate() error {
 }
 
 type CreateContextStoreRequestConfig struct {
+	Audit            *CreateContextStoreRequestConfigAudit            `json:"audit,omitempty" xml:"audit,omitempty" type:"Struct"`
+	ExtractionPolicy *CreateContextStoreRequestConfigExtractionPolicy `json:"extractionPolicy,omitempty" xml:"extractionPolicy,omitempty" type:"Struct"`
 	// The metadata field mapping. The key is the business field and the value is the storage field.
 	//
 	// example:
@@ -128,17 +130,17 @@ type CreateContextStoreRequestConfig struct {
 	// example:
 	//
 	// 1d
-	MiningInterval *string `json:"miningInterval,omitempty" xml:"miningInterval,omitempty"`
+	MiningInterval *string                                     `json:"miningInterval,omitempty" xml:"miningInterval,omitempty"`
+	ScopePolicy    *CreateContextStoreRequestConfigScopePolicy `json:"scopePolicy,omitempty" xml:"scopePolicy,omitempty" type:"Struct"`
 	// The list of service names. This parameter is required and cannot be empty. It works with source.agentSpace to locate the trace data source. The trajectory extraction service uses the AgentSpace to look up the bound CMS workspace and project/logstore, and then filters by service name. This value cannot be changed after creation. No modification entry is available in the current version.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
 	// ["order-service","payment-service"]
 	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
 	// The datasource config, which serves only as the root identifier for the data source. This is an optional block.
-	Source *CreateContextStoreRequestConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	Source        *CreateContextStoreRequestConfigSource        `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	StoragePolicy *CreateContextStoreRequestConfigStoragePolicy `json:"storagePolicy,omitempty" xml:"storagePolicy,omitempty" type:"Struct"`
 }
 
 func (s CreateContextStoreRequestConfig) String() string {
@@ -149,12 +151,24 @@ func (s CreateContextStoreRequestConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateContextStoreRequestConfig) GetAudit() *CreateContextStoreRequestConfigAudit {
+	return s.Audit
+}
+
+func (s *CreateContextStoreRequestConfig) GetExtractionPolicy() *CreateContextStoreRequestConfigExtractionPolicy {
+	return s.ExtractionPolicy
+}
+
 func (s *CreateContextStoreRequestConfig) GetMetadataField() map[string]*string {
 	return s.MetadataField
 }
 
 func (s *CreateContextStoreRequestConfig) GetMiningInterval() *string {
 	return s.MiningInterval
+}
+
+func (s *CreateContextStoreRequestConfig) GetScopePolicy() *CreateContextStoreRequestConfigScopePolicy {
+	return s.ScopePolicy
 }
 
 func (s *CreateContextStoreRequestConfig) GetServiceNames() []*string {
@@ -165,6 +179,20 @@ func (s *CreateContextStoreRequestConfig) GetSource() *CreateContextStoreRequest
 	return s.Source
 }
 
+func (s *CreateContextStoreRequestConfig) GetStoragePolicy() *CreateContextStoreRequestConfigStoragePolicy {
+	return s.StoragePolicy
+}
+
+func (s *CreateContextStoreRequestConfig) SetAudit(v *CreateContextStoreRequestConfigAudit) *CreateContextStoreRequestConfig {
+	s.Audit = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfig) SetExtractionPolicy(v *CreateContextStoreRequestConfigExtractionPolicy) *CreateContextStoreRequestConfig {
+	s.ExtractionPolicy = v
+	return s
+}
+
 func (s *CreateContextStoreRequestConfig) SetMetadataField(v map[string]*string) *CreateContextStoreRequestConfig {
 	s.MetadataField = v
 	return s
@@ -172,6 +200,11 @@ func (s *CreateContextStoreRequestConfig) SetMetadataField(v map[string]*string)
 
 func (s *CreateContextStoreRequestConfig) SetMiningInterval(v string) *CreateContextStoreRequestConfig {
 	s.MiningInterval = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfig) SetScopePolicy(v *CreateContextStoreRequestConfigScopePolicy) *CreateContextStoreRequestConfig {
+	s.ScopePolicy = v
 	return s
 }
 
@@ -185,13 +218,230 @@ func (s *CreateContextStoreRequestConfig) SetSource(v *CreateContextStoreRequest
 	return s
 }
 
+func (s *CreateContextStoreRequestConfig) SetStoragePolicy(v *CreateContextStoreRequestConfigStoragePolicy) *CreateContextStoreRequestConfig {
+	s.StoragePolicy = v
+	return s
+}
+
 func (s *CreateContextStoreRequestConfig) Validate() error {
+	if s.Audit != nil {
+		if err := s.Audit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtractionPolicy != nil {
+		if err := s.ExtractionPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScopePolicy != nil {
+		if err := s.ScopePolicy.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Source != nil {
 		if err := s.Source.Validate(); err != nil {
 			return err
 		}
 	}
+	if s.StoragePolicy != nil {
+		if err := s.StoragePolicy.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
+}
+
+type CreateContextStoreRequestConfigAudit struct {
+	// example:
+	//
+	// false
+	DroppedCandidates *bool `json:"droppedCandidates,omitempty" xml:"droppedCandidates,omitempty"`
+	// example:
+	//
+	// raw
+	QueryMode *string `json:"queryMode,omitempty" xml:"queryMode,omitempty"`
+	// example:
+	//
+	// 30
+	RetentionDays *int32 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigAudit) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigAudit) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigAudit) GetDroppedCandidates() *bool {
+	return s.DroppedCandidates
+}
+
+func (s *CreateContextStoreRequestConfigAudit) GetQueryMode() *string {
+	return s.QueryMode
+}
+
+func (s *CreateContextStoreRequestConfigAudit) GetRetentionDays() *int32 {
+	return s.RetentionDays
+}
+
+func (s *CreateContextStoreRequestConfigAudit) SetDroppedCandidates(v bool) *CreateContextStoreRequestConfigAudit {
+	s.DroppedCandidates = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigAudit) SetQueryMode(v string) *CreateContextStoreRequestConfigAudit {
+	s.QueryMode = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigAudit) SetRetentionDays(v int32) *CreateContextStoreRequestConfigAudit {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigAudit) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateContextStoreRequestConfigExtractionPolicy struct {
+	// example:
+	//
+	// ["preference","profile"]
+	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 只抽取用户的产品偏好
+	CustomInstructions *string `json:"customInstructions,omitempty" xml:"customInstructions,omitempty"`
+	// example:
+	//
+	// ["密码","证件号"]
+	ExcludeRules []*string                                             `json:"excludeRules,omitempty" xml:"excludeRules,omitempty" type:"Repeated"`
+	Model        *CreateContextStoreRequestConfigExtractionPolicyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
+	// example:
+	//
+	// fact
+	Preset *string `json:"preset,omitempty" xml:"preset,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigExtractionPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigExtractionPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) GetCategories() []*string {
+	return s.Categories
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) GetCustomInstructions() *string {
+	return s.CustomInstructions
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) GetExcludeRules() []*string {
+	return s.ExcludeRules
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) GetModel() *CreateContextStoreRequestConfigExtractionPolicyModel {
+	return s.Model
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) GetPreset() *string {
+	return s.Preset
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) SetCategories(v []*string) *CreateContextStoreRequestConfigExtractionPolicy {
+	s.Categories = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) SetCustomInstructions(v string) *CreateContextStoreRequestConfigExtractionPolicy {
+	s.CustomInstructions = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) SetExcludeRules(v []*string) *CreateContextStoreRequestConfigExtractionPolicy {
+	s.ExcludeRules = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) SetModel(v *CreateContextStoreRequestConfigExtractionPolicyModel) *CreateContextStoreRequestConfigExtractionPolicy {
+	s.Model = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) SetPreset(v string) *CreateContextStoreRequestConfigExtractionPolicy {
+	s.Preset = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicy) Validate() error {
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateContextStoreRequestConfigExtractionPolicyModel struct {
+	// example:
+	//
+	// qwen3.8-flash
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigExtractionPolicyModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigExtractionPolicyModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicyModel) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicyModel) SetName(v string) *CreateContextStoreRequestConfigExtractionPolicyModel {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigExtractionPolicyModel) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateContextStoreRequestConfigScopePolicy struct {
+	// example:
+	//
+	// ["userId"]
+	RequiredAnyOf []*string `json:"requiredAnyOf,omitempty" xml:"requiredAnyOf,omitempty" type:"Repeated"`
+}
+
+func (s CreateContextStoreRequestConfigScopePolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigScopePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigScopePolicy) GetRequiredAnyOf() []*string {
+	return s.RequiredAnyOf
+}
+
+func (s *CreateContextStoreRequestConfigScopePolicy) SetRequiredAnyOf(v []*string) *CreateContextStoreRequestConfigScopePolicy {
+	s.RequiredAnyOf = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigScopePolicy) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateContextStoreRequestConfigSource struct {
@@ -200,7 +450,8 @@ type CreateContextStoreRequestConfigSource struct {
 	// example:
 	//
 	// my-agent-space
-	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	AgentSpace *string                                       `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	Dataset    *CreateContextStoreRequestConfigSourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
 	// The start time for data backfill, in ISO 8601 UTC format. If not specified, the current time is used.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -208,7 +459,12 @@ type CreateContextStoreRequestConfigSource struct {
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StartTime  *string                                          `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Trajectory *CreateContextStoreRequestConfigSourceTrajectory `json:"trajectory,omitempty" xml:"trajectory,omitempty" type:"Struct"`
+	// example:
+	//
+	// trajectory
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateContextStoreRequestConfigSource) String() string {
@@ -223,12 +479,29 @@ func (s *CreateContextStoreRequestConfigSource) GetAgentSpace() *string {
 	return s.AgentSpace
 }
 
+func (s *CreateContextStoreRequestConfigSource) GetDataset() *CreateContextStoreRequestConfigSourceDataset {
+	return s.Dataset
+}
+
 func (s *CreateContextStoreRequestConfigSource) GetStartTime() *string {
 	return s.StartTime
 }
 
+func (s *CreateContextStoreRequestConfigSource) GetTrajectory() *CreateContextStoreRequestConfigSourceTrajectory {
+	return s.Trajectory
+}
+
+func (s *CreateContextStoreRequestConfigSource) GetType() *string {
+	return s.Type
+}
+
 func (s *CreateContextStoreRequestConfigSource) SetAgentSpace(v string) *CreateContextStoreRequestConfigSource {
 	s.AgentSpace = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSource) SetDataset(v *CreateContextStoreRequestConfigSourceDataset) *CreateContextStoreRequestConfigSource {
+	s.Dataset = v
 	return s
 }
 
@@ -237,6 +510,630 @@ func (s *CreateContextStoreRequestConfigSource) SetStartTime(v string) *CreateCo
 	return s
 }
 
+func (s *CreateContextStoreRequestConfigSource) SetTrajectory(v *CreateContextStoreRequestConfigSourceTrajectory) *CreateContextStoreRequestConfigSource {
+	s.Trajectory = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSource) SetType(v string) *CreateContextStoreRequestConfigSource {
+	s.Type = &v
+	return s
+}
+
 func (s *CreateContextStoreRequestConfigSource) Validate() error {
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trajectory != nil {
+		if err := s.Trajectory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateContextStoreRequestConfigSourceDataset struct {
+	CustomFields []*CreateContextStoreRequestConfigSourceDatasetCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// trajectory-with-crm-profile
+	DatasetName *string                                             `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	Filter      *CreateContextStoreRequestConfigSourceDatasetFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// 300
+	PollIntervalSeconds *int32 `json:"pollIntervalSeconds,omitempty" xml:"pollIntervalSeconds,omitempty"`
+	// example:
+	//
+	// MemorySourceV1
+	SchemaContract *string                                                    `json:"schemaContract,omitempty" xml:"schemaContract,omitempty"`
+	VersionPolicy  *CreateContextStoreRequestConfigSourceDatasetVersionPolicy `json:"versionPolicy,omitempty" xml:"versionPolicy,omitempty" type:"Struct"`
+}
+
+func (s CreateContextStoreRequestConfigSourceDataset) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigSourceDataset) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) GetCustomFields() []*CreateContextStoreRequestConfigSourceDatasetCustomFields {
+	return s.CustomFields
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) GetDatasetName() *string {
+	return s.DatasetName
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) GetFilter() *CreateContextStoreRequestConfigSourceDatasetFilter {
+	return s.Filter
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) GetPollIntervalSeconds() *int32 {
+	return s.PollIntervalSeconds
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) GetSchemaContract() *string {
+	return s.SchemaContract
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) GetVersionPolicy() *CreateContextStoreRequestConfigSourceDatasetVersionPolicy {
+	return s.VersionPolicy
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) SetCustomFields(v []*CreateContextStoreRequestConfigSourceDatasetCustomFields) *CreateContextStoreRequestConfigSourceDataset {
+	s.CustomFields = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) SetDatasetName(v string) *CreateContextStoreRequestConfigSourceDataset {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) SetFilter(v *CreateContextStoreRequestConfigSourceDatasetFilter) *CreateContextStoreRequestConfigSourceDataset {
+	s.Filter = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) SetPollIntervalSeconds(v int32) *CreateContextStoreRequestConfigSourceDataset {
+	s.PollIntervalSeconds = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) SetSchemaContract(v string) *CreateContextStoreRequestConfigSourceDataset {
+	s.SchemaContract = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) SetVersionPolicy(v *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) *CreateContextStoreRequestConfigSourceDataset {
+	s.VersionPolicy = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDataset) Validate() error {
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VersionPolicy != nil {
+		if err := s.VersionPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateContextStoreRequestConfigSourceDatasetCustomFields struct {
+	// example:
+	//
+	// 客户等级
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// false
+	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	// example:
+	//
+	// customerTier
+	SourceField *string `json:"sourceField,omitempty" xml:"sourceField,omitempty"`
+	// example:
+	//
+	// metadata.customerTier
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	// example:
+	//
+	// extraction-input
+	Usage *string `json:"usage,omitempty" xml:"usage,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigSourceDatasetCustomFields) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigSourceDatasetCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) GetDescription() *string {
+	return s.Description
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) GetSensitive() *bool {
+	return s.Sensitive
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) GetSourceField() *string {
+	return s.SourceField
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) GetTarget() *string {
+	return s.Target
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) GetUsage() *string {
+	return s.Usage
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) SetDescription(v string) *CreateContextStoreRequestConfigSourceDatasetCustomFields {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) SetSensitive(v bool) *CreateContextStoreRequestConfigSourceDatasetCustomFields {
+	s.Sensitive = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) SetSourceField(v string) *CreateContextStoreRequestConfigSourceDatasetCustomFields {
+	s.SourceField = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) SetTarget(v string) *CreateContextStoreRequestConfigSourceDatasetCustomFields {
+	s.Target = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) SetUsage(v string) *CreateContextStoreRequestConfigSourceDatasetCustomFields {
+	s.Usage = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetCustomFields) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateContextStoreRequestConfigSourceDatasetFilter struct {
+	// example:
+	//
+	// appId = \\"crm-service\\"
+	Where *string `json:"where,omitempty" xml:"where,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigSourceDatasetFilter) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigSourceDatasetFilter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetFilter) GetWhere() *string {
+	return s.Where
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetFilter) SetWhere(v string) *CreateContextStoreRequestConfigSourceDatasetFilter {
+	s.Where = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetFilter) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateContextStoreRequestConfigSourceDatasetVersionPolicy struct {
+	// example:
+	//
+	// follow
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// 0
+	StartSeq *int64 `json:"startSeq,omitempty" xml:"startSeq,omitempty"`
+	// example:
+	//
+	// v3
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigSourceDatasetVersionPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigSourceDatasetVersionPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) GetMode() *string {
+	return s.Mode
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) GetStartSeq() *int64 {
+	return s.StartSeq
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) GetVersion() *string {
+	return s.Version
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) SetMode(v string) *CreateContextStoreRequestConfigSourceDatasetVersionPolicy {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) SetStartSeq(v int64) *CreateContextStoreRequestConfigSourceDatasetVersionPolicy {
+	s.StartSeq = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) SetVersion(v string) *CreateContextStoreRequestConfigSourceDatasetVersionPolicy {
+	s.Version = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceDatasetVersionPolicy) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateContextStoreRequestConfigSourceTrajectory struct {
+	Filter *CreateContextStoreRequestConfigSourceTrajectoryFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// agent-trajectory
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// example:
+	//
+	// 300
+	PollIntervalSeconds *int32                                                       `json:"pollIntervalSeconds,omitempty" xml:"pollIntervalSeconds,omitempty"`
+	ScopeMapping        *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping `json:"scopeMapping,omitempty" xml:"scopeMapping,omitempty" type:"Struct"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2026-10-01T00:00:00Z
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigSourceTrajectory) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigSourceTrajectory) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) GetFilter() *CreateContextStoreRequestConfigSourceTrajectoryFilter {
+	return s.Filter
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) GetLogstore() *string {
+	return s.Logstore
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) GetPollIntervalSeconds() *int32 {
+	return s.PollIntervalSeconds
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) GetScopeMapping() *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping {
+	return s.ScopeMapping
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) SetFilter(v *CreateContextStoreRequestConfigSourceTrajectoryFilter) *CreateContextStoreRequestConfigSourceTrajectory {
+	s.Filter = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) SetLogstore(v string) *CreateContextStoreRequestConfigSourceTrajectory {
+	s.Logstore = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) SetPollIntervalSeconds(v int32) *CreateContextStoreRequestConfigSourceTrajectory {
+	s.PollIntervalSeconds = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) SetScopeMapping(v *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) *CreateContextStoreRequestConfigSourceTrajectory {
+	s.ScopeMapping = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) SetStartTime(v string) *CreateContextStoreRequestConfigSourceTrajectory {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectory) Validate() error {
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScopeMapping != nil {
+		if err := s.ScopeMapping.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateContextStoreRequestConfigSourceTrajectoryFilter struct {
+	// example:
+	//
+	// ["sales-copilot"]
+	AgentNames []*string `json:"agentNames,omitempty" xml:"agentNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	ExcludeDegraded *bool `json:"excludeDegraded,omitempty" xml:"excludeDegraded,omitempty"`
+	// example:
+	//
+	// 2
+	MinStepCount *int32 `json:"minStepCount,omitempty" xml:"minStepCount,omitempty"`
+	// example:
+	//
+	// tool_names:"search_order"
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// ["crm-service","app-*"]
+	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
+}
+
+func (s CreateContextStoreRequestConfigSourceTrajectoryFilter) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigSourceTrajectoryFilter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) GetAgentNames() []*string {
+	return s.AgentNames
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) GetExcludeDegraded() *bool {
+	return s.ExcludeDegraded
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) GetMinStepCount() *int32 {
+	return s.MinStepCount
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) GetQuery() *string {
+	return s.Query
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) GetServiceNames() []*string {
+	return s.ServiceNames
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) SetAgentNames(v []*string) *CreateContextStoreRequestConfigSourceTrajectoryFilter {
+	s.AgentNames = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) SetExcludeDegraded(v bool) *CreateContextStoreRequestConfigSourceTrajectoryFilter {
+	s.ExcludeDegraded = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) SetMinStepCount(v int32) *CreateContextStoreRequestConfigSourceTrajectoryFilter {
+	s.MinStepCount = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) SetQuery(v string) *CreateContextStoreRequestConfigSourceTrajectoryFilter {
+	s.Query = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) SetServiceNames(v []*string) *CreateContextStoreRequestConfigSourceTrajectoryFilter {
+	s.ServiceNames = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryFilter) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateContextStoreRequestConfigSourceTrajectoryScopeMapping struct {
+	// example:
+	//
+	// $.agent_name
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// example:
+	//
+	// $.service_names[0]
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// example:
+	//
+	// $.trajectory_id
+	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// $.trajectory_extensions.user_id
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) GetAgentId() *string {
+	return s.AgentId
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) GetAppId() *string {
+	return s.AppId
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) GetRunId() *string {
+	return s.RunId
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) GetUserId() *string {
+	return s.UserId
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) SetAgentId(v string) *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping {
+	s.AgentId = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) SetAppId(v string) *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) SetRunId(v string) *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping {
+	s.RunId = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) SetUserId(v string) *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping {
+	s.UserId = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigSourceTrajectoryScopeMapping) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateContextStoreRequestConfigStoragePolicy struct {
+	// example:
+	//
+	// ["ADD","UPDATE","MERGE","DELETE"]
+	AllowedActions []*string `json:"allowedActions,omitempty" xml:"allowedActions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Dedupe *bool `json:"dedupe,omitempty" xml:"dedupe,omitempty"`
+	// example:
+	//
+	// true
+	HumanEditProtection *bool `json:"humanEditProtection,omitempty" xml:"humanEditProtection,omitempty"`
+	// example:
+	//
+	// semantic
+	MergeKey *string `json:"mergeKey,omitempty" xml:"mergeKey,omitempty"`
+	// example:
+	//
+	// upsert
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// 0.4
+	SimilarityThreshold *float64 `json:"similarityThreshold,omitempty" xml:"similarityThreshold,omitempty"`
+	// example:
+	//
+	// 0
+	TtlDays *int32 `json:"ttlDays,omitempty" xml:"ttlDays,omitempty"`
+}
+
+func (s CreateContextStoreRequestConfigStoragePolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreRequestConfigStoragePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) GetAllowedActions() []*string {
+	return s.AllowedActions
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) GetDedupe() *bool {
+	return s.Dedupe
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) GetHumanEditProtection() *bool {
+	return s.HumanEditProtection
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) GetMergeKey() *string {
+	return s.MergeKey
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) GetMode() *string {
+	return s.Mode
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) GetSimilarityThreshold() *float64 {
+	return s.SimilarityThreshold
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) GetTtlDays() *int32 {
+	return s.TtlDays
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) SetAllowedActions(v []*string) *CreateContextStoreRequestConfigStoragePolicy {
+	s.AllowedActions = v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) SetDedupe(v bool) *CreateContextStoreRequestConfigStoragePolicy {
+	s.Dedupe = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) SetHumanEditProtection(v bool) *CreateContextStoreRequestConfigStoragePolicy {
+	s.HumanEditProtection = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) SetMergeKey(v string) *CreateContextStoreRequestConfigStoragePolicy {
+	s.MergeKey = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) SetMode(v string) *CreateContextStoreRequestConfigStoragePolicy {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) SetSimilarityThreshold(v float64) *CreateContextStoreRequestConfigStoragePolicy {
+	s.SimilarityThreshold = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) SetTtlDays(v int32) *CreateContextStoreRequestConfigStoragePolicy {
+	s.TtlDays = &v
+	return s
+}
+
+func (s *CreateContextStoreRequestConfigStoragePolicy) Validate() error {
 	return dara.Validate(s)
 }

@@ -928,8 +928,14 @@ func (client *Client) DeleteContextStoreWithContext(ctx context.Context, agentSp
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteOutputDataset) {
+		query["deleteOutputDataset"] = request.DeleteOutputDataset
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteContextStore"),
@@ -2200,6 +2206,10 @@ func (client *Client) ListContextStoresWithContext(ctx context.Context, agentSpa
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.SourceType) {
+		query["sourceType"] = request.SourceType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3072,6 +3082,10 @@ func (client *Client) SearchContextWithContext(ctx context.Context, agentSpace *
 		body["formatted"] = request.Formatted
 	}
 
+	if !dara.IsNil(request.IncludeInactive) {
+		body["includeInactive"] = request.IncludeInactive
+	}
+
 	if !dara.IsNil(request.Limit) {
 		body["limit"] = request.Limit
 	}
@@ -3082,6 +3096,10 @@ func (client *Client) SearchContextWithContext(ctx context.Context, agentSpace *
 
 	if !dara.IsNil(request.RetrievalOption) {
 		body["retrievalOption"] = request.RetrievalOption
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["scope"] = request.Scope
 	}
 
 	if !dara.IsNil(request.Threshold) {
@@ -3218,7 +3236,7 @@ func (client *Client) UpdateAgentSpaceWithContext(ctx context.Context, agentSpac
 
 // Summary:
 //
-// Modifies the configuration of a context store.
+// Updates the context store configuration.
 //
 // @param request - UpdateContextStoreRequest
 //
@@ -3240,6 +3258,10 @@ func (client *Client) UpdateContextStoreWithContext(ctx context.Context, agentSp
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChangeNote) {
+		body["changeNote"] = request.ChangeNote
+	}
+
 	if !dara.IsNil(request.Config) {
 		body["config"] = request.Config
 	}

@@ -17,6 +17,8 @@ type iListContextStoresRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListContextStoresRequest
 	GetNextToken() *string
+	SetSourceType(v string) *ListContextStoresRequest
+	GetSourceType() *string
 }
 
 type ListContextStoresRequest struct {
@@ -44,6 +46,10 @@ type ListContextStoresRequest struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// trajectory
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
 func (s ListContextStoresRequest) String() string {
@@ -70,6 +76,10 @@ func (s *ListContextStoresRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListContextStoresRequest) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *ListContextStoresRequest) SetContextStoreName(v string) *ListContextStoresRequest {
 	s.ContextStoreName = &v
 	return s
@@ -87,6 +97,11 @@ func (s *ListContextStoresRequest) SetMaxResults(v int32) *ListContextStoresRequ
 
 func (s *ListContextStoresRequest) SetNextToken(v string) *ListContextStoresRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListContextStoresRequest) SetSourceType(v string) *ListContextStoresRequest {
+	s.SourceType = &v
 	return s
 }
 
