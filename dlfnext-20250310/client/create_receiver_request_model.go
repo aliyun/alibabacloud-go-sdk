@@ -22,7 +22,7 @@ type CreateReceiverRequest struct {
 	//
 	// example:
 	//
-	// Customer A.
+	// 客户A。
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The name of the receiver.
 	//

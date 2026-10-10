@@ -1306,7 +1306,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Deletes a data lake data catalog. The following conditions must be met, otherwise the deletion will fail: all tables and user-created databases under the catalog have been deleted; the databases and tables have been deleted for at least 24 hours.
+// Deletes a data lake data catalog. The deletion fails unless the following conditions are met: all tables and self-managed databases under the catalog have been deleted, and the databases and tables have been deleted for at least 24 hours.
 //
 // @param headers - map
 //
@@ -1339,7 +1339,7 @@ func (client *Client) DropCatalogWithOptions(catalog *string, headers map[string
 
 // Summary:
 //
-// Deletes a data lake data catalog. The following conditions must be met, otherwise the deletion will fail: all tables and user-created databases under the catalog have been deleted; the databases and tables have been deleted for at least 24 hours.
+// Deletes a data lake data catalog. The deletion fails unless the following conditions are met: all tables and self-managed databases under the catalog have been deleted, and the databases and tables have been deleted for at least 24 hours.
 //
 // @return DropCatalogResponse
 func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse, _err error) {
@@ -1556,7 +1556,7 @@ func (client *Client) DropTable(catalogId *string, database *string, table *stri
 
 // Summary:
 //
-// Retrieves the details of a catalog.
+// Retrieves the details of a data catalog.
 //
 // @param headers - map
 //
@@ -1589,7 +1589,7 @@ func (client *Client) GetCatalogWithOptions(catalog *string, headers map[string]
 
 // Summary:
 //
-// Retrieves the details of a catalog.
+// Retrieves the details of a data catalog.
 //
 // @return GetCatalogResponse
 func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, _err error) {
@@ -1606,7 +1606,7 @@ func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, 
 
 // Summary:
 //
-// Retrieves the details of a catalog.
+// Retrieves the details of a data catalog.
 //
 // @param headers - map
 //
@@ -1639,7 +1639,7 @@ func (client *Client) GetCatalogByIdWithOptions(id *string, headers map[string]*
 
 // Summary:
 //
-// Retrieves the details of a catalog.
+// Retrieves the details of a data catalog.
 //
 // @return GetCatalogByIdResponse
 func (client *Client) GetCatalogById(id *string) (_result *GetCatalogByIdResponse, _err error) {
@@ -2870,7 +2870,7 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 
 // Summary:
 //
-// Lists catalogs.
+// Queries the list of data catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -2925,7 +2925,7 @@ func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, head
 
 // Summary:
 //
-// Lists catalogs.
+// Queries the list of data catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -5033,6 +5033,94 @@ func (client *Client) Subscribe() (_result *SubscribeResponse, _err error) {
 	headers := make(map[string]*string)
 	_result = &SubscribeResponse{}
 	_body, _err := client.SubscribeWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes tags from resources.
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceId) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, dara.String("resourceId"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TagKey) {
+		request.TagKeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKey, dara.String("tagKey"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["all"] = request.All
+	}
+
+	if !dara.IsNil(request.ResourceIdShrink) {
+		query["resourceId"] = request.ResourceIdShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKeyShrink) {
+		query["tagKey"] = request.TagKeyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/tags"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes tags from resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -917,7 +917,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, headers ma
 
 // Summary:
 //
-// Deletes a data lake data catalog. The following conditions must be met, otherwise the deletion will fail: all tables and user-created databases under the catalog have been deleted; the databases and tables have been deleted for at least 24 hours.
+// Deletes a data lake data catalog. The deletion fails unless the following conditions are met: all tables and self-managed databases under the catalog have been deleted, and the databases and tables have been deleted for at least 24 hours.
 //
 // @param headers - map
 //
@@ -1082,7 +1082,7 @@ func (client *Client) DropTableWithContext(ctx context.Context, catalogId *strin
 
 // Summary:
 //
-// Retrieves the details of a catalog.
+// Retrieves the details of a data catalog.
 //
 // @param headers - map
 //
@@ -1115,7 +1115,7 @@ func (client *Client) GetCatalogWithContext(ctx context.Context, catalog *string
 
 // Summary:
 //
-// Retrieves the details of a catalog.
+// Retrieves the details of a data catalog.
 //
 // @param headers - map
 //
@@ -1981,7 +1981,7 @@ func (client *Client) GrantRoleToUsersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Lists catalogs.
+// Queries the list of data catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -3577,6 +3577,75 @@ func (client *Client) SubscribeWithContext(ctx context.Context, headers map[stri
 		BodyType:    dara.String("none"),
 	}
 	_result = &SubscribeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes tags from resources.
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceId) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, dara.String("resourceId"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TagKey) {
+		request.TagKeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKey, dara.String("tagKey"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["all"] = request.All
+	}
+
+	if !dara.IsNil(request.ResourceIdShrink) {
+		query["resourceId"] = request.ResourceIdShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKeyShrink) {
+		query["tagKey"] = request.TagKeyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/tags"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &UntagResourcesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

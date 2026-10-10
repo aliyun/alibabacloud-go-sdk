@@ -42,19 +42,19 @@ type iPartition interface {
 }
 
 type Partition struct {
-	// The time when the partition was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1747120676378
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The creator of the partition.
+	// The creator.
 	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// Indicates whether the process is complete.
+	// Indicates whether the tagging is complete.
 	//
 	// example:
 	//
@@ -72,13 +72,14 @@ type Partition struct {
 	//
 	// 1
 	FileSizeInBytes *int64 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
-	// The time when the latest file was created.
+	// The creation time of the latest file.
 	//
 	// example:
 	//
 	// 1741701564261
-	LastFileCreationTime *int64             `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
-	Options              map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	LastFileCreationTime *int64 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	// The extension options.
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
 	// The number of records.
 	//
 	// example:
@@ -91,19 +92,19 @@ type Partition struct {
 	//
 	// {"year":"2025"}
 	Spec map[string]interface{} `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The status of the storage class conversion.
+	// The storage type conversion status.
 	//
 	// example:
 	//
 	// COMPLETE
 	StorageAction *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
-	// The storage class conversion time.
+	// The storage type conversion time.
 	//
 	// example:
 	//
 	// 1758189669915
 	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	// The storage class.
+	// The storage type.
 	//
 	// example:
 	//
@@ -115,13 +116,13 @@ type Partition struct {
 	//
 	// 1
 	TotalBuckets *int32 `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
-	// The time when the partition was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 1744970111419
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the partition.
+	// The updater.
 	//
 	// example:
 	//
