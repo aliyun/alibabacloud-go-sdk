@@ -26,43 +26,43 @@ type iUpdateGroupSourceContentResponseBody interface {
 }
 
 type UpdateGroupSourceContentResponseBody struct {
-	// 业务状态码；成功为200
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述
+	// The description of the status code.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 操作后的资料名称，沿用已有名称维护规则
+	// The image name.
 	//
 	// example:
 	//
-	// 项目资料
+	// Project resource
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// C474BFC7-7B11-5D92-971E-74AA82EC495B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资料 ID；替换、编辑、重新解析均保持该 ID
+	// The data source ID.
 	//
 	// example:
 	//
 	// source_example
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资料类型
+	// The data source type.
 	//
 	// example:
 	//
 	// example
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 当前资料状态；RUNNING 表示处理中，异步受理不代表解析完成
+	// The task running status.
 	//
 	// example:
 	//

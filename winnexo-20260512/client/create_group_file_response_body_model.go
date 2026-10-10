@@ -32,61 +32,67 @@ type iCreateGroupFileResponseBody interface {
 }
 
 type CreateGroupFileResponseBody struct {
-	// 业务状态码，成功为200
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 解析并绑定的真实目录ID
+	// The folder ID.
 	//
 	// example:
 	//
 	// dir_example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间，ISO8601格式
+	// The creation timestamp of the customer group, in milliseconds.
 	//
 	// example:
 	//
 	// example
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 协作空间ID
+	// The project group ID.
 	//
 	// example:
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 错误描述
+	// The error details.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Provider处理后的实际资料名称
+	// The image name.
 	//
 	// example:
 	//
-	// 项目资料
+	// Project Files
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//
 	// E68654BD-F7BA-5837-8686-5645D739A47C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资料范围，固定GROUP
+	// The permission scope.
 	//
 	// example:
 	//
 	// example
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资料ID
+	// The source ID.
 	//
 	// example:
 	//
 	// example
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 实际资料状态；RUNNING表示处理中，FAILED表示创建处理失败
+	// The signing status. Valid values:
+	//
+	// - CREATED: Created but not signed.
+	//
+	// - SUCCESS: Signed successfully.
+	//
+	// - STOP: Terminated.
 	//
 	// example:
 	//

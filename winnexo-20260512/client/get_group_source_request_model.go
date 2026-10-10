@@ -18,7 +18,7 @@ type iGetGroupSourceRequest interface {
 }
 
 type GetGroupSourceRequest struct {
-	// 协作空间 ID
+	// The project group ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetGroupSourceRequest struct {
 	//
 	// exampleGroupId
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 空间内可读的资料ID，支持有效引用资料
+	// The ID of the personal FILE data source to be replaced. The ID is unique within the tenant.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetGroupSourceRequest struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//

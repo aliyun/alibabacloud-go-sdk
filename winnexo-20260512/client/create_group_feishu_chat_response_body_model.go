@@ -34,67 +34,73 @@ type iCreateGroupFeishuChatResponseBody interface {
 }
 
 type CreateGroupFeishuChatResponseBody struct {
-	// 飞书群聊ID
+	// The DingTalk group chat session ID.
 	//
 	// example:
 	//
 	// cidxxxxxxxx
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// 业务状态码
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 解析并绑定的真实目录ID
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间，ISO8601格式
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-08-26T10:00:00+08:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 协作空间ID
+	// The project group ID.
 	//
 	// example:
 	//
 	// exampleGroupId
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 错误描述
+	// The error details.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Provider处理后的实际资料名称
+	// The skill name.
 	//
 	// example:
 	//
 	// oklabs_tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资料范围，固定GROUP
+	// The permission scope.
 	//
 	// example:
 	//
 	// PERSONAL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资料ID
+	// The original project ID.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 实际资料状态；RUNNING表示处理中，FAILED表示创建处理失败
+	// The signing status. Valid values:
+	//
+	// - CREATED: Created but not signed.
+	//
+	// - SUCCESS: Signed successfully.
+	//
+	// - STOP: Terminated.
 	//
 	// example:
 	//

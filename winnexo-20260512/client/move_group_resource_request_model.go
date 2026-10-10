@@ -22,7 +22,7 @@ type iMoveGroupResourceRequest interface {
 }
 
 type MoveGroupResourceRequest struct {
-	// 协作空间 ID
+	// The collaboration space ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type MoveGroupResourceRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 资料当前所在的空间物理目录真实 ID，不支持 root 哨兵
+	// The real ID of the physical directory in the space where the resource currently resides. The root sentinel is not supported.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type MoveGroupResourceRequest struct {
 	//
 	// example
 	SourceDirectoryId *string `json:"sourceDirectoryId,omitempty" xml:"sourceDirectoryId,omitempty"`
-	// 待移动的物理 GROUP 资料 ID；引用资料只读
+	// The physical GROUP resource ID to be moved. Referenced resources are read-only.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type MoveGroupResourceRequest struct {
 	//
 	// example
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 同一空间目标物理目录真实 ID，必须与源目录不同
+	// The real ID of the target physical directory in the same space. This value must be different from the source directory ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type MoveGroupResourceRequest struct {
 	//
 	// example
 	TargetDirectoryId *string `json:"targetDirectoryId,omitempty" xml:"targetDirectoryId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

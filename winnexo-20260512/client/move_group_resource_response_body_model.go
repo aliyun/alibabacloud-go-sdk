@@ -26,43 +26,43 @@ type iMoveGroupResourceResponseBody interface {
 }
 
 type MoveGroupResourceResponseBody struct {
-	// 业务状态码，成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 协作空间 ID
+	// The collaboration space ID.
 	//
 	// example:
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 移动前的目录 ID
+	// The directory ID before the move.
 	//
 	// example:
 	//
 	// example
 	SourceDirectoryId *string `json:"sourceDirectoryId,omitempty" xml:"sourceDirectoryId,omitempty"`
-	// 移动的资料 ID，移动前后保持不变
+	// The ID of the moved resource. This value remains unchanged before and after the move.
 	//
 	// example:
 	//
 	// example
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 移动后的目录 ID
+	// The directory ID after the move.
 	//
 	// example:
 	//

@@ -40,85 +40,95 @@ type iGetGroupSourceResponseBody interface {
 }
 
 type GetGroupSourceResponseBody struct {
-	// 业务状态码
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 资料描述
+	// The pipeline description.
 	//
 	// example:
 	//
 	// recorder function
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间，ISO8601格式
+	// The time when the resource was created.
 	//
 	// example:
 	//
 	// 2026-08-26T10:00:00+08:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间，ISO8601格式
+	// The time when the resource was last modified, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-08-20T14:00:00+08:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 本次授权读取的协作空间ID
+	// The project group ID.
 	//
 	// example:
 	//
 	// exampleGroupId
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 错误描述
+	// The description of the status code.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 资料名称
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资料实际范围；引用资料保留 PERSONAL 或 TENANT
+	// The permission scope.
 	//
 	// example:
 	//
 	// GROUP
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 资料ID
+	// The data source ID.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 知识归属类型，沿用 Source 分类
+	// The knowledge base ownership type. Valid values:
+	//
+	// - aliding_kb_doc: DingTalk knowledge base document.
+	//
+	// - normal: Common knowledge.
 	//
 	// example:
 	//
 	// string_value
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// 资料标签JSON字符串列表
+	// The resource tags. This parameter is optional. The value is a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
-	// ["重点","文档"]
+	// ["Important","Document"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 资料类型，例如 TEXT、FILE、ONLINE_DOC、FEISHU
+	// The type of the resource source. Valid values:
+	//
+	// - ExportTaskId: The resource export ID.
+	//
+	// - TaskId: The module execution task ID.
+	//
+	// - StatePath: The OSS path where the resource state is stored.
 	//
 	// example:
 	//
 	// string_value
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 当前资料状态，例如 READY、RUNNING、FAILED
+	// The resource status. The initial status during the creation process is typically PENDING. If the on_create operation fails, the status is FAILED.
 	//
 	// example:
 	//

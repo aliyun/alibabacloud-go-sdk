@@ -28,13 +28,13 @@ type iReplaceGroupSourceFileRequest interface {
 }
 
 type ReplaceGroupSourceFileRequest struct {
-	// 新文件名；省略或空字符串保留原文件名，用户自定义展示名沿用现有保护规则
+	// The new file name. This parameter is optional. If you do not specify this parameter or set it to an empty string, the original file name is retained.
 	//
 	// example:
 	//
 	// example
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 已上传新文件的 OSS 持久化地址，使用上传接口返回值
+	// The OSS persistent storage path of the replacement file.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ReplaceGroupSourceFileRequest struct {
 	//
 	// oss://example/new.txt
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// 已上传新文件的访问 URL，可能携带临时签名
+	// The OSS persistent storage path of the replacement file.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ReplaceGroupSourceFileRequest struct {
 	//
 	// https://example.com/new.txt
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// 已上传新文件的文件记录 ID
+	// The file record ID of the replacement file.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type ReplaceGroupSourceFileRequest struct {
 	//
 	// file_example
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 是否等待解析完成；默认 false 异步受理，true 同步等待，网关超时 300000ms
+	// Specifies whether to synchronously wait for re-parsing to complete. Default value: false, which means the task is asynchronously enqueued.
 	//
 	// example:
 	//
 	// false
 	ForceSync *bool `json:"forceSync,omitempty" xml:"forceSync,omitempty"`
-	// 资料所属协作空间 ID
+	// The project group ID.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type ReplaceGroupSourceFileRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 当前空间物理 GROUP 资料 ID；引用资料只读
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type ReplaceGroupSourceFileRequest struct {
 	//
 	// source_example
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass this parameter explicitly by using `--tenant-id`.
 	//
 	// example:
 	//

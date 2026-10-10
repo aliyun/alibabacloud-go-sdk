@@ -26,19 +26,19 @@ type iCreateGroupFileRequest interface {
 }
 
 type CreateGroupFileRequest struct {
-	// 资料描述
+	// The description of the AI assistant.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 当前空间物理目录ID；省略/root使用空间根，首次可能初始化根目录；引用目录不可写
+	// The folder ID.
 	//
 	// example:
 	//
 	// dir_example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 当前用户在当前租户上传的SOURCE/OSS文件记录ID；须先完成文件PUT
+	// The file record ID. This parameter is optional and corresponds to settings.file_record_id.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateGroupFileRequest struct {
 	//
 	// example
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 协作空间 ID
+	// The project group ID.
 	//
 	// This parameter is required.
 	//
@@ -54,21 +54,21 @@ type CreateGroupFileRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 资料显示名；最终名称沿用Provider规则
+	// The name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 项目资料
+	// Project Files
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 资料标签，JSON字符串列表
+	// The source tags.
 	//
 	// example:
 	//
 	// example
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//

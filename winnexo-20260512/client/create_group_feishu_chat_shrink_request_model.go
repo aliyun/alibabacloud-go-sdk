@@ -32,7 +32,7 @@ type iCreateGroupFeishuChatShrinkRequest interface {
 }
 
 type CreateGroupFeishuChatShrinkRequest struct {
-	// 飞书群聊ID，以oc_开头，需当前用户有权读取
+	// The DingTalk group chat session ID.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,19 @@ type CreateGroupFeishuChatShrinkRequest struct {
 	//
 	// cidxxxxxxxx
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// 资料描述
+	// The pipeline description.
 	//
 	// example:
 	//
 	// string_value
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 空间物理目录ID；省略/root使用空间根，首次可能初始化根目录
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 协作空间 ID
+	// The project group ID.
 	//
 	// This parameter is required.
 	//
@@ -60,37 +60,37 @@ type CreateGroupFeishuChatShrinkRequest struct {
 	//
 	// exampleGroupId
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 历史起始时间，YYYY-MM-DD或YYYY-MM-DD HH:MM:SS；省略读取全部可见历史
+	// The start time for historical messages. The value must be in the YYYY-MM-DD or YYYY-MM-DD HH:MM:SS format. If this parameter is not specified, all visible historical messages are retrieved.
 	//
 	// example:
 	//
 	// 2026-08-01
 	HistoryStartTime *string `json:"historyStartTime,omitempty" xml:"historyStartTime,omitempty"`
-	// 分析指令
+	// The meeting notes content (optional). The notes are used for auxiliary analysis.
 	//
 	// example:
 	//
-	// 重点识别客户诉求与待办
+	// Focus on identifying customer demands and to-do items
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
-	// 运营对象名称，用于来源追溯
+	// The digital employee name (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 资料标签JSON字符串列表
+	// The source tags.
 	//
 	// example:
 	//
-	// ["重点","文件"]
+	// ["Key","File"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. You can pass it explicitly by using --tenant-id in winnexo-cli.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// Source级同步配置
+	// The feature update frequency.
 	UpdateFrequencyShrink *string `json:"updateFrequency,omitempty" xml:"updateFrequency,omitempty"`
 }
 
