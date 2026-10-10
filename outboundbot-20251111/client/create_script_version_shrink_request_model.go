@@ -52,9 +52,9 @@ type CreateScriptVersionShrinkRequest struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b26
 	SourceVersionId *string `json:"SourceVersionId,omitempty" xml:"SourceVersionId,omitempty"`
-	// The TTS configuration.
+	// The Text-to-Speech (TTS) configuration.
 	SynthesizerConfigShrink *string `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty"`
-	// The ASR configuration.
+	// The Automatic Speech Recognition (ASR) configuration.
 	TranscriberConfigShrink *string `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty"`
 }
 

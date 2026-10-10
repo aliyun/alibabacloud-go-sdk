@@ -54,7 +54,7 @@ type ListScriptsResponseBody struct {
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -149,15 +149,15 @@ type ListScriptsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data list.
+	// The list of scripts.
 	Scripts []*ListScriptsResponseBodyDataScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
-	// The total number of records that match the conditions.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -223,13 +223,25 @@ func (s *ListScriptsResponseBodyData) Validate() error {
 }
 
 type ListScriptsResponseBodyDataScripts struct {
+	// The chatbot builder type.
+	//
+	// example:
+	//
+	// LITE
+	BuilderType *string `json:"BuilderType,omitempty" xml:"BuilderType,omitempty"`
+	// The chatbot instance ID.
+	//
+	// example:
+	//
+	// chatbot-cn-AmVJnFZRmb
+	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
 	// The concurrency.
 	//
 	// example:
 	//
 	// 10
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// The creation time, in millisecond-level timestamp.
+	// The creation time, in milliseconds.
 	//
 	// example:
 	//
@@ -251,7 +263,7 @@ type ListScriptsResponseBodyDataScripts struct {
 	//
 	// example:
 	//
-	// Satisfaction Survey
+	// Satisfaction survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The NLU access type.
 	//
@@ -265,7 +277,7 @@ type ListScriptsResponseBodyDataScripts struct {
 	//
 	// BEEBOT
 	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	// The phone number bound to the scenario.
+	// The phone number bound to the script.
 	//
 	// example:
 	//
@@ -277,19 +289,19 @@ type ListScriptsResponseBodyDataScripts struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b41
 	PublishedVersionId *string `json:"PublishedVersionId,omitempty" xml:"PublishedVersionId,omitempty"`
-	// The scenario ID.
+	// The script ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The scenario status.
+	// The script status.
 	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time, in millisecond-level timestamp.
+	// The update time, in milliseconds.
 	//
 	// example:
 	//
@@ -303,6 +315,14 @@ func (s ListScriptsResponseBodyDataScripts) String() string {
 
 func (s ListScriptsResponseBodyDataScripts) GoString() string {
 	return s.String()
+}
+
+func (s *ListScriptsResponseBodyDataScripts) GetBuilderType() *string {
+	return s.BuilderType
+}
+
+func (s *ListScriptsResponseBodyDataScripts) GetChatbotId() *string {
+	return s.ChatbotId
 }
 
 func (s *ListScriptsResponseBodyDataScripts) GetConcurrency() *int32 {
@@ -351,6 +371,16 @@ func (s *ListScriptsResponseBodyDataScripts) GetStatus() *string {
 
 func (s *ListScriptsResponseBodyDataScripts) GetUpdatedTime() *int64 {
 	return s.UpdatedTime
+}
+
+func (s *ListScriptsResponseBodyDataScripts) SetBuilderType(v string) *ListScriptsResponseBodyDataScripts {
+	s.BuilderType = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyDataScripts) SetChatbotId(v string) *ListScriptsResponseBodyDataScripts {
+	s.ChatbotId = &v
+	return s
 }
 
 func (s *ListScriptsResponseBodyDataScripts) SetConcurrency(v int32) *ListScriptsResponseBodyDataScripts {

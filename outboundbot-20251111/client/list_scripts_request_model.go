@@ -9,10 +9,14 @@ type iListScriptsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBuilderType(v string) *ListScriptsRequest
+	GetBuilderType() *string
 	SetInstanceId(v string) *ListScriptsRequest
 	GetInstanceId() *string
 	SetName(v string) *ListScriptsRequest
 	GetName() *string
+	SetNluEngine(v string) *ListScriptsRequest
+	GetNluEngine() *string
 	SetPageNumber(v int32) *ListScriptsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListScriptsRequest
@@ -24,37 +28,49 @@ type iListScriptsRequest interface {
 }
 
 type ListScriptsRequest struct {
+	// The chatbot builder type.
+	//
+	// example:
+	//
+	// LITE
+	BuilderType *string `json:"BuilderType,omitempty" xml:"BuilderType,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The scenario name.
+	// The script name.
 	//
 	// example:
 	//
-	// Satisfaction Survey
+	// Satisfaction survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The NLU engine type.
+	//
+	// example:
+	//
+	// BEEBOT
+	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
 	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to return only published scenarios.
+	// Specifies whether to return only published scripts.
 	//
 	// example:
 	//
 	// true
 	PublishOnly *bool `json:"PublishOnly,omitempty" xml:"PublishOnly,omitempty"`
-	// The list of scenario IDs.
+	// The list of script IDs.
 	ScriptIds []*string `json:"ScriptIds,omitempty" xml:"ScriptIds,omitempty" type:"Repeated"`
 }
 
@@ -66,12 +82,20 @@ func (s ListScriptsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListScriptsRequest) GetBuilderType() *string {
+	return s.BuilderType
+}
+
 func (s *ListScriptsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
 func (s *ListScriptsRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *ListScriptsRequest) GetNluEngine() *string {
+	return s.NluEngine
 }
 
 func (s *ListScriptsRequest) GetPageNumber() *int32 {
@@ -90,6 +114,11 @@ func (s *ListScriptsRequest) GetScriptIds() []*string {
 	return s.ScriptIds
 }
 
+func (s *ListScriptsRequest) SetBuilderType(v string) *ListScriptsRequest {
+	s.BuilderType = &v
+	return s
+}
+
 func (s *ListScriptsRequest) SetInstanceId(v string) *ListScriptsRequest {
 	s.InstanceId = &v
 	return s
@@ -97,6 +126,11 @@ func (s *ListScriptsRequest) SetInstanceId(v string) *ListScriptsRequest {
 
 func (s *ListScriptsRequest) SetName(v string) *ListScriptsRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ListScriptsRequest) SetNluEngine(v string) *ListScriptsRequest {
+	s.NluEngine = &v
 	return s
 }
 

@@ -2815,12 +2815,20 @@ func (client *Client) ListScriptsWithOptions(tmpReq *ListScriptsRequest, runtime
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BuilderType) {
+		body["BuilderType"] = request.BuilderType
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		body["InstanceId"] = request.InstanceId
 	}
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NluEngine) {
+		body["NluEngine"] = request.NluEngine
 	}
 
 	if !dara.IsNil(request.PageNumber) {

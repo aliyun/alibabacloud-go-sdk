@@ -52,9 +52,9 @@ type CreateScriptVersionRequest struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b26
 	SourceVersionId *string `json:"SourceVersionId,omitempty" xml:"SourceVersionId,omitempty"`
-	// The TTS configuration.
+	// The Text-to-Speech (TTS) configuration.
 	SynthesizerConfig *CreateScriptVersionRequestSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
-	// The ASR configuration.
+	// The Automatic Speech Recognition (ASR) configuration.
 	TranscriberConfig *CreateScriptVersionRequestTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
 }
 
@@ -182,7 +182,7 @@ type CreateScriptVersionRequestInteractionConfig struct {
 	BargeInConfig *CreateScriptVersionRequestInteractionConfigBargeInConfig `json:"BargeInConfig,omitempty" xml:"BargeInConfig,omitempty" type:"Struct"`
 	// The hang-up configuration.
 	EndConversationConfig *CreateScriptVersionRequestInteractionConfigEndConversationConfig `json:"EndConversationConfig,omitempty" xml:"EndConversationConfig,omitempty" type:"Struct"`
-	// The delay in milliseconds before playing audio after the call is connected.
+	// The delay before audio playback after the call is connected. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -293,7 +293,7 @@ type CreateScriptVersionRequestInteractionConfigBargeInConfig struct {
 	//
 	// true
 	GlobalBargeInEnabled *bool `json:"GlobalBargeInEnabled,omitempty" xml:"GlobalBargeInEnabled,omitempty"`
-	// Specifies whether barge-in is supported during the opening greeting.
+	// Specifies whether barge-in is supported during the opening statement.
 	//
 	// example:
 	//
@@ -347,13 +347,13 @@ type CreateScriptVersionRequestInteractionConfigEndConversationConfig struct {
 	//
 	// true
 	BargeInEnabled *bool `json:"BargeInEnabled,omitempty" xml:"BargeInEnabled,omitempty"`
-	// The number of seconds to wait after the closing statement is played before executing the hang-up action. Valid values: 0 to 5.
+	// The delay in seconds after the hang-up script finishes playing before the hang-up action is executed. Valid range: 0 to 5.
 	//
 	// example:
 	//
 	// 1
 	Delay *int32 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The special condition interception settings.
+	// The special case interception rules.
 	Triggers []*CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
@@ -406,7 +406,7 @@ func (s *CreateScriptVersionRequestInteractionConfigEndConversationConfig) Valid
 }
 
 type CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers struct {
-	// The closing statement played when hanging up after reaching the turn limit.
+	// The closing statement played when the turn limit is reached and the hang-up is executed.
 	//
 	// example:
 	//
@@ -416,19 +416,19 @@ type CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers st
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
 	// Valid values:
 	//
-	// - TurnLimit: maximum number of interaction turns.
+	// - TurnLimit: Maximum interaction turn limit check.
 	//
-	// - IntelligentVoiceAssistant: voice assistant.
+	// - IntelligentVoiceAssistant: Voice assistant.
 	//
-	// - InteractiveVoiceResponse: extension transfer.
+	// - InteractiveVoiceResponse: Extension number transfer.
 	//
-	// - KeyWords: custom interception.
+	// - KeyWords: Custom interception.
 	//
 	// example:
 	//
 	// TurnLimit
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// Hangs up when the number of interaction turns exceeds x. Valid values: 0 to 100. A value of 0 indicates that the turn limit hang-up is disabled.
+	// The hang-up is executed when the number of interaction turns exceeds the specified value. Valid range: 0 to 100. A value of 0 indicates that the turn-limit hang-up is disabled.
 	//
 	// example:
 	//
@@ -485,9 +485,9 @@ func (s *CreateScriptVersionRequestInteractionConfigEndConversationConfigTrigger
 }
 
 type CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig struct {
-	// The list of actions to perform during consecutive silence.
+	// The list of actions to execute during consecutive silence.
 	FallbackControlParamsList []*CreateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList `json:"FallbackControlParamsList,omitempty" xml:"FallbackControlParamsList,omitempty" type:"Repeated"`
-	// The number of consecutive silence rounds before hanging up.
+	// The number of consecutive silence turns before hang-up. This parameter takes effect only when NluEngine is set to PROMPTS.
 	//
 	// example:
 	//
@@ -497,13 +497,11 @@ type CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig struct {
 	//
 	// example:
 	//
-	// - Repeat the content of the previous conversation round
+	// - Rephrase the content from the previous turn
+	//
+	// - Ensure natural context continuity
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The silence timeout period, in milliseconds.\\
-	//
-	// When the user remains silent for longer than the specified value, the silence timeout prompt is played.\\
-	//
-	// Valid range: 2000 to 10000.
+	// The silence timeout period in milliseconds. When the user remains silent beyond the specified value, the silence timeout script is played. Valid range: 2000 to 10000.
 	//
 	// example:
 	//
@@ -569,7 +567,7 @@ func (s *CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig) Vali
 }
 
 type CreateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList struct {
-	// The action to perform during consecutive silence.
+	// The action to execute during consecutive silence.
 	//
 	// example:
 	//
@@ -603,13 +601,15 @@ type CreateScriptVersionRequestInteractionConfigTransitionConfig struct {
 	//
 	// example:
 	//
-	// Based on the user\\"s latest reply in the conversation history below, generate a brief transitional phrase for the customer service agent to naturally and smoothly connect the dialogue. Requirements are as follows:
-	//
-	// 1. Use colloquial expressions common in customer service scenarios, maintaining a natural, polite, and neutral tone......
+	// Based on the user\\"s latest reply in the following conversation record, generate a brief transition phrase for the agent to naturally and smoothly continue the conversation. Requirements: 1. Use colloquial expressions common in customer service scenarios, keeping the tone natural, polite, and neutral.....
 	AiPhrasePrompt *string `json:"AiPhrasePrompt,omitempty" xml:"AiPhrasePrompt,omitempty"`
 	// The list of fixed transition phrases.
 	FixedPhraseList []*string `json:"FixedPhraseList,omitempty" xml:"FixedPhraseList,omitempty" type:"Repeated"`
-	// The method for generating transition phrases.
+	// The transition phrase generation method. Valid values:
+	//
+	// - aiGenerated: Model-generated.
+	//
+	// - fixedPhrase: Fixed phrase.
 	//
 	// example:
 	//
@@ -728,7 +728,9 @@ func (s *CreateScriptVersionRequestLabelConfigs) Validate() error {
 }
 
 type CreateScriptVersionRequestScriptProfile struct {
-	// The chatbot AgentKey.
+	// The AgentKey of the chatbot.\\
+	//
+	// This parameter is required when NluEngine is set to BEEBOT for the current scenario.
 	//
 	// example:
 	//
@@ -736,13 +738,17 @@ type CreateScriptVersionRequestScriptProfile struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	// The dialogue agent configuration.
 	AgentProfile *CreateScriptVersionRequestScriptProfileAgentProfile `json:"AgentProfile,omitempty" xml:"AgentProfile,omitempty" type:"Struct"`
-	// The chatbot type.
+	// The chatbot type.\\
+	//
+	// This parameter is required when NluEngine is set to BEEBOT for the current scenario.
 	//
 	// example:
 	//
 	// LITE
 	BuilderType *string `json:"BuilderType,omitempty" xml:"BuilderType,omitempty"`
-	// The chatbot ID.
+	// The chatbot ID.\\
+	//
+	// This parameter is required when NluEngine is set to BEEBOT for the current scenario.
 	//
 	// example:
 	//
@@ -750,7 +756,9 @@ type CreateScriptVersionRequestScriptProfile struct {
 	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
 	// The Function Compute configuration.
 	FunctionMeta *CreateScriptVersionRequestScriptProfileFunctionMeta `json:"FunctionMeta,omitempty" xml:"FunctionMeta,omitempty" type:"Struct"`
-	// The dialogue model.
+	// The dialogue model.\\
+	//
+	// This parameter is required when NluEngine is set to PROMPTS for the current scenario.
 	//
 	// example:
 	//
@@ -881,7 +889,7 @@ func (s *CreateScriptVersionRequestScriptProfile) Validate() error {
 }
 
 type CreateScriptVersionRequestScriptProfileAgentProfile struct {
-	// The prompt JSON.
+	// The prompt in JSON format.
 	//
 	// example:
 	//
@@ -926,31 +934,41 @@ func (s *CreateScriptVersionRequestScriptProfileAgentProfile) Validate() error {
 }
 
 type CreateScriptVersionRequestScriptProfileFunctionMeta struct {
-	// The function service ID.
+	// The function service ID.\\
+	//
+	// This parameter is required when NluEngine is set to FUNCTION for the current scenario.
 	//
 	// example:
 	//
 	// 9b752bbb-805a-4d3e-9013-eab5555c3fef
 	FunctionId *string `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
-	// The function service name.
+	// The function service name.\\
+	//
+	// This parameter is required when NluEngine is set to FUNCTION for the current scenario.
 	//
 	// example:
 	//
 	// my_funciton
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The function trigger name.
+	// The function trigger name.\\
+	//
+	// This parameter is required when NluEngine is set to FUNCTION for the current scenario.
 	//
 	// example:
 	//
 	// defaultTrigger
 	HttpTriggerName *string `json:"HttpTriggerName,omitempty" xml:"HttpTriggerName,omitempty"`
-	// The function trigger URL.
+	// The function trigger URL.\\
+	//
+	// This parameter is required when NluEngine is set to FUNCTION for the current scenario.
 	//
 	// example:
 	//
 	// http://chat-xxxxx-v-yewiundukb.cn-hangzhou-xxx.run
 	HttpTriggerUrl *string `json:"HttpTriggerUrl,omitempty" xml:"HttpTriggerUrl,omitempty"`
-	// The region where the function service resides.
+	// The region where the function service resides.\\
+	//
+	// This parameter is required when NluEngine is set to FUNCTION for the current scenario.
 	//
 	// example:
 	//
@@ -1066,7 +1084,11 @@ type CreateScriptVersionRequestSynthesizerConfig struct {
 	//
 	// BAILIAN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	// The pitch.
+	// The pitch rate.\\
+	//
+	// Valid values: -500 to 500.\\
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -1074,7 +1096,11 @@ type CreateScriptVersionRequestSynthesizerConfig struct {
 	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
 	// The TTS correction dictionary.
 	PronRules []*CreateScriptVersionRequestSynthesizerConfigPronRules `json:"PronRules,omitempty" xml:"PronRules,omitempty" type:"Repeated"`
-	// The speech rate.
+	// The speech rate.\\
+	//
+	// Valid values: -500 to 500.\\
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -1086,7 +1112,11 @@ type CreateScriptVersionRequestSynthesizerConfig struct {
 	//
 	// longanyang
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	// The volume.
+	// The volume.\\
+	//
+	// Valid values: 0 to 100.\\
+	//
+	// Default value: 50.
 	//
 	// example:
 	//
@@ -1232,13 +1262,13 @@ func (s *CreateScriptVersionRequestSynthesizerConfigNlsAccessProfile) Validate()
 }
 
 type CreateScriptVersionRequestSynthesizerConfigPronRules struct {
-	// The easily mispronounced word.
+	// The commonly mispronounced character or word.
 	//
 	// example:
 	//
 	// 还钱
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The homophonic word.
+	// The homophonic character or word.
 	//
 	// example:
 	//
@@ -1285,7 +1315,7 @@ type CreateScriptVersionRequestTranscriberConfig struct {
 	//
 	// 700
 	CustomizationId *string `json:"CustomizationId,omitempty" xml:"CustomizationId,omitempty"`
-	// The silence detection threshold. Sentence segmentation is triggered when the speaking interval exceeds x milliseconds, which is also known as Voice Activity Detection (VAD).
+	// The silence detection threshold. When the silence between speech segments exceeds the specified number of milliseconds, sentence segmentation is triggered (Voice Activity Detection, or VAD).
 	//
 	// example:
 	//
@@ -1311,7 +1341,11 @@ type CreateScriptVersionRequestTranscriberConfig struct {
 	//
 	// BAILIAN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	// The noise parameter threshold. Valid values: -100 to 100. Description:
+	// The noise threshold. Valid values: -100 to 100.
+	//
+	// A value closer to -100 increases the probability that noise is classified as speech.
+	//
+	// A value closer to +100 increases the probability that speech is classified as noise.
 	//
 	// example:
 	//
@@ -1437,13 +1471,13 @@ type CreateScriptVersionRequestTranscriberConfigCorrectionRules struct {
 	//
 	// example:
 	//
-	// 啊里巴巴
+	// Aliababa
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
 	// The corrected text.
 	//
 	// example:
 	//
-	// 阿里巴巴
+	// Alibaba
 	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
 }
 

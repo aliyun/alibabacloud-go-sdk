@@ -58,7 +58,7 @@ type UpdateScriptVersionResponseBody struct {
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
