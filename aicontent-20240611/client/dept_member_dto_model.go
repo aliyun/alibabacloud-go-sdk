@@ -66,7 +66,7 @@ type DeptMemberDTO struct {
 	MonthlyBalance *float64 `json:"monthlyBalance,omitempty" xml:"monthlyBalance,omitempty"`
 	// example:
 	//
-	// John Smith
+	// Zhang San
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//

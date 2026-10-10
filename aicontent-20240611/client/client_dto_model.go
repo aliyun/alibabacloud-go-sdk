@@ -96,7 +96,7 @@ type ClientDTO struct {
 	Main *int32 `json:"main,omitempty" xml:"main,omitempty"`
 	// example:
 	//
-	// My customer
+	// My Customer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//

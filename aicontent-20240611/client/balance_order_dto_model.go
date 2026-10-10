@@ -82,7 +82,7 @@ type BalanceOrderDTO struct {
 	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
 	// example:
 	//
-	// Administrator manual recharge
+	// Manual top-up by administrator
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// example:
 	//

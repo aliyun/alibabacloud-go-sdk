@@ -18,7 +18,7 @@ type iBatchFailedItemDTO interface {
 type BatchFailedItemDTO struct {
 	// example:
 	//
-	// Member node is missing
+	// Member node missing
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 	// example:
 	//

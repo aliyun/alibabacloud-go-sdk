@@ -3321,6 +3321,76 @@ func (client *Client) ModelRouterBatchDisableMemberApiKeys(id *string, request *
 
 // Summary:
 //
+// Renews member API keys in bulk in authorization management.
+//
+// @param request - ModelRouterBatchRenewMemberApiKeysRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBatchRenewMemberApiKeysResponse
+func (client *Client) ModelRouterBatchRenewMemberApiKeysWithOptions(id *string, request *ModelRouterBatchRenewMemberApiKeysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBatchRenewMemberApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireAt) {
+		body["expireAt"] = request.ExpireAt
+	}
+
+	if !dara.IsNil(request.UserIds) {
+		body["userIds"] = request.UserIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBatchRenewMemberApiKeys"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/member-apikeys/renew"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBatchRenewMemberApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Renews member API keys in bulk in authorization management.
+//
+// @param request - ModelRouterBatchRenewMemberApiKeysRequest
+//
+// @return ModelRouterBatchRenewMemberApiKeysResponse
+func (client *Client) ModelRouterBatchRenewMemberApiKeys(id *string, request *ModelRouterBatchRenewMemberApiKeysRequest) (_result *ModelRouterBatchRenewMemberApiKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterBatchRenewMemberApiKeysResponse{}
+	_body, _err := client.ModelRouterBatchRenewMemberApiKeysWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Batch resets member authorizations to inherit under a department in organization management.
 //
 // @param request - ModelRouterBatchResetMemberAuthorizationRequest
@@ -9038,6 +9108,72 @@ func (client *Client) ModelRouterQueryUserList(request *ModelRouterQueryUserList
 	headers := make(map[string]*string)
 	_result = &ModelRouterQueryUserListResponse{}
 	_body, _err := client.ModelRouterQueryUserListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Manages authorization and renews an API key.
+//
+// @param request - ModelRouterRenewApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterRenewApiKeyResponse
+func (client *Client) ModelRouterRenewApiKeyWithOptions(id *string, request *ModelRouterRenewApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterRenewApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireAt) {
+		body["expireAt"] = request.ExpireAt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterRenewApiKey"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/apikeys/" + dara.PercentEncode(dara.StringValue(id)) + "/renew"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterRenewApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Manages authorization and renews an API key.
+//
+// @param request - ModelRouterRenewApiKeyRequest
+//
+// @return ModelRouterRenewApiKeyResponse
+func (client *Client) ModelRouterRenewApiKey(id *string, request *ModelRouterRenewApiKeyRequest) (_result *ModelRouterRenewApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterRenewApiKeyResponse{}
+	_body, _err := client.ModelRouterRenewApiKeyWithOptions(id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

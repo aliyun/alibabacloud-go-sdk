@@ -60,98 +60,146 @@ type iBillingDetailRowDTO interface {
 }
 
 type BillingDetailRowDTO struct {
+	// The actual payment amount (after discount), rounded to 8 decimal places.
+	//
 	// example:
 	//
 	// 0.00012800
 	Amount *float64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// API Key ID
+	//
 	// example:
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
-	// 默认密钥
+	// Default Key
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The number of cache creation tokens (explicit cache writes).
+	//
 	// example:
 	//
 	// 0
 	CacheCreationTokens *float64 `json:"cacheCreationTokens,omitempty" xml:"cacheCreationTokens,omitempty"`
+	// The number of tokens that hit the cache.
+	//
 	// example:
 	//
 	// 256
 	CachedTokens *float64 `json:"cachedTokens,omitempty" xml:"cachedTokens,omitempty"`
+	// The department ID. A value of 0 indicates that no department is associated.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The department name.
+	//
 	// example:
 	//
-	// 研发部
+	// R&D Department
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
+	// The discount coefficient. A value of 1.0 indicates no discount.
+	//
 	// example:
 	//
 	// 1.0
 	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
+	// The number of input tokens, including cached tokens and cache creation tokens.
+	//
 	// example:
 	//
 	// 1024
 	InputTokens *float64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The member user ID for a member row. The value is 0 for a department row.
+	//
 	// example:
 	//
 	// 30001
 	MemberUserId *int64 `json:"memberUserId,omitempty" xml:"memberUserId,omitempty"`
+	// The member name for a member row. The value is empty for a department row.
+	//
 	// example:
 	//
-	// 张三
+	// John
 	MemberUserName *string `json:"memberUserName,omitempty" xml:"memberUserName,omitempty"`
+	// The JSON of other metering field mapping, such as video duration and image count. Fields with a value of 0 are not included in the output.
+	//
 	// example:
 	//
 	// {}
 	Metrics *string `json:"metrics,omitempty" xml:"metrics,omitempty"`
+	// The model identifier.
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
-	// 通义千问-Plus
+	// Qwen-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model symbol (provider identifier).
+	//
 	// example:
 	//
 	// qwen
 	ModelSymbol *string `json:"modelSymbol,omitempty" xml:"modelSymbol,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The model version number.
+	//
 	// example:
 	//
 	// 1
 	ModelVersion *int32 `json:"modelVersion,omitempty" xml:"modelVersion,omitempty"`
+	// The number of output tokens.
+	//
 	// example:
 	//
 	// 512
 	OutputTokens *float64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The number of reasoning tokens.
+	//
 	// example:
 	//
 	// 128
 	ReasoningTokens *float64 `json:"reasoningTokens,omitempty" xml:"reasoningTokens,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// chatcmpl-abc123def456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The request time as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1700000000
 	RequestTime *int64 `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 1536
 	TotalTokens *float64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	// The raw JSON of the usage details.
+	//
 	// example:
 	//
 	// {"input_tokens": 1024, "output_tokens": 512}

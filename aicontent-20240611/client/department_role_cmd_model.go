@@ -16,10 +16,14 @@ type iDepartmentRoleCmd interface {
 }
 
 type DepartmentRoleCmd struct {
+	// The department ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The role code.
+	//
 	// example:
 	//
 	// member
