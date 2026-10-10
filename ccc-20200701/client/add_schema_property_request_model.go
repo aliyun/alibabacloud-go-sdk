@@ -20,7 +20,7 @@ type iAddSchemaPropertyRequest interface {
 }
 
 type AddSchemaPropertyRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type AddSchemaPropertyRequest struct {
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Field
+	// The property.
 	Property *AddSchemaPropertyRequestProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *AddSchemaPropertyRequest) Validate() error {
 }
 
 type AddSchemaPropertyRequestProperty struct {
-	// Is array
+	// Specifies whether the property is an array.
 	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// Extension attributes
+	// The extended attributes.
 	//
 	// example:
 	//
-	// {\\"newName\\":\\"小桔充电-demo\\",\\"appId\\":\\"69FRKB4193W8BYP0\\"}
+	// {"newName":"Xiaoju Charging-demo","appId":"69FRKB4193W8BYP0"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Data type
+	// The data type.
 	//
 	// This parameter is required.
 	//
@@ -120,61 +120,61 @@ type AddSchemaPropertyRequestProperty struct {
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Is disabled
+	// Specifies whether the property is disabled.
 	//
 	// example:
 	//
 	// False
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// Name
+	// The display name.
 	//
 	// example:
 	//
 	// name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// List display order
+	// The display order in the list.
 	//
 	// example:
 	//
 	// 10
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
-	// Editor type
+	// The editor type.
 	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
-	// Maximum length
+	// The maximum length.
 	//
 	// example:
 	//
 	// 100
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// Maximum numeric value
+	// The maximum numeric value.
 	//
 	// example:
 	//
 	// 1
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
-	// Minimum length
+	// The minimum length.
 	//
 	// example:
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// Minimum numeric value
+	// The minimum numeric value.
 	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
-	// Name
+	// The display name.
 	//
 	// This parameter is required.
 	//
@@ -182,25 +182,25 @@ type AddSchemaPropertyRequestProperty struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Regular expression validation rule
+	// The regular expression validation rule.
 	//
 	// example:
 	//
 	// *
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// Regular expression validation error message
+	// The error message for regular expression validation.
 	//
 	// example:
 	//
-	// 格式错误
+	// Invalid format
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
-	// Is read-only
+	// Specifies whether the property is read-only.
 	//
 	// example:
 	//
 	// true
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// Is required
+	// Specifies whether the property is required.
 	//
 	// example:
 	//

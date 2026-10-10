@@ -34,7 +34,7 @@ type ExportContactFlowRequest struct {
   // 
   // 9cfad875-6260-4a53-ab6e-b13e3fb3xxxx
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 

@@ -40,7 +40,7 @@ type GetCallDetailRecordResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -115,20 +115,30 @@ func (s *GetCallDetailRecordResponseBody) Validate() error {
 type GetCallDetailRecordResponseBodyData struct {
 	// The list of agent events.
 	AgentEvents []*GetCallDetailRecordResponseBodyDataAgentEvents `json:"AgentEvents,omitempty" xml:"AgentEvents,omitempty" type:"Repeated"`
-	// The IDs of the agents who are involved in the call. Multiple IDs are separated by commas.
+	// The list of agent IDs. This indicates the agents that the call passed through. Multiple values are separated by commas.
 	//
 	// example:
 	//
 	// agent1@ccc-test,agent2@ccc-test
 	AgentIds *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	// The names of the agents who are involved in the call. Multiple names are separated by commas.
+	// The list of agent names. This indicates the agents that the call passed through. Multiple values are separated by commas.
 	//
 	// example:
 	//
 	// agent1,agent2
-	AgentNames           *string                                             `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
-	AnalyticsReport      *GetCallDetailRecordResponseBodyDataAnalyticsReport `json:"AnalyticsReport,omitempty" xml:"AnalyticsReport,omitempty" type:"Struct"`
-	AnalyticsReportReady *bool                                               `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
+	AgentNames *string `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	// The intelligent analysis report of the call.
+	//
+	// example:
+	//
+	// {"ProblemSolving":{"Success":true,"Solved":true}}
+	AnalyticsReport *GetCallDetailRecordResponseBodyDataAnalyticsReport `json:"AnalyticsReport,omitempty" xml:"AnalyticsReport,omitempty" type:"Struct"`
+	// Indicates whether the intelligent analysis report is generated.
+	//
+	// example:
+	//
+	// true
+	AnalyticsReportReady *bool `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
 	// The call duration, in seconds.
 	//
 	// example:
@@ -141,17 +151,17 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// 1332315****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// The location of the called number.
+	// The location information of the called number.
 	//
 	// example:
 	//
-	// 河北省-唐山
+	// Hebei Province-Tangshan
 	CalleeLocation *string `json:"CalleeLocation,omitempty" xml:"CalleeLocation,omitempty"`
-	// The location of the calling number.
+	// The location information of the calling number.
 	//
 	// example:
 	//
-	// 山东省-淄博
+	// Shandong Province-Zibo
 	CallerLocation *string `json:"CallerLocation,omitempty" xml:"CallerLocation,omitempty"`
 	// The calling number.
 	//
@@ -159,7 +169,7 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// 0533128****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// The reason why the call ended. Note: The \\`Voicemail\\`, \\`QueuingFailed\\`, \\`QueuingTimeout\\`, \\`QueuingOverflow\\`, and \\`IVRException\\` reasons are returned only if you configure the hang-up reason node. If you do not configure this node and the IVR flow does not include a module to transfer the call to an agent, the default reason is \\`AbandonedInIVR\\`.
+	// The reason why the call ended. Note: Disconnect reasons such as voice mail, transfer to agent failure, queue timeout, queue overflow, and IVR exception are displayed only if the customer configures a disconnect reason node. If the node is not configured and the IVR does not contain a transfer to agent module, the disconnect reason defaults to IVR abandoned.
 	//
 	// example:
 	//
@@ -179,13 +189,13 @@ type GetCallDetailRecordResponseBodyData struct {
 	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
 	// The list of customer events.
 	CustomerEvents []*GetCallDetailRecordResponseBodyDataCustomerEvents `json:"CustomerEvents,omitempty" xml:"CustomerEvents,omitempty" type:"Repeated"`
-	// The state of the early media. An exception occurred during the early media phase, which is when the customer is being called. An exception at this stage can cause the call to fail. This parameter provides possible reasons for the connection failure based on an analysis of the early media state.
+	// The early media state. This refers to an exception that occurs during the early media phase, which is usually the phase of calling the customer. An exception in this phase causes the call to fail. Therefore, this state indicates the possible reason for the unanswered call based on the analysis of the early media state.
 	//
 	// example:
 	//
 	// NotConnected
 	EarlyMediaState *string `json:"EarlyMediaState,omitempty" xml:"EarlyMediaState,omitempty"`
-	// The time when the call was connected. This parameter is empty if the call was not connected. The value is a UNIX timestamp, in milliseconds.
+	// The time when the call was established. If the call was not established, this value is empty. The time is formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -198,65 +208,74 @@ type GetCallDetailRecordResponseBodyData struct {
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The list of IVR events.
-	IvrEvents                  []*GetCallDetailRecordResponseBodyDataIvrEvents `json:"IvrEvents,omitempty" xml:"IvrEvents,omitempty" type:"Repeated"`
-	OutsideNumberReleaseReason *string                                         `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
+	IvrEvents []*GetCallDetailRecordResponseBodyDataIvrEvents `json:"IvrEvents,omitempty" xml:"IvrEvents,omitempty" type:"Repeated"`
+	// The reason for disconnection when transferring to an external line.
+	//
+	// example:
+	//
+	// NoAnswer
+	OutsideNumberReleaseReason *string `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
 	// The list of queue events.
 	QueueEvents []*GetCallDetailRecordResponseBodyDataQueueEvents `json:"QueueEvents,omitempty" xml:"QueueEvents,omitempty" type:"Repeated"`
-	// Indicates whether the recording was generated. A value of \\`false\\` is returned if the call was not connected.
+	// Indicates whether the recording has been generated. If the call has not been established, false is returned.
 	//
 	// example:
 	//
 	// true
 	RecordingReady *bool `json:"RecordingReady,omitempty" xml:"RecordingReady,omitempty"`
-	// The release initiator.
+	// The party that disconnected the call.
+	//
+	// [_single.resp.200.props.Data.ReleaseInitiator.enum.agent ]The agent.
+	//
+	// [_single.resp.200.props.Data.ReleaseInitiator.enum.customer ]The customer.
 	//
 	// example:
 	//
 	// customer
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
-	// The reason why the call ended. The value is usually the SIP code followed by a text description.
+	// The reason why the call ended. This is usually in the format of a SIP code followed by a text description.
 	//
 	// example:
 	//
 	// 200 - OK
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
-	// The time when the call ended. This is the time when the last party of the call hangs up. The value is a UNIX timestamp, in milliseconds.
+	// The end time of the call. This is the time when the last participant in the call hung up. The time is formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1532458000000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The satisfaction score. The value and its meaning are defined by you.
+	// The satisfaction survey result. The values and meanings of the satisfaction survey are customized by the customer.
 	//
 	// example:
 	//
 	// 1
 	Satisfaction *int32 `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty"`
-	// The channel through which the satisfaction survey was initiated.
+	// The channel used to initiate the satisfaction survey.
 	//
 	// example:
 	//
 	// IVR
 	SatisfactionSurveyChannel *string `json:"SatisfactionSurveyChannel,omitempty" xml:"SatisfactionSurveyChannel,omitempty"`
-	// Indicates whether a satisfaction survey was initiated.
+	// Indicates whether a satisfaction survey was sent.
 	//
 	// example:
 	//
 	// true
 	SatisfactionSurveyOffered *bool `json:"SatisfactionSurveyOffered,omitempty" xml:"SatisfactionSurveyOffered,omitempty"`
-	// The IDs of the skill groups to which the agents involved in the call belong. Multiple IDs are separated by commas.
+	// The IDs of the skill groups to which the agents participating in the call belong. Multiple skill group IDs are separated by commas.
 	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupIds *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
-	// The names of the skill groups to which the agents involved in the call belong. Multiple names are separated by commas.
+	// The names of the skill groups to which the agents participating in the call belong. Multiple skill group names are separated by commas.
 	//
 	// example:
 	//
-	// 测试技能组
+	// Test skill group
 	SkillGroupNames *string `json:"SkillGroupNames,omitempty" xml:"SkillGroupNames,omitempty"`
-	// The time when the call started. For an inbound call, this is the time when the call enters the IVR. For an outbound call, this is the time when the call is initiated. The value is a UNIX timestamp, in milliseconds.
+	// The start time of the call. For inbound calls, the time is calculated from when the call enters the IVR. For outbound calls, the time is calculated from when the call starts to connect. The time is formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -598,9 +617,9 @@ type GetCallDetailRecordResponseBodyDataAgentEvents struct {
 	//
 	// example:
 	//
-	// 坐席小王
+	// Agent Wang
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// The sequence of events.
+	// The event sequence.
 	EventSequence []*GetCallDetailRecordResponseBodyDataAgentEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
 	// The skill group ID.
 	//
@@ -668,7 +687,7 @@ func (s *GetCallDetailRecordResponseBodyDataAgentEvents) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataAgentEventsEventSequence struct {
-	// The event duration, in seconds.
+	// The duration of the event, in seconds.
 	//
 	// example:
 	//
@@ -680,7 +699,7 @@ type GetCallDetailRecordResponseBodyDataAgentEventsEventSequence struct {
 	//
 	// Dialing
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	// The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -728,10 +747,30 @@ func (s *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence) Validate()
 }
 
 type GetCallDetailRecordResponseBodyDataAnalyticsReport struct {
-	Emotion        *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion        `json:"Emotion,omitempty" xml:"Emotion,omitempty" type:"Struct"`
+	// The analysis result of customer emotion.
+	//
+	// example:
+	//
+	// {"Success":true,"Type":"Neutral","Confidence":50}
+	Emotion *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion `json:"Emotion,omitempty" xml:"Emotion,omitempty" type:"Struct"`
+	// The analysis result of problem resolution.
+	//
+	// example:
+	//
+	// {"Success":true,"Solved":true,"Problem":"Alert issue"}
 	ProblemSolving *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving `json:"ProblemSolving,omitempty" xml:"ProblemSolving,omitempty" type:"Struct"`
-	Satisfaction   *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction   `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty" type:"Struct"`
-	TodoList       *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList       `json:"TodoList,omitempty" xml:"TodoList,omitempty" type:"Struct"`
+	// The analysis result of customer satisfaction.
+	//
+	// example:
+	//
+	// {"Success":true,"SatisfactionDescription":"Satisfied"}
+	Satisfaction *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty" type:"Struct"`
+	// The analysis result of to-do items.
+	//
+	// example:
+	//
+	// {"Success":true,"Tasks":["Follow-up"]}
+	TodoList *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList `json:"TodoList,omitempty" xml:"TodoList,omitempty" type:"Struct"`
 }
 
 func (s GetCallDetailRecordResponseBodyDataAnalyticsReport) String() string {
@@ -803,11 +842,36 @@ func (s *GetCallDetailRecordResponseBodyDataAnalyticsReport) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion struct {
-	Confidence *int32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The confidence level of customer emotion recognition.
+	//
+	// example:
+	//
+	// 50
+	Confidence *int32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The remark for customer emotion analysis.
+	//
+	// example:
+	//
+	// No emotion change detected in the customer
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Indicates whether the emotion analysis task is executed successfully.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the emotion analysis task.
+	//
+	// example:
+	//
+	// 0ff07fe35670423089dbdf12766d962f
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The customer emotion type identified.
+	//
+	// example:
+	//
+	// Neutral
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) String() string {
@@ -868,11 +932,36 @@ func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) Validate() e
 }
 
 type GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving struct {
-	Problem  *string `json:"Problem,omitempty" xml:"Problem,omitempty"`
+	// The customer problem identified by the analysis.
+	//
+	// example:
+	//
+	// Alert issue
+	Problem *string `json:"Problem,omitempty" xml:"Problem,omitempty"`
+	// The Solutions generated by the analysis.
+	//
+	// example:
+	//
+	// The enrichment service automatically closes the original alert
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	Solved   *bool   `json:"Solved,omitempty" xml:"Solved,omitempty"`
-	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the customer problem is resolved.
+	//
+	// example:
+	//
+	// true
+	Solved *bool `json:"Solved,omitempty" xml:"Solved,omitempty"`
+	// Indicates whether the problem resolution analysis task is executed successfully.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the problem resolution analysis task.
+	//
+	// example:
+	//
+	// 0ff07fe35670423089dbdf12766d962f
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) String() string {
@@ -933,10 +1022,30 @@ func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) Valid
 }
 
 type GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction struct {
-	Remark                  *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remark for customer satisfaction analysis.
+	//
+	// example:
+	//
+	// The customer expressed satisfaction
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The description of the customer satisfaction analysis.
+	//
+	// example:
+	//
+	// Satisfied
 	SatisfactionDescription *string `json:"SatisfactionDescription,omitempty" xml:"SatisfactionDescription,omitempty"`
-	Success                 *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the satisfaction analysis task is executed successfully.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the satisfaction analysis task.
+	//
+	// example:
+	//
+	// cb67479ce28243b28ff39948feaa0806
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) String() string {
@@ -988,9 +1097,24 @@ func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) Validat
 }
 
 type GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList struct {
-	Success *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId  *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Tasks   []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// Indicates whether the to-do item analysis task is executed successfully.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the to-do item analysis task.
+	//
+	// example:
+	//
+	// cb67479ce28243b28ff39948feaa0806
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The list of to-do items generated by the analysis.
+	//
+	// example:
+	//
+	// ["Follow-up"]
+	Tasks []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) String() string {
@@ -1033,13 +1157,13 @@ func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) Validate() 
 }
 
 type GetCallDetailRecordResponseBodyDataCustomerEvents struct {
-	// The customer ID. This is usually the customer\\"s phone number.
+	// The customer ID, which is usually the customer phone number.
 	//
 	// example:
 	//
 	// 1332315****
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	// The sequence of events.
+	// The event sequence.
 	EventSequence []*GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
 }
 
@@ -1089,7 +1213,7 @@ type GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence struct {
 	//
 	// Released
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	// The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -1128,15 +1252,15 @@ func (s *GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence) Validat
 }
 
 type GetCallDetailRecordResponseBodyDataIvrEvents struct {
-	// The sequence of events.
+	// The event sequence.
 	EventSequence []*GetCallDetailRecordResponseBodyDataIvrEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
-	// The ID of the IVR contact flow.
+	// The IVR contact flow ID.
 	//
 	// example:
 	//
 	// edaf2eaa-8f88-44ca-812e-41b3cd2b7a90
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The type of the contact flow.
+	// The contact flow type.
 	//
 	// example:
 	//
@@ -1199,7 +1323,7 @@ type GetCallDetailRecordResponseBodyDataIvrEventsEventSequence struct {
 	//
 	// Route2IVR
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	// The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -1238,7 +1362,7 @@ func (s *GetCallDetailRecordResponseBodyDataIvrEventsEventSequence) Validate() e
 }
 
 type GetCallDetailRecordResponseBodyDataQueueEvents struct {
-	// The sequence of events.
+	// The event sequence.
 	EventSequence []*GetCallDetailRecordResponseBodyDataQueueEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
 	// The contact flow ID.
 	//
@@ -1246,7 +1370,7 @@ type GetCallDetailRecordResponseBodyDataQueueEvents struct {
 	//
 	// edaf2eaa-8f88-44ca-812e-41b3cd2b7a90
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The queue ID. If the call is routed to a skill group, this is the skill group ID. If the call is routed to an agent, this is the agent ID.
+	// The queue ID. If the queue is a skill group queue, this is the skill group ID. If the queue is an agent personal queue, this is the agent ID.
 	//
 	// example:
 	//
@@ -1256,7 +1380,7 @@ type GetCallDetailRecordResponseBodyDataQueueEvents struct {
 	//
 	// example:
 	//
-	// 测试技能组
+	// Test skill group
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The queue type.
 	//
@@ -1339,7 +1463,7 @@ type GetCallDetailRecordResponseBodyDataQueueEventsEventSequence struct {
 	//
 	// Enqueue
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	// The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

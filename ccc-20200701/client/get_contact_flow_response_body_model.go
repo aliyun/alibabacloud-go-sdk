@@ -28,7 +28,7 @@ type GetContactFlowResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The data.
 	Data *GetContactFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -40,7 +40,7 @@ type GetContactFlowResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -119,17 +119,17 @@ type GetContactFlowResponseBodyData struct {
 	//
 	// 274601be-a6d5-4429-bcef-32b51d031c6e
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
-	// The time when the contact flow draft was created.
+	// The time when the contact flow draft was created. The format is YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// IVR content.
+	// The IVR content.
 	//
 	// example:
 	//
-	// {"activities":[{"type":"INCOMING_CALL","id":"e98f0d47","name":"开始","properties":{"position":{"x":263,"y":164}},"events":[{"event":"complete","next":"2d3ad2c2","edgeId":"41f7dbd0"}],"nodeIndex":0},{"type":"HANGUP","id":"bd4f37e2","name":"挂机","properties":{"position":{"x":765,"y":185}},"events":[{"event":"complete","next":null}],"nodeIndex":999},{"type":"PLAY_SAY","id":"2d3ad2c2","name":"放音","properties":{"say":"您好，欢迎来到云联络中心。","audioResourceId":"","position":{"x":485.5,"y":153.5},"audioType":"tts","audioInterrupt":false},"events":[{"event":"complete","next":"bd4f37e2","edgeId":"e1af4f1f"}],"nodeIndex":1}],"description":""}
+	// {"activities":[{"type":"INCOMING_CALL","id":"e98f0d47","name":"Start","properties":{"position":{"x":263,"y":164}},"events":[{"event":"complete","next":"2d3ad2c2","edgeId":"41f7dbd0"}],"nodeIndex":0},{"type":"HANGUP","id":"bd4f37e2","name":"Hang up","properties":{"position":{"x":765,"y":185}},"events":[{"event":"complete","next":null}],"nodeIndex":999},{"type":"PLAY_SAY","id":"2d3ad2c2","name":"Play audio","properties":{"say":"Hello, welcome to Cloud Call Center.","audioResourceId":"","position":{"x":485.5,"y":153.5},"audioType":"tts","audioInterrupt":false},"events":[{"event":"complete","next":"bd4f37e2","edgeId":"e1af4f1f"}],"nodeIndex":1}],"description":""}
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	// The version description.
 	//
@@ -137,13 +137,13 @@ type GetContactFlowResponseBodyData struct {
 	//
 	// 1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The draft ID. This is the ID of the editable draft version for the current contact flow.
+	// The draft ID, which is the ID of the editable draft version corresponding to the current contact flow.
 	//
 	// example:
 	//
 	// 566399d7-5558-447c-a72f-9be2768b6a82
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
-	// The agent login name of the current editor of this draft.
+	// The logon name of the agent currently editing this draft.
 	//
 	// example:
 	//
@@ -159,31 +159,31 @@ type GetContactFlowResponseBodyData struct {
 	//
 	// example:
 	//
-	// 欢迎语
+	// Greeting
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the contact flow is published.
+	// Specifies whether the contact flow is published. Valid values:
 	//
-	// True: Published
+	// - True: Published.
 	//
-	// False: Not published
+	// - False: Not published.
 	//
 	// example:
 	//
 	// False
 	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
-	// The flow type:<br>
+	// The flow type. Valid values:
 	//
-	// MAIN_FLOW (main flow)<br>
+	// - MAIN_FLOW: main flow
 	//
-	// SUB_FLOW (child flow)<br>
+	// - SUB_FLOW: sub-flow
 	//
-	// SURVEY_FLOW (survey flow)<br><br><br>
+	// - SURVEY_FLOW: satisfaction survey flow
 	//
 	// example:
 	//
 	// MAIN_FLOW
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the contact flow was last updated.
+	// The time of the last modification. The format is YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//

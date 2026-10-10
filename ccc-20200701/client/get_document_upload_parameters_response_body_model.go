@@ -24,29 +24,29 @@ type iGetDocumentUploadParametersResponseBody interface {
 }
 
 type GetDocumentUploadParametersResponseBody struct {
-	// Response code
+	// The response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data.
+	// The data.
 	Data *GetDocumentUploadParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Response parameters.
+	// The response parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -126,37 +126,37 @@ func (s *GetDocumentUploadParametersResponseBody) Validate() error {
 }
 
 type GetDocumentUploadParametersResponseBodyData struct {
-	// AccessKeyId used for signing
+	// The AccessKey ID used for signing.
 	//
 	// example:
 	//
 	// ****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// Expired At
+	// The expiration time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1647313420
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// OSS file path
+	// The OSS file path.
 	//
 	// example:
 	//
 	// ccc-test/blacklist.xlsx
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// OSS host
+	// oss host
 	//
 	// example:
 	//
 	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Signature policy
+	// The signature policy.
 	//
 	// example:
 	//
 	// Permit
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Signature
+	// The signature.
 	//
 	// example:
 	//

@@ -45,6 +45,10 @@ type ListConfigItemsResponseBody struct {
 	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The list of dynamic response parameters.
+	//
+	// example:
+	//
+	// ["ParameterName"]
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
 	//

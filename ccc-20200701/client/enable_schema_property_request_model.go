@@ -20,7 +20,7 @@ type iEnableSchemaPropertyRequest interface {
 }
 
 type EnableSchemaPropertyRequest struct {
-  // Instance ID.
+  // The instance ID.
   // 
   // This parameter is required.
   // 
@@ -28,7 +28,7 @@ type EnableSchemaPropertyRequest struct {
   // 
   // 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // Field name
+  // The property name.
   // 
   // This parameter is required.
   // 
@@ -36,7 +36,7 @@ type EnableSchemaPropertyRequest struct {
   // 
   // name
   PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
-  // Request ID
+  // The request ID.
   // 
   // example:
   // 

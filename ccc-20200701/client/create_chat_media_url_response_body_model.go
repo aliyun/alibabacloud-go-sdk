@@ -24,29 +24,29 @@ type iCreateChatMediaUrlResponseBody interface {
 }
 
 type CreateChatMediaUrlResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data.
+	// The data.
 	Data *CreateChatMediaUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Response parameters.
+	// The response parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ func (s *CreateChatMediaUrlResponseBody) Validate() error {
 }
 
 type CreateChatMediaUrlResponseBodyData struct {
-	// Media ID.
+	// The media ID.
 	//
 	// example:
 	//
 	// $iAHNCNQCo21wMwMGBAAFAAbaACOEAaQhIH6TAqogDGyb-qD2Hbj0A88AAAGRLKYVnwTOACwwYwcACM8AAAGRLRPynQ
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// File URL.
+	// The file URL.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type GetInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -115,15 +115,21 @@ func (s *GetInstanceResponseBody) Validate() error {
 type GetInstanceResponseBodyData struct {
 	// The list of administrators.
 	AdminList []*GetInstanceResponseBodyDataAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
-	AgentType *string                                 `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The agent type used by the instance.
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// The ID of the Alibaba Cloud account to which the instance belongs.
 	//
 	// example:
 	//
 	// 157123456789****
-	AliyunUid           *string                                         `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The chatbot business unit associated with the instance.
+	//
+	// example:
+	//
+	// {"UnitId":0,"UnitKey":""}
 	ChatbotBusinessUnit *GetInstanceResponseBodyDataChatbotBusinessUnit `json:"ChatbotBusinessUnit,omitempty" xml:"ChatbotBusinessUnit,omitempty" type:"Struct"`
-	// The URL of the Cloud Contact Center instance homepage. This URL is formed by combining the base URL of Cloud Contact Center and the instance ID.
+	// The URL of the Cloud Call Center instance. This URL is used to access the homepage of the instance and consists of a specific Cloud Call Center URL and the instance ID.
 	//
 	// example:
 	//
@@ -133,9 +139,9 @@ type GetInstanceResponseBodyData struct {
 	//
 	// example:
 	//
-	// 云联络中心的测试实例。
+	// Test instance of Cloud Call Center
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The domain name of the instance. It is globally unique.
+	// The globally unique domain name of the instance.
 	//
 	// example:
 	//
@@ -151,9 +157,9 @@ type GetInstanceResponseBodyData struct {
 	//
 	// example:
 	//
-	// 测试实例
+	// Test instance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of numbers.
+	// The list of phone numbers.
 	NumberList []*GetInstanceResponseBodyDataNumberList `json:"NumberList,omitempty" xml:"NumberList,omitempty" type:"Repeated"`
 	// The instance status.
 	//
@@ -298,19 +304,19 @@ func (s *GetInstanceResponseBodyData) Validate() error {
 }
 
 type GetInstanceResponseBodyDataAdminList struct {
-	// The name of the administrator.
+	// The display name of the administrator.
 	//
 	// example:
 	//
-	// 管理员
+	// Administrator
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The mailbox.
+	// The email address.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The agent\\"s extension number.
+	// The extension number of the agent.
 	//
 	// example:
 	//
@@ -322,19 +328,19 @@ type GetInstanceResponseBodyDataAdminList struct {
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The agent\\"s logon name.
+	// The logon name of the agent.
 	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	// The agent\\"s personal phone number.
+	// The personal phone number of the agent.
 	//
 	// example:
 	//
 	// 1382114****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The role ID. The format is: Role\\@Instance ID.
+	// The role ID, in the format of Role@Instance ID.
 	//
 	// example:
 	//
@@ -463,7 +469,13 @@ func (s *GetInstanceResponseBodyDataAdminList) Validate() error {
 }
 
 type GetInstanceResponseBodyDataChatbotBusinessUnit struct {
-	UnitId  *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
+	// The ID of the chatbot business unit.
+	//
+	// example:
+	//
+	// 0
+	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
+	// The identifier of the chatbot business unit.
 	UnitKey *string `json:"UnitKey,omitempty" xml:"UnitKey,omitempty"`
 }
 
@@ -498,17 +510,17 @@ func (s *GetInstanceResponseBodyDataChatbotBusinessUnit) Validate() error {
 }
 
 type GetInstanceResponseBodyDataNumberList struct {
-	// Indicates whether the number is active.
+	// Indicates whether the phone number is available.
 	//
 	// example:
 	//
 	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The city where the number is registered.
+	// The city to which the phone number belongs.
 	//
 	// example:
 	//
-	// 乐山
+	// Leshan
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The ID of the contact flow (IVR) associated with the phone number.
 	//
@@ -528,21 +540,21 @@ type GetInstanceResponseBodyDataNumberList struct {
 	//
 	// 0830011****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The province where the number is registered.
+	// The province to which the phone number belongs.
 	//
 	// example:
 	//
-	// 四川
+	// Sichuan
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The list of skill groups associated with the number.
+	// The list of skill groups associated with the phone number.
 	SkillGroups []*GetInstanceResponseBodyDataNumberListSkillGroups `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty" type:"Repeated"`
-	// The purpose of the number.
+	// The usage of the phone number.
 	//
 	// example:
 	//
 	// Bidirection
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The agent ID. If this parameter is not empty, the number is a personal outbound number for the agent.
+	// The agent ID. If this parameter is not empty, the phone number is a personal outbound phone number of the agent.
 	//
 	// example:
 	//
@@ -657,13 +669,13 @@ type GetInstanceResponseBodyDataNumberListSkillGroups struct {
 	//
 	// example:
 	//
-	// 云联络中心的测试技能组。
+	// Test skill group of Cloud Call Center
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the skill group.
 	//
 	// example:
 	//
-	// 测试技能组
+	// Test skill group
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The instance ID.
 	//
@@ -671,7 +683,7 @@ type GetInstanceResponseBodyDataNumberListSkillGroups struct {
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the skill group.
+	// The skill group name.
 	//
 	// example:
 	//

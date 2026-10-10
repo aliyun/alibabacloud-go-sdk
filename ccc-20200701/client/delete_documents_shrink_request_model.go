@@ -20,7 +20,7 @@ type iDeleteDocumentsShrinkRequest interface {
 }
 
 type DeleteDocumentsShrinkRequest struct {
-	// A list of document IDs.
+	// The list of document IDs.
 	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
 	// The instance ID.
 	//
@@ -36,7 +36,7 @@ type DeleteDocumentsShrinkRequest struct {
 	//
 	// 0630E5DF-CEB0-445B-8626-D5C7481181C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The schema ID.
+	// schema id
 	//
 	// This parameter is required.
 	//

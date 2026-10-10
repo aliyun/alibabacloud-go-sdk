@@ -27,7 +27,8 @@ type AppendCasesResponseBody struct {
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of processing results for appending outbound call cases.
 	Data []*AppendCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -39,7 +40,7 @@ type AppendCasesResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -116,9 +117,12 @@ func (s *AppendCasesResponseBody) Validate() error {
 }
 
 type AppendCasesResponseBodyData struct {
+	// The custom variables of the contact, represented as a JSON string.
 	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	PhoneNumber     *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId     *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// The phone number of the contact.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The unique identifier of the contact in the customer\\"s business system.
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 }
 
 func (s AppendCasesResponseBodyData) String() string {

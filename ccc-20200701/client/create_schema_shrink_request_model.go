@@ -28,7 +28,7 @@ type CreateSchemaShrinkRequest struct {
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The schema ID.
+	// schema id
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateSchemaShrinkRequest struct {
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1c450
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of fields.
+	// The list of properties.
 	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// The request ID.
 	//

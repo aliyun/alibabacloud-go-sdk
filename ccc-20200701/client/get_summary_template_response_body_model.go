@@ -42,7 +42,7 @@ type GetSummaryTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The list of error parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
@@ -132,7 +132,7 @@ type GetSummaryTemplateResponseBodyData struct {
 	//
 	// 8939-4223-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The user who edited the template.
+	// The template editor.
 	//
 	// example:
 	//
@@ -144,19 +144,19 @@ type GetSummaryTemplateResponseBodyData struct {
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
-	// 测试模板
+	// Test template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of template fields.
 	PropertyList []*GetSummaryTemplateResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
-	// The status code.
+	// The status code. Valid values:
 	//
-	// - Enabled: The template is enabled.
+	// - Enabled: Enabled.
 	//
-	// - Disabled: The template is disabled.
+	// - Disabled: Disabled.
 	//
 	// example:
 	//
@@ -261,19 +261,19 @@ type GetSummaryTemplateResponseBodyDataPropertyList struct {
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// The extended properties.
+	// The extended attributes.
 	//
 	// example:
 	//
 	// {}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The time when the field was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1717664210000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The user who created the field.
+	// The creator.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type GetSummaryTemplateResponseBodyDataPropertyList struct {
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The description of the field.
+	// The field description.
 	//
 	// example:
 	//
@@ -309,7 +309,7 @@ type GetSummaryTemplateResponseBodyDataPropertyList struct {
 	//
 	// 1
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
-	// The type of the editor.
+	// The editor type.
 	//
 	// example:
 	//
@@ -321,7 +321,7 @@ type GetSummaryTemplateResponseBodyDataPropertyList struct {
 	//
 	// 30
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum value of the number.
+	// The maximum numeric value.
 	//
 	// example:
 	//
@@ -333,29 +333,29 @@ type GetSummaryTemplateResponseBodyDataPropertyList struct {
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum value of the number.
+	// The minimum numeric value.
 	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
-	// The name of the field.
+	// The field name.
 	//
 	// example:
 	//
 	// Name-A
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The validation rule that is specified by a regular expression.
+	// The regular expression validation rule.
 	//
 	// example:
 	//
 	// ^
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The error message that is returned when the regular expression fails to pass the validation.
+	// The error message for regular expression validation.
 	//
 	// example:
 	//
-	// 不是有效的email地址
+	// Not a valid email address
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
 	// Indicates whether the field is read-only.
 	//
@@ -375,7 +375,7 @@ type GetSummaryTemplateResponseBodyDataPropertyList struct {
 	//
 	// false
 	System *bool `json:"System,omitempty" xml:"System,omitempty"`
-	// The time when the field was last updated.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

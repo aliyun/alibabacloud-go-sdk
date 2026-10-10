@@ -22,27 +22,27 @@ type iGetAudioFileResponseBody interface {
 }
 
 type GetAudioFileResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Audio file data.
+	// The audio file data.
 	Data *GetAudioFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,43 +113,43 @@ func (s *GetAudioFileResponseBody) Validate() error {
 }
 
 type GetAudioFileResponseBodyData struct {
-	// Audio file name.
+	// The name of the audio file.
 	//
 	// example:
 	//
 	// test-file.wav
 	AudioFileName *string `json:"AudioFileName,omitempty" xml:"AudioFileName,omitempty"`
-	// Audio resource ID, the UUID of the audio file.
+	// The audio resource ID, which is the unique identifier of the audio file.
 	//
 	// example:
 	//
 	// c1a06b46-302a-4c6e-928b-a43c0df485cf
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
-	// Creation Time of the audio resource.
+	// The time when the audio resource was created. The format is YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Display name of the audio.
+	// The display name of the audio file.
 	//
 	// example:
 	//
-	// 欢迎语
+	// Welcome message
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Key of the audio resource file in OSS.
+	// The key of the audio resource file in OSS.
 	//
 	// example:
 	//
 	// ccc-test/test-file.wav
 	OssFileKey *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
-	// Last Updated At of the audio resource.
+	// The time when the audio resource was last modified. The format is YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//

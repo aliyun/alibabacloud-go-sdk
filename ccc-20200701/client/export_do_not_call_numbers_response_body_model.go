@@ -30,7 +30,7 @@ type ExportDoNotCallNumbersResponseBody struct {
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The OSS download link for the exported file. The link is valid for 24 hours.
+  // The data, which is the OSS download URL for the export result. The URL is valid for 24 hours.
   // 
   // example:
   // 
@@ -46,9 +46,13 @@ type ExportDoNotCallNumbersResponseBody struct {
   // 
   // example:
   // 
-  // 无
+  // None
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The response parameters.
+  // The list of error parameters.
+  // 
+  // example:
+  // 
+  // ["ParameterName"]
   Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
   // The request ID.
   // 

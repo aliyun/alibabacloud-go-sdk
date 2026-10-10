@@ -493,6 +493,10 @@ func (client *Client) AddPhoneNumbersWithContext(ctx context.Context, request *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a property to the schema of a specified instance.
+//
 // @param tmpReq - AddSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -837,7 +841,7 @@ func (client *Client) AnswerCallWithContext(ctx context.Context, request *Answer
 
 // Summary:
 //
-// Adds cases to a predictive campaign in a specified instance.
+// Appends outbound call cases to a specified predictive outbound campaign under an instance.
 //
 // @param tmpReq - AppendCasesRequest
 //
@@ -899,11 +903,11 @@ func (client *Client) AppendCasesWithContext(ctx context.Context, tmpReq *Append
 //
 // Summary:
 //
-// Call AssignUsers to import one or more RAM users into a specified instance. After the import, the RAM users become agents in the instance.
+// Imports one or more RAM users into a specified instance. After a successful import, the RAM users exist as agents in the instance.
 //
 // Description:
 //
-// Accounts with RAM permissions can view all RAM users under an Alibaba Cloud account in the RAM console. You can access the RAM console at https\\://ram.console.aliyun.com/users.
+// Accounts with RAM permissions can query all Resource Access Management (RAM) users managed under the Alibaba Cloud account in the Resource Access Management (RAM) console. RAM console URL: https://ram.console.aliyun.com/users.
 //
 // @param request - AssignUsersRequest
 //
@@ -2023,6 +2027,10 @@ func (client *Client) CreateCampaignWithContext(ctx context.Context, tmpReq *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the upload URL for chat message media files.
+//
 // @param request - CreateChatMediaUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2241,6 +2249,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a schema in a specified instance.
+//
 // @param tmpReq - CreateSchemaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2625,7 +2637,7 @@ func (client *Client) DeleteCallTagWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes the specified contact flow.
+// Deletes a specified contact flow.
 //
 // @param request - DeleteContactFlowRequest
 //
@@ -2723,6 +2735,10 @@ func (client *Client) DeleteCustomCallTaggingWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a single document from a specified instance.
+//
 // @param request - DeleteDocumentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2775,6 +2791,10 @@ func (client *Client) DeleteDocumentWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes documents from a specified instance in batches.
+//
 // @param tmpReq - DeleteDocumentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2833,6 +2853,10 @@ func (client *Client) DeleteDocumentsWithContext(ctx context.Context, tmpReq *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified Cloud Call Center instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2873,6 +2897,10 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a schema from the specified instance.
+//
 // @param request - DeleteSchemaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2921,6 +2949,10 @@ func (client *Client) DeleteSchemaWithContext(ctx context.Context, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a property in a specified schema.
+//
 // @param request - DeleteSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3121,6 +3153,10 @@ func (client *Client) DeleteTicketTemplateWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a field in a specified schema.
+//
 // @param request - DisableSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3273,6 +3309,10 @@ func (client *Client) DiscardEditingContactFlowWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a property in a specified schema.
+//
 // @param request - EnableSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3425,6 +3465,10 @@ func (client *Client) EndConferenceWithContext(ctx context.Context, request *End
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports the IVR contact flow of a specified instance.
+//
 // @param request - ExportContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3521,7 +3565,7 @@ func (client *Client) ExportCustomCallTaggingWithContext(ctx context.Context, re
 
 // Summary:
 //
-// The ExportDoNotCallNumbers operation exports a filtered list of do-not-call numbers from a specified instance.
+// Exports the list of do-not-call numbers filtered by the specified search conditions for a specified instance.
 //
 // @param request - ExportDoNotCallNumbersRequest
 //
@@ -3669,7 +3713,7 @@ func (client *Client) GetAccessChannelOfStagingWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Invoke GetAudioFile to obtain the audio file information corresponding to a specified audio resource ID under a specified instance.
+// Retrieves the information about an audio file for a specified audio resource ID in a specified instance.
 //
 // @param request - GetAudioFileRequest
 //
@@ -3813,7 +3857,7 @@ func (client *Client) GetAudioFileUploadParametersWithContext(ctx context.Contex
 
 // Summary:
 //
-// You can invoke the GetCallDetailRecord operation to retrieve call details for a specific call ID within a specific instance.
+// Retrieves the details of a call specified by call ID for a specified instance.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -3955,6 +3999,10 @@ func (client *Client) GetCaseFileUploadUrlWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the access URL for a media file in a chat message.
+//
 // @param request - GetChatMediaUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4049,7 +4097,7 @@ func (client *Client) GetChatRoutingProfileWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieve a specified contact flow.
+// Retrieves a specified contact flow.
 //
 // @param request - GetContactFlowRequest
 //
@@ -4247,6 +4295,10 @@ func (client *Client) GetDoNotCallFileUploadParametersWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the upload parameters required to import a document.
+//
 // @param request - GetDocumentUploadParametersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4497,7 +4549,7 @@ func (client *Client) GetHistoricalInstanceReportWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves the details of a Cloud Contact Center instance.
+// Queries the details of a Cloud Call Center instance based on the specified instance ID.
 //
 // @param request - GetInstanceRequest
 //
@@ -4931,6 +4983,10 @@ func (client *Client) GetRealtimeInstanceStatesWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the schema and its field definitions in a specified instance.
+//
 // @param request - GetSchemaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5077,7 +5133,7 @@ func (client *Client) GetSummaryTemplateWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves information about a specific ticket.
+// Queries the details of a specified ticket.
 //
 // @param request - GetTicketRequest
 //
@@ -7957,6 +8013,66 @@ func (client *Client) ListFlashSmsTemplatesWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFlashSmsTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询函数元数据
+//
+// Description:
+//
+// 若RAM子账号需要调用该接口，则需具有“管理云呼叫中心(CCC)的权限”（AliyunCCCFullAccess）。
+//
+// @param request - ListFunctionMetasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionMetasResponse
+func (client *Client) ListFunctionMetasWithContext(ctx context.Context, request *ListFunctionMetasRequest, runtime *dara.RuntimeOptions) (_result *ListFunctionMetasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HasHttpTrigger) {
+		query["HasHttpTrigger"] = request.HasHttpTrigger
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFunctionMetas"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFunctionMetasResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

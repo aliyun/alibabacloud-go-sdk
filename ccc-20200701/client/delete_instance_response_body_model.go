@@ -30,7 +30,7 @@ type DeleteInstanceResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the delete task.
+	// The returned result, which is the ID of the deletion task.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The list of error parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`

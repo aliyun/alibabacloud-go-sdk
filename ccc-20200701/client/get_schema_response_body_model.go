@@ -30,7 +30,7 @@ type GetSchemaResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data.
 	Data *GetSchemaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -46,7 +46,7 @@ type GetSchemaResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The response parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ func (s *GetSchemaResponseBody) Validate() error {
 }
 
 type GetSchemaResponseBodyData struct {
-	// The time when the schema was created.
+	// The creation time. Format: YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Indicates whether the schema is deleted.
+	// Indicates whether the data is deleted.
 	//
 	// example:
 	//
@@ -142,15 +142,15 @@ type GetSchemaResponseBodyData struct {
 	//
 	// example:
 	//
-	// 客户profile
+	// Customer profile
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the schema.
+	// schema id
 	//
 	// example:
 	//
 	// profile
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type GetSchemaResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The list of fields.
 	Properties map[string]*DataPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The time when the schema was last modified.
+	// The last modification time. Format: YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//

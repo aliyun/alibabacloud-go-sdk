@@ -18,7 +18,7 @@ type iCreateChatMediaUrlRequest interface {
 }
 
 type CreateChatMediaUrlRequest struct {
-	// Cloud Contact Center instance ID.
+	// The Cloud Call Center instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateChatMediaUrlRequest struct {
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Media ID.
+	// media id
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateChatMediaUrlRequest struct {
 	//
 	// jpg
 	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

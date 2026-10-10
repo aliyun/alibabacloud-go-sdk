@@ -18,7 +18,7 @@ type iGetDocumentUploadParametersRequest interface {
 }
 
 type GetDocumentUploadParametersRequest struct {
-	// File name.
+	// The file name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetDocumentUploadParametersRequest struct {
 	//
 	// blacklist.xlsx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetDocumentUploadParametersRequest struct {
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

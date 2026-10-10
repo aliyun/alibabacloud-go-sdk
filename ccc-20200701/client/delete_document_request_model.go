@@ -42,7 +42,7 @@ type DeleteDocumentRequest struct {
 	//
 	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The schema ID.
+	// schema id
 	//
 	// This parameter is required.
 	//

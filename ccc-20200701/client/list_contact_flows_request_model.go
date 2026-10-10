@@ -57,6 +57,10 @@ type ListContactFlowsRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// A keyword to search for in the names or descriptions of IVR flows.
+	//
+	// example:
+	//
+	// 默认流程
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
 	// The sort order. Valid values:
 	//

@@ -728,6 +728,10 @@ func (client *Client) AddPhoneNumbers(request *AddPhoneNumbersRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a property to the schema of a specified instance.
+//
 // @param tmpReq - AddSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -786,6 +790,10 @@ func (client *Client) AddSchemaPropertyWithOptions(tmpReq *AddSchemaPropertyRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a property to the schema of a specified instance.
+//
 // @param request - AddSchemaPropertyRequest
 //
 // @return AddSchemaPropertyResponse
@@ -1180,7 +1188,7 @@ func (client *Client) AnswerCall(request *AnswerCallRequest) (_result *AnswerCal
 
 // Summary:
 //
-// Adds cases to a predictive campaign in a specified instance.
+// Appends outbound call cases to a specified predictive outbound campaign under an instance.
 //
 // @param tmpReq - AppendCasesRequest
 //
@@ -1240,7 +1248,7 @@ func (client *Client) AppendCasesWithOptions(tmpReq *AppendCasesRequest, runtime
 
 // Summary:
 //
-// Adds cases to a predictive campaign in a specified instance.
+// Appends outbound call cases to a specified predictive outbound campaign under an instance.
 //
 // @param request - AppendCasesRequest
 //
@@ -1260,11 +1268,11 @@ func (client *Client) AppendCases(request *AppendCasesRequest) (_result *AppendC
 //
 // Summary:
 //
-// Call AssignUsers to import one or more RAM users into a specified instance. After the import, the RAM users become agents in the instance.
+// Imports one or more RAM users into a specified instance. After a successful import, the RAM users exist as agents in the instance.
 //
 // Description:
 //
-// Accounts with RAM permissions can view all RAM users under an Alibaba Cloud account in the RAM console. You can access the RAM console at https\\://ram.console.aliyun.com/users.
+// Accounts with RAM permissions can query all Resource Access Management (RAM) users managed under the Alibaba Cloud account in the Resource Access Management (RAM) console. RAM console URL: https://ram.console.aliyun.com/users.
 //
 // @param request - AssignUsersRequest
 //
@@ -1330,11 +1338,11 @@ func (client *Client) AssignUsersWithOptions(request *AssignUsersRequest, runtim
 //
 // Summary:
 //
-// Call AssignUsers to import one or more RAM users into a specified instance. After the import, the RAM users become agents in the instance.
+// Imports one or more RAM users into a specified instance. After a successful import, the RAM users exist as agents in the instance.
 //
 // Description:
 //
-// Accounts with RAM permissions can view all RAM users under an Alibaba Cloud account in the RAM console. You can access the RAM console at https\\://ram.console.aliyun.com/users.
+// Accounts with RAM permissions can query all Resource Access Management (RAM) users managed under the Alibaba Cloud account in the Resource Access Management (RAM) console. RAM console URL: https://ram.console.aliyun.com/users.
 //
 // @param request - AssignUsersRequest
 //
@@ -2701,6 +2709,10 @@ func (client *Client) CreateCampaign(request *CreateCampaignRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the upload URL for chat message media files.
+//
 // @param request - CreateChatMediaUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2749,6 +2761,10 @@ func (client *Client) CreateChatMediaUrlWithOptions(request *CreateChatMediaUrlR
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the upload URL for chat message media files.
+//
 // @param request - CreateChatMediaUrlRequest
 //
 // @return CreateChatMediaUrlResponse
@@ -2990,6 +3006,10 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a schema in a specified instance.
+//
 // @param tmpReq - CreateSchemaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3052,6 +3072,10 @@ func (client *Client) CreateSchemaWithOptions(tmpReq *CreateSchemaRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a schema in a specified instance.
+//
 // @param request - CreateSchemaRequest
 //
 // @return CreateSchemaResponse
@@ -3482,7 +3506,7 @@ func (client *Client) DeleteCallTag(request *DeleteCallTagRequest) (_result *Del
 
 // Summary:
 //
-// Deletes the specified contact flow.
+// Deletes a specified contact flow.
 //
 // @param request - DeleteContactFlowRequest
 //
@@ -3534,7 +3558,7 @@ func (client *Client) DeleteContactFlowWithOptions(request *DeleteContactFlowReq
 
 // Summary:
 //
-// Deletes the specified contact flow.
+// Deletes a specified contact flow.
 //
 // @param request - DeleteContactFlowRequest
 //
@@ -3616,6 +3640,10 @@ func (client *Client) DeleteCustomCallTagging(request *DeleteCustomCallTaggingRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a single document from a specified instance.
+//
 // @param request - DeleteDocumentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3668,6 +3696,10 @@ func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a single document from a specified instance.
+//
 // @param request - DeleteDocumentRequest
 //
 // @return DeleteDocumentResponse
@@ -3682,6 +3714,10 @@ func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes documents from a specified instance in batches.
+//
 // @param tmpReq - DeleteDocumentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3740,6 +3776,10 @@ func (client *Client) DeleteDocumentsWithOptions(tmpReq *DeleteDocumentsRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes documents from a specified instance in batches.
+//
 // @param request - DeleteDocumentsRequest
 //
 // @return DeleteDocumentsResponse
@@ -3754,6 +3794,10 @@ func (client *Client) DeleteDocuments(request *DeleteDocumentsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified Cloud Call Center instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3794,6 +3838,10 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified Cloud Call Center instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @return DeleteInstanceResponse
@@ -3808,6 +3856,10 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a schema from the specified instance.
+//
 // @param request - DeleteSchemaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3856,6 +3908,10 @@ func (client *Client) DeleteSchemaWithOptions(request *DeleteSchemaRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a schema from the specified instance.
+//
 // @param request - DeleteSchemaRequest
 //
 // @return DeleteSchemaResponse
@@ -3870,6 +3926,10 @@ func (client *Client) DeleteSchema(request *DeleteSchemaRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a property in a specified schema.
+//
 // @param request - DeleteSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3922,6 +3982,10 @@ func (client *Client) DeleteSchemaPropertyWithOptions(request *DeleteSchemaPrope
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a property in a specified schema.
+//
 // @param request - DeleteSchemaPropertyRequest
 //
 // @return DeleteSchemaPropertyResponse
@@ -4138,6 +4202,10 @@ func (client *Client) DeleteTicketTemplate(request *DeleteTicketTemplateRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a field in a specified schema.
+//
 // @param request - DisableSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4190,6 +4258,10 @@ func (client *Client) DisableSchemaPropertyWithOptions(request *DisableSchemaPro
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a field in a specified schema.
+//
 // @param request - DisableSchemaPropertyRequest
 //
 // @return DisableSchemaPropertyResponse
@@ -4340,6 +4412,10 @@ func (client *Client) DiscardEditingContactFlow(request *DiscardEditingContactFl
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a property in a specified schema.
+//
 // @param request - EnableSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4392,6 +4468,10 @@ func (client *Client) EnableSchemaPropertyWithOptions(request *EnableSchemaPrope
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a property in a specified schema.
+//
 // @param request - EnableSchemaPropertyRequest
 //
 // @return EnableSchemaPropertyResponse
@@ -4542,6 +4622,10 @@ func (client *Client) EndConference(request *EndConferenceRequest) (_result *End
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports the IVR contact flow of a specified instance.
+//
 // @param request - ExportContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4590,6 +4674,10 @@ func (client *Client) ExportContactFlowWithOptions(request *ExportContactFlowReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports the IVR contact flow of a specified instance.
+//
 // @param request - ExportContactFlowRequest
 //
 // @return ExportContactFlowResponse
@@ -4673,7 +4761,7 @@ func (client *Client) ExportCustomCallTagging(request *ExportCustomCallTaggingRe
 
 // Summary:
 //
-// The ExportDoNotCallNumbers operation exports a filtered list of do-not-call numbers from a specified instance.
+// Exports the list of do-not-call numbers filtered by the specified search conditions for a specified instance.
 //
 // @param request - ExportDoNotCallNumbersRequest
 //
@@ -4725,7 +4813,7 @@ func (client *Client) ExportDoNotCallNumbersWithOptions(request *ExportDoNotCall
 
 // Summary:
 //
-// The ExportDoNotCallNumbers operation exports a filtered list of do-not-call numbers from a specified instance.
+// Exports the list of do-not-call numbers filtered by the specified search conditions for a specified instance.
 //
 // @param request - ExportDoNotCallNumbersRequest
 //
@@ -4875,7 +4963,7 @@ func (client *Client) GetAccessChannelOfStaging(request *GetAccessChannelOfStagi
 
 // Summary:
 //
-// Invoke GetAudioFile to obtain the audio file information corresponding to a specified audio resource ID under a specified instance.
+// Retrieves the information about an audio file for a specified audio resource ID in a specified instance.
 //
 // @param request - GetAudioFileRequest
 //
@@ -4923,7 +5011,7 @@ func (client *Client) GetAudioFileWithOptions(request *GetAudioFileRequest, runt
 
 // Summary:
 //
-// Invoke GetAudioFile to obtain the audio file information corresponding to a specified audio resource ID under a specified instance.
+// Retrieves the information about an audio file for a specified audio resource ID in a specified instance.
 //
 // @param request - GetAudioFileRequest
 //
@@ -5073,7 +5161,7 @@ func (client *Client) GetAudioFileUploadParameters(request *GetAudioFileUploadPa
 
 // Summary:
 //
-// You can invoke the GetCallDetailRecord operation to retrieve call details for a specific call ID within a specific instance.
+// Retrieves the details of a call specified by call ID for a specified instance.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -5121,7 +5209,7 @@ func (client *Client) GetCallDetailRecordWithOptions(request *GetCallDetailRecor
 
 // Summary:
 //
-// You can invoke the GetCallDetailRecord operation to retrieve call details for a specific call ID within a specific instance.
+// Retrieves the details of a call specified by call ID for a specified instance.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -5269,6 +5357,10 @@ func (client *Client) GetCaseFileUploadUrl(request *GetCaseFileUploadUrlRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the access URL for a media file in a chat message.
+//
 // @param request - GetChatMediaUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5317,6 +5409,10 @@ func (client *Client) GetChatMediaUrlWithOptions(request *GetChatMediaUrlRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the access URL for a media file in a chat message.
+//
 // @param request - GetChatMediaUrlRequest
 //
 // @return GetChatMediaUrlResponse
@@ -5395,7 +5491,7 @@ func (client *Client) GetChatRoutingProfile(request *GetChatRoutingProfileReques
 
 // Summary:
 //
-// Retrieve a specified contact flow.
+// Retrieves a specified contact flow.
 //
 // @param request - GetContactFlowRequest
 //
@@ -5447,7 +5543,7 @@ func (client *Client) GetContactFlowWithOptions(request *GetContactFlowRequest, 
 
 // Summary:
 //
-// Retrieve a specified contact flow.
+// Retrieves a specified contact flow.
 //
 // @param request - GetContactFlowRequest
 //
@@ -5665,6 +5761,10 @@ func (client *Client) GetDoNotCallFileUploadParameters(request *GetDoNotCallFile
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the upload parameters required to import a document.
+//
 // @param request - GetDocumentUploadParametersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5713,6 +5813,10 @@ func (client *Client) GetDocumentUploadParametersWithOptions(request *GetDocumen
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the upload parameters required to import a document.
+//
 // @param request - GetDocumentUploadParametersRequest
 //
 // @return GetDocumentUploadParametersResponse
@@ -6001,7 +6105,7 @@ func (client *Client) GetHistoricalInstanceReport(request *GetHistoricalInstance
 
 // Summary:
 //
-// Retrieves the details of a Cloud Contact Center instance.
+// Queries the details of a Cloud Call Center instance based on the specified instance ID.
 //
 // @param request - GetInstanceRequest
 //
@@ -6045,7 +6149,7 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 
 // Summary:
 //
-// Retrieves the details of a Cloud Contact Center instance.
+// Queries the details of a Cloud Call Center instance based on the specified instance ID.
 //
 // @param request - GetInstanceRequest
 //
@@ -6597,6 +6701,10 @@ func (client *Client) GetRealtimeInstanceStates(request *GetRealtimeInstanceStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the schema and its field definitions in a specified instance.
+//
 // @param request - GetSchemaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6645,6 +6753,10 @@ func (client *Client) GetSchemaWithOptions(request *GetSchemaRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the schema and its field definitions in a specified instance.
+//
 // @param request - GetSchemaRequest
 //
 // @return GetSchemaResponse
@@ -6793,7 +6905,7 @@ func (client *Client) GetSummaryTemplate(request *GetSummaryTemplateRequest) (_r
 
 // Summary:
 //
-// Retrieves information about a specific ticket.
+// Queries the details of a specified ticket.
 //
 // @param request - GetTicketRequest
 //
@@ -6841,7 +6953,7 @@ func (client *Client) GetTicketWithOptions(request *GetTicketRequest, runtime *d
 
 // Summary:
 //
-// Retrieves information about a specific ticket.
+// Queries the details of a specified ticket.
 //
 // @param request - GetTicketRequest
 //
@@ -10546,6 +10658,88 @@ func (client *Client) ListFlashSmsTemplates(request *ListFlashSmsTemplatesReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListFlashSmsTemplatesResponse{}
 	_body, _err := client.ListFlashSmsTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询函数元数据
+//
+// Description:
+//
+// 若RAM子账号需要调用该接口，则需具有“管理云呼叫中心(CCC)的权限”（AliyunCCCFullAccess）。
+//
+// @param request - ListFunctionMetasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionMetasResponse
+func (client *Client) ListFunctionMetasWithOptions(request *ListFunctionMetasRequest, runtime *dara.RuntimeOptions) (_result *ListFunctionMetasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HasHttpTrigger) {
+		query["HasHttpTrigger"] = request.HasHttpTrigger
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFunctionMetas"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFunctionMetasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询函数元数据
+//
+// Description:
+//
+// 若RAM子账号需要调用该接口，则需具有“管理云呼叫中心(CCC)的权限”（AliyunCCCFullAccess）。
+//
+// @param request - ListFunctionMetasRequest
+//
+// @return ListFunctionMetasResponse
+func (client *Client) ListFunctionMetas(request *ListFunctionMetasRequest) (_result *ListFunctionMetasResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFunctionMetasResponse{}
+	_body, _err := client.ListFunctionMetasWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -28,7 +28,7 @@ type CreateSchemaRequest struct {
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The schema ID.
+	// schema id
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateSchemaRequest struct {
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1c450
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of fields.
+	// The list of properties.
 	Properties []*CreateSchemaRequestProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -119,13 +119,13 @@ func (s *CreateSchemaRequest) Validate() error {
 }
 
 type CreateSchemaRequestProperties struct {
-	// Indicates whether the field is an array.
+	// Specifies whether the field is an array.
 	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// The extended properties.
+	// The extended attributes.
 	//
 	// example:
 	//
@@ -139,23 +139,23 @@ type CreateSchemaRequestProperties struct {
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The description of the version.
+	// The version description.
 	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the field is disabled.
+	// Specifies whether the field is disabled.
 	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The display name for agents.
+	// The display name of the agent.
 	//
 	// example:
 	//
-	// 显示名称
+	// Display name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The display order in the list.
 	//
@@ -175,7 +175,7 @@ type CreateSchemaRequestProperties struct {
 	//
 	// 100
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum value of the number.
+	// The maximum numeric value.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type CreateSchemaRequestProperties struct {
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum value of the number.
+	// The minimum numeric value.
 	//
 	// example:
 	//
@@ -201,25 +201,25 @@ type CreateSchemaRequestProperties struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The regular expression that is used for validation.
+	// The regular expression validation rule.
 	//
 	// example:
 	//
 	// *
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The error message that is returned when the regular expression fails to match.
+	// The error message for regular expression validation.
 	//
 	// example:
 	//
-	// 错误的格式
+	// Invalid format
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
-	// Indicates whether the field is read-only.
+	// Specifies whether the field is read-only.
 	//
 	// example:
 	//
 	// true
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// Indicates whether the field is required.
+	// Specifies whether the field is required.
 	//
 	// example:
 	//

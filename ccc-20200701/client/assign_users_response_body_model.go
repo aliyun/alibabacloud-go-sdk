@@ -30,7 +30,7 @@ type AssignUsersResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data, which is the same as the workflow ID.
+	// The data. The content is the same as the workflow ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AssignUsersResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

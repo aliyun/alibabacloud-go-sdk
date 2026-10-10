@@ -28,7 +28,7 @@ type DeleteSchemaPropertyRequest struct {
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The field name.
+	// The property name.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DeleteSchemaPropertyRequest struct {
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The schema ID.
+	// schema id
 	//
 	// This parameter is required.
 	//

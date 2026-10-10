@@ -40,7 +40,7 @@ type DeleteSchemaPropertyResponseBody struct {
 	//
 	// User 244715989906081477 does not exist in instance worldfirst01.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The information about error parameters.
+	// The error parameter information.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
 	//

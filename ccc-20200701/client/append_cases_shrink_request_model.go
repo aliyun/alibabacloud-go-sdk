@@ -18,7 +18,7 @@ type iAppendCasesShrinkRequest interface {
 }
 
 type AppendCasesShrinkRequest struct {
-	// The predictive campaign ID.
+	// The predictive outbound campaign ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AppendCasesShrinkRequest struct {
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of cases to be added.
+	// The list of outbound call cases in the request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

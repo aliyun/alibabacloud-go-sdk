@@ -58,7 +58,7 @@ type DataPropertiesValue struct {
 	//
 	// example:
 	//
-	// 姓名
+	// Name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The description.
 	//
@@ -78,17 +78,17 @@ type DataPropertiesValue struct {
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The regular expression that is used for validation.
+	// The regular expression validation rule.
 	//
 	// example:
 	//
 	// ^
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The error message that is returned if the value does not match the regular expression.
+	// The error message for regular expression validation.
 	//
 	// example:
 	//
-	// 不是有效的email地址
+	// Not a valid email address
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
 	// The minimum length.
 	//
@@ -102,13 +102,13 @@ type DataPropertiesValue struct {
 	//
 	// 10
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The minimum value.
+	// The minimum numeric value.
 	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
-	// The maximum value.
+	// The maximum numeric value.
 	//
 	// example:
 	//
@@ -144,37 +144,37 @@ type DataPropertiesValue struct {
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The type of the editor.
+	// The editor type.
 	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
-	// The extended properties.
+	// The extended attributes.
 	//
 	// example:
 	//
 	// {}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The display order.
+	// The display order in the list.
 	//
 	// example:
 	//
 	// 1
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
-	// The time when the field was created.
+	// The creation time. Format: YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The time when the field was last updated.
+	// The update time. Format: YYYY-MM-DD HH:mm:ss.S.
 	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// Creator
+	// The creator.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type DeleteDocumentsResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The parameter information.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`

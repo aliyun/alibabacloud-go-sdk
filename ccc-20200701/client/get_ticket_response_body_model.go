@@ -42,9 +42,9 @@ type GetTicketResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of incorrect parameters.
+	// The list of error parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -126,17 +126,17 @@ func (s *GetTicketResponseBody) Validate() error {
 }
 
 type GetTicketResponseBodyData struct {
-	// The ID of the assignee.
+	// The assignee ID.
 	//
 	// example:
 	//
 	// agent1@ccc-test
 	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
-	// The name of the assignee.
+	// The assignee name.
 	//
 	// example:
 	//
-	// 坐席A
+	// Agent A
 	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
 	// The ticket category ID.
 	//
@@ -144,77 +144,77 @@ type GetTicketResponseBodyData struct {
 	//
 	// 8939-4223-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The name of the ticket category.
+	// The ticket category name.
 	//
 	// example:
 	//
-	// 售后类目
+	// After-sales category
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The reason for closing the ticket.
+	// The reason for closing the ticket. Valid values:
 	//
-	// - Completed
+	// - Completed: Completed.
 	//
-	// - Terminated
+	// - Terminated: Canceled.
 	//
 	// example:
 	//
 	// Completed
 	CloseCode *string `json:"CloseCode,omitempty" xml:"CloseCode,omitempty"`
-	// The comment.
+	// The handling comments.
 	//
 	// example:
 	//
-	// 无
+	// None
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The fields of the ticket.
+	// The ticket field information.
 	//
 	// example:
 	//
-	// {"productName":"商品A"}
+	// {"productName":"Product A"}
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The time when the ticket was created.
+	// The time when the ticket was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1620259200000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the creator.
+	// The creator ID.
 	//
 	// example:
 	//
 	// creator@ccc-test
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The name of the creator.
+	// The creator name.
 	//
 	// example:
 	//
-	// 坐席B
+	// Agent B
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The ID of the current node.
+	// The current node ID.
 	//
 	// example:
 	//
 	// 912f0b78-6639-4a93-ae18-0d832885c27e
 	CurrentTaskId *string `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
-	// The name of the current node.
+	// The current node name.
 	//
 	// example:
 	//
-	// 节点1
+	// Node 1
 	CurrentTaskName *string `json:"CurrentTaskName,omitempty" xml:"CurrentTaskName,omitempty"`
-	// The time when the current node started.
+	// The start time of the current node. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1693793208075
 	CurrentTaskStartTime *int64 `json:"CurrentTaskStartTime,omitempty" xml:"CurrentTaskStartTime,omitempty"`
-	// The customer ID. This is the customer ID in the customer profile of Cloud Contact Center.
+	// The customer ID in the customer profile of Cloud Call Center.
 	//
 	// example:
 	//
 	// 4223-86d0-6bd187905-891798749
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	// The time when the ticket processing was completed.
+	// The completion time of ticket processing. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -232,33 +232,33 @@ type GetTicketResponseBodyData struct {
 	//
 	// job-399383842187575296
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The source of the ticket.
+	// The ticket source. Valid values:
 	//
 	// - AUDIO: Voice service.
 	//
-	// - CHAT: Web service.
+	// - CHAT: Online service.
 	//
-	// - Console: Created in the ticket console.
+	// - Console: Created from the ticket console.
 	//
 	// example:
 	//
 	// Audio
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The time when the ticket processing started.
+	// The start time of ticket processing. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1620259200000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ticket status.
+	// The ticket status. Valid values:
 	//
-	// - Processing
+	// - Processing: Processing.
 	//
-	// - Withdrawal
+	// - Withdrawal: Withdrawn.
 	//
-	// - Rejected
+	// - Rejected: Rejected.
 	//
-	// - Closed
+	// - Closed: Closed.
 	//
 	// example:
 	//
@@ -270,7 +270,7 @@ type GetTicketResponseBodyData struct {
 	//
 	// ccc-test_43c2671b-8939-4223-86d0-6bd187905cc8_*****0666238
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The version of the ticket template.
+	// The ticket template version.
 	//
 	// example:
 	//
@@ -286,9 +286,9 @@ type GetTicketResponseBodyData struct {
 	//
 	// example:
 	//
-	// 售后工单
+	// After-sales ticket
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time of the last update.
+	// The time of the last update. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

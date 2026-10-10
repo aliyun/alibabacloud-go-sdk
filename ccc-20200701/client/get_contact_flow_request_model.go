@@ -26,7 +26,7 @@ type GetContactFlowRequest struct {
 	//
 	// 274601be-a6d5-4429-bcef-32b51d031c6e
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
-	// The draft ID. This is the ID of the editable draft version for the current contact flow.
+	// The draft ID, which is the ID of the editable draft version corresponding to the current contact flow.
 	//
 	// This parameter is required.
 	//
