@@ -16,21 +16,21 @@ type iImageBatchModerationRequest interface {
 }
 
 type ImageBatchModerationRequest struct {
-	// The detection services supported by Image Moderation Pro. Separate multiple services with commas. Valid values:
+	// The detection types supported by Image Moderation Enhanced Edition. Separate multiple values with commas. Valid values:
 	//
-	// - baselineCheck: General baseline check
+	// - baselineCheck: general baseline check
 	//
-	// - baselineCheck_pro: General baseline check (Professional Edition)
+	// - baselineCheck_pro: general baseline check professional edition
 	//
-	// - tonalityImprove: Content administration check
+	// - tonalityImprove: content governance detection
 	//
-	// - aigcCheck: AIGC image check
+	// - aigcCheck: AIGC image detection
 	//
 	// example:
 	//
 	// baselineCheck,tonalityImprove
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters for the content to moderate.
+	// The parameter set for the content moderation object.
 	//
 	// example:
 	//

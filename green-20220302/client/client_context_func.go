@@ -369,7 +369,7 @@ func (client *Client) ImageAsyncModerationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Batch Invocation of Images
+// Invokes image moderation in batches.
 //
 // @param request - ImageBatchModerationRequest
 //
@@ -417,17 +417,17 @@ func (client *Client) ImageBatchModerationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Image moderation
+// Moderates images.
 //
 // Description:
 //
-// Before you call this operation, complete the following steps:
+// Before calling this API operation, complete the following tasks:
 //
-// 1. [Activate AI Guardrails-Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+// 1. [Activate Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
 //
-// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of the enhanced image moderation feature.
+// 2. Fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
 //
-// 3. For more information about API usage and parameters, see the [API reference](https://help.aliyun.com/document_detail/467829.html).
+// 3. For more information about how to use the API operation and its parameters, refer to the [API operation documentation](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - ImageModerationRequest
 //
