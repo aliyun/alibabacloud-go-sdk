@@ -42,21 +42,21 @@ type ListUsersResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of users.
+	// The user list.
 	Items []*ListUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that takes effect for this query.
+	// The maximum number of records per page that takes effect in the current query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. If the request fails, an error description is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This value is empty if no more pages are available.
+	// The cursor for the next page. If no next page exists, this parameter is empty.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListUsersResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of users that match the query conditions.
+	// The total number of users that meet the query conditions.
 	//
 	// example:
 	//
@@ -187,37 +187,37 @@ type ListUsersResponseBodyItems struct {
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
-	// The authentication method of the user. A value of password indicates local password authentication in the workspace. Values of dingtalk and feishu indicate that the user is synchronized and authenticated by the corresponding external identity provider.
+	// The authentication method of the user. A value of password indicates that the user is authenticated by using the local password of the workspace. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
 	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
-	// The creation time in UTC, formatted in RFC 3339.
+	// The creation time. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The display name of the user. The value is 1 to 32 characters in length.
+	// The display name of the user. The name must be 1 to 32 characters in length.
 	//
 	// example:
 	//
-	// John Smith
+	// Zhang San
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The email address of the user. The value can be up to 256 characters in length.
+	// The email address of the user. The email address can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The username. The value must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The value is 1 to 32 characters in length.
+	// The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The remarks of the user. The value can be up to 1024 characters in length.
+	// The note of the user. The note can be up to 1,024 characters in length.
 	//
 	// example:
 	//
@@ -229,13 +229,13 @@ type ListUsersResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The user status. Valid values: Creating, Active, Updating, Deleting, Failed, DeleteFailed.
+	// The status of the user. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The time of the last modification. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
