@@ -36,7 +36,7 @@ type ModifyDasOpsConfigResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ModifyDasOpsConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *ModifyDasOpsConfigResponseBody) Validate() error {
 }
 
 type ModifyDasOpsConfigResponseBodyData struct {
-	// The payment method.
+	// The billing method.
 	//
 	// example:
 	//
 	// prepay
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The Alibaba Cloud Managed Services instance ID.
+	// The instance ID of Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// pc-2zelo5v5u0678jx04
 	CommodityInstanceId *string `json:"CommodityInstanceId,omitempty" xml:"CommodityInstanceId,omitempty"`
-	// Indicates whether DAS Economy Edition is enabled.
+	// Indicates whether the DAS Economy Edition is enabled.
 	//
 	// example:
 	//
 	// true
 	EcoEnable *bool `json:"EcoEnable,omitempty" xml:"EcoEnable,omitempty"`
-	// Indicates whether the Alibaba Cloud Managed Services feature is enabled (including DAS Economy Edition).
+	// Indicates whether the Alibaba Cloud Managed Services feature (including DAS Economy Edition) is enabled.
 	//
 	// example:
 	//
@@ -149,21 +149,21 @@ type ModifyDasOpsConfigResponseBodyData struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Indicates whether Alibaba Cloud Managed Services is enabled.
 	OpsEnable *bool `json:"OpsEnable,omitempty" xml:"OpsEnable,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 285412912420536
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The start time.
+	// The start time of Alibaba Cloud Managed Services. The format is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1672531200000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// - **INIT**: Pending scheduling.
+	// - **INIT**: Pending.
 	//
 	// - **RUNNING**: Running.
 	//
@@ -173,7 +173,7 @@ type ModifyDasOpsConfigResponseBodyData struct {
 	//
 	// - **COMPLETED**: Completed.
 	//
-	// > When the task is in the **COMPLETED*	- state, you can view the task result.
+	// > When the task is in the **COMPLETED*	- state, you can view the task results.
 	//
 	// example:
 	//

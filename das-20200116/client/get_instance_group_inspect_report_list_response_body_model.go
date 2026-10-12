@@ -22,7 +22,7 @@ type iGetInstanceGroupInspectReportListResponseBody interface {
 }
 
 type GetInstanceGroupInspectReportListResponseBody struct {
-	// The response status code.
+	// The returned status code.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type GetInstanceGroupInspectReportListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// List<ReportStatus>
 	Data []*GetInstanceGroupInspectReportListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response message.
+	// The returned message.
 	//
-	// >If the request is successful, **Successful*	- is returned. If the request fails, exception information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type GetInstanceGroupInspectReportListResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request is successful.
+	// 	- **true**: The request was successful.
 	//
-	// 	- **false**: The request fails.
+	// 	- **false**: The request failed.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *GetInstanceGroupInspectReportListResponseBody) Validate() error {
 }
 
 type GetInstanceGroupInspectReportListResponseBodyData struct {
-	// The time when the task was created.
+	// The time when the task was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-12-11 00:39:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The date of the diagnosis.
+	// The diagnosis date in the YYYY-MM-DD format.
 	//
 	// example:
 	//
@@ -141,7 +141,19 @@ type GetInstanceGroupInspectReportListResponseBodyData struct {
 	//
 	// 13f52040-5a6e-42c3-bb84-051f5d6d****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The task status. Valid values: WAITING_UNREADY = 0, WAITING_READY = 1, PROCESSING = 2, FINISHED = 3, ERROR = 4, STOPPED = -1.
+	// The task status. Valid values:
+	//
+	// - 0: WAITING_UNREADY.
+	//
+	// - 1: WAITING_READY.
+	//
+	// - 2: PROCESSING.
+	//
+	// - 3: FINISHED.
+	//
+	// - 4: ERROR.
+	//
+	// - -1: STOPPED.
 	//
 	// example:
 	//

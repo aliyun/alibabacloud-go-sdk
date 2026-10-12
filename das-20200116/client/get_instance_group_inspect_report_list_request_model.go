@@ -22,13 +22,13 @@ type iGetInstanceGroupInspectReportListRequest interface {
 }
 
 type GetInstanceGroupInspectReportListRequest struct {
-	// Optional. By default, the default Agent is used. You can also specify the Agent that was generated after DAS Agent was activated or that was manually created.
+	// Optional. By default, the default agent is used. You can also specify the ID of an agent that is generated after DAS Agent is activated or manually created.
 	//
 	// example:
 	//
 	// ag-472T0DxtmjIxxxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The end timestamp.
+	// The end time of the query. The time is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -36,14 +36,14 @@ type GetInstanceGroupInspectReportListRequest struct {
 	//
 	// 1655427625000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// null
 	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The start timestamp.
+	// The start time of the query. The time is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//

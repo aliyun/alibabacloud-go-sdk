@@ -20,15 +20,15 @@ type iModifyDasOpsConfigRequest interface {
 type ModifyDasOpsConfigRequest struct {
 	// Specifies whether to enable DAS Alibaba Cloud Managed Services. Valid values:
 	//
-	// - **true**: Enable.
+	// - **true**: Enabled.
 	//
-	// - **false**: Disable. Shutdown only turns off the feature but does not unsubscribe from the service. To unsubscribe, go to the unsubscription management page.
+	// - **false**: Disabled. Note that shutdown only disables the feature, but does not cancel your subscription. To cancel your subscription, go to the Unsubscription Management page.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	Filters []*ModifyDasOpsConfigRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The database instance ID.
 	//
@@ -91,13 +91,13 @@ func (s *ModifyDasOpsConfigRequest) Validate() error {
 type ModifyDasOpsConfigRequestFilters struct {
 	// The filter parameter.
 	//
-	// > For supported filter parameters and their values, see **Supplementary description of request parameters**.
+	// > For supported filter parameters and their valid values, see **Supplementary description of request parameters**.
 	//
 	// example:
 	//
 	// None
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//

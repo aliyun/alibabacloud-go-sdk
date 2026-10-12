@@ -70,7 +70,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 2c548e83-1473-4fda-b3dc-5a189074ead5
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" xml:"AsyncRequestId,omitempty"`
-	// The IP address of the request client.
+	// The IP address of the client that sends the request.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type DescribeAuditLogsRequest struct {
 	//
 	// in[1 33]
 	EffectRowRange *string `json:"EffectRowRange,omitempty" xml:"EffectRowRange,omitempty"`
-	// The end time of the alert log. The value is a UNIX timestamp in milliseconds.
+	// The end time of the alert logs. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 15682887991222
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The range of the execution time.
+	// The execution time range.
 	//
 	// example:
 	//
@@ -120,15 +120,15 @@ type DescribeAuditLogsRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The network type. Valid values:
 	//
-	// - **default*	- (default): non-Alibaba Cloud service.
+	// - **default**: Non-Alibaba Cloud services. This is the default value.
 	//
-	// - **aliyun**: Alibaba Cloud service.
+	// - **aliyun**: Alibaba Cloud services.
 	//
 	// example:
 	//
 	// aliyun
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// The language of the request and response. Default value: zh_cn. Valid values:
+	// The language type of the request and response messages. Default value: zh_cn. Valid values:
 	//
 	// - zh_cn: Chinese.
 	//
@@ -157,25 +157,25 @@ type DescribeAuditLogsRequest struct {
 	//
 	// Insert
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The key of the OSS storage object.
+	// The key of the OSS object.
 	//
 	// example:
 	//
 	// N.A
 	OssObjectKey *string `json:"OssObjectKey,omitempty" xml:"OssObjectKey,omitempty"`
-	// The maximum number of records per page. Default value: 10.
+	// The maximum number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the product to which the data asset belongs. Valid values: **RDS, PolarDB, PolarDB-X 2.0**, and others.
+	// The name of the product to which the data asset belongs. Valid values include **RDS**, **PolarDB**, and **PolarDB-X 2.0**.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID that corresponds to the product name to which the data object belongs. Valid values:
+	// The ID of the product to which the data object belongs. Valid values:
 	//
 	// - 3: ADB-MYSQL
 	//
@@ -195,7 +195,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// Specifies whether to use aggregate query.
+	// Specifies whether to perform an aggregate query.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 867028
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the audit policy.
+	// The name of the audit rule.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// SELECT 	- FROM test where name = \\"das\\"
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	// The start time of the alert log, in milliseconds.
+	// The start time of the alert logs. Unit: milliseconds.
 	//
 	// example:
 	//

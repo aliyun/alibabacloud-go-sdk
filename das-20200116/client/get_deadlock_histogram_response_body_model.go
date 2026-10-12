@@ -44,9 +44,9 @@ type GetDeadlockHistogramResponseBody struct {
 	//
 	// 0A74B755-98B7-59DB-8724-1321B394****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
 	// - **false**: The request failed.
 	//
@@ -123,7 +123,7 @@ func (s *GetDeadlockHistogramResponseBody) Validate() error {
 }
 
 type GetDeadlockHistogramResponseBodyData struct {
-	// The end time of the analysis task range.
+	// The end time of the analysis task range. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type GetDeadlockHistogramResponseBodyData struct {
 	//
 	// pi-bp16v3824rt73****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The start time of the analysis task range.
+	// The start time of the analysis task range. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -155,15 +155,15 @@ type GetDeadlockHistogramResponseBodyData struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **SUCCESS**: The analysis is successful.
+	// - **SUCCESS**: The analysis was successful.
 	//
-	// - **FAILED**: The analysis failed or encountered an exception.
+	// - **FAILED**: The analysis is abnormal or failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The full deadlock analysis task ID.
+	// The ID of the full deadlock analysis task.
 	//
 	// example:
 	//

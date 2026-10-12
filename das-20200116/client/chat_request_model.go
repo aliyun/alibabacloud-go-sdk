@@ -11,6 +11,8 @@ type iChatRequest interface {
 	GoString() string
 	SetAgentId(v string) *ChatRequest
 	GetAgentId() *string
+	SetForwardedProps(v string) *ChatRequest
+	GetForwardedProps() *string
 	SetMessage(v string) *ChatRequest
 	GetMessage() *string
 	SetResume(v string) *ChatRequest
@@ -22,12 +24,18 @@ type iChatRequest interface {
 }
 
 type ChatRequest struct {
-	// The agent ID used for the service. This parameter is optional. You can specify an agent generated after DAS Agent is enabled or an agent that you manually created. If this parameter is not specified, the default agent is used.
+	// Optional. The agent ID used for the service. You can specify the agent generated after enabling the DAS Agent or a manually created agent. If not specified, the default agent is used.
 	//
 	// example:
 	//
 	// ag-472T0DxtmjIxxxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The forwarded properties.
+	//
+	// example:
+	//
+	// {"enableInteractiveTools":true}
+	ForwardedProps *string `json:"ForwardedProps,omitempty" xml:"ForwardedProps,omitempty"`
 	// The message.
 	//
 	// example:
@@ -40,7 +48,7 @@ type ChatRequest struct {
 	//
 	// [{"metadata":{"a2uiClientDataModel":{"decided":true,"interaction":{"request":{"allowFreeText":true,"question":"question?","options":[{"label":"162","value":"162"},{"label":"242","value":"242"},{"label":"243","value":"243"},{"label":"486","value":"486"}]},"kind":"choice","interruptId":"5857955e-4856-4ab3-969e-f8b4c484bda4","status":"pending"},"free_text":""},"a2uiAction":{"name":"das_interaction_response","context":{"value":"162"},"surfaceId":"render-choice-7c03eb4f927f42ff8c30b30a2cc0797d","sourceComponentId":"opts-0","timestamp":"2026-09-15T06:54:15.556Z"}},"payload":{"value":"162"},"interruptId":"5857955e-4856-4ab3-969e-f8b4c484bda4","status":"resolved"}]
 	Resume *string `json:"Resume,omitempty" xml:"Resume,omitempty"`
-	// The session ID in UUID string format. This parameter is optional. If this parameter is not specified, a new session is created by default. To maintain context across conversations, use the same session ID.
+	// Optional. The session ID, which is a UUID string. If not specified, a new session is created by default. The same session ID must be maintained for contextual conversations.
 	//
 	// example:
 	//
@@ -66,6 +74,10 @@ func (s *ChatRequest) GetAgentId() *string {
 	return s.AgentId
 }
 
+func (s *ChatRequest) GetForwardedProps() *string {
+	return s.ForwardedProps
+}
+
 func (s *ChatRequest) GetMessage() *string {
 	return s.Message
 }
@@ -84,6 +96,11 @@ func (s *ChatRequest) GetSummary() *string {
 
 func (s *ChatRequest) SetAgentId(v string) *ChatRequest {
 	s.AgentId = &v
+	return s
+}
+
+func (s *ChatRequest) SetForwardedProps(v string) *ChatRequest {
+	s.ForwardedProps = &v
 	return s
 }
 

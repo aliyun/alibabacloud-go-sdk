@@ -76,23 +76,23 @@ type ChatResponseBody struct {
 	//
 	// I see you have several PolarDB instances, and I will query them for you shortly
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Indicates whether the content is incremental.
+	// Specifies whether the content is incremental.
 	//
 	// example:
 	//
 	// hello
 	Delta *string `json:"Delta,omitempty" xml:"Delta,omitempty"`
-	// The step type of STEP_STARTED, such as task.
+	// The step type for STEP_STARTED, such as task.
 	//
 	// example:
 	//
 	// task
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The display name of the sub-agent for STEP_STARTED.
+	// The display name of the child agent for STEP_STARTED.
 	//
 	// example:
 	//
-	// SQL Performance Diagnostics
+	// SQL performance diagnostics
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The message ID.
 	//
@@ -142,13 +142,13 @@ type ChatResponseBody struct {
 	//
 	// sub_agent_performance_diagnose_mysql
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The step status of STEP_FINISHED, such as completed.
+	// The step status for STEP_FINISHED, such as completed.
 	//
 	// example:
 	//
 	// completed
 	StepStatus *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
-	// The callback utility class.
+	// The callback tool class.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type ChatResponseBody struct {
 	//
 	// 1767225600000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The error that occurred during tool invocation.
+	// The error that occurred when invoking the tool.
 	//
 	// example:
 	//
 	// error
 	ToolCallError *string `json:"ToolCallError,omitempty" xml:"ToolCallError,omitempty"`
-	// The tool invocation ID.
+	// The tool call ID.
 	//
 	// example:
 	//

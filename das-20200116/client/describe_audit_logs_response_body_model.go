@@ -36,9 +36,9 @@ type DescribeAuditLogsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The client IP addresses in the SQL log records.
+	// The IP addresses of the clients in the SQL log records.
 	Items []*DescribeAuditLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page size for the paged query. This value indicates the number of records per page for paging.
+	// The number of entries per page in the paged query.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *DescribeAuditLogsResponseBody) Validate() error {
 }
 
 type DescribeAuditLogsResponseBodyItems struct {
-	// The client IP address in the query.
+	// The IP address of the client in the query.
 	//
 	// example:
 	//
 	// 100.104.16.251
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The client port number in the query.
+	// The port number of the client in the query.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// ds
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The alert time, in milliseconds.
+	// The alert time. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -176,17 +176,13 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// 10
 	EffectRow *int64 `json:"EffectRow,omitempty" xml:"EffectRow,omitempty"`
-	// The execution status. Valid values:
-	//
-	// - 0: failed.
-	//
-	// - 1: succeeded.
+	// The execution status. Valid values: 0: Failed. 1: Successful.
 	//
 	// example:
 	//
 	// 1
 	ExecuteStatus *int32 `json:"ExecuteStatus,omitempty" xml:"ExecuteStatus,omitempty"`
-	// The execution duration, in milliseconds.
+	// The execution duration. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -204,7 +200,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// True
 	InWhiteList *bool `json:"InWhiteList,omitempty" xml:"InWhiteList,omitempty"`
-	// The audit status of the instance.
+	// The instance audit status.
 	//
 	// example:
 	//
@@ -224,9 +220,9 @@ type DescribeAuditLogsResponseBodyItems struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The network type. Valid values:
 	//
-	// **default*	- (default): non-Alibaba Cloud service.
+	// **default**: Non-Alibaba Cloud services. This is the default value.
 	//
-	// **aliyun**: Alibaba Cloud service.
+	// **aliyun**: Alibaba Cloud services.
 	//
 	// example:
 	//
@@ -238,7 +234,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// SLOW_SQL
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The log execution time.
+	// The log execution time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -256,7 +252,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// Drop
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The key of the OSS storage object.
+	// The key of the OSS object.
 	//
 	// example:
 	//
@@ -268,13 +264,13 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// test01
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	// The name of the product to which the data asset belongs. Valid values: RDS, PolarDB, PolarDB-X 2.0, and others.
+	// The name of the product to which the data asset belongs. Valid values include RDS, PolarDB, and PolarDB-X 2.0.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID that corresponds to the product name to which the data object belongs. Valid values:
+	// The ID of the product to which the data object belongs. Valid values:
 	//
 	// - 3: ADB-MYSQL
 	//
@@ -300,13 +296,13 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
-	// The audit policy ID.
+	// The audit rule ID.
 	//
 	// example:
 	//
 	// 9953411
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the audit policy.
+	// The name of the audit rule.
 	//
 	// example:
 	//
@@ -318,7 +314,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// select 	- from test03
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	// The table name used in the query.
+	// The name of the table used in the query.
 	//
 	// example:
 	//
@@ -338,11 +334,11 @@ type DescribeAuditLogsResponseBodyItems struct {
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **1**: low.
+	// - **1**: Low risk.
 	//
-	// - **2**: medium.
+	// - **2**: Medium risk.
 	//
-	// - **3**: high.
+	// - **3**: High risk.
 	//
 	// example:
 	//
@@ -350,11 +346,11 @@ type DescribeAuditLogsResponseBodyItems struct {
 	WarnLevel *string `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 	// The risk level name. Valid values:
 	//
-	// - Low.
+	// - Low risk.
 	//
-	// - Medium.
+	// - Medium risk.
 	//
-	// - High.
+	// - High risk.
 	//
 	// example:
 	//
