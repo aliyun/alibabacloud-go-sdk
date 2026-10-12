@@ -9,6 +9,8 @@ type iListUsersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEmail(v string) *ListUsersRequest
+	GetEmail() *string
 	SetMaxResults(v int32) *ListUsersRequest
 	GetMaxResults() *int32
 	SetName(v string) *ListUsersRequest
@@ -20,19 +22,25 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
+	// The filter condition for exact match on the email address.
+	//
+	// example:
+	//
+	// xxx@xxx.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The maximum number of records to return per page. Valid values: 1 to 100. If this parameter is not specified, 10 records are returned by default.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The filter condition for exact match on the username.
+	// The filter condition for exact match on the user name.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The filter condition for fuzzy match on the username. The value can be up to 128 characters in length.
+	// The filter condition for fuzzy match on the user name. The value can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -54,6 +62,10 @@ func (s ListUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListUsersRequest) GetEmail() *string {
+	return s.Email
+}
+
 func (s *ListUsersRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -68,6 +80,11 @@ func (s *ListUsersRequest) GetNameLike() *string {
 
 func (s *ListUsersRequest) GetNextToken() *string {
 	return s.NextToken
+}
+
+func (s *ListUsersRequest) SetEmail(v string) *ListUsersRequest {
+	s.Email = &v
+	return s
 }
 
 func (s *ListUsersRequest) SetMaxResults(v int32) *ListUsersRequest {

@@ -18,7 +18,7 @@ type iCreateExternalAgentRequest interface {
 type CreateExternalAgentRequest struct {
 	// The request body.
 	Body *CreateExternalAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not provide idempotency guarantee in the current phase.
+	// The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ type CreateExternalAgentRequestBody struct {
 	//
 	// example:
 	//
-	// A code review agent running in the user environment
+	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The agent instruction that guides the behavior of the agent.
+	// The instructions that guide the behavior of the agent.
 	//
 	// example:
 	//
 	// You are a code review assistant
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
-	// The model configuration. Available only when modelSource is set to PLATFORM.
+	// The model configuration. This parameter is available only when modelSource is set to PLATFORM.
 	Model *CreateExternalAgentRequestBodyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be specified at the same time. Valid values:
+	// The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model, and the model parameter cannot be passed at the same time. Valid values:
 	//
-	// - PLATFORM: platform model.
+	// - PLATFORM: Platform model.
 	//
-	// - RUNTIME: runtime model.
+	// - RUNTIME: Runtime model.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type CreateExternalAgentRequestBodyModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration. If not specified, no quota is configured.
+	// The model token quota configuration. If this parameter is not specified, no quota is configured.
 	Quota *CreateExternalAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -280,25 +280,29 @@ func (s *CreateExternalAgentRequestBodyModel) Validate() error {
 }
 
 type CreateExternalAgentRequestBodyModelQuota struct {
-	// Specifies whether to enable token quota. Defaults to true if not specified. Set to false to disable and delete existing quota rules.
+	// Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The quota limit type. Required by backend validation when quota is enabled. Fixed value: token.
+	// The quota limit type. This parameter is required when the quota is enabled. Fixed value: token.
 	//
 	// example:
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// The quota statistical period. Required by backend validation when quota is enabled. Valid values: day (daily) and month (monthly).
+	// The statistical period of the quota. This parameter is required when the quota is enabled. Valid values:
+	//
+	// - day: Daily.
+	//
+	// - month: Monthly.
 	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The maximum number of tokens that can be consumed within a single period. Required by backend validation when quota is enabled. The value must be greater than 0.
+	// The maximum number of tokens that can be consumed in a single period. This parameter is required when the quota is enabled and must be greater than 0.
 	//
 	// example:
 	//
@@ -363,12 +367,24 @@ type CreateExternalAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source type of the skill. Valid values:
+	//
+	// - REFERENCE: References the AI Registry.
+	//
+	// - STATIC: Statically provided with the package.
+	//
+	// example:
+	//
+	// REFERENCE
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The skill version.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The referenced version selector. If omitted, the default value is LABEL/latest. Currently, only LABEL/latest is supported.
+	VersionSelector *CreateExternalAgentRequestBodySkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
 func (s CreateExternalAgentRequestBodySkills) String() string {
@@ -383,12 +399,25 @@ func (s *CreateExternalAgentRequestBodySkills) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateExternalAgentRequestBodySkills) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *CreateExternalAgentRequestBodySkills) GetVersion() *string {
 	return s.Version
 }
 
+func (s *CreateExternalAgentRequestBodySkills) GetVersionSelector() *CreateExternalAgentRequestBodySkillsVersionSelector {
+	return s.VersionSelector
+}
+
 func (s *CreateExternalAgentRequestBodySkills) SetName(v string) *CreateExternalAgentRequestBodySkills {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateExternalAgentRequestBodySkills) SetSourceType(v string) *CreateExternalAgentRequestBodySkills {
+	s.SourceType = &v
 	return s
 }
 
@@ -397,7 +426,66 @@ func (s *CreateExternalAgentRequestBodySkills) SetVersion(v string) *CreateExter
 	return s
 }
 
+func (s *CreateExternalAgentRequestBodySkills) SetVersionSelector(v *CreateExternalAgentRequestBodySkillsVersionSelector) *CreateExternalAgentRequestBodySkills {
+	s.VersionSelector = v
+	return s
+}
+
 func (s *CreateExternalAgentRequestBodySkills) Validate() error {
+	if s.VersionSelector != nil {
+		if err := s.VersionSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateExternalAgentRequestBodySkillsVersionSelector struct {
+	// The type of the version selector. Valid values:
+	//
+	// - LABEL: By label.
+	//
+	// - VERSION: By specific version.
+	//
+	// example:
+	//
+	// LABEL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value of the selector. If the type is LABEL, this value is the label name, such as latest. If the type is VERSION, this value is the specific version number.
+	//
+	// example:
+	//
+	// latest
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateExternalAgentRequestBodySkillsVersionSelector) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateExternalAgentRequestBodySkillsVersionSelector) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalAgentRequestBodySkillsVersionSelector) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateExternalAgentRequestBodySkillsVersionSelector) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateExternalAgentRequestBodySkillsVersionSelector) SetType(v string) *CreateExternalAgentRequestBodySkillsVersionSelector {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateExternalAgentRequestBodySkillsVersionSelector) SetValue(v string) *CreateExternalAgentRequestBodySkillsVersionSelector {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateExternalAgentRequestBodySkillsVersionSelector) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -433,7 +521,7 @@ func (s *CreateExternalAgentRequestBodyTemplate) Validate() error {
 }
 
 type CreateExternalAgentRequestBodyTemplateAiRegistry struct {
-	// The name of the template in AI Registry.
+	// The name of the template in the AI Registry.
 	//
 	// This parameter is required.
 	//
@@ -441,7 +529,7 @@ type CreateExternalAgentRequestBodyTemplateAiRegistry struct {
 	//
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the template in AI Registry.
+	// The version of the template in the AI Registry.
 	//
 	// This parameter is required.
 	//

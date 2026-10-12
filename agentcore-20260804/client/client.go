@@ -7082,7 +7082,7 @@ func (client *Client) ListTeams(workspaceId *string, request *ListTeamsRequest) 
 
 // Summary:
 //
-// Performs a paged query of users in a specified workspace. You can filter users by fuzzy match on the username by using nameLike, specify the maximum number of records per page for paging by using maxResults, and obtain the next page by using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Performs a paged query for users in a specified workspace. You can use nameLike to filter users by fuzzy match on the username, maxResults to specify the maximum number of records per page for paging, and nextToken to retrieve the next page. If maxResults is not specified, 10 records are returned by default.
 //
 // @param request - ListUsersRequest
 //
@@ -7099,6 +7099,10 @@ func (client *Client) ListUsersWithOptions(workspaceId *string, request *ListUse
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["email"] = request.Email
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}
@@ -7141,7 +7145,7 @@ func (client *Client) ListUsersWithOptions(workspaceId *string, request *ListUse
 
 // Summary:
 //
-// Performs a paged query of users in a specified workspace. You can filter users by fuzzy match on the username by using nameLike, specify the maximum number of records per page for paging by using maxResults, and obtain the next page by using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Performs a paged query for users in a specified workspace. You can use nameLike to filter users by fuzzy match on the username, maxResults to specify the maximum number of records per page for paging, and nextToken to retrieve the next page. If maxResults is not specified, 10 records are returned by default.
 //
 // @param request - ListUsersRequest
 //
