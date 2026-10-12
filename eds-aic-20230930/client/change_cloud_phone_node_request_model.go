@@ -59,26 +59,27 @@ type ChangeCloudPhoneNodeRequest struct {
 	//
 	// cpn-0ugbptfu473fy****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The number of cloud phone instances. Call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the maximum and minimum instance count limits.
+	// The number of cloud phone instances. You can call [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) to query the maximum and minimum instance count limits.
 	//
 	// example:
 	//
 	// 20
 	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	// The device storage size. Valid values: 10 GiB to 4000 GiB. If this parameter is left empty, the current size is retained.
+	// The device storage size. Valid range: 10 GiB to 4000 GiB. If this parameter is left empty, the original size is retained.
 	//
 	// example:
 	//
 	// 10
 	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
-	// The promotion ID.
+	// The promotional activity ID.
 	//
 	// example:
 	//
 	// 50003308011****
-	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	ShareDataVolume *int32  `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
-	SwapSize        *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The shared storage size. Unit: GiB.
+	ShareDataVolume *int32 `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
+	SwapSize        *int32 `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
 	// The upstream bandwidth throttling. Unit: Mbit/s.
 	//
 	// example:

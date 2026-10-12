@@ -32,9 +32,7 @@ type DescribeSkillsRequest struct {
 	//
 	// weather
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language type. The skill description is returned in this language.
-	//
-	// Valid values:
+	// The language type. The skill description is returned in the specified language. Valid values:
 	//
 	// - en: English.
 	//

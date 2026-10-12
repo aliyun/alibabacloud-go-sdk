@@ -24,7 +24,7 @@ type iDescribeEdgeMobileAgentPackagesRequest interface {
 }
 
 type DescribeEdgeMobileAgentPackagesRequest struct {
-	// The device type filter. Valid values: BOX, PHONE, PAD, and OTHER.
+	// The device class filter. Valid values: BOX, PHONE, PAD, and OTHER.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeEdgeMobileAgentPackagesRequest struct {
 	//
 	// lic-ez197xvdf0j5eo0*****
 	LicenseKeys *string `json:"LicenseKeys,omitempty" xml:"LicenseKeys,omitempty"`
-	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Leave this parameter empty for the first query. For subsequent queries, use the value returned in the previous response.
+	// The pagination token. Leave this parameter empty for the first query. For subsequent queries, obtain the token from the previous response.
 	//
 	// example:
 	//

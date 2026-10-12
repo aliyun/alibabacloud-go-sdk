@@ -18,7 +18,7 @@ type iRunSyncCommandResponseBody interface {
 }
 
 type RunSyncCommandResponseBody struct {
-	// An array of objects, where each object contains the execution result for a single instance.
+	// The returned result object.
 	Data []*RunSyncCommandResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,37 +83,37 @@ func (s *RunSyncCommandResponseBody) Validate() error {
 }
 
 type RunSyncCommandResponseBodyData struct {
-	// The time when command execution finished.
+	// The end time of the command execution. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the instance on which the command was executed.
+	// The instance ID on which the current command is executed.
 	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The invocation ID.
+	// The command execution ID.
 	//
 	// example:
 	//
 	// t-15775dc8****
 	InvocationId *string `json:"InvocationId,omitempty" xml:"InvocationId,omitempty"`
-	// The command execution status.
+	// The execution status of the command.
 	//
 	// example:
 	//
 	// RUNNING
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// The command output.
+	// The output of the command execution.
 	//
 	// example:
 	//
 	// success
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The time when command execution began.
+	// The start time of the command execution. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//

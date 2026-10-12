@@ -30,11 +30,9 @@ type iDescribeMetricTopRequest interface {
 type DescribeMetricTopRequest struct {
 	// For instance-level monitoring, specify a list of cloud phone instance IDs.
 	//
-	// <props="china">
-	//
-	// For matrix-level monitoring, specify a list of matrix IDs.
+	// <props="china">For matrix-level monitoring, specify a list of matrix IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// The end time of the query.
+	// The end time of the query for the monitoring metric. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -42,19 +40,19 @@ type DescribeMetricTopRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. This parameter is used for paged queries.
+	// The number of entries to return on each page for the monitoring data. This parameter is used for paging in a paged query.
 	//
-	// > The maximum value is 100 when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	// > If the monitoring metric is instance_in_traffic or instance_out_traffic, the maximum value is 100.
 	//
 	// example:
 	//
 	// 100
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The list of metrics.
+	// The list of monitoring metrics.
 	//
 	// This parameter is required.
 	MetricNames []*string `json:"MetricNames,omitempty" xml:"MetricNames,omitempty" type:"Repeated"`
-	// The token that marks the start of the next page of results. If you leave this parameter empty, the query starts from the beginning.
+	// The token that marks the position from which to start reading. If this parameter is left empty, the query starts from the beginning.
 	//
 	// example:
 	//
@@ -68,7 +66,7 @@ type DescribeMetricTopRequest struct {
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The start time of the query.
+	// The start time of the query for the monitoring metric. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

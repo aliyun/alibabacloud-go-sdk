@@ -16,13 +16,13 @@ type iDescribeCreditPackageRequest interface {
 }
 
 type DescribeCreditPackageRequest struct {
-	// The ID of the credit booster package.
+	// The ID of the credit boost package.
 	//
 	// example:
 	//
 	// crp-xagydbhfkah****
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
-	// The status of the credit booster package.
+	// The status of the credit boost package.
 	//
 	// example:
 	//

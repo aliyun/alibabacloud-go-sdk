@@ -40,73 +40,73 @@ type iDescribeTasksRequest interface {
 }
 
 type DescribeTasksRequest struct {
-	// The ID of the cloud phone instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-2zecay9ponatdc4m****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the cloud phone instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// defaultInstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the command execution. You can set the value to the last returned request ID.
+	// The command execution ID. You can enter the requestId returned by the previous operation.
 	//
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The level of the task. A value of 1 specifies a batch task. A value of 2 specifies an instance-level task.
+	// The task level. A value of 1 indicates a batch task. A value of 2 indicates an instance-level task.
 	//
 	// example:
 	//
 	// 1
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	// The token that specifies the starting position for reading. If this parameter is left empty, the reading starts from the beginning.
 	//
 	// example:
 	//
 	// FFbc8N4E1iOlcSxC+8boa0HHH2LKWbggYUinyrZWvtS1oTrMYCg1HuMLGuftj0****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The extension field.
+	// The extended field.
 	//
 	// example:
 	//
 	// param
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The ID of the parent task.
+	// The parent task ID.
 	//
 	// example:
 	//
 	// t-iaej5dkbnmivx****
 	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	// The IDs of the resources.
+	// The list of resource IDs.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The IDs of the tasks.
+	// The list of task IDs.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The state of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// Processing
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The status of the tasks.
+	// The list of task statuses.
 	TaskStatuses []*string `json:"TaskStatuses,omitempty" xml:"TaskStatuses,omitempty" type:"Repeated"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
 	// StartInstance
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The types of the tasks.
+	// The list of task types.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 

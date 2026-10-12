@@ -26,7 +26,7 @@ type iRenewCloudPhoneNodesRequest interface {
 }
 
 type RenewCloudPhoneNodesRequest struct {
-	// Specifies whether to enable automatic payment. The default value is false.
+	// Specifies whether to enable automatic payment. Default value: false.
 	//
 	// example:
 	//
@@ -38,26 +38,27 @@ type RenewCloudPhoneNodesRequest struct {
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// A list of cloud phone matrix IDs.
-	NodeIds         []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	PaidCallBackUrl *string   `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The renewal duration. The `PeriodUnit` parameter specifies the unit.
+	// The list of cloud phone matrix IDs.
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// The redirect URL for the payment success page.
+	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
+	// The subscription period. The unit is specified by PeriodUnit.
 	//
-	// - If `PeriodUnit` is **Year**, the value must be 1.
+	// - If PeriodUnit is set to **year**, the only valid value is 1.
 	//
-	// - If `PeriodUnit` is **Month**, the valid values are 1, 2, 3, and 6.
+	// - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the renewal duration.
+	// The unit of the subscription period.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID.
+	// The ID of the promotion.
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 

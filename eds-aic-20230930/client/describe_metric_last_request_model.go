@@ -28,13 +28,11 @@ type iDescribeMetricLastRequest interface {
 }
 
 type DescribeMetricLastRequest struct {
-	// For instance-level monitoring, specify a list of Cloud Phone instance IDs.
+	// The list of cloud phone instance IDs for instance-level monitoring.
 	//
-	// <props="china">
-	//
-	// For matrix-level monitoring, specify a list of matrix IDs.
+	// <props="china">The list of matrix IDs for matrix-level monitoring.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// The end time for the query.
+	// The end time for querying the monitoring metric. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -42,9 +40,9 @@ type DescribeMetricLastRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The number of monitoring data records to return on each page for a paged query.
+	// The page size of the returned monitoring data, used for paged query.
 	//
-	// The default value is 1000. This means that 1000 monitoring data records are returned per page.
+	// Default value: 1000, indicating 1,000 monitoring data entries per page.
 	//
 	// example:
 	//
@@ -54,13 +52,13 @@ type DescribeMetricLastRequest struct {
 	//
 	// This parameter is required.
 	MetricNames []*string `json:"MetricNames,omitempty" xml:"MetricNames,omitempty" type:"Repeated"`
-	// The token that marks the start of the current read position. If you leave this parameter empty, the query starts from the beginning.
+	// The token that marks the position from which to start reading. An empty value indicates that the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The statistic period for monitoring data.
+	// The statistical period for the monitoring data.
 	//
 	// Valid values: 60, 900, and 3600.
 	//
@@ -70,7 +68,7 @@ type DescribeMetricLastRequest struct {
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The start time for the query.
+	// The start time for querying the monitoring metric. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

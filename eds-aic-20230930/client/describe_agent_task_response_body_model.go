@@ -26,7 +26,7 @@ type DescribeAgentTaskResponseBody struct {
 	//
 	// example:
 	//
-	// For example, "200" indicates success.
+	// For example, "200" indicates success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The number of tasks.
 	//
@@ -143,13 +143,17 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
 	// The source of the digest. Valid values:
 	//
-	// - PROMPT_AUTO: auto-generated.
+	// - PROMPT_AUTO: Automatically generated.
 	//
-	// - RESULT_AUTO: result refinement.
+	// - RESULT_AUTO: Refined from the result.
 	//
-	// - USER: user-edited.
+	// - USER: Edited by the user.
+	//
+	// example:
+	//
+	// PROMPT_AUTO
 	DigestSource *string `json:"DigestSource,omitempty" xml:"DigestSource,omitempty"`
-	// The Mobile node ID.
+	// The ID of the mobile node.
 	//
 	// example:
 	//
@@ -162,37 +166,37 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	//
 	// 2026-04-13T17:42:19Z
 	RunningAt *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
-	// The number of steps executed.
+	// The number of executed steps.
 	//
 	// example:
 	//
 	// 30
 	Steps *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
-	// The task digest text, up to 25 characters.
+	// The task digest text, with a maximum of 25 characters.
 	TaskDigest *string `json:"TaskDigest,omitempty" xml:"TaskDigest,omitempty"`
-	// The task duration. This field is returned only when CurrentStatus is FAILED or COMPLETED.
+	// The time consumed by the task. This field is returned only when CurrentStatus is FAILED or COMPLETED.
 	//
 	// example:
 	//
 	// 50
 	TaskDuration *string `json:"TaskDuration,omitempty" xml:"TaskDuration,omitempty"`
-	// The task ID, which is globally unique.
+	// The globally unique task ID.
 	//
 	// example:
 	//
 	// t-imr0fufqd7cle****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task result in the desired state. This field is returned only when CurrentStatus is COMPLETED or FAILED.
+	// The node task result (desired state). This field is returned only when CurrentStatus is COMPLETED or FAILED.
 	//
 	// example:
 	//
-	// Download DingTalk succeeded.
+	// DingTalk downloaded successfully
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	// The user instruction in natural language. The Agent performs operations based on this instruction.
+	// The user instruction in natural language based on which the agent performs operations.
 	//
 	// example:
 	//
-	// Download DingTalk from App Store
+	// Download DingTalk from the app store
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 
@@ -341,7 +345,7 @@ type DescribeAgentTaskResponseBodyTasksArtifacts struct {
 	//
 	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The OSS pre-signed download URL.
+	// The presigned OSS download URL.
 	//
 	// example:
 	//

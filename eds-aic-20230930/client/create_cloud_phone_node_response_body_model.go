@@ -101,7 +101,7 @@ func (s *CreateCloudPhoneNodeResponseBody) Validate() error {
 }
 
 type CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel struct {
-	// The ID of the Internet Shared Bandwidth instance.
+	// The ID of the Internet Shared Bandwidth.
 	//
 	// example:
 	//

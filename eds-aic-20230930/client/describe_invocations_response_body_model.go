@@ -83,25 +83,25 @@ func (s *DescribeInvocationsResponseBody) Validate() error {
 }
 
 type DescribeInvocationsResponseBodyData struct {
-	// The time when the command finished running.
+	// The end time of the command execution. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the instance where the command was run.
+	// The instance ID on which the current command is executed.
 	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the command execution.
+	// The command execution ID.
 	//
 	// example:
 	//
 	// t-15775dc8****
 	InvocationId *string `json:"InvocationId,omitempty" xml:"InvocationId,omitempty"`
-	// The status of the command execution.
+	// The execution status of the command.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribeInvocationsResponseBodyData struct {
 	//
 	// success
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The time when the command started to run.
+	// The start time of the command execution. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

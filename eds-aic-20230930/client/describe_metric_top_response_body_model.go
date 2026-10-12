@@ -20,15 +20,15 @@ type iDescribeMetricTopResponseBody interface {
 }
 
 type DescribeMetricTopResponseBody struct {
-	// The number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The instance monitoring data.
+	// The list of instance monitoring results.
 	MetricTotalModel []*DescribeMetricTopResponseBodyMetricTotalModel `json:"MetricTotalModel,omitempty" xml:"MetricTotalModel,omitempty" type:"Repeated"`
-	// The token to retrieve the next page of results. If the results are not fully returned in a single query, this parameter is not empty. You can use this token in a subsequent query to retrieve the next page of results.
+	// The token for the next query. If a single query does not return all results, the returned NextToken is not empty. You can use the returned NextToken in subsequent queries to continue the query.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ func (s *DescribeMetricTopResponseBody) Validate() error {
 }
 
 type DescribeMetricTopResponseBodyMetricTotalModel struct {
-	// For instance-level monitoring, this is the cloud phone instance ID.
+	// For instance-level monitoring, the cloud phone instance ID is returned.
 	//
-	// <props="china">For matrix-level monitoring, this is the matrix ID.
+	// <props="china">For matrix-level monitoring, the matrix ID is returned.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeMetricTopResponseBodyMetricTotalModel struct {
 	//
 	// np-5hh4a31emkt6u****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The monitoring data of metrics.
+	// The list of metric monitoring results.
 	MetricModelList []*DescribeMetricTopResponseBodyMetricTotalModelMetricModelList `json:"MetricModelList,omitempty" xml:"MetricModelList,omitempty" type:"Repeated"`
 }
 
@@ -167,9 +167,9 @@ func (s *DescribeMetricTopResponseBodyMetricTotalModel) Validate() error {
 }
 
 type DescribeMetricTopResponseBodyMetricTotalModelMetricModelList struct {
-	// The monitoring data points.
+	// The monitoring statistical data points.
 	DataPoints []*DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// The name of the metric.
+	// The name of the monitoring metric.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ func (s *DescribeMetricTopResponseBodyMetricTotalModelMetricModelList) Validate(
 type DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints struct {
 	// The average value. Unit: %.
 	//
-	// > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	// > If the monitoring metric is instance_in_traffic or instance_out_traffic, the unit is bps.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints stru
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The maximum value. Unit: %.
 	//
-	// > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	// > If the monitoring metric is instance_in_traffic or instance_out_traffic, the unit is bps.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints stru
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
 	// The minimum value.
 	//
-	// > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	// > If the monitoring metric is instance_in_traffic or instance_out_traffic, the unit is bps.
 	//
 	// example:
 	//
@@ -253,15 +253,15 @@ type DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints stru
 	//
 	// cloudPhone-****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The properties.
+	// The property information.
 	//
-	// > A JSON string that contains the extension properties.
+	// > The extended property information string in JSON format is returned.
 	//
 	// example:
 	//
 	// {"IP":"192.168.*.***"}
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The timestamp of the data point. Unit: milliseconds.
+	// The statistical timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -24,19 +24,19 @@ type iDescribeBackupFilesResponseBody interface {
 type DescribeBackupFilesResponseBody struct {
 	// The list of returned result objects.
 	Data []*DescribeBackupFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this call.
+	// The maximum number of entries returned in this query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
+	// The token that specifies the position from which the next query starts. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID. If you encounter an issue, provide this request ID for troubleshooting.
+	// The unique ID of the request. If you encounter any issues, provide this request ID to the technical support team for troubleshooting.
 	//
 	// example:
 	//
@@ -123,42 +123,47 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// Test cloud phone
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// Specifies whether to perform a full device backup.
+	// Specifies whether the backup is a full-device backup.
 	//
 	// example:
 	//
 	// false
 	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
-	// The backup file ID.
+	// The ID of the backup file.
 	//
 	// example:
 	//
 	// bf-b0qbg3pbpjkn7****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	// The backup file name.
+	// The name of the backup file.
 	//
 	// example:
 	//
 	// a-58ftsoo90p0qa****.ab
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The directory where the backup file is stored.
+	// The directory where the backup file is saved.
 	//
 	// example:
 	//
 	// oss://cloudphone-saved-bucket-cn-shanghai/backup/aic-58ftsoo90p0qa****.ab
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	Channel        *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The order source. A value of CLOUDPHONE indicates AI cloud phone.
+	//
+	// example:
+	//
+	// CLOUDPHONE
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The description of the backup file.
 	//
 	// example:
 	//
-	// Backup file for /data/media directory.
+	// This is a backup file for the /data/media directory
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The owner of the backup file.
 	//
@@ -178,7 +183,7 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// 2024-05-15 17:33:59
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -196,18 +201,23 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of backed-up application package names.
+	// The list of package names of the backed-up applications.
 	SourceAppInfoList []*string `json:"SourceAppInfoList,omitempty" xml:"SourceAppInfoList,omitempty" type:"Repeated"`
-	// The list of source backup file directories.
+	// The list of directories of the source backup files.
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
-	// The backup file status.
+	// The status of the backup file.
 	//
 	// example:
 	//
 	// AVAILABLE
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Android system version.
+	//
+	// example:
+	//
+	// Android 11
 	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

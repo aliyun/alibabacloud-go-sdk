@@ -20,15 +20,15 @@ type iDescribeMetricLastResponseBody interface {
 }
 
 type DescribeMetricLastResponseBody struct {
-	// The number of records.
+	// The total count.
 	//
 	// example:
 	//
 	// 100
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The instance monitoring data.
+	// The list of instance monitoring results.
 	MetricTotalModel []*DescribeMetricLastResponseBodyMetricTotalModel `json:"MetricTotalModel,omitempty" xml:"MetricTotalModel,omitempty" type:"Repeated"`
-	// The token for the next query. If not all results are returned in a single query, the returned NextToken is not empty. You can use the returned NextToken in the next query to query the next page.
+	// The token for the next query. If a single query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue querying.
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ func (s *DescribeMetricLastResponseBody) Validate() error {
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModel struct {
-	// For instance-level monitoring, the Cloud Phone instance ID is returned.
+	// The cloud phone instance ID returned for instance-level monitoring.
 	//
-	// <props="china">For matrix-level monitoring, the matrix ID is returned.
+	// <props="china">The matrix ID returned for matrix-level monitoring.
 	//
 	// example:
 	//
 	// acp-fkuit0cmyru4p****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The monitoring data for metrics.
+	// The list of metric monitoring results.
 	MetricModelList []*DescribeMetricLastResponseBodyMetricTotalModelMetricModelList `json:"MetricModelList,omitempty" xml:"MetricModelList,omitempty" type:"Repeated"`
 }
 
@@ -152,17 +152,17 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModel) Validate() error {
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelList struct {
-	// The monitoring data points.
+	// The list of monitoring statistics data points.
 	DataPoints []*DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// The name of the metric.
+	// The name of the monitoring metric.
 	//
 	// example:
 	//
 	// cpu_utilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The process monitoring metrics.
+	// The list of process monitoring metrics.
 	//
-	// > This parameter is returned when the metric is \\`process_cpu\\` or \\`process_memory\\`.
+	// > This parameter is returned when the monitoring metric is process_cpu or process_memory.
 	ProcessLastInfos []*DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos `json:"ProcessLastInfos,omitempty" xml:"ProcessLastInfos,omitempty" type:"Repeated"`
 }
 
@@ -226,7 +226,7 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelList) Validate
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints struct {
 	// The average value. Unit: %.
 	//
-	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	// > The unit is bps when the monitoring metric is bandwidth_package_usage_out or bandwidth_package_usage_in.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints str
 	GpuId *string `json:"GpuId,omitempty" xml:"GpuId,omitempty"`
 	// The maximum value. Unit: %.
 	//
-	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	// > The unit is bps when the monitoring metric is bandwidth_package_usage_out or bandwidth_package_usage_in.
 	//
 	// example:
 	//
@@ -248,13 +248,13 @@ type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints str
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
 	// The minimum value. Unit: %.
 	//
-	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	// > The unit is bps when the monitoring metric is bandwidth_package_usage_out or bandwidth_package_usage_in.
 	//
 	// example:
 	//
 	// 93.1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
-	// The timestamp of the statistics. Unit: milliseconds.
+	// The statistical timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -320,7 +320,7 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos struct {
-	// The CPU utilization. Unit: %.
+	// The CPU usage. Unit: %.
 	//
 	// example:
 	//
@@ -340,7 +340,7 @@ type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInf
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of process IDs.
 	ProcessIds []*int32 `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
-	// The timestamp of the statistics. Unit: milliseconds.
+	// The statistical timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

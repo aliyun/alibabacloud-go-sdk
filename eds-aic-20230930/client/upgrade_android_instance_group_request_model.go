@@ -40,8 +40,9 @@ type UpgradeAndroidInstanceGroupRequest struct {
 	//
 	// ag-asguicdjh****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The redirect URL for the payment success page.
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The promotion ID.
+	// The ID of the promotion.
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 

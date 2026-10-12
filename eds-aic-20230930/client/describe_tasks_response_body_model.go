@@ -20,21 +20,21 @@ type iDescribeTasksResponseBody interface {
 }
 
 type DescribeTasksResponseBody struct {
-	// The objects that are returned.
+	// The list of returned result objects.
 	Data []*DescribeTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that specifies the starting position for reading. If this parameter is left empty, the reading starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -112,43 +112,43 @@ type DescribeTasksResponseBodyData struct {
 	//
 	// connect error.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The total number of failed subtasks.
+	// The total number of failed child tasks.
 	//
 	// example:
 	//
 	// 2
 	FailedChildCount *int32 `json:"FailedChildCount,omitempty" xml:"FailedChildCount,omitempty"`
-	// The end time of the task.
+	// The end time of the task. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the cloud phone instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the cloud phone instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// defaultInstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The state of the cloud phone instance.
+	// The instance status.
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The ID of the command execution.
+	// The command execution ID.
 	//
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The level of the task.
+	// The task level.
 	//
 	// example:
 	//
@@ -160,73 +160,73 @@ type DescribeTasksResponseBodyData struct {
 	//
 	// test
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The parameters of the task.
+	// The task parameters.
 	//
 	// example:
 	//
 	// param
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The ID of the parent task.
+	// The parent task ID.
 	//
 	// example:
 	//
 	// t-41oan3tza16vs****
 	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// acp-25nt4kk9whhok****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The execution result of the task.
+	// The task execution result.
 	//
 	// example:
 	//
 	// {\\"Success\\": True}
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The total number of the subtasks that are running.
+	// The total number of running child tasks.
 	//
 	// example:
 	//
 	// 0
 	RunningChildCount *int32 `json:"RunningChildCount,omitempty" xml:"RunningChildCount,omitempty"`
-	// The start time of the task.
+	// The start time of the task. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of successfully executed subtasks.
+	// The total number of successful child tasks.
 	//
 	// example:
 	//
 	// 98
 	SuccessChildCount *int32 `json:"SuccessChildCount,omitempty" xml:"SuccessChildCount,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// t-bp67acfmxazb4p****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The state of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// Processing
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
 	// StartInstance
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of subtasks of the current batch task.
+	// The total number of child tasks for the current batch task.
 	//
 	// example:
 	//

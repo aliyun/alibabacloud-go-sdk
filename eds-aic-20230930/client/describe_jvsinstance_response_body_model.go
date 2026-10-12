@@ -26,13 +26,13 @@ type iDescribeJVSInstanceResponseBody interface {
 type DescribeJVSInstanceResponseBody struct {
 	// The returned result object.
 	Data []*DescribeJVSInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
+	// The maximum number of results returned in this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that indicates the current position from which to start reading. An empty value indicates reading from the beginning.
+	// The token that specifies the starting position for the next query. An empty value indicates that the query starts from the beginning.
 	//
 	// example:
 	//
@@ -130,15 +130,15 @@ func (s *DescribeJVSInstanceResponseBody) Validate() error {
 
 type DescribeJVSInstanceResponseBodyData struct {
 	AgentVersion *DescribeJVSInstanceResponseBodyDataAgentVersion `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2026-04-10T01:31:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The credit quota configuration. Subsequent quota configurations overwrite previous configurations.
+	// The credit limit configuration. Subsequent quota configurations overwrite previous configurations.
 	CreditConfig []*DescribeJVSInstanceResponseBodyDataCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
-	// The expiration time.
+	// The expiration time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type DescribeJVSInstanceResponseBodyData struct {
 	//
 	// null
 	JvsPackageId *string `json:"JvsPackageId,omitempty" xml:"JvsPackageId,omitempty"`
-	// The modification time.
+	// The modification time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribeJVSInstanceResponseBodyData struct {
 	//
 	// RUNNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The used credits.
+	// The used credit.
 	UsedCredit []*DescribeJVSInstanceResponseBodyDataUsedCredit `json:"UsedCredit,omitempty" xml:"UsedCredit,omitempty" type:"Repeated"`
 }
 
@@ -343,25 +343,13 @@ func (s *DescribeJVSInstanceResponseBodyDataAgentVersion) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyDataCreditConfig struct {
-	// The quota limit. Valid values:
-	//
-	// - 0: not available for use.
-	//
-	// - >0: the quota is configured based on the numeric value.
-	//
-	// - -1: unlimited.
+	// The limit value.
 	//
 	// example:
 	//
 	// -1
 	CreditLimit *int64 `json:"CreditLimit,omitempty" xml:"CreditLimit,omitempty"`
-	// The quota period. Valid values:
-	//
-	// - total: The total usage limit.
-	//
-	// - month: Monthly. The quota resets based on the resource activation time as one cycle.
-	//
-	// - day: Daily. The quota resets at 00:00.
+	// The limit period.
 	//
 	// example:
 	//

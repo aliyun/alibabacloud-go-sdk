@@ -26,7 +26,7 @@ type iExpandDataVolumeRequest interface {
 }
 
 type ExpandDataVolumeRequest struct {
-  // Specifies whether to enable automatic payment. The default value is false.
+  // Specifies whether to enable automatic payment. Default value: false.
   // 
   // example:
   // 
@@ -38,10 +38,11 @@ type ExpandDataVolumeRequest struct {
   // 
   // cn-hangzhou
   BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-  // The IDs of the cloud phone matrices.
+  // The list of cloud phone matrix IDs.
   NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+  // The redirect URL for the payment success page.
   PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-  // The size of the instance storage. Unit: GiB.
+  // The size of the device storage for the instance. Unit: GiB.
   // 
   // example:
   // 

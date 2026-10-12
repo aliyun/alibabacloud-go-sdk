@@ -22,7 +22,7 @@ type iDescribeImageListResponseBody interface {
 type DescribeImageListResponseBody struct {
 	// The returned data.
 	Data []*DescribeImageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The token that is used to start the next query. An empty value indicates that all data has been returned.
+	// The position from which the current call returns the read data. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeImageListResponseBody) Validate() error {
 }
 
 type DescribeImageListResponseBodyData struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -112,19 +112,19 @@ type DescribeImageListResponseBodyData struct {
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the image was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-02-01 10:56:36
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the image was last modified.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-02-01 10:56:36
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// An array of tag objects.
+	// The array of tag objects.
 	ImageBizTags []*DescribeImageListResponseBodyDataImageBizTags `json:"ImageBizTags,omitempty" xml:"ImageBizTags,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -138,7 +138,7 @@ type DescribeImageListResponseBodyData struct {
 	//
 	// IMAGE
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The image distribution information by region. The key is the region and the value is the distribution information.
+	// The image distribution region information. The key is the region and the value is the distribution information.
 	ImageRegionDistributeMap map[string]*DataImageRegionDistributeMapValue `json:"ImageRegionDistributeMap,omitempty" xml:"ImageRegionDistributeMap,omitempty"`
 	// The list of available regions.
 	ImageRegionList []*string `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`
@@ -160,7 +160,7 @@ type DescribeImageListResponseBodyData struct {
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The time when the image was published.
+	// The release time. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

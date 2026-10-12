@@ -54,12 +54,12 @@ type CreateMobileAgentPackageRequest struct {
 	//
 	// - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (default): Only an order is generated. No payment is made.
+	// - **false*	- (default): Only an order is generated and no payment is deducted.
 	//
 	//
 	//
 	//
-	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can log on to the Elastic Cloud Phone console to complete the payment.
+	// > If the balance of your payment method is insufficient, you can set this parameter to false. In this case, an unpaid order is generated, and you can log on to the WUYING Cloud Phone console to complete the payment.
 	//
 	// >
 	//
@@ -69,22 +69,22 @@ type CreateMobileAgentPackageRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// 	- **true**: Auto-renewal is enabled.
+	// 	- **true**: Yes.
 	//
-	// 	- **false*	- (default): Auto-renewal is disabled.
+	// 	- **false*	- (default): No.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The region where the instance resides. Currently, only cn-hangzhou is supported.
+	// The region where the instance resides. Only cn-hangzhou is supported.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The credit quota.
+	// The credit amount.
 	//
 	// example:
 	//
@@ -96,45 +96,44 @@ type CreateMobileAgentPackageRequest struct {
 	//
 	// 1
 	CreditConfig *string `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty"`
-	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The name of the node instance.
 	//
 	// example:
 	//
 	// CloudPhone
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The resource plan specification.
+	// The specification of the resource plan.
 	//
 	// example:
 	//
 	// advanced
 	MobileAgentPackageSpec *string `json:"MobileAgentPackageSpec,omitempty" xml:"MobileAgentPackageSpec,omitempty"`
 	PackageSpecId          *int64  `json:"PackageSpecId,omitempty" xml:"PackageSpecId,omitempty"`
-	// The redirect URL after a successful payment.
+	// The redirect URL for the payment success page.
 	//
 	// example:
 	//
 	// https://aim.wuying.aliyun.com/nodes
 	PaidCallbackUrl *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
-	// The duration for which you want to purchase the resource. The unit is specified by `PeriodUnit`.
+	// The subscription duration of the resource. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the duration for which you want to purchase the resource.
+	// The unit of the subscription duration of the resource. Valid values:
 	//
-	// Valid values:
+	// - **Month**: Month.
 	//
-	// - **Month**: month.
-	//
-	// - **Year**: year.
+	// - **Year**: Year.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the promotional campaign.
+	// The promotion ID.
 	//
 	// example:
 	//

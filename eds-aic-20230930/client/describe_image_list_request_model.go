@@ -32,7 +32,7 @@ type iDescribeImageListRequest interface {
 }
 
 type DescribeImageListRequest struct {
-	// An array of tag objects.
+	// The array of tag objects.
 	ImageBizTags []*DescribeImageListRequestImageBizTags `json:"ImageBizTags,omitempty" xml:"ImageBizTags,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -46,7 +46,7 @@ type DescribeImageListRequest struct {
 	//
 	// Android 12 system image
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// > This parameter is not yet available.
+	// > This parameter is not yet available for public use.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeImageListRequest struct {
 	//
 	// cpm.gx7.10xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum number of entries to return on each page for a paged query. Valid values: 1 to 100. Default value: 20.
+	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 20.
 	//
 	// if can be null:
 	// true
@@ -75,7 +75,7 @@ type DescribeImageListRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
+	// The position from which the read operation starts. An empty value indicates that the read operation starts from the beginning.
 	//
 	// example:
 	//
@@ -86,7 +86,8 @@ type DescribeImageListRequest struct {
 	// example:
 	//
 	// AVAILABLE
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The operating system type.
 	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
 }
 

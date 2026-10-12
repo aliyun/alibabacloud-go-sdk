@@ -28,7 +28,7 @@ type DescribeEdgeMobileAgentPackagesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. An empty value indicates that no more data exists.
+	// The pagination token for the next page. An empty value indicates that no more data is available.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeEdgeMobileAgentPackagesResponseBody struct {
 	//
 	// 5C5CEF0A-D6E1-58D3-8750-67DB4F82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeEdgeMobileAgentPackagesResponseBody) Validate() error {
 }
 
 type DescribeEdgeMobileAgentPackagesResponseBodyPackages struct {
-	// The device type.
+	// The device class.
 	//
 	// example:
 	//
 	// BOX
 	DeviceClass *string `json:"DeviceClass,omitempty" xml:"DeviceClass,omitempty"`
-	// The expiration time.
+	// The expiration time. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

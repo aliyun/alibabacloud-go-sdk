@@ -91,7 +91,7 @@ type ChangeCloudPhoneNodeResponseBodyNodeInfos struct {
 	//
 	// cpn-e5kxgjyt8s1mb****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// When the matrix uses dedicated device storage, a 64 GiB shared storage space is allocated by default (not modifiable) for storing images and other matrix-wide files. When the matrix uses shared device storage (with the size specified at purchase), this storage space is shared by all instances.
+	// When the matrix uses independent device storage, 64 GiB of shared storage space is allocated by default (not modifiable) for storing images and other matrix-wide files. When the matrix uses shared device storage (with the size set at purchase), this storage space is shared among all instances.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos struct {
 	//
 	// cpn-jewjt8xryuitu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The dedicated device storage capacity.
+	// The independent device storage capacity.
 	//
 	// example:
 	//

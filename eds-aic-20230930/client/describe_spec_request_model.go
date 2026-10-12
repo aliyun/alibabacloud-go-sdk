@@ -36,32 +36,33 @@ type DescribeSpecRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The billing method. A value of PrePaid indicates subscription. A value of PostPaid indicates pay-as-you-go.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The cloud phone matrix specification.
 	//
 	// example:
 	//
 	// cpm.gx7.10xlarge
 	MatrixSpec *string `json:"MatrixSpec,omitempty" xml:"MatrixSpec,omitempty"`
-	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 100.
+	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which to start the query. Leave this parameter empty to query from the beginning.
+	// The token that specifies the position from which the query starts. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The purchase mode of the cloud phone.
+	// The purchase mode for cloud phones.
 	//
 	// example:
 	//
 	// Instance
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	// A list of specification IDs.
+	// The list of specification IDs.
 	SpecIds []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
 	// The specification status.
 	//

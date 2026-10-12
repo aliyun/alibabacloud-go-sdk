@@ -18,13 +18,13 @@ type iUpgradeAndroidInstanceGroupResponseBody interface {
 }
 
 type UpgradeAndroidInstanceGroupResponseBody struct {
-	// The IDs of instances created during the scale-out.
+	// The instance IDs created by the scale-out.
 	//
 	// example:
 	//
 	// [\\"acp-2iowaqjyw9nrd****\\", \\"acp-2iowaqjyw9nrd****\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//

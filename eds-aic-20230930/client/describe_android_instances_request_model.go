@@ -60,37 +60,39 @@ type iDescribeAndroidInstancesRequest interface {
 type DescribeAndroidInstancesRequest struct {
 	// The list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// The application management policy ID.
+	// The ID of the application control rule.
 	//
 	// example:
 	//
 	// amp-shigvudbyeuib****
 	AppManagePolicyId *string `json:"AppManagePolicyId,omitempty" xml:"AppManagePolicyId,omitempty"`
-	// The user ID assigned to the instance, which is the China Wuying convenience account ID.
+	// The ID of the user assigned to the instance, which is the Wuying convenience user ID.
 	//
 	// example:
 	//
 	// user
 	AuthorizedUserId *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	// <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition or Matrix Edition).
+	// <props="china">The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the list of regions where different versions of cloud phones (instance edition and matrix edition) are available for purchase.
+	//
+	// <props="intl">The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the list of regions where cloud phones are available for purchase.
 	//
 	// example:
 	//
 	// cn-shanghai
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The instance group ID.
+	// The ID of the instance group.
 	//
 	// example:
 	//
@@ -98,7 +100,7 @@ type DescribeAndroidInstancesRequest struct {
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
 	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The instance group name.
+	// The name of the instance group.
 	//
 	// example:
 	//
@@ -110,19 +112,19 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// EnterpriseAi
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
-	// The ID of the bound key pair.
+	// The ID of the associated key pair.
 	//
 	// example:
 	//
 	// kp-5hh431emkpuoi****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+	// The maximum number of entries per page for paging. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
+	// The token that specifies the starting position for the next query. An empty value indicates that the query starts from the beginning.
 	//
 	// example:
 	//
@@ -130,17 +132,21 @@ type DescribeAndroidInstancesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// <props="china">The matrix ID.
 	//
+	// <props="intl">This parameter is not publicly available.
+	//
 	// example:
 	//
 	// node_id
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// <props="china">The name of the matrix.
 	//
+	// <props="intl">This parameter is not publicly available.
+	//
 	// example:
 	//
 	// node_name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The cloud phone network IDs.
+	// The ID of the cloud phone network.
 	OfficeSiteIds []*string `json:"OfficeSiteIds,omitempty" xml:"OfficeSiteIds,omitempty" type:"Repeated"`
 	// The private IP address of the instance.
 	//
@@ -148,9 +154,9 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// 10.0.162.136
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The IDs of the public network rate limiting rule groups. These are rate limiting rules for instances in the basic shared network.
+	// The ID of the public network throttling rule group. This specifies the throttling rules for instances in the basic shared network.
 	QosRuleIds []*string `json:"QosRuleIds,omitempty" xml:"QosRuleIds,omitempty" type:"Repeated"`
-	// The sales mode.
+	// The sale mode.
 	//
 	// example:
 	//
@@ -158,11 +164,21 @@ type DescribeAndroidInstancesRequest struct {
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	// The sort key used when querying resources.
 	//
+	// This parameter must be used together with SortType. Valid values: CreationTime and ExpiredTime.
+	//
+	// If you set this parameter to CreationTime, the resources are sorted by creation time. If you set this parameter to ExpiredTime, the resources are sorted by expiration time.
+	//
+	// By default, resources are sorted in descending order of creation time.
+	//
 	// example:
 	//
 	// CreationTime
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	// The sort order. Default value: descending order. Valid values:
+	// The sort order. Default value: DESC. Valid values:
+	//
+	// - ASC: ascending order
+	//
+	// - DESC: descending order
 	//
 	// example:
 	//

@@ -46,42 +46,43 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
-	// [_single.params.ChargeType.enum. PrePaid]subscription
+	// [_single.params.ChargeType.enum. PrePaid]Subscription.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The list of instance group IDs.
+	// The IDs of the instance groups.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The instance group name. Fuzzy match is supported.
+	// The name of the instance group. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// Cloud phone
+	// Cloud Phone
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
-	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	// The instance version. A value of basic indicates a Wuying Cloud Phone instance, and a value of EnterpriseAi indicates a JVS Mobile instance.
+	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// The ID of the key pair.
 	//
 	// example:
 	//
 	// kp-5htf0ymsrnb7q****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+	// The maximum number of entries to return on each page in a paging query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the position from which to start reading. An empty value indicates reading from the beginning.
+	// The token that indicates the starting position for the query. If this parameter is left empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The policy ID.
+	// The ID of the policy.
 	//
 	// example:
 	//
@@ -93,15 +94,17 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	//
 	// standard
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	SortKey  *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// The sort field. A value of CreationTime indicates the creation time, and a value of ExpiredTime indicates the expiration time.
+	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// The sort order. A value of ASC indicates ascending order, and a value of DESC indicates descending order.
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The instance group status.
+	// The status of the instance group.
 	//
 	// example:
 	//
 	// CREATING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the instance group. You can bind up to 20 tags to each instance.
+	// The tags of the instance group. You can add up to 20 tags to each instance.
 	Tags []*DescribeAndroidInstanceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -255,7 +258,7 @@ func (s *DescribeAndroidInstanceGroupsRequest) Validate() error {
 type DescribeAndroidInstanceGroupsRequestTags struct {
 	// The tag key. You can specify 1 to 20 tag keys.
 	//
-	// 	Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	// 	Notice: A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -263,7 +266,7 @@ type DescribeAndroidInstanceGroupsRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// 	Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// 	Notice: A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

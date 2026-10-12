@@ -16,7 +16,7 @@ type iDescribeCreditDetailResponseBody interface {
 }
 
 type DescribeCreditDetailResponseBody struct {
-	// The response object.
+	// The returned data object.
 	Data *DescribeCreditDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,7 +70,7 @@ type DescribeCreditDetailResponseBodyData struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number for pagination. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeCreditDetailResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of detail records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ func (s *DescribeCreditDetailResponseBodyData) Validate() error {
 }
 
 type DescribeCreditDetailResponseBodyDataDetails struct {
-	// The agent type. This field is populated only when querying by a single agent type.
+	// The agent type. This field is populated only when you query by a single agent type.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// 50
 	CachedTokens *int64 `json:"CachedTokens,omitempty" xml:"CachedTokens,omitempty"`
-	// The time when the change occurred.
+	// The time when the change occurred. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// Open Xiaohongshu
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The model inference duration, in milliseconds.
+	// The model inference duration in milliseconds.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// 350
 	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
-	// The response time of the first token, in milliseconds.
+	// The first token response time, in milliseconds.
 	//
 	// example:
 	//

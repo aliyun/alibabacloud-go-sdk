@@ -14,7 +14,7 @@ type iDescribeBucketsRequest interface {
 }
 
 type DescribeBucketsRequest struct {
-	// The type of the OSS file.
+	// The OSS file type.
 	//
 	// > This parameter is not yet available.
 	//

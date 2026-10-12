@@ -24,7 +24,7 @@ type iDescribeCreditPackageResponseBody interface {
 }
 
 type DescribeCreditPackageResponseBody struct {
-	// The credit booster package information.
+	// The information about the credit boost packages.
 	CreditsPackageInfos []*DescribeCreditPackageResponseBodyCreditsPackageInfos `json:"CreditsPackageInfos,omitempty" xml:"CreditsPackageInfos,omitempty" type:"Repeated"`
 	// Indicates whether this is the first purchase.
 	//
@@ -32,7 +32,7 @@ type DescribeCreditPackageResponseBody struct {
 	//
 	// true
 	IsFirstPurchase *bool `json:"IsFirstPurchase,omitempty" xml:"IsFirstPurchase,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -134,44 +134,44 @@ func (s *DescribeCreditPackageResponseBody) Validate() error {
 }
 
 type DescribeCreditPackageResponseBodyCreditsPackageInfos struct {
-	// The number of available credits in the current credit booster package.
+	// The number of available credits in the current credit boost package.
 	//
 	// example:
 	//
 	// 70
 	AvailableCredits *string `json:"AvailableCredits,omitempty" xml:"AvailableCredits,omitempty"`
 	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the credit booster package.
+	// The ID of the credit boost package.
 	//
 	// example:
 	//
 	// crp-xagydbhfkah****
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
-	// The status of the credit booster package.
+	// The status of the credit boost package.
 	//
 	// example:
 	//
 	// ACTIVE
 	CreditPackageStatus *string `json:"CreditPackageStatus,omitempty" xml:"CreditPackageStatus,omitempty"`
-	// The effective period of the credit booster package.
+	// The effective period of the credit boost package. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-04-30 00:00:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The number of consumed credits in the current credit booster package.
+	// The number of consumed credits in the current credit boost package.
 	//
 	// example:
 	//
 	// 30
 	ExhaustedCredits *string `json:"ExhaustedCredits,omitempty" xml:"ExhaustedCredits,omitempty"`
-	// The expiration time of the credit booster package.
+	// The expiration time of the credit boost package. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-10-30 00:00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The total number of credits in the current credit booster package.
+	// The total number of credits in the current credit boost package.
 	//
 	// example:
 	//

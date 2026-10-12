@@ -46,25 +46,25 @@ type DescribeBackupFilesRequest struct {
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The instance name. Fuzzy match is supported.
+	// The name of the instance. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// Specifies whether to perform a full device backup.
+	// Specifies whether the backup is a full-device backup.
 	//
 	// example:
 	//
 	// false
 	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
-	// The backup file ID.
+	// The ID of the backup file.
 	//
 	// example:
 	//
 	// bf-dxrh5jrv0zpb8****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	// The backup file name. Fuzzy match is supported.
+	// The name of the backup file. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeBackupFilesRequest struct {
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Queries backup files created before the specified time.
+	// The end time to query backup files. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -88,26 +88,27 @@ type DescribeBackupFilesRequest struct {
 	//
 	// test1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The instance group ID.
+	// The ID of the instance group.
 	//
 	// example:
 	//
 	// ag-fxdx91jsfyiy3****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries per page for a paging query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
+	// The token that specifies the position from which the query starts. If this parameter is left empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	// Queries backup files created after the specified time.
+	// The sales mode. Valid values: Instance (cloud phone instance mode) and Node (cloud phone matrix mode).
+	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// The start time to query backup files. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

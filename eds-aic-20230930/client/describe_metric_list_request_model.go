@@ -30,39 +30,37 @@ type iDescribeMetricListRequest interface {
 }
 
 type DescribeMetricListRequest struct {
-	// For instance-level monitoring, enter a list of Cloud Phone instance IDs.
+	// For instance-level monitoring, specify a list of cloud phone instance IDs.
 	//
-	// <props="china">
-	//
-	// For matrix-level monitoring, enter a list of matrix IDs.
+	// <props="china">For matrix-level monitoring, specify a list of matrix IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// The end time for the query.
+	// The end time of the query. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2019-01-31 11:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A list of instance IDs.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The number of entries to return on each page for a paged query.
+	// The number of monitoring data entries to return on each page for paging in a paged query.
 	//
-	// Default value: 1000. This means that 1000 monitoring data records are returned per page.
+	// Default value: 1000, which means 1,000 monitoring data entries per page.
 	//
 	// example:
 	//
 	// 1000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The monitoring metrics.
+	// The list of monitoring metrics.
 	//
 	// This parameter is required.
 	MetricNames []*string `json:"MetricNames,omitempty" xml:"MetricNames,omitempty" type:"Repeated"`
-	// A token that marks the position from which the query starts. Leave it empty to start from the beginning.
+	// The token that marks the position from which the query starts. If this parameter is left empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The statistic period of the monitoring data.
+	// The statistical period of the monitoring data.
 	//
 	// Valid values: 60, 900, and 3600.
 	//
@@ -72,9 +70,9 @@ type DescribeMetricListRequest struct {
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// A list of process monitoring metrics.
+	// The list of process monitoring metrics.
 	ProcessInfos []*DescribeMetricListRequestProcessInfos `json:"ProcessInfos,omitempty" xml:"ProcessInfos,omitempty" type:"Repeated"`
-	// The start time for the query.
+	// The start time of the query. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -185,9 +183,9 @@ func (s *DescribeMetricListRequest) Validate() error {
 }
 
 type DescribeMetricListRequestProcessInfos struct {
-	// A list of process IDs.
+	// The list of process IDs.
 	ProcessIds []*int32 `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//

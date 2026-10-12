@@ -32,57 +32,57 @@ type iRunAgentTaskShrinkRequest interface {
 }
 
 type RunAgentTaskShrinkRequest struct {
-	// The region ID of the Mobile node.
+	// The ID of the region where the Mobile node resides.
 	//
 	// example:
 	//
 	// cn-shanghai
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The list of Mobile node IDs. A maximum of 100 nodes are supported per request.
+	// The list of Mobile node IDs. A single request supports up to 100 nodes.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The maximum number of execution steps for the task. This prevents infinite loops. Valid values: 30 to 1000. Default value: 1000.
+	// The maximum number of execution steps for the task to prevent infinite loops. Valid values: 50 to 1000. Default value: 50.
 	//
 	// example:
 	//
-	// 30
+	// 50
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The runtime configuration that carries the runtime parameters (skills) for this task.
+	// The runtime configuration that contains the runtime parameters such as skills for the current task.
 	//
 	// example:
 	//
 	// {"Skills":["sk-abc","sk-def"]}
 	RunConfigShrink *string `json:"RunConfig,omitempty" xml:"RunConfig,omitempty"`
-	// Specifies whether to write the task artifacts to the user\\"s OSS bucket.
+	// Specifies whether to save the task artifacts to your OSS.
 	//
 	// example:
 	//
 	// true
 	SaveArtifacts *bool `json:"SaveArtifacts,omitempty" xml:"SaveArtifacts,omitempty"`
-	// The scheduling plan ID. When specified, the execution record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling dimension through aggregation.
+	// The ID of the scheduling plan. When specified, the execute record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling aggregation dimension.
 	//
 	// example:
 	//
 	// sch-260625-pbj2****
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// An array of target objects. Each element contains an InstanceId and a SessionId.
+	// The list of targets. Each element is an object that contains an InstanceId and a SessionId.
 	Targets []*RunAgentTaskShrinkRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// The task configuration ID. This parameter is used to trigger a task with the specified configuration.
+	// The ID of the task configuration. This parameter is used to trigger a task with the specified configuration.
 	//
 	// example:
 	//
 	// tsk-260625-49be****
 	TaskConfigId *string `json:"TaskConfigId,omitempty" xml:"TaskConfigId,omitempty"`
-	// The task timeout period, in seconds. Valid values: 300 to 3600. Default value: 3600.
+	// The timeout period of the task in seconds. Valid values: 300 to 3600. Default value: 3600.
 	//
 	// example:
 	//
 	// 3600
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	// The user instruction in natural language. The Agent performs operations based on this instruction.
+	// The user prompt in natural language. The agent performs operations based on this prompt.
 	//
 	// example:
 	//
-	// Go to App Store and download DingTalk
+	// Download DingTalk from the app store
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 
@@ -198,13 +198,13 @@ func (s *RunAgentTaskShrinkRequest) Validate() error {
 }
 
 type RunAgentTaskShrinkRequestTargets struct {
-	// The Mobile node ID, such as acp-xxx.
+	// The ID of the Mobile node, such as acp-xxx.
 	//
 	// example:
 	//
 	// acp-5hh4a31emkt6u****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The session ID. Tasks with the same session ID share context, such as ses-260702-21b****.
+	// The session ID. Tasks with the same session ID share the context, such as ses-260702-21b****.
 	//
 	// example:
 	//

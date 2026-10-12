@@ -123,7 +123,7 @@ type DescribeSkillsResponseBodySkillInfo struct {
 	//
 	// System
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The creation time.
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type DescribeSkillsResponseBodySkillInfo struct {
 	//
 	// aHR0cDovL2Nsb3VkLXBob25lLWFpLXRlc3QwLm9zcy1jbi1oYW5nemhv****
 	IconOssUrl *string `json:"IconOssUrl,omitempty" xml:"IconOssUrl,omitempty"`
-	// The number of instances that have the skill installed.
+	// The number of instances on which the skill is installed.
 	//
 	// example:
 	//
 	// 10
 	InstalledCount *int32 `json:"InstalledCount,omitempty" xml:"InstalledCount,omitempty"`
-	// The information about the installed instances.
+	// The information about the instances on which the skill is installed.
 	InstalledInstances []*DescribeSkillsResponseBodySkillInfoInstalledInstances `json:"InstalledInstances,omitempty" xml:"InstalledInstances,omitempty" type:"Repeated"`
 	// The skill summary.
 	//
@@ -173,13 +173,13 @@ type DescribeSkillsResponseBodySkillInfo struct {
 	//
 	// USER_UPLOAD
 	SkillSource *string `json:"SkillSource,omitempty" xml:"SkillSource,omitempty"`
-	// The skill lifecycle status.
+	// The lifecycle status of the skill.
 	//
 	// example:
 	//
 	// UPLOADED
 	SkillStatus *string `json:"SkillStatus,omitempty" xml:"SkillStatus,omitempty"`
-	// The source node ID of the skill created from a conversation. This value is empty for user-uploaded skills.
+	// The source node ID of the skill created from a conversation. This parameter is empty if the skill is uploaded by a user.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type DescribeSkillsResponseBodySkillInfo struct {
 	//
 	// System
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The skill version.
+	// The skill version number.
 	//
 	// example:
 	//

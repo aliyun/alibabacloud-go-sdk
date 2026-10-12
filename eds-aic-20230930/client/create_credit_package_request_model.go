@@ -28,14 +28,14 @@ type iCreateCreditPackageRequest interface {
 type CreateCreditPackageRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: enables automatic payment. Make sure that your account balance is sufficient.
+	// - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (default): generates an order without charging your account.
-	//
-	//
+	// - **false*	- (default): Generates an order without deducting payment.
 	//
 	//
-	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the Elastic Cloud Phone console to complete the payment.
+	//
+	//
+	// > If the balance of your payment method is insufficient, set this parameter to false. An unpaid order is generated. You can log on to the WUYING Cloud Phone console to complete the payment.
 	//
 	// example:
 	//
@@ -49,25 +49,23 @@ type CreateCreditPackageRequest struct {
 	// 1000
 	CreditAmount  *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
 	PackageAmount *string `json:"PackageAmount,omitempty" xml:"PackageAmount,omitempty"`
-	// The duration for which you want to purchase the resource. The unit is specified by PeriodUnit.
+	// The subscription duration of the purchased resource. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the duration for which you want to purchase the resource.
+	// The unit of the subscription duration for the purchased resource. Valid values:
 	//
-	// Valid values:
+	// - **Month**: Month.
 	//
-	// - **Month**: month.
-	//
-	// - **Year**: year.
+	// - **Year**: Year.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the promotional campaign.
+	// The ID of the promotion.
 	//
 	// example:
 	//

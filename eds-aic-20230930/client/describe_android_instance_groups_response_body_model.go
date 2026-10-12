@@ -20,9 +20,9 @@ type iDescribeAndroidInstanceGroupsResponseBody interface {
 }
 
 type DescribeAndroidInstanceGroupsResponseBody struct {
-	// The details of the instance groups.
+	// The details of the instance group.
 	InstanceGroupModel []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel `json:"InstanceGroupModel,omitempty" xml:"InstanceGroupModel,omitempty" type:"Repeated"`
-	// The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
+	// The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
@@ -114,47 +114,52 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// The number of available instances.
 	//
-	// > Available means the instance status is not "being deleted" or "deleted".
+	// > Available indicates that the instance status is neither Deleting nor Deleted.
 	//
 	// example:
 	//
 	// 2
 	AvailableInstanceAmount *int32 `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
-	// The ID of the bandwidth package.
+	// The ID of the bandwidth plan.
 	//
 	// example:
 	//
 	// np-0q6ixs7vpxciz****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The status of the bandwidth package.
+	// The status of the bandwidth plan.
 	//
 	// Valid values:
 	//
-	// - Creating: being created.
+	// - Creating: creating
 	//
-	// - Releasing: being released.
+	// - Releasing: releasing
 	//
-	// - InUse: in use.
+	// - InUse: in use
 	//
-	// - Failed: failed.
+	// - Failed: failed
 	//
-	// - Expired: expired.
+	// - Expired: expired
 	//
-	// - Available: unbound and being billed.
+	// - Available: available and unbound, billing in progress
 	//
 	// example:
 	//
 	// Creating
 	BandwidthPackageStatus *string `json:"BandwidthPackageStatus,omitempty" xml:"BandwidthPackageStatus,omitempty"`
-	// The type of the bandwidth package.
+	// The type of the bandwidth plan.
 	//
 	// example:
 	//
 	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// The public network bandwidth limit rules for the instance group.
+	// The Internet bandwidth throttling rules for the instance group.
 	BindQosRules *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules `json:"BindQosRules,omitempty" xml:"BindQosRules,omitempty" type:"Struct"`
-	Channel      *string                                                                  `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The order source. CLOUDPHONE indicates AI Cloud Phone.
+	//
+	// example:
+	//
+	// CLOUDPHONE
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The billing method.
 	//
 	// example:
@@ -169,13 +174,13 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The disk information.
 	Disks []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available for public use.
 	//
 	// example:
 	//
 	// true
 	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
-	// The reason for the creation failure.
+	// The cause of the creation failure.
 	//
 	// example:
 	//
@@ -215,19 +220,19 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// example:
 	//
-	// "抖音","淘宝"
+	// "Douyin","Taobao"
 	InstalledAppList *string `json:"InstalledAppList,omitempty" xml:"InstalledAppList,omitempty"`
-	// The instance group ID.
+	// The ID of the instance group.
 	//
 	// example:
 	//
 	// ag-h67a2cs0zprfdh****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// The instance group name.
+	// The name of the instance group.
 	//
 	// example:
 	//
-	// Cloud phoneA
+	// Cloud Phone A
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
 	// The instance group specifications.
 	//
@@ -241,13 +246,13 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// ARM-2vCPU4GiB 32GiB
 	InstanceGroupSpecDescribe *string `json:"InstanceGroupSpecDescribe,omitempty" xml:"InstanceGroupSpecDescribe,omitempty"`
-	// The instance group status.
+	// The status of the instance group.
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceGroupStatus *string `json:"InstanceGroupStatus,omitempty" xml:"InstanceGroupStatus,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available for public use.
 	//
 	// example:
 	//
@@ -261,7 +266,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network type of the instance.
 	//
-	// > This field is returned only for instance groups with standard networking.
+	// > Currently, this field is returned only for instance groups in the standard network.
 	//
 	// example:
 	//
@@ -279,8 +284,13 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// cn-shanghai+dir-030598****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	PackageId    *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// The policy ID.
+	// The ID of the plan package for the AI Cloud Phone.
+	//
+	// example:
+	//
+	// cmag-bp1bpyt7sfeleukh****
+	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// The ID of the policy.
 	//
 	// example:
 	//
@@ -298,13 +308,13 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// CPU
 	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
-	// The height of the resolution.
+	// The resolution height.
 	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	// The width of the resolution.
+	// The resolution width.
 	//
 	// example:
 	//
@@ -734,9 +744,9 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) Validate()
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules struct {
-	// The public network bandwidth limit rule bound to the instance.
+	// The Internet bandwidth throttling rules bound to the instances.
 	InstanceQosRule []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule `json:"InstanceQosRule,omitempty" xml:"InstanceQosRule,omitempty" type:"Repeated"`
-	// The total number of public network bandwidth limit rules for the instance group.
+	// The total number of Internet bandwidth throttling rules for the instance group.
 	//
 	// example:
 	//
@@ -790,7 +800,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInst
 	//
 	// acp-h3m8b5dusopp5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the public network bandwidth limit rule (applies only to premium bandwidth).
+	// The ID of the Internet bandwidth throttling rule (applies only to premium bandwidth).
 	//
 	// example:
 	//
@@ -829,7 +839,7 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks struct {
-	// The disk size (unit: GB).
+	// The disk size. Unit: GB.
 	//
 	// example:
 	//

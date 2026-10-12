@@ -20,7 +20,7 @@ type iDescribeSpecResponseBody interface {
 }
 
 type DescribeSpecResponseBody struct {
-	// The token to use for the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
+	// The token that indicates the position up to which the data is retrieved. An empty value indicates that all data has been retrieved.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeSpecResponseBodySpecInfoModel struct {
 	//
 	// 40
 	MaxPhoneCount *string `json:"MaxPhoneCount,omitempty" xml:"MaxPhoneCount,omitempty"`
-	// The memory size in GB.
+	// The memory size.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeSpecResponseBodySpecInfoModel struct {
 	//
 	// 4
 	MinPhoneCount *string `json:"MinPhoneCount,omitempty" xml:"MinPhoneCount,omitempty"`
-	// The number of instances.
+	// The number of cloud phone instances.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeSpecResponseBodySpecInfoModel struct {
 	//
 	// ARM
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The size of the system disk, in GB.
+	// The system cloud disk size. Unit: GB.
 	//
 	// example:
 	//

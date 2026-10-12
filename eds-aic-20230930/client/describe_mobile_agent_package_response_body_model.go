@@ -28,13 +28,13 @@ type DescribeMobileAgentPackageResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The message returned by the API operation.
 	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of package information.
+	// The list of packages.
 	PackageList []*DescribeMobileAgentPackageResponseBodyPackageList `json:"PackageList,omitempty" xml:"PackageList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,7 +117,7 @@ func (s *DescribeMobileAgentPackageResponseBody) Validate() error {
 }
 
 type DescribeMobileAgentPackageResponseBodyPackageList struct {
-	// The expiration time.
+	// The expiration time. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	//
 	// cmag-bp19i1yxu60r7twy****
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// The package specification.
+	// The package specifications.
 	//
 	// example:
 	//
@@ -152,9 +152,9 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	PackageStatus   *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
 	PeriodEndTime   *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
 	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
-	// The labels.
+	// The tags.
 	Tags []*DescribeMobileAgentPackageResponseBodyPackageListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The number of credits that have been used.
+	// The number of used credits.
 	//
 	// example:
 	//
@@ -283,13 +283,13 @@ func (s *DescribeMobileAgentPackageResponseBodyPackageList) Validate() error {
 }
 
 type DescribeMobileAgentPackageResponseBodyPackageListTags struct {
-	// The label key.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The label value.
+	// The tag value.
 	//
 	// example:
 	//

@@ -111,13 +111,13 @@ type CreateCloudPhoneNodeRequest struct {
 	// cn-hangzhou
 	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The billing type. Only subscription is supported.
+	// The billing method. Only subscription is supported.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of cloud phone matrices to purchase.
+	// The Quantity of the cloud phone matrix.
 	//
 	// example:
 	//
@@ -137,9 +137,7 @@ type CreateCloudPhoneNodeRequest struct {
 	//
 	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance type.
-	//
-	// > To purchase more instance types, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
+	// The instance type. > To purchase more instance types, you can [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
 	//
 	// example:
 	//
@@ -165,19 +163,20 @@ type CreateCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// node_name
-	NodeName        *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The redirect URL for the payment success page.
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The subscription duration. The unit is specified by PeriodUnit.
+	// The subscription period of the resource. The unit is specified by `PeriodUnit`.
 	//
-	// - If PeriodUnit is set to **year**, the value can only be 1.
+	// - If `PeriodUnit` is set to **year**, the only valid value is 1.
 	//
-	// - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
+	// - If `PeriodUnit` is set to **month**, valid values are 1, 2, 3, and 6.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the subscription period.
 	//
 	// example:
 	//
@@ -194,8 +193,9 @@ type CreateCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// 10
-	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
-	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	// The ID of the promotion.
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The height of the resolution. Unit: pixels.
 	//
 	// example:
@@ -210,13 +210,13 @@ type CreateCloudPhoneNodeRequest struct {
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
 	// The size of the shared device storage. Unit: GiB.
 	//
-	// > The minimum value of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
+	// > The minimum size of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
 	//
 	// example:
 	//
 	// 200
 	ServerShareDataVolume *int32 `json:"ServerShareDataVolume,omitempty" xml:"ServerShareDataVolume,omitempty"`
-	// The specifications of the cloud phone matrix.
+	// The specification of the cloud phone matrix.
 	//
 	// This parameter is required.
 	//
@@ -239,7 +239,7 @@ type CreateCloudPhoneNodeRequest struct {
 	//
 	// 50
 	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
-	// Specifies whether to use a template during creation. Set this parameter to `Random` to use a random template from the template list. Alternatively, specify a template ID to use that template.
+	// Specifies whether to use a template during creation. If you want to use a random template from the template list, set the value to `Random`. If you specify a template ID, the specified template is used.
 	//
 	// example:
 	//
@@ -588,7 +588,7 @@ type CreateCloudPhoneNodeRequestDisplayConfig struct {
 	//
 	// 240
 	Dpi *int32 `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
-	// > This parameter is not yet available for public use.
+	// > This parameter is not available.
 	//
 	// example:
 	//
@@ -654,13 +654,13 @@ type CreateCloudPhoneNodeRequestNetworkInfo struct {
 	//
 	// 10.10.13.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The billable methods of the bandwidth plan. Valid values:
+	// The Billable methods of the bandwidth plan. Valid values:
 	//
 	// <props="china">
 	//
 	// - **PayByBandwidth*	- (default): pay-by-bandwidth.
 	//
-	// - **PayBy95**: pay-by-95th-percentile. IPv6 Internet bandwidth does not support pay-by-95th-percentile billing by default. To use this billing method, contact your account manager.
+	// - **PayBy95**: pay-by-95th-percentile-bandwidth. IPv6 Internet bandwidth does not support pay-by-95th-percentile-bandwidth by default. To use this billing method, contact your account manager.
 	//
 	//
 	// <props="intl">
@@ -683,14 +683,15 @@ type CreateCloudPhoneNodeRequestNetworkInfo struct {
 	//
 	// ChinaTelecom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The maximum bandwidth of the bandwidth plan. Unit: Mbit/s. The total bandwidth of all instances that use this bandwidth plan is subject to this limit.
+	// The peak bandwidth limit of the bandwidth plan. Unit: Mbit/s. The total bandwidth of all instances that use this bandwidth plan is subject to this limit.
 	//
 	// example:
 	//
 	// 200
-	LimitedBandwidth *int32  `json:"LimitedBandwidth,omitempty" xml:"LimitedBandwidth,omitempty"`
-	PaidCallbackUrl  *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
-	// The billing type.
+	LimitedBandwidth *int32 `json:"LimitedBandwidth,omitempty" xml:"LimitedBandwidth,omitempty"`
+	// The redirect URL for the payment success page.
+	PaidCallbackUrl *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
+	// The billing method.
 	//
 	// example:
 	//
