@@ -30,7 +30,7 @@ type DescribeCustomAgentResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeCustomAgentResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeCustomAgentResponseBody) Validate() error {
 }
 
 type DescribeCustomAgentResponseBodyData struct {
-	// The Alibaba Cloud primary account ID.
+	// The primary Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "TestTable******.xlsx",
+	//     "Database" : "test-table******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -175,13 +175,18 @@ type DescribeCustomAgentResponseBodyData struct {
 	//   }
 	//
 	// }
-	DataJson     *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
-	DefaultAgent *int32  `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
+	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
+	// Indicates whether the agent is displayed by default.
+	//
+	// example:
+	//
+	// 1
+	DefaultAgent *int32 `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
 	// The description of the custom agent.
 	//
 	// example:
 	//
-	// Agent test description
+	// Description for the test agent
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -203,19 +208,19 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The instruction.
+	// The instructions.
 	//
 	// example:
 	//
-	// Analysis framework:
+	// Analytical framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) by day, week, and month dimensions, and analyze trends and year-over-year/month-over-month fluctuations;
+	// Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis to analyze trends and identify year-over-year and month-over-month fluctuations.
 	//
-	// 2. Segment by new/existing customers, channels, and regions to identify growth sources and weaknesses;
+	// Segment by new vs. returning customers, channels, and regions to identify growth drivers and areas of weakness.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to locate drop-off points;
+	// Conduct funnel analysis based on user behavior paths (browse → add to cart → purchase) to pinpoint stages where user drop-off occurs.
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// Specifies whether a scheduled task is configured.
+	// Indicates whether a scheduled task is configured.
 	//
 	// example:
 	//
@@ -227,14 +232,15 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders;
+	// GMV (Gross Merchandise Volume) refers to the total sum of order amounts, including both paid and unpaid orders.
 	//
-	// 2. Order volume is the number of valid orders placed per day;
+	// Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
+	// UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
-	Knowledge                   *string                                                           `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	// Conversion rate = paid orders / UV, reflecting the efficiency of traffic conversion.
+	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	// The external knowledge bases.
 	KnowledgeConfigList         []*DescribeCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	KnowledgeSemanticConfigList []*DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The modifier.
@@ -253,7 +259,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Agent test name
+	// Test agent name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The next run time of the scheduled task.
 	//
@@ -279,7 +285,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 5xyz...
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
-	// The publish time.
+	// The release time.
 	//
 	// example:
 	//
@@ -297,16 +303,32 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be converted from Arabic numerals to Chinese numerals
-	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	// The text report requires that all numbers be written in Chinese numerals rather than Arabic numerals.
+	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be converted from Arabic numerals to Chinese numerals
+	// The web report requires that all numbers be written in Chinese numerals rather than Arabic numerals.
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
-	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
+	// The web report theme. Valid values:
+	//
+	// - default: Default.
+	//
+	// - journal: Journal.
+	//
+	// - legacy: Classic.
+	//
+	// - neobrutalism: Stylized.
+	//
+	// - infographic: Infographic.
+	//
+	// example:
+	//
+	// default
+	WebReportTheme *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -723,8 +745,13 @@ func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type DescribeCustomAgentResponseBodyDataExecutionConfig struct {
+	// Specifies whether to prohibit appending data sources during a session.
+	//
+	// example:
+	//
+	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to disable user inquiries during the process.
+	// Specifies whether to prohibit user inquiries during the process.
 	//
 	// example:
 	//
@@ -742,7 +769,7 @@ type DescribeCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report rendering confirmation.
+	// Specifies whether to skip the confirmation for generating a web report.
 	//
 	// example:
 	//
@@ -808,8 +835,27 @@ func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 }
 
 type DescribeCustomAgentResponseBodyDataKnowledgeConfigList struct {
-	AccessType  *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	KbUuid      *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The access type. Valid values:
+	//
+	// - mcp: Accessed through MCP.
+	//
+	// - dms_kb: Accessed through DMS knowledge base.
+	//
+	// example:
+	//
+	// mcp
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The knowledge base ID.
+	//
+	// example:
+	//
+	// kb-HZ-6anhdzx7hddf9*******obx
+	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The MCP server ID.
+	//
+	// example:
+	//
+	// nhdpt9adf6ac**********ca
 	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
 }
 
@@ -908,7 +954,7 @@ func (s *DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList) Validat
 }
 
 type DescribeCustomAgentResponseBodyDataScheduleTaskConfig struct {
-	// The cron expression for timed scheduling.
+	// The cron expression for time-based scheduling.
 	//
 	// example:
 	//
@@ -918,7 +964,7 @@ type DescribeCustomAgentResponseBodyDataScheduleTaskConfig struct {
 	//
 	// example:
 	//
-	// Analyze this data and provide a brief report
+	// Analyze the data and provide the report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The referenced historical session ID.
 	//

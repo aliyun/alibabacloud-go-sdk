@@ -18,7 +18,7 @@ type iDescribeDataAgentSessionRequest interface {
 }
 
 type DescribeDataAgentSessionRequest struct {
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//

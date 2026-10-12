@@ -34,19 +34,19 @@ type ListDataAgentWorkspaceResponseBody struct {
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
 	// nu use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ func (s *ListDataAgentWorkspaceResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyDataContent struct {
-	// The creation time of the workspace, in milliseconds (UNIX timestamp).
+	// The time when the workspace was created. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -253,7 +253,12 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// example:
 	//
 	// 20282*****7591
-	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The name of the workspace creator.
+	//
+	// example:
+	//
+	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	// The description of the workspace.
 	//
@@ -267,25 +272,35 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The most recent modification time of the workspace, in milliseconds (UNIX timestamp).
+	// The time when the workspace was last modified. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1765961516000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The role name of the user in the workspace.
+	// The name of the user\\"s role in the workspace.
 	//
 	// example:
 	//
 	// admin
-	RoleName            *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	RunningSessionCount *int32  `json:"RunningSessionCount,omitempty" xml:"RunningSessionCount,omitempty"`
-	// The number of members in the workspace.
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The number of running sessions in the workspace.
+	//
+	// example:
+	//
+	// 15
+	RunningSessionCount *int32 `json:"RunningSessionCount,omitempty" xml:"RunningSessionCount,omitempty"`
+	// The total number of members in the workspace.
 	//
 	// example:
 	//
 	// 11
-	TotalMember       *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	// The total number of sessions in the workspace.
+	//
+	// example:
+	//
+	// 30
 	TotalSessionCount *int32 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
 	// The workspace type.
 	//

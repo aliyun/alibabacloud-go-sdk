@@ -32,6 +32,11 @@ type iListDataAgentWorkspaceRequest interface {
 }
 
 type ListDataAgentWorkspaceRequest struct {
+	// The ID of the creator used to search for workspaces.
+	//
+	// example:
+	//
+	// 186xxx9947
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	// The current DMS unit.
 	//
@@ -39,13 +44,13 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
 	// no use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
@@ -57,7 +62,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The name of the field by which to sort.
+	// The sort field name.
 	//
 	// example:
 	//
@@ -71,7 +76,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -79,13 +84,13 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
 	// workspaceTest
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
-	// The type of workspace to query.
+	// The workspace type.
 	//
 	// This parameter is required.
 	//

@@ -2598,7 +2598,7 @@ func (client *Client) DeleteWorkspaceCode(request *DeleteWorkspaceCodeRequest) (
 
 // Summary:
 //
-// Retrieves the details of a custom agent by custom agent ID.
+// Queries the details of a custom agent by custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2646,7 +2646,7 @@ func (client *Client) DescribeCustomAgentWithOptions(request *DescribeCustomAgen
 
 // Summary:
 //
-// Retrieves the details of a custom agent by custom agent ID.
+// Queries the details of a custom agent by custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2655,6 +2655,88 @@ func (client *Client) DescribeCustomAgent(request *DescribeCustomAgentRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeCustomAgentResponse{}
 	_body, _err := client.DescribeCustomAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeCustomAgentMonitorMetrics - Retrieves monitoring metrics data for custom agents, including trend data.
+//
+// @param request - DescribeCustomAgentMonitorMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomAgentMonitorMetricsResponse
+func (client *Client) DescribeCustomAgentMonitorMetricsWithOptions(request *DescribeCustomAgentMonitorMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomAgentMonitorMetricsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAgentId) {
+		query["CustomAgentId"] = request.CustomAgentId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCustomAgentMonitorMetrics"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCustomAgentMonitorMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeCustomAgentMonitorMetrics - Retrieves monitoring metrics data for custom agents, including trend data.
+//
+// @param request - DescribeCustomAgentMonitorMetricsRequest
+//
+// @return DescribeCustomAgentMonitorMetricsResponse
+func (client *Client) DescribeCustomAgentMonitorMetrics(request *DescribeCustomAgentMonitorMetricsRequest) (_result *DescribeCustomAgentMonitorMetricsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCustomAgentMonitorMetricsResponse{}
+	_body, _err := client.DescribeCustomAgentMonitorMetricsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4987,7 +5069,7 @@ func (client *Client) ListAirflows(request *ListAirflowsRequest) (_result *ListA
 
 // Summary:
 //
-// Lists all custom agents in a personal space or workspace.
+// Lists all custom agents in personal spaces and workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -5051,7 +5133,7 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 
 // Summary:
 //
-// Lists all custom agents in a personal space or workspace.
+// Lists all custom agents in personal spaces and workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -5060,6 +5142,92 @@ func (client *Client) ListCustomAgent(request *ListCustomAgentRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCustomAgentResponse{}
 	_body, _err := client.ListCustomAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListCustomAgentMonitorSessions - Retrieves the list of monitoring sessions for custom agents.
+//
+// @param request - ListCustomAgentMonitorSessionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomAgentMonitorSessionsResponse
+func (client *Client) ListCustomAgentMonitorSessionsWithOptions(request *ListCustomAgentMonitorSessionsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomAgentMonitorSessionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAgentId) {
+		query["CustomAgentId"] = request.CustomAgentId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomAgentMonitorSessions"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomAgentMonitorSessionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ListCustomAgentMonitorSessions - Retrieves the list of monitoring sessions for custom agents.
+//
+// @param request - ListCustomAgentMonitorSessionsRequest
+//
+// @return ListCustomAgentMonitorSessionsResponse
+func (client *Client) ListCustomAgentMonitorSessions(request *ListCustomAgentMonitorSessionsRequest) (_result *ListCustomAgentMonitorSessionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCustomAgentMonitorSessionsResponse{}
+	_body, _err := client.ListCustomAgentMonitorSessionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5825,7 +5993,7 @@ func (client *Client) ListDataAgentTheme(request *ListDataAgentThemeRequest) (_r
 
 // Summary:
 //
-// Retrieves the workspaces under the primary account with pagination.
+// Retrieves a paginated list of collaborative workspaces under the primary account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -5905,7 +6073,7 @@ func (client *Client) ListDataAgentWorkspaceWithOptions(request *ListDataAgentWo
 
 // Summary:
 //
-// Retrieves the workspaces under the primary account with pagination.
+// Retrieves a paginated list of collaborative workspaces under the primary account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -6799,7 +6967,7 @@ func (client *Client) ListWorkspaceCode(request *ListWorkspaceCodeRequest) (_res
 
 // Summary:
 //
-// Modifies a custom agent in a personal space or workspace.
+// Modifies a custom agent in a personal or shared workspace.
 //
 // @param tmpReq - ModifyCustomAgentRequest
 //
@@ -6937,7 +7105,7 @@ func (client *Client) ModifyCustomAgentWithOptions(tmpReq *ModifyCustomAgentRequ
 
 // Summary:
 //
-// Modifies a custom agent in a personal space or workspace.
+// Modifies a custom agent in a personal or shared workspace.
 //
 // @param request - ModifyCustomAgentRequest
 //

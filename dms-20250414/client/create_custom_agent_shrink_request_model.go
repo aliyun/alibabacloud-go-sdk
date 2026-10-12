@@ -53,29 +53,29 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope in **JSON character string format**.
+	// The specified data scope, in **JSON character string format**.
 	//
-	// - Common metric description
+	// - Common parameter description
 	//
-	//   - tableFlag: true indicates that a data scope is specified.
+	//   - tableFlag: true specifies the data scope.
 	//
 	//   - scope: personal is a fixed value.
 	//
-	//   - personal: pass parameters for file or database types.
+	//   - personal: the parameters for file and database types.
 	//
-	// **File type**. Pass parameters in the following format:
+	// **File type**: Pass parameters in the following format:
 	//
 	// - DataSourceType: remote_data_center is a fixed value.
 	//
-	// - FileId: the file ID.
+	// - FileId: The file ID.
 	//
-	// - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name.
+	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
 	//
-	// - Tables: the table name returned by the ListDataCenterTable operation.
+	// - Tables: The table names returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: the TableId returned by the ListDataCenterTable operation.
+	// - TableIds: The table IDs returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: the current region.
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -113,27 +113,27 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// ```
 	//
-	// **Database type**. Pass parameters as follows:
+	// **Database type**: Pass parameters as follows:
 	//
 	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: the DMS instance ID returned by the data center operation.
+	// - DmsInstanceId: The DMS instance ID returned by the Data Center API.
 	//
-	// - DmsDatabaseId: the DMS database ID returned by the data center operation.
+	// - DmsDatabaseId: The DMS database ID returned by the Data Center API.
 	//
-	// - FileId: the instance name (deprecated).
+	// - FileId: The instance name. **[Deprecated]**
 	//
-	// - DbName: the database name returned by the data center operation.
+	// - DbName: The database name returned by the Data Center API.
 	//
-	// - Database: the database name returned by the data center operation.
+	// - Database: The database name returned by the Data Center API.
 	//
-	// - Tables: the table name returned by the data center operation.
+	// - Tables: The table names returned by the Data Center API.
 	//
-	// - TableIds: the TableId returned by the data center operation.
+	// - TableIds: The table IDs returned by the Data Center API.
 	//
-	// - Engine: the DPI engine type (mysql or postgresql).
+	// - Engine: The engine type, such as mysql or postgresql.
 	//
-	// - RegionId: the current region.
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -193,7 +193,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "测试表格******.xlsx",
+	//     "Database" : "TestTable******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -209,52 +209,56 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// AgentTestDescription
+	// Agent test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
-	// The instruction.
+	// The instructions.
 	//
-	// - Input limit: a maximum of 10000 characters.
+	// - Input limit: A maximum of 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume is the number of valid orders placed per day.
+	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
 	//
-	// - Input limit: a maximum of 10000 characters.
+	// - Input limit: A maximum of 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume is the number of valid orders placed per day.
+	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	// The external knowledge base.
+	// The external knowledge bases.
 	KnowledgeConfigListShrink         *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
 	KnowledgeSemanticConfigListShrink *string `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty"`
 	// The name of the custom agent.
 	//
 	// example:
 	//
-	// AgentTestName
+	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the referenced historical session.
+	//
+	// example:
+	//
+	// 99crainsjnveo*******vynid
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
 	// The scheduled task configuration.
 	ScheduleTaskConfigShrink *string `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty"`
@@ -262,16 +266,22 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be expressed in Chinese characters instead of Arabic numerals
-	TextReportConfig             *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	// All numbers in the text report must be written in Chinese characters instead of Arabic numerals
+	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	// The list of user-specified skills.
 	UserSpecifiedSkillListShrink *string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be expressed in Chinese characters instead of Arabic numerals
+	// All numbers in the web report must be written in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
-	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
+	// The web report theme.
+	//
+	// example:
+	//
+	// Default
+	WebReportTheme *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
 	//
 	// example:

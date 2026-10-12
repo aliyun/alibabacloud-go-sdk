@@ -30,23 +30,23 @@ type ListCustomAgentRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to query all custom agents in the published state. Default value: false.
+	// Specifies whether to query all published custom agents. Default value: false.
 	//
 	// example:
 	//
 	// true
 	QueryAllReleased *bool `json:"QueryAllReleased,omitempty" xml:"QueryAllReleased,omitempty"`
-	// The search keyword. Supports fuzzy search by custom agent name and description.
+	// The search keyword. Fuzzy search is supported for custom agent names and descriptions.
 	//
 	// example:
 	//
-	// TestAgent
+	// Test Agent
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The status of the custom agent.
 	//
