@@ -38,14 +38,15 @@ type iListConversationsRequest interface {
 }
 
 type ListConversationsRequest struct {
+	// The AB test ID.
 	AbTestId *string `json:"AbTestId,omitempty" xml:"AbTestId,omitempty"`
-	// The left boundary of the start time range.
+	// The lower bound of the start time range.
 	//
 	// example:
 	//
 	// 1638288000000
 	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	// The right boundary of the start time range.
+	// The upper bound of the start time range.
 	//
 	// example:
 	//
@@ -58,7 +59,7 @@ type ListConversationsRequest struct {
 	// 138106*****
 	CallingNumber     *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	DebugConversation *int32  `json:"DebugConversation,omitempty" xml:"DebugConversation,omitempty"`
-	// The instance list.
+	// The instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +67,7 @@ type ListConversationsRequest struct {
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the session is in a sandbox environment.
+	// Specifies whether the sandbox mode is enabled.
 	//
 	// example:
 	//
@@ -88,7 +89,7 @@ type ListConversationsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query condition.
+	// The query conditions.
 	//
 	// example:
 	//
@@ -100,13 +101,13 @@ type ListConversationsRequest struct {
 	//
 	// 0
 	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The left boundary of the rounds query range.
+	// The lower bound of the conversation rounds range.
 	//
 	// example:
 	//
 	// 1
 	RoundsLeftRange *int32 `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
-	// The right boundary of the rounds query range.
+	// The upper bound of the conversation rounds range.
 	//
 	// example:
 	//

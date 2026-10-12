@@ -138,29 +138,29 @@ type ListConversationsResponseBodyConversations struct {
 	ConversationId *string   `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	DsReport       *string   `json:"DsReport,omitempty" xml:"DsReport,omitempty"`
 	DsReportTitles []*string `json:"DsReportTitles,omitempty" xml:"DsReportTitles,omitempty" type:"Repeated"`
-	// The reason for hanging up. Valid values:
+	// The reason for ending the session. Valid values:
 	//
-	//      1: Normal completion.
+	// 1. Normal completion.
 	//
-	//      2: Bot hung up after unrecognized input.
+	// 2. Hangup by the bot after unrecognized input.
 	//
-	//      3: Hung up due to silence timeout.
+	// 3. Hangup due to silence timeout.
 	//
-	//      4: User hung up after unrecognized input.
+	// 4. Hangup by the user after unrecognized input.
 	//
-	//      5: User hung up without reason.
+	// 5. Hangup by the user without a reason.
 	//
-	//      6: Transferred to human agent due to intent match.
+	// 6. Transfer to a human agent due to matched intent.
 	//
-	//      7: Transferred to human agent due to unrecognized input.
+	// 7. Transfer to a human agent after unrecognized input.
 	//
-	//      8: No interaction from the user side.
+	// 8. No interaction from the user.
 	//
-	//      9: System exception interruption.
+	// 9. Interruption due to a system exception.
 	//
-	//      10: Transferred to IVR due to intent match.
+	// 10. Transfer to IVR due to matched intent.
 	//
-	//      11: Transferred to IVR due to unrecognized input.
+	// 11. Transfer to IVR after unrecognized input.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ type ListConversationsResponseBodyConversations struct {
 	//
 	// 1582266750353
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the last playback was completed when the session ended.
+	// Specifies whether the last prompt was fully played before the session ended.
 	//
 	// example:
 	//
 	// true
 	HasLastPlaybackCompleted *bool `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
-	// Indicates whether the session was transferred to a human agent.
+	// Specifies whether the session was transferred to a human agent.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ListConversationsResponseBodyConversations struct {
 	//
 	// 2
 	Rounds *int32 `json:"Rounds,omitempty" xml:"Rounds,omitempty"`
-	// Indicates whether the session is in a sandbox environment.
+	// Specifies whether the sandbox mode is enabled.
 	//
 	// example:
 	//
@@ -208,6 +208,12 @@ type ListConversationsResponseBodyConversations struct {
 	//
 	// 1641625694286
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The text-to-speech (TTS) voice used for the call.
+	//
+	// example:
+	//
+	// cosyvoice-v3-flash:longanyang
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
 }
 
 func (s ListConversationsResponseBodyConversations) String() string {
@@ -272,6 +278,10 @@ func (s *ListConversationsResponseBodyConversations) GetSkillGroup() *string {
 
 func (s *ListConversationsResponseBodyConversations) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *ListConversationsResponseBodyConversations) GetVoice() *string {
+	return s.Voice
 }
 
 func (s *ListConversationsResponseBodyConversations) SetAbTestName(v string) *ListConversationsResponseBodyConversations {
@@ -341,6 +351,11 @@ func (s *ListConversationsResponseBodyConversations) SetSkillGroup(v string) *Li
 
 func (s *ListConversationsResponseBodyConversations) SetStartTime(v int64) *ListConversationsResponseBodyConversations {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetVoice(v string) *ListConversationsResponseBodyConversations {
+	s.Voice = &v
 	return s
 }
 
