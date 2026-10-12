@@ -62,15 +62,15 @@ func (s *ListDataQualityScanRunsResponseBody) Validate() error {
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfo struct {
-	// The list of data quality scan runs.
+	// The list of data quality monitoring run records.
 	DataQualityScanRuns []*ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns `json:"DataQualityScanRuns,omitempty" xml:"DataQualityScanRuns,omitempty" type:"Repeated"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
@@ -142,27 +142,31 @@ func (s *ListDataQualityScanRunsResponseBodyPageInfo) Validate() error {
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns struct {
-	// The start time of the data quality scan run.
+	// The start time of the data quality monitoring run.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the data quality scan run.
+	// The end time of the data quality monitoring run.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the data quality scan run.
+	// The ID of the data quality monitoring run record.
 	//
 	// example:
 	//
 	// 3155
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters used for the run.
+	// The parameter settings used during the actual run.
 	Parameters []*ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The status of the data quality scan run. Valid values:
+	// The current run status. Valid values:
 	//
 	// - Pass
 	//

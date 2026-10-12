@@ -28,25 +28,25 @@ type iCreateSkillShrinkRequest interface {
 }
 
 type CreateSkillShrinkRequest struct {
-	// The **downloadable URL (HTTP/HTTPS) of the bundle.zip file**. This parameter is mutually exclusive with SkillMdOverride.
+	// The **download URL of the bundle.zip file*	- (HTTP or HTTPS). This parameter and SkillMdOverride are mutually exclusive.
 	//
 	// example:
 	//
 	// https://example.com/skill.zip
 	BundleUrl *string `json:"BundleUrl,omitempty" xml:"BundleUrl,omitempty"`
-	// The **Skill description**.
+	// The **skill description**.
 	//
 	// example:
 	//
-	// Data analytics skill.
+	// Data analytics skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extension metadata in key-value pairs.
+	// The extended metadata in key-value pairs.
 	//
 	// example:
 	//
 	// {"appId":"APP_CWJMV36CT9SAFW1QEHX7"}
 	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The **Skill name**, which must be unique within the current account.
+	// The **skill name**. The name must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateSkillShrinkRequest struct {
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The SKILL.md body content. This parameter is mutually exclusive with BundleUrl. If no bundle is provided, use this field to create a lightweight Skill that contains only a SKILL.md file.
+	// The content of the SKILL.md file. This parameter and BundleUrl are mutually exclusive. If you do not provide a bundle, use this parameter to create a lightweight skill that contains only the SKILL.md file.
 	//
 	// example:
 	//
@@ -64,21 +64,15 @@ type CreateSkillShrinkRequest struct {
 	//
 	// example:
 	//
-	// Initial version.
+	// Initial version
 	VersionNote *string `json:"VersionNote,omitempty" xml:"VersionNote,omitempty"`
-	// The **visibility level**. Valid values:
-	//
-	// - TENANT: Visible within the account.
-	//
-	// - PROJECT: Visible to specified projects.
-	//
-	// - USER: Visible to specified users.
+	// The **visibility level**. Valid values: TENANT (visible to the entire tenant), PROJECT (visible to specific projects), and USER (visible to specific users).
 	//
 	// example:
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is determined by the Visibility parameter.
+	// The visibility scope. Specify the corresponding field based on the value of Visibility.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

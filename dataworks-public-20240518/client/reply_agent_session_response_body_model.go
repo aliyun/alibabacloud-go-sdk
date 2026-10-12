@@ -16,9 +16,9 @@ type iReplyAgentSessionResponseBody interface {
 }
 
 type ReplyAgentSessionResponseBody struct {
-	// The JSON-RPC response. Returns Result on success or Error on protocol errors.
+	// The JSON-RPC response. Returns Result on success and Error on protocol errors.
 	JsonRpcResponse *ReplyAgentSessionResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// The request ID for this call, which can be used for troubleshooting.
+	// The request ID for the current call, which can be used for troubleshooting.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *ReplyAgentSessionResponseBody) Validate() error {
 }
 
 type ReplyAgentSessionResponseBodyJsonRpcResponse struct {
-	// The JSON-RPC fault information. For example, DAEMON_PERMISSION_UNAVAILABLE is returned when the daemon reply feature is not enabled.
+	// The JSON-RPC fault message. For example, DAEMON_PERMISSION_UNAVAILABLE is returned when the daemon reply feature is not enabled.
 	Error *ReplyAgentSessionResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The JSON-RPC correlation ID for this reply request.
+	// The JSON-RPC correlation ID for the current reply request.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type ReplyAgentSessionResponseBodyJsonRpcResponse struct {
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The reply processing result. This only indicates whether the reply was accepted, not whether the original task has completed.
+	// The reply processing result. It only indicates whether the current reply is accepted, and does not indicate that the original task execution is completed.
 	Result *ReplyAgentSessionResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The response time. This is a UNIX timestamp, in milliseconds.
+	// The response time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ func (s *ReplyAgentSessionResponseBodyJsonRpcResponseError) Validate() error {
 }
 
 type ReplyAgentSessionResponseBodyJsonRpcResponseResult struct {
-	// Indicates whether the daemon accepted the reply. A value of true indicates that the daemon accepted the reply. A value of false indicates that the reply was not accepted. Possible reasons include an unknown request, an already processed request, an expired request, or a nonexistent session. You cannot determine the specific reason from this value.
+	// Indicates whether the daemon accepts the current reply. A value of true indicates that the reply is accepted. A value of false indicates that the reply is not accepted, which may be because the request is unknown, already processed, expired, or the session does not exist. The specific cause cannot be distinguished based on this value.
 	//
 	// example:
 	//

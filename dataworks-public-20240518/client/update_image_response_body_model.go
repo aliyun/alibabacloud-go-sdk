@@ -18,7 +18,7 @@ type iUpdateImageResponseBody interface {
 }
 
 type UpdateImageResponseBody struct {
-	// The result of the API request.
+	// The API request result.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateImageResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

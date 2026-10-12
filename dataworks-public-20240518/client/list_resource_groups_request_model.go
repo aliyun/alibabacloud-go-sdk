@@ -32,15 +32,15 @@ type iListResourceGroupsRequest interface {
 }
 
 type ListResourceGroupsRequest struct {
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-aek2kqofrgXXXXX
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	// The list of Alibaba Cloud tags.
+	// The Alibaba Cloud tags.
 	AliyunResourceTags []*ListResourceGroupsRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// The name of the resource group. Fuzzy search is supported.
+	// The name of the resource group for fuzzy match.
 	//
 	// example:
 	//
@@ -52,49 +52,49 @@ type ListResourceGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The billing method of the resource group. Valid values include:
+	// The billing method of the resource group. Valid values:
 	//
-	// - `PrePaid`: subscription.
+	// - PrePaid: Subscription.
 	//
-	// - `PostPaid`: pay-as-you-go.
+	// - PostPaid: Pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The ID of the workspace.
+	// The ID of the workspace to which the resource group belongs.
 	//
 	// example:
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The types of the resource groups to query. **If this parameter is not specified, general-purpose resource groups are queried by default.**
+	// The types of the resource groups to query. **If this parameter is left empty, general-purpose resource groups are queried by default.**
 	ResourceGroupTypes []*string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty" type:"Repeated"`
-	// The sorting criterion for the results. The format is `FieldName SortOrder`. `SortOrder` can be `Asc` (ascending) or `Desc` (descending). If you do not specify `SortOrder`, the default is `Asc`. The following fields are supported:
+	// The fields by which to sort the results. You can sort the results by fields such as scheduled time and start time. The format is \\"Sort field+Sort order (Desc/Asc)\\". Asc can be omitted. Valid values for the sort field:
 	//
-	// - `Id`: Resource group ID
+	// - Id (Desc/Asc): The ID of the resource group.
 	//
-	// - `Name`: Resource group name
+	// - Name (Desc/Asc): The name of the resource group.
 	//
-	// - `Remark`: Resource group remarks
+	// - Remark (Desc/Asc): The description of the resource group.
 	//
-	// - `Type`: Resource group type
+	// - Type (Desc/Asc): The type of the resource group.
 	//
-	// - `Status`: Resource group status
+	// - Status (Desc/Asc): The status of the resource group.
 	//
-	// - `Spec`: Resource group specifications
+	// - Spec (Desc/Asc): The specifications of the resource group.
 	//
-	// - `CreateUser`: The user who created the resource group
+	// - CreateUser (Desc/Asc): The creator of the resource group.
 	//
-	// - `CreateTime`: The time when the resource group was created
+	// - CreateTime (Desc/Asc): The time when the resource group was created.
 	//
-	// Default value: `CreateTime Asc`
+	// Default value: CreateTime Asc.
 	//
 	// example:
 	//
@@ -216,13 +216,13 @@ func (s *ListResourceGroupsRequest) Validate() error {
 }
 
 type ListResourceGroupsRequestAliyunResourceTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

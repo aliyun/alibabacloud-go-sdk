@@ -44,13 +44,13 @@ type ListDataAssetsShrinkRequest struct {
 	//
 	// cate-xxxxxxxx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
-	// The list of unique data asset IDs.
+	// The list of unique IDs of the data assets.
 	DataAssetIdsShrink *string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty"`
-	// The Asset Type of the data asset. Valid values:
+	// The asset type of the data asset.
 	//
-	// - ACS::DataWorks::Table: data table.
+	// - DataWorks table (ACS::DataWorks::Table)
 	//
-	// - ACS::DataWorks::Task: scheduling node.
+	// - DataWorks scheduled task (ACS::DataWorks::Task)
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type ListDataAssetsShrinkRequest struct {
 	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
 	// The workspace environment to which the data asset belongs. Valid values:
 	//
-	// - Dev: development environment.
+	// - Dev: development environment
 	//
-	// - Prod: production environment.
+	// - Prod: production environment
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListDataAssetsShrinkRequest struct {
 	//
 	// example:
 	//
-	// AssetDomainName
+	// Asset domain name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The page number. Pages start from 1. Default value: 1.
 	//
@@ -90,11 +90,11 @@ type ListDataAssetsShrinkRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of tags associated with data assets. Tags are used as query filters:
+	// The list of tags associated with the data assets. This parameter is used to filter query results based on tags:
 	//
-	// - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any one of the specified tags.
+	// - Multiple values are evaluated with an OR logical operator. For example, if you specify `["key1:v1", "key2:v1", "key3:v1"]`, the system queries data assets that contain at least one of the specified tags.
 	//
-	// - If this parameter is not specified or is left empty, no tag-based filtering is applied.
+	// - If this parameter is not specified or is left empty, no tag-based filtering is performed.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

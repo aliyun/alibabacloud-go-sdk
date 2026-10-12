@@ -20,13 +20,13 @@ type iListNetworksResponseBody interface {
 type ListNetworksResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListNetworksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *ListNetworksResponseBody) Validate() error {
 }
 
 type ListNetworksResponseBodyPagingInfo struct {
-	// The network resources of the serverless resource group.
+	// The list of detailed information about the network resources in the general resource group.
 	NetworkList []*ListNetworksResponseBodyPagingInfoNetworkList `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -93,7 +93,7 @@ type ListNetworksResponseBodyPagingInfo struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries that meet the conditions.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -165,43 +165,43 @@ type ListNetworksResponseBodyPagingInfoNetworkList struct {
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who creates the network resource.
+	// The ID of the user who created the network resource.
 	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The network ID.
+	// The ID of the network resource.
 	//
 	// example:
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the serverless resource group.
+	// The unique identifier of the general resource group to which the network resource belongs.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security group ID.
+	// The security group ID of the network resource.
 	//
 	// example:
 	//
 	// sg-2ze13vamugr7jenXXXXX
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The status of the network resource. Valid values: Pending: waiting; Creating: being created; Running: running normally; Deleting: being deleted; Deleted: deleted.
+	// The current status of the network resource. A value of Pending indicates that the resource is waiting. A value of Creating indicates that the resource is being created. A value of Running indicates that the resource is running normally. A value of Deleting indicates that the resource is being deleted. A value of Deleted indicates that the resource is deleted.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID of the network resource.
 	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VSwitch ID.
+	// The vSwitch ID of the network resource.
 	//
 	// example:
 	//

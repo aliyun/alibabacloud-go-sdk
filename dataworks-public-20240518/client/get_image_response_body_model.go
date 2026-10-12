@@ -20,13 +20,13 @@ type iGetImageResponseBody interface {
 type GetImageResponseBody struct {
 	// The image details.
 	Image *GetImageResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -81,15 +81,15 @@ func (s *GetImageResponseBody) Validate() error {
 type GetImageResponseBodyImage struct {
 	// The image visibility. Valid values:
 	//
-	// - Public: visible to all users.
+	// - Public: Visible to all users.
 	//
-	// - Private: visible only to the creator.
+	// - Private: Visible only to the creator.
 	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The VPC ID associated with the ACR instance.
+	// The ID of the VPC associated with the ACR instance.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type GetImageResponseBodyImage struct {
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
 	// The image build configuration.
 	BuildConfig *GetImageResponseBodyImageBuildConfig `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
-	// The creation time, represented as a 64-bit timestamp.
+	// The creation time. The value is a 64-bit timestamp.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type GetImageResponseBodyImage struct {
 	//
 	// Test image created by xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether synchronization with MaxCompute is enabled.
+	// Indicates whether MaxCompute synchronization is enabled.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type GetImageResponseBodyImage struct {
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The last modification time, represented as a 64-bit timestamp.
+	// The last modified time. The value is a 64-bit timestamp.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type GetImageResponseBodyImage struct {
 	//
 	// true
 	Official *bool `json:"Official,omitempty" xml:"Official,omitempty"`
-	// The image ID from the image provider.
+	// The image ID of the provider.
 	//
 	// example:
 	//
@@ -211,31 +211,31 @@ type GetImageResponseBodyImage struct {
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	// The publish status. Valid values:
 	//
-	// - Untest: not tested.
+	// - Untest: The image is not tested.
 	//
-	// - Testing: being tested.
+	// - Testing: The image is being tested.
 	//
-	// - TestFailed: test failed.
+	// - TestFailed: The test failed.
 	//
-	// - Unpublished: not published.
+	// - Unpublished: The image is unpublished.
 	//
-	// - Publishing: being published.
+	// - Publishing: The image is being published.
 	//
-	// - Published: published.
+	// - Published: The image is published.
 	//
-	// - PublishFailed: publish failed.
+	// - PublishFailed: The publication failed.
 	//
-	// - Building: being built.
+	// - Building: The image is being built.
 	//
-	// - BuildSuccess: build succeeded.
+	// - BuildSuccess: The build succeeded.
 	//
-	// - BuildFailed: build failed.
+	// - BuildFailed: The build failed.
 	//
-	// - Accelerating: being accelerated.
+	// - Accelerating: The image is being accelerated.
 	//
-	// - AccelerateSuccess: acceleration succeeded.
+	// - AccelerateSuccess: The acceleration succeeded.
 	//
-	// - AccelerateFailed: acceleration failed.
+	// - AccelerateFailed: The acceleration failed.
 	//
 	// example:
 	//
@@ -255,13 +255,13 @@ type GetImageResponseBodyImage struct {
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The image status. Valid values:
 	//
-	// - Disabled: disabled.
+	// - Disabled: The image is disabled.
 	//
-	// - Expired: expired.
+	// - Expired: The image has expired.
 	//
-	// - Available: active.
+	// - Available: The image is available.
 	//
-	// - ReadOnly: read-only.
+	// - ReadOnly: The image is read-only.
 	//
 	// example:
 	//
@@ -549,7 +549,7 @@ type GetImageResponseBodyImageBuildConfig struct {
 	//
 	// PackageInstallation
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	// The list of pre-installation scripts.
+	// The list of pre-installation execution scripts.
 	PackageInstallationScripts []*GetImageResponseBodyImageBuildConfigPackageInstallationScripts `json:"PackageInstallationScripts,omitempty" xml:"PackageInstallationScripts,omitempty" type:"Repeated"`
 }
 
@@ -593,7 +593,7 @@ func (s *GetImageResponseBodyImageBuildConfig) Validate() error {
 }
 
 type GetImageResponseBodyImageBuildConfigPackageInstallationScripts struct {
-	// The script content. If the content contains package names, separate them with commas (,).
+	// The script content. If the content is a list of installation package names, separate the names with commas (,).
 	//
 	// example:
 	//
@@ -640,7 +640,7 @@ func (s *GetImageResponseBodyImageBuildConfigPackageInstallationScripts) Validat
 type GetImageResponseBodyImageSupported struct {
 	// The supported module. Valid values:
 	//
-	// - Scheduler: scheduling.
+	// - Scheduler: Scheduling.
 	//
 	// example:
 	//

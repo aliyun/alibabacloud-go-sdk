@@ -30,30 +30,27 @@ type ListWorkflowDefinitionsRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the owner, which is the account UID of the workspace administrator. To view the UID, log on to the Alibaba Cloud console and go to the Security Management section of Account Management.
+	// The ID of the owner, which is the UID of the workspace administrator account. You can log on to the Alibaba Cloud Management Console and view the account UID on the Security Settings page of Account Management.
 	//
 	// example:
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number of the data to retrieve, used for pagination.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to query the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Configuration page to obtain the workspace ID.
 	//
-	//
-	//
-	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// This parameter specifies the DataWorks workspace for the current API call.
 	//
 	// This parameter is required.
 	//
@@ -61,9 +58,7 @@ type ListWorkflowDefinitionsRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Filter condition: The type of the workflow. The default value is CycleWorkflow.
-	//
-	// Valid values:
+	// The type of the workflow. This parameter is used as a filter condition. If you do not specify this parameter, the default value is CycleWorkflow. Valid values:
 	//
 	// - CycleWorkflow
 	//

@@ -16,13 +16,17 @@ type iTagDataAssetsResponseBody interface {
 }
 
 type TagDataAssetsResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 0bc1ec92159376
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//

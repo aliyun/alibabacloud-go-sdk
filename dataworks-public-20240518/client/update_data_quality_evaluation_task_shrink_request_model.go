@@ -34,23 +34,23 @@ type iUpdateDataQualityEvaluationTaskShrinkRequest interface {
 }
 
 type UpdateDataQualityEvaluationTaskShrinkRequest struct {
-	// List of data quality rules associated with the data quality monitoring.
+	// The list of data quality rules associated with data quality monitoring.
 	DataQualityRulesShrink *string `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty"`
-	// Data source ID. You can call [ListDataSources](https://help.aliyun.com/document_detail/211431.html) to obtain the data source ID.
+	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to obtain the data source ID.
 	//
 	// example:
 	//
 	// 358750
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Description of the quality monitoring task
+	// The description of the quality monitoring task.
 	//
 	// example:
 	//
 	// OpenAPI data quality monitoring test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Callback settings
+	// The hook settings.
 	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	// Data quality monitoring ID.
+	// The ID of the data quality monitoring task.
 	//
 	// This parameter is required.
 	//
@@ -58,15 +58,15 @@ type UpdateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// 7227061794
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name of the quality monitoring task
+	// The name of the quality monitoring task.
 	//
 	// example:
 	//
 	// OpenAPI data quality monitoring test.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Notification subscription configuration
+	// The notification subscription configuration.
 	NotificationsShrink *string `json:"Notifications,omitempty" xml:"Notifications,omitempty"`
-	// Workspace ID
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -74,11 +74,11 @@ type UpdateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Extended configuration. A JSON-formatted string. Takes effect only for EMR-type data quality monitoring.
+	// The extension configuration. This parameter is a character string in JSON format and takes effect only for EMR data quality monitoring.
 	//
-	// - queue: The YARN queue used when executing EMR data quality validation. Defaults to the queue configured for the current project.
+	// - queue: the YARN queue used when you execute EMR data validation. Default value: the queue configured for the current project.
 	//
-	// - sqlEngine: The SQL engine used when executing EMR data validation.
+	// - sqlEngine: the SQL DPI engine used when you execute EMR data validation. Valid values:
 	//
 	//   + HIVE_SQL
 	//
@@ -88,9 +88,9 @@ type UpdateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// Data quality monitoring object
+	// The monitored object for data quality monitoring.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// Trigger configuration of the data quality validation task
+	// The trigger configuration of the data quality check task.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 

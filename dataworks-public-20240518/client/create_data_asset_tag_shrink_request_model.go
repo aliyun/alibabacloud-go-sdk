@@ -22,13 +22,13 @@ type iCreateDataAssetTagShrinkRequest interface {
 }
 
 type CreateDataAssetTagShrinkRequest struct {
-	// The label description.
+	// The tag description.
 	//
 	// example:
 	//
 	// This is a description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The label key.
+	// The tag key.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type CreateDataAssetTagShrinkRequest struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The list of label administrators.
+	// The list of tag administrators.
 	ManagersShrink *string `json:"Managers,omitempty" xml:"Managers,omitempty"`
-	// The label value type. Valid values:
+	// The tag value type. Valid values:
 	//
 	// - Boolean
 	//
@@ -52,7 +52,7 @@ type CreateDataAssetTagShrinkRequest struct {
 	//
 	// String
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
-	// The list of label values.
+	// The list of tag values.
 	ValuesShrink *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 

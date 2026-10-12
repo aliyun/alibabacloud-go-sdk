@@ -18,15 +18,15 @@ type iListImagesResponseBody interface {
 }
 
 type ListImagesResponseBody struct {
-	// The pagination information.
+	// The paginated list.
 	PagingInfo *ListImagesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The ID of the request, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *ListImagesResponseBody) Validate() error {
 }
 
 type ListImagesResponseBodyPagingInfo struct {
-	// The list of image details.
+	// The list of retrieved image details.
 	ImageList []*ListImagesResponseBodyPagingInfoImageList `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -87,13 +87,13 @@ type ListImagesResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of data entries.
 	//
 	// example:
 	//
@@ -159,17 +159,17 @@ func (s *ListImagesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListImagesResponseBodyPagingInfoImageList struct {
-	// The accessibility:
+	// The accessibility of the image. Valid values:
 	//
-	// - Public: Visible to all members.
+	// - Public: The image is visible to all users.
 	//
-	// - Private: Visible only to the creator.
+	// - Private: The image is visible only to the creator.
 	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The VPC ID associated with the ACR instance.
+	// The ID of the VPC associated with the ACR instance.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListImagesResponseBodyPagingInfoImageList struct {
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
 	// The image build configuration.
 	BuildConfig *ListImagesResponseBodyPagingInfoImageListBuildConfig `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
-	// The creation time, represented as a 64-bit timestamp.
+	// The creation time. This value is a 64-bit timestamp.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type ListImagesResponseBodyPagingInfoImageList struct {
 	//
 	// Test image created by xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether synchronization with MaxCompute is enabled.
+	// Indicates whether MaxCompute synchronization is enabled.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type ListImagesResponseBodyPagingInfoImageList struct {
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The last modification time, represented as a 64-bit timestamp.
+	// The last modification time. This value is a 64-bit timestamp.
 	//
 	// example:
 	//
@@ -267,19 +267,19 @@ type ListImagesResponseBodyPagingInfoImageList struct {
 	//
 	// namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Indicates whether the image is an official image.
+	// Specifies whether the image is an official image.
 	//
 	// example:
 	//
 	// true
 	Official *bool `json:"Official,omitempty" xml:"Official,omitempty"`
-	// The image ID assigned by the provider.
+	// The image ID of the image provider.
 	//
 	// example:
 	//
 	// acr_image_id
 	ProviderImageId *string `json:"ProviderImageId,omitempty" xml:"ProviderImageId,omitempty"`
-	// The image provider type:
+	// The image reference data type. Valid values:
 	//
 	// - ACR: ACR image repository.
 	//
@@ -289,29 +289,29 @@ type ListImagesResponseBodyPagingInfoImageList struct {
 	//
 	// ACR
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// The publish stage:
+	// The publishing status. Valid values:
 	//
 	// - Untest: Not tested.
 	//
-	// - Testing: Being tested.
+	// - Testing: Testing.
 	//
 	// - TestFailed: Test failed.
 	//
-	// - Unpublished: Not published.
+	// - Unpublished: Unpublished.
 	//
-	// - Publishing: Being published.
+	// - Publishing: Publishing.
 	//
 	// - Published: Published.
 	//
 	// - PublishFailed: Publish failed.
 	//
-	// - Building: Being built.
+	// - Building: Building.
 	//
 	// - BuildSuccess: Build succeeded.
 	//
 	// - BuildFailed: Build failed.
 	//
-	// - Accelerating: Being accelerated.
+	// - Accelerating: Accelerating.
 	//
 	// - AccelerateSuccess: Acceleration succeeded.
 	//
@@ -333,7 +333,7 @@ type ListImagesResponseBodyPagingInfoImageList struct {
 	//
 	// 1GB
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The image status:
+	// The image status. Valid values:
 	//
 	// - Disabled: The image is disabled.
 	//
@@ -629,7 +629,7 @@ type ListImagesResponseBodyPagingInfoImageListBuildConfig struct {
 	//
 	// PackageInstallation
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	// The list of pre-installation scripts.
+	// The list of pre-installation execution scripts.
 	PackageInstallationScripts []*ListImagesResponseBodyPagingInfoImageListBuildConfigPackageInstallationScripts `json:"PackageInstallationScripts,omitempty" xml:"PackageInstallationScripts,omitempty" type:"Repeated"`
 }
 
@@ -673,7 +673,7 @@ func (s *ListImagesResponseBodyPagingInfoImageListBuildConfig) Validate() error 
 }
 
 type ListImagesResponseBodyPagingInfoImageListBuildConfigPackageInstallationScripts struct {
-	// The script content. If the content specifies package names, separate them with commas (,).
+	// The script content. If the content consists of installation package names, separate the names with commas (,).
 	//
 	// example:
 	//
@@ -718,9 +718,9 @@ func (s *ListImagesResponseBodyPagingInfoImageListBuildConfigPackageInstallation
 }
 
 type ListImagesResponseBodyPagingInfoImageListSupported struct {
-	// The supported module:
+	// The supported module. Valid values:
 	//
-	// - Scheduler: Scheduling.
+	// - Scheduler: the scheduling module.
 	//
 	// example:
 	//

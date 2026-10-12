@@ -16,13 +16,13 @@ type iStopWorkflowInstancesRequest interface {
 }
 
 type StopWorkflowInstancesRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The workflow instance IDs.
+	// The list of workflow instance IDs. You can call the ListWorkflowInstances operation to query workflow instance IDs.
 	//
 	// This parameter is required.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`

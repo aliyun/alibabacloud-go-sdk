@@ -18,7 +18,7 @@ type iListWorkflowInstancesResponseBody interface {
 type ListWorkflowInstancesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListWorkflowInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. Used for locating logs and troubleshooting issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the user who created the instance.
+	// The account ID of the user who created the workflow instance.
 	//
 	// example:
 	//
@@ -166,15 +166,15 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The project environment. Valid values:
 	//
-	// - Prod (production)
+	// - Prod (Production)
 	//
-	// - Dev (development)
+	// - Dev (Development)
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The finish time.
+	// The completion time.
 	//
 	// The value is a 13-digit number, such as `1710239005403`.
 	//
@@ -188,7 +188,7 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// The value is a 13-digit number, such as `1710239005403`.
 	//
@@ -196,7 +196,7 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the user who last modified the instance.
+	// The account ID of the user who updated the workflow instance.
 	//
 	// example:
 	//
@@ -230,47 +230,47 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
 	// The running status of the workflow instance. Valid values:
 	//
-	// - NotRun: not run
+	// - NotRun: Not run.
 	//
-	// - Running: running
+	// - Running: Running.
 	//
-	// - WaitTime: waiting for TriggerTime
+	// - WaitTime: Waiting for the trigger time.
 	//
-	// - CheckingCondition: checking branch conditions
+	// - CheckingCondition: Checking branch conditions.
 	//
-	// - WaitResource: waiting for resources
+	// - WaitResource: Waiting for resources.
 	//
-	// - Failure: failed
+	// - Failure: Failed.
 	//
-	// - Success: succeeded
+	// - Success: Successful.
 	//
-	// - Checking: submitted for data quality check
+	// - Checking: Submitted for data quality check.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The node tags.
+	// The task tags.
 	Tags []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the workflow instance. Valid values:
 	//
-	// - Normal: periodic scheduling
+	// - Normal: Periodic scheduling.
 	//
-	// - Manual: manual task
+	// - Manual: Manual task.
 	//
-	// - SmokeTest: test
+	// - SmokeTest: Smoke test.
 	//
-	// - SupplementData: data backfill
+	// - SupplementData: Data backfill.
 	//
-	// - ManualWorkflow: manual workflow
+	// - ManualWorkflow: Manual workflow.
 	//
-	// - TriggerWorkflow: trigger-based workflow
+	// - TriggerWorkflow: Triggered workflow.
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The unified workflow instance ID. All workflow instances within the same business date under a specific trigger share the same value for this field.
+	// The unified workflow instance ID. The value of this field is the same for all workflow instances within a specific business date under a single trigger.
 	//
 	// example:
 	//
@@ -286,15 +286,15 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// example:
 	//
-	// Scheduled workflow:
+	// Periodic workflow:
 	//
 	// key1=value1 key2=value2
 	//
-	// Manual business flow:
+	// Manual workflow:
 	//
 	// {"key1":"value1", "key2": "value2"}
 	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
-	// The task instance ID corresponding to the workflow instance.
+	// The ID of the task instance corresponding to the workflow instance.
 	//
 	// example:
 	//

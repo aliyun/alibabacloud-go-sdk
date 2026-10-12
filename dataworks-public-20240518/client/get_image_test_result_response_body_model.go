@@ -18,13 +18,13 @@ type iGetImageTestResultResponseBody interface {
 }
 
 type GetImageTestResultResponseBody struct {
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -91,41 +91,41 @@ type GetImageTestResultResponseBodyTestResult struct {
 	//
 	// test finished
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The operation time, represented as a 64-bit timestamp.
+	// The operation time. The value is a 64-bit timestamp.
 	//
 	// example:
 	//
 	// 1727055811000
 	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	// The process ID.
+	// The ID of the process.
 	//
 	// example:
 	//
 	// 582d4896-d224-413b-b883-239eeebe0bc5
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The image publish status. Valid values:
+	// The publishing status of the image. Valid values:
 	//
 	// - Untest: Not tested.
 	//
-	// - Testing: Testing in progress.
+	// - Testing: Testing.
 	//
 	// - TestFailed: Test failed.
 	//
-	// - Unpublished: Not published.
+	// - Unpublished: Unpublished.
 	//
-	// - Publishing: Publishing in progress.
+	// - Publishing: Publishing.
 	//
 	// - Published: Published.
 	//
-	// - PublishFailed: Publish failed.
+	// - PublishFailed: Publishing failed.
 	//
-	// - Building: Building in progress.
+	// - Building: Building.
 	//
 	// - BuildSuccess: Build succeeded.
 	//
 	// - BuildFailed: Build failed.
 	//
-	// - Accelerating: Acceleration in progress.
+	// - Accelerating: Accelerating.
 	//
 	// - AccelerateSuccess: Acceleration succeeded.
 	//
@@ -135,13 +135,13 @@ type GetImageTestResultResponseBodyTestResult struct {
 	//
 	// Unpublished
 	PublishStage *string `json:"PublishStage,omitempty" xml:"PublishStage,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// Serverless_res_group_****
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The test process status. Valid values:
+	// The status of the test process. Valid values:
 	//
 	// - running: Running.
 	//
@@ -149,7 +149,7 @@ type GetImageTestResultResponseBodyTestResult struct {
 	//
 	// - failed: Failed.
 	//
-	// - cancelled: Cancelled.
+	// - cancelled: Canceled.
 	//
 	// example:
 	//

@@ -38,21 +38,21 @@ type iUpdateImageRequest interface {
 type UpdateImageRequest struct {
 	// The image visibility. Valid values:
 	//
-	// - Public: visible to all users.
+	// - Public: Visible to all users.
 	//
-	// - Private: visible only to the creator.
+	// - Private: Visible only to the creator.
 	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The VPC ID associated with the ACR instance. This parameter is required when referencing an ACR image.
+	// The ID of the VPC associated with the ACR instance. This parameter is required when you reference an ACR image.
 	//
 	// example:
 	//
 	// vpc-xxx
 	AcrAssociatedVpcId *string `json:"AcrAssociatedVpcId,omitempty" xml:"AcrAssociatedVpcId,omitempty"`
-	// The Container Registry (ACR) instance ID. This parameter is required when referencing an ACR image.
+	// The ID of the Container Registry (ACR) instance. This parameter is required when you reference an ACR image.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type UpdateImageRequest struct {
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The image URI. This parameter is required when referencing an ACR image.
+	// The image URI. This parameter is required when you reference an ACR image.
 	//
 	// example:
 	//
@@ -86,19 +86,19 @@ type UpdateImageRequest struct {
 	//
 	// task_image_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The image namespace. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+	// The image namespace. If you reference an official DataWorks image, set this parameter to DataWorks Default.
 	//
 	// example:
 	//
 	// namespace_name
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The provider image ID. This parameter is required when referencing a DataWorks official image.
+	// The ID of the image provided by the provider. This parameter is required when you reference an official DataWorks image.
 	//
 	// example:
 	//
 	// System_shell_20251201
 	ProviderImageId *string `json:"ProviderImageId,omitempty" xml:"ProviderImageId,omitempty"`
-	// The image repository name. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+	// The image repository name. If you reference an official DataWorks image, set this parameter to DataWorks Default.
 	//
 	// example:
 	//
@@ -289,7 +289,7 @@ func (s *UpdateImageRequestBuildConfig) Validate() error {
 }
 
 type UpdateImageRequestBuildConfigPackageInstallationScripts struct {
-	// The script content. If the content consists of package names, separate them with commas (,).
+	// The script content. If the content specifies package names, separate them with commas.
 	//
 	// example:
 	//
@@ -336,16 +336,13 @@ func (s *UpdateImageRequestBuildConfigPackageInstallationScripts) Validate() err
 type UpdateImageRequestSupported struct {
 	// The image sub-module. Valid values:
 	//
-	//
-	//
-	//
 	// - Scheduler: Data Studio.
 	//
 	// example:
 	//
 	// Scheduler
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// The list of node types supported by the image.
+	// The list of task types supported by the image.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 

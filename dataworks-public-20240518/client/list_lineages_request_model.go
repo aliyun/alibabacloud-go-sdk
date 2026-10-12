@@ -32,7 +32,7 @@ type iListLineagesRequest interface {
 }
 
 type ListLineagesRequest struct {
-	// The destination entity ID. You can use the table or column ID returned by the ListTables or ListColumns operation, or a custom entity ID.
+	// The destination entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type ListLineagesRequest struct {
 	//
 	// false
 	NeedAttachRelationship *bool `json:"NeedAttachRelationship,omitempty" xml:"NeedAttachRelationship,omitempty"`
-	// The sort direction. Default value: Asc. Valid values:
+	// The sort order. Default value: Asc. Valid values:
 	//
-	// - Asc: ascending order.
+	// - Asc: ascending order
 	//
-	// - Desc: descending order.
+	// - Desc: descending order
 	//
 	// example:
 	//
@@ -66,20 +66,20 @@ type ListLineagesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecentDays *int32 `json:"RecentDays,omitempty" xml:"RecentDays,omitempty"`
-	// The sort field. Default value: Name, which sorts by lineage entity name.
+	// The sort field. Default value: Name. The entities are sorted by lineage entity name.
 	//
 	// example:
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The source entity ID. You can use the table or column ID returned by the ListTables or ListColumns operation, or a custom entity ID.
+	// The source entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
 	//
 	// example:
 	//

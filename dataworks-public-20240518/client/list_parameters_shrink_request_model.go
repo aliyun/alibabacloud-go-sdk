@@ -30,9 +30,9 @@ type iListParametersShrinkRequest interface {
 }
 
 type ListParametersShrinkRequest struct {
-	// A list of parameter IDs.
+	// The list of parameter IDs.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// A list of parameter names.
+	// The list of parameter names.
 	NamesShrink *string `json:"Names,omitempty" xml:"Names,omitempty"`
 	// The account ID of the owner.
 	//
@@ -40,34 +40,31 @@ type ListParametersShrinkRequest struct {
 	//
 	// 123456789
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number. Default: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default: 20.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace ID. Call the ListProjects operation to get the workspace ID.
+	// The ID of the workspace. You can call the ListProjects operation to obtain the workspace ID.
 	//
 	// example:
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The scope of the parameter. The default value is Project. Other values are not supported.
+	// The scope of the parameter. Default value: Project. Other types are not supported.
 	//
 	// example:
 	//
 	// Project
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The list of fields to sort the parameters by. Specify the value in the "FieldName SortOrder" format. The Asc sort order is optional. Supported values are:
-	//
-	//
-	//
+	// The list of fields by which to sort the results. Supported fields include modification time and creation time. The format is "SortField+SortOrder(Desc/Asc)". You can omit Asc. Valid values:
 	//
 	// - ModifyTime (Desc/Asc)
 	//
@@ -79,13 +76,13 @@ type ListParametersShrinkRequest struct {
 	//
 	// ModifyTime Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The type of the parameter. Valid values:
+	// The parameter type. Valid values:
 	//
-	// - PlainConstant: A plaintext constant.
+	// - PlainConstant: plaintext constant.
 	//
-	// - SecretConstant: A secret constant.
+	// - SecretConstant: ciphertext constant.
 	//
-	// - Variable: A variable.
+	// - Variable: variable.
 	//
 	// example:
 	//

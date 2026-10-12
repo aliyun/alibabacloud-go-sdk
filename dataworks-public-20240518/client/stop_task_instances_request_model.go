@@ -16,13 +16,13 @@ type iStopTaskInstancesRequest interface {
 }
 
 type StopTaskInstancesRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The list of instance IDs.
+	// The list of task instance IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 }
 

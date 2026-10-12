@@ -32,9 +32,9 @@ type iUpdateDataQualityRuleRequest interface {
 }
 
 type UpdateDataQualityRuleRequest struct {
-	// The sample verification settings.
+	// The sample check settings.
 	CheckingConfig *UpdateDataQualityRuleRequestCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The rule description. The maximum length is 500 characters.
+	// The description of the rule. It can be up to 500 characters in length.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type UpdateDataQualityRuleRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The list of issue handlers for data quality rule verification.
+	// The list of error handlers for quality rule check issues.
 	ErrorHandlers []*UpdateDataQualityRuleRequestErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type UpdateDataQualityRuleRequest struct {
 	//
 	// 100001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule name. The name can be a combination of digits, English letters, Chinese characters, and half-width or full-width punctuation. The maximum length is 255 characters.
+	// The name of the rule. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. It can be up to 255 characters in length.
 	//
 	// example:
 	//
-	// The table cannot be empty
+	// Table cannot be empty
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Configuration page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type UpdateDataQualityRuleRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The settings required for sample collection.
 	SamplingConfig *UpdateDataQualityRuleRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The severity level of the rule for the business (corresponding to strong/weak rules on the page). Valid values:
+	// The severity level of the rule for the business, which corresponds to the strong or weak rule on the page. Valid values:
 	//
 	// - Normal
 	//
@@ -212,7 +212,7 @@ func (s *UpdateDataQualityRuleRequest) Validate() error {
 }
 
 type UpdateDataQualityRuleRequestCheckingConfig struct {
-	// Some types of thresholds require querying reference samples and then aggregating the values of those reference samples to derive the threshold used for comparison. An expression is used here to indicate how the reference samples are queried.
+	// For some types of thresholds, reference samples must be queried, and the values of the reference samples are aggregated to obtain the threshold for comparison. This parameter uses an expression to specify the query method for the reference samples.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type UpdateDataQualityRuleRequestCheckingConfig struct {
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
 	// The threshold settings.
 	Thresholds *UpdateDataQualityRuleRequestCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
-	// The threshold calculation method. This parameter is not required when a template is used.
+	// The threshold calculation method. This parameter is optional when a template is used. Valid values:
 	//
 	// - Fixed
 	//
@@ -289,7 +289,7 @@ type UpdateDataQualityRuleRequestCheckingConfigThresholds struct {
 	Critical *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
 	// The expected threshold settings.
 	Expected *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	// The threshold settings for normal warnings.
+	// The threshold settings for common warnings.
 	Warned *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
@@ -348,31 +348,29 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholds) Validate() error 
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical struct {
-	// The threshold expression.
+	// The threshold expression. For fluctuation rules, you must use an expression to specify the fluctuation threshold. Examples:
 	//
-	// Fluctuation-type rules must use an expression to represent the fluctuation threshold. Examples:
+	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
-	// - Upward fluctuation greater than 0.01: $checkValue > 0.01
+	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// - Downward fluctuation greater than 0.01: $checkValue < -0.01
+	// - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
-	//
-	// Fixed-value rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
+	// For fixed value rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
 	// $checkValue > 0.05
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator.
+	// The comparison operator. Valid values:
 	//
 	// - \\>
 	//
 	// - \\>=
 	//
-	// - <
+	// - \\<
 	//
-	// - <=
+	// - \\<=
 	//
 	// - !=
 	//
@@ -430,23 +428,21 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) Validate(
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected struct {
-	// The threshold expression.
+	// The threshold expression. For fluctuation rules, you must use an expression to specify the fluctuation threshold. Examples:
 	//
-	// Fluctuation-type rules must use an expression to represent the fluctuation threshold. Examples:
+	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
-	// - Upward fluctuation greater than 0.01: $checkValue > 0.01
+	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// - Downward fluctuation greater than 0.01: $checkValue < -0.01
+	// - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
-	//
-	// Fixed-value rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
+	// For fixed value rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
 	// $checkValue <= 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator.
+	// The comparison operator. Valid values:
 	//
 	// - \\>
 	//
@@ -512,31 +508,29 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) Validate(
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned struct {
-	// The threshold expression.
+	// The threshold expression. For fluctuation rules, you must use an expression to specify the fluctuation threshold. Examples:
 	//
-	// Fluctuation-type rules must use an expression to represent the fluctuation threshold. Examples:
+	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
-	// - Upward fluctuation greater than 0.01: $checkValue > 0.01
+	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// - Downward fluctuation greater than 0.01: $checkValue < -0.01
+	// - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
-	//
-	// Fixed-value rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
+	// For fixed value rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator.
+	// The comparison operator. Valid values:
 	//
 	// - \\>
 	//
 	// - \\>=
 	//
-	// - <
+	// - \\<
 	//
-	// - <=
+	// - \\<=
 	//
 	// - !=
 	//
@@ -594,13 +588,13 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned) Validate() 
 }
 
 type UpdateDataQualityRuleRequestErrorHandlers struct {
-	// For a custom SQL rule, you must specify the SQL used to filter problematic data.
+	// If the rule is a custom SQL rule, you must specify an SQL statement to filter the error data.
 	//
 	// example:
 	//
 	// SELECT 	- FROM tb_api_log WHERE id IS NULL
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
-	// The handler type.
+	// The type of the error handler. Valid values:
 	//
 	// - SaveErrorData
 	//
@@ -641,40 +635,37 @@ func (s *UpdateDataQualityRuleRequestErrorHandlers) Validate() error {
 }
 
 type UpdateDataQualityRuleRequestSamplingConfig struct {
-	// The name of the metric to sample. This parameter is not required when a template is used.
+	// The name of the sampling metric. This parameter is optional when a template is used. Valid values:
 	//
+	// - Count: number of rows in the table
 	//
+	// - Min: minimum value of the field
 	//
+	// - Max: maximum value of the field
 	//
-	// - Count: the number of rows in the table.
+	// - Avg: average value of the field
 	//
-	// - Min: the minimum value of the column.
+	// - DistinctCount: number of unique values in the field
 	//
-	// - Max: the maximum value of the column.
+	// - DistinctPercent: ratio of the number of unique values in the field to the number of data rows
 	//
-	// - Avg: the average value of the column.
+	// - DuplicatedCount: number of duplicate values in the field
 	//
-	// - DistinctCount: the number of distinct values in the column.
+	// - DuplicatedPercent: ratio of the number of duplicate values in the field to the number of data rows
 	//
-	// - DistinctPercent: the ratio of the number of distinct values in the column to the total number of rows.
+	// - TableSize: size of the table
 	//
-	// - DuplicatedCount: the number of duplicate values in the column.
+	// - NullValueCount: number of rows where the field is null
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate values in the column to the total number of rows.
+	// - NullValuePercent: ratio of rows where the field is null
 	//
-	// - TableSize: the size of the table.
+	// - GroupCount: number of data rows corresponding to each value after aggregation by field value
 	//
-	// - NullValueCount: the number of rows in which the column is null.
+	// - CountNotIn: number of rows that do not match the enumerated values
 	//
-	// - NullValuePercent: the percentage of rows in which the column is null.
+	// - CountDistinctNotIn: number of unique values that do not match the enumerated values
 	//
-	// - GroupCount: the number of data rows for each value after aggregation by column value.
-	//
-	// - CountNotIn: the number of rows that do not match the enumerated values.
-	//
-	// - CountDistinctNotIn: the number of distinct values that do not match the enumerated values.
-	//
-	// - UserDefinedSql: sample collection by using custom SQL.
+	// - UserDefinedSql: sample collection by using custom SQL statements
 	//
 	// example:
 	//
@@ -686,13 +677,13 @@ type UpdateDataQualityRuleRequestSamplingConfig struct {
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The condition used to apply secondary filtering on data that is not of interest during sampling. The maximum length is 16,777,215 characters.
+	// The condition used to filter out unneeded data during sampling. It can be up to 16,777,215 characters in length.
 	//
 	// example:
 	//
 	// id IS NULL
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	// The runtime parameter setting statements to be inserted and executed before the actual sampling statements. The maximum length is 1,000 characters. Only MaxCompute is supported.
+	// The runtime parameter setting statements that are inserted and executed before the sampling statements are executed. It can be up to 1,000 characters in length. Only MaxCompute is supported.
 	//
 	// example:
 	//

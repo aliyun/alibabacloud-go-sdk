@@ -34,29 +34,37 @@ type iRerunWorkflowInstancesRequest interface {
 }
 
 type RerunWorkflowInstancesRequest struct {
-	// The business date used for matching manual workflow instances.
+	// The data timestamp specified for the manual workflow instance run, used for matching.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
+	// The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with StartTriggerTime.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	EndTriggerTime *int64 `json:"EndTriggerTime,omitempty" xml:"EndTriggerTime,omitempty"`
-	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
+	// The project environment. Valid values:
+	//
+	// - Prod: Production.
+	//
+	// - Dev: Development.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The match conditions for internal instances of manual workflow instances.
+	// The matching conditions for the internal instances of the manual workflow instance.
 	Filter *RerunWorkflowInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The instance IDs used for matching manual workflow instances.
+	// The list of manual workflow instance IDs used for matching.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The manual workflow name, used for fuzzy matching.
+	// The name of the manual workflow used for fuzzy matching.
 	//
 	// example:
 	//
@@ -72,17 +80,21 @@ type RerunWorkflowInstancesRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartTriggerTime *int64 `json:"StartTriggerTime,omitempty" xml:"StartTriggerTime,omitempty"`
-	// The status used for matching manual workflow instances.
+	// The running status of the manual workflow instance used for matching.
 	//
 	// example:
 	//
 	// Failure
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the workflow instance. Valid value: ManualWorkflow (manual workflow).
+	// The type of the workflow instance. Valid values:
+	//
+	// - ManualWorkflow: Manual workflow.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +102,7 @@ type RerunWorkflowInstancesRequest struct {
 	//
 	// ManualWorkflow
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The workflow ID.
+	// The ID of the workflow.
 	//
 	// This parameter is required.
 	//
@@ -217,23 +229,23 @@ func (s *RerunWorkflowInstancesRequest) Validate() error {
 }
 
 type RerunWorkflowInstancesRequestFilter struct {
-	// Specifies whether to rerun the matched instances and all downstream instances.
+	// Specifies whether to rerun the matched instances and all their downstream instances.
 	//
 	// example:
 	//
 	// false
 	RerunDownstreamEnabled *bool `json:"RerunDownstreamEnabled,omitempty" xml:"RerunDownstreamEnabled,omitempty"`
-	// The internal task IDs used for matching manual workflow instances.
+	// The task IDs of the internal tasks in the manual workflow used for matching.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The statuses of internal tasks used for matching manual workflow instances.
+	// The running statuses of the internal instances of the manual workflow instance used for matching.
 	TaskInstanceStatuses []*string `json:"TaskInstanceStatuses,omitempty" xml:"TaskInstanceStatuses,omitempty" type:"Repeated"`
-	// The internal task name used for matching the manual workflow instance.
+	// The name of the internal task in the manual workflow used for matching.
 	//
 	// example:
 	//
 	// test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Match internal tasks within the manual workflow by type.
+	// The types of the internal tasks in the manual workflow used for matching.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 

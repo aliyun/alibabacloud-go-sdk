@@ -30,17 +30,17 @@ type iCreateSecurityStrategyShrinkRequest interface {
 }
 
 type CreateSecurityStrategyShrinkRequest struct {
-	// A client-generated token that ensures request idempotency, preventing duplicate operations if you retry the request.
+	// The idempotency parameter. This parameter is used to prevent duplicate operations caused by multiple calls.
 	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The content of the strategy. This value is constrained by the `SecurityStrategySchema`.
+	// The policy content. The content is constrained by SecurityStrategySchema.
 	//
 	// This parameter is required.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// **The control scope. Valid values: Workspace and Tenant.**
+	// The control scope.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateSecurityStrategyShrinkRequest struct {
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
-	// **Control module**
+	// The control module.
 	//
 	// This parameter is required.
 	//
@@ -56,27 +56,27 @@ type CreateSecurityStrategyShrinkRequest struct {
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
-	// **Control submodule**
+	// The control submodule.
 	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	// **Strategy description**
+	// The description of the policy.
 	//
 	// example:
 	//
-	// 控制数据分析模块的查询结果安全行为
+	// Controls the security behavior of query results in the data analysis module
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// **Strategy name**
+	// The policy name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 默认数据分析策略
+	// Default data analysis policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// **Schema template name**
+	// The name of the schema template.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateSecurityStrategyShrinkRequest struct {
 	//
 	// DataQuerySecurityStrategySchema
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// A list of associated workspace IDs.
+	// The list of associated workspace IDs.
 	WorkspacesShrink *string `json:"Workspaces,omitempty" xml:"Workspaces,omitempty"`
 }
 

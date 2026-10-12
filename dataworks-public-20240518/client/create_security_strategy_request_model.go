@@ -30,17 +30,17 @@ type iCreateSecurityStrategyRequest interface {
 }
 
 type CreateSecurityStrategyRequest struct {
-	// A client-generated token that ensures request idempotency, preventing duplicate operations if you retry the request.
+	// The idempotency parameter. This parameter is used to prevent duplicate operations caused by multiple calls.
 	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The content of the strategy. This value is constrained by the `SecurityStrategySchema`.
+	// The policy content. The content is constrained by SecurityStrategySchema.
 	//
 	// This parameter is required.
 	Content *CreateSecurityStrategyRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// **The control scope. Valid values: Workspace and Tenant.**
+	// The control scope.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateSecurityStrategyRequest struct {
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
-	// **Control module**
+	// The control module.
 	//
 	// This parameter is required.
 	//
@@ -56,27 +56,27 @@ type CreateSecurityStrategyRequest struct {
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
-	// **Control submodule**
+	// The control submodule.
 	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	// **Strategy description**
+	// The description of the policy.
 	//
 	// example:
 	//
-	// 控制数据分析模块的查询结果安全行为
+	// Controls the security behavior of query results in the data analysis module
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// **Strategy name**
+	// The policy name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 默认数据分析策略
+	// Default data analysis policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// **Schema template name**
+	// The name of the schema template.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateSecurityStrategyRequest struct {
 	//
 	// DataQuerySecurityStrategySchema
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// A list of associated workspace IDs.
+	// The list of associated workspace IDs.
 	Workspaces []*int64 `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -187,13 +187,13 @@ func (s *CreateSecurityStrategyRequest) Validate() error {
 }
 
 type CreateSecurityStrategyRequestContent struct {
-	// The control scope. This corresponds to the `controlDwScope` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The control scope. This is the name of the SecurityStrategySchema associated with the current policy.
 	//
 	// example:
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
-	// The control module. This corresponds to the `controlModule` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The control module. This is the controlModule of the SecurityStrategySchema associated with the current policy.
 	//
 	// This parameter is required.
 	//
@@ -201,29 +201,29 @@ type CreateSecurityStrategyRequestContent struct {
 	//
 	// DataStudio
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
-	// The control submodule. This corresponds to the `controlSubModule` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The control submodule. This is the controlSubModule of the SecurityStrategySchema associated with the current policy.
 	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	// A list of controllers.
+	// The list of control items.
 	//
-	// **Note:*	- Valid controllers depend on the selected schema. For more information, see the controller definitions and the list of controllers for each schema.
+	// Note: Valid control items depend on the selected schema. Refer to the controller definitions and the control item list for each schema.
 	Controllers []*CreateSecurityStrategyRequestContentControllers `json:"Controllers,omitempty" xml:"Controllers,omitempty" type:"Repeated"`
-	// The `displayName` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The display name of the SecurityStrategySchema associated with the current policy.
 	//
 	// example:
 	//
-	// 数据分析
+	// Data analysis
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The `displayNameEn` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The English display name of the SecurityStrategySchema associated with the current policy.
 	//
 	// example:
 	//
 	// Data Analysis
 	DisplayNameEn *string `json:"DisplayNameEn,omitempty" xml:"DisplayNameEn,omitempty"`
-	// The `name` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The name of the SecurityStrategySchema associated with the current policy.
 	//
 	// This parameter is required.
 	//
@@ -231,13 +231,13 @@ type CreateSecurityStrategyRequestContent struct {
 	//
 	// DataQuerySecurityStrategySchema
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The `systemPolicyDisplayName` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The name of the SecurityStrategySchema associated with the current policy.
 	//
 	// example:
 	//
 	// Default system generate data query policy
 	SystemPolicyDisplayName *string `json:"SystemPolicyDisplayName,omitempty" xml:"SystemPolicyDisplayName,omitempty"`
-	// The `systemPolicyName` property of the `SecurityStrategySchema` associated with the current strategy.
+	// The name of the SecurityStrategySchema associated with the current policy.
 	//
 	// example:
 	//
@@ -354,15 +354,15 @@ type CreateSecurityStrategyRequestContentControllers struct {
 	//
 	// 0
 	BasicEditionDefaultValue interface{} `json:"BasicEditionDefaultValue,omitempty" xml:"BasicEditionDefaultValue,omitempty"`
-	// The valid value interval for Basic Edition, in the format `[min, max]`.
+	// The valid value range for Basic Edition, in the format of [min, max].
 	BasicEditionIntervalValue []*int32 `json:"BasicEditionIntervalValue,omitempty" xml:"BasicEditionIntervalValue,omitempty" type:"Repeated"`
-	// The controller identifier. For valid values, see the list of controllers for each schema.
+	// The identifier of the control item. For valid values, refer to the control item list for each schema.
 	//
 	// example:
 	//
 	// viewCount
 	Controller *string `json:"Controller,omitempty" xml:"Controller,omitempty"`
-	// The value type. Valid values: `Boolean`, `Integer`, `Long`, and `String`.
+	// The value type. Valid values: Boolean, Integer, Long, and String.
 	//
 	// example:
 	//
@@ -372,7 +372,7 @@ type CreateSecurityStrategyRequestContentControllers struct {
 	//
 	// example:
 	//
-	// 查询结果-单次展示记录值上限
+	// Query results - Maximum number of records displayed per query
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The English display name.
 	//
@@ -380,7 +380,7 @@ type CreateSecurityStrategyRequestContentControllers struct {
 	//
 	// Query Results - Single Display Record Limit
 	DisplayNameEn *string `json:"DisplayNameEn,omitempty" xml:"DisplayNameEn,omitempty"`
-	// Specifies whether to enable this controller.
+	// Specifies whether to enable the control item.
 	//
 	// example:
 	//
@@ -392,7 +392,7 @@ type CreateSecurityStrategyRequestContentControllers struct {
 	//
 	// 500000
 	EnterpriseEditionDefaultValue interface{} `json:"EnterpriseEditionDefaultValue,omitempty" xml:"EnterpriseEditionDefaultValue,omitempty"`
-	// The valid value interval for Enterprise Edition, in the format `[min, max]`.
+	// The valid value range for Enterprise Edition, in the format of [min, max].
 	EnterpriseEditionIntervalValue []*int32 `json:"EnterpriseEditionIntervalValue,omitempty" xml:"EnterpriseEditionIntervalValue,omitempty" type:"Repeated"`
 	// The default value for Professional Edition.
 	//
@@ -400,7 +400,7 @@ type CreateSecurityStrategyRequestContentControllers struct {
 	//
 	// 200000
 	ProfessionalEditionDefaultValue interface{} `json:"ProfessionalEditionDefaultValue,omitempty" xml:"ProfessionalEditionDefaultValue,omitempty"`
-	// The valid value interval for Professional Edition, in the format `[min, max]`.
+	// The valid value range for Professional Edition, in the format of [min, max].
 	ProfessionalEditionIntervalValue []*int32 `json:"ProfessionalEditionIntervalValue,omitempty" xml:"ProfessionalEditionIntervalValue,omitempty" type:"Repeated"`
 	// The default value for Standard Edition.
 	//
@@ -408,9 +408,9 @@ type CreateSecurityStrategyRequestContentControllers struct {
 	//
 	// 100000
 	StandardEditionDefaultValue interface{} `json:"StandardEditionDefaultValue,omitempty" xml:"StandardEditionDefaultValue,omitempty"`
-	// The valid value interval for Standard Edition, in the format `[min, max]`.
+	// The valid value range for Standard Edition, in the format of [min, max].
 	StandardEditionIntervalValue []*int32 `json:"StandardEditionIntervalValue,omitempty" xml:"StandardEditionIntervalValue,omitempty" type:"Repeated"`
-	// The user-configured value. The type of this value depends on the `ControllerValueType` parameter.
+	// The user-configured value. The type depends on `ControllerValueType`.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListLineagesResponseBody interface {
 }
 
 type ListLineagesResponseBody struct {
-	// The paging result.
+	// The pagination result.
 	PagingInfo *ListLineagesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListLineagesResponseBody struct {
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,15 +79,15 @@ func (s *ListLineagesResponseBody) Validate() error {
 }
 
 type ListLineagesResponseBodyPagingInfo struct {
-	// The lineage information list.
+	// The list of lineage information.
 	Lineages []*ListLineagesResponseBodyPagingInfoLineages `json:"Lineages,omitempty" xml:"Lineages,omitempty" type:"Repeated"`
-	// The page number of the returned data, used for pagination.
+	// The page number of the returned data, which is used for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

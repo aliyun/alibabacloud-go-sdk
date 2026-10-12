@@ -28,16 +28,38 @@ type iDataQualityRuleTemplate interface {
 }
 
 type DataQualityRuleTemplate struct {
+	// The sample check settings.
 	CheckingConfig *DataQualityRuleTemplateCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The globally unique code of the rule template.
+	//
 	// example:
 	//
-	// /ods/订单数据
-	DirectoryPath  *string                                `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	Name           *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectId      *int64                                 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// USER_DEFINED:123
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The category directory where the custom template is stored. Levels are separated by forward slashes.
+	//
+	// example:
+	//
+	// /ods/OrderData
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	// The name of the rule template.
+	//
+	// example:
+	//
+	// Table row count check
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// example:
+	//
+	// 2043
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sample collection settings.
 	SamplingConfig *DataQualityRuleTemplateSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	TenantId       *int64                                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The DataWorks tenant ID.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The visibility scope of the template.
+	//
 	// example:
 	//
 	// Project
@@ -139,10 +161,14 @@ func (s *DataQualityRuleTemplate) Validate() error {
 }
 
 type DataQualityRuleTemplateCheckingConfig struct {
+	// The expression used to query referenced samples. Some threshold types require querying referenced samples and aggregating their values to derive the comparison threshold.
+	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold calculation method.
+	//
 	// example:
 	//
 	// Fixed
@@ -180,14 +206,20 @@ func (s *DataQualityRuleTemplateCheckingConfig) Validate() error {
 }
 
 type DataQualityRuleTemplateSamplingConfig struct {
+	// The name of the sampled metric.
+	//
 	// example:
 	//
 	// Min
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sample collection.
+	//
 	// example:
 	//
 	// { "SQL": "SELECT min(id) from table;" }
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The runtime parameter setting statements inserted before the execution of the sampling statement. The maximum length is 1,000 characters. Currently, only MaxCompute is supported.
+	//
 	// example:
 	//
 	// SET odps.sql.udf.timeout=600s;

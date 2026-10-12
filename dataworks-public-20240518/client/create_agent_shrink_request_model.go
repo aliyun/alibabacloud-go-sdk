@@ -34,25 +34,25 @@ type iCreateAgentShrinkRequest interface {
 }
 
 type CreateAgentShrinkRequest struct {
-	// The list of child Agents that can be called by this Agent.
+	// The list of child agents that can be called by this agent.
 	//
 	// example:
 	//
 	// -
 	CallableAgentsShrink *string `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty"`
-	// The description of the Agent.
+	// The description of the agent.
 	//
 	// example:
 	//
 	// Data analytics assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the Agent.
+	// The display name of the agent.
 	//
 	// example:
 	//
-	// MyAssistant
+	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The extended metadata (key-value pairs).
+	// The extended metadata in key-value pairs.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	//         }
 	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The Agent name, which must be unique within the current account.
+	// The name of the agent. The name must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// You are a data analytics assistant.
+	// You are a data analytics assistant
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The list of tools.
 	//
@@ -98,7 +98,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	// `TENANT`: Visible within the account.<br>
 	//
-	// `PROJECT`: Visible to a specified project.<br>
+	// `PROJECT`: Visible to specified projects.<br>
 	//
 	// `USER`: Visible to specified users.
 	//
@@ -106,7 +106,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is determined by the Visibility parameter.
+	// The visibility scope. The corresponding field is used based on the visibility level.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

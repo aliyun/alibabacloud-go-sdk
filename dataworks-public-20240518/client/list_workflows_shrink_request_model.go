@@ -32,31 +32,27 @@ type iListWorkflowsShrinkRequest interface {
 }
 
 type ListWorkflowsShrinkRequest struct {
-	// The environment of the workspace. Valid values:
-	//
-	// - Prod: production environment
-	//
-	// - Dev: development environment
+	// The project environment.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The IDs of the workflows. You can query multiple workflows at a time by workflow ID.
+	// The list of workflow IDs. You can specify multiple workflow IDs to query multiple workflows at a time.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The name of the workflow. Fuzzy match is supported.
+	// The name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// Workflow1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The account ID of the workflow owner.
+	// The account ID of the owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -68,7 +64,7 @@ type ListWorkflowsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -76,15 +72,23 @@ type ListWorkflowsShrinkRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The field used for sorting. Fields such as ModifyTime and CreateTime are supported. Format: sort field + sort order (Desc/Asc). Asc can be omitted. Valid values: ModifyTime (Desc/Asc), CreateTime (Desc/Asc), and Id (Desc/Asc). Default value: Id Desc.
+	// The sort field. You can sort by fields such as modification time and creation time. The format is \\"SortField+SortOrder(Desc/Asc)\\", where Asc can be omitted. Valid values for the sort field:
+	//
+	// - ModifyTime (Desc/Asc)
+	//
+	// - CreateTime (Desc/Asc)
+	//
+	// - Id (Desc/Asc)
+	//
+	// Default value: Id Desc.
 	//
 	// example:
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// List of tags. A result is returned if it matches any one of the specified tags.
+	// The list of tags. If a workflow matches any of the specified tags, it is returned in the result.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The trigger type.
+	// The trigger type. Valid values:
 	//
 	// - Scheduler
 	//

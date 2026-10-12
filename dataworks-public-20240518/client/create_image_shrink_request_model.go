@@ -40,31 +40,31 @@ type iCreateImageShrinkRequest interface {
 }
 
 type CreateImageShrinkRequest struct {
-	// The image visibility. Valid values:
+	// The visibility of the image. Valid values:
 	//
-	// - Public: visible to all users.
+	// - Public: The image is visible to all users.
 	//
-	// - Private: visible only to the creator.
+	// - Private: The image is visible only to the creator.
 	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The VPC ID associated with the ACR instance. This parameter is required when referencing an ACR image.
+	// The ID of the virtual private cloud (VPC) associated with the ACR instance. This parameter is required if you reference an ACR image.
 	//
 	// example:
 	//
 	// vpc-xxx
 	AcrAssociatedVpcId *string `json:"AcrAssociatedVpcId,omitempty" xml:"AcrAssociatedVpcId,omitempty"`
-	// The ACR instance ID. This parameter is required when referencing an ACR image.
+	// The ACR instance ID. This parameter is required if you reference an ACR image.
 	//
 	// example:
 	//
 	// acr_instance_id
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	// The image build configuration.
+	// The build configuration of the image.
 	BuildConfigShrink *string `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty"`
-	// The client idempotency token.
+	// The client token that is used to ensure idempotence.
 	//
 	// This parameter is required.
 	//
@@ -72,25 +72,25 @@ type CreateImageShrinkRequest struct {
 	//
 	// dasfsd-94fqwe-da8d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The image description, up to 128 characters.
+	// The description of the image. The description can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// create by xxxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to synchronize the image to MaxCompute. Specify this parameter when referencing an ACR image. Default value: false.
+	// Specifies whether to synchronize the image to MaxCompute. Specify this parameter when you reference an ACR image. Default value: false.
 	//
 	// example:
 	//
 	// false
 	EnableSyncMaxCompute *bool `json:"EnableSyncMaxCompute,omitempty" xml:"EnableSyncMaxCompute,omitempty"`
-	// The image URI. This parameter is required when referencing an ACR image.
+	// The URI of the image. This parameter is required if you reference an ACR image.
 	//
 	// example:
 	//
 	// registry-vpc.cn-beijing.cr.aliyuncs.com/namespace/image:0.1.0
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// The image name, which can contain lowercase letters, digits, and underscores (_), up to 128 characters.
+	// The name of the image. The name can contain lowercase letters, digits, and underscores (_), and can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type CreateImageShrinkRequest struct {
 	//
 	// task_image_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The image namespace. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+	// The namespace of the image. If you reference a DataWorks official image, set this parameter to DataWorks Default.
 	//
 	// This parameter is required.
 	//
@@ -106,16 +106,13 @@ type CreateImageShrinkRequest struct {
 	//
 	// namespace_name
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The image ID from the image provider. This parameter is required when referencing a DataWorks official image.
+	// The ID of the image provided by the image provider. This parameter is required if you reference a DataWorks official image.
 	//
 	// example:
 	//
 	// System_shell_20251201
 	ProviderImageId *string `json:"ProviderImageId,omitempty" xml:"ProviderImageId,omitempty"`
-	// The image reference type. Valid values:
-	//
-	//
-	//
+	// The reference data type of the image. Valid values:
 	//
 	// - ACR: ACR image repository.
 	//
@@ -127,7 +124,7 @@ type CreateImageShrinkRequest struct {
 	//
 	// ACR
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// The image repository name. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+	// The name of the image repository. If you reference a DataWorks official image, set this parameter to DataWorks Default.
 	//
 	// This parameter is required.
 	//
@@ -135,7 +132,7 @@ type CreateImageShrinkRequest struct {
 	//
 	// repo_name
 	RepositoryName *string `json:"RepositoryName,omitempty" xml:"RepositoryName,omitempty"`
-	// The image sub-purpose.
+	// The sub-purpose of the image.
 	//
 	// This parameter is required.
 	SupportedShrink *string `json:"Supported,omitempty" xml:"Supported,omitempty"`

@@ -20,13 +20,13 @@ type iCreateMcpServerRequest interface {
 }
 
 type CreateMcpServerRequest struct {
-	// The connection configuration of the MCP Server.
+	// The connection configuration of the MCP server.
 	//
 	// example:
 	//
 	// -
 	Config *CreateMcpServerRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The name of the MCP Server. The name must be unique at the tenant level. It must start with a lowercase letter and can contain only `a-z`, `0-9`, `_`, and `-`.
+	// The name of the MCP server. It must be unique at the tenant level. It must start with a lowercase letter and can contain only lowercase letters (`a-z`), digits (`0-9`), underscores (`_`), and hyphens (`-`).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateMcpServerRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is used based on the Visibility value.
+	// The visibility scope. Specify the corresponding fields based on the value of Visibility.
 	VisibilityScope *CreateMcpServerRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -103,7 +103,7 @@ func (s *CreateMcpServerRequest) Validate() error {
 }
 
 type CreateMcpServerRequestConfig struct {
-	// The custom request headers (key-value pairs). Reserved headers cannot be overwritten.
+	// The custom request headers in key-value pairs. Reserved headers cannot be overwritten.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type CreateMcpServerRequestConfig struct {
 	//
 	// SSE
 	Transport *string `json:"Transport,omitempty" xml:"Transport,omitempty"`
-	// The service URL of the MCP Server. The URL must start with `https://`.
+	// The service URL of the MCP server. It must start with `https://`.
 	//
 	// example:
 	//
@@ -163,9 +163,9 @@ func (s *CreateMcpServerRequestConfig) Validate() error {
 }
 
 type CreateMcpServerRequestVisibilityScope struct {
-	// The IDs of the projects in which the MCP Server is visible. This parameter takes effect when Visibility is set to `PROJECT`.
+	// The list of visible project IDs. This parameter takes effect when Visibility is set to `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The IDs of the users to whom the MCP Server is visible. This parameter takes effect when Visibility is set to `USER`.
+	// The list of visible user IDs. This parameter takes effect when Visibility is set to `USER`.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

@@ -16,13 +16,13 @@ type iUpdateDataQualityEvaluationTaskResponseBody interface {
 }
 
 type UpdateDataQualityEvaluationTaskResponseBody struct {
-	// Request ID. Used to locate logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 8abcb91f-d266-4073-b907-2ed670378ed1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

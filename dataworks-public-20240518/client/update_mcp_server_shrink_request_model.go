@@ -24,13 +24,13 @@ type iUpdateMcpServerShrinkRequest interface {
 }
 
 type UpdateMcpServerShrinkRequest struct {
-	// The new custom request headers (key-value pairs).
+	// The new custom request headers in key-value pairs.
 	//
 	// example:
 	//
 	// {}
 	CustomHeadersShrink *string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
-	// The name of the MCP Server to update.
+	// The name of the MCP server to update.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type UpdateMcpServerShrinkRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The new visibility scope. Provide the corresponding field based on the Visibility setting.
+	// The new visibility scope. Specify the corresponding fields based on the `Visibility` value.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

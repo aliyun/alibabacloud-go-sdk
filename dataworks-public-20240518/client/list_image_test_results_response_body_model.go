@@ -167,7 +167,7 @@ type ListImageTestResultsResponseBodyPagingInfoTestResultList struct {
 	//
 	// test finished
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The operation time, represented as a 64-bit timestamp.
+	// The operation time, which is a 64-bit timestamp.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type ListImageTestResultsResponseBodyPagingInfoTestResultList struct {
 	//
 	// 11111111-1111-1111-1111-111111111111
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The publish stage of the image.
+	// The image publishing stage.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iListLineageRelationshipsResponseBody interface {
 type ListLineageRelationshipsResponseBody struct {
 	// The pagination result.
 	PagingInfo *ListLineageRelationshipsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. You can use this ID to locate and troubleshoot issues.
+	// The ID of the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type ListLineageRelationshipsResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

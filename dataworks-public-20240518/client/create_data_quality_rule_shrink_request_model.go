@@ -34,19 +34,19 @@ type iCreateDataQualityRuleShrinkRequest interface {
 type CreateDataQualityRuleShrinkRequest struct {
 	// The sample check settings.
 	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
-	// The description of the rule. The maximum length is 500 characters.
+	// The description of the rule. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the data quality rule.
+	// Specifies whether the quality rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The list of issue handlers for the data quality rule check.
+	// The list of handlers for quality rule check issues.
 	ErrorHandlersShrink *string `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty"`
 	// The name of the rule.
 	//
@@ -66,7 +66,7 @@ type CreateDataQualityRuleShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The settings required for sample collection.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
-	// The severity of the rule for the business (corresponding to the strong/weak rule on the page). Valid values:
+	// The severity level of the rule for business operations, which corresponds to strong and weak rules on the page. Valid values:
 	//
 	// - Normal
 	//
@@ -78,7 +78,7 @@ type CreateDataQualityRuleShrinkRequest struct {
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The object monitored by the rule.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The unique identifier of the rule template that the rule references.
+	// The unique identifier of the rule template referenced by the rule.
 	//
 	// example:
 	//

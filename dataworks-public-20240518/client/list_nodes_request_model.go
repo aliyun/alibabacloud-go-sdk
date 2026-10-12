@@ -28,36 +28,33 @@ type iListNodesRequest interface {
 }
 
 type ListNodesRequest struct {
-	// Leave this parameter empty if not specified. The filter condition: within the specified container. Specify the container ID. This parameter is not related to the resource group (ResourceGroupId).
+	// The ID of the container. This parameter is used as a filter condition to query nodes in a specified container. If you do not specify this parameter, leave it empty. This parameter is independent of the ResourceGroupId parameter.
 	//
-	//
-	//
-	//
-	// This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. This change does not affect normal SDK usage; the field is returned in the type defined in the SDK. When upgrading across SDK version 8.0.0, the type change may cause compilation failures. In this case, manually correct the data type.
+	// 	Notice: Before SDK version 8.0.0, this field is of the Long type. In SDK version 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK, and the parameter is still returned based on the type defined in the SDK**. However, if you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The node name. Fuzzy match is supported.
+	// The name of the node. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number for pagination.
+	// The page number of the requested data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -65,40 +62,43 @@ type ListNodesRequest struct {
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Filter condition: scheduling type. Valid values:
+	// The scheduling type. This parameter is used as a filter condition. Valid values:
 	//
-	// - Normal: The node is executed normally.
+	// - Normal: The node runs as expected.
 	//
-	// - Pause: The node status is set to paused, and downstream nodes that depend on the current node are blocked from execution.
+	// - Pause: The node is paused, and the execution of its downstream nodes is blocked.
 	//
-	// - Skip: The node status is set to dry run. The system directly returns a success result (with an execution duration of 0 seconds), does not block downstream node execution, and does not consume resources.
+	//
+	//
+	// - Skip: The node is set to dry run. The system directly returns a success response with an execution duration of 0 seconds. This does not block the execution of downstream nodes or consume resources.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The rerun property. If not specified, this parameter is left empty. Valid values:
+	// The rerun mode. If you do not specify this parameter, leave it empty. Valid values:
 	//
-	// - Allowed: The node can be rerun regardless of whether it runs successfully or fails.
+	// - Allowed: The node can be rerun regardless of whether it is successfully run or fails to run.
 	//
-	// - FailureAllowed: The node can be rerun only after a failed run, not after a successful run.
 	//
-	// - Denied: The node cannot be rerun regardless of whether it runs successfully or fails.
+	//
+	// - FailureAllowed: The node can be rerun only after it fails to run.
+	//
+	//
+	//
+	// - Denied: The node cannot be rerun regardless of whether it is successfully run or fails to run.
 	//
 	// example:
 	//
 	// Allowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The scene in which the node resides. Leave this parameter empty if not specified. This parameter corresponds to the partition of the left-side navigation pane in Data Studio. Valid values:
+	// The scenario to which the node belongs. This parameter is used as a filter condition. If you do not specify this parameter, leave it empty. In Data Studio, this parameter corresponds to the partitions in the left-side directory tree. Valid values:
 	//
-	//
-	//
-	//
-	// - DataworksProject: project folder.
+	// - DataworksProject: project directory.
 	//
 	// - DataworksManualWorkflow: manual workflow.
 	//
-	// - DataworksManualTask: manual node.
+	// - DataworksManualTask: manual task.
 	//
 	// example:
 	//

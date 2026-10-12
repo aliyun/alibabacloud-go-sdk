@@ -16,13 +16,13 @@ type iCreateWorkflowInstancesResponseBody interface {
 }
 
 type CreateWorkflowInstancesResponseBody struct {
-	// The operation ID. You can use this value to call the GetCreateWorkflowInstancesResult operation to query the result of the creation operation.
+	// The operation ID. You can use this field to query the result of the creation operation by calling the GetCreateWorkflowInstancesResult API operation.
 	//
 	// example:
 	//
 	// e15ad21c-b0e9-4792-8f55-b037xxxxxxxx
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The ID of the request. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

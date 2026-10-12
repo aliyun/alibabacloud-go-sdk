@@ -152,9 +152,9 @@ type ListTaskOperationLogsResponseBodyPagingInfoOperationLogs struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The object type. Valid values:
 	//
-	// - Task: node
+	// - Task: task.
 	//
-	// - TaskInstance: node instance
+	// - TaskInstance: task instance.
 	//
 	// example:
 	//
@@ -172,19 +172,19 @@ type ListTaskOperationLogsResponseBodyPagingInfoOperationLogs struct {
 	//
 	// 1111
 	OperationSeq *int64 `json:"OperationSeq,omitempty" xml:"OperationSeq,omitempty"`
-	// The ID of the node on which the operation was performed.
+	// The ID of the operated task.
 	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the node instance on which the operation was performed.
+	// The ID of the operated task instance.
 	//
 	// example:
 	//
 	// 1234
 	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
-	// The account ID of the user who performed the operation.
+	// The account ID of the operator.
 	//
 	// example:
 	//

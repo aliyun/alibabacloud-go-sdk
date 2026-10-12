@@ -44,9 +44,9 @@ type CreateResourceGroupRequest struct {
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	// The list of Alibaba Cloud tags.
 	AliyunResourceTags []*CreateResourceGroupRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// Specifies whether auto-renewal is enabled.
+	// Specifies whether to enable auto-renewal.
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// The client idempotency token that is used to ensure the idempotence of the create resource group operation.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// eb870033-74c8-4b1b-9664-04c4e7cc3465
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the common resource group. The name must start with a letter and can contain letters, digits, and underscores (_), up to 128 characters.
+	// The name of the general-purpose resource group. It must start with a letter and can contain letters, digits, and underscores (_). It can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -62,27 +62,19 @@ type CreateResourceGroupRequest struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The payment duration.
+	// The billing duration.
 	//
 	// example:
 	//
 	// 1
 	PaymentDuration *int32 `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	// The unit of the payment duration. Valid values:
-	//
-	// - Month: monthly subscription.
-	//
-	// - Year: yearly subscription.
+	// The unit of the billing duration. Month indicates months, and Year indicates years.
 	//
 	// example:
 	//
 	// Month
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	// The payment type of the resource group. Valid values:
-	//
-	// - PrePaid: subscription.
-	//
-	// - PostPaid: pay-as-you-go.
+	// The billing method of the resource group. PrePaid indicates subscription, and PostPaid indicates pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -90,19 +82,19 @@ type CreateResourceGroupRequest struct {
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The remarks for the common resource group. The remarks can contain letters, Chinese characters, digits, and underscores (_), up to 128 characters.
+	// The remark of the general-purpose resource group. It can contain letters, Chinese characters, digits, and underscores (_). It can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// Create a serverless resource group for common tasks
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The resource group specification, in CUs. This parameter is required when the payment type is PrePaid.
+	// The specifications of the resource group. Unit: CU. This parameter is required when the billing method of the resource group is PrePaid.
 	//
 	// example:
 	//
 	// 2
 	Spec *int32 `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The ID of the VPC to associate by default.
+	// The ID of the default VPC.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +102,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// vpc-m2et4f3oc8m****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch to associate by default.
+	// The ID of the default vSwitch.
 	//
 	// This parameter is required.
 	//
@@ -250,13 +242,13 @@ func (s *CreateResourceGroupRequest) Validate() error {
 }
 
 type CreateResourceGroupRequestAliyunResourceTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

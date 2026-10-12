@@ -22,7 +22,7 @@ type CreateComputeResourceResponseBody struct {
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

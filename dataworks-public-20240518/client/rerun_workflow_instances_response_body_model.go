@@ -16,13 +16,13 @@ type iRerunWorkflowInstancesResponseBody interface {
 }
 
 type RerunWorkflowInstancesResponseBody struct {
-	// The operation ID. You can use this value to query the creation result via the GetRerunWorkflowInstancesResult operation.
+	// The operation ID. You can use this field to call the GetRerunWorkflowInstancesResult operation to query the result of the operation.
 	//
 	// example:
 	//
 	// e15ad21c-b0e9-4792-8f55-b037xxxxxxxx
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The request ID. Used for troubleshooting and log tracking.
+	// The ID of the request. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

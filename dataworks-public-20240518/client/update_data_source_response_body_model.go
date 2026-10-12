@@ -16,17 +16,17 @@ type iUpdateDataSourceResponseBody interface {
 }
 
 type UpdateDataSourceResponseBody struct {
-	// The request ID.
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 102E8E24-0387-531D-8A75-1C0AE7DD03E5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the data source has been modified:
+	// Indicates whether the data source was updated. Valid values:
 	//
-	// - true: Yes
+	// - true: yes.
 	//
-	// - false: no
+	// - false: no.
 	//
 	// example:
 	//

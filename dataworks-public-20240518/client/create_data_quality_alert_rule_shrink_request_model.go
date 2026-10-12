@@ -20,7 +20,7 @@ type iCreateDataQualityAlertRuleShrinkRequest interface {
 }
 
 type CreateDataQualityAlertRuleShrinkRequest struct {
-	// The alert condition of the data quality monitoring alert rule.
+	// The alert condition for the data quality monitoring alert rule.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateDataQualityAlertRuleShrinkRequest struct {
 	//
 	// 10001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The monitored target of the data quality monitoring alert rule.
+	// The target of the data quality monitoring alert rule.
 	//
 	// This parameter is required.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`

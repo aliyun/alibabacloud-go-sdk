@@ -20,7 +20,7 @@ type iListServerIdeInstancesResponseBody interface {
 }
 
 type ListServerIdeInstancesResponseBody struct {
-	// The maximum number of records returned in this response.
+	// The maximum number of entries returned in the current response.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ListServerIdeInstancesResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records that match the filter conditions.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -182,15 +182,15 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstances struct {
 	//
 	// 1756000000000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The credential injection configuration of the instance. After this feature is enabled, you can use the default RAM role chain or specify a custom RAM role.
+	// The credential injection configuration of the instance. After this feature is enabled, you can use the default Resource Access Management (RAM) role chain or specify a custom RAM role.
 	CredentialConfig *ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty" type:"Struct"`
-	// The number of CUs used by the instance.
+	// The number of compute units (CUs) used by the instance.
 	//
 	// example:
 	//
 	// 10
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The list of datasets mounted to the instance.
+	// The datasets mounted to the instance.
 	Datasets []*ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	// The reason why the instance entered the failed state.
 	//
@@ -204,31 +204,31 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstances struct {
 	//
 	// System_serveride_notebook_20240822
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image name.
+	// The name of the image.
 	//
 	// example:
 	//
 	// serveride_notebook
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The image URL.
+	// The URL of the image.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/example/serveride:latest
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The personal development environment instance ID.
+	// The ID of the personal development environment instance.
 	//
 	// example:
 	//
 	// 699573
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The personal development environment instance name.
+	// The name of the personal development environment instance.
 	//
 	// example:
 	//
 	// notebook_dev
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The account ID of the user who owns the instance.
+	// The account ID of the user that owns the instance.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstances struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The DataWorks workspace name.
+	// The name of the DataWorks workspace.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstances struct {
 	//
 	// 9876543210
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
@@ -270,7 +270,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstances struct {
 	//
 	// 1756003600000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The VPC configuration used by the instance.
+	// The virtual private cloud (VPC) configuration used by the instance.
 	UserVpc *ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 }
 
@@ -474,9 +474,9 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfig struc
 	//
 	// 0
 	AliyunEnvRoleKey *string `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
-	// The list of credential configurations.
+	// The credential configurations.
 	Configs []*ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Indicates whether credential injection is enabled.
+	// Specifies whether credential injection is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -535,13 +535,13 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfig
 	//
 	// 0
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The list of roles in the credential configuration.
+	// The roles in the credential configuration.
 	Roles []*ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
 	// The credential configuration type. Valid values:
 	//
-	// - Role: single role assumption.
+	// - Role: single role assumption
 	//
-	// - RoleChain: role chain assumption.
+	// - RoleChain: role chain assumption
 	//
 	// example:
 	//
@@ -598,7 +598,7 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigCo
 }
 
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRoles struct {
-	// The Alibaba Cloud account ID of the entity that owns the role to be assumed.
+	// The Alibaba Cloud account ID of the entity to which the assumed role belongs.
 	//
 	// example:
 	//
@@ -618,15 +618,15 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfig
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// The role assumption type. Valid values:
 	//
-	// - service: assumed by a service.
+	// - service: assumed by a service
 	//
-	// - user: assumed by a user.
+	// - user: assumed by a user
 	//
 	// example:
 	//
 	// service
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The information about the delegated user.
+	// The information about the proxied user.
 	UserInfo *ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRolesUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -699,7 +699,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfig
 	//
 	// STS.N*********7
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The account ID of the delegated user.
+	// The account ID of the proxied user.
 	//
 	// example:
 	//
@@ -713,11 +713,11 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfig
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The user type. Valid values:
 	//
-	// - customer: Alibaba Cloud account.
+	// - customer: Alibaba Cloud account
 	//
-	// - sub: RAM user.
+	// - sub: RAM user
 	//
-	// - AssumedRoleUser: RAM role.
+	// - AssumedRoleUser: RAM role
 	//
 	// example:
 	//
@@ -774,7 +774,7 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigCo
 }
 
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets struct {
-	// The custom mount properties of the dataset. The content is passed as mount options.
+	// The custom mount attributes of the dataset. The content is passed as mount options.
 	//
 	// example:
 	//
@@ -792,9 +792,9 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets struct {
 	//
 	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// Indicates whether the dataset is mounted in read-only mode.
+	// Specifies whether the dataset is mounted in read-only mode.
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The URI of the storage service directory for direct mounting.
+	// The URI of the storage service directory used for direct mounting.
 	//
 	// example:
 	//
@@ -957,7 +957,7 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpc) Validate(
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos struct {
 	// The list of access types.
 	AccessType []*string `json:"AccessType,omitempty" xml:"AccessType,omitempty" type:"Repeated"`
-	// The name of the target container.
+	// The name of the destination container.
 	//
 	// example:
 	//
@@ -969,7 +969,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos st
 	//
 	// eip-bp1****
 	EipAllocationId *string `json:"EipAllocationId,omitempty" xml:"EipAllocationId,omitempty"`
-	// Indicates whether the port forwarding configuration is enabled.
+	// Specifies whether the port forwarding configuration is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The mapped public port.
 	//
@@ -977,7 +977,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos st
 	//
 	// 1024
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// The target port in the instance container.
+	// The destination port in the instance container.
 	//
 	// example:
 	//

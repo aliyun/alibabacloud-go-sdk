@@ -16,7 +16,7 @@ type iCreateDataQualityAlertRuleResponseBody interface {
 }
 
 type CreateDataQualityAlertRuleResponseBody struct {
-	// The ID of the custom monitoring rule returned after the rule is created.
+	// The ID of the custom monitoring rule that is created.
 	//
 	// example:
 	//

@@ -30,29 +30,29 @@ type iListDataQualityScanRunsRequest interface {
 }
 
 type ListDataQualityScanRunsRequest struct {
-	// The earliest start time of a data quality scan run to include in the results. Specify the time as a UNIX timestamp in milliseconds.
+	// The earliest start time of the data quality monitoring run.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeFrom *int64 `json:"CreateTimeFrom,omitempty" xml:"CreateTimeFrom,omitempty"`
-	// The latest start time of a data quality scan run to include in the results. Specify the time as a UNIX timestamp in milliseconds.
+	// The latest start time of the data quality monitoring run.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeTo *int64 `json:"CreateTimeTo,omitempty" xml:"CreateTimeTo,omitempty"`
-	// The ID of the data quality scan.
+	// The data quality monitoring ID.
 	//
 	// example:
 	//
 	// 10001
 	DataQualityScanId *int64 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
-	// An object with advanced filter conditions. The following parameters are supported:
+	// The extension query filter. The following filter parameters are supported:
 	//
-	// - `TaskInstanceId`: The ID of the task instance.
+	// - TaskInstanceId: the scheduled task instance ID.
 	//
-	// - `RunNumber`: The run number of the instance.
+	// - RunNumber: the number of times the instance has run.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type ListDataQualityScanRunsRequest struct {
 	//
 	// }
 	Filter map[string]interface{} `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The page number to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListDataQualityScanRunsRequest struct {
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sort field and order for the results. The format is `FieldName Order`. The default order is ascending (Asc). Supported fields:
+	// The list of sort fields. Fields such as modification time and creation time are supported. The format is "SortField+SortOrder(Desc/Asc)". The default value is Asc, which can be omitted. Valid values for the sort field:
 	//
 	// - CreateTime (Desc/Asc)
 	//
@@ -94,7 +94,7 @@ type ListDataQualityScanRunsRequest struct {
 	//
 	// CreateTime Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The status of the data quality scan run. Valid values:
+	// The status of the data quality check result. Valid values:
 	//
 	// - Pass
 	//

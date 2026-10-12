@@ -16,13 +16,13 @@ type iStopWorkflowInstancesShrinkRequest interface {
 }
 
 type StopWorkflowInstancesShrinkRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The workflow instance IDs.
+	// The list of workflow instance IDs. You can call the ListWorkflowInstances operation to query workflow instance IDs.
 	//
 	// This parameter is required.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`

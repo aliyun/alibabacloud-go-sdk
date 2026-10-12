@@ -24,13 +24,13 @@ type iUpdateMcpServerRequest interface {
 }
 
 type UpdateMcpServerRequest struct {
-	// The new custom request headers (key-value pairs).
+	// The new custom request headers in key-value pairs.
 	//
 	// example:
 	//
 	// {}
 	CustomHeaders map[string]interface{} `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
-	// The name of the MCP Server to update.
+	// The name of the MCP server to update.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type UpdateMcpServerRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The new visibility scope. Provide the corresponding field based on the Visibility setting.
+	// The new visibility scope. Specify the corresponding fields based on the `Visibility` value.
 	VisibilityScope *UpdateMcpServerRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -132,9 +132,9 @@ func (s *UpdateMcpServerRequest) Validate() error {
 }
 
 type UpdateMcpServerRequestVisibilityScope struct {
-	// The list of visible project IDs. This parameter takes effect only when Visibility is set to `PROJECT`.
+	// The list of visible project IDs. This field takes effect when `Visibility` is set to `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of visible user IDs. This parameter takes effect only when Visibility is set to `USER`.
+	// The list of visible user IDs. This field takes effect when `Visibility` is set to `USER`.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

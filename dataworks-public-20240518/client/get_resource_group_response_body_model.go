@@ -18,15 +18,15 @@ type iGetResourceGroupResponseBody interface {
 }
 
 type GetResourceGroupResponseBody struct {
-	// The ID of the request, which is used to locate logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed information of the resource group.
+	// The resource group details.
 	ResourceGroup *GetResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	// The list of Alibaba Cloud tags.
 	AliyunResourceTags []*GetResourceGroupResponseBodyResourceGroupAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// The creation time, represented as a 64-bit timestamp.
+	// The creation time, which is a 64-bit timestamp.
 	//
 	// example:
 	//
@@ -99,13 +99,13 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The ID of the default VPC bound to the resource group.
+	// The ID of the default VPC associated with the general resource group.
 	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	DefaultVpcId *string `json:"DefaultVpcId,omitempty" xml:"DefaultVpcId,omitempty"`
-	// The ID of the default vSwitch bound to the resource group.
+	// The ID of the default vSwitch associated with the general resource group.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The remarks of the resource group.
+	// The remarks for the resource group.
 	//
 	// example:
 	//
@@ -147,10 +147,7 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	//
-	//
-	//
-	// - CommonV2: new-version general-purpose resource group.
+	// - CommonV2: general resource group V2.
 	//
 	// - ExclusiveDataIntegration: exclusive data integration resource group.
 	//
@@ -162,27 +159,27 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// CommonV2
 	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	// The specifications of the resource group.
+	// The resource group specification.
 	Spec *GetResourceGroupResponseBodyResourceGroupSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	// The status of the resource group. Valid values:
+	// The status of the queried resource group. Valid values:
 	//
-	// - Normal: normal (running/in service).
+	// - Normal: normal (running or in service).
 	//
 	// - Stop: frozen (expired).
 	//
-	// - Deleted: deleted (released/destroyed).
+	// - Deleted: deleted (released or destroyed).
 	//
-	// - Creating: being created.
+	// - Creating: creating.
 	//
 	// - CreateFailed: creation failed.
 	//
-	// - Updating: being updated (scaling out/scaling in/specification change in progress).
+	// - Updating: updating (scaling in, scaling out, or changing specifications).
 	//
-	// - UpdateFailed: update failed (scale-out failed/upgrade failed).
+	// - UpdateFailed: update failed (scale-in failed or upgrade failed).
 	//
-	// - Deleting: being deleted (being released/being destroyed).
+	// - Deleting: deleting (releasing or destroying).
 	//
-	// - DeleteFailed: deletion failed (release failed/destruction failed).
+	// - DeleteFailed: deletion failed (release failed or destruction failed).
 	//
 	// - Timeout: operation timed out.
 	//

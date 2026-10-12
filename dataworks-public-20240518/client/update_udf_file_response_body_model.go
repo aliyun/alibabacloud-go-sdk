@@ -40,17 +40,17 @@ type UpdateUdfFileResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The unique ID for this request. Use this ID for troubleshooting if an error occurs.
+	// The unique ID of the request. You can use the ID to troubleshoot issues when an error occurs.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Specifies whether the request is successful. Valid values:
 	//
-	// - true
+	// - true: The request is successful.
 	//
-	// - false
+	// - false: The request fails.
 	//
 	// example:
 	//

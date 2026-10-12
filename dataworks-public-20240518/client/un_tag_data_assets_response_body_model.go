@@ -16,13 +16,17 @@ type iUnTagDataAssetsResponseBody interface {
 }
 
 type UnTagDataAssetsResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 8754EE08-4AA2-5F77-ADD7-754DBBDA9F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//

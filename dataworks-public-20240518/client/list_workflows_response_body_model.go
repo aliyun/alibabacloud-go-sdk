@@ -16,9 +16,9 @@ type iListWorkflowsResponseBody interface {
 }
 
 type ListWorkflowsResponseBody struct {
-	// Pagination information.
+	// The pagination information.
 	PagingInfo *ListWorkflowsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ListWorkflowsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The workflows.
+	// The list of workflows.
 	Workflows []*ListWorkflowsResponseBodyPagingInfoWorkflows `json:"Workflows,omitempty" xml:"Workflows,omitempty" type:"Repeated"`
 }
 
@@ -142,7 +142,7 @@ func (s *ListWorkflowsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
-	// The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
+	// The client unique code of the workflow, which is used to implement asynchronous processing and idempotence. If you do not specify this parameter when creating a workflow, the system automatically generates one and uniquely binds it to the resource ID. If you specify this parameter when updating or deleting a resource, it must be the same as the client unique code used during creation.
 	//
 	// example:
 	//
@@ -150,11 +150,13 @@ type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
 	// The creation time.
 	//
+	// The value is a 13-digit timestamp, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the workflow.
 	//
 	// example:
 	//
@@ -166,13 +168,13 @@ type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
+	// The project environment.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The workflow ID.
+	// The unique identifier of the workflow.
 	//
 	// example:
 	//
@@ -180,11 +182,13 @@ type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time.
 	//
+	// The value is a 13-digit timestamp, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who last modified the workflow.
 	//
 	// example:
 	//
@@ -202,19 +206,19 @@ type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The parameters.
+	// The list of parameters.
 	//
 	// example:
 	//
 	// para1=$bizdate para2=$[yyyymmdd]
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The task tag.
+	// The task tags.
 	Tags []*ListWorkflowsResponseBodyPagingInfoWorkflowsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The trigger method.
 	Trigger *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
@@ -373,13 +377,13 @@ func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) Validate() error {
 }
 
 type ListWorkflowsResponseBodyPagingInfoWorkflowsTags struct {
-	// The key of a tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -418,25 +422,35 @@ func (s *ListWorkflowsResponseBodyPagingInfoWorkflowsTags) Validate() error {
 }
 
 type ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger struct {
-	// The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The cron expression. This parameter takes effect only when Type is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The expiration time of the periodic trigger. This parameter takes effect only when Type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
+	// The running mode upon triggering. This parameter takes effect only when Type is set to Scheduler. Valid values:
+	//
+	// - Pause: Paused.
+	//
+	// - Skip: Dry run.
+	//
+	// - Normal: Normal execution.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The effective period of the epoch trigger. This parameter takes effect only when Type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identity.
 	//
 	// example:
 	//
@@ -444,9 +458,9 @@ type ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Scheduler: scheduling cycle-based trigger
+	// - Scheduler: Triggered by a scheduling cycle.
 	//
-	// - Manual: manual trigger
+	// - Manual: Triggered manually.
 	//
 	// example:
 	//

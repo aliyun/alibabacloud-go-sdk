@@ -16,7 +16,7 @@ type iListCustomAgentsResponseBody interface {
 }
 
 type ListCustomAgentsResponseBody struct {
-	// The paging information.
+	// The pagination information.
 	PagingInfo *ListCustomAgentsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,13 +70,13 @@ type ListCustomAgentsResponseBodyPagingInfo struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. This parameter is empty when there are no more results to return.
+	// The token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
 	// 5
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries that meet the filter criteria.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -142,25 +142,25 @@ func (s *ListCustomAgentsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyPagingInfoAgents struct {
-	// The ID of the user who created the agent.
+	// **The creator ID.**
 	//
 	// example:
 	//
 	// 123456
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// A description of the custom agent.
+	// **The description.**
 	//
 	// example:
 	//
-	// Data analysis assistant
+	// Data analytics assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the custom agent.
+	// **The display name.**
 	//
 	// example:
 	//
-	// My assistant
+	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the agent was created, provided in milliseconds since the Unix epoch.
+	// **The creation time (UNIX timestamp in milliseconds).**
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -168,7 +168,7 @@ type ListCustomAgentsResponseBodyPagingInfoAgents struct {
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the agent was last modified, provided in milliseconds since the Unix epoch.
+	// **The last modification time (UNIX timestamp in milliseconds).**
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -176,19 +176,19 @@ type ListCustomAgentsResponseBodyPagingInfoAgents struct {
 	//
 	// 1780555634000
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The ID of the user who last modified the agent.
+	// **The last modifier ID.**
 	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// The name of the custom agent.
+	// **The agent name.**
 	//
 	// example:
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The visibility level of the custom agent.
+	// **The visibility level.**
 	//
 	// example:
 	//

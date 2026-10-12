@@ -20,7 +20,7 @@ type iCreateDataQualityAlertRuleRequest interface {
 }
 
 type CreateDataQualityAlertRuleRequest struct {
-	// The alert condition of the data quality monitoring alert rule.
+	// The alert condition for the data quality monitoring alert rule.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateDataQualityAlertRuleRequest struct {
 	//
 	// 10001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The monitored target of the data quality monitoring alert rule.
+	// The target of the data quality monitoring alert rule.
 	//
 	// This parameter is required.
 	Target *CreateDataQualityAlertRuleRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
@@ -105,7 +105,7 @@ func (s *CreateDataQualityAlertRuleRequest) Validate() error {
 }
 
 type CreateDataQualityAlertRuleRequestNotification struct {
-	// The list of channels. You can set both `Email` and `Sms` at the same time. In other cases, only one channel can be set.
+	// The list of channels. You can specify both `Email` and `Sms` at the same time. For other types, you can specify only one channel.
 	//
 	// This parameter is required.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
@@ -155,16 +155,13 @@ func (s *CreateDataQualityAlertRuleRequestNotification) Validate() error {
 }
 
 type CreateDataQualityAlertRuleRequestNotificationReceivers struct {
-	// The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to @ all members.
+	// The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to mention all members.
 	//
 	// example:
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The alert recipient type.
-	//
-	//
-	//
+	// The type of the alert recipient.
 	//
 	// - AliUid
 	//
@@ -232,7 +229,7 @@ func (s *CreateDataQualityAlertRuleRequestNotificationReceivers) Validate() erro
 }
 
 type CreateDataQualityAlertRuleRequestTarget struct {
-	// The list of monitored target IDs. Currently, only one ID can be specified.
+	// The list of monitored target IDs. Currently, only one ID is supported.
 	//
 	// This parameter is required.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`

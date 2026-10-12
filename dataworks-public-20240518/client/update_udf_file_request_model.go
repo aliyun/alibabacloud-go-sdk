@@ -36,7 +36,7 @@ type iUpdateUdfFileRequest interface {
 }
 
 type UpdateUdfFileRequest struct {
-	// The class name where the function is defined, corresponding to the class name field in the Create Function form.
+	// The name of the class where the function is defined, which corresponds to the class name in the create function form.
 	//
 	// This parameter is required.
 	//
@@ -44,25 +44,25 @@ type UpdateUdfFileRequest struct {
 	//
 	// com.alibaba.DataWorks.api.udf.StringConcat
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The command format for invoking the function, corresponding to the command format field in the Create Function form.
+	// The command format used to call the function, which corresponds to the command format in the create function form.
 	//
 	// example:
 	//
 	// StringConcat(String... substrs)
 	CmdDescription *string `json:"CmdDescription,omitempty" xml:"CmdDescription,omitempty"`
-	// An example demonstrating how to call the function, corresponding to the example field in the Create Function form.
+	// The call example of the function, which corresponds to the example in the create function form.
 	//
 	// example:
 	//
 	// StringConcat(\\"a\\", \\"b\\", \\"c\\")
 	Example *string `json:"Example,omitempty" xml:"Example,omitempty"`
-	// The path to the folder containing the function file.
+	// The path of the folder where the function file is located.
 	//
 	// example:
 	//
 	// Business_process/First_Business_Process/function/string_processing_function
 	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
-	// The file ID.
+	// The ID of the file.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type UpdateUdfFileRequest struct {
 	//
 	// 10000001
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The function category, corresponding to the function type field in the Create Function form. Valid values: MATH (mathematical functions), AGGREGATE (aggregate functions), STRING (string processing functions), DATE (date processing functions), ANALYTIC (window functions), and OTHER (other functions).
+	// The category of the function, which corresponds to the function type in the create function form. Valid values: MATH (mathematical operation functions), AGGREGATE (aggregate functions), STRING (string processing functions), DATE (date processing functions), ANALYTIC (window functions), and OTHER (other functions).
 	//
 	// This parameter is required.
 	//
@@ -78,30 +78,27 @@ type UpdateUdfFileRequest struct {
 	//
 	// STRING
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	// The description of the function input parameters, corresponding to the Parameter Description field in the Create Function form.
+	// The description of the input parameters for the function, which corresponds to the parameter description in the create function form.
 	//
 	// example:
 	//
 	// List of strings to be connected
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
+	// The ID of the DataWorks workspace. You can view the ID on the Workspace Management page by clicking the Settings icon in the upper-right corner.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the DataWorks workspace, which is the English identifier at the top of the Data Studio page where you switch workspaces.
+	// The unique identifier of the DataWorks workspace, which is the English identifier displayed when you switch workspaces at the top of the Data Studio page.
 	//
-	//
-	//
-	//
-	// Either this parameter or ProjectId must be specified to identify the target DataWorks workspace for this API call.
+	// You must specify either this parameter or the ProjectId parameter to determine the DataWorks workspace for the API call.
 	//
 	// example:
 	//
 	// dw_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	// A comma-separated list of resource names referenced by the function, corresponding to the resource list field in the Create Function form.
+	// The list of resource names referenced by the function. Separate multiple resource names with commas (,). This corresponds to the resources in the create function form.
 	//
 	// This parameter is required.
 	//
@@ -109,13 +106,13 @@ type UpdateUdfFileRequest struct {
 	//
 	// string-concat-1.0.0.jar,commons-lang-2.6.jar
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The return value description, corresponding to the return value field in the Create Function form.
+	// The description of the return value of the function, which corresponds to the return value in the create function form.
 	//
 	// example:
 	//
 	// New strings generated by concatenating all strings before and after the input order
 	ReturnValue *string `json:"ReturnValue,omitempty" xml:"ReturnValue,omitempty"`
-	// The function purpose description, corresponding to the description field in the Create Function form.
+	// The description of the function purpose, which corresponds to the description in the create function form.
 	//
 	// example:
 	//

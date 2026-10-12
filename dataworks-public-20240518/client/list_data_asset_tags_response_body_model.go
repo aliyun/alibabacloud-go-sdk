@@ -16,9 +16,9 @@ type iListDataAssetTagsResponseBody interface {
 }
 
 type ListDataAssetTagsResponseBody struct {
-	// The pagination information.
+	// The paginated query results for the tag list.
 	PagingInfo *ListDataAssetTagsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListDataAssetTagsResponseBody) Validate() error {
 }
 
 type ListDataAssetTagsResponseBodyPagingInfo struct {
-	// The tags.
+	// The list of tags.
 	DataAssetTags []*ListDataAssetTagsResponseBodyPagingInfoDataAssetTags `json:"DataAssetTags,omitempty" xml:"DataAssetTags,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -76,7 +76,7 @@ type ListDataAssetTagsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,9 +142,7 @@ func (s *ListDataAssetTagsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
-	// The type of the tag.
-	//
-	// Valid values:
+	// The tag type.
 	//
 	// - Normal
 	//
@@ -154,7 +152,9 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	//
 	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the tag was created.
+	// The creation time of the tag.
+	//
+	// The value is a 13-digit number, such as `1735890003000`.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	//
 	// 12345
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The description of the tag.
+	// The description.
 	//
 	// example:
 	//
@@ -178,9 +178,11 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag administrators.
+	// The list of tag administrators.
 	Managers []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
-	// The time when the tag was last modified.
+	// The last modification time of the tag.
+	//
+	// The value is a 13-digit number, such as `1735890003000`.
 	//
 	// example:
 	//
@@ -198,7 +200,7 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	//
 	// String
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
-	// The tag values.
+	// The list of tag values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

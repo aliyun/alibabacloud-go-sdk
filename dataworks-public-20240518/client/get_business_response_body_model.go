@@ -24,7 +24,7 @@ type iGetBusinessResponseBody interface {
 }
 
 type GetBusinessResponseBody struct {
-	// The details of the business process.
+	// The details of the business flow.
 	Data *GetBusinessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type GetBusinessResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use this ID to troubleshoot issues.
+	// The request ID. You can use the ID to troubleshoot issues when an error occurs.
 	//
 	// example:
 	//
@@ -134,37 +134,37 @@ func (s *GetBusinessResponseBody) Validate() error {
 }
 
 type GetBusinessResponseBodyData struct {
-	// The ID of the business process.
+	// The ID of the business flow.
 	//
 	// example:
 	//
 	// 1000001
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The name of the business process. The name must be unique within the same workspace.
+	// The name of the business flow. The name must be unique within the same workspace.
 	//
 	// example:
 	//
 	// The first business process
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	// The description of the business process.
+	// The description of the business flow.
 	//
 	// example:
 	//
 	// This is my first business process.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Alibaba Cloud user ID of the business process owner.
+	// The Alibaba Cloud user ID of the business flow owner.
 	//
 	// example:
 	//
 	// 20000****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the DataWorks workspace to which the business process belongs.
+	// The ID of the DataWorks workspace to which the business flow belongs.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The functional module to which the business process belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (manual business process).
+	// The functional module to which the business flow belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (Manual business flow).
 	//
 	// example:
 	//

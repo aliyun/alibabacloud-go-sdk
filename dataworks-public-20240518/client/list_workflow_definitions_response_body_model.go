@@ -18,7 +18,7 @@ type iListWorkflowDefinitionsResponseBody interface {
 type ListWorkflowDefinitionsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListWorkflowDefinitionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *ListWorkflowDefinitionsResponseBody) Validate() error {
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfo struct {
-	// The page number.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries that meet the conditions.
+	// The total number of entries that meet the specified conditions.
 	//
 	// example:
 	//
 	// 227
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The workflows.
+	// The list of queried workflows.
 	WorkflowDefinitions []*ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions `json:"WorkflowDefinitions,omitempty" xml:"WorkflowDefinitions,omitempty" type:"Repeated"`
 }
 
@@ -148,7 +148,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	//
 	// 1698057323000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Description
+	// The description of the workflow.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The unique identifier of the workflow.
 	//
-	// > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice: Before SDK version 8.0.0, this field is of the Long type. In SDK version 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. However, if you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	//
 	// OpenAPI test workflow Demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Owner
+	// The owner of the workflow.
 	//
 	// example:
 	//
@@ -190,9 +190,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The script information.
 	Script *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The type of the workflow.
-	//
-	// Valid values:
+	// The type of the workflow. Valid values:
 	//
 	// - CycleWorkflow
 	//
@@ -305,19 +303,19 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) Valid
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript struct {
 	// The ID of the script.
 	//
-	// > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
+	// 	Notice: Before SDK version 8.0.0, this field is of the Long type. In SDK version 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. However, if you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
 	//
 	// example:
 	//
 	// 698002781368644XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The script path.
+	// The path of the script.
 	//
 	// example:
 	//
 	// XX/OpenAPI_test/workflow_test/OpenAPI_test_workflow_Demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Runtime
+	// The runtime.
 	Runtime *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -366,7 +364,7 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript)
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRuntime struct {
-	// Command
+	// The command.
 	//
 	// example:
 	//

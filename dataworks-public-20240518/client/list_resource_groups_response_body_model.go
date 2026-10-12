@@ -20,13 +20,13 @@ type iListResourceGroupsResponseBody interface {
 type ListResourceGroupsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListResourceGroupsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. You can use this ID to locate logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -93,7 +93,7 @@ type ListResourceGroupsResponseBodyPagingInfo struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of resource groups.
 	ResourceGroupList []*ListResourceGroupsResponseBodyPagingInfoResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of data entries.
 	//
 	// example:
 	//
@@ -159,33 +159,33 @@ func (s *ListResourceGroupsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-aek2kqofrgXXXXX
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	// A list of Alibaba Cloud tags.
+	// The Alibaba Cloud tags.
 	AliyunResourceTags []*ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// The creation time of the resource group, as a 64-bit timestamp.
+	// The time when the resource group was created. The value is a 64-bit timestamp.
 	//
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID of the creator.
+	// The ID of the user who created the resource group.
 	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The ID of the default Virtual Private Cloud (VPC) bound to the general-purpose resource group.
+	// The ID of the default VPC associated with the general-purpose resource group.
 	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	DefaultVpcId *string `json:"DefaultVpcId,omitempty" xml:"DefaultVpcId,omitempty"`
-	// The ID of the default vSwitch bound to the general-purpose resource group.
+	// The ID of the default vSwitch associated with the general-purpose resource group.
 	//
 	// example:
 	//
@@ -203,33 +203,33 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order instance ID for the resource group.
+	// The order instance ID of the resource group.
 	//
 	// example:
 	//
 	// c442b330-3b10-4584-959e-736e4edXXXXX
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	// The billing method of the resource group. `PrePaid` indicates subscription and `PostPaid` indicates pay-as-you-go.
+	// The billing method of the resource group. Valid values: PrePaid (subscription) and PostPaid (pay-as-you-go).
 	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The description of the resource group.
+	// The remark of the resource group.
 	//
 	// example:
 	//
-	// 创建用于普通任务的通用资源组
+	// Create a general-purpose resource group for common tasks
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// - `CommonV2`: The new general-purpose resource group.
+	// - CommonV2: General-purpose resource group V2.
 	//
-	// - `ExclusiveDataIntegration`: The exclusive resource group for data integration.
+	// - ExclusiveDataIntegration: Exclusive data integration resource group.
 	//
-	// - `ExclusiveScheduler`: The exclusive resource group for scheduling.
+	// - ExclusiveScheduler: Exclusive scheduling resource group.
 	//
-	// - `ExclusiveDataService`: The exclusive resource group for data services.
+	// - ExclusiveDataService: Exclusive data service resource group.
 	//
 	// example:
 	//
@@ -237,31 +237,31 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
 	// The specifications of the resource group.
 	Spec *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	// The status of the resource group. Valid values:
+	// The status of the resource group to query. Valid values:
 	//
-	// - `Normal`: Running.
+	// - Normal: The resource group is running or in service.
 	//
-	// - `Stop`: Frozen due to expiration.
+	// - Stop: The resource group is frozen because it has expired.
 	//
-	// - `Deleted`: Released.
+	// - Deleted: The resource group is released or destroyed.
 	//
-	// - `Creating`: Creation in progress.
+	// - Creating: The resource group is being created.
 	//
-	// - `CreateFailed`: Creation failed.
+	// - CreateFailed: The resource group fails to be created.
 	//
-	// - `Updating`: Update in progress.
+	// - Updating: The resource group is being updated, scaled out, scaled in, or reconfigured.
 	//
-	// - `UpdateFailed`: Update failed.
+	// - UpdateFailed: The resource group fails to be updated, scaled, or upgraded.
 	//
-	// - `Deleting`: Release in progress.
+	// - Deleting: The resource group is being released or destroyed.
 	//
-	// - `DeleteFailed`: Release failed.
+	// - DeleteFailed: The resource group fails to be released or destroyed.
 	//
-	// - `Timeout`: The operation timed out.
+	// - Timeout: The operation times out.
 	//
-	// - `Freezed`: Frozen.
+	// - Freezed: The resource group is frozen.
 	//
-	// - `Starting`: Starting.
+	// - Starting: The resource group is being started.
 	//
 	// example:
 	//
@@ -467,13 +467,13 @@ func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResource
 }
 
 type ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec struct {
-	// The number of resource units.
+	// The quantity.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The resource specifications.
+	// The specification details.
 	//
 	// example:
 	//

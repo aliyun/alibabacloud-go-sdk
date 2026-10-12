@@ -18,9 +18,9 @@ type iGetNetworkResponseBody interface {
 }
 
 type GetNetworkResponseBody struct {
-	// The information about the network resource.
+	// The details of the network resource.
 	Network *GetNetworkResponseBodyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -85,53 +85,53 @@ type GetNetworkResponseBodyNetwork struct {
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who creates the network resource.
+	// The ID of the user who created the network resource.
 	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The network ID.
+	// The ID of the network resource.
 	//
 	// example:
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the serverless resource group.
+	// The ID of the resource group to which the network resource belongs.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security group ID.
+	// The security group ID of the network resource.
 	//
 	// example:
 	//
 	// sg-2ze13vamugr7jenXXXXX
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The status of the network resource. Valid values:
+	// The current status of the network resource. Valid values:
 	//
-	// - Pending: The network resource is waiting to be created.
+	// - Pending: The resource is pending.
 	//
-	// - Creating: The network resource is being created.
+	// - Creating: The resource is being created.
 	//
-	// - Running: The network resource is running as expected.
+	// - Running: The resource is running.
 	//
-	// - Deleting: The network resource is being deleted.
+	// - Deleting: The resource is being deleted.
 	//
-	// - Deleted: The network resource is deleted.
+	// - Deleted: The resource is deleted.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID of the network resource.
 	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VSwitch ID.
+	// The vSwitch ID of the network resource.
 	//
 	// example:
 	//

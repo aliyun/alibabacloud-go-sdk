@@ -20,7 +20,7 @@ type iListDataAssetTagsRequest interface {
 }
 
 type ListDataAssetTagsRequest struct {
-	// The type of the tag. Valid values:
+	// The tag type.
 	//
 	// - Normal
 	//
@@ -36,7 +36,7 @@ type ListDataAssetTagsRequest struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//

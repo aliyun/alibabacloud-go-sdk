@@ -16,7 +16,7 @@ type iListParametersResponseBody interface {
 }
 
 type ListParametersResponseBody struct {
-	// The pagination information.
+	// The response data.
 	PagingInfo *ListParametersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,15 +68,15 @@ type ListParametersResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of parameters.
+	// The list of parameters.
 	Parameters []*ListParametersResponseBodyPagingInfoParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The total number of parameters.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,23 +142,25 @@ func (s *ListParametersResponseBodyPagingInfo) Validate() error {
 }
 
 type ListParametersResponseBodyPagingInfoParameters struct {
-	// The time when the parameter was created. This value is a UNIX timestamp in milliseconds.
+	// The creation time.
+	//
+	// The value is a 13-digit number, such as `1640000000000`.
 	//
 	// example:
 	//
 	// 1640000000000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The Alibaba Cloud account ID of the creator.
+	// The user who created the parameter.
 	//
 	// example:
 	//
 	// 123456789
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The parameter description.
+	// The description.
 	//
 	// example:
 	//
-	// This is a test parameter.
+	// This is a test parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter ID.
 	//
@@ -166,13 +168,15 @@ type ListParametersResponseBodyPagingInfoParameters struct {
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the parameter was last modified. This value is a UNIX timestamp in milliseconds.
+	// The modification time.
+	//
+	// The value is a 13-digit number, such as `1640000000000`.
 	//
 	// example:
 	//
 	// 1640000000000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The Alibaba Cloud account ID of the user who last modified the parameter.
+	// The user who last modified the parameter.
 	//
 	// example:
 	//
@@ -184,7 +188,7 @@ type ListParametersResponseBodyPagingInfoParameters struct {
 	//
 	// workspace.para
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Alibaba Cloud account ID of the owner.
+	// The owner.
 	//
 	// example:
 	//
@@ -196,9 +200,9 @@ type ListParametersResponseBodyPagingInfoParameters struct {
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The environment-specific values for the parameter.
+	// The parameter value configuration.
 	Properties []*ListParametersResponseBodyPagingInfoParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	// The parameter scope.
+	// The scope of the parameter.
 	//
 	// example:
 	//
@@ -206,11 +210,11 @@ type ListParametersResponseBodyPagingInfoParameters struct {
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - `PlainConstant`: a plaintext constant
+	// - PlainConstant: plaintext constant.
 	//
-	// - `SecretConstant`: an encrypted constant
+	// - SecretConstant: ciphertext constant.
 	//
-	// - `Variable`: a variable
+	// - Variable: variable.
 	//
 	// example:
 	//
@@ -363,11 +367,11 @@ func (s *ListParametersResponseBodyPagingInfoParameters) Validate() error {
 }
 
 type ListParametersResponseBodyPagingInfoParametersProperties struct {
-	// The environment type. Valid values:
+	// The project environment. Valid values:
 	//
-	// - `Prod`: production environment
+	// - Prod: production environment.
 	//
-	// - `Dev`: development environment
+	// - Dev: development environment.
 	//
 	// example:
 	//

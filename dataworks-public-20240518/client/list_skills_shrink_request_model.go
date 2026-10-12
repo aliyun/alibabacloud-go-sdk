@@ -20,25 +20,25 @@ type iListSkillsShrinkRequest interface {
 }
 
 type ListSkillsShrinkRequest struct {
-	// The maximum number of results to return per page.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page of results. Omit this for the first request. For subsequent requests, set this to the `NextToken` from the previous response.
+	// The pagination token. Do not pass this parameter for the first query. For subsequent queries, pass the NextToken returned in the previous response to obtain the next page.
 	//
 	// example:
 	//
 	// 5
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The search keyword for a fuzzy match on Skill names.
+	// The search keyword for fuzzy matching by skill name.
 	//
 	// example:
 	//
 	// analysis
 	Q *string `json:"Q,omitempty" xml:"Q,omitempty"`
-	// Filters the results by visibility level. You can specify multiple values.
+	// The visibility levels used to filter results. Multiple values can be specified.
 	VisibilityShrink *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 

@@ -34,29 +34,37 @@ type iRerunWorkflowInstancesShrinkRequest interface {
 }
 
 type RerunWorkflowInstancesShrinkRequest struct {
-	// The business date used for matching manual workflow instances.
+	// The data timestamp specified for the manual workflow instance run, used for matching.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
+	// The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with StartTriggerTime.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	EndTriggerTime *int64 `json:"EndTriggerTime,omitempty" xml:"EndTriggerTime,omitempty"`
-	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
+	// The project environment. Valid values:
+	//
+	// - Prod: Production.
+	//
+	// - Dev: Development.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The match conditions for internal instances of manual workflow instances.
+	// The matching conditions for the internal instances of the manual workflow instance.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The instance IDs used for matching manual workflow instances.
+	// The list of manual workflow instance IDs used for matching.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The manual workflow name, used for fuzzy matching.
+	// The name of the manual workflow used for fuzzy matching.
 	//
 	// example:
 	//
@@ -72,17 +80,21 @@ type RerunWorkflowInstancesShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartTriggerTime *int64 `json:"StartTriggerTime,omitempty" xml:"StartTriggerTime,omitempty"`
-	// The status used for matching manual workflow instances.
+	// The running status of the manual workflow instance used for matching.
 	//
 	// example:
 	//
 	// Failure
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the workflow instance. Valid value: ManualWorkflow (manual workflow).
+	// The type of the workflow instance. Valid values:
+	//
+	// - ManualWorkflow: Manual workflow.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +102,7 @@ type RerunWorkflowInstancesShrinkRequest struct {
 	//
 	// ManualWorkflow
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The workflow ID.
+	// The ID of the workflow.
 	//
 	// This parameter is required.
 	//

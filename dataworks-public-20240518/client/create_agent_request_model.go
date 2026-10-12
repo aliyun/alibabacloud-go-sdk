@@ -34,25 +34,25 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
-	// The list of child Agents that can be called by this Agent.
+	// The list of child agents that can be called by this agent.
 	//
 	// example:
 	//
 	// -
 	CallableAgents []*CreateAgentRequestCallableAgents `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
-	// The description of the Agent.
+	// The description of the agent.
 	//
 	// example:
 	//
 	// Data analytics assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the Agent.
+	// The display name of the agent.
 	//
 	// example:
 	//
-	// MyAssistant
+	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The extended metadata (key-value pairs).
+	// The extended metadata in key-value pairs.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateAgentRequest struct {
 	//
 	//         }
 	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The Agent name, which must be unique within the current account.
+	// The name of the agent. The name must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateAgentRequest struct {
 	//
 	// example:
 	//
-	// You are a data analytics assistant.
+	// You are a data analytics assistant
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The list of tools.
 	//
@@ -98,7 +98,7 @@ type CreateAgentRequest struct {
 	//
 	// `TENANT`: Visible within the account.<br>
 	//
-	// `PROJECT`: Visible to a specified project.<br>
+	// `PROJECT`: Visible to specified projects.<br>
 	//
 	// `USER`: Visible to specified users.
 	//
@@ -106,7 +106,7 @@ type CreateAgentRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is determined by the Visibility parameter.
+	// The visibility scope. The corresponding field is used based on the visibility level.
 	VisibilityScope *CreateAgentRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -254,7 +254,7 @@ func (s *CreateAgentRequest) Validate() error {
 }
 
 type CreateAgentRequestCallableAgents struct {
-	// The Agent name.
+	// The name of the agent.
 	//
 	// example:
 	//
@@ -284,7 +284,7 @@ func (s *CreateAgentRequestCallableAgents) Validate() error {
 }
 
 type CreateAgentRequestSkills struct {
-	// The skill name.
+	// The name of the skill.
 	//
 	// example:
 	//
@@ -314,7 +314,7 @@ func (s *CreateAgentRequestSkills) Validate() error {
 }
 
 type CreateAgentRequestTools struct {
-	// The McpServer name.
+	// The name of the McpServer.
 	//
 	// example:
 	//
@@ -344,9 +344,9 @@ func (s *CreateAgentRequestTools) Validate() error {
 }
 
 type CreateAgentRequestVisibilityScope struct {
-	// The list of project IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `PROJECT`.
+	// The list of visible project IDs. This parameter takes effect when Visibility is set to `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of user IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `USER`.
+	// The list of visible user IDs. This parameter takes effect when Visibility is set to `USER`.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

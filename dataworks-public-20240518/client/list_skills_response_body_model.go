@@ -62,21 +62,21 @@ func (s *ListSkillsResponseBody) Validate() error {
 }
 
 type ListSkillsResponseBodyPagingInfo struct {
-	// The maximum number of results returned in this response.
+	// The maximum number of entries returned in this request.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. This parameter is null or empty if all results have been returned.
+	// The token for the next page. An empty value indicates that the last page has been reached.
 	//
 	// example:
 	//
 	// 5
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of Skills.
+	// The list of skills.
 	Skills []*ListSkillsResponseBodyPagingInfoSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	// The total number of results that match the query.
+	// The total number of matching entries.
 	//
 	// example:
 	//
@@ -148,13 +148,15 @@ type ListSkillsResponseBodyPagingInfoSkills struct {
 	//
 	// 123456
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// **The Skill description.**
+	// **The skill description.**
 	//
 	// example:
 	//
-	// Data analysis skill
+	// Data analytics skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The creation time.
+	//
+	// The format is a 13-digit number, such as `1780555634000`.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -162,13 +164,13 @@ type ListSkillsResponseBodyPagingInfoSkills struct {
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// **The modifier ID.**
+	// **The ID of the last modifier.**
 	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// **The Skill name.**
+	// **The skill name.**
 	//
 	// example:
 	//

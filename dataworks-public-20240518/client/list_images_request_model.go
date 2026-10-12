@@ -38,17 +38,17 @@ type iListImagesRequest interface {
 }
 
 type ListImagesRequest struct {
-	// The accessibility:
+	// The accessibility of the image. Valid values:
 	//
-	// - Public: Visible to all members.
+	// - Public: The image is visible to all users.
 	//
-	// - Private: Visible only to the creator.
+	// - Private: The image is visible only to the creator.
 	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The image name, used for fuzzy search.
+	// The image name used for fuzzy match.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListImagesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -70,23 +70,23 @@ type ListImagesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of workspace IDs.
 	ProjectIds []*int64 `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of image provider types.
+	// The list of image reference data types.
 	ProviderTypes []*string `json:"ProviderTypes,omitempty" xml:"ProviderTypes,omitempty" type:"Repeated"`
-	// Specifies whether to search all images.
+	// Specifies whether to search for all images.
 	SearchAll *bool `json:"SearchAll,omitempty" xml:"SearchAll,omitempty"`
-	// The list of sort fields. You can sort by scheduled time, start time, and other fields. The format is "SortField+SortOrder(Desc/Asc)", where Asc is the default and can be omitted. Valid values of sort fields:
+	// The list of sort fields. Fields such as scheduled time and start time are supported. The format is "sort field + sort order (Desc/Asc)". Asc can be omitted. Valid values for sort fields:
 	//
-	// - CreateTime (Desc/Asc): The creation time.
+	// - CreateTime (Desc/Asc): creation time.
 	//
-	// - Name (Desc/Asc): The image name.
+	// - Name (Desc/Asc): image name.
 	//
-	//   Default value: CreateTime Asc.
+	// Default value: CreateTime Asc.
 	//
 	// example:
 	//
 	// CreatedTime Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The list of image publish stages to query.
+	// The list of image publishing stages to query.
 	Stages []*string `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 	// The list of image statuses to query.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`

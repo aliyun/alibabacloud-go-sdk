@@ -32,9 +32,9 @@ type ExecuteAdhocWorkflowInstanceRequest struct {
   BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
   // The project environment. Valid values:
   // 
-  // - Prod: production
+  // - Prod: production.
   // 
-  // - Dev: development
+  // - Dev: development.
   // 
   // example:
   // 
@@ -146,7 +146,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequest) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasks struct {
-  // The client unique code of the task, which is used to uniquely identify a task.
+  // The client unique code of the task, which uniquely identifies the task.
   // 
   // This parameter is required.
   // 
@@ -178,13 +178,13 @@ type ExecuteAdhocWorkflowInstanceRequestTasks struct {
   // 
   // 1000
   Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-  // The runtime environment configuration, such as resource group information.
+  // The runtime environment configurations, such as the resource group information.
   // 
   // This parameter is required.
   RuntimeResource *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-  // The script information for running the task.
+  // The script information.
   Script *ExecuteAdhocWorkflowInstanceRequestTasksScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-  // The timeout period for task execution. Unit: seconds.
+  // The timeout period for task execution, in seconds.
   // 
   // example:
   // 
@@ -346,7 +346,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasks) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksDataSource struct {
-  // The data source name.
+  // The name of the data source.
   // 
   // example:
   // 
@@ -376,7 +376,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksDataSource) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksDependencies struct {
-  // The output identifier of the upstream task.
+  // The output identifier of the upstream task. Required when DependencyType is set to Normal.
   // 
   // example:
   // 
@@ -447,7 +447,7 @@ type ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables struct {
   // 
   // key1
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // The variable value. Specify the value in the format of `Upstream task Output:Upstream task output variable name`.
+  // The variable value. Specify it in the `Upstream task Output:upstream task output variable name` format.
   // 
   // example:
   // 
@@ -541,7 +541,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputs) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs struct {
-  // The output identifier.
+  // The output identifier. Example: pre.odps_sql_demo_0.
   // 
   // example:
   // 
@@ -639,19 +639,19 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) Validate() er
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource struct {
-  // The compute unit (CU) consumption configured for the task.
+  // The CU consumption configured for task execution.
   // 
   // example:
   // 
   // 0.25
   Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-  // The image ID configured for the task.
+  // The ID of the image configured for task execution.
   // 
   // example:
   // 
   // i-xxxxxx
   Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-  // The identifier of the schedule resource group configured for the task.
+  // The identifier of the scheduling resource group configured for task execution.
   // 
   // This parameter is required.
   // 

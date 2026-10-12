@@ -26,13 +26,13 @@ type iCreateParameterShrinkRequest interface {
 }
 
 type CreateParameterShrinkRequest struct {
-	// The description of the parameter.
+	// The description.
 	//
 	// example:
 	//
-	// 这是一个测试参数
+	// This is a test parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter name. It must be unique within the workspace, be prefixed with `workspace.`, and not exceed 255 characters. The part of the name after the prefix must start with a letter and can contain only letters, digits, and underscores (_).
+	// The name of the parameter. It must be unique within the workspace. It must start with "workspace.". The subsequent content must start with a letter and can contain only letters, underscores, and digits. The total length of the name cannot exceed 255 characters.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateParameterShrinkRequest struct {
 	//
 	// 123456789
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The workspace ID. This parameter is required when `Scope` is set to `Project`.
+	// The workspace ID. This parameter is required when Scope is set to Project.
 	//
 	// This parameter is required.
 	//
@@ -56,23 +56,23 @@ type CreateParameterShrinkRequest struct {
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The value configurations for the parameter. A configuration for the production environment is required. If you provide duplicate configurations for an environment, only the first one is used.
+	// The parameter value configurations. This parameter is required for the production environment. If duplicate environment configurations exist in the array, the subsequent configurations do not take effect.
 	//
 	// This parameter is required.
 	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The scope of the parameter. The default value is `Project`. No other values are currently supported.
+	// The scope of the parameter. Default value: Project. Other types are currently not supported.
 	//
 	// example:
 	//
 	// Project
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The type of the parameter.
+	// The type. Valid values:
 	//
-	// - `PlainConstant`: plaintext constant.
+	// - PlainConstant: plaintext constant.
 	//
-	// - `SecretConstant`: secret constant.
+	// - SecretConstant: ciphertext constant.
 	//
-	// - `Variable`: variable.
+	// - Variable: variable.
 	//
 	// This parameter is required.
 	//

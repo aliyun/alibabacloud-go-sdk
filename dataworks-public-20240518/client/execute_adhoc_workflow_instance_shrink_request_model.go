@@ -32,9 +32,9 @@ type ExecuteAdhocWorkflowInstanceShrinkRequest struct {
   BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
   // The project environment. Valid values:
   // 
-  // - Prod: production
+  // - Prod: production.
   // 
-  // - Dev: development
+  // - Dev: development.
   // 
   // example:
   // 

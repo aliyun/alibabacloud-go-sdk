@@ -16,13 +16,13 @@ type iStopWorkflowInstancesResponseBody interface {
 }
 
 type StopWorkflowInstancesResponseBody struct {
-	// The request ID.
+	// The ID of the request. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the batch operation, which is in the MAP structure. The workflow instance ID serves as a key, and the result serves as a value.
+	// The result information of the batch operation. The structure is a map, where the key is the workflow instance ID and the value is the result information.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 

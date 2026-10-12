@@ -22,7 +22,7 @@ type CreateSkillResponseBody struct {
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// -
+	// The skill details.
 	Skill *CreateSkillResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
 }
 
@@ -62,25 +62,25 @@ func (s *CreateSkillResponseBody) Validate() error {
 }
 
 type CreateSkillResponseBodySkill struct {
-	// The SKILL.md body content.
+	// The content of the SKILL.md file.
 	//
 	// example:
 	//
 	// -
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 123456
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The Skill description.
+	// The skill description.
 	//
 	// example:
 	//
-	// Data analytics skill.
+	// Data analytics skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time, in millisecond-level UNIX timestamp.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -88,7 +88,7 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time, in millisecond-level UNIX timestamp.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -96,13 +96,13 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// 12345678901
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The ID of the user who last modified the Skill.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// The Skill name.
+	// The skill name.
 	//
 	// example:
 	//
@@ -217,9 +217,9 @@ func (s *CreateSkillResponseBodySkill) Validate() error {
 }
 
 type CreateSkillResponseBodySkillVisibilityScope struct {
-	// The list of visible project IDs.
+	// The IDs of the visible projects.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of visible user IDs. This parameter takes effect only when Visibility is set to `USER`.
+	// The IDs of the visible users. This field is returned only when Visibility is set to USER.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

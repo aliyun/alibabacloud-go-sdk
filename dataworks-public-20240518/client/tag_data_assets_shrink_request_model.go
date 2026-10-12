@@ -24,17 +24,21 @@ type iTagDataAssetsShrinkRequest interface {
 }
 
 type TagDataAssetsShrinkRequest struct {
-	// Specifies whether to enable lineage-based automatic backtracking.
+	// Specifies whether to enable automatic data lineage backtracking.
 	//
 	// example:
 	//
 	// false
 	AutoTraceEnabled *bool `json:"AutoTraceEnabled,omitempty" xml:"AutoTraceEnabled,omitempty"`
-	// The data asset IDs.
+	// The list of unique IDs of the data assets. You can call the ListDataAssets operation to query the IDs of data assets to which tags can be attached.
 	//
 	// This parameter is required.
 	DataAssetIdsShrink *string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty"`
-	// The type of the data asset. Valid values: ACS::DataWorks::Table (data table) and ACS::DataWorks::Task (scheduled task).
+	// The data asset type. Valid values:
+	//
+	// - DataWorks table (ACS::DataWorks::Table)
+	//
+	// - DataWorks scheduled task (ACS::DataWorks::Task)
 	//
 	// This parameter is required.
 	//
@@ -42,23 +46,23 @@ type TagDataAssetsShrinkRequest struct {
 	//
 	// ACS::DataWorks::Task
 	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
-	// The environment of the workspace to which the data asset belongs. Valid values:
+	// The workspace environment to which the data asset belongs. Valid values:
 	//
-	// - Dev: development environment
+	// - Dev (development environment)
 	//
-	// - Prod: production environment
+	// - Prod (production environment)
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The tags that you want to add to data assets.
+	// The list of data asset tags to attach.
 	//
 	// This parameter is required.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`

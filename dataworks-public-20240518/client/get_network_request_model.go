@@ -14,7 +14,7 @@ type iGetNetworkRequest interface {
 }
 
 type GetNetworkRequest struct {
-	// The network ID.
+	// The ID of the network resource.
 	//
 	// This parameter is required.
 	//

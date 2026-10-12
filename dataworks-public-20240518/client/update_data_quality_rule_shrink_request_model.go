@@ -32,9 +32,9 @@ type iUpdateDataQualityRuleShrinkRequest interface {
 }
 
 type UpdateDataQualityRuleShrinkRequest struct {
-	// The sample verification settings.
+	// The sample check settings.
 	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
-	// The rule description. The maximum length is 500 characters.
+	// The description of the rule. It can be up to 500 characters in length.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The list of issue handlers for data quality rule verification.
+	// The list of error handlers for quality rule check issues.
 	ErrorHandlersShrink *string `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	//
 	// 100001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule name. The name can be a combination of digits, English letters, Chinese characters, and half-width or full-width punctuation. The maximum length is 255 characters.
+	// The name of the rule. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. It can be up to 255 characters in length.
 	//
 	// example:
 	//
-	// The table cannot be empty
+	// Table cannot be empty
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Configuration page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The settings required for sample collection.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
-	// The severity level of the rule for the business (corresponding to strong/weak rules on the page). Valid values:
+	// The severity level of the rule for the business, which corresponds to the strong or weak rule on the page. Valid values:
 	//
 	// - Normal
 	//
