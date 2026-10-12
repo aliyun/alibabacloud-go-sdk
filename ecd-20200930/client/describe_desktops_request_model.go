@@ -96,9 +96,9 @@ type iDescribeDesktopsRequest interface {
 type DescribeDesktopsRequest struct {
 	// The business channel. Valid values:
 	//
-	// - Enterprise: Enterprise Edition.
+	// Enterprise: Enterprise Edition
 	//
-	// - Business: Business Edition.
+	// Business: Business Edition
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The cloud computer pool ID. If `DesktopId` is specified, `DesktopGroupId` is ignored. If `DesktopId` is empty, the system retrieves the DesktopId values of all cloud computers in the cloud computer pool specified by `DesktopGroupId`.
+	// The cloud computer pool ID. If you specify `DesktopId`, this `DesktopGroupId` parameter is ignored. If `DesktopId` is empty, the system retrieves the `DesktopId` of all cloud computers in the specified cloud computer pool based on `DesktopGroupId`.
 	//
 	// example:
 	//
@@ -136,21 +136,21 @@ type DescribeDesktopsRequest struct {
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
 	// The list of cloud computer statuses.
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The cloud computer specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud computers.
+	// The cloud computer instance type. Call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported instance type IDs.
 	//
 	// example:
 	//
 	// eds.general.2c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The directory ID, which is the same as the office network ID.
+	// The directory ID. This is the same as the office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The list of authorized users of the cloud computer. You can specify 1 to 100 users.
+	// The list of authorized users for the cloud computer. You can set 1 to 100 users.
 	//
-	// > Only one user can connect to and use the cloud computer at a time.
+	// > At any given time, only one user can connect to and use the cloud computer.
 	//
 	// example:
 	//
@@ -162,13 +162,13 @@ type DescribeDesktopsRequest struct {
 	//
 	// andy
 	ExcludedEndUserId []*string `json:"ExcludedEndUserId,omitempty" xml:"ExcludedEndUserId,omitempty" type:"Repeated"`
-	// The expiration time of the subscription cloud computer. The time follows the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
+	// The expiration time of the subscription cloud computer. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-12-31T15:59:59Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// Specifies whether to query resource group information.
+	// Specifies whether to include enterprise resource group information in the response.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The image IDs.
+	// The list of image IDs.
 	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
 	// Specifies whether to include automatic snapshot policy information in the response.
 	//
@@ -208,9 +208,9 @@ type DescribeDesktopsRequest struct {
 	ManagementFlag *string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
 	// The number of entries per page for a paged query.
 	//
-	// - Maximum value: 100.
+	// - Maximum value: 100
 	//
-	// - Default value: 10.
+	// - Default value: 10
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// 192.168.1.1
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
-	// The pagination token for the next query. If this parameter is empty, no more results are available.
+	// The token that marks the start of the next query. An empty NextToken value indicates that there are no more results.
 	//
 	// example:
 	//
@@ -252,9 +252,9 @@ type DescribeDesktopsRequest struct {
 	//
 	// true
 	OnlyDesktopGroup *bool `json:"OnlyDesktopGroup,omitempty" xml:"OnlyDesktopGroup,omitempty"`
-	// The operating system types.
+	// The operating system type.
 	OsTypes []*string `json:"OsTypes,omitempty" xml:"OsTypes,omitempty" type:"Repeated"`
-	// The page number of the current page in a paged query.
+	// The page number in a paged query.
 	//
 	// example:
 	//
@@ -278,34 +278,39 @@ type DescribeDesktopsRequest struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The public IP address of the instance to query.
+	// The public IP address of the instance. Use this parameter to filter instances by public IP address.
 	//
 	// example:
 	//
 	// 121.199.28.39
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// The Internet bandwidth throttling rule ID.
+	// The public network bandwidth throttling rule ID.
 	//
 	// example:
 	//
 	// qos-5605u0gelk200****
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// Specifies whether to query cloud computer image version information.
+	// Specifies whether to query the image version information of the cloud computer.
 	//
 	// example:
 	//
 	// false
 	QueryFotaUpdate *bool `json:"QueryFotaUpdate,omitempty" xml:"QueryFotaUpdate,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to retrieve the list of regions supported by Alibaba Cloud Workspace.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource reservation pool ID (rp-xxx). Filters cloud computers by reservation pool exactly. If not specified or left empty, no filtering by reservation pool is applied.
+	//
+	// example:
+	//
+	// rp-xxx
 	ReservePoolId *string `json:"ReservePoolId,omitempty" xml:"ReservePoolId,omitempty"`
-	// The resource group ID.
+	// The enterprise resource group ID.
 	//
 	// example:
 	//
@@ -323,7 +328,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// monthPackage
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud computers for easy searching and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
+	// The list of tags. A tag consists of a key-value pair and is used to identify resources. You can use tags to group and manage cloud computers for easier search and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
 	Tag []*DescribeDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The username.
 	//
@@ -724,13 +729,13 @@ func (s *DescribeDesktopsRequest) Validate() error {
 }
 
 type DescribeDesktopsRequestTag struct {
-	// The tag key. If you specify `Tag`, `Key` is required. The tag key cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. It also cannot consist of only spaces.
+	// The tag key. If you specify `Tag`, `Key` is required. The value cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, cannot contain `http://` or `https://`, and cannot consist of spaces only.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value. The value cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

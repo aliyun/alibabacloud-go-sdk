@@ -36,7 +36,7 @@ type ModifyVirtualBridgeLevelRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. This parameter takes effect and is optional only when the billing method is `PrePaid`.
+	// Specifies whether to enable auto-renewal. This parameter takes effect and is optional only when the billing method is set to `PrePaid`.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModifyVirtualBridgeLevelRequest struct {
 	//
 	// https://wya.wuying.aliyun.com/mobileClaw
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The renewal duration. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
+	// The renewal duration. The valid values depend on the value of the `PeriodUnit` parameter.
 	//
 	// - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
 	//
@@ -76,19 +76,19 @@ type ModifyVirtualBridgeLevelRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration for the prepaid cloud disk. This parameter takes effect and is required only when the `CdsChargeType` parameter is set to `PrePaid`.
+	// The unit of the subscription duration for the cloud disk. This parameter takes effect and is required only when the `CdsChargeType` parameter is set to `PrePaid`.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID. You can call the pricing query operation to obtain the list of matched promotion IDs.
+	// The promotion ID. You can call the pricing API operation to obtain the list of matched promotion IDs.
 	//
 	// example:
 	//
 	// 23141
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

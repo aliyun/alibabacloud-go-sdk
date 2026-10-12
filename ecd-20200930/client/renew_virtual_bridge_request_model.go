@@ -40,7 +40,7 @@ type RenewVirtualBridgeRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The virtual bridge ID.
+	// The ID of the virtual bridge.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type RenewVirtualBridgeRequest struct {
 	//
 	// https://edu.wuying.aliyun.com/edu/school-manage
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The renewal duration. The valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
+	// The renewal duration. The valid values depend on the value of the `PeriodUnit` parameter.
 	//
 	// - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
 	//
@@ -78,7 +78,7 @@ type RenewVirtualBridgeRequest struct {
 	//
 	// 50003836003****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Wuying Workspace.
 	//
 	// This parameter is required.
 	//

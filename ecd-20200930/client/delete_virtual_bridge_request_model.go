@@ -16,7 +16,7 @@ type iDeleteVirtualBridgeRequest interface {
 }
 
 type DeleteVirtualBridgeRequest struct {
-	// The virtual bridge ID.
+	// The ID of the virtual bridge.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteVirtualBridgeRequest struct {
 	//
 	// vb-fjsidhfishfiu****
 	BridgeId *string `json:"BridgeId,omitempty" xml:"BridgeId,omitempty"`
-	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

@@ -7293,7 +7293,7 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device the next time they log on to a Cloud Desktop.
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a cloud desktop.
 //
 // @param request - CreateVirtualBridgeRequest
 //
@@ -7373,7 +7373,7 @@ func (client *Client) CreateVirtualBridgeWithOptions(request *CreateVirtualBridg
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device the next time they log on to a Cloud Desktop.
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a cloud desktop.
 //
 // @param request - CreateVirtualBridgeRequest
 //
@@ -9411,7 +9411,7 @@ func (client *Client) DeleteTemplates(request *DeleteTemplatesRequest) (_result 
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to Cloud Desktop.
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting and disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - DeleteVirtualBridgeRequest
 //
@@ -9463,7 +9463,7 @@ func (client *Client) DeleteVirtualBridgeWithOptions(request *DeleteVirtualBridg
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to Cloud Desktop.
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting and disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - DeleteVirtualBridgeRequest
 //
@@ -10749,6 +10749,132 @@ func (client *Client) DescribeConfigGroup(request *DescribeConfigGroupRequest) (
 
 // Summary:
 //
+// Queries WUYING Workspace management messages.
+//
+// Description:
+//
+// Queries console messages and their configurations under the current Alibaba Cloud account. You can filter messages by message ID, business channel, message type, client type, message level, title or body keyword, and target audience. Returns the list of messages on the current page and the total number of messages that match the query conditions.
+//
+// - When multiple filter conditions are provided, all conditions are applied together to limit the query results.
+//
+// - Uses PageNum and PageSize for pagination. The default value of PageNum is 1, and the default and maximum values of PageSize are both 200.
+//
+// - When querying by a specified convenience user, the results include messages targeted at all convenience users, the user themselves, and the organization to which the user belongs. When querying by a specified AD user, the results also include messages targeted at all AD users, the user themselves, and the AD organization to which the user belongs.
+//
+// - Query results may include messages in the initializing, pushing, published, expired, deleting, and failed states. The Published state does not indicate that all target terminals have successfully received the message.
+//
+// - Image download URLs are temporary links. If a link expires, you can query again to obtain a new one.
+//
+// @param request - DescribeConsoleMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConsoleMessagesResponse
+func (client *Client) DescribeConsoleMessagesWithOptions(request *DescribeConsoleMessagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeConsoleMessagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.ClientTypes) {
+		query["ClientTypes"] = request.ClientTypes
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MessageIds) {
+		query["MessageIds"] = request.MessageIds
+	}
+
+	if !dara.IsNil(request.MessageLevel) {
+		query["MessageLevel"] = request.MessageLevel
+	}
+
+	if !dara.IsNil(request.MessageType) {
+		query["MessageType"] = request.MessageType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TargetIds) {
+		query["TargetIds"] = request.TargetIds
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeConsoleMessages"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeConsoleMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries WUYING Workspace management messages.
+//
+// Description:
+//
+// Queries console messages and their configurations under the current Alibaba Cloud account. You can filter messages by message ID, business channel, message type, client type, message level, title or body keyword, and target audience. Returns the list of messages on the current page and the total number of messages that match the query conditions.
+//
+// - When multiple filter conditions are provided, all conditions are applied together to limit the query results.
+//
+// - Uses PageNum and PageSize for pagination. The default value of PageNum is 1, and the default and maximum values of PageSize are both 200.
+//
+// - When querying by a specified convenience user, the results include messages targeted at all convenience users, the user themselves, and the organization to which the user belongs. When querying by a specified AD user, the results also include messages targeted at all AD users, the user themselves, and the AD organization to which the user belongs.
+//
+// - Query results may include messages in the initializing, pushing, published, expired, deleting, and failed states. The Published state does not indicate that all target terminals have successfully received the message.
+//
+// - Image download URLs are temporary links. If a link expires, you can query again to obtain a new one.
+//
+// @param request - DescribeConsoleMessagesRequest
+//
+// @return DescribeConsoleMessagesResponse
+func (client *Client) DescribeConsoleMessages(request *DescribeConsoleMessagesRequest) (_result *DescribeConsoleMessagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeConsoleMessagesResponse{}
+	_body, _err := client.DescribeConsoleMessagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtain the table header information of the WUYING Workspace list page.
 //
 // @param request - DescribeCustomizedListHeadersRequest
@@ -11777,7 +11903,7 @@ func (client *Client) DescribeDesktopTypes(request *DescribeDesktopTypesRequest)
 
 // Summary:
 //
-// Queries the details of cloud computers.
+// Queries the details of a cloud computer.
 //
 // @param request - DescribeDesktopsRequest
 //
@@ -11981,7 +12107,7 @@ func (client *Client) DescribeDesktopsWithOptions(request *DescribeDesktopsReque
 
 // Summary:
 //
-// Queries the details of cloud computers.
+// Queries the details of a cloud computer.
 //
 // @param request - DescribeDesktopsRequest
 //
@@ -18343,7 +18469,7 @@ func (client *Client) ExportDesktopListInfo(request *ExportDesktopListInfoReques
 
 // Summary:
 //
-// Queries desktop data statistics by different dimensions.
+// Queries desktop statistics by different dimensions.
 //
 // @param request - GetAggregatedDesktopsRequest
 //
@@ -18395,7 +18521,7 @@ func (client *Client) GetAggregatedDesktopsWithOptions(request *GetAggregatedDes
 
 // Summary:
 //
-// Queries desktop data statistics by different dimensions.
+// Queries desktop statistics by different dimensions.
 //
 // @param request - GetAggregatedDesktopsRequest
 //
@@ -19761,11 +19887,11 @@ func (client *Client) ListUserAdOrganizationUnits(request *ListUserAdOrganizatio
 
 // Summary:
 //
-// Queries a list of virtual bridges.
+// Queries virtual bridges.
 //
 // Description:
 //
-// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the WUYING terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+// After an MFA device is locked, its status changes to LOCKED. The corresponding Active Directory (AD) account cannot log on to the Wuying terminal because it cannot authenticate the MFA device. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
 //
 // @param request - ListVirtualBridgesRequest
 //
@@ -19825,11 +19951,11 @@ func (client *Client) ListVirtualBridgesWithOptions(request *ListVirtualBridgesR
 
 // Summary:
 //
-// Queries a list of virtual bridges.
+// Queries virtual bridges.
 //
 // Description:
 //
-// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the WUYING terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+// After an MFA device is locked, its status changes to LOCKED. The corresponding Active Directory (AD) account cannot log on to the Wuying terminal because it cannot authenticate the MFA device. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
 //
 // @param request - ListVirtualBridgesRequest
 //
@@ -25008,11 +25134,11 @@ func (client *Client) ModifyUserToDesktopGroup(request *ModifyUserToDesktopGroup
 
 // Summary:
 //
-// Changes the specifications of a virtual bridge.
+// Upgrades or downgrades the specifications of a virtual bridge.
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a cloud desktop.
+// Deleting an MFA device means unbinding the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - ModifyVirtualBridgeLevelRequest
 //
@@ -25088,11 +25214,11 @@ func (client *Client) ModifyVirtualBridgeLevelWithOptions(request *ModifyVirtual
 
 // Summary:
 //
-// Changes the specifications of a virtual bridge.
+// Upgrades or downgrades the specifications of a virtual bridge.
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a cloud desktop.
+// Deleting an MFA device means unbinding the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - ModifyVirtualBridgeLevelRequest
 //
@@ -25114,7 +25240,7 @@ func (client *Client) ModifyVirtualBridgeLevel(request *ModifyVirtualBridgeLevel
 //
 // Description:
 //
-// Only custom images in the active (Available) state can be modified.
+// Only custom images in the Available state can be modified.
 //
 // @param request - ModifyVirtualBridgeStatusRequest
 //
@@ -25170,7 +25296,7 @@ func (client *Client) ModifyVirtualBridgeStatusWithOptions(request *ModifyVirtua
 //
 // Description:
 //
-// Only custom images in the active (Available) state can be modified.
+// Only custom images in the Available state can be modified.
 //
 // @param request - ModifyVirtualBridgeStatusRequest
 //
@@ -26894,7 +27020,7 @@ func (client *Client) RenewNetworkPackages(request *RenewNetworkPackagesRequest)
 //
 // Description:
 //
-// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the WUYING terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+// After being locked, the status of the MFA device changes to Locked (LOCKED). The corresponding AD account cannot log on to the Wuying terminal because it cannot authenticate the MFA device. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock it.
 //
 // @param request - RenewVirtualBridgeRequest
 //
@@ -26970,7 +27096,7 @@ func (client *Client) RenewVirtualBridgeWithOptions(request *RenewVirtualBridgeR
 //
 // Description:
 //
-// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the WUYING terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+// After being locked, the status of the MFA device changes to Locked (LOCKED). The corresponding AD account cannot log on to the Wuying terminal because it cannot authenticate the MFA device. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock it.
 //
 // @param request - RenewVirtualBridgeRequest
 //
@@ -27413,6 +27539,92 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 	runtime := &dara.RuntimeOptions{}
 	_result = &RunCommandResponse{}
 	_body, _err := client.RunCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends a created Elastic Desktop Service management message.
+//
+// Description:
+//
+// This operation sends a created management message. The message body, client type, recipients, and business type all use the saved configurations. Each call processes only one MessageId.
+//
+// - The message must belong to the current Alibaba Cloud account. Messages in the Init, Pushing, Expired, Deleting, or Failed state cannot be sent. Only messages in the Published state can be sent.
+//
+// - Before the request is accepted, the system checks the number of Pushing messages of the same message type under the current account. If there are 5 or more such messages, the request is rejected. The count is not split by business channel.
+//
+// - Regular notifications and wallpaper messages are pushed through asynchronous tasks. For the OPERATIONAL type, only the publish status is updated. Messages configured for scheduled sending retain their original schedules and are not immediately triggered by this operation.
+//
+// - A Success value of true indicates that the request is accepted, but it does not mean that all recipients have received the message. Published indicates that the message is published or the server-side push processing is complete, and it is not a delivery confirmation for each individual target.
+//
+// @param request - SendConsoleMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendConsoleMessageResponse
+func (client *Client) SendConsoleMessageWithOptions(request *SendConsoleMessageRequest, runtime *dara.RuntimeOptions) (_result *SendConsoleMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MessageId) {
+		query["MessageId"] = request.MessageId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendConsoleMessage"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendConsoleMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends a created Elastic Desktop Service management message.
+//
+// Description:
+//
+// This operation sends a created management message. The message body, client type, recipients, and business type all use the saved configurations. Each call processes only one MessageId.
+//
+// - The message must belong to the current Alibaba Cloud account. Messages in the Init, Pushing, Expired, Deleting, or Failed state cannot be sent. Only messages in the Published state can be sent.
+//
+// - Before the request is accepted, the system checks the number of Pushing messages of the same message type under the current account. If there are 5 or more such messages, the request is rejected. The count is not split by business channel.
+//
+// - Regular notifications and wallpaper messages are pushed through asynchronous tasks. For the OPERATIONAL type, only the publish status is updated. Messages configured for scheduled sending retain their original schedules and are not immediately triggered by this operation.
+//
+// - A Success value of true indicates that the request is accepted, but it does not mean that all recipients have received the message. Published indicates that the message is published or the server-side push processing is complete, and it is not a delivery confirmation for each individual target.
+//
+// @param request - SendConsoleMessageRequest
+//
+// @return SendConsoleMessageResponse
+func (client *Client) SendConsoleMessage(request *SendConsoleMessageRequest) (_result *SendConsoleMessageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SendConsoleMessageResponse{}
+	_body, _err := client.SendConsoleMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

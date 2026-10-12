@@ -22,13 +22,15 @@ type iListVirtualBridgesResponseBody interface {
 type ListVirtualBridgesResponseBody struct {
 	// The virtual bridge information.
 	Bridges []*ListVirtualBridgesResponseBodyBridges `json:"Bridges,omitempty" xml:"Bridges,omitempty" type:"Repeated"`
-	// The maximum number of entries returned. Valid values: 1 to 100. If this parameter is not specified, the default value 100 is used. The number of returned entries can be less than but cannot be greater than the specified number.
+	// The maximum number of entries to return. Valid values: 1 to 100. If you do not specify this parameter, the default value 100 is used.
+	//
+	// The number of returned entries may be less than the specified value but cannot exceed it.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -130,7 +132,9 @@ type ListVirtualBridgesResponseBodyBridges struct {
 	//
 	// panbit
 	BridgeType *string `json:"BridgeType,omitempty" xml:"BridgeType,omitempty"`
-	// The expiration time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
+	// The expiration time.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

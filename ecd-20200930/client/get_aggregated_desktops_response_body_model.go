@@ -16,7 +16,7 @@ type iGetAggregatedDesktopsResponseBody interface {
 }
 
 type GetAggregatedDesktopsResponseBody struct {
-	// The list of aggregation field information.
+	// The list of aggregated field information.
 	//
 	// 	Notice: When you use an aggregate query, only aggregation results are returned. The list of matched metadata is not returned.
 	Aggregations *GetAggregatedDesktopsResponseBodyAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Struct"`

@@ -18,7 +18,7 @@ type iModifyVirtualBridgeStatusRequest interface {
 }
 
 type ModifyVirtualBridgeStatusRequest struct {
-	// The virtual bridge ID.
+	// The ID of the virtual bridge.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ModifyVirtualBridgeStatusRequest struct {
 	//
 	// vb-sjfiahsiufhisda***
 	BridgeId *string `json:"BridgeId,omitempty" xml:"BridgeId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyVirtualBridgeStatusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The virtual bridge status.
+	// The status of the virtual bridge.
 	//
 	// This parameter is required.
 	//

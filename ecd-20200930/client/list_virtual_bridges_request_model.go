@@ -32,7 +32,7 @@ type ListVirtualBridgesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. If NextToken is empty, no more results exist.
+	// The token used to start the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListVirtualBridgesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The office network ID.
 	//
-	// > The `DirectoryId` parameter will be deprecated. Use this parameter instead.
+	// > The `DirectoryId` parameter is deprecated. Use this parameter instead.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
