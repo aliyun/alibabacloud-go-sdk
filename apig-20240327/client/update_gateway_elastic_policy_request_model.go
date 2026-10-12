@@ -14,6 +14,7 @@ type iUpdateGatewayElasticPolicyRequest interface {
 }
 
 type UpdateGatewayElasticPolicyRequest struct {
+	// The elastic policy object.
 	ElasticPolicy *UpdateGatewayElasticPolicyRequestElasticPolicy `json:"elasticPolicy,omitempty" xml:"elasticPolicy,omitempty" type:"Struct"`
 }
 
@@ -44,23 +45,33 @@ func (s *UpdateGatewayElasticPolicyRequest) Validate() error {
 }
 
 type UpdateGatewayElasticPolicyRequestElasticPolicy struct {
+	// Specifies whether to enable the elastic policy. A value of false indicates that the elastic policy is disabled. When the elastic policy is disabled, other fields are not validated and the system directly proceeds with the disabling process.
+	//
 	// example:
 	//
 	// true
 	ElasticEnabled *bool `json:"elasticEnabled,omitempty" xml:"elasticEnabled,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// CronHPA
-	ElasticType               *string                                                                    `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
+	ElasticType *string `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
+	// The time periods during which AutoHPA is allowed to scale out, specified by startTime and endTime.
 	EnableScaleTimePolicyList []*UpdateGatewayElasticPolicyRequestElasticPolicyEnableScaleTimePolicyList `json:"enableScaleTimePolicyList,omitempty" xml:"enableScaleTimePolicyList,omitempty" type:"Repeated"`
+	// Specifies whether to enable the AutoHPA load alert threshold.
+	//
 	// example:
 	//
 	// true
 	LoadWarningThreshold *bool `json:"loadWarningThreshold,omitempty" xml:"loadWarningThreshold,omitempty"`
+	// The maximum number of replicas. This parameter is required for AutoHPA.
+	//
 	// example:
 	//
 	// 10
-	MaxUnits       *int32                                                          `json:"maxUnits,omitempty" xml:"maxUnits,omitempty"`
+	MaxUnits *int32 `json:"maxUnits,omitempty" xml:"maxUnits,omitempty"`
+	// The list of scheduled policies.
 	TimePolicyList []*UpdateGatewayElasticPolicyRequestElasticPolicyTimePolicyList `json:"timePolicyList,omitempty" xml:"timePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -149,10 +160,14 @@ func (s *UpdateGatewayElasticPolicyRequestElasticPolicy) Validate() error {
 }
 
 type UpdateGatewayElasticPolicyRequestElasticPolicyEnableScaleTimePolicyList struct {
+	// The O&M end time in the HH:mm format.
+	//
 	// example:
 	//
 	// 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The O&M start time in the HH:mm format.
+	//
 	// example:
 	//
 	// 09:00
@@ -190,14 +205,20 @@ func (s *UpdateGatewayElasticPolicyRequestElasticPolicyEnableScaleTimePolicyList
 }
 
 type UpdateGatewayElasticPolicyRequestElasticPolicyTimePolicyList struct {
+	// The O&M end time in the HH:mm format.
+	//
 	// example:
 	//
 	// 06:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The O&M start time in the HH:mm format.
+	//
 	// example:
 	//
 	// 00:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The number of replicas.
+	//
 	// example:
 	//
 	// 4

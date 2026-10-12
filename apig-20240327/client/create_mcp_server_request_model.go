@@ -42,19 +42,19 @@ type iCreateMcpServerRequest interface {
 type CreateMcpServerRequest struct {
 	// The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
 	AssembledSources []*CreateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	// The backend service configuration for the route. This parameter is required. You must provide the backend service configuration (including scene and services). If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
+	// The backend service configuration for the route. This parameter is required. You must specify the backend service configuration, including scene and services. If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
 	BackendConfig *CreateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The creation source type. Valid values:
 	//
 	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
 	//
-	// - ApiGatewayProxyMcpHosting: gateway-managed MCP direct proxy.
+	// - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
 	//
 	// - ApiGatewayAssembly: gateway MCP assembly.
 	//
 	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
 	//
-	// - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
+	// - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type CreateMcpServerRequest struct {
 	//
 	// gw-cq7l5s5lhtgi6qac0
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The canary release routing configurations.
+	// The canary release route configurations.
 	GrayMcpServerConfigs []*CreateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rule. When type is set to RealMCP, the match parameter is required and you must provide a route matching rule.
+	// The route match rule. When type is set to RealMCP, the match parameter is required and you must specify a route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configuration.
 	McpServerConfig *CreateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
@@ -102,7 +102,7 @@ type CreateMcpServerRequest struct {
 	//
 	// fetch-time
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type. This parameter is required. You must explicitly specify the protocol type (HTTP/HTTPS/SSE/StreamableHTTP). If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
+	// The protocol type. This parameter is required. You must explicitly specify the protocol type (HTTP/HTTPS/SSE/StreamableHTTP). If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreateMcpServerRequest struct {
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The type. Valid values:
 	//
-	// - RealMCP: standard MCP service.
+	// - RealMCP: a standard MCP service.
 	//
 	// This parameter is required.
 	//
@@ -414,7 +414,7 @@ type CreateMcpServerRequestBackendConfigServices struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The service ID. The serviceId is the ID of a backend service registered under the gateway. You can call the ListServices operation (with gatewayId specified) to query available service IDs.
+	// The service ID. The serviceId must be a backend service ID that is registered under the gateway. You can call the ListServices operation (with the gatewayId parameter) to query available service IDs.
 	//
 	// example:
 	//
@@ -494,7 +494,7 @@ func (s *CreateMcpServerRequestBackendConfigServices) Validate() error {
 type CreateMcpServerRequestGrayMcpServerConfigs struct {
 	// The backend configuration.
 	BackendConfig *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The route matching rule.
+	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The route ID.
 	//

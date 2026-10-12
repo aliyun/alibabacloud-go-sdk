@@ -22,7 +22,7 @@ type iApiKeyIdentityConfig interface {
 type ApiKeyIdentityConfig struct {
 	// The API key source configuration.
 	ApikeySource *ApiKeyIdentityConfigApikeySource `json:"apikeySource,omitempty" xml:"apikeySource,omitempty" type:"Struct"`
-	// The complete set of API key credential sources. The set contains one to three items. Multiple sources are applicable only to the AI gateway Header mode. Query String and non-AI gateway allow only a single source. If submitted together with apikeySource, the latter must be consistent with the compatible projection.
+	// The complete set of API key credential sources. The set contains one to three items. Multiple sources are applicable only to the AI gateway Header mode. Query String and non-AI gateway scenarios allow only a single source. If submitted together with apikeySource, the latter must be consistent with the compatible projection.
 	ApikeySources []*ApiKeyIdentityConfigApikeySources `json:"apikeySources,omitempty" xml:"apikeySources,omitempty" type:"Repeated"`
 	// The list of credentials.
 	Credentials []*ApiKeyIdentityConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`

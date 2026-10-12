@@ -24,26 +24,44 @@ type iListGatewayLoadBalancersRequest interface {
 }
 
 type ListGatewayLoadBalancersRequest struct {
+	// Specifies whether to return all instances in the selectable list mode. This parameter affects pagination and filtering behavior.
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// The load balancer instance ID. Specify this parameter to query details of a specific load balancer in the selectable list mode.
+	//
 	// example:
 	//
 	// lb-xxxx
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
+	// The network type used to filter results.
+	//
 	// example:
 	//
 	// Internet
 	Network *string `json:"network,omitempty" xml:"network,omitempty"`
+	// The mode switch. Valid values:
+	//
+	// - true: Returns the list of load balancers that are already associated with the gateway by reading database relationships.
+	//
+	// - false (default): Returns the selectable list by calling SLB or NLB OpenAPI to filter bindable instances.
+	//
+	// Use related=true to retrieve the list of associated load balancers. The default mode (related=false) calls SLB or NLB OpenAPI to filter bindable instances, which may return a 500 error in common scenarios due to backend data issues.
+	//
 	// example:
 	//
 	// false
 	Related *bool `json:"related,omitempty" xml:"related,omitempty"`
+	// The load balancer type used to filter results.
+	//
 	// example:
 	//
 	// NLB
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The VPC ID used to filter instances within the specified VPC in the selectable list mode. This parameter is required when type is set to NLB and related is not set to true. Otherwise, the API returns a 500 error.
+	//
 	// example:
 	//
 	// vpc-xxxx

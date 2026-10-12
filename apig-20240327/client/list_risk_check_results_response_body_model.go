@@ -24,19 +24,28 @@ type iListRiskCheckResultsResponseBody interface {
 }
 
 type ListRiskCheckResultsResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The risk detection results.
 	Data *ListRiskCheckResultsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The maximum number of entries to return in this request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token. This parameter is empty if no more pages are available.
+	//
 	// example:
 	//
 	// token-xxx
@@ -121,15 +130,22 @@ func (s *ListRiskCheckResultsResponseBody) Validate() error {
 }
 
 type ListRiskCheckResultsResponseBodyData struct {
+	// The list of risk detection results.
 	Items []*RiskCheckResults `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100

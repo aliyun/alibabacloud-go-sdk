@@ -30,7 +30,7 @@ type DeleteGatewayQuotaRuleResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

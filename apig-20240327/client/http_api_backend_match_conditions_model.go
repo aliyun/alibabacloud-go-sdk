@@ -16,9 +16,9 @@ type iHttpApiBackendMatchConditions interface {
 }
 
 type HttpApiBackendMatchConditions struct {
-	// The configurations of the matching conditions.
+	// The matching condition configuration.
 	Conditions []*HttpApiBackendMatchCondition `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// Specifies whether the matching condition is the default one.
+	// Indicates whether this is the default matching condition.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ import (
 //
 // > - - Set dryRun to true.
 //
-// > - - The response returns a conflict preview that contains conflictHash.
+// > - - The response returns a conflict preview that contains the conflictHash value.
 //
-// > - Step 2: Submit the rule after confirmation.
+// > - Step 2: Submit the request after confirmation.
 //
 // > - - No conflicts: Set dryRun to false and overwrite to false.
 //
@@ -125,7 +125,7 @@ func (client *Client) AddGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// Authorizes a security group to allow gateway access to services.
+// Authorizes a security group for gateway access to services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -227,7 +227,7 @@ func (client *Client) BatchAddConsumerGroupConsumersWithContext(ctx context.Cont
 
 // Summary:
 //
-// Revokes consumer authorization rules in batches.
+// Revokes API consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
 //
@@ -274,7 +274,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
-// 批量导出HTTP API
+// Batch exports HTTP APIs.
 //
 // @param request - BatchExportHttpApisRequest
 //
@@ -337,7 +337,7 @@ func (client *Client) BatchExportHttpApisWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 批量导入HTTP API
+// Imports HTTP APIs in batches.
 //
 // @param request - BatchImportHttpApisRequest
 //
@@ -467,7 +467,7 @@ func (client *Client) BatchRemoveConsumerGroupConsumersWithContext(ctx context.C
 
 // Summary:
 //
-// 批量更新消费者鉴权
+// Updates HTTP API operations in batches.
 //
 // @param request - BatchUpdateHttpApiOperationRequest
 //
@@ -581,13 +581,54 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Queries the activation status of the API management service.
+//
+// @param request - CheckCommodityStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckCommodityStatusResponse
+func (client *Client) CheckCommodityStatusWithContext(ctx context.Context, request *CheckCommodityStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckCommodityStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckCommodityStatus"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/sales/commodity-status"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckCommodityStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an AI model card.
 //
 // Description:
 //
-// Performs model creation for a model card under an existing model provider in a specified AI gateway instance. The target gateway must exist, belong to the current account, and be of the AI gateway type. The modelProvider must reference an existing model provider in the gateway.
+// Performs model creation for a model card under an existing model provider in a specified AI gateway instance. The target gateway must exist, belong to the current account, and be of the AI gateway type. The modelProvider must reference a model provider that already exists in the gateway.
 //
-// The modelName must be unique within the same AI gateway instance and the same model provider. A maximum of 1000 model cards can be created per gateway instance. The credit parameter currently supports only the fixed type, and the cost unit is Credits per million tokens. If not specified, type defaults to fixed and all cost values default to 0. Each item in availablePaths must include both path and type.
+// The modelName must be unique within the same AI gateway instance and the same model provider. A maximum of 1,000 model cards can be created for a single gateway instance. The credit parameter currently supports only the fixed type, and the cost unit is Credits per million tokens. If this parameter is not specified, type defaults to fixed and all cost values default to 0. Each entry in availablePaths must include both path and type.
 //
 // @param request - CreateAiModelCardRequest
 //
@@ -798,7 +839,62 @@ func (client *Client) CreateAndAttachPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a consumer.
+// Creates a HiMarket chat session with a specified conversation type and associated products, and returns the ID of the newly created session.
+//
+// @param request - CreateChatSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatSessionResponse
+func (client *Client) CreateChatSessionWithContext(ctx context.Context, request *CreateChatSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateChatSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Products) {
+		body["products"] = request.Products
+	}
+
+	if !dara.IsNil(request.TalkType) {
+		body["talkType"] = request.TalkType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateChatSession"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/sessions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateChatSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an API consumer.
 //
 // @param request - CreateConsumerRequest
 //
@@ -946,17 +1042,17 @@ func (client *Client) CreateConsumerAuthorizationRuleWithContext(ctx context.Con
 //
 // Description:
 //
-// Prerequisites: Before creating consumer authorization rules, prepare resources according to the following dependency chain (the corresponding creation API and ID passing relationships are shown in parentheses):
+// Prerequisites: Before creating consumer authorization rules, prepare resources in the following dependency chain (the corresponding creation API and ID passing relationships are shown in parentheses):
 //
 // Gateway instance (CreateGateway → gatewayId, gw- prefix)
 //
-// Environment (A default environment is automatically created with the gateway. You can also use CreateEnvironment → environmentId, env- prefix, which requires the gatewayId from step 1)
+// Environment (A default environment is automatically created with the gateway. You can also call CreateEnvironment → environmentId, env- prefix. The gatewayId from step 1 must be associated.)
 //
 // HTTP API (CreateHttpApi → httpApiId, api- prefix)
 //
-// Route and publish (CreateHttpApiRoute → routeId, hr- prefix, belongs to the API in step 3. Then publish to the environment in step 2 by using DeployHttpApi. Unpublished routes cannot be authorized)
+// Route and publish (CreateHttpApiRoute → routeId, hr- prefix, which belongs to the API in step 3. Then call DeployHttpApi to publish the route to the environment in step 2. Unpublished routes cannot be authorized.)
 //
-// Consumer (CreateConsumer → consumerId, cs- prefix. Or consumer group consumerGroupId, csg- prefix. Use either consumerId or consumerGroupId)
+// Consumer (CreateConsumer → consumerId, cs- prefix; or consumer group consumerGroupId, csg- prefix. Specify either consumerId or consumerGroupId.)
 //
 // @param request - CreateConsumerAuthorizationRulesRequest
 //
@@ -1052,6 +1148,57 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers a HiMarket developer account and returns the ID of the new developer.
+//
+// @param request - CreateDeveloperRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeveloperResponse
+func (client *Client) CreateDeveloperWithContext(ctx context.Context, request *CreateDeveloperRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDeveloperResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Password) {
+		body["password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Username) {
+		body["username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDeveloper"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/developers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDeveloperResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1578,11 +1725,11 @@ func (client *Client) CreateHttpApiRouteWithContext(ctx context.Context, httpApi
 
 // Summary:
 //
-// 创建API版本
+// Creates an API version.
 //
 // Description:
 //
-// 接口支持创建多个服务。
+// The operation supports creating multiple services.
 //
 // @param request - CreateHttpApiVersionRequest
 //
@@ -1728,7 +1875,7 @@ func (client *Client) CreateMcpServerWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建迁移任务
+// Creates a migration task.
 //
 // @param request - CreateMigrationTaskRequest
 //
@@ -1957,7 +2104,7 @@ func (client *Client) CreatePluginClassWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建插件webide工作空间
+// Creates a WebIDE workspace for a plugin.
 //
 // @param request - CreatePluginWorkspaceRequest
 //
@@ -2075,7 +2222,7 @@ func (client *Client) CreatePolicyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a policy resource mount.
+// Creates a policy attachment to a resource.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -2138,7 +2285,113 @@ func (client *Client) CreatePolicyAttachmentWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建风险检查任务
+// Creates a product category for an API product and returns the ID and name of the new category upon success.
+//
+// @param request - CreateProductCategoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProductCategoryResponse
+func (client *Client) CreateProductCategoryWithContext(ctx context.Context, request *CreateProductCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProductCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Icon) {
+		body["icon"] = request.Icon
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProductCategory"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/product-categories"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProductCategoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates an API configuration with a specified API product by submitting the gatewayId and apigRefConfig parameters to the /himarket/v1/products/{productId}/ref endpoint. The association result can be queried by GetProductRef and removed by DeleteProductRef at the same path.
+//
+// @param request - CreateProductRefRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProductRefResponse
+func (client *Client) CreateProductRefWithContext(ctx context.Context, productId *string, request *CreateProductRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProductRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApigRefConfig) {
+		body["apigRefConfig"] = request.ApigRefConfig
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProductRef"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/products/" + dara.PercentEncode(dara.StringValue(productId)) + "/ref"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProductRefResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a risk check task.
 //
 // @param request - CreateRiskCheckTaskRequest
 //
@@ -2368,6 +2621,10 @@ func (client *Client) CreateServiceVersionWithContext(ctx context.Context, servi
 //
 // Creates a source.
 //
+// Description:
+//
+// Before creating a source, prepare the required dependency resources. For the K8S type, an existing ACK container service cluster is required. You can invoke ListK8sClusterSources to query active clusters. For the MSE_NACOS type, an existing MSE Nacos instance is required. You can invoke ListMseNacosSources to query active instances.
+//
 // @param request - CreateSourceRequest
 //
 // @param headers - map
@@ -2511,7 +2768,7 @@ func (client *Client) DeleteAiModelProviderWithContext(ctx context.Context, mode
 
 // Summary:
 //
-// Deletes an API consumer.
+// Deletes a consumer.
 //
 // @param headers - map
 //
@@ -2719,11 +2976,11 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, gatewayId *s
 
 // Summary:
 //
-// Deletes a quota throttling rule for a gateway.
+// Deletes a quota throttling rule from a gateway.
 //
 // Description:
 //
-// Deletes a quota rule based on an API consumer or consumer group from an AI gateway. This operation only takes effect on AI gateways with a version later than 2.1.19.
+// This operation deletes a consumer-based or consumer group-based quota rule from an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -2764,7 +3021,7 @@ func (client *Client) DeleteGatewayQuotaRuleWithContext(ctx context.Context, gat
 
 // Summary:
 //
-// Deletes a security group rule from a gateway.
+// Deletes a gateway security group rule.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -2862,7 +3119,7 @@ func (client *Client) DeleteHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// Deletes a specified operation.
+// Deletes a specified API operation.
 //
 // @param headers - map
 //
@@ -2961,7 +3218,7 @@ func (client *Client) DeleteMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// 删除迁移任务
+// Deletes a data migration task.
 //
 // @param request - DeleteMigrationTaskRequest
 //
@@ -3035,7 +3292,7 @@ func (client *Client) DeletePluginAttachmentWithContext(ctx context.Context, plu
 
 // Summary:
 //
-// # DeletePluginClass
+// Deletes a custom plugin class.
 //
 // @param request - DeletePluginClassRequest
 //
@@ -3132,6 +3389,170 @@ func (client *Client) DeletePolicyAttachmentWithContext(ctx context.Context, pol
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolicyAttachmentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified HiMarket developer portal by portal ID.
+//
+// @param request - DeletePortalRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePortalResponse
+func (client *Client) DeletePortalWithContext(ctx context.Context, portalId *string, request *DeletePortalRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePortalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePortal"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/portals/" + dara.PercentEncode(dara.StringValue(portalId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePortalResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified API product by API product ID.
+//
+// @param request - DeleteProductRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProductResponse
+func (client *Client) DeleteProductWithContext(ctx context.Context, productId *string, request *DeleteProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProduct"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/products/" + dara.PercentEncode(dara.StringValue(productId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProductResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified product category by product category ID.
+//
+// @param request - DeleteProductCategoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProductCategoryResponse
+func (client *Client) DeleteProductCategoryWithContext(ctx context.Context, categoryId *string, request *DeleteProductCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProductCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProductCategory"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/product-categories/" + dara.PercentEncode(dara.StringValue(categoryId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProductCategoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Dissociates an API product from an API by API product ID. This association is established by CreateProductRef on the same resource path and can be queried by GetProductRef.
+//
+// @param request - DeleteProductRefRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProductRefResponse
+func (client *Client) DeleteProductRefWithContext(ctx context.Context, productId *string, request *DeleteProductRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProductRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProductRef"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/products/" + dara.PercentEncode(dara.StringValue(productId)) + "/ref"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProductRefResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3280,6 +3701,10 @@ func (client *Client) DeleteSourceWithContext(ctx context.Context, sourceId *str
 //
 // Publishes an HTTP API. This includes REST APIs and routes within HTTP APIs.
 //
+// Description:
+//
+// Before deployment, the following prerequisites must be met in order: (1) A gateway has been created. (2) An HTTP API has been created and associated with a gateway (belongGatewayId). (3) A route has been created and associated with an environment (environmentId). (4) The route has been associated with the default subdomain of the environment. Associating only a custom Dedicated domain name is not sufficient to trigger deployment. Call UpdateHttpApiRoute first to add the default subdomain of the environment to the route.
+//
 // @param request - DeployHttpApiRequest
 //
 // @param headers - map
@@ -3337,7 +3762,7 @@ func (client *Client) DeployHttpApiWithContext(ctx context.Context, httpApiId *s
 //
 // Description:
 //
-// Before deployment, the MCP server must have domainIds configured through CreateMcpServer or UpdateMcpServer. Call GetMcpServer to confirm the domain name bindng status.
+// Before deployment, ensure that domainIds have been configured for the MCP server by calling CreateMcpServer or UpdateMcpServer. Call GetMcpServer to confirm the domain name bindng status.
 //
 // @param headers - map
 //
@@ -3417,7 +3842,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Disassociates and deletes a policy.
+// Detaches and deletes a policy.
 //
 // @param request - DetachAndDeletePolicyRequest
 //
@@ -3601,7 +4026,105 @@ func (client *Client) GetAiModelProviderWithContext(ctx context.Context, modelPr
 
 // Summary:
 //
-// 查询批量导出任务
+// Queries the effective field collection configurations for an HTTP API across each URI of the request in a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and whether the configuration is derived from a field template.
+//
+// @param request - GetApiPathFieldConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiPathFieldConfigResponse
+func (client *Client) GetApiPathFieldConfigWithContext(ctx context.Context, request *GetApiPathFieldConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiPathFieldConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.HttpApiId) {
+		query["httpApiId"] = request.HttpApiId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApiPathFieldConfig"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/api-path-fields/configs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApiPathFieldConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the field template corresponding to the API request path and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
+//
+// @param request - GetApiPathFieldTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiPathFieldTemplateResponse
+func (client *Client) GetApiPathFieldTemplateWithContext(ctx context.Context, request *GetApiPathFieldTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiPathFieldTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Path) {
+		query["path"] = request.Path
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApiPathFieldTemplate"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/api-path-fields/template"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApiPathFieldTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a batch export task.
 //
 // @param request - GetBatchExportTaskRequest
 //
@@ -3642,7 +4165,7 @@ func (client *Client) GetBatchExportTaskWithContext(ctx context.Context, taskId 
 
 // Summary:
 //
-// 查询批量操作任务
+// Queries a batch import task. The task ID is returned after a batch import task is created by calling BatchImportHttpApis. Pass an empty string to list all existing batch import tasks.
 //
 // @param request - GetBatchImportTaskRequest
 //
@@ -3875,6 +4398,47 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, gatewayId *st
 
 // Summary:
 //
+// Queries the account information of the currently logged-on developer and returns the developer ID, portal ID, username, and status.
+//
+// @param request - GetDeveloperRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeveloperResponse
+func (client *Client) GetDeveloperWithContext(ctx context.Context, request *GetDeveloperRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDeveloperResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeveloper"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/developers/profile"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeveloperResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a domain name.
 //
 // @param request - GetDomainRequest
@@ -4008,7 +4572,7 @@ func (client *Client) GetGatewayWithContext(ctx context.Context, gatewayId *stri
 
 // Summary:
 //
-// 获取网关弹性策略
+// Retrieves the elastic scaling rule of a gateway.
 //
 // @param request - GetGatewayElasticPolicyRequest
 //
@@ -4112,13 +4676,13 @@ func (client *Client) GetGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// Queries the usage details of a subject under a gateway quota throttling rule, including used quota, total quota, whether the limit is exceeded, usage details, and consumption records.
+// Queries the usage details of a subject for a gateway quota throttling rule, including the used quota, total quota, over-limit status, usage details, and consumption records.
 //
 // Description:
 //
-// Queries the usage details of a specific subject under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
+// This operation retrieves the usage details of a consumer subject under a quota rule. Note that this operation applies only to AI gateways whose version is later than 2.1.19.
 //
-// Before you begin: Before calling this operation, make sure that Simple Log Service log delivery is enabled for the target gateway by calling UpdateGatewayFeature (name=log-config, value={"enable":true}). Otherwise, the error CloudProductInactive.LogDeliveryNotEnabled is returned.
+// Before you begin: Before calling this operation, ensure that the Simple Log Service (SLS) log delivery feature is enabled for the target gateway by using UpdateGatewayFeature(name=log-config, value={"enable":true}). Otherwise, the CloudProductInactive.LogDeliveryNotEnabled error is returned.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -4181,11 +4745,11 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询网关资源配额与用量
+// Queries the resource quotas and usage of a gateway.
 //
 // Description:
 //
-// 查询指定 API 网关或 AI 网关的九项资源配额用量、有效上限及统计范围。接口只读，成功响应包含全部九项；自定义插件配额暂不展示数值。该结果是各来源独立读取的当前观测，不保证新增资源一定成功。
+// Queries the usage, effective limits, and statistical scopes of nine resource quota items for a specified API gateway or AI gateway. This operation is read-only. A successful response contains all nine items. Custom plugin quotas do not display numerical values. The result represents the current observation read independently from each source and does not guarantee that new resources can be created successfully.
 //
 // @param request - GetGatewayResourceQuotaUsageRequest
 //
@@ -4226,7 +4790,89 @@ func (client *Client) GetGatewayResourceQuotaUsageWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the information of an HTTP API.
+// Queries the details of a single HiMarket consumer by consumer ID and returns the consumer ID, name, description, and whether the consumer is the primary consumer.
+//
+// @param request - GetHiMarketConsumerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHiMarketConsumerResponse
+func (client *Client) GetHiMarketConsumerWithContext(ctx context.Context, consumerId *string, request *GetHiMarketConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHiMarketConsumerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetHiMarketConsumer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetHiMarketConsumerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the credential information of a HiMarket consumer by consumer ID. The response includes API key and HMAC credential configurations. The credential members are defined by the common data structures HiMarketApiKeyConfig and HiMarketHmacConfig.
+//
+// @param request - GetHiMarketConsumerCredentialRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHiMarketConsumerCredentialResponse
+func (client *Client) GetHiMarketConsumerCredentialWithContext(ctx context.Context, consumerId *string, request *GetHiMarketConsumerCredentialRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHiMarketConsumerCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetHiMarketConsumerCredential"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/himarket/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/credentials"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetHiMarketConsumerCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves HTTP API information.
 //
 // @param request - GetHttpApiRequest
 //
@@ -4343,7 +4989,7 @@ func (client *Client) GetHttpApiRouteWithContext(ctx context.Context, httpApiId 
 //
 // Description:
 //
-// This operation supports creating multiple services.
+// The operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -4376,7 +5022,7 @@ func (client *Client) GetMcpServerWithContext(ctx context.Context, mcpServerId *
 
 // Summary:
 //
-// 获取迁移任务中的命名空间和服务映射
+// Retrieves the namespaced services for a migration task.
 //
 // @param request - GetMigrationNamespacedServicesRequest
 //
@@ -4417,7 +5063,7 @@ func (client *Client) GetMigrationNamespacedServicesWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取迁移任务详情
+// Retrieves a migration task.
 //
 // @param request - GetMigrationTaskRequest
 //
@@ -4532,7 +5178,7 @@ func (client *Client) GetPluginClassWithContext(ctx context.Context, pluginClass
 
 // Summary:
 //
-// 查询插件webide工作空间
+// Queries the WebIDE workspace of a plugin.
 //
 // @param request - GetPluginWorkspaceRequest
 //
@@ -4639,7 +5285,7 @@ func (client *Client) GetPolicyAttachmentWithContext(ctx context.Context, policy
 
 // Summary:
 //
-// Retrieves resource overview information.
+// Retrieves the resource overview information.
 //
 // @param request - GetResourceOverviewRequest
 //
@@ -4686,7 +5332,7 @@ func (client *Client) GetResourceOverviewWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取风险项通知配置
+// Retrieves the notification configuration for a risk item.
 //
 // @param request - GetRiskNotificationRequest
 //
@@ -4770,7 +5416,7 @@ func (client *Client) GetSecretWithContext(ctx context.Context, secretId *string
 
 // Summary:
 //
-// Retrieves the value of a key.
+// Retrieves the value of a secret.
 //
 // Description:
 //
@@ -4807,7 +5453,7 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, name *strin
 
 // Summary:
 //
-// Gets service details.
+// Retrieves the details of a service.
 //
 // @param headers - map
 //
@@ -4920,7 +5566,7 @@ func (client *Client) GetTraceConfigWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// Imports an HTTP API. Supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST-type APIs.
+// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -5070,7 +5716,7 @@ func (client *Client) InstallPluginWithContext(ctx context.Context, request *Ins
 
 // Summary:
 //
-// 调用AIAgent
+// Calls an AI agent.
 //
 // @param request - InvokeAIAgentRequest
 //
@@ -5087,7 +5733,7 @@ func (client *Client) InvokeAIAgentWithSSECtx(ctx context.Context, request *Invo
 
 // Summary:
 //
-// 调用AIAgent
+// Calls an AI agent.
 //
 // @param request - InvokeAIAgentRequest
 //
@@ -5150,7 +5796,7 @@ func (client *Client) InvokeAIAgentWithContext(ctx context.Context, request *Inv
 
 // Summary:
 //
-// Queries the list of AI model cards.
+// Queries a list of AI model cards.
 //
 // @param request - ListAiModelCardsRequest
 //
@@ -5268,7 +5914,7 @@ func (client *Client) ListAiModelProvidersWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询批量导出任务列表
+// Queries a list of batch export tasks.
 //
 // @param request - ListBatchExportTasksRequest
 //
@@ -5343,7 +5989,7 @@ func (client *Client) ListBatchExportTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves a list of consumer authorization rules.
+// Retrieves the list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -5453,11 +6099,11 @@ func (client *Client) ListConsumerGroupConsumersWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询消费者组配额限流规则列表
+// Queries the list of quota throttling rules for a consumer group.
 //
 // Description:
 //
-// 查询指定消费者组直接绑定的配额规则，不展开组内消费者个人绑定的规则；无直接绑定关系时返回空列表。
+// Queries the quota rules directly bound to a specified consumer group. Rules individually bound to consumers within the group are not included. An empty list is returned if no rules are directly bound.
 //
 // @param request - ListConsumerGroupQuotaRulesRequest
 //
@@ -5634,7 +6280,7 @@ func (client *Client) ListConsumerQuotaRulesWithContext(ctx context.Context, con
 
 // Summary:
 //
-// Retrieves a list of consumers.
+// Retrieves a list of API consumers.
 //
 // @param request - ListConsumersRequest
 //
@@ -5908,7 +6554,7 @@ func (client *Client) ListExternalServicesWithContext(ctx context.Context, gatew
 
 // Summary:
 //
-// Queries the security groups of an instance that can be used for authorization.
+// Queries the list of security groups that can be authorized for a gateway.
 //
 // @param request - ListGatewayAuthorizableSecurityGroupsRequest
 //
@@ -5955,7 +6601,7 @@ func (client *Client) ListGatewayAuthorizableSecurityGroupsWithContext(ctx conte
 
 // Summary:
 //
-// Queries the security group rules of an instance that are in effect.
+// Queries the list of security group rules authorized for a gateway.
 //
 // @param request - ListGatewayAuthorizedSecurityGroupRulesRequest
 //
@@ -5996,7 +6642,7 @@ func (client *Client) ListGatewayAuthorizedSecurityGroupRulesWithContext(ctx con
 
 // Summary:
 //
-// 获取网关的错误访问日志
+// Lists gateway error access logs.
 //
 // @param request - ListGatewayErrorAccessLogsRequest
 //
@@ -6100,7 +6746,7 @@ func (client *Client) ListGatewayFeaturesWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// 获取网关负载均衡器列表
+// Retrieves the list of load balancers for a gateway.
 //
 // @param request - ListGatewayLoadBalancersRequest
 //
@@ -6319,7 +6965,7 @@ func (client *Client) ListGatewaysWithContext(ctx context.Context, tmpReq *ListG
 
 // Summary:
 //
-// # ListGlobalPolicies
+// Retrieves global policies.
 //
 // @param request - ListGlobalPoliciesRequest
 //
@@ -6414,7 +7060,7 @@ func (client *Client) ListGlobalPoliciesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the list of API operations.
+// Retrieves a list of API operations.
 //
 // @param request - ListHttpApiOperationsRequest
 //
@@ -6723,7 +7369,7 @@ func (client *Client) ListHttpApisWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # ListInstallableGateways
+// Retrieves gateways on which a plugin can be installed.
 //
 // @param request - ListInstallableGatewaysRequest
 //
@@ -6778,7 +7424,7 @@ func (client *Client) ListInstallableGatewaysWithContext(ctx context.Context, pl
 
 // Summary:
 //
-// Queries the Kubernetes (K8s) clusters that can be added as sources.
+// Queries the list of clusters that can be added as Kubernetes sources.
 //
 // @param request - ListK8sClusterSourcesRequest
 //
@@ -6825,7 +7471,7 @@ func (client *Client) ListK8sClusterSourcesWithContext(ctx context.Context, gate
 
 // Summary:
 //
-// Retrieves the list of MCP servers.
+// Retrieves a list of MCP servers.
 //
 // Description:
 //
@@ -6900,7 +7546,7 @@ func (client *Client) ListMcpServersWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取迁移任务列表
+// Lists migration tasks.
 //
 // @param request - ListMigrationTasksRequest
 //
@@ -6951,7 +7597,7 @@ func (client *Client) ListMigrationTasksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the MSE Nacos instances that can be added as sources.
+// Queries the list of instances that can be added as Nacos sources.
 //
 // @param request - ListMseNacosSourcesRequest
 //
@@ -6992,7 +7638,7 @@ func (client *Client) ListMseNacosSourcesWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// Retrieves the plug-in mount list.
+// Retrieves the list of plug-in mounts.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -7162,7 +7808,7 @@ func (client *Client) ListPluginClassesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询自定义插件托管在云效上的仓库列表和组织信息
+// Queries the list of repositories and organization information for custom plugins hosted on Codeup. Before calling this operation, enable code hosting on Codeup, create organizations and repositories, and authorize API Gateway to access the Codeup account.
 //
 // @param request - ListPluginRepositoriesRequest
 //
@@ -7203,7 +7849,7 @@ func (client *Client) ListPluginRepositoriesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取用户插件webide工作空间列表
+// Retrieves the list of plugin WebIDE workspaces for the current user.
 //
 // @param request - ListPluginWorkspaceRequest
 //
@@ -7250,7 +7896,7 @@ func (client *Client) ListPluginWorkspaceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves a list of plugins.
+// Retrieves a list of plug-ins.
 //
 // @param request - ListPluginsRequest
 //
@@ -7471,7 +8117,7 @@ func (client *Client) ListPolicyClassesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询风险检测结果
+// Queries risk detection results.
 //
 // @param request - ListRiskCheckResultsRequest
 //
@@ -7534,7 +8180,7 @@ func (client *Client) ListRiskCheckResultsWithContext(ctx context.Context, gatew
 //
 // Description:
 //
-// This operation supports creating multiple services.
+// The operation supports creating multiple services.
 //
 // @param request - ListSecretReferencesRequest
 //
@@ -7719,7 +8365,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries sources.
+// Retrieves a list of sources.
 //
 // @param request - ListSourcesRequest
 //
@@ -7841,7 +8487,7 @@ func (client *Client) ListSslCertsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询已同步的MCP Server列表
+// Lists MCP servers that are pending synchronization.
 //
 // @param request - ListSyncMCPServerRequest
 //
@@ -7896,7 +8542,7 @@ func (client *Client) ListSyncMCPServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the list of resource labels.
+// Retrieves a list of resource tags.
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -7965,7 +8611,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Retrieves the zones available for a cloud-native API gateway in a specific region.
+// Retrieves the zones available for a cloud-native API gateway in a specified region.
 //
 // @param request - ListZonesRequest
 //
@@ -8111,7 +8757,7 @@ func (client *Client) QueryConsumerAuthorizationRulesWithContext(ctx context.Con
 
 // Summary:
 //
-// 刷新插件托管仓库的oauth code
+// Refreshes the OAuth code for the plugin-managed repository.
 //
 // @param request - RefreshPluginOAuthCodeRequest
 //
@@ -8205,9 +8851,9 @@ func (client *Client) RemoveConsumerAuthorizationRuleWithContext(ctx context.Con
 //
 // > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with a conflictHash value.
+// > - - The response contains a conflict preview with conflictHash.
 //
-// > - 2. Confirm and submit the request.
+// > - 2. Submit the request after confirmation.
 //
 // > - - No conflicts: Set dryRun to false and overwrite to false.
 //
@@ -8319,7 +8965,7 @@ func (client *Client) RestartGatewayWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// 插件工作空间运行流水线
+// Runs a pipeline in a plug-in workspace.
 //
 // @param request - RunPluginPipelineRequest
 //
@@ -8478,7 +9124,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Cancels the publication of an MCP server.
+// Cancels the publishing of an MCP server.
 //
 // @param headers - map
 //
@@ -8861,7 +9507,7 @@ func (client *Client) UpdateAndAttachPolicyWithContext(ctx context.Context, poli
 
 // Summary:
 //
-// 更新消费者授权规则
+// Updates an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleRequest
 //
@@ -8975,7 +9621,7 @@ func (client *Client) UpdateConsumerWithContext(ctx context.Context, consumerId 
 //
 // Description:
 //
-// This API has been replaced by UpdateAuthorizationRule. The new operation path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When calling the new operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
+// This API operation is replaced by UpdateAuthorizationRule. The new API path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When you call the new API operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
@@ -9085,7 +9731,7 @@ func (client *Client) UpdateConsumerGroupWithContext(ctx context.Context, consum
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type allow you to update the listener Ingress configuration.
+// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
 //
 // @param request - UpdateDomainRequest
 //
@@ -9225,7 +9871,7 @@ func (client *Client) UpdateEnvironmentWithContext(ctx context.Context, environm
 
 // Summary:
 //
-// 更新网关弹性策略
+// Updates the elastic policy of a gateway.
 //
 // @param request - UpdateGatewayElasticPolicyRequest
 //
@@ -9319,7 +9965,7 @@ func (client *Client) UpdateGatewayFeatureWithContext(ctx context.Context, gatew
 
 // Summary:
 //
-// 更新网关负载均衡器
+// Updates a Gateway Load Balancer (GWLB).
 //
 // @param request - UpdateGatewayLoadBalancerRequest
 //
@@ -9374,7 +10020,11 @@ func (client *Client) UpdateGatewayLoadBalancerWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 修改网关运维时间
+// Modifies the O&M window of a gateway.
+//
+// Description:
+//
+// Modifies the O&M time window of a gateway. This feature is supported only by specific gateway types. If the current gateway does not support modifying the O&M time window, the API returns 409 Conflict.GatewayNotSupportAutoMaintenance.
 //
 // @param request - UpdateGatewayMaintenancePeriodRequest
 //
@@ -9476,7 +10126,7 @@ func (client *Client) UpdateGatewayNameWithContext(ctx context.Context, gatewayI
 //
 // Edits a quota rule on a gateway. This operation takes effect only on AI gateways running version 2.1.21 or later. Editing a rule preserves the historical usage of consumer subjects bound to the rule.
 //
-// >  Recommended call sequence:
+// >  Recommended call logic:
 //
 // > - Step 1: Perform a dry run to check for rule conflicts.
 //
@@ -9484,11 +10134,11 @@ func (client *Client) UpdateGatewayNameWithContext(ctx context.Context, gatewayI
 //
 // > - - The response contains a conflict preview with a conflictHash value.
 //
-// > - Step 2: Confirm and submit the changes.
+// > - Step 2: Confirm and submit the request.
 //
-// > - - No conflicts: Set dryRun to false and overwrite to false.
+// > - - No conflict: Set dryRun to false and overwrite to false.
 //
-// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflict exists and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -9845,7 +10495,7 @@ func (client *Client) UpdateHttpApiRouteWithContext(ctx context.Context, httpApi
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type are allowed to update the Ingress listener configuration.
+// Only sources of the **Container Service*	- type can update the Ingress listener configuration.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -9936,7 +10586,7 @@ func (client *Client) UpdateMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// 更新迁移任务
+// Updates a migration task.
 //
 // @param request - UpdateMigrationTaskRequest
 //
@@ -10011,7 +10661,7 @@ func (client *Client) UpdateMigrationTaskWithContext(ctx context.Context, taskId
 
 // Summary:
 //
-// 更改网关网络访问类型
+// Changes the network access type of a gateway.
 //
 // @param request - UpdateNetworkAccessRequest
 //
@@ -10168,7 +10818,7 @@ func (client *Client) UpdatePolicyWithContext(ctx context.Context, policyId *str
 
 // Summary:
 //
-// 更新风险项通知配置
+// Updates the notification configuration for risk items.
 //
 // @param request - UpdateRiskNotificationRequest
 //
@@ -10219,11 +10869,11 @@ func (client *Client) UpdateRiskNotificationWithContext(ctx context.Context, gat
 
 // Summary:
 //
-// Updates a key pair.
+// Updates a secret.
 //
 // Description:
 //
-// Only sources of the **container service*	- type allow you to update the configuration for listening to Ingress.
+// Only sources of the **container service*	- type allow you to update the listener Ingress configuration.
 //
 // @param request - UpdateSecretRequest
 //
@@ -10447,7 +11097,7 @@ func (client *Client) UpgradeGatewayWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// 检查迁移任务
+// Validates a migration task.
 //
 // @param request - VerifyMigrationTaskRequest
 //

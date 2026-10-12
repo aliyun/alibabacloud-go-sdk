@@ -270,7 +270,7 @@ type JwtIdentityConfigJwtTokenConfig struct {
 	//
 	// true
 	Pass *bool `json:"pass,omitempty" xml:"pass,omitempty"`
-	// The location where the JWT is stored.
+	// The position where the JWT is stored.
 	//
 	// example:
 	//

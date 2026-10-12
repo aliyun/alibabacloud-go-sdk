@@ -18,10 +18,14 @@ type iUpdateGatewayElasticPolicyResponseBody interface {
 }
 
 type UpdateGatewayElasticPolicyResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success

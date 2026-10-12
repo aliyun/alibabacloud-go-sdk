@@ -53,11 +53,11 @@ type AiNetworkSearchConfig struct {
 	// if can be null:
 	// true
 	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
-	// The format template for reference content. The template must contain at least one %s placeholder.
+	// The format template for reference content. Must contain at least one %s placeholder.
 	//
 	// example:
 	//
-	// 参考来源:\\n%s
+	// Reference source:\\n%s
 	ReferenceFormat *string `json:"referenceFormat,omitempty" xml:"referenceFormat,omitempty"`
 	// The reference location.
 	//
@@ -191,13 +191,13 @@ func (s *AiNetworkSearchConfig) Validate() error {
 }
 
 type AiNetworkSearchConfigSearchRewrite struct {
-	// Specifies whether to enable search query rewriting.
+	// Specifies whether to enable search term rewriting.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The maximum number of search queries after rewriting.
+	// The maximum number of search terms after rewriting.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type AiNetworkSearchConfigSearchRewrite struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The ID of the rewriting service.
+	// The rewriting service ID.
 	//
 	// example:
 	//

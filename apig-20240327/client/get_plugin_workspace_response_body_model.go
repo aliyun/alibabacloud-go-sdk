@@ -20,16 +20,21 @@ type iGetPluginWorkspaceResponseBody interface {
 }
 
 type GetPluginWorkspaceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetPluginWorkspaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,26 +96,38 @@ func (s *GetPluginWorkspaceResponseBody) Validate() error {
 }
 
 type GetPluginWorkspaceResponseBodyData struct {
+	// The Codeup organization ID.
+	//
 	// example:
 	//
 	// 664f1e2xxxx
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// The ID of the most recent pipeline run. This parameter is not returned if the plugin has never been built.
+	//
 	// example:
 	//
 	// 987654
 	PipelineRunId *string `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
+	// The Codeup repository ID.
+	//
 	// example:
 	//
 	// 12345678
 	RepoId *string `json:"repoId,omitempty" xml:"repoId,omitempty"`
+	// The repository name (the English ID of the plugin).
+	//
 	// example:
 	//
 	// my-custom-plugin
 	RepoName *string `json:"repoName,omitempty" xml:"repoName,omitempty"`
+	// The OSS download URL of the compiled WASM build output. This parameter is returned only when the pipeline status is SUCCESS.
+	//
 	// example:
 	//
 	// https://apigw-console-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/{uid}/plugin/plugin_1756262400.wasm
 	WasmUrl *string `json:"wasmUrl,omitempty" xml:"wasmUrl,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// plw-xxxxxxxx

@@ -18,14 +18,20 @@ type iListInstallableGatewaysRequest interface {
 }
 
 type ListInstallableGatewaysRequest struct {
+	// The gateway type used for filtering.
+	//
 	// example:
 	//
 	// AI
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

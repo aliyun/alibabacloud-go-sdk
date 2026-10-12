@@ -42,13 +42,13 @@ type iListHttpApiRoutesRequest interface {
 }
 
 type ListHttpApiRoutesRequest struct {
-	// The backend service name. You can use this name to filter routes.
+	// The backend service name. You can use this parameter to filter routes.
 	//
 	// example:
 	//
 	// test-svc
 	BackendServiceName *string `json:"backendServiceName,omitempty" xml:"backendServiceName,omitempty"`
-	// Filters the API list by a specific consumer authorization rule ID. The response includes only authorized APIs.
+	// Filters the API list by a specific consumer authorization rule ID. The API list in the response contains only authorized APIs.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Specifies whether this is a deployment scenario.
+	// Specifies whether the request is for a deployment scenario.
 	//
 	// example:
 	//
@@ -90,25 +90,25 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Fuzzy match by route name.
+	// Performs a fuzzy match by route name.
 	//
 	// example:
 	//
 	// item
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size. Valid range: 1 to 100. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Fuzzy match by route path.
+	// Performs a fuzzy match by route path.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// true
 	WithAuthPolicyInfo *bool `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
-	// Includes the authorization rule list of the specified consumer ID for each route in the response.
+	// Includes the authorization rule list of the specified consumer ID in each route in the response.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// Includes the plug-in attachment information of the specified plug-in ID for each route in the response.
+	// Includes the mount information of the specified plug-in ID in each route in the response.
 	//
 	// example:
 	//

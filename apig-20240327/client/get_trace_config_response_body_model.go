@@ -119,9 +119,9 @@ func (s *GetTraceConfigResponseBody) Validate() error {
 type GetTraceConfigResponseBodyData struct {
 	// Indicates whether Tracing Analysis is enabled. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: shutdown.
+	// - false: Shutdown.
 	//
 	// example:
 	//

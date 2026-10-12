@@ -204,7 +204,11 @@ type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// The expiration mode. Valid values: LongTerm, ShortTerm.
+	// The expiration mode. Valid values:
+	//
+	// - LongTerm: long-term
+	//
+	// - ShortTerm: short-term
 	//
 	// example:
 	//
@@ -216,7 +220,7 @@ type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// InEffect
 	ExpireStatus *string `json:"expireStatus,omitempty" xml:"expireStatus,omitempty"`
-	// The expiration timestamp.
+	// The expiration time.
 	//
 	// example:
 	//

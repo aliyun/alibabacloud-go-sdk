@@ -20,15 +20,15 @@ type iListSourcesResponseBody interface {
 }
 
 type ListSourcesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListSourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ func (s *ListSourcesResponseBody) Validate() error {
 type ListSourcesResponseBodyData struct {
 	// The list of sources.
 	Items []*ListSourcesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ListSourcesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,10 +176,14 @@ func (s *ListSourcesResponseBodyData) Validate() error {
 }
 
 type ListSourcesResponseBodyDataItems struct {
+	// The reason for the association status
+	//
 	// example:
 	//
 	// Association completed
 	AssociationReason *string `json:"associationReason,omitempty" xml:"associationReason,omitempty"`
+	// The association status of the source
+	//
 	// example:
 	//
 	// ASSOCIATED
@@ -190,16 +194,18 @@ type ListSourcesResponseBodyDataItems struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The source information when the source type is K8S.
+	// The container service source information.
 	K8sSourceInfo *ListSourcesResponseBodyDataItemsK8sSourceInfo `json:"k8sSourceInfo,omitempty" xml:"k8sSourceInfo,omitempty" type:"Struct"`
-	// The source information when the source type is MSE_NACOS.
+	// The MSE Nacos source information.
 	NacosSourceInfo *ListSourcesResponseBodyDataItemsNacosSourceInfo `json:"nacosSourceInfo,omitempty" xml:"nacosSourceInfo,omitempty" type:"Struct"`
-	// The source name. If the source type is K8S, the name is the container cluster name. If the source type is MSE_NACOS, the name is the Nacos instance name.
+	// The source name. If the source type is container service, the name is the container service cluster name. If the source type is MSE Nacos, the name is the Nacos instance name.
 	//
 	// example:
 	//
 	// itemcenter-dev-cluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
@@ -322,7 +328,7 @@ func (s *ListSourcesResponseBodyDataItems) Validate() error {
 }
 
 type ListSourcesResponseBodyDataItemsK8sSourceInfo struct {
-	// The cluster ID.
+	// The container service cluster ID.
 	//
 	// example:
 	//
@@ -352,13 +358,13 @@ func (s *ListSourcesResponseBodyDataItemsK8sSourceInfo) Validate() error {
 }
 
 type ListSourcesResponseBodyDataItemsNacosSourceInfo struct {
-	// The endpoint of the Nacos instance.
+	// The access address of the Nacos instance.
 	//
 	// example:
 	//
 	// mse-3353***-nacos-ans.mse.aliyuncs.com:8848
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The registry ID.
+	// The NACOS registry cluster ID.
 	//
 	// example:
 	//

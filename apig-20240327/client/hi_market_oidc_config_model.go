@@ -28,7 +28,7 @@ type iHiMarketOidcConfig interface {
 type HiMarketOidcConfig struct {
 	// The OAuth2 Authorization Code configuration.
 	AuthCodeConfig *HiMarketOidcConfigAuthCodeConfig `json:"authCodeConfig,omitempty" xml:"authCodeConfig,omitempty" type:"Struct"`
-	// Indicates whether the OIDC configuration is enabled.
+	// Specifies whether to enable the OIDC configuration.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type HiMarketOidcConfig struct {
 	//
 	// example:
 	//
-	// 阿里云IDaaS
+	// Alibaba Cloud IDaaS
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 
@@ -298,7 +298,7 @@ func (s *HiMarketOidcConfigAuthCodeConfig) Validate() error {
 }
 
 type HiMarketOidcConfigIdentityMapping struct {
-	// The custom field mappings.
+	// The custom field mapping.
 	CustomFields map[string]*string `json:"customFields,omitempty" xml:"customFields,omitempty"`
 	// The identity field name that corresponds to the email address.
 	//

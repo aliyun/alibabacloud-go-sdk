@@ -14,6 +14,7 @@ type iCreateHttpApiVersionRequest interface {
 }
 
 type CreateHttpApiVersionRequest struct {
+	// The API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 

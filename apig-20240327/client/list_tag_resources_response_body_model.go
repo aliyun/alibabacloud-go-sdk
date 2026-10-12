@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token for the next query. An empty NextToken indicates that no more results exist.
+	// The token used to start the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 59F86F37-787A-52DB-9475-DB5A255517F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources.
+	// The list of tagged resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -95,13 +95,13 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The label key.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The label value.
+	// The tag value.
 	//
 	// example:
 	//

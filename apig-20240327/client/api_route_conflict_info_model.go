@@ -16,9 +16,9 @@ type iApiRouteConflictInfo interface {
 }
 
 type ApiRouteConflictInfo struct {
-	// The conflicts.
+	// The list of conflict information.
 	Conflicts []*ApiRouteConflictInfoConflicts `json:"conflicts,omitempty" xml:"conflicts,omitempty" type:"Repeated"`
-	// The conflicting routes.
+	// The conflicting domain information.
 	DomainInfo *ApiRouteConflictInfoDomainInfo `json:"domainInfo,omitempty" xml:"domainInfo,omitempty" type:"Struct"`
 }
 
@@ -67,29 +67,27 @@ func (s *ApiRouteConflictInfo) Validate() error {
 }
 
 type ApiRouteConflictInfoConflicts struct {
-	// The details about the conflicts.
+	// The list of conflict details.
 	Details []*ApiRouteConflictInfoConflictsDetails `json:"details,omitempty" xml:"details,omitempty" type:"Repeated"`
-	// For APIs, conflicts exist in the specific environment. If the conflict object is a route, ignore.
+	// For an API, the conflict exists in a specific environment. If the conflicting object is a route, this field is ignored.
 	EnvironmentInfo *ApiRouteConflictInfoConflictsEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	// The conflicting resource ID.
+	// The conflicting resource ID, which is the API ID.
 	//
 	// example:
 	//
 	// api-crdclqllhtggm***
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The conflicting resource name.
+	// The conflicting resource name, which is the API name.
 	//
 	// example:
 	//
 	// item-stock
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The type of the conflicting resource.
+	// The conflicting resource type. Valid values:
 	//
-	// Valid values:
+	// - RestApi
 	//
-	// 	- RestApi
-	//
-	// 	- HttpApiRoute
+	// - HttpApiRoute
 	//
 	// example:
 	//
@@ -187,9 +185,15 @@ func (s *ApiRouteConflictInfoConflicts) Validate() error {
 type ApiRouteConflictInfoConflictsDetails struct {
 	// The matching rule information of the conflicting target.
 	ConflictingMatch *ApiRouteConflictInfoConflictsDetailsConflictingMatch `json:"conflictingMatch,omitempty" xml:"conflictingMatch,omitempty" type:"Struct"`
-	// The matching rule information of the object being detected.
+	// The matching rule information of the detected target.
 	DetectedMatch *ApiRouteConflictInfoConflictsDetailsDetectedMatch `json:"detectedMatch,omitempty" xml:"detectedMatch,omitempty" type:"Struct"`
-	// The conflict level. Valid values: Critical, Warning, and Informational.
+	// The conflict level. Valid values:
+	//
+	// - Critical
+	//
+	// - Warning
+	//
+	// - Informational
 	//
 	// example:
 	//
@@ -249,7 +253,7 @@ func (s *ApiRouteConflictInfoConflictsDetails) Validate() error {
 type ApiRouteConflictInfoConflictsDetailsConflictingMatch struct {
 	// The matching rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// The corresponding operation information if the conflicting target is an API.
+	// When the conflicting target is an API, this indicates the corresponding operation information.
 	OperationInfo *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
 }
 
@@ -339,9 +343,9 @@ func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo) Vali
 }
 
 type ApiRouteConflictInfoConflictsDetailsDetectedMatch struct {
-	// The matching rule information of the object being detected.
+	// The matching rule information of the detected target.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// If the object is an API, the conflicting operation information needs to be returned.
+	// When the detected target is an API, the conflicting operation information is returned.
 	OperationInfo *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
 }
 
@@ -521,7 +525,7 @@ func (s *ApiRouteConflictInfoConflictsRouteInfo) Validate() error {
 }
 
 type ApiRouteConflictInfoDomainInfo struct {
-	// The domain name ID.
+	// The domain ID.
 	//
 	// example:
 	//

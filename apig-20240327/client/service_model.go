@@ -68,7 +68,7 @@ type iService interface {
 }
 
 type Service struct {
-	// The address information, including IP addresses or domain name lists.
+	// The address information, which is a list of IP addresses or domain names.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The agent service configuration.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
@@ -134,7 +134,7 @@ type Service struct {
 	//
 	// PUBLIC
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The configuration for removing abnormal instances.
+	// The outlier detection configuration for removing abnormal instances.
 	OutlierDetection *ServiceOutlierDetection `json:"outlierDetection,omitempty" xml:"outlierDetection,omitempty" type:"Struct"`
 	// The circuit-broken endpoints.
 	OutlierEndpoints []*string `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
@@ -184,7 +184,7 @@ type Service struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The unhealthy endpoints.
 	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
-	// The time when the service was created.
+	// The time when the service was updated.
 	//
 	// example:
 	//

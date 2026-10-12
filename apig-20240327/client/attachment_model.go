@@ -56,7 +56,7 @@ type Attachment struct {
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The environment to which the mounted resource belongs. If the environment ID is *, the mounted resource of the policy is not associated with any environment.
+	// The environment to which the mounted resource belongs. If the environment ID is returned as *, the mounted resource of the policy is not associated with any environment.
 	//
 	// example:
 	//

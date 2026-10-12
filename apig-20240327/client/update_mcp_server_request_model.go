@@ -36,21 +36,21 @@ type iUpdateMcpServerRequest interface {
 }
 
 type UpdateMcpServerRequest struct {
-	// The list of assembled sources. This parameter is required when type is AssemblyMCP.
+	// The list of assembled sources. This parameter is required when type is set to AssemblyMCP.
 	AssembledSources []*UpdateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	// The backend service configuration of the route.
+	// The backend service configuration of the route. This parameter is conditionally required. If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
 	BackendConfig *UpdateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The creation source type. Valid values:
 	//
-	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+	// - ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP conversion.
 	//
-	// - ApiGatewayProxyMcpHosting: gateway-managed MCP direct proxy.
+	// - ApiGatewayProxyMcpHosting: Gateway-managed MCP direct proxy.
 	//
-	// - ApiGatewayAssembly: gateway MCP assembly.
+	// - ApiGatewayAssembly: Gateway MCP assembly.
 	//
-	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+	// - NacosHttpToMCP: Gateway-managed Nacos-synced HTTP-to-MCP conversion.
 	//
-	// - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
+	// - NacosMcpHosting: Gateway-managed Nacos-synced MCP direct proxy.
 	//
 	// example:
 	//
@@ -60,19 +60,19 @@ type UpdateMcpServerRequest struct {
 	//
 	// example:
 	//
-	// Product center service routing
+	// 商品中心服务路由
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain name IDs.
+	// The domain name ID.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
+	// The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
 	//
 	// example:
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	// The list of canary release MCP server routing configurations.
+	// The list of canary release MCP server route configurations.
 	GrayMcpServerConfigs []*UpdateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rules.
+	// The route match rule. This parameter is conditionally required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty(400).
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configuration.
 	McpServerConfig *UpdateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
@@ -98,11 +98,7 @@ type UpdateMcpServerRequest struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The MCP server type filter. Valid values:
-	//
-	// - RealMCP
-	//
-	// - AssemblyMCP
+	// The MCP server type filter. Valid values: RealMCP, AssemblyMCP.
 	//
 	// This parameter is required.
 	//
@@ -378,13 +374,13 @@ type UpdateMcpServerRequestBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol. Valid values:
+	// The Terms of Service. Valid values:
 	//
-	// - TCP
+	// - TCP.
 	//
-	// - HTTP
+	// - HTTP.
 	//
-	// - DUBBO
+	// - DUBBO.
 	//
 	// example:
 	//
@@ -470,7 +466,7 @@ func (s *UpdateMcpServerRequestBackendConfigServices) Validate() error {
 type UpdateMcpServerRequestGrayMcpServerConfigs struct {
 	// The backend configuration.
 	BackendConfig *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The route match rules.
+	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The route ID.
 	//
@@ -586,7 +582,7 @@ type UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol.
+	// The Terms of Service.
 	//
 	// example:
 	//

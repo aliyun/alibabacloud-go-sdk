@@ -18,7 +18,7 @@ type iListConsumerAuthorizationRulesRequest interface {
 }
 
 type ListConsumerAuthorizationRulesRequest struct {
-	// The API name used for fuzzy match.
+	// The fuzzy match parameter for the API name.
 	//
 	// example:
 	//

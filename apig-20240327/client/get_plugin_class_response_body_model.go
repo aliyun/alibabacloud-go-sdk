@@ -132,7 +132,7 @@ type GetPluginClassResponseBodyData struct {
 	//
 	// Auth
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The Wasm plug-in programming language.
+	// The programming language of the Wasm plug-in.
 	//
 	// example:
 	//

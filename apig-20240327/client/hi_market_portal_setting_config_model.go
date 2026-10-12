@@ -30,7 +30,7 @@ type HiMarketPortalSettingConfig struct {
 	//
 	// false
 	AutoApproveSubscriptions *bool `json:"autoApproveSubscriptions,omitempty" xml:"autoApproveSubscriptions,omitempty"`
-	// Specifies whether to enable username-password authentication (built-in authentication).
+	// Specifies whether to enable username and password authentication (built-in authentication).
 	//
 	// example:
 	//

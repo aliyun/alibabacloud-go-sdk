@@ -58,15 +58,15 @@ type ListServicesRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The source type of the service. Valid values:
 	//
-	// - MSE_NACOS: The service is from MSE Nacos.
+	// - MSE_NACOS: The service originates from MSE Nacos.
 	//
-	// - K8S: The service is from a Kubernetes cluster in Container Service.
+	// - K8S: The service originates from a Kubernetes cluster in Container Service.
 	//
-	// - FC3: The service is from Function Compute.
+	// - FC3: The service originates from Function Compute.
 	//
-	// - VIP: The service is from a fixed address.
+	// - VIP: The service originates from a fixed address.
 	//
-	// - DNS: The service is from a domain name.
+	// - DNS: The service originates from a domain name.
 	//
 	// example:
 	//

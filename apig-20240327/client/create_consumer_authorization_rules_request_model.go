@@ -61,7 +61,7 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
 	//
 	// cs-******
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The expiration mode. Currently only LongTerm is supported.
+	// The expiration mode. Currently, only LongTerm is supported.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
 	//
 	// ConsumerGroup
 	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
-	// The resource identifier. Serves as a unique identifier for space reuse by non-standard code sources.
+	// The resource identifier, which serves as a unique identifier for space reuse by non-standard code sources.
 	ResourceIdentifier *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty" type:"Struct"`
 	// The resource type.
 	//

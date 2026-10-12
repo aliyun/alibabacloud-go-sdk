@@ -14,6 +14,8 @@ type iRefreshPluginOAuthCodeRequest interface {
 }
 
 type RefreshPluginOAuthCodeRequest struct {
+	// The authorization code returned by the Codeup OAuth authorization callback (the code parameter carried in the callback after authorization at https://codeup.aliyun.com/oauth/authorize?app_id=xxx&state=apigw). If this parameter is empty, the ErrInvalidParameterWithEmpty("oauth code") error is returned.
+	//
 	// example:
 	//
 	// 4/0AX4xxxx

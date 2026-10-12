@@ -34,13 +34,13 @@ type iTransportCertificateInfo interface {
 }
 
 type TransportCertificateInfo struct {
-	// The signature/key algorithm.
+	// The signature or key algorithm.
 	//
 	// example:
 	//
 	// RSA_2048
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	// The certificate identifier (certificate ID under the APIG cloud account).
+	// The certificate identifier (the certificate ID under the APIG Alibaba Cloud account).
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type TransportCertificateInfo struct {
 	//
 	// cert-name
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
-	// The match status between the certificate and gateway instance domain names.
+	// The match status between the certificate and the gateway instance domain names.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type TransportCertificateInfo struct {
 	//
 	// api.example.com
 	CommonName *string `json:"commonName,omitempty" xml:"commonName,omitempty"`
-	// The set of covered domain names parsed from CN and SAN (deduplicated in lowercase, may contain *. wildcards).
+	// The set of covered domain names parsed from CN and SAN (lowercase, deduplicated, may contain *. wildcards).
 	CoveredDomains []*string `json:"coveredDomains,omitempty" xml:"coveredDomains,omitempty" type:"Repeated"`
 	// The certificate issuer.
 	//
@@ -72,7 +72,7 @@ type TransportCertificateInfo struct {
 	//
 	// DigiCert Secure Site CN CA G3
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// The gateway instance domain names matched by covered domains (ordered by instance domain name, deduplicated).
+	// The gateway instance domain names matched by the covered domain names (ordered by instance domain name, deduplicated).
 	MatchedDomains []*string `json:"matchedDomains,omitempty" xml:"matchedDomains,omitempty" type:"Repeated"`
 	// The expiration timestamp (Unix milliseconds, from the certificate afterDate).
 	//
@@ -80,13 +80,13 @@ type TransportCertificateInfo struct {
 	//
 	// 1747958400000
 	NotAfterTimestamp *int64 `json:"notAfterTimestamp,omitempty" xml:"notAfterTimestamp,omitempty"`
-	// The effective period UNIX timestamp (Unix milliseconds, from the certificate beforeDate).
+	// The effective period UNIX timestamp (milliseconds, from the certificate beforeDate).
 	//
 	// example:
 	//
 	// 1716336000000
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The raw SAN string (separated by commas, semicolons, or whitespace. Elements may have a DNS: prefix).
+	// The raw Subject Alternative Name (SAN) string (separated by commas, semicolons, or whitespace. Elements may have a DNS: prefix).
 	//
 	// example:
 	//

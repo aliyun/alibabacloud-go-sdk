@@ -20,11 +20,16 @@ type iGetRiskNotificationResponseBody interface {
 }
 
 type GetRiskNotificationResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The risk detection result.
 	Data *GetRiskNotificationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,14 +96,20 @@ func (s *GetRiskNotificationResponseBody) Validate() error {
 }
 
 type GetRiskNotificationResponseBodyData struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Indicates whether the notification for the risk item is muted.
+	//
 	// example:
 	//
 	// false
 	IsMute *bool `json:"isMute,omitempty" xml:"isMute,omitempty"`
+	// The code of the risk item.
+	//
 	// example:
 	//
 	// GW_VERSION_EXPIRED

@@ -32,73 +32,73 @@ type iPolicyInfo interface {
 }
 
 type PolicyInfo struct {
-	// The mount information.
+	// The list of mount information.
 	Attachments []*Attachment `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
 	// The policy class alias.
 	//
 	// example:
 	//
-	// 流量控制
+	// Throttling
 	ClassAlias *string `json:"classAlias,omitempty" xml:"classAlias,omitempty"`
-	// The class name supported by the policy. Different policies support different mount points. This parameter is used in combination with AttachResourceType.
+	// The class name supported by the policy. Different policies support different mount points. This parameter is used together with AttachResourceType. Valid values:
 	//
-	// 	- RateLimit: throttles traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	// - RateLimit: throttling. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- ConcurrencyLimit: controls concurrency. Supported: HttpApi, Operation, and GatewayRoute.
+	// - ConcurrencyLimit: concurrency control. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- CircuitBreaker: breaks circuits and downgrades traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	// - CircuitBreaker: circuit breaking. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- HttpRewrite: rewrites HTTP traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	// - HttpRewrite: HTTP rewrite. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- HeaderModify: modifies headers. Supported: HttpApi, Operation, and GatewayRoute.
+	// - HeaderModify: header modification. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- Cors: supports CORS. Supported: HttpApi, Operation, and GatewayRoute.
+	// - Cors: cross-origin resource sharing (CORS). Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- FlowCopy: replicates traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	// - FlowCopy: traffic copy. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- Timeout: times out requests. Supported: HttpApi, Operation, and GatewayRoute.
+	// - Timeout: timeout. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- Retry: retries requests. Supported: HttpApi, Operation, and GatewayRoute.
+	// - Retry: retry. Supported for HttpApi, Operation, and GatewayRoute.
 	//
-	// 	- IpAccessControl: implements IP address-based access control. Supported: HttpApi, Operation, GatewayRoute, Domain, and Gateway.
+	// - IpAccessControl: IP access control. Supported for HttpApi, Operation, GatewayRoute, Domain, and Gateway.
 	//
-	// 	- DirectResponse: mocks responses. Supported: Operation and GatewayRoute.
+	// - DirectResponse: mock. Supported for Operation and GatewayRoute.
 	//
-	// 	- Redirect: redirects traffic. Supported: GatewayRoute.
+	// - Redirect: redirect. Supported for GatewayRoute.
 	//
-	// 	- Fallback: implements fallback. Supported: Operation and GatewayRoute.
+	// - Fallback: fallback. Supported for Operation and GatewayRoute.
 	//
-	// 	- ServiceTls: implements TLS authentication. Supported: GatewayService.
+	// - ServiceTls: service TLS authentication. Supported for GatewayService.
 	//
-	// 	- ServiceLb: balances loads. Supported: GatewayService.
+	// - ServiceLb: service load balancing. Supported for GatewayService.
 	//
-	// 	- ServicePortTls: implements service port TLS authentication. Supported: GatewayServicePort.
+	// - ServicePortTls: service port TLS authentication. Supported for GatewayServicePort.
 	//
-	// 	- Waf: implements WAF protection. Supported: GatewayRoute and Gateway.
+	// - Waf: WAF protection. Supported for GatewayRoute and Gateway.
 	//
-	// 	- JWTAuth: implements global JWT authentication. Supported: Gateway.
+	// - JWTAuth: JWT global authentication. Supported for Gateway.
 	//
-	// 	- OIDCAuth: implements global OIDC authentication. Supported: Gateway.
+	// - OIDCAuth: OIDC global authentication. Supported for Gateway.
 	//
-	// 	- ExternalZAuth: implements custom authentication. Supported: Gateway.
+	// - ExternalZAuth: custom authentication. Supported for Gateway.
 	//
 	// example:
 	//
 	// RateLimit
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
-	// The policy configurations.
+	// The policy configuration.
 	//
 	// example:
 	//
 	// {"enable":false}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The direction of traffic on which the policy takes effect. Valid values:
+	// The inbound or outbound direction of the policy. Valid values:
 	//
-	// 	- OutBound
+	// - OutBound: outbound.
 	//
-	// 	- InBound
+	// - InBound: inbound.
 	//
-	// 	- Both
+	// - Both: both directions.
 	//
 	// example:
 	//
@@ -110,21 +110,7 @@ type PolicyInfo struct {
 	//
 	// 310
 	ExecutePriority *string `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
-	// The execution phase.
-	//
-	// Valid values:
-	//
-	// 	- PluginStatistic
-	//
-	// 	- PluginAuthorization
-	//
-	// 	- PluginPre
-	//
-	// 	- PluginAuthentication
-	//
-	// 	- PluginDefault
-	//
-	// 	- PluginPost
+	// The execution stage.
 	//
 	// example:
 	//
@@ -146,7 +132,7 @@ type PolicyInfo struct {
 	//
 	// example:
 	//
-	// 策略类型
+	// Policy type
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

@@ -24,23 +24,34 @@ type iListBatchExportTasksResponseBody interface {
 }
 
 type ListBatchExportTasksResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListBatchExportTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The maximum number of records returned in this request.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next query. This value is empty when no more results are available.
+	//
 	// example:
 	//
 	// token-xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// CE534E1D-FCE4-5930-B784-E055EC1AEE6F
@@ -119,15 +130,22 @@ func (s *ListBatchExportTasksResponseBody) Validate() error {
 }
 
 type ListBatchExportTasksResponseBodyData struct {
+	// The list of tasks, returned in reverse chronological order with the most recent tasks first.
 	Items []*ListBatchExportTasksResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of tasks.
+	//
 	// example:
 	//
 	// 1
@@ -192,34 +210,60 @@ func (s *ListBatchExportTasksResponseBodyData) Validate() error {
 }
 
 type ListBatchExportTasksResponseBodyDataItems struct {
+	// The task creation time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	//
 	// example:
 	//
 	// 2026-05-26T10:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// some apis failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The gateway instance ID associated with the task.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The number of processed items.
+	//
 	// example:
 	//
 	// 5
 	ProcessedCount *int32 `json:"processedCount,omitempty" xml:"processedCount,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Pending: The task is pending.
+	//
+	// - Running: The task is running.
+	//
+	// - Success: All items succeeded.
+	//
+	// - PartialSuccess: Some items succeeded.
+	//
+	// - Failed: All items failed.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// task-xxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// BatchExport
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// The total number of tasks.
+	//
 	// example:
 	//
 	// 10

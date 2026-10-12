@@ -20,11 +20,16 @@ type iListMigrationTasksResponseBody interface {
 }
 
 type ListMigrationTasksResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListMigrationTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,15 +96,22 @@ func (s *ListMigrationTasksResponseBody) Validate() error {
 }
 
 type ListMigrationTasksResponseBodyData struct {
+	// The list of migration tasks.
 	Items []*ListMigrationTasksResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 25
@@ -164,76 +176,114 @@ func (s *ListMigrationTasksResponseBodyData) Validate() error {
 }
 
 type ListMigrationTasksResponseBodyDataItems struct {
+	// The associated HTTP API.
+	//
 	// example:
 	//
 	// api-xxxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// The associated HTTP API.
+	//
 	// example:
 	//
 	// api-name
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The source ACK cluster. A hyphen (-) is displayed if the cluster name fails to be queried.
+	//
 	// example:
 	//
 	// c-xxxxxx
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// vpc_hz_domain_1
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	// The namespace for SLB traffic switching.
+	//
 	// example:
 	//
 	// default
 	ClusterNamespace *string `json:"clusterNamespace,omitempty" xml:"clusterNamespace,omitempty"`
+	// The creation time, in Unix seconds.
+	//
 	// example:
 	//
 	// 1756262400
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The task description.
+	//
 	// example:
 	//
-	// 迁移测试
+	// Migration test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ID of the destination environment.
+	//
 	// example:
 	//
 	// env-xxxx
 	EnvId *string `json:"envId,omitempty" xml:"envId,omitempty"`
+	// The ID of the destination gateway.
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The name of the gateway to which the rule belongs.
+	//
 	// example:
 	//
 	// prod-gateway
-	GatewayName   *string                                               `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
+	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
+	// The monitored Ingress Class configuration.
 	IngressConfig *ListMigrationTasksResponseBodyDataItemsIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
+	// The migration type. Currently, only Nginx Ingress is supported.
+	//
 	// example:
 	//
 	// Nginx Ingress
 	MigrationType *string `json:"migrationType,omitempty" xml:"migrationType,omitempty"`
+	// The name of the SLB service.
+	//
 	// example:
 	//
 	// nginx-ingress-lb
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The ID of the SLB instance used for traffic switching.
+	//
 	// example:
 	//
 	// lb-bp1xxxx
 	SlbId *string `json:"slbId,omitempty" xml:"slbId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// FlowSwitch
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The traffic switching method. Valid values: DNS and SLB.
+	//
 	// example:
 	//
 	// SLB
 	SwitchType *string `json:"switchType,omitempty" xml:"switchType,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// mt-xxxxxxxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The ID of the user to whom the task belongs.
+	//
 	// example:
 	//
 	// 1234567890
-	UserId          *string                                                   `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The list of virtual server groups.
 	VirtualServices []*ListMigrationTasksResponseBodyDataItemsVirtualServices `json:"virtualServices,omitempty" xml:"virtualServices,omitempty" type:"Repeated"`
+	// The weight of the service on the API gateway side in the legacy workflow. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 50
@@ -447,10 +497,14 @@ func (s *ListMigrationTasksResponseBodyDataItems) Validate() error {
 }
 
 type ListMigrationTasksResponseBodyDataItemsIngressConfig struct {
+	// The monitored Ingress Class.
+	//
 	// example:
 	//
 	// nginx
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
+	// The monitored namespace.
+	//
 	// example:
 	//
 	// default
@@ -488,18 +542,26 @@ func (s *ListMigrationTasksResponseBodyDataItemsIngressConfig) Validate() error 
 }
 
 type ListMigrationTasksResponseBodyDataItemsVirtualServices struct {
+	// The listener port. Valid values: 1 to 65535. This parameter is required in Step 3 of the frontend form.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The listener protocol. This parameter is required for CLB migration. During MSE migration validation, CLB requests without a protocol are directly rejected. See migrationtask.go#L95-L97. This parameter can be left empty for NLB scenarios.
+	//
 	// example:
 	//
 	// tcp
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The virtual server group ID. For CLB, this is the VServerGroupId. For NLB, this is the ServerGroupId. This parameter is required in Step 3 of the frontend form.
+	//
 	// example:
 	//
 	// rsp-xxxx
 	VirtualServiceGroupId *string `json:"virtualServiceGroupId,omitempty" xml:"virtualServiceGroupId,omitempty"`
+	// The name of the virtual server group.
+	//
 	// example:
 	//
 	// 80-tcp

@@ -16,19 +16,13 @@ type iResourceStatistic interface {
 }
 
 type ResourceStatistic struct {
-	// The number of online resources.
+	// The online resource count.
 	//
 	// example:
 	//
 	// 10
 	ResourceCount *int32 `json:"resourceCount,omitempty" xml:"resourceCount,omitempty"`
 	// The resource type.
-	//
-	// Valid values:
-	//
-	// 	- HttpApi
-	//
-	// 	- GatewayRoute
 	//
 	// example:
 	//

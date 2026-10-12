@@ -18,10 +18,14 @@ type iUpdateAuthorizationRuleResponseBody interface {
 }
 
 type UpdateAuthorizationRuleResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success

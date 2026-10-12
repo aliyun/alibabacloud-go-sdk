@@ -38,54 +38,80 @@ type iListGlobalPoliciesRequest interface {
 }
 
 type ListGlobalPoliciesRequest struct {
+	// The attached resource type to filter by. This parameter takes effect only when globalPolicyType is set to BlackOrWhite. If this parameter is not specified, Gateway, Domain, and Route resources are queried.
+	//
 	// example:
 	//
 	// Gateway
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// The policy class name. Separate multiple values with commas (server-side strings.Split).
+	//
 	// example:
 	//
 	// JWTAuth,OIDCAuth,ExternalZAuth
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// The enabling status to filter by.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The environment ID to filter by.
+	//
 	// example:
 	//
 	// env-xxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The gateway ID to filter by (attachment dimension).
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The global policy type.
+	//
 	// example:
 	//
 	// GlobalAuth
 	GlobalPolicyType *string `json:"globalPolicyType,omitempty" xml:"globalPolicyType,omitempty"`
+	// The IP content to filter by. A LIKE match is performed on the config field.
+	//
 	// example:
 	//
 	// 1.2.3.4
 	IpAccessControlContent *string `json:"ipAccessControlContent,omitempty" xml:"ipAccessControlContent,omitempty"`
+	// The protocol layer to filter by. L4 queries config entries that contain L4. L7 queries config entries that do not contain L4.
+	//
 	// example:
 	//
 	// L7
 	IpAccessControlProtocolLayer *string `json:"ipAccessControlProtocolLayer,omitempty" xml:"ipAccessControlProtocolLayer,omitempty"`
+	// The resource name to filter by. A LIKE match is performed on the config field.
+	//
 	// example:
 	//
 	// my-route
 	IpAccessControlResourceName *string `json:"ipAccessControlResourceName,omitempty" xml:"ipAccessControlResourceName,omitempty"`
+	// The IP access control type to filter by. A LIKE match is performed on the config field.
+	//
 	// example:
 	//
 	// White / Black
 	IpAccessControlType *string `json:"ipAccessControlType,omitempty" xml:"ipAccessControlType,omitempty"`
+	// The exact policy name to filter by.
+	//
 	// example:
 	//
 	// my-jwt-auth
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

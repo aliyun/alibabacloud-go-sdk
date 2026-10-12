@@ -20,15 +20,22 @@ type iBatchImportHttpApisResponseBody interface {
 }
 
 type BatchImportHttpApisResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *BatchImportHttpApisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// CE534E1D-FCE4-5930-B784-E055EC1AEE6F
@@ -89,6 +96,8 @@ func (s *BatchImportHttpApisResponseBody) Validate() error {
 }
 
 type BatchImportHttpApisResponseBodyData struct {
+	// The asynchronous task ID. You can call the GetBatchImportTask operation to query the task progress.
+	//
 	// example:
 	//
 	// async-task-xxx

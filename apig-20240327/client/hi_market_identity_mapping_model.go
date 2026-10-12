@@ -18,19 +18,19 @@ type iHiMarketIdentityMapping interface {
 }
 
 type HiMarketIdentityMapping struct {
-	// The identity field name that corresponds to the mailbox.
+	// The name of the identity field that corresponds to the email address.
 	//
 	// example:
 	//
 	// email
 	EmailField *string `json:"emailField,omitempty" xml:"emailField,omitempty"`
-	// The identity field name that corresponds to the user ID.
+	// The name of the identity field that corresponds to the user ID.
 	//
 	// example:
 	//
 	// sub
 	UserIdField *string `json:"userIdField,omitempty" xml:"userIdField,omitempty"`
-	// The identity field name that corresponds to the username.
+	// The name of the identity field that corresponds to the username.
 	//
 	// example:
 	//

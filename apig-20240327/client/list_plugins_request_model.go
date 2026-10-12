@@ -32,27 +32,27 @@ type iListPluginsRequest interface {
 }
 
 type ListPluginsRequest struct {
-	// The ID of the attached resource.
+	// The ID of the mounted resource.
 	//
 	// example:
 	//
 	// api-cuip2pum1hksng6oni3g
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The type of the attachment point supported by the policy.
+	// The type of mount point supported by the policy.
 	//
 	// - HttpApi: HttpApi.
 	//
 	// - Operation: Operation of HttpApi.
 	//
-	// - GatewayRoute: gateway route.
+	// - GatewayRoute: Gateway route.
 	//
-	// - GatewayService: gateway service.
+	// - GatewayService: Gateway service.
 	//
-	// - GatewayServicePort: gateway service port.
+	// - GatewayServicePort: Gateway service port.
 	//
-	// - Domain: gateway domain name.
+	// - Domain: Gateway domain name.
 	//
-	// - Gateway: gateway.
+	// - Gateway: Gateway.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListPluginsRequest struct {
 	//
 	// AI
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Specifies whether the response includes built-in AI plugins installed by the system. Default value: false.
+	// Specifies whether the response includes built-in AI plug-ins installed by the system. Default value: false.
 	//
 	// example:
 	//
@@ -82,25 +82,25 @@ type ListPluginsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the plugin type used to filter results.
+	// The ID of the plug-in type used to filter results.
 	//
 	// example:
 	//
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The name of the plugin type used to filter results.
+	// The name of the plug-in type used to filter results.
 	//
 	// example:
 	//
 	// key-auth
 	PluginClassName *string `json:"pluginClassName,omitempty" xml:"pluginClassName,omitempty"`
-	// Specifies whether the response includes the plugin attachment information corresponding to attachResourceId.
+	// Specifies whether the response includes the plug-in mounting information corresponding to attachResourceId.
 	//
 	// example:
 	//

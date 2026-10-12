@@ -36,11 +36,11 @@ type AgentServiceConfig struct {
 	//
 	// https://dashscope.aliyuncs.com/api/v1
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The custom configuration. Required when provider is set to custom.
+	// The custom configuration. This parameter is required when provider is set to custom.
 	CustomConfig *AgentServiceConfigCustomConfig `json:"customConfig,omitempty" xml:"customConfig,omitempty" type:"Struct"`
-	// The DashScope service configuration. Required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
+	// The DashScope service configuration. This parameter is required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
 	DashScopeConfig *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
-	// The Dify service configuration. Required when provider is set to dify. The botType and apiKey parameters cannot be empty.
+	// The Dify service configuration. This parameter is required when provider is set to dify. The botType and apiKey parameters cannot be empty.
 	DifyConfig *AgentServiceConfigDifyConfig `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable health check.
 	//

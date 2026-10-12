@@ -26,7 +26,7 @@ type UpdatePluginAttachmentRequest struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The Base64-encoded content of the raw plugin configuration.
+	// The Base64-encoded content of the original plugin configuration.
 	//
 	// example:
 	//

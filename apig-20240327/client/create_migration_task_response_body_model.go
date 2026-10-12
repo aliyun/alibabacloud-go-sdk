@@ -20,16 +20,21 @@ type iCreateMigrationTaskResponseBody interface {
 }
 
 type CreateMigrationTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *CreateMigrationTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,6 +96,8 @@ func (s *CreateMigrationTaskResponseBody) Validate() error {
 }
 
 type CreateMigrationTaskResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// async-task-xxx

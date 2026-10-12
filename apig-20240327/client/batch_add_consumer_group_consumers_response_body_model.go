@@ -100,7 +100,7 @@ type BatchAddConsumerGroupConsumersResponseBodyData struct {
 	FailedConsumerIds []*string `json:"failedConsumerIds,omitempty" xml:"failedConsumerIds,omitempty" type:"Repeated"`
 	// The list of consumer IDs that already exist in the consumer group and were skipped.
 	SkippedConsumerIds []*string `json:"skippedConsumerIds,omitempty" xml:"skippedConsumerIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs successfully added to the consumer group.
+	// The list of consumer IDs that were successfully added to the consumer group.
 	SuccessConsumerIds []*string `json:"successConsumerIds,omitempty" xml:"successConsumerIds,omitempty" type:"Repeated"`
 }
 

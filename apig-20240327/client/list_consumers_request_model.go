@@ -20,7 +20,7 @@ type iListConsumersRequest interface {
 }
 
 type ListConsumersRequest struct {
-	// Filters by gateway type. Valid values: **AI*	- and **API**.
+	// The gateway type used to filter results. Valid values: **AI*	- and **API**.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListConsumersRequest struct {
 	//
 	// UI-test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//

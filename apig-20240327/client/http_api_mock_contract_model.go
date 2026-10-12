@@ -18,7 +18,7 @@ type iHttpApiMockContract interface {
 }
 
 type HttpApiMockContract struct {
-	// Specifies whether to enable the Mock feature.
+	// Indicates whether mock is enabled.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type HttpApiMockContract struct {
 	//
 	// example:
 	//
-	// Mock content.
+	// Mock test
 	ResponseContent *string `json:"responseContent,omitempty" xml:"responseContent,omitempty"`
 }
 

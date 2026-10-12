@@ -96,7 +96,7 @@ func (s *CreateConsumerResponseBody) Validate() error {
 }
 
 type CreateConsumerResponseBodyData struct {
-	// The consumer ID.
+	// The API consumer ID.
 	//
 	// example:
 	//

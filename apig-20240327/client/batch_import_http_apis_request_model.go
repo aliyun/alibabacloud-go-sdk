@@ -32,41 +32,60 @@ type iBatchImportHttpApisRequest interface {
 }
 
 type BatchImportHttpApisRequest struct {
+	// Specifies whether to overwrite existing APIs. If set to true, gatewayId is required.
+	//
 	// example:
 	//
 	// false
 	AllowUpdate *bool `json:"allowUpdate,omitempty" xml:"allowUpdate,omitempty"`
+	// The API type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
+	// Enables the dry run feature, which validates the definition without performing the actual import.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The gateway instance ID. For REST APIs, this parameter is required when withGatewayExtension is set to true or allowUpdate is set to true. For batch import of HTTP APIs, this parameter is always required.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The standard Base64 encoding of the raw bytes of the OAS ZIP package. The decoded size cannot exceed 10 MiB. This parameter cannot be specified together with specFileUrl or specOssConfig. Dry run is supported and returns validation results, but the dry run task result does not return a replayable importRequest.
+	//
 	// example:
 	//
 	// b3BlbmFwaTogMy4wLjAKaW5mbzoKICAgIHRpdGxlOiBkZW1vCiAgICBkZXNjcmlwdGlvbjogdGhpc2lzZGVtbwogICAgdmVyc2lvbjogIiIKcGF0aHM6CiAgICAvdXNlci97dXNlcklkfToKICAgICAgICBnZXQ6CiAgICAgICAgICAgIHN1bW1hcnk6IOiOt+WPlueUqOaIt+S/oeaBrwogICAgICAgICAgICBkZXNjcmlwdGlvbjog6I635Y+W55So5oi35L+h5oGvCiAgICAgICAgICAgIG9wZXJhdGlvbklkOiBHZXRVc2VySW5mbwogICAgICAgICAgICByZXNwb25zZXM6CiAgICAgICAgICAgICAgICAiMjAwIjoKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjog5oiQ5YqfCiAgICAgICAgICAgICAgICAgICAgY29udGVudDoKICAgICAgICAgICAgICAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04OgogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2NoZW1hOiBudWxsCnNlcnZlcnM6CiAgICAtIHVybDogaHR0cDovL2FwaS5leGFtcGxlLmNvbS92MQo=
 	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
+	// The download URL of the OAS ZIP file. The URL must support unauthenticated downloads. OSS URLs and whitelisted backend domain names are supported. At least one of specFileUrl and specOssConfig must be specified.
+	//
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com/my-bucket/imports/batch.zip
-	SpecFileUrl   *string                                  `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
+	SpecFileUrl *string `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
+	// The OSS configuration for the OAS file in ZIP format. At least one of specFileUrl and specOssConfig must be specified.
 	SpecOssConfig *BatchImportHttpApisRequestSpecOssConfig `json:"specOssConfig,omitempty" xml:"specOssConfig,omitempty" type:"Struct"`
+	// The conflict merge strategy during import. Default value: ExistFirst.
+	//
 	// example:
 	//
 	// ExistFirst
 	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+	// Specifies whether to import with gateway extension configurations. This parameter must be set to true for batch import of HTTP APIs.
+	//
 	// example:
 	//
 	// false
@@ -181,18 +200,24 @@ func (s *BatchImportHttpApisRequest) Validate() error {
 }
 
 type BatchImportHttpApisRequestSpecOssConfig struct {
+	// The OSS bucket name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// OSS Object Key。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// imports/batch.zip
 	ObjectKey *string `json:"objectKey,omitempty" xml:"objectKey,omitempty"`
+	// The region ID of the OSS bucket.
+	//
 	// This parameter is required.
 	//
 	// example:

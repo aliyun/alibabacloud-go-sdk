@@ -20,7 +20,7 @@ type UpdateConsumerGroupRequest struct {
 	//
 	// example:
 	//
-	// Used for grouping online API callers.
+	// Group for online API callers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The consumer group name.
 	//

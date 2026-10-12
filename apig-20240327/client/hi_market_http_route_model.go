@@ -20,7 +20,7 @@ type iHiMarketHttpRoute interface {
 }
 
 type HiMarketHttpRoute struct {
-	// Indicates whether the route is a built-in route.
+	// Indicates whether this is a built-in route.
 	//
 	// example:
 	//

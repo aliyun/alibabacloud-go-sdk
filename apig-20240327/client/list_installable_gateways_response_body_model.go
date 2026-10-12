@@ -20,11 +20,16 @@ type iListInstallableGatewaysResponseBody interface {
 }
 
 type ListInstallableGatewaysResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListInstallableGatewaysResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,15 +96,22 @@ func (s *ListInstallableGatewaysResponseBody) Validate() error {
 }
 
 type ListInstallableGatewaysResponseBodyData struct {
+	// The list of gateways.
 	Items []*ListInstallableGatewaysResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 43
@@ -164,30 +176,44 @@ func (s *ListInstallableGatewaysResponseBodyData) Validate() error {
 }
 
 type ListInstallableGatewaysResponseBodyDataItems struct {
+	// The database engine version of the gateway DPI engine.
+	//
 	// example:
 	//
 	// 2.1.10
 	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The gateway status. The value is passed through from the GatewayPhase enumeration, such as Running or Creating.
+	//
 	// example:
 	//
 	// Running
 	GatewayPhase *string `json:"gatewayPhase,omitempty" xml:"gatewayPhase,omitempty"`
+	// Indicates whether the plugin can be installed on the gateway.
+	//
 	// example:
 	//
 	// true
 	Installable *bool `json:"installable,omitempty" xml:"installable,omitempty"`
+	// The reason why the plugin cannot be installed.
+	//
 	// example:
 	//
 	// VERSION_NOT_MATCH
 	InstallableFalseReasonType *string `json:"installableFalseReasonType,omitempty" xml:"installableFalseReasonType,omitempty"`
+	// The version number of another version of the same plugin class that is already installed on the gateway.
+	//
 	// example:
 	//
 	// 1.0.0
 	InstalledPluginVersion *string `json:"installedPluginVersion,omitempty" xml:"installedPluginVersion,omitempty"`
+	// The gateway name.
+	//
 	// example:
 	//
 	// my-gateway

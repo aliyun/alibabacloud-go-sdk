@@ -16,7 +16,7 @@ type iListZonesRequest interface {
 type ListZonesRequest struct {
 	// The target gateway edition for querying zones. Valid values:
 	//
-	// - Professional: standard gateway. This is the default value.
+	// - Professional: Standard gateway. This is the default value.
 	//
 	// - ServerlessV2: API multi-tenant Serverless V2.
 	//

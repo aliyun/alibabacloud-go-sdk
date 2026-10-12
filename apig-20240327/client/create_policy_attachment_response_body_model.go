@@ -96,7 +96,7 @@ func (s *CreatePolicyAttachmentResponseBody) Validate() error {
 }
 
 type CreatePolicyAttachmentResponseBodyData struct {
-	// The policy mount ID.
+	// The policy attachment ID.
 	//
 	// example:
 	//

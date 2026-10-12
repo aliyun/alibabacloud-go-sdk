@@ -124,13 +124,13 @@ type CreateAiModelProviderResponseBodyData struct {
 	//
 	// mp-xxx****
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	// The model provider identifier.
+	// The identifier of the model provider.
 	//
 	// example:
 	//
 	// openai
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The provider source type.
+	// The source type of the provider.
 	//
 	// example:
 	//
@@ -258,15 +258,15 @@ func (s *CreateAiModelProviderResponseBodyData) Validate() error {
 type CreateAiModelProviderResponseBodyDataModelCards struct {
 	// The list of available paths for the model.
 	AvailablePaths []*CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	// The model credits consumption configuration.
+	// The credits consumption configuration of the model.
 	Credit *CreateAiModelProviderResponseBodyDataModelCardsCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
-	// The model capability features.
+	// The capability features of the model.
 	//
 	// example:
 	//
 	// {"stream":true,"tools":true}
 	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
-	// The gateway instance ID to which the model card belongs.
+	// The instance ID of the gateway to which the model card belongs.
 	//
 	// example:
 	//
@@ -286,7 +286,7 @@ type CreateAiModelProviderResponseBodyDataModelCards struct {
 	//
 	// gpt-4
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model provider identifier to which the model card belongs.
+	// The identifier of the model provider to which the model card belongs.
 	//
 	// example:
 	//

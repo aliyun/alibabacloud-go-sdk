@@ -110,7 +110,7 @@ type ListConsumerGroupsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of consumer groups that match the conditions.
+	// The total number of consumer groups that match the specified conditions.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type ListConsumerGroupsResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Used for online API caller grouping.
+	// Used for grouping online API callers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The gateway type. Valid values: API or AI.
 	//

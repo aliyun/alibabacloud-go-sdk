@@ -231,7 +231,7 @@ func (s *AiCacheConfigEmbeddingConfig) Validate() error {
 }
 
 type AiCacheConfigVectorConfig struct {
-	// The API key of the vector database.
+	// The vector database API key.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type AiCacheConfigVectorConfig struct {
 	//
 	// col-xxx
 	CollectionId *string `json:"collectionId,omitempty" xml:"collectionId,omitempty"`
-	// The service address of the vector database.
+	// The vector database service address.
 	//
 	// example:
 	//

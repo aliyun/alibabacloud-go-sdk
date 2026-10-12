@@ -108,7 +108,7 @@ type GetGatewayResponseBodyData struct {
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The source from which the gateway was created. Valid values:
 	//
-	// - Console: the console.
+	// - Console: Console.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type GetGatewayResponseBodyData struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway instance edition. Valid values:
 	//
-	// - Professional: standard instance.
+	// - Professional: Standard instance.
 	//
 	// - Serverless: Serverless instance.
 	//
@@ -144,7 +144,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter. Valid values:
+	// The running mode of AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter. Valid values:
 	//
 	// - ENTERPRISE: default.
 	//
@@ -196,7 +196,7 @@ type GetGatewayResponseBodyData struct {
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
 	// The gateway specification. Valid values:
 	//
-	// - apigw.small.x1: small specification.
+	// - apigw.small.x1: Small specification.
 	//
 	// example:
 	//
@@ -204,23 +204,23 @@ type GetGatewayResponseBodyData struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The gateway status. Valid values:
 	//
-	// - Running: The gateway is running.
+	// - Running: Running.
 	//
-	// - Creating: The gateway is being created.
+	// - Creating: Being created.
 	//
-	// - CreateFailed: The gateway failed to be created.
+	// - CreateFailed: Creation failed.
 	//
-	// - Upgrading: The gateway is being upgraded.
+	// - Upgrading: Being upgraded.
 	//
-	// - UpgradeFailed: The gateway failed to be upgraded.
+	// - UpgradeFailed: Upgrade failed.
 	//
-	// - Restarting: The gateway is being restarted.
+	// - Restarting: Being restarted.
 	//
-	// - RestartFailed: The gateway failed to be restarted.
+	// - RestartFailed: Restart failed.
 	//
-	// - Deleting: The gateway is being released.
+	// - Deleting: Being released.
 	//
-	// - DeleteFailed: The gateway failed to be released.
+	// - DeleteFailed: Release failed.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type GetGatewayResponseBodyData struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The resource tags.
 	Tags []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The target version of the gateway. When this value differs from version, a version upgrade can be performed.
+	// The target version of the gateway. If this value differs from version, a version upgrade can be performed.
 	//
 	// example:
 	//
@@ -629,7 +629,7 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// nlb-xoh3pghr***.cn-hangzhou.nlb.aliyuncs.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The protocol version. Valid values:
+	// The IP version. Valid values:
 	//
 	// - ipv4: IPv4.
 	//
@@ -641,9 +641,9 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
 	// The load balancing address type. Valid values:
 	//
-	// - Internet: public network.
+	// - Internet: Public network.
 	//
-	// - Intranet: private network.
+	// - Intranet: Private network.
 	//
 	// example:
 	//
@@ -667,7 +667,7 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
 	// The load balancing mode of the gateway. Valid values:
 	//
-	// - Managed: managed by Cloud-native API Gateway.
+	// - Managed: Managed by Cloud-native API Gateway.
 	//
 	// example:
 	//

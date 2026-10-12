@@ -38,7 +38,7 @@ type SubDomainInfo struct {
 	//
 	// Intranet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The protocol type supported by the subdomain. Valid values: HTTP, HTTPS.
+	// The protocol type supported by the subdomain. Valid values: HTTP and HTTPS.
 	//
 	// example:
 	//

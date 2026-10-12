@@ -20,15 +20,22 @@ type iGetBatchExportTaskResponseBody interface {
 }
 
 type GetBatchExportTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetBatchExportTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// CE534E1D-FCE4-5930-B784-E055EC1AEE6F
@@ -89,31 +96,46 @@ func (s *GetBatchExportTaskResponseBody) Validate() error {
 }
 
 type GetBatchExportTaskResponseBodyData struct {
+	// The time when the task was created. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	//
 	// example:
 	//
 	// 2026-05-15T10:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// some apis export failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The number of processed items.
+	//
 	// example:
 	//
 	// 5
-	ProcessedCount *int32                                    `json:"processedCount,omitempty" xml:"processedCount,omitempty"`
-	Result         *GetBatchExportTaskResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	ProcessedCount *int32 `json:"processedCount,omitempty" xml:"processedCount,omitempty"`
+	// The task result details.
+	Result *GetBatchExportTaskResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// The task status. Valid values: Pending, Running, Success, PartialSuccess, and Failed.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// async-task-xxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// BatchExport
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// The total number of items.
+	//
 	// example:
 	//
 	// 10
@@ -210,20 +232,28 @@ func (s *GetBatchExportTaskResponseBodyData) Validate() error {
 }
 
 type GetBatchExportTaskResponseBodyDataResult struct {
+	// The API type.
+	//
 	// example:
 	//
 	// Http
-	ApiType      *string                                                 `json:"apiType,omitempty" xml:"apiType,omitempty"`
+	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
+	// The list of APIs that failed to be processed.
 	FailureItems []*GetBatchExportTaskResponseBodyDataResultFailureItems `json:"failureItems,omitempty" xml:"failureItems,omitempty" type:"Repeated"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The Base64-encoded ZIP file content. After the frontend decodes the content, it can directly trigger a browser download.
+	//
 	// example:
 	//
 	// UEsDBBQAAAA...
-	SpecContentBase64 *string                                                 `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
-	SuccessItems      []*GetBatchExportTaskResponseBodyDataResultSuccessItems `json:"successItems,omitempty" xml:"successItems,omitempty" type:"Repeated"`
+	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
+	// The list of APIs that were processed successfully.
+	SuccessItems []*GetBatchExportTaskResponseBodyDataResultSuccessItems `json:"successItems,omitempty" xml:"successItems,omitempty" type:"Repeated"`
 }
 
 func (s GetBatchExportTaskResponseBodyDataResult) String() string {
@@ -302,14 +332,20 @@ func (s *GetBatchExportTaskResponseBodyDataResult) Validate() error {
 }
 
 type GetBatchExportTaskResponseBodyDataResultFailureItems struct {
+	// API ID。
+	//
 	// example:
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// The API name.
+	//
 	// example:
 	//
 	// petstore
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// api definition is invalid
@@ -356,14 +392,20 @@ func (s *GetBatchExportTaskResponseBodyDataResultFailureItems) Validate() error 
 }
 
 type GetBatchExportTaskResponseBodyDataResultSuccessItems struct {
+	// API ID。
+	//
 	// example:
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// The API name.
+	//
 	// example:
 	//
 	// petstore
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// api definition is invalid

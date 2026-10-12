@@ -18,7 +18,7 @@ type iExportHttpApiRequest interface {
 }
 
 type ExportHttpApiRequest struct {
-  // Specifies whether to export the plug-in configuration.
+  // Specifies whether to export plug-in configurations.
   ExtensionConfig *ExportHttpApiRequestExtensionConfig `json:"extensionConfig,omitempty" xml:"extensionConfig,omitempty" type:"Struct"`
   // The gateway instance ID. This parameter is required when you export gateway extension information.
   // 
@@ -75,15 +75,15 @@ func (s *ExportHttpApiRequest) Validate() error {
 }
 
 type ExportHttpApiRequestExtensionConfig struct {
-  // Specifies whether to export the consumer authorization configuration for operations or routes.
+  // Specifies whether to export consumer authorization configurations for operations or routes.
   WithAuthConfig *bool `json:"withAuthConfig,omitempty" xml:"withAuthConfig,omitempty"`
-  // Specifies whether to export the authorized consumers.
+  // Specifies whether to export authorized consumers.
   WithAuthConsumer *bool `json:"withAuthConsumer,omitempty" xml:"withAuthConsumer,omitempty"`
-  // Specifies whether to export the plug-in configuration.
+  // Specifies whether to export plug-in configurations.
   WithPlugin *bool `json:"withPlugin,omitempty" xml:"withPlugin,omitempty"`
-  // Specifies whether to export the policy configuration.
+  // Specifies whether to export policy configurations.
   WithPolicy *bool `json:"withPolicy,omitempty" xml:"withPolicy,omitempty"`
-  // Specifies whether to export the backend service.
+  // Specifies whether to export backend services.
   WithService *bool `json:"withService,omitempty" xml:"withService,omitempty"`
 }
 

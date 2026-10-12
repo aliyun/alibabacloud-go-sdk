@@ -96,7 +96,7 @@ func (s *GetConsumerResponseBody) Validate() error {
 }
 
 type GetConsumerResponseBodyData struct {
-	// The AK/SK identity authentication configuration.
+	// The AccessKey ID and AccessKey Secret identity authentication configurations.
 	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
 	// The API key identity authentication configuration.
 	ApiKeyIdentityConfig *ApiKeyIdentityConfig `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
@@ -300,7 +300,7 @@ type GetConsumerResponseBodyDataConsumerGroups struct {
 	//
 	// Used for grouping online API callers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The time when the API consumer joined the consumer group, in Unix milliseconds timestamp.
+	// The time when the API consumer joined the consumer group. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

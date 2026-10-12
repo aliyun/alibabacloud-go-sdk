@@ -20,11 +20,16 @@ type iListPluginWorkspaceResponseBody interface {
 }
 
 type ListPluginWorkspaceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data []*ListPluginWorkspaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -95,18 +100,26 @@ func (s *ListPluginWorkspaceResponseBody) Validate() error {
 }
 
 type ListPluginWorkspaceResponseBodyData struct {
+	// The Codeup organization ID.
+	//
 	// example:
 	//
 	// 664f1e2xxxx
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// The Codeup repository ID.
+	//
 	// example:
 	//
 	// 12345678
 	RepoId *string `json:"repoId,omitempty" xml:"repoId,omitempty"`
+	// The repository name (the English ID of the plugin).
+	//
 	// example:
 	//
 	// my-custom-plugin
 	RepoName *string `json:"repoName,omitempty" xml:"repoName,omitempty"`
+	// The workspace ID (prefixed with plw-).
+	//
 	// example:
 	//
 	// plw-xxxxxxxx

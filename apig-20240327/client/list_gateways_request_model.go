@@ -42,7 +42,7 @@ type ListGatewaysRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The keyword for full match search. Case-insensitive.
+	// The keyword for full match search. The search is case-insensitive.
 	//
 	// example:
 	//

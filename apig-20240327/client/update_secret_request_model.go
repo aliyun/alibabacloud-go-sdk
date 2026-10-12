@@ -14,7 +14,7 @@ type iUpdateSecretRequest interface {
 }
 
 type UpdateSecretRequest struct {
-	// The key pair value.
+	// The secret value.
 	//
 	// example:
 	//

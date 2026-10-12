@@ -20,11 +20,16 @@ type iVerifyMigrationTaskResponseBody interface {
 }
 
 type VerifyMigrationTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *VerifyMigrationTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,18 +96,25 @@ func (s *VerifyMigrationTaskResponseBody) Validate() error {
 }
 
 type VerifyMigrationTaskResponseBodyData struct {
+	// Indicates whether all routes are compatible and can be migrated.
+	//
 	// example:
 	//
 	// true
 	IsSupported *bool `json:"isSupported,omitempty" xml:"isSupported,omitempty"`
+	// The description of the check result, such as the failure reason or incompatibility summary. This value is from the Istio validation Reason.
+	//
 	// example:
 	//
 	// all routes supported
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Indicates whether the check is successful, which means whether the Istiod query link is working properly.
+	//
 	// example:
 	//
 	// true
-	Success               *bool                                                       `json:"success,omitempty" xml:"success,omitempty"`
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The list of incompatible routes.
 	UnSupportedRouteRules []*VerifyMigrationTaskResponseBodyDataUnSupportedRouteRules `json:"unSupportedRouteRules,omitempty" xml:"unSupportedRouteRules,omitempty" type:"Repeated"`
 }
 
@@ -164,14 +176,19 @@ func (s *VerifyMigrationTaskResponseBodyData) Validate() error {
 }
 
 type VerifyMigrationTaskResponseBodyDataUnSupportedRouteRules struct {
+	// The namespaced name of the incompatible Ingress.
+	//
 	// example:
 	//
 	// default/my-ingress
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The summary of the incompatible rule, in the format of request URI → destination service.
+	//
 	// example:
 	//
 	// /api/v1/pets -> pet-service
-	Rule                   *string   `json:"rule,omitempty" xml:"rule,omitempty"`
+	Rule *string `json:"rule,omitempty" xml:"rule,omitempty"`
+	// The list of unsupported annotations on the Ingress.
 	UnSupportedAnnotations []*string `json:"unSupportedAnnotations,omitempty" xml:"unSupportedAnnotations,omitempty" type:"Repeated"`
 }
 

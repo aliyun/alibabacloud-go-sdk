@@ -56,7 +56,7 @@ type HiMarketModelFeature struct {
 	//
 	// true
 	Streaming *bool `json:"streaming,omitempty" xml:"streaming,omitempty"`
-	// The temperature parameter that controls the randomness of generation.
+	// The temperature parameter that controls the randomness of the generated output.
 	//
 	// example:
 	//

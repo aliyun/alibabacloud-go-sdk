@@ -56,13 +56,13 @@ type SslCertMetaInfo struct {
 	//
 	// RSA2048
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	// The certificate ID.
+	// The unique certificate ID.
 	//
 	// example:
 	//
 	// 1234567890
 	CertId *int64 `json:"certId,omitempty" xml:"certId,omitempty"`
-	// The certificate ID.
+	// The certificate identifier.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type SslCertMetaInfo struct {
 	//
 	// example.com
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
-	// The name.
+	// The common name.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type SslCertMetaInfo struct {
 	//
 	// api.example.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The certificate matching the domain name.
+	// The certificate matched to the domain name.
 	//
 	// example:
 	//
@@ -122,19 +122,19 @@ type SslCertMetaInfo struct {
 	//
 	// 2048
 	KeySize *string `json:"keySize,omitempty" xml:"keySize,omitempty"`
-	// The md5 value.
+	// The MD5 value.
 	//
 	// example:
 	//
 	// A1B2C3D4E5F67890ABCDEF1234567890
 	Md5 *string `json:"md5,omitempty" xml:"md5,omitempty"`
-	// The time when the certificate expires.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1234567890000
 	NotAfterTimestamp *int64 `json:"notAfterTimestamp,omitempty" xml:"notAfterTimestamp,omitempty"`
-	// The time when the certificate starts to take effect.
+	// The start time.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type SslCertMetaInfo struct {
 	//
 	// 03:A1:B2:C3:D4:E5:F6:78:90:AB:CD:EF:12:34:56:78:90
 	SerialNo *string `json:"serialNo,omitempty" xml:"serialNo,omitempty"`
-	// The sha2 value.
+	// The SHA-2 value.
 	//
 	// example:
 	//

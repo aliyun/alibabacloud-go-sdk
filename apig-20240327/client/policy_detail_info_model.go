@@ -46,7 +46,7 @@ type PolicyDetailInfo struct {
 	//
 	// example:
 	//
-	// 每秒限流100次
+	// Rate limited to 100 requests per second
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The policy name.
 	//

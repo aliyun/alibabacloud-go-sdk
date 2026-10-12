@@ -30,9 +30,9 @@ type UpdatePolicyRequest struct {
 	//
 	// example:
 	//
-	// 这是一条网关超时策略
+	// This is a gateway timeout policy
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The Policy Name.
+	// The policy name.
 	//
 	// This parameter is required.
 	//

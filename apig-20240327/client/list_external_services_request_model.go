@@ -34,7 +34,7 @@ type ListExternalServicesRequest struct {
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Fuzzy search by API name.
+	// Fuzzy match by API name.
 	//
 	// example:
 	//

@@ -22,21 +22,29 @@ type iInvokeAIAgentRequest interface {
 }
 
 type InvokeAIAgentRequest struct {
+	// The agent name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// slsLogDiagnose
-	AgentName *string                        `json:"agentName,omitempty" xml:"agentName,omitempty"`
-	BizParams map[string]*string             `json:"bizParams,omitempty" xml:"bizParams,omitempty"`
-	History   []*InvokeAIAgentRequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
+	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
+	// The business parameters. Each agent performs custom validation on these parameters, such as the SLS context passed for log diagnostics.
+	BizParams map[string]*string `json:"bizParams,omitempty" xml:"bizParams,omitempty"`
+	// The conversation history. Each element contains role (user/assistant) and content. The role and content fields in each element cannot be empty.
+	History []*InvokeAIAgentRequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
+	// The output language. When set to en, fallback error messages are displayed in English.
+	//
 	// example:
 	//
 	// zh / en
 	OutputLanguage *string `json:"outputLanguage,omitempty" xml:"outputLanguage,omitempty"`
+	// The user input for the current turn. If left empty, a default prompt is used based on the scenario, such as "Start".
+	//
 	// example:
 	//
-	// 帮我诊断这个错误日志
+	// Help me diagnose this error log
 	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
 }
 
@@ -107,10 +115,14 @@ func (s *InvokeAIAgentRequest) Validate() error {
 }
 
 type InvokeAIAgentRequestHistory struct {
+	// The content of the message. The returned data is in rich text format.
+	//
 	// example:
 	//
-	// 上一轮问题
+	// Previous question
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The role.
+	//
 	// example:
 	//
 	// user

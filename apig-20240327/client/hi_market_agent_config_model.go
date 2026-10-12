@@ -45,9 +45,9 @@ func (s *HiMarketAgentConfig) Validate() error {
 }
 
 type HiMarketAgentConfigAgentAPIConfig struct {
-	// The list of agent protocols.
+	// The agent protocol list.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The list of agent API routing configurations.
+	// The agent API routing configuration list.
 	Routes []*HiMarketHttpRoute `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 

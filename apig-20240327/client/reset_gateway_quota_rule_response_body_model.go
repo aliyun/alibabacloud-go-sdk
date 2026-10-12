@@ -32,13 +32,13 @@ type ResetGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *ResetGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message.
+	// The message content.
 	//
 	// example:
 	//
 	// Hello, World!
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *ResetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The conflict hash.
+	// The hash of the conflict snapshot.
 	//
 	// example:
 	//
@@ -243,11 +243,11 @@ func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	// The period type of the existing conflicting rule on the subject. Valid values:
 	//
-	// - day: The period of the existing conflicting rule is daily.
+	// - day: daily.
 	//
-	// - week: The period of the existing conflicting rule is weekly.
+	// - week: weekly.
 	//
-	// - month: The period of the existing conflicting rule is monthly.
+	// - month: monthly.
 	//
 	// example:
 	//
@@ -289,9 +289,9 @@ type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	SubjectName *string `json:"subjectName,omitempty" xml:"subjectName,omitempty"`
 	// The type of the conflicting subject. Valid values:
 	//
-	// - consumer
+	// - consumer: consumer.
 	//
-	// - consumer_group
+	// - consumer_group: consumer group.
 	//
 	// example:
 	//

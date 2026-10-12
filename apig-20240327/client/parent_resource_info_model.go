@@ -18,7 +18,17 @@ type iParentResourceInfo interface {
 type ParentResourceInfo struct {
 	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// The resource type. Valid values: HttpApi/Operation/GatewayRoute/Gateway/GatewayDomain
+	// The resource type. Valid values:
+	//
+	// - HttpApi
+	//
+	// - Operation
+	//
+	// - GatewayRoute
+	//
+	// - Gateway
+	//
+	// - GatewayDomain
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListSourcesRequest interface {
 }
 
 type ListSourcesRequest struct {
-	// The instance ID.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cpv4sqdl****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -40,17 +40,13 @@ type ListSourcesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The resource group ID used to filter results. This parameter is also used for RAM authentication.
+	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The type by which you want to query sources.
-	//
-	// Valid values:
-	//
-	// 	- K8S
-	//
-	// 	- MSE_NACOS
+	// The source type used to filter the query results.
 	//
 	// example:
 	//

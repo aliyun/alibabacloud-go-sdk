@@ -32,11 +32,11 @@ type iEnvironmentInfo interface {
 }
 
 type EnvironmentInfo struct {
-  // The environment alias.
+  // The alias.
   // 
   // example:
   // 
-  // test-env
+  // Test environment
   Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
   // The creation timestamp.
   // 
@@ -44,17 +44,17 @@ type EnvironmentInfo struct {
   // 
   // 1721116090326
   CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-  // Specifies whether the environment is the default environment.
+  // Indicates whether the environment is the default environment.
   // 
   // example:
   // 
   // false
   Default *bool `json:"default,omitempty" xml:"default,omitempty"`
-  // The environment descriptiont.
+  // The environment description.
   // 
   // example:
   // 
-  // This is a test environment.
+  // This is the test environment for the xx project of xxx
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // The environment ID.
   // 
@@ -62,7 +62,7 @@ type EnvironmentInfo struct {
   // 
   // env-cq7l5s5lhtgi6qasrdc0
   EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-  // The instance information.
+  // The gateway information.
   GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
   // The environment name.
   // 
@@ -76,7 +76,7 @@ type EnvironmentInfo struct {
   // 
   // rg-xxxx
   ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-  // The subdomains.
+  // The subdomain list.
   SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
   // The update timestamp.
   // 

@@ -30,7 +30,7 @@ type SyncMCPServersRequest struct {
 	//
 	// gw-cq7l5s5lhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The list of Nacos MCP Servers to sync. If the list contains MCP Servers that have already been synced, include the mcpServerId.
+	// The list of Nacos MCP servers to sync. If the list contains MCP servers that have already been synced, include the mcpServerId.
 	NacosMcpServers []*SyncMCPServersRequestNacosMcpServers `json:"nacosMcpServers,omitempty" xml:"nacosMcpServers,omitempty" type:"Repeated"`
 	// The Nacos namespace.
 	//
@@ -113,7 +113,7 @@ func (s *SyncMCPServersRequest) Validate() error {
 }
 
 type SyncMCPServersRequestNacosMcpServers struct {
-	// The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
+	// The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type SyncMCPServersRequestNacosMcpServers struct {
 	//
 	// mcp-d3s8qo6m1hknegofa3bg
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP Server name.
+	// The MCP server name.
 	//
 	// example:
 	//

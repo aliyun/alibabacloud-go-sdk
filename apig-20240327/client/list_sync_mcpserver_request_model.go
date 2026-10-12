@@ -18,14 +18,20 @@ type iListSyncMCPServerRequest interface {
 }
 
 type ListSyncMCPServerRequest struct {
+	// The AI gateway ID. This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty(400).
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The Nacos namespace ID. This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty(400).
+	//
 	// example:
 	//
 	// public
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The Nacos service source ID. In a single Nacos source scenario, this parameter can be omitted because the server automatically populates the unique source. In a multi-Nacos source scenario, this parameter is required. Otherwise, a parameter error indicating that sourceId is empty is returned. If the gateway has no Nacos source, the error ErrServiceSourceNotFound is returned.
+	//
 	// example:
 	//
 	// src-xxxx

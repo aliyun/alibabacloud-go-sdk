@@ -30,47 +30,61 @@ type iRiskCheckResults interface {
 }
 
 type RiskCheckResults struct {
-	// The check time
+	// The check timestamp.
 	//
 	// example:
 	//
 	// 1234567890000
 	CheckTime *int64 `json:"checkTime,omitempty" xml:"checkTime,omitempty"`
-	// The gateway ID
+	// The unique identifier of the gateway instance.
 	//
 	// example:
 	//
 	// gw-0364f863b1a04474911b48cd6d51d03d
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The instance metadata
+	// The basic information about the instance.
 	Metadata *RiskCheckResultsMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// The risk details list
+	// The list of detailed risk items.
 	RiskDetails []*RiskCheckResultsRiskDetails `json:"riskDetails,omitempty" xml:"riskDetails,omitempty" type:"Repeated"`
-	// The risk level
+	// The overall risk level. Valid values:
+	//
+	// - LOW: Low risk.
+	//
+	// - MEDIUM: Medium risk.
+	//
+	// - HIGH: High risk.
+	//
+	// - CRITICAL: Critical risk.
 	//
 	// example:
 	//
 	// MEDIUM
 	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	// The risk score
+	// The overall risk score. Valid values: 0 to 100. A higher score indicates a lower risk.
 	//
 	// example:
 	//
 	// 85
 	Score *int32 `json:"score,omitempty" xml:"score,omitempty"`
-	// The snapshot time
+	// The snapshot time.
 	//
 	// example:
 	//
 	// 1234567890000
 	SnapshotTime *int64 `json:"snapshotTime,omitempty" xml:"snapshotTime,omitempty"`
-	// The execution status
+	// The risk detection status. Valid values:
+	//
+	// - SUCCESS: The detection succeeded.
+	//
+	// - FAIL: The detection failed.
+	//
+	// - RUNNING: The detection is running.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The total number of risks
+	// The total number of detected risk items.
 	//
 	// example:
 	//
@@ -186,25 +200,25 @@ func (s *RiskCheckResults) Validate() error {
 }
 
 type RiskCheckResultsMetadata struct {
-	// The cluster type
+	// The cluster type.
 	//
 	// example:
 	//
 	// Ingress
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-	// The replica count
+	// The number of replicas.
 	//
 	// example:
 	//
 	// 3
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
-	// The specification
+	// The instance specifications.
 	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The version
+	// The instance version.
 	//
 	// example:
 	//
@@ -261,61 +275,69 @@ func (s *RiskCheckResultsMetadata) Validate() error {
 }
 
 type RiskCheckResultsRiskDetails struct {
-	// The check module
+	// The name of the module that performed the check.
 	//
 	// example:
 	//
 	// BaseInfo
 	CheckModule *string `json:"checkModule,omitempty" xml:"checkModule,omitempty"`
-	// The risk detailed data
+	// The detailed data related to the risk. The data structure varies by risk type.
 	Data map[string]*string `json:"data,omitempty" xml:"data,omitempty"`
-	// The risk description
+	// The detailed description of the risk in JSON string format.
 	//
 	// example:
 	//
-	// The version is outdated
+	// {"desc":"The single-node instance has an architecture risk. A single point of failure can cause service unavailability. Scale out to two or more nodes."}
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Whether to mute notifications
+	// Indicates whether the alert notification for the risk item is muted.
 	//
 	// example:
 	//
 	// false
 	IsNoticeMute *bool `json:"isNoticeMute,omitempty" xml:"isNoticeMute,omitempty"`
-	// The risk code
+	// The unique identifier of the risk item.
 	//
 	// example:
 	//
 	// 30010010001
 	RiskCode *string `json:"riskCode,omitempty" xml:"riskCode,omitempty"`
-	// The risk level
+	// The level of the risk item. Valid values: LOW, MEDIUM, HIGH, and CRITICAL.
 	//
 	// example:
 	//
 	// HIGH
 	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	// The risk title
+	// The name of the risk item.
 	//
 	// example:
 	//
-	// Version Risk
+	// Single-node architecture risk
 	RiskName *string `json:"riskName,omitempty" xml:"riskName,omitempty"`
-	// The risk type
+	// The risk category. Valid values:
+	//
+	// - SYSTEM: System risk.
+	//
+	// - VERSION: Version risk.
+	//
+	// - SAFE: Security risk.
+	//
+	// - CAPACITY: Capacity risk.
 	//
 	// example:
 	//
 	// SYSTEM
 	RiskType *string `json:"riskType,omitempty" xml:"riskType,omitempty"`
-	// The risk situation
+	// The current risk situation of the instance in JSON string format.
 	//
 	// example:
 	//
-	// Current version is 2 releases behind
+	// {"desc":"The cluster has only one node and does not support high availability."}
 	Situation *string `json:"situation,omitempty" xml:"situation,omitempty"`
-	// The fix suggestion
+	// The optimization suggestions for the risk in JSON string format, including descriptions and action links.
 	//
 	// example:
 	//
-	// Upgrade to the latest version
+	// {"desc":"Scale out to two or more nodes.","links":[{"descEn":"click to upgrade specification","type":"upgrade","desc":"Click to scale out"}]}
 	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
 }
 

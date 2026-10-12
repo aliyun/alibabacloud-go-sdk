@@ -16,13 +16,19 @@ type iUpdateRiskNotificationRequest interface {
 }
 
 type UpdateRiskNotificationRequest struct {
+	// Specifies whether to mute notifications.
+	//
 	// example:
 	//
 	// true
 	IsMute *bool `json:"isMute,omitempty" xml:"isMute,omitempty"`
+	// The risk item code. This parameter is required.
+	//
+	// The value is a numeric string (for example, 60010010002 or 50010010009). Call GetRiskNotification to query the code of the current risk item.
+	//
 	// example:
 	//
-	// GW_VERSION_EXPIRED
+	// 60010010002
 	RiskCode *string `json:"riskCode,omitempty" xml:"riskCode,omitempty"`
 }
 

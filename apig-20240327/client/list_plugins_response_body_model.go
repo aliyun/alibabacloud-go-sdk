@@ -96,7 +96,7 @@ func (s *ListPluginsResponseBody) Validate() error {
 }
 
 type ListPluginsResponseBodyData struct {
-	// The plugin list.
+	// The list of plug-ins.
 	Items []*ListPluginsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -104,7 +104,7 @@ type ListPluginsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *ListPluginsResponseBodyData) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItems struct {
-	// The plugin attachment information.
+	// The plug-in mounting information.
 	AttachmentInfo *ListPluginsResponseBodyDataItemsAttachmentInfo `json:"attachmentInfo,omitempty" xml:"attachmentInfo,omitempty" type:"Struct"`
 	// The gateway information.
 	GatewayInfo *ListPluginsResponseBodyDataItemsGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
-	// The plugin type information.
+	// The plug-in type information.
 	PluginClassInfo *ListPluginsResponseBodyDataItemsPluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty" type:"Struct"`
-	// The plugin ID.
+	// The plug-in ID.
 	//
 	// example:
 	//
@@ -254,13 +254,13 @@ func (s *ListPluginsResponseBodyDataItems) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItemsAttachmentInfo struct {
-	// Indicates whether the plugin is enabled.
+	// Indicates whether the plug-in is enabled.
 	//
 	// example:
 	//
 	// false
 	Enable *string `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The plugin attachment ID.
+	// The plug-in mounting ID.
 	//
 	// example:
 	//
@@ -348,7 +348,7 @@ type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
 	//
 	// example:
 	//
-	// 基于 Key 限流
+	// Key-based throttling
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The execution priority.
 	//
@@ -362,19 +362,19 @@ type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
 	//
 	// AUTHZ
 	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
-	// The plugin name.
+	// The plug-in name.
 	//
 	// example:
 	//
 	// key-rate-limit
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plugin type ID.
+	// The plug-in type ID.
 	//
 	// example:
 	//
 	// pls-cqebrgh46ppatmpri
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The plugin source.
+	// The plug-in source.
 	//
 	// example:
 	//
@@ -390,7 +390,7 @@ type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
 	//
 	// example:
 	//
-	// 版本描述
+	// Version description
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 }
 

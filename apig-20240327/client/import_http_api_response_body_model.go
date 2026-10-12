@@ -394,7 +394,7 @@ type ImportHttpApiResponseBodyDataDryRunInfoFailureOperations struct {
 	//
 	// example:
 	//
-	// Missing response definition
+	// The response definition is missing
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	// The operation method.
 	//

@@ -62,43 +62,43 @@ func (s *HiMarketProductRefConfig) Validate() error {
 }
 
 type HiMarketProductRefConfigApigRefConfig struct {
-	// The associated Agent API ID.
+	// The ID of the associated Agent API.
 	//
 	// example:
 	//
 	// api-xxx
 	AgentApiId *string `json:"agentApiId,omitempty" xml:"agentApiId,omitempty"`
-	// The Agent API name.
+	// The name of the Agent API.
 	//
 	// example:
 	//
 	// my-agent-api
 	AgentApiName *string `json:"agentApiName,omitempty" xml:"agentApiName,omitempty"`
-	// The associated MCP route ID.
+	// The ID of the associated MCP route.
 	//
 	// example:
 	//
 	// route-xxx
 	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
-	// The associated MCP Server ID.
+	// The ID of the associated MCP Server.
 	//
 	// example:
 	//
 	// mcp-xxx
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP Server name.
+	// The name of the MCP Server.
 	//
 	// example:
 	//
 	// my-mcp-server
 	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	// The associated Model API ID.
+	// The ID of the associated Model API.
 	//
 	// example:
 	//
 	// api-yyy
 	ModelApiId *string `json:"modelApiId,omitempty" xml:"modelApiId,omitempty"`
-	// The Model API name.
+	// The name of the Model API.
 	//
 	// example:
 	//

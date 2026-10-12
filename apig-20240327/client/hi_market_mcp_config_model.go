@@ -20,9 +20,9 @@ type iHiMarketMcpConfig interface {
 }
 
 type HiMarketMcpConfig struct {
-	// The MCP Server configuration.
+	// The MCP server configuration.
 	McpServerConfig *HiMarketMcpConfigMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
-	// The MCP Server name.
+	// The MCP server name.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type HiMarketMcpConfig struct {
 	//
 	// example:
 	//
-	// [{\\"name\\":\\"search\\",\\"description\\":\\"搜索工具\\"}]
+	// [{\\"name\\":\\"search\\",\\"description\\":\\"Search tool\\"}]
 	Tools *string `json:"tools,omitempty" xml:"tools,omitempty"`
 }
 

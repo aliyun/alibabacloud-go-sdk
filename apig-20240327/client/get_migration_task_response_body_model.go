@@ -20,11 +20,16 @@ type iGetMigrationTaskResponseBody interface {
 }
 
 type GetMigrationTaskResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetMigrationTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,76 +96,116 @@ func (s *GetMigrationTaskResponseBody) Validate() error {
 }
 
 type GetMigrationTaskResponseBodyData struct {
+	// The ID of the associated HTTP API.
+	//
 	// example:
 	//
 	// api-xxxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// The API name. This value may be empty.
+	//
 	// example:
 	//
 	// ingress-api
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The ID of the source ACK cluster.
+	//
 	// example:
 	//
 	// c-xxxxxx
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The name of the source cluster. The name is retrieved by looking up the service source based on gatewayId and clusterId. If the lookup fails, a hyphen (-) is returned as a fallback.
+	//
 	// example:
 	//
 	// my-cluster
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	// The namespace of the source cluster. This value is selected during SLB traffic switching.
+	//
 	// example:
 	//
 	// default
 	ClusterNamespace *string `json:"clusterNamespace,omitempty" xml:"clusterNamespace,omitempty"`
+	// The creation time. The value is a UNIX timestamp in seconds. Multiply the value by 1000 on the frontend before formatting.
+	//
 	// example:
 	//
 	// 1756262400
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The task description.
+	//
 	// example:
 	//
 	// workspace api monitor test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ID of the destination environment.
+	//
 	// example:
 	//
 	// env-xxxx
 	EnvId *string `json:"envId,omitempty" xml:"envId,omitempty"`
+	// The ID of the destination gateway.
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The name of the destination gateway. If the query fails, a hyphen (-) is returned as a fallback without blocking the return of the main task information.
+	//
 	// example:
 	//
 	// my-gateway
-	GatewayName   *string                                        `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
+	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
+	// The Ingress configuration.
 	IngressConfig *GetMigrationTaskResponseBodyDataIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
+	// The migration type.
+	//
+	// [_single.resp.200.props.data.migrationType.enum.Nginx Ingress]Nginx Ingress migration.
+	//
 	// example:
 	//
 	// Nginx Ingress
 	MigrationType *string `json:"migrationType,omitempty" xml:"migrationType,omitempty"`
+	// The name of the selected SLB service.
+	//
 	// example:
 	//
 	// nginx-ingress-lb
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The ID of the SLB instance used for traffic switching.
+	//
 	// example:
 	//
 	// lb-bp1xxxx
 	SlbId *string `json:"slbId,omitempty" xml:"slbId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// FlowSwitch
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The traffic switching method.
+	//
 	// example:
 	//
 	// SLB
 	SwitchType *string `json:"switchType,omitempty" xml:"switchType,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// mt-xxxxxxxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The ID of the user to whom the task belongs.
+	//
 	// example:
 	//
 	// 1234567890
-	UserId          *string                                            `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The list of SLB virtual server groups.
 	VirtualServices []*GetMigrationTaskResponseBodyDataVirtualServices `json:"virtualServices,omitempty" xml:"virtualServices,omitempty" type:"Repeated"`
+	// The weight of the APIG-side service in the legacy flow (0-100).
+	//
 	// example:
 	//
 	// 50
@@ -374,10 +419,14 @@ func (s *GetMigrationTaskResponseBodyData) Validate() error {
 }
 
 type GetMigrationTaskResponseBodyDataIngressConfig struct {
+	// The Ingress class to listen on.
+	//
 	// example:
 	//
 	// nginx
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
+	// The namespace in which to listen for Ingress resources.
+	//
 	// example:
 	//
 	// default
@@ -415,18 +464,26 @@ func (s *GetMigrationTaskResponseBodyDataIngressConfig) Validate() error {
 }
 
 type GetMigrationTaskResponseBodyDataVirtualServices struct {
+	// The port.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The protocol. This parameter is required for CLB.
+	//
 	// example:
 	//
 	// tcp
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The backend server group ID.
+	//
 	// example:
 	//
 	// rsp-xxxx
 	VirtualServiceGroupId *string `json:"virtualServiceGroupId,omitempty" xml:"virtualServiceGroupId,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// 80-tcp

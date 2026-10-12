@@ -100,49 +100,49 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
-	// The total cached token consumption.
+	// The total consumption of cached tokens.
 	//
 	// example:
 	//
 	// 20
 	CachedAmount *int64 `json:"cachedAmount,omitempty" xml:"cachedAmount,omitempty"`
-	// The exact value of total cached consumption. Decimals are supported in credit scenarios.
+	// The exact value of the total cached consumption. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//
 	// 20.5
 	CachedAmountDecimal *float64 `json:"cachedAmountDecimal,omitempty" xml:"cachedAmountDecimal,omitempty"`
-	// The paginated consumption details.
+	// The pagination of consumption details.
 	//
 	// example:
 	//
 	// {"totalSize":100}
 	Details *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails `json:"details,omitempty" xml:"details,omitempty" type:"Struct"`
-	// The total input token consumption.
+	// The total consumption of input tokens.
 	//
 	// example:
 	//
 	// 300
 	InputAmount *int64 `json:"inputAmount,omitempty" xml:"inputAmount,omitempty"`
-	// The exact value of total input consumption. Decimals are supported in credit scenarios.
+	// The exact value of the total input consumption. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//
 	// 300.5
 	InputAmountDecimal *float64 `json:"inputAmountDecimal,omitempty" xml:"inputAmountDecimal,omitempty"`
-	// The total output token consumption.
+	// The total consumption of output tokens.
 	//
 	// example:
 	//
 	// 180
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
-	// The exact value of total output consumption. Decimals are supported in credit scenarios.
+	// The exact value of the total output consumption. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//
 	// 180.5
 	OutputAmountDecimal *float64 `json:"outputAmountDecimal,omitempty" xml:"outputAmountDecimal,omitempty"`
-	// Indicates whether the quota limit is exceeded.
+	// Indicates whether the limit is exceeded.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 1000
 	TotalQuota *int64 `json:"totalQuota,omitempty" xml:"totalQuota,omitempty"`
-	// The total used amount of the subject.
+	// The total used quota of the subject.
 	//
 	// example:
 	//
 	// 500
 	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
-	// The exact value of the total used amount of the subject. Decimals are supported in credit scenarios.
+	// The exact value of the total used quota of the subject. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//
@@ -399,49 +399,49 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails) Validate() erro
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
-	// The cached token consumption.
+	// The consumption of cached tokens.
 	//
 	// example:
 	//
 	// 10
 	CachedAmount *int64 `json:"cachedAmount,omitempty" xml:"cachedAmount,omitempty"`
-	// The exact value of cached consumption. Decimals are supported in credit scenarios.
+	// The exact value of the cached consumption. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//
 	// 10.5
 	CachedAmountDecimal *float64 `json:"cachedAmountDecimal,omitempty" xml:"cachedAmountDecimal,omitempty"`
-	// The consumer name.
+	// The name of the consumer.
 	//
 	// example:
 	//
 	// consumer-a
 	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
-	// The input token consumption.
+	// The consumption of input tokens.
 	//
 	// example:
 	//
 	// 120
 	InputAmount *int64 `json:"inputAmount,omitempty" xml:"inputAmount,omitempty"`
-	// The exact value of input consumption. Decimals are supported in credit scenarios.
+	// The exact value of the input consumption. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//
 	// 120.5
 	InputAmountDecimal *float64 `json:"inputAmountDecimal,omitempty" xml:"inputAmountDecimal,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// The output token consumption.
+	// The consumption of output tokens.
 	//
 	// example:
 	//
 	// 80
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
-	// The exact value of output consumption. Decimals are supported in credit scenarios.
+	// The exact value of the output consumption. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//
@@ -453,7 +453,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// req-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The consumption (request) time in the format of YYYY-MM-DD.
+	// The consumption or request time in YYYY-MM-DD format.
 	//
 	// example:
 	//
@@ -465,7 +465,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 210
 	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
-	// The exact value of total consumption. Decimals are supported in credit scenarios.
+	// The exact value of the total consumption. Decimals are supported in credit scenarios.
 	//
 	// example:
 	//

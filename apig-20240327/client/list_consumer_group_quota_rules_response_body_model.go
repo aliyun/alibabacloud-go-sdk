@@ -20,18 +20,26 @@ type iListConsumerGroupQuotaRulesResponseBody interface {
 }
 
 type ListConsumerGroupQuotaRulesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {"totalSize":100}
 	Data *ListConsumerGroupQuotaRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1234567890
@@ -92,18 +100,26 @@ func (s *ListConsumerGroupQuotaRulesResponseBody) Validate() error {
 }
 
 type ListConsumerGroupQuotaRulesResponseBodyData struct {
+	// The list of rules.
+	//
 	// example:
 	//
 	// [{"ruleId":"rule-001"}]
 	Items []*ListConsumerGroupQuotaRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The current page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -168,46 +184,76 @@ func (s *ListConsumerGroupQuotaRulesResponseBodyData) Validate() error {
 }
 
 type ListConsumerGroupQuotaRulesResponseBodyDataItems struct {
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The name of the gateway. Falls back to the gateway ID if the name is unavailable.
+	//
 	// example:
 	//
 	// prod-gateway
 	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
+	// The period multiplier, which specifies the number of days before the quota resets. A positive integer is returned for custom periods. This field is not returned for calendar-based periods.
+	//
 	// example:
 	//
 	// 30
 	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
+	// The period type.
+	//
 	// example:
 	//
 	// week
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The quota dimension.
+	//
 	// example:
 	//
 	// token
 	QuotaDimension *string `json:"quotaDimension,omitempty" xml:"quotaDimension,omitempty"`
+	// The quota limit.
+	//
 	// example:
 	//
 	// 1000
 	QuotaLimit *int64 `json:"quotaLimit,omitempty" xml:"quotaLimit,omitempty"`
+	// The ID of the rule.
+	//
 	// example:
 	//
 	// rule-001
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// daily-token-limit
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// - enabled
+	//
+	// - disabled
+	//
 	// example:
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// The window alignment type. Valid values:
+	//
+	// - calendar: calendar-based period.
+	//
+	// - epoch: custom period.
+	//
 	// example:
 	//
 	// calendar

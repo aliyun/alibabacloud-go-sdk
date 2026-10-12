@@ -96,7 +96,7 @@ func (s *GetSecretValueResponseBody) Validate() error {
 }
 
 type GetSecretValueResponseBodyData struct {
-	// The key value.
+	// The secret value.
 	//
 	// example:
 	//

@@ -20,11 +20,16 @@ type iCreateRiskCheckTaskResponseBody interface {
 }
 
 type CreateRiskCheckTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *CreateRiskCheckTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,6 +96,8 @@ func (s *CreateRiskCheckTaskResponseBody) Validate() error {
 }
 
 type CreateRiskCheckTaskResponseBodyData struct {
+	// The risk detection task ID.
+	//
 	// example:
 	//
 	// rct-xxxxxxxx

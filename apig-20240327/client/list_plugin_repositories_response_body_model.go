@@ -20,16 +20,21 @@ type iListPluginRepositoriesResponseBody interface {
 }
 
 type ListPluginRepositoriesResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data []*ListPluginRepositoriesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -95,15 +100,20 @@ func (s *ListPluginRepositoriesResponseBody) Validate() error {
 }
 
 type ListPluginRepositoriesResponseBodyData struct {
+	// The Codeup organization ID.
+	//
 	// example:
 	//
 	// 664f1e2xxxx
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// The organization name.
+	//
 	// example:
 	//
 	// my-org
-	OrganizationName *string                                               `json:"organizationName,omitempty" xml:"organizationName,omitempty"`
-	Repositories     []*ListPluginRepositoriesResponseBodyDataRepositories `json:"repositories,omitempty" xml:"repositories,omitempty" type:"Repeated"`
+	OrganizationName *string `json:"organizationName,omitempty" xml:"organizationName,omitempty"`
+	// The list of repositories under the organization.
+	Repositories []*ListPluginRepositoriesResponseBodyDataRepositories `json:"repositories,omitempty" xml:"repositories,omitempty" type:"Repeated"`
 }
 
 func (s ListPluginRepositoriesResponseBodyData) String() string {
@@ -155,10 +165,14 @@ func (s *ListPluginRepositoriesResponseBodyData) Validate() error {
 }
 
 type ListPluginRepositoriesResponseBodyDataRepositories struct {
+	// The Codeup repository ID (numeric string).
+	//
 	// example:
 	//
 	// 12345678
 	RepositoryId *string `json:"repositoryId,omitempty" xml:"repositoryId,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// my-custom-plugin

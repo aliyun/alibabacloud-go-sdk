@@ -20,7 +20,7 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the destination resource group. You can view resource group IDs in the Resource Management console.
+	// The ID of the destination resource group. You can view the ID in the Resource Management console.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// gw-cq2vmc93km41m3dm4bg0
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The value is case-sensitive and must exactly match one of the valid values.
+	// The resource type. This parameter is case-sensitive and must exactly match one of the valid values.
 	//
 	// example:
 	//

@@ -20,11 +20,16 @@ type iListGlobalPoliciesResponseBody interface {
 }
 
 type ListGlobalPoliciesResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListGlobalPoliciesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,15 +96,22 @@ func (s *ListGlobalPoliciesResponseBody) Validate() error {
 }
 
 type ListGlobalPoliciesResponseBodyData struct {
+	// object
 	Items []*PolicyInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 25

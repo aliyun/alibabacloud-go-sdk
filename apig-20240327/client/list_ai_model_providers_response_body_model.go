@@ -110,7 +110,7 @@ type ListAiModelProvidersResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of model providers that match the conditions.
+	// The total number of model providers that match the query conditions.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *ListAiModelProvidersResponseBodyData) Validate() error {
 }
 
 type ListAiModelProvidersResponseBodyDataItems struct {
-	// The list of AI service summaries currently bound to the model provider.
+	// The list of AI service summaries that are currently bound to the model provider.
 	BoundServices []*ServiceInfo `json:"boundServices,omitempty" xml:"boundServices,omitempty" type:"Repeated"`
 	// The display name of the model provider. The value can be up to 128 characters in length.
 	//
 	// example:
 	//
-	// Qwen Cloud / Alibaba Cloud Bailian.
+	// 千问云 / 阿里云百炼
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The ID of the AI gateway instance to which the model provider belongs.
 	//
@@ -190,7 +190,7 @@ type ListAiModelProvidersResponseBodyDataItems struct {
 	//
 	// gw-8c13d2b4f8a1
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The list of model cards currently associated with the model provider.
+	// The list of model cards that are currently associated with the model provider.
 	ModelCards []*ListAiModelProvidersResponseBodyDataItemsModelCards `json:"modelCards,omitempty" xml:"modelCards,omitempty" type:"Repeated"`
 	// The number of model cards currently associated with the model provider.
 	//
@@ -204,7 +204,7 @@ type ListAiModelProvidersResponseBodyDataItems struct {
 	//
 	// mp-8c13d2b4f8a1
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	// The stable model provider identifier. The value can be up to 128 characters in length.
+	// The stable identifier of the model provider. The value can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type ListAiModelProvidersResponseBodyDataItems struct {
 	//
 	// user
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The last update time of the model provider, in the format of yyyy-MM-dd HH:mm:ss.
+	// The most recent update time of the model provider, in the format of yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -336,11 +336,11 @@ func (s *ListAiModelProvidersResponseBodyDataItems) Validate() error {
 }
 
 type ListAiModelProvidersResponseBodyDataItemsModelCards struct {
-	// The list of invocation paths supported by the model. Each item contains both path and type.
+	// The list of invocation paths supported by the model. Each entry contains both path and type.
 	AvailablePaths []*ListAiModelProvidersResponseBodyDataItemsModelCardsAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
 	// The credit billing information of the model. The unit is Credits per million tokens.
 	Credit *ListAiModelProvidersResponseBodyDataItemsModelCardsCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
-	// The model capability switches. Keys are model capability names supported by API Gateway, and values are Boolean values.
+	// The model capability switches. The key is the name of a model capability supported by API Gateway, and the value is a Boolean value.
 	//
 	// example:
 	//
@@ -384,7 +384,7 @@ type ListAiModelProvidersResponseBodyDataItemsModelCards struct {
 	//
 	// http://https://dashscope-intl.aliyuncs.com
 	SourceURL *string `json:"sourceURL,omitempty" xml:"sourceURL,omitempty"`
-	// The last update time of the model card, in the format of yyyy-MM-dd HH:mm:ss.
+	// The most recent update time of the model card, in the format of yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -586,7 +586,7 @@ type ListAiModelProvidersResponseBodyDataItemsModelCardsCredit struct {
 	//
 	// 3
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
-	// The billing type. Currently only fixed is supported.
+	// The billing type. Only fixed is supported.
 	//
 	// example:
 	//
@@ -661,9 +661,9 @@ type ListAiModelProvidersResponseBodyDataItemsModelCardsMeta struct {
 	//
 	// 131072
 	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
-	// The list of input modalities supported by the model. The list contains up to 16 items, and each item must not be empty.
+	// The list of input modalities supported by the model. The list contains up to 16 entries, and each entry cannot be empty.
 	SupportedInputModalities []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
-	// The list of output modalities supported by the model. The list contains up to 16 items, and each item must not be empty.
+	// The list of output modalities supported by the model. The list contains up to 16 entries, and each entry cannot be empty.
 	SupportedOutputModalities []*string `json:"supportedOutputModalities,omitempty" xml:"supportedOutputModalities,omitempty" type:"Repeated"`
 }
 

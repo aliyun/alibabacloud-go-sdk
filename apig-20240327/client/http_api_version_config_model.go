@@ -22,19 +22,19 @@ type iHttpApiVersionConfig interface {
 }
 
 type HttpApiVersionConfig struct {
-	// Indicates whether versioning control is enabled.
+	// Specifies whether versioning control is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The key in the specified header parameter when the header-based versioning scheme is used.
+	// The key in the specified header parameter when the header versioning scheme is used.
 	//
 	// example:
 	//
 	// my-version
 	HeaderName *string `json:"headerName,omitempty" xml:"headerName,omitempty"`
-	// The key in the specified query parameter when the query parameter-based versioning scheme is used.
+	// The key in the specified query parameter when the query versioning scheme is used.
 	//
 	// example:
 	//

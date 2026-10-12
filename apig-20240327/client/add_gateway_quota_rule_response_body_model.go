@@ -32,7 +32,7 @@ type AddGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *AddGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message content.
+	// The response message.
 	//
 	// example:
 	//

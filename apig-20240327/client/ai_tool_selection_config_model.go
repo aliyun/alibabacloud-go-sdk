@@ -20,16 +20,16 @@ type iAiToolSelectionConfig interface {
 }
 
 type AiToolSelectionConfig struct {
-	// The enable conditions configuration. Controls when the overall feature is triggered.
+	// The enable condition configuration that controls when the overall feature is triggered.
 	EnableConditions *AiToolSelectionConfigEnableConditions `json:"enableConditions,omitempty" xml:"enableConditions,omitempty" type:"Struct"`
 	// The plug-in running status.
 	//
 	// if can be null:
 	// true
 	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
-	// The query rewrite configuration. Rewrites user queries before tool reranking to improve matching precision.
+	// The query rewrite configuration that rewrites user queries before tool reranking to improve matching precision.
 	QueryRewriting *AiToolSelectionConfigQueryRewriting `json:"queryRewriting,omitempty" xml:"queryRewriting,omitempty" type:"Struct"`
-	// The tool reranking configuration. Uses a model to rank and filter candidate tools.
+	// The tool reranking configuration that uses a model to sort and filter candidate tools.
 	ToolReranking *AiToolSelectionConfigToolReranking `json:"toolReranking,omitempty" xml:"toolReranking,omitempty" type:"Struct"`
 }
 
@@ -134,7 +134,7 @@ func (s *AiToolSelectionConfigEnableConditions) Validate() error {
 type AiToolSelectionConfigQueryRewriting struct {
 	// The context selection configuration.
 	ContextSelection *AiToolSelectionConfigQueryRewritingContextSelection `json:"contextSelection,omitempty" xml:"contextSelection,omitempty" type:"Struct"`
-	// Specifies whether query rewrite is enabled.
+	// Indicates whether query rewrite is enabled.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type AiToolSelectionConfigQueryRewriting struct {
 	//
 	// skip
 	FallbackStrategy *string `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
-	// The maximum number of output tokens for rewriting.
+	// The maximum number of output tokens for the rewriting result.
 	//
 	// example:
 	//
@@ -365,7 +365,7 @@ type AiToolSelectionConfigQueryRewritingPromptConfig struct {
 	//
 	// example:
 	//
-	// 请将以下用户问题改写为...
+	// Rewrite the following user question as..
 	CustomPrompt *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
 	// The prompt type.
 	//
@@ -406,7 +406,7 @@ func (s *AiToolSelectionConfigQueryRewritingPromptConfig) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingTriggerConditions struct {
-	// The number of conversation turns after which rewriting is triggered.
+	// The conversation turn threshold. Rewriting is triggered when the number of conversation turns exceeds this value.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type ListPluginClassesRequest struct {
 	//
 	// example:
 	//
-	// OAuth2 认证
+	// OAuth2 Authentication
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
 	// The inbound or outbound direction. Valid values:
 	//

@@ -22,9 +22,9 @@ type UpdateAiModelProviderRequest struct {
 	//
 	// example:
 	//
-	// Qwen Cloud / Alibaba Cloud Bailian.
+	// Qwen Cloud / Alibaba Cloud Bailian
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The complete set of AI service IDs to bind to the model provider. If this parameter is not specified, the existing bindings are retained. If an empty array is specified, all bindings are cleared. Duplicate and empty values are normalized.
+	// The complete set of AI service IDs to bind to the model provider. If this parameter is not specified, the existing bindings are retained. If an empty array is passed, all bindings are cleared. Duplicate and empty values are normalized.
 	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 }
 

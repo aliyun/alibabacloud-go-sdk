@@ -18,14 +18,20 @@ type iUpdateNetworkAccessResponseBody interface {
 }
 
 type UpdateNetworkAccessResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 019F3F7D-9EC4-5F8B-A3F7-97E1369C31BD

@@ -32,7 +32,7 @@ type HiMarketPortalDeployConfig struct {
 	//
 	// SAE
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// The SAE (Serverless App Engine) deployment configuration.
+	// The Serverless App Engine (SAE) deployment configuration.
 	SaeConfig *HiMarketPortalDeployConfigSaeConfig `json:"saeConfig,omitempty" xml:"saeConfig,omitempty" type:"Struct"`
 	// The deployment status.
 	//
@@ -114,7 +114,7 @@ type HiMarketPortalDeployConfigSaeConfig struct {
 	//
 	// apig-portal-oidc-role
 	OidcRoleName *string `json:"oidcRoleName,omitempty" xml:"oidcRoleName,omitempty"`
-	// The region ID of SAE.
+	// The region ID where SAE is deployed.
 	//
 	// example:
 	//

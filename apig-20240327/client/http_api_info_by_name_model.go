@@ -22,6 +22,8 @@ type iHttpApiInfoByName interface {
 }
 
 type HttpApiInfoByName struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xx
@@ -32,19 +34,19 @@ type HttpApiInfoByName struct {
 	//
 	// test-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The API type.
+	// The type of the HTTP API.
 	//
 	// example:
 	//
 	// Http
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Specifies whether to enable versioning.
+	// Indicates whether version management is enabled.
 	//
 	// example:
 	//
 	// true
 	VersionEnabled *bool `json:"versionEnabled,omitempty" xml:"versionEnabled,omitempty"`
-	// The information about the versioned API.
+	// The versioned API version information.
 	VersionedHttpApis []*HttpApiApiInfo `json:"versionedHttpApis,omitempty" xml:"versionedHttpApis,omitempty" type:"Repeated"`
 }
 

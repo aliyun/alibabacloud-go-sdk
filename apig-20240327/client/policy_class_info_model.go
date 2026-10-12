@@ -38,45 +38,45 @@ type iPolicyClassInfo interface {
 }
 
 type PolicyClassInfo struct {
-	// The template alias.
+	// The alias of the policy template.
 	//
 	// example:
 	//
-	// Rate Limit
+	// Concurrency Control
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The list of resource types that can be mounted.
 	AttachableResourceTypes []*string `json:"attachableResourceTypes,omitempty" xml:"attachableResourceTypes,omitempty" type:"Repeated"`
-	// The template identifier.
+	// The identifier of the policy template.
 	//
 	// example:
 	//
 	// pc-cpqm0s94ckt1displ8ng
 	ClassId *string `json:"classId,omitempty" xml:"classId,omitempty"`
-	// A configuration example.
+	// The configuration example.
 	//
 	// example:
 	//
 	// {}
 	ConfigExample *string `json:"configExample,omitempty" xml:"configExample,omitempty"`
-	// Specifies whether the policy has been deprecated.
+	// Indicates whether the policy is deprecated.
 	//
 	// example:
 	//
 	// false
 	Deprecated *bool `json:"deprecated,omitempty" xml:"deprecated,omitempty"`
-	// The template description.
+	// The detailed description of the policy template.
 	//
 	// example:
 	//
-	// Limits the number of requests per unit of time
+	// Controls the number of concurrent threads to ensure system stability. Applicable to scenarios where internal application components or downstream dependencies become unstable, such as slow SQL queries or increased response time from downstream applications
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The direction of traffic on which the policy takes effect.
+	// The direction in which the policy takes effect.
 	//
 	// example:
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// Specifies whether to enable logging.
+	// Indicates whether log recording is enabled.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type PolicyClassInfo struct {
 	//
 	// 1
 	ExecutePriority *string `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
-	// The execution phase.
+	// The execution stage.
 	//
 	// example:
 	//
 	// POST
 	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
-	// The template name.
+	// The name of the policy template.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type PolicyClassInfo struct {
 	//
 	// FlowControl
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The template version.
+	// The version of the policy template.
 	//
 	// example:
 	//

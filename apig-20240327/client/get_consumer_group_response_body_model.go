@@ -118,9 +118,9 @@ type GetConsumerGroupResponseBodyData struct {
 	//
 	// example:
 	//
-	// Used for online API caller grouping.
+	// Group for online API callers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The gateway type. Valid values: API or AI.
+	// The gateway type. Valid values: API and AI.
 	//
 	// example:
 	//

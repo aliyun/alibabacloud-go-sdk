@@ -96,7 +96,7 @@ func (s *ListMcpServersResponseBody) Validate() error {
 }
 
 type ListMcpServersResponseBodyData struct {
-	// The MCP server list information.
+	// The list of MCP servers.
 	Items []*ListMcpServersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -182,21 +182,21 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// The list of assembled sources. This parameter is required when type is AssemblyMCP.
+	// The list of assembly sources. This parameter is required when type is AssemblyMCP.
 	AssembledSources []*ListMcpServersResponseBodyDataItemsAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	// The backend service of the route.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// The creation source type. Valid values:
+	// The creation source type.
 	//
-	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP.
+	// - ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP.
 	//
-	// - ApiGatewayMcpHosting: gateway-managed MCP direct proxy.
+	// - ApiGatewayMcpHosting: Gateway-managed MCP direct proxy.
 	//
-	// - ApiGatewayAssembly: gateway MCP assembly.
+	// - ApiGatewayAssembly: Gateway MCP assembly.
 	//
-	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP.
+	// - NacosHttpToMCP: Gateway-managed Nacos-synced HTTP-to-MCP.
 	//
-	// - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
+	// - NacosMcpHosting: Gateway-managed Nacos-synced MCP direct proxy.
 	//
 	// example:
 	//
@@ -587,11 +587,11 @@ type ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo struct {
 	//
 	// mse-faefrefxz
 	ImportInstanceId *string `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
-	// The synced MCP server ID.
+	// The ID of the synced MCP server.
 	//
 	// example:
 	//
-	// The synced MCP server ID
+	// The ID of the synced MCP server
 	ImportMcpServerId *string `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
 	// The Nacos namespace.
 	//

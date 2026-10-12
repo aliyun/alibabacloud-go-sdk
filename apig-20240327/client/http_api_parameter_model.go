@@ -30,19 +30,19 @@ type HttpApiParameter struct {
 	//
 	// 123
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// The parameter description.
+	// The description.
 	//
 	// example:
 	//
-	// The example description.
+	// User ID
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The sample value of the parameter.
+	// The example value of the parameter.
 	//
 	// example:
 	//
 	// 123
 	ExampleValue *string `json:"exampleValue,omitempty" xml:"exampleValue,omitempty"`
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,23 +50,13 @@ type HttpApiParameter struct {
 	//
 	// userId
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether the parameter is required.
+	// Indicates whether the parameter is required.
 	//
 	// example:
 	//
 	// true
 	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
-	// The parameter type.
-	//
-	// Valid values:
-	//
-	// 	- Integer
-	//
-	// 	- Number
-	//
-	// 	- String
-	//
-	// 	- Boolean
+	// The type of the parameter.
 	//
 	// This parameter is required.
 	//

@@ -156,13 +156,13 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// 120
 	SubjectCount *int64 `json:"subjectCount,omitempty" xml:"subjectCount,omitempty"`
-	// The rule subject type. Valid values: consumer or consumer_group.
+	// The rule subject type. Valid values: consumer and consumer_group.
 	//
 	// example:
 	//
 	// consumer_group
 	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
-	// The general subject list bound to this rule. Returned only when withSubjects is set to true.
+	// The list of general subjects bound to this rule. Returned only when withSubjects is set to true.
 	Subjects []*GetGatewayQuotaRuleResponseBodyDataSubjects `json:"subjects,omitempty" xml:"subjects,omitempty" type:"Repeated"`
 	// The time zone corresponding to the calendar period, in UTC+x format.
 	//
@@ -392,7 +392,7 @@ type GetGatewayQuotaRuleResponseBodyDataSubjects struct {
 	//
 	// consumer-a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The subject type. Valid values: consumer or consumer_group.
+	// The subject type. Valid values: consumer and consumer_group.
 	//
 	// example:
 	//

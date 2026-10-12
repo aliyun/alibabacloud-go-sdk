@@ -32,7 +32,7 @@ type ListEnvironmentsRequest struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
 	// The gateway ID. Exact match is supported.
 	//

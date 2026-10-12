@@ -46,7 +46,7 @@ type HttpRoute struct {
 	//
 	// true
 	Builtin *string `json:"builtin,omitempty" xml:"builtin,omitempty"`
-	// The creation time, in ms.
+	// The creation time, in milliseconds.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type HttpRoute struct {
 	//
 	// example:
 	//
-	// Product center staging route
+	// Pre-release route for the product center
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of domain name information.
 	DomainInfos []*HttpRouteDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
@@ -70,7 +70,7 @@ type HttpRoute struct {
 	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
 	// The route publish status.
 	GatewayStatus map[string]*string `json:"gatewayStatus,omitempty" xml:"gatewayStatus,omitempty"`
-	// The route matching rule.
+	// The route matching rules.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The MCP server information.
 	McpServerInfo *HttpRouteMcpServerInfo `json:"mcpServerInfo,omitempty" xml:"mcpServerInfo,omitempty" type:"Struct"`
@@ -86,7 +86,7 @@ type HttpRoute struct {
 	//
 	// hr-crf5l7tlhtgp91t***
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
-	// The update time, in ms.
+	// The update time, in milliseconds.
 	//
 	// example:
 	//
@@ -317,7 +317,7 @@ type HttpRouteEnvironmentInfo struct {
 	//
 	// example:
 	//
-	// Product center staging environment
+	// Pre-release environment for the product center
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The environment ID.
 	//
@@ -333,7 +333,7 @@ type HttpRouteEnvironmentInfo struct {
 	//
 	// itemcenter-pre
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of default second-level domain names of the environment.
+	// The list of default subdomain names for the environment.
 	SubDomains []*HttpRouteEnvironmentInfoSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -409,7 +409,7 @@ func (s *HttpRouteEnvironmentInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoGatewayInfo struct {
-	// The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
+	// The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, Unknown.
 	//
 	// example:
 	//

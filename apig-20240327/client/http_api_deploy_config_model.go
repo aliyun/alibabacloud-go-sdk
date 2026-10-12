@@ -68,7 +68,7 @@ type HttpApiDeployConfig struct {
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
 	// The list of custom domain name information.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
-	// Specifies whether to enable gateway system models. This parameter takes effect only when the publishing scenario is AiAutoRouter. Default value: false. This field is used for backward compatibility with older clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that all are disabled.
+	// Specifies whether to enable gateway system models. This parameter takes effect only when the publishing scenario is AiAutoRouter. Default value: false. This parameter is used for backward compatibility with earlier clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that all are disabled.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type HttpApiDeployConfig struct {
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
 	// The list of policy configurations.
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
-	// The current online routing mode of the REST API. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
+	// The current online routing mode of the REST API. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This parameter is not returned for non-REST APIs.
 	//
 	// example:
 	//
@@ -495,7 +495,7 @@ func (s *HttpApiDeployConfigEnvDomainInfos) Validate() error {
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
-	// The capability tier for intelligent routing candidates. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+	// The capability tier of the intelligent routing candidate. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
 	//
 	// example:
 	//

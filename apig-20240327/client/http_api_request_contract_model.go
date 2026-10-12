@@ -20,13 +20,13 @@ type iHttpApiRequestContract interface {
 }
 
 type HttpApiRequestContract struct {
-	// The body parameters.
+	// The request body parameter definitions.
 	Body *HttpApiRequestContractBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The request header parameters.
+	// The request header parameter definitions.
 	HeaderParameters []*HttpApiParameter `json:"headerParameters,omitempty" xml:"headerParameters,omitempty" type:"Repeated"`
-	// The path parameters.
+	// The path parameter definitions.
 	PathParameters []*HttpApiParameter `json:"pathParameters,omitempty" xml:"pathParameters,omitempty" type:"Repeated"`
-	// The query parameters.
+	// The query parameter definitions.
 	QueryParameters []*HttpApiParameter `json:"queryParameters,omitempty" xml:"queryParameters,omitempty" type:"Repeated"`
 }
 
@@ -117,45 +117,45 @@ type HttpApiRequestContractBody struct {
 	//
 	// application/json
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The parameter description.
+	// The description.
 	//
 	// example:
 	//
-	// This is a description.
+	// Body parameter description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The sample value.
+	// The example value.
 	//
 	// example:
 	//
 	// {"result":"ok"}
 	Example *string `json:"example,omitempty" xml:"example,omitempty"`
-	// The JSON definition description of the request body.
+	// The JSON schema definition of the request body.
 	//
 	// example:
 	//
 	// {
 	//
-	//       "type": "object",
+	//     "type": "object",
 	//
-	//       "required": [
+	//     "required": [
 	//
-	//           "result"
+	//         "result"
 	//
-	//       ],
+	//     ],
 	//
-	//       "properties": {
+	//     "properties": {
 	//
-	//           "result": {
+	//         "result": {
 	//
-	//               "type": "string",
+	//             "type": "string",
 	//
-	//               "description": "Operation result. \\"ok\\" indicates success."
+	//             "description": "Operation result. \\"ok\\" indicates success."
 	//
-	//           }
+	//         }
 	//
-	//       }
+	//     }
 	//
-	//   }
+	// }
 	JsonSchema *string `json:"jsonSchema,omitempty" xml:"jsonSchema,omitempty"`
 }
 

@@ -36,53 +36,93 @@ type iAiServiceConfig interface {
 }
 
 type AiServiceConfig struct {
-	// API key generation mode.
+	// The generation mode of the API key.
 	//
 	// example:
 	//
-	// -
+	// Custom
 	ApiKeyGenerateMode *string `json:"ApiKeyGenerateMode,omitempty" xml:"ApiKeyGenerateMode,omitempty"`
-	// The service endpoint.
+	// The service address.
 	//
 	// example:
 	//
 	// https://dashscope.aliyun.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The API keys.
+	// The list of API keys.
 	ApiKeys []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
-	// Bedrock service configuration.
+	// The configuration specific to the Bedrock service.
 	BedrockServiceConfig *AiServiceConfigBedrockServiceConfig `json:"bedrockServiceConfig,omitempty" xml:"bedrockServiceConfig,omitempty" type:"Struct"`
-	// Supported compatible protocols.
+	// The list of compatible protocols supported by the service.
 	CompatibleProtocols []*string `json:"compatibleProtocols,omitempty" xml:"compatibleProtocols,omitempty" type:"Repeated"`
-	// Default model name.
+	// The name of the default model.
 	//
 	// example:
 	//
-	// qwen-turbo
+	// gpt-4
 	DefaultModelName *string `json:"defaultModelName,omitempty" xml:"defaultModelName,omitempty"`
-	// Specifies whether to enable health check.
+	// Indicates whether health check is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableHealthCheck *bool `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
-	// Enable outlier detection.
+	// Indicates whether outlier detection is enabled.
 	//
 	// example:
 	//
-	// false
+	// true
 	EnableOutlierDetection *bool `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
-	// PAI-EAS service configuration settings.
+	// The configuration specific to the PAI-EAS service.
 	PaiEASServiceConfig *AiServiceConfigPaiEASServiceConfig `json:"paiEASServiceConfig,omitempty" xml:"paiEASServiceConfig,omitempty" type:"Struct"`
-	// The LLM protocols.
+	// The list of model protocols.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// The Large Language Model (LLM) provider.
+	// The large language model provider.
 	//
 	// example:
 	//
 	// qwen
+	//
+	// moonshot
+	//
+	// baichuan
+	//
+	// yi
+	//
+	// zhipuai
+	//
+	// 360ai
+	//
+	// hunyuan
+	//
+	// stepfun
+	//
+	// spark
+	//
+	// openai
+	//
+	// claude
+	//
+	// anthropic
+	//
+	// doubao
+	//
+	// minimax
+	//
+	// gemini
+	//
+	// azure
+	//
+	// deepseek
+	//
+	// custom
+	//
+	// pai-eas
+	//
+	// bedrock
+	//
+	// vertex
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// Vertex AI service configuration.
+	// The configuration of the Vertex AI service.
 	VertexServiceConfig *AiServiceConfigVertexServiceConfig `json:"vertexServiceConfig,omitempty" xml:"vertexServiceConfig,omitempty" type:"Struct"`
 }
 
@@ -222,19 +262,19 @@ func (s *AiServiceConfig) Validate() error {
 }
 
 type AiServiceConfigBedrockServiceConfig struct {
-	// AWS-AccessKey
+	// The AWS access key.
 	//
 	// example:
 	//
 	// AKIAIOSFODNN7EXAMPLE
 	AwsAccessKey *string `json:"awsAccessKey,omitempty" xml:"awsAccessKey,omitempty"`
-	// AWS-Region
+	// The AWS region.
 	//
 	// example:
 	//
-	// us-west-2
+	// us-east-1
 	AwsRegion *string `json:"awsRegion,omitempty" xml:"awsRegion,omitempty"`
-	// AWS-SecretKey
+	// The AWS secret key.
 	//
 	// example:
 	//
@@ -282,29 +322,29 @@ func (s *AiServiceConfigBedrockServiceConfig) Validate() error {
 }
 
 type AiServiceConfigPaiEASServiceConfig struct {
-	// Type of endpoint.
+	// The connection type: private network (vpc) or public network (public).
 	//
 	// example:
 	//
 	// "public"，"private"
 	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	// Service identifier.
+	// The service ID.
 	//
 	// example:
 	//
-	// svc-d33onfmm1hkn5duhuqjg
+	// svc-cvaeb0um1hkqp79k72v0
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// Name of the service.
+	// The service name.
 	//
 	// example:
 	//
-	// service-hello
+	// auto-ai-service
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// Workspace identifier.
+	// The workspace ID.
 	//
 	// example:
 	//
-	// plw-d5g7qsem1hkmih54g210
+	// cb89d4de30042df4459442589664e00d
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -357,33 +397,33 @@ func (s *AiServiceConfigPaiEASServiceConfig) Validate() error {
 }
 
 type AiServiceConfigVertexServiceConfig struct {
-	// Gemini safety settings.
+	// The safety filtering level settings for the Gemini model.
 	GeminiSafetySetting map[string]*string `json:"geminiSafetySetting,omitempty" xml:"geminiSafetySetting,omitempty"`
-	// Vertex AI authentication key.
+	// The authentication key for Vertex AI.
 	//
 	// example:
 	//
-	// {\\"type\\":\\"service_account\\",\\"project_id\\":\\"xxx\\",\\"private_key\\":\\"-----BEGIN PRIVATE KEY-----\\",\\"client_email\\":\\"xxx@xxx.iam.gserviceaccount.com\\",\\"token_uri\\":\\"https://oauth2.googleapis.com/token\\"}
+	// {\\"type\\":\\"service_account\\",\\"project_id\\":\\"my-project\\",\\"private_key\\":\\"-----BEGIN PRIVATE KEY-----...\\",\\"client_email\\":\\"xxx@xxx.iam.gserviceaccount.com\\",\\"token_uri\\":\\"https://oauth2.googleapis.com/token\\"}
 	VertexAuthKey *string `json:"vertexAuthKey,omitempty" xml:"vertexAuthKey,omitempty"`
-	// Vertex AI auth service name.
+	// The service name of the authentication service used by Vertex AI.
 	//
 	// example:
 	//
-	// custom-vertex-auth
+	// google-oauth2
 	VertexAuthServiceName *string `json:"vertexAuthServiceName,omitempty" xml:"vertexAuthServiceName,omitempty"`
-	// Vertex AI project ID.
+	// The Google Cloud project ID.
 	//
 	// example:
 	//
-	// my-gcp-project-123
+	// my-project
 	VertexProjectId *string `json:"vertexProjectId,omitempty" xml:"vertexProjectId,omitempty"`
-	// Vertex AI region.
+	// The Google Cloud region where the Vertex AI service is located.
 	//
 	// example:
 	//
 	// us-central1
 	VertexRegion *string `json:"vertexRegion,omitempty" xml:"vertexRegion,omitempty"`
-	// Vertex token refresh lead time.
+	// The number of seconds before the access token expires to refresh it in advance.
 	//
 	// example:
 	//

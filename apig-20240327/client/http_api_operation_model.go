@@ -32,43 +32,23 @@ type iHttpApiOperation interface {
 }
 
 type HttpApiOperation struct {
-	// The authentication configurations.
+	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The deployment configurations.
+	// The deployment configuration.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The operation description.
 	//
 	// example:
 	//
-	// This is a operation description.
+	// Retrieve user information
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable authentication.
+	// Indicates whether authentication is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The HTTP method.
-	//
-	// Valid values:
-	//
-	// 	- TRACE
-	//
-	// 	- HEAD
-	//
-	// 	- DELETE
-	//
-	// 	- POST
-	//
-	// 	- GET
-	//
-	// 	- CONNECT
-	//
-	// 	- OPTIONS
-	//
-	// 	- PUT
-	//
-	// 	- PATCH
+	// The method.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +56,7 @@ type HttpApiOperation struct {
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The mocking configuration of the operation. This field takes effect only when the API publishing scenario is Mock.
+	// The mock configuration of the operation. This configuration takes effect only when the API is published in Mock mode.
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
 	// The operation name.
 	//
@@ -94,9 +74,9 @@ type HttpApiOperation struct {
 	//
 	// /user
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The request parameters of the operation.
+	// The request parameter definition of the operation.
 	Request *HttpApiRequestContract `json:"request,omitempty" xml:"request,omitempty"`
-	// The response parameters of the operation.
+	// The response parameter definition of the operation.
 	Response *HttpApiResponseContract `json:"response,omitempty" xml:"response,omitempty"`
 }
 

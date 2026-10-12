@@ -20,7 +20,7 @@ type iHiMarketApiKeyConfig interface {
 type HiMarketApiKeyConfig struct {
 	// The list of credentials.
 	Credentials []*HiMarketApiKeyConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
-	// The name of the location from which the API key is extracted.
+	// The name of the location from which the API key is fetched.
 	//
 	// example:
 	//

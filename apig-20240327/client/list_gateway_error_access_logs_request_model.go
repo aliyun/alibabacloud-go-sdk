@@ -26,32 +26,46 @@ type iListGatewayErrorAccessLogsRequest interface {
 }
 
 type ListGatewayErrorAccessLogsRequest struct {
+	// The domain name filter. This parameter performs an exact match against the authority field in Simple Log Service (SLS).
+	//
 	// example:
 	//
 	// api.example.com
 	Authority *string `json:"authority,omitempty" xml:"authority,omitempty"`
+	// The end of the query window, in UNIX seconds. The value cannot be later than the current time, and the time span cannot exceed 24 hours.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1756348800
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The gateway request ID (x-acs-request-id) for exact match filtering.
+	//
 	// example:
 	//
 	// E5D4xxxx
 	GatewayRequestId *string `json:"gatewayRequestId,omitempty" xml:"gatewayRequestId,omitempty"`
+	// The request path filter.
+	//
 	// example:
 	//
 	// /api/v1/pets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The HTTP error code. Only three-digit numbers in the 400–599 range are accepted. This parameter is required. If you do not specify this parameter, the API returns InvalidParameter.WithDetail (400).
+	//
 	// example:
 	//
 	// 502
 	ResponseCode *string `json:"responseCode,omitempty" xml:"responseCode,omitempty"`
+	// The route name filter.
+	//
 	// example:
 	//
 	// my-route
 	RouteName *string `json:"routeName,omitempty" xml:"routeName,omitempty"`
+	// The start of the query window, in UNIX seconds. The value must be no earlier than 24 hours before the current time.
+	//
 	// This parameter is required.
 	//
 	// example:

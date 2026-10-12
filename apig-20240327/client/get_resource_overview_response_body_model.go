@@ -169,7 +169,7 @@ type GetResourceOverviewResponseBodyDataApi struct {
 	//
 	// 1
 	PublishedCount *int64 `json:"publishedCount,omitempty" xml:"publishedCount,omitempty"`
-	// The total number of APIs.
+	// The number of APIs.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetResourceOverviewResponseBodyDataGateway struct {
 	//
 	// 1
 	RunningCount *int64 `json:"runningCount,omitempty" xml:"runningCount,omitempty"`
-	// The total number of gateway instances.
+	// The number of gateway instances.
 	//
 	// example:
 	//

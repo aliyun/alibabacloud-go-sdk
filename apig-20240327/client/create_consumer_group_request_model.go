@@ -30,7 +30,7 @@ type CreateConsumerGroupRequest struct {
 	//
 	// example:
 	//
-	// Used for grouping online API consumers.
+	// Group for online API callers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The gateway type. Valid values: API or AI.
 	//

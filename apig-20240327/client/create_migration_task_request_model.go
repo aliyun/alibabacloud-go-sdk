@@ -28,36 +28,54 @@ type iCreateMigrationTaskRequest interface {
 }
 
 type CreateMigrationTaskRequest struct {
+	// The ID of the source ACK cluster. The value must be the same as the cluster specified in the IngressInfo of the API. Note: This parameter is actually required. If this parameter is not specified, the API returns 400 InvalidParameter.IsEmpty.
+	//
 	// example:
 	//
 	// c-xxxxxx
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The description of the task. The description is stored only when the task is created.
+	//
 	// example:
 	//
 	// migration from Nginx
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Deprecated
 	//
+	// The ID of the destination environment. The value must be the same as the Ingress import environment of the API. Note: This parameter is actually required. If this parameter is not specified, the API returns 400 InvalidParameter.IsEmpty. You can call ListEnvironments to query existing environment IDs. CreateEnvironment has been deprecated.
+	//
 	// example:
 	//
 	// env-xxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The ID of the destination gateway to which traffic is migrated.
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The HTTP API ID. The API must have been imported as an Ingress type (HttpIngress) API. Note: This parameter is actually required. If this parameter is not specified, the API returns 400 InvalidParameter.IsEmpty.
+	//
 	// example:
 	//
 	// api-xxxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
+	// The Ingress class. If specified, the value must be the same as the API import configuration. Otherwise, an ingress class conflict error is returned.
+	//
 	// example:
 	//
 	// nginx
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
+	// The migration type.
+	//
+	// [_single.params.body.props.migrationType.enum.Nginx Ingress]Nginx Ingress migration.
+	//
 	// example:
 	//
 	// Nginx Ingress
 	MigrationType *string `json:"migrationType,omitempty" xml:"migrationType,omitempty"`
+	// The watched namespace. If specified, the value must be the same as the API import configuration. Otherwise, a watchNamespace conflict error is returned.
+	//
 	// example:
 	//
 	// default

@@ -20,25 +20,25 @@ type iListTagResourcesShrinkRequest interface {
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// caeb235b-xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource IDs. Up to 50 items are supported. You must specify at least one of ResourceId or Tag. If both are empty, the API returns InvalidParameter.BothEmpty(400).
+	// The resource IDs. You can specify up to 50 resource IDs. You must specify at least one of ResourceId and Tag. If both are empty, the API returns InvalidParameter.BothEmpty(400).
 	//
 	// example:
 	//
 	// ["gw-xxx","gw-yyy"]
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. Although the documentation indicates a default value of Gateway, you must explicitly pass this parameter when calling the API. Otherwise, the API returns InvalidParameter.UnsupportedTagResourceType(400). Valid values: Gateway.
+	// The resource type. Note: Although the documentation indicates a default value of Gateway, you must explicitly specify this parameter when you call the API. Otherwise, the API returns InvalidParameter.UnsupportedTagResourceType(400). Valid values: Gateway.
 	//
 	// example:
 	//
 	// Gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The label list. Up to 20 items are supported. You must specify at least one of ResourceId or Tag. If both are empty, the API returns InvalidParameter.BothEmpty(400).
+	// The list of tags. You can specify up to 20 tags. You must specify at least one of ResourceId and Tag. If both are empty, the API returns InvalidParameter.BothEmpty(400).
 	//
 	// example:
 	//

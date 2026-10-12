@@ -102,7 +102,7 @@ type UpdateAiModelProviderResponseBodyData struct {
 	//
 	// example:
 	//
-	// Qwen Cloud / Alibaba Cloud Bailian.
+	// Qwen Cloud / Alibaba Cloud Bailian
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The ID of the AI gateway instance to which the model provider belongs.
 	//
@@ -136,7 +136,7 @@ type UpdateAiModelProviderResponseBodyData struct {
 	//
 	// user
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The last update time of the model provider, in the format of yyyy-MM-dd HH:mm:ss.
+	// The last update time of the model provider. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -286,13 +286,13 @@ type UpdateAiModelProviderResponseBodyDataModelCards struct {
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model provider identifier.
+	// The identifier of the model provider.
 	//
 	// example:
 	//
 	// qwen
 	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
-	// The source of the model card. Instance-level model cards return user.
+	// The source of the model card. user is returned for instance-level model cards.
 	//
 	// example:
 	//
@@ -304,7 +304,7 @@ type UpdateAiModelProviderResponseBodyDataModelCards struct {
 	//
 	// http://https://dashscope-intl.aliyuncs.com
 	SourceURL *string `json:"sourceURL,omitempty" xml:"sourceURL,omitempty"`
-	// The last update time of the model card, in the format of yyyy-MM-dd HH:mm:ss.
+	// The last update time of the model card. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -449,7 +449,7 @@ type UpdateAiModelProviderResponseBodyDataModelCardsAvailablePaths struct {
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The protocol type corresponding to the path. The value can be up to 64 characters in length.
+	// The protocol type of the path. The value can be up to 64 characters in length.
 	//
 	// example:
 	//
@@ -488,19 +488,19 @@ func (s *UpdateAiModelProviderResponseBodyDataModelCardsAvailablePaths) Validate
 }
 
 type UpdateAiModelProviderResponseBodyDataModelCardsCredit struct {
-	// The cost of cache-hit tokens, in Credits per million tokens.
+	// The cost of cache-hit tokens. Unit: Credits per million tokens.
 	//
 	// example:
 	//
 	// 0.5
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	// The cost of input tokens, in Credits per million tokens.
+	// The cost of input tokens. Unit: Credits per million tokens.
 	//
 	// example:
 	//
 	// 1.5
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
-	// The cost of output tokens, in Credits per million tokens.
+	// The cost of output tokens. Unit: Credits per million tokens.
 	//
 	// example:
 	//

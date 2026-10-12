@@ -48,7 +48,7 @@ type CreateAndAttachPolicyRequest struct {
 	//
 	// AiFallback
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
-	// The policy configuration content (JSON string).
+	// The policy configuration content in JSON string format.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateAndAttachPolicyRequest struct {
 	//
 	// example:
 	//
-	// Fallback when primary route fails
+	// Fallback when the primary route fails
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment ID.
 	//
@@ -76,9 +76,9 @@ type CreateAndAttachPolicyRequest struct {
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// The policy name.
 	//
-	// This parameter is required when className is set to IpAccessControl, JWTAuth, OIDCAuth, or ExternalZAuth, and must be unique within the same gateway instance (gatewayId) under the current account. If the name conflicts with an existing policy, a PolicyExisted error is returned. When retrying after receiving this error, you must use a different name. Submitting the same name repeatedly will always fail.
+	// This parameter is required when className is set to IpAccessControl, JWTAuth, OIDCAuth, or ExternalZAuth, and the name must be unique within the same gateway instance (gatewayId) under the current account. If a policy with the same name already exists, a PolicyExisted error is returned. When retrying after receiving this error, use a different name. Submitting the same name repeatedly will always fail.
 	//
-	// For other className values (such as RateLimit, Timeout, Retry, ServiceTls, and AiProxy), name is optional and used only for display purposes.
+	// For other className values such as RateLimit, Timeout, Retry, ServiceTls, and AiProxy, this parameter is optional and used only for display purposes.
 	//
 	// example:
 	//

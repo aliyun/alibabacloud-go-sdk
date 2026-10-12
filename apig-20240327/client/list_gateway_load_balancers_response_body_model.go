@@ -20,16 +20,21 @@ type iListGatewayLoadBalancersResponseBody interface {
 }
 
 type ListGatewayLoadBalancersResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListGatewayLoadBalancersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,6 +96,7 @@ func (s *ListGatewayLoadBalancersResponseBody) Validate() error {
 }
 
 type ListGatewayLoadBalancersResponseBodyData struct {
+	// The instances.
 	Items []*ListGatewayLoadBalancersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -125,68 +131,101 @@ func (s *ListGatewayLoadBalancersResponseBodyData) Validate() error {
 }
 
 type ListGatewayLoadBalancersResponseBodyDataItems struct {
+	// Indicates whether this is the default ingress of the gateway.
+	//
 	// example:
 	//
 	// true
 	DefaultGatewayIngress *bool `json:"defaultGatewayIngress,omitempty" xml:"defaultGatewayIngress,omitempty"`
+	// Indicates whether the load balancer can be edited. This parameter serves as an edit switch for load balancers that are being migrated.
+	//
 	// example:
 	//
 	// false
 	EditEnable *bool `json:"editEnable,omitempty" xml:"editEnable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The load balancer address (IP address or domain name).
+	//
 	// example:
 	//
 	// 47.x.x.x
 	LoadBalancerAddress *string `json:"loadBalancerAddress,omitempty" xml:"loadBalancerAddress,omitempty"`
+	// The IP version.
+	//
 	// example:
 	//
 	// ipv4
 	LoadBalancerAddressIpVersion *string `json:"loadBalancerAddressIpVersion,omitempty" xml:"loadBalancerAddressIpVersion,omitempty"`
+	// The address type.
+	//
 	// example:
 	//
 	// Internet
 	LoadBalancerAddressType *string `json:"loadBalancerAddressType,omitempty" xml:"loadBalancerAddressType,omitempty"`
+	// The load balancer availability status.
+	//
 	// example:
 	//
 	// Active
 	LoadBalancerAvailableStatus *string `json:"loadBalancerAvailableStatus,omitempty" xml:"loadBalancerAvailableStatus,omitempty"`
+	// The load balancer instance ID.
+	//
 	// example:
 	//
 	// lb-bp1xxxx / nlb-xxxx
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
+	// The binding mode.
+	//
 	// example:
 	//
 	// Managed
 	LoadBalancerMode *string `json:"loadBalancerMode,omitempty" xml:"loadBalancerMode,omitempty"`
+	// The load balancer name.
+	//
 	// example:
 	//
 	// my-nlb
 	LoadBalancerName *string `json:"loadBalancerName,omitempty" xml:"loadBalancerName,omitempty"`
+	// The load balancer specification.
+	//
 	// example:
 	//
 	// slb.s2.small
 	LoadBalancerSpec *string `json:"loadBalancerSpec,omitempty" xml:"loadBalancerSpec,omitempty"`
+	// The association status.
+	//
 	// example:
 	//
 	// Ready
 	LoadBalancerStatus *string `json:"loadBalancerStatus,omitempty" xml:"loadBalancerStatus,omitempty"`
+	// The load balancer type.
+	//
 	// example:
 	//
 	// NLB
-	LoadBalancerType         *string                                                                  `json:"loadBalancerType,omitempty" xml:"loadBalancerType,omitempty"`
+	LoadBalancerType *string `json:"loadBalancerType,omitempty" xml:"loadBalancerType,omitempty"`
+	// The zone mappings.
 	LoadBalancerZoneMappings []*ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappings `json:"loadBalancerZoneMappings,omitempty" xml:"loadBalancerZoneMappings,omitempty" type:"Repeated"`
-	Ports                    []*ListGatewayLoadBalancersResponseBodyDataItemsPorts                    `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// The list of listener ports.
+	Ports []*ListGatewayLoadBalancersResponseBodyDataItemsPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// The gateway service weight, which ranges from 0 to 100. This parameter is used in migration and traffic shifting scenarios.
+	//
 	// example:
 	//
 	// 100
 	ServiceWeight *int64 `json:"serviceWeight,omitempty" xml:"serviceWeight,omitempty"`
+	// The VServerGroup metadata.
+	//
 	// example:
 	//
 	// -
-	VServerGroupMetaInfo   *string                                                                `json:"vServerGroupMetaInfo,omitempty" xml:"vServerGroupMetaInfo,omitempty"`
+	VServerGroupMetaInfo *string `json:"vServerGroupMetaInfo,omitempty" xml:"vServerGroupMetaInfo,omitempty"`
+	// The list of virtual server groups.
 	VirtualServerGroupList []*ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList `json:"virtualServerGroupList,omitempty" xml:"virtualServerGroupList,omitempty" type:"Repeated"`
 }
 
@@ -392,15 +431,22 @@ func (s *ListGatewayLoadBalancersResponseBodyDataItems) Validate() error {
 }
 
 type ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappings struct {
+	// The list of load balancer addresses in the zone.
 	LoadBalancerAddresses []*ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappingsLoadBalancerAddresses `json:"loadBalancerAddresses,omitempty" xml:"loadBalancerAddresses,omitempty" type:"Repeated"`
+	// The zone status.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The vSwitch ID that corresponds to the zone.
+	//
 	// example:
 	//
 	// vsw-bp1xxxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -465,32 +511,48 @@ func (s *ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappings) 
 }
 
 type ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappingsLoadBalancerAddresses struct {
+	// The Elastic IP Address (EIP) allocation ID that corresponds to the public address.
+	//
 	// example:
 	//
 	// eip-bp1xxxx
 	AllocationId *string `json:"allocationId,omitempty" xml:"allocationId,omitempty"`
+	// The ID of the elastic network interface (ENI).
+	//
 	// example:
 	//
 	// eni-bp1xxxx
-	EniId              *string   `json:"eniId,omitempty" xml:"eniId,omitempty"`
+	EniId *string `json:"eniId,omitempty" xml:"eniId,omitempty"`
+	// The list of private IPv4 addresses.
 	Ipv4LocalAddresses []*string `json:"ipv4LocalAddresses,omitempty" xml:"ipv4LocalAddresses,omitempty" type:"Repeated"`
+	// The public IPv6 address.
+	//
 	// example:
 	//
 	// 2408:xxxx
-	Ipv6Address        *string   `json:"ipv6Address,omitempty" xml:"ipv6Address,omitempty"`
+	Ipv6Address *string `json:"ipv6Address,omitempty" xml:"ipv6Address,omitempty"`
+	// The list of private IPv6 addresses.
 	Ipv6LocalAddresses []*string `json:"ipv6LocalAddresses,omitempty" xml:"ipv6LocalAddresses,omitempty" type:"Repeated"`
+	// The private IPv4 address.
+	//
 	// example:
 	//
 	// 192.168.x.x
 	PrivateIPv4Address *string `json:"privateIPv4Address,omitempty" xml:"privateIPv4Address,omitempty"`
+	// The health check status of the private IPv4 address.
+	//
 	// example:
 	//
 	// Healthy
 	PrivateIPv4HcStatus *string `json:"privateIPv4HcStatus,omitempty" xml:"privateIPv4HcStatus,omitempty"`
+	// The health check status of the private IPv6 address.
+	//
 	// example:
 	//
 	// Healthy
 	PrivateIPv6HcStatus *string `json:"privateIPv6HcStatus,omitempty" xml:"privateIPv6HcStatus,omitempty"`
+	// The public IPv4 address.
+	//
 	// example:
 	//
 	// 47.x.x.x
@@ -591,10 +653,14 @@ func (s *ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappingsLo
 }
 
 type ListGatewayLoadBalancersResponseBodyDataItemsPorts struct {
+	// The port.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The port protocol.
+	//
 	// example:
 	//
 	// https
@@ -632,11 +698,16 @@ func (s *ListGatewayLoadBalancersResponseBodyDataItemsPorts) Validate() error {
 }
 
 type ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList struct {
+	// The list of associated listeners.
 	Listeners []*ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupListListeners `json:"listeners,omitempty" xml:"listeners,omitempty" type:"Repeated"`
+	// The virtual server group ID. For CLB, this is the VServerGroupId. For NLB, this is the ServerGroupId.
+	//
 	// example:
 	//
 	// rsp-xxxx
 	VirtualServiceGroupId *string `json:"virtualServiceGroupId,omitempty" xml:"virtualServiceGroupId,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// 80-tcp
@@ -692,10 +763,14 @@ func (s *ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList) Va
 }
 
 type ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupListListeners struct {
+	// The listener port.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The listener protocol. No backend enumeration validation is performed. The actual values are returned from SLB or NLB OpenAPI. Common values include tcp, udp, http, https, and tls.
+	//
 	// example:
 	//
 	// https

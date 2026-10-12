@@ -18,11 +18,15 @@ type iBatchUpdateHttpApiOperationRequest interface {
 }
 
 type BatchUpdateHttpApiOperationRequest struct {
+	// The authentication configuration. This parameter is required when enableAuth is set to true.
 	AuthConfig *BatchUpdateHttpApiOperationRequestAuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty" type:"Struct"`
+	// Specifies whether to enable consumer authentication. If set to true, a valid authConfig must be provided. If set to false, authConfig is not validated and the existing configuration remains unchanged.
+	//
 	// example:
 	//
 	// true
-	EnableAuth   *bool     `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// The list of operation IDs to update in batches. This parameter cannot be empty.
 	OperationIds []*string `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
 }
 
@@ -71,10 +75,14 @@ func (s *BatchUpdateHttpApiOperationRequest) Validate() error {
 }
 
 type BatchUpdateHttpApiOperationRequestAuthConfig struct {
+	// The authentication mode.
+	//
 	// example:
 	//
 	// Custom
 	AuthMode *string `json:"authMode,omitempty" xml:"authMode,omitempty"`
+	// The authentication type.
+	//
 	// example:
 	//
 	// Jwt

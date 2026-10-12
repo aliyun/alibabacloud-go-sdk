@@ -24,7 +24,7 @@ type iUpdateAiModelCardRequest interface {
 }
 
 type UpdateAiModelCardRequest struct {
-	// The list of invocation paths supported by the model. Each item must include both path and type. The list is overwritten as a whole during updates.
+	// The list of invocation paths supported by the model. Each item must include both path and type. The entire list is overwritten during an update.
 	AvailablePaths []*UpdateAiModelCardRequestAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
 	// The credit billing information of the model. Only the fixed type is supported. The unit is Credits per million tokens. If not specified, all cost values default to 0.
 	Credit *UpdateAiModelCardRequestCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
@@ -36,7 +36,7 @@ type UpdateAiModelCardRequest struct {
 	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
 	// The token limits and input/output modality information of the model.
 	Meta *UpdateAiModelCardRequestMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The model name. The name must be unique within the same AI gateway instance and model provider. Maximum length: 256 characters.
+	// The model name. The name must be unique within the same AI gateway instance and the same model provider. Maximum length: 256 characters.
 	//
 	// This parameter is required.
 	//
@@ -185,19 +185,19 @@ func (s *UpdateAiModelCardRequestAvailablePaths) Validate() error {
 }
 
 type UpdateAiModelCardRequestCredit struct {
-	// The cache hit token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+	// The cost of cache-hit tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//
 	// 0.5
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	// The input token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+	// The cost of input tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//
 	// 1.5
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
-	// The output token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+	// The cost of output tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//

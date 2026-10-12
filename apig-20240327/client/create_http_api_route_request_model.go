@@ -193,13 +193,13 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 type CreateHttpApiRouteRequestBackendConfig struct {
 	// The backend service scenario. Valid values:
 	//
-	// - SingleService: single service.
+	// - SingleService: Single service.
 	//
-	// - MultiServiceByRatio: multiple services with ratio-based canary release.
+	// - MultiServiceByRatio: Multi-service canary release by ratio.
 	//
-	// - Mock: mock service.
+	// - Mock: Mock service.
 	//
-	// - Redirect: redirect service.
+	// - Redirect: Redirect service.
 	//
 	// example:
 	//
@@ -279,11 +279,11 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The Terms of Service. Valid values:
+	// The service protocol. Valid values:
 	//
-	// - HTTP.
+	// - HTTP
 	//
-	// - HTTPS.
+	// - HTTPS
 	//
 	// example:
 	//
@@ -301,7 +301,7 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// MSE_NACOS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The service version. This parameter takes effect only in tag-based scenarios.
+	// The service version. This parameter takes effect only in the by-tag scenario.
 	//
 	// example:
 	//
@@ -435,13 +435,13 @@ type CreateHttpApiRouteRequestMcpRouteConfig struct {
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	// The Terms of Service. Valid values:
+	// The service protocol. Valid values:
 	//
-	// - TCP.
+	// - TCP
 	//
-	// - HTTP.
+	// - HTTP
 	//
-	// - DUBBO.
+	// - DUBBO
 	//
 	// example:
 	//

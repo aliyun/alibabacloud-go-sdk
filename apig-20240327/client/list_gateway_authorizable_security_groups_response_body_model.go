@@ -20,15 +20,15 @@ type iListGatewayAuthorizableSecurityGroupsResponseBody interface {
 }
 
 type ListGatewayAuthorizableSecurityGroupsResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListGatewayAuthorizableSecurityGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListGatewayAuthorizableSecurityGroupsResponseBody) Validate() error {
 }
 
 type ListGatewayAuthorizableSecurityGroupsResponseBodyData struct {
-	// The security groups.
+	// The list of security groups.
 	Items []*ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -135,7 +135,7 @@ type ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 商品中心集群安全组。
+	// Product Center Cluster Security Group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The security group ID.
 	//
@@ -143,17 +143,17 @@ type ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems struct {
 	//
 	// sg-bp1ftp5sm9os***
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The type of the security group. Valid values:
+	// The security group type. Valid values:
 	//
-	// 	- Normal: general security group
+	// - Normal: Custom security group.
 	//
-	// 	- Enterprise: enterprise security group
+	// - Enterprise: Advanced security group.
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

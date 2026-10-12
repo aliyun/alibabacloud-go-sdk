@@ -131,7 +131,7 @@ func (s *ListGatewayFeaturesResponseBodyData) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItems struct {
-	// The runtime constraints calculated based on the current gateway form. Only returned for certain features.
+	// The runtime constraints calculated based on the current gateway form. Only returned for specific features.
 	Constraints *ListGatewayFeaturesResponseBodyDataItemsConstraints `json:"constraints,omitempty" xml:"constraints,omitempty" type:"Struct"`
 	// The parameter definition.
 	Definition *ListGatewayFeaturesResponseBodyDataItemsDefinition `json:"definition,omitempty" xml:"definition,omitempty" type:"Struct"`
@@ -193,7 +193,7 @@ func (s *ListGatewayFeaturesResponseBodyDataItems) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItemsConstraints struct {
-	// The maximum body collection size per request in bytes. This value is returned based on the managed form of the gateway deployment cluster. Only the log-request-response feature returns this field.
+	// The maximum body collection size per request, in bytes. This value is returned based on the managed form of the gateway deployment cluster. Only the log-request-response feature returns this field.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	//
 	// example:
 	//
-	// Applies to request and response phases. Enabling gzip compresses request responses, which reduces gateway traffic but increases gateway CPU consumption
+	// Applies to the request and response phases. Enabling gzip compresses request responses, which reduces gateway traffic but increases gateway CPU consumption
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the parameter.
 	//
@@ -243,9 +243,9 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The parameter group. Valid values:
 	//
-	// - Telemetry: observability-related parameter.
+	// - Telemetry: An observability parameter.
 	//
-	// - Engine: engine-related parameter.
+	// - Engine: An engine parameter.
 	//
 	// example:
 	//
@@ -253,13 +253,13 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
 	// The input type of the parameter. Valid values:
 	//
-	// - Trigger: toggle.
+	// - Trigger: Toggle.
 	//
-	// - Input: text input.
+	// - Input: Text input.
 	//
-	// - SingleSelect: single-select.
+	// - SingleSelect: Single-select.
 	//
-	// - MultiSelect: multi-select.
+	// - MultiSelect: Multi-select.
 	//
 	// example:
 	//
@@ -494,7 +494,7 @@ func (s *ListGatewayFeaturesResponseBodyDataItemsDefinition) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions struct {
-	// The key used to pass the parameter.
+	// The pass parameter key.
 	//
 	// example:
 	//

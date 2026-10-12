@@ -20,16 +20,21 @@ type iCreatePluginWorkspaceResponseBody interface {
 }
 
 type CreatePluginWorkspaceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *CreatePluginWorkspaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,10 +96,14 @@ func (s *CreatePluginWorkspaceResponseBody) Validate() error {
 }
 
 type CreatePluginWorkspaceResponseBodyData struct {
+	// The Codeup repository ID, which is a numeric string.
+	//
 	// example:
 	//
 	// 12345678
 	RepoId *string `json:"repoId,omitempty" xml:"repoId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// plw-xxxxxxxx

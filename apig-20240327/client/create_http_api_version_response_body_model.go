@@ -18,14 +18,20 @@ type iCreateHttpApiVersionResponseBody interface {
 }
 
 type CreateHttpApiVersionResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 3ACFC7A7-45A9-58CF-B2D5-765B60254695

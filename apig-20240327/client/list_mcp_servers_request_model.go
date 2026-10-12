@@ -46,13 +46,13 @@ type ListMcpServersRequest struct {
 	//
 	// gw-co370icmjeu****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Fuzzy searches for MCP servers by API name.
+	// The keyword used to fuzzy match MCP servers by name.
 	//
 	// example:
 	//
 	// test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// This parameter is required.
 	//

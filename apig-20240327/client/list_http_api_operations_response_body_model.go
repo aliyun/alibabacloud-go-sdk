@@ -26,7 +26,7 @@ type ListHttpApiOperationsResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The API operation list.
+	// The list of API operations.
 	Data *ListHttpApiOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -96,7 +96,7 @@ func (s *ListHttpApiOperationsResponseBody) Validate() error {
 }
 
 type ListHttpApiOperationsResponseBodyData struct {
-	// The API operation list.
+	// The list of API operations.
 	Items []*HttpApiOperationInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -110,7 +110,7 @@ type ListHttpApiOperationsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//

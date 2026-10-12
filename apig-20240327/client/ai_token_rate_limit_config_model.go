@@ -30,7 +30,7 @@ type AiTokenRateLimitConfig struct {
 	EnableGlobalRules *bool `json:"enableGlobalRules,omitempty" xml:"enableGlobalRules,omitempty"`
 	// The list of global throttling rules. Only the LimitByGlobal type is allowed.
 	GlobalRules []*AiTokenRateLimitConfigRule `json:"globalRules,omitempty" xml:"globalRules,omitempty" type:"Repeated"`
-	// The running status of the plugin.
+	// The running status of the plug-in.
 	//
 	// if can be null:
 	// true

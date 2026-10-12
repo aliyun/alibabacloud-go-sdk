@@ -14,7 +14,7 @@ type iGatewayLogConfig interface {
 }
 
 type GatewayLogConfig struct {
-	// The Simple Log Service configurations.
+	// The Simple Log Service (SLS) log configuration.
 	SlsConfig *GatewayLogConfigSlsConfig `json:"slsConfig,omitempty" xml:"slsConfig,omitempty" type:"Struct"`
 }
 
@@ -45,7 +45,7 @@ func (s *GatewayLogConfig) Validate() error {
 }
 
 type GatewayLogConfigSlsConfig struct {
-	// Specifies whether to activate Simple Log Service.
+	// Indicates whether SLS logging is enabled.
 	//
 	// example:
 	//

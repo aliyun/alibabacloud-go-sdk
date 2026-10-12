@@ -46,11 +46,11 @@ type iPluginClassInfo interface {
 }
 
 type PluginClassInfo struct {
-	// The plugin class alias.
+	// The alias of the plugin class.
 	//
 	// example:
 	//
-	// AI安全护栏
+	// AI Safety Guardrail
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The configuration example (JSON string).
 	//
@@ -58,11 +58,11 @@ type PluginClassInfo struct {
 	//
 	// {"checkRequest":true}
 	ConfigExample *string `json:"configExample,omitempty" xml:"configExample,omitempty"`
-	// The plugin class description.
+	// The description of the plugin class.
 	//
 	// example:
 	//
-	// AI请求内容安全检测插件
+	// AI request content security detection plugin
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The execution priority.
 	//
@@ -94,7 +94,7 @@ type PluginClassInfo struct {
 	//
 	// Wasm
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The plugin class name.
+	// The name of the plugin class.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type PluginClassInfo struct {
 	//
 	// example:
 	//
-	// 初始版本
+	// Initial version
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 	// The Wasm programming language.
 	//
@@ -142,7 +142,7 @@ type PluginClassInfo struct {
 	//
 	// Rust
 	WasmLanguage *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
-	// The Wasm file download URL.
+	// The download URL of the Wasm file.
 	//
 	// example:
 	//

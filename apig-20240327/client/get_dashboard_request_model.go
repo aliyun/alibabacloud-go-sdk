@@ -32,9 +32,9 @@ type iGetDashboardRequest interface {
 type GetDashboardRequest struct {
 	// The language of the response. Valid values:
 	//
-	// - zh: Chinese
+	// - zh: Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type GetDashboardRequest struct {
 	Filter *GetDashboardRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
 	// The name of the dashboard. Valid values:
 	//
-	// - LOG: Access log.
+	// - LOG: access log.
 	//
-	// - PLUGIN: Plugin log.
+	// - PLUGIN: plugin log.
 	//
 	// > Note: This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty (400).
 	//
@@ -80,7 +80,7 @@ type GetDashboardRequest struct {
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 	// The source of the dashboard. Valid values:
 	//
-	// - SLS: Log dashboard.
+	// - SLS: log dashboard.
 	//
 	// > Note: This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty (400).
 	//

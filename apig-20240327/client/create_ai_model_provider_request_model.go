@@ -38,7 +38,7 @@ type CreateAiModelProviderRequest struct {
 	//
 	// gw-ucbx3s2m****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The model provider identifier.
+	// The identifier of the model provider.
 	//
 	// This parameter is required.
 	//

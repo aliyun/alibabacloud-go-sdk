@@ -30,7 +30,7 @@ type AiPolicyRedisConfig struct {
 	//
 	// 0
 	DatabaseNumber *int32 `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
-	// The Redis host address.
+	// The Redis hostname.
 	//
 	// example:
 	//

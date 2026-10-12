@@ -20,11 +20,16 @@ type iInvokeAIAgentResponseBody interface {
 }
 
 type InvokeAIAgentResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *InvokeAIAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,11 +96,16 @@ func (s *InvokeAIAgentResponseBody) Validate() error {
 }
 
 type InvokeAIAgentResponseBodyData struct {
+	// The response body of the debug result.
+	//
 	// example:
 	//
-	// {"choices":[{"delta":{"content":"分析结果..."}}]}
-	Body    *string            `json:"body,omitempty" xml:"body,omitempty"`
+	// {"choices":[{"delta":{"content":"Analysis result..."}}]}
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The response headers, such as Content-Type: text/event-stream.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The HTTP status code of the debug result.
+	//
 	// example:
 	//
 	// 200

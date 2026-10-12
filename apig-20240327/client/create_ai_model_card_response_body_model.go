@@ -148,13 +148,13 @@ type CreateAiModelCardResponseBodyData struct {
 	//
 	// qwen
 	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
-	// The source of the model card. Currently, user is returned.
+	// The source of the model card. The current value is user.
 	//
 	// example:
 	//
 	// user
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The last update time of the model card, in the format of yyyy-MM-dd HH:mm:ss.
+	// The last update time of the model card, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -290,7 +290,7 @@ type CreateAiModelCardResponseBodyDataAvailablePaths struct {
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The protocol type corresponding to the path.
+	// The protocol type of the path.
 	//
 	// example:
 	//
@@ -347,7 +347,7 @@ type CreateAiModelCardResponseBodyDataCredit struct {
 	//
 	// 3
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
-	// The billing type. Currently, fixed is returned.
+	// The billing type. The current value is fixed.
 	//
 	// example:
 	//

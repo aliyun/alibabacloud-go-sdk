@@ -42,7 +42,7 @@ type iDomainInfo interface {
 }
 
 type DomainInfo struct {
-	// The certificate identity from SSL Certificates Service.
+	// The certificate identity in SSL Certificates Service.
 	//
 	// example:
 	//

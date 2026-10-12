@@ -24,7 +24,7 @@ type iHiMarketProductPublicationDetail interface {
 }
 
 type HiMarketProductPublicationDetail struct {
-	// The portal ID.
+	// Portal ID
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type HiMarketProductPublicationDetail struct {
 	//
 	// example:
 	//
-	// 开发者门户
+	// Developer Portal
 	PortalName *string `json:"portalName,omitempty" xml:"portalName,omitempty"`
 	// The product ID.
 	//
@@ -46,7 +46,7 @@ type HiMarketProductPublicationDetail struct {
 	//
 	// example:
 	//
-	// AI网关API
+	// AI Gateway API
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
 	// The product type.
 	//
@@ -54,7 +54,7 @@ type HiMarketProductPublicationDetail struct {
 	//
 	// ApiGateway
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
-	// The product publish ID.
+	// The product publication ID.
 	//
 	// example:
 	//

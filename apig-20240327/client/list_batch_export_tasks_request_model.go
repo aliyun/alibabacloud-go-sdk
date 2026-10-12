@@ -28,34 +28,50 @@ type iListBatchExportTasksRequest interface {
 }
 
 type ListBatchExportTasksRequest struct {
+	// The end of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	//
 	// example:
 	//
 	// 2026-05-26T11:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The gateway instance ID. If specified, only tasks under this gateway are returned.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The maximum number of tasks to return in a single request.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The paging token that indicates the start position of the next query.
+	//
 	// example:
 	//
 	// token-xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The start of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	//
 	// example:
 	//
 	// 2026-05-26T10:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The list of task statuses. Separate multiple statuses with commas (,).
+	//
 	// example:
 	//
 	// Pending,Running

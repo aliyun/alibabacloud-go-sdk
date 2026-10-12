@@ -98,9 +98,9 @@ func (s *BatchRemoveConsumerGroupConsumersResponseBody) Validate() error {
 type BatchRemoveConsumerGroupConsumersResponseBodyData struct {
 	// The list of consumer IDs that failed to be removed.
 	FailedConsumerIds []*string `json:"failedConsumerIds,omitempty" xml:"failedConsumerIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs skipped because they are not in the consumer group.
+	// The list of consumer IDs that were skipped because they are not in the consumer group.
 	SkippedConsumerIds []*string `json:"skippedConsumerIds,omitempty" xml:"skippedConsumerIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs successfully removed from the consumer group.
+	// The list of consumer IDs that were successfully removed from the consumer group.
 	SuccessConsumerIds []*string `json:"successConsumerIds,omitempty" xml:"successConsumerIds,omitempty" type:"Repeated"`
 }
 

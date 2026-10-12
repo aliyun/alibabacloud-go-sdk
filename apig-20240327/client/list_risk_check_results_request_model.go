@@ -20,18 +20,26 @@ type iListRiskCheckResultsRequest interface {
 }
 
 type ListRiskCheckResultsRequest struct {
+	// The maximum number of entries to return in this request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// token-xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number. Default value: 1 (DefaultPageNumber).
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10 (DefaultPageSize).
+	//
 	// example:
 	//
 	// 10

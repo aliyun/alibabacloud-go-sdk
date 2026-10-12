@@ -68,7 +68,7 @@ type ListHttpApisRequest struct {
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// Searches for an HTTP API by exact name match.
+	// Searches for an exact match by name.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ListHttpApisRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ListHttpApisRequest struct {
 	//
 	// false
 	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
-	// The plug-in ID. If specified, the response includes plug-in publishing information for the specified plug-in.
+	// The plug-in ID. If specified, the response includes plug-in publishing information based on this plug-in ID.
 	//
 	// example:
 	//

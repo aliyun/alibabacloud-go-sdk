@@ -30,7 +30,7 @@ type HiMarketProductCategory struct {
 	//
 	// example:
 	//
-	// AI网关相关产品分类
+	// Categorization for AI Gateway related products
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The icon configuration.
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
@@ -38,7 +38,7 @@ type HiMarketProductCategory struct {
 	//
 	// example:
 	//
-	// AI网关
+	// AI Gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

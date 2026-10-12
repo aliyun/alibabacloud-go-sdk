@@ -40,7 +40,7 @@ type ListAiModelProvidersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The fuzzy match condition for the model provider identifier. If left empty, all model providers under the current gateway are queried.
+	// The fuzzy match condition for the model provider identifier. If this parameter is left empty, all model providers under the current gateway are queried.
 	//
 	// example:
 	//

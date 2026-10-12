@@ -32,12 +32,6 @@ type HttpApiDomainInfo struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The protocol.
 	//
-	// Valid values:
-	//
-	// 	- HTTPS
-	//
-	// 	- HTTP
-	//
 	// example:
 	//
 	// HTTP

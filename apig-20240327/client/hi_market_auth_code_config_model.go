@@ -42,7 +42,7 @@ type HiMarketAuthCodeConfig struct {
 	//
 	// my-client-id
 	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The OAuth2 client secret. The secret is AES-encrypted when stored.
+	// The OAuth2 client secret, which is AES-encrypted when stored.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type HiMarketAuthCodeConfig struct {
 	//
 	// https://idp.example.com
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// The JWKS public key set URI, used for token signature verification.
+	// The JWKS public key set URI, which is used for token signature verification.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iHiMarketHmacConfig interface {
 }
 
 type HiMarketHmacConfig struct {
-	// The list of credentials.
+	// The credential list.
 	Credentials []*HiMarketHmacConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
 }
 

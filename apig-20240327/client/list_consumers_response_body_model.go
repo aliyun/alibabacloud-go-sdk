@@ -96,7 +96,7 @@ func (s *ListConsumersResponseBody) Validate() error {
 }
 
 type ListConsumersResponseBodyData struct {
-	// The list of consumers.
+	// The list of API consumer information.
 	Items []*ListConsumersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,7 +176,7 @@ func (s *ListConsumersResponseBodyData) Validate() error {
 }
 
 type ListConsumersResponseBodyDataItems struct {
-	// The consumer ID.
+	// The API consumer ID.
 	//
 	// example:
 	//
@@ -198,15 +198,15 @@ type ListConsumersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 测试消费者
+	// Test consumer
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the consumer is enabled.
+	// Indicates whether the API consumer is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The consumer name.
+	// The API consumer name.
 	//
 	// example:
 	//

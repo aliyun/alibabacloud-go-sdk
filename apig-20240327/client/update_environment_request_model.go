@@ -22,13 +22,13 @@ type UpdateEnvironmentRequest struct {
 	//
 	// example:
 	//
-	// 测试环境
+	// Test environment
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The description of the environment. You can specify information such as the purpose and owner of the environment.
+	// The description of the environment. You can specify information such as the purpose of the environment and the owner.
 	//
 	// example:
 	//
-	// 这是xx的xx项目测试环境
+	// This is the test environment for the xx project of xx
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 

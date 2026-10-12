@@ -32,7 +32,7 @@ type iAiStatisticsPathField interface {
 }
 
 type AiStatisticsPathField struct {
-	// The secondary business category of the field. Optional. Valid values: conversation (conversation content), config (configuration parameters), tools (tool calling), usage (usage statistics), metadata (metadata), choices (candidate results), identity (identity identifier), cache (cache information), media (multimedia content), logprobs (log probabilities), and custom (custom field). Set custom fields to custom.
+	// The secondary business category of the field. This parameter is optional. Valid values: conversation (conversation content), config (configuration parameters), tools (tool calling), usage (usage statistics), metadata (metadata), choices (candidate results), identity (identity), cache (cache information), media (multimedia content), logprobs (log probabilities), and custom (custom fields). Set custom fields to custom.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type AiStatisticsPathField struct {
 	//
 	// question
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// The request or response attribution. The backend normalizes this to request or response based on source.
+	// The request or response attribution. The backend normalizes this to request or response based on the source value.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type AiStatisticsPathField struct {
 	//
 	// Question content
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether collection is enabled to create a log record for the corresponding field in AI request logs.
+	// Indicates whether collection is enabled to include the corresponding field in AI request log records.
 	//
 	// example:
 	//
 	// true
 	RecordEnabled *bool `json:"recordEnabled,omitempty" xml:"recordEnabled,omitempty"`
-	// The aggregation rule for streaming response fields. Valid values: append, first, and replace. append: appends the matched values from each streaming chunk in sequence. first: retains the first matched value. replace: uses the last matched value. When source is response_streaming_body and rule is not specified, first is used by default. This field is not required for non-streaming scenarios.
+	// The aggregation rule for streaming response fields. Valid values: append, first, and replace. append: appends the matched values from each streaming chunk in sequence. first: retains the first matched value. replace: uses the last matched value. When source is set to response_streaming_body and rule is not specified, the default value is first. This field is not required for non-streaming scenarios.
 	//
 	// example:
 	//

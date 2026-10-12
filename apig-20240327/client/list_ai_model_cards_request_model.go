@@ -28,7 +28,7 @@ type ListAiModelCardsRequest struct {
 	//
 	// gw-8c13d2b4f8a1
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The fuzzy match keyword for the model provider identifier or model name. If left empty, all model cards under the current gateway are queried.
+	// The keyword for fuzzy match against the model provider identifier or model name. If this parameter is left empty, all model cards under the current gateway are queried.
 	//
 	// example:
 	//

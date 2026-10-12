@@ -16,7 +16,7 @@ type iHttpApiResponseContract interface {
 }
 
 type HttpApiResponseContract struct {
-	// The content type.
+	// The response content type.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type HttpApiResponseContract struct {
 	//
 	// application/json
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The response definition.
+	// The response definitions.
 	Items []*HttpApiResponseContractItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -74,19 +74,19 @@ type HttpApiResponseContractItems struct {
 	//
 	// 200
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The response description.
+	// The description.
 	//
 	// example:
 	//
-	// This is a description.
+	// Normal API response
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The sample value.
+	// The example value.
 	//
 	// example:
 	//
 	// {"result": "ok"}
 	Example *string `json:"example,omitempty" xml:"example,omitempty"`
-	// The JSON definition description of the response body.
+	// The JSON schema definition of the response body.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type HttpApiResponseContractItems struct {
 	//
 	//             "type": "string",
 	//
-	//             "description": "This is a description."
+	//             "description": "Operation result. \\"ok\\" indicates success."
 	//
 	//         }
 	//

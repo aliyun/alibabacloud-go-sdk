@@ -108,7 +108,7 @@ type UpdateGatewayQuotaRuleResponseBodyData struct {
 	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
 	// The conflict preview.
 	ConflictPreview *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
-	// Indicates whether this is a dry run.
+	// Indicates whether the request is a dry run.
 	//
 	// example:
 	//
@@ -241,13 +241,13 @@ func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error
 }
 
 type UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
-	// The period type of the existing conflicting rule on the consumer subject. Valid values: day (daily), week (weekly), month (monthly).
+	// The period type of the existing conflicting rule on the consumer subject. Valid values: day (daily), week (weekly), and month (monthly).
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumer subject. Valid values: calendar (calendar period) and epoch (custom period).
+	// The type of the existing conflicting rule on the consumer subject. A value of calendar indicates a calendar-period rule. A value of epoch indicates a custom-period rule.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iListPluginWorkspaceRequest interface {
 }
 
 type ListPluginWorkspaceRequest struct {
+	// The gateway type used to filter workspaces. Default value: API.
+	//
 	// example:
 	//
 	// AI

@@ -20,15 +20,22 @@ type iListK8sClusterSourcesResponseBody interface {
 }
 
 type ListK8sClusterSourcesResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListK8sClusterSourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 043360DA-ED3B-5386-9B7A-D94DECF99A30
@@ -89,6 +96,7 @@ func (s *ListK8sClusterSourcesResponseBody) Validate() error {
 }
 
 type ListK8sClusterSourcesResponseBodyData struct {
+	// The list of Kubernetes clusters that can be added.
 	Items []*ListK8sClusterSourcesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -123,10 +131,14 @@ func (s *ListK8sClusterSourcesResponseBodyData) Validate() error {
 }
 
 type ListK8sClusterSourcesResponseBodyDataItems struct {
+	// The container service cluster ID.
+	//
 	// example:
 	//
 	// c4a21b3560fad4ec***
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The container service cluster name.
+	//
 	// example:
 	//
 	// itemcenter-dev-cluster

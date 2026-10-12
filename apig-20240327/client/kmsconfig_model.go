@@ -16,13 +16,13 @@ type iKMSConfig interface {
 }
 
 type KMSConfig struct {
-	// The KMS instance ID
+	// The KMS instance ID.
 	//
 	// example:
 	//
 	// kst-xxxxxxxx
 	KmsInstanceId *string `json:"kmsInstanceId,omitempty" xml:"kmsInstanceId,omitempty"`
-	// The KMS key ID
+	// The KMS key ID.
 	//
 	// example:
 	//

@@ -48,7 +48,7 @@ type iHttpApiApiInfo interface {
 }
 
 type HttpApiApiInfo struct {
-	// The list of agent protocols.
+	// The list of Agent protocols.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
 	// The list of AI protocols.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
@@ -60,7 +60,7 @@ type HttpApiApiInfo struct {
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// The API operation deployment status.
+	// The API operation publish status.
 	DeployCntMap map[string]*HttpApiApiInfoDeployCntMapValue `json:"deployCntMap,omitempty" xml:"deployCntMap,omitempty"`
 	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
@@ -70,6 +70,8 @@ type HttpApiApiInfo struct {
 	//
 	// Test API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether authentication is enabled.
+	//
 	// example:
 	//
 	// true
@@ -334,7 +336,7 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// test
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The deployment scenario.
+	// The publish scenario.
 	//
 	// example:
 	//
@@ -346,9 +348,9 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// Service
 	BackendType *string `json:"backendType,omitempty" xml:"backendType,omitempty"`
-	// The domain name information published by the user.
+	// The custom domain information published by the user.
 	CustomDomains []*HttpApiDomainInfo `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
-	// The deployment status of the API in the current environment.
+	// The publish status of the API in the current environment.
 	//
 	// example:
 	//
@@ -509,6 +511,8 @@ func (s *HttpApiApiInfoEnvironments) Validate() error {
 }
 
 type HttpApiApiInfoEnvironmentsGatewayInfo struct {
+	// The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
+	//
 	// example:
 	//
 	// MultiTenantServerless
@@ -780,7 +784,7 @@ func (s *HttpApiApiInfoEnvironmentsSubDomains) Validate() error {
 type HttpApiApiInfoIngressInfo struct {
 	// The environment context.
 	EnvironmentInfo *HttpApiApiInfoIngressInfoEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	// The monitored Ingress Class.
+	// The Ingress Class to listen on.
 	//
 	// example:
 	//
@@ -788,7 +792,7 @@ type HttpApiApiInfoIngressInfo struct {
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
 	// The Kubernetes cluster information.
 	K8sClusterInfo *HttpApiApiInfoIngressInfoK8sClusterInfo `json:"k8sClusterInfo,omitempty" xml:"k8sClusterInfo,omitempty" type:"Struct"`
-	// Specifies whether to update the address in Ingress Status.
+	// Specifies whether to update the address in the Ingress Status.
 	//
 	// example:
 	//
@@ -800,7 +804,7 @@ type HttpApiApiInfoIngressInfo struct {
 	//
 	// src-xxx
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The monitored namespace.
+	// The namespace to listen on.
 	//
 	// example:
 	//

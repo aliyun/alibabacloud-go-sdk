@@ -20,16 +20,21 @@ type iListSyncMCPServerResponseBody interface {
 }
 
 type ListSyncMCPServerResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListSyncMCPServerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,7 +96,9 @@ func (s *ListSyncMCPServerResponseBody) Validate() error {
 }
 
 type ListSyncMCPServerResponseBodyData struct {
-	DomainIds  []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// The list of domain name IDs bound to the Nacos MCP export of the gateway, excluding the default domain name. If no configuration exists, an empty array [] is returned.
+	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// The list of synchronized (whitelisted) MCP server names, obtained from the AllowMcpServers field in the MCP Bridge registration configuration. If no configuration exists, an empty array [] is returned.
 	McpServers []*string `json:"mcpServers,omitempty" xml:"mcpServers,omitempty" type:"Repeated"`
 }
 

@@ -26,19 +26,19 @@ type iCreateAiModelCardRequest interface {
 }
 
 type CreateAiModelCardRequest struct {
-	// The list of API paths supported by the model. Each item must include both path and type.
+	// The list of API paths supported by the model. Each entry must include both path and type.
 	//
 	// example:
 	//
 	// [{"path":"/v1/chat/completions","type":"OpenAICompatible"}]
 	AvailablePaths []*CreateAiModelCardRequestAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	// The credit billing information of the model. Currently, only the fixed type is supported. The cost unit is Credits per million tokens. If not specified, all cost values default to 0.
+	// The credit billing information of the model. Currently, only the fixed type is supported, and the cost unit is Credits per million tokens. If this parameter is not specified, all cost values default to 0.
 	//
 	// example:
 	//
 	// {"type":"fixed","inputCost":1.5,"outputCost":3,"cacheCost":0.5}
 	Credit *CreateAiModelCardRequestCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
-	// The model capability switches. Keys must be model capability names supported by API Gateway, and values must be Boolean.
+	// The model capability switches. Keys must be model capability names supported by API Gateway, and values must be Boolean values.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateAiModelCardRequest struct {
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model provider identifier. The value must reference an existing model provider in the target AI gateway instance. The value can be up to 128 characters in length.
+	// The model provider identifier. The value must reference a model provider that already exists in the target AI gateway instance. The value can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -171,13 +171,13 @@ func (s *CreateAiModelCardRequest) Validate() error {
 }
 
 type CreateAiModelCardRequestAvailablePaths struct {
-	// The model invocation path. The value can be up to 2048 characters in length.
+	// The model invocation path. The value can be up to 2,048 characters in length.
 	//
 	// example:
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The protocol type corresponding to the path. The value can be up to 64 characters in length.
+	// The protocol type of the path. The value can be up to 64 characters in length.
 	//
 	// example:
 	//
@@ -216,25 +216,25 @@ func (s *CreateAiModelCardRequestAvailablePaths) Validate() error {
 }
 
 type CreateAiModelCardRequestCredit struct {
-	// The cache hit token cost, in Credits per million tokens. The value must be greater than or equal to 0. If not specified, the value defaults to 0.
+	// The cache hit token cost, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//
 	// 0.5
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	// The input token cost, in Credits per million tokens. The value must be greater than or equal to 0. If not specified, the value defaults to 0.
+	// The input token cost, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//
 	// 1.5
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
-	// The output token cost, in Credits per million tokens. The value must be greater than or equal to 0. If not specified, the value defaults to 0.
+	// The output token cost, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//
 	// 3
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
-	// The billing type. Currently, only fixed is supported. If not specified, the value defaults to fixed.
+	// The billing type. Currently, only fixed is supported. If this parameter is not specified, the default value is fixed.
 	//
 	// example:
 	//
@@ -309,13 +309,13 @@ type CreateAiModelCardRequestMeta struct {
 	//
 	// 131072
 	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
-	// The list of input modalities supported by the model. The list can contain up to 16 items, and each item must not be empty.
+	// The list of input modalities supported by the model. The list can contain up to 16 entries, and each entry must not be empty.
 	//
 	// example:
 	//
 	// ["text","image"]
 	SupportedInputModalities []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
-	// The list of output modalities supported by the model. The list can contain up to 16 items, and each item must not be empty.
+	// The list of output modalities supported by the model. The list can contain up to 16 entries, and each entry must not be empty.
 	//
 	// example:
 	//

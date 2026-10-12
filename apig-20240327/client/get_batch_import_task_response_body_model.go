@@ -20,15 +20,22 @@ type iGetBatchImportTaskResponseBody interface {
 }
 
 type GetBatchImportTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetBatchImportTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CE534E1D-FCE4-5930-B784-E055EC1AEE6F
@@ -89,31 +96,46 @@ func (s *GetBatchImportTaskResponseBody) Validate() error {
 }
 
 type GetBatchImportTaskResponseBodyData struct {
+	// The time when the task was created. The time is in UTC and follows the RFC 3339 format.
+	//
 	// example:
 	//
 	// 2026-05-15T10:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// some apis import failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The number of processed items.
+	//
 	// example:
 	//
 	// 5
-	ProcessedCount *int32                                    `json:"processedCount,omitempty" xml:"processedCount,omitempty"`
-	Result         *GetBatchImportTaskResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	ProcessedCount *int32 `json:"processedCount,omitempty" xml:"processedCount,omitempty"`
+	// The task result details.
+	Result *GetBatchImportTaskResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// The task status. Valid values: Pending, Running, Success, PartialSuccess, and Failed.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// async-task-xxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// BatchImport
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10
@@ -210,22 +232,32 @@ func (s *GetBatchImportTaskResponseBodyData) Validate() error {
 }
 
 type GetBatchImportTaskResponseBodyDataResult struct {
+	// The API type.
+	//
 	// example:
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
+	// Indicates whether the task is in dry run mode.
+	//
 	// example:
 	//
 	// true
-	DryRun        *bool                                                    `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The list of dry run results.
 	DryRunResults []*GetBatchImportTaskResponseBodyDataResultDryRunResults `json:"dryRunResults,omitempty" xml:"dryRunResults,omitempty" type:"Repeated"`
-	FailureItems  []*GetBatchImportTaskResponseBodyDataResultFailureItems  `json:"failureItems,omitempty" xml:"failureItems,omitempty" type:"Repeated"`
+	// The list of APIs that failed to be processed.
+	FailureItems []*GetBatchImportTaskResponseBodyDataResultFailureItems `json:"failureItems,omitempty" xml:"failureItems,omitempty" type:"Repeated"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-xxx
-	GatewayId     *string                                                 `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	ImportRequest *GetBatchImportTaskResponseBodyDataResultImportRequest  `json:"importRequest,omitempty" xml:"importRequest,omitempty" type:"Struct"`
-	SuccessItems  []*GetBatchImportTaskResponseBodyDataResultSuccessItems `json:"successItems,omitempty" xml:"successItems,omitempty" type:"Repeated"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The formal import request body. This field is returned only for dry run tasks and can be resubmitted as the request body of BatchImportHttpApis. The dryRun parameter is fixed to false. Temporary specFileUrl values are still subject to URL expiration constraints.
+	ImportRequest *GetBatchImportTaskResponseBodyDataResultImportRequest `json:"importRequest,omitempty" xml:"importRequest,omitempty" type:"Struct"`
+	// The list of successfully processed APIs.
+	SuccessItems []*GetBatchImportTaskResponseBodyDataResultSuccessItems `json:"successItems,omitempty" xml:"successItems,omitempty" type:"Repeated"`
 }
 
 func (s GetBatchImportTaskResponseBodyDataResult) String() string {
@@ -336,15 +368,22 @@ func (s *GetBatchImportTaskResponseBodyDataResult) Validate() error {
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResults struct {
+	// The API name. The value unknown is returned if the name cannot be identified.
+	//
 	// example:
 	//
 	// petstore
-	ApiName    *string                                                          `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The dry run details, including the operations, routes, components, and error or warning messages planned for creation or update in this file.
 	DryRunInfo *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo `json:"dryRunInfo,omitempty" xml:"dryRunInfo,omitempty" type:"Struct"`
+	// The dry run error message.
+	//
 	// example:
 	//
 	// unsupported oas version
 	Error *string `json:"error,omitempty" xml:"error,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// petstore.yaml
@@ -405,15 +444,24 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResults) Validate() error
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo struct {
-	ErrorMessages     []*string                                                                           `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
-	ExistHttpApiInfo  *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfo    `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty" type:"Struct"`
+	// The list of dry run error messages.
+	ErrorMessages []*string `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
+	// The basic information about the existing HTTP API matched during import.
+	ExistHttpApiInfo *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfo `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty" type:"Struct"`
+	// The list of data structures that failed the dry run.
 	FailureComponents []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
+	// The list of REST API operations that failed the dry run.
 	FailureOperations []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
-	FailureRoutes     []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRoutes     `json:"failureRoutes,omitempty" xml:"failureRoutes,omitempty" type:"Repeated"`
+	// The list of routes that failed the dry run.
+	FailureRoutes []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRoutes `json:"failureRoutes,omitempty" xml:"failureRoutes,omitempty" type:"Repeated"`
+	// The list of data structures that passed the dry run.
 	SuccessComponents []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessComponents `json:"successComponents,omitempty" xml:"successComponents,omitempty" type:"Repeated"`
+	// The list of REST API operations that passed the dry run.
 	SuccessOperations []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessOperations `json:"successOperations,omitempty" xml:"successOperations,omitempty" type:"Repeated"`
-	SuccessRoutes     []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRoutes     `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
-	WarningMessages   []*string                                                                           `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
+	// The list of routes that passed the dry run.
+	SuccessRoutes []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRoutes `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
+	// The list of dry run warning messages.
+	WarningMessages []*string `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
 }
 
 func (s GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo) String() string {
@@ -569,26 +617,37 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo) Valida
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfo struct {
+	// The base path of the API.
+	//
 	// example:
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The ID of the HTTP API.
+	//
 	// example:
 	//
 	// api-xxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
+	// The name of the API.
+	//
 	// example:
 	//
 	// petstore
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The API type.
+	//
 	// example:
 	//
 	// Rest
-	Type        *string                                                                                     `json:"type,omitempty" xml:"type,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The API versioning information.
 	VersionInfo *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfoVersionInfo `json:"versionInfo,omitempty" xml:"versionInfo,omitempty" type:"Struct"`
 }
 
@@ -664,22 +723,32 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHtt
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfoVersionInfo struct {
+	// Indicates whether versioning is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The key in the specified header parameter when the header versioning scheme is used.
+	//
 	// example:
 	//
 	// my-version
 	HeaderName *string `json:"headerName,omitempty" xml:"headerName,omitempty"`
+	// The key in the specified query parameter when the query versioning scheme is used.
+	//
 	// example:
 	//
 	// myVersion
 	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
+	// The versioning scheme.
+	//
 	// example:
 	//
 	// Query
 	Scheme *string `json:"scheme,omitempty" xml:"scheme,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// v1
@@ -744,10 +813,14 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHtt
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComponents struct {
+	// The reason why the dry run failed.
+	//
 	// example:
 	//
 	// invalid schema
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The name of the data structure.
+	//
 	// example:
 	//
 	// Pet
@@ -785,14 +858,20 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureC
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureOperations struct {
+	// The reason why the dry run failed.
+	//
 	// example:
 	//
 	// unsupported operation
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP method of the REST API operation.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The path of the REST API operation.
+	//
 	// example:
 	//
 	// /pets/{petId}
@@ -839,10 +918,14 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureO
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRoutes struct {
+	// The reason why the dry run failed.
+	//
 	// example:
 	//
 	// domain not found
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The name of the route.
+	//
 	// example:
 	//
 	// route-pets
@@ -880,10 +963,14 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureR
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessComponents struct {
+	// The action type to be performed after the dry run.
+	//
 	// example:
 	//
 	// Create
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The name of the data structure.
+	//
 	// example:
 	//
 	// Pet
@@ -921,18 +1008,26 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessC
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessOperations struct {
+	// The action type to be performed after the dry run.
+	//
 	// example:
 	//
 	// Create
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The HTTP method of the REST API operation.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The name of the REST API operation.
+	//
 	// example:
 	//
 	// getPetById
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The path of the REST API operation.
+	//
 	// example:
 	//
 	// /pets/{petId}
@@ -988,10 +1083,14 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessO
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRoutes struct {
+	// The action type to be performed after the dry run.
+	//
 	// example:
 	//
 	// Create
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The name of the route.
+	//
 	// example:
 	//
 	// route-pets
@@ -1029,18 +1128,26 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessR
 }
 
 type GetBatchImportTaskResponseBodyDataResultFailureItems struct {
+	// The ID of the API.
+	//
 	// example:
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// The API name. The value unknown is returned if the name cannot be identified.
+	//
 	// example:
 	//
 	// petstore
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// invalid oas format
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// petstore.yaml
@@ -1096,33 +1203,48 @@ func (s *GetBatchImportTaskResponseBodyDataResultFailureItems) Validate() error 
 }
 
 type GetBatchImportTaskResponseBodyDataResultImportRequest struct {
+	// Specifies whether to allow overwriting existing APIs.
 	AllowUpdate *bool `json:"allowUpdate,omitempty" xml:"allowUpdate,omitempty"`
+	// The API type.
+	//
 	// example:
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
+	// Specifies whether the request is in dry run mode. This parameter is fixed to false in the formal import request body.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The download URL of the OAS ZIP file, which is consistent with the dry run request.
+	//
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com/my-bucket/imports/batch.zip
-	SpecFileUrl   *string                                                             `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
+	SpecFileUrl *string `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
+	// The OSS configuration of the OAS file, which is consistent with the dry run request.
 	SpecOssConfig *GetBatchImportTaskResponseBodyDataResultImportRequestSpecOssConfig `json:"specOssConfig,omitempty" xml:"specOssConfig,omitempty" type:"Struct"`
+	// The conflict merge strategy used during import.
+	//
 	// example:
 	//
 	// ExistFirst
-	Strategy             *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
-	WithGatewayExtension *bool   `json:"withGatewayExtension,omitempty" xml:"withGatewayExtension,omitempty"`
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+	// Specifies whether to import with gateway extension configurations.
+	WithGatewayExtension *bool `json:"withGatewayExtension,omitempty" xml:"withGatewayExtension,omitempty"`
 }
 
 func (s GetBatchImportTaskResponseBodyDataResultImportRequest) String() string {
@@ -1224,14 +1346,20 @@ func (s *GetBatchImportTaskResponseBodyDataResultImportRequest) Validate() error
 }
 
 type GetBatchImportTaskResponseBodyDataResultImportRequestSpecOssConfig struct {
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// my-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The object key of the specification file in the OSS bucket.
+	//
 	// example:
 	//
 	// imports/batch.zip
 	ObjectKey *string `json:"objectKey,omitempty" xml:"objectKey,omitempty"`
+	// The region ID of the OSS bucket.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1278,18 +1406,26 @@ func (s *GetBatchImportTaskResponseBodyDataResultImportRequestSpecOssConfig) Val
 }
 
 type GetBatchImportTaskResponseBodyDataResultSuccessItems struct {
+	// The ID of the API.
+	//
 	// example:
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// The API name. The value unknown is returned if the name cannot be identified.
+	//
 	// example:
 	//
 	// petstore
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// invalid oas format
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// petstore.yaml

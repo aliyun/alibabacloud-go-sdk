@@ -192,7 +192,7 @@ type ListConsumerGroupConsumersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Online API caller.
+	// Online API caller
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the consumer is enabled.
 	//
@@ -200,7 +200,7 @@ type ListConsumerGroupConsumersResponseBodyDataItems struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The time when the consumer joined the consumer group, in Unix millisecond timestamp.
+	// The time when the consumer joined the consumer group. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -18,10 +18,14 @@ type iRunPluginPipelineResponseBody interface {
 }
 
 type RunPluginPipelineResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success

@@ -26,7 +26,7 @@ type AddGatewaySecurityGroupRuleRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The port ranges.
 	PortRanges []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
-	// The security group ID. This parameter is required. The specified security group must be different from the security group associated with the gateway. Otherwise, an error is returned.
+	// The security group ID. This parameter is required. The specified security group must be different from the security group that is associated with the gateway. Otherwise, an error is returned.
 	//
 	// example:
 	//

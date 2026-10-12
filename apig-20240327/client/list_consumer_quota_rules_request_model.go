@@ -26,7 +26,7 @@ type ListConsumerQuotaRulesRequest struct {
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The rule name keyword, used for fuzzy match.
+	// The keyword for the rule name, used for fuzzy match.
 	//
 	// example:
 	//

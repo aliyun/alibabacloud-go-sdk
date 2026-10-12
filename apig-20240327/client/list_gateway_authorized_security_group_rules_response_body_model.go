@@ -20,15 +20,15 @@ type iListGatewayAuthorizedSecurityGroupRulesResponseBody interface {
 }
 
 type ListGatewayAuthorizedSecurityGroupRulesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListGatewayAuthorizedSecurityGroupRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListGatewayAuthorizedSecurityGroupRulesResponseBody) Validate() error {
 }
 
 type ListGatewayAuthorizedSecurityGroupRulesResponseBodyData struct {
-	// The security group rules.
+	// The list of security group rules.
 	Items []*ListGatewayAuthorizedSecurityGroupRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -131,17 +131,17 @@ func (s *ListGatewayAuthorizedSecurityGroupRulesResponseBodyData) Validate() err
 }
 
 type ListGatewayAuthorizedSecurityGroupRulesResponseBodyDataItems struct {
-	// The list of authorized CIDR blocks.
+	// The list of authorized CIDR block addresses.
 	AuthCidrs []*string `json:"authCidrs,omitempty" xml:"authCidrs,omitempty" type:"Repeated"`
 	// The rule description.
 	//
 	// example:
 	//
-	// 商品中心预发网关授权安全组
+	// Security group authorized by the staging gateway of the product center
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The protocol. Valid values:
+	// The protocol:
 	//
-	// 	- TCP
+	// - TCP
 	//
 	// example:
 	//
@@ -163,21 +163,21 @@ type ListGatewayAuthorizedSecurityGroupRulesResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 商品中心集群安全组
+	// Product center cluster security group
 	SecurityGroupName *string `json:"securityGroupName,omitempty" xml:"securityGroupName,omitempty"`
-	// The rule ID.
+	// The security rule ID of the cloud-native API gateway.
 	//
 	// example:
 	//
 	// gsgr-cqadis5lhtgmv***
 	SecurityGroupRuleId *string `json:"securityGroupRuleId,omitempty" xml:"securityGroupRuleId,omitempty"`
-	// The ID of the source security group.
+	// The source security group ID.
 	//
 	// example:
 	//
 	// sg-bp19akuepfe***
 	SourceSecurityGroupId *string `json:"sourceSecurityGroupId,omitempty" xml:"sourceSecurityGroupId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

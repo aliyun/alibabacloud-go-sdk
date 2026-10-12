@@ -20,16 +20,21 @@ type iGetMigrationNamespacedServicesResponseBody interface {
 }
 
 type GetMigrationNamespacedServicesResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetMigrationNamespacedServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,6 +96,7 @@ func (s *GetMigrationNamespacedServicesResponseBody) Validate() error {
 }
 
 type GetMigrationNamespacedServicesResponseBodyData struct {
+	// The list of services grouped by namespace.
 	NamespacedServices []*GetMigrationNamespacedServicesResponseBodyDataNamespacedServices `json:"namespacedServices,omitempty" xml:"namespacedServices,omitempty" type:"Repeated"`
 }
 
@@ -125,11 +131,14 @@ func (s *GetMigrationNamespacedServicesResponseBodyData) Validate() error {
 }
 
 type GetMigrationNamespacedServicesResponseBodyDataNamespacedServices struct {
+	// The Kubernetes namespace.
+	//
 	// example:
 	//
 	// default
-	Namespace *string                                                                     `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Services  []*GetMigrationNamespacedServicesResponseBodyDataNamespacedServicesServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The list of migratable services in the namespace.
+	Services []*GetMigrationNamespacedServicesResponseBodyDataNamespacedServicesServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
 func (s GetMigrationNamespacedServicesResponseBodyDataNamespacedServices) String() string {
@@ -172,10 +181,14 @@ func (s *GetMigrationNamespacedServicesResponseBodyDataNamespacedServices) Valid
 }
 
 type GetMigrationNamespacedServicesResponseBodyDataNamespacedServicesServices struct {
+	// The service name. After you select a Server Load Balancer (SLB) instance, the frontend populates this value into the serviceName field.
+	//
 	// example:
 	//
 	// nginx-ingress-lb
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the load balancing instance associated with the service.
+	//
 	// example:
 	//
 	// lb-xxxx / nlb-xxxx

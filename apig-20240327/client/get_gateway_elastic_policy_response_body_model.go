@@ -20,11 +20,16 @@ type iGetGatewayElasticPolicyResponseBody interface {
 }
 
 type GetGatewayElasticPolicyResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetGatewayElasticPolicyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,15 +96,22 @@ func (s *GetGatewayElasticPolicyResponseBody) Validate() error {
 }
 
 type GetGatewayElasticPolicyResponseBodyData struct {
+	// The elastic policy configuration, deserialized from the elastic_config JSON field in the database.
 	ElasticPolicy *GetGatewayElasticPolicyResponseBodyDataElasticPolicy `json:"elasticPolicy,omitempty" xml:"elasticPolicy,omitempty" type:"Struct"`
+	// The KubeOne AutoScaleStrategy instance ID.
+	//
 	// example:
 	//
 	// 123456
 	ElasticStrategyId *string `json:"elasticStrategyId,omitempty" xml:"elasticStrategyId,omitempty"`
+	// The elastic policy type.
+	//
 	// example:
 	//
 	// CronHPA
 	ElasticType *string `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xxxx
@@ -160,24 +172,35 @@ func (s *GetGatewayElasticPolicyResponseBodyData) Validate() error {
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicy struct {
+	// The time periods during which AutoHPA scale-out is prohibited.
 	DisableScaleTimePolicyList []*GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePolicyList `json:"disableScaleTimePolicyList,omitempty" xml:"disableScaleTimePolicyList,omitempty" type:"Repeated"`
+	// Indicates whether elastic scaling is enabled.
+	//
 	// example:
 	//
 	// true
 	ElasticEnabled *bool `json:"elasticEnabled,omitempty" xml:"elasticEnabled,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// AutoHPA
-	ElasticType               *string                                                                          `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
+	ElasticType *string `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
+	// The time periods during which AutoHPA scale-out is allowed.
 	EnableScaleTimePolicyList []*GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePolicyList `json:"enableScaleTimePolicyList,omitempty" xml:"enableScaleTimePolicyList,omitempty" type:"Repeated"`
+	// The load alert threshold switch for AutoHPA.
+	//
 	// example:
 	//
 	// true
 	LoadWarningThreshold *bool `json:"loadWarningThreshold,omitempty" xml:"loadWarningThreshold,omitempty"`
+	// The maximum number of replicas for AutoHPA.
+	//
 	// example:
 	//
 	// 10
-	MaxUnits       *int32                                                                `json:"maxUnits,omitempty" xml:"maxUnits,omitempty"`
+	MaxUnits *int32 `json:"maxUnits,omitempty" xml:"maxUnits,omitempty"`
+	// The list of CronHPA scheduled policies. Each entry includes units (number of replicas), startTime, and endTime.
 	TimePolicyList []*GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList `json:"timePolicyList,omitempty" xml:"timePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -284,10 +307,14 @@ func (s *GetGatewayElasticPolicyResponseBodyDataElasticPolicy) Validate() error 
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePolicyList struct {
+	// The O&M end time in the HH:mm format.
+	//
 	// example:
 	//
 	// 00:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The O&M start time in the HH:mm format.
+	//
 	// example:
 	//
 	// 00:00
@@ -325,10 +352,14 @@ func (s *GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePol
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePolicyList struct {
+	// The O&M end time in the HH:mm format.
+	//
 	// example:
 	//
 	// 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The O&M start time in the HH:mm format.
+	//
 	// example:
 	//
 	// 09:00
@@ -366,14 +397,20 @@ func (s *GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePoli
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList struct {
+	// The O&M end time in the HH:mm format.
+	//
 	// example:
 	//
 	// 06:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The O&M start time in the HH:mm format.
+	//
 	// example:
 	//
 	// 00:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The number of replicas.
+	//
 	// example:
 	//
 	// 4

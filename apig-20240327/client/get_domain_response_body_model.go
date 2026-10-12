@@ -188,7 +188,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Serverless
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
+	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// The certificate issue authority.
+	// The certification authority.
 	//
 	// example:
 	//
@@ -230,11 +230,11 @@ type GetDomainResponseBodyData struct {
 	//
 	// 1719386834548
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The protocol type supported by the domain name. Valid values:
+	// The protocol type supported by the domain name.
 	//
-	// - HTTP: only HTTP is supported.
+	// - HTTP: Only the HTTP protocol is supported.
 	//
-	// - HTTPS: only HTTPS is supported.
+	// - HTTPS: Only the HTTPS protocol is supported.
 	//
 	// example:
 	//

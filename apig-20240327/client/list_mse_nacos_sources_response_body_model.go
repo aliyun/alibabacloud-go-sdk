@@ -20,15 +20,15 @@ type iListMseNacosSourcesResponseBody interface {
 }
 
 type ListMseNacosSourcesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListMseNacosSourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type ListMseNacosSourcesResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 商品中心Nacos注册中心
+	// Product Center Nacos Registry
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

@@ -196,7 +196,7 @@ type ListConsumerQuotaRulesResponseBodyDataItems struct {
 	//
 	// prod-gateway
 	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
-	// The period multiplier, which specifies the number of periods after which the quota is reset. This parameter is returned only when the rule uses a custom cycle. Minimum value: 1. Maximum value: 60.
+	// The period multiplier, which specifies the number of periods after which the quota resets. This parameter is returned when the rule uses a custom period. Minimum value: 1. Maximum value: 60.
 	//
 	// example:
 	//
@@ -238,17 +238,17 @@ type ListConsumerQuotaRulesResponseBodyDataItems struct {
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The time zone corresponding to the calendar cycle, in UTC+x format.
+	// The time zone corresponding to the calendar period, in UTC+x format.
 	//
 	// example:
 	//
 	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The cycle type. Valid values:
+	// The period type. Valid values:
 	//
-	// - calendar: calendar cycle.
+	// - calendar: calendar period.
 	//
-	// - epoch: custom cycle.
+	// - epoch: custom period.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iListK8sClusterSourcesRequest interface {
 }
 
 type ListK8sClusterSourcesRequest struct {
+	// The VPC ID used to query clusters within the specified VPC. If this parameter is not specified, the VPC of the gateway is used.
+	//
 	// example:
 	//
 	// vpc-xxxx

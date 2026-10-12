@@ -16,7 +16,7 @@ type iHttpApiPolicyReference interface {
 }
 
 type HttpApiPolicyReference struct {
-	// The policy attachment ID.
+	// The policy mount ID.
 	//
 	// example:
 	//

@@ -104,7 +104,7 @@ type ListPluginAttachmentsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *ListPluginAttachmentsResponseBodyData) Validate() error {
 }
 
 type ListPluginAttachmentsResponseBodyDataItems struct {
-	// The plug-in mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, Operation.
+	// The plug-in mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
 	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Specifies whether the plug-in is enabled.
+	// Indicates whether the plug-in is enabled.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type ListPluginAttachmentsResponseBodyDataItems struct {
 	//
 	// pa-d0j9t5em1hkncrlo51mg
 	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	// The plug-in type information.
+	// The plug-in class information.
 	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
 	// The Base64-encoded content of the original plug-in configuration.
 	//
