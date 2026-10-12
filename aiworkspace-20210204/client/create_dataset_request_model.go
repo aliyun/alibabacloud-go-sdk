@@ -25,6 +25,8 @@ type iCreateDatasetRequest interface {
 	GetDatasetTaskRamRole() *string
 	SetDescription(v string) *CreateDatasetRequest
 	GetDescription() *string
+	SetDryRun(v bool) *CreateDatasetRequest
+	GetDryRun() *bool
 	SetEdition(v string) *CreateDatasetRequest
 	GetEdition() *string
 	SetImportInfo(v string) *CreateDatasetRequest
@@ -66,19 +68,19 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
-	// The visibility of the workspace. Valid values:
+	// The workspace visibility. Valid values:
 	//
-	// - PRIVATE (default): visible only to yourself and administrators within the workspace.
+	// - PRIVATE: Visible only to the creator and administrators in the workspace. This is the default value.
 	//
-	// - PUBLIC: visible to all users in the workspace.
+	// - PUBLIC: Visible to all users in the workspace.
 	//
-	// - ROLE_PUBLIC: visible to specified workspace roles. For the role list, refer to AccessibleRoleIdList. Under this condition, the dataset owner and administrators always have visibility.
+	// - ROLE_PUBLIC: Visible to specified workspace roles. For the role list, refer to AccessibleRoleIdList. The dataset owner and administrators always have visibility regardless of the specified roles.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// Takes effect when Accessibility is set to ROLE_PUBLIC. The list of workspace role names that can view the dataset. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs.
+	// Takes effect only when Accessibility is set to ROLE_PUBLIC. The list of workspace role names that have visibility to the dataset. Role IDs starting with PAI are basic role IDs, and those starting with role- are custom role IDs.
 	AccessibleRoleIdList []*string `json:"AccessibleRoleIdList,omitempty" xml:"AccessibleRoleIdList,omitempty" type:"Repeated"`
 	// The number of files in the dataset.
 	//
@@ -86,7 +88,7 @@ type CreateDatasetRequest struct {
 	//
 	// 500
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The size of space occupied by the dataset files. Unit: bytes.
+	// The storage space occupied by the dataset files. Unit: bytes.
 	//
 	// example:
 	//
@@ -96,17 +98,17 @@ type CreateDatasetRequest struct {
 	//
 	// - OSS: Alibaba Cloud Object Storage Service (OSS).
 	//
-	// - NAS: Alibaba Cloud Apsara File Storage NAS General Purpose.
+	// - NAS: Alibaba Cloud File Storage NAS (General-purpose).
 	//
-	// - EXTREMENAS: Alibaba Cloud Apsara File Storage NAS Extreme.
+	// - EXTREMENAS: Alibaba Cloud File Storage NAS (Extreme).
 	//
-	// - CPFS: Alibaba Cloud Cloud Parallel File Storage (CPFS) General Purpose.
+	// - CPFS: Alibaba Cloud Cloud Paralleled File System (CPFS) (General-purpose).
 	//
-	// - BMCPFS: Alibaba Cloud Cloud Parallel File Storage (CPFS) AI Edition.
+	// - BMCPFS: Alibaba Cloud Cloud Paralleled File System (CPFS) (AI-optimized).
 	//
 	// - MAXCOMPUTE: Alibaba Cloud MaxCompute.
 	//
-	// - URL: public HTTP/HTTPS URL.
+	// - URL: A public HTTP or HTTPS URL.
 	//
 	// This parameter is required.
 	//
@@ -116,15 +118,15 @@ type CreateDatasetRequest struct {
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The data type of the dataset. Default value: COMMON. Valid values:
 	//
-	// - COMMON: common.
+	// - COMMON: Common data.
 	//
-	// - PIC: image.
+	// - PIC: Image data.
 	//
-	// - TEXT: text.
+	// - TEXT: Text data.
 	//
-	// - VIDEO: video.
+	// - VIDEO: Video data.
 	//
-	// - AUDIO: audio.
+	// - AUDIO: Audio data.
 	//
 	// example:
 	//
@@ -136,19 +138,21 @@ type CreateDatasetRequest struct {
 	//
 	// acs:ram::1234567890123456:role/role-name
 	DatasetTaskRamRole *string `json:"DatasetTaskRamRole,omitempty" xml:"DatasetTaskRamRole,omitempty"`
-	// The custom description of the dataset to distinguish it from other datasets.
+	// The custom description of the dataset, which is used to distinguish it from other datasets.
 	//
 	// example:
 	//
 	// This is a description of the dataset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The dataset type. Default value: BASIC. Valid values:
+	// Specifies whether to perform only a dry run without actually creating the dataset.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The dataset edition. Default value: BASIC. Valid values:
 	//
-	// - BASIC: basic. Does not support dataset file metadata management.
+	// - BASIC: Basic edition. Does not support file metadata management for the dataset.
 	//
-	// - ADVANCED: advanced. Only supported for OSS type. Each version supports up to 1 million file metadata entries.
+	// - ADVANCED: Advanced edition. Only OSS datasets are supported. Each version supports metadata management for up to 1 million files.
 	//
-	// - LOGICAL: logical. Only supported for OSS type. Each version supports up to 3 million file metadata entries.
+	// - LOGICAL: Logical edition. Only OSS datasets are supported. Each version supports metadata management for up to 3 million files.
 	//
 	// example:
 	//
@@ -162,11 +166,11 @@ type CreateDatasetRequest struct {
 	//
 	// {<BR>
 	//
-	// "region": "${region}",//Region ID<BR>
+	// "region": "${region}",// The region ID.<BR>
 	//
-	// "bucket": "${bucket}",//Bucket name<BR>
+	// "bucket": "${bucket}",// The bucket name.<BR>
 	//
-	// "path": "${path}" //File path<BR>
+	// "path": "${path}" // The file path.<BR>
 	//
 	// }<BR>
 	//
@@ -178,13 +182,13 @@ type CreateDatasetRequest struct {
 	//
 	// {<BR>
 	//
-	// "region": "${region}",//Region ID<BR>
+	// "region": "${region}",// The region ID.<BR>
 	//
-	// "fileSystemId": "${file_system_id}", //File system ID<BR>
+	// "fileSystemId": "${file_system_id}", // The file system ID.<BR>
 	//
-	// "path": "${path}", //File system path<BR>
+	// "path": "${path}", // The file system path.<BR>
 	//
-	// "mountTarget": "${mount_target}" //File system mount target<BR>
+	// "mountTarget": "${mount_target}" // The mount target of the file system.<BR>
 	//
 	// }<BR>
 	//
@@ -196,15 +200,15 @@ type CreateDatasetRequest struct {
 	//
 	// {<BR>
 	//
-	// "region": "${region}",//Region ID<BR>
+	// "region": "${region}",// The region ID.<BR>
 	//
-	// "fileSystemId": "${file_system_id}", //File system ID<BR>
+	// "fileSystemId": "${file_system_id}", // The file system ID.<BR>
 	//
-	// "protocolServiceId":"${protocol_service_id}", //File system protocol service<BR>
+	// "protocolServiceId":"${protocol_service_id}", // The protocol service of the file system.<BR>
 	//
-	// "exportId": "${export_id}", //File system export directory<BR>
+	// "exportId": "${export_id}", // The export directory of the file system.<BR>
 	//
-	// "path": "${path}", //File system path<BR>
+	// "path": "${path}", // The file system path.<BR>
 	//
 	// }<BR>
 	//
@@ -212,19 +216,19 @@ type CreateDatasetRequest struct {
 	//
 	// <details>
 	//
-	// <summary>AI Edition CPFS</summary>
+	// <summary>AI-optimized CPFS</summary>
 	//
 	// {<BR>
 	//
-	// "region": "${region}",//Region ID<BR>
+	// "region": "${region}",// The region ID.<BR>
 	//
-	// "fileSystemId": "${file_system_id}", //File system ID<BR>
+	// "fileSystemId": "${file_system_id}", // The file system ID.<BR>
 	//
-	// "path": "${path}", //File system path<BR>
+	// "path": "${path}", // The file system path.<BR>
 	//
-	// "mountTarget": "${mount_target}" //File system mount target, specific to AI Edition<BR>
+	// "mountTarget": "${mount_target}", // The mount target of the file system. Specific to the AI-optimized edition.<BR>
 	//
-	// "isVpcMount": boolean, //Whether it is a VPC mount target, specific to AI Edition<BR>
+	// "isVpcMount": boolean, // Specifies whether the mount target is a VPC mount target. Specific to the AI-optimized edition.<BR>
 	//
 	// }<BR>
 	//
@@ -248,21 +252,21 @@ type CreateDatasetRequest struct {
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
 	// The list of labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The list of workspace role names that have read and write permissions when the dataset is mounted. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs. If the list contains "*", all roles have read and write permissions.
+	// The list of workspace role names that have read and write permissions when the dataset is mounted. Role IDs starting with PAI are basic role IDs, and those starting with role- are custom role IDs. If the list contains an asterisk (*), all roles have read and write permissions.
 	//
 	// - Specified roles: ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"]
 	//
-	// - All accounts: ["*"]
+	// - All roles: ["*"]
 	//
 	// - Dataset creator only: []
 	MountAccessReadWriteRoleIdList []*string `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
-	// The name of the dataset. Naming rules:
+	// The name of the dataset. The naming rules are as follows:
 	//
-	// - Must start with a lowercase letter, uppercase letter, digit, or Chinese character.
+	// - The name must start with a lowercase letter, an uppercase letter, a digit, or a Chinese character.
 	//
-	// - Can contain underscores (_) or hyphens (-).
+	// - The name can contain underscores (_) and hyphens (-).
 	//
-	// - Must be 1 to 127 characters in length.
+	// - The name must be 1 to 127 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -270,9 +274,7 @@ type CreateDatasetRequest struct {
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The extended field in JsonString format.
-	//
-	// When DLC uses the dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
+	// The extended fields in JSON string format. When DLC uses the dataset, you can configure the mountPath field to specify the default mount path of the dataset.
 	//
 	// example:
 	//
@@ -284,9 +286,9 @@ type CreateDatasetRequest struct {
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The property of the dataset. Valid values:
 	//
-	// - FILE: file.
+	// - FILE: File.
 	//
-	// - DIRECTORY: folder.
+	// - DIRECTORY: Directory.
 	//
 	// This parameter is required.
 	//
@@ -294,41 +296,41 @@ type CreateDatasetRequest struct {
 	//
 	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The dataset provider. Cannot be set to pai.
+	// The provider of the dataset. You cannot set this parameter to pai.
 	//
 	// example:
 	//
 	// Github
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The data source provider type of the dataset. Valid values:
+	// The data source type of the dataset. Valid values:
 	//
-	// - Ecs (default)
+	// - Ecs: Elastic Compute Service (ECS). This is the default value.
 	//
-	// - Lingjun
+	// - Lingjun: Lingjun.
 	//
 	// example:
 	//
 	// Ecs
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// The source dataset ID of the annotation dataset.
+	// The ID of the source dataset from which the labeled dataset is generated.
 	//
 	// example:
 	//
 	// d-bvfasdfxxxxj8o411
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
-	// The source dataset version of the annotation dataset.
+	// The version of the source dataset from which the labeled dataset is generated.
 	//
 	// example:
 	//
 	// v2
 	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
-	// - If SourceType is USER, SourceId can be customized.
+	// - When SourceType is set to USER, SourceId can be customized.
 	//
-	// - If SourceType is ITAG, which indicates a dataset generated from iTAG annotation results, SourceId is the iTAG task ID.
+	// - When SourceType is set to ITAG, which indicates that the dataset is generated from the labeling results of the iTAG module, SourceId is the iTAG task ID.
 	//
-	// - If SourceType is PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
+	// - When SourceType is set to PAI_PUBLIC_DATASET, which indicates that the dataset is created from a PAI public dataset, SourceId is empty by default.
 	//
 	// example:
 	//
@@ -340,19 +342,19 @@ type CreateDatasetRequest struct {
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Examples of Uri configurations:
+	// The URI configuration examples are as follows:
 	//
 	// - If the data source type is OSS: `oss://bucket.endpoint/object`
 	//
 	// - If the data source type is NAS:
 	//
-	// General Purpose NAS format: `nas://<nasfisid>.region/subpath/to/dir/`;
+	// For general-purpose NAS, the format is `nas://<nasfisid>.region/subpath/to/dir/`.
 	//
-	// CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`;
+	// For CPFS 1.0, the format is `nas://<cpfs-fsid>.region/subpath/to/dir/`.
 	//
-	// CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
+	// For CPFS 2.0, the format is `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
 	//
-	// CPFS 1.0 and CPFS 2.0 are distinguished by the fsid format: CPFS 1.0 format is cpfs-<8 ASCII characters>; CPFS 2.0 format is cpfs-<16 ASCII characters>.
+	// CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid: the format for CPFS 1.0 is cpfs-<8 ASCII characters>, and the format for CPFS 2.0 is cpfs-<16 ASCII characters>.
 	//
 	// This parameter is required.
 	//
@@ -360,7 +362,7 @@ type CreateDatasetRequest struct {
 	//
 	// nas://09f****f2.cn-hangzhou/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The Alibaba Cloud account ID of the dataset owner. Workspace owners and administrators have permissions to create datasets for specified workspace members.
+	// The Alibaba Cloud account ID of the dataset owner. The workspace owner and administrators have the permissions to create datasets for specified workspace members.
 	//
 	// example:
 	//
@@ -376,9 +378,9 @@ type CreateDatasetRequest struct {
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 	// The list of labels for the initial version.
 	VersionLabels []*Label `json:"VersionLabels,omitempty" xml:"VersionLabels,omitempty" type:"Repeated"`
-	// The ID of the workspace where the dataset resides. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The ID of the workspace to which the dataset belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
-	// If this parameter is not specified, the default workspace is used. If the default workspace does not exist, an error is returned.
+	// If you do not configure this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
 	//
 	// example:
 	//
@@ -424,6 +426,10 @@ func (s *CreateDatasetRequest) GetDatasetTaskRamRole() *string {
 
 func (s *CreateDatasetRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateDatasetRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateDatasetRequest) GetEdition() *string {
@@ -539,6 +545,11 @@ func (s *CreateDatasetRequest) SetDatasetTaskRamRole(v string) *CreateDatasetReq
 
 func (s *CreateDatasetRequest) SetDescription(v string) *CreateDatasetRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDryRun(v bool) *CreateDatasetRequest {
+	s.DryRun = &v
 	return s
 }
 

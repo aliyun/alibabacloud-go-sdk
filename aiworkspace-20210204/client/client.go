@@ -66,27 +66,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("aiworkspace.aliyuncs.com"),
 		"me-east-1":                   dara.String("aiworkspace.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("aiworkspace.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("aiworkspace.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("aiworkspace.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("aiworkspace.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("aiworkspace.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan":                   dara.String("aiworkspace.cn-heyuan.aliyuncs.com"),
-		"cn-hangzhou":                 dara.String("aiworkspace.cn-hangzhou.aliyuncs.com"),
 		"cn-guangzhou":                dara.String("aiworkspace.cn-guangzhou.aliyuncs.com\t"),
-		"cn-beijing":                  dara.String("aiworkspace.cn-beijing.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("aiworkspace.ap-southeast-8.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("aiworkspace.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("aiworkspace.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("aiworkspace.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2":              dara.String("aiworkspace.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("aiworkspace.ap-northeast-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("aiworkspace.eu-central-1.aliyuncs.com"),
-		"na-south-1":                  dara.String("aiworkspace.na-south-1.aliyuncs.com"),
-		"us-east-1":                   dara.String("aiworkspace.us-east-1.aliyuncs.com"),
-		"us-southeast-1":              dara.String("aiworkspace.us-southeast-1.aliyuncs.com"),
-		"us-west-1":                   dara.String("aiworkspace.us-west-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("aiworkspace.ap-south-1.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("aiworkspace.cn-shanghai-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -758,6 +738,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		body["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.Edition) {
 		body["Edition"] = request.Edition
 	}
@@ -1201,6 +1185,10 @@ func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateData
 //
 // Creates a dataset version.
 //
+// Description:
+//
+// Creates a dataset version.
+//
 // @param request - CreateDatasetVersionRequest
 //
 // @param headers - map
@@ -1234,6 +1222,10 @@ func (client *Client) CreateDatasetVersionWithOptions(DatasetId *string, request
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.ImportInfo) {
@@ -1293,6 +1285,10 @@ func (client *Client) CreateDatasetVersionWithOptions(DatasetId *string, request
 }
 
 // Summary:
+//
+// Creates a dataset version.
+//
+// Description:
 //
 // Creates a dataset version.
 //
@@ -2023,7 +2019,7 @@ func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *str
 
 // Summary:
 //
-// Purchases products. This operation supports pay-as-you-go purchases of DataWorks, OSS, PAI, and MaxCompute.
+// Purchases products. Currently, only pay-as-you-go DataWorks, OSS, PAI, and MaxCompute are supported.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -2074,7 +2070,7 @@ func (client *Client) CreateProductOrdersWithOptions(request *CreateProductOrder
 
 // Summary:
 //
-// Purchases products. This operation supports pay-as-you-go purchases of DataWorks, OSS, PAI, and MaxCompute.
+// Purchases products. Currently, only pay-as-you-go DataWorks, OSS, PAI, and MaxCompute are supported.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -2425,7 +2421,7 @@ func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// Adds a workspace role.
+// Adds a role to a workspace.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -2484,7 +2480,7 @@ func (client *Client) CreateWorkspaceRoleWithOptions(WorkspaceId *string, reques
 
 // Summary:
 //
-// Adds a workspace role.
+// Adds a role to a workspace.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -4545,7 +4541,7 @@ func (client *Client) GetDatasetJob(DatasetId *string, DatasetJobId *string, req
 
 // Summary:
 //
-// Retrieves the configuration of a dataset job.
+// Retrieves the configuration of a dataset task.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -4592,7 +4588,7 @@ func (client *Client) GetDatasetJobConfigWithOptions(DatasetId *string, DatasetJ
 
 // Summary:
 //
-// Retrieves the configuration of a dataset job.
+// Retrieves the configuration of a dataset task.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -4611,7 +4607,11 @@ func (client *Client) GetDatasetJobConfig(DatasetId *string, DatasetJobConfigId 
 
 // Summary:
 //
-// Retrieves the information of a specified dataset version.
+// Retrieves the details of a specified dataset version.
+//
+// Description:
+//
+// Retrieves the details of a specified dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -4652,7 +4652,11 @@ func (client *Client) GetDatasetVersionWithOptions(DatasetId *string, VersionNam
 
 // Summary:
 //
-// Retrieves the information of a specified dataset version.
+// Retrieves the details of a specified dataset version.
+//
+// Description:
+//
+// Retrieves the details of a specified dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -4929,7 +4933,7 @@ func (client *Client) GetInstanceJob(InstanceJobId *string, request *GetInstance
 
 // Summary:
 //
-// Retrieves a member of a workspace.
+// Retrieves the members of a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -4980,7 +4984,7 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 
 // Summary:
 //
-// Retrieves a member of a workspace.
+// Retrieves the members of a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -4999,7 +5003,7 @@ func (client *Client) GetMember(WorkspaceId *string, request *GetMemberRequest) 
 
 // Summary:
 //
-// Gets the details of a specified model.
+// Retrieves the details of a specified model.
 //
 // @param request - GetModelRequest
 //
@@ -5040,7 +5044,7 @@ func (client *Client) GetModelWithOptions(ModelId *string, request *GetModelRequ
 
 // Summary:
 //
-// Gets the details of a specified model.
+// Retrieves the details of a specified model.
 //
 // @param request - GetModelRequest
 //
@@ -6657,7 +6661,7 @@ func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result 
 
 // Summary:
 //
-// Queries a list of images.
+// Retrieves a list of images.
 //
 // @param request - ListImagesRequest
 //
@@ -6748,7 +6752,7 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 
 // Summary:
 //
-// Queries a list of images.
+// Retrieves a list of images.
 //
 // @param request - ListImagesRequest
 //
@@ -6767,7 +6771,7 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// Lists members in a workspace.
+// Lists the members of a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -6830,7 +6834,7 @@ func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListM
 
 // Summary:
 //
-// Lists members in a workspace.
+// Lists the members of a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -7921,11 +7925,11 @@ func (client *Client) ListWorkspaceUsers(WorkspaceId *string, request *ListWorks
 
 // Summary:
 //
-// Retrieves the list of workspaces in a specified region.
+// Retrieves the list of workspaces in a region.
 //
 // Description:
 //
-// You can specify different query options by using the option parameter to retrieve different workspace-related information.
+// Use the Option parameter to specify different query options and retrieve different workspace-related information.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -8020,11 +8024,11 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// Retrieves the list of workspaces in a specified region.
+// Retrieves the list of workspaces in a region.
 //
 // Description:
 //
-// You can specify different query options by using the option parameter to retrieve different workspace-related information.
+// Use the Option parameter to specify different query options and retrieve different workspace-related information.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -9313,6 +9317,10 @@ func (client *Client) UpdateDatasetJobConfig(DatasetId *string, DatasetJobConfig
 //
 // Updates the information of a specified dataset version.
 //
+// Description:
+//
+// Updates the information of a specified dataset version.
+//
 // @param request - UpdateDatasetVersionRequest
 //
 // @param headers - map
@@ -9377,6 +9385,10 @@ func (client *Client) UpdateDatasetVersionWithOptions(DatasetId *string, Version
 }
 
 // Summary:
+//
+// Updates the information of a specified dataset version.
+//
+// Description:
 //
 // Updates the information of a specified dataset version.
 //

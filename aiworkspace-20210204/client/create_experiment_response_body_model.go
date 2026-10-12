@@ -16,17 +16,17 @@ type iCreateExperimentResponseBody interface {
 }
 
 type CreateExperimentResponseBody struct {
-	// If the call is asynchronous, the API returns a JobId.
+	// The ID of the experiment. If the creation operation is asynchronous, a specific job ID is returned.
 	//
 	// example:
 	//
-	// ExperimentId-example-id-****
+	// ExperimentId
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
-	// Request ID
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

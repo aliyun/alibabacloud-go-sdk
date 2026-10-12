@@ -28,13 +28,18 @@ type CreateWorkspaceRoleRequest struct {
 	//
 	// dev-test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The role type. Valid values: custom (custom role). Only custom roles are supported. This is the default value.
+	// The role type. Valid values: custom: custom role. Only custom roles are supported. This is the default value.
 	//
 	// example:
 	//
 	// custom
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 21513926******88039
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateWorkspaceRoleRequest) String() string {

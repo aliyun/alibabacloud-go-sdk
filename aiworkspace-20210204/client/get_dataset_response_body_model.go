@@ -78,9 +78,9 @@ type iGetDatasetResponseBody interface {
 type GetDatasetResponseBody struct {
 	// The workspace visibility. Valid values:
 	//
-	// - PRIVATE: Only the dataset owner and administrators in the workspace can access the dataset.
+	// - PRIVATE: Only the dataset owner and administrators within the workspace can access the dataset.
 	//
-	// - PUBLIC: All members in the workspace can access the dataset.
+	// - PUBLIC: All members of the workspace can access the dataset.
 	//
 	// - ROLE_PUBLIC: Only specified workspace roles can access the dataset. For the role list, see AccessibleRoleIdList. The dataset owner and administrators always have access under this condition.
 	//
@@ -88,13 +88,13 @@ type GetDatasetResponseBody struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The list of workspace role names that can access the dataset. This field takes effect when Accessibility is ROLE_PUBLIC. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs.
+	// The list of workspace role names that can access the dataset. This parameter takes effect only when Accessibility is set to ROLE_PUBLIC. Role IDs starting with PAI are basic role IDs, and role IDs starting with role- are custom role IDs.
 	AccessibleRoleIdList []*string `json:"AccessibleRoleIdList,omitempty" xml:"AccessibleRoleIdList,omitempty" type:"Repeated"`
 	// The data source type. Valid values:
 	//
-	// - OSS: Alibaba Cloud Object Storage Service (OSS).
+	// - OSS: Object Storage Service (OSS).
 	//
-	// - NAS: Alibaba Cloud Apsara File Storage NAS (NAS).
+	// - NAS: Apsara File Storage NAS (NAS).
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type GetDatasetResponseBody struct {
 	//
 	// example:
 	//
-	// Data for labeling
+	// Data for annotation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The dataset type. Valid values:
 	//
@@ -140,13 +140,13 @@ type GetDatasetResponseBody struct {
 	//
 	// BASIC
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The creation time.
+	// The creation time, in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ss.sssZ.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time.
+	// The update time, in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ss.sssZ.
 	//
 	// example:
 	//
@@ -220,9 +220,9 @@ type GetDatasetResponseBody struct {
 	//
 	// "path": "${path}", //File system path<BR>
 	//
-	// "mountTarget": "${mount_target}" //File system mount target, specific to Lingjun edition<BR>
+	// "mountTarget": "${mount_target}" //File system mount target, specific to Lingjun<BR>
 	//
-	// "isVpcMount": boolean, //Whether it is a VPC mount target, specific to Lingjun edition<BR>
+	// "isVpcMount": boolean, //Specifies whether the mount target is a VPC mount target, specific to Lingjun<BR>
 	//
 	// }<BR>
 	//
@@ -254,17 +254,17 @@ type GetDatasetResponseBody struct {
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The latest version of the dataset.
 	LatestVersion *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The permission when the dataset is mounted. Valid values:
+	// The permission when the dataset is mounted.
 	//
 	// - RO: read-only mount.
 	//
-	// - RW: read-write mount.
+	// - RW: read/write mount.
 	//
 	// example:
 	//
 	// RW
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// The list of workspace role names that have read and write permission on the dataset. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs. If the list contains "*", all roles have read and write permission.
+	// The list of workspace role names that have read and write permission on the dataset. Role IDs starting with PAI are basic role IDs, and role IDs starting with role- are custom role IDs. If the list contains "*", all roles have read and write permission.
 	MountAccessReadWriteRoleIdList []*string `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
 	// The dataset name.
 	//
@@ -322,17 +322,17 @@ type GetDatasetResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The source relationship of the shared dataset. This field is valid only when IsShared is true.
+	// The source relationship of the shared dataset. This parameter is valid only when IsShared is true.
 	SharedFrom *DatasetShareRelationship `json:"SharedFrom,omitempty" xml:"SharedFrom,omitempty"`
 	// The sharing configuration of the current dataset.
 	SharingConfig *GetDatasetResponseBodySharingConfig `json:"SharingConfig,omitempty" xml:"SharingConfig,omitempty" type:"Struct"`
-	// The source dataset ID of the iTag labeling dataset.
+	// The source dataset ID of the iTAG annotation dataset.
 	//
 	// example:
 	//
 	// d-rcdg3wxxxxxhc5jk87
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
-	// The source dataset version of the labeling dataset.
+	// The source dataset version of the annotation dataset.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type GetDatasetResponseBody struct {
 	//
 	// - If SourceType is USER, SourceId can be customized.
 	//
-	// - If SourceType is ITAG, which indicates a dataset generated from iTAG labeling results, SourceId is the iTAG task ID.
+	// - If SourceType is ITAG, which indicates a dataset generated from iTAG annotation results, SourceId is the iTAG task ID.
 	//
 	// - If SourceType is PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
 	//
@@ -356,7 +356,7 @@ type GetDatasetResponseBody struct {
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The labeling template of the iTag labeling dataset.
+	// The annotation template of the iTAG annotation dataset.
 	//
 	// example:
 	//
@@ -723,7 +723,7 @@ func (s *GetDatasetResponseBody) Validate() error {
 }
 
 type GetDatasetResponseBodySharingConfig struct {
-	// The list of sharing configuration relationships.
+	// The list of sharing configurations.
 	SharedTo []*DatasetShareRelationship `json:"SharedTo,omitempty" xml:"SharedTo,omitempty" type:"Repeated"`
 }
 

@@ -48,7 +48,9 @@ type UpdateDatasetVersionRequest struct {
 	//
 	// This is a description of a dataset version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extended field in JsonString format. When DLC uses the dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
+	// The extended field in JsonString format.
+	//
+	// When Deep Learning Containers (DLC) uses the dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
 	//
 	// example:
 	//
@@ -57,7 +59,8 @@ type UpdateDatasetVersionRequest struct {
 	//   "mountPath": "/mnt/data/"
 	//
 	// }
-	Options              *string                `json:"Options,omitempty" xml:"Options,omitempty"`
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The list of user metric collection endpoints.
 	UserMetricsEndpoints []*UserMetricsEndpoint `json:"UserMetricsEndpoints,omitempty" xml:"UserMetricsEndpoints,omitempty" type:"Repeated"`
 }
 

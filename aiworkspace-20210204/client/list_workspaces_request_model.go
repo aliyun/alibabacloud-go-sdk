@@ -38,31 +38,29 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The list of return fields for workspace details. This parameter limits the workspace properties returned in the result.
-	//
-	// Separate multiple properties with commas (,). Currently, only Id is supported, which indicates the workspace ID.
+	// The list of fields to return in the workspace details. Use this parameter to limit the workspace properties included in the response. Separate multiple properties with commas (,). Currently, only Id (workspace ID) is supported.
 	//
 	// example:
 	//
 	// Id
 	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// The comma-separated list of modules. Default value: PAI.
+	// The comma-separated module list. Default value: PAI.
 	//
 	// example:
 	//
 	// PAI
 	ModuleList *string `json:"ModuleList,omitempty" xml:"ModuleList,omitempty"`
-	// The query option. Valid values:
+	// The query options. Valid values:
 	//
-	// 	- GetWorkspaces (default): retrieves the workspace list. The Workspaces parameter is returned.
+	// 	- GetWorkspaces (default): retrieves the workspace list and returns Workspaces.
 	//
-	// 	- GetResourceLimits: retrieves resource limits. The ResourceLimits parameter is returned.
+	// 	- GetResourceLimits: retrieves resource limits and returns ResourceLimits.
 	//
 	// example:
 	//
 	// GetWorkspaces
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The sorting order for the specified sorting field during paging. Valid values:
+	// The sort order applied to the specified sort field in a paged query. Valid values:
 	//
 	// 	- ASC (default): ascending order.
 	//
@@ -78,19 +76,19 @@ type ListWorkspacesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Default value: 20.
+	// The number of entries per page for a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID. For information about how to view the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The resource group ID. For information about how to view the resource group ID, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
 	// rg-acfmwp7rky****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The sorting field for paging. Default value: GmtCreateTime. Valid values:
+	// The sort field for a paged query. Default value: GmtCreateTime. Valid values:
 	//
 	// 	- GmtCreateTime (default): sorts by creation time.
 	//
@@ -102,17 +100,17 @@ type ListWorkspacesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The workspace status. Valid values:
 	//
-	// - ENABLED: Normal.
+	// - ENABLED: normal.
 	//
-	// - INITIALIZING: Being initialized.
+	// - INITIALIZING: initializing.
 	//
-	// - FAILURE: Failed.
+	// - FAILURE: failed.
 	//
-	// - DISABLED: Manually disabled.
+	// - DISABLED: manually disabled.
 	//
-	// - FROZEN: Frozen due to overdue payment.
+	// - FROZEN: frozen due to overdue payment.
 	//
-	// - UPDATING: Being updated.
+	// - UPDATING: updating.
 	//
 	// example:
 	//
@@ -124,11 +122,11 @@ type ListWorkspacesRequest struct {
 	//
 	// 17*****1743
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Specifies whether to display detailed workspace information. Valid values:
+	// Specifies whether to display workspace details. Valid values:
 	//
-	// - false (default): does not display detailed information.
+	// - false (default): does not display details.
 	//
-	// - true: displays detailed information.
+	// - true: displays details.
 	//
 	// example:
 	//

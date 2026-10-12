@@ -20,13 +20,13 @@ type iLineageEntity interface {
 }
 
 type LineageEntity struct {
-	// The entity\\"s attributes.
+	// Attributes
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The entity type.
+	// The type of the data lineage entity.
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The entity\\"s name.
+	// The name of the data lineage entity.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The entity\\"s qualified name.
+	// The unique qualified name of the data lineage entity.
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
 }
 

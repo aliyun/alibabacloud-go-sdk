@@ -39,6 +39,10 @@ type Trial struct {
 	// Accessibility
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// ExperimentId
+	//
+	// example:
+	//
+	// exp-1zpfthdx******
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
 	// GmtCreateTime
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -55,6 +59,10 @@ type Trial struct {
 	// SourceType
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// TrialId
+	//
+	// example:
+	//
+	// trl-v0fw9a0sd8f9af
 	TrialId *string `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
 	// UserId
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`

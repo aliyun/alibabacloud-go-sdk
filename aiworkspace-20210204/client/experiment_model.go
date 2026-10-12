@@ -38,31 +38,51 @@ type iExperiment interface {
 }
 
 type Experiment struct {
-  // Accessibility
+  // The visibility of the experiment. PRIVATE indicates that the experiment is visible only to the creator and their Alibaba Cloud account. PUBLIC indicates that the experiment is visible to all users.
+  // 
+  // example:
+  // 
+  // PRIVATE
   Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-  // ArtifactUri
+  // The default artifact output path for tasks associated with the experiment. Currently, only OSS paths are supported.
+  // 
+  // example:
+  // 
+  // oss://test-bucket.oss-cn-hangzhou.aliyuncs.com/test
   ArtifactUri *string `json:"ArtifactUri,omitempty" xml:"ArtifactUri,omitempty"`
-  // ExperimentId
+  // The experiment ID.
+  // 
+  // example:
+  // 
+  // exp-1zpfthdx******
   ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-  // GmtCreatedTime
+  // The time when the experiment was created.
   GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-  // GmtModifiedTime
+  // The time when the experiment was last modified.
   GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-  // Labels
+  // The list of labels for the experiment.
   Labels []*ExperimentLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
   // LatestRun
   LatestRun *Run `json:"LatestRun,omitempty" xml:"LatestRun,omitempty"`
-  // Name
+  // The name of the experiment.
+  // 
+  // example:
+  // 
+  // exp-test
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // OwnerId
+  // The Alibaba Cloud account ID of the experiment owner.
   OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // RequestId
+  // The request ID.
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // TensorboardLogUri
+  // The default OSS storage path for TensorBoard logs of each trial in the experiment.
   TensorboardLogUri *string `json:"TensorboardLogUri,omitempty" xml:"TensorboardLogUri,omitempty"`
-  // UserId
+  // The user ID of the experiment creator.
   UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-  // WorkspaceId
+  // The ID of the workspace to which the experiment belongs.
+  // 
+  // example:
+  // 
+  // 1517**
   WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

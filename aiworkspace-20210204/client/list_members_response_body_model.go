@@ -18,7 +18,7 @@ type iListMembersResponseBody interface {
 }
 
 type ListMembersResponseBody struct {
-	// The list of workspace members.
+	// The list of members.
 	Members []*ListMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListMembersResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of members that match the filter criteria.
+	// The total number of members that meet the filter conditions.
 	//
 	// example:
 	//
@@ -83,51 +83,51 @@ func (s *ListMembersResponseBody) Validate() error {
 }
 
 type ListMembersResponseBodyMembers struct {
-	// Account name of the member.
+	// The account name of the member.
 	//
 	// example:
 	//
 	// testAccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Account type. Valid values:
+	// The account type of the member. Valid values:
 	//
-	// - 1: Alibaba Cloud account
+	// - 1: Alibaba Cloud account.
 	//
-	// - 5: RAM user
+	// - 5: RAM user.
 	//
-	// - 6: RAM role
+	// - 6: RAM role.
 	//
 	// example:
 	//
 	// 5
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// Display name of the member.
+	// The display name of the member.
 	//
 	// example:
 	//
 	// myDisplayName
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Time when the member was added, in UTC. Format: ISO 8601.
+	// The creation time in UTC. The time follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Member ID.
+	// The member ID.
 	//
 	// example:
 	//
 	// 14588*****51688039
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// Username of the member.
+	// The username.
 	//
 	// example:
 	//
 	// user1
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// Roles assigned to the member.
+	// The list of roles.
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// Alibaba Cloud account ID of the member.
+	// The user ID.
 	//
 	// example:
 	//

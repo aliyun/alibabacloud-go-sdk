@@ -42,17 +42,17 @@ type GetDatasetJobResponseBody struct {
 	//
 	// 990
 	CompletedFileCount *int64 `json:"CompletedFileCount,omitempty" xml:"CompletedFileCount,omitempty"`
-	// The time when the task was started.
+	// The time when the job was started, in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-11-15T07:06:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The task description.
+	// The job description.
 	//
 	// example:
 	//
-	// This is a task description.
+	// This is a job description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The total number of failed files.
 	//
@@ -60,25 +60,25 @@ type GetDatasetJobResponseBody struct {
 	//
 	// 10
 	FailedFileCount *int64 `json:"FailedFileCount,omitempty" xml:"FailedFileCount,omitempty"`
-	// The time when the task was finished.
+	// The time when the job ended, in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-07-16T02:03:23Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The task operation.
+	// The job action.
 	//
 	// example:
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
-	// The task pattern.
+	// The job mode.
 	//
 	// example:
 	//
 	// Full
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The task details.
+	// The job details.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type GetDatasetJobResponseBody struct {
 	//
 	// 64B50C1D-D4C2-560C-86A3-A6ED****16D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task status.
+	// The job status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of files for the task.
+	// The total number of files in the job.
 	//
 	// example:
 	//

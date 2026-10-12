@@ -22,13 +22,19 @@ type iCreateExperimentRequest interface {
 }
 
 type CreateExperimentRequest struct {
-	// The visibility of the experiment. It can be PRIVATE (visible only to the creator and the creator\\"s Alibaba Cloud account) or PUBLIC (visible to all users). This parameter is optional. The default value is PRIVATE.
+	// The visibility of the experiment. Valid values:
+	//
+	// - PUBLIC: Visible to all users.
+	//
+	// - PRIVATE: Visible only to the creator and the Alibaba Cloud account.
+	//
+	// Default value: PRIVATE.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The default output path of artifacts for all tasks that are associated with the experiment. Only Object Storage Service (OSS) paths are supported.
+	// The default artifact output path for all tasks associated with the experiment. Currently, only OSS paths are supported.
 	//
 	// example:
 	//
@@ -36,13 +42,13 @@ type CreateExperimentRequest struct {
 	ArtifactUri *string `json:"ArtifactUri,omitempty" xml:"ArtifactUri,omitempty"`
 	// The labels.
 	Labels []*LabelInfo `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The name of the experiment. The name must meet the following requirements:
+	// The name of the experiment. The name must meet the following rules:
 	//
-	// - Start with an uppercase or lowercase letter.
+	// - The name must start with a lowercase or uppercase letter.
 	//
-	// - Contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-).
+	// - The name can contain uppercase letters, lowercase letters, digits, underscores (_), or hyphens (-).
 	//
-	// - Be 1 to 63 characters in length.
+	// - The name must be 1 to 63 characters in length.
 	//
 	// This parameter is required.
 	//

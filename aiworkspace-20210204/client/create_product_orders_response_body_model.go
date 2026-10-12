@@ -39,7 +39,8 @@ type CreateProductOrdersResponseBody struct {
 	// example:
 	//
 	// 210292536260646
-	OrderId    *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The list of IDs of the successfully purchased products.
 	ProductIds []*string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//

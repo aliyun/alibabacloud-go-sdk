@@ -50,7 +50,7 @@ type iGetDatasetVersionResponseBody interface {
 }
 
 type GetDatasetVersionResponseBody struct {
-	// The data volume.
+	// The data count.
 	//
 	// example:
 	//
@@ -62,7 +62,13 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// 10000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The data source type.
+	// The data source type. Valid values:
+	//
+	// - NAS: File Storage NAS.
+	//
+	// - CPFS: Cloud Parallel File Storage.
+	//
+	// - OSS: Object Storage Service (OSS).
 	//
 	// This parameter is required.
 	//
@@ -70,7 +76,7 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The primary resource ID.
+	// The primary ID of the resource.
 	//
 	// example:
 	//
@@ -88,13 +94,13 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// This is a description of the dataset version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.sssZ format.
 	//
 	// example:
 	//
 	// 2023-12-13T10:22:05.694Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time.
+	// The last modification time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.sssZ format.
 	//
 	// example:
 	//
@@ -108,11 +114,11 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// {
 	//
-	// "region": "${region}",//The region ID.
+	// "region": "${region}",// The region ID
 	//
-	// "bucket": "${bucket}",//The bucket name.
+	// "bucket": "${bucket}",// The bucket name
 	//
-	// "path": "${path}" //The file path.
+	// "path": "${path}" // The file path
 	//
 	// }
 	//
@@ -135,7 +141,7 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// <details>
 	//
-	// <summary>Intelligent computing CPFS</summary>
+	// <summary>AI CPFS</summary>
 	//
 	// Block content
 	//
@@ -157,19 +163,19 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The resource labels.
+	// The resource tags.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The permission when the dataset is mounted. Valid values:
+	// The permissions when the dataset is mounted. Valid values:
 	//
-	// - RO: read-only mount
+	// - RO: Read-only mount.
 	//
-	// - RW: read and write mount
+	// - RW: Read/write mount.
 	//
 	// example:
 	//
 	// RO
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// The extension field.
+	// The extended fields.
 	//
 	// example:
 	//
@@ -179,7 +185,11 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The property of the dataset.
+	// The property of the dataset. Valid values:
+	//
+	// - DIRECTORY: Directory.
+	//
+	// - FILE: File.
 	//
 	// This parameter is required.
 	//
@@ -193,13 +203,19 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// C55DF3DA-F120-5E37-A374-F49365531701
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The dataset source ID.
+	// The source ID of the dataset.
 	//
 	// example:
 	//
 	// d-rbvg5wzljzjhc9ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The data source type.
+	// The source type. Valid values:
+	//
+	// - ENHANCE: Data augmentation.
+	//
+	// - ADDVERSION: Added version.
+	//
+	// - CLEANING: Data cleaning.
 	//
 	// example:
 	//
@@ -212,7 +228,12 @@ type GetDatasetVersionResponseBody struct {
 	// example:
 	//
 	// oss://ai4d-br7hx9ngzelo2o6uip.oss-cn-shanghai.aliyuncs.com/365349/data-1157703270994901/datasets/aka108o/
-	Uri                  *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The list of user metric collection endpoints.
+	//
+	// example:
+	//
+	// [{"Port":0,"Path":""}]
 	UserMetricsEndpoints []*UserMetricsEndpoint `json:"UserMetricsEndpoints,omitempty" xml:"UserMetricsEndpoints,omitempty" type:"Repeated"`
 	// The dataset version.
 	//

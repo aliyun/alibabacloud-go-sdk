@@ -20,13 +20,13 @@ type iRelationship interface {
 }
 
 type Relationship struct {
-	// A collection of key-value pairs providing additional details about the relationship.
+	// Attributes
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The channel or system through which the relationship is established.
+	// The data channel to which the lineage relationship belongs.
 	DataChannel *string `json:"DataChannel,omitempty" xml:"DataChannel,omitempty"`
-	// The globally unique identifier (GUID) for the relationship.
+	// The globally unique identifier of the lineage relationship.
 	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
-	// Specifies the type of relationship.
+	// The type of the lineage relationship.
 	RelationshipType *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
 }
 

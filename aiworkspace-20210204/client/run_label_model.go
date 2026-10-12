@@ -29,12 +29,24 @@ type RunLabel struct {
 	// Key of the label
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// is_evaluation
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// ID of the Run that owns this label
+	//
+	// example:
+	//
+	// run-1qJhzJ2YXgX****
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	// Value of the label
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -38,25 +38,25 @@ type GetPromptResponseBody struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The creation time.
+	// The creation time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ in the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2024-10-16T01:44:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The prompt description.
+	// The description of the prompt.
 	//
 	// example:
 	//
 	// This is an information extraction prompt for autonomous driving highway scenarios, focusing on extracting lane and weather information
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The prompt content.
+	// The content of the prompt.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "context":"You are an experienced driver with ten years of driving experience. Please analyze and make judgments about the following image scenarios.",
+	//   "context":"You are an experienced driver with ten years of driving experience. Please analyze and make judgments about the following image scenario.",
 	//
 	//   "inputData":"{
 	//
@@ -68,19 +68,19 @@ type GetPromptResponseBody struct {
 	//
 	// }
 	FrameworkContent *string `json:"FrameworkContent,omitempty" xml:"FrameworkContent,omitempty"`
-	// The prompt template framework type.
+	// The framework type of the prompt template.
 	//
 	// example:
 	//
 	// ICIO
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// The modification time.
+	// The modification time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ in the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2024-08-27T02:01:10Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The prompt name.
+	// The name of the prompt.
 	//
 	// example:
 	//

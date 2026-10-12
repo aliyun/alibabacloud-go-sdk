@@ -18,7 +18,7 @@ type iListImagesResponseBody interface {
 }
 
 type ListImagesResponseBody struct {
-	// The list of images.
+	// The image list.
 	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListImagesResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned images.
+	// The total number of images returned.
 	//
 	// example:
 	//
@@ -85,9 +85,9 @@ func (s *ListImagesResponseBody) Validate() error {
 type ListImagesResponseBodyImages struct {
 	// The visibility of the image. Valid values:
 	//
-	// - PUBLIC: All members in the current workspace can perform operations on the image.
+	// - PUBLIC: All members of the current workspace can operate on the image.
 	//
-	// - PRIVATE: Only the creator can perform operations on the image.
+	// - PRIVATE: Only the creator can operate on the image.
 	//
 	// example:
 	//
@@ -99,13 +99,13 @@ type ListImagesResponseBodyImages struct {
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the image was created. The time is in UTC and the format is ISO 8601.
+	// The creation time in UTC, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the image was last modified. The time is in UTC and the format is ISO 8601.
+	// The modification time in UTC, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ type ListImagesResponseBodyImages struct {
 	//
 	// image-tzi7f9******s45t
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image URL, which includes the version number.
+	// The image URI, including the version number.
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// The list of image labels.
+	// The image label list.
 	Labels []*ListImagesResponseBodyImagesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The image name.
 	//
@@ -127,23 +127,31 @@ type ListImagesResponseBodyImages struct {
 	//
 	// tensorflow_2.9
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The UID of the Alibaba Cloud account that created the image.
+	// The UID of the Alibaba Cloud account of the creator.
 	//
 	// example:
 	//
 	// 155**********904
 	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// The image size in bytes.
+	// The image size, in bytes.
 	//
 	// example:
 	//
 	// 2
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the image source.
+	// The image source ID.
+	//
+	// example:
+	//
+	// build-****ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the image source.
+	// The image source type.
+	//
+	// example:
+	//
+	// Build
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The UID of the Alibaba Cloud account that created the image.
+	// The UID of the Alibaba Cloud account of the creator.
 	//
 	// example:
 	//

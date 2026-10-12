@@ -42,7 +42,7 @@ type iCodeSourceItem interface {
 }
 
 type CodeSourceItem struct {
-	// The visibility of the code source configuration.
+	// The visibility of the code configuration.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CodeSourceItem struct {
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// The clone mode. Valid values:
 	//
-	// - 0: Create a new subdirectory.
+	// - 0: Create a subdirectory.
 	//
 	// - 1: Tile to the current directory.
 	//
@@ -70,21 +70,25 @@ type CodeSourceItem struct {
 	//
 	// 44da10**********
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	// The code repository URL.
+	// The address of the code repository.
 	//
 	// example:
 	//
 	// https://code.aliyun.com/****
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// The token used as the access code for the code repository.
+	// The token used to access code in the repository.
+	//
+	// example:
+	//
+	// xxxx
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// The username used as the access code for the code repository.
+	// The username used to access code in the repository.
 	//
 	// example:
 	//
 	// user
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// The code source configuration ID.
+	// The code configuration ID.
 	//
 	// example:
 	//
@@ -96,7 +100,7 @@ type CodeSourceItem struct {
 	//
 	// code source of dlc examples
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the code source configuration.
+	// The name of the code source configuration.
 	//
 	// example:
 	//
@@ -120,7 +124,7 @@ type CodeSourceItem struct {
 	//
 	// /root/code/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//

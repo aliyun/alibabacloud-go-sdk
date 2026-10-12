@@ -42,43 +42,43 @@ type iGetImageResponseBody interface {
 type GetImageResponseBody struct {
 	// The visibility of the image. Valid values:
 	//
-	// - PUBLIC: All members in the current workspace can perform operations on the image.
+	// - PUBLIC: All members of the current workspace can access the image.
 	//
-	// - PRIVATE: Only the creator can perform operations on the image.
+	// - PRIVATE: Only the creator can access the image.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The description of the image.
+	// The image description.
 	//
 	// example:
 	//
 	// NLP model compression training image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the image was created. The time is in UTC and the format is ISO 8601.
+	// The creation time of the image in UTC, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the image was last modified. The time is in UTC and the format is ISO 8601.
+	// The modification time of the image in UTC, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The URL of the image, including the version number.
+	// The image address, including the version number.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.******ession/nlp:gpu
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// A list of image labels. This is an array. Each item in the array contains a Key and a Value field.
+	// The list of image labels. This is an array in which each element contains the Key and Value fields.
 	//
-	// Official images have the following label: the key is system.official and the value is true.
+	// Official images have the following label: Key is system.official and Value is true.
 	Labels []*GetImageResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
@@ -96,15 +96,23 @@ type GetImageResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The size of the image in bytes.
+	// The image size, in bytes.
 	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the image source.
+	// The image source ID.
+	//
+	// example:
+	//
+	// build-****ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the image source.
+	// The image source type.
+	//
+	// example:
+	//
+	// Build
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The UID of the user who created the image.
 	//

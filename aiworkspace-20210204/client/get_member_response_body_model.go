@@ -28,6 +28,11 @@ type iGetMemberResponseBody interface {
 }
 
 type GetMemberResponseBody struct {
+	// The account type of the member. Valid values: 1: primary account. 5: sub-account. 6: role account.
+	//
+	// example:
+	//
+	// 5
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The display name of the member.
 	//
@@ -35,7 +40,7 @@ type GetMemberResponseBody struct {
 	//
 	// myDisplayName
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the member was created. The time is in Coordinated Universal Time (UTC) and the format is ISO 8601.
+	// The creation time in UTC, in ISO 8601 format.
 	//
 	// example:
 	//

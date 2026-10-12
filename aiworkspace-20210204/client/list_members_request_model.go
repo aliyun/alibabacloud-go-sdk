@@ -22,44 +22,48 @@ type iListMembersRequest interface {
 }
 
 type ListMembersRequest struct {
-	// Username. Fuzzy match is supported.
+	// The member name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// zhangsan
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// Page number. Pages start at 1. Default value: 1.
+	// The page number of the workspace list. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page. Default value: 20.
+	// The paging Settings for the number of entries per page in a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Roles used to filter members. Separate multiple roles with commas (,). Valid values:
+	// Filters members by role. Separate multiple roles with commas (,).
 	//
-	// - PAI.AlgoDeveloper: Algorithm developer
+	// Valid values:
 	//
-	// - PAI.AlgoOperator: Algorithm O\\&M engineer
+	// - PAI.AlgoDeveloper: Algorithm developer.
 	//
-	// - PAI.LabelManager: Annotation administrator
+	// - PAI.AlgoOperator: Algorithm O&M.
 	//
-	// - PAI.MaxComputeDeveloper: MaxCompute developer
+	// - PAI.LabelManager: Labeling administrator.
 	//
-	// - PAI.WorkspaceAdmin: Workspace administrator
+	// - PAI.MaxComputeDeveloper: MaxCompute developer.
 	//
-	// - PAI.WorkspaceGuest: Guest
+	// - PAI.WorkspaceAdmin: Administrator.
 	//
-	// - PAI.WorkspaceOwner: Workspace owner
+	// - PAI.WorkspaceGuest: Guest.
+	//
+	// - PAI.WorkspaceOwner: Owner.
 	//
 	// example:
 	//
 	// PAI.AlgoDeveloper
 	Roles *string `json:"Roles,omitempty" xml:"Roles,omitempty"`
+	// The ID of the user to query.
+	//
 	// example:
 	//
 	// 2788******129

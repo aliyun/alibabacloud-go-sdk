@@ -50,7 +50,7 @@ type AddImageRequest struct {
 	//
 	// NLP model compression training image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image ID. If this parameter is not specified, the system automatically generates one. The format is image- followed by 18 uppercase or lowercase letters or digits.
+	// The image ID. If you do not specify this parameter, the system automatically generates one. The format is image- followed by 18 uppercase or lowercase letters or digits.
 	//
 	// example:
 	//
@@ -126,15 +126,24 @@ type AddImageRequest struct {
 	//
 	// 2
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The image source ID. When the image source type is Build, the source ID corresponds to the image build ID.
+	// The image source ID. If the image source type is Build, the source ID corresponds to the image build ID.
+	//
+	// example:
+	//
+	// build-****ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The image source type. Valid values:
 	//
 	// - Import: import.
 	//
 	// - Build: generate.
+	//
+	// example:
+	//
+	// Build
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID (UID) of the image creator.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The ID of the workspace to which the image belongs. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:

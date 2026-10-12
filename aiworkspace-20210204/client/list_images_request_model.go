@@ -36,46 +36,51 @@ type iListImagesRequest interface {
 }
 
 type ListImagesRequest struct {
-	// The visibility of the image. This parameter is valid only for custom images.
+	// The visibility of the image. Currently only takes effect for custom images.
 	//
-	// - PUBLIC: The image is public.
+	// - PUBLIC: Public.
 	//
-	// - PRIVATE: The image is private.
+	// - PRIVATE: Private.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	ImageUri      *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// The filter conditions for labels. Separate multiple conditions with commas (,).
+	// The image URI.
 	//
-	// The format for a single filter condition is `Key=Value`.
+	// example:
 	//
-	// The supported values for Key are:
+	// registry.cn-hangzhou.aliyuncs.com/pai-compression/nlp:gpu
+	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	// The label filter conditions. Separate multiple conditions with commas (,).
+	//
+	// The format of a single filter condition is `Key=Value`.
+	//
+	// Valid values of Key:
 	//
 	// - system.chipType
 	//
-	// - system.dsw\\.cudaVersion
+	// - system.dsw.cudaVersion
 	//
-	// - system.dsw\\.fromImageId
+	// - system.dsw.fromImageId
 	//
-	// - system.dsw\\.fromInstanceId
+	// - system.dsw.fromInstanceId
 	//
-	// - system.dsw\\.id
+	// - system.dsw.id
 	//
-	// - system.dsw\\.os
+	// - system.dsw.os
 	//
-	// - system.dsw\\.osVersion
+	// - system.dsw.osVersion
 	//
-	// - system.dsw\\.resourceType
+	// - system.dsw.resourceType
 	//
-	// - system.dsw\\.rootImageId
+	// - system.dsw.rootImageId
 	//
-	// - system.dsw\\.stage
+	// - system.dsw.stage
 	//
-	// - system.dsw\\.tag
+	// - system.dsw.tag
 	//
-	// - system.dsw\\.type
+	// - system.dsw.type
 	//
 	// - system.framework
 	//
@@ -93,45 +98,47 @@ type ListImagesRequest struct {
 	//
 	// system.framework=XGBoost 1.6.0,system.official=true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The name of the image. Fuzzy search is supported.
+	// The image name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// tensorflow_2.9
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The options. Currently supports ExactMatchName for exact match search on Name.
+	//
 	// example:
 	//
 	// ExactMatchName
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The order in which to sort the results of a paged query. This parameter is used with SortBy. The default value is ASC.
+	// The sort order for the specified sort field in a paged query. Used together with SortBy. Default value: ASC.
 	//
-	// - ASC: ascending order.
+	// - ASC: Ascending order.
 	//
-	// - DESC: descending order.
+	// - DESC: Descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number of the image list. The value starts from 1. The default value is 1.
+	// The page number of the image list. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query. The default value is 20.
+	// The number of entries per page for a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Performs a fuzzy search by image name and description.
+	// Fuzzy searches by image name and description.
 	//
 	// example:
 	//
 	// name
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The field to use for sorting in a paged query. Currently, only the GmtCreateTime field is used for sorting.
+	// The sort field for a paged query. Currently, the GmtCreateTime field is used for sorting.
 	//
 	// example:
 	//
@@ -147,7 +154,7 @@ type ListImagesRequest struct {
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The workspace ID. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The workspace ID. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

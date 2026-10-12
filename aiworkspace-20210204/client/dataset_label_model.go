@@ -16,9 +16,17 @@ type iDatasetLabel interface {
 }
 
 type DatasetLabel struct {
-	// The label key, which must be 1 to 128 characters long.
+	// The key of the dataset label.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The label value, which can be 0 to 128 characters long.
+	// The value of the dataset label.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

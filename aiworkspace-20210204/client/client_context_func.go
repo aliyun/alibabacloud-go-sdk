@@ -509,6 +509,10 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 		body["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.Edition) {
 		body["Edition"] = request.Edition
 	}
@@ -849,6 +853,10 @@ func (client *Client) CreateDatasetLabelsWithContext(ctx context.Context, Datase
 //
 // Creates a dataset version.
 //
+// Description:
+//
+// Creates a dataset version.
+//
 // @param request - CreateDatasetVersionRequest
 //
 // @param headers - map
@@ -882,6 +890,10 @@ func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, Datas
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.ImportInfo) {
@@ -1496,7 +1508,7 @@ func (client *Client) CreateModelVersionLabelsWithContext(ctx context.Context, M
 
 // Summary:
 //
-// Purchases products. This operation supports pay-as-you-go purchases of DataWorks, OSS, PAI, and MaxCompute.
+// Purchases products. Currently, only pay-as-you-go DataWorks, OSS, PAI, and MaxCompute are supported.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -1799,7 +1811,7 @@ func (client *Client) CreateWorkspaceResourceWithContext(ctx context.Context, Wo
 
 // Summary:
 //
-// Adds a workspace role.
+// Adds a role to a workspace.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -3303,7 +3315,7 @@ func (client *Client) GetDatasetJobWithContext(ctx context.Context, DatasetId *s
 
 // Summary:
 //
-// Retrieves the configuration of a dataset job.
+// Retrieves the configuration of a dataset task.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -3350,7 +3362,11 @@ func (client *Client) GetDatasetJobConfigWithContext(ctx context.Context, Datase
 
 // Summary:
 //
-// Retrieves the information of a specified dataset version.
+// Retrieves the details of a specified dataset version.
+//
+// Description:
+//
+// Retrieves the details of a specified dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -3573,7 +3589,7 @@ func (client *Client) GetInstanceJobWithContext(ctx context.Context, InstanceJob
 
 // Summary:
 //
-// Retrieves a member of a workspace.
+// Retrieves the members of a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -3624,7 +3640,7 @@ func (client *Client) GetMemberWithContext(ctx context.Context, WorkspaceId *str
 
 // Summary:
 //
-// Gets the details of a specified model.
+// Retrieves the details of a specified model.
 //
 // @param request - GetModelRequest
 //
@@ -4940,7 +4956,7 @@ func (client *Client) ListImageLabelsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries a list of images.
+// Retrieves a list of images.
 //
 // @param request - ListImagesRequest
 //
@@ -5031,7 +5047,7 @@ func (client *Client) ListImagesWithContext(ctx context.Context, request *ListIm
 
 // Summary:
 //
-// Lists members in a workspace.
+// Lists the members of a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -5938,11 +5954,11 @@ func (client *Client) ListWorkspaceUsersWithContext(ctx context.Context, Workspa
 
 // Summary:
 //
-// Retrieves the list of workspaces in a specified region.
+// Retrieves the list of workspaces in a region.
 //
 // Description:
 //
-// You can specify different query options by using the option parameter to retrieve different workspace-related information.
+// Use the Option parameter to specify different query options and retrieve different workspace-related information.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -6962,6 +6978,10 @@ func (client *Client) UpdateDatasetJobConfigWithContext(ctx context.Context, Dat
 }
 
 // Summary:
+//
+// Updates the information of a specified dataset version.
+//
+// Description:
 //
 // Updates the information of a specified dataset version.
 //

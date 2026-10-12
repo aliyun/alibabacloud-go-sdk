@@ -26,9 +26,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource types and quantity limits that a user can activate within a workspace. This list is returned when Option is set to GetResourceLimits.
-	//
-	// Currently supported resource types include:
+	// The types and quantity limits of resources that a user can activate within a workspace. This list is returned when Option is set to GetResourceLimits. Currently supported resource types:
 	//
 	// 	- MaxCompute_share: MaxCompute pay-as-you-go.
 	//
@@ -138,29 +136,33 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// workspace description example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the workspace.
+	// The workspace display name.
+	//
+	// example:
+	//
+	// workspace-example
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The list of environments contained in the workspace.
+	// The list of environments included in the workspace.
 	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	// The extended information. Currently includes TenantId, which indicates the tenant ID.
+	// The extended information. Currently includes TenantId, which represents the tenant ID.
 	//
 	// example:
 	//
 	// {"TenantId": "4286******98"}
 	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
-	// The time when the workspace was created. The time is in the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
+	// The time when the workspace was created. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the workspace was last modified. The time is in the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mmZ.
+	// The time when the workspace was last modified. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Indicates whether the workspace is the default workspace.
+	// Indicates whether this is the default workspace.
 	//
 	// example:
 	//

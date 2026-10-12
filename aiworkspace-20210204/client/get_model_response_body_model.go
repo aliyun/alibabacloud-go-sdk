@@ -56,23 +56,23 @@ type iGetModelResponseBody interface {
 }
 
 type GetModelResponseBody struct {
-	// The visibility of the workspace. Valid values:
+	// The workspace visibility. Valid values:
 	//
-	// - PRIVATE: The model is visible only to you and administrators in the workspace.
+	// - PRIVATE: Visible only to you and administrators in this workspace.
 	//
-	// - PUBLIC: The model is visible to everyone in the workspace.
+	// - PUBLIC: Visible to all users in this workspace.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The domain. This indicates the domain of the problem that the model is designed to solve, such as natural language processing (NLP) and computer vision (CV).
+	// The domain. Describes the domain to which the problem solved by the model belongs, such as nlp (natural language processing) and cv (computer vision).
 	//
 	// example:
 	//
 	// cv
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Other information about the model.
+	// The extra information of the model.
 	//
 	// example:
 	//
@@ -94,25 +94,25 @@ type GetModelResponseBody struct {
 	//
 	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The UTC time when the model was created. The time is in the ISO 8601 format.
+	// The UTC time of model creation, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the latest version was updated.
+	// The time when the latest version was modified, in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.sssZ format.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtLatestVersionModifiedTime *string `json:"GmtLatestVersionModifiedTime,omitempty" xml:"GmtLatestVersionModifiedTime,omitempty"`
-	// The UTC time when the model was last updated. The time is in the ISO 8601 format.
+	// The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The list of labels for the model.
+	// The list of model labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The latest version of the model.
 	LatestVersion *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
@@ -120,7 +120,7 @@ type GetModelResponseBody struct {
 	//
 	// example:
 	//
-	// General sentiment analysis.
+	// General sentiment analysis
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
 	// The model document.
 	//
@@ -138,7 +138,7 @@ type GetModelResponseBody struct {
 	//
 	// example:
 	//
-	// Sentiment analysis
+	// Sentiment Analysis
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The model type.
 	//
@@ -152,19 +152,19 @@ type GetModelResponseBody struct {
 	//
 	// 1
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// The source of the model. This indicates the community or organization to which the source model belongs, such as ModelScope and HuggingFace.
+	// The model origin. Describes the community or organization to which the source model belongs, such as ModelScope and HuggingFace.
 	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 1234567890******
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of parameters, in millions.
+	// The number of parameters, in millions (M).
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type GetModelResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task. This indicates the specific problem that the model is designed to solve, such as text classification.
+	// The task. Describes the specific problem that the model solves, such as text-classification (text categorization).
 	//
 	// example:
 	//

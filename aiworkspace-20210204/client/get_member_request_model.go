@@ -16,13 +16,15 @@ type iGetMemberRequest interface {
 }
 
 type GetMemberRequest struct {
-	// The member UID. You must specify either UserId or MemberId. You cannot specify both.
+	// The member UID. You must specify either UserId or MemberId. You cannot specify both at the same time.
 	//
 	// example:
 	//
 	// 145883-21513926******88039
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The user UID. For more information about how to view the user UID, see [ListWorkspaceUsers](https://help.aliyun.com/document_detail/449133.html). You must specify either UserId or MemberId. You cannot specify both.
+	// The user UID. For information about how to view the user UID, see [ListWorkspaceUsers](https://help.aliyun.com/document_detail/449133.html).
+	//
+	// You must specify either UserId or MemberId. You cannot specify both at the same time.
 	//
 	// example:
 	//
