@@ -36,11 +36,11 @@ type iModifyRCInstanceRequest interface {
 type ModifyRCInstanceRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true*	- (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
+	// - **true*	- (default): enables automatic payment. Make sure that your account balance is sufficient.
 	//
-	// - **false**: An order is generated but payment is not automatically made.
+	// - **false**: generates an order without deducting fees.
 	//
-	// > If your payment method balance is insufficient, set the parameter AutoPay to false. An unpaid order is generated, and you can log on to the ApsaraDB RDS console to complete the payment.
+	// > If your account balance is insufficient, you can set the AutoPay parameter to false. An unpaid order is generated. You can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// >
 	//
@@ -50,34 +50,34 @@ type ModifyRCInstanceRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// 	- **true*	- (default): Coupons are automatically used.
+	// 	- **true**: automatically uses coupons. This is the default value.
 	//
-	// 	- **false**: Coupons are not used.
+	// 	- **false**: does not automatically use coupons.
 	//
-	// > If you use coupons and then perform a downgrade, the amount deducted by coupons is not refunded.
+	// > If you use a coupon and then downgrade the instance type, the amount deducted by the voucher is not refunded.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	BusinessInfo  *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The type of the Upgrade/Downgrade. Valid values:
+	// The instance upgrade or downgrade type. Valid values:
 	//
-	// > This parameter does not need to be uploaded. The system can automatically determine whether the change is an upgrade or a downgrade. If you upload this parameter, follow the rules below.
+	// > You do not need to specify this parameter. The system automatically determines whether to upgrade or downgrade the instance type. If you want to specify it, follow these rules:
 	//
-	// - **Up*	- (default): Upgrades the instance type. Make sure that your account payment method balance is sufficient.
+	// - **Up*	- (default): upgrades the instance type. Make sure that your account balance is sufficient.
 	//
-	// - **Down**: Downgrades the instance type. Set Direction to down when the instance type specified by InstanceType is lower than the current instance type.
+	// - **Down**: downgrades the instance type. When the instance type specified in InstanceType is lower than the current instance type, set Direction to Down.
 	//
 	// example:
 	//
 	// Up
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a precheck on the instance creation operation. Valid values:
 	//
-	// 	- **true**: Performs a dry run without creating the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
+	// 	- **true**: performs a precheck without creating an instance. Check items include request parameters, request format, service limits, and inventory.
 	//
-	// 	- **false*	- (default): Sends the request. If the request passes the check, the instance is created.
+	// 	- **false**: sends a normal request and directly creates the instance after the request passes the precheck. This is the default value.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ModifyRCInstanceRequest struct {
 	//
 	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type. For information about the instance types supported by RDS Custom instances, see [RDS Custom instance types](https://help.aliyun.com/document_detail/2844823.html).
+	// The destination instance type. For more information about the instance types supported by RDS Target instances, see [RDS Target instance types](https://help.aliyun.com/document_detail/2844823.html).
 	//
 	// example:
 	//
@@ -103,21 +103,21 @@ type ModifyRCInstanceRequest struct {
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The restart time of the instance.
 	//
-	// - If **RebootWhenFinished*	- is set to **false*	- and the instance status is **Running**, you **must*	- set a restart time within 48 hours.
+	// - If **RebootWhenFinished*	- is set to **false*	- and the instance is in the **Running*	- state, you **must*	- specify a restart time within 48 hours.
 	//
-	// - The time follows the ISO 8601 standard in UTC+0. Format: `yyyy-MM-ddTHH:mmZ`.
+	// - Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2025-04-03T12:05Z
 	RebootTime *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
-	// Specifies whether to immediately restart the instance after the specification change is complete. Valid values:
+	// Specifies whether to immediately restart the instance after the instance type change is complete. Valid values:
 	//
-	// - **true*	- (default): The instance is restarted immediately.
+	// - **true**: restarts the instance immediately. This is the default value.
 	//
-	// - **false**: The instance is not restarted.
+	// - **false**: does not restart the instance immediately.
 	//
-	// > If the instance is in the **Stopped*	- state, the instance remains in the Stopped state and is not restarted even if you set `RebootWhenFinished=true`.
+	// > If the instance is in the **Stopped*	- state, it remains in the Stopped state and is not restarted even if you set RebootWhenFinished to true.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iDescribeMetaListRequest interface {
 }
 
 type DescribeMetaListRequest struct {
-	// The ID of the backup set used for the query. You can call DescribeBackups to query the backup set ID.
+	// The ID of the backup set that is used to query data when the restore method is based on a backup set. You can call the DescribeBackups operation to query the ID.
 	//
 	// > This parameter is required when **RestoreType*	- is set to **BackupSetID**.
 	//
@@ -46,13 +46,13 @@ type DescribeMetaListRequest struct {
 	//
 	// 14***
 	BackupSetID *int64 `json:"BackupSetID,omitempty" xml:"BackupSetID,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -60,18 +60,18 @@ type DescribeMetaListRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database to query. This parameter supports exact match and returns the specified database name and all tables in the database.
+	// The name of the database to query. Exact match is used. The specific database name and all tables in the database are returned.
 	//
-	// > If you leave this parameter empty, a list of all databases is returned.
+	// > If this parameter is left empty, a list of all databases is returned.
 	//
 	// example:
 	//
 	// testdb1
 	GetDbName *string `json:"GetDbName,omitempty" xml:"GetDbName,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: greater than **0*	- and up to the maximum value of Integer. Default value: **1**.
+	// The page number. Valid values: any integer greater than **0*	- and less than or equal to the maximum value of the Integer data type. Default value: **1**.
 	//
-	// > This parameter takes effect only when it is specified together with **PageSize**.
+	// > This parameter takes effect only when it is used together with **PageSize**.
 	//
 	// example:
 	//
@@ -79,21 +79,21 @@ type DescribeMetaListRequest struct {
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// The number of entries per page. Default value: **1**.
 	//
-	// > This parameter takes effect only when it is specified together with **PageIndex**.
+	// > This parameter takes effect only when it is used together with **PageIndex**.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the database to query. This parameter supports fuzzy match and returns only the matched database names without table names.
+	// The name of the database to query. Fuzzy match is used. Only the matched database names are returned, and table names are not returned.
 	//
-	// > For example, if you specify `test`, the databases `testdb1` and `testdb2` are matched. After you identify the target database, specify the exact database name by using the **GetDbName*	- parameter to query all tables in the database.
+	// > For example, if you specify `test`, `testdb1` and `testdb2` are matched. After you determine the name of the target database, you can specify the exact database name in the **GetDbName*	- parameter to view the information about all tables in the target database.
 	//
 	// example:
 	//
 	// test
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeMetaListRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time used for the query. The value must be earlier than the current time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC). You can call DescribeBackups to query available time points.
+	// The point in time to which you want to restore data. The time must be earlier than the current time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC. You can call the DescribeBackups operation to query the time.
 	//
 	// > This parameter is required when **RestoreType*	- is set to **RestoreTime**.
 	//
@@ -109,11 +109,11 @@ type DescribeMetaListRequest struct {
 	//
 	// 2019-05-30T03:29:10Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The restoration method. Valid values:
+	// The restore method. Valid values:
 	//
-	// 	- **BackupSetID**: Restores data from a backup set. You must also specify the **BackupSetID*	- parameter.
+	// 	- **BackupSetID**: restores data from a backup set. If you set this parameter to BackupSetID, you must also specify the **BackupSetID*	- parameter.
 	//
-	// 	- **RestoreTime**: Restores data to a point in time. You must also specify the **RestoreTime*	- parameter.
+	// 	- **RestoreTime**: restores data to a specific point in time. If you set this parameter to RestoreTime, you must also specify the **RestoreTime*	- parameter.
 	//
 	// Default value: **BackupSetID**.
 	//

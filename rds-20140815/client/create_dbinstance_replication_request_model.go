@@ -34,7 +34,7 @@ type CreateDBInstanceReplicationRequest struct {
 	//
 	// replication-channel-001
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateDBInstanceReplicationRequest struct {
 	//
 	// rm-bp1234567890abcdef
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The address of the primary database host. IP addresses and domain names are supported.
+	// The host address of the primary database. Both IP addresses and domain names are supported.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateDBInstanceReplicationRequest struct {
 	//
 	// 192.168.1.100
 	MasterHost *string `json:"MasterHost,omitempty" xml:"MasterHost,omitempty"`
-	// The password of the primary database, which is used to authenticate the replication user. The password must be Base64-encoded in advance.
+	// The password of the primary database used to authenticate the replication user. The password must be Base64-encoded in advance.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateDBInstanceReplicationRequest struct {
 	//
 	// U2VjdXJlUGFzczEyMyE=
 	MasterPassword *string `json:"MasterPassword,omitempty" xml:"MasterPassword,omitempty"`
-	// The port number of the primary database. The default port is 3306 for MySQL.
+	// The port number of the primary database. Typically, the port is 3306 for MySQL.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateDBInstanceReplicationRequest struct {
 	//
 	// 3306
 	MasterPort *int32 `json:"MasterPort,omitempty" xml:"MasterPort,omitempty"`
-	// The username of the primary database, which is used to establish the replication connection.
+	// The username of the primary database used to establish a replication connection.
 	//
 	// This parameter is required.
 	//

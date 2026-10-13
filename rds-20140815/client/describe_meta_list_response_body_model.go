@@ -26,7 +26,7 @@ type iDescribeMetaListResponseBody interface {
 }
 
 type DescribeMetaListResponseBody struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -45,7 +45,7 @@ type DescribeMetaListResponseBody struct {
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

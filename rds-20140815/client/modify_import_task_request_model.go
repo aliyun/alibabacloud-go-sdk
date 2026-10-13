@@ -22,7 +22,7 @@ type iModifyImportTaskRequest interface {
 }
 
 type ModifyImportTaskRequest struct {
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type ModifyImportTaskRequest struct {
 	//
 	// rm-2ze63v2p3o3k****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Valid values:
+	// The operation to perform. Valid values:
 	//
-	// - RETRY_IMPORT: retries the import task.
+	// - RETRY_IMPORT: Retries the import.
 	//
-	// - CANCEL: cancels the task.
+	// - CANCEL: Cancels the task.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type ModifyImportTaskRequest struct {
 	// CANCEL
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the destination region. You can call DescribeRegions to query region IDs.
+	// The ID of the destination region. You can call the DescribeRegions operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type ModifyImportTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// This parameter is required.
 	//

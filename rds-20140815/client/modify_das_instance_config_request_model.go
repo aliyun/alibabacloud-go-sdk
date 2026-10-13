@@ -28,13 +28,13 @@ type iModifyDasInstanceConfigRequest interface {
 }
 
 type ModifyDasInstanceConfigRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -47,9 +47,9 @@ type ModifyDasInstanceConfigRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable automatic storage expansion. Valid values:
 	//
-	// 	- **Enable**
+	// 	- **Enable**: Enables automatic storage expansion.
 	//
-	// 	- **Disable**
+	// 	- **Disable**: Disables automatic storage expansion.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,7 @@ type ModifyDasInstanceConfigRequest struct {
 	//
 	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	// The threshold in percentage of remaining storage space that triggers automatic storage expansion. Valid values:
+	// The threshold percentage that triggers automatic storage expansion. When the percentage of remaining storage space reaches the specified threshold, automatic storage expansion is triggered. Valid values:
 	//
 	// 	- **10**
 	//
@@ -69,19 +69,19 @@ type ModifyDasInstanceConfigRequest struct {
 	//
 	// 	- **50**
 	//
-	// > This parameter is required when **StorageAutoScale*	- is set to **Enable**.
+	// >This parameter is required when **StorageAutoScale*	- is set to **Enable**.
 	//
 	// example:
 	//
 	// 50
 	StorageThreshold *int32 `json:"StorageThreshold,omitempty" xml:"StorageThreshold,omitempty"`
-	// The upper limit of automatic storage expansion. The value must be greater than or equal to the current total storage capacity of the instance.
+	// The upper limit for automatic storage expansion. The value must be greater than or equal to the current total storage capacity of the instance.
 	//
-	// - Upper limit for ESSDs: 32000 GB.
+	// - Upper limit for ESSDs: 32,000 GB
 	//
-	// - Upper limit for standard SSDs: 6000 GB.
+	// - Upper limit for standard SSDs: 6,000 GB
 	//
-	// > This parameter is required when **StorageAutoScale*	- is set to **Enable**.
+	// >This parameter is required when **StorageAutoScale*	- is set to **Enable**.
 	//
 	// example:
 	//

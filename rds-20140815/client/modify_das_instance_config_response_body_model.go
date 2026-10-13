@@ -14,7 +14,7 @@ type iModifyDasInstanceConfigResponseBody interface {
 }
 
 type ModifyDasInstanceConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

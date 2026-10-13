@@ -19,6 +19,8 @@ type iCreateMigrateTaskRequest interface {
 	GetDBName() *string
 	SetIsOnlineDB(v string) *CreateMigrateTaskRequest
 	GetIsOnlineDB() *string
+	SetKeepCDC(v bool) *CreateMigrateTaskRequest
+	GetKeepCDC() *bool
 	SetMigrateTaskId(v string) *CreateMigrateTaskRequest
 	GetMigrateTaskId() *string
 	SetOSSUrls(v string) *CreateMigrateTaskRequest
@@ -36,9 +38,9 @@ type iCreateMigrateTaskRequest interface {
 type CreateMigrateTaskRequest struct {
 	// The type of the cloud migration task. Valid values:
 	//
-	// 	- **FULL**: performs a restore operation by using a full backup file. This value is applicable to first-time migrations or full data recovery scenarios.
+	// 	- **FULL**: restores data by using a full backup file. This value is applicable to the first migration or full data recovery scenarios.
 	//
-	// 	- **UPDF**: restores incremental data by using an incremental backup file or log file. This value is applicable to incremental synchronization scenarios where a full backup already exists.
+	// 	- **UPDF**: restores incremental data by using an incremental backup file or log file. This value is applicable to incremental synchronization scenarios based on an existing full backup.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +48,11 @@ type CreateMigrateTaskRequest struct {
 	//
 	// FULL
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The consistency check method after the database is brought online. This parameter takes effect only when IsOnlineDB is set to True. Valid values:
+	// The consistency check method used after the database is opened. This parameter takes effect only when IsOnlineDB is set to True. Valid values:
 	//
-	// - **SyncExecuteDBCheck**: performs a synchronous database check. This value is applicable to scenarios that require high data consistency.
+	// - **SyncExecuteDBCheck**: synchronously executes the database check. This value is applicable to scenarios that require high data consistency.
 	//
-	// - **AsyncExecuteDBCheck**: performs an asynchronous database check. This value provides higher performance but may delay the detection of potential issues.
+	// - **AsyncExecuteDBCheck**: asynchronously executes the database check. This value provides higher performance but may delay the discovery of potential issues.
 	//
 	// Default value: **AsyncExecuteDBCheck*	- (compatible with SQL Server 2008 R2).
 	//
@@ -58,7 +60,7 @@ type CreateMigrateTaskRequest struct {
 	//
 	// AsyncExecuteDBCheck
 	CheckDBMode *string `json:"CheckDBMode,omitempty" xml:"CheckDBMode,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -74,17 +76,17 @@ type CreateMigrateTaskRequest struct {
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// Specifies whether to bring the restored database online so that users can access it. Valid values:
+	// Specifies whether to bring the restored database online for user access. Valid values:
 	//
-	// 	- **True**: Brings the database online.
+	// 	- **True**: brings the database online.
 	//
-	// 	- **False**: Does not bring the database online.
+	// 	- **False**: does not bring the database online.
 	//
 	// > 	- For SQL Server 2008 R2, this value is always True.
 	//
-	// > 	- When **IsOnlineDB*	- is set to **True**, **BackupMode*	- must be set to **FULL**.
+	// > 	- If **IsOnlineDB*	- is set to **True**, **BackupMode*	- must be set to **FULL**.
 	//
-	// > 	- When **IsOnlineDB*	- is set to **False**, **BackupMode*	- must be set to **UPDF**.
+	// > 	- If **IsOnlineDB*	- is set to **False**, **BackupMode*	- must be set to **UPDF**.
 	//
 	// This parameter is required.
 	//
@@ -92,17 +94,23 @@ type CreateMigrateTaskRequest struct {
 	//
 	// True
 	IsOnlineDB *string `json:"IsOnlineDB,omitempty" xml:"IsOnlineDB,omitempty"`
-	// The migration task ID. Valid values:
+	// Specifies whether to retain the database- and table-level Change Data Capture (CDC) switches and change table data. This parameter takes effect only when IsOnlineDB is set to True. Regardless of the value of this parameter, CDC jobs are not rebuilt.
 	//
-	// - When **BackupMode*	- is set to **FULL**, leave this parameter empty (compatible with SQL Server 2008 R2).
+	// example:
 	//
-	// - When **BackupMode*	- is set to **UPDF**, set this parameter to the ID of the corresponding FULL task. You can call DescribeMigrateTasks to query the task ID.
+	// true
+	KeepCDC *bool `json:"KeepCDC,omitempty" xml:"KeepCDC,omitempty"`
+	// The ID of the migration task. Valid values:
+	//
+	// - If **BackupMode*	- is set to **FULL**, leave this parameter empty. This ensures compatibility with SQL Server 2008 R2.
+	//
+	// - If **BackupMode*	- is set to **UPDF**, set this parameter to the ID of the corresponding FULL task. You can call the DescribeMigrateTasks operation to query the ID.
 	//
 	// example:
 	//
 	// None
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	// The shared URL of the backup file on OSS (URL-encoded). If multiple URLs exist, separate them with vertical bars (|) before encoding, and then pass the encoded value.
+	// The shared URL of the backup file in OSS. The URL must be encoded. If multiple URLs exist, separate them with vertical bars (|) and then encode the string before passing it as the parameter value.
 	//
 	// > This parameter is required for SQL Server 2008 R2.
 	//
@@ -110,15 +118,15 @@ type CreateMigrateTaskRequest struct {
 	//
 	// check_cdn_oss.sh www.******.mobi
 	OSSUrls *string `json:"OSSUrls,omitempty" xml:"OSSUrls,omitempty"`
-	// The OSS file information, which consists of the following three parts separated by colons (:):
+	// The components of the OSS file. The value consists of the following three parts separated by colons (:):
 	//
 	// - **OSS endpoint**: oss-ap-southeast-1.aliyuncs.com.
 	//
 	// - **OSS bucket name**: rdsmssqlsingapore.
 	//
-	// - **Backup file name on OSS**: autotest_2008R2_TestMigration_FULL.bak.
+	// - **Backup file name in OSS**: autotest_2008R2_TestMigration_FULL.bak.
 	//
-	// > This parameter is required for SQL Server versions later than SQL Server 2008 R2.
+	// > This parameter is required for SQL Server versions later than 2008 R2.
 	//
 	// example:
 	//
@@ -155,6 +163,10 @@ func (s *CreateMigrateTaskRequest) GetDBName() *string {
 
 func (s *CreateMigrateTaskRequest) GetIsOnlineDB() *string {
 	return s.IsOnlineDB
+}
+
+func (s *CreateMigrateTaskRequest) GetKeepCDC() *bool {
+	return s.KeepCDC
 }
 
 func (s *CreateMigrateTaskRequest) GetMigrateTaskId() *string {
@@ -203,6 +215,11 @@ func (s *CreateMigrateTaskRequest) SetDBName(v string) *CreateMigrateTaskRequest
 
 func (s *CreateMigrateTaskRequest) SetIsOnlineDB(v string) *CreateMigrateTaskRequest {
 	s.IsOnlineDB = &v
+	return s
+}
+
+func (s *CreateMigrateTaskRequest) SetKeepCDC(v bool) *CreateMigrateTaskRequest {
+	s.KeepCDC = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iCreateOnlineDatabaseTaskRequest interface {
 	GetDBInstanceId() *string
 	SetDBName(v string) *CreateOnlineDatabaseTaskRequest
 	GetDBName() *string
+	SetKeepCDC(v bool) *CreateOnlineDatabaseTaskRequest
+	GetKeepCDC() *bool
 	SetMigrateTaskId(v string) *CreateOnlineDatabaseTaskRequest
 	GetMigrateTaskId() *string
 	SetOwnerAccount(v string) *CreateOnlineDatabaseTaskRequest
@@ -30,13 +32,13 @@ type iCreateOnlineDatabaseTaskRequest interface {
 }
 
 type CreateOnlineDatabaseTaskRequest struct {
-	// The consistency check method after the database is open. Valid values:
+	// The consistency check method used after the database is opened. Valid values:
 	//
-	// 	- **SyncExecuteDBCheck**: synchronous database check.
+	// 	- **SyncExecuteDBCheck**: Executes the database check synchronously.
 	//
-	// 	- **AsyncExecuteDBCheck**: asynchronous database check.
+	// 	- **AsyncExecuteDBCheck**: Executes the database check asynchronously.
 	//
-	// >Compatible with SQL Server 2008 R2.
+	// > Compatible with SQL Server 2008 R2.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +46,13 @@ type CreateOnlineDatabaseTaskRequest struct {
 	//
 	// AsyncExecuteDBCheck
 	CheckDBMode *string `json:"CheckDBMode,omitempty" xml:"CheckDBMode,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can contain a maximum of 64 ASCII characters. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +60,7 @@ type CreateOnlineDatabaseTaskRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +68,13 @@ type CreateOnlineDatabaseTaskRequest struct {
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The migration task ID.
+	// Specifies whether to retain the database-level and table-level Change Data Capture (CDC) settings and the data in change tables. Regardless of the value of this parameter, CDC jobs are not rebuilt.
+	//
+	// example:
+	//
+	// true
+	KeepCDC *bool `json:"KeepCDC,omitempty" xml:"KeepCDC,omitempty"`
+	// The ID of the migration task.
 	//
 	// This parameter is required.
 	//
@@ -102,6 +110,10 @@ func (s *CreateOnlineDatabaseTaskRequest) GetDBInstanceId() *string {
 
 func (s *CreateOnlineDatabaseTaskRequest) GetDBName() *string {
 	return s.DBName
+}
+
+func (s *CreateOnlineDatabaseTaskRequest) GetKeepCDC() *bool {
+	return s.KeepCDC
 }
 
 func (s *CreateOnlineDatabaseTaskRequest) GetMigrateTaskId() *string {
@@ -141,6 +153,11 @@ func (s *CreateOnlineDatabaseTaskRequest) SetDBInstanceId(v string) *CreateOnlin
 
 func (s *CreateOnlineDatabaseTaskRequest) SetDBName(v string) *CreateOnlineDatabaseTaskRequest {
 	s.DBName = &v
+	return s
+}
+
+func (s *CreateOnlineDatabaseTaskRequest) SetKeepCDC(v bool) *CreateOnlineDatabaseTaskRequest {
+	s.KeepCDC = &v
 	return s
 }
 

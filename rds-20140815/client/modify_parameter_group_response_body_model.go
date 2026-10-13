@@ -16,13 +16,13 @@ type iModifyParameterGroupResponseBody interface {
 }
 
 type ModifyParameterGroupResponseBody struct {
-	// The parameter template ID.
+	// The ID of the parameter template.
 	//
 	// example:
 	//
 	// rpg-13ppdh****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -34,28 +34,28 @@ type iModifyParameterGroupRequest interface {
 type ModifyParameterGroupRequest struct {
 	// The modification mode of the parameter template. Valid values:
 	//
-	// 	- **Collectivity*	- (default): adds or updates parameters.
+	// 	- **Collectivity**: adds or modifies parameters. This is the default value.
 	//
-	// > The parameters that you specify in the **Parameters*	- parameter are added to or updated in the existing parameter template. Other parameters in the existing parameter template are not affected.
+	// >The parameters specified in the **Parameters*	- parameter are added to the current parameter template, or the existing parameters in the current parameter template are modified. Other parameters in the current parameter template remain unaffected.
 	//
-	// 	- **Individual**: overwrites the parameter template.
+	// 	- **Individual**: overwrites parameters.
 	//
-	// > The existing parameter template is replaced with the parameters that you specify in the **Parameters*	- parameter.
+	// >The content in the current parameter template is replaced with the content specified in the **Parameters*	- parameter.
 	//
 	// example:
 	//
 	// Collectivity
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The description of the parameter template. The description can be up to 200 characters in length.
+	// The description of the parameter template. The description must be 0 to 200 characters in length.
 	//
-	// > If you do not specify this parameter, the original parameter template description is retained.
+	// >If you do not specify this parameter, the original description of the parameter template is retained.
 	//
 	// example:
 	//
 	// test
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
-	// The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
+	// The ID of the parameter template. You can call the DescribeParameterGroups operation to query the ID of the parameter template.
 	//
 	// This parameter is required.
 	//
@@ -69,19 +69,19 @@ type ModifyParameterGroupRequest struct {
 	//
 	// 	- The name must be 8 to 64 characters in length.
 	//
-	// > If you do not specify this parameter, the original parameter template name is retained.
+	// >If you do not specify this parameter, the original name of the parameter template is retained.
 	//
 	// example:
 	//
 	// testgroup1
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// A JSON string that consists of parameters and their values. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. For more information about the parameters that can be modified, see [Configure the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Configure the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
+	// The JSON string of parameters and values. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. For more information about the parameters that can be modified, see [Set the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Set the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
 	//
-	// > 	- If **ModifyMode*	- is set to **Individual**, the parameters that you specify overwrite the existing parameter template.
+	// > 	- If the **ModifyMode*	- parameter is set to **Individual**, the specified parameters overwrite the original parameters in the parameter template.
 	//
-	// > 	- If **ModifyMode*	- is set to **Collectivity**, the parameters that you specify are added to or updated in the existing parameter template. Other parameters in the existing parameter template are not affected.
+	// > 	- If the **ModifyMode*	- parameter is set to **Collectivity**, the specified parameters are added to or modified in the original parameter template.
 	//
-	// > 	- If you do not specify this parameter, the original parameter information is retained.
+	// > 	- If you do not specify this parameter, the original parameters are retained.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ModifyParameterGroupRequest struct {
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
-	// > The region of a parameter template cannot be changed. You can call the CloneParameterGroup operation to copy a parameter template to another region.
+	// >The region of a parameter template cannot be modified. You can call the CloneParameterGroup operation to copy the parameter template to another region.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +97,7 @@ type ModifyParameterGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to query the ID of the resource group.
 	//
 	// example:
 	//

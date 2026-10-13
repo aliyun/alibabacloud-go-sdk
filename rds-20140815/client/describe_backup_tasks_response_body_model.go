@@ -17,7 +17,7 @@ type iDescribeBackupTasksResponseBody interface {
 
 type DescribeBackupTasksResponseBody struct {
 	Items *DescribeBackupTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

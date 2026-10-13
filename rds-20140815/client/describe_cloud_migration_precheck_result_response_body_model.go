@@ -22,7 +22,7 @@ type iDescribeCloudMigrationPrecheckResultResponseBody interface {
 }
 
 type DescribeCloudMigrationPrecheckResultResponseBody struct {
-	// The details about the assessment report.
+	// The list of pre-check reports for one-click cloud migration.
 	Items []*DescribeCloudMigrationPrecheckResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type DescribeCloudMigrationPrecheckResultResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeCloudMigrationPrecheckResultResponseBody struct {
 	//
 	// 7E4A6E1B-789B-5F16-9736-39AA57FC7374
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of queried entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeCloudMigrationPrecheckResultResponseBody) Validate() error {
 }
 
 type DescribeCloudMigrationPrecheckResultResponseBodyItems struct {
-	// The content of the assessment report.
+	// The content of the pre-check report for cloud migration.
 	//
 	// example:
 	//
@@ -141,17 +141,17 @@ type DescribeCloudMigrationPrecheckResultResponseBodyItems struct {
 	//
 	// migratetest
 	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
-	// The environment in which the self-managed PostgreSQL instance runs.
+	// The type of the self-managed PostgreSQL database. Valid values:
 	//
-	// 	- **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
+	// - **idcOnVpc**: a self-managed PostgreSQL database in an on-premises data center that is connected to a VPC.
 	//
-	// 	- **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
+	// - **ecsOnVpc**: a self-managed PostgreSQL database on an Alibaba Cloud ECS instance.
 	//
 	// example:
 	//
 	// ecsonvpc
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The private IP address that is used to connect to the self-managed PostgreSQL instance.
+	// The internal IP address of the self-managed PostgreSQL database.
 	//
 	// example:
 	//
@@ -163,31 +163,31 @@ type DescribeCloudMigrationPrecheckResultResponseBodyItems struct {
 	//
 	// 123456
 	SourcePassword *string `json:"SourcePassword,omitempty" xml:"SourcePassword,omitempty"`
-	// The port number that is used to connect to the self-managed PostgreSQL instance.
+	// The port of the self-managed PostgreSQL database.
 	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// A reserved parameter. The return value of this parameter is empty.
+	// A reserved parameter. The query result is empty.
 	//
 	// example:
 	//
 	// null
 	TargetEip *string `json:"TargetEip,omitempty" xml:"TargetEip,omitempty"`
-	// The instance ID.
+	// The instance ID of the target instance.
 	//
 	// example:
 	//
 	// pgm-bp102g323jd4****
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 440420798
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iModifyDBInstanceVectorSupportStatusRequest interface {
 }
 
 type ModifyDBInstanceVectorSupportStatusRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//

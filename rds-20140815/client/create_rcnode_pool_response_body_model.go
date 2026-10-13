@@ -20,7 +20,7 @@ type iCreateRCNodePoolResponseBody interface {
 }
 
 type CreateRCNodePoolResponseBody struct {
-	// The list of instance IDs.
+	// The instance IDs.
 	InstanceIdSets []*string `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Repeated"`
 	// The node pool ID.
 	//

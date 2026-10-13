@@ -14,7 +14,7 @@ type iCreateOnlineDatabaseTaskResponseBody interface {
 }
 
 type CreateOnlineDatabaseTaskResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

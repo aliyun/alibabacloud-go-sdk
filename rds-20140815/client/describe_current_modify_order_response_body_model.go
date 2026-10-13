@@ -72,7 +72,7 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	//
 	// x
 	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	// The number of CPU cores for the instance type. Unit: cores.
+	// The number of CPU cores that correspond to the instance specifications. Unit: cores.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The effective period. Valid values:
 	//
-	// 	- **Immediate*	- (default): The specification change takes effect immediately.
+	// 	- **Immediate*	- (default): The changes take effect immediately.
 	//
-	// 	- **MaintainTime**: The specification change takes effect during the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
+	// 	- **MaintainTime**: The changes take effect within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	//
 	// None
 	Mark *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
-	// The memory capacity for the instance type. Unit: GB.
+	// The memory capacity that corresponds to the instance specifications. Unit: GB.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	//
 	// Succeed,Scheduled,Running,Cancelling,Canceled,Waiting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage description.
+	// The storage information.
 	//
 	// example:
 	//
 	// 20
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The target instance type for the specification change.
+	// The target instance specifications for the specification change.
 	//
 	// example:
 	//
