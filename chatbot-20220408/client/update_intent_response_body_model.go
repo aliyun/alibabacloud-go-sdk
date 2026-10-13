@@ -16,7 +16,7 @@ type iUpdateIntentResponseBody interface {
 }
 
 type UpdateIntentResponseBody struct {
-	// The ID of the updated intent.
+	// The intent ID.
 	//
 	// example:
 	//

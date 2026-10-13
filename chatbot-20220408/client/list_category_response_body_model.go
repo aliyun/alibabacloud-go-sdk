@@ -16,7 +16,7 @@ type iListCategoryResponseBody interface {
 }
 
 type ListCategoryResponseBody struct {
-	// An array of categories.
+	// The list of categories.
 	Categories []*ListCategoryResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -82,7 +82,7 @@ type ListCategoryResponseBodyCategories struct {
 	//
 	// example:
 	//
-	// 类目名称
+	// CategoryName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The parent category ID.
 	//
@@ -90,7 +90,11 @@ type ListCategoryResponseBodyCategories struct {
 	//
 	// -1
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	// The status of the category. Valid values: `0` (Normal) and `-1` (Deleted).
+	// The category status. Valid values:
+	//
+	// - -1: Deleted but not published.
+	//
+	// - 0: Normal.
 	//
 	// example:
 	//

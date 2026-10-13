@@ -18,7 +18,7 @@ type iDescribeDSEntityRequest interface {
 }
 
 type DescribeDSEntityRequest struct {
-	// The key for the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your primary account.
+	// The business space key. If this parameter is not set, the default business space is accessed. Obtain the key value from the business management page of the main account.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DescribeDSEntityRequest struct {
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The robot ID.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//

@@ -18,13 +18,13 @@ type iListTongyiConversationLogsRequest interface {
 }
 
 type ListTongyiConversationLogsRequest struct {
-	// The key for the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your root account.
+	// The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the chatbot instance.
+	// The robot instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ListTongyiConversationLogsRequest struct {
 	//
 	// chatbot-cn-7QuUfaqMQe
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
-	// The ID of the session.
+	// The session ID.
 	//
 	// This parameter is required.
 	//

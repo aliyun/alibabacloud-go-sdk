@@ -40,19 +40,19 @@ type DescribePerspectiveResponseBody struct {
 	//
 	// 2021-07-26T07:05:37Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the perspective.
+	// The perspective name.
 	//
 	// example:
 	//
-	// 移动端视角
+	// Mobile perspective
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The perspective code (used for the Q\\&A API).
+	// The perspective code, which is used for the Q&A API.
 	//
 	// example:
 	//
 	// FZJBY3raWr
 	PerspectiveCode *string `json:"PerspectiveCode,omitempty" xml:"PerspectiveCode,omitempty"`
-	// The ID of the perspective.
+	// The perspective ID.
 	//
 	// example:
 	//
@@ -64,13 +64,17 @@ type DescribePerspectiveResponseBody struct {
 	//
 	// F285D735-D580-18A8-B97F-B2E72B00F101
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the perspective is user-defined.
+	// Indicates whether the perspective is custom-defined.
 	//
 	// example:
 	//
 	// true
 	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
-	// The status of the perspective. Valid values: 3 (Enabled) and 1 (Disabled).
+	// The data status. Valid values:
+	//
+	// - 3: Enabled.
+	//
+	// - 1: Not enabled.
 	//
 	// example:
 	//

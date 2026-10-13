@@ -14,7 +14,7 @@ type iApplyForStreamAccessTokenRequest interface {
 }
 
 type ApplyForStreamAccessTokenRequest struct {
-	// Workspace key. If not set, the default workspace is accessed. The key value can be obtained from the Alibaba Cloud account workspace Management page.
+	// The key of the business space. If this parameter is not set, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//

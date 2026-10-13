@@ -18,13 +18,13 @@ type iCreateIntentRequest interface {
 }
 
 type CreateIntentRequest struct {
-	// The key of the business space. If you do not specify this parameter, the default business space is used. You can get the key from the business management page of your main account.
+	// The business space key. If this parameter is not set, the default business space is accessed. You can obtain the key value on the business management page of the main account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The instance ID.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateIntentRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The intent definition.
+	// The intent definition struct.
 	IntentDefinition *CreateIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
 }
 
@@ -85,7 +85,7 @@ type CreateIntentRequestIntentDefinition struct {
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The intent name.
 	//
@@ -93,9 +93,9 @@ type CreateIntentRequestIntentDefinition struct {
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// An array of objects, each defining a slot for the intent.
+	// The slot information.
 	SlotInfos []*CreateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -148,13 +148,13 @@ func (s *CreateIntentRequestIntentDefinition) Validate() error {
 }
 
 type CreateIntentRequestIntentDefinitionSlotInfos struct {
-	// Specifies whether the slot can have multiple values.
+	// Specifies whether the slot is an array.
 	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// Specifies whether to encrypt the slot value.
+	// Specifies whether the slot value is masked.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type CreateIntentRequestIntentDefinitionSlotInfos struct {
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The slot ID.
 	//
@@ -188,7 +188,7 @@ type CreateIntentRequestIntentDefinitionSlotInfos struct {
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -24,31 +24,31 @@ type iListInstanceRequest interface {
 }
 
 type ListInstanceRequest struct {
-	// The key of the business space. You can obtain the key on the Business Management page of the primary account. If you do not set this parameter, the default business space is accessed.
+	// The business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The name of the chatbot. A fuzzy search is supported.
+	// Performs a fuzzy match by chatbot name.
 	//
 	// example:
 	//
-	// 售前客服
+	// Pre-sales Customer Service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number. Default value: 1.
+	// The page number for pagination. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of instances to return on each page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the chatbot.
+	// Filters chatbots by type.
 	//
 	// example:
 	//

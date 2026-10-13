@@ -22,7 +22,7 @@ type iSearchFaqResponseBody interface {
 }
 
 type SearchFaqResponseBody struct {
-	// The list of matching FAQs.
+	// The knowledge search results.
 	FaqHits []*SearchFaqResponseBodyFaqHits `json:"FaqHits,omitempty" xml:"FaqHits,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -42,7 +42,7 @@ type SearchFaqResponseBody struct {
 	//
 	// E45491D5-7E0A-42C6-9B21-91D1066B1475
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matched entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,69 +123,83 @@ type SearchFaqResponseBodyFaqHits struct {
 	//
 	// 30000055639
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The creation time (UTC).
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 18453
 	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The creator\\"s username.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// test01
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// The effective status of the FAQ. This status is determined by the StartDate and EndDate parameters.
+	// The effective status of the knowledge, calculated based on StartDate and EndDate. Valid values:
+	//
+	// - 20: Active.
+	//
+	// - 21: Expired.
+	//
+	// - 22: Pending.
 	//
 	// example:
 	//
 	// 20
 	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	// A list of matched similar titles.
+	// The list of hit similar questions.
 	HitSimilarTitles []*string `json:"HitSimilarTitles,omitempty" xml:"HitSimilarTitles,omitempty" type:"Repeated"`
-	// A list of matched answers.
+	// The list of hit solutions.
 	HitSolutions []*string `json:"HitSolutions,omitempty" xml:"HitSolutions,omitempty" type:"Repeated"`
-	// The FAQ ID.
+	// The knowledge ID.
 	//
 	// example:
 	//
 	// 30002145804
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The modification time (UTC).
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The modifier ID.
+	// The ID of the modifier.
 	//
 	// example:
 	//
 	// 18453
 	ModifyUserId *int64 `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	// The modifier\\"s username.
+	// The name of the modifier.
 	//
 	// example:
 	//
 	// test01
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// The FAQ status.
+	// The knowledge status. Valid values:
+	//
+	// - -1: deleted and unpublished.
+	//
+	// - 1: unpublished.
+	//
+	// - 2: published.
+	//
+	// - 3: updated and unpublished.
 	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The title of the FAQ.
+	// The title.
 	//
 	// example:
 	//
-	// 测试标题
+	// Test title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

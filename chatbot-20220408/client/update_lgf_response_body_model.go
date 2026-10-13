@@ -16,7 +16,7 @@ type iUpdateLgfResponseBody interface {
 }
 
 type UpdateLgfResponseBody struct {
-	// The unique ID of the LGF.
+	// The unique identifier of the LGF.
 	//
 	// example:
 	//

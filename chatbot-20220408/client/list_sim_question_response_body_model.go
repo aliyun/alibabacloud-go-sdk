@@ -66,13 +66,13 @@ func (s *ListSimQuestionResponseBody) Validate() error {
 }
 
 type ListSimQuestionResponseBodySimQuestions struct {
-	// The creation time of the similar question, in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2022-05-30T02:08:33Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The modification time of the similar question, in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ListSimQuestionResponseBodySimQuestions struct {
 	//
 	// example:
 	//
-	// 相似问
+	// Similar question
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

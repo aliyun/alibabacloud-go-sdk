@@ -16,7 +16,7 @@ type iCreateCategoryResponseBody interface {
 }
 
 type CreateCategoryResponseBody struct {
-	// Details of the created category.
+	// The category information.
 	Category *CreateCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -78,15 +78,19 @@ type CreateCategoryResponseBodyCategory struct {
 	//
 	// example:
 	//
-	// 类目名称
+	// Category name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the parent category.
+	// The parent category ID.
 	//
 	// example:
 	//
 	// -1
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	// The category status. A value of -1 indicates that the category has been deleted, but this change has not been published. A value of 0 indicates Normal.
+	// The category status. Valid values:
+	//
+	// - -1: deleted but not published.
+	//
+	// - 0: Normal.
 	//
 	// example:
 	//

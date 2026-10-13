@@ -24,7 +24,7 @@ type iListDSEntityResponseBody interface {
 type ListDSEntityResponseBody struct {
 	// The list of entities.
 	Entities []*ListDSEntityResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
-	// The current page number. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDSEntityResponseBody struct {
 	//
 	// ga4h345defgwet2sdf223
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of matching entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListDSEntityResponseBody) Validate() error {
 }
 
 type ListDSEntityResponseBodyEntities struct {
-	// The creation time in UTC.
+	// The creation time (UTC).
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListDSEntityResponseBodyEntities struct {
 	//
 	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// The ID of the entity.
+	// The entity ID.
 	//
 	// example:
 	//
@@ -145,15 +145,15 @@ type ListDSEntityResponseBodyEntities struct {
 	//
 	// example:
 	//
-	// 书实体
+	// BookEntity
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// The entity type. Valid values: `synonyms`, `regex`, and `system`.
+	// The entity type (synonyms | regex | system).
 	//
 	// example:
 	//
 	// synonyms
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The update time in UTC.
+	// The modification time (UTC).
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListDSEntityResponseBodyEntities struct {
 	//
 	// test
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// The code for the system entity, such as `sys_date`. This parameter is blank for custom entities.
+	// The system entity code, such as sys.date. This parameter is empty for user entities.
 	//
 	// example:
 	//

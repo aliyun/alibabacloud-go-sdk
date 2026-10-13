@@ -123,25 +123,25 @@ type ListInstanceResponseBodyInstances struct {
 	//
 	// /alimefe/meebot/robot/0.0.5/img/xxx-90-97.png
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// The time when the chatbot was created. The time is in the UTC format.
+	// The UTC time when the chatbot was created.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The unique ID of the chatbot.
+	// The unique identifier of the chatbot.
 	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The remarks on the chatbot.
+	// The description of the chatbot.
 	//
 	// example:
 	//
-	// 用于C端问答的机器人
+	// A chatbot for consumer Q&A
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// The language of the chatbot, such as zh-cn and en-us. For more information, see http\\://www\\.lingoes.net/en/translator/langcode.htm.
+	// The language of the chatbot service, such as zh-cn or en-us. For more information, see http://www.lingoes.net/zh/translator/langcode.htm.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListInstanceResponseBodyInstances struct {
 	//
 	// example:
 	//
-	// 智能客服-小C
+	// Intelligent Customer Service - Bot C
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the chatbot.
 	//

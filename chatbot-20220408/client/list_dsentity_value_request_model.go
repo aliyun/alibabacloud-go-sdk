@@ -26,13 +26,13 @@ type iListDSEntityValueRequest interface {
 }
 
 type ListDSEntityValueRequest struct {
-	// The key for the business space. If omitted, the default business space is used. You can get this key from the Business Management page of your primary account.
+	// The business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the primary account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the entity.
+	// The entity ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type ListDSEntityValueRequest struct {
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The ID of the entity value.
+	// The entity member ID.
 	//
 	// example:
 	//
 	// 234
 	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	// The ID of the instance.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type ListDSEntityValueRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The keyword used to search for entity values and their synonyms.
+	// The search keyword for the entity member name.
 	//
 	// example:
 	//
-	// 书
+	// Book
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number. Defaults to 1.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Defaults to 10.
+	// The page size.
 	//
 	// example:
 	//

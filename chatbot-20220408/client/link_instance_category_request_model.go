@@ -20,19 +20,25 @@ type iLinkInstanceCategoryRequest interface {
 }
 
 type LinkInstanceCategoryRequest struct {
-	// The category\\"s ability type. Valid values: `FAQ` and `MRC` (machine reading comprehension). Defaults to `FAQ`.
+	// The capability type of the category. Valid values:
+	//
+	// - FAQ: Frequently asked questions.
+	//
+	// - MRC: Document-based machine reading comprehension.
+	//
+	// Default value: FAQ.
 	//
 	// example:
 	//
 	// FAQ,MRC
 	AbilityType *string `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
-	// The key for the business space. If you do not specify this parameter, the default business space is used. You can obtain the key on the Business Management page of your primary account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// An array of FAQ category IDs to link to the chatbot.
+	// The array of FAQ category IDs to associate with the chatbot.
 	//
 	// example:
 	//

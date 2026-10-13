@@ -20,13 +20,13 @@ type iUpdateUserSayRequest interface {
 }
 
 type UpdateUserSayRequest struct {
-	// The workspace key. If you omit this parameter, the default workspace is used. You can find this key on the Workspace Management page in your main account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the bot.
+	// The robot ID.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type UpdateUserSayRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The definition of the user say.
+	// The definition of the user utterance.
 	UserSayDefinition *UpdateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
-	// The ID of the user say.
+	// The user utterance ID.
 	//
 	// This parameter is required.
 	//
@@ -100,15 +100,15 @@ func (s *UpdateUserSayRequest) Validate() error {
 }
 
 type UpdateUserSayRequestUserSayDefinition struct {
-	// The content of the user say.
+	// The user utterance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 做核酸了吗您
+	// Have you taken a COVID test?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the intent.
+	// The intent ID.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +116,7 @@ type UpdateUserSayRequestUserSayDefinition struct {
 	//
 	// 123
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// An array that contains information for each slot.
+	// The slot information.
 	SlotInfos []*UpdateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -169,19 +169,19 @@ func (s *UpdateUserSayRequestUserSayDefinition) Validate() error {
 }
 
 type UpdateUserSayRequestUserSayDefinitionSlotInfos struct {
-	// The zero-based end index (exclusive) of the slot within the content of the user say.
+	// The end index of the slot in the intent utterance (exclusive).
 	//
 	// example:
 	//
 	// 3
 	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	// The ID of the slot.
+	// The slot ID.
 	//
 	// example:
 	//
 	// 346ffg3q23dv
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// The zero-based start index of the slot within the content of the user say.
+	// The start index of the slot in the intent utterance.
 	//
 	// example:
 	//

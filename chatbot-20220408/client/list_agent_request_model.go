@@ -20,25 +20,25 @@ type iListAgentRequest interface {
 }
 
 type ListAgentRequest struct {
-	// The name of the business space. Use this parameter to filter the results.
+	// The business space name. You can use this parameter to search by name.
 	//
 	// example:
 	//
-	// 业务空间_001
+	// BusinessSpace_001
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// The commodity code. Filters the results to return only business spaces associated with a specific commodity code.
+	// The commodity code. You can use this parameter to filter by commodity code and query instance information.
 	//
 	// example:
 	//
 	// G_cloudBeeBot_public
 	GoodsCodes *string `json:"GoodsCodes,omitempty" xml:"GoodsCodes,omitempty"`
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of records per page in the response. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//

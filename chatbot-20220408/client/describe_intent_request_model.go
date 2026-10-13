@@ -18,7 +18,7 @@ type iDescribeIntentRequest interface {
 }
 
 type DescribeIntentRequest struct {
-	// The key for the business space. If you omit this parameter, the system uses the default business space. You can obtain the key from the Business Management page of the primary account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//

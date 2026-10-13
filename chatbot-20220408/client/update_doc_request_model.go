@@ -36,7 +36,7 @@ type iUpdateDocRequest interface {
 }
 
 type UpdateDocRequest struct {
-	// The key for the business space. If this parameter is not specified, the default business space is used. You can obtain the key on the Business Management page of your master account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
 	//
 	// example:
 	//
@@ -48,13 +48,35 @@ type UpdateDocRequest struct {
 	//
 	// 231001028593
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// **Splitter**: The method used to split the document. Valid values: `paragraphSplitter` (splits by paragraph, default) and `treeSplitter` (splits by hierarchical rules).
+	// The document parsing/chunking configuration.
 	//
-	// **ChunkSize**: The chunk size. The value must be an integer from 200 to 800. The default value is 500.
+	// Configuration item: Splitter
 	//
-	// **TreePatterns**: An array of regular expressions that define the structure for rule-based splitting. The default value is `[]`.
+	// KEY: Splitter
 	//
-	// **TitleSource**: The source of the document title. Valid values: `ocrTitle` (uses the OCR-recognized title, default) and `docName` (uses the document name as the title).
+	// Valid values: paragraphSplitter - hierarchy recognition (default)
+	//
+	// Valid values: treeSplitter - rule-based hierarchy
+	//
+	// Configuration item: Document chunk size
+	//
+	// KEY: ChunkSize
+	//
+	// VALUE: Default 500. Range: [200,800]
+	//
+	// Configuration item: Rule-based hierarchy
+	//
+	// KEY: TreePatterns
+	//
+	// VALUE: Default []
+	//
+	// Configuration item: Document title source
+	//
+	// KEY: TitleSource
+	//
+	// Valid values: ocrTitle - OCR-recognized title (default)
+	//
+	// Valid values: docName - document name as title.
 	//
 	// example:
 	//
@@ -64,16 +86,16 @@ type UpdateDocRequest struct {
 	//
 	// example:
 	//
-	// 文档内容
+	// Document content
 	Content     *string                        `json:"Content,omitempty" xml:"Content,omitempty"`
 	DocMetadata []*UpdateDocRequestDocMetadata `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty" type:"Repeated"`
 	// The document name.
 	//
 	// example:
 	//
-	// 文档问答模块功能说明文档
+	// Document QA Module Feature Description
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	// The time when the document expires. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The end of the effective period.
 	//
 	// example:
 	//
@@ -87,25 +109,25 @@ type UpdateDocRequest struct {
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The metadata of the document, specified as a JSON string.
+	// The document metadata.
 	//
 	// example:
 	//
 	// {"code":"xxx"}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The time when the document becomes effective. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The start of the effective period.
 	//
 	// example:
 	//
 	// 2022-05-25T16:28:36Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The tag IDs to associate with the document. Passing an empty array removes all existing tag associations.
+	// The list of tag IDs. If this parameter is left empty, the tag bindings are removed.
 	TagIds []*int64 `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	// The document title.
 	//
 	// example:
 	//
-	// 文档问答功能说明
+	// Document QA Feature Description
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iListConnQuestionResponseBody interface {
 }
 
 type ListConnQuestionResponseBody struct {
-	// A list of connected questions.
+	// The list of associated questions.
 	Outlines []*ListConnQuestionResponseBodyOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,35 +66,35 @@ func (s *ListConnQuestionResponseBody) Validate() error {
 }
 
 type ListConnQuestionResponseBodyOutlines struct {
-	// The ID of the connected question.
+	// The associated knowledge ID.
 	//
 	// example:
 	//
 	// 30001979424
 	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	// The creation time, in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2022-02-25T02:47:18Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The last modification time, in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2022-05-26T10:18:15Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The relation ID.
+	// The association ID.
 	//
 	// example:
 	//
 	// 797
 	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	// The title of the connected question.
+	// The title of the associated knowledge item.
 	//
 	// example:
 	//
-	// 关联问
+	// Associated question
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

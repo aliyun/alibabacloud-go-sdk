@@ -16,7 +16,7 @@ type iCreateConnQuestionResponseBody interface {
 }
 
 type CreateConnQuestionResponseBody struct {
-	// The outline ID.
+	// The association ID.
 	//
 	// example:
 	//

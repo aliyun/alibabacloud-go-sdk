@@ -22,15 +22,15 @@ type iListLgfResponseBody interface {
 }
 
 type ListLgfResponseBody struct {
-	// A list of advanced semantic configurations.
+	// The list of LGF configurations.
 	Lgfs []*ListLgfResponseBodyLgfs `json:"Lgfs,omitempty" xml:"Lgfs,omitempty" type:"Repeated"`
-	// The returned page number.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListLgfResponseBody struct {
 	//
 	// 34fg57h2gh5783
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of matching entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *ListLgfResponseBody) Validate() error {
 }
 
 type ListLgfResponseBodyLgfs struct {
-	// The creation time, in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the intent.
+	// The intent ID.
 	//
 	// example:
 	//
 	// 256756734345
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// The LGF ID.
+	// LGF ID
 	//
 	// example:
 	//
 	// 123
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
-	// The modification time, in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//

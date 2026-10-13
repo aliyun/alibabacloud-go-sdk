@@ -18,19 +18,19 @@ type iListSaasInfoRequest interface {
 }
 
 type ListSaasInfoRequest struct {
-	// The key for the business space. If this parameter is omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The codes of the user\\"s SaaS permission groups. Separate multiple codes with a comma.
+	// The SaaS permission group codes owned by the user. Separate multiple codes with commas (,).
 	//
 	// example:
 	//
 	// DS,FAQ
 	SaasGroupCodes *string `json:"SaasGroupCodes,omitempty" xml:"SaasGroupCodes,omitempty"`
-	// The username of the business user.
+	// The username of the business party.
 	//
 	// This parameter is required.
 	//

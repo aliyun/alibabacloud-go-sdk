@@ -18,13 +18,13 @@ type iTongyiChatDebugInfoRequest interface {
 }
 
 type TongyiChatDebugInfoRequest struct {
-	// The business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the primary account.
+	// The key of the workspace. If you do not specify this parameter, the default workspace is accessed. You can obtain the key value from the Business Management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The chatbot ID.
+	// The ID of the chatbot.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type TongyiChatDebugInfoRequest struct {
 	//
 	// chatbot-cn-7QuUfaqMQe
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the response message in the current session.
+	// The ID of the response message for the current session.
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iDescribeInstanceRequest interface {
 }
 
 type DescribeInstanceRequest struct {
-	// The key for the business space. If this parameter is omitted, the default business space is used. You can obtain this key from the business management page of your main account.
+	// The key of the business space. If this parameter is not specified, the default business space is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The unique identifier of the robot instance.
+	// The unique identifier of the chatbot.
 	//
 	// example:
 	//

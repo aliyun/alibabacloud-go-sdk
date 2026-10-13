@@ -16,7 +16,7 @@ type iDeletePerspectiveRequest interface {
 }
 
 type DeletePerspectiveRequest struct {
-	// The business space key. If you do not set this parameter, the default business space is used. You can obtain the key on the Business Management page of your Alibaba Cloud account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//

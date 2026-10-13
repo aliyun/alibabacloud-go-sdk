@@ -18,13 +18,13 @@ type iUpdateConnQuestionRequest interface {
 }
 
 type UpdateConnQuestionRequest struct {
-	// The key of the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your main account.
+	// The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the associated question.
+	// The ID of the associated knowledge.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateConnQuestionRequest struct {
 	//
 	// 1000000295
 	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	// The ID of the connection.
+	// The ID of the association.
 	//
 	// This parameter is required.
 	//

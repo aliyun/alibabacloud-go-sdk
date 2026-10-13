@@ -14,7 +14,7 @@ type iQueryPerspectivesRequest interface {
 }
 
 type QueryPerspectivesRequest struct {
-	// The key of the business space. If this parameter is omitted, the default business space is used. You can find the key on the Business Management page of your primary account.
+	// The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the primary account.
 	//
 	// example:
 	//

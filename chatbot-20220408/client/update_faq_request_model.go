@@ -26,13 +26,13 @@ type iUpdateFaqRequest interface {
 }
 
 type UpdateFaqRequest struct {
-	// The key for the business space. If this parameter is omitted, the default business space is used. You can find this key on the Business Management page of your main account.
+	// The workspace key. If not specified, the default workspace is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the knowledge entry\\"s category.
+	// The category ID of the knowledge entry.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type UpdateFaqRequest struct {
 	//
 	// 30000049006
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The expiration date and time. The value must be in ISO 8601 format.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 2030-12-31T16:00:00Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The ID of the knowledge entry.
+	// The knowledge ID.
 	//
 	// This parameter is required.
 	//
@@ -54,21 +54,21 @@ type UpdateFaqRequest struct {
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The effective start date and time. The value must be in ISO 8601 format.
+	// The effective period.
 	//
 	// example:
 	//
 	// 2022-05-27T05:18:20Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// A list of tag IDs.
+	// The list of tag IDs.
 	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
-	// The knowledge title.
+	// The title of the knowledge entry.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试标题
+	// Test title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

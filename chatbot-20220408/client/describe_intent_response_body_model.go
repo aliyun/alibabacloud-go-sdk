@@ -38,21 +38,21 @@ type DescribeIntentResponseBody struct {
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The time when the intent was created, in UTC format.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator ID.
+	// The unique identifier of the creator.
 	//
 	// example:
 	//
 	// 123231
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
@@ -68,21 +68,21 @@ type DescribeIntentResponseBody struct {
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The time when the intent was last modified, in UTC format.
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The modifier ID.
+	// The unique identifier of the user who last modified the intent.
 	//
 	// example:
 	//
 	// 123231
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	// The modifier name.
+	// The name of the user who last modified the intent.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeIntentResponseBody struct {
 	//
 	// a22afaf2adfasf2gr345fga45ada
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of objects that contain the slot information for the intent.
+	// The slot information associated with the intent.
 	SlotInfos []*DescribeIntentResponseBodySlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -219,13 +219,13 @@ func (s *DescribeIntentResponseBody) Validate() error {
 }
 
 type DescribeIntentResponseBodySlotInfos struct {
-	// Indicates whether the slot can contain an array of values.
+	// Indicates whether the slot is an array.
 	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// Indicates whether the slot is configured to encrypt its value.
+	// Indicates whether the slot is sensitive.
 	//
 	// example:
 	//
@@ -241,19 +241,19 @@ type DescribeIntentResponseBodySlotInfos struct {
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The slot ID.
+	// The unique identifier of the slot.
 	//
 	// example:
 	//
 	// aa4d2a343a3ad4afad
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// The value extracted for the slot.
+	// The slot tagging result.
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -20,13 +20,13 @@ type iGetBotSessionDataRequest interface {
 }
 
 type GetBotSessionDataRequest struct {
-	// The key for the workspace. If you omit this parameter, the operation uses the default workspace. You can find the key on the business management page of your main account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The end time for the query. The format must be `yyyyMMdd`. For example: `20240605`.
+	// The end time of the query. The time format is yyyyMMdd, such as 20240605.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetBotSessionDataRequest struct {
 	//
 	// 20240605
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the bot instance.
+	// The ID of the chatbot instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type GetBotSessionDataRequest struct {
 	//
 	// chatbot-cn-7QuUfaqMQe
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
-	// The start time for the query. The format must be `yyyyMMdd`. For example: `20240505`.
+	// The start time of the query. The time format is yyyyMMdd, such as 20240505.
 	//
 	// This parameter is required.
 	//

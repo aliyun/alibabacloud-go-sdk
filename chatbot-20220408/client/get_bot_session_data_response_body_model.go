@@ -18,13 +18,13 @@ type iGetBotSessionDataResponseBody interface {
 }
 
 type GetBotSessionDataResponseBody struct {
-	// The API call latency, in milliseconds (ms).
+	// The time consumed by the API call, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 116
 	CostTime *string `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	// An array of objects containing the data details.
+	// The data details.
 	Datas []map[string]interface{} `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
 	// The request ID.
 	//

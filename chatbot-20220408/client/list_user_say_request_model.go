@@ -24,19 +24,19 @@ type iListUserSayRequest interface {
 }
 
 type ListUserSayRequest struct {
-	// The key of the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your Alibaba Cloud account.
+	// The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The keywords used to filter user says. The query returns only user says that contain these keywords.
+	// The keyword used to filter user utterances.
 	//
 	// example:
 	//
-	// 您做核酸了嘛
+	// Have you taken a COVID test
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the bot.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ListUserSayRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the intent.
+	// The intent ID.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type ListUserSayRequest struct {
 	//
 	// 232
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 10. The maximum value is 1000.
+	// The number of entries per page. Default value: 10. Maximum value: 1000.
 	//
 	// example:
 	//

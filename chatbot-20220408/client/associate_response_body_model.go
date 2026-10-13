@@ -20,9 +20,9 @@ type iAssociateResponseBody interface {
 }
 
 type AssociateResponseBody struct {
-	// A list of suggested FAQs.
+	// The list of associated suggestions.
 	Associate []*AssociateResponseBodyAssociate `json:"Associate,omitempty" xml:"Associate,omitempty" type:"Repeated"`
-	// The response message ID.
+	// The ID of the response message in the current session.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type AssociateResponseBody struct {
 	//
 	// 5C20F0D4-9721-178A-8236-3BF990634962
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The session ID.
+	// The ID of the current session.
 	//
 	// example:
 	//
@@ -100,17 +100,17 @@ func (s *AssociateResponseBody) Validate() error {
 }
 
 type AssociateResponseBodyAssociate struct {
-	// Additional information.
+	// The additional information.
 	//
 	// example:
 	//
 	// {}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The title of the suggested FAQ.
+	// The title of the associated question.
 	//
 	// example:
 	//
-	// 公积金提取的政策
+	// Housing fund withdrawal policy
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

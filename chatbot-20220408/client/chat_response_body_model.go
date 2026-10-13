@@ -22,23 +22,23 @@ type iChatResponseBody interface {
 }
 
 type ChatResponseBody struct {
-	// The unique message ID.
+	// The ID of the response message in the current session.
 	//
 	// example:
 	//
 	// A2315C4B-A872-5DEE-9DAD-D73B194A4AEC
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// A list of message objects.
+	// The list of messages.
 	Messages []*ChatResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// The words segmented from the query. This field may be empty.
+	// The tokenization results of the query, which may be empty.
 	QuerySegList []*string `json:"QuerySegList,omitempty" xml:"QuerySegList,omitempty" type:"Repeated"`
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A2315C4B-A872-5DEE-9DAD-D73B194A4AEC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The unique session ID.
+	// The ID of the current session.
 	//
 	// example:
 	//
@@ -113,35 +113,37 @@ func (s *ChatResponseBody) Validate() error {
 }
 
 type ChatResponseBodyMessages struct {
-	// Indicates the source of the recommended answer if `AnswerType` is `Recommend`.
+	// The source of the recommended answer when AnswerType is Recommend.
+	//
+	// [_single.resp.200.props.Messages.items.AnswerSource.enum. INTENT_FAQ_CLARIFY]mixed clarification from FAQ and dialog flow
 	//
 	// example:
 	//
 	// KNOWLEDGE
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// Type of the message.
+	// The type of this message.
 	//
 	// example:
 	//
 	// Text
 	AnswerType *string `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	// Contains the `Knowledge` object if `AnswerType` is `Knowledge`.
+	// When AnswerType is Knowledge, this field contains the Knowledge object returned by the chatbot.
 	Knowledge *ChatResponseBodyMessagesKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
-	// Contains a list of `Recommend` objects if `AnswerType` is `Recommend`.
+	// The list of recommendations returned by the bot when AnswerType is Recommend.
 	Recommends []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
-	// Contains the `Text` object if `AnswerType` is `Text`.
+	// When AnswerType is Text, this field contains the Text object returned by the chatbot.
 	Text *ChatResponseBodyMessagesText `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
-	// The title of the clarification question for text-based chat scenarios.
+	// The counter-question title in online scenarios.
 	//
 	// example:
 	//
-	// 请问您想咨询的是哪个投保年龄区间呢？
+	// Which insurance age range are you inquiring about?
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The clarification content for voice-based scenarios.
+	// The clarification content in voice scenarios.
 	//
 	// example:
 	//
-	// 请问你说的是公积金查询，还是公积金提取
+	// Are you asking about provident fund inquiry or provident fund withdrawal?
 	VoiceTitle *string `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
 }
 
@@ -240,59 +242,59 @@ func (s *ChatResponseBodyMessages) Validate() error {
 }
 
 type ChatResponseBodyMessagesKnowledge struct {
-	// The source of the answer.
+	// Distinguishes the answer type.
 	//
-	// `KnowledgeBase`: The answer is from the knowledge base.
+	// KnowledgeBase: knowledge base.
 	//
 	// example:
 	//
 	// KnowledgeBase
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// The category of the knowledge entry.
+	// The knowledge category.
 	//
 	// example:
 	//
 	// 公积金
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The content of the matched knowledge entry.
+	// The content of the hit question.
 	//
 	// example:
 	//
 	// 公积金提取，请在首页搜索公积金提取，提交办事的表单
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Content format of the answer.
+	// The indicator of whether the answer is plain text or rich text.
 	//
 	// example:
 	//
 	// PLAIN_TEXT
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The hit statement matching the query.
+	// The hit statement.
 	//
 	// example:
 	//
 	// 公积金
 	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// ID of the matched knowledge entry in the knowledge base.
+	// The ID of the hit question in the knowledge base.
 	//
 	// example:
 	//
 	// 735898
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// A list of related knowledge objects.
+	// The list of related knowledge entries.
 	RelatedKnowledges []*ChatResponseBodyMessagesKnowledgeRelatedKnowledges `json:"RelatedKnowledges,omitempty" xml:"RelatedKnowledges,omitempty" type:"Repeated"`
-	// The confidence score.
+	// The score.
 	//
 	// example:
 	//
 	// 0.998
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// Summary of the matched knowledge entry.
+	// The summary of the hit question.
 	//
 	// example:
 	//
 	// 公积金提取
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The title of the matched knowledge entry.
+	// The title of the hit question.
 	//
 	// example:
 	//
@@ -457,29 +459,29 @@ func (s *ChatResponseBodyMessagesKnowledgeRelatedKnowledges) Validate() error {
 }
 
 type ChatResponseBodyMessagesRecommends struct {
-	// Source of the clarification.
+	// The identifier of the clarification source.
 	//
 	// example:
 	//
 	// KNOWLEDGE
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// The knowledge ID for the clarification.
+	// The knowledge ID for clarification.
 	//
 	// example:
 	//
 	// 4548
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The score of the recommended content. Returned only if `AnswerSource` is `KNOWLEDGE`.
+	// The score of the recommended content. This field has a value when AnswerSource is KNOWLEDGE.
 	//
 	// example:
 	//
 	// 0.46
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// Clarification content. This can be an entity from knowledge graph QA, a knowledge title from FAQ-based QA, or a column value from table QA.
+	// The clarification content, which can be an entity from knowledge graph Q&A, a knowledge title from knowledge-based Q&A, or a column value from table-based Q&A.
 	//
 	// example:
 	//
-	// 测试纯文本
+	// Test plain text
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -532,19 +534,21 @@ func (s *ChatResponseBodyMessagesRecommends) Validate() error {
 }
 
 type ChatResponseBodyMessagesText struct {
-	// The source of the answer.
+	// Distinguishes the answer type.
 	//
 	// example:
 	//
 	// BotFramework
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// Title of the matched article. Returned only if `AnswerSource` is `MACHINE_READ`.
+	// When AnswerSource is MACHINE_READ, this field returns the title of the hit article.
 	//
 	// example:
 	//
-	// 备案十一
+	// ICP Filing 11
+	//
+	// [responses.200.schema.properties.Messages.items.properties.AnswerSource.enumValueTitles. INTENT_FAQ_CLARIFY]FAQ and dialog flow mixed clarification
 	ArticleTitle *string `json:"ArticleTitle,omitempty" xml:"ArticleTitle,omitempty"`
-	// Command parameters, such as the skill group for transferring to a human agent.
+	// The instruction parameters, such as the skill group for a transfer-to-agent instruction.
 	//
 	// example:
 	//
@@ -558,21 +562,21 @@ type ChatResponseBodyMessagesText struct {
 	//
 	// example:
 	//
-	// 请问您要查哪里的天气？
+	// Which location do you want to check the weather for?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The content format of the answer.
+	// The indicator of whether the answer is plain text or rich text.
 	//
 	// example:
 	//
 	// PLAIN_TEXT
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Name of the dialog. Returned only if `AnswerSource` is `BotFramework`.
+	// When AnswerSource is BotFramework, this field returns the dialog flow unit name.
 	//
 	// example:
 	//
-	// 示例_查天气
+	// Sample_CheckWeather
 	DialogName *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
-	// Contains passthrough parameters.
+	// The pass-through parameters returned in this field.
 	//
 	// example:
 	//
@@ -582,11 +586,11 @@ type ChatResponseBodyMessagesText struct {
 	//
 	// 	"INTENT_ID": 724414,
 	//
-	// 	"IntentName": "查天气意图",
+	// 	"IntentName": "CheckWeatherIntent",
 	//
-	// 	"INTENT_DETAIL": "[我想|我要]查天气",
+	// 	"INTENT_DETAIL": "[I want|I need to] check the weather",
 	//
-	// 	"LGF_EXPRESSION": "[我想|我要]查天气",
+	// 	"LGF_EXPRESSION": "[I want|I need to] check the weather",
 	//
 	// 	"IS_SESSION_FINISHED": false,
 	//
@@ -598,65 +602,65 @@ type ChatResponseBodyMessagesText struct {
 	//
 	// 	"MODULE_START": false,
 	//
-	// 	"INTENT_NAME": "查天气意图",
+	// 	"INTENT_NAME": "CheckWeatherIntent",
 	//
 	// 	"INTENT_SOURCE": "Lgf",
 	//
-	// 	"DIALOG_NAME": "示例_查天气"
+	// 	"DIALOG_NAME": "Sample_CheckWeather"
 	//
 	// }
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// Passthrough parameters. Returned only if `AnswerSource` is `BotFramework`.
+	// The pass-through parameters returned when AnswerSource is BotFramework.
 	ExternalFlags map[string]interface{} `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
 	// The hit statement.
 	//
 	// example:
 	//
-	// 查天气
+	// CheckWeather
 	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// The name of the intent. This field is returned when `AnswerSource` is `BotFramework`.
+	// When AnswerSource is BotFramework, this field returns the intent name.
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// Metadata.
+	// The metadata.
 	//
 	// example:
 	//
-	// [[{\\"columnName\\":\\"姓名\\",\\"stringValue\\":\\"王珊珊\\"}]]
+	// [[{"columnName":"Name","stringValue":"Wang Shanshan"}]]
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The node ID. Returned only if `AnswerSource` is `BotFramework`.
+	// The node ID returned when AnswerSource is BotFramework.
 	//
 	// example:
 	//
 	// 1410-c7a72a78.__city
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node. This field is returned when `AnswerSource` is `BotFramework`.
+	// When AnswerSource is BotFramework, this field returns the node name.
 	//
 	// example:
 	//
-	// 示例_查天气.查天气填槽.__city
+	// Sample_CheckWeather.CheckWeatherSlotFilling.__city
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// A value of `SSML` indicates that an interactive slot-filling process has started in the dialog factory. This field is returned only if `AnswerSource` is `BotFramework`.
+	// When AnswerSource is BotFramework and ResponseType is SSML, this field indicates that a dialog flow interactive slot filling is hit. Otherwise, this field does not exist.
 	//
 	// example:
 	//
 	// SSML
 	ResponseType *string `json:"ResponseType,omitempty" xml:"ResponseType,omitempty"`
-	// The confidence score.
+	// The score.
 	//
 	// example:
 	//
 	// 100.0
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// A list of slot objects. Returned only if `AnswerSource` is `BotFramework`.
+	// When AnswerSource is BotFramework, this field returns the list of named entities.
 	Slots []*ChatResponseBodyMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
-	// The title of a custom chit-chat topic.
+	// The title of the custom chitchat topic.
 	//
 	// example:
 	//
-	// 问候
+	// Greeting
 	UserDefinedChatTitle *string `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
 }
 
@@ -835,29 +839,29 @@ func (s *ChatResponseBodyMessagesText) Validate() error {
 }
 
 type ChatResponseBodyMessagesTextSlots struct {
-	// Indicates whether the slot was filled.
+	// Indicates whether the slot is hit.
 	//
 	// example:
 	//
 	// false
 	Hit *bool `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	// The name of the slot.
+	// The name.
 	//
 	// example:
 	//
-	// 查天气意图.city
+	// CheckWeatherIntent.city
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The original value from the user\\"s input.
+	// The original value.
 	//
 	// example:
 	//
-	// 北京
+	// Beijing
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// Extracted value of the slot.
+	// The specific value.
 	//
 	// example:
 	//
-	// 北京
+	// Beijing
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

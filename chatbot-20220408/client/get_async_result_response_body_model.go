@@ -18,11 +18,11 @@ type iGetAsyncResultResponseBody interface {
 }
 
 type GetAsyncResultResponseBody struct {
-	// The task result, returned as a JSON-formatted string.
+	// The execution result data of the customer service.
 	//
 	// example:
 	//
-	// {"message":"执行完成"}
+	// {"message":"Execution completed"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
 	//
@@ -30,17 +30,17 @@ type GetAsyncResultResponseBody struct {
 	//
 	// F79E7305-5314-5069-A701-9591AD051902
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task\\"s execution status. Valid values:
+	// The execution status.
 	//
-	// | Value   | Description                      |
+	// | Value | Description |
 	//
-	// | ------- | -------------------------------- |
+	// |----|----|
 	//
-	// | Success | The task completed successfully. |
+	// | Success | The task is executed. |
 	//
-	// | Running | The task is running.             |
+	// | Runninig | The task is being executed. |
 	//
-	// | Fail    | The task failed.                 |
+	// | Fail | The task failed to be executed. |
 	//
 	// example:
 	//

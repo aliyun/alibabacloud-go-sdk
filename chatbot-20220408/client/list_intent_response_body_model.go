@@ -22,7 +22,7 @@ type iListIntentResponseBody interface {
 }
 
 type ListIntentResponseBody struct {
-	// A list of intents.
+	// The list of intents.
 	Intents []*ListIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -30,7 +30,7 @@ type ListIntentResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of intents per page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListIntentResponseBody struct {
 	//
 	// 23dsfa34r2s2s2sd12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of intents.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *ListIntentResponseBody) Validate() error {
 }
 
 type ListIntentResponseBodyIntents struct {
-	// The intent alias.
+	// The alias of the intent.
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The time at which the intent was created, in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the intent.
+	// The unique identifier of the creator.
 	//
 	// example:
 	//
 	// 123231
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The name of the user who created the intent.
+	// The name of the creator.
 	//
 	// example:
 	//
@@ -151,15 +151,15 @@ type ListIntentResponseBodyIntents struct {
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The time at which the intent was last modified, in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the user who last modified the intent.
+	// The unique identifier of the user who last modified the intent.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListIntentResponseBodyIntents struct {
 	//
 	// test
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// A list of slots associated with the intent.
+	// The slot information associated with the intent.
 	SlotInfos []*ListIntentResponseBodyIntentsSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -287,19 +287,19 @@ func (s *ListIntentResponseBodyIntents) Validate() error {
 }
 
 type ListIntentResponseBodyIntentsSlotInfos struct {
-	// Indicates whether the slot can accept multiple values.
+	// Indicates whether the slot is an array.
 	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// Indicates whether the slot contains sensitive data.
+	// Indicates whether the slot is sensitive.
 	//
 	// example:
 	//
 	// false
 	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	// Indicates whether the slot value is collected interactively.
+	// Indicates whether the slot is collected interactively.
 	//
 	// example:
 	//
@@ -309,7 +309,7 @@ type ListIntentResponseBodyIntentsSlotInfos struct {
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The slot ID.
 	//
@@ -321,7 +321,7 @@ type ListIntentResponseBodyIntentsSlotInfos struct {
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -24,27 +24,31 @@ type iCreateSolutionShrinkRequest interface {
 }
 
 type CreateSolutionShrinkRequest struct {
-	// The key of the business space. If this parameter is omitted, the system uses the default business space. You can obtain the key from the Business Management page of your primary account.
+	// The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The content of the knowledge answer.
+	// The content of the answer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 答案内容
+	// Answer content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The answer type. Valid values: `0` (plain text) and `1` (rich text).
+	// The type of the answer. Valid values:
+	//
+	// - 0: plain text.
+	//
+	// - 1: rich text.
 	//
 	// example:
 	//
 	// 1
 	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The ID of the knowledge.
+	// The knowledge ID.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +56,11 @@ type CreateSolutionShrinkRequest struct {
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// A list of perspective codes.
+	// The list of perspective codes.
 	//
 	// This parameter is required.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	// A list of tag IDs.
+	// The list of tag IDs.
 	TagIdListShrink *string `json:"TagIdList,omitempty" xml:"TagIdList,omitempty"`
 }
 

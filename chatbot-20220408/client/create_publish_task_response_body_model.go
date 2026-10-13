@@ -30,17 +30,17 @@ type iCreatePublishTaskResponseBody interface {
 type CreatePublishTaskResponseBody struct {
 	// The list of business types.
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// The time when the task was created, in UTC.
+	// The UTC time when the task was created.
 	//
 	// example:
 	//
 	// 2022-04-12T06:30:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message if the task fails.
+	// The task failure information.
 	//
 	// example:
 	//
-	// 检查待发布模块是否空闲发生错误，faq
+	// An error occurred while checking whether the module to be published is idle, faq
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The publish task ID.
 	//
@@ -48,7 +48,7 @@ type CreatePublishTaskResponseBody struct {
 	//
 	// 8522
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the task was last modified, in UTC.
+	// The UTC time when the task was last modified.
 	//
 	// example:
 	//
@@ -60,15 +60,23 @@ type CreatePublishTaskResponseBody struct {
 	//
 	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The publish task ID. This parameter is redundant. Use the `Id` parameter instead.
+	// The publish task ID. This is a redundant field. Use the publish task ID from the Id field instead.
 	//
 	// example:
 	//
 	// 8522
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// The task status. Valid values:
+	// The task status.
 	//
-	// `FE_RUNNING`: Publishing<br><br>`FE_SUCCESS`: Published<br><br>`FE_FAILED`: Failed<br><br>`FE_ABORTED`: Canceled<br><br><br><br><br><br>
+	// Valid values:
+	//
+	// - FE_RUNNING: Publishing in progress.
+	//
+	// - FE_SUCCESS: Published.
+	//
+	// - FE_FAILED: Publish failed.
+	//
+	// - FE_ABORTED: Publish canceled.
 	//
 	// example:
 	//

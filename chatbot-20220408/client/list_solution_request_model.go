@@ -16,7 +16,7 @@ type iListSolutionRequest interface {
 }
 
 type ListSolutionRequest struct {
-	// The agent key. If omitted, the default agent is used. You can find the key on the agent management page of your main account.
+	// The key of the business space. If not specified, the default business space is accessed. Obtain the key value from the business management page of the primary account.
 	//
 	// example:
 	//

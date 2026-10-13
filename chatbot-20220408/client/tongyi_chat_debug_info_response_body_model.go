@@ -22,14 +22,19 @@ type iTongyiChatDebugInfoResponseBody interface {
 }
 
 type TongyiChatDebugInfoResponseBody struct {
+	// The answer information corresponding to the conversation.
 	AnswerInfo *TongyiChatDebugInfoResponseBodyAnswerInfo `json:"AnswerInfo,omitempty" xml:"AnswerInfo,omitempty" type:"Struct"`
-	// The ID of the response message in the current session.
+	// The ID of the response message for the current session.
 	//
 	// example:
 	//
 	// 2828708A-2C7A-1BAE-B810-87DB9DA9C661
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The information about the entire Q&A pipeline.
+	// The information about the entire Q&A process.
+	//
+	// example:
+	//
+	// For examples, see the child elements
 	Pipeline []*TongyiChatDebugInfoResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -37,6 +42,11 @@ type TongyiChatDebugInfoResponseBody struct {
 	//
 	// E3E5C779-A630-45AC-B0F2-A4506A4212F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the session to which the current response message belongs.
+	//
+	// example:
+	//
+	// 19856284-0ba1-4da3-9a5a-05db2bdf296e
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
@@ -112,8 +122,10 @@ func (s *TongyiChatDebugInfoResponseBody) Validate() error {
 }
 
 type TongyiChatDebugInfoResponseBodyAnswerInfo struct {
+	// The referenced knowledge information of the matched answer.
 	AnswerReferenceInfo *TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfo `json:"AnswerReferenceInfo,omitempty" xml:"AnswerReferenceInfo,omitempty" type:"Struct"`
-	MessageBody         *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBody         `json:"MessageBody,omitempty" xml:"MessageBody,omitempty" type:"Struct"`
+	// The message body.
+	MessageBody *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBody `json:"MessageBody,omitempty" xml:"MessageBody,omitempty" type:"Struct"`
 }
 
 func (s TongyiChatDebugInfoResponseBodyAnswerInfo) String() string {
@@ -157,6 +169,7 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfo) Validate() error {
 }
 
 type TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfo struct {
+	// The list of referenced knowledge entries.
 	ItemList []*TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfoItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
 }
 
@@ -191,12 +204,144 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfo) Validate(
 }
 
 type TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfoItemList struct {
-	ContentType  *string     `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	DataSource   *string     `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	Id           *string     `json:"Id,omitempty" xml:"Id,omitempty"`
-	Number       *int32      `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The type of the referenced text.
+	//
+	// example:
+	//
+	// PLAIN_TEXT/RICH_TEXT
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The source of the referenced knowledge.
+	//
+	// example:
+	//
+	// FLOW/DOC/FAQ/FAQ_DIRECT
+	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// The ID of the referenced knowledge.
+	//
+	// example:
+	//
+	// 611926
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number that corresponds one-to-one with the ReferNumber in AnswerInfo.MessageBody.DirectMessageBody.SentenceList.
+	//
+	// example:
+	//
+	// 1
+	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The extension information specific to the knowledge type.
+	//
+	// example:
+	//
+	// {
+	//
+	//             "CollectedParams": {
+	//
+	//               "ReturnMaster": "true"
+	//
+	//             },
+	//
+	//             "Edges": [],
+	//
+	//             "Nodes": [
+	//
+	//               {
+	//
+	//                 "InvokedApis": [
+	//
+	//                   {
+	//
+	//                     "ApiName": "intentionRepeatCallQry"
+	//
+	//                   }
+	//
+	//                 ],
+	//
+	//                 "OptionalParams": [
+	//
+	//                   "mobile",
+	//
+	//                   "intention"
+	//
+	//                 ],
+	//
+	//                 "Id": "22874cb7-c253-4832-a38d-7113b15ef7fc",
+	//
+	//                 "RequiredParams": [],
+	//
+	//                 "Name": "Check for repeated contacts"
+	//
+	//               },
+	//
+	//               {
+	//
+	//                 "InvokedApis": [
+	//
+	//                   {
+	//
+	//                     "ApiName": "complaintAllChannelLatest"
+	//
+	//                   }
+	//
+	//                 ],
+	//
+	//                 "OptionalParams": [
+	//
+	//                   "mobile",
+	//
+	//                   "billCode"
+	//
+	//                 ],
+	//
+	//                 "Id": "071b082e-ce76-47f9-8b8d-f29e0dd1015c",
+	//
+	//                 "RequiredParams": [],
+	//
+	//                 "Name": "Query ticket information"
+	//
+	//               },
+	//
+	//               {
+	//
+	//                 "Id": "db02f361-61ee-4e30-bda0-2fd62cf4ca46",
+	//
+	//                 "Name": "Logical judgment_35a6"
+	//
+	//               },
+	//
+	//               {
+	//
+	//                 "OptionalParams": [],
+	//
+	//                 "Id": "97f68b60-2973-4d10-8e42-1cbfcbb15cf6",
+	//
+	//                 "RequiredParams": [
+	//
+	//                   "returnMaster"
+	//
+	//                 ],
+	//
+	//                 "Name": "Whether to return to the main flow"
+	//
+	//               },
+	//
+	//               {
+	//
+	//                 "Id": "8167e4ec-a589-42de-97c2-271672b26ffe",
+	//
+	//                 "Name": "Return to the main flow"
+	//
+	//               }
+	//
+	//             ]
+	//
+	//           }
 	ReferenceExt interface{} `json:"ReferenceExt,omitempty" xml:"ReferenceExt,omitempty"`
-	Title        *string     `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the referenced knowledge.
+	//
+	// example:
+	//
+	// Is it possible to make the payment when the contract entity and the paying entity are different?
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfoItemList) String() string {
@@ -266,7 +411,17 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfoItemList) V
 }
 
 type TongyiChatDebugInfoResponseBodyAnswerInfoMessageBody struct {
-	Commands          interface{}                                                            `json:"Commands,omitempty" xml:"Commands,omitempty"`
+	// The command parameters, such as the skill group for the transfer-to-agent command.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "SysToAgent": "{\\"skillGroup\\":\\"\\",\\"ext\\":\\"\\",\\"toAgentReason\\":\\"HitKeywords\\"}"
+	//
+	//       }
+	Commands interface{} `json:"Commands,omitempty" xml:"Commands,omitempty"`
+	// The message body that contains the Q&A results, including the answer, text type, recommended questions, and matched system type.
 	DirectMessageBody *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody `json:"DirectMessageBody,omitempty" xml:"DirectMessageBody,omitempty" type:"Struct"`
 }
 
@@ -306,10 +461,26 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBody) Validate() error 
 }
 
 type TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody struct {
-	ContentType         *string                                                                              `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	TransitionList      []*string                                                                            `json:"TransitionList,omitempty" xml:"TransitionList,omitempty" type:"Repeated"`
-	RelatedQuestionList []*string                                                                            `json:"relatedQuestionList,omitempty" xml:"relatedQuestionList,omitempty" type:"Repeated"`
-	SentenceList        []*TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySentenceList `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
+	// The answer type.
+	//
+	// example:
+	//
+	// RICH_TEXT/PLAIN_TEXT
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The matched system Q&A policy.
+	//
+	// example:
+	//
+	// SENSITIVE_WORD/NO_ANSWER/COMMANDS
+	HitSystemAskConfig *string `json:"HitSystemAskConfig,omitempty" xml:"HitSystemAskConfig,omitempty"`
+	// The response time (RT) debugging information for the current Q&A.
+	RtDetail *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail `json:"RtDetail,omitempty" xml:"RtDetail,omitempty" type:"Struct"`
+	// The list of transition phrases.
+	TransitionList []*string `json:"TransitionList,omitempty" xml:"TransitionList,omitempty" type:"Repeated"`
+	// The list of similar questions.
+	RelatedQuestionList []*string `json:"relatedQuestionList,omitempty" xml:"relatedQuestionList,omitempty" type:"Repeated"`
+	// The list of formal answers.
+	SentenceList []*TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySentenceList `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
 }
 
 func (s TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) String() string {
@@ -322,6 +493,14 @@ func (s TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) G
 
 func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) GetContentType() *string {
 	return s.ContentType
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) GetHitSystemAskConfig() *string {
+	return s.HitSystemAskConfig
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) GetRtDetail() *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail {
+	return s.RtDetail
 }
 
 func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) GetTransitionList() []*string {
@@ -341,6 +520,16 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) 
 	return s
 }
 
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) SetHitSystemAskConfig(v string) *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody {
+	s.HitSystemAskConfig = &v
+	return s
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) SetRtDetail(v *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody {
+	s.RtDetail = v
+	return s
+}
+
 func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) SetTransitionList(v []*string) *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody {
 	s.TransitionList = v
 	return s
@@ -357,6 +546,11 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) 
 }
 
 func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) Validate() error {
+	if s.RtDetail != nil {
+		if err := s.RtDetail.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SentenceList != nil {
 		for _, item := range s.SentenceList {
 			if item != nil {
@@ -369,9 +563,64 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody) 
 	return nil
 }
 
+type TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail struct {
+	// The list of RTs for each segment from the time the user question is received on the text side to the sequential generation of the formal answer.
+	//
+	// example:
+	//
+	// [200, 256, 300, 430]
+	SentenceRtList interface{} `json:"SentenceRtList,omitempty" xml:"SentenceRtList,omitempty"`
+	// The list of RTs for each segment from the time the user question is received on the text side to the sequential generation of the transition phrases.
+	//
+	// example:
+	//
+	// [130]
+	TransitionRtList interface{} `json:"TransitionRtList,omitempty" xml:"TransitionRtList,omitempty"`
+}
+
+func (s TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) GoString() string {
+	return s.String()
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) GetSentenceRtList() interface{} {
+	return s.SentenceRtList
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) GetTransitionRtList() interface{} {
+	return s.TransitionRtList
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) SetSentenceRtList(v interface{}) *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail {
+	s.SentenceRtList = v
+	return s
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) SetTransitionRtList(v interface{}) *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail {
+	s.TransitionRtList = v
+	return s
+}
+
+func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail) Validate() error {
+	return dara.Validate(s)
+}
+
 type TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySentenceList struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ReferNumber *int32  `json:"ReferNumber,omitempty" xml:"ReferNumber,omitempty"`
+	// The formal answer entry.
+	//
+	// example:
+	//
+	// The weather is sunny today
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The number that corresponds one-to-one with the Number in AnswerReferenceInfo.ItemList for generating this answer.
+	//
+	// example:
+	//
+	// 1
+	ReferNumber *int32 `json:"ReferNumber,omitempty" xml:"ReferNumber,omitempty"`
 }
 
 func (s TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySentenceList) String() string {
@@ -409,27 +658,29 @@ type TongyiChatDebugInfoResponseBodyPipeline struct {
 	//
 	// example:
 	//
-	// 用户问句：转人工\\n命中规则：[转]人工[客服|服务|坐席]
-	Input interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The Policy Name. Valid values:
+	// User question: Transfer to agent
 	//
-	// - High-frequency Q&A direct response
+	// Rule hits: [transfer] agent [customer service|service|representative]
+	Input interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The policy name. Valid values:
+	//
+	// - High-frequency Q&A direct output
 	//
 	// - Keyword-based transfer to agent
 	//
 	// - Global sensitive words
 	//
-	// This field is returned only when NodeType is system_strategy.
+	// This field is available only when NodeType is system_strategy.
 	//
 	// example:
 	//
-	// 关键词转人工
+	// Keyword-based transfer to agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **system_strategy**: system strategy.
+	// 	- **system_strategy**: system policy.
 	//
-	// 	- **rewrite_query**: retrieval query.
+	// 	- **rewrite_query**: retrieved question.
 	//
 	// 	- **invoke_llm**: LLM invocation.
 	//
@@ -443,7 +694,9 @@ type TongyiChatDebugInfoResponseBodyPipeline struct {
 	//
 	// example:
 	//
-	// commands:{\\"sysToAgent\\":\\"{\\\\\\"skillGroup\\\\\\":\\\\\\"\\\\\\",\\\\\\"ext\\\\\\":\\\\\\"\\\\\\",\\\\\\"toAgentReason\\\\\\":\\\\\\"HitKeywords\\\\\\"}\\"}\\nresponse:正在为您转接人工客服
+	// commands:{"sysToAgent":"{\\"skillGroup\\":\\"\\",\\"ext\\":\\"\\",\\"toAgentReason\\":\\"HitKeywords\\"}"}
+	//
+	// response:Transferring you to a human agent
 	Output interface{} `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 

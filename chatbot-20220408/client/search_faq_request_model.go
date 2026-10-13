@@ -46,99 +46,113 @@ type iSearchFaqRequest interface {
 }
 
 type SearchFaqRequest struct {
-	// The key for the workspace. If this parameter is not specified, the default workspace is used. You can get the key on the Business Management page of your main account.
+	// The business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// An array of category IDs to filter the search results.
+	// The unique identifier of the category.
 	CategoryIds []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
-	// The start of the creation period.
+	// The start of the creation time range.
 	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	// The end of the creation period.
+	// The end of the creation time range.
 	//
 	// example:
 	//
 	// 2022-05-02T03:09:30Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The creator\\"s username.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// test01
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// The start of the expiration period.
+	// The start of the expiration time range.
 	//
 	// example:
 	//
 	// 2023-04-02T03:09:30Z
 	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	// The end of the expiration period.
+	// The end of the expiration time range.
 	//
 	// example:
 	//
 	// 2023-05-02T03:09:30Z
 	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	// The search keyword.
+	// The keyword.
 	//
 	// example:
 	//
-	// 搜索标题
+	// Search title
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The start of the modification period.
+	// The start of the modification time range.
 	//
 	// example:
 	//
 	// 2023-04-02T03:09:30Z
 	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
-	// The end of the modification period.
+	// The end of the modification time range.
 	//
 	// example:
 	//
 	// 2023-05-02T03:09:30Z
 	ModifyTimeEnd *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	// The modifier\\"s username.
+	// The name of the modifier.
 	//
 	// example:
 	//
 	// test01
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// The number of the page to return. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 10, and the maximum value is 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search scope.
+	// The search scope. Valid values:
+	//
+	// - 1: Search titles and similar questions.
+	//
+	// - 2: Search answers.
+	//
+	// - 3: Search all.
 	//
 	// example:
 	//
 	// 1
 	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
-	// The start of the effective period.
+	// The start of the effective time range.
 	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
-	// The end of the effective period.
+	// The end of the effective time range.
 	//
 	// example:
 	//
 	// 2022-04-03T03:09:30Z
 	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	// The status of the knowledge item.
+	// The knowledge status. Valid values:
+	//
+	// - -1: deleted and unpublished.
+	//
+	// - 1: unpublished.
+	//
+	// - 2: published.
+	//
+	// - 3: updated and unpublished.
 	//
 	// example:
 	//

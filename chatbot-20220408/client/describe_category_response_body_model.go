@@ -68,25 +68,29 @@ type DescribeCategoryResponseBodyCategory struct {
 	//
 	// bizcode123
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 30000049006
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
-	// 类目名称
+	// CategoryName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the parent category. A value of -1 indicates the root directory.
+	// The parent category ID. Default value: -1, which indicates the root directory.
 	//
 	// example:
 	//
 	// -1
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	// The status of the category. Valid values: 0 (Normal) or -1 (Deleted).
+	// The category status. Valid values:
+	//
+	// - -1: deleted and unpublished.
+	//
+	// - 0: Normal.
 	//
 	// example:
 	//

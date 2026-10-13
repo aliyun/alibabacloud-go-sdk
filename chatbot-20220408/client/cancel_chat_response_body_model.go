@@ -16,9 +16,9 @@ type iCancelChatResponseBody interface {
 }
 
 type CancelChatResponseBody struct {
-	// Indicates whether the operation was successful.
+	// The result of calling this operation.
 	CancelResult *bool `json:"CancelResult,omitempty" xml:"CancelResult,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

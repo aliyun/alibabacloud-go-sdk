@@ -30,7 +30,7 @@ type iDeleteInstanceResponseBody interface {
 }
 
 type DeleteInstanceResponseBody struct {
-	// A list of business types.
+	// The list of business types.
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
 	// The UTC time when the task was created.
 	//
@@ -38,13 +38,13 @@ type DeleteInstanceResponseBody struct {
 	//
 	// 2021-09-11T09:26:14Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the task.
+	// The ID of the task creator.
 	//
 	// example:
 	//
 	// 9052
 	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The username of the user who created the task.
+	// The name of the task creator.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DeleteInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 检查待发布模块是否空闲发生错误，faq
+	// An error occurred while checking whether the module to be published is idle, faq
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The task ID.
 	//
@@ -68,13 +68,13 @@ type DeleteInstanceResponseBody struct {
 	//
 	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID. This parameter is an alias for `Id`.
+	// The task ID.
 	//
 	// example:
 	//
 	// 8521
 	Response *int64 `json:"Response,omitempty" xml:"Response,omitempty"`
-	// The task status. For more information about possible states, see the GetInstancePublishTaskState API operation.
+	// The task status. You can call the GetInstancePublishTaskState operation to learn more about the status.
 	//
 	// example:
 	//

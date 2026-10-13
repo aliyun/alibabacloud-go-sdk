@@ -18,7 +18,7 @@ type iCreatePerspectiveRequest interface {
 }
 
 type CreatePerspectiveRequest struct {
-	// The agent key. If unspecified, the system uses the default agent. You can obtain this key from the Business Management page of your Alibaba Cloud account.
+	// The key of the business space. If this parameter is not specified, the default business space is accessed. You can obtain the key from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type CreatePerspectiveRequest struct {
 	//
 	// example:
 	//
-	// 用于购物APP的移动端视角
+	// A mobile perspective for the shopping app
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the perspective. The maximum length is 50 characters.
+	// The name of the perspective. The name can be up to 50 characters in length.
 	//
 	// example:
 	//
-	// 移动端视角
+	// Mobile perspective
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

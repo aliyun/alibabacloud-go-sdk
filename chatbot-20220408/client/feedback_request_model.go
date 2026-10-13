@@ -24,49 +24,53 @@ type iFeedbackRequest interface {
 }
 
 type FeedbackRequest struct {
-	// The key for the business space. If this parameter is not set, the system uses the default business space. You can obtain the key from the business management page of your primary account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The feedback rating for the response. This parameter corresponds to `FeedbackType` in the session history API.
+	// The feedback type, which corresponds to the FeedbackType field in the session history API.
 	//
-	// Enumerated values: \\"good\\" (a positive rating) and \\"bad\\" (a negative rating).
+	// Valid values:
+	//
+	// - good: Like.
+	//
+	// - bad: Dislike.
 	//
 	// example:
 	//
 	// good
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// The detailed feedback content. You can provide this as a raw string or as a JSON string. If you use a JSON string, the \\"content\\" field corresponds to \\"FeedbackUserInfo\\" and the \\"feedbackLabels\\" field corresponds to \\"FeedbackLabels\\" in the session history.
+	// The content of the like or dislike feedback. You can directly enter the feedback content or pass in a JSON string as shown in the example. The content field corresponds to FeedbackUserInfo in the session history, and feedbackLabels corresponds to FeedbackLabels in the session history.
 	//
 	// example:
 	//
 	// {
 	//
-	//     "content": "我觉得这个答案不对，需要依据事实回答。",
+	//     "content": "I think this answer is incorrect. It should be based on facts.",
 	//
 	//     "feedbackLabels": [
 	//
-	//         "存在事实性错误"
+	//         "Contains factual errors"
 	//
 	//     ]
 	//
 	// }
 	FeedbackContent *string `json:"FeedbackContent,omitempty" xml:"FeedbackContent,omitempty"`
-	// The unique identifier of the chatbot instance.
+	// The unique identifier of the chatbot.
 	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique identifier of a single message within the session.
+	// The ID that uniquely identifies a single message in a session window.
 	//
 	// example:
 	//
 	// 5ca40988-4f99-47ad-ac96-9060d0f81db9
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The unique identifier for the session. The instant messaging (IM) system uses this ID to track the conversation.
+	// The session ID that uniquely identifies an IM session.
 	//
 	// example:
 	//

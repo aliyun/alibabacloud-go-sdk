@@ -20,13 +20,13 @@ type iUpdateIntentRequest interface {
 }
 
 type UpdateIntentRequest struct {
-	// The key for the business space. If you omit this parameter, the system uses the default business space. You can find this key on the Business Management page of your primary account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the chatbot instance.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type UpdateIntentRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The intent definition object.
+	// The intent definition struct.
 	IntentDefinition *UpdateIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
-	// The ID of the intent.
+	// The intent ID.
 	//
 	// This parameter is required.
 	//
@@ -100,21 +100,21 @@ func (s *UpdateIntentRequest) Validate() error {
 }
 
 type UpdateIntentRequestIntentDefinition struct {
-	// The alias for the intent.
+	// The intent alias.
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The name of the intent.
+	// The intent name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 查天气意图
+	// CheckWeatherIntent
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// A list of slot objects.
+	// The slot information.
 	SlotInfos []*UpdateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -167,33 +167,33 @@ func (s *UpdateIntentRequestIntentDefinition) Validate() error {
 }
 
 type UpdateIntentRequestIntentDefinitionSlotInfos struct {
-	// Specifies whether the slot can contain an array of values.
+	// Specifies whether the slot is an array.
 	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// Specifies whether to enable data masking for the slot value.
+	// Specifies whether the slot value is masked.
 	//
 	// example:
 	//
 	// false
 	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	// Specifies whether the slot is interactive. If true, the chatbot prompts the user for a value if the user does not provide one.
+	// Specifies whether the slot is interactive.
 	//
 	// example:
 	//
 	// false
 	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	// The name of the slot.
+	// The slot name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the slot.
+	// The slot ID.
 	//
 	// This parameter is required.
 	//
@@ -207,7 +207,7 @@ type UpdateIntentRequestIntentDefinitionSlotInfos struct {
 	//
 	// example:
 	//
-	// 天气
+	// Weather
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

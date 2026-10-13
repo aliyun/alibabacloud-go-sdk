@@ -18,13 +18,13 @@ type iCreateLgfRequest interface {
 }
 
 type CreateLgfRequest struct {
-	// The key for the business space. If you omit this parameter, the default business space is used. You can find the key on the Business Management page of your main account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The chatbot ID.
+	// The robot ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateLgfRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The LGF definition.
+	// The LGF definition information.
 	LgfDefinition *CreateLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
 }
 

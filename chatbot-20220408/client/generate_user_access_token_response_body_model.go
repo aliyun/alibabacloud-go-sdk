@@ -22,31 +22,31 @@ type iGenerateUserAccessTokenResponseBody interface {
 }
 
 type GenerateUserAccessTokenResponseBody struct {
-	// The response code. 200 indicates a successful request.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The generated token value.
+	// The token value.
 	//
 	// example:
 	//
 	// DDEXEDAFWAGASDFWAEFFAWEFAWFWEAFWAFWAEF
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message for a failed request.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter.Invalid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// E6988CE6-41CF-1103-9BEC-2B20D26C0B51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: `true` and `false`.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

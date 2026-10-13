@@ -18,9 +18,9 @@ type iListSaasInfoResponseBody interface {
 }
 
 type ListSaasInfoResponseBody struct {
-	// A list of SaaS integrations.
+	// The list of SaaS integration entries.
 	Data []*ListSaasInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListSaasInfoResponseBody) Validate() error {
 }
 
 type ListSaasInfoResponseBodyData struct {
-	// The unique identifier of the SaaS atomic page. Use this code to reference the page and query its information.
+	// The unique identifier of the SaaS atomic page. This identifier can be used to associate and query related information about the atomic page.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ListSaasInfoResponseBodyData struct {
 	//
 	// 全局服务
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The URL to embed the SaaS page in an iframe.
+	// The iframe-embedded SaaS page URL.
 	//
 	// example:
 	//

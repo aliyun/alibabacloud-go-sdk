@@ -16,7 +16,7 @@ type iDeleteSimQuestionRequest interface {
 }
 
 type DeleteSimQuestionRequest struct {
-	// The key for the business space. If you omit this parameter, the default business space is used. You can find the key on the business management page of your primary account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//

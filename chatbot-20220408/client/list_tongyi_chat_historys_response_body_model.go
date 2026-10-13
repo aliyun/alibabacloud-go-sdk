@@ -18,13 +18,13 @@ type iListTongyiChatHistorysResponseBody interface {
 }
 
 type ListTongyiChatHistorysResponseBody struct {
-	// The request duration, in milliseconds.
+	// The time consumed by the request.
 	//
 	// example:
 	//
 	// 116
 	CostTime *string `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	// A list of chat history entries.
+	// The data details.
 	Datas []map[string]interface{} `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
 	// The request ID.
 	//

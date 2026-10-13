@@ -16,13 +16,13 @@ type iCreateDSEntityResponseBody interface {
 }
 
 type CreateDSEntityResponseBody struct {
-	// The `entity ID`.
+	// The entity ID.
 	//
 	// example:
 	//
 	// 23436345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The `request ID`.
+	// The request ID.
 	//
 	// example:
 	//

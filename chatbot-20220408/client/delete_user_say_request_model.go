@@ -20,13 +20,13 @@ type iDeleteUserSayRequest interface {
 }
 
 type DeleteUserSayRequest struct {
-	// The key of the business space. If omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	// The business space key. If this parameter is not set, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The instance ID of the bot.
+	// The robot ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteUserSayRequest struct {
 	//
 	// 343df2sdf23
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the intent.
+	// The intent ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DeleteUserSayRequest struct {
 	//
 	// 5564564546
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// The ID of the user say.
+	// The utterance ID.
 	//
 	// This parameter is required.
 	//

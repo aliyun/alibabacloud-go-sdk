@@ -18,17 +18,14 @@ type iInitIMConnectRequest interface {
 }
 
 type InitIMConnectRequest struct {
-	// The key for the business space. Omit this parameter to use the default business space. You can get the key from the business management page of your main account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The identifier for the connection source. You can obtain this value from the channel console.
-	//
 	// This parameter is required.
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The access token for user authentication.
+	From            *string `json:"From,omitempty" xml:"From,omitempty"`
 	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
 }
 

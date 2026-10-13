@@ -20,7 +20,7 @@ type iUpdateCategoryRequest interface {
 }
 
 type UpdateCategoryRequest struct {
-	// The key for the business space. If this parameter is omitted, the default business space is used. You can obtain the key on the **Business Management*	- page of your primary account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateCategoryRequest struct {
 	//
 	// example:
 	//
-	// 类目名称
+	// Category name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

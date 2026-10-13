@@ -16,9 +16,9 @@ type iListSaasPermissionGroupInfosResponseBody interface {
 }
 
 type ListSaasPermissionGroupInfosResponseBody struct {
-	// The permission details for integrated SaaS pages.
+	// The list of permissions for each SaaS integration page.
 	Data []*ListSaasPermissionGroupInfosResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ func (s *ListSaasPermissionGroupInfosResponseBody) Validate() error {
 }
 
 type ListSaasPermissionGroupInfosResponseBodyData struct {
-	// The name of the page in English.
+	// The English name of the atomic page.
 	//
 	// example:
 	//
 	// Release Center
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	// The name of the page.
+	// The Chinese name of the atomic page.
 	//
 	// example:
 	//
 	// 发布中心
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The SaaS permission groups.
+	// The list of SaaS permission groups.
 	PgInfos []*ListSaasPermissionGroupInfosResponseBodyDataPgInfos `json:"PgInfos,omitempty" xml:"PgInfos,omitempty" type:"Repeated"`
-	// The unique code for the SaaS page.
+	// The unique identifier of the SaaS atomic page.
 	//
 	// example:
 	//
@@ -146,19 +146,19 @@ func (s *ListSaasPermissionGroupInfosResponseBodyData) Validate() error {
 }
 
 type ListSaasPermissionGroupInfosResponseBodyDataPgInfos struct {
-	// The unique permission group code.
+	// The code of the SaaS permission group.
 	//
 	// example:
 	//
 	// FAQ
 	PgCode *string `json:"PgCode,omitempty" xml:"PgCode,omitempty"`
-	// The English name of the permission group.
+	// The English name of the SaaS permission group.
 	//
 	// example:
 	//
 	// FAQ
 	PgEnName *string `json:"PgEnName,omitempty" xml:"PgEnName,omitempty"`
-	// The name of the permission group.
+	// The Chinese name of the SaaS permission group.
 	//
 	// example:
 	//

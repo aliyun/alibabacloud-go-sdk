@@ -16,7 +16,7 @@ type iQueryPerspectivesResponseBody interface {
 }
 
 type QueryPerspectivesResponseBody struct {
-	// A list of perspectives.
+	// The list of perspectives.
 	Perspectives []*QueryPerspectivesResponseBodyPerspectives `json:"Perspectives,omitempty" xml:"Perspectives,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -82,9 +82,9 @@ type QueryPerspectivesResponseBodyPerspectives struct {
 	//
 	// example:
 	//
-	// 移动端视角
+	// Mobile perspective
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The perspective code (used for the Q\\&A API).
+	// The perspective code, which is used for the Q&A API.
 	//
 	// example:
 	//
@@ -102,7 +102,11 @@ type QueryPerspectivesResponseBodyPerspectives struct {
 	//
 	// true
 	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
-	// The status of the perspective. Valid values are 3 (enabled) and 1 (disabled).
+	// The data status. Valid values:
+	//
+	// - 3: Enabled.
+	//
+	// - 1: Not enabled.
 	//
 	// example:
 	//

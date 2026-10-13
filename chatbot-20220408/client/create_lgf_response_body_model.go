@@ -16,7 +16,7 @@ type iCreateLgfResponseBody interface {
 }
 
 type CreateLgfResponseBody struct {
-	// The LGF ID.
+	// LGF ID
 	//
 	// example:
 	//

@@ -40,13 +40,13 @@ type GetPublishTaskStateResponseBody struct {
 	//
 	// 2022-04-12T06:30:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message returned if the task fails.
+	// The failure information of the task.
 	//
 	// example:
 	//
-	// 检查待发布模块是否空闲发生错误，faq
+	// An error occurred while checking whether the module to be published is idle, faq
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// A map of error messages for each submodule, where the key is the submodule name and the value is the error message.
+	// The fault information of each sub-publish module. The key is the sub-publish module and the value is the fault information.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type GetPublishTaskStateResponseBody struct {
 	//
 	//     "faq": [
 	//
-	//         "答案资源未发布，资源类型：全局服务，名称：动态答案服务"
+	//         "Answer resource not published. Resource type: global service. Name: dynamic answer service"
 	//
 	//     ]
 	//
 	// }
 	Errors map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
-	// The publish task ID.
+	// The ID of the publish task.
 	//
 	// example:
 	//
@@ -78,27 +78,29 @@ type GetPublishTaskStateResponseBody struct {
 	//
 	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The publish task ID. This field is redundant. Use the `Id` field instead.
+	// The ID of the publish task. This is a redundant field. Use the publish task ID instead.
 	//
 	// example:
 	//
 	// 8522
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// The task status. Valid values:
+	// The task status.
 	//
-	// - `FE_RUNNING`: Publishing
+	// Valid values:
 	//
-	// - `FE_SUCCESS`: Success
+	// - FE_RUNNING: Publishing in progress.
 	//
-	// - `FE_FAILED`: Failed
+	// - FE_SUCCESS: Published.
 	//
-	// - `FE_ABORTED`: Aborted
+	// - FE_FAILED: Publish failed.
+	//
+	// - FE_ABORTED: Publish canceled.
 	//
 	// example:
 	//
 	// FE_RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A map of warning messages for each submodule, where the key is the submodule name and the value is the warning message.
+	// The warning information of each sub-publish module. The key is the sub-publish module and the value is the warning information.
 	//
 	// example:
 	//
@@ -106,7 +108,7 @@ type GetPublishTaskStateResponseBody struct {
 	//
 	//     "faq": [
 	//
-	//         "答案资源未发布，类型：service，名称：null，答案资源未发布，类型：service，名称：null"
+	//         "Answer resource not published. Type: service. Name: null. Answer resource not published. Type: service. Name: null"
 	//
 	//     ]
 	//

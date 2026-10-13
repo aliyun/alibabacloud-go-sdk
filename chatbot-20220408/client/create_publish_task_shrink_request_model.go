@@ -18,19 +18,19 @@ type iCreatePublishTaskShrinkRequest interface {
 }
 
 type CreatePublishTaskShrinkRequest struct {
-	// The key of the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your main account.
+	// The workspace key. If not specified, the default workspace is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The type of content to publish. To publish a bot, use the `CreateInstancePublishTask` API.
+	// The publish unit type. To publish a chatbot, use the CreateInstancePublishTask API.
 	//
 	// example:
 	//
 	// faq
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Specifies data to publish by ID. This parameter is used only when `BizType` is set to `faq`. In this case, provide one or more category IDs to publish knowledge exclusively from the specified categories.
+	// Additional publish information. Currently supported: if BizType is faq, this field specifies category IDs, indicating that only knowledge under these categories is published.
 	//
 	// example:
 	//

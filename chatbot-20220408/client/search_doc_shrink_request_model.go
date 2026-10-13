@@ -50,13 +50,13 @@ type iSearchDocShrinkRequest interface {
 }
 
 type SearchDocShrinkRequest struct {
-	// The workspace key. If omitted, the default workspace is used. You can obtain this key from the Business Management page of your main account.
+	// The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the primary account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// A list of category IDs.
+	// The list of category IDs.
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
 	// The start of the creation time range.
 	//
@@ -74,7 +74,7 @@ type SearchDocShrinkRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// John
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
 	// The start of the expiration time range.
 	//
@@ -88,11 +88,11 @@ type SearchDocShrinkRequest struct {
 	//
 	// 2023-05-02T03:09:30Z
 	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	// The search keyword.
+	// The keyword.
 	//
 	// example:
 	//
-	// 搜索关键字
+	// SearchKeyword
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The start of the modification time range.
 	//
@@ -106,31 +106,45 @@ type SearchDocShrinkRequest struct {
 	//
 	// 2023-05-02T03:09:30Z
 	ModifyTimeEnd *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	// The name of the last modifier.
+	// The name of the modifier.
 	//
 	// example:
 	//
-	// 李四
+	// Jane
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// The page number to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The task status.<br>Valid values:<br>• -1: Queued<br>• 0: Succeeded<br>• 1: Parsing<br>• 2: Processing<br>• 3: Failed<br><br><br><br><br><br>
+	// The task status. Valid values:
+	//
+	// - -1: queued
+	//
+	// - 0: succeeded
+	//
+	// - 1: parsing
+	//
+	// - 2: processing
+	//
+	// - 3: processing failed
 	//
 	// example:
 	//
 	// 0
 	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	// The search scope.<br>Valid values:<br>• 1: Search titles<br>• 2: Search content<br><br><br>
+	// The search scope. Valid values:
+	//
+	// - 1: search by title
+	//
+	// - 2: search by content
 	//
 	// example:
 	//
@@ -148,13 +162,19 @@ type SearchDocShrinkRequest struct {
 	//
 	// 2022-04-03T03:09:30Z
 	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	// The edit status.<br>Valid values:<br>• 1: Unpublished<br>• 2: Published<br>• 3: Updated but not published<br><br><br><br>
+	// The editing status. Valid values:
+	//
+	// - 1: unpublished
+	//
+	// - 2: published
+	//
+	// - 3: updated but not published
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of tag IDs. If you provide multiple IDs, the operation returns documents that match at least one of the specified tags (logical OR).
+	// The list of label IDs. When multiple labels are specified, the union logic is used for filtering.
 	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
 }
 

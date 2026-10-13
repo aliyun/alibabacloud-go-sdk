@@ -18,7 +18,7 @@ type iGetInstancePublishTaskStateRequest interface {
 }
 
 type GetInstancePublishTaskStateRequest struct {
-	// The key for the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your main account.
+	// The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetInstancePublishTaskStateRequest struct {
 	//
 	// 8521
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The unique identifier of the bot instance.
+	// The unique identifier of the chatbot.
 	//
 	// example:
 	//

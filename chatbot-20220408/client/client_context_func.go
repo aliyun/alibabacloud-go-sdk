@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Obtain the Connection information for stream invocation.
+// Retrieves the connection information for streaming calls.
 //
 // @param request - ApplyForStreamAccessTokenRequest
 //
@@ -53,7 +53,7 @@ func (client *Client) ApplyForStreamAccessTokenWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Suggests FAQs from the knowledge base based on a user\\"s utterance.
+// Suggests FAQs from the knowledge base based on a user query.
 //
 // @param tmpReq - AssociateRequest
 //
@@ -123,7 +123,7 @@ func (client *Client) AssociateWithContext(ctx context.Context, tmpReq *Associat
 
 // Summary:
 //
-// Initiates a session and retrieves a welcome message.
+// Retrieves the welcome message.
 //
 // @param request - BeginSessionRequest
 //
@@ -185,11 +185,11 @@ func (client *Client) BeginSessionWithContext(ctx context.Context, request *Begi
 
 // Summary:
 //
-// Cancels or interrupts an ongoing chat.
+// Cancels or interrupts a specified conversation.
 //
 // Description:
 //
-// This operation supports only the new version of chatbots. You can query data only from the last 90 days.
+// Only new version chatbots are supported. Only data within the last 90 days can be queried.
 //
 // @param request - CancelChatRequest
 //
@@ -253,7 +253,7 @@ func (client *Client) CancelChatWithContext(ctx context.Context, request *Cancel
 
 // Summary:
 //
-// Cancels a publishing task for a chatbot.
+// Cancels a chatbot publish task during the publishing process.
 //
 // @param request - CancelInstancePublishTaskRequest
 //
@@ -353,7 +353,7 @@ func (client *Client) CancelPublishTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Starts a conversation with a bot by specifying its Bot ID. This applies only to Chatbot (Legacy).
+// Initiates a conversation with a chatbot by using the unique chatbot identifier (chatbot ID). This operation is applicable only to Chatbot (legacy).
 //
 // @param tmpReq - ChatRequest
 //
@@ -443,7 +443,7 @@ func (client *Client) ChatWithContext(ctx context.Context, tmpReq *ChatRequest, 
 
 // Summary:
 //
-// Ignores an alarm and continues a chatbot publish task.
+// Ignores alerts and continues publishing when the chatbot triggers a publish alert.
 //
 // @param request - ContinueInstancePublishTaskRequest
 //
@@ -557,7 +557,7 @@ func (client *Client) CreateCategoryWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a connected question for a knowledge item.
+// Adds associated knowledge to a knowledge entry.
 //
 // @param request - CreateConnQuestionRequest
 //
@@ -611,7 +611,7 @@ func (client *Client) CreateConnQuestionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates an `entity` and its metadata, such as the `entity name` and `entity type`.
+// Creates an entity, specifically the meta information of the entity, such as the entity name and entity type.
 //
 // @param request - CreateDSEntityRequest
 //
@@ -667,7 +667,7 @@ func (client *Client) CreateDSEntityWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Adds an entity member to a specified entity. An entity member includes an entity value and a synonym list. All entity values and synonyms must be unique within the same entity.
+// Adds entity member information for a specified entity, including the entity value and the corresponding synonym list. Entity values and synonyms must be unique within the same entity.
 //
 // @param tmpReq - CreateDSEntityValueRequest
 //
@@ -829,7 +829,7 @@ func (client *Client) CreateDocWithContext(ctx context.Context, tmpReq *CreateDo
 
 // Summary:
 //
-// Creates a knowledge item.
+// Creates a knowledge entry.
 //
 // @param tmpReq - CreateFaqRequest
 //
@@ -909,7 +909,7 @@ func (client *Client) CreateFaqWithContext(ctx context.Context, tmpReq *CreateFa
 
 // Summary:
 //
-// Creates a robot in the sandbox environment.
+// Creates a chatbot in a sandbox environment.
 //
 // @param request - CreateInstanceRequest
 //
@@ -969,7 +969,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Publishes a sandbox robot to the production environment.
+// Publishes a sandbox chatbot to the production environment.
 //
 // @param request - CreateInstancePublishTaskRequest
 //
@@ -1017,7 +1017,7 @@ func (client *Client) CreateInstancePublishTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates an intent. This operation defines an intent\\"s metadata, such as its name, alias, and associated slots. It does not include utterances or LGF.
+// Creates an intent. The intent includes meta information such as the intent name, intent alias, and associated slot information, but does not include intent utterances or LGF.
 //
 // @param tmpReq - CreateIntentRequest
 //
@@ -1185,7 +1185,7 @@ func (client *Client) CreatePerspectiveWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a publish task in the publishing center.
+// Creates a publish task in the publish center.
 //
 // @param tmpReq - CreatePublishTaskRequest
 //
@@ -1481,7 +1481,7 @@ func (client *Client) CreateTagGroupWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Adds a user say to a specified intent.
+// Adds utterance information to a specified intent.
 //
 // @param tmpReq - CreateUserSayRequest
 //
@@ -1539,7 +1539,7 @@ func (client *Client) CreateUserSayWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Deletes a category. A published category is marked as deleted and unpublished, while an unpublished category is deleted permanently.
+// Deletes a category. A published category changes to the deleted and unpublished state, while an unpublished category is deleted directly.
 //
 // @param request - DeleteCategoryRequest
 //
@@ -1589,7 +1589,7 @@ func (client *Client) DeleteCategoryWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a knowledge association.
+// Deletes the associated knowledge of a knowledge item.
 //
 // @param request - DeleteConnQuestionRequest
 //
@@ -1639,7 +1639,7 @@ func (client *Client) DeleteConnQuestionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes an entity. This operation also cascade-deletes all associated entity members, synonyms, and regular expressions.
+// Deletes an entity. This operation cascade deletes all entity members, synonyms, and regular expressions under the entity.
 //
 // @param request - DeleteDSEntityRequest
 //
@@ -1691,7 +1691,7 @@ func (client *Client) DeleteDSEntityWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a specific entity value from an entity. If the entity is a standard entity, its synonyms (if any) are also deleted.
+// Deletes a member of a specified entity. If the entity is a standard entity, the synonyms of the member are also deleted, if any.
 //
 // @param request - DeleteDSEntityValueRequest
 //
@@ -1795,7 +1795,7 @@ func (client *Client) DeleteDocWithContext(ctx context.Context, request *DeleteD
 
 // Summary:
 //
-// Deletes a knowledge item.
+// Deletes a knowledge entry.
 //
 // @param request - DeleteFaqRequest
 //
@@ -1845,7 +1845,7 @@ func (client *Client) DeleteFaqWithContext(ctx context.Context, request *DeleteF
 
 // Summary:
 //
-// Deletes an instance from the sandbox and online environments.
+// Deletes a chatbot from both the sandbox and production environments.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1893,7 +1893,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a specified intent and its associated user utterances and advanced semantic configurations (LGF).
+// Deletes an intent and cascade deletes all intent utterances and advanced semantic configurations (LGF) under the intent.
 //
 // @param request - DeleteIntentRequest
 //
@@ -1945,7 +1945,7 @@ func (client *Client) DeleteIntentWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes the specified LGF configuration.
+// Deletes a specified advanced semantic configuration.
 //
 // @param request - DeleteLgfRequest
 //
@@ -2099,7 +2099,7 @@ func (client *Client) DeleteSimQuestionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes the specified solution.
+// Deletes an answer.
 //
 // @param request - DeleteSolutionRequest
 //
@@ -2261,7 +2261,7 @@ func (client *Client) DeleteTagGroupWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a user say from a specified intent.
+// Modifies the utterance information of an intent.
 //
 // @param request - DeleteUserSayRequest
 //
@@ -2317,7 +2317,7 @@ func (client *Client) DeleteUserSayWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Gets information about a specific category.
+// Queries the information of a single category.
 //
 // @param request - DescribeCategoryRequest
 //
@@ -2367,7 +2367,7 @@ func (client *Client) DescribeCategoryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves metadata for a specified entity associated with a robot, such as the entity type, entity name, creation time, and modification time.
+// Queries the metadata of a specified entity under a specified chatbot, such as entity type, entity name, creation time, and modification time.
 //
 // @param request - DescribeDSEntityRequest
 //
@@ -2419,7 +2419,7 @@ func (client *Client) DescribeDSEntityWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Document details.
+// Queries the details of a document.
 //
 // @param request - DescribeDocRequest
 //
@@ -2471,7 +2471,7 @@ func (client *Client) DescribeDocWithContext(ctx context.Context, request *Descr
 
 // Summary:
 //
-// Retrieves knowledge details.
+// Queries the details of a knowledge entry.
 //
 // @param request - DescribeFaqRequest
 //
@@ -2521,7 +2521,7 @@ func (client *Client) DescribeFaqWithContext(ctx context.Context, request *Descr
 
 // Summary:
 //
-// Queries the details of a robot.
+// Queries the details of a chatbot.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -2569,7 +2569,7 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Returns metadata for a specified intent, including its type, name, creation time, and modification time.
+// Returns the metadata of a specified intent, such as the intent type, intent name, creation time, and modification time.
 //
 // @param request - DescribeIntentRequest
 //
@@ -2623,7 +2623,7 @@ func (client *Client) DescribeIntentWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Retrieves the details of a specified perspective.
+// Queries the details of a perspective.
 //
 // @param request - DescribePerspectiveRequest
 //
@@ -2783,7 +2783,7 @@ func (client *Client) DescribeTagGroupWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Saves user feedback on chatbot responses.
+// Saves user feedback on Q&A results.
 //
 // @param request - FeedbackRequest
 //
@@ -2847,11 +2847,11 @@ func (client *Client) FeedbackWithContext(ctx context.Context, request *Feedback
 
 // Summary:
 //
-// Generates a user access token to enable single sign-on for a chat window. The token associates the user with their corporate identity.
+// Retrieves a token for passwordless logon in the chat window, which carries the enterprise identity of the user.
 //
 // Description:
 //
-// For security, each generated token is single-use and must be used before it expires. If a user signs in from multiple browsers, you must call this operation for each session to get a unique token.
+// For security reasons, the generated token is valid only for the first use within the expiration period. If the same user logs on from multiple browsers, call this operation multiple times.
 //
 // @param request - GenerateUserAccessTokenRequest
 //
@@ -2921,7 +2921,7 @@ func (client *Client) GenerateUserAccessTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves details for a specified agent.
+// Retrieves the business space ID.
 //
 // @param request - GetAgentInfoRequest
 //
@@ -2965,11 +2965,11 @@ func (client *Client) GetAgentInfoWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// Retrieves the execution result of an asynchronous service. This API is used in conjunction with the Chat API.
+// Retrieves the result of an asynchronous service execution. This operation is used together with the Chat operation.
 //
 // Description:
 //
-// Retrieves the execution result of an asynchronous service.
+// Retrieves the result of an asynchronous service execution.
 //
 // @param request - GetAsyncResultRequest
 //
@@ -3017,11 +3017,11 @@ func (client *Client) GetAsyncResultWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Retrieves overview metrics for a bot.
+// Queries the overview metrics of chatbot Q&A.
 //
 // Description:
 //
-// This operation retrieves data for the previous day (T-1) only. Data for the current day is not available.
+// Only data from T-1 (excluding the current day) can be queried.
 //
 // @param request - GetBotSessionDataRequest
 //
@@ -3077,7 +3077,7 @@ func (client *Client) GetBotSessionDataWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Checks the status of a bot publishing task.
+// Queries the publish progress of a chatbot.
 //
 // @param request - GetInstancePublishTaskStateRequest
 //
@@ -3129,7 +3129,7 @@ func (client *Client) GetInstancePublishTaskStateWithContext(ctx context.Context
 
 // Summary:
 //
-// Gets the progress of a publish task.
+// Queries the publish progress.
 //
 // @param request - GetPublishTaskStateRequest
 //
@@ -3177,7 +3177,7 @@ func (client *Client) GetPublishTaskStateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Initializes the Instant Messaging (IM) connection using the `From` value configured in the channel console. This operation lets you pass a user authentication token during initialization.
+// Initializes an IM connection with custom settings by using the from value generated from the channel backend configuration. Supports passing a user authentication token during initialization.
 //
 // @param request - InitIMConnectRequest
 //
@@ -3231,7 +3231,7 @@ func (client *Client) InitIMConnectWithContext(ctx context.Context, request *Ini
 
 // Summary:
 //
-// Links knowledge categories to a chatbot.
+// Associates knowledge categories with a chatbot.
 //
 // @param request - LinkInstanceCategoryRequest
 //
@@ -3289,7 +3289,7 @@ func (client *Client) LinkInstanceCategoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Lists the business spaces for your Alibaba Cloud account.
+// Retrieves the list of business spaces for the current Alibaba Cloud account.
 //
 // @param request - ListAgentRequest
 //
@@ -3345,7 +3345,7 @@ func (client *Client) ListAgentWithContext(ctx context.Context, request *ListAge
 
 // Summary:
 //
-// Lists categories.
+// Retrieves the list of categories.
 //
 // @param request - ListCategoryRequest
 //
@@ -3399,7 +3399,7 @@ func (client *Client) ListCategoryWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Lists the connected questions for a knowledge item.
+// Queries the list of associated questions for a knowledge item.
 //
 // @param request - ListConnQuestionRequest
 //
@@ -3449,7 +3449,7 @@ func (client *Client) ListConnQuestionWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Lists the entities for a specified robot. This operation returns only entity metadata, such as the entity type, name, creation time, and update time.
+// Queries the list of entities under a specified chatbot. Only the metadata of each entity is returned, such as entity type, entity name, creation time, and modification time.
 //
 // @param request - ListDSEntityRequest
 //
@@ -3513,7 +3513,7 @@ func (client *Client) ListDSEntityWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Retrieves the list of entity values for a specified entity. You can filter by keyword using a `contains` match. The search covers both entity values and their synonyms.
+// Queries the list and details of entity members for a specified entity. Keyword filtering (contains) is supported. The filtering scope includes entity values and synonyms.
 //
 // @param request - ListDSEntityValueRequest
 //
@@ -3583,7 +3583,7 @@ func (client *Client) ListDSEntityValueWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of instances.
+// Queries the list of chatbots.
 //
 // @param request - ListInstanceRequest
 //
@@ -3647,7 +3647,7 @@ func (client *Client) ListInstanceWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Retrieves metadata for all intents in a specified bot, including the intent type, intent name, creation time, and modification time.
+// Queries the list of intents under a specified chatbot. Only the metadata of each intent is returned, such as the intent type, intent name, creation time, and modification time.
 //
 // @param request - ListIntentRequest
 //
@@ -3707,7 +3707,7 @@ func (client *Client) ListIntentWithContext(ctx context.Context, request *ListIn
 
 // Summary:
 //
-// Queries the advanced semantic configurations (LGF) for a specified intent.
+// Queries the advanced semantic configuration (LGF) of a specified intent.
 //
 // @param request - ListLgfRequest
 //
@@ -3771,7 +3771,7 @@ func (client *Client) ListLgfWithContext(ctx context.Context, request *ListLgfRe
 
 // Summary:
 //
-// Lists SaaS integration information.
+// Retrieves the list of SaaS integration information.
 //
 // @param request - ListSaasInfoRequest
 //
@@ -3823,7 +3823,7 @@ func (client *Client) ListSaasInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Lists the permission groups for integrated SaaS applications. Use these groups to grant permissions to users.
+// Retrieves the list of permission integration information. You can use the permission groups returned in this list to grant permissions to users.
 //
 // @param request - ListSaasPermissionGroupInfosRequest
 //
@@ -3917,7 +3917,7 @@ func (client *Client) ListSimQuestionWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Lists the solutions for a knowledge entry.
+// Queries the list of answers for a knowledge item.
 //
 // @param request - ListSolutionRequest
 //
@@ -4095,7 +4095,7 @@ func (client *Client) ListTagGroupWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Retrieves chat history details.
+// Retrieves the session history details.
 //
 // @param request - ListTongyiChatHistorysRequest
 //
@@ -4155,11 +4155,11 @@ func (client *Client) ListTongyiChatHistorysWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves the conversation logs for a single session of a Tongyi chatbot.
+// Queries the conversation records of a single session for Chatbot Tongyi Edition.
 //
 // Description:
 //
-// This operation retrieves conversation logs generated within the past two hours.
+// Only conversation records from the last 2 hours can be queried.
 //
 // @param request - ListTongyiConversationLogsRequest
 //
@@ -4211,7 +4211,7 @@ func (client *Client) ListTongyiConversationLogsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the user says and their associated slot information for a specified intent. You can filter the results by keywords.
+// Queries the utterance content and associated slot information of a specified intent. Supports filtering utterances by keyword (contains).
 //
 // @param request - ListUserSayRequest
 //
@@ -4275,7 +4275,7 @@ func (client *Client) ListUserSayWithContext(ctx context.Context, request *ListU
 
 // Summary:
 //
-// Returns the natural language understanding (NLU) results for a user query. Currently, this feature only supports NLU from Conversation Factory and Central Control. Support for other engines will be added as needed.
+// Returns the natural language understanding (NLU) result of a chatbot for a user query. Currently, only NLU information from dialog flow and the central controller is supported. Other engines will be supported as needed.
 //
 // @param request - NluRequest
 //
@@ -4327,7 +4327,7 @@ func (client *Client) NluWithContext(ctx context.Context, request *NluRequest, r
 
 // Summary:
 //
-// Queries a list of perspectives.
+// Queries the list of perspectives.
 //
 // @param request - QueryPerspectivesRequest
 //
@@ -4371,7 +4371,7 @@ func (client *Client) QueryPerspectivesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retries a document processing task.
+// Retries document processing.
 //
 // @param request - RetryDocRequest
 //
@@ -4419,7 +4419,7 @@ func (client *Client) RetryDocWithContext(ctx context.Context, request *RetryDoc
 
 // Summary:
 //
-// Search the documentation.
+// Searches for documents.
 //
 // @param tmpReq - SearchDocRequest
 //
@@ -4545,7 +4545,7 @@ func (client *Client) SearchDocWithContext(ctx context.Context, tmpReq *SearchDo
 
 // Summary:
 //
-// Search the knowledge base.
+// Searches for knowledge.
 //
 // @param tmpReq - SearchFaqRequest
 //
@@ -4661,11 +4661,11 @@ func (client *Client) SearchFaqWithContext(ctx context.Context, tmpReq *SearchFa
 
 // Summary:
 //
-// Debugging information for large language model Q&A.
+// Retrieves the debugging information for large language model Q&A.
 //
 // Description:
 //
-// Only supported for new version chatbots. Only data within the last 90 days can be queried.
+// Supports only new-version chatbots. You can query only data generated within the last 90 days.
 //
 // @param request - TongyiChatDebugInfoRequest
 //
@@ -4775,7 +4775,7 @@ func (client *Client) UpdateCategoryWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates a connection.
+// Updates an association.
 //
 // @param request - UpdateConnQuestionRequest
 //
@@ -4829,7 +4829,7 @@ func (client *Client) UpdateConnQuestionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the metadata of an entity. You can modify the entity name, but not the entity type.
+// Modifies the meta information of an entity. Only the entity name can be modified. The entity type cannot be modified.
 //
 // @param request - UpdateDSEntityRequest
 //
@@ -4889,7 +4889,7 @@ func (client *Client) UpdateDSEntityWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Modifies an entity value. This applies to entity values that use synonyms or regular expressions. Note: You cannot add a regular expression to a standard entity, and vice versa.
+// Modifies a member of a specified entity. Two types of data can be modified: entity values with synonyms, and regular expressions. Note: Adding a regular expression to a standard entity is not allowed, and vice versa.
 //
 // @param tmpReq - UpdateDSEntityValueRequest
 //
@@ -5059,7 +5059,7 @@ func (client *Client) UpdateDocWithContext(ctx context.Context, tmpReq *UpdateDo
 
 // Summary:
 //
-// Updates an existing knowledge entry.
+// Edits a knowledge entry.
 //
 // @param tmpReq - UpdateFaqRequest
 //
@@ -5135,7 +5135,7 @@ func (client *Client) UpdateFaqWithContext(ctx context.Context, tmpReq *UpdateFa
 
 // Summary:
 //
-// Updates a chatbot\\"s name and description.
+// Updates the name and description of a chatbot.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -5191,7 +5191,7 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates the metadata of a specified intent, including the intent name, alias name, and associated slots. This operation does not modify the intent\\"s utterances or LGF.
+// Modifies an intent, including the meta information of the intent, such as the intent name, intent alias, and slot information associated with the intent. This operation does not include intent utterances or LGF.
 //
 // @param tmpReq - UpdateIntentRequest
 //
@@ -5253,7 +5253,7 @@ func (client *Client) UpdateIntentWithContext(ctx context.Context, tmpReq *Updat
 
 // Summary:
 //
-// Updates the advanced semantic feature (LGF) for a specified intent.
+// Creates an advanced semantic configuration (LGF) for a specified intent.
 //
 // @param tmpReq - UpdateLgfRequest
 //
@@ -5315,7 +5315,7 @@ func (client *Client) UpdateLgfWithContext(ctx context.Context, tmpReq *UpdateLg
 
 // Summary:
 //
-// Updates a perspective\\"s name and description.
+// Updates the name and description of a perspective.
 //
 // @param request - UpdatePerspectiveRequest
 //
@@ -5421,7 +5421,7 @@ func (client *Client) UpdateSimQuestionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates a solution.
+// Updates an answer.
 //
 // @param tmpReq - UpdateSolutionRequest
 //
@@ -5613,7 +5613,7 @@ func (client *Client) UpdateTagGroupWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Modifies an existing user say.
+// Modifies the utterance information of an intent.
 //
 // @param tmpReq - UpdateUserSayRequest
 //

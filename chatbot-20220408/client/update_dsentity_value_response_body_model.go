@@ -16,7 +16,7 @@ type iUpdateDSEntityValueResponseBody interface {
 }
 
 type UpdateDSEntityValueResponseBody struct {
-	// The ID of the updated entity value.
+	// The entity member ID.
 	//
 	// example:
 	//

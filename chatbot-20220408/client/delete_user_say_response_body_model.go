@@ -22,7 +22,7 @@ type DeleteUserSayResponseBody struct {
 	//
 	// dfgdg324gf34t34g34g3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the user say.
+	// The utterance ID.
 	//
 	// example:
 	//

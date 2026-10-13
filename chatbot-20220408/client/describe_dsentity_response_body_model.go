@@ -34,19 +34,19 @@ type iDescribeDSEntityResponseBody interface {
 }
 
 type DescribeDSEntityResponseBody struct {
-	// The time when the entity was created, in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the entity.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 123231
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The name of the user who created the entity.
+	// The name of the creator.
 	//
 	// example:
 	//
@@ -58,31 +58,31 @@ type DescribeDSEntityResponseBody struct {
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The entity name. The name can contain only Chinese characters, letters, digits, and underscores (_).
+	// The entity name. Only Chinese characters, uppercase and lowercase letters, digits, and underscores are supported.
 	//
 	// example:
 	//
-	// 书类型
+	// BookType
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// The entity type. Valid values are `synonyms` and `regex`.
+	// The entity type. Valid values: synonyms (synonym) and regex (regular expression).
 	//
 	// example:
 	//
 	// synonyms
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The time when the entity was last modified, in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the user who last modified the entity.
+	// The unique identifier of the modifier.
 	//
 	// example:
 	//
 	// 123231
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	// The name of the user who last modified the entity.
+	// The name of the modifier.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeDSEntityResponseBody struct {
 	//
 	// ad23234dsf234fga
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The code of the system entity, such as sys.date. This parameter is empty for user-defined entities.
+	// The system entity code, such as sys.date. This parameter is empty for user entities.
 	//
 	// example:
 	//

@@ -28,19 +28,19 @@ type iCancelInstancePublishTaskResponseBody interface {
 }
 
 type CancelInstancePublishTaskResponseBody struct {
-	// A list of business types.
+	// The list of business types.
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// The creation time of the task in UTC.
+	// The UTC time when the task was created.
 	//
 	// example:
 	//
 	// 2022-04-12T06:30:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message if the task fails.
+	// The job failure information.
 	//
 	// example:
 	//
-	// 检查待发布模块是否空闲发生错误，faq
+	// An error occurred while checking whether the module to be published is idle, faq
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The task ID.
 	//
@@ -48,7 +48,7 @@ type CancelInstancePublishTaskResponseBody struct {
 	//
 	// 8522
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The last modification time of the task in UTC.
+	// The UTC time when the task was last modified.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CancelInstancePublishTaskResponseBody struct {
 	//
 	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID, returned as a string.
+	// The task ID.
 	//
 	// example:
 	//

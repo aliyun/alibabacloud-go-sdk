@@ -16,13 +16,13 @@ type iListConnQuestionRequest interface {
 }
 
 type ListConnQuestionRequest struct {
-	// The key for the workspace. If omitted, the default workspace is used. You can find this key on the Business Management page of your main account.
+	// The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the knowledge item.
+	// The knowledge ID.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iUpdateSimQuestionResponseBody interface {
 }
 
 type UpdateSimQuestionResponseBody struct {
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListIntentRequest interface {
 }
 
 type ListIntentRequest struct {
-	// The unique key for the business space. If you omit this parameter, the default business space is used. You can find this key on the business management page of your main account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the chatbot.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListIntentRequest struct {
 	//
 	// example:
 	//
-	// 查天气
+	// CheckWeather
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -48,7 +48,7 @@ type ListIntentRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of intents per page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

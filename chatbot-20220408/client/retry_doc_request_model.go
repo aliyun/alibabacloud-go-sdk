@@ -16,7 +16,7 @@ type iRetryDocRequest interface {
 }
 
 type RetryDocRequest struct {
-	// The key for the business space. If you do not specify this parameter, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	// The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//

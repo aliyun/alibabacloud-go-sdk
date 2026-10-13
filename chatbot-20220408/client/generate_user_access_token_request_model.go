@@ -26,21 +26,20 @@ type iGenerateUserAccessTokenRequest interface {
 }
 
 type GenerateUserAccessTokenRequest struct {
-	// The key of the business space. If you do not specify this parameter, the system accesses the default business space. You can obtain the key from the Business Management page of your main account.
+	// The key of the business space. If you do not specify this parameter, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The user\\"s email address.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// This parameter is reserved. You do not need to specify it.
+	Email    *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// 1000
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Additional information formatted as a JSON string.
+	// The additional information in JSON string format.
 	//
 	// example:
 	//
@@ -54,15 +53,15 @@ type GenerateUserAccessTokenRequest struct {
 	//
 	//         {
 	//
-	//             "key": "姓名",
+	//             "key": "Name",
 	//
-	//             "value": "张三"
+	//             "value": "John"
 	//
 	//         },
 	//
 	//         {
 	//
-	//             "key": "等级",
+	//             "key": "Level",
 	//
 	//             "value": "v2"
 	//
@@ -70,7 +69,7 @@ type GenerateUserAccessTokenRequest struct {
 	//
 	//         {
 	//
-	//             "key": "联系方式",
+	//             "key": "Contact",
 	//
 	//             "value": "123"
 	//
@@ -88,15 +87,14 @@ type GenerateUserAccessTokenRequest struct {
 	//
 	// 8882022040000000171
 	ForeignId *string `json:"ForeignId,omitempty" xml:"ForeignId,omitempty"`
-	// The visitor\\"s nickname.
+	// The nickname of the visitor.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 张三
-	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	// The user\\"s telephone number.
+	// John
+	Nick      *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iDeleteIntentResponseBody interface {
 }
 
 type DeleteIntentResponseBody struct {
-	// The ID of the deleted intent.
+	// The intent ID.
 	//
 	// example:
 	//

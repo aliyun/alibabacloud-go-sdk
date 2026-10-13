@@ -18,13 +18,13 @@ type iCreateUserSayRequest interface {
 }
 
 type CreateUserSayRequest struct {
-	// The key of the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your Alibaba Cloud account.
+	// The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the chatbot instance.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateUserSayRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The definition of the user say.
+	// The user utterance definition information.
 	UserSayDefinition *CreateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
 }
 
@@ -81,15 +81,15 @@ func (s *CreateUserSayRequest) Validate() error {
 }
 
 type CreateUserSayRequestUserSayDefinition struct {
-	// The content of the user say.
+	// The user utterance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 请问明天北京的天气
+	// What is the weather in Beijing tomorrow?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the intent.
+	// The intent ID.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +97,7 @@ type CreateUserSayRequestUserSayDefinition struct {
 	//
 	// 123232
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// An array of objects, each containing information about a slot.
+	// The slot information.
 	SlotInfos []*CreateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -150,19 +150,19 @@ func (s *CreateUserSayRequestUserSayDefinition) Validate() error {
 }
 
 type CreateUserSayRequestUserSayDefinitionSlotInfos struct {
-	// The zero-based end index of the slot in the user say content. This index is exclusive.
+	// The end index of the slot in the intent utterance (exclusive).
 	//
 	// example:
 	//
 	// 6
 	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	// The ID of the slot.
+	// The slot ID.
 	//
 	// example:
 	//
 	// fb34adf2fv43f2
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// The zero-based start index of the slot in the user say content.
+	// The start index of the slot in the intent utterance.
 	//
 	// example:
 	//

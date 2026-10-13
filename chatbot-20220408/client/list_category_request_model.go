@@ -18,19 +18,25 @@ type iListCategoryRequest interface {
 }
 
 type ListCategoryRequest struct {
-	// The business space key. If you omit this parameter, the default business space is used. You can obtain the key on the Business Management page of your primary account.
+	// The key of the business space. If not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The knowledge type. Valid values: `1` (FAQ category) and `3` (document category). The default value is `1`.
+	// The knowledge type. Valid values:
+	//
+	// - 1: FAQ category.
+	//
+	// - 3: Document category.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	KnowledgeType *int32 `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
-	// The parent category ID.
+	// The ID of the parent category.
 	//
 	// example:
 	//

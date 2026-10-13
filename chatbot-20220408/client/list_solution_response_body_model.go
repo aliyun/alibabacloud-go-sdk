@@ -22,7 +22,7 @@ type ListSolutionResponseBody struct {
 	//
 	// 5B29DB5E-251D-5A73-84B5-A12DF795F231
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of solutions.
+	// The list of answers.
 	Solutions []*ListSolutionResponseBodySolutions `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
 }
 
@@ -66,45 +66,49 @@ func (s *ListSolutionResponseBody) Validate() error {
 }
 
 type ListSolutionResponseBodySolutions struct {
-	// The content of the solution.
+	// The answer content.
 	//
 	// example:
 	//
-	// 答案内容
+	// Answer content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The type of the solution content. Valid values: `0` (plain text) and `1` (rich text).
+	// The answer type. Valid values:
+	//
+	// - 0: plain text.
+	//
+	// - 1: rich text.
 	//
 	// example:
 	//
 	// 1
 	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The time when the solution was created, in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2022-03-29T03:55:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the solution was last modified, in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2022-03-29T06:23:53Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// A list of perspective codes.
+	// The list of perspective codes.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	// The content of the solution in plain text.
+	// The plain text content of the answer.
 	//
 	// example:
 	//
-	// 答案内容
+	// Answer content
 	PlainText *string `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
-	// The solution ID.
+	// The answer ID.
 	//
 	// example:
 	//
 	// 496
 	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	// A list of tag IDs.
+	// The list of label IDs.
 	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 

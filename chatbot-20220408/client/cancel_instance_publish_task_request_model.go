@@ -18,7 +18,7 @@ type iCancelInstancePublishTaskRequest interface {
 }
 
 type CancelInstancePublishTaskRequest struct {
-	// The key of the business space. You can obtain the key from the Business Management page of your Alibaba Cloud account. If you omit this parameter, the default business space is used.
+	// The key of the business space. If not specified, the default business space is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CancelInstancePublishTaskRequest struct {
 	//
 	// 8521
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The unique ID of the chatbot.
+	// The unique identifier of the chatbot.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteFaqResponseBody interface {
 }
 
 type DeleteFaqResponseBody struct {
-	// A unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//

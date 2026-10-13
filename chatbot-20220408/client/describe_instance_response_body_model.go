@@ -34,49 +34,49 @@ type iDescribeInstanceResponseBody interface {
 }
 
 type DescribeInstanceResponseBody struct {
-	// The URL of the robot\\"s avatar.
+	// The URL of the chatbot avatar.
 	//
 	// example:
 	//
 	// /alimefe/meebot/robot/0.0.5/img/xxx-90-97.png
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// A list of categories.
+	// The list of categories.
 	Categories []*DescribeInstanceResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The UTC time when the robot was created.
+	// The UTC time when the chatbot was created.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The status of the robot.
+	// The status of the chatbot.
 	//
 	// example:
 	//
 	// PUBLISHED
 	EditStatus *string `json:"EditStatus,omitempty" xml:"EditStatus,omitempty"`
-	// The unique identifier of the robot instance.
+	// The unique identifier of the chatbot.
 	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The robot\\"s introduction.
+	// The remarks of the chatbot.
 	//
 	// example:
 	//
-	// 用于C端问答的机器人
+	// A chatbot for consumer Q&A
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// The language of the robot, such as zh-cn and en-us.
+	// The language of the chatbot service, such as zh-cn or en-us.
 	//
 	// example:
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	// The robot name.
+	// The name of the chatbot.
 	//
 	// example:
 	//
-	// 智能客服-小C
+	// Intelligent Customer Service - Bot C
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
@@ -84,13 +84,13 @@ type DescribeInstanceResponseBody struct {
 	//
 	// 907AA5F2-0521-49AB-80AB-1ADEFAB2B901
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The robot type.
+	// The type of the chatbot.
 	//
 	// example:
 	//
 	// scenario_im
 	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
-	// The time zone of the robot. For more information, see Time zone codes.
+	// The time zone of the chatbot. For more information, see the common time zone codes.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 }
 
 type DescribeInstanceResponseBodyCategories struct {
-	// The ability type of the category, such as FAQ or MRC.
+	// The ability type of the category, such as FAQ (frequently asked questions) or MRC (document).
 	//
 	// example:
 	//
@@ -231,11 +231,11 @@ type DescribeInstanceResponseBodyCategories struct {
 	//
 	// 30000066832
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The category name.
+	// The name of the category.
 	//
 	// example:
 	//
-	// 杭州市防疫政策
+	// Pandemic Prevention Policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The parent category ID. A value of -1 indicates the root directory.
 	//

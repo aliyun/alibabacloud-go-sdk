@@ -20,13 +20,13 @@ type iDeleteDSEntityValueRequest interface {
 }
 
 type DeleteDSEntityValueRequest struct {
-	// The Agent key. If omitted, the system uses the default Agent. You can get this key from the Business Management page of your main account.
+	// The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The unique identifier of the entity.
+	// The entity ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteDSEntityValueRequest struct {
 	//
 	// 345346223452
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The unique identifier of the entity value.
+	// The entity member ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DeleteDSEntityValueRequest struct {
 	//
 	// 3453453452
 	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	// The unique identifier of the instance.
+	// The robot ID.
 	//
 	// This parameter is required.
 	//

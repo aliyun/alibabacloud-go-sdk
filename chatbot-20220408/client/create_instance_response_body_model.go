@@ -16,13 +16,13 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
-	// The instance ID of the robot.
+	// The unique identifier of the chatbot.
 	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

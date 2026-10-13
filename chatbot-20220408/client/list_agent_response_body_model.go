@@ -24,25 +24,25 @@ type iListAgentResponseBody interface {
 type ListAgentResponseBody struct {
 	// The list of business spaces.
 	Data []*ListAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the returned results.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of records per page in the response. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// F55D90C1-31BE-4B2A-AA3F-25EFC36F9419
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of business spaces that match the query.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -123,19 +123,19 @@ type ListAgentResponseBodyData struct {
 	//
 	// 881
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The business space signature, used to identify the business space in Platform-as-a-Service (PaaS) API calls.
+	// The business space signature, which is used to specify the business space when calling PaaS API operations.
 	//
 	// example:
 	//
 	// 4e7400028e6f4a7393ed3acf6a7b8927_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The name of the business space.
+	// The business space name.
 	//
 	// example:
 	//
-	// 业务空间_881
+	// BusinessSpace_881
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// Details of the associated commodity instance. The object keys are commodity codes.
+	// The commodity instance information.
 	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 }
 

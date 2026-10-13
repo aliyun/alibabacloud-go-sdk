@@ -24,13 +24,13 @@ type iListDSEntityRequest interface {
 }
 
 type ListDSEntityRequest struct {
-	// The key of the business space. If this parameter is not set, the default business space is used. You can find this key on the Business Management page of your main account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The entity type. If you omit this parameter, all custom entities are returned.
+	// If left empty, all custom entities are returned (default).
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListDSEntityRequest struct {
 	//
 	// system
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The robot ID.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type ListDSEntityRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A keyword to filter entities by name using a \\"contains\\" match. Future releases will also support searching by entity member and synonym.
+	// The filter keyword. Uses contains matching. Scope: entity name (future expansion: entity members, synonyms).
 	//
 	// example:
 	//
-	// 实体
+	// entity
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The current page number. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. The default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

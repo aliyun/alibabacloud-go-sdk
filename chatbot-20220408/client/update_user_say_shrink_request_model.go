@@ -20,13 +20,13 @@ type iUpdateUserSayShrinkRequest interface {
 }
 
 type UpdateUserSayShrinkRequest struct {
-	// The workspace key. If you omit this parameter, the default workspace is used. You can find this key on the Workspace Management page in your main account.
+	// The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The ID of the bot.
+	// The robot ID.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type UpdateUserSayShrinkRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The definition of the user say.
+	// The definition of the user utterance.
 	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
-	// The ID of the user say.
+	// The user utterance ID.
 	//
 	// This parameter is required.
 	//

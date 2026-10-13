@@ -22,15 +22,15 @@ type iListDSEntityValueResponseBody interface {
 }
 
 type ListDSEntityValueResponseBody struct {
-	// A list of entity values.
+	// The entity list.
 	EntityValues []*ListDSEntityValueResponseBodyEntityValues `json:"EntityValues,omitempty" xml:"EntityValues,omitempty" type:"Repeated"`
-	// The page number of the returned results.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the returned page.
+	// The page size. Default value: 10.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDSEntityValueResponseBody struct {
 	//
 	// n3fg34gbfj8adf2gj923
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of matching entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *ListDSEntityValueResponseBody) Validate() error {
 }
 
 type ListDSEntityValueResponseBodyEntityValues struct {
-	// The content of the entity value, which can be a standard value or a regular expression.
+	// The entity member name (entity value or regular expression).
 	//
 	// example:
 	//
-	// 书类型
+	// Book type
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The creation time of the entity value in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the entity.
+	// The entity ID.
 	//
 	// example:
 	//
 	// 34313785463
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The ID of the entity value.
+	// The entity member ID.
 	//
 	// example:
 	//
 	// 3467858234534534532
 	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	// The last modification time of the entity value in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// A list of synonyms for the entity value.
+	// The synonym list.
 	Synonyms []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
 

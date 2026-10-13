@@ -14,7 +14,7 @@ type iDeleteConnQuestionResponseBody interface {
 }
 
 type DeleteConnQuestionResponseBody struct {
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDeleteLgfResponseBody interface {
 }
 
 type DeleteLgfResponseBody struct {
-	// The ID of the LGF configuration.
+	// LGF ID
 	//
 	// example:
 	//

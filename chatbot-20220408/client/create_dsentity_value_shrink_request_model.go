@@ -22,21 +22,21 @@ type iCreateDSEntityValueShrinkRequest interface {
 }
 
 type CreateDSEntityValueShrinkRequest struct {
-	// The business space key. If omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	// The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The entity value (or regular expression).
+	// The entity value or regular expression.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 书类型
+	// BookType
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The entity ID.
+	// The entity ID. This parameter can be left empty when you modify an entity member.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateDSEntityValueShrinkRequest struct {
 	//
 	// 12
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The robot ID.
+	// The chatbot ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateDSEntityValueShrinkRequest struct {
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A list of synonyms for the entity value.
+	// The synonym list.
 	SynonymsShrink *string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
 }
 

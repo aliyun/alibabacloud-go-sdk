@@ -14,7 +14,7 @@ type iLinkInstanceCategoryResponseBody interface {
 }
 
 type LinkInstanceCategoryResponseBody struct {
-	// 请求 ID
+	// The request ID.
 	//
 	// example:
 	//
