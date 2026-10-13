@@ -52,7 +52,7 @@ type ListBeebotIntentResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The list of intents.
 	Intents []*ListBeebotIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	// The message returned by the operation.
+	// The message returned by the API operation.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListBeebotIntentResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListBeebotIntentResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -206,9 +206,9 @@ type ListBeebotIntentResponseBodyIntents struct {
 	//
 	// example:
 	//
-	// 嗯明白了
+	// Okay, understood
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The time when the intent was created.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type ListBeebotIntentResponseBodyIntents struct {
 	//
 	// 1252504
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The name of the account that created the intent.
+	// The name of the user who created the intent.
 	//
 	// example:
 	//
@@ -234,25 +234,25 @@ type ListBeebotIntentResponseBodyIntents struct {
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	// The intent name.
 	//
-	// > This is the intent code. It uniquely identifies the intent.
+	// > The intent code, which is a unique identifier.
 	//
 	// example:
 	//
-	// 知道了
+	// Understood
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The time when the intent was last modified.
+	// The modification time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//
 	// 2025-04-21 16:03:15.+0800
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Modify User ID
+	// The ID of the user who modified the intent.
 	//
 	// example:
 	//
 	// 1252504
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	// Modify the account name.
+	// The name of the user who modified the intent.
 	//
 	// example:
 	//

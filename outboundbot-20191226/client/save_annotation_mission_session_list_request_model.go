@@ -26,57 +26,63 @@ type iSaveAnnotationMissionSessionListRequest interface {
 }
 
 type SaveAnnotationMissionSessionListRequest struct {
-	// The agent ID.
+	// The ID of the agent.
 	//
-	// > Obtain this by calling the DescribeInstance operation.
+	// > You can obtain this value by calling the DescribeInstance API operation.
 	//
 	// example:
 	//
 	// 1198938
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The key of the workspace. If you do not specify this parameter, the default workspace is accessed. Obtain the key on the Business Management page of your Alibaba Cloud account.
+	// The key of the workspace. If you do not specify this parameter, the default workspace is accessed. You can obtain the key value on the Business Management page of the Alibaba Cloud account.
 	//
-	// > Obtain this by calling the DescribeInstance operation.
+	// > You can obtain this value by calling the DescribeInstance API operation.
 	//
 	// example:
 	//
 	// 9137ab9c27044921860030adf8590ec4_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// The source of the annotation data. Valid values: 1: Outbound call. 2: Navigation.
+	// The data source of the annotation task. Valid values:
+	//
+	// - 1: outbound call
+	//
+	// - 2: voice navigation
 	//
 	// example:
 	//
 	// 1
 	AnnotationMissionDataSourceType *int64 `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
-	// The list of sessions.
+	// The session list.
 	//
-	// > This parameter has the same function as AnnotationMissionSessionListJsonString. Specify either of them.
+	// > This parameter serves the same purpose as the AnnotationMissionSessionListJsonString parameter. Specify only one of them.
 	AnnotationMissionSessionList []*SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList `json:"AnnotationMissionSessionList,omitempty" xml:"AnnotationMissionSessionList,omitempty" type:"Repeated"`
-	// The list of sessions in JSON format.
+	// The JSON string of the session list.
 	//
-	// > This parameter has the same function as the AnnotationMissionSessionList parameter. You can specify either of them. The JSON field is a parameter of AnnotationMissionSessionList.
+	// > This parameter serves the same purpose as AnnotationMissionSessionList. Specify only one of them.
+	//
+	// The JSON fields correspond to the parameters of AnnotationMissionSessionList.
 	//
 	// example:
 	//
 	// [{"jobGroupId":"4093e364-57dc-4a89-83e0-a88454642596","modifiedTime":1744971010000,"instanceId":"00b37342-e759-4fe5-b296-aef775933af0","version":0,"annotationMissionId":"3d4bfd93-0d16-4873-9d77-e4fb1771e5cf","createTime":1744971010000,"annotationMissionSessionId":"42032063-8ef2-48e1-bc99-587b51581742","scriptId":"bc50d543-6d52-4df8-8fb0-50f31ee9c1ff","sessionId":"641a2c43-5e2a-4535-8a4d-c66d4b4258d6","jobId":"fa54c5bb-d8a7-40ae-a32e-9a4a0c734ce5","annotationStatus":2,"debugConversation":false}]
 	AnnotationMissionSessionListJsonString *string `json:"AnnotationMissionSessionListJsonString,omitempty" xml:"AnnotationMissionSessionListJsonString,omitempty"`
-	// The environment.
+	// The environment. Valid values:
 	//
 	// - 0: NONE
 	//
-	// - 1: Private cloud
+	// - 1: private cloud
 	//
-	// - 2: Public cloud
+	// - 2: public cloud
 	//
 	// example:
 	//
 	// 0
 	Environment *int64 `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The user\\"s nickname.
+	// The nickname of the user.
 	//
 	// example:
 	//
-	// 用户
+	// User
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
@@ -165,9 +171,9 @@ func (s *SaveAnnotationMissionSessionListRequest) Validate() error {
 }
 
 type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList struct {
-	// The list of chats.
+	// The chat list.
 	AnnotationMissionChatList []*SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatList `json:"AnnotationMissionChatList,omitempty" xml:"AnnotationMissionChatList,omitempty" type:"Repeated"`
-	// The ID of the annotation task.
+	// The annotation task ID.
 	//
 	// example:
 	//
@@ -179,21 +185,21 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList struct 
 	//
 	// c88cc004-de69-4eee-aa5f-2efed533a54e
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
-	// The annotation status.
+	// The annotation status. Valid values:
 	//
-	// - 0: UNDO
+	// - 0: Not completed (UNDO).
 	//
-	// - 1: DOING
+	// - 1: In progress (DOING).
 	//
-	// - 2: DONE
+	// - 2: Completed (DONE).
 	//
-	// - 3: CLOSED
+	// - 3: Canceled (CLOSED).
 	//
 	// example:
 	//
 	// 1
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
-	// The time when the session was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -205,19 +211,19 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList struct 
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The task group ID.
+	// The job group ID.
 	//
 	// example:
 	//
 	// 29e669bd-a9d1-4529-98cd-c2b0549bcf53
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 593aaf5e-1275-4add-9990-22696385dc6e
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The time when the session was last modified.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -229,7 +235,7 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList struct 
 	//
 	// e4f32632-2e56-4399-9fec-47bdbaeefdf6
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// For an outbound call, this is the task ID. For navigation, this is the conversation ID.
+	// The session ID. The value is taskId for outbound robots and conversationId for voice navigator robots.
 	//
 	// example:
 	//
@@ -358,15 +364,15 @@ func (s *SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList) Va
 }
 
 type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatList struct {
-	// The result of manual ASR annotation. This is used to calculate the character accuracy rate.
+	// The manual ASR annotation text result, which is used to calculate the character accuracy rate.
 	//
 	// example:
 	//
 	// []
 	AnnotationAsrResult *string `json:"AnnotationAsrResult,omitempty" xml:"AnnotationAsrResult,omitempty"`
-	// The language model annotation information for the annotation task chat.
+	// The language model annotation information table for the annotation task chat.
 	AnnotationMissionChatCustomizationDataInfoList []*SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList `json:"AnnotationMissionChatCustomizationDataInfoList,omitempty" xml:"AnnotationMissionChatCustomizationDataInfoList,omitempty" type:"Repeated"`
-	// The chat ID.
+	// chat ID
 	//
 	// example:
 	//
@@ -374,11 +380,11 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
 	// The list.
 	AnnotationMissionChatIntentUserSayInfoList []*SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList `json:"AnnotationMissionChatIntentUserSayInfoList,omitempty" xml:"AnnotationMissionChatIntentUserSayInfoList,omitempty" type:"Repeated"`
-	// The list of mappings between annotation information chats and attached tags.
+	// The mapping list of bound tags for the annotation information chat.
 	AnnotationMissionChatTagInfoList []*SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList `json:"AnnotationMissionChatTagInfoList,omitempty" xml:"AnnotationMissionChatTagInfoList,omitempty" type:"Repeated"`
-	// The hotword annotation information for the annotation task chat.
+	// The hot word annotation information table for the annotation task chat.
 	AnnotationMissionChatVocabularyInfoList []*SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList `json:"AnnotationMissionChatVocabularyInfoList,omitempty" xml:"AnnotationMissionChatVocabularyInfoList,omitempty" type:"Repeated"`
-	// The ID of the annotation task.
+	// The annotation task ID.
 	//
 	// example:
 	//
@@ -390,41 +396,41 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// c88cc004-de69-4eee-aa5f-2efed533a54e
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
-	// The annotation status.
+	// The annotation status. Valid values:
 	//
-	// - 0: UNDO
+	// - 0: Not completed (UNDO).
 	//
-	// - 1: DOING
+	// - 1: In progress (DOING).
 	//
-	// - 2: DONE
+	// - 2: Completed (DONE).
 	//
-	// - 3: CLOSED
+	// - 3: Canceled (CLOSED).
 	//
 	// example:
 	//
 	// 1
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
-	// The content of the robot\\"s response.
+	// The reply content of the robot.
 	//
 	// example:
 	//
 	// {\\"Answer\\": u\\"\\u53c2\\u8003\\u6587\\u6863\\uff1ahttps://help.aliyun.com/document_detail/181325.html\\", \\"QuestionId\\": 372858, \\"Uuid\\": \\"ac14000516762684770197536d0044\\"}
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The Automatic Speech Recognition (ASR) annotation status.
+	// The ASR annotation status. Valid values:
 	//
-	// - 0: UNDO
+	// - 0: Not completed (UNDO).
 	//
-	// - 1: DOING
+	// - 1: In progress (DOING).
 	//
-	// - 2: DONE
+	// - 2: Completed (DONE).
 	//
-	// - 3: CLOSED
+	// - 3: Canceled (CLOSED).
 	//
 	// example:
 	//
 	// 1
 	AsrAnnotationStatus *int32 `json:"AsrAnnotationStatus,omitempty" xml:"AsrAnnotationStatus,omitempty"`
-	// The time when the chat was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -436,69 +442,79 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// 5ec263fa-c8de-46f4-b844-6fb8275bb645
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The semantic tagging status.
+	// The intent annotation status. Valid values:
 	//
-	// - 0: UNDO
+	// - 0: Not completed (UNDO).
 	//
-	// - 1: DOING
+	// - 1: In progress (DOING).
 	//
-	// - 2: DONE
+	// - 2: Completed (DONE).
 	//
-	// - 3: CLOSED
+	// - 3: Canceled (CLOSED).
 	//
 	// example:
 	//
 	// 1
 	IntentAnnotationStatus *int32 `json:"IntentAnnotationStatus,omitempty" xml:"IntentAnnotationStatus,omitempty"`
-	// The time when the chat was last modified.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1629360780000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The time when the chat was triggered.
+	// The trigger time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1682493047418
 	OccurTime *int64 `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
-	// The ASR result.
+	// The ASR recognition result.
 	//
 	// example:
 	//
 	// []
 	OriginalAsrResult *string `json:"OriginalAsrResult,omitempty" xml:"OriginalAsrResult,omitempty"`
-	// The serial number of the current session interaction.
+	// The sequence number of the current session interaction round.
 	//
 	// example:
 	//
 	// 1475140522
 	SequenceId *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
-	// The annotation action. Valid values: 1: Correct. 20: Matching error (not optimized). 21: Matching error (optimized). 3: Not covered. 4: Invalid.
+	// The annotation action. Valid values:
+	//
+	// - 1: Correct.
+	//
+	// - 20: Match error, not optimized.
+	//
+	// - 21: Match error, optimized.
+	//
+	// - 3: Not covered.
+	//
+	// - 4: Invalid.
 	//
 	// example:
 	//
 	// 1
 	SubStatus *int32 `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The tag annotation status.
+	// The tag annotation status. Valid values:
 	//
-	// - 0: UNDO
+	// - 0: Not completed (UNDO).
 	//
-	// - 1: DOING
+	// - 1: In progress (DOING).
 	//
-	// - 2: DONE
+	// - 2: Completed (DONE).
 	//
-	// - 3: CLOSED
+	// - 3: Canceled (CLOSED).
 	//
 	// example:
 	//
 	// 1
 	TagAnnotationStatus *int32 `json:"TagAnnotationStatus,omitempty" xml:"TagAnnotationStatus,omitempty"`
-	// The transcription error flag.
+	// Indicates whether a translation error occurred. Valid values:
 	//
-	// - 0: No
+	// - 0: No.
 	//
-	// - 1: Yes
+	// - 1: Yes.
 	//
 	// example:
 	//
@@ -744,19 +760,19 @@ func (s *SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnno
 }
 
 type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList struct {
-	// The ID.
+	// ID
 	//
 	// example:
 	//
 	// b598a47a-7c03-45fb-af6b-343950dd9512
 	AnnotationMissionChatCustomizationDataInfoId *string `json:"AnnotationMissionChatCustomizationDataInfoId,omitempty" xml:"AnnotationMissionChatCustomizationDataInfoId,omitempty"`
-	// The chat ID.
+	// chat ID
 	//
 	// example:
 	//
 	// 977a45dc-b636-4407-9e98-9f572c709ada
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
-	// The ID of the annotation task.
+	// The annotation task ID.
 	//
 	// example:
 	//
@@ -772,15 +788,15 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// example:
 	//
-	// 现在呢主动邀请到您，机会非常难得，而且额度放着不用，也是不收费的，可以当作咱们的备用金，最快5分钟就能到账，建议您可以先把额度免费领取下来呢。
+	// You are now proactively invited to apply. This is a rare opportunity. The credit limit is free of charge if left unused and can be used as your reserve fund. The funds can be credited to your account in as fast as 5 minutes. We recommend that you claim the credit limit for free first
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Create
+	// Specifies whether to create the item.
 	//
 	// example:
 	//
 	// true
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
-	// The time when the item was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -790,9 +806,9 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// example:
 	//
-	// 默认数据描述
+	// Default data description
 	CustomizationDataDescription *string `json:"CustomizationDataDescription,omitempty" xml:"CustomizationDataDescription,omitempty"`
-	// The ID.
+	// ID
 	//
 	// example:
 	//
@@ -802,15 +818,15 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// example:
 	//
-	// 默认数据
+	// Default data
 	CustomizationDataName *string `json:"CustomizationDataName,omitempty" xml:"CustomizationDataName,omitempty"`
-	// The weight of the language model data.
+	// The language model data weight.
 	//
 	// example:
 	//
 	// 1
 	CustomizationDataWeight *int32 `json:"CustomizationDataWeight,omitempty" xml:"CustomizationDataWeight,omitempty"`
-	// Delete
+	// Specifies whether to delete the item.
 	//
 	// example:
 	//
@@ -822,7 +838,7 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// b598a47a-7c03-45fb-af6b-343950dd9512
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the item was last modified.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -969,19 +985,19 @@ func (s *SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnno
 }
 
 type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList struct {
-	// The chat ID.
+	// chat ID
 	//
 	// example:
 	//
 	// ddce607f-f537-4ebd-9914-cf45671defb9
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
-	// The ID.
+	// ID
 	//
 	// example:
 	//
 	// ddce607f-f537-4ebd-9914-cf45671defb9
 	AnnotationMissionChatIntentUserSayInfoId *string `json:"AnnotationMissionChatIntentUserSayInfoId,omitempty" xml:"AnnotationMissionChatIntentUserSayInfoId,omitempty"`
-	// The ID of the annotation task.
+	// The annotation task ID.
 	//
 	// example:
 	//
@@ -993,7 +1009,7 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// ddce607f-f537-4ebd-9914-cf45671defb9
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
-	// The bot ID.
+	// The robot ID.
 	//
 	// example:
 	//
@@ -1005,19 +1021,19 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// []
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Create
+	// Specifies whether to create the item.
 	//
 	// example:
 	//
 	// false
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
-	// The time when the item was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1683858248778
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Delete this item.
+	// Specifies whether to delete the item.
 	//
 	// example:
 	//
@@ -1041,7 +1057,7 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// 119839
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// The time when the item was last modified.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -1179,19 +1195,19 @@ func (s *SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnno
 }
 
 type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList struct {
-	// The chat ID.
+	// chat ID
 	//
 	// example:
 	//
 	// 977a45dc-b636-4407-9e98-9f572c709ada
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
-	// The ID.
+	// ID
 	//
 	// example:
 	//
 	// id
 	AnnotationMissionChatTagInfoId *string `json:"AnnotationMissionChatTagInfoId,omitempty" xml:"AnnotationMissionChatTagInfoId,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -1203,31 +1219,31 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// 977a45dc-b636-4407-9e98-9f572c709ada
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
-	// The tag ID.
+	// tag ID
 	//
 	// example:
 	//
 	// 977a45dc-b636-4407-9e98-9f572c709ada
 	AnnotationMissionTagInfoId *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
-	// The tag name.
+	// The name of the tag.
 	//
 	// example:
 	//
 	// -
 	AnnotationMissionTagInfoName *string `json:"AnnotationMissionTagInfoName,omitempty" xml:"AnnotationMissionTagInfoName,omitempty"`
-	// Create
+	// Specifies whether to create the item.
 	//
 	// example:
 	//
 	// true
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
-	// End time of the annotation mission group.
+	// The end time of the annotation mission group.
 	//
 	// example:
 	//
 	// 1679710866060
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Delete
+	// Specifies whether to delete the item.
 	//
 	// example:
 	//
@@ -1239,7 +1255,7 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// 32be9d94-1346-4c4a-a4d0-ccd379f87013
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Modified time
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -1359,19 +1375,19 @@ func (s *SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnno
 }
 
 type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList struct {
-	// The chat ID.
+	// chat ID
 	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
-	// The ID.
+	// ID
 	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionChatVocabularyInfoId *string `json:"AnnotationMissionChatVocabularyInfoId,omitempty" xml:"AnnotationMissionChatVocabularyInfoId,omitempty"`
-	// The ID of the annotation task.
+	// The annotation task ID.
 	//
 	// example:
 	//
@@ -1383,19 +1399,19 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
-	// Create
+	// Specifies whether to create the item.
 	//
 	// example:
 	//
 	// false
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
-	// The time when the item was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1677552860720
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Delete
+	// Specifies whether to delete the item.
 	//
 	// example:
 	//
@@ -1407,13 +1423,13 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the item was last modified.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1679283408230
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The content of the hotword annotation.
+	// The hot word annotation content.
 	//
 	// example:
 	//
@@ -1423,21 +1439,21 @@ type SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotati
 	//
 	// example:
 	//
-	// 售后咨询
+	// After-sales consultation
 	VocabularyDescription *string `json:"VocabularyDescription,omitempty" xml:"VocabularyDescription,omitempty"`
-	// The hotword ID.
+	// The hot word ID.
 	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
-	// The name of the processing scenario.
+	// The processing scenario name.
 	//
 	// example:
 	//
-	// 咨询
+	// Consultation
 	VocabularyName *string `json:"VocabularyName,omitempty" xml:"VocabularyName,omitempty"`
-	// The weight of the hotword. The value ranges from -6 to 5.
+	// The hot word weight. Valid values: -6 to 5.
 	//
 	// example:
 	//

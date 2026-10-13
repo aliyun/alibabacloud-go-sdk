@@ -22,13 +22,13 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token to start the next query
+	// The token for the next query.
 	//
 	// example:
 	//
 	// b949ae1f-01dc-4191-ae5a-70fbe6772fd8
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Deprecated
+	// Deprecated.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource IDs. The value range of n is [1, 50].
+	// The list of resource IDs. Valid values of n: 1 to 50.
 	//
 	// example:
 	//
 	// ResourceId.1=b949ae1f-01dc-4191-ae5a-70fbe6772fd8
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// Resource type
+	// The resource type.
 	//
 	// This parameter is required.
 	//
@@ -121,13 +121,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The tag key. The value range of n is [1, 20].
+	// The tag key. Valid values of n: 1 to 20.
 	//
 	// example:
 	//
 	// Tag.1.Key=key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The value range of n is [1, 20].
+	// The tag value. Valid values of n: 1 to 20.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type DescribeJobRequest struct {
 	//
 	// c8a2b7f2-ad1a-4865-b872-d0080d9802d9
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Specifies whether to return task scenario information.
+	// Specifies whether to return the task scenario information.
 	//
 	// example:
 	//

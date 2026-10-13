@@ -38,7 +38,7 @@ type GetAnnotationMissionSummaryResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information. If the request is successful, success is returned. If the request fails, an error code is returned.
+	// The additional information. If the request is successful, "success" is returned. If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetAnnotationMissionSummaryResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates a successful call. A value of false indicates a failed call.
+	// Indicates whether the call was successful. true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
@@ -136,23 +136,23 @@ type GetAnnotationMissionSummaryResponseBodyData struct {
 	//
 	// b3f2c931-5180-43ca-b4aa-2baee2d73c8b
 	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
-	// The statistics of speech annotation.
+	// The speech annotate statistics information.
 	AsrSummaryInfo *GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo `json:"AsrSummaryInfo,omitempty" xml:"AsrSummaryInfo,omitempty" type:"Struct"`
-	// The statistics of semantic tagging.
+	// The semantics annotate statistics information.
 	IntentSummaryInfo *GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo `json:"IntentSummaryInfo,omitempty" xml:"IntentSummaryInfo,omitempty" type:"Struct"`
-	// The additional information. If the request is successful, success is returned. If the request fails, an error code is returned.
+	// The additional information. If the request is successful, "success" is returned. If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// You are not authorized to perform this action. CDR:View privileges are required.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates a successful call. A value of false indicates a failed call.
+	// Indicates whether the call was successful. true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The custom tags and their quantities.
+	// The custom tags and their counts.
 	TagSummaryInfo *GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo `json:"TagSummaryInfo,omitempty" xml:"TagSummaryInfo,omitempty" type:"Struct"`
 }
 
@@ -244,25 +244,25 @@ type GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo struct {
 	//
 	// 1
 	AddCustomizationDataCount *int32 `json:"AddCustomizationDataCount,omitempty" xml:"AddCustomizationDataCount,omitempty"`
-	// The number of times hotwords were added.
+	// The number of times hot words were added.
 	//
 	// example:
 	//
 	// 1
 	AddVocabularyDataCount *int32 `json:"AddVocabularyDataCount,omitempty" xml:"AddVocabularyDataCount,omitempty"`
-	// Data is invalid.
+	// The number of invalid data entries.
 	//
 	// example:
 	//
 	// 1
 	AnnotationInvalid *int32 `json:"AnnotationInvalid,omitempty" xml:"AnnotationInvalid,omitempty"`
-	// The character accuracy rate. Unit: 0.01%.
+	// The character accuracy rate, in units of 0.01%.
 	//
 	// example:
 	//
 	// 1
 	CharacterCorrectRate *int32 `json:"CharacterCorrectRate,omitempty" xml:"CharacterCorrectRate,omitempty"`
-	// The character error rate. Unit: 0.01%.
+	// The character error rate, in units of 0.01%.
 	//
 	// example:
 	//
@@ -274,19 +274,19 @@ type GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo struct {
 	//
 	// 1
 	ChatTotalCount *int32 `json:"ChatTotalCount,omitempty" xml:"ChatTotalCount,omitempty"`
-	// Not annotated.
+	// The number of unannotated entries.
 	//
 	// example:
 	//
 	// 1
 	NoAnnotation *int32 `json:"NoAnnotation,omitempty" xml:"NoAnnotation,omitempty"`
-	// The sentence error rate. Unit: 0.01%.
+	// The sentence error rate, in units of 0.01%.
 	//
 	// example:
 	//
 	// 1
 	SentenceErrorRate *int32 `json:"SentenceErrorRate,omitempty" xml:"SentenceErrorRate,omitempty"`
-	// The word error rate. Unit: 0.01%. This parameter is typically used for English.
+	// The word error rate, in units of 0.01%. Generally used for English.
 	//
 	// example:
 	//
@@ -394,7 +394,7 @@ type GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo struct {
 	//
 	// 1
 	AnnotationCorrectCount *int32 `json:"AnnotationCorrectCount,omitempty" xml:"AnnotationCorrectCount,omitempty"`
-	// Invalid data
+	// The number of invalid data entries.
 	//
 	// example:
 	//
@@ -418,19 +418,19 @@ type GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo struct {
 	//
 	// 1
 	IntentionNotCoveredCount *int32 `json:"IntentionNotCoveredCount,omitempty" xml:"IntentionNotCoveredCount,omitempty"`
-	// The number of detection errors.
+	// The number of recognition errors.
 	//
 	// example:
 	//
 	// 1
 	MatchErrorCount *int32 `json:"MatchErrorCount,omitempty" xml:"MatchErrorCount,omitempty"`
-	// Not annotated.
+	// The number of unannotated entries.
 	//
 	// example:
 	//
 	// 1
 	NoAnnotation *int32 `json:"NoAnnotation,omitempty" xml:"NoAnnotation,omitempty"`
-	// The number of translations that were not recognized.
+	// The number of unrecognized translation attempts.
 	//
 	// example:
 	//
@@ -564,7 +564,7 @@ type GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDeta
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the tag.
+	// The tag name.
 	//
 	// example:
 	//

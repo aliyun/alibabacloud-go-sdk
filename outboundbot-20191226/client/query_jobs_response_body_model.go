@@ -50,7 +50,7 @@ type QueryJobsResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *QueryJobsResponseBody) Validate() error {
 }
 
 type QueryJobsResponseBodyJobs struct {
-	// The list of jobs.
+	// The job array.
 	List []*QueryJobsResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -144,7 +144,7 @@ type QueryJobsResponseBodyJobs struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -210,17 +210,17 @@ func (s *QueryJobsResponseBodyJobs) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsList struct {
-	// The list of calling numbers.
+	// The calling number list.
 	CallingNumbers []*string `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	// The contact information. This parameter has been deprecated.
+	// **[Deprecated]*	- The contact information.
 	//
-	// > You can retrieve this information by calling the DescribeJob operation.
+	// > You can obtain this information by calling the DescribeJob operation.
 	Contacts []*QueryJobsResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	// The business data. Displays tag collection results for large language model scenarios.
+	// The business data, which displays the tag collection status in large model scenarios.
 	//
-	// > Keys equal to TenantId or ServiceId are system parameters.
+	// > If the key is TenantId or ServiceId, it is a system parameter.
 	Extras []*QueryJobsResponseBodyJobsListExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
-	// The failure reason. Valid values:
+	// The reason for the failure. Valid values:
 	//
 	// - Unknown: Unknown error.
 	//
@@ -234,21 +234,21 @@ type QueryJobsResponseBodyJobsList struct {
 	//
 	// - CallFailed: Call failed.
 	//
-	// - PerDayCallCountLimit: Daily call count limit for the number reached.
+	// - PerDayCallCountLimit: The daily call count limit for the number is reached.
 	//
-	// - ContactBlockList: The number is on the blocked list.
+	// - ContactBlockList: The number is on the outbound call blacklist.
 	//
-	// - EmptyNumber: Nonexistent number. No further outbound calls.
+	// - EmptyNumber: The number is a nonexistent number and will not be called.
 	//
-	// - JobPerDayCallCountLimit: Daily call count limit for the number reached.
+	// - JobPerDayCallCountLimit: The daily call count limit for the number is reached.
 	//
-	// - VerificationCancelled: Pre-call verification failed. The call was cancelled.
+	// - VerificationCancelled: Cancelled due to failed pre-call verification.
 	//
 	// - ContactSuspended: Call suspended.
 	//
 	// - InArrears: Overdue payment.
 	//
-	// - OutOfService: Out of service.
+	// - OutOfService: Service suspended.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type QueryJobsResponseBodyJobsList struct {
 	//
 	// d5971d98-7312-4f0e-a918-a17d67133e28
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The scenario ID. This is a legacy parameter and has been deprecated.
+	// **[Deprecated]*	- The scenario ID. This is a legacy parameter.
 	//
 	// example:
 	//
@@ -286,19 +286,19 @@ type QueryJobsResponseBodyJobsList struct {
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
 	// The job status. Valid values:
 	//
-	// - Scheduling(0): Scheduling.
+	// - Scheduling(0, "Scheduling")
 	//
-	// - Executing(1): Executing.
+	// - Executing(1, "Executing")
 	//
-	// - Succeeded(2): Completed - Reached.
+	// - Succeeded(2, "Finished - Reached")
 	//
-	// - Paused(3): Paused.
+	// - Paused(3, "Paused")
 	//
-	// - Failed(4): Completed - Not reached.
+	// - Failed(4, "Finished - Not reached")
 	//
-	// - Cancelled(5): Cancelled - Manual intervention.
+	// - Cancelled(5, "Cancelled - Manual intervention")
 	//
-	// - Drafted(6): Draft.
+	// - Drafted(6, "Draft")
 	//
 	// example:
 	//
@@ -310,13 +310,13 @@ type QueryJobsResponseBodyJobsList struct {
 	//
 	// c8a2b7f2-ad1a-4865-b872-d0080d9802d9
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The conversation summary. This is a legacy field and is no longer in use. Deprecated.
+	// **[Deprecated]*	- The conversation summary. This is a legacy field and is no longer used.
 	Summary []*QueryJobsResponseBodyJobsListSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	// The tag hit information in small model scenarios.
+	// The matched tag information in small model scenarios.
 	TagHits []*QueryJobsResponseBodyJobsListTagHits `json:"TagHits,omitempty" xml:"TagHits,omitempty" type:"Repeated"`
-	// The call list. This parameter has been deprecated.
+	// **[Deprecated]*	- The call list.
 	//
-	// > You can retrieve this information by calling the searchTask operation.
+	// > You can obtain this information by calling the searchTask operation.
 	Tasks []*QueryJobsResponseBodyJobsListTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -514,13 +514,13 @@ type QueryJobsResponseBodyJobsListContacts struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The honorific title.
+	// The honorific.
 	//
 	// example:
 	//
-	// 张先生
+	// Mr. Zhang
 	Honorific *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
 	// The job ID.
 	//
@@ -647,13 +647,13 @@ func (s *QueryJobsResponseBodyJobsListContacts) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListExtras struct {
-	// The business data key.
+	// The key of the business data.
 	//
 	// example:
 	//
 	// djrq
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The business data value.
+	// The value of the business data.
 	//
 	// example:
 	//
@@ -831,13 +831,13 @@ type QueryJobsResponseBodyJobsListTagHits struct {
 	//
 	// example:
 	//
-	// 意向收集
+	// Intent collection
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 有意向
+	// Interested
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -872,19 +872,19 @@ func (s *QueryJobsResponseBodyJobsListTagHits) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListTasks struct {
-	// The actual outbound call time.
+	// The actual outbound call time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1579068424883
 	ActualTime *int64 `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
-	// The summary. This is a legacy field and is no longer in use.
+	// **[Deprecated]*	- The summary. This is a legacy field and is no longer used.
 	//
 	// example:
 	//
 	// 1
 	Brief *string `json:"Brief,omitempty" xml:"Brief,omitempty"`
-	// SIP call ID。
+	// The SIP call ID.
 	//
 	// example:
 	//
@@ -902,7 +902,7 @@ type QueryJobsResponseBodyJobsListTasks struct {
 	//
 	// 0571****3106
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// The chatbot ID.
+	// The robot ID.
 	//
 	// example:
 	//
@@ -922,7 +922,7 @@ type QueryJobsResponseBodyJobsListTasks struct {
 	//
 	// b72425bd-7871-4050-838e-033d80d754b7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The planned outbound call time.
+	// The planned outbound call time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -934,9 +934,9 @@ type QueryJobsResponseBodyJobsListTasks struct {
 	//
 	// ade80092-03d9-4f4d-ad4f-ab8a247d3150
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// The task status. Note: The Succeeded status has been subdivided into specific reason types. The Succeeded:1 (Connected) status is no longer returned. Instead, the specific sub-reason type is returned. Valid values:
+	// The task status. Note: The Succeeded status is subdivided into specific reasons. The Succeeded: 1 (Connected) status is no longer returned. Instead, specific subdivided reason types are returned. Valid values:
 	//
-	// - Executing: 0 (Dialing).
+	// - Executing: 0 (Calling).
 	//
 	// - Succeeded: 1 (Connected).
 	//
@@ -946,7 +946,7 @@ type QueryJobsResponseBodyJobsListTasks struct {
 	//
 	// - Busy: 4 (Not connected - Busy).
 	//
-	// - Cancelled: 5 (Not dialed - Task stopped).
+	// - Cancelled: 5 (Not called - Task stopped).
 	//
 	// - Failed: 6 (Failed).
 	//
@@ -954,53 +954,53 @@ type QueryJobsResponseBodyJobsListTasks struct {
 	//
 	// - PoweredOff: 8 (Not connected - Powered off).
 	//
-	// - OutOfService: 9 (Not connected - Called party out of service).
+	// - OutOfService: 9 (Not connected - Callee service suspended).
 	//
-	// - InArrears: 10 (Not connected - Called party has overdue payment).
+	// - InArrears: 10 (Not connected - Callee overdue payment).
 	//
-	// - EmptyNumber: 11 (Not dialed - Nonexistent number).
+	// - EmptyNumber: 11 (Not called - Nonexistent number, no outbound call).
 	//
-	// - PerDayCallCountLimit: 12 (Not dialed - Daily limit exceeded).
+	// - PerDayCallCountLimit: 12 (Not called - Daily limit exceeded).
 	//
-	// - ContactBlockList: 13 (Not dialed - Blocked list).
+	// - ContactBlockList: 13 (Not called - Blacklisted).
 	//
-	// - CallerNotRegistered: 14 (Not dialed - Caller number not registered).
+	// - CallerNotRegistered: 14 (Not called - Caller number not registered).
 	//
-	// - Terminated: 15 (Not dialed - Terminated).
+	// - Terminated: 15 (Not called - Terminated).
 	//
-	// - VerificationCancelled: 16 (Not dialed - Pre-call verification failed).
+	// - VerificationCancelled: 16 (Not called - Cancelled due to failed pre-call verification).
 	//
-	// - OutOfServiceNoCall: 17 (Not dialed - Called party out of service).
+	// - OutOfServiceNoCall: 17 (Not called - Callee service suspended, no outbound call).
 	//
-	// - InArrearsNoCall: 18 (Not dialed - Called party has overdue payment).
+	// - InArrearsNoCall: 18 (Not called - Callee overdue payment, no outbound call).
 	//
-	// - CallingNumberNotExist: 19 (Not dialed - Caller number does not exist).
+	// - CallingNumberNotExist: 19 (Not called - Caller number does not exist).
 	//
-	// - SucceededFinish: 20 (Connected - Completed normally).
+	// - SucceededFinish: 20 (Connected - Normally finished).
 	//
-	// - SucceededChatbotHangUpAfterNoAnswer: 21 (Connected - Robot hung up after no recognition).
+	// - SucceededChatbotHangUpAfterNoAnswer: 21 (Connected - Robot hung up after rejection).
 	//
-	// - SucceededChatbotHangUpAfterSilence: 22 (Connected - Silence timeout hang-up).
+	// - SucceededChatbotHangUpAfterSilence: 22 (Connected - Hung up due to silence timeout).
 	//
-	// - SucceededClientHangUpAfterNoAnswer: 23 (Connected - User hung up after no recognition).
+	// - SucceededClientHangUpAfterNoAnswer: 23 (Connected - User hung up after rejection).
 	//
 	// - SucceededClientHangUp: 24 (Connected - User hung up without reason).
 	//
-	// - SucceededTransferByIntent: 25 (Connected - Transferred to agent by intent).
+	// - SucceededTransferByIntent: 25 (Connected - Transferred to agent due to intent match).
 	//
-	// - SucceededTransferAfterNoAnswer: 26 (Connected - Transferred to agent after no recognition).
+	// - SucceededTransferAfterNoAnswer: 26 (Connected - Transferred to agent after rejection).
 	//
-	// - SucceededInoInterAction: 27 (Connected - No interaction from user side).
+	// - SucceededInoInterAction: 27 (Connected - No interaction from the user side).
 	//
-	// - SucceededError: 28 (Connected - System exception interruption).
+	// - SucceededError: 28 (Connected - Interrupted due to system exception).
 	//
-	// - SucceededSpecialInterceptVoiceAssistant: 29 (Connected - Special intercept - Voice assistant).
+	// - SucceededSpecialInterceptVoiceAssistant: 29 (Connected - Special interception - Voice assistant).
 	//
-	// - SucceededSpecialInterceptExtensionNumberTransfer: 30 (Connected - Special intercept - Extension number transfer).
+	// - SucceededSpecialInterceptExtensionNumberTransfer: 30 (Connected - Special interception - Extension number transfer).
 	//
-	// - SucceededSpecialInterceptCustomSpecialIntercept: 31 (Connected - Special intercept - Custom intercept).
+	// - SucceededSpecialInterceptCustomSpecialIntercept: 31 (Connected - Special interception - Custom interception).
 	//
-	// - HighRiskSipCode: 32 (Not dialed - High risk).
+	// - HighRiskSipCode: 32 (Not called - High risk, no outbound call).
 	//
 	// example:
 	//
@@ -1159,13 +1159,13 @@ type QueryJobsResponseBodyJobsListTasksContact struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The honorific title.
+	// The honorific.
 	//
 	// example:
 	//
-	// 张先生
+	// Mr. Zhang
 	Honorific *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
 	// The job ID.
 	//
@@ -1173,7 +1173,7 @@ type QueryJobsResponseBodyJobsListTasksContact struct {
 	//
 	// b72425bd-7871-4050-838e-033d80d754b7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The contact phone number.
+	// The phone number of the contact.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type ListJobGroupsAsyncResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The task list.
+	// The list of job groups.
 	JobGroups []*ListJobGroupsAsyncResponseBodyJobGroups `json:"JobGroups,omitempty" xml:"JobGroups,omitempty" type:"Repeated"`
 	// The response message.
 	//
@@ -90,7 +90,7 @@ type ListJobGroupsAsyncResponseBody struct {
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Indicates whether the result is valid.
+	// Indicates whether the request is valid.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ func (s *ListJobGroupsAsyncResponseBody) Validate() error {
 }
 
 type ListJobGroupsAsyncResponseBodyJobGroups struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -231,25 +231,25 @@ type ListJobGroupsAsyncResponseBodyJobGroups struct {
 	//
 	// {}
 	ExportProgress *ListJobGroupsAsyncResponseBodyJobGroupsExportProgress `json:"ExportProgress,omitempty" xml:"ExportProgress,omitempty" type:"Struct"`
-	// The ID of the jobFile parsing task. [Deprecated]
+	// **[Deprecated]*	- The ID of the jobFile parsing task.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	JobDataParsingTaskId *string `json:"JobDataParsingTaskId,omitempty" xml:"JobDataParsingTaskId,omitempty"`
-	// The task description.
+	// The description of the job group.
 	//
 	// example:
 	//
 	// xxx
 	JobGroupDescription *string `json:"JobGroupDescription,omitempty" xml:"JobGroupDescription,omitempty"`
-	// The task ID.
+	// The ID of the job group.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// The task name.
+	// The name of the job group.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ type ListJobGroupsAsyncResponseBodyJobGroups struct {
 	//
 	// 1
 	MinConcurrency *int32 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
-	// The modification time, in milliseconds.
+	// The modification time in milliseconds.
 	//
 	// example:
 	//
@@ -273,33 +273,33 @@ type ListJobGroupsAsyncResponseBodyJobGroups struct {
 	//
 	// {}
 	Progress *ListJobGroupsAsyncResponseBodyJobGroupsProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
-	// The script ID.
+	// The ID of the script.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The script name.
+	// The name of the script.
 	//
 	// example:
 	//
 	// xxxx
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// The script version.
+	// The version of the script.
 	//
 	// example:
 	//
 	// 111
 	ScriptVersion *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
-	// The task status.
+	// The status of the job group.
 	//
 	// example:
 	//
 	// Scheduling
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The strategy. [Deprecated]
+	// **[Deprecated]*	- The strategy.
 	//
-	// > To view the task strategy information, call the DescribeJobGroup operation.
+	// > To view the strategy information of the job group, call the DescribeJobGroup operation.
 	//
 	// example:
 	//
@@ -476,7 +476,7 @@ func (s *ListJobGroupsAsyncResponseBodyJobGroups) Validate() error {
 }
 
 type ListJobGroupsAsyncResponseBodyJobGroupsExportProgress struct {
-	// The download URL. [Deprecated]
+	// **[Deprecated]*	- The download URL.
 	//
 	// example:
 	//
@@ -536,13 +536,13 @@ func (s *ListJobGroupsAsyncResponseBodyJobGroupsExportProgress) Validate() error
 }
 
 type ListJobGroupsAsyncResponseBodyJobGroupsProgress struct {
-	// The number of cancelled jobs.
+	// The number of canceled jobs.
 	//
 	// example:
 	//
 	// 10
 	CancelledNum *int32 `json:"CancelledNum,omitempty" xml:"CancelledNum,omitempty"`
-	// The total execution duration so far. [Deprecated]
+	// **[Deprecated]*	- The total execution duration up to the current time.
 	//
 	// example:
 	//
@@ -572,7 +572,7 @@ type ListJobGroupsAsyncResponseBodyJobGroupsProgress struct {
 	//
 	// 20
 	Scheduling *int32 `json:"Scheduling,omitempty" xml:"Scheduling,omitempty"`
-	// The start time. [Deprecated]
+	// **[Deprecated]*	- The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -580,21 +580,21 @@ type ListJobGroupsAsyncResponseBodyJobGroupsProgress struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The execution status. Valid values:
 	//
-	// - Draft: Draft.
+	// - Draft: The job group is a draft.
 	//
-	// - Scheduling: Scheduling in progress.
+	// - Scheduling: The job group is being scheduled.
 	//
-	// - Executing: Executing.
+	// - Executing: The job group is being executed.
 	//
-	// - Completed: Completed.
+	// - Completed: The job group is completed.
 	//
-	// - Paused: Paused.
+	// - Paused: The job group is paused.
 	//
-	// - Failed: Failed.
+	// - Failed: The job group failed.
 	//
-	// - Cancelled: Cancelled.
+	// - Cancelled: The job group is canceled.
 	//
-	// - Initializing: Initializing.
+	// - Initializing: The job group is being initialized.
 	//
 	// example:
 	//
@@ -612,7 +612,7 @@ type ListJobGroupsAsyncResponseBodyJobGroupsProgress struct {
 	//
 	// 100
 	TotalJobs *int32 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
-	// The number of unanswered jobs. [Deprecated]
+	// **[Deprecated]*	- The number of unanswered jobs.
 	//
 	// example:
 	//
@@ -732,13 +732,13 @@ func (s *ListJobGroupsAsyncResponseBodyJobGroupsProgress) Validate() error {
 }
 
 type ListJobGroupsAsyncResponseBodyJobGroupsStrategy struct {
-	// The strategy end time.
+	// The end time of the strategy. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1640316786259
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The strategy start time.
+	// The start time of the strategy. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

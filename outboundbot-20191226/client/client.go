@@ -25,9 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shanghai": dara.String("outboundbot.cn-shanghai.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -321,7 +318,7 @@ func (client *Client) CancelJobs(request *CancelJobsRequest) (_result *CancelJob
 
 // Summary:
 //
-// Changes the resource group of a resource.
+// Changes the resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -369,7 +366,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group of a resource.
+// Changes the resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -387,7 +384,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// You can create an intelligent configuration.
+// Creates an agent configuration.
 //
 // @param request - CreateAgentProfileRequest
 //
@@ -483,7 +480,7 @@ func (client *Client) CreateAgentProfileWithOptions(request *CreateAgentProfileR
 
 // Summary:
 //
-// You can create an intelligent configuration.
+// Creates an agent configuration.
 //
 // @param request - CreateAgentProfileRequest
 //
@@ -637,7 +634,7 @@ func (client *Client) CreateAnnotationMission(request *CreateAnnotationMissionRe
 
 // Summary:
 //
-// Deprecated. Do not use this operation to batch-create outbound calling jobs.
+// *[Deprecated]*	- Creates outbound jobs in batches.
 //
 // @param request - CreateBatchJobsRequest
 //
@@ -713,7 +710,7 @@ func (client *Client) CreateBatchJobsWithOptions(request *CreateBatchJobsRequest
 
 // Summary:
 //
-// Deprecated. Do not use this operation to batch-create outbound calling jobs.
+// *[Deprecated]*	- Creates outbound jobs in batches.
 //
 // @param request - CreateBatchJobsRequest
 //
@@ -1064,6 +1061,96 @@ func (client *Client) CreateBeebotIntentUserSay(request *CreateBeebotIntentUserS
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateBeebotIntentUserSayResponse{}
 	_body, _err := client.CreateBeebotIntentUserSayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom script template for a specified script.
+//
+// @param request - CreateCustomScriptTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomScriptTemplateResponse
+func (client *Client) CreateCustomScriptTemplateWithOptions(request *CreateCustomScriptTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomScriptTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LabelsJson) {
+		body["LabelsJson"] = request.LabelsJson
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.PromptJson) {
+		body["PromptJson"] = request.PromptJson
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		body["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomScriptTemplate"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomScriptTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom script template for a specified script.
+//
+// @param request - CreateCustomScriptTemplateRequest
+//
+// @return CreateCustomScriptTemplateResponse
+func (client *Client) CreateCustomScriptTemplate(request *CreateCustomScriptTemplateRequest) (_result *CreateCustomScriptTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCustomScriptTemplateResponse{}
+	_body, _err := client.CreateCustomScriptTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1763,6 +1850,72 @@ func (client *Client) CreateJobGroupExportTask(request *CreateJobGroupExportTask
 
 // Summary:
 //
+// Creates a phone number and associates it with the current tenant.
+//
+// @param request - CreateNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNumberResponse
+func (client *Client) CreateNumberWithOptions(request *CreateNumberRequest, runtime *dara.RuntimeOptions) (_result *CreateNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Numbers) {
+		query["Numbers"] = request.Numbers
+	}
+
+	if !dara.IsNil(request.TrunkId) {
+		query["TrunkId"] = request.TrunkId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNumber"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a phone number and associates it with the current tenant.
+//
+// @param request - CreateNumberRequest
+//
+// @return CreateNumberResponse
+func (client *Client) CreateNumber(request *CreateNumberRequest) (_result *CreateNumberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateNumberResponse{}
+	_body, _err := client.CreateNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Create a scenario.
 //
 // @param request - CreateScriptRequest
@@ -2174,7 +2327,81 @@ func (client *Client) CreateTenantKey(request *CreateTenantKeyRequest) (_result 
 
 // Summary:
 //
-// Deletes Large Language Model (LLM) agents.
+// Creates a cloned voice.
+//
+// @param request - CreateVoiceCloneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVoiceCloneResponse
+func (client *Client) CreateVoiceCloneWithOptions(request *CreateVoiceCloneRequest, runtime *dara.RuntimeOptions) (_result *CreateVoiceCloneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.VoiceName) {
+		query["VoiceName"] = request.VoiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVoiceClone"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVoiceCloneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a cloned voice.
+//
+// @param request - CreateVoiceCloneRequest
+//
+// @return CreateVoiceCloneResponse
+func (client *Client) CreateVoiceClone(request *CreateVoiceCloneRequest) (_result *CreateVoiceCloneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateVoiceCloneResponse{}
+	_body, _err := client.CreateVoiceCloneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a foundation model robot.
 //
 // @param tmpReq - DeleteAgentProfilesRequest
 //
@@ -2228,7 +2455,7 @@ func (client *Client) DeleteAgentProfilesWithOptions(tmpReq *DeleteAgentProfiles
 
 // Summary:
 //
-// Deletes Large Language Model (LLM) agents.
+// Deletes a foundation model robot.
 //
 // @param request - DeleteAgentProfilesRequest
 //
@@ -2246,7 +2473,7 @@ func (client *Client) DeleteAgentProfiles(request *DeleteAgentProfilesRequest) (
 
 // Summary:
 //
-// Deletes all entries from the number district database. This operation is deprecated.
+// Clears the number attribution database. This operation is deprecated.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2275,7 +2502,7 @@ func (client *Client) DeleteAllNumberDistrictInfoWithOptions(runtime *dara.Runti
 
 // Summary:
 //
-// Deletes all entries from the number district database. This operation is deprecated.
+// Clears the number attribution database. This operation is deprecated.
 //
 // @return DeleteAllNumberDistrictInfoResponse
 func (client *Client) DeleteAllNumberDistrictInfo() (_result *DeleteAllNumberDistrictInfoResponse, _err error) {
@@ -2640,6 +2867,72 @@ func (client *Client) DeleteContactWhiteList(request *DeleteContactWhiteListRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteContactWhiteListResponse{}
 	_body, _err := client.DeleteContactWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified custom script template.
+//
+// @param request - DeleteCustomScriptTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomScriptTemplateResponse
+func (client *Client) DeleteCustomScriptTemplateWithOptions(request *DeleteCustomScriptTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomScriptTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentProfileId) {
+		body["AgentProfileId"] = request.AgentProfileId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomScriptTemplate"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomScriptTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified custom script template.
+//
+// @param request - DeleteCustomScriptTemplateRequest
+//
+// @return DeleteCustomScriptTemplateResponse
+func (client *Client) DeleteCustomScriptTemplate(request *DeleteCustomScriptTemplateRequest) (_result *DeleteCustomScriptTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCustomScriptTemplateResponse{}
+	_body, _err := client.DeleteCustomScriptTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3259,11 +3552,77 @@ func (client *Client) DeleteScriptWaveform(request *DeleteScriptWaveformRequest)
 
 // Summary:
 //
-// Retrieves the intent in the small model scenario.
+// Deletes a specified cloned voice. Before deletion, the system checks whether the voice is still referenced by scenarios under the instance. Deletion fails if the voice is referenced.
+//
+// @param request - DeleteVoiceCloneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVoiceCloneResponse
+func (client *Client) DeleteVoiceCloneWithOptions(request *DeleteVoiceCloneRequest, runtime *dara.RuntimeOptions) (_result *DeleteVoiceCloneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.VoiceId) {
+		query["VoiceId"] = request.VoiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVoiceClone"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVoiceCloneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified cloned voice. Before deletion, the system checks whether the voice is still referenced by scenarios under the instance. Deletion fails if the voice is referenced.
+//
+// @param request - DeleteVoiceCloneRequest
+//
+// @return DeleteVoiceCloneResponse
+func (client *Client) DeleteVoiceClone(request *DeleteVoiceCloneRequest) (_result *DeleteVoiceCloneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteVoiceCloneResponse{}
+	_body, _err := client.DeleteVoiceCloneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the intent in a small model scenario.
 //
 // Description:
 //
-// **
+// ***
 //
 // @param request - DescribeBeebotIntentRequest
 //
@@ -3315,11 +3674,11 @@ func (client *Client) DescribeBeebotIntentWithOptions(request *DescribeBeebotInt
 
 // Summary:
 //
-// Retrieves the intent in the small model scenario.
+// Retrieves the intent in a small model scenario.
 //
 // Description:
 //
-// **
+// ***
 //
 // @param request - DescribeBeebotIntentRequest
 //
@@ -3407,7 +3766,7 @@ func (client *Client) DescribeDialogueNodeStatistics(request *DescribeDialogueNo
 
 // Summary:
 //
-// Queries the tag statistics of hits for a job group.
+// Queries the label hit statistics of a job group.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -3455,7 +3814,7 @@ func (client *Client) DescribeDsReportsWithOptions(request *DescribeDsReportsReq
 
 // Summary:
 //
-// Queries the tag statistics of hits for a job group.
+// Queries the label hit statistics of a job group.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -3551,7 +3910,7 @@ func (client *Client) DescribeGlobalQuestion(request *DescribeGlobalQuestionRequ
 
 // Summary:
 //
-// Returns the execution status of tasks in a task group.
+// Retrieves the execution status of jobs in a job group.
 //
 // @param request - DescribeGroupExecutingInfoRequest
 //
@@ -3599,7 +3958,7 @@ func (client *Client) DescribeGroupExecutingInfoWithOptions(request *DescribeGro
 
 // Summary:
 //
-// Returns the execution status of tasks in a task group.
+// Retrieves the execution status of jobs in a job group.
 //
 // @param request - DescribeGroupExecutingInfoRequest
 //
@@ -3617,7 +3976,7 @@ func (client *Client) DescribeGroupExecutingInfo(request *DescribeGroupExecuting
 
 // Summary:
 //
-// Queries the information of an outbound robot business instance.
+// Queries the details of an outbound robot instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3661,7 +4020,7 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 // Summary:
 //
-// Queries the information of an outbound robot business instance.
+// Queries the details of an outbound robot instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3955,7 +4314,7 @@ func (client *Client) DescribeJobDataParsingTaskProgress(request *DescribeJobDat
 
 // Summary:
 //
-// Retrieves data for intelligent outbound call job groups.
+// Queries outbound robot task data.
 //
 // @param request - DescribeJobGroupRequest
 //
@@ -4007,7 +4366,7 @@ func (client *Client) DescribeJobGroupWithOptions(request *DescribeJobGroupReque
 
 // Summary:
 //
-// Retrieves data for intelligent outbound call job groups.
+// Queries outbound robot task data.
 //
 // @param request - DescribeJobGroupRequest
 //
@@ -4091,7 +4450,7 @@ func (client *Client) DescribeJobGroupExportTaskProgress(request *DescribeJobGro
 
 // Summary:
 //
-// Returns information about a script.
+// Retrieves the details of a script.
 //
 // @param request - DescribeScriptRequest
 //
@@ -4139,7 +4498,7 @@ func (client *Client) DescribeScriptWithOptions(request *DescribeScriptRequest, 
 
 // Summary:
 //
-// Returns information about a script.
+// Retrieves the details of a script.
 //
 // @param request - DescribeScriptRequest
 //
@@ -4293,7 +4652,7 @@ func (client *Client) DescribeTTSConfig(request *DescribeTTSConfigRequest) (_res
 
 // Summary:
 //
-// TTS preview.
+// Previews text-to-speech (TTS) audio.
 //
 // @param request - DescribeTTSDemoRequest
 //
@@ -4389,7 +4748,7 @@ func (client *Client) DescribeTTSDemoWithOptions(request *DescribeTTSDemoRequest
 
 // Summary:
 //
-// TTS preview.
+// Previews text-to-speech (TTS) audio.
 //
 // @param request - DescribeTTSDemoRequest
 //
@@ -4637,7 +4996,7 @@ func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueRespo
 
 // Summary:
 //
-// Downloads a call recording.
+// Downloads call recordings.
 //
 // @param request - DownloadRecordingRequest
 //
@@ -4693,7 +5052,7 @@ func (client *Client) DownloadRecordingWithOptions(request *DownloadRecordingReq
 
 // Summary:
 //
-// Downloads a call recording.
+// Downloads call recordings.
 //
 // @param request - DownloadRecordingRequest
 //
@@ -4915,10 +5274,6 @@ func (client *Client) ExportScript(request *ExportScriptRequest) (_result *Expor
 	return _result, _err
 }
 
-// Summary:
-//
-// Upload a hotword list file.
-//
 // @param request - GenerateUploadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4963,10 +5318,6 @@ func (client *Client) GenerateUploadUrlWithOptions(request *GenerateUploadUrlReq
 	return _result, _err
 }
 
-// Summary:
-//
-// Upload a hotword list file.
-//
 // @param request - GenerateUploadUrlRequest
 //
 // @return GenerateUploadUrlResponse
@@ -5049,7 +5400,7 @@ func (client *Client) GetAfterAnswerDelayPlayback(request *GetAfterAnswerDelayPl
 
 // Summary:
 //
-// Retrieves the configuration of an agent.
+// Retrieves the agent configuration.
 //
 // @param request - GetAgentProfileRequest
 //
@@ -5101,7 +5452,7 @@ func (client *Client) GetAgentProfileWithOptions(request *GetAgentProfileRequest
 
 // Summary:
 //
-// Retrieves the configuration of an agent.
+// Retrieves the agent configuration.
 //
 // @param request - GetAgentProfileRequest
 //
@@ -5185,7 +5536,7 @@ func (client *Client) GetAgentProfileTemplate(request *GetAgentProfileTemplateRe
 
 // Summary:
 //
-// null
+// null.
 //
 // @param request - GetAnnotationMissionSummaryRequest
 //
@@ -5229,7 +5580,7 @@ func (client *Client) GetAnnotationMissionSummaryWithOptions(request *GetAnnotat
 
 // Summary:
 //
-// null
+// null.
 //
 // @param request - GetAnnotationMissionSummaryRequest
 //
@@ -5245,6 +5596,10 @@ func (client *Client) GetAnnotationMissionSummary(request *GetAnnotationMissionS
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of annotation tags.
+//
 // @param request - GetAnnotationMissionTagInfoListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5293,6 +5648,10 @@ func (client *Client) GetAnnotationMissionTagInfoListWithOptions(request *GetAnn
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of annotation tags.
+//
 // @param request - GetAnnotationMissionTagInfoListRequest
 //
 // @return GetAnnotationMissionTagInfoListResponse
@@ -5437,7 +5796,7 @@ func (client *Client) GetAssignJobsAsyncResult(request *GetAssignJobsAsyncResult
 
 // Summary:
 //
-// Retrieve the global outbound time periods for the outbound calling system.
+// Retrieves the global outbound calling time periods in the outbound system.
 //
 // @param request - GetBaseStrategyPeriodRequest
 //
@@ -5485,7 +5844,7 @@ func (client *Client) GetBaseStrategyPeriodWithOptions(request *GetBaseStrategyP
 
 // Summary:
 //
-// Retrieve the global outbound time periods for the outbound calling system.
+// Retrieves the global outbound calling time periods in the outbound system.
 //
 // @param request - GetBaseStrategyPeriodRequest
 //
@@ -5626,7 +5985,7 @@ func (client *Client) GetContactBlockList(request *GetContactBlockListRequest) (
 
 // Summary:
 //
-// Retrieves the global outbound call policy whitelist.
+// Queries the global outbound whitelist.
 //
 // @param request - GetContactWhiteListRequest
 //
@@ -5686,7 +6045,7 @@ func (client *Client) GetContactWhiteListWithOptions(request *GetContactWhiteLis
 
 // Summary:
 //
-// Retrieves the global outbound call policy whitelist.
+// Queries the global outbound whitelist.
 //
 // @param request - GetContactWhiteListRequest
 //
@@ -5976,7 +6335,7 @@ func (client *Client) GetMaxAttemptsPerDay(request *GetMaxAttemptsPerDayRequest)
 
 // Summary:
 //
-// Retrieves the download URL for the number library template. This API is deprecated.
+// Retrieves the download URL for a number library template. This operation is deprecated.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6005,7 +6364,7 @@ func (client *Client) GetNumberDistrictInfoTemplateDownloadUrlWithOptions(runtim
 
 // Summary:
 //
-// Retrieves the download URL for the number library template. This API is deprecated.
+// Retrieves the download URL for a number library template. This operation is deprecated.
 //
 // @return GetNumberDistrictInfoTemplateDownloadUrlResponse
 func (client *Client) GetNumberDistrictInfoTemplateDownloadUrl() (_result *GetNumberDistrictInfoTemplateDownloadUrlResponse, _err error) {
@@ -6021,7 +6380,7 @@ func (client *Client) GetNumberDistrictInfoTemplateDownloadUrl() (_result *GetNu
 
 // Summary:
 //
-// Obtains the public key of the asymmetric encryption algorithm.
+// Retrieves the public key of an asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -6058,7 +6417,7 @@ func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runt
 
 // Summary:
 //
-// Obtains the public key of the asymmetric encryption algorithm.
+// Retrieves the public key of an asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -6196,7 +6555,7 @@ func (client *Client) GetSummaryInfo(request *GetSummaryInfoRequest) (_result *G
 
 // Summary:
 //
-// Retrieve a task by its UUID.
+// Retrieves a task by UUID.
 //
 // @param request - GetTaskByUuidRequest
 //
@@ -6236,7 +6595,7 @@ func (client *Client) GetTaskByUuidWithOptions(request *GetTaskByUuidRequest, ru
 
 // Summary:
 //
-// Retrieve a task by its UUID.
+// Retrieves a task by UUID.
 //
 // @param request - GetTaskByUuidRequest
 //
@@ -6509,7 +6868,7 @@ func (client *Client) ListAgentProfiles(request *ListAgentProfilesRequest) (_res
 
 // Summary:
 //
-// Lists the phone numbers bound to the tenant.
+// Queries the numbers bound to a tenant.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6538,7 +6897,7 @@ func (client *Client) ListAllTenantBindNumberBindingWithOptions(runtime *dara.Ru
 
 // Summary:
 //
-// Lists the phone numbers bound to the tenant.
+// Queries the numbers bound to a tenant.
 //
 // @return ListAllTenantBindNumberBindingResponse
 func (client *Client) ListAllTenantBindNumberBinding() (_result *ListAllTenantBindNumberBindingResponse, _err error) {
@@ -6554,7 +6913,7 @@ func (client *Client) ListAllTenantBindNumberBinding() (_result *ListAllTenantBi
 
 // Summary:
 //
-// Lists annotation missions.
+// Retrieves a list of annotation tasks.
 //
 // @param request - ListAnnotationMissionRequest
 //
@@ -6630,7 +6989,7 @@ func (client *Client) ListAnnotationMissionWithOptions(request *ListAnnotationMi
 
 // Summary:
 //
-// Lists annotation missions.
+// Retrieves a list of annotation tasks.
 //
 // @param request - ListAnnotationMissionRequest
 //
@@ -6648,7 +7007,7 @@ func (client *Client) ListAnnotationMission(request *ListAnnotationMissionReques
 
 // Summary:
 //
-// # ListAnnotationMissionSession
+// Lists annotation mission sessions.
 //
 // @param request - ListAnnotationMissionSessionRequest
 //
@@ -6712,7 +7071,7 @@ func (client *Client) ListAnnotationMissionSessionWithOptions(request *ListAnnot
 
 // Summary:
 //
-// # ListAnnotationMissionSession
+// Lists annotation mission sessions.
 //
 // @param request - ListAnnotationMissionSessionRequest
 //
@@ -6804,7 +7163,7 @@ func (client *Client) ListApiPlugins(request *ListApiPluginsRequest) (_result *L
 
 // Summary:
 //
-// Lists intents for small-model scenarios.
+// Queries the list of intents in small model scenarios.
 //
 // @param request - ListBeebotIntentRequest
 //
@@ -6864,7 +7223,7 @@ func (client *Client) ListBeebotIntentWithOptions(request *ListBeebotIntentReque
 
 // Summary:
 //
-// Lists intents for small-model scenarios.
+// Queries the list of intents in small model scenarios.
 //
 // @param request - ListBeebotIntentRequest
 //
@@ -6882,7 +7241,7 @@ func (client *Client) ListBeebotIntent(request *ListBeebotIntentRequest) (_resul
 
 // Summary:
 //
-// Lists the utterance templates for a specified intent in a scenario.
+// Queries the utterance templates for Chatbot intents in small model scenarios.
 //
 // @param request - ListBeebotIntentLgfRequest
 //
@@ -6946,7 +7305,7 @@ func (client *Client) ListBeebotIntentLgfWithOptions(request *ListBeebotIntentLg
 
 // Summary:
 //
-// Lists the utterance templates for a specified intent in a scenario.
+// Queries the utterance templates for Chatbot intents in small model scenarios.
 //
 // @param request - ListBeebotIntentLgfRequest
 //
@@ -7046,7 +7405,7 @@ func (client *Client) ListBeebotIntentUserSay(request *ListBeebotIntentUserSayRe
 
 // Summary:
 //
-// Lists the instances of the Yunxiao Mi chatbot service in Alibaba Cloud.
+// Queries a list of Chatbot instances in the public cloud edition.
 //
 // @param request - ListChatbotInstancesRequest
 //
@@ -7098,7 +7457,7 @@ func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstan
 
 // Summary:
 //
-// Lists the instances of the Yunxiao Mi chatbot service in Alibaba Cloud.
+// Queries a list of Chatbot instances in the public cloud edition.
 //
 // @param request - ListChatbotInstancesRequest
 //
@@ -7107,6 +7466,76 @@ func (client *Client) ListChatbotInstances(request *ListChatbotInstancesRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListChatbotInstancesResponse{}
 	_body, _err := client.ListChatbotInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义场景模板列表
+//
+// @param request - ListCustomScriptTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomScriptTemplatesResponse
+func (client *Client) ListCustomScriptTemplatesWithOptions(request *ListCustomScriptTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomScriptTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomScriptTemplates"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomScriptTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义场景模板列表
+//
+// @param request - ListCustomScriptTemplatesRequest
+//
+// @return ListCustomScriptTemplatesResponse
+func (client *Client) ListCustomScriptTemplates(request *ListCustomScriptTemplatesRequest) (_result *ListCustomScriptTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCustomScriptTemplatesResponse{}
+	_body, _err := client.ListCustomScriptTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7182,7 +7611,7 @@ func (client *Client) ListDialogueFlows(request *ListDialogueFlowsRequest) (_res
 
 // Summary:
 //
-// Queries the list of download tasks in Download Hub.
+// Queries the download center list.
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -7222,7 +7651,7 @@ func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksReq
 
 // Summary:
 //
-// Queries the list of download tasks in Download Hub.
+// Queries the download center list.
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -7372,7 +7801,7 @@ func (client *Client) ListGlobalQuestions(request *ListGlobalQuestionsRequest) (
 
 // Summary:
 //
-// Queries the list of Outbound Bot service instances.
+// Queries a list of outbound robot instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -7432,7 +7861,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 // Summary:
 //
-// Queries the list of Outbound Bot service instances.
+// Queries a list of outbound robot instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -7450,7 +7879,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Query intent for the Annotation Center list.
+// Queries intents in the annotation center list.
 //
 // @param request - ListIntentionsRequest
 //
@@ -7526,7 +7955,7 @@ func (client *Client) ListIntentionsWithOptions(request *ListIntentionsRequest, 
 
 // Summary:
 //
-// Query intent for the Annotation Center list.
+// Queries intents in the annotation center list.
 //
 // @param request - ListIntentionsRequest
 //
@@ -7622,7 +8051,7 @@ func (client *Client) ListIntents(request *ListIntentsRequest) (_result *ListInt
 
 // Summary:
 //
-// Retrieves the list of outbound call task groups.
+// Queries the list of outbound job groups.
 //
 // @param request - ListJobGroupsRequest
 //
@@ -7698,7 +8127,7 @@ func (client *Client) ListJobGroupsWithOptions(request *ListJobGroupsRequest, ru
 
 // Summary:
 //
-// Retrieves the list of outbound call task groups.
+// Queries the list of outbound job groups.
 //
 // @param request - ListJobGroupsRequest
 //
@@ -7716,7 +8145,7 @@ func (client *Client) ListJobGroups(request *ListJobGroupsRequest) (_result *Lis
 
 // Summary:
 //
-// Asynchronously retrieves the list of outbound call task groups. When the Async parameter is specified in the ListJobGroup operation, use this operation to retrieve the results of the asynchronous ListJobGroup call.
+// Retrieves the list of outbound job groups asynchronously. When the Async parameter is specified in a ListJobGroup call, use this operation to retrieve the asynchronous results of the ListJobGroup operation.
 //
 // @param request - ListJobGroupsAsyncRequest
 //
@@ -7756,7 +8185,7 @@ func (client *Client) ListJobGroupsAsyncWithOptions(request *ListJobGroupsAsyncR
 
 // Summary:
 //
-// Asynchronously retrieves the list of outbound call task groups. When the Async parameter is specified in the ListJobGroup operation, use this operation to retrieve the results of the asynchronous ListJobGroup call.
+// Retrieves the list of outbound job groups asynchronously. When the Async parameter is specified in a ListJobGroup call, use this operation to retrieve the asynchronous results of the ListJobGroup operation.
 //
 // @param request - ListJobGroupsAsyncRequest
 //
@@ -8062,7 +8491,7 @@ func (client *Client) ListResourceTags(request *ListResourceTagsRequest) (_resul
 
 // Summary:
 //
-// Retrieves the publication history of the small model for outbound calls.
+// Queries the publish history list for small model outbound calls.
 //
 // @param request - ListScriptPublishHistoriesRequest
 //
@@ -8118,7 +8547,7 @@ func (client *Client) ListScriptPublishHistoriesWithOptions(request *ListScriptP
 
 // Summary:
 //
-// Retrieves the publication history of the small model for outbound calls.
+// Queries the publish history list for small model outbound calls.
 //
 // @param request - ListScriptPublishHistoriesRequest
 //
@@ -8226,7 +8655,7 @@ func (client *Client) ListScriptRecording(request *ListScriptRecordingRequest) (
 
 // Summary:
 //
-// Queries the variables that are currently used in a scenario.
+// Retrieves the variables currently used in the scenario.
 //
 // @param request - ListScriptVariablesRequest
 //
@@ -8278,7 +8707,7 @@ func (client *Client) ListScriptVariablesWithOptions(request *ListScriptVariable
 
 // Summary:
 //
-// Queries the variables that are currently used in a scenario.
+// Retrieves the variables currently used in the scenario.
 //
 // @param request - ListScriptVariablesRequest
 //
@@ -8456,7 +8885,62 @@ func (client *Client) ListScripts(request *ListScriptsRequest) (_result *ListScr
 
 // Summary:
 //
-// Query the tag relationships for resources.
+// Queries the list of SIP trunks.
+//
+// @param request - ListSipTrunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSipTrunksResponse
+func (client *Client) ListSipTrunksWithOptions(request *ListSipTrunksRequest, runtime *dara.RuntimeOptions) (_result *ListSipTrunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSipTrunks"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSipTrunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of SIP trunks.
+//
+// @param request - ListSipTrunksRequest
+//
+// @return ListSipTrunksResponse
+func (client *Client) ListSipTrunks(request *ListSipTrunksRequest) (_result *ListSipTrunksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSipTrunksResponse{}
+	_body, _err := client.ListSipTrunksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries resource tag relationships.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -8516,7 +9000,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Query the tag relationships for resources.
+// Queries resource tag relationships.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -8600,7 +9084,81 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 
 // Summary:
 //
-// Modify the agent configuration.
+// Performs a paged query to retrieve the list of cloned voices for an instance by using paging.
+//
+// @param request - ListVoiceCloneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVoiceCloneResponse
+func (client *Client) ListVoiceCloneWithOptions(request *ListVoiceCloneRequest, runtime *dara.RuntimeOptions) (_result *ListVoiceCloneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVoiceClone"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVoiceCloneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query to retrieve the list of cloned voices for an instance by using paging.
+//
+// @param request - ListVoiceCloneRequest
+//
+// @return ListVoiceCloneResponse
+func (client *Client) ListVoiceClone(request *ListVoiceCloneRequest) (_result *ListVoiceCloneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVoiceCloneResponse{}
+	_body, _err := client.ListVoiceCloneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the agent configuration.
 //
 // @param tmpReq - ModifyAgentProfileRequest
 //
@@ -8698,7 +9256,7 @@ func (client *Client) ModifyAgentProfileWithOptions(tmpReq *ModifyAgentProfileRe
 
 // Summary:
 //
-// Modify the agent configuration.
+// Modifies the agent configuration.
 //
 // @param request - ModifyAgentProfileRequest
 //
@@ -8716,7 +9274,7 @@ func (client *Client) ModifyAgentProfile(request *ModifyAgentProfileRequest) (_r
 
 // Summary:
 //
-// Updates the status and name of an annotation task.
+// Modifies the status and name of an annotation task.
 //
 // @param request - ModifyAnnotationMissionRequest
 //
@@ -8772,7 +9330,7 @@ func (client *Client) ModifyAnnotationMissionWithOptions(request *ModifyAnnotati
 
 // Summary:
 //
-// Updates the status and name of an annotation task.
+// Modifies the status and name of an annotation task.
 //
 // @param request - ModifyAnnotationMissionRequest
 //
@@ -9128,7 +9686,7 @@ func (client *Client) ModifyBeebotIntentUserSay(request *ModifyBeebotIntentUserS
 
 // Summary:
 //
-// Modifies a dialogue flow. This is a legacy API for the canvas.
+// Modifies a dialog flow. This is a legacy canvas operation.
 //
 // @param request - ModifyDialogueFlowRequest
 //
@@ -9188,7 +9746,7 @@ func (client *Client) ModifyDialogueFlowWithOptions(request *ModifyDialogueFlowR
 
 // Summary:
 //
-// Modifies a dialogue flow. This is a legacy API for the canvas.
+// Modifies a dialog flow. This is a legacy canvas operation.
 //
 // @param request - ModifyDialogueFlowRequest
 //
@@ -9362,7 +9920,7 @@ func (client *Client) ModifyGlobalQuestion(request *ModifyGlobalQuestionRequest)
 
 // Summary:
 //
-// Modifies an Outbound Bot instance.
+// Modifies an outbound robot instance.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -9422,7 +9980,7 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 
 // Summary:
 //
-// Modifies an Outbound Bot instance.
+// Modifies an outbound robot instance.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -9526,7 +10084,7 @@ func (client *Client) ModifyIntent(request *ModifyIntentRequest) (_result *Modif
 
 // Summary:
 //
-// Modify an intelligent outbound call task group.
+// Modifies an outbound robot job group.
 //
 // @param request - ModifyJobGroupRequest
 //
@@ -9626,7 +10184,7 @@ func (client *Client) ModifyJobGroupWithOptions(request *ModifyJobGroupRequest, 
 
 // Summary:
 //
-// Modify an intelligent outbound call task group.
+// Modifies an outbound robot job group.
 //
 // @param request - ModifyJobGroupRequest
 //
@@ -10126,6 +10684,80 @@ func (client *Client) ModifyTagGroups(request *ModifyTagGroupsRequest) (_result 
 
 // Summary:
 //
+// 修改声音克隆
+//
+// @param request - ModifyVoiceCloneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVoiceCloneResponse
+func (client *Client) ModifyVoiceCloneWithOptions(request *ModifyVoiceCloneRequest, runtime *dara.RuntimeOptions) (_result *ModifyVoiceCloneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.VoiceId) {
+		query["VoiceId"] = request.VoiceId
+	}
+
+	if !dara.IsNil(request.VoiceName) {
+		query["VoiceName"] = request.VoiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyVoiceClone"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyVoiceCloneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改声音克隆
+//
+// @param request - ModifyVoiceCloneRequest
+//
+// @return ModifyVoiceCloneResponse
+func (client *Client) ModifyVoiceClone(request *ModifyVoiceCloneRequest) (_result *ModifyVoiceCloneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyVoiceCloneResponse{}
+	_body, _err := client.ModifyVoiceCloneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Publishing a scenario
 //
 // @param request - PublishScriptRequest
@@ -10544,7 +11176,7 @@ func (client *Client) QueryScriptWaveforms(request *QueryScriptWaveformsRequest)
 
 // Summary:
 //
-// Queries scenario information by status.
+// Queries scenario information based on the scenario status.
 //
 // @param request - QueryScriptsByStatusRequest
 //
@@ -10600,7 +11232,7 @@ func (client *Client) QueryScriptsByStatusWithOptions(request *QueryScriptsBySta
 
 // Summary:
 //
-// Queries scenario information by status.
+// Queries scenario information based on the scenario status.
 //
 // @param request - QueryScriptsByStatusRequest
 //
@@ -10618,7 +11250,7 @@ func (client *Client) QueryScriptsByStatus(request *QueryScriptsByStatusRequest)
 
 // Summary:
 //
-// CC sends the call failure reason to the outbound calling system. This operation is deprecated.
+// *[Deprecated]*	- Submits the cause of a call failure to the outbound call business system.
 //
 // @param request - RecordFailureRequest
 //
@@ -10690,7 +11322,7 @@ func (client *Client) RecordFailureWithOptions(request *RecordFailureRequest, ru
 
 // Summary:
 //
-// CC sends the call failure reason to the outbound calling system. This operation is deprecated.
+// *[Deprecated]*	- Submits the cause of a call failure to the outbound call business system.
 //
 // @param request - RecordFailureRequest
 //
@@ -10930,7 +11562,7 @@ func (client *Client) SaveAfterAnswerDelayPlayback(request *SaveAfterAnswerDelay
 
 // Summary:
 //
-// You can save a list of annotation chat instances.
+// Saves the list of annotated chat instances.
 //
 // @param request - SaveAnnotationMissionSessionListRequest
 //
@@ -10998,7 +11630,7 @@ func (client *Client) SaveAnnotationMissionSessionListWithOptions(request *SaveA
 
 // Summary:
 //
-// You can save a list of annotation chat instances.
+// Saves the list of annotated chat instances.
 //
 // @param request - SaveAnnotationMissionSessionListRequest
 //
@@ -11016,7 +11648,7 @@ func (client *Client) SaveAnnotationMissionSessionList(request *SaveAnnotationMi
 
 // Summary:
 //
-// Saves instance tags in a batch.
+// Saves instance tag information in batches.
 //
 // @param request - SaveAnnotationMissionTagInfoListRequest
 //
@@ -11072,7 +11704,7 @@ func (client *Client) SaveAnnotationMissionTagInfoListWithOptions(request *SaveA
 
 // Summary:
 //
-// Saves instance tags in a batch.
+// Saves instance tag information in batches.
 //
 // @param request - SaveAnnotationMissionTagInfoListRequest
 //
@@ -11452,7 +12084,7 @@ func (client *Client) SaveMaxAttemptsPerDay(request *SaveMaxAttemptsPerDayReques
 
 // Summary:
 //
-// Search for tasks.
+// Queries tasks.
 //
 // @param request - SearchTaskRequest
 //
@@ -11492,7 +12124,7 @@ func (client *Client) SearchTaskWithOptions(request *SearchTaskRequest, runtime 
 
 // Summary:
 //
-// Search for tasks.
+// Queries tasks.
 //
 // @param request - SearchTaskRequest
 //
@@ -11723,6 +12355,80 @@ func (client *Client) SubmitRecording(request *SubmitRecordingRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitRecordingResponse{}
 	_body, _err := client.SubmitRecordingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits the pre-review approval or rejection result for a script review record under a specified instance for a whitelisted tenant, and returns the updated script information.
+//
+// @param request - SubmitScriptPreReviewResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitScriptPreReviewResultResponse
+func (client *Client) SubmitScriptPreReviewResultWithOptions(request *SubmitScriptPreReviewResultRequest, runtime *dara.RuntimeOptions) (_result *SubmitScriptPreReviewResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !dara.IsNil(request.RejectReason) {
+		query["RejectReason"] = request.RejectReason
+	}
+
+	if !dara.IsNil(request.ReviewResult) {
+		query["ReviewResult"] = request.ReviewResult
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitScriptPreReviewResult"),
+		Version:     dara.String("2019-12-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitScriptPreReviewResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits the pre-review approval or rejection result for a script review record under a specified instance for a whitelisted tenant, and returns the updated script information.
+//
+// @param request - SubmitScriptPreReviewResultRequest
+//
+// @return SubmitScriptPreReviewResultResponse
+func (client *Client) SubmitScriptPreReviewResult(request *SubmitScriptPreReviewResultRequest) (_result *SubmitScriptPreReviewResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitScriptPreReviewResultResponse{}
+	_body, _err := client.SubmitScriptPreReviewResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12110,7 +12816,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Prepares a task for execution.
+// Prepares a node for execution.
 //
 // @param request - TaskPreparingRequest
 //
@@ -12162,7 +12868,7 @@ func (client *Client) TaskPreparingWithOptions(request *TaskPreparingRequest, ru
 
 // Summary:
 //
-// Prepares a task for execution.
+// Prepares a node for execution.
 //
 // @param request - TaskPreparingRequest
 //
@@ -12324,7 +13030,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Upload recording files.
+// Uploads a recording file.
 //
 // @param request - UploadScriptRecordingRequest
 //
@@ -12384,7 +13090,7 @@ func (client *Client) UploadScriptRecordingWithOptions(request *UploadScriptReco
 
 // Summary:
 //
-// Upload recording files.
+// Uploads a recording file.
 //
 // @param request - UploadScriptRecordingRequest
 //

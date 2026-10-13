@@ -54,7 +54,7 @@ type ModifyOutboundCallNumberRequest struct {
 	//
 	// 10
 	RateLimitCount *int32 `json:"RateLimitCount,omitempty" xml:"RateLimitCount,omitempty"`
-	// The rate limit period. Unit: seconds.
+	// The rate limit period, in seconds.
 	//
 	// This parameter is required.
 	//

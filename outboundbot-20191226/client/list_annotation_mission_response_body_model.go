@@ -24,33 +24,33 @@ type iListAnnotationMissionResponseBody interface {
 }
 
 type ListAnnotationMissionResponseBody struct {
-	// Response code
+	// The response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data
+	// The data.
 	Data *ListAnnotationMissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Additional information. Returns success for normal requests. Returns a specific error code for abnormal requests.
+	// The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// CDR \\"job-c7b8a817-b8e8-40f3-b7ad-f28dcea218ff\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded. true: succeeded. false: failed.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
@@ -130,39 +130,39 @@ func (s *ListAnnotationMissionResponseBody) Validate() error {
 }
 
 type ListAnnotationMissionResponseBodyData struct {
-	// Annotation mission list
+	// The list of annotation tasks.
 	AnnotationMissionList []*ListAnnotationMissionResponseBodyDataAnnotationMissionList `json:"AnnotationMissionList,omitempty" xml:"AnnotationMissionList,omitempty" type:"Repeated"`
-	// Additional information. Returns success for normal requests. Returns a specific error code for abnormal requests.
+	// The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// CDR \\"job-c7b8a817-b8e8-40f3-b7ad-f28dcea218ff\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// Number of entries per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the call succeeded. true: succeeded. false: failed.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
 	// 30
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -255,131 +255,131 @@ func (s *ListAnnotationMissionResponseBodyData) Validate() error {
 }
 
 type ListAnnotationMissionResponseBodyDataAnnotationMissionList struct {
-	// Annotation data source type. 1: Outbound call. 2: Navigation.
+	// The data source of the annotation task. Valid values: 1: Outbound call. 2: Navigation.
 	//
 	// example:
 	//
 	// 1
 	AnnotationMissionDataSourceType *int32 `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
-	// Annotation debug data source list
+	// The list of debug data sources for the annotation task.
 	//
-	// > The response includes an extra 0. Valid responses are [0,1], [0,2], or [0,1,2].
+	// > Note: An additional 0 is included in the response. The return values are [0,1], [0,2], or [0,1,2].
 	AnnotationMissionDebugDataSourceList []*int32 `json:"AnnotationMissionDebugDataSourceList,omitempty" xml:"AnnotationMissionDebugDataSourceList,omitempty" type:"Repeated"`
-	// Mission ID
+	// The task ID.
 	//
 	// example:
 	//
 	// ddce607f-f537-4ebd-9914-cf45671defb9
 	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
-	// Mission name
+	// The task name.
 	//
 	// example:
 	//
-	// 体验场景--移车-标注任务-20230220-141347
+	// Experience scenario - Move vehicle - Annotation task - 20230220-141347
 	AnnotationMissionName *string `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
-	// Annotation status
+	// The annotation status. Valid values:
 	//
-	// - 1: In progress
+	// - 1: In progress.
 	//
-	// - 2: Completed
+	// - 2: Completed.
 	//
-	// - 3: Closed
+	// - 3: Closed.
 	//
 	// example:
 	//
 	// 1
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
-	// End time of the conversation time query condition for the annotation mission
+	// The end time of the conversation time query condition for the annotation task.
 	//
 	// example:
 	//
 	// 1684511999000
 	ConversationTimeEndFilter *int64 `json:"ConversationTimeEndFilter,omitempty" xml:"ConversationTimeEndFilter,omitempty"`
-	// Start time of the conversation time query condition for the annotation mission
+	// The start time of the conversation time query condition for the annotation task.
 	//
 	// example:
 	//
 	// 1683216000000
 	ConversationTimeStartFilter *int64 `json:"ConversationTimeStartFilter,omitempty" xml:"ConversationTimeStartFilter,omitempty"`
-	// Creation time
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1676170339515
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether to exclude call records already annotated in other missions
+	// Indicates whether to exclude call records that have been annotated in other tasks.
 	//
 	// example:
 	//
 	// false
 	ExcludeOtherMissionSession *bool `json:"ExcludeOtherMissionSession,omitempty" xml:"ExcludeOtherMissionSession,omitempty"`
-	// Completion time of the annotation mission
+	// The completion time of the annotation task. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1683443903785
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 32be9d94-1346-4c4a-a4d0-ccd379f87013
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Maximum sampling count limit
+	// The maximum limit for the sampling count.
 	//
 	// example:
 	//
 	// 1
 	SamplingCount *int32 `json:"SamplingCount,omitempty" xml:"SamplingCount,omitempty"`
-	// Sampling description
+	// The sampling description.
 	//
 	// example:
 	//
-	// 标注
+	// Annotation
 	SamplingDescription *string `json:"SamplingDescription,omitempty" xml:"SamplingDescription,omitempty"`
-	// Sampling rate
+	// The sampling rate.
 	//
 	// example:
 	//
 	// 1
 	SamplingRate *int32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	// Sampling type
+	// The sampling type.
 	//
 	// example:
 	//
 	// 1
 	SamplingType *int32 `json:"SamplingType,omitempty" xml:"SamplingType,omitempty"`
-	// List of session end reason types used when creating the mission
+	// The list of call end reasons used to create the task. Valid values:
 	//
-	// - 1: Normal completion
+	// - 1: Normal completion.
 	//
-	// - 2: Bot hangup after rejection
+	// - 2: Hang up by the robot after unrecognized input.
 	//
-	// - 3: Hangup due to silence timeout
+	// - 3: Hang up due to silence timeout.
 	//
-	// - 4: User hangup after rejection
+	// - 4: Hang up by the user after unrecognized input.
 	//
-	// - 5: User hangup without reason
+	// - 5: Hang up by the user without a reason.
 	//
-	// - 6: Transfer to agent after intent match
+	// - 6: Transfer to a human agent due to intent match.
 	//
-	// - 7: Transfer to agent after rejection
+	// - 7: Transfer to a human agent after unrecognized input.
 	//
-	// - 8: No interaction from user side
+	// - 8: No interaction on the user side.
 	//
-	// - 9: System exception interruption
+	// - 9: Interruption due to a system exception.
 	//
-	// - 10: Transfer to IVR after intent match
+	// - 10: Transfer to IVR due to intent match.
 	//
-	// - 11: Transfer to IVR after rejection
+	// - 11: Transfer to IVR after unrecognized input.
 	SessionEndReasonFilterList []*int32 `json:"SessionEndReasonFilterList,omitempty" xml:"SessionEndReasonFilterList,omitempty" type:"Repeated"`
-	// Number of completed sessions in the annotation mission
+	// The number of completed sessions in the annotation task.
 	//
 	// example:
 	//
 	// 1
 	SessionFinishCount *int32 `json:"SessionFinishCount,omitempty" xml:"SessionFinishCount,omitempty"`
-	// Total number of sessions in the annotation mission
+	// The total number of sessions in the annotation task.
 	//
 	// example:
 	//

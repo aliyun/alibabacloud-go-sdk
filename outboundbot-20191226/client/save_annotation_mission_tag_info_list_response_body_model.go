@@ -24,13 +24,13 @@ type iSaveAnnotationMissionTagInfoListResponseBody interface {
 }
 
 type SaveAnnotationMissionTagInfoListResponseBody struct {
-	// The status code of the API call.
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data.
 	Data *SaveAnnotationMissionTagInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type SaveAnnotationMissionTagInfoListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned for the API call.
+	// The API response message.
 	//
 	// example:
 	//
@@ -50,7 +50,11 @@ type SaveAnnotationMissionTagInfoListResponseBody struct {
 	//
 	// 1B356EDC-F69A-53B0-B4AF-2AC42200684E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates that the call was successful. A value of false indicates that the call failed.
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -130,19 +134,19 @@ func (s *SaveAnnotationMissionTagInfoListResponseBody) Validate() error {
 }
 
 type SaveAnnotationMissionTagInfoListResponseBodyData struct {
-	// The number of successful operations.
+	// The number of successfully executed operations.
 	//
 	// example:
 	//
 	// 1
 	ExecCount *int32 `json:"ExecCount,omitempty" xml:"ExecCount,omitempty"`
-	// The message returned for the API call.
+	// The API response message.
 	//
 	// example:
 	//
 	// 执行失败：查找元素或操作超时，outTaskId：trademark_regnew_public_cn-uax33hol2uu，flowId：null，nodeUUID：541b6c71-8cce-4ab0-af84-713ca9741821
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

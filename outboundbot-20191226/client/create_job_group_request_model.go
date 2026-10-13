@@ -38,9 +38,9 @@ type iCreateJobGroupRequest interface {
 }
 
 type CreateJobGroupRequest struct {
-	// The list of calling numbers. If not specified, all numbers bound to the instance are selected by default.
+	// The list of caller numbers. If not specified, all numbers bound to the instance are selected by default.
 	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	// The configuration parameters for flash SMS in JSON format, including third-party flash SMS configuration information.
+	// The configuration parameters for flash SMS push in JSON format, including the configuration information of third-party flash SMS.
 	//
 	// - templateId: the flash SMS template ID.
 	//
@@ -48,11 +48,11 @@ type CreateJobGroupRequest struct {
 	//
 	// - templateContent: the flash SMS content.
 	//
-	// > Obtain the value of templateContent from the corresponding flash SMS capability provider.
+	// > The value of templateContent must be obtained from the corresponding flash SMS capability partner.
 	//
 	// example:
 	//
-	// {"templateId":"104xx","configId":"8037f524-6fxxxxx", "templateContent": "【智能外呼机器人】给您来电，敬请接听！"}
+	// {"templateId":"104xx","configId":"8037f524-6fxxxxx", "templateContent": "[Outbound Robot] is calling you. Please answer!"}
 	FlashSmsExtras *string `json:"FlashSmsExtras,omitempty" xml:"FlashSmsExtras,omitempty"`
 	// The instance ID.
 	//
@@ -62,51 +62,51 @@ type CreateJobGroupRequest struct {
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The task description.
+	// The description of the job.
 	//
 	// example:
 	//
-	// 任务描述
+	// Job description
 	JobGroupDescription *string `json:"JobGroupDescription,omitempty" xml:"JobGroupDescription,omitempty"`
-	// The task name.
+	// The name of the job.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 第一个任务
+	// First job
 	JobGroupName *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
-	// The guaranteed concurrency value.
+	// The guaranteed concurrency.
 	//
-	// - When the task starts, a minimum of N concurrent calls are guaranteed.
+	// - When the job starts, a minimum of N concurrent calls are guaranteed.
 	//
-	// - The sum of guaranteed concurrency values for tasks with the same priority cannot exceed the instance concurrency.
+	// - The sum of guaranteed concurrency for jobs of the same priority cannot exceed the instance concurrency.
 	//
-	// - If the guaranteed concurrency value is set to 0, the system intelligently allocates idle concurrency.
+	// - If the guaranteed concurrency is set to 0, the system intelligently allocates idle concurrency.
 	//
 	// example:
 	//
 	// 1
 	MinConcurrency *int64 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
-	// The job group priority. Valid values:
+	// The priority of the job group. Valid values:
 	//
-	// - **Urgent**: urgent task.
+	// - **Urgent**: urgent job.
 	//
-	// - **Daily**: daily task.
+	// - **Daily**: daily job.
 	//
 	// example:
 	//
 	// Daily
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The list of redial calling numbers.
+	// The list of caller numbers for redialing.
 	RecallCallingNumber []*string `json:"RecallCallingNumber,omitempty" xml:"RecallCallingNumber,omitempty" type:"Repeated"`
-	// The redial strategy in JSON format. Parameter values default to false.
+	// The redial strategy in JSON format. The default value of the parameters in the JSON object is false.
 	//
-	// - **emptyNumberIgnore**: does not call nonexistent numbers.
+	// - **emptyNumberIgnore**: specifies whether to skip nonexistent numbers.
 	//
-	// - **inArrearsIgnore**: does not call numbers with overdue payments.
+	// - **inArrearsIgnore**: specifies whether to skip numbers with overdue payments.
 	//
-	// - **outOfServiceIgnore**: does not call numbers that are out of service.
+	// - **outOfServiceIgnore**: specifies whether to skip suspended numbers.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type CreateJobGroupRequest struct {
 	//
 	// 25
 	RingingDuration *int64 `json:"RingingDuration,omitempty" xml:"RingingDuration,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
@@ -130,31 +130,31 @@ type CreateJobGroupRequest struct {
 	//
 	// b9ff4e88-65f9-4eb3-987c-11ba51f3f24d
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The task execution strategy.
+	// The execution strategy of the job.
 	//
-	// - repeatBy: the repeat type. Valid values: Once (no repeat), Week (repeat weekly), and Month (repeat monthly).
+	// - repeatBy: the repetition type. Valid values: Once (no repetition), Week (weekly repetition), and Month (monthly repetition).
 	//
-	// - startTime: the strategy start time for time-based execution.
+	// - startTime: the start time of the time-based strategy.
 	//
-	// - endTime: the strategy end time for time-based execution.
+	// - endTime: the end time of the time-based strategy.
 	//
-	// > The execution mode is determined as follows:
+	// > Execution methods:
 	//
-	// > - If no strategy start time or end time is specified, the task is executed immediately.
+	// > - If the start and end times of the strategy are not specified, the execution method is immediate execution.
 	//
-	// > - If a strategy time is specified, the task is executed based on the schedule. You must also specify the repeat type repeatBy.
+	// > - If the strategy time is specified, the job is executed based on the time, and the repetition type repeatBy must be selected.
 	//
-	// - workingTime: the time window during which outbound calls can be made.
+	// - workingTime: the time period during which outbound calls can be made.
 	//
-	// - maxAttemptsPerDay: the maximum number of call attempts per day for each number in the task.
+	// - maxAttemptsPerDay: the maximum number of call attempts per day for numbers under this job.
 	//
-	// - minAttemptInterval: the retry interval for a number, in minutes.
+	// - minAttemptInterval: the retry interval for numbers, in minutes.
 	//
-	// - routingStrategy: the number strategy. Valid values: None (not specified), LocalFirst (local city numbers preferred), and LocalProvinceFirst (local province numbers preferred).
+	// - routingStrategy: the number strategy. Valid values: None (not specified), LocalFirst (local numbers first), and LocalProvinceFirst (local province numbers first).
 	//
-	// - repeatDays: the execution days corresponding to the repeat type. If RepeatBy is set to Week, 0 indicates Sunday and 1-6 indicate Monday through Saturday. If RepeatBy is set to Month, 1-31 indicate the 1st through 31st day. The task is not executed in months that do not have the specified day. For example, if the 30th is selected, the task is not executed in February.
+	// - repeatDays: the execution days corresponding to the repetition type. If the repetition type RepeatBy is Week, 0 represents Sunday, and 1 to 6 represent Monday to Saturday. If the repetition cycle RepeatBy is Month, 1 to 31 represent the 1st to the 31st day. Months without the specified date are not executed. For example, if the 30th is selected, the job is not executed in February.
 	//
-	// - repeatable: specifies whether to enable cyclic tasks. Valid values: true and false.
+	// - repeatable: specifies whether to enable cyclic jobs. Valid values: true and false.
 	//
 	// example:
 	//

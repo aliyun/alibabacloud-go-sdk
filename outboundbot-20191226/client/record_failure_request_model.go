@@ -28,7 +28,7 @@ type iRecordFailureRequest interface {
 }
 
 type RecordFailureRequest struct {
-	// Call start time
+	// The start time of the call. The value is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type RecordFailureRequest struct {
 	//
 	// 1579055782000
 	ActualTime *int64 `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
-	// Call ID
+	// The call ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RecordFailureRequest struct {
 	//
 	// 4f21446e-324e-46f2-bf62-7f341fb004ea
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// Called number
+	// The called number.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type RecordFailureRequest struct {
 	//
 	// 135815****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// Calling number
+	// The calling number.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type RecordFailureRequest struct {
 	//
 	// 10086
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// Failure reason.
+	// The cause of the failure. Valid values:
 	//
-	// - Nonexistent number (NotExists)
+	// - NotExists: nonexistent number.
 	//
-	// - Busy (Busy)
+	// - Busy: busy.
 	//
-	// - No answer (NotAnswered)
+	// - NotAnswered: not answered.
 	//
 	// This parameter is required.
 	//
@@ -74,19 +74,19 @@ type RecordFailureRequest struct {
 	//
 	// NotExists
 	DispositionCode *string `json:"DispositionCode,omitempty" xml:"DispositionCode,omitempty"`
-	// Error code when the outbound call fails.
+	// The error codes that occur when the outbound call fails. Valid values:
 	//
-	// - Nonexistent number (NotExists)
+	// - NotExists: nonexistent number.
 	//
-	// - Busy (Busy)
+	// - Busy: busy.
 	//
-	// - No answer (NotAnswered)
+	// - NotAnswered: not answered.
 	//
 	// example:
 	//
 	// NotExists
 	ExceptionCodes *string `json:"ExceptionCodes,omitempty" xml:"ExceptionCodes,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type RecordFailureRequest struct {
 	//
 	// 9ab43460-c0b9-40e2-8447-48d82c97fc67
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// This parameter is required.
 	//

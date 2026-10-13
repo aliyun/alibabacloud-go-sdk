@@ -24,33 +24,37 @@ type iModifyAnnotationMissionResponseBody interface {
 }
 
 type ModifyAnnotationMissionResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response data.
+	// The returned data.
 	Data *ModifyAnnotationMissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The operation is not allowed. User state (DIALING) does not meet expectations (READY).
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded. true: The call succeeded. false: The call failed.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -130,13 +134,13 @@ func (s *ModifyAnnotationMissionResponseBody) Validate() error {
 }
 
 type ModifyAnnotationMissionResponseBodyData struct {
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The operation is not allowed. User state (DIALING) does not meet expectations (READY).
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation succeeded.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

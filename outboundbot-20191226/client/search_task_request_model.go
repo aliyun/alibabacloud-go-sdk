@@ -62,43 +62,43 @@ type iSearchTaskRequest interface {
 }
 
 type SearchTaskRequest struct {
-	// Call start time
+	// The start time of the call.
 	//
 	// example:
 	//
 	// 1646582400000
 	ActualTimeGte *int64 `json:"ActualTimeGte,omitempty" xml:"ActualTimeGte,omitempty"`
-	// Call end time
+	// The end time of the call.
 	//
 	// example:
 	//
 	// 1643126399000
 	ActualTimeLte *int64 `json:"ActualTimeLte,omitempty" xml:"ActualTimeLte,omitempty"`
-	// Minimum call duration, in milliseconds
+	// The minimum call duration for the search, in milliseconds.
 	//
 	// example:
 	//
 	// 12341155
 	CallDurationGte *int64 `json:"CallDurationGte,omitempty" xml:"CallDurationGte,omitempty"`
-	// Maximum call duration, in milliseconds
+	// The maximum call duration for the search, in milliseconds.
 	//
 	// example:
 	//
 	// 12341155
 	CallDurationLte *int64 `json:"CallDurationLte,omitempty" xml:"CallDurationLte,omitempty"`
-	// Called number
+	// The called number.
 	//
 	// example:
 	//
 	// 15126426342
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// Calling number
+	// The calling number.
 	//
 	// example:
 	//
 	// 051085500215
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -106,49 +106,49 @@ type SearchTaskRequest struct {
 	//
 	// d481cebe-0bb6-4d13-9649-42ce5074fb75
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Job group ID
+	// The job group ID.
 	//
 	// example:
 	//
 	// 3a30ae7c-27b2-4305-9444-7185ced9d51f
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// Job group name
+	// The name of the job group.
 	//
 	// example:
 	//
-	// 国寿财住院保续保_20220301_134130
+	// ChinaLifePCHospitalizationInsuranceRenewal_20220301_134130
 	JobGroupNameQuery *string `json:"JobGroupNameQuery,omitempty" xml:"JobGroupNameQuery,omitempty"`
-	// Job ID
+	// The job ID.
 	//
 	// example:
 	//
 	// 11994321-e6bc-47bb-8b1c-8eef8f2f768b
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Job status. Separate multiple statuses with commas. If you specify this parameter, it overrides jobStatusList.
+	// The job statuses. Separate multiple statuses with commas (,). If this field is not empty, it overwrites jobStatusList. Valid values:
 	//
 	// - Scheduling: The job is being scheduled.
 	//
-	// - Executing: The job is running.
+	// - Executing: The job is being executed.
 	//
-	// - Succeeded: The job completed successfully.
+	// - Succeeded: The job is finished and the called party is reached.
 	//
-	// - Paused: The job was paused.
+	// - Paused: The job is stopped.
 	//
-	// - Failed: The job failed.
+	// - Failed: The job is finished but the called party is not reached.
 	//
-	// - Cancelled: The job was cancelled.
+	// - Cancelled: The job is canceled.
 	//
 	// example:
 	//
 	// Succeeded
 	JobStatusStringList *string `json:"JobStatusStringList,omitempty" xml:"JobStatusStringList,omitempty"`
-	// Label-based filter condition for calls
+	// The filter conditions for call labels.
 	//
-	// > You can only use labels that have specific enumeration values. For example, labels configured with specific values in Large Language Model (LLM) scenarios.
+	// > You can only filter by labels that are configured with specific enumerated label values, which means labels configured with specific values in large language model scenarios.
 	LabelsJson []*string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty" type:"Repeated"`
-	// Other ID
+	// The other IDs.
 	//
-	// **Valid values include the following:**
+	// **This includes the following IDs:**
 	//
 	// - sessionID
 	//
@@ -160,23 +160,23 @@ type SearchTaskRequest struct {
 	//
 	// AVD-2021-39685
 	OtherId *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
-	// Page number
+	// The page number.
 	//
-	// > The first page is 0.
+	// > Page numbers for this API operation start from 0 by default.
 	//
 	// example:
 	//
 	// 2
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// Number of items per page
+	// The number of entries per page.
 	//
-	// > If you omit this parameter, the default value is 10.
+	// > If this parameter is left empty, the default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Minimum ring duration, in seconds
+	// The minimum ringing duration for the search.
 	//
 	// example:
 	//
@@ -188,133 +188,131 @@ type SearchTaskRequest struct {
 	//
 	// 60
 	RecordingDurationLte *int64 `json:"RecordingDurationLte,omitempty" xml:"RecordingDurationLte,omitempty"`
-	// Scenario name
+	// The scenario name.
 	//
 	// example:
 	//
-	// 国寿财
+	// China Life P&C
 	ScriptNameQuery *string `json:"ScriptNameQuery,omitempty" xml:"ScriptNameQuery,omitempty"`
-	// Sort field. Default value: actualTime
+	// The sort field. Default value: actualTime.
 	//
 	// example:
 	//
 	// actualTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Sort order. Valid values:
+	// The sort order. Valid values:
 	//
-	// - asc (ascending)
+	// - asc: Ascending order.
 	//
-	// - desc (descending). Default value.
+	// - desc: Descending order. This is the default value.
 	//
 	// example:
 	//
 	// desc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// Start time of the task
+	// The start time of the task.
 	//
-	// > You must specify both TaskCreateTimeGte and TaskCreateTimeLte. If you omit either, the filter does not work.
+	// > This parameter must be specified together with the TaskCreateTimeLte parameter. Otherwise, it does not take effect.
 	//
 	// example:
 	//
 	// 1646792941
 	TaskCreateTimeGte *int64 `json:"TaskCreateTimeGte,omitempty" xml:"TaskCreateTimeGte,omitempty"`
-	// End time of the task
+	// The end time of the task.
 	//
-	// > You must specify both TaskCreateTimeGte and TaskCreateTimeLte. If you omit either, the filter does not work.
+	// > This parameter must be specified together with the TaskCreateTimeGte parameter. Otherwise, it does not take effect.
 	//
 	// example:
 	//
 	// 1646792941
 	TaskCreateTimeLte *int64 `json:"TaskCreateTimeLte,omitempty" xml:"TaskCreateTimeLte,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
 	// 744b27f3-437f-4a8c-a181-f668e492fd24
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Call status. Separate multiple statuses with commas.
+	// The call statuses. Separate multiple statuses with commas (,). Valid values:
 	//
-	// - **Executing**: 0 (Calling).
+	// (Note: The **Succeeded*	- status is subdivided into specific causes. The **Succeeded**: 1 (Connected) status is not displayed. All subsequent returned values are specific subdivided cause types.)
+	//
+	// - **Executing**: 0 (Dialing).
 	//
 	// - **Succeeded**: 1 (Connected).
 	//
-	// - **NoAnswer**: 2 (No answer).
+	// - **NoAnswer**: 2 (Not connected - No answer).
 	//
-	// - **NotExist**: 3 (Nonexistent number).
+	// - **NotExist**: 3 (Not connected - Nonexistent number).
 	//
-	// - **Busy**: 4 (Line busy).
+	// - **Busy**: 4 (Not connected - Busy).
 	//
-	// - **Cancelled**: 5 (Call canceled due to job stop).
+	// - **Cancelled**: 5 (Not called - Task stopped).
 	//
-	// - **Failed**: 6 (Call failed).
+	// - **Failed**: 6 (Failed).
 	//
-	// - **NotConnected**: 7 (Cannot connect).
+	// - **NotConnected**: 7 (Not connected - Unreachable).
 	//
-	// - **PoweredOff**: 8 (Phone powered off).
+	// - **PoweredOff**: 8 (Not connected - Powered off).
 	//
-	// - **OutOfService**: 9 (Called number out of service).
+	// - **OutOfService**: 9 (Not connected - Suspended).
 	//
-	// - **InArrears**: 10 (Called number overdue payment).
+	// - **InArrears**: 10 (Not connected - Overdue payment).
 	//
-	// - **EmptyNumber**: 11 (Empty number, no outbound call).
+	// - **EmptyNumber**: 11 (Not called - Nonexistent number, no call).
 	//
-	// - **PerDayCallCountLimit**: 12 (Daily call limit exceeded).
+	// - **PerDayCallCountLimit**: 12 (Not called - Daily limit exceeded).
 	//
-	// - **ContactBlockList**: 13 (Blacklisted).
+	// - **ContactBlockList**: 13 (Not called - Blacklisted).
 	//
-	// - **CallerNotRegistered**: 14 (Caller number not registered).
+	// - **CallerNotRegistered**: 14 (Not called - Calling number not registered).
 	//
-	// - **Terminated**: 15 (Call terminated).
+	// - **Terminated**: 15 (Not called - Terminated).
 	//
-	// - **VerificationCancelled**: 16 (Call canceled due to pre-call validation failure).
+	// - **VerificationCancelled**: 16 (Not called - Canceled due to pre-call verification failure).
 	//
-	// - **OutOfServiceNoCall**: 17 (Called number out of service, no outbound call).
+	// - **OutOfServiceNoCall**: 17 (Not called - Suspended, no call).
 	//
-	// - **InArrearsNoCall**: 18 (Called number overdue payment, no outbound call).
+	// - **InArrearsNoCall**: 18 (Not called - Overdue payment, no call).
 	//
-	// - **CallingNumberNotExist**: 19 (Caller number does not exist).
+	// - **CallingNumberNotExist**: 19 (Not called - Calling number does not exist).
 	//
-	// - **SucceededFinish**: 20 (Connected and ended normally).
+	// - **SucceededFinish**: 20 (Connected - Finished normally).
 	//
-	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected and robot hung up after rejection).
+	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected - Bot hung up after unrecognized intent).
 	//
-	// - **SucceededChatbotHangUpAfterSilence**: 22 (Connected and robot hung up after silence timeout).
+	// - **SucceededChatbotHangUpAfterSilence**: 22 (Connected - Hung up due to silence timeout).
 	//
-	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected and client hung up after rejection).
+	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected - User hung up after unrecognized intent).
 	//
-	// - **SucceededClientHangUp**: 24 (Connected and client hung up without reason).
+	// - **SucceededClientHangUp**: 24 (Connected - User hung up without reason).
 	//
-	// - **SucceededTransferByIntent**: 25 (Connected and transferred to agent based on intent match).
+	// - **SucceededTransferByIntent**: 25 (Connected - Transferred to agent due to matched intent).
 	//
-	// - **SucceededTransferAfterNoAnswer**: 26 (Connected and transferred to agent after rejection).
+	// - **SucceededTransferAfterNoAnswer**: 26 (Connected - Transferred to agent after unrecognized intent).
 	//
-	// - **SucceededInoInterAction**: 27 (Connected and no interaction from client side).
+	// - **SucceededInoInterAction**: 27 (Connected - No interaction on the user side).
 	//
-	// - **SucceededError**: 28 (Connected but system error interrupted).
+	// - **SucceededError**: 28 (Connected - Interrupted due to system exception).
 	//
-	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected but intercepted by voice assistant).
+	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected - Special interception - Voice assistant).
 	//
-	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected but intercepted by extension transfer).
+	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected - Special interception - Extension number transfer).
 	//
-	// - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Connected but intercepted by custom rule).
+	// - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Connected - Special interception - Custom interception).
 	//
-	// - **HighRiskSipCode**: 32 (High-risk SIP code, no outbound call).
+	// - **HighRiskSipCode**: 32 (Not called - High risk, no call).
 	//
 	// example:
 	//
 	// Executing
 	TaskStatusStringList *string `json:"TaskStatusStringList,omitempty" xml:"TaskStatusStringList,omitempty"`
-	// User ID. A unique identifier for a user.
+	// The user ID, which is the unique identifier of the user.
 	//
 	// > This field is passed when you upload an outbound call list.
 	//
-	// >
+	// > - If the list is uploaded in JSON format, the user ID is the value of referenceId.
 	//
-	// > - If you upload the list in JSON format, the user ID is the value of referenceId.
-	//
-	// >
-	//
-	// > - If you upload the list as an Excel file, the user ID is the value of contactId.
+	// > - If the list is uploaded in an Excel file, the user ID is the value of contactId.
 	//
 	// example:
 	//

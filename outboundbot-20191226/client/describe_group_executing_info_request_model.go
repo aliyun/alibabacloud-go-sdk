@@ -16,7 +16,7 @@ type iDescribeGroupExecutingInfoRequest interface {
 }
 
 type DescribeGroupExecutingInfoRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeGroupExecutingInfoRequest struct {
 	//
 	// c46001bc-3ead-4bfd-9a69-4b5b66a4a3f4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Task group ID
+	// The job group ID.
 	//
 	// This parameter is required.
 	//

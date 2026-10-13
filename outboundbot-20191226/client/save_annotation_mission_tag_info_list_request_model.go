@@ -20,17 +20,17 @@ type iSaveAnnotationMissionTagInfoListRequest interface {
 }
 
 type SaveAnnotationMissionTagInfoListRequest struct {
-	// The list of tags.
+	// The tag list.
 	//
-	// > This parameter has the same function as AnnotationMissionTagInfoListJsonString. Specify either this parameter or AnnotationMissionTagInfoListJsonString.
+	// > This parameter is the same as the AnnotationMissionTagInfoListJsonString parameter. Specify either one.
 	AnnotationMissionTagInfoList []*SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList `json:"AnnotationMissionTagInfoList,omitempty" xml:"AnnotationMissionTagInfoList,omitempty" type:"Repeated"`
-	// The JSON-formatted data of the tags.
+	// The tag JSON data.
 	//
-	// > The parameters in the JSON string are the same as those in AnnotationMissionTagInfoList. Specify either this parameter or AnnotationMissionTagInfoList.
+	// > The parameters in the JSON are the same as those in the AnnotationMissionTagInfoList parameter. Specify either this parameter or AnnotationMissionTagInfoList.
 	//
 	// example:
 	//
-	// [{"delete":false,				"InstanceId":"00b37342-e759-4fe5-b296-aef775933af0",					"AnnotationMissionTagInfoName":"测试数据1",					"AnnotationMissionTagInfoDescription":"测试"}]
+	// [{"delete":false,				"InstanceId":"00b37342-e759-4fe5-b296-aef775933af0",					"AnnotationMissionTagInfoName":"TestData1",					"AnnotationMissionTagInfoDescription":"Test"}]
 	AnnotationMissionTagInfoListJsonString *string `json:"AnnotationMissionTagInfoListJsonString,omitempty" xml:"AnnotationMissionTagInfoListJsonString,omitempty"`
 	// The instance ID.
 	//
@@ -38,7 +38,7 @@ type SaveAnnotationMissionTagInfoListRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether to restore the default tag values.
+	// Specifies whether to restore the default tag values.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList struct 
 	//
 	// example:
 	//
-	// 标签描述
+	// Tag description
 	AnnotationMissionTagInfoDescription *string `json:"AnnotationMissionTagInfoDescription,omitempty" xml:"AnnotationMissionTagInfoDescription,omitempty"`
 	// The tag ID.
 	//
@@ -120,11 +120,11 @@ type SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList struct 
 	//
 	// example:
 	//
-	// 标签
+	// Tag
 	AnnotationMissionTagInfoName *string `json:"AnnotationMissionTagInfoName,omitempty" xml:"AnnotationMissionTagInfoName,omitempty"`
-	// Indicates whether to delete the tag.
+	// Specifies whether to delete the tag.
 	//
-	// > Set this parameter to true to delete the tag. Set it to false to add the tag.
+	// > Set this parameter to true to delete the tag, or false to add the tag.
 	//
 	// example:
 	//

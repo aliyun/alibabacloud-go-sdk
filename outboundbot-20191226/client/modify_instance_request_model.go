@@ -22,9 +22,9 @@ type iModifyInstanceRequest interface {
 }
 
 type ModifyInstanceRequest struct {
-	// A list of calling numbers.
+	// The list of caller numbers.
 	//
-	// > This parameter is optional.
+	// > By default, this parameter is left empty.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type ModifyInstanceRequest struct {
 	//
 	// example:
 	//
-	// 这是新的实例
+	// This is a new instance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the Outbound Bot instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ModifyInstanceRequest struct {
 	//
 	// example:
 	//
-	// 新实例
+	// New instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The maximum number of concurrent conversations.
 	//

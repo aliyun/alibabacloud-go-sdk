@@ -36,7 +36,7 @@ type QueryScriptsByStatusResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type QueryScriptsByStatusResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scenarios.
+	// The list of scenarios.
 	Scripts *QueryScriptsByStatusResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -130,7 +130,7 @@ func (s *QueryScriptsByStatusResponseBody) Validate() error {
 }
 
 type QueryScriptsByStatusResponseBodyScripts struct {
-	// The list of scenarios.
+	// The list of scenario details.
 	List []*QueryScriptsByStatusResponseBodyScriptsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -138,13 +138,13 @@ type QueryScriptsByStatusResponseBodyScripts struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -232,15 +232,15 @@ type QueryScriptsByStatusResponseBodyScriptsList struct {
 	//
 	// example:
 	//
-	// 通用
+	// General
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	// Indicates whether the debug version is a draft.
+	// Indicates whether the debug version is in the draft state.
 	//
 	// example:
 	//
 	// false
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
-	// Indicates whether the version is a draft.
+	// Indicates whether the version is in the draft state.
 	//
 	// example:
 	//
@@ -250,13 +250,13 @@ type QueryScriptsByStatusResponseBodyScriptsList struct {
 	//
 	// example:
 	//
-	// 电销
+	// Telemarketing
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The script description.
 	//
 	// example:
 	//
-	// 销售话术
+	// Sales script
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
 	// The scenario ID.
 	//
@@ -268,37 +268,37 @@ type QueryScriptsByStatusResponseBodyScriptsList struct {
 	//
 	// example:
 	//
-	// 销售话术
+	// Sales script
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	// The status of the application version. Valid values:
 	//
-	// - **DRAFTED**: The script is a draft.
+	// - **DRAFTED**: Draft.
 	//
-	// - **INITIALIZE_IN_PROGRESS**: The script is being initialized.
+	// - **INITIALIZE_IN_PROGRESS**: Initializing.
 	//
-	// - **PUBLISHED**: The script is published.
+	// - **PUBLISHED**: Published.
 	//
-	// - **PUBLISH_IN_PROGRESS**: The script is being published.
+	// - **PUBLISH_IN_PROGRESS**: Publishing.
 	//
-	// - **ROLLBACK_IN_PROGRESS**: The script is being rolled back.
+	// - **ROLLBACK_IN_PROGRESS**: Rolling back.
 	//
-	// - **EXAMINE_IN_PROGRESS**: The script is pending approval.
+	// - **EXAMINE_IN_PROGRESS**: Pending review.
 	//
-	// - **PUBLISHED_AND_EXAMINE_IN_PROGRESS**: The script is published and pending approval.
+	// - **PUBLISHED_AND_EXAMINE_IN_PROGRESS**: Published and pending review.
 	//
-	// - **PUBLISH_FAILED**: The script failed to be published.
+	// - **PUBLISH_FAILED**: Publish failed.
 	//
-	// - **ROLLBACK_FAILED**: The script failed to be rolled back.
+	// - **ROLLBACK_FAILED**: Rollback failed.
 	//
-	// - **IMPORT_IN_PROGRESS**: The script is being imported.
+	// - **IMPORT_IN_PROGRESS**: Importing.
 	//
-	// - **IMPORT_FAILED**: The script failed to be imported.
+	// - **IMPORT_FAILED**: Import failed.
 	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the script was last updated.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -24,37 +24,37 @@ type iGetTaskByUuidResponseBody interface {
 }
 
 type GetTaskByUuidResponseBody struct {
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message
+	// The returned message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Task information
+	// The task information.
 	//
 	// example:
 	//
@@ -134,95 +134,93 @@ func (s *GetTaskByUuidResponseBody) Validate() error {
 }
 
 type GetTaskByUuidResponseBodyTask struct {
-	// Actual execution time
+	// The actual execution time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1640090211434
 	ActualTime *int64 `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
-	// Call ID
+	// The call ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// Callee number
+	// The called number.
 	//
 	// example:
 	//
 	// 13777777777
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// Caller number
+	// The calling number.
 	//
 	// example:
 	//
 	// 057190294
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// List of conversations
+	// The list of conversation information.
 	Conversations []*GetTaskByUuidResponseBodyTaskConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
-	// Reason the task ended
+	// The end reason. Valid values:
 	//
-	// - FINISHED: Task completed normally
+	// - FINISHED: normal completion.
 	//
-	// - CHATBOT_HANGUP_AFTER_NOANSWER: Bot hung up after no answer
+	// - CHATBOT_HANGUP_AFTER_NOANSWER: the robot hangs up after unrecognized input.
 	//
-	// - CHATBOT_HANGUP_AFTER_SILENCE: Bot hung up after silence timeout
+	// - CHATBOT_HANGUP_AFTER_SILENCE: the robot hangs up after a silence timeout.
 	//
-	// - CLIENT_HANGUP_AFTER_NOANSWER: Client hung up after no answer
+	// - CLIENT_HANGUP_AFTER_NOANSWER: the user hangs up after unrecognized input.
 	//
-	// - CLIENT_HANGUP: Client hung up without reason
+	// - CLIENT_HANGUP: the user hangs up without a reason.
 	//
-	// - TRANSFER_BY_INTENT: Transferred to agent after intent match
+	// - TRANSFER_BY_INTENT: the call is transferred to a human agent due to intent matching.
 	//
-	// - TRANSFER_AFTER_NOANSWER: Transferred to agent after no answer
+	// - TRANSFER_AFTER_NOANSWER: the call is transferred to a human agent after unrecognized input.
 	//
-	// - INO_INTERACTION: No interaction from client
+	// - INO_INTERACTION: no interaction from the user.
 	//
-	// - ERROR: System error interrupted the task
+	// - ERROR: the system is interrupted due to an exception.
 	//
-	// - SPECIAL_INTERCEPT_VOICE_ASSISTANT: Intercepted due to voice assistant
+	// - SPECIAL_INTERCEPT_VOICE_ASSISTANT: intercepted due to special circumstances - voice assistant.
 	//
-	// - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER: Intercepted due to extension number transfer
+	// - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER: intercepted due to special circumstances - extension number transfer.
 	//
-	// 	Notice:
-	//
-	// This parameter is a string that returns an enumeration value such as FINISHED.
+	// 	Notice: The data type of this parameter is String. The returned value is an enumerated value such as FINISHED.</notice>
 	//
 	// example:
 	//
 	// FINISHED
 	EndReason *string `json:"EndReason,omitempty" xml:"EndReason,omitempty"`
-	// End time
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1640090211434
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
 	// 2
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Job group ID
+	// The job group ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// Job ID
+	// The job ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Planned execution time (deprecated)
+	// **[Deprecated]*	- The planned execution time of the task. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -360,59 +358,61 @@ func (s *GetTaskByUuidResponseBodyTask) Validate() error {
 }
 
 type GetTaskByUuidResponseBodyTaskConversations struct {
-	// Action type
+	// The instruction. Valid values:
 	//
-	// - Dialogue: Dialogue
+	// - BeginDialogue: starts the conversation.
 	//
-	// - AbortDialogue: Abort a dialogue
+	// - Dialogue: indicates a conversation.
 	//
-	// - SilenceTimeout: Silence timeout
+	// - AbortDialogue: aborts the conversation.
 	//
-	// - CollectedNumber: Collected number
+	// - SilenceTimeout: indicates a silence timeout.
 	//
-	// - EndDialogue: End a dialogue
+	// - CollectedNumber: indicates a collected number.
 	//
-	// - Broadcast: Greeting message
+	// - EndDialogue: ends the conversation.
 	//
-	// - HangUp: Hang up
+	// - Broadcast: indicates an opening remark.
 	//
-	// - Authorize: Authorization
+	// - HangUp: hangs up the call.
 	//
-	// - TransferToAgent: Transfer to an agent
+	// - Authorize: grants authorization.
 	//
-	// - TransferToIVR: Transfer to an IVR system
+	// - TransferToAgent: transfers the call to an agent.
 	//
-	// - RedirectToPage: Redirect to a page
+	// - TransferToIVR: transfers the call to an IVR.
 	//
-	// - CollectNumber: Collect a number
+	// - RedirectToPage: redirects to a page.
 	//
-	// - WaitOnAsyncTask: Wait for an asynchronous task
+	// - CollectNumber: collects a number.
 	//
-	// - Error: Error
+	// - WaitOnAsyncTask: waits for an asynchronous task.
+	//
+	// - Error: indicates an error.
 	//
 	// example:
 	//
 	// Broadcast
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Conversation text.
+	// The conversation text.
 	//
 	// example:
 	//
-	// 你好，我是**客服
+	// Hello, I am **customer service
 	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// fd279983-93b9-b13b-9a34-64e5df473225
 	SequenceId *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
-	// Who spoke in the conversation. Valid values: Robot or Contact.
+	// The speaker of the conversation. Valid values: Robot and Contact.
 	//
 	// example:
 	//
 	// Robot
 	Speaker *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	// Timestamp when the summary was created.
+	// The time when the summary was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

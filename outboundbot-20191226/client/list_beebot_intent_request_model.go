@@ -32,11 +32,11 @@ type ListBeebotIntentRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The intent name.
 	//
-	// > This is the intent code. It uniquely identifies the intent.
+	// > The intent code, which is a unique identifier.
 	//
 	// example:
 	//
-	// 知道了
+	// Understood
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	// The page number.
 	//
@@ -46,7 +46,7 @@ type ListBeebotIntentRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//

@@ -38,7 +38,7 @@ type ListBeebotIntentUserSayResponseBody struct {
 	//
 	// D7BBFCDF-59B0-1ADA-BCA3-4B77F642DDFB
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
-	// The status code of the API.
+	// The API status code.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListBeebotIntentUserSayResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned for the API call.
+	// The API message.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListBeebotIntentUserSayResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries displayed per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListBeebotIntentUserSayResponseBody struct {
 	//
 	// 0956D5DA-0978-5DC9-94B0-C68527DA7475
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -202,13 +202,13 @@ func (s *ListBeebotIntentUserSayResponseBody) Validate() error {
 }
 
 type ListBeebotIntentUserSayResponseBodyUserSays struct {
-	// The content of the utterance.
+	// The utterance content.
 	//
 	// example:
 	//
-	// 你知道xxxx么？
+	// Do you know xxxx?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the utterance was created.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type ListBeebotIntentUserSayResponseBodyUserSays struct {
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// The time when the utterance was last modified.
+	// The modification time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//

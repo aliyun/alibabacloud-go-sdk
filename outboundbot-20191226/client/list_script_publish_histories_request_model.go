@@ -36,7 +36,7 @@ type ListScriptPublishHistoriesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ListScriptPublishHistoriesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The script ID.
+	// The scenario ID.
 	//
 	// This parameter is required.
 	//

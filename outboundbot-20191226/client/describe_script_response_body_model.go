@@ -26,43 +26,43 @@ type iDescribeScriptResponseBody interface {
 }
 
 type DescribeScriptResponseBody struct {
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API message
+	// The API message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Deprecated
+	// **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// none
 	NlsConfig *string `json:"NlsConfig,omitempty" xml:"NlsConfig,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Script details
+	// The script.
 	//
 	// example:
 	//
 	// {}
 	Script *DescribeScriptResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// Indicates whether the call succeeded
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -151,25 +151,25 @@ func (s *DescribeScriptResponseBody) Validate() error {
 }
 
 type DescribeScriptResponseBodyScript struct {
-	// Robot workspace access key
+	// The access key of the chatbot workspace.
 	//
 	// example:
 	//
 	// 1218333
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Robot workspace access key
+	// The access key of the chatbot workspace.
 	//
 	// example:
 	//
 	// 14791f5f226b4878b3d9b676a0291234
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// Indicates whether the robot workspace uses a Large Language Model (LLM)
+	// Indicates whether the chatbot workspace is a large language model (LLM) workspace.
 	//
 	// example:
 	//
 	// true
 	AgentLlm *bool `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
-	// ASR configuration
+	// The automatic speech recognition (ASR) configuration.
 	//
 	// example:
 	//
@@ -195,110 +195,115 @@ type DescribeScriptResponseBodyScript struct {
 	//
 	// }
 	AsrConfig *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
-	// Call configuration
+	// The call configuration.
 	//
 	// example:
 	//
-	// {"silenceConfig":{"silenceReplyTimeout":499,"silenceTimeoutMaxCount":10,"silenceTimeoutMaxCountEnable":true},"hangupConfig":{"aiHangupEnable":false,"delayHangup":0,"hangupMaxRounds":20,"hangupMaxRoundsBroadcast":"感谢您的接听，祝您生活愉快，再见!","hangupMaxRoundsEnable":false},"securityInterceptConfig":{"broadcast":"您说的这个问题我不能回答您，您可以尝试询问其他问题。"},"specialInterceptConfig":{"specialInterceptEnable":false,"specialIntercepts":[{"code":"voiceAssistant"},{"code":"extensionNumberTransfer"}]},"transitionConfig":{"transitionSwitch":false}}
+	// {"silenceConfig":{"silenceReplyTimeout":499,"silenceTimeoutMaxCount":10,"silenceTimeoutMaxCountEnable":true},"hangupConfig":{"aiHangupEnable":false,"delayHangup":0,"hangupMaxRounds":20,"hangupMaxRoundsBroadcast":"Thank you for taking the call. Have a great day. Goodbye!","hangupMaxRoundsEnable":false},"securityInterceptConfig":{"broadcast":"I cannot answer this question. Please try asking something else."},"specialInterceptConfig":{"specialInterceptEnable":false,"specialIntercepts":[{"code":"voiceAssistant"},{"code":"extensionNumberTransfer"}]},"transitionConfig":{"transitionSwitch":false}}
 	ChatConfig *string `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty"`
-	// Chatbot ID
+	// The chatbot ID.
 	//
 	// example:
 	//
 	// d31794e2a51f47d2901b4094d88311d7
 	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	// Status of the debug script
+	// The debug status of the script.
 	//
 	// example:
 	//
 	// DRAFTED
 	DebugStatus *string `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
-	// Enables emotion detection
+	// Specifies whether the emotion recognition feature is enabled.
 	//
 	// example:
 	//
 	// true
 	EmotionEnable *bool `json:"EmotionEnable,omitempty" xml:"EmotionEnable,omitempty"`
-	// Industry
+	// The industry.
 	//
 	// example:
 	//
-	// 金融
+	// Finance
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	// Indicates whether the debug version is in draft status
+	// Indicates whether the debug version is in the draft state.
 	//
 	// example:
 	//
 	// true
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
-	// Indicates whether the script is in draft status
+	// Indicates whether the script is in the draft state.
 	//
 	// example:
 	//
 	// true
-	IsDrafted   *bool   `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
+	IsDrafted *bool `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
+	// The custom label configuration.
+	//
+	// example:
+	//
+	// {\\"labels\\":[{\\"description\\":\\"\\",\\"name\\":\\"Availability\\",\\"valueList\\":\\"[\\\\\\"Available\\\\\\",\\\\\\"Unavailable\\\\\\"]\\"}]}
 	LabelConfig *string `json:"LabelConfig,omitempty" xml:"LabelConfig,omitempty"`
-	// Enables intelligent sentence break
+	// Specifies whether the intelligent sentence segmentation feature is enabled.
 	//
 	// example:
 	//
 	// true
 	LongWaitEnable *bool `json:"LongWaitEnable,omitempty" xml:"LongWaitEnable,omitempty"`
-	// Enables tone continuity
+	// Specifies whether the mini playback feature is enabled.
 	//
 	// example:
 	//
 	// true
 	MiniPlaybackEnable *bool `json:"MiniPlaybackEnable,omitempty" xml:"MiniPlaybackEnable,omitempty"`
-	// Enables graceful barge-in
+	// Specifies whether the graceful barge-in feature is enabled.
 	//
 	// example:
 	//
 	// true
 	NewBargeInEnable *bool `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
-	// NLU engine (applies only to LLM scenarios)
+	// The natural language understanding (NLU) engine. This parameter applies only to large language model (LLM) scenarios. Valid values:
 	//
-	// - Prompts — Text entry mode
+	// - Prompts: text input mode.
 	//
-	// - SSE_FUNCTION — Function Compute service mode
+	// - SSE_FUNCTION: Function Compute service mode.
 	//
 	// example:
 	//
 	// Prompts
 	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	// Function Compute service mode configuration
+	// The configuration of the Function Compute service mode.
 	NluProfile *DescribeScriptResponseBodyScriptNluProfile `json:"NluProfile,omitempty" xml:"NluProfile,omitempty" type:"Struct"`
-	// Scenario
+	// The scenario.
 	//
 	// example:
 	//
-	// 催收
+	// Collection
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// Script description
+	// The description of the script.
 	//
 	// example:
 	//
-	// 催收话术
+	// Collection script
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
-	// Script ID
+	// The script ID.
 	//
 	// example:
 	//
 	// 810b5872-57f0-4b27-80ab-7b3f4d8a6374
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// Script name
+	// The name of the script.
 	//
 	// example:
 	//
-	// 催收话术
+	// Collection script
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// Script status
+	// The status of the script.
 	//
 	// example:
 	//
 	// DRAFTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// TTS configuration for the script
+	// The text-to-speech (TTS) configuration of the script.
 	//
 	// example:
 	//
@@ -312,6 +317,8 @@ type DescribeScriptResponseBodyScript struct {
 	//
 	// 	"globalInterruptible": true,
 	//
+	//         "closingStatementInterruptible": false, "openingPromptInterruptible": false,
+	//
 	// 	"nlsServiceType": "Managed",
 	//
 	// 	"pitchRate": "0",
@@ -324,7 +331,7 @@ type DescribeScriptResponseBodyScript struct {
 	//
 	// }
 	TtsConfig *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
-	// Time when the script was last updated
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -566,25 +573,30 @@ func (s *DescribeScriptResponseBodyScript) Validate() error {
 }
 
 type DescribeScriptResponseBodyScriptNluProfile struct {
-	// Function service name
+	// The function service name.
 	//
 	// example:
 	//
 	// sanfang_test
 	FcFunction *string `json:"FcFunction,omitempty" xml:"FcFunction,omitempty"`
-	// Function service trigger URL
+	// The HTTP trigger URL of the function.
 	//
 	// example:
 	//
 	// http://sanfang_test-xxxxxx.cn-shanghai-vpc.fcapp.run
 	FcHttpTriggerUrl *string `json:"FcHttpTriggerUrl,omitempty" xml:"FcHttpTriggerUrl,omitempty"`
-	// Function service region
+	// The region of the function.
 	//
 	// example:
 	//
 	// cn-shanghai
-	FcRegion             *string `json:"FcRegion,omitempty" xml:"FcRegion,omitempty"`
-	SupportBeebotPrompts *bool   `json:"SupportBeebotPrompts,omitempty" xml:"SupportBeebotPrompts,omitempty"`
+	FcRegion *string `json:"FcRegion,omitempty" xml:"FcRegion,omitempty"`
+	// Indicates whether Chatbot prompts are supported. Valid values:
+	//
+	// - true: Supported.
+	//
+	// - false: Not supported.
+	SupportBeebotPrompts *bool `json:"SupportBeebotPrompts,omitempty" xml:"SupportBeebotPrompts,omitempty"`
 }
 
 func (s DescribeScriptResponseBodyScriptNluProfile) String() string {

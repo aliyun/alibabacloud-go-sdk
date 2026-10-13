@@ -18,7 +18,7 @@ type iDescribeBeebotIntentRequest interface {
 }
 
 type DescribeBeebotIntentRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeBeebotIntentRequest struct {
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Intent ID
+	// The intent ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeBeebotIntentRequest struct {
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// Scenario ID
+	// The scenario ID.
 	//
 	// This parameter is required.
 	//

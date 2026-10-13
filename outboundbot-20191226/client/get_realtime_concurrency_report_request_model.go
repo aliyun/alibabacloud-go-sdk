@@ -20,25 +20,25 @@ type iGetRealtimeConcurrencyReportRequest interface {
 }
 
 type GetRealtimeConcurrencyReportRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 85bf7efa-a07c-498a-850e-99a5849b8589
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Task group ID
+	// The job group ID.
 	//
 	// example:
 	//
 	// c62e6789-28a8-41db-941e-171a01d3b3b9
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//

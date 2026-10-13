@@ -42,7 +42,7 @@ type ModifyInstanceResponseBody struct {
 	//
 	// {\\"InstanceId\\": \\"ob369xifpi2074\\", \\"AutoUpgradeObVersion\\": False}
 	Instance *ModifyInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ModifyInstanceResponseBody) Validate() error {
 }
 
 type ModifyInstanceResponseBodyInstance struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -152,11 +152,11 @@ type ModifyInstanceResponseBodyInstance struct {
 	//
 	// xxx
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The instance description.
+	// The description of the instance.
 	//
 	// example:
 	//
-	// 这是第一个实例
+	// This is the first instance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
 	// The instance ID.
 	//
@@ -168,7 +168,7 @@ type ModifyInstanceResponseBodyInstance struct {
 	//
 	// example:
 	//
-	// 第一个实例
+	// First instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The maximum number of concurrent conversations.
 	//

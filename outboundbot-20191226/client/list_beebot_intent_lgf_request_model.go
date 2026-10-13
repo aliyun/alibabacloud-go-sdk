@@ -40,11 +40,11 @@ type ListBeebotIntentLgfRequest struct {
 	//
 	// 10717802
 	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// The utterance template.
+	// The utterance template for the intent.
 	//
 	// example:
 	//
-	// 我是一个问法模版
+	// I am an utterance template
 	LgfText *string `json:"LgfText,omitempty" xml:"LgfText,omitempty"`
 	// The page number.
 	//
@@ -54,7 +54,7 @@ type ListBeebotIntentLgfRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//

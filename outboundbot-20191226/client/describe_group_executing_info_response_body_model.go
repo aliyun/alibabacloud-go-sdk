@@ -28,49 +28,49 @@ type iDescribeGroupExecutingInfoResponseBody interface {
 }
 
 type DescribeGroupExecutingInfoResponseBody struct {
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Execution information
+	// The execution information.
 	//
 	// example:
 	//
 	// {}
 	ExecutingInfo *DescribeGroupExecutingInfoResponseBodyExecutingInfo `json:"ExecutingInfo,omitempty" xml:"ExecutingInfo,omitempty" type:"Struct"`
-	// Task group ID
+	// The job group ID.
 	//
 	// example:
 	//
 	// b24d321a-2a74-4dd1-a0ba-4ab09cef6652
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// c46001bc-3ead-4bfd-9a69-4b5b66a4a3f4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// API message
+	// The API response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -168,91 +168,91 @@ func (s *DescribeGroupExecutingInfoResponseBody) Validate() error {
 }
 
 type DescribeGroupExecutingInfoResponseBodyExecutingInfo struct {
-	// Average talk time
+	// The average call duration.
 	//
 	// example:
 	//
 	// 258
 	AvgTalkTime *int32 `json:"AvgTalkTime,omitempty" xml:"AvgTalkTime,omitempty"`
-	// Number of failed calls
+	// The number of failed calls.
 	//
 	// example:
 	//
 	// 5
 	CallFailedNum *int32 `json:"CallFailedNum,omitempty" xml:"CallFailedNum,omitempty"`
-	// Number of outbound calls
+	// The number of outbound calls.
 	//
 	// example:
 	//
 	// 5
 	CallNum *int32 `json:"CallNum,omitempty" xml:"CallNum,omitempty"`
-	// Deprecated
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// xxx
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// Call duration distribution
+	// The distribution of call durations.
 	//
 	// example:
 	//
 	// {"max":"40","1":"1","total":"40","min":"40"}
 	DurationDistribution *string `json:"DurationDistribution,omitempty" xml:"DurationDistribution,omitempty"`
-	// End time
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1640087774563
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Number of completed executions
+	// The number of completed jobs.
 	//
 	// example:
 	//
 	// 5
 	FinishedNum *int32 `json:"FinishedNum,omitempty" xml:"FinishedNum,omitempty"`
-	// Number of calls hung up by customers
+	// The number of customer-initiated hang-ups.
 	//
 	// example:
 	//
 	// 5
 	HangUpByClientNum *int32 `json:"HangUpByClientNum,omitempty" xml:"HangUpByClientNum,omitempty"`
-	// Execution progress
+	// The execution progress.
 	//
 	// example:
 	//
 	// {}
 	JobsProgress *DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress `json:"JobsProgress,omitempty" xml:"JobsProgress,omitempty" type:"Struct"`
-	// Number of calls with no interaction
+	// The number of calls with no interaction.
 	//
 	// example:
 	//
 	// 1
 	NoInteractionNum *int32 `json:"NoInteractionNum,omitempty" xml:"NoInteractionNum,omitempty"`
-	// Start time
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1640087774563
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Distribution of conversation rounds
+	// The distribution of talk turns.
 	//
-	// - total: total number of conversation rounds involved
+	// - total: The total number of talk turns involved.
 	//
-	// - number: specific round number
+	// - Number: The corresponding turn count.
 	//
-	// > 	- Example: {"total":"5","5":"1"} means 5 conversation rounds were involved, and 1 call had 5 user turns.
+	// > - Example: {"total":"5","5":"1"} indicates that the total number of talk turns involved is 5, and there is 1 call with 5 user turns.
 	//
 	// example:
 	//
 	// {"total":"5","5":"4"}
 	TalkTurnsDistribution *string `json:"TalkTurnsDistribution,omitempty" xml:"TalkTurnsDistribution,omitempty"`
-	// Intent recognition
+	// The number of intent recognitions.
 	//
 	// example:
 	//
 	// 5
 	TransferByIntentNum *int32 `json:"TransferByIntentNum,omitempty" xml:"TransferByIntentNum,omitempty"`
-	// No answer
+	// The number of unanswered calls.
 	//
 	// example:
 	//
@@ -404,49 +404,49 @@ func (s *DescribeGroupExecutingInfoResponseBodyExecutingInfo) Validate() error {
 }
 
 type DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress struct {
-	// Number of canceled tasks
+	// The number of canceled jobs.
 	//
 	// example:
 	//
 	// 5
 	CancelledNum *int32 `json:"CancelledNum,omitempty" xml:"CancelledNum,omitempty"`
-	// Number of executing jobs
+	// The number of executing jobs.
 	//
 	// example:
 	//
 	// 5
 	ExecutingNum *int32 `json:"ExecutingNum,omitempty" xml:"ExecutingNum,omitempty"`
-	// Number of failed tasks
+	// The number of failed jobs.
 	//
 	// example:
 	//
 	// 5
 	FailedNum *int32 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
-	// Number of paused tasks
+	// The number of paused jobs.
 	//
 	// example:
 	//
 	// 5
 	PausedNum *int32 `json:"PausedNum,omitempty" xml:"PausedNum,omitempty"`
-	// Number of tasks being scheduled
+	// The number of jobs being scheduled.
 	//
 	// example:
 	//
 	// 5
 	SchedulingNum *int32 `json:"SchedulingNum,omitempty" xml:"SchedulingNum,omitempty"`
-	// Total number of completed tasks
+	// The total number of completed jobs.
 	//
 	// example:
 	//
 	// 5
 	TotalCompletedNum *int32 `json:"TotalCompletedNum,omitempty" xml:"TotalCompletedNum,omitempty"`
-	// Total number of jobs
+	// The total number of jobs.
 	//
 	// example:
 	//
 	// 5
 	TotalJobs *int32 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
-	// Number of unanswered calls
+	// The total number of unanswered calls.
 	//
 	// example:
 	//

@@ -52,7 +52,7 @@ type ListBeebotIntentLgfResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The list of LGFs.
 	Lgfs []*ListBeebotIntentLgfResponseBodyLgfs `json:"Lgfs,omitempty" xml:"Lgfs,omitempty" type:"Repeated"`
-	// The message returned by the API.
+	// The API message.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListBeebotIntentLgfResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListBeebotIntentLgfResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ func (s *ListBeebotIntentLgfResponseBody) Validate() error {
 }
 
 type ListBeebotIntentLgfResponseBodyLgfs struct {
-	// The time when the template was created.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//
@@ -214,13 +214,13 @@ type ListBeebotIntentLgfResponseBodyLgfs struct {
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// The ID of the utterance template.
+	// The utterance template ID.
 	//
 	// example:
 	//
 	// 5666117
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
-	// The time when the template was last modified.
+	// The modification time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type ListBeebotIntentLgfResponseBodyLgfs struct {
 	//
 	// example:
 	//
-	// 我是一个问法模版
+	// I am an utterance template
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 

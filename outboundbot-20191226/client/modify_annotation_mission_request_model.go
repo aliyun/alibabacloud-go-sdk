@@ -20,25 +20,25 @@ type iModifyAnnotationMissionRequest interface {
 }
 
 type ModifyAnnotationMissionRequest struct {
-	// Annotation task ID.
+	// The annotation task ID.
 	//
 	// example:
 	//
 	// c88cc004-de69-4eee-aa5f-2efed533a54e
 	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
-	// Annotation task name.
+	// The annotation task name.
 	//
 	// example:
 	//
-	// 询问卖车-标注任务-20230506-112934
+	// AskAboutSellingCar-AnnotationTask-20230506-112934
 	AnnotationMissionName *string `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
-	// Annotation task status.
+	// The annotation task status.
 	//
 	// example:
 	//
 	// 2
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
-	// Delete the task.
+	// Specifies whether to delete the task.
 	//
 	// example:
 	//

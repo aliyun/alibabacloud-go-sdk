@@ -140,7 +140,7 @@ type WithdrawScriptReviewResponseBodyScript struct {
 	//
 	// example:
 	//
-	// 金融
+	// Finance
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
 	// Indicates whether the debug version is in draft state.
 	//
@@ -158,13 +158,13 @@ type WithdrawScriptReviewResponseBodyScript struct {
 	//
 	// example:
 	//
-	// 电销
+	// Telemarketing
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The script description.
 	//
 	// example:
 	//
-	// 销售话术
+	// Sales script
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
 	// The script ID.
 	//
@@ -176,7 +176,7 @@ type WithdrawScriptReviewResponseBodyScript struct {
 	//
 	// example:
 	//
-	// 销售话术
+	// Sales script
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	// The status of the application version.
 	//

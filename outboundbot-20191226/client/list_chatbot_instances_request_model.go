@@ -18,15 +18,15 @@ type iListChatbotInstancesRequest interface {
 }
 
 type ListChatbotInstancesRequest struct {
-	// Workspace access key for the chatbot.
+	// The access key of the chatbot workspace.
 	//
-	// > Get this key by calling ListChatbotAgents. If you omit this parameter, the API returns instances from all workspaces.
+	// > You can obtain the value by calling the ListChatbotAgents operation. If you leave this parameter empty, chatbots in all workspaces are queried.
 	//
 	// example:
 	//
 	// 9137ab9c27044921860030adf8590ec4_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type ListChatbotInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
-	// > The value must be less than or equal to 50.
+	// > The value of this parameter must be less than or equal to 50.
 	//
 	// This parameter is required.
 	//

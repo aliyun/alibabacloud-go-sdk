@@ -26,39 +26,39 @@ type iGetRealtimeConcurrencyReportResponseBody interface {
 }
 
 type GetRealtimeConcurrencyReportResponseBody struct {
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Report generation time
+	// The time when the report was generated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1743474900488
 	ReportDate *int64 `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
-	// Report details.
+	// The report details.
 	Reports *GetRealtimeConcurrencyReportResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Struct"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Is successful
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -147,21 +147,21 @@ func (s *GetRealtimeConcurrencyReportResponseBody) Validate() error {
 }
 
 type GetRealtimeConcurrencyReportResponseBodyReports struct {
-	// Report collection data
+	// The list of reports.
 	List []*GetRealtimeConcurrencyReportResponseBodyReportsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total count
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -227,49 +227,49 @@ func (s *GetRealtimeConcurrencyReportResponseBodyReports) Validate() error {
 }
 
 type GetRealtimeConcurrencyReportResponseBodyReportsList struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 85bf7efa-a07c-498a-850e-99a5849b8589
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Instance name
+	// The instance name.
 	//
 	// example:
 	//
-	// 智能外呼场景
+	// Intelligent outbound call scenario
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Job ID
+	// The job ID.
 	//
 	// example:
 	//
 	// c62e6789-28a8-41db-941e-171a01d3b3b9
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// Job name.
+	// The job name.
 	//
 	// example:
 	//
-	// 第一个作业组
+	// First job group
 	JobGroupName *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
-	// Maximum configured concurrency limit
+	// The configured maximum concurrency limit.
 	//
 	// example:
 	//
 	// 2
 	MaxConcurrencyLimit *int64 `json:"MaxConcurrencyLimit,omitempty" xml:"MaxConcurrencyLimit,omitempty"`
-	// Minimum concurrency limit for the job
+	// The minimum concurrency limit for the job.
 	//
 	// example:
 	//
 	// 0
 	MinConcurrencyLimit *int64 `json:"MinConcurrencyLimit,omitempty" xml:"MinConcurrencyLimit,omitempty"`
-	// Occupied concurrency value
+	// The occupied concurrency.
 	//
 	// example:
 	//
 	// 1
 	OccupiedConcurrencyCount *int64 `json:"OccupiedConcurrencyCount,omitempty" xml:"OccupiedConcurrencyCount,omitempty"`
-	// Report generation time
+	// The time when the report was generated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iDescribeJobGroupRequest interface {
 }
 
 type DescribeJobGroupRequest struct {
-	// Filter condition. This parameter is deprecated.
+	// The filter conditions. This parameter is deprecated.
 	BriefTypes []*string `json:"BriefTypes,omitempty" xml:"BriefTypes,omitempty" type:"Repeated"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeJobGroupRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Job group ID.
+	// The job group ID.
 	//
 	// This parameter is required.
 	//

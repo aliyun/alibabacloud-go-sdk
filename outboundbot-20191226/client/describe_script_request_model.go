@@ -16,7 +16,7 @@ type iDescribeScriptRequest interface {
 }
 
 type DescribeScriptRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeScriptRequest struct {
 	//
 	// 38d2e8ed-04e9-4dac-83b5-a8e57642ef13
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Script ID
+	// The script ID.
 	//
 	// This parameter is required.
 	//

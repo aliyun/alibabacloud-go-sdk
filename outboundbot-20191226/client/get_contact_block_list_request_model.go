@@ -36,18 +36,19 @@ type GetContactBlockListRequest struct {
 	//
 	// 846e20ae-e113-4231-a792-cb354187c9f6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. This parameter is required.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. This parameter is required.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search criteria for the outbound call blocklist.
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
 }
 

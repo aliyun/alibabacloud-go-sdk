@@ -134,7 +134,7 @@ func (s *GetContactBlockListResponseBody) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistList struct {
-	// The array data.
+	// The data array.
 	//
 	// example:
 	//
@@ -218,13 +218,13 @@ func (s *GetContactBlockListResponseBodyContactBlocklistList) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistListList struct {
-	// The unique business key of the outbound call blocklist entry.
+	// The unique business key of the outbound call blocklist.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ContactBlockListId *string `json:"ContactBlockListId,omitempty" xml:"ContactBlockListId,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type GetContactBlockListResponseBodyContactBlocklistListList struct {
 	//
 	// 1388888888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//

@@ -24,11 +24,11 @@ type iListBeebotIntentUserSayRequest interface {
 }
 
 type ListBeebotIntentUserSayRequest struct {
-	// The keyword in the user utterance.
+	// The keyword in the utterance content.
 	//
 	// example:
 	//
-	// 知道
+	// know
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The instance ID.
 	//
@@ -54,7 +54,7 @@ type ListBeebotIntentUserSayRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to display on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//

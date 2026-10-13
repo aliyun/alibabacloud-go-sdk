@@ -36,9 +36,9 @@ type DescribeInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The business instance information.
+	// The instance information.
 	Instance *DescribeInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeInstanceResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 }
 
 type DescribeInstanceResponseBodyInstance struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1578469042851
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
@@ -148,31 +148,31 @@ type DescribeInstanceResponseBodyInstance struct {
 	//
 	// xxx
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The description of the business instance.
+	// The description of the instance.
 	//
 	// example:
 	//
-	// 这个是第一个实例
+	// This is the first instance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The business instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the business instance.
+	// The name of the instance.
 	//
 	// example:
 	//
-	// 第一个实例
+	// First instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum concurrency of the instance.
+	// The maximum number of concurrent conversations for the instance.
 	//
 	// example:
 	//
 	// 4
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
-	// The name of the business instance owner.
+	// The name of the instance owner.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	// The name of the Outbound Bot instance.
+	// The name of the outbound robot instance.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type ListInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The resource group ID.
 	//
-	// > You can obtain the source API from the Resource Management documentation. For more information, see: https://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
+	// > You can obtain the source API from the Resource Management documentation. Related link: https://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
 	//
 	// example:
 	//
 	// rg-acfm3iugit3uw7a
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags for the service instances.
+	// The tags of the outbound robot instances.
 	//
-	// > You can call the ListResourceTags operation to obtain tags.
+	// > You can obtain the tags by calling the ListResourceTags operation.
 	Tag []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -121,13 +121,13 @@ func (s *ListInstancesRequest) Validate() error {
 }
 
 type ListInstancesRequestTag struct {
-	// The tag key of the instance.
+	// The key of the instance tag.
 	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the instance.
+	// The value of the instance tag.
 	//
 	// example:
 	//

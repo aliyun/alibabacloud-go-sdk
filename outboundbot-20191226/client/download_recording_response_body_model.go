@@ -24,13 +24,13 @@ type iDownloadRecordingResponseBody interface {
 }
 
 type DownloadRecordingResponseBody struct {
-	// The interface status code.
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The download URL of the file.
+	// The download URL.
 	DownloadParams *DownloadRecordingResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type DownloadRecordingResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The interface prompt message.
+	// The response message.
 	//
 	// example:
 	//
@@ -130,20 +130,21 @@ func (s *DownloadRecordingResponseBody) Validate() error {
 }
 
 type DownloadRecordingResponseBodyDownloadParams struct {
+	// The signed download URL for the early media recording file.
 	EarlyMediaSignatureUrl *string `json:"EarlyMediaSignatureUrl,omitempty" xml:"EarlyMediaSignatureUrl,omitempty"`
-	// The recording file name, which is typically a UUID.
+	// The name of the recording file, which is typically a UUID.
 	//
 	// example:
 	//
 	// 281eb174-3865-41c1-9274-7b6813edadab.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// A URL that points to the recording file. Use HTTP to download the file.
+	// The URL used to download the recording file over HTTP.
 	//
 	// example:
 	//
 	// http://tiangong-staging.oss-cn-shanghai.aliyuncs.com/record/281eb174-3865-41c1-9274-7b6813edadab.wav?Expires=1578624046&OSSAccessKeyId=LTAI****cqw&Signature=dL2dxWS6VcdZrvG9xOMOBMSP3Fg%3D
 	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
-	// The list of segmented recordings, including file names and file URLs.
+	// The list of segmented recordings, including the file names and file URLs.
 	//
 	// example:
 	//

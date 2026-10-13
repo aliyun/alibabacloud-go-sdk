@@ -16,7 +16,7 @@ type iGetBaseStrategyPeriodRequest interface {
 }
 
 type GetBaseStrategyPeriodRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,13 @@ type GetBaseStrategyPeriodRequest struct {
 	//
 	// 024f8cf0-c842-4c01-b74b-c8667e4579c7
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
-	// Strategy level. Default value is 2.
+	// The policy level. Default value: 2. Valid values:
 	//
-	// - 0: System
+	// - 0: System.
 	//
-	// - 1: Tenant
+	// - 1: Tenant.
 	//
-	// - 2: Instance
+	// - 2: Instance.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type DownloadRecordingRequest struct {
 	//
 	// false
 	NeedVoiceSliceRecording *bool `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
-	// Specifies whether to swap left and right audio channels. Default value: false (not swapped).
+	// Specifies whether to swap the left and right audio channels. Default value: false.
 	//
 	// example:
 	//

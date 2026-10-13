@@ -50,15 +50,15 @@ type iCreateAnnotationMissionShrinkRequest interface {
 type CreateAnnotationMissionShrinkRequest struct {
 	// The agent ID.
 	//
-	// > You can obtain this ID from the \\`DescribeInstance\\` operation.
+	// > You can obtain this value from the DescribeInstance operation.
 	//
 	// example:
 	//
 	// 1168702
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The workspace key.
+	// The business space key.
 	//
-	// > You can obtain this key from the \\`DescribeInstance\\` operation.
+	// > You can obtain this value from the DescribeInstance operation.
 	//
 	// example:
 	//
@@ -66,23 +66,23 @@ type CreateAnnotationMissionShrinkRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	// The data type of the annotation task.
 	//
-	// - 1: Outbound call
+	// - 1: outbound call
 	//
 	// example:
 	//
 	// 1
 	AnnotationMissionDataSourceType *int32 `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
-	// The list of annotation data sources.
+	// The annotation data source list.
 	//
-	// > This parameter has the same function as \\`AnnotationMissionDebugDataSourceListJsonString\\`. You can specify either of them.
+	// > This parameter has the same function as AnnotationMissionDebugDataSourceListJsonString. Specify either one of them.
 	AnnotationMissionDebugDataSourceListShrink *string `json:"AnnotationMissionDebugDataSourceList,omitempty" xml:"AnnotationMissionDebugDataSourceList,omitempty"`
-	// The JSON string for the test data.
+	// The debug data in JSON format.
 	//
-	// > This parameter has the same function as \\`AnnotationMissionDebugDataSourceList\\`. You can specify either of them. The format is \\`[1]\\`, \\`[2]\\`, or \\`[1,2]\\`. You can specify multiple filter conditions in the array. The enumeration values are as follows:
+	// > This parameter has the same function as AnnotationMissionDebugDataSourceList. Specify either one of them. The format is [1], [2], or [1,2]. You can specify multiple filter conditions in the array. The enum values for the filter conditions are as follows.
 	//
-	// - 1: Outbound call task
+	// - 1: outbound call task
 	//
-	// - 2: Test task
+	// - 2: test task
 	//
 	// example:
 	//
@@ -92,45 +92,41 @@ type CreateAnnotationMissionShrinkRequest struct {
 	//
 	// example:
 	//
-	// 询问卖车-标注任务-20230506-112934
+	// CarSaleInquiry-AnnotationTask-20230506-112934
 	AnnotationMissionName *string `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
-	// The bot ID.
+	// The robot ID.
 	//
-	// > You can obtain this ID from the \\`DescribeScript\\` operation.
+	// > You can obtain this value from the DescribeScript operation.
 	//
 	// example:
 	//
 	// chatbot-cn-fqEnFZBYnb
 	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	// The end time for filtering calls.
+	// The end time for the call time filter.
 	//
 	// example:
 	//
 	// 1682956800000
 	ConversationTimeEndFilter *int64 `json:"ConversationTimeEndFilter,omitempty" xml:"ConversationTimeEndFilter,omitempty"`
-	// The start time for filtering calls.
+	// The start time for the call time filter.
 	//
 	// example:
 	//
 	// 1683302400000
 	ConversationTimeStartFilter *int64 `json:"ConversationTimeStartFilter,omitempty" xml:"ConversationTimeStartFilter,omitempty"`
-	// Specifies whether to exclude call records that have been annotated in other tasks. If you do not specify this parameter, the default value is \\`false\\`.
+	// Specifies whether to exclude call records that have been annotated by other tasks. Default value: false.
 	//
 	// example:
 	//
 	// true
 	ExcludeOtherSession *bool `json:"ExcludeOtherSession,omitempty" xml:"ExcludeOtherSession,omitempty"`
-	// Indicates whether the business process ended normally.
+	// Specifies whether the business ended normally.
 	//
-	// > This parameter takes effect only when \\`SessionEndReasonFilterList\\` is not specified.
+	// > This parameter takes effect only when SessionEndReasonFilterList is not specified.
 	//
-	// >
+	// > - true: normal call records
 	//
-	// > - \\`true\\`: The call record is normal.
-	//
-	// >
-	//
-	// > - \\`false\\`: The call did not end normally.
+	// > - false: abnormal call records
 	//
 	// example:
 	//
@@ -142,17 +138,17 @@ type CreateAnnotationMissionShrinkRequest struct {
 	//
 	// bf3b51a5-e88a-4636-98b0-1a34725a085b
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The custom sampling amount.
+	// The custom sampling quantity.
 	//
-	// > This parameter is required and takes effect only when \\`SamplingType\\` is set to 3. Otherwise, the task fails to be created.
+	// > This parameter takes effect only when SamplingType is set to 3. This parameter is required in that case. Otherwise, the creation fails.
 	//
 	// example:
 	//
 	// 1
 	SamplingCount *int32 `json:"SamplingCount,omitempty" xml:"SamplingCount,omitempty"`
-	// The sampling percentage.
+	// The sampling ratio.
 	//
-	// > This parameter is required and takes effect only when \\`SamplingType\\` is set to 2. Otherwise, the task fails to be created.
+	// > This parameter takes effect only when SamplingType is set to 2. This parameter is required in that case. Otherwise, the creation fails.
 	//
 	// example:
 	//
@@ -160,53 +156,53 @@ type CreateAnnotationMissionShrinkRequest struct {
 	SamplingRate *int32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
 	// The sampling type.
 	//
-	// - 1: Full data
+	// - 1: full
 	//
-	// - 2: Percentage
+	// - 2: percentage
 	//
-	// - 3: Custom amount
+	// - 3: custom quantity
 	//
 	// example:
 	//
 	// 1
 	SamplingType *int32 `json:"SamplingType,omitempty" xml:"SamplingType,omitempty"`
-	// The outbound scenario ID.
+	// The outbound call scenario ID.
 	//
 	// example:
 	//
 	// 6236f21e-2e04-4dad-a47b-ae77e6a48325
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The filter condition for call completion statuses.
+	// The call result status filter conditions.
 	//
-	// > This parameter has the same function as \\`SessionEndReasonFilterListJsonString\\`. You can specify either of them.
+	// > This parameter has the same function as SessionEndReasonFilterListJsonString. Specify either one of them.
 	SessionEndReasonFilterList []*int32 `json:"SessionEndReasonFilterList,omitempty" xml:"SessionEndReasonFilterList,omitempty" type:"Repeated"`
-	// The filter condition for call completion statuses.
+	// The call result status filter conditions.
 	//
-	// > This parameter has the same function as \\`SessionEndReasonFilterList\\`. You can specify either of them. The format is \\`[1]\\` or \\`[1,2]\\`. You can specify multiple filter conditions in the array. The enumeration values for the filter conditions are as follows.
+	// > This parameter has the same function as SessionEndReasonFilterList. Specify either one of them. The format is [1], [1,2], etc. You can specify multiple filter conditions in the array. The enum values for the filter conditions are as follows.
 	//
-	// **Enumeration values for filtering call records**
+	// **Call record filter enum values**
 	//
-	// - 1: The call ended normally.
+	// - 1: normal completion
 	//
-	// - 2: The bot hung up after a recognition failure.
+	// - 2: robot hung up after recognition rejection
 	//
-	// - 3: The call was hung up due to a silence timeout.
+	// - 3: hung up due to silence timeout
 	//
-	// - 4: The user hung up after a recognition failure.
+	// - 4: user hung up after recognition rejection
 	//
-	// - 5: The user hung up for no reason.
+	// - 5: user hung up without reason
 	//
-	// - 6: The call was transferred to a manual agent after an intent was hit.
+	// - 6: transferred to agent by intent match
 	//
-	// - 7: The call was transferred to a manual agent after a recognition failure.
+	// - 7: transferred to agent by recognition rejection
 	//
-	// - 8: No interaction from the user.
+	// - 8: no interaction on user side
 	//
-	// - 9: The call was interrupted by a system exception.
+	// - 9: system exception interruption
 	//
-	// - 10: The call was transferred to an IVR after an intent was hit.
+	// - 10: transferred to IVR by intent match
 	//
-	// - 11: The call was transferred to an IVR after a recognition failure.
+	// - 11: transferred to IVR by recognition rejection
 	//
 	// example:
 	//

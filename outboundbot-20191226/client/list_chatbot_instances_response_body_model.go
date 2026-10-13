@@ -30,51 +30,51 @@ type iListChatbotInstancesResponseBody interface {
 }
 
 type ListChatbotInstancesResponseBody struct {
-	// Chatbot list details
+	// The list of chatbots.
 	Bots []*ListChatbotInstancesResponseBodyBots `json:"Bots,omitempty" xml:"Bots,omitempty" type:"Repeated"`
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 5
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -185,43 +185,43 @@ func (s *ListChatbotInstancesResponseBody) Validate() error {
 }
 
 type ListChatbotInstancesResponseBodyBots struct {
-	// Profile picture URL.
+	// The URL of the avatar.
 	//
 	// example:
 	//
 	// https://ccrm.wengine.cn/ccrm/system/common/fileDownload/noToken?fileId=975cdeaa064846e3b6004abd9ba1d7c8
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// Creation time.
+	// The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-01-18T02:36:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// e874fcf0-d2f4-4e62-9377-b6f35fe55210
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Chatbot description.
+	// The description of the chatbot.
 	//
 	// example:
 	//
-	// 这是直播的描述
+	// This is the description for the live stream
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// Language used by the chatbot, such as zh-cn or en-us.
+	// The language of the chatbot service, such as zh-cn and en-us.
 	//
 	// example:
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	// Chatbot name.
+	// The name of the chatbot.
 	//
 	// example:
 	//
-	// 智能回访2
+	// Smart Callback 2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Time zone of the chatbot. See Common Time Zone Codes.
+	// The time zone of the chatbot. For more information, see Public - Time Zone Codes.
 	//
 	// example:
 	//

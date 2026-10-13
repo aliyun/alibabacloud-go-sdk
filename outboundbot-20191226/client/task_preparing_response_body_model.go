@@ -36,7 +36,7 @@ type TaskPreparingResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The message returned by the operation.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type TaskPreparingResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The task ID.
+	// The node ID.
 	//
 	// example:
 	//

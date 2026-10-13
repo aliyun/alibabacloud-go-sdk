@@ -24,31 +24,31 @@ type iDescribeTTSDemoResponseBody interface {
 }
 
 type DescribeTTSDemoResponseBody struct {
-	// URL of the preview audio file.
+	// The URL of the preview audio file.
 	//
 	// example:
 	//
 	// http://XXX/XXX
 	AuditionUrl *string `json:"AuditionUrl,omitempty" xml:"AuditionUrl,omitempty"`
-	// API status code.
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API response message.
+	// The API response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

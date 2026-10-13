@@ -30,7 +30,7 @@ type GetContactWhiteListResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The contact list.
+	// The contact whitelist.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetContactWhiteListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The API response message.
+	// The API message.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *GetContactWhiteListResponseBody) Validate() error {
 }
 
 type GetContactWhiteListResponseBodyContactWhitelistList struct {
-	// The contact list.
+	// The contact whitelist.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type GetContactWhiteListResponseBodyContactWhitelistListList struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ContactWhiteListId *string `json:"ContactWhiteListId,omitempty" xml:"ContactWhiteListId,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type GetContactWhiteListResponseBodyContactWhitelistListList struct {
 	//
 	// example:
 	//
-	// John Smith
+	// Zhang San
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operator.
 	//
@@ -260,7 +260,7 @@ type GetContactWhiteListResponseBodyContactWhitelistListList struct {
 	//
 	// 13959999999
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//

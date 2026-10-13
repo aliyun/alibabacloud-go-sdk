@@ -24,33 +24,33 @@ type iListIntentionsResponseBody interface {
 }
 
 type ListIntentionsResponseBody struct {
-	// API Status Code
+	// The status code of the operation.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned Data
+	// The returned data.
 	Data *ListIntentionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP Status Code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API Message
+	// The message returned by the operation.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Is Success
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,21 +130,21 @@ func (s *ListIntentionsResponseBody) Validate() error {
 }
 
 type ListIntentionsResponseBodyData struct {
-	// Bot ID
+	// The robot ID.
 	//
 	// example:
 	//
 	// chatbot-cn-n7QmzrUnNe
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// Intent List
+	// The list of intents.
 	IntentList []*ListIntentionsResponseBodyDataIntentList `json:"IntentList,omitempty" xml:"IntentList,omitempty" type:"Repeated"`
-	// API Message
+	// The message returned by the operation.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -210,73 +210,73 @@ func (s *ListIntentionsResponseBodyData) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentList struct {
-	// Intent Alias
+	// The intent alias.
 	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
-	// Bot ID (Deprecated)
+	// The robot ID. [Deprecated]
 	//
 	// example:
 	//
 	// chatbot-cn-n7QmzrUnNe
 	BotId *int64 `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// Bot Name
+	// The robot name.
 	//
 	// example:
 	//
 	// 111
 	BotName *string `json:"BotName,omitempty" xml:"BotName,omitempty"`
-	// Conversation Flow ID
+	// The dialog flow ID.
 	//
 	// example:
 	//
 	// 50099
 	DialogId *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
-	// Intent ID
+	// The intent ID.
 	//
 	// example:
 	//
 	// 10717802
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Language
+	// The language.
 	//
-	// - English (en-us)
+	// - English: en-us
 	//
-	// - Chinese (zh-cn)
+	// - Chinese: zh-cn
 	//
 	// example:
 	//
 	// zh-cn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Intent Name
+	// The intent name.
 	//
 	// example:
 	//
-	// 知道了
+	// Got it
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// LGF Intent Expression
+	// The LGF intent utterance expressions.
 	RuleCheck []*ListIntentionsResponseBodyDataIntentListRuleCheck `json:"RuleCheck,omitempty" xml:"RuleCheck,omitempty" type:"Repeated"`
-	// Intent Slot Information
+	// The intent slot information.
 	Slot []*ListIntentionsResponseBodyDataIntentListSlot `json:"Slot,omitempty" xml:"Slot,omitempty" type:"Repeated"`
-	// Table ID
+	// The table ID.
 	//
 	// example:
 	//
 	// 43258
 	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// Intent Type:
+	// The intent type. Valid values:
 	//
-	// - 0: Normal intent;
+	// - 0: normal intent.
 	//
-	// - 1: UNKNOWN;
+	// - 1: UNKNOWN.
 	//
-	// - 2: TableQA intent;
+	// - 2: TableQA intent.
 	//
-	// - 3: Generated from standard intent
+	// - 3: generated from a standard intent.
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// User Say List
+	// The list of user utterances.
 	UserSay []*ListIntentionsResponseBodyDataIntentListUserSay `json:"UserSay,omitempty" xml:"UserSay,omitempty" type:"Repeated"`
 }
 
@@ -428,21 +428,21 @@ func (s *ListIntentionsResponseBodyDataIntentList) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListRuleCheck struct {
-	// Error Message
+	// The error message.
 	Error []*string `json:"Error,omitempty" xml:"Error,omitempty" type:"Repeated"`
-	// Is Strict Match
+	// Indicates whether strict matching is used.
 	//
 	// example:
 	//
 	// true
 	Strict *bool `json:"Strict,omitempty" xml:"Strict,omitempty"`
-	// Expression Value
+	// The expression value.
 	//
 	// example:
 	//
-	// 知道
+	// know
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Warning Message
+	// The warning message.
 	Warning []*string `json:"Warning,omitempty" xml:"Warning,omitempty" type:"Repeated"`
 }
 
@@ -495,77 +495,77 @@ func (s *ListIntentionsResponseBodyDataIntentListRuleCheck) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListSlot struct {
-	// The follow-up question function.
+	// The clarification functions.
 	//
-	// 	Notice: This parameter is invalid.
+	// 	Notice: 无效内容
 	FeedbackFunctions []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions `json:"FeedbackFunctions,omitempty" xml:"FeedbackFunctions,omitempty" type:"Repeated"`
-	// Feedback Type
+	// The feedback type.
 	//
-	// 	Notice: Invalid content
+	// 	Notice: 无效内容
 	//
 	// example:
 	//
 	// test
 	FeedbackType *string `json:"FeedbackType,omitempty" xml:"FeedbackType,omitempty"`
-	// Slot Unique Identifier
+	// The unique identifier of the slot.
 	//
 	// example:
 	//
 	// 9ec31b50-32b8-11eb-9478-19d2d885afdb
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Is Array:
+	// Indicates whether the slot is an array. Valid values:
 	//
-	// - true: Yes
+	// - true: Yes.
 	//
-	// - false: No
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	IsArray *bool `json:"IsArray,omitempty" xml:"IsArray,omitempty"`
-	// Is Encrypted
+	// Indicates whether the slot is encrypted.
 	//
-	// 	Notice: Invalid content
+	// 	Notice: 无效内容
 	//
 	// example:
 	//
 	// false
 	IsEncrypt *bool `json:"IsEncrypt,omitempty" xml:"IsEncrypt,omitempty"`
-	// Is Interactive
+	// Indicates whether the slot is interactive.
 	//
-	// 	Notice: Invalid content
+	// 	Notice: 无效内容
 	//
 	// example:
 	//
 	// false
 	IsInteractive *bool `json:"IsInteractive,omitempty" xml:"IsInteractive,omitempty"`
-	// Is Required Slot:
+	// Indicates whether the slot is required. Valid values:
 	//
-	// - true: Yes
+	// - true: Yes.
 	//
-	// - false: No
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	IsNecessary *bool `json:"IsNecessary,omitempty" xml:"IsNecessary,omitempty"`
-	// Slot Lifecycle
+	// The slot life span.
 	//
 	// example:
 	//
 	// 0
 	LifeSpan *int32 `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
-	// Slot Name
+	// The slot name.
 	//
 	// example:
 	//
-	// 知道
+	// know
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Slot Follow-up Question
+	// The slot clarification prompts.
 	Question []*string `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
-	// Slot Tagging Labels
+	// The slot tagging labels.
 	Tags []*ListIntentionsResponseBodyDataIntentListSlotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Slot Tagging Result
+	// The slot tagging result.
 	//
 	// example:
 	//
@@ -712,57 +712,57 @@ func (s *ListIntentionsResponseBodyDataIntentListSlot) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions struct {
-	// Alibaba Cloud Function Name
+	// The Alibaba Cloud function name.
 	//
 	// example:
 	//
 	// test
 	AliyunFunction *string `json:"AliyunFunction,omitempty" xml:"AliyunFunction,omitempty"`
-	// Alibaba Cloud Service
+	// The Alibaba Cloud service.
 	//
 	// example:
 	//
 	// test
 	AliyunService *string `json:"AliyunService,omitempty" xml:"AliyunService,omitempty"`
-	// API Status Code
+	// The status code of the operation.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Follow-up Question Description
+	// The clarification description.
 	//
 	// example:
 	//
 	// GA setup for HPC cn4-HPC-EndUserServer-GlobalAccelerator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Endpoint
+	// The endpoint.
 	//
 	// example:
 	//
 	// cn-hangzhou.log.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	// Follow-up Question Function
+	// The clarification function.
 	//
 	// example:
 	//
 	// count
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// Function Name
+	// The function name.
 	//
 	// example:
 	//
 	// 方欣云呼系统每日拨测_2024年11月
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Parameters
+	// The parameters.
 	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
-	// Feature Switch. Values:
+	// The feature switch. Valid values:
 	//
-	// - **on**: Enabled
+	// - **on**: Enabled.
 	//
-	// - **off**: Disabled
+	// - **off**: Disabled.
 	Switch []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch `json:"Switch,omitempty" xml:"Switch,omitempty" type:"Repeated"`
-	// Follow-up Question Type
+	// The clarification type.
 	//
 	// example:
 	//
@@ -882,31 +882,31 @@ func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) Validate
 }
 
 type ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch struct {
-	// Condition ID
+	// The condition ID.
 	//
 	// example:
 	//
 	// b9932604-08ae-4525-bbe5-c8cce3066070
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Follow-up Question Label
+	// The clarification prompt label.
 	//
 	// example:
 	//
 	// SQL_SUB_QUERY
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Condition Name
+	// The condition name.
 	//
 	// example:
 	//
 	// 测试0609_20241021_101018_复制_复制_复制
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Type
+	// The type.
 	//
 	// example:
 	//
 	// PASSKEY
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Condition Value
+	// The condition value.
 	//
 	// example:
 	//
@@ -972,17 +972,17 @@ func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) Va
 }
 
 type ListIntentionsResponseBodyDataIntentListSlotTags struct {
-	// User Say Unique Identifier for the Label
+	// The unique identifier of the intent utterance corresponding to the label.
 	//
 	// example:
 	//
 	// 17448458
 	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
-	// The value of the tag is the result of tagging an intent expression.
+	// The tagging result of the intent utterance corresponding to the label.
 	//
 	// example:
 	//
-	// 你知道xxxx？
+	// Do you know xxxx?
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1017,27 +1017,27 @@ func (s *ListIntentionsResponseBodyDataIntentListSlotTags) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListUserSay struct {
-	// Source ID
+	// The source ID.
 	//
-	// 	Notice: Invalid content
+	// 	Notice: 无效内容
 	//
 	// example:
 	//
 	// 1234567
 	FromId *string `json:"FromId,omitempty" xml:"FromId,omitempty"`
-	// The ID of the user utterance.
+	// The utterance ID.
 	//
 	// example:
 	//
 	// 17448458
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Is Strict Match
+	// Indicates whether strict matching is used.
 	//
 	// example:
 	//
 	// true
 	Strict *bool `json:"Strict,omitempty" xml:"Strict,omitempty"`
-	// User Say List
+	// The list of user utterances.
 	UserSayData []*ListIntentionsResponseBodyDataIntentListUserSayUserSayData `json:"UserSayData,omitempty" xml:"UserSayData,omitempty" type:"Repeated"`
 }
 
@@ -1099,17 +1099,17 @@ func (s *ListIntentionsResponseBodyDataIntentListUserSay) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListUserSayUserSayData struct {
-	// Slot Unique Identifier
+	// The unique identifier of the slot.
 	//
 	// example:
 	//
 	// 9ec31b50-32b8-11eb-9478-19d2d885afdb
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// Expression
+	// The utterance text.
 	//
 	// example:
 	//
-	// 知道
+	// know
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

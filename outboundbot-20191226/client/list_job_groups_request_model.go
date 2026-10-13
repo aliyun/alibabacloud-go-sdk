@@ -30,13 +30,13 @@ type iListJobGroupsRequest interface {
 }
 
 type ListJobGroupsRequest struct {
-	// Specifies whether to retrieve the query results asynchronously.
+	// Specifies whether to asynchronously obtain the query results.
 	//
 	// example:
 	//
 	// true
 	AsyncQuery *bool `json:"AsyncQuery,omitempty" xml:"AsyncQuery,omitempty"`
-	// The end of the time range for the query, based on the creation time of the job group. Specify the time as a UNIX timestamp in milliseconds.
+	// The end time to filter job groups by creation time. Use a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -50,29 +50,29 @@ type ListJobGroupsRequest struct {
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Filters results by job status. To specify multiple statuses, separate them with commas. The statuses are combined with a logical OR. Valid values:
+	// The filter condition. Filters by job status. You can specify multiple statuses separated by commas. The logical OR operator is used. Valid values:
 	//
-	// - **Draft**: The job group is a draft.
+	// - **Draft**: Draft.
 	//
-	// - **Scheduling**: The job group is being scheduled.
+	// - **Scheduling**: Scheduling.
 	//
-	// - **Executing**: The job group is executing.
+	// - **Executing**: Executing.
 	//
-	// - **Completed**: The job group has completed.
+	// - **Completed**: Completed.
 	//
-	// - **Paused**: The job group is paused.
+	// - **Paused**: Paused.
 	//
-	// - **Failed**: The job group has failed.
+	// - **Failed**: Failed.
 	//
-	// - **Cancelled**: The job group is canceled.
+	// - **Cancelled**: Cancelled.
 	//
-	// - **Initializing**: The job group is initializing.
+	// - **Initializing**: Initializing.
 	//
 	// example:
 	//
 	// Draft
 	JobGroupStatusFilter *string `json:"JobGroupStatusFilter,omitempty" xml:"JobGroupStatusFilter,omitempty"`
-	// Specifies whether to return only job groups with minimum concurrency enabled.
+	// Specifies whether to query tasks with a valid minimum concurrency guarantee.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ListJobGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -94,13 +94,13 @@ type ListJobGroupsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search text.
+	// The search keyword.
 	//
 	// example:
 	//
-	// 面试
+	// Interview
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
-	// The start of the time range for the query, based on the creation time of the job group. Specify the time as a UNIX timestamp in milliseconds.
+	// The start time to filter job groups by creation time. Use a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type TaskPreparingRequest struct {
 	//
 	// 33040b9a-b04b-452f-b554-cd6f3a15f850
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the account that owns the instance.
+	// The ID of the account to which the instance belongs.
 	//
 	// example:
 	//
 	// 1971226538081821
 	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	// The job ID.
+	// The node ID.
 	//
 	// This parameter is required.
 	//

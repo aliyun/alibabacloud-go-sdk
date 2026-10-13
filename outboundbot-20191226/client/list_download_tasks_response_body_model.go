@@ -24,33 +24,33 @@ type iListDownloadTasksResponseBody interface {
 }
 
 type ListDownloadTasksResponseBody struct {
-	// API status code
+	// The status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Download task list
+	// The list of download tasks.
 	DownloadTasks *ListDownloadTasksResponseBodyDownloadTasks `json:"DownloadTasks,omitempty" xml:"DownloadTasks,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API message
+	// The message returned by the API.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 904CFA7B-8AD9-50FF-9B3E-404B20B9EE31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,21 +130,21 @@ func (s *ListDownloadTasksResponseBody) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasks struct {
-	// Download task array
+	// The array of download tasks.
 	List []*ListDownloadTasksResponseBodyDownloadTasksList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Count
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total count
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -210,43 +210,43 @@ func (s *ListDownloadTasksResponseBodyDownloadTasks) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasksList struct {
-	// Download task file list
+	// The list of files for the download task.
 	DownloadTaskFiles []*ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles `json:"DownloadTaskFiles,omitempty" xml:"DownloadTaskFiles,omitempty" type:"Repeated"`
-	// The expiration time.
+	// The expiration time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1646792941
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Export status.
+	// The export status. Valid values:
 	//
-	// - Pending: Pending
+	// - Pending: Pending.
 	//
-	// - InProgress: In progress
+	// - InProgress: In progress.
 	//
-	// - Finished: Completed
+	// - Finished: Finished.
 	//
-	// - Failed: Failed
+	// - Failed: Failed.
 	//
-	// - Expired: Expired
+	// - Expired: Expired.
 	//
-	// - Cancelled: Canceled
+	// - Cancelled: Cancelled.
 	//
 	// example:
 	//
 	// Empty
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
 	// 6b0e547e-501c-480a-812f-d27e28e74f9a
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Title
+	// The title.
 	//
 	// example:
 	//
-	// GUI-TEST-新建风险
+	// GUI-TEST-Create risk
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -317,41 +317,41 @@ func (s *ListDownloadTasksResponseBodyDownloadTasksList) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles struct {
-	// File ID
+	// The file ID.
 	//
 	// example:
 	//
 	// 01f8d11abdb9406996c0c46e7*******
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Completion progress [Deprecated]
+	// **[Deprecated]*	- The completion progress.
 	//
 	// example:
 	//
 	// 10
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// File status
+	// The file status. Valid values:
 	//
-	// - Pending: Pending
+	// - Pending: Pending.
 	//
-	// - InProgress: In progress
+	// - InProgress: In progress.
 	//
-	// - Finished: Completed
+	// - Finished: Finished.
 	//
-	// - Failed: Failed
+	// - Failed: Failed.
 	//
-	// - Expired: Expired
+	// - Expired: Expired.
 	//
-	// - Cancelled: Canceled
+	// - Cancelled: Cancelled.
 	//
 	// example:
 	//
 	// Empty
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Title
+	// The title.
 	//
 	// example:
 	//
-	// GUI-TEST-新建风险
+	// GUI-TEST-Create risk
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

@@ -36,9 +36,9 @@ type CreateJobGroupResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The task information.
+	// The job information.
 	JobGroup *CreateJobGroupResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateJobGroupResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *CreateJobGroupResponseBody) Validate() error {
 }
 
 type CreateJobGroupResponseBodyJobGroup struct {
-	// The list of calling numbers.
+	// The list of caller numbers.
 	CallingNumbers []*string `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -140,65 +140,67 @@ type CreateJobGroupResponseBodyJobGroup struct {
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The export progress.
 	//
-	// > This field is deprecated.
+	// >**[Deprecated]*	- This field is deprecated in the current parameter.
 	ExportProgress *CreateJobGroupResponseBodyJobGroupExportProgress `json:"ExportProgress,omitempty" xml:"ExportProgress,omitempty" type:"Struct"`
-	// The ID of the background asynchronous parsing operation for the uploaded task file.
-	//
-	// > No value is returned if this field is empty.
+	// The ID of the background asynchronous parsing operation corresponding to the uploaded job file. If no value exists, this parameter is not returned.
 	//
 	// example:
 	//
 	// 744ff448-2b4c-40d4-94ca-51f246905b0f
 	JobDataParsingTaskId *string `json:"JobDataParsingTaskId,omitempty" xml:"JobDataParsingTaskId,omitempty"`
-	// The OSS path of the task file.
-	//
-	// > No value is returned if this field is empty.
+	// The OSS path of the job file. If no value exists, this parameter is not returned.
 	//
 	// example:
 	//
 	// UPLOADED/JOB/b3865dc3-40fa-4afd-9fe4-dc7cda305a24/229eac13-379d-4abe-96e0-8cf026b56c0b_template (1).xlsx
 	JobFilePath *string `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
-	// The task description.
+	// The description of the job.
 	//
 	// example:
 	//
-	// 第一个的作业组
+	// First job group
 	JobGroupDescription *string `json:"JobGroupDescription,omitempty" xml:"JobGroupDescription,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// c62e6789-28a8-41db-941e-171a01d3b3b9
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// The task name.
+	// The job name.
 	//
 	// example:
 	//
-	// 第一个作业组
+	// First job group
 	JobGroupName *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
-	// The guaranteed concurrency value. When the task starts, a minimum of N concurrent calls are guaranteed. The sum of guaranteed concurrency values for tasks with the same priority cannot exceed the instance concurrency. If the guaranteed concurrency value is set to 0, the system intelligently allocates idle concurrency.
+	// The guaranteed concurrency.
+	//
+	// - When the job starts, a minimum of N concurrent calls are guaranteed.
+	//
+	// - The sum of guaranteed concurrency for jobs of the same priority cannot exceed the instance concurrency.
+	//
+	// - If the guaranteed concurrency is set to 0, the system intelligently allocates idle concurrency.
 	//
 	// example:
 	//
 	// 1
 	MinConcurrency *int64 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
-	// The modification time.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1628425608429
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The job group priority. Valid values:
+	// The priority of the job group. Valid values:
 	//
-	// - **Urgent**: urgent task.
+	// - **Urgent**: urgent job.
 	//
-	// - **Daily**: daily task.
+	// - **Daily**: daily job.
 	//
 	// example:
 	//
 	// Daily
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The list of redial calling numbers.
+	// The list of caller numbers for redialing.
 	RecallCallingNumbers []*string `json:"RecallCallingNumbers,omitempty" xml:"RecallCallingNumbers,omitempty" type:"Repeated"`
 	// The redial strategy.
 	RecallStrategy *CreateJobGroupResponseBodyJobGroupRecallStrategy `json:"RecallStrategy,omitempty" xml:"RecallStrategy,omitempty" type:"Struct"`
@@ -214,25 +216,25 @@ type CreateJobGroupResponseBodyJobGroup struct {
 	//
 	// 6cea9bed-63e6-439e-ae4c-b3333efff53d
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// The dialog flow scenario name.
+	// The script scenario name.
 	//
 	// example:
 	//
-	// 话术
+	// Script
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// The dialog flow scenario version.
+	// The script scenario version.
 	//
 	// example:
 	//
 	// 1628425608429
 	ScriptVersion *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
-	// The task status.
+	// The job status.
 	//
 	// example:
 	//
 	// Scheduling
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task scheduling strategy.
+	// The job scheduling strategy.
 	Strategy *CreateJobGroupResponseBodyJobGroupStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -435,19 +437,19 @@ func (s *CreateJobGroupResponseBodyJobGroup) Validate() error {
 }
 
 type CreateJobGroupResponseBodyJobGroupExportProgress struct {
-	// The file URL. [Deprecated]
+	// **[Deprecated]*	- The file URL.
 	//
 	// example:
 	//
 	// https://***.oss-cn-shanghai.aliyuncs.com/sample
 	FileHttpUrl *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
-	// The progress. [Deprecated]
+	// **[Deprecated]*	- The progress.
 	//
 	// example:
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The task export status. [Deprecated]
+	// **[Deprecated]*	- The job export status.
 	//
 	// example:
 	//
@@ -495,19 +497,19 @@ func (s *CreateJobGroupResponseBodyJobGroupExportProgress) Validate() error {
 }
 
 type CreateJobGroupResponseBodyJobGroupRecallStrategy struct {
-	// Indicates whether nonexistent numbers are excluded from redialing.
+	// Indicates whether nonexistent numbers are skipped.
 	//
 	// example:
 	//
 	// true
 	EmptyNumberIgnore *bool `json:"EmptyNumberIgnore,omitempty" xml:"EmptyNumberIgnore,omitempty"`
-	// Indicates whether numbers with overdue payments are excluded from redialing.
+	// Indicates whether numbers with overdue payments are skipped.
 	//
 	// example:
 	//
 	// true
 	InArrearsIgnore *bool `json:"InArrearsIgnore,omitempty" xml:"InArrearsIgnore,omitempty"`
-	// Indicates whether out-of-service numbers are excluded from redialing.
+	// Indicates whether suspended numbers are skipped.
 	//
 	// example:
 	//
@@ -561,61 +563,61 @@ type CreateJobGroupResponseBodyJobGroupStrategy struct {
 	//
 	// {}
 	Customized *string `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	// The end time.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 2209702074000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The follow-up action after the execution cycle ends. This field is no longer in use.
+	// The follow-up processing method after the execution cycle ends. This field is no longer used.
 	//
 	// example:
 	//
 	// CONTINUE
 	FollowUpStrategy *string `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	// Indicates whether this is a template.
+	// Indicates whether the strategy is a template.
 	//
 	// example:
 	//
 	// false
 	IsTemplate *bool `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	// The maximum number of daily call attempts when calls in the task are not connected.
+	// The maximum number of call attempts per day when the call is not answered in the job.
 	//
 	// example:
 	//
 	// 3
 	MaxAttemptsPerDay *int32 `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	// The interval between call attempts.
+	// The call interval.
 	//
 	// example:
 	//
 	// 3
 	MinAttemptInterval *int32 `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	// The repeat execution mode. Valid values: once (no repeat), day (repeat daily), week (repeat weekly), and month (repeat monthly).
+	// The repetition method. Valid values: once (no repetition), day (daily repetition), week (weekly repetition), and month (monthly repetition).
 	//
 	// example:
 	//
 	// Once
 	RepeatBy *string `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	// The repeat execution days.
+	// The execution days for repetition.
 	//
-	// - If **RepeatBy*	- is set to **Week**, 0 indicates Sunday and 1-6 indicate Monday through Saturday.
+	// - If the repetition cycle **RepeatBy*	- is **Week**, 0 represents Sunday, and 1 to 6 represent Monday to Saturday.
 	//
-	// - If **RepeatBy*	- is set to **Month**, 1-31 indicate the 1st through 31st day. The task is not executed in months that do not have the specified day. For example, if the 30th is selected, the task is not executed in February.
+	// - If the repetition cycle **RepeatBy*	- is **Month**, 1 to 31 represent the 1st to the 31st day. Months without the specified date are not executed. For example, if the 30th is selected, the job is not executed in February.
 	RepeatDays []*string `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
 	// The number strategy. Valid values:
 	//
 	// - None: no special rules.
 	//
-	// - LocalFirst: local city numbers preferred.
+	// - LocalFirst: local numbers first.
 	//
-	// - LocalProvinceFirst: local province numbers preferred.
+	// - LocalProvinceFirst: local province numbers first.
 	//
 	// example:
 	//
 	// LocalFirst
 	RoutingStrategy *string `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -625,7 +627,7 @@ type CreateJobGroupResponseBodyJobGroupStrategy struct {
 	//
 	// example:
 	//
-	// 催收策略
+	// Collection strategy
 	StrategyDescription *string `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
 	// The strategy ID.
 	//
@@ -637,7 +639,7 @@ type CreateJobGroupResponseBodyJobGroupStrategy struct {
 	//
 	// example:
 	//
-	// 催收策略
+	// Collection strategy
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 	// The strategy type.
 	//
@@ -645,7 +647,7 @@ type CreateJobGroupResponseBodyJobGroupStrategy struct {
 	//
 	// Repeatable
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The strategy execution time window.
+	// The execution time window of the strategy.
 	WorkingTime []*CreateJobGroupResponseBodyJobGroupStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
 }
 
@@ -806,13 +808,13 @@ func (s *CreateJobGroupResponseBodyJobGroupStrategy) Validate() error {
 }
 
 type CreateJobGroupResponseBodyJobGroupStrategyWorkingTime struct {
-	// The window start time.
+	// The start time of the window. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 09:00:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The window end time.
+	// The end time of the window. Format: HH:mm:ss.
 	//
 	// example:
 	//

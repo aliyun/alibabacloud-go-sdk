@@ -24,33 +24,33 @@ type iGetAnnotationMissionTagInfoListResponseBody interface {
 }
 
 type GetAnnotationMissionTagInfoListResponseBody struct {
-	// Status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response data
+	// The returned data.
 	Data *GetAnnotationMissionTagInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message
+	// The message returned by the API.
 	//
 	// example:
 	//
 	// CDR \\"job-efbaeefc-4d45-4e79-83f7-b33b0769c969\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
@@ -130,15 +130,15 @@ func (s *GetAnnotationMissionTagInfoListResponseBody) Validate() error {
 }
 
 type GetAnnotationMissionTagInfoListResponseBodyData struct {
-	// Tag list
+	// The list of tags.
 	AnnotationMissionTagInfoList []*GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoList `json:"AnnotationMissionTagInfoList,omitempty" xml:"AnnotationMissionTagInfoList,omitempty" type:"Repeated"`
-	// Response message
+	// The message returned by the API.
 	//
 	// example:
 	//
 	// CDR \\"job-efbaeefc-4d45-4e79-83f7-b33b0769c969\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call succeeded. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
@@ -195,37 +195,37 @@ func (s *GetAnnotationMissionTagInfoListResponseBodyData) Validate() error {
 }
 
 type GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoList struct {
-	// Tag description
+	// The tag description.
 	//
 	// example:
 	//
-	// 用户投诉
+	// User complaint
 	AnnotationMissionTagInfoDescription *string `json:"AnnotationMissionTagInfoDescription,omitempty" xml:"AnnotationMissionTagInfoDescription,omitempty"`
-	// Tag ID
+	// The tag ID.
 	//
 	// example:
 	//
 	// e1ee87ea-ebad-4079-aebb-1c56a4ef0c06
 	AnnotationMissionTagInfoId *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
-	// Tag name
+	// The tag name.
 	//
 	// example:
 	//
-	// 用户投诉
+	// User complaint
 	AnnotationMissionTagInfoName *string `json:"AnnotationMissionTagInfoName,omitempty" xml:"AnnotationMissionTagInfoName,omitempty"`
-	// Indicates whether the tag is deleted. A value of true indicates that the tag is deleted.
+	// Indicates whether the tag is deleted.
 	//
 	// example:
 	//
 	// false
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 3c3b8d1d-deff-48d9-9318-addc80ae5b1e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// example:
 	//

@@ -42,9 +42,9 @@ type ListInstancesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The list of service instances.
+	// The list of outbound robot instances.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// The time when the instance was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -203,25 +203,25 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// xxx
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The description of the Outbound Bot service instance.
+	// The description of the outbound robot instance.
 	//
 	// example:
 	//
-	// 这是一个实例
+	// This is an instance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The service instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Outbound Bot service instance.
+	// The name of the outbound robot instance.
 	//
 	// example:
 	//
-	// 回访
+	// Follow-up
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the instance is a system preset instance.
+	// Indicates whether the instance is a system-preset instance.
 	//
 	// example:
 	//

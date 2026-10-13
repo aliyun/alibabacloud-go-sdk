@@ -36,7 +36,7 @@ type ListScriptsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListScriptsResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The script list.
+	// The list of scripts.
 	Scripts *ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -130,7 +130,7 @@ func (s *ListScriptsResponseBody) Validate() error {
 }
 
 type ListScriptsResponseBodyScripts struct {
-	// The script array.
+	// The array of scripts.
 	List []*ListScriptsResponseBodyScriptsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -210,20 +210,21 @@ func (s *ListScriptsResponseBodyScripts) Validate() error {
 }
 
 type ListScriptsResponseBodyScriptsList struct {
-	// The access key of the robot business workspace.
+	// The access key of the robot workspace.
 	//
 	// example:
 	//
 	// 14791f5f226b4878b3d9b676a0291234
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// Indicates whether the robot business workspace is a large model workspace.
+	// Indicates whether the robot workspace is a large model workspace.
 	//
 	// example:
 	//
 	// false
-	AgentLlm  *bool   `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
+	AgentLlm *bool `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
+	// The chatbot ID.
 	ChatBotId *string `json:"ChatBotId,omitempty" xml:"ChatBotId,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -235,7 +236,7 @@ type ListScriptsResponseBodyScriptsList struct {
 	//
 	// DRAFTED
 	DebugStatus *string `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
-	// Indicates whether the emotion recognition feature is enabled. This parameter is set to false for all large model scenarios.
+	// Indicates whether the emotion recognition configuration is enabled. This value is always false for large models.
 	//
 	// example:
 	//
@@ -247,7 +248,7 @@ type ListScriptsResponseBodyScriptsList struct {
 	//
 	// Finance
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	// Indicates whether the debug version is in draft state.
+	// Indicates whether the debug version is in the draft state.
 	//
 	// example:
 	//
@@ -265,55 +266,55 @@ type ListScriptsResponseBodyScriptsList struct {
 	//
 	// false
 	IsPreset *bool `json:"IsPreset,omitempty" xml:"IsPreset,omitempty"`
-	// Indicates whether the long pause detection feature is enabled. This parameter is set to false for all large model scenarios.
+	// Indicates whether the long pause configuration is enabled. This value is always false for large models.
 	//
 	// example:
 	//
 	// false
 	LongWaitEnable *bool `json:"LongWaitEnable,omitempty" xml:"LongWaitEnable,omitempty"`
-	// Indicates whether the filler phrase feature is enabled.
+	// Indicates whether the filler word configuration is enabled.
 	//
 	// example:
 	//
 	// false
 	MiniPlaybackEnable *bool `json:"MiniPlaybackEnable,omitempty" xml:"MiniPlaybackEnable,omitempty"`
-	// Indicates whether the graceful barge-in feature is enabled. This parameter is set to false for all large model scenarios.
+	// Indicates whether the graceful barge-in configuration is enabled. This value is always false for large models.
 	//
 	// example:
 	//
 	// false
 	NewBargeInEnable *bool `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
-	// The robot access type. If the scenario uses a small model, this field is empty. If the scenario uses a large model, this field is set to Managed.
+	// The robot access type. If the scenario is a small model scenario, this field is empty. If the scenario is a large model scenario, this field is Managed.
 	//
 	// example:
 	//
 	// Empty or Managed
 	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
-	// The robot engine. If the scenario uses a small model, this field is empty. If the scenario uses a large model, this field is set to Prompts.
+	// The robot engine. If the scenario is a small model scenario, this field is empty. If the scenario is a large model scenario, this field is Prompts.
 	//
 	// example:
 	//
 	// Empty or Prompts
 	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	// The function computing service mode configuration.
+	// The Function Compute service mode configuration.
 	NluProfile *ListScriptsResponseBodyScriptsListNluProfile `json:"NluProfile,omitempty" xml:"NluProfile,omitempty" type:"Struct"`
-	// The reason for review rejection.
+	// The reason for rejection.
 	//
 	// example:
 	//
-	// Non-compliant script language
+	// Non-compliant script wording
 	RejectReason *string `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
 	// The scenario.
 	//
 	// example:
 	//
-	// Telemarketing
+	// Telesales
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The script description.
 	//
 	// example:
 	//
-	// Telemarketing script
+	// Telesales script
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
 	// The script ID.
 	//
@@ -325,7 +326,7 @@ type ListScriptsResponseBodyScriptsList struct {
 	//
 	// example:
 	//
-	// Telemarketing script
+	// Telesales script
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	// The script status.
 	//
@@ -333,13 +334,13 @@ type ListScriptsResponseBodyScriptsList struct {
 	//
 	// DRAFTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1578965079000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The robot business workspace ID.
+	// The robot workspace ID.
 	//
 	// example:
 	//
@@ -587,13 +588,13 @@ type ListScriptsResponseBodyScriptsListNluProfile struct {
 	//
 	// sanfang_test
 	FcFunction *string `json:"FcFunction,omitempty" xml:"FcFunction,omitempty"`
-	// The function service trigger URL.
+	// The function service trigger.
 	//
 	// example:
 	//
 	// http://sanfang_test-xxxxxx.cn-shanghai-vpc.fcapp.run
 	FcHttpTriggerUrl *string `json:"FcHttpTriggerUrl,omitempty" xml:"FcHttpTriggerUrl,omitempty"`
-	// The function service region.
+	// The region of the function service.
 	//
 	// example:
 	//

@@ -42,19 +42,19 @@ type iModifyJobGroupRequest interface {
 }
 
 type ModifyJobGroupRequest struct {
-	// The calling numbers for the job group.
+	// The caller number.
 	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	// The description of the job group.
+	// The job description.
 	//
 	// example:
 	//
-	// 修改后的作业组
+	// Modified job group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The flash SMS configuration, specified as a JSON string. This may include settings for third-party flash SMS services.
+	// The configuration parameters for flash message push in JSON format, including the configuration information of third-party flash messages.
 	//
-	// `templateId`: The flash SMS template ID.<br>
+	// templateId: the flash message template ID.
 	//
-	// `configId`: The flash SMS configuration ID.<br>
+	// configId: the flash message configuration ID.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ModifyJobGroupRequest struct {
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The job group ID.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -76,43 +76,49 @@ type ModifyJobGroupRequest struct {
 	//
 	// 3edc0260-6f7c-4de4-8535-09372240618b
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// The status of the job group. Valid values:
+	// The job status. Valid values:
 	//
-	// - `Draft`: The job group is in a draft state.
+	// - Draft: draft.
 	//
-	// - `Paused`: The job group is paused.
+	// - Paused: paused.
 	//
 	// example:
 	//
 	// Draft
 	JobGroupStatus *string `json:"JobGroupStatus,omitempty" xml:"JobGroupStatus,omitempty"`
-	// The guaranteed minimum number of concurrent calls for the job group. The sum of this value for all job groups with the same priority cannot exceed the instance\\"s total concurrency. If you set this parameter to `0`, the system dynamically allocates available lines from a shared pool.
+	// The guaranteed concurrency.
+	//
+	// When a job starts, a minimum of N concurrent calls are guaranteed.
+	//
+	// The sum of guaranteed concurrency values for jobs of the same priority cannot exceed the instance concurrency.
+	//
+	// If the guaranteed concurrency is set to 0, the system intelligently allocates idle concurrency.
 	//
 	// example:
 	//
 	// 1
 	MinConcurrency *int64 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
-	// The name of the job group.
+	// The job name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 修改后的作业组
+	// Modified job group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The priority of the job group. Valid values:
+	// The job group priority. Valid values:
 	//
-	// - **Urgent**: An urgent job.
+	// - **Urgent**: urgent job.
 	//
-	// - **Daily**: A routine job.
+	// - **Daily**: daily job.
 	//
 	// example:
 	//
 	// Daily
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The recall calling numbers.
+	// The list of caller numbers for recall.
 	RecallCallingNumber []*string `json:"RecallCallingNumber,omitempty" xml:"RecallCallingNumber,omitempty" type:"Repeated"`
-	// A JSON string that defines the recall strategy.
+	// The JSON string of the recall strategy.
 	//
 	// example:
 	//
@@ -124,41 +130,41 @@ type ModifyJobGroupRequest struct {
 	//
 	// 25
 	RingingDuration *int64 `json:"RingingDuration,omitempty" xml:"RingingDuration,omitempty"`
-	// The scenario ID. (This is a legacy parameter. Use `ScriptId` instead.)
+	// The scenario ID. This is a legacy parameter. Use ScriptId instead.
 	//
-	// > You can pass any value for this legacy parameter, but we recommend using the same value as `ScriptId` for consistency.
+	// > This parameter is a legacy parameter. You can pass any value. Keep it consistent with the ScriptId.
 	//
 	// example:
 	//
 	// c6a668d1-3145-4048-9101-cb3678bb8884
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// The ID of the script for the scenario.
+	// The script ID.
 	//
 	// example:
 	//
 	// 5a3940ce-a12f-4222-9f0f-605a9b89ea7c
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// A JSON string that defines the execution strategy for the job group.
+	// The job execution strategy.
 	//
-	// - `id`: The ID of the job group strategy. You can obtain this ID from the `StrategyId` parameter returned by the `DescribeJobGroup` operation.
+	// - id: the job group strategy ID. You can obtain it from the StrategyId response parameter of the DescribeJobGroup operation.
 	//
-	// - `repeatBy`: The frequency of the job. Valid values: `Once` (does not repeat), `Day` (repeats daily), `Week` (repeats weekly), and `Month` (repeats monthly).
+	// - repeatBy: the recurrence type. Valid values: Once (no recurrence), Day (daily), Week (weekly), and Month (monthly).
 	//
-	// - `startTime`: The start time of the strategy.
+	// - startTime: the start time of the strategy.
 	//
-	// - `endTime`: The end time of the strategy.
+	// - endTime: the end time of the strategy.
 	//
-	// - `workingTime`: The time windows for making outbound calls.
+	// - workingTime: the time period during which outbound calls are allowed.
 	//
-	// - `maxAttemptsPerDay`: The maximum number of call attempts per day for a number in this job group.
+	// - maxAttemptsPerDay: the maximum number of call attempts per day for a phone number under this job.
 	//
-	// - `minAttemptInterval`: The minimum interval, in minutes, between call retries to the same number.
+	// - minAttemptInterval: the retry interval for a phone number, in minutes.
 	//
-	// - `routingStrategy`: The number routing strategy. Valid values: `None` (not specified), `LocalFirst` (prioritizes numbers in the same city), and `LocalProvinceFirst` (prioritizes numbers in the same province).
+	// - routingStrategy: the phone number strategy. Valid values: None (not specified), LocalFirst (local numbers first), and LocalProvinceFirst (local province numbers first).
 	//
-	// - `repeatDays`: The specific days to run the job, based on the `repeatBy` value. If `repeatBy` is `Week`, `0` indicates Sunday, and `1` through `6` indicate Monday through Saturday. If `repeatBy` is `Month`, valid values are `1` through `31`. If a month does not have the specified day (for example, day 30 in February), the job does not run on that day.
+	// - repeatDays: the execution days corresponding to the recurrence type. If RepeatBy is Week, 0 indicates Sunday, and 1 to 6 indicate Monday to Saturday. If RepeatBy is Month, 1 to 31 indicate the 1st to the 31st day of the month. If a month does not have the specified day, the job is not executed in that month. For example, if the 30th is selected, the job is not executed in February.
 	//
-	// - `repeatable`: Whether the job is recurring. Valid values are `true` and `false`.
+	// - repeatable: specifies whether to enable recurring jobs. Valid values: true and false.
 	//
 	// example:
 	//

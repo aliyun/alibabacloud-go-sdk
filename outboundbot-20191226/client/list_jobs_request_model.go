@@ -24,7 +24,7 @@ type ListJobsRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of job IDs. A maximum of 99 child items are allowed.
+	// The list of job IDs. Note: A maximum of 99 job IDs can be specified.
 	//
 	// This parameter is required.
 	//

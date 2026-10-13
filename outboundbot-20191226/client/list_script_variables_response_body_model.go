@@ -36,7 +36,7 @@ type ListScriptVariablesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The API message.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListScriptVariablesResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ type ListScriptVariablesResponseBodyVariables struct {
 	//
 	// example:
 	//
-	// 表示客户的真实姓名
+	// The real name of the customer
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the variable.
 	//
 	// example:
 	//
-	// 姓名
+	// Name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The name of the variable.
 	//

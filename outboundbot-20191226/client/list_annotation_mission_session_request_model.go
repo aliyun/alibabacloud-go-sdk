@@ -24,15 +24,15 @@ type iListAnnotationMissionSessionRequest interface {
 }
 
 type ListAnnotationMissionSessionRequest struct {
-	// The task ID.
+	// The annotation mission ID.
 	//
 	// example:
 	//
 	// 8434a4b0-41fc-41b1-aa75-bbd1f2ab0c8d
 	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
-	// The ID of the chat instance for the annotation task.
+	// The annotation mission chat instance ID.
 	//
-	// > Obtain this ID by calling the SaveAnnotationMissionSessionList operation.
+	// > Obtained by calling the SaveAnnotationMissionSessionList operation.
 	//
 	// example:
 	//
@@ -40,35 +40,35 @@ type ListAnnotationMissionSessionRequest struct {
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
 	// The environment.
 	//
-	// > The default value is 2.
+	// > Default value: 2.
 	//
-	// **Enumeration values**
+	// **Valid values:**
 	//
-	// - 0: NONE
+	// - 0: NONE.
 	//
-	// - 1: Private cloud
+	// - 1: Private cloud.
 	//
-	// - 2: Public cloud
+	// - 2: Public cloud.
 	//
 	// example:
 	//
 	// 0
 	Environment *int32 `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The list of statuses to include.
+	// The list of included statuses.
 	//
-	// > The format is [1]. Fill the array with specific enumeration values.
+	// > The format is [1]. Specify the actual enum values in the array.
 	//
-	// **Enumeration values**
+	// **Valid values:**
 	//
-	// - 1: Correctly detected
+	// - 1: Correct recognition.
 	//
-	// - 2: Incorrectly detected
+	// - 2: Incorrect recognition.
 	//
-	// - 8: Invalid data
+	// - 8: Invalid data.
 	//
-	// - 4: Uncovered intent
+	// - 4: Uncovered intent.
 	//
-	// - 16: Transcription error
+	// - 16: Transcription misrecognition.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListAnnotationMissionSessionRequest struct {
 	//
 	// 3
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of records to display on each page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

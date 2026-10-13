@@ -28,49 +28,49 @@ type iGetBaseStrategyPeriodResponseBody interface {
 }
 
 type GetBaseStrategyPeriodResponseBody struct {
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the period applies only to weekends
+	// Indicates whether the time periods apply only to weekends.
 	//
 	// example:
 	//
 	// false
 	OnlyWeekdays *bool `json:"OnlyWeekdays,omitempty" xml:"OnlyWeekdays,omitempty"`
-	// Indicates whether the period applies only to weekdays
+	// Indicates whether the time periods apply only to workdays.
 	//
 	// example:
 	//
 	// false
 	OnlyWorkdays *bool `json:"OnlyWorkdays,omitempty" xml:"OnlyWorkdays,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Time periods when the strategy runs
+	// The execution time periods of the policy.
 	//
 	// example:
 	//
@@ -172,25 +172,25 @@ func (s *GetBaseStrategyPeriodResponseBody) Validate() error {
 }
 
 type GetBaseStrategyPeriodResponseBodyWorkingTime struct {
-	// Start time
+	// The start time. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 00:00:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// Daily start time, in milliseconds
+	// The daily start time in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	BeginTimeMillis *int64 `json:"BeginTimeMillis,omitempty" xml:"BeginTimeMillis,omitempty"`
-	// End time
+	// The end time. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Daily end time, in milliseconds
+	// The daily end time in milliseconds.
 	//
 	// example:
 	//

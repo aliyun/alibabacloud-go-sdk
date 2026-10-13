@@ -24,33 +24,33 @@ type iListAllTenantBindNumberBindingResponseBody interface {
 }
 
 type ListAllTenantBindNumberBindingResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data.
+	// The data.
 	Data *ListAllTenantBindNumberBindingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A4BEAB4B-C810-5386-B72A-1A35FF1E6B15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListAllTenantBindNumberBindingResponseBody) Validate() error {
 }
 
 type ListAllTenantBindNumberBindingResponseBodyData struct {
-	// Array.
+	// The list.
 	List []*ListAllTenantBindNumberBindingResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -165,32 +165,33 @@ func (s *ListAllTenantBindNumberBindingResponseBodyData) Validate() error {
 }
 
 type ListAllTenantBindNumberBindingResponseBodyDataList struct {
+	// The billing method of the number.
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	// Binding ID.
+	// The binding ID.
 	//
 	// example:
 	//
 	// b5bfb844-ce85-4779-bc8f-161fba46aa07
 	BindingId *string `json:"BindingId,omitempty" xml:"BindingId,omitempty"`
-	// List of instance names.
+	// The list of instance names.
 	InstanceNameList []*string `json:"InstanceNameList,omitempty" xml:"InstanceNameList,omitempty" type:"Repeated"`
-	// Phone number.
+	// The number.
 	//
 	// example:
 	//
 	// 15005059355
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	// Policy.
+	// The policy.
 	//
 	// example:
 	//
 	// {\\"rateLimitPeriod\\":\\"1\\",\\"rateLimitCount\\":\\"1\\"}
 	SerializedParams *string `json:"SerializedParams,omitempty" xml:"SerializedParams,omitempty"`
-	// Trunk name.
+	// The trunk name.
 	//
 	// example:
 	//
-	// 小码-公共
+	// Xiaoma-Public
 	TrunkName *string `json:"TrunkName,omitempty" xml:"TrunkName,omitempty"`
 }
 

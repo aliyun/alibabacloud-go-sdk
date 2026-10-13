@@ -47,7 +47,8 @@ type GetContactWhiteListRequest struct {
 	// example:
 	//
 	// 10
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search condition for the outbound whitelist.
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
 }
 

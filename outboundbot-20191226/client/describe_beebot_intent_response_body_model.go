@@ -28,45 +28,45 @@ type iDescribeBeebotIntentResponseBody interface {
 }
 
 type DescribeBeebotIntentResponseBody struct {
-	// Internal request ID
+	// The internal request ID.
 	//
 	// example:
 	//
 	// 0B219FCB-EC71-1F08-BB1B-0E87C20158C8
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Intent information
+	// The intent information.
 	Intent *DescribeBeebotIntentResponseBodyIntent `json:"Intent,omitempty" xml:"Intent,omitempty" type:"Struct"`
-	// Intent ID
+	// The intent ID.
 	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// API message
+	// The API message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -164,55 +164,55 @@ func (s *DescribeBeebotIntentResponseBody) Validate() error {
 }
 
 type DescribeBeebotIntentResponseBodyIntent struct {
-	// Intent alias
+	// The intent alias.
 	//
 	// example:
 	//
-	// 嗯明白了
+	// Okay, got it
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// Creation time
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//
 	// 2025-04-21 10:29:59.+0800
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Creator user ID
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 1252504
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// Creator account name
+	// The username of the creator.
 	//
 	// example:
 	//
 	// xxx@voice-navigator-testonaliyun.com
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// Intent ID
+	// The intent ID.
 	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// Intent name
+	// The intent name.
 	//
 	// example:
 	//
-	// 知道了
+	// Got it
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// Modification time
+	// The modification time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
 	//
 	// example:
 	//
 	// 2025-04-21 15:52:57.+0800
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Modifier user ID
+	// The ID of the modifier.
 	//
 	// example:
 	//
 	// 1252504
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	// Modifier account name
+	// The username of the modifier.
 	//
 	// example:
 	//
