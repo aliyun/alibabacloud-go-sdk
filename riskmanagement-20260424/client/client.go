@@ -827,6 +827,68 @@ func (client *Client) DownloadResourceControlEvents(request *DownloadResourceCon
 
 // Summary:
 //
+// Immediately ends a penetration test.
+//
+// @param request - EndPenetrationTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EndPenetrationTestResponse
+func (client *Client) EndPenetrationTestWithOptions(request *EndPenetrationTestRequest, runtime *dara.RuntimeOptions) (_result *EndPenetrationTestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EndPenetrationTest"),
+		Version:     dara.String("2026-04-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EndPenetrationTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Immediately ends a penetration test.
+//
+// @param request - EndPenetrationTestRequest
+//
+// @return EndPenetrationTestResponse
+func (client *Client) EndPenetrationTest(request *EndPenetrationTestRequest) (_result *EndPenetrationTestResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EndPenetrationTestResponse{}
+	_body, _err := client.EndPenetrationTestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the analysis results of alert records.
 //
 // @param tmpReq - GetAlertRecordAnalysisResultRequest
@@ -2251,6 +2313,134 @@ func (client *Client) QueryGuideSubStatus(request *QueryGuideSubStatusRequest) (
 
 // Summary:
 //
+// Queries the details of a penetration test application.
+//
+// @param request - QueryPenetrationTestDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPenetrationTestDetailResponse
+func (client *Client) QueryPenetrationTestDetailWithOptions(request *QueryPenetrationTestDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryPenetrationTestDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryPenetrationTestDetail"),
+		Version:     dara.String("2026-04-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryPenetrationTestDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a penetration test application.
+//
+// @param request - QueryPenetrationTestDetailRequest
+//
+// @return QueryPenetrationTestDetailResponse
+func (client *Client) QueryPenetrationTestDetail(request *QueryPenetrationTestDetailRequest) (_result *QueryPenetrationTestDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryPenetrationTestDetailResponse{}
+	_body, _err := client.QueryPenetrationTestDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询渗透测试申请列表
+//
+// @param request - QueryPenetrationTestListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPenetrationTestListResponse
+func (client *Client) QueryPenetrationTestListWithOptions(request *QueryPenetrationTestListRequest, runtime *dara.RuntimeOptions) (_result *QueryPenetrationTestListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryPenetrationTestList"),
+		Version:     dara.String("2026-04-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryPenetrationTestListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询渗透测试申请列表
+//
+// @param request - QueryPenetrationTestListRequest
+//
+// @return QueryPenetrationTestListResponse
+func (client *Client) QueryPenetrationTestList(request *QueryPenetrationTestListRequest) (_result *QueryPenetrationTestListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryPenetrationTestListResponse{}
+	_body, _err := client.QueryPenetrationTestListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries cloud resource control events.
 //
 // @param tmpReq - QueryResourceControlEventsRequest
@@ -2710,6 +2900,104 @@ func (client *Client) SubmitApplyRecord(request *SubmitApplyRecordRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitApplyRecordResponse{}
 	_body, _err := client.SubmitApplyRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a penetration test application.
+//
+// @param request - SubmitPenetrationTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitPenetrationTestResponse
+func (client *Client) SubmitPenetrationTestWithOptions(request *SubmitPenetrationTestRequest, runtime *dara.RuntimeOptions) (_result *SubmitPenetrationTestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetList) {
+		query["AssetList"] = request.AssetList
+	}
+
+	if !dara.IsNil(request.IsThirdpartyTest) {
+		query["IsThirdpartyTest"] = request.IsThirdpartyTest
+	}
+
+	if !dara.IsNil(request.TestContent) {
+		query["TestContent"] = request.TestContent
+	}
+
+	if !dara.IsNil(request.TestEndDate) {
+		query["TestEndDate"] = request.TestEndDate
+	}
+
+	if !dara.IsNil(request.TestSourceIps) {
+		query["TestSourceIps"] = request.TestSourceIps
+	}
+
+	if !dara.IsNil(request.TestStartDate) {
+		query["TestStartDate"] = request.TestStartDate
+	}
+
+	if !dara.IsNil(request.TestSteps) {
+		query["TestSteps"] = request.TestSteps
+	}
+
+	if !dara.IsNil(request.ThirdpartyEmail) {
+		query["ThirdpartyEmail"] = request.ThirdpartyEmail
+	}
+
+	if !dara.IsNil(request.ThirdpartyMobile) {
+		query["ThirdpartyMobile"] = request.ThirdpartyMobile
+	}
+
+	if !dara.IsNil(request.ThirdpartyTester) {
+		query["ThirdpartyTester"] = request.ThirdpartyTester
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitPenetrationTest"),
+		Version:     dara.String("2026-04-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitPenetrationTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a penetration test application.
+//
+// @param request - SubmitPenetrationTestRequest
+//
+// @return SubmitPenetrationTestResponse
+func (client *Client) SubmitPenetrationTest(request *SubmitPenetrationTestRequest) (_result *SubmitPenetrationTestResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitPenetrationTestResponse{}
+	_body, _err := client.SubmitPenetrationTestWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
