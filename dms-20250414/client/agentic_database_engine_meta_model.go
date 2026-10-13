@@ -20,13 +20,29 @@ type iAgenticDatabaseEngineMeta interface {
 }
 
 type AgenticDatabaseEngineMeta struct {
-	// The name of the database catalog.
+	// The catalog name in the database engine.
+	//
+	// example:
+	//
+	// def
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The character encoding for the database.
+	// The character set encoding of the database.
+	//
+	// example:
+	//
+	// utf8mb4
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The name of the database schema.
+	// The schema name.
+	//
+	// example:
+	//
+	// public
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The storage capacity of the database, in GB.
+	// The storage capacity of the database, in MB.
+	//
+	// example:
+	//
+	// 1024
 	StorageCapacity *int64 `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
 }
 

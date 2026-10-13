@@ -32,25 +32,65 @@ type iAgenticTableColumnEngineMeta interface {
 }
 
 type AgenticTableColumnEngineMeta struct {
-	// Indicates whether the column uses auto-increment.
+	// Specifies whether the field is auto-incremented.
+	//
+	// example:
+	//
+	// false
 	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	// The data length of the column. This parameter typically applies to string and binary data types.
+	// The defined length of the field.
+	//
+	// example:
+	//
+	// 20
 	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
-	// The data precision of the column, which is the total number of digits in a numeric type.
+	// The precision of the numeric field.
+	//
+	// example:
+	//
+	// 10
 	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	// The data scale of the column, which is the number of digits to the right of the decimal point in a numeric type.
+	// The scale of the numeric field, which is the number of decimal places.
+	//
+	// example:
+	//
+	// 2
 	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	// The default value of the column.
+	// The default value of the field.
+	//
+	// example:
+	//
+	// 0
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The character encoding of the column.
+	// The character set of the field.
+	//
+	// example:
+	//
+	// utf8mb4
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// Engine-specific attributes or flags for the column.
+	// The additional information of the field, such as auto_increment.
+	//
+	// example:
+	//
+	// auto_increment
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Indicates whether the column is a generated column.
+	// Specifies whether the field is a generated column.
+	//
+	// example:
+	//
+	// false
 	GenerationColumn *bool `json:"GenerationColumn,omitempty" xml:"GenerationColumn,omitempty"`
-	// The expression used to generate the column\\"s value. Applies only if `GenerationColumn` is `true`.
+	// The calculation expression of the generated column.
+	//
+	// example:
+	//
+	// price 	- quantity
 	GenerationExpression *string `json:"GenerationExpression,omitempty" xml:"GenerationExpression,omitempty"`
-	// Indicates whether the column is nullable.
+	// Specifies whether the field allows null values.
+	//
+	// example:
+	//
+	// false
 	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 }
 

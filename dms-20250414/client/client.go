@@ -5237,11 +5237,11 @@ func (client *Client) ListCustomAgentMonitorSessions(request *ListCustomAgentMon
 
 // Summary:
 //
-// Lists accuracy test configuration items that meet the specified conditions.
+// Lists the accuracy test configuration items that meet the specified conditions.
 //
 // Description:
 //
-// Lists accuracy test configuration items that meet the specified conditions.
+// Lists the accuracy test configuration items that meet the specified conditions.
 //
 // @param request - ListDataAgentAccuracyTestInstancesRequest
 //
@@ -5305,11 +5305,11 @@ func (client *Client) ListDataAgentAccuracyTestInstancesWithOptions(request *Lis
 
 // Summary:
 //
-// Lists accuracy test configuration items that meet the specified conditions.
+// Lists the accuracy test configuration items that meet the specified conditions.
 //
 // Description:
 //
-// Lists accuracy test configuration items that meet the specified conditions.
+// Lists the accuracy test configuration items that meet the specified conditions.
 //
 // @param request - ListDataAgentAccuracyTestInstancesRequest
 //
@@ -5993,7 +5993,7 @@ func (client *Client) ListDataAgentTheme(request *ListDataAgentThemeRequest) (_r
 
 // Summary:
 //
-// Retrieves a paginated list of collaborative workspaces under the primary account.
+// Queries a paginated list of collaborative workspaces under the Alibaba Cloud account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -6073,7 +6073,7 @@ func (client *Client) ListDataAgentWorkspaceWithOptions(request *ListDataAgentWo
 
 // Summary:
 //
-// Retrieves a paginated list of collaborative workspaces under the primary account.
+// Queries a paginated list of collaborative workspaces under the Alibaba Cloud account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //

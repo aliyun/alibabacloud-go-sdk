@@ -43,33 +43,92 @@ type iAgenticDatabase interface {
 
 type AgenticDatabase struct {
 	// The name of the catalog.
+	//
+	// example:
+	//
+	// prod_mysql_order
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The type of the catalog.
+	// The type of the catalog. Valid values:
+	//
+	// - **JDBC**: relational database catalog
+	//
+	// - **DataLake**: data lake catalog
+	//
+	// - **Dataset**: knowledge base catalog
+	//
+	// example:
+	//
+	// JDBC
 	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	// The unique identifier of the catalog.
+	// The UUID of the catalog.
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
 	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	// The database\\"s business attributes.
+	// The business attributes of the database, returned as key-value pairs. Currently, this may include **ENV_TYPE**, which indicates the environment type of the database.
 	DatabaseBizAttrs map[string]interface{} `json:"DatabaseBizAttrs,omitempty" xml:"DatabaseBizAttrs,omitempty"`
 	// The unique identifier of the database.
+	//
+	// example:
+	//
+	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The database description.
+	// The database type inherited from the catalog. The value is the uppercase name of the database type, such as MYSQL.
+	//
+	// example:
+	//
+	// MYSQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The description of the database.
+	//
+	// example:
+	//
+	// Order database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata for the database engine.
+	// The metadata of the database engine. This field is returned only for databases under a JDBC catalog.
 	EngineMeta *AgenticDatabaseEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
-	// The name of the database.
+	// The name of the database. For databases that distinguish schemas, such as PostgreSQL, this is the schema name.
+	//
+	// example:
+	//
+	// order_db
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The database\\"s extended properties.
+	// The extended properties of the database, returned as key-value pairs. This field is returned only for databases under a DataLake catalog.
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The fully qualified name of the database.
+	// The fully qualified name of the database. For databases that distinguish schemas, such as PostgreSQL, the format is database name.schema name.
+	//
+	// example:
+	//
+	// order_db
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
 	// The region ID of the database.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name used to search the database.
+	// The search name of the database. SearchAgenticDatabase matches search keywords against this name.
+	//
+	// example:
+	//
+	// order_db
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The database state.
+	// The status of the database. Valid values:
+	//
+	// - **0**: normal
+	//
+	// - **-1**: deleted
+	//
+	// example:
+	//
+	// 0
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
-	// The database storage location.
+	// The storage location. This field is returned only for databases under a DataLake catalog.
+	//
+	// example:
+	//
+	// oss://examplebucket/datalake/order_db/
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 

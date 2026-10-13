@@ -26,19 +26,49 @@ type iAgenticTableIndex interface {
 }
 
 type AgenticTableIndex struct {
-	// An array of column names included in the index.
+	// The list of fields included in the index. Fields with a specified prefix length include a length expression, such as name(10).
 	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
-	// An optional, user-defined description for the index.
+	// The index description.
+	//
+	// example:
+	//
+	// Index on user_id
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique name of the index within the table.
+	// The index name.
+	//
+	// example:
+	//
+	// idx_user_id
 	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	// The type of the index, such as PRIMARY, UNIQUE, or NORMAL.
+	// The index type. Valid values:
+	//
+	// - **Primary**: primary key index
+	//
+	// - **Unique**: unique index
+	//
+	// - **Normal**: normal index
+	//
+	// - **FullText**: full-text index
+	//
+	// - **Spatial**: spatial index
+	//
+	// example:
+	//
+	// Normal
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	// Specifies if the index is the primary key. A table can have only one primary key.
+	// Specifies whether the index is a primary key index.
+	//
+	// example:
+	//
+	// false
 	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
-	// An array of physical column names from the database. Use this parameter when the names in ColumnNames are aliases or logical names.
+	// The list of actual field names referenced by the index, with prefix length expressions removed from ColumnNames.
 	RealColumnNames []*string `json:"RealColumnNames,omitempty" xml:"RealColumnNames,omitempty" type:"Repeated"`
-	// Specifies if the index enforces a unique constraint, requiring all its values to be unique across rows.
+	// Specifies whether the index is a unique index.
+	//
+	// example:
+	//
+	// false
 	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
 }
 

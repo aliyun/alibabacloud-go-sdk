@@ -62,13 +62,13 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The sort field name.
+	// The name of the field to sort by.
 	//
 	// example:
 	//
 	// CreateTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number.
+	// The starting page number.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// workspaceTest
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
-	// The workspace type.
+	// The workspace type to query.
 	//
 	// This parameter is required.
 	//

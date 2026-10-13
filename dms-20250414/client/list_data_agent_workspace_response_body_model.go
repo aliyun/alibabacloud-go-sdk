@@ -58,7 +58,7 @@ type ListDataAgentWorkspaceResponseBody struct {
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ func (s *ListDataAgentWorkspaceResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyDataContent struct {
-	// The time when the workspace was created. The value is a timestamp in milliseconds.
+	// The creation time of the workspace. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -260,6 +260,12 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	//
 	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The number of custom agents in the workspace.
+	//
+	// example:
+	//
+	// 8
+	CustomAgentCount *int32 `json:"CustomAgentCount,omitempty" xml:"CustomAgentCount,omitempty"`
 	// The description of the workspace.
 	//
 	// example:
@@ -272,13 +278,13 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The time when the workspace was last modified. The value is a timestamp in milliseconds.
+	// The last modification time of the workspace. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1765961516000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the user\\"s role in the workspace.
+	// The role name of the user in the workspace.
 	//
 	// example:
 	//
@@ -302,13 +308,13 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	//
 	// 30
 	TotalSessionCount *int32 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
-	// The workspace type.
+	// The type of the workspace.
 	//
 	// example:
 	//
 	// personal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
@@ -346,6 +352,10 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetCreator() *string {
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetCreatorName() *string {
 	return s.CreatorName
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetCustomAgentCount() *int32 {
+	return s.CustomAgentCount
 }
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetDescription() *string {
@@ -404,6 +414,11 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetCreator(v string) *Li
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetCreatorName(v string) *ListDataAgentWorkspaceResponseBodyDataContent {
 	s.CreatorName = &v
+	return s
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetCustomAgentCount(v int32) *ListDataAgentWorkspaceResponseBodyDataContent {
+	s.CustomAgentCount = &v
 	return s
 }
 

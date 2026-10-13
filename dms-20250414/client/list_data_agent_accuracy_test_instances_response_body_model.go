@@ -34,7 +34,7 @@ type iListDataAgentAccuracyTestInstancesResponseBody interface {
 }
 
 type ListDataAgentAccuracyTestInstancesResponseBody struct {
-	// The response struct.
+	// The response data.
 	Data []*ListDataAgentAccuracyTestInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -48,13 +48,13 @@ type ListDataAgentAccuracyTestInstancesResponseBody struct {
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The maximum number of entries returned per page. You can use this parameter together with NextToken to implement paging.
+	// The maximum number of results to return per request. You can use this parameter with NextToken to paginate results.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type ListDataAgentAccuracyTestInstancesResponseBody struct {
 	//
 	// E0D21075-xxx-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The operation timestamp.
+	// The timestamp of the operation.
 	//
 	// example:
 	//
@@ -237,12 +237,24 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	//
 	// 20282*****7591
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The ID of the test dataset.
+	//
+	// example:
+	//
+	// ds-sdg***jkh
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The data source.
 	//
 	// example:
 	//
 	// null
 	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// null
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the test set file.
 	//
 	// example:
@@ -255,7 +267,7 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	//
 	// 2026-06-30T07:31:09.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -283,15 +295,15 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// AgentTestName
+	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether sessions are displayed after analysis. This feature is not supported.
+	// Specifies whether the session is displayed after analysis. This feature is currently not supported.
 	//
 	// example:
 	//
 	// true
 	NeedDelete *string `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
@@ -319,8 +331,16 @@ func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetCreator() *strin
 	return s.Creator
 }
 
+func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetDatasetId() *string {
+	return s.DatasetId
+}
+
 func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetDatasource() *string {
 	return s.Datasource
+}
+
+func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetFileId() *string {
@@ -374,8 +394,18 @@ func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) SetCreator(v string
 	return s
 }
 
+func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) SetDatasetId(v string) *ListDataAgentAccuracyTestInstancesResponseBodyData {
+	s.DatasetId = &v
+	return s
+}
+
 func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) SetDatasource(v string) *ListDataAgentAccuracyTestInstancesResponseBodyData {
 	s.Datasource = &v
+	return s
+}
+
+func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) SetDescription(v string) *ListDataAgentAccuracyTestInstancesResponseBodyData {
+	s.Description = &v
 	return s
 }
 

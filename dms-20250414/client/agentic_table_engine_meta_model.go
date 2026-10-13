@@ -36,29 +36,77 @@ type iAgenticTableEngineMeta interface {
 }
 
 type AgenticTableEngineMeta struct {
-	// A checksum to verify the table\\"s data integrity.
+	// The checksum of the table metadata.
+	//
+	// example:
+	//
+	// 9f86d081884c7d65****
 	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	// The time the table was created, in UTC format (`YYYY-MM-DDThh:mm:ssZ`).
+	// The time when the table was created. The format is yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2025-01-01 10:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The total size of the table\\"s data, in bytes.
+	// The data size of the table. Unit: bytes.
+	//
+	// example:
+	//
+	// 786432
 	DataBytes *int64 `json:"DataBytes,omitempty" xml:"DataBytes,omitempty"`
-	// The character encoding of the table.
+	// The character set encoding of the table.
+	//
+	// example:
+	//
+	// utf8mb4
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The table\\"s storage engine, such as `InnoDB`.
+	// The storage engine of the table.
+	//
+	// example:
+	//
+	// InnoDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// A checksum of the table\\"s data and indexes.
+	// The full checksum of the table metadata.
+	//
+	// example:
+	//
+	// 2c26b46b68ffc68f****
 	FullChecksum *string `json:"FullChecksum,omitempty" xml:"FullChecksum,omitempty"`
-	// The total size of the table\\"s indexes, in bytes.
+	// The index size of the table. Unit: bytes.
+	//
+	// example:
+	//
+	// 262144
 	IndexBytes *int64 `json:"IndexBytes,omitempty" xml:"IndexBytes,omitempty"`
-	// The timestamp of the last DDL (Data Definition Language) operation, in UTC format (`YYYY-MM-DDThh:mm:ssZ`).
+	// The time when the last DDL operation was executed on the table. The format is yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2025-01-02 10:00:00
 	LastDdlTime *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
 	// The number of rows in the table.
+	//
+	// example:
+	//
+	// 10000
 	NumRows *int64 `json:"NumRows,omitempty" xml:"NumRows,omitempty"`
-	// The table\\"s reference information.
+	// The reference information of the table.
+	//
+	// example:
+	//
+	// order_db.orders_view
 	RefInfo *string `json:"RefInfo,omitempty" xml:"RefInfo,omitempty"`
-	// The table\\"s total storage capacity, in bytes.
+	// The storage capacity of the table. Unit: MB.
+	//
+	// example:
+	//
+	// 16
 	StorageCapacity *int64 `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
-	// The name of the table schema.
+	// The name of the schema to which the table belongs.
+	//
+	// example:
+	//
+	// public
 	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
 }
 

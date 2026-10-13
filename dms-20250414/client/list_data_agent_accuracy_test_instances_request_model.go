@@ -30,13 +30,13 @@ type ListDataAgentAccuracyTestInstancesRequest struct {
 	//
 	// at-106n4rg17gv9fxxxxxxxxxx
 	AccuracyTestInsId *string `json:"AccuracyTestInsId,omitempty" xml:"AccuracyTestInsId,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListDataAgentAccuracyTestInstancesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

@@ -3925,11 +3925,11 @@ func (client *Client) ListCustomAgentMonitorSessionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Lists accuracy test configuration items that meet the specified conditions.
+// Lists the accuracy test configuration items that meet the specified conditions.
 //
 // Description:
 //
-// Lists accuracy test configuration items that meet the specified conditions.
+// Lists the accuracy test configuration items that meet the specified conditions.
 //
 // @param request - ListDataAgentAccuracyTestInstancesRequest
 //
@@ -4525,7 +4525,7 @@ func (client *Client) ListDataAgentThemeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves a paginated list of collaborative workspaces under the primary account.
+// Queries a paginated list of collaborative workspaces under the Alibaba Cloud account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
