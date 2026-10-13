@@ -22,7 +22,7 @@ type iListJobMetricResponseBody interface {
 }
 
 type ListJobMetricResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *ListJobMetricResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -36,17 +36,17 @@ type ListJobMetricResponseBody struct {
 	//
 	// This object does not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
-	// - 1xx: Informational response - Request received, processing continues.
+	// - 1xx: Informational response. The request was received and is being processed.
 	//
-	// - 2xx: Success - The request has been successfully received, understood, and accepted by the server.
+	// - 2xx: Success. The request action was successfully received, understood, and accepted by the server.
 	//
-	// - 3xx: Redirection - Further action must be taken to complete the request.
+	// - 3xx: Redirection. The request was redirected, and further action is required to complete it.
 	//
-	// - 4xx: Client error - The request contains bad syntax or cannot be fulfilled.
+	// - 4xx: Client error. The request contains invalid parameters, bad syntax, or cannot be fulfilled due to specific request conditions.
 	//
-	// - 5xx: Server error - The server failed to fulfill an apparently valid request.
+	// - 5xx: Server error. The server failed to fulfill the request due to other reasons.
 	//
 	// example:
 	//
@@ -123,21 +123,21 @@ func (s *ListJobMetricResponseBody) Validate() error {
 }
 
 type ListJobMetricResponseBodyData struct {
-	// The category of the metrics.
+	// The metric type.
 	//
 	// example:
 	//
 	// job
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Metric details.
+	// The metric details.
 	Metrics []*ListJobMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
-	// The name of observation metric.
+	// The metric name.
 	//
 	// example:
 	//
 	// num
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The monitoring statistical period.Unit:Second(s).
+	// The monitoring statistical period.
 	//
 	// example:
 	//
@@ -203,9 +203,9 @@ func (s *ListJobMetricResponseBodyData) Validate() error {
 }
 
 type ListJobMetricResponseBodyDataMetrics struct {
-	// Metric related information.
+	// The metric-related information.
 	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// Metric values information.
+	// The metric value information.
 	Values [][]*float64 `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

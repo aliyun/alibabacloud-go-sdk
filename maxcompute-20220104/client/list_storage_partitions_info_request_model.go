@@ -38,7 +38,7 @@ type ListStoragePartitionsInfoRequest struct {
 	//
 	// false
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	// The date for which to retrieve statistics. The date must be in `YYYYMMdd` format.
+	// The statistical date at the day level. Specify the time parameter in the YYYYMMdd format.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ListStoragePartitionsInfoRequest struct {
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The column to sort by.
+	// The sort column.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListStoragePartitionsInfoRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The partition name. This parameter supports fuzzy matching.
+	// The partition name for fuzzy matching.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type ListStoragePartitionsInfoRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The schema that contains the table.
+	// The schema to which the table belongs.
 	//
 	// example:
 	//
 	// schema
 	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The tenant ID. You can find this ID in the MaxCompute console by navigating to **Tenant Management*	- > **Tenant Properties**.
+	// The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management*	- > **Tenant Properties*	- in the left-side navigation pane.
 	//
 	// example:
 	//

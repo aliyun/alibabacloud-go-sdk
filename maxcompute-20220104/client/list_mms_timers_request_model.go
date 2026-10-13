@@ -24,7 +24,7 @@ type iListMmsTimersRequest interface {
 }
 
 type ListMmsTimersRequest struct {
-	// The timer name.
+	// The table name.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListMmsTimersRequest struct {
 	//
 	// test_table_1
 	SrcTableName *string `json:"srcTableName,omitempty" xml:"srcTableName,omitempty"`
-	// Filters timers by their stopped state.
+	// Specifies whether the job is stopped.
 	//
 	// example:
 	//

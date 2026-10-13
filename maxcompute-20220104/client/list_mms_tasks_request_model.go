@@ -71,7 +71,7 @@ type ListMmsTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The partition value. Use this parameter to filter migration tasks that migrated a specific partition value.
+	// The partition value. Filters migration tasks that migrated a specific partition value.
 	//
 	// example:
 	//
@@ -214,13 +214,13 @@ func (s *ListMmsTasksRequest) Validate() error {
 }
 
 type ListMmsTasksRequestSorter struct {
-	// Sorts results by the start time.
+	// Sorts the results by start time.
 	//
 	// example:
 	//
 	// desc
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// Sorts results by status.
+	// Sorts the results by status.
 	//
 	// example:
 	//

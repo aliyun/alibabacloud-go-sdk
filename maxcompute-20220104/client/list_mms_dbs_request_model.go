@@ -22,27 +22,27 @@ type iListMmsDbsRequest interface {
 }
 
 type ListMmsDbsRequest struct {
-	// Data source name
+	// The name of the data source.
 	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// Number of records per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Sorting conditions
+	// The sorting conditions.
 	Sorter *ListMmsDbsRequestSorter `json:"sorter,omitempty" xml:"sorter,omitempty" type:"Struct"`
-	// Data source status
+	// The status of the data source.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ func (s *ListMmsDbsRequest) Validate() error {
 }
 
 type ListMmsDbsRequestSorter struct {
-	// Number of data rows in the database
+	// The number of data rows in the database.
 	//
 	// example:
 	//
 	// desc
 	NumRows *string `json:"numRows,omitempty" xml:"numRows,omitempty"`
-	// Size of data in the database
+	// The size of data in the database.
 	//
 	// example:
 	//
 	// asc
 	Size *string `json:"size,omitempty" xml:"size,omitempty"`
-	// Update time
+	// The update time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

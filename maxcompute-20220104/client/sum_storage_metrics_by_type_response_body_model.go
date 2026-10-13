@@ -18,19 +18,19 @@ type iSumStorageMetricsByTypeResponseBody interface {
 }
 
 type SumStorageMetricsByTypeResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data []*SumStorageMetricsByTypeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
-	// - `1xx`: Informational response - The request has been received and is being processed.
+	// - 1xx: Informational response. The request has been received and is being processed.
 	//
-	// - `2xx`: Success - The request was successfully received, understood, and accepted.
+	// - 2xx: Success. The request has been successfully received, understood, and accepted by the server.
 	//
-	// - `3xx`: Redirection - Further action is needed to complete the request.
+	// - 3xx: Redirection. The request is redirected. Further action is required to complete the request.
 	//
-	// - `4xx`: Client error - The request contains invalid syntax or cannot be fulfilled.
+	// - 4xx: Client error. The request contains invalid parameters, bad syntax, or specific request conditions cannot be fulfilled.
 	//
-	// - `5xx`: Server error - The server failed to fulfill a valid request.
+	// - 5xx: Server error. The server cannot fulfill the request due to other reasons.
 	//
 	// example:
 	//
@@ -93,21 +93,21 @@ func (s *SumStorageMetricsByTypeResponseBody) Validate() error {
 }
 
 type SumStorageMetricsByTypeResponseBodyData struct {
-	// A list of daily storage usage metrics.
+	// The list of daily storage usage statistics.
 	DailyStorageMetrics []*SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics `json:"dailyStorageMetrics,omitempty" xml:"dailyStorageMetrics,omitempty" type:"Repeated"`
 	// The storage type. Valid values:
 	//
-	// - `Storage`: standard storage.
+	// - Storage: standard storage.
 	//
-	// - `LowFreqStorage`: infrequent access storage.
+	// - LowFreqStorage: infrequent access storage.
 	//
-	// - `ColdStorage`: archive storage.
+	// - ColdStorage: long-term storage.
 	//
-	// - `$sum`: total storage.
+	// - $sum: total storage.
 	//
-	// - `RecycleBinStorage`: recycle bin storage.
+	// - RecycleBinStorage: backup storage.
 	//
-	// - `DRStorage`: multi-AZ storage.
+	// - DRStorage: multi-AZ storage.
 	//
 	// example:
 	//
@@ -185,13 +185,13 @@ func (s *SumStorageMetricsByTypeResponseBodyData) Validate() error {
 }
 
 type SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics struct {
-	// The date of the metric, in `yyyyMMdd` format.
+	// The statistics date. Format: yyyyMMdd.
 	//
 	// example:
 	//
 	// 20260410
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
-	// The percentage of total daily storage that this storage type accounts for.
+	// The storage usage percentage.
 	//
 	// example:
 	//
@@ -199,17 +199,17 @@ type SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics struct {
 	Percentage *float64 `json:"percentage,omitempty" xml:"percentage,omitempty"`
 	// The storage type. Valid values:
 	//
-	// - `Storage`: standard storage.
+	// - Storage: standard storage.
 	//
-	// - `LowFreqStorage`: infrequent access storage.
+	// - LowFreqStorage: infrequent access storage.
 	//
-	// - `ColdStorage`: archive storage.
+	// - ColdStorage: long-term storage.
 	//
-	// - `$sum`: total storage.
+	// - $sum: total storage.
 	//
-	// - `RecycleBinStorage`: recycle bin storage.
+	// - RecycleBinStorage: backup storage.
 	//
-	// - `DRStorage`: multi-AZ storage.
+	// - DRStorage: multi-AZ storage.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics struct {
 	//
 	// GB
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
-	// The storage usage for this day.
+	// The storage usage.
 	//
 	// example:
 	//

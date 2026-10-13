@@ -26,11 +26,11 @@ type iQueryQuotaMetricRequest interface {
 }
 
 type QueryQuotaMetricRequest struct {
-	// The fixed interval in seconds. If you leave this parameter empty, the system uses an automatic interval policy.
+	// The fixed interval in seconds. By default, this parameter is empty, which indicates that the adaptive interval policy of the system is used.
 	//
-	// - Automatic interval policy: The interval is 60 seconds for a time range within 6 hours, 300 seconds for a time range within 24 hours, 900 seconds for a time range within 72 hours, and 1,800 seconds for a time range longer than 72 hours.
+	// - Adaptive interval policy: The interval is 60 seconds if the query time range is within 6 hours, 300 seconds if within 24 hours, 900 seconds if within 72 hours, and 1800 seconds if exceeding 72 hours.
 	//
-	// - Specified interval: Valid values are 60, 300, and 900. The query time range must be within 72 hours.
+	// - Specified interval: Only 60, 300, and 900 are supported. The query time range must be within 72 hours.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type QueryQuotaMetricRequest struct {
 	//
 	// os_sns
 	SubQuotaNickname *string `json:"subQuotaNickname,omitempty" xml:"subQuotaNickname,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query time range. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,7 @@ type QueryQuotaMetricRequest struct {
 	//
 	// 1735536322
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start of the time range to query.
+	// The start time of the query time range. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -65,9 +65,9 @@ type QueryQuotaMetricRequest struct {
 	//
 	// 1735534322
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The aggregation strategy for the data. The default value is max. Valid values: max and avg.
+	// The data aggregation policy. Default value: max. Valid values: max and avg.
 	//
-	// Data is collected at one-minute intervals. If you query a long time range, the system may use an interval longer than one minute and aggregate the data. This parameter specifies how the data is aggregated.
+	// Data is collected every 1 minute. If the query time range is large, the adaptive step size for data display exceeds 1 minute, and the metrics are aggregated. This parameter specifies the data aggregation logic.
 	//
 	// example:
 	//

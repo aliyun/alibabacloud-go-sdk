@@ -16,7 +16,7 @@ type iListMmsDataSourcesResponseBody interface {
 }
 
 type ListMmsDataSourcesResponseBody struct {
-	// The response payload.
+	// The returned data.
 	Data *ListMmsDataSourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -76,7 +76,7 @@ type ListMmsDataSourcesResponseBodyData struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of data sources.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -142,15 +142,15 @@ func (s *ListMmsDataSourcesResponseBodyData) Validate() error {
 }
 
 type ListMmsDataSourcesResponseBodyDataObjectList struct {
-	// Indicates whether the agent for the data source instance is online.
+	// Specifies whether the data source instance or the associated agent is started.
 	//
 	// example:
 	//
 	// true
 	AgentIsOnline *bool `json:"agentIsOnline,omitempty" xml:"agentIsOnline,omitempty"`
-	// A list of data source configurations.
+	// The configurations related to the data source.
 	Config []*ListMmsDataSourcesResponseBodyDataObjectListConfig `json:"config,omitempty" xml:"config,omitempty" type:"Repeated"`
-	// The time the data source was created.
+	// The time when the data source was created. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -168,33 +168,33 @@ type ListMmsDataSourcesResponseBodyDataObjectList struct {
 	//
 	// mms_test
 	DstProject *string `json:"dstProject,omitempty" xml:"dstProject,omitempty"`
-	// A list of destination MaxCompute projects.
+	// The list of destination MaxCompute projects.
 	DstProjects []*string `json:"dstProjects,omitempty" xml:"dstProjects,omitempty" type:"Repeated"`
-	// The reason the data source instance failed to start or stop. This parameter is returned only if the `status` is `START_FAILED` or `STOP_FAILED`.
+	// The reason why the data source instance failed to start or stop when the status is START_FAILED or STOP_FAILED.
 	//
 	// example:
 	//
 	// unexpected exception
 	ErrMsg *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// 2000015
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The last metadata synchronization time.
+	// The time when the metadata was last synchronized. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:17
 	LastUpdateTime *string `json:"lastUpdateTime,omitempty" xml:"lastUpdateTime,omitempty"`
-	// The data source name.
+	// The name of the data source.
 	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network connection, specified in the `VpcId:RegionId` format.
+	// The MaxCompute network connectivity ID. Format: "MaxCompute network connectivity ID":region ID.
 	//
 	// example:
 	//
@@ -206,19 +206,19 @@ type ListMmsDataSourcesResponseBodyDataObjectList struct {
 	//
 	// 10000000
 	PartitionNum *int32 `json:"partitionNum,omitempty" xml:"partitionNum,omitempty"`
-	// The number of partitions currently being migrated.
+	// The number of partitions being migrated.
 	//
 	// example:
 	//
 	// 2332
 	PartitionsDoingNum *int32 `json:"partitionsDoingNum,omitempty" xml:"partitionsDoingNum,omitempty"`
-	// The number of successfully migrated partitions.
+	// The number of partitions that have been migrated.
 	//
 	// example:
 	//
 	// 23
 	PartitionsDoneNum *int32 `json:"partitionsDoneNum,omitempty" xml:"partitionsDoneNum,omitempty"`
-	// The number of partitions that failed to migrate.
+	// The number of partitions that failed to be migrated.
 	//
 	// example:
 	//
@@ -229,16 +229,24 @@ type ListMmsDataSourcesResponseBodyDataObjectList struct {
 	// example:
 	//
 	// cn-beijing
-	Region     *string `json:"region,omitempty" xml:"region,omitempty"`
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The cause of the metadata update task failure.
 	ScanErrMsg *string `json:"scanErrMsg,omitempty" xml:"scanErrMsg,omitempty"`
 	// The ID of the metadata synchronization task.
 	//
 	// example:
 	//
 	// 1000253
-	ScanId     *int64  `json:"scanId,omitempty" xml:"scanId,omitempty"`
+	ScanId *int64 `json:"scanId,omitempty" xml:"scanId,omitempty"`
+	// The status of the metadata update task. Valid values:
+	//
+	// - DOING: The task is running.
+	//
+	// - DONE: The task succeeded.
+	//
+	// - FAILED: The task failed.
 	ScanStatus *string `json:"scanStatus,omitempty" xml:"scanStatus,omitempty"`
-	// The data source status.
+	// The status of the data source.
 	//
 	// example:
 	//
@@ -250,31 +258,31 @@ type ListMmsDataSourcesResponseBodyDataObjectList struct {
 	//
 	// 1000
 	TableNum *int32 `json:"tableNum,omitempty" xml:"tableNum,omitempty"`
-	// The number of tables currently being migrated.
+	// The number of tables being migrated.
 	//
 	// example:
 	//
 	// 18
 	TablesDoingNum *int32 `json:"tablesDoingNum,omitempty" xml:"tablesDoingNum,omitempty"`
-	// The number of successfully migrated tables.
+	// The number of tables that have been migrated.
 	//
 	// example:
 	//
 	// 2323
 	TablesDoneNum *int32 `json:"tablesDoneNum,omitempty" xml:"tablesDoneNum,omitempty"`
-	// The number of tables that failed to migrate.
+	// The number of tables that failed to be migrated.
 	//
 	// example:
 	//
 	// 2
 	TablesFailedNum *int32 `json:"tablesFailedNum,omitempty" xml:"tablesFailedNum,omitempty"`
-	// The number of partially migrated tables.
+	// The number of tables that have been partially migrated.
 	//
 	// example:
 	//
 	// 22
 	TablesPartDoneNum *int32 `json:"tablesPartDoneNum,omitempty" xml:"tablesPartDoneNum,omitempty"`
-	// The data source type.
+	// The type of the data source.
 	//
 	// example:
 	//
@@ -542,9 +550,9 @@ type ListMmsDataSourcesResponseBodyDataObjectListConfig struct {
 	//
 	// example:
 	//
-	// Range partition table migration method
+	// Migration method for range-partitioned tables
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// A list of valid values for the configuration.
+	// The enumerated values of the configuration.
 	Enums []*string `json:"enums,omitempty" xml:"enums,omitempty" type:"Repeated"`
 	// The configuration group.
 	//
@@ -552,43 +560,43 @@ type ListMmsDataSourcesResponseBodyDataObjectListConfig struct {
 	//
 	// basic_group
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The unique key for the configuration.
+	// The English identifier of the configuration.
 	//
 	// example:
 	//
 	// bigquery.range.partition.migrate.type
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The configuration name.
+	// The name of the configuration.
 	//
 	// example:
 	//
-	// Range partition table migration method
+	// Migration method for range-partitioned tables
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// A placeholder for the configuration value.
+	// The sample value of the configuration.
 	//
 	// example:
 	//
 	// Cluster or Partition
 	PlaceHolder *string `json:"placeHolder,omitempty" xml:"placeHolder,omitempty"`
-	// Indicates whether the configuration is required.
+	// Specifies whether the configuration is required.
 	//
 	// example:
 	//
 	// true
 	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
-	// The required file extension (for example, `.keytab`) when `type` is `file`.
+	// The specific file type when the type is file, such as .keytab.
 	//
 	// example:
 	//
 	// .keytab
 	SubType *string `json:"subType,omitempty" xml:"subType,omitempty"`
-	// The configuration type.
+	// The type of the configuration. Valid values: boolean, int, map, string, password, and file.
 	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The configuration value.
+	// The value of the configuration.
 	//
 	// example:
 	//

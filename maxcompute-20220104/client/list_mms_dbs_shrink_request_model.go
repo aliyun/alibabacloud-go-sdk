@@ -22,27 +22,27 @@ type iListMmsDbsShrinkRequest interface {
 }
 
 type ListMmsDbsShrinkRequest struct {
-	// Data source name
+	// The name of the data source.
 	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// Number of records per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Sorting conditions
+	// The sorting conditions.
 	SorterShrink *string `json:"sorter,omitempty" xml:"sorter,omitempty"`
-	// Data source status
+	// The status of the data source.
 	//
 	// example:
 	//

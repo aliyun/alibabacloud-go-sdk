@@ -44,9 +44,9 @@ type iCreateMmsTimerRequest interface {
 }
 
 type CreateMmsTimerRequest struct {
-	// A map of source column names to target column names.
+	// The mapping between source and destination column names in the {source column name: destination column name} format.
 	ColumnMapping map[string]*string `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
-	// Specifies whether to migrate table data.
+	// Specifies whether to migrate the table data.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateMmsTimerRequest struct {
 	//
 	// true
 	EnableSchemaMigration *bool `json:"enableSchemaMigration,omitempty" xml:"enableSchemaMigration,omitempty"`
-	// Specifies whether to enable data verification. If set to `true`, the system runs a `SELECT COUNT(*)` query on both the source and target tables and compares the row counts.
+	// Specifies whether to enable verification. Currently, the verification method executes SELECT COUNT on the source and destination to compare the number of rows.
 	//
 	// example:
 	//
@@ -70,19 +70,19 @@ type CreateMmsTimerRequest struct {
 	//
 	// planA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Other configuration settings.
+	// Other configuration information.
 	Others map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
-	// A map of table names to their corresponding partition filter expressions.
+	// The partition filter expression. Configure the partition filter expression for the specified table.
 	PartitionFilters map[string]*string `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
-	// A list of IDs for the table partitions to migrate. This parameter takes effect only when the `type` parameter is set to `Partitions`.
+	// The list of partition IDs for the tables to be migrated. Specify this parameter when type is set to Partitions.
 	Partitions []*int64 `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
-	// The schedule type for the task.
+	// The schedule type of the scheduled task. Valid values: Daily (runs daily) and Hourly (runs hourly).
 	//
 	// example:
 	//
 	// Daily
 	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//
@@ -94,15 +94,15 @@ type CreateMmsTimerRequest struct {
 	//
 	// src_db
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
-	// A blacklist of tables to exclude from the migration. This parameter takes effect only when the `type` parameter is set to `Database`.
+	// The list of tables to exclude from migration. Specify this parameter when type is set to Database.
 	TableBlackList []*string `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
-	// A map of source table names to target table names.
+	// The mapping between the source table name and the destination table name.
 	TableMapping map[string]*string `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
-	// A whitelist of tables to migrate. This parameter takes effect only when the `type` parameter is set to `Database`. If omitted, all tables in the source database are migrated.
+	// The list of tables to migrate. Specify this parameter when type is set to Database. If this parameter is not specified, all tables in the corresponding database are migrated.
 	TableWhiteList []*string `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
-	// A list of table names to migrate. This parameter takes effect only when the `type` parameter is set to `Tables`.
+	// The list of names of the tables to be migrated. Specify this parameter when type is set to Tables.
 	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
-	// The time to run the scheduled task. If `scheduleType` is set to `Daily`, the value is the time in `HH:MM` format. If `scheduleType` is set to `Hourly`, the value is the minute of the hour (`MM`).
+	// The schedule time of the scheduled task. When scheduleType is set to Daily, the value is in the HH:MM format. When scheduleType is set to Hourly, the value is in the MM format.
 	//
 	// example:
 	//

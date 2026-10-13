@@ -56,7 +56,7 @@ type iListJobInfosRequest interface {
 }
 
 type ListJobInfosRequest struct {
-	// Specifies whether to sort in ascending or descending order.
+	// Specifies whether to sort the results in ascending order.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListJobInfosRequest struct {
 	//
 	// 1672112000
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The job instance IDs.
+	// The job instance Id.
 	InstanceIdList []*string `json:"instanceIdList,omitempty" xml:"instanceIdList,omitempty" type:"Repeated"`
-	// The job owners.
+	// The list of job owners.
 	JobOwnerList []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
 	// The job priorities.
 	PriorityList []*int64 `json:"priorityList,omitempty" xml:"priorityList,omitempty" type:"Repeated"`
@@ -88,13 +88,13 @@ type ListJobInfosRequest struct {
 	//
 	// quota_nickname
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	// The intelligent diagnosis labels.
+	// The intelligent diagnostics tags.
 	SceneTagList []*string `json:"sceneTagList,omitempty" xml:"sceneTagList,omitempty" type:"Repeated"`
 	// The job signatures.
 	SignatureList []*string `json:"signatureList,omitempty" xml:"signatureList,omitempty" type:"Repeated"`
-	// The fields used for multi-column sorting.
+	// The multi-column sort fields.
 	SortByList []*string `json:"sortByList,omitempty" xml:"sortByList,omitempty" type:"Repeated"`
-	// The sort orders for multi-column sorting.
+	// The multi-column sort orders.
 	SortOrderList []*string `json:"sortOrderList,omitempty" xml:"sortOrderList,omitempty" type:"Repeated"`
 	// The job statuses.
 	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
@@ -110,7 +110,7 @@ type ListJobInfosRequest struct {
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
 	// The job types.
 	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
-	// The column used for sorting.
+	// The sort column.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ListJobInfosRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

@@ -28,53 +28,45 @@ type iListJobMetricRequest interface {
 }
 
 type ListJobMetricRequest struct {
-	// Grouping basis.
+	// The grouping basis.
 	//
-	// > Available values: project, quota, type, status. Meanings:
+	// > Valid values:
 	//
-	// >
+	// > - project: grouping and aggregation by project
 	//
-	// > - project: Group and aggregate by project;
+	// > - quota: grouping and aggregation by quota
 	//
-	// >
+	// > - type: grouping and aggregation by job type
 	//
-	// > - quota: Group and aggregate by quota;
-	//
-	// >
-	//
-	// > - type: Group and aggregate by job type;
-	//
-	// >
-	//
-	// > - status: Group and aggregate by job status.
+	// > - status: grouping and aggregation by job status
 	//
 	// example:
 	//
 	// project
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The name of observation metric.
+	// The metric information.
 	//
 	// example:
 	//
 	// num
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// The monitoring statistical period.Unit:Second(s).
+	// The monitoring statistical period.
 	//
 	// example:
 	//
 	// 3600
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// The name of MaxCompute projects (for filtering).
+	// The list of MaxCompute project names used for filtering.
 	Project []*string `json:"project,omitempty" xml:"project,omitempty" type:"Repeated"`
-	// The nickname of computing Quota nickname used by the job (for filtering).
+	// The list of compute quota nicknames used for filtering.
 	Quota []*string `json:"quota,omitempty" xml:"quota,omitempty" type:"Repeated"`
-	// The type of observation metric.
+	// The metric type.
 	//
 	// example:
 	//
 	// total
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The end time for the observation interval.
+	// The end time of the query time range. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +74,7 @@ type ListJobMetricRequest struct {
 	//
 	// 1735536322
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start time for the observation interval.
+	// The start time of the query time range. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

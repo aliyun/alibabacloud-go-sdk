@@ -24,13 +24,13 @@ type KillJobsResponseBody struct {
 	//
 	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	// Indicates whether the operation was successful. If the value is not empty and is not 200, the operation failed.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

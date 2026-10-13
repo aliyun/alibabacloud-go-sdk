@@ -22,7 +22,7 @@ type iListStoragePartitionsInfoResponseBody interface {
 }
 
 type ListStoragePartitionsInfoResponseBody struct {
-	// The returned data.
+	// The returned result.
 	Data *ListStoragePartitionsInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -36,17 +36,17 @@ type ListStoragePartitionsInfoResponseBody struct {
 	//
 	// This object does not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code.
+	// The HTTP status code. Valid values:
 	//
-	// - 1xx: Informational response - The request has been received and is being processed.
+	// - 1xx: Informational response. The request was received and is being processed.
 	//
-	// - 2xx: Success - The request was successfully received, understood, and accepted.
+	// - 2xx: Success. The request was successfully received, understood, and accepted by the server.
 	//
-	// - 3xx: Redirection - Further action must be taken to complete the request.
+	// - 3xx: Redirection. The request was redirected, and further action is required to complete it.
 	//
-	// - 4xx: Client error - The request contains invalid parameters or syntax, or cannot be fulfilled.
+	// - 4xx: Client error. The request contains bad syntax, invalid parameters, or cannot be fulfilled.
 	//
-	// - 5xx: Server error - The server failed to fulfill a valid request.
+	// - 5xx: Server error. The server failed to fulfill the request due to other reasons.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *ListStoragePartitionsInfoResponseBody) Validate() error {
 }
 
 type ListStoragePartitionsInfoResponseBodyData struct {
-	// The date to which the statistics apply.
+	// The statistical date. The format is YYYYMMDD.
 	//
 	// example:
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The page number of the returned data.
+	// The current page number.
 	//
 	// example:
 	//
@@ -141,9 +141,9 @@ type ListStoragePartitionsInfoResponseBodyData struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The storage information for the partitions.
+	// The list of partition storage information.
 	StoragePartitionInfoList []*ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList `json:"storagePartitionInfoList,omitempty" xml:"storagePartitionInfoList,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -236,15 +236,15 @@ type ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList struct {
 	//
 	// GB
 	FileSizeUnit *string `json:"fileSizeUnit,omitempty" xml:"fileSizeUnit,omitempty"`
-	// Indicates whether the table is a partitioned table. You can ignore this parameter because this operation returns data only for partitions.
+	// Indicates whether the table is partitioned. This API operation returns only partition information. You can ignore this field.
 	//
 	// example:
 	//
 	// false
 	IsPartitioned *bool `json:"isPartitioned,omitempty" xml:"isPartitioned,omitempty"`
-	// The last access time of the partition.
+	// The last access time of the data in the partition.
 	//
-	// > Data collection for this metric began a gradual rollout in July 2023. Consequently, the lastAccessTime may not be recorded for a partition that has not been accessed since then or is accessed only by ALGO jobs or direct reads from Hologres.
+	// > The collection of this data has been gradually upgraded since July 2023. The last_access_time cannot be collected if the partition has not been accessed after the upgrade or if it is accessed through ALGO jobs or Hologres direct read.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList struct {
 	//
 	// odps_project
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// The period-over-period change in the total storage usage over the last {$recentDays} days. This API operation does not return this parameter.
+	// The year-over-year comparison of the total storage capacity over the recent {$recentDays} days. This API operation does not return this value.
 	//
 	// example:
 	//
@@ -276,11 +276,11 @@ type ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList struct {
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 	// The storage type. Valid values:
 	//
-	// - `standard`: Standard storage
+	// - standard: Standard storage.
 	//
-	// - `lowfrequency`: Infrequent-access storage
+	// - lowfrequency: Low-frequency storage.
 	//
-	// - `longterm`: Archive storage
+	// - longterm: Long-term storage.
 	//
 	// example:
 	//
@@ -294,43 +294,35 @@ type ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList struct {
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 	// The access frequency.
 	//
-	// > - Access activities include:
+	// > - Access behaviors include:
 	//
-	// >
+	// >> - The table is used as an input table in SQL computing tasks.
 	//
-	// > > 	- The table is used as input in a SQL compute task.
+	// >> - The table is downloaded by using Tunnel.
 	//
-	// > >
+	// >> - The table is read by calling the Read operation of StorageAPI (partition-level data for partitioned tables is currently unavailable). The access frequency increases by 1 for each additional access.
 	//
-	// > > 	- The table is downloaded via Tunnel.
-	//
-	// > >
-	//
-	// > > 	- The table data is read by calling the `Read` operation of the StorageAPI. Partition-level data for partitioned tables is not available. Each access activity increases the access frequency by 1.
-	//
-	// >
-	//
-	// > - Data collection for this metric began a gradual rollout in July 2023. Consequently, the access frequency may not be recorded for tables that have not been accessed since then or are accessed only by ALGO jobs or direct reads from Hologres.
+	// > - The statistics for this data have been gradually upgraded since July 2023. Accesses that did not occur after the upgrade or accesses made through ALGO jobs or Hologres direct read cannot be counted in the access frequency.
 	//
 	// example:
 	//
 	// 10
 	TotalFrequency *int64 `json:"totalFrequency,omitempty" xml:"totalFrequency,omitempty"`
-	// The total data accessed.
+	// The total amount of accessed data.
 	//
-	// > The cumulative amount of data read from all access operations.
+	// > The amount of data read by all access behaviors.
 	//
 	// example:
 	//
 	// 1
 	TotalInputAmount *float64 `json:"totalInputAmount,omitempty" xml:"totalInputAmount,omitempty"`
-	// The unit of the total data accessed.
+	// The unit of the total amount of accessed data.
 	//
 	// example:
 	//
 	// GB
 	TotalInputAmountUnit *string `json:"totalInputAmountUnit,omitempty" xml:"totalInputAmountUnit,omitempty"`
-	// The type of the object. The value is always PARTITION.
+	// The type.
 	//
 	// example:
 	//

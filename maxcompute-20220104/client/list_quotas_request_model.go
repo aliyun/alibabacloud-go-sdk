@@ -32,13 +32,13 @@ type ListQuotasRequest struct {
 	//
 	// subscription
 	BillingType *string `json:"billingType,omitempty" xml:"billingType,omitempty"`
-	// The token that specifies the position from which to start returning results. The results are sorted in alphabetical order.
+	// The marker after which the results are returned in alphabetical order.
 	//
 	// example:
 	//
 	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of items to return.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListQuotasRequest struct {
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// Deprecated
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The cost allocation tags that are used to filter quotas. You can create cost allocation tags in the Tag service.
+	// The billing tags used to filter quota objects. Billing tags are created by users for cloud products.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type ListStorageProjectsInfoRequest struct {
 	//
 	// false
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	// The statistics collection date. The date is accurate to the day. The date must be in the `YYYYMMdd` format.
+	// The statistical date, in the YYYYMMdd format. Data is collected on a daily basis.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ListStorageProjectsInfoRequest struct {
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The column to sort by. Valid values:
+	// The sort column. Valid values:
 	//
 	// - totalStorage
 	//
@@ -78,7 +78,7 @@ type ListStorageProjectsInfoRequest struct {
 	//
 	// odps_project
 	ProjectPrefix *string `json:"projectPrefix,omitempty" xml:"projectPrefix,omitempty"`
-	// The number of days for year-over-year comparison.
+	// The number of days used for comparison.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ListStorageProjectsInfoRequest struct {
 	//
 	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The tenant ID. You can log on to the MaxCompute console and choose **Tenant Property*	- in the navigation pane on the left to view the tenant ID.
+	// The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management*	- > **Tenant Properties*	- in the left-side navigation pane.
 	//
 	// example:
 	//

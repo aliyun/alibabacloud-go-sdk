@@ -70,13 +70,13 @@ type ListMmsTimerLogsResponseBodyData struct {
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,31 +142,31 @@ func (s *ListMmsTimerLogsResponseBodyData) Validate() error {
 }
 
 type ListMmsTimerLogsResponseBodyDataObjectList struct {
-	// The logged action for the migration job created by the scheduled task.
+	// The action log of the migration job created by the scheduled task.
 	//
 	// example:
 	//
 	// start job
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The creation time of the log entry.
+	// The time when the log was created. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:17
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the asynchronous task for the migration job created by the scheduled task.
+	// The ID of the asynchronous task created by the scheduled task to create a migration job.
 	//
 	// example:
 	//
 	// 1003476
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// A detailed message about the action.
+	// The log information of the migration job created by the scheduled task.
 	//
 	// example:
 	//
 	// start job success
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//

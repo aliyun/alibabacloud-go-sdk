@@ -20,7 +20,7 @@ type iListJobInfosResponseBody interface {
 type ListJobInfosResponseBody struct {
 	// The response data.
 	Data *ListJobInfosResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. If the value is not empty and is not 200, the request failed.
+	// Indicates whether the request is successful. If the value is not null and is not 200, the request failed.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// 10
 	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
-	// The time when the job finished running.
+	// The end time of the execution. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// ods_wfq_company_industry_di
 	ExtNodeName *string `json:"extNodeName,omitempty" xml:"extNodeName,omitempty"`
-	// The person responsible for the execution.
+	// The person in charge of the execution.
 	//
 	// example:
 	//
@@ -279,25 +279,25 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The role session name of the entity that submitted the job through role assumption.
+	// The role assumption used to commit the job.
 	//
 	// example:
 	//
 	// aliyunservicerole
 	RoleSessionName *string `json:"roleSessionName,omitempty" xml:"roleSessionName,omitempty"`
-	// The time when the job started running.
+	// The start time of the job execution. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1672112113
 	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
-	// The running time.
+	// The execution duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 800
 	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
-	// The intelligent diagnostics results.
+	// The intelligent diagnosis results.
 	SceneResults []*ListJobInfosResponseBodyDataJobInfoListSceneResults `json:"sceneResults,omitempty" xml:"sceneResults,omitempty" type:"Repeated"`
 	// The SQL signature.
 	//
@@ -317,7 +317,7 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// running
 	StatusSnapshot *string `json:"statusSnapshot,omitempty" xml:"statusSnapshot,omitempty"`
-	// The time when the job was submitted.
+	// The submission time of the job. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -341,13 +341,13 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// 213065738244354
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The total running duration.
+	// The total execution duration.
 	//
 	// example:
 	//
 	// 900
 	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
-	// The waiting time.
+	// The waiting time. Unit: seconds.
 	//
 	// example:
 	//
@@ -674,33 +674,33 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) Validate() error {
 }
 
 type ListJobInfosResponseBodyDataJobInfoListSceneResults struct {
-	// The details of the intelligent diagnostics result.
+	// The details of the intelligent diagnosis result.
 	//
 	// example:
 	//
 	// This job uses annual and monthly computing resources. It may be that the job is waiting for resources due to the large amount of overall job running data, many resources requested, and low job priority. Please go to Resource Consumption to view the specific situation. You can also go to Cost Optimization to see if you need to adjust resource configuration.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The node information about data skew or data bloat. This parameter is returned only when the diagnostics scenario is data skew or data bloat.
+	// The node information for data skew and data bloat. This parameter is returned only when the diagnosis scenario is data skew or data bloat.
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// The scenario of the intelligent diagnostics result.
+	// The scenario of the intelligent diagnosis result.
 	//
 	// example:
 	//
 	// LackResource
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The tag of the intelligent diagnostics result.
+	// The tag of the intelligent diagnosis result.
 	//
 	// example:
 	//
 	// SubscriptionLackResource
 	SceneTag *string `json:"sceneTag,omitempty" xml:"sceneTag,omitempty"`
-	// The summary of the intelligent diagnostics result.
+	// The summary of the intelligent diagnosis result.
 	//
 	// example:
 	//
 	// Insufficient computing resources available for the job. Click to view details.
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// The type of the intelligent diagnostics result.
+	// The type of the intelligent diagnosis result.
 	//
 	// example:
 	//

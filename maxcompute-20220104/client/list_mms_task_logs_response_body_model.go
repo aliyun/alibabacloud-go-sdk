@@ -16,7 +16,7 @@ type iListMmsTaskLogsResponseBody interface {
 }
 
 type ListMmsTaskLogsResponseBody struct {
-	// A list of logs.
+	// The list of logs.
 	Data []*ListMmsTaskLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type ListMmsTaskLogsResponseBodyData struct {
 	//
 	// create schema if not exists mms_test.default;
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The time when the log was created.
+	// The creation time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -90,19 +90,19 @@ type ListMmsTaskLogsResponseBodyData struct {
 	//
 	// ok
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// 2000015
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The migration task status.
+	// The status of the migration task.
 	//
 	// example:
 	//
 	// DATA_DOING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The migration task ID.
+	// The ID of the migration task.
 	//
 	// example:
 	//

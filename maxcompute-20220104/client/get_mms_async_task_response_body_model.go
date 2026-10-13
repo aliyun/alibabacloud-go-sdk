@@ -62,13 +62,13 @@ func (s *GetMmsAsyncTaskResponseBody) Validate() error {
 }
 
 type GetMmsAsyncTaskResponseBodyData struct {
-	// The creation time, in the format of YYYY-MM-DD HH:mm:ss.
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The end time, in the format of YYYY-MM-DD HH:mm:ss.
+	// The end time of the execution. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetMmsAsyncTaskResponseBodyData struct {
 	//
 	// null
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The asynchronous task ID.
+	// The ID of the asynchronous task.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type GetMmsAsyncTaskResponseBodyData struct {
 	//
 	// 232
 	ObjectId *int64 `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// The running progress.
+	// The execution progress.
 	//
 	// example:
 	//
 	// 0
 	Progress *int32 `json:"progress,omitempty" xml:"progress,omitempty"`
-	// The running result.
+	// The execution result.
 	//
 	// example:
 	//
@@ -110,25 +110,25 @@ type GetMmsAsyncTaskResponseBodyData struct {
 	//
 	// false
 	Running *bool `json:"running,omitempty" xml:"running,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// 2000017
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The start time, in the format of YYYY-MM-DD HH:mm:ss.
+	// The start time of the execution. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:17
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The asynchronous task status.
+	// The status of the asynchronous task.
 	//
 	// example:
 	//
 	// DONE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The asynchronous task type.
+	// The type of the asynchronous task.
 	//
 	// example:
 	//

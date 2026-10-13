@@ -18,7 +18,7 @@ type iKillJobsRequest interface {
 }
 
 type KillJobsRequest struct {
-	// The request body parameters.
+	// The list of jobs to terminate. The instanceId is obtained from the job instance ID returned by ListJobInfos, and the projectName is obtained from the project name returned by ListProjects.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type KillJobsRequest struct {
 	//
 	// ]
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
 	// example:
 	//

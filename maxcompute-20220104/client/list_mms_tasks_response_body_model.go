@@ -16,7 +16,7 @@ type iListMmsTasksResponseBody interface {
 }
 
 type ListMmsTasksResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *ListMmsTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -142,7 +142,7 @@ func (s *ListMmsTasksResponseBodyData) Validate() error {
 }
 
 type ListMmsTasksResponseBodyDataObjectList struct {
-	// The time when the task was created.
+	// The task creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type ListMmsTasksResponseBodyDataObjectList struct {
 	//
 	// table_1
 	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
-	// The end time of the task.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type ListMmsTasksResponseBodyDataObjectList struct {
 	//
 	// test_odps_spark
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
-	// The number of retries that have been performed.
+	// The number of retries.
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type ListMmsTasksResponseBodyDataObjectList struct {
 	//
 	// db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
-	// The source schema name in a three-level namespace.
+	// The source schema name. This is the schema in the three-level namespace.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type ListMmsTasksResponseBodyDataObjectList struct {
 	//
 	// table_1
 	SrcTableName *string `json:"srcTableName,omitempty" xml:"srcTableName,omitempty"`
-	// The start time of the task.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

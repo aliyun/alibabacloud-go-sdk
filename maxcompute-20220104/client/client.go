@@ -556,11 +556,11 @@ func (client *Client) CreateMmsJob(sourceId *string, request *CreateMmsJobReques
 
 // Summary:
 //
-// # CreateMmsTimer
+// Creates a scheduled data migration task.
 //
 // Description:
 //
-// Before you call this API, make sure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for dedicated resource groups and elastic reserved computing resources in the Data Transmission Service.
+// Before calling this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for the data transfer service.
 //
 // @param request - CreateMmsTimerRequest
 //
@@ -667,11 +667,11 @@ func (client *Client) CreateMmsTimerWithOptions(sourceId *string, request *Creat
 
 // Summary:
 //
-// # CreateMmsTimer
+// Creates a scheduled data migration task.
 //
 // Description:
 //
-// Before you call this API, make sure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for dedicated resource groups and elastic reserved computing resources in the Data Transmission Service.
+// Before calling this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for the data transfer service.
 //
 // @param request - CreateMmsTimerRequest
 //
@@ -1752,7 +1752,7 @@ func (client *Client) GetJobResourceUsage(request *GetJobResourceUsageRequest) (
 
 // Summary:
 //
-// Retrieves a single MMA asynchronous task.
+// Retrieves a single asynchronous task in MMA.
 //
 // @param headers - map
 //
@@ -1785,7 +1785,7 @@ func (client *Client) GetMmsAsyncTaskWithOptions(sourceId *string, asyncTaskId *
 
 // Summary:
 //
-// Retrieves a single MMA asynchronous task.
+// Retrieves a single asynchronous task in MMA.
 //
 // @return GetMmsAsyncTaskResponse
 func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_result *GetMmsAsyncTaskResponse, _err error) {
@@ -3202,7 +3202,7 @@ func (client *Client) GetStorageSummaryCompared(_type *string, request *GetStora
 
 // Summary:
 //
-// Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+// Queries the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
 //
 // @param request - GetTableInfoRequest
 //
@@ -3253,7 +3253,7 @@ func (client *Client) GetTableInfoWithOptions(projectName *string, tableName *st
 
 // Summary:
 //
-// Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+// Queries the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
 //
 // @param request - GetTableInfoRequest
 //
@@ -3807,7 +3807,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the list of jobs.
+// Lists jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -3940,7 +3940,7 @@ func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, head
 
 // Summary:
 //
-// Queries the list of jobs.
+// Lists jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -3959,7 +3959,7 @@ func (client *Client) ListJobInfos(request *ListJobInfosRequest) (_result *ListJ
 
 // Summary:
 //
-// Queries a performance metric of the job that is complete.
+// Retrieves the performance metrics of completed jobs.
 //
 // @param request - ListJobMetricRequest
 //
@@ -4036,7 +4036,7 @@ func (client *Client) ListJobMetricWithOptions(request *ListJobMetricRequest, he
 
 // Summary:
 //
-// Queries a performance metric of the job that is complete.
+// Retrieves the performance metrics of completed jobs.
 //
 // @param request - ListJobMetricRequest
 //
@@ -4277,7 +4277,7 @@ func (client *Client) ListMmsDataSourceConfigItems(request *ListMmsDataSourceCon
 
 // Summary:
 //
-// # MaxCompute Migration Assist (MMA) data sources
+// Lists MMA data sources.
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -4340,7 +4340,7 @@ func (client *Client) ListMmsDataSourcesWithOptions(request *ListMmsDataSourcesR
 
 // Summary:
 //
-// # MaxCompute Migration Assist (MMA) data sources
+// Lists MMA data sources.
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -4359,7 +4359,7 @@ func (client *Client) ListMmsDataSources(request *ListMmsDataSourcesRequest) (_r
 
 // Summary:
 //
-// List databases in the MMA data source.
+// Lists the databases in an MMA data source.
 //
 // @param tmpReq - ListMmsDbsRequest
 //
@@ -4428,7 +4428,7 @@ func (client *Client) ListMmsDbsWithOptions(sourceId *string, tmpReq *ListMmsDbs
 
 // Summary:
 //
-// List databases in the MMA data source.
+// Lists the databases in an MMA data source.
 //
 // @param request - ListMmsDbsRequest
 //
@@ -4797,7 +4797,7 @@ func (client *Client) ListMmsTables(sourceId *string, request *ListMmsTablesRequ
 
 // Summary:
 //
-// Lists the execution logs for a specific migration task.
+// Lists the execution logs of a single migration task.
 //
 // @param headers - map
 //
@@ -4830,7 +4830,7 @@ func (client *Client) ListMmsTaskLogsWithOptions(sourceId *string, taskId *strin
 
 // Summary:
 //
-// Lists the execution logs for a specific migration task.
+// Lists the execution logs of a single migration task.
 //
 // @return ListMmsTaskLogsResponse
 func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result *ListMmsTaskLogsResponse, _err error) {
@@ -4847,7 +4847,7 @@ func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result
 
 // Summary:
 //
-// Retrieves a list of data migration tasks.
+// Queries the list of migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -4934,7 +4934,7 @@ func (client *Client) ListMmsTasksWithOptions(sourceId *string, request *ListMms
 
 // Summary:
 //
-// Retrieves a list of data migration tasks.
+// Queries the list of migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -4953,13 +4953,11 @@ func (client *Client) ListMmsTasks(sourceId *string, request *ListMmsTasksReques
 
 // Summary:
 //
-// Lists the logs of a scheduled task for a specific data source.
+// Lists the logs of scheduled tasks.
 //
 // Description:
 //
-// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
-//
-// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for the data transfer service, exclusive resource groups, and elastic reserved computing resources.
+// Before calling this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for data transfer.
 //
 // @param request - ListMmsTimerLogsRequest
 //
@@ -5010,13 +5008,11 @@ func (client *Client) ListMmsTimerLogsWithOptions(sourceId *string, timerId *str
 
 // Summary:
 //
-// Lists the logs of a scheduled task for a specific data source.
+// Lists the logs of scheduled tasks.
 //
 // Description:
 //
-// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
-//
-// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for the data transfer service, exclusive resource groups, and elastic reserved computing resources.
+// Before calling this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for data transfer.
 //
 // @param request - ListMmsTimerLogsRequest
 //
@@ -5035,13 +5031,11 @@ func (client *Client) ListMmsTimerLogs(sourceId *string, timerId *string, reques
 
 // Summary:
 //
-// Lists the timers for a specified data source.
+// Lists scheduled tasks for data migration.
 //
 // Description:
 //
-// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
-//
-// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive resource groups and elastic reserved computing resources for Data Transmission Service.
+// Before you call this operation, make sure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for the data transmission service.
 //
 // @param request - ListMmsTimersRequest
 //
@@ -5108,13 +5102,11 @@ func (client *Client) ListMmsTimersWithOptions(sourceId *string, request *ListMm
 
 // Summary:
 //
-// Lists the timers for a specified data source.
+// Lists scheduled tasks for data migration.
 //
 // Description:
 //
-// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
-//
-// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive resource groups and elastic reserved computing resources for Data Transmission Service.
+// Before you call this operation, make sure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for the data transmission service.
 //
 // @param request - ListMmsTimersRequest
 //
@@ -5133,7 +5125,7 @@ func (client *Client) ListMmsTimers(sourceId *string, request *ListMmsTimersRequ
 
 // Summary:
 //
-// Queries the packages in a MaxCompute project.
+// Retrieves the list of packages in a MaxCompute project.
 //
 // @param headers - map
 //
@@ -5166,7 +5158,7 @@ func (client *Client) ListPackagesWithOptions(projectName *string, headers map[s
 
 // Summary:
 //
-// Queries the packages in a MaxCompute project.
+// Retrieves the list of packages in a MaxCompute project.
 //
 // @return ListPackagesResponse
 func (client *Client) ListPackages(projectName *string) (_result *ListPackagesResponse, _err error) {
@@ -5503,7 +5495,7 @@ func (client *Client) ListQuotasPlans(nickname *string, request *ListQuotasPlans
 
 // Summary:
 //
-// Obtains resources in a MaxCompute project.
+// Retrieves a list of resources in a MaxCompute project.
 //
 // @param request - ListResourcesRequest
 //
@@ -5562,7 +5554,7 @@ func (client *Client) ListResourcesWithOptions(projectName *string, request *Lis
 
 // Summary:
 //
-// Obtains resources in a MaxCompute project.
+// Retrieves a list of resources in a MaxCompute project.
 //
 // @param request - ListResourcesRequest
 //
@@ -5631,7 +5623,7 @@ func (client *Client) ListRoles(projectName *string) (_result *ListRolesResponse
 
 // Summary:
 //
-// Retrieves storage details for the partitions of a partitioned table in a MaxCompute project.
+// Retrieves the storage details of each partition in a partitioned table within a specified MaxCompute project.
 //
 // @param tmpReq - ListStoragePartitionsInfoRequest
 //
@@ -5720,7 +5712,7 @@ func (client *Client) ListStoragePartitionsInfoWithOptions(project *string, tabl
 
 // Summary:
 //
-// Retrieves storage details for the partitions of a partitioned table in a MaxCompute project.
+// Retrieves the storage details of each partition in a partitioned table within a specified MaxCompute project.
 //
 // @param request - ListStoragePartitionsInfoRequest
 //
@@ -5739,7 +5731,7 @@ func (client *Client) ListStoragePartitionsInfo(project *string, table *string, 
 
 // Summary:
 //
-// Retrieves the storage details of projects.
+// Retrieves the storage details of MaxCompute projects.
 //
 // @param request - ListStorageProjectsInfoRequest
 //
@@ -5818,7 +5810,7 @@ func (client *Client) ListStorageProjectsInfoWithOptions(request *ListStoragePro
 
 // Summary:
 //
-// Retrieves the storage details of projects.
+// Retrieves the storage details of MaxCompute projects.
 //
 // @param request - ListStorageProjectsInfoRequest
 //
@@ -6279,7 +6271,7 @@ func (client *Client) QueryQuota(nickname *string, request *QueryQuotaRequest) (
 
 // Summary:
 //
-// Queries the time series data of resource consumption for a quota.
+// Queries the time series information of quota resource consumption.
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -6352,7 +6344,7 @@ func (client *Client) QueryQuotaMetricWithOptions(metric *string, request *Query
 
 // Summary:
 //
-// Queries the time series data of resource consumption for a quota.
+// Queries the time series information of quota resource consumption.
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -7465,11 +7457,11 @@ func (client *Client) SumStorageMetricsByDate(request *SumStorageMetricsByDateRe
 
 // Summary:
 //
-// Aggregates storage usage by storage type.
+// Queries storage usage statistics by storage type.
 //
 // Description:
 //
-// Aggregates storage usage by storage type.
+// Queries storage usage statistics by storage type.
 //
 // @param request - SumStorageMetricsByTypeRequest
 //
@@ -7528,11 +7520,11 @@ func (client *Client) SumStorageMetricsByTypeWithOptions(request *SumStorageMetr
 
 // Summary:
 //
-// Aggregates storage usage by storage type.
+// Queries storage usage statistics by storage type.
 //
 // Description:
 //
-// Aggregates storage usage by storage type.
+// Queries storage usage statistics by storage type.
 //
 // @param request - SumStorageMetricsByTypeRequest
 //

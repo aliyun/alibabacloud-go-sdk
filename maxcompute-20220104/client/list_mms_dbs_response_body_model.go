@@ -16,9 +16,9 @@ type iListMmsDbsResponseBody interface {
 }
 
 type ListMmsDbsResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data *ListMmsDbsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListMmsDbsResponseBody) Validate() error {
 }
 
 type ListMmsDbsResponseBodyData struct {
-	// Database list
+	// The list of databases.
 	ObjectList []*ListMmsDbsResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -142,43 +142,43 @@ func (s *ListMmsDbsResponseBodyData) Validate() error {
 }
 
 type ListMmsDbsResponseBodyDataObjectList struct {
-	// Time created in MMS
+	// The time when the database was created in MMS.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Whether deleted
+	// Indicates whether the database has been deleted.
 	//
 	// example:
 	//
 	// false
 	Deleted *bool `json:"deleted,omitempty" xml:"deleted,omitempty"`
-	// Database description
+	// The description of the database.
 	//
 	// example:
 	//
 	// for mms test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The MaxCompute schema corresponding to the source database. If the target MaxCompute project does not have a schema layer enabled, this value is null. By default, it is consistent with the source database name.
+	// The MaxCompute schema that corresponds to the source database. If the schema layer is not enabled for the destination MaxCompute project, this value is null. By default, this value is the same as the name of the source database.
 	//
 	// example:
 	//
 	// default
 	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
-	// Target MaxCompute project name
+	// The name of the destination MaxCompute project.
 	//
 	// example:
 	//
 	// mms_test
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
-	// Other information stored in JSON format
+	// The additional information stored in JSON format.
 	//
 	// example:
 	//
 	// {}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
-	// Database ID
+	// The ID of the database.
 	//
 	// example:
 	//
@@ -190,115 +190,115 @@ type ListMmsDbsResponseBodyDataObjectList struct {
 	//
 	// 2024-12-17 15:44:42
 	LastDdlTime *string `json:"lastDdlTime,omitempty" xml:"lastDdlTime,omitempty"`
-	// Database storage location
+	// The storage location of the database.
 	//
 	// example:
 	//
 	// hdfs://master-1-1.c-6fc187819ed6bae0.cn-shanghai.emr.aliyuncs.com:9000/user/hive/warehouse
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// Database name
+	// The name of the database.
 	//
 	// example:
 	//
 	// mms_test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Number of database data rows
+	// The number of data rows in the database.
 	//
 	// example:
 	//
 	// 23232
 	NumRows *int64 `json:"numRows,omitempty" xml:"numRows,omitempty"`
-	// Database owner
+	// The owner of the database.
 	//
 	// example:
 	//
 	// System user
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// Number of partitions
+	// The number of partitions.
 	//
 	// example:
 	//
 	// 1000
 	Partitions *int32 `json:"partitions,omitempty" xml:"partitions,omitempty"`
-	// Partitions being migrated
+	// The partitions being migrated.
 	//
 	// example:
 	//
 	// 400
 	PartitionsDoing *int32 `json:"partitionsDoing,omitempty" xml:"partitionsDoing,omitempty"`
-	// Partitions migrated
+	// The partitions that have been migrated.
 	//
 	// example:
 	//
 	// 200
 	PartitionsDone *int32 `json:"partitionsDone,omitempty" xml:"partitionsDone,omitempty"`
-	// Failed partitions
+	// The partitions that failed to migrate.
 	//
 	// example:
 	//
 	// 200
 	PartitionsFailed *int32 `json:"partitionsFailed,omitempty" xml:"partitionsFailed,omitempty"`
-	// Database data size in bytes
+	// The size of the database data, in bytes.
 	//
 	// example:
 	//
 	// 2342342
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// Data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// 2000015
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// Data source name
+	// The name of the data source.
 	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
-	// Migration status: INIT, DOING, FAILED, DONE, PART_DONE
+	// The migration status. Valid values: INIT, DOING, FAILED, DONE, and PART_DONE.
 	//
 	// example:
 	//
 	// DOING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Number of tables
+	// The number of tables.
 	//
 	// example:
 	//
 	// 100
 	Tables *int32 `json:"tables,omitempty" xml:"tables,omitempty"`
-	// Tables being migrated
+	// The tables being migrated.
 	//
 	// example:
 	//
 	// 20
 	TablesDoing *int32 `json:"tablesDoing,omitempty" xml:"tablesDoing,omitempty"`
-	// Tables migrated
+	// The tables that have been migrated.
 	//
 	// example:
 	//
 	// 20
 	TablesDone *int32 `json:"tablesDone,omitempty" xml:"tablesDone,omitempty"`
-	// Failed tables
+	// The tables that failed to migrate.
 	//
 	// example:
 	//
 	// 20
 	TablesFailed *int32 `json:"tablesFailed,omitempty" xml:"tablesFailed,omitempty"`
-	// Partially migrated tables
+	// The tables that are partially migrated.
 	//
 	// example:
 	//
 	// 20
 	TablesPartDone *int32 `json:"tablesPartDone,omitempty" xml:"tablesPartDone,omitempty"`
-	// Latest data update time
+	// The latest update time of the data. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// Whether data is updated
+	// Indicates whether the data has been updated.
 	//
 	// example:
 	//

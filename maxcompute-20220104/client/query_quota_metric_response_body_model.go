@@ -38,15 +38,15 @@ type QueryQuotaMetricResponseBody struct {
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
-	// - 1xx: informational response. The request was received and is being processed.
+	// - 1xx: Informational. The request was received and is being processed.
 	//
-	// - 2xx: success. The request was successfully received, understood, and accepted by the server.
+	// - 2xx: Success. The request was successfully received, understood, and accepted by the server.
 	//
-	// - 3xx: redirection. The request was redirected. Further action needs to be taken to complete the request.
+	// - 3xx: Redirection. The request was redirected, and further action is required to complete it.
 	//
-	// - 4xx: client error. The request contains incorrect request parameters or syntax, or specific request conditions cannot be met.
+	// - 4xx: Client error. The request contains bad syntax, invalid parameters, or cannot be fulfilled.
 	//
-	// - 5xx: server error. The server failed to fulfill the request for other reasons.
+	// - 5xx: Server error. The server failed to fulfill the request due to other reasons.
 	//
 	// example:
 	//
@@ -123,15 +123,15 @@ func (s *QueryQuotaMetricResponseBody) Validate() error {
 }
 
 type QueryQuotaMetricResponseBodyData struct {
-	// This parameter is not supported.
+	// Not supported.
 	//
 	// example:
 	//
-	// Not supported.
+	// Not supported
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The metric values.
 	Metrics []*QueryQuotaMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
-	// The name of the metric.
+	// The name of the observed metric.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ func (s *QueryQuotaMetricResponseBodyData) Validate() error {
 }
 
 type QueryQuotaMetricResponseBodyDataMetrics struct {
-	// The metadata of the metric.
+	// The metric metadata information.
 	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
 	// The time series data.
 	Values [][]*float64 `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`

@@ -16,21 +16,23 @@ type iGetTableInfoRequest interface {
 }
 
 type GetTableInfoRequest struct {
-	// The name of the schema to which the table or view belongs.
+	// The name of the schema to which the table or view to be queried belongs.
 	//
 	// example:
 	//
 	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
-	// The type of the table or view that you want to view. Valid values:
+	// The type of the table or view to be queried. Valid values:
 	//
-	// - **internal**: internal table
+	// - **internal**: Internal table.
 	//
-	// - **external**: external table
+	// - **external**: External table.
 	//
-	// - **view**: view
+	// - **view**: View.
 	//
-	// - **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
+	// - **materializedView**: <props="china">[Materialized view](https://www.alibabacloud.com/help/en/maxcompute/user-guide/materialized-view-operations)
+	//
+	// <props="intl">[Materialized view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations).
 	//
 	// example:
 	//

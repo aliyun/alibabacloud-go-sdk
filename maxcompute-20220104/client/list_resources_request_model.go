@@ -20,13 +20,13 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
-	// Specifies the marker after which the returned list begins.
+	// Specifies the marker after which results are returned in alphabetical order.
 	//
 	// example:
 	//
 	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//

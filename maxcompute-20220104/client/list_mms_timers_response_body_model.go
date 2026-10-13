@@ -62,7 +62,7 @@ func (s *ListMmsTimersResponseBody) Validate() error {
 }
 
 type ListMmsTimersResponseBodyData struct {
-	// A list of timers.
+	// The log information.
 	ObjectList []*ListMmsTimersResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -70,7 +70,7 @@ type ListMmsTimersResponseBodyData struct {
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries displayed per page.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListMmsTimersResponseBodyData) Validate() error {
 }
 
 type ListMmsTimersResponseBodyDataObjectList struct {
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -154,19 +154,19 @@ type ListMmsTimersResponseBodyDataObjectList struct {
 	//
 	// 196
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
-	// The timer ID.
+	// The scheduled task ID.
 	//
 	// example:
 	//
 	// 18
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The timer name.
+	// The scheduled task name.
 	//
 	// example:
 	//
 	// migrate_db_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The schedule type.
+	// The schedule type of the scheduled task.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ListMmsTimersResponseBodyDataObjectList struct {
 	//
 	// db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
-	// Indicates whether the timer is stopped.
+	// Indicates whether the task is stopped.
 	//
 	// example:
 	//

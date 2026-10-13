@@ -346,11 +346,11 @@ func (client *Client) CreateMmsJobWithContext(ctx context.Context, sourceId *str
 
 // Summary:
 //
-// # CreateMmsTimer
+// Creates a scheduled data migration task.
 //
 // Description:
 //
-// Before you call this API, make sure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for dedicated resource groups and elastic reserved computing resources in the Data Transmission Service.
+// Before calling this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for the data transfer service.
 //
 // @param request - CreateMmsTimerRequest
 //
@@ -1200,7 +1200,7 @@ func (client *Client) GetJobResourceUsageWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Retrieves a single MMA asynchronous task.
+// Retrieves a single asynchronous task in MMA.
 //
 // @param headers - map
 //
@@ -2248,7 +2248,7 @@ func (client *Client) GetStorageSummaryComparedWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+// Queries the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
 //
 // @param request - GetTableInfoRequest
 //
@@ -2697,7 +2697,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the list of jobs.
+// Lists jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -2830,7 +2830,7 @@ func (client *Client) ListJobInfosWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries a performance metric of the job that is complete.
+// Retrieves the performance metrics of completed jobs.
 //
 // @param request - ListJobMetricRequest
 //
@@ -3085,7 +3085,7 @@ func (client *Client) ListMmsDataSourceConfigItemsWithContext(ctx context.Contex
 
 // Summary:
 //
-// # MaxCompute Migration Assist (MMA) data sources
+// Lists MMA data sources.
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -3148,7 +3148,7 @@ func (client *Client) ListMmsDataSourcesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// List databases in the MMA data source.
+// Lists the databases in an MMA data source.
 //
 // @param tmpReq - ListMmsDbsRequest
 //
@@ -3510,7 +3510,7 @@ func (client *Client) ListMmsTablesWithContext(ctx context.Context, sourceId *st
 
 // Summary:
 //
-// Lists the execution logs for a specific migration task.
+// Lists the execution logs of a single migration task.
 //
 // @param headers - map
 //
@@ -3543,7 +3543,7 @@ func (client *Client) ListMmsTaskLogsWithContext(ctx context.Context, sourceId *
 
 // Summary:
 //
-// Retrieves a list of data migration tasks.
+// Queries the list of migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -3630,13 +3630,11 @@ func (client *Client) ListMmsTasksWithContext(ctx context.Context, sourceId *str
 
 // Summary:
 //
-// Lists the logs of a scheduled task for a specific data source.
+// Lists the logs of scheduled tasks.
 //
 // Description:
 //
-// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
-//
-// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for the data transfer service, exclusive resource groups, and elastic reserved computing resources.
+// Before calling this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for data transfer.
 //
 // @param request - ListMmsTimerLogsRequest
 //
@@ -3687,13 +3685,11 @@ func (client *Client) ListMmsTimerLogsWithContext(ctx context.Context, sourceId 
 
 // Summary:
 //
-// Lists the timers for a specified data source.
+// Lists scheduled tasks for data migration.
 //
 // Description:
 //
-// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
-//
-// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive resource groups and elastic reserved computing resources for Data Transmission Service.
+// Before you call this operation, make sure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups and elastic reserved compute resources for the data transmission service.
 //
 // @param request - ListMmsTimersRequest
 //
@@ -3760,7 +3756,7 @@ func (client *Client) ListMmsTimersWithContext(ctx context.Context, sourceId *st
 
 // Summary:
 //
-// Queries the packages in a MaxCompute project.
+// Retrieves the list of packages in a MaxCompute project.
 //
 // @param headers - map
 //
@@ -4039,7 +4035,7 @@ func (client *Client) ListQuotasPlansWithContext(ctx context.Context, nickname *
 
 // Summary:
 //
-// Obtains resources in a MaxCompute project.
+// Retrieves a list of resources in a MaxCompute project.
 //
 // @param request - ListResourcesRequest
 //
@@ -4131,7 +4127,7 @@ func (client *Client) ListRolesWithContext(ctx context.Context, projectName *str
 
 // Summary:
 //
-// Retrieves storage details for the partitions of a partitioned table in a MaxCompute project.
+// Retrieves the storage details of each partition in a partitioned table within a specified MaxCompute project.
 //
 // @param tmpReq - ListStoragePartitionsInfoRequest
 //
@@ -4220,7 +4216,7 @@ func (client *Client) ListStoragePartitionsInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the storage details of projects.
+// Retrieves the storage details of MaxCompute projects.
 //
 // @param request - ListStorageProjectsInfoRequest
 //
@@ -4631,7 +4627,7 @@ func (client *Client) QueryQuotaWithContext(ctx context.Context, nickname *strin
 
 // Summary:
 //
-// Queries the time series data of resource consumption for a quota.
+// Queries the time series information of quota resource consumption.
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -5503,11 +5499,11 @@ func (client *Client) SumStorageMetricsByDateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Aggregates storage usage by storage type.
+// Queries storage usage statistics by storage type.
 //
 // Description:
 //
-// Aggregates storage usage by storage type.
+// Queries storage usage statistics by storage type.
 //
 // @param request - SumStorageMetricsByTypeRequest
 //

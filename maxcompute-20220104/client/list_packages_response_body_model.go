@@ -18,7 +18,7 @@ type iListPackagesResponseBody interface {
 type ListPackagesResponseBody struct {
 	// The returned data.
 	Data *ListPackagesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *ListPackagesResponseBody) Validate() error {
 }
 
 type ListPackagesResponseBodyData struct {
-	// The packages that were created.
+	// The list of created packages.
 	CreatedPackages []*ListPackagesResponseBodyDataCreatedPackages `json:"createdPackages,omitempty" xml:"createdPackages,omitempty" type:"Repeated"`
-	// The packages that were installed.
+	// The list of installed packages.
 	InstalledPackages []*ListPackagesResponseBodyDataInstalledPackages `json:"installedPackages,omitempty" xml:"installedPackages,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *ListPackagesResponseBodyData) Validate() error {
 }
 
 type ListPackagesResponseBodyDataCreatedPackages struct {
-	// The time when the package was created.
+	// The creation time. The format is ISO 8601 and the time zone is UTC.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ func (s *ListPackagesResponseBodyDataCreatedPackages) Validate() error {
 }
 
 type ListPackagesResponseBodyDataInstalledPackages struct {
-	// The time when the package was installed.
+	// The installation time. The format is ISO 8601 and the time zone is UTC.
 	//
 	// example:
 	//
@@ -174,13 +174,13 @@ type ListPackagesResponseBodyDataInstalledPackages struct {
 	//
 	// packageB
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
+	// The project to which the package belongs. This parameter is required if the package is installed.
 	//
 	// example:
 	//
 	// projectB
 	SourceProject *string `json:"sourceProject,omitempty" xml:"sourceProject,omitempty"`
-	// The status of the package.
+	// The status.
 	//
 	// example:
 	//

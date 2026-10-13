@@ -18,7 +18,7 @@ type iListResourcesResponseBody interface {
 type ListResourcesResponseBody struct {
 	// The returned data.
 	Data *ListResourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *ListResourcesResponseBody) Validate() error {
 }
 
 type ListResourcesResponseBodyData struct {
-	// Indicates the marker after which the returned list begins.
+	// Specifies the marker after which results are returned in alphabetical order.
 	//
 	// example:
 	//
 	// ZmN0X21vbnRoX3Rhb2Jhb19pbmRleCE=
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//
@@ -127,19 +127,19 @@ func (s *ListResourcesResponseBodyData) Validate() error {
 }
 
 type ListResourcesResponseBodyDataResources struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
-	// Filr type resource
+	// file type resource
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The Base64-encoded 128-bit MD5 hash value of the HTTP request body.
+	// The Base64-encoded 128-bit MD5 hash of the HTTP request body.
 	//
 	// example:
 	//
 	// MACiECZtnLiNkNS1v5****=1
 	ContentMD5 *string `json:"contentMD5,omitempty" xml:"contentMD5,omitempty"`
-	// The time when the resource was created.
+	// The creation time in ISO 8601 format in the UTC time zone.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ type ListResourcesResponseBodyDataResources struct {
 	//
 	// res_1
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The time when the resource was modified.
+	// The last modification time in ISO 8601 format in the UTC time zone.
 	//
 	// example:
 	//
 	// 2023-04-18T06:15:05Z
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The user who updated the resource.
+	// The user who last updated the resource.
 	//
 	// example:
 	//
@@ -188,48 +188,6 @@ type ListResourcesResponseBodyDataResources struct {
 	// 10
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// The resource type.
-	//
-	// Valid values:
-	//
-	// - file
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - py
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - jar
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - volumefile
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - table
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
 	//
 	// example:
 	//
