@@ -57,11 +57,11 @@ func (client *Client) ApproveOperationWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Changes the node group of a node.
+// Modifies the node group of nodes.
 //
 // Description:
 //
-// Creates a session, returns a frontend endpoint, and starts an auto-triggered task to track the session status.
+// Creates a session, returns the frontend endpoint, and starts an epoch task to track the session status.
 //
 // @param tmpReq - ChangeNodeGroupRequest
 //
@@ -965,11 +965,11 @@ func (client *Client) DeleteVscWithContext(ctx context.Context, request *DeleteV
 
 // Summary:
 //
-// Queries the details of a cluster.
+// Queries the details of a Lingjun AI Computing Service cluster.
 //
 // Description:
 //
-// Queries the details of a specified cluster.
+// Closes a remote session.
 //
 // @param request - DescribeClusterRequest
 //
@@ -1015,10 +1015,6 @@ func (client *Client) DescribeClusterWithContext(ctx context.Context, request *D
 //
 // Queries the results of a diagnostic task.
 //
-// Description:
-//
-// The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
-//
 // @param request - DescribeDiagnosticResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1061,11 +1057,59 @@ func (client *Client) DescribeDiagnosticResultWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the details of a hyper node.
+// Queries the details of a fault report after a user submits one.
 //
 // Description:
 //
-// Queries the details of a specified hyper node.
+// Queries the details of a fault report. After you call ReportNodeStatus to submit a fault report, you can obtain the report ID from the ReportId response parameter. You can also call ListFaultReports to query existing fault reports and obtain the ReportId.
+//
+// @param request - DescribeFaultReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaultReportResponse
+func (client *Client) DescribeFaultReportWithContext(ctx context.Context, request *DescribeFaultReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeFaultReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReportId) {
+		body["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFaultReport"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFaultReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a hypernode.
+//
+// Description:
+//
+// Queries the details of a hypernode.
 //
 // @param request - DescribeHyperNodeRequest
 //
@@ -1109,7 +1153,7 @@ func (client *Client) DescribeHyperNodeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the execution history and status of Cloud Assistant commands.
+// Queries the execution list and status of O&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -1165,7 +1209,7 @@ func (client *Client) DescribeInvocationsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the results of a network test.
+// Queries network test results.
 //
 // @param request - DescribeNetTestResultRequest
 //
@@ -1209,11 +1253,11 @@ func (client *Client) DescribeNetTestResultWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the list of nodes.
+// Queries a list of nodes.
 //
 // Description:
 //
-// Queries the detailed information of a hyper node.
+// Queries the details of a supernode.
 //
 // @param request - DescribeNodeRequest
 //
@@ -1257,11 +1301,11 @@ func (client *Client) DescribeNodeWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries the details of a node group.
+// Queries node groups.
 //
 // Description:
 //
-// This operation queries the details of a node group.
+// Queries the details of a supernode.
 //
 // @param request - DescribeNodeGroupRequest
 //
@@ -1309,13 +1353,13 @@ func (client *Client) DescribeNodeGroupWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// The returned results contain the following information:
+// The returned results include the following:
 //
-// - The processing status of each node with configuration drift
+// - The processing status of each node with configuration drift.
 //
-// - The processing result, status, and reason for each node
+// - The processing result, status, and reason for each node.
 //
-// - The refreshed and skipped properties for each node
+// - The refreshed and skipped properties for each node.
 //
 // @param tmpReq - DescribeNodeGroupRefreshTaskRequest
 //
@@ -1377,7 +1421,7 @@ func (client *Client) DescribeNodeGroupRefreshTaskWithContext(ctx context.Contex
 
 // Summary:
 //
-// Describes the constraints for a node type.
+// Queries the constraints for a node type.
 //
 // @param request - DescribeNodeTypeRequest
 //
@@ -1465,7 +1509,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the files that are sent by an O\\\\\\&M assistant and the status of the files.
+// Queries the list and status of files sent by O&M Assistant.
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -1513,7 +1557,7 @@ func (client *Client) DescribeSendFileResultsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of a task.
+// Queries the details of a node.
 //
 // @param request - DescribeTaskRequest
 //
@@ -1727,7 +1771,7 @@ func (client *Client) ExtendClusterWithContext(ctx context.Context, tmpReq *Exte
 
 // Summary:
 //
-// Lists the node groups of a cluster and the nodes in each group.
+// Queries the host group list under a cluster and the host list under each group.
 //
 // @param request - ListClusterHyperNodesRequest
 //
@@ -1793,7 +1837,7 @@ func (client *Client) ListClusterHyperNodesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the nodes in a cluster.
+// Queries the list of nodes in a cluster.
 //
 // @param request - ListClusterNodesRequest
 //
@@ -1863,7 +1907,7 @@ func (client *Client) ListClusterNodesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Query cluster instances with optional filtering by resource group and tags.
+// Queries a list of cluster instances.
 //
 // @param request - ListClustersRequest
 //
@@ -1921,11 +1965,7 @@ func (client *Client) ListClustersWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # List of Diagnostic Tasks
-//
-// Description:
-//
-// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+// Queries a list of diagnostic tasks.
 //
 // @param request - ListDiagnosticResultsRequest
 //
@@ -1981,7 +2021,73 @@ func (client *Client) ListDiagnosticResultsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Lists the active physical servers in the rack.
+// Queries the list of historical fault reports.
+//
+// Description:
+//
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
+//
+// @param tmpReq - ListFaultReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFaultReportsResponse
+func (client *Client) ListFaultReportsWithContext(ctx context.Context, tmpReq *ListFaultReportsRequest, runtime *dara.RuntimeOptions) (_result *ListFaultReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListFaultReportsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Nodes) {
+		request.NodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Nodes, dara.String("Nodes"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NodesShrink) {
+		body["Nodes"] = request.NodesShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFaultReports"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFaultReportsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of available rack physical machines.
 //
 // @param request - ListFreeHyperNodesRequest
 //
@@ -2049,7 +2155,7 @@ func (client *Client) ListFreeHyperNodesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists all unused nodes.
+// Queries the list of unused nodes.
 //
 // @param request - ListFreeNodesRequest
 //
@@ -2119,11 +2225,11 @@ func (client *Client) ListFreeNodesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// # Machines
+// Queries a list of machines.
 //
 // Description:
 //
-// Queries the details of hypernodes.
+// Queries the details of hyper nodes.
 //
 // @param tmpReq - ListHyperNodesRequest
 //
@@ -2329,7 +2435,7 @@ func (client *Client) ListMachineNetworkInfoWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries a list of available machine types.
+// Queries the list of available machine types.
 //
 // @param request - ListMachineTypesRequest
 //
@@ -2373,7 +2479,7 @@ func (client *Client) ListMachineTypesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Lists network test results.
+// Queries the list of network tests.
 //
 // @param request - ListNetTestResultsRequest
 //
@@ -2433,7 +2539,7 @@ func (client *Client) ListNetTestResultsWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Compares the node group configuration template with the actual configuration of each node, and returns all nodes with configuration inconsistencies, along with the difference type, before-and-after values, and the action level required for refresh for each inconsistent property. This is a read-only operation.
+// Compares the node group configuration template with the actual configuration of each node, and returns all nodes with configuration inconsistencies, along with the drift type, before-and-after values, and the required action level for refreshing each inconsistent property. This is a read-only operation.
 //
 // @param tmpReq - ListNodeGroupDriftedNodesRequest
 //
@@ -2495,7 +2601,7 @@ func (client *Client) ListNodeGroupDriftedNodesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of node group configuration refresh tasks with paging.
+// Queries the list of node group configuration refresh tasks by paging.
 //
 // Description:
 //
@@ -2565,7 +2671,7 @@ func (client *Client) ListNodeGroupRefreshTasksWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query Node Group Information Under the Cluster
+// Queries node group information in a cluster.
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -2875,15 +2981,15 @@ func (client *Client) RebootNodesWithContext(ctx context.Context, tmpReq *Reboot
 
 // Summary:
 //
-// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
+// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
 //
 // Description:
 //
-// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
+// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
 //
 // Limits:
 //
-// - Only one node group configuration refresh task can be running at a time for a node group.
+// - A node group can have only one running node group configuration refresh task at a time.
 //
 // - When the asynchronous task executes the refresh, if a node is not in the "In Use" state, the refresh of that node is failed.
 //
@@ -2997,6 +3103,62 @@ func (client *Client) ReimageNodesWithContext(ctx context.Context, tmpReq *Reima
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReimageNodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Reports a fault for an abnormal node.
+//
+// Description:
+//
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
+//
+// @param request - ReportNodeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReportNodeStatusResponse
+func (client *Client) ReportNodeStatusWithContext(ctx context.Context, request *ReportNodeStatusRequest, runtime *dara.RuntimeOptions) (_result *ReportNodeStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DiagnosisType) {
+		body["DiagnosisType"] = request.DiagnosisType
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReportNodeStatus"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReportNodeStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3387,6 +3549,54 @@ func (client *Client) StopInvocationWithContext(ctx context.Context, tmpReq *Sto
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopInvocationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops an ongoing fault reporting diagnostics process after a user initiates a fault report.
+//
+// Description:
+//
+// Stops an ongoing fault reporting diagnostics process. Before calling this operation, initiate a fault report for the abnormal node by calling ReportNodeStatus, and use the returned ReportId as the ReportId for this operation.
+//
+// @param request - StopNodeDiagnosticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopNodeDiagnosticResponse
+func (client *Client) StopNodeDiagnosticWithContext(ctx context.Context, request *StopNodeDiagnosticRequest, runtime *dara.RuntimeOptions) (_result *StopNodeDiagnosticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReportId) {
+		body["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopNodeDiagnostic"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopNodeDiagnosticResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

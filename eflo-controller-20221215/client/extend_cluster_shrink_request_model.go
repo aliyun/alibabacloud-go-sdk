@@ -34,11 +34,11 @@ type ExtendClusterShrinkRequest struct {
   // 
   // example:
   // 
-  // False
+  // false
   IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-  // The combined IP allocation policy. Each policy can use only one policy type, and multiple policies can be combined.
+  // The combined policy for IP allocation. Each policy can use only one policy type, and multiple policies can be combined.
   IpAllocationPolicyShrink *string `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty"`
-  // The node groups.
+  // The node group.
   NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
   // The zone ID of the vSwitch.
   // 

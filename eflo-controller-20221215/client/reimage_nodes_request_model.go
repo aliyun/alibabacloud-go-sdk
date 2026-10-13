@@ -30,7 +30,7 @@ type ReimageNodesRequest struct {
 	//
 	// example:
 	//
-	// False
+	// false
 	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	// The list of nodes.
 	Nodes []*ReimageNodesRequestNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`

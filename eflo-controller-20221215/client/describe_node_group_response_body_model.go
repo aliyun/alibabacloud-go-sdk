@@ -52,13 +52,13 @@ type iDescribeNodeGroupResponseBody interface {
 }
 
 type DescribeNodeGroupResponseBody struct {
-	// The zone ID.
+	// The zone.
 	//
 	// example:
 	//
 	// cn-wulanchabu-a
 	Az *string `json:"Az,omitempty" xml:"Az,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type DescribeNodeGroupResponseBody struct {
 	//
 	// aliyun-basic-cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-07-07T17:19:42.980000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether file storage can be mounted.
+	// Indicates whether file storage mounting is supported.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeNodeGroupResponseBody struct {
 	//
 	// i190720111752146430748
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
@@ -102,19 +102,19 @@ type DescribeNodeGroupResponseBody struct {
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// Valid values:
 	//
-	// • password: The node group supports only password-based logon.
+	// • password: The group supports only password-based logon.
 	//
-	// • keypair: The node group supports only key pair-based logon.
+	// • keypair: The group supports only key pair-based logon.
 	//
-	// • both: The node group supports password-based and key pair-based logon.
+	// • both: The group supports both password-based and key pair-based logon.
 	//
-	// If this parameter is not returned, no logon method is configured for the node group.
+	// If the value is empty, no logon method is configured for the group.
 	//
 	// example:
 	//
 	// password
 	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// The instance type.
+	// The machine type.
 	//
 	// example:
 	//
@@ -126,45 +126,45 @@ type DescribeNodeGroupResponseBody struct {
 	//
 	// 1
 	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The description of the node group.
+	// The node group description.
 	//
 	// example:
 	//
 	// lingjun alinux node group
 	NodeGroupDescription *string `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
 	// i120982301752461697971
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The name of the node group.
+	// The node group name.
 	//
 	// example:
 	//
 	// test-ack
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// The name of the RAM role. You can call the ListRoles operation of the RAM API to query the RAM roles that you created.
+	// The name of the RAM role for the node. You can call the RAM API ListRoles to query the RAM roles that you have created.
 	//
 	// example:
 	//
 	// xianwen-test-ram-role
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 83896080-59E3-5775-BDDC-8084691C3D96
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The system disk information.
+	// The system cloud disk information.
 	SystemDisk *DescribeNodeGroupResponseBodySystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// The time when the node group was last updated.
+	// The update time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-08-20T11:18:11.164000
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The user data.
+	// The user-defined script.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribeNodeGroupResponseBody struct {
 	//
 	// echo "aaaaaaa" >> /tmp/tttest.sh
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// Indicates whether the node group supports GPU virtualization.
+	// Indicates whether GPU virtualization slicing is supported.
 	//
 	// example:
 	//
@@ -380,13 +380,13 @@ func (s *DescribeNodeGroupResponseBody) Validate() error {
 }
 
 type DescribeNodeGroupResponseBodySystemDisk struct {
-	// The category of the disk.
+	// The category of the cloud disk.
 	//
 	// example:
 	//
 	// system
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The performance level of the ESSD. Valid values:
+	// The performance level (PL) of the ESSD used as the system cloud disk. Valid values:
 	//
 	// - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 	//
@@ -396,25 +396,25 @@ type DescribeNodeGroupResponseBodySystemDisk struct {
 	//
 	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB. Valid values:
+	// The size of the system cloud disk. Unit: GiB. Valid values:
 	//
-	// - Basic disk: 20–500.
+	// - Premium performance disk: 20 to 500.
 	//
 	// - ESSD:
 	//
-	//   - PL0: 1–2,048.
+	//   - PL0: 1 to 2048.
 	//
-	//   - PL1: 20–2,048.
+	//   - PL1: 20 to 2048.
 	//
-	//   - PL2: 461–2,048.
+	//   - PL2: 461 to 2048.
 	//
-	//   - PL3: 1,261–2,048.
+	//   - PL3: 1261 to 2048.
 	//
-	// - ESSD AutoPL disk: 1–2,048.
+	// - ESSD AutoPL: 1 to 2048.
 	//
-	// - Other disk categories: 20–2,048.
+	// - Other cloud disk types: 20 to 2048.
 	//
-	// Default value: the larger value between 20 and the size of the image that is specified by `ImageId`.
+	// Default value: max{20, size of the image specified by the parameter ImageId}.
 	//
 	// example:
 	//

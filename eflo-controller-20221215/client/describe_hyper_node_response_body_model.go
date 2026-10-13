@@ -58,13 +58,13 @@ type DescribeHyperNodeResponseBody struct {
 	//
 	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The time when the hyper node was created.
+	// The creation time. The time is in ISO 8601 format. The Z in the example indicates UTC.
 	//
 	// example:
 	//
 	// 2022-11-30T02:00:00.852Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time.
+	// The expiration time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeHyperNodeResponseBody struct {
 	//
 	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// The ID of the hyper node.
+	// The hypernode ID.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeHyperNodeResponseBody struct {
 	//
 	// ng-ec3c96ff0aa4c60d
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The name of the node group.
+	// The node group name.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeHyperNodeResponseBody struct {
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	// The list of nodes.
 	Nodes []*DescribeHyperNodeResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The state of the hyper node.
+	// The hypernode status.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeHyperNodeResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The state of the node.
+	// The node status.
 	//
 	// example:
 	//
@@ -351,7 +351,7 @@ type DescribeHyperNodeResponseBodyNodes struct {
 	//
 	// e01-cn-zvp2tgykr0b
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The state of the node.
+	// The node status.
 	//
 	// example:
 	//
@@ -359,7 +359,7 @@ type DescribeHyperNodeResponseBodyNodes struct {
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
 	// Deprecated
 	//
-	// The state.
+	// The status.
 	//
 	// example:
 	//
@@ -485,11 +485,11 @@ func (s *DescribeHyperNodeResponseBodyNodes) Validate() error {
 }
 
 type DescribeHyperNodeResponseBodyNodesDisks struct {
-	// The packet classification. Valid values:
+	// The packet category. Valid values:
 	//
-	// - **DOWNLINK_PACKET**: downlink packet
+	// - **DOWNLINK_PACKET**: downlink packet.
 	//
-	// - **UPLINK_PACKET**: uplink packet
+	// - **UPLINK_PACKET**: uplink packet.
 	//
 	// example:
 	//
@@ -501,11 +501,11 @@ type DescribeHyperNodeResponseBodyNodesDisks struct {
 	//
 	// d-bp1564bcc2306uui4zpk
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// When you create an enhanced SSD (ESSD) to use as a system disk, set the performance level of the disk. Valid values:
+	// The performance level (PL) of the cloud disk when an ESSD is created as the system cloud disk. Settings:
 	//
-	// - PL0: A maximum of 10,000 random read/write input/output operations per second (IOPS) per disk.
+	// - PL0: A maximum of 10,000 random read/write IOPS per standard SSD.
 	//
-	// - PL1: A maximum of 50,000 random read/write IOPS per disk.
+	// - PL1: A maximum of 50,000 random read/write IOPS per standard SSD.
 	//
 	// example:
 	//
@@ -519,9 +519,9 @@ type DescribeHyperNodeResponseBodyNodesDisks struct {
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The disk type. Valid values:
 	//
-	// - system: system disk.
+	// - system: system cloud disk.
 	//
-	// - data: data disk.
+	// - data: data cloud disk.
 	//
 	// example:
 	//
@@ -587,13 +587,13 @@ func (s *DescribeHyperNodeResponseBodyNodesDisks) Validate() error {
 }
 
 type DescribeHyperNodeResponseBodyNodesNetworks struct {
-	// The name of the network interface on the machine.
+	// The bond interface name of the machine.
 	//
 	// example:
 	//
 	// bond0
 	BondName *string `json:"BondName,omitempty" xml:"BondName,omitempty"`
-	// The IP address of the machine in the virtual private cloud (VPC).
+	// The IP address of the machine in the VPC.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iListNodeGroupsResponseBody interface {
 }
 
 type ListNodeGroupsResponseBody struct {
-	// The node groups.
+	// The cluster group information.
 	Groups []*ListNodeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The token that is used in the next request to retrieve a new page of results.
+	// The NextToken for the next page. Include this return value when requesting the next page.
 	//
 	// example:
 	//
 	// 563d42ae0b17572449ec8c97f7f66069
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListNodeGroupsResponseBodyGroups struct {
 	//
 	// wzq-exclusivelite-71
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
@@ -108,6 +108,10 @@ type ListNodeGroupsResponseBodyGroups struct {
 	// created by ga2_prepare
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether file storage mounting is supported.
+	//
+	// example:
+	//
+	// true
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// The group ID.
 	//
@@ -133,7 +137,7 @@ type ListNodeGroupsResponseBodyGroups struct {
 	//
 	// CentOS_7.9_x86_64_FULL_20221110
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The instance type.
+	// The machine type.
 	//
 	// example:
 	//
@@ -145,13 +149,13 @@ type ListNodeGroupsResponseBodyGroups struct {
 	//
 	// 2
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The update time.
+	// The update time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2023-09-22T00:03:05.114
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Whether to enable gpu virtualization or not
+	// Indicates whether GPU virtualization splitting is supported.
 	//
 	// example:
 	//

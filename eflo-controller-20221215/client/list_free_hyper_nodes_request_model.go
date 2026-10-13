@@ -38,19 +38,19 @@ type ListFreeHyperNodesRequest struct {
 	//
 	// efg1.nvga1
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// The number of entries to return on each page. The maximum value is 100.
+	// The number of entries per page in a paged query. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// • If you do not set this parameter or you set a value less than 20, the default value is 20.
+	// •If this parameter is not specified or is set to a value less than 20, the default value is 20.
 	//
-	// • If you set a value greater than 100, the default value is 100.
+	// •If this parameter is set to a value greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. Set this parameter to the NextToken value from the previous response.
+	// The pagination token. Set this parameter to the value of NextToken that was returned from the last API call.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListFreeHyperNodesRequest struct {
 	//
 	// rg-aekzyqdwnfabx6q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// A list of statuses of unused nodes to return.
+	// The list of unused node statuses to return.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// The list of tags.
 	Tags []*ListFreeHyperNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`

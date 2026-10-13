@@ -52,7 +52,7 @@ type iDescribeClusterResponseBody interface {
 }
 
 type DescribeClusterResponseBody struct {
-	// The description of the cluster.
+	// The cluster description.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type DescribeClusterResponseBody struct {
 	//
 	// i116913051662373010974
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// Eflo-YJ-Test-Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster.
+	// The cluster type.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type DescribeClusterResponseBody struct {
 	//
 	// IPv4
 	ComputingIpVersion *string `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
-	// The time when the cluster was created.
+	// The creation time. The time is in ISO 8601 format. Z in the example indicates UTC.
 	//
 	// example:
 	//
 	// 2022-06-08T07:05:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The zone of the cluster.
+	// The cluster number.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeClusterResponseBody struct {
 	//
 	// unsupported
 	OpenEniJumboFrame *string `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
-	// The state of the cluster.
+	// The cluster status.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeClusterResponseBody struct {
 	//
 	// i152609221670466904596
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The time when the cluster was last updated.
+	// The update time. The time is in ISO 8601 format. Z in the example indicates UTC.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribeClusterResponseBody struct {
 	//
 	// vsw-0jlwrfecgcbflyosvo242
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -379,7 +379,7 @@ type DescribeClusterResponseBodyComponents struct {
 	//
 	// i149549021660892626529
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The type of the component.
+	// The component type.
 	//
 	// example:
 	//
@@ -418,7 +418,7 @@ func (s *DescribeClusterResponseBodyComponents) Validate() error {
 }
 
 type DescribeClusterResponseBodyNetworks struct {
-	// The ID of the virtual private datacenter (VPD).
+	// The cluster CIDR block ID.
 	//
 	// example:
 	//

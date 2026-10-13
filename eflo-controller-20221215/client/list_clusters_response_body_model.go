@@ -18,15 +18,15 @@ type iListClustersResponseBody interface {
 }
 
 type ListClustersResponseBody struct {
-	// Cluster information.
+	// The cluster information.
 	Clusters []*ListClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// Token returned by this call for retrieving next page.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// f4f9a292c17072a2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,93 +83,93 @@ func (s *ListClustersResponseBody) Validate() error {
 }
 
 type ListClustersResponseBodyClusters struct {
-	// Cluster description.
+	// The cluster description.
 	//
 	// example:
 	//
 	// Test cluster
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// i137590131672134915401
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Cluster name.
+	// The cluster name.
 	//
 	// example:
 	//
 	// cnp_test_cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Cluster type.
+	// The cluster type.
 	//
 	// example:
 	//
 	// AckEdgePro
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// Component information.
+	// The component information.
 	//
 	// example:
 	//
 	// {}
 	Components interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
-	// IP version of computing network.
+	// The IP version of the computing network.
 	//
 	// example:
 	//
 	// IPv4
 	ComputingIpVersion *string `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
-	// Cluster creation time.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-01-27T14:54:02.360
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Cluster zone identifier.
+	// The cluster number.
 	//
 	// example:
 	//
 	// B1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// Number of nodes.
+	// The number of nodes.
 	//
 	// example:
 	//
 	// 12
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// Number of node groups.
+	// The number of node groups.
 	//
 	// example:
 	//
 	// 2
 	NodeGroupCount *int64 `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
-	// Cluster status.
+	// The cluster status.
 	//
 	// example:
 	//
 	// initializing
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2ajbjoloa23q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Tag information.
+	// The tag information.
 	Tags []*ListClustersResponseBodyClustersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// i156365121663149566024
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Last update time.
+	// The update time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-01-28T20:56:32.585
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// VPC ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -343,13 +343,13 @@ func (s *ListClustersResponseBodyClusters) Validate() error {
 }
 
 type ListClustersResponseBodyClustersTags struct {
-	// Tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value.
+	// The tag value.
 	//
 	// example:
 	//

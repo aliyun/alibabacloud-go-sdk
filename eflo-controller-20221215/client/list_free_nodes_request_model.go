@@ -26,7 +26,7 @@ type iListFreeNodesRequest interface {
 }
 
 type ListFreeNodesRequest struct {
-	// The cluster ID.
+	// The cluster number.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type ListFreeNodesRequest struct {
 	//
 	// mock-machine-type2
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// The number of entries to return on each page for a paged query. The default value is 20.
+	// The number of entries per page for a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set it to the NextToken value returned from the previous API call.
+	// The pagination token. Set this parameter to the value of NextToken that is returned from the previous API call.
 	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The type of unused nodes to be returned.
+	// The type of unused nodes to return.
 	OperatingStates []*string `json:"OperatingStates,omitempty" xml:"OperatingStates,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//

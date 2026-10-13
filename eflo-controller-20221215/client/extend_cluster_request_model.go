@@ -34,11 +34,11 @@ type ExtendClusterRequest struct {
   // 
   // example:
   // 
-  // False
+  // false
   IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-  // The combined IP allocation policy. Each policy can use only one policy type, and multiple policies can be combined.
+  // The combined policy for IP allocation. Each policy can use only one policy type, and multiple policies can be combined.
   IpAllocationPolicy []*ExtendClusterRequestIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
-  // The node groups.
+  // The node group.
   NodeGroups []*ExtendClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
   // The zone ID of the vSwitch.
   // 
@@ -506,7 +506,7 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) Validate() error
 }
 
 type ExtendClusterRequestNodeGroups struct {
-  // The number of nodes to purchase. Valid values: 0 to 500. If Amount is set to 0, no nodes are purchased and existing nodes are used for scale-out. If Amount is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0
+  // The number of nodes to purchase. Valid values: 0 to 500. If Amount is set to 0, no nodes are purchased and existing nodes are used for scale-out. If Amount is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0.
   // 
   // example:
   // 
@@ -542,7 +542,7 @@ type ExtendClusterRequestNodeGroups struct {
   NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
   // The node tags.
   NodeTag []*ExtendClusterRequestNodeGroupsNodeTag `json:"NodeTag,omitempty" xml:"NodeTag,omitempty" type:"Repeated"`
-  // The node list.
+  // The list of nodes.
   Nodes []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
   // The subscription duration of the purchased nodes. Unit: months. Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect when Amount is not 0 and ChargeType is set to PREPAY.
   // 
@@ -556,7 +556,7 @@ type ExtendClusterRequestNodeGroups struct {
   // 
   // spn-25e985acAWbrwEBJ
   SavingsPlanId *string `json:"SavingsPlanId,omitempty" xml:"SavingsPlanId,omitempty"`
-  // The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
+  // The custom executable shell script. The script must be in Base64 encoding. The maximum size of the raw data is 16 KB.
   // 
   // example:
   // 
@@ -757,7 +757,7 @@ func (s *ExtendClusterRequestNodeGroups) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsHyperNodes struct {
-  // The list of cloud disk information.
+  // The list of disk information.
   DataDisk []*ExtendClusterRequestNodeGroupsHyperNodesDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
   // The hostname.
   // 
@@ -882,7 +882,7 @@ func (s *ExtendClusterRequestNodeGroupsHyperNodes) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsHyperNodesDataDisk struct {
-  // Specifies whether to enable burst (I/O burst).
+  // Specifies whether to enable burst (performance burst).
   // 
   // example:
   // 
@@ -890,7 +890,7 @@ type ExtendClusterRequestNodeGroupsHyperNodesDataDisk struct {
   BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
   // The cloud disk type. Valid values:
   // 
-  //  - cloud_essd: ESSD.
+  //  - cloud_essd: Enterprise SSD (ESSD) cloud disk.
   // 
   // example:
   // 
@@ -902,23 +902,23 @@ type ExtendClusterRequestNodeGroupsHyperNodesDataDisk struct {
   // 
   // True
   DeleteWithNode *bool `json:"DeleteWithNode,omitempty" xml:"DeleteWithNode,omitempty"`
-  // The performance level (PL) when an ESSD is used as a system cloud disk. Valid values:
+  // The performance level (PL) of the ESSD cloud disk used as a system cloud disk. Valid values:
   // 
-  // - PL0: a maximum of 10,000 random read/write IOPS per disk.
+  // - PL0: A maximum of 10,000 random read/write IOPS per disk.
   // 
-  // - PL1: a maximum of 50,000 random read/write IOPS per disk.
+  // - PL1: A maximum of 50,000 random read/write IOPS per disk.
   // 
   // example:
   // 
   // PL1
   PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-  // The provisioned performance (read/write IOPS) of a single ESSD AutoPL cloud disk.
+  // The provisioned performance of read/write IOPS for the ESSD AutoPL cloud disk (per disk).
   // 
   // example:
   // 
   // 9600
   ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-  // The cloud disk size. Unit: GiB.
+  // The disk size. Unit: GiB.
   // 
   // example:
   // 
@@ -1163,7 +1163,7 @@ func (s *ExtendClusterRequestNodeGroupsNodes) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsNodesDataDisk struct {
-  // Specifies whether to enable burst (I/O burst).
+  // Specifies whether to enable burst (performance burst).
   // 
   // example:
   // 
@@ -1181,7 +1181,7 @@ type ExtendClusterRequestNodeGroupsNodesDataDisk struct {
   // 
   // true
   DeleteWithNode *bool `json:"DeleteWithNode,omitempty" xml:"DeleteWithNode,omitempty"`
-  // The performance metric of the data cloud disk.
+  // The performance parameter of the data cloud disk.
   // 
   // example:
   // 
@@ -1193,7 +1193,7 @@ type ExtendClusterRequestNodeGroupsNodesDataDisk struct {
   // 
   // 1000
   ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-  // The cloud disk size.
+  // The disk size.
   // 
   // example:
   // 

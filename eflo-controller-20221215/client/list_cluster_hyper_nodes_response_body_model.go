@@ -18,15 +18,15 @@ type iListClusterHyperNodesResponseBody interface {
 }
 
 type ListClusterHyperNodesResponseBody struct {
-	// The list of nodes.
+	// The node list.
 	HyperNodes []*ListClusterHyperNodesResponseBodyHyperNodes `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
-	// The query token returned from this call.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// 563d42ae0b17572449ec8c97f7f66069
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -89,13 +89,13 @@ type ListClusterHyperNodesResponseBodyHyperNodes struct {
 	//
 	// bccluster_eflocomputing_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The time when the node was created.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-07-07T17:38:35.391
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the machine.
+	// The machine expiration time. The time is in ISO 8601 format. The Z in the example indicates UTC.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListClusterHyperNodesResponseBodyHyperNodes struct {
 	//
 	// alywlcb-lingjun-gpu-0025
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The cluster ID.
+	// The cluster number.
 	//
 	// example:
 	//
@@ -137,13 +137,13 @@ type ListClusterHyperNodesResponseBodyHyperNodes struct {
 	//
 	// i123229811742436895560
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The name of the node group.
+	// The node group name.
 	//
 	// example:
 	//
 	// g1
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// The status of the hyper node.
+	// The hypernode status.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListClusterHyperNodesResponseBodyHyperNodes struct {
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
 	// Deprecated
 	//
-	// The status of the node.
+	// The node status.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListClusterHyperNodesResponseBodyHyperNodes struct {
 	//
 	// vsw-bp1u4ej4ap8c4yiqfi87c
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteNodeRequest interface {
 }
 
 type DeleteNodeRequest struct {
-	// The ID of the node.
+	// The node ID.
 	//
 	// This parameter is required.
 	//

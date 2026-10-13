@@ -22,19 +22,19 @@ type iListFreeHyperNodesResponseBody interface {
 type ListFreeHyperNodesResponseBody struct {
 	// The list of nodes.
 	HyperNodes []*ListFreeHyperNodesResponseBodyHyperNodes `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
-	// The number of entries returned on each page. The maximum value is 100.
+	// The number of entries per page in a paged query. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// • If you do not set this parameter or you set a value less than 20, the default value is 20.
+	// •If this parameter is not specified or is set to a value less than 20, the default value is 20.
 	//
-	// • If you set a value greater than 100, the default value is 100.
+	// •If this parameter is set to a value greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. If this parameter is empty, no more results are available.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type ListFreeHyperNodesResponseBodyHyperNodes struct {
 	//
 	// bccluster_eflocomputing_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The time when the node was created.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-08-06T10:11:41.569
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the machine.
+	// The machine expiration time. The time is in ISO 8601 format. Z in the example indicates UTC.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ListFreeHyperNodesResponseBodyHyperNodes struct {
 	//
 	// efg2.ks01L20Z2
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// The status of the hypernode.
+	// The hyper node status.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type ListFreeHyperNodesResponseBodyHyperNodes struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The status of the hypernode.
+	// The hyper node status.
 	//
 	// example:
 	//

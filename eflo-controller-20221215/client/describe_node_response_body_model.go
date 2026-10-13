@@ -72,7 +72,7 @@ type DescribeNodeResponseBody struct {
 	//
 	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format. Z in the example indicates UTC.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type DescribeNodeResponseBody struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The list of disk information.
 	Disks []*DescribeNodeResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	// The expiration time.
+	// The expiration time. The time is in ISO 8601 format. Z in the example indicates UTC.
 	//
 	// example:
 	//
 	// 2022-06-23T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// Indicates whether file system mounting is supported.
+	// Indicates whether file storage mounting is supported.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DescribeNodeResponseBody struct {
 	//
 	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// The hyper node ID.
+	// The HyperNode ID.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type DescribeNodeResponseBody struct {
 	//
 	// spn-25e985acAWbrwEBK
 	SavingsPlanId *string `json:"SavingsPlanId,omitempty" xml:"SavingsPlanId,omitempty"`
-	// The unique machine identifier.
+	// The unique identifier of the machine.
 	//
 	// example:
 	//
@@ -461,7 +461,7 @@ func (s *DescribeNodeResponseBody) Validate() error {
 }
 
 type DescribeNodeResponseBodyDisks struct {
-	// The disk type. Valid values:
+	// The disk category. Valid values:
 	//
 	//  - cloud_essd: ESSD cloud disk.
 	//
@@ -475,11 +475,11 @@ type DescribeNodeResponseBodyDisks struct {
 	//
 	// d-2zeap7wkns2tdmbr11se
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The performance level of the cloud disk when an ESSD cloud disk is created as a system disk. Valid values:
+	// The performance level (PL) of the ESSD cloud disk when it is used as the system cloud disk. Valid values:
 	//
-	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+	// - PL0: a maximum of 10,000 random read/write IOPS per disk.
 	//
-	// - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
+	// - PL1: a maximum of 50,000 random read/write IOPS per disk.
 	//
 	// example:
 	//
@@ -493,9 +493,9 @@ type DescribeNodeResponseBodyDisks struct {
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The disk type. Valid values:
 	//
-	// - system: system disk.
+	// - system: system cloud disk.
 	//
-	// - data: data disk.
+	// - data: data cloud disk.
 	//
 	// example:
 	//
@@ -567,7 +567,7 @@ type DescribeNodeResponseBodyNetworks struct {
 	//
 	// Bond0
 	BondName *string `json:"BondName,omitempty" xml:"BondName,omitempty"`
-	// The machine IP address.
+	// The IP address of the machine.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iListNodeGroupDriftedNodesShrinkRequest interface {
 }
 
 type ListNodeGroupDriftedNodesShrinkRequest struct {
-	// The maximum number of entries per page for a paged query. Valid values: 1 to 500. Default value: 100.
+	// The maximum number of entries per page in a paging query. Valid values: 1 to 500. Default value: 100.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListNodeGroupDriftedNodesShrinkRequest struct {
 	//
 	// 563d42ae0b17572449ec8c97f7f66069
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the node group.
+	// The node group ID. Call ListClusters to obtain the ClusterId, pass the ClusterId to ListNodeGroups, and obtain the value from the NodeGroupId response parameter.
 	//
 	// This parameter is required.
 	//

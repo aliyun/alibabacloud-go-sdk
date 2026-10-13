@@ -18,7 +18,7 @@ type iListFreeNodesResponseBody interface {
 }
 
 type ListFreeNodesResponseBody struct {
-	// The token returned for the next query.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -89,19 +89,19 @@ type ListFreeNodesResponseBodyNodes struct {
 	//
 	// bccluster_eflocomputing_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-02-02T11:27:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the machine.
+	// The expiration time of the machine. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-03-03T00:00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The cluster ID.
+	// The cluster number.
 	//
 	// example:
 	//

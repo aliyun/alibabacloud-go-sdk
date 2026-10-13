@@ -68,19 +68,19 @@ type DescribeNodeGroupRefreshTaskResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. An empty value of NextToken indicates that no more results exist.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
 	// 7ed93fda-5e7f-436a-ae5a-bd8e6b04e36b
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
 	// ng-3525
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The ID of the refresh task.
+	// The refresh task ID.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ func (s *DescribeNodeGroupRefreshTaskResponseBody) Validate() error {
 }
 
 type DescribeNodeGroupRefreshTaskResponseBodyNodes struct {
-	// The action level actually executed on the node. If multiple properties are refreshed on the node, the highest required action level is used. Valid values:
+	// The action level actually performed on the node. If multiple properties are refreshed on the node, the highest required action level is used. Valid values:
 	//
 	// - Refresh: in-place refresh.
 	//
@@ -287,13 +287,13 @@ type DescribeNodeGroupRefreshTaskResponseBodyNodes struct {
 	//
 	// The node has been confirmed for maintenance and there is no need to confirm the maintenance again. sn: 21B917666,status:ClusterNodeRepairing
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
 	// node-001
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The list of property drifts for the node, including both executed and skipped properties.
+	// The property drift list for the node, including both executed and skipped properties.
 	PropertyDrifts []*DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts `json:"PropertyDrifts,omitempty" xml:"PropertyDrifts,omitempty" type:"Repeated"`
 	// The node refresh status. Valid values:
 	//
@@ -395,7 +395,7 @@ type DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts struct {
 	//
 	// old-role
 	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// The minimum action required to apply the target value: Refresh / Reboot / Reimage. For more information, see the MaxDisruptiveAction parameter description in the RefreshNodeGroupNodes operation.
+	// The minimum action required to apply the target value: Refresh, Reboot, or Reimage. For more information, see the MaxDisruptiveAction parameter of the RefreshNodeGroupNodes operation.
 	//
 	// example:
 	//

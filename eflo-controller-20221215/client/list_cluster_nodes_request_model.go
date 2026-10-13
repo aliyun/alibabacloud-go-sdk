@@ -34,13 +34,13 @@ type ListClusterNodesRequest struct {
 	//
 	// i15b480fbd2fcdbc2869cd80
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The maximum number of entries to return on each page. The default value is 20.
+	// The number of entries per page in a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for pagination. To retrieve the next page of results, set this parameter to the NextToken value returned from the previous call.
+	// The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListClusterNodesRequest struct {
 	//
 	// ng-ec3c96ff0aa4c60d
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The operating states for filtering nodes.
+	// The list of node states.
 	OperatingStates []*string `json:"OperatingStates,omitempty" xml:"OperatingStates,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
@@ -60,7 +60,7 @@ type ListClusterNodesRequest struct {
 	//
 	// rg-ksld39333ss
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags for filtering nodes.
+	// The tag information.
 	Tags []*ListClusterNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -149,13 +149,13 @@ func (s *ListClusterNodesRequest) Validate() error {
 }
 
 type ListClusterNodesRequestTags struct {
-	// The key of the tag.
+	// The key of the node tag.
 	//
 	// example:
 	//
 	// my_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of the node tag.
 	//
 	// example:
 	//

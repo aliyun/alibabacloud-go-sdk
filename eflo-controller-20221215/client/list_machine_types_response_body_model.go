@@ -18,9 +18,9 @@ type iListMachineTypesResponseBody interface {
 }
 
 type ListMachineTypesResponseBody struct {
-	// Details of the machine types.
+	// The details of the machine types.
 	MachineTypes []*ListMachineTypesResponseBodyMachineTypes `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty" type:"Repeated"`
-	// The token to request the next page of results. Include this token in your next request to retrieve the next page.
+	// The next token for pagination. Include this value in the request to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -89,34 +89,39 @@ type ListMachineTypesResponseBodyMachineTypes struct {
 	//
 	// 2
 	BondNum *int32 `json:"BondNum,omitempty" xml:"BondNum,omitempty"`
-	// CPU information.
+	// The CPU information.
 	//
 	// example:
 	//
 	// 2x Intel Icelake 8369B 32C CPU
-	CpuInfo       *string                                                `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	CpuInfo *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	// The structured CPU specifications.
 	CpuInfoDetail *ListMachineTypesResponseBodyMachineTypesCpuInfoDetail `json:"CpuInfoDetail,omitempty" xml:"CpuInfoDetail,omitempty" type:"Struct"`
-	// Disk information.
+	// The disk information.
 	//
 	// example:
 	//
 	// 2x 480GB SATA SSD
-	DiskInfo              *string                                                        `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
-	DiskInfoDetail        *ListMachineTypesResponseBodyMachineTypesDiskInfoDetail        `json:"DiskInfoDetail,omitempty" xml:"DiskInfoDetail,omitempty" type:"Struct"`
+	DiskInfo *string `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
+	// The disk information.
+	DiskInfoDetail *ListMachineTypesResponseBodyMachineTypesDiskInfoDetail `json:"DiskInfoDetail,omitempty" xml:"DiskInfoDetail,omitempty" type:"Struct"`
+	// The frontend network information.
 	FrontendNetworkDetail *ListMachineTypesResponseBodyMachineTypesFrontendNetworkDetail `json:"FrontendNetworkDetail,omitempty" xml:"FrontendNetworkDetail,omitempty" type:"Struct"`
-	// GPU information.
+	// The GPU information.
 	//
 	// example:
 	//
 	// 8x NVIDIA SXM4 80GB A100 GPU
-	GpuInfo       *string                                                `json:"GpuInfo,omitempty" xml:"GpuInfo,omitempty"`
+	GpuInfo *string `json:"GpuInfo,omitempty" xml:"GpuInfo,omitempty"`
+	// The GPU information.
 	GpuInfoDetail *ListMachineTypesResponseBodyMachineTypesGpuInfoDetail `json:"GpuInfoDetail,omitempty" xml:"GpuInfoDetail,omitempty" type:"Struct"`
-	// Memory information.
+	// The memory information.
 	//
 	// example:
 	//
 	// 32x 64GB DDR4 3200 Memory
-	MemoryInfo       *string                                                   `json:"MemoryInfo,omitempty" xml:"MemoryInfo,omitempty"`
+	MemoryInfo *string `json:"MemoryInfo,omitempty" xml:"MemoryInfo,omitempty"`
+	// The memory information.
 	MemoryInfoDetail *ListMachineTypesResponseBodyMachineTypesMemoryInfoDetail `json:"MemoryInfoDetail,omitempty" xml:"MemoryInfoDetail,omitempty" type:"Struct"`
 	// The name of the machine type.
 	//
@@ -124,7 +129,7 @@ type ListMachineTypesResponseBodyMachineTypes struct {
 	//
 	// efg1.nvga1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Network information.
+	// The network information.
 	//
 	// example:
 	//
@@ -135,7 +140,8 @@ type ListMachineTypesResponseBodyMachineTypes struct {
 	// example:
 	//
 	// 10
-	NodeCount      *string                                                 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The RDMA information.
 	RdmaInfoDetail *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail `json:"RdmaInfoDetail,omitempty" xml:"RdmaInfoDetail,omitempty" type:"Struct"`
 	// The number of CPU cores.
 	//
@@ -143,7 +149,7 @@ type ListMachineTypesResponseBodyMachineTypes struct {
 	//
 	// 48
 	TotalCpuCore *int32 `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
-	// The type of the machine type.
+	// The machine type.
 	//
 	// example:
 	//
@@ -338,14 +344,20 @@ func (s *ListMachineTypesResponseBodyMachineTypes) Validate() error {
 }
 
 type ListMachineTypesResponseBodyMachineTypesCpuInfoDetail struct {
+	// The CPU architecture.
+	//
 	// example:
 	//
 	// x86_64
 	CpuArch *string `json:"CpuArch,omitempty" xml:"CpuArch,omitempty"`
+	// The number of CPU sockets.
+	//
 	// example:
 	//
 	// 2
 	CpuSockets *int32 `json:"CpuSockets,omitempty" xml:"CpuSockets,omitempty"`
+	// The number of vCPU cores.
+	//
 	// example:
 	//
 	// 192
@@ -392,14 +404,20 @@ func (s *ListMachineTypesResponseBodyMachineTypesCpuInfoDetail) Validate() error
 }
 
 type ListMachineTypesResponseBodyMachineTypesDiskInfoDetail struct {
+	// The number of disks.
+	//
 	// example:
 	//
 	// 4
 	LocalDiskCount *int32 `json:"LocalDiskCount,omitempty" xml:"LocalDiskCount,omitempty"`
+	// The capacity per disk, in TB.
+	//
 	// example:
 	//
 	// 3.84
 	LocalDiskSizeInTB *float32 `json:"LocalDiskSizeInTB,omitempty" xml:"LocalDiskSizeInTB,omitempty"`
+	// The disk type.
+	//
 	// example:
 	//
 	// NVMe SSD
@@ -446,10 +464,14 @@ func (s *ListMachineTypesResponseBodyMachineTypesDiskInfoDetail) Validate() erro
 }
 
 type ListMachineTypesResponseBodyMachineTypesFrontendNetworkDetail struct {
+	// The frontend network type.
+	//
 	// example:
 	//
 	// vpc
 	FrontendNetworkType *string `json:"FrontendNetworkType,omitempty" xml:"FrontendNetworkType,omitempty"`
+	// Indicates whether jumbo frames are supported.
+	//
 	// example:
 	//
 	// true
@@ -487,22 +509,32 @@ func (s *ListMachineTypesResponseBodyMachineTypesFrontendNetworkDetail) Validate
 }
 
 type ListMachineTypesResponseBodyMachineTypesGpuInfoDetail struct {
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 8
 	GpuCount *int32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	// The GPU memory per card, in GB.
+	//
 	// example:
 	//
 	// 144
 	GpuMemoryInGB *int32 `json:"GpuMemoryInGB,omitempty" xml:"GpuMemoryInGB,omitempty"`
+	// The GPU name.
+	//
 	// example:
 	//
 	// M890P-144G
 	GpuName *string `json:"GpuName,omitempty" xml:"GpuName,omitempty"`
+	// The GPU vendor.
+	//
 	// example:
 	//
 	// T-HEAD
 	GpuVendor *string `json:"GpuVendor,omitempty" xml:"GpuVendor,omitempty"`
+	// The total GPU memory, in GB.
+	//
 	// example:
 	//
 	// 9216
@@ -567,6 +599,8 @@ func (s *ListMachineTypesResponseBodyMachineTypesGpuInfoDetail) Validate() error
 }
 
 type ListMachineTypesResponseBodyMachineTypesMemoryInfoDetail struct {
+	// The memory size, in GB.
+	//
 	// example:
 	//
 	// 2048
@@ -595,14 +629,28 @@ func (s *ListMachineTypesResponseBodyMachineTypesMemoryInfoDetail) Validate() er
 }
 
 type ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail struct {
+	// The bandwidth per backend RDMA NIC, in Gbps.
+	//
 	// example:
 	//
 	// 400
 	BackendRdmaNicBwInGbps *int32 `json:"BackendRdmaNicBwInGbps,omitempty" xml:"BackendRdmaNicBwInGbps,omitempty"`
+	// The number of backend RDMA NICs.
+	//
 	// example:
 	//
 	// 4
 	BackendRdmaNicCount *int32 `json:"BackendRdmaNicCount,omitempty" xml:"BackendRdmaNicCount,omitempty"`
+	// Indicates whether backend RDMA is supported. Valid values:
+	//
+	// - true: The current machine type supports backend RDMA.
+	//
+	// - false: The current machine type does not support backend RDMA.
+	//
+	// example:
+	//
+	// true
+	BackendRdmaSupported *bool `json:"BackendRdmaSupported,omitempty" xml:"BackendRdmaSupported,omitempty"`
 }
 
 func (s ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail) String() string {
@@ -621,6 +669,10 @@ func (s *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail) GetBackendRdmaN
 	return s.BackendRdmaNicCount
 }
 
+func (s *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail) GetBackendRdmaSupported() *bool {
+	return s.BackendRdmaSupported
+}
+
 func (s *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail) SetBackendRdmaNicBwInGbps(v int32) *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail {
 	s.BackendRdmaNicBwInGbps = &v
 	return s
@@ -628,6 +680,11 @@ func (s *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail) SetBackendRdmaN
 
 func (s *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail) SetBackendRdmaNicCount(v int32) *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail {
 	s.BackendRdmaNicCount = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail) SetBackendRdmaSupported(v bool) *ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail {
+	s.BackendRdmaSupported = &v
 	return s
 }
 

@@ -20,7 +20,7 @@ type iDescribeNodeGroupRefreshTaskRequest interface {
 }
 
 type DescribeNodeGroupRefreshTaskRequest struct {
-	// The maximum number of entries per page for a paged query. Valid values: 1 to 500. Default value: 100. For more information about paging, set this parameter together with NextToken.
+	// The maximum number of entries per page for a paged query. Valid values: 1 to 500. Default value: 100. For more information about paging, see the NextToken parameter.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DescribeNodeGroupRefreshTaskRequest struct {
 	//
 	// 563d42ae0b17572449ec8c97f7f66069
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the refresh task.
+	// The ID of the node group configuration refresh task. After you call RefreshNodeGroupNodes to trigger a node group configuration refresh, obtain this value from the NodeGroupRefreshTaskId response parameter. Before you call this operation, the node group must contain nodes with configuration drift.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeNodeGroupRefreshTaskRequest struct {
 	//
 	// task-159136551662516768776
 	NodeGroupRefreshTaskId *string `json:"NodeGroupRefreshTaskId,omitempty" xml:"NodeGroupRefreshTaskId,omitempty"`
-	// The node refresh statuses to filter by. Valid values:
+	// The node refresh statuses to filter by:
 	//
 	// - Pending: the node is waiting to be refreshed.
 	//

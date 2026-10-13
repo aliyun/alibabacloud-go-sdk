@@ -18,15 +18,15 @@ type iListSyslogsResponseBody interface {
 }
 
 type ListSyslogsResponseBody struct {
-	// The object that contains the paginated list of logs.
+	// The paginated list of log objects.
 	Logs []*ListSyslogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The \\`NextToken\\` for the next page. To retrieve the next page of results, include this return value in the next request.
+	// The NextToken for the next page. Include this value in the request to retrieve the next page of results.
 	//
 	// example:
 	//
 	// 563d42ae0b17572449ec8c97f7f66069
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListSyslogsResponseBodyLogs struct {
 	//
 	// ALIYUN_PUBLIC
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// A standard field in Linux syslog.
+	// The Linux syslog standard field.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListSyslogsResponseBodyLogs struct {
 	//
 	// 114.55.254.44
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The content of the syslog.
+	// The syslog content.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type ListSyslogsResponseBodyLogs struct {
 	//
 	// e01-cn-9lb36u4s601
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// A standard field in Linux syslog.
+	// The Linux syslog standard field.
 	//
 	// example:
 	//
@@ -143,49 +143,49 @@ type ListSyslogsResponseBodyLogs struct {
 	//
 	// damo-m53kr8kd-0008
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// A standard field in Linux syslog.
+	// The Linux syslog standard field.
 	//
 	// example:
 	//
 	// kernel
 	Syslogtag *string `json:"Syslogtag,omitempty" xml:"Syslogtag,omitempty"`
-	// Tag: Hostname.
+	// The tag for the hostname.
 	//
 	// example:
 	//
 	// damo-m53kr8kd-0008
 	TagHostname *string `json:"TagHostname,omitempty" xml:"TagHostname,omitempty"`
-	// Tag: Package ID.
+	// The tag for the pack ID.
 	//
 	// example:
 	//
 	// D990314D3C25D7E8-1080
 	TagPackId *string `json:"TagPackId,omitempty" xml:"TagPackId,omitempty"`
-	// Tag: Path.
+	// The tag for the path.
 	//
 	// example:
 	//
 	// /var/log/kern
 	TagPath *string `json:"TagPath,omitempty" xml:"TagPath,omitempty"`
-	// Tag: Receive time.
+	// The tag for the receive time. Specify a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1687363348
 	TagReceiveTime *string `json:"TagReceiveTime,omitempty" xml:"TagReceiveTime,omitempty"`
-	// Tag: User-defined ID.
+	// The tag for the user-defined ID.
 	//
 	// example:
 	//
 	// application_b
 	TagUserDefinedId *string `json:"TagUserDefinedId,omitempty" xml:"TagUserDefinedId,omitempty"`
-	// The time in UNIX format.
+	// The time in UNIX timestamp format.
 	//
 	// example:
 	//
 	// 1687363346
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The topic. Valid values are \\`logserver\\` and \\`log2sls\\`. Note: Both are syslog servers. \\`logserver\\` collects data over TCP. \\`log2sls\\` collects data over UDP.
+	// The topic, which is logserver or log2sls. Both are syslog servers. logserver collects logs over TCP, and log2sls collects logs over UDP.
 	//
 	// example:
 	//

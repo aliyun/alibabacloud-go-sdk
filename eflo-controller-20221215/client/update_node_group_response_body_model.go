@@ -16,13 +16,13 @@ type iUpdateNodeGroupResponseBody interface {
 }
 
 type UpdateNodeGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 8F065DDD-6996-5973-9691-9EC57BD0072E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

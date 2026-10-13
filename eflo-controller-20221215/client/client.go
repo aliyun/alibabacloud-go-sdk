@@ -25,26 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-wulanchabu":         dara.String("eflo-controller.cn-wulanchabu.aliyuncs.com"),
-		"cn-beijing":            dara.String("eflo-controller.cn-beijing.aliyuncs.com"),
-		"cn-shanghai":           dara.String("eflo-controller.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":           dara.String("eflo-controller.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan":             dara.String("eflo-controller.cn-heyuan.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("eflo-controller.cn-zhangjiakou.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("eflo-controller.cn-shenzhen.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("eflo-controller.ap-northeast-1.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("eflo-controller.cn-guangzhou.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("eflo-controller.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("eflo-controller.ap-southeast-3.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("eflo-controller.cn-huhehaote.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("eflo-controller.ap-southeast-7.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("eflo-controller.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-8":        dara.String("eflo-controller.ap-southeast-8.aliyuncs.com"),
-		"eu-central-1":          dara.String("eflo-controller.eu-central-1.aliyuncs.com"),
-		"me-east-1":             dara.String("eflo-controller.me-east-1.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("eflo-controller.cn-shanghai-finance-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -144,11 +124,11 @@ func (client *Client) ApproveOperation(request *ApproveOperationRequest) (_resul
 
 // Summary:
 //
-// Changes the node group of a node.
+// Modifies the node group of nodes.
 //
 // Description:
 //
-// Creates a session, returns a frontend endpoint, and starts an auto-triggered task to track the session status.
+// Creates a session, returns the frontend endpoint, and starts an epoch task to track the session status.
 //
 // @param tmpReq - ChangeNodeGroupRequest
 //
@@ -208,11 +188,11 @@ func (client *Client) ChangeNodeGroupWithOptions(tmpReq *ChangeNodeGroupRequest,
 
 // Summary:
 //
-// Changes the node group of a node.
+// Modifies the node group of nodes.
 //
 // Description:
 //
-// Creates a session, returns a frontend endpoint, and starts an auto-triggered task to track the session status.
+// Creates a session, returns the frontend endpoint, and starts an epoch task to track the session status.
 //
 // @param request - ChangeNodeGroupRequest
 //
@@ -1342,11 +1322,11 @@ func (client *Client) DeleteVsc(request *DeleteVscRequest) (_result *DeleteVscRe
 
 // Summary:
 //
-// Queries the details of a cluster.
+// Queries the details of a Lingjun AI Computing Service cluster.
 //
 // Description:
 //
-// Queries the details of a specified cluster.
+// Closes a remote session.
 //
 // @param request - DescribeClusterRequest
 //
@@ -1390,11 +1370,11 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 
 // Summary:
 //
-// Queries the details of a cluster.
+// Queries the details of a Lingjun AI Computing Service cluster.
 //
 // Description:
 //
-// Queries the details of a specified cluster.
+// Closes a remote session.
 //
 // @param request - DescribeClusterRequest
 //
@@ -1413,10 +1393,6 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 // Summary:
 //
 // Queries the results of a diagnostic task.
-//
-// Description:
-//
-// The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
 //
 // @param request - DescribeDiagnosticResultRequest
 //
@@ -1462,10 +1438,6 @@ func (client *Client) DescribeDiagnosticResultWithOptions(request *DescribeDiagn
 //
 // Queries the results of a diagnostic task.
 //
-// Description:
-//
-// The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
-//
 // @param request - DescribeDiagnosticResultRequest
 //
 // @return DescribeDiagnosticResultResponse
@@ -1482,11 +1454,81 @@ func (client *Client) DescribeDiagnosticResult(request *DescribeDiagnosticResult
 
 // Summary:
 //
-// Queries the details of a hyper node.
+// Queries the details of a fault report after a user submits one.
 //
 // Description:
 //
-// Queries the details of a specified hyper node.
+// Queries the details of a fault report. After you call ReportNodeStatus to submit a fault report, you can obtain the report ID from the ReportId response parameter. You can also call ListFaultReports to query existing fault reports and obtain the ReportId.
+//
+// @param request - DescribeFaultReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaultReportResponse
+func (client *Client) DescribeFaultReportWithOptions(request *DescribeFaultReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeFaultReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReportId) {
+		body["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFaultReport"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFaultReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a fault report after a user submits one.
+//
+// Description:
+//
+// Queries the details of a fault report. After you call ReportNodeStatus to submit a fault report, you can obtain the report ID from the ReportId response parameter. You can also call ListFaultReports to query existing fault reports and obtain the ReportId.
+//
+// @param request - DescribeFaultReportRequest
+//
+// @return DescribeFaultReportResponse
+func (client *Client) DescribeFaultReport(request *DescribeFaultReportRequest) (_result *DescribeFaultReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeFaultReportResponse{}
+	_body, _err := client.DescribeFaultReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a hypernode.
+//
+// Description:
+//
+// Queries the details of a hypernode.
 //
 // @param request - DescribeHyperNodeRequest
 //
@@ -1530,11 +1572,11 @@ func (client *Client) DescribeHyperNodeWithOptions(request *DescribeHyperNodeReq
 
 // Summary:
 //
-// Queries the details of a hyper node.
+// Queries the details of a hypernode.
 //
 // Description:
 //
-// Queries the details of a specified hyper node.
+// Queries the details of a hypernode.
 //
 // @param request - DescribeHyperNodeRequest
 //
@@ -1552,7 +1594,7 @@ func (client *Client) DescribeHyperNode(request *DescribeHyperNodeRequest) (_res
 
 // Summary:
 //
-// Queries the execution history and status of Cloud Assistant commands.
+// Queries the execution list and status of O&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -1608,7 +1650,7 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Summary:
 //
-// Queries the execution history and status of Cloud Assistant commands.
+// Queries the execution list and status of O&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -1626,7 +1668,7 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 
 // Summary:
 //
-// Queries the results of a network test.
+// Queries network test results.
 //
 // @param request - DescribeNetTestResultRequest
 //
@@ -1670,7 +1712,7 @@ func (client *Client) DescribeNetTestResultWithOptions(request *DescribeNetTestR
 
 // Summary:
 //
-// Queries the results of a network test.
+// Queries network test results.
 //
 // @param request - DescribeNetTestResultRequest
 //
@@ -1688,11 +1730,11 @@ func (client *Client) DescribeNetTestResult(request *DescribeNetTestResultReques
 
 // Summary:
 //
-// Queries the list of nodes.
+// Queries a list of nodes.
 //
 // Description:
 //
-// Queries the detailed information of a hyper node.
+// Queries the details of a supernode.
 //
 // @param request - DescribeNodeRequest
 //
@@ -1736,11 +1778,11 @@ func (client *Client) DescribeNodeWithOptions(request *DescribeNodeRequest, runt
 
 // Summary:
 //
-// Queries the list of nodes.
+// Queries a list of nodes.
 //
 // Description:
 //
-// Queries the detailed information of a hyper node.
+// Queries the details of a supernode.
 //
 // @param request - DescribeNodeRequest
 //
@@ -1758,11 +1800,11 @@ func (client *Client) DescribeNode(request *DescribeNodeRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the details of a node group.
+// Queries node groups.
 //
 // Description:
 //
-// This operation queries the details of a node group.
+// Queries the details of a supernode.
 //
 // @param request - DescribeNodeGroupRequest
 //
@@ -1806,11 +1848,11 @@ func (client *Client) DescribeNodeGroupWithOptions(request *DescribeNodeGroupReq
 
 // Summary:
 //
-// Queries the details of a node group.
+// Queries node groups.
 //
 // Description:
 //
-// This operation queries the details of a node group.
+// Queries the details of a supernode.
 //
 // @param request - DescribeNodeGroupRequest
 //
@@ -1832,13 +1874,13 @@ func (client *Client) DescribeNodeGroup(request *DescribeNodeGroupRequest) (_res
 //
 // Description:
 //
-// The returned results contain the following information:
+// The returned results include the following:
 //
-// - The processing status of each node with configuration drift
+// - The processing status of each node with configuration drift.
 //
-// - The processing result, status, and reason for each node
+// - The processing result, status, and reason for each node.
 //
-// - The refreshed and skipped properties for each node
+// - The refreshed and skipped properties for each node.
 //
 // @param tmpReq - DescribeNodeGroupRefreshTaskRequest
 //
@@ -1904,13 +1946,13 @@ func (client *Client) DescribeNodeGroupRefreshTaskWithOptions(tmpReq *DescribeNo
 //
 // Description:
 //
-// The returned results contain the following information:
+// The returned results include the following:
 //
-// - The processing status of each node with configuration drift
+// - The processing status of each node with configuration drift.
 //
-// - The processing result, status, and reason for each node
+// - The processing result, status, and reason for each node.
 //
-// - The refreshed and skipped properties for each node
+// - The refreshed and skipped properties for each node.
 //
 // @param request - DescribeNodeGroupRefreshTaskRequest
 //
@@ -1928,7 +1970,7 @@ func (client *Client) DescribeNodeGroupRefreshTask(request *DescribeNodeGroupRef
 
 // Summary:
 //
-// Describes the constraints for a node type.
+// Queries the constraints for a node type.
 //
 // @param request - DescribeNodeTypeRequest
 //
@@ -1972,7 +2014,7 @@ func (client *Client) DescribeNodeTypeWithOptions(request *DescribeNodeTypeReque
 
 // Summary:
 //
-// Describes the constraints for a node type.
+// Queries the constraints for a node type.
 //
 // @param request - DescribeNodeTypeRequest
 //
@@ -2052,7 +2094,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries the files that are sent by an O\\\\\\&M assistant and the status of the files.
+// Queries the list and status of files sent by O&M Assistant.
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -2100,7 +2142,7 @@ func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFi
 
 // Summary:
 //
-// Queries the files that are sent by an O\\\\\\&M assistant and the status of the files.
+// Queries the list and status of files sent by O&M Assistant.
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -2118,7 +2160,7 @@ func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRe
 
 // Summary:
 //
-// Queries the details of a task.
+// Queries the details of a node.
 //
 // @param request - DescribeTaskRequest
 //
@@ -2162,7 +2204,7 @@ func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runt
 
 // Summary:
 //
-// Queries the details of a task.
+// Queries the details of a node.
 //
 // @param request - DescribeTaskRequest
 //
@@ -2408,7 +2450,7 @@ func (client *Client) ExtendCluster(request *ExtendClusterRequest) (_result *Ext
 
 // Summary:
 //
-// Lists the node groups of a cluster and the nodes in each group.
+// Queries the host group list under a cluster and the host list under each group.
 //
 // @param request - ListClusterHyperNodesRequest
 //
@@ -2474,7 +2516,7 @@ func (client *Client) ListClusterHyperNodesWithOptions(request *ListClusterHyper
 
 // Summary:
 //
-// Lists the node groups of a cluster and the nodes in each group.
+// Queries the host group list under a cluster and the host list under each group.
 //
 // @param request - ListClusterHyperNodesRequest
 //
@@ -2492,7 +2534,7 @@ func (client *Client) ListClusterHyperNodes(request *ListClusterHyperNodesReques
 
 // Summary:
 //
-// Queries the nodes in a cluster.
+// Queries the list of nodes in a cluster.
 //
 // @param request - ListClusterNodesRequest
 //
@@ -2562,7 +2604,7 @@ func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesReque
 
 // Summary:
 //
-// Queries the nodes in a cluster.
+// Queries the list of nodes in a cluster.
 //
 // @param request - ListClusterNodesRequest
 //
@@ -2580,7 +2622,7 @@ func (client *Client) ListClusterNodes(request *ListClusterNodesRequest) (_resul
 
 // Summary:
 //
-// Query cluster instances with optional filtering by resource group and tags.
+// Queries a list of cluster instances.
 //
 // @param request - ListClustersRequest
 //
@@ -2638,7 +2680,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// Query cluster instances with optional filtering by resource group and tags.
+// Queries a list of cluster instances.
 //
 // @param request - ListClustersRequest
 //
@@ -2656,11 +2698,7 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 
 // Summary:
 //
-// # List of Diagnostic Tasks
-//
-// Description:
-//
-// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+// Queries a list of diagnostic tasks.
 //
 // @param request - ListDiagnosticResultsRequest
 //
@@ -2716,11 +2754,7 @@ func (client *Client) ListDiagnosticResultsWithOptions(request *ListDiagnosticRe
 
 // Summary:
 //
-// # List of Diagnostic Tasks
-//
-// Description:
-//
-// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+// Queries a list of diagnostic tasks.
 //
 // @param request - ListDiagnosticResultsRequest
 //
@@ -2738,7 +2772,95 @@ func (client *Client) ListDiagnosticResults(request *ListDiagnosticResultsReques
 
 // Summary:
 //
-// Lists the active physical servers in the rack.
+// Queries the list of historical fault reports.
+//
+// Description:
+//
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
+//
+// @param tmpReq - ListFaultReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFaultReportsResponse
+func (client *Client) ListFaultReportsWithOptions(tmpReq *ListFaultReportsRequest, runtime *dara.RuntimeOptions) (_result *ListFaultReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListFaultReportsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Nodes) {
+		request.NodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Nodes, dara.String("Nodes"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NodesShrink) {
+		body["Nodes"] = request.NodesShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFaultReports"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFaultReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of historical fault reports.
+//
+// Description:
+//
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
+//
+// @param request - ListFaultReportsRequest
+//
+// @return ListFaultReportsResponse
+func (client *Client) ListFaultReports(request *ListFaultReportsRequest) (_result *ListFaultReportsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFaultReportsResponse{}
+	_body, _err := client.ListFaultReportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of available rack physical machines.
 //
 // @param request - ListFreeHyperNodesRequest
 //
@@ -2806,7 +2928,7 @@ func (client *Client) ListFreeHyperNodesWithOptions(request *ListFreeHyperNodesR
 
 // Summary:
 //
-// Lists the active physical servers in the rack.
+// Queries the list of available rack physical machines.
 //
 // @param request - ListFreeHyperNodesRequest
 //
@@ -2824,7 +2946,7 @@ func (client *Client) ListFreeHyperNodes(request *ListFreeHyperNodesRequest) (_r
 
 // Summary:
 //
-// Lists all unused nodes.
+// Queries the list of unused nodes.
 //
 // @param request - ListFreeNodesRequest
 //
@@ -2894,7 +3016,7 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 
 // Summary:
 //
-// Lists all unused nodes.
+// Queries the list of unused nodes.
 //
 // @param request - ListFreeNodesRequest
 //
@@ -2912,11 +3034,11 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 
 // Summary:
 //
-// # Machines
+// Queries a list of machines.
 //
 // Description:
 //
-// Queries the details of hypernodes.
+// Queries the details of hyper nodes.
 //
 // @param tmpReq - ListHyperNodesRequest
 //
@@ -3020,11 +3142,11 @@ func (client *Client) ListHyperNodesWithOptions(tmpReq *ListHyperNodesRequest, r
 
 // Summary:
 //
-// # Machines
+// Queries a list of machines.
 //
 // Description:
 //
-// Queries the details of hypernodes.
+// Queries the details of hyper nodes.
 //
 // @param request - ListHyperNodesRequest
 //
@@ -3180,7 +3302,7 @@ func (client *Client) ListMachineNetworkInfo(request *ListMachineNetworkInfoRequ
 
 // Summary:
 //
-// Queries a list of available machine types.
+// Queries the list of available machine types.
 //
 // @param request - ListMachineTypesRequest
 //
@@ -3224,7 +3346,7 @@ func (client *Client) ListMachineTypesWithOptions(request *ListMachineTypesReque
 
 // Summary:
 //
-// Queries a list of available machine types.
+// Queries the list of available machine types.
 //
 // @param request - ListMachineTypesRequest
 //
@@ -3242,7 +3364,7 @@ func (client *Client) ListMachineTypes(request *ListMachineTypesRequest) (_resul
 
 // Summary:
 //
-// Lists network test results.
+// Queries the list of network tests.
 //
 // @param request - ListNetTestResultsRequest
 //
@@ -3298,7 +3420,7 @@ func (client *Client) ListNetTestResultsWithOptions(request *ListNetTestResultsR
 
 // Summary:
 //
-// Lists network test results.
+// Queries the list of network tests.
 //
 // @param request - ListNetTestResultsRequest
 //
@@ -3320,7 +3442,7 @@ func (client *Client) ListNetTestResults(request *ListNetTestResultsRequest) (_r
 //
 // Description:
 //
-// Compares the node group configuration template with the actual configuration of each node, and returns all nodes with configuration inconsistencies, along with the difference type, before-and-after values, and the action level required for refresh for each inconsistent property. This is a read-only operation.
+// Compares the node group configuration template with the actual configuration of each node, and returns all nodes with configuration inconsistencies, along with the drift type, before-and-after values, and the required action level for refreshing each inconsistent property. This is a read-only operation.
 //
 // @param tmpReq - ListNodeGroupDriftedNodesRequest
 //
@@ -3386,7 +3508,7 @@ func (client *Client) ListNodeGroupDriftedNodesWithOptions(tmpReq *ListNodeGroup
 //
 // Description:
 //
-// Compares the node group configuration template with the actual configuration of each node, and returns all nodes with configuration inconsistencies, along with the difference type, before-and-after values, and the action level required for refresh for each inconsistent property. This is a read-only operation.
+// Compares the node group configuration template with the actual configuration of each node, and returns all nodes with configuration inconsistencies, along with the drift type, before-and-after values, and the required action level for refreshing each inconsistent property. This is a read-only operation.
 //
 // @param request - ListNodeGroupDriftedNodesRequest
 //
@@ -3404,7 +3526,7 @@ func (client *Client) ListNodeGroupDriftedNodes(request *ListNodeGroupDriftedNod
 
 // Summary:
 //
-// Queries the list of node group configuration refresh tasks with paging.
+// Queries the list of node group configuration refresh tasks by paging.
 //
 // Description:
 //
@@ -3474,7 +3596,7 @@ func (client *Client) ListNodeGroupRefreshTasksWithOptions(tmpReq *ListNodeGroup
 
 // Summary:
 //
-// Queries the list of node group configuration refresh tasks with paging.
+// Queries the list of node group configuration refresh tasks by paging.
 //
 // Description:
 //
@@ -3496,7 +3618,7 @@ func (client *Client) ListNodeGroupRefreshTasks(request *ListNodeGroupRefreshTas
 
 // Summary:
 //
-// # Query Node Group Information Under the Cluster
+// Queries node group information in a cluster.
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -3552,7 +3674,7 @@ func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, 
 
 // Summary:
 //
-// # Query Node Group Information Under the Cluster
+// Queries node group information in a cluster.
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -3949,15 +4071,15 @@ func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootN
 
 // Summary:
 //
-// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
+// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
 //
 // Description:
 //
-// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
+// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
 //
 // Limits:
 //
-// - Only one node group configuration refresh task can be running at a time for a node group.
+// - A node group can have only one running node group configuration refresh task at a time.
 //
 // - When the asynchronous task executes the refresh, if a node is not in the "In Use" state, the refresh of that node is failed.
 //
@@ -4019,15 +4141,15 @@ func (client *Client) RefreshNodeGroupNodesWithOptions(tmpReq *RefreshNodeGroupN
 
 // Summary:
 //
-// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
+// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
 //
 // Description:
 //
-// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
+// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
 //
 // Limits:
 //
-// - Only one node group configuration refresh task can be running at a time for a node group.
+// - A node group can have only one running node group configuration refresh task at a time.
 //
 // - When the asynchronous task executes the refresh, if a node is not in the "In Use" state, the refresh of that node is failed.
 //
@@ -4120,6 +4242,84 @@ func (client *Client) ReimageNodes(request *ReimageNodesRequest) (_result *Reima
 	runtime := &dara.RuntimeOptions{}
 	_result = &ReimageNodesResponse{}
 	_body, _err := client.ReimageNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Reports a fault for an abnormal node.
+//
+// Description:
+//
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
+//
+// @param request - ReportNodeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReportNodeStatusResponse
+func (client *Client) ReportNodeStatusWithOptions(request *ReportNodeStatusRequest, runtime *dara.RuntimeOptions) (_result *ReportNodeStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DiagnosisType) {
+		body["DiagnosisType"] = request.DiagnosisType
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReportNodeStatus"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReportNodeStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Reports a fault for an abnormal node.
+//
+// Description:
+//
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
+//
+// @param request - ReportNodeStatusRequest
+//
+// @return ReportNodeStatusResponse
+func (client *Client) ReportNodeStatus(request *ReportNodeStatusRequest) (_result *ReportNodeStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReportNodeStatusResponse{}
+	_body, _err := client.ReportNodeStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4604,6 +4804,76 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 	runtime := &dara.RuntimeOptions{}
 	_result = &StopInvocationResponse{}
 	_body, _err := client.StopInvocationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops an ongoing fault reporting diagnostics process after a user initiates a fault report.
+//
+// Description:
+//
+// Stops an ongoing fault reporting diagnostics process. Before calling this operation, initiate a fault report for the abnormal node by calling ReportNodeStatus, and use the returned ReportId as the ReportId for this operation.
+//
+// @param request - StopNodeDiagnosticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopNodeDiagnosticResponse
+func (client *Client) StopNodeDiagnosticWithOptions(request *StopNodeDiagnosticRequest, runtime *dara.RuntimeOptions) (_result *StopNodeDiagnosticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReportId) {
+		body["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopNodeDiagnostic"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopNodeDiagnosticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops an ongoing fault reporting diagnostics process after a user initiates a fault report.
+//
+// Description:
+//
+// Stops an ongoing fault reporting diagnostics process. Before calling this operation, initiate a fault report for the abnormal node by calling ReportNodeStatus, and use the returned ReportId as the ReportId for this operation.
+//
+// @param request - StopNodeDiagnosticRequest
+//
+// @return StopNodeDiagnosticResponse
+func (client *Client) StopNodeDiagnostic(request *StopNodeDiagnosticRequest) (_result *StopNodeDiagnosticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StopNodeDiagnosticResponse{}
+	_body, _err := client.StopNodeDiagnosticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

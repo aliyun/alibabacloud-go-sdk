@@ -20,25 +20,25 @@ type iListClustersRequest interface {
 }
 
 type ListClustersRequest struct {
-	// Number of entries per page. Default: 20.
+	// The number of entries per page for a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token for retrieving the next page of results. Use the NextToken value returned in the previous response.
+	// The pagination token. Set this parameter to the value of NextToken that is returned from the previous API call.
 	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2bg6wyoox6jq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// List of tags.
+	// The list of tags.
 	Tags []*ListClustersRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -100,13 +100,13 @@ func (s *ListClustersRequest) Validate() error {
 }
 
 type ListClustersRequestTags struct {
-	// Tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// my_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value.
+	// The tag value.
 	//
 	// example:
 	//

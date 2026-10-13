@@ -32,19 +32,19 @@ type ListClusterHyperNodesRequest struct {
 	//
 	// i119982311660892626523
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of entries to return on each page. The maximum value is 100.
+	// The number of entries per page in a paged query. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// • If this parameter is not set or is set to a value less than 20, the default value is 20.
+	// - If this parameter is not set or is set to a value less than 20, the default value is 20.
 	//
-	// • If this parameter is set to a value greater than 100, the default value is 100.
+	// - If this parameter is set to a value greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the query. Set this parameter to the NextToken value returned from a previous call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//

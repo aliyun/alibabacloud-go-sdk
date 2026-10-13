@@ -20,13 +20,13 @@ type iListNodeGroupDriftedNodesResponseBody interface {
 }
 
 type ListNodeGroupDriftedNodesResponseBody struct {
-	// The maximum number of entries per page for a single query.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call. An empty value indicates that no more pages are available.
+	// The pagination token returned by this call. An empty value indicates that no more pages exist.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *ListNodeGroupDriftedNodesResponseBody) Validate() error {
 }
 
 type ListNodeGroupDriftedNodesResponseBodyNodes struct {
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListNodeGroupDriftedNodesResponseBodyNodesPropertyDrifts struct {
 	//
 	// old-role
 	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// The minimum action required to apply the TargetValue: Refresh / Reboot / Reimage. For more information, refer to the MaxDisruptiveAction parameter description in the RefreshNodeGroupNodes operation.
+	// The minimum action required to apply the TargetValue: Refresh, Reboot, or Reimage. For more information, refer to the MaxDisruptiveAction parameter of the RefreshNodeGroupNodes operation.
 	//
 	// example:
 	//

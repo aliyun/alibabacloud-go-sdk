@@ -26,7 +26,7 @@ type ListNodeGroupRefreshTasksResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. An empty value indicates that no more results exist.
+	// The pagination token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListNodeGroupRefreshTasksResponseBodyNodeGroupRefreshTasks struct {
 	//
 	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of nodes to refresh in this task.
+	// The total number of nodes to be refreshed by the task.
 	//
 	// example:
 	//

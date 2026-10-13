@@ -18,7 +18,7 @@ type iListClusterNodesResponseBody interface {
 }
 
 type ListClusterNodesResponseBody struct {
-	// The token to retrieve the next page of results. If this parameter is empty, no more results are available.
+	// The query token returned by this call.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListClusterNodesResponseBody) Validate() error {
 }
 
 type ListClusterNodesResponseBodyNodes struct {
-	// The unique code that identifies the cloud product or service.
+	// The commodity code, which is a unique identifier for a specific cloud product or service.
 	//
 	// example:
 	//
-	// bccluster_eflocomputing_public_cn（表示灵骏中国站包年包月）、bccluster_eflocomputing_public_intl（表示灵骏国际站包年包月）
+	// bccluster_eflocomputing_public_cn (Lingjun China site subscription), bccluster_eflocomputing_public_intl (Lingjun international site subscription)
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-02-02T11:27:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the node.
+	// The expiration time of the machine. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-03-03T00:00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// Indicates whether the node supports mounting file storage.
+	// Indicates whether file storage mounting is supported.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListClusterNodesResponseBodyNodes struct {
 	//
 	// 72432f80-273e-11ed-b57a-acde48001122
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The ID of the HPN zone.
+	// The cluster number.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type ListClusterNodesResponseBodyNodes struct {
 	//
 	// e01-cn-2r42tmj4z02
 	HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
-	// The image ID.
+	// The system image ID.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListClusterNodesResponseBodyNodes struct {
 	//
 	// cn-wulanchabu-b11
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// Network details.
+	// The network information.
 	Networks []*ListClusterNodesResponseBodyNodesNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
 	// The node group ID.
 	//
@@ -163,25 +163,25 @@ type ListClusterNodesResponseBodyNodes struct {
 	//
 	// e01-cn-2r42tmj4z02
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The type of the node.
+	// The node specifications.
 	//
 	// example:
 	//
 	// standard
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The status of the node.
+	// The node status.
 	//
 	// example:
 	//
 	// Extending
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	// The serial number (SN) of the node.
+	// The serial number (SN) of the machine.
 	//
 	// example:
 	//
 	// sn_tOuUk
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// The list of tags attached to the node.
+	// The tag information.
 	Tags []*ListClusterNodesResponseBodyNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -195,13 +195,13 @@ type ListClusterNodesResponseBodyNodes struct {
 	//
 	// vsw-0jlohur7nhbxd1ttyq8p8
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC where the node is located.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-f8zcet5mwerafyqlrhyoi
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The availability zone ID.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -438,25 +438,25 @@ func (s *ListClusterNodesResponseBodyNodes) Validate() error {
 }
 
 type ListClusterNodesResponseBodyNodesNetworks struct {
-	// The name of the network interface.
+	// The name of the network interface on the machine.
 	//
 	// example:
 	//
 	// bond0
 	BondName *string `json:"BondName,omitempty" xml:"BondName,omitempty"`
-	// The IP address of the node in the VPC.
+	// The IP address of the machine in the virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// 192.168.22.2
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The subnet ID.
+	// The subnet ID of the VPC.
 	//
 	// example:
 	//
 	// subnet-fwekrvg9
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	// The ID of the VPC to which the network interface belongs.
+	// The VPC ID.
 	//
 	// example:
 	//

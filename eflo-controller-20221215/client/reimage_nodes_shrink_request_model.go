@@ -30,7 +30,7 @@ type ReimageNodesShrinkRequest struct {
 	//
 	// example:
 	//
-	// False
+	// false
 	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	// The list of nodes.
 	NodesShrink *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`

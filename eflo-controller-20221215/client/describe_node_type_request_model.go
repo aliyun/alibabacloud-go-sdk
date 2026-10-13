@@ -14,7 +14,7 @@ type iDescribeNodeTypeRequest interface {
 }
 
 type DescribeNodeTypeRequest struct {
-	// The node scale-out pattern.
+	// The node scaling mode.
 	//
 	// example:
 	//

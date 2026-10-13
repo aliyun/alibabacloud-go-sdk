@@ -38,7 +38,7 @@ type iListHyperNodesRequest interface {
 }
 
 type ListHyperNodesRequest struct {
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListHyperNodesRequest struct {
 	//
 	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
@@ -70,19 +70,19 @@ type ListHyperNodesRequest struct {
 	//
 	// efg1.nvga1
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// The number of entries to return on each page. The maximum value is 100.
+	// The number of entries per page in a paged query. Maximum value: 100.
 	//
-	// Default values:
+	// Default value:
 	//
-	// • If you do not specify this parameter or you specify a value that is less than 20, the default value is 20.
+	// - If this parameter is not specified or is set to a value less than 20, the default value is 20.
 	//
-	// • If you specify a value that is greater than 100, the default value is 100.
+	// - If this parameter is set to a value greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Set this parameter to the NextToken value that is returned from a previous call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -94,17 +94,17 @@ type ListHyperNodesRequest struct {
 	//
 	// emr-default
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// The state of the node. If you do not specify this parameter, nodes in all states are returned. Valid values: Extending, UnusedNodeStopped, UnusedNodeStopping, Unused, Using, ReleaseLocking, Operating, Cutting, ClusterNodeStopped, UnusedNodeRecovering, ClusterNodeStopping, ClusterNodeRecovering, and Replacing.
+	// The node status. If this parameter is not specified, all statuses are returned. Valid values: Extending, UnusedNodeStopped, UnusedNodeStopping, Unused, Using, ReleaseLocking, Operating, Cutting, ClusterNodeStopped, UnusedNodeRecovering, ClusterNodeStopping, ClusterNodeRecovering, and Replacing.
 	OperatingStates []*string `json:"OperatingStates,omitempty" xml:"OperatingStates,omitempty" type:"Repeated"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmwfm33rlt6zi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The tag information.
 	Tags []*ListHyperNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//

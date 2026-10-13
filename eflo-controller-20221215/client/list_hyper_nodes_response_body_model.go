@@ -22,25 +22,25 @@ type iListHyperNodesResponseBody interface {
 type ListHyperNodesResponseBody struct {
 	// The list of nodes.
 	HyperNodes []*ListHyperNodesResponseBodyHyperNodes `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. The maximum value is 100.
+	// The number of entries per page in a paged query. Maximum value: 100.
 	//
-	// Default values:
+	// Default value:
 	//
-	// • If you do not specify this parameter or you specify a value that is less than 20, the default value is 20.
+	// - If this parameter is not specified or is set to a value less than 20, the default value is 20.
 	//
-	// • If you specify a value that is greater than 100, the default value is 100.
+	// - If this parameter is set to a value greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. If this parameter is not returned, no more results are available.
+	// The NextToken for the next page. Include this value when requesting the next page.
 	//
 	// example:
 	//
 	// 7ed93fda-5e7f-436a-ae5a-bd8e6b04e36b
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -106,31 +106,31 @@ func (s *ListHyperNodesResponseBody) Validate() error {
 }
 
 type ListHyperNodesResponseBodyHyperNodes struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// i115226661755786900341
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// test-ack
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The product code.
+	// The commodity code.
 	//
 	// example:
 	//
 	// bccluster_eflocomputing_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The time when the node was created.
+	// The creation time. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-07-09T10:41:56.577
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time.
+	// The expiration time. The time is in ISO 8601 format. The Z in the example indicates UTC.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ListHyperNodesResponseBodyHyperNodes struct {
 	//
 	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
@@ -160,25 +160,25 @@ type ListHyperNodesResponseBodyHyperNodes struct {
 	//
 	// efg2.GN9C.cn8
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
 	// i121135081698451727812
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The name of the node group.
+	// The node group.
 	//
 	// example:
 	//
 	// l20c-0801
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// The status of the hypernode.
+	// The hyper node status.
 	//
 	// example:
 	//
 	// Using
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type ListHyperNodesResponseBodyHyperNodes struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The status of the node.
+	// The node status.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ type ListHyperNodesResponseBodyHyperNodes struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tags []*ListHyperNodesResponseBodyHyperNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// i153333771756952392398
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -383,13 +383,13 @@ func (s *ListHyperNodesResponseBodyHyperNodes) Validate() error {
 }
 
 type ListHyperNodesResponseBodyHyperNodesTags struct {
-	// The key of the node tag.
+	// The tag key of the node.
 	//
 	// example:
 	//
 	// alarm_xdc
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the node tag.
+	// The tag value of the node.
 	//
 	// example:
 	//
