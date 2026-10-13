@@ -2554,6 +2554,222 @@ func (client *Client) ExecMetaDataComponentName(request *ExecMetaDataComponentNa
 
 // Summary:
 //
+// 停止探查任务
+//
+// Description:
+//
+// ## 接口说明
+//
+// 校验一个数据源名称在当前租户下是否已被占用，用于新建数据源或修改数据源名称之前的前置检查。
+//
+// 同租户内的数据源名称不可重复，名称冲突时新建会直接失败。先调用本接口确认名称可用，可以避免把冲突留到提交新建请求时才暴露。
+//
+// ## 请求说明
+//
+// - `dsName` 为待校验的数据源名称，按名称精确匹配当前租户下未删除的数据源，不支持前缀或模糊匹配。
+//
+// - 校验范围限定在当前租户，其他租户下的同名数据源不影响结果；已被删除的数据源名称可以重新使用。
+//
+// ## 返回说明
+//
+// 返回单值响应，`data` 为布尔值，表示名称校验结果：`true`-已存在同名数据源，该名称不可用；`false`-该名称未被占用，可以用于新建。
+//
+// 注意 `data` 的语义与 `success` 相反方向：`success` 为 `true` 且 `data` 为 `true` 表示接口调用成功且查到了同名数据源，此时应当更换名称。`success` 为 `false` 时结合 `errCode` 与 `errMessage` 定位调用失败原因。
+//
+// @param request - ExecMetaProfilingSkillJobDisableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecMetaProfilingSkillJobDisableResponse
+func (client *Client) ExecMetaProfilingSkillJobDisableWithOptions(request *ExecMetaProfilingSkillJobDisableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecMetaProfilingSkillJobDisableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DsId) {
+		body["dsId"] = request.DsId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecMetaProfilingSkillJobDisable"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/skill/profiling/job/disable"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecMetaProfilingSkillJobDisableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止探查任务
+//
+// Description:
+//
+// ## 接口说明
+//
+// 校验一个数据源名称在当前租户下是否已被占用，用于新建数据源或修改数据源名称之前的前置检查。
+//
+// 同租户内的数据源名称不可重复，名称冲突时新建会直接失败。先调用本接口确认名称可用，可以避免把冲突留到提交新建请求时才暴露。
+//
+// ## 请求说明
+//
+// - `dsName` 为待校验的数据源名称，按名称精确匹配当前租户下未删除的数据源，不支持前缀或模糊匹配。
+//
+// - 校验范围限定在当前租户，其他租户下的同名数据源不影响结果；已被删除的数据源名称可以重新使用。
+//
+// ## 返回说明
+//
+// 返回单值响应，`data` 为布尔值，表示名称校验结果：`true`-已存在同名数据源，该名称不可用；`false`-该名称未被占用，可以用于新建。
+//
+// 注意 `data` 的语义与 `success` 相反方向：`success` 为 `true` 且 `data` 为 `true` 表示接口调用成功且查到了同名数据源，此时应当更换名称。`success` 为 `false` 时结合 `errCode` 与 `errMessage` 定位调用失败原因。
+//
+// @param request - ExecMetaProfilingSkillJobDisableRequest
+//
+// @return ExecMetaProfilingSkillJobDisableResponse
+func (client *Client) ExecMetaProfilingSkillJobDisable(request *ExecMetaProfilingSkillJobDisableRequest) (_result *ExecMetaProfilingSkillJobDisableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecMetaProfilingSkillJobDisableResponse{}
+	_body, _err := client.ExecMetaProfilingSkillJobDisableWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 立即执行探查任务
+//
+// Description:
+//
+// ## 接口说明
+//
+// 校验一个数据源名称在当前租户下是否已被占用，用于新建数据源或修改数据源名称之前的前置检查。
+//
+// 同租户内的数据源名称不可重复，名称冲突时新建会直接失败。先调用本接口确认名称可用，可以避免把冲突留到提交新建请求时才暴露。
+//
+// ## 请求说明
+//
+// - `dsName` 为待校验的数据源名称，按名称精确匹配当前租户下未删除的数据源，不支持前缀或模糊匹配。
+//
+// - 校验范围限定在当前租户，其他租户下的同名数据源不影响结果；已被删除的数据源名称可以重新使用。
+//
+// ## 返回说明
+//
+// 返回单值响应，`data` 为布尔值，表示名称校验结果：`true`-已存在同名数据源，该名称不可用；`false`-该名称未被占用，可以用于新建。
+//
+// 注意 `data` 的语义与 `success` 相反方向：`success` 为 `true` 且 `data` 为 `true` 表示接口调用成功且查到了同名数据源，此时应当更换名称。`success` 为 `false` 时结合 `errCode` 与 `errMessage` 定位调用失败原因。
+//
+// @param request - ExecMetaProfilingTaskRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecMetaProfilingTaskRunResponse
+func (client *Client) ExecMetaProfilingTaskRunWithOptions(request *ExecMetaProfilingTaskRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecMetaProfilingTaskRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BatchNo) {
+		body["batchNo"] = request.BatchNo
+	}
+
+	if !dara.IsNil(request.ComponentId) {
+		body["componentId"] = request.ComponentId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecMetaProfilingTaskRun"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/profiling/task/runNow"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecMetaProfilingTaskRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 立即执行探查任务
+//
+// Description:
+//
+// ## 接口说明
+//
+// 校验一个数据源名称在当前租户下是否已被占用，用于新建数据源或修改数据源名称之前的前置检查。
+//
+// 同租户内的数据源名称不可重复，名称冲突时新建会直接失败。先调用本接口确认名称可用，可以避免把冲突留到提交新建请求时才暴露。
+//
+// ## 请求说明
+//
+// - `dsName` 为待校验的数据源名称，按名称精确匹配当前租户下未删除的数据源，不支持前缀或模糊匹配。
+//
+// - 校验范围限定在当前租户，其他租户下的同名数据源不影响结果；已被删除的数据源名称可以重新使用。
+//
+// ## 返回说明
+//
+// 返回单值响应，`data` 为布尔值，表示名称校验结果：`true`-已存在同名数据源，该名称不可用；`false`-该名称未被占用，可以用于新建。
+//
+// 注意 `data` 的语义与 `success` 相反方向：`success` 为 `true` 且 `data` 为 `true` 表示接口调用成功且查到了同名数据源，此时应当更换名称。`success` 为 `false` 时结合 `errCode` 与 `errMessage` 定位调用失败原因。
+//
+// @param request - ExecMetaProfilingTaskRunRequest
+//
+// @return ExecMetaProfilingTaskRunResponse
+func (client *Client) ExecMetaProfilingTaskRun(request *ExecMetaProfilingTaskRunRequest) (_result *ExecMetaProfilingTaskRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecMetaProfilingTaskRunResponse{}
+	_body, _err := client.ExecMetaProfilingTaskRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Converts a single SQL script.
 //
 // Description:
@@ -4636,6 +4852,112 @@ func (client *Client) GetLhmDWResourceGroupStatus(request *GetLhmDWResourceGroup
 
 // Summary:
 //
+// Retrieves an overview of incremental changes in a data source.
+//
+// Description:
+//
+// ## Operation description
+//
+// Queries the overview of a data validation report by validation batch. Returns the number of tables validated, the number of passed tables, the pass rate, statistics by partition and field, and the report generation status. This operation serves as the primary entry point for viewing validation results. For table-level details, call the report instance or column-level result API operation.
+//
+// ## Request description
+//
+// - `batchId`: Required. The ID of the validation job (batch), which is obtained from the return value of the save validation task API operation. Subsequent execution, termination, rerun, and report API operations use this ID to reference the same validation.
+//
+// ## Response description
+//
+// Returns a single-value response. The `data` field is the overview object: `checkType` indicates the validation type (0: data volume comparison, 1: metric comparison, 2: weak content comparison), `checkResult` indicates the validation result (0: no records, 1: passed, 2: failed), `reportStatus` indicates the report generation status (0: not generated, 1: generating, 2: generated), and `reportGenerateMessage` provides the generation prompt message. The statistics section includes the number of validated tables, failed tables, passed tables, skipped tables and partitions, validated partitions, validated rows and passed rows, pass rate (`passProcess` is a decimal, `passProcessExport` is a string with a percentage sign), the number of validated and passed fields, as well as the source and destination data source information, associated task ID and time, and template information in metric validation scenarios.
+//
+// @param request - GetMetaCompareIncrementDbOverviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetaCompareIncrementDbOverviewResponse
+func (client *Client) GetMetaCompareIncrementDbOverviewWithOptions(request *GetMetaCompareIncrementDbOverviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMetaCompareIncrementDbOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogName) {
+		body["catalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.DbName) {
+		body["dbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.IsSummary) {
+		body["isSummary"] = request.IsSummary
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMetaCompareIncrementDbOverview"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/profiling/result/databases/overviewOfCompareIncrement"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMetaCompareIncrementDbOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves an overview of incremental changes in a data source.
+//
+// Description:
+//
+// ## Operation description
+//
+// Queries the overview of a data validation report by validation batch. Returns the number of tables validated, the number of passed tables, the pass rate, statistics by partition and field, and the report generation status. This operation serves as the primary entry point for viewing validation results. For table-level details, call the report instance or column-level result API operation.
+//
+// ## Request description
+//
+// - `batchId`: Required. The ID of the validation job (batch), which is obtained from the return value of the save validation task API operation. Subsequent execution, termination, rerun, and report API operations use this ID to reference the same validation.
+//
+// ## Response description
+//
+// Returns a single-value response. The `data` field is the overview object: `checkType` indicates the validation type (0: data volume comparison, 1: metric comparison, 2: weak content comparison), `checkResult` indicates the validation result (0: no records, 1: passed, 2: failed), `reportStatus` indicates the report generation status (0: not generated, 1: generating, 2: generated), and `reportGenerateMessage` provides the generation prompt message. The statistics section includes the number of validated tables, failed tables, passed tables, skipped tables and partitions, validated partitions, validated rows and passed rows, pass rate (`passProcess` is a decimal, `passProcessExport` is a string with a percentage sign), the number of validated and passed fields, as well as the source and destination data source information, associated task ID and time, and template information in metric validation scenarios.
+//
+// @param request - GetMetaCompareIncrementDbOverviewRequest
+//
+// @return GetMetaCompareIncrementDbOverviewResponse
+func (client *Client) GetMetaCompareIncrementDbOverview(request *GetMetaCompareIncrementDbOverviewRequest) (_result *GetMetaCompareIncrementDbOverviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMetaCompareIncrementDbOverviewResponse{}
+	_body, _err := client.GetMetaCompareIncrementDbOverviewWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves temporary OSS upload credentials (STS), including the AccessKey, security token, bucket, upload directory, and expiration time.
 //
 // Description:
@@ -4715,6 +5037,76 @@ func (client *Client) GetMetaOssTempKey(request *GetMetaOssTempKeyRequest) (_res
 	headers := make(map[string]*string)
 	_result = &GetMetaOssTempKeyResponse{}
 	_body, _err := client.GetMetaOssTempKeyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data source overview.
+//
+// @param request - GetMetaProfilingResultDbOverviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetaProfilingResultDbOverviewResponse
+func (client *Client) GetMetaProfilingResultDbOverviewWithOptions(request *GetMetaProfilingResultDbOverviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMetaProfilingResultDbOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IsSummary) {
+		query["isSummary"] = request.IsSummary
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMetaProfilingResultDbOverview"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/profiling/result/databases/overviewOfTaskDimension"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMetaProfilingResultDbOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data source overview.
+//
+// @param request - GetMetaProfilingResultDbOverviewRequest
+//
+// @return GetMetaProfilingResultDbOverviewResponse
+func (client *Client) GetMetaProfilingResultDbOverview(request *GetMetaProfilingResultDbOverviewRequest) (_result *GetMetaProfilingResultDbOverviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMetaProfilingResultDbOverviewResponse{}
+	_body, _err := client.GetMetaProfilingResultDbOverviewWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6198,6 +6590,458 @@ func (client *Client) ListMetaDataComponentPage(request *ListMetaDataComponentPa
 
 // Summary:
 //
+// 获取catalog分页列表
+//
+// @param request - ListMetaProfilingResultCatalogPageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetaProfilingResultCatalogPageResponse
+func (client *Client) ListMetaProfilingResultCatalogPageWithOptions(request *ListMetaProfilingResultCatalogPageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMetaProfilingResultCatalogPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogName) {
+		body["catalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.DbName) {
+		body["dbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.GroupBy) {
+		body["groupBy"] = request.GroupBy
+	}
+
+	if !dara.IsNil(request.NeedTotalCount) {
+		body["needTotalCount"] = request.NeedTotalCount
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		body["orderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.OrderDirection) {
+		body["orderDirection"] = request.OrderDirection
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		body["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMetaProfilingResultCatalogPage"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/profiling/result/catalogs/pageOfTaskDimension"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMetaProfilingResultCatalogPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取catalog分页列表
+//
+// @param request - ListMetaProfilingResultCatalogPageRequest
+//
+// @return ListMetaProfilingResultCatalogPageResponse
+func (client *Client) ListMetaProfilingResultCatalogPage(request *ListMetaProfilingResultCatalogPageRequest) (_result *ListMetaProfilingResultCatalogPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMetaProfilingResultCatalogPageResponse{}
+	_body, _err := client.ListMetaProfilingResultCatalogPageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query on table-level details in metadata profiling results, and returns the storage size, record count, partition information, external or transactional property, migration status, and last access time of each table.
+//
+// @param request - ListMetaProfilingResultTablePageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetaProfilingResultTablePageResponse
+func (client *Client) ListMetaProfilingResultTablePageWithOptions(request *ListMetaProfilingResultTablePageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMetaProfilingResultTablePageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentType) {
+		body["componentType"] = request.ComponentType
+	}
+
+	if !dara.IsNil(request.DataRange) {
+		body["dataRange"] = request.DataRange
+	}
+
+	if !dara.IsNil(request.DataSize) {
+		body["dataSize"] = request.DataSize
+	}
+
+	if !dara.IsNil(request.DataUnit) {
+		body["dataUnit"] = request.DataUnit
+	}
+
+	if !dara.IsNil(request.DbName) {
+		body["dbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.GroupBy) {
+		body["groupBy"] = request.GroupBy
+	}
+
+	if !dara.IsNil(request.IsPartitioned) {
+		body["isPartitioned"] = request.IsPartitioned
+	}
+
+	if !dara.IsNil(request.IsSummary) {
+		body["isSummary"] = request.IsSummary
+	}
+
+	if !dara.IsNil(request.MigrationStatus) {
+		body["migrationStatus"] = request.MigrationStatus
+	}
+
+	if !dara.IsNil(request.NeedTotalCount) {
+		body["needTotalCount"] = request.NeedTotalCount
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		body["orderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.OrderDirection) {
+		body["orderDirection"] = request.OrderDirection
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		body["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TableName) {
+		body["tableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMetaProfilingResultTablePage"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/profiling/result/tables/pageOfTaskDimension"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMetaProfilingResultTablePageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query on table-level details in metadata profiling results, and returns the storage size, record count, partition information, external or transactional property, migration status, and last access time of each table.
+//
+// @param request - ListMetaProfilingResultTablePageRequest
+//
+// @return ListMetaProfilingResultTablePageResponse
+func (client *Client) ListMetaProfilingResultTablePage(request *ListMetaProfilingResultTablePageRequest) (_result *ListMetaProfilingResultTablePageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMetaProfilingResultTablePageResponse{}
+	_body, _err := client.ListMetaProfilingResultTablePageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询函数分页列表
+//
+// @param request - ListMetaProfilingResultUdfPageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetaProfilingResultUdfPageResponse
+func (client *Client) ListMetaProfilingResultUdfPageWithOptions(request *ListMetaProfilingResultUdfPageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMetaProfilingResultUdfPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogName) {
+		body["catalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.ComponentType) {
+		body["componentType"] = request.ComponentType
+	}
+
+	if !dara.IsNil(request.DbName) {
+		body["dbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.FuncName) {
+		body["funcName"] = request.FuncName
+	}
+
+	if !dara.IsNil(request.GroupBy) {
+		body["groupBy"] = request.GroupBy
+	}
+
+	if !dara.IsNil(request.IsSummary) {
+		body["isSummary"] = request.IsSummary
+	}
+
+	if !dara.IsNil(request.NeedTotalCount) {
+		body["needTotalCount"] = request.NeedTotalCount
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		body["orderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.OrderDirection) {
+		body["orderDirection"] = request.OrderDirection
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		body["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMetaProfilingResultUdfPage"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/profiling/result/udf/pageOfTaskDimension"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMetaProfilingResultUdfPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询函数分页列表
+//
+// @param request - ListMetaProfilingResultUdfPageRequest
+//
+// @return ListMetaProfilingResultUdfPageResponse
+func (client *Client) ListMetaProfilingResultUdfPage(request *ListMetaProfilingResultUdfPageRequest) (_result *ListMetaProfilingResultUdfPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMetaProfilingResultUdfPageResponse{}
+	_body, _err := client.ListMetaProfilingResultUdfPageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on metadata profiling nodes and their scheduling and execute information, and returns paging data including basic node information, associated data components, comparison difference counts, the latest execute batch, and the next scheduled time.
+//
+// @param request - ListMetaProfilingSkillJobPageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetaProfilingSkillJobPageResponse
+func (client *Client) ListMetaProfilingSkillJobPageWithOptions(request *ListMetaProfilingSkillJobPageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMetaProfilingSkillJobPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentIds) {
+		body["componentIds"] = request.ComponentIds
+	}
+
+	if !dara.IsNil(request.DsId) {
+		body["dsId"] = request.DsId
+	}
+
+	if !dara.IsNil(request.DsName) {
+		body["dsName"] = request.DsName
+	}
+
+	if !dara.IsNil(request.DsType) {
+		body["dsType"] = request.DsType
+	}
+
+	if !dara.IsNil(request.GroupBy) {
+		body["groupBy"] = request.GroupBy
+	}
+
+	if !dara.IsNil(request.IsDisplaySystemTask) {
+		body["isDisplaySystemTask"] = request.IsDisplaySystemTask
+	}
+
+	if !dara.IsNil(request.JobId) {
+		body["jobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.JobName) {
+		body["jobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.NeedTotalCount) {
+		body["needTotalCount"] = request.NeedTotalCount
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		body["orderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.OrderDirection) {
+		body["orderDirection"] = request.OrderDirection
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		body["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMetaProfilingSkillJobPage"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/skill/profiling/job/page"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMetaProfilingSkillJobPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on metadata profiling nodes and their scheduling and execute information, and returns paging data including basic node information, associated data components, comparison difference counts, the latest execute batch, and the next scheduled time.
+//
+// @param request - ListMetaProfilingSkillJobPageRequest
+//
+// @return ListMetaProfilingSkillJobPageResponse
+func (client *Client) ListMetaProfilingSkillJobPage(request *ListMetaProfilingSkillJobPageRequest) (_result *ListMetaProfilingSkillJobPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMetaProfilingSkillJobPageResponse{}
+	_body, _err := client.ListMetaProfilingSkillJobPageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # User Scheduling Task Transformation
 //
 // Description:
@@ -6699,6 +7543,112 @@ func (client *Client) SingleSqlDryRun(request *SingleSqlDryRunRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &SingleSqlDryRunResponse{}
 	_body, _err := client.SingleSqlDryRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or updates a metadata profiling task by using a skill, configures the target component, profiling schema, profiling type, and rules, and returns the profiling task ID.
+//
+// @param request - SkillAddMetaProfilingJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SkillAddMetaProfilingJobResponse
+func (client *Client) SkillAddMetaProfilingJobWithOptions(request *SkillAddMetaProfilingJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SkillAddMetaProfilingJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentId) {
+		body["componentId"] = request.ComponentId
+	}
+
+	if !dara.IsNil(request.JobDesc) {
+		body["jobDesc"] = request.JobDesc
+	}
+
+	if !dara.IsNil(request.JobId) {
+		body["jobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.JobName) {
+		body["jobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.MetaIds) {
+		body["metaIds"] = request.MetaIds
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		body["pluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.ProfilingFlag) {
+		body["profilingFlag"] = request.ProfilingFlag
+	}
+
+	if !dara.IsNil(request.ProfilingPermission) {
+		body["profilingPermission"] = request.ProfilingPermission
+	}
+
+	if !dara.IsNil(request.ProfilingRule) {
+		body["profilingRule"] = request.ProfilingRule
+	}
+
+	if !dara.IsNil(request.ProfilingSchemaList) {
+		body["profilingSchemaList"] = request.ProfilingSchemaList
+	}
+
+	if !dara.IsNil(request.ProfilingType) {
+		body["profilingType"] = request.ProfilingType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SkillAddMetaProfilingJob"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/meta/skill/profiling/job"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SkillAddMetaProfilingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or updates a metadata profiling task by using a skill, configures the target component, profiling schema, profiling type, and rules, and returns the profiling task ID.
+//
+// @param request - SkillAddMetaProfilingJobRequest
+//
+// @return SkillAddMetaProfilingJobResponse
+func (client *Client) SkillAddMetaProfilingJob(request *SkillAddMetaProfilingJobRequest) (_result *SkillAddMetaProfilingJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SkillAddMetaProfilingJobResponse{}
+	_body, _err := client.SkillAddMetaProfilingJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
