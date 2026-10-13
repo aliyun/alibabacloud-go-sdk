@@ -310,6 +310,28 @@ func (client *Client) EvaluateTicket(request *EvaluateTicketRequest) (_result *E
 //
 // Queries the Object Storage Service (OSS) URL that is used to upload attachments.
 //
+// Description:
+//
+// > Attachment upload
+//
+// >
+//
+// > - Use a presigned URL to upload the file. For more information, see the OSS documentation.
+//
+// After you obtain the temporary upload URL, you can upload the file as follows:
+//
+// <details>
+//
+// <summary>
+//
+// # Sample
+//
+// </summary>
+//
+// curl -X PUT -H "Content-Type:application/octet-stream" -H "x-oss-meta-author:aliy" -T /home/admin/file.png "https\\://xx.oss-cn-zhangjiakou.aliyuncs.com/xx/xx.png"
+//
+// </details>
+//
 // @param request - GetAttachmentUploadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -354,6 +376,28 @@ func (client *Client) GetAttachmentUploadUrlWithOptions(request *GetAttachmentUp
 //
 // Queries the Object Storage Service (OSS) URL that is used to upload attachments.
 //
+// Description:
+//
+// > Attachment upload
+//
+// >
+//
+// > - Use a presigned URL to upload the file. For more information, see the OSS documentation.
+//
+// After you obtain the temporary upload URL, you can upload the file as follows:
+//
+// <details>
+//
+// <summary>
+//
+// # Sample
+//
+// </summary>
+//
+// curl -X PUT -H "Content-Type:application/octet-stream" -H "x-oss-meta-author:aliy" -T /home/admin/file.png "https\\://xx.oss-cn-zhangjiakou.aliyuncs.com/xx/xx.png"
+//
+// </details>
+//
 // @param request - GetAttachmentUploadUrlRequest
 //
 // @return GetAttachmentUploadUrlResponse
@@ -368,7 +412,9 @@ func (client *Client) GetAttachmentUploadUrl(request *GetAttachmentUploadUrlRequ
 	return _result, _err
 }
 
-// @param request - GetMqConsumerTagRequest
+// Summary:
+//
+// Retrieves the tag for a ticket\\"s RocketMQ message listener.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -395,6 +441,10 @@ func (client *Client) GetMqConsumerTagWithOptions(runtime *dara.RuntimeOptions) 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the tag for a ticket\\"s RocketMQ message listener.
+//
 // @return GetMqConsumerTagResponse
 func (client *Client) GetMqConsumerTag() (_result *GetMqConsumerTagResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -409,7 +459,7 @@ func (client *Client) GetMqConsumerTag() (_result *GetMqConsumerTagResponse, _er
 
 // Summary:
 //
-// Query tickets.
+// Queries a ticket.
 //
 // @param request - GetTicketRequest
 //
@@ -457,7 +507,7 @@ func (client *Client) GetTicketWithOptions(request *GetTicketRequest, runtime *d
 
 // Summary:
 //
-// Query tickets.
+// Queries a ticket.
 //
 // @param request - GetTicketRequest
 //
@@ -613,7 +663,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 
 // Summary:
 //
-// Obtains the ticket communication records.
+// Retrieves the communication records for a ticket.
 //
 // @param request - ListTicketNotesRequest
 //
@@ -661,7 +711,7 @@ func (client *Client) ListTicketNotesWithOptions(request *ListTicketNotesRequest
 
 // Summary:
 //
-// Obtains the ticket communication records.
+// Retrieves the communication records for a ticket.
 //
 // @param request - ListTicketNotesRequest
 //
@@ -679,7 +729,7 @@ func (client *Client) ListTicketNotes(request *ListTicketNotesRequest) (_result 
 
 // Summary:
 //
-// You can call this operation to obtain the list of my tickets.
+// Retrieves a list of your tickets.
 //
 // @param tmpReq - ListTicketsRequest
 //
@@ -763,7 +813,7 @@ func (client *Client) ListTicketsWithOptions(tmpReq *ListTicketsRequest, runtime
 
 // Summary:
 //
-// You can call this operation to obtain the list of my tickets.
+// Retrieves a list of your tickets.
 //
 // @param request - ListTicketsRequest
 //
@@ -781,7 +831,7 @@ func (client *Client) ListTickets(request *ListTicketsRequest) (_result *ListTic
 
 // Summary:
 //
-// # Reopens a ticket
+// Reopens a ticket.
 //
 // @param request - ReopenTicketRequest
 //
@@ -833,7 +883,7 @@ func (client *Client) ReopenTicketWithOptions(request *ReopenTicketRequest, runt
 
 // Summary:
 //
-// # Reopens a ticket
+// Reopens a ticket.
 //
 // @param request - ReopenTicketRequest
 //
@@ -851,7 +901,7 @@ func (client *Client) ReopenTicket(request *ReopenTicketRequest) (_result *Reope
 
 // Summary:
 //
-// Reply to the ticket. You can call the ListTicketNotes operation to obtain the content of the reply.
+// Replies to a ticket. You can call the ListTicketNotes operation to retrieve the reply.
 //
 // @param tmpReq - ReplyTicketRequest
 //
@@ -919,7 +969,7 @@ func (client *Client) ReplyTicketWithOptions(tmpReq *ReplyTicketRequest, runtime
 
 // Summary:
 //
-// Reply to the ticket. You can call the ListTicketNotes operation to obtain the content of the reply.
+// Replies to a ticket. You can call the ListTicketNotes operation to retrieve the reply.
 //
 // @param request - ReplyTicketRequest
 //

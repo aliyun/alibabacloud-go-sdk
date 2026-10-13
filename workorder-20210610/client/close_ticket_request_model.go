@@ -16,7 +16,7 @@ type iCloseTicketRequest interface {
 }
 
 type CloseTicketRequest struct {
-	// Work Order Number
+	// The ticket ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CloseTicketRequest struct {
 	//
 	// G2BKRWG
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	// The UID of the Alibaba Cloud account. You can view your UID in the profile picture in the upper-right corner of the DMS console.
+	// The user UID. You can find your UID by clicking the profile picture in the upper-right corner of the DMS console.
 	//
 	// example:
 	//

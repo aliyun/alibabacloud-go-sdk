@@ -18,15 +18,15 @@ type iReopenTicketRequest interface {
 }
 
 type ReopenTicketRequest struct {
-	// Reply content of rework order
+	// The content of the reply to reopen the ticket.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecs backup fails
+	// The issue has not been resolved yet.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Work Order Number
+	// The ticket ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ReopenTicketRequest struct {
 	//
 	// 0005PYGCW
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	// UID
+	// The UID.
 	//
 	// example:
 	//

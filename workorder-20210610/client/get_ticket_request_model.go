@@ -16,7 +16,7 @@ type iGetTicketRequest interface {
 }
 
 type GetTicketRequest struct {
-	// Work Order Number
+	// The ticket ID.
 	//
 	// This parameter is required.
 	//

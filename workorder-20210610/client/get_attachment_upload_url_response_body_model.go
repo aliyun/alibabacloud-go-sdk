@@ -117,9 +117,9 @@ type GetAttachmentUploadUrlResponseBodyData struct {
 	//
 	// example:
 	//
-	// https://gts-workorder-pre.oss-cn-beijing.aliyuncs.com
+	// https://workorder.oss-cn-beijing.aliyuncs.com
 	//
-	// /20220314/cabb80c3-430b-4079-a9f2-d2a0d1c2a587.png?Expires=1647328689&OSSAccessKeyId=LTAI****************&Signature=AbSEh26G3oYrJ8ivr4B0xzF89zk%3D
+	// /20220314/cabb80c3-430b-4079-a9f2-d2a0d1c2a587.png?Expires=1647328689&OSSAccessKeyId=LTAI**************&Signature=AbSEh26G3oYrJ8ivr4B0xzF89zk%3D
 	GetSignedUrl *string `json:"GetSignedUrl,omitempty" xml:"GetSignedUrl,omitempty"`
 	// Uploaded file identifier
 	//
@@ -131,9 +131,9 @@ type GetAttachmentUploadUrlResponseBodyData struct {
 	//
 	// example:
 	//
-	// https://gts-workorder-pre.oss-cn-beijing.aliyuncs.com
+	// https://workorder.oss-cn-beijing.aliyuncs.com
 	//
-	// /20220314/cabb80c3-430b-4079-a9f2-d2a0d1c2a587.png?Expires=1647328689&OSSAccessKeyId=LTAI****************&Signature=AbSEh26G3oYrJ8ivr4B0xzF89zk%3D
+	// /20220314/cabb80c3-430b-4079-a9f2-d2a0d1c2a587.png?Expires=1647328689&OSSAccessKeyId=LTAI***************&Signature=AbSEh26G3oYrJ8ivr4B0xzF89zk%3D
 	PutSignedUrl *string `json:"PutSignedUrl,omitempty" xml:"PutSignedUrl,omitempty"`
 }
 

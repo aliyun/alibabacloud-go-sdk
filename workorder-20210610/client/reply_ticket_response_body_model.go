@@ -24,32 +24,37 @@ type iReplyTicketResponseBody interface {
 }
 
 type ReplyTicketResponseBody struct {
+	// The detailed information about the permission error. If you have the required permissions, an empty string is returned.
+	//
+	// example:
+	//
+	// {\\"AuthAction\\":\\"ram:ReplyTicket\\",\\"AuthPrincipalDisplayName\\":\\"2146216584788xxxxx\\",\\"AuthPrincipalOwnerId\\":\\"1135850448xxxxx\\",\\"AuthPrincipalType\\":\\"SubUser\\",\\"NoPermissionType\\":\\"ImplicitDeny\\",\\"PolicyType\\":\\"AccountLevelIdentityBasedPolicy\\"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The status code.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned value is the dialogID of the response to the ticket.
+	// The dialog ID of the ticket reply.
 	//
 	// example:
 	//
 	// 46434030
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message. If success is set to false, the message is returned.
+	// The error message. This parameter is returned when the value of Success is false.
 	//
 	// example:
 	//
-	// success
+	// Invalid input parameters
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the API request. The requestid is unique for each call.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C1DA4C6F-963E-5741-AB57-67A554D102FD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is normal.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

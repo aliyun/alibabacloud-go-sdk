@@ -22,15 +22,15 @@ type iReplyTicketShrinkRequest interface {
 }
 
 type ReplyTicketShrinkRequest struct {
-	// Content of the ticket reply
+	// The content of the reply to the ticket.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Why ECS backup failed?
+	// OK, the renewal was successful on my end.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Encryption status
+	// Specifies whether to encrypt the content.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type ReplyTicketShrinkRequest struct {
 	//
 	// false
 	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	// The list of attachment names, GetAttachmentUploadUrl the ObjectKey field returned by the interface.
+	// A list of attachment names. This is the ObjectKey field returned by the GetAttachmentUploadUrl operation.
 	FileNameListShrink *string `json:"FileNameList,omitempty" xml:"FileNameList,omitempty"`
-	// The ID of the ticket.
+	// The ticket ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ReplyTicketShrinkRequest struct {
 	//
 	// 0005PYGCW
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	// Alibaba Cloud UID
+	// The Alibaba Cloud account ID (UID).
 	//
 	// example:
 	//

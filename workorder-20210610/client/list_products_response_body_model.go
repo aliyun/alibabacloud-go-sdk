@@ -34,7 +34,7 @@ type ListProductsResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// Invalid input parameter
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the API request. The requestID is unique for each call.
 	//

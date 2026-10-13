@@ -22,26 +22,31 @@ type iEvaluateTicketResponseBody interface {
 }
 
 type EvaluateTicketResponseBody struct {
+  // The details of the permission error. An empty string is returned if you have the required permissions.
+  // 
+  // example:
+  // 
+  // {\\"AuthAction\\":\\"ram:EvaluateTicket\\",\\"AuthPrincipalDisplayName\\":\\"2146216584788xxxxx\\",\\"AuthPrincipalOwnerId\\":\\"1135850448xxxxx\\",\\"AuthPrincipalType\\":\\"SubUser\\",\\"NoPermissionType\\":\\"ImplicitDeny\\",\\"PolicyType\\":\\"AccountLevelIdentityBasedPolicy\\"}
   AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-  // The response code.
+  // The status code.
   // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The error message. If success is set to false, the message is returned.
+  // The error message. This parameter is returned only when the \\`Success\\` parameter is \\`false\\`.
   // 
   // example:
   // 
   // successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 
   // C1DA4C6F-963E-5741-AB57-67A554D102FD
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful. Valid values: The value true indicates a success. The value false indicates a failure.
+  // Indicates whether the call was successful. A value of \\`true\\` indicates that the call succeeded. A value of \\`false\\` indicates that the call failed.
   // 
   // example:
   // 

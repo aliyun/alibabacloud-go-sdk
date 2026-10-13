@@ -203,6 +203,28 @@ func (client *Client) EvaluateTicketWithContext(ctx context.Context, request *Ev
 //
 // Queries the Object Storage Service (OSS) URL that is used to upload attachments.
 //
+// Description:
+//
+// > Attachment upload
+//
+// >
+//
+// > - Use a presigned URL to upload the file. For more information, see the OSS documentation.
+//
+// After you obtain the temporary upload URL, you can upload the file as follows:
+//
+// <details>
+//
+// <summary>
+//
+// # Sample
+//
+// </summary>
+//
+// curl -X PUT -H "Content-Type:application/octet-stream" -H "x-oss-meta-author:aliy" -T /home/admin/file.png "https\\://xx.oss-cn-zhangjiakou.aliyuncs.com/xx/xx.png"
+//
+// </details>
+//
 // @param request - GetAttachmentUploadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -245,7 +267,7 @@ func (client *Client) GetAttachmentUploadUrlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Query tickets.
+// Queries a ticket.
 //
 // @param request - GetTicketRequest
 //
@@ -395,7 +417,7 @@ func (client *Client) ListProductsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Obtains the ticket communication records.
+// Retrieves the communication records for a ticket.
 //
 // @param request - ListTicketNotesRequest
 //
@@ -443,7 +465,7 @@ func (client *Client) ListTicketNotesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// You can call this operation to obtain the list of my tickets.
+// Retrieves a list of your tickets.
 //
 // @param tmpReq - ListTicketsRequest
 //
@@ -527,7 +549,7 @@ func (client *Client) ListTicketsWithContext(ctx context.Context, tmpReq *ListTi
 
 // Summary:
 //
-// # Reopens a ticket
+// Reopens a ticket.
 //
 // @param request - ReopenTicketRequest
 //
@@ -579,7 +601,7 @@ func (client *Client) ReopenTicketWithContext(ctx context.Context, request *Reop
 
 // Summary:
 //
-// Reply to the ticket. You can call the ListTicketNotes operation to obtain the content of the reply.
+// Replies to a ticket. You can call the ListTicketNotes operation to retrieve the reply.
 //
 // @param tmpReq - ReplyTicketRequest
 //

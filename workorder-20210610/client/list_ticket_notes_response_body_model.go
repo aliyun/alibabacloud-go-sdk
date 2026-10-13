@@ -24,28 +24,33 @@ type iListTicketNotesResponseBody interface {
 }
 
 type ListTicketNotesResponseBody struct {
+	// The details of the permission error. An empty string is returned if you have the required permissions.
+	//
+	// example:
+	//
+	// {\\"AuthAction\\":\\"ram:ListTicketNotes\\",\\"AuthPrincipalDisplayName\\":\\"2146216584788xxxxx\\",\\"AuthPrincipalOwnerId\\":\\"1135850448xxxxx\\",\\"AuthPrincipalType\\":\\"SubUser\\",\\"NoPermissionType\\":\\"ImplicitDeny\\",\\"PolicyType\\":\\"AccountLevelIdentityBasedPolicy\\"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The return code of the request result.
+	// The return code for the API request.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return value, that is, the dialog record list data of the specified ticket
+	// The return value, which is a list of communication records for the specified ticket.
 	Data []*ListTicketNotesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error message. If success is set to false, the message is returned.
+	// The error message. This parameter is returned when \\`Success\\` is \\`false\\`.
 	//
 	// example:
 	//
-	// success
+	// Invalid input parameter
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the API request. The requestID is unique for each call.
+	// The unique ID of the request. Each request has a unique ID.
 	//
 	// example:
 	//
 	// AC0AB2EC-AFBC-44BA-AE77-132A5A1EC0AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is normal.
+	// Indicates whether the call was successful. A value of \\`true\\` indicates a successful call.
 	//
 	// example:
 	//
@@ -129,41 +134,41 @@ func (s *ListTicketNotesResponseBody) Validate() error {
 }
 
 type ListTicketNotesResponseBodyData struct {
-	// Attachment List
+	// The list of attachments.
 	Attachments []*ListTicketNotesResponseBodyDataAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
-	// The timestamp when the communication message was created.
+	// The UNIX timestamp when the communication message was created.
 	//
 	// example:
 	//
 	// 1623396736000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Work order communication record object
+	// The ticket communication record object.
 	Dialog *ListTicketNotesResponseBodyDataDialog `json:"Dialog,omitempty" xml:"Dialog,omitempty" type:"Struct"`
-	// The unique ID of the conversation record.
+	// The unique ID of the communication record.
 	//
 	// example:
 	//
 	// 9999
 	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
-	// Communication message status field, reference value Unread=1, Read=2
+	// The status of the communication message. Valid values: \\`1\\`: Unread. \\`2\\`: Read.
 	//
 	// example:
 	//
 	// 6
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Fields Not Used
+	// This parameter is not in use.
 	//
 	// example:
 	//
 	// null
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
-	// Conversation Type 1 card, that is, schema 2 Text, that is, content
+	// The type of communication. Valid values: \\`1\\`: Card, which corresponds to \\`Schema\\`. \\`2\\`: Text, which corresponds to \\`Content\\`.
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Conversation of users
+	// The user in the communication.
 	User *ListTicketNotesResponseBodyDataUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -271,13 +276,13 @@ func (s *ListTicketNotesResponseBodyData) Validate() error {
 }
 
 type ListTicketNotesResponseBodyDataAttachments struct {
-	// Attachment Name
+	// The name of the attachment.
 	//
 	// example:
 	//
 	// 003.jpg
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Temporary Accessible Attachment Address
+	// A temporary URL to access the attachment.
 	//
 	// example:
 	//
@@ -316,13 +321,13 @@ func (s *ListTicketNotesResponseBodyDataAttachments) Validate() error {
 }
 
 type ListTicketNotesResponseBodyDataDialog struct {
-	// Work order communication content
+	// The content of the ticket communication.
 	//
 	// example:
 	//
-	// ECS backup failed
+	// Hello, my ECS renewal failed. What is the reason?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ticket communication record system card will be used when the system card docking capability is opened in the future. At present, the content can be used to obtain plain text content.
+	// The system card for the ticket communication record. This parameter is reserved for future use. Currently, you can use the \\`Content\\` parameter to retrieve the plain text.
 	//
 	// example:
 	//
@@ -361,19 +366,17 @@ func (s *ListTicketNotesResponseBodyDataDialog) Validate() error {
 }
 
 type ListTicketNotesResponseBodyDataUser struct {
-	// Dialog User Name
+	// The name of the user.
 	//
 	// example:
 	//
-	// agent
+	// John
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Dialogue user role, distinguish between agent and user.
-	//
-	// 2 represents agent, 3 represents user.
+	// The role of the user in the communication. This parameter distinguishes between customer service agents and customers. Valid values: \\`2\\`: Customer service agent. \\`3\\`: Customer.
 	//
 	// example:
 	//
-	// 2
+	// 3
 	Role *int32 `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 

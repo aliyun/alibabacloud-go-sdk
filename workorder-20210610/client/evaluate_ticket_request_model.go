@@ -22,13 +22,13 @@ type iEvaluateTicketRequest interface {
 }
 
 type EvaluateTicketRequest struct {
-  // Comment
+  // The content of the evaluation.
   // 
   // example:
   // 
-  // The engineer solved my issue.
+  // Very satisfactory support experience
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-  // Rating star 1-5 stars
+  // The rating, from 1 to 5 stars.
   // 
   // This parameter is required.
   // 
@@ -36,7 +36,7 @@ type EvaluateTicketRequest struct {
   // 
   // 1
   Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-  // Whether to resolve
+  // Indicates whether the issue was resolved.
   // 
   // This parameter is required.
   // 
@@ -44,7 +44,7 @@ type EvaluateTicketRequest struct {
   // 
   // true
   Solved *bool `json:"Solved,omitempty" xml:"Solved,omitempty"`
-  // The ID of the ticket.
+  // The ticket ID.
   // 
   // This parameter is required.
   // 
@@ -52,7 +52,7 @@ type EvaluateTicketRequest struct {
   // 
   // 001ET1BU1P
   TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-  // UID
+  // The UID.
   // 
   // example:
   // 

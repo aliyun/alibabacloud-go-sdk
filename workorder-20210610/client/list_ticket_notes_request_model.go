@@ -16,7 +16,7 @@ type iListTicketNotesRequest interface {
 }
 
 type ListTicketNotesRequest struct {
-	// Work Order Number
+	// The ticket ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListTicketNotesRequest struct {
 	//
 	// 0005PYGCW
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	// UID
+	// The UID.
 	//
 	// example:
 	//

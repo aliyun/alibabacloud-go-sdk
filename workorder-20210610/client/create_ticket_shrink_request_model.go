@@ -28,45 +28,39 @@ type iCreateTicketShrinkRequest interface {
 }
 
 type CreateTicketShrinkRequest struct {
-	// The ID of the problem category. You can obtain the returned value from the ListCategories operation by using the CategoryId parameter.
+	// The ID of the issue category. Obtain this ID from the ListCategories operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 7161
+	// 53812
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// Submit the Alibaba Cloud UID of the account, which is required for the MPK virtual market scene.
+	// The Alibaba Cloud UID of the account that submits the ticket. This parameter is required for Marketplace reseller scenarios.
 	//
 	// example:
 	//
 	// 1289427240739141
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The description of the ticket. Only pure text format is supported.
+	// The description of the issue in the ticket. Only plain text is supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Why ECS backup failed?
+	// ECS backup failed
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// sdahkjdshga@qq.com
+	// The contact email address for the ticket.
 	//
 	// example:
 	//
-	// 163@163.com
+	// sdahkjdshga@qq.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The list of attachment names, GetAttachmentUploadUrl the ObjectKey field returned by the interface.
+	// A list of attachment names. Use the ObjectKey value returned by the GetAttachmentUploadUrl operation.
 	FileNameListShrink *string `json:"FileNameList,omitempty" xml:"FileNameList,omitempty"`
-	// Sensitive information
+	// Sensitive information.
 	SecretInfoShrink *string `json:"SecretInfo,omitempty" xml:"SecretInfo,omitempty"`
-	// Enumeration value, 1 for general problem, 2 for urgent problem
-	//
-	// Enumeration values:
-	//
-	// 	- 1: regular.
-	//
-	// 	- 2: emergency.
+	// An enumeration value. A value of 1 indicates a normal issue. A value of 2 indicates an urgent issue.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +72,7 @@ type CreateTicketShrinkRequest struct {
 	//
 	// example:
 	//
-	// Why ECS backup failed?
+	// ECS backup failed
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

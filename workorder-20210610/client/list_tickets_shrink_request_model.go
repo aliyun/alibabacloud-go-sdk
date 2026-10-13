@@ -30,19 +30,19 @@ type iListTicketsShrinkRequest interface {
 }
 
 type ListTicketsShrinkRequest struct {
-	// The deadline for ticket creation. This parameter is used in conjunction with StartDate to query tickets submitted within the specified start and end time ranges.
+	// The end time when the ticket was created. Use this parameter with StartDate to query tickets created within a specific time range.
 	//
 	// example:
 	//
 	// 1623396736000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The ticket keyword, which is used for fuzzy search to match the content of the Description field when a ticket is created.
+	// The keyword for a fuzzy search. The keyword is used to match the content of the Description field of the ticket.
 	//
 	// example:
 	//
 	// ecs
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Paging query page number parameters
+	// The page number for a paged query.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ListTicketsShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries queried by page parameter
+	// The number of entries to return on each page.
 	//
 	// This parameter is required.
 	//
@@ -58,27 +58,27 @@ type ListTicketsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The time when the ticket was created. This parameter is used with EndDate to query tickets that are created within the specified start and end time ranges.
+	// The start time when the ticket was created. Use this parameter with EndDate to query tickets created within a specific time range.
 	//
 	// example:
 	//
 	// 1623396736000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// Multiple ticket statuses
+	// A list of ticket statuses.
 	//
 	// example:
 	//
 	// 6
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// Work Order Number
+	// The ticket ID.
 	//
 	// example:
 	//
 	// 0005PYGCW
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	// Multiple job numbers
+	// A list of ticket IDs.
 	TicketIdListShrink *string `json:"TicketIdList,omitempty" xml:"TicketIdList,omitempty"`
-	// UID
+	// The UID.
 	//
 	// example:
 	//

@@ -24,32 +24,37 @@ type iCreateTicketResponseBody interface {
 }
 
 type CreateTicketResponseBody struct {
+	// The details of the permission error. An empty string is returned if the permissions are sufficient.
+	//
+	// example:
+	//
+	// {\\"AuthAction\\":\\"ram:CreateTicket\\",\\"AuthPrincipalDisplayName\\":\\"2146216584788xxxxx\\",\\"AuthPrincipalOwnerId\\":\\"1135850448xxxxx\\",\\"AuthPrincipalType\\":\\"SubUser\\",\\"NoPermissionType\\":\\"ImplicitDeny\\",\\"PolicyType\\":\\"AccountLevelIdentityBasedPolicy\\"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The return code of the request result.
+	// The return code of the API request.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value is the work order number.
+	// The return value, which is the ticket ID.
 	//
 	// example:
 	//
 	// 0005PYGCW
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message. If success is set to false, the message is returned.
+	// The error message. This parameter is returned when the value of Success is false.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the API request. The requestID is unique for each call.
+	// The unique ID of the request. Each request has a unique ID.
 	//
 	// example:
 	//
 	// 0254B7DE-7365-57B4-8E38-14FE927E3FEB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is normal.
+	// Indicates whether the API call was successful. A value of true indicates that the call was successful.
 	//
 	// example:
 	//

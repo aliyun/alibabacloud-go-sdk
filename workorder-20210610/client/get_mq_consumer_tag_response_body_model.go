@@ -24,12 +24,42 @@ type iGetMqConsumerTagResponseBody interface {
 }
 
 type GetMqConsumerTagResponseBody struct {
+	// The details of the permission error. An empty string is returned if you have the required permissions.
+	//
+	// example:
+	//
+	// {\\"AuthAction\\":\\"ram:GetMqConsumerTag\\",\\"AuthPrincipalDisplayName\\":\\"2146216584788xxxxx\\",\\"AuthPrincipalOwnerId\\":\\"1135850448xxxxx\\",\\"AuthPrincipalType\\":\\"SubUser\\",\\"NoPermissionType\\":\\"ImplicitDeny\\",\\"PolicyType\\":\\"AccountLevelIdentityBasedPolicy\\"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The return code of the API request.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return value. This is the unique tag for your Message Queue (MQ) consumer.
+	//
+	// example:
+	//
+	// 46434030
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message. This parameter is returned when \\`success\\` is \\`false\\`.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// CA6204AC-6AA9-4CFA-9310-7DFD20C19EBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMqConsumerTagResponseBody) String() string {

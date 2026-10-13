@@ -22,26 +22,31 @@ type iCloseTicketResponseBody interface {
 }
 
 type CloseTicketResponseBody struct {
+	// Details about the permission error. An empty string is returned if you have the required permissions.
+	//
+	// example:
+	//
+	// {\\"AuthAction\\":\\"ram:CloseTicket\\",\\"AuthPrincipalDisplayName\\":\\"2146216584788xxxxx\\",\\"AuthPrincipalOwnerId\\":\\"1135850448xxxxx\\",\\"AuthPrincipalType\\":\\"SubUser\\",\\"NoPermissionType\\":\\"ImplicitDeny\\",\\"PolicyType\\":\\"AccountLevelIdentityBasedPolicy\\"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The return code of the request result.
+	// The return code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. If success is set to false, the message is returned.
+	// The error message. The message is returned if \\`Success\\` is \\`false\\`.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// CA6204AC-6AA9-4CFA-9310-7DFD20C19EBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is normal.
+	// Indicates whether the call was successful. A value of \\`true\\` indicates a successful call.
 	//
 	// example:
 	//

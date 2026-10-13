@@ -20,7 +20,7 @@ type ListProductsRequest struct {
 	//
 	// example:
 	//
-	// cn
+	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The name of the product. Fuzzy search is supported. This parameter is optional.
 	//

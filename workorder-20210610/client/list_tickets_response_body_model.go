@@ -30,46 +30,51 @@ type iListTicketsResponseBody interface {
 }
 
 type ListTicketsResponseBody struct {
+	// The details of the permission error. If you have the required permissions, an empty string is returned.
+	//
+	// example:
+	//
+	// {\\"AuthAction\\":\\"ram:ListTickets\\",\\"AuthPrincipalDisplayName\\":\\"2146216584788xxxxx\\",\\"AuthPrincipalOwnerId\\":\\"1135850448xxxxx\\",\\"AuthPrincipalType\\":\\"SubUser\\",\\"NoPermissionType\\":\\"ImplicitDeny\\",\\"PolicyType\\":\\"AccountLevelIdentityBasedPolicy\\"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The return code of the request result.
+	// The return code of the request.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value is my ticket list data.
+	// The list of your tickets.
 	Data []*ListTicketsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error message. If success is set to false, the message is returned.
+	// The error message. This parameter is returned only when the value of success is false.
 	//
 	// example:
 	//
-	// success
+	// 入参解析失败
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Page number of the paging query parameter
+	// The page number of the paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a pagination query parameter.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the API request. The requestID is unique for each call.
+	// The unique ID of the request. A unique ID is returned for each request.
 	//
 	// example:
 	//
 	// AC0AB2EC-AFBC-44BA-AE77-132A5A1EC0AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is normal.
+	// Indicates whether the call was successful. A value of true indicates that the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of query results, that is, the total number of my ticket records.
+	// The total number of query results, which is the total number of your tickets.
 	//
 	// example:
 	//
@@ -180,19 +185,19 @@ func (s *ListTicketsResponseBody) Validate() error {
 }
 
 type ListTicketsResponseBodyData struct {
-	// The status of the ticket. The reference values are as follows 1, "assigned", "Pending Response", 2, "handling", "handling", 3, "wait_feedback", "Pending feedback", 4: "feedback", "Feedback", 5, "wait_confirm", "To be confirmed", 6, "confirmed", "Completed"
+	// The ticket status. Valid values: assigned (Pending response), dealing (In progress), wait_feedback (Waiting for feedback), feedback (Feedback received), wait_confirm (Pending confirmation), and confirmed (Completed).
 	Status *ListTicketsResponseBodyDataStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
-	// Work Order Number
+	// The ticket ID.
 	//
 	// example:
 	//
 	// 0005PYGCW
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	// The title of the ticket.
+	// The ticket title.
 	//
 	// example:
 	//
-	// Why ECS backup failed?
+	// Why did ECS renewal fail?
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -241,13 +246,13 @@ func (s *ListTicketsResponseBodyData) Validate() error {
 }
 
 type ListTicketsResponseBodyDataStatus struct {
-	// Status description, if completed
+	// The description of the status. Example: Completed.
 	//
 	// example:
 	//
 	// Completed
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// A status value, such as 6, represents completed
+	// The value of the status. For example, a value of 6 indicates that the ticket is completed.
 	//
 	// example:
 	//
