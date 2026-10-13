@@ -72,11 +72,11 @@ type CreateAccessPointRequest struct {
 	//
 	// Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false (default): not enabled.
+	// - false (default): Not enabled.
 	//
-	// > After you enable the access point RAM policy, all Resource Access Management (RAM) users are denied access to mount and access data through the access point by default. You must grant the corresponding access permissions through authorization and mount the file system through the access point. After you disable the RAM policy, the access point allows anonymous mounting. For more information about how to configure access point permissions, see [Configure an access point policy](https://help.aliyun.com/document_detail/2545998.html).
+	// > After you enable the RAM policy for the access point, all Resource Access Management (RAM) users are denied access to mount and access data through the access point by default. You must grant authorization for the corresponding access permissions to the accounts and mount the file system through the access point. After you disable the RAM policy, the access point allows anonymous mounting. For more information about how to configure access point permissions, see [Configure an access point policy](https://help.aliyun.com/document_detail/2545998.html).
 	//
 	// >For Agentic file systems, this parameter must be set to true.
 	//
@@ -112,7 +112,7 @@ type CreateAccessPointRequest struct {
 	//
 	// 1
 	OwnerUserId *int32 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The POSIX permission. Default value: "0755". Limit: The value must be a four-digit octal number that starts with 0.
+	// The POSIX permission. Default value: "0755". The value must be a four-digit octal number that starts with 0.
 	//
 	// This parameter takes effect after you specify the OwnerUserId and OwnerGroupId parameters.
 	//
@@ -156,7 +156,7 @@ type CreateAccessPointRequest struct {
 	//
 	// /
 	RootDirectory *string `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty"`
-	// The list of access point tags.
+	// The access point tags.
 	Tag []*CreateAccessPointRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The virtual private cloud (VPC) ID.
 	//

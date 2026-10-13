@@ -64,7 +64,7 @@ type ListLifecycleRetrieveJobsRequest struct {
 	//
 	// - InfrequentAccess: IA storage class.
 	//
-	// - Archive: Archive storage.
+	// - Archive: Archive storage class.
 	//
 	// > If StorageType is not specified, data retrieval tasks of all storage classes are returned.
 	//

@@ -16,7 +16,7 @@ type iDeleteAutoSnapshotPolicyResponseBody interface {
 type DeleteAutoSnapshotPolicyResponseBody struct {
 	// The request ID.
 	//
-	// Every response returns a unique request ID regardless of whether the request is successful.
+	// The request ID is returned regardless of whether the call is successful.
 	//
 	// example:
 	//

@@ -19,13 +19,13 @@ type iDescribeDataFlowSubTasksResponseBody interface {
 
 type DescribeDataFlowSubTasksResponseBody struct {
 	DataFlowSubTask *DescribeDataFlowSubTasksResponseBodyDataFlowSubTask `json:"DataFlowSubTask,omitempty" xml:"DataFlowSubTask,omitempty" type:"Struct"`
-	// If the response is truncated, you can use NextToken to send a subsequent request to retrieve the remaining content from the point of truncation.
+	// The token that is used to retrieve the next page of results when the returned results are truncated. You can use NextToken to initiate another request to retrieve the results after the current truncation point.
 	//
 	// example:
 	//
 	// pUJaUwAAAABhdGUyNTk1MQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

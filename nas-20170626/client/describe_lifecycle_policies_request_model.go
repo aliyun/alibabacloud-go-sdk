@@ -50,12 +50,12 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// lc-xxx
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The lifecycle policy name. Naming rules:
+	// The lifecycle policy name. The naming rules are as follows:
 	//
 	//
-	// The name must be 3 to 64 characters in length, must start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	// The name must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
 	//
-	// >Optional for General-purpose NAS file systems. If specified, this parameter takes precedence. If not specified, LifecyclePolicyId is used instead.
+	// >This parameter is optional for General-purpose NAS file systems. If specified, this parameter takes precedence. If not specified, LifecyclePolicyId is used instead.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// /abc/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The storage type. Valid values:
+	// The storage tiering type. Valid values:
 	//
 	// - InfrequentAccess: IA storage class.
 	//

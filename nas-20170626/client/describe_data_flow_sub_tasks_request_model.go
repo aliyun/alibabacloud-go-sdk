@@ -20,7 +20,7 @@ type iDescribeDataFlowSubTasksRequest interface {
 }
 
 type DescribeDataFlowSubTasksRequest struct {
-	// The file system ID.
+	// The ID of the file system. Only CPFS for Lingjun file systems are supported. The ID must start with `bmcpfs-`.
 	//
 	// This parameter is required.
 	//
@@ -28,22 +28,22 @@ type DescribeDataFlowSubTasksRequest struct {
 	//
 	// bmcpfs-370lx1ev9ss27o0****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The filter keys for querying data flow streaming tasks.
+	// The filter keys used to query streaming tasks of a data flow.
 	//
 	// if can be null:
 	// false
 	Filters []*DescribeDataFlowSubTasksRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The maximum number of results per query.
+	// The maximum number of entries to return for a single request.
 	//
-	// - Valid values: 20 to 100.
+	// Valid values: 20 to 100.
 	//
-	// - Default value: 20.
+	// Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// If the response is truncated, you can use NextToken to send a subsequent request to retrieve the remaining content from the point of truncation.
+	// The token that is used to retrieve the next page of results when the returned results are truncated. You can use NextToken to initiate another request to retrieve the results after the current truncation point.
 	//
 	// example:
 	//
@@ -129,19 +129,19 @@ type DescribeDataFlowSubTasksRequestFilters struct {
 	//
 	// DataFlowSubTaskIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter key. Wildcards are not supported.
+	// The value of the filter key. This parameter does not support wildcards.
 	//
-	// - If Key is set to DataFlowIds, Value is set to a data flow ID or part of a data flow ID. You can specify one or more data flow IDs. A maximum of 10 data flow IDs can be specified. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
+	// - If Key is set to DataFlowIds, Value is set to a data flow ID or a part of a data flow ID. You can specify one or more data flow IDs. A maximum of 10 data flow IDs can be specified. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
 	//
-	// - If Key is set to DataFlowTaskIds, Value is set to a data flow task ID or part of a data flow task ID. You can specify one or more data flow task IDs. A maximum of 10 data flow task IDs can be specified. Example: `task-29ee8e890f45****` or `task-29ee8e890f45****,task-38ae8e890f45****`.
+	// - If Key is set to DataFlowTaskIds, Value is set to a data flow task ID or a part of a data flow task ID. You can specify one or more data flow task IDs. A maximum of 10 data flow task IDs can be specified. Example: `task-29ee8e890f45****` or `task-29ee8e890f45****,task-38ae8e890f45****`.
 	//
-	// - If Key is set to DataFlowSubTaskIds, Value is set to a data flow streaming task ID or part of a data flow streaming task ID. You can specify one or more data flow streaming task IDs. A maximum of 10 data flow streaming task IDs can be specified. Example: `subTaskId-370kyfmyknxcyzw****` or `subTaskId-247kyfmyknxcyzw****,subTaskId-256kyfmyknxcyzw****`.
+	// - If Key is set to DataFlowSubTaskIds, Value is set to a data flow streaming task ID or a part of a data flow streaming task ID. You can specify one or more data flow streaming task IDs. A maximum of 10 data flow streaming task IDs can be specified. Example: `subTaskId-370kyfmyknxcyzw****` or `subTaskId-247kyfmyknxcyzw****,subTaskId-256kyfmyknxcyzw****`.
 	//
-	// - If Key is set to Status, Value is set to the status of the data flow task, including EXPIRED, CREATED, RUNNING, COMPLETE, CANCELING, FAILED, and CANCELED. Combined queries are supported.
+	// - If Key is set to Status, Value is set to the status of the data flow task. Valid values: EXPIRED, CREATED, RUNNING, COMPLETE, CANCELING, FAILED, and CANCELED. Combined queries are supported.
 	//
-	// - If Key is set to SrcFilePath, Value is set to the source file path. The maximum length is 1,023 characters.
+	// - If Key is set to SrcFilePath, Value is set to the source file path. The path can be up to 1,023 characters in length.
 	//
-	// - If Key is set to DstFilePath, Value is set to the destination file path. The maximum length is 1,023 characters.
+	// - If Key is set to DstFilePath, Value is set to the destination file path. The path can be up to 1,023 characters in length.
 	//
 	// example:
 	//

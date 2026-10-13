@@ -82,7 +82,7 @@ type GetRecycleBinAttributeResponseBodyRecycleBinAttribute struct {
 	//
 	// 0
 	ReservedDays *int64 `json:"ReservedDays,omitempty" xml:"ReservedDays,omitempty"`
-	// The storage usage of Infrequent Access (IA) data in the recycle bin. Unit: bytes.
+	// The storage usage of IA storage class data in the recycle bin. Unit: bytes.
 	//
 	// example:
 	//

@@ -20,21 +20,23 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the file system.
+	// Specifies whether to unbind all tags from the file system.
 	//
-	// This parameter is valid only if the TagKey.N parameter is not specified.
+	// This parameter takes effect only when TagKey.N is empty.
 	//
 	// Valid values:
 	//
-	// 	- true: All tags are removed from the file system. If the file system does not have tags, a success message is returned.
+	// - true: Unbinds all tags from the file system. If the file system has no tags, no operation is performed and a success response is returned.
 	//
-	// 	- false (default): No tags are removed from the file system and a success message is returned.
+	// - false (default): Does not perform the operation and directly returns a success response.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The resource IDs. Valid values of N: 1 to 50.
+	// The list of resource IDs.
+	//
+	// The ID of the resource. Valid values of N: 1 to 50.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,11 @@ type UntagResourcesRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type.
 	//
-	// Set the value to filesystem.
+	// Valid values:
+	//
+	// - filesystem: file system.
+	//
+	// - accesspoint: access point.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +58,7 @@ type UntagResourcesRequest struct {
 	//
 	// filesystem
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys of the resources. Valid values of N: 1 to 20.
+	// The list of tag keys of the resource. You can specify up to 20 tag keys.
 	//
 	// example:
 	//

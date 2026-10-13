@@ -9,6 +9,8 @@ type iModifyLifecyclePolicyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDescription(v string) *ModifyLifecyclePolicyRequest
+	GetDescription() *string
 	SetFileSystemId(v string) *ModifyLifecyclePolicyRequest
 	GetFileSystemId() *string
 	SetLifecyclePolicyId(v string) *ModifyLifecyclePolicyRequest
@@ -24,7 +26,13 @@ type iModifyLifecyclePolicyRequest interface {
 }
 
 type ModifyLifecyclePolicyRequest struct {
-	// The file system ID.
+	// The description.
+	//
+	// example:
+	//
+	// describe
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the file system.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +46,9 @@ type ModifyLifecyclePolicyRequest struct {
 	//
 	// lc-xxx
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The Policy Name of the lifecycle management policy.
+	// The lifecycle management Policy Name.
 	//
-	// The name must be 3 to 64 characters in length, must start with an uppercase letter or lowercase letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	// The name must be 3 to 64 characters in length. It must start with an uppercase letter or a lowercase letter, and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -50,31 +58,33 @@ type ModifyLifecyclePolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// - DEFAULT_ATIME_14: files that have not been accessed for 14 days.
+	// - DEFAULT_ATIME_14: Files that have not been accessed for 14 days.
 	//
-	// - DEFAULT_ATIME_30: files that have not been accessed for 30 days.
+	// - DEFAULT_ATIME_30: Files that have not been accessed for 30 days.
 	//
-	// - DEFAULT_ATIME_60: files that have not been accessed for 60 days.
+	// - DEFAULT_ATIME_60: Files that have not been accessed for 60 days.
 	//
-	// - DEFAULT_ATIME_90: files that have not been accessed for 90 days.
+	// - DEFAULT_ATIME_90: Files that have not been accessed for 90 days.
 	//
-	// - DEFAULT_ATIME_180: files that have not been accessed for 180 days. DEFAULT_ATIME_180 is supported only when StorageType is set to Archive.
+	// - DEFAULT_ATIME_180: Files that have not been accessed for 180 days. DEFAULT_ATIME_180 is supported only when StorageType is set to Archive.
 	//
-	// > If an IA storage class policy has already been configured for the directory, the time period specified for the archive policy must be longer than that of the IA storage class policy.
+	// > If an IA storage class policy is already configured for the directory, the time threshold for the Archive storage class policy must be longer than that of the IA storage class policy.
 	//
 	// example:
 	//
 	// DEFAULT_ATIME_14
 	LifecycleRuleName *string `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
-	// The absolute path of a single directory configured in the lifecycle management policy.
+	// The absolute path of a single directory configured for the lifecycle management policy.
 	//
-	// The path must start with a forward slash (/) and must be an existing path in the mount target.
+	// The path must start with a forward slash (/) and must be a valid path in the mount target.
 	//
 	// example:
 	//
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The storage type.
+	// The tiered storage class.
+	//
+	// Valid values:
 	//
 	// - InfrequentAccess: IA storage class.
 	//
@@ -92,6 +102,10 @@ func (s ModifyLifecyclePolicyRequest) String() string {
 
 func (s ModifyLifecyclePolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyLifecyclePolicyRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ModifyLifecyclePolicyRequest) GetFileSystemId() *string {
@@ -116,6 +130,11 @@ func (s *ModifyLifecyclePolicyRequest) GetPath() *string {
 
 func (s *ModifyLifecyclePolicyRequest) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *ModifyLifecyclePolicyRequest) SetDescription(v string) *ModifyLifecyclePolicyRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *ModifyLifecyclePolicyRequest) SetFileSystemId(v string) *ModifyLifecyclePolicyRequest {

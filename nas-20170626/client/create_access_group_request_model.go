@@ -20,7 +20,7 @@ type iCreateAccessGroupRequest interface {
 }
 
 type CreateAccessGroupRequest struct {
-	// The name of the permission group.
+	// The permission group name.
 	//
 	// Limits:
 	//
@@ -38,7 +38,7 @@ type CreateAccessGroupRequest struct {
 	//
 	// vpc-test
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	// The type of the permission group. Set the value to **Vpc**, which indicates VPC.
+	// The type of the permission group. Set the value to **Vpc**, which indicates a virtual private cloud (VPC).
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateAccessGroupRequest struct {
 	//
 	// vpctestaccessgroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the file system.
+	// The file system type.
 	//
 	// Valid values:
 	//

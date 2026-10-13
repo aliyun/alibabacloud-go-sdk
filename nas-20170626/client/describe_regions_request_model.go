@@ -28,7 +28,7 @@ type DescribeRegionsRequest struct {
 	//
 	// - extreme: Extreme NAS.
 	//
-	// - cpfs: CPFS.
+	// - cpfs: Cloud Parallel File Storage (CPFS).
 	//
 	// example:
 	//

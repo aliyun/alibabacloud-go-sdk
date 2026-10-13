@@ -26,29 +26,29 @@ type iDescribeProtocolServiceRequest interface {
 }
 
 type DescribeProtocolServiceRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+	// Ensures the idempotency of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// >If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description or a part of the description of the protocol service.
+	// The description of the protocol service or a part of the description used for matching.
 	//
 	// Limits:
 	//
-	// 	- The description must be 2 to 128 characters in length.
+	// - The description must be 2 to 128 characters in length.
 	//
-	// 	- The description must start with a letter and cannot start with `http://` or `https://`.
+	// - The description must start with a letter and cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
-	// 此协议服务的描述
+	// Description of this protocol service
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -56,53 +56,53 @@ type DescribeProtocolServiceRequest struct {
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The number of results for each query.
+	// The maximum number of results to return for each request.
 	//
-	// 	- Maximum value: 100.
+	// - Maximum value: 100.
 	//
-	// 	- Minimum value: 10.
+	// - Minimum value: 10.
 	//
-	// 	- Default value: 20.
+	// - Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token used to initiate the next request if the response of the current request is truncated. You can use this token to retrieve the remaining results.
 	//
 	// example:
 	//
 	// aBcdg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the protocol service.
+	// The protocol service IDs.
 	//
-	// 	- Format: CSV.
+	// - Format: CSV
 	//
-	// 	- Limit: You can specify a maximum of 10 protocol service IDs.
+	// - Limit: You can specify up to 10 protocol service IDs.
 	//
 	// example:
 	//
 	// ptc-197ed6a00f2b****,ptc-196ed6a00f2b****
 	ProtocolServiceIds *string `json:"ProtocolServiceIds,omitempty" xml:"ProtocolServiceIds,omitempty"`
-	// The status of the protocol service.
+	// The status of the protocol service used for matching.
 	//
-	// Format: CSV.
+	// Format: CSV
 	//
 	// Valid values:
 	//
-	// 	- Creating: The protocol service is being created.
+	// - Creating: The protocol service is being created.
 	//
-	// 	- Starting: The protocol service is being started.
+	// - Starting: The protocol service is being started.
 	//
-	// 	- Running: The protocol service is running.
+	// - Running: The protocol service is available.
 	//
-	// 	- Updating: The protocol service is being updated.
+	// - Updating: The protocol service is being updated.
 	//
-	// 	- Deleting: The protocol service is being deleted.
+	// - Deleting: The protocol service is being deleted.
 	//
-	// 	- Stopping: The protocol service is being stopped.
+	// - Stopping: The protocol service is being stopped.
 	//
-	// 	- Stopped: The protocol service is stopped.
+	// - Stopped: The protocol service is stopped.
 	//
 	// example:
 	//

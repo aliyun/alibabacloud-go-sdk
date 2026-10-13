@@ -38,23 +38,23 @@ type iCreateDataFlowRequest interface {
 }
 
 type CreateDataFlowRequest struct {
-	// The auto-refresh interval. CPFS General-purpose checks the directory for data updates at this interval. If data updates exist, an auto-refresh task is started. Unit: minutes.
+	// The auto-refresh interval. General-purpose CPFS checks the directory for data updates at this interval. If data updates exist, an auto-refresh task is started. Unit: minutes.
 	//
 	// Valid values: 10 to 525600. Default value: 10.
 	//
-	// > This parameter takes effect only when the file system type is CPFS General-purpose.
+	// > This parameter takes effect only when the file system type is General-purpose CPFS.
 	//
 	// example:
 	//
 	// 10
 	AutoRefreshInterval *int64 `json:"AutoRefreshInterval,omitempty" xml:"AutoRefreshInterval,omitempty"`
-	// The auto-refresh policy. Specifies the policy for importing data updates from the source storage to CPFS General-purpose after the source data is updated.
+	// The auto-refresh policy. Specifies the policy for importing data updates from the source storage to General-purpose CPFS after the source data is updated.
 	//
-	// - None (default): Data updates from the source are not automatically imported to CPFS General-purpose. You can import data updates from the source through data flow tasks.
+	// - None (default): Data updates from the source are not automatically imported to General-purpose CPFS. You can use data flow tasks to import data updates from the source.
 	//
-	// - ImportChanged: Data updates from the source are automatically imported to CPFS General-purpose.
+	// - ImportChanged: Data updates from the source are automatically imported to General-purpose CPFS.
 	//
-	// > This parameter takes effect only when the file system type is CPFS General-purpose.
+	// > This parameter takes effect only when the file system type is General-purpose CPFS.
 	//
 	// example:
 	//
@@ -62,12 +62,12 @@ type CreateDataFlowRequest struct {
 	AutoRefreshPolicy *string `json:"AutoRefreshPolicy,omitempty" xml:"AutoRefreshPolicy,omitempty"`
 	// The collection of auto-refresh configurations.
 	//
-	// > This parameter takes effect only when the file system type is CPFS General-purpose.
+	// > This parameter takes effect only when the file system type is General-purpose CPFS.
 	//
 	// if can be null:
 	// false
 	AutoRefreshs []*CreateDataFlowRequestAutoRefreshs `json:"AutoRefreshs,omitempty" xml:"AutoRefreshs,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
 	//
 	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
@@ -93,13 +93,13 @@ type CreateDataFlowRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run for this request.
 	//
-	// A dry run checks parameter validity and resource availability without actually creating the instance or incurring charges.
+	// A dry run checks parameter validity and resource availability without actually creating the instance or incurring fees.
 	//
 	// Valid values:
 	//
-	// - true: Sends a dry run request without creating the instance. The check items include whether required parameters are specified, the request format, business limitations, and NAS inventory. If the check fails, the corresponding error is returned. If the check succeeds, HTTP status code 200 is returned, but the DataFlowId is empty.
+	// - true: performs a dry run without creating the instance. The system checks whether the required parameters are specified, whether the request format is valid, whether service limits are met, and whether the specified NAS resources are available. If the check fails, the corresponding error is returned. If the check succeeds, the HTTP status code 200 is returned, but the DataFlowId is empty.
 	//
-	// - false (default): Sends a normal request. After the check succeeds, the instance is created.
+	// - false (default): performs a dry run and sends the request. If the check succeeds, the instance is created.
 	//
 	// example:
 	//
@@ -107,9 +107,9 @@ type CreateDataFlowRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The file system ID.
 	//
-	// - CPFS General-purpose: Must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
+	// - General-purpose CPFS: must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
 	//
-	// - CPFS for Lingjun: Must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+	// - CPFS for Lingjun: must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
 	//
 	// This parameter is required.
 	//
@@ -135,7 +135,7 @@ type CreateDataFlowRequest struct {
 	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
 	// The Fileset ID.
 	//
-	// > This parameter is required when the file system type is CPFS General-purpose.
+	// > This parameter is required when the file system type is General-purpose CPFS.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type CreateDataFlowRequest struct {
 	//
 	// - storage type: Only oss is supported.
 	//
-	// - account id: Optional. The UID of the account that owns the source storage. This parameter is required when you use cross-account OSS.
+	// - account id: Optional. The UID of the account to which the source storage belongs. This parameter is required when you use cross-account OSS.
 	//
 	// - path: The name of the OSS bucket. Limits:
 	//
@@ -170,7 +170,7 @@ type CreateDataFlowRequest struct {
 	//
 	//     - UTF-8 encoding is used.
 	//
-	// > - The OSS bucket must be an existing bucket in the same region.
+	// > - The OSS bucket must be an existing bucket in the current region.
 	//
 	// > - The account id parameter is supported only by CPFS for Lingjun 2.6.0 or later.
 	//
@@ -206,7 +206,7 @@ type CreateDataFlowRequest struct {
 	//
 	// > The transfer bandwidth of the data flow must be less than the I/O bandwidth of the file system.
 	//
-	// > This parameter is required when the file system type is CPFS General-purpose.
+	// > This parameter is required when the file system type is General-purpose CPFS.
 	//
 	// example:
 	//
@@ -353,9 +353,9 @@ func (s *CreateDataFlowRequest) Validate() error {
 }
 
 type CreateDataFlowRequestAutoRefreshs struct {
-	// The auto-refresh directory. CPFS General-purpose registers data modification events from the source storage and checks whether the source data in this directory has been updated. Updated data is automatically imported.
+	// The auto-refresh directory. General-purpose CPFS registers data modification events from the source storage, checks whether the source data in this directory has been updated, and automatically imports the updated data.
 	//
-	// The default value is empty, which means that data updates in the source storage are not automatically imported to CPFS General-purpose. You must manually create a task to import updates.
+	// The default value is empty, which means that data updates in the source storage are not automatically imported to General-purpose CPFS. You must manually create a task to import updates.
 	//
 	// Limits:
 	//
@@ -365,7 +365,7 @@ type CreateDataFlowRequestAutoRefreshs struct {
 	//
 	// - Must start and end with a forward slash (/).
 	//
-	// - The directory must be an existing directory on the CPFS General-purpose file system and must be located within the Fileset directory of the data flow.
+	// - The directory must be an existing directory on the General-purpose CPFS file system and must be located within the Fileset directory of the data flow.
 	//
 	// if can be null:
 	// true

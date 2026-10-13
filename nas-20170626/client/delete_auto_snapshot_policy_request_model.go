@@ -16,7 +16,7 @@ type iDeleteAutoSnapshotPolicyRequest interface {
 type DeleteAutoSnapshotPolicyRequest struct {
 	// The ID of the automatic snapshot policy.
 	//
-	// You can call the [DescribeAutoSnapshotPolicies](https://help.aliyun.com/document_detail/126583.html) operation to view available automatic snapshot policies.
+	// You can call [DescribeAutoSnapshotPolicies](https://help.aliyun.com/document_detail/126583.html) to query available automatic snapshot policies.
 	//
 	// This parameter is required.
 	//

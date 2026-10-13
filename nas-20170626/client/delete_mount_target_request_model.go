@@ -16,13 +16,13 @@ type iDeleteMountTargetRequest interface {
 }
 
 type DeleteMountTargetRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
-	// 	- Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+	// - General-purpose NAS: 31a8e4\\*\\*\\*\\*.
 	//
-	// 	- The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
+	// - Extreme NAS: must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
 	//
-	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+	// - Cloud Parallel File Storage (CPFS): must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteMountTargetRequest struct {
 	//
 	// 174494****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The domain name of the mount target.
+	// The mount target.
 	//
 	// This parameter is required.
 	//

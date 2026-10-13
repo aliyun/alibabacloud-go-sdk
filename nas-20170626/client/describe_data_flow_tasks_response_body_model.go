@@ -18,7 +18,7 @@ type iDescribeDataFlowTasksResponseBody interface {
 }
 
 type DescribeDataFlowTasksResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the truncation point.
+	// If the returned results are truncated, you can use NextToken to initiate a new request to retrieve the content after the truncation point.
 	//
 	// example:
 	//

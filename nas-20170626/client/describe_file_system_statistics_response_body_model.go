@@ -26,13 +26,13 @@ type iDescribeFileSystemStatisticsResponseBody interface {
 type DescribeFileSystemStatisticsResponseBody struct {
 	FileSystemStatistics *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics `json:"FileSystemStatistics,omitempty" xml:"FileSystemStatistics,omitempty" type:"Struct"`
 	FileSystems          *DescribeFileSystemStatisticsResponseBodyFileSystems          `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the file system statistics information list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of file system statistics information entries per page.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeFileSystemStatisticsResponseBody struct {
 	//
 	// 9F088138-FD73-4B68-95CC-DFAD4D85****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of file system entries.
+	// The total number of file system statistics information entries.
 	//
 	// example:
 	//

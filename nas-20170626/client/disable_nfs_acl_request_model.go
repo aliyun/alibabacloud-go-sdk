@@ -14,7 +14,7 @@ type iDisableNfsAclRequest interface {
 }
 
 type DisableNfsAclRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//

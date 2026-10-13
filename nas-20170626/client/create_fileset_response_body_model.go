@@ -16,13 +16,13 @@ type iCreateFilesetResponseBody interface {
 }
 
 type CreateFilesetResponseBody struct {
-	// The fileset ID.
+	// Fileset ID。
 	//
 	// example:
 	//
 	// fset-1902718ea0ae****
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

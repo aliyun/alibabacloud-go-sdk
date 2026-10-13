@@ -30,7 +30,7 @@ type DescribeCpfsAccessPointMountedClientsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of results on each page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
-	// 无
+	// None
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource.
+	// The list of resource IDs.
 	//
-	// The ID of the destination resource. Valid values of N: 1 to 50.
+	// The ID of the target resource. Valid values of N: 1 to 50.
 	//
 	// example:
 	//
 	// 03e08484f0
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- filesystem
+	// - filesystem: file system.
 	//
-	// 	- accesspoint
+	// - accesspoint: access point.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ListTagResourcesRequest struct {
 	//
 	// filesystem
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the reserved instance. The array may contain up to 20 tags. If the array contains multiple tags, each tag key is unique.
+	// The tags. Array length: 1 to 20. If the array contains multiple tag objects, the tag key (Key) must be unique.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -108,29 +108,29 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of a tag.
+	// The tag key.
 	//
 	// Limits:
 	//
-	// 	- The tag key cannot be null or an empty string.
+	// - Cannot be empty or an empty string.
 	//
-	// 	- The tag value can be up to 128 characters in length.
+	// - Can be up to 128 characters in length.
 	//
-	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	// - Cannot start with `aliyun` or `acs:`.
 	//
-	// 	- The tag value cannot contain `http://` or `https://`.
+	// - Cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// nastest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The tag value.
 	//
 	// Limits:
 	//
-	// 	- The tag value can be up to 128 characters in length.
+	// - Can be up to 128 characters in length.
 	//
-	// 	- The tag value cannot contain `http://` or `https://`.
+	// - Cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

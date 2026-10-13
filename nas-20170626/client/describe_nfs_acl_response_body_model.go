@@ -16,7 +16,7 @@ type iDescribeNfsAclResponseBody interface {
 }
 
 type DescribeNfsAclResponseBody struct {
-	// The information about the ACL feature.
+	// The ACL information.
 	Acl *DescribeNfsAclResponseBodyAcl `json:"Acl,omitempty" xml:"Acl,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,11 +62,11 @@ func (s *DescribeNfsAclResponseBody) Validate() error {
 }
 
 type DescribeNfsAclResponseBodyAcl struct {
-	// Indicates whether the NFS ACL feature is enabled.
+	// Indicates whether the NFS ACL feature is enabled. Valid values:
 	//
-	// 	- true: The NFS ACL feature is enabled.
+	// - true: The NFS ACL feature is enabled.
 	//
-	// 	- false: The NFS ACL feature is disabled.
+	// - false: The NFS ACL feature is not enabled.
 	//
 	// example:
 	//

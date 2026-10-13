@@ -30,7 +30,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// - The name must start with a letter or a Chinese character.
 	//
-	// - The name can contain digits, colons (:), underscores (_), or hyphens (-). It cannot start with `http://` or `https://`.
+	// - The name can contain digits, colons (:), underscores (_), or hyphens (-). The name cannot start with `http://` or `https://`.
 	//
 	// - Default value: empty.
 	//
@@ -54,7 +54,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// Valid values: 1 to 7, which represent Monday to Sunday.
 	//
-	// To create automatic snapshots on multiple days in a week, specify multiple values separated by commas (,). You can specify up to 7 values.
+	// To create automatic snapshots on multiple days within a week, specify multiple values separated by commas (,). You can specify up to 7 values.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// - -1 (default): Automatic snapshots are permanently retained. When the snapshot quota is reached, the earliest automatic snapshots are automatically deleted.
 	//
-	// - 1 to 65536: Automatic snapshots are retained for the specified number of days. Snapshots undergo automatic release after the retention period expires.
+	// - 1 to 65536: Automatic snapshots are retained for the specified number of days. Snapshots are subject to automatic release after the retention period expires.
 	//
 	// example:
 	//
 	// 30
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	// The time points at which automatic snapshots are created.
+	// The points in time at which automatic snapshots are created.
 	//
 	// Unit: hours.
 	//

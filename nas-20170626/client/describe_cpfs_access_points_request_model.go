@@ -66,7 +66,7 @@ type DescribeCpfsAccessPointsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of CPFS access point tags.
+	// The list of tags for the CPFS access point.
 	Tag []*DescribeCpfsAccessPointsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

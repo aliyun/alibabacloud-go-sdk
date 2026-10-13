@@ -18,9 +18,9 @@ type iDescribeFilesystemsAssociatedHpnZonesRequest interface {
 type DescribeFilesystemsAssociatedHpnZonesRequest struct {
 	// The collection of file system IDs.
 	//
-	// >  The maximum number of elements in the set must be less than or equal to 20.
+	// > The maximum number of elements in the collection must be less than or equal to 20.
 	Filesystems []*DescribeFilesystemsAssociatedHpnZonesRequestFilesystems `json:"Filesystems,omitempty" xml:"Filesystems,omitempty" type:"Repeated"`
-	// The ID of the region where the file system resides.
+	// The region ID of the file system.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ func (s *DescribeFilesystemsAssociatedHpnZonesRequest) Validate() error {
 }
 
 type DescribeFilesystemsAssociatedHpnZonesRequestFilesystems struct {
-	// The ID of the CPFS for Lingjun file system. Must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	// The ID of the CPFS for Lingjun file system. The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya****.
 	//
 	// example:
 	//

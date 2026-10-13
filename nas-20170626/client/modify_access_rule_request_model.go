@@ -82,7 +82,7 @@ type ModifyAccessRuleRequest struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The read and write permissions of the authorized object on the file system.
+	// The read and write permissions on the file system granted to the authorized object.
 	//
 	// Valid values:
 	//
@@ -104,7 +104,7 @@ type ModifyAccessRuleRequest struct {
 	//
 	// ``192.0.**.**``
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// The authorization of the system user of the authorized object on the file system.
+	// The authorization for the system user of the authorized object to access the file system.
 	//
 	// Valid values:
 	//
@@ -114,7 +114,7 @@ type ModifyAccessRuleRequest struct {
 	//
 	// - all_squash: maps all users to the nobody user regardless of the user identity used to access the file system.
 	//
-	// The nobody user is a default user in Linux. This user can access only public content on the server and has low privileges and high security.
+	// The nobody user is the default user in Linux. This user can access only public content on the server and has low privileges and high security.
 	//
 	// example:
 	//

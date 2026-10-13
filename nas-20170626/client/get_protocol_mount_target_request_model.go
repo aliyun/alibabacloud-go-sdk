@@ -38,9 +38,9 @@ type GetProtocolMountTargetRequest struct {
 	//
 	// **How to obtain**:
 	//
-	// - Call [CreateProtocolMountTarget](https://www.alibabacloud.com/help/en/cpfs/cpfsonecs/developer-reference/api-nas-2017-06-26-createprotocolmounttarget-cpfs) to create an export directory and obtain the ExportId from the response.
+	// - Call the [CreateProtocolMountTarget](https://www.alibabacloud.com/help/en/cpfs/cpfsonecs/developer-reference/api-nas-2017-06-26-createprotocolmounttarget-cpfs) operation to create an export directory and obtain the ExportId from the response.
 	//
-	// - Or call [DescribeProtocolMountTarget](https://www.alibabacloud.com/help/en/cpfs/cpfsonecs/developer-reference/api-nas-2017-06-26-describeprotocolmounttarget-cpfs) to query the list of export directories and obtain the ExportId from the response.
+	// - Or call the [DescribeProtocolMountTarget](https://www.alibabacloud.com/help/en/cpfs/cpfsonecs/developer-reference/api-nas-2017-06-26-describeprotocolmounttarget-cpfs) operation to query the list of export directories and obtain the ExportId from the response.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type GetProtocolMountTargetRequest struct {
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The maximum number of results to return per query.
+	// The number of results returned per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -70,7 +70,7 @@ type GetProtocolMountTargetRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// If the response is truncated, you can use NextToken to send a subsequent request to retrieve the content after the current truncation point.
+	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, use NextToken to initiate another request to retrieve the content after the current truncation position.
 	//
 	// example:
 	//

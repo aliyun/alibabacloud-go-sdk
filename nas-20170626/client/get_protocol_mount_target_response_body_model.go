@@ -18,7 +18,7 @@ type iGetProtocolMountTargetResponseBody interface {
 }
 
 type GetProtocolMountTargetResponseBody struct {
-	// If the response is truncated, you can use NextToken to send a subsequent request to retrieve the content after the current truncation point.
+	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, use NextToken to initiate another request to retrieve the content after the current truncation position.
 	//
 	// example:
 	//
@@ -137,11 +137,11 @@ type GetProtocolMountTargetResponseBodyProtocolMountTarget struct {
 	//
 	// Valid values:
 	//
-	// - NFS: NFS protocol
+	// - NFS: NFS protocol.
 	//
-	// - SMB: SMB protocol
+	// - SMB: SMB protocol.
 	//
-	// - cpfs: the protocol type supported by CPFS file systems
+	// - cpfs: the protocol type supported by the CPFS file system.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type GetProtocolMountTargetResponseBodyProtocolMountTarget struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The list of vSwitch IDs of the protocol service export.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID of the protocol service export.
+	// The VPC ID of the protocol service export.
 	//
 	// example:
 	//

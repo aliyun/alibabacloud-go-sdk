@@ -18,7 +18,7 @@ type iOpenNASServiceResponseBody interface {
 }
 
 type OpenNASServiceResponseBody struct {
-	// The access denied details.
+	// The details of the permission verification failure.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type OpenNASServiceResponseBody struct {
 	//
 	//   }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The order ID for enabling the service.
+	// The order ID for activating the service.
 	//
 	// example:
 	//

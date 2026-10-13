@@ -20,15 +20,15 @@ type iDescribeStoragePackagesRequest interface {
 }
 
 type DescribeStoragePackagesRequest struct {
-	// The number of the page to return.
+	// The page number of the list.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Start value (default value): 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of storage plans to return on each page.
+	// The number of storage plans on each page during a paged query.
 	//
 	// Valid values: 1 to 100.
 	//
@@ -46,13 +46,13 @@ type DescribeStoragePackagesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether the time to return is in UTC.
+	// Specifies whether the returned time is in UTC format.
 	//
 	// Valid values:
 	//
-	// 	- true (default): returns UTC time.
+	// - true (default): The returned time is in UTC format.
 	//
-	// 	- false: returns UNIX timestamp.
+	// - false: A UNIX timestamp is returned.
 	//
 	// example:
 	//

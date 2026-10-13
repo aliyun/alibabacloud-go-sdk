@@ -23,13 +23,13 @@ type iDescribeMountedClientsResponseBody interface {
 
 type DescribeMountedClientsResponseBody struct {
 	Clients *DescribeMountedClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the client list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of IP addresses returned per page.
+	// The number of client IP addresses on each page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeMountedClientsResponseBody struct {
 	//
 	// A70BEE5D-76D3-49FB-B58F-1F398211****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of IP addresses.
+	// The total number of client IP addresses returned.
 	//
 	// example:
 	//

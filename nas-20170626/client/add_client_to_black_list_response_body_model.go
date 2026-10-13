@@ -14,7 +14,7 @@ type iAddClientToBlackListResponseBody interface {
 }
 
 type AddClientToBlackListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

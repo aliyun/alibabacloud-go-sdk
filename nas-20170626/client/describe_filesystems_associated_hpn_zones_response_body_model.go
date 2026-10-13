@@ -16,9 +16,9 @@ type iDescribeFilesystemsAssociatedHpnZonesResponseBody interface {
 }
 
 type DescribeFilesystemsAssociatedHpnZonesResponseBody struct {
-	// The list of HpnZones associated with the file system.
+	// The list of HpnZones associated with the file systems.
 	Filesystems []*DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems `json:"Filesystems,omitempty" xml:"Filesystems,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

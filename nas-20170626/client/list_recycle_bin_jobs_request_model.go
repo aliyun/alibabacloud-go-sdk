@@ -22,7 +22,7 @@ type iListRecycleBinJobsRequest interface {
 }
 
 type ListRecycleBinJobsRequest struct {
-	// The file system ID.
+	// The ID of the file system.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type ListRecycleBinJobsRequest struct {
 	//
 	// 1ca404****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// rb-15****ed-r-1625****2441
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The page number of the current page in a paged query.
+	// The current page number for paging.
 	//
 	// Start value (default value): 1.
 	//
@@ -44,7 +44,7 @@ type ListRecycleBinJobsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query.
+	// The number of entries per page for paging.
 	//
 	// Valid values: 1 to 100.
 	//

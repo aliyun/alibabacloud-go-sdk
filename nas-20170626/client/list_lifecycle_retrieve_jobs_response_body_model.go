@@ -145,7 +145,7 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The execution paths of the data retrieval task.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The number of files that are successfully retrieved by the data retrieval task.
+	// The number of files successfully retrieved by the data retrieval task.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	//
 	// - InfrequentAccess: IA storage class.
 	//
-	// - Archive: Archive storage.
+	// - Archive: Archive storage class.
 	//
 	// example:
 	//

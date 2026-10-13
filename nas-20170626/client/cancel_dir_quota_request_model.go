@@ -58,7 +58,7 @@ type CancelDirQuotaRequest struct {
 	//
 	// - Gid: user group ID
 	//
-	// - AllUsers: all users.
+	// - AllUsers: all users
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type iDescribeDirQuotasResponseBody interface {
 }
 
 type DescribeDirQuotasResponseBody struct {
-	// The queried directory quotas.
+	// The collection of quota information for each directory.
 	DirQuotaInfos []*DescribeDirQuotasResponseBodyDirQuotaInfos `json:"DirQuotaInfos,omitempty" xml:"DirQuotaInfos,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type DescribeDirQuotasResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of directories on each page.
 	//
 	// example:
 	//
@@ -123,19 +123,19 @@ type DescribeDirQuotasResponseBodyDirQuotaInfos struct {
 	//
 	// 1123
 	DirInode *string `json:"DirInode,omitempty" xml:"DirInode,omitempty"`
-	// The absolute path of a directory.
+	// The absolute path of the directory in the file system.
 	//
 	// example:
 	//
 	// /data/sub1
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The status of the quota created for the directory. Valid values: Initializing and Normal. The Initializing state indicates that the quota is being created. The Normal state indicates that the quota is created.
+	// The statistical status of the directory. The value is Initializing during initialization and Normal when the status is normal.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about quotas for all users.
+	// The collection of quota information for each user.
 	UserQuotaInfos []*DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos `json:"UserQuotaInfos,omitempty" xml:"UserQuotaInfos,omitempty" type:"Repeated"`
 }
 
@@ -197,53 +197,53 @@ func (s *DescribeDirQuotasResponseBodyDirQuotaInfos) Validate() error {
 }
 
 type DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos struct {
-	// The maximum number of files that a user can create in the directory.
+	// The maximum number of files that the user can create in the directory.
 	//
 	// example:
 	//
 	// 10000
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
-	// The total number of files that a user has created in the directory.
+	// The actual number of files owned by the user in the directory.
 	//
 	// example:
 	//
 	// 5100
 	FileCountReal *int64 `json:"FileCountReal,omitempty" xml:"FileCountReal,omitempty"`
-	// The type of the quota. Valid values: Accounting and Enforcement.
+	// The quota type. Valid values: Accounting (statistical quota) and Enforcement (restrictive quota).
 	//
 	// example:
 	//
 	// Accounting
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// The maximum size of files that a user can create in the directory. Unit: GiB.
+	// The maximum total size of files that the user can store in the directory. Unit: GiB.
 	//
 	// example:
 	//
 	// 1024
 	SizeLimit *int64 `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
-	// The total size of files that a user has created in the directory. Unit: GiB.
+	// The actual total size of files owned by the user in the directory. Unit: GiB.
 	//
 	// example:
 	//
 	// 800
 	SizeReal *int64 `json:"SizeReal,omitempty" xml:"SizeReal,omitempty"`
-	// The total size of files that a user has created in the directory. Unit: bytes.
+	// The actual total size of files owned by the user in the directory. Unit: bytes.
 	//
 	// example:
 	//
 	// 858995833870
 	SizeRealInByte *int64 `json:"SizeRealInByte,omitempty" xml:"SizeRealInByte,omitempty"`
-	// The ID of the user that you specify to create a quota for the directory. The value depends on the value of the UserType parameter. Valid values: Uid and Gid.
+	// The UID or GID to be restricted, depending on the value of UserType.
 	//
 	// example:
 	//
 	// 500
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The type of user. Valid values: Uid, Gid, and AllUsers.
+	// The type of the UserId. Valid values: Uid, Gid, and AllUsers.
 	//
-	// 	- If Uid or Gid is returned, a value is returned for UserId.
+	// - If the value is Uid or Gid, UserId has a return value.
 	//
-	// 	- If AllUsers is returned, UserId is empty.
+	// - If the value is AllUsers, UserId is empty.
 	//
 	// example:
 	//

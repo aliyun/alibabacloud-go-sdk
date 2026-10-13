@@ -18,13 +18,13 @@ type iDescribeBlackListClientsRequest interface {
 }
 
 type DescribeBlackListClientsRequest struct {
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//
 	// 192.168.0.0
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeBlackListClientsRequest struct {
 	//
 	// cpfs-123458****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The ID of the region where the file system resides.
+	// The region ID of the file system.
 	//
 	// This parameter is required.
 	//

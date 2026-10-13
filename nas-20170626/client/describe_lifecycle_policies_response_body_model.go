@@ -119,7 +119,7 @@ func (s *DescribeLifecyclePoliciesResponseBody) Validate() error {
 type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	// The time when the lifecycle management policy was created.
 	//
-	// The time follows the ISO 8601 standard in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// The file data retrieval rules.
 	RetrieveRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
-	// The storage type. Valid values:
+	// The storage tiering type. Valid values:
 	//
 	// - InfrequentAccess: IA storage class.
 	//
@@ -368,7 +368,7 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules struct {
 	//
 	// Valid values:
 	//
-	// - When Attribute is set to Atime, the value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
+	// - If Attribute is set to Atime, this value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
 	//
 	// example:
 	//

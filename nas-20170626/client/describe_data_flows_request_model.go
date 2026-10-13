@@ -45,7 +45,7 @@ type DescribeDataFlowsRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, use NextToken to obtain content starting from the truncation point.
+	// The token that determines the start point of the next query. If the returned results are truncated, you can use NextToken to initiate another request to retrieve the results after the truncation point.
 	//
 	// example:
 	//
@@ -125,21 +125,21 @@ type DescribeDataFlowsRequestFilters struct {
 	//
 	// - Description: filters by the description of the Fileset.
 	//
-	// - Status: filters by data flow status.
+	// - Status: filters by the data flow status.
 	//
 	// example:
 	//
 	// FsetIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter key. Wildcards are not supported for this parameter.
+	// The value of the filter key. This parameter does not support wildcards.
 	//
 	// - If Key is set to DataFlowIds, Value is set to a data flow ID or part of a data flow ID. You can specify one or more data flow IDs. A maximum of 10 data flow IDs can be specified. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
 	//
 	// - If Key is set to FsetIds, Value is set to a Fileset ID or part of a Fileset ID. You can specify one or more Fileset IDs. A maximum of 10 Fileset IDs can be specified. Example: `fset-1902718ea0ae****` or `fset-235718ea0ae****,fset-5122718ea0ae****`.
 	//
-	// - If Key is set to FileSystemPath, Value is set to a path or part of a path in the CPFS file system. The value must be 1 to 1024 characters in length.
+	// - If Key is set to FileSystemPath, Value is set to a path or part of a path in the CPFS file system. The value must be 1 to 1,024 characters in length.
 	//
-	// - If Key is set to SourceStorage, Value is set to the access path of the source storage. The maximum length is 1024 characters.
+	// - If Key is set to SourceStorage, Value is set to the access path of the source storage. The value can be up to 1,024 characters in length.
 	//
 	// - If Key is set to ThroughputList, Value is set to the transmission bandwidth of the data flow. Combined queries are supported.
 	//
@@ -147,7 +147,7 @@ type DescribeDataFlowsRequestFilters struct {
 	//
 	// - If Key is set to Status, Value is set to the data flow status.
 	//
-	// - If Key is set to SourceStoragePath, Value is set to the access path of the source storage or part of the access path. The maximum length is 1024 characters.
+	// - If Key is set to SourceStoragePath, Value is set to the access path or part of the access path of the source storage. The value can be up to 1,024 characters in length.
 	//
 	// example:
 	//

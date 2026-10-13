@@ -16,15 +16,15 @@ type iDescribeFileSystemStatisticsRequest interface {
 }
 
 type DescribeFileSystemStatisticsRequest struct {
-	// The page number.
+	// The page number of the list.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Start value (default value): 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of file system statistics entries per page in a paging query.
 	//
 	// Valid values: 1 to 100.
 	//

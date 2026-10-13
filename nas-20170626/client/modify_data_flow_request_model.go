@@ -24,11 +24,11 @@ type iModifyDataFlowRequest interface {
 }
 
 type ModifyDataFlowRequest struct {
-	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests.
+	// Ensures the idempotency of the request. Generate a parameter value from your client to ensure that the value is unique across different requests.
 	//
-	// ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
 	//
-	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type ModifyDataFlowRequest struct {
 	//
 	// - The description must start with a letter and cannot start with http:// or https://.
 	//
-	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
+	// - The description can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
-	// Bucket01DataFlow.
+	// Bucket01DataFlow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run for this request.
 	//
-	// A dry run checks parameter validity and resource availability without actually creating the instance or incurring fees.
+	// A dry run checks parameter validity and resource availability without actually creating an instance or incurring fees.
 	//
 	// Valid values:
 	//
-	// - true: Sends a check request without creating the instance. The check items include whether required parameters are specified, the request format, business limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
+	// - true: Sends a dry run request without creating an instance. The check items include required parameters, request format, business limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
 	//
 	// - false (default): Sends a normal request. After the check passes, the instance is directly created.
 	//

@@ -18,13 +18,13 @@ type iDescribeProtocolServiceResponseBody interface {
 }
 
 type DescribeProtocolServiceResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The marker used to retrieve the remaining protocol services.
 	//
 	// example:
 	//
 	// aBcdeg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information about protocol service list.
+	// The list of protocol service information.
 	ProtocolServices []*DescribeProtocolServiceResponseBodyProtocolServices `json:"ProtocolServices,omitempty" xml:"ProtocolServices,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeProtocolServiceResponseBody) Validate() error {
 }
 
 type DescribeProtocolServiceResponseBodyProtocolServices struct {
-	// The time when the protocol service was created. The time is displayed in UTC.
+	// The time when the protocol service was created, in UTC.
 	//
 	// example:
 	//
@@ -93,63 +93,63 @@ type DescribeProtocolServiceResponseBodyProtocolServices struct {
 	//
 	// Limits:
 	//
-	// 	- The description must be 2 to 128 characters in length.
+	// - The description must be 2 to 128 characters in length.
 	//
-	// 	- The description must start with a letter and cannot start with `http://` or `https://`.
+	// - The description must start with a letter and cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
-	// 此协议服务的描述
+	// Description of this protocol service
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// example:
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The base throughput of the protocol service. Unit: MB/s.
+	// The base throughput of the protocol node. Unit: MB/s.
 	//
 	// example:
 	//
 	// 100
 	InstanceBaseThroughput *int32 `json:"InstanceBaseThroughput,omitempty" xml:"InstanceBaseThroughput,omitempty"`
-	// The burst throughput of the protocol service. Unit: MB/s.
+	// The burst throughput of the protocol node. Unit: MB/s.
 	//
 	// example:
 	//
 	// 100
 	InstanceBurstThroughput *int32 `json:"InstanceBurstThroughput,omitempty" xml:"InstanceBurstThroughput,omitempty"`
-	// The memory cache size of the protocol service. Unit: GiB.
+	// The memory cache size of the protocol node. Unit: GiB.
 	//
 	// example:
 	//
 	// 0
 	InstanceRAM *int32 `json:"InstanceRAM,omitempty" xml:"InstanceRAM,omitempty"`
-	// The time when the protocol service was modified. The time is displayed in UTC.
+	// The time when the protocol service was last modified, in UTC.
 	//
 	// example:
 	//
 	// 2018-12-12T07:28:38Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The total number of CPFS directories and filesets exported in the protocol service.
+	// The total number of CPFS directories and filesets exported in this protocol service.
 	//
 	// example:
 	//
 	// 5
 	MountTargetCount *int32 `json:"MountTargetCount,omitempty" xml:"MountTargetCount,omitempty"`
-	// The ID of the protocol service.
+	// The protocol service ID.
 	//
 	// example:
 	//
 	// ptc-197ed6a00f2b****
 	ProtocolServiceId *string `json:"ProtocolServiceId,omitempty" xml:"ProtocolServiceId,omitempty"`
-	// The specification of the protocol service.
+	// The specification of the protocol service cluster.
 	//
-	// 	- Valid value: General.
+	// - Valid values: General
 	//
-	// 	- Default value: General.
+	// - Default value: General
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribeProtocolServiceResponseBodyProtocolServices struct {
 	//
 	// Valid values:
 	//
-	// 	- NFS: The protocol service supports access over the Network File System (NFS) protocol.
+	//  - NFS: The protocol service supports NFS protocol access.
 	//
 	// example:
 	//
@@ -175,25 +175,25 @@ type DescribeProtocolServiceResponseBodyProtocolServices struct {
 	//
 	// Valid values:
 	//
-	// 	- Creating: The protocol service is being created.
+	// - Creating: The protocol service is being created.
 	//
-	// 	- Starting: The protocol service is being started.
+	// - Starting: The protocol service is being started.
 	//
-	// 	- Running: The protocol service is running.
+	// - Running: The protocol service is available.
 	//
-	// 	- Updating: The protocol service is being updated.
+	// - Updating: The protocol service is being updated.
 	//
-	// 	- Deleting: The protocol service is being deleted.
+	// - Deleting: The protocol service is being deleted.
 	//
-	// 	- Stopping: The protocol service is being stopped.
+	// - Stopping: The protocol service is being stopped.
 	//
-	// 	- Stopped: The protocol service is stopped.
+	// - Stopped: The protocol service is stopped.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VSW ID associated with the protocol service.
+	// The vSwitch ID associated with the protocol service.
 	//
 	// example:
 	//

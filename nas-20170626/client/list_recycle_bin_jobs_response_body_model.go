@@ -24,7 +24,7 @@ type iListRecycleBinJobsResponseBody interface {
 type ListRecycleBinJobsResponseBody struct {
 	// The collection of task information in the recycle bin.
 	Jobs []*ListRecycleBinJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type ListRecycleBinJobsResponseBodyJobs struct {
 	//
 	// The Target File or Directory does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The FileId of the file or directory associated with the task.
+	// The file ID of the file or directory associated with the task.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ type ListRecycleBinJobsResponseBodyJobs struct {
 	//
 	// test001
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 8C****C54
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The execution progress of the task.
+	// The progress of the task.
 	//
 	// Valid values: 1 to 100.
 	//

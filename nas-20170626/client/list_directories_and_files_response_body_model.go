@@ -20,7 +20,7 @@ type iListDirectoriesAndFilesResponseBody interface {
 type ListDirectoriesAndFilesResponseBody struct {
 	// The collection of directory or file information.
 	Entries []*ListDirectoriesAndFilesResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation position.
+	// If the returned results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation point.
 	//
 	// example:
 	//
@@ -85,9 +85,9 @@ func (s *ListDirectoriesAndFilesResponseBody) Validate() error {
 type ListDirectoriesAndFilesResponseBodyEntries struct {
 	// The query time.
 	//
-	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned and meaningful only when Type is set to File.
+	// This parameter is returned and meaningful only when Type is File.
 	//
 	// example:
 	//
@@ -95,9 +95,9 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	Atime *string `json:"Atime,omitempty" xml:"Atime,omitempty"`
 	// The time when the metadata was modified.
 	//
-	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned and meaningful only when Type is set to File.
+	// This parameter is returned and meaningful only when Type is File.
 	//
 	// example:
 	//
@@ -109,15 +109,15 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	//
 	// 66
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Indicates whether the directory contains archive storage class files.
+	// Indicates whether the directory contains archive storage files.
 	//
-	// This parameter is returned and meaningful only when Type is set to Directory.
+	// This parameter is returned and meaningful only when Type is Directory.
 	//
 	// Valid values:
 	//
-	// - true: The directory contains archive storage class files.
+	// - true: The directory contains archive storage files.
 	//
-	// - false: The directory does not contain archive storage class files.
+	// - false: The directory does not contain archive storage files.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	HasArchiveFile *string `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
 	// Indicates whether the directory contains IA storage class files.
 	//
-	// This parameter is returned and meaningful only when Type is set to Directory.
+	// This parameter is returned and meaningful only when Type is Directory.
 	//
 	// Valid values:
 	//
@@ -145,9 +145,9 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	Inode *string `json:"Inode,omitempty" xml:"Inode,omitempty"`
 	// The time when the file was modified.
 	//
-	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned and meaningful only when Type is set to File.
+	// This parameter is returned and meaningful only when Type is File.
 	//
 	// example:
 	//
@@ -179,11 +179,11 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	//
 	// 37862c****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The time when the most recent data retrieval task was run.
+	// The time when the most recent data retrieval task was executed.
 	//
-	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned and meaningful only when Type is set to File.
+	// This parameter is returned and meaningful only when Type is File.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	//
 	// Unit: bytes.
 	//
-	// This parameter is returned and meaningful only when Type is set to File.
+	// This parameter is returned and meaningful only when Type is File.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The storage class type of the returned file.
 	//
-	// This parameter is returned and meaningful only when Type is set to File.
+	// This parameter is returned and meaningful only when Type is File.
 	//
 	// Valid values:
 	//

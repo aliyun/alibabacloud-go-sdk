@@ -102,7 +102,7 @@ func (s *DescribeAccessPointsResponseBody) Validate() error {
 }
 
 type DescribeAccessPointsResponseBodyAccessPoints struct {
-	// The access point ARN.
+	// The Alibaba Cloud Resource Name (ARN) of the access point.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeAccessPointsResponseBodyAccessPoints struct {
 	//
 	// 1709619668276167
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The access point domain name.
+	// The domain name of the access point.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type DescribeAccessPointsResponseBodyAccessPoints struct {
 	//
 	// /
 	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
-	// The root directory permission.
+	// The root directory permissions.
 	RootPathPermission *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
 	// The current root directory status.
 	//
@@ -184,15 +184,15 @@ type DescribeAccessPointsResponseBodyAccessPoints struct {
 	//
 	// Valid values:
 	//
-	// - Active: available.
+	// - Active: active.
 	//
-	// - Inactive: unavailable.
+	// - Inactive: inactive.
 	//
 	// - Pending: being created.
 	//
 	// - Deleting: being deleted.
 	//
-	// > You can mount the file system only when the status is Active.
+	// > You can mount a file system only when the status is Active.
 	//
 	// example:
 	//

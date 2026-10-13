@@ -14,7 +14,7 @@ type iDeleteLDAPConfigRequest interface {
 }
 
 type DeleteLDAPConfigRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//

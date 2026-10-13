@@ -16,7 +16,7 @@ type iGetFilesetResponseBody interface {
 }
 
 type GetFilesetResponseBody struct {
-	// The response parameters.
+	// The data details.
 	Data *GetFilesetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,59 +62,59 @@ func (s *GetFilesetResponseBody) Validate() error {
 }
 
 type GetFilesetResponseBodyData struct {
-	// The time when the fileset was created.
+	// The time when the Fileset was created.
 	//
-	// Return format: `yyyy-MM-dd HH:mm:ss`
+	// Format: `yyyy-MM-dd HH:mm:ss`.
 	//
 	// example:
 	//
 	// 2025-11-21 12:49:25
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Specifies whether the fileset is protected from being released through the console or the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+	// The release protection property of the instance. Specifies whether the instance can be released from the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
 	//
-	// 	- true: Enables release protection. The fileset cannot be released.
+	// -   true: Release protection is enabled.
 	//
-	// 	- false (default): Disables release protection. The fileset can be released.
+	// -   false (default): Release protection is disabled.
 	//
-	// >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+	// > This property applies only to manual release operations and does not apply to system-initiated release operations.
 	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The description of the fileset.
+	// The description of the Fileset.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The usage of the file quantity.
+	// The file count usage.
 	//
-	// >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+	// > Only CPFS for Lingjun 2.7.0 and later support this parameter.
 	//
 	// example:
 	//
 	// 1024
 	FileCountUsage *int64 `json:"FileCountUsage,omitempty" xml:"FileCountUsage,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
-	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+	// - CPFS: The ID must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
 	//
-	// 	- The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
 	//
 	// example:
 	//
 	// cpfs-0244729a8ef8****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The directory of the fileset in the CPFS file system.
+	// The path of the Fileset in the CPFS file system.
 	//
 	// example:
 	//
 	// pathtoroot/fset/
 	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
-	// The fileset ID.
+	// The Fileset ID.
 	//
-	// >  This parameter is required for CPFS file systems.
+	// > This parameter is required if the file system type is CPFS.
 	//
 	// example:
 	//
@@ -122,33 +122,33 @@ type GetFilesetResponseBodyData struct {
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
 	// The quota information.
 	//
-	// >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
+	// > Only CPFS for Lingjun 2.7.0 and later support this parameter.
 	Quota *GetFilesetResponseBodyDataQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
 	// The capacity usage. Unit: bytes.
 	//
-	// >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
+	// > Only CPFS for Lingjun 2.7.0 and later support this parameter.
 	//
 	// example:
 	//
 	// 1024
 	SpaceUsage *int64 `json:"SpaceUsage,omitempty" xml:"SpaceUsage,omitempty"`
-	// The fileset status. Valid values:
+	// The status of the Fileset. Valid values:
 	//
-	// 	- CREATING: The fileset is being created.
+	// - CREATING: The Fileset is being created.
 	//
-	// 	- CREATED: The fileset has been created and is running properly.
+	// - CREATED: The Fileset is created and running as expected.
 	//
-	// 	- RELEASING: The fileset is being released.
+	// - RELEASING: The Fileset is being released.
 	//
-	// 	- RELEASED: The fileset has been deleted.
+	// - RELEASED: The Fileset is deleted.
 	//
 	// example:
 	//
 	// CREATED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the fileset was last updated.
+	// The time when the Fileset was last updated.
 	//
-	// Return format: `yyyy-MM-dd HH:mm:ss`
+	// Format: `yyyy-MM-dd HH:mm:ss`.
 	//
 	// example:
 	//
@@ -273,23 +273,23 @@ func (s *GetFilesetResponseBodyData) Validate() error {
 }
 
 type GetFilesetResponseBodyDataQuota struct {
-	// The file quantity quota. Valid values:
+	// The file count limit of the quota. Value range:
 	//
-	// 	- Minimum value: 10,000.
+	// - Minimum value: 10,000.
 	//
-	// 	- Maximum value: 10,000,000,000.
+	// - Maximum value: 10,000,000,000.
 	//
 	// example:
 	//
 	// 10001
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
-	// The total quota capacity limit. Unit: bytes.
+	// The total capacity limit of the quota. Unit: bytes.
 	//
-	// Valid values:
+	// Value range:
 	//
-	// 	- Minimum value: 10,737,418,240 (10 GiB).
+	// - Minimum value: 10,737,418,240 (10 GiB).
 	//
-	// 	- Step size: 1,073,741,824 (1 GiB).
+	// - Increment: 1,073,741,824 (1 GiB).
 	//
 	// example:
 	//

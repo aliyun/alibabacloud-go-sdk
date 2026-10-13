@@ -24,7 +24,7 @@ type ModifyAccessGroupRequest struct {
 	//
 	// - The name must be 3 to 64 characters in length.
 	//
-	// - The name must start with a letter and can contain letters, digits, underscores (_), or hyphens (-).
+	// - The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ModifyAccessGroupRequest struct {
 	//
 	// vpc-test
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	// The permission group description.
+	// The description of the permission group.
 	//
 	// Limits:
 	//
@@ -40,7 +40,7 @@ type ModifyAccessGroupRequest struct {
 	//
 	// - The description must start with a letter and cannot start with `http://` or `https://`.
 	//
-	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
+	// - The description can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//

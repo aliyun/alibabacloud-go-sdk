@@ -99,7 +99,7 @@ type DescribeProtocolMountTargetResponseBodyProtocolMountTargets struct {
 	//
 	// example:
 	//
-	// 此协议服务导出目录的描述。
+	// Description of this protocol service export directory
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the protocol service export directory.
 	//
@@ -113,7 +113,7 @@ type DescribeProtocolMountTargetResponseBodyProtocolMountTargets struct {
 	//
 	// fset-1902718ea0ae****
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
-	// The exported directory of the protocol service.
+	// The export directory of the protocol service.
 	//
 	// example:
 	//

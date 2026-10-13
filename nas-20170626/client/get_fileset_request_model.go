@@ -16,11 +16,11 @@ type iGetFilesetRequest interface {
 }
 
 type GetFilesetRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
-	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+	// - CPFS: The ID must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
 	//
-	// 	- The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type GetFilesetRequest struct {
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The fileset ID.
+	// The Fileset ID.
 	//
-	// >  This parameter is required for CPFS file systems.
+	// > This parameter is required if the file system type is CPFS.
 	//
 	// This parameter is required.
 	//

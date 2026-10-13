@@ -66,7 +66,7 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
-	// This parameter is returned only when Type is File.
+	// This parameter is returned only when Type is set to File.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
-	// This parameter is returned only when Type is File.
+	// This parameter is returned only when Type is set to File.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	CTime *string `json:"CTime,omitempty" xml:"CTime,omitempty"`
 	// Indicates whether the directory contains Archive storage class files.
 	//
-	// This parameter is returned only when Type is Directory.
+	// This parameter is returned only when Type is set to Directory.
 	//
 	// Valid values:
 	//
@@ -98,7 +98,7 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	HasArchiveFile *bool `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
 	// Indicates whether the directory contains IA storage class files.
 	//
-	// This parameter is returned only when Type is Directory.
+	// This parameter is returned only when Type is set to Directory.
 	//
 	// Valid values:
 	//
@@ -120,7 +120,7 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
-	// This parameter is returned only when Type is File.
+	// This parameter is returned only when Type is set to File.
 	//
 	// example:
 	//
@@ -144,11 +144,11 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	//
 	// 3600
 	OfflineUnchangedDuration *int64 `json:"OfflineUnchangedDuration,omitempty" xml:"OfflineUnchangedDuration,omitempty"`
-	// The time when the most recent data retrieval task was executed.
+	// The time when the most recent data retrieval task was run.
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
-	// This parameter is returned only when Type is File.
+	// This parameter is returned only when Type is set to File.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	//
 	// Unit: bytes.
 	//
-	// This parameter is returned only when Type is File.
+	// This parameter is returned only when Type is set to File.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The storage type of the returned file.
 	//
-	// This parameter is returned only when Type is File.
+	// This parameter is returned only when Type is set to File.
 	//
 	// Valid values:
 	//

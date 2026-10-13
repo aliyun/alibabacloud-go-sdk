@@ -24,7 +24,7 @@ type StartLifecyclePolicyExecutionRequest struct {
 	//
 	// bmcpfs-0015****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The lifecycle policy ID.
+	// The ID of the lifecycle management policy.
 	//
 	// This parameter is required.
 	//

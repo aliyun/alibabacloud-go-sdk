@@ -20,13 +20,13 @@ type iCreateLDAPConfigRequest interface {
 }
 
 type CreateLDAPConfigRequest struct {
-	// An LDAP entry.
+	// The distinguished name (DN) of the entry to bind to the LDAP directory.
 	//
 	// example:
 	//
 	// cn=alibaba,dc=com
 	BindDN *string `json:"BindDN,omitempty" xml:"BindDN,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateLDAPConfigRequest struct {
 	//
 	// 109c04****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// An LDAP search base.
+	// The LDAP search base.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateLDAPConfigRequest struct {
 	//
 	// dc=example
 	SearchBase *string `json:"SearchBase,omitempty" xml:"SearchBase,omitempty"`
-	// An LDAP URI.
+	// The LDAP server address.
 	//
 	// This parameter is required.
 	//

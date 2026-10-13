@@ -16,7 +16,7 @@ type iCreateLogAnalysisRequest interface {
 }
 
 type CreateLogAnalysisRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//

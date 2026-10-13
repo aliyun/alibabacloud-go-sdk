@@ -132,7 +132,7 @@ type ListAccessPointsResponseBodyAccessPoints struct {
 	//
 	// agentic-229oypxjgpau2****
 	AgenticSpaceId *string `json:"AgenticSpaceId,omitempty" xml:"AgenticSpaceId,omitempty"`
-	// The time when the access point was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the access point was created. The time follows the ISO 8601 standard and is displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListAccessPointsResponseBodyAccessPoints struct {
 	//
 	// 2026-06-10T10:08:08Z
 	CreateTimeUtc *string `json:"CreateTimeUtc,omitempty" xml:"CreateTimeUtc,omitempty"`
-	// The access point domain name.
+	// The domain name of the access point.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type ListAccessPointsResponseBodyAccessPoints struct {
 	//
 	// 091yj49baxscll2****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The time when the access point was last modified. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the access point was last modified. The time follows the ISO 8601 standard and is displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -202,13 +202,13 @@ type ListAccessPointsResponseBodyAccessPoints struct {
 	//
 	// Valid values:
 	//
-	// - Active: Available.
+	// - Active: The access point is available.
 	//
-	// - Inactive: Unavailable.
+	// - Inactive: The access point is unavailable.
 	//
-	// - Pending: Being created.
+	// - Pending: The access point is being created.
 	//
-	// - Deleting: Being deleted.
+	// - Deleting: The access point is being deleted.
 	//
 	// > You can mount a file system only when the status is Active.
 	//
@@ -444,13 +444,13 @@ func (s *ListAccessPointsResponseBodyAccessPoints) Validate() error {
 }
 
 type ListAccessPointsResponseBodyAccessPointsPosixUser struct {
-	// The POSIX group ID.
+	// The POSIX user group ID.
 	//
 	// example:
 	//
 	// 10
 	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
-	// The secondary group ID.
+	// The secondary user group ID.
 	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
 	// The POSIX user ID.
 	//
@@ -500,13 +500,13 @@ func (s *ListAccessPointsResponseBodyAccessPointsPosixUser) Validate() error {
 }
 
 type ListAccessPointsResponseBodyAccessPointsRootPathPermission struct {
-	// The owner group ID.
+	// The file group ID of the owner.
 	//
 	// example:
 	//
 	// 12
 	OwnerGroupId *int64 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
-	// The owner user ID.
+	// The user ID of the owner.
 	//
 	// example:
 	//

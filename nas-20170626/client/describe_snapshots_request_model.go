@@ -36,7 +36,7 @@ type DescribeSnapshotsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The file system type.
 	//
-	// Valid values: extreme (Extreme NAS file system)
+	// Valid value: extreme (Extreme NAS file system).
 	//
 	// example:
 	//

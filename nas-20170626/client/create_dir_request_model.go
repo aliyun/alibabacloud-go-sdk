@@ -24,7 +24,7 @@ type iCreateDirRequest interface {
 }
 
 type CreateDirRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateDirRequest struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The ID of the owner group for the directory. Valid values: 0 to 4294967295.
+	// The user group ID of the directory owner. Valid values: 0 to 4294967295.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateDirRequest struct {
 	//
 	// 123
 	OwnerGroupId *int32 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
-	// The owner ID for the directory. Valid values: 0 to 4294967295.
+	// The user ID of the directory owner. Valid values: 0 to 4294967295.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateDirRequest struct {
 	//
 	// 1
 	OwnerUserId *int32 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The Portable Operating System Interface (POSIX) permissions applied to the root directory. The value is a valid octal number, such as 0755.
+	// The POSIX permissions to apply to the root directory path. The value is a valid octal number, such as 0755.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type CreateDirRequest struct {
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
 	// Specifies whether to create a multi-level directory. Valid values:
 	//
-	// 	- true (default): If no multi-level directory exists, directories are created level by level.
+	// - true (default): If the multi-level directory does not exist, the system creates the directories level by level.
 	//
-	// 	- false: Only the last level of directory is created. An error message is returned because the parent directory does not exist.
+	// - false: Only the last-level directory is created. If the parent directory does not exist, an error message is returned.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type CreateDirRequest struct {
 	Recursion *bool `json:"Recursion,omitempty" xml:"Recursion,omitempty"`
 	// The directory name.
 	//
-	// 	- The directory must start with a forward slash (/).
+	// - The name must start with a forward slash (/).
 	//
-	// 	- The directory can contain digits and letters.
+	// - The name can contain digits and uppercase and lowercase letters.
 	//
-	// 	- The directory can contain underscores (_), hyphens (-), and periods (.).
+	// - The name can contain underscores (_), hyphens (-), or periods (.).
 	//
-	// 	- The directory cannot contain symbolic links, such as the current directory (.), the upper-level directory (..), and other symbolic links.
+	// - The path cannot contain symbolic links, such as the current directory (.), the parent directory (..), or other symbolic links.
 	//
-	// > 	- If the root directory does not exist, configure the information for directory creation. The system then automatically creates the specified root directory based on your settings.
+	// >  - If the root directory does not exist, configure the automatic creation information. The system automatically creates the specified root directory based on the settings.
 	//
-	// > 	- If the root directory exists, you do not need to configure the information for directory creation. The configurations for directory creation are ignored even if you configure the information.
+	//  > - If the root directory already exists, you do not need to configure the automatic creation information. If you configure the information, the automatic creation settings are ignored.
 	//
 	// This parameter is required.
 	//

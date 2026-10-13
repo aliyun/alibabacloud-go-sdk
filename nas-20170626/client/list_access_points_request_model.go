@@ -28,7 +28,7 @@ type ListAccessPointsRequest struct {
 	//
 	// 0913nx15amuix9a****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The filter information.
+	// The filter key information.
 	Filters []*ListAccessPointsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The maximum number of results to return per query.
 	//

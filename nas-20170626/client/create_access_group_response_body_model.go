@@ -16,7 +16,7 @@ type iCreateAccessGroupResponseBody interface {
 }
 
 type CreateAccessGroupResponseBody struct {
-	// The name of the permission group.
+	// The permission group name.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDeleteAccessPointRequest interface {
 }
 
 type DeleteAccessPointRequest struct {
-	// The ID of the access point.
+	// The access point ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteAccessPointRequest struct {
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//

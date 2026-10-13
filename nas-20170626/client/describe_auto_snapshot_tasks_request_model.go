@@ -40,7 +40,7 @@ type DescribeAutoSnapshotTasksRequest struct {
 	FileSystemIds *string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty"`
 	// The type of the file system.
 	//
-	// Valid values: extreme (Extreme NAS file system)
+	// Valid values: extreme (Extreme NAS file system).
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type DescribeAutoSnapshotTasksRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The page number of the automatic snapshot task list.
 	//
-	// Start value (default value): 1
+	// Start value (default value): 1.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type ListDirectoriesAndFilesRequest struct {
 	//
 	// - true: Yes. Only directories are queried.
 	//
-	// > When StorageType is set to All, DirectoryOnly must be set to true and cannot be set to false.
+	// > If StorageType is set to All, DirectoryOnly must be set to true and cannot be set to false.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListDirectoriesAndFilesRequest struct {
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation position.
+	// If the returned results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation point.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListDirectoriesAndFilesRequest struct {
 	//
 	// - All: queries data of all storage classes.
 	//
-	// > When StorageType is set to All, you must set DirectoryOnly to true.
+	// > If StorageType is set to All, you must set DirectoryOnly to true.
 	//
 	// This parameter is required.
 	//

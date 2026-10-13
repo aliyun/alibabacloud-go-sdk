@@ -183,7 +183,7 @@ type DescribeCpfsAccessPointsResponseBodyAccessPoints struct {
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of CPFS access point tags.
+	// The list of tags for the CPFS access point.
 	Tags []*DescribeCpfsAccessPointsResponseBodyAccessPointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

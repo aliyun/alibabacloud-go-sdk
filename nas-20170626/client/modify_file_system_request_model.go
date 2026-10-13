@@ -28,7 +28,7 @@ type ModifyFileSystemRequest struct {
 	//
 	// - The description must be 2 to 128 characters in length.
 	//
-	// - The description must start with a letter. It cannot start with `http://` or `https://`.
+	// - The description must start with a letter or Chinese character and cannot start with `http://` or `https://`.
 	//
 	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
@@ -190,13 +190,13 @@ type ModifyFileSystemRequestOptions struct {
 	//
 	// false
 	EnableABE *bool `json:"EnableABE,omitempty" xml:"EnableABE,omitempty"`
-	// Specifies whether the OpLock feature is enabled.
+	// Specifies whether to enable the OpLock feature.
 	//
 	// Valid values:
 	//
 	// - true: Enabled.
 	//
-	// - false: Not enabled.
+	// - false: Disabled.
 	//
 	// > Only file systems of the SMB Protocol Type are supported.
 	//

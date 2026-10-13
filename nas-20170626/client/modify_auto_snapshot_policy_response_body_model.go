@@ -14,9 +14,7 @@ type iModifyAutoSnapshotPolicyResponseBody interface {
 }
 
 type ModifyAutoSnapshotPolicyResponseBody struct {
-	// The request ID.
-	//
-	// Every response returns a unique request ID regardless of whether the request is successful.
+	// The request ID. A request ID is returned regardless of whether the API call succeeds.
 	//
 	// example:
 	//

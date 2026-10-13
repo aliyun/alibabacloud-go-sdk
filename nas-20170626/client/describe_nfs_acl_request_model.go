@@ -14,7 +14,7 @@ type iDescribeNfsAclRequest interface {
 }
 
 type DescribeNfsAclRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//

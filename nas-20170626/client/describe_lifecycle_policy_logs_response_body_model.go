@@ -24,7 +24,7 @@ type iDescribeLifecyclePolicyLogsResponseBody interface {
 }
 
 type DescribeLifecyclePolicyLogsResponseBody struct {
-	// The execution logs of the lifecycle management policy.
+	// The execution logs of the lifecycle policy.
 	LifecyclePolicyLogs []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs `json:"LifecyclePolicyLogs,omitempty" xml:"LifecyclePolicyLogs,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,23 +32,25 @@ type DescribeLifecyclePolicyLogsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log entries per page.
+	// The number of log entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request status. Valid values:
+	// Indicates whether the request is successful.
 	//
-	// - true: The request was successful.
+	// Valid values:
 	//
-	// - false: The request failed.
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -138,29 +140,29 @@ func (s *DescribeLifecyclePolicyLogsResponseBody) Validate() error {
 }
 
 type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs struct {
-	// The time when the task was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-10-20T02:25:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The file data expiration and deletion rules. A maximum of one rule can be configured.
+	// The expiration and deletion rules for file data. You can configure up to one rule.
 	DeleteRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules `json:"DeleteRules,omitempty" xml:"DeleteRules,omitempty" type:"Repeated"`
-	// The execution paths of the specified retrieval task.
+	// The execution paths specified for the retrieval task.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// The file data retrieval rules.
 	RetrieveRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
 	// The status of the data retrieval task. Valid values:
 	//
-	// - PENDING: Being created.
+	// - PENDING: The task is being created.
 	//
-	// - RUNNING: Running.
+	// - RUNNING: The task is running.
 	//
-	// - STOPPED: Stopped.
+	// - STOPPED: The task is stopped.
 	//
-	// - FINISHED: Finished.
+	// - FINISHED: The task is completed.
 	//
-	// - FAILED: Failed.
+	// - FAILED: The task fails.
 	//
 	// example:
 	//
@@ -168,21 +170,21 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tiered storage type. Valid values:
 	//
-	// - InfrequentAccess: IA storage class (default).
+	// - InfrequentAccess: IA storage class. This is the default value.
 	//
-	// - Archive: Archive storage.
+	// - Archive: Archive storage class.
 	//
 	// example:
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The task overview.
+	// The task summary.
 	//
 	// example:
 	//
 	// Total tasks: 100000, success tasks: 100000
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The file data transit rules.
+	// The file data transition rules.
 	TransitRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -302,7 +304,7 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules struc
 	//
 	// Valid values:
 	//
-	// - Atime: the last access time of the file.
+	// - Atime: The last access time of the file.
 	//
 	// example:
 	//
@@ -312,7 +314,7 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules struc
 	//
 	// Valid values:
 	//
-	// - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+	// - If Attribute is set to Atime, the value indicates the number of days a file has not been accessed. Valid values: 1 to 365.
 	//
 	// example:
 	//
@@ -353,7 +355,7 @@ func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) 
 type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules struct {
 	// The attribute of the rule. Valid values:
 	//
-	// - RetrieveType: the retrieval method.
+	// - RetrieveType: The retrieval method.
 	//
 	// example:
 	//
@@ -361,11 +363,11 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules str
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 	// The threshold of the rule. Valid values:
 	//
-	// - RetrieveType
+	// - RetrieveType:
 	//
-	//     - AfterVisit: Supported when LifecyclePolicyType=Auto. Indicates best-effort recall on visit.
+	//   - AfterVisit: Supported when LifecyclePolicyType is set to Auto. This value indicates best-effort recall on visit.
 	//
-	//     - All: Supported when LifecyclePolicyType=OnDemand. Indicates retrieving all data.
+	//   - All: Supported when LifecyclePolicyType is set to OnDemand. This value indicates that all data is retrieved.
 	//
 	// example:
 	//
@@ -408,7 +410,7 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules stru
 	//
 	// Valid values:
 	//
-	// - Atime: the last access time of the file.
+	// - Atime: The last access time of the file.
 	//
 	// example:
 	//
@@ -418,7 +420,7 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules stru
 	//
 	// Valid values:
 	//
-	// - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+	// - If Attribute is set to Atime, the value indicates the number of days a file has not been accessed. Valid values: 1 to 365.
 	//
 	// example:
 	//

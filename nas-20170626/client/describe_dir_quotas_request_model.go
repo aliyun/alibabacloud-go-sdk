@@ -20,7 +20,7 @@ type iDescribeDirQuotasRequest interface {
 }
 
 type DescribeDirQuotasRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type DescribeDirQuotasRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Start value (default value): 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of directories on each page. Default value: 10.
 	//
 	// Valid values: 1 to 100.
 	//
@@ -44,9 +44,9 @@ type DescribeDirQuotasRequest struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The absolute path of a directory.
+	// The absolute path of the directory in the file system.
 	//
-	// If you do not specify this parameter, all directories for which quotas are created are returned.
+	// If this parameter is left empty, all directories that have quotas configured in the file system are returned.
 	//
 	// example:
 	//

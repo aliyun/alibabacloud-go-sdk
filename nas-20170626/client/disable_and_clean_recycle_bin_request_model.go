@@ -14,7 +14,7 @@ type iDisableAndCleanRecycleBinRequest interface {
 }
 
 type DisableAndCleanRecycleBinRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//

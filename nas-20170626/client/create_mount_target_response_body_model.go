@@ -79,7 +79,7 @@ func (s *CreateMountTargetResponseBody) Validate() error {
 }
 
 type CreateMountTargetResponseBodyMountTargetExtra struct {
-	// The dual-stack mount target that supports both IPv4 and IPv6.
+	// The IPv4 and IPv6 dual-stack mount target.
 	//
 	// example:
 	//

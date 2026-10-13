@@ -22,7 +22,7 @@ type StartLifecyclePolicyExecutionResponseBody struct {
 	//
 	// 70EACC9C-D07A-4A34-ADA4-77506C42****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request status.
 	//
 	// Valid values:
 	//

@@ -24,7 +24,7 @@ type EnableRecycleBinRequest struct {
   // 
   // 1ca404****
   FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-  // The retention period of the files in the recycle bin. Unit: days.
+  // The retention period of files in the recycle bin. Unit: days.
   // 
   // Valid values: 1 to 180.
   // 

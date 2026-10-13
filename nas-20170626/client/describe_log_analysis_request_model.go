@@ -28,7 +28,7 @@ type DescribeLogAnalysisRequest struct {
 	//
 	// - extreme: Extreme NAS
 	//
-	// - all (default): all types.
+	// - all (default): all types
 	//
 	// example:
 	//
@@ -40,7 +40,11 @@ type DescribeLogAnalysisRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems on each page in a paging query. Valid values: 1 to 100. Default value: 10.
+	// The number of file systems on each page during a paged query.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
 	//
 	// example:
 	//

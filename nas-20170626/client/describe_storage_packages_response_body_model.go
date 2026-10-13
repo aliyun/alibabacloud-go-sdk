@@ -23,19 +23,19 @@ type iDescribeStoragePackagesResponseBody interface {
 
 type DescribeStoragePackagesResponseBody struct {
 	Packages *DescribeStoragePackagesResponseBodyPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number of the storage plan list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of storage plans returned per page.
+	// The number of storage plans on each page.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

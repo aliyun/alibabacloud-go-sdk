@@ -16,7 +16,7 @@ type iModifyLifecyclePolicyResponseBody interface {
 }
 
 type ModifyLifecyclePolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -26,9 +26,9 @@ type ModifyLifecyclePolicyResponseBody struct {
 	//
 	// Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

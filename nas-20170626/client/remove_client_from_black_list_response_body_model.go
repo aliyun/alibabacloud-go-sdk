@@ -14,7 +14,7 @@ type iRemoveClientFromBlackListResponseBody interface {
 }
 
 type RemoveClientFromBlackListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

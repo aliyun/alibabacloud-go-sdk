@@ -20,7 +20,7 @@ type iRemoveClientFromBlackListRequest interface {
 }
 
 type RemoveClientFromBlackListRequest struct {
-	// The IP address of a client to remove from the blacklist.
+	// The IP address of the client to be removed from the blacklist.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type RemoveClientFromBlackListRequest struct {
 	//
 	// 192.168.0.0
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// This parameter ensures the idempotency of each request. A ClientToken is generated for each client. Make sure that each ClientToken is unique between different requests. The parameter can be a maximum of 64 characters in length and contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/doc-detail/25693.htm).
+	// For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type RemoveClientFromBlackListRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type RemoveClientFromBlackListRequest struct {
 	//
 	// cpfs-00d91ca404a348****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The ID of the region where the file system resides.
+	// The region ID of the file system.
 	//
 	// This parameter is required.
 	//

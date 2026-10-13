@@ -16,7 +16,7 @@ type iDeleteLogAnalysisRequest interface {
 }
 
 type DeleteLogAnalysisRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteLogAnalysisRequest struct {
 	//
 	// 174494xxxx
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// This parameter is required.
 	//

@@ -32,7 +32,7 @@ type CreateFileRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The portable account ID.
 	//
-	// Limit: The value is a 16-character string that supports digits and lowercase letters.
+	// Limit: The value is a 16-character string that contains digits and lowercase letters.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type CreateFileRequest struct {
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// Specifies whether to share directory permissions. Valid values:
 	//
-	// - false (default): does not share directory permissions.
+	// - false (default): Directory permissions are not shared.
 	//
-	// - true: shares directory permissions.
+	// - true: Directory permissions are shared.
 	//
 	// > - This parameter takes effect only when Type is set to Directory and Owner is not empty.
 	//

@@ -64,7 +64,7 @@ type UpdateLifecyclePolicyRequest struct {
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
 	// The absolute paths of the directories associated with the lifecycle management policy.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The data retrieval rules. You can configure up to one rule.
+	// The data retrieval rules. A maximum of one rule can be configured.
 	//
 	// > Only CPFS for Lingjun file systems are supported.
 	RetrieveRules []*UpdateLifecyclePolicyRequestRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
@@ -78,7 +78,7 @@ type UpdateLifecyclePolicyRequest struct {
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The data transit rules. You can configure up to one rule.
+	// The data transit rules. A maximum of one rule can be configured.
 	//
 	// > This parameter is supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
 	TransitRules []*UpdateLifecyclePolicyRequestTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
@@ -200,7 +200,7 @@ type UpdateLifecyclePolicyRequestDeleteRules struct {
 	//
 	// Valid values:
 	//
-	// - Atime: the last access time of the file.
+	// - Atime: the access time of the file.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type UpdateLifecyclePolicyRequestRetrieveRules struct {
 	//
 	//     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
 	//
-	//     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieving all data.
+	//     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieval of all data.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ type UpdateLifecyclePolicyRequestTransitRules struct {
 	//
 	// Valid values:
 	//
-	// - Atime: the last access time of the file.
+	// - Atime: the access time of the file.
 	//
 	// example:
 	//

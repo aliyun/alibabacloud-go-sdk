@@ -100,7 +100,7 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	//
 	// 1709619668276167
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the access point was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the access point was created. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	//
 	// 1709619668276167
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The time when the access point was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the access point was last modified. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -170,13 +170,13 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	//
 	// Valid values:
 	//
-	// - Active: available.
+	// - Active: active
 	//
-	// - Inactive: unavailable.
+	// - Inactive: inactive
 	//
-	// - Pending: being created.
+	// - Pending: being created
 	//
-	// - Deleting: being deleted.
+	// - Deleting: being deleted
 	//
 	// example:
 	//
@@ -421,13 +421,13 @@ func (s *DescribeAccessPointResponseBodyAccessPoint) Validate() error {
 }
 
 type DescribeAccessPointResponseBodyAccessPointPosixUser struct {
-	// The POSIX group ID.
+	// The POSIX user group ID.
 	//
 	// example:
 	//
 	// 12
 	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
-	// The secondary group IDs.
+	// The secondary user group IDs.
 	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
 	// The POSIX user ID.
 	//
@@ -477,19 +477,19 @@ func (s *DescribeAccessPointResponseBodyAccessPointPosixUser) Validate() error {
 }
 
 type DescribeAccessPointResponseBodyAccessPointRootPathPermission struct {
-	// The file group ID of the owner.
+	// The file group ID.
 	//
 	// example:
 	//
 	// 123
 	OwnerGroupId *int32 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
-	// The user ID of the owner.
+	// The file owner ID.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int32 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The POSIX permission.
+	// The POSIX permissions.
 	//
 	// example:
 	//

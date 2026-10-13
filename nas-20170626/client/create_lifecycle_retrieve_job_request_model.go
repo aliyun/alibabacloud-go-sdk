@@ -26,7 +26,7 @@ type CreateLifecycleRetrieveJobRequest struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The list of directories or file paths to retrieve. You can specify up to 10 paths.
+	// The list of directories or file paths to retrieve. A maximum of 10 paths are supported.
 	//
 	// This parameter is required.
 	//

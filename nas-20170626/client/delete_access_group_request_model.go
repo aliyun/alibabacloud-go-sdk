@@ -16,7 +16,7 @@ type iDeleteAccessGroupRequest interface {
 }
 
 type DeleteAccessGroupRequest struct {
-	// The name of the access group to delete.
+	// The name of the permission group to delete.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteAccessGroupRequest struct {
 	//
 	// vpc-test
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	// The type of the file system.
+	// The file system type.
 	//
 	// Valid values:
 	//

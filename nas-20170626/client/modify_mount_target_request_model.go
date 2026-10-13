@@ -66,11 +66,11 @@ type ModifyMountTargetRequest struct {
 	//
 	// Valid values:
 	//
-	// - Active: active
+	// - Active: Active.
 	//
-	// - Inactive: inactive
+	// - Inactive: Inactive.
 	//
-	// > Only General-purpose NAS supports changing the mount target status.
+	// > Currently, only General-purpose NAS supports changing the mount target status.
 	//
 	// example:
 	//

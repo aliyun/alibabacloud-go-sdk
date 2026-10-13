@@ -26,13 +26,13 @@ type EnableSmbAclRequest struct {
   // 
   // 31a8e4****
   FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-  // The Base64-encoded content of the Keytab file. When using Kerberos authentication mode (default mode), the Keytab parameter is required.
+  // The Base64-encoded content of the keytab file. When you use the Kerberos authentication mode (default mode), the Keytab parameter is required.
   // 
   // example:
   // 
   // BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhxxxxx
   Keytab *string `json:"Keytab,omitempty" xml:"Keytab,omitempty"`
-  // The MD5-encrypted string of the Keytab file content.
+  // The MD5-encrypted string of the keytab file content.
   // 
   // example:
   // 
