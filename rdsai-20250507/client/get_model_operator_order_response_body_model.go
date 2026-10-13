@@ -22,7 +22,7 @@ type iGetModelOperatorOrderResponseBody interface {
 type GetModelOperatorOrderResponseBody struct {
 	// The query result.
 	Data *GetModelOperatorOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//

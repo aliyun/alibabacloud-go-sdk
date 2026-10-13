@@ -16,10 +16,14 @@ type iGetAvailableLLMModelsResponseBody interface {
 }
 
 type GetAvailableLLMModelsResponseBody struct {
+	// The models.
+	//
 	// example:
 	//
 	// ["glm-5","deepseek-v3.2"]
 	Models []*string `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C

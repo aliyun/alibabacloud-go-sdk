@@ -157,7 +157,7 @@ type GetScheduledReportsResponseBodyReports struct {
 	//
 	// 2025-01-01T22:59:59Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The inspection end time (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The inspection end time. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type GetScheduledReportsResponseBodyReports struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The inspection start time (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The inspection start time. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//

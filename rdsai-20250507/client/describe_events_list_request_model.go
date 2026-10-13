@@ -24,25 +24,25 @@ type iDescribeEventsListRequest interface {
 }
 
 type DescribeEventsListRequest struct {
-	// The end of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format. The time must be in UTC.
+	// The end time.
 	//
 	// example:
 	//
 	// 2025-08-28 18:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance IDs. You can specify one or more instance IDs.
+	// The list of instances.
 	//
 	// example:
 	//
 	// r-uf6ce0r08lr7xn****
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeEventsListRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format. The time must be in UTC.
+	// The start time.
 	//
 	// example:
 	//

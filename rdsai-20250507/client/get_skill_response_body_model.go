@@ -11,6 +11,12 @@ type iGetSkillResponseBody interface {
 	GoString() string
 	SetActiveVersionId(v string) *GetSkillResponseBody
 	GetActiveVersionId() *string
+	SetBundleHash(v string) *GetSkillResponseBody
+	GetBundleHash() *string
+	SetBundleSizeBytes(v int64) *GetSkillResponseBody
+	GetBundleSizeBytes() *int64
+	SetCapabilities(v *GetSkillResponseBodyCapabilities) *GetSkillResponseBody
+	GetCapabilities() *GetSkillResponseBodyCapabilities
 	SetCategory(v string) *GetSkillResponseBody
 	GetCategory() *string
 	SetContent(v map[string]interface{}) *GetSkillResponseBody
@@ -23,6 +29,16 @@ type iGetSkillResponseBody interface {
 	GetDescription() *string
 	SetDisplayName(v string) *GetSkillResponseBody
 	GetDisplayName() *string
+	SetDownloadUrl(v string) *GetSkillResponseBody
+	GetDownloadUrl() *string
+	SetExpiresAt(v string) *GetSkillResponseBody
+	GetExpiresAt() *string
+	SetFile(v map[string]interface{}) *GetSkillResponseBody
+	GetFile() map[string]interface{}
+	SetFiles(v []map[string]interface{}) *GetSkillResponseBody
+	GetFiles() []map[string]interface{}
+	SetFrontmatter(v map[string]interface{}) *GetSkillResponseBody
+	GetFrontmatter() map[string]interface{}
 	SetIcon(v string) *GetSkillResponseBody
 	GetIcon() *string
 	SetId(v string) *GetSkillResponseBody
@@ -35,24 +51,48 @@ type iGetSkillResponseBody interface {
 	GetRequestId() *string
 	SetScope(v string) *GetSkillResponseBody
 	GetScope() *string
+	SetSkillId(v string) *GetSkillResponseBody
+	GetSkillId() *string
+	SetSkillMarkdown(v string) *GetSkillResponseBody
+	GetSkillMarkdown() *string
 	SetSkillType(v string) *GetSkillResponseBody
 	GetSkillType() *string
 	SetSlug(v string) *GetSkillResponseBody
 	GetSlug() *string
 	SetUpdatedAt(v string) *GetSkillResponseBody
 	GetUpdatedAt() *string
+	SetVersion(v string) *GetSkillResponseBody
+	GetVersion() *string
+	SetVersionId(v string) *GetSkillResponseBody
+	GetVersionId() *string
 	SetVersions(v []*GetSkillResponseBodyVersions) *GetSkillResponseBody
 	GetVersions() []*GetSkillResponseBodyVersions
+	SetVisibility(v string) *GetSkillResponseBody
+	GetVisibility() *string
 }
 
 type GetSkillResponseBody struct {
-	// The currently active version ID.
+	// The current active version ID.
 	//
 	// example:
 	//
 	// version-example
 	ActiveVersionId *string `json:"ActiveVersionId,omitempty" xml:"ActiveVersionId,omitempty"`
-	// The Skill category.
+	// The content digest of the current skill bundle.
+	//
+	// example:
+	//
+	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+	BundleHash *string `json:"BundleHash,omitempty" xml:"BundleHash,omitempty"`
+	// The size of the current skill bundle, in bytes.
+	//
+	// example:
+	//
+	// 1024
+	BundleSizeBytes *int64 `json:"BundleSizeBytes,omitempty" xml:"BundleSizeBytes,omitempty"`
+	// The skill operations that the current user can perform.
+	Capabilities *GetSkillResponseBodyCapabilities `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Struct"`
+	// The skill category.
 	//
 	// example:
 	//
@@ -72,18 +112,36 @@ type GetSkillResponseBody struct {
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	// The list of database types.
 	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	// The Skill description, up to 1000 characters.
+	// The skill description. The description can be up to 1000 characters in length.
 	//
 	// example:
 	//
 	// SQL Review Expert: Comprehensively reviews SQL for security, performance, and compliance, identifies risks, and provides optimization suggestions. Activated immediately when a user submits SQL or asks about "SQL review", "SQL Review", "any risks", or "how to optimize"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Skill display name.
+	// The display name of the skill.
 	//
 	// example:
 	//
 	// Example Skill
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The temporary download URL of the skill bundle.
+	//
+	// example:
+	//
+	// https://example.com/skill-package.zip
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The expiration time of the temporary download URL.
+	//
+	// example:
+	//
+	// 2026-09-15T11:00:00Z
+	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The file in the bundle that is read based on the specified path.
+	File map[string]interface{} `json:"File,omitempty" xml:"File,omitempty"`
+	// The list of files in the current skill bundle.
+	Files []map[string]interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The metadata fields of SKILL.md.
+	Frontmatter map[string]interface{} `json:"Frontmatter,omitempty" xml:"Frontmatter,omitempty"`
 	// The public HTTPS URL of the current icon. This value is empty if no icon is configured.
 	//
 	// if can be null:
@@ -93,39 +151,51 @@ type GetSkillResponseBody struct {
 	//
 	// https://example.com/skill-icon.png
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The unique identifier of the Skill.
+	// The unique identifier of the skill.
 	//
 	// example:
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the Skill is deleted.
+	// Indicates whether the skill is deleted.
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The Skill name. The name can contain only lowercase letters, digits, and hyphens.
+	// The skill name. The name can contain only lowercase letters, digits, and hyphens.
 	//
 	// example:
 	//
 	// sql-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unique identifier of the request.
+	// The unique request identifier.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The visibility scope of the Skill.
+	// The visibility scope of the skill.
 	//
 	// example:
 	//
 	// PRIVATE
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The Skill type.
+	// The current skill ID.
+	//
+	// example:
+	//
+	// skill-example
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The full Markdown content of SKILL.md.
+	//
+	// example:
+	//
+	// # Example Skill
+	SkillMarkdown *string `json:"SkillMarkdown,omitempty" xml:"SkillMarkdown,omitempty"`
+	// The skill type.
 	//
 	// example:
 	//
 	// user
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
-	// The stable identifier of a private Skill.
+	// The stable identifier of the private skill.
 	//
 	// example:
 	//
@@ -137,8 +207,26 @@ type GetSkillResponseBody struct {
 	//
 	// 2026-02-04T21:14:45Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	// The current skill version number.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The current skill version ID.
+	//
+	// example:
+	//
+	// version-example
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	// The list of versions visible to the current principal.
 	Versions []*GetSkillResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	// The visibility of the skill to the current user.
+	//
+	// example:
+	//
+	// PRIVATE
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s GetSkillResponseBody) String() string {
@@ -151,6 +239,18 @@ func (s GetSkillResponseBody) GoString() string {
 
 func (s *GetSkillResponseBody) GetActiveVersionId() *string {
 	return s.ActiveVersionId
+}
+
+func (s *GetSkillResponseBody) GetBundleHash() *string {
+	return s.BundleHash
+}
+
+func (s *GetSkillResponseBody) GetBundleSizeBytes() *int64 {
+	return s.BundleSizeBytes
+}
+
+func (s *GetSkillResponseBody) GetCapabilities() *GetSkillResponseBodyCapabilities {
+	return s.Capabilities
 }
 
 func (s *GetSkillResponseBody) GetCategory() *string {
@@ -177,6 +277,26 @@ func (s *GetSkillResponseBody) GetDisplayName() *string {
 	return s.DisplayName
 }
 
+func (s *GetSkillResponseBody) GetDownloadUrl() *string {
+	return s.DownloadUrl
+}
+
+func (s *GetSkillResponseBody) GetExpiresAt() *string {
+	return s.ExpiresAt
+}
+
+func (s *GetSkillResponseBody) GetFile() map[string]interface{} {
+	return s.File
+}
+
+func (s *GetSkillResponseBody) GetFiles() []map[string]interface{} {
+	return s.Files
+}
+
+func (s *GetSkillResponseBody) GetFrontmatter() map[string]interface{} {
+	return s.Frontmatter
+}
+
 func (s *GetSkillResponseBody) GetIcon() *string {
 	return s.Icon
 }
@@ -201,6 +321,14 @@ func (s *GetSkillResponseBody) GetScope() *string {
 	return s.Scope
 }
 
+func (s *GetSkillResponseBody) GetSkillId() *string {
+	return s.SkillId
+}
+
+func (s *GetSkillResponseBody) GetSkillMarkdown() *string {
+	return s.SkillMarkdown
+}
+
 func (s *GetSkillResponseBody) GetSkillType() *string {
 	return s.SkillType
 }
@@ -213,12 +341,39 @@ func (s *GetSkillResponseBody) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
 
+func (s *GetSkillResponseBody) GetVersion() *string {
+	return s.Version
+}
+
+func (s *GetSkillResponseBody) GetVersionId() *string {
+	return s.VersionId
+}
+
 func (s *GetSkillResponseBody) GetVersions() []*GetSkillResponseBodyVersions {
 	return s.Versions
 }
 
+func (s *GetSkillResponseBody) GetVisibility() *string {
+	return s.Visibility
+}
+
 func (s *GetSkillResponseBody) SetActiveVersionId(v string) *GetSkillResponseBody {
 	s.ActiveVersionId = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetBundleHash(v string) *GetSkillResponseBody {
+	s.BundleHash = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetBundleSizeBytes(v int64) *GetSkillResponseBody {
+	s.BundleSizeBytes = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetCapabilities(v *GetSkillResponseBodyCapabilities) *GetSkillResponseBody {
+	s.Capabilities = v
 	return s
 }
 
@@ -252,6 +407,31 @@ func (s *GetSkillResponseBody) SetDisplayName(v string) *GetSkillResponseBody {
 	return s
 }
 
+func (s *GetSkillResponseBody) SetDownloadUrl(v string) *GetSkillResponseBody {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetExpiresAt(v string) *GetSkillResponseBody {
+	s.ExpiresAt = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetFile(v map[string]interface{}) *GetSkillResponseBody {
+	s.File = v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetFiles(v []map[string]interface{}) *GetSkillResponseBody {
+	s.Files = v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetFrontmatter(v map[string]interface{}) *GetSkillResponseBody {
+	s.Frontmatter = v
+	return s
+}
+
 func (s *GetSkillResponseBody) SetIcon(v string) *GetSkillResponseBody {
 	s.Icon = &v
 	return s
@@ -282,6 +462,16 @@ func (s *GetSkillResponseBody) SetScope(v string) *GetSkillResponseBody {
 	return s
 }
 
+func (s *GetSkillResponseBody) SetSkillId(v string) *GetSkillResponseBody {
+	s.SkillId = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetSkillMarkdown(v string) *GetSkillResponseBody {
+	s.SkillMarkdown = &v
+	return s
+}
+
 func (s *GetSkillResponseBody) SetSkillType(v string) *GetSkillResponseBody {
 	s.SkillType = &v
 	return s
@@ -297,12 +487,32 @@ func (s *GetSkillResponseBody) SetUpdatedAt(v string) *GetSkillResponseBody {
 	return s
 }
 
+func (s *GetSkillResponseBody) SetVersion(v string) *GetSkillResponseBody {
+	s.Version = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetVersionId(v string) *GetSkillResponseBody {
+	s.VersionId = &v
+	return s
+}
+
 func (s *GetSkillResponseBody) SetVersions(v []*GetSkillResponseBodyVersions) *GetSkillResponseBody {
 	s.Versions = v
 	return s
 }
 
+func (s *GetSkillResponseBody) SetVisibility(v string) *GetSkillResponseBody {
+	s.Visibility = &v
+	return s
+}
+
 func (s *GetSkillResponseBody) Validate() error {
+	if s.Capabilities != nil {
+		if err := s.Capabilities.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Versions != nil {
 		for _, item := range s.Versions {
 			if item != nil {
@@ -315,70 +525,169 @@ func (s *GetSkillResponseBody) Validate() error {
 	return nil
 }
 
+type GetSkillResponseBodyCapabilities struct {
+	// Indicates whether the skill can be deleted.
+	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// Indicates whether the skill bundle can be downloaded.
+	Download *bool `json:"Download,omitempty" xml:"Download,omitempty"`
+	// Indicates whether the skill can be edited.
+	Edit *bool `json:"Edit,omitempty" xml:"Edit,omitempty"`
+	// Indicates whether the skill version can be rolled back.
+	Rollback *bool `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
+	// Indicates whether the skill can be shared.
+	Share *bool `json:"Share,omitempty" xml:"Share,omitempty"`
+	// Indicates whether a new version can be uploaded.
+	Upload *bool `json:"Upload,omitempty" xml:"Upload,omitempty"`
+}
+
+func (s GetSkillResponseBodyCapabilities) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetSkillResponseBodyCapabilities) GoString() string {
+	return s.String()
+}
+
+func (s *GetSkillResponseBodyCapabilities) GetDelete() *bool {
+	return s.Delete
+}
+
+func (s *GetSkillResponseBodyCapabilities) GetDownload() *bool {
+	return s.Download
+}
+
+func (s *GetSkillResponseBodyCapabilities) GetEdit() *bool {
+	return s.Edit
+}
+
+func (s *GetSkillResponseBodyCapabilities) GetRollback() *bool {
+	return s.Rollback
+}
+
+func (s *GetSkillResponseBodyCapabilities) GetShare() *bool {
+	return s.Share
+}
+
+func (s *GetSkillResponseBodyCapabilities) GetUpload() *bool {
+	return s.Upload
+}
+
+func (s *GetSkillResponseBodyCapabilities) SetDelete(v bool) *GetSkillResponseBodyCapabilities {
+	s.Delete = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyCapabilities) SetDownload(v bool) *GetSkillResponseBodyCapabilities {
+	s.Download = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyCapabilities) SetEdit(v bool) *GetSkillResponseBodyCapabilities {
+	s.Edit = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyCapabilities) SetRollback(v bool) *GetSkillResponseBodyCapabilities {
+	s.Rollback = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyCapabilities) SetShare(v bool) *GetSkillResponseBodyCapabilities {
+	s.Share = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyCapabilities) SetUpload(v bool) *GetSkillResponseBodyCapabilities {
+	s.Upload = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyCapabilities) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetSkillResponseBodyVersions struct {
-	// The activation time of the Skill version.
+	// The activation time of the skill version.
 	//
 	// example:
 	//
 	// 2026-09-15T10:00:00Z
 	ActivatedAt *string `json:"ActivatedAt,omitempty" xml:"ActivatedAt,omitempty"`
-	// The creation time of the Skill version.
+	// The creation time of the skill version.
 	//
 	// example:
 	//
 	// 2026-09-15T10:00:00Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// Indicates whether the Skill requires a credential.
+	// Indicates whether the skill requires a credential.
 	CredentialRequired *bool `json:"CredentialRequired,omitempty" xml:"CredentialRequired,omitempty"`
-	// The Skill version ID.
+	// The number of files in the skill bundle.
+	//
+	// example:
+	//
+	// 1
+	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// The skill version ID.
 	//
 	// example:
 	//
 	// version-example
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The Skill package size, in bytes.
+	// The size of the skill bundle, in bytes.
 	//
 	// example:
 	//
 	// 1024
 	PackageSize *int64 `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
-	// The reason for revoking the Skill version.
+	// The reason for revoking the skill version.
 	//
 	// example:
 	//
 	// Replaced by a newer version
 	RevokeReason *string `json:"RevokeReason,omitempty" xml:"RevokeReason,omitempty"`
-	// The revocation time of the Skill version.
+	// The revocation time of the skill version.
 	//
 	// example:
 	//
 	// 2026-09-15T11:00:00Z
 	RevokedAt *string `json:"RevokedAt,omitempty" xml:"RevokedAt,omitempty"`
-	// The SHA-256 digest of the Skill package.
+	// The SHA-256 digest of the skill package.
 	//
 	// example:
 	//
 	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
-	// The ID of the Skill to which this version belongs.
+	// The ID of the skill to which the version belongs.
 	//
 	// example:
 	//
 	// skill-example
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// The Markdown content of the Skill.
+	// The Markdown content of the skill.
 	//
 	// example:
 	//
 	// # Example Skill
 	SkillMarkdown *string `json:"SkillMarkdown,omitempty" xml:"SkillMarkdown,omitempty"`
-	// The status of the Skill version.
+	// The creation source of the skill version.
+	//
+	// example:
+	//
+	// UPLOAD
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the skill version.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version number of the Skill.
+	// The update note for the version.
+	//
+	// example:
+	//
+	// Update Skill documentation
+	UpdateNote *string `json:"UpdateNote,omitempty" xml:"UpdateNote,omitempty"`
+	// The version number of the skill.
 	//
 	// example:
 	//
@@ -404,6 +713,10 @@ func (s *GetSkillResponseBodyVersions) GetCreatedAt() *string {
 
 func (s *GetSkillResponseBodyVersions) GetCredentialRequired() *bool {
 	return s.CredentialRequired
+}
+
+func (s *GetSkillResponseBodyVersions) GetFileCount() *int64 {
+	return s.FileCount
 }
 
 func (s *GetSkillResponseBodyVersions) GetId() *string {
@@ -434,8 +747,16 @@ func (s *GetSkillResponseBodyVersions) GetSkillMarkdown() *string {
 	return s.SkillMarkdown
 }
 
+func (s *GetSkillResponseBodyVersions) GetSource() *string {
+	return s.Source
+}
+
 func (s *GetSkillResponseBodyVersions) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetSkillResponseBodyVersions) GetUpdateNote() *string {
+	return s.UpdateNote
 }
 
 func (s *GetSkillResponseBodyVersions) GetVersion() *string {
@@ -454,6 +775,11 @@ func (s *GetSkillResponseBodyVersions) SetCreatedAt(v string) *GetSkillResponseB
 
 func (s *GetSkillResponseBodyVersions) SetCredentialRequired(v bool) *GetSkillResponseBodyVersions {
 	s.CredentialRequired = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyVersions) SetFileCount(v int64) *GetSkillResponseBodyVersions {
+	s.FileCount = &v
 	return s
 }
 
@@ -492,8 +818,18 @@ func (s *GetSkillResponseBodyVersions) SetSkillMarkdown(v string) *GetSkillRespo
 	return s
 }
 
+func (s *GetSkillResponseBodyVersions) SetSource(v string) *GetSkillResponseBodyVersions {
+	s.Source = &v
+	return s
+}
+
 func (s *GetSkillResponseBodyVersions) SetStatus(v string) *GetSkillResponseBodyVersions {
 	s.Status = &v
+	return s
+}
+
+func (s *GetSkillResponseBodyVersions) SetUpdateNote(v string) *GetSkillResponseBodyVersions {
+	s.UpdateNote = &v
 	return s
 }
 

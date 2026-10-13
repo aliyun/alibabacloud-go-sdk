@@ -20,15 +20,22 @@ type iCreateMOUsageDetailExportResponseBody interface {
 }
 
 type CreateMOUsageDetailExportResponseBody struct {
+	// The returned data.
 	Data *CreateMOUsageDetailExportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result.
+	//
 	// example:
 	//
 	// true
@@ -89,46 +96,63 @@ func (s *CreateMOUsageDetailExportResponseBody) Validate() error {
 }
 
 type CreateMOUsageDetailExportResponseBodyData struct {
+	// The completion time.
+	//
 	// example:
 	//
 	// 2026-03-15T21:18:45Z
 	CompletedAt *string `json:"CompletedAt,omitempty" xml:"CompletedAt,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-03-15T21:14:45Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The download URL.
+	//
 	// example:
 	//
 	// http://***
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// picture owner error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 下载 URL 失效时间（UTC ISO8601）
+	// The expiration time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-02-07T21:14:45Z
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The file size in bytes.
+	//
 	// example:
 	//
 	// 403
-	FileSize *int64                                            `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	Filters  *CreateMOUsageDetailExportResponseBodyDataFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The query filter conditions.
+	Filters *CreateMOUsageDetailExportResponseBodyDataFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	// The target conversion format.
+	//
 	// example:
 	//
 	// csv
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The OssKey passed when calling the operation. (This field is deprecated)
+	//
 	// example:
 	//
 	// ddd6*****2a76
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	// The total number of data rows.
+	//
 	// example:
 	//
 	// 100
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	// pending / processing / completed / failed / expired
+	// The module status.
 	//
 	// example:
 	//
@@ -253,22 +277,32 @@ func (s *CreateMOUsageDetailExportResponseBodyData) Validate() error {
 }
 
 type CreateMOUsageDetailExportResponseBodyDataFilters struct {
+	// The API key to use.
+	//
 	// example:
 	//
 	// sk-***
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The inspection end time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2025-03-10T02:02:20Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// rds_copilot**_public_cn-******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The model to call.
+	//
 	// example:
 	//
 	// qwen-flash
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The inspection start time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2026-03-05T16:00:00Z

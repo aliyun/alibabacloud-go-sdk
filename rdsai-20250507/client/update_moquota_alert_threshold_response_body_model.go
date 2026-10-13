@@ -18,15 +18,15 @@ type iUpdateMOQuotaAlertThresholdResponseBody interface {
 }
 
 type UpdateMOQuotaAlertThresholdResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result list.
+	// The list of results.
 	Results []*UpdateMOQuotaAlertThresholdResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// A value of `true` indicates that the request was successful.
+	// The request result.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *UpdateMOQuotaAlertThresholdResponseBody) Validate() error {
 }
 
 type UpdateMOQuotaAlertThresholdResponseBodyResults struct {
-	// The API key.
+	// API Key
 	//
 	// example:
 	//
 	// sk-rds-*****
 	Apikey *string `json:"Apikey,omitempty" xml:"Apikey,omitempty"`
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
@@ -107,11 +107,11 @@ type UpdateMOQuotaAlertThresholdResponseBodyResults struct {
 	//
 	// system / custom
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The alert threshold percentage. For example, a value of 80 triggers an alert when usage reaches 80% of the usage quota. The alert is reset after the usage falls below this percentage.
+	// The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
 	//
 	// example:
 	//
-	// [0, 100]，0 会清理告警设置
+	// [0, 100]. 0 clears the alert settings
 	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
 }
 

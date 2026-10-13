@@ -80,13 +80,13 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// supabase
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	BranchingEnabled *string `json:"BranchingEnabled,omitempty" xml:"BranchingEnabled,omitempty"`
 	// The list of components.
 	Components []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The ID of the RDS PostgreSQL database instance that the AI application is connected to.
+	// The instance ID of the RDS PostgreSQL database instance connected to the AI application.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// on
 	EipStatus *string `json:"EipStatus,omitempty" xml:"EipStatus,omitempty"`
-	// The instance class of the AI application.
+	// The instance type of the AI application.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The minor version details of each component of the RDS AI application instance.
+	// The minor versions of individual components of the RDS AI application instance.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// user
 	NatCreatedBy *string `json:"NatCreatedBy,omitempty" xml:"NatCreatedBy,omitempty"`
-	// The ID of the NAT gateway.
+	// The NAT gateway ID.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// off
 	NatStatus *string `json:"NatStatus,omitempty" xml:"NatStatus,omitempty"`
-	// The public connection string of the AI application.
+	// The public endpoint of the AI application.
 	//
 	// example:
 	//
@@ -184,31 +184,31 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	RetentionHours *string `json:"RetentionHours,omitempty" xml:"RetentionHours,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	SqlExtendMoInstanceId *string `json:"SqlExtendMoInstanceId,omitempty" xml:"SqlExtendMoInstanceId,omitempty"`
-	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
+	// The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	UploadKeyList []*DescribeAppInstanceAttributeResponseBodyUploadKeyList `json:"UploadKeyList,omitempty" xml:"UploadKeyList,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -216,7 +216,7 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// vsw-2zeaepb8k4ku05ov2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The internal connection string of the AI application.
+	// The internal endpoint of the AI application.
 	//
 	// example:
 	//
@@ -558,31 +558,31 @@ func (s *DescribeAppInstanceAttributeResponseBodyComponents) Validate() error {
 }
 
 type DescribeAppInstanceAttributeResponseBodyUploadKeyList struct {
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	IsSystemKey *bool `json:"IsSystemKey,omitempty" xml:"IsSystemKey,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	SlsStorageBytes *int64 `json:"SlsStorageBytes,omitempty" xml:"SlsStorageBytes,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//

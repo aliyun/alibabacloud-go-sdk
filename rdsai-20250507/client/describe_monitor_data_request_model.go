@@ -46,7 +46,7 @@ type DescribeMonitorDataRequest struct {
 	//
 	// 15
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The metric to query.
+	// The metric to query. Valid values:
 	//
 	// - pv
 	//

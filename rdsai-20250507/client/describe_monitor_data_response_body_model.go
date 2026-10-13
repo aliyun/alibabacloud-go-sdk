@@ -22,7 +22,7 @@ type iDescribeMonitorDataResponseBody interface {
 type DescribeMonitorDataResponseBody struct {
 	// The result.
 	Data []*DescribeMonitorDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type DescribeMonitorDataResponseBodyDataValue struct {
 	//
 	// 1774972800
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The returned value.
+	// The return value.
 	//
 	// example:
 	//

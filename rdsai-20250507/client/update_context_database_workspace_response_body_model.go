@@ -24,7 +24,7 @@ type iUpdateContextDatabaseWorkspaceResponseBody interface {
 }
 
 type UpdateContextDatabaseWorkspaceResponseBody struct {
-	// The time when the workspace was created, in ISO-8601 format.
+	// The time when the workspace was created, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdateContextDatabaseWorkspaceResponseBody struct {
 	//
 	// ws-as1llqmkol****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The modified name of the workspace.
+	// The updated name of the workspace.
 	//
 	// example:
 	//

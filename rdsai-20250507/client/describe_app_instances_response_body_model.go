@@ -24,9 +24,9 @@ type iDescribeAppInstancesResponseBody interface {
 }
 
 type DescribeAppInstancesResponseBody struct {
-	// A list of instances.
+	// The list of instances.
 	Instances []*DescribeAppInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// This parameter is reserved for future use.
+	// A reserved parameter. You can ignore this parameter.
 	//
 	// example:
 	//
@@ -134,21 +134,20 @@ func (s *DescribeAppInstancesResponseBody) Validate() error {
 }
 
 type DescribeAppInstancesResponseBodyInstances struct {
-	// The application name.
+	// The name of the AI application.
 	//
 	// example:
 	//
 	// test-supabase
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application type. The only supported value is **supabase**, which represents [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+	// The application type. Currently, only **supabase*	- is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
 	//
 	// example:
 	//
 	// supabase
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The components of the instance.
+	AppType    *string                                                `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	Components []*DescribeAppInstancesResponseBodyInstancesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The DB instance ID of the connected ApsaraDB RDS for PostgreSQL instance.
+	// The instance ID of the ApsaraDB RDS for PostgreSQL database that is connected to the AI application.
 	//
 	// example:
 	//
@@ -160,19 +159,19 @@ type DescribeAppInstancesResponseBodyInstances struct {
 	//
 	// rdsai.supabase.basic
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The minor version of the AI application.
+	// The minor version of the AI application instance.
 	//
 	// example:
 	//
 	// 20241231
 	InstanceMinorVersion *string `json:"InstanceMinorVersion,omitempty" xml:"InstanceMinorVersion,omitempty"`
-	// The ID of the application instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public connection string.
+	// The public endpoint of the AI application.
 	//
 	// example:
 	//
@@ -190,13 +189,13 @@ type DescribeAppInstancesResponseBodyInstances struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VSwitch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-2zeaepb8k4ku05ov2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC connection string.
+	// The internal endpoint of the AI application.
 	//
 	// example:
 	//
@@ -334,10 +333,8 @@ func (s *DescribeAppInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeAppInstancesResponseBodyInstancesComponents struct {
-	// The component status.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The component type.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAppInstancesResponseBodyInstancesComponents) String() string {

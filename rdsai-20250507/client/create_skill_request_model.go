@@ -17,6 +17,8 @@ type iCreateSkillRequest interface {
 	GetDescription() *string
 	SetName(v string) *CreateSkillRequest
 	GetName() *string
+	SetUpdateNote(v string) *CreateSkillRequest
+	GetUpdateNote() *string
 	SetUploadId(v string) *CreateSkillRequest
 	GetUploadId() *string
 	SetUploadToken(v string) *CreateSkillRequest
@@ -34,25 +36,31 @@ type CreateSkillRequest struct {
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The list of database types.
 	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	// The Skill description. The description can be up to 1000 characters in length.
+	// The skill description. The description can be up to 1000 characters in length.
 	//
 	// example:
 	//
 	// SQL query optimization skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Skill name. The name can contain only lowercase letters, digits, and hyphens.
+	// The skill name. The name can contain only lowercase letters, digits, and hyphens.
 	//
 	// example:
 	//
 	// query-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Skill upload session ID.
+	// The ContextDB skill version update note. Provide this value when confirming storage after validation passes. The note can be up to 1000 characters in length.
+	//
+	// example:
+	//
+	// Initial release
+	UpdateNote *string `json:"UpdateNote,omitempty" xml:"UpdateNote,omitempty"`
+	// The skill upload session ID.
 	//
 	// example:
 	//
 	// upload-example
 	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
-	// The Skill upload session token.
+	// The skill upload session token.
 	//
 	// example:
 	//
@@ -90,6 +98,10 @@ func (s *CreateSkillRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateSkillRequest) GetUpdateNote() *string {
+	return s.UpdateNote
+}
+
 func (s *CreateSkillRequest) GetUploadId() *string {
 	return s.UploadId
 }
@@ -119,6 +131,11 @@ func (s *CreateSkillRequest) SetDescription(v string) *CreateSkillRequest {
 
 func (s *CreateSkillRequest) SetName(v string) *CreateSkillRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateSkillRequest) SetUpdateNote(v string) *CreateSkillRequest {
+	s.UpdateNote = &v
 	return s
 }
 

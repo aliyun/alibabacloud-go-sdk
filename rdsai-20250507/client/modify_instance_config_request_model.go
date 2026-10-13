@@ -25,7 +25,7 @@ type iModifyInstanceConfigRequest interface {
 
 type ModifyInstanceConfigRequest struct {
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The idempotency parameter.
+	// The idempotence parameter.
 	//
 	// example:
 	//

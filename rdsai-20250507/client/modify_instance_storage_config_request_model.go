@@ -23,7 +23,7 @@ type iModifyInstanceStorageConfigRequest interface {
 
 type ModifyInstanceStorageConfigRequest struct {
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which ensures that the request is not repeated.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which prevents repeated submissions of requests.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type ModifyInstanceStorageConfigRequestConfigList struct {
 	//
 	// - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
 	//
-	// - **TENANT_ID**: the OSS directory name. You do not need to create it in advance.
+	// - **TENANT_ID**: the OSS directory name. You do not need to create it.
 	//
 	// - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
 	//

@@ -24,7 +24,7 @@ type DescribeCommonSandboxTemplatesRequest struct {
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that indicates the position from which the query starts. Set this parameter to empty to start from the beginning.
+	// The token that determines the start point of the query. Set this parameter to empty to start the query from the beginning.
 	//
 	// example:
 	//

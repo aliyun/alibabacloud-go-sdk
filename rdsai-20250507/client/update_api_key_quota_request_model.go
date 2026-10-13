@@ -22,7 +22,7 @@ type UpdateApiKeyQuotaRequest struct {
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A list of API keys.
+	// The list of API keys.
 	Keys []*UpdateApiKeyQuotaRequestKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *UpdateApiKeyQuotaRequest) Validate() error {
 }
 
 type UpdateApiKeyQuotaRequestKeys struct {
-	// The API key.
+	// API KEY
 	//
 	// example:
 	//
@@ -76,25 +76,25 @@ type UpdateApiKeyQuotaRequestKeys struct {
 	//
 	// 100000000
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The limit rate. This parameter is required when `LimitType` is set to `ratio`.
+	// The throttling ratio. This parameter is required when type is set to ratio.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float64 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The limit type. Valid values:
+	// The quota type. Valid values:
 	//
-	// - `ratio`: Allocates the quota proportionally.
+	// - ratio: by ratio.
 	//
-	// - `fixed`: Allocates a fixed quota.
+	// - fixed: by fixed value.
 	//
-	// - `auto`: Allocates the quota automatically.
+	// - auto: automatic allocation of EPS resource.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	// The token quota. This parameter is required when `LimitType` is set to `fixed`.
+	// The fixed throttling value. This parameter is required when type is set to fixed.
 	//
 	// example:
 	//

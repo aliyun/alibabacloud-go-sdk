@@ -22,7 +22,7 @@ type ModifyWhitelistIpsRequest struct {
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP whitelist. Before you modify the IP whitelist, call the DescribeInstanceIpWhitelist operation to query the existing IP whitelist of the instance.
+	// IP address whitelist. Before modifying IP address whitelist, call the DescribeInstanceIpWhitelist operation to query the existing IP whitelist of the instance.
 	//
 	// example:
 	//

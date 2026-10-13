@@ -16,7 +16,7 @@ type iListCustomAgentToolsResponseBody interface {
 }
 
 type ListCustomAgentToolsResponseBody struct {
-	// The returned data.
+	// The returned data object.
 	Data []*ListCustomAgentToolsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,17 +66,17 @@ func (s *ListCustomAgentToolsResponseBody) Validate() error {
 }
 
 type ListCustomAgentToolsResponseBodyData struct {
-	// The description in English.
+	// The English description.
 	//
 	// example:
 	//
 	// Queries RDS instances.
 	En *string `json:"En,omitempty" xml:"En,omitempty"`
-	// The description in Japanese.
+	// The Japanese description.
 	//
 	// example:
 	//
-	// RDS インスタンスの一覧を照会します。
+	// RDS インスタンスの一覧を照会します
 	Ja *string `json:"Ja,omitempty" xml:"Ja,omitempty"`
 	// The tool name.
 	//
@@ -84,11 +84,11 @@ type ListCustomAgentToolsResponseBodyData struct {
 	//
 	// describe_db_instances
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description in Traditional Chinese.
+	// The Traditional Chinese description.
 	//
 	// example:
 	//
-	// 查詢 RDS 實例清單。
+	// 查詢 RDS 實例清單
 	Tc *string `json:"Tc,omitempty" xml:"Tc,omitempty"`
 	// The read/write type of the tool.
 	//
@@ -96,11 +96,11 @@ type ListCustomAgentToolsResponseBodyData struct {
 	//
 	// get
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The description in Simplified Chinese.
+	// The Chinese description.
 	//
 	// example:
 	//
-	// 查询RDS实例列表。
+	// 查询RDS实例列表
 	Zh *string `json:"Zh,omitempty" xml:"Zh,omitempty"`
 }
 

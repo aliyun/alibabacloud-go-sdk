@@ -24,11 +24,13 @@ type iCreateMOUsageDetailExportRequest interface {
 }
 
 type CreateMOUsageDetailExportRequest struct {
+	// The API key to use.
+	//
 	// example:
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// 结束时间，UTC 0 时区 ISO8601 字符串，格式 yyyy-MM-ddTHH:mm:ssZ；与 StartTime 跨度不超过 30 天
+	// The inspection end time in the YYYY-MM-DDTHH:mm:ssZ format. The time range between StartTime and EndTime cannot exceed 30 days.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +38,21 @@ type CreateMOUsageDetailExportRequest struct {
 	//
 	// 2025-03-10T02:02:20Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The model to call.
+	//
 	// example:
 	//
 	// qwen-flash
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 起始时间，UTC 0 时区 ISO8601 字符串，格式 yyyy-MM-ddTHH:mm:ssZ
+	// The inspection start time in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// This parameter is required.
 	//
@@ -54,6 +60,8 @@ type CreateMOUsageDetailExportRequest struct {
 	//
 	// 2026-03-05T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The view type.
+	//
 	// example:
 	//
 	// text

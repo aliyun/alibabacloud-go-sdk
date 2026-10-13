@@ -78,7 +78,7 @@ type CreateContextDatabaseWorkspaceResponseBody struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The workspace status. Valid values:
 	//
-	// - Active: running normally.
+	// - Active: running as expected.
 	//
 	// - Locked: locked due to overdue payment or expiration.
 	//

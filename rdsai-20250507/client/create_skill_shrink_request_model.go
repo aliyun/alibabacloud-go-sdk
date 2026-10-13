@@ -17,6 +17,8 @@ type iCreateSkillShrinkRequest interface {
 	GetDescription() *string
 	SetName(v string) *CreateSkillShrinkRequest
 	GetName() *string
+	SetUpdateNote(v string) *CreateSkillShrinkRequest
+	GetUpdateNote() *string
 	SetUploadId(v string) *CreateSkillShrinkRequest
 	GetUploadId() *string
 	SetUploadToken(v string) *CreateSkillShrinkRequest
@@ -34,25 +36,31 @@ type CreateSkillShrinkRequest struct {
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The list of database types.
 	DbtypesShrink *string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty"`
-	// The Skill description. The description can be up to 1000 characters in length.
+	// The skill description. The description can be up to 1000 characters in length.
 	//
 	// example:
 	//
 	// SQL query optimization skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Skill name. The name can contain only lowercase letters, digits, and hyphens.
+	// The skill name. The name can contain only lowercase letters, digits, and hyphens.
 	//
 	// example:
 	//
 	// query-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Skill upload session ID.
+	// The ContextDB skill version update note. Provide this value when confirming storage after validation passes. The note can be up to 1000 characters in length.
+	//
+	// example:
+	//
+	// Initial release
+	UpdateNote *string `json:"UpdateNote,omitempty" xml:"UpdateNote,omitempty"`
+	// The skill upload session ID.
 	//
 	// example:
 	//
 	// upload-example
 	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
-	// The Skill upload session token.
+	// The skill upload session token.
 	//
 	// example:
 	//
@@ -90,6 +98,10 @@ func (s *CreateSkillShrinkRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateSkillShrinkRequest) GetUpdateNote() *string {
+	return s.UpdateNote
+}
+
 func (s *CreateSkillShrinkRequest) GetUploadId() *string {
 	return s.UploadId
 }
@@ -119,6 +131,11 @@ func (s *CreateSkillShrinkRequest) SetDescription(v string) *CreateSkillShrinkRe
 
 func (s *CreateSkillShrinkRequest) SetName(v string) *CreateSkillShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateSkillShrinkRequest) SetUpdateNote(v string) *CreateSkillShrinkRequest {
+	s.UpdateNote = &v
 	return s
 }
 

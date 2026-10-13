@@ -22,7 +22,7 @@ type iGetStandAloneReportsRequest interface {
 }
 
 type GetStandAloneReportsRequest struct {
-	// The end time filter in the format of YYYY-MM-DDTHH:mm:ssZ. If this parameter is not specified, no end time filter is applied.
+	// The end time filter in the YYYY-MM-DDTHH:mm:ssZ format. If this parameter is not specified, no filtering is applied based on the end time.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type GetStandAloneReportsRequest struct {
 	// 10
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The start time filter in the format of YYYY-MM-DDTHH:mm:ssZ. If this parameter is not specified, no start time filter is applied.
+	// The start time filter in the YYYY-MM-DDTHH:mm:ssZ format. If this parameter is not specified, no filtering is applied based on the start time.
 	//
 	// example:
 	//

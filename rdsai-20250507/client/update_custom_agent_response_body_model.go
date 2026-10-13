@@ -42,7 +42,7 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// QueryInstanceListAgent
+	// Query Instance List Agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
@@ -56,7 +56,7 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// I am your dedicated agent for querying instance lists
+	// I am your dedicated Agent for querying instance lists
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`

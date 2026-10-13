@@ -20,9 +20,9 @@ type iCreateApiKeyResponseBody interface {
 }
 
 type CreateApiKeyResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *CreateApiKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The daily quota of the API key.
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The API key name.
+	// The name of the API key.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota allocation method. Valid values:
+	// The quota type. Valid values:
 	//
 	// - **fixed**: By fixed value.
 	//

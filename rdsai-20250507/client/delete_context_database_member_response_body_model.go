@@ -26,7 +26,7 @@ type iDeleteContextDatabaseMemberResponseBody interface {
 }
 
 type DeleteContextDatabaseMemberResponseBody struct {
-	// The creation time.
+	// The time when the member was created.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *DeleteContextDatabaseMemberResponseBody) Validate() error {
 }
 
 type DeleteContextDatabaseMemberResponseBodyKeys struct {
-	// The creation time. This field is empty.
+	// The time when the API key was created. This field is empty.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DeleteContextDatabaseMemberResponseBodyKeys struct {
 	//
 	// (null)
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
-	// The API key suffix. This field is empty.
+	// The suffix of the API key. This field is empty.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type DeleteContextDatabaseMemberResponseBodyKeys struct {
 	//
 	// (null)
 	KeyId *int64 `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The API key prefix. This field is empty.
+	// The prefix of the API key. This field is empty.
 	//
 	// example:
 	//

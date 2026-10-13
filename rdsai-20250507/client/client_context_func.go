@@ -10,6 +10,178 @@ import (
 
 // Summary:
 //
+// Adds an exclusion item to an import task.
+//
+// Description:
+//
+// Adds a job exclusion item.
+//
+// @param request - AddContextDatabaseSyncJobExclusionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddContextDatabaseSyncJobExclusionResponse
+func (client *Client) AddContextDatabaseSyncJobExclusionWithContext(ctx context.Context, request *AddContextDatabaseSyncJobExclusionRequest, runtime *dara.RuntimeOptions) (_result *AddContextDatabaseSyncJobExclusionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		query["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddContextDatabaseSyncJobExclusion"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddContextDatabaseSyncJobExclusionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels an in-progress discovery task by task ID.
+//
+// Description:
+//
+// You can specify a ClientToken to ensure idempotence for write operations. If you do not specify this parameter, the backend automatically generates one.
+//
+// @param request - CancelContextDatabaseSyncDiscoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelContextDatabaseSyncDiscoveryResponse
+func (client *Client) CancelContextDatabaseSyncDiscoveryWithContext(ctx context.Context, request *CancelContextDatabaseSyncDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *CancelContextDatabaseSyncDiscoveryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelContextDatabaseSyncDiscovery"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelContextDatabaseSyncDiscoveryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels a run.
+//
+// Description:
+//
+// Write operations support idempotence through ClientToken. If ClientToken is not provided, the backend generates one automatically. Cancellation is best-effort. Completed RunItems are not affected.
+//
+// @param request - CancelContextDatabaseSyncRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelContextDatabaseSyncRunResponse
+func (client *Client) CancelContextDatabaseSyncRunWithContext(ctx context.Context, request *CancelContextDatabaseSyncRunRequest, runtime *dara.RuntimeOptions) (_result *CancelContextDatabaseSyncRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RunId) {
+		query["RunId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelContextDatabaseSyncRun"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelContextDatabaseSyncRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Sends a conversation message.
 //
 // @param tmpReq - ChatMessagesRequest
@@ -229,17 +401,19 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates an RDS Supabase instance.
+// Creates an RDS AI application instance.
 //
 // Description:
 //
-// ### Supported Engine
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### Related Function Documentation
+// ### Related documentation
 //
-//	Warning: This API operation involves a Fee. Carefully read the related Function Documentation before performing this operation.
+//	Warning: This API operation incurs fees. Read the related documentation carefully before you perform this operation.
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param tmpReq - CreateAppInstanceRequest
 //
@@ -417,7 +591,7 @@ func (client *Client) CreateContextDatabaseApiKeyWithContext(ctx context.Context
 //
 // Description:
 //
-// Creates a member. When GenerateInitialKey is set to true, the first API key is issued at the same time, and the plaintext ApiKey is returned in the response. This is a sensitive field and is returned only once. Store it securely. After the member is created, you can use the List or Get operation to query the member and the metadata of the API keys under the member.
+// Creates a member. If GenerateInitialKey is set to true, the first API key is also issued, and the plaintext ApiKey is returned in the response. This is a sensitive field and is returned only once. Store it securely. After the member is created, you can call the List or Get operation to query the member and the metadata of the API keys under the member.
 //
 // @param request - CreateContextDatabaseMemberRequest
 //
@@ -477,11 +651,235 @@ func (client *Client) CreateContextDatabaseMemberWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a workspace, the first member, and the first API key in a one-time onboarding flow.
+// Creates a synchronization connection.
 //
 // Description:
 //
-// Creates a workspace, the first member, and the first API key in a one-time onboarding flow. Returns the plaintext API key.
+// For write operations, you can specify a ClientToken to ensure idempotency. If no ClientToken is provided, the backend automatically generates one. Upon successful creation, the complete information of the created object is returned, including the ID that can be used for subsequent queries or updates.
+//
+// @param request - CreateContextDatabaseSyncConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContextDatabaseSyncConnectionResponse
+func (client *Client) CreateContextDatabaseSyncConnectionWithContext(ctx context.Context, request *CreateContextDatabaseSyncConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateContextDatabaseSyncConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthKind) {
+		query["AuthKind"] = request.AuthKind
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContextDatabaseSyncConnection"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContextDatabaseSyncConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an import task.
+//
+// Description:
+//
+// Write operations support idempotence via ClientToken. If ClientToken is not provided, the backend generates one automatically. Target is an implicit concept — you only need to provide KnowledgeBaseId, and the backend automatically creates or matches the Target.
+//
+// On success, the response returns the complete information of the created object. The Id field is active and can be used for subsequent queries or updates.
+//
+// @param tmpReq - CreateContextDatabaseSyncJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContextDatabaseSyncJobResponse
+func (client *Client) CreateContextDatabaseSyncJobWithContext(ctx context.Context, tmpReq *CreateContextDatabaseSyncJobRequest, runtime *dara.RuntimeOptions) (_result *CreateContextDatabaseSyncJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateContextDatabaseSyncJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filters) {
+		request.FiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filters, dara.String("Filters"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.FiltersShrink) {
+		query["Filters"] = request.FiltersShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.TargetId) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !dara.IsNil(request.TargetKnowledgeBaseId) {
+		query["TargetKnowledgeBaseId"] = request.TargetKnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TargetKnowledgeBaseName) {
+		query["TargetKnowledgeBaseName"] = request.TargetKnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContextDatabaseSyncJob"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContextDatabaseSyncJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a data selection scope.
+//
+// Description:
+//
+// Write operations support idempotence by passing a ClientToken. If no token is provided, the backend generates one automatically. After creating a data selection scope, you typically need to call StartContextDatabaseSyncSourceDiscovery to discover available nodes.
+//
+// On success, the response returns the complete information of the created object. The Id field can be used for subsequent queries or updates.
+//
+// @param tmpReq - CreateContextDatabaseSyncSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContextDatabaseSyncSourceResponse
+func (client *Client) CreateContextDatabaseSyncSourceWithContext(ctx context.Context, tmpReq *CreateContextDatabaseSyncSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateContextDatabaseSyncSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateContextDatabaseSyncSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SourceConfig) {
+		request.SourceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceConfig, dara.String("SourceConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConnectionId) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SourceConfigShrink) {
+		query["SourceConfig"] = request.SourceConfigShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContextDatabaseSyncSource"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContextDatabaseSyncSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a workspace, the first member, and the first API key in a one-time onboarding process.
+//
+// Description:
+//
+// Creates a workspace along with the first member and the first API key in a one-time onboarding process. The plaintext API key is returned in the response.
 //
 // @param request - CreateContextDatabaseWorkspaceRequest
 //
@@ -675,13 +1073,13 @@ func (client *Client) CreateInspectionTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 触发 MO 用量明细 CSV 异步导出任务
+// Triggers an asynchronous export task for MO usage details in CSV format.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
-// [RDS AI 助手旗舰版](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - CreateMOUsageDetailExportRequest
 //
@@ -845,9 +1243,9 @@ func (client *Client) CreateSandboxTemplateWithContext(ctx context.Context, tmpR
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Warning: This API operation incurs fees. Read the related documentation carefully before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related feature documentation carefully before you perform this operation.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -937,7 +1335,7 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a user-defined Skill.
+// Creates a user-defined skill.
 //
 // @param tmpReq - CreateSkillRequest
 //
@@ -976,6 +1374,10 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, tmpReq *Create
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.UpdateNote) {
+		query["UpdateNote"] = request.UpdateNote
 	}
 
 	if !dara.IsNil(request.UploadId) {
@@ -1083,7 +1485,7 @@ func (client *Client) DeleteApiKeyWithContext(ctx context.Context, request *Dele
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-//	Notice: Deleting an RDS Supabase project does not automatically delete the ApsaraDB RDS for PostgreSQL instance or the Internet NAT gateway that were created with the project. You must [manual release the instance](https://help.aliyun.com/document_detail/96749.html) and delete the [Internet NAT gateway](https://help.aliyun.com/document_detail/121139.html) and [EIP](https://help.aliyun.com/document_detail/121527.html).
+//	Notice: Deleting an RDS Supabase project does not automatically delete the ApsaraDB RDS for PostgreSQL instance or the Internet NAT gateway that were created along with the project. You must [manual release the instance](https://help.aliyun.com/document_detail/96749.html) and delete the [Internet NAT gateway](https://help.aliyun.com/document_detail/121139.html) and [EIP](https://help.aliyun.com/document_detail/121527.html).
 //
 // @param request - DeleteAppInstanceRequest
 //
@@ -1139,11 +1541,11 @@ func (client *Client) DeleteAppInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a ContextDB member.
+// Deletes a context database member.
 //
 // Description:
 //
-// Deletes a member (hard delete, not recoverable).
+// Deletes a member. This is a hard delete and cannot be undone.
 //
 // @param request - DeleteContextDatabaseMemberRequest
 //
@@ -1191,11 +1593,179 @@ func (client *Client) DeleteContextDatabaseMemberWithContext(ctx context.Context
 
 // Summary:
 //
+// Deletes a data source.
+//
+// Description:
+//
+// For write operations, you can specify a ClientToken to ensure idempotency. If you do not specify a ClientToken, the backend automatically generates one.
+//
+// @param request - DeleteContextDatabaseSyncConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContextDatabaseSyncConnectionResponse
+func (client *Client) DeleteContextDatabaseSyncConnectionWithContext(ctx context.Context, request *DeleteContextDatabaseSyncConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteContextDatabaseSyncConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConnectionId) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContextDatabaseSyncConnection"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContextDatabaseSyncConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an import task.
+//
+// Description:
+//
+// You can provide a ClientToken to ensure idempotency for write operations. If not provided, the backend automatically generates one.
+//
+// @param request - DeleteContextDatabaseSyncJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContextDatabaseSyncJobResponse
+func (client *Client) DeleteContextDatabaseSyncJobWithContext(ctx context.Context, request *DeleteContextDatabaseSyncJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteContextDatabaseSyncJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContextDatabaseSyncJob"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContextDatabaseSyncJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data selection scope.
+//
+// Description:
+//
+// Write operations support idempotence through ClientToken. If ClientToken is not provided, the backend generates one automatically.
+//
+// @param request - DeleteContextDatabaseSyncSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContextDatabaseSyncSourceResponse
+func (client *Client) DeleteContextDatabaseSyncSourceWithContext(ctx context.Context, request *DeleteContextDatabaseSyncSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteContextDatabaseSyncSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContextDatabaseSyncSource"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContextDatabaseSyncSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a ContextDB workspace.
 //
 // Description:
 //
-// Deletes a workspace. This is a hard delete and cannot be recovered. After successful deletion, local metadata is soft-deleted synchronously. Deleted workspaces no longer count toward the quota.
+// Deletes a workspace. This is a hard delete and cannot be recovered. After the workspace is deleted, the local metadata is soft-deleted synchronously. Deleted workspaces no longer count toward the quota.
 //
 // @param request - DeleteContextDatabaseWorkspaceRequest
 //
@@ -1287,7 +1857,7 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS Supabase
 //
@@ -1499,11 +2069,11 @@ func (client *Client) DescribeAppInstanceAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// This API retrieves a list of RDS AI application instances.
+// Queries a list of RDS AI application instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
@@ -1631,7 +2201,7 @@ func (client *Client) DescribeCommonSandboxTemplatesWithContext(ctx context.Cont
 
 // Summary:
 //
-// This API retrieves the list of events.
+// Queries a list of events.
 //
 // @param request - DescribeEventsListRequest
 //
@@ -1819,11 +2389,11 @@ func (client *Client) DescribeInstanceEndpointsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the IP whitelist of an ApsaraDB RDS AI application instance.
+// Queries the IP whitelist of an RDS AI application instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -2153,13 +2723,13 @@ func (client *Client) DescribeMOTokenUsageDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查看 model operator 实例具体 token 汇总情况
+// Queries the token usage summary for a model operator instance.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
-// [RDS AI 助手旗舰版](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeMOTokenUsageSummaryRequest
 //
@@ -2223,13 +2793,13 @@ func (client *Client) DescribeMOTokenUsageSummaryWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询 MO 用量明细 CSV 异步导出任务的状态/下载链接
+// Queries the status or download link of an asynchronous CSV export task for MO usage details.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
-// [RDS AI 助手旗舰版](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeMOUsageDetailExportRequest
 //
@@ -2273,7 +2843,7 @@ func (client *Client) DescribeMOUsageDetailExportWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the basic information and usage of RDS AI Assistant Ultimate Edition.
+// Queries the basic information and usage of an RDS AI Assistant Ultimate Edition instance.
 //
 // Description:
 //
@@ -2327,7 +2897,7 @@ func (client *Client) DescribeModelOperatorWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries instance monitoring data of an ApsaraDB RDS AI Assistant Ultimate Edition instance.
+// Queries instance monitoring data of an RDS AI Assistant Ultimate Edition instance.
 //
 // Description:
 //
@@ -2403,7 +2973,7 @@ func (client *Client) DescribeMonitorDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries the list of sandbox templates available for creating a Supabase sandbox.
+// Queries the list of sandbox templates used to create Supabase sandboxes.
 //
 // Description:
 //
@@ -2485,13 +3055,13 @@ func (client *Client) DescribeSandboxTemplatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Describes the whitelist of an RDS AI Assistant Enterprise Edition instance.
+// Queries the whitelist of an RDS AI Assistant Ultimate Edition instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeWhitelistIpsRequest
 //
@@ -2535,13 +3105,13 @@ func (client *Client) DescribeWhitelistIpsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Disables the sandbox feature and Edge Routine capabilities for a Supabase instance. Note: This operation deletes all sandboxes and edge functions of the instance. Fully assess business risks before performing this operation.
+// Disables the sandbox and Edge Routine capabilities of a Supabase instance. Note: This operation deletes all sandboxes and Edge Routines of the instance. Fully assess the business risks before performing this operation.
 //
 // Description:
 //
-// Disables the sandbox feature and Edge Routine capabilities for a Supabase instance.
+// Disables the sandbox and Edge Routine capabilities of a Supabase instance.
 //
-//	Notice: This operation deletes all sandboxes and edge functions of the Supabase instance. Fully assess business risks before performing this operation.
+//	Notice: This operation deletes all sandboxes and Edge Routines of the Supabase instance. Fully assess the business risks before performing this operation.
 //
 // @param request - DisableAgentRuntimeRequest
 //
@@ -2605,7 +3175,7 @@ func (client *Client) DisableAgentRuntimeWithContext(ctx context.Context, reques
 //
 // ### Before you begin
 //
-// Before using this feature, you must complete [service-linked role authorization](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
+// Before you use this feature, [authorize the service-linked role](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
 //
 // @param request - EnableAgentRuntimeRequest
 //
@@ -2669,13 +3239,13 @@ func (client *Client) EnableAgentRuntimeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # GetAvailableLLMModels
+// Retrieves the list of large language models supported by the current RDS Supabase AI gateway.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
-// # RDS SUPABASE
+// RDS Supabase.
 //
 // @param request - GetAvailableLLMModelsRequest
 //
@@ -2727,7 +3297,7 @@ func (client *Client) GetAvailableLLMModelsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取会话可选模型
+// Retrieves the available models for a session.
 //
 // @param request - GetChatModelRequest
 //
@@ -2754,6 +3324,474 @@ func (client *Client) GetChatModelWithContext(ctx context.Context, request *GetC
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a datasource configuration.
+//
+// Description:
+//
+// Retrieves the details of a connection.
+//
+// @param request - GetContextDatabaseSyncConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncConnectionResponse
+func (client *Client) GetContextDatabaseSyncConnectionWithContext(ctx context.Context, request *GetContextDatabaseSyncConnectionRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionId) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncConnection"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the authorization scope of a data source.
+//
+// Description:
+//
+// Queries the authorization scope of a connection.
+//
+// @param request - GetContextDatabaseSyncConnectionAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncConnectionAuthorizationResponse
+func (client *Client) GetContextDatabaseSyncConnectionAuthorizationWithContext(ctx context.Context, request *GetContextDatabaseSyncConnectionAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncConnectionAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionId) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncConnectionAuthorization"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncConnectionAuthorizationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status of a discovery task by task ID.
+//
+// Description:
+//
+// Queries the status of a discovery task by task ID.
+//
+// @param request - GetContextDatabaseSyncDiscoveryTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncDiscoveryTaskResponse
+func (client *Client) GetContextDatabaseSyncDiscoveryTaskWithContext(ctx context.Context, request *GetContextDatabaseSyncDiscoveryTaskRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncDiscoveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncDiscoveryTask"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncDiscoveryTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an import job.
+//
+// Description:
+//
+// Retrieves the details of a job.
+//
+// @param request - GetContextDatabaseSyncJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncJobResponse
+func (client *Client) GetContextDatabaseSyncJobWithContext(ctx context.Context, request *GetContextDatabaseSyncJobRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncJob"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries whether an import task can be started.
+//
+// Description:
+//
+// Queries whether a job can be started.
+//
+// @param request - GetContextDatabaseSyncJobReadinessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncJobReadinessResponse
+func (client *Client) GetContextDatabaseSyncJobReadinessWithContext(ctx context.Context, request *GetContextDatabaseSyncJobReadinessRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncJobReadinessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncJobReadiness"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncJobReadinessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the scheduling configuration of an import task.
+//
+// Description:
+//
+// Queries the scheduling configuration of a job.
+//
+// @param request - GetContextDatabaseSyncJobScheduleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncJobScheduleResponse
+func (client *Client) GetContextDatabaseSyncJobScheduleWithContext(ctx context.Context, request *GetContextDatabaseSyncJobScheduleRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncJobScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncJobSchedule"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncJobScheduleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a run.
+//
+// Description:
+//
+// Retrieves the details of a run.
+//
+// @param request - GetContextDatabaseSyncRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncRunResponse
+func (client *Client) GetContextDatabaseSyncRunWithContext(ctx context.Context, request *GetContextDatabaseSyncRunRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RunId) {
+		query["RunId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncRun"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a data selection scope.
+//
+// Description:
+//
+// Retrieves the details of a source.
+//
+// @param request - GetContextDatabaseSyncSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncSourceResponse
+func (client *Client) GetContextDatabaseSyncSourceWithContext(ctx context.Context, request *GetContextDatabaseSyncSourceRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncSource"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the current node selection in the data selection scope.
+//
+// Description:
+//
+// Queries the current node selection of the source.
+//
+// @param request - GetContextDatabaseSyncSourceSelectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseSyncSourceSelectionResponse
+func (client *Client) GetContextDatabaseSyncSourceSelectionWithContext(ctx context.Context, request *GetContextDatabaseSyncSourceSelectionRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseSyncSourceSelectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseSyncSourceSelection"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseSyncSourceSelectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2824,7 +3862,7 @@ func (client *Client) GetConversationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves details for a specified custom agent.
+// Queries a dedicated agent created by the user.
 //
 // @param request - GetCustomAgentRequest
 //
@@ -2980,7 +4018,7 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 
 // Summary:
 //
-// Retrieves order information for the RDS AI Assistant Ultimate Edition.
+// Retrieves order information for RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
@@ -3142,7 +4180,7 @@ func (client *Client) GetScheduledReportsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the details of a specified Skill. You can retrieve your own Skills or system preset Skills.
+// Retrieves the details of a specified skill. You can retrieve your own skills or system preset skills.
 //
 // @param request - GetSkillRequest
 //
@@ -3157,12 +4195,24 @@ func (client *Client) GetSkillWithContext(ctx context.Context, request *GetSkill
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Download) {
+		query["Download"] = request.Download
+	}
+
 	if !dara.IsNil(request.Language) {
 		query["Language"] = request.Language
 	}
 
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
 	if !dara.IsNil(request.SkillId) {
 		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		query["VersionId"] = request.VersionId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -3372,11 +4422,11 @@ func (client *Client) ListContextDatabaseApiKeysWithContext(ctx context.Context,
 
 // Summary:
 //
-// Lists the members of a context database.
+// Lists context database members.
 //
 // Description:
 //
-// Lists all members in a specified workspace. Each member includes a list of API keys associated with the member (plaintext values are not returned).
+// Lists all members in a specified workspace. Each member includes a list of API keys (plaintext values are not returned).
 //
 // @param request - ListContextDatabaseMembersRequest
 //
@@ -3418,6 +4468,588 @@ func (client *Client) ListContextDatabaseMembersWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListContextDatabaseMembersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the datasource configurations in a workspace.
+//
+// Description:
+//
+// The list operation returns paginated results by default. Page and PageSize are optional parameters.
+//
+// The Data list field in the response is returned as an array. Total indicates the total number of records that match the specified conditions.
+//
+// @param request - ListContextDatabaseSyncConnectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncConnectionsResponse
+func (client *Client) ListContextDatabaseSyncConnectionsWithContext(ctx context.Context, request *ListContextDatabaseSyncConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncConnectionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncConnections"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncConnectionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the documents associated with an import task.
+//
+// Description:
+//
+// By default, this operation returns paginated results. The Page and PageSize parameters are optional. The Data field in the response is returned as an array, and the Total field indicates the total number of matching entries.
+//
+// @param request - ListContextDatabaseSyncJobDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncJobDocumentsResponse
+func (client *Client) ListContextDatabaseSyncJobDocumentsWithContext(ctx context.Context, request *ListContextDatabaseSyncJobDocumentsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncJobDocumentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncJobDocuments"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncJobDocumentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the exclusions of an import task.
+//
+// Description:
+//
+// This operation uses pagination by default. Page and PageSize are optional parameters.
+//
+// The Data field in the response returns an array. Total indicates the total number of records that match the specified conditions.
+//
+// @param request - ListContextDatabaseSyncJobExclusionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncJobExclusionsResponse
+func (client *Client) ListContextDatabaseSyncJobExclusionsWithContext(ctx context.Context, request *ListContextDatabaseSyncJobExclusionsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncJobExclusionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncJobExclusions"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncJobExclusionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists import tasks.
+//
+// Description:
+//
+// The list operation returns paginated results by default. Page and PageSize are optional parameters.
+//
+// The Data list field in the response is returned as an array. Total indicates the total number of records that match the specified conditions.
+//
+// @param request - ListContextDatabaseSyncJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncJobsResponse
+func (client *Client) ListContextDatabaseSyncJobsWithContext(ctx context.Context, request *ListContextDatabaseSyncJobsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncJobs"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists available synchronization plugins.
+//
+// Description:
+//
+// This operation returns a fixed-length array of available plugins in the workspace and does not support pagination.
+//
+// The Data list field in the response is returned as an array, and Total indicates the total number of entries that meet the conditions.
+//
+// @param request - ListContextDatabaseSyncPluginsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncPluginsResponse
+func (client *Client) ListContextDatabaseSyncPluginsWithContext(ctx context.Context, request *ListContextDatabaseSyncPluginsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncPluginsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncPlugins"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncPluginsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the run records.
+//
+// Description:
+//
+// The list API returns paginated results by default. The Page and PageSize parameters are optional. Run records are a list of RunItems that show the processing results of each document in each import run.
+//
+// The Data list field in the response is returned as an array, and Total indicates the total number of entries that meet the conditions.
+//
+// @param request - ListContextDatabaseSyncRunItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncRunItemsResponse
+func (client *Client) ListContextDatabaseSyncRunItemsWithContext(ctx context.Context, request *ListContextDatabaseSyncRunItemsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncRunItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RunId) {
+		query["RunId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncRunItems"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncRunItemsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出 Run 日志
+//
+// Description:
+//
+// 列表接口默认分页返回，Page 与 PageSize 为可选参数。
+//
+// 响应中的 Data 列表字段使用数组返回，Total 表示符合条件的总条数。
+//
+// @param request - ListContextDatabaseSyncRunLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncRunLogsResponse
+func (client *Client) ListContextDatabaseSyncRunLogsWithContext(ctx context.Context, request *ListContextDatabaseSyncRunLogsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncRunLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RunId) {
+		query["RunId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncRunLogs"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncRunLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the runs.
+//
+// Description:
+//
+// By default, this operation returns paginated results. The Page and PageSize parameters are optional.
+//
+// The Data field in the response is returned as an array, and the Total field indicates the total number of items that meet the query conditions.
+//
+// @param request - ListContextDatabaseSyncRunsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncRunsResponse
+func (client *Client) ListContextDatabaseSyncRunsWithContext(ctx context.Context, request *ListContextDatabaseSyncRunsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncRuns"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncRunsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the discovered tree nodes for the data selection scope.
+//
+// Description:
+//
+// List operations return paginated results by default. Page and PageSize are optional parameters. The Data list field in the response is returned as an array, and Total indicates the total number of entries that meet the conditions.
+//
+// @param request - ListContextDatabaseSyncSourceTreeNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncSourceTreeNodesResponse
+func (client *Client) ListContextDatabaseSyncSourceTreeNodesWithContext(ctx context.Context, request *ListContextDatabaseSyncSourceTreeNodesRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncSourceTreeNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncSourceTreeNodes"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncSourceTreeNodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the data selection scopes.
+//
+// Description:
+//
+// By default, the list operation returns paginated results. Page and PageSize are optional parameters. The Data list field in the response is returned as an array, and Total indicates the total number of entries that meet the conditions.
+//
+// @param request - ListContextDatabaseSyncSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseSyncSourcesResponse
+func (client *Client) ListContextDatabaseSyncSourcesWithContext(ctx context.Context, request *ListContextDatabaseSyncSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseSyncSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseSyncSources"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseSyncSourcesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3488,7 +5120,7 @@ func (client *Client) ListContextDatabaseWorkspacesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Lists your custom agents.
+// Queries the list of dedicated agents created by the user.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -3536,13 +5168,13 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// # ListLLMTokenUsage
+// Retrieves the AI gateway token usage for an RDS Supabase instance.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
-// # RDS SUPABASE
+// RDS Supabase.
 //
 // @param request - ListLLMTokenUsageRequest
 //
@@ -3679,6 +5311,22 @@ func (client *Client) ListSkillWithContext(ctx context.Context, request *ListSki
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Scope) {
+		query["Scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -3930,11 +5578,11 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the IP whitelist of an ApsaraDB RDS AI application instance.
+// Modifies the IP whitelist of an RDS AI application instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -4538,13 +6186,13 @@ func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the IP whitelist for an RDS AI Assistant Enterprise Edition instance.
+// Modifies the IP whitelist of an RDS AI Assistant Ultimate Edition instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ModifyWhitelistIpsRequest
 //
@@ -4582,6 +6230,66 @@ func (client *Client) ModifyWhitelistIpsWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyWhitelistIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an exclusion item for an import job.
+//
+// Description:
+//
+// Deletes an exclusion item for a job.
+//
+// @param request - RemoveContextDatabaseSyncJobExclusionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveContextDatabaseSyncJobExclusionResponse
+func (client *Client) RemoveContextDatabaseSyncJobExclusionWithContext(ctx context.Context, request *RemoveContextDatabaseSyncJobExclusionRequest, runtime *dara.RuntimeOptions) (_result *RemoveContextDatabaseSyncJobExclusionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		query["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveContextDatabaseSyncJobExclusion"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveContextDatabaseSyncJobExclusionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4658,13 +6366,13 @@ func (client *Client) RenameApiKeyWithContext(ctx context.Context, request *Rena
 
 // Summary:
 //
-// Resets an API key.
+// Resets the API key.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Applicable engine
 //
-// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ResetApiKeyRequest
 //
@@ -4712,7 +6420,7 @@ func (client *Client) ResetApiKeyWithContext(ctx context.Context, request *Reset
 
 // Summary:
 //
-// Resets the keys of an RDS AI instance, including AnonKey, ServiceKey, and JwtSecret. After the reset, the old keys and secret become invalid immediately. Ensure that your applications are adapted accordingly.
+// Resets the keys of an RDS AI instance, including AnonKey, ServiceKey, and JwtSecret. After the reset, the old keys and secret become invalid immediately. Ensure that your applications are updated accordingly.
 //
 // Description:
 //
@@ -4770,7 +6478,7 @@ func (client *Client) ResetInstanceKeysWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Resets the logon password and database access password of an ApsaraDB RDS AI application instance.
+// Resets the logon password and database access password of an RDS AI application instance.
 //
 // Description:
 //
@@ -4782,7 +6490,7 @@ func (client *Client) ResetInstanceKeysWithContext(ctx context.Context, request 
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// > Currently, only the password of the RDS Supabase Dashboard user can be reset.
+// > Currently, only the password of the RDS Supabase Dashboard user can be modified.
 //
 // @param request - ResetInstancePasswordRequest
 //
@@ -4904,7 +6612,63 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Revokes a context database API key.
+// 基于快照重试失败明细
+//
+// Description:
+//
+// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。 重试会基于失败项生成新的 Run，原 Run 状态保持不变。
+//
+// @param request - RetryFailedContextDatabaseSyncRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryFailedContextDatabaseSyncRunResponse
+func (client *Client) RetryFailedContextDatabaseSyncRunWithContext(ctx context.Context, request *RetryFailedContextDatabaseSyncRunRequest, runtime *dara.RuntimeOptions) (_result *RetryFailedContextDatabaseSyncRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RunId) {
+		query["RunId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryFailedContextDatabaseSyncRun"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryFailedContextDatabaseSyncRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes an API key for a context database.
 //
 // Description:
 //
@@ -4950,6 +6714,122 @@ func (client *Client) RevokeContextDatabaseApiKeyWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeContextDatabaseApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Manually triggers a run.
+//
+// Description:
+//
+// Write operations support idempotence by passing a ClientToken. If no ClientToken is provided, the backend generates one automatically.
+//
+// @param request - StartContextDatabaseSyncRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartContextDatabaseSyncRunResponse
+func (client *Client) StartContextDatabaseSyncRunWithContext(ctx context.Context, request *StartContextDatabaseSyncRunRequest, runtime *dara.RuntimeOptions) (_result *StartContextDatabaseSyncRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartContextDatabaseSyncRun"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartContextDatabaseSyncRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates a snapshot discovery task for data selection scope configuration.
+//
+// Description:
+//
+// Write operations support idempotence by passing a ClientToken. If no ClientToken is provided, the backend generates one automatically. Discovery is an asynchronous operation. The operation returns a discovery task identifier. Poll for results to retrieve SelectedNodeKeys.
+//
+// @param request - StartContextDatabaseSyncSourceDiscoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartContextDatabaseSyncSourceDiscoveryResponse
+func (client *Client) StartContextDatabaseSyncSourceDiscoveryWithContext(ctx context.Context, request *StartContextDatabaseSyncSourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *StartContextDatabaseSyncSourceDiscoveryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartContextDatabaseSyncSourceDiscovery"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartContextDatabaseSyncSourceDiscoveryResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5030,7 +6910,7 @@ func (client *Client) StartInstanceWithContext(ctx context.Context, request *Sta
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5088,13 +6968,13 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// # Modify the API KEY Quota
+// Modifies the quota of an API key.
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
-// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - UpdateApiKeyQuotaRequest
 //
@@ -5148,7 +7028,7 @@ func (client *Client) UpdateApiKeyQuotaWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates the display metadata of a ContextDB API key.
+// Updates the API key of a context database.
 //
 // Description:
 //
@@ -5272,6 +7152,432 @@ func (client *Client) UpdateContextDatabaseMemberWithContext(ctx context.Context
 
 // Summary:
 //
+// 更新连接元数据
+//
+// Description:
+//
+// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+//
+// @param request - UpdateContextDatabaseSyncConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseSyncConnectionResponse
+func (client *Client) UpdateContextDatabaseSyncConnectionWithContext(ctx context.Context, request *UpdateContextDatabaseSyncConnectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseSyncConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConnectionId) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseSyncConnection"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseSyncConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 单独轮换连接凭据
+//
+// Description:
+//
+// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+//
+// @param tmpReq - UpdateContextDatabaseSyncConnectionCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseSyncConnectionCredentialResponse
+func (client *Client) UpdateContextDatabaseSyncConnectionCredentialWithContext(ctx context.Context, tmpReq *UpdateContextDatabaseSyncConnectionCredentialRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseSyncConnectionCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateContextDatabaseSyncConnectionCredentialShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Credentials) {
+		request.CredentialsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Credentials, dara.String("Credentials"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConnectionId) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !dara.IsNil(request.CredentialsShrink) {
+		query["Credentials"] = request.CredentialsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseSyncConnectionCredential"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseSyncConnectionCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Job 元数据
+//
+// Description:
+//
+// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。 Target 为隐含概念，调用方只需传入 KnowledgeBaseId，后端自动创建/匹配 Target。
+//
+// @param tmpReq - UpdateContextDatabaseSyncJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseSyncJobResponse
+func (client *Client) UpdateContextDatabaseSyncJobWithContext(ctx context.Context, tmpReq *UpdateContextDatabaseSyncJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseSyncJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateContextDatabaseSyncJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filters) {
+		request.FiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filters, dara.String("Filters"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.FiltersShrink) {
+		query["Filters"] = request.FiltersShrink
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TargetKnowledgeBaseId) {
+		query["TargetKnowledgeBaseId"] = request.TargetKnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TargetKnowledgeBaseName) {
+		query["TargetKnowledgeBaseName"] = request.TargetKnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseSyncJob"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseSyncJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Job 调度配置
+//
+// Description:
+//
+// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+//
+// @param tmpReq - UpdateContextDatabaseSyncJobScheduleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseSyncJobScheduleResponse
+func (client *Client) UpdateContextDatabaseSyncJobScheduleWithContext(ctx context.Context, tmpReq *UpdateContextDatabaseSyncJobScheduleRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseSyncJobScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateContextDatabaseSyncJobScheduleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DailyTimes) {
+		request.DailyTimesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DailyTimes, dara.String("DailyTimes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DailyTimesShrink) {
+		query["DailyTimes"] = request.DailyTimesShrink
+	}
+
+	if !dara.IsNil(request.IntervalMinutes) {
+		query["IntervalMinutes"] = request.IntervalMinutes
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.MissedPolicy) {
+		query["MissedPolicy"] = request.MissedPolicy
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseSyncJobSchedule"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseSyncJobScheduleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the metadata of a data selection scope.
+//
+// Description:
+//
+// Write operations support idempotence via ClientToken. If ClientToken is not provided, the backend generates one automatically.
+//
+// @param tmpReq - UpdateContextDatabaseSyncSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseSyncSourceResponse
+func (client *Client) UpdateContextDatabaseSyncSourceWithContext(ctx context.Context, tmpReq *UpdateContextDatabaseSyncSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseSyncSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateContextDatabaseSyncSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SourceConfig) {
+		request.SourceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceConfig, dara.String("SourceConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SourceConfigShrink) {
+		query["SourceConfig"] = request.SourceConfigShrink
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseSyncSource"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseSyncSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the explicit node selection for the data selection scope.
+//
+// Description:
+//
+// For write operations, you can pass the ClientToken parameter to ensure idempotency. If this parameter is not provided, the backend automatically generates one.
+//
+// @param tmpReq - UpdateContextDatabaseSyncSourceSelectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseSyncSourceSelectionResponse
+func (client *Client) UpdateContextDatabaseSyncSourceSelectionWithContext(ctx context.Context, tmpReq *UpdateContextDatabaseSyncSourceSelectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseSyncSourceSelectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateContextDatabaseSyncSourceSelectionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SelectedNodeKeys) {
+		request.SelectedNodeKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedNodeKeys, dara.String("SelectedNodeKeys"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.SelectedNodeKeysShrink) {
+		query["SelectedNodeKeys"] = request.SelectedNodeKeysShrink
+	}
+
+	if !dara.IsNil(request.SelectionPolicy) {
+		query["SelectionPolicy"] = request.SelectionPolicy
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseSyncSourceSelection"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseSyncSourceSelectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a ContextDB workspace.
 //
 // Description:
@@ -5324,7 +7630,7 @@ func (client *Client) UpdateContextDatabaseWorkspaceWithContext(ctx context.Cont
 
 // Summary:
 //
-// Updates a custom agent.
+// Updates a Custom Agent.
 //
 // @param tmpReq - UpdateCustomAgentRequest
 //
@@ -5398,13 +7704,13 @@ func (client *Client) UpdateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates the alert threshold percentage for API keys.
+// Updates the alert threshold percentage for an API key.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - UpdateMOQuotaAlertThresholdRequest
 //
@@ -5458,7 +7764,7 @@ func (client *Client) UpdateMOQuotaAlertThresholdWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates the information of a specified skill.
+// Updates the information of a specified Skill.
 //
 // @param tmpReq - UpdateSkillRequest
 //
@@ -5503,6 +7809,22 @@ func (client *Client) UpdateSkillWithContext(ctx context.Context, tmpReq *Update
 		query["SkillId"] = request.SkillId
 	}
 
+	if !dara.IsNil(request.UpdateNote) {
+		query["UpdateNote"] = request.UpdateNote
+	}
+
+	if !dara.IsNil(request.UploadId) {
+		query["UploadId"] = request.UploadId
+	}
+
+	if !dara.IsNil(request.UploadToken) {
+		query["UploadToken"] = request.UploadToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5518,6 +7840,62 @@ func (client *Client) UpdateSkillWithContext(ctx context.Context, tmpReq *Update
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSkillResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates datasource credentials and authorization.
+//
+// Description:
+//
+// Validates the connection credentials and authorization.
+//
+// @param request - VerifyContextDatabaseSyncConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyContextDatabaseSyncConnectionResponse
+func (client *Client) VerifyContextDatabaseSyncConnectionWithContext(ctx context.Context, request *VerifyContextDatabaseSyncConnectionRequest, runtime *dara.RuntimeOptions) (_result *VerifyContextDatabaseSyncConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConnectionId) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyContextDatabaseSyncConnection"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyContextDatabaseSyncConnectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

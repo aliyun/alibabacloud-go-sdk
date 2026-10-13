@@ -33,7 +33,7 @@ type ModifyInstanceRAGConfigResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The RAG Agent status. Valid values:
+	// The RAG Agent status.
 	//
 	// - **true**: Enabled.
 	//

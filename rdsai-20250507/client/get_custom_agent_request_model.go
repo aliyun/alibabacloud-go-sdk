@@ -14,7 +14,7 @@ type iGetCustomAgentRequest interface {
 }
 
 type GetCustomAgentRequest struct {
-	// The ID of the custom agent.
+	// The ID of the dedicated agent.
 	//
 	// example:
 	//

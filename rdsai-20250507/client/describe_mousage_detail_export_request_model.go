@@ -14,6 +14,8 @@ type iDescribeMOUsageDetailExportRequest interface {
 }
 
 type DescribeMOUsageDetailExportRequest struct {
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:

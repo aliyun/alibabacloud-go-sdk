@@ -20,15 +20,22 @@ type iDescribeMOUsageDetailExportResponseBody interface {
 }
 
 type DescribeMOUsageDetailExportResponseBody struct {
+	// The result.
 	Data *DescribeMOUsageDetailExportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result.
+	//
 	// example:
 	//
 	// true
@@ -89,44 +96,57 @@ func (s *DescribeMOUsageDetailExportResponseBody) Validate() error {
 }
 
 type DescribeMOUsageDetailExportResponseBodyData struct {
+	// The completion time.
+	//
 	// example:
 	//
 	// 2026-02-01T01:50:03Z
 	CompletedAt *string `json:"CompletedAt,omitempty" xml:"CompletedAt,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-02-01T01:45:03Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// OSS 预签名下载 URL；status=expired 时为 null
+	// The download URL.
 	//
 	// example:
 	//
 	// http://***
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The error message. Read this message to determine the error when the final value of Status is not SUCCESSED.
+	//
 	// example:
 	//
 	// tenant auth error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 下载 URL 失效时间（UTC ISO8601）
+	// The expiration time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-02-04T01:45:03Z
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The total size of the source backup file.
+	//
 	// example:
 	//
 	// 252
-	FileSize *int64                                              `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	Filters  *DescribeMOUsageDetailExportResponseBodyDataFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The query filter conditions.
+	Filters *DescribeMOUsageDetailExportResponseBodyDataFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	// The target conversion format.
+	//
 	// example:
 	//
 	// csv
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The total number of data rows.
+	//
 	// example:
 	//
 	// 1
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	// none / pending / processing / completed / failed / expired
+	// The module status.
 	//
 	// example:
 	//
@@ -242,22 +262,32 @@ func (s *DescribeMOUsageDetailExportResponseBodyData) Validate() error {
 }
 
 type DescribeMOUsageDetailExportResponseBodyDataFilters struct {
+	// The API key that is used.
+	//
 	// example:
 	//
 	// sk-rds-**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The end time of the instance in ISO 8601 format. The interval between EndTime and StartTime cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 2026-01-30T01:45:03Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// rds_copilot**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The model that is called.
+	//
 	// example:
 	//
 	// glm-5
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The start time of the instance in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-01-28T01:45:03Z

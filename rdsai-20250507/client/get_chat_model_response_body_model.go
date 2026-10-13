@@ -16,7 +16,10 @@ type iGetChatModelResponseBody interface {
 }
 
 type GetChatModelResponseBody struct {
+	// The query result.
 	Data []*GetChatModelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
@@ -63,19 +66,27 @@ func (s *GetChatModelResponseBody) Validate() error {
 }
 
 type GetChatModelResponseBodyData struct {
+	// The context window size of the model.
+	//
 	// example:
 	//
 	// 1000000
 	ContextWindow *int64 `json:"ContextWindow,omitempty" xml:"ContextWindow,omitempty"`
+	// Indicates whether this is the default model.
+	//
 	// example:
 	//
 	// true
-	Default  *bool     `json:"Default,omitempty" xml:"Default,omitempty"`
+	Default *bool `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The list of supported modalities.
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen3.7-max
-	ModelId        *string   `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The list of thinking depth levels for the model.
 	ThinkingLevels []*string `json:"ThinkingLevels,omitempty" xml:"ThinkingLevels,omitempty" type:"Repeated"`
 }
 

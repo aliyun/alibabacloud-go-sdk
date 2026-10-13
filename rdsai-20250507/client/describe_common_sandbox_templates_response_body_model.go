@@ -26,7 +26,7 @@ type DescribeCommonSandboxTemplatesResponseBody struct {
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that indicates the position from which the query starts. Set this parameter to empty to start from the beginning.
+	// The token that determines the start point of the query. Set this parameter to empty to start the query from the beginning.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *DescribeCommonSandboxTemplatesResponseBody) Validate() error {
 }
 
 type DescribeCommonSandboxTemplatesResponseBodyTemplates struct {
-	// The default number of CPUs for sandboxes created by using this template.
+	// The default number of CPUs for a sandbox created by using this template.
 	//
 	// example:
 	//
 	// 1
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
-	// The default memory size for sandboxes created by using this template. The unit ends with Gi.
+	// The default memory size for a sandbox created by using this template. The unit ends with Gi.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type DescribeCommonSandboxTemplatesResponseBodyTemplates struct {
 	//
 	// 1
 	DefaultReplicas *int64 `json:"DefaultReplicas,omitempty" xml:"DefaultReplicas,omitempty"`
-	// The description of the sandbox template.
+	// The sandbox template description.
 	//
 	// example:
 	//
 	// Execute user-provided Python code in the sandbox environment. Runs any Python script the user provides and returns the output.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the sandbox template.
+	// The sandbox template name.
 	//
 	// example:
 	//

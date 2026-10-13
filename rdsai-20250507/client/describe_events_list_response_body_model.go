@@ -28,15 +28,15 @@ type iDescribeEventsListResponseBody interface {
 }
 
 type DescribeEventsListResponseBody struct {
-	// The count for each event code.
+	// The total number of events.
 	//
 	// example:
 	//
 	// OtherException:3,MysqlIOException:1
 	EventCodeCounts *string `json:"EventCodeCounts,omitempty" xml:"EventCodeCounts,omitempty"`
-	// A list of events.
+	// The list of events.
 	Events []*DescribeEventsListResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeEventsListResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeEventsListResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -180,13 +180,13 @@ type DescribeEventsListResponseBodyEvents struct {
 	//
 	// None
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// A list of event times.
+	// The list of event times.
 	EventTimeList []*string `json:"EventTimeList,omitempty" xml:"EventTimeList,omitempty" type:"Repeated"`
-	// The instance description.
+	// The description of the instance.
 	//
 	// example:
 	//
-	// 测试实例
+	// Test instance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
 	// The instance ID.
 	//
@@ -200,8 +200,7 @@ type DescribeEventsListResponseBodyEvents struct {
 	//
 	// 2025-07-23T02:11:07Z
 	RecoveryTime *string `json:"RecoveryTime,omitempty" xml:"RecoveryTime,omitempty"`
-	// The region ID.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEventsListResponseBodyEvents) String() string {

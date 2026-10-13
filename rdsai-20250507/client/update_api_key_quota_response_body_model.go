@@ -20,21 +20,21 @@ type iUpdateApiKeyQuotaResponseBody interface {
 }
 
 type UpdateApiKeyQuotaResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *UpdateApiKeyQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ func (s *UpdateApiKeyQuotaResponseBodyData) Validate() error {
 }
 
 type UpdateApiKeyQuotaResponseBodyDataCustomKeyList struct {
-	// The API key.
+	// Api Key
 	//
 	// example:
 	//
@@ -141,25 +141,25 @@ type UpdateApiKeyQuotaResponseBodyDataCustomKeyList struct {
 	//
 	// 1000000000
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The limit rate.
+	// The quota ratio.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota limiting method. Valid values:
+	// The quota type. Valid values:
 	//
-	// - `ratio`: Sets the limit based on a ratio.
+	// - ratio: by ratio.
 	//
-	// - `fixed`: Sets the limit to a fixed value.
+	// - fixed: by fixed value.
 	//
-	// - `auto`: Allocates the limit automatically.
+	// - auto: automatic allocation of EPS resource.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	// The token quota for the API key.
+	// The quota of the current key.
 	//
 	// example:
 	//

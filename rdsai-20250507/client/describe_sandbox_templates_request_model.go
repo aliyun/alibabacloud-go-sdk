@@ -37,7 +37,7 @@ type DescribeSandboxTemplatesRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter. You can ignore this parameter.
 	//
 	// example:
 	//

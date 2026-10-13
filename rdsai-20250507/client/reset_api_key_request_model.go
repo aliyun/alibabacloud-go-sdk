@@ -16,13 +16,13 @@ type iResetApiKeyRequest interface {
 }
 
 type ResetApiKeyRequest struct {
-	// The API key.
+	// Api Key
 	//
 	// example:
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

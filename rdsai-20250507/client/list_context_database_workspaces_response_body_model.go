@@ -100,7 +100,7 @@ func (s *ListContextDatabaseWorkspacesResponseBody) Validate() error {
 }
 
 type ListContextDatabaseWorkspacesResponseBodyWorkspaces struct {
-	// The time when the workspace was created, in ISO-8601 format.
+	// The time when the workspace was created, in ISO 8601 format.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type CreateApiKeyRequest struct {
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The API key name.
+	// The name of the API key.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateApiKeyRequest struct {
 	//
 	// 0.2
 	LimitRate *float64 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota allocation method. Valid values:
+	// The quota type. Valid values:
 	//
 	// - ratio: by percentage.
 	//

@@ -20,7 +20,7 @@ type iDescribeWhitelistIpsResponseBody interface {
 }
 
 type DescribeWhitelistIpsResponseBody struct {
-	// The response data.
+	// The query result.
 	Data *DescribeWhitelistIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -28,13 +28,13 @@ type DescribeWhitelistIpsResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *DescribeWhitelistIpsResponseBody) Validate() error {
 }
 
 type DescribeWhitelistIpsResponseBodyData struct {
-	// The domain name.
+	// The domain name address.
 	//
 	// example:
 	//
 	// www.test123.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The list of IP addresses and CIDR blocks on the whitelist.
+	// The list of IP addresses.
 	//
 	// example:
 	//

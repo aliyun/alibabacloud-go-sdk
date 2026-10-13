@@ -96,7 +96,7 @@ func (s *ListApiKeysResponseBody) Validate() error {
 }
 
 type ListApiKeysResponseBodyData struct {
-	// The URL for model invocation.
+	// The URL for model calls.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type ListApiKeysResponseBodyData struct {
 	//
 	// sk-rds-xxx
 	SystemApiKey *string `json:"SystemApiKey,omitempty" xml:"SystemApiKey,omitempty"`
-	// The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert resets when the usage drops below this percentage.
+	// The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
 	//
 	// example:
 	//
@@ -275,13 +275,13 @@ type ListApiKeysResponseBodyDataCustomKeyList struct {
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The quota limit ratio.
+	// The quota ratio.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota limit method. Valid values:
+	// The quota type. Valid values:
 	//
 	// - **fixed**: Fixed value.
 	//
@@ -294,13 +294,13 @@ type ListApiKeysResponseBodyDataCustomKeyList struct {
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 	RoleArn   *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert resets when the usage drops below this percentage.
+	// The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
 	//
 	// example:
 	//
 	// 80
 	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
-	// The quota limit of the current key.
+	// The quota of the current key.
 	//
 	// example:
 	//

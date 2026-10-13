@@ -24,28 +24,40 @@ type iDescribeMOTokenUsageSummaryRequest interface {
 }
 
 type DescribeMOTokenUsageSummaryRequest struct {
+	// The API key used.
+	//
 	// example:
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The end time of the instance. Format: YYYY-MM-DD. The interval between EndTime and StartTime cannot exceed 31 days.
+	//
 	// example:
 	//
 	// 2026-04-30
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rds_copilotpost_public_cn-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The model called.
+	//
 	// example:
 	//
 	// qwen-flash
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The start time of the instance. Format: YYYY-MM-DD.
+	//
 	// example:
 	//
 	// 2026-04-21
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The query type.
+	//
 	// example:
 	//
 	// text

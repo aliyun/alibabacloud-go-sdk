@@ -34,7 +34,7 @@ type ModifySandboxTemplateRequest struct {
 	//
 	// 1
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
-	// The memory size for sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+	// The memory size of sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type DescribeInstanceEndpointsRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//

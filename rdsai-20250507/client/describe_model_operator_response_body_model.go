@@ -144,7 +144,7 @@ type DescribeModelOperatorResponseBodyData struct {
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The usage of each key (including deleted keys).
+	// The usage of each key, including deleted keys.
 	KeyUsageList []*DescribeModelOperatorResponseBodyDataKeyUsageList `json:"KeyUsageList,omitempty" xml:"KeyUsageList,omitempty" type:"Repeated"`
 	// Indicates whether the prefix routing persistence feature is enabled.
 	//
@@ -166,13 +166,13 @@ type DescribeModelOperatorResponseBodyData struct {
 	//
 	// active/creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total quota for the current cycle (such as the monthly total).
+	// The total quota for the current cycle, such as the monthly quota.
 	//
 	// example:
 	//
 	// 200000000
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The used quota for the current cycle (such as the monthly usage).
+	// The used quota for the current cycle, such as the monthly usage.
 	//
 	// example:
 	//
@@ -346,7 +346,7 @@ func (s *DescribeModelOperatorResponseBodyData) Validate() error {
 }
 
 type DescribeModelOperatorResponseBodyDataDailyUsage struct {
-	// The date (accurate to the day).
+	// The date, accurate to the day.
 	//
 	// example:
 	//
@@ -516,7 +516,7 @@ func (s *DescribeModelOperatorResponseBodyDataKeyUsageList) Validate() error {
 }
 
 type DescribeModelOperatorResponseBodyDataKeyUsageListDailyUsage struct {
-	// The date (accurate to the day).
+	// The date, accurate to the day.
 	//
 	// example:
 	//

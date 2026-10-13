@@ -32,7 +32,7 @@ type ModifyInstancesSSLShrinkRequest struct {
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The list of instance IDs of AI applications. A maximum of 10 instance IDs are supported.
+	// The list of instance IDs of AI applications. A maximum of 10 instance IDs can be specified.
 	//
 	// This parameter is required.
 	//

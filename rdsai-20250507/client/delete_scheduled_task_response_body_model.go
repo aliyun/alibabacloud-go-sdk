@@ -22,7 +22,7 @@ type DeleteScheduledTaskResponseBody struct {
 	//
 	// example:
 	//
-	// Scheduled task deleted successfully
+	// The scheduled task is deleted
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

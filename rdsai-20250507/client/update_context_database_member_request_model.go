@@ -28,13 +28,13 @@ type UpdateContextDatabaseMemberRequest struct {
 	//
 	// mb-cz51tnnp8****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The new role. Valid values: owner, admin, and member. If not specified, the current role is retained.
+	// The new role. Valid values: owner, admin, and member. If this parameter is not specified, the current role is retained.
 	//
 	// example:
 	//
 	// admin
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The new status. Valid values: active, disabled, and deleted. If not specified, the current status is retained.
+	// The new status. Valid values: active, disabled, and deleted. If this parameter is not specified, the current status is retained.
 	//
 	// example:
 	//

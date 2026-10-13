@@ -9,6 +9,10 @@ type iCreateSkillResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAction(v string) *CreateSkillResponseBody
+	GetAction() *string
+	SetBundleHash(v string) *CreateSkillResponseBody
+	GetBundleHash() *string
 	SetCatalogRevision(v int64) *CreateSkillResponseBody
 	GetCatalogRevision() *int64
 	SetContent(v map[string]interface{}) *CreateSkillResponseBody
@@ -27,13 +31,29 @@ type iCreateSkillResponseBody interface {
 	GetRequestId() *string
 	SetSkill(v *CreateSkillResponseBodySkill) *CreateSkillResponseBody
 	GetSkill() *CreateSkillResponseBodySkill
+	SetSkillId(v string) *CreateSkillResponseBody
+	GetSkillId() *string
 	SetSkillType(v string) *CreateSkillResponseBody
 	GetSkillType() *string
 	SetVersion(v *CreateSkillResponseBodyVersion) *CreateSkillResponseBody
 	GetVersion() *CreateSkillResponseBodyVersion
+	SetVersionId(v string) *CreateSkillResponseBody
+	GetVersionId() *string
 }
 
 type CreateSkillResponseBody struct {
+	// The publish action for this release.
+	//
+	// example:
+	//
+	// CREATE_SKILL
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The content digest of the Skill package.
+	//
+	// example:
+	//
+	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+	BundleHash *string `json:"BundleHash,omitempty" xml:"BundleHash,omitempty"`
 	// The Skill catalog revision number.
 	//
 	// example:
@@ -80,6 +100,12 @@ type CreateSkillResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The created Skill.
 	Skill *CreateSkillResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
+	// The ID of the created Skill.
+	//
+	// example:
+	//
+	// skill-example
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 	// The Skill type.
 	//
 	// example:
@@ -88,6 +114,12 @@ type CreateSkillResponseBody struct {
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 	// The created Skill version.
 	Version *CreateSkillResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
+	// The ID of the created Skill version.
+	//
+	// example:
+	//
+	// version-example
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateSkillResponseBody) String() string {
@@ -96,6 +128,14 @@ func (s CreateSkillResponseBody) String() string {
 
 func (s CreateSkillResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSkillResponseBody) GetAction() *string {
+	return s.Action
+}
+
+func (s *CreateSkillResponseBody) GetBundleHash() *string {
+	return s.BundleHash
 }
 
 func (s *CreateSkillResponseBody) GetCatalogRevision() *int64 {
@@ -134,12 +174,30 @@ func (s *CreateSkillResponseBody) GetSkill() *CreateSkillResponseBodySkill {
 	return s.Skill
 }
 
+func (s *CreateSkillResponseBody) GetSkillId() *string {
+	return s.SkillId
+}
+
 func (s *CreateSkillResponseBody) GetSkillType() *string {
 	return s.SkillType
 }
 
 func (s *CreateSkillResponseBody) GetVersion() *CreateSkillResponseBodyVersion {
 	return s.Version
+}
+
+func (s *CreateSkillResponseBody) GetVersionId() *string {
+	return s.VersionId
+}
+
+func (s *CreateSkillResponseBody) SetAction(v string) *CreateSkillResponseBody {
+	s.Action = &v
+	return s
+}
+
+func (s *CreateSkillResponseBody) SetBundleHash(v string) *CreateSkillResponseBody {
+	s.BundleHash = &v
+	return s
 }
 
 func (s *CreateSkillResponseBody) SetCatalogRevision(v int64) *CreateSkillResponseBody {
@@ -187,6 +245,11 @@ func (s *CreateSkillResponseBody) SetSkill(v *CreateSkillResponseBodySkill) *Cre
 	return s
 }
 
+func (s *CreateSkillResponseBody) SetSkillId(v string) *CreateSkillResponseBody {
+	s.SkillId = &v
+	return s
+}
+
 func (s *CreateSkillResponseBody) SetSkillType(v string) *CreateSkillResponseBody {
 	s.SkillType = &v
 	return s
@@ -194,6 +257,11 @@ func (s *CreateSkillResponseBody) SetSkillType(v string) *CreateSkillResponseBod
 
 func (s *CreateSkillResponseBody) SetVersion(v *CreateSkillResponseBodyVersion) *CreateSkillResponseBody {
 	s.Version = v
+	return s
+}
+
+func (s *CreateSkillResponseBody) SetVersionId(v string) *CreateSkillResponseBody {
+	s.VersionId = &v
 	return s
 }
 
@@ -224,7 +292,7 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// productivity
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The Skill creation time.
+	// The creation time of the Skill.
 	//
 	// example:
 	//
@@ -236,7 +304,7 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// An example ContextDB Skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Skill display name.
+	// The display name of the Skill.
 	//
 	// example:
 	//
@@ -271,7 +339,7 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// example-skill
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The Skill update time.
+	// The update time of the Skill.
 	//
 	// example:
 	//
@@ -405,19 +473,19 @@ type CreateSkillResponseBodyVersion struct {
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	// Indicates whether the Skill requires a credential.
 	CredentialRequired *bool `json:"CredentialRequired,omitempty" xml:"CredentialRequired,omitempty"`
-	// The Skill version ID.
+	// The ID of the Skill version.
 	//
 	// example:
 	//
 	// version-example
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The Skill package size, in bytes.
+	// The size of the Skill package, in bytes.
 	//
 	// example:
 	//
 	// 1024
 	PackageSize *int64 `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
-	// The revocation reason of the Skill version.
+	// The reason for revoking the Skill version.
 	//
 	// example:
 	//
@@ -435,7 +503,7 @@ type CreateSkillResponseBodyVersion struct {
 	//
 	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
-	// The ID of the parent Skill.
+	// The ID of the Skill to which this version belongs.
 	//
 	// example:
 	//
@@ -447,7 +515,7 @@ type CreateSkillResponseBodyVersion struct {
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Skill version number.
+	// The version number of the Skill.
 	//
 	// example:
 	//

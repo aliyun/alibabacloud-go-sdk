@@ -24,20 +24,30 @@ type iDescribeMOTokenUsageSummaryResponseBody interface {
 }
 
 type DescribeMOTokenUsageSummaryResponseBody struct {
+	// The response message.
+	//
 	// example:
 	//
 	// success
-	Message *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token usage records.
 	Records []*DescribeMOTokenUsageSummaryResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// Id of the request
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result.
+	//
 	// example:
 	//
 	// true
-	Success *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The usage summary information.
 	Summary *DescribeMOTokenUsageSummaryResponseBodySummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
+	// The type.
+	//
 	// example:
 	//
 	// text
@@ -125,42 +135,62 @@ func (s *DescribeMOTokenUsageSummaryResponseBody) Validate() error {
 }
 
 type DescribeMOTokenUsageSummaryResponseBodyRecords struct {
+	// The API key used.
+	//
 	// example:
 	//
 	// sk-rds-ds5jjo08hyz1g9orhs3y56l5cy3l3shm
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The number of input tokens that hit the cache.
+	//
 	// example:
 	//
 	// 8000
 	CacheTokens *float64 `json:"CacheTokens,omitempty" xml:"CacheTokens,omitempty"`
+	// The date, accurate to the day.
+	//
 	// example:
 	//
 	// 2026-04-21
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The input token usage.
+	//
 	// example:
 	//
 	// 10000
 	InputTokens *float64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
 	// qcy-apikey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The model called.
+	//
 	// example:
 	//
 	// qwen-flash
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The output token usage.
+	//
 	// example:
 	//
 	// 10000
 	OutputTokens *float64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The number of requests.
+	//
 	// example:
 	//
 	// 100
 	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 100000
 	TotalTokens *float64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	// The query type.
+	//
 	// example:
 	//
 	// text
@@ -270,18 +300,26 @@ func (s *DescribeMOTokenUsageSummaryResponseBodyRecords) Validate() error {
 }
 
 type DescribeMOTokenUsageSummaryResponseBodySummary struct {
+	// The number of input tokens that hit the cache.
+	//
 	// example:
 	//
 	// 9000
 	CacheTokens *float64 `json:"CacheTokens,omitempty" xml:"CacheTokens,omitempty"`
+	// The input token usage.
+	//
 	// example:
 	//
 	// 10000
 	InputTokens *float64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The output token usage.
+	//
 	// example:
 	//
 	// 1000
 	OutputTokens *float64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 11000

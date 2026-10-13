@@ -14,7 +14,7 @@ type iDescribeWhitelistIpsRequest interface {
 }
 
 type DescribeWhitelistIpsRequest struct {
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//

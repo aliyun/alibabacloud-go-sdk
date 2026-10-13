@@ -28,9 +28,9 @@ type DescribeInstanceEndpointsResponseBody struct {
 	//
 	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The list of endpoint information of the database instance.
+	// The list of endpoint information for the database instance.
 	DBInstanceEndpoints []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints `json:"DBInstanceEndpoints,omitempty" xml:"DBInstanceEndpoints,omitempty" type:"Repeated"`
-	// The list of endpoint information of the AI application instance.
+	// The list of endpoint information for the AI application instance.
 	InstanceEndpoints []*DescribeInstanceEndpointsResponseBodyInstanceEndpoints `json:"InstanceEndpoints,omitempty" xml:"InstanceEndpoints,omitempty" type:"Repeated"`
 	// The instance ID of the AI application.
 	//

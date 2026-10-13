@@ -36,7 +36,7 @@ type ListSkillResponseBody struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique request identifier.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,7 +117,9 @@ func (s *ListSkillResponseBody) Validate() error {
 }
 
 type ListSkillResponseBodyData struct {
-	// The ID of the currently active version.
+	// The currently active skill version information.
+	ActiveVersion map[string]interface{} `json:"ActiveVersion,omitempty" xml:"ActiveVersion,omitempty"`
+	// The currently active version ID.
 	//
 	// example:
 	//
@@ -149,7 +151,7 @@ type ListSkillResponseBodyData struct {
 	//
 	// SQL Review Expert: Comprehensively reviews SQL for security, performance, and compliance, identifies risks, and provides optimization suggestions. Activated immediately when a user submits SQL or asks about "SQL review", "SQL Review", "any risks", or "how to optimize"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the skill.
+	// The skill display name.
 	//
 	// example:
 	//
@@ -178,7 +180,7 @@ type ListSkillResponseBodyData struct {
 	//
 	// sql-review
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The visibility scope of the skill.
+	// The skill visibility scope.
 	//
 	// example:
 	//
@@ -190,7 +192,7 @@ type ListSkillResponseBodyData struct {
 	//
 	// system
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
-	// The stable identifier of the skill.
+	// The skill stable identifier.
 	//
 	// example:
 	//
@@ -202,6 +204,12 @@ type ListSkillResponseBodyData struct {
 	//
 	// 2026-02-04T21:14:45Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	// The skill visibility for the current user.
+	//
+	// example:
+	//
+	// PRIVATE
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s ListSkillResponseBodyData) String() string {
@@ -210,6 +218,10 @@ func (s ListSkillResponseBodyData) String() string {
 
 func (s ListSkillResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListSkillResponseBodyData) GetActiveVersion() map[string]interface{} {
+	return s.ActiveVersion
 }
 
 func (s *ListSkillResponseBodyData) GetActiveVersionId() *string {
@@ -270,6 +282,15 @@ func (s *ListSkillResponseBodyData) GetSlug() *string {
 
 func (s *ListSkillResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
+}
+
+func (s *ListSkillResponseBodyData) GetVisibility() *string {
+	return s.Visibility
+}
+
+func (s *ListSkillResponseBodyData) SetActiveVersion(v map[string]interface{}) *ListSkillResponseBodyData {
+	s.ActiveVersion = v
+	return s
 }
 
 func (s *ListSkillResponseBodyData) SetActiveVersionId(v string) *ListSkillResponseBodyData {
@@ -344,6 +365,11 @@ func (s *ListSkillResponseBodyData) SetSlug(v string) *ListSkillResponseBodyData
 
 func (s *ListSkillResponseBodyData) SetUpdatedAt(v string) *ListSkillResponseBodyData {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListSkillResponseBodyData) SetVisibility(v string) *ListSkillResponseBodyData {
+	s.Visibility = &v
 	return s
 }
 

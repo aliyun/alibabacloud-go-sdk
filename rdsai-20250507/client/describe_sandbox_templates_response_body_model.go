@@ -26,7 +26,7 @@ type iDescribeSandboxTemplatesResponseBody interface {
 }
 
 type DescribeSandboxTemplatesResponseBody struct {
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter. You can ignore this parameter.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeSandboxTemplatesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of sandbox templates.
 	SandboxTemplates []*DescribeSandboxTemplatesResponseBodySandboxTemplates `json:"SandboxTemplates,omitempty" xml:"SandboxTemplates,omitempty" type:"Repeated"`
-	// The total number of records that match the request conditions.
+	// The total number of records that meet the request conditions.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ func (s *DescribeSandboxTemplatesResponseBody) Validate() error {
 
 type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The number of CPUs for the sandbox created with this template.
+	// The number of CPUs for the sandbox created by using this template.
 	//
 	// example:
 	//
 	// 2
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
-	// The memory size of the sandbox created with this template.
+	// The memory size of the sandbox created by using this template.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	//
 	// code-interpreter-vpc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the sandbox created with this template can access resources in the VPC where Supabase resides.
+	// Indicates whether the sandbox created by using this template can access resources in the VPC where Supabase resides.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	Name     *string            `json:"Name,omitempty" xml:"Name,omitempty"`
 	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The sandbox template ID. Specify this ID when creating a sandbox with this template.
+	// The sandbox template ID. Specify this ID when you create a sandbox by using this template.
 	//
 	// example:
 	//

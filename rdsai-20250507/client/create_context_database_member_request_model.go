@@ -42,13 +42,7 @@ type CreateContextDatabaseMemberRequest struct {
 	//
 	// Alice
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// The member role. Valid values:
-	//
-	// - owner
-	//
-	// - admin
-	//
-	// - member
+	// The member role. Valid values: owner, admin, and member.
 	//
 	// This parameter is required.
 	//

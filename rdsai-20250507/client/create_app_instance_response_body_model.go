@@ -16,7 +16,7 @@ type iCreateAppInstanceResponseBody interface {
 }
 
 type CreateAppInstanceResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//

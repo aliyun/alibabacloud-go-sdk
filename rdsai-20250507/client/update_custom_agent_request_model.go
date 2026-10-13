@@ -42,14 +42,14 @@ type UpdateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// QueryInstanceListAgent
+	// Query Instance List Agent
 	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
 	// The system prompt.
 	//
 	// example:
 	//
-	// I am your dedicated agent for querying instance lists
+	// I am your dedicated Agent for querying instance lists
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`

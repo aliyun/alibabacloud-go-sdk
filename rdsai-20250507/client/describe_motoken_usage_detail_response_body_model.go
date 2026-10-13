@@ -52,7 +52,7 @@ type DescribeMOTokenUsageDetailResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the query conditions. This parameter is optional and may not be returned by default.
+	// The total number of records that match the query conditions.
 	//
 	// example:
 	//
