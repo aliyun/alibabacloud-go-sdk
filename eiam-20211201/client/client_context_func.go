@@ -1091,11 +1091,11 @@ func (client *Client) CheckInstanceModuleStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates an application resource in a specified EIAM instance.
+// Creates an application resource in a specified Employee Identity and Access Management (EIAM) instance.
 //
 // Description:
 //
-// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your business scenario.
+// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your actual business scenario.
 //
 // @param request - CreateApplicationRequest
 //
@@ -1749,7 +1749,7 @@ func (client *Client) CreateCloudAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a cloud role for a specified Alibaba Cloud account.
+// Creates a cloud role resource under the specified cloud account resource.
 //
 // @param request - CreateCloudAccountRoleRequest
 //
@@ -4469,7 +4469,11 @@ func (client *Client) DeleteResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a trusted origin.
+// Deletes a trusted origin from a specified EIAM instance.
+//
+// Description:
+//
+// Deletes a trusted origin from a specified EIAM instance.
 //
 // @param request - DeleteTrustedOriginRequest
 //
@@ -5971,7 +5975,11 @@ func (client *Client) DisableResourceServerCustomSubjectWithContext(ctx context.
 
 // Summary:
 //
-// Disables a trusted origin.
+// Disables a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Disables a trusted origin in a specified EIAM instance.
 //
 // @param request - DisableTrustedOriginRequest
 //
@@ -7367,7 +7375,11 @@ func (client *Client) EnableResourceServerCustomSubjectWithContext(ctx context.C
 
 // Summary:
 //
-// Enables a trusted origin.
+// Enables a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Enables a trusted origin in a specified EIAM instance.
 //
 // @param request - EnableTrustedOriginRequest
 //
@@ -7463,7 +7475,7 @@ func (client *Client) EnableUserWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
-// Resolves the metadata for an identity provider.
+// Parses IdP metadata information.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -7845,6 +7857,10 @@ func (client *Client) GenerateWebAuthnAuthenticatorRegistrationUrlWithContext(ct
 //
 // Retrieves the details of a specified EIAM application.
 //
+// Description:
+//
+// Before you delete a specified EIAM application, make sure that the application is no longer in use. After the application is deleted, all configuration data is permanently removed and cannot be recovered.
+//
 // @param request - GetApplicationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7939,7 +7955,7 @@ func (client *Client) GetApplicationAdvancedConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves an application federated identity credential.
+// Retrieves the federated identity credential of an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -8675,11 +8691,11 @@ func (client *Client) GetCloudAccountRoleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Get a conditional access policy.
+// Retrieves a conditional access policy.
 //
 // Description:
 //
-// Query a conditional access policy.
+// Queries a conditional access policy.
 //
 // @param request - GetConditionalAccessPolicyRequest
 //
@@ -9015,7 +9031,7 @@ func (client *Client) GetDomainDnsChallengeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieve a federated credential provider.
+// Retrieves a federated trust source.
 //
 // @param request - GetFederatedCredentialProviderRequest
 //
@@ -9063,7 +9079,7 @@ func (client *Client) GetFederatedCredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the forgot password policy of a specified EIAM instance.
+// Queries the forgot password policy for a specified EIAM instance.
 //
 // @param request - GetForgetPasswordConfigurationRequest
 //
@@ -9251,7 +9267,7 @@ func (client *Client) GetIdentityProviderAdvancedConfigurationWithContext(ctx co
 
 // Summary:
 //
-// Retrieves an IdP check task.
+// Retrieves an IdP status check job.
 //
 // @param request - GetIdentityProviderStatusCheckJobRequest
 //
@@ -9303,7 +9319,7 @@ func (client *Client) GetIdentityProviderStatusCheckJobWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieves the inbound synchronization configuration of an identity provider (IdP).
+// Retrieves the inbound synchronization configuration of an Identity Provider (IdP).
 //
 // @param request - GetIdentityProviderUdPullConfigurationRequest
 //
@@ -9539,7 +9555,7 @@ func (client *Client) GetInstanceGlobalizationConfigWithContext(ctx context.Cont
 //
 // Description:
 //
-// Make sure that your instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
+// Make sure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -10279,7 +10295,11 @@ func (client *Client) GetSynchronizationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of a trusted origin.
+// Queries a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Queries a trusted origin in a specified EIAM instance.
 //
 // @param request - GetTrustedOriginRequest
 //
@@ -10431,7 +10451,7 @@ func (client *Client) ListActionTrackEventTypesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the application accounts of an application by paging.
+// Queries application accounts under an application by paging.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -10487,11 +10507,11 @@ func (client *Client) ListApplicationAccountsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries all accounts that belong to a specified user in an application.
+// Queries all accounts of a specified user in the current application.
 //
 // Description:
 //
-// This operation queries only applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of the organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListApplicationAccountsForUserRequest
 //
@@ -10591,7 +10611,7 @@ func (client *Client) ListApplicationClientSecretsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the list of application federated identity credentials.
+// Queries a list of application federated identity credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -11739,7 +11759,7 @@ func (client *Client) ListBrandsWithContext(ctx context.Context, request *ListBr
 
 // Summary:
 //
-// Lists the client public keys for a specified application using a cursor.
+// Queries the list of ClientPublicKeys for a specified application by using a cursor.
 //
 // @param request - ListClientPublicKeysRequest
 //
@@ -11911,11 +11931,11 @@ func (client *Client) ListCloudAccountsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// List conditional access policies.
+// Lists conditional access policies.
 //
 // Description:
 //
-// Query the list of conditional access policies with pagination.
+// Queries conditional access policies by page.
 //
 // @param request - ListConditionalAccessPoliciesRequest
 //
@@ -11971,7 +11991,7 @@ func (client *Client) ListConditionalAccessPoliciesWithContext(ctx context.Conte
 
 // Summary:
 //
-// List conditional access policies associated with an application.
+// Retrieves the list of conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -13535,7 +13555,7 @@ func (client *Client) ListOrganizationalUnitsForApplicationWithContext(ctx conte
 
 // Summary:
 //
-// Retrieves a cursor-paginated list of scopes that the current resource server has granted to an organization.
+// Queries the list of scope permissions that the current ResourceServer has authorized to organizational units by using a cursor-based pagination method.
 //
 // @param request - ListOrganizationalUnitsForResourceServerRequest
 //
@@ -13837,7 +13857,11 @@ func (client *Client) ListSynchronizationJobsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of trusted origins.
+// Queries the list of trusted origins in a specified Employees Identity and Access Management (EIAM) instance.
+//
+// Description:
+//
+// Queries the list of trusted origins in a specified EIAM instance.
 //
 // @param request - ListTrustedOriginsRequest
 //
@@ -13905,11 +13929,11 @@ func (client *Client) ListTrustedOriginsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists the mappings for third-party logon accounts.
+// Queries the binding relationships of third-party login accounts.
 //
 // Description:
 //
-// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -14269,7 +14293,7 @@ func (client *Client) ListUsersForGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// List the scope permissions granted by a Resource Server to user accounts using cursor-based pagination.
+// Queries the list of scope permissions that the current ResourceServer has granted to accounts by using a cursor-based pagination method.
 //
 // @param request - ListUsersForResourceServerRequest
 //
@@ -14389,7 +14413,7 @@ func (client *Client) ObtainApplicationClientSecretWithContext(ctx context.Conte
 //
 // Description:
 //
-// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may result from this operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may be caused by this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -15401,7 +15425,7 @@ func (client *Client) RevokeResourceServerScopesFromUserWithContext(ctx context.
 
 // Summary:
 //
-// Creates and immediately runs a new synchronization task.
+// Runs a synchronization task. This operation creates a new synchronization task and immediately executes it.
 //
 // @param request - RunSynchronizationJobRequest
 //
@@ -17429,7 +17453,7 @@ func (client *Client) UpdateApplicationSsoFormParamsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Updates the expiration time of an application token.
+// Updates the expiration time of an ApplicationToken.
 //
 // @param request - UpdateApplicationTokenExpirationTimeRequest
 //
@@ -19435,7 +19459,11 @@ func (client *Client) UpdateResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies a trusted origin.
+// Updates a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Updates a trusted origin in a specified EIAM instance.
 //
 // @param request - UpdateTrustedOriginRequest
 //

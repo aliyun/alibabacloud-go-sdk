@@ -24,7 +24,7 @@ type iListFederatedCredentialProvidersResponseBody interface {
 }
 
 type ListFederatedCredentialProvidersResponseBody struct {
-	// The list of federated trust sources.
+	// The list of federated credential providers.
 	FederatedCredentialProviders []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders `json:"FederatedCredentialProviders,omitempty" xml:"FederatedCredentialProviders,omitempty" type:"Repeated"`
 	// The maximum number of entries per page for a paged query.
 	//
@@ -32,13 +32,13 @@ type ListFederatedCredentialProvidersResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The query token (Token) value returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token returned by this call.
+	// The query token (Token) value returned by this call.
 	//
 	// example:
 	//
@@ -134,8 +134,9 @@ func (s *ListFederatedCredentialProvidersResponseBody) Validate() error {
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders struct {
+	// The configuration of the cloud identity provider for federated credentials.
 	CloudIdPProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -147,7 +148,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders st
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The federated trust source ID.
+	// The federated credential provider ID.
 	//
 	// example:
 	//
@@ -189,7 +190,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders st
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -347,6 +348,11 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig struct {
+	// The ID of the identity provider.
+	//
+	// example:
+	//
+	// idp_1234567890
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
 }
 
@@ -400,13 +406,13 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOid
 	//
 	// }
 	DynamicJwks *string `json:"DynamicJwks,omitempty" xml:"DynamicJwks,omitempty"`
-	// Issuer
+	// The token issuer identifier (Issuer).
 	//
 	// example:
 	//
 	// https://example.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The time when the JWKS was last obtained.
+	// The time when the JWKS was last obtained. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -551,13 +557,13 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkc
 	//
 	// cert
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// The signature effective time.
+	// The signature effective time. The value indicates the duration for which the signature is valid, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// The expression used to retrieve the signing time.
+	// The expression used to obtain the signing time.
 	//
 	// example:
 	//
@@ -830,7 +836,7 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates struct {
 	// The certificate metadata.
 	CertificateMetadata *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// The root certificate content.
+	// The content of the root certificate.
 	//
 	// example:
 	//
@@ -840,7 +846,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPri
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The root certificate fingerprint.
+	// The fingerprint of the root certificate.
 	//
 	// example:
 	//

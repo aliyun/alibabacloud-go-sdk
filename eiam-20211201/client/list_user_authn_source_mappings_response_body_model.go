@@ -24,19 +24,19 @@ type iListUserAuthnSourceMappingsResponseBody interface {
 }
 
 type ListUserAuthnSourceMappingsResponseBody struct {
-	// The maximum number of entries returned on each page.
+	// The maximum number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token to retrieve the previous page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ListUserAuthnSourceMappingsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of bindings for third-party account logons.
+	// The list of third-party account login bindings.
 	UserAuthnSourceMappings []*ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings `json:"UserAuthnSourceMappings,omitempty" xml:"UserAuthnSourceMappings,omitempty" type:"Repeated"`
 }
 
@@ -134,19 +134,19 @@ func (s *ListUserAuthnSourceMappingsResponseBody) Validate() error {
 }
 
 type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
-	// The authentication source type.
+	// The authentication source type of the source IdP.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:authntype:oidc
 	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
-	// The time when the binding was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1762309642177
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Information about the associated third-party account.
+	// The association information of the third-party account.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the binding was last updated.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// user_123131xxasasa
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
 	// The user ID.
 	//

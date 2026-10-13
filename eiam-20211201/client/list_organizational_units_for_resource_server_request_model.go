@@ -24,7 +24,7 @@ type iListOrganizationalUnitsForResourceServerRequest interface {
 }
 
 type ListOrganizationalUnitsForResourceServerRequest struct {
-	// The resource server application ID.
+	// The ResourceServer application ID.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type ListOrganizationalUnitsForResourceServerRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. To retrieve the next page of results, set this parameter to the NextToken value from the previous response.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource server scope.
+	// The permission ID.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *ListOrganizationalUnitsForResourceServerRequest) Validate() error {
 }
 
 type ListOrganizationalUnitsForResourceServerRequestFilter struct {
-	// The filter key.
+	// The name of the filter condition.
 	//
 	// example:
 	//
 	// OrganizationalUnitIds
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of filter values.
+	// The list of filter condition values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

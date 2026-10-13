@@ -1482,11 +1482,11 @@ func (client *Client) CheckInstanceModuleStatus(request *CheckInstanceModuleStat
 
 // Summary:
 //
-// Creates an application resource in a specified EIAM instance.
+// Creates an application resource in a specified Employee Identity and Access Management (EIAM) instance.
 //
 // Description:
 //
-// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your business scenario.
+// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your actual business scenario.
 //
 // @param request - CreateApplicationRequest
 //
@@ -1566,11 +1566,11 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 // Summary:
 //
-// Creates an application resource in a specified EIAM instance.
+// Creates an application resource in a specified Employee Identity and Access Management (EIAM) instance.
 //
 // Description:
 //
-// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your business scenario.
+// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your actual business scenario.
 //
 // @param request - CreateApplicationRequest
 //
@@ -2330,7 +2330,7 @@ func (client *Client) CreateCloudAccount(request *CreateCloudAccountRequest) (_r
 
 // Summary:
 //
-// Creates a cloud role for a specified Alibaba Cloud account.
+// Creates a cloud role resource under the specified cloud account resource.
 //
 // @param request - CreateCloudAccountRoleRequest
 //
@@ -2394,7 +2394,7 @@ func (client *Client) CreateCloudAccountRoleWithOptions(request *CreateCloudAcco
 
 // Summary:
 //
-// Creates a cloud role for a specified Alibaba Cloud account.
+// Creates a cloud role resource under the specified cloud account resource.
 //
 // @param request - CreateCloudAccountRoleRequest
 //
@@ -5916,7 +5916,11 @@ func (client *Client) DeleteResourceServerScope(request *DeleteResourceServerSco
 
 // Summary:
 //
-// Deletes a trusted origin.
+// Deletes a trusted origin from a specified EIAM instance.
+//
+// Description:
+//
+// Deletes a trusted origin from a specified EIAM instance.
 //
 // @param request - DeleteTrustedOriginRequest
 //
@@ -5968,7 +5972,11 @@ func (client *Client) DeleteTrustedOriginWithOptions(request *DeleteTrustedOrigi
 
 // Summary:
 //
-// Deletes a trusted origin.
+// Deletes a trusted origin from a specified EIAM instance.
+//
+// Description:
+//
+// Deletes a trusted origin from a specified EIAM instance.
 //
 // @param request - DeleteTrustedOriginRequest
 //
@@ -7974,7 +7982,11 @@ func (client *Client) DisableResourceServerCustomSubject(request *DisableResourc
 
 // Summary:
 //
-// Disables a trusted origin.
+// Disables a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Disables a trusted origin in a specified EIAM instance.
 //
 // @param request - DisableTrustedOriginRequest
 //
@@ -8022,7 +8034,11 @@ func (client *Client) DisableTrustedOriginWithOptions(request *DisableTrustedOri
 
 // Summary:
 //
-// Disables a trusted origin.
+// Disables a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Disables a trusted origin in a specified EIAM instance.
 //
 // @param request - DisableTrustedOriginRequest
 //
@@ -9888,7 +9904,11 @@ func (client *Client) EnableResourceServerCustomSubject(request *EnableResourceS
 
 // Summary:
 //
-// Enables a trusted origin.
+// Enables a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Enables a trusted origin in a specified EIAM instance.
 //
 // @param request - EnableTrustedOriginRequest
 //
@@ -9936,7 +9956,11 @@ func (client *Client) EnableTrustedOriginWithOptions(request *EnableTrustedOrigi
 
 // Summary:
 //
-// Enables a trusted origin.
+// Enables a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Enables a trusted origin in a specified EIAM instance.
 //
 // @param request - EnableTrustedOriginRequest
 //
@@ -10020,7 +10044,7 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 
 // Summary:
 //
-// Resolves the metadata for an identity provider.
+// Parses IdP metadata information.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -10080,7 +10104,7 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithOptions(reque
 
 // Summary:
 //
-// Resolves the metadata for an identity provider.
+// Parses IdP metadata information.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -10528,6 +10552,10 @@ func (client *Client) GenerateWebAuthnAuthenticatorRegistrationUrl(request *Gene
 //
 // Retrieves the details of a specified EIAM application.
 //
+// Description:
+//
+// Before you delete a specified EIAM application, make sure that the application is no longer in use. After the application is deleted, all configuration data is permanently removed and cannot be recovered.
+//
 // @param request - GetApplicationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10575,6 +10603,10 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 // Summary:
 //
 // Retrieves the details of a specified EIAM application.
+//
+// Description:
+//
+// Before you delete a specified EIAM application, make sure that the application is no longer in use. After the application is deleted, all configuration data is permanently removed and cannot be recovered.
 //
 // @param request - GetApplicationRequest
 //
@@ -10658,7 +10690,7 @@ func (client *Client) GetApplicationAdvancedConfig(request *GetApplicationAdvanc
 
 // Summary:
 //
-// Retrieves an application federated identity credential.
+// Retrieves the federated identity credential of an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -10710,7 +10742,7 @@ func (client *Client) GetApplicationFederatedCredentialWithOptions(request *GetA
 
 // Summary:
 //
-// Retrieves an application federated identity credential.
+// Retrieves the federated identity credential of an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -11664,11 +11696,11 @@ func (client *Client) GetCloudAccountRole(request *GetCloudAccountRoleRequest) (
 
 // Summary:
 //
-// Get a conditional access policy.
+// Retrieves a conditional access policy.
 //
 // Description:
 //
-// Query a conditional access policy.
+// Queries a conditional access policy.
 //
 // @param request - GetConditionalAccessPolicyRequest
 //
@@ -11716,11 +11748,11 @@ func (client *Client) GetConditionalAccessPolicyWithOptions(request *GetConditio
 
 // Summary:
 //
-// Get a conditional access policy.
+// Retrieves a conditional access policy.
 //
 // Description:
 //
-// Query a conditional access policy.
+// Queries a conditional access policy.
 //
 // @param request - GetConditionalAccessPolicyRequest
 //
@@ -12134,7 +12166,7 @@ func (client *Client) GetDomainDnsChallenge(request *GetDomainDnsChallengeReques
 
 // Summary:
 //
-// Retrieve a federated credential provider.
+// Retrieves a federated trust source.
 //
 // @param request - GetFederatedCredentialProviderRequest
 //
@@ -12182,7 +12214,7 @@ func (client *Client) GetFederatedCredentialProviderWithOptions(request *GetFede
 
 // Summary:
 //
-// Retrieve a federated credential provider.
+// Retrieves a federated trust source.
 //
 // @param request - GetFederatedCredentialProviderRequest
 //
@@ -12200,7 +12232,7 @@ func (client *Client) GetFederatedCredentialProvider(request *GetFederatedCreden
 
 // Summary:
 //
-// Queries the forgot password policy of a specified EIAM instance.
+// Queries the forgot password policy for a specified EIAM instance.
 //
 // @param request - GetForgetPasswordConfigurationRequest
 //
@@ -12244,7 +12276,7 @@ func (client *Client) GetForgetPasswordConfigurationWithOptions(request *GetForg
 
 // Summary:
 //
-// Queries the forgot password policy of a specified EIAM instance.
+// Queries the forgot password policy for a specified EIAM instance.
 //
 // @param request - GetForgetPasswordConfigurationRequest
 //
@@ -12460,7 +12492,7 @@ func (client *Client) GetIdentityProviderAdvancedConfiguration(request *GetIdent
 
 // Summary:
 //
-// Retrieves an IdP check task.
+// Retrieves an IdP status check job.
 //
 // @param request - GetIdentityProviderStatusCheckJobRequest
 //
@@ -12512,7 +12544,7 @@ func (client *Client) GetIdentityProviderStatusCheckJobWithOptions(request *GetI
 
 // Summary:
 //
-// Retrieves an IdP check task.
+// Retrieves an IdP status check job.
 //
 // @param request - GetIdentityProviderStatusCheckJobRequest
 //
@@ -12530,7 +12562,7 @@ func (client *Client) GetIdentityProviderStatusCheckJob(request *GetIdentityProv
 
 // Summary:
 //
-// Retrieves the inbound synchronization configuration of an identity provider (IdP).
+// Retrieves the inbound synchronization configuration of an Identity Provider (IdP).
 //
 // @param request - GetIdentityProviderUdPullConfigurationRequest
 //
@@ -12578,7 +12610,7 @@ func (client *Client) GetIdentityProviderUdPullConfigurationWithOptions(request 
 
 // Summary:
 //
-// Retrieves the inbound synchronization configuration of an identity provider (IdP).
+// Retrieves the inbound synchronization configuration of an Identity Provider (IdP).
 //
 // @param request - GetIdentityProviderUdPullConfigurationRequest
 //
@@ -12856,7 +12888,7 @@ func (client *Client) GetInstanceGlobalizationConfig(request *GetInstanceGlobali
 //
 // Description:
 //
-// Make sure that your instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
+// Make sure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -12904,7 +12936,7 @@ func (client *Client) GetInstanceLicenseWithOptions(request *GetInstanceLicenseR
 //
 // Description:
 //
-// Make sure that your instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
+// Make sure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -13888,7 +13920,11 @@ func (client *Client) GetSynchronizationJob(request *GetSynchronizationJobReques
 
 // Summary:
 //
-// Queries the details of a trusted origin.
+// Queries a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Queries a trusted origin in a specified EIAM instance.
 //
 // @param request - GetTrustedOriginRequest
 //
@@ -13936,7 +13972,11 @@ func (client *Client) GetTrustedOriginWithOptions(request *GetTrustedOriginReque
 
 // Summary:
 //
-// Queries the details of a trusted origin.
+// Queries a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Queries a trusted origin in a specified EIAM instance.
 //
 // @param request - GetTrustedOriginRequest
 //
@@ -14094,7 +14134,7 @@ func (client *Client) ListActionTrackEventTypes(request *ListActionTrackEventTyp
 
 // Summary:
 //
-// Queries the application accounts of an application by paging.
+// Queries application accounts under an application by paging.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -14150,7 +14190,7 @@ func (client *Client) ListApplicationAccountsWithOptions(request *ListApplicatio
 
 // Summary:
 //
-// Queries the application accounts of an application by paging.
+// Queries application accounts under an application by paging.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -14168,11 +14208,11 @@ func (client *Client) ListApplicationAccounts(request *ListApplicationAccountsRe
 
 // Summary:
 //
-// Queries all accounts that belong to a specified user in an application.
+// Queries all accounts of a specified user in the current application.
 //
 // Description:
 //
-// This operation queries only applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of the organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListApplicationAccountsForUserRequest
 //
@@ -14224,11 +14264,11 @@ func (client *Client) ListApplicationAccountsForUserWithOptions(request *ListApp
 
 // Summary:
 //
-// Queries all accounts that belong to a specified user in an application.
+// Queries all accounts of a specified user in the current application.
 //
 // Description:
 //
-// This operation queries only applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of the organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListApplicationAccountsForUserRequest
 //
@@ -14312,7 +14352,7 @@ func (client *Client) ListApplicationClientSecrets(request *ListApplicationClien
 
 // Summary:
 //
-// Queries the list of application federated identity credentials.
+// Queries a list of application federated identity credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -14376,7 +14416,7 @@ func (client *Client) ListApplicationFederatedCredentialsWithOptions(request *Li
 
 // Summary:
 //
-// Queries the list of application federated identity credentials.
+// Queries a list of application federated identity credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -15810,7 +15850,7 @@ func (client *Client) ListBrands(request *ListBrandsRequest) (_result *ListBrand
 
 // Summary:
 //
-// Lists the client public keys for a specified application using a cursor.
+// Queries the list of ClientPublicKeys for a specified application by using a cursor.
 //
 // @param request - ListClientPublicKeysRequest
 //
@@ -15866,7 +15906,7 @@ func (client *Client) ListClientPublicKeysWithOptions(request *ListClientPublicK
 
 // Summary:
 //
-// Lists the client public keys for a specified application using a cursor.
+// Queries the list of ClientPublicKeys for a specified application by using a cursor.
 //
 // @param request - ListClientPublicKeysRequest
 //
@@ -16036,11 +16076,11 @@ func (client *Client) ListCloudAccounts(request *ListCloudAccountsRequest) (_res
 
 // Summary:
 //
-// List conditional access policies.
+// Lists conditional access policies.
 //
 // Description:
 //
-// Query the list of conditional access policies with pagination.
+// Queries conditional access policies by page.
 //
 // @param request - ListConditionalAccessPoliciesRequest
 //
@@ -16096,11 +16136,11 @@ func (client *Client) ListConditionalAccessPoliciesWithOptions(request *ListCond
 
 // Summary:
 //
-// List conditional access policies.
+// Lists conditional access policies.
 //
 // Description:
 //
-// Query the list of conditional access policies with pagination.
+// Queries conditional access policies by page.
 //
 // @param request - ListConditionalAccessPoliciesRequest
 //
@@ -16118,7 +16158,7 @@ func (client *Client) ListConditionalAccessPolicies(request *ListConditionalAcce
 
 // Summary:
 //
-// List conditional access policies associated with an application.
+// Retrieves the list of conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -16166,7 +16206,7 @@ func (client *Client) ListConditionalAccessPoliciesForApplicationWithOptions(req
 
 // Summary:
 //
-// List conditional access policies associated with an application.
+// Retrieves the list of conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -18262,7 +18302,7 @@ func (client *Client) ListOrganizationalUnitsForApplication(request *ListOrganiz
 
 // Summary:
 //
-// Retrieves a cursor-paginated list of scopes that the current resource server has granted to an organization.
+// Queries the list of scope permissions that the current ResourceServer has authorized to organizational units by using a cursor-based pagination method.
 //
 // @param request - ListOrganizationalUnitsForResourceServerRequest
 //
@@ -18326,7 +18366,7 @@ func (client *Client) ListOrganizationalUnitsForResourceServerWithOptions(reques
 
 // Summary:
 //
-// Retrieves a cursor-paginated list of scopes that the current resource server has granted to an organization.
+// Queries the list of scope permissions that the current ResourceServer has authorized to organizational units by using a cursor-based pagination method.
 //
 // @param request - ListOrganizationalUnitsForResourceServerRequest
 //
@@ -18691,7 +18731,11 @@ func (client *Client) ListSynchronizationJobs(request *ListSynchronizationJobsRe
 
 // Summary:
 //
-// Queries the list of trusted origins.
+// Queries the list of trusted origins in a specified Employees Identity and Access Management (EIAM) instance.
+//
+// Description:
+//
+// Queries the list of trusted origins in a specified EIAM instance.
 //
 // @param request - ListTrustedOriginsRequest
 //
@@ -18759,7 +18803,11 @@ func (client *Client) ListTrustedOriginsWithOptions(request *ListTrustedOriginsR
 
 // Summary:
 //
-// Queries the list of trusted origins.
+// Queries the list of trusted origins in a specified Employees Identity and Access Management (EIAM) instance.
+//
+// Description:
+//
+// Queries the list of trusted origins in a specified EIAM instance.
 //
 // @param request - ListTrustedOriginsRequest
 //
@@ -18777,11 +18825,11 @@ func (client *Client) ListTrustedOrigins(request *ListTrustedOriginsRequest) (_r
 
 // Summary:
 //
-// Lists the mappings for third-party logon accounts.
+// Queries the binding relationships of third-party login accounts.
 //
 // Description:
 //
-// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -18849,11 +18897,11 @@ func (client *Client) ListUserAuthnSourceMappingsWithOptions(request *ListUserAu
 
 // Summary:
 //
-// Lists the mappings for third-party logon accounts.
+// Queries the binding relationships of third-party login accounts.
 //
 // Description:
 //
-// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -19239,7 +19287,7 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 
 // Summary:
 //
-// List the scope permissions granted by a Resource Server to user accounts using cursor-based pagination.
+// Queries the list of scope permissions that the current ResourceServer has granted to accounts by using a cursor-based pagination method.
 //
 // @param request - ListUsersForResourceServerRequest
 //
@@ -19303,7 +19351,7 @@ func (client *Client) ListUsersForResourceServerWithOptions(request *ListUsersFo
 
 // Summary:
 //
-// List the scope permissions granted by a Resource Server to user accounts using cursor-based pagination.
+// Queries the list of scope permissions that the current ResourceServer has granted to accounts by using a cursor-based pagination method.
 //
 // @param request - ListUsersForResourceServerRequest
 //
@@ -19395,7 +19443,7 @@ func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationCl
 //
 // Description:
 //
-// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may result from this operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may be caused by this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -19451,7 +19499,7 @@ func (client *Client) ObtainApplicationTokenWithOptions(request *ObtainApplicati
 //
 // Description:
 //
-// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may result from this operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may be caused by this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -20757,7 +20805,7 @@ func (client *Client) RevokeResourceServerScopesFromUser(request *RevokeResource
 
 // Summary:
 //
-// Creates and immediately runs a new synchronization task.
+// Runs a synchronization task. This operation creates a new synchronization task and immediately executes it.
 //
 // @param request - RunSynchronizationJobRequest
 //
@@ -20825,7 +20873,7 @@ func (client *Client) RunSynchronizationJobWithOptions(request *RunSynchronizati
 
 // Summary:
 //
-// Creates and immediately runs a new synchronization task.
+// Runs a synchronization task. This operation creates a new synchronization task and immediately executes it.
 //
 // @param request - RunSynchronizationJobRequest
 //
@@ -23423,7 +23471,7 @@ func (client *Client) UpdateApplicationSsoFormParams(request *UpdateApplicationS
 
 // Summary:
 //
-// Updates the expiration time of an application token.
+// Updates the expiration time of an ApplicationToken.
 //
 // @param request - UpdateApplicationTokenExpirationTimeRequest
 //
@@ -23479,7 +23527,7 @@ func (client *Client) UpdateApplicationTokenExpirationTimeWithOptions(request *U
 
 // Summary:
 //
-// Updates the expiration time of an application token.
+// Updates the expiration time of an ApplicationToken.
 //
 // @param request - UpdateApplicationTokenExpirationTimeRequest
 //
@@ -26049,7 +26097,11 @@ func (client *Client) UpdateResourceServerScope(request *UpdateResourceServerSco
 
 // Summary:
 //
-// Modifies a trusted origin.
+// Updates a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Updates a trusted origin in a specified EIAM instance.
 //
 // @param request - UpdateTrustedOriginRequest
 //
@@ -26109,7 +26161,11 @@ func (client *Client) UpdateTrustedOriginWithOptions(request *UpdateTrustedOrigi
 
 // Summary:
 //
-// Modifies a trusted origin.
+// Updates a trusted origin in a specified EIAM instance.
+//
+// Description:
+//
+// Updates a trusted origin in a specified EIAM instance.
 //
 // @param request - UpdateTrustedOriginRequest
 //

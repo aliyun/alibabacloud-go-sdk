@@ -22,15 +22,15 @@ type iListClientPublicKeysResponseBody interface {
 }
 
 type ListClientPublicKeysResponseBody struct {
-	// The list of client public keys for the application.
+	// The list of ClientPublicKeys for the application.
 	ClientPublicKeys []*ListClientPublicKeysResponseBodyClientPublicKeys `json:"ClientPublicKeys,omitempty" xml:"ClientPublicKeys,omitempty" type:"Repeated"`
-	// The number of entries returned on each page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListClientPublicKeysResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListClientPublicKeysResponseBodyClientPublicKeys struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the client public key.
+	// The ID of the application ClientPublicKey.
 	//
 	// example:
 	//
 	// KEYEqDnDJhztiEAwSin7MZoxGcihzCAuxxxx
 	ClientPublicKeyId *string `json:"ClientPublicKeyId,omitempty" xml:"ClientPublicKeyId,omitempty"`
-	// The time when the key was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type ListClientPublicKeysResponseBodyClientPublicKeys struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the key was last used.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1762006052000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// Indicates whether the key is used with priority.
+	// Indicates whether this key is used with priority.
 	//
 	// example:
 	//

@@ -64,9 +64,9 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBody) Validate() error {
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration struct {
 	// The group synchronization status. Valid values:
 	//
-	// - disabled
+	// - disabled: Disabled.
 	//
-	// - enabled.
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration struc
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
 	// The incremental callback status, which specifies whether to process incremental callback data from the IdP. Valid values:
 	//
-	// - disabled
+	// - disabled: Disabled.
 	//
-	// - enabled.
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration struc
 	PeriodicSyncConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
 	// The periodic verification status, which specifies whether to periodically verify data differences between IDaaS and the identity provider. Valid values:
 	//
-	// - disabled
+	// - disabled: Disabled.
 	//
-	// - enabled.
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) 
 }
 
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig struct {
-	// The group member identifier attribute.
+	// The group member attribute name.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUd
 	//
 	// (|(cn=test)(group=test@test.com))
 	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
-	// The organizational unit ObjectClass.
+	// The organization ObjectClass.
 	//
 	// example:
 	//
@@ -339,7 +339,7 @@ type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriod
 	//
 	// 0 45 1 	- 	- ?
 	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
-	// The execution time points. For example, [3, 5] indicates that synchronization runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
+	// The execution time points. For example, [3, 5] indicates that the task runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
 	//
 	// example:
 	//
@@ -453,9 +453,9 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPu
 }
 
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig struct {
-	// The list of source nodes for synchronization.
+	// The list of source scope nodes.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// The target node for synchronization.
+	// The target scope node.
 	//
 	// example:
 	//

@@ -62,25 +62,25 @@ func (s *GetApplicationTemplateResponseBody) Validate() error {
 }
 
 type GetApplicationTemplateResponseBodyApplicationTemplate struct {
-	// The application template ID.
+	// The ID of the application template.
 	//
 	// example:
 	//
 	// apt_ramintlrole_ixxxxx
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
-	// The application template name.
+	// The name of the application template.
 	//
 	// example:
 	//
 	// Alibaba Cloud
 	ApplicationTemplateName *string `json:"ApplicationTemplateName,omitempty" xml:"ApplicationTemplateName,omitempty"`
-	// The time when the application template was created.
+	// The creation time of the application template. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1730341123000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The application template description.
+	// The description of the application template.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetApplicationTemplateResponseBodyApplicationTemplate struct {
 	//
 	// https://example.com/imgextra/i4/O1CN01xTLxLb1WtyKksHW1H_!!6000000002847-2-tps-xxx-xxx.png
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The service code of the Alibaba Cloud service that manages the application template.
+	// The service code of the cloud service that manages the application template.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type GetApplicationTemplateResponseBodyApplicationTemplate struct {
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	// The sale information of the application template.
 	SaleInfo *GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo `json:"SaleInfo,omitempty" xml:"SaleInfo,omitempty" type:"Struct"`
-	// The console URL of the Alibaba Cloud service that manages the application template.
+	// The console URL of the cloud service that manages the application template.
 	//
 	// example:
 	//
 	// https://example.com/?p=bastion
 	ServiceConsoleUrl *string `json:"ServiceConsoleUrl,omitempty" xml:"ServiceConsoleUrl,omitempty"`
-	// Indicates whether the application template is managed by an Alibaba Cloud service.
+	// Indicates whether the application template is managed by a cloud service.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetApplicationTemplateResponseBodyApplicationTemplate struct {
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The supported SSO protocols.
 	SsoTypes []*string `json:"SsoTypes,omitempty" xml:"SsoTypes,omitempty" type:"Repeated"`
-	// The time when the application template was last updated.
+	// The update time of the application template. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

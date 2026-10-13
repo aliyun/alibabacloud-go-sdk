@@ -24,13 +24,13 @@ type iListAuthorizationServersResponseBody interface {
 type ListAuthorizationServersResponseBody struct {
 	// The list of authorization servers.
 	AuthorizationServers []*ListAuthorizationServersResponseBodyAuthorizationServers `json:"AuthorizationServers,omitempty" xml:"AuthorizationServers,omitempty" type:"Repeated"`
-	// The number of entries per page for a paged query.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in this call.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListAuthorizationServersResponseBodyAuthorizationServers struct {
 	//
 	// my_authorization_server
 	AuthorizationServerName *string `json:"AuthorizationServerName,omitempty" xml:"AuthorizationServerName,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListAuthorizationServersResponseBodyAuthorizationServers struct {
 	//
 	// ENABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -41,16 +41,18 @@ type UpdateApplicationInfoRequest struct {
 	// example:
 	//
 	// Ram Account SSO
-	ApplicationName  *string                                       `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application owner.
 	ApplicationOwner *UpdateApplicationInfoRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
 	// The application visibility settings.
 	ApplicationVisibility []*string `json:"ApplicationVisibility,omitempty" xml:"ApplicationVisibility,omitempty" type:"Repeated"`
-	// The idempotence token.
+	// The idempotency token.
 	//
 	// example:
 	//
 	// client-token-example
-	ClientToken  *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of application extension fields.
 	CustomFields []*UpdateApplicationInfoRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -167,8 +169,10 @@ func (s *UpdateApplicationInfoRequest) Validate() error {
 }
 
 type UpdateApplicationInfoRequestApplicationOwner struct {
+	// The list of group IDs.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	UserIds  []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The list of user IDs.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateApplicationInfoRequestApplicationOwner) String() string {
@@ -202,9 +206,24 @@ func (s *UpdateApplicationInfoRequestApplicationOwner) Validate() error {
 }
 
 type UpdateApplicationInfoRequestCustomFields struct {
-	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The name of the application extension field.
+	//
+	// example:
+	//
+	// agent_type
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The value of the application extension field. If FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. If FieldName is set to agentExternalId, enter the relevant value.
+	//
+	// example:
+	//
+	// bailian
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	Operation  *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The operation type for the application extension field.
+	//
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 }
 
 func (s UpdateApplicationInfoRequestCustomFields) String() string {

@@ -20,7 +20,7 @@ type iListConditionalAccessPoliciesRequest interface {
 }
 
 type ListConditionalAccessPoliciesRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type ListConditionalAccessPoliciesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Number of rows per page in paginated queries.
+	// The number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Next page query token.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Previous page query token.
+	// The pagination token for the previous page.
 	//
 	// example:
 	//

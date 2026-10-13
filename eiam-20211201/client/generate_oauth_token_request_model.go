@@ -43,7 +43,12 @@ type GenerateOauthTokenRequest struct {
 	// example:
 	//
 	// https://example.com
-	Audience  *string `json:"Audience,omitempty" xml:"Audience,omitempty"`
+	Audience *string `json:"Audience,omitempty" xml:"Audience,omitempty"`
+	// The grant type.
+	//
+	// example:
+	//
+	// client_credentials
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
 	// The instance ID.
 	//
@@ -52,14 +57,29 @@ type GenerateOauthTokenRequest struct {
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The requested token type.
+	//
+	// example:
+	//
+	// urn:ietf:params:oauth:token-type:access_token
 	RequestedTokenType *string `json:"RequestedTokenType,omitempty" xml:"RequestedTokenType,omitempty"`
-	// The permission scopes.
+	// The permission scope.
 	//
 	// This parameter is required.
-	ScopeValues      []*string `json:"ScopeValues,omitempty" xml:"ScopeValues,omitempty" type:"Repeated"`
-	SubjectToken     *string   `json:"SubjectToken,omitempty" xml:"SubjectToken,omitempty"`
-	SubjectTokenType *string   `json:"SubjectTokenType,omitempty" xml:"SubjectTokenType,omitempty"`
+	ScopeValues []*string `json:"ScopeValues,omitempty" xml:"ScopeValues,omitempty" type:"Repeated"`
+	// The subject token.
+	//
+	// example:
+	//
+	// subject001
+	SubjectToken *string `json:"SubjectToken,omitempty" xml:"SubjectToken,omitempty"`
+	// The subject token type.
+	//
+	// example:
+	//
+	// urn:ietf:params:oauth:token-type:access_token
+	SubjectTokenType *string `json:"SubjectTokenType,omitempty" xml:"SubjectTokenType,omitempty"`
 }
 
 func (s GenerateOauthTokenRequest) String() string {

@@ -18,13 +18,13 @@ type iDeleteTrustedOriginRequest interface {
 }
 
 type DeleteTrustedOriginRequest struct {
-	// A client token that is used to ensure the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique among different requests. The value of ClientToken can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The idempotence token.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the IDaaS EIAM instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DeleteTrustedOriginRequest struct {
 	//
 	// idaas_example
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the trusted origin.
+	// The trusted origin ID.
 	//
 	// This parameter is required.
 	//

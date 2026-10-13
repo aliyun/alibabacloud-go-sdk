@@ -22,13 +22,13 @@ type iListTrustedOriginsResponseBody interface {
 }
 
 type ListTrustedOriginsResponseBody struct {
-	// The number of entries per page that takes effect for this request.
+	// The maximum number of results per page that takes effect for this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page query.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListTrustedOriginsResponseBody struct {
 	//
 	// 0441BD79-example
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListTrustedOriginsResponseBody) Validate() error {
 }
 
 type ListTrustedOriginsResponseBodyTrustedOrigins struct {
-	// The creation time.
+	// The creation time. The time is in RFC 3339 format and in the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -157,7 +157,7 @@ type ListTrustedOriginsResponseBodyTrustedOrigins struct {
 	TrustedOriginId *string `json:"TrustedOriginId,omitempty" xml:"TrustedOriginId,omitempty"`
 	// The trusted origin scene.
 	TrustedOriginScene []*string `json:"TrustedOriginScene,omitempty" xml:"TrustedOriginScene,omitempty" type:"Repeated"`
-	// The update time.
+	// The update time. The time is in RFC 3339 format and in the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

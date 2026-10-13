@@ -26,7 +26,7 @@ type iListUserAuthnSourceMappingsRequest interface {
 }
 
 type ListUserAuthnSourceMappingsRequest struct {
-	// The ID of the source identity provider (IdP).
+	// The source identity provider (IdP) ID.
 	//
 	// example:
 	//
@@ -40,29 +40,29 @@ type ListUserAuthnSourceMappingsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token.
+	// The pagination token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token for the previous page of results.
+	// The token used to query the previous page.
 	//
 	// example:
 	//
 	// PTxxxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
-	// The external ID.
+	// The external association ID.
 	//
 	// example:
 	//
-	// xxxxxx
+	// user_123131xxasasa
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
 	// The user ID.
 	//

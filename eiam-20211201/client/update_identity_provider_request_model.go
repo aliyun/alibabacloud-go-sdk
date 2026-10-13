@@ -801,7 +801,7 @@ type UpdateIdentityProviderRequestSamlConfig struct {
 	//
 	// HTTP-REDIRECT
 	BindingMethod *string `json:"BindingMethod,omitempty" xml:"BindingMethod,omitempty"`
-	// The certificate list of the IdP.
+	// The list of IdP certificates.
 	Certificates []*UpdateIdentityProviderRequestSamlConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The EntityId of the IdP.
 	//
@@ -828,8 +828,16 @@ type UpdateIdentityProviderRequestSamlConfig struct {
 	// true
 	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
 	// Specifies whether the external IdP is required to sign the Assertion.
+	//
+	// example:
+	//
+	// true
 	WantAssertionsSigned *bool `json:"WantAssertionsSigned,omitempty" xml:"WantAssertionsSigned,omitempty"`
 	// Specifies whether the external IdP is required to sign the Response.
+	//
+	// example:
+	//
+	// false
 	WantResponseSigned *bool `json:"WantResponseSigned,omitempty" xml:"WantResponseSigned,omitempty"`
 }
 
@@ -927,7 +935,7 @@ func (s *UpdateIdentityProviderRequestSamlConfig) Validate() error {
 }
 
 type UpdateIdentityProviderRequestSamlConfigCertificates struct {
-	// The certificate content.
+	// The content of the certificate.
 	//
 	// example:
 	//
@@ -969,6 +977,8 @@ type UpdateIdentityProviderRequestWeComConfig struct {
 	//
 	// https://xxx.aliyunidaas.com/xxxxx
 	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
+	// The WeCom contacts secret.
+	//
 	// example:
 	//
 	// mPLLiWv-_9witxxxEJCpk1xkF5hOgBzpRt4kBkxxx
@@ -979,7 +989,7 @@ type UpdateIdentityProviderRequestWeComConfig struct {
 	//
 	// CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx
 	CorpSecret *string `json:"CorpSecret,omitempty" xml:"CorpSecret,omitempty"`
-	// The trusted domain name.
+	// The trusted domain.
 	//
 	// example:
 	//

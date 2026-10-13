@@ -16,7 +16,7 @@ type iGetInstanceLicenseResponseBody interface {
 }
 
 type GetInstanceLicenseResponseBody struct {
-	// The response result.
+	// The returned result.
 	License *GetInstanceLicenseResponseBodyLicense `json:"License,omitempty" xml:"License,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -82,7 +82,7 @@ type GetInstanceLicenseResponseBodyLicense struct {
 	//
 	// prepay
 	LicenseChargeType *string `json:"LicenseChargeType,omitempty" xml:"LicenseChargeType,omitempty"`
-	// The detailed license configuration in JSON string format.
+	// The detailed license configuration as a JSON string.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetInstanceLicenseResponseBodyLicense struct {
 	//
 	// alibaba_cloud
 	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
-	// The unique identifier of the external product associated with the license.
+	// The unique identifier of the external commodity associated with the license.
 	//
 	// example:
 	//
@@ -288,9 +288,13 @@ type GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail struct {
 	//
 	// 1
 	NetworkAccessEndpointQuota *int64 `json:"NetworkAccessEndpointQuota,omitempty" xml:"NetworkAccessEndpointQuota,omitempty"`
-	// The PAM privileged management license status. Valid values: enabled and disabled.
+	// The PAM privileged access management license status.
+	//
+	// example:
+	//
+	// enabled
 	PamLicenseStatus *string `json:"PamLicenseStatus,omitempty" xml:"PamLicenseStatus,omitempty"`
-	// The number of prepaid active accounts.
+	// The number of prepaid active users.
 	//
 	// example:
 	//

@@ -46,9 +46,9 @@ type RunSynchronizationJobRequest struct {
 	//
 	// true
 	PasswordInitialization *bool `json:"PasswordInitialization,omitempty" xml:"PasswordInitialization,omitempty"`
-	// The configuration of the synchronization scope.
+	// The synchronization scope configuration.
 	SynchronizationScopeConfig *RunSynchronizationJobRequestSynchronizationScopeConfig `json:"SynchronizationScopeConfig,omitempty" xml:"SynchronizationScopeConfig,omitempty" type:"Struct"`
-	// The ID of the synchronization target.
+	// The synchronization target ID.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type RunSynchronizationJobRequest struct {
 	//
 	// idp_my664lwkhpicbyzirog3ngxxxxx
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the synchronization target. Valid values:
+	// The synchronization target type. Valid values:
 	//
-	// - identity_provider: The identity provider.
+	// - identity_provider: identity provider
 	//
-	// - application: The application.
+	// - application: application
 	//
 	// This parameter is required.
 	//

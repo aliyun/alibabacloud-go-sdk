@@ -50,13 +50,13 @@ type ListFederatedCredentialProvidersRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token used to query the previous page.
+	// The pagination token for the previous page.
 	//
 	// example:
 	//

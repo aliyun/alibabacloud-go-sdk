@@ -22,19 +22,19 @@ type iListOrganizationalUnitsForResourceServerResponseBody interface {
 }
 
 type ListOrganizationalUnitsForResourceServerResponseBody struct {
-	// The maximum number of results per page.
+	// The number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A token to retrieve the next page of results.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A list of organizational units.
+	// The list of organizational units.
 	OrganizationalUnits []*ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListOrganizationalUnitsForResourceServerResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of results.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits str
 	//
 	// ou_nbsomva32b6utec3hgi7scxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// A list of scopes.
+	// The list of scope permissions.
 	ResourceServerScopes []*ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
 }
 
@@ -182,13 +182,13 @@ func (s *ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits
 }
 
 type ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes struct {
-	// The scope ID.
+	// The scope permission ID.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The scope name.
+	// The scope permission name.
 	//
 	// example:
 	//

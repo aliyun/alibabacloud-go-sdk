@@ -44,7 +44,7 @@ type CreateTrustedOriginRequest struct {
 	//
 	// https://console.qoder.com
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The name of the trusted origin used for management, display, and auditing. If not specified, the value is empty.
+	// The name of the trusted origin used for management, display, and auditing. If this parameter is not specified, the value is empty.
 	//
 	// example:
 	//

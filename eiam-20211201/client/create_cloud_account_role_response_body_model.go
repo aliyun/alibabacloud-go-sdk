@@ -16,13 +16,13 @@ type iCreateCloudAccountRoleResponseBody interface {
 }
 
 type CreateCloudAccountRoleResponseBody struct {
-	// The ID of the cloud role.
+	// The cloud role ID.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	CloudAccountRoleId *string `json:"CloudAccountRoleId,omitempty" xml:"CloudAccountRoleId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

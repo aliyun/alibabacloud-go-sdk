@@ -88,7 +88,7 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The attribute mappings.
 	AttributeMappings []*GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialAttributeMappings `json:"AttributeMappings,omitempty" xml:"AttributeMappings,omitempty" type:"Repeated"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last used time.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -475,7 +475,7 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigAzureVmConfig struct {
-	// The principal ID.
+	// The identity identifier.
 	//
 	// example:
 	//
@@ -548,13 +548,13 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigGcpVmConfig struct {
 	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The GCP project ID.
+	// The GCP project ID to which the resource belongs.
 	//
 	// example:
 	//
 	// turnkey-axiom-475109-xx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The subject corresponding to the service account.
+	// The sub claim that corresponds to the service account.
 	//
 	// example:
 	//

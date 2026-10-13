@@ -62,7 +62,7 @@ func (s *GetApplicationResponseBody) Validate() error {
 }
 
 type GetApplicationResponseBodyApplication struct {
-	// The status of the Developer API feature for the application. Valid values:
+	// The Developer API feature status of the application. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -98,8 +98,9 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// example:
 	//
-	// SAML application
-	ApplicationName  *string                                                `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// SAML Application
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application owner.
 	ApplicationOwner *GetApplicationResponseBodyApplicationApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
 	// The source from which the application was created. Valid values:
 	//
@@ -111,7 +112,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// urn:alibaba:idaas:app:source:template
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
-	// The ID of the application template associated during creation. This value is returned only when the application was created from an application template.
+	// The application template ID associated during creation. This value is returned only when the application was created from an application template.
 	//
 	// example:
 	//
@@ -135,14 +136,15 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The time when the application was created. The value is a UNIX timestamp in milliseconds.
+	// The time when the application was created, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
-	CreateTime   *int64                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The list of application custom fields.
 	CustomFields []*GetApplicationResponseBodyApplicationCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
-	// Indicates whether the custom Subject field in the token is enabled. After this feature is enabled, the issued Access Token changes from \\<clientId\\> to \\<clientId\\>:\\<client.activeSubjectUrn\\>, where client.activeSubjectUrn is configured in the attribute mapping of the federated identity credential of the application.
+	// Indicates whether the custom Subject field in the token is enabled. After this feature is enabled, the issued Access Token changes from <clientId> to <clientId>:<client.activeSubjectUrn>, where client.activeSubjectUrn is configured in the attribute mapping of the federated identity credential of the application.
 	//
 	// example:
 	//
@@ -152,7 +154,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// example:
 	//
-	// An application for test environment
+	// An application for the test environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The features supported by the application, returned as a JSON array string. Valid values:
 	//
@@ -190,7 +192,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// rpa
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
-	// The unique identifier of the ResourceServer, which corresponds to the ResourceServer audience.
+	// The unique identifier of the ResourceServer, corresponding to the ResourceServer audience.
 	//
 	// example:
 	//
@@ -213,7 +215,8 @@ type GetApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// true
-	ServiceManaged          *bool     `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// The list of capabilities configured through smart configuration.
 	SmartConfigCapabilities []*string `json:"SmartConfigCapabilities,omitempty" xml:"SmartConfigCapabilities,omitempty" type:"Repeated"`
 	// The single sign-on protocol. Valid values:
 	//
@@ -239,7 +242,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the application was last updated. The value is a UNIX timestamp in milliseconds.
+	// The time when the application was last updated, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -526,8 +529,10 @@ func (s *GetApplicationResponseBodyApplication) Validate() error {
 }
 
 type GetApplicationResponseBodyApplicationApplicationOwner struct {
+	// The list of group scopes for synchronization authorization.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	UserIds  []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The list of user IDs.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s GetApplicationResponseBodyApplicationApplicationOwner) String() string {
@@ -561,7 +566,17 @@ func (s *GetApplicationResponseBodyApplicationApplicationOwner) Validate() error
 }
 
 type GetApplicationResponseBodyApplicationCustomFields struct {
-	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The identifier of the application custom field.
+	//
+	// example:
+	//
+	// agent_source_id
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The value of the application custom field. When FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. When FieldName is set to agentExternalId, enter the corresponding value.
+	//
+	// example:
+	//
+	// 38899
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 }
 

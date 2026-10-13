@@ -62,27 +62,39 @@ func (s *GetForgetPasswordConfigurationResponseBody) Validate() error {
 }
 
 type GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration struct {
-	// The list of authentication channels for forgot password. This parameter is required when ForgetPasswordStatus is set to enabled. Valid values: email, sms (SMS), totp (OTP), and web_authn (WebAuthn).
+	// The list of forgot password authentication channels. Required when ForgetPasswordStatus is set to enabled. Valid values:
+	//
+	// - email: Email.
+	//
+	// - sms: SMS.
+	//
+	// - totp: OTP dynamic password.
+	//
+	// - web_authn: WebAuthn.
 	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
-	// Indicates whether the forgot password feature is enabled. This parameter is deprecated. Use the ForgetPasswordStatus parameter instead.
+	// **[Deprecated]*	- Indicates whether the forgot password feature is enabled. This parameter is deprecated. Use the ForgetPasswordStatus parameter instead.
 	//
 	// example:
 	//
-	// true
+	// deprecated: true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Indicates whether email is enabled as an authentication method for forgot password. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
+	// **[Deprecated]*	- Indicates whether email is enabled as a forgot password authentication method. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
 	//
 	// example:
 	//
-	// false
+	// deprecated: true
 	EnableEmail *bool `json:"EnableEmail,omitempty" xml:"EnableEmail,omitempty"`
-	// Indicates whether SMS is enabled as an authentication method for forgot password. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
+	// **[Deprecated]*	- Indicates whether SMS is enabled as a forgot password authentication method. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
 	//
 	// example:
 	//
-	// true
+	// deprecated: true
 	EnableSms *bool `json:"EnableSms,omitempty" xml:"EnableSms,omitempty"`
-	// The status of the forgot password configuration. Valid values: enabled and disabled.
+	// The forgot password configuration status. Valid values:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetIdentityProviderStatusCheckJobResponseBody interface {
 }
 
 type GetIdentityProviderStatusCheckJobResponseBody struct {
-	// The information about the IdP status check job.
+	// The IdP status check job information.
 	IdentityProviderStatusCheckJob *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob `json:"IdentityProviderStatusCheckJob,omitempty" xml:"IdentityProviderStatusCheckJob,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,25 +62,25 @@ func (s *GetIdentityProviderStatusCheckJobResponseBody) Validate() error {
 }
 
 type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob struct {
-	// The result of the check task.
+	// The job check result.
 	//
 	// example:
 	//
 	// success
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The end time.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1763776265757
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the IdP.
+	// The identity provider ID.
 	//
 	// example:
 	//
 	// idp_ncehkms65fiefobrvwy2blrxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// The ID of the IdP status check job.
+	// The IdP status check job ID.
 	//
 	// example:
 	//
@@ -92,15 +92,15 @@ type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqsfxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The results of the status check subtasks.
+	// The status check sub-item task result information.
 	JobCheckItems []*GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItems `json:"JobCheckItems,omitempty" xml:"JobCheckItems,omitempty" type:"Repeated"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1763776265757
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the check task.
+	// The job check status.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ func (s *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusChec
 }
 
 type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItems struct {
-	// The reason for the error.
+	// The error reason.
 	ErrorReason *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItemsErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
 	// The major check item.
 	//

@@ -30,6 +30,7 @@ type iCreateFederatedCredentialProviderRequest interface {
 }
 
 type CreateFederatedCredentialProviderRequest struct {
+	// The identity provider configuration.
 	CloudIdPProviderConfig *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
 	// The description of the federated trust source.
 	//
@@ -189,6 +190,8 @@ func (s *CreateFederatedCredentialProviderRequest) Validate() error {
 }
 
 type CreateFederatedCredentialProviderRequestCloudIdPProviderConfig struct {
+	// The ID of the identity provider.
+	//
 	// example:
 	//
 	// idp_m7hk2hbnew5ir3ycfabug6xxxx
@@ -219,7 +222,7 @@ func (s *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) Validat
 type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	// The list of audiences.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// Issuer
+	// The token issuer identifier (Issuer).
 	//
 	// example:
 	//
@@ -490,7 +493,7 @@ type CreateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The trust condition for the root certificate.
+	// The trust condition of the root certificate.
 	//
 	// example:
 	//

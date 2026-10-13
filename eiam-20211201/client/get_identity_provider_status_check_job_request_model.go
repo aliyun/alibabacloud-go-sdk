@@ -18,7 +18,7 @@ type iGetIdentityProviderStatusCheckJobRequest interface {
 }
 
 type GetIdentityProviderStatusCheckJobRequest struct {
-	// The identity provider (IdP) ID.
+	// The identity provider ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetIdentityProviderStatusCheckJobRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// This parameter is required.
 	//

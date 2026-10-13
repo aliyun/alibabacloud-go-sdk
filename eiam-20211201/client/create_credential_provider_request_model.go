@@ -28,7 +28,7 @@ type iCreateCredentialProviderRequest interface {
 type CreateCredentialProviderRequest struct {
 	// The idempotency token that ensures the idempotence of the request.
 	//
-	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Generate a unique parameter value from your client to ensure that different requests have unique values. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateCredentialProviderRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration of the credential provider.
 	CredentialProviderConfig *CreateCredentialProviderRequestCredentialProviderConfig `json:"CredentialProviderConfig,omitempty" xml:"CredentialProviderConfig,omitempty" type:"Struct"`
-	// The identifier of the credential provider.
+	// The business identifier of the credential provider.
 	//
 	// > Allowed characters include uppercase and lowercase letters, digits, and the special characters `.-_`. The length cannot exceed 64 characters.
 	//
@@ -218,15 +218,15 @@ func (s *CreateCredentialProviderRequestCredentialProviderConfig) Validate() err
 type CreateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig struct {
 	// The list of allowed JWT issuers.
 	//
-	// > The list length cannot exceed 200.
+	// > The list cannot contain more than 200 entries.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// Specifies whether to enable the JWT derived short token capability.
+	// Specifies whether to enable the JWT derived short token feature.
 	//
 	// example:
 	//
 	// false
 	DerivedShortTokenEnabled *bool `json:"DerivedShortTokenEnabled,omitempty" xml:"DerivedShortTokenEnabled,omitempty"`
-	// The validity duration of the JWT. Unit: seconds.
+	// The validity period of the JWT, in seconds.
 	//
 	// example:
 	//
@@ -289,11 +289,23 @@ func (s *CreateCredentialProviderRequestCredentialProviderConfigJwtProviderConfi
 }
 
 type CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig struct {
-	// The endpoint address used to guide users through authorization. Conditionally required: required when AuthorizationFlow=user_federation and ProviderVendor=custom. For preset vendors, this can be automatically populated through DiscoveryUrl.
+	// The authorization endpoint of the OAuth protocol.
+	//
+	// example:
+	//
+	// https://example.com/authorize
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	// The OAuth authorization flow type. Valid values: m2m: machine-to-machine (2LO, Client Credentials). user_federation: user federation (3LO, Authorization Code).
+	// The OAuth authorization flow type. Valid values:
+	//
+	// - m2m: Machine-to-machine.
+	//
+	// - user_federation: User federation.
+	//
+	// example:
+	//
+	// m2m
 	AuthorizationFlow *string `json:"AuthorizationFlow,omitempty" xml:"AuthorizationFlow,omitempty"`
-	// The client_id in the OAuth protocol.
+	// The client_id in the OAuth protocol, which is the client ID.
 	//
 	// > The length cannot exceed 128 characters.
 	//
@@ -303,7 +315,7 @@ type CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig 
 	//
 	// client_id_example_xxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The client_secret in the OAuth protocol.
+	// The client_secret in the OAuth protocol, which is the client secret.
 	//
 	// > The length cannot exceed 1024 characters.
 	//
@@ -313,24 +325,61 @@ type CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig 
 	//
 	// client_secret_example_xxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// The Discovery document URL used to automatically retrieve OAuth endpoint configurations. Conditionally optional: used when AuthorizationFlow=user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
-	DiscoveryUrl *string `json:"DiscoveryUrl,omitempty" xml:"DiscoveryUrl,omitempty"`
-	Issuer       *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The PKCE code_challenge generation method. Default value: s256.
-	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
-	// Specifies whether to use the PKCE extension to enhance security. We recommend that you always enable this feature.
-	PkceEnabled *bool `json:"PkceEnabled,omitempty" xml:"PkceEnabled,omitempty"`
-	// The preset vendor or custom configuration. Optional. Default value: custom.
-	ProviderVendor *string `json:"ProviderVendor,omitempty" xml:"ProviderVendor,omitempty"`
-	// The scope in the OAuth protocol, which defines the permission range.
+	// The URL of the OAuth Discovery document.
 	//
-	// > The Scope configuration on the credential provider serves as the fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
+	// example:
+	//
+	// https://example.com/.well-known/openid-configuration
+	DiscoveryUrl *string `json:"DiscoveryUrl,omitempty" xml:"DiscoveryUrl,omitempty"`
+	// The Issuer endpoint of the OAuth protocol.
+	//
+	// example:
+	//
+	// https://example.com/issuer
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The algorithm used to calculate the Code Challenge in PKCE. Valid values:
+	//
+	// - S256.
+	//
+	// - plain.
+	//
+	// example:
+	//
+	// S256
+	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
+	// Specifies whether to enable PKCE.
+	//
+	// example:
+	//
+	// true
+	PkceEnabled *bool `json:"PkceEnabled,omitempty" xml:"PkceEnabled,omitempty"`
+	// The OAuth provider vendor type. Valid values:
+	//
+	// - custom: Custom.
+	//
+	// - dingtalk: DingTalk.
+	//
+	// - feishu: Lark.
+	//
+	// - github: GitHub.
+	//
+	// - microsoft: Microsoft.
+	//
+	// - google: Google.
+	//
+	// example:
+	//
+	// custom
+	ProviderVendor *string `json:"ProviderVendor,omitempty" xml:"ProviderVendor,omitempty"`
+	// The scope in the OAuth protocol, which specifies the permission scope.
+	//
+	// > The Scope configuration on the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
 	//
 	// 	Notice: Separate multiple Scope values with spaces.
 	//
-	// Restrictions for each individual Scope value:
+	// The following restrictions apply to each individual Scope value:
 	//
-	// 1. Allowed characters: lowercase letters, digits, and the special characters `|/:_-.`
+	// 1. Allowed characters: lowercase letters, digits, and the special characters `|/:_-.`.
 	//
 	// 2. Must contain at least one lowercase letter or digit.
 	//
@@ -344,7 +393,7 @@ type CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig 
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The token endpoint of the OAuth protocol.
 	//
-	// > Must start with `http://` or `https://`, and the length cannot exceed 1024 characters.
+	// > The value must start with `http://` or `https://`, and the length cannot exceed 1024 characters.
 	//
 	// example:
 	//

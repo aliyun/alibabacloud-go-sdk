@@ -40,7 +40,7 @@ type ListCredentialProvidersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -142,6 +142,10 @@ func (s *ListCredentialProvidersRequest) Validate() error {
 
 type ListCredentialProvidersRequestFilter struct {
 	// The filter condition name. Valid values:
+	//
+	// - CredentialProviderName: the credential provider name.
+	//
+	// - CredentialProviderIdentifier: the credential provider identifier.
 	//
 	// example:
 	//

@@ -49,7 +49,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// Ram Account SSO
-	ApplicationName  *string                                   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application owner.
 	ApplicationOwner *CreateApplicationRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
 	// The source from which the application is created. Valid values:
 	//
@@ -63,13 +64,14 @@ type CreateApplicationRequest struct {
 	//
 	// urn:alibaba:idaas:app:source:standard
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
-	// The application template ID. This parameter is required when ApplicationSourceType is set to urn:alibaba:idaas:app:source:template.
+	// The application template ID. This parameter is required when the ApplicationSourceType parameter is set to urn:alibaba:idaas:app:source:template.
 	//
 	// example:
 	//
 	// apt_ramuser_mjqrsi
-	ApplicationTemplateId *string                                 `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
-	CustomFields          []*CreateApplicationRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
+	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
+	// The list of application extension fields.
+	CustomFields []*CreateApplicationRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The application description.
 	//
 	// example:
@@ -90,7 +92,7 @@ type CreateApplicationRequest struct {
 	//
 	// https://oss.cn-hangzhou.aliyuncs.com/logo.png
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The single sign-on protocol. Valid values:
+	// The single sign-on (SSO) protocol. Valid values:
 	//
 	// - saml2: SAML 2.0 protocol.
 	//
@@ -221,8 +223,10 @@ func (s *CreateApplicationRequest) Validate() error {
 }
 
 type CreateApplicationRequestApplicationOwner struct {
+	// The list of group IDs.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	UserIds  []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The list of user IDs.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateApplicationRequestApplicationOwner) String() string {
@@ -256,7 +260,17 @@ func (s *CreateApplicationRequestApplicationOwner) Validate() error {
 }
 
 type CreateApplicationRequestCustomFields struct {
-	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The identifier of the application extension field.
+	//
+	// example:
+	//
+	// agent_type
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The value of the application extension field. When FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. When FieldName is set to agentExternalId, enter the relevant value.
+	//
+	// example:
+	//
+	// bailian
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 }
 

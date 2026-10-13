@@ -80,7 +80,7 @@ type GetClientPublicKeyResponseBodyClientPublicKey struct {
 	//
 	// KEYEqDnDJhztiEAwSin7MZoxGcihzCAuxxxx
 	ClientPublicKeyId *string `json:"ClientPublicKeyId,omitempty" xml:"ClientPublicKeyId,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetClientPublicKeyResponseBodyClientPublicKey struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last time the key pair was used.
+	// The last used time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

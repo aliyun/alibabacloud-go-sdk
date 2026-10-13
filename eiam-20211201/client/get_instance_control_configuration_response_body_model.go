@@ -103,7 +103,7 @@ type GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationCont
 	//
 	// human_verification
 	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
-	// The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) authenticate configuration.
+	// The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) authentication configuration.
 	HumanVerificationConfig *GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig `json:"HumanVerificationConfig,omitempty" xml:"HumanVerificationConfig,omitempty" type:"Struct"`
 	// The status of the instance control item.
 	//
@@ -158,7 +158,7 @@ func (s *GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration
 }
 
 type GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig struct {
-	// The CAPTCHA type.
+	// The CAPTCHA verification type.
 	//
 	// example:
 	//

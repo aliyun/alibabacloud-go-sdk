@@ -72,11 +72,11 @@ type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPol
 	//
 	// cp_xxxxx
 	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
-	// The conditional access policy name.
+	// The Policy Name of the conditional access policy.
 	//
 	// example:
 	//
-	// My policy
+	// MyPolicy
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
 	// The type of the conditional access policy.
 	//
@@ -86,7 +86,7 @@ type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPol
 	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
 	// The conditions configuration of the conditional access policy.
 	ConditionsConfig *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
-	// The creation time.
+	// The time when the policy was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPol
 	//
 	// idaas_oynbcyaaejuik6b37eldz4pinu
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last updated time.
+	// The time when the policy was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1741857554000
 	LastUpdatedTime *int64 `json:"LastUpdatedTime,omitempty" xml:"LastUpdatedTime,omitempty"`
-	// The priority.
+	// The priority of the conditional access policy.
 	//
 	// example:
 	//
@@ -502,7 +502,7 @@ type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPol
 	//
 	// enabled
 	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
-	// The decision action of the conditional access policy.
+	// The decision action effect of the conditional access policy.
 	//
 	// example:
 	//

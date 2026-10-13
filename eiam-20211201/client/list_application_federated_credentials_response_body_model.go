@@ -158,7 +158,7 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	//
 	// app_xxxasda1
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last used time.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -212,9 +212,9 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	VerificationCondition *string `json:"VerificationCondition,omitempty" xml:"VerificationCondition,omitempty"`
 	// The verification mode. Valid values:
 	//
-	// - freedom: free mode.
+	// - freedom: Free mode.
 	//
-	// - structured: structured mode.
+	// - structured: Structured mode.
 	//
 	// example:
 	//
@@ -555,13 +555,13 @@ func (s *ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCred
 type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentialsOidcVerificationConfigGcpVmConfig struct {
 	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The GCP project ID.
+	// The GCP project ID to which the resource belongs.
 	//
 	// example:
 	//
 	// 6193072600270353961
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sub claim corresponding to the service account.
+	// The subject (sub) that corresponds to the service account.
 	//
 	// example:
 	//

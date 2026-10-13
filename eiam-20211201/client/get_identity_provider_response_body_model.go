@@ -150,7 +150,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// test
 	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// The synchronization type of the identity provider. Valid values:
+	// The sync type of the identity provider. Valid values:
 	//
 	// - urn:alibaba:idaas:idp:alibaba:dingtalk:pull: Inbound DingTalk.
 	//
@@ -210,25 +210,25 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	OidcConfig *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
 	// The SAML IdP configuration.
 	SamlConfig *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
-	// The inbound sync configuration.
+	// The inbound synchronization configuration.
 	UdPullConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig `json:"UdPullConfig,omitempty" xml:"UdPullConfig,omitempty" type:"Struct"`
-	// Indicates whether the inbound sync feature is supported. Valid values:
+	// Indicates whether the inbound synchronization feature is supported. Valid values:
 	//
-	// - disabled: Disabled.
+	// - disabled
 	//
-	// - enabled: Enabled.
+	// - enabled
 	//
 	// example:
 	//
 	// disabled
 	UdPullStatus *string `json:"UdPullStatus,omitempty" xml:"UdPullStatus,omitempty"`
-	// The outbound sync configuration.
+	// The outbound synchronization configuration.
 	UdPushConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig `json:"UdPushConfig,omitempty" xml:"UdPushConfig,omitempty" type:"Struct"`
-	// Indicates whether the outbound sync capability is enabled. Valid values:
+	// Indicates whether the outbound synchronization capability is enabled. Valid values:
 	//
-	// - disabled: Disabled.
+	// - disabled
 	//
-	// - enabled: Enabled.
+	// - enabled
 	//
 	// example:
 	//
@@ -928,7 +928,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig struct {
 	//
 	// example:
 	//
-	// ***
+	// REOQ6Cl55kriOd8NOBeqWYLKpHR4p6fdZxxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
 	// The EncryptKey of the Lark custom application.
 	//
@@ -1012,7 +1012,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig struct {
 	//
 	// example:
 	//
-	// XXXX
+	// 123456
 	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
 	// The AD/LDAP administrator username.
 	//
@@ -1163,11 +1163,11 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig struct {
 	//
 	// authorization_code
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
-	// The PKCE algorithm. Valid values:
+	// The PKCE challenge method. Valid values:
 	//
 	// - S256: SHA-256.
 	//
-	// - plain: plaintext.
+	// - plain: Plaintext.
 	//
 	// example:
 	//
@@ -1441,8 +1441,16 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig struct {
 	// true
 	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
 	// Indicates whether the external IdP is required to sign assertions.
+	//
+	// example:
+	//
+	// true
 	WantAssertionsSigned *bool `json:"WantAssertionsSigned,omitempty" xml:"WantAssertionsSigned,omitempty"`
-	// Indicates whether the external IdP is required to sign the Response.
+	// Indicates whether the external IdP is required to sign responses.
+	//
+	// example:
+	//
+	// true
 	WantResponseSigned *bool `json:"WantResponseSigned,omitempty" xml:"WantResponseSigned,omitempty"`
 }
 
@@ -1592,7 +1600,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates
 	//
 	// 1704067200000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The date before which the certificate is not valid.
+	// The date before which the certificate is not yet valid.
 	//
 	// example:
 	//
@@ -1633,9 +1641,9 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertific
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig struct {
 	// Indicates whether group synchronization is enabled. Valid values:
 	//
-	// - disabled: Disabled.
+	// - disabled
 	//
-	// - enabled: Enabled.
+	// - enabled
 	//
 	// example:
 	//
@@ -1643,15 +1651,15 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig struct {
 	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
 	// The incremental callback status, which indicates whether incremental callback data from the IdP is processed. Valid values:
 	//
-	// - disabled: Disabled.
+	// - disabled
 	//
-	// - enabled: Enabled.
+	// - enabled
 	//
 	// example:
 	//
 	// disabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// The sync scope configuration.
+	// The synchronization scope configuration.
 	UdSyncScopeConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
 }
 
@@ -1747,7 +1755,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig struct {
 	//
 	// disabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// The list of sync scope configurations.
+	// The list of synchronization scope configurations.
 	UdSyncScopeConfigs []*GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -1844,7 +1852,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig struct {
 	//
 	// https://example.com/xxxx
 	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
-	// The WeCom contacts secret.
+	// The WeCom contact secret.
 	//
 	// example:
 	//

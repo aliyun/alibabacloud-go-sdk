@@ -22,13 +22,13 @@ type iUpdateTrustedOriginRequest interface {
 }
 
 type UpdateTrustedOriginRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The idempotence token.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the IDaaS EIAM instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type UpdateTrustedOriginRequest struct {
 	//
 	// idaas_example
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// If this parameter is not specified, the trusted origin name is not modified.
+	// The trusted origin name.
 	//
 	// example:
 	//
 	// Qoder Production Console
 	TrustOriginName *string `json:"TrustOriginName,omitempty" xml:"TrustOriginName,omitempty"`
-	// The ID of the trusted origin.
+	// The trusted origin ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UpdateTrustedOriginRequest struct {
 	//
 	// to_example
 	TrustedOriginId *string `json:"TrustedOriginId,omitempty" xml:"TrustedOriginId,omitempty"`
-	// When specified, the existing values are entirely replaced. Only iframe_embed and cors are supported.
+	// The trusted origin scenario.
 	//
 	// example:
 	//

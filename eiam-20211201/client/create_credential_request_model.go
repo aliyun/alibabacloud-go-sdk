@@ -38,7 +38,7 @@ type iCreateCredentialRequest interface {
 }
 
 type CreateCredentialRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,16 @@ type CreateCredentialRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The credential content.
+	// The content of the credential.
 	//
 	// This parameter is required.
-	CredentialContent    *CreateCredentialRequestCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
-	CredentialExternalId *string                                   `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
+	CredentialContent *CreateCredentialRequestCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
+	// The external unique identifier of the credential.
+	//
+	// example:
+	//
+	// test_external_id
+	CredentialExternalId *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
 	// The credential identifier.
 	//
 	// This parameter is required.
@@ -77,14 +82,19 @@ type CreateCredentialRequest struct {
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
-	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// The subject ID of the credential.
+	// The sharing scope of the credential.
+	//
+	// example:
+	//
+	// user_exclusive
+	CredentialSharingScope *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
+	// The subject ID to which the credential belongs.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// The subject type of the credential. Valid values:
+	// The subject type to which the credential belongs. Valid values:
 	//
 	// - authentication_token_provider: authentication token provider.
 	//
@@ -104,12 +114,17 @@ type CreateCredentialRequest struct {
 	//
 	// api_key
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The credential description.
+	// The description of the credential.
 	//
 	// example:
 	//
 	// credential_description
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The exclusive user ID of the credential.
+	//
+	// example:
+	//
+	// user_xxxx
 	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
 	// The instance ID.
 	//
@@ -303,7 +318,7 @@ func (s *CreateCredentialRequestCredentialContent) Validate() error {
 }
 
 type CreateCredentialRequestCredentialContentApiKeyContent struct {
-	// The API key content.
+	// The content of the API key.
 	//
 	// example:
 	//

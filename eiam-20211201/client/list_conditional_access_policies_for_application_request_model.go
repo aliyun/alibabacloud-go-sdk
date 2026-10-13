@@ -16,7 +16,7 @@ type iListConditionalAccessPoliciesForApplicationRequest interface {
 }
 
 type ListConditionalAccessPoliciesForApplicationRequest struct {
-	// Application ID associated with the conditional access policy.
+	// The ID of the application associated with the conditional access policies.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListConditionalAccessPoliciesForApplicationRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

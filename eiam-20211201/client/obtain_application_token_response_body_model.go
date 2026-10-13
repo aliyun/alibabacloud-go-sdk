@@ -86,13 +86,13 @@ type ObtainApplicationTokenResponseBodyApplicationToken struct {
 	//
 	// bearer_token
 	ApplicationTokenType *string `json:"ApplicationTokenType,omitempty" xml:"ApplicationTokenType,omitempty"`
-	// The time when the application token was created.
+	// The time when the application token was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1735610930000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time.
+	// The expiration time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ObtainApplicationTokenResponseBodyApplicationToken struct {
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last used time.
+	// The last used time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

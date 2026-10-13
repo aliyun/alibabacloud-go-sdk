@@ -24,7 +24,7 @@ type iListUsersForResourceServerRequest interface {
 }
 
 type ListUsersForResourceServerRequest struct {
-	// The ID of the Resource Server application.
+	// The ResourceServer application ID.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type ListUsersForResourceServerRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// A list of filter conditions.
+	// The list of filter conditions.
 	Filter []*ListUsersForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type ListUsersForResourceServerRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for paged queries.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page. Set this parameter to the value of NextToken returned by the previous API call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 权限唯一标识。
+	// The permission ID.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListUsersForResourceServerRequestFilter struct {
 	//
 	// UserIds
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A list of values for the filter condition.
+	// The list of filter condition values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

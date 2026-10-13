@@ -68,13 +68,13 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// iauths_system
 	AuthorizationServerId *string `json:"AuthorizationServerId,omitempty" xml:"AuthorizationServerId,omitempty"`
-	// The name of the authorization server.
+	// The authorization server name.
 	//
 	// example:
 	//
 	// System_Default
 	AuthorizationServerName *string `json:"AuthorizationServerName,omitempty" xml:"AuthorizationServerName,omitempty"`
-	// The time when the authorization server was created.
+	// The time when the authorization server was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// system_init
 	CreationType *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
-	// The description of the authorization server.
+	// The authorization server description.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// idaas_qzljgbhtwnnsywtdbz7yzy2any
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The issuer of the authorization token.
+	// The authorization token issuer.
 	//
 	// example:
 	//
@@ -116,15 +116,15 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// static
 	IssuerMode *string `json:"IssuerMode,omitempty" xml:"IssuerMode,omitempty"`
-	// The time when the authorization server was last updated.
+	// The time when the authorization server was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1781608572164
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// The endpoint configuration of the authorization server.
+	// The authorization server endpoint configuration.
 	ProtocolEndpoint *GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint `json:"ProtocolEndpoint,omitempty" xml:"ProtocolEndpoint,omitempty" type:"Struct"`
-	// The status of the authorization server.
+	// The authorization server status.
 	//
 	// example:
 	//

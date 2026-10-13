@@ -26,7 +26,7 @@ type iListTrustedOriginsRequest interface {
 }
 
 type ListTrustedOriginsRequest struct {
-	// The ID of the IDaaS EIAM instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,37 +34,41 @@ type ListTrustedOriginsRequest struct {
 	//
 	// idaas_example
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page. Default value: 20. Maximum value: 100. If you set this parameter to 0, the default value is used.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The NextToken returned by the previous call.
+	// The pagination token.
 	//
 	// example:
 	//
 	// NT_example
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Filters by the exact normalized origin.
+	// The origin filter.
 	//
 	// example:
 	//
 	// https://console.qoder.com
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// Filters by exact status. Valid values: Enabled or Disabled.
+	// The status filter. Valid values:
+	//
+	// - Enabled: Enabled.
+	//
+	// - Disabled: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Filters by exact name.
+	// The name filter.
 	//
 	// example:
 	//
 	// Qoder Production Console
 	TrustOriginName *string `json:"TrustOriginName,omitempty" xml:"TrustOriginName,omitempty"`
-	// Filters by exact trusted origin scene. You can specify at most one value.
+	// The trusted origin scene filter.
 	//
 	// example:
 	//

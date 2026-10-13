@@ -89,13 +89,13 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// 1550115455000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether cross-region replication is enabled. Valid values: enabled or disabled.
+	// Indicates whether cross-region replication is enabled. Valid values: enabled and disabled.
 	//
 	// example:
 	//
 	// enabled
 	CrossRegionReplication *string `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
-	// The cross-region replication role. Valid values: primary (primary instance) or backup (backup instance).
+	// The cross-region replication role. Valid values: primary, which indicates the primary instance, and backup, which indicates the backup instance.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// instance_for_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance failover activation status. Valid values: active (activated) or inactive (not activated).
+	// The failover activation status of the instance. Valid values: active, which indicates that failover is activated, and inactive, which indicates that failover is not activated.
 	//
 	// example:
 	//
@@ -321,13 +321,13 @@ func (s *ListInstancesResponseBodyInstancesDefaultEndpoint) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesReplicationConfiguration struct {
-	// The instance ID of the backup instance.
+	// The instance ID of the disaster recovery instance.
 	//
 	// example:
 	//
 	// idaas_xxxxxx
 	BackupInstanceId *string `json:"BackupInstanceId,omitempty" xml:"BackupInstanceId,omitempty"`
-	// The region ID of the backup instance.
+	// The region ID of the disaster recovery instance.
 	//
 	// example:
 	//

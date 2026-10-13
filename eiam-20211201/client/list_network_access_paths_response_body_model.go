@@ -16,7 +16,7 @@ type iListNetworkAccessPathsResponseBody interface {
 }
 
 type ListNetworkAccessPathsResponseBody struct {
-	// The list of network access endpoint paths.
+	// The list of network access endpoint access paths.
 	NetworkAccessPaths []*ListNetworkAccessPathsResponseBodyNetworkAccessPaths `json:"NetworkAccessPaths,omitempty" xml:"NetworkAccessPaths,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,12 +66,17 @@ func (s *ListNetworkAccessPathsResponseBody) Validate() error {
 }
 
 type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {
-	// The creation time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
+	// The time when the dedicated network access endpoint access path was created, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
-	CreateTime                 *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The role of the network access endpoint path.
+	//
+	// example:
+	//
+	// primary
 	CrossRegionReplicationRole *string `json:"CrossRegionReplicationRole,omitempty" xml:"CrossRegionReplicationRole,omitempty"`
 	// The instance ID.
 	//
@@ -85,25 +90,25 @@ type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {
 	//
 	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The ID of the dedicated network access endpoint path.
+	// The ID of the dedicated network access endpoint access path.
 	//
 	// example:
 	//
 	// nap_examplexxx
 	NetworkAccessPathId *string `json:"NetworkAccessPathId,omitempty" xml:"NetworkAccessPathId,omitempty"`
-	// The ID of the ENI used by the dedicated network access endpoint path.
+	// The ID of the ENI used by the dedicated network access endpoint access path.
 	//
 	// example:
 	//
 	// eni-examplexxx
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The private endpoint of the ENI used by the dedicated network access endpoint path.
+	// The private endpoint of the ENI on the private network used by the dedicated network access endpoint access path.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The status of the dedicated network access endpoint path. Valid values:
+	// The status of the dedicated network access endpoint access path. Valid values:
 	//
 	//
 	//
@@ -119,19 +124,29 @@ type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
+	// The time when the dedicated network access endpoint access path was last updated, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the vSwitch to which the ENI of the dedicated network access endpoint path belongs.
+	// The ID of the vSwitch to which the ENI of the dedicated network access endpoint access path belongs.
 	//
 	// example:
 	//
 	// vsw-examplexxx
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-bp1a2b3c4d5e6f7g8
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC region information.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 

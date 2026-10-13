@@ -62,6 +62,7 @@ func (s *GetNetworkAccessEndpointResponseBody) Validate() error {
 }
 
 type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
+	// The backup VPC endpoint configuration.
 	BackupVpcEndpoint *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint `json:"BackupVpcEndpoint,omitempty" xml:"BackupVpcEndpoint,omitempty" type:"Struct"`
 	// The time when the network access endpoint was created. The value is a UNIX timestamp in milliseconds.
 	//
@@ -79,7 +80,7 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// example:
 	//
-	// 203.0.XX.XX/27
+	// 8.xx.xx.xxx/27
 	EgressPublicIpAddresses []*string `json:"EgressPublicIpAddresses,omitempty" xml:"EgressPublicIpAddresses,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -97,7 +98,7 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// example:
 	//
-	// Xx-business VPC access endpoint
+	// VPC access endpoint for XX service
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// The type of the network access endpoint. Valid values:
 	//
@@ -109,7 +110,7 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
-	// The ID of the security group used by the dedicated network access endpoint.
+	// The security group ID used by the dedicated network access endpoint.
 	//
 	// example:
 	//
@@ -135,19 +136,19 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The list of vSwitches to which the dedicated network access endpoint is connected.
+	// The list of vSwitches associated with the dedicated network access endpoint.
 	//
 	// example:
 	//
 	// vsw-examplexxx
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the dedicated network access endpoint is connected.
+	// The VPC ID associated with the dedicated network access endpoint.
 	//
 	// example:
 	//
 	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The region of the VPC to which the dedicated network access endpoint is connected.
+	// The region of the VPC associated with the dedicated network access endpoint.
 	//
 	// example:
 	//
@@ -299,12 +300,30 @@ func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) Validate() e
 }
 
 type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint struct {
+	// The private egress IP address list of the backup network access endpoint.
 	BackupEgressPrivateIpAddresses []*string `json:"BackupEgressPrivateIpAddresses,omitempty" xml:"BackupEgressPrivateIpAddresses,omitempty" type:"Repeated"`
-	BackupEgressPublicIpAddresses  []*string `json:"BackupEgressPublicIpAddresses,omitempty" xml:"BackupEgressPublicIpAddresses,omitempty" type:"Repeated"`
-	BackupSecurityGroupId          *string   `json:"BackupSecurityGroupId,omitempty" xml:"BackupSecurityGroupId,omitempty"`
-	BackupVSwitchIds               []*string `json:"BackupVSwitchIds,omitempty" xml:"BackupVSwitchIds,omitempty" type:"Repeated"`
-	BackupVpcId                    *string   `json:"BackupVpcId,omitempty" xml:"BackupVpcId,omitempty"`
-	BackupVpcRegionId              *string   `json:"BackupVpcRegionId,omitempty" xml:"BackupVpcRegionId,omitempty"`
+	// The public egress IP address range of the backup network access endpoint.
+	BackupEgressPublicIpAddresses []*string `json:"BackupEgressPublicIpAddresses,omitempty" xml:"BackupEgressPublicIpAddresses,omitempty" type:"Repeated"`
+	// The ID of the backup security group.
+	//
+	// example:
+	//
+	// sg-bp1a2b3c4d5e6f7g8
+	BackupSecurityGroupId *string `json:"BackupSecurityGroupId,omitempty" xml:"BackupSecurityGroupId,omitempty"`
+	// The list of backup vSwitches.
+	BackupVSwitchIds []*string `json:"BackupVSwitchIds,omitempty" xml:"BackupVSwitchIds,omitempty" type:"Repeated"`
+	// The ID of the backup VPC.
+	//
+	// example:
+	//
+	// vpc-bp1a2b3c4d5e6f7g8
+	BackupVpcId *string `json:"BackupVpcId,omitempty" xml:"BackupVpcId,omitempty"`
+	// The region of the backup VPC.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BackupVpcRegionId *string `json:"BackupVpcRegionId,omitempty" xml:"BackupVpcRegionId,omitempty"`
 }
 
 func (s GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) String() string {

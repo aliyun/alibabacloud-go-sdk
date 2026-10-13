@@ -16,7 +16,7 @@ type iGetFederatedCredentialProviderRequest interface {
 }
 
 type GetFederatedCredentialProviderRequest struct {
-	// The federated credential provider ID.
+	// The federated trust source ID.
 	//
 	// This parameter is required.
 	//

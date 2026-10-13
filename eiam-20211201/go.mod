@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/eiam-20211201/v2
+module github.com/alibabacloud-go/eiam-20211201/v3
 
 go 1.14
 

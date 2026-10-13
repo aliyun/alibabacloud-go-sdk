@@ -66,7 +66,7 @@ func (s *ListApplicationTokensResponseBody) Validate() error {
 }
 
 type ListApplicationTokensResponseBodyApplicationTokens struct {
-	// aliUid。
+	// The Alibaba Cloud account UID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ListApplicationTokensResponseBodyApplicationTokens struct {
 	//
 	// bearer_token
 	ApplicationTokenType *string `json:"ApplicationTokenType,omitempty" xml:"ApplicationTokenType,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type ListApplicationTokensResponseBodyApplicationTokens struct {
 	//
 	// jwqtts-0430
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expiration time.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ListApplicationTokensResponseBodyApplicationTokens struct {
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last used time.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

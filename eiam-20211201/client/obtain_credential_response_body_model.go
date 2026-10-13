@@ -68,7 +68,7 @@ type ObtainCredentialResponseBodyCredential struct {
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The credential content.
+	// The content of the credential.
 	CredentialContent *ObtainCredentialResponseBodyCredentialCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
 	// The creation type of the credential. Valid values:
 	//
@@ -80,7 +80,12 @@ type ObtainCredentialResponseBodyCredential struct {
 	//
 	// user_custom
 	CredentialCreationType *string `json:"CredentialCreationType,omitempty" xml:"CredentialCreationType,omitempty"`
-	CredentialExternalId   *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
+	// The external unique identifier of the credential.
+	//
+	// example:
+	//
+	// credential_external_1234567890
+	CredentialExternalId *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
 	// The credential ID.
 	//
 	// example:
@@ -101,15 +106,20 @@ type ObtainCredentialResponseBodyCredential struct {
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
 	// The scenarios label of the credential. Valid values:
 	//
-	// - llm: large language model.
+	// - llm: Large language model.
 	//
-	// - saas: third-party SaaS service.
+	// - saas: Third-party SaaS service.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
-	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
+	// The sharing scope of the credential.
+	//
+	// example:
+	//
+	// common
+	CredentialSharingScope *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
 	// The ID of the subject to which the credential belongs.
 	//
 	// example:
@@ -118,7 +128,7 @@ type ObtainCredentialResponseBodyCredential struct {
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
 	// The type of the subject to which the credential belongs. Valid values:
 	//
-	// - authentication_token_provider: authentication token provider.
+	// - authentication_token_provider: Authentication token provider.
 	//
 	// example:
 	//
@@ -126,9 +136,9 @@ type ObtainCredentialResponseBodyCredential struct {
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - api_key: API key authentication credential.
+	// - api_key: API key credential.
 	//
-	// - oauth_client: OAuth client authentication credential.
+	// - oauth_client: OAuth client credential.
 	//
 	// example:
 	//
@@ -139,7 +149,12 @@ type ObtainCredentialResponseBodyCredential struct {
 	// example:
 	//
 	// credential_description
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the account to which the credential is exclusively assigned.
+	//
+	// example:
+	//
+	// user_1234567890
 	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
 	// The instance ID.
 	//
@@ -336,9 +351,9 @@ func (s *ObtainCredentialResponseBodyCredential) Validate() error {
 }
 
 type ObtainCredentialResponseBodyCredentialCredentialContent struct {
-	// The credential content of the API key credential type.
+	// The content of the API key credential.
 	ApiKeyContent *ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent `json:"ApiKeyContent,omitempty" xml:"ApiKeyContent,omitempty" type:"Struct"`
-	// The credential content of the OAuth client authentication credential type.
+	// The content of the OAuth client credential.
 	OAuthClientContent *ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -383,7 +398,7 @@ func (s *ObtainCredentialResponseBodyCredentialCredentialContent) Validate() err
 }
 
 type ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent struct {
-	// The API key content.
+	// The API key value.
 	//
 	// example:
 	//

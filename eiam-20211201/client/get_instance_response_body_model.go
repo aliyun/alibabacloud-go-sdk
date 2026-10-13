@@ -62,23 +62,27 @@ func (s *GetInstanceResponseBody) Validate() error {
 }
 
 type GetInstanceResponseBodyInstance struct {
-	// The time when the instance was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the instance was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1550115455000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether cross-region replication is enabled. Valid values: enabled or disabled.
+	//
 	// example:
 	//
 	// enabled
 	CrossRegionReplication *string `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
+	// The cross-region replication role. Valid values: primary indicates the primary instance, and backup indicates the backup instance.
+	//
 	// example:
 	//
 	// primary
 	CrossRegionReplicationRole *string `json:"CrossRegionReplicationRole,omitempty" xml:"CrossRegionReplicationRole,omitempty"`
-	// The default domain name of the instance. This field is no longer maintained. Use the DomainConfig fields or refer to the query domain name list operation instead.
+	// The default domain name of the instance. This field is no longer maintained. Use the DomainConfig fields or refer to the domain name list query operation instead.
 	DefaultEndpoint *GetInstanceResponseBodyInstanceDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
-	// The description of the instance.
+	// The instance description.
 	//
 	// example:
 	//
@@ -86,8 +90,10 @@ type GetInstanceResponseBodyInstance struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The domain name configuration of the instance.
 	DomainConfig *GetInstanceResponseBodyInstanceDomainConfig `json:"DomainConfig,omitempty" xml:"DomainConfig,omitempty" type:"Struct"`
-	// The public egress CIDR blocks of the instance. For example, during Active Directory (AD) account synchronization, the EIAM instance accesses your AD server through these public CIDR blocks.
+	// The egress public IP address ranges of the instance. For example, during AD account synchronization, the EIAM instance accesses your AD server through these public IP address ranges.
 	EgressAddresses []*string `json:"EgressAddresses,omitempty" xml:"EgressAddresses,omitempty" type:"Repeated"`
+	// The failover activation status of the instance. Valid values: active indicates activated, and inactive indicates not activated.
+	//
 	// example:
 	//
 	// inactive
@@ -98,7 +104,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// idaas_abt3pfwojojcq323si6g5xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ServiceCode of the Alibaba Cloud service that manages the instance.
+	// The service code of the Alibaba Cloud service that manages the instance.
 	//
 	// if can be null:
 	// false
@@ -106,7 +112,8 @@ type GetInstanceResponseBodyInstance struct {
 	// example:
 	//
 	// sase
-	ManagedServiceCode       *string                                                  `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	// The cross-region replication configuration. This parameter is returned only when CrossRegionReplication is set to enabled.
 	ReplicationConfiguration *GetInstanceResponseBodyInstanceReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
 	// Indicates whether the instance is managed by an Alibaba Cloud service.
 	//
@@ -274,7 +281,7 @@ func (s *GetInstanceResponseBodyInstance) Validate() error {
 }
 
 type GetInstanceResponseBodyInstanceDefaultEndpoint struct {
-	// The domain name of the instance.
+	// The domain name address of the instance.
 	//
 	// example:
 	//
@@ -335,7 +342,7 @@ type GetInstanceResponseBodyInstanceDomainConfig struct {
 	//
 	// rx72nxxx.example.com
 	InitDomain *string `json:"InitDomain,omitempty" xml:"InitDomain,omitempty"`
-	// The automatic redirect status of the initialization domain name. Valid values:
+	// The auto-redirect status of the initialization domain name. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -387,22 +394,32 @@ func (s *GetInstanceResponseBodyInstanceDomainConfig) Validate() error {
 }
 
 type GetInstanceResponseBodyInstanceReplicationConfiguration struct {
+	// The instance ID of the backup instance.
+	//
 	// example:
 	//
 	// idaas_xxxx
 	BackupInstanceId *string `json:"BackupInstanceId,omitempty" xml:"BackupInstanceId,omitempty"`
+	// The region ID of the backup instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	BackupInstanceRegionId *string `json:"BackupInstanceRegionId,omitempty" xml:"BackupInstanceRegionId,omitempty"`
+	// The instance ID of the primary instance.
+	//
 	// example:
 	//
 	// idaas_xxxx
 	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
+	// The region ID of the primary instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	PrimaryInstanceRegionId *string `json:"PrimaryInstanceRegionId,omitempty" xml:"PrimaryInstanceRegionId,omitempty"`
+	// The time when the disaster recovery data replication was created. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1778499337000

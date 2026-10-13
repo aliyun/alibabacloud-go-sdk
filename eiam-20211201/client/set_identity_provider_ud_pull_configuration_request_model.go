@@ -84,7 +84,7 @@ type SetIdentityProviderUdPullConfigurationRequest struct {
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
 	// The inbound synchronization protection rule.
 	PullProtectedRule *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule `json:"PullProtectedRule,omitempty" xml:"PullProtectedRule,omitempty" type:"Struct"`
-	// The inbound synchronization scope configuration.
+	// The inbound synchronization configuration.
 	UdSyncScopeConfig *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
 }
 
@@ -202,7 +202,7 @@ func (s *SetIdentityProviderUdPullConfigurationRequest) Validate() error {
 }
 
 type SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig struct {
-	// The group member identifier.
+	// The group member attribute name.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig struct {
 	//
 	// (|(cn=test)(group=test@test.com))
 	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
-	// The organizational unit ObjectClass.
+	// The organization ObjectClass.
 	//
 	// example:
 	//
@@ -313,9 +313,9 @@ type SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig struct {
 	//
 	// 0 45 1 	- 	- ?
 	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
-	// The execution time points. This parameter is required when periodicSyncType is set to time. For example, [3, 5] indicates that the task runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
+	// The execution time points. This parameter is required when periodicSyncType is set to time. For example, [3, 5] indicates that the synchronization runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
 	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
-	// The type of periodic synchronization.
+	// The periodic synchronization type.
 	//
 	// example:
 	//
@@ -369,7 +369,7 @@ type SetIdentityProviderUdPullConfigurationRequestPullProtectedRule struct {
 	//
 	// 10
 	GroupDeletedThreshold *int32 `json:"GroupDeletedThreshold,omitempty" xml:"GroupDeletedThreshold,omitempty"`
-	// The threshold for the number of deleted organizational units. If the number of deleted organizational units exceeds this value, the synchronization task is terminated.
+	// The threshold for the number of deleted organizations. If the number of deleted organizations exceeds this value, the synchronization task is terminated.
 	//
 	// example:
 	//
@@ -423,9 +423,9 @@ func (s *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule) Validat
 }
 
 type SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig struct {
-	// The list of source nodes for synchronization.
+	// The list of source scope nodes.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// The target node for synchronization.
+	// The target scope node.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListResourceServersForUserResponseBody interface {
 }
 
 type ListResourceServersForUserResponseBody struct {
-	// The number of entries per page in a paged query.
+	// The number of rows per page in a paged query.
 	//
 	// example:
 	//
@@ -199,9 +199,9 @@ func (s *ListResourceServersForUserResponseBodyResourceServers) Validate() error
 type ListResourceServersForUserResponseBodyResourceServersResourceServerScopes struct {
 	// Indicates whether direct authorization exists. Valid values:
 	//
-	// - true: Direct authorization exists.
+	// - true: Yes.
 	//
-	// - false: Direct authorization does not exist.
+	// - false: No.
 	//
 	// example:
 	//

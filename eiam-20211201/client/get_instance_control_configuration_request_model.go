@@ -16,6 +16,11 @@ type iGetInstanceControlConfigurationRequest interface {
 }
 
 type GetInstanceControlConfigurationRequest struct {
+	// The name of the instance control item.
+	//
+	// example:
+	//
+	// representative-value-2026
 	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
 	// The instance ID.
 	//

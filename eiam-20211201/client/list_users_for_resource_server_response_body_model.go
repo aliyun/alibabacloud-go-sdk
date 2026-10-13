@@ -22,19 +22,19 @@ type iListUsersForResourceServerResponseBody interface {
 }
 
 type ListUsersForResourceServerResponseBody struct {
-	// The number of entries per page for paged queries.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListUsersForResourceServerResponseBody struct {
 	//
 	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of user accounts.
+	// The list of accounts.
 	Users []*ListUsersForResourceServerResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -117,15 +117,15 @@ func (s *ListUsersForResourceServerResponseBody) Validate() error {
 }
 
 type ListUsersForResourceServerResponseBodyUsers struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_qsw77zl5vrllwzyrrfwbmpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A list of granted scope permissions.
+	// The list of granted scope permissions.
 	ResourceServerScopes []*ListUsersForResourceServerResponseBodyUsersResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
-	// The ID of the user account.
+	// The account ID.
 	//
 	// example:
 	//
@@ -182,13 +182,13 @@ func (s *ListUsersForResourceServerResponseBodyUsers) Validate() error {
 }
 
 type ListUsersForResourceServerResponseBodyUsersResourceServerScopes struct {
-	// The ID of the scope permission.
+	// The scope permission ID.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The name of the scope permission.
+	// The scope permission name.
 	//
 	// example:
 	//

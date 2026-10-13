@@ -96,7 +96,15 @@ type ListEiamInstancesResponseBodyInstances struct {
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The instance version.
+	// The instance version. Valid values:
+	//
+	// - EIAM 2~0: EIAM 2.0.
+	//
+	// - EIAM 1~0: EIAM 1.0.
+	//
+	// [_single.resp.200.props.Instances.items.InstanceVersion.enum.EIAM 2~0]EIAM 2.0
+	//
+	// [_single.resp.200.props.Instances.items.InstanceVersion.enum.EIAM 1~0]EIAM 1.0
 	//
 	// example:
 	//
@@ -120,7 +128,7 @@ type ListEiamInstancesResponseBodyInstances struct {
 	//
 	// xxxx.aliyunidaas.com
 	SSODomain *string `json:"SSODomain,omitempty" xml:"SSODomain,omitempty"`
-	// The time when the instance was created.
+	// The time when the instance was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

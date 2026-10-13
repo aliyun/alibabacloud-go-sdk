@@ -78,7 +78,7 @@ type ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies s
 	//
 	// policyName
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
-	// The type of the conditional access policy.
+	// The conditional access policy type.
 	//
 	// example:
 	//
@@ -86,21 +86,21 @@ type ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies s
 	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
 	// The conditional access policy conditions.
 	ConditionsConfig *ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
-	// The creation time.
+	// The time when the policy was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1741857554000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The execution configuration of the conditional access policy.
+	// The decision configuration of the conditional access policy.
 	DecisionConfig *ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
-	// The execution type of the conditional access policy.
+	// The decision type of the conditional access policy.
 	//
 	// example:
 	//
 	// enforcement
 	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
-	// The description of the conditional access policy.
+	// The conditional access policy description.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies s
 	//
 	// idaas_oynbcyaaejuik6b37eldz4xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last updated time.
+	// The time when the policy was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -514,7 +514,7 @@ type ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesDe
 	//
 	// 300
 	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
-	// The MFA methods allowed by the conditional access policy.
+	// The MFA types allowed by the conditional access policy.
 	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
 	// The MFA type of the conditional access policy.
 	//

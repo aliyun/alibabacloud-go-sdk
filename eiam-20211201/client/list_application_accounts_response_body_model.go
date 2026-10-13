@@ -101,7 +101,7 @@ type ListApplicationAccountsResponseBodyApplicationAccounts struct {
 	//
 	// test
 	ApplicationUsername *string `json:"ApplicationUsername,omitempty" xml:"ApplicationUsername,omitempty"`
-	// The creation time.
+	// The time when the application account was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

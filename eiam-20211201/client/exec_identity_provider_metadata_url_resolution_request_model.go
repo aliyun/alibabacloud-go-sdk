@@ -22,7 +22,7 @@ type iExecIdentityProviderMetadataUrlResolutionRequest interface {
 }
 
 type ExecIdentityProviderMetadataUrlResolutionRequest struct {
-  // The ID of the identity provider in IDaaS.
+  // The identity provider ID in IDaaS.
   // 
   // example:
   // 
@@ -36,7 +36,7 @@ type ExecIdentityProviderMetadataUrlResolutionRequest struct {
   // 
   // idaas_ue2jvisn35ea5lmthk267xxxxx
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The network access endpoint ID.
+  // The network endpoint ID.
   // 
   // example:
   // 
@@ -48,6 +48,8 @@ type ExecIdentityProviderMetadataUrlResolutionRequest struct {
   // 
   // https://login.example.com/.well-known/openid-configuration
   OidcIssuer *string `json:"OidcIssuer,omitempty" xml:"OidcIssuer,omitempty"`
+  // The SAML metadata URL.
+  // 
   // example:
   // 
   // https://dc.test.com/FederationMetadata/2007-06/FederationMetadata.xml
