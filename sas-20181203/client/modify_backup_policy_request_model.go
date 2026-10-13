@@ -28,7 +28,7 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The ID of the anti-ransomware policy to modify.
+	// The ID of the anti-ransomware policy that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 11
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the anti-ransomware policy to modify.
+	// The name of the anti-ransomware policy that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -44,25 +44,25 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// policy_name_A
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The content of the policy to modify. The value is a JSON format character string that contains the following fields:
+	// The content of the policy that you want to modify. The value is a JSON string that contains the following fields:
 	//
-	// - **Source**: The server folder to protect. To protect all folders, set this field to [].
+	// - **Source**: the server directories to be protected. To protect all directories, set this field to [].
 	//
-	// - **Include**: The file types to protect. Examples: "\\*.jpg" and "\\*.doc".
+	// - **Include**: the types of files to be protected. Examples: "\\*.jpg" and "\\*.doc".
 	//
-	// - **Exclude**: The custom folders to exclude. For example, "/home/user" excludes the /home/user folder. Invoke the DescribeExcludeSystemPath operation to obtain all folders, and then add the folders that you want to exclude.
+	// - **Exclude**: the custom directories to be excluded. To exclude the "/home/user" directory, call the DescribeExcludeSystemPath operation to obtain all directories and then add the directories to be excluded. Example: exclude the "/home/user" directory.
 	//
-	// - **Schedule**: The start time and interval of the data backup node. Specify a non-hourly time during off-peak hours.
+	// - **Schedule**: the start time and interval of the data backup task. Specify a time during off-peak hours and avoid exact hours.
 	//
-	//     - Example 1: I|1583216092|P21D indicates that the execute start time is 2020-03-03 14:14:52 and the interval is 3 weeks.
+	//     - Example 1: I|1583216092|P21D indicates that the start time is 2020-03-03 14:14:52 and the interval is 3 weeks.
 	//
-	//     - Example 2: I|1583216092|PT24H indicates that the execute start time is 2020-03-03 14:14:52 and the interval is 24 hours.
+	//     - Example 2: I|1583216092|PT24H indicates that the start time is 2020-03-03 14:14:52 and the interval is 24 hours.
 	//
-	// - **Retention**: The retention period of backup data. Unit: days. 7 indicates 1 week, 365 indicates 1 year, and -1 indicates permanent retention.
+	// - **Retention**: the retention period of backup data. Unit: days. A value of 7 indicates 1 week, 365 indicates 1 year, and -1 indicates permanent retention.
 	//
-	// - **SpeedLimiter**: The network bandwidth throttling for backup. For example, 12:15:15360|6:12:5120 indicates 15 MB from 12:00 to 15:00 and 5 MB from 6:00 to 12:00.
+	// - **SpeedLimiter**: the bandwidth limit for the backup network. Example: 12:15:15360|6:12:5120 indicates a limit of 15 MB from 12:00 to 15:00 and 5 MB from 06:00 to 12:00.
 	//
-	// For cloud-based servers connected to the internal network, do not limit the backup network bandwidth. To remove the network bandwidth throttling, set this parameter to an empty character string ("").
+	// If the cloud server is connected to the internal network, do not limit the backup network bandwidth. To remove the bandwidth limit, set this parameter to an empty string ("").
 	//
 	// This parameter is required.
 	//
@@ -70,15 +70,15 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// {"Source":["home","admin"]}
 	Policy map[string]interface{} `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The region of the server for which you want to modify the policy.
+	// The region where the server to which the policy applies resides.
 	//
-	// You can invoke the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions supported by the anti-ransomware feature.
+	// You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions supported by the anti-ransomware feature.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	PolicyRegionId *string `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
-	// The version of the policy. You can invoke the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the version.
+	// The version of the policy. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the version.
 	//
 	// - **1.0.0**
 	//
@@ -88,11 +88,11 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 2.0.0
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// The method used to select assets. Valid values:
+	// The method to cover assets. Valid values:
 	//
 	// - **ALL_MACHINE**: all assets
 	//
-	// >To cover all assets of the specified type, set this parameter to **ALL_MACHINE**. In this case, **UuidList*	- is invalid. Only one policy that covers all assets can exist for each server type.
+	// > To cover all assets of this type, set this parameter to **ALL_MACHINE**. In this case, **UuidList*	- does not take effect. Only one policy that covers all assets can exist for the same server type.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// - **ALIYUN**: Alibaba Cloud server
 	//
-	// - **OUT_CLOUD**: non-Alibaba Cloud server
+	// - **OUT_CLOUD**: third-party server
 	//
 	// - **TRIPARTITE**: simple application server
 	//

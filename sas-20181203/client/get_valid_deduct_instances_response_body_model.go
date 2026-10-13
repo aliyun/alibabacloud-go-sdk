@@ -75,6 +75,10 @@ type GetValidDeductInstancesResponseBodyData struct {
 	// The list of resource plan usage details.
 	DeductPackageList []*GetValidDeductInstancesResponseBodyDataDeductPackageList `json:"DeductPackageList,omitempty" xml:"DeductPackageList,omitempty" type:"Repeated"`
 	// The trial version.
+	//
+	// example:
+	//
+	// 0
 	TrialVersion *int32 `json:"TrialVersion,omitempty" xml:"TrialVersion,omitempty"`
 }
 

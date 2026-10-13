@@ -14,7 +14,7 @@ type iGetFileProtectClientEventRequest interface {
 }
 
 type GetFileProtectClientEventRequest struct {
-	// The unique ID of the alert event.
+	// The unique ID of the alert event. This parameter is required. If it is not provided, the API returns an HTTP 400 error.
 	//
 	// example:
 	//

@@ -117,6 +117,10 @@ type ListCheckItemResponseBodyCheckItems struct {
 	// 30
 	EstimatedCount *int32 `json:"EstimatedCount,omitempty" xml:"EstimatedCount,omitempty"`
 	// The estimated number of instances affected by the check item.
+	//
+	// example:
+	//
+	// 0
 	InstanceEstimatedCount *int32 `json:"InstanceEstimatedCount,omitempty" xml:"InstanceEstimatedCount,omitempty"`
 	// The asset subtype of the cloud service. Valid values:
 	//

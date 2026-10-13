@@ -63,6 +63,10 @@ func (s *GetUnknownThreatDetectStatisticResponseBody) Validate() error {
 
 type GetUnknownThreatDetectStatisticResponseBodyData struct {
 	// The number of servers that have blocking events.
+	//
+	// example:
+	//
+	// 0
 	BlockEventMachineCount *int32 `json:"BlockEventMachineCount,omitempty" xml:"BlockEventMachineCount,omitempty"`
 	// The number of servers under control.
 	//

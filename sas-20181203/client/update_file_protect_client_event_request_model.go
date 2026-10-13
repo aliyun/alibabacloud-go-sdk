@@ -50,7 +50,7 @@ type iUpdateFileProtectClientEventRequest interface {
 type UpdateFileProtectClientEventRequest struct {
 	// The list of alert notification levels.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	// The timestamp of the end time.
+	// The end time. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type UpdateFileProtectClientEventRequest struct {
 	//
 	// 1
 	NewStatus *int32 `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
-	// The type of the operation.
+	// The type of the current operation.
 	//
 	// example:
 	//
@@ -116,15 +116,15 @@ type UpdateFileProtectClientEventRequest struct {
 	//
 	// /root/1111/****
 	ProcPath *string `json:"ProcPath,omitempty" xml:"ProcPath,omitempty"`
-	// The remarks.
+	// The remark. This parameter is required when SelectAll is set to true. If this parameter is not provided, the service returns HTTP 500 with the error code -100.
 	Remark []*string `json:"Remark,omitempty" xml:"Remark,omitempty" type:"Repeated"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//
 	// tetsRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Specifies whether to select all.
+	// Specifies whether to select all events.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +132,7 @@ type UpdateFileProtectClientEventRequest struct {
 	//
 	// true
 	SelectAll *bool `json:"SelectAll,omitempty" xml:"SelectAll,omitempty"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

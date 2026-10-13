@@ -22,9 +22,9 @@ type iCreateSoarStrategyTaskRequest interface {
 }
 
 type CreateSoarStrategyTaskRequest struct {
-	// The policy ID.
+	// The ID of the policy.
 	//
-	// >Call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to obtain this parameter.
+	// >You can call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// 13840
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The policy name. Set the value to: Automated Batch Vulnerability Fix Policy.
+	// The Policy Name. Set the value to Automated Batch Vulnerability Fix Policy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 漏洞自动化批量修复策略
+	// Automated Batch Vulnerability Fix Policy
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 	// The name of the policy task.
 	//
@@ -48,31 +48,33 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// task1
 	StrategyTaskName *string `json:"StrategyTaskName,omitempty" xml:"StrategyTaskName,omitempty"`
-	// The parameter information of the policy. The value is a string in JSONArray format. The following items are included:
+	// The parameter settings of the policy. The value is a character string in JSON array format. Details:
 	//
-	// Vulnerability configuration item. Valid values:
+	// Vulnerability configuration item. Values:
 	//
 	// - name: vluList
 	//
 	// - associationProperty: sasAllVul
 	//
-	// - value: the basic information of the vulnerability.
+	// - value: the basic information about the vulnerability
 	//
-	// Snapshot configuration item. Valid values:
+	// Snapshot configuration item. Values:
 	//
 	// - name: snapshotConfig
 	//
 	// - associationProperty: snapshotConfig
 	//
-	// - value: the storage time information.
+	// - value: the storage duration information
 	//
-	// Notification configuration. Valid values:
+	// Notification configuration:
 	//
 	// - name: notifyConfig
 	//
 	// - associationProperty: notifyConfig
 	//
-	// - value: the configuration information of email or DingTalk notifications.
+	// - value: the configuration information about email or DingTalk
+	//
+	// The vulList child configuration item is required, and the JSON array must contain an entry whose name is vulList. The snapshotConfig and notifyConfig child configuration items are optional.
 	//
 	// This parameter is required.
 	//
@@ -156,7 +158,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// ]
 	StrategyTaskParams *string `json:"StrategyTaskParams,omitempty" xml:"StrategyTaskParams,omitempty"`
-	// The planned execution timestamp of the policy task. Unit: milliseconds.
+	// The scheduled execution timestamp of the policy task. Unit: milliseconds.
 	//
 	// example:
 	//

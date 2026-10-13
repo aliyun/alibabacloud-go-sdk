@@ -38,7 +38,7 @@ type iAddPrivateRegistryRequest interface {
 }
 
 type AddPrivateRegistryRequest struct {
-	// The domain name of the image repository.
+	// The domain name of the registry.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type AddPrivateRegistryRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The additional parameter of the image repository. This parameter is required when you set the RegistryType parameter to **quay**. Valid values:
+	// The additional parameters for the image registry. This parameter is required when you use **quay**. The parameters include:
 	//
-	// 	- **namespace**
+	// - **namespace**: The namespace.
 	//
-	// 	- **authToken**
+	// - **authToken**: The authorization token.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type AddPrivateRegistryRequest struct {
 	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **1**: Internet
+	// - **1**: Internet.
 	//
-	// 	- **2**: virtual private cloud (VPC)
+	// - **2**: VPC.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type AddPrivateRegistryRequest struct {
 	//
 	// 2
 	NetType *int64 `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The password that is used to log on to the image repository.
+	// The password.
 	//
 	// This parameter is required.
 	//
@@ -82,11 +82,11 @@ type AddPrivateRegistryRequest struct {
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- **1**: HTTP
+	// - **1**: HTTP.
 	//
-	// 	- **2**: HTTPS
+	// - **2**: HTTPS.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,9 @@ type AddPrivateRegistryRequest struct {
 	//
 	// 2
 	ProtocolType *int64 `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The IP address of the image repository.
+	// The IP address of the registry.
+	//
+	// Enter a valid IPv4 address that can be used to connect to the image registry. To specify a domain name for the image registry, use the DomainName parameter.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +106,7 @@ type AddPrivateRegistryRequest struct {
 	RegistryHostIp *string `json:"RegistryHostIp,omitempty" xml:"RegistryHostIp,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [ListImageRegistryRegion](~~ListImageRegistryRegion~~) operation to query the IDs of supported regions.
+	// >You can call the [ListImageRegistryRegion](~~ListImageRegistryRegion~~) operation to query the supported region IDs.
 	//
 	// This parameter is required.
 	//
@@ -112,11 +114,11 @@ type AddPrivateRegistryRequest struct {
 	//
 	// cn-hangzhou
 	RegistryRegionId *string `json:"RegistryRegionId,omitempty" xml:"RegistryRegionId,omitempty"`
-	// The type of the private image repository. Valid values:
+	// The type of the private image registry. Valid values:
 	//
-	// 	- **harbor**
+	// - **harbor**: Harbor environment.
 	//
-	// 	- **quay**
+	// - **quay**: Quay environment.
 	//
 	// This parameter is required.
 	//
@@ -124,11 +126,12 @@ type AddPrivateRegistryRequest struct {
 	//
 	// harbor
 	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	// The version of the image repository. Valid values:
+	// The version of the image registry. Valid values:
 	//
-	// 	- **V1**
 	//
-	// 	- **V2**
+	// - **V1**: Version 1.0.
+	//
+	// - **V2**: Version 2.0.
 	//
 	// This parameter is required.
 	//
@@ -136,13 +139,13 @@ type AddPrivateRegistryRequest struct {
 	//
 	// V2
 	RegistryVersion *string `json:"RegistryVersion,omitempty" xml:"RegistryVersion,omitempty"`
-	// The number of images that are scanned per hour.
+	// The number of images scanned per hour.
 	//
 	// example:
 	//
 	// 10
 	TransPerHour *int32 `json:"TransPerHour,omitempty" xml:"TransPerHour,omitempty"`
-	// The username that is used to log on to the image repository.
+	// The username of the image registry.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +153,7 @@ type AddPrivateRegistryRequest struct {
 	//
 	// xxxxx
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The ID of the VPC.
+	// The instance ID of the VPC.
 	//
 	// example:
 	//

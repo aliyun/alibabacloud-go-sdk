@@ -88,15 +88,15 @@ type iDescribeSuspEventsShrinkRequest interface {
 type DescribeSuspEventsShrinkRequest struct {
 	// The unique ID of the alert event.
 	//
-	// > To query the exception information of a single alert event, provide the unique ID of the alert event. You can obtain this ID by calling the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation.
+	// > To query the exception event information of a single alert event, you must provide the unique ID of the alert event. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the ID.
 	//
 	// example:
 	//
 	// 8df914418f4211fb****
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	// The collection of asset types.
+	// The list of asset types.
 	AssetsTypeList []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
-	// The cluster ID for which you want to query alert events.
+	// The ID of the cluster for which you want to query alert events.
 	//
 	// example:
 	//
@@ -104,29 +104,29 @@ type DescribeSuspEventsShrinkRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The container search field. Valid values:
 	//
-	// - **instanceId**: instance ID
+	// - **instanceId**: Instance ID.
 	//
-	// - **appName**: application name
+	// - **appName**: Application name.
 	//
-	// - **clusterId**: cluster ID
+	// - **clusterId**: Cluster ID.
 	//
-	// - **regionId**: region
+	// - **regionId**: Region ID.
 	//
-	// - **nodeName**: node name
+	// - **nodeName**: Node name.
 	//
-	// - **namespace**: namespace
+	// - **namespace**: Namespace.
 	//
-	// - **clusterName**: cluster name
+	// - **clusterName**: Cluster name.
 	//
-	// - **image**: image name
+	// - **image**: Image name.
 	//
-	// - **imageRepoName**: image repository name
+	// - **imageRepoName**: Image repository name.
 	//
-	// - **imageRepoNamespace**: image repository namespace
+	// - **imageRepoNamespace**: Image repository namespace.
 	//
-	// - **imageRepoTag**: image tag
+	// - **imageRepoTag**: Image tag.
 	//
-	// - **imageDigest**: image digest
+	// - **imageDigest**: Image digest.
 	//
 	// example:
 	//
@@ -138,15 +138,15 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// ccf9769c22b844ff9b8d57417683b****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The page number of the page to return in a paged query. Default value: **1**, which indicates that the results start from page 1.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether the alert events to query have been handled. Valid values:
+	// Specifies whether the alert events to query are handled. Valid values:
 	//
-	// - **N**: Unhandled.
+	// - **N**: Pending.
 	//
 	// - **Y**: Handled.
 	//
@@ -154,7 +154,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// N
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	// The discovery source. This is an invalid field.
+	// The detection source. This field is invalid.
 	//
 	// example:
 	//
@@ -166,19 +166,19 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// WEBSHELL
 	EventNames *string `json:"EventNames,omitempty" xml:"EventNames,omitempty"`
-	// The data source identifier of the alert event. The value is fixed as sas.
+	// The identifier of the data source to which the alert event belongs. Set the value to sas.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The group ID of the asset affected by the alert event.
+	// The ID of the asset group affected by the alert event.
 	//
 	// example:
 	//
 	// 18768
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The unique ID that identifies the alert event record.
+	// The unique ID of the alert event record.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The severity levels of the alert events to query. Separate multiple severity levels with commas (,). The severity levels are listed in descending order. Valid values:
+	// The urgency levels of the alert events to query. Separate multiple urgency levels with commas (,). The urgency levels are listed in descending order. Valid values:
 	//
 	// - **serious**: Urgent.
 	//
@@ -222,7 +222,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// ecs-xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The collection of alert event handling result codes.
+	// The list of alert event handling result codes.
 	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
 	// The end timestamp of the handling time.
 	//
@@ -236,13 +236,13 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// 2022-07-05 13:50:38
 	OperateTimeStart *string `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
-	// The number of alert events to display on each page in a paged query. Default value: **20**, which indicates that 20 alert events are displayed on each page. Maximum value: 100.
+	// The settings for the paged query, specifying the number of alert events to return on each page. Default value: **20**, which indicates that 20 alert events are returned on each page. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The alerting type of the alert events to query. Valid values:
+	// The Alarm Metric of the alert events to query. Valid values:
 	//
 	// - **Abnormal process behavior**
 	//
@@ -250,17 +250,17 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// - **Unusual logon**
 	//
-	// - **Abnormal event**
+	// - **Abnormal events**
 	//
 	// - **Sensitive file tampering**
 	//
 	// - **Malicious process (cloud scan)**
 	//
-	// - **Suspicious network connectivity**
+	// - **Suspicious network connection**
 	//
-	// - **Abnormal account**
+	// - **Abnormal accounts**
 	//
-	// - **Application intrusion event**
+	// - **Application intrusion events**
 	//
 	// - **Cloud service threat detection**
 	//
@@ -272,13 +272,13 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// - **Web application threat detection**
 	//
-	// - **Malicious script**
+	// - **Malicious scripts**
 	//
 	// - **Threat intelligence**
 	//
 	// - **Malicious network behavior**
 	//
-	// - **Container cluster exception**
+	// - **Container cluster anomalies**
 	//
 	// - **Web shell (local scan)**
 	//
@@ -286,9 +286,9 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// - **Malicious process (local scan)**
 	//
-	// - **Trusted exception**
+	// - **Trusted exceptions**
 	//
-	// - **Other**
+	// - **Others**
 	//
 	// example:
 	//
@@ -296,15 +296,15 @@ type DescribeSuspEventsShrinkRequest struct {
 	ParentEventTypes *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
 	// The alert name or asset information to query.
 	//
-	// > Fuzzy match is supported. Asset information includes the asset name, public IP address, and private IP address.
+	// > Fuzzy match is supported. Asset information includes the asset name, public IP address, and internal IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	// The ID of the Alibaba Cloud account to which the resource folder member accounts belong.
 	//
-	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -334,7 +334,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// desc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The alert source.
+	// The source of the alert.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The list of Alibaba Cloud account IDs that generated the alerts.
 	SourceAliUidsShrink *string `json:"SourceAliUids,omitempty" xml:"SourceAliUids,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//
@@ -352,7 +352,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// - **0**: All.
 	//
-	// - **1**: Unhandled.
+	// - **1**: Pending.
 	//
 	// - **2**: Ignored.
 	//
@@ -360,7 +360,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// - **8**: Marked as false positive.
 	//
-	// - **16**: Handling.
+	// - **16**: Processing.
 	//
 	// - **32**: Handled.
 	//
@@ -368,9 +368,9 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// - **128**: Deleted.
 	//
-	// - **512**: Automatic blocking in progress.
+	// - **512**: Automatically blocking.
 	//
-	// - **513**: Automatic blocking completed.
+	// - **513**: Automatically blocked.
 	//
 	// example:
 	//
@@ -394,13 +394,13 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// TA0001
 	TacticId *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
-	// The target type for container search. Valid values:
+	// The container search target type. Valid values:
 	//
-	// - **containerId**: container ID
+	// - **containerId**: Container ID.
 	//
-	// - **uuid**: server UUID
+	// - **uuid**: Server UUID.
 	//
-	// - **imageUuid**: image UUID
+	// - **imageUuid**: Image UUID.
 	//
 	// example:
 	//

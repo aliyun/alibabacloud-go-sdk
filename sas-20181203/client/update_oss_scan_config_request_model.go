@@ -51,17 +51,26 @@ type UpdateOssScanConfigRequest struct {
 	// example:
 	//
 	// true
-	AllKeyPrefix *bool  `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
-	AutoAdd      *int32 `json:"AutoAdd,omitempty" xml:"AutoAdd,omitempty"`
+	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
+	// Specifies whether to automatically add new buckets to the scan policy. Valid values:
+	//
+	// - **0**: Disabled.
+	//
+	// - **1**: Enabled.
+	//
+	// example:
+	//
+	// 0
+	AutoAdd *int32 `json:"AutoAdd,omitempty" xml:"AutoAdd,omitempty"`
 	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+	// The maximum number of files to decompress. Valid values: 1 to 1000. If the number of files exceeds the maximum value, the decompression stops. The scan of the decompressed files is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression layers when multiple levels of nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+	// The maximum number of decompression layers for nested compressed files. Valid values: 1 to 5. If the number of layers exceeds the maximum value, the decompression stops. The scan of the decompressed files is not affected.
 	//
 	// example:
 	//
@@ -69,7 +78,7 @@ type UpdateOssScanConfigRequest struct {
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
 	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// Specifies whether to enable the policy. Valid values:
+	// Specifies whether to enable the feature. Valid values:
 	//
 	// - **1**: Enabled.
 	//
@@ -79,53 +88,53 @@ type UpdateOssScanConfigRequest struct {
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The scan stop time in the HH:mm:ss format.
+	// The end time of the scan. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 00:00:01
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The scan policy ID.
+	// The ID of the scan policy.
 	//
 	// example:
 	//
 	// 1141****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The prefix list of files.
+	// The file prefix list.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
-	// The list of file suffixes.
+	// The list of file name extensions.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
+	// The start timestamp for the last modification time of the files to be scanned. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1724301769834
 	LastModifiedStartTime *int64 `json:"LastModifiedStartTime,omitempty" xml:"LastModifiedStartTime,omitempty"`
-	// The scan policy name.
+	// The configuration policy name.
 	//
 	// example:
 	//
 	// testStrategy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to enable real-time incremental detection. When this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
+	// Specifies whether to enable real-time incremental scanning. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
 	//
 	// example:
 	//
 	// true
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
-	// The scan days. The number indicates the day of the week.
+	// The days of the week when scans are performed. A number represents a day of the week.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
-	// The business source. Valid values:
+	// The service source. Valid values:
 	//
-	// - **OSS**: OSS
+	// - **OSS**: OSS.
 	//
-	// - **NAS**: NAS
+	// - **NAS**: NAS.
 	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The scan start time in the HH:mm:ss format.
+	// The start time of the scan. Format: HH:mm:ss.
 	//
 	// example:
 	//

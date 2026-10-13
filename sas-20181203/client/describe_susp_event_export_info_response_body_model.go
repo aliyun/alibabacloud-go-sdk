@@ -34,15 +34,15 @@ type iDescribeSuspEventExportInfoResponseBody interface {
 }
 
 type DescribeSuspEventExportInfoResponseBody struct {
-	// The handling status for the exception. Valid values:
+	// The processing status of anomalous events. Valid values:
 	//
-	// 	- **exporting**: in progress
+	// - **exporting**: Processing.
 	//
-	// 	- **success**: successful
+	// - **success**: Succeeded.
 	//
-	// 	- **failed**: failed
+	// - **failed**: Failed.
 	//
-	// 	- **pending**: pending
+	// - **pending**: Pending.
 	//
 	// example:
 	//
@@ -54,37 +54,37 @@ type DescribeSuspEventExportInfoResponseBody struct {
 	//
 	// suspicious_event_20221221_1671590521234.zip
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The time when the export task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-12-20T15:18Z
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the export task was modified.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2022-12-20T15:18Z
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the export task.
+	// The ID of the export task for anomalous events.
 	//
 	// example:
 	//
 	// 11
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The URL at which you can download the exported Excel file.
+	// The download URL of the exported Excel file.
 	//
 	// example:
 	//
 	// http://suspicious-xxxxxxx.oss-cn-shanghai.aliyuncs.com/xxxxxxxxxxx/suspicious_event_20221221_1671590525269.zip?Expires=1671594125&OSSAccessKeyId=yourAccessKeyID&Signature=xxxxxxxxxxxxxxxxxx
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	// The progress percentage of the export task.
+	// The export progress of anomalous events, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The exported parameters of exceptions.
+	// The export parameters for anomalous events.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type DescribeSuspEventExportInfoResponseBody struct {
 	//
 	// BE120DAB-F4E7-4C53-ADC3-A97578AXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of exceptions exported.
+	// The total number of anomalous events.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The type of the export task. The value is fixed as suspiciousEvent.
+	// The type of the export task. The value is fixed to suspiciousEvent.
 	//
 	// example:
 	//

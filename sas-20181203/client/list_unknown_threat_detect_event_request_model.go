@@ -32,6 +32,9 @@ type iListUnknownThreatDetectEventRequest interface {
 }
 
 type ListUnknownThreatDetectEventRequest struct {
+	// example:
+	//
+	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
 	// The page number of the current page in a paging query.
 	//
@@ -45,7 +48,10 @@ type ListUnknownThreatDetectEventRequest struct {
 	//
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The maximum number of entries to return on each page in a paging query.
 	//
 	// example:

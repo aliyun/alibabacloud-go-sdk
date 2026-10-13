@@ -84,7 +84,13 @@ func (s *ListUnknownThreatDetectEventResponseBody) Validate() error {
 }
 
 type ListUnknownThreatDetectEventResponseBodyData struct {
-	AnalyzeDesc   *string `json:"AnalyzeDesc,omitempty" xml:"AnalyzeDesc,omitempty"`
+	// example:
+	//
+	// 检测结果为正常进程
+	AnalyzeDesc *string `json:"AnalyzeDesc,omitempty" xml:"AnalyzeDesc,omitempty"`
+	// example:
+	//
+	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
 	// The process chain.
 	//
@@ -109,7 +115,10 @@ type ListUnknownThreatDetectEventResponseBodyData struct {
 	// example:
 	//
 	// 1694576692000
-	FirstTime    *int64  `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// example:
+	//
+	// 确认处理
 	HandleRemark *string `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
 	HandleType   *string `json:"HandleType,omitempty" xml:"HandleType,omitempty"`
 	// The unique identifier of the file.

@@ -20,13 +20,13 @@ type iGetServerlessAppAuthDetailRequest interface {
 }
 
 type GetServerlessAppAuthDetailRequest struct {
-	// The SAE application ID. You can call [ListMachineApps](~~ListMachineApps~~) to obtain the ID. This parameter is required. If this parameter is not specified, the API returns HTTP 400 with the error code missingParams.
+	// The ID of the Serverless App Engine (SAE) application. You can obtain the ID by calling the [ListMachineApps](~~ListMachineApps~~) operation. This parameter is required. If you do not specify this parameter, the API returns an HTTP 400 error with the error code missingParams.
 	//
 	// example:
 	//
 	// 3de9f2ac-f***769226df
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The region ID of the application.
+	// The region ID of the application. This parameter is required. If you do not specify this parameter, the API returns an HTTP 400 error with the error code missingParams.
 	//
 	// example:
 	//

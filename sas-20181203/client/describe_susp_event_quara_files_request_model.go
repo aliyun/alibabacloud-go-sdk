@@ -28,13 +28,13 @@ type iDescribeSuspEventQuaraFilesRequest interface {
 }
 
 type DescribeSuspEventQuaraFilesRequest struct {
-	// The page number of the file list to view.
+	// The page number of the file list to return.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The identifier of the request source. Set the value to **sas**.
+	// The source identifier of the request. Set the value to **sas**.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DescribeSuspEventQuaraFilesRequest struct {
 	//
 	// 10541428
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the server group where the quarantined file is located.
+	// The ID of the server group to which the quarantined file belongs.
 	//
 	// example:
 	//
 	// 11472451
 	GroupingId *int64 `json:"GroupingId,omitempty" xml:"GroupingId,omitempty"`
-	// The maximum number of entries per page in a paged query.
+	// The maximum number of entries to return on each page during paging in a paged query.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type DescribeSuspEventQuaraFilesRequest struct {
 	//
 	// a31337789f64d39b2219733ec99f9af7
 	QuaraTag *string `json:"QuaraTag,omitempty" xml:"QuaraTag,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//
 	// 59.82.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The status of the quarantined files to query. Valid values:
+	// The status of the quarantined files that you want to query. Valid values:
 	//
 	// - **quaraFailed**: Quarantine failed.
 	//
 	// - **quaraDone**: Quarantine succeeded.
 	//
-	// - **quaraing**: Quarantine in progress.
+	// - **quaraing**: Quarantining.
 	//
-	// - **rollbackFailed**: Quarantine rollback failed.
+	// - **rollbackFailed**: Restore failed.
 	//
-	// - **rollbackDone**: Quarantine rollback succeeded.
+	// - **rollbackDone**: Restore succeeded.
 	//
-	// - **rollbacking**: Quarantine rollback in progress.
+	// - **rollbacking**: Restoring.
 	//
 	// example:
 	//

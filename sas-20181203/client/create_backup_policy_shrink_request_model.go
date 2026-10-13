@@ -26,7 +26,7 @@ type iCreateBackupPolicyShrinkRequest interface {
 }
 
 type CreateBackupPolicyShrinkRequest struct {
-	// The name of the protection policy to create. Set this parameter to the desired policy name.
+	// Sets the name of the anti-ransomware policy to create.
 	//
 	// This parameter is required.
 	//
@@ -34,37 +34,37 @@ type CreateBackupPolicyShrinkRequest struct {
 	//
 	// ServerBackUpPolicy01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// - **IsDefault**: The type of the protection policy to create. Valid values:
+	// - **IsDefault**: The type of the anti-ransomware policy to create. Valid values:
 	//
-	//     - **1**: Recommended policy.
+	//     - **1**: recommended policy
 	//
-	//     - **0**: Custom policy.
+	//     - **0**: custom policy
 	//
 	// - **Include**: The file types to protect. To protect all file types, set this parameter to [].
 	//
-	// - **Source**: The server folders to protect. To protect all folders, set this parameter to [].
+	// - **Source**: The server directories to protect. To protect all directories, set this parameter to [].
 	//
-	// - **ExcludeSystemPath**: Specifies whether to exclude specified folders. Set this parameter to **true*	- to exclude folders. If you do not want to exclude folders, you do not need to set this parameter.
+	// - **ExcludeSystemPath**: Specifies whether to exclude the specified directories. To exclude the directories, set this parameter to **true**. If you do not want to exclude the directories, you do not need to set this parameter.
 	//
-	// - **Exclude**: The specified protection folder addresses. If you do not want to specify protection folder addresses, set this parameter to [].
+	// - **Exclude**: Sets the specified protection directory addresses. If you do not want to specify protection directory addresses, set this parameter to [].
 	//
-	// - **Schedule**: The time and interval at which the data backup task is scheduled to run. Specify a non-peak hour that is not on the hour. Examples:
+	// - **Schedule**: Sets the execution time and execution interval of the data backup task. We recommend that you specify a non-integer hour during off-peak hours. Examples:
 	//
-	//     - Example 1: I|1583216092|P21D indicates that the data backup starts at 2020-03-03 14:14:52 and the backup policy runs at an interval of 3 weeks.
+	//     - Example 1: I|1583216092|P21D indicates that the data backup starts at 14:14:52 on March 3, 2020, and the backup policy execution interval is 3 weeks.
 	//
-	//     - Example 2: I|1583216092|PT24H indicates that the data backup starts at 2020-03-03 14:14:52 and the backup policy runs at an interval of 24 hours.
+	//     - Example 2: I|1583216092|PT24H indicates that the data backup starts at 14:14:52 on March 3, 2020, and the backup policy execution interval is 24 hours.
 	//
-	// - **Retention**: The retention period of backup data, in days. The value 7 indicates 1 week, 365 indicates 1 year, and -1 indicates permanent retention.
+	// - **Retention**: The retention period of the backup data. Unit: days. A value of 7 indicates 1 week, 365 indicates 1 year, and -1 indicates permanent retention.
 	//
-	// - **SpeedLimiter**: The network bandwidth throttling for backup. For example, 0:24:30720 indicates that the network bandwidth throttling for backup is 30 MB/s from 00:00 to 24:00.
+	// - **SpeedLimiter**: Sets the backup network bandwidth limit. Example: 0:24:30720 indicates that the network bandwidth limit for the backup network is 30 MByte/s from 00:00 to 24:00.
 	//
 	// - **UseVss**: Specifies whether to enable the Volume Shadow Copy Service (VSS) feature for Windows. Valid values:
 	//
-	//     - **true**: Enabled.
+	//     - **true**: enabled
 	//
-	//     - **false**: Not enabled.
+	//     - **false**: disabled
 	//
-	// > The VSS (Windows) feature applies only to Windows systems. After this feature is enabled, the issue of individual file backup failures due to process occupation is effectively reduced. We recommend that you enable this feature. After this feature is enabled, file backup for exFAT and FAT32 disk formats is not supported.
+	// > The VSS feature is available only for Windows systems. Enabling this feature effectively reduces the issue of individual file backup failures caused by process occupation. We recommend that you enable this feature. After this feature is enabled, file backup for exFAT and FAT32 disk formats is not supported.
 	//
 	// This parameter is required.
 	//
@@ -72,15 +72,17 @@ type CreateBackupPolicyShrinkRequest struct {
 	//
 	// "{"IsDefault":1,"Include":[],"Source":[],"Schedule":"I|1648061040|PT24H","Retention":7,"SpeedLimiter":"","ExcludeSystemPath":true,"Exclude":["/bin/","/usr/bin/","/sbin/","/boot/","/proc/","/sys/","/srv/","/lib/","/selinux/","/usr/sbin/","/run/","/lib32/","/lib64/","/lost+found/","/var/lib/kubelet/","/var/lib/ntp/proc","/var/lib/container","Windows","Python27","Program Files (x86)","Program Files","Boot","$RECYCLE.BIN","System Volume Information","Users\\Administrator\\NTUSER.DAT*","ProgramData","pagefile.sys","Users\\Default\\NTUSER.DAT*","Users\\Administrator\\ntuser.*"],"UseVss":true}"
 	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The region ID of the non-Alibaba Cloud server.
+	// The region ID of the server that is not deployed on Alibaba Cloud.
 	//
-	// > Call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions supported by the anti-ransomware feature, and then select the supported region closest to the region where your non-Alibaba Cloud server resides.
+	// > You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions supported by the anti-ransomware feature, and then select a supported region that is closest to the region of your server that is not deployed on Alibaba Cloud.
+	//
+	// This parameter is required when the ServerType parameter is set to OUT_CLOUD.
 	//
 	// example:
 	//
 	// ch-hangzhou
 	PolicyRegionId *string `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
-	// The version of the protection policy. Set the value to **2.0.0**.
+	// The version of the anti-ransomware policy. Fixed value: **2.0.0**.
 	//
 	// This parameter is required.
 	//
@@ -88,11 +90,11 @@ type CreateBackupPolicyShrinkRequest struct {
 	//
 	// 2.0.0
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// The method used to cover assets. Valid values:
+	// The method to cover assets. Valid values:
 	//
-	// - **ALL_MACHINE**: All assets.
+	// - **ALL_MACHINE**: all assets
 	//
-	// > To cover all assets of this type, set this parameter to **ALL_MACHINE**. In this case, **UuidList*	- is invalid. Only one policy that covers all assets can exist for each server type.
+	// > To cover all assets of the specified type, set this parameter to **ALL_MACHINE**. In this case, the **UuidList*	- parameter is invalid. Only one policy that covers all assets can be created for each server type.
 	//
 	// example:
 	//
@@ -100,11 +102,11 @@ type CreateBackupPolicyShrinkRequest struct {
 	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
 	// The server type. Valid values:
 	//
-	// - **ALIYUN**: Alibaba Cloud server.
+	// - **ALIYUN**: Alibaba Cloud server
 	//
-	// - **OUT_CLOUD**: Non-Alibaba Cloud server.
+	// - **OUT_CLOUD**: server that is not deployed on Alibaba Cloud
 	//
-	// - **TRIPARTITE**: Simple application server.
+	// - **TRIPARTITE**: simple application server
 	//
 	// example:
 	//

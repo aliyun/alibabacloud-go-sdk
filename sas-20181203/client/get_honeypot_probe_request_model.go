@@ -16,19 +16,19 @@ type iGetHoneypotProbeRequest interface {
 }
 
 type GetHoneypotProbeRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The probe ID.
+	// The ID of the probe.
 	//
-	// > You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+	// >You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//

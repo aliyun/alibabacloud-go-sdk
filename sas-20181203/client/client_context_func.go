@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -1003,7 +1004,11 @@ func (client *Client) AddInstallCodeWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
-// Adds a self-managed image repository.
+// Connects to a self-managed image registry.
+//
+// Description:
+//
+// When you call this operation, the service connects to and verifies the target image registry. Make sure that the image registry address is accessible and that the username and password are valid.
 //
 // @param request - AddPrivateRegistryRequest
 //
@@ -3689,6 +3694,133 @@ func (client *Client) CreateDynamicDictWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Initiates deep analysis for a malicious file.
+//
+// Description:
+//
+// Initiates deep analysis for a specified file and streams the progress of each analysis stage in real time by using Server-Sent Events (SSE).
+//
+// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial verification based on the source.
+//
+// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing stages. Valid values for the event name (event):
+//
+// - accepted: The request is accepted.
+//
+// - authorized: The purchase verification for the source is passed.
+//
+// - alertResolved: The file hash is parsed from the alert or input parameters.
+//
+// - fileReady: The file download link is ready.
+//
+// - dispatched: The file is delivered to the detection engine, including the requestId.
+//
+// - result: The analysis result is matched. This parameter is optional and pushed after the asynchronous result is ready.
+//
+// - done: The current analysis process is completed.
+//
+// - error: A processing exception occurs, including the error code and message.
+//
+// The data body of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
+//
+// @param request - CreateFileDeepAnalyzeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFileDeepAnalyzeResponse
+func (client *Client) CreateFileDeepAnalyzeWithSSECtx(ctx context.Context, request *CreateFileDeepAnalyzeRequest, runtime *dara.RuntimeOptions, _yield chan *CreateFileDeepAnalyzeResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.createFileDeepAnalyzeWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Initiates deep analysis for a malicious file.
+//
+// Description:
+//
+// Initiates deep analysis for a specified file and streams the progress of each analysis stage in real time by using Server-Sent Events (SSE).
+//
+// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial verification based on the source.
+//
+// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing stages. Valid values for the event name (event):
+//
+// - accepted: The request is accepted.
+//
+// - authorized: The purchase verification for the source is passed.
+//
+// - alertResolved: The file hash is parsed from the alert or input parameters.
+//
+// - fileReady: The file download link is ready.
+//
+// - dispatched: The file is delivered to the detection engine, including the requestId.
+//
+// - result: The analysis result is matched. This parameter is optional and pushed after the asynchronous result is ready.
+//
+// - done: The current analysis process is completed.
+//
+// - error: A processing exception occurs, including the error code and message.
+//
+// The data body of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
+//
+// @param request - CreateFileDeepAnalyzeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFileDeepAnalyzeResponse
+func (client *Client) CreateFileDeepAnalyzeWithContext(ctx context.Context, request *CreateFileDeepAnalyzeRequest, runtime *dara.RuntimeOptions) (_result *CreateFileDeepAnalyzeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Context) {
+		query["Context"] = request.Context
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.Hash) {
+		query["Hash"] = request.Hash
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFileDeepAnalyze"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFileDeepAnalyzeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Pushes a file to the cloud for detection.
 //
 // Description:
@@ -5899,11 +6031,11 @@ func (client *Client) CreateSimilarSecurityEventsQueryTaskWithContext(ctx contex
 
 // Summary:
 //
-// Creates a task under My Policies in the task center.
+// Creates a task under My Policies in Task Center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation. Other editions do not support this operation.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation.
 //
 // @param request - CreateSoarStrategyTaskRequest
 //
@@ -11721,11 +11853,11 @@ func (client *Client) DescribeClientProblemTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries assets that match specified search criteria by using conditional query settings such as asset instance name and region. Supports both paging and NextToken methods. The NextToken method is recommended.
+// Queries asset information that meets the conditional criteria through Settings, such as searching for specified assets by conditions like the asset instance name or the area to which the asset instance belongs. Currently, both paging and NextToken methods are provided for conditional query, and the NextToken method is recommended.
 //
 // Description:
 //
-// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other criteria. You can also set logical relationships between different search criteria to find assets that match multiple conditions.
+// You can search for assets by conditions such as instance ID, instance name, VPC ID, region, and public IP address. You can also set logical relationships between different search conditions to search for assets that meet multiple conditions.
 //
 // @param request - DescribeCloudCenterInstancesRequest
 //
@@ -12269,7 +12401,7 @@ func (client *Client) DescribeClusterNetworkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the scanner status information of a Kubernetes cluster.
+// Queries the status information of Kubernetes cluster scanners.
 //
 // @param request - DescribeClusterScannerListRequest
 //
@@ -22525,7 +22657,7 @@ func (client *Client) DescribeSuspEventDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about an export task of exceptions.
+// Queries the export information of security alert events.
 //
 // @param request - DescribeSuspEventExportInfoRequest
 //
@@ -22569,7 +22701,7 @@ func (client *Client) DescribeSuspEventExportInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries quarantined files in the file quarantine box by paging.
+// Performs a paged query of quarantined files in the file quarantine box by using paging.
 //
 // @param request - DescribeSuspEventQuaraFilesRequest
 //
@@ -22693,7 +22825,7 @@ func (client *Client) DescribeSuspEventUserSettingWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of security alert events that have not been aggregated.
+// Queries a list of unaggregated security alert events.
 //
 // @param tmpReq - DescribeSuspEventsRequest
 //
@@ -29463,7 +29595,7 @@ func (client *Client) GetFileDetectResultWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the details of a file protection event.
+// Retrieves file tamper-proofing events.
 //
 // @param request - GetFileProtectClientEventRequest
 //
@@ -30040,7 +30172,7 @@ func (client *Client) GetHoneypotNodeWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the monitoring data of management nodes to which the cloud honeypot belongs.
+// Queries the monitoring data of cloud honeypot management nodes.
 //
 // @param request - GetHoneypotNodeMetricListRequest
 //
@@ -30160,7 +30292,11 @@ func (client *Client) GetHoneypotPresetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details about a specified probe.
+// Queries the details of a specified honeypot probe.
+//
+// Description:
+//
+// Retrieves the details of a specified honeypot probe. Before calling this operation, call ListHoneypotProbe to query the probe status. Call this operation only for ready probes whose status is online or installed. Probes in the install_failed or initialing state are unavailable.
 //
 // @param request - GetHoneypotProbeRequest
 //
@@ -33325,11 +33461,11 @@ func (client *Client) ListAegisForLingjunStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries agentless detection assets.
+// Queries agentless scan assets.
 //
 // Description:
 //
-// Queries the list of assets for agentless detection.
+// Queries the list of assets for agentless scanning.
 //
 // @param request - ListAgentlessAssetRequest
 //
@@ -35281,7 +35417,7 @@ func (client *Client) ListClientUserDefineRulesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the asset list of cloud products.
+// Retrieves the list of cloud product assets.
 //
 // @param request - ListCloudAssetInstancesRequest
 //
@@ -42864,7 +43000,7 @@ func (client *Client) ModifyOperateVulWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Enables or disables pay-as-you-go billing for a specified feature.
+// Enables or disables the pay-as-you-go billing method for specified features.
 //
 // @param tmpReq - ModifyPostPayModuleSwitchRequest
 //
@@ -43398,7 +43534,7 @@ func (client *Client) ModifySecurityEventMarkMissIndividuallyWithContext(ctx con
 
 // Summary:
 //
-// Manages Serverless asset authorization.
+// Manages Serverless asset authorizations.
 //
 // @param request - ModifyServerlessAuthToMachineRequest
 //
@@ -49292,7 +49428,7 @@ func (client *Client) UpdateCustomizeReportStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates the status of a file protection event.
+// Updates the status of file tamper-proofing events.
 //
 // @param request - UpdateFileProtectClientEventRequest
 //
@@ -50786,7 +50922,7 @@ func (client *Client) UpdateOssScanConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the protection edition bound to a server after you enable the pay-as-you-go billing method for host and container security.
+// Changes the protection edition bound to a server after you enable pay-as-you-go billing for Host and Container Security.
 //
 // @param request - UpdatePostPaidBindRelRequest
 //
@@ -51922,4 +52058,68 @@ func (client *Client) VerifyCheckResultWithContext(ctx context.Context, request 
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) createFileDeepAnalyzeWithSSECtx_opYieldFunc(_yield chan *CreateFileDeepAnalyzeResponse, _yieldErr chan error, ctx context.Context, request *CreateFileDeepAnalyzeRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Context) {
+		query["Context"] = request.Context
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.Hash) {
+		query["Hash"] = request.Hash
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFileDeepAnalyze"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

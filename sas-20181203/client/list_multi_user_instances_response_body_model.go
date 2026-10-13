@@ -111,7 +111,10 @@ type ListMultiUserInstancesResponseBodyDaInstance struct {
 	// The anti-ransomware capacity usage and allocation of the administrator account.
 	AntiRansomwareCapacity *ListMultiUserInstancesResponseBodyDaInstanceAntiRansomwareCapacity `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty" type:"Struct"`
 	// The cloud platform configuration check scan usage and allocation of the administrator account.
-	CspmCapacity         *ListMultiUserInstancesResponseBodyDaInstanceCspmCapacity         `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty" type:"Struct"`
+	CspmCapacity *ListMultiUserInstancesResponseBodyDaInstanceCspmCapacity `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"Count":0,"Used":0,"Assigned":0}
 	CspmInstanceCapacity *ListMultiUserInstancesResponseBodyDaInstanceCspmInstanceCapacity `json:"CspmInstanceCapacity,omitempty" xml:"CspmInstanceCapacity,omitempty" type:"Struct"`
 	// The usage and allocation of honeypot quotas for the administrator account.
 	HoneypotCapacity *ListMultiUserInstancesResponseBodyDaInstanceHoneypotCapacity `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty" type:"Struct"`
@@ -522,9 +525,18 @@ func (s *ListMultiUserInstancesResponseBodyDaInstanceCspmCapacity) Validate() er
 }
 
 type ListMultiUserInstancesResponseBodyDaInstanceCspmInstanceCapacity struct {
+	// example:
+	//
+	// 0
 	Assigned *int64 `json:"Assigned,omitempty" xml:"Assigned,omitempty"`
-	Count    *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	Used     *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
+	// example:
+	//
+	// 0
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 0
+	Used *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s ListMultiUserInstancesResponseBodyDaInstanceCspmInstanceCapacity) String() string {
@@ -1343,7 +1355,10 @@ type ListMultiUserInstancesResponseBodySaleInstanceList struct {
 	// The anti-ransomware capacity usage of the member account.
 	AntiRansomwareCapacity *ListMultiUserInstancesResponseBodySaleInstanceListAntiRansomwareCapacity `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty" type:"Struct"`
 	// The cloud platform configuration check scan usage of the member account.
-	CspmCapacity         *ListMultiUserInstancesResponseBodySaleInstanceListCspmCapacity         `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty" type:"Struct"`
+	CspmCapacity *ListMultiUserInstancesResponseBodySaleInstanceListCspmCapacity `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"Count":0,"Used":0}
 	CspmInstanceCapacity *ListMultiUserInstancesResponseBodySaleInstanceListCspmInstanceCapacity `json:"CspmInstanceCapacity,omitempty" xml:"CspmInstanceCapacity,omitempty" type:"Struct"`
 	// The cloud honeypot authorization usage of the member account.
 	HoneypotCapacity *ListMultiUserInstancesResponseBodySaleInstanceListHoneypotCapacity `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty" type:"Struct"`
@@ -1724,8 +1739,14 @@ func (s *ListMultiUserInstancesResponseBodySaleInstanceListCspmCapacity) Validat
 }
 
 type ListMultiUserInstancesResponseBodySaleInstanceListCspmInstanceCapacity struct {
+	// example:
+	//
+	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	Used  *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
+	// example:
+	//
+	// 0
+	Used *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s ListMultiUserInstancesResponseBodySaleInstanceListCspmInstanceCapacity) String() string {

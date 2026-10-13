@@ -64,13 +64,13 @@ func (s *GetFileProtectClientEventResponseBody) Validate() error {
 type GetFileProtectClientEventResponseBodyData struct {
 	// The alert notification level. Valid values:
 	//
-	// - 0: no alert
+	// - 0: No alert.
 	//
-	// - 1: reminder
+	// - 1: Reminder.
 	//
-	// - 2: suspicious
+	// - 2: Suspicious.
 	//
-	// - 3: high-risk.
+	// - 3: High-risk.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type GetFileProtectClientEventResponseBodyData struct {
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The file path.
+	// The path of the file.
 	//
 	// example:
 	//
 	// /usr/local
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The process permissions.
+	// The permissions of the process.
 	//
 	// example:
 	//
@@ -106,19 +106,19 @@ type GetFileProtectClientEventResponseBodyData struct {
 	//
 	// 1694576692000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// The time when the event was handled.
+	// The time when the event was handled. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1694576692000
 	HandleTime *int64 `json:"HandleTime,omitempty" xml:"HandleTime,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// 3454
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type GetFileProtectClientEventResponseBodyData struct {
 	//
 	// 10.42.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The time when the event most recently occurred.
+	// The time when the event last occurred. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type GetFileProtectClientEventResponseBodyData struct {
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The operating system type.
+	// The type of the operating system.
 	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The process path.
+	// The path of the process.
 	//
 	// example:
 	//
@@ -172,25 +172,25 @@ type GetFileProtectClientEventResponseBodyData struct {
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The action of the blocking rule.
+	// The action of the interception rule.
 	//
 	// example:
 	//
 	// block
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//
 	// test-000
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
-	// - 0: unhandled
+	// - 0: Unhandled.
 	//
-	// - 1: handled
+	// - 1: Handled.
 	//
-	// - 2: whitelisted.
+	// - 2: Whitelisted.
 	//
 	// example:
 	//

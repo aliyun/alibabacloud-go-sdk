@@ -96,7 +96,13 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	//
 	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
+	// example:
+	//
+	// Normal system process
 	ExplanationEn *string `json:"ExplanationEn,omitempty" xml:"ExplanationEn,omitempty"`
+	// example:
+	//
+	// 正常系统进程
 	ExplanationZh *string `json:"ExplanationZh,omitempty" xml:"ExplanationZh,omitempty"`
 	// The timestamp when the process was first detected.
 	//

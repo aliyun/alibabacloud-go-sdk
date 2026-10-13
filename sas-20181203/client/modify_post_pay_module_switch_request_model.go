@@ -28,20 +28,27 @@ type iModifyPostPayModuleSwitchRequest interface {
 }
 
 type ModifyPostPayModuleSwitchRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values: true: performs a check without executing the operation. false: executes the operation. Default value: false.
-	DryRun          *bool                                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - true: Performs a dry run. The system checks the request but does not perform the actual operation.
+	//
+	// - false: Performs the request normally.
+	//
+	// Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The switch configuration of the EDR module.
 	EdrModuleSwitch *ModifyPostPayModuleSwitchRequestEdrModuleSwitch `json:"EdrModuleSwitch,omitempty" xml:"EdrModuleSwitch,omitempty" type:"Struct"`
-	// Specifies whether to automatically bind new assets for host and container protection. Valid values:
+	// Specifies whether to automatically bind new assets to the host and container protection feature. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
@@ -49,15 +56,15 @@ type ModifyPostPayModuleSwitchRequest struct {
 	PostPaidHostAutoBind *int32 `json:"PostPaidHostAutoBind,omitempty" xml:"PostPaidHostAutoBind,omitempty"`
 	// The edition to which new assets are automatically bound for host and container protection. Valid values:
 	//
-	// - **1**: Free Edition.
+	// - **1**: Free Edition
 	//
-	// - **3**: Enterprise Edition.
+	// - **3**: Enterprise Edition
 	//
-	// - **5**: Advanced Edition.
+	// - **5**: Advanced Edition
 	//
-	// - **6**: Anti-virus Edition.
+	// - **6**: Anti-virus Edition
 	//
-	// - **7**: Ultimate Edition.
+	// - **7**: Ultimate Edition
 	//
 	// example:
 	//
@@ -65,49 +72,49 @@ type ModifyPostPayModuleSwitchRequest struct {
 	PostPaidHostAutoBindVersion *int32 `json:"PostPaidHostAutoBindVersion,omitempty" xml:"PostPaidHostAutoBindVersion,omitempty"`
 	// The pay-as-you-go instance ID. This parameter is required.
 	//
-	// > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain this parameter.
+	// > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain the value of this parameter.
 	//
 	// example:
 	//
 	// postpay-sas-**
 	PostPayInstanceId *string `json:"PostPayInstanceId,omitempty" xml:"PostPayInstanceId,omitempty"`
-	// The switch status of pay-as-you-go modules in JSON string format. Valid values:
+	// The switch status of pay-as-you-go modules. The value is a JSON string. Valid values:
 	//
 	// - Key:
 	//
-	//   - **VUL**: vulnerability management module
+	//   - **VUL**: Vulnerability fixing module
 	//
-	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
+	//   - **CSPM**: Cloud Security Posture Management module
 	//
-	//   - **AGENTLESS**: agentless detection module
+	//   - **AGENTLESS**: Agentless detection module
 	//
-	//   - **SERVERLESS**: serverless security module
+	//   - **SERVERLESS**: Serverless security module
 	//
-	//   - **CTDR**: threat detection and response module
+	//   - **CTDR**: Cloud Threat Detection and Response module
 	//
-	//   - **POST_HOST**: host and container security module
+	//   - **POST_HOST**: Host and container security module
 	//
-	//   - **SDK**: malicious file detection SDK module
+	//   - **SDK**: Malicious file detection SDK module
 	//
-	//   - **RASP**: application protection module
+	//   - **RASP**: Application protection module
 	//
-	//   - **CTDR_STORAGE**: log management module
+	//   - **CTDR_STORAGE**: Log management module
 	//
-	//   - **ANTI_RANSOMWARE**: anti-ransomware management
+	//   - **ANTI_RANSOMWARE**: Anti-ransomware management
 	//
 	// - Value: 0 indicates disabled. 1 indicates enabled.
 	//
-	// > Modules for which no value is specified remain unchanged.
+	// > The values of modules that are not specified remain unchanged.
 	//
-	// <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+	// <notice>This parameter has the same meaning as the PostPayModuleSwitchObj parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
 	//
 	// example:
 	//
 	// {"VUL":1,"CSPM":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// The pay-as-you-go module switch.
+	// The switches of pay-as-you-go modules.
 	//
-	// 	Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+	// 	Notice:  This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
 	PostPayModuleSwitchObj *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj `json:"PostPayModuleSwitchObj,omitempty" xml:"PostPayModuleSwitchObj,omitempty" type:"Struct"`
 }
 
@@ -206,7 +213,9 @@ func (s *ModifyPostPayModuleSwitchRequest) Validate() error {
 }
 
 type ModifyPostPayModuleSwitchRequestEdrModuleSwitch struct {
-	AutoBind       *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// Specifies whether to enable automatic binding of new assets to the EDR module. A value of 0 indicates that the feature is disabled. A value of 1 indicates that the feature is enabled.
+	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// The authorized quota for EDR hosts.
 	EDR_HOST_USAGE *int64 `json:"EDR_HOST_USAGE,omitempty" xml:"EDR_HOST_USAGE,omitempty"`
 }
 
@@ -243,15 +252,15 @@ func (s *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) Validate() error {
 type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	// The agentless detection module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	Agentless *int32 `json:"Agentless,omitempty" xml:"Agentless,omitempty"`
-	// The AI digital human module.
+	// The AI digitalization feature.
 	//
 	// example:
 	//
@@ -259,9 +268,9 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	AiDigital *int32 `json:"AiDigital,omitempty" xml:"AiDigital,omitempty"`
 	// The anti-ransomware module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
@@ -269,31 +278,31 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	AntiRansomware *int32 `json:"AntiRansomware,omitempty" xml:"AntiRansomware,omitempty"`
 	// The basic service module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
-	// 	Notice: The basic service module switch cannot be manually modified. This module is in the enabling status when any other module is enabled, and is in the shutdown status only when all other modules are disabled.</notice>
+	// 	Notice: You cannot manually change the switch of the basic service module. If any other module is enabled, the enabling status of this module is enabled. If all other modules are shutdown, this module is not in the shutdown state.</notice>
 	//
 	// example:
 	//
 	// 1
 	BasicService *int32 `json:"BasicService,omitempty" xml:"BasicService,omitempty"`
-	// The cloud security configuration check module. Valid values:
+	// The Cloud Security Posture Management (CSPM) module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	Cspm *int32 `json:"Cspm,omitempty" xml:"Cspm,omitempty"`
-	// The threat detection and response module. Valid values:
+	// The Cloud Threat Detection and Response (CTDR) module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
@@ -301,9 +310,9 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	Ctdr *int32 `json:"Ctdr,omitempty" xml:"Ctdr,omitempty"`
 	// The log management module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
@@ -311,9 +320,9 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	CtdrStorage *int32 `json:"CtdrStorage,omitempty" xml:"CtdrStorage,omitempty"`
 	// The host and container security module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
@@ -321,9 +330,9 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	PostHost *int32 `json:"PostHost,omitempty" xml:"PostHost,omitempty"`
 	// The application protection module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
@@ -331,29 +340,29 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	Rasp *int32 `json:"Rasp,omitempty" xml:"Rasp,omitempty"`
 	// The malicious file detection SDK module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	Sdk *int32 `json:"Sdk,omitempty" xml:"Sdk,omitempty"`
-	// The serverless security module. Valid values:
+	// The Serverless security module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	Serverless *int32 `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// The vulnerability management module. Valid values:
+	// The vulnerability fixing module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
@@ -361,9 +370,9 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	Vul *int32 `json:"Vul,omitempty" xml:"Vul,omitempty"`
 	// The file tamper-proofing module. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//

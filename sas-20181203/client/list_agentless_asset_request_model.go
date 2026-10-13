@@ -30,7 +30,7 @@ type iListAgentlessAssetRequest interface {
 }
 
 type ListAgentlessAssetRequest struct {
-	// The page number in a paged query.
+	// The page number of the current page for paging in a paged query.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListAgentlessAssetRequest struct {
 	//
 	// s-bp1g6wxdwps7s9dz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of asset instance IDs to query.
+	// The IDs of the asset instances to query.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The name of the asset instance.
 	//
@@ -60,7 +60,7 @@ type ListAgentlessAssetRequest struct {
 	//
 	// ca_cpm_******
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum number of entries per page in a paged query.
+	// The maximum number of entries to return on each page for paging in a paged query.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type ListAgentlessAssetRequest struct {
 	//
 	// cn-beijing
 	ScanRegionId *string `json:"ScanRegionId,omitempty" xml:"ScanRegionId,omitempty"`
-	// The object type of the detection target. Valid values:
+	// The object type to scan. Valid values:
 	//
 	// - **3**: user snapshot
 	//
-	// - **4**: user-defined image
+	// - **4**: custom image
 	//
 	// example:
 	//
