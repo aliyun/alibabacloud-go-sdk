@@ -18,7 +18,7 @@ type iMigrateApplicationResponseBody interface {
 }
 
 type MigrateApplicationResponseBody struct {
-	// The status code.
+	// The API status code.
 	//
 	// example:
 	//

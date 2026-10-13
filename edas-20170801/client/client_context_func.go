@@ -2837,7 +2837,7 @@ func (client *Client) GetChangeOrderInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a specific cluster.
+// Retrieves the details of a specified cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -3239,6 +3239,61 @@ func (client *Client) GetK8sServicesWithContext(ctx context.Context, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetK8sServicesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of application import and export.
+//
+// @param request - GetMigrateApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMigrateApplicationResponse
+func (client *Client) GetMigrateApplicationWithContext(ctx context.Context, request *GetMigrateApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMigrateApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MigrationId) {
+		query["migrationId"] = request.MigrationId
+	}
+
+	if !dara.IsNil(request.MigrationType) {
+		query["migrationType"] = request.MigrationType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMigrateApplication"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v5/k8s/migrateK8sApp"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMigrateApplicationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5469,7 +5524,7 @@ func (client *Client) ListConfigTemplatesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries consumed services.
+// Queries the consumed services.
 //
 // @param request - ListConsumedServicesRequest
 //
@@ -6669,10 +6724,6 @@ func (client *Client) ListVpcWithContext(ctx context.Context, headers map[string
 //
 // Migrates an application.
 //
-// Description:
-//
-// > For application deployment in a container service Kubernetes cluster imported to Enterprise Distributed Application Service (EDAS), use the DeployK8sApplication operation provided by EDAS. For more information, see [DeployK8sApplication](https://help.aliyun.com/document_detail/149420.html).
-//
 // @param request - MigrateApplicationRequest
 //
 // @param headers - map
@@ -6801,7 +6852,7 @@ func (client *Client) MigrateEcuWithContext(ctx context.Context, request *Migrat
 
 // Summary:
 //
-// Modifies the scaling rule for an application.
+// Modifies the auto scaling rules.
 //
 // @param request - ModifyScalingRuleRequest
 //
@@ -7185,7 +7236,7 @@ func (client *Client) QueryRegionConfigWithContext(ctx context.Context, headers 
 
 // Summary:
 //
-// Queries the configuration details of Log Service for an application.
+// Queries the Simple Log Service configuration details of an application.
 //
 // @param request - QuerySlsLogStoreListRequest
 //

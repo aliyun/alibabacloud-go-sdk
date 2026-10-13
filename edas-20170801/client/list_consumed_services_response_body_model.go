@@ -20,14 +20,14 @@ type iListConsumedServicesResponseBody interface {
 }
 
 type ListConsumedServicesResponseBody struct {
-	// The status code.
+	// The code.
 	//
 	// example:
 	//
 	// 200
 	Code                 *int32                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumedServicesList *ListConsumedServicesResponseBodyConsumedServicesList `json:"ConsumedServicesList,omitempty" xml:"ConsumedServicesList,omitempty" type:"Struct"`
-	// The returned message.
+	// The message.
 	//
 	// example:
 	//

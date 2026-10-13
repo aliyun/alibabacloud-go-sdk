@@ -22,27 +22,27 @@ type iQuerySlsLogStoreListResponseBody interface {
 }
 
 type QuerySlsLogStoreListResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// d6834ee9-5045-*************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configurations of Log Service for the application.
+	// The Simple Log Service configuration results.
 	Result []*QuerySlsLogStoreListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The number of log sources configured for the application.
+	// The total number of Simple Log Service configurations.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *QuerySlsLogStoreListResponseBody) Validate() error {
 }
 
 type QuerySlsLogStoreListResponseBodyResult struct {
-	// The type of the logging service.
+	// The Simple Log Service type.
 	//
 	// example:
 	//
-	// SLS log service
+	// Simple Log Service
 	ConsumerSide *string `json:"ConsumerSide,omitempty" xml:"ConsumerSide,omitempty"`
-	// The time when the logging service was created.
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2020-05-18 22:08:46
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The URL of the logging service.
+	// The Simple Log Service link.
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	// The name of the Logstore.
+	// The Logstore name.
 	//
 	// example:
 	//
 	// thisisatestlogstore
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	// The name of the project.
+	// The project name.
 	//
 	// example:
 	//
 	// k8s-log-c846f28edbd1d4c6aa9d78c0e********
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The source of logs. Valid values:
+	// The log source. Valid values:
 	//
-	// - Standard output: stdout.log
+	// - Standard output: stdout.log.
 	//
-	// - File log: the directory that stores logs
+	// - File log: the collection path.
 	//
 	// example:
 	//

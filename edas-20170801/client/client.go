@@ -3817,7 +3817,7 @@ func (client *Client) GetChangeOrderInfo(request *GetChangeOrderInfoRequest) (_r
 
 // Summary:
 //
-// Queries a specific cluster.
+// Retrieves the details of a specified cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -3864,7 +3864,7 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, headers 
 
 // Summary:
 //
-// Queries a specific cluster.
+// Retrieves the details of a specified cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -4372,6 +4372,80 @@ func (client *Client) GetK8sServices(request *GetK8sServicesRequest) (_result *G
 	headers := make(map[string]*string)
 	_result = &GetK8sServicesResponse{}
 	_body, _err := client.GetK8sServicesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of application import and export.
+//
+// @param request - GetMigrateApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMigrateApplicationResponse
+func (client *Client) GetMigrateApplicationWithOptions(request *GetMigrateApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMigrateApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MigrationId) {
+		query["migrationId"] = request.MigrationId
+	}
+
+	if !dara.IsNil(request.MigrationType) {
+		query["migrationType"] = request.MigrationType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMigrateApplication"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v5/k8s/migrateK8sApp"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMigrateApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of application import and export.
+//
+// @param request - GetMigrateApplicationRequest
+//
+// @return GetMigrateApplicationResponse
+func (client *Client) GetMigrateApplication(request *GetMigrateApplicationRequest) (_result *GetMigrateApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMigrateApplicationResponse{}
+	_body, _err := client.GetMigrateApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7181,7 +7255,7 @@ func (client *Client) ListConfigTemplates(request *ListConfigTemplatesRequest) (
 
 // Summary:
 //
-// Queries consumed services.
+// Queries the consumed services.
 //
 // @param request - ListConsumedServicesRequest
 //
@@ -7228,7 +7302,7 @@ func (client *Client) ListConsumedServicesWithOptions(request *ListConsumedServi
 
 // Summary:
 //
-// Queries consumed services.
+// Queries the consumed services.
 //
 // @param request - ListConsumedServicesRequest
 //
@@ -8847,10 +8921,6 @@ func (client *Client) ListVpc() (_result *ListVpcResponse, _err error) {
 //
 // Migrates an application.
 //
-// Description:
-//
-// > For application deployment in a container service Kubernetes cluster imported to Enterprise Distributed Application Service (EDAS), use the DeployK8sApplication operation provided by EDAS. For more information, see [DeployK8sApplication](https://help.aliyun.com/document_detail/149420.html).
-//
 // @param request - MigrateApplicationRequest
 //
 // @param headers - map
@@ -8913,10 +8983,6 @@ func (client *Client) MigrateApplicationWithOptions(request *MigrateApplicationR
 // Summary:
 //
 // Migrates an application.
-//
-// Description:
-//
-// > For application deployment in a container service Kubernetes cluster imported to Enterprise Distributed Application Service (EDAS), use the DeployK8sApplication operation provided by EDAS. For more information, see [DeployK8sApplication](https://help.aliyun.com/document_detail/149420.html).
 //
 // @param request - MigrateApplicationRequest
 //
@@ -9037,7 +9103,7 @@ func (client *Client) MigrateEcu(request *MigrateEcuRequest) (_result *MigrateEc
 
 // Summary:
 //
-// Modifies the scaling rule for an application.
+// Modifies the auto scaling rules.
 //
 // @param request - ModifyScalingRuleRequest
 //
@@ -9200,7 +9266,7 @@ func (client *Client) ModifyScalingRuleWithOptions(request *ModifyScalingRuleReq
 
 // Summary:
 //
-// Modifies the scaling rule for an application.
+// Modifies the auto scaling rules.
 //
 // @param request - ModifyScalingRuleRequest
 //
@@ -9533,7 +9599,7 @@ func (client *Client) QueryRegionConfig() (_result *QueryRegionConfigResponse, _
 
 // Summary:
 //
-// Queries the configuration details of Log Service for an application.
+// Queries the Simple Log Service configuration details of an application.
 //
 // @param request - QuerySlsLogStoreListRequest
 //
@@ -9592,7 +9658,7 @@ func (client *Client) QuerySlsLogStoreListWithOptions(request *QuerySlsLogStoreL
 
 // Summary:
 //
-// Queries the configuration details of Log Service for an application.
+// Queries the Simple Log Service configuration details of an application.
 //
 // @param request - QuerySlsLogStoreListRequest
 //

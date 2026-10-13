@@ -72,13 +72,13 @@ type iModifyScalingRuleRequest interface {
 }
 
 type ModifyScalingRuleRequest struct {
-	// Set the value to true if scale-outs are allowed.
+	// Must be set to true if auto scaling is used.
 	//
 	// example:
 	//
 	// true
 	AcceptEULA *bool `json:"AcceptEULA,omitempty" xml:"AcceptEULA,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ModifyScalingRuleRequest struct {
 	//
 	// 74ee****-db65-4322-a1f6-bcb60e5b****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the instance group to which the application is deployed.
+	// The deployment group ID.
 	//
 	// This parameter is required.
 	//
@@ -94,189 +94,189 @@ type ModifyScalingRuleRequest struct {
 	//
 	// 8123db90-880f-486f-****-************
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The relationship among the conditions that trigger a scale-in.
+	// The trigger condition. Valid values:
 	//
-	// - OR: one of the conditions
+	// - OR: Any condition.
 	//
-	// - AND: all conditions
+	// - AND: All conditions.
 	//
 	// example:
 	//
 	// "OR"
 	InCondition *string `json:"InCondition,omitempty" xml:"InCondition,omitempty"`
-	// The CPU utilization that triggers a scale-in.
+	// The trigger metric: CPU utilization.
 	//
 	// example:
 	//
 	// 50
 	InCpu *int32 `json:"InCpu,omitempty" xml:"InCpu,omitempty"`
-	// The duration in which the metric threshold is exceeded. Unit: minutes.
+	// The duration, in minutes.
 	//
 	// example:
 	//
 	// 50
 	InDuration *int32 `json:"InDuration,omitempty" xml:"InDuration,omitempty"`
-	// Specifies whether to allow scale-ins.
+	// Specifies whether to include the scale-in rule. Valid values:
 	//
-	// - true: allows scale-ins.
+	// - true: Included.
 	//
-	// - false: does not allow scale-ins.
+	// - false: Not included.
 	//
 	// example:
 	//
 	// true
 	InEnable *bool `json:"InEnable,omitempty" xml:"InEnable,omitempty"`
-	// The minimum number of instances that must be retained in each group when a scale-in is performed.
+	// The minimum number of instances to retain when the group scales in.
 	//
 	// example:
 	//
 	// 3
 	InInstanceNum *int32 `json:"InInstanceNum,omitempty" xml:"InInstanceNum,omitempty"`
-	// The system load that triggers a scale-in.
+	// The trigger metric: system load.
 	//
 	// example:
 	//
 	// 50
 	InLoad *int32 `json:"InLoad,omitempty" xml:"InLoad,omitempty"`
-	// The minimum service latency that triggers a scale-in. The lower limit is 0. Unit: milliseconds.
+	// The trigger metric: service latency. Unit: milliseconds. Minimum value: 0.
 	//
 	// example:
 	//
 	// 50
 	InRT *int32 `json:"InRT,omitempty" xml:"InRT,omitempty"`
-	// The number of instances that are removed during each scale-in.
+	// The number of instances to scale in at a time.
 	//
 	// example:
 	//
 	// 1
 	InStep *int32 `json:"InStep,omitempty" xml:"InStep,omitempty"`
-	// The key pair that is used to log on to the instance. This parameter takes effect only if you choose to create instances based on the specifications of an existing instance during a scale-out.
+	// The name of the logon key pair for the instance. This parameter is valid only when the existing instance rule is used for auto scaling.
 	//
 	// example:
 	//
 	// "tdy218"
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The multi-zone scaling policy. Valid values:
+	// The multi-zone scaling policy for auto scaling. Valid values:
 	//
-	// - PRIORITY: The vSwitch that is first selected has the highest priority.
+	// - PRIORITY: Priority policy.
 	//
-	// - BALANCE: This policy evenly distributes instances across zones in which the vSwitches reside.
+	// - BALANCE: Balanced distribution policy.
 	//
 	// example:
 	//
 	// "PRIORITY"
 	MultiAzPolicy *string `json:"MultiAzPolicy,omitempty" xml:"MultiAzPolicy,omitempty"`
-	// The CPU utilization that triggers a scale-out.
+	// The trigger metric: CPU utilization.
 	//
 	// example:
 	//
 	// 50
 	OutCPU *int32 `json:"OutCPU,omitempty" xml:"OutCPU,omitempty"`
-	// The relationship among the conditions that trigger a scale-out.
+	// The trigger condition. Valid values:
 	//
-	// - OR: one of the conditions
+	// - OR: Any condition.
 	//
-	// - AND: all conditions
+	// - AND: All conditions.
 	//
 	// example:
 	//
 	// "OR"
 	OutCondition *string `json:"OutCondition,omitempty" xml:"OutCondition,omitempty"`
-	// The duration in which the metric threshold is exceeded. Unit: minutes.
+	// The duration, in minutes.
 	//
 	// example:
 	//
 	// 50
 	OutDuration *int32 `json:"OutDuration,omitempty" xml:"OutDuration,omitempty"`
-	// Specifies whether to allow scale-outs.
+	// Specifies whether to include the scale-out rule.
 	//
 	// example:
 	//
 	// true
 	OutEnable *bool `json:"OutEnable,omitempty" xml:"OutEnable,omitempty"`
-	// The maximum number of instances in each group when a scale-out is performed.
+	// The maximum number of instances when the group scales out.
 	//
 	// example:
 	//
 	// 10
 	OutInstanceNum *int32 `json:"OutInstanceNum,omitempty" xml:"OutInstanceNum,omitempty"`
-	// The system load that triggers a scale-out.
+	// The trigger metric: system load.
 	//
 	// example:
 	//
 	// 50
 	OutLoad *int32 `json:"OutLoad,omitempty" xml:"OutLoad,omitempty"`
-	// The minimum service latency that triggers a scale-out. The lower limit is 0. Unit: milliseconds.
+	// The trigger metric: service latency. Unit: milliseconds. Minimum value: 0.
 	//
 	// example:
 	//
 	// 0
 	OutRT *int32 `json:"OutRT,omitempty" xml:"OutRT,omitempty"`
-	// The number of instances that are added during each scale-out.
+	// The number of instances to scale out at a time.
 	//
 	// example:
 	//
 	// 0
 	OutStep *int32 `json:"OutStep,omitempty" xml:"OutStep,omitempty"`
-	// The password that is used to log on to the instance. This parameter takes effect only if you choose to create instances based on the specifications of an existing instance during a scale-out.
+	// The logon password of the instance. This parameter is valid only when the existing instance rule is used for auto scaling.
 	//
 	// example:
 	//
 	// "Pwd*****"
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The source of the instance to be added during a scale-out. Valid values:
+	// The source of instances for scale-out. Valid values:
 	//
-	// - NEW: elastic resources
+	// - NEW: Elastic resources.
 	//
-	// - AVAILABLE: existing resources If you prefer existing resources to elastic resources, set this parameter to AVAILABLE_FIRST.
+	// - AVAILABLE: Existing resources. To prioritize existing resources, use AVAILABLE_FIRST.
 	//
-	// If you set this parameter to NEW or AVAILABLE_FIRST, you must specify the auto-scaling parameters. If you set this parameter to NEW, instances are created based on a launch template or the specifications of an existing instance.
+	// If you set this parameter to NEW or AVAILABLE_FIRST, you must specify auto scaling parameters. Auto scaling includes two modes: launch template and existing instance rule.
 	//
 	// example:
 	//
 	// "AVAILABLE"
 	ResourceFrom *string `json:"ResourceFrom,omitempty" xml:"ResourceFrom,omitempty"`
-	// The instance handling mode during a scale-in. Valid values:
+	// The reclamation mode for scale-in. Valid values:
 	//
-	// - release: When a scale-in is performed, instances that are no longer used are released.
+	// - release: Release mode.
 	//
-	// - recycle: When a scale-in is performed, instances that are no longer used are stopped and reclaimed.
+	// - recycle: Stop and reclaim mode.
 	//
 	// example:
 	//
 	// "release"
 	ScalingPolicy *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
-	// The ID of the launch template that is used to create instances during a scale-out. This parameter takes effect only if you set the OutEnable parameter to true. This parameter takes precedence over the TemplateInstanceId parameter.
+	// The launch template ID for auto scaling. This parameter is valid only when OutEnable is set to true, and it has a higher priority than TemplateInstanceId.
 	//
 	// example:
 	//
 	// "lt-wz9hkhn8wp*****"
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The ID of the instance whose specifications are used to create instances during a scale-out. This parameter is valid only when you set the OutEnable parameter to true.
+	// The instance ID for the existing instance rule of auto scaling. This parameter is valid only when OutEnable is set to true.
 	//
 	// example:
 	//
 	// "1"
 	TemplateInstanceId *string `json:"TemplateInstanceId,omitempty" xml:"TemplateInstanceId,omitempty"`
-	// The name of the instance whose specifications are used to create instances during a scale-out. This parameter takes effect only if you specify the TemplateInstanceId parameter.
+	// The instance name for the existing instance rule of auto scaling. This parameter is valid only when TemplateInstanceId is specified.
 	//
 	// example:
 	//
 	// "tpl-tdy218"
 	TemplateInstanceName *string `json:"TemplateInstanceName,omitempty" xml:"TemplateInstanceName,omitempty"`
-	// The version of the launch template that is used to create instances during a scale-out. This parameter takes effect only if you set the OutEnable parameter to true. To use the default template version, set this parameter to `-1`. Otherwise, set this parameter to the version that you want to use.
+	// The launch template version for auto scaling. This parameter is valid only when OutEnable is set to true. Set this parameter to `-1` to use the default template version, or set it to a specific version number.
 	//
 	// example:
 	//
 	// -1
 	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The IDs of the vSwitches that are associated with the VPC. Separate multiple IDs with commas (,).
+	// The list of vSwitch IDs in the VPC. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// "vsw-bp1ldxs3d4fd*****"
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the virtual private cloud (VPC) that is associated with the instances created based on a launch template or the specifications of an existing instance.
+	// The VPC ID associated with the launch template or existing instance rule for auto scaling.
 	//
 	// example:
 	//

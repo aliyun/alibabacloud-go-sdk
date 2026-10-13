@@ -18,6 +18,9 @@ type iDeleteApplicationScalingRuleResponseBody interface {
 }
 
 type DeleteApplicationScalingRuleResponseBody struct {
+	// example:
+	//
+	// 0
 	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the request.

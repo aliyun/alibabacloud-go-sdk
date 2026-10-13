@@ -20,20 +20,20 @@ type iListPublishedServicesResponseBody interface {
 }
 
 type ListPublishedServicesResponseBody struct {
-	// The response code.
+	// The code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message               *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	PublishedServicesList *ListPublishedServicesResponseBodyPublishedServicesList `json:"PublishedServicesList,omitempty" xml:"PublishedServicesList,omitempty" type:"Struct"`
-	// The unique ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

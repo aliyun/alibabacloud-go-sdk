@@ -20,21 +20,21 @@ type iGetClusterResponseBody interface {
 }
 
 type GetClusterResponseBody struct {
-	// The information about the cluster.
+	// The cluster information.
 	Cluster *GetClusterResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information that is returned.
+	// The detailed message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,47 +96,47 @@ func (s *GetClusterResponseBody) Validate() error {
 }
 
 type GetClusterResponseBodyCluster struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 5439271a-015b-433d-befb-d76d****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The import status of the cluster. Valid values:
+	// The cluster import status. Valid values:
 	//
-	// - 1: The cluster is imported.
+	// - 1: Imported.
 	//
-	// - 2: The cluster fails to be imported.
+	// - 2: Import failed.
 	//
-	// - 3: The cluster is being imported.
+	// - 3: Importing.
 	//
-	// - 4: The cluster is deleted.
+	// - 4: Cluster deleted.
 	//
-	// - 0: The cluster is not imported.
+	// - 0: Not imported.
 	//
 	// example:
 	//
 	// 0
 	ClusterImportStatus *int32 `json:"ClusterImportStatus,omitempty" xml:"ClusterImportStatus,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// ClusterTest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// - 0: regular Docker cluster
+	// - 0: Common Docker cluster.
 	//
-	// - 1: Swarm cluster
+	// - 1: Swarm cluster.
 	//
-	// - 2: Elastic Compute Service (ECS) cluster
+	// - 2: ECS cluster.
 	//
-	// - 3: self-managed Kubernetes cluster in EDAS
+	// - 3: EDAS self-managed Kubernetes cluster.
 	//
-	// - 4: cluster in which Pandora automatically registers applications
+	// - 4: Pandora auto-registered application cluster.
 	//
-	// - 5: ACK cluster
+	// - 5: Container Service Kubernetes cluster.
 	//
 	// example:
 	//
@@ -154,47 +154,47 @@ type GetClusterResponseBodyCluster struct {
 	//
 	// 2
 	CpuUsed *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	// The time when the cluster was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp when the cluster was created.
 	//
 	// example:
 	//
 	// 1570708232145
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the Container Service for Kubernetes (ACK) cluster.
+	// The Container Service cluster ID.
 	//
 	// example:
 	//
 	// c2ce62869f4d4466b920312315f05****
 	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	// The description of the cluster.
+	// The description.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The provider of Infrastructure as a Service (IaaS) resources used in the cluster.
+	// The IaaS resource provider.
 	//
 	// example:
 	//
 	// ALIYUN
 	IaasProvider *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
-	// The total size of memory. Unit: MB.
+	// The total memory. Unit: MB.
 	//
 	// example:
 	//
 	// 2048
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The size of used memory. Unit: MB.
+	// The amount of used memory. Unit: MB.
 	//
 	// example:
 	//
 	// 1024
 	MemUsed *int32 `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
-	// The network type of the cluster. Valid values:
+	// The network type. Valid values:
 	//
-	// - 1: classic network
+	// - 1: Classic network.
 	//
-	// - 2: virtual private cloud (VPC)
+	// - 2: VPC.
 	//
 	// example:
 	//
@@ -206,39 +206,39 @@ type GetClusterResponseBodyCluster struct {
 	//
 	// 4
 	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	// The overcommit ratio supported by a Docker cluster. Valid values:
+	// The CPU overselling ratio for Docker clusters. Valid values:
 	//
-	// - 1: 1:1, which means that resources are not overcommitted.
+	// - 1: 1:1 ratio. No overselling.
 	//
-	// - 2: 1:2, which means that resources are overcommitted by 1:2.
+	// - 2: 1:2 overselling ratio.
 	//
-	// - 4: 1:4, which means that resources are overcommitted by 1:4.
+	// - 4: 1:4 overselling ratio.
 	//
-	// - 8: 1:8, which means that resources are overcommitted by 1:8.
+	// - 8: 1:8 overselling ratio.
 	//
 	// example:
 	//
 	// 2
 	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	// The ID of the region where the cluster resides.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The subtype of the Kubernetes cluster. Valid values: ManagedKubernetes, Ask, and ExternalKubernetes. ManagedKubernetes refers to the ACK cluster. Ask refers to the Serverless Kubernetes (ASK) cluster. ExternalKubernetes refers to the external cluster.
+	// The subtype of the Kubernetes cluster. ManagedKubernetes indicates an ACK cluster, Ask indicates an ASK cluster, and ExternalKubernetes indicates an external cluster.
 	//
 	// example:
 	//
 	// ManagedKubernetes
 	SubClusterType *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
-	// The time when the cluster was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp when the cluster was last modified.
 	//
 	// example:
 	//
 	// 1570708232145
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//

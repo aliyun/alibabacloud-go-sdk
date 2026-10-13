@@ -9,8 +9,8 @@ type iMigrateApplicationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAppIds(v []*string) *MigrateApplicationRequest
-	GetAppIds() []*string
+	SetAppIds(v string) *MigrateApplicationRequest
+	GetAppIds() *string
 	SetCmd(v string) *MigrateApplicationRequest
 	GetCmd() *string
 	SetConfig(v string) *MigrateApplicationRequest
@@ -22,13 +22,19 @@ type iMigrateApplicationRequest interface {
 }
 
 type MigrateApplicationRequest struct {
-	// The list of application IDs.
-	AppIds []*string `json:"appIds,omitempty" xml:"appIds,omitempty" type:"Repeated"`
+	// appIds
+	//
+	// example:
+	//
+	// "b72c0ed4-a69f-4872-b4c6-def5555bfd3e,a72c0ed4-a69f-4872-b4c6-def5555bfd3e"
+	AppIds *string `json:"appIds,omitempty" xml:"appIds,omitempty"`
 	// The operation command. Valid values:
 	//
-	// - export: Export.
+	// - export: export
 	//
-	// - import: Import.
+	// - import: import
+	//
+	// - clone: clone
 	//
 	// example:
 	//
@@ -40,7 +46,7 @@ type MigrateApplicationRequest struct {
 	//
 	// {withBinary:true}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The raw data for the application to be imported, which is sourced from the JSON file of the exported application.
+	// The row data of the imported application, which is sourced from the JSON file of the exported application.
 	//
 	// example:
 	//
@@ -62,7 +68,7 @@ func (s MigrateApplicationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MigrateApplicationRequest) GetAppIds() []*string {
+func (s *MigrateApplicationRequest) GetAppIds() *string {
 	return s.AppIds
 }
 
@@ -82,8 +88,8 @@ func (s *MigrateApplicationRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *MigrateApplicationRequest) SetAppIds(v []*string) *MigrateApplicationRequest {
-	s.AppIds = v
+func (s *MigrateApplicationRequest) SetAppIds(v string) *MigrateApplicationRequest {
+	s.AppIds = &v
 	return s
 }
 

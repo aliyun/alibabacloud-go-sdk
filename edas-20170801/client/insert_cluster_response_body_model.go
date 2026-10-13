@@ -20,21 +20,21 @@ type iInsertClusterResponseBody interface {
 }
 
 type InsertClusterResponseBody struct {
-	// The information about the cluster that was created.
+	// The created cluster entity.
 	Cluster *InsertClusterResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *InsertClusterResponseBody) Validate() error {
 }
 
 type InsertClusterResponseBodyCluster struct {
-	// The ID of cluster.
+	// The ID of the cluster.
 	//
 	// example:
 	//
@@ -110,45 +110,45 @@ type InsertClusterResponseBodyCluster struct {
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The type of the cluster. Valid values:
 	//
-	// 	- 2: ECS cluster
+	// - 2: ECS cluster.
 	//
-	// 	- 3: self-managed Kubernetes cluster in EDAS
+	// - 3: EDAS built-in Kubernetes cluster.
 	//
-	// 	- 5: Kubernetes cluster
+	// - 5: Kubernetes cluster.
 	//
 	// example:
 	//
 	// 2
 	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The provider of the IaaS resources that are used in the cluster.
+	// The provider.
 	//
 	// example:
 	//
 	// ALIYUN
 	IaasProvider *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
-	// The network type of the cluster. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- 1: classic network
+	// - 1: Classic network.
 	//
-	// 	- 2\\. VPC
+	// - 2: VPC.
 	//
 	// example:
 	//
 	// 2
 	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	// **This parameter is deprecated.*	- The CPU overcommit ratio supported by the Docker cluster. Valid values:
+	// **[Deprecated]*	- The CPU overselling ratio for Docker clusters. Valid values:
 	//
-	// 	- 2: 1:2, which means that resources are overcommitted by 1:2.
+	// - 2: 1:2 ratio.
 	//
-	// 	- 4: 1:4, which means that resources are overcommitted by 1:4.
+	// - 4: 1:4 ratio.
 	//
-	// 	- 8: 1:8, which means that resources are overcommitted by 1:8.
+	// - 8: 1:8 ratio.
 	//
 	// example:
 	//
 	// 1
 	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	// The ID of the region in which the cluster resides.
+	// The region ID of the cluster.
 	//
 	// example:
 	//

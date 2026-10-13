@@ -20,7 +20,7 @@ type iQuerySlsLogStoreListRequest interface {
 }
 
 type QuerySlsLogStoreListRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,23 +28,23 @@ type QuerySlsLogStoreListRequest struct {
 	//
 	// af58edcf-f7eb-****-****-db4e425f****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of the page to return. Pages start from Page 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 1000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of data that is collected by Log Service. Valid values:
+	// The Simple Log Service collection type. Valid values:
 	//
-	// - file: the file type
+	// - file: File.
 	//
-	// - stdout: the standard output type
+	// - stdout: Standard output.
 	//
 	// This parameter is required.
 	//
