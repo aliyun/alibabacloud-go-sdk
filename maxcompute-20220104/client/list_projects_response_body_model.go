@@ -162,9 +162,9 @@ type ListProjectsResponseBodyDataProjects struct {
 	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The default compute quota.
 	//
-	// This is used to allocate compute resources. If no compute quota is specified, jobs initiated in the project consume resources from the default quota. For more information about how to use compute resources, see <props="china">[Use of computing resources](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources)
+	// This is used to allocate compute resources. If no compute quota is specified, jobs initiated in the project consume resources from the default quota. For more information about how to use compute resources, see <props="china">[Use of computing resources](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources)
 	//
-	// <props="intl">[Use of computing resources](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources).
+	// <props="intl">[Use of computing resources](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type ListProjectsResponseBodyDataProjects struct {
 	DefaultQuota *string `json:"defaultQuota,omitempty" xml:"defaultQuota,omitempty"`
 	// The IP address whitelist.
 	IpWhiteList *ListProjectsResponseBodyDataProjectsIpWhiteList `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Struct"`
-	// The project name.
+	// The project names.
 	//
 	// example:
 	//
@@ -212,9 +212,9 @@ type ListProjectsResponseBodyDataProjects struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// Specifies whether to support schema-based storage.
 	//
-	// MaxCompute supports schemas, which are located under projects and used to classify objects such as tables, resources, and UDFs. A project can contain multiple schemas. For more information, see <props="china">[Schema-related operations](https://www.alibabacloud.com/help/en/maxcompute/user-guide/schema-related-operations)
+	// MaxCompute supports schemas, which are located under projects and used to classify objects such as tables, resources, and UDFs. A project can contain multiple schemas. For more information, see <props="china">[Schema-related operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations)
 	//
-	// <props="intl">[Schema-related operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations).
+	// <props="intl">[Schema-related operations](https://www.alibabacloud.com/help/en/maxcompute/user-guide/schema-related-operations).
 	//
 	// example:
 	//
@@ -486,9 +486,9 @@ type ListProjectsResponseBodyDataProjectsProperties struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The EPS resource group of the <props="china">[data transfer service](https://www.alibabacloud.com/help/en/maxcompute/user-guide/overview-of-dts)
+	// The EPS resource group of the <props="china">[data transfer service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts)
 	//
-	// <props="intl">[data transfer service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) bound to the project.
+	// <props="intl">[data transfer service](https://www.alibabacloud.com/help/en/maxcompute/user-guide/overview-of-dts) bound to the project.
 	//
 	// - Default (shared EPS resource group for the data transfer service): The project is not allowed to use the subscription EPS resource group for the data transfer service. Regardless of the default EPS resource group setting, data transfer tasks submitted by default in this project automatically use the Default EPS resource group.
 	//
@@ -506,9 +506,9 @@ type ListProjectsResponseBodyDataProjectsProperties struct {
 	//
 	// - **hive**: Hive-compatible data type edition
 	//
-	// For more information about the differences among the three data type editions, see <props="china">[Data type editions](https://www.alibabacloud.com/help/en/maxcompute/user-guide/data-type-editions)
+	// For more information about the differences among the three data type editions, see <props="china">[Data type editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions)
 	//
-	// <props="intl">[Data type editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
+	// <props="intl">[Data type editions](https://www.alibabacloud.com/help/en/maxcompute/user-guide/data-type-editions).
 	//
 	// example:
 	//
@@ -651,9 +651,9 @@ type ListProjectsResponseBodyDataProjectsPropertiesEncryption struct {
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
 	// Specifies whether to enable data encryption for the project. For more information about data encryption, see
 	//
-	// <props="china">[Storage encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+	// <props="china">[Storage encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption)
 	//
-	// <props="intl">[Storage encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption).
+	// <props="intl">[Storage encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption).
 	//
 	// example:
 	//
@@ -707,9 +707,9 @@ func (s *ListProjectsResponseBodyDataProjectsPropertiesEncryption) Validate() er
 }
 
 type ListProjectsResponseBodyDataProjectsPropertiesExternalProjectProperties struct {
-	// Specifies whether the project is an external project of <props="china">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/en/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide)
+	// Specifies whether the project is an external project of <props="china">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide)
 	//
-	// <props="intl">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
+	// <props="intl">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/en/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
 	//
 	// example:
 	//
@@ -835,17 +835,17 @@ func (s *ListProjectsResponseBodyDataProjectsSaleTag) Validate() error {
 }
 
 type ListProjectsResponseBodyDataProjectsSecurityProperties struct {
-	// Specifies whether to use the <props="china">[download control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control)
+	// Specifies whether to use the <props="china">[download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/download-control)
 	//
-	// <props="intl">[download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
+	// <props="intl">[download control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
 	//
 	// example:
 	//
 	// false
 	EnableDownloadPrivilege *bool `json:"enableDownloadPrivilege,omitempty" xml:"enableDownloadPrivilege,omitempty"`
-	// Specifies whether to use the <props="china">[label-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control)
+	// Specifies whether to use the <props="china">[label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control)
 	//
-	// <props="intl">[label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
+	// <props="intl">[label-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
 	//
 	// example:
 	//
@@ -863,21 +863,21 @@ type ListProjectsResponseBodyDataProjectsSecurityProperties struct {
 	//
 	// true
 	ObjectCreatorHasGrantPermission *bool `json:"objectCreatorHasGrantPermission,omitempty" xml:"objectCreatorHasGrantPermission,omitempty"`
-	// The <props="china">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
+	// The <props="china">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection)
 	//
-	// <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) properties.
+	// <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection) properties.
 	ProjectProtection *ListProjectsResponseBodyDataProjectsSecurityPropertiesProjectProtection `json:"projectProtection,omitempty" xml:"projectProtection,omitempty" type:"Struct"`
-	// Specifies whether to use the <props="china">[ACL-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/acl-based-access-control)
+	// Specifies whether to use the <props="china">[ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control)
 	//
-	// <props="intl">[ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control) feature. By default, this feature is enabled.
+	// <props="intl">[ACL-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/acl-based-access-control) feature. By default, this feature is enabled.
 	//
 	// example:
 	//
 	// true
 	UsingAcl *bool `json:"usingAcl,omitempty" xml:"usingAcl,omitempty"`
-	// Specifies whether to use the <props="china">[policy-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)
+	// Specifies whether to use the <props="china">[policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1)
 	//
-	// <props="intl">[policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1) feature. By default, this feature is enabled.
+	// <props="intl">[policy-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1) feature. By default, this feature is enabled.
 	//
 	// example:
 	//
@@ -1010,9 +1010,9 @@ type ListProjectsResponseBodyDataProjectsSecurityPropertiesProjectProtection str
 	//
 	// }
 	ExceptionPolicy *string `json:"exceptionPolicy,omitempty" xml:"exceptionPolicy,omitempty"`
-	// Specifies whether to enable the <props="china">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
+	// Specifies whether to enable the <props="china">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection)
 	//
-	// <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) for the project to prohibit or allow data stream out of the project. The default enabling status is disabled.
+	// <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection) for the project to prohibit or allow data stream out of the project. The default enabling status is disabled.
 	//
 	// example:
 	//

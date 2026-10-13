@@ -76,7 +76,7 @@ type ListStoragePartitionsInfoShrinkRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The schema to which the table belongs.
+	// The name of the schema.
 	//
 	// example:
 	//
