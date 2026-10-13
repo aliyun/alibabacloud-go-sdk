@@ -9,6 +9,63 @@ import (
 
 // Summary:
 //
+// Writes messages or text to a memory store. By default, sync is set to true, which synchronously waits for extraction and returns only memories (an empty array is allowed). If sync is set to false, the operation returns only a taskId that can be queried by using GetMemoryTask.
+//
+// Description:
+//
+// Writes messages or text to a memory store. By default, sync is set to true, which synchronously waits for extraction and returns only memories (an empty array is allowed). If sync is set to false, the operation returns only a taskId that can be queried by using GetMemoryTask.
+//
+// @param tmpReq - AddMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMemoriesResponse
+func (client *Client) AddMemoriesWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, tmpReq *AddMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddMemoriesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddMemories"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memories"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddMemoriesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes models in a specified workspace in batches. If any model is in use, the entire batch request fails.
 //
 // @param tmpReq - BatchDeleteModelsRequest
@@ -772,6 +829,69 @@ func (client *Client) CreateMcpWithContext(ctx context.Context, workspaceId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMcpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a long-term memory store in a specified workspace.
+//
+// Description:
+//
+// Creates a long-term memory store in a specified workspace.
+//
+// @param tmpReq - CreateMemoryStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemoryStoreResponse
+func (client *Client) CreateMemoryStoreWithContext(ctx context.Context, workspaceId *string, tmpReq *CreateMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateMemoryStoreShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMemoryStore"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMemoryStoreResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1608,6 +1728,96 @@ func (client *Client) DeleteMcpWithContext(ctx context.Context, mcpServerId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMcpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a long-term memory based on the memory ID.
+//
+// Description:
+//
+// Deletes a long-term memory based on the memory ID.
+//
+// @param request - DeleteMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryResponse
+func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, memoryId *string, request *DeleteMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemory"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memories/" + dara.PercentEncode(dara.StringValue(memoryId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Asynchronously deletes a MemoryStore and all its long-term memory.
+//
+// Description:
+//
+// Asynchronously deletes a MemoryStore and all its long-term memory.
+//
+// @param request - DeleteMemoryStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryStoreResponse
+func (client *Client) DeleteMemoryStoreWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, request *DeleteMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemoryStore"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemoryStoreResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2490,15 +2700,15 @@ func (client *Client) GetCredentialWithContext(ctx context.Context, workspaceId 
 
 // Summary:
 //
-// 查询自定义智能体
+// Queries the details of a custom agent in a specified workspace, including deployment configurations, the execute status of the latest configuration version, and running instance status statistics.
 //
 // Description:
 //
-// 创建或更新后，可轮询本接口查询最新配置版本的执行结果。latestVersionStatus 与 latestSpecVersion 对应；latestExecutionError 表示该版本的等待或失败原因，retryable 为 true 时可稍后再次查询。
+// After creating or updating a custom agent, you can poll this operation to query the execution results of the latest configuration version. `latestVersionStatus` corresponds to `latestSpecVersion`. `latestExecutionError` indicates the reason for the pending or failed status of this version. If `retryable` is true, you can query again later.
 //
-// 返回的配置为最新提交的配置，可能尚未生效。请结合 latestVersionStatus、智能体整体状态 status 和运行实例统计 sandboxPhaseCounts 确认部署及运行情况。
+// The returned configuration is the most recently submitted configuration and may not have taken effect. Verify the deployment and running status by checking `latestVersionStatus`, the overall agent status `status`, and the running instance statistics `sandboxPhaseCounts`.
 //
-// 查询不存在、已完成删除或不属于指定工作空间的自定义智能体时，返回资源不存在错误。
+// If the queried custom agent does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
 //
 // @param request - GetCustomAgentRequest
 //
@@ -2793,6 +3003,141 @@ func (client *Client) GetMcpMarketItemWithContext(ctx context.Context, workspace
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMcpMarketItemResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a long-term memory by memory ID.
+//
+// Description:
+//
+// Queries a long-term memory by memory ID.
+//
+// @param request - GetMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryResponse
+func (client *Client) GetMemoryWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, memoryId *string, request *GetMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemory"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memories/" + dara.PercentEncode(dara.StringValue(memoryId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the public information and current status of a MemoryStore in a specified workspace.
+//
+// Description:
+//
+// Queries the public information and current status of a MemoryStore in a specified workspace.
+//
+// @param request - GetMemoryStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryStoreResponse
+func (client *Client) GetMemoryStoreWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, request *GetMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryStore"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryStoreResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the task ID returned by the asynchronous AddMemories operation.
+//
+// Description:
+//
+// Queries the task ID returned by the asynchronous AddMemories operation.
+//
+// @param request - GetMemoryTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryTaskResponse
+func (client *Client) GetMemoryTaskWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, taskId *string, request *GetMemoryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryTask"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory-tasks/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4345,6 +4690,258 @@ func (client *Client) ListMcpsWithContext(ctx context.Context, workspaceId *stri
 
 // Summary:
 //
+// Performs a paged query on long-term memory. Paging is supported, and you can filter the results independently by user ID, agent ID, and session ID.
+//
+// Description:
+//
+// Performs a paged query on long-term memory. Paging is supported, and you can filter the results independently by user ID, agent ID, and session ID.
+//
+// @param request - ListMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemoriesResponse
+func (client *Client) ListMemoriesWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, request *ListMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["userId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMemories"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memories"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMemoriesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query for raw messages by exact scope with paging. SessionId is required, and at least one of UserId and AgentId must be provided.
+//
+// Description:
+//
+// Performs a paged query for raw messages by exact scope with paging. SessionId is required, and at least one of UserId and AgentId must be provided.
+//
+// @param request - ListMemorySessionMessagesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemorySessionMessagesResponse
+func (client *Client) ListMemorySessionMessagesWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, request *ListMemorySessionMessagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemorySessionMessagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["userId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMemorySessionMessages"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/messages"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMemorySessionMessagesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query for sessions in a MemoryStore, and allows independent filtering by user ID and agent ID.
+//
+// Description:
+//
+// Performs a paging query for sessions in a MemoryStore, and allows independent filtering by user ID and agent ID.
+//
+// @param request - ListMemorySessionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemorySessionsResponse
+func (client *Client) ListMemorySessionsWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, request *ListMemorySessionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemorySessionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["userId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMemorySessions"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/sessions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMemorySessionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries MemoryStores in a specified workspace by using paging.
+//
+// Description:
+//
+// Queries MemoryStores in a specified workspace by using paging.
+//
+// @param request - ListMemoryStoresRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemoryStoresResponse
+func (client *Client) ListMemoryStoresWithContext(ctx context.Context, workspaceId *string, request *ListMemoryStoresRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoryStoresResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMemoryStores"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMemoryStoresResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries model connections in a specified workspace with paging. Supports filtering by name, provider type, and invoke protocol.
 //
 // Description:
@@ -5427,6 +6024,63 @@ func (client *Client) ResetUserPasswordWithContext(ctx context.Context, workspac
 
 // Summary:
 //
+// Retrieves long-term memory from a MemoryStore based on semantics queries.
+//
+// Description:
+//
+// Retrieves long-term memory from a MemoryStore based on semantics queries.
+//
+// @param tmpReq - SearchMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchMemoriesResponse
+func (client *Client) SearchMemoriesWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, tmpReq *SearchMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SearchMemoriesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchMemories"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memories/search"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchMemoriesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a specified AgentSpec draft version for review. If no release pipeline is configured, the version is published directly to online status.
 //
 // Description:
@@ -6218,6 +6872,126 @@ func (client *Client) UpdateMcpTemplateConfigWithContext(ctx context.Context, wo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMcpTemplateConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the long-term memory text or metadata based on the memory ID.
+//
+// Description:
+//
+// Updates the long-term memory text or metadata based on the memory ID.
+//
+// @param tmpReq - UpdateMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryResponse
+func (client *Client) UpdateMemoryWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, memoryId *string, tmpReq *UpdateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMemoryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemory"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memories/" + dara.PercentEncode(dara.StringValue(memoryId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a memory store.
+//
+// Description:
+//
+// Updates a memory store.
+//
+// @param tmpReq - UpdateMemoryStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryStoreResponse
+func (client *Client) UpdateMemoryStoreWithContext(ctx context.Context, workspaceId *string, memoryStoreName *string, tmpReq *UpdateMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMemoryStoreShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemoryStore"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/memorystores/" + dara.PercentEncode(dara.StringValue(memoryStoreName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemoryStoreResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
