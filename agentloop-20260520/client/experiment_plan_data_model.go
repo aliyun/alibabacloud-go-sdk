@@ -34,16 +34,67 @@ type iExperimentPlanData interface {
 }
 
 type ExperimentPlanData struct {
+  // The creation time in milliseconds.
+  // 
+  // example:
+  // 
+  // 1767225600000
   CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // The ID of the associated dataset.
+  // 
+  // example:
+  // 
+  // dataset-123456
   DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+  // The description.
+  // 
+  // example:
+  // 
+  // Offline evaluation plan for customer service Q&A
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // The number of experiment executions under this plan.
+  // 
+  // example:
+  // 
+  // 3
   ExperimentCount *int32 `json:"experimentCount,omitempty" xml:"experimentCount,omitempty"`
+  // The experiment type. Valid values: offline (offline experiment) and online (online experiment).
+  // 
+  // example:
+  // 
+  // offline
   ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
+  // The name of the associated data processing pipeline. This field is empty if no pipeline is associated. After association, when an experiment under this plan completes and writes results to a Logstore, the system filters by the trace ID of the experiment trace and calls PreviewPipeline to write the pipeline-processed results.
+  // 
+  // example:
+  // 
+  // trace-process-pipeline
   PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+  // The experiment plan ID.
   PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
+  // The experiment plan name.
+  // 
+  // example:
+  // 
+  // customer-service-eval
   PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+  // The custom query SQL clause in dataset-partial mode.
+  // 
+  // example:
+  // 
+  // level > 2
   QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
+  // The status. Valid values: pending, running, and stopped.
+  // 
+  // example:
+  // 
+  // pending
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // The update time in milliseconds.
+  // 
+  // example:
+  // 
+  // 1767229200000
   UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 

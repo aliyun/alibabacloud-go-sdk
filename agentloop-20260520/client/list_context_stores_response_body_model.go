@@ -22,19 +22,19 @@ type iListContextStoresResponseBody interface {
 }
 
 type ListContextStoresResponseBody struct {
-	// The maximum number of entries per page that was specified in the request. This value is echoed back.
+	// The maximum number of results per page specified in the request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page. An empty string indicates that the current page is the last page.
+	// The token for the next page. An empty string indicates that the last page is reached.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID. You can use this ID to locate and troubleshoot issues.
+	// The request ID, which can be used to locate the request during troubleshooting.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListContextStoresResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The list of context stores.
 	Results []*ListContextStoresResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// The total number of context stores that match the query conditions.
+	// The total number of context stores that meet the query conditions.
 	//
 	// example:
 	//
@@ -147,30 +147,34 @@ type ListContextStoresResponseBodyResults struct {
 	//
 	// example:
 	//
-	// 我的上下文库
+	// My context store
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The region ID of the context store.
+	// The ID of the region where the context store resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The list of service names. This parameter has a value only for context stores of the experience type. The service names are used together with the data source AgentSpace to locate trace data sources.
+	// The list of service names. This parameter has a value only for the experience type. It is used together with the data source AgentSpace to locate the trace data source.
 	//
 	// example:
 	//
 	// ["order-service","payment-service"]
 	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
+	// The memory data source type, such as manual, trajectory, or dataset. This parameter has a value only for the memory type.
+	//
 	// example:
 	//
 	// trajectory
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The status of the context store. Valid values: ACTIVE, INITIALIZING, and FAILED.
+	// The status of the context store. Valid values include ACTIVE, INITIALIZING, and FAILED.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The memory storage mode, such as event or upsert. This parameter has a value only for the memory type.
+	//
 	// example:
 	//
 	// upsert

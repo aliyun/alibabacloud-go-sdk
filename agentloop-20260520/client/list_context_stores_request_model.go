@@ -22,30 +22,32 @@ type iListContextStoresRequest interface {
 }
 
 type ListContextStoresRequest struct {
-	// Filters context stores by name. Exact match is supported. If this parameter is not specified, no filtering is applied.
+	// The name of the context store used for filtering. Exact match is supported. If this parameter is not specified, no filtering is performed.
 	//
 	// example:
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
-	// Filters context stores by type, such as experience or memory. If this parameter is not specified, no filtering is applied.
+	// The type of the context store used for filtering, such as experience or memory. If this parameter is not specified, no filtering is performed.
 	//
 	// example:
 	//
 	// experience
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	// The maximum number of context stores to return. Default value: 20. Maximum value: 100.
+	// The maximum number of context stores to return in the current request. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Set this parameter to the nextToken value returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
+	// The pagination token. To retrieve the next page, pass the nextToken value from the previous response. Do not specify this parameter for the first request.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The memory data source type used for filtering, such as manual, trajectory, or dataset. If this parameter is not specified, no filtering is performed.
+	//
 	// example:
 	//
 	// trajectory

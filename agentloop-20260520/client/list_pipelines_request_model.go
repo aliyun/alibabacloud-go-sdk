@@ -24,49 +24,37 @@ type iListPipelinesRequest interface {
 }
 
 type ListPipelinesRequest struct {
-	// The maximum number of pipelines to return. Default value: 20. Maximum value: 100.
+	// The maximum number of pipelines to return in the current request. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Set this parameter to the nextToken value returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
+	// The pagination token. Pass the nextToken value from the previous response to retrieve the next page of results. Do not specify this parameter for the first request.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Filters pipelines by name using exact match. If this parameter is not specified, no filtering is applied.
+	// The name of the pipeline. Supports exact matching. If not specified, the results are not filtered by pipeline name.
 	//
 	// example:
 	//
 	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// Filters pipelines by schedule status. If this parameter is not specified, no filtering is applied. Valid values:
-	//
-	// - None: No schedule.
-	//
-	// - Active: Active.
-	//
-	// - Paused: Paused.
-	//
-	// - Terminated: Terminated.
+	// The schedule status. Valid values: None (no schedule), Active (active), Paused (paused), and Terminated (terminated). If not specified, the results are not filtered by schedule status.
 	//
 	// example:
 	//
 	// Active
 	ScheduleStatus *string `json:"scheduleStatus,omitempty" xml:"scheduleStatus,omitempty"`
-	// Filters pipelines by schedule type. If this parameter is not specified, no filtering is applied. Valid values:
-	//
-	// - RunOnce: One-time execution.
-	//
-	// - Scheduled: Periodic scheduling.
+	// The schedule type. Valid values: RunOnce (single execution), Scheduled (periodic scheduling), and Continuous (continuous execution driven by trace source signals). If not specified, the results are not filtered by schedule type.
 	//
 	// example:
 	//
 	// RunOnce
 	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
-	// Filters pipelines by the exact name of the output dataset. Matches standard sinks, conditional branch sinks, and default sinks. If this parameter is not specified, no filtering is applied.
+	// The name of the output dataset. Supports exact matching and applies to standard sinks, conditional branch sinks, and default sinks. If not specified, the results are not filtered by sink name.
 	//
 	// example:
 	//

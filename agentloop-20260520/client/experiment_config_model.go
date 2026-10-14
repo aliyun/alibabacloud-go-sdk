@@ -32,29 +32,57 @@ type iExperimentConfig interface {
 }
 
 type ExperimentConfig struct {
-  // The endpoint connector ID. This parameter is required in user/agent mode.
+  // The endpoint connector ID, which is required in user or agent mode.
   EndpointConnectorId *string `json:"endpointConnectorId,omitempty" xml:"endpointConnectorId,omitempty"`
-  // The experiment label (A/B/C/D/E).
+  // The experiment label (A, B, C, D, or E).
+  // 
+  // example:
+  // 
+  // A
   Label *string `json:"label,omitempty" xml:"label,omitempty"`
-  // The model name. You can set this parameter to agent in agent scenarios.
+  // The model name, which can be set to agent for agent scenarios.
+  // 
+  // example:
+  // 
+  // qwen-max
   ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
   // The model parameters.
   ModelParameters *ModelParameters `json:"modelParameters,omitempty" xml:"modelParameters,omitempty"`
   // The model provider. Valid values: dashscope (default), user, and agent.
+  // 
+  // example:
+  // 
+  // dashscope
   ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
   // The experiment name.
+  // 
+  // example:
+  // 
+  // baseline
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
-  // The prompt message template. Supports {{variable name}} placeholders.
+  // The prompt message template, which supports {{variable name}} placeholders.
+  // 
+  // example:
+  // 
+  // [{"role":"user","content":"Please answer: {{question}}"}]
   PromptTemplate []*PromptTemplateItem `json:"promptTemplate,omitempty" xml:"promptTemplate,omitempty" type:"Repeated"`
-  // The agent request body template. This parameter is required in agent mode. Supports {{variable name}} placeholders.
+  // The agent request body template, which is required in agent mode and supports {{variable name}} placeholders.
+  // 
+  // example:
+  // 
+  // {"input":"{{question}}"}
   RequestBodyTemplate *string `json:"requestBodyTemplate,omitempty" xml:"requestBodyTemplate,omitempty"`
-  // The agent request header template. This parameter is optional in agent mode. Supports {{variable name}} placeholders.
+  // The agent request header template, which is optional in agent mode and supports {{variable name}} placeholders.
   // 
   // example:
   // 
   // {"Content-Type: application/json" }
   RequestHeaderTemplate *string `json:"requestHeaderTemplate,omitempty" xml:"requestHeaderTemplate,omitempty"`
   // The agent request method. Valid values: POST (default) and GET.
+  // 
+  // example:
+  // 
+  // POST
   RequestMethod *string `json:"requestMethod,omitempty" xml:"requestMethod,omitempty"`
 }
 

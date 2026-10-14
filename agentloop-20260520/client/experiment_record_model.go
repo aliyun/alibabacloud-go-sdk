@@ -56,27 +56,125 @@ type iExperimentRecord interface {
 }
 
 type ExperimentRecord struct {
+  // The completion time in milliseconds.
+  // 
+  // example:
+  // 
+  // 1767229200000
   CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+  // The number of completed tasks.
+  // 
+  // example:
+  // 
+  // 5
   CompletedTasks *int32 `json:"completedTasks,omitempty" xml:"completedTasks,omitempty"`
+  // The data source type. Valid values: simple, dataset-full, and dataset-partial.
+  // 
+  // example:
+  // 
+  // dataset-full
   DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
+  // The dataset ID.
+  // 
+  // example:
+  // 
+  // dataset-123456
   DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+  // The SLS project where the dataset is located.
+  // 
+  // example:
+  // 
+  // agentspace-project
   DatasetProject *string `json:"datasetProject,omitempty" xml:"datasetProject,omitempty"`
+  // The error message.
+  // 
+  // example:
+  // 
+  // Model invocation timeout
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+  // The ID of the associated evaluation task.
   EvaluationTaskId *string `json:"evaluationTaskId,omitempty" xml:"evaluationTaskId,omitempty"`
+  // The list of evaluators.
+  // 
+  // example:
+  // 
+  // [{"name":"Builtin.agent_correctness"}]
   Evaluators []*Evaluator `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
+  // The execution time in milliseconds.
+  // 
+  // example:
+  // 
+  // 1767225600000
   ExecutedAt *int64 `json:"executedAt,omitempty" xml:"executedAt,omitempty"`
+  // The list of experiment configurations.
+  // 
+  // example:
+  // 
+  // [{"label":"A","name":"baseline","modelName":"qwen-max"}]
   ExperimentConfig []*ExperimentConfig `json:"experimentConfig,omitempty" xml:"experimentConfig,omitempty" type:"Repeated"`
+  // The ID of the associated experiment plan.
   ExperimentPlanId *string `json:"experimentPlanId,omitempty" xml:"experimentPlanId,omitempty"`
+  // The number of failed tasks.
+  // 
+  // example:
+  // 
+  // 1
   FailedTasks *int32 `json:"failedTasks,omitempty" xml:"failedTasks,omitempty"`
+  // The single-line input in SIMPLE mode.
+  // 
+  // example:
+  // 
+  // {"test":"test","test2":1}
   Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+  // The list of model names used.
+  // 
+  // example:
+  // 
+  // ["qwen-max"]
   ModelNames []*string `json:"modelNames,omitempty" xml:"modelNames,omitempty" type:"Repeated"`
+  // The name of the associated experiment plan.
+  // 
+  // example:
+  // 
+  // customer-service-eval
   PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+  // The execution progress, ranging from 0 to 1.
+  // 
+  // example:
+  // 
+  // 0.5
   Progress *float32 `json:"progress,omitempty" xml:"progress,omitempty"`
+  // The custom query SQL clause in dataset-partial mode.
+  // 
+  // example:
+  // 
+  // level > 2
   QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
+  // The experiment record ID.
   RecordId *string `json:"recordId,omitempty" xml:"recordId,omitempty"`
+  // The experiment record name.
+  // 
+  // example:
+  // 
+  // baseline-run
   RecordName *string `json:"recordName,omitempty" xml:"recordName,omitempty"`
+  // The list of selected data item IDs in dataset-partial mode.
+  // 
+  // example:
+  // 
+  // ["item-123456"]
   SelectedItemIds []*string `json:"selectedItemIds,omitempty" xml:"selectedItemIds,omitempty" type:"Repeated"`
+  // The status. Valid values: pending, running, completed, and failed.
+  // 
+  // example:
+  // 
+  // running
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // The total number of tasks.
+  // 
+  // example:
+  // 
+  // 10
   TotalTasks *int32 `json:"totalTasks,omitempty" xml:"totalTasks,omitempty"`
 }
 

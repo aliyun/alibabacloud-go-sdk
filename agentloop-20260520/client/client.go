@@ -278,7 +278,7 @@ func (client *Client) CreateAgentSpace(request *CreateAgentSpaceRequest) (_resul
 
 // Summary:
 //
-// Creates a context store.
+// Creates a context library.
 //
 // @param request - CreateContextStoreRequest
 //
@@ -343,7 +343,7 @@ func (client *Client) CreateContextStoreWithOptions(agentSpace *string, request 
 
 // Summary:
 //
-// Creates a context store.
+// Creates a context library.
 //
 // @param request - CreateContextStoreRequest
 //
@@ -1047,6 +1047,166 @@ func (client *Client) CreateExperimentRun(agentSpace *string, request *CreateExp
 	headers := make(map[string]*string)
 	_result = &CreateExperimentRunResponse{}
 	_body, _err := client.CreateExperimentRunWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a run for the specified optimization task and returns the run ID. When preview is set to true, an independent pre-run is executed to generate candidate results and evidence. The pre-run does not publish candidate artifacts or advance the formal run history.
+//
+// @param request - CreateOptimizeRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOptimizeRunResponse
+func (client *Client) CreateOptimizeRunWithOptions(agentSpace *string, optimizeTaskName *string, request *CreateOptimizeRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateOptimizeRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Input) {
+		body["input"] = request.Input
+	}
+
+	if !dara.IsNil(request.Preview) {
+		body["preview"] = request.Preview
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOptimizeRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks/" + dara.PercentEncode(dara.StringValue(optimizeTaskName)) + "/runs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOptimizeRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a run for the specified optimization task and returns the run ID. When preview is set to true, an independent pre-run is executed to generate candidate results and evidence. The pre-run does not publish candidate artifacts or advance the formal run history.
+//
+// @param request - CreateOptimizeRunRequest
+//
+// @return CreateOptimizeRunResponse
+func (client *Client) CreateOptimizeRun(agentSpace *string, optimizeTaskName *string, request *CreateOptimizeRunRequest) (_result *CreateOptimizeRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOptimizeRunResponse{}
+	_body, _err := client.CreateOptimizeRunWithOptions(agentSpace, optimizeTaskName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an optimization task in a specified AgentSpace, and configures the task type, status, and type-specific parameters. Optional prompts only support inline Markdown.
+//
+// @param request - CreateOptimizeTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOptimizeTaskResponse
+func (client *Client) CreateOptimizeTaskWithOptions(agentSpace *string, request *CreateOptimizeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateOptimizeTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.OptimizeTaskName) {
+		body["optimizeTaskName"] = request.OptimizeTaskName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOptimizeTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOptimizeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an optimization task in a specified AgentSpace, and configures the task type, status, and type-specific parameters. Optional prompts only support inline Markdown.
+//
+// @param request - CreateOptimizeTaskRequest
+//
+// @return CreateOptimizeTaskResponse
+func (client *Client) CreateOptimizeTask(agentSpace *string, request *CreateOptimizeTaskRequest) (_result *CreateOptimizeTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOptimizeTaskResponse{}
+	_body, _err := client.CreateOptimizeTaskWithOptions(agentSpace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1796,6 +1956,72 @@ func (client *Client) DeleteExperimentRun(agentSpace *string, recordId *string, 
 
 // Summary:
 //
+// Deletes an optimization task in a specified AgentSpace.
+//
+// @param request - DeleteOptimizeTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOptimizeTaskResponse
+func (client *Client) DeleteOptimizeTaskWithOptions(agentSpace *string, optimizeTaskName *string, request *DeleteOptimizeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteOptimizeTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOptimizeTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks/" + dara.PercentEncode(dara.StringValue(optimizeTaskName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOptimizeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an optimization task in a specified AgentSpace.
+//
+// @param request - DeleteOptimizeTaskRequest
+//
+// @return DeleteOptimizeTaskResponse
+func (client *Client) DeleteOptimizeTask(agentSpace *string, optimizeTaskName *string, request *DeleteOptimizeTaskRequest) (_result *DeleteOptimizeTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteOptimizeTaskResponse{}
+	_body, _err := client.DeleteOptimizeTaskWithOptions(agentSpace, optimizeTaskName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a pipeline.
 //
 // @param request - DeletePipelineRequest
@@ -2100,7 +2326,7 @@ func (client *Client) GetAgentSpace(agentSpace *string, request *GetAgentSpaceRe
 
 // Summary:
 //
-// Queries a context store.
+// Queries the context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -2141,7 +2367,7 @@ func (client *Client) GetContextStoreWithOptions(agentSpace *string, contextStor
 
 // Summary:
 //
-// Queries a context store.
+// Queries the context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -2672,6 +2898,126 @@ func (client *Client) GetExperimentRun(agentSpace *string, recordId *string, req
 
 // Summary:
 //
+// 查询优化任务执行详情
+//
+// @param request - GetOptimizeRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOptimizeRunResponse
+func (client *Client) GetOptimizeRunWithOptions(agentSpace *string, optimizeTaskName *string, optimizeRunId *string, request *GetOptimizeRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOptimizeRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOptimizeRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks/" + dara.PercentEncode(dara.StringValue(optimizeTaskName)) + "/runs/" + dara.PercentEncode(dara.StringValue(optimizeRunId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOptimizeRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询优化任务执行详情
+//
+// @param request - GetOptimizeRunRequest
+//
+// @return GetOptimizeRunResponse
+func (client *Client) GetOptimizeRun(agentSpace *string, optimizeTaskName *string, optimizeRunId *string, request *GetOptimizeRunRequest) (_result *GetOptimizeRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOptimizeRunResponse{}
+	_body, _err := client.GetOptimizeRunWithOptions(agentSpace, optimizeTaskName, optimizeRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询优化任务
+//
+// @param request - GetOptimizeTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOptimizeTaskResponse
+func (client *Client) GetOptimizeTaskWithOptions(agentSpace *string, optimizeTaskName *string, request *GetOptimizeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOptimizeTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOptimizeTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks/" + dara.PercentEncode(dara.StringValue(optimizeTaskName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOptimizeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询优化任务
+//
+// @param request - GetOptimizeTaskRequest
+//
+// @return GetOptimizeTaskResponse
+func (client *Client) GetOptimizeTask(agentSpace *string, optimizeTaskName *string, request *GetOptimizeTaskRequest) (_result *GetOptimizeTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOptimizeTaskResponse{}
+	_body, _err := client.GetOptimizeTaskWithOptions(agentSpace, optimizeTaskName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a pipeline.
 //
 // @param request - GetPipelineRequest
@@ -3022,7 +3368,7 @@ func (client *Client) ListContextStoreAPIKeys(agentSpace *string, contextStoreNa
 
 // Summary:
 //
-// Queries a list of context stores.
+// Queries the list of context stores.
 //
 // @param request - ListContextStoresRequest
 //
@@ -3085,7 +3431,7 @@ func (client *Client) ListContextStoresWithOptions(agentSpace *string, request *
 
 // Summary:
 //
-// Queries a list of context stores.
+// Queries the list of context stores.
 //
 // @param request - ListContextStoresRequest
 //
@@ -3716,7 +4062,167 @@ func (client *Client) ListExperimentRuns(agentSpace *string, request *ListExperi
 
 // Summary:
 //
-// Queries the execution history list of a pipeline.
+// Performs a paging query on the run records of a specified optimization task. To obtain complete result references and frozen outputs, call GetOptimizeRun.
+//
+// @param request - ListOptimizeRunsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOptimizeRunsResponse
+func (client *Client) ListOptimizeRunsWithOptions(agentSpace *string, optimizeTaskName *string, request *ListOptimizeRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOptimizeRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WindowStartTimeBegin) {
+		query["windowStartTimeBegin"] = request.WindowStartTimeBegin
+	}
+
+	if !dara.IsNil(request.WindowStartTimeEnd) {
+		query["windowStartTimeEnd"] = request.WindowStartTimeEnd
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOptimizeRuns"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks/" + dara.PercentEncode(dara.StringValue(optimizeTaskName)) + "/runs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOptimizeRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query on the run records of a specified optimization task. To obtain complete result references and frozen outputs, call GetOptimizeRun.
+//
+// @param request - ListOptimizeRunsRequest
+//
+// @return ListOptimizeRunsResponse
+func (client *Client) ListOptimizeRuns(agentSpace *string, optimizeTaskName *string, request *ListOptimizeRunsRequest) (_result *ListOptimizeRunsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOptimizeRunsResponse{}
+	_body, _err := client.ListOptimizeRunsWithOptions(agentSpace, optimizeTaskName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries optimization tasks in a specified AgentSpace by using paging and returns the task status, configurations, and scheduling checkpoints.
+//
+// @param request - ListOptimizeTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOptimizeTasksResponse
+func (client *Client) ListOptimizeTasksWithOptions(agentSpace *string, request *ListOptimizeTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOptimizeTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOptimizeTasks"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOptimizeTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries optimization tasks in a specified AgentSpace by using paging and returns the task status, configurations, and scheduling checkpoints.
+//
+// @param request - ListOptimizeTasksRequest
+//
+// @return ListOptimizeTasksResponse
+func (client *Client) ListOptimizeTasks(agentSpace *string, request *ListOptimizeTasksRequest) (_result *ListOptimizeTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOptimizeTasksResponse{}
+	_body, _err := client.ListOptimizeTasksWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the run history. Supports filtering by status, trigger type, and time range, and cursor-based pagination.
 //
 // @param request - ListPipelineRunsRequest
 //
@@ -3783,7 +4289,7 @@ func (client *Client) ListPipelineRunsWithOptions(agentSpace *string, pipelineNa
 
 // Summary:
 //
-// Queries the execution history list of a pipeline.
+// Queries the run history. Supports filtering by status, trigger type, and time range, and cursor-based pagination.
 //
 // @param request - ListPipelineRunsRequest
 //
@@ -3802,7 +4308,7 @@ func (client *Client) ListPipelineRuns(agentSpace *string, pipelineName *string,
 
 // Summary:
 //
-// Queries a list of pipelines. Supports filtering by name, schedule type, and schedule status with cursor-based pagination.
+// Queries a list of pipelines. Supports filtering by name, schedule type, and schedule status, and cursor-based pagination.
 //
 // @param request - ListPipelinesRequest
 //
@@ -3869,7 +4375,7 @@ func (client *Client) ListPipelinesWithOptions(agentSpace *string, request *List
 
 // Summary:
 //
-// Queries a list of pipelines. Supports filtering by name, schedule type, and schedule status with cursor-based pagination.
+// Queries a list of pipelines. Supports filtering by name, schedule type, and schedule status, and cursor-based pagination.
 //
 // @param request - ListPipelinesRequest
 //
@@ -4194,7 +4700,7 @@ func (client *Client) RunPipeline(agentSpace *string, pipelineName *string, requ
 
 // Summary:
 //
-// Searches contexts.
+// Searches the context.
 //
 // @param request - SearchContextRequest
 //
@@ -4269,7 +4775,7 @@ func (client *Client) SearchContextWithOptions(agentSpace *string, contextStoreN
 
 // Summary:
 //
-// Searches contexts.
+// Searches the context.
 //
 // @param request - SearchContextRequest
 //
@@ -4948,7 +5454,7 @@ func (client *Client) UpdateEvaluatorSkill(name *string, skillName *string, requ
 //
 // Description:
 //
-// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not included in the request remain unchanged. You can update only plans created by the current account.
+// Updates a specified experiment plan. Fields that are not specified remain unchanged. You can only update plans created by the current account.
 //
 // @param request - UpdateExperimentPlanRequest
 //
@@ -5039,7 +5545,7 @@ func (client *Client) UpdateExperimentPlanWithOptions(agentSpace *string, planId
 //
 // Description:
 //
-// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not included in the request remain unchanged. You can update only plans created by the current account.
+// Updates a specified experiment plan. Fields that are not specified remain unchanged. You can only update plans created by the current account.
 //
 // @param request - UpdateExperimentPlanRequest
 //
@@ -5153,6 +5659,158 @@ func (client *Client) UpdateExperimentRun(agentSpace *string, recordId *string, 
 	headers := make(map[string]*string)
 	_result = &UpdateExperimentRunResponse{}
 	_body, _err := client.UpdateExperimentRunWithOptions(agentSpace, recordId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels a run or retries a failed artifact application. To cancel a run, set status to Cancelled. To retry a failed artifact application, set extra.application.action to retry and do not specify status.
+//
+// @param request - UpdateOptimizeRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOptimizeRunResponse
+func (client *Client) UpdateOptimizeRunWithOptions(agentSpace *string, optimizeTaskName *string, optimizeRunId *string, request *UpdateOptimizeRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateOptimizeRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Extra) {
+		body["extra"] = request.Extra
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOptimizeRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks/" + dara.PercentEncode(dara.StringValue(optimizeTaskName)) + "/runs/" + dara.PercentEncode(dara.StringValue(optimizeRunId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOptimizeRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels a run or retries a failed artifact application. To cancel a run, set status to Cancelled. To retry a failed artifact application, set extra.application.action to retry and do not specify status.
+//
+// @param request - UpdateOptimizeRunRequest
+//
+// @return UpdateOptimizeRunResponse
+func (client *Client) UpdateOptimizeRun(agentSpace *string, optimizeTaskName *string, optimizeRunId *string, request *UpdateOptimizeRunRequest) (_result *UpdateOptimizeRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOptimizeRunResponse{}
+	_body, _err := client.UpdateOptimizeRunWithOptions(agentSpace, optimizeTaskName, optimizeRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新优化任务
+//
+// @param request - UpdateOptimizeTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOptimizeTaskResponse
+func (client *Client) UpdateOptimizeTaskWithOptions(agentSpace *string, optimizeTaskName *string, request *UpdateOptimizeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateOptimizeTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOptimizeTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/optimizetasks/" + dara.PercentEncode(dara.StringValue(optimizeTaskName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOptimizeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新优化任务
+//
+// @param request - UpdateOptimizeTaskRequest
+//
+// @return UpdateOptimizeTaskResponse
+func (client *Client) UpdateOptimizeTask(agentSpace *string, optimizeTaskName *string, request *UpdateOptimizeTaskRequest) (_result *UpdateOptimizeTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOptimizeTaskResponse{}
+	_body, _err := client.UpdateOptimizeTaskWithOptions(agentSpace, optimizeTaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

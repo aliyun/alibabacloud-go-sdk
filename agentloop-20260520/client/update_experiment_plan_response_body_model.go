@@ -20,13 +20,13 @@ type iUpdateExperimentPlanResponseBody interface {
 }
 
 type UpdateExperimentPlanResponseBody struct {
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
-	// Experiment plan updated successfully
+	// The experiment plan is updated successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The experiment plan ID.
+	// The ID of the experiment plan.
 	//
 	// example:
 	//

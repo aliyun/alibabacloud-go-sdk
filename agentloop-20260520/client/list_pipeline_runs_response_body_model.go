@@ -22,7 +22,7 @@ type iListPipelineRunsResponseBody interface {
 }
 
 type ListPipelineRunsResponseBody struct {
-	// The maximum number of entries per page specified in the request. This value is echoed back.
+	// The maximum number of entries per page specified in the request, echoed in the response.
 	//
 	// example:
 	//
@@ -34,15 +34,15 @@ type ListPipelineRunsResponseBody struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID, which is used to locate the request during troubleshooting.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of pipeline runs.
+	// The list of runs.
 	Runs []*ListPipelineRunsResponseBodyRuns `json:"runs,omitempty" xml:"runs,omitempty" type:"Repeated"`
-	// The total number of pipeline runs that match the filter conditions.
+	// The total number of pipeline runs that meet the filter conditions.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// my-agent-space
 	AgentSpaceName *string `json:"agentSpaceName,omitempty" xml:"agentSpaceName,omitempty"`
-	// The current retry count.
+	// The current number of retries.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// 2026-01-01T00:00:10.000Z
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
-	// The start of the data window, in UNIX seconds.
+	// The start time of the data window, in UNIX seconds.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// 2026-01-01T00:00:01.000Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The run statistics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of tokens consumed).
+	// The run statistics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of consumed tokens).
 	Stats map[string]interface{} `json:"stats,omitempty" xml:"stats,omitempty"`
 	// The run status. Valid values: Pending, Running, Succeeded, Failed, and Cancelled.
 	//
@@ -189,7 +189,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// Succeeded
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The end of the data window, in UNIX seconds.
+	// The end time of the data window, in UNIX seconds.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// 2026-01-01T00:00:00.000Z
 	TriggerTime *string `json:"triggerTime,omitempty" xml:"triggerTime,omitempty"`
-	// The trigger type. Valid values: Scheduled, Manual, and RunOnce.
+	// The trigger type. Valid values: Scheduled, Manual, RunOnce, and Continuous (continuous micro-batch execution).
 	//
 	// example:
 	//

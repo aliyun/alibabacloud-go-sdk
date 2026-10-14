@@ -22,7 +22,7 @@ type iListPipelinesResponseBody interface {
 }
 
 type ListPipelinesResponseBody struct {
-	// The maximum number of entries per page that was specified in the request. This value is echoed back.
+	// The maximum number of entries per page specified in the request.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ListPipelinesResponseBody struct {
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The list of pipelines.
 	Pipelines []*ListPipelinesResponseBodyPipelines `json:"pipelines,omitempty" xml:"pipelines,omitempty" type:"Repeated"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID, which is used to locate the request during troubleshooting.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of pipelines that match the filter conditions.
+	// The total number of pipelines that meet the filter conditions.
 	//
 	// example:
 	//
@@ -149,39 +149,27 @@ type ListPipelinesResponseBodyPipelines struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The scheduling status. Valid values:
-	//
-	// - None: no scheduling. This value is returned for RunOnce pipelines.
-	//
-	// - Active: active.
-	//
-	// - Paused: paused.
-	//
-	// - Terminated: terminated.
+	// The scheduling status. Valid values: None for no scheduling in RunOnce pipelines, Active, Paused, and Terminated.
 	//
 	// example:
 	//
 	// None
 	ScheduleStatus *string `json:"scheduleStatus,omitempty" xml:"scheduleStatus,omitempty"`
-	// The scheduling type. Valid values:
-	//
-	// - RunOnce: one-time execution.
-	//
-	// - Scheduled: periodic scheduling.
+	// The scheduling type. Valid values: RunOnce for single execution, Scheduled for periodic scheduling, and Continuous for continuous execution driven by trace source signals.
 	//
 	// example:
 	//
 	// RunOnce
 	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
-	// The pipeline sink (data write destination).
+	// The pipeline sink, which is the destination for data writing.
 	Sink *ListPipelinesResponseBodyPipelinesSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// The pipeline data source.
+	// The data source of the pipeline.
 	//
 	// example:
 	//
 	// {"type":"logstore","logstore":{"project":"my-sls-project","logstore":"agent-logs"},"inputFields":[{"name":"question","type":"text"}]}
 	Source *ListPipelinesResponseBodyPipelinesSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
-	// The time when the pipeline was last updated, in ISO 8601 UTC format.
+	// The time when the pipeline was last updated. The time is in the ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -324,27 +312,25 @@ func (s *ListPipelinesResponseBodyPipelines) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicy struct {
+	// The continuous execution configuration. This is used when the type is trace. The processing frequency is a fixed value managed by the server.
+	//
 	// example:
 	//
 	// {"fromTime":1735660800}
 	Continuous *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous `json:"continuous,omitempty" xml:"continuous,omitempty" type:"Struct"`
-	// The scheduling mode. Valid values:
-	//
-	// - RunOnce: one-time execution.
-	//
-	// - Scheduled: periodic scheduling.
+	// The scheduling mode. Valid values: RunOnce for single execution, Scheduled for periodic execution, and Continuous for continuous execution. Continuous mode is only for trace data sources. The processing frequency is a fixed value managed by the server, and data is automatically processed at minute intervals after the trace is completed.
 	//
 	// example:
 	//
 	// RunOnce
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The parameters for one-time execution. This parameter has a value only when mode is set to RunOnce.
+	// The parameters for single execution. This field has a value only when the mode is RunOnce.
 	//
 	// example:
 	//
 	// {"fromTime":1735660800,"toTime":1735664400}
 	RunOnce *ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
-	// The parameters for periodic scheduling. This parameter has a value only when mode is set to Scheduled.
+	// The parameters for periodic scheduling. This field has a value only when the mode is Scheduled.
 	//
 	// example:
 	//
@@ -416,6 +402,8 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicyContinuous struct {
+	// The bootstrap history start time as a UNIX timestamp in seconds. It has the same precision as runOnce or scheduled fromTime. Millisecond values greater than or equal to 1e12 are automatically converted. The cursor starts from the grid-aligned time and catches up window by window. After catching up, it switches to minute intervals. By default, it starts from the current time and only processes incremental data.
+	//
 	// example:
 	//
 	// 1735660800
@@ -444,17 +432,17 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous) Validate() e
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce struct {
-	// The start of the time slice, in UNIX millisecond timestamp format.
+	// The start time of the time slice as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
-	// 1735660800000
+	// 1735660800
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The end of the time slice, in UNIX millisecond timestamp format.
+	// The end time of the time slice as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
-	// 1735747200000
+	// 1735747200
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
 }
 
@@ -489,13 +477,13 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce) Validate() erro
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicyScheduled struct {
-	// The scheduling start time, in UNIX millisecond timestamp format.
+	// The scheduling start time as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
-	// 1735660800000
+	// 1735660800
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The scheduling interval, such as 1h or 30m.
+	// The scheduling interval. Valid values: 1h, 6h, 12h, and 1d.
 	//
 	// example:
 	//
@@ -534,11 +522,11 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicyScheduled) Validate() er
 }
 
 type ListPipelinesResponseBodyPipelinesSink struct {
-	// The conditional routing configuration. This parameter is used only when sink.type is set to condition.
+	// The conditional routing configuration. This is used only when the sink type is condition.
 	Condition *ListPipelinesResponseBodyPipelinesSinkCondition `json:"condition,omitempty" xml:"condition,omitempty" type:"Struct"`
-	// The destination dataset configuration for the dataset sink. This parameter is used only when sink.type is set to dataset.
+	// The destination dataset configuration for the dataset sink. This is used only when the sink type is dataset.
 	Dataset *ListPipelinesResponseBodyPipelinesSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The destination type. Valid values: dataset or condition.
+	// The destination type. Valid values: dataset, condition.
 	//
 	// example:
 	//
@@ -596,7 +584,7 @@ func (s *ListPipelinesResponseBodyPipelinesSink) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSinkCondition struct {
-	// The default write destination that is used when no condition route is matched.
+	// The default write destination used when no conditional route is matched.
 	DefaultSink *ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink `json:"defaultSink,omitempty" xml:"defaultSink,omitempty" type:"Struct"`
 	// The route matching mode. Currently, only all is supported.
 	//
@@ -604,7 +592,7 @@ type ListPipelinesResponseBodyPipelinesSinkCondition struct {
 	//
 	// all
 	MatchMode *string `json:"matchMode,omitempty" xml:"matchMode,omitempty"`
-	// The list of condition routes.
+	// The list of conditional routes.
 	Routes []*ListPipelinesResponseBodyPipelinesSinkConditionRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 
@@ -664,7 +652,7 @@ func (s *ListPipelinesResponseBodyPipelinesSinkCondition) Validate() error {
 type ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink struct {
 	// The default destination dataset.
 	Dataset *ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The type of the default destination. Currently, only dataset is supported.
+	// The default destination type. Currently, only dataset is supported.
 	//
 	// example:
 	//
@@ -753,13 +741,13 @@ func (s *ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset) Vali
 }
 
 type ListPipelinesResponseBodyPipelinesSinkConditionRoutes struct {
-	// The route expression in SPL. Only where, project, and extend are supported.
+	// The route expression in Search Processing Language (SPL). Only where, project, and extend are supported.
 	//
 	// example:
 	//
 	// 	- | where intent = \\"refund\\"
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// The route ID.
+	// The ID of the route.
 	//
 	// example:
 	//
@@ -816,7 +804,7 @@ func (s *ListPipelinesResponseBodyPipelinesSinkConditionRoutes) Validate() error
 type ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink struct {
 	// The destination dataset of the route.
 	Dataset *ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The type of the route destination. Currently, only dataset is supported.
+	// The destination type of the route. Currently, only dataset is supported.
 	//
 	// example:
 	//
@@ -956,6 +944,8 @@ type ListPipelinesResponseBodyPipelinesSource struct {
 	//
 	// {"dataset":"my-dataset","filter":"status = \\"pending\\""}
 	Dataset *ListPipelinesResponseBodyPipelinesSourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The input fields and their types, applicable to all data source types.
+	//
 	// example:
 	//
 	// [{"name":"question","type":"text"}]
@@ -966,11 +956,13 @@ type ListPipelinesResponseBodyPipelinesSource struct {
 	//
 	// {"project":"my-sls-project","logstore":"agent-logs"}
 	Logstore *ListPipelinesResponseBodyPipelinesSourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	// The trajectory data configuration. This parameter is optional and takes effect only when the type is trace. It obtains ATIF standard trajectory data from the trajectory scrubbing service and extends it by feature.
+	//
 	// example:
 	//
 	// {"enrich":{"enabled":true,"columns":["input","output"]}}
 	Trajectory *ListPipelinesResponseBodyPipelinesSourceTrajectory `json:"trajectory,omitempty" xml:"trajectory,omitempty" type:"Struct"`
-	// The data source type. Valid values: logstore or dataset.
+	// The data source type. Valid values: logstore, dataset, and trace. The trace value indicates a trajectory signal-driven processing mode. The validity of the enumerated values is verified by the server.
 	//
 	// example:
 	//
@@ -1105,10 +1097,14 @@ func (s *ListPipelinesResponseBodyPipelinesSourceDataset) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSourceInputFields struct {
+	// The name of the field.
+	//
 	// example:
 	//
 	// question
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the field. Valid values: text, long, double, and json.
+	//
 	// example:
 	//
 	// text
@@ -1158,7 +1154,7 @@ type ListPipelinesResponseBodyPipelinesSourceLogstore struct {
 	//
 	// my-sls-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The data filtered query statement in SLS query/analysis syntax.
+	// The data filtered query statement, which uses the SLS query and analysis syntax.
 	//
 	// example:
 	//
@@ -1206,6 +1202,8 @@ func (s *ListPipelinesResponseBodyPipelinesSourceLogstore) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSourceTrajectory struct {
+	// The trajectory enrichment configuration. It mounts trajectory data into the scrubbing result based on the trace_id. When writing to the dataset, the data is stored in the fixed column agent_trajectory, and the column value is the trajectory JSON content.
+	//
 	// example:
 	//
 	// {"enabled":true,"columns":["input","output"]}
@@ -1239,10 +1237,14 @@ func (s *ListPipelinesResponseBodyPipelinesSourceTrajectory) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich struct {
+	// The list of enrichment columns. This parameter is retained for compatibility. The current implementation outputs only the fixed column agent_trajectory, and this parameter no longer affects the output.
+	//
 	// example:
 	//
 	// ["input","output","session_id"]
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// Specifies whether to enable trajectory enrichment.
+	//
 	// example:
 	//
 	// false

@@ -16,11 +16,11 @@ type iIndexJsonKey interface {
 }
 
 type IndexJsonKey struct {
-	// Specifies whether the field contains Chinese characters. This parameter is required only when the **type*	- parameter is set to **text**. Valid values:
+	// Specifies whether Chinese characters are included. This parameter is required only when the **type*	- parameter is set to **text**. Valid values:
 	//
-	//   - true: The field contains Chinese characters.
+	//   - true: Chinese characters are included.
 	//
-	//   - false: The field does not contain Chinese characters.
+	//   - false: Chinese characters are not included.
 	//
 	// example:
 	//

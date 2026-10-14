@@ -38,43 +38,71 @@ type iConnectorProperties interface {
 }
 
 type ConnectorProperties struct {
-	// The channel type: custom or apig. This parameter is optional for model_service and defaults to custom.
+	// The channel type. Valid values: custom and apig. This parameter is optional for model_service. Default value: custom.
+	//
+	// example:
+	//
+	// custom
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// The sample request body provided by the user for verifying endpoint connectivity. This parameter is required when dryRun is set to All and type is set to agent_app. The value is not persisted.
+	// Specifies the sample request body provided by the user to verify endpoint connectivity. This parameter is required when dryRun is set to All and type is set to agent_app. The request body is not persisted.
+	//
+	// example:
+	//
+	// {"input":"Hello"}
 	DryRunRequestBody *string `json:"dryRunRequestBody,omitempty" xml:"dryRunRequestBody,omitempty"`
-	// The number of retries after a failed invocation of the dial-test registration service. Valid values: 0 to 10. Default value: 3.
+	// The number of retry attempts after a failed service invocation when you invoke the synthetic monitoring registration service. Valid values: 0 to 10. Default value: 3.
 	//
 	// example:
 	//
 	// 3
 	MaxRetries *string `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
 	// The list of supported models in comma-separated format. This parameter is required for model_service.
+	//
+	// example:
+	//
+	// qwen-max
 	ModelList *string `json:"modelList,omitempty" xml:"modelList,omitempty"`
-	// The network type: internet or aliyun-vpc.
+	// The network type. Valid values: internet and aliyun-vpc.
+	//
+	// example:
+	//
+	// internet
 	Network *string `json:"network,omitempty" xml:"network,omitempty"`
-	// The protocol type: openai, openai-compatible, or anthropic. This parameter is required for model_service.
+	// The protocol type. Valid values: openai, openai-compatible, and anthropic. This parameter is required for model_service.
+	//
+	// example:
+	//
+	// openai-compatible
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The QPS limit for the dial-test registration service. A value of 0 indicates no throttling. Otherwise, valid values: 0.1 to 1000. Default value: 20 for agent_app, 100 for model_service.
+	// The queries per second (QPS) limit for the dial test registration service. A value of 0 indicates no throttling. Otherwise, valid values are 0.1 to 1000. Default value: 20 for agent_app and 100 for model_service.
 	//
 	// example:
 	//
 	// 20
 	QpsLimit *string `json:"qpsLimit,omitempty" xml:"qpsLimit,omitempty"`
 	// The region. This parameter is required when the network type is aliyun-vpc.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The JSON Path extraction path for the response body. This parameter is optional for agent_app.
+	// The JSONPath extraction path for the response body. This parameter is optional for agent_app.
+	//
+	// example:
+	//
+	// $.choices[0].message.content
 	ResponseBodyPath *string `json:"responseBodyPath,omitempty" xml:"responseBodyPath,omitempty"`
-	// The security group ID. This parameter is optional for agent_app.
+	// The ID of the security group. This parameter is optional for agent_app.
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The timeout for a single call, in milliseconds. Valid values: 1000 to 1800000. Default value: 300000.
+	// The timeout period for a single call in milliseconds. Valid values: 1000 to 1800000. Default value: 300000.
 	//
 	// example:
 	//
 	// 30000
 	TimeoutMs *string `json:"timeoutMs,omitempty" xml:"timeoutMs,omitempty"`
-	// The vSwitch ID. This parameter is optional for agent_app.
+	// The ID of the vSwitch. This parameter is optional for agent_app.
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The VPC ID. This parameter is optional for agent_app.
+	// The ID of the virtual private cloud (VPC). This parameter is optional for agent_app.
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 

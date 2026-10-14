@@ -16,8 +16,18 @@ type iPromptTemplateItem interface {
 }
 
 type PromptTemplateItem struct {
+	// The content, which supports {{variable name}} placeholders.
+	//
+	// example:
+	//
+	// Please answer: {{question}}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The role: system/user/assistant.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s PromptTemplateItem) String() string {

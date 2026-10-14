@@ -22,31 +22,35 @@ type iIndexKey interface {
 }
 
 type IndexKey struct {
-	// Specifies whether Chinese is included. This parameter is required only when the **type*	- parameter is set to **text**. Valid values:
+	// Specifies whether the field contains Chinese characters. This parameter is required only when the **type*	- parameter is set to **text**. Valid values:
 	//
-	//   - true: Chinese is included.
+	// - true: The field contains Chinese characters.
 	//
-	//   - false: Chinese is not included.
+	// - false: The field does not contain Chinese characters.
 	//
 	// example:
 	//
 	// true
 	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// The description.
+	// The field description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The field embedding type.
+	// The embedding type of the field.
 	//
 	// example:
 	//
 	// agentloop-embedding-v4
 	Embedding *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
-	// The JSON subfields. This parameter takes effect only when type is set to json.
+	// The JSON subfields. This property takes effect only when the type is set to json.
+	//
+	// example:
+	//
+	// {"content":{"type":"text","chn":true}}
 	JsonKeys map[string]*IndexJsonKey `json:"jsonKeys,omitempty" xml:"jsonKeys,omitempty"`
-	// The type.
+	// The field type.
 	//
 	// example:
 	//

@@ -26,13 +26,48 @@ type iModelParameters interface {
 }
 
 type ModelParameters struct {
-	FrequencyPenalty *float32  `json:"frequencyPenalty,omitempty" xml:"frequencyPenalty,omitempty"`
-	MaxTokens        *int64    `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
-	PresencePenalty  *float32  `json:"presencePenalty,omitempty" xml:"presencePenalty,omitempty"`
-	StopSequences    []*string `json:"stopSequences,omitempty" xml:"stopSequences,omitempty" type:"Repeated"`
-	Temperature      *float32  `json:"temperature,omitempty" xml:"temperature,omitempty"`
-	TopK             *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
-	TopP             *float32  `json:"topP,omitempty" xml:"topP,omitempty"`
+	// The frequency penalty. Positive values reduce repetition. Valid values: -2.0 to 2.0.
+	//
+	// example:
+	//
+	// 0.2
+	FrequencyPenalty *float32 `json:"frequencyPenalty,omitempty" xml:"frequencyPenalty,omitempty"`
+	// The maximum number of output tokens.
+	//
+	// example:
+	//
+	// 1024
+	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	// The presence penalty. Positive values encourage new topics. Valid values: -2.0 to 2.0.
+	//
+	// example:
+	//
+	// 0.1
+	PresencePenalty *float32 `json:"presencePenalty,omitempty" xml:"presencePenalty,omitempty"`
+	// The stop sequences. Generation stops immediately when any of these sequences is encountered.
+	//
+	// example:
+	//
+	// ["END"]
+	StopSequences []*string `json:"stopSequences,omitempty" xml:"stopSequences,omitempty" type:"Repeated"`
+	// The temperature parameter that controls the randomness of the output. Valid values: 0 to 2.
+	//
+	// example:
+	//
+	// 0.7
+	Temperature *float32 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+	// The top-k sampling parameter. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 50
+	TopK *int32 `json:"topK,omitempty" xml:"topK,omitempty"`
+	// The top-p sampling parameter. Valid values: 0 to 1.
+	//
+	// example:
+	//
+	// 0.9
+	TopP *float32 `json:"topP,omitempty" xml:"topP,omitempty"`
 }
 
 func (s ModelParameters) String() string {

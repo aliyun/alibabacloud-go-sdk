@@ -18,9 +18,24 @@ type iOfflineExperimentConfig interface {
 }
 
 type OfflineExperimentConfig struct {
-	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The experiment description.
+	//
+	// example:
+	//
+	// Baseline experiment
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The experiment label.
+	//
+	// example:
+	//
+	// A
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The experiment name.
+	//
+	// example:
+	//
+	// baseline
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s OfflineExperimentConfig) String() string {
