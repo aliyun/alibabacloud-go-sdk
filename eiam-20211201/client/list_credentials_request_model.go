@@ -30,11 +30,14 @@ type iListCredentialsRequest interface {
 }
 
 type ListCredentialsRequest struct {
+	// The external unique identifiers of the credentials.
 	CredentialExternalIds []*string `json:"CredentialExternalIds,omitempty" xml:"CredentialExternalIds,omitempty" type:"Repeated"`
 	// The list of credential IDs.
-	CredentialIds           []*string `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
+	CredentialIds []*string `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
+	// The list of credential sharing scopes.
 	CredentialSharingScopes []*string `json:"CredentialSharingScopes,omitempty" xml:"CredentialSharingScopes,omitempty" type:"Repeated"`
-	CredentialTypes         []*string `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
+	// The list of credential types.
+	CredentialTypes []*string `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
 	// The filter conditions.
 	Filter []*ListCredentialsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The instance ID.
@@ -45,11 +48,11 @@ type ListCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries to return on each page.
 	//
-	// - Default value: 20.
+	// - If you do not specify this parameter, the default value is 20.
 	//
-	// - Maximum value: 100.
+	// - The maximum value is 100.
 	//
 	// example:
 	//
@@ -170,7 +173,7 @@ func (s *ListCredentialsRequest) Validate() error {
 type ListCredentialsRequestFilter struct {
 	// The name of the filter field. Valid values:
 	//
-	// - CredentialIdentifier: the credential identifier.
+	// - CredentialIdentifier: credential identifier
 	//
 	// example:
 	//

@@ -11,10 +11,14 @@ type iRunSynchronizationJobRequest interface {
 	GoString() string
 	SetDescription(v string) *RunSynchronizationJobRequest
 	GetDescription() *string
+	SetFieldSelectionEnabled(v bool) *RunSynchronizationJobRequest
+	GetFieldSelectionEnabled() *bool
 	SetInstanceId(v string) *RunSynchronizationJobRequest
 	GetInstanceId() *string
 	SetPasswordInitialization(v bool) *RunSynchronizationJobRequest
 	GetPasswordInitialization() *bool
+	SetSelectedFieldNames(v []*string) *RunSynchronizationJobRequest
+	GetSelectedFieldNames() []*string
 	SetSynchronizationScopeConfig(v *RunSynchronizationJobRequestSynchronizationScopeConfig) *RunSynchronizationJobRequest
 	GetSynchronizationScopeConfig() *RunSynchronizationJobRequestSynchronizationScopeConfig
 	SetTargetId(v string) *RunSynchronizationJobRequest
@@ -32,6 +36,8 @@ type RunSynchronizationJobRequest struct {
 	//
 	// description_text
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether field selection is enabled.
+	FieldSelectionEnabled *bool `json:"FieldSelectionEnabled,omitempty" xml:"FieldSelectionEnabled,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -46,9 +52,11 @@ type RunSynchronizationJobRequest struct {
 	//
 	// true
 	PasswordInitialization *bool `json:"PasswordInitialization,omitempty" xml:"PasswordInitialization,omitempty"`
+	// The selected fields.
+	SelectedFieldNames []*string `json:"SelectedFieldNames,omitempty" xml:"SelectedFieldNames,omitempty" type:"Repeated"`
 	// The synchronization scope configuration.
 	SynchronizationScopeConfig *RunSynchronizationJobRequestSynchronizationScopeConfig `json:"SynchronizationScopeConfig,omitempty" xml:"SynchronizationScopeConfig,omitempty" type:"Struct"`
-	// The synchronization target ID.
+	// The ID of the synchronization target.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +64,7 @@ type RunSynchronizationJobRequest struct {
 	//
 	// idp_my664lwkhpicbyzirog3ngxxxxx
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The synchronization target type. Valid values:
+	// The type of the synchronization target. Valid values:
 	//
 	// - identity_provider: identity provider
 	//
@@ -84,12 +92,20 @@ func (s *RunSynchronizationJobRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *RunSynchronizationJobRequest) GetFieldSelectionEnabled() *bool {
+	return s.FieldSelectionEnabled
+}
+
 func (s *RunSynchronizationJobRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
 func (s *RunSynchronizationJobRequest) GetPasswordInitialization() *bool {
 	return s.PasswordInitialization
+}
+
+func (s *RunSynchronizationJobRequest) GetSelectedFieldNames() []*string {
+	return s.SelectedFieldNames
 }
 
 func (s *RunSynchronizationJobRequest) GetSynchronizationScopeConfig() *RunSynchronizationJobRequestSynchronizationScopeConfig {
@@ -113,6 +129,11 @@ func (s *RunSynchronizationJobRequest) SetDescription(v string) *RunSynchronizat
 	return s
 }
 
+func (s *RunSynchronizationJobRequest) SetFieldSelectionEnabled(v bool) *RunSynchronizationJobRequest {
+	s.FieldSelectionEnabled = &v
+	return s
+}
+
 func (s *RunSynchronizationJobRequest) SetInstanceId(v string) *RunSynchronizationJobRequest {
 	s.InstanceId = &v
 	return s
@@ -120,6 +141,11 @@ func (s *RunSynchronizationJobRequest) SetInstanceId(v string) *RunSynchronizati
 
 func (s *RunSynchronizationJobRequest) SetPasswordInitialization(v bool) *RunSynchronizationJobRequest {
 	s.PasswordInitialization = &v
+	return s
+}
+
+func (s *RunSynchronizationJobRequest) SetSelectedFieldNames(v []*string) *RunSynchronizationJobRequest {
+	s.SelectedFieldNames = v
 	return s
 }
 

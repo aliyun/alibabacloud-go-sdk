@@ -16,7 +16,7 @@ type iGetNetworkAccessEndpointResponseBody interface {
 }
 
 type GetNetworkAccessEndpointResponseBody struct {
-	// The network access endpoint information.
+	// The network access endpoint details.
 	NetworkAccessEndpoint *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint `json:"NetworkAccessEndpoint,omitempty" xml:"NetworkAccessEndpoint,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,13 +70,13 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The private egress IP address range of the dedicated network access endpoint. This parameter is returned only when NetworkEndpointType is set to private.
+	// The private egress IP address ranges of the dedicated network access endpoint. This parameter is returned only when NetworkAccessEndpointType is set to private.
 	//
 	// example:
 	//
 	// 172.168.x.x
 	EgressPrivateIpAddresses []*string `json:"EgressPrivateIpAddresses,omitempty" xml:"EgressPrivateIpAddresses,omitempty" type:"Repeated"`
-	// The public egress IP address range of the shared network access endpoint. This parameter is returned only when NetworkEndpointType is set to shared.
+	// The public egress IP address ranges of the shared network access endpoint. This parameter is returned only when NetworkAccessEndpointType is set to shared.
 	//
 	// example:
 	//
@@ -88,17 +88,17 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the dedicated network access endpoint.
+	// The ID of the network access endpoint.
 	//
 	// example:
 	//
 	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The name of the dedicated network access endpoint.
+	// The name of the network access endpoint.
 	//
 	// example:
 	//
-	// VPC access endpoint for XX service
+	// xx business VPC access endpoint
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// The type of the network access endpoint. Valid values:
 	//
@@ -110,7 +110,7 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
-	// The security group ID used by the dedicated network access endpoint.
+	// The ID of the security group used by the network access endpoint.
 	//
 	// example:
 	//
@@ -120,35 +120,35 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// - pending: Pending initialization.
 	//
-	// - creating: Being created.
+	// - creating: Creating.
 	//
 	// - running: Running.
 	//
-	// - deleting: Being deleted.
+	// - deleting: Deleting.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the dedicated network access endpoint was last updated. The value is a UNIX timestamp in milliseconds.
+	// The time when the network access endpoint was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The list of vSwitches associated with the dedicated network access endpoint.
+	// The list of specified vSwitches to which the network access endpoint is connected.
 	//
 	// example:
 	//
 	// vsw-examplexxx
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID associated with the dedicated network access endpoint.
+	// The ID of the VPC to which the network access endpoint is connected.
 	//
 	// example:
 	//
 	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The region of the VPC associated with the dedicated network access endpoint.
+	// The region ID of the VPC to which the network access endpoint is connected.
 	//
 	// example:
 	//
@@ -300,9 +300,9 @@ func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) Validate() e
 }
 
 type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint struct {
-	// The private egress IP address list of the backup network access endpoint.
+	// The private egress IP addresses of the backup network access endpoint.
 	BackupEgressPrivateIpAddresses []*string `json:"BackupEgressPrivateIpAddresses,omitempty" xml:"BackupEgressPrivateIpAddresses,omitempty" type:"Repeated"`
-	// The public egress IP address range of the backup network access endpoint.
+	// The public egress IP address ranges of the backup network access endpoint.
 	BackupEgressPublicIpAddresses []*string `json:"BackupEgressPublicIpAddresses,omitempty" xml:"BackupEgressPublicIpAddresses,omitempty" type:"Repeated"`
 	// The ID of the backup security group.
 	//
@@ -318,7 +318,7 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint 
 	//
 	// vpc-bp1a2b3c4d5e6f7g8
 	BackupVpcId *string `json:"BackupVpcId,omitempty" xml:"BackupVpcId,omitempty"`
-	// The region of the backup VPC.
+	// The region ID of the backup VPC.
 	//
 	// example:
 	//

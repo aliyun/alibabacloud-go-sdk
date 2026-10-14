@@ -16,7 +16,7 @@ type iGenerateFileImportTemplateResponseBody interface {
 }
 
 type GenerateFileImportTemplateResponseBody struct {
-	// The download URL of the template.
+	// The template download URL.
 	//
 	// example:
 	//

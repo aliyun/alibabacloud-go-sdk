@@ -20,21 +20,21 @@ type iListSynchronizationJobsResponseBody interface {
 }
 
 type ListSynchronizationJobsResponseBody struct {
-	// The query token value returned by this request.
+	// The query token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of synchronization jobs
+	// The list of synchronization jobs.
 	SynchronizationJobs []*ListSynchronizationJobsResponseBodySynchronizationJobs `json:"SynchronizationJobs,omitempty" xml:"SynchronizationJobs,omitempty" type:"Repeated"`
-	// Total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *ListSynchronizationJobsResponseBody) Validate() error {
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobs struct {
-	// Synchronization job description
+	// The description of the synchronization job.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Synchronization job direction. Valid values:
+	// The direction of the synchronization task. Valid values:
 	//
 	// - ingress: inbound
 	//
@@ -116,21 +116,21 @@ type ListSynchronizationJobsResponseBodySynchronizationJobs struct {
 	//
 	// ingress
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// Synchronization end time in Unix timestamp format, in milliseconds.
+	// The end time of the synchronization. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Synchronization job result
+	// The task result of the synchronization node.
 	Result *ListSynchronizationJobsResponseBodySynchronizationJobsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Synchronization start time in Unix timestamp format, in milliseconds.
+	// The start time of the synchronization. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Synchronization job status. Valid values:
+	// The status of the synchronization task. Valid values:
 	//
 	// - pending: initial state
 	//
@@ -138,27 +138,27 @@ type ListSynchronizationJobsResponseBodySynchronizationJobs struct {
 	//
 	// - failed: failed
 	//
-	// - partial_success: partially succeeded
+	// - partial_success: partially successful
 	//
-	// - success: succeeded
+	// - success: successful
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Synchronization job ID
+	// The ID of the synchronization job.
 	//
 	// example:
 	//
 	// sync_0000347vjovtcf41li0fgsd98gn24q9njxxxxx
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	// Synchronization target ID
+	// The synchronization target ID.
 	//
 	// example:
 	//
 	// idp_my664lwkhpicbyzirog3xxxxx
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// Synchronization target type. Valid values:
+	// The type of the synchronization target. Valid values:
 	//
 	// - identity_provider: identity provider
 	//
@@ -168,11 +168,11 @@ type ListSynchronizationJobsResponseBodySynchronizationJobs struct {
 	//
 	// identity_provider
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// Synchronization trigger type. Valid values:
+	// The trigger type of the synchronization job. Valid values:
 	//
-	// - auto: automatically triggered
+	// - auto: Automatically triggered.
 	//
-	// - manual: manually triggered
+	// - manual: Manually triggered.
 	//
 	// example:
 	//
@@ -288,25 +288,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) Validate() erro
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResult struct {
-	// Synchronization result error code
+	// The error code of the synchronization result.
 	//
 	// example:
 	//
 	// MissingParameter.Username
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Synchronization result error message
+	// The error message of the synchronization result.
 	//
 	// example:
 	//
 	// The specified parameter Username is required!
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Group member synchronization result statistics
+	// The statistics of the group member synchronization result.
 	GroupMemberStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics `json:"GroupMemberStatistics,omitempty" xml:"GroupMemberStatistics,omitempty" type:"Struct"`
-	// Group synchronization result statistics
+	// The group synchronization result statistics.
 	GroupStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics `json:"GroupStatistics,omitempty" xml:"GroupStatistics,omitempty" type:"Struct"`
-	// Organizational unit synchronization result statistics
+	// The organizational unit synchronization result statistics.
 	OrganizationalUnitStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics `json:"OrganizationalUnitStatistics,omitempty" xml:"OrganizationalUnitStatistics,omitempty" type:"Struct"`
-	// User synchronization result statistics
+	// The user synchronization result statistics.
 	UserStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Struct"`
 }
 
@@ -397,17 +397,17 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) Validate(
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics struct {
-	// Binding result statistics
+	// The statistics of the binding result.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// Creation result statistics
+	// The statistics of the creation result.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// Deletion result statistics
+	// The statistics of the deletion result.
 	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// Push result statistics
+	// The statistics of the push result.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// Unchanged result statistics
+	// The statistics of identical results.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// Update result statistics
+	// The statistics of the update result.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -508,25 +508,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -583,25 +583,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -658,25 +658,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -733,25 +733,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -808,25 +808,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -883,25 +883,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -958,17 +958,17 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics struct {
-	// Binding result statistics
+	// The statistics of the binding result.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// Creation result statistics
+	// The statistics of the creation result.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// Deletion result statistics
+	// The statistics of the deletion result.
 	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// Push result statistics
+	// The statistics of the push result.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// Unchanged result statistics
+	// The statistics of identical results.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// Update result statistics
+	// The statistics of the update result.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -1069,25 +1069,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1144,25 +1144,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1219,25 +1219,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1294,25 +1294,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1369,25 +1369,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1444,25 +1444,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1519,17 +1519,19 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics struct {
-	// Binding result statistics
+	// The statistics of the binding result.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// Creation result statistics
+	// The statistics of the creation result.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// Deletion result statistics
+	// The statistics of the deletion result.
 	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// Push result statistics
+	// The export result statistics.
+	Exported *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported `json:"Exported,omitempty" xml:"Exported,omitempty" type:"Struct"`
+	// The statistics of the push result.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// Unchanged result statistics
+	// The statistics of identical results.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// Update result statistics
+	// The statistics of the update result.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -1551,6 +1553,10 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) GetDeleted() *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted {
 	return s.Deleted
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) GetExported() *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported {
+	return s.Exported
 }
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) GetPushed() *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed {
@@ -1577,6 +1583,11 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetDeleted(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
 	s.Deleted = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetExported(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
+	s.Exported = v
 	return s
 }
 
@@ -1611,6 +1622,11 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 			return err
 		}
 	}
+	if s.Exported != nil {
+		if err := s.Exported.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Pushed != nil {
 		if err := s.Pushed.Validate(); err != nil {
 			return err
@@ -1630,25 +1646,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1705,25 +1721,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1780,25 +1796,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1854,26 +1870,101 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 	return dara.Validate(s)
 }
 
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported struct {
+	// The number of failures.
+	//
+	// example:
+	//
+	// 0
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The number of skipped items.
+	//
+	// example:
+	//
+	// 0
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// The number of successes.
+	//
+	// example:
+	//
+	// 0
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total count.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) GetFailed() *int64 {
+	return s.Failed
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) GetSkipped() *int64 {
+	return s.Skipped
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) GetSuccess() *int64 {
+	return s.Success
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) GetTotal() *int64 {
+	return s.Total
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported {
+	s.Total = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsExported) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -1930,25 +2021,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2005,25 +2096,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2080,19 +2171,19 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics struct {
-	// Binding result statistics
+	// The statistics of the binding result.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// Creation result statistics
+	// The statistics of the creation result.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// Deletion result statistics
+	// The statistics of the deletion result.
 	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// Export result statistics
+	// The export result statistics.
 	Exported *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported `json:"Exported,omitempty" xml:"Exported,omitempty" type:"Struct"`
-	// Push result statistics
+	// The statistics of the push result.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// Unchanged result statistics
+	// The statistics of identical results.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// Update result statistics
+	// The statistics of the update result.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -2207,25 +2298,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2282,25 +2373,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2357,25 +2448,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2432,25 +2523,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 2
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 2
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2507,25 +2598,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2582,25 +2673,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -2657,25 +2748,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated struct {
-	// Failure count
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Skipped count
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// Success count
+	// The number of successes.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//

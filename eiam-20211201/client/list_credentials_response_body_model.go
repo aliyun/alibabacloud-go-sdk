@@ -24,13 +24,13 @@ type iListCredentialsResponseBody interface {
 type ListCredentialsResponseBody struct {
 	// The list of credentials.
 	Credentials []*ListCredentialsResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Repeated"`
-	// The maximum number of entries per page for paging.
+	// The maximum number of rows per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in this call.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCredentialsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListCredentialsResponseBody) Validate() error {
 }
 
 type ListCredentialsResponseBodyCredentials struct {
-	// The creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -135,7 +135,12 @@ type ListCredentialsResponseBodyCredentials struct {
 	//
 	// user_custom
 	CredentialCreationType *string `json:"CredentialCreationType,omitempty" xml:"CredentialCreationType,omitempty"`
-	CredentialExternalId   *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
+	// The external unique identifiers of the credentials.
+	//
+	// example:
+	//
+	// 23528e9957304f57b98112c72788b5xxxxx
+	CredentialExternalId *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
 	// The credential ID.
 	//
 	// example:
@@ -154,26 +159,35 @@ type ListCredentialsResponseBodyCredentials struct {
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// The scenarios label of the credential. Valid values:
+	// The usage scenario label of the credential. Valid values:
 	//
-	// - llm: large language model.
+	// - llm: Large language model.
 	//
-	// - saas: third-party SaaS service.
+	// - saas: Third-party SaaS service.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
-	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// The subject ID to which the credential belongs.
+	// The credential sharing scope. Valid values:
+	//
+	// - common: common
+	//
+	// - user_exclusive: account-exclusive
+	//
+	// example:
+	//
+	// common
+	CredentialSharingScope *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
+	// The subject ID of the credential.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// The subject type to which the credential belongs. Valid values:
+	// The subject type of the credential. Valid values:
 	//
-	// - authentication_token_provider: authentication token provider.
+	// - authentication_token_provider: Authentication token provider.
 	//
 	// example:
 	//
@@ -194,7 +208,12 @@ type ListCredentialsResponseBodyCredentials struct {
 	// example:
 	//
 	// credential_description
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The exclusive user ID of the credential.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
 	// The EIAM instance ID.
 	//
@@ -212,7 +231,7 @@ type ListCredentialsResponseBodyCredentials struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time, in UNIX timestamp format. Unit: milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -391,7 +410,7 @@ func (s *ListCredentialsResponseBodyCredentials) Validate() error {
 }
 
 type ListCredentialsResponseBodyCredentialsCredentialContent struct {
-	// The credential content of the OAuth client authentication credential type.
+	// The credential content for the OAuth client authentication credential type.
 	OAuthClientContent *ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -422,7 +441,7 @@ func (s *ListCredentialsResponseBodyCredentialsCredentialContent) Validate() err
 }
 
 type ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent struct {
-	// The client_id of the OAuth protocol.
+	// The client ID of the OAuth protocol.
 	//
 	// example:
 	//
