@@ -16,7 +16,7 @@ type iListLivyComputeRequest interface {
 }
 
 type ListLivyComputeRequest struct {
-	// The environment ID.
+	// The runtime environment ID.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ func (s *CreateSqlStatementResponseBody) Validate() error {
 }
 
 type CreateSqlStatementResponseBodyData struct {
-	// The ID of the interactive query.
+	// The interactive query ID.
 	//
 	// example:
 	//

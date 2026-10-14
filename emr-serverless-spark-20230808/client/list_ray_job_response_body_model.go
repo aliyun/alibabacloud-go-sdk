@@ -18,7 +18,7 @@ type iListRayJobResponseBody interface {
 }
 
 type ListRayJobResponseBody struct {
-	// The list of Ray Jobs.
+	// The list of Ray jobs.
 	RayJobs []*ListRayJobResponseBodyRayJobs `json:"rayJobs,omitempty" xml:"rayJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -85,13 +85,13 @@ func (s *ListRayJobResponseBody) Validate() error {
 type ListRayJobResponseBodyRayJobs struct {
 	// The status of the corresponding Ray cluster. Valid values:
 	//
-	// - Deleted: deleted.
+	// - Deleted: The cluster is deleted.
 	//
-	// - Submitted: submitted but not yet being created.
+	// - Submitted: The cluster is submitted but not yet created.
 	//
-	// - Pending: being created.
+	// - Pending: The cluster is being created.
 	//
-	// - Running: running.
+	// - Running: The cluster is running.
 	//
 	// example:
 	//
@@ -103,77 +103,77 @@ type ListRayJobResponseBodyRayJobs struct {
 	//
 	// Alice
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// The number of compute units (CUs) consumed during the job execution cycle. This value is an estimate. The actual value is subject to the bill.
+	// The number of compute units (CUs) consumed during the job runtime. This value is an estimate. The actual value is subject to the bill.
 	//
 	// example:
 	//
 	// 120
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The URL of the Ray cluster dashboard. When the Ray cluster is in the Running state, the URL points to the Runtime UI. After the cluster is in the Deleted state, the URL points to the History UI. The History UI is supported only in err-1.2.0 and later versions.
+	// The URL of the Ray cluster dashboard. If the Ray cluster is in the Running state, the URL points to the Runtime UI. If the cluster is in the Deleted state, the URL points to the History UI. The History UI is supported only in err-1.2.0 and later.
 	//
 	// example:
 	//
 	// https://emr-ray-gateway.aliyuncs.com?token=xxxxxxxxx
 	DashboardUrl *string `json:"dashboardUrl,omitempty" xml:"dashboardUrl,omitempty"`
-	// The execution duration of the job. Unit: seconds.
+	// The execution duration of the job, in seconds.
 	//
 	// example:
 	//
 	// 3564
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The time when the job ended.
+	// The time when the job ended. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1776945509000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The name of the Ray Job.
+	// The name of the Ray job.
 	//
 	// example:
 	//
 	// testRayJob
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The Ray DPI engine version.
+	// The Ray engine version.
 	//
 	// example:
 	//
 	// err-1.2.0 (Ray 2.55.1, Python 3.12)
 	ResourceQueue *string `json:"resourceQueue,omitempty" xml:"resourceQueue,omitempty"`
-	// The time when the job was started.
+	// The time when the job was started. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1776945499000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The job status. Valid values:
+	// The status of the job. Valid values:
 	//
-	// - Submitted: submitted.
+	// - Submitted: The job is submitted.
 	//
-	// - Pending: the cluster is being created.
+	// - Pending: The cluster is being created.
 	//
-	// - Running: the job is running.
+	// - Running: The job is running.
 	//
-	// - Succeeded: the job succeeded.
+	// - Succeeded: The job succeeded.
 	//
-	// - Failed: the job failed.
+	// - Failed: The job failed.
 	//
-	// - Cancelling: the job is being canceled.
+	// - Cancelling: The job is being cancelled.
 	//
-	// - Cancelled: the job is canceled.
+	// - Cancelled: The job is cancelled.
 	//
-	// - Timeout: the job timed out and was canceled.
+	// - Timeout: The job is cancelled due to a timeout.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the Ray Job.
+	// The ID of the Ray job.
 	//
 	// example:
 	//
 	// rj-uiulpgow9xljimm1
 	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
-	// The time when the job was submitted.
+	// The time when the job was submitted. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

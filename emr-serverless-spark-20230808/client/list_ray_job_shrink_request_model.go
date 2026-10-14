@@ -24,7 +24,7 @@ type iListRayJobShrinkRequest interface {
 }
 
 type ListRayJobShrinkRequest struct {
-	// The name of the Ray Job (exact match).
+	// The name of the Ray job. Exact match is supported.
 	//
 	// example:
 	//
@@ -36,21 +36,21 @@ type ListRayJobShrinkRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The submission ID of the Ray Job.
+	// The submission ID of the Ray job.
 	//
 	// example:
 	//
 	// rj-xxxxxxxxxxx
 	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
-	// The submit time range.
+	// The submission time range.
 	SubmitTimeShrink *string `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The data development node ID.
+	// The ID of the data development node.
 	//
 	// example:
 	//

@@ -26,19 +26,19 @@ type iListWorkspacesShrinkRequest interface {
 }
 
 type ListWorkspacesShrinkRequest struct {
-	// The maximum number of records to retrieve in a single request.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The name of the workspace. Fuzzy match is supported.
+	// The name of the workspace. Fuzzy search by workspace name is supported.
 	//
 	// example:
 	//
 	// test_workspace
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token that marks the current read position.
+	// The token that indicates the position from which to start reading.
 	//
 	// example:
 	//
@@ -50,16 +50,29 @@ type ListWorkspacesShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2thxggoqhmhq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The workspace status.
+	// The state of the workspace. Valid values:
+	//
+	// - Starting: The workspace is starting.
+	//
+	// - Running: The workspace is running.
+	//
+	// - Stopping: The workspace is stopping.
+	//
+	// - Stopped: The workspace is stopped.
+	//
+	// - Error: The workspace failed.
 	//
 	// example:
 	//
 	// running
-	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The list of tags used to filter workspaces.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

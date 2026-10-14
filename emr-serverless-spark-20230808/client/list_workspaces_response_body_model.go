@@ -22,13 +22,13 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The maximum number of records to retrieve in a single request.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page.
+	// The next token.
 	//
 	// example:
 	//
@@ -117,63 +117,65 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// Indicates whether auto-renewal is enabled. This parameter is required for the prepaid type.
+	// Specifies whether to enable auto-renewal. This parameter is required for subscription resources.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal duration. This parameter is required for the prepaid type.
+	// The auto-renewal duration. This parameter is required for subscription resources.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The auto-renewal epoch unit. This parameter is required for the prepaid type.
+	// The auto-renewal epoch. This parameter is required for subscription resources.
 	//
 	// example:
 	//
 	// YEAR, MONTH, WEEK, DAY, HOUR, MINUTE
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
-	// The time when the workspace was created.
+	// The time when the workspace was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684115879955
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The DLF Catalog information.
+	// The DLF catalog information.
 	//
 	// example:
 	//
 	// default
 	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
-	// The DLF binding type.
+	// The type of the associated DLF.
 	//
 	// example:
 	//
 	// 1.0
 	DlfType *string `json:"dlfType,omitempty" xml:"dlfType,omitempty"`
-	// The subscription period quantity. This parameter is required for the prepaid type.
+	// The duration of the subscription. This parameter is required for subscription resources.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The time when the workspace was released.
+	// The time when the workspace was released. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1687103999999
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The failure reason.
+	// The reason for the failure.
 	//
 	// example:
 	//
 	// out of stock
-	FailReason  *string   `json:"failReason,omitempty" xml:"failReason,omitempty"`
-	GpuSpec     []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	FailReason *string `json:"failReason,omitempty" xml:"failReason,omitempty"`
+	// The list of GPU models.
+	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	// The IP whitelist of the workspace.
 	IpWhiteList []*string `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
-	// The subscription period unit. This parameter is required for the prepaid type.
+	// The unit of the subscription period. This parameter is required for subscription resources.
 	//
 	// example:
 	//
@@ -185,14 +187,15 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// PAID/UNPAID
 	PaymentStatus *string `json:"paymentStatus,omitempty" xml:"paymentStatus,omitempty"`
-	// The payment type.
+	// The billing method.
 	//
 	// example:
 	//
 	// PayAsYouGo or Subscription
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The prepaid resource quota information.
-	PrePaidQuota    *ListWorkspacesResponseBodyWorkspacesPrePaidQuota      `json:"prePaidQuota,omitempty" xml:"prePaidQuota,omitempty" type:"Struct"`
+	// The information about the subscription resource quota.
+	PrePaidQuota *ListWorkspacesResponseBodyWorkspacesPrePaidQuota `json:"prePaidQuota,omitempty" xml:"prePaidQuota,omitempty" type:"Struct"`
+	// The list of GPU subscription quotas.
 	PrePaidQuotaGpu []*ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu `json:"prePaidQuotaGpu,omitempty" xml:"prePaidQuotaGpu,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -206,6 +209,8 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// SERVICE_RELEASE
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxxxxxxx
@@ -216,28 +221,29 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// 100cu
 	ResourceSpec *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
-	// The state change information of the workspace.
+	// The information about the workspace status change.
 	StateChangeReason *ListWorkspacesResponseBodyWorkspacesStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
 	// The OSS path.
 	//
 	// example:
 	//
 	// spark-result
-	Storage *string                                     `json:"storage,omitempty" xml:"storage,omitempty"`
-	Tags    []*ListWorkspacesResponseBodyWorkspacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Workspace ID。
+	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
+	// The list of workspace tags.
+	Tags []*ListWorkspacesResponseBodyWorkspacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The workspace ID.
 	//
 	// example:
 	//
 	// w-******
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
-	// Spark batch workspace-1
+	// spark-batch-job-workspace-1
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// The workspace status.
+	// The status of the workspace.
 	//
 	// example:
 	//
@@ -526,23 +532,23 @@ type ListWorkspacesResponseBodyWorkspacesPrePaidQuota struct {
 	//
 	// {\\"cpu\\":\\"1\\",\\"memory\\":\\"4Gi\\",\\"cu\\":\\"1\\"}
 	AllocatedResource *string `json:"allocatedResource,omitempty" xml:"allocatedResource,omitempty"`
-	// Indicates whether auto-renewal is enabled for the resource. Valid values:
+	// Specifies whether auto-renewal is enabled for the resource. Valid values:
 	//
 	// - true: Auto-renewal is enabled. The resource is automatically renewed upon expiration.
 	//
-	// - false: Auto-renewal is not enabled. The resource stops being available upon expiration.
+	// - false: Auto-renewal is disabled. The resource is stopped upon expiration.
 	//
 	// example:
 	//
 	// true
 	AutoRenewal *bool `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
-	// The time when the resource quota was created.
+	// The time when the resource quota was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1745683200000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The time when the resource quota expires.
+	// The expiration time of the resource quota. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -554,21 +560,23 @@ type ListWorkspacesResponseBodyWorkspacesPrePaidQuota struct {
 	//
 	// i-abc12345
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The maximum amount of resources available.
+	// The maximum amount of resources that can be used.
 	//
 	// example:
 	//
 	// {\\"cpu\\":\\"1\\",\\"memory\\":\\"4Gi\\",\\"cu\\":\\"1\\"}
 	MaxResource *string `json:"maxResource,omitempty" xml:"maxResource,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 23464687565
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 	// The payment status of the current resource. Valid values:
 	//
-	// - NORMAL: Active.
+	// - NORMAL: Valid.
 	//
-	// - WAIT_FOR_EXPIRE: About to expire.
+	// - WAIT_FOR_EXPIRE: Expiring.
 	//
 	// - EXPIRED: Expired.
 	//
@@ -678,41 +686,76 @@ func (s *ListWorkspacesResponseBodyWorkspacesPrePaidQuota) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu struct {
-	AutoRenewal  *bool   `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
+	// Specifies whether auto-renewal is enabled.
+	//
+	// example:
+	//
+	// true
+	AutoRenewal *bool `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
+	// The number of CPU cores.
 	CpuCoreCount *string `json:"cpuCoreCount,omitempty" xml:"cpuCoreCount,omitempty"`
+	// The time when the GPU subscription quota was created. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1782292672000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The expiration time of the GPU subscription quota. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1782292772000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	GpuAmount  *int32 `json:"gpuAmount,omitempty" xml:"gpuAmount,omitempty"`
+	// The number of GPUs.
+	//
+	// example:
+	//
+	// 0
+	GpuAmount *int32 `json:"gpuAmount,omitempty" xml:"gpuAmount,omitempty"`
+	// The number of GPU machines.
+	//
 	// example:
 	//
 	// 4
 	GpuMachineNum *int32 `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
+	// The GPU memory size.
+	//
+	// example:
+	//
+	// 0
 	GpuMemorySize *int64 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 8
 	GpuNum *int32 `json:"gpuNum,omitempty" xml:"gpuNum,omitempty"`
+	// The GPU model.
+	//
 	// example:
 	//
 	// ecs.gn7i-c8g1.2xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// w-xxxxxxxxx-gpu-quota-xxxx
-	InstanceId         *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The instance family.
 	InstanceTypeFamily *string `json:"instanceTypeFamily,omitempty" xml:"instanceTypeFamily,omitempty"`
-	InstanceTypeId     *string `json:"instanceTypeId,omitempty" xml:"instanceTypeId,omitempty"`
-	MemorySize         *string `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The instance type ID.
+	InstanceTypeId *string `json:"instanceTypeId,omitempty" xml:"instanceTypeId,omitempty"`
+	// The memory size.
+	MemorySize *string `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2534863936
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The order status.
+	//
 	// example:
 	//
 	// NORMAL
@@ -912,7 +955,9 @@ func (s *ListWorkspacesResponseBodyWorkspacesStateChangeReason) Validate() error
 }
 
 type ListWorkspacesResponseBodyWorkspacesTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type ListRayClusterRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	// The number of entries to return on each page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//

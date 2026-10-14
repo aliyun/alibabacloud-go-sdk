@@ -20,13 +20,13 @@ type iListLivyComputeResponseBody interface {
 }
 
 type ListLivyComputeResponseBody struct {
-	// The response code. A value of 1000000 indicates that the request is successful. For other values, see the message parameter for error details.
+	// The return code of the request. A value of 1000000 indicates that the request is successful. Other values indicate that the request failed. For specific error details, see the message.
 	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -96,7 +96,7 @@ func (s *ListLivyComputeResponseBody) Validate() error {
 }
 
 type ListLivyComputeResponseBodyData struct {
-	// A list of Livy Gateways.
+	// The list of Livy gateways.
 	LivyComputes []*ListLivyComputeResponseBodyDataLivyComputes `json:"livyComputes,omitempty" xml:"livyComputes,omitempty" type:"Repeated"`
 }
 
@@ -131,7 +131,7 @@ func (s *ListLivyComputeResponseBodyData) Validate() error {
 }
 
 type ListLivyComputeResponseBodyDataLivyComputes struct {
-	// The ID of the Livy Gateway.
+	// The ID of the Livy gateway.
 	//
 	// example:
 	//
@@ -143,19 +143,19 @@ type ListLivyComputeResponseBodyDataLivyComputes struct {
 	//
 	// alice
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The public endpoint.
+	// The public network connection endpoint.
 	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The internal endpoint.
+	// The internal network connection endpoint.
 	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou-internal.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	EndpointInner *string `json:"endpointInner,omitempty" xml:"endpointInner,omitempty"`
-	// The time when the resource was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type ListLivyComputeResponseBodyDataLivyComputes struct {
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The time when the resource was started.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iGetLivyComputeResponseBody interface {
 }
 
 type GetLivyComputeResponseBody struct {
-	// The response code. A value of 1000000 indicates a successful request. Other values indicate a failed request. Check the message parameter for the error details.
+	// The return code of the request. The value 1000000 indicates that the request succeeded. Other values indicate that the request failed. For details about the error, see the message field.
 	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *GetLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -110,7 +110,13 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// lc-xxxxxxxxxxxxx
 	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
-	// The number of CPU cores for the Livy server.
+	// The number of CPU cores for the Livy Server. Valid values:
+	//
+	// - 1
+	//
+	// - 2
+	//
+	// - 4
 	//
 	// example:
 	//
@@ -122,37 +128,37 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// alice
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The version number of the Spark engine.
+	// The Spark DPI engine version number.
 	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The status of the public endpoint switch.
+	// The status of the public network address switch.
 	//
 	// example:
 	//
 	// true
 	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
-	// The public endpoint.
+	// The public network connection address.
 	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The internal endpoint.
+	// The internal network connection address.
 	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou-internal.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	EndpointInner *string `json:"endpointInner,omitempty" xml:"endpointInner,omitempty"`
-	// The ID of the runtime environment.
+	// The runtime environment ID.
 	//
 	// example:
 	//
 	// ev-cq31c7tlhtgm9nrrlj4g
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Indicates whether the fusion switch is enabled.
+	// Specifies whether the fusion feature is enabled.
 	//
 	// example:
 	//
@@ -194,7 +200,13 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// 0.8.0
 	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
-	// The memory size of the Livy server.
+	// The memory size of the Livy Server. Valid values:
+	//
+	// - 4Gi
+	//
+	// - 8Gi
+	//
+	// - 16Gi
 	//
 	// example:
 	//
@@ -206,7 +218,7 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the network connection.
+	// The network connectivity name.
 	//
 	// example:
 	//
@@ -224,13 +236,13 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// 10000001
 	RamUserId *string `json:"ramUserId,omitempty" xml:"ramUserId,omitempty"`
-	// The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
+	// The Spark DPI engine version number. This field is deprecated. Use displayReleaseVersion instead.
 	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -460,7 +472,7 @@ func (s *GetLivyComputeResponseBodyData) Validate() error {
 }
 
 type GetLivyComputeResponseBodyDataAutoStopConfiguration struct {
-	// Indicates whether to automatically start the gateway after it is created.
+	// Specifies whether to automatically start after creation. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -470,7 +482,7 @@ type GetLivyComputeResponseBodyDataAutoStopConfiguration struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
+	// The number of idle minutes after which the Livy Gateway automatically stops.
 	//
 	// example:
 	//

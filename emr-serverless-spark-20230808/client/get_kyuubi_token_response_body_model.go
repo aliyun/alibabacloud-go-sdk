@@ -16,7 +16,7 @@ type iGetKyuubiTokenResponseBody interface {
 }
 
 type GetKyuubiTokenResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *GetKyuubiTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,33 +62,33 @@ func (s *GetKyuubiTokenResponseBody) Validate() error {
 }
 
 type GetKyuubiTokenResponseBodyData struct {
-	// The automatic expiration configuration.
+	// The auto-expiration configuration struct.
 	AutoExpireConfiguration *GetKyuubiTokenResponseBodyDataAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1749456094000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// admin
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The expiration time.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1753932319390
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The last used time.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1749456098000
 	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	// The Alibaba Cloud Resource Names (ARNs) of the authorized users.
+	// The list of authorized user ARNs.
 	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
 	// The token name.
 	//
@@ -103,7 +103,7 @@ type GetKyuubiTokenResponseBodyData struct {
 	//
 	// dxj**********wfg
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// The token ID.
+	// Token ID。
 	//
 	// example:
 	//
@@ -219,13 +219,13 @@ func (s *GetKyuubiTokenResponseBodyData) Validate() error {
 }
 
 type GetKyuubiTokenResponseBodyDataAutoExpireConfiguration struct {
-	// Indicates whether the token automatically expires.
+	// Specifies whether auto-expiration is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The expiration period, in days.
+	// The expiration period in days.
 	//
 	// example:
 	//

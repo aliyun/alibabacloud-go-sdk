@@ -22,7 +22,7 @@ type iListMembersResponseBody interface {
 }
 
 type ListMembersResponseBody struct {
-	// The maximum number of entries returned per page.
+	// The maximum number of records to return per request.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type ListMembersResponseBody struct {
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The list of members.
 	Members []*ListMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
-	// The token for the next page of results.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *ListMembersResponseBody) Validate() error {
 }
 
 type ListMembersResponseBodyMembers struct {
-	// The list of operations allowed for this user.
+	// The list of actions allowed for the user.
 	Actions []*ListMembersResponseBodyMembersActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The time when the member was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListMembersResponseBodyMembers struct {
 	//
 	// jia***test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the user.
+	// The ARN of the member.
 	//
 	// example:
 	//
@@ -145,7 +145,11 @@ type ListMembersResponseBodyMembers struct {
 	//
 	// jia***test@195*****7311.onaliyun.com
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	// The type of the user.
+	// The type of the user. Valid values:
+	//
+	// - ROLE
+	//
+	// - MEMBER
 	//
 	// example:
 	//
@@ -268,13 +272,13 @@ type ListMembersResponseBodyMembersActions struct {
 	//
 	// acs:emr::w-1234****abcd:action/add_MEMBER
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// The name of the permission.
+	// The name of the action.
 	//
 	// example:
 	//
 	// add
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// The list of action dependencies.
+	// The list of dependencies for the action.
 	//
 	// example:
 	//
@@ -354,7 +358,7 @@ func (s *ListMembersResponseBodyMembersActions) Validate() error {
 type ListMembersResponseBodyMembersRoles struct {
 	// The list of permissions.
 	Actions []*ListMembersResponseBodyMembersRolesActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The time when the role was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -453,13 +457,13 @@ type ListMembersResponseBodyMembersRolesActions struct {
 	//
 	// acs:emr::w-1234****abcd:action/add_MEMBER
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// The name of the permission.
+	// The name of the action.
 	//
 	// example:
 	//
 	// add
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// The list of action dependencies.
+	// The list of dependencies for the action.
 	//
 	// example:
 	//

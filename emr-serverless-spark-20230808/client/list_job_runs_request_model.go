@@ -58,46 +58,47 @@ type ListJobRunsRequest struct {
 	//
 	// 150976534701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The end time range of the job.
-	EndTime      *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
-	GroupByState *bool                      `json:"groupByState,omitempty" xml:"groupByState,omitempty"`
-	// Specifies whether the job is a workflow job.
+	// The time range for the end time of the job run.
+	EndTime *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	// Specifies whether to aggregate and return statistical results by job run state.
+	GroupByState *bool `json:"groupByState,omitempty" xml:"groupByState,omitempty"`
+	// Specifies whether the job run is a workflow job.
 	//
 	// example:
 	//
 	// false
 	IsWorkflow *string `json:"isWorkflow,omitempty" xml:"isWorkflow,omitempty"`
-	// The job ID of the streaming job deployment.
+	// The ID of the streaming job deployment.
 	//
 	// example:
 	//
 	// jd-b6d003f1930f****
 	JobRunDeploymentId *string `json:"jobRunDeploymentId,omitempty" xml:"jobRunDeploymentId,omitempty"`
-	// The job ID.
+	// The ID of the job run.
 	//
 	// example:
 	//
 	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The maximum number of records to retrieve in a single request. Maximum value: 100.
+	// The maximum number of entries to return in a single call. The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The minimum execution duration of the job, in milliseconds.
+	// The minimum execution duration of the job run, in milliseconds.
 	//
 	// example:
 	//
 	// 60000
 	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
-	// The job name.
+	// The name of the job.
 	//
 	// example:
 	//
 	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token that marks the position from which to start reading.
+	// The pagination token that specifies the starting position for the query.
 	//
 	// example:
 	//
@@ -109,7 +110,7 @@ type ListJobRunsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The name of the resource queue on which the Spark job runs.
+	// The name of the resource queue in which the Spark job runs.
 	//
 	// example:
 	//
@@ -121,9 +122,9 @@ type ListJobRunsRequest struct {
 	//
 	// [{\\"key\\":\\"mainClass\\",\\"value\\":\\"yourClass\\"}]
 	RuntimeConfigs *string `json:"runtimeConfigs,omitempty" xml:"runtimeConfigs,omitempty"`
-	// The start time range of the job.
+	// The time range for the start time of the job run.
 	StartTime *ListJobRunsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
-	// The job states.
+	// The states of the job runs.
 	//
 	// example:
 	//
@@ -318,13 +319,13 @@ func (s *ListJobRunsRequest) Validate() error {
 }
 
 type ListJobRunsRequestEndTime struct {
-	// The end of the end time range.
+	// The end time of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The beginning of the end time range.
+	// The start time of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -363,13 +364,13 @@ func (s *ListJobRunsRequestEndTime) Validate() error {
 }
 
 type ListJobRunsRequestStartTime struct {
-	// The end of the start time range.
+	// The end time of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The beginning of the start time range.
+	// The start time of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -1196,7 +1196,7 @@ func (client *Client) CreateRayCluster(workspaceId *string, request *CreateRayCl
 
 // Summary:
 //
-// Creates a session cluster.
+// Creates a session.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -1293,7 +1293,7 @@ func (client *Client) CreateSessionClusterWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// Creates a session cluster.
+// Creates a session.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -1312,7 +1312,7 @@ func (client *Client) CreateSessionCluster(workspaceId *string, request *CreateS
 
 // Summary:
 //
-// Creates an SQL statement.
+// Creates an SQL query.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -1385,7 +1385,7 @@ func (client *Client) CreateSqlStatementWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// Creates an SQL statement.
+// Creates an SQL query.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -2182,7 +2182,7 @@ func (client *Client) GenerateTaskCodes(bizId *string, request *GenerateTaskCode
 
 // Summary:
 //
-// Gets the state of an AI center.
+// Retrieves the status of AI Hub.
 //
 // @param request - GetAICenterStateRequest
 //
@@ -2223,7 +2223,7 @@ func (client *Client) GetAICenterStateWithOptions(workspaceId *string, request *
 
 // Summary:
 //
-// Gets the state of an AI center.
+// Retrieves the status of AI Hub.
 //
 // @param request - GetAICenterStateRequest
 //
@@ -2378,7 +2378,7 @@ func (client *Client) GetCuHours(workspaceId *string, queue *string, request *Ge
 
 // Summary:
 //
-// Obtains job analysis information on E-MapReduce (EMR) Doctor.
+// Retrieves the diagnostic information for a Serverless Spark job.
 //
 // @param request - GetDoctorApplicationRequest
 //
@@ -2433,7 +2433,7 @@ func (client *Client) GetDoctorApplicationWithOptions(workspaceId *string, runId
 
 // Summary:
 //
-// Obtains job analysis information on E-MapReduce (EMR) Doctor.
+// Retrieves the diagnostic information for a Serverless Spark job.
 //
 // @param request - GetDoctorApplicationRequest
 //
@@ -2452,7 +2452,7 @@ func (client *Client) GetDoctorApplication(workspaceId *string, runId *string, r
 
 // Summary:
 //
-// Retrieves the details of a job run by calling GetJobRun.
+// Retrieves the details of a Spark job run by calling GetJobRun.
 //
 // @param request - GetJobRunRequest
 //
@@ -2499,7 +2499,7 @@ func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string
 
 // Summary:
 //
-// Retrieves the details of a job run by calling GetJobRun.
+// Retrieves the details of a Spark job run by calling GetJobRun.
 //
 // @param request - GetJobRunRequest
 //
@@ -2518,7 +2518,7 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 
 // Summary:
 //
-// Retrieves the details of a Kyuubi Gateway.
+// Retrieves a Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -2551,7 +2551,7 @@ func (client *Client) GetKyuubiServiceWithOptions(workspaceId *string, kyuubiSer
 
 // Summary:
 //
-// Retrieves the details of a Kyuubi Gateway.
+// Retrieves a Kyuubi Gateway.
 //
 // @return GetKyuubiServiceResponse
 func (client *Client) GetKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *GetKyuubiServiceResponse, _err error) {
@@ -2568,7 +2568,7 @@ func (client *Client) GetKyuubiService(workspaceId *string, kyuubiServiceId *str
 
 // Summary:
 //
-// Obtains an authentication token for Kyuubi Gateway.
+// Retrieves the Kyuubi Gateway authentication token.
 //
 // @param request - GetKyuubiTokenRequest
 //
@@ -2615,7 +2615,7 @@ func (client *Client) GetKyuubiTokenWithOptions(workspaceId *string, kyuubiServi
 
 // Summary:
 //
-// Obtains an authentication token for Kyuubi Gateway.
+// Retrieves the Kyuubi Gateway authentication token.
 //
 // @param request - GetKyuubiTokenRequest
 //
@@ -2634,7 +2634,7 @@ func (client *Client) GetKyuubiToken(workspaceId *string, kyuubiServiceId *strin
 
 // Summary:
 //
-// Retrieves information about a Livy Gateway.
+// Retrieves the Livy Gateway information.
 //
 // @param request - GetLivyComputeRequest
 //
@@ -2681,7 +2681,7 @@ func (client *Client) GetLivyComputeWithOptions(workspaceBizId *string, livyComp
 
 // Summary:
 //
-// Retrieves information about a Livy Gateway.
+// Retrieves the Livy Gateway information.
 //
 // @param request - GetLivyComputeRequest
 //
@@ -2700,7 +2700,7 @@ func (client *Client) GetLivyCompute(workspaceBizId *string, livyComputeId *stri
 
 // Summary:
 //
-// Retrieves a token for a Livy Gateway.
+// Retrieves the token for a Livy Gateway.
 //
 // @param request - GetLivyComputeTokenRequest
 //
@@ -2747,7 +2747,7 @@ func (client *Client) GetLivyComputeTokenWithOptions(workspaceBizId *string, liv
 
 // Summary:
 //
-// Retrieves a token for a Livy Gateway.
+// Retrieves the token for a Livy Gateway.
 //
 // @param request - GetLivyComputeTokenRequest
 //
@@ -3012,7 +3012,7 @@ func (client *Client) GetRunConfiguration(workspaceId *string, runId *string, re
 
 // Summary:
 //
-// Retrieves session details.
+// Retrieves the details of a session.
 //
 // @param request - GetSessionClusterRequest
 //
@@ -3059,7 +3059,7 @@ func (client *Client) GetSessionClusterWithOptions(workspaceId *string, sessionC
 
 // Summary:
 //
-// Retrieves session details.
+// Retrieves the details of a session.
 //
 // @param request - GetSessionClusterRequest
 //
@@ -3364,7 +3364,7 @@ func (client *Client) ListCatalogs(workspaceId *string, request *ListCatalogsReq
 
 // Summary:
 //
-// Lists the log files for a job executor.
+// Lists the log files of a job executor.
 //
 // @param request - ListExecutorLogsRequest
 //
@@ -3423,7 +3423,7 @@ func (client *Client) ListExecutorLogsWithOptions(workspaceId *string, jobRunId 
 
 // Summary:
 //
-// Lists the log files for a job executor.
+// Lists the log files of a job executor.
 //
 // @param request - ListExecutorLogsRequest
 //
@@ -3524,7 +3524,7 @@ func (client *Client) ListJobExecutors(workspaceId *string, jobRunId *string, re
 
 // Summary:
 //
-// Queries a list of Spark jobs.
+// Lists Spark job runs.
 //
 // @param tmpReq - ListJobRunsRequest
 //
@@ -3653,7 +3653,7 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 
 // Summary:
 //
-// Queries a list of Spark jobs.
+// Lists Spark job runs.
 //
 // @param request - ListJobRunsRequest
 //
@@ -3738,7 +3738,7 @@ func (client *Client) ListKyuubiServices(workspaceId *string, request *ListKyuub
 
 // Summary:
 //
-// Lists Kyuubi Spark applications.
+// Queries the Spark applications submitted by Kyuubi.
 //
 // @param tmpReq - ListKyuubiSparkApplicationsRequest
 //
@@ -3843,7 +3843,7 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 
 // Summary:
 //
-// Lists Kyuubi Spark applications.
+// Queries the Spark applications submitted by Kyuubi.
 //
 // @param request - ListKyuubiSparkApplicationsRequest
 //
@@ -3862,7 +3862,7 @@ func (client *Client) ListKyuubiSparkApplications(workspaceId *string, kyuubiSer
 
 // Summary:
 //
-// Lists KyuubiServer authentication tokens.
+// Lists the Kyuubi Server authentication tokens.
 //
 // @param request - ListKyuubiTokenRequest
 //
@@ -3909,7 +3909,7 @@ func (client *Client) ListKyuubiTokenWithOptions(workspaceId *string, kyuubiServ
 
 // Summary:
 //
-// Lists KyuubiServer authentication tokens.
+// Lists the Kyuubi Server authentication tokens.
 //
 // @param request - ListKyuubiTokenRequest
 //
@@ -3928,7 +3928,7 @@ func (client *Client) ListKyuubiToken(workspaceId *string, kyuubiServiceId *stri
 
 // Summary:
 //
-// Lists Livy Gateways.
+// Lists Livy gateways.
 //
 // @param request - ListLivyComputeRequest
 //
@@ -3979,7 +3979,7 @@ func (client *Client) ListLivyComputeWithOptions(workspaceBizId *string, request
 
 // Summary:
 //
-// Lists Livy Gateways.
+// Lists Livy gateways.
 //
 // @param request - ListLivyComputeRequest
 //
@@ -3998,7 +3998,7 @@ func (client *Client) ListLivyCompute(workspaceBizId *string, request *ListLivyC
 
 // Summary:
 //
-// Lists the historical sessions for a Livy Gateway.
+// Retrieves the historical sessions of a Livy Gateway.
 //
 // @param request - ListLivyComputeSessionsRequest
 //
@@ -4053,7 +4053,7 @@ func (client *Client) ListLivyComputeSessionsWithOptions(workspaceId *string, li
 
 // Summary:
 //
-// Lists the historical sessions for a Livy Gateway.
+// Retrieves the historical sessions of a Livy Gateway.
 //
 // @param request - ListLivyComputeSessionsRequest
 //
@@ -4072,7 +4072,7 @@ func (client *Client) ListLivyComputeSessions(workspaceId *string, livyComputeId
 
 // Summary:
 //
-// Lists the tokens of a Livy Gateway.
+// Lists the tokens of a Livy gateway.
 //
 // @param request - ListLivyComputeTokenRequest
 //
@@ -4119,7 +4119,7 @@ func (client *Client) ListLivyComputeTokenWithOptions(workspaceBizId *string, li
 
 // Summary:
 //
-// Lists the tokens of a Livy Gateway.
+// Lists the tokens of a Livy gateway.
 //
 // @param request - ListLivyComputeTokenRequest
 //
@@ -4216,7 +4216,7 @@ func (client *Client) ListLogContents(workspaceId *string, request *ListLogConte
 
 // Summary:
 //
-// Retrieves the list of members in the workspace.
+// Queries the list of members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -4271,7 +4271,7 @@ func (client *Client) ListMembersWithOptions(workspaceId *string, request *ListM
 
 // Summary:
 //
-// Retrieves the list of members in the workspace.
+// Queries the list of members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -4356,6 +4356,76 @@ func (client *Client) ListNetworkServices(workspaceId *string, request *ListNetw
 
 // Summary:
 //
+// Queries the jobs with the highest CU usage in a queue.
+//
+// @param request - ListQueueTopJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQueueTopJobsResponse
+func (client *Client) ListQueueTopJobsWithOptions(workspaceId *string, queueName *string, request *ListQueueTopJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQueueTopJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TopN) {
+		query["topN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQueueTopJobs"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/queues/" + dara.PercentEncode(dara.StringValue(queueName)) + "/topJobs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQueueTopJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the jobs with the highest CU usage in a queue.
+//
+// @param request - ListQueueTopJobsRequest
+//
+// @return ListQueueTopJobsResponse
+func (client *Client) ListQueueTopJobs(workspaceId *string, queueName *string, request *ListQueueTopJobsRequest) (_result *ListQueueTopJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListQueueTopJobsResponse{}
+	_body, _err := client.ListQueueTopJobsWithOptions(workspaceId, queueName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists Ray clusters.
 //
 // @param request - ListRayClusterRequest
@@ -4426,7 +4496,7 @@ func (client *Client) ListRayCluster(workspaceId *string, request *ListRayCluste
 
 // Summary:
 //
-// Lists Ray Job information.
+// Lists Ray job information.
 //
 // @param tmpReq - ListRayJobRequest
 //
@@ -4499,7 +4569,7 @@ func (client *Client) ListRayJobWithOptions(workspaceId *string, tmpReq *ListRay
 
 // Summary:
 //
-// Lists Ray Job information.
+// Lists Ray job information.
 //
 // @param request - ListRayJobRequest
 //
@@ -4686,7 +4756,7 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 
 // Summary:
 //
-// Retrieves a list of session clusters.
+// Retrieves a list of sessions.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -4753,7 +4823,7 @@ func (client *Client) ListSessionClustersWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// Retrieves a list of session clusters.
+// Retrieves a list of sessions.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -4912,7 +4982,7 @@ func (client *Client) ListTemplate(workspaceBizId *string, request *ListTemplate
 
 // Summary:
 //
-// Queries the list of queues in a workspace.
+// Queries the queues in a workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
@@ -4963,7 +5033,7 @@ func (client *Client) ListWorkspaceQueuesWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// Queries the list of queues in a workspace.
+// Queries the queues in a workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
@@ -4982,7 +5052,7 @@ func (client *Client) ListWorkspaceQueues(workspaceId *string, request *ListWork
 
 // Summary:
 //
-// Queries a list of workspaces.
+// Retrieves a list of workspaces.
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -5059,7 +5129,7 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, h
 
 // Summary:
 //
-// Queries a list of workspaces.
+// Retrieves a list of workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -6686,7 +6756,7 @@ func (client *Client) UpdateLivyCompute(workspaceBizId *string, livyComputeId *s
 
 // Summary:
 //
-// Updates a workflow definition and its timed scheduling.
+// Updates the workflow definition and timed scheduling.
 //
 // @param tmpReq - UpdateProcessDefinitionWithScheduleRequest
 //
@@ -6823,7 +6893,7 @@ func (client *Client) UpdateProcessDefinitionWithScheduleWithOptions(bizId *stri
 
 // Summary:
 //
-// Updates a workflow definition and its timed scheduling.
+// Updates the workflow definition and timed scheduling.
 //
 // @param request - UpdateProcessDefinitionWithScheduleRequest
 //
@@ -6936,7 +7006,7 @@ func (client *Client) UpdateRayCluster(workspaceId *string, clusterId *string, r
 
 // Summary:
 //
-// Updates the properties of a workspace.
+// Updates the attributes of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -7021,7 +7091,7 @@ func (client *Client) UpdateWorkspaceWithOptions(request *UpdateWorkspaceRequest
 
 // Summary:
 //
-// Updates the properties of a workspace.
+// Updates the attributes of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //

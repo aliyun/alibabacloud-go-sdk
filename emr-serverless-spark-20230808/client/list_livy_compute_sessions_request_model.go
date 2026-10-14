@@ -18,7 +18,7 @@ type iListLivyComputeSessionsRequest interface {
 }
 
 type ListLivyComputeSessionsRequest struct {
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//

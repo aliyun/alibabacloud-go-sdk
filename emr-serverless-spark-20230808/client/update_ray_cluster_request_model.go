@@ -46,23 +46,23 @@ type UpdateRayClusterRequest struct {
 	//
 	// {}
 	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	// The Ray cluster head node information.
+	// The head node information for the Ray cluster.
 	HeadSpec *UpdateRayClusterRequestHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
-	// The Ray cluster name. The name must be 1 to 64 characters in length.
+	// The name of the Ray cluster. The name must be 1 to 64 characters in length.
 	//
 	// example:
 	//
 	// myRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network connectivity name.
+	// The network connection name.
 	//
 	// example:
 	//
 	// vpc
 	NetworkServiceName *string `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
-	// The list of managed folder IDs to mount.
+	// The list of managed directory IDs to mount.
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	// The Ray cluster worker node information. A maximum of 50 groups are supported.
+	// The worker node information for the Ray cluster. A maximum of 50 worker groups are supported.
 	WorkerSpec []*UpdateRayClusterRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -177,7 +177,7 @@ type UpdateRayClusterRequestHeadSpec struct {
 	//
 	// ray-1.2.0 (Ray 2.55.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// Specifies whether to enable automatic scaling.
+	// Specifies whether to enable auto scaling.
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ type UpdateRayClusterRequestHeadSpec struct {
 	//
 	// MY_ENV=123456
 	Env *string `json:"env,omitempty" xml:"env,omitempty"`
-	// The GCS Fault Tolerance configuration.
+	// The GCS fault tolerance configuration.
 	GftConfig *UpdateRayClusterRequestHeadSpecGftConfig `json:"gftConfig,omitempty" xml:"gftConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable GCS Fault Tolerance.
+	// Specifies whether to enable GCS fault tolerance.
 	//
 	// if can be null:
 	// true
@@ -202,7 +202,7 @@ type UpdateRayClusterRequestHeadSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The idle timeout period of workers after automatic scaling is enabled.
+	// The idle timeout period for workers after auto scaling is enabled.
 	//
 	// example:
 	//
@@ -447,7 +447,7 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum number of workers. Minimum value: 1. The value must be less than or equal to maxReplica.
+	// The minimum number of workers. Minimum value: 1. The value must be less than or equal to the value of maxReplica.
 	//
 	// example:
 	//

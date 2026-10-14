@@ -16,7 +16,7 @@ type iGetKyuubiServiceResponseBody interface {
 }
 
 type GetKyuubiServiceResponseBody struct {
-	// The returned data.
+	// The returned result.
 	Data *GetKyuubiServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *GetKyuubiServiceResponseBody) Validate() error {
 }
 
 type GetKyuubiServiceResponseBodyData struct {
-	// The specifications of the Kyuubi service.
+	// The Kyuubi service specifications.
 	//
 	// example:
 	//
 	// 2c8g
 	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
-	// The timestamp when the service was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -80,31 +80,31 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// 150978934701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The internal same-region endpoint.
+	// The internal network domain name.
 	//
 	// example:
 	//
 	// kyuubi-cn-beijing-internal.spark.emr.aliyuncs.com
 	InnerEndpoint *string `json:"innerEndpoint,omitempty" xml:"innerEndpoint,omitempty"`
-	// The configuration of the Kyuubi service.
+	// The Kyuubi service configuration.
 	//
 	// example:
 	//
 	// []
 	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
-	// The Kyuubi service engine version.
+	// The Kyuubi service DPI engine version.
 	//
 	// example:
 	//
 	// 1.9.2-0.0.2
 	KyuubiReleaseVersion *string `json:"kyuubiReleaseVersion,omitempty" xml:"kyuubiReleaseVersion,omitempty"`
-	// The ID of the Kyuubi service.
+	// Kyuubi Service ID。
 	//
 	// example:
 	//
 	// kb-4e209b04588***95f04ad3538ae4
 	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
-	// The name of the Kyuubi service.
+	// The Kyuubi service name.
 	//
 	// example:
 	//
@@ -116,25 +116,25 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// emr-spark-kyuubi-gateway-cn-beijing.aliyuncs.com
 	PublicEndpoint *string `json:"publicEndpoint,omitempty" xml:"publicEndpoint,omitempty"`
-	// Indicates whether public network access is enabled.
+	// Specifies whether public network access is enabled.
 	//
 	// example:
 	//
 	// true
 	PublicEndpointEnabled *bool `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
-	// The name of the queue.
+	// The queue name.
 	//
 	// example:
 	//
 	// dev_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
-	// The Spark engine version.
+	// The Spark DPI engine version.
 	//
 	// example:
 	//
 	// esr-4.6.0 (Spark 3.5.2, Scala 2.12)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The number of high-availability (HA) replicas.
+	// The number of replicas enabled for high availability.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// []
 	SparkConfigs *string `json:"sparkConfigs,omitempty" xml:"sparkConfigs,omitempty"`
-	// The timestamp when the service was started.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1749456094000
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The state of the Kyuubi service.
+	// The Kyuubi service status.
 	//
 	// example:
 	//

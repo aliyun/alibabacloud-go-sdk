@@ -22,13 +22,13 @@ type iListSessionClustersResponseBody interface {
 }
 
 type ListSessionClustersResponseBody struct {
-	// The maximum number of entries returned for the request.
+	// The maximum number of records returned in the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that marks the start of the next page of results.
+	// The token that indicates the position of the returned data.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListSessionClustersResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// A list of sessions.
+	// The list of sessions.
 	SessionClusters []*ListSessionClustersResponseBodySessionClusters `json:"sessionClusters,omitempty" xml:"sessionClusters,omitempty" type:"Repeated"`
-	// The total number of entries that match the query criteria.
+	// The total number of records that meet the current request conditions.
 	//
 	// example:
 	//
@@ -117,32 +117,33 @@ func (s *ListSessionClustersResponseBody) Validate() error {
 }
 
 type ListSessionClustersResponseBodySessionClusters struct {
-	// The session configurations. These are equivalent to the configurations of the underlying Spark job.
+	// The session configurations, which are equivalent to the configurations of the underlying Spark job.
 	ApplicationConfigs []*ListSessionClustersResponseBodySessionClustersApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
 	// The auto-start configuration.
 	AutoStartConfiguration *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// The auto-stop configuration.
 	AutoStopConfiguration *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
-	ConnectionToken       *string                                                              `json:"connectionToken,omitempty" xml:"connectionToken,omitempty"`
-	// The version displayed in the console.
+	// The token used to connect to the session cluster.
+	ConnectionToken *string `json:"connectionToken,omitempty" xml:"connectionToken,omitempty"`
+	// The version actually displayed in the console.
 	//
 	// example:
 	//
 	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The public endpoint of the Thrift server.
+	// The public domain name of the Thrift server.
 	//
 	// example:
 	//
 	// emr-spark-gateway-cn-hangzhou.data.aliyun.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The internal same-region endpoint of the Thrift server.
+	// The internal domain name of the Thrift server.
 	//
 	// example:
 	//
 	// emr-spark-gateway-cn-hangzhou-internal.data.aliyuncs.com
 	DomainInner *string `json:"domainInner,omitempty" xml:"domainInner,omitempty"`
-	// The ID of the developer job that is attached to the session.
+	// The ID of the development job bound to the session.
 	//
 	// example:
 	//
@@ -154,13 +155,13 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	//
 	// {"extraInfoKey":"extraInfoValue"}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
-	// Indicates whether acceleration by the Fusion engine is enabled.
+	// Specifies whether Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The time when the session was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -177,9 +178,14 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	// example:
 	//
 	// adhoc_query
-	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
-	PublicEndpointEnabled *bool   `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
-	// The name of the queue in which the session runs.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the public network access endpoint is enabled.
+	//
+	// example:
+	//
+	// true
+	PublicEndpointEnabled *bool `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
+	// The name of the queue where the session runs.
 	//
 	// example:
 	//
@@ -197,29 +203,29 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	//
 	// sc-123131
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
-	// The time when the session was started.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1732267598000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The session state.
+	// The session status. Valid values:
 	//
-	// - Starting: The session is starting.
+	// - Starting: Starting.
 	//
-	// - Running: The session is running.
+	// - Running: Running.
 	//
-	// - Stopping: The session is stopping.
+	// - Stopping: Stopping.
 	//
-	// - Stopped: The session is stopped.
+	// - Stopped: Stopped.
 	//
-	// - Error: The session has failed.
+	// - Error: Failed.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The details of the last state change of the session.
+	// The details of the most recent session status change.
 	StateChangeReason *ListSessionClustersResponseBodySessionClustersStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
 	// The user ID.
 	//
@@ -233,7 +239,7 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	//
 	// test_user
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	// The URL of the Spark UI for the session.
+	// The Spark UI URL of the session.
 	//
 	// example:
 	//
@@ -560,7 +566,7 @@ func (s *ListSessionClustersResponseBodySessionClustersApplicationConfigs) Valid
 }
 
 type ListSessionClustersResponseBodySessionClustersAutoStartConfiguration struct {
-	// Indicates whether auto-start is enabled.
+	// Specifies whether auto-start is enabled.
 	//
 	// example:
 	//
@@ -590,13 +596,13 @@ func (s *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration) V
 }
 
 type ListSessionClustersResponseBodySessionClustersAutoStopConfiguration struct {
-	// Indicates whether auto-stop is enabled.
+	// Specifies whether auto-stop is enabled.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The number of minutes of inactivity before the session is automatically stopped.
+	// The number of idle minutes after which the session is automatically stopped.
 	//
 	// example:
 	//
@@ -635,13 +641,13 @@ func (s *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration) Va
 }
 
 type ListSessionClustersResponseBodySessionClustersStateChangeReason struct {
-	// The state change code.
+	// The status change code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The state change message.
+	// The status change message.
 	//
 	// example:
 	//

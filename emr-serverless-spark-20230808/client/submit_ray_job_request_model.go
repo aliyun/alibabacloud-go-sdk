@@ -54,61 +54,61 @@ type iSubmitRayJobRequest interface {
 }
 
 type SubmitRayJobRequest struct {
-	// The timeout period of the job, which includes the cluster creation time and job runtime. The job is canceled if this period is exceeded.
+	// The job timeout period, which includes the cluster creation and job execution time. The job is canceled if it exceeds this period.
 	//
 	// example:
 	//
 	// 3600
 	ActiveDeadlineSeconds *int32 `json:"activeDeadlineSeconds,omitempty" xml:"activeDeadlineSeconds,omitempty"`
-	// The ID of an existing Ray cluster to which the job is submitted.
+	// The ID of the existing Ray cluster.
 	//
 	// example:
 	//
 	// ray-xxxxxxxxx
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The Ray DPI engine version number.
+	// The Ray DPI engine database engine version number.
 	//
 	// example:
 	//
 	// err-1.2.0 (Ray 2.55.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The startup command.
+	// The entrypoint command.
 	//
 	// example:
 	//
 	// python -c "print(\\"hello ray job\\")"
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
-	// The memory size requested by the entrypoint task.
+	// The memory size requested by the entrypoint job.
 	//
 	// example:
 	//
 	// 4Gi
 	EntrypointMemory *string `json:"entrypointMemory,omitempty" xml:"entrypointMemory,omitempty"`
-	// The number of CPUs requested by the entrypoint task.
+	// The number of CPUs requested by the entrypoint job.
 	//
 	// example:
 	//
 	// 1
 	EntrypointNumCpus *string `json:"entrypointNumCpus,omitempty" xml:"entrypointNumCpus,omitempty"`
-	// The number of GPUs requested by the entrypoint task.
+	// The number of GPUs requested by the entrypoint job.
 	//
 	// example:
 	//
 	// 0
 	EntrypointNumGpus *string `json:"entrypointNumGpus,omitempty" xml:"entrypointNumGpus,omitempty"`
-	// The custom resource request JSON string for the entrypoint task.
+	// The custom resource request JSON string for the entrypoint job.
 	//
 	// example:
 	//
 	// {"fpu": 1}
 	EntrypointResources *string `json:"entrypointResources,omitempty" xml:"entrypointResources,omitempty"`
-	// The extra parameters in a JSON string.
+	// The JSON string for additional parameters.
 	//
 	// example:
 	//
 	// {"userDefinedFiles": "oss://mybucket/artifact/config.json,oss://mybucket/artifact/config2.json", "userRequirementsFile": "oss://mybucket/requirements.txt"}
 	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	// The Ray cluster head node parameters.
+	// The parameters of the Ray cluster head node.
 	HeadSpec *SubmitRayJobRequestHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
 	// The job metadata JSON string.
 	//
@@ -148,7 +148,7 @@ type SubmitRayJobRequest struct {
 	SubmissionMode *string `json:"submissionMode,omitempty" xml:"submissionMode,omitempty"`
 	// The tags.
 	Tags []*SubmitRayJobRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The number of seconds to wait before destroying the cluster. This parameter takes effect only when shutdownAfterJobFinishes is set to true.
+	// The wait time in seconds before the cluster is destroyed. This parameter takes effect only when shutdownAfterJobFinishes is set to true.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type SubmitRayJobRequest struct {
 	TtlSecondsAfterFinished *int32 `json:"ttlSecondsAfterFinished,omitempty" xml:"ttlSecondsAfterFinished,omitempty"`
 	// The list of mounted volume IDs.
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	// The parameters of the worker nodes in the Ray cluster.
+	// The Ray cluster worker node parameters.
 	WorkerSpec []*SubmitRayJobRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
-	// The URL of the job code working directory.
+	// The URL of the working directory for the job code.
 	//
 	// example:
 	//
@@ -397,13 +397,13 @@ type SubmitRayJobRequestHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The Ray DPI engine version.
+	// The Ray DPI engine database engine version.
 	//
 	// example:
 	//
 	// err-1.3.0 (Ray 2.55.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// Specifies whether to enable automatic scaling for workers.
+	// Specifies whether to enable auto-scaling for worker nodes.
 	//
 	// example:
 	//
@@ -415,13 +415,13 @@ type SubmitRayJobRequestHeadSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The worker idle timeout period after automatic scaling is enabled.
+	// The idle time for worker nodes after auto-scaling is enabled.
 	//
 	// example:
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
-	// The memory size. Unit: GiB.
+	// The memory size, in Gi.
 	//
 	// example:
 	//
@@ -562,7 +562,7 @@ type SubmitRayJobRequestWorkerSpec struct {
 	//
 	// 4
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The database engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -580,19 +580,19 @@ type SubmitRayJobRequestWorkerSpec struct {
 	//
 	// WorkerGroup1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The maximum number of workers after automatic scaling is enabled.
+	// The maximum number of workers when automatic scaling is enabled.
 	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size. Unit: GiB.
+	// The memory size, in Gi.
 	//
 	// example:
 	//
 	// 16Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum number of workers after automatic scaling is enabled.
+	// The minimum number of workers when automatic scaling is enabled.
 	//
 	// example:
 	//

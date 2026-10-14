@@ -22,7 +22,7 @@ type SubmitRayJobResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Ray Job ID。
+	// The Ray job ID.
 	//
 	// example:
 	//

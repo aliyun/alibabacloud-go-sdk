@@ -16,7 +16,7 @@ type iListKyuubiTokenResponseBody interface {
 }
 
 type ListKyuubiTokenResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *ListKyuubiTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListKyuubiTokenResponseBody) Validate() error {
 }
 
 type ListKyuubiTokenResponseBodyData struct {
-	// A list of tokens.
+	// The list of tokens.
 	Tokens []*ListKyuubiTokenResponseBodyDataTokens `json:"tokens,omitempty" xml:"tokens,omitempty" type:"Repeated"`
 }
 
@@ -97,33 +97,33 @@ func (s *ListKyuubiTokenResponseBodyData) Validate() error {
 }
 
 type ListKyuubiTokenResponseBodyDataTokens struct {
-	// The names of authorized RAM users.
+	// The list of RAM user names of authorized users.
 	AccountNames []*string `json:"accountNames,omitempty" xml:"accountNames,omitempty" type:"Repeated"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1755496031000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The creator\\"s name.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// admin
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The expiration time.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1787033891000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The last used time.
+	// The last usage time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1760366232121
 	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	// The ARNs of authorized users.
+	// The list of ARNs of authorized users.
 	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
 	// The token name.
 	//

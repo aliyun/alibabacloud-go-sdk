@@ -22,13 +22,13 @@ type GetAICenterStateResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The state of the AI center. Valid values:
+	// The status of AI Hub. Valid values:
 	//
-	// - Running
+	// 	- active
 	//
-	// - inactive
+	// 	- inactive
 	//
-	// - activating
+	// 	- activating
 	//
 	// example:
 	//

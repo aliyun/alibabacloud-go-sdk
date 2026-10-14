@@ -89,19 +89,19 @@ type ListLivyComputeSessionsResponseBodySessions struct {
 	//
 	// lc-xxxxxx
 	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
-	// The time when the session was created. This is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1768213240000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The number of compute units (CUs) consumed during the task execution. This is an estimated value. The actual value is subject to the bill.
+	// The number of compute units (CUs) consumed during the job runtime. This value is an estimate. The actual value is subject to the bill.
 	//
 	// example:
 	//
 	// 322.5
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The time when the session ended. This is a UNIX timestamp in milliseconds.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListLivyComputeSessionsResponseBodySessions struct {
 	//
 	// null
 	Info *string `json:"info,omitempty" xml:"info,omitempty"`
-	// The total amount of memory in MB allocated to the task multiplied by the number of seconds the task has been running.
+	// The total amount of memory allocated to the job multiplied by the number of seconds the job has run.
 	//
 	// example:
 	//
@@ -153,29 +153,29 @@ type ListLivyComputeSessionsResponseBodySessions struct {
 	//
 	// }
 	SparkConf *string `json:"sparkConf,omitempty" xml:"sparkConf,omitempty"`
-	// The session state.
+	// The session status. Valid values:
 	//
-	// - starting: The session is starting.
+	// - starting: Starting.
 	//
-	// - running: The session is running.
+	// - running: Running.
 	//
-	// - terminating: The session is being terminated.
+	// - terminating: Terminating.
 	//
-	// - terminated: The session is terminated.
+	// - terminated: Terminated.
 	//
-	// - error: The session failed.
+	// - error: Error.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The total number of vCores allocated to the task multiplied by the number of seconds the task has been running.
+	// The total number of vcores allocated to the job multiplied by the number of seconds the job has run.
 	//
 	// example:
 	//
 	// 343
 	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
-	// The web UI URL of the session.
+	// The web UI address of the session.
 	//
 	// example:
 	//

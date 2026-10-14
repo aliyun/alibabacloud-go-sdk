@@ -22,7 +22,7 @@ type iListWorkspaceQueuesResponseBody interface {
 }
 
 type ListWorkspaceQueuesResponseBody struct {
-	// The maximum number of records returned per request.
+	// The maximum number of records to return per request.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *ListWorkspaceQueuesResponseBody) Validate() error {
 }
 
 type ListWorkspaceQueuesResponseBodyQueues struct {
-	// The list of allowed actions on the queue.
+	// The list of allowed operations for the queue.
 	AllowActions []*ListWorkspaceQueuesResponseBodyQueuesAllowActions `json:"allowActions,omitempty" xml:"allowActions,omitempty" type:"Repeated"`
-	// The time when the workspace was created.
+	// The time when the workspace was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684115879955
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The UID of the user who created the queue.
+	// The UID of the creator.
 	//
 	// example:
 	//
@@ -137,12 +137,18 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// test queue
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of queue environment types.
-	Environments  []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	GpuMachineNum *int32    `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
-	// The list of GPU models.
-	GpuSpec    []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
-	InstanceId *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The list of environment types for the queue.
+	Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	// The number of GPU machines.
+	//
+	// example:
+	//
+	// 0
+	GpuMachineNum *int32 `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
+	// The list of GPU instance types.
+	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	// The ID of the resource instance associated with the queue.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The maximum resource capacity of the queue.
 	//
 	// example:
@@ -155,17 +161,21 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// {"cpu": "2","memory": "2Gi"}
 	MinResource *string `json:"minResource,omitempty" xml:"minResource,omitempty"`
-	// The billing type. Valid values:
+	// The billing method. Valid values:
 	//
-	// - PayAsYouGo: pay-as-you-go.
+	// - PayAsYouGo: pay-as-you-go
 	//
-	// - Pre: subscription.
+	// - Pre: subscription
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// Indicates whether resource prefetch is enabled.
+	// Specifies whether resource prefetching is performed.
+	//
+	// example:
+	//
+	// true
 	Preheat *bool `json:"preheat,omitempty" xml:"preheat,omitempty"`
 	// The queue label.
 	//
@@ -173,7 +183,7 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// dev_queue
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
-	// The queue category, CPU or GPU.
+	// The queue category, such as CPU or GPU.
 	//
 	// example:
 	//
@@ -438,7 +448,7 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) Validate() error {
 }
 
 type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {
-	// The action ARN.
+	// The ARN of the action.
 	//
 	// example:
 	//
@@ -450,13 +460,13 @@ type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {
 	//
 	// view
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// The list of action dependencies.
+	// The list of dependencies for the action.
 	//
 	// example:
 	//
 	// ["view"]
 	Dependencies []*string `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
-	// The action description.
+	// The description of the action.
 	//
 	// example:
 	//
@@ -466,7 +476,7 @@ type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {
 	//
 	// example:
 	//
-	// File directory traversal, file browsing
+	// Directory traversal and file browsing
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 

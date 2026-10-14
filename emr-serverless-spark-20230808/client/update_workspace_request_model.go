@@ -32,29 +32,31 @@ type iUpdateWorkspaceRequest interface {
 }
 
 type UpdateWorkspaceRequest struct {
-	// The upper limit of workspace resources.
+	// The resource limit of the workspace.
 	//
 	// example:
 	//
 	// 5000
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
-	// The number of GPU cards.
+	// The number of GPUs.
 	//
 	// example:
 	//
 	// 100
 	Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
 	// The GPU instance type.
-	GpuSpec         []*string                              `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	// The GPU subscription information.
 	GpuSubscription *UpdateWorkspaceRequestGpuSubscription `json:"gpuSubscription,omitempty" xml:"gpuSubscription,omitempty" type:"Struct"`
-	IpWhiteList     []*string                              `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
+	// The workspace IP address whitelist.
+	IpWhiteList []*string `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmwpi66knkxny
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The information for converting from pay-as-you-go to subscription.
+	// The information about switching the billing method from pay-as-you-go to subscription.
 	Subscription *UpdateWorkspaceRequestSubscription `json:"subscription,omitempty" xml:"subscription,omitempty" type:"Struct"`
 	// The workspace ID.
 	//
@@ -189,21 +191,35 @@ func (s *UpdateWorkspaceRequest) Validate() error {
 }
 
 type UpdateWorkspaceRequestGpuSubscription struct {
-	AutoRenew *bool  `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	Duration  *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// Specifies whether to enable auto-renewal.
+	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// The number of subscription periods.
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The number of GPU machines.
+	//
 	// example:
 	//
 	// 8
-	GpuMachineNum *int32  `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
-	InstanceId    *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	GpuMachineNum *int32 `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
+	// The ID of the GPU quota instance to be upgraded. This parameter is required when the operation parameter is set to UPGRADE.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The GPU instance type.
+	//
 	// example:
 	//
 	// ecs.gn7i-c8g1.2xlarge
 	InstanceTypeId *string `json:"instanceTypeId,omitempty" xml:"instanceTypeId,omitempty"`
+	// The operation type. Valid values: BUY and UPGRADE. BUY indicates a new purchase, and UPGRADE indicates an upgrade. If you set this parameter to UPGRADE, you must specify the orderId parameter. Default value: BUY.
+	//
 	// example:
 	//
 	// BUY
-	Operation           *string `json:"operation,omitempty" xml:"operation,omitempty"`
+	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
+	// The subscription period unit.
+	//
+	// example:
+	//
+	// MONTH
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
 }
 
@@ -283,31 +299,31 @@ func (s *UpdateWorkspaceRequestGpuSubscription) Validate() error {
 }
 
 type UpdateWorkspaceRequestSubscription struct {
-	// Specifies whether to enable auto-renewal. This parameter is required for the pre-paid billing type.
+	// Specifies whether to enable auto-renewal. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal duration. This parameter is required for the pre-paid billing type.
+	// The auto-renewal period. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *string `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The auto-renewal period unit. This parameter is required for the pre-paid billing type.
+	// The auto-renewal cycle. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
 	// MONTH
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
-	// The idempotency token.
+	// The client token for idempotency verification.
 	//
 	// example:
 	//
 	// my-token-asxkxxxxxxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The number of subscription periods. This parameter is required for the pre-paid billing type.
+	// The number of subscription periods. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
@@ -319,7 +335,7 @@ type UpdateWorkspaceRequestSubscription struct {
 	//
 	// MONTH
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
-	// The list of running queues to be converted.
+	// The list of running queues to be switched.
 	Queue []*string `json:"queue,omitempty" xml:"queue,omitempty" type:"Repeated"`
 }
 

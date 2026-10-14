@@ -62,7 +62,7 @@ func (s *GetJobRunResponseBody) Validate() error {
 }
 
 type GetJobRunResponseBodyJobRun struct {
-	// The code type of the job. Valid values:
+	// The job code type. Valid values:
 	//
 	// - SQL
 	//
@@ -82,7 +82,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The time when the job ended.
+	// The job end time. The value is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// env-cpv569tlhtgndjl8****
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The execution timeout period, in seconds.
+	// The execution timeout period.
 	//
 	// example:
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Indicates whether the Fusion engine acceleration is enabled.
+	// Specifies whether the Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type GetJobRunResponseBodyJobRun struct {
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// The path of the run log.
 	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// The job run name.
+	// The job name.
 	//
 	// example:
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The download URL of the NOTEBOOK file. This parameter is returned only when the job type is NOTEBOOK.
+	// The download URL of the NOTEBOOK file. This parameter is returned only if the job type is NOTEBOOK.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The Spark DPI engine version used to run the job.
+	// The Spark DPI engine version used to run the node.
 	//
 	// example:
 	//
@@ -152,22 +152,24 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The job run state.
+	// The job status.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The reason for the state change.
+	// The reason for the status change.
 	StateChangeReason *GetJobRunResponseBodyJobRunStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// The time when the job was submitted.
+	// The job submission time. The value is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The list of tags.
+	// The tag list.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The details of token consumption.
+	TokenDetails []*GetJobRunResponseBodyJobRunTokenDetails `json:"tokenDetails,omitempty" xml:"tokenDetails,omitempty" type:"Repeated"`
 	// The total number of tokens consumed.
 	//
 	// example:
@@ -274,6 +276,10 @@ func (s *GetJobRunResponseBodyJobRun) GetSubmitTime() *int64 {
 
 func (s *GetJobRunResponseBodyJobRun) GetTags() []*Tag {
 	return s.Tags
+}
+
+func (s *GetJobRunResponseBodyJobRun) GetTokenDetails() []*GetJobRunResponseBodyJobRunTokenDetails {
+	return s.TokenDetails
 }
 
 func (s *GetJobRunResponseBodyJobRun) GetTotalTokens() *int64 {
@@ -388,6 +394,11 @@ func (s *GetJobRunResponseBodyJobRun) SetTags(v []*Tag) *GetJobRunResponseBodyJo
 	return s
 }
 
+func (s *GetJobRunResponseBodyJobRun) SetTokenDetails(v []*GetJobRunResponseBodyJobRunTokenDetails) *GetJobRunResponseBodyJobRun {
+	s.TokenDetails = v
+	return s
+}
+
 func (s *GetJobRunResponseBodyJobRun) SetTotalTokens(v int64) *GetJobRunResponseBodyJobRun {
 	s.TotalTokens = &v
 	return s
@@ -433,11 +444,20 @@ func (s *GetJobRunResponseBodyJobRun) Validate() error {
 			}
 		}
 	}
+	if s.TokenDetails != nil {
+		for _, item := range s.TokenDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type GetJobRunResponseBodyJobRunConfigurationOverrides struct {
-	// The list of configurations.
+	// The configuration list.
 	Configurations []*Configuration `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 
@@ -513,5 +533,110 @@ func (s *GetJobRunResponseBodyJobRunStateChangeReason) SetMessage(v string) *Get
 }
 
 func (s *GetJobRunResponseBodyJobRunStateChangeReason) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetJobRunResponseBodyJobRunTokenDetails struct {
+	// Specifies whether thinking mode is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableThinking *string `json:"enableThinking,omitempty" xml:"enableThinking,omitempty"`
+	// The input modality.
+	//
+	// example:
+	//
+	// -
+	InputModality *string `json:"inputModality,omitempty" xml:"inputModality,omitempty"`
+	// The model name.
+	//
+	// example:
+	//
+	// qwen-plus
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The input token range.
+	//
+	// example:
+	//
+	// 0<Token≤256K
+	TokenRange *string `json:"tokenRange,omitempty" xml:"tokenRange,omitempty"`
+	// The token source. Valid values: input and output.
+	//
+	// example:
+	//
+	// input
+	TokenSource *string `json:"tokenSource,omitempty" xml:"tokenSource,omitempty"`
+	// The number of tokens consumed.
+	//
+	// example:
+	//
+	// 10000
+	TokenUsed *int64 `json:"tokenUsed,omitempty" xml:"tokenUsed,omitempty"`
+}
+
+func (s GetJobRunResponseBodyJobRunTokenDetails) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobRunResponseBodyJobRunTokenDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) GetEnableThinking() *string {
+	return s.EnableThinking
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) GetInputModality() *string {
+	return s.InputModality
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) GetModelName() *string {
+	return s.ModelName
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) GetTokenRange() *string {
+	return s.TokenRange
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) GetTokenSource() *string {
+	return s.TokenSource
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) GetTokenUsed() *int64 {
+	return s.TokenUsed
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) SetEnableThinking(v string) *GetJobRunResponseBodyJobRunTokenDetails {
+	s.EnableThinking = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) SetInputModality(v string) *GetJobRunResponseBodyJobRunTokenDetails {
+	s.InputModality = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) SetModelName(v string) *GetJobRunResponseBodyJobRunTokenDetails {
+	s.ModelName = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) SetTokenRange(v string) *GetJobRunResponseBodyJobRunTokenDetails {
+	s.TokenRange = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) SetTokenSource(v string) *GetJobRunResponseBodyJobRunTokenDetails {
+	s.TokenSource = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) SetTokenUsed(v int64) *GetJobRunResponseBodyJobRunTokenDetails {
+	s.TokenUsed = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRunTokenDetails) Validate() error {
 	return dara.Validate(s)
 }

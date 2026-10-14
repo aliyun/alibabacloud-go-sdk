@@ -36,50 +36,62 @@ type iListKyuubiSparkApplicationsRequest interface {
 }
 
 type ListKyuubiSparkApplicationsRequest struct {
-	// The ID of the Spark application submitted by Kyuubi, used for searching.
+	// The ID of the Spark application submitted by Kyuubi, used for search.
 	//
 	// example:
 	//
 	// spark-339f844005b6404c95f9f7c7a13b****
 	ApplicationId *string `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
-	// The name of the Spark application submitted by Kyuubi, used for searching.
+	// The name of the Spark application submitted by Kyuubi, used for search.
 	//
 	// example:
 	//
 	// kyuubi-connection-spark-sql-anonymous-fa9a5e73-b4b1-474a-b****
-	ApplicationName *string                                    `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
-	EndTime         *ListKyuubiSparkApplicationsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	// The end time range of the task.
+	EndTime *ListKyuubiSparkApplicationsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	// The list of statuses of the latest SQL statement used for filtering.
+	//
 	// example:
 	//
 	// ["SUCCESS"]
 	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
-	// The maximum number of records to return.
+	// The maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The minimum execution duration of the application, in milliseconds.
+	//
 	// example:
 	//
 	// 60000
 	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// 1
-	NextToken *string   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	OrderBy   []*string `json:"orderBy,omitempty" xml:"orderBy,omitempty" type:"Repeated"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of sort fields.
+	OrderBy []*string `json:"orderBy,omitempty" xml:"orderBy,omitempty" type:"Repeated"`
+	// The resource queue ID used to filter Spark applications.
+	//
 	// example:
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	// The sort order. A value of asc indicates ascending order, and desc indicates descending order.
+	//
 	// example:
 	//
 	// asc
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
-	// The time range when the task started.
+	// The start time range of the task.
 	StartTime *ListKyuubiSparkApplicationsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
+	// The list of Spark application states used for filtering.
+	//
 	// example:
 	//
 	// ["ERROR"]
@@ -217,10 +229,14 @@ func (s *ListKyuubiSparkApplicationsRequest) Validate() error {
 }
 
 type ListKyuubiSparkApplicationsRequestEndTime struct {
+	// The end point of the task end time range. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1774209636
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The start point of the task end time range. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1774209636
@@ -258,13 +274,13 @@ func (s *ListKyuubiSparkApplicationsRequestEndTime) Validate() error {
 }
 
 type ListKyuubiSparkApplicationsRequestStartTime struct {
-	// The end of the time range.
+	// The end point of the task start time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start of the time range.
+	// The start point of the task start time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

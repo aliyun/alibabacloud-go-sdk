@@ -36,50 +36,62 @@ type iListKyuubiSparkApplicationsShrinkRequest interface {
 }
 
 type ListKyuubiSparkApplicationsShrinkRequest struct {
-	// The ID of the Spark application submitted by Kyuubi, used for searching.
+	// The ID of the Spark application submitted by Kyuubi, used for search.
 	//
 	// example:
 	//
 	// spark-339f844005b6404c95f9f7c7a13b****
 	ApplicationId *string `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
-	// The name of the Spark application submitted by Kyuubi, used for searching.
+	// The name of the Spark application submitted by Kyuubi, used for search.
 	//
 	// example:
 	//
 	// kyuubi-connection-spark-sql-anonymous-fa9a5e73-b4b1-474a-b****
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
-	EndTimeShrink   *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The end time range of the task.
+	EndTimeShrink *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The list of statuses of the latest SQL statement used for filtering.
+	//
 	// example:
 	//
 	// ["SUCCESS"]
 	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
-	// The maximum number of records to return.
+	// The maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The minimum execution duration of the application, in milliseconds.
+	//
 	// example:
 	//
 	// 60000
 	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// 1
-	NextToken     *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of sort fields.
 	OrderByShrink *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// The resource queue ID used to filter Spark applications.
+	//
 	// example:
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	// The sort order. A value of asc indicates ascending order, and desc indicates descending order.
+	//
 	// example:
 	//
 	// asc
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
-	// The time range when the task started.
+	// The start time range of the task.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The list of Spark application states used for filtering.
+	//
 	// example:
 	//
 	// ["ERROR"]

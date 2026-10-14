@@ -18,13 +18,13 @@ type iGetDoctorApplicationRequest interface {
 }
 
 type GetDoctorApplicationRequest struct {
-	// The language of diagnostic information.
+	// The language of the diagnostic information.
 	//
 	// example:
 	//
 	// zh-CN
 	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
-	// The query time.
+	// The query date in the YYYY-MM-DD format.
 	//
 	// example:
 	//

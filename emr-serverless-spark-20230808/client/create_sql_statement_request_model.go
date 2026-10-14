@@ -26,37 +26,42 @@ type iCreateSqlStatementRequest interface {
 }
 
 type CreateSqlStatementRequest struct {
-	// The SQL code. This parameter accepts one or more SQL statements for execution.
+	// The SQL code. You can specify one or more SQL statements to execute.
 	//
 	// example:
 	//
 	// SHOW TABLES
 	CodeContent *string `json:"codeContent,omitempty" xml:"codeContent,omitempty"`
-	// The ID of the default DLF Catalog.
+	// The default DLF catalog ID.
 	//
 	// example:
 	//
 	// default_catalog
 	DefaultCatalog *string `json:"defaultCatalog,omitempty" xml:"defaultCatalog,omitempty"`
-	// The name of the default database.
+	// The default database name.
 	//
 	// example:
 	//
 	// default
 	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	// The limit value. The value must be between 1 and 10000, inclusive.
+	// The limit value. Valid values: 1 to 10000.
 	//
 	// example:
 	//
 	// 1000
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The ID of the SQL session. The session must be created in the Session Manager module of the EMR Serverless Spark workspace.
+	// The SQL session ID. Create the session in the session management module of the EMR Serverless Spark workspace.
 	//
 	// example:
 	//
 	// sc-dfahdfjafhajd****
 	SqlComputeId *string `json:"sqlComputeId,omitempty" xml:"sqlComputeId,omitempty"`
-	TaskBizId    *string `json:"taskBizId,omitempty" xml:"taskBizId,omitempty"`
+	// The data development node ID.
+	//
+	// example:
+	//
+	// TSK-d87******************
+	TaskBizId *string `json:"taskBizId,omitempty" xml:"taskBizId,omitempty"`
 	// The region ID.
 	//
 	// example:

@@ -24,7 +24,7 @@ type iListRayJobRequest interface {
 }
 
 type ListRayJobRequest struct {
-	// The name of the Ray Job (exact match).
+	// The name of the Ray job. Exact match is supported.
 	//
 	// example:
 	//
@@ -36,21 +36,21 @@ type ListRayJobRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The submission ID of the Ray Job.
+	// The submission ID of the Ray job.
 	//
 	// example:
 	//
 	// rj-xxxxxxxxxxx
 	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
-	// The submit time range.
+	// The submission time range.
 	SubmitTime *ListRayJobRequestSubmitTime `json:"submitTime,omitempty" xml:"submitTime,omitempty" type:"Struct"`
-	// The data development node ID.
+	// The ID of the data development node.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *ListRayJobRequest) Validate() error {
 }
 
 type ListRayJobRequestSubmitTime struct {
-	// The end of the submit time range. The value is a UNIX timestamp in milliseconds.
+	// The end time of the submission time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780018822000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start of the submit time range. The value is a UNIX timestamp in milliseconds.
+	// The start time of the submission time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

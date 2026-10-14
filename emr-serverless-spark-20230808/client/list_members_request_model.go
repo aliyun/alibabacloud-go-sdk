@@ -18,13 +18,13 @@ type iListMembersRequest interface {
 }
 
 type ListMembersRequest struct {
-	// The maximum number of entries to return on each page.
+	// The maximum number of records to return per request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that marks the start of the next page of results.
+	// The pagination token that specifies the starting position for the query.
 	//
 	// example:
 	//

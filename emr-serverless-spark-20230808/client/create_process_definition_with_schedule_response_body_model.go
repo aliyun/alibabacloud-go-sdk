@@ -32,7 +32,7 @@ type CreateProcessDefinitionWithScheduleResponseBody struct {
 	//
 	// 1400009
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *CreateProcessDefinitionWithScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Indicates whether the request failed.
 	//
@@ -46,19 +46,19 @@ type CreateProcessDefinitionWithScheduleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// A detailed message for the return code.
+	// The detailed description corresponding to the request code.
 	//
 	// example:
 	//
 	// No permission for resource action
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ func (s *CreateProcessDefinitionWithScheduleResponseBody) Validate() error {
 }
 
 type CreateProcessDefinitionWithScheduleResponseBodyData struct {
-	// The ID of the workflow definition.
+	// The workflow definition ID.
 	//
 	// example:
 	//
 	// 160************
 	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
-	// The serial number of the workflow definition.
+	// The workflow definition number.
 	//
 	// example:
 	//

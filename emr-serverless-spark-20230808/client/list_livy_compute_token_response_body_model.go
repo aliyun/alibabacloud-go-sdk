@@ -20,13 +20,13 @@ type iListLivyComputeTokenResponseBody interface {
 }
 
 type ListLivyComputeTokenResponseBody struct {
-	// The response code. A value of 1000000 indicates success. Any other value indicates failure. You can view the specific error description in the message field.
+	// The return code of the request. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For details about the error cause, see the message.
 	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListLivyComputeTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -96,7 +96,7 @@ func (s *ListLivyComputeTokenResponseBody) Validate() error {
 }
 
 type ListLivyComputeTokenResponseBodyData struct {
-	// The list of tokens.
+	// The token list.
 	Tokens []*ListLivyComputeTokenResponseBodyDataTokens `json:"tokens,omitempty" xml:"tokens,omitempty" type:"Repeated"`
 }
 
@@ -131,7 +131,7 @@ func (s *ListLivyComputeTokenResponseBodyData) Validate() error {
 }
 
 type ListLivyComputeTokenResponseBodyDataTokens struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type ListLivyComputeTokenResponseBodyDataTokens struct {
 	//
 	// alice
 	Createdby *string `json:"createdby,omitempty" xml:"createdby,omitempty"`
-	// The expiration time.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1749456994000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The last used time.
+	// The time when the token was last used. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListLivyComputeTokenResponseBodyDataTokens struct {
 	//
 	// 5d37843fb6f1e8
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//

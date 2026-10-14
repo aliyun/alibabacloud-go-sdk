@@ -20,13 +20,13 @@ type iGetLivyComputeTokenResponseBody interface {
 }
 
 type GetLivyComputeTokenResponseBody struct {
-	// The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For more information about the error, see the message parameter.
+	// The return code of the request. A value of 1000000 indicates that the request succeeded. Other values indicate that the request failed. For details about the error, see the message field.
 	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetLivyComputeTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -34,7 +34,7 @@ type GetLivyComputeTokenResponseBody struct {
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,45 +96,45 @@ func (s *GetLivyComputeTokenResponseBody) Validate() error {
 }
 
 type GetLivyComputeTokenResponseBodyData struct {
-	// The information about token expiration.
+	// The token expiration configuration struct.
 	AutoExpireConfiguration *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
-	// The time when the token was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1749456094000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The name of the user who created the token.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// alice
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The time when the token expires.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1749457994000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The time when the token was last used.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1749456098000
 	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	// The name of the token.
+	// The token name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The content of the token.
+	// The token content.
 	//
 	// example:
 	//
 	// d25561157a635bb
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// The ID of the token.
+	// Token ID。
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ func (s *GetLivyComputeTokenResponseBodyData) Validate() error {
 }
 
 type GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration struct {
-	// Specifies whether the token automatically expires.
+	// Specifies whether the token expires automatically. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -242,7 +242,7 @@ type GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The expiration period, in days.
+	// The expiration period in days.
 	//
 	// example:
 	//

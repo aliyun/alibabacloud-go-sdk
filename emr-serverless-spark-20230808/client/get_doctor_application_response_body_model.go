@@ -14,7 +14,7 @@ type iGetDoctorApplicationResponseBody interface {
 }
 
 type GetDoctorApplicationResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *GetDoctorApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
@@ -45,11 +45,7 @@ func (s *GetDoctorApplicationResponseBody) Validate() error {
 }
 
 type GetDoctorApplicationResponseBodyData struct {
-	// The diagnostics list.
-	//
-	// example:
-	//
-	// Normal.
+	// The list of diagnostic information.
 	Suggestions []*string `json:"suggestions,omitempty" xml:"suggestions,omitempty" type:"Repeated"`
 }
 

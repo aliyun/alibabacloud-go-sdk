@@ -30,13 +30,13 @@ type ListSessionClustersRequest struct {
 	//
 	// SQL
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The maximum number of records to return.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that marks the start of the next page of results.
+	// The token that indicates the position from which to start reading.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListSessionClustersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//

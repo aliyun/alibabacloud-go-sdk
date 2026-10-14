@@ -900,7 +900,7 @@ func (client *Client) CreateRayClusterWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Creates a session cluster.
+// Creates a session.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -997,7 +997,7 @@ func (client *Client) CreateSessionClusterWithContext(ctx context.Context, works
 
 // Summary:
 //
-// Creates an SQL statement.
+// Creates an SQL query.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -1662,7 +1662,7 @@ func (client *Client) GenerateTaskCodesWithContext(ctx context.Context, bizId *s
 
 // Summary:
 //
-// Gets the state of an AI center.
+// Retrieves the status of AI Hub.
 //
 // @param request - GetAICenterStateRequest
 //
@@ -1801,7 +1801,7 @@ func (client *Client) GetCuHoursWithContext(ctx context.Context, workspaceId *st
 
 // Summary:
 //
-// Obtains job analysis information on E-MapReduce (EMR) Doctor.
+// Retrieves the diagnostic information for a Serverless Spark job.
 //
 // @param request - GetDoctorApplicationRequest
 //
@@ -1856,7 +1856,7 @@ func (client *Client) GetDoctorApplicationWithContext(ctx context.Context, works
 
 // Summary:
 //
-// Retrieves the details of a job run by calling GetJobRun.
+// Retrieves the details of a Spark job run by calling GetJobRun.
 //
 // @param request - GetJobRunRequest
 //
@@ -1903,7 +1903,7 @@ func (client *Client) GetJobRunWithContext(ctx context.Context, workspaceId *str
 
 // Summary:
 //
-// Retrieves the details of a Kyuubi Gateway.
+// Retrieves a Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -1936,7 +1936,7 @@ func (client *Client) GetKyuubiServiceWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Obtains an authentication token for Kyuubi Gateway.
+// Retrieves the Kyuubi Gateway authentication token.
 //
 // @param request - GetKyuubiTokenRequest
 //
@@ -1983,7 +1983,7 @@ func (client *Client) GetKyuubiTokenWithContext(ctx context.Context, workspaceId
 
 // Summary:
 //
-// Retrieves information about a Livy Gateway.
+// Retrieves the Livy Gateway information.
 //
 // @param request - GetLivyComputeRequest
 //
@@ -2030,7 +2030,7 @@ func (client *Client) GetLivyComputeWithContext(ctx context.Context, workspaceBi
 
 // Summary:
 //
-// Retrieves a token for a Livy Gateway.
+// Retrieves the token for a Livy Gateway.
 //
 // @param request - GetLivyComputeTokenRequest
 //
@@ -2249,7 +2249,7 @@ func (client *Client) GetRunConfigurationWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Retrieves session details.
+// Retrieves the details of a session.
 //
 // @param request - GetSessionClusterRequest
 //
@@ -2506,7 +2506,7 @@ func (client *Client) ListCatalogsWithContext(ctx context.Context, workspaceId *
 
 // Summary:
 //
-// Lists the log files for a job executor.
+// Lists the log files of a job executor.
 //
 // @param request - ListExecutorLogsRequest
 //
@@ -2628,7 +2628,7 @@ func (client *Client) ListJobExecutorsWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Queries a list of Spark jobs.
+// Lists Spark job runs.
 //
 // @param tmpReq - ListJobRunsRequest
 //
@@ -2804,7 +2804,7 @@ func (client *Client) ListKyuubiServicesWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// Lists Kyuubi Spark applications.
+// Queries the Spark applications submitted by Kyuubi.
 //
 // @param tmpReq - ListKyuubiSparkApplicationsRequest
 //
@@ -2909,7 +2909,7 @@ func (client *Client) ListKyuubiSparkApplicationsWithContext(ctx context.Context
 
 // Summary:
 //
-// Lists KyuubiServer authentication tokens.
+// Lists the Kyuubi Server authentication tokens.
 //
 // @param request - ListKyuubiTokenRequest
 //
@@ -2956,7 +2956,7 @@ func (client *Client) ListKyuubiTokenWithContext(ctx context.Context, workspaceI
 
 // Summary:
 //
-// Lists Livy Gateways.
+// Lists Livy gateways.
 //
 // @param request - ListLivyComputeRequest
 //
@@ -3007,7 +3007,7 @@ func (client *Client) ListLivyComputeWithContext(ctx context.Context, workspaceB
 
 // Summary:
 //
-// Lists the historical sessions for a Livy Gateway.
+// Retrieves the historical sessions of a Livy Gateway.
 //
 // @param request - ListLivyComputeSessionsRequest
 //
@@ -3062,7 +3062,7 @@ func (client *Client) ListLivyComputeSessionsWithContext(ctx context.Context, wo
 
 // Summary:
 //
-// Lists the tokens of a Livy Gateway.
+// Lists the tokens of a Livy gateway.
 //
 // @param request - ListLivyComputeTokenRequest
 //
@@ -3168,7 +3168,7 @@ func (client *Client) ListLogContentsWithContext(ctx context.Context, workspaceI
 
 // Summary:
 //
-// Retrieves the list of members in the workspace.
+// Queries the list of members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -3270,6 +3270,57 @@ func (client *Client) ListNetworkServicesWithContext(ctx context.Context, worksp
 
 // Summary:
 //
+// Queries the jobs with the highest CU usage in a queue.
+//
+// @param request - ListQueueTopJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQueueTopJobsResponse
+func (client *Client) ListQueueTopJobsWithContext(ctx context.Context, workspaceId *string, queueName *string, request *ListQueueTopJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQueueTopJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TopN) {
+		query["topN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQueueTopJobs"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/queues/" + dara.PercentEncode(dara.StringValue(queueName)) + "/topJobs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQueueTopJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists Ray clusters.
 //
 // @param request - ListRayClusterRequest
@@ -3321,7 +3372,7 @@ func (client *Client) ListRayClusterWithContext(ctx context.Context, workspaceId
 
 // Summary:
 //
-// Lists Ray Job information.
+// Lists Ray job information.
 //
 // @param tmpReq - ListRayJobRequest
 //
@@ -3524,7 +3575,7 @@ func (client *Client) ListReleaseVersionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves a list of session clusters.
+// Retrieves a list of sessions.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -3693,7 +3744,7 @@ func (client *Client) ListTemplateWithContext(ctx context.Context, workspaceBizI
 
 // Summary:
 //
-// Queries the list of queues in a workspace.
+// Queries the queues in a workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
@@ -3744,7 +3795,7 @@ func (client *Client) ListWorkspaceQueuesWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Queries a list of workspaces.
+// Retrieves a list of workspaces.
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -5072,7 +5123,7 @@ func (client *Client) UpdateLivyComputeWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Updates a workflow definition and its timed scheduling.
+// Updates the workflow definition and timed scheduling.
 //
 // @param tmpReq - UpdateProcessDefinitionWithScheduleRequest
 //
@@ -5284,7 +5335,7 @@ func (client *Client) UpdateRayClusterWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Updates the properties of a workspace.
+// Updates the attributes of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //

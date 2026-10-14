@@ -24,16 +24,17 @@ type iListJobRunsResponseBody interface {
 }
 
 type ListJobRunsResponseBody struct {
+	// The statistical results aggregated by job state.
 	Aggregations map[string]*string `json:"aggregations,omitempty" xml:"aggregations,omitempty"`
-	// The list of Spark jobs.
+	// The list of Spark job runs.
 	JobRuns []*ListJobRunsResponseBodyJobRuns `json:"jobRuns,omitempty" xml:"jobRuns,omitempty" type:"Repeated"`
-	// The maximum number of records returned in this request.
+	// The maximum number of records returned for the request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The position from which the data was read.
+	// The position of the data read.
 	//
 	// example:
 	//
@@ -45,7 +46,7 @@ type ListJobRunsResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of records that match the request conditions.
+	// The total number of records that meet the request conditions.
 	//
 	// example:
 	//
@@ -129,7 +130,7 @@ func (s *ListJobRunsResponseBody) Validate() error {
 }
 
 type ListJobRunsResponseBodyJobRuns struct {
-	// The job code type. Valid values:
+	// The code type of the job. Valid values:
 	//
 	// SQL
 	//
@@ -141,7 +142,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The Spark advanced configurations. This parameter is not returned by the List operation.
+	// The advanced Spark configurations. This parameter is not returned by the List operation.
 	ConfigurationOverrides *ListJobRunsResponseBodyJobRunsConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
 	// The UID of the user who created the job.
 	//
@@ -149,73 +150,77 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 150978934701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The number of compute units (CUs) consumed during the job run cycle. This value is an estimate. The actual value is subject to the bill.
+	// The number of compute units (CUs) consumed during the job run. This value is an estimate and the final value is subject to the bill.
 	//
 	// example:
 	//
 	// 2.059
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The version of the Spark DPI engine used to run the job.
+	// The Spark DPI engine version of the running job.
 	//
 	// example:
 	//
 	// esr-3.0.0 (Spark 3.4.3, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The job end time.
+	// The time when the job ended. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684119314000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The execution timeout period, in seconds.
+	// The execution timeout period.
 	//
 	// example:
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Indicates whether the Fusion engine acceleration is enabled.
+	// Specifies whether Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
 	// true
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The Spark Driver information. This parameter is not returned by the List operation.
+	// The information about the Spark driver. This parameter is not returned by the List operation.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	// The job ID.
+	// The ID of the job run.
 	//
 	// example:
 	//
 	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The path of the run log.
+	// The path to the execution log.
 	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// The total amount of allocated memory multiplied by the number of seconds the job has been running.
+	// The total amount of memory allocated to the job multiplied by the number of seconds the job has run.
 	//
 	// example:
 	//
 	// 33030784
 	MbSeconds *int64 `json:"mbSeconds,omitempty" xml:"mbSeconds,omitempty"`
-	// The job name.
+	// The name of the job.
 	//
 	// example:
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The priority of the Spark job.
+	//
 	// example:
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The version of the Spark DPI engine used to run the job.
+	// The Spark DPI engine version of the running job.
 	//
 	// example:
 	//
 	// esr-3.0.0 (Spark 3.4.3, Scala 2.12, Native Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The name of the resource queue in which the Spark job runs.
+	//
 	// example:
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The job states.
+	// The states of the job runs.
 	//
 	// example:
 	//
@@ -223,7 +228,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The reason for the state change.
 	StateChangeReason *ListJobRunsResponseBodyJobRunsStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// The job submission time.
+	// The time when the job was submitted. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -231,19 +236,19 @@ type ListJobRunsResponseBodyJobRuns struct {
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
 	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The total number of allocated vcores multiplied by the number of seconds the job has been running.
+	// The total number of vcores allocated to the job multiplied by the number of seconds the job has run.
 	//
 	// example:
 	//
 	// 8236
 	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
-	// The job Web UI.
+	// The web UI of the job.
 	//
 	// example:
 	//
 	// http://spark-ui
 	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

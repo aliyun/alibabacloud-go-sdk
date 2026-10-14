@@ -14,7 +14,7 @@ type iListKyuubiServicesRequest interface {
 }
 
 type ListKyuubiServicesRequest struct {
-	// The token of the Kyuubi Gateway.
+	// The Kyuubi Gateway token.
 	//
 	// example:
 	//

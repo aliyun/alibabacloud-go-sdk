@@ -18,7 +18,7 @@ type iUpdateWorkspaceResponseBody interface {
 }
 
 type UpdateWorkspaceResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *UpdateWorkspaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The order ID.
 	//

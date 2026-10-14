@@ -22,15 +22,15 @@ type iListKyuubiSparkApplicationsResponseBody interface {
 }
 
 type ListKyuubiSparkApplicationsResponseBody struct {
-	// A list of application details.
+	// The list of application details.
 	Applications []*ListKyuubiSparkApplicationsResponseBodyApplications `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
-	// The maximum number of records returned.
+	// The maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -129,58 +129,67 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// kyuubi-connection-spark-sql-anonymous-fa9a5e73-b4b1-474a-b****
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
-	// The number of CUs consumed during the task lifecycle. This is an estimated value. The final amount is subject to your bill.
+	// The number of compute units (CUs) consumed during the task execution. This value is an estimate. The actual value is subject to the bill.
 	//
 	// example:
 	//
 	// 0.238302
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The time when the task ended.
+	// The end time of the task. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-02-12 20:02:02
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The exit code.
+	// The exit reason of the application.
 	//
 	// example:
 	//
 	// Exit Code: 137, Exit Reason: OOMKilled
 	ExitReason *string `json:"exitReason,omitempty" xml:"exitReason,omitempty"`
+	// The ID of the Kyuubi service that submitted the Spark application.
+	//
 	// example:
 	//
 	// kb-2b93ec*******c9440c
 	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
-	// The status of the last task execution in the session.
+	// The execution status of the latest SQL statement in the application.
 	//
 	// example:
 	//
 	// SUCCESS
 	LatestSqlStatementStatus *string `json:"latestSqlStatementStatus,omitempty" xml:"latestSqlStatementStatus,omitempty"`
-	// The total memory allocated to the task in MB, multiplied by the number of seconds the task ran.
+	// The total memory allocated to the task multiplied by the task execution duration in seconds.
 	//
 	// example:
 	//
 	// 3513900
 	MbSeconds *int64 `json:"mbSeconds,omitempty" xml:"mbSeconds,omitempty"`
+	// The priority of the Spark application.
+	//
 	// example:
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The name of the resource queue where the Spark task runs.
+	// The name of the resource queue in which the Spark task runs.
 	//
 	// example:
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	RunLog          *RunLog `json:"runLog,omitempty" xml:"runLog,omitempty"`
-	// The time when the task started.
+	// The application log.
+	//
+	// example:
+	//
+	// {"driverStdOut":"oss://bucket/path/to/stdout","driverStdError":"oss://bucket/path/to/stderr","driverSyslog":"oss://bucket/path/to/syslog","driverStartup":"oss://bucket/path/to/startup"}
+	RunLog *RunLog `json:"runLog,omitempty" xml:"runLog,omitempty"`
+	// The start time of the task. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-02-12 19:59:16
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The status of the Spark application.
+	// The state of the Spark application. Valid values:
 	//
 	// - STARTING: The application is starting.
 	//
@@ -192,8 +201,9 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// STARTING
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	Tags  []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The total vCores allocated to the task, multiplied by the number of seconds the task ran.
+	// The list of tags for the Spark application.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The total number of vcores allocated to the task multiplied by the task execution duration in seconds.
 	//
 	// example:
 	//

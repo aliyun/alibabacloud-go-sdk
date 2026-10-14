@@ -48,7 +48,7 @@ type iUpdateProcessDefinitionWithScheduleShrinkRequest interface {
 }
 
 type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
-	// The email address for alerts.
+	// The alert email address.
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The release state of the workflow.
+	// The online status of the workflow.
 	//
 	// example:
 	//
@@ -115,31 +115,31 @@ type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
 	//
 	// 1
 	RetryTimes *int32 `json:"retryTimes,omitempty" xml:"retryTimes,omitempty"`
-	// The user to run the workflow.
+	// The execution user.
 	//
 	// example:
 	//
 	// 113***************
 	RunAs *string `json:"runAs,omitempty" xml:"runAs,omitempty"`
-	// The scheduling configuration.
+	// The scheduling structure.
 	ScheduleShrink *string `json:"schedule,omitempty" xml:"schedule,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// A JSON array of task definitions. This array contains the descriptive information for all tasks in the workflow.
+	// The JSON array of node definitions, which contains the description information of all nodes in the workflow.
 	//
 	// This parameter is required.
 	TaskDefinitionJsonShrink *string `json:"taskDefinitionJson,omitempty" xml:"taskDefinitionJson,omitempty"`
-	// The degree of concurrent execution for workflow nodes.
+	// The concurrency of workflow node execution.
 	//
 	// example:
 	//
 	// 1
 	TaskParallelism *int32 `json:"taskParallelism,omitempty" xml:"taskParallelism,omitempty"`
-	// A JSON array that defines the dependencies between tasks in the workflow. \\`preTaskCode\\` specifies the upstream task ID, and \\`postTaskCode\\` specifies the downstream task ID. Each task must have a unique ID. For a task node without an upstream task, add a dependency and set \\`preTaskCode\\` to 0.
+	// The JSON array of node dependencies, which contains the dependencies among all nodes in the workflow. preTaskCode is the upstream node ID, and postTaskCode is the downstream node ID. Each node must have a unique ID. If a node does not have an upstream node, you must add a dependency with preTaskCode set to 0.
 	//
 	// This parameter is required.
 	TaskRelationJsonShrink *string `json:"taskRelationJson,omitempty" xml:"taskRelationJson,omitempty"`
-	// The default timeout period for the workflow execution.
+	// The default timeout for workflow execution.
 	//
 	// example:
 	//
