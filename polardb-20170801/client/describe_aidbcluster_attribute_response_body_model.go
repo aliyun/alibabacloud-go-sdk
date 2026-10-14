@@ -114,6 +114,8 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The time when the cluster was created.
 	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
@@ -178,11 +180,13 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// sg-xxxxxx
 	EcsSecurityGroupId *string `json:"EcsSecurityGroupId,omitempty" xml:"EcsSecurityGroupId,omitempty"`
-	// The list of network connection addresses of the instance.
+	// The list of network endpoints of the instance.
 	EndpointList []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
-	// > Only clusters whose billing method is **Prepaid*	- (subscription) return a specific value. **Postpaid*	- (pay-as-you-go) clusters return an empty value.
+	// > Only clusters with the billing method of **Prepaid*	- (subscription) return a specific value. **Postpaid*	- (pay-as-you-go) clusters return an empty value.
+	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -218,7 +222,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// xxxxxxxxxxxxxxxxxxxxxxx
 	KubeClusterId *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
-	// The lock mode of the instance. The value **lock*	- indicates that the instance is automatically expired or has an overdue payment.
+	// The lock mode of the instance. The value is **lock**, which indicates that the instance is automatically expired or has an overdue payment.
 	//
 	// example:
 	//
@@ -772,6 +776,8 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The creation time.
 	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
@@ -847,7 +853,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// The supported APIs.
 	SupportedApis []*DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis `json:"SupportedApis,omitempty" xml:"SupportedApis,omitempty" type:"Repeated"`
-	// The ID of the Kubernetes virtual node.
+	// The Kubernetes virtual node ID.
 	//
 	// example:
 	//
@@ -1063,13 +1069,13 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes struct {
 	//
 	// /tmp/CrowdStrike
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The cloud disk name.
+	// The disk name.
 	//
 	// example:
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The size of the storage cloud disk.
+	// The storage disk size.
 	//
 	// example:
 	//
@@ -1240,13 +1246,13 @@ func (s *DescribeAIDBClusterAttributeResponseBodyEndpointList) Validate() error 
 }
 
 type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {
-	// The database connection address.
+	// The database endpoint.
 	//
 	// example:
 	//
 	// pc-**********.rwlb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type of the connection string. Valid values:
+	// The network type of the endpoint. Valid values:
 	//
 	// 	- **Public**: public endpoint
 	//
@@ -1514,7 +1520,7 @@ type DescribeAIDBClusterAttributeResponseBodyVolumes struct {
 	//
 	// /var/run/secrets/kubernetes.io/serviceaccount
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The cloud disk name.
+	// The disk name.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iDescribeAIDBClustersRequest interface {
 }
 
 type DescribeAIDBClustersRequest struct {
-	// The node type. Multiple types are supported. Separate two values with a comma (,).
+	// The node type. You can specify multiple types separated by commas (,). Valid values:
 	//
 	// - vnode: managed by Kubernetes.
 	//
@@ -50,43 +50,43 @@ type DescribeAIDBClustersRequest struct {
 	//
 	// vnode,container
 	AiNodeType *string `json:"AiNodeType,omitempty" xml:"AiNodeType,omitempty"`
-	// The cluster description. Fuzzy match is supported.
+	// The description of the cluster. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The cluster ID. Separate multiple cluster IDs with commas (,).
+	// The cluster IDs. Separate multiple cluster IDs with commas (,).
 	//
 	// example:
 	//
 	// pc-***************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The cluster status. Valid values:
+	// The status of the cluster. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: The cluster is being created.
 	//
-	// - **Running**: running.
+	// - **Running**: The cluster is running.
 	//
-	// - **Deleting**: being released.
+	// - **Deleting**: The cluster is being released.
 	//
-	// - **Rebooting**: being restarted.
+	// - **Rebooting**: The cluster is being restarted.
 	//
-	// - **DBNodeCreating**: a node is being added (increase).
+	// - **DBNodeCreating**: Nodes are being increased.
 	//
-	// - **DBNodeDeleting**: a node is being deleted.
+	// - **DBNodeDeleting**: Nodes are being deleted.
 	//
-	// - **ClassChanging**: node specifications are being changed.
+	// - **ClassChanging**: The node specifications are being changed.
 	//
-	// - **NetAddressCreating**: a network connectivity is being created.
+	// - **NetAddressCreating**: The network connectivity is being created.
 	//
-	// - **NetAddressDeleting**: a network connectivity is being deleted.
+	// - **NetAddressDeleting**: The network connectivity is being deleted.
 	//
-	// - **NetAddressModifying**: a network connectivity is being modified.
+	// - **NetAddressModifying**: The network connectivity is being modified.
 	//
-	// - **Deleted**: released.
+	// - **Deleted**: The cluster is released.
 	//
-	// 	- **ClassChanged**: resources are being revoked after a decrease the quota operation.
+	// - **ClassChanged**: Resources are being revoked after you upgrade or decrease the quota.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeAIDBClustersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **30**, **50**, and **100**.
+	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
 	//
 	//
 	//
@@ -130,7 +130,7 @@ type DescribeAIDBClustersRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of tags.
+	// The tag list.
 	Tag []*DescribeAIDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -273,7 +273,7 @@ func (s *DescribeAIDBClustersRequest) Validate() error {
 }
 
 type DescribeAIDBClustersRequestTag struct {
-	// The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key corresponds to Tag.n.Value.
+	// The tag key. You can filter clusters by tag. You can specify up to 20 tag key-value pairs. The number n in each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key is Tag.n.Value.
 	//
 	// example:
 	//

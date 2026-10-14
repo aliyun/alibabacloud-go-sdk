@@ -28,7 +28,7 @@ type iDescribeAgenticDBBranchLineageResponseBody interface {
 }
 
 type DescribeAgenticDBBranchLineageResponseBody struct {
-	// The anchor branch ID.
+	// The ID of the anchor branch.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeAgenticDBBranchLineageResponseBody struct {
 	AnchorBranchId *string `json:"AnchorBranchId,omitempty" xml:"AnchorBranchId,omitempty"`
 	// The list of lineage nodes.
 	Items []*DescribeAgenticDBBranchLineageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The total number of returned nodes.
+	// The total number of nodes returned.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeAgenticDBBranchLineageResponseBody struct {
 	//
 	// B2C3D4E5-F6A7-8901-BCDE-2345678901BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The primary branch ID.
+	// The ID of the primary branch.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *DescribeAgenticDBBranchLineageResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBBranchLineageResponseBodyItems struct {
-	// The compute cluster ID of the branch.
+	// The ID of the compute cluster associated with the branch.
 	//
 	// example:
 	//
@@ -194,11 +194,13 @@ type DescribeAgenticDBBranchLineageResponseBodyItems struct {
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The time when the branch was created.
 	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The depth relative to the anchor branch. The anchor branch has a depth of 0. Ancestor branches have negative values. Descendant branches have positive values.
+	// The depth relative to the anchor branch. The anchor branch has a depth of 0. Ancestor branches have negative values, and descendant branches have positive values.
 	//
 	// example:
 	//
@@ -228,6 +230,8 @@ type DescribeAgenticDBBranchLineageResponseBodyItems struct {
 	//
 	// true
 	IsAnchor *bool `json:"IsAnchor,omitempty" xml:"IsAnchor,omitempty"`
+	// Indicates whether the branch is the default branch.
+	//
 	// example:
 	//
 	// false
@@ -238,13 +242,13 @@ type DescribeAgenticDBBranchLineageResponseBodyItems struct {
 	//
 	// false
 	IsRoot *bool `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
-	// The parent branch ID.
+	// The ID of the parent branch.
 	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	ParentBranchId *string `json:"ParentBranchId,omitempty" xml:"ParentBranchId,omitempty"`
-	// The parent branch name.
+	// The name of the parent branch.
 	//
 	// example:
 	//

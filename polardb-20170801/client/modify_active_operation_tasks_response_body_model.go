@@ -22,7 +22,7 @@ type ModifyActiveOperationTasksResponseBody struct {
 	//
 	// 42CD2EF5-D77E-5AD4-961B-159330D98286
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task IDs.
+	// The list of task IDs.
 	//
 	// example:
 	//

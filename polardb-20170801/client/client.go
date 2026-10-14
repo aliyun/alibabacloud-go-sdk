@@ -1761,7 +1761,7 @@ func (client *Client) CheckAccountName(request *CheckAccountNameRequest) (_resul
 
 // Summary:
 //
-// Checks a PolarDB account name.
+// Checks the PolarDB account name.
 //
 // @param request - CheckAccountNameZonalRequest
 //
@@ -1825,7 +1825,7 @@ func (client *Client) CheckAccountNameZonalWithOptions(request *CheckAccountName
 
 // Summary:
 //
-// Checks a PolarDB account name.
+// Checks the PolarDB account name.
 //
 // @param request - CheckAccountNameZonalRequest
 //
@@ -2007,7 +2007,7 @@ func (client *Client) CheckDBName(request *CheckDBNameRequest) (_result *CheckDB
 
 // Summary:
 //
-// Checks the name of a database in an edge cluster for PolarDB on ENS.
+// Checks the ApsaraDB database name for PolarDB on ENS.
 //
 // @param request - CheckDBNameZonalRequest
 //
@@ -2071,7 +2071,7 @@ func (client *Client) CheckDBNameZonalWithOptions(request *CheckDBNameZonalReque
 
 // Summary:
 //
-// Checks the name of a database in an edge cluster for PolarDB on ENS.
+// Checks the ApsaraDB database name for PolarDB on ENS.
 //
 // @param request - CheckDBNameZonalRequest
 //
@@ -3407,7 +3407,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// Creates an account for a PolarDB on ENS cluster.
+// Creates an account for an edge cluster.
 //
 // @param request - CreateAccountZonalRequest
 //
@@ -3503,7 +3503,7 @@ func (client *Client) CreateAccountZonalWithOptions(request *CreateAccountZonalR
 
 // Summary:
 //
-// Creates an account for a PolarDB on ENS cluster.
+// Creates an account for an edge cluster.
 //
 // @param request - CreateAccountZonalRequest
 //
@@ -3861,7 +3861,7 @@ func (client *Client) CreateAgenticDBTenantApiKey(request *CreateAgenticDBTenant
 
 // Summary:
 //
-// Creates an application that is associated with a PolarDB instance.
+// Creates an application attached to a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -4115,7 +4115,7 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 // Summary:
 //
-// Creates an application that is associated with a PolarDB instance.
+// Creates an application attached to a PolarDB instance.
 //
 // @param request - CreateApplicationRequest
 //
@@ -4453,9 +4453,9 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 //
 // Description:
 //
-// > 	- Each cluster can have a maximum of three manually created backups at the same time.
+// > 	- Each cluster can have a maximum of three manually created backups at a time.
 //
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before calling this operation.
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
 // > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
 //
@@ -4529,9 +4529,9 @@ func (client *Client) CreateBatchConsumerWithOptions(request *CreateBatchConsume
 //
 // Description:
 //
-// > 	- Each cluster can have a maximum of three manually created backups at the same time.
+// > 	- Each cluster can have a maximum of three manually created backups at a time.
 //
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before calling this operation.
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
 // > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
 //
@@ -4994,6 +4994,14 @@ func (client *Client) CreateCostRuleWithOptions(request *CreateCostRuleRequest, 
 		query["CacheCostPointsPerMillion"] = request.CacheCostPointsPerMillion
 	}
 
+	if !dara.IsNil(request.CacheCreationCostPointsPerMillion) {
+		query["CacheCreationCostPointsPerMillion"] = request.CacheCreationCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.EffectiveStartTime) {
+		query["EffectiveStartTime"] = request.EffectiveStartTime
+	}
+
 	if !dara.IsNil(request.EffectiveTargetType) {
 		query["EffectiveTargetType"] = request.EffectiveTargetType
 	}
@@ -5002,12 +5010,24 @@ func (client *Client) CreateCostRuleWithOptions(request *CreateCostRuleRequest, 
 		query["EffectiveTargetValue"] = request.EffectiveTargetValue
 	}
 
+	if !dara.IsNil(request.ExplicitCacheCostPointsPerMillion) {
+		query["ExplicitCacheCostPointsPerMillion"] = request.ExplicitCacheCostPointsPerMillion
+	}
+
 	if !dara.IsNil(request.GwClusterId) {
 		query["GwClusterId"] = request.GwClusterId
 	}
 
+	if !dara.IsNil(request.ImageCostPointsPerCount) {
+		query["ImageCostPointsPerCount"] = request.ImageCostPointsPerCount
+	}
+
 	if !dara.IsNil(request.InputCostPointsPerMillion) {
 		query["InputCostPointsPerMillion"] = request.InputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.InputTokenTiers) {
+		query["InputTokenTiers"] = request.InputTokenTiers
 	}
 
 	if !dara.IsNil(request.ModelName) {
@@ -5024,6 +5044,10 @@ func (client *Client) CreateCostRuleWithOptions(request *CreateCostRuleRequest, 
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VideoCostPointsPerSecond) {
+		query["VideoCostPointsPerSecond"] = request.VideoCostPointsPerSecond
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5211,7 +5235,13 @@ func (client *Client) CreateCronJobPolicyServerless(request *CreateCronJobPolicy
 //
 // Description:
 //
-// DBLink can connect two PolarDB for PostgreSQL (Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed PostgreSQL database on an ECS instance. You can use DBLink to query data across clusters.
+// A DBLink can connect two PolarDB for PostgreSQL (Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed PostgreSQL database on an ECS instance. You can use DBLink to query data across clusters.
+//
+// > - You can create up to 10 DBLinks for a cluster.
+//
+// > - A DBLink occupies one DBLink quota on both the source cluster and the destination cluster.
+//
+// > - The source cluster and the destination cluster or destination ECS instance must be in the same region.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -5519,7 +5549,13 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 //
 // Description:
 //
-// DBLink can connect two PolarDB for PostgreSQL (Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed PostgreSQL database on an ECS instance. You can use DBLink to query data across clusters.
+// A DBLink can connect two PolarDB for PostgreSQL (Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed PostgreSQL database on an ECS instance. You can use DBLink to query data across clusters.
+//
+// > - You can create up to 10 DBLinks for a cluster.
+//
+// > - A DBLink occupies one DBLink quota on both the source cluster and the destination cluster.
+//
+// > - The source cluster and the destination cluster or destination ECS instance must be in the same region.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -5667,7 +5703,7 @@ func (client *Client) CreateDBClusterEndpoint(request *CreateDBClusterEndpointRe
 
 // Summary:
 //
-// Edge Cloud API: Create Link Address
+// Creates a custom cluster endpoint for a PolarDB on ENS cluster.
 //
 // @param request - CreateDBClusterEndpointZonalRequest
 //
@@ -5767,7 +5803,7 @@ func (client *Client) CreateDBClusterEndpointZonalWithOptions(request *CreateDBC
 
 // Summary:
 //
-// Edge Cloud API: Create Link Address
+// Creates a custom cluster endpoint for a PolarDB on ENS cluster.
 //
 // @param request - CreateDBClusterEndpointZonalRequest
 //
@@ -7034,6 +7070,10 @@ func (client *Client) CreateKBSyncLinkWithOptions(request *CreateKBSyncLinkReque
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.FeishuChatMemberStaleTtlSeconds) {
+		query["FeishuChatMemberStaleTtlSeconds"] = request.FeishuChatMemberStaleTtlSeconds
+	}
+
 	if !dara.IsNil(request.KnowledgeBaseId) {
 		query["KnowledgeBaseId"] = request.KnowledgeBaseId
 	}
@@ -7076,6 +7116,10 @@ func (client *Client) CreateKBSyncLinkWithOptions(request *CreateKBSyncLinkReque
 
 	if !dara.IsNil(request.UserId) {
 		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.UserRefreshToken) {
+		query["UserRefreshToken"] = request.UserRefreshToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -7733,7 +7777,7 @@ func (client *Client) CreateNetworkChannel(request *CreateNetworkChannelRequest)
 
 // Summary:
 //
-// Creates or obtains a virtual license order.
+// Creates or retrieves a virtual certificate order.
 //
 // @param request - CreateOrGetVirtualLicenseOrderRequest
 //
@@ -7793,7 +7837,7 @@ func (client *Client) CreateOrGetVirtualLicenseOrderWithOptions(request *CreateO
 
 // Summary:
 //
-// Creates or obtains a virtual license order.
+// Creates or retrieves a virtual certificate order.
 //
 // @param request - CreateOrGetVirtualLicenseOrderRequest
 //
@@ -9413,7 +9457,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// Deletes an account from an edge cluster for PolarDB on ENS.
+// Deletes an account for a PolarDB on ENS cluster.
 //
 // @param request - DeleteAccountZonalRequest
 //
@@ -9477,7 +9521,7 @@ func (client *Client) DeleteAccountZonalWithOptions(request *DeleteAccountZonalR
 
 // Summary:
 //
-// Deletes an account from an edge cluster for PolarDB on ENS.
+// Deletes an account for a PolarDB on ENS cluster.
 //
 // @param request - DeleteAccountZonalRequest
 //
@@ -9729,7 +9773,7 @@ func (client *Client) DeleteAgenticDBProject(request *DeleteAgenticDBProjectRequ
 
 // Summary:
 //
-// Deletes an API key for an AgenticDB tenant.
+// Deletes an API key of an AgenticDB tenant.
 //
 // @param request - DeleteAgenticDBTenantApiKeyRequest
 //
@@ -9785,7 +9829,7 @@ func (client *Client) DeleteAgenticDBTenantApiKeyWithOptions(request *DeleteAgen
 
 // Summary:
 //
-// Deletes an API key for an AgenticDB tenant.
+// Deletes an API key of an AgenticDB tenant.
 //
 // @param request - DeleteAgenticDBTenantApiKeyRequest
 //
@@ -10407,7 +10451,7 @@ func (client *Client) DeleteCostRule(request *DeleteCostRuleRequest) (_result *D
 
 // Summary:
 //
-// Deletes a pay-as-you-go PolarDB cluster.
+// Releases a pay-as-you-go PolarDB cluster.
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -10475,7 +10519,7 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 
 // Summary:
 //
-// Deletes a pay-as-you-go PolarDB cluster.
+// Releases a pay-as-you-go PolarDB cluster.
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -11033,7 +11077,7 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 
 // Summary:
 //
-// Deletes a database from a PolarDB edge cloud cluster.
+// Deletes a database in a PolarDB on ENS cluster.
 //
 // @param request - DeleteDatabaseZonalRequest
 //
@@ -11097,7 +11141,7 @@ func (client *Client) DeleteDatabaseZonalWithOptions(request *DeleteDatabaseZona
 
 // Summary:
 //
-// Deletes a database from a PolarDB edge cloud cluster.
+// Deletes a database in a PolarDB on ENS cluster.
 //
 // @param request - DeleteDatabaseZonalRequest
 //
@@ -13435,7 +13479,7 @@ func (client *Client) DescribeAIDBClusterAttribute(request *DescribeAIDBClusterA
 
 // Summary:
 //
-// # Query datasets
+// Queries a list of datasets.
 //
 // @param request - DescribeAIDBClusterDatasetsRequest
 //
@@ -13523,7 +13567,7 @@ func (client *Client) DescribeAIDBClusterDatasetsWithOptions(request *DescribeAI
 
 // Summary:
 //
-// # Query datasets
+// Queries a list of datasets.
 //
 // @param request - DescribeAIDBClusterDatasetsRequest
 //
@@ -13893,15 +13937,15 @@ func (client *Client) DescribeAIDBClusterTaskMetrics(request *DescribeAIDBCluste
 
 // Summary:
 //
-// Retrieves the list of template operators for a specified PolarDB database instance.
+// Queries the list of model operators for a specified PolarDB database instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation supports filtering and returning the list of template operators based on the `RelativeDBClusterId` and `KubeType` parameters.
+// - This operation filters and returns a list of model operators based on the RelativeDBClusterId and KubeType parameters.
 //
-// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
+// - Note: Make sure that the RelativeDBClusterId provided in the request matches the instance ID of an existing PolarDB database instance. Otherwise, the data cannot be retrieved.
 //
 // @param request - DescribeAIDBClusterTasksRequest
 //
@@ -13977,15 +14021,15 @@ func (client *Client) DescribeAIDBClusterTasksWithOptions(request *DescribeAIDBC
 
 // Summary:
 //
-// Retrieves the list of template operators for a specified PolarDB database instance.
+// Queries the list of model operators for a specified PolarDB database instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation supports filtering and returning the list of template operators based on the `RelativeDBClusterId` and `KubeType` parameters.
+// - This operation filters and returns a list of model operators based on the RelativeDBClusterId and KubeType parameters.
 //
-// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
+// - Note: Make sure that the RelativeDBClusterId provided in the request matches the instance ID of an existing PolarDB database instance. Otherwise, the data cannot be retrieved.
 //
 // @param request - DescribeAIDBClusterTasksRequest
 //
@@ -14003,7 +14047,7 @@ func (client *Client) DescribeAIDBClusterTasks(request *DescribeAIDBClusterTasks
 
 // Summary:
 //
-// Queries the list of custom AI clusters.
+// Queries the list of custom clusters.
 //
 // @param request - DescribeAIDBClustersRequest
 //
@@ -14095,7 +14139,7 @@ func (client *Client) DescribeAIDBClustersWithOptions(request *DescribeAIDBClust
 
 // Summary:
 //
-// Queries the list of custom AI clusters.
+// Queries the list of custom clusters.
 //
 // @param request - DescribeAIDBClustersRequest
 //
@@ -14265,7 +14309,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// Queries the edge clusters for PolarDB on ENS.
+// Queries the list of PolarDB edge clusters.
 //
 // @param request - DescribeAccountsZonalRequest
 //
@@ -14349,7 +14393,7 @@ func (client *Client) DescribeAccountsZonalWithOptions(request *DescribeAccounts
 
 // Summary:
 //
-// Queries the edge clusters for PolarDB on ENS.
+// Queries the list of PolarDB edge clusters.
 //
 // @param request - DescribeAccountsZonalRequest
 //
@@ -14543,7 +14587,7 @@ func (client *Client) DescribeActivationCodes(request *DescribeActivationCodesRe
 
 // Summary:
 //
-// Queries the Operations and Maintenance (O&M) configuration for a user, including the active O&M window.
+// Retrieves the O&M configuration of a user, which currently includes proactive O&M window information.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -14611,7 +14655,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *De
 
 // Summary:
 //
-// Queries the Operations and Maintenance (O&M) configuration for a user, including the active O&M window.
+// Retrieves the O&M configuration of a user, which currently includes proactive O&M window information.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -14825,7 +14869,7 @@ func (client *Client) DescribeAgenticDBBranch(request *DescribeAgenticDBBranchRe
 
 // Summary:
 //
-// Queries the connection information of an AgenticDB branch.
+// Queries the branch connection information of an AgenticDB cluster.
 //
 // @param request - DescribeAgenticDBBranchEndpointsRequest
 //
@@ -14885,7 +14929,7 @@ func (client *Client) DescribeAgenticDBBranchEndpointsWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the connection information of an AgenticDB branch.
+// Queries the branch connection information of an AgenticDB cluster.
 //
 // @param request - DescribeAgenticDBBranchEndpointsRequest
 //
@@ -15087,7 +15131,7 @@ func (client *Client) DescribeAgenticDBBranches(request *DescribeAgenticDBBranch
 //
 // - This operation supports filtering and returning the list of related model operators based on the `RelativeDBClusterId` and `KubeType` parameters.
 //
-// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
+// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB instance ID. Otherwise, data cannot be retrieved correctly.
 //
 // @param request - DescribeAgenticDBClustersRequest
 //
@@ -15179,7 +15223,7 @@ func (client *Client) DescribeAgenticDBClustersWithOptions(request *DescribeAgen
 //
 // - This operation supports filtering and returning the list of related model operators based on the `RelativeDBClusterId` and `KubeType` parameters.
 //
-// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
+// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB instance ID. Otherwise, data cannot be retrieved correctly.
 //
 // @param request - DescribeAgenticDBClustersRequest
 //
@@ -15279,7 +15323,7 @@ func (client *Client) DescribeAgenticDBComputeClusters(request *DescribeAgenticD
 
 // Summary:
 //
-// 查询 AgenticDB 项目详情
+// Queries the details of an AgenticDB project.
 //
 // @param request - DescribeAgenticDBProjectRequest
 //
@@ -15335,7 +15379,7 @@ func (client *Client) DescribeAgenticDBProjectWithOptions(request *DescribeAgent
 
 // Summary:
 //
-// 查询 AgenticDB 项目详情
+// Queries the details of an AgenticDB project.
 //
 // @param request - DescribeAgenticDBProjectRequest
 //
@@ -15591,11 +15635,11 @@ func (client *Client) DescribeApikeyAttribute(request *DescribeApikeyAttributeRe
 
 // Summary:
 //
-// Retrieves the details of a specified PolarDB instance application.
+// Queries the details of a specified PolarDB instance application.
 //
 // Description:
 //
-// This API operation queries all information about a specific PolarDB application, including but not limited to component details and endpoints.
+// This API queries all relevant information about a specific PolarDB application, including but not limited to component details and connection endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -15639,11 +15683,11 @@ func (client *Client) DescribeApplicationAttributeWithOptions(request *DescribeA
 
 // Summary:
 //
-// Retrieves the details of a specified PolarDB instance application.
+// Queries the details of a specified PolarDB instance application.
 //
 // Description:
 //
-// This API operation queries all information about a specific PolarDB application, including but not limited to component details and endpoints.
+// This API queries all relevant information about a specific PolarDB application, including but not limited to component details and connection endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -16317,7 +16361,7 @@ func (client *Client) DescribeApplicationUsage(request *DescribeApplicationUsage
 
 // Summary:
 //
-// Retrieves the list of applications for all PolarDB instances in a specified region.
+// Queries the list of applications for all PolarDB instances in a specified region.
 //
 // @param request - DescribeApplicationsRequest
 //
@@ -16385,7 +16429,7 @@ func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicati
 
 // Summary:
 //
-// Retrieves the list of applications for all PolarDB instances in a specified region.
+// Queries the list of applications for all PolarDB instances in a specified region.
 //
 // @param request - DescribeApplicationsRequest
 //
@@ -17820,6 +17864,10 @@ func (client *Client) DescribeCostRulesWithOptions(request *DescribeCostRulesReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CostRuleId) {
+		query["CostRuleId"] = request.CostRuleId
+	}
+
 	if !dara.IsNil(request.EffectiveTargetType) {
 		query["EffectiveTargetType"] = request.EffectiveTargetType
 	}
@@ -17830,6 +17878,10 @@ func (client *Client) DescribeCostRulesWithOptions(request *DescribeCostRulesReq
 
 	if !dara.IsNil(request.GwClusterId) {
 		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.InputTokenTier) {
+		query["InputTokenTier"] = request.InputTokenTier
 	}
 
 	if !dara.IsNil(request.ModelName) {
@@ -17989,7 +18041,7 @@ func (client *Client) DescribeCronJobPolicyServerless(request *DescribeCronJobPo
 
 // Summary:
 //
-// Queries the supported cross-cloud specifications.
+// Queries the list of specifications supported for cross-cloud scenarios.
 //
 // @param request - DescribeCrossCloudLevelsRequest
 //
@@ -18045,7 +18097,7 @@ func (client *Client) DescribeCrossCloudLevelsWithOptions(request *DescribeCross
 
 // Summary:
 //
-// Queries the supported cross-cloud specifications.
+// Queries the list of specifications supported for cross-cloud scenarios.
 //
 // @param request - DescribeCrossCloudLevelsRequest
 //
@@ -18809,7 +18861,7 @@ func (client *Client) DescribeDBClusterEndpoints(request *DescribeDBClusterEndpo
 
 // Summary:
 //
-// Queries the endpoints of an edge cluster for PolarDB on ENS.
+// Queries the endpoints of PolarDB on ENS.
 //
 // @param request - DescribeDBClusterEndpointsZonalRequest
 //
@@ -18877,7 +18929,7 @@ func (client *Client) DescribeDBClusterEndpointsZonalWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the endpoints of an edge cluster for PolarDB on ENS.
+// Queries the endpoints of PolarDB on ENS.
 //
 // @param request - DescribeDBClusterEndpointsZonalRequest
 //
@@ -19927,7 +19979,7 @@ func (client *Client) DescribeDBClusterVersion(request *DescribeDBClusterVersion
 
 // Summary:
 //
-// Queries the version of a PolarDB edge cluster.
+// Queries the version of a PolarDB on ENS cluster.
 //
 // @param request - DescribeDBClusterVersionZonalRequest
 //
@@ -19991,7 +20043,7 @@ func (client *Client) DescribeDBClusterVersionZonalWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the version of a PolarDB edge cluster.
+// Queries the version of a PolarDB on ENS cluster.
 //
 // @param request - DescribeDBClusterVersionZonalRequest
 //
@@ -20009,7 +20061,7 @@ func (client *Client) DescribeDBClusterVersionZonal(request *DescribeDBClusterVe
 
 // Summary:
 //
-// Queries the details of PolarDB clusters or clusters authorized by RAM authorization.
+// Queries the list of PolarDB clusters or the details of clusters with RAM authorization.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -20133,7 +20185,7 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 // Summary:
 //
-// Queries the details of PolarDB clusters or clusters authorized by RAM authorization.
+// Queries the list of PolarDB clusters or the details of clusters with RAM authorization.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -22191,7 +22243,7 @@ func (client *Client) DescribeGatewayList(request *DescribeGatewayListRequest) (
 
 // Summary:
 //
-// Retrieves details for Polarlakebase Global Data Networks (GDNs) across all regions in your account.
+// Queries the details of Polarlakebase Global Database Networks (GDNs) across all regions.
 //
 // @param request - DescribeGlobalDataNetworkListRequest
 //
@@ -22239,7 +22291,7 @@ func (client *Client) DescribeGlobalDataNetworkListWithOptions(request *Describe
 
 // Summary:
 //
-// Retrieves details for Polarlakebase Global Data Networks (GDNs) across all regions in your account.
+// Queries the details of Polarlakebase Global Database Networks (GDNs) across all regions.
 //
 // @param request - DescribeGlobalDataNetworkListRequest
 //
@@ -22257,7 +22309,7 @@ func (client *Client) DescribeGlobalDataNetworkList(request *DescribeGlobalDataN
 
 // Summary:
 //
-// Retrieves details for a Global Database Network (GDN).
+// Queries the details of a global database network (GDN).
 //
 // @param request - DescribeGlobalDatabaseNetworkRequest
 //
@@ -22325,7 +22377,7 @@ func (client *Client) DescribeGlobalDatabaseNetworkWithOptions(request *Describe
 
 // Summary:
 //
-// Retrieves details for a Global Database Network (GDN).
+// Queries the details of a global database network (GDN).
 //
 // @param request - DescribeGlobalDatabaseNetworkRequest
 //
@@ -22629,11 +22681,11 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 
 // Summary:
 //
-// Queries high availability (HA) logs for an instance.
+// Queries high-availability logs of an instance.
 //
 // Description:
 //
-// > - Only PolarDB for MySQL supports this operation.
+// >-  Only PolarDB for MySQL supports this operation.
 //
 // @param request - DescribeHALogsRequest
 //
@@ -22701,11 +22753,11 @@ func (client *Client) DescribeHALogsWithOptions(request *DescribeHALogsRequest, 
 
 // Summary:
 //
-// Queries high availability (HA) logs for an instance.
+// Queries high-availability logs of an instance.
 //
 // Description:
 //
-// > - Only PolarDB for MySQL supports this operation.
+// >-  Only PolarDB for MySQL supports this operation.
 //
 // @param request - DescribeHALogsRequest
 //
@@ -22841,7 +22893,7 @@ func (client *Client) DescribeHistoryEvents(request *DescribeHistoryEventsReques
 
 // Summary:
 //
-// Retrieves a list of historical administrative tasks for PolarDB for MySQL instances, such as parameter changes, and instance restarts.
+// Queries the historical task list for PolarDB for MySQL.
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -22949,7 +23001,7 @@ func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTa
 
 // Summary:
 //
-// Retrieves a list of historical administrative tasks for PolarDB for MySQL instances, such as parameter changes, and instance restarts.
+// Queries the historical task list for PolarDB for MySQL.
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -23072,6 +23124,76 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeHistoryTasksStatResponse{}
 	_body, _err := client.DescribeHistoryTasksStatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a knowledge base synchronization link.
+//
+// @param request - DescribeKBSyncLinkAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKBSyncLinkAttributeResponse
+func (client *Client) DescribeKBSyncLinkAttributeWithOptions(request *DescribeKBSyncLinkAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeKBSyncLinkAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LinkId) {
+		query["LinkId"] = request.LinkId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKBSyncLinkAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKBSyncLinkAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a knowledge base synchronization link.
+//
+// @param request - DescribeKBSyncLinkAttributeRequest
+//
+// @return DescribeKBSyncLinkAttributeResponse
+func (client *Client) DescribeKBSyncLinkAttribute(request *DescribeKBSyncLinkAttributeRequest) (_result *DescribeKBSyncLinkAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeKBSyncLinkAttributeResponse{}
+	_body, _err := client.DescribeKBSyncLinkAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23463,7 +23585,7 @@ func (client *Client) DescribeKnowledgeBaseFiles(request *DescribeKnowledgeBaseF
 
 // Summary:
 //
-// Queries the list of knowledge bases.
+// Queries a list of knowledge bases.
 //
 // @param request - DescribeKnowledgeBasesRequest
 //
@@ -23527,7 +23649,7 @@ func (client *Client) DescribeKnowledgeBasesWithOptions(request *DescribeKnowled
 
 // Summary:
 //
-// Queries the list of knowledge bases.
+// Queries a list of knowledge bases.
 //
 // @param request - DescribeKnowledgeBasesRequest
 //
@@ -23759,7 +23881,7 @@ func (client *Client) DescribeLicenseOrderDetails(request *DescribeLicenseOrderD
 
 // Summary:
 //
-// This operation queries a list of license orders.
+// Queries the list of license orders.
 //
 // @param request - DescribeLicenseOrdersRequest
 //
@@ -23839,7 +23961,7 @@ func (client *Client) DescribeLicenseOrdersWithOptions(request *DescribeLicenseO
 
 // Summary:
 //
-// This operation queries a list of license orders.
+// Queries the list of license orders.
 //
 // @param request - DescribeLicenseOrdersRequest
 //
@@ -23857,7 +23979,7 @@ func (client *Client) DescribeLicenseOrders(request *DescribeLicenseOrdersReques
 
 // Summary:
 //
-// Queries the available time range to recover from a backup.
+// Queries the restorable time range of backups.
 //
 // @param request - DescribeLocalAvailableRecoveryTimeRequest
 //
@@ -23921,7 +24043,7 @@ func (client *Client) DescribeLocalAvailableRecoveryTimeWithOptions(request *Des
 
 // Summary:
 //
-// Queries the available time range to recover from a backup.
+// Queries the restorable time range of backups.
 //
 // @param request - DescribeLocalAvailableRecoveryTimeRequest
 //
@@ -24385,7 +24507,7 @@ func (client *Client) DescribeModelServices(request *DescribeModelServicesReques
 
 // Summary:
 //
-// Queries the modification history of parameters.
+// Queries the modification history of query parameters.
 //
 // @param request - DescribeModifyParameterLogRequest
 //
@@ -24453,7 +24575,7 @@ func (client *Client) DescribeModifyParameterLogWithOptions(request *DescribeMod
 
 // Summary:
 //
-// Queries the modification history of parameters.
+// Queries the modification history of query parameters.
 //
 // @param request - DescribeModifyParameterLogRequest
 //
@@ -24471,7 +24593,7 @@ func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParamete
 
 // Summary:
 //
-// Queries network channels.
+// Queries a network channel.
 //
 // @param request - DescribeNetworkChannelRequest
 //
@@ -24551,7 +24673,7 @@ func (client *Client) DescribeNetworkChannelWithOptions(request *DescribeNetwork
 
 // Summary:
 //
-// Queries network channels.
+// Queries a network channel.
 //
 // @param request - DescribeNetworkChannelRequest
 //
@@ -26241,21 +26363,21 @@ func (client *Client) DescribePolarFsObjects(request *DescribePolarFsObjectsRequ
 
 // Summary:
 //
-// Retrieves all quota rules for a specified PolarFileSystem (PolarFS) instance.
+// Retrieves all quota rule information for a specified Polarlakebase instance.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This operation queries all quota rules for a specific PolarFS instance. It supports wildcard matching with the `QuotaNameMatch` and `PatternMatch` parameters.
+// - This API operation queries all quota rules for a specific Polarlakebase instance. You can use the `QuotaNameMatch` and `PatternMatch` parameters for fuzzy matching.
 //
-// - Paging is not yet available and will be released in a future kernel update.
+// - The pagination feature is not yet publicly available and will be released after the kernel is ready. Currently, results are returned without pagination limits.
 //
-// - The `PolarFsInstanceId` parameter is required to specify the PolarFS instance to query.
+// - `PolarFsInstanceId` is required and specifies the Polarlakebase instance to query.
 //
-// - You can use optional parameters, such as `QuotaNameMatch` and `PatternMatch`, to filter quota rules.
+// - Optional parameters such as `QuotaNameMatch` and `PatternMatch` can be used to further filter quota rules that meet the specified conditions.
 //
-// - The returned data includes the total number of quota rules, the number of rules on the current page, and details for each rule, such as the rule ID, name, description, and capacity limit.
+// - The returned data includes but is not limited to the total number of quota rules, the number of rules on the current page, and specific rule details such as rule ID, name, description, and capacity limits.
 //
 // @param request - DescribePolarFsQuotaRequest
 //
@@ -26315,21 +26437,21 @@ func (client *Client) DescribePolarFsQuotaWithOptions(request *DescribePolarFsQu
 
 // Summary:
 //
-// Retrieves all quota rules for a specified PolarFileSystem (PolarFS) instance.
+// Retrieves all quota rule information for a specified Polarlakebase instance.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This operation queries all quota rules for a specific PolarFS instance. It supports wildcard matching with the `QuotaNameMatch` and `PatternMatch` parameters.
+// - This API operation queries all quota rules for a specific Polarlakebase instance. You can use the `QuotaNameMatch` and `PatternMatch` parameters for fuzzy matching.
 //
-// - Paging is not yet available and will be released in a future kernel update.
+// - The pagination feature is not yet publicly available and will be released after the kernel is ready. Currently, results are returned without pagination limits.
 //
-// - The `PolarFsInstanceId` parameter is required to specify the PolarFS instance to query.
+// - `PolarFsInstanceId` is required and specifies the Polarlakebase instance to query.
 //
-// - You can use optional parameters, such as `QuotaNameMatch` and `PatternMatch`, to filter quota rules.
+// - Optional parameters such as `QuotaNameMatch` and `PatternMatch` can be used to further filter quota rules that meet the specified conditions.
 //
-// - The returned data includes the total number of quota rules, the number of rules on the current page, and details for each rule, such as the rule ID, name, description, and capacity limit.
+// - The returned data includes but is not limited to the total number of quota rules, the number of rules on the current page, and specific rule details such as rule ID, name, description, and capacity limits.
 //
 // @param request - DescribePolarFsQuotaRequest
 //
@@ -27332,15 +27454,13 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 
 // Summary:
 //
-// Queries the slow query log statistics for a PolarDB cluster.
+// Queries the slow query log statistics information of a PolarDB cluster.
 //
 // Description:
 //
-// > - This API is available only for PolarDB for MySQL.
+// >- Only PolarDB for MySQL supports this operation.
 //
-// >
-//
-// > - Effective September 1, 2024, the SQLHash field value will change when you call this API due to an optimization to the SQL templating algorithm. For more information, see [Optimization of the templating algorithm for slow SQL queries](https://help.aliyun.com/document_detail/2845725.html).
+// >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, the value of the SQLHash field will change when you call this operation. For more information, see [Notice: Optimization of the slow SQL template algorithm](https://help.aliyun.com/document_detail/2845725.html).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -27424,15 +27544,13 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 
 // Summary:
 //
-// Queries the slow query log statistics for a PolarDB cluster.
+// Queries the slow query log statistics information of a PolarDB cluster.
 //
 // Description:
 //
-// > - This API is available only for PolarDB for MySQL.
+// >- Only PolarDB for MySQL supports this operation.
 //
-// >
-//
-// > - Effective September 1, 2024, the SQLHash field value will change when you call this API due to an optimization to the SQL templating algorithm. For more information, see [Optimization of the templating algorithm for slow SQL queries](https://help.aliyun.com/document_detail/2845725.html).
+// >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, the value of the SQLHash field will change when you call this operation. For more information, see [Notice: Optimization of the slow SQL template algorithm](https://help.aliyun.com/document_detail/2845725.html).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -27450,13 +27568,13 @@ func (client *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (_resul
 
 // Summary:
 //
-// Queries the progress details of tasks generated by API calls, such as creating a cluster.
+// Queries the progress details of tasks generated through API operations, such as creating a cluster.
 //
 // Description:
 //
-// - You can view the progress details of tasks generated by either direct API calls, such as [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html), or operations in the PolarDB console, such as [creating a cluster](https://help.aliyun.com/document_detail/58769.html).
+// You can view tasks generated by directly calling an API operation such as [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html), or tasks generated when the system calls the corresponding API operation while you use a feature in the PolarDB console, such as [creating a cluster](https://help.aliyun.com/document_detail/58769.html).
 //
-// - Currently, this operation supports viewing the progress details only for tasks generated when you create a cluster by calling the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation, provided that the `CreationOption` parameter is not set to `CreateGdnStandby`.
+//   - Currently, you can view only the progress details of tasks generated when creating a cluster, that is, when the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation is called and the `CreationOption` parameter is not set to `CreateGdnStandby`.
 //
 // @param request - DescribeTasksRequest
 //
@@ -27540,13 +27658,13 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 
 // Summary:
 //
-// Queries the progress details of tasks generated by API calls, such as creating a cluster.
+// Queries the progress details of tasks generated through API operations, such as creating a cluster.
 //
 // Description:
 //
-// - You can view the progress details of tasks generated by either direct API calls, such as [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html), or operations in the PolarDB console, such as [creating a cluster](https://help.aliyun.com/document_detail/58769.html).
+// You can view tasks generated by directly calling an API operation such as [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html), or tasks generated when the system calls the corresponding API operation while you use a feature in the PolarDB console, such as [creating a cluster](https://help.aliyun.com/document_detail/58769.html).
 //
-// - Currently, this operation supports viewing the progress details only for tasks generated when you create a cluster by calling the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation, provided that the `CreationOption` parameter is not set to `CreateGdnStandby`.
+//   - Currently, you can view only the progress details of tasks generated when creating a cluster, that is, when the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation is called and the `CreationOption` parameter is not set to `CreateGdnStandby`.
 //
 // @param request - DescribeTasksRequest
 //
@@ -27564,7 +27682,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 
 // Summary:
 //
-// Queries the verification reports.
+// Queries an upgrade or migration verification report.
 //
 // @param request - DescribeUpgradeReportRequest
 //
@@ -27660,7 +27778,7 @@ func (client *Client) DescribeUpgradeReportWithOptions(request *DescribeUpgradeR
 
 // Summary:
 //
-// Queries the verification reports.
+// Queries an upgrade or migration verification report.
 //
 // @param request - DescribeUpgradeReportRequest
 //
@@ -27678,7 +27796,7 @@ func (client *Client) DescribeUpgradeReport(request *DescribeUpgradeReportReques
 
 // Summary:
 //
-// Retrieves a list of Key Management Service (KMS) keys.
+// Queries the list of KMS keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -27754,7 +27872,7 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 
 // Summary:
 //
-// Retrieves a list of Key Management Service (KMS) keys.
+// Queries the list of KMS keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -28218,7 +28336,7 @@ func (client *Client) DisableDBClusterDynamoDB(request *DisableDBClusterDynamoDB
 
 // Summary:
 //
-// Disables the Orca (Redis-compatible) feature for a PolarDB cluster.
+// Disables the relational algebra of a cluster.
 //
 // @param request - DisableDBClusterOrcaRequest
 //
@@ -28282,7 +28400,7 @@ func (client *Client) DisableDBClusterOrcaWithOptions(request *DisableDBClusterO
 
 // Summary:
 //
-// Disables the Orca (Redis-compatible) feature for a PolarDB cluster.
+// Disables the relational algebra of a cluster.
 //
 // @param request - DisableDBClusterOrcaRequest
 //
@@ -29260,7 +29378,7 @@ func (client *Client) EnableSQLRateLimitingRules(request *EnableSQLRateLimitingR
 
 // Summary:
 //
-// Evaluates the resources in a region.
+// Evaluates resource availability.
 //
 // @param request - EvaluateRegionResourceRequest
 //
@@ -29356,7 +29474,7 @@ func (client *Client) EvaluateRegionResourceWithOptions(request *EvaluateRegionR
 
 // Summary:
 //
-// Evaluates the resources in a region.
+// Evaluates resource availability.
 //
 // @param request - EvaluateRegionResourceRequest
 //
@@ -29436,7 +29554,7 @@ func (client *Client) ExecuteCrossCloudOpenAPI(request *ExecuteCrossCloudOpenAPI
 
 // Summary:
 //
-// Performs a manual failover to promote a read-only node to the primary node in a PolarDB cluster.
+// Performs a manual primary/secondary switchover for a PolarDB cluster. You can specify a read-only node as the new primary node.
 //
 // @param request - FailoverDBClusterRequest
 //
@@ -29512,7 +29630,7 @@ func (client *Client) FailoverDBClusterWithOptions(request *FailoverDBClusterReq
 
 // Summary:
 //
-// Performs a manual failover to promote a read-only node to the primary node in a PolarDB cluster.
+// Performs a manual primary/secondary switchover for a PolarDB cluster. You can specify a read-only node as the new primary node.
 //
 // @param request - FailoverDBClusterRequest
 //
@@ -29530,7 +29648,7 @@ func (client *Client) FailoverDBCluster(request *FailoverDBClusterRequest) (_res
 
 // Summary:
 //
-// Initiates a zonal failover for a PolarDB cluster, promoting a secondary node to primary.
+// Performs a manual primary/secondary switchover for an edge cluster.
 //
 // @param request - FailoverDBClusterZonalRequest
 //
@@ -29606,7 +29724,7 @@ func (client *Client) FailoverDBClusterZonalWithOptions(request *FailoverDBClust
 
 // Summary:
 //
-// Initiates a zonal failover for a PolarDB cluster, promoting a secondary node to primary.
+// Performs a manual primary/secondary switchover for an edge cluster.
 //
 // @param request - FailoverDBClusterZonalRequest
 //
@@ -29624,7 +29742,7 @@ func (client *Client) FailoverDBClusterZonal(request *FailoverDBClusterZonalRequ
 
 // Summary:
 //
-// Generates a report for a pre-upgrade check.
+// Generates a check report.
 //
 // @param request - GenerateUpgradeReportForSyncCloneRequest
 //
@@ -29712,7 +29830,7 @@ func (client *Client) GenerateUpgradeReportForSyncCloneWithOptions(request *Gene
 
 // Summary:
 //
-// Generates a report for a pre-upgrade check.
+// Generates a check report.
 //
 // @param request - GenerateUpgradeReportForSyncCloneRequest
 //
@@ -30413,7 +30531,7 @@ func (client *Client) ListLakebaseS3Accounts(request *ListLakebaseS3AccountsRequ
 
 // Summary:
 //
-// Queries a list of orders.
+// Queries orders.
 //
 // @param request - ListOrdersRequest
 //
@@ -30493,7 +30611,7 @@ func (client *Client) ListOrdersWithOptions(request *ListOrdersRequest, runtime 
 
 // Summary:
 //
-// Queries a list of orders.
+// Queries orders.
 //
 // @param request - ListOrdersRequest
 //
@@ -31227,7 +31345,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// Modifies the description of a PolarDB on ENS account.
+// Modifies the description of an account in a PolarDB on ENS cluster.
 //
 // @param request - ModifyAccountDescriptionZonalRequest
 //
@@ -31299,7 +31417,7 @@ func (client *Client) ModifyAccountDescriptionZonalWithOptions(request *ModifyAc
 
 // Summary:
 //
-// Modifies the description of a PolarDB on ENS account.
+// Modifies the description of an account in a PolarDB on ENS cluster.
 //
 // @param request - ModifyAccountDescriptionZonalRequest
 //
@@ -31701,7 +31819,7 @@ func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOpe
 
 // Summary:
 //
-// Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+// Modifies the switchover time of a scheduled O&M event for an instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -31777,7 +31895,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+// Modifies the switchover time of a scheduled O&M event for an instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -31861,7 +31979,7 @@ func (client *Client) ModifyApplicationDescription(request *ModifyApplicationDes
 
 // Summary:
 //
-// Modifies the endpoint address of a PolarDB application.
+// Modifies a PolarDB application endpoint address.
 //
 // @param tmpReq - ModifyApplicationEndpointAddressRequest
 //
@@ -31927,7 +32045,7 @@ func (client *Client) ModifyApplicationEndpointAddressWithOptions(tmpReq *Modify
 
 // Summary:
 //
-// Modifies the endpoint address of a PolarDB application.
+// Modifies a PolarDB application endpoint address.
 //
 // @param request - ModifyApplicationEndpointAddressRequest
 //
@@ -32758,16 +32876,32 @@ func (client *Client) ModifyCostRuleWithOptions(request *ModifyCostRuleRequest, 
 		query["CacheCostPointsPerMillion"] = request.CacheCostPointsPerMillion
 	}
 
+	if !dara.IsNil(request.CacheCreationCostPointsPerMillion) {
+		query["CacheCreationCostPointsPerMillion"] = request.CacheCreationCostPointsPerMillion
+	}
+
 	if !dara.IsNil(request.CostRuleId) {
 		query["CostRuleId"] = request.CostRuleId
+	}
+
+	if !dara.IsNil(request.ExplicitCacheCostPointsPerMillion) {
+		query["ExplicitCacheCostPointsPerMillion"] = request.ExplicitCacheCostPointsPerMillion
 	}
 
 	if !dara.IsNil(request.GwClusterId) {
 		query["GwClusterId"] = request.GwClusterId
 	}
 
+	if !dara.IsNil(request.ImageCostPointsPerCount) {
+		query["ImageCostPointsPerCount"] = request.ImageCostPointsPerCount
+	}
+
 	if !dara.IsNil(request.InputCostPointsPerMillion) {
 		query["InputCostPointsPerMillion"] = request.InputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.InputTokenTiers) {
+		query["InputTokenTiers"] = request.InputTokenTiers
 	}
 
 	if !dara.IsNil(request.ModelName) {
@@ -32784,6 +32918,10 @@ func (client *Client) ModifyCostRuleWithOptions(request *ModifyCostRuleRequest, 
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VideoCostPointsPerSecond) {
+		query["VideoCostPointsPerSecond"] = request.VideoCostPointsPerSecond
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -32829,7 +32967,7 @@ func (client *Client) ModifyCostRule(request *ModifyCostRuleRequest) (_result *M
 
 // Summary:
 //
-// Modifies the policy for a scheduled task.
+// Modifies a scheduled task policy.
 //
 // @param request - ModifyCronJobPolicyServerlessRequest
 //
@@ -32953,7 +33091,7 @@ func (client *Client) ModifyCronJobPolicyServerlessWithOptions(request *ModifyCr
 
 // Summary:
 //
-// Modifies the policy for a scheduled task.
+// Modifies a scheduled task policy.
 //
 // @param request - ModifyCronJobPolicyServerlessRequest
 //
@@ -35447,7 +35585,7 @@ func (client *Client) ModifyDBDescription(request *ModifyDBDescriptionRequest) (
 
 // Summary:
 //
-// Modifies the database description of an edge cluster for PolarDB on ENS.
+// Modifies the description of a database in a PolarDB on ENS cluster.
 //
 // @param request - ModifyDBDescriptionZonalRequest
 //
@@ -35519,7 +35657,7 @@ func (client *Client) ModifyDBDescriptionZonalWithOptions(request *ModifyDBDescr
 
 // Summary:
 //
-// Modifies the database description of an edge cluster for PolarDB on ENS.
+// Modifies the description of a database in a PolarDB on ENS cluster.
 //
 // @param request - ModifyDBDescriptionZonalRequest
 //
@@ -36113,7 +36251,7 @@ func (client *Client) ModifyDBNodeSccMode(request *ModifyDBNodeSccModeRequest) (
 
 // Summary:
 //
-// Modifies the specifications of a single node in a PolarDB cluster.
+// Changes the specifications of a single node in a PolarDB cluster.
 //
 // @param request - ModifyDBNodesClassRequest
 //
@@ -36213,7 +36351,7 @@ func (client *Client) ModifyDBNodesClassWithOptions(request *ModifyDBNodesClassR
 
 // Summary:
 //
-// Modifies the specifications of a single node in a PolarDB cluster.
+// Changes the specifications of a single node in a PolarDB cluster.
 //
 // @param request - ModifyDBNodesClassRequest
 //
@@ -36975,7 +37113,7 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalS
 
 // Summary:
 //
-// Modifies the log backup retention policy for a PolarDB cluster.
+// Modifies the log backup retention policy of a PolarDB cluster.
 //
 // @param tmpReq - ModifyLogBackupPolicyRequest
 //
@@ -37057,7 +37195,7 @@ func (client *Client) ModifyLogBackupPolicyWithOptions(tmpReq *ModifyLogBackupPo
 
 // Summary:
 //
-// Modifies the log backup retention policy for a PolarDB cluster.
+// Modifies the log backup retention policy of a PolarDB cluster.
 //
 // @param request - ModifyLogBackupPolicyRequest
 //
@@ -38887,7 +39025,7 @@ func (client *Client) RemovePolarClawDevicePair(request *RemovePolarClawDevicePa
 
 // Summary:
 //
-// Deletes a PolarClaw MCP server.
+// Deletes a PolarClaw MCP service.
 //
 // @param request - RemovePolarClawMCPServerRequest
 //
@@ -38935,7 +39073,7 @@ func (client *Client) RemovePolarClawMCPServerWithOptions(request *RemovePolarCl
 
 // Summary:
 //
-// Deletes a PolarClaw MCP server.
+// Deletes a PolarClaw MCP service.
 //
 // @param request - RemovePolarClawMCPServerRequest
 //
@@ -40187,7 +40325,7 @@ func (client *Client) RevokeAccountPrivilege(request *RevokeAccountPrivilegeRequ
 
 // Summary:
 //
-// Revokes permissions from an account.
+// Revokes account permissions.
 //
 // @param request - RevokeAccountPrivilegeZonalRequest
 //
@@ -40259,7 +40397,7 @@ func (client *Client) RevokeAccountPrivilegeZonalWithOptions(request *RevokeAcco
 
 // Summary:
 //
-// Revokes permissions from an account.
+// Revokes account permissions.
 //
 // @param request - RevokeAccountPrivilegeZonalRequest
 //
@@ -40351,7 +40489,11 @@ func (client *Client) RunPolarClawCronJob(request *RunPolarClawCronJobRequest) (
 
 // Summary:
 //
-// Retrieves memories.
+// Retrieves memories from a specified application.
+//
+// Description:
+//
+// Retrieves memory data from a specified application.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -40427,7 +40569,11 @@ func (client *Client) SearchMemoriesWithOptions(request *SearchMemoriesRequest, 
 
 // Summary:
 //
-// Retrieves memories.
+// Retrieves memories from a specified application.
+//
+// Description:
+//
+// Retrieves memory data from a specified application.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -40907,11 +41053,11 @@ func (client *Client) TempModifyDBNode(request *TempModifyDBNodeRequest) (_resul
 //
 // Description:
 //
-// > - PolarDB clusters support subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// > - PolarDB clusters support the subscription and pay-as-you-go billing methods. You can switch from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Switch from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Switch from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// >- If your Alibaba Cloud account balance is insufficient, you cannot change the pay-as-you-go billing method to subscription.
+// >- If your Alibaba Cloud account balance is insufficient, the pay-as-you-go billing method cannot be switched to subscription.
 //
-// >- When you change the billing method from subscription to pay-as-you-go, the system automatically refunds the remaining balance of the fees that you have paid.
+// >- When you switch from subscription to pay-as-you-go, the system automatically refunds the remaining balance of the fees that you have paid.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -41007,11 +41153,11 @@ func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBC
 //
 // Description:
 //
-// > - PolarDB clusters support subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// > - PolarDB clusters support the subscription and pay-as-you-go billing methods. You can switch from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Switch from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Switch from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// >- If your Alibaba Cloud account balance is insufficient, you cannot change the pay-as-you-go billing method to subscription.
+// >- If your Alibaba Cloud account balance is insufficient, the pay-as-you-go billing method cannot be switched to subscription.
 //
-// >- When you change the billing method from subscription to pay-as-you-go, the system automatically refunds the remaining balance of the fees that you have paid.
+// >- When you switch from subscription to pay-as-you-go, the system automatically refunds the remaining balance of the fees that you have paid.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -41644,6 +41790,10 @@ func (client *Client) UpdateKBSyncLinkWithOptions(request *UpdateKBSyncLinkReque
 		query["ClientSecret"] = request.ClientSecret
 	}
 
+	if !dara.IsNil(request.FeishuChatMemberStaleTtlSeconds) {
+		query["FeishuChatMemberStaleTtlSeconds"] = request.FeishuChatMemberStaleTtlSeconds
+	}
+
 	if !dara.IsNil(request.KnowledgeBaseId) {
 		query["KnowledgeBaseId"] = request.KnowledgeBaseId
 	}
@@ -41678,6 +41828,10 @@ func (client *Client) UpdateKBSyncLinkWithOptions(request *UpdateKBSyncLinkReque
 
 	if !dara.IsNil(request.UserId) {
 		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.UserRefreshToken) {
+		query["UserRefreshToken"] = request.UserRefreshToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -42863,7 +43017,11 @@ func (client *Client) UpgradePolarClawChannel(request *UpgradePolarClawChannelRe
 
 // Summary:
 //
-// Upgrades a PolarClaw plugin.
+// Upgrades a plug-in in a PolarClaw application.
+//
+// Description:
+//
+// Upgrades a plug-in that is installed in a PolarClaw application.
 //
 // @param request - UpgradePolarClawPluginRequest
 //
@@ -42919,7 +43077,11 @@ func (client *Client) UpgradePolarClawPluginWithOptions(request *UpgradePolarCla
 
 // Summary:
 //
-// Upgrades a PolarClaw plugin.
+// Upgrades a plug-in in a PolarClaw application.
+//
+// Description:
+//
+// Upgrades a plug-in that is installed in a PolarClaw application.
 //
 // @param request - UpgradePolarClawPluginRequest
 //

@@ -38,9 +38,9 @@ type ModifyEncryptionDBSecretRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The status of the key. Valid values:
 	//
-	// - **Enabled**
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ModifyEncryptionDBSecretRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Global Resource Descriptor (GRD) of the role. For more information, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+	// The global resource descriptor of the RAM role. The descriptor is used to specify a RAM role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
 	//
 	// example:
 	//

@@ -36,13 +36,13 @@ type iDescribeAIDBClusterDatasetsRequest interface {
 }
 
 type DescribeAIDBClusterDatasetsRequest struct {
-	// The token used to retrieve the next page of results. This value is obtained from the response of a previous request. For the first request, leave this parameter empty.
+	// The initial token for this request. This parameter does not take effect when you query a list.
 	//
 	// example:
 	//
 	// EFSDF-DF-***
 	ContinuationToken *string `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
-	// The ID of the PolarDB cluster for AI model services.
+	// The instance ID of the PolarDB database for the AI model service.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeAIDBClusterDatasetsRequest struct {
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The type of the dataset. Valid values:
 	//
-	// - **train**: The training set.
+	// 	- **train**: training dataset.
 	//
-	// - **eval**: The evaluation set.
+	// 	- **eval**: evaluation dataset.
 	//
 	// example:
 	//
@@ -66,13 +66,15 @@ type DescribeAIDBClusterDatasetsRequest struct {
 	DatasetType  *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**.
+	//
+	//
 	//
 	// Default value: **30**.
 	//
@@ -88,13 +90,13 @@ type DescribeAIDBClusterDatasetsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The training mode. Valid values:
+	// The training mode of the dataset. Valid values:
 	//
-	// - **sft**: supervised fine-tuning.
+	// 	- **sft**: supervised fine-tuning.
 	//
-	// - **grpo**: reinforcement learning.
+	// 	- **grpo**: reinforcement learning.
 	//
-	// - **text**: text generation.
+	// 	- **text**: text generation.
 	//
 	// example:
 	//

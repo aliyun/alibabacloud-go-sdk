@@ -32,7 +32,7 @@ type iDescribeLicenseOrdersRequest interface {
 }
 
 type DescribeLicenseOrdersRequest struct {
-	// The Alibaba Cloud order ID. This can be a virtual order ID.
+	// The Alibaba Cloud order ID, including virtual order IDs.
 	//
 	// example:
 	//
@@ -42,33 +42,37 @@ type DescribeLicenseOrdersRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The package type. Valid values:
 	//
-	// - single_node_subscribe: single node (subscription)
+	// - single_node_subscribe: single node (subscription).
 	//
-	// - single_node_long_term: single node (long-term)
+	// - single_node_long_term: single node (long-term).
 	//
-	// - primary_backup_subscribe: primary/standby (subscription)
+	// - primary_backup_subscribe: primary/secondary (subscription).
 	//
-	// - primary_backup_long_term: primary/standby (long-term)
+	// - primary_backup_long_term: primary/secondary (long-term).
 	//
-	// - pre_generation_long_term: pre-generated (long-term)
+	// - pre_generation_long_term: pre-generation (long-term).
 	//
 	// example:
 	//
 	// single_node_subscribe
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The page number to query.
+	// The page number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
+	// The purchase channel. Valid values:
+	//
+	// - aliyun_market: Alibaba Cloud Marketplace.
+	//
+	// - aliyun_public: standard purchase page.
 	//
 	// example:
 	//

@@ -46,15 +46,13 @@ type iDescribeHistoryTasksRequest interface {
 }
 
 type DescribeHistoryTasksRequest struct {
-	// The minimum task execution time in seconds. Filters for tasks that took longer than this value. Default value: 0.
+	// The minimum execution duration. Filters tasks whose execution duration is greater than this value. Unit: seconds. Default value: 0, which indicates no restriction.
 	//
 	// example:
 	//
 	// 0
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	// The start of the time range to query, based on task start time. The time follows the ISO8601 standard and must be in `UTC+0` time. Format: `yyyy-MM-ddTHH:mm:ssZ`.
-	//
-	// The earliest supported time is 30 days ago. If the specified time is more than 30 days ago, it will be automatically converted to 30 days ago.
+	// The beginning of the time range for the task start time. Tasks whose start time is later than this time are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC+0`. The earliest supported time is 30 days before the current time. A value earlier than 30 days is automatically converted to 30 days before the current time.
 	//
 	// This parameter is required.
 	//
@@ -62,9 +60,9 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// 2025-01-02T11:31:03Z
 	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	// The resource ID to filter by. You can provide a comma-separated list of up to 30 IDs. Default value: empty, indicating no restriction.
+	// The resource ID. Specify this parameter to query tasks for the corresponding resource. Separate multiple IDs with commas (,). A maximum of 30 IDs are supported. Default value: empty, which indicates no restriction.
 	//
-	// > Currently, only PolarDB cluster IDs are supported.
+	// > Currently, only cluster IDs are supported.
 	//
 	// example:
 	//
@@ -77,13 +75,13 @@ type DescribeHistoryTasksRequest struct {
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: positive integers. Default value: 1.
+	// The page number of the query results. Valid values: positive integers. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Valid values: 10 to 100. Default value: 10.
+	// The number of entries per page. Valid values: 10 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -91,7 +89,7 @@ type DescribeHistoryTasksRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region information.
 	//
 	// example:
 	//
@@ -108,43 +106,43 @@ type DescribeHistoryTasksRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **Scheduled**: waiting for execution
+	// 	- **Scheduled**: Waiting for execution.
 	//
-	// - **Running**: executing
+	// 	- **Running**: Running.
 	//
-	// - **Succeed**: executed successfully
+	// 	- **Succeed**: Succeeded.
 	//
-	// - **Cancelling**: stopping
+	// 	- **Cancelling**: Being canceled.
 	//
-	// - **Canceled**: stopped
+	// 	- **Canceled**: Canceled.
 	//
-	// - **Waiting**: waiting for preset time
+	// 	- **Waiting**: Waiting for the scheduled time.
 	//
-	// You can provide a comma-separated list. Default value: empty, which indicates all statuses.
+	// Separate multiple statuses with commas (,). Default value: empty, which indicates all statuses.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID. You can provide a comma-separated list of up to 30 IDs. Default value: empty, indicating no restriction.
+	// The task ID. Separate multiple task IDs with commas (,). A maximum of 30 IDs are supported. Default value: empty, which indicates no restriction.
 	//
 	// example:
 	//
 	// t-0mqi38ho0cgjv***
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type. You can provide a comma-separated list of up to 30 task types. Default value: empty, indicating no restriction.
+	// The task type. Specify this parameter to query tasks of a specific type. Separate multiple types with commas (,). A maximum of 30 types are supported. Default value: empty, which indicates no restriction.
 	//
 	// example:
 	//
 	// ChangeVariable
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The maximum task execution time in seconds. Filters for tasks that took less than this value. Default value: 0.
+	// The maximum execution duration. Filters tasks whose execution duration is not less than this value. Unit: seconds. Default value: 0, which indicates no restriction.
 	//
 	// example:
 	//
 	// 0
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	// The end of the time range to query, based on task start time. The time follows the ISO8601 standard and must be in `UTC+0` time. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The end of the time range for the task start time. Tasks whose start time is earlier than this time are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC+0`.
 	//
 	// This parameter is required.
 	//

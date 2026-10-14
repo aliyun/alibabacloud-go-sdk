@@ -28,7 +28,7 @@ type DeleteAgenticDBProjectRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the target project.
+	// The target project ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeleteAgenticDBProjectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the tenant to which the project belongs.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//

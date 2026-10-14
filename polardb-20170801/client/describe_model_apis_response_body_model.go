@@ -32,13 +32,13 @@ type DescribeModelApisResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries per page. Valid values: **30**, **50**, or **100**.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**.
 	//
 	// Default value: **30**.
 	//
@@ -52,7 +52,7 @@ type DescribeModelApisResponseBody struct {
 	//
 	// C61892A4-0850-4516-9E26-44D96C1782DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ func (s *DescribeModelApisResponseBody) Validate() error {
 }
 
 type DescribeModelApisResponseBodyItems struct {
-	// The model category. Valid values:
+	// The category. Valid values:
 	//
 	// 	- **text**
 	//
@@ -148,20 +148,25 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// text
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The gateway retry configuration.
+	//
+	// example:
+	//
+	// {"failover":{"enabled":true,"max_provider_retries":2,"max_failover_providers":1,"retryable_status_codes":[429,500,502,503,504],"retry_delay":0.5}}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The creation time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The model API IDs.
+	// The IDs of the model APIs.
 	//
 	// example:
 	//
 	// mi-xxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// The model API name.
+	// The name of the model API.
 	//
 	// example:
 	//
@@ -187,19 +192,19 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of input tokens.
+	// The number of input points.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// The number of output tokens.
+	// The number of output points.
 	//
 	// example:
 	//
 	// 10
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	// The routing rules list (JSON array string).
+	// The list of routing rules, formatted as a JSON array string.
 	//
 	// example:
 	//
@@ -251,7 +256,7 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// ]
 	RouteRules *string `json:"RouteRules,omitempty" xml:"RouteRules,omitempty"`
-	// The model API status.
+	// The status of the model API.
 	//
 	// example:
 	//

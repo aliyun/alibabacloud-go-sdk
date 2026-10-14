@@ -165,7 +165,7 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The full API key. Returned only in this response.
+	// The complete API key. Returned only in this response.
 	//
 	// example:
 	//
@@ -233,11 +233,13 @@ type CreateBatchConsumerResponseBodyItems struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The expiration time.
 	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2025-06-25T09:37:10Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the key is expired.
+	// Indicates whether the key has expired.
 	//
 	// example:
 	//
@@ -249,7 +251,7 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The last modification time.
+	// The update time.
 	//
 	// example:
 	//

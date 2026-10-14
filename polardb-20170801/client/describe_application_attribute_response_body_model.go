@@ -53,6 +53,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetNatMappingSnatIpAddress() *string
 	SetPayType(v string) *DescribeApplicationAttributeResponseBody
 	GetPayType() *string
+	SetPolarClawApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) *DescribeApplicationAttributeResponseBody
+	GetPolarClawApplicationAttribute() *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute
 	SetPolarClawSaaSApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) *DescribeApplicationAttributeResponseBody
 	GetPolarClawSaaSApplicationAttribute() *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute
 	SetPolarFSInstanceId(v string) *DescribeApplicationAttributeResponseBody
@@ -114,29 +116,33 @@ type DescribeApplicationAttributeResponseBody struct {
 	Components []*DescribeApplicationAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The creation time.
 	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-03-25T09:37:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance ID of the PolarDB instance on which the application depends.
+	// The PolarDB instance ID on which the application depends.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of DNAT mapping entries for NAT mapping.
+	// The NAT mapping: the list of DNAT mapping entries.
 	DnatMappings []*DescribeApplicationAttributeResponseBodyDnatMappings `json:"DnatMappings,omitempty" xml:"DnatMappings,omitempty" type:"Repeated"`
-	// The list of endpoints of the application.
+	// The list of endpoints for the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time.
 	//
-	// This value is empty if the billing method is Postpaid.
+	// This parameter is empty when the billing method is pay-as-you-go.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -148,7 +154,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether this is the latest version.
+	// Indicates whether the application is of the latest version.
 	//
 	// example:
 	//
@@ -162,7 +168,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - Unlock: Not locked.
+	// - Unlock: Unlocked.
 	//
 	// - Lock: Locked.
 	//
@@ -172,11 +178,15 @@ type DescribeApplicationAttributeResponseBody struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The end time of the maintenance window.
 	//
+	// The time is displayed in UTC in the HH:mmZ format.
+	//
 	// example:
 	//
 	// 19:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
 	// The start time of the maintenance window.
+	//
+	// The time is displayed in UTC in the HH:mmZ format.
 	//
 	// example:
 	//
@@ -190,13 +200,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// v2026.3.13-1#20260320
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The NAT gateway ID.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
 	// pc-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This is a customer-managed SNAT entry that is discovered and returned by the control plane in real time. It is not related to the Internet NAT gateway SNAT.
+	// The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This parameter refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
 	//
 	// example:
 	//
@@ -208,9 +218,11 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The PolarClaw SaaS application attributes.
+	// The attributes of the PolarClaw application.
+	PolarClawApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute `json:"PolarClawApplicationAttribute,omitempty" xml:"PolarClawApplicationAttribute,omitempty" type:"Struct"`
+	// The attributes of the PolarClaw SaaS application.
 	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
-	// The instance ID of PolarFS Cold Storage Edition or High Performance Edition.
+	// The instance ID of the PolarFS Cold Storage Edition or High-performance Edition.
 	//
 	// example:
 	//
@@ -228,15 +240,15 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of security groups at the application level.
+	// The list of application-level security groups.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of whitelists at the application level.
+	// The list of application-level whitelists.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	// The serverless type. Valid values:
 	//
-	// - 2: agile.
+	// - 2: Agile.
 	//
-	// - 3: steady.
+	// - 3: Stable.
 	//
 	// example:
 	//
@@ -250,39 +262,39 @@ type DescribeApplicationAttributeResponseBody struct {
 	SnatStatus *string `json:"SnatStatus,omitempty" xml:"SnatStatus,omitempty"`
 	// The application status. Valid values:
 	//
-	// - Creating: Being created.
+	// - Creating: The application is being created.
 	//
-	// - Activated: Running.
+	// - Activated: The application is running.
 	//
-	// - Maintaining: Under maintenance.
+	// - Maintaining: The application is under maintenance.
 	//
-	// - ClassChanging: Configuration is being changed.
+	// - ClassChanging: The application specifications are being changed.
 	//
-	// - Transing: Being migrated.
+	// - Transing: The application is being migrated.
 	//
-	// - MinorVersionUpgrading: Minor version is being upgraded.
+	// - MinorVersionUpgrading: The minor version of the application is being upgraded.
 	//
-	// - NetCreating: Endpoint is being created.
+	// - NetCreating: The endpoint is being created.
 	//
-	// - NetDeleting: Endpoint is being deleted.
+	// - NetDeleting: The endpoint is being deleted.
 	//
-	// - NetModifying: Endpoint is being modified.
+	// - NetModifying: The endpoint is being modified.
 	//
-	// - Restarting: Being restarted.
+	// - Restarting: The application is being restarted.
 	//
-	// - Locking: Being locked.
+	// - Locking: The application is being locked.
 	//
-	// - Locked: Locked.
+	// - Locked: The application is locked.
 	//
-	// - Unlocking: Being unlocked.
+	// - Unlocking: The application is being unlocked.
 	//
-	// - Deleting: Being deleted.
+	// - Deleting: The application is being deleted.
 	//
 	// example:
 	//
 	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage resource information.
+	// The storage resources.
 	Storages []*DescribeApplicationAttributeResponseBodyStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
 	// Indicates whether an upgrade is available.
 	//
@@ -308,7 +320,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 1.0.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The customer-created VPC NAT gateway ID for NAT mapping.
+	// The customer-managed VPC NAT gateway ID for NAT mapping.
 	//
 	// example:
 	//
@@ -416,6 +428,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetNatMappingSnatIpAddress() 
 
 func (s *DescribeApplicationAttributeResponseBody) GetPayType() *string {
 	return s.PayType
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetPolarClawApplicationAttribute() *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute {
+	return s.PolarClawApplicationAttribute
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetPolarClawSaaSApplicationAttribute() *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute {
@@ -592,6 +608,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetPayType(v string) *Describ
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetPolarClawApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) *DescribeApplicationAttributeResponseBody {
+	s.PolarClawApplicationAttribute = v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetPolarClawSaaSApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) *DescribeApplicationAttributeResponseBody {
 	s.PolarClawSaaSApplicationAttribute = v
 	return s
@@ -705,6 +726,11 @@ func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 			return err
 		}
 	}
+	if s.PolarClawApplicationAttribute != nil {
+		if err := s.PolarClawApplicationAttribute.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.PolarClawSaaSApplicationAttribute != nil {
 		if err := s.PolarClawSaaSApplicationAttribute.Validate(); err != nil {
 			return err
@@ -741,13 +767,13 @@ func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 }
 
 type DescribeApplicationAttributeResponseBodyComponents struct {
-	// The specification of the application subcomponent.
+	// The specifications of the application subcomponent.
 	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The specification description of the application subcomponent.
+	// The description of the application subcomponent specifications.
 	//
 	// example:
 	//
@@ -759,19 +785,19 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// pac-*******************
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The maximum number of replicas of the application subcomponent.
+	// The maximum number of replicas for the application subcomponent.
 	//
 	// example:
 	//
 	// 1
 	ComponentMaxReplica *int64 `json:"ComponentMaxReplica,omitempty" xml:"ComponentMaxReplica,omitempty"`
-	// The number of replicas of the application subcomponent.
+	// The number of replicas for the application subcomponent.
 	//
 	// example:
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The group name of the replicas of the application subcomponent.
+	// The replica group name of the application subcomponent.
 	//
 	// example:
 	//
@@ -785,13 +811,13 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
 	// The list of security groups at the subcomponent level.
 	//
-	// If the security groups at the subcomponent level are the same as those at the application level, this response element is omitted.
+	// If the security groups at the subcomponent level are the same as those at the application level, this return value is omitted.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodyComponentsSecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of whitelist addresses at the subcomponent level.
+	// The list of whitelist IP addresses at the subcomponent level.
 	//
-	// If the whitelists at the subcomponent level are the same as those at the application level, this response element is omitted.
+	// If the whitelist at the subcomponent level is the same as that at the application level, this return value is omitted.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The component status. Valid values are the same as those of the application status.
+	// The component status. The valid values are the same as the application status.
 	//
 	// example:
 	//
@@ -956,7 +982,7 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {
 	//
 	// sg-*******************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the security group.
+	// The security group name.
 	//
 	// example:
 	//
@@ -1025,13 +1051,13 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The whitelisted IP addresses, separated by commas (,).
+	// The whitelist IP addresses, separated by commas.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The network type of the whitelisted IP addresses. Default value: `mix`.
+	// The network type of the whitelist IP addresses. Default value: `mix`.
 	//
 	// example:
 	//
@@ -1103,15 +1129,15 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays) Val
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
-	// The list of topology child node IDs or child node subcomponent types of the current application subcomponent.
+	// The list of topology child node IDs or child node subcomponent types for the current application subcomponent.
 	Children []*string `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// The topology layer of the current application subcomponent.
+	// The topology layer of the topology information for the current application subcomponent.
 	//
 	// example:
 	//
 	// 0
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The list of topology parent node IDs or parent node subcomponent types of the current application subcomponent.
+	// The list of topology parent node IDs or parent node subcomponent types for the current application subcomponent.
 	Parents []*string `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
 }
 
@@ -1155,7 +1181,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsTopology) Validate() 
 }
 
 type DescribeApplicationAttributeResponseBodyDnatMappings struct {
-	// The access address in the format of NatIp:FrontPort. This address can be used directly from the office network.
+	// The access address in the NatIp:FrontPort format. It can be directly used on the office network.
 	//
 	// example:
 	//
@@ -1281,9 +1307,9 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
 	// The endpoint type. Valid values:
 	//
-	// - Private: VPC endpoint.
+	// - Private: VPC address.
 	//
-	// - Public: Public endpoint.
+	// - Public: Internet address.
 	//
 	// example:
 	//
@@ -1403,7 +1429,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// qwen3-max
 	LlmModelName *string `json:"LlmModelName,omitempty" xml:"LlmModelName,omitempty"`
-	// The project name, which corresponds to the schema that stores project data in the database.
+	// The project name, which corresponds to the schema where project data is stored in the database.
 	//
 	// example:
 	//
@@ -1521,19 +1547,19 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore
 	//
 	// existing
 	AccountMode *string `json:"AccountMode,omitempty" xml:"AccountMode,omitempty"`
-	// The PolarDB cluster ID used for session storage. This parameter is returned only when the status is ENABLED.
+	// The ID of the PolarDB cluster used for session storage. This parameter is returned only when the status is ENABLED.
 	//
 	// example:
 	//
 	// pc-xxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The session database name. This parameter is returned only when the status is ENABLED.
+	// The name of the session database. This parameter is returned only when the status is ENABLED.
 	//
 	// example:
 	//
 	// contextdb_example
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The session storage status. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
+	// The status of the session store. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
 	//
 	// example:
 	//
@@ -1589,6 +1615,142 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionS
 	return dara.Validate(s)
 }
 
+type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute struct {
+	// The Langfuse binding information.
+	LangfuseBinding *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding `json:"LangfuseBinding,omitempty" xml:"LangfuseBinding,omitempty" type:"Struct"`
+}
+
+func (s DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) GetLangfuseBinding() *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding {
+	return s.LangfuseBinding
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) SetLangfuseBinding(v *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute {
+	s.LangfuseBinding = v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) Validate() error {
+	if s.LangfuseBinding != nil {
+		if err := s.LangfuseBinding.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding struct {
+	// The effective period of the attach. The value is a UNIX timestamp.
+	//
+	// example:
+	//
+	// 1788771141
+	ActivatedAt *int64 `json:"ActivatedAt,omitempty" xml:"ActivatedAt,omitempty"`
+	// Langfuse API Key ID
+	//
+	// example:
+	//
+	// api-key-xxx
+	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
+	// The ID of the binding task.
+	//
+	// example:
+	//
+	// 387
+	BindingTaskId *int32 `json:"BindingTaskId,omitempty" xml:"BindingTaskId,omitempty"`
+	// The ID of the Langfuse application.
+	//
+	// example:
+	//
+	// pa-xxx
+	LangfuseApplicationId *string `json:"LangfuseApplicationId,omitempty" xml:"LangfuseApplicationId,omitempty"`
+	// The phase of the binding.
+	//
+	// example:
+	//
+	// ACTIVE
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the Langfuse project.
+	//
+	// example:
+	//
+	// project-xxx
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) GetActivatedAt() *int64 {
+	return s.ActivatedAt
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) GetApiKeyId() *string {
+	return s.ApiKeyId
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) GetBindingTaskId() *int32 {
+	return s.BindingTaskId
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) GetLangfuseApplicationId() *string {
+	return s.LangfuseApplicationId
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) GetPhase() *string {
+	return s.Phase
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) GetProjectId() *string {
+	return s.ProjectId
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) SetActivatedAt(v int64) *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding {
+	s.ActivatedAt = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) SetApiKeyId(v string) *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding {
+	s.ApiKeyId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) SetBindingTaskId(v int32) *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding {
+	s.BindingTaskId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) SetLangfuseApplicationId(v string) *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding {
+	s.LangfuseApplicationId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) SetPhase(v string) *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding {
+	s.Phase = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) SetProjectId(v string) *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute struct {
 	// The authentication callback URL.
 	//
@@ -1597,7 +1759,7 @@ type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute s
 	// http://8.xxx.xxx.xxx.xxx/xxx
 	AuthCallbackURL *string   `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
 	AuthProviders   []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
-	// The Supabase cluster ID.
+	// The identifier of the Supabase cluster.
 	//
 	// example:
 	//
@@ -1665,7 +1827,7 @@ type DescribeApplicationAttributeResponseBodySecurityGroups struct {
 	//
 	// sg-**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the security group.
+	// The security group name.
 	//
 	// example:
 	//
@@ -1734,13 +1896,13 @@ type DescribeApplicationAttributeResponseBodySecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The whitelisted IP addresses, separated by commas (,).
+	// The whitelist IP addresses, separated by commas.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The network type of the whitelisted IP addresses. Default value: `mix`.
+	// The network type of the whitelist IP addresses. Default value: `mix`.
 	//
 	// example:
 	//

@@ -60,7 +60,7 @@ type iCreatePolarFsRequest interface {
 }
 
 type CreatePolarFsRequest struct {
-	// The acceleration storage space for Basic Edition with acceleration enabled. Unit: GB.
+	// The acceleration storage space for the Basic Edition with acceleration enabled. Unit: GB.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreatePolarFsRequest struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The list of authorized account IDs for Cold Storage Edition instances, separated by commas (,).
+	// The list of authorized account IDs for the Cold Storage Edition instance, separated by commas (,).
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type CreatePolarFsRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// - **true**: Coupons are used (default).
+	// - **true**: Coupons are automatically used (default).
 	//
 	// - **false**: Coupons are not used.
 	//
@@ -146,7 +146,7 @@ type CreatePolarFsRequest struct {
 	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
 	// The bucket and path information.
 	//
-	// > This parameter is required for transparent acceleration scenarios.
+	// > This parameter is required for the transparent acceleration scenario.
 	CustomBucketPathList []*CreatePolarFsRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
 	// The custom AccessKey ID.
 	//
@@ -186,11 +186,11 @@ type CreatePolarFsRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// This parameter is required when **PayType*	- is set to **Prepaid**. Specifies whether the subscription cluster uses a yearly or monthly billing cycle. You must pass this parameter when the billing method is subscription.
+	// The unit of the subscription duration. This parameter is required if PayType is set to **Prepaid**. Specifies whether the subscription cluster uses a yearly or monthly billing cycle. Valid values:
 	//
-	// - **Year**: The subscription period is measured in years.
+	// - **Year**: The subscription duration is measured in years.
 	//
-	// - **Month**: The subscription period is measured in months.
+	// - **Month**: The subscription duration is measured in months.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type CreatePolarFsRequest struct {
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
-	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
+	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -218,17 +218,17 @@ type CreatePolarFsRequest struct {
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// Valid values for high-performance storage type:
+	// Valid values for the high-performance storage type:
 	//
 	// - **ESSDPL0**
 	//
 	// - **ESSDPL1**
 	//
-	// Valid values for Basic Edition storage type:
+	// Valid values for the Basic Edition storage type:
 	//
 	// - **city_redundancy (zone-redundant)**
 	//
-	// Valid values for Cold Storage Edition storage type:
+	// Valid values for the Cold Storage Edition storage type:
 	//
 	// - **city_redundancy (zone-redundant)**
 	//
@@ -238,17 +238,17 @@ type CreatePolarFsRequest struct {
 	//
 	// local_redundancy
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// This parameter is required when **PayType*	- is set to **Prepaid**.
+	// The subscription duration. This parameter is required when PayType is set to **Prepaid**.
 	//
-	// - When **Period*	- is set to **Month**, the valid values of **UsedTime*	- are integers in the range of `[1-9]`.
+	// - If **Period*	- is set to **Month**, valid values of **UsedTime*	- are integers in the range of `[1-9]`.
 	//
-	// - When **Period*	- is set to **Year**, the valid values of **UsedTime*	- are integers in the range of `[1-3]`.
+	// - If **Period*	- is set to **Year**, valid values of **UsedTime*	- are integers in the range of `[1-3]`.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The VPC ID.
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//

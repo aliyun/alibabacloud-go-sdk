@@ -30,6 +30,8 @@ type CreateGwConsumerOrderResponseBody struct {
 	CreditToken *string `json:"CreditToken,omitempty" xml:"CreditToken,omitempty"`
 	// The expiration time.
 	//
+	// The time is in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2020-11-14T16:00:00Z

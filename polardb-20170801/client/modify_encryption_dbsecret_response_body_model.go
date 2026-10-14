@@ -26,25 +26,25 @@ type ModifyEncryptionDBSecretResponseBody struct {
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The returned message.
+	// The message returned for the request.
 	//
-	// > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message is returned, such as an error code.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 4CE6DF97-AEA4-484F-906F-C407EE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The result of the request. Valid values:
 	//
-	// - **true**
+	// - **true**: The request is successful.
 	//
-	// - **false**
+	// - **false**: The request fails.
 	//
 	// example:
 	//

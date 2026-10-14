@@ -22,27 +22,27 @@ type iDescribeBatchTasksResponseBody interface {
 }
 
 type DescribeBatchTasksResponseBody struct {
-	// The page number of the returned results.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task list.
+	// The task information.
 	TaskList []*DescribeBatchTasksResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	// The total number of tasks that match the query, ignoring pagination.
+	// The total number of tasks that meet the filter conditions, regardless of pagination.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeBatchTasksResponseBody) Validate() error {
 }
 
 type DescribeBatchTasksResponseBodyTaskList struct {
-	// The batch ID.
+	// The batch task ID.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeBatchTasksResponseBodyTaskList struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of successfully completed subtasks in the batch.
+	// The number of successful batch tasks.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type DescribeBatchTasksResponseBodyTaskList struct {
 	//
 	// 2026-04-06 22:43:26
 	TaskEnd *string `json:"TaskEnd,omitempty" xml:"TaskEnd,omitempty"`
-	// The task name.
+	// The description of the model service.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type DescribeBatchTasksResponseBodyTaskList struct {
 	//
 	// polarclaw_install_skills
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of subtasks in the batch.
+	// The total number of tasks that meet the filter conditions, regardless of pagination.
 	//
 	// example:
 	//

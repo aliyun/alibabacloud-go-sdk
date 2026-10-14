@@ -18,13 +18,13 @@ type iGenerateUpgradeReportForSyncCloneResponseBody interface {
 }
 
 type GenerateUpgradeReportForSyncCloneResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the source instance.
+	// The source instance ID.
 	//
 	// example:
 	//

@@ -54,7 +54,7 @@ type CreateDBClusterResponseBody struct {
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

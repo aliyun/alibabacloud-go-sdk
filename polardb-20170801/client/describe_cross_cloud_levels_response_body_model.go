@@ -16,7 +16,7 @@ type iDescribeCrossCloudLevelsResponseBody interface {
 }
 
 type DescribeCrossCloudLevelsResponseBody struct {
-	// The list of supported cross-cloud specifications.
+	// The list of specifications supported for cross-cloud scenarios.
 	CrossCloudLevelList []*DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList `json:"CrossCloudLevelList,omitempty" xml:"CrossCloudLevelList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -82,7 +82,7 @@ type DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList struct {
 	//
 	// example:
 	//
-	// 2 core 8 GB
+	// 2 cores 8 GB
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 

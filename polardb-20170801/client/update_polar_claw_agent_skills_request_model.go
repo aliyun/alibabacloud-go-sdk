@@ -18,7 +18,7 @@ type iUpdatePolarClawAgentSkillsRequest interface {
 }
 
 type UpdatePolarClawAgentSkillsRequest struct {
-	// Agent ID
+	// PolarClaw Agent ID。
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdatePolarClawAgentSkillsRequest struct {
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The application ID.
+	// The PolarClaw application ID.
 	//
 	// This parameter is required.
 	//

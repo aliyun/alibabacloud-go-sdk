@@ -110,7 +110,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The acceleration storage space, in GB.
+	// The acceleration storage space. Unit: GB.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 1234567890,9876543210
 	AuthorizedUserIds *string `json:"AuthorizedUserIds,omitempty" xml:"AuthorizedUserIds,omitempty"`
-	// The bandwidth, in MB/s.
+	// The bandwidth. Unit: MB/s.
 	//
 	// example:
 	//
 	// 100
 	Bandwidth *float64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The bandwidth baseline, in MB/s/TiB.
+	// The bandwidth baseline. Unit: MB/s/TiB.
 	//
 	// example:
 	//
@@ -176,6 +176,8 @@ type DescribePolarFsAttributeResponseBody struct {
 	ClientDownloadPath *string `json:"ClientDownloadPath,omitempty" xml:"ClientDownloadPath,omitempty"`
 	// The creation time.
 	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2021-08-02T05:57:10Z
@@ -204,11 +206,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The list of endpoints, including endpoint information for NAS, S3Gateway, and other types.
+	// The list of endpoints, including endpoint information for types such as NAS and S3Gateway.
 	EndpointItems []*DescribePolarFsAttributeResponseBodyEndpointItems `json:"EndpointItems,omitempty" xml:"EndpointItems,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
 	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
+	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -246,7 +250,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pe-cz9inwqec7ifd98c3
 	MaxscaleEndpointId *string `json:"MaxscaleEndpointId,omitempty" xml:"MaxscaleEndpointId,omitempty"`
-	// The metadata service cluster endpoint.
+	// The cluster endpoint of the metadata service.
 	//
 	// example:
 	//
@@ -258,13 +262,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pc-xxxxxxxxxxxxxxxxx
 	MetaInstanceName *string `json:"MetaInstanceName,omitempty" xml:"MetaInstanceName,omitempty"`
-	// The metadata proxy service cluster endpoint.
+	// The cluster endpoint of the metadata proxy service.
 	//
 	// example:
 	//
 	// pc-y3610mp168p3bb740.rwlb.rds.aliyuncs.com
 	MetaMxsConnString *string `json:"MetaMxsConnString,omitempty" xml:"MetaMxsConnString,omitempty"`
-	// The metadata address for Fuse mount (encrypted).
+	// The metadata address for Fuse mounting (encrypted).
 	//
 	// example:
 	//
@@ -308,9 +312,9 @@ type DescribePolarFsAttributeResponseBody struct {
 	PolarFsStatus *string `json:"PolarFsStatus,omitempty" xml:"PolarFsStatus,omitempty"`
 	// The instance version. Valid values:
 	//
-	// - **PolarFS 2.0**: 2.0
+	// - **PolarFS 2.0**: 2.0.
 	//
-	// - **PolarFS 1.0**: 1.0
+	// - **PolarFS 1.0**: 1.0.
 	//
 	// example:
 	//
@@ -352,27 +356,27 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The storage space, in GB.
+	// The storage space. Unit: GB.
 	//
 	// example:
 	//
 	// 1000
 	StorageSpace *float64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type for the High-performance Edition. Valid values:
+	// Storage types for the High-performance Edition. Valid values:
 	//
 	// 	- **ESSDPL1**
 	//
 	// 	- **ESSDPL0**
 	//
-	// The storage type for the Basic Edition. Valid values:
+	// Storage types for the Basic Edition. Valid values:
 	//
-	// 	- **city_redundancy**: cross-zone redundancy.
+	// 	- **city_redundancy**: zone-redundant storage.
 	//
 	// example:
 	//
 	// essdpl1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The storage usage, in bytes.
+	// The used storage space. Unit: bytes.
 	//
 	// example:
 	//
@@ -970,7 +974,7 @@ func (s *DescribePolarFsAttributeResponseBodyEndpointItems) Validate() error {
 }
 
 type DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems struct {
-	// The endpoint of the protocol connection.
+	// The protocol endpoint.
 	//
 	// example:
 	//

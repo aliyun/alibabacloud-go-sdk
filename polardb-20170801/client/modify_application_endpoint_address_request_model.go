@@ -50,7 +50,7 @@ type ModifyApplicationEndpointAddressRequest struct {
 	//
 	// Public
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The new endpoint prefix.
+	// The new endpoint address prefix.
 	//
 	// example:
 	//

@@ -24,19 +24,19 @@ type iDescribePolarFsQuotaRequest interface {
 type DescribePolarFsQuotaRequest struct {
 	// The cluster ID.
 	//
-	// > To find the cluster ID for enterprise, basic, or data lakehouse edition clusters, call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation.
+	// > Enterprise Edition, Basic Edition, and Data Lakehouse Edition: You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the cluster ID.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The destination path.
+	// The target path.
 	//
 	// example:
 	//
 	// /data
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The PolarFS instance ID.
+	// The Polarlakebase instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribePolarFsQuotaRequest struct {
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to find the IDs of all available regions in your account.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
 	//
 	// example:
 	//

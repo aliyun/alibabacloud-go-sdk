@@ -24,7 +24,9 @@ type iDeleteDatabaseZonalRequest interface {
 }
 
 type DeleteDatabaseZonalRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
+	//
+	// > Note: The DBClusterId must be the ID of a PolarDB on ENS cluster created by calling CreateDBCluster(CloudProvider=ENS, EnsRegionId=xxx).
 	//
 	// This parameter is required.
 	//

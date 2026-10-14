@@ -24,6 +24,8 @@ type iDescribeAgenticDBComputeClustersRequest interface {
 }
 
 type DescribeAgenticDBComputeClustersRequest struct {
+	// The compute instance ID for fuzzy match (pc-xxxx), such as pc-2ze8k.
+	//
 	// example:
 	//
 	// pc-2ze8k
@@ -56,7 +58,7 @@ type DescribeAgenticDBComputeClustersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status filter. Valid values: Running, Stopped, and Waiting.
+	// Filters compute instances by status. Valid values: Running, Stopped, and Waiting.
 	//
 	// example:
 	//

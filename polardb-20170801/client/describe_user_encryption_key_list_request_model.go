@@ -32,7 +32,7 @@ type iDescribeUserEncryptionKeyListRequest interface {
 type DescribeUserEncryptionKeyListRequest struct {
 	// The cluster ID.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in the destination region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in the specified region, including the cluster ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeUserEncryptionKeyListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeUserEncryptionKeyListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about the available regions of the destination account, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions for the current account, including the region ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeUserEncryptionKeyListRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The region of the transparent data encryption (TDE) key.
+	// The region where the TDE key resides.
 	//
 	// example:
 	//

@@ -125,6 +125,8 @@ type DescribeKBSyncLinksResponseBodyItems struct {
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The creation time.
 	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-08-11T09:55:19Z

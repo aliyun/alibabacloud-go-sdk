@@ -28,13 +28,15 @@ type iDescribeTasksResponseBody interface {
 }
 
 type DescribeTasksResponseBody struct {
-	// The ID of the cluster to which the task belongs.
+	// The cluster ID associated with the task.
 	//
 	// example:
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query.
+	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mmZ).
 	//
 	// example:
 	//
@@ -46,7 +48,7 @@ type DescribeTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
@@ -58,14 +60,16 @@ type DescribeTasksResponseBody struct {
 	//
 	// 4352AD99-9FF5-41A6-A319-068089******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query.
+	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mmZ).
 	//
 	// example:
 	//
 	// 2020-11-30T00:00Z
 	StartTime *string                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Tasks     *DescribeTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

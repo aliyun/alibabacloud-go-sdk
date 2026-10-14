@@ -22,26 +22,36 @@ type iDescribeAgenticDBTenantApiKeysRequest interface {
 }
 
 type DescribeAgenticDBTenantApiKeysRequest struct {
+	// The AgenticDB cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 30. Maximum value: 100.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Filters results by tenant name.
+	//
 	// example:
 	//
 	// my-saas-app

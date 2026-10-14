@@ -98,6 +98,8 @@ type DescribeAIDBClusterApiKeysResponseBodyApiKeys struct {
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The creation time.
 	//
+	// The time is displayed in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-04-09T03:19:19Z

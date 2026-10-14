@@ -42,14 +42,24 @@ type VerifyAgenticDBTenantApiKeyResponseBody struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The expiration time of the API key. This parameter is empty if the API key is permanently valid.
+	// The expiration time. This parameter is empty if the API key is permanently valid.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2027-01-01T00:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The reason why the validation failed. Valid values: NotFound, Expired, and Revoked. This parameter is empty if the API key is valid.
+	// The reason for the validation failure. This parameter is empty if the API key is valid. Valid values:
+	//
+	// - NotFound: The API key is not found.
+	//
+	// - Expired: The API key has expired.
+	//
+	// - Revoked: The API key has been revoked.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

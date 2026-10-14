@@ -24,27 +24,27 @@ type iDescribeGatewayListResponseBody interface {
 }
 
 type DescribeGatewayListResponseBody struct {
-	// A list of gateway instances.
+	// The list of gateway instances.
 	Items []*DescribeGatewayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: 30.
 	//
@@ -52,7 +52,7 @@ type DescribeGatewayListResponseBody struct {
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -142,7 +142,9 @@ func (s *DescribeGatewayListResponseBody) Validate() error {
 }
 
 type DescribeGatewayListResponseBodyItems struct {
-	// The time when the gateway instance was created.
+	// The creation time.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -154,17 +156,19 @@ type DescribeGatewayListResponseBodyItems struct {
 	//
 	// polardb_mysql
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The expiration time of the gateway instance.
+	// The expiration time of the cluster.
 	//
-	// - For subscription instances, this parameter indicates the expiration time.
+	// - If the billing method of the cluster is subscription, the actual expiration time is returned.
 	//
-	// - This parameter is empty for pay-as-you-go instances.
+	// - If the billing method of the cluster is pay-as-you-go, an empty value is returned.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2028-09-01T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the gateway instance has expired. Valid values:
+	// Indicates whether the cluster has expired. Valid values:
 	//
 	// - **true**
 	//
@@ -180,13 +184,15 @@ type DescribeGatewayListResponseBodyItems struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The description of the gateway instance.
+	// The gateway description.
 	//
 	// example:
 	//
 	// pg-xxxxxx
 	GwDescription *string `json:"GwDescription,omitempty" xml:"GwDescription,omitempty"`
-	// The time when the gateway instance was last modified.
+	// The last modification time.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -194,9 +200,9 @@ type DescribeGatewayListResponseBodyItems struct {
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// example:
 	//
@@ -208,11 +214,11 @@ type DescribeGatewayListResponseBodyItems struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the gateway instance. Valid values:
+	// The application status. Valid values:
 	//
-	// - **CREATE**: creating
+	// - CREATE: being created.
 	//
-	// - **ACTIVATION**: running
+	// - ACTIVATION: running.
 	//
 	// example:
 	//
@@ -224,7 +230,7 @@ type DescribeGatewayListResponseBodyItems struct {
 	//
 	// vsw-wz9u0v2yuskt1gth3uuju
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//

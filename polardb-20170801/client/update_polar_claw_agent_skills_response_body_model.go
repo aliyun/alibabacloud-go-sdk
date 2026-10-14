@@ -38,7 +38,7 @@ type UpdatePolarClawAgentSkillsResponseBody struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The return code.
+	// The response status code.
 	//
 	// example:
 	//

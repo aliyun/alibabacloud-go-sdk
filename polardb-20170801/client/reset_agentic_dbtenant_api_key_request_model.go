@@ -20,24 +20,32 @@ type iResetAgenticDBTenantApiKeyRequest interface {
 }
 
 type ResetAgenticDBTenantApiKeyRequest struct {
+	// The ID of the target API key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ak-71304e39c7e841a1
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
+	// The AgenticDB cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the target tenant.
+	//
 	// This parameter is required.
 	//
 	// example:

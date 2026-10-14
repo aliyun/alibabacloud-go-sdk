@@ -36,41 +36,41 @@ type DescribePolarFsQuotaResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 5
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries per page. Valid values: 5 to 50. Default value: 10.
+	// The number of records per page. Valid values: 5 to 50. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The path of the directory.
+	// The directory path.
 	//
 	// example:
 	//
 	// /data
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The PolarFS instance ID.
+	// The Polarlakebase instance ID.
 	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The details of the rules.
+	// The rule details.
 	PolicyItems []*DescribePolarFsQuotaResponseBodyPolicyItems `json:"PolicyItems,omitempty" xml:"PolicyItems,omitempty" type:"Repeated"`
 	// The quota information.
 	QuotaItems []*DescribePolarFsQuotaResponseBodyQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ func (s *DescribePolarFsQuotaResponseBody) Validate() error {
 }
 
 type DescribePolarFsQuotaResponseBodyPolicyItems struct {
-	// The TTL of the access time. Unit: seconds.
+	// The TTL for access time. Unit: seconds.
 	//
 	// example:
 	//
 	// 7200
 	AccessTTL *int64 `json:"AccessTTL,omitempty" xml:"AccessTTL,omitempty"`
-	// The TTL of the change time. Unit: seconds.
+	// The TTL for change time. Unit: seconds.
 	//
 	// example:
 	//
@@ -208,25 +208,25 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	//
 	// NULL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Specifies whether the rule is enabled. Valid values:
 	//
-	// - **true**: The rule takes effect immediately for new events. This is the default value.
+	// - **true**: The new event takes effect immediately for new transactions. This is the default value.
 	//
-	// - **false**: The rule does not take effect for new events.
+	// - **false**: The new event does not take effect for new transactions.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The glob pattern of paths to exclude.
+	// The matching rule for excluding specific paths.
 	//
-	// - The pattern must start with `/` and supports glob syntax, including `*`, `?`, and `**`.
+	// - A path pattern that starts with `/` (supports `*`, `?`, and `**` glob syntax).
 	//
 	// example:
 	//
 	// NULL
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// The maximum number of files in the directory.
+	// The file count limit for users in the directory.
 	//
 	// example:
 	//
@@ -238,9 +238,9 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	//
 	// 73
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The glob pattern for paths to include.
+	// The glob pattern for matching paths.
 	//
-	// - The pattern must start with `/` and supports glob syntax, including `*`, `?`, and `**`.
+	// - A path pattern that starts with `/` (supports `*`, `?`, and `**` glob syntax).
 	//
 	// example:
 	//
@@ -258,9 +258,9 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The maximum total size of files in the directory. Unit: GB.
+	// The total file capacity limit for the directory. Unit: GB.
 	//
-	// - The value must be greater than or equal to 1.
+	// - Note: The value must be at least 1 GB.
 	//
 	// example:
 	//
@@ -386,7 +386,7 @@ type DescribePolarFsQuotaResponseBodyQuotaItems struct {
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The total number of inodes.
+	// Inodes
 	//
 	// example:
 	//

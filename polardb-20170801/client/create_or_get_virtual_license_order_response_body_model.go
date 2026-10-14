@@ -38,25 +38,25 @@ type iCreateOrGetVirtualLicenseOrderResponseBody interface {
 }
 
 type CreateOrGetVirtualLicenseOrderResponseBody struct {
-	// The number of generated activation codes.
+	// The number of activation codes that have been generated.
 	//
 	// example:
 	//
 	// 1
 	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
-	// The maximum number of activation codes that you can apply for.
+	// The quota of activation codes that can be requested.
 	//
 	// example:
 	//
 	// 10
 	ActivationCodeQuota *int32 `json:"ActivationCodeQuota,omitempty" xml:"ActivationCodeQuota,omitempty"`
-	// The Alibaba Cloud order ID (including the virtual order ID).
+	// The Alibaba Cloud order ID, which includes the virtual order ID.
 	//
 	// example:
 	//
 	// 2233****445566
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	// Indicates whether activation codes can be generated without the system identifier.
+	// Indicates whether the System Identifier can be left empty when generating an activation code.
 	//
 	// example:
 	//
@@ -74,25 +74,25 @@ type CreateOrGetVirtualLicenseOrderResponseBody struct {
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the order is a virtual order (virtual orders allow pre-generation of activation codes).
+	// Indicates whether the order is a virtual order. Virtual orders allow pre-generation of activation codes.
 	//
 	// example:
 	//
 	// true
 	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
-	// Indicates whether the virtual order is frozen (activation codes cannot be generated for a frozen virtual order).
+	// Indicates whether the virtual order is frozen. A frozen virtual order does not allow further generation of activation codes.
 	//
 	// example:
 	//
 	// false
 	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
-	// The plan type.
+	// The package type.
 	//
 	// example:
 	//
 	// pre_generation_long_term
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The validity period of the plan, which is one year (common) or thirty years (long-term).
+	// The validity period of the package. Typical values are one year or long-term (30 years).
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type CreateOrGetVirtualLicenseOrderResponseBody struct {
 	//
 	// aliyun_market
 	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 45D24263-7E3A-4140-9472-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the virtual order.
+	// The virtual order ID.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDeleteAccountZonalRequest interface {
 }
 
 type DeleteAccountZonalRequest struct {
-	// The account name.
+	// The name of the account.
 	//
 	// This parameter is required.
 	//
@@ -33,6 +33,8 @@ type DeleteAccountZonalRequest struct {
 	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The cluster ID.
+	//
+	// > Note: This parameter accepts only the ID of a PolarDB on ENS cluster (CloudProvider=ENS). For standard cloud clusters, use the DeleteAccount API. You can call the DescribeDBClustersZonal operation to query existing PolarDB on ENS clusters.
 	//
 	// This parameter is required.
 	//

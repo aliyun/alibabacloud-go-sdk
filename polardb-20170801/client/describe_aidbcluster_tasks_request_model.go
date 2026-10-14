@@ -30,7 +30,7 @@ type iDescribeAIDBClusterTasksRequest interface {
 }
 
 type DescribeAIDBClusterTasksRequest struct {
-	// The template operator type.
+	// The type of the model operator.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeAIDBClusterTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance ID of the PolarDB instance.
+	// The PolarDB instance ID.
 	//
 	// example:
 	//

@@ -40,33 +40,33 @@ type DescribeUpgradeReportResponseBody struct {
 	//
 	// []
 	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// The database type of the destination instance. Valid values:
+	// The database type of the target instance. Valid values:
 	//
-	// - **MySQL**
+	// - **MySQL**.
 	//
-	// - **Oracle**
+	// - **Oracle**.
 	//
 	// example:
 	//
 	// MySQL
 	DstDBType *string `json:"DstDBType,omitempty" xml:"DstDBType,omitempty"`
-	// The list of Oracle compatibility evaluation details.
+	// The Oracle compatibility assessment details list.
 	//
-	// > This parameter is supported only for **Oracle*	- instances.
+	// > Only **Oracle*	- instances are supported.
 	Items []*DescribeUpgradeReportResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries in the list of Oracle compatibility evaluation details.
+	// The length of the Oracle compatibility assessment details list.
 	//
 	// example:
 	//
 	// 10
 	ItemsSize *int64 `json:"ItemsSize,omitempty" xml:"ItemsSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the source instance.
+	// The source instance ID.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type DescribeUpgradeReportResponseBody struct {
 	SourceDBClusterId *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
 	// The database type of the source instance. Valid values:
 	//
-	// - **MySQL**
+	// - **MySQL**.
 	//
-	// - **Oracle**
+	// - **Oracle**.
 	//
 	// example:
 	//
@@ -92,19 +92,19 @@ type DescribeUpgradeReportResponseBody struct {
 	//
 	// 1
 	SrcDeleted *string `json:"SrcDeleted,omitempty" xml:"SrcDeleted,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the query result.
 	//
 	// example:
 	//
 	// 137
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	// A special metric. This parameter is supported only for instances that use the Tair architecture.
+	// The special metric. Currently, only tair (PolarTair architecture) is supported.
 	//
 	// example:
 	//
 	// tair
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The list of evaluation reports.
+	// The list of assessment reports.
 	UpgradeReportList []*DescribeUpgradeReportResponseBodyUpgradeReportList `json:"UpgradeReportList,omitempty" xml:"UpgradeReportList,omitempty" type:"Repeated"`
 }
 
@@ -238,25 +238,25 @@ func (s *DescribeUpgradeReportResponseBody) Validate() error {
 }
 
 type DescribeUpgradeReportResponseBodyItems struct {
-	// The Data Definition Language (DDL) statements for object synchronization.
+	// The DDL statement for object synchronization.
 	//
 	// example:
 	//
 	// CREATE XXXX
 	DDL *string `json:"DDL,omitempty" xml:"DDL,omitempty"`
-	// The name of the evaluation object.
+	// The name of the assessed object.
 	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The schema of the evaluation object.
+	// The schema to which the assessed object belongs.
 	//
 	// example:
 	//
 	// ny_openapi
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The result of the compatibility evaluation. Valid values:
+	// The compatibility assessment result. Valid values:
 	//
 	// - **0**: Failed.
 	//
@@ -266,7 +266,7 @@ type DescribeUpgradeReportResponseBodyItems struct {
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the evaluation object.
+	// The object type of the assessed object.
 	//
 	// example:
 	//
@@ -334,29 +334,35 @@ func (s *DescribeUpgradeReportResponseBodyItems) Validate() error {
 type DescribeUpgradeReportResponseBodyUpgradeReportList struct {
 	// The check time.
 	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2024-03-15T06:48:44Z
 	CheckTime *string `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
-	// The version of the destination instance.
+	// The version of the target instance.
 	//
 	// example:
 	//
 	// 8.0
 	DstVersion *string `json:"DstVersion,omitempty" xml:"DstVersion,omitempty"`
-	// The effective time of the evaluation.
+	// The effective period of the assessment.
+	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2024-03-08T06:48:44Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The end time of the evaluation.
+	// The end time of the assessment.
+	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2024-03-08T06:48:44Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The status of the evaluation task.
+	// The status of the assessment task.
 	//
 	// example:
 	//
@@ -374,13 +380,15 @@ type DescribeUpgradeReportResponseBodyUpgradeReportList struct {
 	//
 	// 5.7
 	SrcVersion *string `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty"`
-	// The start time of the evaluation.
+	// The start time of the assessment.
+	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2025-07-05T01:56:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task ID.
+	// The ID of the target task.
 	//
 	// example:
 	//

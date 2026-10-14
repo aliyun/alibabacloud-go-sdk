@@ -40,13 +40,13 @@ type iDescribeUpgradeReportRequest interface {
 }
 
 type DescribeUpgradeReportRequest struct {
-	// The product series. Valid values:
+	// The edition. Valid values:
 	//
-	// - **Normal**: Cluster Edition (default)
+	// 	- **Normal**: Cluster Edition (default).
 	//
-	// - **SENormal**: Standard Edition
+	// 	- **SENormal**: Standard Edition.
 	//
-	// For more information, see [Product series](https://help.aliyun.com/document_detail/183258.html).
+	// For more information about editions, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type DescribeUpgradeReportRequest struct {
 	CreationCategory *string `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
 	// The database type. Valid values:
 	//
-	// - **MySQL**
+	// - **MySQL**.
 	//
-	// - **Oracle**
+	// - **Oracle**.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type DescribeUpgradeReportRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
-	// > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeUpgradeReportRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the source instance.
+	// The source instance ID.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeUpgradeReportRequest struct {
 	//
 	// 2321321
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// A special metric. This parameter is supported only for instances that use the Tair architecture.
+	// The special metric. Currently, only tair (PolarTair architecture) is supported.
 	//
 	// example:
 	//

@@ -24,7 +24,9 @@ type iCheckDBNameZonalRequest interface {
 }
 
 type CheckDBNameZonalRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
+	//
+	// > Note: This parameter accepts only edge cluster IDs obtained by calling DescribeDBClustersZonal. Regular PolarDB cluster IDs obtained by calling DescribeDBClusters are not supported.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +34,7 @@ type CheckDBNameZonalRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// This parameter is required.
 	//

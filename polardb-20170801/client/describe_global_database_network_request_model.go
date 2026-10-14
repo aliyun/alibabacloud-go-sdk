@@ -26,7 +26,7 @@ type iDescribeGlobalDatabaseNetworkRequest interface {
 }
 
 type DescribeGlobalDatabaseNetworkRequest struct {
-	// The ID of the Global Database Network (GDN).
+	// GDN ID。
 	//
 	// This parameter is required.
 	//

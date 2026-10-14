@@ -30,7 +30,7 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
-	// The application ID.
+	// The application ID. Example: pa-**************.
 	//
 	// This parameter is required.
 	//

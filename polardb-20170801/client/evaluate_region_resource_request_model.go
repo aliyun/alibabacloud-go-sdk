@@ -40,23 +40,23 @@ type iEvaluateRegionResourceRequest interface {
 }
 
 type EvaluateRegionResourceRequest struct {
-  // The link type of the cluster. The backend randomly selects a default value. Valid values:
+  // The cluster link type. The backend randomly selects a default value. Valid values:
   // 
-  // - **lvs**: Linux Virtual Server.
+  // 	- **lvs**: Linux virtual server.
   // 
-  // - **proxy**: proxy server.
+  // 	- **proxy**: proxy server.
   // 
-  // - **dns**: Domain Name System.
+  // 	- **dns**: Domain Name System.
   // 
   // example:
   // 
   // lvs
   DBInstanceConnType *string `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
-  // The node specifications. For more information, see the following documents:
+  // The node specification. For more information, see the following topics:
   // 
   // - PolarDB for MySQL: [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
   // 
-  // - PolarDB for PostgreSQL (Oracle Compatible): [Compute node specifications](https://help.aliyun.com/document_detail/207921.html).
+  // - PolarDB for PostgreSQL (Compatible with Oracle): [Compute node specifications](https://help.aliyun.com/document_detail/207921.html).
   // 
   // - PolarDB for PostgreSQL: [Compute node specifications](https://help.aliyun.com/document_detail/209380.html).
   // 
@@ -66,7 +66,7 @@ type EvaluateRegionResourceRequest struct {
   // 
   // polar.mysql.x4.large
   DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-  // The database engine type. Valid values:
+  // The type of the database engine. Valid values:
   // 
   // - **MySQL**
   // 
@@ -80,27 +80,27 @@ type EvaluateRegionResourceRequest struct {
   // 
   // MySQL
   DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-  // The version of the database engine.
+  // The database DPI engine version number.
   // 
-  // - Valid values for MySQL:
+  // 	- Valid version numbers for MySQL: 
   // 
-  //   - **5.6**
+  //     	- **5.6**
   // 
-  //   - **5.7**
+  //     	- **5.7**
   // 
-  //   - **8.0**
+  //     	- **8.0**
   // 
-  // - Valid values for PostgreSQL:
+  // 	- Valid version numbers for PostgreSQL:
   // 
-  //   - **11**
+  //     	- **11**
   // 
-  //   - **14**
+  //     	- **14**
   // 
-  // - Valid values for Oracle:
+  // 	- Valid version numbers for Oracle:
   // 
-  //   - **11**
+  //     	- **11**
   // 
-  //   - **14**
+  //     	- **14**
   // 
   // This parameter is required.
   // 
@@ -110,19 +110,19 @@ type EvaluateRegionResourceRequest struct {
   DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
   // Specifies whether to return the list of zones that support single-zone deployment. Valid values:
   // 
-  // - **0*	- (default): The list is not returned.
+  // 	- **0*	- (default): does not return the list.
   // 
-  // - **1**: The list is returned.
+  // 	- **1**: returns the list.
   // 
   // example:
   // 
   // 1
   DispenseMode *string `json:"DispenseMode,omitempty" xml:"DispenseMode,omitempty"`
-  // Specifies whether to create a MaxScale cluster. Valid values:
+  // Specifies whether to create MaxScale. Valid values:
   // 
-  // - **true*	- (default): A MaxScale cluster is created.
+  // 	- **true*	- (default): creates MaxScale.
   // 
-  // - **false**: A MaxScale cluster is not created.
+  // 	- **false**: does not create MaxScale.
   // 
   // This parameter is required.
   // 
@@ -134,7 +134,7 @@ type EvaluateRegionResourceRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The region ID.
   // 
-  // > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+  // > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
   // 
   // This parameter is required.
   // 
@@ -142,7 +142,7 @@ type EvaluateRegionResourceRequest struct {
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The ID of the resource group.
+  // The resource group ID.
   // 
   // example:
   // 
@@ -150,7 +150,7 @@ type EvaluateRegionResourceRequest struct {
   ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The subdomain. A subdomain is a level below a top-level domain. For example, if the parent domain is \\`cn-beijing\\`, a valid subdomain is \\`cn-beijing-i-aliyun\\`.
+  // The subdomain. The subdomain is the next level under the top-level domain (first-level domain or parent domain). For example, if the parent domain is cn-beijing, the subdomain can be cn-beijing-i-aliyun.
   // 
   // example:
   // 
@@ -158,7 +158,7 @@ type EvaluateRegionResourceRequest struct {
   SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
   // The zone ID.
   // 
-  // > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available zones.
+  // > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
   // 
   // This parameter is required.
   // 

@@ -56,15 +56,17 @@ type iDescribeKnowledgeSpaceAttributeResponseBody interface {
 type DescribeKnowledgeSpaceAttributeResponseBody struct {
 	// The access control list (ACL) mode of the knowledge space. Valid values:
 	//
-	// - DISABLED
+	// - DISABLED: ACL is disabled.
 	//
-	// - ENFORCED
+	// - ENFORCED: ACL is enforced.
 	//
 	// example:
 	//
 	// ENFORCED
 	ACLMode *string `json:"ACLMode,omitempty" xml:"ACLMode,omitempty"`
-	// The time when the knowledge space was created.
+	// The creation time.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -82,7 +84,7 @@ type DescribeKnowledgeSpaceAttributeResponseBody struct {
 	//
 	// polar_rag_meta
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The type of the database engine. Valid values:
+	// The database engine type. Valid values:
 	//
 	// 	- MySQL
 	//
@@ -158,7 +160,7 @@ type DescribeKnowledgeSpaceAttributeResponseBody struct {
 	//
 	// 512
 	ShardSize *int32 `json:"ShardSize,omitempty" xml:"ShardSize,omitempty"`
-	// The default chunking strategy configuration of the knowledge space. This parameter may be empty if existing instances do not have the complete configuration saved.
+	// The default chunking strategy configuration of the knowledge space. This value may be empty if existing instances do not have a complete configuration saved.
 	ShardingStrategyConfig *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfig `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty" type:"Struct"`
 	// The instance status.
 	//
@@ -614,7 +616,7 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesM
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategy struct {
 	// The parameter details.
 	Parameters *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The chunking strategy type used when a rule is matched.
+	// The chunking strategy type used when the rule is matched.
 	//
 	// example:
 	//

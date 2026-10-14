@@ -72,7 +72,7 @@ type DescribeAgenticDBBranchEndpointsResponseBodyItems struct {
 	//
 	// cloud_admin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The compatible connection address. The public endpoint is returned first. If no public endpoint is available, the private endpoint is returned.
+	// The compatible connection address. A public endpoint is returned first. If no public endpoint is available, a private endpoint is returned.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeAgenticDBBranchEndpointsResponseBodyItems struct {
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The list of public and private network endpoints.
 	AddressItems []*DescribeAgenticDBBranchEndpointsResponseBodyItemsAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
-	// The compatible connection string. The public connection string is returned first. If no public connection string is available, the private connection string is returned.
+	// The compatible connection string. A public connection string is returned first. If no public connection string is available, a private connection string is returned.
 	//
 	// example:
 	//
@@ -233,7 +233,11 @@ type DescribeAgenticDBBranchEndpointsResponseBodyItemsAddressItems struct {
 	//
 	// postgresql://cloud_admin:******@pe-cedar-cygfzprh775g.polaragentic.pre.rds.aliyuncs.com:5460/neondb
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type. Valid values: Private and Public.
+	// The network type. Valid values:
+	//
+	// - Private: private network.
+	//
+	// - Public: public network.
 	//
 	// example:
 	//

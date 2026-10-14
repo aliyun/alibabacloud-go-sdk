@@ -154,9 +154,9 @@ type DescribeKnowledgeBaseFilesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Financial_report.pdf
+	// FinancialReport.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type DescribeKnowledgeBaseFilesResponseBodyItems struct {
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// Indicates whether the chunking strategy is inherited from the knowledge space.
+	// Indicates whether the knowledge space chunking strategy is inherited.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type DescribeKnowledgeBaseFilesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// oss://test-bucket-example/pks-xxxx/pkb-xxxx/Financial_report.pdf
+	// oss://test-bucket-example/pks-xxxx/pkb-xxxx/FinancialReport.pdf
 	OSSPath *string `json:"OSSPath,omitempty" xml:"OSSPath,omitempty"`
 	// The number of shards.
 	//
@@ -204,7 +204,7 @@ type DescribeKnowledgeBaseFilesResponseBodyItems struct {
 	//
 	// 10
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The chunking strategy configuration currently in effect for the document. This value may be empty if the complete configuration was not saved for existing objects.
+	// The chunking strategy configuration currently in effect for the document. This value may be empty if the complete configuration was not saved for existing instances.
 	ShardingStrategyConfig *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfig `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty" type:"Struct"`
 	// The source type.
 	//
@@ -220,11 +220,15 @@ type DescribeKnowledgeBaseFilesResponseBodyItems struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The update time.
 	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-06-15T22:28:53Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 	// The upload time.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -615,7 +619,7 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesM
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategy struct {
 	// The parameter list.
 	Parameters *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The chunking strategy type applied after a rule is matched.
+	// The chunking strategy type after a rule is matched.
 	//
 	// example:
 	//

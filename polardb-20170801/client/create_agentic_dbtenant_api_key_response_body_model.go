@@ -26,7 +26,7 @@ type iCreateAgenticDBTenantApiKeyResponseBody interface {
 }
 
 type CreateAgenticDBTenantApiKeyResponseBody struct {
-	// The plaintext of the API key. This value is returned only in this response.
+	// The API key in plaintext. This value is returned only in this response.
 	//
 	// example:
 	//
@@ -40,11 +40,15 @@ type CreateAgenticDBTenantApiKeyResponseBody struct {
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
 	// The time when the API key was created.
 	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-06-10T08:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The expiration time of the API key. This value is empty if the API key never expires.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

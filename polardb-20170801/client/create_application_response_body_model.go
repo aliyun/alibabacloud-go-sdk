@@ -32,9 +32,9 @@ type CreateApplicationResponseBody struct {
 	//
 	// pa-********************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The list of child components.
+	// The list of subcomponents.
 	Components []*CreateApplicationResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreateApplicationResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether resources are sufficient. This parameter is returned only when DryRun is set to true.
+	// Indicates whether the resources are sufficient. This parameter is returned only when DryRun is set to true.
 	//
 	// example:
 	//
 	// true
 	ResourceAvailable *bool `json:"ResourceAvailable,omitempty" xml:"ResourceAvailable,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *CreateApplicationResponseBody) Validate() error {
 }
 
 type CreateApplicationResponseBodyComponents struct {
-	// The child component ID.
+	// The subcomponent ID.
 	//
 	// example:
 	//

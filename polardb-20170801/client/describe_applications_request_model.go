@@ -26,7 +26,7 @@ type iDescribeApplicationsRequest interface {
 }
 
 type DescribeApplicationsRequest struct {
-	// The list of application IDs. If specified, only information about these applications is returned.
+	// The list of application IDs. If specified, only the information of these applications is returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeApplicationsRequest struct {
 	ApplicationIds *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
 	// The application engine filter.
 	ApplicationTypes *string `json:"ApplicationTypes,omitempty" xml:"ApplicationTypes,omitempty"`
-	// The PolarDB instance ID. If specified, only application information related to this PolarDB instance is returned.
+	// The PolarDB instance ID. If specified, only the application information related to this PolarDB instance is returned.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeApplicationsRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags.
+	// The tag.
 	Tag []*DescribeApplicationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

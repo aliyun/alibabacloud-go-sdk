@@ -38,9 +38,11 @@ type iDescribeGlobalDatabaseNetworkResponseBody interface {
 }
 
 type DescribeGlobalDatabaseNetworkResponseBody struct {
-	// The connection details.
+	// The connection information.
 	Connections []*DescribeGlobalDatabaseNetworkResponseBodyConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
 	// The time when the GDN was created.
+	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -54,25 +56,25 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The clusters in the GDN.
 	DBClusters []*DescribeGlobalDatabaseNetworkResponseBodyDBClusters `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Repeated"`
-	// The database engine type. Only MySQL is supported.
+	// The database engine type. Currently, only MySQL is supported.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The database engine version. Only version 8.0 is supported.
+	// The database engine version. Currently, only version 8.0 is supported.
 	//
 	// example:
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The description of the GDN. It must meet the following requirements:
+	// The description of the GDN. The description must meet the following requirements:
 	//
-	// - It cannot start with `http://` or `https://`.
+	// - It cannot start with http:// or https://.
 	//
-	// - It must start with a letter or a Chinese character.
+	// - It must start with an uppercase letter, a lowercase letter, or a Chinese character.
 	//
-	// - It can contain only letters, Chinese characters, digits, underscores (_), and hyphens (-).
+	// - It can contain uppercase letters, lowercase letters, Chinese characters, digits, underscores (_), or hyphens (-).
 	//
 	// - It must be 2 to 126 characters in length.
 	//
@@ -80,21 +82,21 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	//
 	// GDN-fortest
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
-	// The GDN ID.
+	// GDN ID。
 	//
 	// example:
 	//
 	// gdn-bp1fttxsrmv*****
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
-	// The status of the Global Database Network (GDN). Valid values:
+	// The status of the GDN. Valid values:
 	//
-	// - **creating**: The GDN is being created.
+	// - **creating**: Being created.
 	//
-	// - **active**: The GDN is running.
+	// - **active**: Running.
 	//
-	// - **deleting**: The GDN is being deleted.
+	// - **deleting**: Being deleted.
 	//
-	// - **locked**: The GDN is locked. In this state, you cannot perform any operations on any cluster in the GDN.
+	// - **locked**: Locked. No operations can be performed on any cluster in the GDN.
 	//
 	// - **removing_member**: A cluster is being removed from the GDN.
 	//
@@ -108,7 +110,7 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	//
 	// [gdnid].gdn.rds.aliyuncs.com
 	GlobalDomainName *string `json:"GlobalDomainName,omitempty" xml:"GlobalDomainName,omitempty"`
-	// The labels of the GDN.
+	// The property labels.
 	Labels *DescribeGlobalDatabaseNetworkResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -337,57 +339,61 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyConnections) Validate() error 
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
-	// The edition of the cluster. Valid values:
+	// The edition of the product. Valid values:
 	//
-	// `Normal`: Cluster Edition `Basic`: Single-node Edition `Archive`: X-Engine Edition `NormalMultimaster`: Multi-master Cluster Edition `SENormal`: Standard Edition
+	// Normal: Cluster Edition
 	//
-	// > - Single-node Edition is not supported for PolarDB for PostgreSQL clusters that run PostgreSQL 11.
+	// Basic: Single Node Edition
 	//
-	// >
+	// Archive: PolarDB X-Engine Edition
 	//
-	// > - Standard Edition is supported for PolarDB for MySQL clusters that run MySQL 8.0 or 5.7 and for PolarDB for PostgreSQL clusters that run PostgreSQL 14.
+	// NormalMultimaster: Multi-master Cluster Edition
 	//
-	// >
+	// SENormal: PolarDB for MySQL Standard Edition
 	//
-	// > - X-Engine Edition and Multi-master Cluster Edition are supported only for PolarDB for MySQL clusters that run MySQL 8.0.
+	// >- PolarDB for PostgreSQL 11 does not support Single Node Edition.
+	//
+	// >- PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL 14 support PolarDB for MySQL Standard Edition.
+	//
+	// >- PolarDB for MySQL 8.0 supports PolarDB X-Engine Edition and Multi-master Cluster Edition.
 	//
 	// example:
 	//
 	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the cluster.
+	// The cluster description.
 	//
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The cluster ID.
+	// The cluster ID in the GDN.
 	//
 	// example:
 	//
 	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The status of the cluster. For more information, see [Cluster statuses](https://help.aliyun.com/document_detail/99286.html).
+	// The status of the cluster in the GDN. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
 	//
 	// example:
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The node type.
+	// The node specifications of the database node.
 	//
 	// example:
 	//
 	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The details of the nodes in the cluster.
+	// The details of the database nodes.
 	DBNodes []*DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
-	// The database engine. Only MySQL is supported.
+	// The database engine type. Currently, only MySQL is supported.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The database engine version. Only version 8.0 is supported.
+	// The database engine version. Currently, only version 8.0 is supported.
 	//
 	// example:
 	//
@@ -395,7 +401,9 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The expiration time of the cluster.
 	//
-	// > This parameter is returned only for subscription clusters. An empty string is returned for pay-as-you-go clusters.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
+	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -403,17 +411,17 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired. Valid values:
 	//
-	// - **true**: The cluster has expired.
+	// - **true**
 	//
-	// - **false**: The cluster has not expired.
+	// - **false**
 	//
-	// > This parameter is returned only for subscription clusters.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription).
 	//
 	// example:
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The billing method of the cluster. Valid values:
+	// The billing method. Valid values:
 	//
 	// - **Postpaid**: pay-as-you-go.
 	//
@@ -423,39 +431,39 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The replication lag for cross-region replication between the primary and standby clusters. Unit: seconds.
+	// The cross-region replication delay between the primary and secondary clusters. Unit: seconds.
 	//
 	// example:
 	//
 	// 1
 	ReplicaLag *string `json:"ReplicaLag,omitempty" xml:"ReplicaLag,omitempty"`
-	// The role of the cluster in the GDN. Valid values:
+	// The role of the cluster. Valid values:
 	//
-	// - **primary**: the primary cluster
+	// - **primary**: primary cluster
 	//
-	// - **standby**: a standby cluster
+	// - **standby**: secondary cluster
 	//
-	// > A GDN consists of one primary cluster and up to four standby clusters.
+	// > A GDN contains one primary cluster and up to four secondary clusters.
 	//
 	// example:
 	//
 	// primary
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The type of the Serverless cluster. The value is fixed as `AgileServerless`.
+	// The serverless type. The value is fixed as AgileServerless.
 	//
-	// > This parameter is returned only for Serverless clusters.
+	// > This parameter is supported only for serverless clusters.
 	//
 	// example:
 	//
 	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The amount of storage space used. Unit: bytes.
+	// The storage usage. Unit: bytes.
 	//
 	// example:
 	//
@@ -629,29 +637,31 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) Validate() error {
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
-	// The time when the node was created.
+	// The time when the database node was created.
+	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2020-03-23T21:35:43Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The node type.
+	// The node specifications of the database node.
 	//
 	// example:
 	//
 	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The node ID.
+	// The database node ID.
 	//
 	// example:
 	//
 	// pi-****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The role of the node. Valid values:
+	// The role of the database node. Valid values:
 	//
-	// - **Writer**: the primary node
+	// - **Writer**: primary node
 	//
-	// - **Reader**: a read-only node
+	// - **Reader**: read-only node
 	//
 	// example:
 	//
@@ -659,25 +669,25 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// The status of the node. Valid values:
 	//
-	// - **Creating**: The node is being created.
+	// - **Creating**: Being created.
 	//
-	// - **Running**: The node is running.
+	// - **Running**: Running.
 	//
-	// - **Deleting**: The node is being deleted.
+	// - **Deleting**: Being deleted.
 	//
-	// - **Rebooting**: The node is being restarted.
+	// - **Rebooting**: Being restarted.
 	//
-	// - **ClassChanging**: The node type is being changed.
+	// - **ClassChanging**: The node specifications are being changed.
 	//
-	// - **NetAddressCreating**: A network connection is being created.
+	// - **NetAddressCreating**: Network connectivity is being created.
 	//
-	// - **NetAddressDeleting**: A network connection is being deleted.
+	// - **NetAddressDeleting**: Network connectivity is being deleted.
 	//
-	// - **NetAddressModifying**: A network connection is being modified.
+	// - **NetAddressModifying**: Network connectivity is being modified.
 	//
-	// - **MinorVersionUpgrading**: The minor version is being upgraded.
+	// - **MinorVersionUpgrading**: A minor engine version upgrade is in progress.
 	//
-	// - **Maintaining**: The cluster is being maintained.
+	// - **Maintaining**: The cluster is under maintenance.
 	//
 	// - **Switching**: A failover is in progress.
 	//
@@ -685,19 +695,19 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	//
 	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	// The failover priority. In the event of a failover, the system promotes a read-only node to the primary node. A larger value indicates a higher priority. Each read-only node is assigned a failover priority. Valid values: 1 to 15.
+	// The failover priority. Each node has a failover priority that determines the likelihood of the node being elected as the primary node during a failover. A higher value indicates a higher priority. Valid values: 1 to 15.
 	//
 	// example:
 	//
 	// 1
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
-	// The maximum number of concurrent connections.
+	// The maximum number of concurrent connections to the cluster.
 	//
 	// example:
 	//
 	// 8000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum I/O operations per second (IOPS).
+	// The maximum number of I/O requests per second (IOPS).
 	//
 	// example:
 	//
@@ -805,7 +815,7 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes) Validate() 
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyLabels struct {
-	// The version of the GDN.
+	// The GDN version.
 	//
 	// example:
 	//

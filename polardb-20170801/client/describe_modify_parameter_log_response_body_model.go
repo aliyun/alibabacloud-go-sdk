@@ -26,7 +26,7 @@ type DescribeModifyParameterLogResponseBody struct {
 	//
 	// polardb_mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeModifyParameterLogResponseBody struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The list of parameter modification history.
 	Items []*DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -100,7 +100,9 @@ func (s *DescribeModifyParameterLogResponseBody) Validate() error {
 }
 
 type DescribeModifyParameterLogResponseBodyItems struct {
-	// The time when the parameter was last modified.
+	// The last modification time.
+	//
+	// The time is in the ISO 8601 format. The time is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -124,7 +126,7 @@ type DescribeModifyParameterLogResponseBodyItems struct {
 	//
 	// hz
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// Indicates whether the modification was applied successfully.
+	// Indicates whether the modification is applied.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type RemovePolarClawMCPServerResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type RemovePolarClawMCPServerResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful. A value of `true` indicates success.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

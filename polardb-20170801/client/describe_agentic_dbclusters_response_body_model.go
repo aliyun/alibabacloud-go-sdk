@@ -34,7 +34,7 @@ type DescribeAgenticDBClustersResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call. If there is no next query, do not pass this parameter.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call. If there is no next query, do not specify this parameter.
 	//
 	// example:
 	//
@@ -179,6 +179,8 @@ type DescribeAgenticDBClustersResponseBodyItems struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The time when the cluster was created.
 	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
@@ -217,6 +219,8 @@ type DescribeAgenticDBClustersResponseBodyItems struct {
 	//
 	// > A specific value is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
 	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2025-06-25T09:37:10Z
@@ -237,9 +241,9 @@ type DescribeAgenticDBClustersResponseBodyItems struct {
 	//
 	// - **Unlock**: Normal.
 	//
-	// - **ManualLock**: Manually locked.
+	// - **ManualLock**: manually locked.
 	//
-	// - **LockByExpiration**: Automatically locked due to cluster expiration.
+	// - **LockByExpiration**: automatically locked due to cluster expiration.
 	//
 	// example:
 	//
@@ -273,7 +277,7 @@ type DescribeAgenticDBClustersResponseBodyItems struct {
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The serverless type. A value of **AgileServerless*	- indicates that the cluster is a serverless cluster.
+	// The serverless type. A return value of **AgileServerless*	- indicates that the cluster is a serverless cluster.
 	//
 	// example:
 	//
@@ -299,7 +303,7 @@ type DescribeAgenticDBClustersResponseBodyItems struct {
 	//
 	// 3009413120
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key corresponds to Tag.n.Value.
+	// The tag key. You can use tags to filter clusters. You can specify up to 20 tags. The number n for each tag pair must be unique and must be a consecutive integer that starts from 1. The Tag.n.Key parameter is paired with the Tag.n.Value parameter.
 	Tags []*DescribeAgenticDBClustersResponseBodyItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) in which the endpoint resides.
 	//

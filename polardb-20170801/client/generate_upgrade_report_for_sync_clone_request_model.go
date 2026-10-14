@@ -36,23 +36,23 @@ type iGenerateUpgradeReportForSyncCloneRequest interface {
 }
 
 type GenerateUpgradeReportForSyncCloneRequest struct {
-	// The product series. Valid values:
+	// The edition of the cluster. Valid values:
 	//
-	// - **Normal**: Cluster Edition (default)
+	// 	- **Normal**: Cluster Edition (default)
 	//
-	// - **SENormal**: Standard Edition
+	// 	- **SENormal**: Standard Edition
 	//
-	// See [Product series](https://help.aliyun.com/document_detail/183258.html).
+	// For more information about cluster editions, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
 	//
 	// example:
 	//
 	// Normal
 	CreationCategory *string `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
-	// The creation method. Valid values:
+	// The creation pattern. Valid values:
 	//
-	// - **MigrationFromRDS**: Migrate data from an existing RDS instance to a new PolarDB cluster. The created PolarDB cluster is in read-only mode and has binary logging enabled by default. For operations in the console, see [Upgrade an ApsaraDB RDS for MySQL instance to PolarDB for MySQL](https://help.aliyun.com/document_detail/121582.html).
+	// 	- **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS instance to a new PolarDB cluster. The created PolarDB cluster is in read-only mode and has binary logging enabled by default. For more information about the console operation, see [Upgrade an ApsaraDB RDS for MySQL instance to a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/121582.html).
 	//
-	// - **UpgradeFromPolarDB**: Upgrade and migrate data from a PolarDB cluster. See [Upgrade the major version](https://help.aliyun.com/document_detail/459712.html).
+	// 	- **UpgradeFromPolarDB**: performs instance migration from PolarDB. For more information about the console operation, see [Major engine version upgrade](https://help.aliyun.com/document_detail/459712.html).
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type GenerateUpgradeReportForSyncCloneRequest struct {
 	CreationOption *string `json:"CreationOption,omitempty" xml:"CreationOption,omitempty"`
 	// The name of the database. You can specify only one database name.
 	//
-	// > This parameter is supported only for PolarDB for PostgreSQL (Oracle Compatible) clusters.
+	// > Only PolarDB for PostgreSQL (Compatible with Oracle) clusters support this parameter.
 	//
 	// example:
 	//
@@ -76,17 +76,17 @@ type GenerateUpgradeReportForSyncCloneRequest struct {
 	//
 	// PostgreSQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the destination database engine.
+	// The version number of the destination database DPI engine.
 	//
-	// - Valid values for MySQL:
+	// 	- Valid values for MySQL:
 	//
-	//   - **5.6**
+	//     	- **5.6**
 	//
-	//   - **5.7**
+	//     	- **5.7**
 	//
-	//   - **8.0**
+	//     	- **8.0**
 	//
-	// - Valid value for Oracle: **14**.
+	// 	- Valid value for Oracle: **14**.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type GenerateUpgradeReportForSyncCloneRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A reserved parameter in the JSON string format.
+	// The reserved parameter. The value is a JSON string.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GenerateUpgradeReportForSyncCloneRequest struct {
 	Reserve              *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the source instance.
+	// The source instance ID.
 	//
 	// example:
 	//

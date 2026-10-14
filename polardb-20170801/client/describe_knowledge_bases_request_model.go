@@ -24,7 +24,7 @@ type iDescribeKnowledgeBasesRequest interface {
 }
 
 type DescribeKnowledgeBasesRequest struct {
-	// The keyword for searching knowledge bases.
+	// The keyword used to filter knowledge bases.
 	//
 	// example:
 	//

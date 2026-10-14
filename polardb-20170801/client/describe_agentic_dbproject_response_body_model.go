@@ -30,38 +30,64 @@ type iDescribeAgenticDBProjectResponseBody interface {
 }
 
 type DescribeAgenticDBProjectResponseBody struct {
+	// The time when the project was created.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the default branch.
+	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	DefaultBranchId *string `json:"DefaultBranchId,omitempty" xml:"DefaultBranchId,omitempty"`
+	// The name of the default branch.
+	//
 	// example:
 	//
 	// main
 	DefaultBranchName *string `json:"DefaultBranchName,omitempty" xml:"DefaultBranchName,omitempty"`
+	// The description of the project.
+	//
 	// example:
 	//
 	// Production analytics database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Project ID
+	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// I9J0K1L2-M3N4-5678-IJKL-789012345678
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The project status. Valid values:
+	//
+	// - Active: Normal.
+	//
+	// - Destroying: Being destroyed.
+	//
+	// - Destroyed: Destroyed.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant to which the project belongs.
+	//
 	// example:
 	//
 	// t-4b83e0da66674951

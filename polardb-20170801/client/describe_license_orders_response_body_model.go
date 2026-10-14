@@ -123,7 +123,7 @@ type DescribeLicenseOrdersResponseBodyItems struct {
 	//
 	// 10
 	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
-	// The quota for requesting activation codes.
+	// The quota of activation codes that can be requested.
 	//
 	// example:
 	//
@@ -135,37 +135,37 @@ type DescribeLicenseOrdersResponseBodyItems struct {
 	//
 	// 227638319690519
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	// Specifies whether the System Identifier can be left empty when an activation code is generated.
+	// Indicates whether the System Identifier field can be left empty when generating an activation code.
 	//
 	// example:
 	//
 	// false
 	AllowEmptySystemIdentifier *bool `json:"AllowEmptySystemIdentifier,omitempty" xml:"AllowEmptySystemIdentifier,omitempty"`
-	// The database type, such as PG, Oracle, or MySQL.
+	// The database engine type, such as PG, Oracle, or MySQL.
 	//
 	// example:
 	//
 	// PG
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The creation time.
+	// The time when the order was created.
 	//
 	// example:
 	//
 	// 2022-02-11 03:14:15
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The update time.
+	// The time when the order was last updated.
 	//
 	// example:
 	//
 	// 2022-02-11 03:14:15
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the order is a virtual order. Virtual orders allow for pre-generating activation codes.
+	// Indicates whether the order is a virtual order. Virtual orders allow pre-generation of activation codes.
 	//
 	// example:
 	//
 	// false
 	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
-	// Indicates whether the virtual order is frozen. No more activation codes can be generated from a frozen order.
+	// Indicates whether the virtual order is frozen. A frozen virtual order does not allow further generation of activation codes.
 	//
 	// example:
 	//
@@ -173,27 +173,31 @@ type DescribeLicenseOrdersResponseBodyItems struct {
 	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
 	// The package type. Valid values:
 	//
-	// - single_node_subscribe: single node (subscription)
+	// - single_node_subscribe: single node (subscription).
 	//
-	// - single_node_long_term: single node (long-term)
+	// - single_node_long_term: single node (long-term).
 	//
-	// - primary_backup_subscribe: primary/standby (subscription)
+	// - primary_backup_subscribe: primary/secondary (subscription).
 	//
-	// - primary_backup_long_term: primary/standby (long-term)
+	// - primary_backup_long_term: primary/secondary (long-term).
 	//
-	// - pre_generation_long_term: pre-generated (long-term)
+	// - pre_generation_long_term: pre-generation (long-term).
 	//
 	// example:
 	//
 	// single_node_subscribe
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The validity period of the package. Common options are one year or long-term (30 years).
+	// The validity period of the package. Typical values are one year or long-term (30 years).
 	//
 	// example:
 	//
 	// 1 year
 	PackageValidity *string `json:"PackageValidity,omitempty" xml:"PackageValidity,omitempty"`
-	// The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
+	// The purchase channel. Valid values:
+	//
+	// - aliyun_market: Alibaba Cloud Marketplace.
+	//
+	// - aliyun_public: standard purchase page.
 	//
 	// example:
 	//

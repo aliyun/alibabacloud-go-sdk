@@ -34,7 +34,7 @@ type UpgradePolarClawPluginResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The response status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type UpgradePolarClawPluginResponseBody struct {
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// The ID of the upgraded plugin.
+	// The ID of the upgraded plug-in.
 	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 7E2FE3BB-C677-5FF9-9FC5-9CF364BD6BE5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway restarted.
+	// Indicates whether the gateway was restarted.
 	//
 	// example:
 	//

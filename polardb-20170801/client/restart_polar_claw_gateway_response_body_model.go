@@ -72,7 +72,7 @@ type RestartPolarClawGatewayResponseBody struct {
 	//
 	// in-process
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type RestartPolarClawGatewayResponseBody struct {
 	//
 	// F45FFACC-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway has been confirmed available after the restart. This value is returned synchronously.
+	// Indicates whether the gateway is confirmed available after the restart. This value is returned synchronously.
 	//
 	// example:
 	//

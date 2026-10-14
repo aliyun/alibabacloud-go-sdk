@@ -42,13 +42,13 @@ type DescribeSlowLogsRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// PolarDB_MySQL
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end date of the query range. The end date cannot be earlier than the start date, and the interval between the start and end dates cannot exceed 31 days. Specify the date in `yyyy-MM-ddZ` format. The time is in UTC.
+	// The end date of the query. The end date must be later than or equal to the start date. The interval between the start date and the end date cannot exceed 31 days. Format: yyyy-MM-ddZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -58,15 +58,15 @@ type DescribeSlowLogsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
-	// The default value is 1.
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of logs to return on each page. Valid values: 30 to 100. The default value is 30.
+	// The number of entries per page. Valid values: 30 to 100. Default value: 30.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeSlowLogsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start date of the query range. The date can be up to 31 days in the past. Specify the date in `yyyy-MM-ddZ` format. The time is in UTC.
+	// The start date of the query. The interval between the start date and the current date cannot exceed 31 days. Format: yyyy-MM-ddZ (UTC).
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type ModifyDBClusterResponseBody struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The order ID.
+	// The generated order ID.
 	//
 	// example:
 	//

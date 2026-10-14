@@ -24,15 +24,15 @@ type iDescribeAccountsZonalResponseBody interface {
 }
 
 type DescribeAccountsZonalResponseBody struct {
-	// The details of the accounts.
+	// The details of the account information.
 	Accounts []*DescribeAccountsZonalResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in the request.
+	// The maximum number of entries to return for this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. If the results are not fully returned, this token is returned. You can use this token in the next request to retrieve the remaining results.
+	// The query token. Set the value to the NextToken value returned in the last API call. If no subsequent query is required, do not specify this parameter.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeAccountsZonalResponseBodyAccounts struct {
 	//
 	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The lock state of the account. Valid values:
+	// The lock status of the account. Valid values:
 	//
 	// - UnLock: The account is not locked.
 	//
@@ -156,7 +156,7 @@ type DescribeAccountsZonalResponseBodyAccounts struct {
 	//
 	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The time when the password expires.
+	// The expiration time of the password.
 	//
 	// example:
 	//
@@ -164,11 +164,11 @@ type DescribeAccountsZonalResponseBodyAccounts struct {
 	AccountPasswordValidTime *string `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// Creating: The account is being created.
+	// - Creating: The account is being created.
 	//
-	// Available: The account is active.
+	// - Available: The account is available.
 	//
-	// Deleting: The account is being deleted.
+	// - Deleting: The account is being deleted.
 	//
 	// example:
 	//
@@ -176,17 +176,17 @@ type DescribeAccountsZonalResponseBodyAccounts struct {
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The type of the account. Valid values:
 	//
-	// - Normal: A standard account.
+	// - Normal: standard account.
 	//
-	// - Super: A privileged account.
+	// - Super: privileged account.
 	//
-	// - ReadOnly: A global read-only account.
+	// - ReadOnly: global read-only account.
 	//
 	// example:
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The details of the database permissions that the account has.
+	// The details of the database permissions granted to the account.
 	DatabasePrivileges []*DescribeAccountsZonalResponseBodyAccountsDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Repeated"`
 }
 

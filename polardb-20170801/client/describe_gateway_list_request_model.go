@@ -22,19 +22,19 @@ type iDescribeGatewayListRequest interface {
 }
 
 type DescribeGatewayListRequest struct {
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The description of the gateway instance.
+	// The gateway description.
 	//
 	// example:
 	//
 	// test
 	GwDescription *string `json:"GwDescription,omitempty" xml:"GwDescription,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeGatewayListRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: **30**.
 	//

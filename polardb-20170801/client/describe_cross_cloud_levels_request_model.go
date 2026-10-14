@@ -34,7 +34,7 @@ type DescribeCrossCloudLevelsRequest struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version number of the database engine.
+	// The database engine version.
 	//
 	// Valid values for MySQL:
 	//
@@ -64,7 +64,7 @@ type DescribeCrossCloudLevelsRequest struct {
 	//
 	// pj-87681rbcef6******
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The storage class.
+	// The storage type.
 	//
 	// This parameter is required.
 	//

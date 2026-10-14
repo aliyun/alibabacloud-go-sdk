@@ -22,27 +22,27 @@ type iDescribeHistoryTasksResponseBody interface {
 }
 
 type DescribeHistoryTasksResponseBody struct {
-	// The list of tasks.
+	// The task list.
 	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the query result.
+	// The page number of the query results.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F90D7C14-2D1C-5B88-9CD1-23AB2CF89***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of tasks that meet the conditions, regardless of paging factors.
+	// The total number of tasks that meet the filter conditions, regardless of pagination.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 type DescribeHistoryTasksResponseBodyItems struct {
 	// The allowed operation information.
 	//
-	// > This feature is not supported yet.
+	// > This feature is not supported.
 	//
 	// example:
 	//
@@ -127,21 +127,21 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
 	// The request source. Valid values:
 	//
-	// - **System**: system
+	// 	- **System**: system.
 	//
-	// - **User**: user
+	// 	- **User**: user.
 	//
 	// example:
 	//
 	// User
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
-	// The ID of the requesting user. If `CallerSource` is `User`, this is the user\\"s UID.
+	// The ID of the requesting user. When CallerSource is set to User, this value represents the user UID.
 	//
 	// example:
 	//
 	// 1816563541899***
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The name of the current step being executed. If this parameter is empty, the task has not started.
+	// The name of the current step being executed. An empty value indicates that the task has not started.
 	//
 	// example:
 	//
@@ -153,7 +153,9 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// polardb_mysql
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The end time of the task.
+	// The task end time.
+	//
+	// The time is in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -183,13 +185,13 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// polardb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The completion progress of the task, from 0.0 to 100.0.
+	// The current progress.
 	//
 	// example:
 	//
 	// 100.0
 	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The reason for initiating the current task.
+	// The reason why the current task was initiated.
 	//
 	// example:
 	//
@@ -201,35 +203,37 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The estimated remaining execution time, in seconds (s).
+	// The estimated remaining execution duration. Unit: seconds.
 	//
-	// > This value is for reference only. The actual execution time prevails.
+	// > This value is for reference only. The actual execution duration may vary.
 	//
 	// example:
 	//
 	// 0
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	// The start time of the task.
+	// The task start time.
+	//
+	// The time is in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-03-03T07:25:16Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The final status of the task.
+	// The task status.
 	//
-	// - Scheduled: waiting for execution
+	// 	- Scheduled: Waiting for execution.
 	//
-	// - Running: executing
+	// 	- Running: Running.
 	//
-	// - Succeed: executed successfully
+	// 	- Succeed: Succeeded.
 	//
-	// - Failed: execution failed
+	// 	- Failed: Failed.
 	//
-	// - Cancelling: stopping
+	// 	- Cancelling: Being canceled.
 	//
-	// - Canceled: stopped
+	// 	- Canceled: Canceled.
 	//
-	// - Waiting: waiting for preset time
+	// 	- Waiting: Waiting for the scheduled time.
 	//
 	// example:
 	//
@@ -253,7 +257,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// ChangeVariable
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The UID of the account that owns the resource.
+	// The ID of the user to whom the resource belongs.
 	//
 	// example:
 	//

@@ -28,19 +28,19 @@ type iDescribeKnowledgeBaseFilesRequest interface {
 }
 
 type DescribeKnowledgeBaseFilesRequest struct {
-	// The list of file IDs, separated by commas (,).
+	// The list of file IDs, separated by commas.
 	//
 	// example:
 	//
 	// doc_a,doc_b
 	FileIds *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	// The keyword used to filter file names.
+	// The keyword for the file name.
 	//
 	// example:
 	//
-	// Financial report
+	// FinancialReport
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeKnowledgeBaseFilesRequest struct {
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The unique ID of the synchronization link.
+	// The unique identifier of the synchronization link.
 	//
 	// example:
 	//

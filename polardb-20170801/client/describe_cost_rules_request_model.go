@@ -9,12 +9,16 @@ type iDescribeCostRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCostRuleId(v string) *DescribeCostRulesRequest
+	GetCostRuleId() *string
 	SetEffectiveTargetType(v string) *DescribeCostRulesRequest
 	GetEffectiveTargetType() *string
 	SetEffectiveTargetValue(v string) *DescribeCostRulesRequest
 	GetEffectiveTargetValue() *string
 	SetGwClusterId(v string) *DescribeCostRulesRequest
 	GetGwClusterId() *string
+	SetInputTokenTier(v string) *DescribeCostRulesRequest
+	GetInputTokenTier() *string
 	SetModelName(v string) *DescribeCostRulesRequest
 	GetModelName() *string
 	SetModelServiceId(v string) *DescribeCostRulesRequest
@@ -28,13 +32,19 @@ type iDescribeCostRulesRequest interface {
 }
 
 type DescribeCostRulesRequest struct {
-	// Filters by effective target type. Valid values: global, consumerGroup, and consumer.
+	// The ID of the cost rule.
+	//
+	// example:
+	//
+	// cr-xxx
+	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
+	// The type of the effective target. Valid values: global, consumerGroup, and consumer.
 	//
 	// example:
 	//
 	// global
 	EffectiveTargetType *string `json:"EffectiveTargetType,omitempty" xml:"EffectiveTargetType,omitempty"`
-	// Filters by effective target value.
+	// The value of the effective target used to filter results.
 	//
 	// example:
 	//
@@ -48,13 +58,19 @@ type DescribeCostRulesRequest struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The model name, such as gpt-4 or qwen-turbo.
+	// The input token tier used to filter results. Rules that include this tier are returned. Valid values: 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+.
+	//
+	// example:
+	//
+	// 0-32K
+	InputTokenTier *string `json:"InputTokenTier,omitempty" xml:"InputTokenTier,omitempty"`
+	// The name of the model, such as gpt-4 or qwen-turbo.
 	//
 	// example:
 	//
 	// qwen3-max
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model service ID.
+	// The ID of the model service.
 	//
 	// example:
 	//
@@ -96,6 +112,10 @@ func (s DescribeCostRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCostRulesRequest) GetCostRuleId() *string {
+	return s.CostRuleId
+}
+
 func (s *DescribeCostRulesRequest) GetEffectiveTargetType() *string {
 	return s.EffectiveTargetType
 }
@@ -106,6 +126,10 @@ func (s *DescribeCostRulesRequest) GetEffectiveTargetValue() *string {
 
 func (s *DescribeCostRulesRequest) GetGwClusterId() *string {
 	return s.GwClusterId
+}
+
+func (s *DescribeCostRulesRequest) GetInputTokenTier() *string {
+	return s.InputTokenTier
 }
 
 func (s *DescribeCostRulesRequest) GetModelName() *string {
@@ -128,6 +152,11 @@ func (s *DescribeCostRulesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeCostRulesRequest) SetCostRuleId(v string) *DescribeCostRulesRequest {
+	s.CostRuleId = &v
+	return s
+}
+
 func (s *DescribeCostRulesRequest) SetEffectiveTargetType(v string) *DescribeCostRulesRequest {
 	s.EffectiveTargetType = &v
 	return s
@@ -140,6 +169,11 @@ func (s *DescribeCostRulesRequest) SetEffectiveTargetValue(v string) *DescribeCo
 
 func (s *DescribeCostRulesRequest) SetGwClusterId(v string) *DescribeCostRulesRequest {
 	s.GwClusterId = &v
+	return s
+}
+
+func (s *DescribeCostRulesRequest) SetInputTokenTier(v string) *DescribeCostRulesRequest {
+	s.InputTokenTier = &v
 	return s
 }
 

@@ -46,70 +46,112 @@ type iDescribeAgenticDBBranchResponseBody interface {
 }
 
 type DescribeAgenticDBBranchResponseBody struct {
+	// The ID of the compute cluster associated with the branch.
+	//
 	// example:
 	//
 	// pc-g0lsayq8c5qe
 	BranchComputeClusterId *string `json:"BranchComputeClusterId,omitempty" xml:"BranchComputeClusterId,omitempty"`
+	// The number of compute nodes. The value is fixed to 1 in the initial phase.
+	//
 	// example:
 	//
 	// 1
 	BranchComputeNodeCount *int32 `json:"BranchComputeNodeCount,omitempty" xml:"BranchComputeNodeCount,omitempty"`
+	// The branch ID.
+	//
 	// example:
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	// The branch name.
+	//
 	// example:
 	//
 	// feature-analytics
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The time when the branch was created.
+	//
+	// The time is in the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the branch.
+	//
 	// example:
 	//
 	// Feature branch for analytics
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the branch is the default branch.
+	//
 	// example:
 	//
 	// false
 	IsDefaultBranch *bool `json:"IsDefaultBranch,omitempty" xml:"IsDefaultBranch,omitempty"`
+	// The time when the branch was last activated.
+	//
 	// example:
 	//
 	// 2026-06-10T12:30:00Z
 	LastActivatedAt *string `json:"LastActivatedAt,omitempty" xml:"LastActivatedAt,omitempty"`
+	// The maximum compute unit.
+	//
 	// example:
 	//
 	// 2
 	MaxCU *string `json:"MaxCU,omitempty" xml:"MaxCU,omitempty"`
+	// The minimum compute unit.
+	//
 	// example:
 	//
 	// 0.25
 	MinCU *string `json:"MinCU,omitempty" xml:"MinCU,omitempty"`
+	// The ID of the parent branch.
+	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	ParentBranchId *string `json:"ParentBranchId,omitempty" xml:"ParentBranchId,omitempty"`
+	// The name of the parent branch.
+	//
 	// example:
 	//
 	// main
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
+	// The ID of the project to which the branch belongs.
+	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the project to which the branch belongs.
+	//
 	// example:
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C3D4E5F6-A7B8-9012-CDEF-345678901CDE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the branch. Valid values:
+	//
+	// - Running
+	//
+	// - Pending
+	//
+	// - Paused
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant to which the branch belongs.
+	//
 	// example:
 	//
 	// t-4b83e0da66674951

@@ -28,7 +28,7 @@ type DeleteAgenticDBTenantApiKeyRequest struct {
 	//
 	// ak-71304e39c7e841a1
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The AgenticDB cluster ID.
+	// The ID of the AgenticDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeleteAgenticDBTenantApiKeyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant ID, which is used for secondary authentication on the backend.
+	// The tenant ID, which is used for secondary verification on the backend.
 	//
 	// This parameter is required.
 	//

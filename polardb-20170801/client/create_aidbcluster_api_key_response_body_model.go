@@ -68,7 +68,9 @@ type CreateAIDBClusterApiKeyResponseBodyApiKey struct {
 	//
 	// xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The creation time.
+	// The time when the API key was created.
+	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

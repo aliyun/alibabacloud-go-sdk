@@ -16,7 +16,7 @@ type iVerifyAgenticDBTenantApiKeyRequest interface {
 }
 
 type VerifyAgenticDBTenantApiKeyRequest struct {
-	// The plaintext API key to validate.
+	// The plaintext of the API key to be validated.
 	//
 	// This parameter is required.
 	//

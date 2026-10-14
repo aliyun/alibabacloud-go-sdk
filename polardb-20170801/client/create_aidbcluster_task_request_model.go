@@ -78,21 +78,21 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// cold_storage
 	DataserviceMode *string `json:"DataserviceMode,omitempty" xml:"DataserviceMode,omitempty"`
-	// The training dataset ID. This parameter is required for fine-tuning.
+	// The ID of the training dataset. This parameter is required for fine-tuning.
 	//
 	// example:
 	//
 	// pds-2zetrain***
 	DatasetPath *string `json:"DatasetPath,omitempty" xml:"DatasetPath,omitempty"`
-	// The validation dataset ID. This parameter is required for evaluation.
+	// The ID of the validation dataset. This parameter is required for evaluation.
 	//
 	// example:
 	//
 	// pds-2zetrain***
 	EvalDatasetPath *string `json:"EvalDatasetPath,omitempty" xml:"EvalDatasetPath,omitempty"`
-	// The model service type. Valid values:
+	// The type of the model service. Valid values:
 	//
-	//  	- **aitrain**: model operator tuning
+	//  	- **aitrain**: Model operator tuning.
 	//
 	// This parameter is required.
 	//
@@ -100,11 +100,11 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// aitrain
 	KubeType *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
-	// 	- **For a preset model, specify the name of the selected model.**
+	// 	- **For a preset model, specify the selected model name.**
 	//
-	// 	- **For a custom model, specify the path where the model is stored (the model trained in a cold storage instance).**
+	// 	- **For a custom model, specify the path of the model (the trained model in a cold storage instance).**
 	//
 	// This parameter is required.
 	//
@@ -112,11 +112,11 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// Qwen3-8B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model source. Valid values:
+	// The source of the model. Valid values:
 	//
-	// 	- **public**: preset model
+	// 	- **public**: Preset model.
 	//
-	// 	- **custom**: custom model
+	// 	- **custom**: Custom model.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +124,7 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
-	// The custom model type.
+	// The type of the custom model.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type CreateAIDBClusterTaskRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The running parameters in a JSON string.
+	// The runtime parameters. The value is a JSON string.
 	//
 	// This parameter is required.
 	//
@@ -154,20 +154,20 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The model service description.
+	// The description of the model service.
 	//
 	// example:
 	//
 	// xxxx
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

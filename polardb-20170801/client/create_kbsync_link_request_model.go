@@ -15,6 +15,8 @@ type iCreateKBSyncLinkRequest interface {
 	GetClientSecret() *string
 	SetDescription(v string) *CreateKBSyncLinkRequest
 	GetDescription() *string
+	SetFeishuChatMemberStaleTtlSeconds(v int32) *CreateKBSyncLinkRequest
+	GetFeishuChatMemberStaleTtlSeconds() *int32
 	SetKnowledgeBaseId(v string) *CreateKBSyncLinkRequest
 	GetKnowledgeBaseId() *string
 	SetLinkName(v string) *CreateKBSyncLinkRequest
@@ -37,6 +39,8 @@ type iCreateKBSyncLinkRequest interface {
 	GetUserAccessToken() *string
 	SetUserId(v string) *CreateKBSyncLinkRequest
 	GetUserId() *string
+	SetUserRefreshToken(v string) *CreateKBSyncLinkRequest
+	GetUserRefreshToken() *string
 }
 
 type CreateKBSyncLinkRequest struct {
@@ -62,7 +66,13 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique ID of the knowledge base.
+	// The validity period of the Lark group member snapshot for fallback reuse, in seconds. This parameter can be explicitly set only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of the snapshot allowed for reuse. Default value: -1. If this parameter is omitted, -1 takes effect.
+	//
+	// example:
+	//
+	// -1
+	FeishuChatMemberStaleTtlSeconds *int32 `json:"FeishuChatMemberStaleTtlSeconds,omitempty" xml:"FeishuChatMemberStaleTtlSeconds,omitempty"`
+	// The unique identifier of the knowledge base.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +80,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The name of the synchronization link.
+	// The name of the link.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +88,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// testName
 	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
-	// The MCP Server endpoint for DingTalk documents.
+	// The endpoint of the DingTalk document MCP server.
 	//
 	// example:
 	//
@@ -92,13 +102,13 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The MCP Server endpoint for DingTalk spreadsheets.
+	// The endpoint of the DingTalk sheet MCP server.
 	//
 	// example:
 	//
 	// https://mcp-gw.dingtalk.com/server/1a2b3cxxxxxx567?key=d5e6fxxxxxx543
 	SheetMcpEndpoint *string `json:"SheetMcpEndpoint,omitempty" xml:"SheetMcpEndpoint,omitempty"`
-	// The directory address of the synchronization source.
+	// The source directory address for synchronization.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +124,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// FEISHU
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The synchronization interval. Unit: minutes.
+	// The synchronization interval, in minutes.
 	//
 	// example:
 	//
@@ -126,18 +136,24 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// 63eexxxx-xxxx-xxxx-xxxx-xxxxxx090f82
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The Lark user access token. This token is used only when the application identity cannot expand group members because the bot is not in the group chat.
+	// The Lark user access token. This token is used only when the application identity cannot retrieve group members because the bot is not in the group chat.
 	//
 	// example:
 	//
 	// ******
 	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
-	// The DingTalk user ID of the operator.
+	// The ID of the DingTalk operator.
 	//
 	// example:
 	//
 	// 123***56
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The Lark user refresh token. This token must be provided together with UserAccessToken to automatically rotate the fallback identity for retrieving group members.
+	//
+	// example:
+	//
+	// ******
+	UserRefreshToken *string `json:"UserRefreshToken,omitempty" xml:"UserRefreshToken,omitempty"`
 }
 
 func (s CreateKBSyncLinkRequest) String() string {
@@ -158,6 +174,10 @@ func (s *CreateKBSyncLinkRequest) GetClientSecret() *string {
 
 func (s *CreateKBSyncLinkRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateKBSyncLinkRequest) GetFeishuChatMemberStaleTtlSeconds() *int32 {
+	return s.FeishuChatMemberStaleTtlSeconds
 }
 
 func (s *CreateKBSyncLinkRequest) GetKnowledgeBaseId() *string {
@@ -204,6 +224,10 @@ func (s *CreateKBSyncLinkRequest) GetUserId() *string {
 	return s.UserId
 }
 
+func (s *CreateKBSyncLinkRequest) GetUserRefreshToken() *string {
+	return s.UserRefreshToken
+}
+
 func (s *CreateKBSyncLinkRequest) SetClientId(v string) *CreateKBSyncLinkRequest {
 	s.ClientId = &v
 	return s
@@ -216,6 +240,11 @@ func (s *CreateKBSyncLinkRequest) SetClientSecret(v string) *CreateKBSyncLinkReq
 
 func (s *CreateKBSyncLinkRequest) SetDescription(v string) *CreateKBSyncLinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateKBSyncLinkRequest) SetFeishuChatMemberStaleTtlSeconds(v int32) *CreateKBSyncLinkRequest {
+	s.FeishuChatMemberStaleTtlSeconds = &v
 	return s
 }
 
@@ -271,6 +300,11 @@ func (s *CreateKBSyncLinkRequest) SetUserAccessToken(v string) *CreateKBSyncLink
 
 func (s *CreateKBSyncLinkRequest) SetUserId(v string) *CreateKBSyncLinkRequest {
 	s.UserId = &v
+	return s
+}
+
+func (s *CreateKBSyncLinkRequest) SetUserRefreshToken(v string) *CreateKBSyncLinkRequest {
+	s.UserRefreshToken = &v
 	return s
 }
 

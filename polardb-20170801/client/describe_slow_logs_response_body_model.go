@@ -36,7 +36,9 @@ type DescribeSlowLogsResponseBody struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query.
+	// The end date of the query.
+	//
+	// The date is in UTC. Format: YYYY-MM-DDZ.
 	//
 	// example:
 	//
@@ -67,7 +69,9 @@ type DescribeSlowLogsResponseBody struct {
 	//
 	// 2553A660-E4EB-4AF4-A402-8AFF70A49143
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query.
+	// The start date of the query.
+	//
+	// The date is in UTC. Format: YYYY-MM-DDZ.
 	//
 	// example:
 	//

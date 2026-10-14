@@ -30,13 +30,13 @@ type iFailoverDBClusterRequest interface {
 }
 
 type FailoverDBClusterRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, and you must make sure that the value is unique among different requests. The token is case-sensitive and cannot exceed 64 ASCII characters in length.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -48,31 +48,31 @@ type FailoverDBClusterRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to switch back services to the original primary zone when the original primary zone recovers.
+	// Specifies whether to switch back to the original primary zone after a failover. Valid values:
 	//
-	// 	- true
+	// - true: Switch back to the original primary zone.
 	//
-	// 	- false
+	// - false: Do not switch back to the original primary zone.
 	//
 	// example:
 	//
 	// false
 	RollBackForDisaster *bool `json:"RollBackForDisaster,omitempty" xml:"RollBackForDisaster,omitempty"`
-	// The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query node information, such as node IDs.
+	// The ID of the node that you want to promote to the primary node. If you leave this parameter empty, the system automatically elects a node. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query node IDs and other information.
 	//
-	// > 	- If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
+	// > - Automatic election of the primary node: The system identifies all read-only nodes that are eligible for election. The system selects one or more read-only nodes with the highest priority. If the switchover to the first node fails due to reasons such as network issues or abnormal replication status, the system attempts to switch to the next node until the switchover succeeds.
 	//
-	// >	- This parameter is required for PolarDB for Oracle and PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
+	// >- This parameter is required when the cluster is a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional when the cluster is a PolarDB for MySQL cluster.
 	//
 	// example:
 	//
 	// pi-***********
 	TargetDBNodeId *string `json:"TargetDBNodeId,omitempty" xml:"TargetDBNodeId,omitempty"`
-	// Whether it is a primary-standby switch within the primary availability zone, with the following values:
+	// Specifies whether the primary/secondary switchover is performed within the primary zone. Valid values:
 	//
-	// Primary: Primary-standby switch within the primary availability zone.
+	// - Primary: The primary/secondary switchover is performed within the primary zone.
 	//
-	// Standby: Switch to the storage hot backup cluster.
+	// - Standby: The switchover is performed to the hot standby storage cluster.
 	//
 	// example:
 	//

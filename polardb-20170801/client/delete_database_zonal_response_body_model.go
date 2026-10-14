@@ -14,7 +14,7 @@ type iDeleteDatabaseZonalResponseBody interface {
 }
 
 type DeleteDatabaseZonalResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

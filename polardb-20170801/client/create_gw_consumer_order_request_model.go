@@ -30,7 +30,7 @@ type CreateGwConsumerOrderRequest struct {
 	//
 	// 6000170000591aed949d0f54a343f1a42***********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The expiration time of the API key in ISO-8601 format. The value must be later than the current time.
+	// The expiration time of the API key in ISO 8601 format. The value must be later than the current time.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateGwConsumerOrderRequest struct {
 	//
 	// pg-2ze24rr575j5b18cg
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The number of API keys to generate (the number of capacity plans to order). Valid values: 1 to 30.
+	// The number of API keys to generate, which is the number of capacity plans to order. Valid values: 1 to 30.
 	//
 	// This parameter is required.
 	//

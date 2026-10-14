@@ -16,9 +16,9 @@ type iDescribeNetworkChannelResponseBody interface {
 }
 
 type DescribeNetworkChannelResponseBody struct {
-	// A list of network channels.
+	// The list of network channels.
 	ChannelInfos []*DescribeNetworkChannelResponseBodyChannelInfos `json:"ChannelInfos,omitempty" xml:"ChannelInfos,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -72,17 +72,19 @@ type DescribeNetworkChannelResponseBodyChannelInfos struct {
 	//
 	// ch4
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The ID of the source cluster.
+	// The source instance name.
 	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the elastic network interfaces (ENIs) used by the reverse access link of the network channel. The network interface controller (NIC) is used for the connection.
+	//
 	// example:
 	//
 	// eni-2z******
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// The notes about the channel.
+	// The remarks.
 	//
 	// example:
 	//
@@ -94,31 +96,31 @@ type DescribeNetworkChannelResponseBodyChannelInfos struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the target cluster.
+	// The target instance name.
 	//
 	// example:
 	//
 	// pc-*************
 	TargetDBClusterId *string `json:"TargetDBClusterId,omitempty" xml:"TargetDBClusterId,omitempty"`
-	// The IP address of the target cluster.
+	// The IP address of the target instance.
 	//
 	// example:
 	//
 	// 33.*.*.240
 	TargetIp *string `json:"TargetIp,omitempty" xml:"TargetIp,omitempty"`
-	// The port of the target cluster.
+	// The port of the target instance.
 	//
 	// example:
 	//
 	// 3389
 	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	// The type of the target cluster.
+	// The target instance type.
 	//
 	// example:
 	//
 	// polardb_for_postgresql
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the VPC that contains the endpoint.
+	// The ID of the VPC where the access endpoint resides.
 	//
 	// example:
 	//

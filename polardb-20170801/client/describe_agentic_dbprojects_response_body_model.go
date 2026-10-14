@@ -117,13 +117,15 @@ func (s *DescribeAgenticDBProjectsResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBProjectsResponseBodyItems struct {
-	// The creation time.
+	// The time when the project was created.
+	//
+	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The associated AgenticDB cluster ID.
+	// The ID of the associated AgenticDB cluster.
 	//
 	// example:
 	//
@@ -159,11 +161,19 @@ type DescribeAgenticDBProjectsResponseBodyItems struct {
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The project status. Valid values:
+	//
+	// - Active: Normal.
+	//
+	// - Destroying: Being destroyed.
+	//
+	// - Destroyed: Destroyed.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tenant ID to which the project belongs.
+	// The ID of the tenant to which the project belongs.
 	//
 	// example:
 	//

@@ -29,7 +29,7 @@ type DescribeAIDBClustersResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeAIDBClustersResponseBody struct {
 	//
 	// 9D6CE7C6-1C52-5BF6-B3D7-10977D44542C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

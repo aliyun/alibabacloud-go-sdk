@@ -32,61 +32,57 @@ type iListOrdersRequest interface {
 }
 
 type ListOrdersRequest struct {
-	// The [edition](https://help.aliyun.com/document_detail/183258.html) of the cluster. Valid values:
+	// The [product edition](https://help.aliyun.com/document_detail/183258.html). Valid values:
 	//
-	// - **Normal**: Cluster Edition
+	// 	- **Normal**: Cluster Edition.
 	//
-	// - **Basic**: single node
+	// 	- **Basic**: Single Node Edition.
 	//
-	// - **Archive**: X-Engine
+	// 	- **Archive**: X-Engine (Warm Data).
 	//
-	// - **NormalMultimaster**: Multi-master Cluster Edition
+	// 	- **NormalMultimaster**: Multi-master Cluster Edition.
 	//
-	// - **SENormal**: Standard Edition
+	// 	- **SENormal**: Standard Edition.
 	//
-	// > 	- The single node edition is not supported on PolarDB for PostgreSQL clusters that run PostgreSQL 11.
+	// > 	- PolarDB for PostgreSQL 11 does not support Single Node Edition.
 	//
-	// >
+	// >	- PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL 14 support Standard Edition.
 	//
-	// > 	- The Standard Edition is supported on PolarDB for MySQL clusters that run MySQL 8.0 or 5.7, and on PolarDB for PostgreSQL clusters that run PostgreSQL 14.
-	//
-	// >
-	//
-	// > 	- PolarDB for MySQL clusters that run MySQL 8.0 support X-Engine and the Multi-master Cluster Edition.
+	// >	- PolarDB for MySQL 8.0 supports X-Engine (Warm Data) and Multi-master Cluster Edition.
 	//
 	// example:
 	//
 	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the current instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// pc-2zed3m89cw***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return for the current request. Default value: 10.
+	// The maximum number of entries to return. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. If the query results are not returned in a single call, this token is returned. Use this token in a subsequent call to retrieve the remaining results.
+	// The pagination token that is used to retrieve more results. If a single request does not return all results, this parameter is returned. You can pass the returned token in a subsequent request to continue retrieving results.
 	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The status of the order.
+	// The order status. Valid values:
 	//
 	// - **pending**: The task is waiting to start.
 	//
-	// - **create**: The order is placed and is being processed.
+	// - **create**: The order has been placed and entered the production process.
 	//
-	// - **fail**: The instance failed to be created.
+	// - **fail**: Production failed.
 	//
 	// - **cancel**: The order is canceled.
 	//
-	// - **success**: The instance is created.
+	// - **success**: Production succeeded.
 	//
 	// example:
 	//
@@ -98,13 +94,13 @@ type ListOrdersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: 30.
 	//
@@ -120,7 +116,7 @@ type ListOrdersRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the details of regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region information.
 	//
 	// example:
 	//

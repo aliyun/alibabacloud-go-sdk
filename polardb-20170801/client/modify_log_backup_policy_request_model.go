@@ -30,17 +30,15 @@ type iModifyLogBackupPolicyRequest interface {
 }
 
 type ModifyLogBackupPolicyRequest struct {
-	// The advanced backup policies.
+	// The advanced backup policy.
 	//
-	// > - - This parameter is not supported for PolarDB for PostgreSQL (Oracle Compatible) or PolarDB for PostgreSQL.
+	// > 	- 	- This parameter is not supported by PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL.
 	//
-	// >
-	//
-	// > - - This parameter is supported only for clusters for which the BackupPolicyLevel parameter is set to Advanced.
+	// > 	- 	- This parameter is supported only by clusters whose BackupPolicyLevel is set to Advanced.
 	AdvancedLogPolicies []*ModifyLogBackupPolicyRequestAdvancedLogPolicies `json:"AdvancedLogPolicies,omitempty" xml:"AdvancedLogPolicies,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in a specific region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query all clusters in a specific region, including their cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -48,39 +46,37 @@ type ModifyLogBackupPolicyRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The destination region for cross-region log backups. For information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// The region for cross-region log backup. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
 	//
-	// > - - After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
+	// > 	- 	- After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogBackupAnotherRegionRegion *string `json:"LogBackupAnotherRegionRegion,omitempty" xml:"LogBackupAnotherRegionRegion,omitempty"`
-	// The retention period of cross-region log backups. Valid values:
+	// The retention period for cross-region backups. Valid values:
 	//
-	// - **0**: Disables the cross-region log backup feature.
+	// - **0**: disables the cross-region backup feature.
 	//
-	// - **30 to 7300**: The retention period in days.
+	// - **30 to 7300**: the retention period for cross-region backups, in days.
 	//
-	// - **-1**: long-term retention.
+	// - **-1**: long-term retention (LTR).
 	//
-	// > 	- 	- When you create a cluster, the default value of this parameter is **0**. This value disables the cross-region log backup feature.
+	// > 	- 	- When a cluster is created, the default value is **0**, which indicates that the cross-region backup feature is disabled.
 	//
-	// >
-	//
-	// > 	- - After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
+	// > 	- 	- After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
 	// 30
 	LogBackupAnotherRegionRetentionPeriod *string `json:"LogBackupAnotherRegionRetentionPeriod,omitempty" xml:"LogBackupAnotherRegionRetentionPeriod,omitempty"`
-	// The retention period of log backups. Valid values:
+	// The log retention period. Valid values:
 	//
-	// - 3 to 7300: The retention period in days.
+	// 	- 3 to 7300: the log retention period, in days.
 	//
-	// - -1: long-term retention.
+	// 	- -1: long-term retention (LTR).
 	//
-	// > 	- 	- After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
+	// > 	- 	- After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
@@ -197,11 +193,11 @@ func (s *ModifyLogBackupPolicyRequest) Validate() error {
 type ModifyLogBackupPolicyRequestAdvancedLogPolicies struct {
 	// The operation type. Valid values:
 	//
-	// - **CREATE**: Create
+	// - **CREATE**: creates a policy.
 	//
-	// - **UPDATE**: Update
+	// - **UPDATE**: updates a policy.
 	//
-	// - **DELETE**: Delete
+	// - **DELETE**: deletes a policy.
 	//
 	// example:
 	//
@@ -225,27 +221,27 @@ type ModifyLogBackupPolicyRequestAdvancedLogPolicies struct {
 	//
 	// level2
 	DestType *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
-	// Specifies whether to enable log backup. Set the value to 1.
+	// Specifies whether to enable log backup. The value is fixed to 1.
 	//
 	// example:
 	//
 	// 1
 	EnableLogBackup *int32 `json:"EnableLogBackup,omitempty" xml:"EnableLogBackup,omitempty"`
-	// The retention period type for log backups. Valid values:
+	// The log backup retention period type. Valid values:
 	//
-	// - **never**: The backups never expire.
+	// - **never**: never expires
 	//
-	// - **delay**: The backups expire after a fixed number of days.
+	// - **delay**: expires after a fixed number of days
 	//
 	// example:
 	//
 	// delay
 	LogRetentionType *string `json:"LogRetentionType,omitempty" xml:"LogRetentionType,omitempty"`
-	// The number of days to retain the log backups. Valid values:
+	// The log backup retention period in days. Valid values:
 	//
-	// - 3 to 7300: The retention period in days.
+	// 	- 3 to 7300: the log retention period, in days.
 	//
-	// - -1: long-term retention.
+	// 	- -1: long-term retention (LTR).
 	//
 	// example:
 	//

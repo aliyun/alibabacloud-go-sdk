@@ -40,13 +40,13 @@ type DescribeModelApisRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The model API IDs.
+	// The IDs of the model APIs.
 	//
 	// example:
 	//
 	// mi-xxx,mi-xxxx
 	ModelApiIds *string `json:"ModelApiIds,omitempty" xml:"ModelApiIds,omitempty"`
-	// The model category. Valid values:
+	// The category. Valid values:
 	//
 	// 	- **text**
 	//
@@ -58,7 +58,7 @@ type DescribeModelApisRequest struct {
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The model API name.
+	// The name of the model API.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeModelApisRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The model API status.
+	// The status of the model API.
 	//
 	// example:
 	//

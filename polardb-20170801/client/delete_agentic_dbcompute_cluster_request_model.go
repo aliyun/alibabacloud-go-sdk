@@ -44,7 +44,7 @@ type DeleteAgenticDBComputeClusterRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The project ID to which the resource belongs.
+	// The project ID.
 	//
 	// example:
 	//

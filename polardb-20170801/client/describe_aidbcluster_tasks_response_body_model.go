@@ -38,7 +38,7 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	Items []*DescribeAIDBClusterTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of records on the current page.
+	// The total number of records on the page.
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The number of records per page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -188,11 +188,15 @@ func (s *DescribeAIDBClusterTasksResponseBody) Validate() error {
 type DescribeAIDBClusterTasksResponseBodyItems struct {
 	// The task completion time.
 	//
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-06-09T18:00:00Z
 	CompletedTime *string `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
 	// The creation time.
+	//
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -204,7 +208,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// test
 	DBNodeDescription *string `json:"DBNodeDescription,omitempty" xml:"DBNodeDescription,omitempty"`
-	// The template operator instance ID.
+	// The model operator instance ID.
 	//
 	// example:
 	//
@@ -234,7 +238,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -258,13 +262,15 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
-	// The running parameters.
+	// The runtime parameters.
 	//
 	// example:
 	//
 	// xxx
 	RunningTimes *string `json:"RunningTimes,omitempty" xml:"RunningTimes,omitempty"`
 	// The task start time.
+	//
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -282,7 +288,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// lora
 	TrainType *string `json:"TrainType,omitempty" xml:"TrainType,omitempty"`
-	// The tuning framework.
+	// The fine-tuning framework.
 	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 }
 

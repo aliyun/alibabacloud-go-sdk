@@ -50,7 +50,7 @@ type CreateAgenticDBTenantApiKeyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant name. The name must be unique within the cluster and contain 2 to 64 characters.
+	// The tenant name. The name must be unique within the cluster and must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//

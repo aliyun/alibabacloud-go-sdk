@@ -38,15 +38,13 @@ type CreateKBSyncLinkResponseBody struct {
 	//
 	// cli_xxxxxxbe8
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The time when the synchronization link was created.
-	//
-	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time. The time is in ISO 8601 format and the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2026-08-14T05:58:42Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the synchronization link.
+	// The description of the link.
 	//
 	// example:
 	//
@@ -68,7 +66,7 @@ type CreateKBSyncLinkResponseBody struct {
 	//
 	// pkbl-xxxxxx
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	// The name of the synchronization link.
+	// The name of the link.
 	//
 	// example:
 	//
@@ -80,13 +78,13 @@ type CreateKBSyncLinkResponseBody struct {
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The directory address of the synchronization source.
+	// The source directory address for synchronization.
 	//
 	// example:
 	//
 	// https://example.feishu.cn/wiki/space/xxxxxx
 	SourceDir *string `json:"SourceDir,omitempty" xml:"SourceDir,omitempty"`
-	// The synchronization interval. Unit: minutes.
+	// The synchronization interval, in minutes.
 	//
 	// example:
 	//

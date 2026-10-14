@@ -16,7 +16,7 @@ type iCreateCostRuleResponseBody interface {
 }
 
 type CreateCostRuleResponseBody struct {
-	// The cost rule ID.
+	// The ID of the cost rule.
 	//
 	// example:
 	//

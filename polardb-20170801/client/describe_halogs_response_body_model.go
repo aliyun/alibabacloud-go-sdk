@@ -38,7 +38,7 @@ type DescribeHALogsResponseBody struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - **polardb_mysql_rw**: read-write instance.
+	// - **polardb_mysql_rw**: read/write instance.
 	//
 	// - **polardb_mysql_ro**: read-only instance.
 	//
@@ -48,13 +48,13 @@ type DescribeHALogsResponseBody struct {
 	//
 	// polardb_mysql_rw
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The list of primary/secondary 这里 AI 机翻使用了 failover，但代码里用了 switch，建议保持一致，都改为 swichover logs.
+	// The list of primary/secondary switchover logs.
 	HaLogItems []*DescribeHALogsResponseBodyHaLogItems `json:"HaLogItems,omitempty" xml:"HaLogItems,omitempty" type:"Repeated"`
 	// Indicates whether primary/secondary switchover records exist. Valid values:
 	//
-	// - **1**: No
+	// - **1**: No records exist.
 	//
-	// - **0**: Yes
+	// - **0**: Records exist.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type DescribeHALogsResponseBody struct {
 	//
 	// 10
 	ItemsNumbers *int32 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
-	// The page number. The value is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: 1.
+	// The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Valid values: 30 to 100. Default value: 30.
+	// The number of entries per page. Valid values: 30 to 100. Default value: 30.
 	//
 	// example:
 	//
@@ -195,19 +195,21 @@ func (s *DescribeHALogsResponseBody) Validate() error {
 }
 
 type DescribeHALogsResponseBodyHaLogItems struct {
-	// The cause code of the switchover.
+	// The switchover cause code.
 	//
 	// example:
 	//
 	// Platform.Ha.AuroraService.ManualOperations
 	SwitchCauseCode *string `json:"SwitchCauseCode,omitempty" xml:"SwitchCauseCode,omitempty"`
-	// The cause of the switchover.
+	// The switchover cause.
 	//
 	// example:
 	//
 	// Platform.Ha.ManuallyTriggered
 	SwitchCauseDetail *string `json:"SwitchCauseDetail,omitempty" xml:"SwitchCauseDetail,omitempty"`
 	// The end time of the switchover.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -220,6 +222,8 @@ type DescribeHALogsResponseBodyHaLogItems struct {
 	// e571f897-9b3c-4012-9470-88333832dec4
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 	// The start time of the switchover.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

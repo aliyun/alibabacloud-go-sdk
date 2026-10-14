@@ -18,13 +18,13 @@ type iDisableDBClusterOrcaResponseBody interface {
 type DisableDBClusterOrcaResponseBody struct {
 	// The cluster ID.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters that belong to your account, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
 	//
 	// example:
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

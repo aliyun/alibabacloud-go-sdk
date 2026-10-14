@@ -116,6 +116,8 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 type SearchMemoriesResponseBodyResults struct {
 	// The creation time.
 	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2025-09-26T08:25:44Z
@@ -157,6 +159,8 @@ type SearchMemoriesResponseBodyResults struct {
 	// 12
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The update time.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

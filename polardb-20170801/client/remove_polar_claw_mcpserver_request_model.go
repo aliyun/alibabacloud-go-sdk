@@ -16,7 +16,7 @@ type iRemovePolarClawMCPServerRequest interface {
 }
 
 type RemovePolarClawMCPServerRequest struct {
-	// The application ID.
+	// The PolarClaw application ID.
 	//
 	// This parameter is required.
 	//

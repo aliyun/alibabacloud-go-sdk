@@ -28,6 +28,8 @@ type iDescribeDBClusterEndpointsZonalRequest interface {
 type DescribeDBClusterEndpointsZonalRequest struct {
 	// The cluster ID.
 	//
+	// > Note: Only edge cluster (Zonal) IDs are supported. Regular PolarDB cluster IDs are not supported. You can call DescribeDBClustersZonal to retrieve the list of edge clusters.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40,7 +42,7 @@ type DescribeDBClusterEndpointsZonalRequest struct {
 	//
 	// pe-*************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// Specifies whether to return information about AI nodes.
+	// Specifies whether to return AI node information.
 	//
 	// example:
 	//

@@ -56,15 +56,15 @@ type iModifyCronJobPolicyServerlessRequest interface {
 type ModifyCronJobPolicyServerlessRequest struct {
 	// Specifies whether to enable No-activity Suspension. Valid values:
 	//
-	// - **true**: Enables the feature.
+	// - **true**: Enabled.
 	//
-	// - **false*	- (default): Disables the feature.
+	// - **false*	- (default): Disabled.
 	//
 	// example:
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
-	// The Cron expression.
+	// The cron expression.
 	//
 	// This parameter is required.
 	//
@@ -82,13 +82,15 @@ type ModifyCronJobPolicyServerlessRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end time.
 	//
+	// Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-02-12T15:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the scheduled task.
+	// The scheduled task ID.
 	//
 	// example:
 	//
@@ -118,19 +120,19 @@ type ModifyCronJobPolicyServerlessRequest struct {
 	//
 	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
-	// The maximum number of PCUs. Valid values: 1 to 32.
+	// The maximum value. Valid values: 1 to 32. Unit: PCU.
 	//
 	// example:
 	//
 	// 12
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum number of PolarDB Capacity Units (PCUs). Valid values: 0.25 to 32. This value must be less than or equal to the value of ScaleMax.
+	// The minimum value. Valid values: 0.25 to 32. The minimum value must be less than or equal to the maximum value. Unit: PCU.
 	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// The maximum number of read-only nodes for scaling. The value cannot be less than the minimum value. Valid values: 0 to 15.
 	//
 	// example:
 	//
@@ -142,19 +144,19 @@ type ModifyCronJobPolicyServerlessRequest struct {
 	//
 	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
-	// The detection period for No-activity Suspension. Unit: minutes. Valid values: 5 to 1440. The value must be a multiple of 5.
+	// The detection duration for No-activity Suspension. Valid values: 5 to 1440. Unit: minutes. The detection duration must be a multiple of 5 minutes.
 	//
 	// example:
 	//
 	// 10
 	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
-	// The CPU utilization threshold for a scale-up. Unit: percent. Valid values: 40 to 100.
+	// The CPU scale-up threshold. Valid values: 40 to 100. Unit: %.
 	//
 	// example:
 	//
 	// 80
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
-	// The CPU utilization threshold for a scale-down. Unit: percent. Valid values: 10 to 100. The value of ServerlessRuleCpuEnlargeThreshold minus the value of this parameter must be greater than or equal to 30.
+	// The CPU scale-down threshold. Valid values: 10 to 100. Unit: %. The difference between the scale-up threshold and the scale-down threshold must be at least 30.
 	//
 	// example:
 	//
@@ -162,15 +164,15 @@ type ModifyCronJobPolicyServerlessRequest struct {
 	ServerlessRuleCpuShrinkThreshold *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
 	// The scaling sensitivity. Valid values:
 	//
-	// - normal
+	// - normal: standard.
 	//
-	// - flexible
+	// - flexible: sensitive.
 	//
 	// example:
 	//
 	// normal
 	ServerlessRuleMode *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
-	// The start time. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The start time. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//

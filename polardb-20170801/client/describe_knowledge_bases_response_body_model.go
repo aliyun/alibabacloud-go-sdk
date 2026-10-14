@@ -121,13 +121,15 @@ func (s *DescribeKnowledgeBasesResponseBody) Validate() error {
 }
 
 type DescribeKnowledgeBasesResponseBodyItems struct {
-	// The number of AI applications bound to the knowledge base.
+	// The number of AI applications that are associated with the knowledge base.
 	//
 	// example:
 	//
 	// 2
 	BindingAppCount *int32 `json:"BindingAppCount,omitempty" xml:"BindingAppCount,omitempty"`
 	// The creation time.
+	//
+	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
