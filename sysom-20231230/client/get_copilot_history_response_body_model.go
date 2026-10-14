@@ -26,7 +26,7 @@ type GetCopilotHistoryResponseBody struct {
 	//
 	// SysomOpenAPI.InvalidParameter
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The list of chat records. The length equals the requested count. If the actual chat records are fewer than the requested count, the actual number is returned. Format: [{"user":"","content":"".question,"time":""},{...}]
+	// The list of chat records. The length equals the requested number. If the actual chat records are fewer than the requested number, the actual number is returned. Format: [{"user":"","content":"".question,"time":""},{...}]
 	Data []*GetCopilotHistoryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -108,9 +108,9 @@ type GetCopilotHistoryResponseBodyData struct {
 	//
 	// example:
 	//
-	// Specific content replied by Copilot
+	// The specific content replied by Copilot
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The time of the chat record. The value is of the string type.
+	// The chat record time, of the string type.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type GetCopilotHistoryResponseBodyData struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The role identifier. Valid values:
 	//
-	// - user: a user.
+	// - user: the user.
 	//
-	// - copilot: a bot.
+	// - copilot: the bot.
 	//
 	// example:
 	//

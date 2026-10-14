@@ -24,9 +24,9 @@ type iGetRangeScoreResponseBody interface {
 type GetRangeScoreResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetRangeScoreResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetRangeScoreResponseBody struct {
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The total amount of data.
+	// The total data volume.
 	//
 	// example:
 	//

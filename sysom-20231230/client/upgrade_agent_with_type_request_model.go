@@ -9,8 +9,6 @@ type iUpgradeAgentWithTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *UpgradeAgentWithTypeRequest
-	GetXDebugId() *string
 	SetAgentId(v string) *UpgradeAgentWithTypeRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *UpgradeAgentWithTypeRequest
@@ -19,12 +17,9 @@ type iUpgradeAgentWithTypeRequest interface {
 	GetInstanceType() *string
 	SetInstances(v []*UpgradeAgentWithTypeRequestInstances) *UpgradeAgentWithTypeRequest
 	GetInstances() []*UpgradeAgentWithTypeRequestInstances
-	SetXSysomInvokeSource(v string) *UpgradeAgentWithTypeRequest
-	GetXSysomInvokeSource() *string
 }
 
 type UpgradeAgentWithTypeRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The ID of the component to update.
 	//
 	// This parameter is required.
@@ -33,7 +28,7 @@ type UpgradeAgentWithTypeRequest struct {
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The version of the component to update to.
+	// The version to which the component is updated.
 	//
 	// This parameter is required.
 	//
@@ -47,11 +42,10 @@ type UpgradeAgentWithTypeRequest struct {
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The list of instances for which to update the component.
+	// The list of instances on which to update the component.
 	//
 	// This parameter is required.
-	Instances          []*UpgradeAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	XSysomInvokeSource *string                                 `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Instances []*UpgradeAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 
 func (s UpgradeAgentWithTypeRequest) String() string {
@@ -60,10 +54,6 @@ func (s UpgradeAgentWithTypeRequest) String() string {
 
 func (s UpgradeAgentWithTypeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpgradeAgentWithTypeRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *UpgradeAgentWithTypeRequest) GetAgentId() *string {
@@ -80,15 +70,6 @@ func (s *UpgradeAgentWithTypeRequest) GetInstanceType() *string {
 
 func (s *UpgradeAgentWithTypeRequest) GetInstances() []*UpgradeAgentWithTypeRequestInstances {
 	return s.Instances
-}
-
-func (s *UpgradeAgentWithTypeRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *UpgradeAgentWithTypeRequest) SetXDebugId(v string) *UpgradeAgentWithTypeRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *UpgradeAgentWithTypeRequest) SetAgentId(v string) *UpgradeAgentWithTypeRequest {
@@ -108,11 +89,6 @@ func (s *UpgradeAgentWithTypeRequest) SetInstanceType(v string) *UpgradeAgentWit
 
 func (s *UpgradeAgentWithTypeRequest) SetInstances(v []*UpgradeAgentWithTypeRequestInstances) *UpgradeAgentWithTypeRequest {
 	s.Instances = v
-	return s
-}
-
-func (s *UpgradeAgentWithTypeRequest) SetXSysomInvokeSource(v string) *UpgradeAgentWithTypeRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

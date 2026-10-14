@@ -22,7 +22,7 @@ type iListAbnormalyEventsResponseBody interface {
 type ListAbnormalyEventsResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization was successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
 	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
@@ -32,7 +32,7 @@ type ListAbnormalyEventsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned result.
 	Data []*ListAbnormalyEventsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error code description. This value is empty if no error occurred.
+	// The error code description. This field is empty if no error occurs.
 	//
 	// example:
 	//
@@ -110,23 +110,13 @@ type ListAbnormalyEventsResponseBodyData struct {
 	//
 	// 1725801090000
 	CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// The detailed description of the anomaly item.
+	// The description of the anomaly item.
 	//
 	// example:
 	//
-	// 节点发生OOM, 可查看OOM发生原因
+	// An OOM event occurred on the node. Check the cause of the OOM event
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The diagnostic status. Valid values:
-	//
-	// - 1: diagnosis ready.
-	//
-	// - 2: diagnosis in progress.
-	//
-	// - 3: diagnosis completed.
-	//
-	// - 4: not diagnosable.
-	//
-	// - 5: diagnosis failed.
+	// The diagnostic status. Valid values: 1: the diagnosis is ready. 2: the diagnosis is running. 3: the diagnosis is complete. 4: the item is not diagnosable. 5: the diagnosis failed.
 	//
 	// example:
 	//
@@ -148,7 +138,7 @@ type ListAbnormalyEventsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 节点CPU使用率检测
+	// Node CPU usage check
 	Item *string `json:"item,omitempty" xml:"item,omitempty"`
 	// The level of the anomaly item.
 	//

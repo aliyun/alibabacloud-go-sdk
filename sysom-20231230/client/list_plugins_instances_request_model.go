@@ -9,8 +9,6 @@ type iListPluginsInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListPluginsInstancesRequest
-	GetXDebugId() *string
 	SetCurrent(v int64) *ListPluginsInstancesRequest
 	GetCurrent() *int64
 	SetInstanceIdName(v string) *ListPluginsInstancesRequest
@@ -25,13 +23,10 @@ type iListPluginsInstancesRequest interface {
 	GetPluginId() *string
 	SetRegion(v string) *ListPluginsInstancesRequest
 	GetRegion() *string
-	SetXSysomInvokeSource(v string) *ListPluginsInstancesRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListPluginsInstancesRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
-	// The page number for pagination. This field indicates the current page.
+	// The page number for paginated queries. This field indicates the current page.
 	//
 	// example:
 	//
@@ -49,7 +44,7 @@ type ListPluginsInstancesRequest struct {
 	//
 	// {"key":"app","value":"sysom-aliyun-com"}
 	InstanceTag *string `json:"instance_tag,omitempty" xml:"instance_tag,omitempty"`
-	// Filters instances by plugin installation status.
+	// Filters instances by plug-in installation status.
 	//
 	// This parameter is required.
 	//
@@ -78,8 +73,7 @@ type ListPluginsInstancesRequest struct {
 	// example:
 	//
 	// cn-shenzhen
-	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s ListPluginsInstancesRequest) String() string {
@@ -88,10 +82,6 @@ func (s ListPluginsInstancesRequest) String() string {
 
 func (s ListPluginsInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListPluginsInstancesRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListPluginsInstancesRequest) GetCurrent() *int64 {
@@ -120,15 +110,6 @@ func (s *ListPluginsInstancesRequest) GetPluginId() *string {
 
 func (s *ListPluginsInstancesRequest) GetRegion() *string {
 	return s.Region
-}
-
-func (s *ListPluginsInstancesRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListPluginsInstancesRequest) SetXDebugId(v string) *ListPluginsInstancesRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListPluginsInstancesRequest) SetCurrent(v int64) *ListPluginsInstancesRequest {
@@ -163,11 +144,6 @@ func (s *ListPluginsInstancesRequest) SetPluginId(v string) *ListPluginsInstance
 
 func (s *ListPluginsInstancesRequest) SetRegion(v string) *ListPluginsInstancesRequest {
 	s.Region = &v
-	return s
-}
-
-func (s *ListPluginsInstancesRequest) SetXSysomInvokeSource(v string) *ListPluginsInstancesRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

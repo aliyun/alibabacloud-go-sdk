@@ -24,7 +24,7 @@ type GetAlertDestinationResponseBody struct {
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
 	//
 	// example:
 	//

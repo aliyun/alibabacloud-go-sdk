@@ -32,7 +32,7 @@ type CreateAlertDestinationResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message for the request.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *CreateAlertDestinationResponseBody) Validate() error {
 }
 
 type CreateAlertDestinationResponseBodyData struct {
-	// The creation time.
+	// The time when the contact was created.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type CreateAlertDestinationResponseBodyData struct {
 	//
 	// 1222933234714935
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// The update time.
+	// The time when the contact was last updated.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type CreateAlertDestinationResponseBodyDataParams struct {
 	//
 	// 1xxx
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// The secret key of the chatbot.
+	// The chatbot secret key.
 	//
 	// example:
 	//

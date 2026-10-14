@@ -9,8 +9,6 @@ type iStartAIAnalysisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *StartAIAnalysisRequest
-	GetXDebugId() *string
 	SetAnalysisTool(v string) *StartAIAnalysisRequest
 	GetAnalysisTool() *string
 	SetAnalysisParams(v []*string) *StartAIAnalysisRequest
@@ -39,19 +37,16 @@ type iStartAIAnalysisRequest interface {
 	GetTimeout() *int32
 	SetUid(v string) *StartAIAnalysisRequest
 	GetUid() *string
-	SetXSysomInvokeSource(v string) *StartAIAnalysisRequest
-	GetXSysomInvokeSource() *string
 }
 
 type StartAIAnalysisRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
-	// The analysis tool. This parameter does not need to be specified when you use OpenAPI.
+	// The analysis tool. This parameter does not need to be specified when you call this operation by using OpenAPI.
 	//
 	// example:
 	//
 	// gp/pyki/analysis
 	AnalysisTool *string `json:"analysisTool,omitempty" xml:"analysisTool,omitempty"`
-	// The data richness level.
+	// The data richness.
 	AnalysisParams []*string `json:"analysis_params,omitempty" xml:"analysis_params,omitempty" type:"Repeated"`
 	// The channel name.
 	//
@@ -65,7 +60,7 @@ type StartAIAnalysisRequest struct {
 	//
 	// python_test
 	Comms *string `json:"comms,omitempty" xml:"comms,omitempty"`
-	// The creator. This parameter does not need to be specified when you use OpenAPI.
+	// The creator. This parameter does not need to be specified when you call this operation by using OpenAPI.
 	//
 	// example:
 	//
@@ -77,7 +72,7 @@ type StartAIAnalysisRequest struct {
 	//
 	// i-wz9dej066kii4goqxxxx
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// The instance type. This parameter does not need to be specified when you use OpenAPI.
+	// The instance type. This parameter does not need to be specified when you call this operation by using OpenAPI.
 	//
 	// example:
 	//
@@ -97,7 +92,7 @@ type StartAIAnalysisRequest struct {
 	IterationMod *string `json:"iteration_mod,omitempty" xml:"iteration_mod,omitempty"`
 	// The iteration range. The iteration count refers to the number of iterations when the data collection module is activated, which is independent of the AI job iteration count.
 	IterationRange []*int32 `json:"iteration_range,omitempty" xml:"iteration_range,omitempty" type:"Repeated"`
-	// The process IDs (PIDs) of the AI job. Multiple PIDs are supported, separated by commas.
+	// The process IDs (PIDs) of the AI job. Multiple PIDs are supported and separated by commas (,).
 	//
 	// example:
 	//
@@ -109,19 +104,22 @@ type StartAIAnalysisRequest struct {
 	//
 	// cn-shenzhen
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The AI Infra analysis duration. Unit: milliseconds. Default value: 2000.
+	// The AI Infra analysis duration.
+	//
+	// Unit: milliseconds.
+	//
+	// Default value: 2000.
 	//
 	// example:
 	//
 	// 2000
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The Alibaba Cloud user ID. This parameter does not need to be specified when you use OpenAPI.
+	// The Alibaba Cloud account ID. This parameter does not need to be specified when you call this operation by using OpenAPI.
 	//
 	// example:
 	//
 	// 123423414
-	Uid                *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s StartAIAnalysisRequest) String() string {
@@ -130,10 +128,6 @@ func (s StartAIAnalysisRequest) String() string {
 
 func (s StartAIAnalysisRequest) GoString() string {
 	return s.String()
-}
-
-func (s *StartAIAnalysisRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *StartAIAnalysisRequest) GetAnalysisTool() *string {
@@ -190,15 +184,6 @@ func (s *StartAIAnalysisRequest) GetTimeout() *int32 {
 
 func (s *StartAIAnalysisRequest) GetUid() *string {
 	return s.Uid
-}
-
-func (s *StartAIAnalysisRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *StartAIAnalysisRequest) SetXDebugId(v string) *StartAIAnalysisRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *StartAIAnalysisRequest) SetAnalysisTool(v string) *StartAIAnalysisRequest {
@@ -268,11 +253,6 @@ func (s *StartAIAnalysisRequest) SetTimeout(v int32) *StartAIAnalysisRequest {
 
 func (s *StartAIAnalysisRequest) SetUid(v string) *StartAIAnalysisRequest {
 	s.Uid = &v
-	return s
-}
-
-func (s *StartAIAnalysisRequest) SetXSysomInvokeSource(v string) *StartAIAnalysisRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

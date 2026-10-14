@@ -9,8 +9,6 @@ type iListInstanceInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListInstanceInfoRequest
-	GetXDebugId() *string
 	SetInfoType(v string) *ListInstanceInfoRequest
 	GetInfoType() *string
 	SetInstanceType(v string) *ListInstanceInfoRequest
@@ -25,12 +23,9 @@ type iListInstanceInfoRequest interface {
 	GetPluginId() *string
 	SetRegion(v string) *ListInstanceInfoRequest
 	GetRegion() *string
-	SetXSysomInvokeSource(v string) *ListInstanceInfoRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListInstanceInfoRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The information type.
 	//
 	// example:
@@ -72,8 +67,7 @@ type ListInstanceInfoRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s ListInstanceInfoRequest) String() string {
@@ -82,10 +76,6 @@ func (s ListInstanceInfoRequest) String() string {
 
 func (s ListInstanceInfoRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListInstanceInfoRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListInstanceInfoRequest) GetInfoType() *string {
@@ -114,15 +104,6 @@ func (s *ListInstanceInfoRequest) GetPluginId() *string {
 
 func (s *ListInstanceInfoRequest) GetRegion() *string {
 	return s.Region
-}
-
-func (s *ListInstanceInfoRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListInstanceInfoRequest) SetXDebugId(v string) *ListInstanceInfoRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListInstanceInfoRequest) SetInfoType(v string) *ListInstanceInfoRequest {
@@ -157,11 +138,6 @@ func (s *ListInstanceInfoRequest) SetPluginId(v string) *ListInstanceInfoRequest
 
 func (s *ListInstanceInfoRequest) SetRegion(v string) *ListInstanceInfoRequest {
 	s.Region = &v
-	return s
-}
-
-func (s *ListInstanceInfoRequest) SetXSysomInvokeSource(v string) *ListInstanceInfoRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

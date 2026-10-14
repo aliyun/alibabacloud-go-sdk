@@ -9,8 +9,6 @@ type iInstallAgentForClusterRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *InstallAgentForClusterRequest
-	GetXDebugId() *string
 	SetAgentId(v string) *InstallAgentForClusterRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *InstallAgentForClusterRequest
@@ -21,12 +19,9 @@ type iInstallAgentForClusterRequest interface {
 	GetConfigId() *string
 	SetGrayscaleConfig(v string) *InstallAgentForClusterRequest
 	GetGrayscaleConfig() *string
-	SetXSysomInvokeSource(v string) *InstallAgentForClusterRequest
-	GetXSysomInvokeSource() *string
 }
 
 type InstallAgentForClusterRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The component ID.
 	//
 	// example:
@@ -58,8 +53,7 @@ type InstallAgentForClusterRequest struct {
 	// example:
 	//
 	// {"type":"numeric","config":{"value":2}}
-	GrayscaleConfig    *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	GrayscaleConfig *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
 }
 
 func (s InstallAgentForClusterRequest) String() string {
@@ -68,10 +62,6 @@ func (s InstallAgentForClusterRequest) String() string {
 
 func (s InstallAgentForClusterRequest) GoString() string {
 	return s.String()
-}
-
-func (s *InstallAgentForClusterRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *InstallAgentForClusterRequest) GetAgentId() *string {
@@ -92,15 +82,6 @@ func (s *InstallAgentForClusterRequest) GetConfigId() *string {
 
 func (s *InstallAgentForClusterRequest) GetGrayscaleConfig() *string {
 	return s.GrayscaleConfig
-}
-
-func (s *InstallAgentForClusterRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *InstallAgentForClusterRequest) SetXDebugId(v string) *InstallAgentForClusterRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *InstallAgentForClusterRequest) SetAgentId(v string) *InstallAgentForClusterRequest {
@@ -125,11 +106,6 @@ func (s *InstallAgentForClusterRequest) SetConfigId(v string) *InstallAgentForCl
 
 func (s *InstallAgentForClusterRequest) SetGrayscaleConfig(v string) *InstallAgentForClusterRequest {
 	s.GrayscaleConfig = &v
-	return s
-}
-
-func (s *InstallAgentForClusterRequest) SetXSysomInvokeSource(v string) *InstallAgentForClusterRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

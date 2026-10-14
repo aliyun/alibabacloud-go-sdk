@@ -24,9 +24,9 @@ type iListVmcoreDiagnosisTaskResponseBody interface {
 type ListVmcoreDiagnosisTaskResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - `code == Success`: The authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes: The authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListVmcoreDiagnosisTaskResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message of the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ func (s *ListVmcoreDiagnosisTaskResponseBody) Validate() error {
 }
 
 type ListVmcoreDiagnosisTaskResponseBodyData struct {
-	// The task creation time.
+	// The time when the task was created.
 	//
 	// example:
 	//

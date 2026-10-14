@@ -24,19 +24,19 @@ type GetAlertStrategyResponseBody struct {
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *GetAlertStrategyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -236,15 +236,15 @@ func (s *GetAlertStrategyResponseBodyData) Validate() error {
 }
 
 type GetAlertStrategyResponseBodyDataStrategy struct {
-	// The collection of clusters for which alerts are received.
+	// The collection of clusters that receive alerts.
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	// The alert contacts.
 	Destinations interface{} `json:"destinations,omitempty" xml:"destinations,omitempty"`
-	// The list of anomaly items for which alerts are received.
+	// The list of exception items that receive alerts.
 	//
 	// example:
 	//
-	// Node CPU utilization detection
+	// Node CPU utilization check
 	Items interface{} `json:"items,omitempty" xml:"items,omitempty"`
 }
 

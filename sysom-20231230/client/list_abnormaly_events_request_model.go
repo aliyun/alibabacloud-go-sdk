@@ -9,8 +9,6 @@ type iListAbnormalyEventsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListAbnormalyEventsRequest
-	GetXDebugId() *string
 	SetCluster(v string) *ListAbnormalyEventsRequest
 	GetCluster() *string
 	SetCurrent(v int32) *ListAbnormalyEventsRequest
@@ -33,19 +31,16 @@ type iListAbnormalyEventsRequest interface {
 	GetShowPod() *int32
 	SetStart(v float32) *ListAbnormalyEventsRequest
 	GetStart() *float32
-	SetXSysomInvokeSource(v string) *ListAbnormalyEventsRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListAbnormalyEventsRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The cluster ID.
 	//
 	// example:
 	//
 	// 2d33d4be-bf54-4070-82ca-c1dc2d8b1562
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The current page number. This parameter is present during paginated queries.
+	// The current page number. This field exists when pagination is used.
 	//
 	// example:
 	//
@@ -61,7 +56,7 @@ type ListAbnormalyEventsRequest struct {
 	//
 	// example:
 	//
-	// 节点根文件系统使用检测
+	// Node root filesystem usage check
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
 	// The instance ID.
 	//
@@ -93,7 +88,7 @@ type ListAbnormalyEventsRequest struct {
 	//
 	// test-pod
 	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
-	// Specifies whether to display pod anomaly events.
+	// Specifies whether to display anomaly events of the pod.
 	//
 	// example:
 	//
@@ -104,8 +99,7 @@ type ListAbnormalyEventsRequest struct {
 	// example:
 	//
 	// 1725797727754
-	Start              *float32 `json:"start,omitempty" xml:"start,omitempty"`
-	XSysomInvokeSource *string  `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
 }
 
 func (s ListAbnormalyEventsRequest) String() string {
@@ -114,10 +108,6 @@ func (s ListAbnormalyEventsRequest) String() string {
 
 func (s ListAbnormalyEventsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListAbnormalyEventsRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListAbnormalyEventsRequest) GetCluster() *string {
@@ -162,15 +152,6 @@ func (s *ListAbnormalyEventsRequest) GetShowPod() *int32 {
 
 func (s *ListAbnormalyEventsRequest) GetStart() *float32 {
 	return s.Start
-}
-
-func (s *ListAbnormalyEventsRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListAbnormalyEventsRequest) SetXDebugId(v string) *ListAbnormalyEventsRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListAbnormalyEventsRequest) SetCluster(v string) *ListAbnormalyEventsRequest {
@@ -225,11 +206,6 @@ func (s *ListAbnormalyEventsRequest) SetShowPod(v int32) *ListAbnormalyEventsReq
 
 func (s *ListAbnormalyEventsRequest) SetStart(v float32) *ListAbnormalyEventsRequest {
 	s.Start = &v
-	return s
-}
-
-func (s *ListAbnormalyEventsRequest) SetXSysomInvokeSource(v string) *ListAbnormalyEventsRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

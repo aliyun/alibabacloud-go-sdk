@@ -24,13 +24,13 @@ type UpdateAlertStrategyResponseBody struct {
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed error message when a fault occurs.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The response data.
 	//
 	// example:
 	//
@@ -56,11 +56,11 @@ type UpdateAlertStrategyResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information of the request.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//
-	// Failed to update the alert policy
+	// Failed to update alert policy
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
 	//

@@ -30,13 +30,13 @@ type InitialSysomResponseBody struct {
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed error message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *InitialSysomResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//

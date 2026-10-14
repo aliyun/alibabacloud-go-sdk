@@ -9,8 +9,6 @@ type iCreateVmcoreDiagnosisTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *CreateVmcoreDiagnosisTaskRequest
-	GetXDebugId() *string
 	SetDebuginfoCommonUrl(v string) *CreateVmcoreDiagnosisTaskRequest
 	GetDebuginfoCommonUrl() *string
 	SetDebuginfoUrl(v string) *CreateVmcoreDiagnosisTaskRequest
@@ -21,12 +19,9 @@ type iCreateVmcoreDiagnosisTaskRequest interface {
 	GetTaskType() *string
 	SetVmcoreUrl(v string) *CreateVmcoreDiagnosisTaskRequest
 	GetVmcoreUrl() *string
-	SetXSysomInvokeSource(v string) *CreateVmcoreDiagnosisTaskRequest
-	GetXSysomInvokeSource() *string
 }
 
 type CreateVmcoreDiagnosisTaskRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The download URL of the debuginfo-common file. This parameter is optional when the diagnosis type is vmcore.
 	//
 	// For CentOS or Alinux kernel diagnostics, the corresponding debuginfo-common file is automatically downloaded, so this parameter is not required. For other distribution kernels, manually provide the download URL of the debuginfo-common file that corresponds to the kernel version.
@@ -51,9 +46,9 @@ type CreateVmcoreDiagnosisTaskRequest struct {
 	DmesgUrl *string `json:"dmesgUrl,omitempty" xml:"dmesgUrl,omitempty"`
 	// The task type. Valid values:
 	//
-	// - vmcore: vmcore file diagnostic task.
+	// - vmcore: a vmcore file diagnostic task.
 	//
-	// - dmesg: dmesg log diagnostic task.
+	// - dmesg: a dmesg log diagnostic task.
 	//
 	// This parameter is required.
 	//
@@ -66,8 +61,7 @@ type CreateVmcoreDiagnosisTaskRequest struct {
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/vmcore/file/path
-	VmcoreUrl          *string `json:"vmcoreUrl,omitempty" xml:"vmcoreUrl,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	VmcoreUrl *string `json:"vmcoreUrl,omitempty" xml:"vmcoreUrl,omitempty"`
 }
 
 func (s CreateVmcoreDiagnosisTaskRequest) String() string {
@@ -76,10 +70,6 @@ func (s CreateVmcoreDiagnosisTaskRequest) String() string {
 
 func (s CreateVmcoreDiagnosisTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateVmcoreDiagnosisTaskRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *CreateVmcoreDiagnosisTaskRequest) GetDebuginfoCommonUrl() *string {
@@ -100,15 +90,6 @@ func (s *CreateVmcoreDiagnosisTaskRequest) GetTaskType() *string {
 
 func (s *CreateVmcoreDiagnosisTaskRequest) GetVmcoreUrl() *string {
 	return s.VmcoreUrl
-}
-
-func (s *CreateVmcoreDiagnosisTaskRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *CreateVmcoreDiagnosisTaskRequest) SetXDebugId(v string) *CreateVmcoreDiagnosisTaskRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *CreateVmcoreDiagnosisTaskRequest) SetDebuginfoCommonUrl(v string) *CreateVmcoreDiagnosisTaskRequest {
@@ -133,11 +114,6 @@ func (s *CreateVmcoreDiagnosisTaskRequest) SetTaskType(v string) *CreateVmcoreDi
 
 func (s *CreateVmcoreDiagnosisTaskRequest) SetVmcoreUrl(v string) *CreateVmcoreDiagnosisTaskRequest {
 	s.VmcoreUrl = &v
-	return s
-}
-
-func (s *CreateVmcoreDiagnosisTaskRequest) SetXSysomInvokeSource(v string) *CreateVmcoreDiagnosisTaskRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

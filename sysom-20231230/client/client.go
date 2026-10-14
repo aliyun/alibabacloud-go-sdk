@@ -58,19 +58,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Authorizes SysOM to diagnose ECS instances under the current account. You must call this operation to authorize diagnosis on a specific ECS instance before you can call the InvokeDiagnosis operation to initiate diagnosis on it.
+// Authorizes SysOM to diagnose ECS instances under the current account. You must call this operation to authorize diagnostics on a specific ECS instance before you can call the InvokeDiagnosis operation to initiate diagnostics on it.
 //
 // Description:
 //
-//	Notice: The diagnosis feature requires a service-linked role to be created under the Resource Access Management (RAM) user. Invoking this operation automatically checks whether the service-linked role exists and creates it if it does not. The RAM user that invokes this operation must have the ram:CreateServiceLinkedRole permission.</notice>
+//	Notice: The diagnostics feature requires a service-linked role to be created under the Resource Access Management (RAM) user. Invoking this operation automatically checks whether the service-linked role exists and creates it if it does not. The RAM user that invokes this operation must have the ram:CreateServiceLinkedRole permission.</notice>
 //
-// Take note of the following items when you invoke this operation to authorize SysOM to diagnose ECS instances:
+// Note the following when you invoke this operation to authorize SysOM to diagnose ECS instances:
 //
 // - Each authorization is valid for 7 days. After 7 days, the authorization expires and you must invoke this operation again to re-authorize.
 //
 // - If the SysOM service-linked role (AliyunServiceRoleForSysom) does not exist when you invoke this operation, automatic creation is performed. The Resource Access Management (RAM) user that invokes this operation must have the `ram:CreateServiceLinkedRole` permission.
 //
-// - When you invoke this operation to authorize diagnosis on a specific instance, the label `sysom:diagnosis` is automatically associated with the target ECS instance. SysOM only allows diagnosis on instances that have this label.
+// - When you invoke this operation to authorize diagnostics on a specific instance, the label `sysom:diagnosis` is automatically associated with the target ECS instance. SysOM only allows diagnostics on instances that have this label.
 //
 // @param request - AuthDiagnosisRequest
 //
@@ -86,15 +86,6 @@ func (client *Client) AuthDiagnosisWithOptions(request *AuthDiagnosisRequest, he
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoCreateRole) {
 		body["autoCreateRole"] = request.AutoCreateRole
@@ -110,7 +101,6 @@ func (client *Client) AuthDiagnosisWithOptions(request *AuthDiagnosisRequest, he
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -135,19 +125,19 @@ func (client *Client) AuthDiagnosisWithOptions(request *AuthDiagnosisRequest, he
 
 // Summary:
 //
-// Authorizes SysOM to diagnose ECS instances under the current account. You must call this operation to authorize diagnosis on a specific ECS instance before you can call the InvokeDiagnosis operation to initiate diagnosis on it.
+// Authorizes SysOM to diagnose ECS instances under the current account. You must call this operation to authorize diagnostics on a specific ECS instance before you can call the InvokeDiagnosis operation to initiate diagnostics on it.
 //
 // Description:
 //
-//	Notice: The diagnosis feature requires a service-linked role to be created under the Resource Access Management (RAM) user. Invoking this operation automatically checks whether the service-linked role exists and creates it if it does not. The RAM user that invokes this operation must have the ram:CreateServiceLinkedRole permission.</notice>
+//	Notice: The diagnostics feature requires a service-linked role to be created under the Resource Access Management (RAM) user. Invoking this operation automatically checks whether the service-linked role exists and creates it if it does not. The RAM user that invokes this operation must have the ram:CreateServiceLinkedRole permission.</notice>
 //
-// Take note of the following items when you invoke this operation to authorize SysOM to diagnose ECS instances:
+// Note the following when you invoke this operation to authorize SysOM to diagnose ECS instances:
 //
 // - Each authorization is valid for 7 days. After 7 days, the authorization expires and you must invoke this operation again to re-authorize.
 //
 // - If the SysOM service-linked role (AliyunServiceRoleForSysom) does not exist when you invoke this operation, automatic creation is performed. The Resource Access Management (RAM) user that invokes this operation must have the `ram:CreateServiceLinkedRole` permission.
 //
-// - When you invoke this operation to authorize diagnosis on a specific instance, the label `sysom:diagnosis` is automatically associated with the target ECS instance. SysOM only allows diagnosis on instances that have this label.
+// - When you invoke this operation to authorize diagnostics on a specific instance, the label `sysom:diagnosis` is automatically associated with the target ECS instance. SysOM only allows diagnostics on instances that have this label.
 //
 // @param request - AuthDiagnosisRequest
 //
@@ -166,7 +156,101 @@ func (client *Client) AuthDiagnosis(request *AuthDiagnosisRequest) (_result *Aut
 
 // Summary:
 //
-// Checks whether a target instance is supported by SysOM.
+// Checks whether resources such as clusters and nodes support the current configuration.
+//
+// Description:
+//
+// The instance list retrieved by this operation contains only machines managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
+//
+// @param request - CheckAgentConfigSupportedRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAgentConfigSupportedResponse
+func (client *Client) CheckAgentConfigSupportedWithOptions(request *CheckAgentConfigSupportedRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckAgentConfigSupportedResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.CheckType) {
+		query["checkType"] = request.CheckType
+	}
+
+	if !dara.IsNil(request.Clusters) {
+		query["clusters"] = request.Clusters
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		query["configId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.Content) {
+		query["content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Instances) {
+		query["instances"] = request.Instances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckAgentConfigSupported"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/checkAgentConfigSupported"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckAgentConfigSupportedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks whether resources such as clusters and nodes support the current configuration.
+//
+// Description:
+//
+// The instance list retrieved by this operation contains only machines managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
+//
+// @param request - CheckAgentConfigSupportedRequest
+//
+// @return CheckAgentConfigSupportedResponse
+func (client *Client) CheckAgentConfigSupported(request *CheckAgentConfigSupportedRequest) (_result *CheckAgentConfigSupportedResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckAgentConfigSupportedResponse{}
+	_body, _err := client.CheckAgentConfigSupportedWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks whether target instances are supported by SysOM.
 //
 // Description:
 //
@@ -186,15 +270,6 @@ func (client *Client) CheckInstanceSupportWithOptions(request *CheckInstanceSupp
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Instances) {
 		body["instances"] = request.Instances
@@ -206,7 +281,6 @@ func (client *Client) CheckInstanceSupportWithOptions(request *CheckInstanceSupp
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -231,7 +305,7 @@ func (client *Client) CheckInstanceSupportWithOptions(request *CheckInstanceSupp
 
 // Summary:
 //
-// Checks whether a target instance is supported by SysOM.
+// Checks whether target instances are supported by SysOM.
 //
 // Description:
 //
@@ -287,15 +361,6 @@ func (client *Client) CpuHighAgentStreamResponseWithOptions(request *CpuHighAgen
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LlmParamString) {
 		body["llmParamString"] = request.LlmParamString
@@ -303,7 +368,6 @@ func (client *Client) CpuHighAgentStreamResponseWithOptions(request *CpuHighAgen
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -347,6 +411,80 @@ func (client *Client) CpuHighAgentStreamResponse(request *CpuHighAgentStreamResp
 
 // Summary:
 //
+// Creates a component configuration.
+//
+// @param request - CreateAgentConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentConfigResponse
+func (client *Client) CreateAgentConfigWithOptions(request *CreateAgentConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAgentConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ConfigName) {
+		body["configName"] = request.ConfigName
+	}
+
+	if !dara.IsNil(request.Content) {
+		body["content"] = request.Content
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentConfig"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/createAgentConfig"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a component configuration.
+//
+// @param request - CreateAgentConfigRequest
+//
+// @return CreateAgentConfigResponse
+func (client *Client) CreateAgentConfig(request *CreateAgentConfigRequest) (_result *CreateAgentConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAgentConfigResponse{}
+	_body, _err := client.CreateAgentConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a contact for alert notifications.
 //
 // @param request - CreateAlertDestinationRequest
@@ -363,15 +501,6 @@ func (client *Client) CreateAlertDestinationWithOptions(request *CreateAlertDest
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		body["app_id"] = request.AppId
@@ -407,7 +536,6 @@ func (client *Client) CreateAlertDestinationWithOptions(request *CreateAlertDest
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -467,15 +595,6 @@ func (client *Client) CreateAlertStrategyWithOptions(request *CreateAlertStrateg
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Enabled) {
 		body["enabled"] = request.Enabled
@@ -495,7 +614,6 @@ func (client *Client) CreateAlertStrategyWithOptions(request *CreateAlertStrateg
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -543,11 +661,11 @@ func (client *Client) CreateAlertStrategy(request *CreateAlertStrategyRequest) (
 //
 // Description:
 //
-// - Use this operation with the call_sseapi interface of the aliyun-tea-openapi-inner package.
+// - Use this operation together with the call_sseapi operation in the aliyun-tea-openapi-inner package.
 //
-// - Populate the parameters based on the general LLM service input parameters, convert them to a string, and assign the string to llmParamString.
+// - Populate the parameters based on the input parameters of the general LLM service, convert them to a string, and assign the string to llmParamString.
 //
-// - Convert the returned data from a string to a dict before use. Refer to the general LLM service response format.
+// - Convert the returned string to a dictionary before use. Refer to the response format of the general LLM service.
 //
 // @param request - CreateClusterVpcEndpointConnectionRequest
 //
@@ -563,15 +681,6 @@ func (client *Client) CreateClusterVpcEndpointConnectionWithOptions(request *Cre
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
 		body["clusterId"] = request.ClusterId
@@ -587,7 +696,6 @@ func (client *Client) CreateClusterVpcEndpointConnectionWithOptions(request *Cre
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -616,11 +724,11 @@ func (client *Client) CreateClusterVpcEndpointConnectionWithOptions(request *Cre
 //
 // Description:
 //
-// - Use this operation with the call_sseapi interface of the aliyun-tea-openapi-inner package.
+// - Use this operation together with the call_sseapi operation in the aliyun-tea-openapi-inner package.
 //
-// - Populate the parameters based on the general LLM service input parameters, convert them to a string, and assign the string to llmParamString.
+// - Populate the parameters based on the input parameters of the general LLM service, convert them to a string, and assign the string to llmParamString.
 //
-// - Convert the returned data from a string to a dict before use. Refer to the general LLM service response format.
+// - Convert the returned string to a dictionary before use. Refer to the response format of the general LLM service.
 //
 // @param request - CreateClusterVpcEndpointConnectionRequest
 //
@@ -655,15 +763,6 @@ func (client *Client) CreateInstanceInspectionWithOptions(request *CreateInstanc
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Instance) {
 		body["instance"] = request.Instance
@@ -687,7 +786,6 @@ func (client *Client) CreateInstanceInspectionWithOptions(request *CreateInstanc
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -731,7 +829,7 @@ func (client *Client) CreateInstanceInspection(request *CreateInstanceInspection
 
 // Summary:
 //
-// Creates an intelligent diagnostic node for system breakdowns, which diagnoses the vmcore or dmesg log files provided as input parameters.
+// Creates an intelligent breakdown diagnostic node to diagnose the vmcore or dmesg log file specified in the input parameters.
 //
 // @param request - CreateVmcoreDiagnosisTaskRequest
 //
@@ -747,15 +845,6 @@ func (client *Client) CreateVmcoreDiagnosisTaskWithOptions(request *CreateVmcore
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DebuginfoCommonUrl) {
 		body["debuginfoCommonUrl"] = request.DebuginfoCommonUrl
@@ -779,7 +868,6 @@ func (client *Client) CreateVmcoreDiagnosisTaskWithOptions(request *CreateVmcore
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -804,7 +892,7 @@ func (client *Client) CreateVmcoreDiagnosisTaskWithOptions(request *CreateVmcore
 
 // Summary:
 //
-// Creates an intelligent diagnostic node for system breakdowns, which diagnoses the vmcore or dmesg log files provided as input parameters.
+// Creates an intelligent breakdown diagnostic node to diagnose the vmcore or dmesg log file specified in the input parameters.
 //
 // @param request - CreateVmcoreDiagnosisTaskRequest
 //
@@ -814,6 +902,76 @@ func (client *Client) CreateVmcoreDiagnosisTask(request *CreateVmcoreDiagnosisTa
 	headers := make(map[string]*string)
 	_result = &CreateVmcoreDiagnosisTaskResponse{}
 	_body, _err := client.CreateVmcoreDiagnosisTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a component configuration.
+//
+// @param request - DeleteAgentConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentConfigResponse
+func (client *Client) DeleteAgentConfigWithOptions(request *DeleteAgentConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		query["configId"] = request.ConfigId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentConfig"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/deleteAgentConfig"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a component configuration.
+//
+// @param request - DeleteAgentConfigRequest
+//
+// @return DeleteAgentConfigResponse
+func (client *Client) DeleteAgentConfig(request *DeleteAgentConfigRequest) (_result *DeleteAgentConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAgentConfigResponse{}
+	_body, _err := client.DeleteAgentConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -840,16 +998,8 @@ func (client *Client) DeleteAlertDestinationWithOptions(request *DeleteAlertDest
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Id) {
 		query["id"] = request.Id
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -897,7 +1047,7 @@ func (client *Client) DeleteAlertDestination(request *DeleteAlertDestinationRequ
 
 // Summary:
 //
-// Deletes an alert policy for push notifications.
+// Deletes an alert policy for push alerting.
 //
 // @param request - DeleteAlertStrategyRequest
 //
@@ -914,16 +1064,8 @@ func (client *Client) DeleteAlertStrategyWithOptions(request *DeleteAlertStrateg
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Id) {
 		query["id"] = request.Id
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -952,7 +1094,7 @@ func (client *Client) DeleteAlertStrategyWithOptions(request *DeleteAlertStrateg
 
 // Summary:
 //
-// Deletes an alert policy for push notifications.
+// Deletes an alert policy for push alerting.
 //
 // @param request - DeleteAlertStrategyRequest
 //
@@ -975,7 +1117,7 @@ func (client *Client) DeleteAlertStrategy(request *DeleteAlertStrategyRequest) (
 //
 // Description:
 //
-// The instance list retrieved by this operation contains only machines that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
+// The instance list returned by this operation contains only machines that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - DescribeMetricListRequest
 //
@@ -992,10 +1134,6 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
 	}
@@ -1010,10 +1148,6 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 
 	if !dara.IsNil(request.StartTime) {
 		query["startTime"] = request.StartTime
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1046,7 +1180,7 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 //
 // Description:
 //
-// The instance list retrieved by this operation contains only machines that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
+// The instance list returned by this operation contains only machines that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - DescribeMetricListRequest
 //
@@ -1065,11 +1199,11 @@ func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_r
 
 // Summary:
 //
-// Retrieves the response from the Copilot service.
+// Retrieves the response result from the Copilot service.
 //
 // Description:
 //
-// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
+// - Populate parameters according to the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
 // - Convert the returned data from a string to a dict before use. Refer to the standard LLM service response format.
 //
@@ -1087,15 +1221,6 @@ func (client *Client) GenerateCopilotResponseWithOptions(request *GenerateCopilo
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LlmParamString) {
 		body["llmParamString"] = request.LlmParamString
@@ -1103,7 +1228,6 @@ func (client *Client) GenerateCopilotResponseWithOptions(request *GenerateCopilo
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -1128,11 +1252,11 @@ func (client *Client) GenerateCopilotResponseWithOptions(request *GenerateCopilo
 
 // Summary:
 //
-// Retrieves the response from the Copilot service.
+// Retrieves the response result from the Copilot service.
 //
 // Description:
 //
-// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
+// - Populate parameters according to the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
 // - Convert the returned data from a string to a dict before use. Refer to the standard LLM service response format.
 //
@@ -1159,7 +1283,7 @@ func (client *Client) GenerateCopilotResponse(request *GenerateCopilotResponseRe
 //
 // - Use this operation together with the call_sseapi interface in the aliyun-tea-openapi-inner package.
 //
-// - Populate parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
 // - Convert the returned string data to a dict before use. Refer to the standard LLM service response format.
 //
@@ -1184,7 +1308,7 @@ func (client *Client) GenerateCopilotStreamResponseWithSSE(request *GenerateCopi
 //
 // - Use this operation together with the call_sseapi interface in the aliyun-tea-openapi-inner package.
 //
-// - Populate parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
 // - Convert the returned string data to a dict before use. Refer to the standard LLM service response format.
 //
@@ -1202,15 +1326,6 @@ func (client *Client) GenerateCopilotStreamResponseWithOptions(request *Generate
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LlmParamString) {
 		body["llmParamString"] = request.LlmParamString
@@ -1218,7 +1333,6 @@ func (client *Client) GenerateCopilotStreamResponseWithOptions(request *Generate
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -1249,7 +1363,7 @@ func (client *Client) GenerateCopilotStreamResponseWithOptions(request *Generate
 //
 // - Use this operation together with the call_sseapi interface in the aliyun-tea-openapi-inner package.
 //
-// - Populate parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
 // - Convert the returned string data to a dict before use. Refer to the standard LLM service response format.
 //
@@ -1270,7 +1384,7 @@ func (client *Client) GenerateCopilotStreamResponse(request *GenerateCopilotStre
 
 // Summary:
 //
-// Queries the AI Infra analysis results.
+// Queries AI Infra analysis results.
 //
 // @param request - GetAIQueryResultRequest
 //
@@ -1286,15 +1400,6 @@ func (client *Client) GetAIQueryResultWithOptions(request *GetAIQueryResultReque
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AnalysisId) {
 		body["analysisId"] = request.AnalysisId
@@ -1302,7 +1407,6 @@ func (client *Client) GetAIQueryResultWithOptions(request *GetAIQueryResultReque
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -1327,7 +1431,7 @@ func (client *Client) GetAIQueryResultWithOptions(request *GetAIQueryResultReque
 
 // Summary:
 //
-// Queries the AI Infra analysis results.
+// Queries AI Infra analysis results.
 //
 // @param request - GetAIQueryResultRequest
 //
@@ -1363,10 +1467,6 @@ func (client *Client) GetAbnormalEventsCountWithOptions(request *GetAbnormalEven
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -1397,10 +1497,6 @@ func (client *Client) GetAbnormalEventsCountWithOptions(request *GetAbnormalEven
 
 	if !dara.IsNil(request.Start) {
 		query["start"] = request.Start
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1448,7 +1544,7 @@ func (client *Client) GetAbnormalEventsCount(request *GetAbnormalEventsCountRequ
 
 // Summary:
 //
-// Retrieves the details of a specified component.
+// Retrieves the details of a specific component.
 //
 // @param request - GetAgentRequest
 //
@@ -1465,16 +1561,8 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, headers map[
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.AgentId) {
 		query["agent_id"] = request.AgentId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1503,7 +1591,7 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, headers map[
 
 // Summary:
 //
-// Retrieves the details of a specified component.
+// Retrieves the details of a specific component.
 //
 // @param request - GetAgentRequest
 //
@@ -1513,6 +1601,92 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 	headers := make(map[string]*string)
 	_result = &GetAgentResponse{}
 	_body, _err := client.GetAgentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves component configurations.
+//
+// @param request - GetAgentConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentConfigResponse
+func (client *Client) GetAgentConfigWithOptions(request *GetAgentConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAgentConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		query["configId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.ConfigName) {
+		query["configName"] = request.ConfigName
+	}
+
+	if !dara.IsNil(request.Current) {
+		query["current"] = request.Current
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentConfig"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/getAgentConfig"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves component configurations.
+//
+// @param request - GetAgentConfigRequest
+//
+// @return GetAgentConfigResponse
+func (client *Client) GetAgentConfig(request *GetAgentConfigRequest) (_result *GetAgentConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAgentConfigResponse{}
+	_body, _err := client.GetAgentConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1539,16 +1713,8 @@ func (client *Client) GetAgentTaskWithOptions(request *GetAgentTaskRequest, head
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.TaskId) {
 		query["task_id"] = request.TaskId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1596,6 +1762,154 @@ func (client *Client) GetAgentTask(request *GetAgentTaskRequest) (_result *GetAg
 
 // Summary:
 //
+// Retrieves diagnostic results.
+//
+// Description:
+//
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. Check the `data.status` field in the response to determine the current state. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic results from `data.result`.
+//
+// @param request - GetAifgResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAifgResultResponse
+func (client *Client) GetAifgResultWithOptions(request *GetAifgResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAifgResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAifgResult"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aifg/getAifgResult"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAifgResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves diagnostic results.
+//
+// Description:
+//
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. Check the `data.status` field in the response to determine the current state. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic results from `data.result`.
+//
+// @param request - GetAifgResultRequest
+//
+// @return GetAifgResultResponse
+func (client *Client) GetAifgResult(request *GetAifgResultRequest) (_result *GetAifgResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAifgResultResponse{}
+	_body, _err := client.GetAifgResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the URL link of a diagnostic result.
+//
+// Description:
+//
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response data to determine the current state. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+//
+// @param request - GetAifgUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAifgUrlResponse
+func (client *Client) GetAifgUrlWithOptions(request *GetAifgUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAifgUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAifgUrl"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aifg/getAifgUrl"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAifgUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the URL link of a diagnostic result.
+//
+// Description:
+//
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response data to determine the current state. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+//
+// @param request - GetAifgUrlRequest
+//
+// @return GetAifgUrlResponse
+func (client *Client) GetAifgUrl(request *GetAifgUrlRequest) (_result *GetAifgUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAifgUrlResponse{}
+	_body, _err := client.GetAifgUrlWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the information of a specified alert contact.
 //
 // @param request - GetAlertDestinationRequest
@@ -1613,16 +1927,8 @@ func (client *Client) GetAlertDestinationWithOptions(request *GetAlertDestinatio
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Id) {
 		query["id"] = request.Id
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1670,7 +1976,7 @@ func (client *Client) GetAlertDestination(request *GetAlertDestinationRequest) (
 
 // Summary:
 //
-// Retrieves an alert for a user based on the policy ID.
+// Retrieves an alert rule of a user by policy ID.
 //
 // @param request - GetAlertStrategyRequest
 //
@@ -1687,16 +1993,8 @@ func (client *Client) GetAlertStrategyWithOptions(request *GetAlertStrategyReque
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Id) {
 		query["id"] = request.Id
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1725,7 +2023,7 @@ func (client *Client) GetAlertStrategyWithOptions(request *GetAlertStrategyReque
 
 // Summary:
 //
-// Retrieves an alert for a user based on the policy ID.
+// Retrieves an alert rule of a user by policy ID.
 //
 // @param request - GetAlertStrategyRequest
 //
@@ -1761,10 +2059,6 @@ func (client *Client) GetConfigByNameWithOptions(request *GetConfigByNameRequest
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.ConfigName) {
 		query["configName"] = request.ConfigName
 	}
@@ -1783,10 +2077,6 @@ func (client *Client) GetConfigByNameWithOptions(request *GetConfigByNameRequest
 
 	if !dara.IsNil(request.VersionId) {
 		query["versionId"] = request.VersionId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1834,7 +2124,7 @@ func (client *Client) GetConfigByName(request *GetConfigByNameRequest) (_result 
 
 // Summary:
 //
-// Retrieves the chat history of Copilot.
+// Retrieves the historical chat records of Copilot.
 //
 // @param request - GetCopilotHistoryRequest
 //
@@ -1850,15 +2140,6 @@ func (client *Client) GetCopilotHistoryWithOptions(request *GetCopilotHistoryReq
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Count) {
 		body["count"] = request.Count
@@ -1866,7 +2147,6 @@ func (client *Client) GetCopilotHistoryWithOptions(request *GetCopilotHistoryReq
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -1891,7 +2171,7 @@ func (client *Client) GetCopilotHistoryWithOptions(request *GetCopilotHistoryReq
 
 // Summary:
 //
-// Retrieves the chat history of Copilot.
+// Retrieves the historical chat records of Copilot.
 //
 // @param request - GetCopilotHistoryRequest
 //
@@ -1910,11 +2190,11 @@ func (client *Client) GetCopilotHistory(request *GetCopilotHistoryRequest) (_res
 
 // Summary:
 //
-// Retrieves the diagnostic result.
+// Retrieves diagnostic results.
 //
 // Description:
 //
-// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be running. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be running. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic results from `data.result`.
 //
 // @param request - GetDiagnosisResultRequest
 //
@@ -1931,16 +2211,8 @@ func (client *Client) GetDiagnosisResultWithOptions(request *GetDiagnosisResultR
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.TaskId) {
 		query["task_id"] = request.TaskId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1969,11 +2241,11 @@ func (client *Client) GetDiagnosisResultWithOptions(request *GetDiagnosisResultR
 
 // Summary:
 //
-// Retrieves the diagnostic result.
+// Retrieves diagnostic results.
 //
 // Description:
 //
-// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be running. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be running. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic results from `data.result`.
 //
 // @param request - GetDiagnosisResultRequest
 //
@@ -1992,7 +2264,313 @@ func (client *Client) GetDiagnosisResult(request *GetDiagnosisResultRequest) (_r
 
 // Summary:
 //
-// Retrieves the health status distribution of nodes or Pods within a specified time period.
+// Retrieves the GPU cluster parameter list.
+//
+// Description:
+//
+// After installing the component for the target ACK cluster:
+//
+// 1. First, when a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only 50 instances are included in the first batch.
+//
+// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component without user intervention.
+//
+// @param request - GetGpuClusterArgsOptionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGpuClusterArgsOptionsResponse
+func (client *Client) GetGpuClusterArgsOptionsWithOptions(request *GetGpuClusterArgsOptionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGpuClusterArgsOptionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterType) {
+		query["filterType"] = request.FilterType
+	}
+
+	if !dara.IsNil(request.FilterValues) {
+		query["filterValues"] = request.FilterValues
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGpuClusterArgsOptions"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiTopology/topology/listClusterTopologyOptions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGpuClusterArgsOptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the GPU cluster parameter list.
+//
+// Description:
+//
+// After installing the component for the target ACK cluster:
+//
+// 1. First, when a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only 50 instances are included in the first batch.
+//
+// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component without user intervention.
+//
+// @param request - GetGpuClusterArgsOptionsRequest
+//
+// @return GetGpuClusterArgsOptionsResponse
+func (client *Client) GetGpuClusterArgsOptions(request *GetGpuClusterArgsOptionsRequest) (_result *GetGpuClusterArgsOptionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGpuClusterArgsOptionsResponse{}
+	_body, _err := client.GetGpuClusterArgsOptionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of GPU cluster alerts.
+//
+// Description:
+//
+// After installing the component on the target ACK cluster:
+//
+// 1. When a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only the first 50 nodes are processed in the first batch.
+//
+// 2. The operating system console periodically checks the scaling status of managed clusters. When a new ECS instance is added to a cluster, the console automatically installs the component on it without user intervention.
+//
+// @param request - GetGpuClusterListAlarmRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGpuClusterListAlarmRecordResponse
+func (client *Client) GetGpuClusterListAlarmRecordWithOptions(request *GetGpuClusterListAlarmRecordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGpuClusterListAlarmRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlarmCluster) {
+		query["alarmCluster"] = request.AlarmCluster
+	}
+
+	if !dara.IsNil(request.AlarmExtInfo) {
+		query["alarmExtInfo"] = request.AlarmExtInfo
+	}
+
+	if !dara.IsNil(request.AlarmTask) {
+		query["alarmTask"] = request.AlarmTask
+	}
+
+	if !dara.IsNil(request.AlarmTime) {
+		query["alarmTime"] = request.AlarmTime
+	}
+
+	if !dara.IsNil(request.AlarmType) {
+		query["alarmType"] = request.AlarmType
+	}
+
+	if !dara.IsNil(request.Current) {
+		query["current"] = request.Current
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGpuClusterListAlarmRecord"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiTopology/topology/listAlarmRecord"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGpuClusterListAlarmRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of GPU cluster alerts.
+//
+// Description:
+//
+// After installing the component on the target ACK cluster:
+//
+// 1. When a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only the first 50 nodes are processed in the first batch.
+//
+// 2. The operating system console periodically checks the scaling status of managed clusters. When a new ECS instance is added to a cluster, the console automatically installs the component on it without user intervention.
+//
+// @param request - GetGpuClusterListAlarmRecordRequest
+//
+// @return GetGpuClusterListAlarmRecordResponse
+func (client *Client) GetGpuClusterListAlarmRecord(request *GetGpuClusterListAlarmRecordRequest) (_result *GetGpuClusterListAlarmRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGpuClusterListAlarmRecordResponse{}
+	_body, _err := client.GetGpuClusterListAlarmRecordWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the GPU cluster topology.
+//
+// Description:
+//
+// After you install the component on the target ACK cluster:
+//
+// 1. When a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only the first 50 nodes are processed in the first batch.
+//
+// 2. The operating system console periodically checks the scaling status of managed clusters. When a new ECS instance is added to a cluster, the console automatically installs the component on it without requiring manual intervention.
+//
+// @param request - GetGpuClusterTopologyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGpuClusterTopologyResponse
+func (client *Client) GetGpuClusterTopologyWithOptions(request *GetGpuClusterTopologyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGpuClusterTopologyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelId) {
+		query["channelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["clusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.CommunicationId) {
+		query["communicationId"] = request.CommunicationId
+	}
+
+	if !dara.IsNil(request.InstanceIdList) {
+		query["instanceIdList"] = request.InstanceIdList
+	}
+
+	if !dara.IsNil(request.PodList) {
+		query["podList"] = request.PodList
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TaskIdList) {
+		query["taskIdList"] = request.TaskIdList
+	}
+
+	if !dara.IsNil(request.TopoType) {
+		query["topoType"] = request.TopoType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGpuClusterTopology"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiTopology/topology/clusterTopology"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGpuClusterTopologyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the GPU cluster topology.
+//
+// Description:
+//
+// After you install the component on the target ACK cluster:
+//
+// 1. When a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only the first 50 nodes are processed in the first batch.
+//
+// 2. The operating system console periodically checks the scaling status of managed clusters. When a new ECS instance is added to a cluster, the console automatically installs the component on it without requiring manual intervention.
+//
+// @param request - GetGpuClusterTopologyRequest
+//
+// @return GetGpuClusterTopologyResponse
+func (client *Client) GetGpuClusterTopology(request *GetGpuClusterTopologyRequest) (_result *GetGpuClusterTopologyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGpuClusterTopologyResponse{}
+	_body, _err := client.GetGpuClusterTopologyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the health status distribution of nodes or pods over a specified time period.
 //
 // @param request - GetHealthPercentageRequest
 //
@@ -2009,10 +2587,6 @@ func (client *Client) GetHealthPercentageWithOptions(request *GetHealthPercentag
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -2027,10 +2601,6 @@ func (client *Client) GetHealthPercentageWithOptions(request *GetHealthPercentag
 
 	if !dara.IsNil(request.Start) {
 		query["start"] = request.Start
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2059,7 +2629,7 @@ func (client *Client) GetHealthPercentageWithOptions(request *GetHealthPercentag
 
 // Summary:
 //
-// Retrieves the health status distribution of nodes or Pods within a specified time period.
+// Retrieves the health status distribution of nodes or pods over a specified time period.
 //
 // @param request - GetHealthPercentageRequest
 //
@@ -2078,7 +2648,7 @@ func (client *Client) GetHealthPercentage(request *GetHealthPercentageRequest) (
 
 // Summary:
 //
-// Retrieves the number of cluster nodes or the number of Pods on a node.
+// Retrieves the number of nodes or node Pods in a cluster.
 //
 // @param request - GetHostCountRequest
 //
@@ -2095,10 +2665,6 @@ func (client *Client) GetHostCountWithOptions(request *GetHostCountRequest, head
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -2113,10 +2679,6 @@ func (client *Client) GetHostCountWithOptions(request *GetHostCountRequest, head
 
 	if !dara.IsNil(request.Start) {
 		query["start"] = request.Start
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2145,7 +2707,7 @@ func (client *Client) GetHostCountWithOptions(request *GetHostCountRequest, head
 
 // Summary:
 //
-// Retrieves the number of cluster nodes or the number of Pods on a node.
+// Retrieves the number of nodes or node Pods in a cluster.
 //
 // @param request - GetHostCountRequest
 //
@@ -2180,15 +2742,6 @@ func (client *Client) GetHotSpotUniqListWithOptions(request *GetHotSpotUniqListR
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BegEnd) {
 		body["beg_end"] = request.BegEnd
@@ -2216,7 +2769,6 @@ func (client *Client) GetHotSpotUniqListWithOptions(request *GetHotSpotUniqListR
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -2260,6 +2812,80 @@ func (client *Client) GetHotSpotUniqList(request *GetHotSpotUniqListRequest) (_r
 
 // Summary:
 //
+// Queries the status of an asynchronous task for CVE hotfixes on a node.
+//
+// Description:
+//
+// The hotfix task process is asynchronous. When you call this operation, the task may still be running. You can check the `data.status` field in the response to determine the task status. If `data.status` is `Success`, the task succeeded, and you can obtain the task result from the `data.result` field.
+//
+// @param request - GetHotfixTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotfixTaskResponse
+func (client *Client) GetHotfixTaskWithOptions(request *GetHotfixTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHotfixTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetHotfixTask"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/hotfix_manager/task/get"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetHotfixTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status of an asynchronous task for CVE hotfixes on a node.
+//
+// Description:
+//
+// The hotfix task process is asynchronous. When you call this operation, the task may still be running. You can check the `data.status` field in the response to determine the task status. If `data.status` is `Success`, the task succeeded, and you can obtain the task result from the `data.result` field.
+//
+// @param request - GetHotfixTaskRequest
+//
+// @return GetHotfixTaskResponse
+func (client *Client) GetHotfixTask(request *GetHotfixTaskRequest) (_result *GetHotfixTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetHotfixTaskResponse{}
+	_body, _err := client.GetHotfixTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves hot spot analysis results.
 //
 // @param request - GetHotspotAnalysisRequest
@@ -2276,15 +2902,6 @@ func (client *Client) GetHotspotAnalysisWithOptions(request *GetHotspotAnalysisR
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppType) {
 		body["appType"] = request.AppType
@@ -2312,7 +2929,6 @@ func (client *Client) GetHotspotAnalysisWithOptions(request *GetHotspotAnalysisR
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -2356,7 +2972,7 @@ func (client *Client) GetHotspotAnalysis(request *GetHotspotAnalysisRequest) (_r
 
 // Summary:
 //
-// Retrieves the hot spot comparison and tracing results.
+// Retrieves the results of a hot spot comparison trace.
 //
 // @param request - GetHotspotCompareRequest
 //
@@ -2372,15 +2988,6 @@ func (client *Client) GetHotspotCompareWithOptions(request *GetHotspotCompareReq
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Beg1End) {
 		body["beg1_end"] = request.Beg1End
@@ -2424,7 +3031,6 @@ func (client *Client) GetHotspotCompareWithOptions(request *GetHotspotCompareReq
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -2449,7 +3055,7 @@ func (client *Client) GetHotspotCompareWithOptions(request *GetHotspotCompareReq
 
 // Summary:
 //
-// Retrieves the hot spot comparison and tracing results.
+// Retrieves the results of a hot spot comparison trace.
 //
 // @param request - GetHotspotCompareRequest
 //
@@ -2484,15 +3090,6 @@ func (client *Client) GetHotspotInstanceListWithOptions(request *GetHotspotInsta
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BegEnd) {
 		body["beg_end"] = request.BegEnd
@@ -2508,7 +3105,6 @@ func (client *Client) GetHotspotInstanceListWithOptions(request *GetHotspotInsta
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -2568,15 +3164,6 @@ func (client *Client) GetHotspotPidListWithOptions(request *GetHotspotPidListReq
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BegEnd) {
 		body["beg_end"] = request.BegEnd
@@ -2596,7 +3183,6 @@ func (client *Client) GetHotspotPidListWithOptions(request *GetHotspotPidListReq
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -2656,15 +3242,6 @@ func (client *Client) GetHotspotTrackingWithOptions(request *GetHotspotTrackingR
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BegEnd) {
 		body["beg_end"] = request.BegEnd
@@ -2692,7 +3269,6 @@ func (client *Client) GetHotspotTrackingWithOptions(request *GetHotspotTrackingR
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -2753,16 +3329,8 @@ func (client *Client) GetInspectionReportWithOptions(request *GetInspectionRepor
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.ReportId) {
 		query["reportId"] = request.ReportId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2827,20 +3395,12 @@ func (client *Client) GetInstantScoreWithOptions(request *GetInstantScoreRequest
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
 
 	if !dara.IsNil(request.Instance) {
 		query["instance"] = request.Instance
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2888,7 +3448,93 @@ func (client *Client) GetInstantScore(request *GetInstantScoreRequest) (_result 
 
 // Summary:
 //
-// Retrieves the list of AI Infra analysis records.
+// Retrieves a list of GPU clusters.
+//
+// Description:
+//
+// After installing the component for the target ACK cluster:
+//
+// 1. First, when a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster contains more than 50 nodes, only 50 instances are included in the first batch.
+//
+// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on it without user intervention.
+//
+// @param request - GetListGpuClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetListGpuClusterResponse
+func (client *Client) GetListGpuClusterWithOptions(request *GetListGpuClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetListGpuClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TimeRegion) {
+		query["timeRegion"] = request.TimeRegion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetListGpuCluster"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiTopology/topology/listCluster"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetListGpuClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of GPU clusters.
+//
+// Description:
+//
+// After installing the component for the target ACK cluster:
+//
+// 1. First, when a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster contains more than 50 nodes, only 50 instances are included in the first batch.
+//
+// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on it without user intervention.
+//
+// @param request - GetListGpuClusterRequest
+//
+// @return GetListGpuClusterResponse
+func (client *Client) GetListGpuCluster(request *GetListGpuClusterRequest) (_result *GetListGpuClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetListGpuClusterResponse{}
+	_body, _err := client.GetListGpuClusterWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of AI Infra analysis records.
 //
 // @param request - GetListRecordRequest
 //
@@ -2905,10 +3551,6 @@ func (client *Client) GetListRecordWithOptions(request *GetListRecordRequest, he
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.AnalysisId) {
 		query["analysisId"] = request.AnalysisId
 	}
@@ -2927,10 +3569,6 @@ func (client *Client) GetListRecordWithOptions(request *GetListRecordRequest, he
 
 	if !dara.IsNil(request.Region) {
 		query["region"] = request.Region
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2959,7 +3597,7 @@ func (client *Client) GetListRecordWithOptions(request *GetListRecordRequest, he
 
 // Summary:
 //
-// Retrieves the list of AI Infra analysis records.
+// Retrieves a list of AI Infra analysis records.
 //
 // @param request - GetListRecordRequest
 //
@@ -2978,7 +3616,7 @@ func (client *Client) GetListRecord(request *GetListRecordRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves the proportion of abnormal issues for nodes in a cluster or pods in a node within a specified time range.
+// Retrieves the proportion of anomaly issues for nodes in a cluster or pods in a node within a specified time range.
 //
 // @param request - GetProblemPercentageRequest
 //
@@ -2995,10 +3633,6 @@ func (client *Client) GetProblemPercentageWithOptions(request *GetProblemPercent
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -3013,10 +3647,6 @@ func (client *Client) GetProblemPercentageWithOptions(request *GetProblemPercent
 
 	if !dara.IsNil(request.Start) {
 		query["start"] = request.Start
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3045,7 +3675,7 @@ func (client *Client) GetProblemPercentageWithOptions(request *GetProblemPercent
 
 // Summary:
 //
-// Retrieves the proportion of abnormal issues for nodes in a cluster or pods in a node within a specified time range.
+// Retrieves the proportion of anomaly issues for nodes in a cluster or pods in a node within a specified time range.
 //
 // @param request - GetProblemPercentageRequest
 //
@@ -3081,10 +3711,6 @@ func (client *Client) GetRangeScoreWithOptions(request *GetRangeScoreRequest, he
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -3099,10 +3725,6 @@ func (client *Client) GetRangeScoreWithOptions(request *GetRangeScoreRequest, he
 
 	if !dara.IsNil(request.Start) {
 		query["start"] = request.Start
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3167,10 +3789,6 @@ func (client *Client) GetResourcesWithOptions(request *GetResourcesRequest, head
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -3181,10 +3799,6 @@ func (client *Client) GetResourcesWithOptions(request *GetResourcesRequest, head
 
 	if !dara.IsNil(request.Type) {
 		query["type"] = request.Type
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3259,10 +3873,6 @@ func (client *Client) GetServiceFuncStatusWithOptions(tmpReq *GetServiceFuncStat
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Channel) {
 		query["channel"] = request.Channel
 	}
@@ -3273,10 +3883,6 @@ func (client *Client) GetServiceFuncStatusWithOptions(tmpReq *GetServiceFuncStat
 
 	if !dara.IsNil(request.ServiceName) {
 		query["service_name"] = request.ServiceName
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3345,16 +3951,8 @@ func (client *Client) GetVmcoreDiagnosisTaskWithOptions(request *GetVmcoreDiagno
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.TaskId) {
 		query["taskId"] = request.TaskId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3402,17 +4000,17 @@ func (client *Client) GetVmcoreDiagnosisTask(request *GetVmcoreDiagnosisTaskRequ
 
 // Summary:
 //
-// Initializes SysOM and ensures that the service-linked role exists.
+// Initializes SysOM to ensure that the service-linked role exists.
 //
 // Description:
 //
 // Some SysOM API operations require role assumption based on the `AliyunServiceRoleForSysom` service-linked role. Before using SysOM features, invoke this operation to perform initialization and ensure that the service-linked role has been created.
 //
-// - `check_only`: If this parameter is set to True, the operation only checks whether the service-linked role exists and does not create it. If this parameter is set to False or left empty, invoking this operation triggers automatic creation of the service-linked role if it does not exist.
+// - `check_only`: If this parameter is set to True, only a check is performed to determine whether the service-linked role exists. The service-linked role is not created. If this parameter is set to False or left empty, automatic creation of the service-linked role is performed if it does not exist.
 //
 // >
 //
-// > Note: When you call this operation to initialize the role through the API, you agree to the user agreement of the operating system console by default. For more information, refer to: [Operating system console overview](https://www.alibabacloud.com/help/en/alinux/product-overview/os-console-overview), [Alibaba Cloud Service Trial Terms](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud202001091714_51956.html)
+// > Note: When you call this operation to initialize the role, you agree to the user agreement of the operating system console by default. For more information, see [Operating system console overview](https://www.alibabacloud.com/help/en/alinux/product-overview/os-console-overview) and [Alibaba Cloud Service Trial Terms](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud202001091714_51956.html).
 //
 // @param request - InitialSysomRequest
 //
@@ -3428,15 +4026,6 @@ func (client *Client) InitialSysomWithOptions(request *InitialSysomRequest, head
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CheckOnly) {
 		body["check_only"] = request.CheckOnly
@@ -3448,7 +4037,6 @@ func (client *Client) InitialSysomWithOptions(request *InitialSysomRequest, head
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -3473,17 +4061,17 @@ func (client *Client) InitialSysomWithOptions(request *InitialSysomRequest, head
 
 // Summary:
 //
-// Initializes SysOM and ensures that the service-linked role exists.
+// Initializes SysOM to ensure that the service-linked role exists.
 //
 // Description:
 //
 // Some SysOM API operations require role assumption based on the `AliyunServiceRoleForSysom` service-linked role. Before using SysOM features, invoke this operation to perform initialization and ensure that the service-linked role has been created.
 //
-// - `check_only`: If this parameter is set to True, the operation only checks whether the service-linked role exists and does not create it. If this parameter is set to False or left empty, invoking this operation triggers automatic creation of the service-linked role if it does not exist.
+// - `check_only`: If this parameter is set to True, only a check is performed to determine whether the service-linked role exists. The service-linked role is not created. If this parameter is set to False or left empty, automatic creation of the service-linked role is performed if it does not exist.
 //
 // >
 //
-// > Note: When you call this operation to initialize the role through the API, you agree to the user agreement of the operating system console by default. For more information, refer to: [Operating system console overview](https://www.alibabacloud.com/help/en/alinux/product-overview/os-console-overview), [Alibaba Cloud Service Trial Terms](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud202001091714_51956.html)
+// > Note: When you call this operation to initialize the role, you agree to the user agreement of the operating system console by default. For more information, see [Operating system console overview](https://www.alibabacloud.com/help/en/alinux/product-overview/os-console-overview) and [Alibaba Cloud Service Trial Terms](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud202001091714_51956.html).
 //
 // @param request - InitialSysomRequest
 //
@@ -3502,11 +4090,11 @@ func (client *Client) InitialSysom(request *InitialSysomRequest) (_result *Initi
 
 // Summary:
 //
-// Installs an Agent on a specified instance.
+// Installs an agent on a specified instance.
 //
 // Description:
 //
-// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to query the task execution status.
+// Calling this operation to install an agent is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetAgentTask operation to query the task execution status.
 //
 // @param request - InstallAgentRequest
 //
@@ -3522,15 +4110,6 @@ func (client *Client) InstallAgentWithOptions(request *InstallAgentRequest, head
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agent_id"] = request.AgentId
@@ -3550,7 +4129,6 @@ func (client *Client) InstallAgentWithOptions(request *InstallAgentRequest, head
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -3575,11 +4153,11 @@ func (client *Client) InstallAgentWithOptions(request *InstallAgentRequest, head
 
 // Summary:
 //
-// Installs an Agent on a specified instance.
+// Installs an agent on a specified instance.
 //
 // Description:
 //
-// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to query the task execution status.
+// Calling this operation to install an agent is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetAgentTask operation to query the task execution status.
 //
 // @param request - InstallAgentRequest
 //
@@ -3604,9 +4182,9 @@ func (client *Client) InstallAgent(request *InstallAgentRequest) (_result *Insta
 //
 // After you install a component on the target ACK cluster:
 //
-// 1. First, when the cluster is managed for the first time, the component is installed on all existing ECS instances in the cluster. If the cluster contains more than 50 nodes, only 50 instances are processed in the first batch.
+// 1. First, when the cluster is managed for the first time, the component is installed on all existing ECS instances in the cluster. If the cluster contains more than 50 nodes, only 50 instances are included in the first batch.
 //
-// 2. Then, the operating system console periodically checks the scaling status of the managed cluster in each epoch. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on the instance without user intervention.
+// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on the instance without user intervention.
 //
 // @param request - InstallAgentForClusterRequest
 //
@@ -3622,15 +4200,6 @@ func (client *Client) InstallAgentForClusterWithOptions(request *InstallAgentFor
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agent_id"] = request.AgentId
@@ -3654,7 +4223,6 @@ func (client *Client) InstallAgentForClusterWithOptions(request *InstallAgentFor
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -3685,9 +4253,9 @@ func (client *Client) InstallAgentForClusterWithOptions(request *InstallAgentFor
 //
 // After you install a component on the target ACK cluster:
 //
-// 1. First, when the cluster is managed for the first time, the component is installed on all existing ECS instances in the cluster. If the cluster contains more than 50 nodes, only 50 instances are processed in the first batch.
+// 1. First, when the cluster is managed for the first time, the component is installed on all existing ECS instances in the cluster. If the cluster contains more than 50 nodes, only 50 instances are included in the first batch.
 //
-// 2. Then, the operating system console periodically checks the scaling status of the managed cluster in each epoch. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on the instance without user intervention.
+// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on the instance without user intervention.
 //
 // @param request - InstallAgentForClusterRequest
 //
@@ -3710,7 +4278,7 @@ func (client *Client) InstallAgentForCluster(request *InstallAgentForClusterRequ
 //
 // Description:
 //
-// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the task execution status.
+// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to check the task execution status.
 //
 // @param request - InstallAgentWithTypeRequest
 //
@@ -3726,15 +4294,6 @@ func (client *Client) InstallAgentWithTypeWithOptions(request *InstallAgentWithT
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Tag) {
 		body["Tag"] = request.Tag
@@ -3762,7 +4321,6 @@ func (client *Client) InstallAgentWithTypeWithOptions(request *InstallAgentWithT
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -3791,7 +4349,7 @@ func (client *Client) InstallAgentWithTypeWithOptions(request *InstallAgentWithT
 //
 // Description:
 //
-// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the task execution status.
+// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to check the task execution status.
 //
 // @param request - InstallAgentWithTypeRequest
 //
@@ -3810,7 +4368,85 @@ func (client *Client) InstallAgentWithType(request *InstallAgentWithTypeRequest)
 
 // Summary:
 //
-// Initiates an anomaly diagnostics task.
+// Installs CVE hotfixes asynchronously on specified instances.
+//
+// Description:
+//
+// This operation asynchronously installs the agent. After the operation is called, a task ID is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
+//
+// @param request - InstallHotfixRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallHotfixResponse
+func (client *Client) InstallHotfixWithOptions(request *InstallHotfixRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InstallHotfixResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CveId) {
+		body["cveId"] = request.CveId
+	}
+
+	if !dara.IsNil(request.Instances) {
+		body["instances"] = request.Instances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallHotfix"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/hotfix_manager/hotfix/install"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallHotfixResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs CVE hotfixes asynchronously on specified instances.
+//
+// Description:
+//
+// This operation asynchronously installs the agent. After the operation is called, a task ID is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
+//
+// @param request - InstallHotfixRequest
+//
+// @return InstallHotfixResponse
+func (client *Client) InstallHotfix(request *InstallHotfixRequest) (_result *InstallHotfixResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InstallHotfixResponse{}
+	_body, _err := client.InstallHotfixWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates an anomaly diagnosis.
 //
 // @param request - InvokeAnomalyDiagnosisRequest
 //
@@ -3827,16 +4463,8 @@ func (client *Client) InvokeAnomalyDiagnosisWithOptions(request *InvokeAnomalyDi
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Uuid) {
 		query["uuid"] = request.Uuid
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3865,7 +4493,7 @@ func (client *Client) InvokeAnomalyDiagnosisWithOptions(request *InvokeAnomalyDi
 
 // Summary:
 //
-// Initiates an anomaly diagnostics task.
+// Initiates an anomaly diagnosis.
 //
 // @param request - InvokeAnomalyDiagnosisRequest
 //
@@ -3999,10 +4627,6 @@ func (client *Client) ListAbnormalyEventsWithOptions(request *ListAbnormalyEvent
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -4045,10 +4669,6 @@ func (client *Client) ListAbnormalyEventsWithOptions(request *ListAbnormalyEvent
 
 	if !dara.IsNil(request.Start) {
 		query["start"] = request.Start
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4113,10 +4733,6 @@ func (client *Client) ListAgentInstallRecordsWithOptions(request *ListAgentInsta
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -4143,10 +4759,6 @@ func (client *Client) ListAgentInstallRecordsWithOptions(request *ListAgentInsta
 
 	if !dara.IsNil(request.Status) {
 		query["status"] = request.Status
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4211,10 +4823,6 @@ func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, headers 
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -4229,10 +4837,6 @@ func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, headers 
 
 	if !dara.IsNil(request.Type) {
 		query["type"] = request.Type
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4280,7 +4884,101 @@ func (client *Client) ListAgents(request *ListAgentsRequest) (_result *ListAgent
 
 // Summary:
 //
-// Retrieves the list of alert contacts.
+// Retrieves a list of diagnostic tasks.
+//
+// Description:
+//
+// This operation retrieves the list of regions where the current user has machines managed by SysOM. If the user has ECS instances in a region but those instances are not managed by SysOM, that region does not appear in the results.
+//
+// @param request - ListAifgJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAifgJobsResponse
+func (client *Client) ListAifgJobsWithOptions(request *ListAifgJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAifgJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Current) {
+		query["current"] = request.Current
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["region"] = request.Region
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["serviceName"] = request.ServiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAifgJobs"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aifg/listAifgJobs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAifgJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of diagnostic tasks.
+//
+// Description:
+//
+// This operation retrieves the list of regions where the current user has machines managed by SysOM. If the user has ECS instances in a region but those instances are not managed by SysOM, that region does not appear in the results.
+//
+// @param request - ListAifgJobsRequest
+//
+// @return ListAifgJobsResponse
+func (client *Client) ListAifgJobs(request *ListAifgJobsRequest) (_result *ListAifgJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAifgJobsResponse{}
+	_body, _err := client.ListAifgJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of alert contacts.
 //
 // @param request - ListAlertDestinationsRequest
 //
@@ -4297,10 +4995,6 @@ func (client *Client) ListAlertDestinationsWithOptions(request *ListAlertDestina
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -4319,10 +5013,6 @@ func (client *Client) ListAlertDestinationsWithOptions(request *ListAlertDestina
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4351,7 +5041,7 @@ func (client *Client) ListAlertDestinationsWithOptions(request *ListAlertDestina
 
 // Summary:
 //
-// Retrieves the list of alert contacts.
+// Retrieves a list of alert contacts.
 //
 // @param request - ListAlertDestinationsRequest
 //
@@ -4420,7 +5110,7 @@ func (client *Client) ListAlertItems() (_result *ListAlertItemsResponse, _err er
 
 // Summary:
 //
-// Retrieves all push alert policies for the current user.
+// Retrieves all alert policies configured by the user for push notifications.
 //
 // @param request - ListAlertStrategiesRequest
 //
@@ -4437,10 +5127,6 @@ func (client *Client) ListAlertStrategiesWithOptions(request *ListAlertStrategie
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -4459,10 +5145,6 @@ func (client *Client) ListAlertStrategiesWithOptions(request *ListAlertStrategie
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4491,7 +5173,7 @@ func (client *Client) ListAlertStrategiesWithOptions(request *ListAlertStrategie
 
 // Summary:
 //
-// Retrieves all push alert policies for the current user.
+// Retrieves all alert policies configured by the user for push notifications.
 //
 // @param request - ListAlertStrategiesRequest
 //
@@ -4510,7 +5192,7 @@ func (client *Client) ListAlertStrategies(request *ListAlertStrategiesRequest) (
 
 // Summary:
 //
-// Retrieves a list of managed or unmanaged instances along with their instance information.
+// Retrieves a list of managed and unmanaged instances along with their instance information.
 //
 // @param request - ListAllInstancesRequest
 //
@@ -4527,10 +5209,6 @@ func (client *Client) ListAllInstancesWithOptions(request *ListAllInstancesReque
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -4567,10 +5245,6 @@ func (client *Client) ListAllInstancesWithOptions(request *ListAllInstancesReque
 		query["region"] = request.Region
 	}
 
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -4597,7 +5271,7 @@ func (client *Client) ListAllInstancesWithOptions(request *ListAllInstancesReque
 
 // Summary:
 //
-// Retrieves a list of managed or unmanaged instances along with their instance information.
+// Retrieves a list of managed and unmanaged instances along with their instance information.
 //
 // @param request - ListAllInstancesRequest
 //
@@ -4616,7 +5290,7 @@ func (client *Client) ListAllInstances(request *ListAllInstancesRequest) (_resul
 
 // Summary:
 //
-// Retrieves the component installation records of a cluster.
+// Retrieves the installation records of cluster components.
 //
 // @param request - ListClusterAgentInstallRecordsRequest
 //
@@ -4633,10 +5307,6 @@ func (client *Client) ListClusterAgentInstallRecordsWithOptions(request *ListClu
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.AgentConfigId) {
 		query["agent_config_id"] = request.AgentConfigId
 	}
@@ -4659,10 +5329,6 @@ func (client *Client) ListClusterAgentInstallRecordsWithOptions(request *ListClu
 
 	if !dara.IsNil(request.PluginVersion) {
 		query["plugin_version"] = request.PluginVersion
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4691,7 +5357,7 @@ func (client *Client) ListClusterAgentInstallRecordsWithOptions(request *ListClu
 
 // Summary:
 //
-// Retrieves the component installation records of a cluster.
+// Retrieves the installation records of cluster components.
 //
 // @param request - ListClusterAgentInstallRecordsRequest
 //
@@ -4727,10 +5393,6 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, head
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.ClusterId) {
 		query["cluster_id"] = request.ClusterId
 	}
@@ -4757,10 +5419,6 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, head
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4825,10 +5483,6 @@ func (client *Client) ListDiagnosisWithOptions(request *ListDiagnosisRequest, he
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -4847,10 +5501,6 @@ func (client *Client) ListDiagnosisWithOptions(request *ListDiagnosisRequest, he
 
 	if !dara.IsNil(request.Status) {
 		query["status"] = request.Status
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4898,7 +5548,7 @@ func (client *Client) ListDiagnosis(request *ListDiagnosisRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves the health status list of cluster nodes or Pods within a specified time range.
+// Retrieves the health status list of cluster nodes or pods within a specified time range.
 //
 // @param request - ListInstanceHealthRequest
 //
@@ -4915,10 +5565,6 @@ func (client *Client) ListInstanceHealthWithOptions(request *ListInstanceHealthR
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Cluster) {
 		query["cluster"] = request.Cluster
 	}
@@ -4941,10 +5587,6 @@ func (client *Client) ListInstanceHealthWithOptions(request *ListInstanceHealthR
 
 	if !dara.IsNil(request.Start) {
 		query["start"] = request.Start
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4973,7 +5615,7 @@ func (client *Client) ListInstanceHealthWithOptions(request *ListInstanceHealthR
 
 // Summary:
 //
-// Retrieves the health status list of cluster nodes or Pods within a specified time range.
+// Retrieves the health status list of cluster nodes or pods within a specified time range.
 //
 // @param request - ListInstanceHealthRequest
 //
@@ -4992,7 +5634,7 @@ func (client *Client) ListInstanceHealth(request *ListInstanceHealthRequest) (_r
 
 // Summary:
 //
-// Retrieves all values of a specified type of instance information.
+// Retrieves all values of a specific type of instance information.
 //
 // @param request - ListInstanceInfoRequest
 //
@@ -5009,10 +5651,6 @@ func (client *Client) ListInstanceInfoWithOptions(request *ListInstanceInfoReque
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.InfoType) {
 		query["infoType"] = request.InfoType
 	}
@@ -5041,10 +5679,6 @@ func (client *Client) ListInstanceInfoWithOptions(request *ListInstanceInfoReque
 		query["region"] = request.Region
 	}
 
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5071,7 +5705,7 @@ func (client *Client) ListInstanceInfoWithOptions(request *ListInstanceInfoReque
 
 // Summary:
 //
-// Retrieves all values of a specified type of instance information.
+// Retrieves all values of a specific type of instance information.
 //
 // @param request - ListInstanceInfoRequest
 //
@@ -5090,7 +5724,7 @@ func (client *Client) ListInstanceInfo(request *ListInstanceInfoRequest) (_resul
 
 // Summary:
 //
-// Retrieves instance statuses.
+// Retrieves the instance status.
 //
 // Description:
 //
@@ -5111,10 +5745,6 @@ func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusR
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -5133,10 +5763,6 @@ func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusR
 
 	if !dara.IsNil(request.Status) {
 		query["status"] = request.Status
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5165,7 +5791,7 @@ func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusR
 
 // Summary:
 //
-// Retrieves instance statuses.
+// Retrieves the instance status.
 //
 // Description:
 //
@@ -5188,7 +5814,7 @@ func (client *Client) ListInstanceStatus(request *ListInstanceStatusRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of instances.
+// Retrieves the list of managed instances.
 //
 // Description:
 //
@@ -5209,10 +5835,6 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.ClusterId) {
 		query["cluster_id"] = request.ClusterId
 	}
@@ -5235,10 +5857,6 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !dara.IsNil(request.Status) {
 		query["status"] = request.Status
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5267,7 +5885,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 // Summary:
 //
-// Retrieves a list of instances.
+// Retrieves the list of managed instances.
 //
 // Description:
 //
@@ -5311,10 +5929,6 @@ func (client *Client) ListInstancesEcsInfoListWithOptions(request *ListInstances
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.InfoType) {
 		query["info_type"] = request.InfoType
 	}
@@ -5333,10 +5947,6 @@ func (client *Client) ListInstancesEcsInfoListWithOptions(request *ListInstances
 
 	if !dara.IsNil(request.Region) {
 		query["region"] = request.Region
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5415,10 +6025,6 @@ func (client *Client) ListInstancesWithEcsInfoWithOptions(tmpReq *ListInstancesW
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -5479,10 +6085,6 @@ func (client *Client) ListInstancesWithEcsInfoWithOptions(tmpReq *ListInstancesW
 		query["resource_group_name"] = request.ResourceGroupName
 	}
 
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5532,7 +6134,7 @@ func (client *Client) ListInstancesWithEcsInfo(request *ListInstancesWithEcsInfo
 
 // Summary:
 //
-// Retrieves the list of instances for plugin installation, update, or uninstallation.
+// Retrieves the list of instances for plug-in installation, update, or uninstallation.
 //
 // Description:
 //
@@ -5553,10 +6155,6 @@ func (client *Client) ListPluginsInstancesWithOptions(request *ListPluginsInstan
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
 	}
@@ -5585,10 +6183,6 @@ func (client *Client) ListPluginsInstancesWithOptions(request *ListPluginsInstan
 		query["region"] = request.Region
 	}
 
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5615,7 +6209,7 @@ func (client *Client) ListPluginsInstancesWithOptions(request *ListPluginsInstan
 
 // Summary:
 //
-// Retrieves the list of instances for plugin installation, update, or uninstallation.
+// Retrieves the list of instances for plug-in installation, update, or uninstallation.
 //
 // Description:
 //
@@ -5655,10 +6249,6 @@ func (client *Client) ListPodsOfInstanceWithOptions(request *ListPodsOfInstanceR
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.ClusterId) {
 		query["cluster_id"] = request.ClusterId
 	}
@@ -5673,10 +6263,6 @@ func (client *Client) ListPodsOfInstanceWithOptions(request *ListPodsOfInstanceR
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5799,16 +6385,8 @@ func (client *Client) ListVmcoreDiagnosisTaskWithOptions(request *ListVmcoreDiag
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Days) {
 		query["days"] = request.Days
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5856,6 +6434,84 @@ func (client *Client) ListVmcoreDiagnosisTask(request *ListVmcoreDiagnosisTaskRe
 
 // Summary:
 //
+// Asynchronously queries the CVE hotfix status on specified instances.
+//
+// Description:
+//
+// The call to this operation to install the agent is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetHotfixTask operation to obtain the execution status of the task.
+//
+// @param request - QueryHotfixStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHotfixStatusResponse
+func (client *Client) QueryHotfixStatusWithOptions(request *QueryHotfixStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryHotfixStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CveId) {
+		body["cveId"] = request.CveId
+	}
+
+	if !dara.IsNil(request.Instances) {
+		body["instances"] = request.Instances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryHotfixStatus"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/hotfix_manager/hotfix/query_status"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryHotfixStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Asynchronously queries the CVE hotfix status on specified instances.
+//
+// Description:
+//
+// The call to this operation to install the agent is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetHotfixTask operation to obtain the execution status of the task.
+//
+// @param request - QueryHotfixStatusRequest
+//
+// @return QueryHotfixStatusResponse
+func (client *Client) QueryHotfixStatus(request *QueryHotfixStatusRequest) (_result *QueryHotfixStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryHotfixStatusResponse{}
+	_body, _err := client.QueryHotfixStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts AI job analysis.
 //
 // @param request - StartAIAnalysisRequest
@@ -5872,15 +6528,6 @@ func (client *Client) StartAIAnalysisWithOptions(request *StartAIAnalysisRequest
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AnalysisTool) {
 		body["analysisTool"] = request.AnalysisTool
@@ -5940,7 +6587,6 @@ func (client *Client) StartAIAnalysisWithOptions(request *StartAIAnalysisRequest
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -5988,7 +6634,7 @@ func (client *Client) StartAIAnalysis(request *StartAIAnalysisRequest) (_result 
 //
 // Description:
 //
-// Currently, only comparative analysis of the same pid across different steps within the same AI Infra analysis record is supported.
+// Currently, only comparative analysis of the same PID across different steps within the same AI Infra analysis record is supported.
 //
 // @param request - StartAIDiffAnalysisRequest
 //
@@ -6004,15 +6650,6 @@ func (client *Client) StartAIDiffAnalysisWithOptions(request *StartAIDiffAnalysi
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Task1) {
 		body["task1"] = request.Task1
@@ -6024,7 +6661,6 @@ func (client *Client) StartAIDiffAnalysisWithOptions(request *StartAIDiffAnalysi
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6053,7 +6689,7 @@ func (client *Client) StartAIDiffAnalysisWithOptions(request *StartAIDiffAnalysi
 //
 // Description:
 //
-// Currently, only comparative analysis of the same pid across different steps within the same AI Infra analysis record is supported.
+// Currently, only comparative analysis of the same PID across different steps within the same AI Infra analysis record is supported.
 //
 // @param request - StartAIDiffAnalysisRequest
 //
@@ -6063,6 +6699,92 @@ func (client *Client) StartAIDiffAnalysis(request *StartAIDiffAnalysisRequest) (
 	headers := make(map[string]*string)
 	_result = &StartAIDiffAnalysisResponse{}
 	_body, _err := client.StartAIDiffAnalysisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Triggers AI application diagnostics.
+//
+// Description:
+//
+// Currently, only comparative analysis of the same PID across different steps within the same AI Infra analysis record is supported.
+//
+// @param request - StartAifgAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAifgAnalysisResponse
+func (client *Client) StartAifgAnalysisWithOptions(request *StartAifgAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartAifgAnalysisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		body["channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.Params) {
+		body["params"] = request.Params
+	}
+
+	if !dara.IsNil(request.Region) {
+		body["region"] = request.Region
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		body["serviceName"] = request.ServiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartAifgAnalysis"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aifg/startAifgAnalysis"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartAifgAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Triggers AI application diagnostics.
+//
+// Description:
+//
+// Currently, only comparative analysis of the same PID across different steps within the same AI Infra analysis record is supported.
+//
+// @param request - StartAifgAnalysisRequest
+//
+// @return StartAifgAnalysisResponse
+func (client *Client) StartAifgAnalysis(request *StartAifgAnalysisRequest) (_result *StartAifgAnalysisResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartAifgAnalysisResponse{}
+	_body, _err := client.StartAifgAnalysisWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6092,15 +6814,6 @@ func (client *Client) UninstallAgentWithOptions(request *UninstallAgentRequest, 
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agent_id"] = request.AgentId
@@ -6116,7 +6829,6 @@ func (client *Client) UninstallAgentWithOptions(request *UninstallAgentRequest, 
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6180,15 +6892,6 @@ func (client *Client) UninstallAgentForClusterWithOptions(request *UninstallAgen
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agent_id"] = request.AgentId
@@ -6204,7 +6907,6 @@ func (client *Client) UninstallAgentForClusterWithOptions(request *UninstallAgen
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6252,7 +6954,7 @@ func (client *Client) UninstallAgentForCluster(request *UninstallAgentForCluster
 //
 // Description:
 //
-// Calling this operation to uninstall an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
+// Calling this operation to uninstall an Agent is asynchronous. After the call, a task_id is returned. Use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UninstallAgentWithTypeRequest
 //
@@ -6268,15 +6970,6 @@ func (client *Client) UninstallAgentWithTypeWithOptions(request *UninstallAgentW
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agentId"] = request.AgentId
@@ -6296,7 +6989,6 @@ func (client *Client) UninstallAgentWithTypeWithOptions(request *UninstallAgentW
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6325,7 +7017,7 @@ func (client *Client) UninstallAgentWithTypeWithOptions(request *UninstallAgentW
 //
 // Description:
 //
-// Calling this operation to uninstall an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
+// Calling this operation to uninstall an Agent is asynchronous. After the call, a task_id is returned. Use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UninstallAgentWithTypeRequest
 //
@@ -6335,6 +7027,166 @@ func (client *Client) UninstallAgentWithType(request *UninstallAgentWithTypeRequ
 	headers := make(map[string]*string)
 	_result = &UninstallAgentWithTypeResponse{}
 	_body, _err := client.UninstallAgentWithTypeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Asynchronously uninstalls CVE hotfixes from the specified instances.
+//
+// Description:
+//
+// This operation is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
+//
+// @param request - UninstallHotfixRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallHotfixResponse
+func (client *Client) UninstallHotfixWithOptions(request *UninstallHotfixRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UninstallHotfixResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CveId) {
+		body["cveId"] = request.CveId
+	}
+
+	if !dara.IsNil(request.Instances) {
+		body["instances"] = request.Instances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallHotfix"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/hotfix_manager/hotfix/uninstall"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallHotfixResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Asynchronously uninstalls CVE hotfixes from the specified instances.
+//
+// Description:
+//
+// This operation is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
+//
+// @param request - UninstallHotfixRequest
+//
+// @return UninstallHotfixResponse
+func (client *Client) UninstallHotfix(request *UninstallHotfixRequest) (_result *UninstallHotfixResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UninstallHotfixResponse{}
+	_body, _err := client.UninstallHotfixWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the component configuration.
+//
+// Description:
+//
+// After the configuration is updated, the new configuration is delivered to all resources that use it.
+//
+// @param request - UpdateAgentConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentConfigResponse
+func (client *Client) UpdateAgentConfigWithOptions(request *UpdateAgentConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAgentConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		body["configId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.Content) {
+		body["content"] = request.Content
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgentConfig"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/updateAgentConfig"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the component configuration.
+//
+// Description:
+//
+// After the configuration is updated, the new configuration is delivered to all resources that use it.
+//
+// @param request - UpdateAgentConfigRequest
+//
+// @return UpdateAgentConfigResponse
+func (client *Client) UpdateAgentConfig(request *UpdateAgentConfigRequest) (_result *UpdateAgentConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAgentConfigResponse{}
+	_body, _err := client.UpdateAgentConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6364,15 +7216,6 @@ func (client *Client) UpdateAlertDestinationWithOptions(request *UpdateAlertDest
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		body["app_id"] = request.AppId
@@ -6412,7 +7255,6 @@ func (client *Client) UpdateAlertDestinationWithOptions(request *UpdateAlertDest
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6476,15 +7318,6 @@ func (client *Client) UpdateAlertEnabledWithOptions(request *UpdateAlertEnabledR
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Enabled) {
 		body["enabled"] = request.Enabled
@@ -6496,7 +7329,6 @@ func (client *Client) UpdateAlertEnabledWithOptions(request *UpdateAlertEnabledR
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6556,15 +7388,6 @@ func (client *Client) UpdateAlertStrategyWithOptions(request *UpdateAlertStrateg
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Enabled) {
 		body["enabled"] = request.Enabled
@@ -6588,7 +7411,6 @@ func (client *Client) UpdateAlertStrategyWithOptions(request *UpdateAlertStrateg
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6632,6 +7454,80 @@ func (client *Client) UpdateAlertStrategy(request *UpdateAlertStrategyRequest) (
 
 // Summary:
 //
+// Updates the configuration of a cluster component.
+//
+// @param request - UpdateClusterAgentConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClusterAgentConfigResponse
+func (client *Client) UpdateClusterAgentConfigWithOptions(request *UpdateClusterAgentConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateClusterAgentConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["clusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		body["configId"] = request.ConfigId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateClusterAgentConfig"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/updateClusterAgentConfig"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateClusterAgentConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the configuration of a cluster component.
+//
+// @param request - UpdateClusterAgentConfigRequest
+//
+// @return UpdateClusterAgentConfigResponse
+func (client *Client) UpdateClusterAgentConfig(request *UpdateClusterAgentConfigRequest) (_result *UpdateClusterAgentConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateClusterAgentConfigResponse{}
+	_body, _err := client.UpdateClusterAgentConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the attention level of an anomaly item. Adjusting the attention level affects the sensitivity of the anomaly detection algorithm.
 //
 // @param request - UpdateEventsAttentionRequest
@@ -6648,15 +7544,6 @@ func (client *Client) UpdateEventsAttentionWithOptions(request *UpdateEventsAtte
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {
 		body["mode"] = request.Mode
@@ -6672,7 +7559,6 @@ func (client *Client) UpdateEventsAttentionWithOptions(request *UpdateEventsAtte
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6745,10 +7631,6 @@ func (client *Client) UpdateFuncSwitchRecordWithOptions(tmpReq *UpdateFuncSwitch
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
 	if !dara.IsNil(request.Channel) {
 		query["channel"] = request.Channel
 	}
@@ -6759,10 +7641,6 @@ func (client *Client) UpdateFuncSwitchRecordWithOptions(tmpReq *UpdateFuncSwitch
 
 	if !dara.IsNil(request.ServiceName) {
 		query["service_name"] = request.ServiceName
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6816,11 +7694,85 @@ func (client *Client) UpdateFuncSwitchRecord(request *UpdateFuncSwitchRecordRequ
 
 // Summary:
 //
-// Updates the version of an installed component to a specified version.
+// Updates the component configuration of an instance.
+//
+// @param request - UpdateInstanceAgentConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceAgentConfigResponse
+func (client *Client) UpdateInstanceAgentConfigWithOptions(request *UpdateInstanceAgentConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceAgentConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		body["configId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.Instances) {
+		body["instances"] = request.Instances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstanceAgentConfig"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/updateInstanceAgentConfig"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstanceAgentConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the component configuration of an instance.
+//
+// @param request - UpdateInstanceAgentConfigRequest
+//
+// @return UpdateInstanceAgentConfigResponse
+func (client *Client) UpdateInstanceAgentConfig(request *UpdateInstanceAgentConfigRequest) (_result *UpdateInstanceAgentConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceAgentConfigResponse{}
+	_body, _err := client.UpdateInstanceAgentConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an installed component to a specified version.
 //
 // Description:
 //
-// Calling this operation to update the Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
+// Calling this operation to update an Agent is asynchronous. After the call, a task_id is returned. Use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UpgradeAgentRequest
 //
@@ -6836,15 +7788,6 @@ func (client *Client) UpgradeAgentWithOptions(request *UpgradeAgentRequest, head
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agent_id"] = request.AgentId
@@ -6860,7 +7803,6 @@ func (client *Client) UpgradeAgentWithOptions(request *UpgradeAgentRequest, head
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6885,11 +7827,11 @@ func (client *Client) UpgradeAgentWithOptions(request *UpgradeAgentRequest, head
 
 // Summary:
 //
-// Updates the version of an installed component to a specified version.
+// Updates an installed component to a specified version.
 //
 // Description:
 //
-// Calling this operation to update the Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
+// Calling this operation to update an Agent is asynchronous. After the call, a task_id is returned. Use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UpgradeAgentRequest
 //
@@ -6908,7 +7850,7 @@ func (client *Client) UpgradeAgent(request *UpgradeAgentRequest) (_result *Upgra
 
 // Summary:
 //
-// Updates a component for an ACK cluster.
+// Updates a component for a cluster.
 //
 // @param request - UpgradeAgentForClusterRequest
 //
@@ -6924,15 +7866,6 @@ func (client *Client) UpgradeAgentForClusterWithOptions(request *UpgradeAgentFor
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agent_id"] = request.AgentId
@@ -6948,7 +7881,6 @@ func (client *Client) UpgradeAgentForClusterWithOptions(request *UpgradeAgentFor
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -6973,7 +7905,7 @@ func (client *Client) UpgradeAgentForClusterWithOptions(request *UpgradeAgentFor
 
 // Summary:
 //
-// Updates a component for an ACK cluster.
+// Updates a component for a cluster.
 //
 // @param request - UpgradeAgentForClusterRequest
 //
@@ -6996,7 +7928,7 @@ func (client *Client) UpgradeAgentForCluster(request *UpgradeAgentForClusterRequ
 //
 // Description:
 //
-// Calling this operation to update the Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
+// Calling this operation to update an Agent is asynchronous. After the call, a task_id is returned. Use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UpgradeAgentWithTypeRequest
 //
@@ -7012,15 +7944,6 @@ func (client *Client) UpgradeAgentWithTypeWithOptions(request *UpgradeAgentWithT
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		body["agentId"] = request.AgentId
@@ -7040,7 +7963,6 @@ func (client *Client) UpgradeAgentWithTypeWithOptions(request *UpgradeAgentWithT
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -7069,7 +7991,7 @@ func (client *Client) UpgradeAgentWithTypeWithOptions(request *UpgradeAgentWithT
 //
 // Description:
 //
-// Calling this operation to update the Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
+// Calling this operation to update an Agent is asynchronous. After the call, a task_id is returned. Use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UpgradeAgentWithTypeRequest
 //
@@ -7094,15 +8016,6 @@ func (client *Client) cpuHighAgentStreamResponseWithSSE_opYieldFunc(_yield chan 
 			return
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LlmParamString) {
 		body["llmParamString"] = request.LlmParamString
@@ -7110,7 +8023,6 @@ func (client *Client) cpuHighAgentStreamResponseWithSSE_opYieldFunc(_yield chan 
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -7153,15 +8065,6 @@ func (client *Client) generateCopilotStreamResponseWithSSE_opYieldFunc(_yield ch
 			return
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LlmParamString) {
 		body["llmParamString"] = request.LlmParamString
@@ -7169,7 +8072,6 @@ func (client *Client) generateCopilotStreamResponseWithSSE_opYieldFunc(_yield ch
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{

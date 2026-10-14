@@ -22,9 +22,9 @@ type iCheckInstanceSupportResponseBody interface {
 type CheckInstanceSupportResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CheckInstanceSupportResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data []*CheckInstanceSupportResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error message. This field contains the error information when code is not Success.
+	// The error message. This field contains detailed error information when code is not Success.
 	//
 	// example:
 	//
@@ -110,17 +110,17 @@ type CheckInstanceSupportResponseBodyData struct {
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// The reason why the instance cannot be managed. This value is not empty when success is false.
+	// The reason why the instance is not supported for management. This value is not empty when support is false.
 	//
 	// example:
 	//
 	// instance not found in ecs
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// Indicates whether the instance can be managed by SysOM.
+	// Indicates whether the instance is supported for management by SysOM.
 	//
-	// - **true**: The instance can be managed by SysOM.
+	// - **true**: The instance is supported for management by SysOM.
 	//
-	// - **false**: The instance cannot be managed by SysOM.
+	// - **false**: The instance is not supported for management by SysOM.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type GetVmcoreDiagnosisTaskResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetVmcoreDiagnosisTaskResponseBodyData struct {
 	//
 	// vmcore
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// The download URLs of related files associated with the task.
+	// The download links for files related to the task.
 	Urls *GetVmcoreDiagnosisTaskResponseBodyDataUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
 }
 
@@ -225,25 +225,25 @@ func (s *GetVmcoreDiagnosisTaskResponseBodyData) Validate() error {
 }
 
 type GetVmcoreDiagnosisTaskResponseBodyDataUrls struct {
-	// The download URL of the debuginfo-common RPM package.
+	// The download link for the debuginfo-common RPM package.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo-common/file/path
 	DebuginfoCommonUrl *string `json:"debuginfoCommonUrl,omitempty" xml:"debuginfoCommonUrl,omitempty"`
-	// The download URL of the debuginfo RPM package.
+	// The download link for the debuginfo RPM package.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo/file/path
 	DebuginfoUrl *string `json:"debuginfoUrl,omitempty" xml:"debuginfoUrl,omitempty"`
-	// The download URL of the dmesg log.
+	// The download link for the dmesg log.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/dmesg/file/path
 	DmesgUrl *string `json:"dmesgUrl,omitempty" xml:"dmesgUrl,omitempty"`
-	// The download URL of the vmcore file.
+	// The download link for the vmcore file.
 	//
 	// example:
 	//

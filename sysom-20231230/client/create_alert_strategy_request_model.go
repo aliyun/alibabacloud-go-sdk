@@ -9,8 +9,6 @@ type iCreateAlertStrategyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *CreateAlertStrategyRequest
-	GetXDebugId() *string
 	SetEnabled(v bool) *CreateAlertStrategyRequest
 	GetEnabled() *bool
 	SetK8sLabel(v bool) *CreateAlertStrategyRequest
@@ -19,12 +17,9 @@ type iCreateAlertStrategyRequest interface {
 	GetName() *string
 	SetStrategy(v *CreateAlertStrategyRequestStrategy) *CreateAlertStrategyRequest
 	GetStrategy() *CreateAlertStrategyRequestStrategy
-	SetXSysomInvokeSource(v string) *CreateAlertStrategyRequest
-	GetXSysomInvokeSource() *string
 }
 
 type CreateAlertStrategyRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// Specifies whether the alert policy is enabled.
 	//
 	// This parameter is required.
@@ -46,8 +41,7 @@ type CreateAlertStrategyRequest struct {
 	// The details of the alert policy.
 	//
 	// This parameter is required.
-	Strategy           *CreateAlertStrategyRequestStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
-	XSysomInvokeSource *string                             `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Strategy *CreateAlertStrategyRequestStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
 }
 
 func (s CreateAlertStrategyRequest) String() string {
@@ -56,10 +50,6 @@ func (s CreateAlertStrategyRequest) String() string {
 
 func (s CreateAlertStrategyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateAlertStrategyRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *CreateAlertStrategyRequest) GetEnabled() *bool {
@@ -76,15 +66,6 @@ func (s *CreateAlertStrategyRequest) GetName() *string {
 
 func (s *CreateAlertStrategyRequest) GetStrategy() *CreateAlertStrategyRequestStrategy {
 	return s.Strategy
-}
-
-func (s *CreateAlertStrategyRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *CreateAlertStrategyRequest) SetXDebugId(v string) *CreateAlertStrategyRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *CreateAlertStrategyRequest) SetEnabled(v bool) *CreateAlertStrategyRequest {
@@ -107,11 +88,6 @@ func (s *CreateAlertStrategyRequest) SetStrategy(v *CreateAlertStrategyRequestSt
 	return s
 }
 
-func (s *CreateAlertStrategyRequest) SetXSysomInvokeSource(v string) *CreateAlertStrategyRequest {
-	s.XSysomInvokeSource = &v
-	return s
-}
-
 func (s *CreateAlertStrategyRequest) Validate() error {
 	if s.Strategy != nil {
 		if err := s.Strategy.Validate(); err != nil {
@@ -122,11 +98,11 @@ func (s *CreateAlertStrategyRequest) Validate() error {
 }
 
 type CreateAlertStrategyRequestStrategy struct {
-	// The collection of clusters for which alerts are received.
+	// The collection of clusters that receive alerts.
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	// The alert contacts.
 	Destinations []*int32 `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// The collection of anomaly items for which alerts are received.
+	// The collection of exception items that receive alerts.
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

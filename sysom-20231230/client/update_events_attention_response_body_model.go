@@ -26,17 +26,17 @@ type UpdateEventsAttentionResponseBody struct {
 	//
 	// 44841312-7227-55C9-AE03-D59729BFAE38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code. Valid values:
+	// The status code.
 	//
-	// - Success: The authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other values: The authorization failed. Check the message field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *UpdateEventsAttentionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//

@@ -9,20 +9,15 @@ type iUpdateFuncSwitchRecordRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *UpdateFuncSwitchRecordRequest
-	GetXDebugId() *string
 	SetChannel(v string) *UpdateFuncSwitchRecordRequest
 	GetChannel() *string
 	SetParams(v *UpdateFuncSwitchRecordRequestParams) *UpdateFuncSwitchRecordRequest
 	GetParams() *UpdateFuncSwitchRecordRequestParams
 	SetServiceName(v string) *UpdateFuncSwitchRecordRequest
 	GetServiceName() *string
-	SetXSysomInvokeSource(v string) *UpdateFuncSwitchRecordRequest
-	GetXSysomInvokeSource() *string
 }
 
 type UpdateFuncSwitchRecordRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The diagnostic channel. Currently, this parameter is fixed to the ECS channel.
 	//
 	// This parameter is required.
@@ -31,7 +26,7 @@ type UpdateFuncSwitchRecordRequest struct {
 	//
 	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match specified values.
+	// The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
 	//
 	// This parameter is required.
 	Params *UpdateFuncSwitchRecordRequestParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
@@ -42,8 +37,7 @@ type UpdateFuncSwitchRecordRequest struct {
 	// example:
 	//
 	// livetrace
-	ServiceName        *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
 }
 
 func (s UpdateFuncSwitchRecordRequest) String() string {
@@ -52,10 +46,6 @@ func (s UpdateFuncSwitchRecordRequest) String() string {
 
 func (s UpdateFuncSwitchRecordRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateFuncSwitchRecordRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *UpdateFuncSwitchRecordRequest) GetChannel() *string {
@@ -70,15 +60,6 @@ func (s *UpdateFuncSwitchRecordRequest) GetServiceName() *string {
 	return s.ServiceName
 }
 
-func (s *UpdateFuncSwitchRecordRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *UpdateFuncSwitchRecordRequest) SetXDebugId(v string) *UpdateFuncSwitchRecordRequest {
-	s.XDebugId = &v
-	return s
-}
-
 func (s *UpdateFuncSwitchRecordRequest) SetChannel(v string) *UpdateFuncSwitchRecordRequest {
 	s.Channel = &v
 	return s
@@ -91,11 +72,6 @@ func (s *UpdateFuncSwitchRecordRequest) SetParams(v *UpdateFuncSwitchRecordReque
 
 func (s *UpdateFuncSwitchRecordRequest) SetServiceName(v string) *UpdateFuncSwitchRecordRequest {
 	s.ServiceName = &v
-	return s
-}
-
-func (s *UpdateFuncSwitchRecordRequest) SetXSysomInvokeSource(v string) *UpdateFuncSwitchRecordRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 
@@ -229,7 +205,7 @@ type UpdateFuncSwitchRecordRequestParamsArgs struct {
 	//
 	// true
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The start duration. Unit: seconds.
+	// The start duration, in seconds (s).
 	//
 	// example:
 	//

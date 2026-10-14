@@ -24,7 +24,7 @@ type GetInstantScoreResponseBody struct {
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization has failed. If the authorization has failed, check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetInstantScoreResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information of the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//

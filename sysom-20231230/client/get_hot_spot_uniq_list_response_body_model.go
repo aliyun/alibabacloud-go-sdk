@@ -34,7 +34,7 @@ type GetHotSpotUniqListResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data *GetHotSpotUniqListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type GetHotSpotUniqListResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API call is successful. true: successful. false: failed.
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// - true: The API call is successful.
+	//
+	// - false: The API call failed.
 	//
 	// example:
 	//

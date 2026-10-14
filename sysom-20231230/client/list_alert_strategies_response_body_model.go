@@ -28,9 +28,9 @@ type iListAlertStrategiesResponseBody interface {
 type ListAlertStrategiesResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListAlertStrategiesResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information for the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -176,8 +176,9 @@ type ListAlertStrategiesResponseBodyData struct {
 	// example:
 	//
 	// 1
-	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Indicates whether Kubernetes labels are required.
+	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// The policy name.
 	//
 	// example:
@@ -290,10 +291,11 @@ func (s *ListAlertStrategiesResponseBodyData) Validate() error {
 }
 
 type ListAlertStrategiesResponseBodyDataStrategy struct {
-	// The collection of clusters for which alerts are received.
-	Clusters     []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
-	Destinations []*int32  `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// 接收告警的异常项列表
+	// The collection of clusters that receive alerts.
+	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
+	// The list of alert contacts and policy destinations.
+	Destinations []*int32 `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
+	// The list of anomaly items that receive alerts.
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

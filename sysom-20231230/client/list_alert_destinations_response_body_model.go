@@ -28,7 +28,7 @@ type iListAlertDestinationsResponseBody interface {
 type ListAlertDestinationsResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - `code == Success` indicates that the authorization was successful.
 	//
 	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
@@ -52,7 +52,7 @@ type ListAlertDestinationsResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information for the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAlertDestinationsResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The maximum number of records returned by this request based on MaxResults.
+	// The maximum number of records returned by MaxResults for this request.
 	//
 	// example:
 	//

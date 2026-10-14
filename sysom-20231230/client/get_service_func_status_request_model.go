@@ -9,20 +9,15 @@ type iGetServiceFuncStatusRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *GetServiceFuncStatusRequest
-	GetXDebugId() *string
 	SetChannel(v string) *GetServiceFuncStatusRequest
 	GetChannel() *string
 	SetParams(v *GetServiceFuncStatusRequestParams) *GetServiceFuncStatusRequest
 	GetParams() *GetServiceFuncStatusRequestParams
 	SetServiceName(v string) *GetServiceFuncStatusRequest
 	GetServiceName() *string
-	SetXSysomInvokeSource(v string) *GetServiceFuncStatusRequest
-	GetXSysomInvokeSource() *string
 }
 
 type GetServiceFuncStatusRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The channel name.
 	//
 	// This parameter is required.
@@ -42,8 +37,7 @@ type GetServiceFuncStatusRequest struct {
 	// example:
 	//
 	// livetrace
-	ServiceName        *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
 }
 
 func (s GetServiceFuncStatusRequest) String() string {
@@ -52,10 +46,6 @@ func (s GetServiceFuncStatusRequest) String() string {
 
 func (s GetServiceFuncStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetServiceFuncStatusRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *GetServiceFuncStatusRequest) GetChannel() *string {
@@ -70,15 +60,6 @@ func (s *GetServiceFuncStatusRequest) GetServiceName() *string {
 	return s.ServiceName
 }
 
-func (s *GetServiceFuncStatusRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *GetServiceFuncStatusRequest) SetXDebugId(v string) *GetServiceFuncStatusRequest {
-	s.XDebugId = &v
-	return s
-}
-
 func (s *GetServiceFuncStatusRequest) SetChannel(v string) *GetServiceFuncStatusRequest {
 	s.Channel = &v
 	return s
@@ -91,11 +72,6 @@ func (s *GetServiceFuncStatusRequest) SetParams(v *GetServiceFuncStatusRequestPa
 
 func (s *GetServiceFuncStatusRequest) SetServiceName(v string) *GetServiceFuncStatusRequest {
 	s.ServiceName = &v
-	return s
-}
-
-func (s *GetServiceFuncStatusRequest) SetXSysomInvokeSource(v string) *GetServiceFuncStatusRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

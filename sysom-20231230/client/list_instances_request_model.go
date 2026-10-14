@@ -9,8 +9,6 @@ type iListInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListInstancesRequest
-	GetXDebugId() *string
 	SetClusterId(v string) *ListInstancesRequest
 	GetClusterId() *string
 	SetCurrent(v int64) *ListInstancesRequest
@@ -23,19 +21,16 @@ type iListInstancesRequest interface {
 	GetRegion() *string
 	SetStatus(v string) *ListInstancesRequest
 	GetStatus() *string
-	SetXSysomInvokeSource(v string) *ListInstancesRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListInstancesRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The cluster ID.
 	//
 	// example:
 	//
 	// xxxxx
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The current page number. This field exists when pagination is used.
+	// The current page number. This field is present when pagination is used.
 	//
 	// example:
 	//
@@ -64,8 +59,7 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// Running
-	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -74,10 +68,6 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListInstancesRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListInstancesRequest) GetClusterId() *string {
@@ -102,15 +92,6 @@ func (s *ListInstancesRequest) GetRegion() *string {
 
 func (s *ListInstancesRequest) GetStatus() *string {
 	return s.Status
-}
-
-func (s *ListInstancesRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListInstancesRequest) SetXDebugId(v string) *ListInstancesRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListInstancesRequest) SetClusterId(v string) *ListInstancesRequest {
@@ -140,11 +121,6 @@ func (s *ListInstancesRequest) SetRegion(v string) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 	s.Status = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetXSysomInvokeSource(v string) *ListInstancesRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

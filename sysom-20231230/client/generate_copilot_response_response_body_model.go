@@ -26,7 +26,7 @@ type GenerateCopilotResponseResponseBody struct {
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned by the LLM service. The value is of the string type. If the value is a dict, convert and parse it on your own.
+	// The data returned by the LLM service in string type. If the data is a dict, convert and parse it yourself.
 	//
 	// example:
 	//

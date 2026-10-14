@@ -26,23 +26,23 @@ type UpgradeAgentResponseBody struct {
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The status code. Valid values:
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - Success: The authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other values indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *UpgradeAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If code is Success, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the error information of the request.
 	//
 	// example:
 	//

@@ -85,13 +85,13 @@ func (s *GetAbnormalEventsCountResponseBody) Validate() error {
 type GetAbnormalEventsCountResponseBodyData struct {
 	// The list of abnormal events.
 	EventList []*string `json:"eventList,omitempty" xml:"eventList,omitempty" type:"Repeated"`
-	// The type of the abnormal event.
+	// The type of the abnormality.
 	//
 	// example:
 	//
 	// health
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The number of abnormal events of this type.
+	// The number of abnormalities of this type.
 	//
 	// example:
 	//

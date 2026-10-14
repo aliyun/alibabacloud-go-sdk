@@ -141,7 +141,7 @@ type ListClusterAgentInstallRecordsResponseBodyData struct {
 	//
 	// 2024-12-25T15:08:19
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// The canary release environment.
+	// The grayscale configuration.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type ListClusterAgentInstallRecordsResponseBodyData struct {
 	//
 	// 3.4.0-1
 	PluginVersion *string `json:"plugin_version,omitempty" xml:"plugin_version,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//

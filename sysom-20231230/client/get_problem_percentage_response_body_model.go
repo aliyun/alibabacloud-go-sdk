@@ -125,13 +125,13 @@ func (s *GetProblemPercentageResponseBody) Validate() error {
 }
 
 type GetProblemPercentageResponseBodyData struct {
-	// The type of the abnormal item.
+	// The anomaly item type.
 	//
 	// example:
 	//
 	// saturation
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The number of abnormal items of this type.
+	// The number of anomaly items of this type.
 	//
 	// example:
 	//

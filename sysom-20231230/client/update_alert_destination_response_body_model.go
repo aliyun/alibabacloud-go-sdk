@@ -30,7 +30,7 @@ type UpdateAlertDestinationResponseBody struct {
 	//
 	// SysomOpenAPI.InvalidParameter
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The response result.
 	//
 	// example:
 	//

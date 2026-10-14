@@ -22,9 +22,9 @@ type iStartAIDiffAnalysisResponseBody interface {
 type StartAIDiffAnalysisResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that authorization is successful.
+	// - If code is Success, the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization has failed. Check the message field for the detailed fault information.
 	//
 	// example:
 	//
@@ -38,31 +38,31 @@ type StartAIDiffAnalysisResponseBody struct {
 	//
 	//   {
 	//
-	//       name: "xxx", #operator name
+	//       name: "xxx", # Operator name
 	//
-	//       before_time: 2, # total time of the former
+	//       before_time: 2, # Total time of the former
 	//
-	//       after_time: 4, # total time of the latter
+	//       after_time: 4, # Total time of the latter
 	//
-	//       time_diff: 2,  # time difference
+	//       time_diff: 2,  # Time difference
 	//
-	//       before_time_perc: "80%", # total time percentage of the former
+	//       before_time_perc: "80%", # Total time percentage of the former
 	//
-	//       after_time_perc: "23%", # total time percentage of the latter
+	//       after_time_perc: "23%", # Total time percentage of the latter
 	//
-	//       time_perc_diff: "-54%",  # time percentage difference
+	//       time_perc_diff: "-54%",  # Time percentage difference
 	//
-	//       before_count: 1, # total call count of the former
+	//       before_count: 1, # Total call count of the former
 	//
-	//       after_count: 2,  # total call count of the latter
+	//       after_count: 2,  # Total call count of the latter
 	//
-	//       count_diff: 1,   # call count difference
+	//       count_diff: 1,   # Call count difference
 	//
-	//       before_count_perc: "56%", # total call percentage of the former
+	//       before_count_perc: "56%", # Total call percentage of the former
 	//
-	//       after_count_perc: "32%",  # total call percentage of the latter
+	//       after_count_perc: "32%",  # Total call percentage of the latter
 	//
-	//       count_perc_diff: "44%",   # call percentage difference
+	//       count_perc_diff: "44%",   # Call percentage difference
 	//
 	//   },
 	//

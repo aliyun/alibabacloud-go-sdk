@@ -9,8 +9,6 @@ type iGetHotspotCompareRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *GetHotspotCompareRequest
-	GetXDebugId() *string
 	SetBeg1End(v int64) *GetHotspotCompareRequest
 	GetBeg1End() *int64
 	SetBeg1Start(v int64) *GetHotspotCompareRequest
@@ -31,12 +29,9 @@ type iGetHotspotCompareRequest interface {
 	GetPid2() *int64
 	SetTable(v string) *GetHotspotCompareRequest
 	GetTable() *string
-	SetXSysomInvokeSource(v string) *GetHotspotCompareRequest
-	GetXSysomInvokeSource() *string
 }
 
 type GetHotspotCompareRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The end time 1.
 	//
 	// This parameter is required.
@@ -110,8 +105,7 @@ type GetHotspotCompareRequest struct {
 	// example:
 	//
 	// prof_on
-	Table              *string `json:"table,omitempty" xml:"table,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s GetHotspotCompareRequest) String() string {
@@ -120,10 +114,6 @@ func (s GetHotspotCompareRequest) String() string {
 
 func (s GetHotspotCompareRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHotspotCompareRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *GetHotspotCompareRequest) GetBeg1End() *int64 {
@@ -164,15 +154,6 @@ func (s *GetHotspotCompareRequest) GetPid2() *int64 {
 
 func (s *GetHotspotCompareRequest) GetTable() *string {
 	return s.Table
-}
-
-func (s *GetHotspotCompareRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *GetHotspotCompareRequest) SetXDebugId(v string) *GetHotspotCompareRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *GetHotspotCompareRequest) SetBeg1End(v int64) *GetHotspotCompareRequest {
@@ -222,11 +203,6 @@ func (s *GetHotspotCompareRequest) SetPid2(v int64) *GetHotspotCompareRequest {
 
 func (s *GetHotspotCompareRequest) SetTable(v string) *GetHotspotCompareRequest {
 	s.Table = &v
-	return s
-}
-
-func (s *GetHotspotCompareRequest) SetXSysomInvokeSource(v string) *GetHotspotCompareRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

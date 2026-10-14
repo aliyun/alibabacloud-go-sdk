@@ -24,9 +24,9 @@ type iListInstanceHealthResponseBody interface {
 type ListInstanceHealthResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListInstanceHealthResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information of the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ func (s *ListInstanceHealthResponseBody) Validate() error {
 }
 
 type ListInstanceHealthResponseBodyData struct {
-	// The list of container image names in the Pod.
+	// The list of container image names in the pod.
 	Images []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -133,13 +133,13 @@ type ListInstanceHealthResponseBodyData struct {
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// The namespace of the Pod.
+	// The namespace of the pod.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The Pod name.
+	// The pod name.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ type ListInstanceHealthResponseBodyData struct {
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
 	// The running status of the instance. Valid values:
 	//
-	// - **Running**: running.
+	// - **Running**: Running.
 	//
-	// - **Offline**: offline.
+	// - **Offline**: Offline.
 	//
 	//
 	//
-	// > An instance in the Offline state indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
+	// > An instance in the Offline status indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
 	//
 	// example:
 	//

@@ -9,18 +9,13 @@ type iStartAIDiffAnalysisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *StartAIDiffAnalysisRequest
-	GetXDebugId() *string
 	SetTask1(v *StartAIDiffAnalysisRequestTask1) *StartAIDiffAnalysisRequest
 	GetTask1() *StartAIDiffAnalysisRequestTask1
 	SetTask2(v *StartAIDiffAnalysisRequestTask2) *StartAIDiffAnalysisRequest
 	GetTask2() *StartAIDiffAnalysisRequestTask2
-	SetXSysomInvokeSource(v string) *StartAIDiffAnalysisRequest
-	GetXSysomInvokeSource() *string
 }
 
 type StartAIDiffAnalysisRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The task1 parameters.
 	//
 	// This parameter is required.
@@ -35,9 +30,8 @@ type StartAIDiffAnalysisRequest struct {
 	//
 	// example:
 	//
-	// task2 parameters. Currently, only comparison with the same analysisId and pid is supported
-	Task2              *StartAIDiffAnalysisRequestTask2 `json:"task2,omitempty" xml:"task2,omitempty" type:"Struct"`
-	XSysomInvokeSource *string                          `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	// task2 parameters. Currently, only comparison with the same analysisId and PID is supported
+	Task2 *StartAIDiffAnalysisRequestTask2 `json:"task2,omitempty" xml:"task2,omitempty" type:"Struct"`
 }
 
 func (s StartAIDiffAnalysisRequest) String() string {
@@ -48,25 +42,12 @@ func (s StartAIDiffAnalysisRequest) GoString() string {
 	return s.String()
 }
 
-func (s *StartAIDiffAnalysisRequest) GetXDebugId() *string {
-	return s.XDebugId
-}
-
 func (s *StartAIDiffAnalysisRequest) GetTask1() *StartAIDiffAnalysisRequestTask1 {
 	return s.Task1
 }
 
 func (s *StartAIDiffAnalysisRequest) GetTask2() *StartAIDiffAnalysisRequestTask2 {
 	return s.Task2
-}
-
-func (s *StartAIDiffAnalysisRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *StartAIDiffAnalysisRequest) SetXDebugId(v string) *StartAIDiffAnalysisRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *StartAIDiffAnalysisRequest) SetTask1(v *StartAIDiffAnalysisRequestTask1) *StartAIDiffAnalysisRequest {
@@ -76,11 +57,6 @@ func (s *StartAIDiffAnalysisRequest) SetTask1(v *StartAIDiffAnalysisRequestTask1
 
 func (s *StartAIDiffAnalysisRequest) SetTask2(v *StartAIDiffAnalysisRequestTask2) *StartAIDiffAnalysisRequest {
 	s.Task2 = v
-	return s
-}
-
-func (s *StartAIDiffAnalysisRequest) SetXSysomInvokeSource(v string) *StartAIDiffAnalysisRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 
@@ -105,7 +81,7 @@ type StartAIDiffAnalysisRequestTask1 struct {
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426
 	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
-	// The process IDs (PIDs) of AI job processes. Batch input is supported with comma-separated values.
+	// The PIDs of AI job processes. You can specify multiple PIDs separated by commas.
 	Pids []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
 	// The step end time, calculated based on the selected step number.
 	//
@@ -178,7 +154,7 @@ type StartAIDiffAnalysisRequestTask2 struct {
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426
 	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
-	// The process IDs (PIDs) of AI job processes. Batch input is supported with comma-separated values.
+	// The PIDs of AI job processes. You can specify multiple PIDs separated by commas.
 	//
 	// This parameter is required.
 	//

@@ -44,7 +44,7 @@ type ListPodsOfInstanceResponseBody struct {
 	//
 	// instance not exists
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The maximum number of entries returned for this request.
+	// The maximum number of records returned in this request.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *ListPodsOfInstanceResponseBody) Validate() error {
 }
 
 type ListPodsOfInstanceResponseBodyData struct {
-	// The namespace in which the pod resides.
+	// The namespace of the pod.
 	//
 	// example:
 	//

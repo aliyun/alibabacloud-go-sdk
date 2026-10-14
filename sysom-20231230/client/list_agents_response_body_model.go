@@ -149,7 +149,7 @@ type ListAgentsResponseBodyData struct {
 	//
 	// SysOM Agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The supported architectures (multiple architectures are separated by commas).
+	// The supported architectures. Multiple architectures are separated by commas.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type ListAgentsResponseBodyData struct {
 	//
 	// Control
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the component was updated.
+	// The time when the component was last updated.
 	//
 	// example:
 	//
@@ -281,25 +281,25 @@ type ListAgentsResponseBodyDataVersions struct {
 	//
 	// sysom.sh install
 	InstallScript *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
-	// The uninstallation script of the component.
+	// The uninstall script of the component.
 	//
 	// example:
 	//
 	// sysom.sh uninstall
 	UninstallScript *string `json:"uninstall_script,omitempty" xml:"uninstall_script,omitempty"`
-	// The time when the component version was updated.
+	// The time when the component version was last updated.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// The update script of the component.
+	// The upgrade script of the component.
 	//
 	// example:
 	//
 	// sysom.sh upgrade
 	UpgradeScript *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
-	// The component version number.
+	// The version number of the component.
 	//
 	// example:
 	//

@@ -9,8 +9,6 @@ type iGetHotSpotUniqListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *GetHotSpotUniqListRequest
-	GetXDebugId() *string
 	SetBegEnd(v int64) *GetHotSpotUniqListRequest
 	GetBegEnd() *int64
 	SetBegStart(v int64) *GetHotSpotUniqListRequest
@@ -23,12 +21,9 @@ type iGetHotSpotUniqListRequest interface {
 	GetTable() *string
 	SetUniq(v string) *GetHotSpotUniqListRequest
 	GetUniq() *string
-	SetXSysomInvokeSource(v string) *GetHotSpotUniqListRequest
-	GetXSysomInvokeSource() *string
 }
 
 type GetHotSpotUniqListRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The end time.
 	//
 	// This parameter is required.
@@ -71,9 +66,8 @@ type GetHotSpotUniqListRequest struct {
 	//
 	// example:
 	//
-	// 默认需要为"flag"，待查询的字段
-	Uniq               *string `json:"uniq,omitempty" xml:"uniq,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	// The default value must be "flag", which specifies the field to query
+	Uniq *string `json:"uniq,omitempty" xml:"uniq,omitempty"`
 }
 
 func (s GetHotSpotUniqListRequest) String() string {
@@ -82,10 +76,6 @@ func (s GetHotSpotUniqListRequest) String() string {
 
 func (s GetHotSpotUniqListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHotSpotUniqListRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *GetHotSpotUniqListRequest) GetBegEnd() *int64 {
@@ -110,15 +100,6 @@ func (s *GetHotSpotUniqListRequest) GetTable() *string {
 
 func (s *GetHotSpotUniqListRequest) GetUniq() *string {
 	return s.Uniq
-}
-
-func (s *GetHotSpotUniqListRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *GetHotSpotUniqListRequest) SetXDebugId(v string) *GetHotSpotUniqListRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *GetHotSpotUniqListRequest) SetBegEnd(v int64) *GetHotSpotUniqListRequest {
@@ -148,11 +129,6 @@ func (s *GetHotSpotUniqListRequest) SetTable(v string) *GetHotSpotUniqListReques
 
 func (s *GetHotSpotUniqListRequest) SetUniq(v string) *GetHotSpotUniqListRequest {
 	s.Uniq = &v
-	return s
-}
-
-func (s *GetHotSpotUniqListRequest) SetXSysomInvokeSource(v string) *GetHotSpotUniqListRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

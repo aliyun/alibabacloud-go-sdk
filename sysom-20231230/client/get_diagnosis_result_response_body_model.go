@@ -22,9 +22,9 @@ type iGetDiagnosisResultResponseBody interface {
 type GetDiagnosisResultResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success`: The authorization is successful.
+	// - `code == Success` indicates that the authorization was successful.
 	//
-	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetDiagnosisResultResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type GetDiagnosisResultResponseBodyData struct {
 	//
 	// }
 	Params interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// The diagnostic result.
+	// The diagnostic results.
 	//
 	// example:
 	//

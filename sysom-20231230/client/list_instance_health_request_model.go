@@ -9,8 +9,6 @@ type iListInstanceHealthRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListInstanceHealthRequest
-	GetXDebugId() *string
 	SetCluster(v string) *ListInstanceHealthRequest
 	GetCluster() *string
 	SetCurrent(v int32) *ListInstanceHealthRequest
@@ -23,12 +21,9 @@ type iListInstanceHealthRequest interface {
 	GetPageSize() *int32
 	SetStart(v float32) *ListInstanceHealthRequest
 	GetStart() *float32
-	SetXSysomInvokeSource(v string) *ListInstanceHealthRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListInstanceHealthRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -68,8 +63,7 @@ type ListInstanceHealthRequest struct {
 	// example:
 	//
 	// 1725797727754
-	Start              *float32 `json:"start,omitempty" xml:"start,omitempty"`
-	XSysomInvokeSource *string  `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
 }
 
 func (s ListInstanceHealthRequest) String() string {
@@ -78,10 +72,6 @@ func (s ListInstanceHealthRequest) String() string {
 
 func (s ListInstanceHealthRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListInstanceHealthRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListInstanceHealthRequest) GetCluster() *string {
@@ -106,15 +96,6 @@ func (s *ListInstanceHealthRequest) GetPageSize() *int32 {
 
 func (s *ListInstanceHealthRequest) GetStart() *float32 {
 	return s.Start
-}
-
-func (s *ListInstanceHealthRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListInstanceHealthRequest) SetXDebugId(v string) *ListInstanceHealthRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListInstanceHealthRequest) SetCluster(v string) *ListInstanceHealthRequest {
@@ -144,11 +125,6 @@ func (s *ListInstanceHealthRequest) SetPageSize(v int32) *ListInstanceHealthRequ
 
 func (s *ListInstanceHealthRequest) SetStart(v float32) *ListInstanceHealthRequest {
 	s.Start = &v
-	return s
-}
-
-func (s *ListInstanceHealthRequest) SetXSysomInvokeSource(v string) *ListInstanceHealthRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

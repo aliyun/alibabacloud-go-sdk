@@ -9,8 +9,6 @@ type iGetConfigByNameRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *GetConfigByNameRequest
-	GetXDebugId() *string
 	SetConfigName(v string) *GetConfigByNameRequest
 	GetConfigName() *string
 	SetConfigType(v string) *GetConfigByNameRequest
@@ -21,19 +19,16 @@ type iGetConfigByNameRequest interface {
 	GetUseGlobalUid() *bool
 	SetVersionId(v int64) *GetConfigByNameRequest
 	GetVersionId() *int64
-	SetXSysomInvokeSource(v string) *GetConfigByNameRequest
-	GetXSysomInvokeSource() *string
 }
 
 type GetConfigByNameRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The configuration name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 节点网络延时检测
+	// Node network latency detection
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
 	// The type of the configuration parameter.
 	//
@@ -49,7 +44,7 @@ type GetConfigByNameRequest struct {
 	//
 	// i-bptest
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// Specifies whether to use the global UID.
+	// Specifies whether to use a global UID.
 	//
 	// example:
 	//
@@ -60,8 +55,7 @@ type GetConfigByNameRequest struct {
 	// example:
 	//
 	// 1
-	VersionId          *int64  `json:"versionId,omitempty" xml:"versionId,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	VersionId *int64 `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s GetConfigByNameRequest) String() string {
@@ -70,10 +64,6 @@ func (s GetConfigByNameRequest) String() string {
 
 func (s GetConfigByNameRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetConfigByNameRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *GetConfigByNameRequest) GetConfigName() *string {
@@ -94,15 +84,6 @@ func (s *GetConfigByNameRequest) GetUseGlobalUid() *bool {
 
 func (s *GetConfigByNameRequest) GetVersionId() *int64 {
 	return s.VersionId
-}
-
-func (s *GetConfigByNameRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *GetConfigByNameRequest) SetXDebugId(v string) *GetConfigByNameRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *GetConfigByNameRequest) SetConfigName(v string) *GetConfigByNameRequest {
@@ -127,11 +108,6 @@ func (s *GetConfigByNameRequest) SetUseGlobalUid(v bool) *GetConfigByNameRequest
 
 func (s *GetConfigByNameRequest) SetVersionId(v int64) *GetConfigByNameRequest {
 	s.VersionId = &v
-	return s
-}
-
-func (s *GetConfigByNameRequest) SetXSysomInvokeSource(v string) *GetConfigByNameRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

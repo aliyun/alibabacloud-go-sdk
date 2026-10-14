@@ -30,9 +30,9 @@ type ListClustersResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -127,9 +127,9 @@ func (s *ListClustersResponseBody) Validate() error {
 type ListClustersResponseBodyData struct {
 	// The actual cluster ID.
 	//
-	// > - For `ACK` type clusters, this is the ACK cluster ID.
+	// > - For `ACK` clusters, this cluster ID is the ACK cluster ID.
 	//
-	// > - For `CUSTOM` type clusters, this serves as a unique identifier with no additional meaning.
+	// > - For `CUSTOM` clusters, this cluster ID serves as a unique identifier and has no additional meaning.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListClustersResponseBodyData struct {
 	ClusterStatus *string `json:"cluster_status,omitempty" xml:"cluster_status,omitempty"`
 	// - `ACK`: ACK cluster.
 	//
-	// - `CUSTOM`: Custom cluster (default clusters belong to custom clusters).
+	// - `CUSTOM`: Custom cluster. The default cluster belongs to the custom cluster type.
 	//
 	// example:
 	//

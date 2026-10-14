@@ -44,7 +44,7 @@ type ListAllInstancesResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//
@@ -281,13 +281,13 @@ type ListAllInstancesResponseBodyData struct {
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" xml:"resourceGroupName,omitempty"`
 	// The running status of the instance. Valid values:
 	//
-	// - **Running**: The instance is running.
+	// - **Running**: Running.
 	//
-	// - **Offline**: The instance is offline.
+	// - **Offline**: Offline.
 	//
 	//
 	//
-	// > An instance in the Offline state indicates that the heartbeat from the node to the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
+	// > An instance in the Offline status indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
 	//
 	// example:
 	//

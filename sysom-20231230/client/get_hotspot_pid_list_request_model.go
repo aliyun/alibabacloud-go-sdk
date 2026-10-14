@@ -9,8 +9,6 @@ type iGetHotspotPidListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *GetHotspotPidListRequest
-	GetXDebugId() *string
 	SetBegEnd(v int64) *GetHotspotPidListRequest
 	GetBegEnd() *int64
 	SetBegStart(v int64) *GetHotspotPidListRequest
@@ -19,12 +17,9 @@ type iGetHotspotPidListRequest interface {
 	GetInstance() *string
 	SetTable(v string) *GetHotspotPidListRequest
 	GetTable() *string
-	SetXSysomInvokeSource(v string) *GetHotspotPidListRequest
-	GetXSysomInvokeSource() *string
 }
 
 type GetHotspotPidListRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The end time.
 	//
 	// This parameter is required.
@@ -56,8 +51,7 @@ type GetHotspotPidListRequest struct {
 	// example:
 	//
 	// prof_on
-	Table              *string `json:"table,omitempty" xml:"table,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s GetHotspotPidListRequest) String() string {
@@ -66,10 +60,6 @@ func (s GetHotspotPidListRequest) String() string {
 
 func (s GetHotspotPidListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHotspotPidListRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *GetHotspotPidListRequest) GetBegEnd() *int64 {
@@ -86,15 +76,6 @@ func (s *GetHotspotPidListRequest) GetInstance() *string {
 
 func (s *GetHotspotPidListRequest) GetTable() *string {
 	return s.Table
-}
-
-func (s *GetHotspotPidListRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *GetHotspotPidListRequest) SetXDebugId(v string) *GetHotspotPidListRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *GetHotspotPidListRequest) SetBegEnd(v int64) *GetHotspotPidListRequest {
@@ -114,11 +95,6 @@ func (s *GetHotspotPidListRequest) SetInstance(v string) *GetHotspotPidListReque
 
 func (s *GetHotspotPidListRequest) SetTable(v string) *GetHotspotPidListRequest {
 	s.Table = &v
-	return s
-}
-
-func (s *GetHotspotPidListRequest) SetXSysomInvokeSource(v string) *GetHotspotPidListRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

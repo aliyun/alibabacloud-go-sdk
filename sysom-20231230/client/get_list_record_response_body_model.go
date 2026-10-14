@@ -30,7 +30,7 @@ type GetListRecordResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data []*GetListRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type GetListRecordResponseBodyData struct {
 	//
 	// example:
 	//
-	// 机器i-wz9dej066kii4goqpnze分析失败, 失败原因: Not get GPU trace data for \\"e59ce870-dbd4-4c44-a814-174ac6ab5bcf\\" \\"[\\"118534\\"]\\"!
+	// Analysis failed for instance i-wz9dej066kii4goqpnze. Failure reason: Not get GPU trace data for \\"e59ce870-dbd4-4c44-a814-174ac6ab5bcf\\" \\"[\\"118534\\"]\\"!
 	FailedLog *string `json:"failedLog,omitempty" xml:"failedLog,omitempty"`
 	// The analysis status.
 	//

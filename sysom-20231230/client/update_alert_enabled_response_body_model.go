@@ -22,15 +22,15 @@ type iUpdateAlertEnabledResponseBody interface {
 type UpdateAlertEnabledResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type UpdateAlertEnabledResponseBody struct {
 	//
 	//       "items": [
 	//
-	//         "节点CPU使用率检测"
+	//         "Node CPU usage detection"
 	//
 	//       ],
 	//
@@ -70,7 +70,7 @@ type UpdateAlertEnabledResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information of the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//

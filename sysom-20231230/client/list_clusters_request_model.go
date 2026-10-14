@@ -9,8 +9,6 @@ type iListClustersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListClustersRequest
-	GetXDebugId() *string
 	SetClusterId(v string) *ListClustersRequest
 	GetClusterId() *string
 	SetClusterStatus(v string) *ListClustersRequest
@@ -25,13 +23,10 @@ type iListClustersRequest interface {
 	GetName() *string
 	SetPageSize(v int64) *ListClustersRequest
 	GetPageSize() *int64
-	SetXSysomInvokeSource(v string) *ListClustersRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListClustersRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
-	// Filters by cluster ID.
+	// The cluster ID used to filter clusters.
 	//
 	// > This cluster ID is not the ACK cluster ID. It is the `id` field returned by this operation.
 	//
@@ -55,7 +50,7 @@ type ListClustersRequest struct {
 	ClusterStatus *string `json:"cluster_status,omitempty" xml:"cluster_status,omitempty"`
 	// - `ACK`: ACK cluster.
 	//
-	// - `CUSTOM`: Custom cluster (default clusters belong to custom clusters).
+	// - `CUSTOM`: Custom cluster. The default cluster belongs to the custom cluster type.
 	//
 	// example:
 	//
@@ -67,13 +62,13 @@ type ListClustersRequest struct {
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// **[Deprecated]*	- Use the cluster_id parameter to filter instead.
+	// **[Deprecated]*	- Use the cluster_id parameter to filter clusters.
 	//
 	// example:
 	//
 	// cb7d4cc26c8f845fb8a8255ffd394820e
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Filters plugins by plugin name.
+	// The name of the plug-in used to filter plug-ins.
 	//
 	// example:
 	//
@@ -84,8 +79,7 @@ type ListClustersRequest struct {
 	// example:
 	//
 	// 10
-	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -94,10 +88,6 @@ func (s ListClustersRequest) String() string {
 
 func (s ListClustersRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListClustersRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListClustersRequest) GetClusterId() *string {
@@ -126,15 +116,6 @@ func (s *ListClustersRequest) GetName() *string {
 
 func (s *ListClustersRequest) GetPageSize() *int64 {
 	return s.PageSize
-}
-
-func (s *ListClustersRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListClustersRequest) SetXDebugId(v string) *ListClustersRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListClustersRequest) SetClusterId(v string) *ListClustersRequest {
@@ -169,11 +150,6 @@ func (s *ListClustersRequest) SetName(v string) *ListClustersRequest {
 
 func (s *ListClustersRequest) SetPageSize(v int64) *ListClustersRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListClustersRequest) SetXSysomInvokeSource(v string) *ListClustersRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

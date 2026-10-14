@@ -9,8 +9,6 @@ type iListAllInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListAllInstancesRequest
-	GetXDebugId() *string
 	SetCurrent(v string) *ListAllInstancesRequest
 	GetCurrent() *string
 	SetFilters(v string) *ListAllInstancesRequest
@@ -29,12 +27,9 @@ type iListAllInstancesRequest interface {
 	GetPluginId() *string
 	SetRegion(v string) *ListAllInstancesRequest
 	GetRegion() *string
-	SetXSysomInvokeSource(v string) *ListAllInstancesRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListAllInstancesRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The current page number.
 	//
 	// example:
@@ -59,7 +54,7 @@ type ListAllInstancesRequest struct {
 	//
 	// managed
 	ManagedType *string `json:"managedType,omitempty" xml:"managedType,omitempty"`
-	// The maximum number of records to retrieve in a single request.
+	// The maximum number of entries to return in a single request.
 	//
 	// example:
 	//
@@ -90,8 +85,7 @@ type ListAllInstancesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s ListAllInstancesRequest) String() string {
@@ -100,10 +94,6 @@ func (s ListAllInstancesRequest) String() string {
 
 func (s ListAllInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListAllInstancesRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListAllInstancesRequest) GetCurrent() *string {
@@ -140,15 +130,6 @@ func (s *ListAllInstancesRequest) GetPluginId() *string {
 
 func (s *ListAllInstancesRequest) GetRegion() *string {
 	return s.Region
-}
-
-func (s *ListAllInstancesRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListAllInstancesRequest) SetXDebugId(v string) *ListAllInstancesRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListAllInstancesRequest) SetCurrent(v string) *ListAllInstancesRequest {
@@ -193,11 +174,6 @@ func (s *ListAllInstancesRequest) SetPluginId(v string) *ListAllInstancesRequest
 
 func (s *ListAllInstancesRequest) SetRegion(v string) *ListAllInstancesRequest {
 	s.Region = &v
-	return s
-}
-
-func (s *ListAllInstancesRequest) SetXSysomInvokeSource(v string) *ListAllInstancesRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

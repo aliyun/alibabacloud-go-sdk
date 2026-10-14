@@ -9,21 +9,16 @@ type iCreateClusterVpcEndpointConnectionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *CreateClusterVpcEndpointConnectionRequest
-	GetXDebugId() *string
 	SetClusterId(v string) *CreateClusterVpcEndpointConnectionRequest
 	GetClusterId() *string
 	SetDryRun(v bool) *CreateClusterVpcEndpointConnectionRequest
 	GetDryRun() *bool
 	SetRegion(v string) *CreateClusterVpcEndpointConnectionRequest
 	GetRegion() *string
-	SetXSysomInvokeSource(v string) *CreateClusterVpcEndpointConnectionRequest
-	GetXSysomInvokeSource() *string
 }
 
 type CreateClusterVpcEndpointConnectionRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
-	// The ID of the ACK cluster.
+	// The ACK cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -44,8 +39,7 @@ type CreateClusterVpcEndpointConnectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s CreateClusterVpcEndpointConnectionRequest) String() string {
@@ -54,10 +48,6 @@ func (s CreateClusterVpcEndpointConnectionRequest) String() string {
 
 func (s CreateClusterVpcEndpointConnectionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateClusterVpcEndpointConnectionRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *CreateClusterVpcEndpointConnectionRequest) GetClusterId() *string {
@@ -72,15 +62,6 @@ func (s *CreateClusterVpcEndpointConnectionRequest) GetRegion() *string {
 	return s.Region
 }
 
-func (s *CreateClusterVpcEndpointConnectionRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *CreateClusterVpcEndpointConnectionRequest) SetXDebugId(v string) *CreateClusterVpcEndpointConnectionRequest {
-	s.XDebugId = &v
-	return s
-}
-
 func (s *CreateClusterVpcEndpointConnectionRequest) SetClusterId(v string) *CreateClusterVpcEndpointConnectionRequest {
 	s.ClusterId = &v
 	return s
@@ -93,11 +74,6 @@ func (s *CreateClusterVpcEndpointConnectionRequest) SetDryRun(v bool) *CreateClu
 
 func (s *CreateClusterVpcEndpointConnectionRequest) SetRegion(v string) *CreateClusterVpcEndpointConnectionRequest {
 	s.Region = &v
-	return s
-}
-
-func (s *CreateClusterVpcEndpointConnectionRequest) SetXSysomInvokeSource(v string) *CreateClusterVpcEndpointConnectionRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

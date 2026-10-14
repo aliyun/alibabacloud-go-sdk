@@ -9,8 +9,6 @@ type iUninstallAgentWithTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *UninstallAgentWithTypeRequest
-	GetXDebugId() *string
 	SetAgentId(v string) *UninstallAgentWithTypeRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *UninstallAgentWithTypeRequest
@@ -19,12 +17,9 @@ type iUninstallAgentWithTypeRequest interface {
 	GetInstanceType() *string
 	SetInstances(v []*UninstallAgentWithTypeRequestInstances) *UninstallAgentWithTypeRequest
 	GetInstances() []*UninstallAgentWithTypeRequestInstances
-	SetXSysomInvokeSource(v string) *UninstallAgentWithTypeRequest
-	GetXSysomInvokeSource() *string
 }
 
 type UninstallAgentWithTypeRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The ID of the component to uninstall.
 	//
 	// This parameter is required.
@@ -50,8 +45,7 @@ type UninstallAgentWithTypeRequest struct {
 	// The list of instances from which to uninstall the component.
 	//
 	// This parameter is required.
-	Instances          []*UninstallAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	XSysomInvokeSource *string                                   `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Instances []*UninstallAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 
 func (s UninstallAgentWithTypeRequest) String() string {
@@ -60,10 +54,6 @@ func (s UninstallAgentWithTypeRequest) String() string {
 
 func (s UninstallAgentWithTypeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UninstallAgentWithTypeRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *UninstallAgentWithTypeRequest) GetAgentId() *string {
@@ -80,15 +70,6 @@ func (s *UninstallAgentWithTypeRequest) GetInstanceType() *string {
 
 func (s *UninstallAgentWithTypeRequest) GetInstances() []*UninstallAgentWithTypeRequestInstances {
 	return s.Instances
-}
-
-func (s *UninstallAgentWithTypeRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *UninstallAgentWithTypeRequest) SetXDebugId(v string) *UninstallAgentWithTypeRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *UninstallAgentWithTypeRequest) SetAgentId(v string) *UninstallAgentWithTypeRequest {
@@ -108,11 +89,6 @@ func (s *UninstallAgentWithTypeRequest) SetInstanceType(v string) *UninstallAgen
 
 func (s *UninstallAgentWithTypeRequest) SetInstances(v []*UninstallAgentWithTypeRequestInstances) *UninstallAgentWithTypeRequest {
 	s.Instances = v
-	return s
-}
-
-func (s *UninstallAgentWithTypeRequest) SetXSysomInvokeSource(v string) *UninstallAgentWithTypeRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

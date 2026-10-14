@@ -30,7 +30,7 @@ type GetAgentResponseBody struct {
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetAgentResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the error information of the request.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type GetAgentResponseBodyData struct {
 	//
 	// 2024-09-14T20:46:08
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// The component description.
+	// The description of the component.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type GetAgentResponseBodyData struct {
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The component name.
+	// The name of the component.
 	//
 	// example:
 	//
 	// SysOM
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The supported architectures.
+	// The supported architecture.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type GetAgentResponseBodyData struct {
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// The component version information.
+	// The version information of the component.
 	Versions []*GetAgentResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -268,13 +268,13 @@ type GetAgentResponseBodyDataVersions struct {
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// The update script for this agent version.
+	// The upgrade script for this agent version.
 	//
 	// example:
 	//
 	// sysom.sh upgrade
 	UpgradeScript *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
-	// The agent version number.
+	// The version number of the agent.
 	//
 	// example:
 	//

@@ -9,8 +9,6 @@ type iListDiagnosisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListDiagnosisRequest
-	GetXDebugId() *string
 	SetCurrent(v int64) *ListDiagnosisRequest
 	GetCurrent() *int64
 	SetPageSize(v int64) *ListDiagnosisRequest
@@ -21,12 +19,9 @@ type iListDiagnosisRequest interface {
 	GetServiceName() *string
 	SetStatus(v string) *ListDiagnosisRequest
 	GetStatus() *string
-	SetXSysomInvokeSource(v string) *ListDiagnosisRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListDiagnosisRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The current page number.
 	//
 	// example:
@@ -66,8 +61,7 @@ type ListDiagnosisRequest struct {
 	// example:
 	//
 	// Running
-	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDiagnosisRequest) String() string {
@@ -76,10 +70,6 @@ func (s ListDiagnosisRequest) String() string {
 
 func (s ListDiagnosisRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListDiagnosisRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListDiagnosisRequest) GetCurrent() *int64 {
@@ -100,15 +90,6 @@ func (s *ListDiagnosisRequest) GetServiceName() *string {
 
 func (s *ListDiagnosisRequest) GetStatus() *string {
 	return s.Status
-}
-
-func (s *ListDiagnosisRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListDiagnosisRequest) SetXDebugId(v string) *ListDiagnosisRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListDiagnosisRequest) SetCurrent(v int64) *ListDiagnosisRequest {
@@ -133,11 +114,6 @@ func (s *ListDiagnosisRequest) SetServiceName(v string) *ListDiagnosisRequest {
 
 func (s *ListDiagnosisRequest) SetStatus(v string) *ListDiagnosisRequest {
 	s.Status = &v
-	return s
-}
-
-func (s *ListDiagnosisRequest) SetXSysomInvokeSource(v string) *ListDiagnosisRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

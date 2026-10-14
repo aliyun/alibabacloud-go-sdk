@@ -26,7 +26,7 @@ type GetAIQueryResultResponseBody struct {
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result. The data volume is large.
+	// The response data. The data volume can be large.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetAIQueryResultResponseBody struct {
 	//
 	// Analysis ID: 56dae746-ef55-4f77-8373-cb3594c41457
 	//
-	// Analysis failed for machine i-bp164ns76pzirbwv0snt. Cause: Not get GPU trace data for \\"56dae746-ef55-4f77-8373-cb3594c41457\\" \\"[\\"93811\\"]\\"!
+	// Analysis failed for instance i-bp164ns76pzirbwv0snt. Cause: Not get GPU trace data for \\"56dae746-ef55-4f77-8373-cb3594c41457\\" \\"[\\"93811\\"]\\"!
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
 	//

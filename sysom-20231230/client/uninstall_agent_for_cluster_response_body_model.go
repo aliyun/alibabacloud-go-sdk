@@ -28,7 +28,7 @@ type UninstallAgentForClusterResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - `code == Success` indicates that the authorization was successful.
 	//
 	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
@@ -104,7 +104,7 @@ func (s *UninstallAgentForClusterResponseBody) Validate() error {
 }
 
 type UninstallAgentForClusterResponseBodyData struct {
-	// The task ID. You can use this task ID to call GetAgentTask to query the execution status of the task.
+	// The task ID. You can use this task ID to call the GetAgentTasK operation to query the execution status of the task.
 	//
 	// example:
 	//

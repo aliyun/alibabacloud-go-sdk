@@ -9,8 +9,6 @@ type iGetHealthPercentageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *GetHealthPercentageRequest
-	GetXDebugId() *string
 	SetCluster(v string) *GetHealthPercentageRequest
 	GetCluster() *string
 	SetEnd(v float32) *GetHealthPercentageRequest
@@ -19,12 +17,9 @@ type iGetHealthPercentageRequest interface {
 	GetInstance() *string
 	SetStart(v float32) *GetHealthPercentageRequest
 	GetStart() *float32
-	SetXSysomInvokeSource(v string) *GetHealthPercentageRequest
-	GetXSysomInvokeSource() *string
 }
 
 type GetHealthPercentageRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -52,8 +47,7 @@ type GetHealthPercentageRequest struct {
 	// example:
 	//
 	// 1725797727754
-	Start              *float32 `json:"start,omitempty" xml:"start,omitempty"`
-	XSysomInvokeSource *string  `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
 }
 
 func (s GetHealthPercentageRequest) String() string {
@@ -62,10 +56,6 @@ func (s GetHealthPercentageRequest) String() string {
 
 func (s GetHealthPercentageRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHealthPercentageRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *GetHealthPercentageRequest) GetCluster() *string {
@@ -82,15 +72,6 @@ func (s *GetHealthPercentageRequest) GetInstance() *string {
 
 func (s *GetHealthPercentageRequest) GetStart() *float32 {
 	return s.Start
-}
-
-func (s *GetHealthPercentageRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *GetHealthPercentageRequest) SetXDebugId(v string) *GetHealthPercentageRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *GetHealthPercentageRequest) SetCluster(v string) *GetHealthPercentageRequest {
@@ -110,11 +91,6 @@ func (s *GetHealthPercentageRequest) SetInstance(v string) *GetHealthPercentageR
 
 func (s *GetHealthPercentageRequest) SetStart(v float32) *GetHealthPercentageRequest {
 	s.Start = &v
-	return s
-}
-
-func (s *GetHealthPercentageRequest) SetXSysomInvokeSource(v string) *GetHealthPercentageRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

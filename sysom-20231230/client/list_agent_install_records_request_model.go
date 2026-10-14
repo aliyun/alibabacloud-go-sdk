@@ -9,8 +9,6 @@ type iListAgentInstallRecordsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListAgentInstallRecordsRequest
-	GetXDebugId() *string
 	SetCurrent(v int64) *ListAgentInstallRecordsRequest
 	GetCurrent() *int64
 	SetInstanceId(v string) *ListAgentInstallRecordsRequest
@@ -25,19 +23,16 @@ type iListAgentInstallRecordsRequest interface {
 	GetRegion() *string
 	SetStatus(v string) *ListAgentInstallRecordsRequest
 	GetStatus() *string
-	SetXSysomInvokeSource(v string) *ListAgentInstallRecordsRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListAgentInstallRecordsRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The current page number. Pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// Specifies the instance ID. If this parameter is specified, only the Agent installation records for the specified instance are returned.
+	// The instance ID. If you specify this parameter, only the Agent installation records for the specified instance are returned.
 	//
 	// example:
 	//
@@ -49,13 +44,13 @@ type ListAgentInstallRecordsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Specifies the Agent ID. If this parameter is specified, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
+	// The Agent ID. If you specify this parameter, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
-	// Specifies the Agent version. This parameter cannot be used alone and must be used together with the plugin_id parameter to filter the installation records for a specific version of the specified Agent.
+	// The Agent version. This parameter cannot be used alone. Use it together with the plugin_id parameter to filter the installation records for a specific version of the specified Agent.
 	//
 	// example:
 	//
@@ -67,13 +62,12 @@ type ListAgentInstallRecordsRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Filters component installation records by status.
+	// The status used to filter component installation records.
 	//
 	// example:
 	//
 	// Installed
-	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAgentInstallRecordsRequest) String() string {
@@ -82,10 +76,6 @@ func (s ListAgentInstallRecordsRequest) String() string {
 
 func (s ListAgentInstallRecordsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListAgentInstallRecordsRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListAgentInstallRecordsRequest) GetCurrent() *int64 {
@@ -114,15 +104,6 @@ func (s *ListAgentInstallRecordsRequest) GetRegion() *string {
 
 func (s *ListAgentInstallRecordsRequest) GetStatus() *string {
 	return s.Status
-}
-
-func (s *ListAgentInstallRecordsRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListAgentInstallRecordsRequest) SetXDebugId(v string) *ListAgentInstallRecordsRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListAgentInstallRecordsRequest) SetCurrent(v int64) *ListAgentInstallRecordsRequest {
@@ -157,11 +138,6 @@ func (s *ListAgentInstallRecordsRequest) SetRegion(v string) *ListAgentInstallRe
 
 func (s *ListAgentInstallRecordsRequest) SetStatus(v string) *ListAgentInstallRecordsRequest {
 	s.Status = &v
-	return s
-}
-
-func (s *ListAgentInstallRecordsRequest) SetXSysomInvokeSource(v string) *ListAgentInstallRecordsRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

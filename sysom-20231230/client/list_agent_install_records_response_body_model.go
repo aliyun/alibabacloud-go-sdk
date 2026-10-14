@@ -38,7 +38,7 @@ type ListAgentInstallRecordsResponseBody struct {
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned results.
+	// The returned result.
 	Data []*ListAgentInstallRecordsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The error message.
 	//

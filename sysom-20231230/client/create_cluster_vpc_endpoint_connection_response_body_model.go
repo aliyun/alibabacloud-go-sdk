@@ -96,7 +96,7 @@ func (s *CreateClusterVpcEndpointConnectionResponseBody) Validate() error {
 }
 
 type CreateClusterVpcEndpointConnectionResponseBodyData struct {
-	// The ID of the endpoint connection.
+	// The endpoint connection ID.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iListInstancesResponseBody interface {
 type ListInstancesResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// 5.10.134-16.1.an8.x86_64
 	KernelVersion *string `json:"kernel_version,omitempty" xml:"kernel_version,omitempty"`
-	// The metadata of the instance.
+	// The instance metadata.
 	//
 	// example:
 	//
@@ -191,25 +191,25 @@ type ListInstancesResponseBodyData struct {
 	//
 	// 100
 	OsHealthScore *string `json:"os_health_score,omitempty" xml:"os_health_score,omitempty"`
-	// The operating system name of the instance (obtained from /etc/os-release).
+	// The operating system name of the instance, obtained from /etc/os-release.
 	//
 	// example:
 	//
 	// Anolis OS
 	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
-	// The operating system name ID of the instance (obtained from /etc/os-release).
+	// The operating system name ID of the instance, obtained from /etc/os-release.
 	//
 	// example:
 	//
 	// anolis
 	OsNameId *string `json:"os_name_id,omitempty" xml:"os_name_id,omitempty"`
-	// The operating system version of the instance (obtained from /etc/os-release).
+	// The operating system version of the instance, obtained from /etc/os-release.
 	//
 	// example:
 	//
 	// 8.9
 	OsVersion *string `json:"os_version,omitempty" xml:"os_version,omitempty"`
-	// The operating system version ID of the instance (obtained from /etc/os-release).
+	// The operating system version ID of the instance, obtained from /etc/os-release.
 	//
 	// example:
 	//

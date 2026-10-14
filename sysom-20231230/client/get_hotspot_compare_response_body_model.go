@@ -30,7 +30,7 @@ type GetHotspotCompareResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data *GetHotspotCompareResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type GetHotspotCompareResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the API call was successful. Valid values:
 	//
-	// - true: The call was successful.
+	// - true: The API call was successful.
 	//
-	// - false: The call failed.
+	// - false: The API call failed.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type ListInstanceInfoResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data []*ListInstanceInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per request.
+	// The maximum number of records returned in a single request.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListInstanceInfoResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//

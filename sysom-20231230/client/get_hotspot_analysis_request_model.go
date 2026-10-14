@@ -9,8 +9,6 @@ type iGetHotspotAnalysisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *GetHotspotAnalysisRequest
-	GetXDebugId() *string
 	SetAppType(v string) *GetHotspotAnalysisRequest
 	GetAppType() *string
 	SetBegEnd(v int64) *GetHotspotAnalysisRequest
@@ -23,12 +21,9 @@ type iGetHotspotAnalysisRequest interface {
 	GetPid() *int64
 	SetTable(v string) *GetHotspotAnalysisRequest
 	GetTable() *string
-	SetXSysomInvokeSource(v string) *GetHotspotAnalysisRequest
-	GetXSysomInvokeSource() *string
 }
 
 type GetHotspotAnalysisRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The application type.
 	//
 	// This parameter is required.
@@ -72,8 +67,7 @@ type GetHotspotAnalysisRequest struct {
 	// example:
 	//
 	// prof_on
-	Table              *string `json:"table,omitempty" xml:"table,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s GetHotspotAnalysisRequest) String() string {
@@ -82,10 +76,6 @@ func (s GetHotspotAnalysisRequest) String() string {
 
 func (s GetHotspotAnalysisRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHotspotAnalysisRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *GetHotspotAnalysisRequest) GetAppType() *string {
@@ -110,15 +100,6 @@ func (s *GetHotspotAnalysisRequest) GetPid() *int64 {
 
 func (s *GetHotspotAnalysisRequest) GetTable() *string {
 	return s.Table
-}
-
-func (s *GetHotspotAnalysisRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *GetHotspotAnalysisRequest) SetXDebugId(v string) *GetHotspotAnalysisRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *GetHotspotAnalysisRequest) SetAppType(v string) *GetHotspotAnalysisRequest {
@@ -148,11 +129,6 @@ func (s *GetHotspotAnalysisRequest) SetPid(v int64) *GetHotspotAnalysisRequest {
 
 func (s *GetHotspotAnalysisRequest) SetTable(v string) *GetHotspotAnalysisRequest {
 	s.Table = &v
-	return s
-}
-
-func (s *GetHotspotAnalysisRequest) SetXSysomInvokeSource(v string) *GetHotspotAnalysisRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

@@ -9,8 +9,6 @@ type iListAgentsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *ListAgentsRequest
-	GetXDebugId() *string
 	SetCurrent(v int64) *ListAgentsRequest
 	GetCurrent() *int64
 	SetName(v string) *ListAgentsRequest
@@ -19,13 +17,10 @@ type iListAgentsRequest interface {
 	GetPageSize() *int64
 	SetType(v string) *ListAgentsRequest
 	GetType() *string
-	SetXSysomInvokeSource(v string) *ListAgentsRequest
-	GetXSysomInvokeSource() *string
 }
 
 type ListAgentsRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
-	// The current page number (starting from page 1).
+	// The current page number. Pages start from page 1.
 	//
 	// example:
 	//
@@ -43,13 +38,12 @@ type ListAgentsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters the list by Agent type. For example, pass control to retrieve all Agents of the control type.
+	// Filters the list by Agent type. For example, set this parameter to control to retrieve all Agents of the control type.
 	//
 	// example:
 	//
 	// control
-	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListAgentsRequest) String() string {
@@ -58,10 +52,6 @@ func (s ListAgentsRequest) String() string {
 
 func (s ListAgentsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListAgentsRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *ListAgentsRequest) GetCurrent() *int64 {
@@ -78,15 +68,6 @@ func (s *ListAgentsRequest) GetPageSize() *int64 {
 
 func (s *ListAgentsRequest) GetType() *string {
 	return s.Type
-}
-
-func (s *ListAgentsRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *ListAgentsRequest) SetXDebugId(v string) *ListAgentsRequest {
-	s.XDebugId = &v
-	return s
 }
 
 func (s *ListAgentsRequest) SetCurrent(v int64) *ListAgentsRequest {
@@ -106,11 +87,6 @@ func (s *ListAgentsRequest) SetPageSize(v int64) *ListAgentsRequest {
 
 func (s *ListAgentsRequest) SetType(v string) *ListAgentsRequest {
 	s.Type = &v
-	return s
-}
-
-func (s *ListAgentsRequest) SetXSysomInvokeSource(v string) *ListAgentsRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

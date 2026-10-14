@@ -30,7 +30,7 @@ type GetServiceFuncStatusResponseBody struct {
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The response data.
 	Data *GetServiceFuncStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
