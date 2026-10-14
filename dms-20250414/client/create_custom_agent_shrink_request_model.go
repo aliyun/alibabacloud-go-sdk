@@ -9,6 +9,8 @@ type iCreateCustomAgentShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentType(v string) *CreateCustomAgentShrinkRequest
+	GetAgentType() *string
 	SetCallbackConfigShrink(v string) *CreateCustomAgentShrinkRequest
 	GetCallbackConfigShrink() *string
 	SetDMSUnit(v string) *CreateCustomAgentShrinkRequest
@@ -29,6 +31,8 @@ type iCreateCustomAgentShrinkRequest interface {
 	GetKnowledgeSemanticConfigListShrink() *string
 	SetName(v string) *CreateCustomAgentShrinkRequest
 	GetName() *string
+	SetRecommendQuestionListShrink(v string) *CreateCustomAgentShrinkRequest
+	GetRecommendQuestionListShrink() *string
 	SetRelatedSessionId(v string) *CreateCustomAgentShrinkRequest
 	GetRelatedSessionId() *string
 	SetScheduleTaskConfigShrink(v string) *CreateCustomAgentShrinkRequest
@@ -46,6 +50,16 @@ type iCreateCustomAgentShrinkRequest interface {
 }
 
 type CreateCustomAgentShrinkRequest struct {
+	// The type of the custom agent. Valid values:
+	//
+	// - Default: The built-in custom agent. Each workspace can have at most one agent of this type, and it cannot be deleted.
+	//
+	// - Common: A regular custom agent.
+	//
+	// example:
+	//
+	// Common
+	AgentType            *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
 	// The current DMS unit.
 	//
@@ -53,19 +67,19 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope, in **JSON character string format**.
+	// The specified data scope in **JSON character string format**.
 	//
-	// - Common parameter description
+	// - General parameter description:
 	//
-	//   - tableFlag: true specifies the data scope.
+	//   - tableFlag: Set to true to specify the data scope.
 	//
-	//   - scope: personal is a fixed value.
+	//   - scope: Set to personal as a fixed value.
 	//
-	//   - personal: the parameters for file and database types.
+	//   - personal: The parameters for file and database types.
 	//
 	// **File type**: Pass parameters in the following format:
 	//
-	// - DataSourceType: remote_data_center is a fixed value.
+	// - DataSourceType: Set to remote_data_center as a fixed value.
 	//
 	// - FileId: The file ID.
 	//
@@ -113,23 +127,23 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// ```
 	//
-	// **Database type**: Pass parameters as follows:
+	// **Database type**: Pass parameters in the following format:
 	//
-	// - DataSourceType: database is a fixed value.
+	// - DataSourceType: Set to database as a fixed value.
 	//
-	// - DmsInstanceId: The DMS instance ID returned by the Data Center API.
+	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: The DMS database ID returned by the Data Center API.
+	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
 	//
-	// - FileId: The instance name. **[Deprecated]**
+	// - FileId: The instance name. (Deprecated)
 	//
-	// - DbName: The database name returned by the Data Center API.
+	// - DbName: The database name returned by the data center operation.
 	//
-	// - Database: The database name returned by the Data Center API.
+	// - Database: The database name returned by the data center operation.
 	//
-	// - Tables: The table names returned by the Data Center API.
+	// - Tables: The table names returned by the data center operation.
 	//
-	// - TableIds: The table IDs returned by the Data Center API.
+	// - TableIds: The table IDs returned by the data center operation.
 	//
 	// - Engine: The engine type, such as mysql or postgresql.
 	//
@@ -193,7 +207,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "TestTable******.xlsx",
+	//     "Database" : "Sample table******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -209,41 +223,37 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// Agent test description
+	// Sample agent description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
-	// The instructions.
-	//
-	// - Input limit: A maximum of 10,000 characters.
+	// The instructions. Maximum length: 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total sum of order amounts, including both paid and unpaid orders.
 	//
 	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// The knowledge.
-	//
-	// - Input limit: A maximum of 10,000 characters.
+	// The knowledge. Maximum length: 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total sum of order amounts, including both paid and unpaid orders.
 	//
 	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigListShrink         *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
@@ -252,8 +262,10 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// Agent test name
+	// Sample agent name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of recommended questions. You can configure up to 10 recommended questions.
+	RecommendQuestionListShrink *string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty"`
 	// The ID of the referenced historical session.
 	//
 	// example:
@@ -266,7 +278,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// All numbers in the text report must be written in Chinese characters instead of Arabic numerals
+	// For the text report, use Chinese characters for all numbers instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillListShrink *string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty"`
@@ -274,7 +286,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// All numbers in the web report must be written in Chinese characters instead of Arabic numerals
+	// For the web report, use Chinese characters for all numbers instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme.
 	//
@@ -296,6 +308,10 @@ func (s CreateCustomAgentShrinkRequest) String() string {
 
 func (s CreateCustomAgentShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomAgentShrinkRequest) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *CreateCustomAgentShrinkRequest) GetCallbackConfigShrink() *string {
@@ -338,6 +354,10 @@ func (s *CreateCustomAgentShrinkRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateCustomAgentShrinkRequest) GetRecommendQuestionListShrink() *string {
+	return s.RecommendQuestionListShrink
+}
+
 func (s *CreateCustomAgentShrinkRequest) GetRelatedSessionId() *string {
 	return s.RelatedSessionId
 }
@@ -364,6 +384,11 @@ func (s *CreateCustomAgentShrinkRequest) GetWebReportTheme() *string {
 
 func (s *CreateCustomAgentShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateCustomAgentShrinkRequest) SetAgentType(v string) *CreateCustomAgentShrinkRequest {
+	s.AgentType = &v
+	return s
 }
 
 func (s *CreateCustomAgentShrinkRequest) SetCallbackConfigShrink(v string) *CreateCustomAgentShrinkRequest {
@@ -413,6 +438,11 @@ func (s *CreateCustomAgentShrinkRequest) SetKnowledgeSemanticConfigListShrink(v 
 
 func (s *CreateCustomAgentShrinkRequest) SetName(v string) *CreateCustomAgentShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateCustomAgentShrinkRequest) SetRecommendQuestionListShrink(v string) *CreateCustomAgentShrinkRequest {
+	s.RecommendQuestionListShrink = &v
 	return s
 }
 

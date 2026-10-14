@@ -31,6 +31,8 @@ type iModifyCustomAgentRequest interface {
 	GetKnowledgeSemanticConfigList() []*ModifyCustomAgentRequestKnowledgeSemanticConfigList
 	SetName(v string) *ModifyCustomAgentRequest
 	GetName() *string
+	SetRecommendQuestionList(v []*string) *ModifyCustomAgentRequest
+	GetRecommendQuestionList() []*string
 	SetRelatedSessionId(v string) *ModifyCustomAgentRequest
 	GetRelatedSessionId() *string
 	SetScheduleTaskConfig(v *ModifyCustomAgentRequestScheduleTaskConfig) *ModifyCustomAgentRequest
@@ -63,17 +65,17 @@ type ModifyCustomAgentRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope in **JSON character string format**.
+	// The specified data scope in **JSON string format**.
 	//
 	// - General parameter description
 	//
-	//   - tableFlag: true specifies the data scope.
+	//   - tableFlag: true indicates that a data scope is specified.
 	//
 	//   - scope: personal is a fixed value.
 	//
 	//   - personal: parameters for file and database types.
 	//
-	// **File type**: pass parameters in the following format:
+	// **File type**: Pass parameters in the following format:
 	//
 	// - DataSourceType: remote_data_center is a fixed value.
 	//
@@ -123,23 +125,23 @@ type ModifyCustomAgentRequest struct {
 	//
 	// ```
 	//
-	// **Database type**: pass parameters as follows:
+	// **Database type**: Pass parameters in the following format:
 	//
 	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: the DMS instance ID returned by the Data Center operation.
+	// - DmsInstanceId: the DMS instance ID returned by the data center API.
 	//
-	// - DmsDatabaseId: the DMS database ID returned by the Data Center operation.
+	// - DmsDatabaseId: the DMS database ID returned by the data center API.
 	//
-	// - FileId: the instance name. **[Deprecated]**
+	// - FileId: the instance name. (Deprecated)
 	//
-	// - DbName: the database name returned by the Data Center operation.
+	// - DbName: the database name returned by the data center API.
 	//
-	// - Database: the database name returned by the Data Center operation.
+	// - Database: the database name returned by the data center API.
 	//
-	// - Tables: the table names returned by the Data Center operation.
+	// - Tables: the table names returned by the data center API.
 	//
-	// - TableIds: the table IDs returned by the Data Center operation.
+	// - TableIds: the table IDs returned by the data center API.
 	//
 	// - Engine: the engine type, such as mysql or postgresql.
 	//
@@ -203,7 +205,7 @@ type ModifyCustomAgentRequest struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "Test_spreadsheet******.xlsx",
+	//     "Database" : "Test table******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -231,9 +233,9 @@ type ModifyCustomAgentRequest struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes as well as year-over-year and month-over-month fluctuations.
+	// 1. Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
 	//
-	// 2. Segment data by new and returning customers, channels, and regions to identify growth drivers and weaknesses.
+	// 2. Segment by new and existing customers, channels, and regions to identify growth drivers and weaknesses.
 	//
 	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
@@ -247,11 +249,11 @@ type ModifyCustomAgentRequest struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both successfully paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume is the number of valid orders placed per day.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList         []*ModifyCustomAgentRequestKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -262,6 +264,10 @@ type ModifyCustomAgentRequest struct {
 	//
 	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of recommended questions.
+	//
+	// - You can configure up to 10 recommended questions.
+	RecommendQuestionList []*string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty" type:"Repeated"`
 	// The ID of the referenced historical session.
 	//
 	// example:
@@ -276,7 +282,7 @@ type ModifyCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// Require all numbers in the text report to be written in Chinese characters instead of Arabic numerals
+	// The text report requires that all numbers use Chinese numerals instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
@@ -286,19 +292,19 @@ type ModifyCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// Require all numbers in the web report to be written in Chinese characters instead of Arabic numerals
+	// The web report requires that all numbers use Chinese numerals instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//
-	// - default: default.
+	// - default: Default.
 	//
-	// - journal: journal.
+	// - journal: Journal.
 	//
-	// - legacy: classic.
+	// - legacy: Classic.
 	//
-	// - neobrutalism: stylized.
+	// - neobrutalism: Stylized.
 	//
-	// - infographic: infographic.
+	// - infographic: Infographic.
 	//
 	// example:
 	//
@@ -362,6 +368,10 @@ func (s *ModifyCustomAgentRequest) GetKnowledgeSemanticConfigList() []*ModifyCus
 
 func (s *ModifyCustomAgentRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *ModifyCustomAgentRequest) GetRecommendQuestionList() []*string {
+	return s.RecommendQuestionList
 }
 
 func (s *ModifyCustomAgentRequest) GetRelatedSessionId() *string {
@@ -444,6 +454,11 @@ func (s *ModifyCustomAgentRequest) SetKnowledgeSemanticConfigList(v []*ModifyCus
 
 func (s *ModifyCustomAgentRequest) SetName(v string) *ModifyCustomAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyCustomAgentRequest) SetRecommendQuestionList(v []*string) *ModifyCustomAgentRequest {
+	s.RecommendQuestionList = v
 	return s
 }
 
@@ -585,13 +600,13 @@ func (s *ModifyCustomAgentRequestCallbackConfig) Validate() error {
 }
 
 type ModifyCustomAgentRequestExecutionConfig struct {
-	// Specifies whether to prohibit appending data sources during the session.
+	// Specifies whether to prohibit appending data sources in a session.
 	//
 	// example:
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to disable user inquiries during the process.
+	// Specifies whether to disable user prompts during the process.
 	//
 	// example:
 	//
@@ -609,7 +624,7 @@ type ModifyCustomAgentRequestExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report generation confirmation.
+	// Specifies whether to skip the confirmation for generating a web report.
 	//
 	// example:
 	//
@@ -677,9 +692,9 @@ func (s *ModifyCustomAgentRequestExecutionConfig) Validate() error {
 type ModifyCustomAgentRequestKnowledgeConfigList struct {
 	// The access type. If this parameter is not specified, the default value is mcp. Valid values:
 	//
-	// - mcp: access through MCP. You must pass the McpServerId parameter.
+	// - mcp: access through MCP. You must specify the McpServerId parameter.
 	//
-	// - dms_kb: access through DMS knowledge base. You must pass the KbUuid parameter.
+	// - dms_kb: access through a DMS knowledge base. You must specify the KbUuid parameter.
 	//
 	// example:
 	//
@@ -691,7 +706,7 @@ type ModifyCustomAgentRequestKnowledgeConfigList struct {
 	//
 	// kb-HZ-6anhdzx7hddf9*******obx
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP server.
+	// The MCP server ID.
 	//
 	// example:
 	//
@@ -794,7 +809,7 @@ func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) Validate() error {
 }
 
 type ModifyCustomAgentRequestScheduleTaskConfig struct {
-	// The cron expression for periodic scheduling.
+	// The cron expression for scheduled execution.
 	//
 	// example:
 	//

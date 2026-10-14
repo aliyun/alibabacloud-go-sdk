@@ -9,6 +9,8 @@ type iCreateCustomAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentType(v string) *CreateCustomAgentRequest
+	GetAgentType() *string
 	SetCallbackConfig(v *CreateCustomAgentRequestCallbackConfig) *CreateCustomAgentRequest
 	GetCallbackConfig() *CreateCustomAgentRequestCallbackConfig
 	SetDMSUnit(v string) *CreateCustomAgentRequest
@@ -29,6 +31,8 @@ type iCreateCustomAgentRequest interface {
 	GetKnowledgeSemanticConfigList() []*CreateCustomAgentRequestKnowledgeSemanticConfigList
 	SetName(v string) *CreateCustomAgentRequest
 	GetName() *string
+	SetRecommendQuestionList(v []*string) *CreateCustomAgentRequest
+	GetRecommendQuestionList() []*string
 	SetRelatedSessionId(v string) *CreateCustomAgentRequest
 	GetRelatedSessionId() *string
 	SetScheduleTaskConfig(v *CreateCustomAgentRequestScheduleTaskConfig) *CreateCustomAgentRequest
@@ -46,6 +50,16 @@ type iCreateCustomAgentRequest interface {
 }
 
 type CreateCustomAgentRequest struct {
+	// The type of the custom agent. Valid values:
+	//
+	// - Default: The built-in custom agent. Each workspace can have at most one agent of this type, and it cannot be deleted.
+	//
+	// - Common: A regular custom agent.
+	//
+	// example:
+	//
+	// Common
+	AgentType      *string                                 `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	CallbackConfig *CreateCustomAgentRequestCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
 	// The current DMS unit.
 	//
@@ -53,19 +67,19 @@ type CreateCustomAgentRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope, in **JSON character string format**.
+	// The specified data scope in **JSON character string format**.
 	//
-	// - Common parameter description
+	// - General parameter description:
 	//
-	//   - tableFlag: true specifies the data scope.
+	//   - tableFlag: Set to true to specify the data scope.
 	//
-	//   - scope: personal is a fixed value.
+	//   - scope: Set to personal as a fixed value.
 	//
-	//   - personal: the parameters for file and database types.
+	//   - personal: The parameters for file and database types.
 	//
 	// **File type**: Pass parameters in the following format:
 	//
-	// - DataSourceType: remote_data_center is a fixed value.
+	// - DataSourceType: Set to remote_data_center as a fixed value.
 	//
 	// - FileId: The file ID.
 	//
@@ -113,23 +127,23 @@ type CreateCustomAgentRequest struct {
 	//
 	// ```
 	//
-	// **Database type**: Pass parameters as follows:
+	// **Database type**: Pass parameters in the following format:
 	//
-	// - DataSourceType: database is a fixed value.
+	// - DataSourceType: Set to database as a fixed value.
 	//
-	// - DmsInstanceId: The DMS instance ID returned by the Data Center API.
+	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: The DMS database ID returned by the Data Center API.
+	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
 	//
-	// - FileId: The instance name. **[Deprecated]**
+	// - FileId: The instance name. (Deprecated)
 	//
-	// - DbName: The database name returned by the Data Center API.
+	// - DbName: The database name returned by the data center operation.
 	//
-	// - Database: The database name returned by the Data Center API.
+	// - Database: The database name returned by the data center operation.
 	//
-	// - Tables: The table names returned by the Data Center API.
+	// - Tables: The table names returned by the data center operation.
 	//
-	// - TableIds: The table IDs returned by the Data Center API.
+	// - TableIds: The table IDs returned by the data center operation.
 	//
 	// - Engine: The engine type, such as mysql or postgresql.
 	//
@@ -193,7 +207,7 @@ type CreateCustomAgentRequest struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "TestTable******.xlsx",
+	//     "Database" : "Sample table******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -209,41 +223,37 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// Agent test description
+	// Sample agent description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfig *CreateCustomAgentRequestExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
-	// The instructions.
-	//
-	// - Input limit: A maximum of 10,000 characters.
+	// The instructions. Maximum length: 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total sum of order amounts, including both paid and unpaid orders.
 	//
 	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// The knowledge.
-	//
-	// - Input limit: A maximum of 10,000 characters.
+	// The knowledge. Maximum length: 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total sum of order amounts, including both paid and unpaid orders.
 	//
 	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList         []*CreateCustomAgentRequestKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -252,8 +262,10 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// Agent test name
+	// Sample agent name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of recommended questions. You can configure up to 10 recommended questions.
+	RecommendQuestionList []*string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty" type:"Repeated"`
 	// The ID of the referenced historical session.
 	//
 	// example:
@@ -266,7 +278,7 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// All numbers in the text report must be written in Chinese characters instead of Arabic numerals
+	// For the text report, use Chinese characters for all numbers instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
@@ -274,7 +286,7 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// All numbers in the web report must be written in Chinese characters instead of Arabic numerals
+	// For the web report, use Chinese characters for all numbers instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme.
 	//
@@ -296,6 +308,10 @@ func (s CreateCustomAgentRequest) String() string {
 
 func (s CreateCustomAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomAgentRequest) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *CreateCustomAgentRequest) GetCallbackConfig() *CreateCustomAgentRequestCallbackConfig {
@@ -338,6 +354,10 @@ func (s *CreateCustomAgentRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateCustomAgentRequest) GetRecommendQuestionList() []*string {
+	return s.RecommendQuestionList
+}
+
 func (s *CreateCustomAgentRequest) GetRelatedSessionId() *string {
 	return s.RelatedSessionId
 }
@@ -364,6 +384,11 @@ func (s *CreateCustomAgentRequest) GetWebReportTheme() *string {
 
 func (s *CreateCustomAgentRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateCustomAgentRequest) SetAgentType(v string) *CreateCustomAgentRequest {
+	s.AgentType = &v
+	return s
 }
 
 func (s *CreateCustomAgentRequest) SetCallbackConfig(v *CreateCustomAgentRequestCallbackConfig) *CreateCustomAgentRequest {
@@ -413,6 +438,11 @@ func (s *CreateCustomAgentRequest) SetKnowledgeSemanticConfigList(v []*CreateCus
 
 func (s *CreateCustomAgentRequest) SetName(v string) *CreateCustomAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequest) SetRecommendQuestionList(v []*string) *CreateCustomAgentRequest {
+	s.RecommendQuestionList = v
 	return s
 }
 
@@ -554,13 +584,13 @@ func (s *CreateCustomAgentRequestCallbackConfig) Validate() error {
 }
 
 type CreateCustomAgentRequestExecutionConfig struct {
-	// Specifies whether to prohibit appending data sources during a session.
+	// Specifies whether to prohibit appending data sources in the session.
 	//
 	// example:
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to disable user inquiries during the process.
+	// Specifies whether to disable user prompts during the process.
 	//
 	// example:
 	//
@@ -578,7 +608,7 @@ type CreateCustomAgentRequestExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report generation confirmation.
+	// Specifies whether to skip the confirmation for generating a web report.
 	//
 	// example:
 	//
@@ -646,9 +676,9 @@ func (s *CreateCustomAgentRequestExecutionConfig) Validate() error {
 type CreateCustomAgentRequestKnowledgeConfigList struct {
 	// The access type. If you do not specify this parameter, the default value is mcp. Valid values:
 	//
-	// - mcp: Access through MCP. The McpServerId parameter is required.
+	// - mcp: Access through MCP. You must specify the McpServerId parameter.
 	//
-	// - dms_kb: Access through a DMS knowledge base. The KbUuid parameter is required.
+	// - dms_kb: Access through DMS knowledge base. You must specify the KbUuid parameter.
 	//
 	// example:
 	//
@@ -660,7 +690,7 @@ type CreateCustomAgentRequestKnowledgeConfigList struct {
 	//
 	// kb-HZ-6anhdzx7hddf9*******obx
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP server.
+	// The MCP server ID.
 	//
 	// example:
 	//
@@ -763,13 +793,13 @@ func (s *CreateCustomAgentRequestKnowledgeSemanticConfigList) Validate() error {
 }
 
 type CreateCustomAgentRequestScheduleTaskConfig struct {
-	// The cron expression for periodic scheduling.
+	// The cron expression for time-based scheduling.
 	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The query for the periodic task.
+	// The query for the scheduled task.
 	//
 	// example:
 	//

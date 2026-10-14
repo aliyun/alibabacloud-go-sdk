@@ -22,7 +22,7 @@ type iModifyCustomAgentResponseBody interface {
 }
 
 type ModifyCustomAgentResponseBody struct {
-	// The returned struct.
+	// The response struct.
 	Data *ModifyCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -117,7 +117,17 @@ func (s *ModifyCustomAgentResponseBody) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyData struct {
-	// The primary Alibaba Cloud account ID.
+	// The custom agent type. Valid values:
+	//
+	// - Default: The system-built-in custom agent. Each workspace can have at most one Default type, and it cannot be deleted.
+	//
+	// - Common: The common custom agent.
+	//
+	// example:
+	//
+	// Common
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The ID of the Alibaba Cloud main account.
 	//
 	// example:
 	//
@@ -164,7 +174,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "Test_spreadsheet******.xlsx",
+	//     "Database" : "Test table******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -208,9 +218,9 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes as well as year-over-year and month-over-month fluctuations.
+	// 1. Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
 	//
-	// 2. Segment data by new and returning customers, channels, and regions to identify growth drivers and weaknesses.
+	// 2. Segment by new and existing customers, channels, and regions to identify growth drivers and weaknesses.
 	//
 	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
@@ -228,11 +238,11 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both successfully paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume is the number of valid orders placed per day.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList         []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -267,6 +277,10 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	OfflineTime *string `json:"OfflineTime,omitempty" xml:"OfflineTime,omitempty"`
+	// The list of recommended questions.
+	//
+	// - You can configure up to 10 recommended questions.
+	RecommendQuestionList []*string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty" type:"Repeated"`
 	// The region.
 	//
 	// example:
@@ -297,7 +311,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Require all numbers in the text report to be written in Chinese characters instead of Arabic numerals
+	// The text report requires that all numbers use Chinese numerals instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
@@ -305,19 +319,19 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Require all numbers in the web report to be written in Chinese characters instead of Arabic numerals
+	// The web report requires that all numbers use Chinese numerals instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//
-	// - default: default.
+	// - default: Default.
 	//
-	// - journal: journal.
+	// - journal: Journal.
 	//
-	// - legacy: classic.
+	// - legacy: Classic.
 	//
-	// - neobrutalism: stylized.
+	// - neobrutalism: Stylized.
 	//
-	// - infographic: infographic.
+	// - infographic: Infographic.
 	//
 	// example:
 	//
@@ -337,6 +351,10 @@ func (s ModifyCustomAgentResponseBodyData) String() string {
 
 func (s ModifyCustomAgentResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyCustomAgentResponseBodyData) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *ModifyCustomAgentResponseBodyData) GetAliyunParentUid() *string {
@@ -427,6 +445,10 @@ func (s *ModifyCustomAgentResponseBodyData) GetOfflineTime() *string {
 	return s.OfflineTime
 }
 
+func (s *ModifyCustomAgentResponseBodyData) GetRecommendQuestionList() []*string {
+	return s.RecommendQuestionList
+}
+
 func (s *ModifyCustomAgentResponseBodyData) GetRegion() *string {
 	return s.Region
 }
@@ -465,6 +487,11 @@ func (s *ModifyCustomAgentResponseBodyData) GetWebReportTheme() *string {
 
 func (s *ModifyCustomAgentResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ModifyCustomAgentResponseBodyData) SetAgentType(v string) *ModifyCustomAgentResponseBodyData {
+	s.AgentType = &v
+	return s
 }
 
 func (s *ModifyCustomAgentResponseBodyData) SetAliyunParentUid(v string) *ModifyCustomAgentResponseBodyData {
@@ -574,6 +601,11 @@ func (s *ModifyCustomAgentResponseBodyData) SetNextRuntime(v int64) *ModifyCusto
 
 func (s *ModifyCustomAgentResponseBodyData) SetOfflineTime(v string) *ModifyCustomAgentResponseBodyData {
 	s.OfflineTime = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyData) SetRecommendQuestionList(v []*string) *ModifyCustomAgentResponseBodyData {
+	s.RecommendQuestionList = v
 	return s
 }
 
@@ -730,13 +762,13 @@ func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataExecutionConfig struct {
-	// Specifies whether to prohibit appending data sources during the session.
+	// Specifies whether to prohibit appending data sources in a session.
 	//
 	// example:
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to disable user inquiries during the process.
+	// Specifies whether to disable user prompts during the process.
 	//
 	// example:
 	//
@@ -754,7 +786,7 @@ type ModifyCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report generation confirmation.
+	// Specifies whether to skip the confirmation for generating a web report.
 	//
 	// example:
 	//
@@ -822,9 +854,9 @@ func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	// The access type. Valid values:
 	//
-	// - mcp: Access through MCP.
+	// - mcp: Accessed through MCP.
 	//
-	// - dms_kb: Access through the DMS knowledge base.
+	// - dms_kb: Accessed through the DMS knowledge base.
 	//
 	// example:
 	//
@@ -836,7 +868,7 @@ type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	//
 	// kb-HZ-6anhdzx7hddf9*******obx
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP server.
+	// The MCP server ID.
 	//
 	// example:
 	//
@@ -939,7 +971,7 @@ func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) Validate(
 }
 
 type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
-	// The cron expression for periodic scheduling.
+	// The cron expression for scheduled execution.
 	//
 	// example:
 	//

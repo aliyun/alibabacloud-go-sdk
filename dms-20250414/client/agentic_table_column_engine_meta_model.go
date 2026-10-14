@@ -32,66 +32,16 @@ type iAgenticTableColumnEngineMeta interface {
 }
 
 type AgenticTableColumnEngineMeta struct {
-	// Specifies whether the field is auto-incremented.
-	//
-	// example:
-	//
-	// false
-	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	// The defined length of the field.
-	//
-	// example:
-	//
-	// 20
-	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
-	// The precision of the numeric field.
-	//
-	// example:
-	//
-	// 10
-	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	// The scale of the numeric field, which is the number of decimal places.
-	//
-	// example:
-	//
-	// 2
-	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	// The default value of the field.
-	//
-	// example:
-	//
-	// 0
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The character set of the field.
-	//
-	// example:
-	//
-	// utf8mb4
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The additional information of the field, such as auto_increment.
-	//
-	// example:
-	//
-	// auto_increment
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Specifies whether the field is a generated column.
-	//
-	// example:
-	//
-	// false
-	GenerationColumn *bool `json:"GenerationColumn,omitempty" xml:"GenerationColumn,omitempty"`
-	// The calculation expression of the generated column.
-	//
-	// example:
-	//
-	// price 	- quantity
+	AutoIncrement        *bool   `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	DataLength           *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataPrecision        *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale            *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	Extra                *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	GenerationColumn     *bool   `json:"GenerationColumn,omitempty" xml:"GenerationColumn,omitempty"`
 	GenerationExpression *string `json:"GenerationExpression,omitempty" xml:"GenerationExpression,omitempty"`
-	// Specifies whether the field allows null values.
-	//
-	// example:
-	//
-	// false
-	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Nullable             *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 }
 
 func (s AgenticTableColumnEngineMeta) String() string {

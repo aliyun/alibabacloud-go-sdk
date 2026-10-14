@@ -9,6 +9,8 @@ type iListCustomAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentType(v string) *ListCustomAgentRequest
+	GetAgentType() *string
 	SetPageNumber(v int32) *ListCustomAgentRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListCustomAgentRequest
@@ -24,6 +26,16 @@ type iListCustomAgentRequest interface {
 }
 
 type ListCustomAgentRequest struct {
+	// The custom agent type. Valid values:
+	//
+	// - Default: system built-in custom agent
+	//
+	// - Common: regular custom agent
+	//
+	// example:
+	//
+	// Common
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// The page number. Pages start from 1.
 	//
 	// example:
@@ -42,11 +54,11 @@ type ListCustomAgentRequest struct {
 	//
 	// true
 	QueryAllReleased *bool `json:"QueryAllReleased,omitempty" xml:"QueryAllReleased,omitempty"`
-	// The search keyword. Fuzzy search is supported for custom agent names and descriptions.
+	// The search keyword. Supports fuzzy search for custom agent names and descriptions.
 	//
 	// example:
 	//
-	// Test Agent
+	// Test agent
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The status of the custom agent.
 	//
@@ -68,6 +80,10 @@ func (s ListCustomAgentRequest) String() string {
 
 func (s ListCustomAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomAgentRequest) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *ListCustomAgentRequest) GetPageNumber() *int32 {
@@ -92,6 +108,11 @@ func (s *ListCustomAgentRequest) GetStatus() *string {
 
 func (s *ListCustomAgentRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListCustomAgentRequest) SetAgentType(v string) *ListCustomAgentRequest {
+	s.AgentType = &v
+	return s
 }
 
 func (s *ListCustomAgentRequest) SetPageNumber(v int32) *ListCustomAgentRequest {

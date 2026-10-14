@@ -42,7 +42,7 @@ type DescribeCustomAgentResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Specifies whether the request is successful. Valid values:
 	//
 	// - **true**: The request is successful.
 	//
@@ -117,7 +117,17 @@ func (s *DescribeCustomAgentResponseBody) Validate() error {
 }
 
 type DescribeCustomAgentResponseBodyData struct {
-	// The primary Alibaba Cloud account ID.
+	// The custom agent type. Valid values:
+	//
+	// - Default: built-in custom agent.
+	//
+	// - Common: common custom agent.
+	//
+	// example:
+	//
+	// Common
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The ID of the parent Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -202,7 +212,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -273,13 +283,17 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	OfflineTime *string `json:"OfflineTime,omitempty" xml:"OfflineTime,omitempty"`
+	// The list of recommended questions.
+	//
+	// - A maximum of 10 recommended questions can be configured.
+	RecommendQuestionList []*string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty" type:"Repeated"`
 	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The referenced historical session ID.
+	// The ID of the referenced historical session.
 	//
 	// example:
 	//
@@ -293,7 +307,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	// The scheduled task configuration.
 	ScheduleTaskConfig *DescribeCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
-	// The status of the custom agent.
+	// The custom agent status.
 	//
 	// example:
 	//
@@ -315,15 +329,15 @@ type DescribeCustomAgentResponseBodyData struct {
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//
-	// - default: Default.
+	// - default: The default theme.
 	//
-	// - journal: Journal.
+	// - journal: The journal theme.
 	//
-	// - legacy: Classic.
+	// - legacy: The legacy theme.
 	//
-	// - neobrutalism: Stylized.
+	// - neobrutalism: The neobrutalism theme.
 	//
-	// - infographic: Infographic.
+	// - infographic: The infographic theme.
 	//
 	// example:
 	//
@@ -343,6 +357,10 @@ func (s DescribeCustomAgentResponseBodyData) String() string {
 
 func (s DescribeCustomAgentResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCustomAgentResponseBodyData) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *DescribeCustomAgentResponseBodyData) GetAliyunParentUid() *string {
@@ -437,6 +455,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetOfflineTime() *string {
 	return s.OfflineTime
 }
 
+func (s *DescribeCustomAgentResponseBodyData) GetRecommendQuestionList() []*string {
+	return s.RecommendQuestionList
+}
+
 func (s *DescribeCustomAgentResponseBodyData) GetRegion() *string {
 	return s.Region
 }
@@ -475,6 +497,11 @@ func (s *DescribeCustomAgentResponseBodyData) GetWebReportTheme() *string {
 
 func (s *DescribeCustomAgentResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetAgentType(v string) *DescribeCustomAgentResponseBodyData {
+	s.AgentType = &v
+	return s
 }
 
 func (s *DescribeCustomAgentResponseBodyData) SetAliyunParentUid(v string) *DescribeCustomAgentResponseBodyData {
@@ -589,6 +616,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetNextRuntime(v int64) *DescribeC
 
 func (s *DescribeCustomAgentResponseBodyData) SetOfflineTime(v string) *DescribeCustomAgentResponseBodyData {
 	s.OfflineTime = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetRecommendQuestionList(v []*string) *DescribeCustomAgentResponseBodyData {
+	s.RecommendQuestionList = v
 	return s
 }
 
@@ -751,7 +783,7 @@ type DescribeCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to prohibit user inquiries during the process.
+	// Specifies whether to disable user prompts during the process.
 	//
 	// example:
 	//
@@ -837,9 +869,9 @@ func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 type DescribeCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	// The access type. Valid values:
 	//
-	// - mcp: Accessed through MCP.
+	// - mcp: MCP access.
 	//
-	// - dms_kb: Accessed through DMS knowledge base.
+	// - dms_kb: DMS knowledge base access.
 	//
 	// example:
 	//
@@ -960,13 +992,13 @@ type DescribeCustomAgentResponseBodyDataScheduleTaskConfig struct {
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The query for the scheduled task.
+	// The question for the scheduled task.
 	//
 	// example:
 	//
 	// Analyze the data and provide the report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The referenced historical session ID.
+	// The ID of the referenced historical session.
 	//
 	// example:
 	//

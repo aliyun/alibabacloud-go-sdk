@@ -58,6 +58,164 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// Creates a data source accessible by the Agent data gateway.
+//
+// Description:
+//
+// Enter the connection and authentication information for the data source. The connection is automatically tested before saving. If the test succeeds, the data source is created and metadata synchronization starts.
+//
+// @param request - AddAgenticDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAgenticDataSourceResponse
+func (client *Client) AddAgenticDataSourceWithOptions(request *AddAgenticDataSourceRequest, runtime *dara.RuntimeOptions) (_result *AddAgenticDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Alias) {
+		query["Alias"] = request.Alias
+	}
+
+	if !dara.IsNil(request.AuthAccount) {
+		query["AuthAccount"] = request.AuthAccount
+	}
+
+	if !dara.IsNil(request.AuthPassword) {
+		query["AuthPassword"] = request.AuthPassword
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.CatalogName) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.CreateMode) {
+		query["CreateMode"] = request.CreateMode
+	}
+
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.Host) {
+		query["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.InstanceResourceId) {
+		query["InstanceResourceId"] = request.InstanceResourceId
+	}
+
+	if !dara.IsNil(request.InstanceSource) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !dara.IsNil(request.KmsSecret) {
+		query["KmsSecret"] = request.KmsSecret
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.Schema) {
+		query["Schema"] = request.Schema
+	}
+
+	if !dara.IsNil(request.SnowflakeRole) {
+		query["SnowflakeRole"] = request.SnowflakeRole
+	}
+
+	if !dara.IsNil(request.SnowflakeWarehouse) {
+		query["SnowflakeWarehouse"] = request.SnowflakeWarehouse
+	}
+
+	if !dara.IsNil(request.SyncAlias) {
+		query["SyncAlias"] = request.SyncAlias
+	}
+
+	if !dara.IsNil(request.UseSsl) {
+		query["UseSsl"] = request.UseSsl
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddAgenticDataSource"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddAgenticDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a data source accessible by the Agent data gateway.
+//
+// Description:
+//
+// Enter the connection and authentication information for the data source. The connection is automatically tested before saving. If the test succeeds, the data source is created and metadata synchronization starts.
+//
+// @param request - AddAgenticDataSourceRequest
+//
+// @return AddAgenticDataSourceResponse
+func (client *Client) AddAgenticDataSource(request *AddAgenticDataSourceRequest) (_result *AddAgenticDataSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddAgenticDataSourceResponse{}
+	_body, _err := client.AddAgenticDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a memory entry to a DataAgent.
 //
 // @param request - AddDataAgentMemoryRequest
@@ -504,6 +662,100 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 
 // Summary:
 //
+// Creates a temporary credential for an agent to execute SQL statements.
+//
+// Description:
+//
+// The credential is used to execute SQL statements through the data gateway (OneQuery) and can be restricted to the instance level or the database level.
+//
+// Fixed properties of the credential:
+//
+// - Validity period: 10 minutes after creation.
+//
+// - Maximum number of connections: 500.
+//
+// @param request - CreateAgenticSqlExecuteCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgenticSqlExecuteCredentialResponse
+func (client *Client) CreateAgenticSqlExecuteCredentialWithOptions(request *CreateAgenticSqlExecuteCredentialRequest, runtime *dara.RuntimeOptions) (_result *CreateAgenticSqlExecuteCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogName) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.QualifiedName) {
+		query["QualifiedName"] = request.QualifiedName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgenticSqlExecuteCredential"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgenticSqlExecuteCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a temporary credential for an agent to execute SQL statements.
+//
+// Description:
+//
+// The credential is used to execute SQL statements through the data gateway (OneQuery) and can be restricted to the instance level or the database level.
+//
+// Fixed properties of the credential:
+//
+// - Validity period: 10 minutes after creation.
+//
+// - Maximum number of connections: 500.
+//
+// @param request - CreateAgenticSqlExecuteCredentialRequest
+//
+// @return CreateAgenticSqlExecuteCredentialResponse
+func (client *Client) CreateAgenticSqlExecuteCredential(request *CreateAgenticSqlExecuteCredentialRequest) (_result *CreateAgenticSqlExecuteCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgenticSqlExecuteCredentialResponse{}
+	_body, _err := client.CreateAgenticSqlExecuteCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an Airflow instance in a workspace.
 //
 // Description:
@@ -718,7 +970,7 @@ func (client *Client) CreateAirflowLoginToken(request *CreateAirflowLoginTokenRe
 
 // Summary:
 //
-// Creates a custom agent in a personal space or workspace.
+// Creates a custom agent in a personal or shared workspace.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -750,6 +1002,10 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 		request.KnowledgeSemanticConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeSemanticConfigList, dara.String("KnowledgeSemanticConfigList"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.RecommendQuestionList) {
+		request.RecommendQuestionListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecommendQuestionList, dara.String("RecommendQuestionList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ScheduleTaskConfig) {
 		request.ScheduleTaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleTaskConfig, dara.String("ScheduleTaskConfig"), dara.String("json"))
 	}
@@ -759,6 +1015,10 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
 	if !dara.IsNil(request.CallbackConfigShrink) {
 		query["CallbackConfig"] = request.CallbackConfigShrink
 	}
@@ -797,6 +1057,10 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RecommendQuestionListShrink) {
+		query["RecommendQuestionList"] = request.RecommendQuestionListShrink
 	}
 
 	if !dara.IsNil(request.RelatedSessionId) {
@@ -852,7 +1116,7 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 // Summary:
 //
-// Creates a custom agent in a personal space or workspace.
+// Creates a custom agent in a personal or shared workspace.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -1551,6 +1815,76 @@ func (client *Client) CreateOneMetaSqlTemplate(request *CreateOneMetaSqlTemplate
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateOneMetaSqlTemplateResponse{}
 	_body, _err := client.CreateOneMetaSqlTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data source and its associated metadata catalog.
+//
+// Description:
+//
+// After deletion, the data source cannot establish connections and cannot be restored by calling the enable API operation.
+//
+// @param request - DeleteAgenticDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticDataSourceResponse
+func (client *Client) DeleteAgenticDataSourceWithOptions(request *DeleteAgenticDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceUuid) {
+		query["DataSourceUuid"] = request.DataSourceUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticDataSource"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data source and its associated metadata catalog.
+//
+// Description:
+//
+// After deletion, the data source cannot establish connections and cannot be restored by calling the enable API operation.
+//
+// @param request - DeleteAgenticDataSourceRequest
+//
+// @return DeleteAgenticDataSourceResponse
+func (client *Client) DeleteAgenticDataSource(request *DeleteAgenticDataSourceRequest) (_result *DeleteAgenticDataSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgenticDataSourceResponse{}
+	_body, _err := client.DeleteAgenticDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2598,7 +2932,7 @@ func (client *Client) DeleteWorkspaceCode(request *DeleteWorkspaceCodeRequest) (
 
 // Summary:
 //
-// Queries the details of a custom agent by custom agent ID.
+// Retrieves the details of a custom agent by custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2646,7 +2980,7 @@ func (client *Client) DescribeCustomAgentWithOptions(request *DescribeCustomAgen
 
 // Summary:
 //
-// Queries the details of a custom agent by custom agent ID.
+// Retrieves the details of a custom agent by custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -3413,6 +3747,332 @@ func (client *Client) GetAgenticAgentByInstallToken(request *GetAgenticAgentByIn
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAgenticAgentByInstallTokenResponse{}
 	_body, _err := client.GetAgenticAgentByInstallTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an Agentic DMS catalog based on the catalog UUID.
+//
+// @param request - GetAgenticCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgenticCatalogResponse
+func (client *Client) GetAgenticCatalogWithOptions(request *GetAgenticCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetAgenticCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgenticCatalog"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgenticCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an Agentic DMS catalog based on the catalog UUID.
+//
+// @param request - GetAgenticCatalogRequest
+//
+// @return GetAgenticCatalogResponse
+func (client *Client) GetAgenticCatalog(request *GetAgenticCatalogRequest) (_result *GetAgenticCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgenticCatalogResponse{}
+	_body, _err := client.GetAgenticCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a data source by its UUID.
+//
+// Description:
+//
+// Queries the connection, authentication, status, and metadata catalog information of a specified data source under the current account. Only masked values are returned for passwords.
+//
+// @param request - GetAgenticDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgenticDataSourceResponse
+func (client *Client) GetAgenticDataSourceWithOptions(request *GetAgenticDataSourceRequest, runtime *dara.RuntimeOptions) (_result *GetAgenticDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceUuid) {
+		query["DataSourceUuid"] = request.DataSourceUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgenticDataSource"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgenticDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a data source by its UUID.
+//
+// Description:
+//
+// Queries the connection, authentication, status, and metadata catalog information of a specified data source under the current account. Only masked values are returned for passwords.
+//
+// @param request - GetAgenticDataSourceRequest
+//
+// @return GetAgenticDataSourceResponse
+func (client *Client) GetAgenticDataSource(request *GetAgenticDataSourceRequest) (_result *GetAgenticDataSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgenticDataSourceResponse{}
+	_body, _err := client.GetAgenticDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a database in Agentic DMS based on the database UUID.
+//
+// @param request - GetAgenticDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgenticDatabaseResponse
+func (client *Client) GetAgenticDatabaseWithOptions(request *GetAgenticDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetAgenticDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgenticDatabase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgenticDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a database in Agentic DMS based on the database UUID.
+//
+// @param request - GetAgenticDatabaseRequest
+//
+// @return GetAgenticDatabaseResponse
+func (client *Client) GetAgenticDatabase(request *GetAgenticDatabaseRequest) (_result *GetAgenticDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgenticDatabaseResponse{}
+	_body, _err := client.GetAgenticDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the fields of a table based on the database UUID and the fully qualified name of the table.
+//
+// @param request - GetAgenticTableColumnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgenticTableColumnResponse
+func (client *Client) GetAgenticTableColumnWithOptions(request *GetAgenticTableColumnRequest, runtime *dara.RuntimeOptions) (_result *GetAgenticTableColumnResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.TableQualifiedName) {
+		query["TableQualifiedName"] = request.TableQualifiedName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgenticTableColumn"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgenticTableColumnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the fields of a table based on the database UUID and the fully qualified name of the table.
+//
+// @param request - GetAgenticTableColumnRequest
+//
+// @return GetAgenticTableColumnResponse
+func (client *Client) GetAgenticTableColumn(request *GetAgenticTableColumnRequest) (_result *GetAgenticTableColumnResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgenticTableColumnResponse{}
+	_body, _err := client.GetAgenticTableColumnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the indexes of a table based on the database UUID and the fully qualified name of the table.
+//
+// @param request - GetAgenticTableIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgenticTableIndexResponse
+func (client *Client) GetAgenticTableIndexWithOptions(request *GetAgenticTableIndexRequest, runtime *dara.RuntimeOptions) (_result *GetAgenticTableIndexResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.TableQualifiedName) {
+		query["TableQualifiedName"] = request.TableQualifiedName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgenticTableIndex"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgenticTableIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the indexes of a table based on the database UUID and the fully qualified name of the table.
+//
+// @param request - GetAgenticTableIndexRequest
+//
+// @return GetAgenticTableIndexResponse
+func (client *Client) GetAgenticTableIndex(request *GetAgenticTableIndexRequest) (_result *GetAgenticTableIndexResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgenticTableIndexResponse{}
+	_body, _err := client.GetAgenticTableIndexWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4921,6 +5581,350 @@ func (client *Client) InstallDataAgentMcp(request *InstallDataAgentMcpRequest) (
 
 // Summary:
 //
+// Performs a paging query on the catalogs in Agentic DMS. You can filter the results by catalog type and name prefix.
+//
+// @param request - ListAgenticCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgenticCatalogResponse
+func (client *Client) ListAgenticCatalogWithOptions(request *ListAgenticCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListAgenticCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogType) {
+		query["CatalogType"] = request.CatalogType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgenticCatalog"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgenticCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query on the catalogs in Agentic DMS. You can filter the results by catalog type and name prefix.
+//
+// @param request - ListAgenticCatalogRequest
+//
+// @return ListAgenticCatalogResponse
+func (client *Client) ListAgenticCatalog(request *ListAgenticCatalogRequest) (_result *ListAgenticCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgenticCatalogResponse{}
+	_body, _err := client.ListAgenticCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the data sources of the current account by using paging.
+//
+// Description:
+//
+// You can filter data sources by type, status, endpoint, port, source, and connection target name. You can also perform a fuzzy search by name or endpoint. If multiple filter conditions are specified, the intersection of the conditions is used.
+//
+// @param request - ListAgenticDataSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgenticDataSourcesResponse
+func (client *Client) ListAgenticDataSourcesWithOptions(request *ListAgenticDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListAgenticDataSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.Host) {
+		query["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.InstanceSource) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.Schema) {
+		query["Schema"] = request.Schema
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgenticDataSources"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgenticDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the data sources of the current account by using paging.
+//
+// Description:
+//
+// You can filter data sources by type, status, endpoint, port, source, and connection target name. You can also perform a fuzzy search by name or endpoint. If multiple filter conditions are specified, the intersection of the conditions is used.
+//
+// @param request - ListAgenticDataSourcesRequest
+//
+// @return ListAgenticDataSourcesResponse
+func (client *Client) ListAgenticDataSources(request *ListAgenticDataSourcesRequest) (_result *ListAgenticDataSourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgenticDataSourcesResponse{}
+	_body, _err := client.ListAgenticDataSourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query for the list of databases in a specified catalog, with options to filter by name prefix and specify the sorting method for paging.
+//
+// @param request - ListAgenticDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgenticDatabaseResponse
+func (client *Client) ListAgenticDatabaseWithOptions(request *ListAgenticDatabaseRequest, runtime *dara.RuntimeOptions) (_result *ListAgenticDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.SortFieldName) {
+		query["SortFieldName"] = request.SortFieldName
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgenticDatabase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgenticDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query for the list of databases in a specified catalog, with options to filter by name prefix and specify the sorting method for paging.
+//
+// @param request - ListAgenticDatabaseRequest
+//
+// @return ListAgenticDatabaseResponse
+func (client *Client) ListAgenticDatabase(request *ListAgenticDatabaseRequest) (_result *ListAgenticDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgenticDatabaseResponse{}
+	_body, _err := client.ListAgenticDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the basic information and engine metadata of tables in a specified database by using paging. You can filter the results by keyword and table type, and specify the sorting method.
+//
+// @param request - ListAgenticTableBaseInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgenticTableBaseInfoResponse
+func (client *Client) ListAgenticTableBaseInfoWithOptions(request *ListAgenticTableBaseInfoRequest, runtime *dara.RuntimeOptions) (_result *ListAgenticTableBaseInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.SortFieldName) {
+		query["SortFieldName"] = request.SortFieldName
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.TableType) {
+		query["TableType"] = request.TableType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgenticTableBaseInfo"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgenticTableBaseInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the basic information and engine metadata of tables in a specified database by using paging. You can filter the results by keyword and table type, and specify the sorting method.
+//
+// @param request - ListAgenticTableBaseInfoRequest
+//
+// @return ListAgenticTableBaseInfoResponse
+func (client *Client) ListAgenticTableBaseInfo(request *ListAgenticTableBaseInfoRequest) (_result *ListAgenticTableBaseInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgenticTableBaseInfoResponse{}
+	_body, _err := client.ListAgenticTableBaseInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists the available Airflow versions.
 //
 // Description:
@@ -5069,7 +6073,7 @@ func (client *Client) ListAirflows(request *ListAirflowsRequest) (_result *ListA
 
 // Summary:
 //
-// Lists all custom agents in personal spaces and workspaces.
+// Lists all custom agents in personal and shared workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -5084,6 +6088,10 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -5133,7 +6141,7 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 
 // Summary:
 //
-// Lists all custom agents in personal spaces and workspaces.
+// Lists all custom agents in personal and shared workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -6967,7 +7975,7 @@ func (client *Client) ListWorkspaceCode(request *ListWorkspaceCodeRequest) (_res
 
 // Summary:
 //
-// Modifies a custom agent in a personal or shared workspace.
+// Modifies a custom agent in a personal or team workspace.
 //
 // @param tmpReq - ModifyCustomAgentRequest
 //
@@ -6997,6 +8005,10 @@ func (client *Client) ModifyCustomAgentWithOptions(tmpReq *ModifyCustomAgentRequ
 
 	if !dara.IsNil(tmpReq.KnowledgeSemanticConfigList) {
 		request.KnowledgeSemanticConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeSemanticConfigList, dara.String("KnowledgeSemanticConfigList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RecommendQuestionList) {
+		request.RecommendQuestionListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecommendQuestionList, dara.String("RecommendQuestionList"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.ScheduleTaskConfig) {
@@ -7052,6 +8064,10 @@ func (client *Client) ModifyCustomAgentWithOptions(tmpReq *ModifyCustomAgentRequ
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.RecommendQuestionListShrink) {
+		query["RecommendQuestionList"] = request.RecommendQuestionListShrink
+	}
+
 	if !dara.IsNil(request.RelatedSessionId) {
 		query["RelatedSessionId"] = request.RelatedSessionId
 	}
@@ -7105,7 +8121,7 @@ func (client *Client) ModifyCustomAgentWithOptions(tmpReq *ModifyCustomAgentRequ
 
 // Summary:
 //
-// Modifies a custom agent in a personal or shared workspace.
+// Modifies a custom agent in a personal or team workspace.
 //
 // @param request - ModifyCustomAgentRequest
 //
@@ -7781,6 +8797,170 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 
 // Summary:
 //
+// Searches for catalogs in Agentic DMS by keyword, catalog type, database type, or a list of catalog UUIDs, and returns paginated results.
+//
+// @param request - SearchAgenticCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchAgenticCatalogResponse
+func (client *Client) SearchAgenticCatalogWithOptions(request *SearchAgenticCatalogRequest, runtime *dara.RuntimeOptions) (_result *SearchAgenticCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogType) {
+		query["CatalogType"] = request.CatalogType
+	}
+
+	if !dara.IsNil(request.CatalogUuids) {
+		query["CatalogUuids"] = request.CatalogUuids
+	}
+
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchAgenticCatalog"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchAgenticCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches for catalogs in Agentic DMS by keyword, catalog type, database type, or a list of catalog UUIDs, and returns paginated results.
+//
+// @param request - SearchAgenticCatalogRequest
+//
+// @return SearchAgenticCatalogResponse
+func (client *Client) SearchAgenticCatalog(request *SearchAgenticCatalogRequest) (_result *SearchAgenticCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchAgenticCatalogResponse{}
+	_body, _err := client.SearchAgenticCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches for databases across catalogs by keyword. You can filter the results by catalog, database type, and environment type. The results are paginated.
+//
+// @param request - SearchAgenticDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchAgenticDatabaseResponse
+func (client *Client) SearchAgenticDatabaseWithOptions(request *SearchAgenticDatabaseRequest, runtime *dara.RuntimeOptions) (_result *SearchAgenticDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchAgenticDatabase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchAgenticDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches for databases across catalogs by keyword. You can filter the results by catalog, database type, and environment type. The results are paginated.
+//
+// @param request - SearchAgenticDatabaseRequest
+//
+// @return SearchAgenticDatabaseResponse
+func (client *Client) SearchAgenticDatabase(request *SearchAgenticDatabaseRequest) (_result *SearchAgenticDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchAgenticDatabaseResponse{}
+	_body, _err := client.SearchAgenticDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sends a user message to a specified session or cancels a session.
 //
 // Description:
@@ -8328,6 +9508,306 @@ func (client *Client) StopDataAgentAccuracyTestTask(request *StopDataAgentAccura
 	runtime := &dara.RuntimeOptions{}
 	_result = &StopDataAgentAccuracyTestTaskResponse{}
 	_body, _err := client.StopDataAgentAccuracyTestTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Tests whether the network and authentication information of a data source are available.
+//
+// Description:
+//
+// Validates only the connection information passed in the current request without creating or modifying a data source. When testing an existing data source, you can pass DataSourceUuid to reuse the saved password.
+//
+// @param request - TestAgenticDataSourceConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TestAgenticDataSourceConnectionResponse
+func (client *Client) TestAgenticDataSourceConnectionWithOptions(request *TestAgenticDataSourceConnectionRequest, runtime *dara.RuntimeOptions) (_result *TestAgenticDataSourceConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Alias) {
+		query["Alias"] = request.Alias
+	}
+
+	if !dara.IsNil(request.AuthAccount) {
+		query["AuthAccount"] = request.AuthAccount
+	}
+
+	if !dara.IsNil(request.AuthPassword) {
+		query["AuthPassword"] = request.AuthPassword
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.CatalogName) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.DataSourceUuid) {
+		query["DataSourceUuid"] = request.DataSourceUuid
+	}
+
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.Host) {
+		query["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.InstanceResourceId) {
+		query["InstanceResourceId"] = request.InstanceResourceId
+	}
+
+	if !dara.IsNil(request.InstanceSource) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !dara.IsNil(request.KmsSecret) {
+		query["KmsSecret"] = request.KmsSecret
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.Schema) {
+		query["Schema"] = request.Schema
+	}
+
+	if !dara.IsNil(request.SnowflakeRole) {
+		query["SnowflakeRole"] = request.SnowflakeRole
+	}
+
+	if !dara.IsNil(request.SnowflakeWarehouse) {
+		query["SnowflakeWarehouse"] = request.SnowflakeWarehouse
+	}
+
+	if !dara.IsNil(request.SyncAlias) {
+		query["SyncAlias"] = request.SyncAlias
+	}
+
+	if !dara.IsNil(request.UseSsl) {
+		query["UseSsl"] = request.UseSsl
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TestAgenticDataSourceConnection"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TestAgenticDataSourceConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Tests whether the network and authentication information of a data source are available.
+//
+// Description:
+//
+// Validates only the connection information passed in the current request without creating or modifying a data source. When testing an existing data source, you can pass DataSourceUuid to reuse the saved password.
+//
+// @param request - TestAgenticDataSourceConnectionRequest
+//
+// @return TestAgenticDataSourceConnectionResponse
+func (client *Client) TestAgenticDataSourceConnection(request *TestAgenticDataSourceConnectionRequest) (_result *TestAgenticDataSourceConnectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TestAgenticDataSourceConnectionResponse{}
+	_body, _err := client.TestAgenticDataSourceConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the connection, authentication, or display information of an existing data source.
+//
+// Description:
+//
+// Only the parameters passed in the current request are modified. Unpassed parameters remain unchanged. The data source type cannot be modified.
+//
+// @param request - UpdateAgenticDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgenticDataSourceResponse
+func (client *Client) UpdateAgenticDataSourceWithOptions(request *UpdateAgenticDataSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateAgenticDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Alias) {
+		query["Alias"] = request.Alias
+	}
+
+	if !dara.IsNil(request.AuthAccount) {
+		query["AuthAccount"] = request.AuthAccount
+	}
+
+	if !dara.IsNil(request.AuthPassword) {
+		query["AuthPassword"] = request.AuthPassword
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.CatalogName) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.CreateMode) {
+		query["CreateMode"] = request.CreateMode
+	}
+
+	if !dara.IsNil(request.DataSourceUuid) {
+		query["DataSourceUuid"] = request.DataSourceUuid
+	}
+
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.Host) {
+		query["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.InstanceResourceId) {
+		query["InstanceResourceId"] = request.InstanceResourceId
+	}
+
+	if !dara.IsNil(request.KmsSecret) {
+		query["KmsSecret"] = request.KmsSecret
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.Schema) {
+		query["Schema"] = request.Schema
+	}
+
+	if !dara.IsNil(request.SnowflakeRole) {
+		query["SnowflakeRole"] = request.SnowflakeRole
+	}
+
+	if !dara.IsNil(request.SnowflakeWarehouse) {
+		query["SnowflakeWarehouse"] = request.SnowflakeWarehouse
+	}
+
+	if !dara.IsNil(request.SyncAlias) {
+		query["SyncAlias"] = request.SyncAlias
+	}
+
+	if !dara.IsNil(request.UseSsl) {
+		query["UseSsl"] = request.UseSsl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgenticDataSource"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgenticDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the connection, authentication, or display information of an existing data source.
+//
+// Description:
+//
+// Only the parameters passed in the current request are modified. Unpassed parameters remain unchanged. The data source type cannot be modified.
+//
+// @param request - UpdateAgenticDataSourceRequest
+//
+// @return UpdateAgenticDataSourceResponse
+func (client *Client) UpdateAgenticDataSource(request *UpdateAgenticDataSourceRequest) (_result *UpdateAgenticDataSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAgenticDataSourceResponse{}
+	_body, _err := client.UpdateAgenticDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

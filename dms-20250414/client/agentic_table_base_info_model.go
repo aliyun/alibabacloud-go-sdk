@@ -28,64 +28,14 @@ type iAgenticTableBaseInfo interface {
 }
 
 type AgenticTableBaseInfo struct {
-	// The type of the catalog to which the table belongs. Valid values:
-	//
-	// - **JDBC**: relational database catalog
-	//
-	// - **DataLake**: data lake catalog
-	//
-	// - **Dataset**: knowledge base catalog
-	//
-	// example:
-	//
-	// JDBC
-	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	// The fully qualified name of the database to which the table belongs.
-	//
-	// example:
-	//
-	// order_db
-	DatabaseQualifiedName *string `json:"DatabaseQualifiedName,omitempty" xml:"DatabaseQualifiedName,omitempty"`
-	// The UUID of the database to which the table belongs.
-	//
-	// example:
-	//
-	// md-HZ-fp9K7r***
-	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	// The description of the table.
-	//
-	// example:
-	//
-	// Order table
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The engine metadata of the table.
-	EngineMeta *AgenticTableEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// orders
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The fully qualified name of the table. You can use this name as the TableQualifiedName parameter for GetAgenticTableColumn and GetAgenticTableIndex. For SQL Server, the format is schema name.table name.
-	//
-	// example:
-	//
-	// orders
-	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	// The table type. Valid values:
-	//
-	// - **NORMAL**: regular table
-	//
-	// - **VIEW**: view
-	//
-	// - **FOREIGN**: foreign table
-	//
-	// - **SYNONYM**: synonym, supported only for Oracle data sources
-	//
-	// example:
-	//
-	// NORMAL
-	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	CatalogType           *string                 `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	DatabaseQualifiedName *string                 `json:"DatabaseQualifiedName,omitempty" xml:"DatabaseQualifiedName,omitempty"`
+	DatabaseUuid          *string                 `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	Description           *string                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EngineMeta            *AgenticTableEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
+	Name                  *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	QualifiedName         *string                 `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	TableType             *string                 `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
 func (s AgenticTableBaseInfo) String() string {

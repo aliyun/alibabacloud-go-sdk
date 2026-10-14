@@ -15,6 +15,8 @@ type iAgenticDmsInstanceSyncTask interface {
 	GetActorName() *string
 	SetActorType(v string) *AgenticDmsInstanceSyncTask
 	GetActorType() *string
+	SetAuthorizeAddVpcNatWhiteList(v bool) *AgenticDmsInstanceSyncTask
+	GetAuthorizeAddVpcNatWhiteList() *bool
 	SetErrorCode(v string) *AgenticDmsInstanceSyncTask
 	GetErrorCode() *string
 	SetErrorSummary(v string) *AgenticDmsInstanceSyncTask
@@ -44,22 +46,23 @@ type iAgenticDmsInstanceSyncTask interface {
 }
 
 type AgenticDmsInstanceSyncTask struct {
-	ActorId                *string `json:"ActorId,omitempty" xml:"ActorId,omitempty"`
-	ActorName              *string `json:"ActorName,omitempty" xml:"ActorName,omitempty"`
-	ActorType              *string `json:"ActorType,omitempty" xml:"ActorType,omitempty"`
-	ErrorCode              *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorSummary           *string `json:"ErrorSummary,omitempty" xml:"ErrorSummary,omitempty"`
-	FailedCount            *int32  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified            *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	OperatorMode           *string `json:"OperatorMode,omitempty" xml:"OperatorMode,omitempty"`
-	RequestedOperatorMode  *string `json:"RequestedOperatorMode,omitempty" xml:"RequestedOperatorMode,omitempty"`
-	SkippedCount           *int32  `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
-	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SuccessCount           *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	SyncUserDataPermission *bool   `json:"SyncUserDataPermission,omitempty" xml:"SyncUserDataPermission,omitempty"`
-	TaskId                 *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TotalCount             *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ActorId                     *string `json:"ActorId,omitempty" xml:"ActorId,omitempty"`
+	ActorName                   *string `json:"ActorName,omitempty" xml:"ActorName,omitempty"`
+	ActorType                   *string `json:"ActorType,omitempty" xml:"ActorType,omitempty"`
+	AuthorizeAddVpcNatWhiteList *bool   `json:"AuthorizeAddVpcNatWhiteList,omitempty" xml:"AuthorizeAddVpcNatWhiteList,omitempty"`
+	ErrorCode                   *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorSummary                *string `json:"ErrorSummary,omitempty" xml:"ErrorSummary,omitempty"`
+	FailedCount                 *int32  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	GmtCreate                   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                 *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	OperatorMode                *string `json:"OperatorMode,omitempty" xml:"OperatorMode,omitempty"`
+	RequestedOperatorMode       *string `json:"RequestedOperatorMode,omitempty" xml:"RequestedOperatorMode,omitempty"`
+	SkippedCount                *int32  `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
+	Status                      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SuccessCount                *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	SyncUserDataPermission      *bool   `json:"SyncUserDataPermission,omitempty" xml:"SyncUserDataPermission,omitempty"`
+	TaskId                      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TotalCount                  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s AgenticDmsInstanceSyncTask) String() string {
@@ -80,6 +83,10 @@ func (s *AgenticDmsInstanceSyncTask) GetActorName() *string {
 
 func (s *AgenticDmsInstanceSyncTask) GetActorType() *string {
 	return s.ActorType
+}
+
+func (s *AgenticDmsInstanceSyncTask) GetAuthorizeAddVpcNatWhiteList() *bool {
+	return s.AuthorizeAddVpcNatWhiteList
 }
 
 func (s *AgenticDmsInstanceSyncTask) GetErrorCode() *string {
@@ -146,6 +153,11 @@ func (s *AgenticDmsInstanceSyncTask) SetActorName(v string) *AgenticDmsInstanceS
 
 func (s *AgenticDmsInstanceSyncTask) SetActorType(v string) *AgenticDmsInstanceSyncTask {
 	s.ActorType = &v
+	return s
+}
+
+func (s *AgenticDmsInstanceSyncTask) SetAuthorizeAddVpcNatWhiteList(v bool) *AgenticDmsInstanceSyncTask {
+	s.AuthorizeAddVpcNatWhiteList = &v
 	return s
 }
 

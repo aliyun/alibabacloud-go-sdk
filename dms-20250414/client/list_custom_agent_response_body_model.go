@@ -22,7 +22,7 @@ type iListCustomAgentResponseBody interface {
 }
 
 type ListCustomAgentResponseBody struct {
-	// The returned struct.
+	// The response struct.
 	Data *ListCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -30,7 +30,7 @@ type ListCustomAgentResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned when the request fails.
 	//
 	// example:
 	//
@@ -212,7 +212,17 @@ func (s *ListCustomAgentResponseBodyData) Validate() error {
 }
 
 type ListCustomAgentResponseBodyDataContent struct {
-	// The Alibaba Cloud parent account ID.
+	// The custom agent type. Valid values:
+	//
+	// - Default: The system built-in custom agent.
+	//
+	// - Common: The common custom agent.
+	//
+	// example:
+	//
+	// Common
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The ID of the main Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -232,7 +242,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// HaoY*****
 	CreatorUserName *string `json:"CreatorUserName,omitempty" xml:"CreatorUserName,omitempty"`
-	// The ID of the custom agent.
+	// The custom agent ID.
 	//
 	// example:
 	//
@@ -260,7 +270,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "Test table******.xlsx",
+	//     "Database" : "TestTable******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -272,7 +282,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// }
 	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
-	// Specifies whether the agent is displayed by default.
+	// Indicates whether the agent is displayed by default.
 	//
 	// example:
 	//
@@ -282,7 +292,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// example:
 	//
-	// Sample agent description
+	// Agent test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -310,13 +320,13 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year/month-over-month fluctuations.
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year and month-over-month fluctuations.
 	//
-	// 2. Break down data by new and returning customers, channels, and regions to identify growth sources and weaknesses.
+	// 2. Segment by new and existing customers, channels, and regions to identify growth sources and shortcomings.
 	//
 	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// Specifies whether a scheduled task is configured.
+	// Indicates whether a periodic task is configured.
 	//
 	// example:
 	//
@@ -330,11 +340,11 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume is the number of valid daily orders.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList         []*ListCustomAgentResponseBodyDataContentKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -355,9 +365,9 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// example:
 	//
-	// Sample agent name
+	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The next run time of the scheduled task.
+	// The next run time of the periodic task.
 	//
 	// example:
 	//
@@ -369,27 +379,29 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	OfflineTime *string `json:"OfflineTime,omitempty" xml:"OfflineTime,omitempty"`
+	// The list of recommended questions. You can configure up to 10 recommended questions.
+	RecommendQuestionList []*string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty" type:"Repeated"`
 	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the referenced historical session.
+	// The reference historical session ID.
 	//
 	// example:
 	//
 	// 99crainsjnve******vynid
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
-	// The release time.
+	// The publish time.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The scheduled task configuration.
+	// The periodic task configuration.
 	ScheduleTaskConfig *ListCustomAgentResponseBodyDataContentScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
-	// The status of the custom agent.
+	// The custom agent status.
 	//
 	// example:
 	//
@@ -399,7 +411,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be written as Chinese characters instead of Arabic numerals
+	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
@@ -407,7 +419,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// example:
 	//
-	// The web report requires all numbers to be written as Chinese characters instead of Arabic numerals
+	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//
@@ -415,9 +427,9 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// - journal: Journal.
 	//
-	// - legacy: Legacy.
+	// - legacy: Classic.
 	//
-	// - neobrutalism: Neobrutalism.
+	// - neobrutalism: Stylized.
 	//
 	// - infographic: Infographic.
 	//
@@ -439,6 +451,10 @@ func (s ListCustomAgentResponseBodyDataContent) String() string {
 
 func (s ListCustomAgentResponseBodyDataContent) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *ListCustomAgentResponseBodyDataContent) GetAliyunParentId() *string {
@@ -533,6 +549,10 @@ func (s *ListCustomAgentResponseBodyDataContent) GetOfflineTime() *string {
 	return s.OfflineTime
 }
 
+func (s *ListCustomAgentResponseBodyDataContent) GetRecommendQuestionList() []*string {
+	return s.RecommendQuestionList
+}
+
 func (s *ListCustomAgentResponseBodyDataContent) GetRegion() *string {
 	return s.Region
 }
@@ -571,6 +591,11 @@ func (s *ListCustomAgentResponseBodyDataContent) GetWebReportTheme() *string {
 
 func (s *ListCustomAgentResponseBodyDataContent) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) SetAgentType(v string) *ListCustomAgentResponseBodyDataContent {
+	s.AgentType = &v
+	return s
 }
 
 func (s *ListCustomAgentResponseBodyDataContent) SetAliyunParentId(v string) *ListCustomAgentResponseBodyDataContent {
@@ -688,6 +713,11 @@ func (s *ListCustomAgentResponseBodyDataContent) SetOfflineTime(v string) *ListC
 	return s
 }
 
+func (s *ListCustomAgentResponseBodyDataContent) SetRecommendQuestionList(v []*string) *ListCustomAgentResponseBodyDataContent {
+	s.RecommendQuestionList = v
+	return s
+}
+
 func (s *ListCustomAgentResponseBodyDataContent) SetRegion(v string) *ListCustomAgentResponseBodyDataContent {
 	s.Region = &v
 	return s
@@ -776,25 +806,25 @@ func (s *ListCustomAgentResponseBodyDataContent) Validate() error {
 }
 
 type ListCustomAgentResponseBodyDataContentCallbackConfig struct {
-	// The parameters to invoke the callback during tool calling.
+	// The parameters for callback tool invocation.
 	//
 	// example:
 	//
 	// {"ID":"test"}
 	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
-	// The prompt for generating parameters to invoke the callback during tool calling.
+	// The prompt for generating callback tool invocation parameters.
 	//
 	// example:
 	//
 	// Invoke the send_email tool to send the web report to 123456@163.com
 	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
-	// The time to invoke the callback during tool calling.
+	// The timing for callback tool invocation.
 	//
 	// example:
 	//
-	// End of web report generation
+	// The web report rendering is completed
 	CallbackTime *int32 `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
-	// The callback tool identifier.
+	// The identifier of the callback tool.
 	//
 	// example:
 	//
@@ -866,13 +896,13 @@ func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) Validate() error 
 }
 
 type ListCustomAgentResponseBodyDataContentExecutionConfig struct {
-	// Specifies whether to prohibit appending data sources during the session.
+	// Specifies whether to prohibit appending data sources in the session.
 	//
 	// example:
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to prohibit user inquiries during the process.
+	// Specifies whether to skip user inquiries during the process.
 	//
 	// example:
 	//
@@ -890,7 +920,7 @@ type ListCustomAgentResponseBodyDataContentExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report generation confirmation.
+	// Specifies whether to skip the web report rendering confirmation.
 	//
 	// example:
 	//
@@ -972,7 +1002,7 @@ type ListCustomAgentResponseBodyDataContentKnowledgeConfigList struct {
 	//
 	// kb-HZ-6anhdzx7hddf9*******obx
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP server.
+	// The MCP server ID.
 	//
 	// example:
 	//
@@ -1075,19 +1105,19 @@ func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) Vali
 }
 
 type ListCustomAgentResponseBodyDataContentScheduleTaskConfig struct {
-	// The cron expression for time-based scheduling.
+	// The cron expression for time-based periodic scheduling.
 	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The query for the scheduled task.
+	// The question for the periodic task.
 	//
 	// example:
 	//
 	// Analyze this data and provide a brief report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The ID of the referenced historical session.
+	// The referenced historical session ID.
 	//
 	// example:
 	//
