@@ -24,31 +24,31 @@ type iDescribeDeviceServiceRequest interface {
 }
 
 type DescribeDeviceServiceRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// a2bac6f4-75dc-455e-8389-2dc8e47526d3
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// This parameter does not take effect.
+	// Invalid parameter.
 	//
 	// example:
 	//
 	// cn-chongqing-10
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-5sg1owx0g4ojy66ab2tez77r2
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 2661b1dd-3453-418d-8182-bb34f79e8d3c
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	// The ID of the ENS edge node.
 	//
 	// example:
 	//

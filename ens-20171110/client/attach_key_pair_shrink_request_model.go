@@ -18,7 +18,7 @@ type iAttachKeyPairShrinkRequest interface {
 }
 
 type AttachKeyPairShrinkRequest struct {
-	// The instance IDs.
+	// A list of instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,7 @@ type AttachKeyPairShrinkRequest struct {
 	//
 	// ["i-50f8q9mbfjzlkuk9znjglnne3"]
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The key pair ID.
+	// The unique ID of the key pair.
 	//
 	// if can be null:
 	// true
@@ -38,7 +38,7 @@ type AttachKeyPairShrinkRequest struct {
 	//
 	// ssh-xxx
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The name of the SSH key pair.
+	// The key pair name.
 	//
 	// if can be null:
 	// true

@@ -32,29 +32,31 @@ type iRescaleDeviceServiceRequest interface {
 }
 
 type RescaleDeviceServiceRequest struct {
-	// The ID of the application.
+	// The application ID.
+	//
+	// This parameter is required. If you do not specify this parameter, the service returns error code 100001. You can call ListApplications to obtain the application ID. To create an application, call CreateApplication first.
 	//
 	// example:
 	//
 	// 7aedc50b-b1cb-4a7c-9e3d-4cf3c9ee55a4
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-5rynw9g1ow1e928lb83bqmbnf
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the network. The value must be of the enumerated data type. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **1*	- (default): Internet
+	// - **1*	- (default): Internet
 	//
-	// 	- **2**: internal network
+	// - **2**: internal network
 	//
 	// example:
 	//
 	// 1
 	IpType *int32 `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// The region level of the scale-out. Set the value to RegionId. RegionId specifies that resource scale-out is performed based on the ID of the edge node.
+	// The region level for scaling out resources. Valid values: RegionId (specifies an edge node ID).
 	//
 	// This parameter is required.
 	//
@@ -62,7 +64,7 @@ type RescaleDeviceServiceRequest struct {
 	//
 	// RegionId
 	RescaleLevel *string `json:"RescaleLevel,omitempty" xml:"RescaleLevel,omitempty"`
-	// The scaling operation. Set the value to Add to add new resources.
+	// The resource scaling method. Valid values: Add (provisions new resources).
 	//
 	// This parameter is required.
 	//
@@ -70,13 +72,13 @@ type RescaleDeviceServiceRequest struct {
 	//
 	// Add
 	RescaleType *string `json:"RescaleType,omitempty" xml:"RescaleType,omitempty"`
-	// The information about the resource specification template. The value must be a JSON string.
+	// The resource specification template information. The value is a string in JSON format.
 	//
 	// example:
 	//
 	// {\\"imageId\\":\\"m-5s4z4c10avgwvwtn33gl2vgob\\",\\"ipType\\":2,\\"specName\\":\\"ens.pfb-c3m7.medium\\"}
 	ResourceInfo *string `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty"`
-	// The required resources. The value must be a JSON string.
+	// The region requirements for scaling out resources. The value is a string in JSON array format.
 	//
 	// This parameter is required.
 	//
@@ -84,19 +86,19 @@ type RescaleDeviceServiceRequest struct {
 	//
 	// [{\\"regionCode\\": \\"cn-wuxi-telecom_unicom_cmcc-3\\",    \\"ispCode\\": \\"telecom\\",    \\"count\\": 2	},{    \\"regionCode\\": \\"cn-shanghai-cmcc\\",    \\"count\\": 4	}]
 	ResourceSelector *string `json:"ResourceSelector,omitempty" xml:"ResourceSelector,omitempty"`
-	// The resource specification.
+	// The resource specification name.
 	//
 	// example:
 	//
 	// ens.a6e.large
 	ResourceSpec *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//
 	// service-01c6dd6e93f040698566
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The timeout period for asynchronous scale-out. Unit: seconds. Default value: 300.
+	// The timeout period for asynchronous resource scaling, in seconds. Default value: 300.
 	//
 	// example:
 	//

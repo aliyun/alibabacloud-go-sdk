@@ -34,19 +34,19 @@ type DescribeAICImagesRequest struct {
 	//
 	// example:
 	//
-	// Test operation of console
+	// Console test operation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image ID of the AIC instance.
+	// The ID of the Android in Container (AIC) image.
 	//
 	// example:
 	//
 	// m-ad0ddaddc2d54adeaa09b7c0f1e****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the image. Valid values:
+	// The image type. Valid values:
 	//
-	// 	- **public**: public image
+	// - **public**: public image.
 	//
-	// 	- **private**: custom image
+	// - **private**: custom image.
 	//
 	// example:
 	//
@@ -58,37 +58,41 @@ type DescribeAICImagesRequest struct {
 	//
 	// ****.alibaba-inc.com/aic/socimage:test
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	// The end time of the query. Format: "2006-01-02". By default, no time limit is applied.
 	//
 	// example:
 	//
 	// 2022-02-02
 	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	// The start time of the query. Format: "2006-01-02". By default, no time limit is applied.
 	//
 	// example:
 	//
 	// 2022-01-02
 	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**.
+	//
+	// Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The maximum value is **100**. Default value: **10**.
+	// The number of entries per page for paging. Maximum value: **100**.
+	//
+	// Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the image. Valid values:
+	// The image status. Valid values:
 	//
-	// 	- **verifying**
+	// - **verifying**: pending verification.
 	//
-	// 	- **disable**
+	// - **disable**: unavailable.
 	//
-	// 	- **available**
+	// - **available**: available.
 	//
 	// example:
 	//

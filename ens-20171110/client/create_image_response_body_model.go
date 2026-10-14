@@ -18,13 +18,13 @@ type iCreateImageResponseBody interface {
 }
 
 type CreateImageResponseBody struct {
-	// The returned service code. 0 indicates that the request was successful.
+	// The business return code. A value of 0 indicates success.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//

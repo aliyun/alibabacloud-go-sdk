@@ -16,7 +16,10 @@ type iCreateClusterNodePoolResponseBody interface {
 }
 
 type CreateClusterNodePoolResponseBody struct {
+	// The node pool configurations.
 	Nodepool *CreateClusterNodePoolResponseBodyNodepool `json:"Nodepool,omitempty" xml:"Nodepool,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
@@ -59,14 +62,20 @@ func (s *CreateClusterNodePoolResponseBody) Validate() error {
 }
 
 type CreateClusterNodePoolResponseBodyNodepool struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// eck-d2666c5f
-	ClusterId        *string                                                    `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The Kubernetes-related configurations.
 	KubernetesConfig *CreateClusterNodePoolResponseBodyNodepoolKubernetesConfig `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty" type:"Struct"`
-	NodepoolInfo     *CreateClusterNodePoolResponseBodyNodepoolNodepoolInfo     `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty" type:"Struct"`
-	ScalingGroup     *CreateClusterNodePoolResponseBodyNodepoolScalingGroup     `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
-	Status           *CreateClusterNodePoolResponseBodyNodepoolStatus           `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	// The node pool information.
+	NodepoolInfo *CreateClusterNodePoolResponseBodyNodepoolNodepoolInfo `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty" type:"Struct"`
+	// The ID of the resource group to which the newly created scaling group belongs. You can assign the newly created scaling group to a specified resource group. If you do not specify this parameter, the scaling group is assigned to the default resource group.
+	ScalingGroup *CreateClusterNodePoolResponseBodyNodepoolScalingGroup `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
+	// The status information of the node pool.
+	Status *CreateClusterNodePoolResponseBodyNodepoolStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
 func (s CreateClusterNodePoolResponseBodyNodepool) String() string {
@@ -147,10 +156,14 @@ func (s *CreateClusterNodePoolResponseBodyNodepool) Validate() error {
 }
 
 type CreateClusterNodePoolResponseBodyNodepoolKubernetesConfig struct {
+	// The script to be executed after the instance is created and before it is added to the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
 	PreUserData *string `json:"PreUserData,omitempty" xml:"PreUserData,omitempty"`
+	// The script to be executed after the instance is created and added to the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
@@ -188,14 +201,20 @@ func (s *CreateClusterNodePoolResponseBodyNodepoolKubernetesConfig) Validate() e
 }
 
 type CreateClusterNodePoolResponseBodyNodepoolNodepoolInfo struct {
+	// The ENS region ID of the cluster.
+	//
 	// example:
 	//
 	// cn-guiyang-14
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node pool ID.
+	//
 	// example:
 	//
 	// np1176939548ac49e59febe82dcbf1ad56
@@ -242,33 +261,48 @@ func (s *CreateClusterNodePoolResponseBodyNodepoolNodepoolInfo) Validate() error
 }
 
 type CreateClusterNodePoolResponseBodyNodepoolScalingGroup struct {
+	// The data cloud disk information of the nodes.
 	DataDisks []*CreateClusterNodePoolResponseBodyNodepoolScalingGroupDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	// The image ID of the control plane virtual machine.
+	//
 	// example:
 	//
 	// m-67bdk1kpu1ylmt7k33h5dbiov
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing method of the instance.
+	//
 	// example:
 	//
 	// PrePaid
-	InstanceChargeType *string   `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceTypes      []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The list of instance types for the nodes in the node pool.
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// The name of the key pair.
+	//
 	// example:
 	//
 	// key-pair-name
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The logon password of the instance.
+	//
 	// example:
 	//
 	// **********
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The system cloud disk category of the node.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The size of the system cloud disk. Unit: GB.
+	//
 	// example:
 	//
 	// 80
-	SystemDiskSize *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	VswitchIds     []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The IDs of the vSwitches where the cluster nodes reside.
+	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterNodePoolResponseBodyNodepoolScalingGroup) String() string {
@@ -374,10 +408,14 @@ func (s *CreateClusterNodePoolResponseBodyNodepoolScalingGroup) Validate() error
 }
 
 type CreateClusterNodePoolResponseBodyNodepoolScalingGroupDataDisks struct {
+	// The disk category.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The size of the data cloud disk. Unit: GB.
+	//
 	// example:
 	//
 	// 80
@@ -415,30 +453,50 @@ func (s *CreateClusterNodePoolResponseBodyNodepoolScalingGroupDataDisks) Validat
 }
 
 type CreateClusterNodePoolResponseBodyNodepoolStatus struct {
+	// The expected number of instances.
+	//
 	// example:
 	//
 	// 10
 	DesiredNodes *int32 `json:"DesiredNodes,omitempty" xml:"DesiredNodes,omitempty"`
+	// The nodes that failed to be created in the node pool.
+	//
 	// example:
 	//
 	// 0
 	FailedNodes *int32 `json:"FailedNodes,omitempty" xml:"FailedNodes,omitempty"`
+	// The number of instances that are being created.
+	//
 	// example:
 	//
 	// 0
 	InitialNodes *int32 `json:"InitialNodes,omitempty" xml:"InitialNodes,omitempty"`
+	// The number of instances that are being deleted.
+	//
 	// example:
 	//
 	// 0
 	RemovingNodes *int32 `json:"RemovingNodes,omitempty" xml:"RemovingNodes,omitempty"`
+	// The number of instances that are in use.
+	//
 	// example:
 	//
 	// 10
 	ServingNodes *int32 `json:"ServingNodes,omitempty" xml:"ServingNodes,omitempty"`
+	// The state of the node pool. Valid values:
+	//
+	// - active: The desired state is reached.
+	//
+	// - scaling: The node pool is scaling out.
+	//
+	// - removing_nodes: The node pool is scaling in.
+	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The total number of instances, including instances that are being created, in use, and being deleted.
+	//
 	// example:
 	//
 	// 10

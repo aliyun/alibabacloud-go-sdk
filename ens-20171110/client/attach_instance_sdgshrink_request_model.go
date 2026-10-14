@@ -22,13 +22,38 @@ type iAttachInstanceSDGShrinkRequest interface {
 }
 
 type AttachInstanceSDGShrinkRequest struct {
+	// The cloud disk access protocol type. Valid values:
+	//
+	// - iscsi: the default protocol for standard cloud disks. Both rbd cloud disks and standard cloud disks support this protocol.
+	//
+	//  - rbd: the default protocol for rbd cloud disks. Only rbd cloud disks support this mount protocol.
+	//
+	// example:
+	//
+	// iscsi
 	DiskAccessProtocol *string `json:"DiskAccessProtocol,omitempty" xml:"DiskAccessProtocol,omitempty"`
-	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The IDs of the instances.
+	// The type of the shared cloud disk to be created. Valid values:
+	//
+	// - standard: standard cloud disk.
+	//
+	// - rbd: rbd cloud disk.
+	//
+	// >
+	//
+	// > - If no shared cloud disk type is specified, a standard cloud disk is created by default.
+	//
+	// > - An rbd shared cloud disk can be created only when the parent disk type is rbd.
+	//
+	// example:
+	//
+	// standard
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	LoadOptShrink     *string `json:"LoadOpt,omitempty" xml:"LoadOpt,omitempty"`
+	// The file loading rate optimization parameter.
+	LoadOptShrink *string `json:"LoadOpt,omitempty" xml:"LoadOpt,omitempty"`
 	// The ID of the SDG.
 	//
 	// This parameter is required.

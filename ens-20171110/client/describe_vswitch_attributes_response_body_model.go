@@ -23,6 +23,8 @@ type iDescribeVSwitchAttributesResponseBody interface {
 	GetHaVipIds() *DescribeVSwitchAttributesResponseBodyHaVipIds
 	SetInstanceIds(v *DescribeVSwitchAttributesResponseBodyInstanceIds) *DescribeVSwitchAttributesResponseBody
 	GetInstanceIds() *DescribeVSwitchAttributesResponseBodyInstanceIds
+	SetIpv6CidrBlock(v string) *DescribeVSwitchAttributesResponseBody
+	GetIpv6CidrBlock() *string
 	SetLoadBalancerIds(v *DescribeVSwitchAttributesResponseBodyLoadBalancerIds) *DescribeVSwitchAttributesResponseBody
 	GetLoadBalancerIds() *DescribeVSwitchAttributesResponseBodyLoadBalancerIds
 	SetNatGatewayIds(v *DescribeVSwitchAttributesResponseBodyNatGatewayIds) *DescribeVSwitchAttributesResponseBody
@@ -42,7 +44,7 @@ type iDescribeVSwitchAttributesResponseBody interface {
 }
 
 type DescribeVSwitchAttributesResponseBody struct {
-	// The number of available IP addresses in the VSwitch.
+	// The number of available IP addresses in the vSwitch.
 	//
 	// example:
 	//
@@ -54,60 +56,64 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// 10.0.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The creation time, in UTC format (yyyy-MM-ddTHH:mm:ssZ).
+	// The time when the vSwitch was created. This value uses UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2019-06-01T00:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the VSwitch.
+	// The description of the vSwitch.
 	//
 	// example:
 	//
 	// This is my vswitch.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ENS node ID.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
 	// cn-xian-unicom
-	EnsRegionId     *string                                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	HaVipIds        *DescribeVSwitchAttributesResponseBodyHaVipIds        `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
-	InstanceIds     *DescribeVSwitchAttributesResponseBodyInstanceIds     `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	EnsRegionId *string                                           `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	HaVipIds    *DescribeVSwitchAttributesResponseBodyHaVipIds    `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
+	InstanceIds *DescribeVSwitchAttributesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2408:XXXX:0:a600::/110
+	Ipv6CidrBlock   *string                                               `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	LoadBalancerIds *DescribeVSwitchAttributesResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
 	NatGatewayIds   *DescribeVSwitchAttributesResponseBodyNatGatewayIds   `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
-	// The network ID.
+	// The ID of the network.
 	//
 	// example:
 	//
 	// n-257gqcdfvx6n****
 	NetworkId           *string                                                   `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkInterfaceIds *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C0003****2A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the VSwitch, as follows:
+	// The status of the vSwitch. Valid values:
 	//
-	// - Pending
+	// - Pending: The vSwitch is being configured.
 	//
-	// - Available
+	// - Available: The vSwitch is active.
 	//
-	// - Releasing
+	// - Releasing: The vSwitch is being released.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the VSwitch.
+	// The name of the vSwitch.
 	//
 	// example:
 	//
@@ -149,6 +155,10 @@ func (s *DescribeVSwitchAttributesResponseBody) GetHaVipIds() *DescribeVSwitchAt
 
 func (s *DescribeVSwitchAttributesResponseBody) GetInstanceIds() *DescribeVSwitchAttributesResponseBodyInstanceIds {
 	return s.InstanceIds
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) GetIpv6CidrBlock() *string {
+	return s.Ipv6CidrBlock
 }
 
 func (s *DescribeVSwitchAttributesResponseBody) GetLoadBalancerIds() *DescribeVSwitchAttributesResponseBodyLoadBalancerIds {
@@ -215,6 +225,11 @@ func (s *DescribeVSwitchAttributesResponseBody) SetHaVipIds(v *DescribeVSwitchAt
 
 func (s *DescribeVSwitchAttributesResponseBody) SetInstanceIds(v *DescribeVSwitchAttributesResponseBodyInstanceIds) *DescribeVSwitchAttributesResponseBody {
 	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetIpv6CidrBlock(v string) *DescribeVSwitchAttributesResponseBody {
+	s.Ipv6CidrBlock = &v
 	return s
 }
 

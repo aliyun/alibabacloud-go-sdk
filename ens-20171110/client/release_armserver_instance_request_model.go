@@ -14,7 +14,7 @@ type iReleaseARMServerInstanceRequest interface {
 }
 
 type ReleaseARMServerInstanceRequest struct {
-	// The ID of the server.
+	// The server instance ID.
 	//
 	// This parameter is required.
 	//

@@ -18,13 +18,13 @@ type iRemoveInstanceSDGResponseBody interface {
 }
 
 type RemoveInstanceSDGResponseBody struct {
-	// The returned service code. 0 indicates that the request was successful.
+	// The business code returned. A value of 0 indicates success.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data object.
+	// The returned Data object.
 	Data *RemoveInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -79,19 +79,19 @@ func (s *RemoveInstanceSDGResponseBody) Validate() error {
 }
 
 type RemoveInstanceSDGResponseBodyData struct {
-	// The response message. Success is returned for a successful request.
+	// The response message. A value of success indicates a successful request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution result of the synchronization request.
+	// The execution result of the synchronous request.
 	Result *RemoveInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all tasks are successful. Valid values:
+	// Indicates whether all requests are successful. Valid values:
 	//
-	// 	- **true**: All tasks are successful.
+	// - **true**: All requests are successful.
 	//
-	// 	- **false**: Failed tasks exist.
+	// - **false**: Some tasks failed.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type RemoveInstanceSDGResponseBodyDataResult struct {
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details about the failed tasks.
+	// The list of failure details.
 	FailedItems []*RemoveInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
 	// The number of successful tasks.
 	//
@@ -209,13 +209,13 @@ func (s *RemoveInstanceSDGResponseBodyDataResult) Validate() error {
 }
 
 type RemoveInstanceSDGResponseBodyDataResultFailedItems struct {
-	// The error message that is returned.
+	// The error message.
 	//
 	// example:
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

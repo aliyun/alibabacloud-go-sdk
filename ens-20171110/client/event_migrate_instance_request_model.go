@@ -28,11 +28,11 @@ type iEventMigrateInstanceRequest interface {
 type EventMigrateInstanceRequest struct {
   // The data migration policy. Valid values:
   // 
-  // 	- abandon: does not migrate data. This is the default value.
+  // - `abandon`: Does not migrate data. This is the default value.
   // 
-  // 	- force_transfer: forcibly migrates data.
+  // - `force_transfer`: Forces data migration.
   // 
-  // 	- try_transfer: Migrate data as much as possible.
+  // - `try_transfer`: Attempts to migrate data.
   // 
   // example:
   // 
@@ -48,9 +48,9 @@ type EventMigrateInstanceRequest struct {
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
   // The type of the O\\&M task. Valid values:
   // 
-  // 	- immediate
+  // - `immediate`: Executes the task immediately.
   // 
-  // 	- scheduled
+  // - `scheduled`: Executes the task at the specified time.
   // 
   // This parameter is required.
   // 
@@ -58,17 +58,17 @@ type EventMigrateInstanceRequest struct {
   // 
   // immediate
   OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
-  // The password of the instance. This parameter is optional. If you do not specify this parameter, a random password is used.
+  // The instance password. This parameter is optional. If you do not specify a password, the system generates a random one.
   // 
-  // The password must be 8 to 30 characters in length. The password must contain uppercase letters, lowercase letters, digits, and special characters.
+  // The password must be 8 to 30 characters long and contain uppercase letters, lowercase letters, and digits.
   // 
-  // Note that you cannot enter a password for scheduled execution.
+  // Note: This parameter is not supported for scheduled execution.
   // 
   // example:
   // 
   // AAaa1234
   Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-  // The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
+  // The scheduled execution time. This must be a Unix timestamp in milliseconds. This parameter is required when `OpsType` is set to `scheduled`.
   // 
   // example:
   // 

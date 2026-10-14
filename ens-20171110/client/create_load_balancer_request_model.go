@@ -30,22 +30,27 @@ type iCreateLoadBalancerRequest interface {
 }
 
 type CreateLoadBalancerRequest struct {
+	// The billing cycle of the ELB instance.
+	//
+	// example:
+	//
+	// Hour
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
+	// Ensures the idempotency of the request to avoid duplicate operations caused by multiple retries.
 	//
-	// 	- You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	// - Generate a parameter value from your client and ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// 	- If you retry an API request with the same client token and request parameters after it has completed successfully, the result of the original request is returned. The server status does not change.
+	// - If you use a ClientToken that has been used before and the other request parameters remain unchanged, the client receives the same result as the first submission, with no impact on your server-side state.
 	//
-	// 	- You can initiate a retry when the operation times out or the error code is PROCESSING. The idempotence is valid. If HTTP status code 200 is returned, the client receives the same result as the last request. However, your server status is not affected. If HTTP status code 4xx is returned and error code is not PROCESSING, the idempotence is invalid.
+	// - You can retry when the API times out or returns the PROCESSING error code, and idempotency takes effect. If the return result is an HTTP 200 status code, the retry returns the same result as the previous call with no impact on your server-side state. If the return result is an HTTP 4xx status code and the error code is not PROCESSING, idempotency does not take effect.
 	//
-	// 	- A client token is valid for 10 minutes.
+	// - The ClientToken is valid for 10 minutes.
 	//
 	// example:
 	//
 	// 26C28756-2586-17AF-B802-0DC50D8FDEBB
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	// The ID of the ENS edge zone.
 	//
 	// This parameter is required.
 	//
@@ -53,15 +58,15 @@ type CreateLoadBalancerRequest struct {
 	//
 	// cn-chengdu-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The name of the ELB instance. The name must be 1 to 80 characters in length. If you leave this parameter empty, the system randomly allocates a name as the value of this parameter.
+	// The name of the load balancing instance. The name must be 1 to 80 characters in length and can contain letters and Chinese characters. If you do not specify this parameter, the system automatically assigns an instance name.
 	//
-	// >  The value cannot start with `http://` or `https://`.
+	// > The name cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// gcs-pre-websocket-eslb-telecom
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The specification of the ELB instance.
+	// The specification of the load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -69,8 +74,17 @@ type CreateLoadBalancerRequest struct {
 	//
 	// elb.s2.medium
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// The type of the Edge Load Balancing instance.
+	//
+	// - CLB: Classic Load Balancing instance.
+	//
+	// - InternetDR: Public pattern load balancing instance.
+	//
+	// example:
+	//
+	// CLB
 	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	// The network ID of the created ELB instance.
+	// The network ID of the Edge Load Balancing (ELB) instance to create.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +92,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// n-5sax03dh2eyagujgsn7z9****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The billing method of the cluster. Valid value: PostPaid. PostPaid specifies the pay-as-you-go billing method.
+	// The billing type. PostPaid (currently the only supported type): pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +100,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the vSwitch to which the internal-facing ELB instance belongs.
+	// The ID of the vSwitch to which the VPC instance belongs.
 	//
 	// This parameter is required.
 	//

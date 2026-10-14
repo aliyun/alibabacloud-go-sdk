@@ -24,7 +24,7 @@ type ShareAICImageShrinkRequest struct {
 	//
 	// mykey
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The user groups.
+	// The user group.
 	//
 	// This parameter is required.
 	UsersShrink *string `json:"Users,omitempty" xml:"Users,omitempty"`

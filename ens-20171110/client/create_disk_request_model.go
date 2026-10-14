@@ -32,11 +32,7 @@ type iCreateDiskRequest interface {
 }
 
 type CreateDiskRequest struct {
-	// The category of the disk. Valid values:
-	//
-	// 	- cloud_efficiency: ultra disk.
-	//
-	// 	- cloud_ssd: all-flash disk.
+	// The type of the cloud disk. Valid values:
 	//
 	// This parameter is required.
 	//
@@ -44,32 +40,33 @@ type CreateDiskRequest struct {
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The name of the disk.
+	// The name of the cloud disk.
 	//
 	// example:
 	//
 	// yourDiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Specifies whether to encrypt the new system disk. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default): no
+	// Specifies whether to encrypt the cloud disk. Valid values:
 	//
 	// example:
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the edge node.
+	// The edge zone ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-chengdu-telecom
-	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The billing cycle of the instance. Valid values: Hour, Day, Month.
+	//
+	// example:
+	//
+	// Hour
 	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
-	// The billing method of the instance. Set the value to **PostPaid**.
+	// The billing method of the instance. Currently, only **PostPaid*	- (pay-as-you-go) is supported.
 	//
 	// This parameter is required.
 	//
@@ -77,33 +74,25 @@ type CreateDiskRequest struct {
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is used by the cloud disk.
-	//
-	// >  If you set the **Encrypted*	- parameter to **true**, the default service key is used when the **KMSKeyId*	- parameter is empty.
+	// The ID of the KMS key used by the cloud disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fxxxxx
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The size of the disk. Unit: GiB.
+	// The size of the cloud disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 20
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot that you want to use to create the disk.
-	//
-	// The following limits apply to the **SnapshotId*	- and **Size*	- parameters:
-	//
-	// 	- If the size of the snapshot specified by **SnapshotId*	- is greater than the specified **Size*	- value, the size of the created disk is equal to the specified snapshot size.
-	//
-	// 	- If the size of the snapshot specified by **SnapshotId*	- is smaller than the specified **Size*	- value, the size of the created disk is equal to the specified **Size*	- value.
+	// The snapshot used to create the cloud disk.
 	//
 	// example:
 	//
 	// s-897654321****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The tags of the instance. You can specify at most 20 tags in each call.
+	// The list of tags. You can add up to 20 tags in a single call.
 	Tag []*CreateDiskRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -219,25 +208,13 @@ func (s *CreateDiskRequest) Validate() error {
 }
 
 type CreateDiskRequestTag struct {
-	// The key of the tag. Valid values of N: **1*	- to **20**.
-	//
-	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-	//
-	// 	- The key must be up to 64 characters in length.
-	//
-	// 	- The tag key cannot be an empty string.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**.
 	//
 	// example:
 	//
 	// pro
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key*	- parameter.***	- If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
-	//
-	// 	- Valid values: 1 to 20.
-	//
-	// 	- The value of this parameter can be an empty string.
-	//
-	// 	- The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	// The tag value of the topic. **Key*	- and **Value*	- must be specified or left empty at the same time. If both are specified, topics are filtered by the tag. If neither is specified, all topics are queried.
 	//
 	// example:
 	//

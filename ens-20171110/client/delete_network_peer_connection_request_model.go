@@ -14,6 +14,8 @@ type iDeleteNetworkPeerConnectionRequest interface {
 }
 
 type DeleteNetworkPeerConnectionRequest struct {
+	// The instance ID of the network peer connection to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

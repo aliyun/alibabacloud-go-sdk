@@ -28,13 +28,13 @@ type DescribeSDGSharedDisksRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The page number, which is used for paged query
+	// The page number for paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeSDGSharedDisksRequest struct {
 	//
 	// cn-hangzhou-xx
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// sdg ID
+	// The ID of the SDG. You can call the DescribeSDGs operation to query the IDs of existing SDGs. To create an SDG, call the CreateSDG and SaveSDG operations in sequence after the AIC instance is running.
 	//
 	// This parameter is required.
 	//

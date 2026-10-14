@@ -16,9 +16,9 @@ type iListAddonsResponseBody interface {
 }
 
 type ListAddonsResponseBody struct {
-	// The list of component information.
+	// A list of component information.
 	Addons []*ListAddonsResponseBodyAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
-	// Id of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ func (s *ListAddonsResponseBody) Validate() error {
 }
 
 type ListAddonsResponseBodyAddons struct {
-	// Specifies whether to clear resources.
+	// Indicates whether to automatically clean up associated cloud resources.
 	//
 	// example:
 	//
 	// true
 	CleanupCloudResources *bool `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
-	// The schema of the custom parameters of the component.
+	// The schemas for the custom parameters of the component.
 	ConfigSchema []*ListAddonsResponseBodyAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
-	// The component name.
+	// The name of the component.
 	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The component version.
+	// The version of the component.
 	//
 	// example:
 	//
@@ -152,19 +152,19 @@ type ListAddonsResponseBodyAddonsConfigSchema struct {
 	//
 	// 859e9d595b2974ed79c444658d1dea89
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The version of the configuration file.
+	// The configuration version.
 	//
 	// example:
 	//
 	// 4155709cd12a09bdb8cbaca71bf03233
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
-	// The component name.
+	// The name of the component.
 	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The custom configurations of the component.
+	// The custom parameters of the component.
 	//
 	// example:
 	//

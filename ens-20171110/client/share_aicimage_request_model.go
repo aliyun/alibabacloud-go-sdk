@@ -24,7 +24,7 @@ type ShareAICImageRequest struct {
 	//
 	// mykey
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The user groups.
+	// The user group.
 	//
 	// This parameter is required.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`

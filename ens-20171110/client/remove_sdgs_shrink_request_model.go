@@ -16,11 +16,11 @@ type iRemoveSDGsShrinkRequest interface {
 }
 
 type RemoveSDGsShrinkRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The IDs of SDG.
+	// The list of SDG IDs.
 	SdgIdsShrink *string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty"`
 }
 

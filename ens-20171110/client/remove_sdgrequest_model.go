@@ -14,7 +14,7 @@ type iRemoveSDGRequest interface {
 }
 
 type RemoveSDGRequest struct {
-	// IDs of Android in Container (AIC) instances.
+	// The list of AIC instance IDs.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`

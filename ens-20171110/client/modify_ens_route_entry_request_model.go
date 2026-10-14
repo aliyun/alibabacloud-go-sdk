@@ -18,7 +18,7 @@ type iModifyEnsRouteEntryRequest interface {
 }
 
 type ModifyEnsRouteEntryRequest struct {
-	// The description of the route entry. The description must be 1 to 256 characters in length and cannot start with http:// or https://.
+	// The description of the route entry. The description must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

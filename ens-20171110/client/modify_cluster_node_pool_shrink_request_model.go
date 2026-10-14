@@ -20,15 +20,23 @@ type iModifyClusterNodePoolShrinkRequest interface {
 }
 
 type ModifyClusterNodePoolShrinkRequest struct {
+	// The cluster ID.
+	//
+	// Only ECK cluster IDs with the eck- prefix are supported. You can obtain the ID by calling the DescribeClustersV1 operation. Serverless cluster IDs returned by the DescribeCluster operation are not supported. The cluster must be in the running state. After creation, it typically takes 10 to 20 minutes to complete initialization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId              *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The Kubernetes configuration.
 	KubernetesConfigShrink *string `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty"`
+	// The node pool information.
+	//
 	// This parameter is required.
 	NodepoolInfoShrink *string `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty"`
+	// The scaling group configuration.
 	ScalingGroupShrink *string `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty"`
 }
 

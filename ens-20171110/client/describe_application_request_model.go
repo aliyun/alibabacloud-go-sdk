@@ -38,15 +38,15 @@ type DescribeApplicationRequest struct {
 	AppVersions *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
 	// The region level by which edge resources of the application are collected. The value is of the enumeration type. Valid values:
 	//
-	// 	- National: Chinese mainland
+	// - National: Chinese mainland
 	//
-	// 	- Big: area
+	// - Big: area
 	//
-	// 	- Middle: province
+	// - Middle: province
 	//
-	// 	- Small: city
+	// - Small: city
 	//
-	// 	- RegionId: edge node
+	// - RegionId: edge node
 	//
 	// Default value: National.
 	//

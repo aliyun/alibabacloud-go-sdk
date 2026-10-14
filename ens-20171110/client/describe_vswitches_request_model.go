@@ -9,6 +9,8 @@ type iDescribeVSwitchesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableIpv6(v bool) *DescribeVSwitchesRequest
+	GetEnableIpv6() *bool
 	SetEnsRegionId(v string) *DescribeVSwitchesRequest
 	GetEnsRegionId() *string
 	SetEnsRegionIds(v []*string) *DescribeVSwitchesRequest
@@ -28,15 +30,16 @@ type iDescribeVSwitchesRequest interface {
 }
 
 type DescribeVSwitchesRequest struct {
+	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
 	// The ID of the ENS node.
 	//
 	// example:
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of edge nodes. You can specify 1 to 100 IDs.
+	// The IDs of the ENS nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the vSwitch belongs.
+	// The ID of the VPC to which the VSwitch belongs.
 	//
 	// example:
 	//
@@ -54,15 +57,15 @@ type DescribeVSwitchesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the vSwitch.
+	// The ID of the VSwitch.
 	//
 	// example:
 	//
 	// vsw-5m9xhlq8oh***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The IDs of vSwitches. You can specify 1 to 100 IDs.
+	// The IDs of the vSwitches. You can specify 1 to 100 IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The name of the vSwitch.
+	// The name of the VSwitch.
 	//
 	// example:
 	//
@@ -76,6 +79,10 @@ func (s DescribeVSwitchesRequest) String() string {
 
 func (s DescribeVSwitchesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVSwitchesRequest) GetEnableIpv6() *bool {
+	return s.EnableIpv6
 }
 
 func (s *DescribeVSwitchesRequest) GetEnsRegionId() *string {
@@ -108,6 +115,11 @@ func (s *DescribeVSwitchesRequest) GetVSwitchIds() []*string {
 
 func (s *DescribeVSwitchesRequest) GetVSwitchName() *string {
 	return s.VSwitchName
+}
+
+func (s *DescribeVSwitchesRequest) SetEnableIpv6(v bool) *DescribeVSwitchesRequest {
+	s.EnableIpv6 = &v
+	return s
 }
 
 func (s *DescribeVSwitchesRequest) SetEnsRegionId(v string) *DescribeVSwitchesRequest {

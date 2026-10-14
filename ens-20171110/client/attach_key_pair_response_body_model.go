@@ -24,19 +24,19 @@ type iAttachKeyPairResponseBody interface {
 }
 
 type AttachKeyPairResponseBody struct {
-	// The number of instances from which the SSH key pair failed to be unbound.
+	// The number of instances where the attachment failed.
 	//
 	// example:
 	//
 	// 1
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The ID of the SSH key pair.
+	// The key pair ID.
 	//
 	// example:
 	//
 	// ssh-xxx
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The name of the SSH key pair.
+	// The key pair name.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type AttachKeyPairResponseBody struct {
 	//
 	// xx-xx-xx-xx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result set of the unbind operation.
+	// The attachment results for each instance.
 	Results []*AttachKeyPairResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The total number of instances from which the SSH key pair is unbound.
+	// The total number of instances in the request.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *AttachKeyPairResponseBody) Validate() error {
 }
 
 type AttachKeyPairResponseBodyResults struct {
-	// The status code of the operation. 200 indicates that the operation succeeded.
+	// The status code for the operation. A value of `200` indicates success.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type AttachKeyPairResponseBodyResults struct {
 	//
 	// i-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
+	// The response message. If the `Code` is `200`, this message is `successful`.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates if the operation succeeded for the instance.
 	//
 	// example:
 	//

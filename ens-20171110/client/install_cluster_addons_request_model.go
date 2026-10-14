@@ -16,8 +16,12 @@ type iInstallClusterAddonsRequest interface {
 }
 
 type InstallClusterAddonsRequest struct {
+	// The component information.
+	//
 	// This parameter is required.
 	Addons []*InstallClusterAddonsRequestAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -66,11 +70,16 @@ func (s *InstallClusterAddonsRequest) Validate() error {
 }
 
 type InstallClusterAddonsRequestAddons struct {
+	// The schema for the custom parameters of the component.
 	ConfigSchema []*InstallClusterAddonsRequestAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	// The plug-in name.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// v1
@@ -126,18 +135,26 @@ func (s *InstallClusterAddonsRequestAddons) Validate() error {
 }
 
 type InstallClusterAddonsRequestAddonsConfigSchema struct {
+	// The application version.
+	//
 	// example:
 	//
 	// 859e9d595b2974ed79c444658d1dea89
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The configuration version.
+	//
 	// example:
 	//
 	// 4155709cd12a09bdb8cbaca71bf03233
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
+	// The component name.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom parameters of the component.
+	//
 	// example:
 	//
 	// {"k1":"v1"}

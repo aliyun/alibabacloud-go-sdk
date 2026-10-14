@@ -26,38 +26,39 @@ type iDescribeSecondaryPublicIpAddressesRequest interface {
 }
 
 type DescribeSecondaryPublicIpAddressesRequest struct {
-	// The ID of the edge node.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-44
-	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The array of ENS edge zone IDs. Array length: 1 to 100.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// The Internet service provider. Valid values:
+	// The Internet service provider (ISP). Valid values:
 	//
-	// 	- cmcc: China Mobile.
+	// - cmcc: China Mobile.
 	//
-	// 	- unicom: China Unicom.
+	// - unicom: China Unicom.
 	//
-	// 	- telecom: China Telecom.
+	// - telecom: China Telecom.
 	//
 	// example:
 	//
 	// unicom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page for paging queries. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The secondary IP address.
+	// The secondary public IP address.
 	//
 	// example:
 	//

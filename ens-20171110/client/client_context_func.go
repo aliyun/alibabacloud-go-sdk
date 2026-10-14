@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Associates a network access control list (ACL) with a network.
+// Calls the AccosicateNetworkAcl operation to attach a network ACL to a network.
 //
 // @param request - AccosicateNetworkAclRequest
 //
@@ -61,9 +61,9 @@ func (client *Client) AccosicateNetworkAclWithContext(ctx context.Context, reque
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - API call rate limit: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per account.
+// - Per-user call rate limit: 10 calls per second.
 //
 // @param tmpReq - AddBackendServersRequest
 //
@@ -121,11 +121,11 @@ func (client *Client) AddBackendServersWithContext(ctx context.Context, tmpReq *
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 5 times per second per user.
+// - up to 5 times per second per user.
 //
-//		- Internal networks and IPv4 addresses are not supported.
+// - Internal networks and IPv4 addresses are not supported.
 //
 // @param request - AddNetworkInterfaceToInstanceRequest
 //
@@ -273,7 +273,7 @@ func (client *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Associates an elastic IP address (EIP) with a cloud resource that is deployed in the same region.
+// Associates an Elastic IP Address (EIP) with a cloud product instance on the same edge node.
 //
 // @param request - AssociateEnsEipAddressRequest
 //
@@ -333,17 +333,17 @@ func (client *Client) AssociateEnsEipAddressWithContext(ctx context.Context, req
 //
 // Description:
 //
-// When you call this operation to associate an HAVIP, take note of the following items:
+// When you To associate an HAVIP, take note of the following items:
 //
-//   - An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
+// - An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
 //
-//   - The HAVIP and ENS instance must belong to the same vSwitch.
+// - The HAVIP and ENS instance must belong to the same vSwitch.
 //
-//   - The ENS instance must be in the Running or Stopped state.
+// - The ENS instance must be in the Running or Stopped state.
 //
-//   - The HAVIP must be in the Available or InUse state.
+// - The HAVIP must be in the Available or InUse state.
 //
-//   - AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
+// - AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
 //
 //   - If the HAVIP is in the Associating state, the HAVIP is being associated.
 //
@@ -453,17 +453,19 @@ func (client *Client) AttachDiskWithContext(ctx context.Context, request *Attach
 
 // Summary:
 //
-// Adds an Edge Node Service (ENS) instance to Container Service for Kubernetes (ACK).
+// Add ENS instances to Container Service for Kubernetes.
 //
 // Description:
 //
-// # [](#)Usage notes
+// - Maximum request rate per user: 10 requests per second.
 //
-//   - You can call this operation up to 10 times per second per account.
+// - After the command script runs successfully, the instance restarts and loads automatically.
 //
-//   - After you execute the command, the instance restarts loading.
+// - Instance requirements: minimum size of 2C4G and CentOS 7.4 or later image.
 //
-//   - Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+// <props="china">
+//
+// Before calling this operation, [activate Container Service for Kubernetes](https://cs.console.aliyun.com/#/k8s/overview).
 //
 // @param request - AttachEnsInstancesRequest
 //
@@ -511,7 +513,7 @@ func (client *Client) AttachEnsInstancesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Attaches a shared data group (SDG) to the corresponding Android in Container (AIC) instance.
+// Attaches an SDG to the corresponding AIC instance.
 //
 // @param tmpReq - AttachInstanceSDGRequest
 //
@@ -581,7 +583,7 @@ func (client *Client) AttachInstanceSDGWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Adds existing nodes to a specific node pool. You can add existing ENS instances to an ECK cluster as worker nodes. You can also add removed worker nodes back to the node pool by invoking AttachInstancesToNodePool.
+// Adds existing instances to a node pool. You can call this operation to add existing Edge Node Service (ENS) instances to an ECK cluster as worker nodes, or to re-add node instances to a node pool after they are removed.
 //
 // @param tmpReq - AttachInstancesToNodePoolRequest
 //
@@ -639,19 +641,17 @@ func (client *Client) AttachInstancesToNodePoolWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Binds a Secure Shell (SSH) key pair to specific instances. You can bind a maximum of 30 instances at a time.
+// Attaches an SSH key pair to up to 30 instances in a single call.
 //
 // Description:
 //
-// ## [](#)
+// You can only attach a key pair to stopped instances.
 //
-// This operation is used to bind a key pair to instances. Only disabled instances are supported.
+// - Specify up to 30 instances per call.
 //
-//   - You can bind a maximum of 30 instances at a time.
+// - Specify either `KeyPairName` or `KeyPairId`.
 //
-//   - At least one of the key_pair_name and key_pair_id parameters is not empty.
-//
-//   - Specify the key_pair_id parameter when you call this parameter. The key_pair_name parameter will be discarded.
+// - We recommend using `KeyPairId`, as `KeyPairName` will be deprecated.
 //
 // @param tmpReq - AttachKeyPairRequest
 //
@@ -715,15 +715,15 @@ func (client *Client) AttachKeyPairWithContext(ctx context.Context, tmpReq *Atta
 //
 // When you call this operation, take note of the following limits:
 //
-//   - The ENI must be in the Available state.
+// - The ENI must be in the Available state.
 //
-//   - An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+// - An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
 //
-//   - The instance must be in the Stopped state.
+// - The instance must be in the Stopped state.
 //
-//   - A maximum of 10 ENIs can be attached to an instance.
+// - A maximum of 10 ENIs can be attached to an instance.
 //
-//   - This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+// - This operation is an asynchronous operation. After you To attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
 //
 // @param request - AttachNetworkInterfaceRequest
 //
@@ -771,7 +771,7 @@ func (client *Client) AttachNetworkInterfaceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates an inbound security group rule. This operation allows or denies the inbound traffic from other devices to instances in the security group.
+// Calls AuthorizeSecurityGroup to configure inbound access permissions for a security group, allowing or denying other devices from sending inbound traffic to instances in the security group.
 //
 // @param request - AuthorizeSecurityGroupRequest
 //
@@ -911,13 +911,13 @@ func (client *Client) AuthorizeSecurityGroupEgressWithContext(ctx context.Contex
 
 // Summary:
 //
-// Migrates multiple instances in a specified event at a time. You can execute the task immediately or schedule the task execution.
+// Batch migrates instances under a specified event. Supports immediate or scheduled execution.
 //
 // Description:
 //
-// ## [](#)Request description
+// ## Operation description
 //
-//   - This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
+// - This O&M operation currently supports only the following event type: Instance:SystemUpgrade.Migrate (migration required due to underlying infrastructure upgrade).
 //
 // @param tmpReq - BatchEventMigrateInstanceRequest
 //
@@ -967,11 +967,11 @@ func (client *Client) BatchEventMigrateInstanceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # The event that is used to immediately redeploy specified resources in batches or by appointment
+// Batch restarts specified resources immediately or at a scheduled time.
 //
 // Description:
 //
-//	This O\\&M operation supports only the following event types: Instance:SystemMaintenance.Reboot (instance reboot due to system problems)
+// - This O&M operation currently supports only the following event type: Instance:SystemMaintenance.Reboot (instance restart due to system maintenance).
 //
 // @param tmpReq - BatchEventRebootInstanceRequest
 //
@@ -1021,11 +1021,11 @@ func (client *Client) BatchEventRebootInstanceWithContext(ctx context.Context, t
 
 // Summary:
 //
-// # Batch redeployment
+// Batch redeploys specified resources immediately or at a scheduled time.
 //
 // Description:
 //
-// - This operation currently only supports event types: Instance:SystemFailure.Redeploy (redeploy instance due to system issues), Instance:SystemMaintenance.Redeploy (redeploy instance due to system maintenance)
+// - This O&M operation currently supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system failures) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
 //
 // @param tmpReq - BatchEventRedeployInstanceRequest
 //
@@ -1131,7 +1131,7 @@ func (client *Client) CleanDistDataWithContext(ctx context.Context, request *Cle
 
 // Summary:
 //
-// Copies a shared data group (SDG) across nodes.
+// Copies an SDG across edge zones by calling CopySDG.
 //
 // @param tmpReq - CopySDGRequest
 //
@@ -1177,7 +1177,7 @@ func (client *Client) CopySDGWithContext(ctx context.Context, tmpReq *CopySDGReq
 
 // Summary:
 //
-// Copies a snapshot across nodes.
+// Calls CopySnapshot to copy a snapshot across edge zones.
 //
 // @param tmpReq - CopySnapshotRequest
 //
@@ -1243,7 +1243,7 @@ func (client *Client) CopySnapshotWithContext(ctx context.Context, tmpReq *CopyS
 
 // Summary:
 //
-// Creates an ARM server.
+// Creates ARM board card servers by calling CreateARMServerInstances.
 //
 // @param request - CreateARMServerInstancesRequest
 //
@@ -1463,13 +1463,13 @@ func (client *Client) CreateClassicNetworkWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a Container Service for Kubernetes (ACK) edge cluster.
+// Creates an edge container cluster.
 //
 // Description:
 //
-//	  You can call this operation up to 10 times per second per account.
+// - Single-user call frequency: 10 calls per second.
 //
-//		- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
+// - Creating a cluster is an asynchronous operation. After the API call returns, wait 10 to 20 minutes for the cluster to finish initialization. During this process, call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -1514,6 +1514,10 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
+	if !dara.IsNil(request.Isp) {
+		query["Isp"] = request.Isp
+	}
+
 	if !dara.IsNil(request.KubernetesVersion) {
 		query["KubernetesVersion"] = request.KubernetesVersion
 	}
@@ -1524,6 +1528,10 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
 	}
 
 	if !dara.IsNil(request.PodVswitchIdsShrink) {
@@ -1575,7 +1583,13 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// 创建集群节点池
+// A node pool is a logical collection of nodes with identical attributes that enables unified management and O&M operations such as node upgrades and elastic scaling. You can further leverage the automated O&M capabilities of node pools to reduce O&M costs through features such as automatic OS CVE vulnerability remediation, automatic recovery of faulty nodes, and automatic version upgrades for kubelet and containerd. You can call the CreateClusterNodePool operation to create a node pool for a cluster.
+//
+// Description:
+//
+// - Rate limit per user: 10 calls per second.
+//
+// - Creating a cluster is an asynchronous operation. After the API call returns, you must wait 10 to 20 minutes for the cluster initialization to complete. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - CreateClusterNodePoolRequest
 //
@@ -1645,7 +1659,7 @@ func (client *Client) CreateClusterNodePoolWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription data disk.
+// Creates a pay-as-you-go or subscription data cloud disk by calling CreateDisk.
 //
 // @param request - CreateDiskRequest
 //
@@ -1725,13 +1739,13 @@ func (client *Client) CreateDiskWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// Applies for an elastic IP address (EIP).
+// Creates an elastic IP address (EIP) by calling the CreateEipInstance operation.
 //
 // Description:
 //
-//	  You can call this operation up to 5,000 times per second per account.
+// - API call frequency: 5000 calls per second.
 //
-//		- You can call this operation up to 50 times per second per user.
+// - Per-user call frequency: 50 calls per second.
 //
 // @param request - CreateEipInstanceRequest
 //
@@ -2053,7 +2067,7 @@ func (client *Client) CreateEpnInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a NAS file system.
+// Creates a NAS file system by calling the CreateFileSystem operation.
 //
 // @param tmpReq - CreateFileSystemRequest
 //
@@ -2099,7 +2113,7 @@ func (client *Client) CreateFileSystemWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Adds a Destination Network Address Translation (DNAT) entry to a DNAT table.
+// Adds a DNAT entry by calling CreateForwardEntry.
 //
 // @param request - CreateForwardEntryRequest
 //
@@ -2235,7 +2249,7 @@ func (client *Client) CreateHaVipWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Creates an image from an instance.
+// Creates an image from a specified instance.
 //
 // @param request - CreateImageRequest
 //
@@ -2299,15 +2313,15 @@ func (client *Client) CreateImageWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Creates an instance.
+// Creates a subscription instance. This operation can be replaced by RunInstances. No new features will be added to CreateInstance.
 //
 // Description:
 //
-//	  You can call this operation up to 10 times per second per account.
+// - Per-user call frequency: 10 calls per second.
 //
-//		- We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+// - Because instance creation is an asynchronous operation, increase the request timeout as needed. When the API returns Code=0, this only indicates that the request was successful, not that the instance was created successfully. An instance ID is returned upon a successful request. You can then query the instance by its ID to check whether the instance is created.
 //
-//		- InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+// - InvalidUserData.NotInWhiteList restriction: Only accounts that are added to the relevant whitelist with purchase permissions can create instances. Otherwise, an error is returned.
 //
 // @param request - CreateInstanceRequest
 //
@@ -2537,13 +2551,13 @@ func (client *Client) CreateKeyPairWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates an Edge Load Balancer (ELB) instance.
+// Creates a load balancing instance by calling the CreateLoadBalancer operation.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call frequency: 100 times per second.
 //
-//		- You can call this operation up to 5 times per second per user.
+// - Per-user call frequency: 5 times per second.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -2623,9 +2637,9 @@ func (client *Client) CreateLoadBalancerWithContext(ctx context.Context, request
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerHTTPListenerRequest
 //
@@ -2749,9 +2763,9 @@ func (client *Client) CreateLoadBalancerHTTPListenerWithContext(ctx context.Cont
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerHTTPSListenerRequest
 //
@@ -2883,13 +2897,13 @@ func (client *Client) CreateLoadBalancerHTTPSListenerWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a Transmission Control Protocol (TCP) listener.
+// To create a TCP listener, call `CreateLoadBalancerTCPListener`.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call rate: 100 requests per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user call rate: 10 requests per second.
 //
 // @param request - CreateLoadBalancerTCPListenerRequest
 //
@@ -2997,13 +3011,13 @@ func (client *Client) CreateLoadBalancerTCPListenerWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates a User Datagram Protocol (UDP) listener.
+// To create a UDP listener, call `CreateLoadBalancerUDPListener`.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user call rate: 10 calls per second.
 //
 // @param request - CreateLoadBalancerUDPListenerRequest
 //
@@ -3161,7 +3175,7 @@ func (client *Client) CreateMountTargetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a network address translation (NAT) gateway.
+// Creates a NAT gateway.
 //
 // @param request - CreateNatGatewayRequest
 //
@@ -3229,13 +3243,13 @@ func (client *Client) CreateNatGatewayWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a virtual private cloud (VPC).
+// Call CreateNetwork to create a virtual private cloud (VPC).
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - API call frequency: 100 calls per second.
 //
-//		- You can call this operation up to 5 times per second per user.
+// - Per-user call frequency: 5 calls per second.
 //
 // @param request - CreateNetworkRequest
 //
@@ -3258,8 +3272,16 @@ func (client *Client) CreateNetworkWithContext(ctx context.Context, request *Cre
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.EnableIpv6) {
+		query["EnableIpv6"] = request.EnableIpv6
+	}
+
 	if !dara.IsNil(request.EnsRegionId) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !dara.IsNil(request.Ipv6Isp) {
+		query["Ipv6Isp"] = request.Ipv6Isp
 	}
 
 	if !dara.IsNil(request.NetworkName) {
@@ -3343,7 +3365,7 @@ func (client *Client) CreateNetworkAclWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a network access control list (ACL) rule.
+// You can invoke the CreateNetworkAclEntry API to create a network ACL rule.
 //
 // @param request - CreateNetworkAclEntryRequest
 //
@@ -3485,19 +3507,19 @@ func (client *Client) CreateNetworkInterfaceWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a shared data group (SDG) on an Android in Container (AIC) instance.
+// Creates a Shared Data Group (SDG) on an Android in Container (AIC) instance.
 //
 // Description:
 //
-// A SDG can be regarded as a data partition image of a virtual device. You can save a data partition of a virtual device as an SDG. A created SDG can be deployed in data partitions of other virtual devices to achieve rapid data distribution and application. The procedure for calling SDG-related API operations:
+// A Shared Data Group (SDG) is a data partition image of a virtual device. You can save the data partition of a virtual device as an SDG. The SDG can then be deployed to the data partition of other virtual devices for fast data sharing and application deployment. The following describes the workflow of SDG-related operations:
 //
-//   - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG, which is bound to AIC Instance A (InstanceId). After you create the SDG, a blank cloud disk (also known as an original cloud disk) is attached to Device A (InstanceId).
+// - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG. The SDG is bound to AIC instance A (InstanceId). After the SDG is created, a blank cloud disk (also called a raw cloud disk) is mounted to device A (InstanceId) for SDG creation.
 //
-//   - Install applications on and deliver files to AIC Instance A (InstanceId).
+// - Install applications, deliver files, and perform other required operations on AIC instance A (InstanceId).
 //
-//   - Call the [SaveSDG](~~SaveSDG~~) operation to save the data disk of AIC instance A as SDG A.
+// - Call the [SaveSDG](~~SaveSDG~~) operation to save the data cloud disk of AIC instance A as SDG A.
 //
-//   - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC Instance B. This operattion is executed asynchronously. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC Instance B. If the status of AIC Instance B changes to success, AIC insance B is available, and AIC Instances A and B have the same applications running.
+// - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC instance B. This process is asynchronous. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC instance B. When the status changes back to success, AIC instance B is available and has the same applications as AIC instance A.
 //
 // @param request - CreateSDGRequest
 //
@@ -3595,7 +3617,7 @@ func (client *Client) CreateSecurityGroupWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Create an ENS security group rule.
+// Creates a security group rule for Edge Node Service (ENS).
 //
 // @param tmpReq - CreateSecurityGroupPermissionsRequest
 //
@@ -3649,7 +3671,7 @@ func (client *Client) CreateSecurityGroupPermissionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Creates a snapshot.
+// Creates a snapshot by calling CreateSnapshot.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -3919,7 +3941,7 @@ func (client *Client) CreateStorageVolumeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// A vSwitch is created.
+// Creates a VSwitch.
 //
 // @param request - CreateVSwitchRequest
 //
@@ -3944,6 +3966,10 @@ func (client *Client) CreateVSwitchWithContext(ctx context.Context, request *Cre
 
 	if !dara.IsNil(request.EnsRegionId) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !dara.IsNil(request.Ipv6CidrBlock) {
+		query["Ipv6CidrBlock"] = request.Ipv6CidrBlock
 	}
 
 	if !dara.IsNil(request.NetworkId) {
@@ -3983,7 +4009,7 @@ func (client *Client) CreateVSwitchWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
+// Deletes a specified AIC public key. The public key can be deleted only when it is not associated with any resource.
 //
 // @param request - DeleteAICPublicKeyRequest
 //
@@ -4075,13 +4101,13 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a bucket.
+// You can call the DeleteBucket operation to delete a bucket.
 //
 // Description:
 //
-//	  Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
+// - Only the Alibaba Cloud account that owns the bucket can delete it.
 //
-//		- You cannot delete buckets that store objects. You can only delete empty buckets.
+// - A bucket must be empty before it can be deleted.
 //
 // @param request - DeleteBucketRequest
 //
@@ -4125,7 +4151,7 @@ func (client *Client) DeleteBucketWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes the lifecycle rules for objects in a bucket.
+// Deletes the lifecycle rules of a bucket.
 //
 // @param request - DeleteBucketLifecycleRequest
 //
@@ -4173,7 +4199,15 @@ func (client *Client) DeleteBucketLifecycleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除集群
+// Deletes a cluster.
+//
+// Description:
+//
+// You can specify the RetainResources parameter when you delete a cluster. The default value is false. If you set this parameter to true, the Edge Node Service (ENS) compute instances on which worker nodes run are retained.
+//
+// When you delete a cluster, all nodes and node pools in the cluster are automatically deleted. ENS compute instances that you manually added by using scripts obtained from the DescribeAttachScript operation are retained.
+//
+// If a node pool in the cluster is being scaled out or in, wait until the scaling process is complete before you delete the cluster.
 //
 // @param request - DeleteClusterRequest
 //
@@ -4221,7 +4255,13 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除节点池
+// You can call the DeleteClusterNodePool operation to delete a node pool that you no longer need. When you delete a node pool, all pods on its nodes are also deleted. This action may trigger descheduling. If the pods cannot be rescheduled, your services may be affected. Before you delete the node pool, ensure that the cluster has sufficient resources for rescheduling.
+//
+// Description:
+//
+// - Each user is limited to 10 calls per second.
+//
+// - Cluster creation is an asynchronous operation. After the API call is successful, wait 10 to 20 minutes for the cluster to initialize. During this time, you can call the DescribeClustersV1 operation to check the cluster status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster\\"s kubeconfig file.
 //
 // @param request - DeleteClusterNodePoolRequest
 //
@@ -4269,7 +4309,11 @@ func (client *Client) DeleteClusterNodePoolWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除节点池指定节点
+// Removes nodes from a cluster when the nodes are no longer needed. The ReleaseNode parameter specifies whether to release the underlying Edge Node Service (ENS) compute instances. Default value: false. If the node to be removed is in the failed state, this parameter does not take effect and the corresponding compute instance is released by default. For ENS compute instances that you manually connect to the cluster by using the script obtained from the DescribeAttachScript operation, this parameter does not take effect and the corresponding compute instances are not released by default.
+//
+// Description:
+//
+// If ReleaseNode is set to false, you must manually stop the kubelet process on the node before you call DeleteClusterNodes. Otherwise, the node may automatically rejoin the cluster.
 //
 // @param tmpReq - DeleteClusterNodesRequest
 //
@@ -4635,7 +4679,11 @@ func (client *Client) DeleteEpnInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a File Storage NAS file system.
+// Calls DeleteFileSystem to delete a NAS service.
+//
+// Description:
+//
+// Deletes a NAS file system. Before deleting the file system, call DeleteMountTarget to delete all mount targets of the file system. After DeleteMountTarget succeeds, there is an eventual consistency window. Poll DescribeFileSystems to confirm that MountTargets is empty before calling this API operation.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -4817,9 +4865,9 @@ func (client *Client) DeleteImageWithContext(ctx context.Context, request *Delet
 //
 // Description:
 //
-//	  After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+// - After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
 //
-//		- If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+// - If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -4871,9 +4919,9 @@ func (client *Client) DeleteKeyPairsWithContext(ctx context.Context, request *De
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - DeleteLoadBalancerListenerRequest
 //
@@ -5211,7 +5259,7 @@ func (client *Client) DeleteNetworkInterfacesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Releases the VPC peering connection.
+// Deletes a network peer connection.
 //
 // @param request - DeleteNetworkPeerConnectionRequest
 //
@@ -5303,11 +5351,11 @@ func (client *Client) DeleteObjectWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a shared data group (SDG).
+// Deletes an SDG by calling DeleteSDG.
 //
 // Description:
 //
-// If all the SDGs corresponding to the original disk are deleted, the original disk is automatically cleared.
+// If all SDGs associated with the original cloud disk are deleted, the original cloud disk is automatically cleaned up.
 //
 // @param tmpReq - DeleteSDGRequest
 //
@@ -5731,7 +5779,7 @@ func (client *Client) DeleteVSwitchWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deploys a shared data group (SDG) to compute instances.
+// Deploys an SDG to compute instances.
 //
 // @param tmpReq - DeployInstanceSDGRequest
 //
@@ -5797,7 +5845,7 @@ func (client *Client) DeployInstanceSDGWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Deploys shared data groups (SDGs).
+// Deploys an SDG.
 //
 // @param tmpReq - DeploySDGRequest
 //
@@ -5843,7 +5891,7 @@ func (client *Client) DeploySDGWithContext(ctx context.Context, tmpReq *DeploySD
 
 // Summary:
 //
-// Queries information about images of the Android in Container (AIC) instance.
+// Retrieves image information.
 //
 // @param request - DescribeAICImagesRequest
 //
@@ -5919,7 +5967,7 @@ func (client *Client) DescribeAICImagesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries information about ARM servers and Android in Container (AIC) instances.
+// Retrieves information about ARM servers and AIC instances.
 //
 // @param tmpReq - DescribeARMServerInstancesRequest
 //
@@ -5985,7 +6033,11 @@ func (client *Client) DescribeARMServerInstancesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询指定组件的信息
+// Queries the details of a specified add-on.
+//
+// Description:
+//
+// - Rate limit per user: 100 calls per second.
 //
 // @param request - DescribeAddonRequest
 //
@@ -6195,11 +6247,11 @@ func (client *Client) DescribeCloudDiskTypesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries Container Service for Kubernetes (ACK) edge clusters.
+// Queries edge container clusters.
 //
 // Description:
 //
-//	You can call this operation up to 100 times per second per account.
+// - Single-user call frequency: 100 calls per second.
 //
 // @param request - DescribeClusterRequest
 //
@@ -6243,7 +6295,7 @@ func (client *Client) DescribeClusterWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// To add existing ENS instances to an ECK cluster as worker nodes, or to re-add node instances to a node pool after removing worker nodes, ECK supports manually adding existing nodes to a node pool. You can invoke the DescribeClusterAttachScripts interface to obtain the script for adding existing nodes.
+// To add an existing ENS instance to an ECK cluster as a worker node or re-add a node to a node pool, call the DescribeClusterAttachScripts operation to get the required script.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -6295,7 +6347,11 @@ func (client *Client) DescribeClusterAttachScriptsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询集群详细信息
+// Queries the details of a cluster.
+//
+// Description:
+//
+// - Per-user call frequency: 100 calls per second.
 //
 // @param request - DescribeClusterDetailRequest
 //
@@ -6339,11 +6395,11 @@ func (client *Client) DescribeClusterDetailWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the certificate of a Container Service for Kubernetes (ACK) edge cluster.
+// Queries the certificate of an edge container cluster.
 //
 // Description:
 //
-//	The maximum number of times that each user can call this operation per second is 100.
+// - Single-user call frequency: 100 calls per second.
 //
 // @param request - DescribeClusterKubeConfigRequest
 //
@@ -6387,7 +6443,11 @@ func (client *Client) DescribeClusterKubeConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询集群节点池信息
+// Queries all node pools in a cluster.
+//
+// Description:
+//
+// - Rate limit per user: 100 calls per second.
 //
 // @param request - DescribeClusterNodePoolsRequest
 //
@@ -6439,7 +6499,11 @@ func (client *Client) DescribeClusterNodePoolsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询节点池节点
+// Queries a list of nodes that meet specific conditions.
+//
+// Description:
+//
+// - Rate limit per user: 100 calls per second.
 //
 // @param request - DescribeClusterNodesRequest
 //
@@ -6495,7 +6559,11 @@ func (client *Client) DescribeClusterNodesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询集群KubeConfig
+// A kubeconfig file contains the credentials required for a client to access an Elastic Container instance on Kubernetes (ECK) cluster. The file includes identity and authentication data for accessing the destination cluster. To manage a cluster using kubectl, you must first connect to the cluster with its kubeconfig file. You can call the DescribeClusterUserKubeconfig operation to query the kubeconfig file for a specific cluster.
+//
+// Description:
+//
+// - A single user is limited to 100 calls per second.
 //
 // @param request - DescribeClusterUserKubeconfigRequest
 //
@@ -6562,12 +6630,20 @@ func (client *Client) DescribeClustersV1WithContext(ctx context.Context, request
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.ClusterType) {
+		query["ClusterType"] = request.ClusterType
+	}
+
 	if !dara.IsNil(request.EnsRegionId) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Profile) {
+		query["Profile"] = request.Profile
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6639,7 +6715,7 @@ func (client *Client) DescribeCreatePrePaidInstanceResultWithContext(ctx context
 
 // Summary:
 //
-// Queries the distribution status of data files on edge instances of an application.
+// Retrieves the distribution status of data files across edge resource instances of an application by calling DescribeDataDistResult.
 //
 // @param tmpReq - DescribeDataDistResultRequest
 //
@@ -6721,7 +6797,7 @@ func (client *Client) DescribeDataDistResultWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries the download URLs of application data on file servers and returns the file servers on which data is pushed.
+// Retrieves the download URL of application data from file servers and returns the list of file servers to which the data has been successfully pre-pushed.
 //
 // @param request - DescribeDataDownloadURLRequest
 //
@@ -6761,7 +6837,11 @@ func (client *Client) DescribeDataDownloadURLWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the push status of application data files on Edge Node Service (ENS) nodes.
+// Queries the pre-push status of data files for an application on edge nodes.
+//
+// Description:
+//
+// Queries the pre-push results of application data. Before calling this operation, make sure that your account has activated the Edge Node Service (ENS) edge application hosting service.
 //
 // @param request - DescribeDataPushResultRequest
 //
@@ -6833,7 +6913,7 @@ func (client *Client) DescribeDataPushResultWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the properties of instances and virtual devices in a specific edge application.
+// Queries the list of basic property information such as instances and virtual device network status under an edge application.
 //
 // @param request - DescribeDeviceServiceRequest
 //
@@ -6873,7 +6953,7 @@ func (client *Client) DescribeDeviceServiceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the disk IOPS monitoring data.
+// Queries disk IOPS monitoring data.
 //
 // @param request - DescribeDiskIopsListRequest
 //
@@ -6913,7 +6993,7 @@ func (client *Client) DescribeDiskIopsListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about one or more disks.
+// Queries information about one or more created disks.
 //
 // @param request - DescribeDisksRequest
 //
@@ -7105,7 +7185,7 @@ func (client *Client) DescribeEnsCommodityModuleCodeWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries elastic IP addresses (EIPs).
+// Queries elastic IP addresses (EIPs) in Edge Node Service (ENS).
 //
 // @param request - DescribeEnsEipAddressesRequest
 //
@@ -7197,7 +7277,7 @@ func (client *Client) DescribeEnsEipAddressesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries regions in which ENS resources can be created.
+// Invoke DescribeEnsNetDistrict to query the regions where edge service resources can be created.
 //
 // @param request - DescribeEnsNetDistrictRequest
 //
@@ -7341,7 +7421,7 @@ func (client *Client) DescribeEnsRegionIdIpv6InfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries node resources.
+// Queries edge zone resource information by calling DescribeEnsRegionIdResource.
 //
 // Description:
 //
@@ -7409,7 +7489,7 @@ func (client *Client) DescribeEnsRegionIdResourceWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the Edge Node Service (ENS) nodes that you can use.
+// Queries a list of available ENS nodes.
 //
 // @param request - DescribeEnsRegionsRequest
 //
@@ -7817,7 +7897,7 @@ func (client *Client) DescribeEnsSaleControlStockWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the EPN bandwidth usage.
+// Invokes DescribeEpnBandWidthData to query the network bandwidth usage of an edge-to-edge network.
 //
 // @param request - DescribeEpnBandWidthDataRequest
 //
@@ -8105,11 +8185,11 @@ func (client *Client) DescribeEpnMeasurementDataWithContext(ctx context.Context,
 //
 // Description:
 //
-//	  You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+// - to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
 //
-//		- Empty strings are returned for images that are not exported.
+// - Empty strings are returned for images that are not exported.
 //
-//		- The download links may become invalid if you delete objects in OSS.
+// - The download links may become invalid if you delete objects in OSS.
 //
 // @param request - DescribeExportImageInfoRequest
 //
@@ -8209,7 +8289,7 @@ func (client *Client) DescribeExportImageStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about Apsara File Storage NAS (NAS) file systems.
+// Query NAS file system information.
 //
 // @param request - DescribeFileSystemsRequest
 //
@@ -8249,7 +8329,7 @@ func (client *Client) DescribeFileSystemsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
+// Queries a DNAT rule.
 //
 // @param request - DescribeForwardEntryAttributeRequest
 //
@@ -8365,7 +8445,7 @@ func (client *Client) DescribeForwardTableEntriesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries high-availability virtual IP addresses (HAVIPs).
+// Queries high-availability virtual IP addresses (HaVips).
 //
 // @param request - DescribeHaVipsRequest
 //
@@ -8405,11 +8485,11 @@ func (client *Client) DescribeHaVipsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries instance system events.
+// Queries system event information.
 //
 // Description:
 //
-//	You must specify an event type to query. You can query multiple event types at the same time.
+// - EventTypes must specify at least one event type for the query. Multiple event types can be queried at the same time.
 //
 // @param tmpReq - DescribeHistoryEventsRequest
 //
@@ -8491,7 +8571,7 @@ func (client *Client) DescribeHistoryEventsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Queries available images.
+// Queries available image resources.
 //
 // @param request - DescribeImageInfosRequest
 //
@@ -8659,7 +8739,7 @@ func (client *Client) DescribeImagesWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// You can call this operation to query whether auto-renewal is enabled for an instance.
+// to query whether auto-renewal is enabled for an instance.
 //
 // @param request - DescribeInstanceAutoRenewAttributeRequest
 //
@@ -8707,15 +8787,11 @@ func (client *Client) DescribeInstanceAutoRenewAttributeWithContext(ctx context.
 
 // Summary:
 //
-// Queries the detailed bandwidth data of an instance, which is collected every 5 minutes.
+// Queries the bandwidth details of an instance at a 5-minute granularity.
 //
 // Description:
 //
-//	  You can call this operation up to 800 times per second per account.
-//
-//		- You can call this operation up to 100 times per second per user.
-//
-//		- You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, this parameter is regarded as a valid filter condition and an empty result is returned.
+// - Request parameters act as filters. Filters are evaluated by using the logical AND operator. If a parameter is empty, the corresponding filter does not take effect. However, if InstanceIds is set to an empty JSON array, the filter is considered valid and an empty result is returned.
 //
 // @param request - DescribeInstanceBandwidthDetailRequest
 //
@@ -8815,7 +8891,7 @@ func (client *Client) DescribeInstanceBootConfigurationWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the vCPU and memory usage of an instance.
+// Queries the CPU and memory usage of an instance.
 //
 // @param request - DescribeInstanceMonitorDataRequest
 //
@@ -8871,7 +8947,7 @@ func (client *Client) DescribeInstanceMonitorDataWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries shared data groups (SDGs) that are mounted to an Android in Container (AIC) instance.
+// Queries the mount status of SDGs under a specified AIC instance.
 //
 // @param tmpReq - DescribeInstanceSDGStatusRequest
 //
@@ -8917,7 +8993,51 @@ func (client *Client) DescribeInstanceSDGStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the Virtual Network Computing (VNC) URL of an Edge Node Service (ENS) instance.
+// Queries the list of instance types by calling DescribeInstanceTypes.
+//
+// @param request - DescribeInstanceTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceTypesResponse
+func (client *Client) DescribeInstanceTypesWithContext(ctx context.Context, request *DescribeInstanceTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTypesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceTypes"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceTypesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the web management terminal URL of an ENS instance.
 //
 // @param request - DescribeInstanceVncUrlRequest
 //
@@ -8961,15 +9081,11 @@ func (client *Client) DescribeInstanceVncUrlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// You can call this operation to view the details of one or more instances.
+// Queries the details of one or more instances.
 //
 // Description:
 //
-//	  You can call this operation up to 800 times per second per account.
-//
-//		- You can call this operation up to 100 times per second per user.
-//
-//		- You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+// - API call frequency: 800 calls per second.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -9171,13 +9287,13 @@ func (client *Client) DescribeKeyPairsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries detailed information about an Edge Load Balancer (ELB) instance.
+// Queries the details of a specified load balancing instance.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - API call rate: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per account.
+// - Per-user call rate: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerAttributeRequest
 //
@@ -9225,9 +9341,9 @@ func (client *Client) DescribeLoadBalancerAttributeWithContext(ctx context.Conte
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerHTTPListenerAttributeRequest
 //
@@ -9279,9 +9395,9 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithContext(ctx c
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -9333,9 +9449,9 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithContext(ctx 
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -9475,13 +9591,13 @@ func (client *Client) DescribeLoadBalancerSpecWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the configurations of a Transmission Control Protocol (TCP) listener.
+// Call the `DescribeLoadBalancerTCPListenerAttribute` operation to query the configuration of a TCP listener.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user call rate: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerTCPListenerAttributeRequest
 //
@@ -9529,13 +9645,13 @@ func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithContext(ctx co
 
 // Summary:
 //
-// Queries the configuration of a User Datagram Protocol (UDP) listener.
+// Call `DescribeLoadBalancerUDPListenerAttribute` to get a UDP listener\\"s configuration.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API rate limit: 100 requests per second (RPS).
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user rate limit: 10 RPS.
 //
 // @param request - DescribeLoadBalancerUDPListenerAttributeRequest
 //
@@ -9583,13 +9699,13 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttributeWithContext(ctx co
 
 // Summary:
 //
-// Queries the Edge Load Balance (ELB) instances that you have created.
+// Invokes the DescribeLoadBalancers operation to query the list of created load balancing instances.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancersRequest
 //
@@ -9629,7 +9745,7 @@ func (client *Client) DescribeLoadBalancersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the metering data of the user.
+// Retrieves user metering data.
 //
 // @param request - DescribeMeasurementDataRequest
 //
@@ -9677,7 +9793,7 @@ func (client *Client) DescribeMeasurementDataWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about mount targets.
+// Queries mount target information by calling DescribeMountTargets.
 //
 // @param request - DescribeMountTargetsRequest
 //
@@ -9777,7 +9893,7 @@ func (client *Client) DescribeNCInformationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries created Network Address Translation (NAT) gateways.
+// Invoke DescribeNatGateways to query created NAT Gateways.
 //
 // @param request - DescribeNatGatewaysRequest
 //
@@ -9817,7 +9933,7 @@ func (client *Client) DescribeNatGatewaysWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries network access control lists (ACLs).
+// You can invoke the DescribeNetworkAcls API to query created network ACLs.
 //
 // @param request - DescribeNetworkAclsRequest
 //
@@ -9877,13 +9993,13 @@ func (client *Client) DescribeNetworkAclsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the configuration of a specified network.
+// Use DescribeNetworkAttribute to query the configuration of a specific network.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - API rate limit: 100 calls/sec.
 //
-//		- You can call this operation up to 10 times per second per account.
+// - Per-user rate limit: 10 calls/sec.
 //
 // @param request - DescribeNetworkAttributeRequest
 //
@@ -9927,7 +10043,7 @@ func (client *Client) DescribeNetworkAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries Elastic Network Interfaces (ENIs).
+// Queries a list of elastic network interfaces (ENIs).
 //
 // @param request - DescribeNetworkInterfacesRequest
 //
@@ -10027,7 +10143,7 @@ func (client *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries VPC peering connections.
+// Call `DescribeNetworkPeerConnections` to query network peer connections.
 //
 // @param request - DescribeNetworkPeerConnectionsRequest
 //
@@ -10091,13 +10207,13 @@ func (client *Client) DescribeNetworkPeerConnectionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Query the network list.
+// Call DescribeNetworks to retrieve a list of networks.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - API call frequency: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per account.
+// - Per-user call frequency: 10 calls per second.
 //
 // @param request - DescribeNetworksRequest
 //
@@ -10303,7 +10419,7 @@ func (client *Client) DescribePriceWithContext(ctx context.Context, tmpReq *Desc
 
 // Summary:
 //
-// Queries information about the Internet service providers (ISPs) of edge nodes.
+// Queries the Internet Service Provider (ISP) information of an ENS edge node.
 //
 // @param request - DescribeRegionIspsRequest
 //
@@ -10423,7 +10539,7 @@ func (client *Client) DescribeResourceTimelineWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries basic information about shared data groups (SDGs), including node preload information.
+// Queries basic SDG information, including node preload information.
 //
 // @param tmpReq - DescribeSDGRequest
 //
@@ -10485,7 +10601,7 @@ func (client *Client) DescribeSDGWithContext(ctx context.Context, tmpReq *Descri
 
 // Summary:
 //
-// Queries the deployment status of the shared data group (SDG).
+// Queries the deployment status of an SDG.
 //
 // @param tmpReq - DescribeSDGDeploymentStatusRequest
 //
@@ -10571,7 +10687,7 @@ func (client *Client) DescribeSDGDeploymentStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// You can query the information of shared disks in a specified SDG.
+// Queries the information about shared disks in a specified SDG.
 //
 // @param request - DescribeSDGSharedDisksRequest
 //
@@ -10689,7 +10805,7 @@ func (client *Client) DescribeSDGsWithContext(ctx context.Context, tmpReq *Descr
 
 // Summary:
 //
-// Queries created secondary public IP addresses.
+// Queries the secondary public IP addresses that have been created.
 //
 // @param request - DescribeSecondaryPublicIpAddressesRequest
 //
@@ -10757,7 +10873,7 @@ func (client *Client) DescribeSecondaryPublicIpAddressesWithContext(ctx context.
 
 // Summary:
 //
-// Queries the rules of a security group.
+// You can invoke DescribeSecurityGroupAttribute to query the security group rules of a security group.
 //
 // @param request - DescribeSecurityGroupAttributeRequest
 //
@@ -10917,7 +11033,7 @@ func (client *Client) DescribeSelfImagesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can call the DescribeServcieSchedule to query the real-time status of the instance device or container that is being occupied by the UUID.
+// Queries the real-time status of the instance devices or containers that are being scheduled and occupied by the specified UUID.
 //
 // @param request - DescribeServcieScheduleRequest
 //
@@ -10969,13 +11085,13 @@ func (client *Client) DescribeServcieScheduleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the monitoring data of an edge load balancer (ELB) instance based on the listener.
+// Queries listener-level monitoring data for an ESLB instance.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user call rate: 10 calls per second.
 //
 // @param request - DescribeServerLoadBalancerListenMonitorRequest
 //
@@ -11015,13 +11131,13 @@ func (client *Client) DescribeServerLoadBalancerListenMonitorWithContext(ctx con
 
 // Summary:
 //
-// Queries the request monitoring data of an edge load balancer (ELB) instance.
+// Queries request monitoring data of an ESLB instance.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call frequency: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user call frequency: 10 calls per second.
 //
 // @param request - DescribeServerLoadBalancerMonitorRequest
 //
@@ -11061,7 +11177,7 @@ func (client *Client) DescribeServerLoadBalancerMonitorWithContext(ctx context.C
 
 // Summary:
 //
-// Queries information about snapshots.
+// Queries snapshot information by calling DescribeSnapshots.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -11133,7 +11249,7 @@ func (client *Client) DescribeSnapshotsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details of a specific source network address translation (SNAT) entry.
+// Queries a specific source network address translation (SNAT) entry.
 //
 // @param request - DescribeSnatAttributeRequest
 //
@@ -11413,7 +11529,7 @@ func (client *Client) DescribeUserBandWidthDataWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Call the DescribeVSwitchAttributes interface to query the configuration of a specified VSwitch.
+// Call the DescribeVSwitchAttributes operation to query the configuration of a specified vSwitch.
 //
 // @param request - DescribeVSwitchAttributesRequest
 //
@@ -11457,7 +11573,7 @@ func (client *Client) DescribeVSwitchAttributesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries information about available vSwitches.
+// Call the DescribeVSwitches operation to retrieve information about VSwitches. You use VSwitches to configure private networks.
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -11472,6 +11588,10 @@ func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableIpv6) {
+		query["EnableIpv6"] = request.EnableIpv6
+	}
+
 	if !dara.IsNil(request.EnsRegionId) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}
@@ -11529,7 +11649,7 @@ func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Detaches a pay-as-you-go disk from an Edge Node Service (ENS) instance. You cannot call this operation to detach a disk that is created together with an instance.
+// Detaches a pay-as-you-go disk from an Edge Node Service (ENS) instance. You cannot To detach a disk that is created together with an instance.
 //
 // @param request - DetachDiskRequest
 //
@@ -11631,21 +11751,21 @@ func (client *Client) DetachInstanceSDGWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Unbinds a Secure Shell (SSH) key pair from specific instances by specifying the name or ID of the SSH key pair.
+// Detaches a key pair from up to 30 instances in a single request. You can specify the key pair by its key pair name or key pair ID.
 //
 // Description:
 //
-// ## [](#)
+// ## Usage notes
 //
-// This operation is used to unbind a key pair from instances. Only disabled instances are supported.
+// This operation detaches a key pair from multiple instances in a batch. The target instances must be in a stopped state.
 //
-//   - You can unbind a maximum of 30 instances at a time.
+// - You can detach a key pair from a maximum of 30 instances in a single request.
 //
-//   - If the name of the SSH key pair that is bound to an instance is not same as the value of the keyPairName parameter, an exception is thrown.
+// - The operation returns an error if you specify the `KeyPairName` parameter and any of the specified instances are not associated with that key pair name.
 //
-//   - At least one of key_pair_name and key_pair_id is not empty.
+// - You must specify either the `KeyPairName` or `KeyPairId` parameter.
 //
-//   - Specify the key_pair_id parameter when you call this parameter. The key_pair_name parameter will be discarded.
+// - We recommend using the `KeyPairId` parameter. The `KeyPairName` parameter will be deprecated in a future release.
 //
 // @param tmpReq - DetachKeyPairRequest
 //
@@ -11709,13 +11829,13 @@ func (client *Client) DetachKeyPairWithContext(ctx context.Context, tmpReq *Deta
 //
 // Before you call this operation, take note of the following items:
 //
-//   - You cannot detach a primary ENI from an instance.
+// - You cannot detach a primary ENI from an instance.
 //
-//   - The ENI must be in the InUse state.
+// - The ENI must be in the InUse state.
 //
-//   - The instances are in the Stopped state.
+// - The instances are in the Stopped state.
 //
-//   - This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+// - This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
 //
 // @param request - DetachNetworkInterfaceRequest
 //
@@ -11811,11 +11931,11 @@ func (client *Client) DistApplicationDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Migrates the instance across nodes after an O\\\\\\&M event occurs on an instance.
+// Migrates an instance across physical nodes in response to an O&M event.
 //
 // Description:
 //
-//	This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
+// - This O\\&M task currently supports only the `Instance:SystemUpgrade.Migrate` event type for migrations due to an underlying upgrade.
 //
 // @param request - EventMigrateInstanceRequest
 //
@@ -11883,11 +12003,11 @@ func (client *Client) EventMigrateInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Restart the instance across nodes after an O\\\\\\&M event occurs on an instance.
+// Reboots an Instance affected by an Operational Event.
 //
 // Description:
 //
-//	This O\\&M operation supports only the Instance:SystemMaintenance.Reboot event
+// - This operation currently supports only the following Event Type: Instance:SystemMaintenance.Reboot (an Instance Reboot due to System Maintenance).
 //
 // @param request - EventRebootInstanceRequest
 //
@@ -11947,11 +12067,11 @@ func (client *Client) EventRebootInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # The event that is used to immediately redeploy a specified resource or by appointment
+// Redeploys a specified instance either immediately or at a scheduled time.
 //
 // Description:
 //
-//	This O\\&M operation supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system problems) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
+// - This O\\&M operation supports only the following event types: `Instance:SystemFailure.Redeploy` (redeployment due to a system failure) and `Instance:SystemMaintenance.Redeploy` (redeployment for system maintenance).
 //
 // @param request - EventRedeployInstanceRequest
 //
@@ -12211,7 +12331,7 @@ func (client *Client) GetBucketAclWithContext(ctx context.Context, request *GetB
 
 // Summary:
 //
-// Queries the detailed information about a bucket.
+// You can call GetBucketInfo to retrieve detailed Bucket information.
 //
 // @param request - GetBucketInfoRequest
 //
@@ -12255,7 +12375,7 @@ func (client *Client) GetBucketInfoWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries lifecycle rules.
+// Retrieves lifecycle rule information.
 //
 // @param request - GetBucketLifecycleRequest
 //
@@ -12303,7 +12423,11 @@ func (client *Client) GetBucketLifecycleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询集群内指定组件实例信息
+// Queries the details of a specified add-on in a cluster, including the version, parameter settings, and status of the add-on instance.
+//
+// Description:
+//
+// It can be deleted only when the instance group information is empty.
 //
 // @param request - GetClusterAddonInstanceRequest
 //
@@ -12351,7 +12475,7 @@ func (client *Client) GetClusterAddonInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the storage usage in the previous billing cycle and the cumulative number of calls in this month.
+// Queries the storage usage of the previous billing cycle and the cumulative number of calls for the current month by bucket.
 //
 // @param request - GetOssStorageAndAccByBucketsRequest
 //
@@ -12435,7 +12559,7 @@ func (client *Client) GetOssUsageDataWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Call ImportImage to import your image file to the cloud server.
+// Imports image information.
 //
 // @param tmpReq - ImportImageRequest
 //
@@ -12537,9 +12661,9 @@ func (client *Client) ImportImageWithContext(ctx context.Context, tmpReq *Import
 //
 // Description:
 //
-//	  After the key pair is imported, ENS stores the public key. You must securely store the private key.
+// - After the key pair is imported, ENS stores the public key. You must securely store the private key.
 //
-//		- The key pair can be only in the ssh-rsa format.
+// - The key pair can be only in the ssh-rsa format.
 //
 // @param request - ImportKeyPairRequest
 //
@@ -12587,7 +12711,13 @@ func (client *Client) ImportKeyPairWithContext(ctx context.Context, request *Imp
 
 // Summary:
 //
-// 安装集群组件
+// To enhance the capabilities of Kubernetes, Edge Kubernetes (ECK) clusters support a variety of components, such as managed core components, applications, logging and monitoring, networking, storage, and security components. You can call the InstallClusterAddons operation to install components by specifying their names and versions.
+//
+// Description:
+//
+// - The call frequency for a single user is limited to 10 calls per second.
+//
+// - Cluster creation is an asynchronous operation. After the API call returns, the cluster requires 10 to 20 minutes to complete initialization. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - InstallClusterAddonsRequest
 //
@@ -12693,7 +12823,7 @@ func (client *Client) JoinPublicIpsToEpnInstanceWithContext(ctx context.Context,
 //
 // Description:
 //
-// Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+// Before you To add an instance to a security group, make sure that the instance is in the Stopped or Running state.
 //
 // @param request - JoinSecurityGroupRequest
 //
@@ -12745,11 +12875,11 @@ func (client *Client) JoinSecurityGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Performs networking.
+// Joins vSwitches to an Edge Private Network (EPN) instance for networking.
 //
 // Description:
 //
-// For the Internal Connection mode and the Intelligent Acceleration and Internal Connection mode, instances of the vSwitch take effect automatically. You do not need to manually add instances. For public connections such as intelligent acceleration, you need to call an operation to manually add the instances to Internet-facing instances.
+// For the internal network connection and internal network connection with intelligent acceleration modes, instances in the vSwitch take effect automatically and do not require manual addition. For the intelligent acceleration public public mode, you only need to call the API operation to add instances to the public public mode instance information.
 //
 // @param request - JoinVSwitchesToEpnInstanceRequest
 //
@@ -12853,7 +12983,7 @@ func (client *Client) LeaveSecurityGroupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the related information of AIC public keys. Paged query is supported.
+// Queries the list of association information for AIC public keys. Paging is supported.
 //
 // @param request - ListAICPublicKeyDeliveriesRequest
 //
@@ -12917,7 +13047,7 @@ func (client *Client) ListAICPublicKeyDeliveriesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Query the list of AIC public keys that meet the conditions. Paged query is supported.
+// Queries a list of AIC public key information that meets the specified conditions. Paging is supported.
 //
 // @param request - ListAICPublicKeysRequest
 //
@@ -13101,7 +13231,7 @@ func (client *Client) ListBucketsWithContext(ctx context.Context, request *ListB
 
 // Summary:
 //
-// # List of Installed Addon Instances in the Cluster
+// Retrieves a list of installed add-on instances in a specified cluster and queries related information about the add-on instances, such as the add-on version and status.
 //
 // @param request - ListClusterAddonInstancesRequest
 //
@@ -13213,7 +13343,7 @@ func (client *Client) ListObjectsWithContext(ctx context.Context, request *ListO
 
 // Summary:
 //
-// Queries tags that are added to Edge Node Service (ENS) instances.
+// Queries the tags bound to one or more Edge Node Service (ENS) resources. Currently, only instance resources are supported.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -13269,7 +13399,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
+// Manages the logon of AIC instances by associating or dissociating instances based on uploaded AIC public keys.
 //
 // @param request - ManageAICLoginRequest
 //
@@ -13325,7 +13455,7 @@ func (client *Client) ManageAICLoginWithContext(ctx context.Context, request *Ma
 
 // Summary:
 //
-// aic实例变配接口
+// Modifies the specifications of an Android in Container (AIC) instance.
 //
 // @param request - ModifyAICInstanceTypeRequest
 //
@@ -13389,7 +13519,11 @@ func (client *Client) ModifyAICInstanceTypeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改集群组件实例配置
+// Modifies the configuration of an installed cluster add-on instance. Modifying the configuration may affect your services. Evaluate the impact, perform this operation during off-peak hours, and back up your data in advance.
+//
+// Description:
+//
+// Modifies an installed add-on in an ECK cluster. The target cluster must be in the running state, and ComponentName must reference an installed add-on.
 //
 // @param tmpReq - ModifyClusterAddonRequest
 //
@@ -13447,7 +13581,13 @@ func (client *Client) ModifyClusterAddonWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 更新集群节点池
+// Modifies the node configurations in a cluster node pool, such as kubelet configurations and node rotation configurations. Modifying node configurations changes node configurations and restarts kubelet in batches, which may affect node operations and workload execution. Perform this operation during off-peak hours.
+//
+// Description:
+//
+// - Single-user call frequency: 10 calls per second.
+//
+// - Creating a cluster is an asynchronous operation. After the API call returns, wait 10 to 20 minutes for the cluster to finish initialization. During this process, call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - ModifyClusterNodePoolRequest
 //
@@ -13953,15 +14093,15 @@ func (client *Client) ModifyImageSharePermissionWithContext(ctx context.Context,
 
 // Summary:
 //
-// Changes the attributes of an instance, such as the name and the password.
+// Calls ModifyInstanceAttribute to modify instance attributes, including the instance password and name.
 //
 // Description:
 //
-//	  If an instance is in the Starting state, you cannot reset the password of the instance.
+// - You cannot reset the instance password when the instance status is Starting.
 //
-//		- When the instance is in the Running state, you cannot change the password of the instance.
+// - You cannot modify the instance password when the instance status is Running.
 //
-//		- After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+// - After resetting the password, restart the instance in the console or invoke the RebootInstance operation for the change to take effect. Restarting the instance from within the operating system does not take effect.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -14085,15 +14225,11 @@ func (client *Client) ModifyInstanceAutoRenewAttributeWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the boot configuration of a heterogeneous PC Farm bare metal instance.
+// Modifies the boot configuration of a heterogeneous instance (PCFarm bare metal instance).
 //
 // Description:
 //
-//	  If an instance is in the Starting state, you cannot reset the password of the instance.
-//
-//		- If the instance is in the Running state, you cannot change the password of the instance.
-//
-//		- After resetting the password, you must restart the instance in the ENS console or call the RebootInstance operation to apply the change. The restart operation within the instance does not apply the change.
+// Modifies the boot configuration of a heterogeneous instance (PCFarm bare metal instance, where InstanceTypeFamily is pc_bmi). If the current state of the instance does not support this operation, the API returns IncorrectInstanceStatus.
 //
 // @param request - ModifyInstanceBootConfigurationRequest
 //
@@ -14133,13 +14269,13 @@ func (client *Client) ModifyInstanceBootConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Changes the billing method of Edge Node Service (ENS) instances. You can switch between the pay-as-you-go and subscription billing methods for instances. You can also change the billing method for disks that you created with pay-as-you-go instances to subscription.
+// Invokes ModifyInstanceChargeType to convert the billing method of one or more Edge Node Service (ENS) instances. You can convert between instance-level pay-as-you-go and subscription instances. For instance-level pay-as-you-go instances, you can also convert pay-as-you-go cloud disks created with the instances to subscription cloud disks.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and pricing of ENS.
+// Before you call this operation, make sure that you fully understand the billing methods and pricing of Edge Node Service (ENS).
 //
-// The instances must be in the Running or Stopped state, and you have no overdue payments for them.
+// The target instance must be in the Running or Stopped state and must not have an overdue payment before you can change the billing method.
 //
 // @param tmpReq - ModifyInstanceChargeTypeRequest
 //
@@ -14223,11 +14359,11 @@ func (client *Client) ModifyInstanceChargeTypeWithContext(ctx context.Context, t
 //
 // The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
 //
-//   - Instance:
+// - Instance:
 //
 //   - Instances that are associated with SLB are not supported.
 //
-//   - Network:
+// - Network:
 //
 //   - Instances that are associated with EIPs are not supported.
 //
@@ -14293,9 +14429,9 @@ func (client *Client) ModifyInstanceNetworkAttributeWithContext(ctx context.Cont
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - ModifyLoadBalancerAttributeRequest
 //
@@ -14347,9 +14483,9 @@ func (client *Client) ModifyLoadBalancerAttributeWithContext(ctx context.Context
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - Rate limit: 100 requests per second.
 //
-//		- You can call this operation up to 5 times per second per user.
+// - up to 5 times per second per user.
 //
 // @param request - ModifyNetworkAttributeRequest
 //
@@ -14453,7 +14589,11 @@ func (client *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Con
 
 // Summary:
 //
-// Upgrades or downgrades the instance type of a subscription Edge Node Service (ENS) instance. The new instance type takes effect for the remaining lifecycle of the instance.
+// Calls ModifyPrepayInstanceSpec to upgrade or downgrade the instance type of a subscription ENS instance. The new instance type takes effect for the entire lifecycle of the instance.
+//
+// Description:
+//
+// Modifies the instance type of a subscription instance. Before calling this operation, stop the instance by calling StopInstance. After the specification change is complete, start the instance by calling StartInstance.
 //
 // @param request - ModifyPrepayInstanceSpecRequest
 //
@@ -14505,9 +14645,9 @@ func (client *Client) ModifyPrepayInstanceSpecWithContext(ctx context.Context, r
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - Rate limit: 100 requests per second.
 //
-//		- You can call this operation up to 5 times per second per user.
+// - up to 5 times per second per user.
 //
 // @param request - ModifySecurityGroupAttributeRequest
 //
@@ -14611,7 +14751,7 @@ func (client *Client) ModifySnapshotAttributeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies a specified SNAT entry.
+// Invoke the ModifySnatEntry API to modify an SNAT entry.
 //
 // @param request - ModifySnatEntryRequest
 //
@@ -14671,13 +14811,13 @@ func (client *Client) ModifySnatEntryWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Modifies information about a vSwitch.
+// Call ModifyVSwitchAttribute to modify network information.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - API call frequency: 100 calls per second.
 //
-//		- You can call this operation up to 5 times per second per user.
+// - Per-user call frequency: 5 calls per second.
 //
 // @param request - ModifyVSwitchAttributeRequest
 //
@@ -14694,6 +14834,14 @@ func (client *Client) ModifyVSwitchAttributeWithContext(ctx context.Context, req
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableIPv6) {
+		query["EnableIPv6"] = request.EnableIPv6
+	}
+
+	if !dara.IsNil(request.Ipv6CidrBlock) {
+		query["Ipv6CidrBlock"] = request.Ipv6CidrBlock
 	}
 
 	if !dara.IsNil(request.VSwitchId) {
@@ -14729,7 +14877,7 @@ func (client *Client) ModifyVSwitchAttributeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deploys the SDG that has been attached to instances on the corresponding Android in Container (AIC) instance.
+// Deploys an SDG that is already attached to an instance to the corresponding AIC.
 //
 // @param tmpReq - MountInstanceSDGRequest
 //
@@ -14783,7 +14931,7 @@ func (client *Client) MountInstanceSDGWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// Preloads a shared data group (SDG).
+// Preloads an SDG.
 //
 // @param tmpReq - PreloadRegionSDGRequest
 //
@@ -14853,7 +15001,7 @@ func (client *Client) PreloadRegionSDGWithContext(ctx context.Context, tmpReq *P
 
 // Summary:
 //
-// Prepares the upload and obtains the location of the bucket.
+// Prepares for an upload and retrieves information about the physical storage location.
 //
 // @param request - PrepareUploadRequest
 //
@@ -14901,7 +15049,7 @@ func (client *Client) PrepareUploadWithContext(ctx context.Context, request *Pre
 
 // Summary:
 //
-// Pushes the business or service data of an application to file servers.
+// Pre-pushes the business or service data of an application to a file server.
 //
 // @param request - PushApplicationDataRequest
 //
@@ -14957,7 +15105,7 @@ func (client *Client) PushApplicationDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an Edge Object Storage (EOS) bucket.
+// Create a bucket for collaborative storage.
 //
 // @param request - PutBucketRequest
 //
@@ -15069,13 +15217,13 @@ func (client *Client) PutBucketAclWithContext(ctx context.Context, request *PutB
 
 // Summary:
 //
-// Configures lifecycle rules for objects.
+// You can call the PutBucketLifecycle operation to set lifecycle rules for a bucket.
 //
 // Description:
 //
-//	  You can configure up to 1,000 rules.
+// - You can configure up to 1,000 rules.
 //
-//		- If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+// - If an object matches multiple rules, the rule with the earliest expiration time applies.
 //
 // @param request - PutBucketLifecycleRequest
 //
@@ -15237,7 +15385,7 @@ func (client *Client) RebootAICInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Reboots an Android in Container (AIC) server.
+// Restarts an AIC server.
 //
 // @param request - RebootARMServerInstanceRequest
 //
@@ -15281,9 +15429,9 @@ func (client *Client) RebootARMServerInstanceWithContext(ctx context.Context, re
 //
 // Description:
 //
-//	  Only instances that are in the Running state can be restarted.
+// - Only instances that are in the Running state can be restarted.
 //
-//		- If the operation is successful, the status of the instance becomes Starting.
+// - If the operation is successful, the status of the instance becomes Starting.
 //
 // @param request - RebootInstanceRequest
 //
@@ -15381,7 +15529,7 @@ func (client *Client) RebootInstancesWithContext(ctx context.Context, tmpReq *Re
 
 // Summary:
 //
-// Recovers an Android in Container (AIC) instance on the server.
+// Resumes an AIC on a card by calling RecoverAICInstance.
 //
 // @param request - RecoverAICInstanceRequest
 //
@@ -15531,7 +15679,7 @@ func (client *Client) ReinitInstancesWithContext(ctx context.Context, tmpReq *Re
 
 // Summary:
 //
-// Releases an Android in Container (AIC) instance from the server.
+// Releases an AIC on a card.
 //
 // @param request - ReleaseAICInstanceRequest
 //
@@ -15575,7 +15723,7 @@ func (client *Client) ReleaseAICInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Releases an ARM server.
+// Releases a cloud application server.
 //
 // @param request - ReleaseARMServerInstanceRequest
 //
@@ -15619,13 +15767,13 @@ func (client *Client) ReleaseARMServerInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Releases an instance. You can call this operation to release only Elastic IP Addresses (EIPs), Edge Load Balancer (ELB) instances, and cloud disk-based instances. We recommend that you call service-specific operations to release or unsubscribe from instances.
+// Releases an instance. to release only Elastic IP Addresses (EIPs), Edge Load Balancer (ELB) instances, and cloud disk-based instances. We recommend that you call service-specific operations to release or unsubscribe from instances.
 //
 // Description:
 //
-//	  You can call this operation up to 10,000 times per second per account.
+// - up to 10,000 times per second per account.
 //
-//		- The maximum number of times that each user can call this operation per second is 50.
+// - The maximum number of times that each user can call this operation per second is 50.
 //
 // @param request - ReleaseInstanceRequest
 //
@@ -15759,12 +15907,6 @@ func (client *Client) ReleasePrePaidInstanceWithContext(ctx context.Context, req
 //
 // Removes backend servers.
 //
-// Description:
-//
-//	  You can call this operation up to 100 times per second.
-//
-//		- You can call this operation up to 10 times per second per account.
-//
 // @param tmpReq - RemoveBackendServersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15817,7 +15959,7 @@ func (client *Client) RemoveBackendServersWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Removes a shared data group (SDG) that is attached to the compute instance.
+// Unmounts an SDG from compute instances.
 //
 // @param tmpReq - RemoveInstanceSDGRequest
 //
@@ -15915,7 +16057,7 @@ func (client *Client) RemovePublicIpsFromEpnInstanceWithContext(ctx context.Cont
 
 // Summary:
 //
-// Removes a deployed shared data group (SDG) and restore local storage.
+// Removes a deployed SDG and restores local storage.
 //
 // @param tmpReq - RemoveSDGRequest
 //
@@ -15961,7 +16103,7 @@ func (client *Client) RemoveSDGWithContext(ctx context.Context, tmpReq *RemoveSD
 
 // Summary:
 //
-// Removes all versions of SDG and restores the mount to the local disk.
+// Removes all versions of SDGs and restores local disk mounting.
 //
 // @param tmpReq - RemoveSDGsRequest
 //
@@ -16019,7 +16161,7 @@ func (client *Client) RemoveSDGsWithContext(ctx context.Context, tmpReq *RemoveS
 
 // Summary:
 //
-// Deletes the networking information. This operation is applicable only for instances that reside in the internal network.
+// Removes networking information from an Edge Private Network (EPN) instance. This operation applies only to internal networks.
 //
 // @param request - RemoveVSwitchesFromEpnInstanceRequest
 //
@@ -16067,7 +16209,11 @@ func (client *Client) RemoveVSwitchesFromEpnInstanceWithContext(ctx context.Cont
 
 // Summary:
 //
-// Renews a subscription Android in Container (AIC) instance.
+// Renews a subscription AIC instance.
+//
+// Description:
+//
+// Renews a subscription AIC server instance. The instance State must be success. You can call DescribeARMServerInstances to query the instance status. Instances in intermediate states such as creating cannot be renewed.
 //
 // @param request - RenewARMServerInstanceRequest
 //
@@ -16163,7 +16309,7 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 
 // Summary:
 //
-// Scales resources in an asynchronous manner and deploys or releases the container.
+// Calls the RescaleApplication operation to asynchronously scale resources in or out and complete container deployment or release operations.
 //
 // @param request - RescaleApplicationRequest
 //
@@ -16227,7 +16373,7 @@ func (client *Client) RescaleApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Scales out a bare metal device.
+// Rescales bare metal devices.
 //
 // @param request - RescaleDeviceServiceRequest
 //
@@ -16309,7 +16455,7 @@ func (client *Client) RescaleDeviceServiceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Resets an Android in Container (AIC) instance.
+// Resets an AIC instance.
 //
 // @param request - ResetAICInstanceRequest
 //
@@ -16355,13 +16501,13 @@ func (client *Client) ResetAICInstanceWithContext(ctx context.Context, request *
 //
 // When you call this operation, take note of the following items:
 //
-//   - The disk must be in the In Use (In_Use) or Unattached (Available) state.
+// - The disk must be in the In Use (In_Use) or Unattached (Available) state.
 //
-//   - The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
+// - The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
 //
-//   - The specified snapshot must be created from the disk specified by the DiskId parameter.
+// - The specified snapshot must be created from the disk specified by the DiskId parameter.
 //
-//   - If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
+// - If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
 //
 // @param request - ResetDiskRequest
 //
@@ -16457,15 +16603,15 @@ func (client *Client) ResizeDiskWithContext(ctx context.Context, request *Resize
 
 // Summary:
 //
-// Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+// Revokes an inbound rule of a security group to remove the inbound access permission settings.
 //
 // Description:
 //
-//	  In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+// - In security group API documentation, the traffic initiator is referred to as the source (Source), and the data transmission receiver is referred to as the destination (Dest).
 //
-//		- You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+// - Any one of the following sets of parameters can identify an inbound security group rule. Specifying only a single parameter cannot identify a security group rule.
 //
-//		- You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+// - Revoke permission settings for a specified IP address range: IpProtocol, PortRange, Policy, SourceCidrIp.
 //
 // @param request - RevokeSecurityGroupRequest
 //
@@ -16533,11 +16679,11 @@ func (client *Client) RevokeSecurityGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes an outbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+// Calls RevokeSecurityGroupEgress to delete an outbound security group rule and revoke outbound access permissions of the security group.
 //
 // Description:
 //
-// >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+// > In the API documentation for security groups, the end that initiates traffic is referred to as the source, and the end that receives data is referred to as the destination (Dest).
 //
 // @param request - RevokeSecurityGroupEgressRequest
 //
@@ -16605,7 +16751,7 @@ func (client *Client) RevokeSecurityGroupEgressWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Rolls back the container version of a specific application.
+// Rolls back the container version of edge resources under an application to a historical version.
 //
 // @param request - RollbackApplicationRequest
 //
@@ -16661,7 +16807,7 @@ func (client *Client) RollbackApplicationWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription ENS instance.
+// Creates pay-as-you-go or subscription ENS compute instances.
 //
 // @param tmpReq - RunInstancesRequest
 //
@@ -16694,6 +16840,10 @@ func (client *Client) RunInstancesWithContext(ctx context.Context, tmpReq *RunIn
 		query["Amount"] = request.Amount
 	}
 
+	if !dara.IsNil(request.AutoInstallCloudAssistant) {
+		query["AutoInstallCloudAssistant"] = request.AutoInstallCloudAssistant
+	}
+
 	if !dara.IsNil(request.AutoReleaseTime) {
 		query["AutoReleaseTime"] = request.AutoReleaseTime
 	}
@@ -16712,6 +16862,10 @@ func (client *Client) RunInstancesWithContext(ctx context.Context, tmpReq *RunIn
 
 	if !dara.IsNil(request.Carrier) {
 		query["Carrier"] = request.Carrier
+	}
+
+	if !dara.IsNil(request.CloudAssistantRegion) {
+		query["CloudAssistantRegion"] = request.CloudAssistantRegion
 	}
 
 	if !dara.IsNil(request.DataDiskShrink) {
@@ -16971,7 +17125,11 @@ func (client *Client) RunServiceScheduleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Saves the disk of a specific device as a shared data group (SDG).
+// Saves the cloud disk of a specified device as a Shared Data Group (SDG).
+//
+// Description:
+//
+// Saves a Shared Data Group (SDG). SDGs in the failed status cannot be saved. Before calling this operation, call DescribeSDGs to query the current status.
 //
 // @param request - SaveSDGRequest
 //
@@ -17011,7 +17169,13 @@ func (client *Client) SaveSDGWithContext(ctx context.Context, request *SaveSDGRe
 
 // Summary:
 //
-// 调整节点池节点数
+// Scales out a node pool to ensure that the number of nodes is sufficient to support your workloads. The Count parameter must be greater than the current number of nodes in the node pool. If the node pool contains nodes that failed to scale out, you must call the DeleteClusterNodes operation to delete the failed nodes before you scale out the node pool. A scale-out task typically takes 5 to 10 minutes. If the task takes more than 1 hour, the scale-out fails. In this case, contact technical support.
+//
+// Description:
+//
+// - Rate limit per user: 10 calls per second.
+//
+// - Scaling out a node pool is an asynchronous operation. After you call the operation, you must wait 5 to 10 minutes for the task to complete.
 //
 // @param tmpReq - ScaleClusterNodePoolRequest
 //
@@ -17069,13 +17233,7 @@ func (client *Client) ScaleClusterNodePoolWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Sets the weights of backend servers.
-//
-// Description:
-//
-//	  You can call this operation up to 100 times per second.
-//
-//		- You can call this operation up to 10 times per second per account.
+// Sets the weights of backend servers by calling SetBackendServers.
 //
 // @param tmpReq - SetBackendServersRequest
 //
@@ -17129,13 +17287,13 @@ func (client *Client) SetBackendServersWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Modifies the configurations of an HTTP listener.
+// Modifies the configuration of an HTTP listener.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call frequency: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user call frequency: 10 calls per second.
 //
 // @param request - SetLoadBalancerHTTPListenerAttributeRequest
 //
@@ -17243,13 +17401,13 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithContext(ctx contex
 
 // Summary:
 //
-// Modifies the configurations of an HTTPS listener.
+// Modifies an HTTPS listener.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -17361,9 +17519,9 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithContext(ctx conte
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerStatusRequest
 //
@@ -17411,13 +17569,13 @@ func (client *Client) SetLoadBalancerStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the configurations of a TCP listener.
+// Modifies the configuration of a TCP listener.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - API call rate limit: 100 calls per second.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - Per-user call rate limit: 10 calls per second.
 //
 // @param request - SetLoadBalancerTCPListenerAttributeRequest
 //
@@ -17521,13 +17679,13 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithContext(ctx context
 
 // Summary:
 //
-// Modifies the configurations of a UDP listener.
+// Call `SetLoadBalancerUDPListenerAttribute` to modify a UDP listener.
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second.
+// - API call rate limit: 100 requests/second.
 //
-//		- You can call this operation up to 10 times per second per account.
+// - Per-user rate limit: 10 requests/second.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -17619,7 +17777,7 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithContext(ctx context
 
 // Summary:
 //
-// Share the specified AIC image to other users.
+// Shares a specified AIC image with other users.
 //
 // @param tmpReq - ShareAICImageRequest
 //
@@ -17721,9 +17879,9 @@ func (client *Client) StartEpnInstanceWithContext(ctx context.Context, request *
 //
 // Description:
 //
-//	  You can call the operation only when the instance is in the Stopped state.
+// - You can call the operation only when the instance is in the Stopped state.
 //
-//		- If the operation is successful, the status of the instance becomes Starting.
+// - If the operation is successful, the status of the instance becomes Starting.
 //
 // @param request - StartInstanceRequest
 //
@@ -17821,9 +17979,9 @@ func (client *Client) StartInstancesWithContext(ctx context.Context, tmpReq *Sta
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - StartLoadBalancerListenerRequest
 //
@@ -17971,13 +18129,13 @@ func (client *Client) StopEpnInstanceWithContext(ctx context.Context, request *S
 //
 // Description:
 //
-//	  You can call this operation to stop instances that are only in the Running state.
+// - to stop instances that are only in the Running state.
 //
-//		- If the call is successful, the state of the instance becomes Stopping.
+// - If the call is successful, the state of the instance becomes Stopping.
 //
-//		- Once the instance is stopped, the state of the instance becomes Stopped.
+// - Once the instance is stopped, the state of the instance becomes Stopped.
 //
-//		- Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+// - Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
 //
 // @param request - StopInstanceRequest
 //
@@ -18079,9 +18237,9 @@ func (client *Client) StopInstancesWithContext(ctx context.Context, tmpReq *Stop
 //
 // Description:
 //
-//	  You can call this operation up to 100 times per second per account.
+// - up to 100 times per second per account.
 //
-//		- You can call this operation up to 10 times per second per user.
+// - up to 10 times per second per user.
 //
 // @param request - StopLoadBalancerListenerRequest
 //
@@ -18237,7 +18395,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Disassociates an elastic IP address (EIP) from an instance.
+// Disassociates an elastic IP address (EIP) from the cloud resource to which it is bound.
 //
 // @param request - UnAssociateEnsEipAddressRequest
 //
@@ -18285,7 +18443,11 @@ func (client *Client) UnAssociateEnsEipAddressWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 卸载集群组件
+// Uninstalls specified add-ons from a cluster.
+//
+// Description:
+//
+// Uninstalls add-ons from an ECK cluster. The target cluster must be in the running state. You can call DescribeClustersV1 to query the cluster state and wait until the cluster initialization is complete before you call this operation.
 //
 // @param tmpReq - UnInstallClusterAddonsRequest
 //
@@ -18435,7 +18597,7 @@ func (client *Client) UnassociateHaVipWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Disassociates a network access control list (ACL) from a network.
+// Invokes the UnassociateNetworkAcl operation to disassociate a network ACL from a network, which reverses the attach of the network ACL.
 //
 // @param request - UnassociateNetworkAclRequest
 //
@@ -18483,7 +18645,7 @@ func (client *Client) UnassociateNetworkAclWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes preloaded data.
+// Calls UnloadRegionSDG to delete preloaded data.
 //
 // @param tmpReq - UnloadRegionSDGRequest
 //
@@ -18599,7 +18761,7 @@ func (client *Client) UnmountInstanceSDGWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Removes tags from resources.
+// Removes user tags from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -18655,7 +18817,13 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// # Update cluster certificates
+// Updates the cluster certificate.
+//
+// Description:
+//
+// - Rate limit per user: 10 calls per second.
+//
+// - Updating the cluster certificate is an asynchronous operation. After you call the API operation, wait 5 to 10 minutes for the cluster certificate to be updated and the control components to restart. During this process, you can call the DescribeClustersV1 operation to query the update status of the cluster certificate. After the cluster certificate is updated, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param request - UpdateClusterCertificateRequest
 //
@@ -18859,7 +19027,13 @@ func (client *Client) UpgradeApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 升级集群实例组件
+// Call the UpgradeClusterAddons operation to upgrade cluster component instances.
+//
+// Description:
+//
+// - Each user can call this operation up to 10 times per second.
+//
+// - Creating a cluster is an asynchronous operation. After calling the operation, wait 10 to 20 minutes for the cluster to initialize. During this time, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - UpgradeClusterAddonsRequest
 //
@@ -18913,7 +19087,7 @@ func (client *Client) UpgradeClusterAddonsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Upload a new AIC public key.
+// Uploads a new AIC public key.
 //
 // @param request - UploadAICPublicKeyRequest
 //

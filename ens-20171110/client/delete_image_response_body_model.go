@@ -16,13 +16,13 @@ type iDeleteImageResponseBody interface {
 }
 
 type DeleteImageResponseBody struct {
-	// The returned service code. A value of 0 indicates that the operation was successful.
+	// The business code. The value 0 is returned for success.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

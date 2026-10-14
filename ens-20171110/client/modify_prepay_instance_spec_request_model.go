@@ -16,13 +16,13 @@ type iModifyPrepayInstanceSpecRequest interface {
 }
 
 type ModifyPrepayInstanceSpecRequest struct {
-	// The ID of the instance that you want to upgrade or downgrade.
+	// The instance ID of the instance for which you want to perform an Upgrade/Downgrade.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The updated configuration.
+	// The new instance type.
 	//
 	// example:
 	//

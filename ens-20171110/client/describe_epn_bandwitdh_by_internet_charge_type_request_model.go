@@ -24,9 +24,9 @@ type iDescribeEpnBandwitdhByInternetChargeTypeRequest interface {
 type DescribeEpnBandwitdhByInternetChargeTypeRequest struct {
 	// The end of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// - Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// 	- If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	// - If the value of the seconds place is not 00, the start time is automatically set to the next minute.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type DescribeEpnBandwitdhByInternetChargeTypeRequest struct {
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	// The Internet service provider (ISP). Valid values:
 	//
-	// 	- cmcc: China Mobile
+	// - cmcc: China Mobile
 	//
-	// 	- telecom: China Telecom
+	// - telecom: China Telecom
 	//
-	// 	- unicom: China Unicom
+	// - unicom: China Unicom
 	//
-	// 	- multiCarrier: multi-line ISP
+	// - multiCarrier: multi-line ISP
 	//
 	// example:
 	//
@@ -56,11 +56,11 @@ type DescribeEpnBandwitdhByInternetChargeTypeRequest struct {
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	// The networking mode. Valid values:
 	//
-	// 	- **SpeedUp**: intelligent acceleration network (Internet)
+	// - **SpeedUp**: intelligent acceleration network (Internet)
 	//
-	// 	- **Connection**: internal network
+	// - **Connection**: internal network
 	//
-	// 	- **SpeedUpAndConnection**: intelligent acceleration network and internal network
+	// - **SpeedUpAndConnection**: intelligent acceleration network and internal network
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type DescribeEpnBandwitdhByInternetChargeTypeRequest struct {
 	NetworkingModel *string `json:"NetworkingModel,omitempty" xml:"NetworkingModel,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// - Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// 	- If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	// - If the value of the seconds place is not 00, the start time is automatically set to the next minute.
 	//
 	// This parameter is required.
 	//

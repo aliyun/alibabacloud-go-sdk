@@ -40,33 +40,33 @@ type iDescribeARMServerInstancesRequest interface {
 }
 
 type DescribeARMServerInstancesRequest struct {
-	// The container specifications.
+	// The list of container specifications.
 	AICSpecs []*string `json:"AICSpecs,omitempty" xml:"AICSpecs,omitempty" type:"Repeated"`
-	// Spcifies whether the result contains the container information. Valid values:
+	// Specifies whether the query results include container information. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Included.
 	//
-	// 	- **false**
+	// - **false**: Not included.
 	//
 	// example:
 	//
 	// true
 	DescribeAICInstances *bool `json:"DescribeAICInstances,omitempty" xml:"DescribeAICInstances,omitempty"`
-	// The IDs of the Edge Node Service (ENS) nodes.
+	// The list of ENS edge zone IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	// The end time of the query. Format: "2006-01-02". By default, no time limit is applied.
 	//
 	// example:
 	//
 	// 2006-01-03
 	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	// The start time of the query. Format: "2006-01-02". By default, no time limit is applied.
 	//
 	// example:
 	//
 	// 2006-01-02
 	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	// The name of the server.
+	// The server name.
 	//
 	// example:
 	//
@@ -78,15 +78,15 @@ type DescribeARMServerInstancesRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The sorting order of the results to return. Valid values: ServerIdSort, ServerNameSort, ExpireTimeSort, CreationTimeSort, and EnsRegionIdSort.
+	// The sorting method for query results. You can sort results by one or more of the following fields: ServerIdSort (server ID), ServerNameSort (server name), ExpireTimeSort (expiration time), CreationTimeSort (creation time), and EnsRegionIdSort (edge zone ID).
 	//
-	// asc: ascending order. desc: descending order.
+	// Valid values: asc (ascending order) and desc (descending order).
 	//
 	// example:
 	//
-	// {"ServerIdSort":"desc","ServerNameSort":"desc","ExpireTimeSort":"asc","CreationTimeSort":"asc","EnsRegionIdSort":"asc"}
+	// {"ServerIdSort":"desc","ServerNameSort":"desc","ExpireTimeSort":"asc"}
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The page number. Pages start from page **1**.
+	// The page number of the query list. Minimum value: **1**.
 	//
 	// Default value: **1**.
 	//
@@ -94,7 +94,7 @@ type DescribeARMServerInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **100**.
+	// The number of entries per page for a paged query. Maximum value: **100**.
 	//
 	// Default value: **10**.
 	//
@@ -102,13 +102,14 @@ type DescribeARMServerInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the ARM servers.
+	// The list of server instance IDs.
 	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
-	// The server specifications.
+	// The list of server specifications.
 	ServerSpecs []*string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty" type:"Repeated"`
-	// The operation statuses.
-	States []*string                                `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
-	Tags   []*DescribeARMServerInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The list of operation states.
+	States []*string `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
+	// The list of tags.
+	Tags []*DescribeARMServerInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeARMServerInstancesRequest) String() string {
@@ -259,10 +260,14 @@ func (s *DescribeARMServerInstancesRequest) Validate() error {
 }
 
 type DescribeARMServerInstancesRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value-1

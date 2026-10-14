@@ -16,7 +16,7 @@ type iCreateNetworkResponseBody interface {
 }
 
 type CreateNetworkResponseBody struct {
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//

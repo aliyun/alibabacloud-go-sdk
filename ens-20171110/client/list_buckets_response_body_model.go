@@ -85,11 +85,11 @@ func (s *ListBucketsResponseBody) Validate() error {
 type ListBucketsResponseBodyBucketInfos struct {
 	// The access control list (ACL) of the bucket.
 	//
-	// 	- **public-read-write**
+	// - **public-read-write**
 	//
-	// 	- **public-read**
+	// - **public-read**
 	//
-	// 	- **private*	- (default)
+	// - **private*	- (default)
 	//
 	// example:
 	//

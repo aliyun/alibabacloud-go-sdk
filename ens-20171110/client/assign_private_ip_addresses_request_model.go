@@ -22,13 +22,13 @@ type AssignPrivateIpAddressesRequest struct {
 	//
 	// example:
 	//
-	// eni-uf6533jbifugr5fo2j1w
+	// eni-uf6533jbifugr5f*****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	// The ID of the vSwitch.
 	//
 	// example:
 	//
-	// vsw-5rllcjb3ol6duzjdnbm1ombn7
+	// vsw-5rllcjb3ol6duzjdnbm1o*****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 

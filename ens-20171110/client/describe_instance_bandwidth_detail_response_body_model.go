@@ -22,15 +22,15 @@ type iDescribeInstanceBandwidthDetailResponseBody interface {
 }
 
 type DescribeInstanceBandwidthDetailResponseBody struct {
-	// Details about the maximum public bandwidth.
+	// The collection of Internet bandwidth cap information.
 	Bandwidths []*DescribeInstanceBandwidthDetailResponseBodyBandwidths `json:"Bandwidths,omitempty" xml:"Bandwidths,omitempty" type:"Repeated"`
-	// The page number of the current page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeInstanceBandwidthDetailResponseBody struct {
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeInstanceBandwidthDetailResponseBodyBandwidths struct {
 	//
 	// 1972653484384661
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The bandwidth service time. The data granularity is 5 minutes.
+	// The bandwidth business time. The bandwidth calculation granularity is 5 minutes.
 	//
 	// example:
 	//
@@ -135,49 +135,53 @@ type DescribeInstanceBandwidthDetailResponseBodyBandwidths struct {
 	//
 	// cn-yichang-2
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The type of the bandwidth. Valid values: 1, which indicates public network bandwidth. 2, which indicates internal network bandwidth.
+	// The bandwidth type. Valid values:
+	//
+	// - 1: public network.
+	//
+	// - 2: internal network.
 	//
 	// example:
 	//
 	// 1
 	FlowType *int32 `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	// The plan ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-6ecpqvkicnchxccozrpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance, such as vm, eip, single_tenant, and nc.
+	// The instance type, such as vm, eip, single_tenant, or nc.
 	//
 	// example:
 	//
 	// vm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// null
+	// The IP address of the instance.
 	//
 	// example:
 	//
 	// 203.107.***
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The Internet service provider to which the IP address belongs.
+	// The Internet service provider (ISP) of the IP address.
 	//
 	// example:
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// null
+	// The inbound bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
 	// 43795230
 	RxBw *int64 `json:"RxBw,omitempty" xml:"RxBw,omitempty"`
-	// The type of the service, such as vm, eip, esk, and meta.
+	// The service type, such as vm, eip, esk, or meta.
 	//
 	// example:
 	//
 	// vm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// null
+	// The outbound bandwidth. Unit: bit/s.
 	//
 	// example:
 	//

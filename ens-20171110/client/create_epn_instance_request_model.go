@@ -38,13 +38,13 @@ type CreateEpnInstanceRequest struct {
 	EPNInstanceType *string `json:"EPNInstanceType,omitempty" xml:"EPNInstanceType,omitempty"`
 	// The billing method for network usage. Valid values:
 	//
-	// 	- **BandwidthByDay**: Pay by daily peak bandwidth.
+	// - **BandwidthByDay**: Pay by daily peak bandwidth.
 	//
-	// 	- **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
+	// - **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
 	//
-	// 	- **PayByBandwidth4thMonth**: Pay by monthly fourth peak bandwidth.
+	// - **PayByBandwidth4thMonth**: Pay by monthly fourth peak bandwidth.
 	//
-	// 	- **PayByBandwidth**: Pay by fixed bandwidth.
+	// - **PayByBandwidth**: Pay by fixed bandwidth.
 	//
 	// You can specify only one metering method for network usage and cannot overwrite the existing metering method.
 	//
@@ -64,11 +64,11 @@ type CreateEpnInstanceRequest struct {
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// The networking mode. Valid values:
 	//
-	// 	- **SpeedUp**: intelligent acceleration network (Internet)
+	// - **SpeedUp**: intelligent acceleration network (Internet)
 	//
-	// 	- **Connection**: internal network
+	// - **Connection**: internal network
 	//
-	// 	- **SpeedUpAndConnection**: intelligent acceleration network and internal network
+	// - **SpeedUpAndConnection**: intelligent acceleration network and internal network
 	//
 	// This parameter is required.
 	//

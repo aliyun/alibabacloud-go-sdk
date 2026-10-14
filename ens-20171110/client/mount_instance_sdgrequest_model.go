@@ -16,7 +16,7 @@ type iMountInstanceSDGRequest interface {
 }
 
 type MountInstanceSDGRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`

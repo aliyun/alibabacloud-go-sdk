@@ -16,13 +16,13 @@ type iPutBucketLifecycleResponseBody interface {
 }
 
 type PutBucketLifecycleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 62373E71-5521-4620-8AAB-133CCE49357A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//

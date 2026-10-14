@@ -28,45 +28,45 @@ type iDescribeServcieScheduleResponseBody interface {
 }
 
 type DescribeServcieScheduleResponseBody struct {
-	// The index number of the scheduled virtual device (pod).
+	// The index number of the scheduled target virtual device (container pod).
 	//
 	// example:
 	//
 	// 2
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The ID of the scheduled instance.
+	// The target instance ID for scheduling.
 	//
 	// example:
 	//
 	// i-5myukg7hnpbto7m024002****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the scheduled instance.
+	// The IP address of the scheduled target instance.
 	//
 	// example:
 	//
 	// 120.26.XX.XX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	// The start port of the scheduled instance.
+	// The start port of the scheduled target instance.
 	//
 	// example:
 	//
 	// 3306
 	InstancePort *int32 `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
-	// The summary information about the scheduled virtual device.
+	// The summary information of the scheduled virtual device pod.
 	PodAbstractInfo *DescribeServcieScheduleResponseBodyPodAbstractInfo `json:"PodAbstractInfo,omitempty" xml:"PodAbstractInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is repeated.
+	// Indicates whether the resource has been created.
 	//
 	// example:
 	//
 	// false
 	RequestRepeated *bool `json:"RequestRepeated,omitempty" xml:"RequestRepeated,omitempty"`
-	// The TCP port range of the scheduled instance or container. The value is in the ${from}-$-{to} format. Example: 80-88.
+	// The TCP service port range of the scheduled target virtual machine instance or container. Valid values are in the ${from}-${to} format, such as 80-88.
 	//
 	// example:
 	//
@@ -171,25 +171,25 @@ type DescribeServcieScheduleResponseBodyPodAbstractInfo struct {
 	// android
 	ContainerService  *bool                                                                `json:"ContainerService,omitempty" xml:"ContainerService,omitempty"`
 	ContainerStatuses *DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses `json:"ContainerStatuses,omitempty" xml:"ContainerStatuses,omitempty" type:"Struct"`
-	// The name of the pod.
+	// The pod name.
 	//
 	// example:
 	//
 	// gcs-prod-websocket-eip-telecom
 	Name *bool `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// default-aliyun
 	Namespace *bool `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The pod scope.
+	// The scope where the pod is located.
 	//
 	// example:
 	//
 	// FDN
 	ResourceScope *bool `json:"ResourceScope,omitempty" xml:"ResourceScope,omitempty"`
-	// The status of the pod.
+	// The pod status.
 	//
 	// example:
 	//

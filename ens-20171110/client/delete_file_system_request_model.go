@@ -16,7 +16,7 @@ type iDeleteFileSystemRequest interface {
 }
 
 type DeleteFileSystemRequest struct {
-	// The ID of the edge node.
+	// The edge zone ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteFileSystemRequest struct {
 	//
 	// cn-chengdu-telecom-4
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the file system that you want to delete.
+	// The ID of the file system to delete.
 	//
 	// This parameter is required.
 	//

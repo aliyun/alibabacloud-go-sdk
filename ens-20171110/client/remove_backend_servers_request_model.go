@@ -16,11 +16,11 @@ type iRemoveBackendServersRequest interface {
 }
 
 type RemoveBackendServersRequest struct {
-	// The list of backend servers that you want to remove. You can remove up to 20 backend servers at a time.
+	// The list of backend servers to remove. You can remove up to 20 backend servers per call.
 	//
 	// This parameter is required.
 	BackendServers []*RemoveBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	// The ID of the Edge Load Balancer (ELB) instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type RemoveBackendServersRequestBackendServers struct {
 	//
 	// example:
 	//
-	// 192.XXX.X.X
+	// 192.168.0.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The backend port that is used by the Edge Load Balancer (ELB) instance.
+	// The port used by the backend servers of the load balancing instance.
 	//
 	// example:
 	//
@@ -90,11 +90,11 @@ type RemoveBackendServersRequestBackendServers struct {
 	//
 	// i-5uf68ts0fqexe1a4n****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of backend server. Valid values:
+	// The backend server type. Valid values:
 	//
-	// 	- **ens**: an Edge Node Service (ENS) instance.
+	// - **ens**: ENS instance.
 	//
-	// 	- **eni**: an Elastic Network Interface (ENI).
+	// - **eni**: network interface controller (NIC).
 	//
 	// example:
 	//

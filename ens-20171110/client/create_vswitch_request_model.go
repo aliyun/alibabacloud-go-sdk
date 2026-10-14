@@ -15,6 +15,8 @@ type iCreateVSwitchRequest interface {
 	GetDescription() *string
 	SetEnsRegionId(v string) *CreateVSwitchRequest
 	GetEnsRegionId() *string
+	SetIpv6CidrBlock(v string) *CreateVSwitchRequest
+	GetIpv6CidrBlock() *string
 	SetNetworkId(v string) *CreateVSwitchRequest
 	GetNetworkId() *string
 	SetTag(v []*CreateVSwitchRequestTag) *CreateVSwitchRequest
@@ -24,13 +26,13 @@ type iCreateVSwitchRequest interface {
 }
 
 type CreateVSwitchRequest struct {
-	// The CIDR block of the vSwitch. Take note of the following limits:
+	// The CIDR block of the VSwitch. The following requirements apply:
 	//
-	// 	- The subnet mask must be 16 to 29 bits in length.
+	// - The prefix length must be an integer from 16 to 29.
 	//
-	// 	- The CIDR block of the vSwitch must fall within the CIDR block of the VPC to which the vSwitch belongs.
+	// - The CIDR block of the VSwitch must be a subset of the CIDR block of the VPC to which the VSwitch belongs.
 	//
-	// 	- The CIDR block of the vSwitch cannot be the same as the destination CIDR block in a route entry of the VPC. However, it can be a subset of the destination CIDR block.
+	// - The CIDR block of the VSwitch cannot be the same as the destination CIDR block of an existing route in the VPC, but it can be a subset of the destination CIDR block.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +40,15 @@ type CreateVSwitchRequest struct {
 	//
 	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The description of the vSwitch.
+	// The description of the VSwitch.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// The description must be 2 to 256 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// This is my vswitch.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the edge node.
+	// The ID of the ENS node.
 	//
 	// This parameter is required.
 	//
@@ -54,25 +56,29 @@ type CreateVSwitchRequest struct {
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the network to which the vSwitch that you want to create belongs.
+	// example:
+	//
+	// 2408:XXXX:0:a600::/110
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// The ID of the network to which the VSwitch belongs.
 	//
 	// example:
 	//
 	// n-257gqcdfvx6n****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The tags.
+	// The tags of the resource. You can specify up to 20 tags.
 	Tag []*CreateVSwitchRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The name of the vSwitch. The name must meet the following requirements:
+	// The name of the VSwitch. The following requirements apply:
 	//
-	// 	- The name must be 2 to 128 characters in length.
+	// - The name must be 2 to 128 characters in length.
 	//
-	// 	- The name must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// - The name must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
-	// Default value: null.
+	// Default value: an empty string.
 	//
 	// example:
 	//
-	// test
+	// Test vSwitch
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -94,6 +100,10 @@ func (s *CreateVSwitchRequest) GetDescription() *string {
 
 func (s *CreateVSwitchRequest) GetEnsRegionId() *string {
 	return s.EnsRegionId
+}
+
+func (s *CreateVSwitchRequest) GetIpv6CidrBlock() *string {
+	return s.Ipv6CidrBlock
 }
 
 func (s *CreateVSwitchRequest) GetNetworkId() *string {
@@ -120,6 +130,11 @@ func (s *CreateVSwitchRequest) SetDescription(v string) *CreateVSwitchRequest {
 
 func (s *CreateVSwitchRequest) SetEnsRegionId(v string) *CreateVSwitchRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateVSwitchRequest) SetIpv6CidrBlock(v string) *CreateVSwitchRequest {
+	s.Ipv6CidrBlock = &v
 	return s
 }
 
@@ -152,19 +167,19 @@ func (s *CreateVSwitchRequest) Validate() error {
 }
 
 type CreateVSwitchRequestTag struct {
-	// The key of the tag that are to add to the instance. Valid values of N: **1*	- to **20**.
+	// The key of the tag.
 	//
-	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// - The tag key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
-	// 	- The key must be up to 64 characters in length.
+	// - The tag key can be up to 64 characters long.
 	//
-	// 	- The tag key cannot be an empty string.
+	// - The tag key cannot be an empty string.
 	//
 	// example:
 	//
 	// team
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+	// The value of the tag. It can be up to 128 characters long, can be an empty string, and cannot start with `acs:` or contain `http://` or `https://`.
 	//
 	// example:
 	//

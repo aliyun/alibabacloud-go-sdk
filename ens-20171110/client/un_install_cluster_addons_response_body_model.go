@@ -16,6 +16,8 @@ type iUnInstallClusterAddonsResponseBody interface {
 }
 
 type UnInstallClusterAddonsResponseBody struct {
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx

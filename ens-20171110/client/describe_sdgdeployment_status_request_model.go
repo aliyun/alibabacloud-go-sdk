@@ -33,23 +33,24 @@ type DescribeSDGDeploymentStatusRequest struct {
 	// example:
 	//
 	// shared
-	DeploymentType *string   `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
-	DiskIds        []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// IDs of Android in Container (AIC) instances.
+	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	// The list of disk IDs.
+	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
+	// The list of AIC instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the nodes.
+	// The list of region IDs.
 	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
 	// The ID of the SDG.
 	//

@@ -32,9 +32,9 @@ type iDescribeEnsRouteTablesRequest interface {
 type DescribeEnsRouteTablesRequest struct {
 	// The type of the resource with which the route table is associated. Valid values:
 	//
-	// 	- **VSwitch**
+	// - **VSwitch**
 	//
-	// 	- **Gateway**
+	// - **Gateway**
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeEnsRouteTablesRequest struct {
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
 	// The SNAT type.
 	//
-	// 	- FullCone: full cone NAT.
+	// - FullCone: full cone NAT.
 	//
 	// example:
 	//

@@ -20,14 +20,14 @@ type iDescribeAvailableResourceResponseBody interface {
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	// The returned service code. 0 indicates that the request was successful.
+	// The business return code. The value 0 indicates success.
 	//
 	// example:
 	//
 	// 0
 	Code   *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Images *DescribeAvailableResourceResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	// The ID of the request. This is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	// The common parameter. Each request ID is unique and active for troubleshooting.
 	//
 	// example:
 	//

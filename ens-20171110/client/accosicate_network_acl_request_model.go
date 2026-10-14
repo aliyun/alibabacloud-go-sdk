@@ -24,7 +24,7 @@ type AccosicateNetworkAclRequest struct {
 	//
 	// nacl-a2do9e413e0sp****
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// The type of resource with which you want to associate the network ACL.
+	// The information about the associated resources.
 	//
 	// This parameter is required.
 	Resource []*AccosicateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
@@ -78,9 +78,11 @@ type AccosicateNetworkAclRequestResource struct {
 	//
 	// n-5****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the associated resource. Set the value to **Network**.
+	// The type of the associated resource. Valid values:
 	//
-	// Valid values of **N**: 0 to 29. You can associate a network ACL with at most 30 resources.
+	// - **Network**: network.
+	//
+	// **N*	- ranges from 0 to 29. You can associate up to 30 resources.
 	//
 	// This parameter is required.
 	//

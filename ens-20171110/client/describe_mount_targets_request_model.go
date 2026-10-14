@@ -22,7 +22,7 @@ type iDescribeMountTargetsRequest interface {
 }
 
 type DescribeMountTargetsRequest struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeMountTargetsRequest struct {
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,19 @@ type DescribeMountTargetsRequest struct {
 	//
 	// c50f8*****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The name of the mount target.
+	// The mount target name.
 	//
 	// example:
 	//
 	// TestMountPath
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Maximum value: 100. Default value: 10.
+	// The number of rows per page, with a maximum value of 100. Default value: 10.
 	//
 	// example:
 	//

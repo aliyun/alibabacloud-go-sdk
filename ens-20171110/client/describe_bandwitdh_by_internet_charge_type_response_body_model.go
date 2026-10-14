@@ -28,13 +28,13 @@ type DescribeBandwitdhByInternetChargeTypeResponseBody struct {
 	BandwidthValue *int64 `json:"BandwidthValue,omitempty" xml:"BandwidthValue,omitempty"`
 	// The metering method. Valid values:
 	//
-	// 	- BandwidthByDay: Pay by daily peak bandwidth
+	// - BandwidthByDay: Pay by daily peak bandwidth
 	//
-	// 	- 95BandwidthByMonth: Pay by monthly 95th percentile bandwidth
+	// - 95BandwidthByMonth: Pay by monthly 95th percentile bandwidth
 	//
-	// 	- PayByBandwidth4thMonth: Pay by monthly fourth peak bandwidth
+	// - PayByBandwidth4thMonth: Pay by monthly fourth peak bandwidth
 	//
-	// 	- PayByBandwidth: Pay by fixed bandwidth
+	// - PayByBandwidth: Pay by fixed bandwidth
 	//
 	// You can specify only one metering method for network usage and cannot overwrite the existing metering method.
 	//

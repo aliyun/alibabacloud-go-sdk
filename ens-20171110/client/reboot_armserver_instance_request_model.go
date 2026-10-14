@@ -14,7 +14,7 @@ type iRebootARMServerInstanceRequest interface {
 }
 
 type RebootARMServerInstanceRequest struct {
-	// The ID of the server.
+	// The server instance ID.
 	//
 	// example:
 	//

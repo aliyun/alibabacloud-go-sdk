@@ -20,25 +20,27 @@ type iDescribeClusterNodesRequest interface {
 }
 
 type DescribeClusterNodesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// This parameter is required.
+	// The node pool ID.
 	//
 	// example:
 	//
 	// np751e9d5464cf4ef081087137f33e4528
 	NodepoolId *string `json:"NodepoolId,omitempty" xml:"NodepoolId,omitempty"`
-	// This parameter is required.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// This parameter is required.
+	// The number of entries per page.
 	//
 	// example:
 	//

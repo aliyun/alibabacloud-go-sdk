@@ -18,7 +18,7 @@ type iCreateSnapshotResponseBody interface {
 }
 
 type CreateSnapshotResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateSnapshotResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IDs of the snapshots.
+	// The snapshot ID.
 	//
 	// example:
 	//

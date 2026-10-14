@@ -16,13 +16,13 @@ type iCreateSecurityGroupResponseBody interface {
 }
 
 type CreateSecurityGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the security group.
+	// The ID of the newly created security group.
 	//
 	// example:
 	//

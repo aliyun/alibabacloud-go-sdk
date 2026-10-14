@@ -14,7 +14,7 @@ type iRemoveSDGShrinkRequest interface {
 }
 
 type RemoveSDGShrinkRequest struct {
-	// IDs of Android in Container (AIC) instances.
+	// The list of AIC instance IDs.
 	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`

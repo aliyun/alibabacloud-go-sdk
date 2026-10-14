@@ -22,7 +22,7 @@ type DescribeSDGsResponseBody struct {
 	//
 	// 3703C4AC-9396-458C-8F25-1D701334D309
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the SDGs.
+	// The list of SDG information.
 	SDGs []*DescribeSDGsResponseBodySDGs `json:"SDGs,omitempty" xml:"SDGs,omitempty" type:"Repeated"`
 }
 
@@ -66,21 +66,33 @@ func (s *DescribeSDGsResponseBody) Validate() error {
 }
 
 type DescribeSDGsResponseBodySDGs struct {
-	// The IDs of available edge nodes.
+	// The list of available edge zones.
 	AvaliableRegionIds []*DescribeSDGsResponseBodySDGsAvaliableRegionIds `json:"AvaliableRegionIds,omitempty" xml:"AvaliableRegionIds,omitempty" type:"Repeated"`
-	BillingCycle       *string                                           `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing cycle of the shared disk.
+	//
+	// example:
+	//
+	// Hour
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing type.
+	//
 	// example:
 	//
 	// Open
-	BillingType      *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	// The disk type of the source disk used to create the SDG.
+	//
+	// example:
+	//
+	// standard
 	CreationDiskType *string `json:"CreationDiskType,omitempty" xml:"CreationDiskType,omitempty"`
-	// The ID of the instance on which the SDG is created.
+	// The instance ID of the instance used to create the SDG.
 	//
 	// example:
 	//
 	// aic-5x20dyeos****
 	CreationInstanceId *string `json:"CreationInstanceId,omitempty" xml:"CreationInstanceId,omitempty"`
-	// The ID of the node on which the SDG is created.
+	// The edge zone ID where the SDG was created.
 	//
 	// example:
 	//
@@ -92,25 +104,27 @@ type DescribeSDGsResponseBodySDGs struct {
 	//
 	// 2023-02-27 15:07:21
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The deployment information.
+	// The list of deployment status information.
 	DeployedInstanceIds []*DescribeSDGsResponseBodySDGsDeployedInstanceIds `json:"DeployedInstanceIds,omitempty" xml:"DeployedInstanceIds,omitempty" type:"Repeated"`
 	// The description of the SDG.
 	//
 	// example:
 	//
-	// Testing SDGs
+	// Test SDG
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the source SDG from which you want to create an SDG. The value of this parameter is the value of the **FromSDGId*	- parameter that you need to specify when you call the [CreateSDG](https://help.aliyun.com/document_detail/608128.html) operation.
+	// The ID of the source SDG used for incremental creation. This is the **FromSDGId*	- parameter passed when calling [CreateSDG](https://help.aliyun.com/document_detail/608128.html).
 	//
 	// example:
 	//
 	// sdg-xxxxx
 	ParentSDGId *string `json:"ParentSDGId,omitempty" xml:"ParentSDGId,omitempty"`
+	// The sharing ratio of the SDG.
+	//
 	// example:
 	//
 	// 100
 	PerformanceLevel *int64 `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The ID of the SDG.
+	// The SDG ID.
 	//
 	// example:
 	//
@@ -122,15 +136,15 @@ type DescribeSDGsResponseBodySDGs struct {
 	//
 	// 20
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The status of the SDG creation. Valid values:
+	// The creation status of the SDG. Valid values:
 	//
-	// 	- **sdg_making**
+	// - **sdg_making**: Being created.
 	//
-	// 	- **sdg_saving**
+	// - **sdg_saving**: Being saved.
 	//
-	// 	- **failed**
+	// - **failed**: Creation failed.
 	//
-	// 	- **success**
+	// - **success**: Creation succeeded.
 	//
 	// example:
 	//
@@ -310,35 +324,35 @@ func (s *DescribeSDGsResponseBodySDGs) Validate() error {
 }
 
 type DescribeSDGsResponseBodySDGsAvaliableRegionIds struct {
-	// The time when the SDG was created on the node.
+	// The creation time of the SDG in the edge zone.
 	//
 	// example:
 	//
 	// 2023-02-27 15:13:26
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the edge node.
+	// The edge zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-26
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the snapshot.
+	// The snapshot ID.
 	//
 	// example:
 	//
 	// mock-clone_snapshot_id
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The status of the SDG on the node. Valid values:
+	// The status of the SDG in the edge zone. Valid values:
 	//
-	// 	- **sdg_making**
+	// - **sdg_making**: Being created.
 	//
-	// 	- **sdg_saving**
+	// - **sdg_saving**: Being saved.
 	//
-	// 	- **sdg_copying**
+	// - **sdg_copying**: Being synchronized across edge zones.
 	//
-	// 	- **failed**
+	// - **failed**: Creation failed.
 	//
-	// 	- **success**
+	// - **success**: Creation succeeded.
 	//
 	// example:
 	//
@@ -401,17 +415,17 @@ type DescribeSDGsResponseBodySDGsDeployedInstanceIds struct {
 	//
 	// 2023-02-27 16:48:43
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The deployment type of the SDG. Valid values:
+	// The SDG deployment type. Valid values:
 	//
-	// 	- common: common deployment.
+	// - common: standard deployment
 	//
-	// 	- overlay: read/write splitting deployment.
+	// - overlay: read/write splitting deployment
 	//
 	// example:
 	//
 	// overlay
 	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
-	// The ID of the instance.
+	// The AIC instance ID.
 	//
 	// example:
 	//
@@ -419,11 +433,11 @@ type DescribeSDGsResponseBodySDGsDeployedInstanceIds struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The deployment status. Valid values:
 	//
-	// 	- **sdg_deploying**
+	// - **sdg_deploying**: Being deployed.
 	//
-	// 	- **failed**
+	// - **failed**: Deployment failed.
 	//
-	// 	- **success**
+	// - **success**: Deployment succeeded.
 	//
 	// example:
 	//

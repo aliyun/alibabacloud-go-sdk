@@ -20,21 +20,21 @@ type iDescribeDataDownloadURLResponseBody interface {
 }
 
 type DescribeDataDownloadURLResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The download URLs of data files.
+	// The list of download URLs for data files.
 	Data *DescribeDataDownloadURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. Success is returned for a successful request.
+	// The response message. A value of success indicates that the request was successful.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ func (s *DescribeDataDownloadURLResponseBody) Validate() error {
 }
 
 type DescribeDataDownloadURLResponseBodyData struct {
-	// The time when the data file expires. The time is displayed in UTC.
+	// The expiration time of the download URL in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T03:36:27Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The file servers.
+	// The list of file servers.
 	ServerList []*DescribeDataDownloadURLResponseBodyDataServerList `json:"ServerList,omitempty" xml:"ServerList,omitempty" type:"Repeated"`
-	// The download URL of the data file.
+	// The download URL of the file.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type DescribeDataDownloadURLResponseBodyDataServerList struct {
 	//
 	// 1.1.1.1:8080
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	// The ID of the ENS edge node.
 	//
 	// example:
 	//

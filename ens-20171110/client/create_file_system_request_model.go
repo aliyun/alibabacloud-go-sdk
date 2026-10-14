@@ -14,7 +14,7 @@ type iCreateFileSystemRequest interface {
 }
 
 type CreateFileSystemRequest struct {
-	// The information about the orders.
+	// The list of orders. Each element in the list contains the details of an order.
 	//
 	// This parameter is required.
 	OrderDetails []*CreateFileSystemRequestOrderDetails `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty" type:"Repeated"`
@@ -51,11 +51,11 @@ func (s *CreateFileSystemRequest) Validate() error {
 }
 
 type CreateFileSystemRequestOrderDetails struct {
-	// The billing method of the NAS file system. Valid values:
+	// The billable methods of NAS. Valid values:
 	//
-	// 	- PrePaid: subscription. This billing method is not supported.
+	// - PrePaid: subscription (currently not supported).
 	//
-	// 	- PostPaid: pay-as-you-go.
+	// - PostPaid: pay-as-you-go billing method.
 	//
 	// This parameter is required.
 	//
@@ -63,7 +63,7 @@ type CreateFileSystemRequestOrderDetails struct {
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the edge node.
+	// The edge zone ID.
 	//
 	// This parameter is required.
 	//
@@ -71,7 +71,9 @@ type CreateFileSystemRequestOrderDetails struct {
 	//
 	// cn-suzhou-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The name of the file system. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The file system name.
+	//
+	// The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -79,7 +81,7 @@ type CreateFileSystemRequestOrderDetails struct {
 	//
 	// nasFile
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	// The name of the mount target. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The mount target name. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -95,7 +97,7 @@ type CreateFileSystemRequestOrderDetails struct {
 	//
 	// vpc-xxx
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The type of the order. Set the value to BUY.
+	// The order type. Valid values: BUY.
 	//
 	// This parameter is required.
 	//
@@ -103,7 +105,7 @@ type CreateFileSystemRequestOrderDetails struct {
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The storage protocol. Set the value to nfs.
+	// The storage protocol. Valid values: nfs.
 	//
 	// This parameter is required.
 	//
@@ -113,9 +115,9 @@ type CreateFileSystemRequestOrderDetails struct {
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The storage type. Valid values:
 	//
-	// 	- Capacity.
+	// - capacity: storage-optimized.
 	//
-	// 	- Performance.
+	// - Performance: ultra-fast.
 	//
 	// This parameter is required.
 	//

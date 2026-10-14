@@ -23,25 +23,25 @@ type iDescribeNetworksResponseBody interface {
 
 type DescribeNetworksResponseBody struct {
 	Networks *DescribeNetworksResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// Current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// Number of entries per page in the current query.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// Total number of entries.
 	//
 	// example:
 	//
@@ -151,6 +151,7 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	Description         *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnsRegionId         *string                                                         `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	GatewayRouteTableId *string                                                         `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
+	Ipv6CidrBlocks      *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks      `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
 	NetworkAclId        *string                                                         `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
 	NetworkId           *string                                                         `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkName         *string                                                         `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
@@ -189,6 +190,10 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) GetEnsRegionId() *string {
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) GetGatewayRouteTableId() *string {
 	return s.GatewayRouteTableId
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetwork) GetIpv6CidrBlocks() *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks {
+	return s.Ipv6CidrBlocks
 }
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) GetNetworkAclId() *string {
@@ -256,6 +261,11 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetGatewayRouteTableId(v s
 	return s
 }
 
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetIpv6CidrBlocks(v *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.Ipv6CidrBlocks = v
+	return s
+}
+
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetNetworkAclId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.NetworkAclId = &v
 	return s
@@ -307,6 +317,11 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetVSwitchIds(v *DescribeN
 }
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) Validate() error {
+	if s.Ipv6CidrBlocks != nil {
+		if err := s.Ipv6CidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RouteTableIds != nil {
 		if err := s.RouteTableIds.Validate(); err != nil {
 			return err
@@ -328,6 +343,94 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks struct {
+	Ipv6CidrBlock []*DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks) GetIpv6CidrBlock() []*DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock {
+	return s.Ipv6CidrBlock
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks) SetIpv6CidrBlock(v []*DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks {
+	s.Ipv6CidrBlock = v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks) Validate() error {
+	if s.Ipv6CidrBlock != nil {
+		for _, item := range s.Ipv6CidrBlock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock struct {
+	// example:
+	//
+	// 2408:XXXX:0:a600::/110
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// example:
+	//
+	// telecom
+	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	// example:
+	//
+	// system
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) GetIpv6CidrBlock() *string {
+	return s.Ipv6CidrBlock
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) GetIpv6Isp() *string {
+	return s.Ipv6Isp
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) SetIpv6CidrBlock(v string) *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) SetIpv6Isp(v string) *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock {
+	s.Ipv6Isp = &v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) SetType(v string) *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeNetworksResponseBodyNetworksNetworkRouteTableIds struct {

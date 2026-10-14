@@ -28,7 +28,7 @@ type iDescribeDataPushResultRequest interface {
 }
 
 type DescribeDataPushResultRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -36,41 +36,43 @@ type DescribeDataPushResultRequest struct {
 	//
 	// e76f8985-7965-41fc-925b-9648bb6bf650
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the data file. Separate multiple names with commas (,). By default, all data files are queried.
+	// The names of the data files. This is a filter condition for the query. Multiple values are supported and separated by commas (,). By default, all data files are queried.
 	//
 	// example:
 	//
 	// 159828628258496/mirror_file/game-2553efe7-7bf8-40fb-a6e7-09c9c00a992a.tar
 	DataNames *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
-	// The version number of the data file. Separate multiple numbers with commas (,). By default, all versions of data files are queried.
+	// The version numbers of the data files. This is a filter condition for the query. Multiple values are supported and separated by commas (,). By default, all versions are queried.
 	//
 	// example:
 	//
 	// 90396
 	DataVersions *string `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
-	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	// The end time of the query. Format: YYYY-MM-DD. By default, there is no time limit.
 	//
 	// example:
 	//
 	// 2022-02-20
 	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	// The start time of the query. Format: YYYY-MM-DD. By default, there is no time limit.
 	//
 	// example:
 	//
 	// 2022-02-15
 	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The page number. Pages start from 1. This parameter is not required when you export all information.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. This parameter is optional if you want to return the push status of all data files.
+	// The number of entries per page set in Settings for paging during a paged query. This parameter is not required when you export all entries.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of ENS nodes. Separate multiple IDs with commas (,). By default, all ENS nodes are queried.
+	// The IDs of the edge nodes. This is a filter condition for the query. Multiple values are supported and separated by commas (,). By default, all edge nodes are queried.
 	//
 	// example:
 	//

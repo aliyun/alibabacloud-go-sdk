@@ -119,11 +119,11 @@ func (s *DescribeSnatTableEntriesResponseBody) Validate() error {
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
 	// Specifies whether to enable EIP affinity. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: no
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
-	// **
+	// \\*\\*
 	//
 	// **Description*	- After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
 	//
@@ -185,13 +185,13 @@ type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
 	StandbySnatIp *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
 	// The status of the secondary EIP. Valid values:
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Stopping
+	// - Stopping
 	//
-	// 	- Stopped
+	// - Stopped
 	//
-	// 	- Starting
+	// - Starting
 	//
 	// example:
 	//
@@ -199,11 +199,11 @@ type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
 	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
 	// The status of the SNAT entry. Valid values:
 	//
-	// 	- Pending: The SNAT entry is being created or modified.
+	// - Pending: The SNAT entry is being created or modified.
 	//
-	// 	- Available: The SNAT entry is available.
+	// - Available: The SNAT entry is available.
 	//
-	// 	- Deleting: The SNAT entry is being deleted.
+	// - Deleting: The SNAT entry is being deleted.
 	//
 	// example:
 	//

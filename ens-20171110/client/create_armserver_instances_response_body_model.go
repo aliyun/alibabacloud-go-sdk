@@ -18,15 +18,15 @@ type iCreateARMServerInstancesResponseBody interface {
 }
 
 type CreateARMServerInstancesResponseBody struct {
-	// The IDs of instances.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 212630314490***
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

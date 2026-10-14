@@ -18,7 +18,7 @@ type iCreateNetworkAclRequest interface {
 type CreateNetworkAclRequest struct {
 	// The description of the network ACL.
 	//
-	// The description must be 1 to 256 characters in length and cannot start with http:// or https://.
+	// The description must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type CreateNetworkAclRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Enter a name for the network ACL.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with http:// or https://.
+	// The name must be 1 to 128 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeServerLoadBalancerListenMonitorRequest interface {
 }
 
 type DescribeServerLoadBalancerListenMonitorRequest struct {
-	// The end of the time range to query. The maximum range between StartTime and EndTime is 24 hours.
+	// The end time. The maximum interval between StartTime and EndTime cannot exceed 24 hours.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeServerLoadBalancerListenMonitorRequest struct {
 	//
 	// 2024-05-16 16:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ELB instance.
+	// The load balancing instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeServerLoadBalancerListenMonitorRequest struct {
 	//
 	// lb-5rcvo1n1t3hykfhhjwjgqp****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The request protocol, such as http, https, or tcp.
+	// The request protocol, such as http, https, and tcp.
 	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time in the format of yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeServerLoadBalancerListenMonitorRequest struct {
 	//
 	// 2024-05-16 15:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The virtual IP address (VIP) port, such as 80, 8080, or 443.
+	// The VIP port, such as 80, 8080, and 443.
 	//
 	// example:
 	//

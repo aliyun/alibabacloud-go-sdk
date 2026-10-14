@@ -44,11 +44,11 @@ type DescribeEpnInstanceAttributeResponseBody struct {
 	Instances []*DescribeEpnInstanceAttributeResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The networking mode. Valid values:
 	//
-	// 	- SpeedUp: intelligent acceleration network (Internet)
+	// - SpeedUp: intelligent acceleration network (Internet)
 	//
-	// 	- Connection: internal network
+	// - Connection: internal network
 	//
-	// 	- SpeedUpAndConnection: intelligent acceleration network and internal network
+	// - SpeedUpAndConnection: intelligent acceleration network and internal network
 	//
 	// example:
 	//
@@ -232,11 +232,11 @@ type DescribeEpnInstanceAttributeResponseBodyInstances struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The ISP. Valid values:
 	//
-	// 	- cmcc: China Mobile
+	// - cmcc: China Mobile
 	//
-	// 	- unicom: China Unicom
+	// - unicom: China Unicom
 	//
-	// 	- telecom: China Telecom
+	// - telecom: China Telecom
 	//
 	// example:
 	//
@@ -256,11 +256,11 @@ type DescribeEpnInstanceAttributeResponseBodyInstances struct {
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Stopped
+	// - Stopped
 	//
-	// 	- Expired
+	// - Expired
 	//
 	// example:
 	//

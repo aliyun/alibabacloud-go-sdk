@@ -16,13 +16,13 @@ type iDescribeServerLoadBalancerMonitorResponseBody interface {
 }
 
 type DescribeServerLoadBalancerMonitorResponseBody struct {
-	// The ID of the request.
+	// Id of the request。
 	//
 	// example:
 	//
 	// AAE90880-4970-4D81-A534-A6C0F3631F74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the monitoring data.
+	// The array of objects.
 	ServerLoadBalancerMonitorData []*DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData `json:"ServerLoadBalancerMonitorData,omitempty" xml:"ServerLoadBalancerMonitorData,omitempty" type:"Repeated"`
 }
 
@@ -72,61 +72,61 @@ type DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData 
 	//
 	// 30
 	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The business time of the log. Logs are collected every minute.
+	// The log business time. The log collection granularity is 1 minute.
 	//
 	// example:
 	//
 	// 2024-09-15 16:00:00
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
-	// The ID of the node to which the ELB instance belongs.
+	// The ID of the edge zone.
 	//
 	// example:
 	//
 	// cn-wuxi-10
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the ELB instance.
+	// The load balancing instance ID.
 	//
 	// example:
 	//
 	// lb-5sc1s9zrui8lpb8u7cl4f****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the ELB instance.
+	// The load balancing instance name.
 	//
 	// example:
 	//
 	// esk-edge-service-lb-a34****
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The specification of the ELB instance.
+	// The load balancing instance specification.
 	//
 	// example:
 	//
 	// elb.s2.medium
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	// The number of requests with HTTP 2xx status code returned.
+	// The number of requests with 2xx HTTP status codes.
 	//
 	// example:
 	//
 	// 25
 	Reqs2xx *int32 `json:"Reqs2xx,omitempty" xml:"Reqs2xx,omitempty"`
-	// The number of requests with HTTP 3xx status code returned.
+	// The number of requests with 3xx HTTP status codes.
 	//
 	// example:
 	//
 	// 0
 	Reqs3xx *int32 `json:"Reqs3xx,omitempty" xml:"Reqs3xx,omitempty"`
-	// The number of requests with HTTP 4xx status code returned.
+	// The number of requests with 4xx HTTP status codes.
 	//
 	// example:
 	//
 	// 5
 	Reqs4xx *int32 `json:"Reqs4xx,omitempty" xml:"Reqs4xx,omitempty"`
-	// The number of requests with HTTP 5xx status code returned.
+	// The number of requests with 5xx HTTP status codes.
 	//
 	// example:
 	//
 	// 0
 	Reqs5xx *int32 `json:"Reqs5xx,omitempty" xml:"Reqs5xx,omitempty"`
-	// The average response time. Unit: milliseconds.
+	// The average request latency. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData 
 	//
 	// 10.0****
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	// The ID of the tunnel.
+	// The tunnel ID.
 	//
 	// example:
 	//

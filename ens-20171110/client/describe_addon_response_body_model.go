@@ -16,6 +16,8 @@ type iDescribeAddonResponseBody interface {
 }
 
 type DescribeAddonResponseBody struct {
+	// The add-on information.
+	//
 	// if can be null:
 	// false
 	Addons []*DescribeAddonResponseBodyAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
@@ -67,15 +69,22 @@ func (s *DescribeAddonResponseBody) Validate() error {
 }
 
 type DescribeAddonResponseBodyAddons struct {
+	// Indicates whether associated cloud resources are automatically cleaned up.
+	//
 	// example:
 	//
 	// true
-	CleanupCloudResources *string                                        `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
-	ConfigSchema          []*DescribeAddonResponseBodyAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	CleanupCloudResources *string `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
+	// The schema of custom parameters for the add-on.
+	ConfigSchema []*DescribeAddonResponseBodyAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	// The name of the add-on.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The add-on version.
+	//
 	// example:
 	//
 	// v1
@@ -140,18 +149,26 @@ func (s *DescribeAddonResponseBodyAddons) Validate() error {
 }
 
 type DescribeAddonResponseBodyAddonsConfigSchema struct {
+	// The application version.
+	//
 	// example:
 	//
 	// 859e9d595b2974ed79c444658d1dea89
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The configuration version.
+	//
 	// example:
 	//
 	// 4155709cd12a09bdb8cbaca71bf03233
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
+	// The name of the add-on.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom parameters of the add-on.
+	//
 	// example:
 	//
 	// {"key1":"val1"}

@@ -16,7 +16,7 @@ type iDeleteBucketLifecycleRequest interface {
 }
 
 type DeleteBucketLifecycleRequest struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteBucketLifecycleRequest struct {
 	//
 	// test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The ID of the rule. If this parameter is not specified, all rules are removed.
+	// The rule ID. If this parameter is not specified, all rules are deleted.
 	//
 	// example:
 	//

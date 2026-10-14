@@ -14,7 +14,7 @@ type iBatchEventMigrateInstanceRequest interface {
 }
 
 type BatchEventMigrateInstanceRequest struct {
-	// The details of events.
+	// The list of events.
 	EventInfos []*BatchEventMigrateInstanceRequestEventInfos `json:"EventInfos,omitempty" xml:"EventInfos,omitempty" type:"Repeated"`
 }
 
@@ -51,17 +51,17 @@ func (s *BatchEventMigrateInstanceRequest) Validate() error {
 type BatchEventMigrateInstanceRequestEventInfos struct {
 	// The data migration policy. Valid values:
 	//
-	// 	- abandon: does not migrate data. This is the default value.
+	// - abandon: Does not migrate data. This is the default value.
 	//
-	// 	- force_transfer: forcibly migrates data.
+	// - force_transfer: Performs forcible migration of EPS resource data.
 	//
-	// 	- try_transfer: Migrate data as much as possible.
+	// - try_transfer: Migrates data on a best-effort basis.
 	//
 	// example:
 	//
 	// abandon
 	DataPolicy *string `json:"DataPolicy,omitempty" xml:"DataPolicy,omitempty"`
-	// Event ID e-\\*.
+	// The event ID, in the format of e-*.
 	//
 	// This parameter is required.
 	//
@@ -69,11 +69,11 @@ type BatchEventMigrateInstanceRequestEventInfos struct {
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The type of the O\\&M task. Valid values:
+	// The O&M task type. Valid values:
 	//
-	// 	- immediate
+	// - immediate: immediate execution.
 	//
-	// 	- scheduled
+	// - scheduled: scheduled execution.
 	//
 	// This parameter is required.
 	//
@@ -81,24 +81,26 @@ type BatchEventMigrateInstanceRequestEventInfos struct {
 	//
 	// immediate
 	OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
-	// The password of the instance. This parameter is optional. If you do not specify this parameter, a random password is used.
+	// The instance password. This parameter is optional. If you do not specify this parameter, a random password is used.
 	//
-	// The password must be 8 to 30 characters in length. The password must contain uppercase letters, lowercase letters, digits, and special characters.
+	// The password must be 8 to 30 characters in length and must contain uppercase letters, lowercase letters, and digits.
 	//
-	// Note that you cannot enter a password for scheduled execution.
+	// Note: Password specification is not supported for scheduled execution.
 	//
 	// example:
 	//
 	// AAaa1234
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
+	// The scheduled execution time. The value is a timestamp in milliseconds.
+	//
+	// This parameter is required when OpsType is set to scheduled.
 	//
 	// example:
 	//
 	// 1742452232000
 	PlanTime    *int64  `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
 	PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
-	// Resource ID i-\\*.
+	// The resource ID, in the format of i-*.
 	//
 	// This parameter is required.
 	//

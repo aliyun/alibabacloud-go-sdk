@@ -18,8 +18,12 @@ type iDescribeClusterNodePoolsResponseBody interface {
 }
 
 type DescribeClusterNodePoolsResponseBody struct {
+	// The list of node pools.
 	NodePools []*DescribeClusterNodePoolsResponseBodyNodePools `json:"NodePools,omitempty" xml:"NodePools,omitempty" type:"Repeated"`
-	Page      *DescribeClusterNodePoolsResponseBodyPage        `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The current page number.
+	Page *DescribeClusterNodePoolsResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F3B261DD-3858-4D3C-877D-303ADF374600
@@ -80,14 +84,26 @@ func (s *DescribeClusterNodePoolsResponseBody) Validate() error {
 }
 
 type DescribeClusterNodePoolsResponseBodyNodePools struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId        *string                                                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2026-09-01T00:00:00+08:00
+	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The Kubernetes-related configurations.
 	KubernetesConfig *DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty" type:"Struct"`
-	NodepoolInfo     *DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo     `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty" type:"Struct"`
-	ScalingGroup     *DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup     `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
-	Status           *DescribeClusterNodePoolsResponseBodyNodePoolsStatus           `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	// The node pool information.
+	NodepoolInfo *DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty" type:"Struct"`
+	// The scaling group.
+	ScalingGroup *DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
+	// The status of the node pool.
+	Status *DescribeClusterNodePoolsResponseBodyNodePoolsStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterNodePoolsResponseBodyNodePools) String() string {
@@ -100,6 +116,10 @@ func (s DescribeClusterNodePoolsResponseBodyNodePools) GoString() string {
 
 func (s *DescribeClusterNodePoolsResponseBodyNodePools) GetClusterId() *string {
 	return s.ClusterId
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodePools) GetCreated() *string {
+	return s.Created
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodePools) GetKubernetesConfig() *DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig {
@@ -120,6 +140,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodePools) GetStatus() *DescribeClu
 
 func (s *DescribeClusterNodePoolsResponseBodyNodePools) SetClusterId(v string) *DescribeClusterNodePoolsResponseBodyNodePools {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodePools) SetCreated(v string) *DescribeClusterNodePoolsResponseBodyNodePools {
+	s.Created = &v
 	return s
 }
 
@@ -168,10 +193,14 @@ func (s *DescribeClusterNodePoolsResponseBodyNodePools) Validate() error {
 }
 
 type DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig struct {
+	// The script to execute after the instance is created and before it is added to the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
 	PreUserData *string `json:"PreUserData,omitempty" xml:"PreUserData,omitempty"`
+	// The script to execute after the instance is created and added to the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
@@ -209,14 +238,20 @@ func (s *DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig) Validate
 }
 
 type DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo struct {
+	// The ENS edge zone ID.
+	//
 	// example:
 	//
 	// cn-fuzhou-23
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the node pool.
+	//
 	// example:
 	//
 	// eck-node-pool-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node pool ID.
+	//
 	// example:
 	//
 	// np68mi5y1dd748ky37ojo2kqdrz
@@ -263,33 +298,48 @@ func (s *DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo) Validate() e
 }
 
 type DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup struct {
+	// The list of data cloud disks. The parameter limits are the same as those of the system cloud disk.
 	DataDisks []*DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroupDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	// The image ID.
+	//
 	// example:
 	//
 	// m-673f5z4h69ibwtallg6zmcaxr
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing method of the instance.
+	//
 	// example:
 	//
 	// PrePaid
-	InstanceChargeType *string   `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceTypes      []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The list of instance types.
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// The name of the key pair.
+	//
 	// example:
 	//
 	// key-pair-name
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The password of the instance.
+	//
 	// example:
 	//
 	// ************
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The system cloud disk category of the node. Valid values: local_ssd, cloud_ssd, cloud_efficiency, and local_hdd.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The size of the system cloud disk for the node.
+	//
 	// example:
 	//
 	// 80
-	SystemDiskSize *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	VswitchIds     []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The vSwitch ID.
+	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup) String() string {
@@ -395,10 +445,14 @@ func (s *DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup) Validate() e
 }
 
 type DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroupDataDisks struct {
+	// The cloud disk category.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The cloud disk size. Unit: GB.
+	//
 	// example:
 	//
 	// 80
@@ -436,30 +490,50 @@ func (s *DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroupDataDisks) Val
 }
 
 type DescribeClusterNodePoolsResponseBodyNodePoolsStatus struct {
+	// The expected number of instances.
+	//
 	// example:
 	//
 	// 10
 	DesiredNodes *int32 `json:"DesiredNodes,omitempty" xml:"DesiredNodes,omitempty"`
+	// The number of nodes that failed to be created in the node pool.
+	//
 	// example:
 	//
 	// 0
 	FailedNodes *int32 `json:"FailedNodes,omitempty" xml:"FailedNodes,omitempty"`
+	// The number of instances that are being created.
+	//
 	// example:
 	//
 	// 0
 	InitialNodes *int32 `json:"InitialNodes,omitempty" xml:"InitialNodes,omitempty"`
+	// The number of instances that are being deleted.
+	//
 	// example:
 	//
 	// 0
 	RemovingNodes *int32 `json:"RemovingNodes,omitempty" xml:"RemovingNodes,omitempty"`
+	// The number of instances in use.
+	//
 	// example:
 	//
 	// 10
 	ServingNodes *int32 `json:"ServingNodes,omitempty" xml:"ServingNodes,omitempty"`
+	// The state of the node pool.
+	//
+	// - active: The desired state is reached.
+	//
+	// - scaling: Scaling out.
+	//
+	// - removing_nodes: Scaling in.
+	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The total number of instances, including those that are being created, in use, and being deleted.
+	//
 	// example:
 	//
 	// 10
@@ -542,14 +616,20 @@ func (s *DescribeClusterNodePoolsResponseBodyNodePoolsStatus) Validate() error {
 }
 
 type DescribeClusterNodePoolsResponseBodyPage struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page specified in the request.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20

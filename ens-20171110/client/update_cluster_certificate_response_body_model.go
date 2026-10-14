@@ -18,10 +18,14 @@ type iUpdateClusterCertificateResponseBody interface {
 }
 
 type UpdateClusterCertificateResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The response message. The value is success if the request is successful.
+	//
 	// example:
 	//
 	// Success

@@ -20,15 +20,22 @@ type iCreateClusterNodePoolRequest interface {
 }
 
 type CreateClusterNodePoolRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId        *string                                       `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster-related configurations.
 	KubernetesConfig *CreateClusterNodePoolRequestKubernetesConfig `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty" type:"Struct"`
+	// The node pool configurations.
+	//
 	// This parameter is required.
 	NodepoolInfo *CreateClusterNodePoolRequestNodepoolInfo `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty" type:"Struct"`
+	// The scaling group configurations.
+	//
 	// This parameter is required.
 	ScalingGroup *CreateClusterNodePoolRequestScalingGroup `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
 }
@@ -97,10 +104,14 @@ func (s *CreateClusterNodePoolRequest) Validate() error {
 }
 
 type CreateClusterNodePoolRequestKubernetesConfig struct {
+	// The script to be executed after the machine is created and before it is added to the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
 	PreUserData *string `json:"PreUserData,omitempty" xml:"PreUserData,omitempty"`
+	// The script to be executed after the machine is created and added to the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
@@ -138,6 +149,8 @@ func (s *CreateClusterNodePoolRequestKubernetesConfig) Validate() error {
 }
 
 type CreateClusterNodePoolRequestNodepoolInfo struct {
+	// The name of the node pool.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -168,39 +181,58 @@ func (s *CreateClusterNodePoolRequestNodepoolInfo) Validate() error {
 }
 
 type CreateClusterNodePoolRequestScalingGroup struct {
+	// The size of the data cloud disk. Unit: GB.
 	DataDisks []*CreateClusterNodePoolRequestScalingGroupDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	// The expected number of instances.
+	//
 	// example:
 	//
 	// 3
 	DesiredSize *int32 `json:"DesiredSize,omitempty" xml:"DesiredSize,omitempty"`
+	// The image ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-6734fzvcwcv2o8jj201cpa7ox
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing method of the instance.
+	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The list of instance types for the nodes in the node pool.
+	//
 	// This parameter is required.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// The key pair of the instance. This parameter and Password are mutually exclusive.
+	//
 	// example:
 	//
 	// key-pair-name
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The password used when creating instances in the node pool. This parameter and KeyPairName are mutually exclusive.
+	//
 	// example:
 	//
 	// some-test-password
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The category of the system cloud disk. Valid values: local_ssd, local_hdd, cloud_efficiency, and cloud_ssd.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The size of the system cloud disk. Unit: GB. Minimum value: 20. The value must be a multiple of 10.
+	//
 	// example:
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The vSwitches used by the instances.
+	//
 	// This parameter is required.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
@@ -317,10 +349,14 @@ func (s *CreateClusterNodePoolRequestScalingGroup) Validate() error {
 }
 
 type CreateClusterNodePoolRequestScalingGroupDataDisks struct {
+	// The disk category.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The size of the data cloud disk. Unit: GB. Minimum value: 20. The value must be a multiple of 10.
+	//
 	// example:
 	//
 	// 80

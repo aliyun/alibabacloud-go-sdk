@@ -14,7 +14,7 @@ type iUnassociateNetworkAclResponseBody interface {
 }
 
 type UnassociateNetworkAclResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

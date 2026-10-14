@@ -16,9 +16,9 @@ type iDescribeClusterResponseBody interface {
 }
 
 type DescribeClusterResponseBody struct {
-	// An array that consists of the information about clusters.
+	// The list of cluster information.
 	Clusters []*DescribeClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeClusterResponseBodyClusters struct {
 	//
 	// c8f0377146d104687ac562eef9403****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The version of the cluster.
+	// The version information of the current cluster.
 	//
 	// example:
 	//
@@ -84,19 +84,13 @@ type DescribeClusterResponseBodyClusters struct {
 	//
 	// vc-a622bb**
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The next version of the cluster.
+	// The next version information of the cluster.
 	//
 	// example:
 	//
 	// 1.20.8
 	NextVersion *string `json:"NextVersion,omitempty" xml:"NextVersion,omitempty"`
-	// The health status of the instance.
-	//
-	// Valid values:
-	//
-	// 	- healthy
-	//
-	// 	- unhealthy
+	// The health status of the cluster.
 	//
 	// example:
 	//

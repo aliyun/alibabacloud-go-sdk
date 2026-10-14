@@ -119,9 +119,9 @@ func (s *DescribeEnsRouteTablesResponseBody) Validate() error {
 type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	// The type of the resource with which the route table is associated. Valid values:
 	//
-	// 	- **VSwitch**
+	// - **VSwitch**
 	//
-	// 	- **Gateway**
+	// - **Gateway**
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
 	// The status. Valid values:
 	//
-	// 	- Available: The route table is available.
+	// - Available: The route table is available.
 	//
 	// example:
 	//
@@ -181,9 +181,9 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the route table. Examples:
 	//
-	// 	- Custom: custom route table.
+	// - Custom: custom route table.
 	//
-	// 	- System: system route table.
+	// - System: system route table.
 	//
 	// example:
 	//

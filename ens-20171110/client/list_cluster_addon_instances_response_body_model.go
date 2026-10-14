@@ -16,9 +16,9 @@ type iListClusterAddonInstancesResponseBody interface {
 }
 
 type ListClusterAddonInstancesResponseBody struct {
-	// List of addon information.
+	// The list of add-on information.
 	Addons []*ListClusterAddonInstancesResponseBodyAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ func (s *ListClusterAddonInstancesResponseBody) Validate() error {
 }
 
 type ListClusterAddonInstancesResponseBodyAddons struct {
-	// Whether to automatically clean up associated cloud resources.
+	// Specifies whether to automatically clean up associated cloud resources.
 	//
 	// example:
 	//
 	// true
 	CleanupCloudResources *bool `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
-	// List of custom parameter schemas for the addon.
+	// The list of schemas for custom add-on parameters.
 	ConfigSchema []*ListClusterAddonInstancesResponseBodyAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
-	// Addon name.
+	// The plug-in name.
 	//
 	// example:
 	//
 	// test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Current addon status. Values:
+	// The current add-on status. Valid values:
 	//
 	// - **enabling**: Enabling.
 	//
@@ -96,7 +96,7 @@ type ListClusterAddonInstancesResponseBodyAddons struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Version number.
+	// The version number.
 	//
 	// example:
 	//
@@ -171,25 +171,25 @@ func (s *ListClusterAddonInstancesResponseBodyAddons) Validate() error {
 }
 
 type ListClusterAddonInstancesResponseBodyAddonsConfigSchema struct {
-	// Application version.
+	// The application version.
 	//
 	// example:
 	//
 	// 7380581386597434629002
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// Configuration version.
+	// The configuration version.
 	//
 	// example:
 	//
 	// 4572581386436834662215
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
-	// Component name.
+	// The add-on name.
 	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Custom parameters.
+	// The custom add-on parameters.
 	//
 	// example:
 	//

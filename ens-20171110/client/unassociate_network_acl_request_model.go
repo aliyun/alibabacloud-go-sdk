@@ -16,7 +16,7 @@ type iUnassociateNetworkAclRequest interface {
 }
 
 type UnassociateNetworkAclRequest struct {
-	// The ID of the network ACL that you want to disassociate from a resource.
+	// The ID of the network ACL.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UnassociateNetworkAclRequest struct {
 	//
 	// nacl-a2do9e413e0sp****
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// Resources that you want to disassociate. Valid values of **N**: 0 to 29. A maximum of 30 resources can be unbound.
+	// The list of resources to disassociate. Valid values of N: 1 to 30. The resources must be associated with the network ACL by calling the AssociateNetworkAcl operation, and the current association status must be BINDED.
 	//
 	// This parameter is required.
 	Resource []*UnassociateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
@@ -70,7 +70,7 @@ func (s *UnassociateNetworkAclRequest) Validate() error {
 }
 
 type UnassociateNetworkAclRequestResource struct {
-	// The ID of the resource that you want to disassociate.
+	// The ID of the associated resource to disassociate.
 	//
 	// This parameter is required.
 	//
@@ -78,9 +78,9 @@ type UnassociateNetworkAclRequestResource struct {
 	//
 	// n-5***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource that you want to disassociate. Valid values:
+	// The type of the associated resource to disassociate. Valid values:
 	//
-	// 	- Network
+	// 	- Network: network.
 	//
 	// This parameter is required.
 	//

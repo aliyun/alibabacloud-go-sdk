@@ -24,27 +24,27 @@ type iDescribeHistoryEventsRequest interface {
 }
 
 type DescribeHistoryEventsRequest struct {
-	// The levels of the event-triggered alerts.
+	// The list of event levels.
 	EventLevels []*string `json:"EventLevels,omitempty" xml:"EventLevels,omitempty" type:"Repeated"`
-	// Event status list.
+	// The list of event statuses.
 	EventStatus []*string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty" type:"Repeated"`
 	// The list of event types.
 	//
 	// This parameter is required.
 	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of resources.
+	// The list of resource IDs.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
 

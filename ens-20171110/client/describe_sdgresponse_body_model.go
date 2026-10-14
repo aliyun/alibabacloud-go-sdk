@@ -22,13 +22,13 @@ type iDescribeSDGResponseBody interface {
 }
 
 type DescribeSDGResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for the current query.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeSDGResponseBody struct {
 	//
 	// F3B261DD-3858-4D3C-877D-303ADF374600
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the SDGs.
+	// The list of SDG information.
 	SDGs []*DescribeSDGResponseBodySDGs `json:"SDGs,omitempty" xml:"SDGs,omitempty" type:"Repeated"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,27 +117,39 @@ func (s *DescribeSDGResponseBody) Validate() error {
 }
 
 type DescribeSDGResponseBodySDGs struct {
-	// SDGs that have snapshots.
+	// The list of edge zones where SDG snapshots exist.
 	AvaliableRegionIds []*DescribeSDGResponseBodySDGsAvaliableRegionIds `json:"AvaliableRegionIds,omitempty" xml:"AvaliableRegionIds,omitempty" type:"Repeated"`
-	BillingCycle       *string                                          `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing cycle of the shared disk.
+	//
+	// example:
+	//
+	// Day
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing type.
+	//
 	// example:
 	//
 	// Open
-	BillingType      *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	// The disk type of the source disk used to create the SDG.
+	//
+	// example:
+	//
+	// standard
 	CreationDiskType *string `json:"CreationDiskType,omitempty" xml:"CreationDiskType,omitempty"`
-	// The ID of the instance on which the SDG is created.
+	// The instance ID of the instance from which the SDG was created.
 	//
 	// example:
 	//
 	// aic-5x20dyeos****
 	CreationInstanceId *string `json:"CreationInstanceId,omitempty" xml:"CreationInstanceId,omitempty"`
-	// The ID of the node on which the SDG is created.
+	// The ID of the edge zone where the SDG was created.
 	//
 	// example:
 	//
 	// cn-hangzhou-26
 	CreationRegionId *string `json:"CreationRegionId,omitempty" xml:"CreationRegionId,omitempty"`
-	// The time when the first SDG in the node was created.
+	// The time when the SDG was first created.
 	//
 	// example:
 	//
@@ -147,16 +159,21 @@ type DescribeSDGResponseBodySDGs struct {
 	//
 	// example:
 	//
-	// Testing SDGs
+	// Test SDG
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the source SDG from which you want to create an SDG. The value of this parameter is the value of the **FromSDGId*	- parameter that you need to specify when you call the [CreateSDG](https://help.aliyun.com/document_detail/608128.html) operation.
+	// The ID of the source SDG for incremental creation. This is the FromSDGId parameter specified when you called [CreateSDG](https://help.aliyun.com/document_detail/608128.html).
 	//
 	// example:
 	//
 	// sdg-xxxxx
-	ParentSDGId      *string `json:"ParentSDGId,omitempty" xml:"ParentSDGId,omitempty"`
+	ParentSDGId *string `json:"ParentSDGId,omitempty" xml:"ParentSDGId,omitempty"`
+	// The sharing ratio of the SDG.
+	//
+	// example:
+	//
+	// 100
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The preload information.
+	// The preload configuration information.
 	PreloadInfos []*DescribeSDGResponseBodySDGsPreloadInfos `json:"PreloadInfos,omitempty" xml:"PreloadInfos,omitempty" type:"Repeated"`
 	// The ID of the SDG.
 	//
@@ -170,15 +187,15 @@ type DescribeSDGResponseBodySDGs struct {
 	//
 	// 20
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The status of the SDG creation. Valid values:
+	// The creation status of the SDG. Valid values:
 	//
-	// 	- **sdg_making**
+	// - **sdg_making**: Being created.
 	//
-	// 	- **sdg_saving**
+	// - **sdg_saving**: Being saved.
 	//
-	// 	- **failed**
+	// - **failed**: Creation failed.
 	//
-	// 	- **success**
+	// - **success**: Creation succeeded.
 	//
 	// example:
 	//
@@ -358,35 +375,35 @@ func (s *DescribeSDGResponseBodySDGs) Validate() error {
 }
 
 type DescribeSDGResponseBodySDGsAvaliableRegionIds struct {
-	// The time when the SDG was created on the node.
+	// The creation time of the SDG in the edge zone.
 	//
 	// example:
 	//
 	// 2023-02-27 15:13:26
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the node.
+	// The edge zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-26
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the snapshot.
+	// The snapshot ID.
 	//
 	// example:
 	//
 	// sp-517qu0tgznrg622he7nf4wd7n
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The status of the SDG on the node. Valid values:
+	// The status of the SDG in the edge zone. Valid values:
 	//
-	// 	- **sdg_making**
+	// - **sdg_making**: Being created.
 	//
-	// 	- **sdg_saving**
+	// - **sdg_saving**: Being saved.
 	//
-	// 	- **sdg_copying**
+	// - **sdg_copying**: Being synchronized across edge zones.
 	//
-	// 	- **failed**
+	// - **failed**: Creation failed.
 	//
-	// 	- **success**
+	// - **success**: Creation succeeded.
 	//
 	// example:
 	//
@@ -443,32 +460,37 @@ func (s *DescribeSDGResponseBodySDGsAvaliableRegionIds) Validate() error {
 }
 
 type DescribeSDGResponseBodySDGsPreloadInfos struct {
-	// The time when the SDG was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-02-16T06:18:40Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DiskType     *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The disk type of the redundant shared disks.
+	//
+	// example:
+	//
+	// standard
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The namespace.
 	//
 	// example:
 	//
 	// test-20000
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of redundant replicas to quickly respond to shared mounts.
+	// The number of redundant copies for fast shared mounting response.
 	//
 	// example:
 	//
 	// 2
 	RedundantNum *int32 `json:"RedundantNum,omitempty" xml:"RedundantNum,omitempty"`
-	// The ID of the node.
+	// The edge zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the status was last updated.
+	// The most recent status update time.
 	//
 	// example:
 	//

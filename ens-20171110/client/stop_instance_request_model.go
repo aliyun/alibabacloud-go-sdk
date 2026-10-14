@@ -18,9 +18,9 @@ type iStopInstanceRequest interface {
 type StopInstanceRequest struct {
 	// Specifies whether to forcibly stop the instance.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default)
 	//
 	// example:
 	//

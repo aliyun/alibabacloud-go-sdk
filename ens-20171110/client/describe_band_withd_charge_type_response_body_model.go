@@ -26,13 +26,13 @@ type DescribeBandWithdChargeTypeResponseBody struct {
 	//
 	// example:
 	//
-	// { "BandWidthName": "Monthly peak bandwidth of 95", 			"BandWidthType": "95BandwidthByMonth" 		}
+	// { "BandWidthName": "Monthly 95th percentile bandwidth", "BandWidthType": "95BandwidthByMonth" }
 	BandWithTypeInfo *string `json:"BandWithTypeInfo,omitempty" xml:"BandWithTypeInfo,omitempty"`
 	// The metering type.
 	//
-	// 	- ChargeByUnified: unified metering.
+	// - ChargeByUnified: unified metering.
 	//
-	// 	- ChargeByGrade: differential metering.
+	// - ChargeByGrade: differential metering.
 	//
 	// example:
 	//

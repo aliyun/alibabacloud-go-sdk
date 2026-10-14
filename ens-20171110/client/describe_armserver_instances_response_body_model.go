@@ -22,27 +22,27 @@ type iDescribeARMServerInstancesResponseBody interface {
 }
 
 type DescribeARMServerInstancesResponseBody struct {
-	// The page number.
+	// The page number of the instance list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page that was specified in the request.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the servers and the AIC instances.
+	// The array of ARM server and AIC instance information.
 	Servers []*DescribeARMServerInstancesResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of instances returned.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeARMServerInstancesResponseBody) Validate() error {
 }
 
 type DescribeARMServerInstancesResponseBodyServers struct {
-	// The information about the AIC instances.
+	// The array of AIC instance information.
 	AICInstances []*DescribeARMServerInstancesResponseBodyServersAICInstances `json:"AICInstances,omitempty" xml:"AICInstances,omitempty" type:"Repeated"`
 	// The time when the instance was created.
 	//
@@ -125,7 +125,7 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	//
 	// 2022-05-07 11:59:09
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the ENS node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
@@ -137,19 +137,19 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	//
 	// 2027-05-07 11:59:09
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The operation that was most recently performed.
+	// The most recent operation.
 	//
 	// example:
 	//
 	// ServerCreate
 	LatestAction *string `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
-	// The name of the server.
+	// The server name.
 	//
 	// example:
 	//
 	// Server-Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace of the cluster to which the server belongs.
+	// The namespace of the cluster to which the card belongs.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	//
 	// prepay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the server.
+	// The server ID.
 	//
 	// example:
 	//
@@ -173,19 +173,19 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	//
 	// cas.cf53r
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The operation status of the server. Valid values:
+	// The operation state of the server. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Succeeded.
 	//
-	// 	- **failed**
+	// - **failed**: Failed.
 	//
-	// 	- **creating**
+	// - **creating**: Being created.
 	//
-	// 	- **releasing**
+	// - **releasing**: Being released.
 	//
-	// 	- **rebooting**
+	// - **rebooting**: Being restarted.
 	//
-	// 	- **upgrading**
+	// - **upgrading**: Being upgraded.
 	//
 	// example:
 	//
@@ -193,19 +193,20 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The running status of the server. Valid values:
 	//
-	// 	- **running**
+	// - **running**: Running.
 	//
-	// 	- **stopping**
+	// - **stopping**: Being stopped.
 	//
-	// 	- **down**
+	// - **down**: Shut down.
 	//
-	// 	- **starting**
+	// - **starting**: Being started.
 	//
 	// example:
 	//
 	// running
-	Status *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeARMServerInstancesResponseBodyServersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The collection of tags.
+	Tags []*DescribeARMServerInstancesResponseBodyServersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeARMServerInstancesResponseBodyServers) String() string {
@@ -362,31 +363,31 @@ type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
 	//
 	// 120
 	Frequency *int64 `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	// The ID of the AIC image.
+	// The AIC image ID.
 	//
 	// example:
 	//
 	// m-****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the AIC instance.
+	// The AIC instance ID.
 	//
 	// example:
 	//
 	// aic-instance****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that was most recently performed.
+	// The most recent operation.
 	//
 	// example:
 	//
 	// ServerCreate
 	LatestAction *string `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
-	// The name of the container.
+	// The container name.
 	//
 	// example:
 	//
 	// AIC-Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network attributes of the AIC instance.
+	// The network attributes.
 	NetworkAttributes *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
 	// The resolution of the AIC instance.
 	//
@@ -394,7 +395,7 @@ type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
 	//
 	// 1920*1080
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The information about the shared data group (SDG) that is deployed on the AIC instance.
+	// The shared data group (SDG) information deployed on the instance.
 	SdgDeployInfo *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo `json:"SdgDeployInfo,omitempty" xml:"SdgDeployInfo,omitempty" type:"Struct"`
 	// The specification of the AIC instance.
 	//
@@ -402,19 +403,19 @@ type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
 	//
 	// aic.cf53r.c2.np
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The operation status of the AIC instance. Valid values:
+	// The operation state of the AIC instance. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Succeeded.
 	//
-	// 	- **failed**
+	// - **failed**: Failed.
 	//
-	// 	- **creating**
+	// - **creating**: Being created.
 	//
-	// 	- **releasing**
+	// - **releasing**: Being released.
 	//
-	// 	- **rebooting**
+	// - **rebooting**: Being restarted.
 	//
-	// 	- **reseting**
+	// - **reseting**: Being reset.
 	//
 	// example:
 	//
@@ -422,11 +423,11 @@ type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The running status of the AIC instance. Valid values:
 	//
-	// 	- **running**
+	// - **running**: Running.
 	//
-	// 	- **pending**
+	// - **pending**: Pending.
 	//
-	// 	- **terminating**
+	// - **terminating**: Being terminated.
 	//
 	// example:
 	//
@@ -624,11 +625,11 @@ type DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo stru
 	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
 	// The deployment status of the SDG. Valid values:
 	//
-	// 	- **sdg_deploying**
+	// - **sdg_deploying**: Being deployed.
 	//
-	// 	- **failed**
+	// - **failed**: Deployment failed.
 	//
-	// 	- **success**
+	// - **success**: Deployment succeeded.
 	//
 	// example:
 	//
@@ -667,7 +668,17 @@ func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo)
 }
 
 type DescribeARMServerInstancesResponseBodyServersTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

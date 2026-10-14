@@ -16,13 +16,16 @@ type iDeleteClusterRequest interface {
 }
 
 type DeleteClusterRequest struct {
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RetainResources *bool   `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to retain cloud resources. Default value: false.
+	RetainResources *bool `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
 }
 
 func (s DeleteClusterRequest) String() string {

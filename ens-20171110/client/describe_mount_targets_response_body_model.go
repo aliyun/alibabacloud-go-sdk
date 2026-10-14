@@ -22,7 +22,7 @@ type iDescribeMountTargetsResponseBody interface {
 }
 
 type DescribeMountTargetsResponseBody struct {
-	// The information about mount targets.
+	// The collection of mount target information.
 	MountTargets []*DescribeMountTargetsResponseBodyMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,19 +30,19 @@ type DescribeMountTargetsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of rows per page.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 762DD527-358B-1E48-8005-CCE3ED4EB9E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of mount targets.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,45 +117,45 @@ func (s *DescribeMountTargetsResponseBody) Validate() error {
 }
 
 type DescribeMountTargetsResponseBodyMountTargets struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// example:
 	//
 	// c50f8*****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The path of the mount target.
+	// The mount target path.
 	//
 	// example:
 	//
 	// LB:/fileSystemName/mountTargetName
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	// The name of the mount target.
+	// The mount target name.
 	//
 	// example:
 	//
 	// TestMountPath
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-***
 	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	// The state of the mount target. Valid values:
+	// The mount target status. Valid values:
 	//
-	// 	- active: The mount target is available.
+	// - active: Active.
 	//
-	// 	- inactive: The mount target is unavailable.
+	// - inactive: Inactive.
 	//
-	// 	- pending: A task is being queued for the mount target.
+	// - pending: Queued.
 	//
-	// 	- deleting: The mount target is being deleted.
+	// - deleting: Being deleted.
 	//
 	// example:
 	//

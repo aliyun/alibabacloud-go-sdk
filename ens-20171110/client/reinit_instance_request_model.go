@@ -24,7 +24,7 @@ type ReinitInstanceRequest struct {
 	//
 	// example:
 	//
-	// m-5wn1dhz5syoo9b48f440ntvad
+	// m-5wn1dh*******b48f440ntvad
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The ID of the instance.
 	//
@@ -35,7 +35,7 @@ type ReinitInstanceRequest struct {
 	//
 	// example:
 	//
-	// i-5vn4n3y4laeb2ii9zxxltlvzi
+	// i-5vn4n3y4laeb*******ltlvzi
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The password of the instance.
 	//
@@ -43,7 +43,7 @@ type ReinitInstanceRequest struct {
 	//
 	// example:
 	//
-	// ***
+	// Example123@
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 

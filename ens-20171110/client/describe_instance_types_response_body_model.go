@@ -18,7 +18,7 @@ type iDescribeInstanceTypesResponseBody interface {
 }
 
 type DescribeInstanceTypesResponseBody struct {
-	// The status code. If the request is successful, 0 is returned. If the request fails, a non-zero error code is returned.
+	// The business code. A value of 0 indicates success. An error code is returned upon failure.
 	//
 	// example:
 	//
@@ -112,10 +112,13 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) Validate() error {
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
-	CpuCoreCount     *int32  `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
-	InstanceTypeId   *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
-	InstanceTypeName *string `json:"InstanceTypeName,omitempty" xml:"InstanceTypeName,omitempty"`
-	MemorySize       *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	CpuCoreCount        *int32  `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	InstanceBandwidthRx *int64  `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
+	InstanceBandwidthTx *int64  `json:"InstanceBandwidthTx,omitempty" xml:"InstanceBandwidthTx,omitempty"`
+	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeId      *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
+	InstanceTypeName    *string `json:"InstanceTypeName,omitempty" xml:"InstanceTypeName,omitempty"`
+	MemorySize          *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) String() string {
@@ -128,6 +131,18 @@ func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GoString() s
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetCpuCoreCount() *int32 {
 	return s.CpuCoreCount
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetInstanceBandwidthRx() *int64 {
+	return s.InstanceBandwidthRx
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetInstanceBandwidthTx() *int64 {
+	return s.InstanceBandwidthTx
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetInstanceType() *string {
+	return s.InstanceType
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetInstanceTypeId() *string {
@@ -144,6 +159,21 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetMemorySi
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetCpuCoreCount(v int32) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.CpuCoreCount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstanceBandwidthRx(v int64) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.InstanceBandwidthRx = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstanceBandwidthTx(v int64) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.InstanceBandwidthTx = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstanceType(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.InstanceType = &v
 	return s
 }
 

@@ -18,13 +18,13 @@ type iPrepareUploadResponseBody interface {
 }
 
 type PrepareUploadResponseBody struct {
-	// The name of the bucket. This parameter is available only when the OSS SDK is used.
+	// The name of the physical storage. Pass this value when you use the OSS SDK.
 	//
 	// example:
 	//
 	// test-xxxxxx
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The endpoint. This parameter is available only when the OSS SDK is used.
+	// The endpoint. Pass this value when you use the OSS SDK.
 	//
 	// example:
 	//

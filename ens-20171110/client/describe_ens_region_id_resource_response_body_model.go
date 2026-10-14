@@ -29,7 +29,7 @@ type DescribeEnsRegionIdResourceResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page that was specified in the request.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeEnsRegionIdResourceResponseBody struct {
 	//
 	// 476600B1-C9E2-4245-A26F-DC7EA8071425
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried nodes.
+	// The total number of entries returned.
 	//
 	// example:
 	//

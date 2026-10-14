@@ -24,9 +24,9 @@ type CreateStorageGatewayResponseBody struct {
 	AllocationId []*CreateStorageGatewayResponseBodyAllocationId `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
 	// The success status code.
 	//
-	// 	- **PartSuccess**: partially succeeded.
+	// - **PartSuccess**: partially succeeded.
 	//
-	// 	- **AllSuccess**: all succeeded.
+	// - **AllSuccess**: all succeeded.
 	//
 	// example:
 	//

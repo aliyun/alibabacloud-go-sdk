@@ -28,7 +28,7 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,13 +40,14 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VSwitches  *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A collection of VSwitches.
+	VSwitches *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -146,16 +147,20 @@ func (s *DescribeVSwitchesResponseBodyVSwitches) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
-	CidrBlock   *string                                            `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	CreatedTime *string                                            `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnsRegionId *string                                            `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FreeIpCount *int64                                             `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
-	NetworkId   *string                                            `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	Status      *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags        *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VSwitchId   *string                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchName *string                                            `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FreeIpCount *int64  `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	// example:
+	//
+	// 2408:XXXX:0:a600::/110
+	Ipv6CidrBlock *string                                            `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	NetworkId     *string                                            `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	Status        *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags          *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId     *string                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName   *string                                            `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitchesVSwitch) String() string {
@@ -184,6 +189,10 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) GetEnsRegionId() *string
 
 func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) GetFreeIpCount() *int64 {
 	return s.FreeIpCount
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) GetIpv6CidrBlock() *string {
+	return s.Ipv6CidrBlock
 }
 
 func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) GetNetworkId() *string {
@@ -228,6 +237,11 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetEnsRegionId(v string)
 
 func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetFreeIpCount(v int64) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
 	s.FreeIpCount = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetIpv6CidrBlock(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.Ipv6CidrBlock = &v
 	return s
 }
 

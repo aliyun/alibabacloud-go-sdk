@@ -14,7 +14,7 @@ type iPutBucketResponseBody interface {
 }
 
 type PutBucketResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//

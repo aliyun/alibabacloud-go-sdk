@@ -16,7 +16,7 @@ type iDescribeDiskIopsListResponseBody interface {
 }
 
 type DescribeDiskIopsListResponseBody struct {
-	// The IOPS monitoring data of the cloud disk.
+	// The list of cloud disk I/O monitoring data.
 	DiskIopsList []*DescribeDiskIopsListResponseBodyDiskIopsList `json:"DiskIopsList,omitempty" xml:"DiskIopsList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -66,25 +66,25 @@ func (s *DescribeDiskIopsListResponseBody) Validate() error {
 }
 
 type DescribeDiskIopsListResponseBodyDiskIopsList struct {
-	// The business time . The time is displayed in the yyyy-MM-dd HH:mm:ss.
+	// The business time in the format of yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-12-14 00:00:00
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
-	// The ID of the disk.
+	// The disk ID.
 	//
 	// example:
 	//
 	// d-5tzm9wnhzlhjzcbtxo465****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The read throughput. Unit: bytes.
+	// The read throughput (in bytes).
 	//
 	// example:
 	//
 	// 10054
 	ReadBytes *int64 `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
-	// The read latency. Unit: ms.
+	// The read latency (in microseconds).
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ type DescribeDiskIopsListResponseBodyDiskIopsList struct {
 	//
 	// 4
 	ReadOps *int64 `json:"ReadOps,omitempty" xml:"ReadOps,omitempty"`
-	// The ID of the node.
+	// The edge zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-3
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The write throughput. Unit: bytes.
+	// The write throughput (in bytes).
 	//
 	// example:
 	//
 	// 0
 	WriteBytes *int64 `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
-	// The write latency. Unit: microseconds.
+	// The write latency (in microseconds).
 	//
 	// example:
 	//

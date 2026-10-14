@@ -18,7 +18,7 @@ type iDescribeImageInfosResponseBody interface {
 }
 
 type DescribeImageInfosResponseBody struct {
-	// The HTTP status code that is returned.
+	// The return code.
 	//
 	// example:
 	//
@@ -116,6 +116,7 @@ type DescribeImageInfosResponseBodyImagesImage struct {
 	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
 	DiskDeviceMappings *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	ImageId            *string                                                      `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageOwnerAlias    *string                                                      `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
 	ImageSize          *string                                                      `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
 	ImageVersion       *string                                                      `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
 	OSName             *string                                                      `json:"OSName,omitempty" xml:"OSName,omitempty"`
@@ -145,6 +146,10 @@ func (s *DescribeImageInfosResponseBodyImagesImage) GetDiskDeviceMappings() *Des
 
 func (s *DescribeImageInfosResponseBodyImagesImage) GetImageId() *string {
 	return s.ImageId
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImage) GetImageOwnerAlias() *string {
+	return s.ImageOwnerAlias
 }
 
 func (s *DescribeImageInfosResponseBodyImagesImage) GetImageSize() *string {
@@ -184,6 +189,11 @@ func (s *DescribeImageInfosResponseBodyImagesImage) SetDiskDeviceMappings(v *Des
 
 func (s *DescribeImageInfosResponseBodyImagesImage) SetImageId(v string) *DescribeImageInfosResponseBodyImagesImage {
 	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImage) SetImageOwnerAlias(v string) *DescribeImageInfosResponseBodyImagesImage {
+	s.ImageOwnerAlias = &v
 	return s
 }
 

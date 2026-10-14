@@ -27,15 +27,16 @@ type DescribeEnsNetDistrictRequest struct {
 	// example:
 	//
 	// 100106
-	NetDistrictCode     *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	NetDistrictCodeNode *bool   `json:"NetDistrictCodeNode,omitempty" xml:"NetDistrictCodeNode,omitempty"`
+	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	// Region code
+	NetDistrictCodeNode *bool `json:"NetDistrictCodeNode,omitempty" xml:"NetDistrictCodeNode,omitempty"`
 	// The level of the region.
 	//
-	// 	- **Big**: area
+	// - **Big**: area
 	//
-	// 	- **Middle**: province
+	// - **Middle**: province
 	//
-	// 	- **Small**: city
+	// - **Small**: city
 	//
 	// This parameter is required.
 	//

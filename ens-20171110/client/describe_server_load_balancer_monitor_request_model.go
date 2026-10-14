@@ -18,7 +18,7 @@ type iDescribeServerLoadBalancerMonitorRequest interface {
 }
 
 type DescribeServerLoadBalancerMonitorRequest struct {
-	// The end of the time range to query. The maximum range between StartTime and EndTime is 24 hours.
+	// The end time. The maximum interval between StartTime and EndTime cannot exceed 24 hours.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeServerLoadBalancerMonitorRequest struct {
 	//
 	// 2024-09-15 17:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ELB instance.
+	// The load balancing instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeServerLoadBalancerMonitorRequest struct {
 	//
 	// lb-5sc1s9zrui8lpb8u7cl4f****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time in the format of yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//

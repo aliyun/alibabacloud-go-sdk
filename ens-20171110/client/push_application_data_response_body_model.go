@@ -17,7 +17,7 @@ type iPushApplicationDataResponseBody interface {
 
 type PushApplicationDataResponseBody struct {
 	PushResults *PushApplicationDataResponseBodyPushResults `json:"PushResults,omitempty" xml:"PushResults,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -18,13 +18,18 @@ type iScaleClusterNodePoolRequest interface {
 }
 
 type ScaleClusterNodePoolRequest struct {
+	// The HTTP request body.
 	Body *ScaleClusterNodePoolRequestBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The node pool ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -78,6 +83,8 @@ func (s *ScaleClusterNodePoolRequest) Validate() error {
 }
 
 type ScaleClusterNodePoolRequestBody struct {
+	// The expected number of instances.
+	//
 	// This parameter is required.
 	//
 	// example:

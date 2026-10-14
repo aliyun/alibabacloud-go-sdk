@@ -16,7 +16,7 @@ type iGetOssStorageAndAccByBucketsResponseBody interface {
 }
 
 type GetOssStorageAndAccByBucketsResponseBody struct {
-	// The information about the bucket.
+	// The bucket information.
 	BucketList []*GetOssStorageAndAccByBucketsResponseBodyBucketList `json:"BucketList,omitempty" xml:"BucketList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,19 +66,19 @@ func (s *GetOssStorageAndAccByBucketsResponseBody) Validate() error {
 }
 
 type GetOssStorageAndAccByBucketsResponseBodyBucketList struct {
-	// The number of times that the bucket is accessed.
+	// The number of access requests.
 	//
 	// example:
 	//
 	// 1000
 	Acc *int64 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The name of the bucket.
+	// The OSS bucket name.
 	//
 	// example:
 	//
 	// my-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The storage usage of the bucket. Unit: bytes.
+	// The storage usage, in bytes.
 	//
 	// example:
 	//

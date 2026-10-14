@@ -22,13 +22,13 @@ type iDescribeSecondaryPublicIpAddressesResponseBody interface {
 }
 
 type DescribeSecondaryPublicIpAddressesResponseBody struct {
-	// The page number returned.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging queries.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeSecondaryPublicIpAddressesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of returned secondary IP addresses.
+	// The list of secondary public IP addresses.
 	SecondaryPublicIpAddresses []*DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses `json:"SecondaryPublicIpAddresses,omitempty" xml:"SecondaryPublicIpAddresses,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *DescribeSecondaryPublicIpAddressesResponseBody) Validate() error {
 }
 
 type DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses struct {
-	// The subnet mask of the CIDR block.
+	// The CIDR mask of the IP address.
 	//
 	// example:
 	//
 	// 24
 	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
-	// The time when the secondary public IP address was created. The time is displayed in UTC.
+	// The creation time in UTC format.
 	//
 	// example:
 	//
 	// 2023-07-25T09:43:49Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the edge node.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
@@ -141,23 +141,23 @@ type DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses st
 	//
 	// 12.XXX.XXX.1
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// The version of the IP address. Valid values:
+	// The IP address version. Valid values:
 	//
-	// 	- **ipv4**
+	// - **ipv4**: IPv4 address.
 	//
-	// 	- **ipv6**
+	// - **ipv6**: IPv6 address.
 	//
 	// example:
 	//
 	// ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The Internet service provider. Valid values:
+	// The Internet service provider (ISP). Valid values:
 	//
-	// 	- cmcc: China Mobile.
+	// - cmcc: China Mobile.
 	//
-	// 	- unicom: China Unicom.
+	// - unicom: China Unicom.
 	//
-	// 	- telecom: China Telecom.
+	// - telecom: China Telecom.
 	//
 	// example:
 	//

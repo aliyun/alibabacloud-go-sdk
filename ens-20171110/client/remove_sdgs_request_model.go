@@ -16,11 +16,11 @@ type iRemoveSDGsRequest interface {
 }
 
 type RemoveSDGsRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The IDs of SDG.
+	// The list of SDG IDs.
 	SdgIds []*string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty" type:"Repeated"`
 }
 

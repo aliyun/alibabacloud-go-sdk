@@ -14,7 +14,7 @@ type iDeleteSDGShrinkRequest interface {
 }
 
 type DeleteSDGShrinkRequest struct {
-	// The IDs of the SDGs that you want to delete.
+	// The list of SDGs to delete.
 	//
 	// This parameter is required.
 	SDGIdShrink *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`

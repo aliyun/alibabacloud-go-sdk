@@ -16,9 +16,9 @@ type iDescribeElbAvailableResourceInfoResponseBody interface {
 }
 
 type DescribeElbAvailableResourceInfoResponseBody struct {
-	// The information about resources.
+	// The collection of resource information.
 	ElbAvailableResourceInfo []*DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo `json:"ElbAvailableResourceInfo,omitempty" xml:"ElbAvailableResourceInfo,omitempty" type:"Repeated"`
-	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use the ID to troubleshoot issues.
+	// The common parameter. The ID of the request. Each request has a unique ID, which is active for troubleshooting.
 	//
 	// example:
 	//
@@ -67,39 +67,39 @@ func (s *DescribeElbAvailableResourceInfoResponseBody) Validate() error {
 
 type DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo struct {
 	Ability []*string `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Repeated"`
-	// The ID of the region.
+	// The area.
 	//
 	// example:
 	//
 	// SouthEast
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The number of resources that you can purchase.
+	// The quantity available for purchase.
 	//
 	// example:
 	//
 	// 1
 	CanBuyCount *string `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
-	// The name of the node.
+	// The English name of the edge zone.
 	//
 	// example:
 	//
 	// cn-guangdong-10
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
 	// cn-guangdong-10
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The specifications of the ELB instances.
+	// The specification of the load balancing instance.
 	LoadBalancerSpec []*string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty" type:"Repeated"`
-	// The Chinese name of the node.
+	// The name of the edge zone.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The province where the node is deployed.
+	// The province.
 	//
 	// example:
 	//

@@ -22,7 +22,9 @@ type iDescribeDataDownloadURLRequest interface {
 }
 
 type DescribeDataDownloadURLRequest struct {
-	// The ID of the application.
+	// The application ID.
+	//
+	// You can call ListApplications to obtain the AppId. The call chain is as follows: call CreateApplication to create an application, call PushApplicationData or DistApplicationData to upload data, and then call this operation to query the download URL.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,7 @@ type DescribeDataDownloadURLRequest struct {
 	//
 	// mirror_file/pk-1642597182026-878199448832413.tar
 	DataName *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	// The version number of the data file.
+	// The version number of the data.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +48,13 @@ type DescribeDataDownloadURLRequest struct {
 	//
 	// 7895
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// 600
 	ExpireTimeout *int64 `json:"ExpireTimeout,omitempty" xml:"ExpireTimeout,omitempty"`
-	// The condition that you want to use to filter file servers. You can specify multiple canary release policies. By default, all resources are queried.
+	// The filter condition for file servers. Multiple canary release strategies are supported. By default, all file servers are queried.
 	//
 	// example:
 	//

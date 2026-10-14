@@ -24,26 +24,32 @@ type iModifySnatEntryRequest interface {
 type ModifySnatEntryRequest struct {
 	// Specifies whether to enable IP affinity. Default value: true. Valid values:
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// >  Description After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
+	// > Description After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
 	//
 	// example:
 	//
 	// false
 	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
+	// Specifies whether to enable carrier affinity.
+	//
 	// example:
 	//
 	// true
 	IspAffinity *bool `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
+	// The ID of the SNAT entry.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// snat-5tfjp36fsrb36zs36faj0****
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// The name of the SNAT entry. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test0

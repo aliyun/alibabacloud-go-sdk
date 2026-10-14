@@ -16,7 +16,7 @@ type iPrepareUploadRequest interface {
 }
 
 type PrepareUploadRequest struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type PrepareUploadRequest struct {
 	//
 	// test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The specified IP address. This parameter is applicable to scenarios where the user IP address is inconsistent with the operation calling IP address, such as the scenario where the server obtains authorization and sends the authorization to the client.
+	// The client\\"s IP address. Use this parameter when the client\\"s IP address differs from the IP address used to call the API. For example, a server obtains authorization and then sends it to a client.
 	//
 	// example:
 	//
-	// 180.166.XX.XXX
+	// 180.166.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 }
 

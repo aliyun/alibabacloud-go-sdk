@@ -26,28 +26,33 @@ type iCreateNatGatewayRequest interface {
 }
 
 type CreateNatGatewayRequest struct {
-	// The ID of the Edge Node Service (ENS) node.
+	// The ID of the ENS edge zone.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-suzhou-telecom
-	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The billing cycle of the instance. Valid values: Hour and Month.
+	//
+	// example:
+	//
+	// Hour
 	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
-	// The instance type of the NAT gateway. Set the value to **enat.default**.
+	// The NAT gateway specification. Valid value: **enat.default**.
 	//
 	// example:
 	//
 	// enat.default
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the NAT gateway. The name must be 1 to 128 characters in length. The name cannot start with `http://` or `https://`.
+	// The name of the NAT gateway. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// This parameter is required.
 	//
@@ -55,9 +60,9 @@ type CreateNatGatewayRequest struct {
 	//
 	// n-5qj7ykuxmjn7k96l090sp****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The tags.
+	// The resource tags.
 	Tag []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the new vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -150,19 +155,19 @@ func (s *CreateNatGatewayRequest) Validate() error {
 }
 
 type CreateNatGatewayRequestTag struct {
-	// The key of tag N of the instance. Valid values of N: **1*	- to **20**.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**.
 	//
-	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// - Cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
-	// 	- The key must be up to 64 characters in length.
+	// - Can be up to 64 characters in length.
 	//
-	// 	- The tag key cannot be an empty string.
+	// - Cannot be an empty string.
 	//
 	// example:
 	//
 	// team
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+	// The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length, cannot start with acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iRecoverAICInstanceRequest interface {
 }
 
 type RecoverAICInstanceRequest struct {
-	// The ID of the server.
+	// The server instance ID.
 	//
 	// This parameter is required.
 	//

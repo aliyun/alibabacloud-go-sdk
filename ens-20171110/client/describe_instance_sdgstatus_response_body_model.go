@@ -22,15 +22,15 @@ type iDescribeInstanceSDGStatusResponseBody interface {
 }
 
 type DescribeInstanceSDGStatusResponseBody struct {
-	// The deployment information of the SDGs.
+	// The list of SDG deployment information.
 	DeploymentStatus []*DescribeInstanceSDGStatusResponseBodyDeploymentStatus `json:"DeploymentStatus,omitempty" xml:"DeploymentStatus,omitempty" type:"Repeated"`
-	// The number of the page to return. Pages start from page 1. Default value: 1
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The Settings for the number of entries per page for paging in a paged query. Default value: **10**.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeInstanceSDGStatusResponseBody struct {
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried deployment records.
+	// The total number of deployment records returned.
 	//
 	// example:
 	//
@@ -117,17 +117,37 @@ func (s *DescribeInstanceSDGStatusResponseBody) Validate() error {
 }
 
 type DescribeInstanceSDGStatusResponseBodyDeploymentStatus struct {
-	BlockRwSplitSize   *int32  `json:"BlockRwSplitSize,omitempty" xml:"BlockRwSplitSize,omitempty"`
-	CacheSize          *int32  `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The size of the writable layer of the block device. Unit: GiB. A value of 0 indicates that this feature is disabled.
+	//
+	// example:
+	//
+	// 20
+	BlockRwSplitSize *int32 `json:"BlockRwSplitSize,omitempty" xml:"BlockRwSplitSize,omitempty"`
+	// The cache size. Unit: GiB. A value of 0 indicates that this feature is disabled.
+	//
+	// example:
+	//
+	// 20
+	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The disk access protocol type of the mounted shared cloud disk.
+	//
+	// example:
+	//
+	// iscsi
 	DiskAccessProtocol *string `json:"DiskAccessProtocol,omitempty" xml:"DiskAccessProtocol,omitempty"`
-	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the edge node.
+	// The disk type of the mounted shared cloud disk.
+	//
+	// example:
+	//
+	// standard
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The edge zone ID.
 	//
 	// example:
 	//
 	// cn-guangzhou-26
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the AIC instance.
+	// The AIC instance ID.
 	//
 	// example:
 	//
@@ -139,7 +159,7 @@ type DescribeInstanceSDGStatusResponseBodyDeploymentStatus struct {
 	//
 	// shared
 	MountType *string `json:"MountType,omitempty" xml:"MountType,omitempty"`
-	// Deployment Phase
+	// The deployment phase of the SDG.
 	//
 	// example:
 	//
@@ -157,7 +177,7 @@ type DescribeInstanceSDGStatusResponseBodyDeploymentStatus struct {
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the status was last updated.
+	// The latest status update time. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

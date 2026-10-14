@@ -18,13 +18,13 @@ type iDescribeExportImageStatusResponseBody interface {
 type DescribeExportImageStatusResponseBody struct {
 	// The export status of the image. Valid values:
 	//
-	// 	- Exporting
+	// - Exporting
 	//
-	// 	- Exported
+	// - Exported
 	//
-	// 	- ExportError
+	// - ExportError
 	//
-	// 	- Unexported
+	// - Unexported
 	//
 	// example:
 	//

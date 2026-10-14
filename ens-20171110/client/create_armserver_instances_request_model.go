@@ -50,7 +50,7 @@ type iCreateARMServerInstancesRequest interface {
 }
 
 type CreateARMServerInstancesRequest struct {
-	// The number of instances to create. Valid values: **1*	- to **100**.
+	// The number of instances to create. Minimum value: **1**. Maximum value: **100**.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,7 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to enable auto-renewal for the subscription. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false (default)
+	// Specifies whether to enable auto-renewal.
 	//
 	// example:
 	//
@@ -70,16 +66,17 @@ type CreateARMServerInstancesRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to use coupons. Valid values:
 	//
-	// 	- true
-	//
-	// 	- false (default)
-	//
 	// example:
 	//
 	// true
-	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	Cidr          *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// The IPv4 CIDR block used by the instance, in CIDR notation.
+	//
+	// example:
+	//
+	// 10.0.0.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The ENS edge zone ID.
 	//
 	// This parameter is required.
 	//
@@ -87,70 +84,79 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// cn-guiyang-12
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// Set one or more environment variables during EAIS instance initialization.
+	// One or more environment variables to set during EAIS instance initialization.
 	//
 	// example:
 	//
 	// [object Object]
 	EnvironmentVar *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
-	// The refresh rate. Unit: Hz. Valid values: 30 and 60.
+	// The refresh rate, in Hz. Valid values: 30 and 60.
 	//
 	// example:
 	//
 	// 30
 	Frequency *int32 `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourImage ID
-	ImageId              *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance billing cycle. Valid values:
+	//
+	// - Hour
+	//
+	// - Day
+	//
+	// example:
+	//
+	// Hour
 	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
-	// The specification of the Android in Container (AIC) instance. Examples:
+	// The instance type of the AIC container instance. Valid values:
 	//
-	// 	- aic.cf52r.c1.np
+	// - aic.cf52r.c1.np
 	//
-	// 	- aic.cf52r.c2.np
+	// - aic.cf52r.c2.np
 	//
-	// 	- aic.cf53r.c2.np
+	// - aic.cf53r.c2.np
 	//
-	// 	- aic.cf52r.c4.np
+	// - aic.cf52r.c4.np
 	//
-	// 	- aic.cf53r.c3.np
+	// - aic.cf53r.c3.np
 	//
-	// 	- aic.cf52r.c3.np
+	// - aic.cf52r.c3.np
 	//
-	// 	- aic.cf53r.c1.np
+	// - aic.cf53r.c1.np
 	//
-	// 	- aic.cf53r.c5.np
+	// - aic.cf53r.c5.np
 	//
-	// 	- aic.cf53r.c6
+	// - aic.cf53r.c6
 	//
-	// 	- aic.cf53r.c4.np
+	// - aic.cf53r.c4.np
 	//
-	// 	- aic.cf53r.c6.np
+	// - aic.cf53r.c6.np
 	//
-	// 	- aic.cf53r.c7.np
+	// - aic.cf53r.c7.np
 	//
-	// 	- aic.cf52m1r.c5.np
+	// - aic.cf52m1r.c5.np
 	//
-	// 	- aic.cf53r.c8.np
+	// - aic.cf53r.c8.np
 	//
-	// 	- aic.cf53r.c7
+	// - aic.cf53r.c7
 	//
-	// 	- aic.cf52m1r.c2.np
+	// - aic.cf52m1r.c2.np
 	//
-	// 	- aic.cf52m1r.c1.np
+	// - aic.cf52m1r.c1.np
 	//
-	// 	- aic.cf52m1r.c3.np
+	// - aic.cf52m1r.c3.np
 	//
-	// 	- aic.cf52m1r.c4.np
+	// - aic.cf52m1r.c4.np
 	//
-	// 	- aic.cf52m1r.c6
+	// - aic.cf52m1r.c6
 	//
-	// 	- ens.a6c2
+	// - ens.a6c2
 	//
 	// This parameter is required.
 	//
@@ -158,7 +164,7 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// aic.cf53r.c6.np
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the key pair.
+	// The key pair name.
 	//
 	// example:
 	//
@@ -170,9 +176,7 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// pre
 	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	// The billing method. Set the value to **PrePaid**. PrePaid specifies the subscription billing method.
-	//
-	// >  Only PrePaid is supported.
+	// The billing type. Valid values: **PrePaid*	- (subscription).
 	//
 	// This parameter is required.
 	//
@@ -180,47 +184,41 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription duration of the instance.
+	// The duration for which you want to purchase the resource.
 	//
-	// 	- If you leave PeriodUnit empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
+	// - If you do not specify PeriodUnit, the resource is purchased on a monthly basis by default. Currently, only Days and Month are supported.
 	//
-	// 	- If you set PeriodUnit to Day, you can set Period only to 3.
+	// - If PeriodUnit is set to Day, Period can only be set to 3.
 	//
-	// 	- If you set PeriodUnit to Month, you can set Period to a value within the range of [1,9], or set the value to 12.
+	// - If PeriodUnit is set to Month, Period can be set to 1 to 9 or 12.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
-	//
-	// 	- If you leave PeriodUnit empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
-	//
-	// 	- If you set PeriodUnit to Day, you can set Period only to 3.
-	//
-	// 	- If you set PeriodUnit to Month, you can set Period to a value within the range of [1,9], or set the value to 12.
+	// The unit of the purchase duration.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The resolution. Examples:
+	// The resolution. Valid values:
 	//
-	// 	- 1920\\*864
+	// - 1920*864
 	//
-	// 	- 1080\\*1920
+	// - 1080*1920
 	//
-	// 	- 1920\\*1080
+	// - 1920*1080
 	//
-	// 	- 720\\*1280
+	// - 720*1280
 	//
-	// 	- 2400\\*1080
+	// - 2400*1080
 	//
-	// 	- 1080\\*2400
+	// - 1080*2400
 	//
-	// 	- 1280\\*720
+	// - 1280*720
 	//
-	// 	- 864\\*1920
+	// - 864*1920
 	//
 	// This parameter is required.
 	//
@@ -228,31 +226,32 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// 720*1280
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
 	// AIC-Server
 	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
-	// The specification of the ARM server. Examples:
+	// The ARM board specification. Valid values:
 	//
-	// 	- cas.cf53r
+	// - cas.cf53r
 	//
-	// 	- cas.cf52r
+	// - cas.cf52r
 	//
-	// 	- cas.cf52m1r
+	// - cas.cf52m1r
 	//
-	// 	- cas.tg52g2
+	// - cas.tg52g2
 	//
-	// 	- ens.afq-c2m3i.medium
+	// - ens.afq-c2m3i.medium
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cas.cf53r
-	ServerType *string                               `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	Tag        []*CreateARMServerInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The list of tags bound to the instance.
+	Tag []*CreateARMServerInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateARMServerInstancesRequest) String() string {
@@ -448,7 +447,17 @@ func (s *CreateARMServerInstancesRequest) Validate() error {
 }
 
 type CreateARMServerInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// team
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// backend
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

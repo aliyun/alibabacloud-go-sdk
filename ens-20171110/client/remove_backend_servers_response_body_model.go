@@ -17,7 +17,7 @@ type iRemoveBackendServersResponseBody interface {
 
 type RemoveBackendServersResponseBody struct {
 	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

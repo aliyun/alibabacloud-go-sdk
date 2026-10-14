@@ -20,7 +20,7 @@ type CreateSecurityGroupPermissionsShrinkRequest struct {
 	//
 	// This parameter is required.
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	// The IDs of the security groups.
+	// The security group ID.
 	//
 	// This parameter is required.
 	//

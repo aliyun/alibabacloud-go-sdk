@@ -18,15 +18,20 @@ type iDeleteClusterNodesRequest interface {
 }
 
 type DeleteClusterNodesRequest struct {
+	// The request body parameters.
+	//
 	// This parameter is required.
 	Body *DeleteClusterNodesRequestBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ReleaseNode *bool   `json:"ReleaseNode,omitempty" xml:"ReleaseNode,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to release the ENS instance where the node resides. Default value: true.
+	ReleaseNode *bool `json:"ReleaseNode,omitempty" xml:"ReleaseNode,omitempty"`
 }
 
 func (s DeleteClusterNodesRequest) String() string {
@@ -74,6 +79,8 @@ func (s *DeleteClusterNodesRequest) Validate() error {
 }
 
 type DeleteClusterNodesRequestBody struct {
+	// The information about the nodes to be removed.
+	//
 	// This parameter is required.
 	Nodes []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }

@@ -50,79 +50,89 @@ type iDescribeLoadBalancerAttributeResponseBody interface {
 }
 
 type DescribeLoadBalancerAttributeResponseBody struct {
-	// The IP address that the Edge Load Balancer (ELB) instance uses to provide services.
+	// The service address of the load balancing instance.
 	//
 	// example:
 	//
-	// 192.168XX.XX
+	// 192.168.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The IP version of the ELB instance. Valid values: ipv4 and ipv6.
+	// The IP version of the load balancing instance. Valid values: ipv4 or ipv6.
 	//
 	// example:
 	//
 	// ipv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The address type of the load balancing instance.
+	//
+	// example:
+	//
+	// internet
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The list of backend servers.
 	BackendServers []*DescribeLoadBalancerAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	// The peak bandwidth of the ELB. The default value is -1, which indicates that the bandwidth is unlimited.
+	// The peak bandwidth of the load balancing instance. The default value is -1, which indicates that bandwidth is not throttled.
 	//
 	// example:
 	//
 	// -1
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The time when the ELB instance was created. The time is displayed in UTC.
+	// The creation time of the load balancing instance (UTC).
 	//
 	// example:
 	//
 	// 2019-05-21T12:22:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the ELB instance was disabled.
+	// The end time of the load balancing instance in ISO 8601 UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2020-05-21T12:22:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ENS node.
+	// The ENS node ID.
 	//
 	// example:
 	//
 	// cn-chengdu-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The frontend ports that are used by the ELB instance.
+	// The frontend ports used by the load balancing instance.
 	ListenerPorts []*string `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Repeated"`
-	// The frontend ports and protocols that are used by the ELB instance.
+	// The frontend ports and protocols used by the load balancing instance.
 	ListenerPortsAndProtocols []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols `json:"ListenerPortsAndProtocols,omitempty" xml:"ListenerPortsAndProtocols,omitempty" type:"Repeated"`
-	// The ID of the ELB instance.
+	// The ID of the load balancing instance.
 	//
 	// example:
 	//
 	// lb-5rcvo1n1t3hykfhhjwjgqp****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the ELB instance.
+	// The name of the load balancing instance.
 	//
 	// example:
 	//
 	// example
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The specifications of the ELB instance.
+	// The specification of the load balancing instance.
 	//
 	// example:
 	//
 	// elb.s2.medium
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	// The status of the ELB instance. Valid values:
+	// The listener status of the load balancing instance. Valid values:
 	//
-	// 	- **Active*	- (default): The listener for the instance can forward the received traffic based on the rule.
+	// - **Active**: The listeners of the instance can forward received traffic based on rules.
 	//
-	// 	- **InActive**: The listener for the instance does not forward the received traffic.
+	// - **InActive**: The listeners of the instance no longer forward received traffic.
 	//
 	// example:
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	LoadBalancerType   *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	// The ID of the network.
+	// The type of the load balancing instance.
+	//
+	// example:
+	//
+	// CLB
+	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	// The network ID.
 	//
 	// example:
 	//
@@ -130,21 +140,21 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription.
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go. Only this billing method is supported.
+	// - **PostPaid*	- (currently the only supported billing method): pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -360,19 +370,19 @@ type DescribeLoadBalancerAttributeResponseBodyBackendServers struct {
 	//
 	// 192.168.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port that is used by the backend server.
+	// The port used by the backend server.
 	//
 	// example:
 	//
 	// 0
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the backend server.
+	// The instance ID of the backend server.
 	//
 	// example:
 	//
 	// i-5vb5h5njxiuhn48a****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of backend server.
+	// The server type of the backend server.
 	//
 	// example:
 	//
@@ -444,37 +454,37 @@ func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) Validate() err
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols struct {
-	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
+	// The backend port used by the load balancing instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 6000
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The description of the listener.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination listening port to which requests are forwarded.
+	// The destination listener port to which traffic is forwarded.
 	//
 	// example:
 	//
 	// 0
 	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// Indicates whether the listener is enabled.
+	// Indicates whether listener forwarding is enabled.
 	//
 	// example:
 	//
 	// off
 	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	// The listener port of the instance.
+	// The listener port.
 	//
 	// example:
 	//
 	// 8080
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The listener protocol of the instance.
+	// The listener protocol.
 	//
 	// example:
 	//

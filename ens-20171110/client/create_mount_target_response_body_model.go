@@ -24,13 +24,13 @@ type CreateMountTargetResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state of the mount target. Valid values:
 	//
-	// 	- active
+	// - active
 	//
-	// 	- inactive
+	// - inactive
 	//
-	// 	- pending
+	// - pending
 	//
-	// 	- deleting
+	// - deleting
 	//
 	// example:
 	//

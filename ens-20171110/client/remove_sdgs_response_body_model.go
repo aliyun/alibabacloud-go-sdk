@@ -16,7 +16,7 @@ type iRemoveSDGsResponseBody interface {
 }
 
 type RemoveSDGsResponseBody struct {
-	// The returned data.
+	// The returned Data object.
 	Data *RemoveSDGsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,19 +62,19 @@ func (s *RemoveSDGsResponseBody) Validate() error {
 }
 
 type RemoveSDGsResponseBodyData struct {
-	// The response message. Success is returned for a successful request.
+	// The response message. The value success is returned for a successful request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution result of the synchronization request.
+	// The execution result of the synchronous request.
 	Result *RemoveSDGsResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all tasks are successful. Valid values:
+	// Indicates whether all requests succeeded. Valid values:
 	//
-	// 	- **true**: All tasks are successful.
+	// - **true**: All succeeded.
 	//
-	// 	- **false**: Failed tasks exist.
+	// - **false**: Some tasks failed.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *RemoveSDGsResponseBodyData) Validate() error {
 }
 
 type RemoveSDGsResponseBodyDataResult struct {
-	// The number of failed tasks.
+	// The number of failures.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details about failed tasks.
+	// The list of failure details.
 	FailedItems []*RemoveSDGsResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successful tasks.
+	// The number of successes.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ func (s *RemoveSDGsResponseBodyDataResult) Validate() error {
 }
 
 type RemoveSDGsResponseBodyDataResultFailedItems struct {
-	// The error message returned if the call failed.
+	// The error message.
 	//
 	// example:
 	//

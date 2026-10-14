@@ -46,89 +46,87 @@ type iSetLoadBalancerHTTPListenerAttributeRequest interface {
 }
 
 type SetLoadBalancerHTTPListenerAttributeRequest struct {
-	// The name of the listener. The value must be **1*	- to **80*	- characters in length.
+	// The listener name. The name must be **1*	- to **80*	- characters in length.
 	//
-	// >  The value cannot start with `http://` or `https://`.
+	// > The name cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
-	// http_8080
+	// Listener description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// Specifies whether to enable health checks. Valid values:
 	//
-	// 	- **on**
+	// - **on**: enabled.
 	//
-	// 	- **off**
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The port that is used for health checks. Valid values: **1*	- to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	// The port used for health checks. Valid values: **1*	- to **65535**. If this parameter is not configured in Settings, the backend service port (BackendServerPort) is used.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// > This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// 65500
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The domain name that is used for health checks.
+	// The domain name used for health checks.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// > This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// The HTTP status code for a successful health check. Valid values:
+	// The HTTP status code that indicates a successful health check. Valid values:
 	//
-	// 	- **http_2xx*	- (default)
+	// - **http_2xx*	- (default).
 	//
-	// 	- **http_3xx**.
+	// - **http_3xx**.
 	//
-	// 	- **http_4xx**
+	// - **http_4xx**.
 	//
-	// 	- **http_5xx**
+	// - **http_5xx**.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// > This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// http_2xx
 	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The interval at which health checks are performed. Valid values: **1*	- to **50**. Unit: seconds.
+	// The interval between two consecutive health checks. Valid values: **1*	- to **50**. Unit: seconds.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// > This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// 2
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The HTTP request method for health checks. Valid values:
+	// The health check method for the HTTP listener. Valid values:
 	//
-	// 	- **head**
+	// - **head**.
 	//
-	// 	- **get**
+	// - **get**.
 	//
-	// >  This parameter takes effect only if the HealthCheck parameter is set to on.
+	// > This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// head
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	// The amount of time to wait for a response from a health check. If the backend ECS instance does not respond within the specified time, the health check fails.
 	//
-	// 	- Default value: 5.
+	// - Default value: 5 seconds.
 	//
-	// 	- Valid values: **1*	- to **300**.
+	// - Valid values: **1*	- to **300**.
 	//
-	// 	- Unit: seconds.
+	// - Unit: seconds.
 	//
-	// >
+	// > - This parameter takes effect only when HealthCheck is set to on.
 	//
-	// 	- This parameter takes effect only if the HealthCheck parameter is set to on.
-	//
-	// 	- If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
+	// >- If the value of HealthCheckTimeout is less than the value of HealthCheckInterval, HealthCheckTimeout becomes ineffective and the timeout period equals the value of HealthCheckInterval.
 	//
 	// example:
 	//
@@ -136,33 +134,31 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
 	// The URI used for health checks. The URI must be **1*	- to **80*	- characters in length.
 	//
-	// >
+	// > - The URI cannot be only `/` but must start with `/`.
 	//
-	// 	- A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
-	//
-	// 	- This parameter takes effect only if the HealthCheck parameter is set to on.
+	// >- This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// /checkpreload.htm
 	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2*	- to **10**.
+	// The number of consecutive successful health checks required before a backend server is declared healthy (changing the status from fail to success). Valid values: **2*	- to **10**.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// > This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// 3
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The timeout period for idle connections. Default value: 15. Valid values: **1*	- to **60**. Unit: seconds.
+	// The idle connection timeout period. Default value: 15 seconds. Valid values: **1*	- to **60**. Unit: seconds.
 	//
-	// >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, CLB establishes a new connection.
+	// > If no access request is received within the timeout period, the load balancing instance temporarily breaks the current connection and re-establishes a new connection when the next request arrives.
 	//
 	// example:
 	//
 	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The listener port whose attributes are to be modified. Valid values: **1*	- to **65535**.
+	// The listener port whose attributes you want to modify. Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -170,7 +166,7 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// 8080
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the Edge Load Balancer (ELB) instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -178,9 +174,9 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// lb-5snthcyu1x10g7tywj7iu****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The timeout period of requests. Default value: 60. Valid values: **1*	- to **180**. Unit: seconds.
+	// The request timeout period. Default value: 60 seconds. Valid values: **1*	- to **180**. Unit: seconds.
 	//
-	// >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+	// > If no response is received from the backend server within the timeout period, the load balancing instance stops waiting and returns an HTTP 504 error code to the client.
 	//
 	// example:
 	//
@@ -188,35 +184,35 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
-	// 	- **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// - **wrr**: Backend servers with higher weights are polled more frequently.
 	//
-	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// - **wlc**: Requests are distributed based on the weight and actual load (number of connections) of each backend server. When the weights are the same, backend servers with fewer connections are polled more frequently.
 	//
-	// 	- **rr**: Requests are distributed to backend servers in sequence.
+	// - **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// - **sch**: Consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+	// - **qch**: Consistent hashing based on QUIC Connection IDs. Requests with the same QUIC Connection ID are distributed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
+	// - **iqch**: Consistent hashing based on specific three bytes of the iQUIC CID. Requests with the same 2nd to 4th bytes are distributed to the same backend server.
 	//
 	// example:
 	//
 	// wrr
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2*	- to **10**.
+	// The number of consecutive failed health checks required before a backend server is declared unhealthy (changing the status from success to fail). Valid values: **2*	- to **10**.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// > This parameter takes effect only when HealthCheck is set to on.
 	//
 	// example:
 	//
 	// 3
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
+	// Specifies whether to use the X-Forwarded-For header to retrieve the originating IP address of the client. Valid values:
 	//
-	// 	- **on*	- (default)
+	// - **on*	- (default): enabled.
 	//
-	// 	- **off**
+	// - **off**: disabled.
 	//
 	// example:
 	//

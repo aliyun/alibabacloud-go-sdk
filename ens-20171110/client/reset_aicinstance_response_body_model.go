@@ -14,7 +14,7 @@ type iResetAICInstanceResponseBody interface {
 }
 
 type ResetAICInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

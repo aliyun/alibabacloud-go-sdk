@@ -24,32 +24,66 @@ type iModifyAICInstanceTypeRequest interface {
 }
 
 type ModifyAICInstanceTypeRequest struct {
+	// One or more environment variables to set during instance initialization.
+	//
 	// example:
 	//
 	// [object Object]
 	EnvironmentVar *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
+	// The refresh rate. Unit: Hz. Valid values:
+	//
+	// - 30
+	//
+	// - 60
+	//
+	// - 120
+	//
 	// example:
 	//
 	// 30
 	Frequency *int64 `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The image ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourImage ID
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the instance whose specifications you want to modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aic-xxxx-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The target AIC container instance specifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aic.cf52r.c1.np
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The resolution. Valid values:
+	//
+	// - 1920*1080
+	//
+	// - 1080*1920
+	//
+	// - 1280*720
+	//
+	// - 720*1280
+	//
+	// - 2400*1080
+	//
+	// - 1080*2400
+	//
+	// - 1920*864
+	//
+	// - 864*1920
+	//
 	// example:
 	//
 	// 720*1280

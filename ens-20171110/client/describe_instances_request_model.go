@@ -58,6 +58,7 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
+	// The list of EIP addresses used to filter instances.
 	EipAddresses []*string `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -65,51 +66,43 @@ type DescribeInstancesRequest struct {
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of the regions. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
+	// The list of edge zone IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
 	//
 	// example:
 	//
 	// ["cn-suzhou-telecom","cn-chengdu-telecom"]
 	EnsRegionIds *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	// The ID of the edge service. You can use the ID to query information about the instances that are created in the edge service.
+	// The Edge Node Service ID. You can use this ID to query the instances created under the edge service.
 	//
 	// example:
 	//
 	// ens-20190730202316s****
 	EnsServiceId *string `json:"EnsServiceId,omitempty" xml:"EnsServiceId,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// centos_6_08_64_20G_alibase_****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-5iqczfxps7csjrxeca****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IDs of the instances. The value is a JSON array that consists of up to 100 IDs. Separate IDs with commas (,).
+	// The list of instance IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
 	//
 	// example:
 	//
-	// ["i-5iqczfxps7csjrxeca07****", "i-5iqczfxps7csjrxeca07****"]]
+	// ["i-5iqczfxps7csjrxeca07****", "i-5iqczfxps7csjrxeca07****"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// TestName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The condition that you want to use to filter instances by category. Valid values:
-	//
-	// 	- EnsInstance: ENS instances that you purchase.
-	//
-	// 	- EnsService: ENS instances that belong to edge services.
-	//
-	// 	- BuildMachine: ENS instances that are configured with image builders.
-	//
-	// 	- EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
+	// The filter type. Valid values:
 	//
 	// example:
 	//
@@ -121,77 +114,91 @@ type DescribeInstancesRequest struct {
 	//
 	// ens.se1.tiny
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The internal IP address of the instance.
+	// The internal IP address.
 	//
 	// example:
 	//
 	// 47.100.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-2zeuphj08tt7q3brd****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The method that you want to use to sort instances. The value of this parameter is in the JSON format.
-	//
-	// You can sort instances by name, expiration time, node ID, or creation time. You can specify one or more methods.
+	// The sorting parameter in JSON format.
 	//
 	// example:
 	//
-	// {"InstanceNameSort":"asc","ExpireTimeSort":"asc","CreationTimeSort":"desc"}}
-	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The page number. Pages start from page **1**.
+	// {
 	//
-	// Default value: **1**.
+	//     "InstanceNameSort": "asc",
+	//
+	//     "ExpireTimeSort": "asc",
+	//
+	//     "CreationTimeSort": "desc",
+	//
+	//     "EnsRegionId": "desc"
+	//
+	// }
+	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
+	// The page number of the instance status list. The value starts from **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The maximum value is **100**.
-	//
-	// Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **100**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword that you use to query the logs of the service. You can specify the values of parameters such as **ip**, **InstanceName**, and **InstanceId*	- as the keyword.
+	// The search keyword. Supports parameters such as **ip**, **InstanceName**, and **InstanceId**.
 	//
 	// example:
 	//
 	// Joshua
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-5kyicq2kfcapxrdds6tar7jqb
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The status of the service. Valid values.
+	// The business status of the instance, which does not represent the actual running status of the instance.
 	ServiceStatus []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- Running
+	// - Running: Running.
 	//
-	// 	- Stopped
+	// - Stopped: Stopped.
 	//
-	// 	- Expired
+	// - Expired: Expired.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the resource. This operation does not return tag information. You can call this operation in combination with the tag-related operations.
+	// The resource tags. This operation does not return tag information. Use this parameter in combination with the APIs in the tag category.
 	Tags []*DescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-2zeh0r1pabwtg6wcs****
-	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpdId        *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPD network ID.
+	//
+	// example:
+	//
+	// vpd-5s7xxxxxxx
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The VPD vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-5s7xxxxxxx
 	VpdVSwitchId *string `json:"VpdVSwitchId,omitempty" xml:"VpdVSwitchId,omitempty"`
 }
 
@@ -424,13 +431,13 @@ func (s *DescribeInstancesRequest) Validate() error {
 }
 
 type DescribeInstancesRequestTags struct {
-	// The key of the tag that are to add to the instance. Valid values: 1 to 20.
+	// The tag key of the instance. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// tag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the instance. Valid values: 1 to 20.
+	// The tag value of the instance. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

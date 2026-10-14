@@ -18,15 +18,15 @@ type iCreateSecurityGroupShrinkRequest interface {
 }
 
 type CreateSecurityGroupShrinkRequest struct {
-	// The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// The description of the security group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// An array of security group rules. You can specify up to 200 IDs of security group rules.
+	// The rules of the security group. Valid values of N: 0 to 200.
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	// The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+	// The name of the security group. The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`. By default, this parameter is empty.
 	//
 	// example:
 	//

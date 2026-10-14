@@ -14,7 +14,7 @@ type iReleaseAICInstanceRequest interface {
 }
 
 type ReleaseAICInstanceRequest struct {
-	// The ID of the server.
+	// The server instance ID.
 	//
 	// This parameter is required.
 	//

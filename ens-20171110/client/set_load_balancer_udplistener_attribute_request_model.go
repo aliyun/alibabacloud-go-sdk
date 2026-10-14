@@ -38,75 +38,75 @@ type iSetLoadBalancerUDPListenerAttributeRequest interface {
 }
 
 type SetLoadBalancerUDPListenerAttributeRequest struct {
-	// The name of the listener. The valuemust be **1*	- to **80*	- characters in length.
+	// The name of the listener. The name must be **1*	- to **80*	- characters long.
 	//
-	// >  The value cannot start with `http://` or `https://`.
+	// > The name cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
+	// Specifies whether to enable EIP passthrough. Valid values:
 	//
-	// 	- **on**
+	// - **on**: Enables EIP passthrough.
 	//
-	// 	- **off*	- (default)
+	// - **off*	- (default): Disables EIP passthrough.
 	//
 	// example:
 	//
 	// on
 	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	// The timeout period of a connection. Valid values: **10*	- to **900**. Default value: **900**. Unit: seconds.
+	// The timeout for established connections, in seconds. The value must be an integer from **10*	- to **900**. The default value is **900**.
 	//
 	// example:
 	//
 	// 500
 	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// The port that is used for health checks. Valid values: **1*	- to **65535**. If you leave this parameter empty, the port specified for BackendServerPort is used for health checks.
+	// The port used for health checks. Valid values: **1*	- to **65535**. Defaults to the backend server port (`BackendServerPort`) if not specified.
 	//
 	// example:
 	//
 	// 8080
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The timeout period of a health check response. If the backend ENS does not respond within the specified time, the health check fails.
+	// The timeout for a health check response. If a backend ENS instance does not respond within this timeout period, the health check fails.
 	//
-	// 	- Default value: 5.
+	// - Default value: 5
 	//
-	// 	- Valid values: **1*	- to **300**.
+	// - Valid values: **1*	- to **300**
 	//
-	// 	- Unit: seconds.
+	// - Unit: seconds
 	//
-	// >  If the value of the HealthCheckTimeout property is smaller than the value of the HealthCheckInterval property, the timeout period specified by the HealthCheckTimeout property becomes invalid and the value of the HealthCheckInterval property is used as the timeout period.
+	// > If the value of `HealthCheckConnectTimeout` is less than the value of `HealthCheckInterval`, the system ignores `HealthCheckConnectTimeout` and uses the value of `HealthCheckInterval` as the timeout period.
 	//
 	// example:
 	//
 	// 100
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	// The expected response string for a UDP listener health check. The string can contain only letters and digits and must be at most 64 characters long.
 	//
 	// example:
 	//
 	// ok
 	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	// The interval at which health checks are performed. Valid values: **1*	- to **50**. Unit: seconds.
+	// The interval, in seconds, between consecutive health checks. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//
 	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The request string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	// The request string for a UDP listener health check. The string can contain only letters and digits and must be at most 64 characters long.
 	//
 	// example:
 	//
 	// hello
 	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2*	- to **10**.
+	// The number of consecutive successful health checks required to mark an unhealthy backend server as healthy. Valid values: **2*	- to **10**.
 	//
 	// example:
 	//
 	// 4
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The listener port whose attributes are to be modified. Valid values: **1*	- to **65535**.
+	// The listener port to modify. Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	//
 	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the Edge Load Balancer (ELB) instance.
+	// The ID of the load balancer instance.
 	//
 	// This parameter is required.
 	//
@@ -124,23 +124,25 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
-	// 	- **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// - **wrr**: Weighted Round Robin. Backend servers with higher weights receive a larger proportion of requests.
 	//
-	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// - **wlc**: Weighted Least Connections. Requests are distributed based on both the weights and the number of active connections of backend servers. If servers have the same weight, the server with the fewest active connections receives more requests.
 	//
-	// 	- **rr**: Requests are distributed to backend servers in sequence.
+	// - **rr**: Round Robin. Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// - **sch**: Source IP Hash. A consistent hash based on the source IP address. Requests from the same source IP address are routed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+	// - **tch**: 4-Tuple Hash. A consistent hash based on the 4-tuple (source IP, destination IP, source port, and destination port). Flows with the same 4-tuple are routed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
+	// - **qch**: QUIC Connection ID Hash. A consistent hash based on the QUIC Connection ID. Requests with the same QUIC Connection ID are routed to the same backend server.
+	//
+	// - **iqch**: iQUIC CID Hash. A consistent hash based on three specific bytes (from the second to the fourth byte) of the iQUIC CID. Requests with identical values in these three bytes are routed to the same backend server.
 	//
 	// example:
 	//
 	// wrr
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2*	- to **10**.
+	// The number of consecutive failed health checks required to mark a healthy backend server as unhealthy. Valid values: **2*	- to **10**.
 	//
 	// example:
 	//

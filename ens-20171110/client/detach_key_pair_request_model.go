@@ -18,7 +18,7 @@ type iDetachKeyPairRequest interface {
 }
 
 type DetachKeyPairRequest struct {
-	// The instance IDs.
+	// An array of instance IDs from which to detach the key pair.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DetachKeyPairRequest struct {
 	//
 	// ["i-50f8q9mbfjzlkuk9znjglnne3"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The key pair ID.
+	// The ID of the key pair.
 	//
 	// if can be null:
 	// true
@@ -35,7 +35,7 @@ type DetachKeyPairRequest struct {
 	//
 	// ssh-xxx
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The name of the SSH key pair.
+	// The name of the key pair.
 	//
 	// if can be null:
 	// true

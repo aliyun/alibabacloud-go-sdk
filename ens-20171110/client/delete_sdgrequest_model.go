@@ -14,7 +14,7 @@ type iDeleteSDGRequest interface {
 }
 
 type DeleteSDGRequest struct {
-	// The IDs of the SDGs that you want to delete.
+	// The list of SDGs to delete.
 	//
 	// This parameter is required.
 	SDGId []*string `json:"SDGId,omitempty" xml:"SDGId,omitempty" type:"Repeated"`

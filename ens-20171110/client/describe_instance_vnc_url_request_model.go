@@ -14,7 +14,7 @@ type iDescribeInstanceVncUrlRequest interface {
 }
 
 type DescribeInstanceVncUrlRequest struct {
-	// The ID of the instance
+	// The instance ID. The instance must be in the Running state. You can call DescribeInstances to query the current state.
 	//
 	// This parameter is required.
 	//

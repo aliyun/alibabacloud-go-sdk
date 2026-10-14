@@ -16,13 +16,13 @@ type iBatchEventRebootInstanceResponseBody interface {
 }
 
 type BatchEventRebootInstanceResponseBody struct {
-	// The ID of the request.
+	// Id of the request。
 	//
 	// example:
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result.
+	// The results.
 	Results []*BatchEventRebootInstanceResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -72,19 +72,19 @@ type BatchEventRebootInstanceResponseBodyResults struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the system event.
+	// The system event ID.
 	//
 	// example:
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
+	// The operation message. When code is 200, the message is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The resource IDs.
+	// The resource ID.
 	//
 	// example:
 	//

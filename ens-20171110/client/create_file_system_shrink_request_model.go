@@ -14,7 +14,7 @@ type iCreateFileSystemShrinkRequest interface {
 }
 
 type CreateFileSystemShrinkRequest struct {
-	// The information about the orders.
+	// The list of orders. Each element in the list contains the details of an order.
 	//
 	// This parameter is required.
 	OrderDetailsShrink *string `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty"`

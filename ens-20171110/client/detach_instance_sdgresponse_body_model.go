@@ -72,9 +72,9 @@ type DetachInstanceSDGResponseBodyData struct {
 	Result *DetachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether all tasks are successful. Valid values:
 	//
-	// 	- true: All tasks are successful.
+	// - true: All tasks are successful.
 	//
-	// 	- false: Failed tasks exist.
+	// - false: Failed tasks exist.
 	//
 	// example:
 	//

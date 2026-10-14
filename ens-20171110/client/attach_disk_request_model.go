@@ -20,11 +20,11 @@ type iAttachDiskRequest interface {
 type AttachDiskRequest struct {
 	// Specifies whether the disk to be attached is released with the instance. Valid values:
 	//
-	// 	- true: The disk will be released when the ECS instance is released.
+	// - true: The disk will be released when the ECS instance is released.
 	//
-	// 	- false: The disk will be retained when the ECS instance is released.
+	// - false: The disk will be retained when the ECS instance is released.
 	//
-	// 	- If you leave this parameter empty, the default value is used.
+	// - If you leave this parameter empty, the default value is used.
 	//
 	// example:
 	//

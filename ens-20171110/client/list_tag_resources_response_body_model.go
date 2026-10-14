@@ -18,19 +18,19 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token of the first page to query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// abcfeg368547ccdef
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C78D9B61-69D8-5655-A312-A15DA5EA5D5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags that are added to specified one or more resources.
+	// The collection of tagged resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -83,13 +83,13 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The ID of the associated resources.
+	// The ID of the associated resource.
 	//
 	// example:
 	//
 	// i-5zy93g7z1hnkdmav84joxyzgn
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// test_tag_key-2
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

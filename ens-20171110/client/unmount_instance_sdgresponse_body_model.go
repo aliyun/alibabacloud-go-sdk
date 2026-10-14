@@ -72,9 +72,9 @@ type UnmountInstanceSDGResponseBodyData struct {
 	Result *UnmountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether all tasks are successful. Valid values:
 	//
-	// 	- true: All tasks are successful.
+	// - true: All tasks are successful.
 	//
-	// 	- false: Failed tasks exist.
+	// - false: Failed tasks exist.
 	//
 	// example:
 	//

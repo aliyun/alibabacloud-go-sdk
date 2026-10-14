@@ -64,13 +64,13 @@ func (s *DescribeCreatePrePaidInstanceResultResponseBody) Validate() error {
 type DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult struct {
 	// The status of the instance creation.
 	//
-	// 	- Accepted
+	// - Accepted
 	//
-	// 	- Creating
+	// - Creating
 	//
-	// 	- Failed
+	// - Failed
 	//
-	// 	- Successed
+	// - Successed
 	//
 	// example:
 	//

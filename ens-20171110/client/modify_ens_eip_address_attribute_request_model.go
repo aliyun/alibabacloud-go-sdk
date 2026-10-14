@@ -34,13 +34,13 @@ type ModifyEnsEipAddressAttributeRequest struct {
 	//
 	// 50
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The new description of the EIP. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The new description of the EIP. The description must be 2 to 256 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new name of the EIP. The name must be 2 to 128 characters in length and cannot start with http:// or https://.
+	// The new name of the EIP. The name must be 2 to 128 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

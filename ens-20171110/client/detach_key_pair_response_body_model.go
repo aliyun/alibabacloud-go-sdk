@@ -24,19 +24,19 @@ type iDetachKeyPairResponseBody interface {
 }
 
 type DetachKeyPairResponseBody struct {
-	// The number of instances to which the SSH key pair failed to be bound.
+	// The number of instances for which the detach operation failed.
 	//
 	// example:
 	//
 	// 1
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The ID of the SSH key pair.
+	// The ID of the key pair.
 	//
 	// example:
 	//
 	// ssh-xxx
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The name of the SSH key pair.
+	// The name of the key pair.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DetachKeyPairResponseBody struct {
 	//
 	// xx-xx-xx-xx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The operation results.
+	// The results of the operation for each instance.
 	Results []*DetachKeyPairResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The total number of instances to which the SSH key pair is bound.
+	// The total number of instances specified in the request.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DetachKeyPairResponseBody) Validate() error {
 }
 
 type DetachKeyPairResponseBodyResults struct {
-	// The status code of the operation. 200 indicates that the operation succeeded.
+	// The status code for the operation on a specific instance. A value of `200` indicates a successful operation.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type DetachKeyPairResponseBodyResults struct {
 	//
 	// i-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
+	// The response message for the operation. If the `Code` is `200`, the message is `successful`.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the operation on the instance succeeded. Valid values: `true` and `false`.
 	//
 	// example:
 	//

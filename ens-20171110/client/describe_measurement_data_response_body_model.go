@@ -17,7 +17,7 @@ type iDescribeMeasurementDataResponseBody interface {
 
 type DescribeMeasurementDataResponseBody struct {
 	MeasurementDatas *DescribeMeasurementDataResponseBodyMeasurementDatas `json:"MeasurementDatas,omitempty" xml:"MeasurementDatas,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

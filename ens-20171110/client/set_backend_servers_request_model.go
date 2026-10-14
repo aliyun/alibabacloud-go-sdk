@@ -16,11 +16,11 @@ type iSetBackendServersRequest interface {
 }
 
 type SetBackendServersRequest struct {
-	// The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
+	// The list of backend servers to add. You can modify up to 20 backend servers in each call.
 	//
 	// This parameter is required.
 	BackendServers []*SetBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	// The ID of the Edge Load Balancer (ELB) instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,13 @@ func (s *SetBackendServersRequest) Validate() error {
 }
 
 type SetBackendServersRequestBackendServers struct {
-	// The ID of the instance that you use as the backend server.
+	// The IP address.
+	//
+	// example:
+	//
+	// 192.168.0.10
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The instance ID of the backend server.
 	//
 	// This parameter is required.
 	//
@@ -78,11 +84,11 @@ type SetBackendServersRequestBackendServers struct {
 	//
 	// i-5ze0o05xccvbljtn****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of the backend server. Valid values:
+	// The server type of the backend server. Valid values:
 	//
-	// 	- **ens**: ENS instance
+	// - **ens**: ENS instance.
 	//
-	// 	- **eni**: elastic network interface (ENI)
+	// - **eni**: elastic network interfaces (ENIs) instance. The backend server is a network interface controller (NIC).
 	//
 	// example:
 	//
@@ -90,7 +96,7 @@ type SetBackendServersRequestBackendServers struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the backend server. Default value: 100. Valid values: **0*	- to **100**.
 	//
-	// >  The value 0 indicates that requests are not forwarded to the backend server.
+	// > A value of 0 indicates that no requests are forwarded to the backend server.
 	//
 	// This parameter is required.
 	//
@@ -108,6 +114,10 @@ func (s SetBackendServersRequestBackendServers) GoString() string {
 	return s.String()
 }
 
+func (s *SetBackendServersRequestBackendServers) GetIp() *string {
+	return s.Ip
+}
+
 func (s *SetBackendServersRequestBackendServers) GetServerId() *string {
 	return s.ServerId
 }
@@ -118,6 +128,11 @@ func (s *SetBackendServersRequestBackendServers) GetType() *string {
 
 func (s *SetBackendServersRequestBackendServers) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *SetBackendServersRequestBackendServers) SetIp(v string) *SetBackendServersRequestBackendServers {
+	s.Ip = &v
+	return s
 }
 
 func (s *SetBackendServersRequestBackendServers) SetServerId(v string) *SetBackendServersRequestBackendServers {

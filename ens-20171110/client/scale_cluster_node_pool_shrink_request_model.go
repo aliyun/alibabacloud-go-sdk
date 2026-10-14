@@ -18,13 +18,18 @@ type iScaleClusterNodePoolShrinkRequest interface {
 }
 
 type ScaleClusterNodePoolShrinkRequest struct {
+	// The HTTP request body.
 	BodyShrink *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The node pool ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -54,15 +54,15 @@ type DescribeSnatAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// 101.10. XX.XX/24
+	// 101. XXX. XXX.0/24
 	DestCIDR *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
 	// Specifies whether to enable IP affinity. Valid values:
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// >  After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
+	// > After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeSnatAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// 120.72.XX.XX
+	// 120. XXX. XXX.71
 	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 	// The information about the EIP specified in the SNAT entry.
 	SnatIps []*DescribeSnatAttributeResponseBodySnatIps `json:"SnatIps,omitempty" xml:"SnatIps,omitempty" type:"Repeated"`
@@ -120,23 +120,23 @@ type DescribeSnatAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// 10.0.XX.XX/24
+	// 10. XXX. XXX.0/24
 	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
 	// The secondary EIP specified in the SNAT entry. Multiple secondary EIPs are separated by commas (,).
 	//
 	// example:
 	//
-	// 101.23. XX.XX
+	// 101. XXX. XXX.4
 	StandbySnatIp *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
 	// The status of the secondary EIP.
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Stopping
+	// - Stopping
 	//
-	// 	- Stopped
+	// - Stopped
 	//
-	// 	- Starting
+	// - Starting
 	//
 	// example:
 	//
@@ -144,11 +144,11 @@ type DescribeSnatAttributeResponseBody struct {
 	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
 	// The status of the SNAT entry.
 	//
-	// 	- Pending: The SNAT entry is being created or modified.
+	// - Pending: The SNAT entry is being created or modified.
 	//
-	// 	- Available: The SNAT entry is available.
+	// - Available: The SNAT entry is available.
 	//
-	// 	- Deleting: The SNAT entry is being deleted.
+	// - Deleting: The SNAT entry is being deleted.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type DescribeSnatAttributeResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the NAT.
 	//
-	// 	- Empty: symmetric NAT.
+	// - Empty: symmetric NAT.
 	//
-	// 	- FullCone: full cone NAT.
+	// - FullCone: full cone NAT.
 	//
 	// example:
 	//
@@ -342,19 +342,19 @@ type DescribeSnatAttributeResponseBodySnatIps struct {
 	//
 	// example:
 	//
-	// 203.132.XX.XX
+	// 203. XXX. XXX.139
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The status of the IP address.
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Stopping
+	// - Stopping
 	//
-	// 	- Stopped
+	// - Stopped
 	//
-	// 	- Starting
+	// - Starting
 	//
-	// 	- Releasing
+	// - Releasing
 	//
 	// example:
 	//

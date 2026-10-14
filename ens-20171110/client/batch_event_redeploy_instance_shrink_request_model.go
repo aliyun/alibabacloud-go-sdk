@@ -14,7 +14,7 @@ type iBatchEventRedeployInstanceShrinkRequest interface {
 }
 
 type BatchEventRedeployInstanceShrinkRequest struct {
-	// List of events.
+	// The list of events.
 	EventInfosShrink *string `json:"EventInfos,omitempty" xml:"EventInfos,omitempty"`
 }
 

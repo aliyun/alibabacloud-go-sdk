@@ -20,21 +20,21 @@ type iRescaleDeviceServiceResponseBody interface {
 }
 
 type RescaleDeviceServiceResponseBody struct {
-	// The IDs of the devices.
+	// The list of device IDs.
 	DeviceIds []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// b3b5bb9a-4e0b-4cac-8ebf-e5e015726723
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3F3F3570-E721-53F6-853F-37B7725AC6CB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The key properties of the device.
+	// The list of primary device attributes.
 	ResourceDetailInfos []*RescaleDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
 }
 
@@ -96,49 +96,49 @@ func (s *RescaleDeviceServiceResponseBody) Validate() error {
 }
 
 type RescaleDeviceServiceResponseBodyResourceDetailInfos struct {
-	// The ID of the device.
+	// The device ID.
 	//
 	// example:
 	//
 	// h-uf6009zoa6hdbjyqxcn1
 	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
-	// The IP address of the device.
+	// The device IP address.
 	//
 	// example:
 	//
 	// 10.152.196.36
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The Internet service provider (ISP) to which the device belongs.
+	// The ISP of the device.
 	//
 	// example:
 	//
 	// telecom
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The media access control (MAC) address of the device.
+	// The MAC address of the device.
 	//
 	// example:
 	//
 	// 24:0B:88:04:71:E0
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The ID of the edge node to which the device belongs.
+	// The ID of the edge node where the device is located.
 	//
 	// example:
 	//
 	// cn-chongqing-1
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	// The name of the server on which the device is deployed.
+	// The name of the server NC where the device is located.
 	//
 	// example:
 	//
 	// ens-nc2
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The status of the device.
+	// The device status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the instance.
+	// The device type.
 	//
 	// example:
 	//

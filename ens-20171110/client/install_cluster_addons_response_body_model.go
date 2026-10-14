@@ -16,11 +16,13 @@ type iInstallClusterAddonsResponseBody interface {
 }
 
 type InstallClusterAddonsResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

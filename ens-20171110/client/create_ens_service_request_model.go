@@ -26,9 +26,9 @@ type CreateEnsServiceRequest struct {
 	EnsServiceId *string `json:"EnsServiceId,omitempty" xml:"EnsServiceId,omitempty"`
 	// The operation to perform after you preview the created edge service. Valid values:
 	//
-	// 	- **Buy**: create
+	// - **Buy**: create
 	//
-	// 	- **Upgrade**: change
+	// - **Upgrade**: change
 	//
 	// This parameter is required.
 	//

@@ -66,17 +66,17 @@ func (s *DescribeRegionIspsResponseBody) Validate() error {
 }
 
 type DescribeRegionIspsResponseBodyIsps struct {
-	// The code of the ISP.
+	// The ISP code.
 	//
 	// example:
 	//
 	// cmcc
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the ISP.
+	// The ISP name.
 	//
 	// example:
 	//
-	// move
+	// China Mobile
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

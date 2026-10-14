@@ -14,6 +14,8 @@ type iUpdateClusterCertificateRequest interface {
 }
 
 type UpdateClusterCertificateRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx

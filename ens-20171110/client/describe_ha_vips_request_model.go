@@ -32,65 +32,65 @@ type iDescribeHaVipsRequest interface {
 }
 
 type DescribeHaVipsRequest struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of edge nodes. You can specify 1 to 100 IDs.
+	// The IDs of ENS nodes. Array length: 1 to 100.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// The IP address of the HAVIP.
+	// The IP address of the HaVip instance.
 	//
 	// example:
 	//
 	// 10.5.XX.XX
 	HaVipAddress *string `json:"HaVipAddress,omitempty" xml:"HaVipAddress,omitempty"`
-	// The ID of the HAVIP.
+	// The HaVip instance ID.
 	//
 	// example:
 	//
 	// havip-5p14t****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The name of the HAVIP.
+	// The name of the HaVip instance.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-57gqcdfvx6n****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query. Settings for paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the HAVIP. Valid values:
+	// The HaVip status. Valid values:
 	//
-	// 	- Creating
+	// - Creating: The HaVip is being created.
 	//
-	// 	- Available
+	// - Available: The HaVip is available.
 	//
-	// 	- InUse
+	// - InUse: The HaVip is in use.
 	//
-	// 	- Deleting
+	// - Deleting: The HaVip is being deleted.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//

@@ -20,17 +20,19 @@ type iRenewARMServerInstanceRequest interface {
 }
 
 type RenewARMServerInstanceRequest struct {
-	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**.
+	// - **true**: Auto-renewal is enabled.
 	//
-	// 	- **false*	- (default).
+	// - **false**: Auto-renewal is not enabled. This is the default value.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the instance that you want to renew.
+	// The ID of the server instance to be renewed.
+	//
+	// Pass the ServerId (with the cas- prefix) returned by DescribeARMServerInstances, not the InstanceId (with the aic- prefix) in AICInstances.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,7 @@ type RenewARMServerInstanceRequest struct {
 	//
 	// yourInstance ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The renewal period. By default, instances are renewed on a monthly basis. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
+	// The renewal period. By default, the instance is renewed on a monthly basis. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +50,9 @@ type RenewARMServerInstanceRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the renewal period. Valid values:
 	//
-	// 	- Month (default)
+	// - Month (default)
 	//
-	// 	- Year
+	// - Year
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iResetAICInstanceRequest interface {
 }
 
 type ResetAICInstanceRequest struct {
-	// The ID of the AIC instance.
+	// The AIC instance ID.
 	//
 	// example:
 	//
 	// aic-instance****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the server.
+	// The server instance ID.
 	//
 	// example:
 	//

@@ -11,31 +11,37 @@ type iDescribeClustersV1Request interface {
 	GoString() string
 	SetClusterId(v string) *DescribeClustersV1Request
 	GetClusterId() *string
+	SetClusterType(v string) *DescribeClustersV1Request
+	GetClusterType() *string
 	SetEnsRegionId(v string) *DescribeClustersV1Request
 	GetEnsRegionId() *string
 	SetName(v string) *DescribeClustersV1Request
 	GetName() *string
+	SetProfile(v string) *DescribeClustersV1Request
+	GetProfile() *string
 }
 
 type DescribeClustersV1Request struct {
-	// The name of the ECS instance.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The cluster ID.
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The ENS region ID where the cluster resides.
 	//
 	// example:
 	//
 	// cn-hangzhou-58
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// System specified parameters. Set the value to **DescribeClustersV1**.
+	// The cluster name.
 	//
 	// example:
 	//
 	// test-eck-name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 
 func (s DescribeClustersV1Request) String() string {
@@ -50,6 +56,10 @@ func (s *DescribeClustersV1Request) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DescribeClustersV1Request) GetClusterType() *string {
+	return s.ClusterType
+}
+
 func (s *DescribeClustersV1Request) GetEnsRegionId() *string {
 	return s.EnsRegionId
 }
@@ -58,8 +68,17 @@ func (s *DescribeClustersV1Request) GetName() *string {
 	return s.Name
 }
 
+func (s *DescribeClustersV1Request) GetProfile() *string {
+	return s.Profile
+}
+
 func (s *DescribeClustersV1Request) SetClusterId(v string) *DescribeClustersV1Request {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClustersV1Request) SetClusterType(v string) *DescribeClustersV1Request {
+	s.ClusterType = &v
 	return s
 }
 
@@ -70,6 +89,11 @@ func (s *DescribeClustersV1Request) SetEnsRegionId(v string) *DescribeClustersV1
 
 func (s *DescribeClustersV1Request) SetName(v string) *DescribeClustersV1Request {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeClustersV1Request) SetProfile(v string) *DescribeClustersV1Request {
+	s.Profile = &v
 	return s
 }
 

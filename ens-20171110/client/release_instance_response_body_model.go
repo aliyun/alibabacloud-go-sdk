@@ -26,17 +26,17 @@ type ReleaseInstanceResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- instance
+	// - instance
 	//
-	// 	- eip
+	// - eip
 	//
-	// 	- disk
+	// - disk
 	//
-	// 	- network
+	// - network
 	//
-	// 	- natgateway
+	// - natgateway
 	//
-	// 	- vswitch
+	// - vswitch
 	//
 	// example:
 	//

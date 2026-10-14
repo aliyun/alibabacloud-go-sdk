@@ -14,7 +14,7 @@ type iDescribeLoadBalancerAttributeRequest interface {
 }
 
 type DescribeLoadBalancerAttributeRequest struct {
-	// The ID of the ELB instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//

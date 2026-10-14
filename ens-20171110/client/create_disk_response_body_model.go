@@ -18,11 +18,9 @@ type iCreateDiskResponseBody interface {
 }
 
 type CreateDiskResponseBody struct {
-	// The IDs of the instances.
+	// The collection of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the order. Multiple IDs are separated by commas (,).
-	//
-	// >  This parameter is not returned for the pay-as-you-go billing method.
+	// The order ID. Multiple IDs are separated by commas (,).
 	//
 	// example:
 	//

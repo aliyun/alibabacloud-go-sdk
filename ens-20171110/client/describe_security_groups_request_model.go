@@ -22,9 +22,9 @@ type iDescribeSecurityGroupsRequest interface {
 type DescribeSecurityGroupsRequest struct {
 	// The page number.
 	//
-	// 	- Pages start from page 1.
+	// - Pages start from page 1.
 	//
-	// 	- Default value: 1
+	// - Default value: 1
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type DescribeSecurityGroupsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// 	- Maximum value: 50.
+	// - Maximum value: 50.
 	//
-	// 	- Default value: 10
+	// - Default value: 10
 	//
 	// example:
 	//

@@ -184,7 +184,7 @@ type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData 
 	//
 	// example:
 	//
-	// 10.8.*.*
+	// 10.8.****
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
 	// The ID of the tunnel.
 	//

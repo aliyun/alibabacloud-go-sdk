@@ -24,17 +24,17 @@ type iDescribeDeviceServiceResponseBody interface {
 type DescribeDeviceServiceResponseBody struct {
 	// The basic properties of the application.
 	AppMetaData *DescribeDeviceServiceResponseBodyAppMetaData `json:"AppMetaData,omitempty" xml:"AppMetaData,omitempty" type:"Struct"`
-	// The status information of the application.
+	// The application status information.
 	AppStatus *DescribeDeviceServiceResponseBodyAppStatus `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3A535110-3EE3-5EC5-B1ED-10B7067A1FC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the devices.
+	// The device list.
 	ResourceDetailInfos []*DescribeDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
-	// The information about the instances.
+	// The list of resource instance information.
 	ResourceInfos []*DescribeDeviceServiceResponseBodyResourceInfos `json:"ResourceInfos,omitempty" xml:"ResourceInfos,omitempty" type:"Repeated"`
 }
 
@@ -124,13 +124,13 @@ func (s *DescribeDeviceServiceResponseBody) Validate() error {
 }
 
 type DescribeDeviceServiceResponseBodyAppMetaData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 97a32f2a-aa2c-436a-b19c-05b20d258618
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -142,17 +142,17 @@ type DescribeDeviceServiceResponseBodyAppMetaData struct {
 	//
 	// v1
 	AppStableVersion *string `json:"AppStableVersion,omitempty" xml:"AppStableVersion,omitempty"`
-	// The type of the application. The value is of the enumeration type. Valid values:
+	// The application type. Valid values:
 	//
-	// 	- Common
+	// - Common: common.
 	//
-	// 	- Scheduler
+	// - Scheduler: schedule resource.
 	//
 	// example:
 	//
 	// Common
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The name of the application cluster.
+	// The application cluster name.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type DescribeDeviceServiceResponseBodyAppMetaData struct {
 	//
 	// example:
 	//
-	// test application
+	// Test application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -248,25 +248,27 @@ func (s *DescribeDeviceServiceResponseBodyAppMetaData) Validate() error {
 }
 
 type DescribeDeviceServiceResponseBodyAppStatus struct {
-	// The status of the application. The value is of the enumeration type. Valid values:
+	// The application status. Valid values:
 	//
 	// Three intermediate states:
 	//
-	// 	- CREATING
+	// -   CREATING
 	//
-	// 	- UPDATING
+	// -   UPDATING
 	//
-	// 	- DELETING
+	// -   DELETING
 	//
 	// Four final states:
 	//
-	// 	- CREATE_FAILED
 	//
-	// 	- UPDATE_FAILED
 	//
-	// 	- DELETE_FAILED
+	// - CREATE_FAILED
 	//
-	// 	- RUNNING
+	// -   UPDATE_FAILED
+	//
+	// -   DELETE_FAILED
+	//
+	// -   RUNNING
 	//
 	// example:
 	//
@@ -276,9 +278,9 @@ type DescribeDeviceServiceResponseBodyAppStatus struct {
 	//
 	// example:
 	//
-	// Creating in progress
+	// Creating
 	StatusDescrip *string `json:"StatusDescrip,omitempty" xml:"StatusDescrip,omitempty"`
-	// The time when the status was last updated.
+	// The most recent status update time.
 	//
 	// example:
 	//
@@ -326,13 +328,13 @@ func (s *DescribeDeviceServiceResponseBodyAppStatus) Validate() error {
 }
 
 type DescribeDeviceServiceResponseBodyResourceDetailInfos struct {
-	// The name of the device.
+	// The device name.
 	//
 	// example:
 	//
 	// 5JhF100NEgdBcpNren32
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// The ID of the cloud device.
+	// The cloud device ID.
 	//
 	// example:
 	//
@@ -344,43 +346,43 @@ type DescribeDeviceServiceResponseBodyResourceDetailInfos struct {
 	//
 	// 120.27.219.219
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The Internet service provider (ISP).
+	// The Internet service provider (ISP) information.
 	//
 	// example:
 	//
 	// cmcc
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-2ze40oyhjorpyw61k7be
 	ImageID *string `json:"ImageID,omitempty" xml:"ImageID,omitempty"`
-	// The media access control (MAC) address of the device.
+	// The MAC address of the device.
 	//
 	// example:
 	//
 	// AA:BB:77:88:99:03
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The ID of the ENS node.
+	// The ID of the ENS edge node.
 	//
 	// example:
 	//
 	// cn-jiaozuo-2
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	// The server name of the ENS node.
+	// The server NC name of the ENS edge node.
 	//
 	// example:
 	//
 	// ens-nc2
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The status of the device.
+	// The device status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the device.
+	// The device type.
 	//
 	// example:
 	//
@@ -491,7 +493,7 @@ func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) Validate() error 
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfos struct {
-	// The version of the application.
+	// The application version number.
 	//
 	// example:
 	//
@@ -503,49 +505,49 @@ type DescribeDeviceServiceResponseBodyResourceInfos struct {
 	//
 	// 410800
 	AreaCode *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
-	// The region name.
+	// The area name.
 	//
 	// example:
 	//
-	// Jiaozuo City, Henan Province, Central China
+	// Central China, Henan Province, Jiaozuo City
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	// The time when the application was created.
+	// The time when the resource was created.
 	//
 	// example:
 	//
 	// 2019-10-02T08:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The information about the devices.
+	// The list of device information.
 	DeviceInfos []*DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-5s9boobrmh5000kv4jmi0oeai
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//
 	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The internal IP addresses.
+	// The list of internal IP addresses.
 	InternalIps []*DescribeDeviceServiceResponseBodyResourceInfosInternalIps `json:"InternalIps,omitempty" xml:"InternalIps,omitempty" type:"Repeated"`
 	// The public IP addresses.
 	PublicIps []*DescribeDeviceServiceResponseBodyResourceInfosPublicIps `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
-	// The ID of the region.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-jiaozuo-2
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The ID of the ENS node.
+	// The ID of the ENS edge node.
 	//
 	// example:
 	//
 	// cn-jiaozuo-2
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region.
+	// The area name.
 	//
 	// example:
 	//
@@ -701,13 +703,13 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfos) Validate() error {
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos struct {
-	// The name of the device.
+	// The device name.
 	//
 	// example:
 	//
 	// test-api
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network information.
+	// The list of network information.
 	Network []*DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Repeated"`
 	// The status.
 	//
@@ -766,7 +768,7 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos) Validate() e
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork struct {
-	// The port of the container.
+	// The container port.
 	//
 	// example:
 	//
@@ -778,17 +780,17 @@ type DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork struct {
 	//
 	// 39.105.62.120
 	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	// The port range.
+	// The host port range.
 	//
 	// example:
 	//
 	// 80-8080
 	HostPorts *string `json:"HostPorts,omitempty" xml:"HostPorts,omitempty"`
-	// The protocol of the gateway. The value is of the enumeration type. Valid values:
+	// The gateway protocol. Valid values:
 	//
-	// 	- TCP
+	// - TCP
 	//
-	// 	- UDP
+	// - UDP
 	//
 	// example:
 	//
@@ -845,7 +847,7 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork) Valid
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosInternalIps struct {
-	// The internal IP address.
+	// The IP address.
 	//
 	// example:
 	//
@@ -875,7 +877,7 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfosInternalIps) Validate() e
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosPublicIps struct {
-	// The public IP address.
+	// The IP address.
 	//
 	// example:
 	//

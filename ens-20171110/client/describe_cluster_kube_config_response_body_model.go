@@ -62,7 +62,7 @@ type DescribeClusterKubeConfigResponseBody struct {
 	//
 	//     client-key-data: ***
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

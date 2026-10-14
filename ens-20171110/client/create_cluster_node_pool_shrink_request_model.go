@@ -20,15 +20,22 @@ type iCreateClusterNodePoolShrinkRequest interface {
 }
 
 type CreateClusterNodePoolShrinkRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId              *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster-related configurations.
 	KubernetesConfigShrink *string `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty"`
+	// The node pool configurations.
+	//
 	// This parameter is required.
 	NodepoolInfoShrink *string `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty"`
+	// The scaling group configurations.
+	//
 	// This parameter is required.
 	ScalingGroupShrink *string `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty"`
 }

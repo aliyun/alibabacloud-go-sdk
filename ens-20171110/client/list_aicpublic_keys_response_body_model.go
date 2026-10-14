@@ -22,27 +22,27 @@ type iListAICPublicKeysResponseBody interface {
 }
 
 type ListAICPublicKeysResponseBody struct {
-	// Current page number when paging
+	// The current page number in the paginated query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records to display per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Public key list
+	// The list of public keys.
 	PublicKeys []*ListAICPublicKeysResponseBodyPublicKeys `json:"PublicKeys,omitempty" xml:"PublicKeys,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
 	// xxxsxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *ListAICPublicKeysResponseBody) Validate() error {
 }
 
 type ListAICPublicKeysResponseBodyPublicKeys struct {
-	// Public key content
+	// The content of the public key.
 	//
 	// example:
 	//
 	// fvsvshbvjfksvj
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The creation time of the voiceprint.
+	// The time when the public key was created.
 	//
 	// example:
 	//
 	// 2025-10-09T15:13:21+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Public key description
+	// The description of the public key.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Public key grouping
+	// The group of the public key.
 	//
 	// example:
 	//
 	// test-group
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
-	// Public key name
+	// The name of the public key.
 	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// Public key type
+	// The type of the public key.
 	//
 	// example:
 	//

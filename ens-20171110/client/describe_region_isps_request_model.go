@@ -14,7 +14,7 @@ type iDescribeRegionIspsRequest interface {
 }
 
 type DescribeRegionIspsRequest struct {
-	// The ID of the node. You can specify only one node ID in a call.
+	// The edge node ID. Only a single query is supported.
 	//
 	// example:
 	//

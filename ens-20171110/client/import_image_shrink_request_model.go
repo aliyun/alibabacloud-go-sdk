@@ -38,9 +38,9 @@ type iImportImageShrinkRequest interface {
 }
 
 type ImportImageShrinkRequest struct {
-	// System architecture. Allowed values:</br>
+	// The system architecture. Valid values:</br>
 	//
-	// - x86_64.</br>
+	// - x86_64
 	//
 	// Currently, only x86_64 is supported.
 	//
@@ -50,9 +50,9 @@ type ImportImageShrinkRequest struct {
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// `Image Type`
+	// The image type. Valid values:
 	//
-	// ens_vm: ens virtual machine image (default)
+	// ens_vm: ENS virtual machine image (default).
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type ImportImageShrinkRequest struct {
 	//
 	// ens_vm
 	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
-	// List of custom image information being created.
+	// The list of custom image information.
 	DiskDeviceMappingShrink *string `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty"`
-	// Image format. Allowed values:</br>
+	// The image format. Valid values:</br>
 	//
 	// qcow2.</br>
 	//
@@ -74,16 +74,21 @@ type ImportImageShrinkRequest struct {
 	//
 	// qcow2
 	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	// Image name. The length should be [2, 128] English or Chinese characters. It must start with a letter (uppercase or lowercase) or a Chinese character, and cannot start with http:// or https://. It can contain numbers, colons (:), underscores (_), or hyphens (-).
+	// The image name. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 镜像名称
-	ImageName   *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// ImageName
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image license type. Valid values: Aliyun (Alibaba Cloud license) and BYOL (Bring Your Own Key).
+	//
+	// example:
+	//
+	// Aliyun
 	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
-	// The OSS Bucket where the image file is located.
+	// The OSS bucket that stores the image file.
 	//
 	// example:
 	//
@@ -95,17 +100,17 @@ type ImportImageShrinkRequest struct {
 	//
 	// image-test
 	OSSObject *string `json:"OSSObject,omitempty" xml:"OSSObject,omitempty"`
-	// The Region where the image is located. Currently, only cn-beijing is supported.
+	// The region where the image resides. Currently, only cn-beijing is supported.
 	//
 	// example:
 	//
 	// cn-beijing
 	OSSRegion *string `json:"OSSRegion,omitempty" xml:"OSSRegion,omitempty"`
-	// Operating system platform type. Allowed values:
+	// The type of the operating system platform. Valid values:
 	//
-	// - windows.
+	// - windows
 	//
-	// - linux.
+	// - linux
 	//
 	// Currently, only linux is supported.
 	//
@@ -115,13 +120,13 @@ type ImportImageShrinkRequest struct {
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// Operating system distribution version
+	// The version of the operating system distribution.
 	//
 	// example:
 	//
 	// 6.8
 	OSVersion *string `json:"OSVersion,omitempty" xml:"OSVersion,omitempty"`
-	// Operating system distribution. Allowed values:
+	// The operating system distribution. Valid values:
 	//
 	// 	- centos
 	//
@@ -131,7 +136,7 @@ type ImportImageShrinkRequest struct {
 	//
 	// centos
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The target OSS region where the image will be stored.</br>
+	// The region of the destination OSS bucket where the image is stored.</br>
 	//
 	// > Currently, only cn-beijing and ap-southeast-1 are supported.
 	//

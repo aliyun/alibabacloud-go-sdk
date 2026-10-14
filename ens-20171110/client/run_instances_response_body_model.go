@@ -18,7 +18,7 @@ type iRunInstancesResponseBody interface {
 }
 
 type RunInstancesResponseBody struct {
-	// The IDs of instances.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The order ID.
 	//

@@ -23,25 +23,25 @@ type iDescribeDataDistResultResponseBody interface {
 
 type DescribeDataDistResultResponseBody struct {
 	DistResults *DescribeDataDistResultResponseBodyDistResults `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
-	// The page number.
+	// The page number for the paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for the paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 50373E71-7710-4620-8AAB-133CCE49451C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the dataset.
 	//
 	// example:
 	//

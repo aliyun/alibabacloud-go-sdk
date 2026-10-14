@@ -26,13 +26,13 @@ type DescribeClusterNodePoolsRequest struct {
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// This parameter is required.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// This parameter is required.
+	// The number of entries per page.
 	//
 	// example:
 	//

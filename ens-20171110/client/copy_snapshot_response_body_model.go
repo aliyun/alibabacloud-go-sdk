@@ -20,17 +20,17 @@ type iCopySnapshotResponseBody interface {
 }
 
 type CopySnapshotResponseBody struct {
-	// The list of created snapshots.
+	// The list of successfully created snapshots.
 	AllocationId []*CopySnapshotResponseBodyAllocationId `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
-	// The success status code.
+	// The status code indicating success. Valid values:
 	//
-	// 	- **PartSuccess**: partially succeeded.
+	// - **PartSuccess**: Partially successful.
 	//
-	// 	- **AllSuccess**: all succeeded.
+	// - **AllSuccess**: All successful.
 	//
 	// example:
 	//
-	// AllSuccess
+	// PartSuccess
 	BizStatusCode *string `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
 	// The request ID.
 	//
@@ -38,7 +38,7 @@ type CopySnapshotResponseBody struct {
 	//
 	// EA3758E0-8899-17D3-9526-5F62CF33A586
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of nodes that are not created.
+	// The list of edge zones where snapshot creation failed.
 	UnAllocationId []*CopySnapshotResponseBodyUnAllocationId `json:"UnAllocationId,omitempty" xml:"UnAllocationId,omitempty" type:"Repeated"`
 }
 
@@ -109,13 +109,13 @@ func (s *CopySnapshotResponseBody) Validate() error {
 }
 
 type CopySnapshotResponseBodyAllocationId struct {
-	// The ID of the node.
+	// The ID of the edge zone where the snapshot resides.
 	//
 	// example:
 	//
-	// cn-chengdu-telecom-4
+	// cn-hangzhou-27
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of the instances.
+	// The array of instance IDs.
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 }
 
@@ -150,7 +150,7 @@ func (s *CopySnapshotResponseBodyAllocationId) Validate() error {
 }
 
 type CopySnapshotResponseBodyUnAllocationId struct {
-	// The ID of the node.
+	// The ID of the edge zone where the snapshot resides.
 	//
 	// example:
 	//

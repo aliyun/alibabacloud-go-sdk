@@ -30,7 +30,7 @@ type AddSnatIpForSnatEntryRequest struct {
 	//
 	// example:
 	//
-	// 219.152.82.144
+	// 219.152.XX.XX
 	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 }
 

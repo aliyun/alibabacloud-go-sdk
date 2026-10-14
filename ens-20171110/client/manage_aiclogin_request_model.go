@@ -20,13 +20,9 @@ type iManageAICLoginRequest interface {
 }
 
 type ManageAICLoginRequest struct {
-	// Manage actions
+	// The management action.
 	//
-	// Valid value:
-	//
-	// 	- open
-	//
-	// 	- close
+	// When this parameter is set to open, the AIC instance must be in the running state. You can call DescribeAICInstances to query the state.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +30,7 @@ type ManageAICLoginRequest struct {
 	//
 	// open
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +38,17 @@ type ManageAICLoginRequest struct {
 	//
 	// aic-xxx-1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Public Key Grouping
+	// The group of the public key.
+	//
+	// When you set ActionName to open and use the public key to log on, you must first upload the public key by calling UploadAICPublicKey and provide the corresponding KeyName and KeyGroup.
 	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
-	// Public Key Name
+	// The name of the public key.
+	//
+	// When you set ActionName to open and use the public key to log on, you must first upload the public key by calling UploadAICPublicKey and provide the corresponding KeyName and KeyGroup.
 	//
 	// example:
 	//

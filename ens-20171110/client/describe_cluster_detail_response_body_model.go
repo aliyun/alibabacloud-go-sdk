@@ -19,8 +19,14 @@ type iDescribeClusterDetailResponseBody interface {
 	GetContainerCidr() *string
 	SetControlPlaneConfig(v *DescribeClusterDetailResponseBodyControlPlaneConfig) *DescribeClusterDetailResponseBody
 	GetControlPlaneConfig() *DescribeClusterDetailResponseBodyControlPlaneConfig
+	SetControlPlaneMeta(v *DescribeClusterDetailResponseBodyControlPlaneMeta) *DescribeClusterDetailResponseBody
+	GetControlPlaneMeta() *DescribeClusterDetailResponseBodyControlPlaneMeta
+	SetCreated(v string) *DescribeClusterDetailResponseBody
+	GetCreated() *string
 	SetEnsRegionId(v string) *DescribeClusterDetailResponseBody
 	GetEnsRegionId() *string
+	SetIsp(v string) *DescribeClusterDetailResponseBody
+	GetIsp() *string
 	SetJoinToken(v string) *DescribeClusterDetailResponseBody
 	GetJoinToken() *string
 	SetKubernetesVersion(v string) *DescribeClusterDetailResponseBody
@@ -29,6 +35,12 @@ type iDescribeClusterDetailResponseBody interface {
 	GetLoadBalancerId() *string
 	SetName(v string) *DescribeClusterDetailResponseBody
 	GetName() *string
+	SetNatGatewayId(v string) *DescribeClusterDetailResponseBody
+	GetNatGatewayId() *string
+	SetNodeCount(v *DescribeClusterDetailResponseBodyNodeCount) *DescribeClusterDetailResponseBody
+	GetNodeCount() *DescribeClusterDetailResponseBodyNodeCount
+	SetPodStatus(v *DescribeClusterDetailResponseBodyPodStatus) *DescribeClusterDetailResponseBody
+	GetPodStatus() *DescribeClusterDetailResponseBodyPodStatus
 	SetPodVswitchIds(v []*string) *DescribeClusterDetailResponseBody
 	GetPodVswitchIds() []*string
 	SetPublicAccess(v bool) *DescribeClusterDetailResponseBody
@@ -46,14 +58,20 @@ type iDescribeClusterDetailResponseBody interface {
 }
 
 type DescribeClusterDetailResponseBody struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 1574790082031102
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// eck-11111111
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster kubeconfig.
+	//
 	// example:
 	//
 	// apiVersion: v1
@@ -94,32 +112,63 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	//     client-key-data: x
 	Config interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The CIDR block for pods.
+	//
 	// example:
 	//
 	// 172.20.0.0/16
-	ContainerCidr      *string                                              `json:"ContainerCidr,omitempty" xml:"ContainerCidr,omitempty"`
+	ContainerCidr *string `json:"ContainerCidr,omitempty" xml:"ContainerCidr,omitempty"`
+	// The control plane configuration.
 	ControlPlaneConfig *DescribeClusterDetailResponseBodyControlPlaneConfig `json:"ControlPlaneConfig,omitempty" xml:"ControlPlaneConfig,omitempty" type:"Struct"`
+	ControlPlaneMeta   *DescribeClusterDetailResponseBodyControlPlaneMeta   `json:"ControlPlaneMeta,omitempty" xml:"ControlPlaneMeta,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2025-04-07T09:57:26+08:00
+	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The ENS edge zone ID.
+	//
 	// example:
 	//
 	// cn-fuzhou-23
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	// example:
 	//
+	// unicom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The authentication token for cluster access.
+	//
+	// example:
+	//
 	// xxxx.yyy
 	JoinToken *string `json:"JoinToken,omitempty" xml:"JoinToken,omitempty"`
+	// The cluster version, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
+	//
 	// example:
 	//
 	// 1.32.1.aliyunedge.1
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
+	// The CLB instance ID of the API server.
+	//
 	// example:
 	//
 	// lb-5snthcyu1x10g7tywj7iu****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// your-cluster-name
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// nat-5tawjw5j7sgd2deujxuk0****
+	NatGatewayId *string                                     `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NodeCount    *DescribeClusterDetailResponseBodyNodeCount `json:"NodeCount,omitempty" xml:"NodeCount,omitempty" type:"Struct"`
+	PodStatus    *DescribeClusterDetailResponseBodyPodStatus `json:"PodStatus,omitempty" xml:"PodStatus,omitempty" type:"Struct"`
+	// The vSwitch IDs for pods.
 	PodVswitchIds []*string `json:"PodVswitchIds,omitempty" xml:"PodVswitchIds,omitempty" type:"Repeated"`
+	// Indicates whether public network access is enabled.
+	//
 	// example:
 	//
 	// true
@@ -130,18 +179,33 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The CIDR block for services.
+	//
 	// example:
 	//
 	// 172.19.0.0/20
 	ServiceCidr *string `json:"ServiceCidr,omitempty" xml:"ServiceCidr,omitempty"`
+	// The cluster status. Valid values:
+	//
+	// - **initial**: Being created.
+	//
+	// - **failed**: Creation failed.
+	//
+	// - **running**: Running.
+	//
+	// - **deleting**: Being released.
+	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The VPC used by the cluster.
+	//
 	// example:
 	//
 	// n-xxxxxxxxx
-	VpcId      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch IDs of the cluster nodes.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
@@ -173,8 +237,20 @@ func (s *DescribeClusterDetailResponseBody) GetControlPlaneConfig() *DescribeClu
 	return s.ControlPlaneConfig
 }
 
+func (s *DescribeClusterDetailResponseBody) GetControlPlaneMeta() *DescribeClusterDetailResponseBodyControlPlaneMeta {
+	return s.ControlPlaneMeta
+}
+
+func (s *DescribeClusterDetailResponseBody) GetCreated() *string {
+	return s.Created
+}
+
 func (s *DescribeClusterDetailResponseBody) GetEnsRegionId() *string {
 	return s.EnsRegionId
+}
+
+func (s *DescribeClusterDetailResponseBody) GetIsp() *string {
+	return s.Isp
 }
 
 func (s *DescribeClusterDetailResponseBody) GetJoinToken() *string {
@@ -191,6 +267,18 @@ func (s *DescribeClusterDetailResponseBody) GetLoadBalancerId() *string {
 
 func (s *DescribeClusterDetailResponseBody) GetName() *string {
 	return s.Name
+}
+
+func (s *DescribeClusterDetailResponseBody) GetNatGatewayId() *string {
+	return s.NatGatewayId
+}
+
+func (s *DescribeClusterDetailResponseBody) GetNodeCount() *DescribeClusterDetailResponseBodyNodeCount {
+	return s.NodeCount
+}
+
+func (s *DescribeClusterDetailResponseBody) GetPodStatus() *DescribeClusterDetailResponseBodyPodStatus {
+	return s.PodStatus
 }
 
 func (s *DescribeClusterDetailResponseBody) GetPodVswitchIds() []*string {
@@ -246,8 +334,23 @@ func (s *DescribeClusterDetailResponseBody) SetControlPlaneConfig(v *DescribeClu
 	return s
 }
 
+func (s *DescribeClusterDetailResponseBody) SetControlPlaneMeta(v *DescribeClusterDetailResponseBodyControlPlaneMeta) *DescribeClusterDetailResponseBody {
+	s.ControlPlaneMeta = v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetCreated(v string) *DescribeClusterDetailResponseBody {
+	s.Created = &v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetEnsRegionId(v string) *DescribeClusterDetailResponseBody {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetIsp(v string) *DescribeClusterDetailResponseBody {
+	s.Isp = &v
 	return s
 }
 
@@ -268,6 +371,21 @@ func (s *DescribeClusterDetailResponseBody) SetLoadBalancerId(v string) *Describ
 
 func (s *DescribeClusterDetailResponseBody) SetName(v string) *DescribeClusterDetailResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetNatGatewayId(v string) *DescribeClusterDetailResponseBody {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetNodeCount(v *DescribeClusterDetailResponseBodyNodeCount) *DescribeClusterDetailResponseBody {
+	s.NodeCount = v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetPodStatus(v *DescribeClusterDetailResponseBodyPodStatus) *DescribeClusterDetailResponseBody {
+	s.PodStatus = v
 	return s
 }
 
@@ -312,34 +430,63 @@ func (s *DescribeClusterDetailResponseBody) Validate() error {
 			return err
 		}
 	}
+	if s.ControlPlaneMeta != nil {
+		if err := s.ControlPlaneMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeCount != nil {
+		if err := s.NodeCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PodStatus != nil {
+		if err := s.PodStatus.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
+	// The container runtime type.
+	//
 	// example:
 	//
 	// containerd
 	ContainerRuntime *string `json:"ContainerRuntime,omitempty" xml:"ContainerRuntime,omitempty"`
+	// The image ID of the control plane virtual machine.
+	//
 	// example:
 	//
 	// m-5ul335umat4e2y9ynwi84p3f9
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The node instance type.
+	//
 	// example:
 	//
 	// ens.esk.sn1.medium
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The node service port range.
+	//
 	// example:
 	//
 	// 30000-32767
 	NodePortRange *string `json:"NodePortRange,omitempty" xml:"NodePortRange,omitempty"`
+	// The number of control plane nodes.
+	//
 	// example:
 	//
 	// 3
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The system cloud disk type of the node.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The system cloud disk size of the node.
+	//
 	// example:
 	//
 	// 120
@@ -418,5 +565,231 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneConfig) SetSystemDiskSize(
 }
 
 func (s *DescribeClusterDetailResponseBodyControlPlaneConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterDetailResponseBodyControlPlaneMeta struct {
+	MasterInstances []*DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances `json:"MasterInstances,omitempty" xml:"MasterInstances,omitempty" type:"Repeated"`
+	MasterUrl       *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl         `json:"MasterUrl,omitempty" xml:"MasterUrl,omitempty" type:"Struct"`
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneMeta) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneMeta) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMeta) GetMasterInstances() []*DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances {
+	return s.MasterInstances
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMeta) GetMasterUrl() *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl {
+	return s.MasterUrl
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMeta) SetMasterInstances(v []*DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) *DescribeClusterDetailResponseBodyControlPlaneMeta {
+	s.MasterInstances = v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMeta) SetMasterUrl(v *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) *DescribeClusterDetailResponseBodyControlPlaneMeta {
+	s.MasterUrl = v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMeta) Validate() error {
+	if s.MasterInstances != nil {
+		for _, item := range s.MasterInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MasterUrl != nil {
+		if err := s.MasterUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances struct {
+	// example:
+	//
+	// i-573utia8wbecrbgsm6o8fx132
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10.10.0.2
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// i-573utia8wbecrbgsm6o8fx132
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) GetIp() *string {
+	return s.Ip
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) SetInstanceId(v string) *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) SetIp(v string) *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) SetName(v string) *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl struct {
+	// example:
+	//
+	// https://10.0.0.1:6443
+	PrivateUrl *string `json:"PrivateUrl,omitempty" xml:"PrivateUrl,omitempty"`
+	// example:
+	//
+	// https://0.0.0.0:6443
+	PublicUrl *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) GetPrivateUrl() *string {
+	return s.PrivateUrl
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) GetPublicUrl() *string {
+	return s.PublicUrl
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) SetPrivateUrl(v string) *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl {
+	s.PrivateUrl = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) SetPublicUrl(v string) *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl {
+	s.PublicUrl = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterDetailResponseBodyNodeCount struct {
+	// example:
+	//
+	// 3
+	Ready *int32 `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// example:
+	//
+	// 3
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyNodeCount) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyNodeCount) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyNodeCount) GetReady() *int32 {
+	return s.Ready
+}
+
+func (s *DescribeClusterDetailResponseBodyNodeCount) GetTotal() *int32 {
+	return s.Total
+}
+
+func (s *DescribeClusterDetailResponseBodyNodeCount) SetReady(v int32) *DescribeClusterDetailResponseBodyNodeCount {
+	s.Ready = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyNodeCount) SetTotal(v int32) *DescribeClusterDetailResponseBodyNodeCount {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyNodeCount) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterDetailResponseBodyPodStatus struct {
+	// example:
+	//
+	// 10
+	Running *int32 `json:"Running,omitempty" xml:"Running,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyPodStatus) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyPodStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyPodStatus) GetRunning() *int32 {
+	return s.Running
+}
+
+func (s *DescribeClusterDetailResponseBodyPodStatus) GetTotal() *int32 {
+	return s.Total
+}
+
+func (s *DescribeClusterDetailResponseBodyPodStatus) SetRunning(v int32) *DescribeClusterDetailResponseBodyPodStatus {
+	s.Running = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyPodStatus) SetTotal(v int32) *DescribeClusterDetailResponseBodyPodStatus {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyPodStatus) Validate() error {
 	return dara.Validate(s)
 }

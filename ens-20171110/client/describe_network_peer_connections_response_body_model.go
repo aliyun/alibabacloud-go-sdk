@@ -22,19 +22,28 @@ type iDescribeNetworkPeerConnectionsResponseBody interface {
 }
 
 type DescribeNetworkPeerConnectionsResponseBody struct {
+	// A list of the network peering connections.
 	NetworkPeerConnects []*DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnects `json:"NetworkPeerConnects,omitempty" xml:"NetworkPeerConnects,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -108,36 +117,60 @@ func (s *DescribeNetworkPeerConnectionsResponseBody) Validate() error {
 }
 
 type DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnects struct {
+	// Details of the accepter network.
 	AcceptingNetwork *DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsAcceptingNetwork `json:"AcceptingNetwork,omitempty" xml:"AcceptingNetwork,omitempty" type:"Struct"`
+	// The network ID of the accepter.
+	//
 	// example:
 	//
 	// n-5q28114****
 	AcceptingNetworkId *string `json:"AcceptingNetworkId,omitempty" xml:"AcceptingNetworkId,omitempty"`
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2024-05-31T06:43:29Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the network peering connection.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the ENS node.
+	//
 	// example:
 	//
 	// cn-dongguan-9
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the network peering connection.
+	//
 	// example:
 	//
 	// pcc-521pzxdg****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the network peering connection.
+	//
 	// example:
 	//
 	// test
-	Name    *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Details of the requester network.
 	Network *DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The network ID of the requester.
+	//
 	// example:
 	//
 	// n-5q73bm****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The status of the network peering connection. Valid values:
+	//
+	// - `Creating`: The connection is being created.
+	//
+	// - `Activated`: The connection is active.
+	//
+	// - `Deleting`: The connection is being deleted.
+	//
 	// example:
 	//
 	// Activated
@@ -257,7 +290,10 @@ func (s *DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnects) Validate
 }
 
 type DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsAcceptingNetwork struct {
+	// The CIDR blocks of the accepter network.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
+	// The network ID of the accepter.
+	//
 	// example:
 	//
 	// n-5q28114****
@@ -295,7 +331,10 @@ func (s *DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsAcceptingN
 }
 
 type DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsNetwork struct {
+	// The CIDR blocks of the requester network.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
+	// The network ID of the requester.
+	//
 	// example:
 	//
 	// n-5q73bm****

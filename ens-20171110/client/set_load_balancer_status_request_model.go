@@ -22,13 +22,13 @@ type SetLoadBalancerStatusRequest struct {
 	//
 	// example:
 	//
-	// lb-5t18quoohsrc3xkf86spmnu77
+	// lb-5t18quoohsrc3xkf86sp*****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The new instance status. Valid values:
 	//
-	// 	- **Active**
+	// - **Active**
 	//
-	// 	- **InActive**
+	// - **InActive**
 	//
 	// This parameter is required.
 	//

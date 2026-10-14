@@ -30,31 +30,31 @@ type ListAICPublicKeyDeliveriesRequest struct {
 	//
 	// aic-xxxx-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Public Key Grouping
+	// The group of the public key.
 	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
-	// Public Key Name
+	// The name of the public key.
 	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// Public key type
+	// The type of the public key.
 	//
 	// example:
 	//
 	// adb
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The page number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records to display per page.
 	//
 	// example:
 	//

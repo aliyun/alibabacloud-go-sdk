@@ -28,7 +28,7 @@ type iDescribeEpnBandWidthDataRequest interface {
 }
 
 type DescribeEpnBandWidthDataRequest struct {
-	// The ID of the EPN instance.
+	// The instance ID of the edge-to-edge network.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type DescribeEpnBandWidthDataRequest struct {
 	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
 	// The end of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// - The time must be in UTC and in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
 	//
-	// 	- If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	// - If the seconds value is not 00, the end time is automatically set to the beginning of the next minute.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type DescribeEpnBandWidthDataRequest struct {
 	//
 	// 2021-12-16T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeEpnBandWidthDataRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Internet service provider (ISP). Valid values:
 	//
-	// 	- cmcc: China Mobile
+	// - cmcc: China Mobile.
 	//
-	// 	- telecom: China Telecom
+	// - telecom: China Telecom.
 	//
-	// 	- unicom: China Unicom
+	// - unicom: China Unicom.
 	//
-	// 	- multiCarrier: multi-line ISP
+	// - multiCarrier: multi-ISP.
 	//
 	// example:
 	//
@@ -74,17 +74,17 @@ type DescribeEpnBandWidthDataRequest struct {
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	// The networking mode. Valid values:
 	//
-	// 	- **SpeedUp**: intelligent acceleration network (Internet)
+	// - **SpeedUp**: intelligent acceleration (public network).
 	//
-	// 	- **Connection**: internal network
+	// - **Connection**: internal network connectivity (internal network mode).
 	//
-	// 	- **SpeedUpAndConnection**: intelligent acceleration network and internal network
+	// - **SpeedUpAndConnection**: intelligent acceleration and internal network connectivity (internal network mode).
 	//
 	// example:
 	//
 	// SpeedUp
 	NetworkingModel *string `json:"NetworkingModel,omitempty" xml:"NetworkingModel,omitempty"`
-	// The precision of the monitoring data that you want to obtain. Valid values: 300, 1200, 3600, and 14400. Default value: 300. Unit: seconds.
+	// The precision of the monitoring data. Valid values: 300 (default), 1200, 3600, and 14400. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -92,11 +92,11 @@ type DescribeEpnBandWidthDataRequest struct {
 	//
 	// 300
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The beginning of the time range to query.
+	// The start of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// - The time must be in UTC and in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
 	//
-	// 	- If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	// - If the seconds value is not 00, the start time is automatically set to the beginning of the next minute.
 	//
 	// This parameter is required.
 	//

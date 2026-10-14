@@ -16,13 +16,13 @@ type iCreateNatGatewayResponseBody interface {
 }
 
 type CreateNatGatewayResponseBody struct {
-	// The ID of the NAT gateway.
+	// The instance ID of the created NAT gateway.
 	//
 	// example:
 	//
 	// nat-5t7nh1cfm6kxiszlttr38****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

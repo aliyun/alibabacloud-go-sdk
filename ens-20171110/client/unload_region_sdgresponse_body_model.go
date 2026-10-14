@@ -16,7 +16,7 @@ type iUnloadRegionSDGResponseBody interface {
 }
 
 type UnloadRegionSDGResponseBody struct {
-	// The returned data object.
+	// The returned Data object.
 	Data *UnloadRegionSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *UnloadRegionSDGResponseBody) Validate() error {
 }
 
 type UnloadRegionSDGResponseBodyData struct {
-	// The response message. Success is returned for a successful request.
+	// The response message. A value of success indicates a successful request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution result of the synchronization request.
+	// The execution result of the synchronous request.
 	Result *UnloadRegionSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all tasks are successful. Valid values:
+	// Indicates whether all requests were successful. Valid values:
 	//
-	// 	- true: All tasks are successful.
+	// - true: All requests were successful.
 	//
-	// 	- false: Failed tasks exist.
+	// - false: Some requests failed.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *UnloadRegionSDGResponseBodyData) Validate() error {
 }
 
 type UnloadRegionSDGResponseBodyDataResult struct {
-	// The number of failed tasks.
+	// The total number of failed requests.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details about the failed tasks.
+	// The list of failure details.
 	FailedItems []*UnloadRegionSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successful tasks.
+	// The number of successes.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ func (s *UnloadRegionSDGResponseBodyDataResult) Validate() error {
 }
 
 type UnloadRegionSDGResponseBodyDataResultFailedItems struct {
-	// The ID of the destination node.
+	// The ID of the destination edge zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-xxx
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The error message that is returned.
+	// The error message.
 	//
 	// example:
 	//

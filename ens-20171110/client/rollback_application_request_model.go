@@ -20,7 +20,9 @@ type iRollbackApplicationRequest interface {
 }
 
 type RollbackApplicationRequest struct {
-	// The ID of the application.
+	// The application ID.
+	//
+	// The AppId is returned by the CreateApplication operation. FromAppVersion and ToAppVersion must be existing versions created by calling CreateAppVersion. You can call ListAppVersions to query the versions.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +30,7 @@ type RollbackApplicationRequest struct {
 	//
 	// 474bdef0-d149-4695-abfb-52912d91****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The current version number.
+	// The version number to be rolled back.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +38,13 @@ type RollbackApplicationRequest struct {
 	//
 	// v2-1
 	FromAppVersion *string `json:"FromAppVersion,omitempty" xml:"FromAppVersion,omitempty"`
-	// The timeout period of the asynchronous rollback operation. Unit: seconds. Default value: 300.
+	// The timeout period for the asynchronous rollback operation. Unit: seconds. Default value: 300.
 	//
 	// example:
 	//
 	// 1800
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The target version number. By default, the system automatically rolls back the container version to the previous version.
+	// The target version number. By default, the application is automatically rolled back to the previous version.
 	//
 	// example:
 	//

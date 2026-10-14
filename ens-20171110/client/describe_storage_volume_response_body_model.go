@@ -143,9 +143,9 @@ type DescribeStorageVolumeResponseBodyStorageVolumes struct {
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	// Indicates whether authentication is enabled. Valid values:
 	//
-	// 	- **1**: Authentication is enabled.
+	// - **1**: Authentication is enabled.
 	//
-	// 	- **0*	- (default): Authentication is disabled.
+	// - **0*	- (default): Authentication is disabled.
 	//
 	// example:
 	//
@@ -153,9 +153,9 @@ type DescribeStorageVolumeResponseBodyStorageVolumes struct {
 	IsAuth *int32 `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
 	// Indicates whether the volume is enabled. Valid values:
 	//
-	// 	- **1*	- (default): The volume is enabled.
+	// - **1*	- (default): The volume is enabled.
 	//
-	// 	- **0**: The volume is disabled.
+	// - **0**: The volume is disabled.
 	//
 	// example:
 	//
@@ -163,13 +163,13 @@ type DescribeStorageVolumeResponseBodyStorageVolumes struct {
 	IsEnable *int32 `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
 	// The status of the volume. Valid values:
 	//
-	// 	- creating
+	// - creating
 	//
-	// 	- available
+	// - available
 	//
-	// 	- deleting
+	// - deleting
 	//
-	// 	- deleted
+	// - deleted
 	//
 	// example:
 	//

@@ -34,17 +34,17 @@ type CreateEnsRouteEntryRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block of the custom route entry. Make sure that the following requirements are met:
 	//
-	// 	- The destination CIDR block cannot point or belong to 100.64.0.0/10.
+	// - The destination CIDR block cannot point or belong to 100.64.0.0/10.
 	//
-	// 	- The destination CIDR blocks of the custom route entries in the same route table cannot overlap.
+	// - The destination CIDR blocks of the custom route entries in the same route table cannot overlap.
 	//
-	// 	- 0.0.0.0/0 indicates the default CIDR block.
+	// - 0.0.0.0/0 indicates the default CIDR block.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// 120.XXX.XXX.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// The ID of the next hop of the custom route entry.
 	//
@@ -56,17 +56,17 @@ type CreateEnsRouteEntryRequest struct {
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
 	// The next hop type of the custom route. Valid values:
 	//
-	// 	- Instance: an ENS instance.
+	// - Instance: an ENS instance.
 	//
-	// 	- HaVip: a high-availability virtual IP address (HAVIP).
+	// - HaVip: a high-availability virtual IP address (HAVIP).
 	//
-	// 	- NetworkPeer: VPC peering connection.
+	// - NetworkPeer: VPC peering connection.
 	//
 	// example:
 	//
 	// Instance
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The name of the custom route entry that you want to add. The name must be 1 to 128 characters in length. It cannot start with http:// or https://.
+	// The name of the custom route entry that you want to add. The name must be 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iEventRedeployInstanceRequest interface {
 }
 
 type EventRedeployInstanceRequest struct {
-  // The ID of the system event.
+  // The system event ID.
   // 
   // This parameter is required.
   // 
@@ -30,11 +30,11 @@ type EventRedeployInstanceRequest struct {
   // 
   // e-d71ff150945b9c02eb6ebc0016328468
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-  // The type of the O\\&M task. Valid values:
+  // The O\\&M task type. Valid values:
   // 
-  // 	- immediate
+  // - immediate: Immediate execution.
   // 
-  // 	- scheduled
+  // - scheduled: Scheduled execution.
   // 
   // This parameter is required.
   // 
@@ -42,14 +42,14 @@ type EventRedeployInstanceRequest struct {
   // 
   // immediate
   OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
-  // The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
+  // The scheduled execution time, specified as a timestamp in milliseconds. This parameter is required if \\"OpsType\\" is set to \\"scheduled\\".
   // 
   // example:
   // 
   // 1742452232000
   PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
   PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
-  // The ID of the resource.
+  // The resource ID.
   // 
   // This parameter is required.
   // 

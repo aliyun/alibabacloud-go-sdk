@@ -16,13 +16,13 @@ type iCreateEipInstanceResponseBody interface {
 }
 
 type CreateEipInstanceResponseBody struct {
-	// The ID of the EIP.
+	// The ID of the EIP instance.
 	//
 	// example:
 	//
 	// eip-25877c70gddh****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

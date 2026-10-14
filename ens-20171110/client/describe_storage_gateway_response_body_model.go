@@ -151,13 +151,13 @@ type DescribeStorageGatewayResponseBodyStorageGateways struct {
 	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
 	// The status of the storage gateway. Valid values:
 	//
-	// 	- creating
+	// - creating
 	//
-	// 	- available
+	// - available
 	//
-	// 	- deleting
+	// - deleting
 	//
-	// 	- deleted
+	// - deleted
 	//
 	// example:
 	//

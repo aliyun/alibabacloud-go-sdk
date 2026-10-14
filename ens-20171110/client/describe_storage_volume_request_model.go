@@ -40,9 +40,9 @@ type DescribeStorageVolumeRequest struct {
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// Specifies whether to enable the volume. Valid values:
 	//
-	// 	- **1*	- (default): enables the volume.
+	// - **1*	- (default): enables the volume.
 	//
-	// 	- **0**: disables the volume.
+	// - **0**: disables the volume.
 	//
 	// example:
 	//

@@ -16,12 +16,16 @@ type iGetClusterAddonInstanceRequest interface {
 }
 
 type GetClusterAddonInstanceRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The add-on name.
+	//
 	// This parameter is required.
 	//
 	// example:

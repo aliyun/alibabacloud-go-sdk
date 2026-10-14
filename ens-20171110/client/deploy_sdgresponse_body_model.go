@@ -16,9 +16,9 @@ type iDeploySDGResponseBody interface {
 }
 
 type DeploySDGResponseBody struct {
-	// The returned data object.
+	// The returned Data object.
 	Data *DeploySDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DeploySDGResponseBody) Validate() error {
 }
 
 type DeploySDGResponseBodyData struct {
-	// The response message. Success is returned for a successful request.
+	// The response message. A value of success indicates a successful request.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type DeploySDGResponseBodyData struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The task result.
 	Result *DeploySDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all tasks are successful. Valid values:
+	// Indicates whether all requests are successful. Valid values:
 	//
-	// 	- true: All tasks are successful.
+	// - true: All successful.
 	//
-	// 	- false: Failed tasks exist.
+	// - false: Some tasks failed.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DeploySDGResponseBodyDataResult struct {
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details of failed tasks.
+	// The list of failed task details.
 	FailedItems []*DeploySDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
 	// The number of successful tasks.
 	//
@@ -198,7 +198,7 @@ type DeploySDGResponseBodyDataResultFailedItems struct {
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

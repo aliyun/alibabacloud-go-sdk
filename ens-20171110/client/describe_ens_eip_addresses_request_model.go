@@ -38,33 +38,33 @@ type iDescribeEnsEipAddressesRequest interface {
 }
 
 type DescribeEnsEipAddressesRequest struct {
-	// The ID of the EIP that you want to query. You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+	// The ID of the EIP instance to query. You can specify up to 50 EIP instance IDs separated by commas (,).
 	//
 	// example:
 	//
 	// eip-5q9uwkd9bznjpxz8hr6cirnjk
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The ID of the instance with which you want to associate the EIP.
+	// The instance ID of the cloud service.
 	//
 	// example:
 	//
 	// lb-5t18quoohsrc3xkf86spmnu77
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	// The type of the instance that is associated with the EIP. Valid values:
+	// The type of the cloud service instance to associate. Valid values:
 	//
-	// 	- **EnsInstance**: ENS instance in a VPC
+	// - **EnsInstance**: a VPC-type ENS instance.
 	//
-	// 	- **SlbInstance**: SLB instance
+	// - **SlbInstance**: a load balancing instance.
 	//
 	// example:
 	//
 	// SlbInstance
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// The EIP that you want to query. You can specify up to 50 EIPs. Separate multiple EIPs with commas (,).
+	// The IP address of the EIP to query. You can specify up to 50 EIP addresses separated by commas (,).
 	//
 	// example:
 	//
-	// 192.168.0.1
+	// 120.XXX.XXX.4
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
 	// The name of the EIP.
 	//
@@ -72,42 +72,60 @@ type DescribeEnsEipAddressesRequest struct {
 	//
 	// test
 	EipName *string `json:"EipName,omitempty" xml:"EipName,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
 	// cn-chengdu-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of edge nodes. You can specify 1 to 100 IDs.
-	EnsRegionIds     []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	IcmpReplyEnabled *bool     `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	// The array of ENS edge zone IDs. Array length: 1 to 100.
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	// Specifies whether ICMP echo reply is enabled. Valid values:
+	//
+	// - **true*	- (default): enabled.
+	//
+	// - **false**: disabled.
+	//
+	// example:
+	//
+	// false
+	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	// The lock type.
+	//
+	// - financial: locked due to overdue payment.
+	//
 	// example:
 	//
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The page number. Default value: 1.
+	// The page number of the list. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 100. Default value: 10.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether the EIP is a secondary EIP. Valid values:
+	// Specifies whether the EIP is a standby EIP. Valid values:
 	//
-	// 	- **true**
+	// - **true**: standby.
 	//
-	// 	- **false**
+	// - **false**: not standby.
 	//
 	// example:
 	//
 	// true
 	Standby *string `json:"Standby,omitempty" xml:"Standby,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the EIP. Valid values: Associating: being associated. Unassociating: being disassociated. InUse: allocated. Available: available.
+	//
+	// example:
+	//
+	// InUse
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesRequest) String() string {

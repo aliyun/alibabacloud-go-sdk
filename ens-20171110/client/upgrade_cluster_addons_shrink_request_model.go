@@ -16,7 +16,10 @@ type iUpgradeClusterAddonsShrinkRequest interface {
 }
 
 type UpgradeClusterAddonsShrinkRequest struct {
+	// The component information.
 	AddonsShrink *string `json:"Addons,omitempty" xml:"Addons,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

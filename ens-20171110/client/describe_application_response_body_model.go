@@ -22,411 +22,411 @@ type DescribeApplicationResponseBody struct {
 	//
 	// {
 	//
-	//     "AppMetaData":{
+	//     "AppMetaData":{
 	//
-	//         "AppId":"b0b27670-87d5-4c40-9ea8-adeeec2986ce",
+	//         "AppId":"b0b27670-87d5-4c40-9ea8-adeeec2986ce",
 	//
-	//         "AppName":"asp-yz",
+	//         "AppName":"asp-yz",
 	//
-	//         "ClusterName":"poc",
+	//         "ClusterName":"poc",
 	//
-	//         "AppStableVersion":"0825",
+	//         "AppStableVersion":"0825",
 	//
-	//         "AppType":"Scheduler",
+	//         "AppType":"Scheduler",
 	//
-	//         "Description":"Daily testing CPU environment",
+	//         "Description":"Daily test CPU environment",
 	//
-	//         "CreateTime":"2020-08-25 16:36:16"
+	//         "CreateTime":"2020-08-25 16:36:16"
 	//
-	//     },
+	//     },
 	//
-	//     "AppStatus":{
+	//     "AppStatus":{
 	//
-	//         "Phase":"RUNNING",
+	//         "Phase":"RUNNING",
 	//
-	//         "StatusDescrip":"{\\"status\\":\\"UPDATE_SUCCESS\\",\\"step\\":\\"DONE\\",\\"descrip\\":\\"delVersion success\\",\\"start_time\\":\\"2021-08-18 14:46:45\\"}",
+	//         "StatusDescrip":"{\\"status\\":\\"UPDATE_SUCCESS\\",\\"step\\":\\"DONE\\",\\"descrip\\":\\"delVersion success\\",\\"start_time\\":\\"2021-08-18 14:46:45\\"}",
 	//
-	//         "UpdateTime":"2021-08-18 14:46:45"
+	//         "UpdateTime":"2021-08-18 14:46:45"
 	//
-	//     },
+	//     },
 	//
-	//     "ResourceAttribute":{
+	//     "ResourceAttribute":{
 	//
-	//         "ResourceType":"Ens",
+	//         "ResourceType":"Ens",
 	//
-	//         "ResourceAgent":"Linux",
+	//         "ResourceAgent":"Linux",
 	//
-	//         "InstanceSpec":"ens.sn1.large",
+	//         "InstanceSpec":"ens.sn1.large",
 	//
-	//         "SystemDiskSize":40,
+	//         "SystemDiskSize":40,
 	//
-	//         "DataDiskSize":0,
+	//         "DataDiskSize":0,
 	//
-	//         "BandwithOut":10,
+	//         "BandwithOut":10,
 	//
-	//         "SchedulingStrategy":"Disperse",
+	//         "SchedulingStrategy":"Disperse",
 	//
-	//         "AreaLevel":"RegionId",
+	//         "AreaLevel":"RegionId",
 	//
-	//         "IpType":"PublicIP"
+	//         "IpType":"PublicIP"
 	//
-	//     },
+	//     },
 	//
-	//     "WorkloadAttribute":[
+	//     "WorkloadAttribute":[
 	//
-	//         {
+	//         {
 	//
-	//             "Name":"andorid",
+	//             "Name":"andorid",
 	//
-	//             "PodCount":7,
+	//             "PodCount":7,
 	//
-	//             "ServiceConfig":{
+	//             "ServiceConfig":{
 	//
-	//                 "PortsBindConfig":{
+	//                 "PortsBindConfig":{
 	//
-	//                     "NetServiceContainer":"aspserver-android",
+	//                     "NetServiceContainer":"aspserver-android",
 	//
-	//                     "Ports":[
+	//                     "Ports":[
 	//
-	//                         {
+	//                         {
 	//
-	//                             "Protocol":"TCP",
+	//                             "Protocol":"TCP",
 	//
-	//                             "BindType":"PassThrough",
+	//                             "BindType":"PassThrough",
 	//
-	//                             "StartNodePorts":"5000-5000",
+	//                             "StartNodePorts":"5000-5000",
 	//
-	//                             "ContainerPorts":"5000-5000"
+	//                             "ContainerPorts":"5000-5000"
 	//
-	//                         },
+	//                         },
 	//
-	//                         {
+	//                         {
 	//
-	//                             "Protocol":"UDP",
+	//                             "Protocol":"UDP",
 	//
-	//                             "BindType":"PassThrough",
+	//                             "BindType":"PassThrough",
 	//
-	//                             "StartNodePorts":"4001-4010",
+	//                             "StartNodePorts":"4001-4010",
 	//
-	//                             "ContainerPorts":"4001-4010"
+	//                             "ContainerPorts":"4001-4010"
 	//
-	//                         }
+	//                         }
 	//
-	//                     ]
+	//                     ]
 	//
-	//                 },
+	//                 },
 	//
-	//                 "ServiceContainerName":"android"
+	//                 "ServiceContainerName":"android"
 	//
-	//             }
+	//             }
 	//
-	//         },
+	//         },
 	//
-	//         {
+	//         {
 	//
-	//             "Name":"aic-manager",
+	//             "Name":"aic-manager",
 	//
-	//             "PodCount":1,
+	//             "PodCount":1,
 	//
-	//             "ServiceConfig":null
+	//             "ServiceConfig":null
 	//
-	//         }
+	//         }
 	//
-	//     ],
+	//     ],
 	//
-	//     "DetailStat":{
+	//     "DetailStat":{
 	//
-	//         "Level":"Small",
+	//         "Level":"Small",
 	//
-	//         "InstanceTotalCount":1,
+	//         "InstanceTotalCount":1,
 	//
-	//         "InstanceRunningCount":0,
+	//         "InstanceRunningCount":0,
 	//
-	//         "PodCountStat":[
+	//         "PodCountStat":[
 	//
-	//             {
+	//             {
 	//
-	//                 "Name":"andorid",
+	//                 "Name":"andorid",
 	//
-	//                 "RunningCount":7,
+	//                 "RunningCount":7,
 	//
-	//                 "ProducedCount":7,
+	//                 "ProducedCount":7,
 	//
-	//                 "Devices":null
+	//                 "Devices":null
 	//
-	//             },
+	//             },
 	//
-	//             {
+	//             {
 	//
-	//                 "Name":"aic-manager",
+	//                 "Name":"aic-manager",
 	//
-	//                 "RunningCount":1,
+	//                 "RunningCount":1,
 	//
-	//                 "ProducedCount":1,
+	//                 "ProducedCount":1,
 	//
-	//                 "Devices":null
+	//                 "Devices":null
 	//
-	//             }
+	//             }
 	//
-	//         ],
+	//         ],
 	//
-	//         "AppVersionStat":[
+	//         "AppVersionStat":[
 	//
-	//             {
+	//             {
 	//
-	//                 "AppVersion":"08102",
+	//                 "AppVersion":"08102",
 	//
-	//                 "Descrip":"White Screen Test 2",
+	//                 "Descrip":"GUI-based test 2",
 	//
-	//                 "CreateTime":"2021-08-10 11:20:04",
+	//                 "CreateTime":"2021-08-10 11:20:04",
 	//
-	//                 "InstanceTotalCount":1,
+	//                 "InstanceTotalCount":1,
 	//
-	//                 "InstanceRunningCount":0,
+	//                 "InstanceRunningCount":0,
 	//
-	//                 "PodCountStat":[
+	//                 "PodCountStat":[
 	//
-	//                     {
+	//                     {
 	//
-	//                         "Name":"andorid",
+	//                         "Name":"andorid",
 	//
-	//                         "RunningCount":7,
+	//                         "RunningCount":7,
 	//
-	//                         "ProducedCount":7,
+	//                         "ProducedCount":7,
 	//
-	//                         "Devices":null
+	//                         "Devices":null
 	//
-	//                     },
+	//                     },
 	//
-	//                     {
+	//                     {
 	//
-	//                         "Name":"aic-manager",
+	//                         "Name":"aic-manager",
 	//
-	//                         "RunningCount":1,
+	//                         "RunningCount":1,
 	//
-	//                         "ProducedCount":1,
+	//                         "ProducedCount":1,
 	//
-	//                         "Devices":null
+	//                         "Devices":null
 	//
-	//                     }
+	//                     }
 	//
-	//                 ],
+	//                 ],
 	//
-	//                 "DistrictStat":[
+	//                 "DistrictStat":[
 	//
-	//                     {
+	//                     {
 	//
-	//                         "AreaCode":"310100",
+	//                         "AreaCode":"310100",
 	//
-	//                         "AreaName":"East China,,",
+	//                         "AreaName":"East China,,",
 	//
-	//                         "RegionCode":"310100",
+	//                         "RegionCode":"310100",
 	//
-	//                         "RegionName":"",
+	//                         "RegionName":"",
 	//
-	//                         "IspCode":"telecom",
+	//                         "IspCode":"telecom",
 	//
-	//                         "RegionIds":[
+	//                         "RegionIds":[
 	//
-	//                             "cn-shanghai-telecom-2"
+	//                             "cn-shanghai-telecom-2"
 	//
-	//                         ],
+	//                         ],
 	//
-	//                         "InstanceTotalCount":1,
+	//                         "InstanceTotalCount":1,
 	//
-	//                         "InstanceRunningCount":0,
+	//                         "InstanceRunningCount":0,
 	//
-	//                         "PodCountStat":[
+	//                         "PodCountStat":[
 	//
-	//                             {
+	//                             {
 	//
-	//                                 "Name":"andorid",
+	//                                 "Name":"andorid",
 	//
-	//                                 "RunningCount":7,
+	//                                 "RunningCount":7,
 	//
-	//                                 "ProducedCount":7,
+	//                                 "ProducedCount":7,
 	//
-	//                                 "Devices":null
+	//                                 "Devices":null
 	//
-	//                             },
+	//                             },
 	//
-	//                             {
+	//                             {
 	//
-	//                                 "Name":"aic-manager",
+	//                                 "Name":"aic-manager",
 	//
-	//                                 "RunningCount":1,
+	//                                 "RunningCount":1,
 	//
-	//                                 "ProducedCount":1,
+	//                                 "ProducedCount":1,
 	//
-	//                                 "Devices":null
+	//                                 "Devices":null
 	//
-	//                             }
+	//                             }
 	//
-	//                         ],
+	//                         ],
 	//
-	//                         "InstanceStat":[
+	//                         "InstanceStat":[
 	//
-	//                             {
+	//                             {
 	//
-	//                                 "InstanceId":"i-xxxxxxx",
+	//                                 "InstanceId":"i-xxxxxxx",
 	//
-	//                                 "PublicIps":[
+	//                                 "PublicIps":[
 	//
-	//                                     {
+	//                                     {
 	//
-	//                                         "PublicIp":"101.227.7.12",
+	//                                         "PublicIp":"101.227.7.12",
 	//
-	//                                         "Isp":"telecom"
+	//                                         "Isp":"telecom"
 	//
-	//                                     }
+	//                                     }
 	//
-	//                                 ],
+	//                                 ],
 	//
-	//                                 "InternalIps":[
+	//                                 "InternalIps":[
 	//
-	//                                     {
+	//                                     {
 	//
-	//                                         "Ip":"10.0.1.4"
+	//                                         "Ip":"10.0.1.4"
 	//
-	//                                     }
+	//                                     }
 	//
-	//                                 ],
+	//                                 ],
 	//
-	//                                 "RegionId":"cn-shanghai-telecom-2",
+	//                                 "RegionId":"cn-shanghai-telecom-2",
 	//
-	//                                 "NcName":"",
+	//                                 "NcName":"",
 	//
-	//                                 "InstanceStatus":"",
+	//                                 "InstanceStatus":"",
 	//
-	//                                 "CreateTime":"2020-09-12 22:33:08",
+	//                                 "CreateTime":"2020-09-12 22:33:08",
 	//
-	//                                 "PodCountStat":[
+	//                                 "PodCountStat":[
 	//
-	//                                     {
+	//                                     {
 	//
-	//                                         "Name":"andorid",
+	//                                         "Name":"andorid",
 	//
-	//                                         "RunningCount":7,
+	//                                         "RunningCount":7,
 	//
-	//                                         "ProducedCount":7,
+	//                                         "ProducedCount":7,
 	//
-	//                                         "Devices":[
+	//                                         "Devices":[
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-0",
+	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-0",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             },
+	//                                             },
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-1",
+	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-1",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             },
+	//                                             },
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-2",
+	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-2",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             },
+	//                                             },
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-3",
+	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-3",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             },
+	//                                             },
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-4",
+	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-4",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             },
+	//                                             },
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-5",
+	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-5",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             },
+	//                                             },
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-6",
+	//                                                 "Name":"asp-yz-andorid-08102-zjzmcyaw-6",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             }
+	//                                             }
 	//
-	//                                         ]
+	//                                         ]
 	//
-	//                                     },
+	//                                     },
 	//
-	//                                     {
+	//                                     {
 	//
-	//                                         "Name":"aic-manager",
+	//                                         "Name":"aic-manager",
 	//
-	//                                         "RunningCount":1,
+	//                                         "RunningCount":1,
 	//
-	//                                         "ProducedCount":1,
+	//                                         "ProducedCount":1,
 	//
-	//                                         "Devices":[
+	//                                         "Devices":[
 	//
-	//                                             {
+	//                                             {
 	//
-	//                                                 "Name":"asp-yz-aic-manager-08102-zjzmcyaw-0",
+	//                                                 "Name":"asp-yz-aic-manager-08102-zjzmcyaw-0",
 	//
-	//                                                 "Status":"Running",
+	//                                                 "Status":"Running",
 	//
-	//                                                 "Ports":null
+	//                                                 "Ports":null
 	//
-	//                                             }
+	//                                             }
 	//
-	//                                         ]
+	//                                         ]
 	//
-	//                                     }
+	//                                     }
 	//
-	//                                 ],
+	//                                 ],
 	//
-	//                                 "AppVersionDescrip":""
+	//                                 "AppVersionDescrip":""
 	//
-	//                             }
+	//                             }
 	//
-	//                         ]
+	//                         ]
 	//
-	//                     }
+	//                     }
 	//
-	//                 ]
+	//                 ]
 	//
-	//             }
+	//             }
 	//
-	//         ]
+	//         ]
 	//
-	//     }
+	//     }
 	//
 	// }
 	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`

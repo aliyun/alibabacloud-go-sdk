@@ -66,13 +66,13 @@ type DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info struct {
 	//
 	// example:
 	//
-	// cn-chengdu-xxxx-4
+	// cn-chengdu-****-4
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	// Specifies whether IPv6 is supported. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

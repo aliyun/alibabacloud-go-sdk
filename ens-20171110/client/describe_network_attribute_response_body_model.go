@@ -25,6 +25,8 @@ type iDescribeNetworkAttributeResponseBody interface {
 	GetHaVipIds() *DescribeNetworkAttributeResponseBodyHaVipIds
 	SetInstanceIds(v *DescribeNetworkAttributeResponseBodyInstanceIds) *DescribeNetworkAttributeResponseBody
 	GetInstanceIds() *DescribeNetworkAttributeResponseBodyInstanceIds
+	SetIpv6CidrBlocks(v *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks) *DescribeNetworkAttributeResponseBody
+	GetIpv6CidrBlocks() *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks
 	SetLoadBalancerIds(v *DescribeNetworkAttributeResponseBodyLoadBalancerIds) *DescribeNetworkAttributeResponseBody
 	GetLoadBalancerIds() *DescribeNetworkAttributeResponseBodyLoadBalancerIds
 	SetNatGatewayIds(v *DescribeNetworkAttributeResponseBodyNatGatewayIds) *DescribeNetworkAttributeResponseBody
@@ -61,7 +63,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	// 10.0.0.0/24
 	CidrBlock      *string                                             `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	CloudResources *DescribeNetworkAttributeResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Struct"`
-	// The time when the network was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time at which the network was created. The time is in UTC and is formatted as yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -73,13 +75,13 @@ type DescribeNetworkAttributeResponseBody struct {
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the edge node.
+	// The ID of the ENS node.
 	//
 	// example:
 	//
 	// cn-beijing
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the gateway route table.
+	// The gateway route table ID.
 	//
 	// example:
 	//
@@ -87,22 +89,23 @@ type DescribeNetworkAttributeResponseBody struct {
 	GatewayRouteTableId *string                                              `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
 	HaVipIds            *DescribeNetworkAttributeResponseBodyHaVipIds        `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
 	InstanceIds         *DescribeNetworkAttributeResponseBodyInstanceIds     `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	Ipv6CidrBlocks      *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks  `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
 	LoadBalancerIds     *DescribeNetworkAttributeResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
 	NatGatewayIds       *DescribeNetworkAttributeResponseBodyNatGatewayIds   `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
-	// The ID of the network access control list (ACL).
+	// The ID of the network ACL.
 	//
 	// example:
 	//
 	// nacl-a2do9e413e0sp****
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-5***
 	NetworkId           *string                                                  `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkInterfaceIds *DescribeNetworkAttributeResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
-	// The name of the network.
+	// The network name.
 	//
 	// example:
 	//
@@ -114,14 +117,14 @@ type DescribeNetworkAttributeResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the route table.
+	// The route table ID.
 	//
 	// example:
 	//
 	// rt-539***fpu
 	RouteTableId  *string                                            `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	RouteTableIds *DescribeNetworkAttributeResponseBodyRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
-	// The ID of the route table.
+	// The route table ID.
 	//
 	// example:
 	//
@@ -130,9 +133,9 @@ type DescribeNetworkAttributeResponseBody struct {
 	SecondaryCidrBlocks *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 	// The status of the network. Valid values:
 	//
-	// 	- Pending
+	// - Pending: The network is being configured.
 	//
-	// 	- Available
+	// - Available: The network is ready for use.
 	//
 	// example:
 	//
@@ -179,6 +182,10 @@ func (s *DescribeNetworkAttributeResponseBody) GetHaVipIds() *DescribeNetworkAtt
 
 func (s *DescribeNetworkAttributeResponseBody) GetInstanceIds() *DescribeNetworkAttributeResponseBodyInstanceIds {
 	return s.InstanceIds
+}
+
+func (s *DescribeNetworkAttributeResponseBody) GetIpv6CidrBlocks() *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks {
+	return s.Ipv6CidrBlocks
 }
 
 func (s *DescribeNetworkAttributeResponseBody) GetLoadBalancerIds() *DescribeNetworkAttributeResponseBodyLoadBalancerIds {
@@ -273,6 +280,11 @@ func (s *DescribeNetworkAttributeResponseBody) SetInstanceIds(v *DescribeNetwork
 	return s
 }
 
+func (s *DescribeNetworkAttributeResponseBody) SetIpv6CidrBlocks(v *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks) *DescribeNetworkAttributeResponseBody {
+	s.Ipv6CidrBlocks = v
+	return s
+}
+
 func (s *DescribeNetworkAttributeResponseBody) SetLoadBalancerIds(v *DescribeNetworkAttributeResponseBodyLoadBalancerIds) *DescribeNetworkAttributeResponseBody {
 	s.LoadBalancerIds = v
 	return s
@@ -351,6 +363,11 @@ func (s *DescribeNetworkAttributeResponseBody) Validate() error {
 	}
 	if s.InstanceIds != nil {
 		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6CidrBlocks != nil {
+		if err := s.Ipv6CidrBlocks.Validate(); err != nil {
 			return err
 		}
 	}
@@ -503,6 +520,94 @@ func (s *DescribeNetworkAttributeResponseBodyInstanceIds) SetInstanceId(v []*str
 }
 
 func (s *DescribeNetworkAttributeResponseBodyInstanceIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNetworkAttributeResponseBodyIpv6CidrBlocks struct {
+	Ipv6CidrBlock []*DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyIpv6CidrBlocks) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyIpv6CidrBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks) GetIpv6CidrBlock() []*DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock {
+	return s.Ipv6CidrBlock
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks) SetIpv6CidrBlock(v []*DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks {
+	s.Ipv6CidrBlock = v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocks) Validate() error {
+	if s.Ipv6CidrBlock != nil {
+		for _, item := range s.Ipv6CidrBlock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock struct {
+	// example:
+	//
+	// 2408:XXXX:0:a600::/110
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// example:
+	//
+	// telecom
+	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	// example:
+	//
+	// system
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) GetIpv6CidrBlock() *string {
+	return s.Ipv6CidrBlock
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) GetIpv6Isp() *string {
+	return s.Ipv6Isp
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) SetIpv6CidrBlock(v string) *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) SetIpv6Isp(v string) *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock {
+	s.Ipv6Isp = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) SetType(v string) *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) Validate() error {
 	return dara.Validate(s)
 }
 

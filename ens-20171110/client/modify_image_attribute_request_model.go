@@ -30,7 +30,7 @@ type ModifyImageAttributeRequest struct {
 	//
 	// example:
 	//
-	// Image Name
+	// Image name
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 }
 

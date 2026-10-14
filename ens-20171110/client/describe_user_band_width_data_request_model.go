@@ -26,9 +26,9 @@ type iDescribeUserBandWidthDataRequest interface {
 type DescribeUserBandWidthDataRequest struct {
 	// The end of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// - Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// 	- If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	// - If the value of the seconds place is not 00, the start time is automatically set to the next minute.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type DescribeUserBandWidthDataRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Internet service provider (ISP). Valid values:
 	//
-	// 	- cmcc: China Mobile
+	// - cmcc: China Mobile
 	//
-	// 	- telecom: China Telecom
+	// - telecom: China Telecom
 	//
-	// 	- unicom: China Unicom
+	// - unicom: China Unicom
 	//
-	// 	- multiCarrier: multi-line ISP
+	// - multiCarrier: multi-line ISP
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type DescribeUserBandWidthDataRequest struct {
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// - Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// 	- If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	// - If the value of the seconds place is not 00, the start time is automatically set to the next minute.
 	//
 	// This parameter is required.
 	//

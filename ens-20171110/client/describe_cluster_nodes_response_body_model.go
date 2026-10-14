@@ -18,8 +18,12 @@ type iDescribeClusterNodesResponseBody interface {
 }
 
 type DescribeClusterNodesResponseBody struct {
+	// The node information.
 	Nodes []*DescribeClusterNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Page  *DescribeClusterNodesResponseBodyPage    `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The pagination information.
+	Page *DescribeClusterNodesResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
@@ -80,31 +84,56 @@ func (s *DescribeClusterNodesResponseBody) Validate() error {
 }
 
 type DescribeClusterNodesResponseBodyNodes struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ENS edge zone ID.
+	//
 	// example:
 	//
 	// cn-fuzhou-23
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The instance image ID.
+	//
 	// example:
 	//
 	// m-680cki2ruj1q2bm0mz1k9tnbz
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-51mctytg7tv4yw4amu3oczxsx
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpAddress  []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the ENS instance.
+	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	// The node information.
+	NodeInfo *DescribeClusterNodesResponseBodyNodesNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
+	// The node pool ID.
+	//
 	// example:
 	//
 	// np861febb748f84f5f9f1c76819eff7f56
 	NodepoolId *string `json:"NodepoolId,omitempty" xml:"NodepoolId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - PostPaid: pay-as-you-go.
+	//
 	// example:
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The status of the node pool. Valid values:
+	//
+	// - initial: The node pool is being created.
+	//
+	// - running: The node pool is created.
+	//
+	// - removing: The node pool is being removed.
+	//
 	// example:
 	//
 	// initial
@@ -137,6 +166,10 @@ func (s *DescribeClusterNodesResponseBodyNodes) GetInstanceId() *string {
 
 func (s *DescribeClusterNodesResponseBodyNodes) GetIpAddress() []*string {
 	return s.IpAddress
+}
+
+func (s *DescribeClusterNodesResponseBodyNodes) GetNodeInfo() *DescribeClusterNodesResponseBodyNodesNodeInfo {
+	return s.NodeInfo
 }
 
 func (s *DescribeClusterNodesResponseBodyNodes) GetNodepoolId() *string {
@@ -176,6 +209,11 @@ func (s *DescribeClusterNodesResponseBodyNodes) SetIpAddress(v []*string) *Descr
 	return s
 }
 
+func (s *DescribeClusterNodesResponseBodyNodes) SetNodeInfo(v *DescribeClusterNodesResponseBodyNodesNodeInfo) *DescribeClusterNodesResponseBodyNodes {
+	s.NodeInfo = v
+	return s
+}
+
 func (s *DescribeClusterNodesResponseBodyNodes) SetNodepoolId(v string) *DescribeClusterNodesResponseBodyNodes {
 	s.NodepoolId = &v
 	return s
@@ -192,18 +230,89 @@ func (s *DescribeClusterNodesResponseBodyNodes) SetState(v string) *DescribeClus
 }
 
 func (s *DescribeClusterNodesResponseBodyNodes) Validate() error {
+	if s.NodeInfo != nil {
+		if err := s.NodeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeClusterNodesResponseBodyNodesNodeInfo struct {
+	// The container runtime version.
+	//
+	// example:
+	//
+	// containerd://1.6.28
+	ContainerRuntimeVersion *string `json:"ContainerRuntimeVersion,omitempty" xml:"ContainerRuntimeVersion,omitempty"`
+	// The kubelet version of the node.
+	//
+	// example:
+	//
+	// v1.30.7-aliyun.1
+	KubeletVersion *string `json:"KubeletVersion,omitempty" xml:"KubeletVersion,omitempty"`
+	// The operating system image of the node.
+	//
+	// example:
+	//
+	// CentOS Linux 7 (Core)
+	OsImage *string `json:"OsImage,omitempty" xml:"OsImage,omitempty"`
+}
+
+func (s DescribeClusterNodesResponseBodyNodesNodeInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodesResponseBodyNodesNodeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodesResponseBodyNodesNodeInfo) GetContainerRuntimeVersion() *string {
+	return s.ContainerRuntimeVersion
+}
+
+func (s *DescribeClusterNodesResponseBodyNodesNodeInfo) GetKubeletVersion() *string {
+	return s.KubeletVersion
+}
+
+func (s *DescribeClusterNodesResponseBodyNodesNodeInfo) GetOsImage() *string {
+	return s.OsImage
+}
+
+func (s *DescribeClusterNodesResponseBodyNodesNodeInfo) SetContainerRuntimeVersion(v string) *DescribeClusterNodesResponseBodyNodesNodeInfo {
+	s.ContainerRuntimeVersion = &v
+	return s
+}
+
+func (s *DescribeClusterNodesResponseBodyNodesNodeInfo) SetKubeletVersion(v string) *DescribeClusterNodesResponseBodyNodesNodeInfo {
+	s.KubeletVersion = &v
+	return s
+}
+
+func (s *DescribeClusterNodesResponseBodyNodesNodeInfo) SetOsImage(v string) *DescribeClusterNodesResponseBodyNodesNodeInfo {
+	s.OsImage = &v
+	return s
+}
+
+func (s *DescribeClusterNodesResponseBodyNodesNodeInfo) Validate() error {
 	return dara.Validate(s)
 }
 
 type DescribeClusterNodesResponseBodyPage struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 30

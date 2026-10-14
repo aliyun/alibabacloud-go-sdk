@@ -20,7 +20,7 @@ type DescribeEnsRegionIdIpv6InfoRequest struct {
 	//
 	// example:
 	//
-	// cn-chengdu-xxxx-4
+	// cn-chengdu-****-4
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 

@@ -16,12 +16,16 @@ type iDescribeAddonRequest interface {
 }
 
 type DescribeAddonRequest struct {
+	// The name of the add-on.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// edge-csi-lite
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// The version of the add-on. If you do not specify a version, all available versions are returned by default.
+	//
 	// example:
 	//
 	// v1

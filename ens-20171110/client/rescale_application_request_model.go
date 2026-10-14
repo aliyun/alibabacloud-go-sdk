@@ -24,7 +24,7 @@ type iRescaleApplicationRequest interface {
 }
 
 type RescaleApplicationRequest struct {
-	// The ID of the application. You can query the application ID by calling the ListApplications operation.
+	// The application ID. You can obtain this value by calling the ListApplications operation.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type RescaleApplicationRequest struct {
 	//
 	// 474bdef0-d149-4695-abfb-52912d9143f0
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The level of resource scaling. The value is of the enumeration type. Valid values:
+	// The level of the scaling region. Valid values:
 	//
-	// 	- AreaIspCode (default): scales resources based on the Internet service provider (ISP).
+	// - AreaIspCode: region ISP.
 	//
-	// 	- RegionId: scales resources based on the edge node.
+	// - RegionId: edge zone.
 	//
-	// 	- InstanceId: scales resources based on the instance ID. Resource scale-out specifies resource hosting and scale-in specifies resource release.
+	// - InstanceId: instance. Scale-out indicates resource hosting. Scale-in indicates resource release.
 	//
 	// Default value: AreaIspCode.
 	//
@@ -46,11 +46,11 @@ type RescaleApplicationRequest struct {
 	//
 	// RegionId
 	RescaleLevel *string `json:"RescaleLevel,omitempty" xml:"RescaleLevel,omitempty"`
-	// The scaling operation. The value must be of the enumerated data type. Valid values:
+	// The scaling action for resources. Valid values:
 	//
-	// 	- Add: adds new resources.
+	// - Add: Provisions new resources.
 	//
-	// 	- Del: releases resources.
+	// - Del: Releases resources.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type RescaleApplicationRequest struct {
 	//
 	// Add
 	RescaleType *string `json:"RescaleType,omitempty" xml:"RescaleType,omitempty"`
-	// The required resources. The value must be a JSON string.
+	// The scaling resource requirements. The value is a string in JSON array format.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type RescaleApplicationRequest struct {
 	//
 	// [{\\"regionCode\\": \\"cn-wuxi-telecom_unicom_cmcc-3\\",    \\"ispCode\\": \\"telecom\\",    \\"count\\": 2	},{    \\"regionCode\\": \\"cn-shanghai-cmcc\\",    \\"count\\": 4	}]
 	ResourceSelector *string `json:"ResourceSelector,omitempty" xml:"ResourceSelector,omitempty"`
-	// The timeout period for asynchronous scaling. Unit: seconds. Default value: 300.
+	// The timeout period for asynchronous scaling, in seconds. Default value: 300.
 	//
 	// example:
 	//
 	// 1800
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The version number of the application deployment package. By default, the stable version number is used. This parameter takes effect only when you perform resource scale-out.
+	// The application deployment version for new resources. This parameter takes effect only when resources are added. Default value: the stable version number of the application.
 	//
 	// example:
 	//

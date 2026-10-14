@@ -22,7 +22,7 @@ type iDescribeAICImagesResponseBody interface {
 }
 
 type DescribeAICImagesResponseBody struct {
-	// The information about the images.
+	// The array of image information.
 	Images []*DescribeAICImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// The page number. Default value: **1**.
 	//
@@ -30,7 +30,7 @@ type DescribeAICImagesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging.
 	//
 	// Default value: 10.
 	//
@@ -38,13 +38,13 @@ type DescribeAICImagesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 72DC6C0A-D9A8-5345-A2BE-FE354CC728A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -119,23 +119,25 @@ func (s *DescribeAICImagesResponseBody) Validate() error {
 }
 
 type DescribeAICImagesResponseBodyImages struct {
+	// The Android version of the image.
+	//
 	// example:
 	//
 	// 10
 	AndroidVersion *string `json:"AndroidVersion,omitempty" xml:"AndroidVersion,omitempty"`
-	// The time when the image was created.
+	// The time when the image was created, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
-	// 2022-09-22 10:54:34
+	// 2022-01-22 10:54:34
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the image.
 	//
 	// example:
 	//
-	// Test operation of console
+	// Console test operation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image ID of the AIC instance.
+	// The ID of the Android in Container (AIC) image.
 	//
 	// example:
 	//
@@ -147,13 +149,13 @@ type DescribeAICImagesResponseBodyImages struct {
 	//
 	// ****.alibaba-inc.com/aic/socimage:test
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The status of the image. **Available*	- is returned for this parameter. Available indicates that the image is available.
+	// The image status. Valid values: **available**.
 	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The username of the image repository.
+	// The repository username of the image.
 	//
 	// example:
 	//

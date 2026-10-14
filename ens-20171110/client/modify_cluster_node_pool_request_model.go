@@ -20,15 +20,23 @@ type iModifyClusterNodePoolRequest interface {
 }
 
 type ModifyClusterNodePoolRequest struct {
+	// The cluster ID.
+	//
+	// Only ECK cluster IDs with the eck- prefix are supported. You can obtain the ID by calling the DescribeClustersV1 operation. Serverless cluster IDs returned by the DescribeCluster operation are not supported. The cluster must be in the running state. After creation, it typically takes 10 to 20 minutes to complete initialization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId        *string                                       `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The Kubernetes configuration.
 	KubernetesConfig *ModifyClusterNodePoolRequestKubernetesConfig `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty" type:"Struct"`
+	// The node pool information.
+	//
 	// This parameter is required.
 	NodepoolInfo *ModifyClusterNodePoolRequestNodepoolInfo `json:"NodepoolInfo,omitempty" xml:"NodepoolInfo,omitempty" type:"Struct"`
+	// The scaling group configuration.
 	ScalingGroup *ModifyClusterNodePoolRequestScalingGroup `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
 }
 
@@ -96,10 +104,14 @@ func (s *ModifyClusterNodePoolRequest) Validate() error {
 }
 
 type ModifyClusterNodePoolRequestKubernetesConfig struct {
+	// The script to run after instance creation but before joining the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
 	PreUserData *string `json:"PreUserData,omitempty" xml:"PreUserData,omitempty"`
+	// The script to run after instance creation and after joining the cluster. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// ZWNobyBvawo=
@@ -137,6 +149,12 @@ func (s *ModifyClusterNodePoolRequestKubernetesConfig) Validate() error {
 }
 
 type ModifyClusterNodePoolRequestNodepoolInfo struct {
+	// example:
+	//
+	// test1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node pool ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -153,8 +171,17 @@ func (s ModifyClusterNodePoolRequestNodepoolInfo) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyClusterNodePoolRequestNodepoolInfo) GetName() *string {
+	return s.Name
+}
+
 func (s *ModifyClusterNodePoolRequestNodepoolInfo) GetNodepoolId() *string {
 	return s.NodepoolId
+}
+
+func (s *ModifyClusterNodePoolRequestNodepoolInfo) SetName(v string) *ModifyClusterNodePoolRequestNodepoolInfo {
+	s.Name = &v
+	return s
 }
 
 func (s *ModifyClusterNodePoolRequestNodepoolInfo) SetNodepoolId(v string) *ModifyClusterNodePoolRequestNodepoolInfo {
@@ -167,33 +194,48 @@ func (s *ModifyClusterNodePoolRequestNodepoolInfo) Validate() error {
 }
 
 type ModifyClusterNodePoolRequestScalingGroup struct {
+	// The data cloud disk information.
 	DataDisks []*ModifyClusterNodePoolRequestScalingGroupDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	// The instance image ID.
+	//
 	// example:
 	//
 	// m-68bysm5a8gkm7oik7ngacf0in
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance billing type.
+	//
 	// example:
 	//
 	// PostPaid
-	InstanceChargeType *string   `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceTypes      []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The instance types.
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// The instance key pair. This parameter is mutually exclusive with password.
+	//
 	// example:
 	//
 	// tf-testAcc
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The instance password. This parameter is mutually exclusive with key_pair_name.
+	//
 	// example:
 	//
 	// @AN5Ejx1YyzzK
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The system cloud disk type.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The system cloud disk size.
+	//
 	// example:
 	//
 	// 80
-	SystemDiskSize *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	VswitchIds     []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The vSwitches used by instances.
+	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
 func (s ModifyClusterNodePoolRequestScalingGroup) String() string {
@@ -299,10 +341,14 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) Validate() error {
 }
 
 type ModifyClusterNodePoolRequestScalingGroupDataDisks struct {
+	// The data cloud disk type.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The data cloud disk size.
+	//
 	// example:
 	//
 	// 40

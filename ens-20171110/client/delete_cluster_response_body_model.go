@@ -16,11 +16,13 @@ type iDeleteClusterResponseBody interface {
 }
 
 type DeleteClusterResponseBody struct {
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeMeasurementDataRequest interface {
 }
 
 type DescribeMeasurementDataRequest struct {
-	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeMeasurementDataRequest struct {
 	//
 	// 2019-08-30T00:00:00Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// This parameter is required.
 	//

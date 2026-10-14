@@ -44,11 +44,11 @@ type DescribeEnsRouteEntryListRequest struct {
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
 	// The type of next hop of the custom route entry. Valid values:
 	//
-	// 	- Instance (default): an ENS instance.
+	// - Instance (default): an ENS instance.
 	//
-	// 	- HaVip: a high-availability virtual IP address (HAVIP).
+	// - HaVip: a high-availability virtual IP address (HAVIP).
 	//
-	// 	- NetworkPeer: VPC peering connection.
+	// - NetworkPeer: VPC peering connection.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type DescribeEnsRouteEntryListRequest struct {
 	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
 	// The route type. Valid values:
 	//
-	// 	- Custom: custom route
+	// - Custom: custom route
 	//
-	// 	- System: system route
+	// - System: system route
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateLoadBalancerTCPListenerResponseBody interface {
 }
 
 type CreateLoadBalancerTCPListenerResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

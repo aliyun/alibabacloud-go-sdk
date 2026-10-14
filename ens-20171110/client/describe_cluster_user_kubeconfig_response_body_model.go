@@ -16,6 +16,8 @@ type iDescribeClusterUserKubeconfigResponseBody interface {
 }
 
 type DescribeClusterUserKubeconfigResponseBody struct {
+	// The kubeconfig file of the cluster.
+	//
 	// example:
 	//
 	// apiVersion: v1
@@ -56,7 +58,7 @@ type DescribeClusterUserKubeconfigResponseBody struct {
 	//
 	//     client-key-data: x
 	Config interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

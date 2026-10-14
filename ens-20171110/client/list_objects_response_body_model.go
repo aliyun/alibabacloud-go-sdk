@@ -47,6 +47,10 @@ type ListObjectsResponseBody struct {
 	// test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	// If the delimiter parameter is specified in the request, the response contains CommonPrefixes. Objects whose names contain the same string from the prefix to the next occurrence of the delimiter are grouped as a single result element in CommonPrefixes.
+	//
+	// example:
+	//
+	// Not applicable
 	CommonPrefixes []*string `json:"CommonPrefixes,omitempty" xml:"CommonPrefixes,omitempty" type:"Repeated"`
 	// The list of object metadata.
 	Contents []*ListObjectsResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
@@ -66,13 +70,13 @@ type ListObjectsResponseBody struct {
 	//
 	// example:
 	//
-	// N/A
+	// Not applicable
 	EncodingType *string `json:"EncodingType,omitempty" xml:"EncodingType,omitempty"`
 	// Indicates whether the listed objects are truncated. Valid values:
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// 	- **true**
+	// - **true**
 	//
 	// example:
 	//
@@ -272,11 +276,11 @@ func (s *ListObjectsResponseBody) Validate() error {
 type ListObjectsResponseBodyContents struct {
 	// The entity tag (ETag). When an object is created, an ETag is created to identify the content of the object.
 	//
-	// 	- For an object that is created by calling the PutObject operation, the ETag value of the object is the MD5 hash of the object content.
+	// - For an object that is created by calling the PutObject operation, the ETag value of the object is the MD5 hash of the object content.
 	//
-	// 	- For an object that is not created by calling the PutObject operation, the ETag value of the object is the UUID of the object content.
+	// - For an object that is not created by calling the PutObject operation, the ETag value of the object is the UUID of the object content.
 	//
-	// 	- The ETag of an object can be used to check whether the object content is modified. However, we recommend that you use the MD5 hash of an object rather than the ETag value of the object to verify data integrity.
+	// - The ETag of an object can be used to check whether the object content is modified. However, we recommend that you use the MD5 hash of an object rather than the ETag value of the object to verify data integrity.
 	//
 	// example:
 	//

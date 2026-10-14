@@ -28,15 +28,15 @@ type StartLoadBalancerListenerRequest struct {
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The frontend protocol that is used by the ELB instance. Valid values:
 	//
-	// 	- tcp
+	// - tcp
 	//
-	// 	- udp
+	// - udp
 	//
-	// 	- http
+	// - http
 	//
-	// 	- https
+	// - https
 	//
-	// >  This parameter is required if the same port is used by listeners that use different protocols.
+	// > This parameter is required if the same port is used by listeners that use different protocols.
 	//
 	// example:
 	//

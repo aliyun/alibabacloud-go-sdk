@@ -18,13 +18,18 @@ type iModifyClusterAddonRequest interface {
 }
 
 type ModifyClusterAddonRequest struct {
+	// The parameter settings of the add-on.
 	Addon *ModifyClusterAddonRequestAddon `json:"Addon,omitempty" xml:"Addon,omitempty" type:"Struct"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the add-on. It must reference an installed add-on in the target cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -78,11 +83,16 @@ func (s *ModifyClusterAddonRequest) Validate() error {
 }
 
 type ModifyClusterAddonRequestAddon struct {
+	// The schema of the custom parameters for the add-on.
 	ConfigSchema []*ModifyClusterAddonRequestAddonConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	// The name of the add-on.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// v1
@@ -138,18 +148,26 @@ func (s *ModifyClusterAddonRequestAddon) Validate() error {
 }
 
 type ModifyClusterAddonRequestAddonConfigSchema struct {
+	// The application version.
+	//
 	// example:
 	//
 	// d0ead1f4e28de0f9e3c86588409a88a4
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The configuration version.
+	//
 	// example:
 	//
 	// d0ead1f4e28de0f9e3c86588409a88a4
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
+	// The name of the add-on.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom parameters.
+	//
 	// example:
 	//
 	// {"k1":"v1"}

@@ -16,7 +16,7 @@ type iPreloadRegionSDGResponseBody interface {
 }
 
 type PreloadRegionSDGResponseBody struct {
-	// The returned data object.
+	// The Data object.
 	Data *PreloadRegionSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *PreloadRegionSDGResponseBody) Validate() error {
 }
 
 type PreloadRegionSDGResponseBodyData struct {
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution result of the synchronization request.
+	// The execution result of the synchronous request.
 	Result *PreloadRegionSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all tasks are successful. Valid values:
+	// Indicates whether all requests are successful. Valid values:
 	//
-	// 	- true: All tasks are successful.
+	// - true: All requests are successful.
 	//
-	// 	- false: Failed tasks exist.
+	// - false: Some tasks failed.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *PreloadRegionSDGResponseBodyData) Validate() error {
 }
 
 type PreloadRegionSDGResponseBodyDataResult struct {
-	// The number of failed tasks.
+	// The number of failures.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details about the failed tasks.
+	// The list of failure details.
 	FailedItems []*PreloadRegionSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successful tasks.
+	// The number of successes.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ func (s *PreloadRegionSDGResponseBodyDataResult) Validate() error {
 }
 
 type PreloadRegionSDGResponseBodyDataResultFailedItems struct {
-	// The ID of the destination node.
+	// The ID of the destination edge zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-xxx
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The error message that is returned.
+	// The error message.
 	//
 	// example:
 	//

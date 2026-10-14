@@ -18,11 +18,11 @@ type iPutBucketAclRequest interface {
 type PutBucketAclRequest struct {
 	// The access control list (ACL) of the bucket.
 	//
-	// 	- **public-read-write**
+	// - **public-read-write**
 	//
-	// 	- **public-read**
+	// - **public-read**
 	//
-	// 	- **private*	- (default)
+	// - **private*	- (default)
 	//
 	// This parameter is required.
 	//

@@ -22,14 +22,27 @@ type iPreloadRegionSDGRequest interface {
 }
 
 type PreloadRegionSDGRequest struct {
-	// The IDs of the destination nodes.
+	// The list of destination edge zones.
 	//
 	// This parameter is required.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	DiskType             *string   `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// An array that consists of queried namespaces.
+	// The type of the shared cloud disk to be created. Valid values:
+	//
+	// - standard: standard cloud disk.
+	//
+	// - rbd: rbd cloud disk.
+	//
+	// >
+	//
+	// >- If you do not specify the shared cloud disk type, a standard cloud disk is created by default.
+	//
+	// example:
+	//
+	// rbd
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The list of namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// The number of redundant replicas to support rapid deployment.
+	// The redundancy count to support fast deployment.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +50,7 @@ type PreloadRegionSDGRequest struct {
 	//
 	// 2
 	RedundantNum *int32 `json:"RedundantNum,omitempty" xml:"RedundantNum,omitempty"`
-	// The ID of the SDG for which data is preloaded.
+	// The ID of the SDG that you want to preload.
 	//
 	// This parameter is required.
 	//

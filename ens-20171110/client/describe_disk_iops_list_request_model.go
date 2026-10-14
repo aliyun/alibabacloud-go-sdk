@@ -18,7 +18,7 @@ type iDescribeDiskIopsListRequest interface {
 }
 
 type DescribeDiskIopsListRequest struct {
-	// The ID of the disk. Format: d-\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*.
+	// The disk ID in the format of d-***********.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeDiskIopsListRequest struct {
 	//
 	// d-5tzm9wnhzlhjzcbtxo465****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss. The time range specified by the StartTime and EndTime parameters cannot exceed one day for a query.
+	// The end time in the format of yyyy-MM-dd HH:mm:ss. The time span between the start time and end time cannot exceed one day.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeDiskIopsListRequest struct {
 	//
 	// 2023-12-14 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The start time in the format of yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//

@@ -161,11 +161,11 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 	// The protocol. Valid values:
 	//
-	// 	- **TCP**: forwards TCP packets.
+	// - **TCP**: forwards TCP packets.
 	//
-	// 	- **UDP**: forwards UDP packets.
+	// - **UDP**: forwards UDP packets.
 	//
-	// 	- **Any**: forwards all packets.
+	// - **Any**: forwards all packets.
 	//
 	// example:
 	//
@@ -185,13 +185,13 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
 	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
 	// The status of the secondary EIP. Valid values:
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Stopping
+	// - Stopping
 	//
-	// 	- Stopped
+	// - Stopped
 	//
-	// 	- Starting
+	// - Starting
 	//
 	// example:
 	//
@@ -199,11 +199,11 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
 	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
 	// The status of the DNAT entry. Valid values:
 	//
-	// 	- Pending: The DNAT entry is being created or modified.
+	// - Pending: The DNAT entry is being created or modified.
 	//
-	// 	- Available: The DNAT entry is available.
+	// - Available: The DNAT entry is available.
 	//
-	// 	- Deleting: The DNAT entry is being deleted.
+	// - Deleting: The DNAT entry is being deleted.
 	//
 	// example:
 	//

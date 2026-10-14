@@ -95,9 +95,9 @@ func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
 type DescribePriceResponseBodyPriceInfoPrice struct {
 	// The type of currency.
 	//
-	// 	- USD: US dollar
+	// - USD: US dollar
 	//
-	// 	- JPY: Japanese Yen
+	// - JPY: Japanese Yen
 	//
 	// example:
 	//

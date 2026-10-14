@@ -74,7 +74,7 @@ type DescribeImagesRequest struct {
 	//
 	// example:
 	//
-	// This parameter is not currently in use.
+	// This parameter is not in use.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

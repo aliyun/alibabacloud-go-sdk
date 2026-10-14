@@ -22,7 +22,7 @@ type DescribeLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// example:
 	//
-	// 8080
+	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The ID of the ELB instance.
 	//

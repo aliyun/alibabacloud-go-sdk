@@ -24,13 +24,13 @@ type iCreateSnapshotRequest interface {
 type CreateSnapshotRequest struct {
 	// The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// By default, this parameter is left empty.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud disk.
+	// The cloud disk ID.
 	//
 	// This parameter is required.
 	//
@@ -38,16 +38,27 @@ type CreateSnapshotRequest struct {
 	//
 	// d-bp1s5fnvk4gn2tws0****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the edge node.
+	// The ENS edge zone ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen-3
-	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The billing cycle of the instance. Valid values:
+	//
+	// - Hour
+	//
+	// - Day
+	//
+	// - Month
+	//
+	// example:
+	//
+	// Hour
 	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
-	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The display name of the snapshot. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//

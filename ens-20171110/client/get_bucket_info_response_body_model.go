@@ -16,9 +16,9 @@ type iGetBucketInfoResponseBody interface {
 }
 
 type GetBucketInfoResponseBody struct {
-	// The list of bucket information.
+	// Bucket information list.
 	BucketInfo *GetBucketInfoResponseBodyBucketInfo `json:"BucketInfo,omitempty" xml:"BucketInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
@@ -62,43 +62,43 @@ func (s *GetBucketInfoResponseBody) Validate() error {
 }
 
 type GetBucketInfoResponseBodyBucketInfo struct {
-	// The ACL of the bucket.
+	// Bucket access control list type:
 	//
-	// 	- **public-read-write**
+	// - **public-read-write**: public-read-write
 	//
-	// 	- **public-read**
+	// - **public-read**: public-read
 	//
-	// 	- **private*	- (default)
+	// - **private**: private (default)
 	//
 	// example:
 	//
 	// private
 	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
-	// The name of the bucket.
+	// Bucket name.
 	//
 	// example:
 	//
 	// test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The remarks.
+	// Comments.
 	//
 	// example:
 	//
 	// das
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the bucket was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Bucket creation time. Represented in ISO8601 standard, using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-10-12T05:45:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Single-node storage. Set the value to sink.
+	// Single node storage. Value: sink.
 	//
 	// example:
 	//
 	// sink
 	LogicalBucketType *string `json:"LogicalBucketType,omitempty" xml:"LogicalBucketType,omitempty"`
-	// The time when the bucket was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Bucket modification time. Represented in ISO8601 standard, using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

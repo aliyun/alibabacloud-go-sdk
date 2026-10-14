@@ -22,7 +22,7 @@ type iDescribeInstanceSDGStatusRequest interface {
 }
 
 type DescribeInstanceSDGStatusRequest struct {
-	// The ID of the AIC instance.
+	// The AIC instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,19 @@ type DescribeInstanceSDGStatusRequest struct {
 	//
 	// aic-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of SDGs that you want to query. By default, all SDGs are queried.
+	// The IDs of the SDGs to query. By default, all SDGs are queried.
 	SDGIds []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
 	// The deployment status of the SDG.
 	//

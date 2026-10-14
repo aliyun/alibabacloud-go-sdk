@@ -16,13 +16,13 @@ type iDescribeServerLoadBalancerListenMonitorResponseBody interface {
 }
 
 type DescribeServerLoadBalancerListenMonitorResponseBody struct {
-	// The ID of the request.
+	// Id of the request。
 	//
 	// example:
 	//
 	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the monitoring data.
+	// The array of objects.
 	ServerLoadBalancerMonitorData []*DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData `json:"ServerLoadBalancerMonitorData,omitempty" xml:"ServerLoadBalancerMonitorData,omitempty" type:"Repeated"`
 }
 
@@ -72,67 +72,67 @@ type DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonito
 	//
 	// 20
 	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The business time of the log. Logs are collected every minute.
+	// The log business time. The log collection granularity is 1 minute.
 	//
 	// example:
 	//
 	// 2024-05-16 15:00:00
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
-	// The ID of the node to which the ELB instance belongs.
+	// The ID of the edge node.
 	//
 	// example:
 	//
 	// cn-fuzhou-7
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the ELB instance.
+	// The load balancing instance ID.
 	//
 	// example:
 	//
 	// lb-5rcvo1n1t3hykfhhjwjgqp****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the ELB instance.
+	// The load balancing instance name.
 	//
 	// example:
 	//
 	// esk-edge-service-lb-8377****
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The specification of the ELB instance.
+	// The load balancing instance specification.
 	//
 	// example:
 	//
 	// elb.s2.medium
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	// The request protocol, such as http, https, or tcp.
+	// The request protocol, such as http, https, and tcp.
 	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The number of requests with HTTP 2xx status code returned.
+	// The number of 2xx status code responses.
 	//
 	// example:
 	//
 	// 10
 	Reqs2xx *int32 `json:"Reqs2xx,omitempty" xml:"Reqs2xx,omitempty"`
-	// The number of requests with HTTP 3xx status code returned.
+	// The number of 3xx status code responses.
 	//
 	// example:
 	//
 	// 0
 	Reqs3xx *int32 `json:"Reqs3xx,omitempty" xml:"Reqs3xx,omitempty"`
-	// The number of requests with HTTP 4xx status code returned.
+	// The number of 4xx status code responses.
 	//
 	// example:
 	//
 	// 0
 	Reqs4xx *int32 `json:"Reqs4xx,omitempty" xml:"Reqs4xx,omitempty"`
-	// The number of requests with HTTP 5xx status code returned.
+	// The number of 5xx status code responses.
 	//
 	// example:
 	//
 	// 10
 	Reqs5xx *int32 `json:"Reqs5xx,omitempty" xml:"Reqs5xx,omitempty"`
-	// The average response time. Unit: milliseconds.
+	// The average request latency in milliseconds.
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonito
 	//
 	// 10.0****
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	// The ID of the tunnel.
+	// The tunnel ID.
 	//
 	// example:
 	//
 	// 52497
 	Vni *int32 `json:"Vni,omitempty" xml:"Vni,omitempty"`
-	// The VIP port, such as 80, 8080, or 443.
+	// The VIP port, such as 80, 8080, and 443.
 	//
 	// example:
 	//

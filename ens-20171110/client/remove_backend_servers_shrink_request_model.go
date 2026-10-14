@@ -16,11 +16,11 @@ type iRemoveBackendServersShrinkRequest interface {
 }
 
 type RemoveBackendServersShrinkRequest struct {
-	// The list of backend servers that you want to remove. You can remove up to 20 backend servers at a time.
+	// The list of backend servers to remove. You can remove up to 20 backend servers per call.
 	//
 	// This parameter is required.
 	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	// The ID of the Edge Load Balancer (ELB) instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//

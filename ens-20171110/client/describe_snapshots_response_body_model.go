@@ -22,13 +22,13 @@ type iDescribeSnapshotsResponseBody interface {
 }
 
 type DescribeSnapshotsResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the current query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeSnapshotsResponseBody struct {
 	//
 	// 9635ED2E-3103-1606-84D4-9F8E816B19F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the snapshots.
+	// The collection of snapshot details.
 	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 	// The total number of snapshots.
 	//
@@ -117,73 +117,79 @@ func (s *DescribeSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeSnapshotsResponseBodySnapshots struct {
-	// The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ss format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2020-08-20T14:52:28Z
+	// 2020-08-20 14:52:28
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the snapshot.
+	// The description.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the edge node.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
 	// cn-beijing-15
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The capacity of the disk. Unit: MiB.
+	// The disk capacity. Unit: MiB.
 	//
 	// example:
 	//
 	// 40
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot.
+	// The snapshot ID.
 	//
 	// example:
 	//
 	// s-bp67acfmxazb4p****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The name of the snapshot. This parameter is returned only if a snapshot name was specified when the snapshot was created.
+	// The display name of the snapshot. This field is returned if a display name was specified when the snapshot was created.
 	//
 	// example:
 	//
 	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// The type of the disk. Valid value:
+	// The snapshot type.
 	//
-	// 	- cloud_efficiency: ultra disk
+	// example:
 	//
-	// 	- cloud_ssd: all-flash disk
+	// manual
+	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	// The disk type. Valid values:
 	//
-	// 	- local_hdd: local HDD
+	// - cloud_efficiency: ultra cloud disk.
 	//
-	// 	- local_ssd: local SSD
+	// - cloud_ssd: all-flash cloud disk.
+	//
+	// - local_hdd: local HDD.
+	//
+	// - local_ssd: local SSD.
 	//
 	// example:
 	//
 	// cloud_efficiency
 	SourceDiskCategory *string `json:"SourceDiskCategory,omitempty" xml:"SourceDiskCategory,omitempty"`
-	// The ID of the source disk. This parameter is retained even after the source disk for which the snapshot was created is released.
+	// The ID of the source cloud disk. This field is retained even if the source cloud disk of the snapshot has been released.
 	//
 	// example:
 	//
 	// d-bp67acfmxazb4ph****
 	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
-	// The type of the disk. Valid value:
+	// The disk property. Valid values:
 	//
-	// 	- 1: system disk
+	// - 1: system cloud disk.
 	//
-	// 	- 2: data disk
+	// - 2: data cloud disk.
 	//
 	// example:
 	//
 	// 1
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The ID of the source edge node.
+	// The ID of the source ENS edge zone.
 	//
 	// example:
 	//
@@ -195,15 +201,15 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// s-bpdfer893jfkdqe****
 	SourceSnapshotId *string `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
-	// The status of the snapshot. Valid value:
+	// The snapshot status. Valid values:
 	//
-	// 	- creating: The snapshot is being created.
+	// - creating: The snapshot is being created.
 	//
-	// 	- Available: The snapshot is available.
+	// - available: The snapshot is available.
 	//
-	// 	- deleting: The snapshot is being deleted.
+	// - deleting: The snapshot is being deleted.
 	//
-	// 	- error: An error occurred on the snapshot.
+	// - error: An error occurred.
 	//
 	// example:
 	//
@@ -241,6 +247,10 @@ func (s *DescribeSnapshotsResponseBodySnapshots) GetSnapshotId() *string {
 
 func (s *DescribeSnapshotsResponseBodySnapshots) GetSnapshotName() *string {
 	return s.SnapshotName
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) GetSnapshotType() *string {
+	return s.SnapshotType
 }
 
 func (s *DescribeSnapshotsResponseBodySnapshots) GetSourceDiskCategory() *string {
@@ -294,6 +304,11 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotId(v string) *Descri
 
 func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotName(v string) *DescribeSnapshotsResponseBodySnapshots {
 	s.SnapshotName = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotType = &v
 	return s
 }
 

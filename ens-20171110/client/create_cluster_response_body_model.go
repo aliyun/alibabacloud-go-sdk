@@ -16,13 +16,13 @@ type iCreateClusterResponseBody interface {
 }
 
 type CreateClusterResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// c34b69b095f8241c5a91cc2252dceb976
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

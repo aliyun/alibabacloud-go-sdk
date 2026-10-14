@@ -24,7 +24,7 @@ type GetBucketLifecycleRequest struct {
 	//
 	// tese
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The ID of the rule that you want to query. If this parameter is not specified, all rules are returned.
+	// The ID of the rule to retrieve. If this parameter is not specified, information about all rules is retrieved.
 	//
 	// example:
 	//

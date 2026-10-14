@@ -16,13 +16,20 @@ type iDescribeClusterUserKubeconfigRequest interface {
 }
 
 type DescribeClusterUserKubeconfigRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxxx
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PrivateIpAddress *bool   `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to use the internal access address. The default value is false.
+	//
+	// example:
+	//
+	// false
+	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
 func (s DescribeClusterUserKubeconfigRequest) String() string {

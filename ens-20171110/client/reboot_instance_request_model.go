@@ -18,9 +18,9 @@ type iRebootInstanceRequest interface {
 type RebootInstanceRequest struct {
 	// Specifies whether to forcefully stop the instance before you restart it.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default)
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDescribeEnsRegionIdResourceRequest interface {
 }
 
 type DescribeEnsRegionIdResourceRequest struct {
-	// The end time of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss format. The time must be in UTC+0.
 	//
 	// This parameter is required.
 	//
@@ -34,43 +34,43 @@ type DescribeEnsRegionIdResourceRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The Internet service provider (ISP). Valid values:
 	//
-	// 	- cmcc: China Mobile
+	// - cmcc: China Mobile.
 	//
-	// 	- telecom: China Telecom
+	// - telecom: China Telecom.
 	//
-	// 	- unicom: China Unicom
+	// - unicom: China Unicom.
 	//
-	// 	- multiCarrier: multi-line ISP
+	// - multiCarrier: multi-ISP.
 	//
 	// example:
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The order in which the resources to return are sorted. Valid values:
+	// The sort order. Valid values: asc (ascending) and desc (descending). Only the following three parameters are supported:
 	//
-	// 	- InstanceCount: desc
+	// - InstanceCount: desc.
 	//
-	// 	- Area: asc
+	// - Area: asc.
 	//
-	// 	- InternetBandwidth: asc
+	// - InternetBandwidth: asc.
 	//
 	// example:
 	//
-	// InstanceCount: desc
+	// InstanceCount：desc
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number of the instance status list. Minimum value: **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **100**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// This parameter is required.
 	//

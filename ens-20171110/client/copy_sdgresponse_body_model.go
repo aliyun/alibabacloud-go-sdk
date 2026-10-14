@@ -16,9 +16,9 @@ type iCopySDGResponseBody interface {
 }
 
 type CopySDGResponseBody struct {
-	// The returned data object.
+	// The returned Data object.
 	Data *CopySDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *CopySDGResponseBody) Validate() error {
 }
 
 type CopySDGResponseBodyData struct {
-	// The response message. Success is returned for a successful request.
+	// The response message. The value success indicates a successful request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution result of the synchronization request.
+	// The execution result of the synchronous request.
 	Result *CopySDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all tasks are successful. Valid values:
+	// Indicates whether all requests were successful. Valid values:
 	//
-	// 	- **true**: All tasks are successful.
+	// - **true**: All requests were successful.
 	//
-	// 	- **false**: Failed tasks exist.
+	// - **false**: Some tasks failed.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *CopySDGResponseBodyData) Validate() error {
 }
 
 type CopySDGResponseBodyDataResult struct {
-	// The number of failed nodes.
+	// The number of failed edge zones.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details of failed nodes.
+	// The list of failed edge zone details.
 	FailedItems []*CopySDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successful nodes.
+	// The number of successful operations.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ func (s *CopySDGResponseBodyDataResult) Validate() error {
 }
 
 type CopySDGResponseBodyDataResultFailedItems struct {
-	// The ID of the destination node.
+	// The ID of the destination edge zone.
 	//
 	// example:
 	//

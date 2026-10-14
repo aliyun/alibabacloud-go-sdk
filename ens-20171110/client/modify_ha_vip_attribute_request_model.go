@@ -24,7 +24,7 @@ type ModifyHaVipAttributeRequest struct {
 	//
 	// havip-52y28****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The name of the HAVIP. The name must be 1 to 128 characters in length and cannot start with http:// or https://.
+	// The name of the HAVIP. The name must be 1 to 128 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

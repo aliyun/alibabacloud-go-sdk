@@ -16,9 +16,9 @@ type iDescribeSDGsRequest interface {
 }
 
 type DescribeSDGsRequest struct {
-	// The AIC instance ID to be queried.
+	// The list of AIC instance IDs to query.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The IDs of SDGs that you want to query. By default, all SDGs are queried.
+	// The list of SDG IDs to query.
 	SDGIds []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
 }
 

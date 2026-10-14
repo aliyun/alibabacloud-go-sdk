@@ -62,15 +62,15 @@ func (s *DescribeEpnBandWidthDataResponseBody) Validate() error {
 }
 
 type DescribeEpnBandWidthDataResponseBodyMonitorData struct {
-	// The bandwidth data.
+	// The bandwidth monitoring data.
 	BandWidthMonitorData []*DescribeEpnBandWidthDataResponseBodyMonitorDataBandWidthMonitorData `json:"BandWidthMonitorData,omitempty" xml:"BandWidthMonitorData,omitempty" type:"Repeated"`
-	// The maximum outbound bandwidth within the queried time range. Unit: bit/s.
+	// The maximum downstream bandwidth within the queried time range. Unit: bit/s.
 	//
 	// example:
 	//
 	// 16817468
 	MaxDownBandWidth *int64 `json:"MaxDownBandWidth,omitempty" xml:"MaxDownBandWidth,omitempty"`
-	// The maximum inbound bandwidth within the queried time range. Unit: bit/s.
+	// The maximum upstream bandwidth within the queried time range. Unit: bit/s.
 	//
 	// example:
 	//
@@ -127,31 +127,31 @@ func (s *DescribeEpnBandWidthDataResponseBodyMonitorData) Validate() error {
 }
 
 type DescribeEpnBandWidthDataResponseBodyMonitorDataBandWidthMonitorData struct {
-	// The outbound bandwidth. Unit: bit/s.
+	// The downstream bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
 	// 0
 	DownBandWidth *int64 `json:"DownBandWidth,omitempty" xml:"DownBandWidth,omitempty"`
-	// The Internet traffic to the instance. Unit: bytes.
+	// The inbound public network traffic of the instance. Unit: bits.
 	//
 	// example:
 	//
 	// 0
 	InternetRX *int64 `json:"InternetRX,omitempty" xml:"InternetRX,omitempty"`
-	// The Internet traffic from the instance. Unit: bytes.
+	// The outbound public network traffic of the instance. Unit: bits.
 	//
 	// example:
 	//
 	// 0
 	InternetTX *int64 `json:"InternetTX,omitempty" xml:"InternetTX,omitempty"`
-	// The timestamp when the monitoring data was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The timestamp of the monitoring data. The time is in UTC and in the format of yyyy-MM-DDThh:mm:ssZ.
 	//
 	// example:
 	//
 	// 2019-10-12T05:45:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The inbound bandwidth. Unit: bit/s.
+	// The upstream bandwidth. Unit: bit/s.
 	//
 	// example:
 	//

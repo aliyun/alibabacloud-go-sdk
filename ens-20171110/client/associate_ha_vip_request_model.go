@@ -36,9 +36,9 @@ type AssociateHaVipRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance to be associated with the HAVIP. Valid values:
 	//
-	// 	- EnsInstance (default): ENS instance
+	// - EnsInstance (default): ENS instance
 	//
-	// 	- NetworkInterface: elastic network interface (ENI)
+	// - NetworkInterface: elastic network interface (ENI)
 	//
 	// example:
 	//

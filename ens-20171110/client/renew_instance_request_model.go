@@ -16,7 +16,9 @@ type iRenewInstanceRequest interface {
 }
 
 type RenewInstanceRequest struct {
-	// The ID of the instance.
+	// The ID of the instance that you want to renew.
+	//
+	// Only subscription instances whose InstanceResourceType is EnsInstance are supported. Pay-as-you-go instances cannot be renewed.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +26,7 @@ type RenewInstanceRequest struct {
 	//
 	// i-56789acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The renewal duration of the subscription instance.
+	// The subscription renewal duration.
 	//
 	// This parameter is required.
 	//

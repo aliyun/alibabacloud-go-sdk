@@ -22,31 +22,31 @@ type iCreateLoadBalancerResponseBody interface {
 }
 
 type CreateLoadBalancerResponseBody struct {
-	// The ID of the ELB instance.
+	// The ID of the load balancing instance.
 	//
 	// example:
 	//
 	// lb-5s7crik3yo3bp03gqrbp5****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the ELB instance.
+	// The name of the load balancing instance.
 	//
 	// example:
 	//
 	// gcs-pre-websocket-****
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-5sax03dh2eyagujgsn7z9****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1ECC937A-AE0E-4626-BE51-DED1D6D1C888
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the vSwitch to which the ELB instance belongs.
+	// The ID of the vSwitch to which the load balancing instance belongs.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iRemoveSDGResponseBody interface {
 }
 
 type RemoveSDGResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

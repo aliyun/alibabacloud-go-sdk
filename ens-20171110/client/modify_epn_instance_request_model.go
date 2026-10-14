@@ -42,13 +42,13 @@ type ModifyEpnInstanceRequest struct {
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// The networking mode. Valid values:
 	//
-	// 	- **SpeedUp**: Intelligent acceleration network (Internet).
+	// - **SpeedUp**: Intelligent acceleration network (Internet).
 	//
-	// 	- **Connection**: Internal network.
+	// - **Connection**: Internal network.
 	//
-	// 	- **SpeedUpAndConnection**: Intelligent acceleration network and internal network.
+	// - **SpeedUpAndConnection**: Intelligent acceleration network and internal network.
 	//
-	// >  The internal network supports only **Connection*	- and **SpeedUpAndConnection**.
+	// > The internal network supports only **Connection*	- and **SpeedUpAndConnection**.
 	//
 	// example:
 	//

@@ -18,13 +18,18 @@ type iModifyClusterAddonShrinkRequest interface {
 }
 
 type ModifyClusterAddonShrinkRequest struct {
+	// The parameter settings of the add-on.
 	AddonShrink *string `json:"Addon,omitempty" xml:"Addon,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the add-on. It must reference an installed add-on in the target cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

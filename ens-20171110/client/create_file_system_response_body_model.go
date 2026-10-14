@@ -22,26 +22,27 @@ type iCreateFileSystemResponseBody interface {
 }
 
 type CreateFileSystemResponseBody struct {
-	// The information about the file system that was created.
-	AllocationId  []*string                                    `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	// The file systems that are created.
+	AllocationId []*string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	// The list of instance allocation information for the file system across ENS edge zones.
 	AllocationIds []*CreateFileSystemResponseBodyAllocationIds `json:"AllocationIds,omitempty" xml:"AllocationIds,omitempty" type:"Repeated"`
-	// The status code for successful operations. Valid values:
+	// The status code that indicates the result. Valid values:
 	//
-	// 	- PartSuccess: The operation is partially successful.
+	// - PartSuccess: partially successful.
 	//
-	// 	- AllSuccess: The operation is successful.
+	// - AllSuccess: all successful.
 	//
 	// example:
 	//
 	// PartSuccess
 	BizStatusCode *string `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the file system that failed to be created.
+	// The file systems that failed to be created.
 	UnAllocationId []*string `json:"UnAllocationId,omitempty" xml:"UnAllocationId,omitempty" type:"Repeated"`
 }
 
@@ -112,8 +113,18 @@ func (s *CreateFileSystemResponseBody) Validate() error {
 }
 
 type CreateFileSystemResponseBodyAllocationIds struct {
+	// The ENS edge zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-cm
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// i-5s7xxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CreateFileSystemResponseBodyAllocationIds) String() string {

@@ -54,11 +54,11 @@ type DescribeForwardTableEntriesRequest struct {
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
 	// The protocol. Valid values:
 	//
-	// 	- **TCP**: forwards TCP packets.
+	// - **TCP**: forwards TCP packets.
 	//
-	// 	- **UDP**: forwards UDP packets.
+	// - **UDP**: forwards UDP packets.
 	//
-	// 	- **Any**: forwards all packets.
+	// - **Any**: forwards all packets.
 	//
 	// example:
 	//

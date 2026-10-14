@@ -16,11 +16,11 @@ type iCopySDGRequest interface {
 }
 
 type CopySDGRequest struct {
-	// The destination nodes.
+	// The list of destination edge zones.
 	//
 	// This parameter is required.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	// The ID of the SDG that you want to copy.
+	// The ID of the SDG to copy.
 	//
 	// This parameter is required.
 	//

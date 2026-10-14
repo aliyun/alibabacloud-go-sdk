@@ -16,7 +16,7 @@ type iMountInstanceSDGShrinkRequest interface {
 }
 
 type MountInstanceSDGShrinkRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`

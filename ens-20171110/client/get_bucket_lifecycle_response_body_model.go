@@ -22,7 +22,7 @@ type GetBucketLifecycleResponseBody struct {
 	//
 	// A2583E8B-B930-4F59-ADC0-0E209A90C46E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed information about the rule.
+	// The rule details.
 	Rule []*GetBucketLifecycleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 }
 
@@ -74,7 +74,7 @@ type GetBucketLifecycleResponseBodyRule struct {
 	//
 	// 1
 	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
-	// The prefix that is applied to the rule.
+	// The prefix to which the rule applies.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type GetBucketLifecycleResponseBodyRule struct {
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- **Enabled**: The rule is periodically executed.
+	// - **Enabled**: The rule is executed periodically.
 	//
-	// 	- **Disabled**: The rule is ignored.
+	// - **Disabled**: The rule is ignored.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ func (s *GetBucketLifecycleResponseBodyRule) Validate() error {
 }
 
 type GetBucketLifecycleResponseBodyRuleExpiration struct {
-	// The expiration date.
+	// The expiration date in ISO 8601 UTC format, which is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// yyy-MM-DDThh:mm:ssZ
 	CreatedBeforeDate *string `json:"CreatedBeforeDate,omitempty" xml:"CreatedBeforeDate,omitempty"`
-	// The validity period, in days.
+	// The number of days before expiration.
 	//
 	// example:
 	//

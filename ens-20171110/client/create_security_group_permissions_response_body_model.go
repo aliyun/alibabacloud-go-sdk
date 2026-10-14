@@ -14,7 +14,7 @@ type iCreateSecurityGroupPermissionsResponseBody interface {
 }
 
 type CreateSecurityGroupPermissionsResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

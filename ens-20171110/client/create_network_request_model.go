@@ -13,8 +13,12 @@ type iCreateNetworkRequest interface {
 	GetCidrBlock() *string
 	SetDescription(v string) *CreateNetworkRequest
 	GetDescription() *string
+	SetEnableIpv6(v bool) *CreateNetworkRequest
+	GetEnableIpv6() *bool
 	SetEnsRegionId(v string) *CreateNetworkRequest
 	GetEnsRegionId() *string
+	SetIpv6Isp(v string) *CreateNetworkRequest
+	GetIpv6Isp() *string
 	SetNetworkName(v string) *CreateNetworkRequest
 	GetNetworkName() *string
 	SetTag(v []*CreateNetworkRequestTag) *CreateNetworkRequest
@@ -22,13 +26,13 @@ type iCreateNetworkRequest interface {
 }
 
 type CreateNetworkRequest struct {
-	// The CIDR block of the network. You can use one of the following CIDR blocks or their subnets as the CIDR block of the network:
+	// The CIDR block of the network. You can use one of the following CIDR blocks or their subsets:
 	//
-	// 	- 10.0.0.0/8 (default)
+	// - 10.0.0.0/8 (default).
 	//
-	// 	- 172.16.0.0/12
+	// - 172.16.0.0/12.
 	//
-	// 	- 192.168.0.0/16
+	// - 192.168.0.0/16.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +40,16 @@ type CreateNetworkRequest struct {
 	//
 	// 192.168.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The description of the network.
+	// A description of the network.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// Must be 2 to 256 characters long, start with a letter or a Chinese character, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
 	// this is my first network
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the edge node.
+	EnableIpv6  *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	// The node ID of ENS.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +57,23 @@ type CreateNetworkRequest struct {
 	//
 	// cn-beijing-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The name of the network. The name must meet the following requirements:
+	// example:
 	//
-	// 	- The name must be 2 to 128 characters in length.
+	// telecom
+	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	// The network name. Follow these naming rules:
 	//
-	// 	- The name must start with a letter but cannot start with http:// or https://.
+	// - Must be 2 to 128 characters long, using English or Chinese characters.
 	//
-	// 	- The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// - Must start with a letter or a Chinese character. Cannot start with http\\:// or https\\://.
+	//
+	// - Can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// abc
 	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	// The resource tags.
+	// Resource tags.
 	Tag []*CreateNetworkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -84,8 +93,16 @@ func (s *CreateNetworkRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateNetworkRequest) GetEnableIpv6() *bool {
+	return s.EnableIpv6
+}
+
 func (s *CreateNetworkRequest) GetEnsRegionId() *string {
 	return s.EnsRegionId
+}
+
+func (s *CreateNetworkRequest) GetIpv6Isp() *string {
+	return s.Ipv6Isp
 }
 
 func (s *CreateNetworkRequest) GetNetworkName() *string {
@@ -106,8 +123,18 @@ func (s *CreateNetworkRequest) SetDescription(v string) *CreateNetworkRequest {
 	return s
 }
 
+func (s *CreateNetworkRequest) SetEnableIpv6(v bool) *CreateNetworkRequest {
+	s.EnableIpv6 = &v
+	return s
+}
+
 func (s *CreateNetworkRequest) SetEnsRegionId(v string) *CreateNetworkRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateNetworkRequest) SetIpv6Isp(v string) *CreateNetworkRequest {
+	s.Ipv6Isp = &v
 	return s
 }
 
@@ -135,19 +162,19 @@ func (s *CreateNetworkRequest) Validate() error {
 }
 
 type CreateNetworkRequestTag struct {
-	// The key of the tag that are to add to the instance. Valid values of N: **1*	- to **20**.
+	// The tag key for the instance. N ranges from **1*	- to **20**.
 	//
-	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// - Cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
-	// 	- The key must be up to 64 characters in length.
+	// - Supports up to 64 characters.
 	//
-	// 	- The tag key cannot be an empty string.
+	// - Cannot be an empty string.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+	// The tag value for the resource. N ranges from 1 to 20. This value can be an empty string once provided. It supports up to 128 characters, cannot start with acs:, and cannot contain http\\:// or https\\://.
 	//
 	// example:
 	//

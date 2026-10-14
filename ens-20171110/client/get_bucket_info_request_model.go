@@ -14,7 +14,7 @@ type iGetBucketInfoRequest interface {
 }
 
 type GetBucketInfoRequest struct {
-	// The name of the bucket.
+	// Bucket name.
 	//
 	// This parameter is required.
 	//

@@ -14,6 +14,8 @@ type iDeleteClusterNodePoolResponseBody interface {
 }
 
 type DeleteClusterNodePoolResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F3B261DD-3858-4D3C-877D-303ADF374600

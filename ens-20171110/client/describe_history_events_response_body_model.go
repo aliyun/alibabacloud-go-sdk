@@ -22,27 +22,27 @@ type iDescribeHistoryEventsResponseBody interface {
 }
 
 type DescribeHistoryEventsResponseBody struct {
-	// The queried events.
+	// The list of events.
 	Events []*DescribeHistoryEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5359599C-F656-57BD-8A0D-329A2FD511A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,91 +117,95 @@ func (s *DescribeHistoryEventsResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyEvents struct {
-	// The ID of the event.
+	// The event ID.
 	//
 	// example:
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The level of the specific event. Valid values:
+	// The event level. Valid values:
 	//
-	// 	- CRITICAL
+	// - CRITICAL: Critical.
 	//
-	// 	- WARN
+	// - WARN: Warning.
 	//
-	// 	- INFO
+	// - INFO: Information.
 	//
 	// example:
 	//
 	// WARN
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The status of the event. Valid values:
+	// The event status. Valid values:
 	//
-	// 	- Inquiring
+	// - Inquiring: Inquiring.
 	//
-	// 	- Scheduled
+	// - Scheduled: Scheduled.
 	//
-	// 	- Executing
+	// - Executing: Executing.
 	//
-	// 	- Executed
+	// - Executed: Executed.
 	//
-	// 	- Failed
+	// - Failed: Failed.
 	//
-	// 	- Canceled
+	// - Canceled: Canceled.
 	//
-	// 	- Avoided
+	// - Avoided: Avoided.
 	//
 	// example:
 	//
 	// Inquiring
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The type of the event. Description:
+	// The event type. Valid values:
 	//
-	// 	- Instance:SystemFailure.Redeploy: The instance is redeployed due to system issues.
+	// - Instance:SystemFailure.Redeploy: The instance deployment due to a system fault.
 	//
-	// 	- Instance:SystemFailure.Reboot: The instance is restarted due to a system error.
+	// - Instance:SystemFailure.Reboot: The instance is restarted due to a system fault.
 	//
-	// 	- Instance:RegionNetworkDown: The node network is interrupted.
+	// - Instance:RegionNetworkDown: The edge zone network break.
 	//
-	// 	- Disk:Stalled: The disk performance is impaired.
+	// - Disk:Stalled: The disk performance is degraded.
 	//
-	// 	- EnsRegion:NetworkMigration: The instance is migrated due to a system error.
+	// - EnsRegion:NetworkMigration: Instance migration due to a system fault.
 	//
-	// 	- IP:SafeRisk: IP alerts.
+	// - IP:SafeRisk: IP alerting.
 	//
-	// 	- IP:SafeBan: IP blocking.
+	// - IP:SafeBan: The IP address is blocked.
 	//
-	// 	- Instance:SystemUpgrade.Migrate: The instance needs to be migrated due to underlying upgrades.
+	// - Instance:SystemUpgrade.Migrate: The instance needs to be migrated due to an underlying upgrade.
 	//
-	// 	- Instance:SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
+	// - Instance:SystemMaintenance.Redeploy: The instance deployment due to system maintenance.
 	//
 	// example:
 	//
 	// Instance:SystemFailure.Reboot
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The extended attributes.
+	// The extended attribute.
 	//
 	// example:
 	//
 	// {}
 	ExtendedAttribute *string `json:"ExtendedAttribute,omitempty" xml:"ExtendedAttribute,omitempty"`
-	// The scheduled execution time of the event in milliseconds.
+	// The scheduled execution time of the event, in milliseconds.
 	//
 	// example:
 	//
 	// 1715578245000
 	NotBefore        *int64  `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
 	NotBeforeUtcTime *string `json:"NotBeforeUtcTime,omitempty" xml:"NotBeforeUtcTime,omitempty"`
-	// The release time in milliseconds.
+	// The publish time, in milliseconds.
 	//
 	// example:
 	//
 	// 1715578245000
 	PublishTime    *int64  `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
 	PublishUtcTime *string `json:"PublishUtcTime,omitempty" xml:"PublishUtcTime,omitempty"`
-	// The event cause.
+	// The reason for the event.
+	//
+	// example:
+	//
+	// The current system policy quota is insufficient
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The ID of the associated resources.
+	// The ID of the associated resource.
 	//
 	// example:
 	//

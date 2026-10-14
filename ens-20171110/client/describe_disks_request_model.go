@@ -42,37 +42,37 @@ type iDescribeDisksRequest interface {
 }
 
 type DescribeDisksRequest struct {
-	// The category of the disk.
+	// The disk category.
 	//
-	// 	- cloud_efficiency: ultra disk.
+	// - cloud_efficiency: ultra cloud disk
 	//
-	// 	- cloud_ssd: all-flash disk.
+	// - cloud_ssd: all-flash cloud disk
 	//
-	// 	- local_hdd: local HDD.
+	// - local_hdd: local HDD
 	//
-	// 	- local_ssd: local SSD.
+	// - local_ssd: local SSD
 	//
 	// example:
 	//
 	// local_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The billing method.
+	// The billing type.
 	//
-	// 	- prePay: subscription.
+	// - prepay: subscription
 	//
-	// 	- postpay: pay-as-you-go.
+	// - postpay: pay-as-you-go
 	//
 	// example:
 	//
 	// prepay
 	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	// The ID of the disk.
+	// The ID of the cloud disk.
 	//
 	// example:
 	//
 	// d-5soak1gqa507lyfzvz0xo****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the disk.
+	// The disk IDs.
 	//
 	// example:
 	//
@@ -84,43 +84,43 @@ type DescribeDisksRequest struct {
 	//
 	// DiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The purchase method of the disk. Valid values:
+	// The disk purchase method.
 	//
-	// 	- ServiceDisk: The disk is purchased when ENS is activated.
+	// - ServiceDisk: disk created by an edge service
 	//
-	// 	- ResoureDisk: The disk is purchased when the instance is created.
+	// - ResoureDisk: purchased with an instance
 	//
-	// 	- PostPayDisk: The disk is separately purchased.
+	// - PostPayDisk: purchased separately
 	//
 	// example:
 	//
 	// PostPayDisk
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the edge node.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
 	// cn-kunming-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The node information.
+	// The list of edge zones.
 	//
 	// example:
 	//
 	// ["cn-suzhou-telecom","cn-chengdu-telecom"]
 	EnsRegionIds *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	// The ID of the instance to which the disk is attached.
+	// The instance to which the cloud disk is mounted.
 	//
 	// example:
 	//
 	// i-5t77rb0yoz79m28ku60sx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The order in which you want to sort the returned data. Example: {"EnsRegionId":"desc"}. By default, the nodes are sorted by IDs in descending order.
+	// The sorting parameter. Format example: {"EnsRegionId":"desc"}. By default, results are sorted by edge zone ID in descending order.
 	//
 	// example:
 	//
 	// { "DiskNameSort":"desc","EnsRegionIdSort":"asc" }
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The number of the page to return. Pages start from page **1**.
+	// The page number of the query list. Minimum value: **1**.
 	//
 	// Default value: **1**.
 	//
@@ -128,7 +128,7 @@ type DescribeDisksRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**.
+	// The number of entries per page for a paged query. Maximum value: **50**.
 	//
 	// Default value: **10**.
 	//
@@ -136,41 +136,41 @@ type DescribeDisksRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the snapshot.
+	// The snapshot ID.
 	//
 	// example:
 	//
 	// s-897654321****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The status of the disk. Valid values:
+	// The disk status.
 	//
-	// 	- In-use: The disk is in use.
+	// - In-use: in use
 	//
-	// 	- Available: The disk can be attached.
+	// - Available: to be mounted
 	//
-	// 	- Attaching: The disk is being attached.
+	// - Attaching: being mounted
 	//
-	// 	- Detaching: The disk is being detached.
+	// - Detaching: being unmounted
 	//
-	// 	- Creating: The disk is being created.
+	// - Creating: being created
 	//
-	// 	- ReIniting: The disk is being reset.
+	// - ReIniting: being reset
 	//
-	// 	- Deleting: The disk is being released.
+	// - Deleting: being released
 	//
-	// 	- Deleted: The disk is released.
+	// - Deleted: released
 	//
-	// 	- Expiring: The disk is about to expire.
+	// - Expiring: about to expire
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the disk. Valid values:
+	// The disk property.
 	//
-	// 	- system: system disk.
+	// - system: system cloud disk
 	//
-	// 	- data: data disk.
+	// - data: data cloud disk
 	//
 	// example:
 	//

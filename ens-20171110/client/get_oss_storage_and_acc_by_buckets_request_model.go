@@ -14,7 +14,9 @@ type iGetOssStorageAndAccByBucketsRequest interface {
 }
 
 type GetOssStorageAndAccByBucketsRequest struct {
-	// The information about the bucket.
+	// The bucket information.
+	//
+	// This parameter is required. If this parameter is not specified, the service returns error code 160002401.
 	//
 	// example:
 	//

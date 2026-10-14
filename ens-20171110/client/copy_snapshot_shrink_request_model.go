@@ -22,7 +22,7 @@ type iCopySnapshotShrinkRequest interface {
 }
 
 type CopySnapshotShrinkRequest struct {
-	// The IDs of destination nodes.
+	// The list of destination edge zone IDs.
 	//
 	// This parameter is required.
 	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
@@ -32,13 +32,24 @@ type CopySnapshotShrinkRequest struct {
 	//
 	// testDescription
 	DestinationSnapshotDescription *string `json:"DestinationSnapshotDescription,omitempty" xml:"DestinationSnapshotDescription,omitempty"`
-	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// testSnapshotName
 	DestinationSnapshotName *string `json:"DestinationSnapshotName,omitempty" xml:"DestinationSnapshotName,omitempty"`
-	InstanceBillingCycle    *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
+	// The billing cycle of the instance. Valid values:
+	//
+	// - Hour
+	//
+	// - Day
+	//
+	// - Month
+	//
+	// example:
+	//
+	// Hour
+	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// The ID of the source snapshot.
 	//
 	// This parameter is required.

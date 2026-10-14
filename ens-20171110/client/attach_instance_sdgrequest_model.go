@@ -22,13 +22,38 @@ type iAttachInstanceSDGRequest interface {
 }
 
 type AttachInstanceSDGRequest struct {
+	// The cloud disk access protocol type. Valid values:
+	//
+	// - iscsi: the default protocol for standard cloud disks. Both rbd cloud disks and standard cloud disks support this protocol.
+	//
+	//  - rbd: the default protocol for rbd cloud disks. Only rbd cloud disks support this mount protocol.
+	//
+	// example:
+	//
+	// iscsi
 	DiskAccessProtocol *string `json:"DiskAccessProtocol,omitempty" xml:"DiskAccessProtocol,omitempty"`
-	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The IDs of the instances.
+	// The type of the shared cloud disk to be created. Valid values:
+	//
+	// - standard: standard cloud disk.
+	//
+	// - rbd: rbd cloud disk.
+	//
+	// >
+	//
+	// > - If no shared cloud disk type is specified, a standard cloud disk is created by default.
+	//
+	// > - An rbd shared cloud disk can be created only when the parent disk type is rbd.
+	//
+	// example:
+	//
+	// standard
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The list of instance IDs.
 	//
 	// This parameter is required.
-	InstanceIds []*string                        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	LoadOpt     *AttachInstanceSDGRequestLoadOpt `json:"LoadOpt,omitempty" xml:"LoadOpt,omitempty" type:"Struct"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The file loading rate optimization parameter.
+	LoadOpt *AttachInstanceSDGRequestLoadOpt `json:"LoadOpt,omitempty" xml:"LoadOpt,omitempty" type:"Struct"`
 	// The ID of the SDG.
 	//
 	// This parameter is required.
@@ -102,10 +127,30 @@ func (s *AttachInstanceSDGRequest) Validate() error {
 }
 
 type AttachInstanceSDGRequestLoadOpt struct {
-	BlockRwSplit     *bool  `json:"BlockRwSplit,omitempty" xml:"BlockRwSplit,omitempty"`
+	// Specifies whether to enable block device read/write splitting. Default value: false.
+	//
+	// example:
+	//
+	// true
+	BlockRwSplit *bool `json:"BlockRwSplit,omitempty" xml:"BlockRwSplit,omitempty"`
+	// The size for block device read/write splitting, in GiB. A value of 0 indicates that the default size is used.
+	//
+	// example:
+	//
+	// 20
 	BlockRwSplitSize *int32 `json:"BlockRwSplitSize,omitempty" xml:"BlockRwSplitSize,omitempty"`
-	Cache            *bool  `json:"Cache,omitempty" xml:"Cache,omitempty"`
-	CacheSize        *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// Specifies whether to enable caching. Block device read/write splitting must be enabled before caching can be used. Default value: false.
+	//
+	// example:
+	//
+	// true
+	Cache *bool `json:"Cache,omitempty" xml:"Cache,omitempty"`
+	// The cache size, in GiB. A value of 0 indicates that the default size is used.
+	//
+	// example:
+	//
+	// 20
+	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 }
 
 func (s AttachInstanceSDGRequestLoadOpt) String() string {

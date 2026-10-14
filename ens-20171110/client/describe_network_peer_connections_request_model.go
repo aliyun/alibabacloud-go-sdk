@@ -24,23 +24,34 @@ type iDescribeNetworkPeerConnectionsRequest interface {
 }
 
 type DescribeNetworkPeerConnectionsRequest struct {
+	// The ID of the ENS node.
+	//
 	// example:
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the network peer connection.
+	//
 	// example:
 	//
 	// pcc-5inkeimcipxk26yqtzm4q****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the network peer connection.
+	//
 	// example:
 	//
 	// test0
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the networks involved in the connection. The query does not distinguish between the requester and accepter.
 	NetworkIds []*string `json:"NetworkIds,omitempty" xml:"NetworkIds,omitempty" type:"Repeated"`
+	// The page number for the returned results. Default: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default: **10**. Valid values: **10*	- to **100**.
+	//
 	// example:
 	//
 	// 10

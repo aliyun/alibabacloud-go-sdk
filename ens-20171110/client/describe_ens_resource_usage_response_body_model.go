@@ -22,7 +22,7 @@ type DescribeEnsResourceUsageResponseBody struct {
 	//
 	// example:
 	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E	 Request ID.
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -122,11 +122,11 @@ type DescribeEnsResourceUsageResponseBodyEnsResourceUsage struct {
 	RunningCount *int32 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
 	// The type of the service. Valid values:
 	//
-	// 	- 1: subscription instance.
+	// - 1: subscription instance.
 	//
-	// 	- 2: edge service instance.
+	// - 2: edge service instance.
 	//
-	// 	- 3: pay-as-you-go instance.
+	// - 3: pay-as-you-go instance.
 	//
 	// example:
 	//

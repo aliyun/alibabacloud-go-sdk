@@ -127,7 +127,7 @@ type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
 	//
 	// example:
 	//
-	// test
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block of the route.
 	//

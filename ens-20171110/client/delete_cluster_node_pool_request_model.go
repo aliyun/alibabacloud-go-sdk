@@ -16,12 +16,16 @@ type iDeleteClusterNodePoolRequest interface {
 }
 
 type DeleteClusterNodePoolRequest struct {
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the node pool.
+	//
 	// This parameter is required.
 	//
 	// example:

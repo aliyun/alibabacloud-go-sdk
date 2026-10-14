@@ -20,9 +20,9 @@ type CreateForwardEntryResponseBody struct {
 	//
 	// example:
 	//
-	// fwd-5tc07cw14metghn3siv4ak8do
+	// fwd-5tc07cw14metghn3siv4a****
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

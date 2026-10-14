@@ -24,8 +24,12 @@ type iGetClusterAddonInstanceResponseBody interface {
 }
 
 type GetClusterAddonInstanceResponseBody struct {
-	CleanupCloudResources *bool                                              `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
-	ConfigSchema          []*GetClusterAddonInstanceResponseBodyConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	// Indicates whether associated cloud resources are automatically cleaned up.
+	CleanupCloudResources *bool `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
+	// The schema of custom parameters for the add-on.
+	ConfigSchema []*GetClusterAddonInstanceResponseBodyConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	// The add-on name.
+	//
 	// example:
 	//
 	// edge-csi-lite
@@ -36,10 +40,22 @@ type GetClusterAddonInstanceResponseBody struct {
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The current component instance status. Valid values:
+	//
+	// - **enabled**: Running normally.
+	//
+	// - **deleting**: Stopping.
+	//
+	// - **enabling**: Starting.
+	//
+	// - **upgrading**: In upgrade or configuration.
+	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// v1
@@ -122,18 +138,26 @@ func (s *GetClusterAddonInstanceResponseBody) Validate() error {
 }
 
 type GetClusterAddonInstanceResponseBodyConfigSchema struct {
+	// The application version.
+	//
 	// example:
 	//
 	// d0ead1f4e28de0f9e3c86588409a88a4
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The configuration version.
+	//
 	// example:
 	//
 	// d0ead1f4e28de0f9e3c86588409a88a4
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
+	// The add-on name.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom parameters of the add-on.
+	//
 	// example:
 	//
 	// {"k1":"v1"}

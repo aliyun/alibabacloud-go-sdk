@@ -20,13 +20,13 @@ type iDescribeSDGShrinkRequest interface {
 }
 
 type DescribeSDGShrinkRequest struct {
-	// The page number.
+	// The page number for paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of rows per page in a paging query.
 	//
 	// Default value: 10.
 	//
@@ -34,7 +34,7 @@ type DescribeSDGShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of SDGs that you want to query. By default, all SDGs are queried.
+	// The IDs of the SDGs to query. By default, all SDGs are queried.
 	SDGIdsShrink *string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty"`
 	SameDiskId   *bool   `json:"SameDiskId,omitempty" xml:"SameDiskId,omitempty"`
 }

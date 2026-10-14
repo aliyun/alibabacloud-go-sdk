@@ -16,7 +16,7 @@ type iModifyInstanceAttributeResponseBody interface {
 }
 
 type ModifyInstanceAttributeResponseBody struct {
-	// The returned service code. 0 indicates that the request was successful.
+	// The business return code. A value of 0 indicates success.
 	//
 	// example:
 	//

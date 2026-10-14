@@ -16,7 +16,12 @@ type iUnInstallClusterAddonsShrinkRequest interface {
 }
 
 type UnInstallClusterAddonsShrinkRequest struct {
+	// The add-on information.
 	AddonsShrink *string `json:"Addons,omitempty" xml:"Addons,omitempty"`
+	// The ID of the cluster.
+	//
+	// The target cluster must be in the running state. You can call DescribeClustersV1 to query the cluster state.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,7 +14,7 @@ type iRecoverAICInstanceResponseBody interface {
 }
 
 type RecoverAICInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

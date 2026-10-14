@@ -24,20 +24,20 @@ type iDescribeDisksResponseBody interface {
 }
 
 type DescribeDisksResponseBody struct {
-	// The returned service code. 0 indicates that the request was successful.
+	// The returned business code. A value of 0 indicates success.
 	//
 	// example:
 	//
 	// 0
 	Code  *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Disks *DescribeDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeDisksResponseBody struct {
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages for a paged query.
 	//
 	// example:
 	//

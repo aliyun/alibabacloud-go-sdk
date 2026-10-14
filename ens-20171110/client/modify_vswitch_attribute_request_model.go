@@ -11,6 +11,10 @@ type iModifyVSwitchAttributeRequest interface {
 	GoString() string
 	SetDescription(v string) *ModifyVSwitchAttributeRequest
 	GetDescription() *string
+	SetEnableIPv6(v bool) *ModifyVSwitchAttributeRequest
+	GetEnableIPv6() *bool
+	SetIpv6CidrBlock(v string) *ModifyVSwitchAttributeRequest
+	GetIpv6CidrBlock() *string
 	SetVSwitchId(v string) *ModifyVSwitchAttributeRequest
 	GetVSwitchId() *string
 	SetVSwitchName(v string) *ModifyVSwitchAttributeRequest
@@ -18,17 +22,22 @@ type iModifyVSwitchAttributeRequest interface {
 }
 
 type ModifyVSwitchAttributeRequest struct {
-	// The description of the listener.
+	// Description.
 	//
-	// 	- The description must be 2 to 256 characters in length.
+	// - Must be 2 to 256 characters in length and can contain English or Chinese characters.
 	//
-	// 	- It must start with a letter but cannot start with http:// or https://.
+	// - Cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
-	// this is my first network
+	// this is my first vswitch
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the vSwitch.
+	EnableIPv6  *bool   `json:"EnableIPv6,omitempty" xml:"EnableIPv6,omitempty"`
+	// example:
+	//
+	// 2408:XXXX:0:a600::/110
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// vSwitch ID.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +45,11 @@ type ModifyVSwitchAttributeRequest struct {
 	//
 	// n-****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the vSwitch.
+	// vSwitch name.
 	//
-	// 	- The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// - Must be 2 to 128 characters long. Can contain letters, digits, Chinese characters, underscores (_), and hyphens (-).
 	//
-	// 	- It must start with a letter but cannot start with http:// or https://.
+	// - Must start with a letter or a Chinese character. Cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -60,6 +69,14 @@ func (s *ModifyVSwitchAttributeRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ModifyVSwitchAttributeRequest) GetEnableIPv6() *bool {
+	return s.EnableIPv6
+}
+
+func (s *ModifyVSwitchAttributeRequest) GetIpv6CidrBlock() *string {
+	return s.Ipv6CidrBlock
+}
+
 func (s *ModifyVSwitchAttributeRequest) GetVSwitchId() *string {
 	return s.VSwitchId
 }
@@ -70,6 +87,16 @@ func (s *ModifyVSwitchAttributeRequest) GetVSwitchName() *string {
 
 func (s *ModifyVSwitchAttributeRequest) SetDescription(v string) *ModifyVSwitchAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyVSwitchAttributeRequest) SetEnableIPv6(v bool) *ModifyVSwitchAttributeRequest {
+	s.EnableIPv6 = &v
+	return s
+}
+
+func (s *ModifyVSwitchAttributeRequest) SetIpv6CidrBlock(v string) *ModifyVSwitchAttributeRequest {
+	s.Ipv6CidrBlock = &v
 	return s
 }
 

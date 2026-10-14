@@ -14,7 +14,7 @@ type iRescaleApplicationResponseBody interface {
 }
 
 type RescaleApplicationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -34,22 +34,23 @@ type DescribeSDGDeploymentStatusShrinkRequest struct {
 	//
 	// shared
 	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
-	DiskIdsShrink  *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	// IDs of Android in Container (AIC) instances.
+	// The list of disk IDs.
+	DiskIdsShrink *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// The list of AIC instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the nodes.
+	// The list of region IDs.
 	RegionIdsShrink *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
 	// The ID of the SDG.
 	//

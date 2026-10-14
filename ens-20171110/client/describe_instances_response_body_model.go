@@ -24,20 +24,20 @@ type iDescribeInstancesResponseBody interface {
 }
 
 type DescribeInstancesResponseBody struct {
-	// The returned service code. 0 indicates that the request was successful.
+	// The business code returned. A value of 0 indicates success.
 	//
 	// example:
 	//
 	// 0
 	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the instance list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page that was specified in the request.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of instances returned.
 	//
 	// example:
 	//

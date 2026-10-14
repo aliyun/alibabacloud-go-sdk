@@ -18,14 +18,20 @@ type iAttachInstancesToNodePoolShrinkRequest interface {
 }
 
 type AttachInstancesToNodePoolShrinkRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The array of instances, including the instance information.
+	//
 	// This parameter is required.
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// The node pool ID.
+	//
 	// This parameter is required.
 	//
 	// example:

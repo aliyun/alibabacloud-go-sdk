@@ -18,15 +18,15 @@ type iCreateSecurityGroupRequest interface {
 }
 
 type CreateSecurityGroupRequest struct {
-	// The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// The description of the security group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// An array of security group rules. You can specify up to 200 IDs of security group rules.
+	// The rules of the security group. Valid values of N: 0 to 200.
 	Permissions []*CreateSecurityGroupRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	// The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+	// The name of the security group. The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`. By default, this parameter is empty.
 	//
 	// example:
 	//
@@ -83,23 +83,23 @@ func (s *CreateSecurityGroupRequest) Validate() error {
 }
 
 type CreateSecurityGroupRequestPermissions struct {
-	// The description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The description of the security group rule. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+	// The destination IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// The direction in which the security group rule is applied.
+	// The direction of the security group rule. Valid values:
 	//
-	// 	- egress
+	// - egress: outbound
 	//
-	// 	- ingress
+	// - ingress: inbound
 	//
 	// This parameter is required.
 	//
@@ -107,15 +107,15 @@ type CreateSecurityGroupRequestPermissions struct {
 	//
 	// ingress
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The protocol type. Valid values:
+	// The transport layer protocol. Valid values:
 	//
-	// 	- TCP
+	// - TCP
 	//
-	// 	- UDP
+	// - UDP
 	//
-	// 	- ICMP
+	// - ICMP
 	//
-	// 	- ALL: All protocols are supported.
+	// - ALL
 	//
 	// This parameter is required.
 	//
@@ -125,11 +125,11 @@ type CreateSecurityGroupRequestPermissions struct {
 	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	Ipv6DestCidrIp   *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	// The action of the security group rule. Valid values:
+	// The policy of the security group rule. Valid values:
 	//
-	// 	- Accept
+	// - Accept: allows access.
 	//
-	// 	- Drop
+	// - Drop: denies access.
 	//
 	// This parameter is required.
 	//
@@ -137,13 +137,13 @@ type CreateSecurityGroupRequestPermissions struct {
 	//
 	// Accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The range of destination port numbers for the protocols specified in the security group rule. Valid values:
+	// The range of the destination ports for the security group rule. Valid values:
 	//
-	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+	// - If you set the IpProtocol to TCP or UDP, the port range is 1 to 65535. You must use a forward slash (/) to separate the start port and the end port, for example, 1/200.
 	//
-	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
+	// - If you set the IpProtocol to ICMP, the port range is -1/-1.
 	//
-	// 	- If you set IpProtocol to ALL, the port number range is -1/-1.
+	// - If you set the IpProtocol to ALL, the port range is -1/-1.
 	//
 	// This parameter is required.
 	//
@@ -151,7 +151,7 @@ type CreateSecurityGroupRequestPermissions struct {
 	//
 	// 80/80
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
+	// The priority of the security group rule. A smaller value indicates a higher priority. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -159,19 +159,19 @@ type CreateSecurityGroupRequestPermissions struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The source IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+	// The source IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// The range of source port numbers for the protocols specified in the security group rule. Valid values:
+	// The range of the source ports for the security group rule. Valid values:
 	//
-	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+	// - If you set the IpProtocol to TCP or UDP, the port range is 1 to 65535. You must use a forward slash (/) to separate the start port and the end port, for example, 1/200.
 	//
-	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
+	// - If you set the IpProtocol to ICMP, the port range is -1/-1.
 	//
-	// 	- If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+	// - If you set the IpProtocol to ALL, the port range is -1/-1.
 	//
 	// example:
 	//
