@@ -18,18 +18,24 @@ type iGetCheckConnectivityJobByJobIdRequest interface {
 }
 
 type GetCheckConnectivityJobByJobIdRequest struct {
+	// The ID of the connectivity check task, which is the Data returned by CheckDataSourceConnectivityOnResourceGroup.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 129837xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

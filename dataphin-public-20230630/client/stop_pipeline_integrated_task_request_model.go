@@ -20,18 +20,26 @@ type iStopPipelineIntegratedTaskRequest interface {
 }
 
 type StopPipelineIntegratedTaskRequest struct {
+	// The request context information.
+	//
 	// This parameter is required.
 	Context *StopPipelineIntegratedTaskRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30121101
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The stop parameters.
+	//
 	// This parameter is required.
 	StopCommand *StopPipelineIntegratedTaskRequestStopCommand `json:"StopCommand,omitempty" xml:"StopCommand,omitempty" type:"Struct"`
 }
@@ -95,12 +103,16 @@ func (s *StopPipelineIntegratedTaskRequest) Validate() error {
 }
 
 type StopPipelineIntegratedTaskRequestContext struct {
+	// The current operating environment. Valid values: DEV: development environment. PROD: production environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The ID of the project to which the integration pipeline task belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -140,6 +152,8 @@ func (s *StopPipelineIntegratedTaskRequestContext) Validate() error {
 }
 
 type StopPipelineIntegratedTaskRequestStopCommand struct {
+	// The list of instance IDs of the incremental instances to stop.
+	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }

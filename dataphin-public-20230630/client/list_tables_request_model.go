@@ -28,6 +28,8 @@ type ListTablesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -79,18 +81,20 @@ func (s *ListTablesRequest) Validate() error {
 }
 
 type ListTablesRequestListQuery struct {
-	// The asset catalog, such as the project name or business unit name.
+	// The asset catalog: project name and business unit name.
 	//
 	// example:
 	//
 	// LD_test01_dev
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The keyword for searching. Table names are supported.
+	// The supported keyword: table name.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The ID of the owner.
+	//
 	// example:
 	//
 	// 30012011
@@ -101,12 +105,37 @@ type ListTablesRequestListQuery struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
-	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The table types. If you do not specify this parameter or pass an empty list, all table types are queried. Valid values:
+	//
+	// - PHYSICAL_TABLE: Physical table of the compute source.
+	//
+	// - PHYSICAL_VIEW: View of the compute source.
+	//
+	// - PHYSICAL_MATERIALIZED_VIEW: Materialized view of the compute source.
+	//
+	// - STREAM_TABLE: Meta table.
+	//
+	// - MIRROR_TABLE: Mirror table.
+	//
+	// - DIM: Logical dimension table.
+	//
+	// - FACT: Logical fact table.
+	//
+	// - SUM_BIZ_UNIT: Logical aggregate table.
+	//
+	// - LOGIC_VIEW: Logical view.
+	//
+	// - DATASOURCE_TABLE: Data source table.
+	//
+	// - DATASOURCE_VIEW: Data source view.
+	//
+	// - DATASOURCE_MATERIALIZED_VIEW: Data source materialized view.
 	SubTypes []*string `json:"SubTypes,omitempty" xml:"SubTypes,omitempty" type:"Repeated"`
 }
 

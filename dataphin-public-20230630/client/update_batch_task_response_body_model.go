@@ -24,7 +24,7 @@ type iUpdateBatchTaskResponseBody interface {
 }
 
 type UpdateBatchTaskResponseBody struct {
-	// The error code. A value of OK indicates a successful request.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateBatchTaskResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The update result.
 	UpdateResult *UpdateBatchTaskResponseBodyUpdateResult `json:"UpdateResult,omitempty" xml:"UpdateResult,omitempty" type:"Struct"`
@@ -126,7 +126,7 @@ func (s *UpdateBatchTaskResponseBody) Validate() error {
 }
 
 type UpdateBatchTaskResponseBodyUpdateResult struct {
-	// The node ID in the folder tree.
+	// The ID of the task directory tree node.
 	//
 	// example:
 	//

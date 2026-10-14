@@ -24,23 +24,34 @@ type iGetCheckConnectivityJobByJobIdResponseBody interface {
 }
 
 type GetCheckConnectivityJobByJobIdResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The connectivity check task.
 	Data *GetCheckConnectivityJobByJobIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message of the request.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -119,30 +130,44 @@ func (s *GetCheckConnectivityJobByJobIdResponseBody) Validate() error {
 }
 
 type GetCheckConnectivityJobByJobIdResponseBodyData struct {
+	// The ID of the data source. This parameter is empty if the check is performed before creation.
+	//
 	// example:
 	//
 	// 192
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The error message returned when the check fails.
+	//
 	// example:
 	//
 	// notFoundIp
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The ID of the connectivity check task.
+	//
 	// example:
 	//
 	// 123123
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job type.
+	//
 	// example:
 	//
 	// application/cluster
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The job status. Valid values: NEW, IN_PROCESS, SUCCESS, and FAILED.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant to which the check task belongs.
+	//
 	// example:
 	//
 	// 30001011
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the underlying execution task.
+	//
 	// example:
 	//
 	// t_7572319950395080706_20251225_7572319950395080707

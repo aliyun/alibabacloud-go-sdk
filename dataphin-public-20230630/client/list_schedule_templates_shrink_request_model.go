@@ -18,14 +18,20 @@ type iListScheduleTemplatesShrinkRequest interface {
 }
 
 type ListScheduleTemplatesShrinkRequest struct {
+	// The query conditions for the scheduling template list. This is a JSON object that supports keyword search and pagination.
+	//
 	// This parameter is required.
 	ListScheduleTemplatesCommandShrink *string `json:"ListScheduleTemplatesCommand,omitempty" xml:"ListScheduleTemplatesCommand,omitempty"`
+	// The tenant ID, which indicates the tenant for the current operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011

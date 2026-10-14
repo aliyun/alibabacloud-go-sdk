@@ -1022,7 +1022,7 @@ func (client *Client) BatchCreateKgRelation(request *BatchCreateKgRelationReques
 
 // Summary:
 //
-// 批量交接资产。
+// Transfers assets in batches. Released in version 6.3.2.
 //
 // @param tmpReq - BatchHandoverAssetRequest
 //
@@ -1082,7 +1082,7 @@ func (client *Client) BatchHandoverAssetWithOptions(tmpReq *BatchHandoverAssetRe
 
 // Summary:
 //
-// 批量交接资产。
+// Transfers assets in batches. Released in version 6.3.2.
 //
 // @param request - BatchHandoverAssetRequest
 //
@@ -1396,11 +1396,11 @@ func (client *Client) CheckDataSourceConnectivityById(request *CheckDataSourceCo
 
 // Summary:
 //
-// 在指定调度资源组上检查数据源连通性
+// Checks the connectivity of a data source on a specified schedule resource group. Available since version 6.3.2.
 //
 // Description:
 //
-// 在指定调度资源组上异步发起数据源连通性检查，立即返回检查任务ID（Data）；任务结果通过 GetCheckConnectivityJobByJobId 轮询。与 CheckDataSourceConnectivity 的区别：本接口的检查任务在客户指定的调度资源组上执行，适用于 Dataphin 服务端与目标数据源网络不通的场景。
+// Asynchronously initiates a data source connectivity check on a specified schedule resource group and immediately returns the check task ID in the Data field. You can poll the task result by calling GetCheckConnectivityJobByJobId. Difference from CheckDataSourceConnectivity: The check task of this operation is executed on the schedule resource group specified by the customer, which is applicable to scenarios where the network between the Dataphin server and the target data source is disconnected.
 //
 // @param tmpReq - CheckDataSourceConnectivityOnResourceGroupRequest
 //
@@ -1460,11 +1460,11 @@ func (client *Client) CheckDataSourceConnectivityOnResourceGroupWithOptions(tmpR
 
 // Summary:
 //
-// 在指定调度资源组上检查数据源连通性
+// Checks the connectivity of a data source on a specified schedule resource group. Available since version 6.3.2.
 //
 // Description:
 //
-// 在指定调度资源组上异步发起数据源连通性检查，立即返回检查任务ID（Data）；任务结果通过 GetCheckConnectivityJobByJobId 轮询。与 CheckDataSourceConnectivity 的区别：本接口的检查任务在客户指定的调度资源组上执行，适用于 Dataphin 服务端与目标数据源网络不通的场景。
+// Asynchronously initiates a data source connectivity check on a specified schedule resource group and immediately returns the check task ID in the Data field. You can poll the task result by calling GetCheckConnectivityJobByJobId. Difference from CheckDataSourceConnectivity: The check task of this operation is executed on the schedule resource group specified by the customer, which is applicable to scenarios where the network between the Dataphin server and the target data source is disconnected.
 //
 // @param request - CheckDataSourceConnectivityOnResourceGroupRequest
 //
@@ -8828,7 +8828,7 @@ func (client *Client) GetAssetTypeAttributeCodes(request *GetAssetTypeAttributeC
 
 // Summary:
 //
-// Retrieves the details of an offline compute node.
+// Retrieves the details of an offline computing task.
 //
 // @param request - GetBatchTaskInfoRequest
 //
@@ -8892,7 +8892,7 @@ func (client *Client) GetBatchTaskInfoWithOptions(request *GetBatchTaskInfoReque
 
 // Summary:
 //
-// Retrieves the details of an offline compute node.
+// Retrieves the details of an offline computing task.
 //
 // @param request - GetBatchTaskInfoRequest
 //
@@ -8910,7 +8910,7 @@ func (client *Client) GetBatchTaskInfo(request *GetBatchTaskInfoRequest) (_resul
 
 // Summary:
 //
-// Retrieves the details of a specific version of a batch task.
+// Retrieves the details of a specified version of an offline computing task.
 //
 // @param request - GetBatchTaskInfoByVersionRequest
 //
@@ -8970,7 +8970,7 @@ func (client *Client) GetBatchTaskInfoByVersionWithOptions(request *GetBatchTask
 
 // Summary:
 //
-// Retrieves the details of a specific version of a batch task.
+// Retrieves the details of a specified version of an offline computing task.
 //
 // @param request - GetBatchTaskInfoByVersionRequest
 //
@@ -9678,11 +9678,11 @@ func (client *Client) GetCatalogAssetDetails(request *GetCatalogAssetDetailsRequ
 
 // Summary:
 //
-// 按任务ID查询数据源连通性检查任务
+// Queries a data source connectivity check task by task ID. Available since version 6.3.2.
 //
 // Description:
 //
-// 按任务ID查询数据源连通性检查任务的最新状态与错误信息，用于轮询 CheckDataSourceConnectivityOnResourceGroup 返回的异步任务。任务不存在时 Data 为空。
+// Queries the latest status and error message of a data source connectivity check task by task ID. This operation is used to poll the asynchronous task returned by CheckDataSourceConnectivityOnResourceGroup. If the task does not exist, Data is empty.
 //
 // @param request - GetCheckConnectivityJobByJobIdRequest
 //
@@ -9734,11 +9734,11 @@ func (client *Client) GetCheckConnectivityJobByJobIdWithOptions(request *GetChec
 
 // Summary:
 //
-// 按任务ID查询数据源连通性检查任务
+// Queries a data source connectivity check task by task ID. Available since version 6.3.2.
 //
 // Description:
 //
-// 按任务ID查询数据源连通性检查任务的最新状态与错误信息，用于轮询 CheckDataSourceConnectivityOnResourceGroup 返回的异步任务。任务不存在时 Data 为空。
+// Queries the latest status and error message of a data source connectivity check task by task ID. This operation is used to poll the asynchronous task returned by CheckDataSourceConnectivityOnResourceGroup. If the task does not exist, Data is empty.
 //
 // @param request - GetCheckConnectivityJobByJobIdRequest
 //
@@ -15418,7 +15418,7 @@ func (client *Client) GetServerVersion(request *GetServerVersionRequest) (_resul
 
 // Summary:
 //
-// 获取集成源表的描述与元数据信息（表描述+字段列表）。支持项目/计算源表、数据源直查表、外部采集数据源三种来源；结果为实时查询；外部数据源需先完成元数据采集。
+// Retrieves the description and metadata of an integration source table, including the table description and field list. This operation supports three sources: project or compute source tables, direct query tables of data sources, and externally collected data sources. The query results are returned in real time. For external data sources, metadata collection must be completed first. Release version: v6.3.2.
 //
 // @param tmpReq - GetSourceTableMetaRequest
 //
@@ -15486,7 +15486,7 @@ func (client *Client) GetSourceTableMetaWithOptions(tmpReq *GetSourceTableMetaRe
 
 // Summary:
 //
-// 获取集成源表的描述与元数据信息（表描述+字段列表）。支持项目/计算源表、数据源直查表、外部采集数据源三种来源；结果为实时查询；外部数据源需先完成元数据采集。
+// Retrieves the description and metadata of an integration source table, including the table description and field list. This operation supports three sources: project or compute source tables, direct query tables of data sources, and externally collected data sources. The query results are returned in real time. For external data sources, metadata collection must be completed first. Release version: v6.3.2.
 //
 // @param request - GetSourceTableMetaRequest
 //
@@ -16288,7 +16288,7 @@ func (client *Client) GetSupplementDagrunInstance(request *GetSupplementDagrunIn
 
 // Summary:
 //
-// 查询表资产清单详情。
+// Queries the details of a table asset inventory. Release version: v6.3.2.
 //
 // @param request - GetTableRequest
 //
@@ -16340,7 +16340,7 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dar
 
 // Summary:
 //
-// 查询表资产清单详情。
+// Queries the details of a table asset inventory. Release version: v6.3.2.
 //
 // @param request - GetTableRequest
 //
@@ -20342,7 +20342,7 @@ func (client *Client) ListOperationRecord(request *ListOperationRecordRequest) (
 
 // Summary:
 //
-// Queries a list of nodes. Supports querying batch integration, real-time integration, and unstructured workflows (data aggregation, offline workflows, and real-time workflows). Supports multi-dimensional filtering by folder, keyword, node type, submit status, scheduling type, owner, label, creator, and more. Results are returned with pagination.
+// Queries a list of tasks, including offline integration, real-time integration, and unstructured workflows (data ingestion, offline workflows, and real-time workflows). Supports multi-dimensional filtering by directory, keyword, task type, submit status, schedule type, owner, tag, and creator, and returns paginated results.
 //
 // @param tmpReq - ListPipelinesRequest
 //
@@ -20410,7 +20410,7 @@ func (client *Client) ListPipelinesWithOptions(tmpReq *ListPipelinesRequest, run
 
 // Summary:
 //
-// Queries a list of nodes. Supports querying batch integration, real-time integration, and unstructured workflows (data aggregation, offline workflows, and real-time workflows). Supports multi-dimensional filtering by folder, keyword, node type, submit status, scheduling type, owner, label, creator, and more. Results are returned with pagination.
+// Queries a list of tasks, including offline integration, real-time integration, and unstructured workflows (data ingestion, offline workflows, and real-time workflows). Supports multi-dimensional filtering by directory, keyword, task type, submit status, schedule type, owner, tag, and creator, and returns paginated results.
 //
 // @param request - ListPipelinesRequest
 //
@@ -21548,7 +21548,7 @@ func (client *Client) ListRowPermissionByUserId(request *ListRowPermissionByUser
 
 // Summary:
 //
-// 查询租户下的调度模板列表
+// Queries a list of scheduling templates. Supports fuzzy search by template name and pagination, and is used to select a scheduling template when updating a task. Release version: v6.3.2.
 //
 // @param tmpReq - ListScheduleTemplatesRequest
 //
@@ -21608,7 +21608,7 @@ func (client *Client) ListScheduleTemplatesWithOptions(tmpReq *ListScheduleTempl
 
 // Summary:
 //
-// 查询租户下的调度模板列表
+// Queries a list of scheduling templates. Supports fuzzy search by template name and pagination, and is used to select a scheduling template when updating a task. Release version: v6.3.2.
 //
 // @param request - ListScheduleTemplatesRequest
 //
@@ -22024,9 +22024,9 @@ func (client *Client) ListSubmitRecords(request *ListSubmitRecordsRequest) (_res
 
 // Summary:
 //
-// Performs a paged query to retrieve asset table metadata.
+// Queries the metadata of asset tables by page.
 //
-// Online version: v5.4.2.
+// Available in version v5.4.2.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -22086,9 +22086,9 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 
 // Summary:
 //
-// Performs a paged query to retrieve asset table metadata.
+// Queries the metadata of asset tables by page.
 //
-// Online version: v5.4.2.
+// Available in version v5.4.2.
 //
 // @param request - ListTablesRequest
 //
@@ -22184,17 +22184,17 @@ func (client *Client) ListTenantMembers(request *ListTenantMembersRequest) (_res
 
 // Summary:
 //
-// 获取租户角色列表
+// Retrieves the list of tenant roles. Release version: v6.3.2.
 //
 // Description:
 //
-// 获取租户角色列表。返回角色列表中 roleType 字段标识角色类型：
+// Retrieves the list of tenant roles. The roleType field in the returned role list indicates the role type:
 //
-// - BUILD_IN：内置角色
+// - BUILD_IN: built-in role
 //
-// - CUSTOM：自定义角色（即租户自定义创建的角色）
+// - CUSTOM: custom role (created by the tenant)
 //
-// 本接口无需额外业务入参，tenantId 由 POP 网关上下文自动注入。
+// This operation does not require additional business request parameters. The tenantId parameter is automatically injected by the POP gateway context.
 //
 // @param request - ListTenantRolesRequest
 //
@@ -22242,17 +22242,17 @@ func (client *Client) ListTenantRolesWithOptions(request *ListTenantRolesRequest
 
 // Summary:
 //
-// 获取租户角色列表
+// Retrieves the list of tenant roles. Release version: v6.3.2.
 //
 // Description:
 //
-// 获取租户角色列表。返回角色列表中 roleType 字段标识角色类型：
+// Retrieves the list of tenant roles. The roleType field in the returned role list indicates the role type:
 //
-// - BUILD_IN：内置角色
+// - BUILD_IN: built-in role
 //
-// - CUSTOM：自定义角色（即租户自定义创建的角色）
+// - CUSTOM: custom role (created by the tenant)
 //
-// 本接口无需额外业务入参，tenantId 由 POP 网关上下文自动注入。
+// This operation does not require additional business request parameters. The tenantId parameter is automatically injected by the POP gateway context.
 //
 // @param request - ListTenantRolesRequest
 //
@@ -24440,7 +24440,7 @@ func (client *Client) SearchKgBySemantic(request *SearchKgBySemanticRequest) (_r
 
 // Summary:
 //
-// 启动增全量一体化实例。
+// Starts an integrated full and incremental instance. Release version: v6.3.2.
 //
 // @param tmpReq - StartPipelineIntegratedTaskRequest
 //
@@ -24508,7 +24508,7 @@ func (client *Client) StartPipelineIntegratedTaskWithOptions(tmpReq *StartPipeli
 
 // Summary:
 //
-// 启动增全量一体化实例。
+// Starts an integrated full and incremental instance. Release version: v6.3.2.
 //
 // @param request - StartPipelineIntegratedTaskRequest
 //
@@ -24600,7 +24600,7 @@ func (client *Client) StopAdHocTask(request *StopAdHocTaskRequest) (_result *Sto
 
 // Summary:
 //
-// 批量停止增全量一体化实例。
+// Stops multiple integrated incremental and full instances. Available since version v6.3.2.
 //
 // @param tmpReq - StopPipelineIntegratedTaskRequest
 //
@@ -24668,7 +24668,7 @@ func (client *Client) StopPipelineIntegratedTaskWithOptions(tmpReq *StopPipeline
 
 // Summary:
 //
-// 批量停止增全量一体化实例。
+// Stops multiple integrated incremental and full instances. Available since version v6.3.2.
 //
 // @param request - StopPipelineIntegratedTaskRequest
 //
@@ -25256,15 +25256,15 @@ func (client *Client) SyncDepartment(request *SyncDepartmentRequest) (_result *S
 //
 // Description:
 //
-// 同步用户的部门映射关系。支持为指定用户设置部门，或通过传入空列表 departmentIdList 清除该用户已设置的全部部门。
+// Synchronizes the department mapping relationships of users. You can set departments for a specified user or clear all departments set for the user by passing an empty list for departmentIdList.
 //
-// 使用说明：
+// Usage notes:
 //
-// - departmentIdList 为 null（未传）：直接报错，防止调用方误清空；
+// - If departmentIdList is null (not passed): An error is returned directly to prevent the caller from accidentally clearing the data.
 //
-// - departmentIdList 为空列表 []：显式清除该 sourceUserId 对应的全部部门映射；
+// - If departmentIdList is an empty list []: All department mappings corresponding to the sourceUserId are explicitly cleared.
 //
-// - departmentIdList 为非空列表：全量覆盖，先删除该用户全部旧部门映射，再插入新列表中的部门。
+// - If departmentIdList is a non-empty list: A full overwrite is performed. All old department mappings of the user are deleted first, and then the departments in the new list are inserted.
 //
 // @param tmpReq - SyncDepartmentUserRequest
 //
@@ -25328,15 +25328,15 @@ func (client *Client) SyncDepartmentUserWithOptions(tmpReq *SyncDepartmentUserRe
 //
 // Description:
 //
-// 同步用户的部门映射关系。支持为指定用户设置部门，或通过传入空列表 departmentIdList 清除该用户已设置的全部部门。
+// Synchronizes the department mapping relationships of users. You can set departments for a specified user or clear all departments set for the user by passing an empty list for departmentIdList.
 //
-// 使用说明：
+// Usage notes:
 //
-// - departmentIdList 为 null（未传）：直接报错，防止调用方误清空；
+// - If departmentIdList is null (not passed): An error is returned directly to prevent the caller from accidentally clearing the data.
 //
-// - departmentIdList 为空列表 []：显式清除该 sourceUserId 对应的全部部门映射；
+// - If departmentIdList is an empty list []: All department mappings corresponding to the sourceUserId are explicitly cleared.
 //
-// - departmentIdList 为非空列表：全量覆盖，先删除该用户全部旧部门映射，再插入新列表中的部门。
+// - If departmentIdList is a non-empty list: A full overwrite is performed. All old department mappings of the user are deleted first, and then the departments in the new list are inserted.
 //
 // @param request - SyncDepartmentUserRequest
 //
@@ -25666,7 +25666,7 @@ func (client *Client) UpdateBasicProject(request *UpdateBasicProjectRequest) (_r
 
 // Summary:
 //
-// Updates an offline compute node.
+// Updates an offline computing task.
 //
 // @param tmpReq - UpdateBatchTaskRequest
 //
@@ -25726,7 +25726,7 @@ func (client *Client) UpdateBatchTaskWithOptions(tmpReq *UpdateBatchTaskRequest,
 
 // Summary:
 //
-// Updates an offline compute node.
+// Updates an offline computing task.
 //
 // @param request - UpdateBatchTaskRequest
 //

@@ -26,7 +26,7 @@ type SyncDepartmentUserRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the user who performs the operation.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *SyncDepartmentUserRequest) Validate() error {
 }
 
 type SyncDepartmentUserRequestSyncDepartmentUserCommand struct {
-	// The mapping between users and their affiliated departments.
+	// The department membership relationships of the user.
 	//
 	// This parameter is required.
 	DeptUserMapping []*SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping `json:"DeptUserMapping,omitempty" xml:"DeptUserMapping,omitempty" type:"Repeated"`
@@ -120,15 +120,15 @@ func (s *SyncDepartmentUserRequestSyncDepartmentUserCommand) Validate() error {
 }
 
 type SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping struct {
-	// The list of department IDs to which the user belongs. If this parameter is left empty, the user affiliation is deleted.
+	// The list of department IDs to which the user belongs. If the list is empty, the user membership is deleted.
 	DepartmentIdList []*string `json:"DepartmentIdList,omitempty" xml:"DepartmentIdList,omitempty" type:"Repeated"`
-	// The user source type.
+	// The source type of the user.
 	//
 	// example:
 	//
 	// aliyun
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The user ID in the user system. This is the unique identifier of the user.
+	// The user ID in the user system, which serves as the unique identifier of the user.
 	//
 	// This parameter is required.
 	//

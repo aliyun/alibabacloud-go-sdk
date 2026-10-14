@@ -24,23 +24,34 @@ type iStopPipelineIntegratedTaskResponseBody interface {
 }
 
 type StopPipelineIntegratedTaskResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The batch results of stopping integrated incremental and full instances.
 	Data *StopPipelineIntegratedTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,16 @@ func (s *StopPipelineIntegratedTaskResponseBody) Validate() error {
 }
 
 type StopPipelineIntegratedTaskResponseBodyData struct {
+	// The stop results for each instance.
 	DevOpsActionResDTOList []*StopPipelineIntegratedTaskResponseBodyDataDevOpsActionResDTOList `json:"DevOpsActionResDTOList,omitempty" xml:"DevOpsActionResDTOList,omitempty" type:"Repeated"`
+	// The number of failed stops.
+	//
 	// example:
 	//
 	// 0
 	Fail *int64 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// The number of successful stops.
+	//
 	// example:
 	//
 	// 1
@@ -179,14 +195,20 @@ func (s *StopPipelineIntegratedTaskResponseBodyData) Validate() error {
 }
 
 type StopPipelineIntegratedTaskResponseBodyDataDevOpsActionResDTOList struct {
+	// The job name.
+	//
 	// example:
 	//
 	// eedsauto
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The job owner.
+	//
 	// example:
 	//
 	// 1692173406264688
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The operation status.
+	//
 	// example:
 	//
 	// FAIED

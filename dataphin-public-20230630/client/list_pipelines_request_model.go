@@ -36,7 +36,7 @@ type ListPipelinesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The user ID of the operator.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -103,13 +103,7 @@ func (s *ListPipelinesRequest) Validate() error {
 }
 
 type ListPipelinesRequestContext struct {
-	// The environment identifier. Valid values:
-	//
-	// - DEV: development environment.
-	//
-	// - PROD: production environment.
-	//
-	// Default value: PROD.
+	// The environment identifier. Valid values: DEV: development environment. PROD: production environment. Default value: PROD.
 	//
 	// example:
 	//
@@ -156,25 +150,25 @@ func (s *ListPipelinesRequestContext) Validate() error {
 }
 
 type ListPipelinesRequestListCommand struct {
-	// The list of creator user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
+	// The user IDs of the creators used for filtering. If this parameter is left empty, no filtering is performed. If multiple IDs are specified, they are evaluated by using the OR operator.
 	CreatorList []*string `json:"CreatorList,omitempty" xml:"CreatorList,omitempty" type:"Repeated"`
-	// The list of development owner user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
+	// The user IDs of the development owners used for filtering. If this parameter is left empty, no filtering is performed. If multiple IDs are specified, they are evaluated by using the OR operator.
 	DevelopOwnerList []*string `json:"DevelopOwnerList,omitempty" xml:"DevelopOwnerList,omitempty" type:"Repeated"`
-	// The list of full folder paths to query. If left empty, the root folder is queried.
+	// The full paths of the directories to query. If this parameter is left empty, the root directory is queried.
 	Directories []*string `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	// Specifies whether to use exact match for node names. Default value: false.
+	// Specifies whether an exact match is performed on the node name. Default value: false.
 	ExactMatch *bool `json:"ExactMatch,omitempty" xml:"ExactMatch,omitempty"`
-	// The list of node name keywords. This parameter is optional. If left empty, no filtering by name is applied. For exact match, specify full names. For fuzzy match, specify keywords. Multiple values are evaluated with an OR relationship.
+	// The keywords used to filter task names. This parameter is optional. If this parameter is left empty, tasks are not filtered by name. If exact match is enabled, this parameter specifies a list of full names. If fuzzy match is used, this parameter specifies a list of keywords. If multiple keywords are specified, they are evaluated by using the OR operator.
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-	// The cursor-based pagination parameter (an opaque cursor that callers do not need to interpret). This parameter is optional. If not specified, the request is treated as a first-page request and returns the actual total count. If specified, the request is treated as a subsequent-page request. Pass the NextCursor value returned from the previous page as-is. The SQL layer automatically filters by incrementing ID to query the next page without re-querying the total count. No OFFSET is used throughout, which avoids performance degradation in deep paging scenarios.
+	// The cursor for the next page. Leave this parameter empty for the first page. For subsequent pages, pass the NextCursor value returned from the previous page.
 	//
 	// example:
 	//
 	// 123
 	NextCursor *int64 `json:"NextCursor,omitempty" xml:"NextCursor,omitempty"`
-	// The list of O&M owner user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
+	// The user IDs of the O&M owners used for filtering. If this parameter is left empty, no filtering is performed. If multiple IDs are specified, they are evaluated by using the OR operator.
 	OpsOwnerList []*string `json:"OpsOwnerList,omitempty" xml:"OpsOwnerList,omitempty" type:"Repeated"`
-	// The page number. Default value: 1. Pages start from 1.
+	// The page number. Default value: 1. The value starts from 1.
 	//
 	// example:
 	//
@@ -186,51 +180,21 @@ type ListPipelinesRequestListCommand struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of node types. Default value: [0] (batch integration). Valid values:
-	//
-	// - 0: batch integration.
-	//
-	// - 1: real-time integration.
-	//
-	// - 13: data aggregation.
-	//
-	// - 14: offline unstructured workflow.
-	//
-	// - 15: real-time unstructured workflow.
-	//
-	// - 16: online unstructured workflow.
-	//
-	// If null or an empty list is passed, the default value [0] is used.
+	// The task types. Default value: [0]. Valid values: 0: offline integration. 1: real-time integration. 13: data ingestion. 14: offline unstructured workflow. 15: real-time unstructured workflow. 16: online unstructured workflow. If you pass null or an empty list, the default value [0] is used.
 	PipelineTypeList []*int32 `json:"PipelineTypeList,omitempty" xml:"PipelineTypeList,omitempty" type:"Repeated"`
-	// Specifies whether to recursively query subfolders. Default value: false.
+	// Specifies whether to recursively query subdirectories. Default value: false.
 	//
 	// example:
 	//
 	// true
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
-	// The list of scheduling types for filtering. If left empty, no filtering is applied. Valid values:
-	//
-	// - 1: periodic scheduling.
-	//
-	// - 3: manual scheduling.
-	//
-	// - 5: real-time scheduling.
-	//
-	// - 7: online workflow.
+	// The schedule types used for filtering. If this parameter is left empty, no filtering is performed. Valid values: 1: periodic scheduling. 3: manual scheduling. 5: real-time scheduling. 7: online workflow.
 	ScheduleTypeList []*int32 `json:"ScheduleTypeList,omitempty" xml:"ScheduleTypeList,omitempty" type:"Repeated"`
-	// The list of submit statuses for filtering. If left empty, no filtering is applied. Valid values:
-	//
-	// - DRAFT: draft.
-	//
-	// - SUBMITTING: submitting.
-	//
-	// - SUBMITTED: submitted.
-	//
-	// - PUBLISHED: published.
+	// The submit statuses used for filtering. If this parameter is left empty, no filtering is performed. Valid values: DRAFT: draft. SUBMITTING: submitting. SUBMITTED: submitted. PUBLISHED: published.
 	SubmitStatusList []*string `json:"SubmitStatusList,omitempty" xml:"SubmitStatusList,omitempty" type:"Repeated"`
-	// The list of label names for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
+	// The tag names used for filtering. If this parameter is left empty, no filtering is performed. If multiple names are specified, they are evaluated by using the OR operator.
 	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The total number of records for cursor-based pagination. This parameter is optional and takes effect only when NextCursor is not empty. After the first-page request returns the actual total count, pass this value back as-is for subsequent pages. The server does not re-query the total count and directly echoes the value, which avoids redundant count overhead. If not specified, the system falls back to querying one extra record to determine whether a next page exists.
+	// The total number of records.
 	//
 	// example:
 	//

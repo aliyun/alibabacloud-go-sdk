@@ -18,14 +18,20 @@ type iCheckDataSourceConnectivityOnResourceGroupRequest interface {
 }
 
 type CheckDataSourceConnectivityOnResourceGroupRequest struct {
+	// The check object.
+	//
 	// This parameter is required.
 	CheckCommand *CheckDataSourceConnectivityOnResourceGroupRequestCheckCommand `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -77,15 +83,22 @@ func (s *CheckDataSourceConnectivityOnResourceGroupRequest) Validate() error {
 }
 
 type CheckDataSourceConnectivityOnResourceGroupRequestCheckCommand struct {
+	// The connection configuration items. If DataSourceId is specified, this parameter is optional and the saved configurations of the data source are used by default.
 	ConfigItemList []*CheckDataSourceConnectivityOnResourceGroupRequestCheckCommandConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
+	// The data source ID. This parameter is optional. If specified, the check result is associated with the data source and visible on the data source page, and the old check records of the data source on the target resource group are cleared first. If Type and ConfigItemList are not specified, the saved type and configurations of the data source are used for the check.
+	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The ID of the schedule resource group. The connectivity check task is executed on this resource group.
+	//
 	// example:
 	//
 	// rg_269xxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The data source type. If DataSourceId is specified, this parameter is optional and the saved type of the data source is used by default.
+	//
 	// example:
 	//
 	// MYSQL
@@ -150,10 +163,14 @@ func (s *CheckDataSourceConnectivityOnResourceGroupRequestCheckCommand) Validate
 }
 
 type CheckDataSourceConnectivityOnResourceGroupRequestCheckCommandConfigItemList struct {
+	// The key of the configuration item.
+	//
 	// example:
 	//
 	// jdbc.url
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The configuration value.
+	//
 	// example:
 	//
 	// jdbc:mysql://host:port/database

@@ -24,19 +24,13 @@ type iGetBatchTaskInfoRequest interface {
 }
 
 type GetBatchTaskInfoRequest struct {
-	// The environment identifier. Valid values:
-	//
-	// - dev
-	//
-	// - prod
-	//
-	// Default value: dev.
+	// The environment identifier. Valid values: dev and prod. Default value: dev.
 	//
 	// example:
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The node ID in the directory tree.
+	// The node ID in the task directory tree.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +54,7 @@ type GetBatchTaskInfoRequest struct {
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The ID of the project to which the node belongs.
+	// The project to which the task belongs.
 	//
 	// This parameter is required.
 	//

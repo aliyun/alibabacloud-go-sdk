@@ -24,24 +24,34 @@ type iGetSourceTableMetaResponseBody interface {
 }
 
 type GetSourceTableMetaResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The metadata of the integration source table, including the table description and field list.
 	Data *GetSourceTableMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSourceTableMetaResponseBody) String() string {
@@ -116,15 +126,22 @@ func (s *GetSourceTableMetaResponseBody) Validate() error {
 }
 
 type GetSourceTableMetaResponseBodyData struct {
+	// The column list.
 	Columns []*GetSourceTableMetaResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The globally unique identifier (GUID) of the table.
+	//
 	// example:
 	//
 	// 300001410.default.sample
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The table description or comment.
+	//
 	// example:
 	//
 	// sample
 	TableComment *string `json:"TableComment,omitempty" xml:"TableComment,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// sample
@@ -189,30 +206,44 @@ func (s *GetSourceTableMetaResponseBodyData) Validate() error {
 }
 
 type GetSourceTableMetaResponseBodyDataColumns struct {
+	// The column comment.
+	//
 	// example:
 	//
 	// unique id
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The column data type.
+	//
 	// example:
 	//
 	// bigint
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The column name.
+	//
 	// example:
 	//
 	// id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the column is a primary key.
+	//
 	// example:
 	//
 	// false
 	Pk *bool `json:"Pk,omitempty" xml:"Pk,omitempty"`
+	// Indicates whether the column is a partition column.
+	//
 	// example:
 	//
 	// false
 	Pt *bool `json:"Pt,omitempty" xml:"Pt,omitempty"`
+	// The raw column data type.
+	//
 	// example:
 	//
 	// bigint
 	RawDataType *string `json:"RawDataType,omitempty" xml:"RawDataType,omitempty"`
+	// The column sequence number.
+	//
 	// example:
 	//
 	// 1

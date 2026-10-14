@@ -20,18 +20,26 @@ type iStartPipelineIntegratedTaskRequest interface {
 }
 
 type StartPipelineIntegratedTaskRequest struct {
+	// The request context.
+	//
 	// This parameter is required.
 	Context *StartPipelineIntegratedTaskRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30110121
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The startup parameters.
+	//
 	// This parameter is required.
 	StartCommand *StartPipelineIntegratedTaskRequestStartCommand `json:"StartCommand,omitempty" xml:"StartCommand,omitempty" type:"Struct"`
 }
@@ -95,12 +103,20 @@ func (s *StartPipelineIntegratedTaskRequest) Validate() error {
 }
 
 type StartPipelineIntegratedTaskRequestContext struct {
+	// The current operating environment. Valid values:
+	//
+	// - DEV: Development environment.
+	//
+	// - PROD: Production environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The ID of the project to which the integration pipeline node belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -140,38 +156,64 @@ func (s *StartPipelineIntegratedTaskRequestContext) Validate() error {
 }
 
 type StartPipelineIntegratedTaskRequestStartCommand struct {
+	// The bandwidth limit for the offline full task. Unit: MB/s.
+	//
 	// example:
 	//
 	// 10
 	ByteSpeed *int32 `json:"ByteSpeed,omitempty" xml:"ByteSpeed,omitempty"`
+	// The specified time checkpoint for starting in pure incremental mode.
+	//
 	// example:
 	//
 	// 2026-09-22 15:28:31
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	// The concurrency for the offline full task.
+	//
 	// example:
 	//
 	// 10
 	Concurrent *int32 `json:"Concurrent,omitempty" xml:"Concurrent,omitempty"`
+	// The startup mode for the full table task. Valid values:
+	//
+	// - INIT
+	//
+	// - RELAY
+	//
 	// example:
 	//
 	// RELAY
 	FullTaskMode *string `json:"FullTaskMode,omitempty" xml:"FullTaskMode,omitempty"`
+	// The incremental instance ID required when restarting the instance.
+	//
 	// example:
 	//
 	// t_1234567890_123123
 	IncrementalTaskId *string `json:"IncrementalTaskId,omitempty" xml:"IncrementalTaskId,omitempty"`
+	// The memory for the offline full task. Unit: MB.
+	//
 	// example:
 	//
 	// 1024
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The ID of the real-time node required when starting from a node.
+	//
 	// example:
 	//
 	// n_1234567890
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The ID of the resource group used by the full table instance.
+	//
 	// example:
 	//
 	// default
 	QuotaGroupId *string `json:"QuotaGroupId,omitempty" xml:"QuotaGroupId,omitempty"`
+	// The synchronization mode. Valid values:
+	//
+	// - DI_DF
+	//
+	// - DI
+	//
 	// example:
 	//
 	// DI_DF

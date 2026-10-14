@@ -20,18 +20,26 @@ type iStopPipelineIntegratedTaskShrinkRequest interface {
 }
 
 type StopPipelineIntegratedTaskShrinkRequest struct {
+	// The request context information.
+	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30121101
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The stop parameters.
+	//
 	// This parameter is required.
 	StopCommandShrink *string `json:"StopCommand,omitempty" xml:"StopCommand,omitempty"`
 }

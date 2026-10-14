@@ -22,7 +22,7 @@ type iGetBatchTaskInfoByVersionRequest interface {
 }
 
 type GetBatchTaskInfoByVersionRequest struct {
-	// The node ID in the directory tree.
+	// The node ID of the task directory tree.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type GetBatchTaskInfoByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The operator user ID.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The ID of the project to which the node belongs.
+	// The project to which the task belongs.
 	//
 	// This parameter is required.
 	//

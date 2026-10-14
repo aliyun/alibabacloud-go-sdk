@@ -36,7 +36,7 @@ type ListPipelinesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The user ID of the operator.
+	// The ID of the operator.
 	//
 	// example:
 	//

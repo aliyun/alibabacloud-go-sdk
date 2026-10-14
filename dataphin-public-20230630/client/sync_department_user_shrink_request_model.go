@@ -26,7 +26,7 @@ type SyncDepartmentUserShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the user who performs the operation.
 	//
 	// example:
 	//

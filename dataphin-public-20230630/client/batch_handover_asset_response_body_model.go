@@ -24,24 +24,34 @@ type iBatchHandoverAssetResponseBody interface {
 }
 
 type BatchHandoverAssetResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the batch asset owner transfer.
 	Data *BatchHandoverAssetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchHandoverAssetResponseBody) String() string {
@@ -116,23 +126,44 @@ func (s *BatchHandoverAssetResponseBody) Validate() error {
 }
 
 type BatchHandoverAssetResponseBodyData struct {
+	// The error message. This parameter is empty if no error occurs.
+	//
 	// example:
 	//
 	// NullPointException
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The number of failed transfers.
+	//
 	// example:
 	//
 	// 0
-	FailCount   *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// The list of asset GUIDs for which the transfer failed. This parameter is empty if all transfers succeed.
 	FailedGuids []*string `json:"FailedGuids,omitempty" xml:"FailedGuids,omitempty" type:"Repeated"`
+	// The status of the batch transfer task. Valid values:
+	//
+	// - INIT: Initial.
+	//
+	// - HANDOVER_RECORDS_GENERATED: Records generated.
+	//
+	// - PROCESSING_WITHOUT_APPROVAL: Processing.
+	//
+	// - SUCCESS: Success.
+	//
+	// - FINISHED_WITH_EXCEPTION: Finished with failures.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of successful transfers.
+	//
 	// example:
 	//
 	// 2
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The total number of transferred assets.
+	//
 	// example:
 	//
 	// 2

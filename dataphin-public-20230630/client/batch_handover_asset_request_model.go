@@ -18,14 +18,20 @@ type iBatchHandoverAssetRequest interface {
 }
 
 type BatchHandoverAssetRequest struct {
+	// The batch transfer command.
+	//
 	// This parameter is required.
 	HandoverCommand *BatchHandoverAssetRequestHandoverCommand `json:"HandoverCommand,omitempty" xml:"HandoverCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -77,8 +83,12 @@ func (s *BatchHandoverAssetRequest) Validate() error {
 }
 
 type BatchHandoverAssetRequestHandoverCommand struct {
+	// The list of asset GUIDs to be transferred. A maximum of 50 assets can be transferred at a time. Currently, only physical tables and logical tables are supported. Data source tables are not supported.
+	//
 	// This parameter is required.
 	GuidList []*string `json:"GuidList,omitempty" xml:"GuidList,omitempty" type:"Repeated"`
+	// The user ID of the transfer recipient.
+	//
 	// This parameter is required.
 	//
 	// example:

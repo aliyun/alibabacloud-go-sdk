@@ -20,18 +20,26 @@ type iStartPipelineIntegratedTaskShrinkRequest interface {
 }
 
 type StartPipelineIntegratedTaskShrinkRequest struct {
+	// The request context.
+	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30110121
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The startup parameters.
+	//
 	// This parameter is required.
 	StartCommandShrink *string `json:"StartCommand,omitempty" xml:"StartCommand,omitempty"`
 }

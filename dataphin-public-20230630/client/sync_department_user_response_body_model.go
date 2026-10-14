@@ -24,7 +24,7 @@ type iSyncDepartmentUserResponseBody interface {
 }
 
 type SyncDepartmentUserResponseBody struct {
-	// The request error code. OK indicates a successful request.
+	// The error code of the request. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -36,25 +36,25 @@ type SyncDepartmentUserResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned by the backend.
+	// The HTTP status code of the backend response.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request error message.
+	// The error message of the request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

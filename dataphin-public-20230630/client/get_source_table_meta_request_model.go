@@ -20,18 +20,26 @@ type iGetSourceTableMetaRequest interface {
 }
 
 type GetSourceTableMetaRequest struct {
+	// The request context.
+	//
 	// This parameter is required.
 	Context *GetSourceTableMetaRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The query conditions for the integration source table.
+	//
 	// This parameter is required.
 	Query *GetSourceTableMetaRequestQuery `json:"Query,omitempty" xml:"Query,omitempty" type:"Struct"`
 }
@@ -95,10 +103,18 @@ func (s *GetSourceTableMetaRequest) Validate() error {
 }
 
 type GetSourceTableMetaRequestContext struct {
+	// The current operation environment. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD: production environment.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The ID of the project to which the integration pipeline task belongs.
+	//
 	// example:
 	//
 	// 123
@@ -136,22 +152,36 @@ func (s *GetSourceTableMetaRequestContext) Validate() error {
 }
 
 type GetSourceTableMetaRequestQuery struct {
+	// The catalog name.
+	//
 	// example:
 	//
 	// hive_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The identifier of the data source or compute source. If QueryMode is set to DATA_SOURCE, specify the physical data source ID. If QueryMode is set to PROJECT_COMPUTE_SOURCE, specify the data source ID bound to the compute source.
+	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The query mode. Valid values:
+	//
+	// - DATA_SOURCE: physical data source. This is the default value. It includes direct queries and automatic routing of external data source metadata.
+	//
+	// - PROJECT_COMPUTE_SOURCE: tables under the project or compute source. The data source is parsed based on the compute source of the project specified by Context.ProjectId.
+	//
 	// example:
 	//
 	// DATA_SOURCE
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// The schema name.
+	//
 	// example:
 	//
 	// default
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The table name. The schema.table format is supported.
+	//
 	// example:
 	//
 	// ods_user_info

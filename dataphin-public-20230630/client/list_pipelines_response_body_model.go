@@ -24,13 +24,13 @@ type iListPipelinesResponseBody interface {
 }
 
 type ListPipelinesResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The paged query result.
+	// The paging query result.
 	Data *ListPipelinesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned by the backend.
 	//
@@ -38,7 +38,7 @@ type ListPipelinesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListPipelinesResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,15 +130,15 @@ func (s *ListPipelinesResponseBody) Validate() error {
 }
 
 type ListPipelinesResponseBodyData struct {
-	// The list of node information on the current page.
+	// The list of task information on the current page.
 	List []*ListPipelinesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The cursor for the next page (an opaque cursor that the caller does not need to interpret). A null value indicates that there are no more pages. Otherwise, pass this value as the nextCursor parameter in the next request to retrieve the next page.
+	// The cursor for the next page in cursor-based pagination. This is an opaque cursor and does not need to be parsed. A value of null indicates that there are no more pages. Otherwise, pass this value as the nextCursor parameter in the next request to retrieve the next page.
 	//
 	// example:
 	//
 	// 123
 	NextCursor *int64 `json:"NextCursor,omitempty" xml:"NextCursor,omitempty"`
-	// The current page number, starting from 1.
+	// The current page number. Pages start from 1.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListPipelinesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records that match the conditions. For the first page request, the actual total count is returned. For subsequent page requests (when nextCursor is passed in), if totalCount is included in the request, the same value is returned. Otherwise, this field is not returned. The total value is a snapshot taken at the time of the first page query and is not updated in real time as data changes during pagination.
+	// The total number of records that meet the query conditions.
 	//
 	// example:
 	//
@@ -225,13 +225,13 @@ func (s *ListPipelinesResponseBodyData) Validate() error {
 }
 
 type ListPipelinesResponseBodyDataList struct {
-	// The list of user IDs of development owners.
+	// The list of user IDs of the development owners.
 	DevelopOwners []*string `json:"DevelopOwners,omitempty" xml:"DevelopOwners,omitempty" type:"Repeated"`
-	// The directory where the node is located.
+	// The directory.
 	//
 	// example:
 	//
-	// /dwd/finance_domain/
+	// /dwd/Financial domain/
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The file ID.
 	//
@@ -239,19 +239,19 @@ type ListPipelinesResponseBodyDataList struct {
 	//
 	// 12121111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The schedule node ID.
+	// The scheduling node ID.
 	//
 	// example:
 	//
 	// n_6793582765516849152
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node name.
+	// The task name.
 	//
 	// example:
 	//
 	// test
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The list of user IDs of O&M owners.
+	// The list of user IDs of the O&M owners.
 	OpsOwners []*string `json:"OpsOwners,omitempty" xml:"OpsOwners,omitempty" type:"Repeated"`
 	// The pipeline ID.
 	//
@@ -261,43 +261,43 @@ type ListPipelinesResponseBodyDataList struct {
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	// The schedule type. Valid values:
 	//
-	// - 1: periodic scheduling.
+	// - 1: Periodic scheduling.
 	//
-	// - 3: manual scheduling.
+	// - 3: Manual scheduling.
 	//
-	// - 5: real-time scheduling.
+	// - 5: Real-time scheduling.
 	//
 	// example:
 	//
 	// 1
 	ScheduleType *int32 `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The list of node tag names.
+	// The list of task tag names.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The node status. Valid values:
+	// The task status. Valid values:
 	//
-	// - DRAFT: draft.
+	// - DRAFT: Draft.
 	//
-	// - SUBMITTING: being submitted.
+	// - SUBMITTING: Submitting.
 	//
-	// - SUBMITTED: submitted.
+	// - SUBMITTED: Submitted.
 	//
-	// - PUBLISHED: published.
+	// - PUBLISHED: Published.
 	//
 	// example:
 	//
 	// SUBMITTED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The node type. Valid values:
+	// The task type. Valid values:
 	//
-	// - 0: offline integration.
+	// - 0: Offline integration.
 	//
-	// - 1: real-time integration.
+	// - 1: Real-time integration.
 	//
-	// - 13: data aggregation.
+	// - 13: Data aggregation.
 	//
-	// - 14: offline unstructured workflow.
+	// - 14: Offline unstructured workflow.
 	//
-	// - 15: real-time unstructured workflow.
+	// - 15: Real-time unstructured workflow.
 	//
 	// example:
 	//

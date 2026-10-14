@@ -24,24 +24,34 @@ type iGetTableResponseBody interface {
 }
 
 type GetTableResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend response exception.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTableResponseBody) String() string {
@@ -116,117 +126,178 @@ func (s *GetTableResponseBody) Validate() error {
 }
 
 type GetTableResponseBodyData struct {
+	// The asset inventory tags.
 	AssetTags []*string `json:"AssetTags,omitempty" xml:"AssetTags,omitempty" type:"Repeated"`
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 2011
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The business unit name.
+	//
 	// example:
 	//
 	// LD_test01
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The table comment.
+	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 30011211
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The data domain ID.
+	//
 	// example:
 	//
 	// 211
 	DataDomainId *int64 `json:"DataDomainId,omitempty" xml:"DataDomainId,omitempty"`
+	// The subject domain name.
+	//
 	// example:
 	//
-	// 课程域
+	// Course domain
 	DataDomainName *string `json:"DataDomainName,omitempty" xml:"DataDomainName,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 3301
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The table display name.
+	//
 	// example:
 	//
-	// 学生
+	// Student
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment. Valid values: dev and prod.
+	//
 	// example:
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The file ID, which is used to redirect to the ODM model.
+	//
 	// example:
 	//
 	// 2
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The table GUID.
+	//
 	// example:
 	//
 	// dp_ds_table.300023201.7311626611751680256.load_test.abc
-	Guid             *string                                 `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	Instructions     []*GetTableResponseBodyDataInstructions `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
-	IsBasicMode      *bool                                   `json:"IsBasicMode,omitempty" xml:"IsBasicMode,omitempty"`
-	IsPartitionTable *bool                                   `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The list of usage instructions.
+	Instructions []*GetTableResponseBodyDataInstructions `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
+	// Indicates whether the project or business unit to which the table belongs is in Basic mode.
+	IsBasicMode *bool `json:"IsBasicMode,omitempty" xml:"IsBasicMode,omitempty"`
+	// Indicates whether the table is a partitioned table.
+	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	// The time when the table DDL was last modified.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	LastDdlTime *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
+	// The time when the table data was last updated.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	LastDmlTime *string `json:"LastDmlTime,omitempty" xml:"LastDmlTime,omitempty"`
+	// The time when the data was last viewed.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	LastQueryTime *string `json:"LastQueryTime,omitempty" xml:"LastQueryTime,omitempty"`
+	// The lifecycle of the table, in days.
+	//
 	// example:
 	//
 	// 30
 	LifeCycle *int64 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// t_test01
-	Name    *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of associated node IDs.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// The user ID of the table owner in Dataphin. This parameter may be empty if the owner is not bound.
+	//
 	// example:
 	//
 	// 30011211
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The parent model ID, which is used to redirect to the ODM model.
+	//
 	// example:
 	//
 	// 1
 	ParentModelId *string `json:"ParentModelId,omitempty" xml:"ParentModelId,omitempty"`
+	// The logical project ID.
+	//
 	// example:
 	//
 	// 1011
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The logical project name.
+	//
 	// example:
 	//
 	// testPrj
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The security classification.
+	//
 	// example:
 	//
 	// 1
 	SecurityLevel *int64 `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The abbreviation of the security classification name.
+	//
 	// example:
 	//
-	// 高
+	// High
 	SecurityLevelAbbreviation *string `json:"SecurityLevelAbbreviation,omitempty" xml:"SecurityLevelAbbreviation,omitempty"`
+	// The name of the security classification.
+	//
 	// example:
 	//
-	// 高级
-	SecurityLevelName *string                                    `json:"SecurityLevelName,omitempty" xml:"SecurityLevelName,omitempty"`
-	SimpleNodeInfos   []*GetTableResponseBodyDataSimpleNodeInfos `json:"SimpleNodeInfos,omitempty" xml:"SimpleNodeInfos,omitempty" type:"Repeated"`
+	// High
+	SecurityLevelName *string `json:"SecurityLevelName,omitempty" xml:"SecurityLevelName,omitempty"`
+	// The list of output nodes.
+	SimpleNodeInfos []*GetTableResponseBodyDataSimpleNodeInfos `json:"SimpleNodeInfos,omitempty" xml:"SimpleNodeInfos,omitempty" type:"Repeated"`
+	// The storage type. Valid values: HIVE and MAX_COMPUTE.
+	//
 	// example:
 	//
 	// HIVE
-	StorageType       *string                                      `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The dynamic properties of the real-time metatable.
 	StreamTableConfig []*GetTableResponseBodyDataStreamTableConfig `json:"StreamTableConfig,omitempty" xml:"StreamTableConfig,omitempty" type:"Repeated"`
+	// The total storage size of the table, in bytes.
+	//
 	// example:
 	//
 	// 10241024
 	TableSizeInBytes *int64 `json:"TableSizeInBytes,omitempty" xml:"TableSizeInBytes,omitempty"`
+	// The number of visits in the last 30 days.
+	//
 	// example:
 	//
 	// 22
@@ -579,29 +650,41 @@ func (s *GetTableResponseBodyData) Validate() error {
 }
 
 type GetTableResponseBodyDataInstructions struct {
+	// The content in rich text format.
+	//
 	// example:
 	//
-	// <p>示例内容</p>
+	// <p>Sample content</p>
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 30011211
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The creator nickname.
+	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerNickName *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
+	// The title.
+	//
 	// example:
 	//
-	// 使用指南
+	// User guide
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -672,25 +755,38 @@ func (s *GetTableResponseBodyDataInstructions) Validate() error {
 }
 
 type GetTableResponseBodyDataSimpleNodeInfos struct {
+	// The business unit to which the node belongs.
 	BizUnit *GetTableResponseBodyDataSimpleNodeInfosBizUnit `json:"BizUnit,omitempty" xml:"BizUnit,omitempty" type:"Struct"`
+	// The environment to which the node belongs. Valid values: DEV and PROD.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The ID of the physical node.
+	//
 	// example:
 	//
 	// n_7443xxxx
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	//
 	// example:
 	//
 	// 2345
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The scheduling type of the node. Valid values: NORMAL (periodic scheduling) and MANUAL (manual scheduling).
+	//
 	// example:
 	//
 	// NORMAL
-	NodeScheduleType *string                                          `json:"NodeScheduleType,omitempty" xml:"NodeScheduleType,omitempty"`
-	Owners           []*GetTableResponseBodyDataSimpleNodeInfosOwners `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
-	Project          *GetTableResponseBodyDataSimpleNodeInfosProject  `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	NodeScheduleType *string `json:"NodeScheduleType,omitempty" xml:"NodeScheduleType,omitempty"`
+	// The O&M owners of the node.
+	Owners []*GetTableResponseBodyDataSimpleNodeInfosOwners `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
+	// The project to which the node belongs.
+	Project *GetTableResponseBodyDataSimpleNodeInfosProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	// The type of the node. Valid values: DLINK (offline integration) and PYTHON37 (Python computing node).
+	//
 	// example:
 	//
 	// DLINK
@@ -801,14 +897,20 @@ func (s *GetTableResponseBodyDataSimpleNodeInfos) Validate() error {
 }
 
 type GetTableResponseBodyDataSimpleNodeInfosBizUnit struct {
+	// The Chinese name of the business unit.
+	//
 	// example:
 	//
 	// 测试板块
 	BizUnitDisplayName *string `json:"BizUnitDisplayName,omitempty" xml:"BizUnitDisplayName,omitempty"`
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 2011
 	BizUnitId *string `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The business unit name.
+	//
 	// example:
 	//
 	// LD_test01
@@ -855,10 +957,14 @@ func (s *GetTableResponseBodyDataSimpleNodeInfosBizUnit) Validate() error {
 }
 
 type GetTableResponseBodyDataSimpleNodeInfosOwners struct {
+	// The display name of the user.
+	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the user.
+	//
 	// example:
 	//
 	// 12345
@@ -896,14 +1002,20 @@ func (s *GetTableResponseBodyDataSimpleNodeInfosOwners) Validate() error {
 }
 
 type GetTableResponseBodyDataSimpleNodeInfosProject struct {
+	// The Chinese name of the project.
+	//
 	// example:
 	//
 	// 测试项目
 	ProjectDisplayName *string `json:"ProjectDisplayName,omitempty" xml:"ProjectDisplayName,omitempty"`
+	// The ID of the project.
+	//
 	// example:
 	//
 	// 1011
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// testPrj
@@ -950,10 +1062,14 @@ func (s *GetTableResponseBodyDataSimpleNodeInfosProject) Validate() error {
 }
 
 type GetTableResponseBodyDataStreamTableConfig struct {
+	// The configuration item.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// v1

@@ -24,7 +24,7 @@ type iGetBatchTaskInfoByVersionResponseBody interface {
 }
 
 type GetBatchTaskInfoByVersionResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code of the request. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type GetBatchTaskInfoByVersionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message of the request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The task details.
 	TaskInfo *GetBatchTaskInfoByVersionResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
@@ -126,13 +126,13 @@ func (s *GetBatchTaskInfoByVersionResponseBody) Validate() error {
 }
 
 type GetBatchTaskInfoByVersionResponseBodyTaskInfo struct {
-	// The task code.
+	// The code of the task.
 	//
 	// example:
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
+	// The cron expression for automatic scheduling. You can refer to Linux cron expressions.
 	//
 	// example:
 	//
@@ -146,97 +146,91 @@ type GetBatchTaskInfoByVersionResponseBodyTaskInfo struct {
 	//
 	// dag_102121211
 	DagId *string `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
+	// The catalog of the data source. This parameter takes effect only for database SQL tasks and data source types that require a catalog, such as Presto.
 	//
 	// example:
 	//
 	// mysql_catalog
 	DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
-	// The data source ID for database SQL nodes.
+	// The ID of the data source for the database SQL task.
 	//
 	// example:
 	//
 	// 12131111
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
+	// The schema of the data source. This parameter takes effect only for database SQL tasks and data source types that require a schema, such as Oracle.
 	//
 	// example:
 	//
 	// erp
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
-	// The list of development owner IDs.
+	// The IDs of the developers.
 	DevelopOwnerIdList []*string `json:"DevelopOwnerIdList,omitempty" xml:"DevelopOwnerIdList,omitempty" type:"Repeated"`
-	// The list of development owner names.
+	// The names of the developers.
 	DevelopOwnerNameList []*string `json:"DevelopOwnerNameList,omitempty" xml:"DevelopOwnerNameList,omitempty" type:"Repeated"`
-	// The node ID in the directory tree.
+	// The node ID of the task directory tree.
 	//
 	// example:
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Indicates whether the task has a development environment node.
+	// Indicates whether a development environment node exists.
 	HasDevNode *bool `json:"HasDevNode,omitempty" xml:"HasDevNode,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
-	// TestTask1
+	// Test task 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the task needs to be published.
 	NeedPublish *bool `json:"NeedPublish,omitempty" xml:"NeedPublish,omitempty"`
-	// The task description.
+	// The description of the task.
 	//
 	// example:
 	//
-	// xxTest
+	// xx test
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
-	// The source of the node, indicating the organization or application that created the node.
+	// The source of the node. This indicates the organization or application that created the node.
 	//
 	// example:
 	//
 	// openapi
 	NodeFrom *string `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// n_1011_21232132322
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node name.
+	// The name of the node.
 	//
 	// example:
 	//
-	// TestTask1
+	// Test task 1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The list of node output names.
+	// The output names of the node.
 	NodeOutputNameList []*string `json:"NodeOutputNameList,omitempty" xml:"NodeOutputNameList,omitempty" type:"Repeated"`
-	// The node status. Valid values:
-	//
-	// - 1: Normal.
-	//
-	// - 2: Paused.
-	//
-	// - 3: Dry run.
+	// The status of the node. Valid values: 1 (Normal), 2 (Paused), and 3 (Dry run).
 	//
 	// example:
 	//
 	// 1
 	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	// The user ID of the current operator.
+	// The ID of the user who performs the current operation.
 	//
 	// example:
 	//
 	// 30231123
 	OperatorUserId *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
-	// The list of O&M owner IDs.
+	// The IDs of the O&M owners.
 	OpsOwnerIdList []*string `json:"OpsOwnerIdList,omitempty" xml:"OpsOwnerIdList,omitempty" type:"Repeated"`
-	// The list of O&M owner names.
+	// The names of the O&M owners.
 	OpsOwnerNameList []*string `json:"OpsOwnerNameList,omitempty" xml:"OpsOwnerNameList,omitempty" type:"Repeated"`
 	// The name of the node owner.
 	//
 	// example:
 	//
-	// John
+	// John Doe
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The user ID of the node owner.
 	//
@@ -246,43 +240,51 @@ type GetBatchTaskInfoByVersionResponseBodyTaskInfo struct {
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The list of custom parameters for the node.
 	ParamList []*GetBatchTaskInfoByVersionResponseBodyTaskInfoParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// Indicates whether the node is paused for scheduling.
+	// Indicates whether the scheduling of the node is paused.
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
-	// The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
+	// The scheduling priority of the task. Valid values: 1 to 9. A larger value indicates a lower priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Indicates whether the task is published.
+	// Indicates whether the node is published.
 	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
-	// The remarks.
+	// The list of third-party packages that the Python task depends on.
+	PythonModuleList []*GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
+	// The Python version of the Python task, such as Python 3.7.
+	//
+	// example:
+	//
+	// Python 3.7
+	PythonVersion *string `json:"PythonVersion,omitempty" xml:"PythonVersion,omitempty"`
+	// The remark.
 	//
 	// example:
 	//
 	// test xx
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Indicates whether the node can be rerun.
+	// Indicates whether the task can be rerun.
 	Rerunable *bool `json:"Rerunable,omitempty" xml:"Rerunable,omitempty"`
 	// The scheduling period. Valid values:
 	//
-	// - YEARLY
+	// - YEARLY: Yearly.
 	//
-	// - MONTHLY
+	// - MONTHLY: Monthly.
 	//
-	// - WEEKLY
+	// - WEEKLY: Weekly.
 	//
-	// - DAILY
+	// - DAILY: Daily.
 	//
-	// - HOURLY
+	// - HOURLY: Hourly.
 	//
-	// - MINUTELY
+	// - MINUTELY: Minutely.
 	//
 	// example:
 	//
@@ -290,29 +292,29 @@ type GetBatchTaskInfoByVersionResponseBodyTaskInfo struct {
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
 	// The node type. Valid values:
 	//
-	// - 1: periodic node.
+	// - 1: Periodic task.
 	//
-	// - 3: manual node.
+	// - 3: Manual task.
 	//
 	// example:
 	//
 	// 3
 	ScheduleType *int32 `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The Spark client information.
+	// The Spark client.
 	SparkClientInfo *GetBatchTaskInfoByVersionResponseBodyTaskInfoSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
-	// The submit status. Valid values:
+	// The publish status. Valid values:
 	//
-	// - 0: draft.
+	// - 0: Draft.
 	//
-	// - 1: submitted.
+	// - 1: Submitted.
 	//
-	// - 100: in development.
+	// - 100: In development.
 	//
 	// example:
 	//
-	// TestTask1
+	// Test task 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task type. For more information, refer to the API operation for creating batch tasks.
+	// The task type. For more information, see the API operation for creating an offline computing task.
 	//
 	// example:
 	//
@@ -444,6 +446,14 @@ func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) GetProjectId() *int64 {
 
 func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) GetPublished() *bool {
 	return s.Published
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) GetPythonModuleList() []*GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList {
+	return s.PythonModuleList
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) GetPythonVersion() *string {
+	return s.PythonVersion
 }
 
 func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) GetRemark() *string {
@@ -623,6 +633,16 @@ func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) SetPublished(v bool) *Ge
 	return s
 }
 
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) SetPythonModuleList(v []*GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) *GetBatchTaskInfoByVersionResponseBodyTaskInfo {
+	s.PythonModuleList = v
+	return s
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) SetPythonVersion(v string) *GetBatchTaskInfoByVersionResponseBodyTaskInfo {
+	s.PythonVersion = &v
+	return s
+}
+
 func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) SetRemark(v string) *GetBatchTaskInfoByVersionResponseBodyTaskInfo {
 	s.Remark = &v
 	return s
@@ -678,6 +698,15 @@ func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) Validate() error {
 			}
 		}
 	}
+	if s.PythonModuleList != nil {
+		for _, item := range s.PythonModuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.SparkClientInfo != nil {
 		if err := s.SparkClientInfo.Validate(); err != nil {
 			return err
@@ -696,7 +725,7 @@ func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfo) Validate() error {
 }
 
 type GetBatchTaskInfoByVersionResponseBodyTaskInfoCustomScheduleConfig struct {
-	// The end time in the format of HH:mm.
+	// The end time in the HH:mm format.
 	//
 	// example:
 	//
@@ -708,7 +737,7 @@ type GetBatchTaskInfoByVersionResponseBodyTaskInfoCustomScheduleConfig struct {
 	//
 	// 1
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The interval unit. Valid values: MINUTE, HOUR.
+	// The unit of the interval. Valid values: MINUTE and HOUR.
 	//
 	// example:
 	//
@@ -720,7 +749,7 @@ type GetBatchTaskInfoByVersionResponseBodyTaskInfoCustomScheduleConfig struct {
 	//
 	// DAILY
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
-	// The start time in the format of HH:mm.
+	// The start time in the HH:mm format.
 	//
 	// example:
 	//
@@ -786,13 +815,13 @@ func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoCustomScheduleConfig) Vali
 }
 
 type GetBatchTaskInfoByVersionResponseBodyTaskInfoParamList struct {
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The parameter value.
+	// The value of the parameter.
 	//
 	// example:
 	//
@@ -830,8 +859,83 @@ func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoParamList) Validate() erro
 	return dara.Validate(s)
 }
 
+type GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList struct {
+	// The ID of the third-party package.
+	//
+	// example:
+	//
+	// 1001
+	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// The name of the third-party package.
+	//
+	// example:
+	//
+	// pandas
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Python version that the third-party package depends on.
+	//
+	// example:
+	//
+	// Python 3.7
+	PythonVersion *string `json:"PythonVersion,omitempty" xml:"PythonVersion,omitempty"`
+	// The version number of the third-party package.
+	//
+	// example:
+	//
+	// 1.3.5
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) GetModuleId() *int64 {
+	return s.ModuleId
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) GetName() *string {
+	return s.Name
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) GetPythonVersion() *string {
+	return s.PythonVersion
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) GetVersion() *string {
+	return s.Version
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) SetModuleId(v int64) *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) SetName(v string) *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) SetPythonVersion(v string) *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList {
+	s.PythonVersion = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) SetVersion(v string) *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList {
+	s.Version = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetBatchTaskInfoByVersionResponseBodyTaskInfoSparkClientInfo struct {
-	// The Spark client version name.
+	// The name of the Spark client.
 	//
 	// example:
 	//
@@ -863,25 +967,33 @@ func (s *GetBatchTaskInfoByVersionResponseBodyTaskInfoSparkClientInfo) Validate(
 type GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamList struct {
 	// The dependency period.
 	DependPeriod *GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamListDependPeriod `json:"DependPeriod,omitempty" xml:"DependPeriod,omitempty" type:"Struct"`
-	// The dependency strategy. Valid values: ALL, FIRST, LAST, NEAR.
+	// The dependency strategy. Valid values:
+	//
+	// - ALL
+	//
+	// - FIRST
+	//
+	// - LAST
+	//
+	// - NEAR
 	//
 	// example:
 	//
 	// LAST
 	DependStrategy *string `json:"DependStrategy,omitempty" xml:"DependStrategy,omitempty"`
-	// The dependent logical table fields.
+	// The fields of the dependent logical table.
 	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
-	// The type of the upstream dependency node. Valid values:
+	// The node type of the upstream dependency. Valid values:
 	//
-	// - PHYSICAL: physical node.
+	// - PHYSICAL: Physical node.
 	//
-	// - LOGICAL: logical table dependency.
+	// - LOGICAL: Logical table dependency.
 	//
 	// example:
 	//
 	// PHYSICAL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The period difference. A value of 0 indicates a same-cycle dependency. A positive number indicates a dependency on the previous N cycles.
+	// The period difference. A value of 0 indicates a same-period dependency. A positive integer indicates a dependency on the previous N periods.
 	//
 	// example:
 	//
@@ -889,13 +1001,13 @@ type GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamList struct {
 	PeriodDiff *int32 `json:"PeriodDiff,omitempty" xml:"PeriodDiff,omitempty"`
 	// Indicates whether the upstream node is enabled.
 	SourceNodeEnabled *bool `json:"SourceNodeEnabled,omitempty" xml:"SourceNodeEnabled,omitempty"`
-	// The upstream node ID.
+	// The ID of the upstream node.
 	//
 	// example:
 	//
 	// n_2001
 	SourceNodeId *string `json:"SourceNodeId,omitempty" xml:"SourceNodeId,omitempty"`
-	// The upstream node name.
+	// The name of the upstream node.
 	//
 	// example:
 	//
@@ -907,13 +1019,13 @@ type GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamList struct {
 	//
 	// t_input1
 	SourceNodeOutputName *string `json:"SourceNodeOutputName,omitempty" xml:"SourceNodeOutputName,omitempty"`
-	// The username of the upstream node owner.
+	// The upstream username.
 	//
 	// example:
 	//
-	// John
+	// John Doe
 	SourceNodeUserName *string `json:"SourceNodeUserName,omitempty" xml:"SourceNodeUserName,omitempty"`
-	// The input table name.
+	// The name of the input table.
 	//
 	// example:
 	//

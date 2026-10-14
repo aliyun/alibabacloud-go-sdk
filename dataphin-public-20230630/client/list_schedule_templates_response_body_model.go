@@ -24,24 +24,34 @@ type iListScheduleTemplatesResponseBody interface {
 }
 
 type ListScheduleTemplatesResponseBody struct {
+	// The error code. OK indicates that the request is successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode                *int32                                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The schedule template list response.
 	ListScheduleTemplatesResponse *ListScheduleTemplatesResponseBodyListScheduleTemplatesResponse `json:"ListScheduleTemplatesResponse,omitempty" xml:"ListScheduleTemplatesResponse,omitempty" type:"Struct"`
+	// The error message of the request.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListScheduleTemplatesResponseBody) String() string {
@@ -116,10 +126,13 @@ func (s *ListScheduleTemplatesResponseBody) Validate() error {
 }
 
 type ListScheduleTemplatesResponseBodyListScheduleTemplatesResponse struct {
+	// The total number of schedule templates that meet the specified conditions. This number is not limited by pagination.
+	//
 	// example:
 	//
 	// 1
-	Count      *int32                                                                      `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The schedule templates.
 	ResultData []*ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Repeated"`
 }
 
@@ -163,81 +176,122 @@ func (s *ListScheduleTemplatesResponseBodyListScheduleTemplatesResponse) Validat
 }
 
 type ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultData struct {
+	// The condition-based schedule parameters. This parameter has a value only for condition-based schedule templates.
 	ConditionScheduleParamList []*ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataConditionScheduleParamList `json:"ConditionScheduleParamList,omitempty" xml:"ConditionScheduleParamList,omitempty" type:"Repeated"`
+	// The cron expression for automatic scheduling. Refer to Linux cron expressions.
+	//
 	// example:
 	//
 	// 0 0 1 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// Specifies whether a custom cron expression is used.
+	//
 	// example:
 	//
 	// true
-	CustomCronExpression *bool                                                                                         `json:"CustomCronExpression,omitempty" xml:"CustomCronExpression,omitempty"`
+	CustomCronExpression *bool `json:"CustomCronExpression,omitempty" xml:"CustomCronExpression,omitempty"`
+	// The custom schedule interval configuration. This configuration takes effect only when used together with CustomIntervalConfigType.
 	CustomIntervalConfig *ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfig `json:"CustomIntervalConfig,omitempty" xml:"CustomIntervalConfig,omitempty" type:"Struct"`
+	// The type of the custom interval configuration. Valid values: TIME_POINT, TIME_PERIOD, CUSTOM_TIME_POINT, and CUSTOM_TIME_PERIOD.
+	//
 	// example:
 	//
 	// CUSTOM_TIME_PERIOD
-	CustomIntervalConfigType *string                                                                                          `json:"CustomIntervalConfigType,omitempty" xml:"CustomIntervalConfigType,omitempty"`
-	CustomIntervalConfigs    []*ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfigs `json:"CustomIntervalConfigs,omitempty" xml:"CustomIntervalConfigs,omitempty" type:"Repeated"`
+	CustomIntervalConfigType *string `json:"CustomIntervalConfigType,omitempty" xml:"CustomIntervalConfigType,omitempty"`
+	// The custom schedule interval configurations. This parameter is valid only when CustomIntervalConfigType is set to CUSTOM_TIME_PERIOD.
+	CustomIntervalConfigs []*ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfigs `json:"CustomIntervalConfigs,omitempty" xml:"CustomIntervalConfigs,omitempty" type:"Repeated"`
+	// The creation time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1704153600000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1709516800000
 	GmtModify *int64 `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// Specifies whether the schedule template is referenced by a node.
+	//
 	// example:
 	//
 	// true
 	HasReference *bool `json:"HasReference,omitempty" xml:"HasReference,omitempty"`
+	// The ID of the modifier.
+	//
 	// example:
 	//
 	// 30001012
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The name of the modifier.
+	//
 	// example:
 	//
-	// 李四
+	// Li Si
 	ModifierName *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
+	// The schedule interval type. Valid values: YEARLY, MONTHLY, WEEKLY, DAILY, HOURLY, and MINUTELY.
+	//
 	// example:
 	//
 	// DAILY
 	ScheduleIntervalType *string `json:"ScheduleIntervalType,omitempty" xml:"ScheduleIntervalType,omitempty"`
+	// The description of the schedule template.
+	//
 	// example:
 	//
-	// 工作日每天凌晨1点调度
+	// Scheduled at 1:00 AM on weekdays
 	ScheduleTemplateDesc *string `json:"ScheduleTemplateDesc,omitempty" xml:"ScheduleTemplateDesc,omitempty"`
+	// The ID of the schedule template, which is used to bind a schedule template when updating a node.
+	//
 	// example:
 	//
 	// 12345
 	ScheduleTemplateId *int64 `json:"ScheduleTemplateId,omitempty" xml:"ScheduleTemplateId,omitempty"`
+	// The name of the schedule template.
+	//
 	// example:
 	//
-	// 每天凌晨1点
+	// 1:00 AM every day
 	ScheduleTemplateName *string `json:"ScheduleTemplateName,omitempty" xml:"ScheduleTemplateName,omitempty"`
+	// The templatetype. Valid values: BASE_SCHEDULE_TEMPLATE: basic scheduling template, CONDITION_SCHEDULE_TEMPLATE: conditional scheduling template.
+	//
 	// example:
 	//
 	// BASE_SCHEDULE_TEMPLATE
 	ScheduleTemplateType *string `json:"ScheduleTemplateType,omitempty" xml:"ScheduleTemplateType,omitempty"`
+	// The schedule type. Valid values: normal scheduling, dry run scheduling, and paused scheduling.
+	//
 	// example:
 	//
 	// 1
 	ScheduleType *int32 `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// The ID of the tenant to which the schedule template belongs.
+	//
 	// example:
 	//
 	// 30001011
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 30001011
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the creator.
+	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The end date of the effective period, in the yyyy-MM-dd format.
+	//
 	// example:
 	//
 	// 9999-01-01
 	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
+	// The start date of the effective period, in the yyyy-MM-dd format.
+	//
 	// example:
 	//
 	// 2024-01-01
@@ -478,30 +532,50 @@ func (s *ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDat
 }
 
 type ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataConditionScheduleParamList struct {
+	// The name of the condition.
+	//
 	// example:
 	//
-	// 失败重跑条件
+	// Rerun on failure condition
 	ConditionName *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
+	// The cron expression used after the condition is met.
+	//
 	// example:
 	//
 	// 0 30 	- 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// Specifies whether the condition is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether to follow the main schedule parameter.
+	//
 	// example:
 	//
 	// false
 	FollowScheduleParam *bool `json:"FollowScheduleParam,omitempty" xml:"FollowScheduleParam,omitempty"`
+	// The node schedule status after the condition is met. Valid values:
+	//
+	// - 1: Normal.
+	//
+	// - 2: Paused.
+	//
+	// - 3: Dry run.
+	//
 	// example:
 	//
 	// 1
 	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The conditional expression tree as a JSON character string. The keys are in lower camel case and must be parsed by the caller.
+	//
 	// example:
 	//
 	// {"type":"EXPRESSION_GROUP","operator":"or"}
 	ScheduleConditionJson *string `json:"ScheduleConditionJson,omitempty" xml:"ScheduleConditionJson,omitempty"`
+	// The schedule time used after the condition is met.
+	//
 	// example:
 	//
 	// 00:30
@@ -584,22 +658,32 @@ func (s *ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDat
 }
 
 type ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfig struct {
+	// The end time of the effective period.
+	//
 	// example:
 	//
 	// 23:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The interval value.
+	//
 	// example:
 	//
 	// 30
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The interval unit.
+	//
 	// example:
 	//
 	// MINUTE
 	IntervalUnit *string `json:"IntervalUnit,omitempty" xml:"IntervalUnit,omitempty"`
+	// The schedule period to which the interval belongs.
+	//
 	// example:
 	//
 	// DAY_INTERVAL
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
+	// The start time of the effective period.
+	//
 	// example:
 	//
 	// 00:00
@@ -664,22 +748,32 @@ func (s *ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDat
 }
 
 type ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfigs struct {
+	// The end time of the effective period.
+	//
 	// example:
 	//
 	// 23:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The interval value.
+	//
 	// example:
 	//
 	// 30
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The interval unit.
+	//
 	// example:
 	//
 	// MINUTE
 	IntervalUnit *string `json:"IntervalUnit,omitempty" xml:"IntervalUnit,omitempty"`
+	// The schedule period to which the interval belongs.
+	//
 	// example:
 	//
 	// DAY_INTERVAL
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
+	// The start time of the effective period.
+	//
 	// example:
 	//
 	// 00:00
