@@ -14,7 +14,7 @@ type iGetConnectorRequest interface {
 }
 
 type GetConnectorRequest struct {
-	// ConnectorID。
+	// The connector ID.
 	//
 	// This parameter is required.
 	//

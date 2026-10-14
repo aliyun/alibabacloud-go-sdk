@@ -16,7 +16,7 @@ type iGetConnectorClientRequest interface {
 }
 
 type GetConnectorClientRequest struct {
-	// The connector ID. You can call [ListConnectors](~~ListConnectors~~) to query connectors.
+	// The connector ID. You can obtain this value from the [ListConnectors](~~ListConnectors~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetConnectorClientRequest struct {
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The unique device identifier of the ConnectorClient. You can call [ListConnectors](~~ListConnectors~~) to query connectors.
+	// The unique identifier of the ConnectorClient device. You can obtain this value from the [ListConnectors](~~ListConnectors~~) operation.
 	//
 	// This parameter is required.
 	//

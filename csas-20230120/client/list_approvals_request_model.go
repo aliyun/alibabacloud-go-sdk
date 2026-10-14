@@ -50,45 +50,45 @@ type iListApprovalsRequest interface {
 }
 
 type ListApprovalsRequest struct {
-	// The collection of approval instance IDs.
+	// The IDs of the approval instances.
 	ApprovalIds []*string `json:"ApprovalIds,omitempty" xml:"ApprovalIds,omitempty" type:"Repeated"`
-	// The end time for querying approval instance creation, in seconds-level timestamp.
+	// The end time when the approval instance was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1736750500
 	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	// The start time for querying approval instance creation, in seconds-level timestamp.
+	// The start time when the approval instance was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1730000000
 	CreateStartTime *int64 `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
-	// The department of the approval instance creator.
+	// The department of the user who created the approval instance.
 	//
 	// example:
 	//
-	// QA Department
+	// Test Department
 	CreatorDepartment *string `json:"CreatorDepartment,omitempty" xml:"CreatorDepartment,omitempty"`
-	// The terminal device ID of the approval instance creator.
+	// The ID of the endpoint device on which the approval instance was created.
 	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
-	// The ID of the approval instance creator.
+	// The ID of the user who created the approval instance.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	CreatorUserId *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
-	// The username of the approval instance creator.
+	// The username of the user who created the approval instance.
 	//
 	// example:
 	//
 	// Mr. Wang
 	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
-	// The page number of the current page in a paging query. Valid values: 1 to 10000.
+	// The page number of the current page for a paging query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -96,25 +96,25 @@ type ListApprovalsRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of report effective statuses, serialized in Flat format. Duplicate values are not allowed. Only records with an approval status of Approved are matched. Valid values:
+	// The list of effective statuses of reports. The list uses the flat serialization format and cannot contain duplicate values. Only records with the Approved approval status are matched. Valid values:
 	//
-	// 	- Enabled: effective.
+	// 	- Enabled: Valid.
 	//
-	// 	- Expired: expired or invalidated.
+	// 	- Expired: Invalid or expired.
 	EffectStatuses []*string `json:"EffectStatuses,omitempty" xml:"EffectStatuses,omitempty" type:"Repeated"`
-	// The ID of the approval instance operator.
+	// The ID of the user who operated the approval instance.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	OperatorUserId *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
-	// The username of the approval instance operator.
+	// The username of the user who operated the approval instance.
 	//
 	// example:
 	//
 	// Ms. Li
 	OperatorUsername *string `json:"OperatorUsername,omitempty" xml:"OperatorUsername,omitempty"`
-	// The number of entries per page in a paging query. Valid values: 1 to 500.
+	// The number of entries per page for a paging query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type ListApprovalsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The adaptation policy type. Valid values:
+	// The type of the adapted policy. Valid values:
 	//
 	// - **DomainBlacklist**: Domain name blacklist.
 	//
@@ -130,9 +130,9 @@ type ListApprovalsRequest struct {
 	//
 	// - **SoftwareBlock**: Software blocking.
 	//
-	// - **AppUninstall**: Agent uninstallation.
+	// - **AppUninstall**: Endpoint uninstallation.
 	//
-	// - **DlpSend**: File outbound transfer.
+	// - **DlpSend**: Outbound file transfer.
 	//
 	// - **PeripheralBlock**: Peripheral control.
 	//
@@ -140,39 +140,39 @@ type ListApprovalsRequest struct {
 	//
 	// DlpSend
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The associated approval process ID.
+	// The ID of the associated approval process.
 	//
 	// example:
 	//
 	// approval-process-fcc351b8a95b****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The associated approval process name.
+	// The name of the associated approval process.
 	//
 	// example:
 	//
 	// Test
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The list of report types, serialized in Flat format. Duplicate values are not allowed. Valid values:
+	// The list of report types. The list uses the flat serialization format and cannot contain duplicate values. Valid values:
 	//
-	// 	- ApprovalReport: approval report.
+	// 	- ApprovalReport: Approval report.
 	//
-	// 	- BackendReport: backend report.
+	// 	- BackendReport: Backend report.
 	//
-	// If not specified, only ApprovalReport is queried by default.
+	// If you do not specify this parameter, only ApprovalReport is queried by default.
 	ReportTypes []*string `json:"ReportTypes,omitempty" xml:"ReportTypes,omitempty" type:"Repeated"`
-	// The associated approval template ID.
+	// The ID of the associated approval template.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
-	// The associated approval template name.
+	// The name of the associated approval template.
 	//
 	// example:
 	//
 	// test
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The collection of approval instance statuses.
+	// The statuses of the approval instances.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

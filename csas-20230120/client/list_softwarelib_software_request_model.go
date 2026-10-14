@@ -28,13 +28,13 @@ type iListSoftwarelibSoftwareRequest interface {
 }
 
 type ListSoftwarelibSoftwareRequest struct {
-	// The software classification ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
+	// The software category ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
 	//
 	// example:
 	//
 	// softwarelib-classify-61b7ccc63cae****
 	ClassifyId *string `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
-	// The page number of the current page in a paging query. Valid values: 1 to 10000.
+	// The page number of the current page displayed during paging in a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -42,31 +42,31 @@ type ListSoftwarelibSoftwareRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page. This parameter is not supported by this operation. Use CurrentPage and PageSize for pagination.
+	// The maximum number of entries per page. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. This parameter is not supported by this operation. Use CurrentPage and PageSize for pagination.
+	// The query token. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh27/Jy4SXvlU9WgqeV7az+t
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The operating system to which the software package applies. Valid values:
+	// The operating system applicable to the software package. Valid values:
 	//
 	// - **Windows**: Windows.
 	//
 	// - **Mac(Apple)**: macOS with Apple silicon.
 	//
-	// - **Mac(Intel)**: macOS with Intel processors.
+	// - **Mac(Intel)**: macOS with Intel chips.
 	//
 	// example:
 	//
 	// Windows
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The number of entries per page in a paging query. Valid values: 1 to 500.
+	// The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//

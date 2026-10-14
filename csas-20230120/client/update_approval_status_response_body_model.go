@@ -18,7 +18,7 @@ type iUpdateApprovalStatusResponseBody interface {
 type UpdateApprovalStatusResponseBody struct {
 	// The approval instance.
 	Approval []*UpdateApprovalStatusResponseBodyApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -70,23 +70,23 @@ type UpdateApprovalStatusResponseBodyApproval struct {
 	//
 	// example:
 	//
-	// {"initiatorName":"John","initiatorDept":"QA Department","devType":"windows","deviceType":"usbStorage","deviceId":"FC216E9E3****","approvalEndTimestamp":1736524799,"approvalReason":"This is a test"}
+	// {"initiatorName":"Mr. Wang","initiatorDept":"Test Department","devType":"windows","deviceType":"usbStorage","deviceId":"FC216E9E3****","approvalEndTimestamp":1736524799,"approvalReason":"This is a test"}
 	ApprovalDetail *string `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty"`
-	// The approval instance ID.
+	// The ID of the approval instance.
 	//
 	// example:
 	//
 	// approval-165e6738ad9d****
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// The list of approval progress nodes.
+	// The list of progress nodes for the approval instance.
 	ApprovalProgresses []*UpdateApprovalStatusResponseBodyApprovalApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
-	// The time when the approval instance was created.
+	// The time when the approval instance was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-11-15 22:11:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the terminal device from which the approval instance was created.
+	// The ID of the endpoint device used to create the approval instance.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type UpdateApprovalStatusResponseBodyApproval struct {
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	CreatorUserId *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
-	// The expiration time of the approval instance. The value is a UNIX timestamp in seconds.
+	// The expiration time of the approval instance. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
 	// 1757952000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The policy type associated with the approval instance. Valid values:
+	// The type of the policy associated with the approval instance. Valid values:
 	//
 	// - **DomainBlacklist**: Domain name blacklist.
 	//
@@ -112,9 +112,9 @@ type UpdateApprovalStatusResponseBodyApproval struct {
 	//
 	// - **SoftwareBlock**: Software blocking.
 	//
-	// - **AppUninstall**: Terminal uninstallation.
+	// - **AppUninstall**: Endpoint uninstallation.
 	//
-	// - **DlpSend**: File outbound transfer.
+	// - **DlpSend**: Outbound file transfer.
 	//
 	// - **PeripheralBlock**: Peripheral control.
 	//
@@ -140,31 +140,31 @@ type UpdateApprovalStatusResponseBodyApproval struct {
 	//
 	// This is a test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The content of the template associated with the approval instance.
+	// The content of the schema associated with the approval instance.
 	//
 	// example:
 	//
 	// {"form": {"labelCol": 6,"wrapperCol": 12}}
 	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
-	// The ID of the template associated with the approval instance.
+	// The ID of the schema associated with the approval instance.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
-	// The name of the template associated with the approval instance.
+	// The name of the schema associated with the approval instance.
 	//
 	// example:
 	//
 	// Test
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The instance status of the approval. Valid values:
+	// The status of the approval instance. Valid values:
 	//
 	// - **Pending**: Pending approval.
 	//
 	// - **Approved**: Approved.
 	//
-	// - **Rejected**: Deny.
+	// - **Rejected**: deny.
 	//
 	// - **Revoked**: Revoked.
 	//
@@ -375,7 +375,7 @@ type UpdateApprovalStatusResponseBodyApprovalApprovalProgresses struct {
 	//
 	// Approved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the action was performed on the approval progress node. The value is a UNIX timestamp in seconds.
+	// The time when the action was performed on the approval progress node. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
@@ -469,7 +469,7 @@ type UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators struct 
 	//
 	// example:
 	//
-	// John
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

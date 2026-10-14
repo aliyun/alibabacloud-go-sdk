@@ -26,7 +26,7 @@ type ListDomainItemsResponseBody struct {
 	//
 	// 019F68B5-2D0D-5399-9BB2-D81C13C2C05D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the specified conditions. This is an optional parameter and may not be returned by default.
+	// The total number of records that match the specified conditions. This is an optional parameter and is not returned by default.
 	//
 	// example:
 	//
@@ -89,17 +89,19 @@ type ListDomainItemsResponseBodyDomainItems struct {
 	//
 	// 2026-08-01 10:20:30
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the entry was last modified.
+	// The time when the entry was last updated.
 	//
 	// example:
 	//
 	// 2026-08-01 10:20:30
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The entry ID.
+	//
 	// example:
 	//
 	// 499
 	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The domain name. Wildcard domain names are supported.
+	// The specific domain name. Wildcard domain names are supported.
 	//
 	// example:
 	//

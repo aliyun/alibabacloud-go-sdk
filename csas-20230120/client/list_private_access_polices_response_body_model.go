@@ -20,7 +20,7 @@ type iListPrivateAccessPolicesResponseBody interface {
 type ListPrivateAccessPolicesResponseBody struct {
 	// The list of private access policies.
 	Polices []*ListPrivateAccessPolicesResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListPrivateAccessPolicesResponseBody) Validate() error {
 }
 
 type ListPrivateAccessPolicesResponseBodyPolices struct {
-	// The collection of application IDs of the private access policy. This field has a value when the application type is **Application**.
+	// The IDs of the applications for the private access policy. This field has a value when the application type is **Application**.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The application type of the private access policy. Valid values:
 	//
@@ -95,19 +95,19 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The creation time of the private access policy.
+	// The time when the private access policy was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-07-10 15:50:23
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect by union.
+	// The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect as a union.
 	CustomUserAttributes []*ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	// The description of the private access policy.
 	//
 	// example:
 	//
-	// 这是一条内网访问策略
+	// This is a private access policy
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The action to take when the security baseline is not met. Valid values:
 	//
@@ -125,7 +125,7 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// dag-d3f64e8bdd4a****
 	DeviceAttributeId *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
-	// The name of the private access policy.
+	// The Policy Name of the internal network access policy.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// pa-policy-63b2f1844b86****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The priority of the private access policy. A value of 1 indicates the highest priority.
+	// The policy priority of the internal network access policy. A value of 1 indicates the highest priority.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The collection of tag IDs of the private access policy. This field has a value when the application type is **Tag**.
+	// The IDs of the tags for the private access policy. This field has a value when the application type is **Tag**.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	// The ID of the trigger template.
 	//
@@ -185,11 +185,11 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	TrustedProcessStatus *string `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
 	// The list of trusted software IDs.
 	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
-	// The collection of user group IDs for the private access policy. This field has a value when the user group type is **Normal**.
+	// The IDs of the user groups for the private access policy. This field has a value when the user group type is **Normal**.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// The user group type of the private access policy. Valid values:
 	//
-	// - **Normal**: Normal user group.
+	// - **Normal**: Common user group.
 	//
 	// - **Custom**: Custom user group.
 	//
@@ -197,23 +197,23 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// Normal
 	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
-	// The effective start time of the zero trust policy, in second-level Unix timestamp.
+	// The effective start time of the zero trust policy. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 0
 	ValidFrom *int64 `json:"ValidFrom,omitempty" xml:"ValidFrom,omitempty"`
-	// The status of the effective time switch. Valid values:
+	// The status of the effective period switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: shutdown.
 	//
 	// example:
 	//
 	// Enabled
 	ValidTimeStatus *string `json:"ValidTimeStatus,omitempty" xml:"ValidTimeStatus,omitempty"`
-	// The effective end time of the zero trust policy, in second-level Unix timestamp.
+	// The effective end time of the zero trust policy. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -441,7 +441,7 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) Validate() error {
 }
 
 type ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes struct {
-	// The identity provider ID of the user group. This value exists when the custom user group type is **department**.
+	// The ID of the identity source for the user group. This value exists when the custom user group type is **department**.
 	//
 	// example:
 	//
@@ -449,9 +449,9 @@ type ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes struct {
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
 	// The relation of the user group. Valid values:
 	//
-	// - **Equal**: Equal.
+	// - **Equal**: Equal to.
 	//
-	// - **Unequal**: Not equal.
+	// - **Unequal**: Not equal to.
 	//
 	// example:
 	//
@@ -463,9 +463,9 @@ type ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes struct {
 	//
 	// - **department**: Department.
 	//
-	// - **email**: Email.
+	// - **email**: Email address.
 	//
-	// - **telephone**: Mobile phone.
+	// - **telephone**: Mobile phone number.
 	//
 	// example:
 	//
@@ -473,17 +473,17 @@ type ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes struct {
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	// The value of the user group attribute.
 	//
-	// - When the user group type is **username**, this indicates the value of the username. The value must be 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase English letters. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// - If the user group type is **username**, this value indicates the username. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
-	// - When the user group type is **department**, this indicates the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+	// - If the user group type is **department**, this value indicates the department. Example: OU=Department 1,OU=SASE DingTalk.
 	//
-	// - When the user group type is **email**, this indicates the value of the email. For example: username@example.com.
+	// - If the user group type is **email**, this value indicates the email address. Example: username@example.com.
 	//
-	// - When the user group type is **telephone**, this indicates the value of the mobile phone. For example: 13900001234.
+	// - If the user group type is **telephone**, this value indicates the mobile phone number. Example: 13900001234.
 	//
 	// example:
 	//
-	// OU=部门1,OU=SASE钉钉
+	// OU=Department 1,OU=SASE DingTalk
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

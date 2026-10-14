@@ -19,6 +19,10 @@ type iCreatePrivateAccessApplicationShrinkRequest interface {
 	GetConfigMode() *string
 	SetDescription(v string) *CreatePrivateAccessApplicationShrinkRequest
 	GetDescription() *string
+	SetHealthCheckConfigShrink(v string) *CreatePrivateAccessApplicationShrinkRequest
+	GetHealthCheckConfigShrink() *string
+	SetHealthCheckMode(v string) *CreatePrivateAccessApplicationShrinkRequest
+	GetHealthCheckMode() *string
 	SetL7ConfigShrink(v string) *CreatePrivateAccessApplicationShrinkRequest
 	GetL7ConfigShrink() *string
 	SetL7ProxyDomainAutomaticPrefix(v string) *CreatePrivateAccessApplicationShrinkRequest
@@ -40,15 +44,15 @@ type iCreatePrivateAccessApplicationShrinkRequest interface {
 }
 
 type CreatePrivateAccessApplicationShrinkRequest struct {
-	// The application address groups. Required when ConfigMode is set to Precise. Not allowed when ConfigMode is an empty string.
+	// The application address groups. This parameter is required when ConfigMode is set to Precise, and cannot be specified when ConfigMode is an empty string.
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
-	// The collection of internal-facing access application addresses. You can specify up to 1000 addresses.
+	// The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// The browser access status of the internal-facing access application. After this feature is enabled, you can access internal applications in a clientless manner. Default value: **Disabled**. Valid values:
+	// The browser access status of the private access application. After you enable this feature, you can access private access applications without a client. Default value: **Disabled**. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
@@ -56,31 +60,49 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
 	// The configuration mode. Valid values:
 	//
-	// 	- Empty string: default mode.
+	// 	- Empty string: Default mode.
 	//
-	// 	- Precise: precise mode.
-	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	// 	- Precise: Precise mode.
 	//
 	// example:
 	//
-	// This is an internal-facing access application
+	// Precise
+	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	// The description of the private access application. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	//
+	// example:
+	//
+	// This is a private access application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The browser access mode parameter: the application configuration.
+	// The health check configuration. This parameter is required when HealthCheckMode is set to Continuous, and cannot be specified when HealthCheckMode is set to OnAccess.
+	HealthCheckConfigShrink *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
+	// The health check mode. Valid values:
+	//
+	// 	- OnAccess: Checks upon access without proactive probing.
+	//
+	// 	- Continuous: Performs continuous checks and proactive probing based on the configurations in HealthCheckConfig.
+	//
+	// If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
+	//
+	// example:
+	//
+	// OnAccess
+	HealthCheckMode *string `json:"HealthCheckMode,omitempty" xml:"HealthCheckMode,omitempty"`
+	// The application configuration in browser access mode.
 	L7ConfigShrink *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	// The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
+	// The prefix of the mapped proxy domain name in browser access mode. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// app-sample
 	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	// The browser access mode parameter: the custom proxy domain name. The value must be a valid domain name.
+	// The custom proxy domain name in browser access mode. The value must be a valid domain name.
 	//
 	// example:
 	//
 	// app1.example.com
 	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
-	// The name of the internal-facing access application. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	// The name of the private access application. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -88,11 +110,11 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The collection of port ranges for the internal-facing access application. You can specify up to 65535 port ranges. Port ranges cannot overlap or be duplicated.
+	// The collection of port ranges for the private access application. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
 	PortRanges []*CreatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The protocol of the internal-facing access application. Valid values:
+	// The protocol of the private access application. Valid values:
 	//
-	// - **All**: all protocols.
+	// - **All**: All protocols.
 	//
 	// - **TCP**
 	//
@@ -104,11 +126,11 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The status of the internal-facing access application. Valid values:
+	// The status of the private access application. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -116,9 +138,10 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The collection of internal-facing access tag IDs. You can associate up to 6 custom-type internal-facing access tags with each application.
-	TagIds                         []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	UnauthorizedAccessConfigShrink *string   `json:"UnauthorizedAccessConfig,omitempty" xml:"UnauthorizedAccessConfig,omitempty"`
+	// The collection of private access tag IDs. You can associate up to six custom private access tags with a single private access application.
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The configuration for unauthorized application access requests.
+	UnauthorizedAccessConfigShrink *string `json:"UnauthorizedAccessConfig,omitempty" xml:"UnauthorizedAccessConfig,omitempty"`
 }
 
 func (s CreatePrivateAccessApplicationShrinkRequest) String() string {
@@ -147,6 +170,14 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) GetConfigMode() *string {
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) GetHealthCheckConfigShrink() *string {
+	return s.HealthCheckConfigShrink
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) GetHealthCheckMode() *string {
+	return s.HealthCheckMode
 }
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) GetL7ConfigShrink() *string {
@@ -207,6 +238,16 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) SetConfigMode(v string) *C
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) SetDescription(v string) *CreatePrivateAccessApplicationShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetHealthCheckConfigShrink(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.HealthCheckConfigShrink = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetHealthCheckMode(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.HealthCheckMode = &v
 	return s
 }
 

@@ -16,7 +16,7 @@ type iGetUserDeviceResponseBody interface {
 }
 
 type GetUserDeviceResponseBody struct {
-	// The terminal device.
+	// The endpoint device.
 	Device *GetUserDeviceResponseBodyDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,7 +62,11 @@ func (s *GetUserDeviceResponseBody) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDevice struct {
-	// The client status. Valid values:
+	// The status of the client. Valid values:
+	//
+	// - **Online**: Online.
+	//
+	// - **Offline**: Offline.
 	//
 	// example:
 	//
@@ -74,7 +78,13 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 2.2.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The auto-logon status of the device. Valid values:
+	// The password-free logon status of the device. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Unprovisioned.
 	//
 	// example:
 	//
@@ -86,13 +96,13 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 100
 	BatteryHealthPercentage *int32 `json:"BatteryHealthPercentage,omitempty" xml:"BatteryHealthPercentage,omitempty"`
-	// The battery remaining charge percentage.
+	// The remaining battery percentage.
 	//
 	// example:
 	//
 	// 90
 	BatteryRemainingPercentage *int32 `json:"BatteryRemainingPercentage,omitempty" xml:"BatteryRemainingPercentage,omitempty"`
-	// The CPU model of the terminal device.
+	// The CPU model of the endpoint device.
 	//
 	// example:
 	//
@@ -104,13 +114,13 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// Hangzhou City
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The city name in English.
+	// The city in English.
 	//
 	// example:
 	//
 	// Beijing City
 	CityEn *string `json:"CityEn,omitempty" xml:"CityEn,omitempty"`
-	// The city name in Chinese.
+	// The city in Chinese.
 	//
 	// example:
 	//
@@ -122,13 +132,13 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// Asia
 	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
-	// The continent name in English.
+	// The continent in English.
 	//
 	// example:
 	//
 	// Asia
 	ContinentEn *string `json:"ContinentEn,omitempty" xml:"ContinentEn,omitempty"`
-	// The continent name in Chinese.
+	// The continent in Chinese.
 	//
 	// example:
 	//
@@ -140,19 +150,19 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// China
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The country name in English.
+	// The country in English.
 	//
 	// example:
 	//
 	// China
 	CountryEn *string `json:"CountryEn,omitempty" xml:"CountryEn,omitempty"`
-	// The country name in Chinese.
+	// The country in Chinese.
 	//
 	// example:
 	//
 	// 中国
 	CountryZh *string `json:"CountryZh,omitempty" xml:"CountryZh,omitempty"`
-	// The registration time of the terminal device.
+	// The registration time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -162,45 +172,73 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// example:
 	//
-	// QA Department
+	// Test Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The ownership of the terminal device. Valid values:
+	// The ownership of the endpoint device. Valid values:
+	//
+	// - **Personal**: Personal device.
+	//
+	// - **Company**: Company device.
 	//
 	// example:
 	//
 	// Company
 	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	// The model of the terminal device.
+	// The model of the endpoint device.
 	//
 	// example:
 	//
 	// MacBookPro17,1
 	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	// The status of the terminal device. Valid values:
+	// The status of the endpoint device. Valid values:
+	//
+	// - **Online**: Online.
+	//
+	// - **Offline**: Offline.
+	//
+	// - **LongTermOffline**: Long-term offline.
+	//
+	// - **Locked**: Locked.
+	//
+	// - **Lost**: Reported as lost.
+	//
+	// - **Unbound**: Unbound.
 	//
 	// example:
 	//
 	// Online
 	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	// The ID of the terminal device.
+	// The ID of the endpoint device.
 	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	// The operating system type of the terminal device. Valid values:
+	// The operating system type of the endpoint device. Valid values:
+	//
+	// - **Windows**: Windows.
+	//
+	// - **macOS**: macOS.
+	//
+	// - **Linux**: Linux.
+	//
+	// - **Android**: Android.
+	//
+	// - **iOS**: iOS.
+	//
+	// - **Windows_Wuying**: WUYING Workspace.
 	//
 	// example:
 	//
 	// Windows
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The operating system version of the terminal device.
+	// The operating system version of the endpoint device.
 	//
 	// example:
 	//
 	// 3.5.1
 	DeviceVersion *string `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
-	// The disk model of the terminal device.
+	// The disk model of the endpoint device.
 	//
 	// example:
 	//
@@ -220,19 +258,31 @@ type GetUserDeviceResponseBodyDevice struct {
 	DiskUsed *int32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
 	// The office data protection status. Valid values:
 	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Unprovisioned.
+	//
+	// - **Unauthorized**: Unauthorized.
+	//
 	// example:
 	//
 	// Unauthorized
 	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
 	// The anti-intrusion status. Valid values:
 	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Disabled
 	EdrStatus *string `json:"EdrStatus,omitempty" xml:"EdrStatus,omitempty"`
-	// The historical users of the terminal device.
+	// The collection of historical users of the endpoint device.
 	HistoryUsers []*GetUserDeviceResponseBodyDeviceHistoryUsers `json:"HistoryUsers,omitempty" xml:"HistoryUsers,omitempty" type:"Repeated"`
-	// The name of the terminal device.
+	// The name of the endpoint device.
 	//
 	// example:
 	//
@@ -240,31 +290,37 @@ type GetUserDeviceResponseBodyDevice struct {
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// The Internet access status. Valid values:
 	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Unprovisioned.
+	//
 	// example:
 	//
 	// Disabled
 	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
-	// The internal IP address of the terminal device.
+	// The internal IP address of the endpoint device.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	// Indicates whether the terminal has joined an AD domain.
+	// Indicates whether the terminal is joined to an Active Directory (AD) domain.
 	//
 	// example:
 	//
 	// true
 	JoinAdDomain *bool `json:"JoinAdDomain,omitempty" xml:"JoinAdDomain,omitempty"`
-	// The MAC address of the terminal device.
+	// The MAC address of the endpoint device.
 	//
 	// example:
 	//
 	// 48:9e:XX:XX:02:80
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The IDs of matched device groups.
+	// The collection of matched device group IDs.
 	MatchDeviceGroupIds []*string `json:"MatchDeviceGroupIds,omitempty" xml:"MatchDeviceGroupIds,omitempty" type:"Repeated"`
-	// The memory capacity of the terminal device. Unit: GB.
+	// The memory capacity of the endpoint device. Unit: GB.
 	//
 	// example:
 	//
@@ -272,19 +328,31 @@ type GetUserDeviceResponseBodyDevice struct {
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network access control status. Valid values:
 	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Unprovisioned.
+	//
 	// example:
 	//
 	// Unprovisioned
 	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	// The list of network interface controllers (NICs) of the terminal device.
+	// The list of network interface controllers (NICs) of the endpoint device.
 	NetInterfaceInfo []*GetUserDeviceResponseBodyDeviceNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
-	// The private access status. Valid values:
+	// The internal network access status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Unprovisioned.
 	//
 	// example:
 	//
 	// Enabled
 	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
-	// The list of processes running on the terminal.
+	// The list of running processes on the terminal.
 	Processes []*GetUserDeviceResponseBodyDeviceProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
 	// The province to which the public IP address belongs.
 	//
@@ -292,25 +360,29 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// Zhejiang
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The province name in English.
+	// The province in English.
 	//
 	// example:
 	//
 	// Beijing
 	ProvinceEn *string `json:"ProvinceEn,omitempty" xml:"ProvinceEn,omitempty"`
-	// The province name in Chinese.
+	// The province in Chinese.
 	//
 	// example:
 	//
 	// 北京市
 	ProvinceZh *string `json:"ProvinceZh,omitempty" xml:"ProvinceZh,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// Indicates whether sharing is enabled for the device. Valid values:
+	// Specifies whether sharing is enabled for the device. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -322,7 +394,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// PJGGU00WBD****
 	SnBaseBoard *string `json:"SnBaseBoard,omitempty" xml:"SnBaseBoard,omitempty"`
-	// The serial number (SN) of the BIOS system.
+	// The serial number of the BIOS.
 	//
 	// example:
 	//
@@ -334,7 +406,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// WD-WXR1A99A****
 	SnDiskDrive *string `json:"SnDiskDrive,omitempty" xml:"SnDiskDrive,omitempty"`
-	// The serial number (SN) of the processor.
+	// The serial number of the processor.
 	//
 	// example:
 	//
@@ -346,7 +418,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// KVN9C9****
 	SnSystem *string `json:"SnSystem,omitempty" xml:"SnSystem,omitempty"`
-	// The logon IP address of the terminal device.
+	// The logon IP address of the endpoint device.
 	//
 	// example:
 	//
@@ -358,7 +430,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 1775096714
 	TerminalInfoCollectTime *int64 `json:"TerminalInfoCollectTime,omitempty" xml:"TerminalInfoCollectTime,omitempty"`
-	// The last online time of the terminal device.
+	// The last online time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -913,7 +985,7 @@ func (s *GetUserDeviceResponseBodyDevice) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDeviceHistoryUsers struct {
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -1009,7 +1081,7 @@ type GetUserDeviceResponseBodyDeviceProcesses struct {
 	//
 	// 0.05
 	Cpu *float64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The process running description.
+	// The description of the running process.
 	//
 	// example:
 	//
@@ -1021,7 +1093,7 @@ type GetUserDeviceResponseBodyDeviceProcesses struct {
 	//
 	// 233
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//

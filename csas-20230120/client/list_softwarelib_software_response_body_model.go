@@ -24,13 +24,13 @@ type iListSoftwarelibSoftwareResponseBody interface {
 type ListSoftwarelibSoftwareResponseBody struct {
 	// The software list.
 	DataList []*ListSoftwarelibSoftwareResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. This parameter is not returned by this operation.
+	// The maximum number of entries per page. This parameter is not returned by the current operation.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. This parameter is not returned by this operation.
+	// The query token. This parameter is not returned by the current operation.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListSoftwarelibSoftwareResponseBody struct {
 	//
 	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of software entries that match the query conditions.
+	// The total number of software packages that meet the query conditions.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListSoftwarelibSoftwareResponseBody) Validate() error {
 }
 
 type ListSoftwarelibSoftwareResponseBodyDataList struct {
-	// The associated built-in software ID.
+	// The ID of the associated built-in software.
 	//
 	// example:
 	//
 	// softwarelib-software-1da844a39729****
 	BuiltinSoftwareId *string `json:"BuiltinSoftwareId,omitempty" xml:"BuiltinSoftwareId,omitempty"`
-	// The software BundleId used for verification.
+	// The software bundle ID used for verification.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// test software
 	CheckSoftwareName *string `json:"CheckSoftwareName,omitempty" xml:"CheckSoftwareName,omitempty"`
-	// The software classification ID.
+	// The software category ID.
 	//
 	// example:
 	//
 	// softwarelib-classify-61b7ccc63cae****
 	ClassifyId *string `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
-	// The time when the software was created, in seconds-level UNIX timestamp.
+	// The time when the software was created. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
@@ -153,11 +153,11 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// This is a demo software.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of associated terminal device IDs.
+	// The list of associated endpoint device IDs.
 	DevTags []*string `json:"DevTags,omitempty" xml:"DevTags,omitempty" type:"Repeated"`
 	// The list of associated device group IDs.
 	DeviceGroupIds []*string `json:"DeviceGroupIds,omitempty" xml:"DeviceGroupIds,omitempty" type:"Repeated"`
-	// The number of times the software has been manually downloaded from the client.
+	// The number of times the software is manually downloaded from the client.
 	//
 	// example:
 	//
@@ -175,19 +175,19 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01mXKAQX1P3a5fbS0Dp_!!6000000001785-2-tps-40-40.png
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The latest software version number for Mac (Apple).
+	// The maximum software version number for macOS with Apple silicon.
 	//
 	// example:
 	//
 	// 1.0.0
 	MacAppleVersion *string `json:"MacAppleVersion,omitempty" xml:"MacAppleVersion,omitempty"`
-	// The latest software version number for Mac (Intel).
+	// The maximum software version number for macOS with Intel chips.
 	//
 	// example:
 	//
 	// 1.0.0
 	MacIntelVersion *string `json:"MacIntelVersion,omitempty" xml:"MacIntelVersion,omitempty"`
-	// The policy matching target type. Valid values:
+	// The policy match target type. Valid values:
 	//
 	// - **UserGroupAll**: all users.
 	//
@@ -211,7 +211,7 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// http://xxx.com/****
 	OfficialDownloadUrl *string `json:"OfficialDownloadUrl,omitempty" xml:"OfficialDownloadUrl,omitempty"`
-	// The execution account (only supported on Windows).
+	// The execution account. Only Windows is supported.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// Thunder
 	SoftwareName *string `json:"SoftwareName,omitempty" xml:"SoftwareName,omitempty"`
-	// Indicates whether the built-in library source has been deleted.
+	// Indicates whether the built-in library source is deleted.
 	//
 	// example:
 	//
@@ -247,9 +247,9 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The list of associated user group IDs.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The software version list. This field is not returned by this operation. Call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~) to query software versions.
+	// The software version list. This field is not returned by the current operation. Call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~) to query software versions.
 	Versions []*ListSoftwarelibSoftwareResponseBodyDataListVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
-	// The latest software version number for Windows.
+	// The maximum software version number for Windows.
 	//
 	// example:
 	//
@@ -486,19 +486,19 @@ func (s *ListSoftwarelibSoftwareResponseBodyDataList) Validate() error {
 }
 
 type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
-	// The time when the software version was created.
+	// The time when the software version was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-08-05 18:03:58
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of times the software has been downloaded from the client.
+	// The number of times the software is downloaded from the client.
 	//
 	// example:
 	//
 	// 1
 	DownloadTimes *int64 `json:"DownloadTimes,omitempty" xml:"DownloadTimes,omitempty"`
-	// The MD5 value of the software package.
+	// The MD5 hash value of the software package.
 	//
 	// example:
 	//
@@ -510,13 +510,13 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	//
 	// 2026-08-05 18:03:58
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The operating system to which the software package applies. Valid values:
+	// The operating system applicable to the software package. Valid values:
 	//
 	// - **Windows**: Windows.
 	//
 	// - **Mac(Apple)**: macOS with Apple silicon.
 	//
-	// - **Mac(Intel)**: macOS with Intel processors.
+	// - **Mac(Intel)**: macOS with Intel chips.
 	//
 	// example:
 	//
@@ -524,7 +524,7 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
 	// The software publisher type. Valid values:
 	//
-	// - **local**: locally uploaded.
+	// - **local**: local upload.
 	//
 	// - **thirdparty**: third-party link.
 	//
@@ -532,7 +532,7 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	//
 	// local
 	PublisherType *string `json:"PublisherType,omitempty" xml:"PublisherType,omitempty"`
-	// The ID of the software to which this version belongs.
+	// The ID of the software to which the version belongs.
 	//
 	// example:
 	//
@@ -556,11 +556,11 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	//
 	// https://****.com/****
 	SoftwareUrl *string `json:"SoftwareUrl,omitempty" xml:"SoftwareUrl,omitempty"`
-	// The version publish status. Valid values:
+	// The release status of the version. Valid values:
 	//
 	// - **published**: published.
 	//
-	// - **unpublished**: not published.
+	// - **unpublished**: unpublished.
 	//
 	// example:
 	//

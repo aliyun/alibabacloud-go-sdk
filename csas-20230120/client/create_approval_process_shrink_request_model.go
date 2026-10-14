@@ -20,15 +20,15 @@ type iCreateApprovalProcessShrinkRequest interface {
 }
 
 type CreateApprovalProcessShrinkRequest struct {
-	// The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	// The description of the approval process. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// example:
 	//
-	// This is an approval flow
+	// This is an approval process
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The matched approval templates.
 	MatchSchemasShrink *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
-	// The flow name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	// The name of the process. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateApprovalProcessShrinkRequest struct {
 	//
 	// test_process
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The list of approval nodes. You can define up to 5 approval nodes.
+	// The list of approval nodes. You can define up to five approval nodes.
 	//
 	// This parameter is required.
 	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`

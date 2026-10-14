@@ -19,6 +19,10 @@ type iUpdatePrivateAccessApplicationRequest interface {
 	GetConfigMode() *string
 	SetDescription(v string) *UpdatePrivateAccessApplicationRequest
 	GetDescription() *string
+	SetHealthCheckConfig(v *HealthCheckConfig) *UpdatePrivateAccessApplicationRequest
+	GetHealthCheckConfig() *HealthCheckConfig
+	SetHealthCheckMode(v string) *UpdatePrivateAccessApplicationRequest
+	GetHealthCheckMode() *string
 	SetL7Config(v *PAL7Config) *UpdatePrivateAccessApplicationRequest
 	GetL7Config() *PAL7Config
 	SetL7ProxyDomainAutomaticPrefix(v string) *UpdatePrivateAccessApplicationRequest
@@ -44,11 +48,11 @@ type iUpdatePrivateAccessApplicationRequest interface {
 }
 
 type UpdatePrivateAccessApplicationRequest struct {
-	// The application address groups. This parameter can be specified when ConfigMode is set to Precise. This parameter cannot be specified when ConfigMode is an empty string.
+	// The application address groups. You can specify this parameter when ConfigMode is Precise. You cannot specify this parameter when ConfigMode is an empty string.
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
-	// The addresses of the private access application. You can specify up to 1000 addresses.
+	// The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// The ID of the private access application. You can obtain the value from:
+	// The ID of the private access application. You can obtain the value from the following operations:
 	//
 	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists private access applications.
 	//
@@ -62,11 +66,15 @@ type UpdatePrivateAccessApplicationRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The configuration mode. Valid values:
 	//
-	// 	- Empty string: default mode.
+	// 	- Empty string: the default mode.
 	//
-	// 	- Precise: precise mode.
+	// 	- Precise: the precise mode.
+	//
+	// example:
+	//
+	// Precise
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The description of the private access application. The description must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	// The description of the private access application. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// if can be null:
 	// true
@@ -75,15 +83,29 @@ type UpdatePrivateAccessApplicationRequest struct {
 	//
 	// This is a private access application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The browser access mode parameter: the Layer 7 application configuration.
+	// The health check configuration. This parameter is valid only when HealthCheckMode is set to Continuous. You cannot specify this parameter when HealthCheckMode is set to OnAccess.
+	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
+	// The health check mode. Valid values:
+	//
+	// 	- OnAccess: Checks upon access without active probing.
+	//
+	// 	- Continuous: Performs continuous checks and periodically probes based on the configurations in HealthCheckConfig.
+	//
+	// If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
+	//
+	// example:
+	//
+	// OnAccess
+	HealthCheckMode *string `json:"HealthCheckMode,omitempty" xml:"HealthCheckMode,omitempty"`
+	// The Layer 7 application configuration in browser access mode.
 	L7Config *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	// The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
+	// The prefix of the mapped proxy domain name in browser access mode. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// app1-xxx
 	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	// The browser access mode parameter: the custom proxy domain name.
+	// The custom proxy domain name in browser access mode.
 	//
 	// example:
 	//
@@ -91,7 +113,7 @@ type UpdatePrivateAccessApplicationRequest struct {
 	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// Deprecated
 	//
-	// The browser access mode parameter: the private proxy domain name.
+	// The private proxy domain name in browser access mode.
 	//
 	// example:
 	//
@@ -99,21 +121,25 @@ type UpdatePrivateAccessApplicationRequest struct {
 	L7ProxyDomainPrivate *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
 	// The modification type of the private access application. Valid values:
 	//
-	// - **Cover*	- (default): overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters.
+	// - **Cover*	- (default): Overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters.
 	//
-	// - **Append**: appends the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to the original addresses, port ranges, and tag IDs.
+	// - **Append**: Appends the values specified in the **Addresses**, **PortRanges**, and **TagIds*	- parameters to the original addresses, port ranges, and tag IDs.
 	//
 	// example:
 	//
 	// Cover
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	// The application name.
+	// The name of the application.
+	//
+	// example:
+	//
+	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port ranges of the private access application. You can specify up to 65535 port ranges. Multiple port ranges cannot overlap.
+	// The collection of port ranges for the private access application. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
 	PortRanges []*UpdatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The protocol of the private access application. Valid values:
 	//
-	// - **All**: all protocols.
+	// - **All**: All protocols.
 	//
 	// - **TCP**
 	//
@@ -125,15 +151,15 @@ type UpdatePrivateAccessApplicationRequest struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The status of the private access application. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The IDs of private access tags. A private access application can be associated with up to 6 custom private access tags.
+	// The collection of private access tag IDs. You can associate up to six custom private access tags with a single private access application.
 	//
 	// if can be null:
 	// true
@@ -168,6 +194,14 @@ func (s *UpdatePrivateAccessApplicationRequest) GetConfigMode() *string {
 
 func (s *UpdatePrivateAccessApplicationRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) GetHealthCheckConfig() *HealthCheckConfig {
+	return s.HealthCheckConfig
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) GetHealthCheckMode() *string {
+	return s.HealthCheckMode
 }
 
 func (s *UpdatePrivateAccessApplicationRequest) GetL7Config() *PAL7Config {
@@ -239,6 +273,16 @@ func (s *UpdatePrivateAccessApplicationRequest) SetDescription(v string) *Update
 	return s
 }
 
+func (s *UpdatePrivateAccessApplicationRequest) SetHealthCheckConfig(v *HealthCheckConfig) *UpdatePrivateAccessApplicationRequest {
+	s.HealthCheckConfig = v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) SetHealthCheckMode(v string) *UpdatePrivateAccessApplicationRequest {
+	s.HealthCheckMode = &v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationRequest) SetL7Config(v *PAL7Config) *UpdatePrivateAccessApplicationRequest {
 	s.L7Config = v
 	return s
@@ -302,6 +346,11 @@ func (s *UpdatePrivateAccessApplicationRequest) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.HealthCheckConfig != nil {
+		if err := s.HealthCheckConfig.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.L7Config != nil {

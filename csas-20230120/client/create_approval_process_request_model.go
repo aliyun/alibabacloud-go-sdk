@@ -20,15 +20,15 @@ type iCreateApprovalProcessRequest interface {
 }
 
 type CreateApprovalProcessRequest struct {
-	// The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	// The description of the approval process. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// example:
 	//
-	// This is an approval flow
+	// This is an approval process
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The matched approval templates.
 	MatchSchemas *CreateApprovalProcessRequestMatchSchemas `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
-	// The flow name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	// The name of the process. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateApprovalProcessRequest struct {
 	//
 	// test_process
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The list of approval nodes. You can define up to 5 approval nodes.
+	// The list of approval nodes. You can define up to five approval nodes.
 	//
 	// This parameter is required.
 	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
@@ -96,7 +96,7 @@ func (s *CreateApprovalProcessRequest) Validate() error {
 }
 
 type CreateApprovalProcessRequestMatchSchemas struct {
-	// The ID of the device uninstall approval template.
+	// The ID of the application uninstallation approval template.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type CreateApprovalProcessRequestMatchSchemas struct {
 	//
 	// approval-schema-090134f1ebff****
 	DeviceRegistrationSchemaId *string `json:"DeviceRegistrationSchemaId,omitempty" xml:"DeviceRegistrationSchemaId,omitempty"`
-	// The ID of the file outbound approval template.
+	// The ID of the outbound file transfer approval template.
 	//
 	// example:
 	//

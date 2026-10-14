@@ -22,18 +22,34 @@ type iListVirusScanAdditionalListsRequest interface {
 }
 
 type ListVirusScanAdditionalListsRequest struct {
+	// Filters by matching dimension. Duplicate values are not allowed. If this parameter is not specified, all matching dimensions are returned.
 	AdditionalTypes []*string `json:"AdditionalTypes,omitempty" xml:"AdditionalTypes,omitempty" type:"Repeated"`
+	// The operating system type for which the list takes effect. Valid values:
+	//
+	// - **windows**: Windows.
+	//
+	// - **macOS**: macOS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// windows
 	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	// The content of the list entry, using exact match. This parameter is used to locate a specific list entry by content and does not support fuzzy match.
+	//
 	// example:
 	//
 	// .tmp
-	ListDetail *string   `json:"ListDetail,omitempty" xml:"ListDetail,omitempty"`
-	ListIds    []*string `json:"ListIds,omitempty" xml:"ListIds,omitempty" type:"Repeated"`
+	ListDetail *string `json:"ListDetail,omitempty" xml:"ListDetail,omitempty"`
+	// Filters by list entry ID. Duplicate values are not allowed. If this parameter is not specified, no filtering by list entry ID is applied.
+	ListIds []*string `json:"ListIds,omitempty" xml:"ListIds,omitempty" type:"Repeated"`
+	// Filters by list type. If this parameter is not specified, both blacklists and whitelists are returned. Valid values:
+	//
+	// - **Blacklist**: Blacklist. Files that match are directly identified as virus files.
+	//
+	// - **Whitelist**: Whitelist. Files that match are excluded from virus detection.
+	//
 	// example:
 	//
 	// Whitelist

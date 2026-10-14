@@ -18,7 +18,7 @@ type iListDomainAccessLogsResponseBody interface {
 }
 
 type ListDomainAccessLogsResponseBody struct {
-	// The list of access log records.
+	// The list of access records.
 	AccessLogs []*ListDomainAccessLogsResponseBodyAccessLogs `json:"AccessLogs,omitempty" xml:"AccessLogs,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -26,7 +26,7 @@ type ListDomainAccessLogsResponseBody struct {
 	//
 	// 019F68B6-A17E-5ECD-B053-820242E5ADBF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the query conditions.
+	// The total number of records that meet the specified conditions.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListDomainAccessLogsResponseBody) Validate() error {
 }
 
 type ListDomainAccessLogsResponseBodyAccessLogs struct {
-	// The action taken upon a rule hit.
+	// The matched action.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ListDomainAccessLogsResponseBodyAccessLogs struct {
 	//
 	// https://www.example.com/a
 	DestAddress *string `json:"DestAddress,omitempty" xml:"DestAddress,omitempty"`
-	// The event time.
+	// The time when the event occurred, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

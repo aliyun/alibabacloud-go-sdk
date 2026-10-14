@@ -20,7 +20,7 @@ type iListUserDevicesResponseBody interface {
 type ListUserDevicesResponseBody struct {
 	// The list of endpoint devices.
 	Devices []*ListUserDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -85,9 +85,9 @@ func (s *ListUserDevicesResponseBody) Validate() error {
 type ListUserDevicesResponseBodyDevices struct {
 	// The client status. Valid values:
 	//
-	// - **Online**: online.
+	// - **Online**: Online.
 	//
-	// - **Offline**: offline.
+	// - **Offline**: Offline.
 	//
 	// example:
 	//
@@ -110,41 +110,56 @@ type ListUserDevicesResponseBodyDevices struct {
 	// example:
 	//
 	// Apple M1
-	CPU  *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The city of the public IP address.
+	//
+	// example:
+	//
+	// Hangzhou City
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The city name in English.
+	// The city in English.
 	//
 	// example:
 	//
 	// Beijing City
 	CityEn *string `json:"CityEn,omitempty" xml:"CityEn,omitempty"`
-	// The city name in Chinese.
+	// The city in Chinese.
 	//
 	// example:
 	//
 	// 北京市
-	CityZh    *string `json:"CityZh,omitempty" xml:"CityZh,omitempty"`
+	CityZh *string `json:"CityZh,omitempty" xml:"CityZh,omitempty"`
+	// The continent of the public IP address.
+	//
+	// example:
+	//
+	// Asia
 	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
-	// The continent name in English.
+	// The continent in English.
 	//
 	// example:
 	//
 	// Asia
 	ContinentEn *string `json:"ContinentEn,omitempty" xml:"ContinentEn,omitempty"`
-	// The continent name in Chinese.
+	// The continent in Chinese.
 	//
 	// example:
 	//
 	// 亚洲
 	ContinentZh *string `json:"ContinentZh,omitempty" xml:"ContinentZh,omitempty"`
-	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The country name in English.
+	// The country of the public IP address.
+	//
+	// example:
+	//
+	// China
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The country in English.
 	//
 	// example:
 	//
 	// China
 	CountryEn *string `json:"CountryEn,omitempty" xml:"CountryEn,omitempty"`
-	// The country name in Chinese.
+	// The country in Chinese.
 	//
 	// example:
 	//
@@ -160,13 +175,13 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// example:
 	//
-	// 测试部
+	// Test Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
 	// The ownership of the endpoint device. Valid values:
 	//
-	// - **Personal**: personal device.
+	// - **Personal**: Personal device.
 	//
-	// - **Company**: company device.
+	// - **Company**: Company device.
 	//
 	// example:
 	//
@@ -180,23 +195,23 @@ type ListUserDevicesResponseBodyDevices struct {
 	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
 	// The status of the endpoint device. Valid values:
 	//
-	// - **Online**: online.
+	// - **Online**: Online.
 	//
-	// - **Offline**: offline.
+	// - **Offline**: Offline.
 	//
-	// - **LongTermOffline**: long-term offline.
+	// - **LongTermOffline**: Long-term offline.
 	//
-	// - **Locked**: locked.
+	// - **Locked**: Locked.
 	//
-	// - **Lost**: reported as lost.
+	// - **Lost**: Reported lost.
 	//
-	// - **Unbound**: unbound.
+	// - **Unbound**: Unbound.
 	//
 	// example:
 	//
 	// Online
 	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	// The endpoint device ID.
+	// The ID of the endpoint device.
 	//
 	// example:
 	//
@@ -234,13 +249,13 @@ type ListUserDevicesResponseBodyDevices struct {
 	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
 	// The office data protection status. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
-	// - **Unprovisioned**: not configured.
+	// - **Unprovisioned**: Unprovisioned.
 	//
-	// - **Unauthorized**: unauthorized.
+	// - **Unauthorized**: Unauthorized.
 	//
 	// example:
 	//
@@ -248,9 +263,9 @@ type ListUserDevicesResponseBodyDevices struct {
 	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
 	// The anti-intrusion status. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
@@ -266,11 +281,11 @@ type ListUserDevicesResponseBodyDevices struct {
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// The Internet access status. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
-	// - **Unprovisioned**: not configured.
+	// - **Unprovisioned**: Unprovisioned.
 	//
 	// example:
 	//
@@ -282,7 +297,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 192.168.XX.XX
 	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	// Indicates whether the device is joined to an Active Directory (AD) domain.
+	// Indicates whether the endpoint device is added to an Active Directory (AD) domain.
 	//
 	// example:
 	//
@@ -294,7 +309,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The collection of matched device group IDs.
+	// The IDs of the matched device groups.
 	MatchDeviceGroupIds []*string `json:"MatchDeviceGroupIds,omitempty" xml:"MatchDeviceGroupIds,omitempty" type:"Repeated"`
 	// The memory capacity of the endpoint device. Unit: GB.
 	//
@@ -304,44 +319,49 @@ type ListUserDevicesResponseBodyDevices struct {
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network access control status. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
-	// - **Unprovisioned**: not configured.
+	// - **Unprovisioned**: Unprovisioned.
 	//
 	// example:
 	//
 	// Enabled
 	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	// The list of network interfaces of the endpoint device.
+	// The list of network interface controllers (NICs) of the endpoint device.
 	NetInterfaceInfo []*ListUserDevicesResponseBodyDevicesNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
-	// The private access status. Valid values:
+	// The internal network access status. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
-	// - **Unprovisioned**: not configured.
+	// - **Unprovisioned**: Unprovisioned.
 	//
 	// example:
 	//
 	// Enabled
 	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	// The province of the public IP address.
+	//
+	// example:
+	//
+	// Zhejiang
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The province name in English.
+	// The province in English.
 	//
 	// example:
 	//
 	// Beijing
 	ProvinceEn *string `json:"ProvinceEn,omitempty" xml:"ProvinceEn,omitempty"`
-	// The province name in Chinese.
+	// The province in Chinese.
 	//
 	// example:
 	//
 	// 北京市
 	ProvinceZh *string `json:"ProvinceZh,omitempty" xml:"ProvinceZh,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -357,31 +377,31 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// true
 	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	// The motherboard serial number.
+	// The serial number of the baseboard.
 	//
 	// example:
 	//
 	// PJGGU00WBD****
 	SnBaseBoard *string `json:"SnBaseBoard,omitempty" xml:"SnBaseBoard,omitempty"`
-	// The BIOS system serial number.
+	// The serial number of the BIOS.
 	//
 	// example:
 	//
 	// 5CG003****
 	SnBios *string `json:"SnBios,omitempty" xml:"SnBios,omitempty"`
-	// The hard disk serial number.
+	// The serial number of the hard disk.
 	//
 	// example:
 	//
 	// WD-WXR1A99A****
 	SnDiskDrive *string `json:"SnDiskDrive,omitempty" xml:"SnDiskDrive,omitempty"`
-	// The processor serial number.
+	// The serial number of the processor.
 	//
 	// example:
 	//
 	// BFEBFBFF0008****
 	SnProcessor *string `json:"SnProcessor,omitempty" xml:"SnProcessor,omitempty"`
-	// The system serial number.
+	// The system serial number (SN).
 	//
 	// example:
 	//
@@ -403,13 +423,13 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	// The name of the office area.
 	//
 	// example:
 	//
-	// 测试办公区
+	// Test office area
 	Workshop *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 }
 
@@ -876,13 +896,13 @@ func (s *ListUserDevicesResponseBodyDevices) Validate() error {
 }
 
 type ListUserDevicesResponseBodyDevicesNetInterfaceInfo struct {
-	// The MAC address of the network interface.
+	// The MAC address of the NIC.
 	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The name of the network interface.
+	// The name of the NIC.
 	//
 	// example:
 	//

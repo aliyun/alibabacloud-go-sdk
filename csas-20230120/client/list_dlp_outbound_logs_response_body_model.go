@@ -20,13 +20,13 @@ type iListDlpOutboundLogsResponseBody interface {
 type ListDlpOutboundLogsResponseBody struct {
 	// The log objects.
 	Logs []*ListDlpOutboundLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9350F06D-80FB-5B8B-983A-0E25CBD08479
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the query conditions.
+	// The total number of records that meet the query conditions.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// example:
 	//
-	// Web Upload
+	// Web upload
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// The department.
 	//
@@ -107,19 +107,19 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// R&D Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The local path of the file on the device.
+	// The local path of the file on the endpoint.
 	//
 	// example:
 	//
 	// C:\\Users\\a\\Desktop\\x.xlsx
 	DevFilePath *string `json:"DevFilePath,omitempty" xml:"DevFilePath,omitempty"`
-	// The unique identifier of the device.
+	// The unique identifier of the endpoint.
 	//
 	// example:
 	//
 	// 69FFB8EB-3E5E-5F11-A9D3-59ED8CBB345D
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	// The device type.
+	// The endpoint type.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// OSS
 	DlpStorageType *string `json:"DlpStorageType,omitempty" xml:"DlpStorageType,omitempty"`
-	// The outbound destination address or URL.
+	// The destination address or URL of the outbound transfer.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// https://drive.example.com/
 	FileOriginReferrer *string `json:"FileOriginReferrer,omitempty" xml:"FileOriginReferrer,omitempty"`
-	// The file content preview snippet.
+	// The preview snippet of the file content.
 	//
 	// example:
 	//
@@ -177,9 +177,9 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// example:
 	//
-	// R&D Center-Data Platform Team
+	// R&D Center - Data Platform Team
 	GroupInfo *string `json:"GroupInfo,omitempty" xml:"GroupInfo,omitempty"`
-	// The hostname of the device.
+	// The endpoint hostname.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// da817m4mfrcs6xxxx3hg
 	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The matched dictionary statistics.
+	// The statistics of matched dictionaries.
 	MatchedDicts *ListDlpOutboundLogsResponseBodyLogsMatchedDicts `json:"MatchedDicts,omitempty" xml:"MatchedDicts,omitempty" type:"Struct"`
 	// The list of matched policy details.
 	MatchedPolicies []*ListDlpOutboundLogsResponseBodyLogsMatchedPolicies `json:"MatchedPolicies,omitempty" xml:"MatchedPolicies,omitempty" type:"Repeated"`
@@ -209,7 +209,7 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	// The list of matched policy names.
 	PolicyName []*string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty" type:"Repeated"`
-	// The outbound process name.
+	// The outbound transfer process name.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// example:
 	//
-	// WeCom-FileSend
+	// WeCom-File Transfer
 	ProcessNameDesc *string `json:"ProcessNameDesc,omitempty" xml:"ProcessNameDesc,omitempty"`
 	// The risk level.
 	//
@@ -249,21 +249,21 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// example:
 	//
-	// 2026Q2FinancialReport.xlsx
+	// 2026Q2_Financial_Report.xlsx
 	SrcFileName *string `json:"SrcFileName,omitempty" xml:"SrcFileName,omitempty"`
-	// The source IP address of the device.
+	// The source IP address of the endpoint.
 	//
 	// example:
 	//
 	// 10.0.0.5
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// The time when the event occurred.
+	// The time when the event occurred. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-08-10 14:03:22
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when the log was reported.
+	// The time when the log was reported. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -685,7 +685,7 @@ func (s *ListDlpOutboundLogsResponseBodyLogsMatchedDicts) Validate() error {
 }
 
 type ListDlpOutboundLogsResponseBodyLogsMatchedDictsInnerDicts struct {
-	// The number of matches.
+	// The hit count.
 	//
 	// example:
 	//
@@ -730,7 +730,7 @@ func (s *ListDlpOutboundLogsResponseBodyLogsMatchedDictsInnerDicts) Validate() e
 }
 
 type ListDlpOutboundLogsResponseBodyLogsMatchedDictsKeywords struct {
-	// The number of matches.
+	// The hit count.
 	//
 	// example:
 	//
@@ -775,7 +775,7 @@ func (s *ListDlpOutboundLogsResponseBodyLogsMatchedDictsKeywords) Validate() err
 }
 
 type ListDlpOutboundLogsResponseBodyLogsMatchedDictsUserDicts struct {
-	// The number of matches.
+	// The hit count.
 	//
 	// example:
 	//
@@ -830,9 +830,9 @@ type ListDlpOutboundLogsResponseBodyLogsMatchedPolicies struct {
 	//
 	// example:
 	//
-	// Company Data
+	// Corporate data
 	EngineDataType *string `json:"EngineDataType,omitempty" xml:"EngineDataType,omitempty"`
-	// The matched detection rule name.
+	// The name of the matched identification rule.
 	//
 	// example:
 	//
@@ -844,7 +844,7 @@ type ListDlpOutboundLogsResponseBodyLogsMatchedPolicies struct {
 	//
 	// gitlab-tag-policy
 	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
-	// The matched policy name.
+	// The hit Policy Name.
 	//
 	// example:
 	//

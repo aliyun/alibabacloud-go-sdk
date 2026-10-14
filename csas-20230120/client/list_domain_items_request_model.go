@@ -22,7 +22,7 @@ type iListDomainItemsRequest interface {
 }
 
 type ListDomainItemsRequest struct {
-	// The current page number in paging.
+	// The page number of the current page in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListDomainItemsRequest struct {
 	//
 	// example.com
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
-	// The list ID. This is a unique business identifier used for policy references and CRUD operations.
+	// The list ID. This is a unique business identifier used for policy references and create, delete, and update operations.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,11 @@ type ListDomainItemsRequest struct {
 	//
 	// ladl-6f1exxxxx6ab59
 	ListId *string `json:"ListId,omitempty" xml:"ListId,omitempty"`
-	// The list type (Blacklist/Whitelist).
+	// The list type (Blacklist/Whitelist). Valid values:
+	//
+	// - la_domain_white_list: domain name whitelist.
+	//
+	// - la_domain_black_list: domain name blacklist.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +56,7 @@ type ListDomainItemsRequest struct {
 	//
 	// la_domain_white_list
 	ListType *string `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	// The number of entries per page in paging. Valid values: 1 to 1000.
+	// The number of entries per page in a paged query. Valid values: 1 to 1000.
 	//
 	// This parameter is required.
 	//

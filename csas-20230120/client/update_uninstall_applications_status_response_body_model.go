@@ -16,9 +16,9 @@ type iUpdateUninstallApplicationsStatusResponseBody interface {
 }
 
 type UpdateUninstallApplicationsStatusResponseBody struct {
-	// The list of uninstall applications.
+	// The list of uninstallation applications.
 	Applications []*UpdateUninstallApplicationsStatusResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *UpdateUninstallApplicationsStatusResponseBody) Validate() error {
 }
 
 type UpdateUninstallApplicationsStatusResponseBodyApplications struct {
-	// The uninstall application ID.
+	// The uninstallation application ID.
 	//
 	// example:
 	//
 	// uninstall-app-6646831ac314****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The time when the uninstall application was created.
+	// The time when the uninstallation application was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -82,15 +82,15 @@ type UpdateUninstallApplicationsStatusResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// Testing Department
+	// Test Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The ID of the endpoint device.
+	// The ID of the terminal device.
 	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	// The operating system type of the endpoint device. Valid values:
+	// The operating system type of the terminal device. Valid values:
 	//
 	// - **Windows**: Windows.
 	//
@@ -108,25 +108,25 @@ type UpdateUninstallApplicationsStatusResponseBodyApplications struct {
 	//
 	// Windows
 	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-	// The name of the endpoint device.
+	// The name of the terminal device.
 	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The name of the identity provider.
+	// The name of the user identity source.
 	//
 	// example:
 	//
-	// Test Identity Provider
+	// Test Identity Source
 	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
-	// Indicates whether the uninstallation has been performed.
+	// Specifies whether the uninstallation has been executed.
 	//
 	// example:
 	//
 	// false
 	IsUninstall *bool `json:"IsUninstall,omitempty" xml:"IsUninstall,omitempty"`
-	// The MAC address of the endpoint device.
+	// The MAC address of the terminal device.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type UpdateUninstallApplicationsStatusResponseBodyApplications struct {
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// The status of the uninstall application. Valid values:
+	// The status of the uninstallation application. Valid values:
 	//
 	// - **Pending**: Pending.
 	//

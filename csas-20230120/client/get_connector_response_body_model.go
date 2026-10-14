@@ -16,7 +16,7 @@ type iGetConnectorResponseBody interface {
 }
 
 type GetConnectorResponseBody struct {
-	// Connector。
+	// The connector.
 	Connector *GetConnectorResponseBodyConnector `json:"Connector,omitempty" xml:"Connector,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,19 +62,19 @@ func (s *GetConnectorResponseBody) Validate() error {
 }
 
 type GetConnectorResponseBodyConnector struct {
-	// ConnectorID。
+	// The connector ID.
 	//
 	// example:
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The connector creation time.
+	// The time when the connector was created, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-05-16 17:18:46
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The connector name.
+	// The name of the connector.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetConnectorResponseBodyConnector struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The connector connection status. Valid values:
+	// The connection status of the connector. Valid values:
 	//
 	// - **Online**: Online.
 	//
@@ -96,19 +96,19 @@ type GetConnectorResponseBodyConnector struct {
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The connector instance status. Valid values:
+	// The instance status of the connector. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: enabled
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: shutdown
 	//
 	// example:
 	//
 	// Enabled
 	SwitchStatus *string `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
-	// The connector upgrade time.
+	// The upgrade time of the connector.
 	UpgradeTime *GetConnectorResponseBodyConnectorUpgradeTime `json:"UpgradeTime,omitempty" xml:"UpgradeTime,omitempty" type:"Struct"`
-	// The virtual IP address range.
+	// The virtual IP address CIDR block.
 	//
 	// example:
 	//

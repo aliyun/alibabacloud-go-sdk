@@ -30,7 +30,7 @@ type iListDlpOutboundLogsRequest interface {
 }
 
 type ListDlpOutboundLogsRequest struct {
-	// The current page number, starting from 1.
+	// The current page number. Pages start from 1.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListDlpOutboundLogsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the query. UNIX timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -60,19 +60,19 @@ type ListDlpOutboundLogsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The policy action. Single-value exact match.
+	// The policy action. Exact match for a single value is supported.
 	//
 	// example:
 	//
 	// block_and_hint
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	// The original file name. Fuzzy match.
+	// The original file name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// TestFile
 	SrcFileName *string `json:"SrcFileName,omitempty" xml:"SrcFileName,omitempty"`
-	// The start time of the query. UNIX timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -80,13 +80,13 @@ type ListDlpOutboundLogsRequest struct {
 	//
 	// 1754870400
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The secondary channel ID in the format of `PrimaryChannelID.SubChannelID`. Separate multiple values with commas.
+	// The secondary channel ID. Format: primary channel ID.secondary channel ID. Multiple values are separated by commas.
 	//
 	// example:
 	//
 	// 3.1,3.2
 	SubChannelType *string `json:"SubChannelType,omitempty" xml:"SubChannelType,omitempty"`
-	// The username. Exact match.
+	// The username. Exact match is supported.
 	//
 	// example:
 	//

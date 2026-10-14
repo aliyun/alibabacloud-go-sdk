@@ -34,11 +34,11 @@ type iListPrivateAccessPolicesRequest interface {
 }
 
 type ListPrivateAccessPolicesRequest struct {
-	// The ID of the private access application. The application ID cannot be used together with the private access tag ID for filtering. Sources of the value:
+	// The ID of the private access application. This parameter cannot be used together with the private access tag ID for filtering. You can obtain the value from the following sources:
 	//
-	//  - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Queries private access applications by batch.
+	//  - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): List private access applications.
 	//
-	//  - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
+	//  - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Create a private access application.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// example:
 	//
-	// 办公
+	// Office
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The page number of the current page that is returned during paginated queries. Valid values: 1 to 10000.
+	// The page number of the current page returned during paging in a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the private access policy. The name must be 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase English letters. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// Policy Name of the private access policy. Policy Name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries per page that is set during paginated queries. Valid values: 1 to 1000.
+	// The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 1000.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	// The collection of private access policy IDs. You can specify up to 100 private access policy IDs.
+	// The IDs of the private access policies. You can specify up to 100 private access policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The status of the private access policy. Valid values:
 	//
@@ -94,11 +94,11 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the private access tag. The tag ID cannot be used together with the application ID for filtering. Sources of the value:
+	// The ID of the private access tag. This parameter cannot be used together with the application ID for filtering. You can obtain the value from the following sources:
 	//
-	//  - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): Queries private access tags by batch.
+	//  - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): List private access tags.
 	//
-	//  - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Creates a private access tag.
+	//  - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Create a private access tag.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// example:
 	//
-	// 云产品
+	// Cloud products
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// The ID of the user group. Sources of the value:
+	// The ID of the user group. You can obtain the value from the following sources:
 	//
-	// - [ListUserGroups](~~ListUserGroups~~): Queries user groups by batch.
+	// - [ListUserGroups](~~ListUserGroups~~): List user groups.
 	//
-	// - [CreateUserGroup](~~CreateUserGroup~~): Creates a user group.
+	// - [CreateUserGroup](~~CreateUserGroup~~): Create a user group.
 	//
 	// example:
 	//

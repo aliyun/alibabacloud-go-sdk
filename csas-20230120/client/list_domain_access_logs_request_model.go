@@ -30,17 +30,7 @@ type iListDomainAccessLogsRequest interface {
 }
 
 type ListDomainAccessLogsRequest struct {
-	// The action taken upon a rule hit. Exact match is used. Valid values:
-	//
-	// - Audit: Audit.
-	//
-	// - Observe: Observe only.
-	//
-	// - WhiteList: Allowed by whitelist.
-	//
-	// - Block: Blocked.
-	//
-	// - Redirect: Redirected to a prompt page.
+	// The matched action for exact match.
 	//
 	// example:
 	//
@@ -52,43 +42,43 @@ type ListDomainAccessLogsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The department. Exact match is used.
+	// The department for exact match.
 	//
 	// example:
 	//
 	// IT department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The end time of the query. This value is a UNIX timestamp in seconds.
+	// The end time of the query, which is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1754956800
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries per page in paging. Valid values: 1 to 1000.
+	// The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 1000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The policy type used to filter results.
+	// The policy type used for filtering.
 	//
 	// example:
 	//
 	// la_domain_white
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The destination domain name accessed. Exact match is used.
+	// The destination domain name for exact match.
 	//
 	// example:
 	//
 	// www.example.com
 	RemoteHost *string `json:"RemoteHost,omitempty" xml:"RemoteHost,omitempty"`
-	// The start time of the query. This value is a UNIX timestamp in seconds.
+	// The start time of the query, which is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1754870400
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The username. Exact match is used.
+	// The username for exact match.
 	//
 	// example:
 	//

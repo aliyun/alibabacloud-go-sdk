@@ -62,12 +62,13 @@ type iListUserDevicesRequest interface {
 }
 
 type ListUserDevicesRequest struct {
-	// The collection of client statuses.
+	// The client statuses.
 	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
-	// The collection of client versions.
-	AppVersions       []*string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
+	// The client versions.
+	AppVersions []*string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
+	// The automatic logon statuses used to filter user endpoint devices.
 	AutoLoginStatuses []*string `json:"AutoLoginStatuses,omitempty" xml:"AutoLoginStatuses,omitempty" type:"Repeated"`
-	// The page number of the current page in a paging query. Valid values: 1 to 10000.
+	// The current page number for paging queries. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -75,43 +76,43 @@ type ListUserDevicesRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The department to which the user belongs. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+	// The department to which the user belongs. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
 	//
 	// example:
 	//
-	// 测试部
+	// Test Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
 	// The ownership of the endpoint device. Valid values:
 	//
-	// - **Personal**: personal device.
+	// - **Personal**: Personal device.
 	//
-	// - **Company**: company device.
+	// - **Company**: Company device.
 	//
 	// example:
 	//
 	// Company
 	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	// The device group ID.
+	// The ID of the device group.
 	//
 	// example:
 	//
 	// device-group-5191cf830a5e****
 	DeviceGroupId *string `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
-	// The collection of endpoint device statuses.
+	// The endpoint device statuses.
 	DeviceStatuses []*string `json:"DeviceStatuses,omitempty" xml:"DeviceStatuses,omitempty" type:"Repeated"`
-	// The collection of endpoint device IDs.
+	// The IDs of the endpoint devices.
 	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
-	// The collection of endpoint device operating system types.
+	// The operating system types of the endpoint devices.
 	DeviceTypes []*string `json:"DeviceTypes,omitempty" xml:"DeviceTypes,omitempty" type:"Repeated"`
-	// The collection of office data protection statuses.
+	// The office data protection statuses.
 	DlpStatuses []*string `json:"DlpStatuses,omitempty" xml:"DlpStatuses,omitempty" type:"Repeated"`
-	// The name of the endpoint device. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), endpoint devices whose names contain 4-byte UTF-8 characters are also queried.
+	// The name of the endpoint device. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system also queries all endpoint devices whose names contain 4-byte UTF-8 characters.
 	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The collection of Internet access statuses.
+	// The Internet access statuses.
 	IaStatuses []*string `json:"IaStatuses,omitempty" xml:"IaStatuses,omitempty" type:"Repeated"`
 	// The internal IP address of the endpoint device.
 	//
@@ -125,11 +126,11 @@ type ListUserDevicesRequest struct {
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The collection of network access control statuses.
+	// The network access control statuses.
 	NacStatuses []*string `json:"NacStatuses,omitempty" xml:"NacStatuses,omitempty" type:"Repeated"`
-	// The collection of private access statuses.
+	// The internal network access statuses.
 	PaStatuses []*string `json:"PaStatuses,omitempty" xml:"PaStatuses,omitempty" type:"Repeated"`
-	// The number of entries per page in a paging query. Settings: 1 to 500.
+	// The number of entries per page for paging queries. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -137,11 +138,11 @@ type ListUserDevicesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The user ID. You can obtain this value from the following operations:
+	// The user ID. You can obtain the value from the following operations:
 	//
 	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user endpoint device.
 	//
-	// - [ListUserDevices](~~ListUserDevices~~): Lists user endpoint devices.
+	// - [ListUserDevices](~~ListUserDevices~~): Queries a list of user endpoint devices.
 	//
 	// example:
 	//
@@ -157,43 +158,43 @@ type ListUserDevicesRequest struct {
 	//
 	// true
 	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	// The BIOS system serial number.
+	// The BIOS system SN.
 	//
 	// example:
 	//
 	// 5CG003****
 	SnBios *string `json:"SnBios,omitempty" xml:"SnBios,omitempty"`
-	// The system serial number.
+	// The system serial number (SN).
 	//
 	// example:
 	//
 	// KVN9C9****
 	SnSystem *string `json:"SnSystem,omitempty" xml:"SnSystem,omitempty"`
-	// The sort parameter. Valid values:
+	// The sorting parameter. Valid values:
 	//
-	// - **Username**: sorted by Username in ascending order.
+	// - **Username**: Sorts by Username in ascending order.
 	//
-	// - **AppVersion**: sorted by AppVersion in descending order.
+	// - **AppVersion**: Sorts by AppVersion in descending order.
 	//
-	// - **UpdateTime**: sorted by UpdateTime in descending order.
+	// - **UpdateTime**: Sorts by UpdateTime in descending order.
 	//
-	// - **CreateTime**: sorted by CreateTime in descending order.
+	// - **CreateTime**: Sorts by CreateTime in descending order.
 	//
 	// example:
 	//
 	// UpdateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The username. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
+	// The username. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	// The name of the office area.
 	//
 	// example:
 	//
-	// 测试办公区
+	// Test office area
 	Workshop *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 }
 

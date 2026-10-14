@@ -19,6 +19,8 @@ type iListPrivateAccessApplicationsRequest interface {
 	GetConnectorId() *string
 	SetCurrentPage(v int32) *ListPrivateAccessApplicationsRequest
 	GetCurrentPage() *int32
+	SetHealthCheckStatus(v string) *ListPrivateAccessApplicationsRequest
+	GetHealthCheckStatus() *string
 	SetName(v string) *ListPrivateAccessApplicationsRequest
 	GetName() *string
 	SetPageSize(v int32) *ListPrivateAccessApplicationsRequest
@@ -42,21 +44,21 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// app
 	AccessModes *string `json:"AccessModes,omitempty" xml:"AccessModes,omitempty"`
-	// The address of the internal-facing access application. The address is 1 to 128 characters in length and supports IPv4 addresses, CIDR blocks, domain names, and wildcard domain names.
+	// The address of the private access application. The address must be 1 to 128 characters in length, and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
 	//
 	// example:
 	//
 	// 192.168.0.0/16
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The IDs of internal-facing access applications. You can specify up to 100 application IDs.
+	// The IDs of the private access applications. You can specify up to 100 IDs.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The connector ID. You can obtain the ID from the [ListConnectors](~~ListConnectors~~) operation.
+	// The ID of the connector. You can obtain the ID from the following operation: [ListConnectors](~~ListConnectors~~): List connectors.
 	//
 	// example:
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The page number of the current page displayed in a paged query. Valid values: 1 to 10000.
+	// The page number of the current page in a paging query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +66,27 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the internal-facing access application. The name is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), underscores (_), and hyphens (-).
+	// Filters applications by health check status. Valid values:
+	//
+	// 	- normal: The success rate of the last check is greater than or equal to 95%.
+	//
+	// 	- partialError: The success rate of the last check is greater than 0 and less than 95%.
+	//
+	// 	- error: The success rate of the last check is 0.
+	//
+	// 	- uncompleted: No check results are available.
+	//
+	// example:
+	//
+	// normal
+	HealthCheckStatus *string `json:"HealthCheckStatus,omitempty" xml:"HealthCheckStatus,omitempty"`
+	// The name of the private access application. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries per page in a paged query. Valid values: 1 to 1000.
+	// The Settings for the number of entries per page in a paging query. Valid values: 1 to 1000.
 	//
 	// This parameter is required.
 	//
@@ -78,17 +94,17 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the internal-facing access policy. You can obtain the ID from the following operations:
+	// The ID of the private access policy. You can obtain the ID from the following operations:
 	//
-	// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): queries internal-facing access policies in batches.
+	// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): List private access policies.
 	//
-	// - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): creates an internal-facing access policy.
+	// - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create a private access policy.
 	//
 	// example:
 	//
 	// pa-policy-54a7838a48bf****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The status of the internal-facing access application. Valid values:
+	// The status of the private access application. Valid values:
 	//
 	// - **Enabled**: enabled.
 	//
@@ -98,11 +114,11 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the internal-facing access tag. You can obtain the ID from the following operations:
+	// The ID of the private access tag. You can obtain the ID from the following operations:
 	//
-	// - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): queries internal-facing access tags in batches.
+	// - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): List private access tags.
 	//
-	// - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): creates an internal-facing access tag.
+	// - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Create a private access tag.
 	//
 	// example:
 	//
@@ -136,6 +152,10 @@ func (s *ListPrivateAccessApplicationsRequest) GetConnectorId() *string {
 
 func (s *ListPrivateAccessApplicationsRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
+}
+
+func (s *ListPrivateAccessApplicationsRequest) GetHealthCheckStatus() *string {
+	return s.HealthCheckStatus
 }
 
 func (s *ListPrivateAccessApplicationsRequest) GetName() *string {
@@ -180,6 +200,11 @@ func (s *ListPrivateAccessApplicationsRequest) SetConnectorId(v string) *ListPri
 
 func (s *ListPrivateAccessApplicationsRequest) SetCurrentPage(v int32) *ListPrivateAccessApplicationsRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsRequest) SetHealthCheckStatus(v string) *ListPrivateAccessApplicationsRequest {
+	s.HealthCheckStatus = &v
 	return s
 }
 

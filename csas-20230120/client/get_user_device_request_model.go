@@ -14,7 +14,11 @@ type iGetUserDeviceRequest interface {
 }
 
 type GetUserDeviceRequest struct {
-	// The ID of the endpoint device. Valid values:
+	// The ID of the terminal device. Valid values:
+	//
+	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user terminal device.
+	//
+	// - [ListUserDevices](~~ListUserDevices~~): Queries multiple user terminal devices.
 	//
 	// This parameter is required.
 	//

@@ -20,10 +20,36 @@ type iProcessItem interface {
 }
 
 type ProcessItem struct {
-	BundleId  *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	DevType   *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	// The bundle identity (Bundle ID) of the application to which the process belongs. The example value com.apple.Terminal is the Bundle ID of the macOS terminal application.
+	//
+	// example:
+	//
+	// com.apple.Terminal
+	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	// The operating system type of the user terminal device to which the process belongs. Valid values:
+	//
+	// - windows: Windows operating system
+	//
+	// - macOS: macOS operating system
+	//
+	// - linux: Linux operating system
+	//
+	// example:
+	//
+	// macOS
+	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	// The process folder path.
+	//
+	// example:
+	//
+	// /System/Applications/Utilities/Terminal.app/Contents/MacOS
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// The process name.
+	//
+	// example:
+	//
+	// Terminal
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
 }
 
 func (s ProcessItem) String() string {

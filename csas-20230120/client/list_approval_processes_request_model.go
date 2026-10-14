@@ -28,7 +28,7 @@ type iListApprovalProcessesRequest interface {
 }
 
 type ListApprovalProcessesRequest struct {
-	// The page number of the current page when paging is used. Valid values: 1 to 10000.
+	// The page number of the current page for paging in a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListApprovalProcessesRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page when paging is used. Valid values: 1 to 500.
+	// The Settings for the number of entries per page for paging in a paged query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -50,35 +50,35 @@ type ListApprovalProcessesRequest struct {
 	//
 	// pid-6d6ad77d5b52****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The type of the associated policy. Valid values:
+	// The type of the adapted policy. Valid values:
 	//
-	// - **DomainBlacklist**: domain name blacklist.
+	// - **DomainBlacklist**: domain name blacklist
 	//
-	// - **DomainWhitelist**: domain name whitelist.
+	// - **DomainWhitelist**: domain name whitelist
 	//
-	// - **SoftwareBlock**: software blocking.
+	// - **SoftwareBlock**: software blocking
 	//
-	// - **AppUninstall**: agent uninstallation.
+	// - **AppUninstall**: endpoint uninstallation
 	//
-	// - **DlpSend**: file outgoing.
+	// - **DlpSend**: file sending
 	//
-	// - **PeripheralBlock**: peripheral control.
+	// - **PeripheralBlock**: peripheral control
 	//
 	// example:
 	//
 	// DlpSend
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The collection of approval process IDs.
+	// The IDs of the approval processes.
 	ProcessIds []*string `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
-	// The template name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	// The name of the template. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// test
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The ID of the associated approver. You can call the following operation to obtain the ID:
+	// The ID of the associated approver. You can call the following operation to obtain the value:
 	//
-	// - [ListUsers](~~ListUsers~~): lists users.
+	// - [ListUsers](~~ListUsers~~): List users.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ListApprovalProcessesRequest struct {
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

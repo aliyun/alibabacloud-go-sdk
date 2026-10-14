@@ -14,9 +14,9 @@ type iGetApprovalProcessRequest interface {
 }
 
 type GetApprovalProcessRequest struct {
-	// The approval flow ID. Valid values:
+	// The ID of the approval process. You can obtain the value by calling the following operation:
 	//
-	// - [ListApprovalProcesses](~~ListApprovalProcesses~~): Lists approval flows.
+	// - [ListApprovalProcesses](~~ListApprovalProcesses~~): Queries a list of approval processes.
 	//
 	// This parameter is required.
 	//

@@ -20,9 +20,35 @@ type iExecutePeriod interface {
 }
 
 type ExecutePeriod struct {
+  // The effective days of the week configuration. Used when ValidType is set to Weekly.
+  // 
+  // example:
+  // 
+  // {"Monday":true,"Tuesday":true,"Wednesday":true,"Thursday":true,"Friday":true,"Saturday":false,"Sunday":false}
   EffectDay *ExecutePeriodEffectDay `json:"EffectDay,omitempty" xml:"EffectDay,omitempty" type:"Struct"`
+  // The daily effective time range. Both Start and End use the 24-hour HH:mm format and are interpreted based on the current system time zone of the server. The time range cannot span across days.
+  // 
+  // example:
+  // 
+  // {"Start":"00:00","End":"23:59"}
   EffectTime *ExecutePeriodEffectTime `json:"EffectTime,omitempty" xml:"EffectTime,omitempty" type:"Struct"`
+  // The frequency and interval configuration for periodic execution. Frequency and Interval together specify the execution cycle.
+  // 
+  // example:
+  // 
+  // {"Frequency":"day","Interval":1}
   ScheduleEffect *ExecutePeriodScheduleEffect `json:"ScheduleEffect,omitempty" xml:"ScheduleEffect,omitempty" type:"Struct"`
+  // The execution cycle mode. Valid values:
+  // 
+  // - **Once**: The single execution mode. Used in combination with ExecuteMode=Once.
+  // 
+  // - **Interval**: The periodic execution mode based on a specified frequency. Used in combination with ExecuteMode=Schedule.
+  // 
+  // - **Weekly**: The weekly execution mode where you can select effective days. Used in combination with ExecuteMode=Schedule and EffectDay.
+  // 
+  // example:
+  // 
+  // Interval
   ValidType *string `json:"ValidType,omitempty" xml:"ValidType,omitempty"`
 }
 
@@ -90,12 +116,47 @@ func (s *ExecutePeriod) Validate() error {
 }
 
 type ExecutePeriodEffectDay struct {
+  // Specifies whether the policy takes effect on Friday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+  // 
+  // example:
+  // 
+  // true
   Friday *bool `json:"Friday,omitempty" xml:"Friday,omitempty"`
+  // Specifies whether the policy takes effect on Monday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+  // 
+  // example:
+  // 
+  // true
   Monday *bool `json:"Monday,omitempty" xml:"Monday,omitempty"`
+  // Specifies whether the policy takes effect on Saturday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+  // 
+  // example:
+  // 
+  // false
   Saturday *bool `json:"Saturday,omitempty" xml:"Saturday,omitempty"`
+  // Specifies whether the policy takes effect on Sunday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+  // 
+  // example:
+  // 
+  // false
   Sunday *bool `json:"Sunday,omitempty" xml:"Sunday,omitempty"`
+  // Specifies whether the policy takes effect on Thursday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+  // 
+  // example:
+  // 
+  // true
   Thursday *bool `json:"Thursday,omitempty" xml:"Thursday,omitempty"`
+  // Specifies whether the policy takes effect on Tuesday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+  // 
+  // example:
+  // 
+  // true
   Tuesday *bool `json:"Tuesday,omitempty" xml:"Tuesday,omitempty"`
+  // Specifies whether the policy takes effect on Wednesday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+  // 
+  // example:
+  // 
+  // true
   Wednesday *bool `json:"Wednesday,omitempty" xml:"Wednesday,omitempty"`
 }
 
@@ -175,7 +236,17 @@ func (s *ExecutePeriodEffectDay) Validate() error {
 }
 
 type ExecutePeriodEffectTime struct {
+  // The end time of the daily effective time range. It uses the 24-hour HH:mm format and is interpreted based on the current system time zone of the server. It must not be earlier than Start.
+  // 
+  // example:
+  // 
+  // 23:59
   End *string `json:"End,omitempty" xml:"End,omitempty"`
+  // The start time of the daily effective time range. It uses the 24-hour HH:mm format and is interpreted based on the current system time zone of the server.
+  // 
+  // example:
+  // 
+  // 00:00
   Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -210,7 +281,17 @@ func (s *ExecutePeriodEffectTime) Validate() error {
 }
 
 type ExecutePeriodScheduleEffect struct {
+  // The frequency unit for periodic execution. It is used together with Interval to specify the execution cycle. For example, a value of day indicates daily execution.
+  // 
+  // example:
+  // 
+  // day
   Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+  // The periodic execution interval. When Frequency is set, valid values are 1 to 10000. The unit is determined by Frequency. For example, if Frequency is set to day and Interval is set to 1, the execution interval is one day.
+  // 
+  // example:
+  // 
+  // 1
   Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 }
 

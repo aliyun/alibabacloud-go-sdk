@@ -849,7 +849,7 @@ func (client *Client) CancelVulScanTasks(request *CancelVulScanTasksRequest) (_r
 
 // Summary:
 //
-// Creates an approval flow under the current Alibaba Cloud account.
+// Creates an approval process under the current Alibaba Cloud account.
 //
 // @param tmpReq - CreateApprovalProcessRequest
 //
@@ -914,7 +914,7 @@ func (client *Client) CreateApprovalProcessWithOptions(tmpReq *CreateApprovalPro
 
 // Summary:
 //
-// Creates an approval flow under the current Alibaba Cloud account.
+// Creates an approval process under the current Alibaba Cloud account.
 //
 // @param request - CreateApprovalProcessRequest
 //
@@ -1859,11 +1859,11 @@ func (client *Client) CreatePADiagnosisTask(request *CreatePADiagnosisTaskReques
 
 // Summary:
 //
-// Creates an internal-facing access application under the current Alibaba Cloud account.
+// Creates a private access application within the current Alibaba Cloud account.
 //
 // Description:
 //
-// You can create up to 500 internal-facing access applications by default.
+// By default, you can create up to 500 private access applications.
 //
 // @param tmpReq - CreatePrivateAccessApplicationRequest
 //
@@ -1879,6 +1879,10 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 	}
 	request := &CreatePrivateAccessApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HealthCheckConfig) {
+		request.HealthCheckConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HealthCheckConfig, dara.String("HealthCheckConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.L7Config) {
 		request.L7ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.L7Config, dara.String("L7Config"), dara.String("json"))
 	}
@@ -1907,6 +1911,14 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HealthCheckConfigShrink) {
+		body["HealthCheckConfig"] = request.HealthCheckConfigShrink
+	}
+
+	if !dara.IsNil(request.HealthCheckMode) {
+		body["HealthCheckMode"] = request.HealthCheckMode
 	}
 
 	if !dara.IsNil(request.L7ConfigShrink) {
@@ -1972,11 +1984,11 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 
 // Summary:
 //
-// Creates an internal-facing access application under the current Alibaba Cloud account.
+// Creates a private access application within the current Alibaba Cloud account.
 //
 // Description:
 //
-// You can create up to 500 internal-facing access applications by default.
+// By default, you can create up to 500 private access applications.
 //
 // @param request - CreatePrivateAccessApplicationRequest
 //
@@ -5734,6 +5746,79 @@ func (client *Client) DeleteVulScanScheduledStrategy(request *DeleteVulScanSched
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the health check reports for specified internal-facing applications within a specified time range. The reports include the health check mode, latest status, success and failure counts, and failure details.
+//
+// @param request - DescribeApplicationHealthCheckReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationHealthCheckReportsResponse
+func (client *Client) DescribeApplicationHealthCheckReportsWithOptions(request *DescribeApplicationHealthCheckReportsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationHealthCheckReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationIds) {
+		bodyFlat["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationHealthCheckReports"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationHealthCheckReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the health check reports for specified internal-facing applications within a specified time range. The reports include the health check mode, latest status, success and failure counts, and failure details.
+//
+// @param request - DescribeApplicationHealthCheckReportsRequest
+//
+// @return DescribeApplicationHealthCheckReportsResponse
+func (client *Client) DescribeApplicationHealthCheckReports(request *DescribeApplicationHealthCheckReportsRequest) (_result *DescribeApplicationHealthCheckReportsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationHealthCheckReportsResponse{}
+	_body, _err := client.DescribeApplicationHealthCheckReportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Deprecated: OpenAPI DetachApplication2Connector is deprecated, please use csas::2023-01-20::ModifyForwardStrategy instead.
 //
 // Summary:
@@ -6402,7 +6487,7 @@ func (client *Client) GetApprovalSchema(request *GetApprovalSchemaRequest) (_res
 
 // Summary:
 //
-// Queries the details of the auto-start and anti-uninstall policy under the current Alibaba Cloud account.
+// Queries the details of the auto-start and anti-uninstallation policies for the current Alibaba Cloud account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6431,7 +6516,7 @@ func (client *Client) GetBootAndAntiUninstallPolicyWithOptions(runtime *dara.Run
 
 // Summary:
 //
-// Queries the details of the auto-start and anti-uninstall policy under the current Alibaba Cloud account.
+// Queries the details of the auto-start and anti-uninstallation policies for the current Alibaba Cloud account.
 //
 // @return GetBootAndAntiUninstallPolicyResponse
 func (client *Client) GetBootAndAntiUninstallPolicy() (_result *GetBootAndAntiUninstallPolicyResponse, _err error) {
@@ -7056,7 +7141,7 @@ func (client *Client) GetPADiagnosisTask(request *GetPADiagnosisTaskRequest) (_r
 
 // Summary:
 //
-// Queries the details of an internal-facing access application under the current Alibaba Cloud account.
+// Queries the details of a private access application under the current Alibaba Cloud account.
 //
 // @param request - GetPrivateAccessApplicationRequest
 //
@@ -7096,7 +7181,7 @@ func (client *Client) GetPrivateAccessApplicationWithOptions(request *GetPrivate
 
 // Summary:
 //
-// Queries the details of an internal-facing access application under the current Alibaba Cloud account.
+// Queries the details of a private access application under the current Alibaba Cloud account.
 //
 // @param request - GetPrivateAccessApplicationRequest
 //
@@ -7294,7 +7379,7 @@ func (client *Client) GetProhibitedSoftware(request *GetProhibitedSoftwareReques
 
 // Summary:
 //
-// Queries the details of a device registration policy within the current Alibaba Cloud account.
+// Queries the details of a device registration policy for the current Alibaba Cloud account.
 //
 // @param request - GetRegistrationPolicyRequest
 //
@@ -7334,7 +7419,7 @@ func (client *Client) GetRegistrationPolicyWithOptions(request *GetRegistrationP
 
 // Summary:
 //
-// Queries the details of a device registration policy within the current Alibaba Cloud account.
+// Queries the details of a device registration policy for the current Alibaba Cloud account.
 //
 // @param request - GetRegistrationPolicyRequest
 //
@@ -7414,7 +7499,7 @@ func (client *Client) GetSaseUserTag(request *GetSaseUserTagRequest) (_result *G
 
 // Summary:
 //
-// Queries the details of a user endpoint device under the current Alibaba Cloud account.
+// Queries the details of user terminal devices under the current Alibaba Cloud account.
 //
 // @param request - GetUserDeviceRequest
 //
@@ -7454,7 +7539,7 @@ func (client *Client) GetUserDeviceWithOptions(request *GetUserDeviceRequest, ru
 
 // Summary:
 //
-// Queries the details of a user endpoint device under the current Alibaba Cloud account.
+// Queries the details of user terminal devices under the current Alibaba Cloud account.
 //
 // @param request - GetUserDeviceRequest
 //
@@ -8248,7 +8333,7 @@ func (client *Client) ListApplicationsForPrivateAccessTag(request *ListApplicati
 
 // Summary:
 //
-// Queries the list of approval processes under the current Alibaba Cloud account.
+// Queries the approval processes under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalProcessesRequest
 //
@@ -8288,7 +8373,7 @@ func (client *Client) ListApprovalProcessesWithOptions(request *ListApprovalProc
 
 // Summary:
 //
-// Queries the list of approval processes under the current Alibaba Cloud account.
+// Queries the approval processes under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalProcessesRequest
 //
@@ -8596,7 +8681,7 @@ func (client *Client) ListClientUsers(request *ListClientUsersRequest) (_result 
 
 // Summary:
 //
-// Query connectors in batches.
+// Queries connectors in batches.
 //
 // @param request - ListConnectorsRequest
 //
@@ -8636,7 +8721,7 @@ func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, 
 
 // Summary:
 //
-// Query connectors in batches.
+// Queries connectors in batches.
 //
 // @param request - ListConnectorsRequest
 //
@@ -8786,7 +8871,7 @@ func (client *Client) ListDevicesForVulnerability(request *ListDevicesForVulnera
 
 // Summary:
 //
-// Lists DLP outbound file transfer logs.
+// Lists Data Loss Prevention (DLP) outbound transfer logs.
 //
 // @param request - ListDlpOutboundLogsRequest
 //
@@ -8862,7 +8947,7 @@ func (client *Client) ListDlpOutboundLogsWithOptions(request *ListDlpOutboundLog
 
 // Summary:
 //
-// Lists DLP outbound file transfer logs.
+// Lists Data Loss Prevention (DLP) outbound transfer logs.
 //
 // @param request - ListDlpOutboundLogsRequest
 //
@@ -8880,11 +8965,11 @@ func (client *Client) ListDlpOutboundLogs(request *ListDlpOutboundLogsRequest) (
 
 // Summary:
 //
-// Queries the Internet access logs of endpoints by using paging.
+// Performs a paged query on the Internet access logs of endpoints by using paging.
 //
 // Description:
 //
-// Queries the Internet access logs of endpoints under the current tenant by using paging. The logs contain full records of Internet access behavior.
+// Performs a paged query on the Internet access logs of endpoints for the current tenant by using paging, which include full records of the Internet access behavior.
 //
 // @param request - ListDomainAccessLogsRequest
 //
@@ -8924,11 +9009,11 @@ func (client *Client) ListDomainAccessLogsWithOptions(request *ListDomainAccessL
 
 // Summary:
 //
-// Queries the Internet access logs of endpoints by using paging.
+// Performs a paged query on the Internet access logs of endpoints by using paging.
 //
 // Description:
 //
-// Queries the Internet access logs of endpoints under the current tenant by using paging. The logs contain full records of Internet access behavior.
+// Performs a paged query on the Internet access logs of endpoints for the current tenant by using paging, which include full records of the Internet access behavior.
 //
 // @param request - ListDomainAccessLogsRequest
 //
@@ -8946,11 +9031,11 @@ func (client *Client) ListDomainAccessLogs(request *ListDomainAccessLogsRequest)
 
 // Summary:
 //
-// Queries domain name entries in a domain name list by paging.
+// Queries domain name entries in a domain name list by using paging.
 //
 // Description:
 //
-// Queries the details of domain name entries in a specified domain name list by paging. Use this operation together with ListDomainMetas: first obtain the `ListId`, and then use this operation to perform paging through the domain names in the list.
+// Queries domain name entries in a specified domain name list by using paging. Use this operation together with ListDomainMetas: first obtain the `ListId`, and then use this operation to page through the domain names in the list.
 //
 // @param request - ListDomainItemsRequest
 //
@@ -9010,11 +9095,11 @@ func (client *Client) ListDomainItemsWithOptions(request *ListDomainItemsRequest
 
 // Summary:
 //
-// Queries domain name entries in a domain name list by paging.
+// Queries domain name entries in a domain name list by using paging.
 //
 // Description:
 //
-// Queries the details of domain name entries in a specified domain name list by paging. Use this operation together with ListDomainMetas: first obtain the `ListId`, and then use this operation to perform paging through the domain names in the list.
+// Queries domain name entries in a specified domain name list by using paging. Use this operation together with ListDomainMetas: first obtain the `ListId`, and then use this operation to page through the domain names in the list.
 //
 // @param request - ListDomainItemsRequest
 //
@@ -10323,7 +10408,7 @@ func (client *Client) ListPrivateAccessApplicationL7Switches(request *ListPrivat
 
 // Summary:
 //
-// Queries information about all internal-facing access applications under the current Alibaba Cloud account.
+// Queries the details of all private access applications in the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessApplicationsRequest
 //
@@ -10356,6 +10441,10 @@ func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPriv
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.HealthCheckStatus) {
+		query["HealthCheckStatus"] = request.HealthCheckStatus
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -10403,7 +10492,7 @@ func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPriv
 
 // Summary:
 //
-// Queries information about all internal-facing access applications under the current Alibaba Cloud account.
+// Queries the details of all private access applications in the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessApplicationsRequest
 //
@@ -10479,7 +10568,7 @@ func (client *Client) ListPrivateAccessApplicationsForDynamicRoute(request *List
 
 // Summary:
 //
-// Queries the information about all private access policies under the current Alibaba Cloud account.
+// Queries the details of all private access policies within the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessPolicesRequest
 //
@@ -10519,7 +10608,7 @@ func (client *Client) ListPrivateAccessPolicesWithOptions(request *ListPrivateAc
 
 // Summary:
 //
-// Queries the information about all private access policies under the current Alibaba Cloud account.
+// Queries the details of all private access policies within the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessPolicesRequest
 //
@@ -11253,7 +11342,7 @@ func (client *Client) ListSoftwareForUserDevice(request *ListSoftwareForUserDevi
 
 // Summary:
 //
-// Queries software in the software library in batches.
+// Queries software in the software library.
 //
 // Description:
 //
@@ -11261,7 +11350,7 @@ func (client *Client) ListSoftwareForUserDevice(request *ListSoftwareForUserDevi
 //
 // - SoftwareName supports fuzzy match.
 //
-// - The Versions field (software version list) is not returned in the response. To query software versions, call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~).
+// - The Versions field (software version list) in the response is not returned. To query software versions, call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~).
 //
 // @param request - ListSoftwarelibSoftwareRequest
 //
@@ -11333,7 +11422,7 @@ func (client *Client) ListSoftwarelibSoftwareWithOptions(request *ListSoftwareli
 
 // Summary:
 //
-// Queries software in the software library in batches.
+// Queries software in the software library.
 //
 // Description:
 //
@@ -11341,7 +11430,7 @@ func (client *Client) ListSoftwarelibSoftwareWithOptions(request *ListSoftwareli
 //
 // - SoftwareName supports fuzzy match.
 //
-// - The Versions field (software version list) is not returned in the response. To query software versions, call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~).
+// - The Versions field (software version list) in the response is not returned. To query software versions, call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~).
 //
 // @param request - ListSoftwarelibSoftwareRequest
 //
@@ -11475,7 +11564,7 @@ func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivate
 
 // Summary:
 //
-// Queries the list of uninstall applications under the current Alibaba Cloud account in batches.
+// Queries a list of uninstallation applications for the current Alibaba Cloud account in batches.
 //
 // @param request - ListUninstallApplicationsRequest
 //
@@ -11515,7 +11604,7 @@ func (client *Client) ListUninstallApplicationsWithOptions(request *ListUninstal
 
 // Summary:
 //
-// Queries the list of uninstall applications under the current Alibaba Cloud account in batches.
+// Queries a list of uninstallation applications for the current Alibaba Cloud account in batches.
 //
 // @param request - ListUninstallApplicationsRequest
 //
@@ -11591,7 +11680,7 @@ func (client *Client) ListUserApplications(request *ListUserApplicationsRequest)
 
 // Summary:
 //
-// Queries the list of user endpoint devices under the current Alibaba Cloud account.
+// Queries a list of user endpoint devices under the current Alibaba Cloud account.
 //
 // @param request - ListUserDevicesRequest
 //
@@ -11731,7 +11820,7 @@ func (client *Client) ListUserDevicesWithOptions(request *ListUserDevicesRequest
 
 // Summary:
 //
-// Queries the list of user endpoint devices under the current Alibaba Cloud account.
+// Queries a list of user endpoint devices under the current Alibaba Cloud account.
 //
 // @param request - ListUserDevicesRequest
 //
@@ -12097,7 +12186,7 @@ func (client *Client) ListVirusFileStatuses(request *ListVirusFileStatusesReques
 
 // Summary:
 //
-// 查询病毒扫描额外名单
+// Queries the virus scan blacklists and whitelists for a specified operating system, and returns the results grouped by matching dimension and list type. The blacklists and whitelists are global lists scoped to the Alibaba Cloud account and operating system dimensions, and take effect for all on-demand scans, scheduled scans, and real-time protection under the account.
 //
 // @param request - ListVirusScanAdditionalListsRequest
 //
@@ -12137,7 +12226,7 @@ func (client *Client) ListVirusScanAdditionalListsWithOptions(request *ListVirus
 
 // Summary:
 //
-// 查询病毒扫描额外名单
+// Queries the virus scan blacklists and whitelists for a specified operating system, and returns the results grouped by matching dimension and list type. The blacklists and whitelists are global lists scoped to the Alibaba Cloud account and operating system dimensions, and take effect for all on-demand scans, scheduled scans, and real-time protection under the account.
 //
 // @param request - ListVirusScanAdditionalListsRequest
 //
@@ -13429,7 +13518,7 @@ func (client *Client) UpdateApprovalProcess(request *UpdateApprovalProcessReques
 
 // Summary:
 //
-// Updates the instance status of an approval under the current Alibaba Cloud account.
+// Updates the status of an approval instance under the current Alibaba Cloud account.
 //
 // @param request - UpdateApprovalStatusRequest
 //
@@ -13477,7 +13566,7 @@ func (client *Client) UpdateApprovalStatusWithOptions(request *UpdateApprovalSta
 
 // Summary:
 //
-// Updates the instance status of an approval under the current Alibaba Cloud account.
+// Updates the status of an approval instance under the current Alibaba Cloud account.
 //
 // @param request - UpdateApprovalStatusRequest
 //
@@ -13800,7 +13889,7 @@ func (client *Client) UpdateClientUserStatus(request *UpdateClientUserStatusRequ
 
 // Summary:
 //
-// Modifies a Connector instance under the current Alibaba Cloud account.
+// Modifies a connector instance within the current Alibaba Cloud account.
 //
 // @param request - UpdateConnectorRequest
 //
@@ -13860,7 +13949,7 @@ func (client *Client) UpdateConnectorWithOptions(request *UpdateConnectorRequest
 
 // Summary:
 //
-// Modifies a Connector instance under the current Alibaba Cloud account.
+// Modifies a connector instance within the current Alibaba Cloud account.
 //
 // @param request - UpdateConnectorRequest
 //
@@ -14513,6 +14602,10 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 	}
 	request := &UpdatePrivateAccessApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HealthCheckConfig) {
+		request.HealthCheckConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HealthCheckConfig, dara.String("HealthCheckConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.L7Config) {
 		request.L7ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.L7Config, dara.String("L7Config"), dara.String("json"))
 	}
@@ -14541,6 +14634,14 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HealthCheckConfigShrink) {
+		body["HealthCheckConfig"] = request.HealthCheckConfigShrink
+	}
+
+	if !dara.IsNil(request.HealthCheckMode) {
+		body["HealthCheckMode"] = request.HealthCheckMode
 	}
 
 	if !dara.IsNil(request.L7ConfigShrink) {
@@ -15481,7 +15582,7 @@ func (client *Client) UpdateSaseUserTag(request *UpdateSaseUserTagRequest) (_res
 
 // Summary:
 //
-// Updates the status of uninstall applications in batches under the current Alibaba Cloud account.
+// Updates the status of multiple uninstallation applications under the current Alibaba Cloud account.
 //
 // @param request - UpdateUninstallApplicationsStatusRequest
 //
@@ -15532,7 +15633,7 @@ func (client *Client) UpdateUninstallApplicationsStatusWithOptions(request *Upda
 
 // Summary:
 //
-// Updates the status of uninstall applications in batches under the current Alibaba Cloud account.
+// Updates the status of multiple uninstallation applications under the current Alibaba Cloud account.
 //
 // @param request - UpdateUninstallApplicationsStatusRequest
 //

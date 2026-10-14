@@ -18,7 +18,7 @@ type iListUninstallApplicationsResponseBody interface {
 }
 
 type ListUninstallApplicationsResponseBody struct {
-	// The list of uninstall applications.
+	// The list of uninstallation applications.
 	Applications []*ListUninstallApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type ListUninstallApplicationsResponseBody struct {
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of uninstall applications.
+	// The total number of uninstallation applications.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListUninstallApplicationsResponseBody) Validate() error {
 }
 
 type ListUninstallApplicationsResponseBodyApplications struct {
-	// The uninstall application ID.
+	// The ID of the uninstallation application.
 	//
 	// example:
 	//
 	// uninstall-app-6646831ac314****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The time when the uninstall application was created.
+	// The time when the uninstallation application was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// Testing Department
+	// Test Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
 	// The ID of the terminal device.
 	//
@@ -157,15 +157,15 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	//
 	// This is a test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// The uninstall application status. Valid values:
+	// The status of the uninstallation application. Valid values:
 	//
-	// - **Pending**: Pending processing.
+	// - **Pending**: Pending.
 	//
 	// - **Approved**: Approved.
 	//

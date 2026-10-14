@@ -28,14 +28,38 @@ type iIdpWeixin2SubConfig interface {
 }
 
 type IdpWeixin2SubConfig struct {
-	AgentId          *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AppSchema        *string `json:"AppSchema,omitempty" xml:"AppSchema,omitempty"`
-	AppSecret        *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	CorpId           *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	EventAesKey      *string `json:"EventAesKey,omitempty" xml:"EventAesKey,omitempty"`
-	EventLabel       *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// example:
+	//
+	// 1000002
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// wwautha1b2c3****
+	AppSchema *string `json:"AppSchema,omitempty" xml:"AppSchema,omitempty"`
+	// example:
+	//
+	// s1e2c3r4e5****
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// example:
+	//
+	// wwa1b2c3d4****
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// example:
+	//
+	// a1e2s3k4e5****
+	EventAesKey *string `json:"EventAesKey,omitempty" xml:"EventAesKey,omitempty"`
+	// example:
+	//
+	// https://auth.example.com/callback/wework/a1b2****
+	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// example:
+	//
+	// v1t2o3k4e5****
 	EventVerifyToken *string `json:"EventVerifyToken,omitempty" xml:"EventVerifyToken,omitempty"`
-	RedirectUri      *string `json:"RedirectUri,omitempty" xml:"RedirectUri,omitempty"`
+	// example:
+	//
+	// https://auth.example.com/callback
+	RedirectUri *string `json:"RedirectUri,omitempty" xml:"RedirectUri,omitempty"`
 }
 
 func (s IdpWeixin2SubConfig) String() string {
