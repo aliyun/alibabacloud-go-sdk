@@ -20,18 +20,26 @@ type iListDataMaskingEncryptionAlgorithmsRequest interface {
 }
 
 type ListDataMaskingEncryptionAlgorithmsRequest struct {
+	// The database instance identifier. You can obtain this value from Items[].InstanceId in the response of ListDataMaskingInstances.
+	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the response descriptions. Valid values: zh: Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two values must correspond to each other.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The cloud product type identifier. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2. If specified together with ProductCode, the two values must correspond to each other.
+	//
 	// example:
 	//
 	// 5

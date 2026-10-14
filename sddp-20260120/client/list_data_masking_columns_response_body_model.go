@@ -22,19 +22,28 @@ type iListDataMaskingColumnsResponseBody interface {
 }
 
 type ListDataMaskingColumnsResponseBody struct {
+	// The page number of the returned data.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                     `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListDataMaskingColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of records returned by the current query.
+	Items []*ListDataMaskingColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of records per page for the current query.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID, which can be used to locate this API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the current query scope.
+	//
 	// example:
 	//
 	// 100
@@ -108,71 +117,124 @@ func (s *ListDataMaskingColumnsResponseBody) Validate() error {
 }
 
 type ListDataMaskingColumnsResponseBodyItems struct {
+	// The data type of the database column.
+	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// business_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The database engine type.
+	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The business error code of the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+	//
 	// example:
 	//
 	// data_masking_not_running
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The business error description of the record or operation.
+	//
 	// example:
 	//
-	// 实例未处于运行状态
+	// The instance is not in the running state
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the column record.
+	//
 	// example:
 	//
 	// column-example-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance identity of the database.
+	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The column encryption status. Valid values:
+	//
+	// - NotEncrypted: Not encrypted.
+	//
+	// - Processing: Being processed.
+	//
+	// - Success: Encryption succeeded.
+	//
+	// - Failed: Encryption failed.
+	//
+	// - Deleting: Being disabled.
+	//
+	// - DeleteFailed: Disabling failed.
+	//
 	// example:
 	//
 	// Success
-	MaskingStatus *string                                             `json:"MaskingStatus,omitempty" xml:"MaskingStatus,omitempty"`
-	ModelTags     []*ListDataMaskingColumnsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	MaskingStatus *string `json:"MaskingStatus,omitempty" xml:"MaskingStatus,omitempty"`
+	// The list of matched model tags.
+	ModelTags []*ListDataMaskingColumnsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	// The name of the data column.
+	//
 	// example:
 	//
 	// phone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cloud product code.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The cloud product type ID. Valid values:
+	//
+	// - 5: RDS.
+	//
+	// - 8: POLARDB.
+	//
+	// - 27: PolarDBX2.
+	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region ID of the asset.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the sensitivity level.
+	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level.
+	//
 	// example:
 	//
 	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The ID of the matched detection rule.
+	//
 	// example:
 	//
 	// 1001
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the matched detection rule.
+	//
 	// example:
 	//
-	// 手机号
+	// Phone number
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// customer
@@ -363,13 +425,17 @@ func (s *ListDataMaskingColumnsResponseBodyItems) Validate() error {
 }
 
 type ListDataMaskingColumnsResponseBodyItemsModelTags struct {
+	// The ID of the model tag.
+	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the model tag.
+	//
 	// example:
 	//
-	// 个人信息
+	// Personal information
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

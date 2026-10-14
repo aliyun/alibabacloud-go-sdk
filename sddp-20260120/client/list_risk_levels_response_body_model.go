@@ -16,7 +16,13 @@ type iListRiskLevelsResponseBody interface {
 }
 
 type ListRiskLevelsResponseBody struct {
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. You can use this ID to locate the API call.
+	//
+	// example:
+	//
+	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of sensitivity levels.
 	RiskLevelList []*ListRiskLevelsResponseBodyRiskLevelList `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
 }
 
@@ -60,10 +66,30 @@ func (s *ListRiskLevelsResponseBody) Validate() error {
 }
 
 type ListRiskLevelsResponseBodyRiskLevelList struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReferenceNum *int32  `json:"ReferenceNum,omitempty" xml:"ReferenceNum,omitempty"`
+	// The description of the sensitivity level.
+	//
+	// example:
+	//
+	// Personal information data
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the sensitivity level.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the sensitivity level.
+	//
+	// example:
+	//
+	// S2
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of references to the sensitivity level.
+	//
+	// example:
+	//
+	// 10
+	ReferenceNum *int32 `json:"ReferenceNum,omitempty" xml:"ReferenceNum,omitempty"`
 }
 
 func (s ListRiskLevelsResponseBodyRiskLevelList) String() string {

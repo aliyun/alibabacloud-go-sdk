@@ -16,11 +16,14 @@ type iListIdentifyModelsResponseBody interface {
 }
 
 type ListIdentifyModelsResponseBody struct {
+	// The request ID, which can be used to locate this API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleList  []*ListIdentifyModelsResponseBodyRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of detection models or rules.
+	RuleList []*ListIdentifyModelsResponseBodyRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
 func (s ListIdentifyModelsResponseBody) String() string {
@@ -63,13 +66,17 @@ func (s *ListIdentifyModelsResponseBody) Validate() error {
 }
 
 type ListIdentifyModelsResponseBodyRuleList struct {
+	// The ID of the detection model.
+	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the detection model or rule.
+	//
 	// example:
 	//
-	// 手机号
+	// Phone Number
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -20,10 +20,42 @@ type iListKmsKeysRequest interface {
 }
 
 type ListKmsKeysRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The database instance identity. You can obtain this value from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
+	//
+	// example:
+	//
+	// rm-2ze1abcdefgh****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	//
+	// example:
+	//
+	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The cloud product type ID. Valid values:
+	//
+	// - 5: RDS.
+	//
+	// - 8: POLARDB.
+	//
+	// - 27: PolarDBX2.
+	//
+	// If you specify both ProductId and ProductCode, the values must correspond to each other.
+	//
+	// example:
+	//
+	// 5
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 }
 
 func (s ListKmsKeysRequest) String() string {

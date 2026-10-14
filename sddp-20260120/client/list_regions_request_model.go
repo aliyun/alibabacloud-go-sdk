@@ -18,8 +18,16 @@ type iListRegionsRequest interface {
 }
 
 type ListRegionsRequest struct {
-	Audited    *bool `json:"Audited,omitempty" xml:"Audited,omitempty"`
+	// Specifies whether to filter regions by assets that have audit enabled. A value of true indicates that audit is enabled. A value of false indicates that audit is not enabled. If you do not specify this parameter, this filter condition is not applied.
+	Audited *bool `json:"Audited,omitempty" xml:"Audited,omitempty"`
+	// Specifies whether to filter regions by assets that have detection enabled. A value of true indicates that detection is enabled. A value of false indicates that detection is not enabled. If you do not specify this parameter, this filter condition is not applied.
 	Identified *bool `json:"Identified,omitempty" xml:"Identified,omitempty"`
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
 	// example:
 	//
 	// zh

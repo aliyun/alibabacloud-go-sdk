@@ -16,8 +16,14 @@ type iListKmsKeysResponseBody interface {
 }
 
 type ListKmsKeysResponseBody struct {
-	Items     []*ListKmsKeysResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of records returned by this query.
+	Items []*ListKmsKeysResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The request ID, which can be used to locate this API call.
+	//
+	// example:
+	//
+	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListKmsKeysResponseBody) String() string {
@@ -60,8 +66,18 @@ func (s *ListKmsKeysResponseBody) Validate() error {
 }
 
 type ListKmsKeysResponseBodyItems struct {
+	// The alias of the KMS key.
+	//
+	// example:
+	//
+	// alias/dsc-encryption
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The ID of the KMS key.
+	//
+	// example:
+	//
+	// 12345678-1234-1234-1234-12345678****
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s ListKmsKeysResponseBodyItems) String() string {

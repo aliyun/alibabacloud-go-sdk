@@ -18,14 +18,20 @@ type iCheckDataMaskingInstanceResponseBody interface {
 }
 
 type CheckDataMaskingInstanceResponseBody struct {
+	// The instance check result code. A value of Success indicates that the check passed. For other values, handle the error based on ErrorMessage.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The instance check result description. A specific reason is returned when the check fails.
+	//
 	// example:
 	//
-	// 实例未处于运行状态
+	// The instance is not in the running state
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID, which can be used to locate this API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB

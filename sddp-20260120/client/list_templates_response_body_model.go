@@ -22,11 +22,32 @@ type iListTemplatesResponseBody interface {
 }
 
 type ListTemplatesResponseBody struct {
-	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListTemplatesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned data.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of records returned by the current query.
+	Items []*ListTemplatesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of records per page for the current query.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID, which can be used to locate this API call.
+	//
+	// example:
+	//
+	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the current query scope.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -96,17 +117,100 @@ func (s *ListTemplatesResponseBody) Validate() error {
 }
 
 type ListTemplatesResponseBodyItems struct {
-	CurrentRiskLevel *int32  `json:"CurrentRiskLevel,omitempty" xml:"CurrentRiskLevel,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxCategoryLevel *int32  `json:"MaxCategoryLevel,omitempty" xml:"MaxCategoryLevel,omitempty"`
-	MaxRiskLevel     *int32  `json:"MaxRiskLevel,omitempty" xml:"MaxRiskLevel,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportEdit      *int32  `json:"SupportEdit,omitempty" xml:"SupportEdit,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The current sensitivity level of the template.
+	//
+	// example:
+	//
+	// 3
+	CurrentRiskLevel *int32 `json:"CurrentRiskLevel,omitempty" xml:"CurrentRiskLevel,omitempty"`
+	// The description of the classification and grading template.
+	//
+	// example:
+	//
+	// Used to detect common sensitive data
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the template was created. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1788566400000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the template was last modified. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1788566400000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the classification and grading template.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum category level supported by the template.
+	//
+	// example:
+	//
+	// 3
+	MaxCategoryLevel *int32 `json:"MaxCategoryLevel,omitempty" xml:"MaxCategoryLevel,omitempty"`
+	// The maximum sensitivity level supported by the template.
+	//
+	// example:
+	//
+	// 5
+	MaxRiskLevel *int32 `json:"MaxRiskLevel,omitempty" xml:"MaxRiskLevel,omitempty"`
+	// The name of the classification and grading template.
+	//
+	// example:
+	//
+	// General classification and grading template
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the template. Valid values:
+	//
+	// - 0: disabled.
+	//
+	// - 1: enabled as the primary template.
+	//
+	// - 2: active template.
+	//
+	// - 3: general-purpose detection model.
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the template can be edited. Valid values:
+	//
+	// - 0: not supported.
+	//
+	// - 1: supported.
+	//
+	// example:
+	//
+	// 1
+	SupportEdit *int32 `json:"SupportEdit,omitempty" xml:"SupportEdit,omitempty"`
+	// The category of the template. Valid values:
+	//
+	// - 1: Alibaba template.
+	//
+	// - 2: finance template.
+	//
+	// - 3: energy template.
+	//
+	// - 4: personal information security template.
+	//
+	// - 5: travel template.
+	//
+	// - 65: general-purpose template.
+	//
+	// - 66: custom template.
+	//
+	// - 67: template from another cloud service.
+	//
+	// example:
+	//
+	// 65
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyItems) String() string {

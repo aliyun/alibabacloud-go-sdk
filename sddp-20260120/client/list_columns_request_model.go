@@ -38,19 +38,88 @@ type iListColumnsRequest interface {
 }
 
 type ListColumnsRequest struct {
-	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The current page number, starting from 1.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The cloud database instance identity. Set this parameter to the InstanceId from the instance list.
+	//
+	// example:
+	//
+	// rm-2ze1abcdefgh****
 	DataAssetSourceId *string `json:"DataAssetSourceId,omitempty" xml:"DataAssetSourceId,omitempty"`
-	DataSourceName    *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	EngineType        *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RiskLevelId       *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleId            *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TableName         *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TemplateId        *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The database name. Set this parameter to the DbName returned by ListDataSources.
+	//
+	// example:
+	//
+	// business_db
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The database engine type. This value must match the EngineType of the target instance, such as MySQL or PostgreSQL.
+	//
+	// example:
+	//
+	// MySQL
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The compatible parameter for the instance identity. DataAssetSourceId takes precedence. If both are specified, DataAssetSourceId is used.
+	//
+	// example:
+	//
+	// rm-2ze1abcdefgh****
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The column name filter condition.
+	//
+	// example:
+	//
+	// phone
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of records per page. Keep other filter conditions consistent when querying the next page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two values must correspond to each other.
+	//
+	// example:
+	//
+	// RDS
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The sensitivity level ID. You can obtain this value from the list returned by ListRiskLevels.
+	//
+	// example:
+	//
+	// 1
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The ID of the detection rule or model. Set this parameter to the ID of the corresponding detection rule in the target template.
+	//
+	// example:
+	//
+	// 1001
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the data table. For PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
+	//
+	// example:
+	//
+	// customer
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the classification and grading template. You can obtain this value from Items[].Id returned by ListTemplates. Ensure consistency with the selected sensitivity level and detection model.
+	//
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListColumnsRequest) String() string {

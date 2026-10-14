@@ -14,6 +14,8 @@ type iCreateDataMaskingRuleResponseBody interface {
 }
 
 type CreateDataMaskingRuleResponseBody struct {
+	// The request ID. You can use this ID to locate the API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB

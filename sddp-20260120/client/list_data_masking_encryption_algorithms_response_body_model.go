@@ -16,7 +16,10 @@ type iListDataMaskingEncryptionAlgorithmsResponseBody interface {
 }
 
 type ListDataMaskingEncryptionAlgorithmsResponseBody struct {
+	// The list of column encryption algorithms.
 	Algorithms []*ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms `json:"Algorithms,omitempty" xml:"Algorithms,omitempty" type:"Repeated"`
+	// The request ID, which can be used to locate this API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
@@ -63,14 +66,20 @@ func (s *ListDataMaskingEncryptionAlgorithmsResponseBody) Validate() error {
 }
 
 type ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms struct {
+	// The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+	//
 	// example:
 	//
 	// data_masking_not_running
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The business error description for the record or operation.
+	//
 	// example:
 	//
-	// 实例未处于运行状态
+	// The instance is not in the running state
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The algorithm name.
+	//
 	// example:
 	//
 	// AES_256_GCM

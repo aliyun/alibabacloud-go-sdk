@@ -22,11 +22,40 @@ type iListTemplatesRequest interface {
 }
 
 type ListTemplatesRequest struct {
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	FeatureType   *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UsageScenario *int32  `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
+	// The current page number, starting from 1.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// A reserved feature type parameter. This parameter is not used to filter results in the current query and is not required for column encryption calls.
+	//
+	// example:
+	//
+	// 1
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of records per page. Keep other filter conditions consistent when querying the next page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The scenario identifier for compatible template queries. This parameter is not required for column encryption queries. The available templates are determined by the returned list. Do not rely on this parameter to determine whether general-purpose templates are included.
+	//
+	// example:
+	//
+	// 1
+	UsageScenario *int32 `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {

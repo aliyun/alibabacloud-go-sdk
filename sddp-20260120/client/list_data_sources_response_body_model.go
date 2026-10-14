@@ -26,27 +26,40 @@ type iListDataSourcesResponseBody interface {
 }
 
 type ListDataSourcesResponseBody struct {
+	// The page number of the returned data.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListDataSourcesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of records returned by the query.
+	Items []*ListDataSourcesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The maximum number of records that can be returned for the current cursor-based pagination.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A compatible pagination cursor field. The ListDataSources operation uses page number-based pagination and does not rely on this field to determine whether more pages exist.
+	//
 	// example:
 	//
 	// token-example
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of records returned on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request identity, which is active when you invoke this API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that meet the current statistics or query scope.
+	//
 	// example:
 	//
 	// 100
@@ -138,86 +151,152 @@ func (s *ListDataSourcesResponseBody) Validate() error {
 }
 
 type ListDataSourcesResponseBodyItems struct {
+	// The connection status of the data source. Valid values:
+	//
+	// - UnConnected: Not connected.
+	//
+	// - Processing: Connecting.
+	//
+	// - Success: Connected.
+	//
+	// - Failed: Connection failed.
+	//
 	// example:
 	//
 	// Success
 	ConnectStatus *string `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
+	// The identifier of the data asset in Data Security Center.
+	//
 	// example:
 	//
 	// asset-example-001
 	DataAssetId *string `json:"DataAssetId,omitempty" xml:"DataAssetId,omitempty"`
+	// The identifier of the data source in Data Security Center.
+	//
 	// example:
 	//
 	// ds-example-001
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The statistical value of the data source capacity. This field is not used in the column encryption process for relational databases.
+	//
 	// example:
 	//
 	// 1024
 	DataSourceSize *int64 `json:"DataSourceSize,omitempty" xml:"DataSourceSize,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// business_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The description of the data source.
+	//
 	// example:
 	//
-	// 业务数据源
+	// Business data source
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the database engine.
+	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The business error code of the record or operation. This field can be empty if no error occurs. Evaluate this field together with ErrorMessage.
+	//
 	// example:
 	//
 	// data_masking_not_running
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The business error message of the record or operation.
+	//
 	// example:
 	//
-	// 实例未处于运行状态
+	// The instance is not in the running state
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The identifier of the record.
+	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the data source detection switch. Valid values:
+	//
+	// - Enable: Submitted for enabling.
+	//
+	// - Enabling: Enabling.
+	//
+	// - Enabled: Enabled.
+	//
+	// - EnableFailed: Enabling failed.
+	//
+	// - Disable: Submitted for disabling.
+	//
+	// - Disabling: Disabling.
+	//
+	// - Disabled: Disabled.
+	//
+	// - DisableFailed: Disabling failed.
+	//
 	// example:
 	//
 	// Enabled
 	IdentifyStatus *string `json:"IdentifyStatus,omitempty" xml:"IdentifyStatus,omitempty"`
+	// The database instance identity.
+	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The identity of the member accounts to which the asset belongs.
+	//
 	// example:
 	//
 	// 123456789012****
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
+	// The port for the database connection.
+	//
 	// example:
 	//
 	// 3306
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The code of the cloud service.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The identifier of the cloud service type. 5: ApsaraDB RDS; 8: PolarDB; 27: PolarDB-X 2.0.
+	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The ID of the region where the asset resides.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region where the asset resides.
+	//
 	// example:
 	//
-	// 华北 3（张家口）
+	// China (Zhangjiakou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the resource group to which the asset belongs.
+	//
 	// example:
 	//
 	// rg-acfmexample****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The identifier of the database tenant.
+	//
 	// example:
 	//
 	// tenant-example
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The name of the database account used to connect to the data source.
+	//
 	// example:
 	//
 	// dsc_reader

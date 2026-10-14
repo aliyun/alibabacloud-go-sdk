@@ -20,15 +20,26 @@ type iListIdentifyModelsRequest interface {
 }
 
 type ListIdentifyModelsRequest struct {
+	// A reserved feature type parameter. This parameter is not used to filter results in the current query. You do not need to specify this parameter for column encryption calls.
+	//
 	// example:
 	//
 	// 1
-	FeatureType      *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	FilterAuditModel *bool  `json:"FilterAuditModel,omitempty" xml:"FilterAuditModel,omitempty"`
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// Specifies whether to return only detection models supported in audit scenarios. If this parameter is set to true, only audit-supported models such as phone number, ID card, and bank card models are returned. You do not need to specify this parameter for column encryption scenarios.
+	FilterAuditModel *bool `json:"FilterAuditModel,omitempty" xml:"FilterAuditModel,omitempty"`
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the data classification template. You can obtain this value from Items[].Id in the response of the ListTemplates operation. The template must be consistent with the selected sensitivity level and detection models.
+	//
 	// example:
 	//
 	// 1

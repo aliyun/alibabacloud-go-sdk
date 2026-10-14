@@ -22,11 +22,32 @@ type iListDataAssetAccountsResponseBody interface {
 }
 
 type ListDataAssetAccountsResponseBody struct {
-	CurrentPage *int32                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListDataAssetAccountsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned data.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of records returned by the current query.
+	Items []*ListDataAssetAccountsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of records per page for the current query.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID. You can use this ID to locate the API call.
+	//
+	// example:
+	//
+	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the current query or statistical scope.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDataAssetAccountsResponseBody) String() string {
@@ -96,24 +117,96 @@ func (s *ListDataAssetAccountsResponseBody) Validate() error {
 }
 
 type ListDataAssetAccountsResponseBodyItems struct {
+	// The database account name.
+	//
+	// example:
+	//
+	// app_reader
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AuthRole    *string `json:"AuthRole,omitempty" xml:"AuthRole,omitempty"`
+	// The Alibaba Cloud account ID to which the asset belongs.
+	//
+	// example:
+	//
+	// 123456789012****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The column encryption access permissions. Valid values:
+	//
+	// - fullAccess: plaintext access.
+	//
+	// - restrictedAccess: restricted access.
+	//
+	// - noneAccess: decryption prohibited. noneAccess applies only to ApsaraDB RDS for MySQL instances whose current effective key pattern is client_key.
+	//
+	// example:
+	//
+	// fullAccess
+	AuthRole *string `json:"AuthRole,omitempty" xml:"AuthRole,omitempty"`
+	// The current effective column encryption key mode. Valid values:
+	//
+	// - client_key: local master key.
+	//
+	// - kms_key: KMS key.
+	//
+	// This field is not returned if no column encryption configuration is in effect.
+	//
 	// example:
 	//
 	// client_key
 	EncryptionKeyMode *string `json:"EncryptionKeyMode,omitempty" xml:"EncryptionKeyMode,omitempty"`
-	EngineType        *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The database engine type.
+	//
+	// example:
+	//
+	// MySQL
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The expiration time of the plaintext access permissions. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. This field is not returned if no expiration time is set.
+	//
 	// example:
 	//
 	// 2145953410000
-	ExpireTime  *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The database account identifier. This value is used as AccountId when configuring permissions.
+	//
+	// example:
+	//
+	// 1001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The database instance identity.
+	//
+	// example:
+	//
+	// rm-2ze1abcdefgh****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The cloud product code.
+	//
+	// example:
+	//
+	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName  *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The cloud product type identifier. Valid values:
+	//
+	// - 5: RDS.
+	//
+	// - 8: POLARDB.
+	//
+	// - 27: PolarDBX2.
+	//
+	// example:
+	//
+	// 5
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region ID of the asset.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region name of the asset.
+	//
+	// example:
+	//
+	// China North 3 (Zhangjiakou)
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
 func (s ListDataAssetAccountsResponseBodyItems) String() string {

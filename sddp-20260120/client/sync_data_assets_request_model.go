@@ -16,10 +16,14 @@ type iSyncDataAssetsRequest interface {
 }
 
 type SyncDataAssetsRequest struct {
+	// The language of the response. Valid values: zh: Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
+	//
 	// example:
 	//
 	// RDS

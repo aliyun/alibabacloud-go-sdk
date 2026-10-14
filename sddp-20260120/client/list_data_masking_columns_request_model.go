@@ -44,66 +44,116 @@ type iListDataMaskingColumnsRequest interface {
 }
 
 type ListDataMaskingColumnsRequest struct {
+	// The column name filter.
+	//
 	// example:
 	//
 	// phone
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The page number of the current query. Pages start from 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// business_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The database engine type. This value must match the EngineType of the target instance, for example, MySQL or PostgreSQL.
+	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The instance identity of the database. You can obtain this value from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
+	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The column encryption status filter. Valid values:
+	//
+	// - NotEncrypted: Not encrypted.
+	//
+	// - Success: Encryption succeeded.
+	//
+	// - Failed: Encryption failed.
+	//
 	// example:
 	//
 	// NotEncrypted
 	MaskingStatus *string `json:"MaskingStatus,omitempty" xml:"MaskingStatus,omitempty"`
+	// The number of records per page. Keep other filter conditions consistent when querying the next page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two values must correspond.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The cloud product type ID. Valid values:
+	//
+	// - 5: RDS.
+	//
+	// - 8: POLARDB.
+	//
+	// - 27: PolarDBX2.
+	//
+	// This value must correspond to ProductCode if both are specified.
+	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The compatible product ID list parameter. For column queries, use a single ProductId or ProductCode. Call the operation separately for each product when querying multiple products.
+	//
 	// example:
 	//
 	// 5
 	ProductIds *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
+	// The ID of a sensitivity level. You can obtain this value from the ListRiskLevels operation. The uppercase L in the parameter name must be preserved.
+	//
 	// example:
 	//
 	// 1
 	RiskLeveLId *int64 `json:"RiskLeveLId,omitempty" xml:"RiskLeveLId,omitempty"`
+	// The list of sensitivity level IDs, separated by commas. Select values from the ListRiskLevels response that corresponds to the same TemplateId.
+	//
 	// example:
 	//
 	// 1,2
 	RiskLevelIds *string `json:"RiskLevelIds,omitempty" xml:"RiskLevelIds,omitempty"`
+	// The table name. For PostgreSQL or Oracle scenarios, preserve the schema.table format obtained from the table list.
+	//
 	// example:
 	//
 	// customer
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the data classification template. You can obtain this value from Items[].Id in the response of the ListTemplates operation. This value must be consistent with the selected sensitivity level and detection model.
+	//
 	// example:
 	//
 	// 1
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The list of detection model IDs, separated by commas. Select values from the ListIdentifyModels response that corresponds to the same TemplateId.
+	//
 	// example:
 	//
 	// 1001,1002

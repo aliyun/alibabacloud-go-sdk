@@ -22,19 +22,28 @@ type iListDataMaskingInstancesResponseBody interface {
 }
 
 type ListDataMaskingInstancesResponseBody struct {
+	// The page number of the returned data.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListDataMaskingInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of records returned by the current query.
+	Items []*ListDataMaskingInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of records per page for the current query.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID. You can use this ID to locate the API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the current statistics or query scope.
+	//
 	// example:
 	//
 	// 100
@@ -108,41 +117,59 @@ func (s *ListDataMaskingInstancesResponseBody) Validate() error {
 }
 
 type ListDataMaskingInstancesResponseBodyItems struct {
+	// The column encryption algorithm used by the instance.
+	//
 	// example:
 	//
 	// AES_256_GCM
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" xml:"EncryptionAlgorithm,omitempty"`
+	// The ID of the KMS key used by the instance. This field may not be returned for local key scenarios.
+	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-12345678****
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	// The database engine type.
+	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The number of database accounts that have fullAccess plaintext access permissions.
+	//
 	// example:
 	//
 	// 2
 	FullAccessAccountCount *int32 `json:"FullAccessAccountCount,omitempty" xml:"FullAccessAccountCount,omitempty"`
+	// The instance identity of the database instance.
+	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The code of the cloud product.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the cloud product type. Valid values: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region ID of the asset.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region name of the asset.
+	//
 	// example:
 	//
-	// 华北 3（张家口）
+	// China (Zhangjiakou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 

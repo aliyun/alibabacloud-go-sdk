@@ -16,7 +16,10 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
+	// The list of regions where assets reside.
 	RegionList []*ListRegionsResponseBodyRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
+	// The request ID, which can be used to locate this API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
@@ -63,13 +66,17 @@ func (s *ListRegionsResponseBody) Validate() error {
 }
 
 type ListRegionsResponseBodyRegionList struct {
+	// The region ID where the assets reside.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region where the assets reside.
+	//
 	// example:
 	//
-	// 华北 3（张家口）
+	// China North 3 (Zhangjiakou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 

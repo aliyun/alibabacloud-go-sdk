@@ -32,16 +32,62 @@ type iGetInstanceAttributeResponseBody interface {
 }
 
 type GetInstanceAttributeResponseBody struct {
-	CurrentKernelVersion   *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
-	Engine                 *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion          *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ErrorCode              *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage           *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	KmsEncryptionSupported *bool   `json:"KmsEncryptionSupported,omitempty" xml:"KmsEncryptionSupported,omitempty"`
-	MaintainEndTime        *int64  `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime      *int64  `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The current kernel version of the instance.
+	//
+	// example:
+	//
+	// rds_20220731
+	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
+	// The database engine type.
+	//
+	// example:
+	//
+	// MySQL
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The major version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+	//
+	// example:
+	//
+	// data_masking_not_running
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The business error message for the record or operation.
+	//
+	// example:
+	//
+	// The instance is not in the running state
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Indicates whether the instance supports column encryption by using KMS keys.
+	KmsEncryptionSupported *bool `json:"KmsEncryptionSupported,omitempty" xml:"KmsEncryptionSupported,omitempty"`
+	// The end time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
+	//
+	// example:
+	//
+	// 1788570000000
+	MaintainEndTime *int64 `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
+	//
+	// example:
+	//
+	// 1788566400000
+	MaintainStartTime *int64 `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The request ID. You can use this ID to locate the API call.
+	//
+	// example:
+	//
+	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The current running status of the instance.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetInstanceAttributeResponseBody) String() string {

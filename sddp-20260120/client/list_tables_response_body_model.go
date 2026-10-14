@@ -28,31 +28,46 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
+	// The page number of the returned data.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of records returned by this query.
+	Items []*ListTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The pagination cursor used in this query.
+	//
 	// example:
 	//
 	// 0
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The cursor used to query the next page.
+	//
 	// example:
 	//
 	// 1001
 	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	// The number of records per page in this query.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID, which can be used to locate this API call.
+	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that match the current statistical or query scope.
+	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Indicates whether more pages are available. A value of true indicates that more data exists. A value of false indicates that no more data exists.
+	//
 	// example:
 	//
 	// false
@@ -153,60 +168,90 @@ func (s *ListTablesResponseBody) Validate() error {
 }
 
 type ListTablesResponseBodyItems struct {
+	// The comment of the data table.
+	//
 	// example:
 	//
-	// 客户联系方式
+	// Customer contact information
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time of the data object. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1788566400000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The cloud instance identity.
+	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	DataAssetSourceId *string `json:"DataAssetSourceId,omitempty" xml:"DataAssetSourceId,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// business_db
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The description of the database instance.
+	//
 	// example:
 	//
-	// 业务数据库实例
+	// Business database instance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The data table name. Some engines return the name in the schema.table format.
+	//
 	// example:
 	//
 	// customer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the data table owner.
+	//
 	// example:
 	//
 	// 123456789012****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The cloud product code.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The sensitivity level ID.
+	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The sensitivity level name.
+	//
 	// example:
 	//
 	// S2
-	RiskLevelName *string                                `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleList      []*ListTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	Sensitive     *bool                                  `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The list of detection models or rules.
+	RuleList []*ListTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	// Indicates whether the data is detected as sensitive data.
+	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	// The number of sensitive data entries within the current statistical scope.
+	//
 	// example:
 	//
 	// 20
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	// The proportion of sensitive data.
+	//
 	// example:
 	//
 	// 0.2
 	SensitiveRatio *string `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
+	// The tenant name to which the data asset belongs.
+	//
 	// example:
 	//
-	// 业务租户
+	// Business tenant
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The total number of entries that match the current statistical or query scope.
+	//
 	// example:
 	//
 	// 100
@@ -379,14 +424,20 @@ func (s *ListTablesResponseBodyItems) Validate() error {
 }
 
 type ListTablesResponseBodyItemsRuleList struct {
+	// The number of hits for this detection rule.
+	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The detection model or rule name.
+	//
 	// example:
 	//
-	// 手机号
+	// Phone number
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sensitivity level ID.
+	//
 	// example:
 	//
 	// 1

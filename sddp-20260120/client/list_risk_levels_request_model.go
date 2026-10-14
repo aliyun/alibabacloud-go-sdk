@@ -18,9 +18,28 @@ type iListRiskLevelsRequest interface {
 }
 
 type ListRiskLevelsRequest struct {
-	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// A reserved feature type parameter. This parameter does not filter results in the current query. You do not need to specify this parameter for column encryption calls.
+	//
+	// example:
+	//
+	// 1
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the data classification template. You can obtain this value from Items[].Id returned by ListTemplates. Ensure that the template is consistent with the selected sensitivity level and detection model.
+	//
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListRiskLevelsRequest) String() string {
