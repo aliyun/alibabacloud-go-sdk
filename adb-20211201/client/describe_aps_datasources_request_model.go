@@ -28,7 +28,7 @@ type iDescribeApsDatasourcesRequest interface {
 }
 
 type DescribeApsDatasourcesRequest struct {
-	// The ID of the AnalyticDB for MySQL cluster.
+	// The ADB instance ID. This parameter is required. You can invoke the DescribeDBClusters operation to query the cluster ID in the specified region.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeApsDatasourcesRequest struct {
 	//
 	// SLS
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
-	// The end of the time range to query.
+	// The end date. Format: yyyy-MM-dd.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeApsDatasourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query.
+	// The start date. Format: yyyy-MM-dd.
 	//
 	// example:
 	//

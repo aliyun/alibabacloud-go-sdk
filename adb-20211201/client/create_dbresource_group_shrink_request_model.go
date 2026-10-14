@@ -62,7 +62,7 @@ type iCreateDBResourceGroupShrinkRequest interface {
 type CreateDBResourceGroupShrinkRequest struct {
 	// The PromQL resource group configuration.
 	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
-	// The auto-stop interval, in minutes (m).
+	// The automatic stop interval, in minutes (m).
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
-	// The GPU time-based elastic plan.
+	// The GPU time-sharing elastic plan.
 	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
 	// The name of the resource group.
 	//
@@ -150,7 +150,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, see [Introduction to resource groups (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -166,9 +166,9 @@ type CreateDBResourceGroupShrinkRequest struct {
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources, in ACUs.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 8 ACUs.
 	//
 	// example:
 	//
@@ -218,11 +218,11 @@ type CreateDBResourceGroupShrinkRequest struct {
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The scaling policy of the resource group. Valid values:
 	//
-	// - AutoScaling: enables the AutoScaling auto-scaling policy.
+	// - AutoScaling: enables the AutoScaling automatic scaling policy.
 	//
-	// - Disable: disables auto-scaling.
+	// - Disable: disables automatic scaling.
 	//
-	// - MultiCluster: enables the MultiCluster auto-scaling policy.
+	// - MultiCluster: enables the MultiCluster automatic scaling policy.
 	//
 	// example:
 	//
@@ -234,7 +234,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The name of the destination resource group.
+	// The name of the target resource group.
 	//
 	// example:
 	//

@@ -32,15 +32,15 @@ type iDescribeHistoryTasksResponseBody interface {
 }
 
 type DescribeHistoryTasksResponseBody struct {
-	// null
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *DescribeHistoryTasksResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -48,45 +48,45 @@ type DescribeHistoryTasksResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The task list.
 	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The returned message. null
+	// The additional information about the call result. Valid values:
 	//
-	// 	- null****
+	// - If the request is normal, **Success*	- is returned.
 	//
-	// 	- null
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number of the query result.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// E51713A3-BB45-5616-AB15-170B704F8F01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total record count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -211,57 +211,57 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyAccessDeniedDetail struct {
-	// null
+	// The authentication action.
 	//
 	// example:
 	//
 	// test
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// null
+	// The display name of the authorization principal.
 	//
 	// example:
 	//
 	// test
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// null
+	// The Alibaba Cloud account ID of the authentication principal.
 	//
 	// example:
 	//
 	// 141345906006****
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// null
+	// The type of the authorization principal.
 	//
 	// example:
 	//
 	// test
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// null
+	// The encoded diagnostic message.
 	//
 	// example:
 	//
 	// AQFmy+hZZsvoWTQ2NTJFQUFBLUIyNjktMzk5NS05MEZCLUMxMzgwNDUwMDA2Ng==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// null
+	// The type of the access policy denial. Valid values:
 	//
-	// 	- **null**
+	// - **ImplicitDeny**: The resource owner has not configured a relevant access policy for the current user, and unauthorized operations are denied by default.
 	//
-	// 	- **null**
+	// - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user from accessing the corresponding resource.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// null
+	// The type of the policy that causes the permission denial. Valid values:
 	//
-	// 	- **null**
+	// - **ControlPolicy**: Control policy.
 	//
-	// 	- **null**
+	// - **SessionPolicy**: Session policy, which is an additional permission policy added to a temporary token.
 	//
-	// 	- **null**
+	// - **AssumeRolePolicy**: Assume role policy, which is the trust policy of a RAM role.
 	//
-	// 	- **null**
+	// - **AccountLevelIdentityBasedPolicy**: Account-level identity-access policy, which includes custom policies and system policies.
 	//
-	// 	- **null**
+	// - **ResourceGroupLevelIdentityBasedPolicy**: Resource group-level identity-access policy, which includes custom policies and system policies.
 	//
 	// example:
 	//
@@ -345,77 +345,77 @@ func (s *DescribeHistoryTasksResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
-	// Allowed operation information. When used specifically, matches operation Action based on currentStepName+status in this information. If no Action is matched, represents task current status does not support operations.
+	// The allowed operation information. When you use this parameter, the system matches the operation action based on the currentStepName and status in this information. If no action is matched, the current task status does not support the operation.
 	//
 	// example:
 	//
 	// {\\"steps\\":[{\\"action_info\\":{\\"Waiting\\":[\\"modifySwitchTime\\"]},\\"step_name\\":\\"exec_task\\"}]}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	// null
+	// The ID of the requesting user. If callerSource is User, it represents the user UID.
 	//
 	// example:
 	//
 	// 141345906006****
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
-	// null
+	// The request source. Valid values:
 	//
-	// 	- **null**
+	// - **System**: System.
 	//
-	// 	- **null**
+	// - **User**: User.
 	//
 	// example:
 	//
 	// User
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// Current executing step name. If empty, represents task has not started.
+	// The name of the current step. If this parameter is empty, the task has not started.
 	//
 	// example:
 	//
 	// exec_task
 	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
-	// The database engine type.
+	// The database type.
 	//
 	// example:
 	//
 	// analyticdb
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// Task end time.
+	// The end time of the task. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//
 	// 2022-02-03T12:06:17Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// amv-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Instance type.
+	// The instance type.
 	//
 	// example:
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The service name.
+	// The product.
 	//
 	// example:
 	//
 	// ads
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// Indicates the task progress.
+	// The current progress.
 	//
 	// example:
 	//
 	// 79.0
 	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The reason why the current task was initiated.
+	// The reason why the current task is initiated.
 	//
 	// example:
 	//
@@ -427,33 +427,33 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Estimated remaining execution time, in seconds.
+	// The estimated remaining execution time. Unit: seconds.
 	//
 	// example:
 	//
 	// 1000
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	// Task start time.
+	// The start time of the task. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//
 	// 2022-02-03T11:31:03Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Task status. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **Scheduled**
+	// - **Scheduled**: Pending execution.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: Failed.
 	//
-	// 	- **Cancelling**
+	// - **Cancelling**: Being canceled.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Canceled.
 	//
-	// 	- **Waiting**
+	// - **Waiting**: Waiting for the scheduled time.
 	//
 	// example:
 	//
@@ -465,19 +465,19 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// {\\"callerUid\\":\\"test\\"}
 	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// t-83br18hloy3faf****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task type.
+	// The task type.
 	//
 	// example:
 	//
 	// autotest_dispatch_cases
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// null
+	// The ID of the user to which the resource belongs.
 	//
 	// example:
 	//

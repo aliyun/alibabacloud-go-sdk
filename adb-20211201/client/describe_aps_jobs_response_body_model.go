@@ -30,29 +30,29 @@ type iDescribeApsJobsResponseBody interface {
 }
 
 type DescribeApsJobsResponseBody struct {
-	// The queried APS jobs.
+	// The list of APS tasks.
 	//
 	// example:
 	//
 	// -
 	APSJobs []*DescribeApsJobsResponseBodyAPSJobs `json:"APSJobs,omitempty" xml:"APSJobs,omitempty" type:"Repeated"`
-	// The HTTP status code.
+	// The backend error code.
 	//
 	// example:
 	//
 	// ok
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The status code. A value of 200 indicates that the request was successful.
+	// The HTTP status code returned for the request. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// ok
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - If the request is successful, **Success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -76,17 +76,17 @@ type DescribeApsJobsResponseBody struct {
 	//
 	// ******-7F9D-5DBD-993E-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -197,19 +197,19 @@ func (s *DescribeApsJobsResponseBody) Validate() error {
 }
 
 type DescribeApsJobsResponseBodyAPSJobs struct {
-	// The job ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// aps-******
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
-	// The name of the APS job.
+	// The name of the task.
 	//
 	// example:
 	//
 	// data-sync-******
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
-	// The time when the APS job was created.
+	// The creation time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type DescribeApsJobsResponseBodyAPSJobs struct {
 	//
 	// 0
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The destination cluster ID.
+	// The destination instance ID.
 	//
 	// example:
 	//
@@ -237,21 +237,21 @@ type DescribeApsJobsResponseBodyAPSJobs struct {
 	//
 	// example:
 	//
-	// 30: progress 30%
+	// 30: 30% progress
 	Projress *string `json:"Projress,omitempty" xml:"Projress,omitempty"`
-	// The ID of the source instance or cluster.
+	// The source instance ID.
 	//
 	// example:
 	//
 	// pc-******
 	SourceInstanceID *string `json:"SourceInstanceID,omitempty" xml:"SourceInstanceID,omitempty"`
-	// The status of the APS job.
+	// The status of the task.
 	//
 	// example:
 	//
 	// -
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status of the task.
+	// The status of the subtask.
 	//
 	// example:
 	//

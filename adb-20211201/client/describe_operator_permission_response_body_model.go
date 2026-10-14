@@ -22,7 +22,7 @@ type iDescribeOperatorPermissionResponseBody interface {
 }
 
 type DescribeOperatorPermissionResponseBody struct {
-	// The time when the permissions take effect.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type DescribeOperatorPermissionResponseBody struct {
 	//
 	// amv-uf6wjk5xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The time when the permissions expire.
+	// The expiration time of the authorization. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-01-10T02:19:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The queried permissions.
+	// The authorization details.
 	//
 	// example:
 	//

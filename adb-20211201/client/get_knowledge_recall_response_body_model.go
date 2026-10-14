@@ -68,13 +68,13 @@ type GetKnowledgeRecallResponseBodyData struct {
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
 	// recall 5 files
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The recall results.
+	// The retrieval results.
 	Results []map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 	// The Tracing Analysis ID.
 	//

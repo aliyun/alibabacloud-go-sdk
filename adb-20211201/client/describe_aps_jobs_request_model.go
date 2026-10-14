@@ -24,19 +24,19 @@ type iDescribeApsJobsRequest interface {
 }
 
 type DescribeApsJobsRequest struct {
-	// The name of the APS job.
+	// The name of the task.
 	//
 	// example:
 	//
 	// aps-xxxxx
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
-	// The end of the time range to query.
+	// The end time of creation.
 	//
 	// example:
 	//
 	// 2022-04-23T01:10Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of creation.
 	//
 	// example:
 	//

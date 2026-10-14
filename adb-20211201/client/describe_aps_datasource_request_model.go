@@ -18,7 +18,7 @@ type iDescribeApsDatasourceRequest interface {
 }
 
 type DescribeApsDatasourceRequest struct {
-	// The ID of the AnalyticDB for MySQL cluster.
+	// The ADB instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeApsDatasourceRequest struct {
 	//
 	// am-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// This parameter is required.
 	//

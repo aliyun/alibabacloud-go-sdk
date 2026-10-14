@@ -11,10 +11,14 @@ type iGetKnowledgeRecallRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *GetKnowledgeRecallRequest
 	GetDBClusterId() *string
+	SetImages(v string) *GetKnowledgeRecallRequest
+	GetImages() *string
 	SetPath(v string) *GetKnowledgeRecallRequest
 	GetPath() *string
 	SetQuestion(v string) *GetKnowledgeRecallRequest
 	GetQuestion() *string
+	SetSemanticRules(v string) *GetKnowledgeRecallRequest
+	GetSemanticRules() *string
 	SetTags(v string) *GetKnowledgeRecallRequest
 	GetTags() *string
 	SetTopk(v int32) *GetKnowledgeRecallRequest
@@ -24,7 +28,7 @@ type iGetKnowledgeRecallRequest interface {
 }
 
 type GetKnowledgeRecallRequest struct {
-	// The ID of the ADB MySQL cluster.
+	// The ID of the AnalyticDB for MySQL cluster.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +36,19 @@ type GetKnowledgeRecallRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The file path prefix. Only files that match the specified path prefix are recalled.
+	// The array of images to retrieve during image retrieval. Currently, only one image is supported.
+	//
+	// example:
+	//
+	// [     {       "base64": "/9j/4AAQSkZJRgABAQ...",       "mime_type": "image/jpeg"     }   ]
+	Images *string `json:"Images,omitempty" xml:"Images,omitempty"`
+	// The file path prefix. Only files that match the path prefix are retrieved.
 	//
 	// example:
 	//
 	// oss://bucketName/path/prefix/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The question for knowledge base recall.
+	// The question for knowledge base retrieval.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +56,25 @@ type GetKnowledgeRecallRequest struct {
 	//
 	// What are the reports for the clothing category this month?
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// The semantic rules. Currently, only "all" and "" are supported.
+	//
+	// example:
+	//
+	// all
+	SemanticRules *string `json:"SemanticRules,omitempty" xml:"SemanticRules,omitempty"`
 	// The list of tags in JSON format.
 	//
 	// example:
 	//
 	// {   "tag_key1": ["tag_key1_value1", "tag_key1_value2"],   "tag_key2": ["tag_key2_value"] }
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The top K associated files to recall.
+	// The top K value for retrieving associated files.
 	//
 	// example:
 	//
 	// 5
 	Topk *int32 `json:"Topk,omitempty" xml:"Topk,omitempty"`
-	// The username. Only files that the specified user has permission to access are recalled.
+	// The username. Only files that the user has permissions to access are retrieved.
 	//
 	// example:
 	//
@@ -78,12 +94,20 @@ func (s *GetKnowledgeRecallRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *GetKnowledgeRecallRequest) GetImages() *string {
+	return s.Images
+}
+
 func (s *GetKnowledgeRecallRequest) GetPath() *string {
 	return s.Path
 }
 
 func (s *GetKnowledgeRecallRequest) GetQuestion() *string {
 	return s.Question
+}
+
+func (s *GetKnowledgeRecallRequest) GetSemanticRules() *string {
+	return s.SemanticRules
 }
 
 func (s *GetKnowledgeRecallRequest) GetTags() *string {
@@ -103,6 +127,11 @@ func (s *GetKnowledgeRecallRequest) SetDBClusterId(v string) *GetKnowledgeRecall
 	return s
 }
 
+func (s *GetKnowledgeRecallRequest) SetImages(v string) *GetKnowledgeRecallRequest {
+	s.Images = &v
+	return s
+}
+
 func (s *GetKnowledgeRecallRequest) SetPath(v string) *GetKnowledgeRecallRequest {
 	s.Path = &v
 	return s
@@ -110,6 +139,11 @@ func (s *GetKnowledgeRecallRequest) SetPath(v string) *GetKnowledgeRecallRequest
 
 func (s *GetKnowledgeRecallRequest) SetQuestion(v string) *GetKnowledgeRecallRequest {
 	s.Question = &v
+	return s
+}
+
+func (s *GetKnowledgeRecallRequest) SetSemanticRules(v string) *GetKnowledgeRecallRequest {
+	s.SemanticRules = &v
 	return s
 }
 

@@ -26,27 +26,27 @@ type iDescribeHistoryTasksStatResponseBody interface {
 }
 
 type DescribeHistoryTasksStatResponseBody struct {
-	// The queried information about the request denial.
+	// The access denial details.
 	AccessDeniedDetail *DescribeHistoryTasksStatResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// API status or POP error code.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The tasks.
+	// The list of tasks.
 	Items []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The returned message. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, an success message is returned.
+	// - If the request is normal, OK is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type DescribeHistoryTasksStatResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -160,25 +160,25 @@ func (s *DescribeHistoryTasksStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksStatResponseBodyAccessDeniedDetail struct {
-	// Authorized action
+	// The authentication action.
 	//
 	// example:
 	//
 	// test
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the requester.
+	// The display name of the authorized principal.
 	//
 	// example:
 	//
 	// test
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the authentication principal belongs.
+	// The Alibaba Cloud account ID of the authenticated principal.
 	//
 	// example:
 	//
 	// 141345906006****
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The requester type.
+	// The type of the authorized principal.
 	//
 	// example:
 	//
@@ -190,27 +190,27 @@ type DescribeHistoryTasksStatResponseBodyAccessDeniedDetail struct {
 	//
 	// test
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the policy denial. Valid values:
+	// The type of the access policy denial. Valid values:
 	//
-	// 	- **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
+	// - **ImplicitDeny**: The resource owner has not configured a relevant access policy for the current user, and unauthorized operations are denied by default.
 	//
-	// 	- **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
+	// - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user access to the corresponding resource.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The type of the policy that causes the access denied error.
+	// The type of the policy that caused the permission denial. Valid values:
 	//
-	// 	- **ControlPolicy**: control policy
+	// - **ControlPolicy**: Control policy.
 	//
-	// 	- **SessionPolicy**: an additional policy that is added to the temporary token.
+	// - **SessionPolicy**: An additional permission policy added to the temporary token.
 	//
-	// 	- **AssumeRolePolicy**: the authorization policy of the RAM role.
+	// - **AssumeRolePolicy**: The trust policy of the RAM role.
 	//
-	// 	- **AccountLevelIdentityBasedPolicy**: the principal policies of the account authorization scope, including custom policies and system policies.
+	// - **AccountLevelIdentityBasedPolicy**: The identity-access policy at the account level, including custom policies and system policies.
 	//
-	// 	- **ResourceGroupLevelIdentityBasedPolicy**: the principal policy of the resource group authorization scope, including custom policies and system policies.
+	// - **ResourceGroupLevelIdentityBasedPolicy**: The identity-access policy at the resource group level, including custom policies and system policies.
 	//
 	// example:
 	//
@@ -294,21 +294,21 @@ func (s *DescribeHistoryTasksStatResponseBodyAccessDeniedDetail) Validate() erro
 }
 
 type DescribeHistoryTasksStatResponseBodyItems struct {
-	// The status of the APS job.
+	// The task status. Valid values:
 	//
-	// 	- **Scheduled**
+	// - **Scheduled**: Pending execution.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: Failed.
 	//
-	// 	- **Cancelling**
+	// - **Cancelling**: Cancelling.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Canceled.
 	//
-	// 	- **Waiting**
+	// - **Waiting**: Waiting for the scheduled time.
 	//
 	// example:
 	//

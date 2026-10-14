@@ -20,9 +20,9 @@ type iGetSparkAppAttemptLogRequest interface {
 }
 
 type GetSparkAppAttemptLogRequest struct {
-	// The ID of the log.
+	// The ID of the retry log.
 	//
-	// > You can call the [ListSparkAppAttempts](https://help.aliyun.com/document_detail/455887.html) operation to query the information about the retry attempts of a Spark application, including the retry log IDs.
+	// > Call the [ListSparkAppAttempts](https://help.aliyun.com/document_detail/455887.html) operation to query the retry history of an application, which includes the retry log ID.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,19 @@ type GetSparkAppAttemptLogRequest struct {
 	//
 	// s202207151211hz****-0001
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
-	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
+	// The number of lines in the retry log. Valid values: 1 to 500. Default value: 300.
 	//
 	// example:
 	//
 	// 20
 	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
-	// The log offset.
+	// The start offset for reading logs.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of data rows per page.
 	//
 	// example:
 	//

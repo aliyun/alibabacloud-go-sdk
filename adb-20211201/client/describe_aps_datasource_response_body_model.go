@@ -16,9 +16,9 @@ type iDescribeApsDatasourceResponseBody interface {
 }
 
 type DescribeApsDatasourceResponseBody struct {
-	// The queried APS data source.
+	// -
 	ApsDatasource *DescribeApsDatasourceResponseBodyApsDatasource `json:"ApsDatasource,omitempty" xml:"ApsDatasource,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *DescribeApsDatasourceResponseBody) Validate() error {
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasource struct {
-	// The time when the data source was created.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-04-12T15:03:38Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The information about Databricks.
+	// The Databricks information.
 	//
 	// example:
 	//
@@ -98,25 +98,25 @@ type DescribeApsDatasourceResponseBodyApsDatasource struct {
 	//
 	// KAFKA
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
-	// The information about the Hive data source.
+	// The Hive data source information.
 	//
 	// example:
 	//
 	// -
 	HiveInfo *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty" type:"Struct"`
-	// The information about the Kafka instance.
+	// The Kafka instance information.
 	//
 	// example:
 	//
 	// -
 	KafkaInfo *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
-	// The parameter is no longer supported.
+	// This parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfo *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
-	// The parameter is no longer supported.
+	// This parameter is no longer supported.
 	//
 	// example:
 	//
@@ -272,7 +272,7 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasource) Validate() error {
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo struct {
-	// The token that is used to access Databricks.
+	// The token used to access Databricks.
 	//
 	// example:
 	//
@@ -323,19 +323,19 @@ type DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo struct {
 	//
 	// -
 	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
-	// The URL of the Hive Metastore.
+	// The Hive metastore URL.
 	//
 	// example:
 	//
 	// -
 	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-******
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -392,13 +392,13 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) Validate() erro
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo struct {
-	// The ID of the Kafka instance.
+	// The Kafka instance ID.
 	//
 	// example:
 	//
 	// -
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// The topic of the Kafka instance.
+	// kafka topic
 	//
 	// example:
 	//
@@ -437,49 +437,49 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo) Validate() err
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo struct {
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
@@ -572,31 +572,31 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) Validat
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo struct {
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
@@ -662,11 +662,11 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) Validate() 
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo struct {
-	// Indicates whether the data source is a cross-account resource. Valid values:
+	// Specifies whether the resource is cross-account. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The current network instance is a cross-account resource.
 	//
-	// 	- **false**
+	// - **false**: The current network instance belongs to the current account.
 	//
 	// example:
 	//
@@ -690,7 +690,7 @@ type DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo struct {
 	//
 	// ***
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The region ID.
+	// The ID of the region to which the production site belongs.
 	//
 	// example:
 	//

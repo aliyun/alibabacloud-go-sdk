@@ -2149,7 +2149,7 @@ func (client *Client) CreateDBClusterWithContext(ctx context.Context, request *C
 //
 // Description:
 //
-// For the endpoints of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateDBResourceGroupRequest
 //
@@ -4905,7 +4905,7 @@ func (client *Client) DescribeApsActionLogsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about an AnalyticDB Pipeline Service (APS) data source.
+// Queries the details of an APS data source.
 //
 // @param request - DescribeApsDatasourceRequest
 //
@@ -4957,7 +4957,7 @@ func (client *Client) DescribeApsDatasourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of AnalyticDB Pipeline Service (APS) data sources.
+// Queries APS data sources.
 //
 // @param request - DescribeApsDatasourcesRequest
 //
@@ -5129,7 +5129,7 @@ func (client *Client) DescribeApsJobDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a list of AnalyticDB Pipeline Service (APS) jobs.
+// Queries a list of APS tasks.
 //
 // @param request - DescribeApsJobsRequest
 //
@@ -5193,7 +5193,7 @@ func (client *Client) DescribeApsJobsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the workloads of AnalyticDB Pipeline Service (APS) migration jobs.
+// Queries the list of workloads for an APS migration task.
 //
 // @param request - DescribeApsMigrationWorkloadsRequest
 //
@@ -7645,11 +7645,11 @@ func (client *Client) DescribeExecutorDetectionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieve historical task records.
+// Retrieves historical task records.
 //
 // Description:
 //
-// Only supports viewing tasks within the last 30 days.
+// You can view only tasks from the last 30 days.
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -7741,7 +7741,7 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries task statistics.
+// Queries task statistics in the task center.
 //
 // @param request - DescribeHistoryTasksStatRequest
 //
@@ -8369,7 +8369,7 @@ func (client *Client) DescribeMvRecommendTasksWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the service account permissions of an AnalyticDB for MySQL cluster.
+// Queries the authorization status of a service account.
 //
 // @param request - DescribeOperatorPermissionRequest
 //
@@ -9649,7 +9649,7 @@ func (client *Client) DescribeSparkSQLDiagnosisAttributeWithContext(ctx context.
 
 // Summary:
 //
-// Queries the diagnostic information about Spark SQL queries.
+// Queries the Spark SQL diagnostics list.
 //
 // @param request - DescribeSparkSQLDiagnosisListRequest
 //
@@ -11463,7 +11463,7 @@ func (client *Client) GetFormationCrawlerWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Performs knowledge base recall.
+// Adds a knowledge base document.
 //
 // @param request - GetKnowledgeRecallRequest
 //
@@ -11490,6 +11490,10 @@ func (client *Client) GetKnowledgeRecallWithContext(ctx context.Context, request
 		query["Question"] = request.Question
 	}
 
+	if !dara.IsNil(request.SemanticRules) {
+		query["SemanticRules"] = request.SemanticRules
+	}
+
 	if !dara.IsNil(request.Tags) {
 		query["Tags"] = request.Tags
 	}
@@ -11502,8 +11506,14 @@ func (client *Client) GetKnowledgeRecallWithContext(ctx context.Context, request
 		query["User"] = request.User
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Images) {
+		body["Images"] = request.Images
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetKnowledgeRecall"),
@@ -11693,15 +11703,15 @@ func (client *Client) GetSemanticViewWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the information about the retry log of a Spark application.
+// Queries the retry logs of a Spark application.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// > If you encounter a 409 error when sending requests from China (Qingdao), China (Shenzhen), China (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - GetSparkAppAttemptLogRequest
 //

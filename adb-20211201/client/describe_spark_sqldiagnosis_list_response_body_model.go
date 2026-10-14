@@ -24,7 +24,7 @@ type iDescribeSparkSQLDiagnosisListResponseBody interface {
 }
 
 type DescribeSparkSQLDiagnosisListResponseBody struct {
-	// The information about the request denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeSparkSQLDiagnosisListResponseBody struct {
 	//
 	// A91C9D07-7462-5F35-BB47-83629CE6CCAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried diagnostic information.
+	// The SQL diagnostics information collection.
 	SQLDiagnosisList []*DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList `json:"SQLDiagnosisList,omitempty" xml:"SQLDiagnosisList,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -136,31 +136,31 @@ func (s *DescribeSparkSQLDiagnosisListResponseBody) Validate() error {
 type DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList struct {
 	// The application ID.
 	//
-	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the ID of the Spark application.
 	//
 	// example:
 	//
 	// s202404291020bjd448ad40002122
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The execution duration of the query. Unit: milliseconds.
+	// The actual running time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 100
 	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The ID of the query executed within the Spark application.
+	// The internal query execution ID within the Spark application.
 	//
 	// example:
 	//
 	// 1
 	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
-	// The maximum operator execution duration. Unit: milliseconds.
+	// The maximum operator execution time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 90
 	MaxExclusiveTime *int64 `json:"MaxExclusiveTime,omitempty" xml:"MaxExclusiveTime,omitempty"`
-	// The maximum operator memory used. Unit: bytes.
+	// The maximum operator memory consumption. Unit: bytes.
 	//
 	// example:
 	//
@@ -172,27 +172,27 @@ type DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList struct {
 	//
 	// select 	- from device where name = \\"105506012112790031\\"
 	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	// The number of entries scanned.
+	// The number of scanned rows.
 	//
 	// example:
 	//
 	// 100
 	ScanRowCount *int64 `json:"ScanRowCount,omitempty" xml:"ScanRowCount,omitempty"`
-	// The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time is displayed in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-ddTHH:mmZ</i> (UTC time).
 	//
 	// example:
 	//
 	// 2024-11-20 09:09:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The execution status of the query. Valid values:
+	// The final execution state of the query. Valid values:
 	//
-	// 	- COMPLETED
+	// - COMPLETED: The query is completed.
 	//
-	// 	- CANCELED
+	// - CANCELED: The query is canceled.
 	//
-	// 	- ABORTED
+	// - ABORTED: The query is aborted.
 	//
-	// 	- FAILED
+	// - FAILED: The query failed.
 	//
 	// example:
 	//

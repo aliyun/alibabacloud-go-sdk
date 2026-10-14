@@ -26,19 +26,19 @@ type iDescribeApsMigrationWorkloadsRequest interface {
 }
 
 type DescribeApsMigrationWorkloadsRequest struct {
-	// The cluster ID.
+	// The instance ID. This parameter is required. You can call the DescribeDBClusters operation to query the instance ID in the destination region.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2021-07-20T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The Object Storage Service (OSS) URL.
+	// The OSS address.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeApsMigrationWorkloadsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start of the time range to query.
+	// The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

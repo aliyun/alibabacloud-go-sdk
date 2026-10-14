@@ -22,7 +22,7 @@ type iDescribeApsDatasourcesResponseBody interface {
 }
 
 type DescribeApsDatasourcesResponseBody struct {
-	// The queried APS data sources.
+	// The data sources.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeApsDatasourcesResponseBody struct {
 	//
 	// ******-5213-******-B608-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *DescribeApsDatasourcesResponseBody) Validate() error {
 }
 
 type DescribeApsDatasourcesResponseBodyApsDatasources struct {
-	// The time when the data source was created.
+	// The creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DescribeApsDatasourcesResponseBodyApsDatasources struct {
 	//
 	// test
 	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//

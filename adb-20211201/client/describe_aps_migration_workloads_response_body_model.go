@@ -22,7 +22,7 @@ type iDescribeApsMigrationWorkloadsResponseBody interface {
 }
 
 type DescribeApsMigrationWorkloadsResponseBody struct {
-	// The queried migration workloads.
+	// The list of migration workloads.
 	MigrationWorkloads []*DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads `json:"MigrationWorkloads,omitempty" xml:"MigrationWorkloads,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type DescribeApsMigrationWorkloadsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeApsMigrationWorkloadsResponseBody struct {
 	//
 	// ******-3EEC-57F0-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeApsMigrationWorkloadsResponseBody) Validate() error {
 }
 
 type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
-	// The number of AnalyticDB compute units (ACUs).
+	// The number of ACUs.
 	//
 	// example:
 	//
 	// -
 	AcuCount *int32 `json:"AcuCount,omitempty" xml:"AcuCount,omitempty"`
-	// The time when the job was created.
+	// The time when the task was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
 	//
 	// -
 	FailedMsg *string `json:"FailedMsg,omitempty" xml:"FailedMsg,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
@@ -147,19 +147,19 @@ type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
 	//
 	// 1000
 	MaxRT *string `json:"MaxRT,omitempty" xml:"MaxRT,omitempty"`
-	// The time when the migration job was modified.
+	// The time when the task was modified. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//
 	// 2021-06-21T02:15:16Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the workload.
+	// The name.
 	//
 	// example:
 	//
 	// TEST-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The OSS URL.
+	// The OSS address.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
 	//
 	// OSS
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The sub-type of the workload.
+	// The subtask type.
 	//
 	// example:
 	//
