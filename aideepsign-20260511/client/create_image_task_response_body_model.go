@@ -24,19 +24,19 @@ type iCreateImageTaskResponseBody interface {
 }
 
 type CreateImageTaskResponseBody struct {
-	// The business error code. The value `OK` is returned if the request succeeds.
+	// The business error code. The value `OK` is returned if the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. The value `200` is returned if the request succeeds.
+	// The HTTP status code. The value `200` is returned if the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information. The value `success` is returned if the request succeeds.
+	// The additional information. The value `success` is returned if the request was successful.
 	//
 	// example:
 	//

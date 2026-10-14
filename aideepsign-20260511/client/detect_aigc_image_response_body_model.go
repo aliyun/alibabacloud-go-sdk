@@ -26,19 +26,19 @@ type iDetectAigcImageResponseBody interface {
 type DetectAigcImageResponseBody struct {
 	// The list of AIGC detection result labels.
 	Body []*DetectAigcImageResponseBodyBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Repeated"`
-	// The business error code. The value `OK` is returned if the request was successful.
+	// The business error code. The value `OK` is returned if the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. The value `200` is returned if the request was successful.
+	// The HTTP status code. The value `200` is returned if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information. The value `success` is returned if the request was successful.
+	// The additional information. The value `success` is returned if the request is successful.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DetectAigcImageResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The call was successful.
+	// - true: Successful.
 	//
-	// - false: The call failed.
+	// - false: Failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -134,7 +134,7 @@ func (s *DetectAigcImageResponseBody) Validate() error {
 }
 
 type DetectAigcImageResponseBodyBody struct {
-	// The confidence level. Value range: 0 to 1. A higher value indicates a higher probability.
+	// The confidence score. Value range: 0 to 1. A higher value indicates a higher probability.
 	//
 	// example:
 	//

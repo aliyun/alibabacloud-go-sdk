@@ -24,19 +24,19 @@ type iCreateImageDetectionTaskResponseBody interface {
 }
 
 type CreateImageDetectionTaskResponseBody struct {
-	// The business error code. The value `OK` is returned if the request was successful.
+	// The business error code. `OK` is returned if the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. The value `200` is returned if the request was successful.
+	// The HTTP status code. `200` is returned if the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information. The value `success` is returned if the request was successful.
+	// The additional information. `success` is returned if the request was successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateImageDetectionTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The task ID. You can use this ID to call `GetImageDetectionTaskResult` to query the result.
+	// The task ID, which is used to call `GetImageDetectionTaskResult` to query results.
 	//
 	// example:
 	//

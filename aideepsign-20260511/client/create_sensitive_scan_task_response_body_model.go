@@ -58,7 +58,7 @@ type CreateSensitiveScanTaskResponseBody struct {
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The task ID. You can use this ID to call the GetSensitiveScanResult operation to query the result.
+	// The task ID. You can use this ID to call `GetSensitiveScanResult` to query the result.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type VerifyImageSignatureResponseBody struct {
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The issuer information.
 	Issuer *VerifyImageSignatureResponseBodyIssuer `json:"Issuer,omitempty" xml:"Issuer,omitempty" type:"Struct"`
-	// Indicates whether the issuer is trusted. A value of true indicates that the issuer certificate is issued by a trusted CA.
+	// Indicates whether the issuer is trusted. A value of true indicates that the issuer certificate is issued by a trusted certification authority (CA).
 	IssuerTrusted *bool `json:"IssuerTrusted,omitempty" xml:"IssuerTrusted,omitempty"`
 	// The content credentials manifest information. This parameter is returned only when the image contains a C2PA signature.
 	Manifest *VerifyImageSignatureResponseBodyManifest `json:"Manifest,omitempty" xml:"Manifest,omitempty" type:"Struct"`
@@ -64,11 +64,13 @@ type VerifyImageSignatureResponseBody struct {
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The signature verification status. Valid values:
 	//
-	// - Valid: The signature is valid.
+	// - Unsigned: The image does not contain C2PA data.
 	//
-	// - Invalid: The signature is invalid or has been tampered with.
+	// - Invalid: The signature, data hash, or C2PA structure is invalid.
 	//
-	// - Trusted: The signature is valid and trusted.
+	// - Valid: The signature and data hash are valid, but the issuer is not necessarily trusted.
+	//
+	// - Trusted: The signature is valid and the issuer certificate is trusted.
 	//
 	// example:
 	//
@@ -225,7 +227,7 @@ func (s *VerifyImageSignatureResponseBodyIssuer) Validate() error {
 }
 
 type VerifyImageSignatureResponseBodyManifest struct {
-	// The list of assertions, which contains metadata such as the origin and editing history of the image.
+	// The list of assertions, which contains metadata such as the provenance and editing history of the image.
 	Assertions []*VerifyImageSignatureResponseBodyManifestAssertions `json:"Assertions,omitempty" xml:"Assertions,omitempty" type:"Repeated"`
 	// The signature details.
 	SignatureInfo *VerifyImageSignatureResponseBodyManifestSignatureInfo `json:"SignatureInfo,omitempty" xml:"SignatureInfo,omitempty" type:"Struct"`

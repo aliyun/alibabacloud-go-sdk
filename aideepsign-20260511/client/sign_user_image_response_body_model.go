@@ -44,19 +44,19 @@ type SignUserImageResponseBody struct {
 	//
 	// CN=AIDeepSign User Certificate,O=Alibaba Cloud
 	CertificateSubject *string `json:"CertificateSubject,omitempty" xml:"CertificateSubject,omitempty"`
-	// The business error code. The value "OK" is returned if the request succeeds.
+	// The business error code. "OK" is returned if the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. The value 200 is returned if the request succeeds.
+	// The HTTP status code. 200 is returned if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information. The value "success" is returned if the request succeeds.
+	// The additional information. "success" is returned if the request is successful.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type SignUserImageResponseBody struct {
 	//
 	// https://bucket.oss-cn-hangzhou.aliyuncs.com/deepsign/123456789/signed/abc12345.png?Expires=1718700000&OSSAccessKeyId=...
 	SignedImageUrl *string `json:"SignedImageUrl,omitempty" xml:"SignedImageUrl,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

@@ -30,25 +30,25 @@ type iDetectImageBasicInfoResponseBody interface {
 }
 
 type DetectImageBasicInfoResponseBody struct {
-	// The business error code. "OK" is returned if the request was successful.
+	// The business error code. Returns "OK" when the request succeeds.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The image resolution (width × height), such as 1920 × 1080. This value is empty if the resolution cannot be identified.
+	// The image resolution (width × height), such as 1920 × 1080. Empty if the resolution cannot be identified.
 	//
 	// example:
 	//
 	// 2048 	- 2048
 	Dpi *string `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
-	// The HTTP status code. 200 is returned if the request was successful.
+	// The HTTP status code. Returns 200 when the request succeeds.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information. "success" is returned if the request was successful.
+	// The additional information. Returns "success" when the request succeeds.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type DetectImageBasicInfoResponseBody struct {
 	//
 	// 2.3 MB
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The image format, such as JPEG, PNG, GIF, or WEBP. UNKNOWN is returned if the format cannot be identified.
+	// The image format, such as JPEG, PNG, GIF, or WEBP. Returns `UNKNOWN` if the format cannot be identified.
 	//
 	// example:
 	//
