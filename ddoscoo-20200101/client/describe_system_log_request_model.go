@@ -24,7 +24,7 @@ type iDescribeSystemLogRequest interface {
 }
 
 type DescribeSystemLogRequest struct {
-	// The end of the time range to query. The bills of the burstable clean bandwidth that are issued before this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end time to query bills of burstable clean bandwidth that are generated before the specified time. This value is a timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -32,23 +32,23 @@ type DescribeSystemLogRequest struct {
 	//
 	// 1640966400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IP address of the instance.
+	// The IP address of the Anti-DDoS instance to query.
 	//
-	// > You can call the [DescribeInstanceDetails](https://help.aliyun.com/document_detail/91490.html) operation to query the IP addresses of all instances.
+	// > You can call [DescribeInstanceDetails](https://help.aliyun.com/document_detail/91490.html) to query the IP addresses of Anti-DDoS instances.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	// The type of the system log. Set the value to **20**, which indicates the billing logs for the burstable clean bandwidth.
+	// The type of system logs to query. The value is fixed at **20**, which indicates the billing logs of burstable clean bandwidth.
 	//
-	// > You must specify this parameter. Otherwise, the call fails.
+	// > You must set this parameter. Otherwise, the call fails.
 	//
 	// example:
 	//
 	// 20
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The number of the page to return.
+	// The page number of the returned page.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeSystemLogRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of logs to return on each page.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type DescribeSystemLogRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. The bills of the burstable clean bandwidth that are issued after this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start time to query bills of burstable clean bandwidth that are generated after the specified time. This value is a timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//

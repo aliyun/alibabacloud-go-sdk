@@ -20,9 +20,9 @@ type iConfigL7RsPolicyRequest interface {
 }
 
 type ConfigL7RsPolicyRequest struct {
-	// The domain name of the website.
+	// The domain name of the website whose forwarding rules you want to manage.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+	// > The domain name must have website forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names that have website forwarding rules configured.
 	//
 	// This parameter is required.
 	//
@@ -30,43 +30,43 @@ type ConfigL7RsPolicyRequest struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The back-to-origin policy. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	// The back-to-origin policy. The value is a character string that represents a JSON structure. The JSON structure contains the following fields:
 	//
-	// 	- **ProxyMode**: The load balancing algorithm for back-to-origin traffic. This field is required and must be a string. Valid values:
+	//  - **ProxyMode**: String | Required | The load balancing algorithm for back-to-origin. Valid values:
 	//
-	//     	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect requests from the same IP address to the same origin server.
+	//     - **ip_hash**: IP Hash algorithm. Requests from the same source IP address are directed to the same origin server based on hash mapping.
 	//
-	//     	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn. If you use this algorithm, you can specify a weight for each server based on server performance.
+	//     - **rr**: Polling algorithm. All requests are allocated to different origin servers in turn. When you use this algorithm, you can set weights for servers based on their performance.
 	//
-	//     	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from the instance to origin servers based on the intelligent DNS resolution feature.
+	//      - **least_time**: Least Time algorithm. This algorithm uses intelligent DNS resolution to ensure the lowest latency for service traffic across the entire path from the protection node to forward back to the origin server.
 	//
-	// 	- **Attributes**: the parameters for back-to-origin processing. This field is optional and must be a JSON array. Each element in the array contains the following fields:
+	// - **Attributes**: JSONArray | Optional | The back-to-origin parameter information. Each element in the array contains the following fields:
 	//
-	//     	- **RealServer**: the address of the origin server. This field is optional and must be a string.
+	//     - **RealServer**: String | Optional | The address of the origin server.
 	//
-	//     	- **Attribute**: the parameter for back-to-origin processing. This field is optional and must be a JSON object. Valid values:
+	//     - **Attribute**: JSONObject | Optional | The back-to-origin parameters. This field contains the following fields:
 	//
-	//         	- **Weight**: the weight of the server. This field is optional and must be an integer. This field takes effect only when **ProxyMode*	- is set to **rr**. Valid values: **1*	- to **100**. Default value: **100**. An origin server with a higher weight receives more requests.
+	//         - **Weight**: Integer | Optional | The weight of the server. This property takes effect only when the polling algorithm is used (**ProxyMode*	- is set to **rr**). Valid values: **1*	- to **100**. Default value: **100**. A server with a higher weight receives more requests.
 	//
-	//         	- **ConnectTimeout**: the timeout period for new connections. This field is optional and must be an integer. Valid values: **1*	- to **10**. Unit: seconds. Default value: **5**.
+	//         - **ConnectTimeout**: Integer | Optional | The timeout period for new connections. Valid values: **1*	- to **10**. Unit: seconds. Default value: **5**.
 	//
-	//         	- **FailTimeout**: the period after which a connection is considered to have failed. This field is optional and must be an integer. Valid values: **1*	- to **3600**. Unit: seconds. Default value: **10**.
+	//         - **FailTimeout**: Integer | Optional | The failed timeout period. Valid values: **1*	- to **3600**. Unit: seconds. Default value: **10**.
 	//
-	//         	- **MaxFails**: the maximum number of failures allowed. This field is related to health checks. This field is optional and must be an integer. Valid values: **1*	- to **10**. Unit: seconds. Default value: **3**.
+	//         - **MaxFails**: Integer | Optional | The maximum number of failures for health checks. Valid values: **1*	- to **10**. Default value: **3**.
 	//
-	//         	- **Mode**: the primary/secondary attribute flag. This parameter is optional and must be a string. Valid values: **active*	- (primary) and **backup*	- (secondary).
+	//         - **Mode**: String | Optional | The primary/secondary property flag. Valid values: **active*	- indicates primary. **backup*	- indicates secondary.
 	//
-	//         	- **ReadTimeout**: the read timeout period. This field is optional and must be an integer. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
+	//         - **ReadTimeout**: Integer | Optional | The read timeout period. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
 	//
-	//         	- **SendTimeout**: the write timeout period. This field is optional and must be an integer. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
+	//         - **SendTimeout**: Integer | Optional | The write timeout period. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"ProxyMode":"rr","Attributes":[{"RealServer":"1.***.***.1","Attribute":{"Weight":100}},{"RealServer":"2.***.***.2","Attribute":{"Weight":100}}]}
+	// {"ProxyMode":"rr","Attributes":[{"RealServer":"1.***.***.1","Attribute":{"Weight":100,"ConnectTimeout":5,"FailTimeout":10,"MaxFails":3,"Mode":"active","ReadTimeout":120,"SendTimeout":120}},{"RealServer":"2.***.***.2","Attribute":{"Weight":100,"ConnectTimeout":5,"FailTimeout":10,"MaxFails":3,"Mode":"active","ReadTimeout":120,"SendTimeout":120}}]}
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
@@ -74,11 +74,11 @@ type ConfigL7RsPolicyRequest struct {
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The retry switch. Valid values:
+	// Specifies whether to enable back-to-origin retry. Valid values:
 	//
-	// 	- **1**: on
+	// - **1**: Enabled.
 	//
-	// 	- **0**: off
+	// - **0**: Disabled.
 	//
 	// example:
 	//

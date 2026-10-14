@@ -16,10 +16,8 @@ type iDescribeDomainSecurityProfileResponseBody interface {
 }
 
 type DescribeDomainSecurityProfileResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
-	Result []*DescribeDomainSecurityProfileResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeDomainSecurityProfileResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDomainSecurityProfileResponseBody) String() string {
@@ -62,28 +60,8 @@ func (s *DescribeDomainSecurityProfileResponseBody) Validate() error {
 }
 
 type DescribeDomainSecurityProfileResponseBodyResult struct {
-	// Indicates whether the global mitigation policy is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	GlobalEnable *bool `json:"GlobalEnable,omitempty" xml:"GlobalEnable,omitempty"`
-	// The mode of the global mitigation policy. Valid values:
-	//
-	// 	- **weak**: the Low mode
-	//
-	// 	- **default**: the Normal mode
-	//
-	// 	- **hard**: the Strict mode
-	//
-	// example:
-	//
-	// default
-	GlobalMode *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
+	GlobalEnable *bool   `json:"GlobalEnable,omitempty" xml:"GlobalEnable,omitempty"`
+	GlobalMode   *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
 }
 
 func (s DescribeDomainSecurityProfileResponseBodyResult) String() string {

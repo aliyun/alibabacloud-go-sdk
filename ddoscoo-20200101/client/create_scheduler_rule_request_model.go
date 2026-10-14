@@ -22,25 +22,25 @@ type iCreateSchedulerRuleRequest interface {
 }
 
 type CreateSchedulerRuleRequest struct {
-	// The details of the CDN interaction rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
+	// The details of the CDN interaction rule. This parameter is a JSON format character string. The following list describes the structure:
 	//
-	// 	- **ParamType**: the type of the scheduling rule. This field is required and must be of the string type. Set the value to **cdn**. This indicates that you want to modify a CDN interaction rule.
+	// - **ParamType**: Required. String type. The type of CDN interaction. Valid values: **cdn**, which indicates CDN interaction.
 	//
-	// 	- **ParamData**: the values of parameters that you want to modify for the CDN interaction rule. This field is required and must be of the map type. ParamData contains the following parameters:
+	// - **ParamData**: Required. Map type. The CDN interaction parameters. The following list describes the structure:
 	//
-	//     	- **Domain**: the accelerated domain in CDN. This parameter is required and must be of the string type.
+	//     - **Domain**: Required. String type. The CDN-accelerated domain name.
 	//
-	//     	- **Cname**: the CNAME that is assigned to the accelerated domain. This parameter is required and must be of the string type.
+	//     - **Cname**: Required. String type. The CNAME of the accelerated domain name.
 	//
-	//     	- **AccessQps**: the queries per second (QPS) threshold that is used to switch service traffic to Anti-DDoS Pro or Anti-DDoS Premium. This parameter is required and must be of the integer type.
+	//     - **AccessQps**: Required. Integer type. The access QPS threshold. If the QPS exceeds this threshold, traffic is switched to Anti-DDoS Pro and Anti-DDoS Premium.
 	//
-	//     	- **UpstreamQps**: the QPS threshold that is used to switch service traffic to CDN. This parameter is optional and must be of the integer type.
+	//     - **UpstreamQps**: Optional. Integer type. The back-to-origin QPS threshold. If the QPS is lower than this threshold, traffic is switched to CDN.
 	//
 	// example:
 	//
 	// {"ParamType":"cdn","ParamData":{"Domain":"example.aliyundoc.com","Cname":"demo.aliyundoc.com","AccessQps":100,"UpstreamQps":100}}
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//
@@ -56,15 +56,15 @@ type CreateSchedulerRuleRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- **2**: tiered protection
+	// - **2**: tiered protection
 	//
-	// 	- **3**: network acceleration
+	// - **3**: acceleration for China-to-global traffic
 	//
-	// 	- **5**: Alibaba Cloud CDN (CDN) interaction
+	// - **5**: CDN interaction
 	//
-	// 	- **6**: cloud service interaction
+	// - **6**: cloud service interaction
 	//
-	// 	- **8**: secure acceleration
+	// - **8**: secure acceleration
 	//
 	// This parameter is required.
 	//
@@ -72,31 +72,31 @@ type CreateSchedulerRuleRequest struct {
 	//
 	// 2
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The details of the scheduling rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
+	// The details of the general interaction rule. This parameter is a JSON string that consists of the following characters. The following list describes the structure:
 	//
-	// 	- **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
+	// - **Type**: String type. Required. The format of the Resource for Interaction address. Valid values:
 	//
-	//     	- **A**: IP address
+	//     - **A**: IP address
 	//
-	//     	- **CNAME**: domain name
+	//     - **CNAME**: domain name
 	//
-	// 	- **Value**: the address of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type.
+	// - **Value**: String type. Required. The address of the Resource for Interaction.
 	//
-	// 	- **Priority**: the priority of the scheduling rule. This field is required and must be of the integer type. Valid values: **0*	- to **100**. A larger value indicates a higher priority.
+	// - **Priority**: Integer type. Required. The priority of the rule. Valid values: **0*	- to **100**. A larger value indicates a higher priority.
 	//
-	// 	- **ValueType**: the type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the integer type. Valid values:
+	// - **ValueType**: Integer type. Required. The type of the Resource for Interaction. Valid values:
 	//
-	//     	- **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+	//     - **1**: IP Address of Anti-DDoS Proxy instance
 	//
-	//     	- **2**: the IP address of the interaction resource in the tiered protection scenario
+	//     - **2**: (Tiered protection) IP addresses of cloud resources
 	//
-	//     	- **3**: the IP address that is used to accelerate access in the network acceleration scenario
+	//     - **3**: (Sec-acceleration for China-to-global traffic) acceleration line IP address
 	//
-	//     	- **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
+	//     - **5**: (CDN interaction) acceleration domain name
 	//
-	//     	- **6*	- the IP address of the interaction resource in the cloud service interaction scenario
+	//     - **6**: (Cloud service interaction) IP addresses of cloud resources
 	//
-	// 	- **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType*	- is set to **2**. The value must be of the string type.
+	// - **RegionId**: String type. Optional (required when **ValueType*	- is **2**). The region ID.
 	//
 	// This parameter is required.
 	//

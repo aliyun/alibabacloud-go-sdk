@@ -116,11 +116,11 @@ type DescribeElasticQpsRecordResponseBodyElasticQpsList struct {
 	QpsPeak *int64 `json:"QpsPeak,omitempty" xml:"QpsPeak,omitempty"`
 	// Indicates whether the instance has expired or is released. Valid values:
 	//
-	// 	- **1**: The instance runs as expected.
+	// - **1**: The instance runs as expected.
 	//
-	// 	- **2**: The instance has expired.
+	// - **2**: The instance has expired.
 	//
-	// 	- **4**: The instance is released.
+	// - **4**: The instance is released.
 	//
 	// example:
 	//

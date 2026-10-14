@@ -16,9 +16,9 @@ type iModifyInstanceRemarkRequest interface {
 }
 
 type ModifyInstanceRemarkRequest struct {
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to manage.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can invoke [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -26,10 +26,6 @@ type ModifyInstanceRemarkRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The description of the instance.
-	//
-	// The value can contain letters, digits, and some special characters, such as`, . + - 	- / _` The value can be up to 500 characters in length.
-	//
 	// This parameter is required.
 	//
 	// example:

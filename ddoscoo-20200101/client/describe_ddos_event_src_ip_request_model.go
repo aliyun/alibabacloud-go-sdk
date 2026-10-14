@@ -20,11 +20,11 @@ type iDescribeDDosEventSrcIpRequest interface {
 }
 
 type DescribeDDosEventSrcIpRequest struct {
-	// The type of the attack event that you want to query. Valid values:
+	// The type of the attack event to query. Valid values:
 	//
-	// 	- **defense**: attack events that trigger traffic scrubbing
+	// - **defense**: traffic scrubbing events for volumetric attacks.
 	//
-	// 	- **blackhole**: attack events that trigger blackhole filtering
+	// - **blackhole**: blackhole filtering events for volumetric attacks.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeDDosEventSrcIpRequest struct {
 	//
 	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	// The attacked IP Address of Anti-DDoS Proxy instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeDDosEventSrcIpRequest struct {
 	//
 	// 203.***.***.199
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The number of source IP addresses that you want to return. The source IP addresses are returned in descending order of attack traffic. By default, the top **five*	- source IP addresses are returned.
+	// The number of attack source IP addresses to return. The IP addresses are sorted by attack traffic in descending order. Default value: **5**.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type DescribeDDosEventSrcIpRequest struct {
 	//
 	// 2
 	Range *int64 `json:"Range,omitempty" xml:"Range,omitempty"`
-	// The UNIX timestamp when the query starts. Unit: seconds.
+	// The start timestamp of the event to query. Unit: seconds.
 	//
-	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+	// > You can call [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) to query the start time of all events.
 	//
 	// This parameter is required.
 	//

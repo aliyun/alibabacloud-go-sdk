@@ -16,7 +16,7 @@ type iDescribeDDosEventAreaResponseBody interface {
 }
 
 type DescribeDDosEventAreaResponseBody struct {
-	// The information about the source region from which the volumetric attack was initiated.
+	// The information about the attack source regions.
 	Areas []*DescribeDDosEventAreaResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,13 +66,15 @@ func (s *DescribeDDosEventAreaResponseBody) Validate() error {
 }
 
 type DescribeDDosEventAreaResponseBodyAreas struct {
-	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
+	// The code of the attack source region, including Chinese regions (at the province or city level) and international regions (at the country level). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
+	//
+	// > For more information about the valid values of this parameter, see [China and international regions](https://help.aliyun.com/document_detail/167926.html).
 	//
 	// example:
 	//
 	// 110000
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The number of request packets that were sent from the source region.
+	// The number of request packets from the attack source region.
 	//
 	// example:
 	//

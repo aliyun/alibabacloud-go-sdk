@@ -24,7 +24,7 @@ type iModifyPortRequest interface {
 }
 
 type ModifyPortRequest struct {
-	// The port of the origin server. Valid values: **0*	- to **65535**.
+	// The origin server port. Valid values: **0*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type ModifyPortRequest struct {
 	FrontendPort *string `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The type of the forwarding protocol. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**: TCP protocol.
 	//
-	// 	- **udp**
+	// - **udp**: UDP protocol.
 	//
 	// This parameter is required.
 	//
@@ -52,18 +52,27 @@ type ModifyPortRequest struct {
 	//
 	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
-	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+	// The ID of the Anti-DDoS Proxy instance to which the port forwarding rule belongs.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Proxy instances.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-st21zbyq****
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
-	// An array that consists of the IP addresses of origin servers.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the traffic diversion switch is on. Valid values:
+	//
+	// - **0**: off.
+	//
+	// - **1**: on.
+	//
+	// example:
+	//
+	// 0
+	ProxyEnable *int64 `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	// The IP addresses of origin servers.
 	//
 	// This parameter is required.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`

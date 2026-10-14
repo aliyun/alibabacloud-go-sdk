@@ -14,19 +14,19 @@ type iConfigNetworkRulesRequest interface {
 }
 
 type ConfigNetworkRulesRequest struct {
-	// The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+	// The details of the port forwarding rules. The value is a JSON format character string that contains the following structure:
 	//
-	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	// - **InstanceId**: String. Required. The instance ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	// - **Protocol**: String. Required. The forwarding protocol type. Valid values: **tcp**, **udp**.
 	//
-	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// - **FrontendPort**: Integer. Required. The Redirection Port.
 	//
-	// 	- **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+	// - **BackendPort**: Integer. Required. The origin server port.
 	//
-	// 	- **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+	// - **RealServers**: JSON array. Required. The list of origin server IP addresses. A maximum of 20 IP addresses are supported.
 	//
-	// > You can modify only the value of **RealServers*	- when you modify a port forwarding rule.
+	// > When you edit port forwarding rules, you can modify only **RealServers**, which specifies the origin server IP addresses.
 	//
 	// This parameter is required.
 	//

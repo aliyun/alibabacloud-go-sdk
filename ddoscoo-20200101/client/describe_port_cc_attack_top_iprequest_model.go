@@ -20,35 +20,12 @@ type iDescribePortCcAttackTopIPRequest interface {
 }
 
 type DescribePortCcAttackTopIPRequest struct {
-	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance to query.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 203.107.XX.XX
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The maximum number of entries to return.
-	//
-	// example:
-	//
-	// 10
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The attacked port.
-	//
+	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Limit *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 6663
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The beginning of the time range to query. Unit: seconds.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1678017453
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 

@@ -16,9 +16,9 @@ type iDescribeDomainTopAttackListResponseBody interface {
 }
 
 type DescribeDomainTopAttackListResponseBody struct {
-	// The peak QPS of the website.
+	// The peak QPS data of website services.
 	AttackList []*DescribeDomainTopAttackListResponseBodyAttackList `json:"AttackList,omitempty" xml:"AttackList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribeDomainTopAttackListResponseBody) Validate() error {
 }
 
 type DescribeDomainTopAttackListResponseBodyAttackList struct {
-	// The attack QPS. Unit: QPS
+	// The attack QPS. Unit: QPS.
 	//
 	// example:
 	//
 	// 0
 	Attack *int64 `json:"Attack,omitempty" xml:"Attack,omitempty"`
-	// The number of all QPS, which includes normal and attack QPS. Unit: QPS.
+	// The total QPS, including normal service requests and attacks. Unit: QPS.
 	//
 	// example:
 	//
 	// 294
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The domain name of the website.
+	// The website domain name.
 	//
 	// example:
 	//

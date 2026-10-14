@@ -16,7 +16,10 @@ type iDescribeDomainCcProtectSwitchResponseBody interface {
 }
 
 type DescribeDomainCcProtectSwitchResponseBody struct {
+	// The status of each protection feature for the website.
 	ProtectSwitchList []*DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList `json:"ProtectSwitchList,omitempty" xml:"ProtectSwitchList,omitempty" type:"Repeated"`
+	// The ID of the request. This ID is unique to the request. Use the request ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// CF33B4C3-196E-4015-AADD-5CAD00057B80
@@ -63,43 +66,114 @@ func (s *DescribeDomainCcProtectSwitchResponseBody) Validate() error {
 }
 
 type DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList struct {
+	// The mode of AI-powered protection. Valid values:
+	//
+	// - **watch**: Warning mode
+	//
+	// - **defense**: Defense mode
+	//
 	// example:
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
+	// The status of the AI-powered protection feature. Valid values:
+	//
+	// - **0**: Disabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 1
 	AiRuleEnable *int32 `json:"AiRuleEnable,omitempty" xml:"AiRuleEnable,omitempty"`
+	// The level of AI-powered protection. Valid values:
+	//
+	// - **level30**: Loose
+	//
+	// - **level60**: Normal
+	//
+	// - **level90**: Strict
+	//
 	// example:
 	//
 	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
+	// The status of the blacklists and whitelists feature. Valid values:
+	//
+	// - **0**: Disabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 1
 	BlackWhiteListEnable *int32 `json:"BlackWhiteListEnable,omitempty" xml:"BlackWhiteListEnable,omitempty"`
+	// The status of custom CC rules. Valid values:
+	//
+	// - **0**: Disabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 0
 	CcCustomRuleEnable *int32 `json:"CcCustomRuleEnable,omitempty" xml:"CcCustomRuleEnable,omitempty"`
+	// The status of the rate limiting (CC protection) feature. Valid values:
+	//
+	// - **0**: Disabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 1
-	CcEnable       *int32  `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
+	CcEnable *int32 `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
+	// The status of the global switch for custom and precise CC protection. Valid values:
+	//
+	// - **open**: Enabled
+	//
+	// - **close**: Disabled
+	//
+	// example:
+	//
+	// close
 	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
+	// The CC protection mode. Valid values:
+	//
+	// - **default**: Normal
+	//
+	// - **gf_under_attack**: Emergency
+	//
+	// - **gf_sos_verify**: Strict
+	//
+	// - **gf_sos_enhance**: Very Strict
+	//
 	// example:
 	//
 	// default
 	CcTemplate *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
+	// The domain name of the website.
+	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The status of the precise access control feature. Valid values:
+	//
+	// - **0**: Disabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 0
 	PreciseRuleEnable *int32 `json:"PreciseRuleEnable,omitempty" xml:"PreciseRuleEnable,omitempty"`
+	// The status of the Location Blacklist (Domain Names) feature. Valid values:
+	//
+	// - **0**: Disabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 0

@@ -18,7 +18,7 @@ type iDescribeDefenseRecordsResponseBody interface {
 }
 
 type DescribeDefenseRecordsResponseBody struct {
-	// An array that consists of details of the log of an advanced mitigation session.
+	// The advanced mitigation logs.
 	DefenseRecords []*DescribeDefenseRecordsResponseBodyDefenseRecords `json:"DefenseRecords,omitempty" xml:"DefenseRecords,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type DescribeDefenseRecordsResponseBody struct {
 	//
 	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of advanced mitigation sessions.
+	// The total number of advanced mitigation records.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeDefenseRecordsResponseBody) Validate() error {
 }
 
 type DescribeDefenseRecordsResponseBodyDefenseRecords struct {
-	// The peak attack traffic. Unit: bit/s.
+	// The peak attack throughput. Unit: bps.
 	//
 	// example:
 	//
 	// 6584186000
 	AttackPeak *int64 `json:"AttackPeak,omitempty" xml:"AttackPeak,omitempty"`
-	// The end time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
+	// The end time of the mitigation. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -101,23 +101,23 @@ type DescribeDefenseRecordsResponseBodyDefenseRecords struct {
 	//
 	// 2
 	EventCount *int32 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
-	// The ID of the instance.
+	// The ID of the Anti-DDoS instance.
 	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
+	// The start time of the mitigation. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1582992000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the advanced mitigation session. Valid values:
+	// The status of advanced mitigation. Valid values:
 	//
-	// 	- **0**: The advanced mitigation session is being used.
+	// - **0**: in use
 	//
-	// 	- **1**: The advanced mitigation session is used.
+	// - **1**: ended
 	//
 	// example:
 	//

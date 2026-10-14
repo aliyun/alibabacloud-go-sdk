@@ -14,39 +14,43 @@ type iConfigLayer4RulePolicyRequest interface {
 }
 
 type ConfigLayer4RulePolicyRequest struct {
-	// The port forwarding rule that you want to manage.
+	// The port forwarding rules.
 	//
-	// This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
+	// This parameter is a string that represents a JSON array converted from a character string. Each element in the JSON array represents a created port forwarding rule. You can specify up to one port forwarding rule at a time.
 	//
-	// > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
+	// > You can invoke [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query all created port forwarding rules.
 	//
 	// Each port forwarding rule contains the following fields:
 	//
-	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	// - **InstanceId**: string. Required. The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	// - **Protocol**: string. Required. The forwarding protocol type. Valid values: **tcp**, **udp**.
 	//
-	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// - **FrontendPort**: integer. Required. The Redirection Port.
 	//
-	// 	- **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+	// - **BackendPort**: integer. Required. The origin server port.
 	//
-	// 	- **PriRealServers**: the IP addresses of the primary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the primary origin server. You can configure a maximum of 20 IP addresses.
+	// - **PriRealServers**: JSON array. Required. The list of primary origin server IP addresses. Each element in the JSON array represents a primary origin server IP address. You can specify up to 20 primary origin server IP addresses.
 	//
-	//     Each element in the JSON array contains the following field:
+	//     Each primary origin server IP address contains the following fields:
 	//
-	//     	- **RealServer**: the IP address of the primary origin server. This field is required and must be of the STRING type.
+	//     - **RealServer**: string. Required. The primary origin server IP address.
 	//
-	// 	- **SecRealServers**: the IP addresses of the secondary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the secondary origin server. You can configure a maximum of 20 IP addresses.
+	// - **SecRealServers**: JSON array. Required. The list of secondary origin server IP addresses. Each element in the JSON array represents a secondary origin server IP address. You can specify up to 20 secondary origin server IP addresses.
 	//
-	//     Each element in the JSON array contains the following field:
+	//     Each secondary origin server IP address contains the following fields:
 	//
-	//     	- **RealServer**: the IP address of the secondary origin server. This field is required and must be of the STRING type.
 	//
-	// 	- **CurrentRsIndex**: the origin server that you want to use to receive service traffic. This field is required and must be of the INTEGER type. Valid values:
 	//
-	//     	- **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+	//     - **RealServer**: string. Required. The secondary origin server IP address.
 	//
-	//     	- **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	//
+	//
+	// - **CurrentRsIndex**: integer. Required. The type of origin server to activate. Valid values:
+	//
+	//     - **1**: The primary origin server settings take effect. Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the primary origin server IP addresses.
+	//
+	//     - **2**: The secondary origin server settings take effect. Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the secondary origin server IP addresses.
 	//
 	// This parameter is required.
 	//

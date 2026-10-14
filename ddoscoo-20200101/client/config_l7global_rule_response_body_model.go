@@ -14,6 +14,8 @@ type iConfigL7GlobalRuleResponseBody interface {
 }
 
 type ConfigL7GlobalRuleResponseBody struct {
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request that can be used for troubleshooting.
+	//
 	// example:
 	//
 	// CF33B4C3-196E-4015-AADD-5CAD00057B80

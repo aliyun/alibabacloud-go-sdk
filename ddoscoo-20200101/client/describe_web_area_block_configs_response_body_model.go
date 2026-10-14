@@ -16,7 +16,7 @@ type iDescribeWebAreaBlockConfigsResponseBody interface {
 }
 
 type DescribeWebAreaBlockConfigsResponseBody struct {
-	// An array that consists of the configurations of the Location Blacklist (Domain Names) policy.
+	// The configuration information of the Location Blacklist feature (for domain names).
 	AreaBlockConfigs []*DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs `json:"AreaBlockConfigs,omitempty" xml:"AreaBlockConfigs,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -72,7 +72,7 @@ type DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The configuration of the blocked locations.
+	// The information about the blocked regions.
 	RegionList []*DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 }
 
@@ -116,17 +116,17 @@ func (s *DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs) Validate() err
 }
 
 type DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList struct {
-	// Indicates whether the location is blocked. Valid values:
+	// The blocking status. Valid values:
 	//
-	// 	- **0**: yes
+	// - **0**: not blocked
 	//
-	// 	- **1**: no
+	// - **1**: blocked
 	//
 	// example:
 	//
 	// 0
 	Block *int32 `json:"Block,omitempty" xml:"Block,omitempty"`
-	// The name of the location.
+	// The region.
 	//
 	// example:
 	//

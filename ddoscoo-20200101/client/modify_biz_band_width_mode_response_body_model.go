@@ -14,11 +14,6 @@ type iModifyBizBandWidthModeResponseBody interface {
 }
 
 type ModifyBizBandWidthModeResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	//
-	// example:
-	//
-	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

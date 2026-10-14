@@ -18,19 +18,19 @@ type iDescribeWebCCRulesResponseBody interface {
 }
 
 type DescribeWebCCRulesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EAED912D-909E-45F0-AF74-AC0CCDCAE314
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of custom frequency control rules.
+	// The total number of frequency control (HTTP flood mitigation) custom rules.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The custom frequency control rule.
+	// The frequency control (HTTP flood mitigation) custom rules.
 	WebCCRules []*DescribeWebCCRulesResponseBodyWebCCRules `json:"WebCCRules,omitempty" xml:"WebCCRules,omitempty" type:"Repeated"`
 }
 
@@ -83,51 +83,51 @@ func (s *DescribeWebCCRulesResponseBody) Validate() error {
 }
 
 type DescribeWebCCRulesResponseBodyWebCCRules struct {
-	// The action triggered if the rule is matched. Valid values:
+	// The blocking type. Valid values:
 	//
-	// 	- **close**: The requests that match the rule are blocked.
+	// - **close**: blocks the request.
 	//
-	// 	- **captcha**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
+	// - **captcha**: implements CAPTCHA verification.
 	//
 	// example:
 	//
 	// close
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	// The number of requests that are allowed from a single IP address. Valid values: **2*	- to **2000**.
+	// The number of visits from a single IP address. Valid values: **2*	- to **2000**.
 	//
 	// example:
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The check interval. Valid values: **5*	- to **10800**. Unit: seconds.
+	// The detection interval. Valid values: **5*	- to **10800**. Unit: seconds.
 	//
 	// example:
 	//
 	// 5
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The match mode. Valid values:
+	// The matching mode. Valid values:
 	//
-	// 	- **prefix**: prefix match.
+	// - **prefix**: prefix match.
 	//
-	// 	- **match**: exact match.
+	// - **match**: exact match.
 	//
 	// example:
 	//
 	// prefix
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// wq
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The validity period. Valid values: **1*	- to **1440**. Unit: minutes.
+	// The blocking duration. Valid values: **1*	- to **1440**. Unit: minutes.
 	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The check path.
+	// The detection path.
 	//
 	// example:
 	//

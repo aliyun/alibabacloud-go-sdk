@@ -18,9 +18,9 @@ type iModifyWebCCGlobalSwitchRequest interface {
 type ModifyWebCCGlobalSwitchRequest struct {
 	// Specifies whether the HTTP flood mitigation feature is enabled. Valid values:
 	//
-	// 	- **open**
+	// - **open**
 	//
-	// 	- **close**
+	// - **close**
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ModifyWebCCGlobalSwitchRequest struct {
 	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
 	// The domain name of the website.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// This parameter is required.
 	//

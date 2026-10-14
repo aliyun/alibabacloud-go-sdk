@@ -14,7 +14,7 @@ type iDescribeInstanceDetailsRequest interface {
 }
 
 type DescribeInstanceDetailsRequest struct {
-	// An array that consists of the IDs of instances to query.
+	// The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances to query.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`

@@ -26,15 +26,15 @@ type iDescribeDomainTopHttpMethodRequest interface {
 type DescribeDomainTopHttpMethodRequest struct {
 	// The domain name of the website.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or on the minute.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeDomainTopHttpMethodRequest struct {
 	//
 	// 1722339300
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries to return.
+	// The number of entries to return.
 	//
 	// This parameter is required.
 	//
@@ -51,11 +51,11 @@ type DescribeDomainTopHttpMethodRequest struct {
 	// 20
 	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The region in which your service is deployed. Valid values:
+	// The region of the service. Valid values:
 	//
-	// 	- **cn**: a region in the Chinese mainland.
+	// - **cn**: the Chinese mainland.
 	//
-	// 	- **cn-hongkong**: a region outside the Chinese mainland.
+	// - **cn-hongkong**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -63,9 +63,9 @@ type DescribeDomainTopHttpMethodRequest struct {
 	//
 	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or on the minute.
 	//
 	// This parameter is required.
 	//

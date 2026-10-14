@@ -22,7 +22,7 @@ type DescribeWebInstanceRelationsResponseBody struct {
 	//
 	// 0222382B-5FE5-4FF7-BC9B-97EE31D58818
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the instances to which a website service is added.
+	// The information about Anti-DDoS Pro or Anti-DDoS Premium instances associated with website services.
 	WebInstanceRelations []*DescribeWebInstanceRelationsResponseBodyWebInstanceRelations `json:"WebInstanceRelations,omitempty" xml:"WebInstanceRelations,omitempty" type:"Repeated"`
 }
 
@@ -72,7 +72,7 @@ type DescribeWebInstanceRelationsResponseBodyWebInstanceRelations struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The information about the instance to which a website service is added.
+	// The information about the associated Anti-DDoS Pro or Anti-DDoS Premium instances.
 	InstanceDetails []*DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetails `json:"InstanceDetails,omitempty" xml:"InstanceDetails,omitempty" type:"Repeated"`
 }
 
@@ -116,19 +116,19 @@ func (s *DescribeWebInstanceRelationsResponseBodyWebInstanceRelations) Validate(
 }
 
 type DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetails struct {
-	// The IP addresses of the instance.
+	// The list of IP addresses of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	EipList []*string `json:"EipList,omitempty" xml:"EipList,omitempty" type:"Repeated"`
-	// The function plan of the instance. Valid values:
+	// The function plan type. Valid values:
 	//
-	// 	- **default**: Standard function plan
+	// - **default**: Standard function.
 	//
-	// 	- **enhance**: Enhanced function plan
+	// - **enhance**: Enhanced function.
 	//
 	// example:
 	//
 	// enhance
 	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
-	// The ID of the instance.
+	// The Anti-DDoS Pro or Anti-DDoS Premium instance ID.
 	//
 	// example:
 	//

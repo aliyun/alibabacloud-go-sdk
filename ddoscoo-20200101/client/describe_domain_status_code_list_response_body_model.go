@@ -22,7 +22,7 @@ type DescribeDomainStatusCodeListResponseBody struct {
 	//
 	// 3B63C0DD-8AC5-44B2-95D6-064CA9296B9C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics on response status codes.
+	// The statistics information on response status codes.
 	StatusCodeList []*DescribeDomainStatusCodeListResponseBodyStatusCodeList `json:"StatusCodeList,omitempty" xml:"StatusCodeList,omitempty" type:"Repeated"`
 }
 
@@ -78,13 +78,13 @@ type DescribeDomainStatusCodeListResponseBodyStatusCodeList struct {
 	//
 	// 15520
 	Status200 *int64 `json:"Status200,omitempty" xml:"Status200,omitempty"`
-	// The number of 2xx status codes.
+	// The number of 2XX status codes.
 	//
 	// example:
 	//
 	// 15520
 	Status2XX *int64 `json:"Status2XX,omitempty" xml:"Status2XX,omitempty"`
-	// The number of 3xx status codes.
+	// The number of 3XX status codes.
 	//
 	// example:
 	//
@@ -108,9 +108,19 @@ type DescribeDomainStatusCodeListResponseBodyStatusCodeList struct {
 	//
 	// 0
 	Status405 *int64 `json:"Status405,omitempty" xml:"Status405,omitempty"`
+	// The number of 410 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status410 *int64 `json:"Status410,omitempty" xml:"Status410,omitempty"`
+	// The number of 499 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status499 *int64 `json:"Status499,omitempty" xml:"Status499,omitempty"`
-	// The number of 4xx status codes.
+	// The number of 4XX status codes.
 	//
 	// example:
 	//
@@ -140,13 +150,13 @@ type DescribeDomainStatusCodeListResponseBodyStatusCodeList struct {
 	//
 	// 0
 	Status504 *int64 `json:"Status504,omitempty" xml:"Status504,omitempty"`
-	// The number of 5xx status codes.
+	// The number of 5XX status codes.
 	//
 	// example:
 	//
 	// 0
 	Status5XX *int64 `json:"Status5XX,omitempty" xml:"Status5XX,omitempty"`
-	// The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
+	// The time of the statistic. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

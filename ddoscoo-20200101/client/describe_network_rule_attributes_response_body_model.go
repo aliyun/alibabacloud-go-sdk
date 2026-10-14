@@ -16,7 +16,7 @@ type iDescribeNetworkRuleAttributesResponseBody interface {
 }
 
 type DescribeNetworkRuleAttributesResponseBody struct {
-	// An array that consists of the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
+	// The protection settings of port forwarding rules for non-website services, including session persistence and DDoS mitigation policies.
 	NetworkRuleAttributes []*DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes `json:"NetworkRuleAttributes,omitempty" xml:"NetworkRuleAttributes,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,7 +66,7 @@ func (s *DescribeNetworkRuleAttributesResponseBody) Validate() error {
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes struct {
-	// The mitigation settings of the port forwarding rule.
+	// The protection settings of the port forwarding rules.
 	Config *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// The forwarding port.
 	//
@@ -74,7 +74,7 @@ type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes struct {
 	//
 	// 8080
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**
 	//
-	// 	- **udp**
+	// - **udp**
 	//
 	// example:
 	//
@@ -146,19 +146,19 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes) Validat
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig struct {
-	// The protection policy applied when the number of connections initiated from a source IP address frequently exceeds the limit.
+	// The policy for controlling sources that frequently exceed connection limits.
 	Cc *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc `json:"Cc,omitempty" xml:"Cc,omitempty" type:"Struct"`
-	// The status of the Empty Connection switch. Valid values:
+	// The status of the Empty Connection filter. Valid values:
 	//
-	// 	- **on**: The switch is turned on.
+	// - **on**: enabled.
 	//
-	// 	- **off**: The switch is turned off.
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// off
 	NodataConn *string `json:"NodataConn,omitempty" xml:"NodataConn,omitempty"`
-	// The settings of the Packet Length Limit policy.
+	// The Packet Length Limit configuration.
 	PayloadLen *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPayloadLen `json:"PayloadLen,omitempty" xml:"PayloadLen,omitempty" type:"Struct"`
 	// The timeout period of session persistence. Valid values: **30*	- to **3600**. Unit: seconds. Default value: **0**, which indicates that session persistence is disabled.
 	//
@@ -166,15 +166,15 @@ type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig struct
 	//
 	// 0
 	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// The settings of the Speed Limit for Destination policy.
+	// The Speed Limit for Destination configuration.
 	Sla *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla `json:"Sla,omitempty" xml:"Sla,omitempty" type:"Struct"`
-	// The settings of the Speed Limit for Source policy.
+	// The source rate limiting configuration.
 	Slimit *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit `json:"Slimit,omitempty" xml:"Slimit,omitempty" type:"Struct"`
-	// The status of the False Source switch. Valid values:
+	// The status of the False Source filter. Valid values:
 	//
-	// 	- **on**: The switch is turned on.
+	// - **on**: enabled.
 	//
-	// 	- **off**: The switch is turned off.
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig) V
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc struct {
-	// The protection policy that a source IP address is added to the blacklist when the number of connections initiated from the IP address frequently exceeds the limit.
+	// The policy for adding a source IP address to the blacklist when the source connection exceeds the limit multiple times.
 	Sblack []*DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSblack `json:"Sblack,omitempty" xml:"Sblack,omitempty" type:"Repeated"`
 }
 
@@ -313,33 +313,33 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc)
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSblack struct {
-	// The threshold that the number of connections initiated from a source IP address can exceed the limit. Set the value to **5**. If the number of connections initiated from a source IP address exceeds the limit five times during the check, the source IP address is added to the blacklist.
+	// The number of times the source connection exceeds the limit. The value is fixed at **5**, which indicates that if the source connection exceeds the limit 5 times within the check interval, the source IP address is added to the blacklist.
 	//
 	// example:
 	//
 	// 5
 	Cnt *int32 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
-	// The interval at which checks are performed. Set the value to **60**. Unit: seconds.
+	// The check interval. The value is fixed at **60**. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	During *int32 `json:"During,omitempty" xml:"During,omitempty"`
-	// The validity period of the IP address in the blacklist. Valid values: **60*	- to **604800**. Unit: seconds.
+	// The validity period of the blacklist entry. Valid values: **60*	- to **604800**. Unit: seconds.
 	//
 	// example:
 	//
 	// 600
 	Expires *int32 `json:"Expires,omitempty" xml:"Expires,omitempty"`
-	// The type of the limit that causes a source IP address to be added to the blacklist. Valid values:
+	// The type of the source IP address blacklist configuration. Valid values:
 	//
-	// 	- **1**: Source New Connection Rate Limit
+	// - **1**: IP blacklist for the maximum number of new connections from a source IP address.
 	//
-	// 	- **2**: Source Concurrent Connection Rate Limit
+	// - **2**: IP blacklist for the maximum number of concurrent connections from a source IP address.
 	//
-	// 	- **3**: PPS Limit for Source
+	// - **3**: IP blacklist for source PPS rate limiting.
 	//
-	// 	- **4**: Bandwidth Limit for Source
+	// - **4**: IP blacklist for source bandwidth throttling.
 	//
 	// example:
 	//
@@ -396,13 +396,13 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcS
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPayloadLen struct {
-	// The maximum length of a packet. Valid values: **0*	- to **6000**. Unit: bytes.
+	// The maximum packet length. Valid values: **0*	- to **6000**. Unit: bytes.
 	//
 	// example:
 	//
 	// 6000
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum length of a packet. Valid values: **0*	- to **6000**. Unit: bytes.
+	// The minimum packet length. Valid values: **0*	- to **6000**. Unit: bytes.
 	//
 	// example:
 	//
@@ -441,33 +441,33 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPay
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla struct {
-	// The maximum number of new connections per second that can be established over the port of the destination instance. Valid values: **100*	- to **100000**.
+	// The maximum number of new connections to a destination IP address. Valid values: **100*	- to **100000**.
 	//
 	// example:
 	//
 	// 100000
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The status of the Destination New Connection Rate Limit switch. Valid values:
+	// The status of the maximum number of new connections to a destination IP address. Valid values:
 	//
-	// 	- **0**: The switch is turned off.
+	// - **0**: disabled.
 	//
-	// 	- **1**: The switch is turned on.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	CpsEnable *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
-	// The maximum number of concurrent connections that can be established over the port of the destination instance. Valid values: **1000*	- to **1000000**.
+	// The maximum number of concurrent connections to a destination IP address. Valid values: **1000*	- to **1000000**.
 	//
 	// example:
 	//
 	// 1000000
 	Maxconn *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
-	// The status of the Destination Concurrent Connection Rate Limit switch. Valid values:
+	// The status of the maximum number of concurrent connections to a destination IP address. Valid values:
 	//
-	// 	- **0**: The switch is turned off.
+	// - **0**: disabled.
 	//
-	// 	- **1**: The switch is turned on.
+	// - **1**: enabled.
 	//
 	// example:
 	//
@@ -524,55 +524,55 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit struct {
-	// The bandwidth limit for a source IP address. Valid values: **1024*	- to **268435456**. Unit: bytes/s. Default value: **0**, which indicates that the bandwidth for a source IP address is unlimited.
+	// The source bandwidth throttling value. Valid values: **1024*	- to **268435456**. Unit: Byte/s. Default value: **0**, which indicates that source bandwidth throttling is disabled.
 	//
 	// example:
 	//
 	// 0
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The maximum number of new connections per second that can be initiated from a source IP address. Valid values: **1*	- to **500000**.
+	// The maximum number of new connections from a source IP address. Valid values: **1*	- to **500000**.
 	//
 	// example:
 	//
 	// 0
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The status of the Source New Connection Rate Limit switch. Valid values:
+	// The status of the maximum number of new connections from a source IP address. Valid values:
 	//
-	// 	- **0**: The switch is turned off.
+	// - **0**: disabled.
 	//
-	// 	- **1**: The switch is turned on.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	CpsEnable *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
-	// The mode of the Source New Connection Rate Limit switch. Valid values:
+	// The mode of the maximum number of new connections from a source IP address. Valid values:
 	//
-	// 	- **1**: the manual mode
+	// - **1**: manual.
 	//
-	// 	- **2**: the automatic mode
+	// - **2**: automatic.
 	//
 	// example:
 	//
 	// 1
 	CpsMode *int32 `json:"CpsMode,omitempty" xml:"CpsMode,omitempty"`
-	// The maximum number of concurrent connections initiated from a source IP address. Valid values: **1*	- to **500000**.
+	// The maximum number of concurrent connections from a source IP address. Valid values: **1*	- to **500000**.
 	//
 	// example:
 	//
 	// 0
 	Maxconn *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
-	// The status of the Source Concurrent Connection Rate Limit switch. Valid values:
+	// The status of the maximum number of concurrent connections from a source IP address. Valid values:
 	//
-	// 	- **0**: The switch is turned off.
+	// - **0**: disabled.
 	//
-	// 	- **1**: The switch is turned on.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	MaxconnEnable *int32 `json:"MaxconnEnable,omitempty" xml:"MaxconnEnable,omitempty"`
-	// The packets per second (pps) limit for a source IP address. Valid values: **1*	- to **100000**. Unit: packets/s. Default value: **0**, which indicates that the pps for a source IP address is unlimited.
+	// The source packets per second (PPS) rate limit. Valid values: **1*	- to **100000**. Unit: Packet/s. Default value: **0**, which indicates that source PPS rate limiting is disabled.
 	//
 	// example:
 	//

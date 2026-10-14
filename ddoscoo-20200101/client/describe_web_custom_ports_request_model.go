@@ -14,7 +14,7 @@ type iDescribeWebCustomPortsRequest interface {
 }
 
 type DescribeWebCustomPortsRequest struct {
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The resource group ID of the Anti-DDoS Proxy instance in Resource Management. The default value is empty, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//

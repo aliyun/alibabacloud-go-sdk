@@ -16,9 +16,9 @@ type iModifyElasticBandWidthRequest interface {
 }
 
 type ModifyElasticBandWidthRequest struct {
-	// The new burstable protection bandwidth that you want to use. Unit: Gbit/s.
+	// The burstable protection bandwidth that you want to set. Unit: Gbps.
 	//
-	// > You can call the [DescribeElasticBandwidthSpec](https://help.aliyun.com/document_detail/91502.html) operation to query the available burstable protection bandwidth of the instance.
+	// > You can call [DescribeElasticBandwidthSpec](https://help.aliyun.com/document_detail/91502.html) to query the available burstable protection bandwidth specifications.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type ModifyElasticBandWidthRequest struct {
 	//
 	// 50
 	ElasticBandwidth *int32 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// >  The instance must be in a normal state. You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > The instance must be in a normal state. You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type DescribeDomainViewSourceCountriesResponseBody struct {
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array consisting of the country or area from which the requests are sent.
+	// The information about request source countries for the website service.
 	SourceCountrys []*DescribeDomainViewSourceCountriesResponseBodySourceCountrys `json:"SourceCountrys,omitempty" xml:"SourceCountrys,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeDomainViewSourceCountriesResponseBody) Validate() error {
 }
 
 type DescribeDomainViewSourceCountriesResponseBodySourceCountrys struct {
-	// The total number of requests.
+	// The number of requests.
 	//
 	// example:
 	//
 	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The abbreviation of the country or area. For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **cn*	- indicates China, and **us*	- indicates the United States.
+	// The abbreviation of the country. For more information, see the **Chinese mainland and regions outside China*	- section in [Country codes](https://help.aliyun.com/document_detail/167926.html). For example, **cn*	- indicates China and **us*	- indicates the United States.
 	//
 	// example:
 	//

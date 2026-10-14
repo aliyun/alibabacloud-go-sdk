@@ -48,75 +48,85 @@ type DescribeDomainStatusCodeCountResponseBody struct {
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of 200 status codes within the specified period of time.
+	// The number of 200 status codes within the query time range.
 	//
 	// example:
 	//
 	// 951159
 	Status200 *int64 `json:"Status200,omitempty" xml:"Status200,omitempty"`
-	// The number of 2xx status codes within the specified period of time.
+	// The number of 2XX status codes within the query time range.
 	//
 	// example:
 	//
 	// 951472
 	Status2XX *int64 `json:"Status2XX,omitempty" xml:"Status2XX,omitempty"`
-	// The number of 3xx status codes within the specified period of time.
+	// The number of 3XX status codes within the query time range.
 	//
 	// example:
 	//
 	// 133209
 	Status3XX *int64 `json:"Status3XX,omitempty" xml:"Status3XX,omitempty"`
-	// The number of 403 status codes within the specified period of time.
+	// The number of 403 status codes within the query time range.
 	//
 	// example:
 	//
 	// 0
 	Status403 *int64 `json:"Status403,omitempty" xml:"Status403,omitempty"`
-	// The number of 404 status codes within the specified period of time.
+	// The number of 404 status codes within the query time range.
 	//
 	// example:
 	//
 	// 897
 	Status404 *int64 `json:"Status404,omitempty" xml:"Status404,omitempty"`
-	// The number of 405 status codes within the specified period of time.
+	// The number of 405 status codes within the query time range.
 	//
 	// example:
 	//
 	// 0
 	Status405 *int64 `json:"Status405,omitempty" xml:"Status405,omitempty"`
+	// The number of 410 status codes within the query time range.
+	//
+	// example:
+	//
+	// 0
 	Status410 *int64 `json:"Status410,omitempty" xml:"Status410,omitempty"`
+	// The number of 499 status codes within the query time range.
+	//
+	// example:
+	//
+	// 0
 	Status499 *int64 `json:"Status499,omitempty" xml:"Status499,omitempty"`
-	// The number of 4xx status codes within the specified period of time.
+	// The number of 4XX status codes within the query time range.
 	//
 	// example:
 	//
 	// 5653
 	Status4XX *int64 `json:"Status4XX,omitempty" xml:"Status4XX,omitempty"`
-	// The number of 501 status codes within the specified period of time.
+	// The number of 501 status codes within the query time range.
 	//
 	// example:
 	//
 	// 0
 	Status501 *int64 `json:"Status501,omitempty" xml:"Status501,omitempty"`
-	// The number of 502 status codes within the specified period of time.
+	// The number of 502 status codes within the query time range.
 	//
 	// example:
 	//
 	// 0
 	Status502 *int64 `json:"Status502,omitempty" xml:"Status502,omitempty"`
-	// The number of 503 status codes within the specified period of time.
+	// The number of 503 status codes within the query time range.
 	//
 	// example:
 	//
 	// 0
 	Status503 *int64 `json:"Status503,omitempty" xml:"Status503,omitempty"`
-	// The number of 504 status codes within the specified period of time.
+	// The number of 504 status codes within the query time range.
 	//
 	// example:
 	//
 	// 0
 	Status504 *int64 `json:"Status504,omitempty" xml:"Status504,omitempty"`
-	// The number of 5xx status codes within the specified period of time.
+	// The number of 5XX status codes within the query time range.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeNetworkRegionBlockResponseBody interface {
 }
 
 type DescribeNetworkRegionBlockResponseBody struct {
-	// The configuration of blocked locations.
+	// The configuration of the location blacklist.
 	Config *DescribeNetworkRegionBlockResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,15 +62,15 @@ func (s *DescribeNetworkRegionBlockResponseBody) Validate() error {
 }
 
 type DescribeNetworkRegionBlockResponseBodyConfig struct {
-	// The codes of the countries or areas from which the requests are blocked.
+	// The list of blocked region codes outside China.
 	Countries []*int64 `json:"Countries,omitempty" xml:"Countries,omitempty" type:"Repeated"`
-	// The codes of the administrative regions in China from which the requests are blocked.
+	// The list of blocked region codes in China.
 	Provinces []*int64 `json:"Provinces,omitempty" xml:"Provinces,omitempty" type:"Repeated"`
-	// The status of the Location Blacklist policy. Valid values:
+	// The status of the location blacklist. Valid values:
 	//
-	// 	- **on**: enabled
+	// - **on**: enabled
 	//
-	// 	- **off**: disabled
+	// - **off**: disabled
 	//
 	// example:
 	//

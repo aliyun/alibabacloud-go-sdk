@@ -22,7 +22,7 @@ type DescribeBlockStatusResponseBody struct {
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of details of the Diversion from Origin Server configurations of the instance.
+	// The near-origin traffic diversion configurations of the Anti-DDoS Pro and Anti-DDoS Premium instances.
 	StatusList []*DescribeBlockStatusResponseBodyStatusList `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
@@ -66,9 +66,9 @@ func (s *DescribeBlockStatusResponseBody) Validate() error {
 }
 
 type DescribeBlockStatusResponseBodyStatusList struct {
-	// An array that consists of details of the Diversion from Origin Server configuration.
+	// The near-origin traffic diversion configurations.
 	BlockStatusList []*DescribeBlockStatusResponseBodyStatusListBlockStatusList `json:"BlockStatusList,omitempty" xml:"BlockStatusList,omitempty" type:"Repeated"`
-	// The IP address of the instance.
+	// The IP address of the Anti-DDoS Pro and Anti-DDoS Premium instance.
 	//
 	// example:
 	//
@@ -116,33 +116,33 @@ func (s *DescribeBlockStatusResponseBodyStatusList) Validate() error {
 }
 
 type DescribeBlockStatusResponseBodyStatusListBlockStatusList struct {
-	// The blocking status of the network traffic. Valid values:
+	// The traffic blocking status. Valid values:
 	//
-	// 	- **areablock**: Network traffic is blocked.
+	// - **areablock**: Blocked.
 	//
-	// 	- **normal**: Network traffic is not blocked.
+	// - **normal**: Normal (not blocked).
 	//
 	// example:
 	//
 	// areablock
 	BlockStatus *string `json:"BlockStatus,omitempty" xml:"BlockStatus,omitempty"`
-	// The end time of the blocking. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the blocking. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1540196323
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
+	// The type of the blocked line. Valid values:
 	//
-	// 	- **ct**: China Telecom (International)
+	// - **ct**: China Telecom international line.
 	//
-	// 	- **cut**: China Unicom (International)
+	// - **cut**: China Unicom international line.
 	//
 	// example:
 	//
 	// cut
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The start time of the blocking. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the blocking. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

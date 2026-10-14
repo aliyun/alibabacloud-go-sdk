@@ -18,7 +18,7 @@ type iDescribeUnBlockCountResponseBody interface {
 }
 
 type DescribeUnBlockCountResponseBody struct {
-	// The remaining number of times that you can enable the near-origin traffic diversion feature.
+	// The remaining number of available near-origin traffic diversion sessions.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeUnBlockCountResponseBody struct {
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of times that you can enable the near-origin traffic diversion feature.
+	// The total number of available near-origin traffic diversion sessions.
 	//
 	// example:
 	//

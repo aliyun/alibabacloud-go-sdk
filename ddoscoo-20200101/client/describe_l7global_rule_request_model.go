@@ -16,12 +16,20 @@ type iDescribeL7GlobalRuleRequest interface {
 }
 
 type DescribeL7GlobalRuleRequest struct {
+	// The domain name of the website service to operate on.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The language type for the request and response messages. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
 	// example:
 	//
 	// zh

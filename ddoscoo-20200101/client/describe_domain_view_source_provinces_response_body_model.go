@@ -16,13 +16,13 @@ type iDescribeDomainViewSourceProvincesResponseBody interface {
 }
 
 type DescribeDomainViewSourceProvincesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array consisting of the details of the administrative region in China from which the requests are sent.
+	// The information about request source provinces in China for the website service.
 	SourceProvinces []*DescribeDomainViewSourceProvincesResponseBodySourceProvinces `json:"SourceProvinces,omitempty" xml:"SourceProvinces,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeDomainViewSourceProvincesResponseBody) Validate() error {
 }
 
 type DescribeDomainViewSourceProvincesResponseBodySourceProvinces struct {
-	// The total number of requests.
+	// The number of requests.
 	//
 	// example:
 	//
 	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the region inside China. For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **110000*	- indicates Beijing, and **120000*	- indicates Tianjin.
+	// The province ID. For more information, see the **China region codes*	- section in [China and overseas region codes](https://help.aliyun.com/document_detail/167926.html). For example, **110000*	- indicates Beijing and **120000*	- indicates Tianjin.
 	//
 	// example:
 	//

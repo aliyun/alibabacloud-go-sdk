@@ -16,9 +16,9 @@ type iDescribeWebCcProtectSwitchResponseBody interface {
 }
 
 type DescribeWebCcProtectSwitchResponseBody struct {
-	// The status of each mitigation policy for the website.
+	// The status of protection features for website services.
 	ProtectSwitchList []*DescribeWebCcProtectSwitchResponseBodyProtectSwitchList `json:"ProtectSwitchList,omitempty" xml:"ProtectSwitchList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,78 +66,78 @@ func (s *DescribeWebCcProtectSwitchResponseBody) Validate() error {
 }
 
 type DescribeWebCcProtectSwitchResponseBodyProtectSwitchList struct {
-	// The mode of Intelligent Protection. Valid values:
+	// The mode of AI-based intelligent analysis. Valid values:
 	//
-	// 	- **watch**: Warning
+	// - **watch**: Warning mode
 	//
-	// 	- **defense**: Defense
+	// - **defense**: Defense mode
 	//
 	// example:
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
-	// The status of Intelligent Protection. Valid values:
+	// The status of the AI-based intelligent analysis feature. Valid values:
 	//
-	// 	- **0**: turned off
+	// - **0**: disabled
 	//
-	// 	- **1:*	- turned on
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	AiRuleEnable *int32 `json:"AiRuleEnable,omitempty" xml:"AiRuleEnable,omitempty"`
-	// The level of Intelligent Protection. Valid values:
+	// The level of AI-based intelligent analysis. Valid values:
 	//
-	// 	- **level30**: Loose
+	// - **level30**: Loose
 	//
-	// 	- **level60**: Normal
+	// - **level60**: Normal
 	//
-	// 	- **level90**: Strict
+	// - **level90**: Strict
 	//
 	// example:
 	//
 	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
-	// The status of Blacklist/Whitelist (Domain Names). Valid values:
+	// The status of the blacklists and whitelists feature for the domain name. Valid values:
 	//
-	// 	- **0**: turned off
+	// - **0**: disabled
 	//
-	// 	- **1:*	- turned on
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	BlackWhiteListEnable *int32 `json:"BlackWhiteListEnable,omitempty" xml:"BlackWhiteListEnable,omitempty"`
-	// The status of the Custom Rules switch for Frequency Control. Valid values:
+	// The status of the custom frequency control (HTTP flood mitigation) feature. Valid values:
 	//
-	// 	- **0**: turned off
+	// - **0**: disabled
 	//
-	// 	- **1:*	- turned on
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 0
 	CcCustomRuleEnable *int32 `json:"CcCustomRuleEnable,omitempty" xml:"CcCustomRuleEnable,omitempty"`
-	// The status of Frequency Control. Valid values:
+	// The status of the frequency control (HTTP flood mitigation) feature. Valid values:
 	//
-	// 	- **0**: turned off
+	// - **0**: disabled
 	//
-	// 	- **1:*	- turned on
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	CcEnable       *int32  `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
 	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
-	// The mode of Frequency Control. Valid values:
+	// The mode of frequency control (HTTP flood mitigation). Valid values:
 	//
-	// 	- **default**: Normal
+	// - **default**: Normal
 	//
-	// 	- **gf_under_attack**: Emergency
+	// - **gf_under_attack**: Emergency
 	//
-	// 	- **gf_sos_verify**: Strict
+	// - **gf_sos_verify**: Strict
 	//
-	// 	- **gf_sos_enhance**: Super Strict
+	// - **gf_sos_enhance**: Super Strict
 	//
 	// example:
 	//
@@ -149,21 +149,21 @@ type DescribeWebCcProtectSwitchResponseBodyProtectSwitchList struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The status of Accurate Access Control. Valid values:
+	// The status of the accurate access control feature. Valid values:
 	//
-	// 	- **0**: turned off
+	// - **0**: disabled
 	//
-	// 	- **1:*	- turned on
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 0
 	PreciseRuleEnable *int32 `json:"PreciseRuleEnable,omitempty" xml:"PreciseRuleEnable,omitempty"`
-	// The status of Location Blacklist (Domain Names). Valid values:
+	// The status of the location blacklist feature for the domain name. Valid values:
 	//
-	// 	- **0**: turned off
+	// - **0**: disabled
 	//
-	// 	- **1:*	- turned on
+	// - **1**: enabled
 	//
 	// example:
 	//

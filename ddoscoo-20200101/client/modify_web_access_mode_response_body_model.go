@@ -14,7 +14,7 @@ type iModifyWebAccessModeResponseBody interface {
 }
 
 type ModifyWebAccessModeResponseBody struct {
-	// The ID of the request.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//

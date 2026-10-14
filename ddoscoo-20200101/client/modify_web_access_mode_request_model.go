@@ -16,13 +16,13 @@ type iModifyWebAccessModeRequest interface {
 }
 
 type ModifyWebAccessModeRequest struct {
-	// The mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium. Valid values:
+	// The access mode for website services. Valid values:
 	//
-	// 	- **0**: A record mode
+	// - **0**: A record
 	//
-	// 	- **1**: anti-DDoS mode
+	// - **1**: Anti-DDoS Pro mode
 	//
-	// 	- **2**: origin redundancy mode
+	// - **2**: Back-to-origin mode
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type ModifyWebAccessModeRequest struct {
 	//
 	// 2
 	AccessMode *int32 `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//

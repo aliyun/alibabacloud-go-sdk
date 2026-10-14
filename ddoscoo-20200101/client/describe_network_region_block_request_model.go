@@ -14,9 +14,9 @@ type iDescribeNetworkRegionBlockRequest interface {
 }
 
 type DescribeNetworkRegionBlockRequest struct {
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//

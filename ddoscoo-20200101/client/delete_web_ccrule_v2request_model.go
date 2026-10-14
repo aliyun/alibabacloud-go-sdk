@@ -20,7 +20,7 @@ type iDeleteWebCCRuleV2Request interface {
 type DeleteWebCCRuleV2Request struct {
 	// The domain name of the website.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type DeleteWebCCRuleV2Request struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The source of the rule. Valid values:
 	//
-	// 	- **manual*	- (default): manually created.
+	// - **manual*	- (default): manually created.
 	//
-	// 	- **clover**: automatically created. Specify this value when you want to delete intelligent protection rules.
+	// - **clover**: automatically created. Specify this value when you want to delete intelligent protection rules.
 	//
 	// example:
 	//

@@ -58,7 +58,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds IP addresses to the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Adds IP addresses to the blacklist for an Anti-DDoS Pro instance.
+//
+// Description:
+//
+// ### QPS limit
+//
+// If you exceed the limit, your API calls are throttled, which may impact your business. To avoid throttling, call this operation at a reasonable rate.
 //
 // @param request - AddAutoCcBlacklistRequest
 //
@@ -110,7 +116,13 @@ func (client *Client) AddAutoCcBlacklistWithOptions(request *AddAutoCcBlacklistR
 
 // Summary:
 //
-// Adds IP addresses to the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Adds IP addresses to the blacklist for an Anti-DDoS Pro instance.
+//
+// Description:
+//
+// ### QPS limit
+//
+// If you exceed the limit, your API calls are throttled, which may impact your business. To avoid throttling, call this operation at a reasonable rate.
 //
 // @param request - AddAutoCcBlacklistRequest
 //
@@ -128,17 +140,17 @@ func (client *Client) AddAutoCcBlacklist(request *AddAutoCcBlacklistRequest) (_r
 
 // Summary:
 //
-// Adds IP addresses to the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Adds whitelist IP addresses for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //
-// You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
+// This operation adds whitelist IP addresses for a single Anti-DDoS Pro or Anti-DDoS Premium instance so that the instance directly allows request traffic from the specified IP addresses.
 //
-// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](https://help.aliyun.com/document_detail/157505.html) operation to remove the IP addresses from the whitelist.
+// After whitelist IP addresses are added, they are permanently valid by default. If you no longer need the whitelist IP addresses, invoke [EmptyAutoCcWhitelist](https://help.aliyun.com/document_detail/157505.html) to clear the whitelist IP address list.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - AddAutoCcWhitelistRequest
 //
@@ -190,17 +202,17 @@ func (client *Client) AddAutoCcWhitelistWithOptions(request *AddAutoCcWhitelistR
 
 // Summary:
 //
-// Adds IP addresses to the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Adds whitelist IP addresses for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //
-// You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
+// This operation adds whitelist IP addresses for a single Anti-DDoS Pro or Anti-DDoS Premium instance so that the instance directly allows request traffic from the specified IP addresses.
 //
-// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](https://help.aliyun.com/document_detail/157505.html) operation to remove the IP addresses from the whitelist.
+// After whitelist IP addresses are added, they are permanently valid by default. If you no longer need the whitelist IP addresses, invoke [EmptyAutoCcWhitelist](https://help.aliyun.com/document_detail/157505.html) to clear the whitelist IP address list.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - AddAutoCcWhitelistRequest
 //
@@ -218,7 +230,7 @@ func (client *Client) AddAutoCcWhitelist(request *AddAutoCcWhitelistRequest) (_r
 
 // Summary:
 //
-// Associates an SSL certificate with the forwarding rule of a website.
+// Associates an SSL certificate with a forwarding rule of a website service.
 //
 // @param request - AssociateWebCertRequest
 //
@@ -286,7 +298,7 @@ func (client *Client) AssociateWebCertWithOptions(request *AssociateWebCertReque
 
 // Summary:
 //
-// Associates an SSL certificate with the forwarding rule of a website.
+// Associates an SSL certificate with a forwarding rule of a website service.
 //
 // @param request - AssociateWebCertRequest
 //
@@ -304,7 +316,7 @@ func (client *Client) AssociateWebCert(request *AssociateWebCertRequest) (_resul
 
 // Summary:
 //
-// Adds an object to a scenario-specific custom policy for protection.
+// Adds protected objects to a scenario-specific policy.
 //
 // @param request - AttachSceneDefenseObjectRequest
 //
@@ -356,7 +368,7 @@ func (client *Client) AttachSceneDefenseObjectWithOptions(request *AttachSceneDe
 
 // Summary:
 //
-// Adds an object to a scenario-specific custom policy for protection.
+// Adds protected objects to a scenario-specific policy.
 //
 // @param request - AttachSceneDefenseObjectRequest
 //
@@ -374,7 +386,7 @@ func (client *Client) AttachSceneDefenseObject(request *AttachSceneDefenseObject
 
 // Summary:
 //
-// Configures the global mitigation policy feature, including the feature status and settings.
+// Configures the switch and level of the Anti-DDoS Global Mitigation Policy mitigation policies.
 //
 // @param request - ConfigDomainSecurityProfileRequest
 //
@@ -426,7 +438,7 @@ func (client *Client) ConfigDomainSecurityProfileWithOptions(request *ConfigDoma
 
 // Summary:
 //
-// Configures the global mitigation policy feature, including the feature status and settings.
+// Configures the switch and level of the Anti-DDoS Global Mitigation Policy mitigation policies.
 //
 // @param request - ConfigDomainSecurityProfileRequest
 //
@@ -444,7 +456,7 @@ func (client *Client) ConfigDomainSecurityProfile(request *ConfigDomainSecurityP
 
 // Summary:
 //
-// Configures an Anti-DDoS global mitigation policy.
+// Configures an Anti-DDoS Global Mitigation Policy.
 //
 // @param request - ConfigL7GlobalRuleRequest
 //
@@ -492,7 +504,7 @@ func (client *Client) ConfigL7GlobalRuleWithOptions(request *ConfigL7GlobalRuleR
 
 // Summary:
 //
-// Configures an Anti-DDoS global mitigation policy.
+// Configures an Anti-DDoS Global Mitigation Policy.
 //
 // @param request - ConfigL7GlobalRuleRequest
 //
@@ -510,11 +522,11 @@ func (client *Client) ConfigL7GlobalRule(request *ConfigL7GlobalRuleRequest) (_r
 
 // Summary:
 //
-// Configures a back-to-origin policy for the forwarding rule of a website.
+// Configures back-to-origin policies for website forwarding rules that have been created.
 //
 // Description:
 //
-// If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy*	- parameter in the "Request parameters" section of this topic.
+// If a website that is added to Anti-DDoS Pro and Anti-DDoS Premium has multiple origin servers in the website configuration, you can modify the load balancing algorithm by configuring back-to-origin policies. The default algorithm is IP Hash. You can change it to polling or Least Time. For more information, see the description of the **Policy*	- request parameter.
 //
 // @param request - ConfigL7RsPolicyRequest
 //
@@ -570,11 +582,11 @@ func (client *Client) ConfigL7RsPolicyWithOptions(request *ConfigL7RsPolicyReque
 
 // Summary:
 //
-// Configures a back-to-origin policy for the forwarding rule of a website.
+// Configures back-to-origin policies for website forwarding rules that have been created.
 //
 // Description:
 //
-// If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy*	- parameter in the "Request parameters" section of this topic.
+// If a website that is added to Anti-DDoS Pro and Anti-DDoS Premium has multiple origin servers in the website configuration, you can modify the load balancing algorithm by configuring back-to-origin policies. The default algorithm is IP Hash. You can change it to polling or Least Time. For more information, see the description of the **Policy*	- request parameter.
 //
 // @param request - ConfigL7RsPolicyRequest
 //
@@ -592,7 +604,7 @@ func (client *Client) ConfigL7RsPolicy(request *ConfigL7RsPolicyRequest) (_resul
 
 // Summary:
 //
-// Configures the settings for back-to-origin persistent connections for a domain name.
+// Configures the persistent connection settings for back-to-origin requests of a domain name.
 //
 // @param request - ConfigL7UsKeepaliveRequest
 //
@@ -644,7 +656,7 @@ func (client *Client) ConfigL7UsKeepaliveWithOptions(request *ConfigL7UsKeepaliv
 
 // Summary:
 //
-// Configures the settings for back-to-origin persistent connections for a domain name.
+// Configures the persistent connection settings for back-to-origin requests of a domain name.
 //
 // @param request - ConfigL7UsKeepaliveRequest
 //
@@ -662,7 +674,7 @@ func (client *Client) ConfigL7UsKeepalive(request *ConfigL7UsKeepaliveRequest) (
 
 // Summary:
 //
-// Specifies a threshold for the clean bandwidth of an Anti-DDoS Pro or Anti-DDoS premium instance. If the threshold is reached, rate limiting is triggered.
+// 4层带宽限速 客户专用
 //
 // @param request - ConfigLayer4RealLimitRequest
 //
@@ -710,7 +722,7 @@ func (client *Client) ConfigLayer4RealLimitWithOptions(request *ConfigLayer4Real
 
 // Summary:
 //
-// Specifies a threshold for the clean bandwidth of an Anti-DDoS Pro or Anti-DDoS premium instance. If the threshold is reached, rate limiting is triggered.
+// 4层带宽限速 客户专用
 //
 // @param request - ConfigLayer4RealLimitRequest
 //
@@ -728,7 +740,7 @@ func (client *Client) ConfigLayer4RealLimit(request *ConfigLayer4RealLimitReques
 
 // Summary:
 //
-// Adds a description to a port forwarding rule.
+// Adds remarks to port forwarding rules.
 //
 // @param request - ConfigLayer4RemarkRequest
 //
@@ -772,7 +784,7 @@ func (client *Client) ConfigLayer4RemarkWithOptions(request *ConfigLayer4RemarkR
 
 // Summary:
 //
-// Adds a description to a port forwarding rule.
+// Adds remarks to port forwarding rules.
 //
 // @param request - ConfigLayer4RemarkRequest
 //
@@ -790,7 +802,7 @@ func (client *Client) ConfigLayer4Remark(request *ConfigLayer4RemarkRequest) (_r
 
 // Summary:
 //
-// Enables or disables the origin redundancy mode for a port forwarding rule.
+// Modifies the back-to-origin mode of a port forwarding rule (enables or disables origin redundancy).
 //
 // @param request - ConfigLayer4RuleBakModeRequest
 //
@@ -838,7 +850,7 @@ func (client *Client) ConfigLayer4RuleBakModeWithOptions(request *ConfigLayer4Ru
 
 // Summary:
 //
-// Enables or disables the origin redundancy mode for a port forwarding rule.
+// Modifies the back-to-origin mode of a port forwarding rule (enables or disables origin redundancy).
 //
 // @param request - ConfigLayer4RuleBakModeRequest
 //
@@ -856,7 +868,7 @@ func (client *Client) ConfigLayer4RuleBakMode(request *ConfigLayer4RuleBakModeRe
 
 // Summary:
 //
-// Configures the IP addresses of the primary and secondary origin servers for a port forwarding rule.
+// Sets the primary and secondary origin server IP addresses for port forwarding rules.
 //
 // @param request - ConfigLayer4RulePolicyRequest
 //
@@ -900,7 +912,7 @@ func (client *Client) ConfigLayer4RulePolicyWithOptions(request *ConfigLayer4Rul
 
 // Summary:
 //
-// Configures the IP addresses of the primary and secondary origin servers for a port forwarding rule.
+// Sets the primary and secondary origin server IP addresses for port forwarding rules.
 //
 // @param request - ConfigLayer4RulePolicyRequest
 //
@@ -918,7 +930,7 @@ func (client *Client) ConfigLayer4RulePolicy(request *ConfigLayer4RulePolicyRequ
 
 // Summary:
 //
-// Configures blocked locations for an Anti-DDoS Proxy instance.
+// Configures location blacklist settings for an Anti-DDoS Pro or Anti-DDoS Premium instance area.
 //
 // @param request - ConfigNetworkRegionBlockRequest
 //
@@ -966,7 +978,7 @@ func (client *Client) ConfigNetworkRegionBlockWithOptions(request *ConfigNetwork
 
 // Summary:
 //
-// Configures blocked locations for an Anti-DDoS Proxy instance.
+// Configures location blacklist settings for an Anti-DDoS Pro or Anti-DDoS Premium instance area.
 //
 // @param request - ConfigNetworkRegionBlockRequest
 //
@@ -984,7 +996,7 @@ func (client *Client) ConfigNetworkRegionBlock(request *ConfigNetworkRegionBlock
 
 // Summary:
 //
-// Modifies the IP addresses of the origin server that is configured in a port forwarding rule.
+// Modifies the IP addresses of the origin server.
 //
 // @param request - ConfigNetworkRulesRequest
 //
@@ -1028,7 +1040,7 @@ func (client *Client) ConfigNetworkRulesWithOptions(request *ConfigNetworkRulesR
 
 // Summary:
 //
-// Modifies the IP addresses of the origin server that is configured in a port forwarding rule.
+// Modifies the IP addresses of the origin server.
 //
 // @param request - ConfigNetworkRulesRequest
 //
@@ -1046,15 +1058,15 @@ func (client *Client) ConfigNetworkRules(request *ConfigNetworkRulesRequest) (_r
 
 // Summary:
 //
-// Adds the filtering policies for UDP reflection attacks on an Anti-DDoS Pro or Anti-DDoS Premium instance to filter out the source ports of UDP traffic.
+// Adds a UDP reflection attack attack prevention protection policy to filter specified reflection source ports.
 //
 // Description:
 //
-// You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
+// This operation adds a UDP reflection attack attack prevention protection policy for an Anti-DDoS Pro or Anti-DDoS Premium instance to filter specified reflection source ports.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation as needed.
 //
 // @param request - ConfigUdpReflectRequest
 //
@@ -1106,15 +1118,15 @@ func (client *Client) ConfigUdpReflectWithOptions(request *ConfigUdpReflectReque
 
 // Summary:
 //
-// Adds the filtering policies for UDP reflection attacks on an Anti-DDoS Pro or Anti-DDoS Premium instance to filter out the source ports of UDP traffic.
+// Adds a UDP reflection attack attack prevention protection policy to filter specified reflection source ports.
 //
 // Description:
 //
-// You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
+// This operation adds a UDP reflection attack attack prevention protection policy for an Anti-DDoS Pro or Anti-DDoS Premium instance to filter specified reflection source ports.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation as needed.
 //
 // @param request - ConfigUdpReflectRequest
 //
@@ -1132,7 +1144,7 @@ func (client *Client) ConfigUdpReflect(request *ConfigUdpReflectRequest) (_resul
 
 // Summary:
 //
-// Creates or modifies the custom frequency control rule of a website.
+// Creates or modifies a custom rule for frequency control (HTTP flood mitigation) of website services.
 //
 // @param request - ConfigWebCCRuleV2Request
 //
@@ -1184,7 +1196,7 @@ func (client *Client) ConfigWebCCRuleV2WithOptions(request *ConfigWebCCRuleV2Req
 
 // Summary:
 //
-// Creates or modifies the custom frequency control rule of a website.
+// Creates or modifies a custom rule for frequency control (HTTP flood mitigation) of website services.
 //
 // @param request - ConfigWebCCRuleV2Request
 //
@@ -1202,7 +1214,7 @@ func (client *Client) ConfigWebCCRuleV2(request *ConfigWebCCRuleV2Request) (_res
 
 // Summary:
 //
-// Configures the mode of the Frequency Control policy for a website.
+// Sets the defense mode for frequency control (HTTP flood mitigation) of a website service.
 //
 // @param request - ConfigWebCCTemplateRequest
 //
@@ -1254,7 +1266,7 @@ func (client *Client) ConfigWebCCTemplateWithOptions(request *ConfigWebCCTemplat
 
 // Summary:
 //
-// Configures the mode of the Frequency Control policy for a website.
+// Sets the defense mode for frequency control (HTTP flood mitigation) of a website service.
 //
 // @param request - ConfigWebCCTemplateRequest
 //
@@ -1272,7 +1284,7 @@ func (client *Client) ConfigWebCCTemplate(request *ConfigWebCCTemplateRequest) (
 
 // Summary:
 //
-// Configures the IP address whitelist and blacklist for a website.
+// Configures the IP blacklist and whitelist for a website.
 //
 // @param request - ConfigWebIpSetRequest
 //
@@ -1328,7 +1340,7 @@ func (client *Client) ConfigWebIpSetWithOptions(request *ConfigWebIpSetRequest, 
 
 // Summary:
 //
-// Configures the IP address whitelist and blacklist for a website.
+// Configures the IP blacklist and whitelist for a website.
 //
 // @param request - ConfigWebIpSetRequest
 //
@@ -1346,7 +1358,7 @@ func (client *Client) ConfigWebIpSet(request *ConfigWebIpSetRequest) (_result *C
 
 // Summary:
 //
-// Creates an asynchronous export task to export forwarding rules for websites, port forwarding rules, session persistence and health check settings, DDoS mitigation policies, the IP address blacklist, or the IP address whitelist.
+// Creates an asynchronous export task to export website forwarding rules, port forwarding rules, session persistence and health check configurations, DDoS mitigation policies, or IP blacklists and whitelists.
 //
 // @param request - CreateAsyncTaskRequest
 //
@@ -1398,7 +1410,7 @@ func (client *Client) CreateAsyncTaskWithOptions(request *CreateAsyncTaskRequest
 
 // Summary:
 //
-// Creates an asynchronous export task to export forwarding rules for websites, port forwarding rules, session persistence and health check settings, DDoS mitigation policies, the IP address blacklist, or the IP address whitelist.
+// Creates an asynchronous export task to export website forwarding rules, port forwarding rules, session persistence and health check configurations, DDoS mitigation policies, or IP blacklists and whitelists.
 //
 // @param request - CreateAsyncTaskRequest
 //
@@ -1498,7 +1510,7 @@ func (client *Client) CreateDomainResource(request *CreateDomainResourceRequest)
 
 // Summary:
 //
-// Creates a port forwarding rule.
+// Creates port forwarding rules.
 //
 // @param request - CreateNetworkRulesRequest
 //
@@ -1513,6 +1525,10 @@ func (client *Client) CreateNetworkRulesWithOptions(request *CreateNetworkRulesR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpMode) {
+		query["IpMode"] = request.IpMode
+	}
+
 	if !dara.IsNil(request.NetworkRules) {
 		query["NetworkRules"] = request.NetworkRules
 	}
@@ -1542,7 +1558,7 @@ func (client *Client) CreateNetworkRulesWithOptions(request *CreateNetworkRulesR
 
 // Summary:
 //
-// Creates a port forwarding rule.
+// Creates port forwarding rules.
 //
 // @param request - CreateNetworkRulesRequest
 //
@@ -1564,7 +1580,7 @@ func (client *Client) CreateNetworkRules(request *CreateNetworkRulesRequest) (_r
 //
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This operation supports integration with Terraform. For more information about Terraform, see [What is Terraform](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - CreatePortRequest
 //
@@ -1593,6 +1609,10 @@ func (client *Client) CreatePortWithOptions(request *CreatePortRequest, runtime 
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.IpMode) {
+		query["IpMode"] = request.IpMode
 	}
 
 	if !dara.IsNil(request.ProxyEnable) {
@@ -1632,7 +1652,7 @@ func (client *Client) CreatePortWithOptions(request *CreatePortRequest, runtime 
 //
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This operation supports integration with Terraform. For more information about Terraform, see [What is Terraform](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - CreatePortRequest
 //
@@ -1650,7 +1670,7 @@ func (client *Client) CreatePort(request *CreatePortRequest) (_result *CreatePor
 
 // Summary:
 //
-// Creates a scenario-specific custom policy.
+// Creates a scenario-specific policy.
 //
 // @param request - CreateSceneDefensePolicyRequest
 //
@@ -1706,7 +1726,7 @@ func (client *Client) CreateSceneDefensePolicyWithOptions(request *CreateSceneDe
 
 // Summary:
 //
-// Creates a scenario-specific custom policy.
+// Creates a scenario-specific policy.
 //
 // @param request - CreateSceneDefensePolicyRequest
 //
@@ -1724,7 +1744,7 @@ func (client *Client) CreateSceneDefensePolicy(request *CreateSceneDefensePolicy
 
 // Summary:
 //
-// Creates a scheduling rule for Sec-Traffic Manager.
+// Creates a Sec-Traffic Manager rule.
 //
 // @param request - CreateSchedulerRuleRequest
 //
@@ -1784,7 +1804,7 @@ func (client *Client) CreateSchedulerRuleWithOptions(request *CreateSchedulerRul
 
 // Summary:
 //
-// Creates a scheduling rule for Sec-Traffic Manager.
+// Creates a Sec-Traffic Manager rule.
 //
 // @param request - CreateSchedulerRuleRequest
 //
@@ -1898,7 +1918,7 @@ func (client *Client) CreateTagResources(request *CreateTagResourcesRequest) (_r
 //
 // Summary:
 //
-// Creates a custom frequency control rule for a website.
+// Creates a custom rule for website HTTP flood protection (CC protection).
 //
 // @param request - CreateWebCCRuleRequest
 //
@@ -1976,7 +1996,7 @@ func (client *Client) CreateWebCCRuleWithOptions(request *CreateWebCCRuleRequest
 //
 // Summary:
 //
-// Creates a custom frequency control rule for a website.
+// Creates a custom rule for website HTTP flood protection (CC protection).
 //
 // @param request - CreateWebCCRuleRequest
 //
@@ -2147,7 +2167,7 @@ func (client *Client) DeleteAsyncTask(request *DeleteAsyncTaskRequest) (_result 
 
 // Summary:
 //
-// Removes IP addresses from the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Removes IP addresses from the blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DeleteAutoCcBlacklistRequest
 //
@@ -2199,7 +2219,7 @@ func (client *Client) DeleteAutoCcBlacklistWithOptions(request *DeleteAutoCcBlac
 
 // Summary:
 //
-// Removes IP addresses from the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Removes IP addresses from the blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DeleteAutoCcBlacklistRequest
 //
@@ -2217,7 +2237,7 @@ func (client *Client) DeleteAutoCcBlacklist(request *DeleteAutoCcBlacklistReques
 
 // Summary:
 //
-// Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
+// Deletes whitelist IPs for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DeleteAutoCcWhitelistRequest
 //
@@ -2265,7 +2285,7 @@ func (client *Client) DeleteAutoCcWhitelistWithOptions(request *DeleteAutoCcWhit
 
 // Summary:
 //
-// Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
+// Deletes whitelist IPs for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DeleteAutoCcWhitelistRequest
 //
@@ -2283,7 +2303,7 @@ func (client *Client) DeleteAutoCcWhitelist(request *DeleteAutoCcWhitelistReques
 
 // Summary:
 //
-// Deletes a specified forwarding rule of a website.
+// Deletes the specified website business forwarding rule.
 //
 // @param request - DeleteDomainResourceRequest
 //
@@ -2327,7 +2347,7 @@ func (client *Client) DeleteDomainResourceWithOptions(request *DeleteDomainResou
 
 // Summary:
 //
-// Deletes a specified forwarding rule of a website.
+// Deletes the specified website business forwarding rule.
 //
 // @param request - DeleteDomainResourceRequest
 //
@@ -2625,17 +2645,17 @@ func (client *Client) DeleteSchedulerRule(request *DeleteSchedulerRuleRequest) (
 
 // Summary:
 //
-// Removes tags from Anti-DDoS Proxy (Chinese Mainland) instances.
+// Removes tags from an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Proxy (Chinese Mainland) instances.
+// This API operation removes tags from an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
-// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
+// > Only Anti-DDoS Proxy (Chinese Mainland) supports the tag feature.
 //
-// ### [](#qps-)QPS limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteTagResourcesRequest
 //
@@ -2699,17 +2719,17 @@ func (client *Client) DeleteTagResourcesWithOptions(request *DeleteTagResourcesR
 
 // Summary:
 //
-// Removes tags from Anti-DDoS Proxy (Chinese Mainland) instances.
+// Removes tags from an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Proxy (Chinese Mainland) instances.
+// This API operation removes tags from an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
-// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
+// > Only Anti-DDoS Proxy (Chinese Mainland) supports the tag feature.
 //
-// ### [](#qps-)QPS limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteTagResourcesRequest
 //
@@ -3094,15 +3114,15 @@ func (client *Client) DeleteWebRule(request *DeleteWebRuleRequest) (_result *Del
 
 // Summary:
 //
-// Queries the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+// Queries detailed information about asynchronous export tasks, including task ID, start and end times, status, parameters, results, and more.
 //
 // Description:
 //
-// You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+// This operation queries detailed information about asynchronous export tasks, including task ID, start and end times, status, parameters, results, and more.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 queries per second (QPS). API calls that exceed this limit will be throttled, which may affect your business. You should call this operation at a reasonable rate.
 //
 // @param request - DescribeAsyncTasksRequest
 //
@@ -3154,15 +3174,15 @@ func (client *Client) DescribeAsyncTasksWithOptions(request *DescribeAsyncTasksR
 
 // Summary:
 //
-// Queries the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+// Queries detailed information about asynchronous export tasks, including task ID, start and end times, status, parameters, results, and more.
 //
 // Description:
 //
-// You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+// This operation queries detailed information about asynchronous export tasks, including task ID, start and end times, status, parameters, results, and more.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 queries per second (QPS). API calls that exceed this limit will be throttled, which may affect your business. You should call this operation at a reasonable rate.
 //
 // @param request - DescribeAsyncTasksRequest
 //
@@ -3180,7 +3200,7 @@ func (client *Client) DescribeAsyncTasks(request *DescribeAsyncTasksRequest) (_r
 
 // Summary:
 //
-// Queries the peak QPS of DDoS attacks within the specific period of time.
+// Queries the peak value (QPS) of DDoS attacks within a specified time period.
 //
 // @param request - DescribeAttackAnalysisMaxQpsRequest
 //
@@ -3232,7 +3252,7 @@ func (client *Client) DescribeAttackAnalysisMaxQpsWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries the peak QPS of DDoS attacks within the specific period of time.
+// Queries the peak value (QPS) of DDoS attacks within a specified time period.
 //
 // @param request - DescribeAttackAnalysisMaxQpsRequest
 //
@@ -3250,7 +3270,7 @@ func (client *Client) DescribeAttackAnalysisMaxQps(request *DescribeAttackAnalys
 
 // Summary:
 //
-// Queries IP addresses in the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the blacklisted IP addresses for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribeAutoCcBlacklistRequest
 //
@@ -3310,7 +3330,7 @@ func (client *Client) DescribeAutoCcBlacklistWithOptions(request *DescribeAutoCc
 
 // Summary:
 //
-// Queries IP addresses in the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the blacklisted IP addresses for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribeAutoCcBlacklistRequest
 //
@@ -3538,7 +3558,7 @@ func (client *Client) DescribeBackSourceCidr(request *DescribeBackSourceCidrRequ
 
 // Summary:
 //
-// Queries the blackhole filtering status of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the blackhole filtering status of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeBlackholeStatusRequest
 //
@@ -3582,7 +3602,7 @@ func (client *Client) DescribeBlackholeStatusWithOptions(request *DescribeBlackh
 
 // Summary:
 //
-// Queries the blackhole filtering status of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the blackhole filtering status of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeBlackholeStatusRequest
 //
@@ -3600,17 +3620,17 @@ func (client *Client) DescribeBlackholeStatus(request *DescribeBlackholeStatusRe
 
 // Summary:
 //
-// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
+// Queries the near-origin traffic diversion configurations of an Anti-DDoS Pro and Anti-DDoS Premium instance in the Chinese mainland.
 //
 // Description:
 //
-// You can call this operation to query the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
+// This operation is used to query the near-origin traffic diversion configurations of an Anti-DDoS Pro and Anti-DDoS Premium instance in the Chinese mainland.
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (Chinese Mainland).
 //
-// ### [](#qps-)QPS limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeBlockStatusRequest
 //
@@ -3658,17 +3678,17 @@ func (client *Client) DescribeBlockStatusWithOptions(request *DescribeBlockStatu
 
 // Summary:
 //
-// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
+// Queries the near-origin traffic diversion configurations of an Anti-DDoS Pro and Anti-DDoS Premium instance in the Chinese mainland.
 //
 // Description:
 //
-// You can call this operation to query the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
+// This operation is used to query the near-origin traffic diversion configurations of an Anti-DDoS Pro and Anti-DDoS Premium instance in the Chinese mainland.
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (Chinese Mainland).
 //
-// ### [](#qps-)QPS limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeBlockStatusRequest
 //
@@ -3684,6 +3704,10 @@ func (client *Client) DescribeBlockStatus(request *DescribeBlockStatusRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the CDN interaction rule configurations for a specified domain name.
+//
 // @param request - DescribeCdnLinkageRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3736,6 +3760,10 @@ func (client *Client) DescribeCdnLinkageRulesWithOptions(request *DescribeCdnLin
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the CDN interaction rule configurations for a specified domain name.
+//
 // @param request - DescribeCdnLinkageRulesRequest
 //
 // @return DescribeCdnLinkageRulesResponse
@@ -3752,13 +3780,13 @@ func (client *Client) DescribeCdnLinkageRules(request *DescribeCdnLinkageRulesRe
 
 // Summary:
 //
-// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+// Queries all certificates that are available for a domain name. This operation does not query the certificate that is currently in use.
 //
 // Description:
 //
-// This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+// You can call this operation to query all certificates that are available for a domain name protected by an Anti-DDoS instance. A domain name can be associated with multiple certificates. For example, a query for a specific domain name can return both a certificate for that specific domain name and a wildcard certificate.
 //
-// >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
+// > To query the certificate that is currently used by a domain name, call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the CertName and CertRegion values. Then, call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service. Use the returned CertName value to query the corresponding certificate ID and other details.
 //
 // @param request - DescribeCertsRequest
 //
@@ -3806,13 +3834,13 @@ func (client *Client) DescribeCertsWithOptions(request *DescribeCertsRequest, ru
 
 // Summary:
 //
-// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+// Queries all certificates that are available for a domain name. This operation does not query the certificate that is currently in use.
 //
 // Description:
 //
-// This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+// You can call this operation to query all certificates that are available for a domain name protected by an Anti-DDoS instance. A domain name can be associated with multiple certificates. For example, a query for a specific domain name can return both a certificate for that specific domain name and a wildcard certificate.
 //
-// >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
+// > To query the certificate that is currently used by a domain name, call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the CertName and CertRegion values. Then, call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service. Use the returned CertName value to query the corresponding certificate ID and other details.
 //
 // @param request - DescribeCertsRequest
 //
@@ -3831,6 +3859,10 @@ func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *Des
 // Summary:
 //
 // Queries the CNAME reuse information about websites.
+//
+// Description:
+//
+// This operation is applicable only to Anti-DDoS Proxy (Outside Chinese Mainland).
 //
 // @param request - DescribeCnameReusesRequest
 //
@@ -3880,6 +3912,10 @@ func (client *Client) DescribeCnameReusesWithOptions(request *DescribeCnameReuse
 //
 // Queries the CNAME reuse information about websites.
 //
+// Description:
+//
+// This operation is applicable only to Anti-DDoS Proxy (Outside Chinese Mainland).
+//
 // @param request - DescribeCnameReusesRequest
 //
 // @return DescribeCnameReusesResponse
@@ -3896,7 +3932,7 @@ func (client *Client) DescribeCnameReuses(request *DescribeCnameReusesRequest) (
 
 // Summary:
 //
-// Queries the attack events launched against one or more Anti-DDoS Proxy instances.
+// Queries attack events on Anti-DDoS Pro or Anti-DDoS Premium instances.
 //
 // @param request - DescribeDDoSEventsRequest
 //
@@ -3960,7 +3996,7 @@ func (client *Client) DescribeDDoSEventsWithOptions(request *DescribeDDoSEventsR
 
 // Summary:
 //
-// Queries the attack events launched against one or more Anti-DDoS Proxy instances.
+// Queries attack events on Anti-DDoS Pro or Anti-DDoS Premium instances.
 //
 // @param request - DescribeDDoSEventsRequest
 //
@@ -3978,15 +4014,15 @@ func (client *Client) DescribeDDoSEvents(request *DescribeDDoSEventsRequest) (_r
 
 // Summary:
 //
-// Queries DDoS attack events.
+// Queries the list of DDoS attack events.
 //
 // Description:
 //
-// You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
+// This operation is used to query the list of DDoS attack events within a specified time range by using paging. DDoS attack events contain the following information: attack start time and end time, attack type, attacked object, and peak attack traffic (peak bandwidth or peak packet forwarding rate).
 //
-// ### Limits
+// ### Rate limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
 //
 // @param request - DescribeDDosAllEventListRequest
 //
@@ -4050,15 +4086,15 @@ func (client *Client) DescribeDDosAllEventListWithOptions(request *DescribeDDosA
 
 // Summary:
 //
-// Queries DDoS attack events.
+// Queries the list of DDoS attack events.
 //
 // Description:
 //
-// You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
+// This operation is used to query the list of DDoS attack events within a specified time range by using paging. DDoS attack events contain the following information: attack start time and end time, attack type, attacked object, and peak attack traffic (peak bandwidth or peak packet forwarding rate).
 //
-// ### Limits
+// ### Rate limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
 //
 // @param request - DescribeDDosAllEventListRequest
 //
@@ -4076,11 +4112,11 @@ func (client *Client) DescribeDDosAllEventList(request *DescribeDDosAllEventList
 
 // Summary:
 //
-// Queries the source region from which a volumetric attack is initiated.
+// Queries the source region details of a volumetric attack.
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventAreaRequest
 //
@@ -4136,11 +4172,11 @@ func (client *Client) DescribeDDosEventAreaWithOptions(request *DescribeDDosEven
 
 // Summary:
 //
-// Queries the source region from which a volumetric attack is initiated.
+// Queries the source region details of a volumetric attack.
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventAreaRequest
 //
@@ -4162,7 +4198,7 @@ func (client *Client) DescribeDDosEventArea(request *DescribeDDosEventAreaReques
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventAttackTypeRequest
 //
@@ -4218,7 +4254,7 @@ func (client *Client) DescribeDDosEventAttackTypeWithOptions(request *DescribeDD
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventAttackTypeRequest
 //
@@ -4236,11 +4272,11 @@ func (client *Client) DescribeDDosEventAttackType(request *DescribeDDosEventAtta
 
 // Summary:
 //
-// Queries the Internet service provider (ISP) information about a volumetric attack.
+// Queries the Internet service provider (ISP) information of attack sources for a volumetric attack.
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventIspRequest
 //
@@ -4296,11 +4332,11 @@ func (client *Client) DescribeDDosEventIspWithOptions(request *DescribeDDosEvent
 
 // Summary:
 //
-// Queries the Internet service provider (ISP) information about a volumetric attack.
+// Queries the Internet service provider (ISP) information of attack sources for a volumetric attack.
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventIspRequest
 //
@@ -4318,7 +4354,7 @@ func (client *Client) DescribeDDosEventIsp(request *DescribeDDosEventIspRequest)
 
 // Summary:
 //
-// Queries the peaks of volumetric attacks (bit/s), connection flood attacks (CPS), and resource exhaustion attacks on websites (QPS).
+// Queries the peak attack throughput of volumetric attacks (bps), connection flood attacks (cps), and web resource exhaustion attacks (qps).
 //
 // @param request - DescribeDDosEventMaxRequest
 //
@@ -4370,7 +4406,7 @@ func (client *Client) DescribeDDosEventMaxWithOptions(request *DescribeDDosEvent
 
 // Summary:
 //
-// Queries the peaks of volumetric attacks (bit/s), connection flood attacks (CPS), and resource exhaustion attacks on websites (QPS).
+// Queries the peak attack throughput of volumetric attacks (bps), connection flood attacks (cps), and web resource exhaustion attacks (qps).
 //
 // @param request - DescribeDDosEventMaxRequest
 //
@@ -4388,11 +4424,11 @@ func (client *Client) DescribeDDosEventMax(request *DescribeDDosEventMaxRequest)
 
 // Summary:
 //
-// Queries the source IP address from which a volumetric attack is initiated.
+// Queries the details of attack source IP addresses for a specific volumetric attack event.
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventSrcIpRequest
 //
@@ -4448,11 +4484,11 @@ func (client *Client) DescribeDDosEventSrcIpWithOptions(request *DescribeDDosEve
 
 // Summary:
 //
-// Queries the source IP address from which a volumetric attack is initiated.
+// Queries the details of attack source IP addresses for a specific volumetric attack event.
 //
 // Description:
 //
-// > This operation is suitable only for volumetric attacks.
+// > This operation is applicable only to querying data of volumetric attacks. It is not applicable to querying data of web resource exhaustion or connection flood attacks.
 //
 // @param request - DescribeDDosEventSrcIpRequest
 //
@@ -4552,11 +4588,11 @@ func (client *Client) DescribeDefenseCountStatistics(request *DescribeDefenseCou
 
 // Summary:
 //
-// Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
+// Queries the advanced mitigation logs of Anti-DDoS Premium.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Premium.
+// > This API operation is available only for the Anti-DDoS Premium service.
 //
 // @param request - DescribeDefenseRecordsRequest
 //
@@ -4620,11 +4656,11 @@ func (client *Client) DescribeDefenseRecordsWithOptions(request *DescribeDefense
 
 // Summary:
 //
-// Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
+// Queries the advanced mitigation logs of Anti-DDoS Premium.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Premium.
+// > This API operation is available only for the Anti-DDoS Premium service.
 //
 // @param request - DescribeDefenseRecordsRequest
 //
@@ -4878,6 +4914,10 @@ func (client *Client) DescribeDomainBps(request *DescribeDomainBpsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the CC protection feature for the specified domain names.
+//
 // @param request - DescribeDomainCcProtectSwitchRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4922,6 +4962,10 @@ func (client *Client) DescribeDomainCcProtectSwitchWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the CC protection feature for the specified domain names.
+//
 // @param request - DescribeDomainCcProtectSwitchRequest
 //
 // @return DescribeDomainCcProtectSwitchResponse
@@ -4938,7 +4982,7 @@ func (client *Client) DescribeDomainCcProtectSwitch(request *DescribeDomainCcPro
 
 // Summary:
 //
-// Queries the information about HTTP/2 fingerprints of a website.
+// Queries the HTTP/2.0 fingerprint information of a website.
 //
 // @param request - DescribeDomainH2FingerprintRequest
 //
@@ -4998,7 +5042,7 @@ func (client *Client) DescribeDomainH2FingerprintWithOptions(request *DescribeDo
 
 // Summary:
 //
-// Queries the information about HTTP/2 fingerprints of a website.
+// Queries the HTTP/2.0 fingerprint information of a website.
 //
 // @param request - DescribeDomainH2FingerprintRequest
 //
@@ -5168,17 +5212,17 @@ func (client *Client) DescribeDomainQPSList(request *DescribeDomainQPSListReques
 
 // Summary:
 //
-// Queries the configurations of a forwarding rule.
+// Describes the forwarding rule configuration for a web service.
 //
 // Description:
 //
-// You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
+// This API returns a paginated list of detailed configurations for your website forwarding rules, such as website domain name, protocol, HTTPS settings, and CC attack protection configuration.
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This API integrates with Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The per-user QPS limit for this API is 50 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Plan your API calls accordingly.
 //
 // @param request - DescribeDomainResourceRequest
 //
@@ -5238,17 +5282,17 @@ func (client *Client) DescribeDomainResourceWithOptions(request *DescribeDomainR
 
 // Summary:
 //
-// Queries the configurations of a forwarding rule.
+// Describes the forwarding rule configuration for a web service.
 //
 // Description:
 //
-// You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
+// This API returns a paginated list of detailed configurations for your website forwarding rules, such as website domain name, protocol, HTTPS settings, and CC attack protection configuration.
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This API integrates with Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The per-user QPS limit for this API is 50 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Plan your API calls accordingly.
 //
 // @param request - DescribeDomainResourceRequest
 //
@@ -5266,7 +5310,7 @@ func (client *Client) DescribeDomainResource(request *DescribeDomainResourceRequ
 
 // Summary:
 //
-// Queries the global mitigation policy for a domain name.
+// 查询安全概要属性开关
 //
 // @param request - DescribeDomainSecurityProfileRequest
 //
@@ -5310,7 +5354,7 @@ func (client *Client) DescribeDomainSecurityProfileWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the global mitigation policy for a domain name.
+// 查询安全概要属性开关
 //
 // @param request - DescribeDomainSecurityProfileRequest
 //
@@ -5328,7 +5372,7 @@ func (client *Client) DescribeDomainSecurityProfile(request *DescribeDomainSecur
 
 // Summary:
 //
-// Queries the statistics on HTTP status codes of a website within a specified period of time.
+// Queries the statistics on HTTP status codes of a website within a specified period.
 //
 // @param request - DescribeDomainStatusCodeCountRequest
 //
@@ -5384,7 +5428,7 @@ func (client *Client) DescribeDomainStatusCodeCountWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the statistics on HTTP status codes of a website within a specified period of time.
+// Queries the statistics on HTTP status codes of a website within a specified period.
 //
 // @param request - DescribeDomainStatusCodeCountRequest
 //
@@ -5402,7 +5446,7 @@ func (client *Client) DescribeDomainStatusCodeCount(request *DescribeDomainStatu
 
 // Summary:
 //
-// Queries the statistics on HTTP status codes of a website.
+// Queries the response status code statistics information for website services.
 //
 // @param request - DescribeDomainStatusCodeListRequest
 //
@@ -5466,7 +5510,7 @@ func (client *Client) DescribeDomainStatusCodeListWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the statistics on HTTP status codes of a website.
+// Queries the response status code statistics information for website services.
 //
 // @param request - DescribeDomainStatusCodeListRequest
 //
@@ -5484,7 +5528,7 @@ func (client *Client) DescribeDomainStatusCodeList(request *DescribeDomainStatus
 
 // Summary:
 //
-// Queries the peak queries per second (QPS) information about a website, such as the attack QPS and total QPS, within a specific period of time.
+// Queries the peak queries per second (QPS) data of website services within a specified time period, including attack QPS and total QPS.
 //
 // @param request - DescribeDomainTopAttackListRequest
 //
@@ -5540,7 +5584,7 @@ func (client *Client) DescribeDomainTopAttackListWithOptions(request *DescribeDo
 
 // Summary:
 //
-// Queries the peak queries per second (QPS) information about a website, such as the attack QPS and total QPS, within a specific period of time.
+// Queries the peak queries per second (QPS) data of website services within a specified time period, including attack QPS and total QPS.
 //
 // @param request - DescribeDomainTopAttackListRequest
 //
@@ -5558,7 +5602,7 @@ func (client *Client) DescribeDomainTopAttackList(request *DescribeDomainTopAtta
 
 // Summary:
 //
-// Queries the information about the fingerprints of top N clients that access a website.
+// Queries the top N client fingerprints for a website.
 //
 // @param request - DescribeDomainTopFingerprintRequest
 //
@@ -5626,7 +5670,7 @@ func (client *Client) DescribeDomainTopFingerprintWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the information about the fingerprints of top N clients that access a website.
+// Queries the top N client fingerprints for a website.
 //
 // @param request - DescribeDomainTopFingerprintRequest
 //
@@ -5644,7 +5688,7 @@ func (client *Client) DescribeDomainTopFingerprint(request *DescribeDomainTopFin
 
 // Summary:
 //
-// Queries the information about top N HTTP methods of a website.
+// Queries the top N HTTP methods for a website.
 //
 // @param request - DescribeDomainTopHttpMethodRequest
 //
@@ -5708,7 +5752,7 @@ func (client *Client) DescribeDomainTopHttpMethodWithOptions(request *DescribeDo
 
 // Summary:
 //
-// Queries the information about top N HTTP methods of a website.
+// Queries the top N HTTP methods for a website.
 //
 // @param request - DescribeDomainTopHttpMethodRequest
 //
@@ -5726,7 +5770,7 @@ func (client *Client) DescribeDomainTopHttpMethod(request *DescribeDomainTopHttp
 
 // Summary:
 //
-// Queries the information about top N referers of a website.
+// Queries the top N referers of a website.
 //
 // @param request - DescribeDomainTopRefererRequest
 //
@@ -5790,7 +5834,7 @@ func (client *Client) DescribeDomainTopRefererWithOptions(request *DescribeDomai
 
 // Summary:
 //
-// Queries the information about top N referers of a website.
+// Queries the top N referers of a website.
 //
 // @param request - DescribeDomainTopRefererRequest
 //
@@ -5808,7 +5852,7 @@ func (client *Client) DescribeDomainTopReferer(request *DescribeDomainTopReferer
 
 // Summary:
 //
-// Queries the information about top user agents of a website.
+// Queries the top User-Agents for a website.
 //
 // @param request - DescribeDomainTopUserAgentRequest
 //
@@ -5872,7 +5916,7 @@ func (client *Client) DescribeDomainTopUserAgentWithOptions(request *DescribeDom
 
 // Summary:
 //
-// Queries the information about top user agents of a website.
+// Queries the top User-Agents for a website.
 //
 // @param request - DescribeDomainTopUserAgentRequest
 //
@@ -5890,7 +5934,7 @@ func (client *Client) DescribeDomainTopUserAgent(request *DescribeDomainTopUserA
 
 // Summary:
 //
-// Queries the areas and countries from which requests are sent to a website within a specified period of time.
+// Queries the distribution of request source countries for website services within a specified time period.
 //
 // @param request - DescribeDomainViewSourceCountriesRequest
 //
@@ -5946,7 +5990,7 @@ func (client *Client) DescribeDomainViewSourceCountriesWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the areas and countries from which requests are sent to a website within a specified period of time.
+// Queries the distribution of request source countries for website services within a specified time period.
 //
 // @param request - DescribeDomainViewSourceCountriesRequest
 //
@@ -5964,7 +6008,7 @@ func (client *Client) DescribeDomainViewSourceCountries(request *DescribeDomainV
 
 // Summary:
 //
-// Queries the administrative regions in China from which requests are sent to a website within a specified period of time.
+// Queries the distribution of request sources by province in China for website services within a specified time period.
 //
 // @param request - DescribeDomainViewSourceProvincesRequest
 //
@@ -6020,7 +6064,7 @@ func (client *Client) DescribeDomainViewSourceProvincesWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the administrative regions in China from which requests are sent to a website within a specified period of time.
+// Queries the distribution of request sources by province in China for website services within a specified time period.
 //
 // @param request - DescribeDomainViewSourceProvincesRequest
 //
@@ -6116,7 +6160,7 @@ func (client *Client) DescribeDomainViewTopCostTime(request *DescribeDomainViewT
 
 // Summary:
 //
-// Queries the top N URLs that receive the most requests within a specified period of time.
+// Queries the top N most visited URLs for website services within a specified time period.
 //
 // @param request - DescribeDomainViewTopUrlRequest
 //
@@ -6180,7 +6224,7 @@ func (client *Client) DescribeDomainViewTopUrlWithOptions(request *DescribeDomai
 
 // Summary:
 //
-// Queries the top N URLs that receive the most requests within a specified period of time.
+// Queries the top N most visited URLs for website services within a specified time period.
 //
 // @param request - DescribeDomainViewTopUrlRequest
 //
@@ -6264,11 +6308,11 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 
 // Summary:
 //
-// Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
+// Queries the available burstable protection bandwidth specifications for an Anti-DDoS Pro and Anti-DDoS Premium instance in the Chinese mainland.
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland) service.
 //
 // @param request - DescribeElasticBandwidthSpecRequest
 //
@@ -6312,11 +6356,11 @@ func (client *Client) DescribeElasticBandwidthSpecWithOptions(request *DescribeE
 
 // Summary:
 //
-// Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
+// Queries the available burstable protection bandwidth specifications for an Anti-DDoS Pro and Anti-DDoS Premium instance in the Chinese mainland.
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland) service.
 //
 // @param request - DescribeElasticBandwidthSpecRequest
 //
@@ -6334,7 +6378,7 @@ func (client *Client) DescribeElasticBandwidthSpec(request *DescribeElasticBandw
 
 // Summary:
 //
-// Queries the line chart of the bills for the burstable QPS of an Anti-DDoS Proxy instance.
+// Retrieves the elastic QPS time-series data for an Anti-DDoS instance.
 //
 // @param request - DescribeElasticQpsRequest
 //
@@ -6394,7 +6438,7 @@ func (client *Client) DescribeElasticQpsWithOptions(request *DescribeElasticQpsR
 
 // Summary:
 //
-// Queries the line chart of the bills for the burstable QPS of an Anti-DDoS Proxy instance.
+// Retrieves the elastic QPS time-series data for an Anti-DDoS instance.
 //
 // @param request - DescribeElasticQpsRequest
 //
@@ -6482,7 +6526,7 @@ func (client *Client) DescribeElasticQpsRecord(request *DescribeElasticQpsRecord
 
 // Summary:
 //
-// Queries the custom header that is specified for a domain name.
+// Queries the custom headers for a domain name.
 //
 // @param request - DescribeHeadersRequest
 //
@@ -6530,7 +6574,7 @@ func (client *Client) DescribeHeadersWithOptions(request *DescribeHeadersRequest
 
 // Summary:
 //
-// Queries the custom header that is specified for a domain name.
+// Queries the custom headers for a domain name.
 //
 // @param request - DescribeHeadersRequest
 //
@@ -6672,15 +6716,15 @@ func (client *Client) DescribeHealthCheckStatus(request *DescribeHealthCheckStat
 
 // Summary:
 //
-// Queries the IP addresses and Internet service provider (ISP) lines of Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the IP address and line information of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //
-// You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
+// This operation is used to query the IP address and line information of an Anti-DDoS Pro or Anti-DDoS Premium instance, such as the IP address, status, and protection line of the instance.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls exceeds the limit, throttling is triggered. Throttling may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeInstanceDetailsRequest
 //
@@ -6724,15 +6768,15 @@ func (client *Client) DescribeInstanceDetailsWithOptions(request *DescribeInstan
 
 // Summary:
 //
-// Queries the IP addresses and Internet service provider (ISP) lines of Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the IP address and line information of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //
-// You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
+// This operation is used to query the IP address and line information of an Anti-DDoS Pro or Anti-DDoS Premium instance, such as the IP address, status, and protection line of the instance.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can invoke this operation up to 10 times per second per account. If the number of calls exceeds the limit, throttling is triggered. Throttling may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeInstanceDetailsRequest
 //
@@ -6820,7 +6864,15 @@ func (client *Client) DescribeInstanceExt(request *DescribeInstanceExtRequest) (
 
 // Summary:
 //
-// The description of the instance.
+// Queries the IDs, editions, remarks, and IP types of Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// Description:
+//
+// This operation queries the IDs, editions, remarks, and IP types of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call the API operation at a reasonable rate.
 //
 // @param request - DescribeInstanceIdsRequest
 //
@@ -6872,7 +6924,15 @@ func (client *Client) DescribeInstanceIdsWithOptions(request *DescribeInstanceId
 
 // Summary:
 //
-// The description of the instance.
+// Queries the IDs, editions, remarks, and IP types of Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// Description:
+//
+// This operation queries the IDs, editions, remarks, and IP types of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call the API operation at a reasonable rate.
 //
 // @param request - DescribeInstanceIdsRequest
 //
@@ -6894,11 +6954,11 @@ func (client *Client) DescribeInstanceIds(request *DescribeInstanceIdsRequest) (
 //
 // Description:
 //
-// You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
+// This operation queries the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances in batches, such as the clean bandwidth, mitigation bandwidth, feature edition, number of protected domain names, and number of ports.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable frequency.
 //
 // @param request - DescribeInstanceSpecsRequest
 //
@@ -6946,11 +7006,11 @@ func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstance
 //
 // Description:
 //
-// You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
+// This operation queries the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances in batches, such as the clean bandwidth, mitigation bandwidth, feature edition, number of protected domain names, and number of ports.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable frequency.
 //
 // @param request - DescribeInstanceSpecsRequest
 //
@@ -7030,7 +7090,7 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 
 // Summary:
 //
-// Queries the status of a specified Anti-DDoS Proxy instance.
+// Queries the status of a specified Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribeInstanceStatusRequest
 //
@@ -7078,7 +7138,7 @@ func (client *Client) DescribeInstanceStatusWithOptions(request *DescribeInstanc
 
 // Summary:
 //
-// Queries the status of a specified Anti-DDoS Proxy instance.
+// Queries the status of a specified Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribeInstanceStatusRequest
 //
@@ -7096,11 +7156,15 @@ func (client *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequ
 
 // Summary:
 //
-// 查询实例列表
+// Queries the details of Anti-DDoS Pro or Anti-DDoS Premium instances.
 //
 // Description:
 //
-// You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
+// Queries the details of Anti-DDoS Pro or Anti-DDoS Premium instances owned by the current Alibaba Cloud account by using paging. The details include the instance ID, edition, expiration time, and service traffic forwarding status.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 invocations per second. If the limit is exceeded, API invocations are throttled, which may affect your services. Invoke this operation based on your business requirements.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -7188,11 +7252,15 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 // Summary:
 //
-// 查询实例列表
+// Queries the details of Anti-DDoS Pro or Anti-DDoS Premium instances.
 //
 // Description:
 //
-// You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
+// Queries the details of Anti-DDoS Pro or Anti-DDoS Premium instances owned by the current Alibaba Cloud account by using paging. The details include the instance ID, edition, expiration time, and service traffic forwarding status.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 invocations per second. If the limit is exceeded, API invocations are throttled, which may affect your services. Invoke this operation based on your business requirements.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -7210,7 +7278,7 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 
 // Summary:
 //
-// Queries an Anti-DDoS global mitigation policy.
+// Queries the Anti-DDoS Global Mitigation Policy.
 //
 // @param request - DescribeL7GlobalRuleRequest
 //
@@ -7258,7 +7326,7 @@ func (client *Client) DescribeL7GlobalRuleWithOptions(request *DescribeL7GlobalR
 
 // Summary:
 //
-// Queries an Anti-DDoS global mitigation policy.
+// Queries the Anti-DDoS Global Mitigation Policy.
 //
 // @param request - DescribeL7GlobalRuleRequest
 //
@@ -7346,7 +7414,7 @@ func (client *Client) DescribeL7RsPolicy(request *DescribeL7RsPolicyRequest) (_r
 
 // Summary:
 //
-// Queries the configuration of back-to-origin persistent connections of a domain name.
+// Queries the persistent connection settings for back-to-origin requests of a domain name.
 //
 // @param request - DescribeL7UsKeepaliveRequest
 //
@@ -7390,7 +7458,7 @@ func (client *Client) DescribeL7UsKeepaliveWithOptions(request *DescribeL7UsKeep
 
 // Summary:
 //
-// Queries the configuration of back-to-origin persistent connections of a domain name.
+// Queries the persistent connection settings for back-to-origin requests of a domain name.
 //
 // @param request - DescribeL7UsKeepaliveRequest
 //
@@ -7532,7 +7600,7 @@ func (client *Client) DescribeLogStoreExistStatus(request *DescribeLogStoreExist
 
 // Summary:
 //
-// Queries the blocked locations that are configured for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the Location Blacklist configuration for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribeNetworkRegionBlockRequest
 //
@@ -7576,7 +7644,7 @@ func (client *Client) DescribeNetworkRegionBlockWithOptions(request *DescribeNet
 
 // Summary:
 //
-// Queries the blocked locations that are configured for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the Location Blacklist configuration for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribeNetworkRegionBlockRequest
 //
@@ -7594,7 +7662,7 @@ func (client *Client) DescribeNetworkRegionBlock(request *DescribeNetworkRegionB
 
 // Summary:
 //
-// Queries the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
+// Queries the protection settings of port forwarding rules for non-website services, including session persistence and DDoS mitigation policies.
 //
 // @param request - DescribeNetworkRuleAttributesRequest
 //
@@ -7638,7 +7706,7 @@ func (client *Client) DescribeNetworkRuleAttributesWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
+// Queries the protection settings of port forwarding rules for non-website services, including session persistence and DDoS mitigation policies.
 //
 // @param request - DescribeNetworkRuleAttributesRequest
 //
@@ -7734,13 +7802,13 @@ func (client *Client) DescribeNetworkRules(request *DescribeNetworkRulesRequest)
 
 // Summary:
 //
-// Queries the operation logs of Anti-DDoS Proxy (Chinese Mainland).
+// Queries the operation logs of Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland).
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland).
 //
-// You can query operations performed on Anti-DDoS Proxy (Chinese Mainland), such as configuring the burstable protection bandwidth, deactivating blackhole filtering, configuring the near-origin traffic diversion feature, using Anti-DDoS plans, changing the IP addresses of Elastic Compute Service (ECS) instances, and clearing all logs.
+// Operation log types include: settings for elastic protection specifications of an instance, Unblock (deactivation of blackhole filtering), settings for near-origin traffic diversion, offsetting with anti-DDoS mitigation plans, changing an ECS IP address, and clearing full logs.
 //
 // @param request - DescribeOpEntitiesRequest
 //
@@ -7808,13 +7876,13 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 
 // Summary:
 //
-// Queries the operation logs of Anti-DDoS Proxy (Chinese Mainland).
+// Queries the operation logs of Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland).
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland).
 //
-// You can query operations performed on Anti-DDoS Proxy (Chinese Mainland), such as configuring the burstable protection bandwidth, deactivating blackhole filtering, configuring the near-origin traffic diversion feature, using Anti-DDoS plans, changing the IP addresses of Elastic Compute Service (ECS) instances, and clearing all logs.
+// Operation log types include: settings for elastic protection specifications of an instance, Unblock (deactivation of blackhole filtering), settings for near-origin traffic diversion, offsetting with anti-DDoS mitigation plans, changing an ECS IP address, and clearing full logs.
 //
 // @param request - DescribeOpEntitiesRequest
 //
@@ -7832,11 +7900,11 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 
 // Summary:
 //
-// Queries the port forwarding rules that are created for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the port forwarding rules created for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This operation supports integration with Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - DescribePortRequest
 //
@@ -7896,11 +7964,11 @@ func (client *Client) DescribePortWithOptions(request *DescribePortRequest, runt
 
 // Summary:
 //
-// Queries the port forwarding rules that are created for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the port forwarding rules created for an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This operation supports integration with Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - DescribePortRequest
 //
@@ -8068,10 +8136,6 @@ func (client *Client) DescribePortAutoCcStatus(request *DescribePortAutoCcStatus
 	return _result, _err
 }
 
-// Summary:
-//
-// Queries the top source IP addresses of the volumetric attack events for the Anti-DDoS Pro or Anti-DDoS Premium instance.
-//
 // @param request - DescribePortCcAttackTopIPRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8124,10 +8188,6 @@ func (client *Client) DescribePortCcAttackTopIPWithOptions(request *DescribePort
 	return _result, _err
 }
 
-// Summary:
-//
-// Queries the top source IP addresses of the volumetric attack events for the Anti-DDoS Pro or Anti-DDoS Premium instance.
-//
 // @param request - DescribePortCcAttackTopIPRequest
 //
 // @return DescribePortCcAttackTopIPResponse
@@ -8304,7 +8364,7 @@ func (client *Client) DescribePortConnsList(request *DescribePortConnsListReques
 
 // Summary:
 //
-// Queries the traffic data of one or more Anti-DDoS Proxy instances.
+// Queries the traffic data list of an Anti-DDoS Pro and Anti-DDoS Premium instance.
 //
 // @param request - DescribePortFlowListRequest
 //
@@ -8364,7 +8424,7 @@ func (client *Client) DescribePortFlowListWithOptions(request *DescribePortFlowL
 
 // Summary:
 //
-// Queries the traffic data of one or more Anti-DDoS Proxy instances.
+// Queries the traffic data list of an Anti-DDoS Pro and Anti-DDoS Premium instance.
 //
 // @param request - DescribePortFlowListRequest
 //
@@ -8382,7 +8442,7 @@ func (client *Client) DescribePortFlowList(request *DescribePortFlowListRequest)
 
 // Summary:
 //
-// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
+// Queries the peak connection information of ports on an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribePortMaxConnsRequest
 //
@@ -8438,7 +8498,7 @@ func (client *Client) DescribePortMaxConnsWithOptions(request *DescribePortMaxCo
 
 // Summary:
 //
-// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
+// Queries the peak connection information of ports on an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - DescribePortMaxConnsRequest
 //
@@ -8530,17 +8590,17 @@ func (client *Client) DescribePortViewSourceCountries(request *DescribePortViewS
 
 // Summary:
 //
-// Queries the Internet service providers (ISPs) from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within the specified period of time.
+// Queries the distribution of request source ISPs for an Anti-DDoS Pro or Anti-DDoS Premium instance within a specified time period.
 //
 // Description:
 //
-// You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+// Queries the distribution of request source Internet service providers (ISPs) for an Anti-DDoS Pro or Anti-DDoS Premium instance within a specified time period.
 //
-// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](https://help.aliyun.com/document_detail/157460.html) operation.
+// > Because the Layer 4 transport-layer identity statistics algorithm of Anti-DDoS Pro and Anti-DDoS Premium has been updated, the data returned by this operation does not reflect the actual traffic volume. The data can only be used to calculate the proportion of requests from different ISPs (that is, the distribution of request source ISPs). To obtain request traffic data, call [DescribePortFlowList](https://help.aliyun.com/document_detail/157460.html).
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Call this operation as needed.
 //
 // @param request - DescribePortViewSourceIspsRequest
 //
@@ -8596,17 +8656,17 @@ func (client *Client) DescribePortViewSourceIspsWithOptions(request *DescribePor
 
 // Summary:
 //
-// Queries the Internet service providers (ISPs) from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within the specified period of time.
+// Queries the distribution of request source ISPs for an Anti-DDoS Pro or Anti-DDoS Premium instance within a specified time period.
 //
 // Description:
 //
-// You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+// Queries the distribution of request source Internet service providers (ISPs) for an Anti-DDoS Pro or Anti-DDoS Premium instance within a specified time period.
 //
-// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](https://help.aliyun.com/document_detail/157460.html) operation.
+// > Because the Layer 4 transport-layer identity statistics algorithm of Anti-DDoS Pro and Anti-DDoS Premium has been updated, the data returned by this operation does not reflect the actual traffic volume. The data can only be used to calculate the proportion of requests from different ISPs (that is, the distribution of request source ISPs). To obtain request traffic data, call [DescribePortFlowList](https://help.aliyun.com/document_detail/157460.html).
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Call this operation as needed.
 //
 // @param request - DescribePortViewSourceIspsRequest
 //
@@ -8784,15 +8844,15 @@ func (client *Client) DescribeSceneDefenseObjects(request *DescribeSceneDefenseO
 
 // Summary:
 //
-// Queries the configurations of a scenario-specific custom policy.
+// Queries the detailed configurations of scenario-specific policies.
 //
 // Description:
 //
-// You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
+// This operation queries the detailed configurations of created scenario-specific policies, such as the policy status, protected objects, and protection rules.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per user. If the number of calls exceeds the limit, throttling is triggered. This may affect your business. Call this operation within the limit.
 //
 // @param request - DescribeSceneDefensePoliciesRequest
 //
@@ -8844,15 +8904,15 @@ func (client *Client) DescribeSceneDefensePoliciesWithOptions(request *DescribeS
 
 // Summary:
 //
-// Queries the configurations of a scenario-specific custom policy.
+// Queries the detailed configurations of scenario-specific policies.
 //
 // Description:
 //
-// You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
+// This operation queries the detailed configurations of created scenario-specific policies, such as the policy status, protected objects, and protection rules.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per user. If the number of calls exceeds the limit, throttling is triggered. This may affect your business. Call this operation within the limit.
 //
 // @param request - DescribeSceneDefensePoliciesRequest
 //
@@ -9088,7 +9148,7 @@ func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusReques
 
 // Summary:
 //
-// Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
+// Queries the log store information of Anti-DDoS Pro or Anti-DDoS Premium, such as log storage capacity and storage duration of logs.
 //
 // @param request - DescribeSlsLogstoreInfoRequest
 //
@@ -9132,7 +9192,7 @@ func (client *Client) DescribeSlsLogstoreInfoWithOptions(request *DescribeSlsLog
 
 // Summary:
 //
-// Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
+// Queries the log store information of Anti-DDoS Pro or Anti-DDoS Premium, such as log storage capacity and storage duration of logs.
 //
 // @param request - DescribeSlsLogstoreInfoRequest
 //
@@ -9212,15 +9272,15 @@ func (client *Client) DescribeSlsOpenStatus(request *DescribeSlsOpenStatusReques
 
 // Summary:
 //
-// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+// Queries whether Anti-DDoS Proxy are authorized to access other cloud services.
 //
 // Description:
 //
-// You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
+// This operation queries whether your Alibaba Cloud account has authorized Anti-DDoS Pro and Anti-DDoS Premium to access other cloud services.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The maximum number of queries per second (QPS) for this operation is 10 per user. If the number of API calls exceeds this limit, throttling is triggered. This may affect your business operations. Ensure that you call this operation at an appropriate rate.
 //
 // @param request - DescribeStsGrantStatusRequest
 //
@@ -9268,15 +9328,15 @@ func (client *Client) DescribeStsGrantStatusWithOptions(request *DescribeStsGran
 
 // Summary:
 //
-// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+// Queries whether Anti-DDoS Proxy are authorized to access other cloud services.
 //
 // Description:
 //
-// You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
+// This operation queries whether your Alibaba Cloud account has authorized Anti-DDoS Pro and Anti-DDoS Premium to access other cloud services.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The maximum number of queries per second (QPS) for this operation is 10 per user. If the number of API calls exceeds this limit, throttling is triggered. This may affect your business operations. Ensure that you call this operation at an appropriate rate.
 //
 // @param request - DescribeStsGrantStatusRequest
 //
@@ -9294,17 +9354,17 @@ func (client *Client) DescribeStsGrantStatus(request *DescribeStsGrantStatusRequ
 
 // Summary:
 //
-// Queries the details of the bills for the burstable clean bandwidth.
+// Queries the billing details of burstable clean bandwidth.
 //
 // Description:
 //
-// You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
+// This operation lets you query the system logs of Anti-DDoS Pro. System logs currently include only the billing logs of burstable clean bandwidth.
 //
-// If you have enabled the burstable clean bandwidth feature, you can call this operation to query the details of the bills of the burstable clean bandwidth.
+// If you have enabled burstable clean bandwidth, you can call this operation to query the billing details of burstable clean bandwidth.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 per second per user. If the number of calls per second exceeds this limit, throttling is triggered. This may affect your business operations. Therefore, call this operation at an appropriate frequency.
 //
 // @param request - DescribeSystemLogRequest
 //
@@ -9368,17 +9428,17 @@ func (client *Client) DescribeSystemLogWithOptions(request *DescribeSystemLogReq
 
 // Summary:
 //
-// Queries the details of the bills for the burstable clean bandwidth.
+// Queries the billing details of burstable clean bandwidth.
 //
 // Description:
 //
-// You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
+// This operation lets you query the system logs of Anti-DDoS Pro. System logs currently include only the billing logs of burstable clean bandwidth.
 //
-// If you have enabled the burstable clean bandwidth feature, you can call this operation to query the details of the bills of the burstable clean bandwidth.
+// If you have enabled burstable clean bandwidth, you can call this operation to query the billing details of burstable clean bandwidth.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 per second per user. If the number of calls per second exceeds this limit, throttling is triggered. This may affect your business operations. Therefore, call this operation at an appropriate frequency.
 //
 // @param request - DescribeSystemLogRequest
 //
@@ -9596,7 +9656,7 @@ func (client *Client) DescribeTagResources(request *DescribeTagResourcesRequest)
 
 // Summary:
 //
-// Queries the peak bandwidth and peak packet rates of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+// 新峰值接口
 //
 // @param request - DescribeTotalAttackMaxFlowRequest
 //
@@ -9652,7 +9712,7 @@ func (client *Client) DescribeTotalAttackMaxFlowWithOptions(request *DescribeTot
 
 // Summary:
 //
-// Queries the peak bandwidth and peak packet rates of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+// 新峰值接口
 //
 // @param request - DescribeTotalAttackMaxFlowRequest
 //
@@ -9736,7 +9796,7 @@ func (client *Client) DescribeUdpReflect(request *DescribeUdpReflectRequest) (_r
 
 // Summary:
 //
-// Queries the total quota and remaining quota for blackhole filtering deactivation.
+// Queries the number of times that blackhole filtering can be deactivated.
 //
 // @param request - DescribeUnBlackholeCountRequest
 //
@@ -9780,7 +9840,7 @@ func (client *Client) DescribeUnBlackholeCountWithOptions(request *DescribeUnBla
 
 // Summary:
 //
-// Queries the total quota and remaining quota for blackhole filtering deactivation.
+// Queries the number of times that blackhole filtering can be deactivated.
 //
 // @param request - DescribeUnBlackholeCountRequest
 //
@@ -9798,11 +9858,11 @@ func (client *Client) DescribeUnBlackholeCount(request *DescribeUnBlackholeCount
 
 // Summary:
 //
-// Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
+// Queries the available near-origin traffic diversion quota.
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland) service.
 //
 // @param request - DescribeUnBlockCountRequest
 //
@@ -9846,11 +9906,11 @@ func (client *Client) DescribeUnBlockCountWithOptions(request *DescribeUnBlockCo
 
 // Summary:
 //
-// Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
+// Queries the available near-origin traffic diversion quota.
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland) service.
 //
 // @param request - DescribeUnBlockCountRequest
 //
@@ -9868,15 +9928,15 @@ func (client *Client) DescribeUnBlockCount(request *DescribeUnBlockCountRequest)
 
 // Summary:
 //
-// Checks whether the log analysis feature is enabled for all domain names.
+// Queries the full log switch status of all domain names.
 //
 // Description:
 //
-// You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
+// This operation is used to query the full log switch status of all domain names that are added to Anti-DDoS Pro for protection.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit on this operation is 10 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this operation at a proper frequency.
 //
 // @param request - DescribeWebAccessLogDispatchStatusRequest
 //
@@ -9928,15 +9988,15 @@ func (client *Client) DescribeWebAccessLogDispatchStatusWithOptions(request *Des
 
 // Summary:
 //
-// Checks whether the log analysis feature is enabled for all domain names.
+// Queries the full log switch status of all domain names.
 //
 // Description:
 //
-// You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
+// This operation is used to query the full log switch status of all domain names that are added to Anti-DDoS Pro for protection.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit on this operation is 10 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this operation at a proper frequency.
 //
 // @param request - DescribeWebAccessLogDispatchStatusRequest
 //
@@ -10082,7 +10142,7 @@ func (client *Client) DescribeWebAccessLogStatus(request *DescribeWebAccessLogSt
 
 // Summary:
 //
-// Queries the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+// Queries the access mode of website businesses.
 //
 // @param request - DescribeWebAccessModeRequest
 //
@@ -10126,7 +10186,7 @@ func (client *Client) DescribeWebAccessModeWithOptions(request *DescribeWebAcces
 
 // Summary:
 //
-// Queries the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+// Queries the access mode of website businesses.
 //
 // @param request - DescribeWebAccessModeRequest
 //
@@ -10144,7 +10204,7 @@ func (client *Client) DescribeWebAccessMode(request *DescribeWebAccessModeReques
 
 // Summary:
 //
-// Queries the Location Blacklist (Domain Names) configurations for websites.
+// Queries the configuration information of the Location Blacklist feature (for domain names) in website services.
 //
 // @param request - DescribeWebAreaBlockConfigsRequest
 //
@@ -10192,7 +10252,7 @@ func (client *Client) DescribeWebAreaBlockConfigsWithOptions(request *DescribeWe
 
 // Summary:
 //
-// Queries the Location Blacklist (Domain Names) configurations for websites.
+// Queries the configuration information of the Location Blacklist feature (for domain names) in website services.
 //
 // @param request - DescribeWebAreaBlockConfigsRequest
 //
@@ -10212,7 +10272,7 @@ func (client *Client) DescribeWebAreaBlockConfigs(request *DescribeWebAreaBlockC
 //
 // Summary:
 //
-// Queries the custom frequency control rules that are created for a website.
+// Queries the custom rules of frequency control (HTTP flood mitigation) for website services.
 //
 // @param request - DescribeWebCCRulesRequest
 //
@@ -10270,7 +10330,7 @@ func (client *Client) DescribeWebCCRulesWithOptions(request *DescribeWebCCRulesR
 //
 // Summary:
 //
-// Queries the custom frequency control rules that are created for a website.
+// Queries the custom rules of frequency control (HTTP flood mitigation) for website services.
 //
 // @param request - DescribeWebCCRulesRequest
 //
@@ -10289,7 +10349,7 @@ func (client *Client) DescribeWebCCRules(request *DescribeWebCCRulesRequest) (_r
 
 // Summary:
 //
-// Queries the custom frequency control rules that are created for a website.
+// Queries the custom rules of frequency control (HTTP flood mitigation) for website services.
 //
 // @param request - DescribeWebCCRulesV2Request
 //
@@ -10345,7 +10405,7 @@ func (client *Client) DescribeWebCCRulesV2WithOptions(request *DescribeWebCCRule
 
 // Summary:
 //
-// Queries the custom frequency control rules that are created for a website.
+// Queries the custom rules of frequency control (HTTP flood mitigation) for website services.
 //
 // @param request - DescribeWebCCRulesV2Request
 //
@@ -10445,7 +10505,7 @@ func (client *Client) DescribeWebCacheConfigs(request *DescribeWebCacheConfigsRe
 
 // Summary:
 //
-// Queries the status of each mitigation policy for a website.
+// Queries the status of protection features for website services.
 //
 // @param request - DescribeWebCcProtectSwitchRequest
 //
@@ -10493,7 +10553,7 @@ func (client *Client) DescribeWebCcProtectSwitchWithOptions(request *DescribeWeb
 
 // Summary:
 //
-// Queries the status of each mitigation policy for a website.
+// Queries the status of protection features for website services.
 //
 // @param request - DescribeWebCcProtectSwitchRequest
 //
@@ -10511,7 +10571,7 @@ func (client *Client) DescribeWebCcProtectSwitch(request *DescribeWebCcProtectSw
 
 // Summary:
 //
-// Queries the supported custom ports of a website.
+// Queries the range of custom ports supported by Anti-DDoS Proxy for website services.
 //
 // @param request - DescribeWebCustomPortsRequest
 //
@@ -10555,7 +10615,7 @@ func (client *Client) DescribeWebCustomPortsWithOptions(request *DescribeWebCust
 
 // Summary:
 //
-// Queries the supported custom ports of a website.
+// Queries the range of custom ports supported by Anti-DDoS Proxy for website services.
 //
 // @param request - DescribeWebCustomPortsRequest
 //
@@ -10573,7 +10633,7 @@ func (client *Client) DescribeWebCustomPorts(request *DescribeWebCustomPortsRequ
 
 // Summary:
 //
-// Queries the information about Anti-DDoS Pro or Anti-DDoS Premium instances to which a website service is added.
+// Queries the information about Anti-DDoS Pro or Anti-DDoS Premium instances associated with website services.
 //
 // @param request - DescribeWebInstanceRelationsRequest
 //
@@ -10621,7 +10681,7 @@ func (client *Client) DescribeWebInstanceRelationsWithOptions(request *DescribeW
 
 // Summary:
 //
-// Queries the information about Anti-DDoS Pro or Anti-DDoS Premium instances to which a website service is added.
+// Queries the information about Anti-DDoS Pro or Anti-DDoS Premium instances associated with website services.
 //
 // @param request - DescribeWebInstanceRelationsRequest
 //
@@ -10639,7 +10699,7 @@ func (client *Client) DescribeWebInstanceRelations(request *DescribeWebInstanceR
 
 // Summary:
 //
-// Queries the accurate access control rules that are created for websites.
+// Queries the precise access control rules configured for a website.
 //
 // @param request - DescribeWebPreciseAccessRuleRequest
 //
@@ -10691,7 +10751,7 @@ func (client *Client) DescribeWebPreciseAccessRuleWithOptions(request *DescribeW
 
 // Summary:
 //
-// Queries the accurate access control rules that are created for websites.
+// Queries the precise access control rules configured for a website.
 //
 // @param request - DescribeWebPreciseAccessRuleRequest
 //
@@ -10709,7 +10769,7 @@ func (client *Client) DescribeWebPreciseAccessRule(request *DescribeWebPreciseAc
 
 // Summary:
 //
-// Queries the top source IP addresses of the web resource exhaustion attacks for the Anti-DDoS Proxy instance.
+// 查询报表top IP
 //
 // @param request - DescribeWebReportTopIpRequest
 //
@@ -10773,7 +10833,7 @@ func (client *Client) DescribeWebReportTopIpWithOptions(request *DescribeWebRepo
 
 // Summary:
 //
-// Queries the top source IP addresses of the web resource exhaustion attacks for the Anti-DDoS Proxy instance.
+// 查询报表top IP
 //
 // @param request - DescribeWebReportTopIpRequest
 //
@@ -10791,17 +10851,17 @@ func (client *Client) DescribeWebReportTopIp(request *DescribeWebReportTopIpRequ
 
 // Summary:
 //
-// Query Configuration of Website Business Forwarding Rules.
+// Queries the configurations of website forwarding rules.
 //
 // Description:
 //
-// This interface is used for paginated querying of the configurations of website business forwarding rules you have created, such as forwarding protocol types, source server addresses, HTTPS configurations, IP blacklist configurations, and more.
+// This operation is used to query the configurations of website forwarding rules that you have created by using paging. For example, you can query the forwarding protocol type, origin server address, HTTPS configuration, and IP blacklist configuration.
 //
-// Before calling this interface, you must have already called [CreateWebRule](~~CreateWebRule~~) to create website business forwarding rules.
+// Before you invoke this operation, you must have invoked [CreateWebRule](https://help.aliyun.com/document_detail/157463.html) to create website forwarding rules.
 //
-// ### QPS Limit
+// ### QPS limit
 //
-// The per-user QPS limit for this interface is 50 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business; please use it reasonably.
+// You can invoke this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeWebRulesRequest
 //
@@ -10869,17 +10929,17 @@ func (client *Client) DescribeWebRulesWithOptions(request *DescribeWebRulesReque
 
 // Summary:
 //
-// Query Configuration of Website Business Forwarding Rules.
+// Queries the configurations of website forwarding rules.
 //
 // Description:
 //
-// This interface is used for paginated querying of the configurations of website business forwarding rules you have created, such as forwarding protocol types, source server addresses, HTTPS configurations, IP blacklist configurations, and more.
+// This operation is used to query the configurations of website forwarding rules that you have created by using paging. For example, you can query the forwarding protocol type, origin server address, HTTPS configuration, and IP blacklist configuration.
 //
-// Before calling this interface, you must have already called [CreateWebRule](~~CreateWebRule~~) to create website business forwarding rules.
+// Before you invoke this operation, you must have invoked [CreateWebRule](https://help.aliyun.com/document_detail/157463.html) to create website forwarding rules.
 //
-// ### QPS Limit
+// ### QPS limit
 //
-// The per-user QPS limit for this interface is 50 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business; please use it reasonably.
+// You can invoke this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeWebRulesRequest
 //
@@ -10967,7 +11027,7 @@ func (client *Client) DetachSceneDefenseObject(request *DetachSceneDefenseObject
 
 // Summary:
 //
-// Disables a scenario-specific custom policy.
+// Disables a scenario-specific policy.
 //
 // @param request - DisableSceneDefensePolicyRequest
 //
@@ -11011,7 +11071,7 @@ func (client *Client) DisableSceneDefensePolicyWithOptions(request *DisableScene
 
 // Summary:
 //
-// Disables a scenario-specific custom policy.
+// Disables a scenario-specific policy.
 //
 // @param request - DisableSceneDefensePolicyRequest
 //
@@ -11029,7 +11089,7 @@ func (client *Client) DisableSceneDefensePolicy(request *DisableSceneDefensePoli
 
 // Summary:
 //
-// Disables the log analysis feature for a website.
+// Shuts down full logs analysis for a website service.
 //
 // @param request - DisableWebAccessLogConfigRequest
 //
@@ -11077,7 +11137,7 @@ func (client *Client) DisableWebAccessLogConfigWithOptions(request *DisableWebAc
 
 // Summary:
 //
-// Disables the log analysis feature for a website.
+// Shuts down full logs analysis for a website service.
 //
 // @param request - DisableWebAccessLogConfigRequest
 //
@@ -11161,7 +11221,7 @@ func (client *Client) DisableWebCC(request *DisableWebCCRequest) (_result *Disab
 
 // Summary:
 //
-// Disables custom frequency control rules for a website.
+// Disables the custom rule switch for frequency control (HTTP flood mitigation) of a website service.
 //
 // @param request - DisableWebCCRuleRequest
 //
@@ -11209,7 +11269,7 @@ func (client *Client) DisableWebCCRuleWithOptions(request *DisableWebCCRuleReque
 
 // Summary:
 //
-// Disables custom frequency control rules for a website.
+// Disables the custom rule switch for frequency control (HTTP flood mitigation) of a website service.
 //
 // @param request - DisableWebCCRuleRequest
 //
@@ -11351,7 +11411,7 @@ func (client *Client) EmptyAutoCcWhitelist(request *EmptyAutoCcWhitelistRequest)
 
 // Summary:
 //
-// Clears the Logstore of Anti-DDoS Pro or Anti-DDoS Premium.
+// Deletes the Logstore of Anti-DDoS Proxy.
 //
 // @param request - EmptySlsLogstoreRequest
 //
@@ -11395,7 +11455,7 @@ func (client *Client) EmptySlsLogstoreWithOptions(request *EmptySlsLogstoreReque
 
 // Summary:
 //
-// Clears the Logstore of Anti-DDoS Pro or Anti-DDoS Premium.
+// Deletes the Logstore of Anti-DDoS Proxy.
 //
 // @param request - EmptySlsLogstoreRequest
 //
@@ -11607,7 +11667,7 @@ func (client *Client) EnableWebCC(request *EnableWebCCRequest) (_result *EnableW
 
 // Summary:
 //
-// Enables custom frequency control rules for a website.
+// Enables a custom HTTP flood protection rule.
 //
 // @param request - EnableWebCCRuleRequest
 //
@@ -11655,7 +11715,7 @@ func (client *Client) EnableWebCCRuleWithOptions(request *EnableWebCCRuleRequest
 
 // Summary:
 //
-// Enables custom frequency control rules for a website.
+// Enables a custom HTTP flood protection rule.
 //
 // @param request - EnableWebCCRuleRequest
 //
@@ -11673,11 +11733,7 @@ func (client *Client) EnableWebCCRule(request *EnableWebCCRuleRequest) (_result 
 
 // Summary:
 //
-// Switches between the metering methods of the burstable clean bandwidth feature.
-//
-// Description:
-//
-// You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
+// 95计费切换模式
 //
 // @param request - ModifyBizBandWidthModeRequest
 //
@@ -11725,11 +11781,7 @@ func (client *Client) ModifyBizBandWidthModeWithOptions(request *ModifyBizBandWi
 
 // Summary:
 //
-// Switches between the metering methods of the burstable clean bandwidth feature.
-//
-// Description:
-//
-// You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
+// 95计费切换模式
 //
 // @param request - ModifyBizBandWidthModeRequest
 //
@@ -12059,11 +12111,11 @@ func (client *Client) ModifyDomainResource(request *ModifyDomainResourceRequest)
 
 // Summary:
 //
-// Modifies the burstable protection bandwidth of a specified Anti-DDoS Proxy (Chinese Mainland) instance.
+// Modifies the burstable protection bandwidth of an Anti-DDoS Pro or Anti-DDoS Premium instance in the Chinese mainland.
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro (the Chinese mainland) service.
 //
 // @param request - ModifyElasticBandWidthRequest
 //
@@ -12111,11 +12163,11 @@ func (client *Client) ModifyElasticBandWidthWithOptions(request *ModifyElasticBa
 
 // Summary:
 //
-// Modifies the burstable protection bandwidth of a specified Anti-DDoS Proxy (Chinese Mainland) instance.
+// Modifies the burstable protection bandwidth of an Anti-DDoS Pro or Anti-DDoS Premium instance in the Chinese mainland.
 //
 // Description:
 //
-// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
+// > This operation is applicable only to Anti-DDoS Pro (the Chinese mainland) service.
 //
 // @param request - ModifyElasticBandWidthRequest
 //
@@ -12133,11 +12185,7 @@ func (client *Client) ModifyElasticBandWidth(request *ModifyElasticBandWidthRequ
 
 // Summary:
 //
-// Modifies the burstable clean bandwidth for an Anti-DDoS Pro or Anti-DDoS Premium instance.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
+// 修改弹性业务带宽
 //
 // @param request - ModifyElasticBizBandWidthRequest
 //
@@ -12189,11 +12237,7 @@ func (client *Client) ModifyElasticBizBandWidthWithOptions(request *ModifyElasti
 
 // Summary:
 //
-// Modifies the burstable clean bandwidth for an Anti-DDoS Pro or Anti-DDoS Premium instance.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
+// 修改弹性业务带宽
 //
 // @param request - ModifyElasticBizBandWidthRequest
 //
@@ -12215,7 +12259,7 @@ func (client *Client) ModifyElasticBizBandWidth(request *ModifyElasticBizBandWid
 //
 // Description:
 //
-// You can enable burstable QPS only for IPv4 instances.
+// Both IPv4 and IPv6 instances support burstable QPS.
 //
 // @param request - ModifyElasticBizQpsRequest
 //
@@ -12271,7 +12315,7 @@ func (client *Client) ModifyElasticBizQpsWithOptions(request *ModifyElasticBizQp
 //
 // Description:
 //
-// You can enable burstable QPS only for IPv4 instances.
+// Both IPv4 and IPv6 instances support burstable QPS.
 //
 // @param request - ModifyElasticBizQpsRequest
 //
@@ -12355,7 +12399,7 @@ func (client *Client) ModifyFullLogTtl(request *ModifyFullLogTtlRequest) (_resul
 
 // Summary:
 //
-// Modifies the custom header of a domain name that is added to an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Modifies custom headers for a domain on an Anti-DDoS Pro instance.
 //
 // @param request - ModifyHeadersRequest
 //
@@ -12411,7 +12455,7 @@ func (client *Client) ModifyHeadersWithOptions(request *ModifyHeadersRequest, ru
 
 // Summary:
 //
-// Modifies the custom header of a domain name that is added to an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Modifies custom headers for a domain on an Anti-DDoS Pro instance.
 //
 // @param request - ModifyHeadersRequest
 //
@@ -12581,7 +12625,7 @@ func (client *Client) ModifyHttp2Enable(request *ModifyHttp2EnableRequest) (_res
 
 // Summary:
 //
-// # Instance adjustment, similar to BSS adjustment
+// Modifies the specifications of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -12681,7 +12725,7 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 
 // Summary:
 //
-// # Instance adjustment, similar to BSS adjustment
+// Modifies the specifications of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -12699,7 +12743,7 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 
 // Summary:
 //
-// Modifies the description of an Anti-DDoS Proxy instance.
+// Modifies the remark of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - ModifyInstanceRemarkRequest
 //
@@ -12747,7 +12791,7 @@ func (client *Client) ModifyInstanceRemarkWithOptions(request *ModifyInstanceRem
 
 // Summary:
 //
-// Modifies the description of an Anti-DDoS Proxy instance.
+// Modifies the remark of an Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - ModifyInstanceRemarkRequest
 //
@@ -12765,7 +12809,7 @@ func (client *Client) ModifyInstanceRemark(request *ModifyInstanceRemarkRequest)
 
 // Summary:
 //
-// Modifies the session persistence and DDoS mitigation policy settings of a port forwarding rule.
+// Modifies the session persistence and DDoS mitigation policy settings for a port forwarding rule.
 //
 // @param request - ModifyNetworkRuleAttributeRequest
 //
@@ -12825,7 +12869,7 @@ func (client *Client) ModifyNetworkRuleAttributeWithOptions(request *ModifyNetwo
 
 // Summary:
 //
-// Modifies the session persistence and DDoS mitigation policy settings of a port forwarding rule.
+// Modifies the session persistence and DDoS mitigation policy settings for a port forwarding rule.
 //
 // @param request - ModifyNetworkRuleAttributeRequest
 //
@@ -12921,7 +12965,7 @@ func (client *Client) ModifyOcspStatus(request *ModifyOcspStatusRequest) (_resul
 //
 // Description:
 //
-// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This operation can be used with Terraform. For more information, see [What is Terraform](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - ModifyPortRequest
 //
@@ -12989,7 +13033,7 @@ func (client *Client) ModifyPortWithOptions(request *ModifyPortRequest, runtime 
 //
 // Description:
 //
-// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
+// This operation can be used with Terraform. For more information, see [What is Terraform](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - ModifyPortRequest
 //
@@ -13007,7 +13051,7 @@ func (client *Client) ModifyPort(request *ModifyPortRequest) (_result *ModifyPor
 
 // Summary:
 //
-// Modifies the Intelligent Protection configuration of a non-website service.
+// Configures AI-based intelligent protection for non-website services.
 //
 // @param request - ModifyPortAutoCcStatusRequest
 //
@@ -13059,7 +13103,7 @@ func (client *Client) ModifyPortAutoCcStatusWithOptions(request *ModifyPortAutoC
 
 // Summary:
 //
-// Modifies the Intelligent Protection configuration of a non-website service.
+// Configures AI-based intelligent protection for non-website services.
 //
 // @param request - ModifyPortAutoCcStatusRequest
 //
@@ -13299,7 +13343,7 @@ func (client *Client) ModifySchedulerRule(request *ModifySchedulerRuleRequest) (
 
 // Summary:
 //
-// Modifies the Transport Layer Security (TLS) policy configuration for the forwarding rule of a website.
+// Modifies the TLS security policy of a website forwarding rule.
 //
 // @param request - ModifyTlsConfigRequest
 //
@@ -13351,7 +13395,7 @@ func (client *Client) ModifyTlsConfigWithOptions(request *ModifyTlsConfigRequest
 
 // Summary:
 //
-// Modifies the Transport Layer Security (TLS) policy configuration for the forwarding rule of a website.
+// Modifies the TLS security policy of a website forwarding rule.
 //
 // @param request - ModifyTlsConfigRequest
 //
@@ -13509,7 +13553,7 @@ func (client *Client) ModifyWebAIProtectSwitch(request *ModifyWebAIProtectSwitch
 
 // Summary:
 //
-// Changes the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+// Sets the access mode for website services.
 //
 // @param request - ModifyWebAccessModeRequest
 //
@@ -13557,7 +13601,7 @@ func (client *Client) ModifyWebAccessModeWithOptions(request *ModifyWebAccessMod
 
 // Summary:
 //
-// Changes the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+// Sets the access mode for website services.
 //
 // @param request - ModifyWebAccessModeRequest
 //
@@ -13575,7 +13619,7 @@ func (client *Client) ModifyWebAccessMode(request *ModifyWebAccessModeRequest) (
 
 // Summary:
 //
-// Modifies the blocked locations that are configured in the Location Blacklist (Domain Names) policy for a website.
+// Sets the blocked regions for Location Blacklist (domain-specific) of website services.
 //
 // @param request - ModifyWebAreaBlockRequest
 //
@@ -13627,7 +13671,7 @@ func (client *Client) ModifyWebAreaBlockWithOptions(request *ModifyWebAreaBlockR
 
 // Summary:
 //
-// Modifies the blocked locations that are configured in the Location Blacklist (Domain Names) policy for a website.
+// Sets the blocked regions for Location Blacklist (domain-specific) of website services.
 //
 // @param request - ModifyWebAreaBlockRequest
 //
@@ -13645,15 +13689,15 @@ func (client *Client) ModifyWebAreaBlock(request *ModifyWebAreaBlockRequest) (_r
 
 // Summary:
 //
-// Enables or disables the Location Blacklist (Domain Names) policy for a domain name.
+// Sets the status of the Location Blacklist feature for website services (for domain names).
 //
 // Description:
 //
-// You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
+// This operation sets the status of the Location Blacklist feature for website services (for domain names).
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user queries per second (QPS) limit for this operation is 10. API calls that exceed the limit are throttled, which may affect your business. We recommend that you call this operation at an appropriate rate.
 //
 // @param request - ModifyWebAreaBlockSwitchRequest
 //
@@ -13705,15 +13749,15 @@ func (client *Client) ModifyWebAreaBlockSwitchWithOptions(request *ModifyWebArea
 
 // Summary:
 //
-// Enables or disables the Location Blacklist (Domain Names) policy for a domain name.
+// Sets the status of the Location Blacklist feature for website services (for domain names).
 //
 // Description:
 //
-// You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
+// This operation sets the status of the Location Blacklist feature for website services (for domain names).
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user queries per second (QPS) limit for this operation is 10. API calls that exceed the limit are throttled, which may affect your business. We recommend that you call this operation at an appropriate rate.
 //
 // @param request - ModifyWebAreaBlockSwitchRequest
 //
@@ -13799,7 +13843,7 @@ func (client *Client) ModifyWebCCGlobalSwitch(request *ModifyWebCCGlobalSwitchRe
 //
 // Summary:
 //
-// Modifies the custom frequency control rule of a website.
+// Modifies a custom rule for website business frequency control protection (HTTP flood protection).
 //
 // @param request - ModifyWebCCRuleRequest
 //
@@ -13877,7 +13921,7 @@ func (client *Client) ModifyWebCCRuleWithOptions(request *ModifyWebCCRuleRequest
 //
 // Summary:
 //
-// Modifies the custom frequency control rule of a website.
+// Modifies a custom rule for website business frequency control protection (HTTP flood protection).
 //
 // @param request - ModifyWebCCRuleRequest
 //
@@ -14192,7 +14236,7 @@ func (client *Client) ModifyWebIpSetSwitch(request *ModifyWebIpSetSwitchRequest)
 
 // Summary:
 //
-// Creates or modifies an accurate access control rule of a website.
+// Creates or edits a precise access control rule for a website.
 //
 // @param request - ModifyWebPreciseAccessRuleRequest
 //
@@ -14248,7 +14292,7 @@ func (client *Client) ModifyWebPreciseAccessRuleWithOptions(request *ModifyWebPr
 
 // Summary:
 //
-// Creates or modifies an accurate access control rule of a website.
+// Creates or edits a precise access control rule for a website.
 //
 // @param request - ModifyWebPreciseAccessRuleRequest
 //
@@ -14336,13 +14380,7 @@ func (client *Client) ModifyWebPreciseAccessSwitch(request *ModifyWebPreciseAcce
 
 // Summary:
 //
-// Modifies the forwarding rule of a website.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+// Modifies an existing website forwarding rule.
 //
 // @param request - ModifyWebRuleRequest
 //
@@ -14410,13 +14448,7 @@ func (client *Client) ModifyWebRuleWithOptions(request *ModifyWebRuleRequest, ru
 
 // Summary:
 //
-// Modifies the forwarding rule of a website.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+// Modifies an existing website forwarding rule.
 //
 // @param request - ModifyWebRuleRequest
 //
@@ -14434,11 +14466,19 @@ func (client *Client) ModifyWebRule(request *ModifyWebRuleRequest) (_result *Mod
 
 // Summary:
 //
-// Releases an expired Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Release an expired Anti-DDoS Proxy instance.
 //
 // Description:
 //
-// The ID of the request, which is used to locate and troubleshoot issues.
+// After an Anti-DDoS instance expires, it stops providing DDoS attack protection services. Seven days after expiration, it stops forwarding service traffic.
+//
+// - We recommend that you renew your instance before it expires to avoid impacts on service protection and forwarding. You can call [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) to query the expiration time of an instance. To renew the instance, go to the [Anti-DDoS console](https://yundun.console.aliyun.com/?p=ddoscoo) to perform the operation.
+//
+// - If you do not plan to renew the instance, we recommend that you restore the protected service IP (no longer use the Anti-DDoS IP as the service IP) or service DNS parsing (no longer parse service traffic to the CNAME address of Anti-DDoS) before the Anti-DDoS instance expires. This prevents service traffic from being forwarded to the Anti-DDoS instance and avoids disruption to normal service forwarding when the instance expires.
+//
+// After the instance expires, you can call this operation to release the specified Anti-DDoS instance.
+//
+// > Before releasing the specified instance, ensure that you have restored the protected service IP or service DNS parsing.
 //
 // @param request - ReleaseInstanceRequest
 //
@@ -14482,11 +14522,19 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 
 // Summary:
 //
-// Releases an expired Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Release an expired Anti-DDoS Proxy instance.
 //
 // Description:
 //
-// The ID of the request, which is used to locate and troubleshoot issues.
+// After an Anti-DDoS instance expires, it stops providing DDoS attack protection services. Seven days after expiration, it stops forwarding service traffic.
+//
+// - We recommend that you renew your instance before it expires to avoid impacts on service protection and forwarding. You can call [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) to query the expiration time of an instance. To renew the instance, go to the [Anti-DDoS console](https://yundun.console.aliyun.com/?p=ddoscoo) to perform the operation.
+//
+// - If you do not plan to renew the instance, we recommend that you restore the protected service IP (no longer use the Anti-DDoS IP as the service IP) or service DNS parsing (no longer parse service traffic to the CNAME address of Anti-DDoS) before the Anti-DDoS instance expires. This prevents service traffic from being forwarded to the Anti-DDoS instance and avoids disruption to normal service forwarding when the instance expires.
+//
+// After the instance expires, you can call this operation to release the specified Anti-DDoS instance.
+//
+// > Before releasing the specified instance, ensure that you have restored the protected service IP or service DNS parsing.
 //
 // @param request - ReleaseInstanceRequest
 //

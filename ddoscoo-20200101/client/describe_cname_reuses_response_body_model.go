@@ -16,7 +16,10 @@ type iDescribeCnameReusesResponseBody interface {
 }
 
 type DescribeCnameReusesResponseBody struct {
+	// The CNAME reuse information.
 	CnameReuses []*DescribeCnameReusesResponseBodyCnameReuses `json:"CnameReuses,omitempty" xml:"CnameReuses,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
@@ -63,14 +66,24 @@ func (s *DescribeCnameReusesResponseBody) Validate() error {
 }
 
 type DescribeCnameReusesResponseBodyCnameReuses struct {
+	// The reused canonical name value.
+	//
 	// example:
 	//
 	// 4o6ep6q217k9****.aliyunddos0004.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The domain name of the website.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Indicates whether CNAME reuse is enabled. Valid values:
+	//
+	// - **0**: disabled
+	//
+	// - **1**: enabled
+	//
 	// example:
 	//
 	// 1

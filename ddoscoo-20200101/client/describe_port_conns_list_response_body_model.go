@@ -72,7 +72,7 @@ type DescribePortConnsListResponseBodyConnsList struct {
 	//
 	// 3
 	ActConns *int64 `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
-	// >  This parameter is in internal preview. Do not use this parameter.
+	// > This parameter is in internal preview. Do not use this parameter.
 	//
 	// example:
 	//

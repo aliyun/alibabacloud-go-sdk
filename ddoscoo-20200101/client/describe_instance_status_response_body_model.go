@@ -18,21 +18,15 @@ type iDescribeInstanceStatusResponseBody interface {
 }
 
 type DescribeInstanceStatusResponseBody struct {
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// example:
 	//
 	// ddoscoo-cn-6ja1y6p5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the instance. Valid values:
+	// The status of the Anti-DDoS Pro or Anti-DDoS Premium instance. Valid values:
 	//
-	// 	- **1**: normal
-	//
-	// 	- **2**: expired
-	//
-	// 	- **3**: overdue
-	//
-	// 	- **4**: released
+	// - **1**: Normal.
 	//
 	// example:
 	//

@@ -22,31 +22,31 @@ type iDescribeDomainResourceRequest interface {
 }
 
 type DescribeDomainResourceRequest struct {
-	// The domain name of the website that you want to query.
+	// The domain name to query.
 	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// An array that consists of the IDs of instances to query.
+	// The IDs of the Anti-DDoS Pro instances to query.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of forwarding rules per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The match mode. Valid values:
+	// The matching pattern for the query. Valid values:
 	//
-	// 	- **fuzzy**: fuzzy match. This is the default value.
+	// - **fuzzy*	- (default): Specifies a fuzzy search.
 	//
-	// 	- **exact**: exact match.
+	// - **exact**: Specifies an exact match.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iDescribeUnBlackholeCountResponseBody interface {
 }
 
 type DescribeUnBlackholeCountResponseBody struct {
-	// The remaining quota that you can deactivate blackhole filtering.
+	// The remaining number of times that blackhole filtering can be deactivated.
 	//
 	// example:
 	//
 	// 5
 	RemainCount *int32 `json:"RemainCount,omitempty" xml:"RemainCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 232929FA-40B6-4C53-9476-EE335ABA44CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total quota that you can deactivate blackhole filtering.
+	// The total number of times that blackhole filtering can be deactivated.
 	//
 	// example:
 	//

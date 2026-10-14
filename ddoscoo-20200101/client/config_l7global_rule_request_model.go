@@ -16,12 +16,32 @@ type iConfigL7GlobalRuleRequest interface {
 }
 
 type ConfigL7GlobalRuleRequest struct {
+	// The domain name of the website service to configure.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The action and switch settings for global template rules. The value is a string converted from a JSON struct array. The JSON struct contains the following fields:
+	//
+	//  - **RuleId**: String | Required | The rule ID.
+	//
+	//  - **Action**: String | Required | The rule action. Valid values:
+	//
+	//     - **block**: Block.
+	//
+	//     - **watch**: Monitor.
+	//
+	//     - **challenge**: JavaScript Challenge.
+	//
+	//  - **Enabled**: Integer | Required | The rule switch. Valid values:
+	//
+	//     - **1**: enables the rule.
+	//
+	//     - **0**: disables the rule.
+	//
 	// This parameter is required.
 	//
 	// example:

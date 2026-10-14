@@ -24,23 +24,23 @@ type iDescribeNetworkRulesRequest interface {
 type DescribeNetworkRulesRequest struct {
 	// The forwarding protocol. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**
 	//
-	// 	- **udp**
+	// - **udp**
 	//
 	// example:
 	//
 	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
-	// The forwarding port.
+	// The forward port.
 	//
 	// example:
 	//
 	// 80
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeNetworkRulesRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	// The page number to return in a paging query. For example, set this parameter to **1*	- to return the first page of results.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeNetworkRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records displayed on each page.
 	//
 	// This parameter is required.
 	//

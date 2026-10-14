@@ -18,7 +18,7 @@ type iDescribeDDoSEventsResponseBody interface {
 }
 
 type DescribeDDoSEventsResponseBody struct {
-	// The DDoS attack events.
+	// A list of DDoS attack events.
 	DDoSEvents []*DescribeDDoSEventsResponseBodyDDoSEvents `json:"DDoSEvents,omitempty" xml:"DDoSEvents,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type DescribeDDoSEventsResponseBody struct {
 	//
 	// 0CA72AF5-1795-4350-8C77-50A448A2F334
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned attack events.
+	// The total number of attack events.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeDDoSEventsResponseBody) Validate() error {
 }
 
 type DescribeDDoSEventsResponseBodyDDoSEvents struct {
-	// The bandwidth of attack traffic. Unit: bit/s.
+	// The bandwidth of the attack traffic. Unit: Mbps.
 	//
 	// example:
 	//
 	// 0
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The time when the DDoS attack stopped. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the attack ended. This is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -97,9 +97,9 @@ type DescribeDDoSEventsResponseBodyDDoSEvents struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the attack event. Valid values:
 	//
-	// 	- **defense**: traffic scrubbing events
+	// - **defense**: scrubbing events.
 	//
-	// 	- **blackhole**: blackhole filtering events
+	// - **blackhole**: blackhole filtering events.
 	//
 	// example:
 	//
@@ -117,33 +117,33 @@ type DescribeDDoSEventsResponseBodyDDoSEvents struct {
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The packet forwarding rate of attack traffic. Unit: packets per second (pps).
+	// The packet forwarding rate of the attack traffic. Unit: pps.
 	//
 	// example:
 	//
 	// 0
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The region from which the attack was launched. Valid values:
+	// The source location of the attack. Valid values:
 	//
-	// 	- **cn**: a region in the Chinese mainland
+	// - **cn**: the Chinese mainland.
 	//
-	// 	- **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
+	// - **alb-ap-northeast-1-gf-x**: Japan.
 	//
-	// 	- **alb-ap-southeast-gf-x**: Singapore
+	// - **alb-ap-southeast-gf-x**: Singapore.
 	//
-	// 	- **alb-cn-hongkong-gf-x**: Hong Kong (China)
+	// - **alb-cn-hongkong-gf-x**: Hong Kong (China).
 	//
-	// 	- **alb-eu-central-1-gf-x**: Germany (Frankfurt)
+	// - **alb-eu-central-1-gf-x**: Germany.
 	//
-	// 	- **alb-us-west-1-gf-x**: US (Silicon Valley)
+	// - **alb-us-west-1-gf-x**: US (West).
 	//
-	// > The values except **cn*	- are returned only when **RegionId*	- is set to **ap-southeast-1**.
+	// > Values other than **cn*	- are available only for the Anti-DDoS Premium service, for which the **RegionId*	- is **ap-southeast-1**.
 	//
 	// example:
 	//
 	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the DDoS attack started. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the attack started. This is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

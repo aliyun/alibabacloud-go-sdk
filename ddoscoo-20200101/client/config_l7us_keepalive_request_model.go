@@ -18,22 +18,27 @@ type iConfigL7UsKeepaliveRequest interface {
 }
 
 type ConfigL7UsKeepaliveRequest struct {
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// example:
 	//
 	// www.aliyun.com
-	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The idle timeout period of the persistent connection between the client and Anti-DDoS Proxy.
+	//
+	// example:
+	//
+	// 60
 	DownstreamKeepalive *string `json:"DownstreamKeepalive,omitempty" xml:"DownstreamKeepalive,omitempty"`
-	// The settings for back-to-origin persistent connections. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	// The persistent connection settings for back-to-origin requests of Anti-DDoS Proxy. The value is a string that represents a JSON struct. The JSON struct contains the following fields:
 	//
-	// 	- **enabled**: the switch for back-to-origin persistent connections. This field is required, and the value is of the Boolean type.
+	// - **enabled**: Boolean | Required | Specifies whether to enable persistent connections for back-to-origin requests.
 	//
-	// 	- **keepalive_requests**: the number of requests that reuse a persistent connection. This field is required, and the value is of the integer type.
+	// - **keepalive_requests**: Integer | Required | The number of requests that can be sent over a persistent connection.
 	//
-	// 	- **keepalive_timeout**: the timeout period for an idle persistent connection. This field is required, and the value is of the integer type.
+	// - **keepalive_timeout**: Integer | Required | The idle timeout period of a persistent connection.
 	//
 	// This parameter is required.
 	//

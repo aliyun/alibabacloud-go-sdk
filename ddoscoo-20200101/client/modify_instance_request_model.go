@@ -42,7 +42,7 @@ type iModifyInstanceRequest interface {
 }
 
 type ModifyInstanceRequest struct {
-	// Address type. Values:
+	// The address type. Valid values:
 	//
 	// - **Ipv4**: IPv4.
 	//
@@ -52,47 +52,47 @@ type ModifyInstanceRequest struct {
 	//
 	// Ipv4
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// Elastic protection bandwidth (Mainland China). Unit: Gbps.
+	// The burstable protection bandwidth (the Chinese mainland). Unit: Gbit/s.
 	//
 	// example:
 	//
 	// 30
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Guaranteed protection bandwidth (Mainland China). Unit: Gbps.
+	// The basic protection bandwidth (the Chinese mainland). Unit: Gbit/s.
 	//
 	// example:
 	//
 	// 30
 	BaseBandwidth *string `json:"BaseBandwidth,omitempty" xml:"BaseBandwidth,omitempty"`
-	// Number of protected domains.
+	// The number of protected domain names.
 	//
 	// example:
 	//
 	// 50
 	DomainCount *string `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// Protection package (Mainland China). Values:
+	// The mitigation plan (the Chinese mainland). Valid values:
 	//
-	// - **coop**: Indicates the DDoS High Defense (Mainland China) Professional Edition.
+	// - **coop**: Professional Edition of Anti-DDoS Pro or Anti-DDoS Premium (Chinese mainland).
 	//
-	// - **advance**: Indicates the DDoS High Defense (Mainland China) Professional Edition.
+	// - **advance**: Professional Edition of Anti-DDoS Pro or Anti-DDoS Premium (Chinese mainland).
 	//
 	// example:
 	//
 	// coop
 	EditionSale *string `json:"EditionSale,omitempty" xml:"EditionSale,omitempty"`
-	// Function version, with values:
+	// The function version. Valid values:
 	//
-	// - **0**: Standard function.
+	// - **0**: standard features.
 	//
-	// - **1**: Enhanced function.
+	// - **1**: enhanced features.
 	//
 	// example:
 	//
 	// 0
 	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
-	// The ID of the DDoS High Defense instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the ID information of all DDoS High Defense instances.
+	// > You can invoke [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type ModifyInstanceRequest struct {
 	//
 	// ddoscoo-cn-6ja1y6p5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Adjustment type, with values
+	// The type of specification change. Valid values:
 	//
 	// - UPGRADE: Upgrade.
 	//
@@ -112,47 +112,47 @@ type ModifyInstanceRequest struct {
 	//
 	// Upgrade
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	// Business bandwidth (outside Mainland China). Unit: Mbps.
+	// The clean bandwidth (outside the Chinese mainland). Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 200
 	NormalBandwidth *string `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
-	// Business QPS. Unit: Mbps.
+	// The clean queries per second (QPS). Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 100
 	NormalQps *string `json:"NormalQps,omitempty" xml:"NormalQps,omitempty"`
-	// Number of protected ports.
+	// The number of protected ports.
 	//
 	// example:
 	//
 	// 50
 	PortCount *string `json:"PortCount,omitempty" xml:"PortCount,omitempty"`
-	// Protection package (outside Mainland China). Values:
+	// The mitigation plan (outside the Chinese mainland). Valid values:
 	//
-	// - **0**: Indicates the DDoS High Defense (outside Mainland China) Insurance Edition.
+	// - **0**: Insurance mitigation plan for Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland).
 	//
-	// - **1**: Indicates the DDoS High Defense (outside Mainland China) Worry-Free Edition.
+	// - **1**: Unlimited mitigation plan for Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland).
 	//
-	// - **2**: Indicates the DDoS High Defense (outside Mainland China) Acceleration Line.
+	// - **2**: acceleration line for Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland).
 	//
-	// - **3**: Indicates the DDoS High Defense (outside Mainland China) Secure Acceleration Line.
+	// - **3**: secure acceleration line for Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland).
 	//
 	// example:
 	//
 	// 0
 	ProductPlan *string `json:"ProductPlan,omitempty" xml:"ProductPlan,omitempty"`
-	// Product type.
+	// The product type.
 	//
-	// Values:
+	// Valid values:
 	//
-	// - **ddoscoo**: Indicates that the DDoS High Defense (Mainland China) instance is being adjusted for a China site account.
+	// - **ddoscoo**: indicates that the China site account is used for specification changes of an Anti-DDoS Pro or Anti-DDoS Premium (Chinese mainland) instance.
 	//
-	// - **ddoscoo_intl**: Indicates that the DDoS High Defense (Mainland China) instance is being adjusted for an international site account.
+	// - **ddoscoo_intl**: indicates that the international site account is used for specification changes of an Anti-DDoS Pro or Anti-DDoS Premium (Chinese mainland) instance.
 	//
-	// - **ddosDip**: Indicates that the DDoS High Defense (outside Mainland China) instance is being adjusted for either a China or international site account.
+	// - **ddosDip**: indicates that the China site account or international site account is used for specification changes of an Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) instance.
 	//
 	// This parameter is required.
 	//
@@ -160,15 +160,15 @@ type ModifyInstanceRequest struct {
 	//
 	// ddoscoo
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Business bandwidth (Mainland China). Unit: Mbps.
+	// The clean bandwidth (the Chinese mainland). Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 300
 	ServiceBandwidth *string `json:"ServiceBandwidth,omitempty" xml:"ServiceBandwidth,omitempty"`
-	// Line resources of the instance (Mainland China). Values:
+	// The line resource of the instance (the Chinese mainland). Valid values:
 	//
-	// - **coop-line-001**: Indicates the DDoS High Defense (Mainland China) 8-line BGP line.
+	// - **coop-line-001**: eight-line BGP line for Anti-DDoS Pro or Anti-DDoS Premium (Chinese mainland).
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDescribeDomainBpsRequest interface {
 type DescribeDomainBpsRequest struct {
 	// The domain name of the website.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DescribeDomainBpsRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type DescribeDomainBpsRequest struct {
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The region in which your service is deployed. Valid values:
 	//
-	// 	- **cn**: a region in the Chinese mainland.
+	// - **cn**: a region in the Chinese mainland.
 	//
-	// 	- **cn-hongkong**: a region outside the Chinese mainland.
+	// - **cn-hongkong**: a region outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type DescribeDomainBpsRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
 	// This parameter is required.
 	//

@@ -82,9 +82,9 @@ type DescribeHealthCheckListResponseBodyHealthCheckList struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**
 	//
-	// 	- **udp**
+	// - **udp**
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ func (s *DescribeHealthCheckListResponseBodyHealthCheckList) Validate() error {
 type DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck struct {
 	// The domain name.
 	//
-	// >  This parameter is returned only when the Layer 7 health check configuration is queried.
+	// > This parameter is returned only when the Layer 7 health check configuration is queried.
 	//
 	// example:
 	//
@@ -180,9 +180,9 @@ type DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck struct {
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The type of the protocol. Valid values:
 	//
-	// 	- **tcp**: The Layer 4 health check configuration was queried.
+	// - **tcp**: The Layer 4 health check configuration was queried.
 	//
-	// 	- **http**: The Layer 7 health check configuration was queried.
+	// - **http**: The Layer 7 health check configuration was queried.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck struct {
 	Up *int32 `json:"Up,omitempty" xml:"Up,omitempty"`
 	// The check path.
 	//
-	// >  This parameter is returned only when the Layer 7 health check configuration is queried.
+	// > This parameter is returned only when the Layer 7 health check configuration is queried.
 	//
 	// example:
 	//

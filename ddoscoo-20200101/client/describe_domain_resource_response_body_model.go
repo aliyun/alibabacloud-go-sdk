@@ -18,19 +18,19 @@ type iDescribeDomainResourceResponseBody interface {
 }
 
 type DescribeDomainResourceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of forwarding rules.
+	// The total number of web rules returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The configurations of the forwarding rule.
+	// An array of web rule configurations.
 	WebRules []*DescribeDomainResourceResponseBodyWebRules `json:"WebRules,omitempty" xml:"WebRules,omitempty" type:"Repeated"`
 }
 
@@ -83,209 +83,211 @@ func (s *DescribeDomainResourceResponseBody) Validate() error {
 }
 
 type DescribeDomainResourceResponseBodyWebRules struct {
-	// The IP addresses that are included in the blacklist of the domain name.
+	// An array of IP addresses on the blocklist for the domain.
 	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
-	// Indicates whether Frequency Control is enabled. Valid values:
+	// Whether CC protection is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	CcEnabled *bool `json:"CcEnabled,omitempty" xml:"CcEnabled,omitempty"`
-	// Indicates whether the Custom Rules switch of Frequency Control is turned on. Valid values:
+	// Whether custom CC protection rules are enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	CcRuleEnabled *bool `json:"CcRuleEnabled,omitempty" xml:"CcRuleEnabled,omitempty"`
-	// The mode of Frequency Control. Valid values:
+	// The CC protection mode. Valid values:
 	//
-	// 	- **default**: the Normal mode
+	// - **default**: normal mode
 	//
-	// 	- **gf_under_attack**: the Emergency mode
+	// - **gf_under_attack**: Emergency mode
 	//
-	// 	- **gf_sos_verify**: the Strict mode
+	// - **gf_sos_verify**: Strict mode
 	//
-	// 	- **gf_sos_verify**: the Super Strict mode
+	// - **gf_sos_enhance**: Super Strict mode
 	//
 	// example:
 	//
 	// default
 	CcTemplate *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
-	// The name of the SSL certificate used by the domain name.
+	// The name of the SSL certificate used by the domain.
 	//
 	// example:
 	//
 	// 49944XX.pem
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The CNAME provided by the instance to which the domain name is added.
+	// The CNAME assigned to the domain by Anti-DDoS Pro.
 	//
 	// example:
 	//
 	// 0ekb69x3j9wvXXXX.aliyunddosXXXX.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The custom cipher suites.
+	// An array of custom cipher suites.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	// The domain name of the website.
+	// The domain name.
 	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Indicates whether Enable HTTP/2 is turned on. Valid values:
+	// Whether HTTP/2 is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// false
 	Http2Enable *bool `json:"Http2Enable,omitempty" xml:"Http2Enable,omitempty"`
-	// Indicates whether Enable HTTPS Redirection is turned on. Valid values:
+	// Whether forced HTTPS redirect is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// false
 	Http2HttpsEnable *bool `json:"Http2HttpsEnable,omitempty" xml:"Http2HttpsEnable,omitempty"`
-	// Indicates whether Enable HTTP Redirection of Back-to-origin Requests is turned on. Valid values:
+	// Whether HTTP back-to-source is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// false
 	Https2HttpEnable *bool `json:"Https2HttpEnable,omitempty" xml:"Https2HttpEnable,omitempty"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType*	- parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	// The advanced HTTPS settings, formatted as a JSON string. These settings apply only when the domain uses HTTPS (the `ProxyType` value includes `https`). The string contains the following fields:
 	//
-	// 	- **Http2https**: indicates whether Enable HTTPS Redirection is turned on. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTPS Redirection is turned on. The value 1 indicates that Enable HTTPS Redirection is turned off.
+	// - **Http2https**: integer. Specifies whether to enable forced HTTPS redirect. Valid values: **0*	- (disabled) and **1*	- (enabled).
 	//
-	// 	- **Https2http**: indicates whether Enable HTTP Redirection of Back-to-origin Requests is turned on. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that the feature is turned on. The value 1 indicates that the feature is turned off.
+	// - **Https2http**: integer. Specifies whether to enable HTTP back-to-source. Valid values: **0*	- (disabled) and **1*	- (enabled).
 	//
-	// 	- **Http2**: indicates whether Enable HTTP/2 is turned on. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on.
+	// - **Http2**: integer. Specifies whether to enable HTTP/2. Valid values: **0*	- (disabled) and **1*	- (enabled).
 	//
 	// example:
 	//
 	// {"Https2http":0,"Http2":0,"Http2https":0}
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
-	// The IDs of the instances to which the domain name is added.
+	// An array of IDs for the Anti-DDoS Pro instances associated with the domain.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// Indicates whether the Online Certificate Status Protocol (OCSP) feature is turned on. Valid values:
+	// Whether Online Certificate Status Protocol (OCSP) is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// false
 	OcspEnabled *bool `json:"OcspEnabled,omitempty" xml:"OcspEnabled,omitempty"`
-	// The scheduling algorithm for back-to-origin traffic. Valid values:
+	// The back-to-source load balancing algorithm. This algorithm determines how traffic is distributed to origin servers. Valid values:
 	//
-	// 	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+	// - **ip_hash**: IP Hash. This algorithm hashes the source IP address and routes all requests from the same IP address to the same origin server.
 	//
-	// 	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+	// - **rr**: Round Robin. This algorithm distributes requests across origin servers in turn.
 	//
-	// 	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from the instance to origin servers based on the intelligent DNS resolution feature.
+	// - **least_time**: Least Time. This algorithm uses intelligent DNS resolution to minimize end-to-end latency from the protection node to the origin server.
 	//
 	// example:
 	//
 	// ip_hash
 	PolicyMode *string `json:"PolicyMode,omitempty" xml:"PolicyMode,omitempty"`
-	// Indicates whether the instance forwards the traffic that is destined for the website. Valid values:
+	// Whether Anti-DDoS Pro forwards traffic for the domain. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Forwarding is enabled.
 	//
-	// 	- **false**
+	// - **false**: Forwarding is disabled.
 	//
 	// example:
 	//
 	// true
 	ProxyEnabled *bool `json:"ProxyEnabled,omitempty" xml:"ProxyEnabled,omitempty"`
-	// The details about the protocol type and port number.
+	// An array of proxy configurations for the domain, each specifying a protocol and its associated ports.
 	ProxyTypes []*DescribeDomainResourceResponseBodyWebRulesProxyTypes `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
-	// The reason why the domain name is invalid. Valid values:
+	// The reason the domain is penalized. Valid values:
 	//
-	// 	- **1**: No Content Provider (ICP) filing is completed for the domain name.
+	// - **1**: The domain does not have an ICP filing.
 	//
-	// 	- **2**: The business for which you registered the domain name does not meet regulatory requirements.
+	// - **2**: The business hosted on the domain does not meet regulatory requirements.
 	//
-	// If the two reasons are both involved, the value **2*	- is returned.
+	// If both reasons apply, this parameter returns **2**.
 	//
 	// example:
 	//
 	// 1
 	PunishReason *int32 `json:"PunishReason,omitempty" xml:"PunishReason,omitempty"`
-	// Indicates whether the domain name is invalid. Valid values:
+	// Whether the domain is penalized. Valid values:
 	//
-	// 	- **true**: The domain name is invalid. You can view the specific reasons from the **PunishReason*	- parameter.
+	// - **true**: The domain is penalized. For more information, see the `PunishReason` parameter.
 	//
-	// 	- **false**: The domain name is valid.
+	// - **false**: The domain is not penalized.
 	//
 	// example:
 	//
 	// false
 	PunishStatus *bool `json:"PunishStatus,omitempty" xml:"PunishStatus,omitempty"`
-	// The addresses of origin servers.
+	// An array of origin server addresses.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The address type of the origin server. Valid values:
 	//
-	// 	- **0**: IP address
+	// - **0**: IP address
 	//
-	// 	- **1**: domain name
+	// - **1**: domain
 	//
 	// example:
 	//
 	// 0
 	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
-	// Indicates whether TLS 1.3 is supported. Valid values:
+	// Whether TLS 1.3 is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// false
 	Ssl13Enabled *bool `json:"Ssl13Enabled,omitempty" xml:"Ssl13Enabled,omitempty"`
-	// The type of the cipher suite. Valid values:
+	// The cipher suite configuration type. Valid values:
 	//
-	// 	- **default**: custom cipher suite
+	// - **default**: Custom
 	//
-	// 	- **all**: all cipher suites
+	// - **all**: All
 	//
-	// 	- **strong**: strong cipher suites
+	// - **strong**: Strong
+	//
+	// - **improved**: Improved
 	//
 	// example:
 	//
 	// default
 	SslCiphers *string `json:"SslCiphers,omitempty" xml:"SslCiphers,omitempty"`
-	// The version of the TLS protocol. Valid values:
+	// The minimum TLS protocol version. Valid values:
 	//
-	// 	- **tls1.0**: TLS 1.0 or later
+	// - **tls1.0**: TLS 1.0 and later versions.
 	//
-	// 	- **tls1.1**: TLS 1.1 or later
+	// - **tls1.1**: TLS 1.1 and later versions.
 	//
-	// 	- **tls1.2**: TLS 1.2 or later
+	// - **tls1.2**: TLS 1.2 and later versions.
 	//
 	// example:
 	//
 	// tls1.0
 	SslProtocols *string `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
-	// The IP addresses that are included in the whitelist of the domain name.
+	// An array of IP addresses on the allowlist for the domain.
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
@@ -536,17 +538,17 @@ func (s *DescribeDomainResourceResponseBodyWebRules) Validate() error {
 }
 
 type DescribeDomainResourceResponseBodyWebRulesProxyTypes struct {
-	// The port numbers.
+	// The array of ports associated with the protocol.
 	ProxyPorts []*string `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
-	// The type of the protocol. Valid values:
+	// The proxy protocol. Valid values:
 	//
-	// 	- **http**
+	// - **http**: HTTP
 	//
-	// 	- **https**
+	// - **https**: HTTPS
 	//
-	// 	- **websocket**
+	// - **websocket**: WebSocket
 	//
-	// 	- **websockets**
+	// - **websockets**: WebSockets
 	//
 	// example:
 	//

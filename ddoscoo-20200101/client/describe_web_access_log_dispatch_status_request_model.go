@@ -18,21 +18,21 @@ type iDescribeWebAccessLogDispatchStatusRequest interface {
 }
 
 type DescribeWebAccessLogDispatchStatusRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the current page in a paginated query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of domain names on each page in a paginated query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The ID of the resource group to which the Anti-DDoS Pro instance belongs in Resource Management.
 	//
-	// If you do not configure this parameter, the instance belongs to the default resource group.
+	// If you do not set this parameter, the default resource group is used.
 	//
 	// example:
 	//

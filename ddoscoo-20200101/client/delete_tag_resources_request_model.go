@@ -24,17 +24,17 @@ type iDeleteTagResourcesRequest interface {
 }
 
 type DeleteTagResourcesRequest struct {
-	// Specifies whether to remove all tags from the specified resource. Valid values:
+	// Specifies whether to remove all tags from the resource. Valid values:
 	//
-	// 	- **true**: yes.
+	// - **true**
 	//
-	// 	- **false*	- no. This is the default value.
+	// - **false*	- (default)
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Proxy (Chinese Mainland) instance.
+	// The region ID of the Anti-DDoS instance. The value is fixed to **cn-hangzhou**, which indicates the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type DeleteTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The ID of the resource group to which the Anti-DDoS instance belongs in Resource Management.
 	//
-	// If you do not configure this parameter, the instance belongs to the default resource group.
+	// If you do not set this parameter, the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// An array consisting of the IDs of instances from which you want to remove tags.
+	// A list of IDs of the Anti-DDoS instances from which you want to remove tags.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DeleteTagResourcesRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	// The resource type. The value is fixed to **INSTANCE**, which indicates an Anti-DDoS instance.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type DeleteTagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// An array consisting of the keys of the tags that you want to remove.
+	// A list of tag keys to remove.
 	//
 	// example:
 	//

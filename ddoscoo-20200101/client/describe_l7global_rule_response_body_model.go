@@ -16,7 +16,10 @@ type iDescribeL7GlobalRuleResponseBody interface {
 }
 
 type DescribeL7GlobalRuleResponseBody struct {
+	// The global template rule information.
 	GlobalRules []*DescribeL7GlobalRuleResponseBodyGlobalRules `json:"GlobalRules,omitempty" xml:"GlobalRules,omitempty" type:"Repeated"`
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// CF33B4C3-196E-4015-AADD-5CAD00057B80
@@ -63,23 +66,57 @@ func (s *DescribeL7GlobalRuleResponseBody) Validate() error {
 }
 
 type DescribeL7GlobalRuleResponseBodyGlobalRules struct {
+	// The action that the rule performs. Valid values:
+	//
+	// - **watch**: Monitor.
+	//
+	// - **block**: Block.
+	//
+	// - **challenge**: JavaScript Challenge.
+	//
 	// example:
 	//
 	// watch
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The default action of the rule. Valid values:
+	//
+	// - **watch**: Monitor.
+	//
+	// - **block**: Block.
+	//
+	// - **challenge**: JavaScript Challenge.
+	//
 	// example:
 	//
 	// watch
 	ActionDefault *string `json:"ActionDefault,omitempty" xml:"ActionDefault,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule description.
+	//
+	// example:
+	//
+	// HTTP请求疑似模拟浏览器，校验浏览器Header等组合特征#4
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// - **1**: Enabled.
+	//
+	// - **0**: Disabled.
+	//
 	// example:
 	//
 	// 1
 	Enabled *int64 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// global_1
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// 模拟浏览器请求
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 

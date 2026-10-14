@@ -22,11 +22,11 @@ type DisableSceneDefensePolicyResponseBody struct {
 	//
 	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes
 	//
-	// 	- **false**: no
+	// - **false**: No
 	//
 	// example:
 	//

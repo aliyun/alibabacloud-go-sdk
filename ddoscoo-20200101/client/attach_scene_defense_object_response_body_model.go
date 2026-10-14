@@ -16,17 +16,17 @@ type iAttachSceneDefenseObjectResponseBody interface {
 }
 
 type AttachSceneDefenseObjectResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: no
+	// - **false**: The call failed.
 	//
 	// example:
 	//

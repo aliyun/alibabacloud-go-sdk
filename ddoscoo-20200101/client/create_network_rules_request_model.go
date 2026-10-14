@@ -9,22 +9,25 @@ type iCreateNetworkRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIpMode(v string) *CreateNetworkRulesRequest
+	GetIpMode() *string
 	SetNetworkRules(v string) *CreateNetworkRulesRequest
 	GetNetworkRules() *string
 }
 
 type CreateNetworkRulesRequest struct {
-	// The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+	IpMode *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
+	// The details of the port forwarding rules, expressed as a character string in JSON format with the following structure:
 	//
-	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	// - **InstanceId**: String. Required. The Anti-DDoS Pro or Anti-DDoS Premium instance ID.
 	//
-	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	// - **Protocol**: String. Required. The forwarding protocol type. Valid values: **tcp**, **udp**.
 	//
-	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// - **FrontendPort**: Integer. Required. The Redirection Port.
 	//
-	// 	- **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+	// - **BackendPort**: Integer. Required. The origin server port.
 	//
-	// 	- **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+	// - **RealServers**: JSON array. Required. The list of origin server IP addresses. A maximum of 20 IP addresses are supported.
 	//
 	// This parameter is required.
 	//
@@ -42,8 +45,17 @@ func (s CreateNetworkRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateNetworkRulesRequest) GetIpMode() *string {
+	return s.IpMode
+}
+
 func (s *CreateNetworkRulesRequest) GetNetworkRules() *string {
 	return s.NetworkRules
+}
+
+func (s *CreateNetworkRulesRequest) SetIpMode(v string) *CreateNetworkRulesRequest {
+	s.IpMode = &v
+	return s
 }
 
 func (s *CreateNetworkRulesRequest) SetNetworkRules(v string) *CreateNetworkRulesRequest {

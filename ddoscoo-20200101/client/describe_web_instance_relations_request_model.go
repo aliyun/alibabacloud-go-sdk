@@ -16,9 +16,9 @@ type iDescribeWebInstanceRelationsRequest interface {
 }
 
 type DescribeWebInstanceRelationsRequest struct {
-	// The domain names of the website.
+	// The domain names of the website services.
 	//
-	// >  A forwarding rule must be configured for the domain names. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain names must have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeWebInstanceRelationsRequest struct {
 	//
 	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//

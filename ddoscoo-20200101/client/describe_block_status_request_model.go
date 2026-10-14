@@ -16,9 +16,9 @@ type iDescribeBlockStatusRequest interface {
 }
 
 type DescribeBlockStatusRequest struct {
-	// An array consisting of information about the IDs of the instances that you want to query.
+	// The IDs of the Anti-DDoS Pro and Anti-DDoS Premium instances to query for near-origin traffic diversion configurations.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can invoke [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro and Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DescribeBlockStatusRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The ID of the resource group to which the Anti-DDoS Pro and Anti-DDoS Premium instance belongs in Resource Management.
 	//
-	// If you do not configure this parameter, the instance belongs to the default resource group.
+	// If you do not set this parameter, the instance belongs to the default resource group.
 	//
 	// example:
 	//

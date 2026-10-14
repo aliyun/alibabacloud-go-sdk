@@ -26,47 +26,47 @@ type iAssociateWebCertRequest interface {
 }
 
 type AssociateWebCertRequest struct {
-	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+	// The public key of the certificate to associate. This parameter must be used together with CertName and Key.
 	//
-	// >  If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	// > If you specify CertName, Cert, and Key, you do not need to specify CertId.
 	//
 	// example:
 	//
-	// -----BEGIN CERTIFICATE----- 62EcYPWd2Oy1vs6MTXcJSfN9Z7rZ9fmxWr2BFN2XbahgnsSXM48ixZJ4krc+1M+j2kcubVpsE2cgHdj4v8H6jUz9Ji4mr7vMNS6dXv8PUkl/qoDeNGCNdyTS5NIL5ir+g92cL8IGOkjgvhlqt9vc65Cgb4mL+n5+DV9uOyTZTW/MojmlgfUekC2xiXa54nxJf17Y1TADGSbyJbsC0Q9nIrHsPl8YKkvRWvIAqYxXZ7wRwWWmv4TMxFhWRiNY7yZIo2ZUhl02SIDNggIEeg== -----END CERTIFICATE-----
+	// -----BEGIN CERTIFICATE----- 62EcYPWd2Oy1vs6MTXcJSf*************************************************************************************************************************************************************************ZIo2ZUhl02SIDNggIEeg== -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
-	// >  If you specify a certificate ID, you do not need to specify a value for the CertName, Cert, and Key parameters. You can specify only one of this parameter and the CertIdentifier parameter.
+	// > If you specify the certificate ID, you do not need to specify CertName, Cert, or Key. This parameter cannot be used together with CertIdentifier.
 	//
 	// example:
 	//
 	// 2404693
 	CertId *int32 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+	// The global certificate ID, which is in the format of certificate ID + "-cn-hangzhou". For example, if the certificate ID is 123, set CertIdentifier to "123-cn-hangzhou".
 	//
-	// >  You can specify only one of this parameter and the CertId parameter.
+	// > This parameter cannot be used together with CertId.
 	//
 	// example:
 	//
 	// 9430680-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
-	// >  You can specify the name of the certificate that you want to associate. This parameter must be used together with the Cert and Key parameters.
+	// > The name of the certificate to associate. This parameter must be used together with Cert and Key.
 	//
 	// example:
 	//
 	// example-cert
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The region of the certificate. Valid values: **cn-hangzhou*	- and **ap-southeast-1**. Default value: **cn-hangzhou**.
+	// The region where the certificate is stored. Valid values: **cn-hangzhou*	- and **ap-southeast-1**. Default value: **cn-hangzhou**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -74,13 +74,13 @@ type AssociateWebCertRequest struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+	// The private key of the certificate to associate. This parameter must be used together with CertName and Cert.
 	//
-	// >  If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	// > If you specify CertName, Cert, and Key, you do not need to specify CertId.
 	//
 	// example:
 	//
-	// -----BEGIN RSA PRIVATE KEY----- DADTPZoOHd9WtZ3UKHJTRgNQmioPQn2bqdKHop+B/dn/4VZL7Jt8zSDGM9sTMThLyvsmLQKBgQCr+ujntC1kN6pGBj2Fw2l/EA/W3rYEce2tyhjgmG7rZ+A/jVE9fld5sQra6ZdwBcQJaiygoIYoaMF2EjRwc0qwHaluq0C15f6ujSoHh2e+D5zdmkTg/3NKNjqNv6xA2gYpinVDzFdZ9Zujxvuh9o4Vqf0YF8bv5UK5G04RtKadOw== -----END RSA PRIVATE KEY-----
+	// -----BEGIN RSA PRIVATE KEY----- DADTPZoOHd9WtZ3UKHJT**************************************************************************************************************************************************************************qf0YF8bv5UK5G04RtKadOw== -----END RSA PRIVATE KEY-----
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 

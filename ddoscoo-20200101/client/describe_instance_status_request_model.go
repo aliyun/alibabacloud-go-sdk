@@ -16,9 +16,9 @@ type iDescribeInstanceStatusRequest interface {
 }
 
 type DescribeInstanceStatusRequest struct {
-	// The ID of the Anti-DDoS Proxy instance to query.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance that you want to query.
 	//
-	// >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy (Chinese Mainland) or Anti-DDoS Proxy (Outside Chinese Mainland) instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy (Chinese Mainland) or Anti-DDoS Proxy (Outside Chinese Mainland) instances.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DescribeInstanceStatusRequest struct {
 	//
 	// ddoscoo-cn-6ja1y6p5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the Anti-DDoS Proxy instance to query. Valid values:
+	// The type of the Anti-DDoS Pro or Anti-DDoS Premium instance that you want to query. Valid values:
 	//
-	// 	- **1**: an Anti-DDoS Proxy (Chinese Mainland) instance
+	// - **1**: an Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
-	// 	- **2**: an Anti-DDoS Proxy (Outside Chinese Mainland) instance
+	// - **2**: an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
 	//
 	// This parameter is required.
 	//

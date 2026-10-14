@@ -26,19 +26,19 @@ type DescribeWebCCRulesV2ResponseBody struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned custom frequency control rules.
+	// The total number of frequency control rules.
 	//
 	// example:
 	//
 	// 12
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The custom frequency control rules.
+	// The frequency control (HTTP flood mitigation) custom rules.
 	WebCCRules []*DescribeWebCCRulesV2ResponseBodyWebCCRules `json:"WebCCRules,omitempty" xml:"WebCCRules,omitempty" type:"Repeated"`
 }
 
@@ -100,7 +100,7 @@ func (s *DescribeWebCCRulesV2ResponseBody) Validate() error {
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRules struct {
-	// The validity period of the rule. Unit: seconds. If the Action parameter is set to block, the system blocks the requests that match the rule within the validity period of the rule. The value 0 indicates that the rule is permanently valid.
+	// The validity period of the rule. Unit: seconds. This parameter takes effect when the matching action is set to block (action is block). Access requests are blocked within the validity period. A value of 0 indicates that the rule is permanently effective.
 	//
 	// example:
 	//
@@ -112,17 +112,13 @@ type DescribeWebCCRulesV2ResponseBodyWebCCRules struct {
 	//
 	// wq
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The method used to create the rule. Valid values:
-	//
-	// 	- **manual*	- (default): manually created.
-	//
-	// 	- **clover**: automatically created.
+	// The source of the rule. Valid values:
 	//
 	// example:
 	//
 	// manual
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The details of the rule.
+	// The rule details.
 	RuleDetail *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail `json:"RuleDetail,omitempty" xml:"RuleDetail,omitempty" type:"Struct"`
 }
 
@@ -180,39 +176,39 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) Validate() error {
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail struct {
-	// The action triggered if the rule is matched. Valid values:
+	// The matching action. Valid values:
 	//
-	// 	- **accept**: The requests that match the rule are allowed.
+	// - **accept**: Allow.
 	//
-	// 	- **block**: The requests that match the rule are blocked.
+	// - **block**: Block.
 	//
-	// 	- **challenge**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
+	// - **challenge**: JavaScript Challenge.
 	//
-	// 	- **watch**: The requests that match the rule are recorded in logs and allowed.
+	// - **watch**: Monitor.
 	//
 	// example:
 	//
 	// block
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The match conditions.
+	// The list of matching conditions.
 	Condition []*DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Repeated"`
-	// The parameter is deprecated.
+	// The legacy rule format. This parameter is deprecated.
 	//
 	// example:
 	//
-	// 废弃
+	// Deprecated
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The parameter is deprecated.
+	// The legacy rule format. This parameter is deprecated.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The parameter is deprecated.
+	// The legacy rule format. This parameter is deprecated.
 	//
 	// example:
 	//
-	// 废弃
+	// Deprecated
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The name of the rule.
 	//
@@ -222,17 +218,17 @@ type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The frequency statistics.
 	RateLimit *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
-	// The statistics after deduplication. By default, the system collects statistics before deduplication.
+	// The deduplication statistics. This parameter is optional. If this parameter is not specified, deduplication is not performed.
 	Statistics *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
-	// The status codes.
+	// The status code.
 	StatusCode *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode `json:"StatusCode,omitempty" xml:"StatusCode,omitempty" type:"Struct"`
-	// The parameter is deprecated.
+	// The legacy rule format. This parameter is deprecated.
 	//
 	// example:
 	//
 	// 300
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The parameter is deprecated.
+	// The legacy rule format. This parameter is deprecated.
 	//
 	// example:
 	//
@@ -376,33 +372,31 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) Validate() error 
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition struct {
-	// The match content.
+	// The matching content.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The match content when the match method is Equals to One of Multiple Values.
+	// The matching content when the matching method is set to equal to one of multiple values.
 	//
 	// example:
 	//
 	// ["2","3","ad"]
 	ContentList []*string `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
-	// The match field.
+	// The matching field.
 	//
 	// example:
 	//
 	// ip
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The custom HTTP request header.
-	//
-	// >  This parameter takes effect only when **Field*	- is set to **header**.
+	// The name of the custom HTTP header field.
 	//
 	// example:
 	//
 	// null
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// The match method.
+	// The matching method.
 	//
 	// example:
 	//
@@ -474,17 +468,13 @@ type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit struct {
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the field. This parameter is required only when the Target parameter is set to header.
+	// The field name. This parameter is required only when the statistics source is set to header.
 	//
 	// example:
 	//
 	// action
 	SubKey *string `json:"SubKey,omitempty" xml:"SubKey,omitempty"`
-	// The statistical method. Valid values:
-	//
-	// 	- **ip**
-	//
-	// 	- **header**
+	// The statistics source. Valid values:
 	//
 	// example:
 	//
@@ -562,29 +552,25 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) Validate
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics struct {
-	// The statistical method. Valid values:
+	// The statistics source. Valid values:
 	//
-	// 	- **ip**
+	// - **ip**: by IP address
 	//
-	// 	- **header**
+	// - **header**: by header
 	//
-	// 	- **uri**
+	// - **uri**: by URI
 	//
 	// example:
 	//
 	// uri
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The name of the header. This parameter is required only when the Field parameter is set to header.
+	// This parameter is required only when the statistics source is set to header.
 	//
 	// example:
 	//
 	// hello
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// Indicates whether the system collects statistics after deduplication. Valid values:
-	//
-	// 	- **count**: The system collects statistics before deduplication.
-	//
-	// 	- **distinct**: The system collects statistics after deduplication.
+	// The deduplication mode. Valid values:
 	//
 	// example:
 	//
@@ -634,41 +620,33 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) Validat
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode struct {
 	// The status code. Valid values: **100*	- to **599**.
 	//
-	// 	- **200**: The request was successful.
+	// - **200**: Successful.
 	//
-	// 	- Other codes: The request failed.
+	// - Other values: An error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// If a ratio is not used, the handling action is triggered only when the number of requests of the corresponding status code reaches the value of **CountThreshold**. Valid values: **2*	- to **50000**.
+	// When the ratio is not used, the action is triggered only when the corresponding status code reaches **CountThreshold**. Valid range: **2*	- to **50000**.
 	//
 	// example:
 	//
 	// 10
 	CountThreshold *int32 `json:"CountThreshold,omitempty" xml:"CountThreshold,omitempty"`
-	// Indicates whether the status code is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
+	// Indicates whether the feature is enabled. Valid values:
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// If a ratio is used, the handling action is triggered only when the number of requests of the corresponding status code reaches the value of **RatioThreshold**. Valid values: **1*	- to **100**.
+	// When the ratio is used, the action is triggered only when the corresponding status code reaches **RatioThreshold**. Valid range: **1*	- to **100**.
 	//
 	// example:
 	//
 	// 10
 	RatioThreshold *int32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
-	// Indicates whether to use a ratio.
-	//
-	// 	- **true**
-	//
-	// 	- **false**
+	// Indicates whether to use the ratio:
 	//
 	// example:
 	//

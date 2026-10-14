@@ -26,9 +26,9 @@ type iDescribeOpEntitiesRequest interface {
 }
 
 type DescribeOpEntitiesRequest struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// > The time must be in the latest 30 days.
+	// > The time range cannot exceed 30 days.
 	//
 	// This parameter is required.
 	//
@@ -36,27 +36,27 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// 1583683200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The operation object that you want to query.
+	// The operation object used to filter results.
 	//
 	// example:
 	//
 	// 203.***.***.132
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	// The type of the operation object that you want to query. Valid values:
+	// The type of the operation object used to filter results. Valid values:
 	//
-	// 	- **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+	// - **1**: IP Address of Anti-DDoS Proxy instance
 	//
-	// 	- **2**: Anti-DDoS plans
+	// - **2**: Anti-DDoS Pro and Anti-DDoS Premium mitigation plan
 	//
-	// 	- **3**: ECS instances
+	// - **3**: ECS instance
 	//
-	// 	- **4**: all logs
+	// - **4**: full logs
 	//
 	// example:
 	//
 	// 1
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	// The page number to return in a paging query. For example, to query the first page, set the value to **1**.
 	//
 	// This parameter is required.
 	//
@@ -72,15 +72,15 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro and Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// > The time must be in the latest 30 days.
+	// > The time range cannot exceed 30 days.
 	//
 	// This parameter is required.
 	//

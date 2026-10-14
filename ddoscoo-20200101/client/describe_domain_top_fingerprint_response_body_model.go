@@ -16,9 +16,9 @@ type iDescribeDomainTopFingerprintResponseBody interface {
 }
 
 type DescribeDomainTopFingerprintResponseBody struct {
-	// The information about the fingerprints of the clients.
+	// The list of client fingerprints for the website.
 	DomainTopFp []*DescribeDomainTopFingerprintResponseBodyDomainTopFp `json:"DomainTopFp,omitempty" xml:"DomainTopFp,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type DescribeDomainTopFingerprintResponseBodyDomainTopFp struct {
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The fingerprint of the client.
+	// The client fingerprint.
 	//
 	// example:
 	//
 	// 8a374c9724582b14a4cfa58c8c9fb2bc
 	Fingerprinting *string `json:"Fingerprinting,omitempty" xml:"Fingerprinting,omitempty"`
-	// The page views.
+	// The number of request matches.
 	//
 	// example:
 	//

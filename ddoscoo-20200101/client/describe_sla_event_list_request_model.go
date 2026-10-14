@@ -26,13 +26,13 @@ type iDescribeSlaEventListRequest interface {
 type DescribeSlaEventListRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 3289457398
+	// 1671886740
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
@@ -54,9 +54,9 @@ type DescribeSlaEventListRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the service Valid values:
 	//
-	// 	- **cn**: Anti-DDoS Pro
+	// - **cn**: Anti-DDoS Pro
 	//
-	// 	- **cn-hongkong**: Anti-DDoS Premium
+	// - **cn-hongkong**: Anti-DDoS Premium
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type DescribeSlaEventListRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 3289457398
+	// 1678080840
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

@@ -24,13 +24,13 @@ type iDescribeSlsLogstoreInfoResponseBody interface {
 }
 
 type DescribeSlsLogstoreInfoResponseBody struct {
-	// The Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+	// The log store that is associated with Anti-DDoS Pro and Anti-DDoS Premium.
 	//
 	// example:
 	//
 	// ddoscoo-logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The Logstore project of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+	// The log project that is associated with Anti-DDoS Pro and Anti-DDoS Premium.
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type DescribeSlsLogstoreInfoResponseBody struct {
 	//
 	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The log storage duration. Unit: days.
+	// The storage duration of logs. Unit: days.
 	//
 	// example:
 	//
 	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The used log storage capacity. Unit: bytes.
+	// The used storage capacity. Unit: bytes.
 	//
-	// > The statistics on Log Service are delayed for about two hours.
+	// > The statistics from Simple Log Service have a delay of approximately two hours.
 	//
 	// example:
 	//

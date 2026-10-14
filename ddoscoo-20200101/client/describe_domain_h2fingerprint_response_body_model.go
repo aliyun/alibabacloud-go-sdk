@@ -16,9 +16,9 @@ type iDescribeDomainH2FingerprintResponseBody interface {
 }
 
 type DescribeDomainH2FingerprintResponseBody struct {
-	// The information about top N HTTP/2 fingerprints.
+	// The list of top N HTTP/2.0 fingerprints for the domain name.
 	DomainH2Fp []*DescribeDomainH2FingerprintResponseBodyDomainH2Fp `json:"DomainH2Fp,omitempty" xml:"DomainH2Fp,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type DescribeDomainH2FingerprintResponseBodyDomainH2Fp struct {
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The HTTP/2 fingerprint.
+	// The HTTP/2.0 fingerprint.
 	//
 	// example:
 	//
 	// 532501bc316d02c8b1a007db76f2c796
 	H2Fingerprint *string `json:"H2Fingerprint,omitempty" xml:"H2Fingerprint,omitempty"`
-	// The page views.
+	// The number of times the HTTP/2.0 fingerprint is matched for the domain name.
 	//
 	// example:
 	//

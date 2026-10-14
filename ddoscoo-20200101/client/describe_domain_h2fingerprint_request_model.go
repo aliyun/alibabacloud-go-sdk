@@ -24,7 +24,7 @@ type iDescribeDomainH2FingerprintRequest interface {
 type DescribeDomainH2FingerprintRequest struct {
 	// The domain name of the website.
 	//
-	// >  You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names of all websites that are protected by Anti-DDoS Proxy.
+	// > You can invoke [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query the domain names of all websites that are protected by Anti-DDoS Pro and Anti-DDoS Premium.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DescribeDomainH2FingerprintRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or half hour.
 	//
 	// example:
 	//
 	// 1726318200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries to return.
+	// The number of entries to return.
 	//
 	// This parameter is required.
 	//
@@ -49,7 +49,7 @@ type DescribeDomainH2FingerprintRequest struct {
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or half hour.
 	//
 	// This parameter is required.
 	//

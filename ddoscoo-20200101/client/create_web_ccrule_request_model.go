@@ -30,11 +30,11 @@ type iCreateWebCCRuleRequest interface {
 }
 
 type CreateWebCCRuleRequest struct {
-	// The action on the requests that trigger the custom frequency control rule. Valid values:
+	// The action to be performed on requests that match the rule. Valid values:
 	//
-	// 	- **close**: blocks the requests.
+	// - **close**: blocks the request.
 	//
-	// 	- **captcha**: triggers Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests.
+	// - **captcha**: initiates bot detection.
 	//
 	// This parameter is required.
 	//
@@ -42,6 +42,8 @@ type CreateWebCCRuleRequest struct {
 	//
 	// close
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// The number of access requests from a single IP address. Valid values: **2*	- to **2000**.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50,7 +52,7 @@ type CreateWebCCRuleRequest struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The domain name of the website.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -58,6 +60,8 @@ type CreateWebCCRuleRequest struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The detection duration. Valid values: **5*	- to **10800**. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -66,11 +70,11 @@ type CreateWebCCRuleRequest struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The matching mode. Valid values:
 	//
-	// 	- **prefix**: prefix match.
+	// - **prefix**: prefix match.
 	//
-	// 	- **match**: exact match.
+	// - **match**: exact match.
 	//
-	// >  If the **URI*	- of the check path contains parameters, you must set this parameter to **prefix**.
+	// > If the detection path **URI*	- contains parameters, select prefix match (**prefix**).
 	//
 	// This parameter is required.
 	//
@@ -78,7 +82,7 @@ type CreateWebCCRuleRequest struct {
 	//
 	// prefix
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The name of the rule. The name can be up to 128 characters in length and contain letters, digits, and underscores (_).
+	// The rule name. The name can contain letters, digits, and underscores (_) and cannot exceed 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -86,9 +90,9 @@ type CreateWebCCRuleRequest struct {
 	//
 	// testrule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The resource group ID of the Anti-DDoS instance in Resource Management. Default value: empty, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For more information, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -102,9 +106,9 @@ type CreateWebCCRuleRequest struct {
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The check path.
+	// The detection path.
 	//
-	// >  The URI cannot be modified. The domain name of the website, the check path, and the rule name uniquely identify a rule.
+	// > The URI cannot be modified. A rule is uniquely identified by the domain name of the website, the detection path, and the rule name.
 	//
 	// This parameter is required.
 	//

@@ -22,9 +22,9 @@ type iDescribeElasticQpsRequest interface {
 }
 
 type DescribeElasticQpsRequest struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the query time range, specified as a UNIX timestamp in seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The timestamp must be the start of a minute.
 	//
 	// This parameter is required.
 	//
@@ -32,23 +32,23 @@ type DescribeElasticQpsRequest struct {
 	//
 	// 1684339200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The sampling interval. Unit: seconds. The value must be a multiple of 60. Default value: 60. Unit: seconds. The query result varies depending on the sampling interval.
+	// The sampling interval, in seconds. The value must be a multiple of 60. The default value is 60.
 	//
 	// example:
 	//
 	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The IP address of the Anti-DDoS Proxy instance to query.
+	// The IP address of the Anti-DDoS instance to query.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The type of the service. Valid values:
+	// The service region. Valid values:
 	//
-	// 	- **cn**: Anti-DDoS Proxy (Chinese Mainland)
+	// - **cn**: Chinese mainland.
 	//
-	// 	- **cn-hongkong**: Anti-DDoS Proxy (Outside Chinese Mainland)
+	// - **cn-hongkong**: Outside Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -56,9 +56,9 @@ type DescribeElasticQpsRequest struct {
 	//
 	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start of the query time range, specified as a UNIX timestamp in seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The timestamp must be the start of a minute.
 	//
 	// This parameter is required.
 	//

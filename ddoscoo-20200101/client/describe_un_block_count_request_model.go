@@ -14,7 +14,7 @@ type iDescribeUnBlockCountRequest interface {
 }
 
 type DescribeUnBlockCountRequest struct {
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//

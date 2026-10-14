@@ -16,37 +16,34 @@ type iConfigNetworkRegionBlockRequest interface {
 }
 
 type ConfigNetworkRegionBlockRequest struct {
-	// The details of the configurations of blocked locations. This parameter is a JSON string. The value consists of the following fields:
+	// The configuration of the location blacklist, expressed as a JSON string with the following structure:
 	//
-	// 	- **RegionBlockSwitch**: the status of the location blacklist feature. This field is required and must be of the string type. Valid values:
+	// - **RegionBlockSwitch**: String type. Required. The switch status of the location blacklist. Valid values:
 	//
-	//     	- **on**
+	//     - **on**: enabled
 	//
-	//     	- **off**
+	//     - **off**: disabled
 	//
-	// 	- **Countries**: the codes of the countries and areas from which you want to block requests. This field is optional and must be of the array type.
+	// - **Countries**: Array type. Optional. The list of international region codes to block.
 	//
-	//     **
+	//     > For more information about international region codes, see [Parameters for China and international regions](https://help.aliyun.com/document_detail/167926.html).
 	//
-	//     **Note*	- For more information about the codes of countries and areas, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
 	//
-	// 	- **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
+	// - **Provinces**: Array type. Optional. The list of China region codes to block.
 	//
-	//     **
+	//     > For more information about China region codes, see [Parameters for China and international regions](https://help.aliyun.com/document_detail/167926.html).
 	//
-	//     **Note*	- For more information about the codes of administrative regions in China, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
-	//
-	//     For example, `[11,12]` specifies Beijing and Tianjin.
+	//     For example, `[11,12]` indicates Beijing and Tianjin.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"RegionBlockSwitch":"off","Countries":[],"Provinces":[11,12,13,14,15,21,22,23,31,32,33,34,35,36,37,41,42,43,44,45,46,50,51,52,53,54,61,62,63,64,65,71,81,82]}
+	// {"RegionBlockSwitch":"on","Countries":[],"Provinces":[11,12,13,14,15,21,22,23,31,32,33,34,35,36,37,41,42,43,44,45,46,50,51,52,53,54,61,62,63,64,65,71,81,82]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//

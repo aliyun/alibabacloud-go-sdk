@@ -14,9 +14,9 @@ type iDescribeL7UsKeepaliveRequest interface {
 }
 
 type DescribeL7UsKeepaliveRequest struct {
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyWebAreaBlockResponseBody interface {
 }
 
 type ModifyWebAreaBlockResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

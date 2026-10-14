@@ -16,14 +16,8 @@ type iDescribeWebReportTopIpResponseBody interface {
 }
 
 type DescribeWebReportTopIpResponseBody struct {
-	// The information about the IP addresses.
-	DataList []*DescribeWebReportTopIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// D21BE0C4-8E83-5E32-86C6-AA6BE9B1B5BD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DataList  []*DescribeWebReportTopIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeWebReportTopIpResponseBody) String() string {
@@ -66,65 +60,9 @@ func (s *DescribeWebReportTopIpResponseBody) Validate() error {
 }
 
 type DescribeWebReportTopIpResponseBodyDataList struct {
-	// The ID of the location.
-	//
-	// example:
-	//
-	// 90998690
-	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The number of entries returned.
-	//
-	// example:
-	//
-	// 5
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The Internet service provider (ISP) for the attack. Valid values:
-	//
-	// 	- **100017**: China Telecom
-	//
-	// 	- **100026**: China Unicom
-	//
-	// 	- **100025**: China Mobile
-	//
-	// 	- **100027**: China Education and Research Network
-	//
-	// 	- **100020**: China Mobile Tietong
-	//
-	// 	- **1000143**: Dr.Peng Telecom & Media Group
-	//
-	// 	- **100080**: Beijing Gehua CATV Network
-	//
-	// 	- **1000139**: National Radio and Television Administration
-	//
-	// 	- **100023**: Oriental Cable Network
-	//
-	// 	- **100063**: Founder Broadband
-	//
-	// 	- **1000337**: China Internet Exchange
-	//
-	// 	- **100021**: 21Vianet Group
-	//
-	// 	- **1000333**: Wasu Media Holding
-	//
-	// 	- **100093**: Wangsu Science & Technology
-	//
-	// 	- **1000401**: Tencent
-	//
-	// 	- **100099**: Baidu
-	//
-	// 	- **1000323**: Alibaba Cloud
-	//
-	// 	- **100098**: Alibaba
-	//
-	// example:
-	//
-	// 100017
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The source IP address.
-	//
-	// example:
-	//
-	// 117.186.XX.XX
+	AreaId   *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Isp      *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

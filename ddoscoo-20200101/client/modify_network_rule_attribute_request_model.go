@@ -22,59 +22,61 @@ type iModifyNetworkRuleAttributeRequest interface {
 }
 
 type ModifyNetworkRuleAttributeRequest struct {
-	// The detailed settings of the port forwarding rule. This parameter is a JSON string and contains the following fields. The detailed settings of a TCP port forwarding rule contain the following fields.
+	// The advanced settings for the port forwarding rule. Specify the settings as a JSON string. The structure is described below.
 	//
-	// 	- **PersistenceTimeout**: the timeout period of session persistence. This field is required and of the integer type. Valid values: **30*	- to **3600**. Unit: seconds. Default value: **0**, which indicates that session persistence is disabled.
+	// The structure of \\`TcpConfig\\` is as follows:
 	//
-	// 	- **Synproxy**: specifies whether to enable the false source feature in the DDoS mitigation policy. This field is required and of the string type. Valid values: off and on.
+	// - **PersistenceTimeout**: An integer. This parameter is required. The timeout period for session persistence. Unit: seconds. Valid values: **30*	- to **3600**. The default value is **0**, which disables session persistence.
 	//
-	// 	- **NodataConn**: specifies whether to enable the empty connection feature in the DDoS mitigation policy. This field is required and of the string type. Valid values: off and on.
+	// - **Synproxy**: A string. This parameter is required. The status of the False Source setting for the DDoS mitigation policy. Valid values: \\`off\\` and \\`on\\`.
 	//
-	// 	- **Sla**: the settings of the speed limit for destination feature. This field is required and of the struct type. For more information, see the following description about Sla.
+	// - **NodataConn**: A string. This parameter is required. The status of the Empty Connection setting for the DDoS mitigation policy. Valid values: \\`off\\` and \\`on\\`.
 	//
-	// 	- **Slimit**: the settings of the rate limit for source feature. This field is required and of the struct type. For more information, see the following description about Slimit.
+	// - **Sla**: A struct. This parameter is required. The configuration for destination rate limiting. For more information, see the \\`Sla\\` section below.
 	//
-	// 	- **PayloadLen**: the settings of the packet length limit feature. This field is required and of the struct type. For more information, see the following description about PayloadLen.
+	// - **Slimit**: A struct. This parameter is required. The configuration for source rate limiting. For more information, see the \\`Slimit\\` section below.
 	//
-	// Sla contains the following fields:
+	// - **PayloadLen**: A struct. This parameter is required. The packet length filter configuration. For more information, see the \\`PayloadLen\\` section below.
 	//
-	// 	- **Cps**: the destination rate limit on new connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 100 to 100000.
+	// The structure of \\`Sla\\` is as follows:
 	//
-	// 	- **Maxconn**: the destination rate limit on concurrent connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 1000 to 1000000.
+	// - **Cps**: An integer. This parameter is required. The maximum number of new connections per second to a destination IP address. Valid values: 100 to 100,000.
 	//
-	// 	- **CpsEnable**: specifies whether to enable Cps. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Cps is disabled, and the value 1 indicates that Cps is enabled.
+	// - **Maxconn**: An integer. This parameter is required. The maximum number of concurrent connections to a destination IP address. Valid values: 1,000 to 1,000,000.
 	//
-	// 	- **MaxconnEnable**: specifies whether to enable Maxconn. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Maxconn is disabled, and the value 1 indicates that Maxconn is enabled.
+	// - **CpsEnable**: An integer. This parameter is required. Specifies whether to enable the limit on new connections. Valid values: 0 (disabled) and 1 (enabled). The default value is 1.
 	//
-	// Slimit contains the following fields:
+	// - **MaxconnEnable**: An integer. This parameter is required. Specifies whether to enable the limit on concurrent connections. Valid values: 0 (disabled) and 1 (enabled). The default value is 1.
 	//
-	// 	- **Cps**: the source rate limit on new connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 1 to 50000.
+	// The structure of \\`Slimit\\` is as follows:
 	//
-	// 	- **Maxconn**: the source rate limit on concurrent connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 1 to 50000.
+	// - **Cps**: An integer. This parameter is required. The maximum number of new connections per second from a source IP address. Valid values: 1 to 50,000.
 	//
-	// 	- **CpsEnable**: specifies whether to enable Cps. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Cps is disabled, and the value 1 indicates that Cps is enabled.
+	// - **Maxconn**: An integer. This parameter is required. The maximum number of concurrent connections from a source IP address. Valid values: 1 to 50,000.
 	//
-	// 	- **MaxconnEnable**: specifies whether to enable Maxconn. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Maxconn is disabled, and the value 1 indicates that Maxconn is enabled.
+	// - **CpsEnable**: An integer. This parameter is required. Specifies whether to enable the limit on new connections. Valid values: 0 (disabled) and 1 (enabled). The default value is 1.
 	//
-	// 	- **CpsMode**: specifies whether to enable the source rate limit on new connections. This field is required and of the integer type. Valid values: 1 and 2. The value 1 indicates that the source rate limit is disabled. The value 2 indicates that the system determines whether to enable the source rate limit.
+	// - **MaxconnEnable**: An integer. This parameter is required. Specifies whether to enable the limit on concurrent connections. Valid values: 0 (disabled) and 1 (enabled). The default value is 1.
 	//
-	// PayloadLen contains the following fields:
+	// - **CpsMode**: An integer. This parameter is required. The mode for the new connection rate limit from a source IP address. Valid values: 1 (off) and 2 (auto).
 	//
-	// 	- **Min**: the minimum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 1500.
+	// The structure of \\`PayloadLen\\` is as follows:
 	//
-	// 	- **Max**: the maximum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 1500.
+	// - **Min**: An integer. This parameter is required. The minimum packet length. Valid values: 0 to 1,500.
+	//
+	// - **Max**: An integer. This parameter is required. The maximum packet length. Valid values: 0 to 1,500.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"PersistenceTimeout":900}
+	// {"Slimit":{"CpsEnable":1,"MaxconnEnable":1,"Cps":1,"Maxconn":1},"Sla":{"CpsEnable":1,"MaxconnEnable":1,"Cps":100,"Maxconn":1000},"PayloadLen":{"Min":0,"Max":1500}}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**
 	//
-	// 	- **udp**
+	// - **udp**
 	//
 	// This parameter is required.
 	//
@@ -90,9 +92,9 @@ type ModifyNetworkRuleAttributeRequest struct {
 	//
 	// 8080
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > Call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro and Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +102,14 @@ type ModifyNetworkRuleAttributeRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The module for Layer 7 port support. The default value is sla. Valid value:
+	//
+	// **sla**: Speed Limit for Destination
+	//
+	// example:
+	//
+	// sla
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
 }
 
 func (s ModifyNetworkRuleAttributeRequest) String() string {

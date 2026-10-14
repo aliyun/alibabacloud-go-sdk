@@ -24,9 +24,9 @@ type DescribeWebAccessLogDispatchStatusResponseBody struct {
 	//
 	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the log analysis feature is enabled for domain names.
+	// The full log switch status of the domain names.
 	SlsConfigStatus []*DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus `json:"SlsConfigStatus,omitempty" xml:"SlsConfigStatus,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of domain names queried.
 	//
 	// example:
 	//
@@ -89,11 +89,11 @@ type DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus struct {
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Indicates whether the log analysis feature is enabled. Valid values:
+	// Indicates whether full log collection is enabled. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: enabled.
 	//
-	// 	- **false**: no
+	// - **false**: disabled.
 	//
 	// example:
 	//

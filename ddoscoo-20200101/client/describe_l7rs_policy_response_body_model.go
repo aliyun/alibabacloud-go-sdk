@@ -26,11 +26,11 @@ type DescribeL7RsPolicyResponseBody struct {
 	Attributes []*DescribeL7RsPolicyResponseBodyAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// The scheduling algorithm for back-to-origin traffic. Valid values:
 	//
-	// 	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+	// - **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
 	//
-	// 	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+	// - **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
 	//
-	// 	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	// - **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeL7RsPolicyResponseBody struct {
 	RsAttrRwTimeoutMax *int64 `json:"RsAttrRwTimeoutMax,omitempty" xml:"RsAttrRwTimeoutMax,omitempty"`
 	// The back-to-origin retry switch. Valid values:
 	//
-	// 	- **1**: on
+	// - **1**: on
 	//
-	// 	- **0**: off
+	// - **0**: off
 	//
 	// example:
 	//
@@ -137,9 +137,9 @@ type DescribeL7RsPolicyResponseBodyAttributes struct {
 	RealServer *string `json:"RealServer,omitempty" xml:"RealServer,omitempty"`
 	// The address type of the origin server. Valid values:
 	//
-	// 	- **0**: IP address
+	// - **0**: IP address
 	//
-	// 	- **1**: domain name
+	// - **1**: domain name
 	//
 	// example:
 	//
@@ -212,9 +212,9 @@ type DescribeL7RsPolicyResponseBodyAttributesAttribute struct {
 	MaxFails *int32 `json:"MaxFails,omitempty" xml:"MaxFails,omitempty"`
 	// The primary/secondary flag. Valid values:
 	//
-	// 	- **active**: primary
+	// - **active**: primary
 	//
-	// 	- **backup**: secondary
+	// - **backup**: secondary
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type DescribeL7RsPolicyResponseBodyAttributesAttribute struct {
 	//
 	// 120
 	SendTimeout *int32 `json:"SendTimeout,omitempty" xml:"SendTimeout,omitempty"`
-	// The weight of the origin server. This parameter takes effect only if the value of **ProxyMode*	- is **rr*	- or **ip_hash**.****
+	// The weight of the origin server. This parameter takes effect only if the value of **ProxyMode*	- is **rr*	- or **ip_hash**.\\*\\*\\*\\*
 	//
 	// Valid values: **1*	- to **100**. Default value: **100**. A server with a higher weight receives more requests.
 	//

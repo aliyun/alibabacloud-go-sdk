@@ -18,9 +18,9 @@ type iDescribeWebPreciseAccessRuleRequest interface {
 }
 
 type DescribeWebPreciseAccessRuleRequest struct {
-	// An array that consists of the domain names of websites.
+	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -28,8 +28,17 @@ type DescribeWebPreciseAccessRuleRequest struct {
 	//
 	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	Owner   *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The source of the rule. Valid values:
+	//
+	// - **manual*	- (default): The rule is manually created.
+	//
+	// - **clover**: The rule is automatically generated.
+	//
+	// example:
+	//
+	// manual
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Pro instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//

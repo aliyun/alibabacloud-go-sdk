@@ -16,13 +16,13 @@ type iDescribeWebCustomPortsResponseBody interface {
 }
 
 type DescribeWebCustomPortsResponseBody struct {
-	// The ID of the request.
+	// The ID of this request.
 	//
 	// example:
 	//
 	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array consisting of information about supported custom ports that are used by a website.
+	// The custom port information for website services.
 	WebCustomPorts []*DescribeWebCustomPortsResponseBodyWebCustomPorts `json:"WebCustomPorts,omitempty" xml:"WebCustomPorts,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeWebCustomPortsResponseBody) Validate() error {
 }
 
 type DescribeWebCustomPortsResponseBodyWebCustomPorts struct {
-	// An array that consists of supported custom ports.
+	// The available port range.
 	ProxyPorts []*string `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
-	// The type of the protocol. Valid values:
+	// The Protocol Type. Valid values:
 	//
-	// 	- **http**
+	// - **http**
 	//
-	// 	- **https**
+	// - **https**
 	//
 	// example:
 	//

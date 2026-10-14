@@ -20,22 +20,32 @@ type iDescribeCdnLinkageRulesRequest interface {
 }
 
 type DescribeCdnLinkageRulesRequest struct {
+	// The domain name of your website.
+	//
+	// > The domain name must be added to your Anti-DDoS instance. Call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The number of the page to return for a paged query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for a paged query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS instance belongs in Resource Management. If you leave this parameter empty, the instance belongs to the default resource group.
+	//
 	// example:
 	//
 	// default

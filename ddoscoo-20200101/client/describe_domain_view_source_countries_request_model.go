@@ -20,17 +20,17 @@ type iDescribeDomainViewSourceCountriesRequest interface {
 }
 
 type DescribeDomainViewSourceCountriesRequest struct {
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or half hour.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,15 @@ type DescribeDomainViewSourceCountriesRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or half hour.
 	//
 	// This parameter is required.
 	//

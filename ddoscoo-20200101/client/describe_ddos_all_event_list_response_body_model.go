@@ -18,15 +18,15 @@ type iDescribeDDosAllEventListResponseBody interface {
 }
 
 type DescribeDDosAllEventListResponseBody struct {
-	// The DDoS attack events.
+	// The list of attack events.
 	AttackEvents []*DescribeDDosAllEventListResponseBodyAttackEvents `json:"AttackEvents,omitempty" xml:"AttackEvents,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25D83ED5-28CB-5683-9CF7-AECE521F3005
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of DDoS attack events.
+	// The total number of attack events returned.
 	//
 	// example:
 	//
@@ -83,31 +83,31 @@ func (s *DescribeDDosAllEventListResponseBody) Validate() error {
 }
 
 type DescribeDDosAllEventListResponseBodyAttackEvents struct {
-	// The source location or region from which the attack was initiated. Valid values:
+	// The source region of the attack. Valid values:
 	//
-	// 	- **cn**: Chinese mainland
+	// - **cn**: the Chinese mainland.
 	//
-	// 	- **alb-cn-hongkong-gf-2**: China (Hongkong)
+	// - **alb-cn-hongkong-gf-2**: Hong Kong (China).
 	//
-	// 	- **alb-us-west-1-gf-2**: US (Silicon Valley)
+	// - **alb-us-west-1-gf-2**: US (Silicon Valley).
 	//
-	// 	- **alb-ap-northeast-1-gf-1**: Japan (Tokyo)
+	// - **alb-ap-northeast-1-gf-1**: Japan (Tokyo).
 	//
-	// 	- **alb-ap-southeast-gf-1**: Singapore
+	// - **alb-ap-southeast-gf-1**: Singapore.
 	//
-	// 	- **alb-eu-central-1-gf-1**: Germany (Frankfurt)
+	// - **alb-eu-central-1-gf-1**: Germany (Frankfurt).
 	//
-	// 	- **alb-eu-central-1-gf-1*	- or **selb-eu-west-1-gf-1a**: UK (London)
+	// - **alb-eu-west-1-gf-1*	- and **selb-eu-west-1-gf-1a**: UK (London).
 	//
-	// 	- **alb-us-east-gf-1**: US (Virginia)
+	// - **alb-us-east-gf-1**: US (Virginia).
 	//
-	// 	- **CT-yundi**: China (Hongkong) This value is returned only for Anti-DDoS Premium instances of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan.
+	// - **CT-yundi**: Hong Kong (China). This value applies only to Anti-DDoS Pro and Anti-DDoS Premium secure acceleration line instances.
 	//
 	// example:
 	//
 	// cn
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the attack. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -115,25 +115,25 @@ type DescribeDDosAllEventListResponseBodyAttackEvents struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the DDoS attack event. Valid values:
 	//
-	// 	- **web-cc**: resource exhaustion attacks
+	// - **web-cc**: web resource exhaustion attack.
 	//
-	// 	- **cc**: connection flood attacks
+	// - **cc**: connection flood attack.
 	//
-	// 	- **defense**: DDoS attacks that trigger traffic scrubbing
+	// - **defense**: volumetric attack (scrubbing event).
 	//
-	// 	- **blackhole**: DDoS attacks that trigger blackhole filtering
+	// - **blackhole**: volumetric attack (blackhole filtering event).
 	//
 	// example:
 	//
 	// cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The attacked object. The attacked object varies based on the attack event type. The following list describes different attacked objects of different attack event types:
+	// The attacked object. The attacked object varies based on the attack event type:
 	//
-	// 	- If **EventType*	- is set to **web-cc**, the value of this parameter indicates the domain name of the attacked website.
+	// - Web resource exhaustion attack (**EventType*	- is **web-cc**): this parameter indicates the attacked website domain name.
 	//
-	// 	- If **EventType*	- is set to **cc**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	// - Connection flood attack (**EventType*	- is **cc**): this parameter indicates the attacked IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// 	- If **EventType*	- is set to **defense*	- or **blackhole**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	// - Volumetric attack (**EventType*	- is **defense*	- or **blackhole**): this parameter indicates the attacked IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// example:
 	//
@@ -145,21 +145,21 @@ type DescribeDDosAllEventListResponseBodyAttackEvents struct {
 	//
 	// 101899
 	Mbps *int64 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
-	// The attacked port.
+	// The attacked port number.
 	//
-	// > If **EventType*	- is set to **web-cc**, this parameter is not returned.
+	// > This parameter is not returned for web resource exhaustion attacks (**EventType*	- is **web-cc**).
 	//
 	// example:
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The peak packet forwarding rate of attack traffic. Unit: packets per second (pps).
+	// The peak packet forwarding rate of the attack traffic. Unit: pps.
 	//
 	// example:
 	//
 	// 9664270
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the attack. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

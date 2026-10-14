@@ -18,23 +18,8 @@ type iDescribeTotalAttackMaxFlowResponseBody interface {
 }
 
 type DescribeTotalAttackMaxFlowResponseBody struct {
-	// The peak bandwidth of attack traffic. Unit: bit/s.
-	//
-	// example:
-	//
-	// 0
-	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The peak packet rate of attack traffic. Unit: packets per second (pps).
-	//
-	// example:
-	//
-	// 0
-	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	//
-	// example:
-	//
-	// 9173A3CB-C40B-559B-96B7-2373830BD06A
+	Bps       *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Pps       *int64  `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

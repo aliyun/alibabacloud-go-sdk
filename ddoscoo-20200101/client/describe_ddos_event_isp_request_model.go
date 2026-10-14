@@ -20,11 +20,11 @@ type iDescribeDDosEventIspRequest interface {
 }
 
 type DescribeDDosEventIspRequest struct {
-	// The type of the attack event that you want to query. Valid values:
+	// The event type of the attack event to query. Valid values:
 	//
-	// 	- **defense**: attack events that trigger traffic scrubbing
+	// - **defense**: traffic scrubbing events for volumetric attacks.
 	//
-	// 	- **blackhole**: attack events that trigger blackhole filtering
+	// - **blackhole**: blackhole filtering events for volumetric attacks.
 	//
 	// This parameter is required.
 	//
@@ -32,18 +32,23 @@ type DescribeDDosEventIspRequest struct {
 	//
 	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	// The attacked IP Address of Anti-DDoS Proxy instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 203.***.***.199
-	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Range *int64  `json:"Range,omitempty" xml:"Range,omitempty"`
-	// The UNIX timestamp when the query starts. Unit: seconds.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The number of data entries to return.
 	//
-	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+	// example:
+	//
+	// 100
+	Range *int64 `json:"Range,omitempty" xml:"Range,omitempty"`
+	// The start timestamp of the event to query. Unit: seconds.
+	//
+	// > You can call [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/473646.html) to query the start time of all events.
 	//
 	// This parameter is required.
 	//

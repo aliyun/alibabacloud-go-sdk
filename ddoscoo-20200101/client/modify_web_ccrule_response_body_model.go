@@ -14,7 +14,7 @@ type iModifyWebCCRuleResponseBody interface {
 }
 
 type ModifyWebCCRuleResponseBody struct {
-	// The request ID.
+	// The ID of this request.
 	//
 	// example:
 	//

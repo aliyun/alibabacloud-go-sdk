@@ -14,11 +14,11 @@ type iConfigL7UsKeepaliveResponseBody interface {
 }
 
 type ConfigL7UsKeepaliveResponseBody struct {
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
-	// 6D48AED0-41DB-5D9B-B484-3B6AAD312AD1
+	// 6D48AED0-41DB-5D9B-B484-3B6AAD312AW2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

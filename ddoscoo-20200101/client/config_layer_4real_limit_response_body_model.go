@@ -14,11 +14,6 @@ type iConfigLayer4RealLimitResponseBody interface {
 }
 
 type ConfigLayer4RealLimitResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// CFCF71BD-680E-5A20-8847-174CEC62E67D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

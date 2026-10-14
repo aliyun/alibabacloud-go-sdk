@@ -16,7 +16,7 @@ type iDescribeBlackholeStatusResponseBody interface {
 }
 
 type DescribeBlackholeStatusResponseBody struct {
-	// An array that consists of the blackhole filtering status of the instance.
+	// The blackhole filtering status information of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	BlackholeStatus []*DescribeBlackholeStatusResponseBodyBlackholeStatus `json:"BlackholeStatus,omitempty" xml:"BlackholeStatus,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,29 +66,29 @@ func (s *DescribeBlackholeStatusResponseBody) Validate() error {
 }
 
 type DescribeBlackholeStatusResponseBodyBlackholeStatus struct {
-	// Indicates whether blackhole filtering is triggered for the instance. Valid values:
+	// The blackhole filtering status. Valid values:
 	//
-	// 	- **blackhole**: yes
+	// - **blackhole**: Black Hole Activated
 	//
-	// 	- **normal**: no
+	// - **normal**: Normal
 	//
 	// example:
 	//
 	// blackhole
 	BlackStatus *string `json:"BlackStatus,omitempty" xml:"BlackStatus,omitempty"`
-	// The end time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of blackhole filtering. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1540196323
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IP address of the instance.
+	// The IP address of the Anti-DDoS Proxy instance.
 	//
 	// example:
 	//
 	// 203.***.***.132
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The start time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of blackhole filtering. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

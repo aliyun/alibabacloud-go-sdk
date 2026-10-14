@@ -24,17 +24,17 @@ type iDescribeDomainViewTopUrlRequest interface {
 }
 
 type DescribeDomainViewTopUrlRequest struct {
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website service forwarding rule configured. You can invoke [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names that are added to Anti-DDoS Pro and Anti-DDoS Premium.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the exact minute.
 	//
 	// This parameter is required.
 	//
@@ -42,16 +42,33 @@ type DescribeDomainViewTopUrlRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The step size for returning data, in seconds. This parameter specifies the interval at which a result is returned. The supported step size varies based on the query time range (determined by **StartTime*	- and **EndTime**). Recommended settings:
+	//
+	// - Query time range of up to 1 hour: minimum step size of 60 seconds, maximum not exceeding the query time range.
+	//
+	// - Query time range of more than 1 hour but up to 6 hours: minimum step size of 600 seconds, maximum not exceeding the query time range.
+	//
+	// - Query time range of more than 6 hours but up to 24 hours: minimum step size of 1800 seconds, maximum not exceeding the query time range.
+	//
+	// - Query time range of more than 24 hours but up to 7 days: minimum step size of 3600 seconds, maximum not exceeding the query time range.
+	//
+	// - Query time range of more than 7 days but up to 15 days: minimum step size of 14400 seconds, maximum not exceeding the query time range.
+	//
+	// - Query time range of more than 15 days: minimum step size of 43200 seconds, maximum not exceeding the query time range.
+	//
+	// example:
+	//
+	// 60
 	Inerval *int64 `json:"Inerval,omitempty" xml:"Inerval,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the exact minute.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +76,7 @@ type DescribeDomainViewTopUrlRequest struct {
 	//
 	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of URLs to query. Valid values: **1*	- to **100**.
+	// The number of URLs to return. Valid values: **1*	- to **100**.
 	//
 	// This parameter is required.
 	//

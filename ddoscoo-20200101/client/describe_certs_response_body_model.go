@@ -16,7 +16,7 @@ type iDescribeCertsResponseBody interface {
 }
 
 type DescribeCertsResponseBody struct {
-	// The certificate information about the website.
+	// The certificate information.
 	Certs []*DescribeCertsResponseBodyCerts `json:"Certs,omitempty" xml:"Certs,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,7 +66,7 @@ func (s *DescribeCertsResponseBody) Validate() error {
 }
 
 type DescribeCertsResponseBodyCerts struct {
-	// The global certificate ID, which is in the certificate ID-cn-hangzhou format. If the ID of the certificate is 123, CertIdentifier is 123-cn-hangzhou.
+	// The global certificate ID. The value is a string that consists of the certificate ID and the region ID, separated by a hyphen (-). For example, if the certificate ID is \\`123\\` and the region is \\`cn-hangzhou\\`, the value of \\`CertIdentifier\\` is \\`123-cn-hangzhou\\`.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type DescribeCertsResponseBodyCerts struct {
 	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
 	// Indicates whether the certificate is associated with the domain name. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The certificate is associated with the domain name.
 	//
-	// 	- **false**
+	// - **false**: The certificate is not associated with the domain name.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type DescribeCertsResponseBodyCerts struct {
 	//
 	// 2021-09-12
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// example:
 	//
 	// 81
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// The certification authority (CA) that issued the certificate.
 	//
 	// example:
 	//

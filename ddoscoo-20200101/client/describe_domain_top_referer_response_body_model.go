@@ -16,9 +16,9 @@ type iDescribeDomainTopRefererResponseBody interface {
 }
 
 type DescribeDomainTopRefererResponseBody struct {
-	// The information about top referers.
+	// The top referer data of the website.
 	DomainTopReferer []*DescribeDomainTopRefererResponseBodyDomainTopReferer `json:"DomainTopReferer,omitempty" xml:"DomainTopReferer,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribeDomainTopRefererResponseBody) Validate() error {
 }
 
 type DescribeDomainTopRefererResponseBodyDomainTopReferer struct {
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The page views.
+	// The number of request matches.
 	//
 	// example:
 	//
 	// 257031
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// The Base64-encoded referer.
+	// The Base64-encoded value of the referer.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iCreateSchedulerRuleResponseBody interface {
 }
 
 type CreateSchedulerRuleResponseBody struct {
-	// The CNAME that is assigned by Sec-Traffic Manager for the scheduling rule.
+	// The CNAME assigned by Sec-Traffic Manager for the rule.
 	//
-	// > To enable the scheduling rule, you must map the domain name of the service to the CNAME.
+	// > You must map your service domain name to the CNAME of Sec-Traffic Manager to enable the rule.
 	//
 	// example:
 	//
 	// 48k7b372gpl4****.aliyunddos0001.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The value is a unique identifier that Alibaba Cloud generates for the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

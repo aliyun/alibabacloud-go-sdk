@@ -14,7 +14,7 @@ type iCreatePortResponseBody interface {
 }
 
 type CreatePortResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request, which can be used to troubleshoot issues.
 	//
 	// example:
 	//

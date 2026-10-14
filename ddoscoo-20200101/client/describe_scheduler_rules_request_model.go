@@ -20,20 +20,28 @@ type iDescribeSchedulerRulesRequest interface {
 }
 
 type DescribeSchedulerRulesRequest struct {
+	// The page number of the returned page. For example, to query the results on the first page, enter **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records displayed on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource group ID of the Anti-DDoS Proxy instance in Resource Management. The default value is empty, which indicates that the instance belongs to the default resource group.
+	//
 	// example:
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// testrule

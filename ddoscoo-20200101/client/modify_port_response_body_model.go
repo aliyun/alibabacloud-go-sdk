@@ -14,7 +14,7 @@ type iModifyPortResponseBody interface {
 }
 
 type ModifyPortResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//

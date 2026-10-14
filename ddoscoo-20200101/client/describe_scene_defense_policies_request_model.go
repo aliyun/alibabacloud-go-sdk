@@ -18,33 +18,33 @@ type iDescribeSceneDefensePoliciesRequest interface {
 }
 
 type DescribeSceneDefensePoliciesRequest struct {
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management.
 	//
-	// If you do not configure this parameter, the instance belongs to the default resource group.
+	// If you do not configure this parameter, the default resource group is used.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the policy. Valid values:
+	// The status of the policy that you want to query. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled.
 	//
-	// 	- **1**: pending enabling
+	// - **1**: pending activation.
 	//
-	// 	- **2**: enabled
+	// - **2**: active.
 	//
-	// 	- **3**: expired
+	// - **3**: expired.
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the template that is used to create the policy. Valid values:
+	// The templatetype used by the policy that you want to query. Valid values:
 	//
-	// 	- **promotion**: the Important Activity template
+	// - **promotion**: Important Activity template.
 	//
-	// 	- **bypass**: the Forward All template
+	// - **bypass**: full forwarding template.
 	//
 	// example:
 	//

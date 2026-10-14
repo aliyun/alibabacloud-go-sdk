@@ -16,7 +16,7 @@ type iDescribeElasticBandwidthSpecResponseBody interface {
 }
 
 type DescribeElasticBandwidthSpecResponseBody struct {
-	// An array that consists of the available burstable protection bandwidths. Unit: Gbit/s.
+	// The list of available burstable protection bandwidth specifications. Unit: Gbit/s.
 	ElasticBandwidthSpec []*string `json:"ElasticBandwidthSpec,omitempty" xml:"ElasticBandwidthSpec,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//

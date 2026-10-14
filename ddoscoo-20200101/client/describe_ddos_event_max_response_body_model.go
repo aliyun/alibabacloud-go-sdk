@@ -20,25 +20,25 @@ type iDescribeDDosEventMaxResponseBody interface {
 }
 
 type DescribeDDosEventMaxResponseBody struct {
-	// The peak of connection flood attacks. Unit: connections per seconds (CPS).
+	// The peak attack throughput of connection flood attacks. Unit: cps.
 	//
 	// example:
 	//
 	// 1302
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The peak of volumetric attacks. Unit: Mbit/s.
+	// The peak attack throughput of volumetric traffic attacks. Unit: Mbps.
 	//
 	// example:
 	//
 	// 6809
 	Mbps *int64 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
-	// The peak of resource exhaustion attacks. Unit: queries per second (QPS).
+	// The peak attack throughput of web resource exhaustion attacks. Unit: qps.
 	//
 	// example:
 	//
 	// 26314
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

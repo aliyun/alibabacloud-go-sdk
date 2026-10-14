@@ -24,9 +24,9 @@ type DescribeSystemLogResponseBody struct {
 	//
 	// 8BC3A33A-F832-58DB-952F-7682A25AD14C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of details of the billing logs for the burstable clean bandwidth.
+	// The details of the billing logs for burstable clean bandwidth.
 	SystemLog []*DescribeSystemLogResponseBodySystemLog `json:"SystemLog,omitempty" xml:"SystemLog,omitempty" type:"Repeated"`
-	// The total number of billing logs for the burstable clean bandwidth.
+	// The total number of billing logs for burstable clean bandwidth that are queried.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *DescribeSystemLogResponseBody) Validate() error {
 }
 
 type DescribeSystemLogResponseBodySystemLog struct {
-	// The IP address of the instance.
+	// The IP address of the Anti-DDoS instance.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	// The type of the system log. The value is fixed as **20**, which indicates the billing logs for burstable clean bandwidth.
+	// The type of the system log. The value is fixed at **20**, which indicates the billing log of burstable clean bandwidth.
 	//
 	// example:
 	//
 	// 20
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The time when the bill was generated. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the bill was created. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1631793531000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the bill was last modified. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the bill was last modified. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -113,31 +113,31 @@ type DescribeSystemLogResponseBodySystemLog struct {
 	//
 	// 171986973287****
 	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
-	// The operation type. The value is fixed as **100**, which indicates the billing logs for the burstable clean bandwidth that you increased.
+	// The operation type. The value is fixed at **100**, which indicates that a billing record for burstable clean bandwidth is added.
 	//
 	// example:
 	//
 	// 100
 	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	// The details of the bill. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	// The details of the bill. This value is a string that is converted from a JSON struct. The JSON struct contains the following fields:
 	//
-	// 	- **newEntity**: the bill record, which contains the following fields. Data type: object.
+	// - **newEntity**: Object type, which indicates the bill record and contains the following fields:
 	//
-	//     	- **billValue**: the usage of the burstable clean bandwidth within a month. Unit: Mbit/s. Data type: integer.
+	//   - **billValue**: Integer type | The usage of burstable clean bandwidth in the billing month. Unit: Mbit/s.
 	//
-	//     	- **instanceId**: the ID of the instance. Data type: string.
+	//   - **instanceId**: String type | The ID of the Anti-DDoS instance.
 	//
-	//     	- **ip**: the IP address of the instance. Data type: string.
+	//   - **ip**: String type | The IP address of the Anti-DDoS instance.
 	//
-	//     	- **maxBw**: the peak service traffic (monthly 95th percentile bandwidth) within a month. Unit: Mbit/s. Data type: string.
+	//   - **maxBw**: String type | The actual peak value of service traffic in the billing month (monthly 95th percentile). Unit: Mbit/s.
 	//
-	//     	- **month**: the month in which the bill of the previous calendar month is issued. This value is a UNIX timestamp. Unit: milliseconds. Data type: long.
+	//   - **month**: Long type | The month when the bill is generated (the billing month is the calendar month before the month when the bill is generated). This value is a timestamp in milliseconds.
 	//
-	//     	- **overBandwidth**: the peak service traffic minus the clean bandwidth of the instance. Unit: Mbit/s. Data type: integer.
+	//   - **overBandwidth**: Integer type | The bandwidth that exceeds the clean bandwidth specification of the instance. Unit: Mbit/s.
 	//
-	//     	- **peakTime**: the time in point of the peak service traffic that is measured for billing. This value is a UNIX timestamp. Unit: seconds. Data type: long.
+	//   - **peakTime**: Long type | The time when the actual peak value of service traffic is measured. This value is a timestamp in seconds.
 	//
-	//     	- **startTimestamp**: the beginning of the time range for the peak service traffic range. This value is a UNIX timestamp. Unit: seconds. Data type: long.
+	//   - **startTimestamp**: Long type | The start time of the period when the peak value of instance service traffic is measured. This value is a timestamp in seconds.
 	//
 	// example:
 	//
@@ -145,11 +145,11 @@ type DescribeSystemLogResponseBodySystemLog struct {
 	OpDesc *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
 	// The status of the bill. Valid values:
 	//
-	// 	- **0**: to be billed
+	// - **0**: indicates that the bill is pending.
 	//
-	// 	- **1**: billed
+	// - **1**: indicates that the bill is generated.
 	//
-	// 	- **2**: terminated
+	// - **2**: indicates that the bill is terminated.
 	//
 	// example:
 	//

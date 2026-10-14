@@ -22,7 +22,7 @@ type DescribeDomainViewTopUrlResponseBody struct {
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array consisting of the URLs that receive the most requests.
+	// The list of top URLs by access volume for the website service.
 	UrlList []*DescribeDomainViewTopUrlResponseBodyUrlList `json:"UrlList,omitempty" xml:"UrlList,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeDomainViewTopUrlResponseBody) Validate() error {
 }
 
 type DescribeDomainViewTopUrlResponseBodyUrlList struct {
-	// The total number of requests.
+	// The number of requests.
 	//
 	// example:
 	//
 	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The domain name of the website.
+	// The website domain name.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The URL that is Base64-encoded.
+	// The URL. The value is Base64-encoded.
 	//
 	// example:
 	//

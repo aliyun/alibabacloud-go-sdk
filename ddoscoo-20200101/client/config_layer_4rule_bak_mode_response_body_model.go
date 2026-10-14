@@ -14,7 +14,7 @@ type iConfigLayer4RuleBakModeResponseBody interface {
 }
 
 type ConfigLayer4RuleBakModeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

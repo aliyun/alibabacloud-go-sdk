@@ -97,9 +97,9 @@ type DescribeSlaEventListResponseBodySlaEvent struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The region to which the destination IP address belongs. Valid values:
 	//
-	// 	- **cn**: a region in the Chinese mainland
+	// - **cn**: a region in the Chinese mainland
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: China (Hong Kong)
 	//
 	// example:
 	//

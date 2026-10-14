@@ -18,15 +18,15 @@ type iDescribeAutoCcBlacklistResponseBody interface {
 }
 
 type DescribeAutoCcBlacklistResponseBody struct {
-	// An array that consists of the details of the IP addresses in the blacklist of the instance.
+	// The list of blacklisted IP addresses for the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	AutoCcBlacklist []*DescribeAutoCcBlacklistResponseBodyAutoCcBlacklist `json:"AutoCcBlacklist,omitempty" xml:"AutoCcBlacklist,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// E78C8472-0B15-42D5-AF22-A32A78818AB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned IP addresses in the blacklist.
+	// The total number of blacklisted IP addresses.
 	//
 	// example:
 	//
@@ -83,29 +83,29 @@ func (s *DescribeAutoCcBlacklistResponseBody) Validate() error {
 }
 
 type DescribeAutoCcBlacklistResponseBodyAutoCcBlacklist struct {
-	// The IP address of the instance.
+	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	DestIp *string `json:"DestIp,omitempty" xml:"DestIp,omitempty"`
-	// The validity period of the IP address in the blacklist. The value is a UNIX timestamp. Unit: seconds.
+	// The expiration time of the blacklisted IP address. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1584093569
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IP address in the blacklist.
+	// The blacklisted IP address.
 	//
 	// example:
 	//
 	// 47.100.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The mode of how the IP address is added to the blacklist. Valid values:
+	// The source of the blacklisted IP address. Valid values:
 	//
-	// 	- **manual**: manually added
+	// - **manual**: The IP address is manually added.
 	//
-	// 	- **auto**: automatically added
+	// - **auto**: The IP address is automatically added.
 	//
 	// example:
 	//

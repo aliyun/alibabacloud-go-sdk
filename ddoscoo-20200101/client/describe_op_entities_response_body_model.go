@@ -18,15 +18,15 @@ type iDescribeOpEntitiesResponseBody interface {
 }
 
 type DescribeOpEntitiesResponseBody struct {
-	// The operation records.
+	// The operation log records.
 	OpEntities []*DescribeOpEntitiesResponseBodyOpEntities `json:"OpEntities,omitempty" xml:"OpEntities,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// FB24D70C-71F5-4000-8CD8-22CDA0C53CD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned operation records.
+	// The total number of operation records.
 	//
 	// example:
 	//
@@ -91,25 +91,25 @@ type DescribeOpEntitiesResponseBodyOpEntities struct {
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
 	// The type of the operation object. Valid values:
 	//
-	// 	- **1**: the IP address of the Anti-DDoS Proxy instance.
+	// - **1**: IP Address of Anti-DDoS Proxy instance
 	//
-	// 	- **2**: Anti-DDoS plans.
+	// - **2**: Anti-DDoS Pro and Anti-DDoS Premium mitigation plan
 	//
-	// 	- **3**: ECS instances.
+	// - **3**: ECS instance
 	//
-	// 	- **4**: all logs.
+	// - **4**: full logs
 	//
 	// example:
 	//
 	// 1
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The time when the operation was performed. The value is a UNIX timestamp. Units: milliseconds.
+	// The time when the operation was performed. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1584451769000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to perform the operation.
+	// The Alibaba Cloud account ID that performed the operation.
 	//
 	// example:
 	//
@@ -117,85 +117,92 @@ type DescribeOpEntitiesResponseBodyOpEntities struct {
 	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
 	// The type of the operation. Valid values:
 	//
-	// 	- **1**: configuring burstable protection bandwidth.
+	// - **1**: Settings for the burstable protection bandwidth.
 	//
-	// 	- **5**: using Anti-DDoS plans.
+	// - **5**: Offset with an anti-DDoS mitigation plan.
 	//
-	// 	- **8**: changing the IP addresses of ECS instances.
+	// - **8**: Change an ECS IP address.
 	//
-	// 	- **9**: deactivating blackhole filtering.
+	// - **9**: Unblock (deactivation of blackhole filtering).
 	//
-	// 	- **10**: configuring the near-origin traffic diversion feature.
+	// - **10**: Settings for near-origin traffic diversion.
 	//
-	// 	- **11**: clearing all logs.
+	// - **11**: Clear full logs.
 	//
-	// 	- **12**: downgrading the specifications of the Anti-DDoS Proxy instance. If the instance expires or the account has overdue payments, this operation is performed to downgrade the burstable protection bandwidth.
+	// - **12**: Downgrade instance specifications. This indicates that the burstable protection bandwidth is reduced when the instance expires or the account has an overdue payment.
 	//
-	// 	- **13**: restoring the specifications of the Anti-DDoS Proxy instance. If the instance is renewed or you have paid the overdue payments within your account, this operation is performed to restore the burstable protection bandwidth.
+	// - **13**: Recover instance specifications. This indicates that the burstable protection bandwidth is recovered when the instance renewal is completed or the overdue payment is settled.
 	//
 	// example:
 	//
 	// 9
 	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	// The details of the operation. This parameter is a JSON string. The string contains the following fields:
+	// The description of the operation, expressed as a JSON format character string with the following structure:
 	//
-	// 	- **newEntity**: the values of the parameters after the operation. This field is of the string type.
+	// - **newEntity**: String. The parameters after the operation.
 	//
-	// 	- **oldEntity**: the values of the parameters before the operation. This field is of the string type.
+	// - **oldEntity**: String. The parameters before the operation.
 	//
-	// Both **newEntity*	- and **oldEntity*	- are JSON strings. The returned parameters vary based on **OpAction**.
+	// Both **newEntity*	- and **oldEntity*	- are expressed as JSON format character strings. The operation parameters vary based on the operation type (**OpAction**).
 	//
-	// If the value of **OpAction*	- is **1**, **12**, or **13**, the following parameter is returned:
+	// When **OpAction*	- is **1**, **12**, or **13**, the operation parameters have the following structure:
 	//
-	// 	- **elasticBandwidth**: the burstable protection bandwidth. This parameter is of the integer type. Unit: Gbit/s.
+	// - **elasticBandwidth**: Integer. The burstable protection bandwidth. Unit: Gbit/s.
 	//
 	//     Example: `{"newEntity":{"elasticBandwidth":300},"oldEntity":{"elasticBandwidth":300}}`
 	//
-	// If the value of **OpAction*	- is **5**, the following parameters are returned:
 	//
-	// 	- **bandwidth**: the burstable protection bandwidth. The parameter is of the integer type. Unit: Gbit/s.
+	// When **OpAction*	- is **5**, the operation parameters have the following structure:
 	//
-	// 	- **count**: the number of Anti-DDoS plans. This parameter is of the integer type.
+	// - **bandwidth**: Integer. The burstable protection bandwidth. Unit: Gbit/s.
 	//
-	// 	- **deductCount**: the number of used Anti-DDoS plans. This parameter is of the integer type.
+	// - **count**: Integer. The number of anti-DDoS mitigation plans.
 	//
-	// 	- **expireTime**: the expiration time of the Anti-DDoS plans. This parameter is of the long type. The value is a UNIX timestamp. Units: milliseconds.
+	// - **deductCount**: Integer. The number of offset anti-DDoS mitigation plans.
 	//
-	// 	- **instanceId**: the ID of the Anti-DDoS Proxy instance. This parameter is of the string type.
+	// - **expireTime**: Long. The expiration time of the anti-DDoS mitigation plan. This value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// 	- **peakFlow**: the peak throughput on the Anti-DDoS Proxy instance. This parameter is of the integer type. Unit: bit/s.
+	// - **instanceId**: String. The instance ID of the Anti-DDoS Pro and Anti-DDoS Premium instance.
+	//
+	// - **peakFlow**: Integer. The peak traffic. Unit: bit/s.
 	//
 	//     Example: `{"newEntity":{"bandwidth":100,"count":4,"deductCount":1,"expireTime":1616299196000,"instanceId":"ddoscoo-cn-v641kpmq****","peakFlow":751427000}}`
 	//
-	// If the value of **OpAction*	- is **8**, the following parameter is returned:
 	//
-	// 	- **instanceId**: the IDs of the ECS instances whose IP addresses are changed. This parameter is of the string type.
+	// When **OpAction*	- is **8**, the operation parameters have the following structure:
+	//
+	// - **instanceId**: String. The instance ID of the ECS instance whose IP address is changed.
 	//
 	//     Example: `{"newEntity":{"instanceId":"i-wz9h6nc313zptbqn****"}}`
 	//
-	// If the value of **OpAction*	- is **9**, the following parameter is returned:
 	//
-	// 	- **actionMethod**: the operation method. This parameter is of the string type. Valid value: **undo**, which indicates that you deactivated blackhole filtering.
+	//
+	// When **OpAction*	- is **9**, the operation parameters have the following structure:
+	//
+	// - **actionMethod**: String. The operation method. Value: **undo**, which indicates Unblock (deactivation of blackhole filtering).
 	//
 	//     Example: `{"newEntity":{"actionMethod":"undo"}}`
 	//
-	// If the value of **OpAction*	- is **10**, the following parameters are returned:
 	//
-	// 	- **actionMethod**: the operation method. This parameter is of the string type. Valid values:
 	//
-	//     	- **do**: The near-origin traffic diversion feature is enabled.
+	// When **OpAction*	- is **10**, the operation parameters have the following structure:
 	//
-	//     	- **undo**: The near-origin traffic diversion feature is disabled.
+	// - **actionMethod**: String. The operation method. Valid values:
 	//
-	// 	- **lines**: the Internet service provider (ISP) line from which the traffic is blocked. This parameter is of the array type. Valid values:
+	//     - **do**: Enable near-origin traffic diversion.
 	//
-	//     	- **ct**: China Telecom (International).
+	//     - **undo**: Disable near-origin traffic diversion.
 	//
-	//     	- **cut**: China Unicom (International).
+	// - **lines**: Array. The line types. Valid values:
+	//
+	//     - **ct**: China Telecom outside China line
+	//
+	//     - **cut**: China Unicom outside China line
 	//
 	//     Example: `{"newEntity":{"actionMethod":"undo","lines":["ct"]}}`
 	//
-	// If the value of **OpAction*	- is **11**, no parameter is returned, and the description is empty.
+	//
+	// When **OpAction*	- is **11**, there are no operation parameters and the operation description is empty.
 	//
 	// example:
 	//

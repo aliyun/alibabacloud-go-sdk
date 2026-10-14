@@ -14,7 +14,7 @@ type iDisableWebAccessLogConfigResponseBody interface {
 }
 
 type DisableWebAccessLogConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

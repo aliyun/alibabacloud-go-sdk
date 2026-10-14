@@ -18,7 +18,7 @@ type iDescribeAsyncTasksRequest interface {
 }
 
 type DescribeAsyncTasksRequest struct {
-	// The number of the page to return.
+	// The page number for the paged query.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeAsyncTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of asynchronous export tasks to return on each page for the paged query.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type DescribeAsyncTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The resource group ID of the Anti-DDoS instance in Resource Management.
 	//
-	// If you do not configure this parameter, the instance belongs to the default resource group.
+	// If this parameter is not specified, the default resource group is used.
 	//
 	// example:
 	//

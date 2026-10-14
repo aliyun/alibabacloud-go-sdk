@@ -16,13 +16,13 @@ type iDescribeL7UsKeepaliveResponseBody interface {
 }
 
 type DescribeL7UsKeepaliveResponseBody struct {
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
-	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDHE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The value of the Back-to-origin Persistent Connections parameter.
+	// The configured back-to-origin persistent connection parameters.
 	RsKeepalive *DescribeL7UsKeepaliveResponseBodyRsKeepalive `json:"RsKeepalive,omitempty" xml:"RsKeepalive,omitempty" type:"Struct"`
 }
 
@@ -63,23 +63,23 @@ func (s *DescribeL7UsKeepaliveResponseBody) Validate() error {
 
 type DescribeL7UsKeepaliveResponseBodyRsKeepalive struct {
 	DsKeepaliveTimeout *int64 `json:"DsKeepaliveTimeout,omitempty" xml:"DsKeepaliveTimeout,omitempty"`
-	// Indicates whether Back-to-origin Persistent Connections is turned on. Valid values:
+	// Indicates whether back-to-origin persistent connections are enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The number of requests that reuse persistent connections.
+	// The number of requests that can reuse a persistent connection.
 	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int64 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period of idle persistent connections.
+	// The idle timeout period of a persistent connection.
 	//
 	// example:
 	//

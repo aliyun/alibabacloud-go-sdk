@@ -16,9 +16,9 @@ type iDescribeDomainTopHttpMethodResponseBody interface {
 }
 
 type DescribeDomainTopHttpMethodResponseBody struct {
-	// The information about top HTTP methods.
+	// The list of top HTTP methods for the domain name.
 	DomainTopMethod []*DescribeDomainTopHttpMethodResponseBodyDomainTopMethod `json:"DomainTopMethod,omitempty" xml:"DomainTopMethod,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type DescribeDomainTopHttpMethodResponseBodyDomainTopMethod struct {
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The HTTP method.
+	// The HTTP method of the domain name.
 	//
 	// example:
 	//
 	// GET
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The page views.
+	// The number of matching requests.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iEnableWebCCRuleResponseBody interface {
 }
 
 type EnableWebCCRuleResponseBody struct {
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 

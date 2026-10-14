@@ -16,9 +16,9 @@ type iDescribeDomainTopUserAgentResponseBody interface {
 }
 
 type DescribeDomainTopUserAgentResponseBody struct {
-	// The information about the user agents.
+	// The list of User-Agent data.
 	DomainTopUa []*DescribeDomainTopUserAgentResponseBodyDomainTopUa `json:"DomainTopUa,omitempty" xml:"DomainTopUa,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribeDomainTopUserAgentResponseBody) Validate() error {
 }
 
 type DescribeDomainTopUserAgentResponseBodyDomainTopUa struct {
-	// The domain name of the website.
+	// The website domain name.
 	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The page views.
+	// The number of request matches.
 	//
 	// example:
 	//
 	// 22121
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// The Base64-encoded user agent.
+	// The Base64-encoded value of the User-Agent.
 	//
 	// example:
 	//

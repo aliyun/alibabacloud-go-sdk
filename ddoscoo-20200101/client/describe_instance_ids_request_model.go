@@ -18,28 +18,32 @@ type iDescribeInstanceIdsRequest interface {
 }
 
 type DescribeInstanceIdsRequest struct {
-	// The type of the instance to query. Valid values:
+	// The edition of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
+	// - **0**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Insurance Edition.
 	//
-	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
+	// - **1**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Unlimited Edition.
 	//
-	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
+	// - **2**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Acceleration Line.
 	//
-	// 	- **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
+	// - **3**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Secure Acceleration Line.
 	//
-	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+	// - **9**: Anti-DDoS Pro or Anti-DDoS Premium (the Chinese mainland) Professional Edition.
 	//
 	// example:
 	//
 	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The IDs of instances to query.
+	// The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. Maximum value of N: 200.
 	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management.
+	//
+	// If you do not specify this parameter, the default resource group is used.
+	//
 	// example:
 	//
 	// rg-acfm2pz25js****

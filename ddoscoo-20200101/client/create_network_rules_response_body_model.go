@@ -14,7 +14,7 @@ type iCreateNetworkRulesResponseBody interface {
 }
 
 type CreateNetworkRulesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

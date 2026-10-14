@@ -16,7 +16,7 @@ type iDescribeWebPreciseAccessRuleResponseBody interface {
 }
 
 type DescribeWebPreciseAccessRuleResponseBody struct {
-	// The configuration of the accurate access control rule that is created for the website.
+	// The precise access control rules for the website.
 	PreciseAccessConfigList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList `json:"PreciseAccessConfigList,omitempty" xml:"PreciseAccessConfigList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -72,7 +72,7 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The scheduling rules.
+	// The list of rules.
 	RuleList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
@@ -116,28 +116,33 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList) Valida
 }
 
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList struct {
-	// The action triggered if the rule is matched. Valid values:
+	// The action that is performed on requests that match the rule. Valid values:
 	//
-	// 	- **accept**: The requests that match the rule are allowed.
+	// - **accept**: allows the requests.
 	//
-	// 	- **block**: The requests that match the rule are blocked.
+	// - **block**: blocks the requests.
 	//
-	// 	- **challenge**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
+	// - **challenge**: triggers a JavaScript Challenge for the requests.
 	//
 	// example:
 	//
 	// accept
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The match conditions.
+	// The list of match conditions.
 	ConditionList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
-	ExpirePeriod  *int64                                                                                  `json:"ExpirePeriod,omitempty" xml:"ExpirePeriod,omitempty"`
-	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action*	- of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. The value **0*	- indicates that the whitelist takes effect all the time.
+	// The validity period of the rule. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1598889600
+	ExpirePeriod *int64 `json:"ExpirePeriod,omitempty" xml:"ExpirePeriod,omitempty"`
+	// The validity period of the rule. Unit: seconds. This parameter is required only when the **action*	- of the rule is **block**. Requests that match the rule are blocked within the validity period. A value of **0*	- indicates that the rule is permanently valid.
 	//
 	// example:
 	//
 	// 0
 	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
-	// The name of the scheduling rule.
+	// The name of the rule.
 	//
 	// example:
 	//
@@ -145,9 +150,9 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList str
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The source of the rule. Valid values:
 	//
-	// 	- **manual*	- (default): manually created.
+	// - **manual*	- (default): The rule is manually created.
 	//
-	// 	- **auto**: automatically generated.
+	// - **clover**: The rule is automatically generated.
 	//
 	// example:
 	//
@@ -236,7 +241,20 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListCond
 	// example:
 	//
 	// 1.1.1.1
-	Content     *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The match conditions of the rule. The value is a JSON string. The value contains the following fields:
+	//
+	// > If you specify multiple match conditions, the logical relation between these conditions is AND.
+	//
+	// - **field**: The match field. This parameter is of the string type.
+	//
+	// - **match_method**: The match method. This parameter is of the string type.
+	//
+	//   > For more information about the valid values of **field*	- and **match_method**, see the "Additional information about field and match_method" section in this topic.
+	//
+	// - **content**: The match content. This parameter is of the string type.
+	//
+	// - **header_name**: The name of the header field. This parameter is of the string type. This parameter is required only when **field*	- is set to **header**.
 	ContentList []*string `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
 	// The match field.
 	//
@@ -244,9 +262,9 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListCond
 	//
 	// ip
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The custom HTTP request header.
+	// The name of the custom HTTP header field.
 	//
-	// >  This parameter takes effect only when **Field*	- is set to **header**.
+	// > This parameter is required only when **Field*	- is set to **header**.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeAttackAnalysisMaxQpsResponseBody interface {
 }
 
 type DescribeAttackAnalysisMaxQpsResponseBody struct {
-	// The peak queries per second (QPS) of DDoS attacks. Units: QPS.
+	// The peak value of the DDoS attack. Unit: QPS.
 	//
 	// example:
 	//
 	// 41652
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The ID of the request.
+	// The ID of this request.
 	//
 	// example:
 	//

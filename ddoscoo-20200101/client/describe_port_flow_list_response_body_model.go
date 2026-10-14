@@ -16,7 +16,7 @@ type iDescribePortFlowListResponseBody interface {
 }
 
 type DescribePortFlowListResponseBody struct {
-	// The returned traffic data.
+	// The traffic data.
 	PortFlowList []*DescribePortFlowListResponseBodyPortFlowList `json:"PortFlowList,omitempty" xml:"PortFlowList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,13 +66,13 @@ func (s *DescribePortFlowListResponseBody) Validate() error {
 }
 
 type DescribePortFlowListResponseBodyPortFlowList struct {
-	// The bandwidth of attack traffic. Unit: bit/s.
+	// The attack bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
 	// 0
 	AttackBps *int64 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
-	// The packet forwarding rate of attack traffic. Unit: pps.
+	// The attack packet forwarding rate. Unit: pps.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribePortFlowListResponseBodyPortFlowList struct {
 	//
 	// 2176000
 	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	// The packet forwarding rate of inbound traffic. Unit: packets per second.
+	// The inbound packet forwarding rate. Unit: pps.
 	//
 	// example:
 	//
@@ -102,41 +102,81 @@ type DescribePortFlowListResponseBodyPortFlowList struct {
 	//
 	// 4389
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	// The packet forwarding rate of outbound traffic. Unit: packets per second (pps).
+	// The outbound packet forwarding rate. Unit: pps.
 	//
 	// example:
 	//
 	// 5
 	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
-	// The source region of the traffic. Valid values:
+	// The source location of the access traffic. Valid values:
 	//
-	// 	- **cn**: mainland China
+	// - **cn**: the Chinese mainland.
 	//
-	// 	- **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
+	// - **alb-ap-northeast-1-gf-x**: Japan.
 	//
-	// 	- **alb-ap-southeast-gf-x**: Singapore
+	// - **alb-ap-southeast-gf-x**: Singapore.
 	//
-	// 	- **alb-cn-hongkong-gf-x**: Hong Kong (China)
+	// - **alb-cn-hongkong-gf-x**: Hong Kong (China).
 	//
-	// 	- **alb-eu-central-1-gf-x**: Germany (Frankfurt)
+	// - **alb-eu-central-1-gf-x**: Germany.
 	//
-	// 	- **alb-us-west-1-gf-x**: US (Silicon Valley)
+	// - **alb-us-west-1-gf-x**: US West.
 	//
-	// > The values except **cn*	- are returned only when **RegionId*	- is set to **ap-southeast-1**.
+	// > Values other than **cn*	- are available only for Anti-DDoS Pro and Anti-DDoS Premium (**RegionId*	- is **ap-southeast-1**).
 	//
 	// example:
 	//
 	// cn
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SlaBpsDropBps  *int64  `json:"SlaBpsDropBps,omitempty" xml:"SlaBpsDropBps,omitempty"`
-	SlaBpsDropPps  *int64  `json:"SlaBpsDropPps,omitempty" xml:"SlaBpsDropPps,omitempty"`
-	SlaConnDropBps *int64  `json:"SlaConnDropBps,omitempty" xml:"SlaConnDropBps,omitempty"`
-	SlaConnDropPps *int64  `json:"SlaConnDropPps,omitempty" xml:"SlaConnDropPps,omitempty"`
-	SlaCpsDropBps  *int64  `json:"SlaCpsDropBps,omitempty" xml:"SlaCpsDropBps,omitempty"`
-	SlaCpsDropPps  *int64  `json:"SlaCpsDropPps,omitempty" xml:"SlaCpsDropPps,omitempty"`
-	SlaPpsDropBps  *int64  `json:"SlaPpsDropBps,omitempty" xml:"SlaPpsDropBps,omitempty"`
-	SlaPpsDropPps  *int64  `json:"SlaPpsDropPps,omitempty" xml:"SlaPpsDropPps,omitempty"`
-	// The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The destination bandwidth rate limiting. Unit: bit/s.
+	//
+	// example:
+	//
+	// 0
+	SlaBpsDropBps *int64 `json:"SlaBpsDropBps,omitempty" xml:"SlaBpsDropBps,omitempty"`
+	// The destination bandwidth packet forwarding rate. Unit: pps.
+	//
+	// example:
+	//
+	// 0
+	SlaBpsDropPps *int64 `json:"SlaBpsDropPps,omitempty" xml:"SlaBpsDropPps,omitempty"`
+	// The destination concurrent connections rate limiting. Unit: bit/s.
+	//
+	// example:
+	//
+	// 0
+	SlaConnDropBps *int64 `json:"SlaConnDropBps,omitempty" xml:"SlaConnDropBps,omitempty"`
+	// The destination concurrent connections packet forwarding rate. Unit: pps.
+	//
+	// example:
+	//
+	// 0
+	SlaConnDropPps *int64 `json:"SlaConnDropPps,omitempty" xml:"SlaConnDropPps,omitempty"`
+	// The destination new connections rate limiting. Unit: bit/s.
+	//
+	// example:
+	//
+	// 0
+	SlaCpsDropBps *int64 `json:"SlaCpsDropBps,omitempty" xml:"SlaCpsDropBps,omitempty"`
+	// The destination new connections packet forwarding rate. Unit: pps.
+	//
+	// example:
+	//
+	// 0
+	SlaCpsDropPps *int64 `json:"SlaCpsDropPps,omitempty" xml:"SlaCpsDropPps,omitempty"`
+	// The destination packets rate limiting. Unit: bit/s.
+	//
+	// example:
+	//
+	// 0
+	SlaPpsDropBps *int64 `json:"SlaPpsDropBps,omitempty" xml:"SlaPpsDropBps,omitempty"`
+	// The destination packets packet forwarding rate. Unit: pps.
+	//
+	// example:
+	//
+	// 0
+	SlaPpsDropPps *int64 `json:"SlaPpsDropPps,omitempty" xml:"SlaPpsDropPps,omitempty"`
+	// The statistics time. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

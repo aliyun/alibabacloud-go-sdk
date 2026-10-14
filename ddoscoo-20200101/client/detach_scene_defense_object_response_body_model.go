@@ -24,9 +24,9 @@ type DetachSceneDefenseObjectResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//

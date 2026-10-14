@@ -14,7 +14,7 @@ type iConfigDomainSecurityProfileResponseBody interface {
 }
 
 type ConfigDomainSecurityProfileResponseBody struct {
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

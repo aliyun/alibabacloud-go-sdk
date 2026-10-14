@@ -24,9 +24,9 @@ type iDescribeDefenseRecordsRequest interface {
 }
 
 type DescribeDefenseRecordsRequest struct {
-	// The end of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
+	// The end of the time range to query. This is a UNIX timestamp. Unit: milliseconds.
 	//
-	// > The time must be in the latest 90 days.
+	// > The time span of the query cannot exceed 90 days.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,15 @@ type DescribeDefenseRecordsRequest struct {
 	//
 	// 1583683200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance.
+	// The ID of the Anti-DDoS instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > Call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS instances.
 	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	// The number of the page to return. For example, to query the first page, set this parameter to **1**.
 	//
 	// This parameter is required.
 	//
@@ -58,15 +58,15 @@ type DescribeDefenseRecordsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS instance belongs. If you leave this parameter empty, the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
+	// The beginning of the time range to query. This is a UNIX timestamp. Unit: milliseconds.
 	//
-	// > The time must be in the latest 90 days.
+	// > The time span of the query cannot exceed 90 days.
 	//
 	// This parameter is required.
 	//

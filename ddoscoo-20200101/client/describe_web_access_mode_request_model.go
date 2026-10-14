@@ -14,9 +14,9 @@ type iDescribeWebAccessModeRequest interface {
 }
 
 type DescribeWebAccessModeRequest struct {
-	// The domain name of the website.
+	// The domain names of website businesses.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain names must have website forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//

@@ -20,7 +20,7 @@ type iCreateSceneDefensePolicyRequest interface {
 }
 
 type CreateSceneDefensePolicyRequest struct {
-	// The end time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+	// The end time when the policy takes effect. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateSceneDefensePolicyRequest struct {
 	//
 	// 1586016000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateSceneDefensePolicyRequest struct {
 	//
 	// testpolicy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The start time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+	// The start time when the policy takes effect. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type CreateSceneDefensePolicyRequest struct {
 	//
 	// 1585670400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The template of the policy. Valid values:
+	// The policy template. Valid values:
 	//
-	// 	- **promotion**: important activity.
+	// - **promotion**: Important Activity template.
 	//
-	// 	- **bypass**: all traffic forwarded.
+	// - **bypass**: full forwarding.
 	//
 	// This parameter is required.
 	//

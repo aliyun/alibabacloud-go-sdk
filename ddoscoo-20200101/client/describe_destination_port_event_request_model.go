@@ -24,9 +24,9 @@ type iDescribeDestinationPortEventRequest interface {
 type DescribeDestinationPortEventRequest struct {
 	// The type of the attack event that you want to query. Valid values:
 	//
-	// 	- **defense**: attack events that trigger traffic scrubbing.
+	// - **defense**: attack events that trigger traffic scrubbing.
 	//
-	// 	- **blackhole**: attack events that trigger blackhole filtering.
+	// - **blackhole**: attack events that trigger blackhole filtering.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type DescribeDestinationPortEventRequest struct {
 	Range *int64 `json:"Range,omitempty" xml:"Range,omitempty"`
 	// The region in which your service is deployed. Valid values:
 	//
-	// 	- **cn**: a region in the Chinese mainland.
+	// - **cn**: a region in the Chinese mainland.
 	//
-	// 	- **cn-hongkong**: a region outside the Chinese mainland.
+	// - **cn-hongkong**: a region outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type DescribeDestinationPortEventRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
 	// This parameter is required.
 	//

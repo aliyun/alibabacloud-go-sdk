@@ -16,8 +16,10 @@ type iDescribeInstanceIdsResponseBody interface {
 }
 
 type DescribeInstanceIdsResponseBody struct {
-	// The ID, type, description, and IP version of the instance.
+	// The IDs, editions, remarks, and IP types of the Anti-DDoS Pro or Anti-DDoS Premium instances.
 	InstanceIds []*DescribeInstanceIdsResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 310A41FD-0990-5610-92E0-A6A55D7C6444
@@ -64,49 +66,49 @@ func (s *DescribeInstanceIdsResponseBody) Validate() error {
 }
 
 type DescribeInstanceIdsResponseBodyInstanceIds struct {
-	// The type of the instance. Valid values:
+	// The edition of the instance. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
+	// - **0**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Insurance Edition.
 	//
-	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
+	// - **1**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Unlimited Edition.
 	//
-	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the CMA mitigation plan
+	// - **2**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Acceleration Line.
 	//
-	// 	- **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Sec-CMA mitigation plan
+	// - **3**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Secure Acceleration Line.
 	//
-	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+	// - **9**: Anti-DDoS Pro or Anti-DDoS Premium (the Chinese mainland) Professional Edition.
 	//
 	// example:
 	//
 	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ddoscoo-cn-zvp2eibz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address-based forwarding mode of the instance. Valid values:
+	// The IP forwarding mode of the instance. Valid values:
 	//
-	// 	- **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
+	// - **fnat**: The IP versions of the origin server and the client are the same. IPv4 client requests are forwarded to the IPv4 origin server, and IPv6 client requests are forwarded to the IPv6 origin server.
 	//
-	// 	- **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
+	// - **v6tov4**: Both IPv6 and IPv4 client requests are forwarded to the IPv4 origin server.
 	//
 	// example:
 	//
 	// fnat
 	IpMode *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
-	// The IP version of the instance. Valid values:
+	// The IP protocol version of the instance. Valid values:
 	//
-	// 	- **Ipv4**
+	// - **Ipv4**: IPv4.
 	//
-	// 	- **Ipv6**
+	// - **Ipv6**: IPv6.
 	//
 	// example:
 	//
 	// Ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The description of the instance.
+	// The remark of the instance.
 	//
 	// example:
 	//

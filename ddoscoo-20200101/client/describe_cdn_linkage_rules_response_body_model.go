@@ -18,11 +18,16 @@ type iDescribeCdnLinkageRulesResponseBody interface {
 }
 
 type DescribeCdnLinkageRulesResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 02FE96D9-C77B-5735-B36D-329E052C8047
-	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The traffic scheduling rules.
 	SchedulerRules []*DescribeCdnLinkageRulesResponseBodySchedulerRules `json:"SchedulerRules,omitempty" xml:"SchedulerRules,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 12
@@ -78,11 +83,20 @@ func (s *DescribeCdnLinkageRulesResponseBody) Validate() error {
 }
 
 type DescribeCdnLinkageRulesResponseBodySchedulerRules struct {
+	// Specifies whether CDN interaction is enabled. Valid values:
+	//
+	// - **0**: Disabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 0
-	CdnLinkageEnable *int32                                                           `json:"CdnLinkageEnable,omitempty" xml:"CdnLinkageEnable,omitempty"`
-	CdnLinkageRule   *DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRule `json:"CdnLinkageRule,omitempty" xml:"CdnLinkageRule,omitempty" type:"Struct"`
+	CdnLinkageEnable *int32 `json:"CdnLinkageEnable,omitempty" xml:"CdnLinkageEnable,omitempty"`
+	// The CDN interaction rule.
+	CdnLinkageRule *DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRule `json:"CdnLinkageRule,omitempty" xml:"CdnLinkageRule,omitempty" type:"Struct"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
@@ -134,16 +148,22 @@ func (s *DescribeCdnLinkageRulesResponseBodySchedulerRules) Validate() error {
 }
 
 type DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRule struct {
+	// The canonical name of the Anti-DDoS instance that is associated with the domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
-	Cname *string                                                               `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The resource for interaction.
 	Param *DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// The name of the traffic scheduling rule.
+	//
 	// example:
 	//
 	// testDDos
-	RuleName *string                                                                 `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Rules    []*DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule information.
+	Rules []*DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRule) String() string {
@@ -209,7 +229,14 @@ func (s *DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRule) Valida
 }
 
 type DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParam struct {
+	// The interaction conditions.
 	ParamData *DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParamParamData `json:"ParamData,omitempty" xml:"ParamData,omitempty" type:"Struct"`
+	// The type of the resource for interaction. Valid values:
+	//
+	// - **cdn**: Alibaba Cloud CDN
+	//
+	// - **dcdn**: DCDN
+	//
 	// example:
 	//
 	// cdn
@@ -252,10 +279,14 @@ func (s *DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParam) V
 }
 
 type DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParamParamData struct {
+	// The QPS threshold that triggers a resource switch.
+	//
 	// example:
 	//
 	// 100
 	AccessQps *int64 `json:"AccessQps,omitempty" xml:"AccessQps,omitempty"`
+	// A reserved field. The default value is 0.
+	//
 	// example:
 	//
 	// 0
@@ -293,26 +324,52 @@ func (s *DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParamPar
 }
 
 type DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleRules struct {
+	// The priority of the rule. Valid values: 0 to 100. A larger value indicates a higher priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The region ID. The default value is empty.
+	//
 	// example:
 	//
 	// ""
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// - **0**: Inactive
+	//
+	// - **1**: Active
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The format of the resource address. Valid values:
+	//
+	// - **A**: IPv4 address
+	//
+	// - **AAAA**: IPv6 address
+	//
+	// - **CNAME**: canonical name
+	//
 	// example:
 	//
 	// A
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource address.
+	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The type of the resource address. Valid values:
+	//
+	// - **1**: Anti-DDoS IP
+	//
+	// - **5**: Accelerated domain name for CDN interaction
+	//
 	// example:
 	//
 	// 1

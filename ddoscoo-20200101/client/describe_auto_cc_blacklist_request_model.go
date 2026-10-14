@@ -22,9 +22,9 @@ type iDescribeAutoCcBlacklistRequest interface {
 }
 
 type DescribeAutoCcBlacklistRequest struct {
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > Call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Pro and Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -32,15 +32,15 @@ type DescribeAutoCcBlacklistRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The keyword for the query. This keyword is used to specify the prefix of the source IP address that you want to query.
+	// The keyword for a fuzzy search. The value is a prefix of the source IP address that you want to query.
 	//
-	// > The keyword must be greater than three characters in length.
+	// > The keyword must be more than three characters long.
 	//
 	// example:
 	//
 	// 138
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	// The number of the page to return for a paged query. For example, to query the results on the first page, set the value to **1**.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeAutoCcBlacklistRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records to display on each page.
 	//
 	// This parameter is required.
 	//

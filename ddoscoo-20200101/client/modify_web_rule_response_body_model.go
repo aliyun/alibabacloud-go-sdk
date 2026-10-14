@@ -14,7 +14,7 @@ type iModifyWebRuleResponseBody interface {
 }
 
 type ModifyWebRuleResponseBody struct {
-	// The ID of the request.
+	// The ID of this request.
 	//
 	// example:
 	//

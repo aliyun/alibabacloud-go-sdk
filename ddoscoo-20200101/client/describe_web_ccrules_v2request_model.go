@@ -20,23 +20,23 @@ type iDescribeWebCCRulesV2Request interface {
 }
 
 type DescribeWebCCRulesV2Request struct {
-	// The domain name of the website that you want to add to the Anti-DDoS Proxy instance for protection.
+	// The domain name of the website that is added to Anti-DDoS Pro and Anti-DDoS Premium for protection.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The number of entries that you want the system to skip before the system returns entries. Default value: **0**.
+	// The start index, which specifies the position from which the results are displayed. Default value: **0**.
 	//
 	// example:
 	//
 	// 0
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The method used to create the rule. Valid values:
+	// The source of the rule. Valid values:
 	//
-	// 	- **manual*	- (default): manually created.
+	// - **manual*	- (default): manually added.
 	//
-	// 	- **clover**: automatically created.
+	// - **clover**: automatically generated.
 	//
 	// example:
 	//

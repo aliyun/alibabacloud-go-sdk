@@ -18,9 +18,9 @@ type iDescribeSceneDefensePoliciesResponseBody interface {
 }
 
 type DescribeSceneDefensePoliciesResponseBody struct {
-	// An array that consists of the configurations of the scenario-specific custom policy.
+	// The detailed configurations of the scenario-specific policies.
 	Policies []*DescribeSceneDefensePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type DescribeSceneDefensePoliciesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: no
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -89,43 +89,43 @@ func (s *DescribeSceneDefensePoliciesResponseBody) Validate() error {
 type DescribeSceneDefensePoliciesResponseBodyPolicies struct {
 	// The execution status of the policy. Valid values:
 	//
-	// 	- **1**: not executed or execution completed
+	// - **1**: not executed or execution completed.
 	//
-	// 	- **0**: being executed
+	// - **0**: being executed.
 	//
-	// 	- **-1**: execution failed
+	// - **-1**: execution failed.
 	//
 	// example:
 	//
 	// 1
 	Done *int32 `json:"Done,omitempty" xml:"Done,omitempty"`
-	// The time at which the policy expires. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the policy stops taking effect. The value is a timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1586016000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
 	// testpolicy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of objects that are protected by the policy.
+	// The number of protected objects in the policy.
 	//
 	// example:
 	//
 	// 1
 	ObjectCount *int32 `json:"ObjectCount,omitempty" xml:"ObjectCount,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The running rules of the policy.
+	// The runtime rules of the policy.
 	RuntimePolicies []*DescribeSceneDefensePoliciesResponseBodyPoliciesRuntimePolicies `json:"RuntimePolicies,omitempty" xml:"RuntimePolicies,omitempty" type:"Repeated"`
-	// The time at which the policy takes effect. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the policy starts to take effect. The value is a timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -133,23 +133,23 @@ type DescribeSceneDefensePoliciesResponseBodyPolicies struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the policy. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled.
 	//
-	// 	- **1**: pending enabling
+	// - **1**: pending activation.
 	//
-	// 	- **2**: enabled
+	// - **2**: active.
 	//
-	// 	- **3**: expired
+	// - **3**: expired.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the template that is used to create the policy. Valid values:
+	// The templatetype used by the policy. Valid values:
 	//
-	// 	- **promotion**: the Important Activity template
+	// - **promotion**: Important Activity template.
 	//
-	// 	- **bypass**: the Forward All template
+	// - **bypass**: full forwarding template.
 	//
 	// example:
 	//
@@ -260,51 +260,51 @@ func (s *DescribeSceneDefensePoliciesResponseBodyPolicies) Validate() error {
 }
 
 type DescribeSceneDefensePoliciesResponseBodyPoliciesRuntimePolicies struct {
-	// The protection rule that is applied when the policy takes effect.
+	// The protection rule when the policy takes effect.
 	//
-	// If you set **PolicyType*	- to **1**, the value is **{"cc_rule_enable": false }**. The value indicates that the Frequency Control policy is disabled.
+	// If **PolicyType*	- is **1**, the value is **{"cc_rule_enable": false }**, which indicates that frequency control is disabled.
 	//
-	// If you set **PolicyType*	- to **2**, the value is **{"ai_rule_enable": 0}**. The value indicates that the Intelligent Protection policy is disabled.
+	// If **PolicyType*	- is **2**, the value is **{"ai_rule_enable": 0}**, which indicates that AI-based intelligent analysis is disabled.
 	//
 	// example:
 	//
 	// {"cc_rule_enable": false }
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The protection policy whose status is changed when the policy takes effect. Valid values:
+	// The type of protection feature change triggered when the policy takes effect. Valid values:
 	//
-	// 	- **1**: indicates that the Frequency Control policy is changed.
+	// - **1**: frequency control feature change.
 	//
-	// 	- **2**: indicates that the Intelligent Protection policy is changed.
+	// - **2**: AI-based intelligent analysis feature change.
 	//
 	// example:
 	//
 	// 1
 	PolicyType *int32 `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The running status of the policy. Valid values:
+	// The runtime status of the policy. Valid values:
 	//
-	// 	- **0**: The policy has not been issued or is restored.
+	// - **0**: not delivered or policy restored successfully.
 	//
-	// 	- **1**: The policy is pending.
+	// - **1**: active (policy takes effect).
 	//
-	// 	- **2**: The policy is being restored.
+	// - **2**: being restored (policy restoration).
 	//
-	// 	- **3**: The policy takes effect.
+	// - **3**: policy took effect successfully.
 	//
-	// 	- **4**: The policy fails to take effect.
+	// - **4**: policy failed to take effect.
 	//
-	// 	- **5**:The policy fails to be restored.
+	// - **5**: policy restoration failed.
 	//
-	// 	- **6**: The configurations of the protected objects for the policy does not exist because the configurations may be deleted.
+	// - **6**: the configuration of the object associated with the policy does not exist (may have been deleted).
 	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The protection rule that is applied before the policy takes effect.
+	// The protection rule before the policy takes effect.
 	//
-	// If you set **PolicyType*	- to **1**, the value is **{"cc_rule_enable": true}**. The value indicates that the Frequency Control policy is enabled.
+	// If **PolicyType*	- is **1**, the value is **{"cc_rule_enable": true}**, which indicates that frequency control is enabled.
 	//
-	// If you set **PolicyType*	- to **2**, the value is **{"ai_rule_enable": 1}**. The value indicates that the Intelligent Protection policy is enabled.
+	// If **PolicyType*	- is **2**, the value is **{"ai_rule_enable": 1}**, which indicates that AI-based intelligent analysis is enabled.
 	//
 	// example:
 	//

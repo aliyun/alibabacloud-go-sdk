@@ -16,7 +16,7 @@ type iDescribePortMaxConnsResponseBody interface {
 }
 
 type DescribePortMaxConnsResponseBody struct {
-	// The details of the maximum number of connections that can be established over a port of the instance.
+	// The peak connection information of ports on the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	PortMaxConns []*DescribePortMaxConnsResponseBodyPortMaxConns `json:"PortMaxConns,omitempty" xml:"PortMaxConns,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,19 +66,19 @@ func (s *DescribePortMaxConnsResponseBody) Validate() error {
 }
 
 type DescribePortMaxConnsResponseBodyPortMaxConns struct {
-	// The maximum number of connections per second (CPS).
+	// The maximum number of connections per second.
 	//
 	// example:
 	//
 	// 100
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The IP address of the instance.
+	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// example:
 	//
 	// 203.***.***.117
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port of the instance.
+	// The port of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// example:
 	//

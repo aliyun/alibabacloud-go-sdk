@@ -36,51 +36,51 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
-	// The mitigation plan of the instance to query. Valid values:
+	// The mitigation plan edition of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
+	// - **0**: Anti-DDoS Pro and Anti-DDoS Premium (outside the Chinese mainland) Insurance edition.
 	//
-	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
+	// - **1**: Anti-DDoS Pro and Anti-DDoS Premium (outside the Chinese mainland) Unlimited edition.
 	//
-	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
+	// - **2**: Anti-DDoS Pro and Anti-DDoS Premium (outside the Chinese mainland) acceleration line.
 	//
-	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+	// - **9**: Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland) Professional Edition.
 	//
 	// example:
 	//
 	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The traffic forwarding status of the instance to query. Valid values:
+	// The service traffic forwarding status of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Valid values:
 	//
-	// 	- **0**: The instance no longer forwards service traffic.
+	// - **0**: Service traffic forwarding is stopped.
 	//
-	// 	- **1**: The instance forwards service traffic as expected.
+	// - **1**: Service traffic forwarding is normal.
 	//
 	// example:
 	//
 	// 1
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The end of the time range to query. Instances whose expiration time is earlier than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
+	// The latest expiration time of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. This means that only instances whose expiration time is earlier than the value of **ExpireEndTime*	- are queried. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1640361700000
 	ExpireEndTime *int64 `json:"ExpireEndTime,omitempty" xml:"ExpireEndTime,omitempty"`
-	// The beginning of the time range to query. Instances whose expiration time is later than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
+	// The earliest expiration time of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. This means that only instances whose expiration time is later than the value of **ExpireStartTime*	- are queried. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1640361500000
 	ExpireStartTime *int64 `json:"ExpireStartTime,omitempty" xml:"ExpireStartTime,omitempty"`
-	// The IDs of the instances to query. You can specify up to 200 instance IDs.
+	// The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. You can specify up to 200 Anti-DDoS Pro or Anti-DDoS Premium instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The IP address of the instance to query.
+	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance to query.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The number of the page to return.
+	// The page number for paging.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type DescribeInstancesRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of instances per page for paging. Valid values: 1 to 50.
 	//
 	// This parameter is required.
 	//
@@ -96,23 +96,23 @@ type DescribeInstancesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The remarks of the instance to query. Fuzzy match is supported.
+	// The remark of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// doc-test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management.
 	//
-	// If you do not specify this parameter, the instance belongs to the default resource group.
+	// If you do not specify this parameter, the default resource group is used.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The states of the instances to query. You can specify up to two states.
+	// The statuses of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. You can specify up to 2 Anti-DDoS Pro or Anti-DDoS Premium instance statuses.
 	Status []*int32 `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The tags that are added to the instances to query.
+	// The tags attached to the Anti-DDoS Pro or Anti-DDoS Premium instances to query.
 	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -246,25 +246,25 @@ func (s *DescribeInstancesRequest) Validate() error {
 }
 
 type DescribeInstancesRequestTag struct {
-	// The key of the tag that is added to the instance to query. You can specify up to 200 tag keys. When you specify tags, take note of the following rules:
+	// The tag key attached to the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Maximum value of N: 200, which means you can specify up to 200 tag keys. The configuration rules are as follows:
 	//
-	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated with a comma (,).
+	// - Each tag consists of a tag key (**Key**) and a tag value (**Value**), separated by a comma (,).
 	//
-	// 	- Separate multiple tags with commas (,).
+	// - Tags are separated by commas (,).
 	//
-	// >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
+	// > The tag key (**Key**) and tag value (**Value**) must appear in pairs.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the instance to query. You can specify up to 200 tag values. When you specify tags, take note of the following rules:
+	// The tag value attached to the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Maximum value of N: 200, which means you can specify up to 200 tag values. The configuration rules are as follows:
 	//
-	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated with a comma (,).
+	// - Each tag consists of a tag key (**Key**) and a tag value (**Value**), separated by a comma (,).
 	//
-	// 	- Separate multiple tags with commas (,).
+	// - Tags are separated by commas (,).
 	//
-	// >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
+	// > The tag key (**Key**) and tag value (**Value**) must appear in pairs.
 	//
 	// example:
 	//

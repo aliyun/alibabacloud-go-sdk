@@ -24,23 +24,23 @@ type iDescribeDomainStatusCodeListRequest interface {
 }
 
 type DescribeDomainStatusCodeListRequest struct {
-	// The domain name of the website. If you do not specify this parameter, the statistics on response status codes of all domain names are queried.
+	// The domain name of the website service.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > You can invoke [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query the domain names of all website services that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 	//
 	// example:
 	//
-	// www.aliyun.com
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the exact minute.
 	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The interval for returning data. Unit: seconds.
+	// The time interval between consecutive data entries returned. Unit: seconds. This parameter specifies how frequently a query result is returned.
 	//
 	// This parameter is required.
 	//
@@ -48,27 +48,29 @@ type DescribeDomainStatusCodeListRequest struct {
 	//
 	// 1000
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The source of the statistics. Valid values:
+	// The source of the query data. Valid values:
 	//
-	// 	- **gf**: Anti-DDoS Pro or Anti-DDoS Premium
+	// - **gf**: Anti-DDoS Pro or Anti-DDoS Premium response data.
 	//
-	// 	- **upstrem**: origin server
+	// - **upstream**: origin server response data.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// gf
+	// upstream
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
+	//
+	// For more information about resource groups, refer to [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
-	// default
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The start time of the event. The value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the exact minute.
 	//
 	// This parameter is required.
 	//

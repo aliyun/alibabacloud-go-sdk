@@ -16,9 +16,9 @@ type iDescribeElasticQpsResponseBody interface {
 }
 
 type DescribeElasticQpsResponseBody struct {
-	// The information about the burstable QPS.
+	// The time-series data of elastic QPS.
 	ElasticQps []*DescribeElasticQpsResponseBodyElasticQps `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty" type:"Repeated"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The unique ID generated for the request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeElasticQpsResponseBody) Validate() error {
 }
 
 type DescribeElasticQpsResponseBodyElasticQps struct {
-	// The index number of the returned data.
+	// The index of the returned data point.
 	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The peak QPS of the normal service.
+	// The peak normal business QPS.
 	//
 	// example:
 	//
@@ -84,38 +84,43 @@ type DescribeElasticQpsResponseBodyElasticQps struct {
 	//
 	// 100
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	// The total number of requests during the step size period.
+	// The total number of requests within the sampling interval.
 	//
 	// example:
 	//
 	// 15104
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// The total number of HTTP 2xx status codes during the step size period.
+	// The number of 2xx status codes within the sampling interval.
 	//
 	// example:
 	//
 	// 455
 	Status2 *int64 `json:"Status2,omitempty" xml:"Status2,omitempty"`
-	// The total number of HTTP 3xx status codes during the step size period.
+	// The number of 3xx status codes within the sampling interval.
 	//
 	// example:
 	//
 	// 100
 	Status3 *int64 `json:"Status3,omitempty" xml:"Status3,omitempty"`
-	// The total number of HTTP 4xx status codes during the step size period.
+	// The number of 4xx status codes within the sampling interval.
 	//
 	// example:
 	//
 	// 34
-	Status4     *int64 `json:"Status4,omitempty" xml:"Status4,omitempty"`
+	Status4 *int64 `json:"Status4,omitempty" xml:"Status4,omitempty"`
+	// The number of 410 status codes within the sampling interval.
+	//
+	// example:
+	//
+	// 8
 	Status410Pv *int64 `json:"Status410Pv,omitempty" xml:"Status410Pv,omitempty"`
-	// The total number of HTTP 5xx status codes during the step size period.
+	// The number of 5xx status codes within the sampling interval.
 	//
 	// example:
 	//
 	// 0
 	Status5 *int64 `json:"Status5,omitempty" xml:"Status5,omitempty"`
-	// The total number of origin requests during the step size period.
+	// The total number of origin-pull requests within the sampling interval.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iModifyPortAutoCcStatusRequest interface {
 }
 
 type ModifyPortAutoCcStatusRequest struct {
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type ModifyPortAutoCcStatusRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The mode of the Intelligent Protection policy. Valid values:
+	// The mode of AI-based intelligent protection for non-website services. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**: Normal.
 	//
-	// 	- **loose**
+	// - **loose**: Loose.
 	//
-	// 	- **strict**
+	// - **strict**: Strict.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type ModifyPortAutoCcStatusRequest struct {
 	//
 	// normal
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Specifies the status of the Intelligent Protection policy. Valid values:
+	// The status of AI-based intelligent protection for non-website services. Valid values:
 	//
-	// 	- **on**: enables the policy.
+	// - **on**: enabled
 	//
-	// 	- **off**: disables the policy.
+	// - **off**: disabled
 	//
 	// This parameter is required.
 	//

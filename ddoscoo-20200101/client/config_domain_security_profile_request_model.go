@@ -18,39 +18,51 @@ type iConfigDomainSecurityProfileRequest interface {
 }
 
 type ConfigDomainSecurityProfileRequest struct {
-	// This parameter is unavailable.
+	// Not in use.
+	//
+	// example:
+	//
+	// default
 	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	// The configurations for the global mitigation policy feature. The configurations include the following fields:
+	// The Anti-DDoS Global Mitigation Policy for Protection for Website Services. The structure is as follows:
 	//
-	// 	- **global_rule_mode**: optional. The mode for the global mitigation policy feature. Data type: string. Valid values:
+	// - **global_rule_mode**: String type. Optional. The protection level of the DDoS global mitigation feature. Valid values:
 	//
-	//     	- **weak**: loose.
+	//     - **weak**: Loose.
 	//
-	//     	- **default**: normal.
+	//     - **default**: Normal.
 	//
-	//     	- **hard**: strict.
+	//     - **hard**: Strict.
 	//
-	// 	- **global_rule_enable**: optional. Specifies whether to enable the global mitigation policy feature. Data type: string. Valid values:
+	// - **global_rule_enable**: Integer type. Optional. The switch of the DDoS global mitigation feature. Valid values:
 	//
-	//     	- **0**: disabled.
+	//     - **0**: Shutdown.
 	//
-	//     	- **1**: enabled.
+	//     - **1**: Enabled.
+	//
+	// The Blacklist/Whitelist feature of the custom mitigation policies for Protection for Website Services. The structure is as follows:
+	//
+	// - **bwlist_enable**: Integer type. Optional. The switch of the custom mitigation policy blacklist/whitelist. Valid values:
+	//
+	//     - **0**: Shutdown.
+	//
+	//     - **1**: Enabled.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {\\"global_rule_mode\\":\\"hard\\"}
+	// {"global_rule_mode":"hard"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// live.abcde.com
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 

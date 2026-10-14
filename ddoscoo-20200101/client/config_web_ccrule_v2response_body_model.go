@@ -14,6 +14,8 @@ type iConfigWebCCRuleV2ResponseBody interface {
 }
 
 type ConfigWebCCRuleV2ResponseBody struct {
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc

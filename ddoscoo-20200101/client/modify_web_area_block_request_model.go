@@ -18,9 +18,9 @@ type iModifyWebAreaBlockRequest interface {
 }
 
 type ModifyWebAreaBlockRequest struct {
-	// The domain name whose configurations you want to modify.
+	// The domain name for which you want to configure geo-blocking.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,15 @@ type ModifyWebAreaBlockRequest struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The regions from which you block requests.
+	// The list of regions to block.
 	//
-	// > If you do not configure this parameter, the Blocked Regions (Domain Names) policy is disabled.
+	// > If you do not set this parameter, the Location Blacklist (domain-specific) feature is shutdown.
 	//
 	// example:
 	//
 	// CN-SHANGHAI
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//

@@ -20,26 +20,35 @@ type iDescribeDomainTopAttackListRequest interface {
 }
 
 type DescribeDomainTopAttackListRequest struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or half hour.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1583683200
-	EndTime  *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time granularity of the query data. Unit: seconds.
+	//
+	// - Valid values: 300, 3600, 14400, 28800, and 86400.
+	//
+	// - If you do not specify this parameter or specify an unsupported value, the default value 3600 is used.
+	//
+	// example:
+	//
+	// 3600
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro and Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	// > The value must be on the hour or half hour.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iModifyWebPreciseAccessRuleResponseBody interface {
 }
 
 type ModifyWebPreciseAccessRuleResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The unique ID of the request. You can use this ID to locate and troubleshoot issues.
 	//
 	// example:
 	//

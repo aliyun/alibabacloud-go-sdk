@@ -22,7 +22,7 @@ type DescribeStsGrantStatusResponseBody struct {
 	//
 	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The authorization status of Anti-DDoS Pro or Anti-DDoS Premium.
+	// The authorization status of Anti-DDoS Pro and Anti-DDoS Premium.
 	StsGrant *DescribeStsGrantStatusResponseBodyStsGrant `json:"StsGrant,omitempty" xml:"StsGrant,omitempty" type:"Struct"`
 }
 
@@ -64,9 +64,9 @@ func (s *DescribeStsGrantStatusResponseBody) Validate() error {
 type DescribeStsGrantStatusResponseBodyStsGrant struct {
 	// The authorization status. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Pro or Anti-DDoS Premium is not authorized to access other cloud services.
+	// - **0**: Anti-DDoS Proxy are not authorized to access resources of other cloud services.
 	//
-	// 	- **1**: Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+	// - **1**: Anti-DDoS Proxy are authorized to access resources of other cloud services.
 	//
 	// example:
 	//

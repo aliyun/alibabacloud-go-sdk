@@ -16,9 +16,9 @@ type iDeleteAutoCcWhitelistRequest interface {
 }
 
 type DeleteAutoCcWhitelistRequest struct {
-	// The ID of the instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DeleteAutoCcWhitelistRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP addresses that you want to manage. This parameter is a JSON string. This parameter is a JSON string. The string contains the following field:
+	// The details of the whitelist IP, expressed as a JSON string with the following structure.
 	//
-	// 	- **src**: the IP address. This field is required and must be of the string type.
+	// - **src: String*	- type, required, the whitelist IP.
 	//
 	// This parameter is required.
 	//

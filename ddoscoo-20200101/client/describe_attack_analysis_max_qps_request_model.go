@@ -18,7 +18,7 @@ type iDescribeAttackAnalysisMaxQpsRequest interface {
 }
 
 type DescribeAttackAnalysisMaxQpsRequest struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. Use the UNIX timestamp format. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,7 @@ type DescribeAttackAnalysisMaxQpsRequest struct {
 	// 1619798400
 	EndTime *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. Use the UNIX timestamp format. Unit: seconds.
 	//
 	// This parameter is required.
 	//

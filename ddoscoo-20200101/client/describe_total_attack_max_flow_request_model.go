@@ -20,35 +20,12 @@ type iDescribeTotalAttackMaxFlowRequest interface {
 }
 
 type DescribeTotalAttackMaxFlowRequest struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1659697200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IDs of the Anti-DDoS Proxy instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
-	//
 	// This parameter is required.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs in Resource Management. If you do not configure this parameter, the instance belongs to the default resource group.
-	//
-	// example:
-	//
-	// default
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-	//
-	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
-	//
+	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1669240800
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

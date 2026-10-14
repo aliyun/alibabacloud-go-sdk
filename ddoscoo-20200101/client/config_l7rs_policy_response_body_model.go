@@ -14,7 +14,7 @@ type iConfigL7RsPolicyResponseBody interface {
 }
 
 type ConfigL7RsPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

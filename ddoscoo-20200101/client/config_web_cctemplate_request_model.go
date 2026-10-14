@@ -18,9 +18,9 @@ type iConfigWebCCTemplateRequest interface {
 }
 
 type ConfigWebCCTemplateRequest struct {
-	// The domain name of the website.
+	// The domain name of the website service.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -28,21 +28,21 @@ type ConfigWebCCTemplateRequest struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The mode of the Frequency Control policy. Valid values:
+	// The defense mode for frequency control (HTTP flood mitigation). Valid values:
 	//
-	// 	- **default**: Normal
+	// - **default**: Normal.
 	//
-	// 	- **gf_under_attack**: Emergency
+	// - **gf_under_attack**: Emergency.
 	//
-	// 	- **gf_sos_verify**: Strict
+	// - **gf_sos_verify**: Strict.
 	//
-	// 	- **gf_sos_enhance**: Super Strict
+	// - **gf_sos_enhance**: Super Strict.
 	//
 	// This parameter is required.
 	//

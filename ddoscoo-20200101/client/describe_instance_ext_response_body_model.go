@@ -85,9 +85,9 @@ func (s *DescribeInstanceExtResponseBody) Validate() error {
 type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {
 	// The function plan. Valid values:
 	//
-	// 	- **0**: Standard
+	// - **0**: Standard
 	//
-	// 	- **1**: Enhanced
+	// - **1**: Enhanced
 	//
 	// example:
 	//
@@ -107,15 +107,15 @@ type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {
 	NormalBandwidth *int64 `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
 	// The type of the instance. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
+	// - **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
 	//
-	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
+	// - **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
 	//
-	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
+	// - **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
 	//
-	// 	- **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
+	// - **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
 	//
-	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+	// - **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
 	//
 	// example:
 	//

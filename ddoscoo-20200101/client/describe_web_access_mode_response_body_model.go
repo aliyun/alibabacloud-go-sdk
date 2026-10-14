@@ -16,7 +16,7 @@ type iDescribeWebAccessModeResponseBody interface {
 }
 
 type DescribeWebAccessModeResponseBody struct {
-	// An array consisting of the modes in which the website service is added.
+	// The access mode information of website businesses.
 	DomainModes []*DescribeWebAccessModeResponseBodyDomainModes `json:"DomainModes,omitempty" xml:"DomainModes,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,13 +66,13 @@ func (s *DescribeWebAccessModeResponseBody) Validate() error {
 }
 
 type DescribeWebAccessModeResponseBodyDomainModes struct {
-	// The mode in which the website service is added. Valid values:
+	// The access mode. Valid values:
 	//
-	// 	- **0**: A record
+	// - **0**: A record access
 	//
-	// 	- **1**: anti-DDoS mode
+	// - **1**: Anti-DDoS Proxy mode
 	//
-	// 	- **2**: origin redundancy mode
+	// - **2**: Back-to-origin mode
 	//
 	// example:
 	//

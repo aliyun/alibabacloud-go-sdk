@@ -14,7 +14,7 @@ type iDeleteAutoCcBlacklistResponseBody interface {
 }
 
 type DeleteAutoCcBlacklistResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeDDosEventMaxRequest interface {
 }
 
 type DescribeDDosEventMaxRequest struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,7 @@ type DescribeDDosEventMaxRequest struct {
 	// 1604073600
 	EndTime *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//

@@ -17,6 +17,8 @@ type iCreatePortRequest interface {
 	GetFrontendProtocol() *string
 	SetInstanceId(v string) *CreatePortRequest
 	GetInstanceId() *string
+	SetIpMode(v string) *CreatePortRequest
+	GetIpMode() *string
 	SetProxyEnable(v int64) *CreatePortRequest
 	GetProxyEnable() *int64
 	SetRealServers(v []*string) *CreatePortRequest
@@ -24,13 +26,13 @@ type iCreatePortRequest interface {
 }
 
 type CreatePortRequest struct {
-	// The port of the origin server. Valid values: **0*	- to **65535**.
+	// The origin server port. Valid values: **0*	- to **65535**.
 	//
 	// example:
 	//
 	// 55
 	BackendPort *string `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	// The forwarding port. Valid values: **0*	- to **65535**.
+	// The forward port. Valid values: **0*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +40,11 @@ type CreatePortRequest struct {
 	//
 	// 55
 	FrontendPort *string `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	// The type of the forwarding protocol. Valid values:
+	// The forwarding protocol type. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**: TCP protocol.
 	//
-	// 	- **udp**
+	// - **udp**: UDP protocol.
 	//
 	// This parameter is required.
 	//
@@ -52,16 +54,26 @@ type CreatePortRequest struct {
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-st21zbyq****
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
-	// An array that consists of the IP addresses of origin servers.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpMode     *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
+	// The traffic redirection switch. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
+	//
+	// example:
+	//
+	// 0
+	ProxyEnable *int64 `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	// The list of origin server IP addresses.
 	//
 	// This parameter is required.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
@@ -91,6 +103,10 @@ func (s *CreatePortRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreatePortRequest) GetIpMode() *string {
+	return s.IpMode
+}
+
 func (s *CreatePortRequest) GetProxyEnable() *int64 {
 	return s.ProxyEnable
 }
@@ -116,6 +132,11 @@ func (s *CreatePortRequest) SetFrontendProtocol(v string) *CreatePortRequest {
 
 func (s *CreatePortRequest) SetInstanceId(v string) *CreatePortRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreatePortRequest) SetIpMode(v string) *CreatePortRequest {
+	s.IpMode = &v
 	return s
 }
 

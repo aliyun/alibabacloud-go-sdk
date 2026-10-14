@@ -30,42 +30,66 @@ type iModifyWebCCRuleRequest interface {
 }
 
 type ModifyWebCCRuleRequest struct {
+	// The blocking type. Valid values:
+	//
+	// - **close**: block
+	//
+	// - **captcha**: bot detection
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// close
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// The number of access attempts from a single IP address. Valid values: **2*	- to **2000**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name of the website business.
+	//
+	// > The domain name must have a configured website business forwarding rule. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The detection duration. Valid values: **5*	- to **10800**. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The matching pattern. Valid values:
+	//
+	// - **prefix**: prefix match
+	//
+	// - **match**: exact match
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prefix
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The rule name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testrule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource group ID to which the Anti-DDoS Proxy instance belongs in the Resource Management product. The default value is empty, which indicates that the instance belongs to the default resource group.
+	//
 	// example:
 	//
 	// default
@@ -78,9 +102,9 @@ type ModifyWebCCRuleRequest struct {
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The check path.
+	// The detection path.
 	//
-	// >  You cannot modify the Uniform Resource Identifier (URI). The domain name of the website, the check path, and the rule name uniquely identify a rule.
+	// > The URI cannot be modified. A rule is uniquely identified by the domain name of the website business, the detection path, and the rule name.
 	//
 	// This parameter is required.
 	//
