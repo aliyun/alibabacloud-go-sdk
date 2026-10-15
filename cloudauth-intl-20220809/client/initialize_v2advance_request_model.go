@@ -84,6 +84,8 @@ type iInitializeV2AdvanceRequest interface {
 	GetMobile() *string
 	SetModel(v string) *InitializeV2AdvanceRequest
 	GetModel() *string
+	SetNeedMultiFaceCheck(v string) *InitializeV2AdvanceRequest
+	GetNeedMultiFaceCheck() *string
 	SetOcr(v string) *InitializeV2AdvanceRequest
 	GetOcr() *string
 	SetOcrValueStandard(v string) *InitializeV2AdvanceRequest
@@ -152,7 +154,10 @@ type InitializeV2AdvanceRequest struct {
 	// example:
 	//
 	// T
-	Authorize         *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	// example:
+	//
+	// {"BRA01001":"01","BRA01002":"01,02"}
 	AutoDocPageConfig *string `json:"AutoDocPageConfig,omitempty" xml:"AutoDocPageConfig,omitempty"`
 	// Specifies whether to enable automatic registration.
 	//
@@ -265,7 +270,10 @@ type InitializeV2AdvanceRequest struct {
 	// example:
 	//
 	// 9be7b7d0180041219e5ab03ac6dab5fb
-	ExperienceCode     *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	// example:
+	//
+	// N
 	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
 	// The face libraries to compare against.
 	//
@@ -378,7 +386,8 @@ type InitializeV2AdvanceRequest struct {
 	// example:
 	//
 	// PHOTINUS_LIVENESS
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	NeedMultiFaceCheck *string `json:"NeedMultiFaceCheck,omitempty" xml:"NeedMultiFaceCheck,omitempty"`
 	// Specifies whether to enable OCR. This is an input parameter for the IDV product.
 	//
 	// example:
@@ -545,6 +554,10 @@ type InitializeV2AdvanceRequest struct {
 	// Seq
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// Specifies whether to overwrite the existing face with the current face when the MerchantUserId already exists during automatic registration. Valid values: Y (overwrite) and N (do not overwrite and return a message indicating that the UserId already exists).
+	//
+	// example:
+	//
+	// N
 	UpdateFaceIfUserExists *string `json:"UpdateFaceIfUserExists,omitempty" xml:"UpdateFaceIfUserExists,omitempty"`
 	// When **DocType*	- is set to 01000000 (global passport), specifies whether to enable NFC verification.
 	//
@@ -718,6 +731,10 @@ func (s *InitializeV2AdvanceRequest) GetMobile() *string {
 
 func (s *InitializeV2AdvanceRequest) GetModel() *string {
 	return s.Model
+}
+
+func (s *InitializeV2AdvanceRequest) GetNeedMultiFaceCheck() *string {
+	return s.NeedMultiFaceCheck
 }
 
 func (s *InitializeV2AdvanceRequest) GetOcr() *string {
@@ -998,6 +1015,11 @@ func (s *InitializeV2AdvanceRequest) SetMobile(v string) *InitializeV2AdvanceReq
 
 func (s *InitializeV2AdvanceRequest) SetModel(v string) *InitializeV2AdvanceRequest {
 	s.Model = &v
+	return s
+}
+
+func (s *InitializeV2AdvanceRequest) SetNeedMultiFaceCheck(v string) *InitializeV2AdvanceRequest {
+	s.NeedMultiFaceCheck = &v
 	return s
 }
 

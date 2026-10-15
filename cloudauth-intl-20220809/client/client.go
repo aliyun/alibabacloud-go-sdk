@@ -4148,7 +4148,7 @@ func (client *Client) FaceDuplicationCheckIntl(request *FaceDuplicationCheckIntl
 
 // Summary:
 //
-// Server-side API for the international Face Guard service.
+// Provides the server-side API for international Face Guard.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -4208,7 +4208,7 @@ func (client *Client) FaceGuardRiskWithOptions(request *FaceGuardRiskRequest, ru
 
 // Summary:
 //
-// Server-side API for the international Face Guard service.
+// Provides the server-side API for international Face Guard.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -5433,6 +5433,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["Model"] = request.Model
 	}
 
+	if !dara.IsNil(request.NeedMultiFaceCheck) {
+		query["NeedMultiFaceCheck"] = request.NeedMultiFaceCheck
+	}
+
 	if !dara.IsNil(request.Ocr) {
 		query["Ocr"] = request.Ocr
 	}
@@ -5737,6 +5741,10 @@ func (client *Client) InitializeV2WithOptions(tmpReq *InitializeV2Request, runti
 
 	if !dara.IsNil(request.Model) {
 		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NeedMultiFaceCheck) {
+		query["NeedMultiFaceCheck"] = request.NeedMultiFaceCheck
 	}
 
 	if !dara.IsNil(request.Ocr) {

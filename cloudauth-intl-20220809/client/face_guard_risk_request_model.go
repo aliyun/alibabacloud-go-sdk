@@ -28,13 +28,13 @@ type FaceGuardRiskRequest struct {
 	//
 	// LMALL20******001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The device token obtained from the Face Guard SDK.
+	// The device token obtained through the Face Guard SDK.
 	//
 	// example:
 	//
 	// Tk9SSUQuMS*****************ZDNmNWY5NzQxOW1o
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// The merchant-defined unique business identifier, used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Make sure the value is unique.
+	// The custom unique business identifier on the merchant side, used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// example:
 	//

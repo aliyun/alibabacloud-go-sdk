@@ -81,6 +81,8 @@ type iInitializeRequest interface {
 	GetMobile() *string
 	SetModel(v string) *InitializeRequest
 	GetModel() *string
+	SetNeedMultiFaceCheck(v string) *InitializeRequest
+	GetNeedMultiFaceCheck() *string
 	SetOcr(v string) *InitializeRequest
 	GetOcr() *string
 	SetOcrValueStandard(v string) *InitializeRequest
@@ -149,6 +151,10 @@ type InitializeRequest struct {
 	// Y
 	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
 	// The automatic document classification configuration.
+	//
+	// example:
+	//
+	// {"BRA01001":"01","BRA01002":"01,02"}
 	AutoDocPageConfig *string `json:"AutoDocPageConfig,omitempty" xml:"AutoDocPageConfig,omitempty"`
 	// Specifies whether to enable automatic registration.
 	//
@@ -259,6 +265,10 @@ type InitializeRequest struct {
 	// 9be7b7d0180041219e5ab03ac6dab5fb
 	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
 	// Specifies whether to enable face attribute check.
+	//
+	// example:
+	//
+	// N
 	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
 	// The face libraries to compare against.
 	//
@@ -373,7 +383,8 @@ type InitializeRequest struct {
 	// example:
 	//
 	// PHOTINUS_LIVENESS
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	NeedMultiFaceCheck *string `json:"NeedMultiFaceCheck,omitempty" xml:"NeedMultiFaceCheck,omitempty"`
 	// Specifies whether to enable OCR. This is an input parameter for the IDV product.
 	//
 	// example:
@@ -543,6 +554,10 @@ type InitializeRequest struct {
 	// Seq
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// Specifies whether to overwrite the existing face with the current face when MerchantUserId already exists during automatic registration. Y: overwrite. N: do not overwrite and return a message indicating that the UserId already exists.
+	//
+	// example:
+	//
+	// N
 	UpdateFaceIfUserExists *string `json:"UpdateFaceIfUserExists,omitempty" xml:"UpdateFaceIfUserExists,omitempty"`
 	// Specifies whether to enable NFC verification when **DocType*	- is set to 01000000 (global passport). Valid values:
 	//
@@ -712,6 +727,10 @@ func (s *InitializeRequest) GetMobile() *string {
 
 func (s *InitializeRequest) GetModel() *string {
 	return s.Model
+}
+
+func (s *InitializeRequest) GetNeedMultiFaceCheck() *string {
+	return s.NeedMultiFaceCheck
 }
 
 func (s *InitializeRequest) GetOcr() *string {
@@ -983,6 +1002,11 @@ func (s *InitializeRequest) SetMobile(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetModel(v string) *InitializeRequest {
 	s.Model = &v
+	return s
+}
+
+func (s *InitializeRequest) SetNeedMultiFaceCheck(v string) *InitializeRequest {
+	s.NeedMultiFaceCheck = &v
 	return s
 }
 

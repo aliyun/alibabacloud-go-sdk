@@ -2387,7 +2387,7 @@ func (client *Client) FaceDuplicationCheckIntlWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Server-side API for the international Face Guard service.
+// Provides the server-side API for international Face Guard.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -3166,6 +3166,10 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 		query["Model"] = request.Model
 	}
 
+	if !dara.IsNil(request.NeedMultiFaceCheck) {
+		query["NeedMultiFaceCheck"] = request.NeedMultiFaceCheck
+	}
+
 	if !dara.IsNil(request.Ocr) {
 		query["Ocr"] = request.Ocr
 	}
@@ -3452,6 +3456,10 @@ func (client *Client) InitializeV2WithContext(ctx context.Context, tmpReq *Initi
 
 	if !dara.IsNil(request.Model) {
 		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NeedMultiFaceCheck) {
+		query["NeedMultiFaceCheck"] = request.NeedMultiFaceCheck
 	}
 
 	if !dara.IsNil(request.Ocr) {
