@@ -36,7 +36,7 @@ type TextTranslateResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies a single request.
+	// The request ID, which uniquely identifies a single API call.
 	//
 	// example:
 	//

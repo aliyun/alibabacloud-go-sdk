@@ -755,9 +755,7 @@ func (client *Client) DiduiAreaDeductionProWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Designed specifically for document translation. Supports translation between more than 400 language pairs (including bridged pairs) to handle multi-scenario, multi-page, and highly complex document translation. Scanned documents are not currently supported.
-//
-// Excels in the following areas:
+// Designed specifically for document translation. Supports translation between more than 400 language pairs (including bridged pairs) to handle multi-scenario, multi-page, and highly complex document translation. Scanned documents are not currently supported. Excels in the following areas:
 //
 // - Content accuracy: translation accuracy, parameter and unit accuracy.
 //
@@ -777,19 +775,19 @@ func (client *Client) DiduiAreaDeductionProWithContext(ctx context.Context, requ
 //
 // ## Common scenarios
 //
-// Cross-border e-commerce product manuals, contracts, agreements, business proposals, qualification documents, textbooks and courseware, and many other scenarios.
+// Cross-border e-commerce product manuals, contracts, agreements, business proposals, qualification documents, textbooks, courseware, and other scenarios.
 //
 // ## Functions and features
 //
-// - Supports PDF and Word formats. Supports source documents that contain multiple languages. For a detailed language list, see section 4.5.
+// - Supports PDF and Word formats. Supports source documents that contain multiple languages. For a detailed language list, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 //
-// - Supports translation of text within images in documents, as well as complex translation scenarios such as charts and special symbols.
+// - Supports translation of text within images in documents, as well as complex translation scenarios involving charts, special symbols, and more.
 //
 // - Supports high-fidelity layout restoration after translation.
 //
 // - A single PDF supports up to 100 pages. A single Word document supports up to 100 pages.
 //
-// - Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for brand name protection and similar scenarios. Simply pass the corresponding intervention glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+// - Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for brand name protection and similar scenarios. Simply pass the corresponding glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 glossary entries. If you need more, contact the platform for assistance.
 //
 // @param request - DocumentTranslateRequest
 //
@@ -845,51 +843,55 @@ func (client *Client) DocumentTranslateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// E-commerce Video Multiplication is an AI video service designed for product content production, covering video understanding, element replacement, quality verification, and result delivery. The product focuses on product and person consistency, detail restoration, conversion-oriented expression, and large-scale production. It supports targeted replacement of products or persons based on hit video templates while preserving the original actions, shot rhythm, and marketing structure to quickly generate multi-version content and reduce shooting, editing, and adaptation costs.
+// Creates an asynchronous task for e-commerce video variation generation, an AI video service for product content production that covers video understanding, element replacement, quality verification, and result delivery. The service focuses on product and person consistency, detail restoration, conversion expression, and large-scale production. It supports targeted replacement of products or persons based on popular video templates, quickly generating multiple content versions while retaining original actions, camera rhythms, and marketing structures to reduce shooting, editing, and adaptation costs.
 //
 // Description:
 //
-// ## **Product Introduction**
+// ## **Product introduction**
 //
-// E-commerce Video Multiplication is an AI video service designed for product content production, covering video understanding, element replacement, quality verification, and result delivery. The product focuses on product and person consistency, detail restoration, conversion-oriented expression, and large-scale production. It supports targeted replacement of products or persons based on hit video templates while preserving the original actions, shot rhythm, and marketing structure to quickly generate multi-version content and reduce shooting, editing, and adaptation costs.
+// E-commerce video variation generation is an AI video service for product content production that covers video understanding, element replacement, quality verification, and result delivery. The service focuses on product and person consistency, detail restoration, conversion expression, and large-scale production. It supports targeted replacement of products or persons based on popular video templates, quickly generating multiple content versions while retaining original actions, camera rhythms, and marketing structures to reduce shooting, editing, and adaptation costs.
 //
 // ## **Scenarios**
 //
-// - **Video asset multiplication:*	- Use an existing e-commerce video as a template and replace only the specified product or person while preserving the original shots, rhythm, and marketing expression. This is applicable to multi-SKU, multi-model, multi-region, and multi-version asset production.
+// - **Video asset variation generation:*	- Uses an existing e-commerce video as a template and replaces only specified products or persons in the video, preserving the original camera angles, rhythms, and marketing expressions as much as possible. This is suitable for producing assets with multiple SKUs, models, regions, and versions.
 //
-// - **New product launch with rapid asset generation:*	- For products launched in batches, reduce the need for live shooting, studio time, post-production editing, and repetitive production. Quickly generate new product video assets to help merchants shorten the cycle from discovering a hit video to scripting and publishing new content.
+// - **Quick asset generation for new products:*	- For newly launched products, this reduces the need for live-action shooting, studio setup, post-production editing, and repetitive production. It quickly deploys video assets for new products, helping merchants shorten the launch cycle from spotting a popular video to breaking down the script and shooting new content.
 //
-// - **Product presentation and selling point expression:*	- Applicable to apparel, beauty and personal care, food and beverages, home and daily essentials, 3C electronics, small appliances, and other products. Based on the selling point planning, presentation actions, and shot rhythm of the original video, generate presentation videos optimized for new product conversion.
+// - **Product explanation and selling point expression:*	- Suitable for products such as apparel, beauty and personal care, food and beverage, home and daily necessities, 3C digital products, and small home appliances. It can replicate the explanation structure, display actions, and camera rhythms based on the selling points of the original video to generate explanation videos tailored for the conversion of new products.
 //
-// - **Multi-selling-point and multi-version testing:*	- Quickly generate multiple versions based on different product selling points, target audiences, scripts, shots, and visual styles to support merchants in content testing and ad creative iteration.
+// - **Multi-selling point and multi-version testing:*	- Quickly generates multiple versions based on different product selling points, target audiences, scripts, camera angles, and visual styles. This supports merchants in conducting content testing and iterating on delivered assets.
 //
-// ## **Product Capabilities**
+// ## **Feature overview**
 //
-// ### **Core capabilities**
+// ### **Core features**
 //
-// Two replacement modes are supported:
+//   - **Supports two replacement modes:**
 //
-// - **Product replacement (product_replacement):*	- Retains the original video host identity, actions, scene, and selling structure while replacing the original product with the target product.
+//   - **Product replacement (**`product_replacement`**)**: Retains the original video host\\"s identity, actions, scene, and sales structure, and replaces the original product with the target product.
 //
-// - **Person replacement (person_replacement):*	- Retains the original video product, actions, scene, and selling structure while replacing the on-screen person with the target person from a reference image or description.
+//   - **Person replacement (**`person_replacement`**)**: Retains the original product, actions, scene, and sales structure, and replaces the person on camera with the target person from a reference image or description.
 //
-// - **Fully automated end-to-end generation with zero prompt threshold:*	- Simply provide a reference video and target product image or person image. The system automatically completes the entire pipeline including video understanding, script planning, storyboard design, first-frame generation, and video synthesis.
+//   - **Supports two generation modes:**
 //
-// - **Product understanding and information structuring:*	- Identifies product category, appearance, material, color, structure, and key components, and combines merchant-provided titles, attributes, and selling points to generate usable video expression information.
+//   - **Reference generation (**`reference`**)**: 1:1 replication. Uses the original video as a complete reference to automatically generate a new video with the same duration as the original video. It retains the original script, storyboard, actions, scene, and rhythm, and only performs targeted replacement of specified content such as persons or products.
 //
-// - **Template video element replacement:*	- Supports replacing products or persons within the authorized scope, with configurable replacement and protection ranges to minimize changes in non-target areas.
+//   - **Rebuild generation (**`rebuild`**)**: Breaks down the script, storyboard, and key elements of the original video, retains only core content such as specified persons or products, and then redesigns and generates a new video. It is not limited by the duration of the original video and supports inputting a target duration.
 //
-// - **Product subject consistency:*	- Maintains stable product shape, color, texture, pattern, packaging, and logo across different shots, angles, actions, and scenes.
+//   - **Fully automated end-to-end generation with zero prompt engineering required**: Only requires the reference video and target product or person images. The system automatically completes the entire process of video understanding, script planning, storyboard design, first-frame generation, and video synthesis.
 //
-// - **Product fidelity:*	- Multi-round VL quality inspection locks product state (color, texture, structure, and print) throughout the process to prevent product feature drift.
+//   - **Product understanding and information structuring**: Identifies product categories, appearance, materials, colors, structures, and key components, and combines them with the titles, attributes, and selling points provided by the merchant to generate usable video expression information.
 //
-// - **Strength category — Apparel:*	- Faithfully restores apparel details, focusing on silhouette, wrinkles, drape, fabric texture, buttons, zippers, prints, and accessories to reduce clipping, deformation, texture loss, and detail anomalies.
+//   - **Template video element replacement**: Supports replacing products or persons within the authorized scope, and defines the replacement scope and protection scope to minimize changes in non-target areas.
 //
-// - **Selling point script and storyboard replication:*	- Replicates the selling point planning, video structure, shot sequence, presentation actions, voiceover content, and closing style of the original video.
+//   - **Product subject consistency**: Maintains the stability of the product\\"s shape, color, texture, pattern, packaging, and logo as much as possible across different camera angles, perspectives, actions, and scenes.
 //
-// - **Commercial model adaptation:*	- Supports matching model appearance and presentation style based on product style, silhouette, target audience, and market demand.
+//   - **Product fidelity**: Multi-round VL quality inspection locks the product state (color, texture, structure, print) throughout the process to prevent product feature drift.
 //
-// - **Quality verification and result feedback:*	- Performs multi-dimensional checks on product subject, person, apparel, text, frame completeness, audio, and overall usability, and outputs result information for manual review.
+//   - **Selling point script and storyboard replication**: Replicates the selling point planning, video structure, camera sequence, display actions, voiceover content, and ending style based on the original video.
+//
+//   - **Commercial model adaptation**: Supports matching the corresponding model image and display method based on the product style, fit, target audience, and market demand.
+//
+//   - **Quality verification and result feedback**: Performs multi-dimensional checks on the product subject, person, clothing, text, image integrity, audio, and overall usability, and outputs result information for manual review.
 //
 // @param tmpReq - EcomVideoRecreationRequest
 //
@@ -1651,13 +1653,13 @@ func (client *Client) ImageRemoveWithContext(ctx context.Context, tmpReq *ImageR
 
 // Summary:
 //
-// Image Translation Plus is designed specifically for e-commerce images. It uses a Mixture of Experts (MOE) architecture and delivers superior translation accuracy for multiple minority languages compared to the Lite and Pro editions. We recommend using it for the following 12 language pairs, with more language pairs to be supported in the future.
+// Image Translation PLUS is designed specifically for e-commerce images and uses a Mixture of Experts (MOE) architecture. Compared to the Image Translation Lite and Pro editions, it delivers superior translation accuracy for multiple minority languages. We recommend using it for the following 12 language pairs, with more language pairs to be supported in the future.
 //
 // Description:
 //
 // ## Product Introduction
 //
-// Image Translation Plus is designed specifically for e-commerce images. It uses a Mixture of Experts (MOE) architecture and delivers superior translation accuracy for multiple minority languages compared to the Lite and Pro editions. We recommend using it for the following 8 language pairs, with more language pairs to be supported in the future.
+// Image Translation PLUS is designed specifically for e-commerce images and uses a Mixture of Experts (MOE) architecture. Compared to the Image Translation Lite and Pro editions, it delivers superior translation accuracy for multiple minority languages. Use it for the following 12 language pairs. More language pairs will be supported in the future.
 //
 // Supported language pairs:
 //
@@ -1701,7 +1703,7 @@ func (client *Client) ImageRemoveWithContext(ctx context.Context, tmpReq *ImageR
 //
 //   - **Brand name protection**: Allows you to choose whether to translate brand names on images. This helps protect brand name information from being translated.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping text untranslated (ABC-ABC), specifying a translation (ABC-DEF), or removing text (ABC-empty value). This is commonly used for brand name protection and similar scenarios. Pass the corresponding intervention glossary ID when calling the API operation. This meets your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping text untranslated (ABC→ABC), specifying a translation (ABC→DEF), or removing text (ABC→empty value). This is commonly used for brand name protection and similar scenarios. Pass the corresponding intervention glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
 // @param request - ImageTranslationPlusRequest
 //
@@ -1769,27 +1771,27 @@ func (client *Client) ImageTranslationPlusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Image Translation Pro is designed for e-commerce images. It integrates multimodal foundation model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language directions (including bridged directions).
+// Translates images using the Pro edition, which is designed for e-commerce images. This edition integrates multimodal foundation model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. More than 400 language directions are supported, including bridged directions.
 //
 // Description:
 //
 // ## Product Introduction
 //
-// Image Translation Pro is designed for e-commerce images. It integrates multimodal foundation model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language directions (including bridged directions).
+// The Image Translation Pro edition is designed for e-commerce images. It integrates multimodal foundation model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. More than 400 language directions are supported, including bridged directions.
 //
 // ## Scenarios
 //
 // E-commerce product images, marketing images, and images for various other scenarios.
 //
-// ## Features
+// ## Functions and features
 //
-// - **Product subject protection**: Specify whether to translate text on the product subject. This helps you protect subject information from being translated, such as embedded information like product names.
+// - **Product subject information protection**: You can choose whether to translate text on the product subject, which helps protect subject information such as embedded product names from being translated.
 //
-// - **Post-translation editing**: Specify whether to return layout information such as text position, font, and color. This can be used for secondary editing when integrated with an image editor. The editor SDK package is not yet available. Follow platform notifications for updates.
+// - **Post-translation editing**: You can choose whether to return layout information such as text position, font, and color. This information can be used for secondary editing when integrated with an image editor. The editor SDK package is not yet available. Follow platform notifications for updates.
 //
-// - **Brand name protection**: Specify whether to translate brand names on images. This helps you protect brand name information from being translated.
+// - **Brand name protection**: You can choose whether to translate brand names on images, which helps protect brand name information from being translated.
 //
-// - **Translation intervention**: Customize translation results, including do-not-translate (ABC→ABC), specified translation (ABC→DEF), and remove text (ABC→empty value). This is commonly used for brand name protection and similar scenarios. Pass the corresponding intervention glossary ID when calling the API. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+// - **Translation intervention**: You can customize translation results, including keeping text untranslated (ABC→ABC), specifying translations (ABC→DEF), or removing text (ABC→empty value). This is commonly used for brand name protection and similar scenarios. Pass the corresponding intervention glossary ID when calling the API. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
 // - <props="china"> **Image editor integration**: For more information, see [Image Translation Editor Protocol](https://www.alibabacloud.com/help/en/document_detail/3042647.html).
 //
@@ -1863,13 +1865,13 @@ func (client *Client) ImageTranslationProWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Image Translation is designed specifically for e-commerce images. It supports more than 400 language directions (including bridging), accurately processes complex text layouts within images, and ensures that translated content matches the image content. This helps e-commerce platforms and developers easily achieve multilingual conversion and rendering of image content. The product also returns layer information such as text position, font, and color within images, which facilitates secondary editing of translation results through an image editor.
+// Translates text in images with support for over 400 language directions (including bridging). This product is designed specifically for e-commerce images, accurately handling complex text layouts within images and ensuring that translated content matches the image context. It helps e-commerce platforms and developers easily achieve multilingual conversion and rendering of image content. The product also returns layer information such as text position, font, and color, enabling secondary editing of translation results through an image editor.
 //
 // Description:
 //
 // # 1. Product Introduction
 //
-// Image Translation is designed specifically for e-commerce images. It supports more than 100 language directions (including bridging), accurately processes complex text layouts within images, and ensures that translated content matches the image content. This helps e-commerce platforms and developers easily achieve multilingual conversion and rendering of image content. The product also returns layer information such as text position, font, and color within images, which facilitates secondary editing of translation results through an image editor.
+// The image translation product is designed specifically for e-commerce images, supporting over 400 language directions (including bridging). It accurately handles complex text layouts within images and ensures that translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and rendering of image content. The product also returns layer information such as text position, font, and color, enabling secondary editing of translation results through an image editor.
 //
 // # 2. Common scenarios
 //
@@ -1877,15 +1879,15 @@ func (client *Client) ImageTranslationProWithContext(ctx context.Context, reques
 //
 // # 3. Features
 //
-//   - **Product area protection**: You can choose whether to translate text on the product area of an image. This helps protect product area information from being translated, such as embedded product names.
+//   - **Product subject information protection**: Allows you to choose whether to translate text on the product subject, helping protect subject information from being translated and avoiding translation of embedded information such as product names.
 //
-//   - **Brand name protection**: You can choose whether to translate brand names on images. This helps protect brand name information from being translated.
+//   - **Brand name protection**: Allows you to choose whether to translate brand names on images, helping protect brand name information from being translated.
 //
-//   - **Secondary editing after translation (layer information)**: You can choose whether to return layer information such as text position, font, and color. This information can be used to connect to an image editor for secondary editing of translation results. For the release progress of the editor SDK package, follow platform notifications.
+//   - **Secondary editing after translation (layer information)**: Allows you to choose whether to return layer information such as text position, font, and color, which can be used to connect to an image editor for secondary editing of translation results. Follow platform notifications for updates on the editor SDK package release.
 //
-//   - **Translation intervention**: You can customize translation results, including keeping text untranslated (ABC-ABC), specifying translations (ABC-DEF), or removing text (ABC-empty value). This is commonly used for scenarios such as brand name protection. Simply pass the corresponding intervention glossary ID when calling the API operation. This meets your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//   - **Translation intervention support**: Allows you to customize translation results, including no translation (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for brand term protection and similar scenarios. Simply pass the corresponding intervention glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 intervention terms. Contact the platform if you need more.
 //
-//   - **Image editor integration**: For more information, see [Image Translation editor protocol](https://www.alibabacloud.com/help/en/document_detail/3042647.html).
+// <props="china">	- **Image editor integration support**: For more information, see [Image translation editor protocol](https://www.alibabacloud.com/help/en/document_detail/3042647.html).
 //
 // @param request - ImageTranslationStandardRequest
 //
@@ -2179,6 +2181,70 @@ func (client *Client) MerchandisePlacementDetectionWithContext(ctx context.Conte
 
 // Summary:
 //
+// Detects product displays in photos of shelves, endcaps, freezers, display tables, and dump bins by using product SKU recognition and multimodal large model grounding. It aggregates product locations by SKU and supplements the results with visible single-item grounding and short names to facilitate product location display, display inventory, and subsequent distribution verification in business systems.
+//
+// Description:
+//
+// ## Scenarios
+//
+// - Display product inventory: Aggregates recognized product bounding boxes by SKU for business system statistics.
+//
+// - Distribution list verification: Compares the recognized SKU list with the target list on the business side.
+//
+// - Single-item location review: Assists in checking recognition results by combining product bounding boxes and visible names.
+//
+// ## Features
+//
+// - Aggregation by SKU: Aggregates multiple Boxes for the same SkuId in Products, and skuIds returns a deduplicated list of SKU codes.
+//
+// - Supplementary single-item grounding: The multimodal model individually grounds recognizable sales packages and provides confirmable short names.
+//
+// - Independent use of two result sets: Products comes from SKU recognition, and grounding comes from supplementary grounding. Grounding does not return SKU codes and does not guarantee item-by-item correspondence with Products.
+//
+// - Supports single HTTPS image input. Supplementary grounding returns up to 12 targets, each containing a category, a bounding box, and visible text of up to 24 characters. The coverage field indicates whether the grounding is complete.
+//
+// @param request - MerchandisePlacementDetectionLiteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MerchandisePlacementDetectionLiteResponse
+func (client *Client) MerchandisePlacementDetectionLiteWithContext(ctx context.Context, request *MerchandisePlacementDetectionLiteRequest, runtime *dara.RuntimeOptions) (_result *MerchandisePlacementDetectionLiteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MerchandisePlacementDetectionLite"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MerchandisePlacementDetectionLiteResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Detects the positions and names of visible products in an image based on a dedicated visual model. The product supports default recognition rules for the Genki Forest business type and custom rules provided by the invoker. It outputs per-product positions and names, applicable to beverage display inspection and product location display.
 //
 // Description:
@@ -2241,6 +2307,262 @@ func (client *Client) MerchandisePlacementDetectionProWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &MerchandisePlacementDetectionProResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Detects display price tags based on price tag recognition and multimodal large model localization, extracting product information, selling prices, original prices, and locations, while providing visible bounding boxes for paper price tags, electronic price tags, and promotional price signs for store price collection, price tag inspection, and business-side price verification.
+//
+// Description:
+//
+// ## Scenarios
+//
+// - Store price collection: Reads the recognized selling prices and available original prices of price tags.
+//
+// - Price execution verification: Compares the recognized prices with the business-side price list.
+//
+// - Manual price tag review: Locates paper, electronic, and promotional price tags to facilitate reviewing the original images.
+//
+// ## Features
+//
+// - Structured price output: Returns the product name, code, price, and location item by item. Prices are retained as strings.
+//
+// - Multi-type price tag localization: Covers common paper price tags, electronic price tags, and promotional signs with clear selling prices.
+//
+// - Original text and location-assisted review: Prioritizes extracting clear selling prices from located text, leaving it empty if unreadable. Supplementary localization does not infer that a price tag necessarily corresponds to a specific SKU based on its location.
+//
+// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets, each containing a category, a bounding box, and up to 24 characters of visible text, and indicates whether the localization is complete through coverage.
+//
+// @param request - MerchandisePriceTagDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MerchandisePriceTagDetectionResponse
+func (client *Client) MerchandisePriceTagDetectionWithContext(ctx context.Context, request *MerchandisePriceTagDetectionRequest, runtime *dara.RuntimeOptions) (_result *MerchandisePriceTagDetectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MerchandisePriceTagDetection"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MerchandisePriceTagDetectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Detects store displays based on display scene recognition and holistic positioning powered by multimodal large models. This product identifies display areas such as shelves, refrigerators, and floor displays, and outputs available scene names, locations, and display metrics. It also provides overall facility bounding boxes, making it suitable for display facility inspection, area visualization, and display metric verification.
+//
+// Description:
+//
+// ## Scenarios
+//
+// - Display facility inspection: identifies facilities such as shelves, endcaps, floor displays, upright refrigerators, and chest freezers.
+//
+// - Display metric verification: reads active metrics such as proportion, purity, and plumpness for further evaluation by business systems.
+//
+// - Display area visualization: displays area locations and overall facility bounding boxes on the original image.
+//
+// ## Features
+//
+// - Scene structured output: returns scene names, center points, area contours, and active metrics.
+//
+// - Holistic facility positioning: uses one bounding box for an independent facility or floor display, which is suitable for overall area review.
+//
+// - Retains two types of coordinates: the positions in scenes retain the original normalization coordinates of the recognition service, while grounding uses 0–1000 integer bounding boxes.
+//
+// - Supports a single HTTPS image as input. The supplementary positioning returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the positioning is complete.
+//
+// @param request - MerchandiseSceneDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MerchandiseSceneDetectionResponse
+func (client *Client) MerchandiseSceneDetectionWithContext(ctx context.Context, request *MerchandiseSceneDetectionRequest, runtime *dara.RuntimeOptions) (_result *MerchandiseSceneDetectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MerchandiseSceneDetection"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MerchandiseSceneDetectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Reviews images of milk powder can bottom codes by using recapture detection and multimodal large model-based element localization. The service determines whether an uploaded photo is recaptured and localizes visible milk powder products, can bottoms, and bottom code areas. It is suitable for milk powder channel inspections, can bottom code photo reviews, and manual verifications.
+//
+// Description:
+//
+// ## Features
+//
+// - Recapture binary classification: isFake=true indicates a recapture, and false indicates a non-recapture. Element localization is performed for both results.
+//
+// - Milk powder subject and bottom code localization: Prioritizes the localization of the milk powder subject. Adds corresponding bounding boxes when the can bottom, spray code, batch code, or traceability code areas are clear.
+//
+// - Visible information output: Outputs only confirmed short names or text without guessing blurred code values. Localization results do not change the recapture conclusion.
+//
+// - Supports a single HTTPS image input. The supplementary localization returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the localization is complete.
+//
+// ## Scenarios:
+//
+// - Can bottom code photo review: Determines whether a photo of a milk powder can bottom code has a recapture risk.
+//
+// - Milk powder product inspection: Localizes canned, boxed, or bagged milk powder, as well as clearly visible can bottoms and bottom codes.
+//
+// - Review result playback: Displays target bounding boxes on the original image to assist personnel in verifying the photo content.
+//
+// @param request - MilkPowderCanBottomCodeRephotographyDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MilkPowderCanBottomCodeRephotographyDetectionResponse
+func (client *Client) MilkPowderCanBottomCodeRephotographyDetectionWithContext(ctx context.Context, request *MilkPowderCanBottomCodeRephotographyDetectionRequest, runtime *dara.RuntimeOptions) (_result *MilkPowderCanBottomCodeRephotographyDetectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MilkPowderCanBottomCodeRephotographyDetection"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MilkPowderCanBottomCodeRephotographyDetectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Reviews infant formula carton code images based on recapture detection and element localization using multimodal foundation models. It targets photos of infant formula products, outer cartons, and carton codes captured during channel inspections. It determines whether images are non-recaptured, recaptured, or suspected recaptures, and localizes visible infant formula products, outer cartons, and code regions to provide a structured basis for image review and manual verification.
+//
+// Description:
+//
+// ## Features
+//
+// - Three-state recapture detection: When photoStatus is 0, 1, or 2, it indicates non-recapture, recapture, or suspected recapture, respectively. The isFake, isSuspect, and score fields are also returned.
+//
+// - Subject and code area grounding: Prioritizes the grounding of individual milk powder products and outer boxes, and supplements clear box codes, barcodes, and QR code areas. The milk powder subject can still be grounded even if no box code is present.
+//
+// - Result coordination: Element grounding supplements visible targets without changing the recapture detection conclusion. It does not decode QR codes or provide product authenticity verification.
+//
+// - Supports a single HTTPS image as input. The supplementary grounding returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the grounding is complete.
+//
+// ## Scenarios
+//
+// - Box code photo review: Checks whether milk powder outer box photos uploaded by stores or channels carry recapture risks.
+//
+// - Milk powder display inspection: Locates visible individual milk powder products, full boxes, and clear code areas in photos.
+//
+// - Suspected sample review: Filters images that require manual verification based on the suspected status, algorithm score, and bounding boxes.
+//
+// @param request - MilkPowderCartonCodeRephotographyDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MilkPowderCartonCodeRephotographyDetectionResponse
+func (client *Client) MilkPowderCartonCodeRephotographyDetectionWithContext(ctx context.Context, request *MilkPowderCartonCodeRephotographyDetectionRequest, runtime *dara.RuntimeOptions) (_result *MilkPowderCartonCodeRephotographyDetectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MilkPowderCartonCodeRephotographyDetection"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MilkPowderCartonCodeRephotographyDetectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2327,25 +2649,7 @@ func (client *Client) PackageWeightSizeCheckWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Analyzes pet excrement images using a pet multimodal model building product. Supports uploading pet excrement images, determines by default whether excrement is present in the image, locates and performs categorization on each visible excrement area, and returns model-generated text containing the categorization results. The invoker can also optionally provide a user prompt and a system prompt to customize image analysis requirements and response format.
-//
-// Applicable scenarios:
-//
-// 1. Excrement image analysis: Upload pet excrement images for analysis using the default method.
-//
-// 2. Observation record organization: Combine multiple excrement images to assist in organizing visible features and observation records.
-//
-// 3. Custom image-text analysis: Provide a user prompt to specify the image content to focus on and the analysis requirements.
-//
-// Description:
-//
-// 1. Multi-image input: image_url is a required array of HTTPS image URLs.
-//
-// 2. Default excrement analysis: If user_prompt is not specified or is an empty string, the system determines whether excrement is present and outputs the location, urine clump/feces category, and subcategory for each region.
-//
-// 3. Custom analysis: user_prompt and system_prompt are both optional. You can specify analysis requirements and system prompts separately. When submitting custom prompts, use values that comply with JSON string escaping rules.
-//
-// 4. Text result response: result is always a String. Even if the model text itself is JSON, it is not automatically converted to an object.
+// 宠物健康分析
 //
 // @param tmpReq - PetHealthAnalysisRequest
 //
@@ -3011,6 +3315,70 @@ func (client *Client) SizeChartExtractWithContext(ctx context.Context, tmpReq *S
 
 // Summary:
 //
+// Reviews store photos based on storefront scene recognition and multimodal large model element localization. It outputs storefront scene classifications and confidence details, and localizes storefronts, signboards, entrances, and business signs. It is applicable to store data collection, storefront photo classification, and inspection reviews.
+//
+// Description:
+//
+// ## Common scenarios
+//
+// - Storefront photo classification: Distinguishes storefront-related photos from non-storefront photos.
+//
+// - Store data verification: Localizes signboards and entrances, and extracts clear and readable short text.
+//
+// - Multi-store photo review: Localizes visible storefronts and signs of adjacent stores separately.
+//
+// ## Features
+//
+// - Scene classification and details: Returns the scenes string array and classification details. Non-storefront photos are also valid classification results.
+//
+// - Storefront key element localization: Covers storefronts, signboards, store entrances, and business-related signs.
+//
+// - Readable text extraction: Extracts only clear short text. It does not infer business status based on whether the door is open or closed, and does not infer addresses or store ownership.
+//
+// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets, each containing a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the localization is complete.
+//
+// @param request - StorefrontSceneRecognitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StorefrontSceneRecognitionResponse
+func (client *Client) StorefrontSceneRecognitionWithContext(ctx context.Context, request *StorefrontSceneRecognitionRequest, runtime *dara.RuntimeOptions) (_result *StorefrontSceneRecognitionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StorefrontSceneRecognition"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StorefrontSceneRecognitionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates product detail page assets automatically based on a multimodal large language model (MLLM) and structured image-text extraction, designed for product detail page asset completion scenarios on e-commerce platforms and for brand merchants. The caller pushes product information to be queried (product ID, title, brand, main image, and shop name). The service automatically locates matching products and performs consistency verification, then extracts size information and product attributes from the matching product details, and renders them into size charts and attribute charts (SVG) that can be directly used on detail pages. The service also returns structured detail copy classifications and processing notes.
 //
 // @param request - SubmitProductMatchRequest
@@ -3165,47 +3533,51 @@ func (client *Client) TextCorrectWithContext(ctx context.Context, request *TextC
 
 // Summary:
 //
-// Maas-MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 400 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for 31 languages in query phrases and 35 languages in general scenarios. If you do not specify a source language, automatic language detection is performed.
+// Maas-MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 400 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for query phrases in 31 languages and general scenarios in 35 languages. If you do not specify a source language, automatic detection is performed.
 //
 // Description:
 //
 // ## Product Introduction
 //
-// Marco MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 100 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for 24 languages. If you do not specify a source language, automatic language detection is performed.
+// Maas-MT is an e-commerce translation model trained on over 1 billion\\+ high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 400 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for query phrases in 31 languages and general scenarios in 35 languages. If you do not specify a source language, automatic detection is performed.
 //
 // ## Common scenarios
 //
-// - Product titles: Marco MT large model translation accurately translates phrases, keywords, and trending terms in product titles into the target language, improving product visibility on e-commerce platforms.
+// - Product titles: Maas-MT large model translation accurately translates phrases, keywords, and trending terms in product titles into the target language, improving product visibility on e-commerce platforms.
 //
-// - Product descriptions: Product descriptions are typically long with diverse and complex formatting. Marco MT large model translation supports long text translation and HTML formatting, delivering excellent translation quality and format preservation.
+// - Product descriptions: Product descriptions are typically long with diverse and complex formatting. Maas-MT large model translation supports long text translation and HTML formatting, delivering excellent translation quality and format preservation.
 //
-// - Product attributes: Product attribute terms are typically short and may contain e-commerce-specific terms such as model numbers and specifications.
+// - Product attributes: Product attribute terms are short and may contain e-commerce-specific terms such as model numbers and specifications.
 //
-// - Customer service conversations: In customer service scenarios, Marco MT optimizes issues such as missing context and typos, and supports polite expressions for certain language directions.
+// - Customer service conversations: In customer service scenarios, Maas-MT optimizes issues such as missing context and typos, and supports polite expressions for certain language directions.
 //
-// Marco MT large model translation can also be used for general-purpose translation scenarios such as office work, meetings, and daily conversations.
+// Maas-MT large model translation can also be used for general-purpose translation scenarios such as office work, meetings, and daily conversations.
 //
 // ## Functions and features
 //
 // - **Supported language directions*	-
 //
-// Marco MT large model translation supports mutual translation among more than 100 languages and language detection for 24 languages. For supported language directions, see [Language direction mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+// Maas-MT large model translation supports mutual translation among more than 400 languages and language detection for query phrases in 31 languages and general scenarios in 35 languages.
+//
+// <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html)
+//
+// <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping)
 //
 // - **Ultra-low hallucination rate and high-speed inference*	-
 //
-// Marco MT large model translation is a large language model with preference alignment for translation scenarios. Compared with general-purpose large language models, it provides faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
+// Maas-MT large model translation is a large language model with preference alignment for translation scenarios. Compared with general-purpose large language models, it delivers faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
 //
-// - **Supported text format types*	-
+// - **Supported text format types for translation*	-
 //
 // Currently, text and html text types are supported.
 //
 // - **Translation intervention support*	-
 //
-// Custom translation results are supported, including do-not-translate (ABC→ABC), specified translation (ABC→DEF), and skip translation (ABC→empty value). This is commonly used for scenarios such as brand name protection. Simply pass the corresponding intervention glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+// Custom translation results are supported, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for scenarios such as brand name protection. Simply pass the corresponding intervention glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
 // ## Translation quality comparison
 //
-// | **Source text*	- | **Aidge translation*	- | **Other translation product 1*	- | **Other translation product 2*	- | **Aidge translation advantage*	- |
+// | **Source text*	- | **Aidge translation*	- | **Other translation product 1*	- | **Other translation product 2*	- | **Aidge translation advantages*	- |
 //
 // |----------|---------------|-----------------------|-----------------------|---------------------|
 //
@@ -3213,7 +3585,7 @@ func (client *Client) TextCorrectWithContext(ctx context.Context, request *TextC
 //
 // | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable segmentation |
 //
-// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more accurate product subject expression as "key bag" rather than "keychain", avoiding ambiguity about the product subject in other translations |
+// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more accurate product subject description. The translation correctly identifies the product as a "key bag" rather than a "keychain", avoiding ambiguity present in other translations.
 //
 // @param tmpReq - TextTranslateRequest
 //
@@ -3287,41 +3659,41 @@ func (client *Client) TextTranslateWithContext(ctx context.Context, tmpReq *Text
 
 // Summary:
 //
-// The E-commerce AI Video Generation Agent is designed for e-commerce merchants and platforms. Based on product main images, titles, selling points, and other information, it automatically generates 5–30 second product showcase short videos, helping customers efficiently produce and distribute e-commerce content. The product supports multiple resolution outputs such as 720P and 1080P, supports both quick single-product calls and multi-product batch generation, and accommodates both daily operations and large-scale product content production needs. Currently, it covers all apparel categories (tops, pants, skirts, suits, underwear, swimwear, etc.) and is gradually expanding to skincare, cosmetics, food and beverages, home appliances, and other core e-commerce categories.
+// The e-commerce AI video generation agent is designed for e-commerce merchants and platforms. Based on product main images, titles, and selling points, it automatically generates 5- to 30-second product showcase short videos to help customers efficiently produce and distribute e-commerce content. The product supports multiple resolution outputs such as 720P and 1080P. You can invoke single products quickly and generate multiple products in batches, meeting the needs of daily operations and large-scale product content production. It currently overwrites all clothing categories (tops, pants, skirts, suits, underwear, swimwear, etc.) and is gradually expanding to core e-commerce categories such as skincare, cosmetics, food and beverages, and home appliances.
 //
 // Description:
 //
 // # Scenarios
 //
-// - Sellers/platforms batch-generate product short videos: Supports multiple video aspect ratios and sizes (3:4, 9:16), suitable for product detail page video slots, product homepage displays, information feed placements, short video content marketing, campaign material, and other scenarios.
+// - Batch generation of product short videos for sellers and platforms: Supports multiple video aspect ratios and sizes (3:4, 9:16), adapting to product detail page video slots, product homepage displays, information feed placements, short video promotions, and event venue materials.
 //
-// - New product launches with rapid initial video material generation: When merchants have a large number of new products to list, they only need to upload product images, product titles, and other basic information to quickly generate product showcase videos, model try-on videos, voiceover explanation videos, and other content, helping merchants rapidly complete material preparation during the launch phase.
+// - Quick generation of the first batch of video materials for new product launches: When merchants have a large number of new products to launch, they only need to upload basic information such as product images and titles to quickly generate product showcase videos, model wearing videos, and spoken explanation videos, helping merchants quickly complete material deployment during the launch phase.
 //
-// - High-fidelity apparel display: Generates model showcase videos based on product main images that closely resemble real commercial photography, with key optimizations for silhouette accuracy, fabric texture preservation, color fidelity, and consistent detail stability. Supports common e-commerce display methods such as garment try-on, turning, walking, close-up shots, and multi-angle switching.
+// - High-fidelity clothing display: Generates model display videos that are closer to real commercial shooting effects based on product main images, focusing on optimizing capabilities such as pattern restoration, fabric texture retention, accurate color presentation, and stable and consistent details. It supports common e-commerce display methods such as wearing, turning, walking, close-up shots, and multi-angle switching.
 //
-// - High-quality commercial photography models: Includes 20+ built-in target audience model libraries covering plus-size women, plus-size men, swimwear, youthful style, smart casual commuter, young casual, business menswear, sports and fitness, and other body types, skin tones, and ethnicities. Supports multiple commercial photography presentation methods such as standing poses, side views, walking displays, and detail close-ups.
+// - Generation of high-quality commercial shooting models: Built-in target audience model library, covering plus-size women, plus-size men, swimwear, girl style, light mature commuting, youth casual, business menswear, sports and fitness, and other body types, skin colors, and races. It supports various commercial shooting expressions such as standing display, side display, walking display, and partial close-ups.
 //
-// - Standard product explanation and other high-frequency e-commerce scenarios: Suitable for standardized product categories such as skincare, cosmetics, personal care small appliances, food and beverages, household cleaning products, and 3C digital products. Quickly generates product explanation videos based on product main images, titles, selling point information, and explanation scripts.
+// - High-frequency e-commerce scenarios such as standard product explanations: Applicable to standardized product categories such as skincare, cosmetics, personal care small appliances, food and beverages, home cleaning daily necessities, and 3C digital products. It can quickly generate product explanation videos based on product main images, titles, selling point information, and explanation scripts.
 //
-// - Multi-product and multi-selling-point testing to improve placement efficiency: For information feed advertising, short video placement, and content marketing scenarios, quickly generates multiple versions of video materials, enabling businesses to cost-effectively validate the conversion performance of different selling points and presentation formats, improving placement ROI.
+// - Multi-product and multi-selling point testing to improve delivery efficiency: For information feed advertising, short video delivery, and content promotion scenarios, it can quickly generate multiple versions of video materials, making it easy for enterprises to verify the conversion effects of different selling points and presentation forms at a low cost, and improve delivery ROI.
 //
 // # Features
 //
-// - Fully automated end-to-end batch generation with zero prompt threshold: Callers only need to provide product image URLs and titles. The system automatically completes the entire process from product understanding, storyboard planning, to video generation, without manual prompt writing, template selection, or repeated parameter tuning. Built-in multi-agent capabilities for product understanding, visual quality inspection, script planning, and directing/camera movement significantly lower the barrier to use.
+// - Fully automatic end-to-end batch generation with zero prompt threshold: Callers only need to pass in the product image URL and title, and the system automatically completes the entire process from product understanding, storyboard planning to video generation, without the need to manually write prompts, select templates, or repeatedly adjust parameters. Built-in multiple agents such as product understanding, image quality inspection, script planning, and director camera movement greatly lower the threshold for use.
 //
-// - Highly stable generation with low waste rate: Uses a deterministic generation process and multi-layer quality control mechanism to output usable materials with fewer retries, reducing invalid generation and resource waste, making overall production costs more controllable.
+// - Highly stable generation with a low waste rate: Adopts a deterministic generation process and multi-layer quality control mechanism to output usable materials with fewer retries, reducing invalid generation and resource waste, and making the overall production cost more controllable.
 //
-// - E-commerce-specific product fidelity: Built-in multi-round quality inspection agents lock product state throughout video generation (for example, zippers will not be unzipped, sleeves will not be lowered, prints will not disappear). Multi-layer defense through "script rewriting + explicit constraint injection + failure-aware retry" ensures product consistency.
+// - E-commerce exclusive product fidelity capability: Built-in multi-round quality inspection agent locks the product state throughout the video generation process (such as zippers will not be pulled open, sleeves will not be put down, and prints will not disappear), ensuring product consistency through multi-layer defense of script rewriting, explicit constraint injection, and failure-aware retry.
 //
-// - Reference image priority + 6-axis consistency verification: Uses a Reference-Image-First generation paradigm with the original product image as the sole visual source of truth. Automatically performs 6-dimensional VL diagnostics (color drift, pattern loss, contour deviation, structural addition/removal, model matching, stain detection), fundamentally preventing generated images from deviating from the product.
+// - Reference image first + 6-axis consistency check: Adopts the Reference-Image-First generation paradigm, using the original product image as the only visual source of truth, and automatically performs 6-dimensional VL diagnosis (color drift, pattern missing, contour deviation, structure addition/reduction, model matching, dirt detection) to fundamentally eliminate the problem of generated images not looking like the product.
 //
-// - Flexible storyboard arrangement and duration control: Supports adjustable video duration from 5–30 seconds. The agent autonomously plans independent storyboards to showcase the product in different scenarios. Also supports fixed-scene mode for in-depth product presentation under a unified visual style.
+// - Flexible storyboard arrangement and duration control: Supports adjustable video duration of 5 to 30 seconds; the agent independently plans independent storyboards to display the product effects in different scenarios; it also supports a fixed scene mode to deeply display the product tonality under a unified visual style.
 //
-// - Cinematic camera movement capabilities: Built-in advanced camera movement modes including bullet time, Grammy-style slow motion, 360° orbital rotation, and full-body model rotation display, achieving deterministic output through segment-level precise control.
+// - Cinematic camera movement capabilities: Built-in advanced camera movement modes such as bullet time, Grammy slow motion, 360° surround rotation, and model full-body rotation display, achieving deterministic output through segmented precise control.
 //
-// - Model library and customization services: Built-in multi-type model resource library. Supports merchants in specifying fixed models, customizing exclusive model personas, and long-term brand visual identity binding to ensure brand visual consistency.
+// - Model library and customization services: Built-in multi-type model resource library, supporting merchants to specify fixed models, customize exclusive model images, and bind brand visual personas for a long time to ensure brand visual consistency.
 //
-// - Adapted for high-frequency e-commerce content scenarios: Supports multiple resolutions such as 720P and 1080P and multiple aspect ratios such as 3:4 and 9:16, suitable for product detail page video slots, product homepage video displays, waterfall/information feed placements, campaign materials, and new product launch and promotional video generation.
+// - Adapting to high-frequency e-commerce content scenarios: Supports multiple resolutions such as 720P and 1080P, and multiple aspect ratios such as 3:4 and 9:16, adapting to product detail page video slots, product homepage video displays, waterfall/information feed placements, event venue materials, and new product and promotional video generation.
 //
 // @param tmpReq - VideoGenerationRequest
 //
@@ -3387,25 +3759,25 @@ func (client *Client) VideoGenerationWithContext(ctx context.Context, tmpReq *Vi
 
 // Summary:
 //
-// The video translation API translates embedded text (subtitles, promotional text, etc.) in video frames into a target language and erases the original text.
+// Translates embedded text in video frames, such as subtitles and selling points, into a target language and erases the original text.
 //
 // Description:
 //
-// ## 1. Product Introduction
+// ## 1. Product introduction
 //
-// The video translation API translates embedded text (subtitles, promotional text, etc.) in video frames into a target language and erases the original text. This API is applicable to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
+// The video translation API translates embedded text in video frames, such as subtitles and selling points, into a target language and erases the original text. It is applicable to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
 //
-// The API uses an asynchronous call mode: after you submit a translation task, you receive a `task_id`. Poll the query endpoint for the task status until the task is complete, and then retrieve the result.
+// The API uses an asynchronous call mode. After you submit a translation task, you obtain a task_id and poll the task status through the query API until the task is completed to obtain the result.
 //
 // ## 2. Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates promotional text in product introduction videos into the language of the target market to facilitate overseas platform promotion.
+//   - **Cross-border e-commerce video localization**: Translates selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
 //
 //   - **International social media marketing**: Localizes text content in video frames with one click for platforms such as TikTok, Instagram, and YouTube to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the language of the target region to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the corresponding languages based on the delivery regions to reduce manual production costs.
 //
-//   - **Training and product instructions**: Translates on-screen text in training courses or product demonstration videos into multiple languages for use by global teams.
+//   - **Training and product instructions**: Translates text in video frames of training courses or product demonstration videos into multiple languages for global teams.
 //
 // ## 3. Features
 //
@@ -3413,7 +3785,7 @@ func (client *Client) VideoGenerationWithContext(ctx context.Context, tmpReq *Vi
 //
 // | --- | --- | --- |
 //
-// | Visual translation | `visual` | Translates embedded text (subtitles, promotional text, etc.) in video frames into the target language and erases the original text. |
+// | Visual translation | visual | Translates embedded text in video frames, such as subtitles and selling points, and erases the original text. |
 //
 // ## 4. Developer guide.
 //
@@ -3444,6 +3816,10 @@ func (client *Client) VideoTranslationWithContext(ctx context.Context, tmpReq *V
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CapabilitiesShrink) {
 		body["Capabilities"] = request.CapabilitiesShrink
+	}
+
+	if !dara.IsNil(request.EnableQualityCheck) {
+		body["EnableQualityCheck"] = request.EnableQualityCheck
 	}
 
 	if !dara.IsNil(request.SourceLanguage) {

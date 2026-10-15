@@ -16,11 +16,11 @@ type iEcomVideoRecreationShrinkRequest interface {
 }
 
 type EcomVideoRecreationShrinkRequest struct {
-  // The input parameters for video multiplication.
+  // The input parameters for video variation generation.
   // 
   // This parameter is required.
   InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-  // The output specifications for the final video.
+  // The output specifications for the generated video.
   OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 

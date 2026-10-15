@@ -32,13 +32,13 @@ type DocumentTranslateResponseBody struct {
 	Data *DocumentTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message, such as "The parameters contain sensitive information. Try other input."
 	//
-	// This parameter is not returned for successful calls.
+	// This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request identity. Use this ID for troubleshooting and Tracing Analysis.
+	// The unique identity of the request. Use this ID for troubleshooting and Tracing Analysis.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *DocumentTranslateResponseBody) Validate() error {
 }
 
 type DocumentTranslateResponseBodyData struct {
-	// The unique identifier of the asynchronous task. Use this ID to query the task status and results.
+	// The unique identifier of the asynchronous task. Use this ID to query the task status and result.
 	//
 	// example:
 	//

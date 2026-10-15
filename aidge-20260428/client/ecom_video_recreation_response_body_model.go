@@ -22,21 +22,21 @@ type iEcomVideoRecreationResponseBody interface {
 }
 
 type EcomVideoRecreationResponseBody struct {
-  // The result code. A value of `success` indicates success. An error code is returned upon failure.
+  // The result code. A value of `success` indicates success. If the call fails, the corresponding error code is returned.
   // 
   // example:
   // 
   // success
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The asynchronous task submit status.
+  // The submission result of the asynchronous task.
   Data *EcomVideoRecreationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The response message. An error description is returned upon failure.
+  // The return message. If the call fails, an error description is returned.
   // 
   // example:
   // 
   // Task submitted
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The request ID, used to identify a unique call.
+  // The request ID, which is used to identify a unique call.
   // 
   // example:
   // 
@@ -113,7 +113,7 @@ func (s *EcomVideoRecreationResponseBody) Validate() error {
 }
 
 type EcomVideoRecreationResponseBodyData struct {
-  // The asynchronous task ID used to query results with QueryAsyncTaskResult.
+  // The ID of the asynchronous task, which is used to query the task result by calling QueryAsyncTaskResult.
   // 
   // example:
   // 

@@ -22,28 +22,19 @@ type iPetHealthAnalysisResponseBody interface {
 }
 
 type PetHealthAnalysisResponseBody struct {
-	// The error code.
-	//
 	// example:
 	//
 	// success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous task submit status.
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *PetHealthAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
-	//
 	// example:
 	//
 	// Task submitted
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
-	//
 	// example:
 	//
 	// True
@@ -113,8 +104,6 @@ func (s *PetHealthAnalysisResponseBody) Validate() error {
 }
 
 type PetHealthAnalysisResponseBodyData struct {
-	// The asynchronous task ID used for QueryAsyncTaskResult queries.
-	//
 	// example:
 	//
 	// task_778fa8bd21804828a5d147050e30edac

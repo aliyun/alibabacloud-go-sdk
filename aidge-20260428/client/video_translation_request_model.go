@@ -11,6 +11,8 @@ type iVideoTranslationRequest interface {
 	GoString() string
 	SetCapabilities(v []*string) *VideoTranslationRequest
 	GetCapabilities() []*string
+	SetEnableQualityCheck(v bool) *VideoTranslationRequest
+	GetEnableQualityCheck() *bool
 	SetSourceLanguage(v string) *VideoTranslationRequest
 	GetSourceLanguage() *string
 	SetTargetLanguage(v string) *VideoTranslationRequest
@@ -20,11 +22,17 @@ type iVideoTranslationRequest interface {
 }
 
 type VideoTranslationRequest struct {
-	// The array of translation capabilities. Valid values: ["visual"].
+	// The array of translation capabilities. Current valid value: ["visual"].
 	//
 	// This parameter is required.
 	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
-	// The source language. This parameter is optional. Default value: auto, which indicates automatic detection.
+	// Specifies whether to enable the visual quality check. This parameter takes effect only when Capabilities includes visual.
+	//
+	// example:
+	//
+	// true
+	EnableQualityCheck *bool `json:"EnableQualityCheck,omitempty" xml:"EnableQualityCheck,omitempty"`
+	// The source language. This parameter is optional. Default value: auto, which indicates automatic recognition.
 	//
 	// example:
 	//
@@ -38,7 +46,7 @@ type VideoTranslationRequest struct {
 	//
 	// ru
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// The URL of the video (MP4/MOV, ≤ 200 MB).
+	// The video URL. Supported formats: MP4 and MOV. Maximum size: 200 MB.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +68,10 @@ func (s *VideoTranslationRequest) GetCapabilities() []*string {
 	return s.Capabilities
 }
 
+func (s *VideoTranslationRequest) GetEnableQualityCheck() *bool {
+	return s.EnableQualityCheck
+}
+
 func (s *VideoTranslationRequest) GetSourceLanguage() *string {
 	return s.SourceLanguage
 }
@@ -74,6 +86,11 @@ func (s *VideoTranslationRequest) GetVideoUrl() *string {
 
 func (s *VideoTranslationRequest) SetCapabilities(v []*string) *VideoTranslationRequest {
 	s.Capabilities = v
+	return s
+}
+
+func (s *VideoTranslationRequest) SetEnableQualityCheck(v bool) *VideoTranslationRequest {
+	s.EnableQualityCheck = &v
 	return s
 }
 

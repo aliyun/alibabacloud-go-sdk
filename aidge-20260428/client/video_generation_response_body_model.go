@@ -22,21 +22,21 @@ type iVideoGenerationResponseBody interface {
 }
 
 type VideoGenerationResponseBody struct {
-	// The response code. A value of success indicates a successful call, and a value of failed indicates a failed call.
+	// The response code. A value of success indicates that the call is successful, and a value of failed indicates that the call fails.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response struct.
+	// The struct information of the returned result.
 	Data *VideoGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. An error message is returned if the call fails.
+	// The returned message. An error message is returned when the call fails.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies a single API call.
+	// The request ID, which is used to identify a unique request call.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type VideoGenerationResponseBodyData struct {
 	//
 	// 778fa8bd21804828a5d147050e30edac
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The metering usage information.
+	// The metering and usage information.
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

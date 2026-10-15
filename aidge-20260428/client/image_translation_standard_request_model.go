@@ -32,13 +32,13 @@ type ImageTranslationStandardRequest struct {
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// - Image URL: The URL must be publicly accessible.
+	// - Image URL: Must be publicly accessible.
 	//
 	// - Format: png, jpeg, jpg, bmp, or webp.
 	//
-	// - Pixels: The width and height must not exceed 4000 pixels each.
+	// - Pixels: Both width and height must not exceed 4000.
 	//
-	// - File size: The original file must be 10 MB or smaller.
+	// - File size: The original file must be ≤ 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,17 @@ type ImageTranslationStandardRequest struct {
 	//
 	// https://images-na.ssl-images-amazon.com/images/I/41bKsNBDcwL.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate text on the product area of the image. This parameter is optional. Default value: false. This helps protect information by preventing translation of embedded content such as product names.
+	// Specifies whether to translate text on the image subject. This parameter is optional. Default value: false. This helps protect information and avoids translating embedded information such as product names.
 	//
 	// example:
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// The source language code. This parameter is required. For supported language directions, see [Language direction mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+	// The source language code. This parameter is required.
+	//
+	// <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+	//
+	// <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
 	//
 	// This parameter is required.
 	//
@@ -60,7 +64,11 @@ type ImageTranslationStandardRequest struct {
 	//
 	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The target language code. This parameter is required. For supported language directions, see [Language direction mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+	// The target language code. This parameter is required.
+	//
+	// <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+	//
+	// <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
 	//
 	// This parameter is required.
 	//
@@ -74,7 +82,7 @@ type ImageTranslationStandardRequest struct {
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// Specifies whether to return layer information such as text position, font, and color. If you set this parameter to true, layer information is returned for secondary editing through an image editor. Default value: false.
+	// Specifies whether to return layer information such as text position, font, and color. If this parameter is set to true, layer information is returned, which can be used to connect to an image editor for secondary editing. Default value: false.
 	//
 	// example:
 	//

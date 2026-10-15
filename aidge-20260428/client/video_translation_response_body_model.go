@@ -28,21 +28,21 @@ type VideoTranslationResponseBody struct {
 	//
 	// Processing
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submit status of the asynchronous task.
+	// The submission result of the asynchronous task.
 	Data *VideoTranslationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description.
+	// The description message.
 	//
 	// example:
 	//
 	// Translation processing
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request trace ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// req_20260608_jkl012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call fails.
+	// Indicates whether the call is successful. Valid values: true (successful) and false (failed).
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *VideoTranslationResponseBody) Validate() error {
 }
 
 type VideoTranslationResponseBodyData struct {
-	// The asynchronous task ID, used for subsequent queries.
+	// The ID of the asynchronous task, which is used for subsequent queries.
 	//
 	// example:
 	//

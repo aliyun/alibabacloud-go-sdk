@@ -16,11 +16,11 @@ type iEcomVideoRecreationRequest interface {
 }
 
 type EcomVideoRecreationRequest struct {
-  // The input parameters for video multiplication.
+  // The input parameters for video variation generation.
   // 
   // This parameter is required.
   Input *EcomVideoRecreationRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-  // The output specifications for the final video.
+  // The output specifications for the generated video.
   Output *EcomVideoRecreationRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 }
 
@@ -65,9 +65,9 @@ func (s *EcomVideoRecreationRequest) Validate() error {
 }
 
 type EcomVideoRecreationRequestInput struct {
-  // The description or supplementary constraints for the target person in person replacement mode. The value must be 1 to 500 characters in length. This parameter is required if PersonReferenceImageUrls is not provided.   
+  // The description or supplementary constraints for the target person in person replacement. The length is 1 to 500 characters. This parameter is required when PersonReferenceImageUrls is not provided.   
   // 
-  // Example: The target person is an adult male. Retain the original clothing and actions.
+  // Example value: The target person is an adult male, retaining the original clothing and actions.
   // 
   // example:
   // 
@@ -79,17 +79,23 @@ type EcomVideoRecreationRequestInput struct {
   // 
   // product_replacement
   Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-  // The URLs of reference images for the target person in person replacement mode. You can specify 1 to 5 images, which must be of the same person. Arrange the images in the following order: facial close-up, front view, 45-degree view, side view, and back view.  
+  // The URLs of the reference images for the target person in person replacement. You can provide 1 to 5 images, which must be of the same person. We recommend that you arrange the images in the order of facial close-up, front, 45-degree angle, side, and back.  
   // 
-  // Example: ["https://example.com/person.jpg"]
+  // Example value: ["https://example.com/person.jpg"]
   PersonReferenceImageUrls []*string `json:"PersonReferenceImageUrls,omitempty" xml:"PersonReferenceImageUrls,omitempty" type:"Repeated"`
-  // The URLs of target product images. This parameter is required for product replacement mode. You can upload 1 to 8 images for the same SKU. Use images with a clear subject, no occlusion, and a clean background.   
+  // The URLs of the target product images. This parameter is required for product replacement. You can upload 1 to 8 images for the same SKU. We recommend that the main subject is clear, unobstructed, and has a clean background.   
   // 
-  // Example: ["https://example.com/product.png"]
+  // Example value: ["https://example.com/product.png"]
   ProductImageUrls []*string `json:"ProductImageUrls,omitempty" xml:"ProductImageUrls,omitempty" type:"Repeated"`
-  // The target product information. Specify this parameter to improve voiceover accuracy.
+  // The target product information. We recommend that you specify this parameter to improve the accuracy of the voiceover.
   ProductInfo *EcomVideoRecreationRequestInputProductInfo `json:"ProductInfo,omitempty" xml:"ProductInfo,omitempty" type:"Struct"`
-  // The HTTP(S) URL of the reference video. The video duration must be 2 to 360 seconds. The URL must remain accessible during task execution. A validity period of at least 24 hours is recommended.
+  // The generation mode. Default value: `reference`. Valid values: `reference` (directly references the original video) and `rebuild` (breaks down the original video before regenerating it).
+  // 
+  // example:
+  // 
+  // reference
+  RecreateMode *string `json:"RecreateMode,omitempty" xml:"RecreateMode,omitempty"`
+  // The HTTP(S) URL of the reference video. The duration ranges from 2 to 360 seconds. The URL must remain accessible during task execution. We recommend that the validity period is no less than 24 hours.
   // 
   // This parameter is required.
   // 
@@ -127,6 +133,10 @@ func (s *EcomVideoRecreationRequestInput) GetProductInfo() *EcomVideoRecreationR
   return s.ProductInfo
 }
 
+func (s *EcomVideoRecreationRequestInput) GetRecreateMode() *string  {
+  return s.RecreateMode
+}
+
 func (s *EcomVideoRecreationRequestInput) GetSourceVideoUrl() *string  {
   return s.SourceVideoUrl
 }
@@ -156,6 +166,11 @@ func (s *EcomVideoRecreationRequestInput) SetProductInfo(v *EcomVideoRecreationR
   return s
 }
 
+func (s *EcomVideoRecreationRequestInput) SetRecreateMode(v string) *EcomVideoRecreationRequestInput {
+  s.RecreateMode = &v
+  return s
+}
+
 func (s *EcomVideoRecreationRequestInput) SetSourceVideoUrl(v string) *EcomVideoRecreationRequestInput {
   s.SourceVideoUrl = &v
   return s
@@ -173,23 +188,23 @@ func (s *EcomVideoRecreationRequestInput) Validate() error {
 type EcomVideoRecreationRequestInputProductInfo struct {
   // The product category.  
   // 
-  // Example: Womenswear/Sun-protective clothing
+  // Example value: Women\\"s clothing/Sun protection clothing.
   // 
   // example:
   // 
   // Women\\"s clothing/sun protection clothing
   Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-  // The actual product information (SKU, brand, color, material, size, specifications, logo, and usage), used to constrain voiceover facts.  
+  // The actual product information, such as SKU, brand, color, material, size, specifications, logo, and usage instructions. This information is used to constrain the facts in the voiceover.  
   // 
-  // Example: Light yellow, cooling fabric, sun protection to the back of the hand, UPF50+
+  // Example value: Pale moon yellow, cool-touch fabric, sun protection down to the back of the hand, UPF50+
   // 
   // example:
   // 
   // Light moon yellow, cool-touch fabric, sun protection extending to the back of the hand, UPF50+
   Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-  // The name of the target product. This parameter is required for product replacement mode. Maximum length: 200 characters.  
+  // The name of the target product. This parameter is required for product replacement. The maximum length is 200 characters.  
   // 
-  // Example: Light yellow cooling sun-protective jacket
+  // Example value: Pale moon yellow cool-touch sun protection clothing.
   // 
   // example:
   // 
@@ -237,7 +252,7 @@ func (s *EcomVideoRecreationRequestInputProductInfo) Validate() error {
 }
 
 type EcomVideoRecreationRequestOutput struct {
-  // The target duration in seconds. Set to ``"auto"`` (default) to let the system decide. For product replacement, specify an integer from 5 to 60. For person replacement, only `"auto"` is supported.
+  // The target duration in seconds. In `reference` mode, the input value is ignored and forced to -1, which follows the duration of the original video. In `rebuild` mode, you can pass an integer from 5 to 60, or pass -1 to indicate an automatic duration.
   // 
   // example:
   // 

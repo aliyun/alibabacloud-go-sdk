@@ -11,6 +11,8 @@ type iVideoTranslationShrinkRequest interface {
 	GoString() string
 	SetCapabilitiesShrink(v string) *VideoTranslationShrinkRequest
 	GetCapabilitiesShrink() *string
+	SetEnableQualityCheck(v bool) *VideoTranslationShrinkRequest
+	GetEnableQualityCheck() *bool
 	SetSourceLanguage(v string) *VideoTranslationShrinkRequest
 	GetSourceLanguage() *string
 	SetTargetLanguage(v string) *VideoTranslationShrinkRequest
@@ -20,11 +22,17 @@ type iVideoTranslationShrinkRequest interface {
 }
 
 type VideoTranslationShrinkRequest struct {
-	// The array of translation capabilities. Valid values: ["visual"].
+	// The array of translation capabilities. Current valid value: ["visual"].
 	//
 	// This parameter is required.
 	CapabilitiesShrink *string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty"`
-	// The source language. This parameter is optional. Default value: auto, which indicates automatic detection.
+	// Specifies whether to enable the visual quality check. This parameter takes effect only when Capabilities includes visual.
+	//
+	// example:
+	//
+	// true
+	EnableQualityCheck *bool `json:"EnableQualityCheck,omitempty" xml:"EnableQualityCheck,omitempty"`
+	// The source language. This parameter is optional. Default value: auto, which indicates automatic recognition.
 	//
 	// example:
 	//
@@ -38,7 +46,7 @@ type VideoTranslationShrinkRequest struct {
 	//
 	// ru
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// The URL of the video (MP4/MOV, ≤ 200 MB).
+	// The video URL. Supported formats: MP4 and MOV. Maximum size: 200 MB.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +68,10 @@ func (s *VideoTranslationShrinkRequest) GetCapabilitiesShrink() *string {
 	return s.CapabilitiesShrink
 }
 
+func (s *VideoTranslationShrinkRequest) GetEnableQualityCheck() *bool {
+	return s.EnableQualityCheck
+}
+
 func (s *VideoTranslationShrinkRequest) GetSourceLanguage() *string {
 	return s.SourceLanguage
 }
@@ -74,6 +86,11 @@ func (s *VideoTranslationShrinkRequest) GetVideoUrl() *string {
 
 func (s *VideoTranslationShrinkRequest) SetCapabilitiesShrink(v string) *VideoTranslationShrinkRequest {
 	s.CapabilitiesShrink = &v
+	return s
+}
+
+func (s *VideoTranslationShrinkRequest) SetEnableQualityCheck(v bool) *VideoTranslationShrinkRequest {
+	s.EnableQualityCheck = &v
 	return s
 }
 
