@@ -52,25 +52,113 @@ type iE2BSandbox interface {
 }
 
 type E2BSandbox struct {
+  // The access endpoint of the sandbox.
+  // 
+  // example:
+  // 
+  // https://8000-sandbox-id.example.com
   AccessEndpoint *string `json:"accessEndpoint,omitempty" xml:"accessEndpoint,omitempty"`
+  // The number of CPU cores used by the sandbox.
+  // 
+  // example:
+  // 
+  // 1
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
+  // The disk size of the sandbox, in MB.
+  // 
+  // example:
+  // 
+  // 10240
   DiskSizeMB *int32 `json:"diskSizeMB,omitempty" xml:"diskSizeMB,omitempty"`
+  // The domain name used to access the sandbox.
+  // 
+  // example:
+  // 
+  // your-sandbox-domain
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+  // The end time of the sandbox.
+  // 
+  // example:
+  // 
+  // 2026-01-01T01:00:00Z
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
+  // The name of the Function Compute function corresponding to the sandbox.
   FcFunctionName *string `json:"fcFunctionName,omitempty" xml:"fcFunctionName,omitempty"`
+  // The ID of the Function Compute instance corresponding to the sandbox.
   FcInstanceID *string `json:"fcInstanceID,omitempty" xml:"fcInstanceID,omitempty"`
+  // The ID of the Function Compute session corresponding to the sandbox.
   FcSessionID *string `json:"fcSessionID,omitempty" xml:"fcSessionID,omitempty"`
+  // The memory size of the sandbox, in MB.
+  // 
+  // example:
+  // 
+  // 2048
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
+  // The custom metadata of the sandbox.
+  // 
+  // example:
+  // 
+  // {"team":"data"}
   Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+  // The ID of the resource group to which the sandbox belongs.
+  // 
+  // example:
+  // 
+  // rg-acfmwxqyrgwabcd
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The ID of the sandbox.
+  // 
+  // example:
+  // 
+  // sbx-xxx
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
+  // The start time of the sandbox.
+  // 
+  // example:
+  // 
+  // 2026-01-01T00:00:00Z
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+  // The current state of the sandbox.
+  // 
+  // example:
+  // 
+  // running
   State *string `json:"state,omitempty" xml:"state,omitempty"`
+  // The unique identifier of the team to which the sandbox belongs.
+  // 
+  // example:
+  // 
+  // 88a4c762-b0ce-4661-9413-578b2309e60f
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // The name of the team to which the sandbox belongs.
+  // 
+  // example:
+  // 
+  // my-team
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // The plan of the team to which the sandbox belongs.
+  // 
+  // example:
+  // 
+  // Pro
   TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+  // The ID of the template used to create the sandbox.
+  // 
+  // example:
+  // 
+  // your-template-id
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+  // The name of the template.
+  // 
+  // example:
+  // 
+  // my-template
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+  // The ID of the user who created the sandbox.
+  // 
+  // example:
+  // 
+  // 1000
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 

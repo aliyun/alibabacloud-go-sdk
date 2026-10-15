@@ -40,7 +40,7 @@ type GetTemplateResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The time when the template was created.
+	// The creation time in UTC format that complies with RFC 3339, such as 2026-08-31T12:00:00Z.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetTemplateResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GetTemplateResponseBody struct {
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type GetTemplateResponseBody struct {
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
 	// The runtime configuration of the template.
 	RuntimeConfig *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
-	// The template status.
+	// The status of the template.
 	Status *PublicTemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
 	// The unique identifier of the team.
 	//
@@ -80,7 +80,7 @@ type GetTemplateResponseBody struct {
 	//
 	// 88a4c762-b0ce-4661-9413-578b2309e60f
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	// The team name.
+	// The name of the team.
 	//
 	// example:
 	//

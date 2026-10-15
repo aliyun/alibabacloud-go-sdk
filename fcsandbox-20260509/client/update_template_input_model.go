@@ -20,10 +20,18 @@ type iUpdateTemplateInput interface {
 }
 
 type UpdateTemplateInput struct {
+	// The container image configuration of the template.
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
-	LogConfiguration       *LogConfiguration       `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	NetworkConfiguration   *NetworkConfiguration   `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	TeamID                 *string                 `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The Log Service configuration of the template.
+	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// The VPC configuration of the template.
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// The unique identifier of the team to which the template belongs.
+	//
+	// example:
+	//
+	// 70d1c834-0383-58d8-97ac-5336eb91abcd
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s UpdateTemplateInput) String() string {

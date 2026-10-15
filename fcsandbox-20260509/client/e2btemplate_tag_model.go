@@ -18,8 +18,23 @@ type iE2BTemplateTag interface {
 }
 
 type E2BTemplateTag struct {
+  // The ID of the template build associated with the tag.
+  // 
+  // example:
+  // 
+  // your-build-id
   BuildID *string `json:"buildID,omitempty" xml:"buildID,omitempty"`
+  // The creation time of the tag.
+  // 
+  // example:
+  // 
+  // 2026-01-01T00:00:00Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // The name of the template tag.
+  // 
+  // example:
+  // 
+  // staging
   Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

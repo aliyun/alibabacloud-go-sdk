@@ -13,6 +13,8 @@ type iPublicUpdateTemplateBuildConfig interface {
 	GetCopy() *PublicUpdateTemplateCopyAction
 	SetEnvdInject(v *PublicUpdateTemplateEnvdInjectAction) *PublicUpdateTemplateBuildConfig
 	GetEnvdInject() *PublicUpdateTemplateEnvdInjectAction
+	SetInstallStorageClients(v bool) *PublicUpdateTemplateBuildConfig
+	GetInstallStorageClients() *bool
 }
 
 type PublicUpdateTemplateBuildConfig struct {
@@ -20,6 +22,8 @@ type PublicUpdateTemplateBuildConfig struct {
 	Copy *PublicUpdateTemplateCopyAction `json:"copy,omitempty" xml:"copy,omitempty"`
 	// The envd injection action configuration.
 	EnvdInject *PublicUpdateTemplateEnvdInjectAction `json:"envdInject,omitempty" xml:"envdInject,omitempty"`
+	// The client installation required for storage mounting.
+	InstallStorageClients *bool `json:"installStorageClients,omitempty" xml:"installStorageClients,omitempty"`
 }
 
 func (s PublicUpdateTemplateBuildConfig) String() string {
@@ -38,6 +42,10 @@ func (s *PublicUpdateTemplateBuildConfig) GetEnvdInject() *PublicUpdateTemplateE
 	return s.EnvdInject
 }
 
+func (s *PublicUpdateTemplateBuildConfig) GetInstallStorageClients() *bool {
+	return s.InstallStorageClients
+}
+
 func (s *PublicUpdateTemplateBuildConfig) SetCopy(v *PublicUpdateTemplateCopyAction) *PublicUpdateTemplateBuildConfig {
 	s.Copy = v
 	return s
@@ -45,6 +53,11 @@ func (s *PublicUpdateTemplateBuildConfig) SetCopy(v *PublicUpdateTemplateCopyAct
 
 func (s *PublicUpdateTemplateBuildConfig) SetEnvdInject(v *PublicUpdateTemplateEnvdInjectAction) *PublicUpdateTemplateBuildConfig {
 	s.EnvdInject = v
+	return s
+}
+
+func (s *PublicUpdateTemplateBuildConfig) SetInstallStorageClients(v bool) *PublicUpdateTemplateBuildConfig {
+	s.InstallStorageClients = &v
 	return s
 }
 

@@ -50,24 +50,99 @@ type iE2BTemplate interface {
 }
 
 type E2BTemplate struct {
+  // The build status of the template.
+  // 
+  // example:
+  // 
+  // ready
   BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
+  // The category of the template.
   Category *string `json:"category,omitempty" xml:"category,omitempty"`
+  // The container image configuration of the template.
+  // 
+  // example:
+  // 
+  // {"image":"registry.cn-hangzhou.aliyuncs.com/demo/nginx:latest"}
   ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
+  // The number of CPU cores configured for the template.
+  // 
+  // example:
+  // 
+  // 1
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
+  // The time when the template was created.
+  // 
+  // example:
+  // 
+  // 2026-01-01T00:00:00Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // The log service configuration of the template.
+  // 
+  // example:
+  // 
+  // {"project":"sandbox-project","logstore":"sandbox-logstore"}
   LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+  // The memory size configured for the template, in MB.
+  // 
+  // example:
+  // 
+  // 2048
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
+  // The list of template names.
+  // 
+  // example:
+  // 
+  // ["my-template"]
   Names []*string `json:"names,omitempty" xml:"names,omitempty" type:"Repeated"`
+  // The VPC configuration of the template.
+  // 
+  // example:
+  // 
+  // {"vpcID":"vpc-bp1example","securityGroupID":"sg-bp1example","vswitchIDs":["vsw-bp1example"]}
   NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+  // Indicates whether the template is publicly available.
+  // 
+  // example:
+  // 
+  // false
   Public *bool `json:"public,omitempty" xml:"public,omitempty"`
+  // The ID of the resource group to which the template belongs.
+  // 
+  // example:
+  // 
+  // rg-acfmwxqyrgwabcd
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The reason for the build status of the template.
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+  // The list of tags for the template.
   Tags []*E2BTemplateTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+  // The unique identifier of the team to which the template belongs.
+  // 
+  // example:
+  // 
+  // 88a4c762-b0ce-4661-9413-578b2309e60f
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // The name of the team to which the template belongs.
+  // 
+  // example:
+  // 
+  // my-team
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // The plan of the team to which the template belongs.
   TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+  // The unique identifier of the template.
+  // 
+  // example:
+  // 
+  // your-template-id
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+  // The time when the template was last updated.
+  // 
+  // example:
+  // 
+  // 2026-01-01T00:00:00Z
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+  // The ID of the user who created the template.
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 

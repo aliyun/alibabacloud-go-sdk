@@ -14,9 +14,11 @@ type iDeleteTemplateCacheRequest interface {
 }
 
 type DeleteTemplateCacheRequest struct {
+	// The team ID.
+	//
 	// example:
 	//
-	// 13b721e6-8cc8-5df2-af13-80316f7508af
+	// team-a1b2c3d4e5f6
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 

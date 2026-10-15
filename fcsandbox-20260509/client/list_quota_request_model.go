@@ -16,13 +16,13 @@ type iListQuotaRequest interface {
 }
 
 type ListQuotaRequest struct {
-	// The number of entries per page.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token obtained from the previous response.
+	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first query. You can obtain the token for subsequent queries from the response.
 	//
 	// example:
 	//

@@ -20,10 +20,30 @@ type iOSSVolumeConfig interface {
 }
 
 type OSSVolumeConfig struct {
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// example-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The path to mount within the bucket.
+	//
+	// example:
+	//
+	// /agent-workspace
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// The OSS access endpoint.
+	//
+	// example:
+	//
+	// https://oss-cn-hangzhou.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// Specifies whether to mount the volume in read-only mode.
+	//
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s OSSVolumeConfig) String() string {

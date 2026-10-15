@@ -24,12 +24,26 @@ type iCustomDomainResp interface {
 }
 
 type CustomDomainResp struct {
-	CertConfig  *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	CreatedAt   *int64      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
-	DomainName  *string     `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	TlsConfig   *TLSConfig  `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	UpdatedAt   *int64      `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The certificate configuration used by the domain name.
+	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The creation time of the custom domain name.
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The description of the custom domain name.
+	//
+	// example:
+	//
+	// Custom domain name for the production cloud sandbox
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The custom domain name.
+	//
+	// example:
+	//
+	// api.example.com
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The TLS configuration used by the domain name.
+	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The last update time of the custom domain name.
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s CustomDomainResp) String() string {

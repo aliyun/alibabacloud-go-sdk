@@ -1,3 +1,6 @@
+2026-10-15 Version: v1.6.1
+- Generated golang 2026-05-09 for FCSandbox.
+
 2026-09-19 Version: v1.6.0
 - Support API CreateTemplateCache.
 - Support API DeleteTemplateCache.

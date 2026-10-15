@@ -32,13 +32,13 @@ type iE2BTeam interface {
 }
 
 type E2BTeam struct {
-  // Indicates whether the team name can be modified.
+  // Specifies whether the team name can be modified.
   // 
   // example:
   // 
   // false
   AllowUpdateTeamName *bool `json:"allowUpdateTeamName,omitempty" xml:"allowUpdateTeamName,omitempty"`
-  // The time when the team was created.
+  // The creation time.
   // 
   // example:
   // 
@@ -50,15 +50,21 @@ type E2BTeam struct {
   // 
   // Open team
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // The plan used by the team.
+  // 
+  // example:
+  // 
+  // Pro
   Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+  // Specifies whether the team is read-only.
   ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-  // The resource group ID.
+  // The ID of the resource group.
   // 
   // example:
   // 
   // rg-acfmwxqyrgwabcd
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-  // The status of the team.
+  // The status.
   // 
   // example:
   // 

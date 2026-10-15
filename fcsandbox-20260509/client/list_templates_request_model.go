@@ -18,7 +18,7 @@ type iListTemplatesRequest interface {
 }
 
 type ListTemplatesRequest struct {
-	// The maximum number of entries to return.
+	// The maximum number of results to return.
 	//
 	// example:
 	//

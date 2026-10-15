@@ -35,8 +35,10 @@ type ResetApiKeyResponseBody struct {
 	// example:
 	//
 	// 200
-	Code        *string     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The list of IP addresses blocked from using the API key.
 	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	// The list of IP addresses allowed to use the API key.
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 	// The response message.
 	//

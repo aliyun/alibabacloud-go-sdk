@@ -16,8 +16,18 @@ type iIPConfig interface {
 }
 
 type IPConfig struct {
+	// The description of the IP configuration.
+	//
+	// example:
+	//
+	// 应用固定出口
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	IpAddress   *string `json:"ipAddress,omitempty" xml:"ipAddress,omitempty"`
+	// The IP address or CIDR block.
+	//
+	// example:
+	//
+	// 203.0.113.10
+	IpAddress *string `json:"ipAddress,omitempty" xml:"ipAddress,omitempty"`
 }
 
 func (s IPConfig) String() string {

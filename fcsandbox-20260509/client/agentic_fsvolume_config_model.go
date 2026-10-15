@@ -18,9 +18,24 @@ type iAgenticFSVolumeConfig interface {
 }
 
 type AgenticFSVolumeConfig struct {
-	GroupID    *int32  `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The group ID (GID) for accessing the mounted directory in the sandbox.
+	//
+	// example:
+	//
+	// 1000
+	GroupID *int32 `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The service address of the AgenticFS access point.
+	//
+	// example:
+	//
+	// ap-12345678.fs-12345678-abc.cn-hangzhou.nas.aliyuncs.com:/
 	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
-	UserID     *int32  `json:"userID,omitempty" xml:"userID,omitempty"`
+	// The user ID (UID) for accessing the mounted directory in the sandbox.
+	//
+	// example:
+	//
+	// 1000
+	UserID *int32 `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
 func (s AgenticFSVolumeConfig) String() string {

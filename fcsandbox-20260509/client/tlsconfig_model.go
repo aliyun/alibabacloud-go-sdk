@@ -18,9 +18,20 @@ type iTLSConfig interface {
 }
 
 type TLSConfig struct {
+	// The list of allowed TLS cipher suites.
 	CipherSuites []*string `json:"cipherSuites,omitempty" xml:"cipherSuites,omitempty" type:"Repeated"`
-	MaxVersion   *string   `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
-	MinVersion   *string   `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
+	// The maximum allowed TLS version.
+	//
+	// example:
+	//
+	// TLSv1.3
+	MaxVersion *string `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
+	// The minimum allowed TLS version.
+	//
+	// example:
+	//
+	// TLSv1.2
+	MinVersion *string `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
 }
 
 func (s TLSConfig) String() string {

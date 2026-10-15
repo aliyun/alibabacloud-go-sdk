@@ -28,7 +28,7 @@ type iDescribeApiKeyResponseBody interface {
 }
 
 type DescribeApiKeyResponseBody struct {
-	// The Bailian API key.
+	// The Model Studio API key.
 	//
 	// example:
 	//
@@ -39,9 +39,11 @@ type DescribeApiKeyResponseBody struct {
 	// example:
 	//
 	// 200
-	Code                 *string               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The set of permissions currently in effect for the API key.
 	EffectivePermissions *EffectivePermissions `json:"effectivePermissions,omitempty" xml:"effectivePermissions,omitempty"`
-	IpBlacklist          []*IPConfig           `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	// The list of IP addresses that are blocked from using the API key.
+	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
 	// The IP whitelist.
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 	// The response message.
@@ -49,7 +51,8 @@ type DescribeApiKeyResponseBody struct {
 	// example:
 	//
 	// success
-	Message          *string           `json:"message,omitempty" xml:"message,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The access policy configured for the API key.
 	PermissionPolicy *PermissionPolicy `json:"permissionPolicy,omitempty" xml:"permissionPolicy,omitempty"`
 	// The request ID.
 	//

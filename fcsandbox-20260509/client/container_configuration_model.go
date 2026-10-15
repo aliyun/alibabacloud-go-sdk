@@ -18,8 +18,23 @@ type iContainerConfiguration interface {
 }
 
 type ContainerConfiguration struct {
-	AcrInstanceId      *string                                   `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Image              *string                                   `json:"image,omitempty" xml:"image,omitempty"`
+	// The ID of the ACR Enterprise instance to which the container image belongs.
+	//
+	// example:
+	//
+	// cri-abcd1234efgh
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// The container image address.
+	//
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/demo/nginx:latest
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The repository credentials used to pull private images.
+	//
+	// example:
+	//
+	// {"username":"registry-user","password":"******"}
 	RegistryCredential *ContainerConfigurationRegistryCredential `json:"registryCredential,omitempty" xml:"registryCredential,omitempty" type:"Struct"`
 }
 
@@ -68,7 +83,17 @@ func (s *ContainerConfiguration) Validate() error {
 }
 
 type ContainerConfigurationRegistryCredential struct {
+	// The password of the image repository.
+	//
+	// example:
+	//
+	// ******
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The username of the image repository.
+	//
+	// example:
+	//
+	// registry-user
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 

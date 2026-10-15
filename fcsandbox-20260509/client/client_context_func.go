@@ -135,7 +135,7 @@ func (client *Client) CreateTemplateWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建模板缓存
+// Creates a template cache.
 //
 // @param request - CreateTemplateCacheRequest
 //
@@ -395,7 +395,7 @@ func (client *Client) DeleteTemplateWithContext(ctx context.Context, templateID 
 
 // Summary:
 //
-// 删除模板缓存
+// Deletes the template cache.
 //
 // @param request - DeleteTemplateCacheRequest
 //
@@ -489,7 +489,7 @@ func (client *Client) DeleteVolumeWithContext(ctx context.Context, volumeID *str
 
 // Summary:
 //
-// Queries an API key.
+// Retrieves an API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -1007,7 +1007,7 @@ func (client *Client) ListTemplateCacheWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of templates.
+// Lists templates.
 //
 // @param request - ListTemplatesRequest
 //

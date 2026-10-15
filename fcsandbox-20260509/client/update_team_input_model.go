@@ -26,7 +26,12 @@ type UpdateTeamInput struct {
 	//
 	// Development team
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Plan        *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// The plan used by the team.
+	//
+	// example:
+	//
+	// Pro
+	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
 	// The resource group ID.
 	//
 	// example:

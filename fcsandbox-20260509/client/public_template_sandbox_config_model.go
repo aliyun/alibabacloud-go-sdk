@@ -23,16 +23,18 @@ type iPublicTemplateSandboxConfig interface {
 	GetRegistryConfig() *PublicTemplateRegistryConfig
 	SetStartCommand(v string) *PublicTemplateSandboxConfig
 	GetStartCommand() *string
+	SetSteps(v []*PublicTemplateStep) *PublicTemplateSandboxConfig
+	GetSteps() []*PublicTemplateStep
 }
 
 type PublicTemplateSandboxConfig struct {
-	// The ACR Enterprise instance ID.
+	// The ID of the ACR Enterprise instance.
 	//
 	// example:
 	//
 	// cri-abcd1234efgh
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The sandbox generation. A value of 1 indicates the first-generation sandbox. A value of 2 indicates the second-generation sandbox.
+	// The sandbox generation. A value of 1 indicates the first-generation sandbox, and a value of 2 indicates the second-generation sandbox.
 	//
 	// example:
 	//
@@ -64,6 +66,8 @@ type PublicTemplateSandboxConfig struct {
 	//
 	// sleep infinity
 	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	// The list of custom build steps.
+	Steps []*PublicTemplateStep `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 }
 
 func (s PublicTemplateSandboxConfig) String() string {
@@ -102,6 +106,10 @@ func (s *PublicTemplateSandboxConfig) GetStartCommand() *string {
 	return s.StartCommand
 }
 
+func (s *PublicTemplateSandboxConfig) GetSteps() []*PublicTemplateStep {
+	return s.Steps
+}
+
 func (s *PublicTemplateSandboxConfig) SetAcrInstanceId(v string) *PublicTemplateSandboxConfig {
 	s.AcrInstanceId = &v
 	return s
@@ -137,10 +145,24 @@ func (s *PublicTemplateSandboxConfig) SetStartCommand(v string) *PublicTemplateS
 	return s
 }
 
+func (s *PublicTemplateSandboxConfig) SetSteps(v []*PublicTemplateStep) *PublicTemplateSandboxConfig {
+	s.Steps = v
+	return s
+}
+
 func (s *PublicTemplateSandboxConfig) Validate() error {
 	if s.RegistryConfig != nil {
 		if err := s.RegistryConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

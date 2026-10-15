@@ -14,6 +14,7 @@ type iCreateTemplateCacheRequest interface {
 }
 
 type CreateTemplateCacheRequest struct {
+	// The request struct for creating a template cache.
 	Body *CreateTemplateCacheInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

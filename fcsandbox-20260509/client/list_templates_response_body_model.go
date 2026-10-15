@@ -30,7 +30,7 @@ type ListTemplatesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListTemplatesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page.
+	// The next page token.
 	//
 	// example:
 	//

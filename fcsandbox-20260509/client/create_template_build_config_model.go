@@ -13,6 +13,8 @@ type iCreateTemplateBuildConfig interface {
 	GetCopy() *CreateTemplateCopyAction
 	SetEnvdInject(v *CreateTemplateEnvdInjectAction) *CreateTemplateBuildConfig
 	GetEnvdInject() *CreateTemplateEnvdInjectAction
+	SetInstallStorageClients(v bool) *CreateTemplateBuildConfig
+	GetInstallStorageClients() *bool
 }
 
 type CreateTemplateBuildConfig struct {
@@ -20,6 +22,8 @@ type CreateTemplateBuildConfig struct {
 	Copy *CreateTemplateCopyAction `json:"copy,omitempty" xml:"copy,omitempty"`
 	// The envd injection build action.
 	EnvdInject *CreateTemplateEnvdInjectAction `json:"envdInject,omitempty" xml:"envdInject,omitempty"`
+	// The installation of clients required for storage mounting.
+	InstallStorageClients *bool `json:"installStorageClients,omitempty" xml:"installStorageClients,omitempty"`
 }
 
 func (s CreateTemplateBuildConfig) String() string {
@@ -38,6 +42,10 @@ func (s *CreateTemplateBuildConfig) GetEnvdInject() *CreateTemplateEnvdInjectAct
 	return s.EnvdInject
 }
 
+func (s *CreateTemplateBuildConfig) GetInstallStorageClients() *bool {
+	return s.InstallStorageClients
+}
+
 func (s *CreateTemplateBuildConfig) SetCopy(v *CreateTemplateCopyAction) *CreateTemplateBuildConfig {
 	s.Copy = v
 	return s
@@ -45,6 +53,11 @@ func (s *CreateTemplateBuildConfig) SetCopy(v *CreateTemplateCopyAction) *Create
 
 func (s *CreateTemplateBuildConfig) SetEnvdInject(v *CreateTemplateEnvdInjectAction) *CreateTemplateBuildConfig {
 	s.EnvdInject = v
+	return s
+}
+
+func (s *CreateTemplateBuildConfig) SetInstallStorageClients(v bool) *CreateTemplateBuildConfig {
+	s.InstallStorageClients = &v
 	return s
 }
 

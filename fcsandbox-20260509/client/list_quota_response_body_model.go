@@ -29,15 +29,20 @@ type ListQuotaResponseBody struct {
 	// example:
 	//
 	// 200
-	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The maximum number of records per page returned in this response.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token obtained from the previous response.
+	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first query. You can obtain the token for subsequent queries from the response.
 	//
 	// example:
 	//

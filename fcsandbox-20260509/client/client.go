@@ -241,7 +241,7 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 
 // Summary:
 //
-// 创建模板缓存
+// Creates a template cache.
 //
 // @param request - CreateTemplateCacheRequest
 //
@@ -283,7 +283,7 @@ func (client *Client) CreateTemplateCacheWithOptions(request *CreateTemplateCach
 
 // Summary:
 //
-// 创建模板缓存
+// Creates a template cache.
 //
 // @param request - CreateTemplateCacheRequest
 //
@@ -615,7 +615,7 @@ func (client *Client) DeleteTemplate(templateID *string, request *DeleteTemplate
 
 // Summary:
 //
-// 删除模板缓存
+// Deletes the template cache.
 //
 // @param request - DeleteTemplateCacheRequest
 //
@@ -662,7 +662,7 @@ func (client *Client) DeleteTemplateCacheWithOptions(templateID *string, request
 
 // Summary:
 //
-// 删除模板缓存
+// Deletes the template cache.
 //
 // @param request - DeleteTemplateCacheRequest
 //
@@ -747,7 +747,7 @@ func (client *Client) DeleteVolume(volumeID *string, request *DeleteVolumeReques
 
 // Summary:
 //
-// Queries an API key.
+// Retrieves an API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -788,7 +788,7 @@ func (client *Client) DescribeApiKeyWithOptions(apiKeyID *string, request *Descr
 
 // Summary:
 //
-// Queries an API key.
+// Retrieves an API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -1455,7 +1455,7 @@ func (client *Client) ListTemplateCache(request *ListTemplateCacheRequest) (_res
 
 // Summary:
 //
-// Queries a list of templates.
+// Lists templates.
 //
 // @param request - ListTemplatesRequest
 //
@@ -1510,7 +1510,7 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 
 // Summary:
 //
-// Queries a list of templates.
+// Lists templates.
 //
 // @param request - ListTemplatesRequest
 //

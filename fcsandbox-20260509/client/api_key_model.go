@@ -52,7 +52,7 @@ type ApiKey struct {
 	//
 	// 34f6a4c4-499f-4bbd-baa0-0e699f53abcd
 	ApiKeyID *string `json:"apiKeyID,omitempty" xml:"apiKeyID,omitempty"`
-	// The masked display value of the API key.
+	// The display value of the API key.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ApiKey struct {
 	//
 	// e2b_xxxxxx79cd777ef8exxxxxx4ad6f1b567cxxxxxx
 	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
-	// The time when the API key was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -81,22 +81,25 @@ type ApiKey struct {
 	// example:
 	//
 	// 2023-10-13T08:27:20Z
-	ExpireTime  *string     `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The list of IP addresses that are prohibited from using the API key.
 	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	// The list of IP addresses that are allowed to use the API key.
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
-	// The time when the API key was last used.
+	// The last used time.
 	//
 	// example:
 	//
 	// 2023-09-14T08:27:20Z
 	LastUsedTime *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	Source          *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The source of the API key.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The status. Valid values:
 	//
 	// - active
@@ -117,8 +120,13 @@ type ApiKey struct {
 	//
 	// example:
 	//
-	// Development Team
+	// Development team
 	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// The plan of the team to which the API key belongs.
+	//
+	// example:
+	//
+	// Pro
 	TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
 	// The UID of the creator.
 	//

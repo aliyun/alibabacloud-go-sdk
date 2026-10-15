@@ -22,7 +22,7 @@ type iCreateApiKeyInput interface {
 }
 
 type CreateApiKeyInput struct {
-	// The API key name.
+	// The name of the API key.
 	//
 	// example:
 	//
@@ -33,8 +33,10 @@ type CreateApiKeyInput struct {
 	// example:
 	//
 	// 2026-07-24T16:00:00.000Z
-	ExpireTime  *string     `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The list of IP addresses that are blocked from using the API key.
 	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	// The list of IP addresses that are allowed to use the API key.
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 	// The unique identifier of the team.
 	//
