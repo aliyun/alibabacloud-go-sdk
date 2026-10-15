@@ -17,6 +17,8 @@ type iExportCipStatsRequest interface {
   GetExportType() *string 
   SetLabel(v string) *ExportCipStatsRequest
   GetLabel() *string 
+  SetQuery(v string) *ExportCipStatsRequest
+  GetQuery() *string 
   SetRegionId(v string) *ExportCipStatsRequest
   GetRegionId() *string 
   SetResourceType(v string) *ExportCipStatsRequest
@@ -50,9 +52,9 @@ type ExportCipStatsRequest struct {
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
   // The export type. Valid values:
   // 
-  // - **level**: export by risk level.
+  // - **level**: Export by risk level.
   // 
-  // - **label**: export by label.
+  // - **label**: Export by label.
   // 
   // example:
   // 
@@ -64,6 +66,12 @@ type ExportCipStatsRequest struct {
   // 
   // xx
   Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+  // The query condition.
+  // 
+  // example:
+  // 
+  // {"Classify":"guard-scene"}
+  Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
   // The region ID.
   // 
   // example:
@@ -96,15 +104,15 @@ type ExportCipStatsRequest struct {
   SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
   // The type. Valid values:
   // 
-  // - **cip**: Content Moderation invocation volume statistics.
+  // - **cip**: Content Moderation invoke volume statistics.
   // 
-  // - **risk_level**: Content Moderation risk level statistics.
+  // - **risk_level**: Content Moderation security risk level statistics.
   // 
-  // - **content_moderation**: AI safety guardrail content compliance risk level and tag statistics.
+  // - **content_moderation**: AI Safety Guardrail content compliance risk level and tag statistics.
   // 
-  // - **sensitive_data**: AI safety guardrail sensitive data risk level and tag statistics.
+  // - **sensitive_data**: AI Safety Guardrail sensitive data risk level and tag statistics.
   // 
-  // - **prompt_attack**: AI safety guardrail prompt risk level and tag statistics.
+  // - **prompt_attack**: AI Safety Guardrail prompt risk level and tag statistics.
   // 
   // example:
   // 
@@ -134,6 +142,10 @@ func (s *ExportCipStatsRequest) GetExportType() *string  {
 
 func (s *ExportCipStatsRequest) GetLabel() *string  {
   return s.Label
+}
+
+func (s *ExportCipStatsRequest) GetQuery() *string  {
+  return s.Query
 }
 
 func (s *ExportCipStatsRequest) GetRegionId() *string  {
@@ -177,6 +189,11 @@ func (s *ExportCipStatsRequest) SetExportType(v string) *ExportCipStatsRequest {
 
 func (s *ExportCipStatsRequest) SetLabel(v string) *ExportCipStatsRequest {
   s.Label = &v
+  return s
+}
+
+func (s *ExportCipStatsRequest) SetQuery(v string) *ExportCipStatsRequest {
+  s.Query = &v
   return s
 }
 

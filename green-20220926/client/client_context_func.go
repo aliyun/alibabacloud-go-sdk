@@ -1934,7 +1934,7 @@ func (client *Client) ExportAnswerSampleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Exports call usage statistics.
+// Exports call volume.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -1968,6 +1968,10 @@ func (client *Client) ExportCipStatsWithContext(ctx context.Context, request *Ex
 
 	if !dara.IsNil(request.Label) {
 		body["Label"] = request.Label
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
 	}
 
 	if !dara.IsNil(request.ResourceType) {
@@ -3546,7 +3550,7 @@ func (client *Client) GetKeywordImportResultWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves keyword library information.
+// Retrieves the information about a keyword library.
 //
 // @param request - GetKeywordLibRequest
 //
@@ -3572,6 +3576,10 @@ func (client *Client) GetKeywordLibWithContext(ctx context.Context, request *Get
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
 		body["LibId"] = request.LibId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		body["ServiceCode"] = request.ServiceCode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5388,7 +5396,7 @@ func (client *Client) ListImagesFromLibWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries the list of keyword libraries.
+// Queries a list of keyword libraries.
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -5405,6 +5413,10 @@ func (client *Client) ListKeywordLibsWithContext(ctx context.Context, request *L
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
 	}
 
 	if !dara.IsNil(request.TenantCode) {
@@ -7431,6 +7443,10 @@ func (client *Client) UpdateServiceConfigWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.KeywordHitLibs) {
 		body["KeywordHitLibs"] = request.KeywordHitLibs
+	}
+
+	if !dara.IsNil(request.KeywordLibProcessConf) {
+		body["KeywordLibProcessConf"] = request.KeywordLibProcessConf
 	}
 
 	if !dara.IsNil(request.ManualMachineConfig) {

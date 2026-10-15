@@ -30,13 +30,13 @@ type GetKeywordLibResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetKeywordLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -125,19 +125,21 @@ type GetKeywordLibResponseBodyData struct {
 	//
 	// 100
 	KeywordCount *string `json:"KeywordCount,omitempty" xml:"KeywordCount,omitempty"`
-	// The keyword library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
 	// customxx_xxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The library name.
+	// The name of the keyword library.
 	//
 	// example:
 	//
-	// TestLibrary.
+	// Test keyword library
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
-	// The Alibaba Cloud account ID.
+	// The preprocessing list of the keyword library. If ServiceCode is not specified or no preprocessing is configured, an empty array is returned.
+	PreprocessList []*string `json:"PreprocessList,omitempty" xml:"PreprocessList,omitempty" type:"Repeated"`
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -169,6 +171,10 @@ func (s *GetKeywordLibResponseBodyData) GetLibName() *string {
 	return s.LibName
 }
 
+func (s *GetKeywordLibResponseBodyData) GetPreprocessList() []*string {
+	return s.PreprocessList
+}
+
 func (s *GetKeywordLibResponseBodyData) GetUid() *string {
 	return s.Uid
 }
@@ -190,6 +196,11 @@ func (s *GetKeywordLibResponseBodyData) SetLibId(v string) *GetKeywordLibRespons
 
 func (s *GetKeywordLibResponseBodyData) SetLibName(v string) *GetKeywordLibResponseBodyData {
 	s.LibName = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBodyData) SetPreprocessList(v []*string) *GetKeywordLibResponseBodyData {
+	s.PreprocessList = v
 	return s
 }
 

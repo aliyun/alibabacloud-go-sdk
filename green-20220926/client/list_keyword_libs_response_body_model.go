@@ -30,13 +30,13 @@ type ListKeywordLibsResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*ListKeywordLibsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -129,25 +129,27 @@ type ListKeywordLibsResponseBodyData struct {
 	//
 	// 10
 	KeywordCount *string `json:"KeywordCount,omitempty" xml:"KeywordCount,omitempty"`
-	// The library ID.
+	// The ID of the library.
 	//
 	// example:
 	//
 	// custom_xxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The library name.
+	// The name of the library.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
-	// The service codes.
+	// The preprocessing list of the library. If ServiceCode is not specified or not configured, an empty array is returned.
+	PreprocessList []*string `json:"PreprocessList,omitempty" xml:"PreprocessList,omitempty" type:"Repeated"`
+	// The associated services.
 	//
 	// example:
 	//
 	// service1,service2
 	ServiceCodes *string `json:"ServiceCodes,omitempty" xml:"ServiceCodes,omitempty"`
-	// UID。
+	// The UID.
 	//
 	// example:
 	//
@@ -179,6 +181,10 @@ func (s *ListKeywordLibsResponseBodyData) GetLibName() *string {
 	return s.LibName
 }
 
+func (s *ListKeywordLibsResponseBodyData) GetPreprocessList() []*string {
+	return s.PreprocessList
+}
+
 func (s *ListKeywordLibsResponseBodyData) GetServiceCodes() *string {
 	return s.ServiceCodes
 }
@@ -204,6 +210,11 @@ func (s *ListKeywordLibsResponseBodyData) SetLibId(v string) *ListKeywordLibsRes
 
 func (s *ListKeywordLibsResponseBodyData) SetLibName(v string) *ListKeywordLibsResponseBodyData {
 	s.LibName = &v
+	return s
+}
+
+func (s *ListKeywordLibsResponseBodyData) SetPreprocessList(v []*string) *ListKeywordLibsResponseBodyData {
+	s.PreprocessList = v
 	return s
 }
 

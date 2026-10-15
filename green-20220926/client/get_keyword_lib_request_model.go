@@ -13,12 +13,14 @@ type iGetKeywordLibRequest interface {
 	GetLibId() *string
 	SetRegionId(v string) *GetKeywordLibRequest
 	GetRegionId() *string
+	SetServiceCode(v string) *GetKeywordLibRequest
+	GetServiceCode() *string
 	SetTenantCode(v string) *GetKeywordLibRequest
 	GetTenantCode() *string
 }
 
 type GetKeywordLibRequest struct {
-	// The keyword library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
@@ -30,9 +32,15 @@ type GetKeywordLibRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The library code.
+	// The service code. This parameter is required when you query the preprocessing configurations (PreprocessList) of the library.
 	//
-	// - desensitize: masking library
+	// example:
+	//
+	// ugc_moderation_byllm_pro
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The code of the keyword library.
+	//
+	// - desensitize: Desensitization keyword library.
 	//
 	// example:
 	//
@@ -56,6 +64,10 @@ func (s *GetKeywordLibRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *GetKeywordLibRequest) GetServiceCode() *string {
+	return s.ServiceCode
+}
+
 func (s *GetKeywordLibRequest) GetTenantCode() *string {
 	return s.TenantCode
 }
@@ -67,6 +79,11 @@ func (s *GetKeywordLibRequest) SetLibId(v string) *GetKeywordLibRequest {
 
 func (s *GetKeywordLibRequest) SetRegionId(v string) *GetKeywordLibRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetKeywordLibRequest) SetServiceCode(v string) *GetKeywordLibRequest {
+	s.ServiceCode = &v
 	return s
 }
 

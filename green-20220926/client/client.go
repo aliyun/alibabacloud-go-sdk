@@ -2579,7 +2579,7 @@ func (client *Client) ExportAnswerSample(request *ExportAnswerSampleRequest) (_r
 
 // Summary:
 //
-// Exports call usage statistics.
+// Exports call volume.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -2613,6 +2613,10 @@ func (client *Client) ExportCipStatsWithOptions(request *ExportCipStatsRequest, 
 
 	if !dara.IsNil(request.Label) {
 		body["Label"] = request.Label
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
 	}
 
 	if !dara.IsNil(request.ResourceType) {
@@ -2661,7 +2665,7 @@ func (client *Client) ExportCipStatsWithOptions(request *ExportCipStatsRequest, 
 
 // Summary:
 //
-// Exports call usage statistics.
+// Exports call volume.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -4695,7 +4699,7 @@ func (client *Client) GetKeywordImportResult(request *GetKeywordImportResultRequ
 
 // Summary:
 //
-// Retrieves keyword library information.
+// Retrieves the information about a keyword library.
 //
 // @param request - GetKeywordLibRequest
 //
@@ -4721,6 +4725,10 @@ func (client *Client) GetKeywordLibWithOptions(request *GetKeywordLibRequest, ru
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
 		body["LibId"] = request.LibId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		body["ServiceCode"] = request.ServiceCode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4749,7 +4757,7 @@ func (client *Client) GetKeywordLibWithOptions(request *GetKeywordLibRequest, ru
 
 // Summary:
 //
-// Retrieves keyword library information.
+// Retrieves the information about a keyword library.
 //
 // @param request - GetKeywordLibRequest
 //
@@ -7117,7 +7125,7 @@ func (client *Client) ListImagesFromLib(request *ListImagesFromLibRequest) (_res
 
 // Summary:
 //
-// Queries the list of keyword libraries.
+// Queries a list of keyword libraries.
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -7134,6 +7142,10 @@ func (client *Client) ListKeywordLibsWithOptions(request *ListKeywordLibsRequest
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
 	}
 
 	if !dara.IsNil(request.TenantCode) {
@@ -7165,7 +7177,7 @@ func (client *Client) ListKeywordLibsWithOptions(request *ListKeywordLibsRequest
 
 // Summary:
 //
-// Queries the list of keyword libraries.
+// Queries a list of keyword libraries.
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -9740,6 +9752,10 @@ func (client *Client) UpdateServiceConfigWithOptions(request *UpdateServiceConfi
 
 	if !dara.IsNil(request.KeywordHitLibs) {
 		body["KeywordHitLibs"] = request.KeywordHitLibs
+	}
+
+	if !dara.IsNil(request.KeywordLibProcessConf) {
+		body["KeywordLibProcessConf"] = request.KeywordLibProcessConf
 	}
 
 	if !dara.IsNil(request.ManualMachineConfig) {

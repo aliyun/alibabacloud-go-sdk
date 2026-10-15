@@ -19,6 +19,8 @@ type iUpdateServiceConfigRequest interface {
 	GetKeywordFilterLibs() *string
 	SetKeywordHitLibs(v string) *UpdateServiceConfigRequest
 	GetKeywordHitLibs() *string
+	SetKeywordLibProcessConf(v string) *UpdateServiceConfigRequest
+	GetKeywordLibProcessConf() *string
 	SetManualMachineConfig(v string) *UpdateServiceConfigRequest
 	GetManualMachineConfig() *string
 	SetRegionId(v string) *UpdateServiceConfigRequest
@@ -38,13 +40,13 @@ type iUpdateServiceConfigRequest interface {
 }
 
 type UpdateServiceConfigRequest struct {
-	// The client-generated idempotency token used to prevent duplicate operations caused by network retries. The token must be unique across requests and contain only printable ASCII characters (ASCII 32-126).
+	// The client-generated idempotency token. It prevents duplicate operations caused by network retries and must be unique across different requests. Only printable ASCII characters (ASCII 32-126) are supported.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. When set to true, only parameter validation and business logic checks are performed without actually creating or updating resources.
+	// Specifies whether to enable dry run mode. When set to true, only parameter validation and business logic checks are performed, and resources are not actually created or updated.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The document configuration.
 	//
@@ -58,12 +60,18 @@ type UpdateServiceConfigRequest struct {
 	//
 	// []
 	KeywordFilterLibs *string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty"`
-	// The keyword hit libraries.
+	// The matched keyword libraries.
 	//
 	// example:
 	//
 	// []
 	KeywordHitLibs *string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty"`
+	// The keyword library preprocessing configuration in JSON format. The format maps a libId to a list of preprocessing types, such as {"libId":["fps"]}. If this parameter is not passed, the configuration is not updated. An empty object {} clears all configurations. An empty array for a libId clears the configuration for that library.
+	//
+	// example:
+	//
+	// {"libId":["fps"]}
+	KeywordLibProcessConf *string `json:"KeywordLibProcessConf,omitempty" xml:"KeywordLibProcessConf,omitempty"`
 	// The human-machine moderation configuration.
 	//
 	// example:
@@ -88,7 +96,7 @@ type UpdateServiceConfigRequest struct {
 	//
 	// pornographic
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The scenario configuration.
+	// The scenario configuration information.
 	//
 	// example:
 	//
@@ -140,6 +148,10 @@ func (s *UpdateServiceConfigRequest) GetKeywordFilterLibs() *string {
 
 func (s *UpdateServiceConfigRequest) GetKeywordHitLibs() *string {
 	return s.KeywordHitLibs
+}
+
+func (s *UpdateServiceConfigRequest) GetKeywordLibProcessConf() *string {
+	return s.KeywordLibProcessConf
 }
 
 func (s *UpdateServiceConfigRequest) GetManualMachineConfig() *string {
@@ -196,6 +208,11 @@ func (s *UpdateServiceConfigRequest) SetKeywordFilterLibs(v string) *UpdateServi
 
 func (s *UpdateServiceConfigRequest) SetKeywordHitLibs(v string) *UpdateServiceConfigRequest {
 	s.KeywordHitLibs = &v
+	return s
+}
+
+func (s *UpdateServiceConfigRequest) SetKeywordLibProcessConf(v string) *UpdateServiceConfigRequest {
+	s.KeywordLibProcessConf = &v
 	return s
 }
 

@@ -42,7 +42,7 @@ type ExportCipStatsResponseBody struct {
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-  // The description of the error code.
+  // The detailed description of the error code.
   // 
   // example:
   // 
