@@ -18,7 +18,7 @@ type iSmartqQueryAbilityResponseBody interface {
 }
 
 type SmartqQueryAbilityResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -81,13 +81,13 @@ func (s *SmartqQueryAbilityResponseBody) Validate() error {
 }
 
 type SmartqQueryAbilityResponseBodyResult struct {
-	// The recommended chart type.
+	// The suggested chart type.
 	//
 	// example:
 	//
 	// NEW_TABLE
 	ChartType *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
-	// The summary.
+	// The summary information.
 	//
 	// if can be null:
 	// true
@@ -96,17 +96,17 @@ type SmartqQueryAbilityResponseBodyResult struct {
 	//
 	// test
 	ConclusionText *string `json:"ConclusionText,omitempty" xml:"ConclusionText,omitempty"`
-	// The list of data that is returned only in multi-step scenarios. Each element corresponds to a set of chart data.
+	// The data list returned only in multi-step scenarios. Each element corresponds to a chart dataset.
 	DataList []*string `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The visual logical SQL statement.
+	// The visualization logic SQL.
 	//
 	// example:
 	//
 	// select 	- ****
 	LogicSql *string `json:"LogicSql,omitempty" xml:"LogicSql,omitempty"`
-	// A list of column tuple types.
+	// The list of column tuple types.
 	MetaType []*SmartqQueryAbilityResponseBodyResultMetaType `json:"MetaType,omitempty" xml:"MetaType,omitempty" type:"Repeated"`
-	// An array of data value lists.
+	// The array of data value lists.
 	Values []*SmartqQueryAbilityResponseBodyResultValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -195,17 +195,17 @@ func (s *SmartqQueryAbilityResponseBodyResult) Validate() error {
 }
 
 type SmartqQueryAbilityResponseBodyResultMetaType struct {
-	// The name of the column tuple.
+	// The column tuple name.
 	//
 	// example:
 	//
 	// Polar***STPS
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the metadata. Valid values:
+	// The metadata row or column type.
 	//
-	// - Dimension
+	// - Dimension: dimension
 	//
-	// - Measure
+	// - Measure: measure
 	//
 	// if can be null:
 	// true
@@ -214,7 +214,7 @@ type SmartqQueryAbilityResponseBodyResultMetaType struct {
 	//
 	// Dimension
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The type of the column tuple.
+	// The column tuple type.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ func (s *SmartqQueryAbilityResponseBodyResultMetaType) Validate() error {
 }
 
 type SmartqQueryAbilityResponseBodyResultValues struct {
-	// The data values in a row.
+	// The data values for each row.
 	//
 	// if can be null:
 	// true

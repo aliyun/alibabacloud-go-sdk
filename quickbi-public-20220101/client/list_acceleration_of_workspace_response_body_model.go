@@ -24,7 +24,7 @@ type ListAccelerationOfWorkspaceResponseBody struct {
 	//
 	// D787E****************05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The acceleration task model.
+	// The acceleration task information model.
 	Result *ListAccelerationOfWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -83,9 +83,9 @@ func (s *ListAccelerationOfWorkspaceResponseBody) Validate() error {
 }
 
 type ListAccelerationOfWorkspaceResponseBodyResult struct {
-	// An array of acceleration task information.
+	// The array of acceleration task information.
 	Data []*ListAccelerationOfWorkspaceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The next page. A value of NULL or 0 indicates that there is no next page.
+	// The next page number. A value of NULL or 0 indicates that there is no next page.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type ListAccelerationOfWorkspaceResponseBodyResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page that you set when you call the operation.
+	// The number of rows per page specified in the request.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The previous page. A value of NULL or 0 indicates that there is no previous page.
+	// The previous page number. A value of NULL or 0 indicates that there is no previous page.
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type ListAccelerationOfWorkspaceResponseBodyResultData struct {
 	//
 	// test
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	// The time when acceleration was enabled.
+	// The time when acceleration was enabled, in the format of YYYYMMDD HH:mm:ss.
 	//
 	// example:
 	//
@@ -244,25 +244,25 @@ type ListAccelerationOfWorkspaceResponseBodyResultData struct {
 	//
 	// b30b74**********b3b
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The status of the task. Valid values:
+	// The status. Valid values:
 	//
-	// - 0: Pending
+	// - 0: pending
 	//
-	// - 1: Running
+	// - 1: running
 	//
-	// - 2: Succeeded
+	// - 2: completed
 	//
-	// - 3: Failed
+	// - 3: failed
 	//
-	// - 4: Canceled
+	// - 4: canceled
 	//
-	// - 5: Warning
+	// - 5: warning
 	//
 	// example:
 	//
 	// 0
 	JobStatus *int32 `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The time when the task was last modified.
+	// The last modification time, in the format of YYYYMMDD HH:mm:ss.
 	//
 	// example:
 	//

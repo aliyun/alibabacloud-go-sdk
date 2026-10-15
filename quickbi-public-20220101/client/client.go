@@ -25,18 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":        dara.String("quickbi-public.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("quickbi-public.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("quickbi-public.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("quickbi-public.ap-southeast-5.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("quickbi-public.cn-hangzhou.aliyuncs.com"),
-		"cn-hongkong":           dara.String("quickbi-public.cn-hongkong.aliyuncs.com"),
-		"us-east-1":             dara.String("quickbi-public.us-east-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("quickbi-public.eu-central-1.aliyuncs.com"),
-		"me-central-1":          dara.String("quickbi-public.me-central-1.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("quickbi-public.cn-shanghai-finance-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -288,7 +276,7 @@ func (client *Client) AddDataSource(request *AddDataSourceRequest) (_result *Add
 
 // Summary:
 //
-// Add a sharing configuration for data works.
+// Adds a sharing configuration for a data work.
 //
 // @param request - AddShareReportRequest
 //
@@ -348,7 +336,7 @@ func (client *Client) AddShareReportWithOptions(request *AddShareReportRequest, 
 
 // Summary:
 //
-// Add a sharing configuration for data works.
+// Adds a sharing configuration for a data work.
 //
 // @param request - AddShareReportRequest
 //
@@ -366,7 +354,7 @@ func (client *Client) AddShareReport(request *AddShareReportRequest) (_result *A
 
 // Summary:
 //
-// Add organization members.
+// Adds an organization member.
 //
 // @param request - AddUserRequest
 //
@@ -440,7 +428,7 @@ func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *dara.
 
 // Summary:
 //
-// Add organization members.
+// Adds an organization member.
 //
 // @param request - AddUserRequest
 //
@@ -808,7 +796,7 @@ func (client *Client) AddWorksAuthorization(request *AddWorksAuthorizationReques
 
 // Summary:
 //
-// Batch add members to the workspace.
+// Adds members to a workspace in batches.
 //
 // @param request - AddWorkspaceUsersRequest
 //
@@ -860,7 +848,7 @@ func (client *Client) AddWorkspaceUsersWithOptions(request *AddWorkspaceUsersReq
 
 // Summary:
 //
-// Batch add members to the workspace.
+// Adds members to a workspace in batches.
 //
 // @param request - AddWorkspaceUsersRequest
 //
@@ -3291,7 +3279,7 @@ func (client *Client) GetMailTaskStatus(request *GetMailTaskStatusRequest) (_res
 
 // Summary:
 //
-// Search for user group information based on the keyword of the user group name.
+// Searches for user group information by user group name keyword.
 //
 // @param request - GetUserGroupInfoRequest
 //
@@ -3335,7 +3323,7 @@ func (client *Client) GetUserGroupInfoWithOptions(request *GetUserGroupInfoReque
 
 // Summary:
 //
-// Search for user group information based on the keyword of the user group name.
+// Searches for user group information by user group name keyword.
 //
 // @param request - GetUserGroupInfoRequest
 //
@@ -3353,7 +3341,7 @@ func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_resul
 
 // Summary:
 //
-// # Query the list of embedded reports
+// Queries the list of embedded reports.
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -3413,7 +3401,7 @@ func (client *Client) GetWorksEmbedListWithOptions(request *GetWorksEmbedListReq
 
 // Summary:
 //
-// # Query the list of embedded reports
+// Queries the list of embedded reports.
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -3431,7 +3419,7 @@ func (client *Client) GetWorksEmbedList(request *GetWorksEmbedListRequest) (_res
 
 // Summary:
 //
-// Configures the IP address whitelist for data security.
+// Configures the IP whitelist for data security.
 //
 // @param request - IpWhiteListConfigRequest
 //
@@ -3479,7 +3467,7 @@ func (client *Client) IpWhiteListConfigWithOptions(request *IpWhiteListConfigReq
 
 // Summary:
 //
-// Configures the IP address whitelist for data security.
+// Configures the IP whitelist for data security.
 //
 // @param request - IpWhiteListConfigRequest
 //
@@ -3497,7 +3485,7 @@ func (client *Client) IpWhiteListConfig(request *IpWhiteListConfigRequest) (_res
 
 // Summary:
 //
-// Retrieves information about acceleration tasks in a workspace.
+// Retrieves acceleration engine task information from the management page of a workspace.
 //
 // @param request - ListAccelerationOfWorkspaceRequest
 //
@@ -3557,7 +3545,7 @@ func (client *Client) ListAccelerationOfWorkspaceWithOptions(request *ListAccele
 
 // Summary:
 //
-// Retrieves information about acceleration tasks in a workspace.
+// Retrieves acceleration engine task information from the management page of a workspace.
 //
 // @param request - ListAccelerationOfWorkspaceRequest
 //
@@ -3575,11 +3563,11 @@ func (client *Client) ListAccelerationOfWorkspace(request *ListAccelerationOfWor
 
 // Summary:
 //
-// Queries API data sources.
+// Queries the list of API data sources.
 //
 // Description:
 //
-// For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
+// For more information about the parameter description, see [Create an API data source.](https://help.aliyun.com/document_detail/409330.html)
 //
 // @param request - ListApiDatasourceRequest
 //
@@ -3635,11 +3623,11 @@ func (client *Client) ListApiDatasourceWithOptions(request *ListApiDatasourceReq
 
 // Summary:
 //
-// Queries API data sources.
+// Queries the list of API data sources.
 //
 // Description:
 //
-// For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
+// For more information about the parameter description, see [Create an API data source.](https://help.aliyun.com/document_detail/409330.html)
 //
 // @param request - ListApiDatasourceRequest
 //
@@ -3657,7 +3645,85 @@ func (client *Client) ListApiDatasource(request *ListApiDatasourceRequest) (_res
 
 // Summary:
 //
-// Queries user group information at a time by user group ID.
+// Queries the collaborative authorization records of a resource.
+//
+// @param request - ListAuthConfigByResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthConfigByResourceResponse
+func (client *Client) ListAuthConfigByResourceWithOptions(request *ListAuthConfigByResourceRequest, runtime *dara.RuntimeOptions) (_result *ListAuthConfigByResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HasAuth) {
+		query["HasAuth"] = request.HasAuth
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ShareToType) {
+		query["ShareToType"] = request.ShareToType
+	}
+
+	if !dara.IsNil(request.WorksType) {
+		query["WorksType"] = request.WorksType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthConfigByResource"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthConfigByResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the collaborative authorization records of a resource.
+//
+// @param request - ListAuthConfigByResourceRequest
+//
+// @return ListAuthConfigByResourceResponse
+func (client *Client) ListAuthConfigByResource(request *ListAuthConfigByResourceRequest) (_result *ListAuthConfigByResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAuthConfigByResourceResponse{}
+	_body, _err := client.ListAuthConfigByResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about user groups in batch by user group ID.
 //
 // @param request - ListByUserGroupIdRequest
 //
@@ -3701,7 +3767,7 @@ func (client *Client) ListByUserGroupIdWithOptions(request *ListByUserGroupIdReq
 
 // Summary:
 //
-// Queries user group information at a time by user group ID.
+// Queries information about user groups in batch by user group ID.
 //
 // @param request - ListByUserGroupIdRequest
 //
@@ -3855,11 +3921,11 @@ func (client *Client) ListCubeDataLevelPermissionConfig(request *ListCubeDataLev
 
 // Summary:
 //
-// Retrieve the whitelist for dataset row and column permissions based on the type of permission.
+// Retrieves the whitelist of row-level or column-level permissions for a dataset based on the specified permission type.
 //
 // Description:
 //
-// > This API only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
+// >: This operation supports only the new row and column permission model of Quick BI. If you are still using the legacy row and column permissions, migrate to the new model before calling this operation. To migrate to the new row and column permission model: In Organization Management > Security Configuration > Row and Column Permission Upgrade, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - ListDataLevelPermissionWhiteListRequest
 //
@@ -3907,11 +3973,11 @@ func (client *Client) ListDataLevelPermissionWhiteListWithOptions(request *ListD
 
 // Summary:
 //
-// Retrieve the whitelist for dataset row and column permissions based on the type of permission.
+// Retrieves the whitelist of row-level or column-level permissions for a dataset based on the specified permission type.
 //
 // Description:
 //
-// > This API only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
+// >: This operation supports only the new row and column permission model of Quick BI. If you are still using the legacy row and column permissions, migrate to the new model before calling this operation. To migrate to the new row and column permission model: In Organization Management > Security Configuration > Row and Column Permission Upgrade, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - ListDataLevelPermissionWhiteListRequest
 //
@@ -4371,7 +4437,7 @@ func (client *Client) ListPortalMenus(request *ListPortalMenusRequest) (_result 
 
 // Summary:
 //
-// You can call this operation to obtain a list of the most frequently viewed and footsteps displayed in the homepage dashboard for a specified user.
+// Retrieves the frequently viewed items and footprint list displayed on the homepage dashboard for a specified user.
 //
 // @param request - ListRecentViewReportsRequest
 //
@@ -4435,7 +4501,7 @@ func (client *Client) ListRecentViewReportsWithOptions(request *ListRecentViewRe
 
 // Summary:
 //
-// You can call this operation to obtain a list of the most frequently viewed and footsteps displayed in the homepage dashboard for a specified user.
+// Retrieves the frequently viewed items and footprint list displayed on the homepage dashboard for a specified user.
 //
 // @param request - ListRecentViewReportsRequest
 //
@@ -5133,7 +5199,7 @@ func (client *Client) ModifyDashboardNl2sqlStatus(request *ModifyDashboardNl2sql
 
 // Summary:
 //
-// Queries the run logs of acceleration tasks for a specified dataset.
+// Retrieves the execution logs of acceleration tasks for a specified dataset.
 //
 // @param request - QueryAccelerationLogByCubeIdRequest
 //
@@ -5193,7 +5259,7 @@ func (client *Client) QueryAccelerationLogByCubeIdWithOptions(request *QueryAcce
 
 // Summary:
 //
-// Queries the run logs of acceleration tasks for a specified dataset.
+// Retrieves the execution logs of acceleration tasks for a specified dataset.
 //
 // @param request - QueryAccelerationLogByCubeIdRequest
 //
@@ -6222,7 +6288,7 @@ func (client *Client) QueryDatasetInfo(request *QueryDatasetInfoRequest) (_resul
 
 // Summary:
 //
-// Queries the datasets in a specified workspace. The results are sorted in descending order by creation time.
+// Queries the list of datasets in a specified workspace, sorted by creation time in descending order.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -6286,7 +6352,7 @@ func (client *Client) QueryDatasetListWithOptions(request *QueryDatasetListReque
 
 // Summary:
 //
-// Queries the datasets in a specified workspace. The results are sorted in descending order by creation time.
+// Queries the list of datasets in a specified workspace, sorted by creation time in descending order.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -6729,7 +6795,7 @@ func (client *Client) QueryOrganizationRoleConfig(request *QueryOrganizationRole
 
 // Summary:
 //
-// Lists the workspaces in the current organization.
+// Retrieves the list of workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -6785,7 +6851,7 @@ func (client *Client) QueryOrganizationWorkspaceListWithOptions(request *QueryOr
 
 // Summary:
 //
-// Lists the workspaces in the current organization.
+// Retrieves the list of workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -7827,7 +7893,7 @@ func (client *Client) QueryUserTagValueList(request *QueryUserTagValueListReques
 
 // Summary:
 //
-// Queries information about a specified data work.
+// Queries the information of a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -7871,7 +7937,7 @@ func (client *Client) QueryWorksWithOptions(request *QueryWorksRequest, runtime 
 
 // Summary:
 //
-// Queries information about a specified data work.
+// Queries the information of a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -7951,7 +8017,7 @@ func (client *Client) QueryWorksBloodRelationship(request *QueryWorksBloodRelati
 
 // Summary:
 //
-// Query all works under the entire organization, with the option to specify the type of work.
+// Queries all works in an organization. You can specify the work type.
 //
 // @param request - QueryWorksByOrganizationRequest
 //
@@ -8011,7 +8077,7 @@ func (client *Client) QueryWorksByOrganizationWithOptions(request *QueryWorksByO
 
 // Summary:
 //
-// Query all works under the entire organization, with the option to specify the type of work.
+// Queries all works in an organization. You can specify the work type.
 //
 // @param request - QueryWorksByOrganizationRequest
 //
@@ -8757,11 +8823,11 @@ func (client *Client) SmartqAuthorize(request *SmartqAuthorizeRequest) (_result 
 
 // Summary:
 //
-// Runs an intelligent Q&A query.
+// Queries data by using the Smart Q&A feature.
 //
 // Description:
 //
-// Note: Authorized users can query data as another user by passing the userId of the target user.
+// Note: When a user is authorized to call this API, the user can query data as a specified user by passing in the userId parameter.
 //
 // @param request - SmartqQueryAbilityRequest
 //
@@ -8817,11 +8883,11 @@ func (client *Client) SmartqQueryAbilityWithOptions(request *SmartqQueryAbilityR
 
 // Summary:
 //
-// Runs an intelligent Q&A query.
+// Queries data by using the Smart Q&A feature.
 //
 // Description:
 //
-// Note: Authorized users can query data as another user by passing the userId of the target user.
+// Note: When a user is authorized to call this API, the user can query data as a specified user by passing in the userId parameter.
 //
 // @param request - SmartqQueryAbilityRequest
 //
@@ -8896,6 +8962,80 @@ func (client *Client) TransferUsergroup(request *TransferUsergroupRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &TransferUsergroupResponse{}
 	_body, _err := client.TransferUsergroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permission attributes of resource collaborative authorization.
+//
+// @param request - UpdateAuthorizationAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationAttributesResponse
+func (client *Client) UpdateAuthorizationAttributesWithOptions(request *UpdateAuthorizationAttributesRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EditPermissionType) {
+		query["EditPermissionType"] = request.EditPermissionType
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.UsePermissionType) {
+		query["UsePermissionType"] = request.UsePermissionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationAttributes"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permission attributes of resource collaborative authorization.
+//
+// @param request - UpdateAuthorizationAttributesRequest
+//
+// @return UpdateAuthorizationAttributesResponse
+func (client *Client) UpdateAuthorizationAttributes(request *UpdateAuthorizationAttributesRequest) (_result *UpdateAuthorizationAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAuthorizationAttributesResponse{}
+	_body, _err := client.UpdateAuthorizationAttributesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9559,7 +9699,7 @@ func (client *Client) UpdateUserTagValue(request *UpdateUserTagValueRequest) (_r
 
 // Summary:
 //
-// Modify the role of a specified member under the workspace, existing roles will be overwritten.
+// Modifies the role of a specified member in a workspace. The existing role is overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //
@@ -9615,7 +9755,7 @@ func (client *Client) UpdateWorkspaceUserRoleWithOptions(request *UpdateWorkspac
 
 // Summary:
 //
-// Modify the role of a specified member under the workspace, existing roles will be overwritten.
+// Modifies the role of a specified member in a workspace. The existing role is overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //
@@ -9633,7 +9773,7 @@ func (client *Client) UpdateWorkspaceUserRole(request *UpdateWorkspaceUserRoleRe
 
 // Summary:
 //
-// # Batch update the role information of workspace members, existing roles will be overwritten
+// Updates the roles of workspace members in batches. Existing roles are overwritten.
 //
 // @param request - UpdateWorkspaceUsersRoleRequest
 //
@@ -9685,7 +9825,7 @@ func (client *Client) UpdateWorkspaceUsersRoleWithOptions(request *UpdateWorkspa
 
 // Summary:
 //
-// # Batch update the role information of workspace members, existing roles will be overwritten
+// Updates the roles of workspace members in batches. Existing roles are overwritten.
 //
 // @param request - UpdateWorkspaceUsersRoleRequest
 //

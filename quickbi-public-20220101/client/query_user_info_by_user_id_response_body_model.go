@@ -18,17 +18,17 @@ type iQueryUserInfoByUserIdResponseBody interface {
 }
 
 type QueryUserInfoByUserIdResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the organization user.
+	// The organization user information returned.
 	Result *QueryUserInfoByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request is successful.
+	// - true: The request was successful.
 	//
 	// - false: The request failed.
 	//
@@ -95,61 +95,63 @@ type QueryUserInfoByUserIdResponseBodyResult struct {
 	//
 	// 1386587****@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the organization administrator role is assigned to the user. Valid values:
+	// Indicates whether the user is an organization administrator. Valid values:
 	//
-	// - true: The role is assigned.
+	// - true: Yes.
 	//
-	// - false: The role is not assigned.
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. Use the `RoleIdList` parameter instead.
+	// <notice>This parameter is deprecated. Use the RoleIdList parameter instead.</notice>
 	//
 	// example:
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	// Indicates whether the permission administrator role is assigned to the user. Valid values:
+	// Indicates whether the user has the permission management administrator role attached. Valid values:
 	//
-	// - true: The role is assigned.
+	// - true: Yes.
 	//
-	// - false: The role is not assigned.
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. Use the `RoleIdList` parameter instead.
+	// <notice>This parameter has expired and is no longer recommended. Use the RoleIList parameter instead.</notice>
 	//
 	// example:
 	//
 	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	// The list of `CopilotModules` available to the user.
+	// The intelligent quota owned by the user.
 	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
-	// The email address of the user.
+	// The email address.
 	//
 	// example:
 	//
 	// 1386587****@163.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Indicates whether the user is disabled. Valid values:
+	//
+	// - true: Disabled.
+	//
+	// - false: Active.
+	//
 	// example:
 	//
 	// true
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The nickname of the user.
+	// The nickname.
 	//
 	// example:
 	//
-	// 测试用户
+	// Test user
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The phone number of the user.
+	// The phone number.
 	//
 	// example:
 	//
 	// 1386587****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The list of organization role IDs that are assigned to the user.
+	// The list of organization role IDs bound to the user.
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
-	// The user ID in Quick BI.
+	// The UserID in Quick BI.
 	//
 	// example:
 	//
@@ -157,11 +159,11 @@ type QueryUserInfoByUserIdResponseBodyResult struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The user type of the organization member. Valid values:
 	//
-	// - `1`: developer
+	// - 1: Developer.
 	//
-	// - `2`: viewer
+	// - 2: Viewer.
 	//
-	// - `3`: analyst
+	// - 3: Analyst.
 	//
 	// example:
 	//

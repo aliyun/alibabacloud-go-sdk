@@ -14,13 +14,13 @@ type iGetUserGroupInfoRequest interface {
 }
 
 type GetUserGroupInfoRequest struct {
-	// Keyword of the user group name.
+	// The keyword of the user group name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试用户组
+	// Test user group
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 

@@ -20,33 +20,33 @@ type iQueryOrganizationWorkspaceListRequest interface {
 }
 
 type QueryOrganizationWorkspaceListRequest struct {
-	// The keyword for searching workspaces.
+	// The keyword of the workspace name.
 	//
 	// example:
 	//
-	// 程序
+	// application
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number to return.
+	// The page number of the workspace list.
 	//
-	// - Start value: 1
+	// - Minimum value: 1.
 	//
-	// - Default value: 1
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of workspaces per page.
+	// The number of rows per page in a paged query.
 	//
-	// - Default value: 10
+	// - Default value: 10.
 	//
-	// - Maximum value: 1000
+	// - Maximum value: 1000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The user ID in Quick BI.
+	// The ID of the user in Quick BI.
 	//
 	// example:
 	//

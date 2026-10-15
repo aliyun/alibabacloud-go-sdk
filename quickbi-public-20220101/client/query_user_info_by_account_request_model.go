@@ -16,17 +16,17 @@ type iQueryUserInfoByAccountRequest interface {
 }
 
 type QueryUserInfoByAccountRequest struct {
-	// The Alibaba Cloud account name or Alibaba Cloud ID of the user.
+	// The Alibaba Cloud account name or Alibaba Cloud ID to query.
 	//
-	// - If you enter an account name:
+	// - When you enter an account name:
 	//
-	//   - If the organization member is a root account, such as `main_account`, enter the root account name. For example, `main_account`.
+	//     - If the organization user is a primary account (for example, main_account), the query account format is the primary account. That is, enter the primary account main_account.
 	//
-	//   - If the organization member is a RAM user, such as `zhangsan@test.onaliyun.com`, enter the prefix of the username before the at sign (@). For example, `zhangsan`.
+	//     - If the organization user is a RAM user (for example, zhangsan@test.onaliyun.com), the query account format is the prefix of the RAM user. That is, enter zhangsan.
 	//
-	// - If you enter an Alibaba Cloud ID:
+	// - When you enter an Alibaba Cloud ID:
 	//
-	//   - Enter the complete user ID (UID) of the account.
+	//     - Enter the complete account UID to query the corresponding account information.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type QueryUserInfoByAccountRequest struct {
 	//
 	// 1386587****@163.com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// To resolve a "duplicate user" error when querying a RAM user, specify the name of the root account to which the user belongs.
+	// The account name of the primary account when a duplicate error occurs during RAM user query. For example, zhangsan@test.onaliyun.com.
 	//
 	// example:
 	//

@@ -61,11 +61,11 @@ type UpdateUserRequest struct {
 	//
 	// moduleType -- The intelligent module.
 	//
-	// - smartQAskNum -- Smart Q questions.
+	// - smartQAskNum -- Smart Q question count.
 	//
 	// - smartQDevNum -- Smart Q building.
 	//
-	// - qreport -- Smart Q reports.
+	// - qreport -- Smart Q report.
 	//
 	// - qExploreNum -- Smart Q exploration edition.
 	//
@@ -111,7 +111,7 @@ type UpdateUserRequest struct {
 	//
 	// - Format check: The maximum length is 50 characters.
 	//
-	// - Special format check: Chinese characters, English characters, digits, _ \\ / | () ] [
+	// - Special format check: Chinese characters, English letters, digits, _ \\ / | () ] [
 	//
 	// example:
 	//

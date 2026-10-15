@@ -24,7 +24,7 @@ type IpWhiteListConfigResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IP address whitelist.
+	// The IP whitelist.
 	Result *IpWhiteListConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -79,7 +79,7 @@ func (s *IpWhiteListConfigResponseBody) Validate() error {
 }
 
 type IpWhiteListConfigResponseBodyResult struct {
-	// The IP address whitelist array.
+	// The IP whitelist array.
 	IpWhiteList []*string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty" type:"Repeated"`
 }
 

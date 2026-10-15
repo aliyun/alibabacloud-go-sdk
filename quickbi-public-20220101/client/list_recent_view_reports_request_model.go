@@ -24,23 +24,23 @@ type iListRecentViewReportsRequest interface {
 }
 
 type ListRecentViewReportsRequest struct {
-	// Keyword of the name of the work.
+	// The keyword in the name of the work.
 	//
 	// example:
 	//
-	// 财务报表
+	// FinancialReport
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of days to query data in the last few days. Default value: 10.
+	// The number of recent days to query data for. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	OffsetDay *int32 `json:"OffsetDay,omitempty" xml:"OffsetDay,omitempty"`
-	// Query the number of rows in the work list:
+	// The number of rows in the work list to query:
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
-	// 	- Maximum value: 9999
+	// - Maximum value: 9999.
 	//
 	// example:
 	//
@@ -48,27 +48,27 @@ type ListRecentViewReportsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query mode. Valid values:
 	//
-	// 	- 1: Sort by number of visits
+	// - 1: Sorted by number of visits.
 	//
-	// 	- 2: Sort by Last Access Time
+	// - 2: Sorted by most recent visit time.
 	//
 	// example:
 	//
 	// 1
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	// Query the type of the work (fill in the blank to query all types). Valid values:
+	// The type of work to query. Leave this parameter empty to query all types. Valid values:
 	//
-	// 	- DATAPRODUCT: BI portal
+	// - DATAPRODUCT: data portal
 	//
-	// 	- PAGE: Dashboard
+	// - PAGE: dashboard
 	//
-	// 	- REPORT: workbook
+	// - REPORT: workbook
 	//
 	// example:
 	//
 	// PAGE
 	TreeType *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
-	// The UserID of the user in the Quick BI.
+	// The UserID of the user to query in Quick BI.
 	//
 	// This parameter is required.
 	//

@@ -34,7 +34,7 @@ type QueryUserListRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page in a paged query.
+	// The number of rows per page for a paged query.
 	//
 	// - Default value: 10
 	//

@@ -22,21 +22,21 @@ type iUpdateWorkspaceUserRoleRequest interface {
 type UpdateWorkspaceUserRoleRequest struct {
 	// Deprecated
 	//
-	// Preset workspace role ID, existing roles will be overwritten. Value range:
+	// The preset workspace role ID. The existing role is overwritten. Valid values:
 	//
-	// - 25: Workspace Administrator
+	// - 25: workspace administrator
 	//
-	// - 26: Workspace Developer
+	// - 26: workspace developer
 	//
-	// - 27: Workspace Analyst
+	// - 27: workspace analyst
 	//
-	// - 30: Workspace Viewer
+	// - 30: workspace viewer
 	//
 	// example:
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// Multiple workspace role IDs, separated by commas. If this value is provided, it takes precedence.
+	// Multiple workspace role IDs, separated by commas. If this parameter is specified, it takes precedence.
 	//
 	// 	Notice: roleId and roleIds cannot both be empty
 	//
@@ -44,7 +44,7 @@ type UpdateWorkspaceUserRoleRequest struct {
 	//
 	// 25,26
 	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
-	// Quick BI user ID.
+	// The Quick BI user ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UpdateWorkspaceUserRoleRequest struct {
 	//
 	// f5698bedeb384b1986afccd9e434****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

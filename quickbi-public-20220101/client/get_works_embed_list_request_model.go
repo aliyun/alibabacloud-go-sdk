@@ -22,43 +22,43 @@ type iGetWorksEmbedListRequest interface {
 }
 
 type GetWorksEmbedListRequest struct {
-	// Report name (fuzzy match)
+	// The report name for fuzzy match.
 	//
 	// example:
 	//
-	// 测试数据集
+	// Test dataset
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Page number (defaults to 1 if empty)
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of items per page (defaults to 10 if empty)
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Report type
+	// The report type. Valid values:
 	//
-	// - page, Dashboard
+	// - page: dashboard.
 	//
-	// - screen, Data Screen
+	// - screen: data screen.
 	//
-	// - report, Spreadsheet
+	// - report: workbook.
 	//
-	// - ANALYSIS, Ad-hoc Analysis
+	// - ANALYSIS: ad hoc analysis.
 	//
-	// - dashboardOfflineQuery, Self-service Data Retrieval
+	// - dashboardOfflineQuery: self-service data retrieval.
 	//
-	// - dataForm, Data Entry Form
+	// - dataForm: data entry form.
 	//
 	// example:
 	//
 	// page
 	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
-	// Workspace ID
+	// The workspace ID.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iUpdateWorkspaceUsersRoleRequest interface {
 }
 
 type UpdateWorkspaceUsersRoleRequest struct {
-	// Preset space role ID, existing roles will be overwritten. Value range:
+	// The ID of the preset workspace role. Existing roles are overwritten. Valid values:
 	//
-	// - 25: Space Administrator
+	// - 25: workspace administrator
 	//
-	// - 26: Space Developer
+	// - 26: workspace developer
 	//
-	// - 27: Space Analyst
+	// - 27: workspace analyst
 	//
-	// - 30: Space Viewer
+	// - 30: workspace viewer
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type UpdateWorkspaceUsersRoleRequest struct {
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// User ID. This is the UserID for Quick BI, not the UID for Alibaba Cloud.
+	// The user IDs. The IDs are Quick BI user IDs, not Alibaba Cloud UIDs.
 	//
-	// - Supports batch parameters, separate user IDs with a comma (,).
+	// - You can specify multiple user IDs separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdateWorkspaceUsersRoleRequest struct {
 	//
 	// 136516262323****,124498444445****
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

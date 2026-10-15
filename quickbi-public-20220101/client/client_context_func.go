@@ -165,7 +165,7 @@ func (client *Client) AddDataSourceWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Add a sharing configuration for data works.
+// Adds a sharing configuration for a data work.
 //
 // @param request - AddShareReportRequest
 //
@@ -225,7 +225,7 @@ func (client *Client) AddShareReportWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
-// Add organization members.
+// Adds an organization member.
 //
 // @param request - AddUserRequest
 //
@@ -559,7 +559,7 @@ func (client *Client) AddWorksAuthorizationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Batch add members to the workspace.
+// Adds members to a workspace in batches.
 //
 // @param request - AddWorkspaceUsersRequest
 //
@@ -2397,7 +2397,7 @@ func (client *Client) GetMailTaskStatusWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Search for user group information based on the keyword of the user group name.
+// Searches for user group information by user group name keyword.
 //
 // @param request - GetUserGroupInfoRequest
 //
@@ -2441,7 +2441,7 @@ func (client *Client) GetUserGroupInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Query the list of embedded reports
+// Queries the list of embedded reports.
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -2501,7 +2501,7 @@ func (client *Client) GetWorksEmbedListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Configures the IP address whitelist for data security.
+// Configures the IP whitelist for data security.
 //
 // @param request - IpWhiteListConfigRequest
 //
@@ -2549,7 +2549,7 @@ func (client *Client) IpWhiteListConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves information about acceleration tasks in a workspace.
+// Retrieves acceleration engine task information from the management page of a workspace.
 //
 // @param request - ListAccelerationOfWorkspaceRequest
 //
@@ -2609,11 +2609,11 @@ func (client *Client) ListAccelerationOfWorkspaceWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries API data sources.
+// Queries the list of API data sources.
 //
 // Description:
 //
-// For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
+// For more information about the parameter description, see [Create an API data source.](https://help.aliyun.com/document_detail/409330.html)
 //
 // @param request - ListApiDatasourceRequest
 //
@@ -2669,7 +2669,67 @@ func (client *Client) ListApiDatasourceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries user group information at a time by user group ID.
+// Queries the collaborative authorization records of a resource.
+//
+// @param request - ListAuthConfigByResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthConfigByResourceResponse
+func (client *Client) ListAuthConfigByResourceWithContext(ctx context.Context, request *ListAuthConfigByResourceRequest, runtime *dara.RuntimeOptions) (_result *ListAuthConfigByResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HasAuth) {
+		query["HasAuth"] = request.HasAuth
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ShareToType) {
+		query["ShareToType"] = request.ShareToType
+	}
+
+	if !dara.IsNil(request.WorksType) {
+		query["WorksType"] = request.WorksType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthConfigByResource"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthConfigByResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about user groups in batch by user group ID.
 //
 // @param request - ListByUserGroupIdRequest
 //
@@ -2809,11 +2869,11 @@ func (client *Client) ListCubeDataLevelPermissionConfigWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieve the whitelist for dataset row and column permissions based on the type of permission.
+// Retrieves the whitelist of row-level or column-level permissions for a dataset based on the specified permission type.
 //
 // Description:
 //
-// > This API only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
+// >: This operation supports only the new row and column permission model of Quick BI. If you are still using the legacy row and column permissions, migrate to the new model before calling this operation. To migrate to the new row and column permission model: In Organization Management > Security Configuration > Row and Column Permission Upgrade, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - ListDataLevelPermissionWhiteListRequest
 //
@@ -3150,7 +3210,7 @@ func (client *Client) ListPortalMenusWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// You can call this operation to obtain a list of the most frequently viewed and footsteps displayed in the homepage dashboard for a specified user.
+// Retrieves the frequently viewed items and footprint list displayed on the homepage dashboard for a specified user.
 //
 // @param request - ListRecentViewReportsRequest
 //
@@ -3710,7 +3770,7 @@ func (client *Client) ModifyDashboardNl2sqlStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the run logs of acceleration tasks for a specified dataset.
+// Retrieves the execution logs of acceleration tasks for a specified dataset.
 //
 // @param request - QueryAccelerationLogByCubeIdRequest
 //
@@ -4508,7 +4568,7 @@ func (client *Client) QueryDatasetInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the datasets in a specified workspace. The results are sorted in descending order by creation time.
+// Queries the list of datasets in a specified workspace, sorted by creation time in descending order.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -4840,7 +4900,7 @@ func (client *Client) QueryOrganizationRoleConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Lists the workspaces in the current organization.
+// Retrieves the list of workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -5602,7 +5662,7 @@ func (client *Client) QueryUserTagValueListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries information about a specified data work.
+// Queries the information of a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -5690,7 +5750,7 @@ func (client *Client) QueryWorksBloodRelationshipWithContext(ctx context.Context
 
 // Summary:
 //
-// Query all works under the entire organization, with the option to specify the type of work.
+// Queries all works in an organization. You can specify the work type.
 //
 // @param request - QueryWorksByOrganizationRequest
 //
@@ -6282,11 +6342,11 @@ func (client *Client) SmartqAuthorizeWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Runs an intelligent Q&A query.
+// Queries data by using the Smart Q&A feature.
 //
 // Description:
 //
-// Note: Authorized users can query data as another user by passing the userId of the target user.
+// Note: When a user is authorized to call this API, the user can query data as a specified user by passing in the userId parameter.
 //
 // @param request - SmartqQueryAbilityRequest
 //
@@ -6380,6 +6440,62 @@ func (client *Client) TransferUsergroupWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &TransferUsergroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permission attributes of resource collaborative authorization.
+//
+// @param request - UpdateAuthorizationAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationAttributesResponse
+func (client *Client) UpdateAuthorizationAttributesWithContext(ctx context.Context, request *UpdateAuthorizationAttributesRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EditPermissionType) {
+		query["EditPermissionType"] = request.EditPermissionType
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.UsePermissionType) {
+		query["UsePermissionType"] = request.UsePermissionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationAttributes"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationAttributesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6878,7 +6994,7 @@ func (client *Client) UpdateUserTagValueWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modify the role of a specified member under the workspace, existing roles will be overwritten.
+// Modifies the role of a specified member in a workspace. The existing role is overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //
@@ -6934,7 +7050,7 @@ func (client *Client) UpdateWorkspaceUserRoleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Batch update the role information of workspace members, existing roles will be overwritten
+// Updates the roles of workspace members in batches. Existing roles are overwritten.
 //
 // @param request - UpdateWorkspaceUsersRoleRequest
 //

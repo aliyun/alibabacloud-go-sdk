@@ -18,15 +18,15 @@ type iAddWorkspaceUsersRequest interface {
 }
 
 type AddWorkspaceUsersRequest struct {
-	// Preset space role ID. Value range:
+	// The ID of the preset workspace role. Valid values:
 	//
-	// - 25: Space Administrator
+	// - 25: storage management administrator
 	//
-	// - 26: Space Developer
+	// - 26: workspace developer
 	//
-	// - 27: Space Analyst
+	// - 27: storage analysis analyst
 	//
-	// - 30: Space Viewer
+	// - 30: workspace viewer
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type AddWorkspaceUsersRequest struct {
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// User ID. This is the UserID for Quick BI, not the Alibaba Cloud UID.
+	// The user IDs. These are Quick BI user IDs, not Alibaba Cloud UIDs.
 	//
-	// - Supports batch parameters, with user IDs separated by commas (,).
+	// - You can pass multiple user IDs separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type AddWorkspaceUsersRequest struct {
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

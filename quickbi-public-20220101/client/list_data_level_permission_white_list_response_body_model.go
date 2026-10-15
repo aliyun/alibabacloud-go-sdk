@@ -18,19 +18,19 @@ type iListDataLevelPermissionWhiteListResponseBody interface {
 }
 
 type ListDataLevelPermissionWhiteListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whitelist for the specified row-level permission type.
+	// The whitelist of the specified row-level or column-level permission type.
 	Result *ListDataLevelPermissionWhiteListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request was successful.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,23 +83,23 @@ func (s *ListDataLevelPermissionWhiteListResponseBody) Validate() error {
 }
 
 type ListDataLevelPermissionWhiteListResponseBodyResult struct {
-	// Dataset ID.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// Type of dataset row and column permissions. Possible values:
+	// The type of row and column permission for the dataset. Valid values:
 	//
-	// - ROW_LEVEL: Row-level permission
+	// - ROW_LEVEL: row-level permission
 	//
-	// - COLUMN_LEVEL: Column-level permission
+	// - COLUMN_LEVEL: column-level permission
 	//
 	// example:
 	//
 	// ROW_LEVEL
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// Whitelist information.
+	// The whitelist information.
 	UsersModel *ListDataLevelPermissionWhiteListResponseBodyResultUsersModel `json:"UsersModel,omitempty" xml:"UsersModel,omitempty" type:"Struct"`
 }
 
@@ -148,9 +148,17 @@ func (s *ListDataLevelPermissionWhiteListResponseBodyResult) Validate() error {
 }
 
 type ListDataLevelPermissionWhiteListResponseBodyResultUsersModel struct {
-	// UserGroups.
+	// The list of user group IDs.
+	//
+	// example:
+	//
+	// ["0d5fb19b-***-1248fc27ca51"]
 	UserGroups []*string `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
-	// Users.
+	// The list of Quick BI user IDs.
+	//
+	// example:
+	//
+	// ["4334***358"]
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 

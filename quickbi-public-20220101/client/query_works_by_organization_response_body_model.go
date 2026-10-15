@@ -18,19 +18,19 @@ type iQueryWorksByOrganizationResponseBody interface {
 }
 
 type QueryWorksByOrganizationResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns a list of all works under the organization that meet the request criteria.
+	// The list of all works in the organization that match the request conditions.
 	Result *QueryWorksByOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request was successful.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,27 +83,27 @@ func (s *QueryWorksByOrganizationResponseBody) Validate() error {
 }
 
 type QueryWorksByOrganizationResponseBodyResult struct {
-	// Details of the work list.
+	// The details of the works list.
 	Data []*QueryWorksByOrganizationResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page set when requesting the interface.
+	// The number of rows per page specified in the request.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of rows.
+	// The total number of rows.
 	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -178,91 +178,91 @@ func (s *QueryWorksByOrganizationResponseBodyResult) Validate() error {
 }
 
 type QueryWorksByOrganizationResponseBodyResultData struct {
-	// Third-party embedding status. Possible values:
+	// The third-party embedding status. Valid values:
 	//
-	// - 0: Embedding not enabled
+	// - 0: Embedding is not enabled.
 	//
-	// - 1: Embedding enabled
+	// - 1: Embedding is enabled.
 	//
 	// example:
 	//
 	// 1
 	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	// Notes for the work.
+	// The description of the work.
 	//
 	// example:
 	//
-	// 备注
+	// Remarks
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Directory to which the work belongs.
+	// The directory to which the work belongs.
 	Directory *QueryWorksByOrganizationResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	// Timestamp (in milliseconds) when the work was created.
+	// The timestamp when the work was created, in milliseconds.
 	//
 	// example:
 	//
 	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Millisecond-level timestamp of the work modification.
+	// The timestamp when the work was last modified, in milliseconds.
 	//
 	// example:
 	//
 	// 1572334870000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// The Alibaba Cloud account name of the work modifier.
+	// The Alibaba Cloud account name of the user who last modified the work.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	// The UserID of the work\\"s owner in Quick BI.
+	// The Quick BI user ID of the work owner.
 	//
 	// example:
 	//
-	// 作品所属工作空间名称。
+	// The name of the workspace to which the work belongs
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Alibaba Cloud account name of the work\\"s owner.
+	// The Alibaba Cloud account name of the work owner.
 	//
 	// example:
 	//
-	// 李四
+	// Jane
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// Whether it is public
+	// Indicates whether the work is public.
 	//
 	// example:
 	//
 	// true
 	PublicFlag *bool `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
-	// The expiration date for the report to be made public
+	// The expiration date for the public report, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1721366354000
 	PublicInvalidTime *int64 `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
-	// The security policy for collaborative authorization of the work. Values:
+	// The security policy for collaborative authorization of the work. Valid values:
 	//
-	// - 0: Private
+	// - 0: Private.
 	//
-	// - 12: Authorize specific members
+	// - 12: Authorized to specified members.
 	//
-	// - 1 or 11: Authorize all space members
+	// - 1 or 11: Authorized to all workspace members.
 	//
-	// >- If you are using the old version of permissions, the returned value is 1.
+	// >- If you use the legacy permissions, the return value is 1.
 	//
-	// >- If you are using the new version of permissions, the returned value is 11.
+	// >- If you use the new permissions, the return value is 11.
 	//
 	// example:
 	//
 	// 1
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// The status of the report. Value range:
+	// The report status. Valid values:
 	//
-	// - 0: Unpublished
+	// - 0: Unpublished.
 	//
-	// - 1: Published
+	// - 1: Published.
 	//
-	// - 2: Modified but not published
+	// - 2: Modified but not published.
 	//
-	// - 3: Offline
+	// - 3: Offline.
 	//
 	// example:
 	//
@@ -272,17 +272,17 @@ type QueryWorksByOrganizationResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试报表
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	// The type of the work. Value range:
+	// The type of the work. Valid values:
 	//
-	// - DATAPRODUCT: Data portal
+	// - DATAPRODUCT: data portal
 	//
-	// - PAGE: Dashboard
+	// - PAGE: dashboard
 	//
-	// - REPORT: Spreadsheet
+	// - REPORT: workbook
 	//
-	// - dashboardOfflineQuery: Self-service data retrieval
+	// - dashboardOfflineQuery: custom query
 	//
 	// example:
 	//
@@ -298,13 +298,13 @@ type QueryWorksByOrganizationResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 作品修改者的阿里云账户名。
+	// The Alibaba Cloud account name of the user who last modified the work
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The name of the workspace to which the work belongs.
 	//
 	// example:
 	//
-	// 测试工作空间
+	// Test workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -479,29 +479,29 @@ func (s *QueryWorksByOrganizationResponseBodyResultData) Validate() error {
 }
 
 type QueryWorksByOrganizationResponseBodyResultDataDirectory struct {
-	// ID of the directory to which it belongs.
+	// The ID of the directory.
 	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name of the directory to which it belongs.
+	// The name of the directory.
 	//
 	// example:
 	//
-	// 测试目录
+	// Test directory
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Hierarchical structure of the directory ID, separated by『/』.
+	// The hierarchical structure of directory IDs, separated by forward slashes (/).
 	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// Hierarchical structure of the directory name, separated by『/』.
+	// The hierarchical structure of directory names, separated by forward slashes (/).
 	//
 	// example:
 	//
-	// 测试目录
+	// Test directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

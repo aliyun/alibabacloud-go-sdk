@@ -18,15 +18,15 @@ type iGetWorksEmbedListResponseBody interface {
 }
 
 type GetWorksEmbedListResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 38C0F*****0-415****9F1-*****422BDB65
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Array of report objects
+	// The report array object.
 	Result *GetWorksEmbedListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Whether the request was successful
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -79,27 +79,27 @@ func (s *GetWorksEmbedListResponseBody) Validate() error {
 }
 
 type GetWorksEmbedListResponseBodyResult struct {
-	// Array of reports
+	// The report array.
 	Data []*GetWorksEmbedListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of items per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 18
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -174,31 +174,31 @@ func (s *GetWorksEmbedListResponseBodyResult) Validate() error {
 }
 
 type GetWorksEmbedListResponseBodyResultData struct {
-	// Embed time
+	// The time when the report was embedded, in the format of YYYY-mm-DD hh:MM:ss.
 	//
 	// example:
 	//
 	// YYYY-mm-DD hh:MM:ss
 	EmbedTime *string `json:"EmbedTime,omitempty" xml:"EmbedTime,omitempty"`
-	// Report ID
+	// The report ID.
 	//
 	// example:
 	//
 	// 897ce25e-****-****-af84-d13c5610****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	// Report name
+	// The report name.
 	//
 	// example:
 	//
-	// 测试哦
+	// Test
 	WorksName *string `json:"WorksName,omitempty" xml:"WorksName,omitempty"`
-	// Report type
+	// The report type.
 	//
 	// example:
 	//
 	// page
 	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
-	// Workspace ID
+	// The ID of the workspace to which the report belongs.
 	//
 	// example:
 	//

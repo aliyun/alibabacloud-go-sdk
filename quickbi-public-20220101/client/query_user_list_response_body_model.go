@@ -178,7 +178,7 @@ func (s *QueryUserListResponseBodyResult) Validate() error {
 }
 
 type QueryUserListResponseBodyResultData struct {
-	// The Alibaba Cloud account ID. For users who are not added through RAM self-service, the Alibaba Cloud ID can only be obtained after they log on.
+	// The Alibaba Cloud account ID. For users who are not added through RAM self-service reading, the Alibaba Cloud account ID can be obtained only after they log on.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type QueryUserListResponseBodyResultData struct {
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the user is bound to the organization administrator role. Valid values:
+	// Indicates whether the organization administrator role is bound. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -202,13 +202,13 @@ type QueryUserListResponseBodyResultData struct {
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	// Indicates whether the user is attached to the permission management administrator role. Valid values:
+	// Indicates whether the permission management administrator role is attached. Valid values:
 	//
 	// - true: Yes.
 	//
 	// - false: No.
 	//
-	// <notice>This parameter has expired and is no longer recommended. Use the RoleIdList parameter instead.</notice>
+	// <notice>This parameter is expired and no longer recommended. Use the RoleIdList parameter instead.</notice>
 	//
 	// example:
 	//
@@ -218,29 +218,29 @@ type QueryUserListResponseBodyResultData struct {
 	//
 	// - qreport: Q report
 	//
-	// - qExploreNum: Q exploration edition
+	// - qExploreNum: Q explore edition
 	//
-	// - smartQAskNum: Q data inquiry
+	// - smartQAskNum: Q data query
 	//
 	// - smartQDevNum: Q builder
 	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
 	// The user status. Valid values:
 	//
-	// - false: active
+	// - false: activated
 	//
-	// - true: inactive
+	// - true: deactivated
 	//
 	// example:
 	//
 	// false
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The date when the member joined the organization.
+	// The date when the member joined the organization. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1718691704000
 	JoinedDate *int64 `json:"JoinedDate,omitempty" xml:"JoinedDate,omitempty"`
-	// The last logon time.
+	// The last logon time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

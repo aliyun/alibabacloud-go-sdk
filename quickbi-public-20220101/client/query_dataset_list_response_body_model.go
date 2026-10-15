@@ -24,7 +24,7 @@ type QueryDatasetListResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The paged results of the dataset list. The details of the datasets are returned in the Data parameter.
+	// The paginated result of the dataset list. The detailed information of the dataset list is stored in the Data response parameter.
 	Result *QueryDatasetListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -91,13 +91,13 @@ type QueryDatasetListResponseBodyResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page specified in the request.
+	// The number of rows per page specified in the request.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of rows.
 	//
 	// example:
 	//
@@ -178,13 +178,13 @@ func (s *QueryDatasetListResponseBodyResult) Validate() error {
 }
 
 type QueryDatasetListResponseBodyResultData struct {
-	// The time when the dataset was created.
+	// The creation time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2020-11-02 10:36:05
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The information about the data source to which the dataset belongs.
+	// The data source information of the dataset.
 	DataSource *QueryDatasetListResponseBodyResultDataDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The dataset ID.
 	//
@@ -204,25 +204,25 @@ type QueryDatasetListResponseBodyResultData struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the folder in which the dataset is located.
+	// The directory information of the dataset.
 	Directory *QueryDatasetListResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	// The time when the dataset was last modified.
+	// The modification time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2020-11-02 10:36:05
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Indicates whether extraction-based acceleration is enabled. Valid values:
+	// Indicates whether extraction acceleration is enabled. Valid values:
 	//
-	// - true: Enabled
+	// - true: Enabled.
 	//
-	// - false: Disabled
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	OpenOfflineAcceleration *bool `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
-	// The user ID of the dataset owner in Quick BI.
+	// The Quick BI user ID of the dataset owner.
 	//
 	// example:
 	//
@@ -236,9 +236,9 @@ type QueryDatasetListResponseBodyResultData struct {
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Indicates whether row-level permissions are enabled. Valid values:
 	//
-	// - true: Enabled
+	// - true: Enabled.
 	//
-	// - false: Disabled
+	// - false: Disabled.
 	//
 	// example:
 	//
@@ -458,25 +458,25 @@ func (s *QueryDatasetListResponseBodyResultDataDataSource) Validate() error {
 }
 
 type QueryDatasetListResponseBodyResultDataDirectory struct {
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
 	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The folder name.
+	// The directory name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the folder path.
+	// The ID of the directory path.
 	//
 	// example:
 	//
 	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// The name of the folder path.
+	// The name of the directory path.
 	//
 	// example:
 	//

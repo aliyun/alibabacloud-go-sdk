@@ -28,9 +28,9 @@ type AddUserResponseBody struct {
 	Result *AddUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true
+	// - true: The request was successful.
 	//
-	// - false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -89,43 +89,39 @@ type AddUserResponseBodyResult struct {
 	//
 	// xxxxxx@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the organization administrator role is assigned. Valid values:
+	// Indicates whether the organization administrator role is bound. Valid values:
 	//
-	// - true
+	// - true: Yes.
 	//
-	// - false
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
+	// <notice>This parameter is deprecated. When RoleIdList is specified, this parameter does not take effect.</notice>
 	//
 	// example:
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	// Indicates whether the permission administrator role is assigned. Valid values:
+	// Indicates whether the permission management administrator role is attached. Valid values:
 	//
-	// - true
+	// - true: Yes.
 	//
-	// - false
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
+	// <notice>This parameter has expired and is no longer recommended. When RoleIdList is specified, this parameter does not take effect.</notice>
 	//
 	// example:
 	//
 	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	// The Copilot modules for which the user has a quota.
+	// The intelligent module quotas owned by the user.
 	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
 	// The nickname of the Alibaba Cloud account.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// A list of organization role IDs assigned to the user.
+	// The list of organization role IDs bound to the user.
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// The user ID in Quick BI.
 	//
@@ -133,13 +129,13 @@ type AddUserResponseBodyResult struct {
 	//
 	// b5d8fd9348cc4327****afb604
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The user type. Valid values:
+	// The user type of the organization member. Valid values:
 	//
-	// - 1: developer
+	// - 1: Developer.
 	//
-	// - 2: viewer
+	// - 2: Visitor.
 	//
-	// - 3: analyst
+	// - 3: Analyst.
 	//
 	// example:
 	//

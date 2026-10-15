@@ -24,7 +24,7 @@ type QueryUserInfoByAccountResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user information of the organization member.
+	// The organization user information returned.
 	Result *QueryUserInfoByAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -83,71 +83,73 @@ func (s *QueryUserInfoByAccountResponseBody) Validate() error {
 }
 
 type QueryUserInfoByAccountResponseBodyResult struct {
-	// The Alibaba Cloud ID. For users not added through RAM self-service, this ID becomes available only after the user\\"s first login.
+	// The Alibaba Cloud account ID. For users who are not added through RAM self-service reading, the Alibaba Cloud ID can be obtained only after logon.
 	//
 	// example:
 	//
 	// 135****5848
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The Alibaba Cloud account name. For a RAM user, the domain suffix (the part after the @ symbol) is omitted. For example, for the user `test@test.com`, the value `test` is returned.
+	// The Alibaba Cloud account name. For RAM users, the domain name after the at sign (@) is removed. For example, test@test.com returns test.
 	//
 	// example:
 	//
 	// 1386587****@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the user is assigned the organization administrator role. Valid values:
+	// Indicates whether the organization administrator role is bound. Valid values:
 	//
-	// - true: Yes
+	// - true: Yes.
 	//
-	// - false: No
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. Use the `RoleIdList` parameter instead.
+	// <notice>This parameter is deprecated. Use the RoleIdList parameter instead.</notice>
 	//
 	// example:
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	// Indicates whether the user is assigned the permission administrator role. Valid values:
+	// Indicates whether the permission management administrator role is attached. Valid values:
 	//
-	// - true: Yes
+	// - true: Yes.
 	//
-	// - false: No
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. Use the `RoleIdList` parameter instead.
+	// <notice>This parameter has expired and is no longer recommended. Use the RoleIdList parameter instead.</notice>
 	//
 	// example:
 	//
 	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	// The intelligent modules for which the user has a quota.
+	// The intelligent modules with quota.
 	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
-	// The user\\"s email address.
+	// The email address.
 	//
 	// example:
 	//
 	// 1386587****@163.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Indicates whether the user is disabled. Valid values:
+	//
+	// - true: Disabled.
+	//
+	// - false: Active.
+	//
 	// example:
 	//
 	// true
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The user\\"s nickname.
+	// The nickname.
 	//
 	// example:
 	//
-	// 测试用户
+	// TestUser
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The user\\"s phone number.
+	// The phone number.
 	//
 	// example:
 	//
 	// 1386587****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The IDs of the organization roles assigned to the user.
+	// The list of organization role IDs bound to the user.
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// The user ID in Quick BI.
 	//
@@ -157,11 +159,11 @@ type QueryUserInfoByAccountResponseBodyResult struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The user type of the organization member. Valid values:
 	//
-	// - 1: developer
+	// - 1: Developer.
 	//
-	// - 2: viewer
+	// - 2: Visitor.
 	//
-	// - 3: analyst
+	// - 3: Analyst.
 	//
 	// example:
 	//

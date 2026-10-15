@@ -18,19 +18,19 @@ type iQueryWorksResponseBody interface {
 }
 
 type QueryWorksResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the work.
+	// The details of the data work.
 	Result *QueryWorksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,138 +83,137 @@ func (s *QueryWorksResponseBody) Validate() error {
 }
 
 type QueryWorksResponseBodyResult struct {
-	// Third-party embedding status. Valid values:
+	// The third-party embedding status. Valid values:
 	//
-	// 	- 0: The embed service is not enabled.
+	// - 0: Embedding is not enabled.
 	//
-	// 	- 1: Embed is enabled.
+	// - 1: Embedding is enabled.
 	//
 	// example:
 	//
 	// 0
 	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	// Remarks on the work.
+	// The remarks of the data work.
 	//
 	// example:
 	//
-	// Description
+	// Remarks
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory to which the work belongs.
-	Directory         *QueryWorksResponseBodyResultDirectory           `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The directory to which the data work belongs.
+	Directory *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The array of global parameters.
 	GlobalParamVoList []*QueryWorksResponseBodyResultGlobalParamVoList `json:"GlobalParamVoList,omitempty" xml:"GlobalParamVoList,omitempty" type:"Repeated"`
-	// The timestamp of the creation of the work in milliseconds.
+	// The timestamp when the data work was created, in milliseconds.
 	//
 	// example:
 	//
 	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp of the modification of the work in milliseconds.
+	// The timestamp when the data work was last modified, in milliseconds.
 	//
 	// example:
 	//
 	// 1496651577000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// The Alibaba Cloud account name of the person who modified the work.
+	// The Alibaba Cloud account name of the user who last modified the data work.
 	//
 	// example:
 	//
-	// Tom
+	// John
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	// The user ID of the work owner in the Quick BI.
+	// The Quick BI UserID of the data work owner.
 	//
 	// example:
 	//
 	// 9187a612aa474e2a8ac1414d5529****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Alibaba Cloud account name of the work owner.
+	// The Alibaba Cloud account name of the data work owner.
 	//
 	// example:
 	//
-	// Tom
+	// John
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// Is it public
+	// Indicates whether the data work is public.
 	//
 	// example:
 	//
 	// true
 	PublicFlag *bool `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
-	// Deadline for the public release of the report
+	// The expiration date for the public access of the report. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1721366354000
 	PublicInvalidTime *int64 `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
-	// Security policies for collaborative authorization of works. Valid values:
+	// The security policy for collaborative authorization of the data work. Valid values:
 	//
-	// 	- 0: private
+	// - 0: Private.
 	//
-	// 	- 12: Authorize specified members
+	// - 12: Authorized to specified members.
 	//
-	// 	- 1 or 11: Authorize all workspace members
+	// - 1 or 11: Authorized to all workspace members.
 	//
-	// >
+	// >- If you use the legacy permission model, the return value is 1.
 	//
-	// 	- If you use legacy permissions, the return value is 1.
-	//
-	// 	- If you use the new permissions, the return value is 11.
+	// >- If you use the new permission model, the return value is 11.
 	//
 	// example:
 	//
 	// 0
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// The status of the report. Valid values:
+	// The report status. Valid values:
 	//
-	// 	- 0: unpublished
+	// - 0: Unpublished.
 	//
-	// 	- 1: published
+	// - 1: Published.
 	//
-	// 	- 2: modified but not published
+	// - 2: Modified but not published.
 	//
-	// 	- 3: unpublished
+	// - 3: Offline.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the work.
+	// The name of the data work.
 	//
 	// example:
 	//
-	// Test report
+	// TestReport
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	// Queries the types of works. Fill in the blanks to query all types. Valid values:
+	// The type of the data work. Leave this parameter empty to query all types. Valid values:
 	//
-	// 	- DATAPRODUCT: BI portal
+	// - DATAPRODUCT: data portal
 	//
-	// 	- PAGE: Dashboard
+	// - PAGE: dashboard
 	//
-	// 	- FULLPAGE: full-screen dashboards
+	// - FULLPAGE: full-screen dashboard
 	//
-	// 	- REPORT: workbook
+	// - REPORT: workbook
 	//
-	// 	- dashboardOfflineQuery: self-service data retrieval
+	// - dashboardOfflineQuery: custom query
 	//
 	// example:
 	//
 	// PAGE
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	// The ID of the work.
+	// The ID of the data work.
 	//
 	// example:
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	// The ID of the workspace to which the work belongs.
+	// The ID of the workspace to which the data work belongs.
 	//
 	// example:
 	//
 	// 87c6b145-090c-43e1-9426-8f93be23****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The name of the workspace to which the work belongs.
+	// The name of the workspace to which the data work belongs.
 	//
 	// example:
 	//
-	// Test Space
+	// TestWorkspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -407,29 +406,29 @@ func (s *QueryWorksResponseBodyResult) Validate() error {
 }
 
 type QueryWorksResponseBodyResultDirectory struct {
-	// The ID of the directory.
+	// The ID of the directory to which the data work belongs.
 	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the directory.
+	// The directory name.
 	//
 	// example:
 	//
-	// Test directory
+	// TestDirectory
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+	// The hierarchical path of the directory IDs, separated by a forward slash (/).
 	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
+	// The hierarchical path of the directory names, separated by a forward slash (/).
 	//
 	// example:
 	//
-	// Test directory
+	// TestDirectory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -482,18 +481,34 @@ func (s *QueryWorksResponseBodyResultDirectory) Validate() error {
 }
 
 type QueryWorksResponseBodyResultGlobalParamVoList struct {
+	// The field type. Valid values:
+	//
+	// - enum: enumeration
+	//
+	// - string: text
+	//
+	// - number: numeric
+	//
+	// - datetime: date
+	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The parameter alias.
+	//
 	// example:
 	//
 	// lastQueryAt
 	ParamAlias *string `json:"ParamAlias,omitempty" xml:"ParamAlias,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// lastQueryAt
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// Indicates whether the parameter is required.
+	//
 	// example:
 	//
 	// false

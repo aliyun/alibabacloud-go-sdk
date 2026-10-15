@@ -18,27 +18,27 @@ type iAddShareReportResponseBody interface {
 }
 
 type AddShareReportResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 05739b8e-3de0-4204-9669-7f04f02522b9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the interface is returned. Valid values:
+	// The execution result of the operation. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: Successful.
 	//
-	// 	- false: The request fails.
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

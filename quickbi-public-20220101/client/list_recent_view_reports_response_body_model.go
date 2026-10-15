@@ -18,19 +18,19 @@ type iListRecentViewReportsResponseBody interface {
 }
 
 type ListRecentViewReportsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The query results are returned.
+	// The query result.
 	Result *ListRecentViewReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *ListRecentViewReportsResponseBody) Validate() error {
 }
 
 type ListRecentViewReportsResponseBodyResult struct {
-	// Attention
+	// The notice indicating that pagination parameters (such as TotalNum) returned by this API will be deprecated soon.
 	//
 	// example:
 	//
-	// 当前API返回的分页参数如TotalNum等即将下线，如有使用请及时修改
+	// The pagination parameters such as TotalNum returned by this API will be deprecated soon. If you are using them, modify your code promptly
 	Attention *string `json:"Attention,omitempty" xml:"Attention,omitempty"`
 	// The list of queried works.
 	Data []*ListRecentViewReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
-	// 	- Maximum of 100 articles
+	// - Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of rows in the table.
+	// The total number of rows.
 	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ func (s *ListRecentViewReportsResponseBodyResult) Validate() error {
 }
 
 type ListRecentViewReportsResponseBodyResultData struct {
-	// Queries whether the user has collected the work.
+	// Indicates whether the queried user has added the work to favorites.
 	//
 	// example:
 	//
@@ -209,19 +209,19 @@ type ListRecentViewReportsResponseBodyResultData struct {
 	//
 	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when the work was modified.
+	// The timestamp when the work was last modified.
 	//
 	// example:
 	//
 	// 1640595729000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The query user has the editing rights of the work.
+	// Indicates whether the queried user has edit permissions on the work.
 	//
 	// example:
 	//
 	// true
 	HasEditAuth *bool `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
-	// The query user has the permission to view the work.
+	// Indicates whether the queried user has view permissions on the work.
 	//
 	// example:
 	//
@@ -237,13 +237,13 @@ type ListRecentViewReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试报表
+	// TestReport
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The Alibaba Cloud account name of the work owner.
 	//
 	// example:
 	//
-	// 李四
+	// John
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The UserID of the work owner.
 	//
@@ -251,15 +251,15 @@ type ListRecentViewReportsResponseBodyResultData struct {
 	//
 	// 1365*****238860
 	OwnerNum *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
-	// The publication status of the work. Valid values:
+	// The publish status of the work. Valid values:
 	//
-	// 	- 0: unpublished
+	// - 0: Unpublished.
 	//
-	// 	- 1: published
+	// - 1: Published.
 	//
-	// 	- 2: modified and saved but not published.
+	// - 2: Modified and saved but not published.
 	//
-	// 	- 3: unpublished
+	// - 3: Offline.
 	//
 	// example:
 	//
@@ -273,17 +273,17 @@ type ListRecentViewReportsResponseBodyResultData struct {
 	TreeId *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
 	// The type of the work. Valid values:
 	//
-	// 	- DATAPRODUCT: BI portal
+	// - DATAPRODUCT: data portal
 	//
-	// 	- PAGE: Dashboard
+	// - PAGE: dashboard
 	//
-	// 	- REPORT: workbook
+	// - REPORT: workbook
 	//
 	// example:
 	//
 	// PAGE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The number of times the work was accessed.
+	// The number of times the work has been accessed.
 	//
 	// example:
 	//
@@ -299,7 +299,7 @@ type ListRecentViewReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试工作空间
+	// TestWorkspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

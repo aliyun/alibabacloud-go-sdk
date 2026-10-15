@@ -18,15 +18,15 @@ type iGetUserGroupInfoResponseBody interface {
 }
 
 type GetUserGroupInfoResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D7980306-1F08-5A88-9FE7-ECB8B9C4C0F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// User group information.
+	// The user group information.
 	Result []*GetUserGroupInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - true: The request was successful.
 	//
@@ -87,55 +87,55 @@ func (s *GetUserGroupInfoResponseBody) Validate() error {
 }
 
 type GetUserGroupInfoResponseBodyResult struct {
-	// Creation time of the user group.
+	// The time when the user group was created, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-03-15 17:13:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Creator of the sub-user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
+	// The creator of the child user group. This is the UserID in Quick BI, not the UID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// Directory level of the user group.
+	// The folder hierarchy of the user group.
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
-	// Last modified time of the user group.
+	// The time when the user group was last modified, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-03-15 20:36:40
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// Modifier of the user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
+	// The user who last modified the user group. This is the UserID in Quick BI, not the UID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// Parent user group ID.
+	// The ID of the parent user group.
 	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	ParentUsergroupId *string `json:"ParentUsergroupId,omitempty" xml:"ParentUsergroupId,omitempty"`
-	// Description of the user group.
+	// The description of the user group.
 	//
 	// example:
 	//
-	// 测试描述
+	// Test description
 	UsergroupDesc *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
-	// User group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// 34fd141d-4598-4093-8c33-8e066dcb****
 	UsergroupId *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
-	// Name of the user group.
+	// The name of the user group.
 	//
 	// example:
 	//
-	// 测试用户组01
+	// Test user group 01
 	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 

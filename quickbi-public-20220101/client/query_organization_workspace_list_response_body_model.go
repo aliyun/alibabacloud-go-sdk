@@ -24,11 +24,11 @@ type QueryOrganizationWorkspaceListResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The paginated query results. The Data parameter contains the details of each workspace.
+	// The paginated result of the workspace list. The detailed information of workspaces is stored in the Data response parameter.
 	Result *QueryOrganizationWorkspaceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Whether the request succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request succeeded.
+	// - true: The request was successful.
 	//
 	// - false: The request failed.
 	//
@@ -83,7 +83,7 @@ func (s *QueryOrganizationWorkspaceListResponseBody) Validate() error {
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResult struct {
-	// An array of workspace objects.
+	// The list of workspaces.
 	Data []*QueryOrganizationWorkspaceListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -91,13 +91,13 @@ type QueryOrganizationWorkspaceListResponseBodyResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of rows per page specified in the request.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of workspaces.
+	// The total number of rows.
 	//
 	// example:
 	//
@@ -178,21 +178,21 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResult) Validate() error {
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultData struct {
-	// Whether works in the workspace can be published. Valid values:
+	// Indicates whether works can be made public. Valid values:
 	//
-	// - true: Publishing is allowed.
+	// - true: Public.
 	//
-	// - false: Publishing is not allowed.
+	// - false: Not public.
 	//
 	// example:
 	//
 	// true
 	AllowPublishOperation *bool `json:"AllowPublishOperation,omitempty" xml:"AllowPublishOperation,omitempty"`
-	// Whether works in the workspace can be shared. Valid values:
+	// Indicates whether works can be shared with authorization. Valid values:
 	//
-	// - true: Sharing is allowed.
+	// - true: Authorized.
 	//
-	// - false: Sharing is not allowed.
+	// - false: Not authorized.
 	//
 	// example:
 	//
@@ -204,13 +204,13 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	//
 	// 2020-11-10 17:51:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator\\"s Quick BI user ID.
+	// The Quick BI user ID of the creator.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The creator\\"s Alibaba Cloud account name.
+	// The Alibaba Cloud account name of the creator.
 	//
 	// example:
 	//
@@ -222,48 +222,49 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	//
 	// 2020-11-10 17:51:07
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The modifier\\"s Quick BI user ID.
+	// The Quick BI user ID of the modifier.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The modifier\\"s Alibaba Cloud account name.
+	// The Alibaba Cloud account name of the modifier.
 	//
 	// example:
 	//
 	// pop****@aliyun.com
 	ModifyUserAccountName *string `json:"ModifyUserAccountName,omitempty" xml:"ModifyUserAccountName,omitempty"`
-	// The ID of the workspace\\"s organization.
+	// The ID of the organization to which the workspace belongs.
 	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// The workspace owner\\"s Quick BI user ID.
+	// The Quick BI user ID of the workspace owner.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The workspace owner\\"s Alibaba Cloud account name.
+	// The Alibaba Cloud account name of the workspace owner.
 	//
 	// example:
 	//
 	// pop****@aliyun.com
 	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
-	// The workspace owner\\"s Quick BI account name.
+	// The Quick BI account name of the workspace owner.
 	//
 	// example:
 	//
 	// test
 	RealOwnerAccountName *string `json:"RealOwnerAccountName,omitempty" xml:"RealOwnerAccountName,omitempty"`
-	// The workspace description.
+	// The description of the workspace.
 	//
 	// example:
 	//
-	// 该空间是测试空间
-	WorkspaceDescription  *string                                                                    `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	// This workspace is a test workspace
+	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	// The workspace export configuration.
 	WorkspaceExportConfig *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig `json:"WorkspaceExportConfig,omitempty" xml:"WorkspaceExportConfig,omitempty" type:"Struct"`
 	// The workspace ID.
 	//
@@ -275,7 +276,7 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试空间
+	// Test workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -441,38 +442,62 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResultData) Validate() error 
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig struct {
+	// Specifies how images are handled when exporting Excel files with formatting. This field takes effect only when configured at the organization level.
+	//
+	// Valid values:
+	//
+	//  	- false: Image fields are not converted to images.
+	//
+	//  	- true: Image fields can be converted to images. The option appears on the report export page, and users must manually select it to convert images.
+	//
 	// example:
 	//
 	// true
 	AllowExcelImageFile *bool `json:"AllowExcelImageFile,omitempty" xml:"AllowExcelImageFile,omitempty"`
+	// Specifies whether to allow exporting data as an Excel file.
+	//
 	// example:
 	//
 	// true
 	DataExport *bool `json:"DataExport,omitempty" xml:"DataExport,omitempty"`
+	// The default export type (with formatting: true. Without formatting: false).
+	//
 	// example:
 	//
 	// true
 	DefaultExportType *bool `json:"DefaultExportType,omitempty" xml:"DefaultExportType,omitempty"`
+	// The master switch for export. If set to false, all export settings below do not take effect.
+	//
 	// example:
 	//
 	// true
 	ExportMainSwitch *bool `json:"ExportMainSwitch,omitempty" xml:"ExportMainSwitch,omitempty"`
+	// Specifies whether to allow exporting to a local device.
+	//
 	// example:
 	//
 	// true
 	ExportToLocal *bool `json:"ExportToLocal,omitempty" xml:"ExportToLocal,omitempty"`
+	// Specifies whether public links of works support export.
+	//
 	// example:
 	//
 	// true
 	ExportToPublicWork *bool `json:"ExportToPublicWork,omitempty" xml:"ExportToPublicWork,omitempty"`
+	// Specifies whether to allow exporting to a server.
+	//
 	// example:
 	//
 	// true
 	ExportToServer *bool `json:"ExportToServer,omitempty" xml:"ExportToServer,omitempty"`
+	// Specifies whether to allow exporting as an image.
+	//
 	// example:
 	//
 	// true
 	ImageExport *bool `json:"ImageExport,omitempty" xml:"ImageExport,omitempty"`
+	// Specifies whether to allow exporting as a PDF.
+	//
 	// example:
 	//
 	// true

@@ -22,27 +22,27 @@ type iListAccelerationOfWorkspaceRequest interface {
 }
 
 type ListAccelerationOfWorkspaceRequest struct {
-	// The user ID in Quick BI. This is not your Alibaba Cloud account ID. Call the QueryUserInfoByAccount operation to obtain the user ID.
+	// The user ID in Quick BI, not your Alibaba Cloud account ID. You can call the QueryUserInfoByAccount operation to obtain the user ID.
 	//
 	// example:
 	//
 	// 1***************139
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
 	// test
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	// The page number. If this parameter is left empty, the default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of rows on each page for a paged query.
+	// The number of rows per page for a paged query.
 	//
-	// - Default value: 10.
+	// Default value: 10.
 	//
 	// example:
 	//

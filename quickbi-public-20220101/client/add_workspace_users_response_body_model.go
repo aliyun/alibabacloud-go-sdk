@@ -18,19 +18,19 @@ type iAddWorkspaceUsersResponseBody interface {
 }
 
 type AddWorkspaceUsersResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7AAB95D7-2E11-4FE2-94BC-858E4FC0C976
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns the result of the API execution.
+	// The execution result of the operation.
 	Result *AddWorkspaceUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Value range:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful. There may be cases where some members are added successfully and others fail. For the reasons of failure, refer to the FailureDetail in the response.
+	// - true: The request is successful. Some members may be added successfully while others fail. For the reasons of failures, refer to FailureDetail in the response.
 	//
-	// - false: The request failed, and no data will be persisted.
+	// - false: The request failed. No data is persisted.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *AddWorkspaceUsersResponseBody) Validate() error {
 }
 
 type AddWorkspaceUsersResponseBodyResult struct {
-	// Number of users that failed to be added.
+	// The number of users that failed to be added.
 	//
 	// example:
 	//
 	// 2
 	Failure *int32 `json:"Failure,omitempty" xml:"Failure,omitempty"`
-	// Reasons for the failures.
+	// The reasons for the failures.
 	//
 	// example:
 	//
 	// {"2046274934845893" : "AE0150010001: This user already exists.", "1213444447906552" : "AE0150010001: This user already exists."}
 	FailureDetail map[string]interface{} `json:"FailureDetail,omitempty" xml:"FailureDetail,omitempty"`
-	// Number of users that were added successfully.
+	// The number of users that were added.
 	//
 	// example:
 	//
 	// 1
 	Success *int32 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of users being added.
+	// The total number of users to be added.
 	//
 	// example:
 	//

@@ -22,55 +22,55 @@ type iQueryWorksByOrganizationRequest interface {
 }
 
 type QueryWorksByOrganizationRequest struct {
-	// Page number.
+	// The page number.
 	//
-	// - Default value is 1.
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Number of items per page.
+	// The number of rows per page.
 	//
-	// - Default value is 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the work to query. Possible values:
+	// The status of the works to query. Valid values:
 	//
-	// - 0: Unpublished
+	// - 0: Unpublished.
 	//
-	// - 1: Published
+	// - 1: Published.
 	//
-	// - 2: Modified but not published
+	// - 2: Modified but not published.
 	//
-	// - 3: Offline
+	// - 3: Offline.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Third-party embedding status. Possible values:
+	// The third-party embedding status. Valid values:
 	//
-	// - 0: Embedding not enabled
+	// - 0: Embedding is not enabled.
 	//
-	// - 1: Embedding enabled
+	// - 1: Embedding is enabled.
 	//
 	// example:
 	//
 	// 1
 	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
-	// The type of work to query. Leave blank to query all types. Possible values:
+	// The type of works to query. Leave this parameter empty to query all types. Valid values:
 	//
-	// - DATAPRODUCT: Data Portal
+	// - DATAPRODUCT: data portal
 	//
-	// - PAGE: Dashboard
+	// - PAGE: dashboard
 	//
-	// - REPORT: Spreadsheet
+	// - REPORT: workbook
 	//
-	// - dashboardOfflineQuery: Self-service Data Retrieval
+	// - dashboardOfflineQuery: custom query
 	//
 	// example:
 	//

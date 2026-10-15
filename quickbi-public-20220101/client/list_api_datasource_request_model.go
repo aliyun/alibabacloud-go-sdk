@@ -24,13 +24,13 @@ type ListApiDatasourceRequest struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// Current page number for API data source list:
+	// The page number of the API data source list.
 	//
-	// 	- Pages start from page 1.
+	// - Minimum value: 1.
 	//
-	// 	- Default value: 1.
+	// - Default value: 1.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type ListApiDatasourceRequest struct {
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of rows per page in a paged query.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
-	// 	- Valid values: 1 to 100.
+	// - Maximum value: 100.
 	//
 	// example:
 	//

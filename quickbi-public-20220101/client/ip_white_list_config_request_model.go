@@ -16,7 +16,7 @@ type iIpWhiteListConfigRequest interface {
 }
 
 type IpWhiteListConfigRequest struct {
-	// Required for increase and delete operations. The IP whitelist. Separate multiple IP addresses with commas.
+	// Required for add and delete operations. The IP whitelist. Separate multiple IP addresses with commas.
 	//
 	// example:
 	//
@@ -24,11 +24,11 @@ type IpWhiteListConfigRequest struct {
 	IpWhiteList *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - ADD: incrementally adds entries.
+	// - ADD: Incrementally adds entries.
 	//
-	// - DELETE: deletes entries.
+	// - DELETE: Deletes entries.
 	//
-	// - QUERY: queries entries.
+	// - QUERY: Queries entries.
 	//
 	// This parameter is required.
 	//

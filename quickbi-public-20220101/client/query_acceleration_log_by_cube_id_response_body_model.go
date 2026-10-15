@@ -24,15 +24,15 @@ type QueryAccelerationLogByCubeIdResponseBody struct {
 	//
 	// D8749D********80FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the API request.
+	// The execution result of the operation. Valid values:
 	//
 	// - true: The execution succeeded.
 	//
 	// - false: The execution failed.
 	Result *QueryAccelerationLogByCubeIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request succeeded.
 	//
 	// - false: The request failed.
 	//
@@ -87,7 +87,7 @@ func (s *QueryAccelerationLogByCubeIdResponseBody) Validate() error {
 }
 
 type QueryAccelerationLogByCubeIdResponseBodyResult struct {
-	// An array of acceleration task logs.
+	// The array of acceleration task logs.
 	Data []*QueryAccelerationLogByCubeIdResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The next page. A value of NULL or 0 indicates that no next page exists.
 	//
@@ -212,7 +212,7 @@ func (s *QueryAccelerationLogByCubeIdResponseBodyResult) Validate() error {
 }
 
 type QueryAccelerationLogByCubeIdResponseBodyResultData struct {
-	// The task duration in seconds.
+	// The duration. Unit: seconds.
 	//
 	// example:
 	//
@@ -230,31 +230,31 @@ type QueryAccelerationLogByCubeIdResponseBodyResultData struct {
 	//
 	// REST_A***************6a8
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The status of the task.
+	// The task status. Valid values:
 	//
-	// - 0: Pending
+	// - 0: pending
 	//
-	// - 1: Running
+	// - 1: running
 	//
-	// - 2: Succeeded
+	// - 2: succeeded
 	//
-	// - 3: Failed
+	// - 3: failed
 	//
-	// - 4: Canceled
+	// - 4: canceled
 	//
-	// - 5: Warning
+	// - 5: warning
 	//
 	// example:
 	//
 	// 0
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The start time of the task.
+	// The task start time. Format: yyyy/MM/dd HH:mm:ss. Time zone: UTC+8.
 	//
 	// example:
 	//
-	// REST_A***************6a8
+	// 2025/09/10 13:59:19
 	JonStartDate *string `json:"JonStartDate,omitempty" xml:"JonStartDate,omitempty"`
-	// The log content.
+	// The log.
 	//
 	// example:
 	//

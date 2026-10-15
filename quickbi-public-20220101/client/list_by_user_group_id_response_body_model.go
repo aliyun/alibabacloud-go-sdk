@@ -18,19 +18,19 @@ type iListByUserGroupIdResponseBody interface {
 }
 
 type ListByUserGroupIdResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user group query result is returned.
+	// The query results of the user groups.
 	Result *ListByUserGroupIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,9 +83,13 @@ func (s *ListByUserGroupIdResponseBody) Validate() error {
 }
 
 type ListByUserGroupIdResponseBodyResult struct {
-	// List of failed user groups.
+	// The list of user group IDs that failed to be queried.
+	//
+	// example:
+	//
+	// []
 	FailedUserGroupIds []*string `json:"FailedUserGroupIds,omitempty" xml:"FailedUserGroupIds,omitempty" type:"Repeated"`
-	// The details of the user group that was queried.
+	// The details of the queried user groups.
 	UserGroupModels []*ListByUserGroupIdResponseBodyResultUserGroupModels `json:"UserGroupModels,omitempty" xml:"UserGroupModels,omitempty" type:"Repeated"`
 }
 
@@ -129,13 +133,13 @@ func (s *ListByUserGroupIdResponseBodyResult) Validate() error {
 }
 
 type ListByUserGroupIdResponseBodyResultUserGroupModels struct {
-	// The time when the Secret was created.
+	// The creation time in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-03-15 17:13:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The UserID of the creator in the Quick BI.
+	// The UserID of the creator in Quick BI.
 	//
 	// example:
 	//
@@ -147,13 +151,13 @@ type ListByUserGroupIdResponseBodyResultUserGroupModels struct {
 	//
 	// 2fe4fbd8-****-af083ea/34fd1-****-dcbc33f
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
-	// The time when the protection policy was last modified.
+	// The modification time in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-03-15 20:36:40
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The UserID of the modifier in the Quick BI.
+	// The UserID of the modifier in Quick BI.
 	//
 	// example:
 	//
@@ -169,9 +173,9 @@ type ListByUserGroupIdResponseBodyResultUserGroupModels struct {
 	//
 	// example:
 	//
-	// 描述信息
+	// Description information
 	UsergroupDesc *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
-	// The ID of the user group.
+	// The user group ID.
 	//
 	// example:
 	//
@@ -181,7 +185,7 @@ type ListByUserGroupIdResponseBodyResultUserGroupModels struct {
 	//
 	// example:
 	//
-	// 测试用户组
+	// Test user group
 	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 

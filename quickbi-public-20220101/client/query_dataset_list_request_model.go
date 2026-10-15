@@ -24,15 +24,15 @@ type iQueryDatasetListRequest interface {
 }
 
 type QueryDatasetListRequest struct {
-	// The ID of the folder.
+	// The directory ID.
 	//
-	// - If you specify this parameter, all datasets in the folder are returned.
+	// - If this parameter is specified, all datasets in the specified directory are returned.
 	//
 	// example:
 	//
 	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The keyword used to search for datasets by name.
+	// The keyword used to search for dataset names.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type QueryDatasetListRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number of the dataset list.
 	//
-	// - Start value: 1
+	// - Minimum value: 1
 	//
 	// - Default value: 1
 	//
@@ -48,7 +48,7 @@ type QueryDatasetListRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of rows per page for a paged query.
 	//
 	// - Default value: 10
 	//
@@ -60,9 +60,9 @@ type QueryDatasetListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether to recursively include datasets in subdirectories. Valid values:
 	//
-	// - true: Returns all datasets in the folder specified by DirectoryId and its subdirectories.
+	// - true: Returns datasets in all recursive subdirectories under the directory specified by directoryId.
 	//
-	// - false: Returns only the datasets in the folder specified by DirectoryId.
+	// - false: Returns only datasets in the directory specified by directoryId, excluding subdirectories.
 	//
 	// example:
 	//

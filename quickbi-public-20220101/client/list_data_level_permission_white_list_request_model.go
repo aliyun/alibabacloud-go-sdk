@@ -16,7 +16,7 @@ type iListDataLevelPermissionWhiteListRequest interface {
 }
 
 type ListDataLevelPermissionWhiteListRequest struct {
-	// Dataset ID.
+	// The dataset ID.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type ListDataLevelPermissionWhiteListRequest struct {
 	//
 	// 3d5db23c-e4f2-49dd-a883-92285b48e14a
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// Type of row and column permission that the whitelist belongs to:
+	// The type of row and column permission to which the whitelist belongs. Valid values:
 	//
-	// - ROW_LEVEL: Row-level permission
+	// - ROW_LEVEL: row-level permission
 	//
-	// - COLUMN_LEVEL: Column-level permission
+	// - COLUMN_LEVEL: column-level permission
 	//
 	// This parameter is required.
 	//

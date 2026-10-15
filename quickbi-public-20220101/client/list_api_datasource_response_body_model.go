@@ -24,13 +24,13 @@ type ListApiDatasourceResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The query results are returned.
+	// The query result.
 	Result *ListApiDatasourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,15 +83,15 @@ func (s *ListApiDatasourceResponseBody) Validate() error {
 }
 
 type ListApiDatasourceResponseBodyResult struct {
-	// The list of API data sources that were queried.
+	// The list of API data sources.
 	Data []*ListApiDatasourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned data, used for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page set when the interface is requested.
+	// The number of rows per page specified in the request.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListApiDatasourceResponseBodyResultData struct {
 	//
 	// 0f2c3c6409be4dc0810f2a5785e816a8
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The parameter configuration of the query statement in JSON format. You can customize the parameter configuration.
+	// The query statement parameter settings in JSON format, which can be user-defined.
 	//
 	// example:
 	//
@@ -177,41 +177,41 @@ type ListApiDatasourceResponseBodyResultData struct {
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The data volume of the API data source.
 	//
-	// 	- Unit: Kbit/s
+	// - Unit: KB.
 	//
 	// example:
 	//
 	// 0.39746094
 	DataSize *float32 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The last synchronization time of the API data source.
+	// The last synchronization time of the API data source. Format example: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-05-25 16:19:43
 	DateUpdateTime *string `json:"DateUpdateTime,omitempty" xml:"DateUpdateTime,omitempty"`
-	// The time when the quota plan was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-05-25 16:19:43
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the optimization job was modified.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2022-05-25 16:19:43
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// REST_API_SYNC_0f2c3c6409be4dc0810f2a5785e816a8
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The parameter configurations in the JSONArray format.
+	// The parameter settings in JSONArray format.
 	//
-	// 	- name: parameter name
+	// - name: the parameter name.
 	//
-	// 	- value: the parameter value
+	// - value: the parameter value.
 	//
 	// example:
 	//
@@ -221,19 +221,9 @@ type ListApiDatasourceResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试数据源
+	// TestDataSource
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	// The status of the API data source synchronization task.
-	//
-	// Valid values:
-	//
-	// 	- 0: the to be run.
-	//
-	// 	- 1: The is running.
-	//
-	// 	- 2: The is successfully.
-	//
-	// 	- 3: failed.
+	// The synchronization task status of the API data source.
 	//
 	// example:
 	//
