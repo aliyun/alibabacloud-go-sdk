@@ -18,11 +18,11 @@ type iListReportDefinitionsResponseBody interface {
 }
 
 type ListReportDefinitionsResponseBody struct {
-	// The metadata of the response struct.
+	// Response structure metadata
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The list of report definitions.
+	// Report definition list
 	ReportDefinitions []*ListReportDefinitionsResponseBodyReportDefinitions `json:"ReportDefinitions,omitempty" xml:"ReportDefinitions,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -79,49 +79,51 @@ func (s *ListReportDefinitionsResponseBody) Validate() error {
 }
 
 type ListReportDefinitionsResponseBodyReportDefinitions struct {
-	// The start billing cycle for push. After the subscription is created, the system automatically pushes data from the start billing cycle to the current time. This parameter does not take effect for monthly bill PDF subscriptions, and historical data is not re-pushed. Data within the last year can be pushed at most.
+	// Whether to enable tag fields
+	AutoTagFields *bool `json:"AutoTagFields,omitempty" xml:"AutoTagFields,omitempty"`
+	// Push start billing cycle. After the subscription is successfully created, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly billing PDF subscriptions and does not re-push historical data. A maximum of data from the last 1 year can be pushed.
 	//
 	// example:
 	//
 	// 2025-05
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
-	// The name of the OSS bucket for file storage.
+	// Name of the OSS bucket where files are stored.
 	//
 	// example:
 	//
 	// oss-bill
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The UID of the OSS owner that stores the files. If a Bid/Reseller subscription is used and data needs to be pushed to the OSS bucket of a sub-account, specify this parameter. The specified account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The calling account is used by default.
+	// UID of the OSS owner that stores the files. Specify this parameter if you subscribe as a BID/ReSeller and want to push data to the OSS of a sub-account. The specified account must be a sub-account of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. The default value is the calling account.
 	//
 	// example:
 	//
 	// 1234567812345678
 	OssBucketOwnerAccountId *int64 `json:"OssBucketOwnerAccountId,omitempty" xml:"OssBucketOwnerAccountId,omitempty"`
-	// The storage path of the OSS bucket.
+	// OSS bucket storage path.
 	//
 	// example:
 	//
 	// bill/
 	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
-	// The name of the subscription source.
+	// Name of the subscription source.
 	//
 	// example:
 	//
 	// OSS
 	ReportSourceName *string `json:"ReportSourceName,omitempty" xml:"ReportSourceName,omitempty"`
-	// The subscription source. Valid values: OSS and MC.
+	// Type of the subscription source. Valid values: OSS and MC.
 	//
 	// example:
 	//
 	// OSS
 	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
-	// The ID of the bill subscription task.
+	// Billing subscription task ID.
 	//
 	// example:
 	//
 	// 123321
 	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
-	// The subscription type. Valid values:
+	// Subscription type. Valid values:
 	//
 	// - BillingItemDetailForBillingPeriod: billing item consumption details.
 	//
@@ -133,9 +135,9 @@ type ListReportDefinitionsResponseBodyReportDefinitions struct {
 	//
 	// BillingItemDetailForBillingPeriod
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The fields specified by the user for the subscription.
+	// Specified subscribed fields
 	SelectedFields []*string `json:"SelectedFields,omitempty" xml:"SelectedFields,omitempty" type:"Repeated"`
-	// The time when the subscription was created.
+	// Time when the subscription was created.
 	//
 	// example:
 	//
@@ -149,6 +151,10 @@ func (s ListReportDefinitionsResponseBodyReportDefinitions) String() string {
 
 func (s ListReportDefinitionsResponseBodyReportDefinitions) GoString() string {
 	return s.String()
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetAutoTagFields() *bool {
+	return s.AutoTagFields
 }
 
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetBeginBillingCycle() *string {
@@ -189,6 +195,11 @@ func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetSelectedFields()
 
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetSubscribeCreateTime() *string {
 	return s.SubscribeCreateTime
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetAutoTagFields(v bool) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.AutoTagFields = &v
+	return s
 }
 
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetBeginBillingCycle(v string) *ListReportDefinitionsResponseBodyReportDefinitions {

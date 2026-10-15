@@ -18,15 +18,15 @@ type iListFundAccountResponseBody interface {
 }
 
 type ListFundAccountResponseBody struct {
-	// Data list
+	// The data list.
 	Data []*ListFundAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Response metadata
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,79 +83,79 @@ func (s *ListFundAccountResponseBody) Validate() error {
 }
 
 type ListFundAccountResponseBodyData struct {
-	// Account creation time
+	// The time when the account was created. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-12-30 12:00:00
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Account ID of the MA user associated with the account
+	// The account ID of the MA user corresponding to the account.
 	//
 	// example:
 	//
 	// 1232121
 	FundAccountAdminAccountId *string `json:"FundAccountAdminAccountId,omitempty" xml:"FundAccountAdminAccountId,omitempty"`
-	// Name of the MA user associated with the account
+	// The username of the MA user corresponding to the account.
 	//
 	// example:
 	//
-	// 云某的账户
+	// Yun\\"s account
 	FundAccountAdminAccountName *string `json:"FundAccountAdminAccountName,omitempty" xml:"FundAccountAdminAccountName,omitempty"`
-	// Account ID
+	// The fund account ID.
 	//
 	// example:
 	//
 	// 1022231
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
-	// Account name
+	// The fund account name.
 	//
 	// example:
 	//
-	// 云某的账户
+	// Yun\\"s account
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
-	// Account ID of the fund account owner
+	// The account ID of the fund account owner.
 	//
 	// example:
 	//
 	// 132123211
 	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
-	// Account status.
+	// The account status. Valid values:
 	//
-	// VALID: valid.
+	// - VALID: Valid.
 	//
-	// FROZEN: frozen.
+	// - FROZEN: Frozen.
 	//
-	// CLOSED: closed.
+	// - CLOSED: Closed.
 	//
 	// example:
 	//
 	// VALID
 	FundAccountStatus *string `json:"FundAccountStatus,omitempty" xml:"FundAccountStatus,omitempty"`
-	// Account type.
+	// The account type. Valid values:
 	//
-	// DIRECT_USER: Alibaba Cloud direct customer account.
+	// - DIRECT_USER: Alibaba Cloud direct customer account.
 	//
-	// RESELLER_QUOTA: ecosystem account.
+	// - RESELLER_QUOTA: Ecosystem account.
 	//
 	// example:
 	//
 	// DIRECT_USER
 	FundAccountType *string `json:"FundAccountType,omitempty" xml:"FundAccountType,omitempty"`
-	// Level-1 marketplace
+	// The primary marketplace.
 	//
 	// example:
 	//
 	// 2684210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// Set of account permissions that the user has.
+	// The set of account permissions owned by the user. Valid values:
 	//
-	// using: use.
+	// - using: Use.
 	//
-	// manage: manage.
+	// - manage: Manage.
 	//
-	// owner: own.
+	// - owner: Own.
 	Permissions []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	// Site
+	// The site.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type GetOrdersResponseBody struct {
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type GetOrdersResponseBodyData struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. A maximum of 20 entries per page is recommended. Excessive entries may cause a timeout.
+	// The number of entries per page. Set this parameter to a maximum of 20. A larger value may cause a timeout.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

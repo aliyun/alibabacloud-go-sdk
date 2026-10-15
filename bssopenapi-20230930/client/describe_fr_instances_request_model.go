@@ -66,15 +66,15 @@ type DescribeFrInstancesRequest struct {
 	//
 	// dynamicMonth
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The enterprise and account list. If empty, the current account is queried.
+	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*DescribeFrInstancesRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// The end time.
+	// The end time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710604800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The resource dimension for the query.
+	// The resource dimension.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type DescribeFrInstancesRequest struct {
 	//
 	// alb_cubag*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance tag label value of the resource plan instance.
+	// The label value of the resource plan instance tag.
 	//
 	// example:
 	//
 	// FR-***
 	InstanceTag *string `json:"InstanceTag,omitempty" xml:"InstanceTag,omitempty"`
-	// The primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	// The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -122,19 +122,19 @@ type DescribeFrInstancesRequest struct {
 	//
 	// startTime
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	// The collation for sorting.
+	// The sorting collation.
 	//
 	// example:
 	//
 	// asc
 	SortRule *string `json:"SortRule,omitempty" xml:"SortRule,omitempty"`
-	// The specification.
+	// The specifications.
 	//
 	// example:
 	//
 	// *
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The start time.
+	// The start time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -338,7 +338,7 @@ func (s *DescribeFrInstancesRequest) Validate() error {
 }
 
 type DescribeFrInstancesRequestEcIdAccountIds struct {
-	// The account list to access. If empty, all accounts under the current entity ID are selected.
+	// The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The enterprise entity ID.
 	//

@@ -28,7 +28,7 @@ type ListFundAccountPayRelationRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Fund account ID.
+	// The fund account ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListFundAccountPayRelationRequest struct {
 	//
 	// 12323123
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
-	// The primary marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
+	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type ListFundAccountPayRelationRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The relationship status.
+	// The relationship status. Valid values:
 	//
-	// valid: valid.
+	// - valid: Valid.
 	//
-	// expired: invalid.
+	// - expired: Invalid.
 	//
 	// example:
 	//

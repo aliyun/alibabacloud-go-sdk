@@ -32,13 +32,13 @@ type QueryCostCenterResourceResponseBody struct {
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The response metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The token for the next query. If this parameter is empty, no more results exist.
+	// The token for the next query. An empty value indicates that no more results are available.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type QueryCostCenterResourceResponseBody struct {
 	//
 	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -136,17 +136,17 @@ func (s *QueryCostCenterResourceResponseBody) Validate() error {
 }
 
 type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
-	// The add strategy.
+	// The allocation strategy.
 	//
 	// example:
 	//
 	// AUTO_ALLOCATE
 	AddStrategy *string `json:"AddStrategy,omitempty" xml:"AddStrategy,omitempty"`
-	// The Policy Name of the add policy.
+	// The added policy name.
 	//
 	// example:
 	//
-	// automatic allocation
+	// Automatic allocation
 	AddStrategyName *string `json:"AddStrategyName,omitempty" xml:"AddStrategyName,omitempty"`
 	// The number of refreshed billing cycles.
 	//
@@ -184,7 +184,7 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// code
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
-	// The time when the cost center was created.
+	// The creation time of the cost center. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -202,25 +202,25 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// test
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
-	// The time when the cost center was last updated.
+	// The last update time of the cost center. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-05-18 16:12:25
 	CostCenterUpdateTime *string `json:"CostCenterUpdateTime,omitempty" xml:"CostCenterUpdateTime,omitempty"`
-	// The rule version.
+	// The version of the rule.
 	//
 	// example:
 	//
 	// 3
 	FinanceUnitRuleVersion *int64 `json:"FinanceUnitRuleVersion,omitempty" xml:"FinanceUnitRuleVersion,omitempty"`
-	// The billing granularity ID.
+	// The ID of the billing granularity.
 	//
 	// example:
 	//
 	// cn-hangzhou;standard
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The associated commodity code.
+	// The code of the associated commodity.
 	//
 	// example:
 	//
@@ -232,17 +232,17 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// i-xxxxx
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	// The ID of the customer to whom the cost center belongs.
+	// The ID of the customer to which the cost center belongs.
 	//
 	// example:
 	//
 	// 1234567812345678
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The name of the customer to whom the cost center belongs.
+	// The name of the customer to which the cost center belongs.
 	//
 	// example:
 	//
-	// CustomerA
+	// Customer A
 	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
 	// The ID of the parent cost center.
 	//
@@ -250,25 +250,25 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// 123456
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
-	// The product code, which is the same as the product code in User Center bills.
+	// The product code, which is the same as the product code in the User Center bill.
 	//
 	// example:
 	//
 	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// The product name.
+	// The name of the product.
 	//
 	// example:
 	//
 	// ApsaraDB
 	PipName *string `json:"PipName,omitempty" xml:"PipName,omitempty"`
-	// The most recent billing cycle.
+	// The latest billing cycle.
 	//
 	// example:
 	//
 	// 202509
 	RecentBillingMonth *int64 `json:"RecentBillingMonth,omitempty" xml:"RecentBillingMonth,omitempty"`
-	// The region name.
+	// The name of the region.
 	//
 	// example:
 	//
@@ -286,7 +286,7 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
@@ -298,11 +298,11 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// testResource
 	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
-	// The resource source. Valid values:
+	// The source of the resource. Valid values:
 	//
-	// - AUTO_ALLOCATE: automatic allocation.
+	// - AUTO_ALLOCATE: Automatic allocation.
 	//
-	// - MANUAL_ALLOCATE: manual allocation.
+	// - MANUAL_ALLOCATE: Manual allocation.
 	//
 	// example:
 	//
@@ -314,25 +314,25 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// tag
 	ResourceTag *string `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// example:
 	//
 	// FPT_ossbag_absolute_Storage_bj
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The time when the cost center was last updated. This is a reserved field and is currently unavailable.
+	// The last update time of the cost center. This is a reserved field and is currently unavailable. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-05-18 16:12:25
 	ResourceUpdateTime *string `json:"ResourceUpdateTime,omitempty" xml:"ResourceUpdateTime,omitempty"`
-	// The user ID of the resource owner.
+	// The ID of the user that owns the resource.
 	//
 	// example:
 	//
 	// 1234567812345678
 	ResourceUserId *int64 `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
-	// The username of the resource owner.
+	// The name of the user that owns the resource.
 	//
 	// example:
 	//
@@ -344,7 +344,7 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// -1
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
-	// The billing cycle in which the rule takes effect.
+	// The billing cycle when the rule takes effect.
 	//
 	// example:
 	//

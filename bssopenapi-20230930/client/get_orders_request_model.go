@@ -34,19 +34,19 @@ type iGetOrdersRequest interface {
 }
 
 type GetOrdersRequest struct {
-	// The end of the time range for order creation. By default, orders created within the most recent 1 hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
+	// The end of the time range during which orders were created. By default, orders created within the last hour are queried. Specify the time in the YYYY-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The start of the time range for order creation. By default, orders created within the most recent 1 hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
+	// The start of the time range during which orders were created. By default, orders created within the last hour are queried. Specify the time in the YYYY-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2016-05-23T13:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// The UID of a member account in the enterprise multi-account management. Leave this parameter empty if this scenario does not apply.
+	// The UID of the member accounts in the enterprise multi-account architecture. Leave this parameter empty if this scenario does not apply.
 	//
 	// example:
 	//
@@ -54,29 +54,29 @@ type GetOrdersRequest struct {
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The order type. Valid values:
 	//
-	// - New: new purchase.
+	// - New: new purchase
 	//
-	// - Renew: renewal.
+	// - Renew: renewal
 	//
-	// - Upgrade: upgrade.
+	// - Upgrade: upgrade
 	//
-	// - TempUpgrade: temporary upgrade.
+	// - TempUpgrade: temporary upgrade
 	//
-	// - Downgrade: downgrade.
+	// - Downgrade: downgrade
 	//
-	// - Refund: refund.
+	// - Refund: refund
 	//
-	// - Convert: billing method conversion.
+	// - Convert: billing method change
 	//
-	// - ResizeDisk: cloud disk resizing.
+	// - ResizeDisk: disk resizing
 	//
-	// - CompensatoryRenew: compensatory renewal.
+	// - CompensatoryRenew: compensatory renewal
 	//
-	// - IncreaseUpgrade: bandwidth upgrade.
+	// - IncreaseUpgrade: bandwidth upgrade
 	//
-	// - Exchange: exchange.
+	// - Exchange: exchange
 	//
-	// - ChangeOperatingSystem: operating system change.
+	// - ChangeOperatingSystem: operating system replacement
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type GetOrdersRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The payment status. For non-refund orders, valid values:
 	//
-	// - Unpaid: unpaid.
+	// - Unpaid: unpaid
 	//
-	// - Paid: paid.
+	// - Paid: paid
 	//
-	// - Cancelled: cancelled.
+	// - Cancelled: cancelled
 	//
-	// > For refund orders, this parameter can be set to NULL.
+	// > For refund orders, this parameter can be NULL.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type GetOrdersRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The subscription type. Valid values:
 	//
-	// - Subscription: upfront.
+	// - Subscription: subscription
 	//
-	// - PayAsYouGo: pay-as-you-go.
+	// - PayAsYouGo: pay-as-you-go
 	//
 	// example:
 	//

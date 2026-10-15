@@ -18,15 +18,15 @@ type iListInvoiceTitleResponseBody interface {
 }
 
 type ListInvoiceTitleResponseBody struct {
-	// Invoice title list
+	// The list of invoice titles.
 	Data []*ListInvoiceTitleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Response metadata.
+	// The response metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,55 +83,55 @@ func (s *ListInvoiceTitleResponseBody) Validate() error {
 }
 
 type ListInvoiceTitleResponseBodyData struct {
-	// Bank name.
+	// The account bank name.
 	//
 	// example:
 	//
-	// 招商银行
+	// China Merchants Bank
 	AccountBankName *string `json:"AccountBankName,omitempty" xml:"AccountBankName,omitempty"`
-	// Account ID.
+	// The account ID.
 	//
 	// example:
 	//
 	// 1990699401005016
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Basic bank account number.
+	// The bank account number.
 	//
 	// example:
 	//
 	// 1234567890
 	BankAccountNumber *string `json:"BankAccountNumber,omitempty" xml:"BankAccountNumber,omitempty"`
-	// The time when the invoice title was created.
+	// The time when the invoice title was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-06-01 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Invoice title ID.
+	// The invoice title ID.
 	//
 	// example:
 	//
 	// 123456
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Invoice title.
+	// The invoice title.
 	//
 	// example:
 	//
-	// xx公司
+	// XX Company
 	InvoiceTitle *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
-	// Registered address.
+	// The registered address.
 	//
 	// example:
 	//
-	// 北京市朝阳区
+	// Chaoyang District, Beijing
 	RegisteredAddress *string `json:"RegisteredAddress,omitempty" xml:"RegisteredAddress,omitempty"`
-	// Registered landline number.
+	// The registered landline number.
 	//
 	// example:
 	//
 	// 010-12345678
 	RegisteredLandline *string `json:"RegisteredLandline,omitempty" xml:"RegisteredLandline,omitempty"`
-	// Unified social credit code. 15, 17, 18, or 20 characters.
+	// The unified social credit code. The code is 15, 17, 18, or 20 characters in length.
 	//
 	// example:
 	//

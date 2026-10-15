@@ -34,9 +34,9 @@ type iListInvoiceCandidateRequest interface {
 }
 
 type ListInvoiceCandidateRequest struct {
-	// List of billing cycles.
+	// The list of billing cycles.
 	BillingCycles []*int32 `json:"BillingCycles,omitempty" xml:"BillingCycles,omitempty" type:"Repeated"`
-	// List of business document numbers.
+	// The list of business document numbers.
 	BusinessIds []*string `json:"BusinessIds,omitempty" xml:"BusinessIds,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -44,7 +44,7 @@ type ListInvoiceCandidateRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// List of enterprises and accounts. If empty, the current account itself is queried.
+	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*ListInvoiceCandidateRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
 	// The end time. Format: yyyy-mm-dd hh:mm:ss.
 	//
@@ -52,9 +52,9 @@ type ListInvoiceCandidateRequest struct {
 	//
 	// 2025-07-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// List of invoice issuers.
+	// The list of invoice issuers.
 	InvoiceIssuers []*string `json:"InvoiceIssuers,omitempty" xml:"InvoiceIssuers,omitempty" type:"Repeated"`
-	// Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type ListInvoiceCandidateRequest struct {
 	//
 	// 2025-06-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// List of invoice candidate statuses.
+	// The list of invoice object statuses.
 	Status []*int32 `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// List of invoice candidate types.
+	// The list of invoice object types.
 	Types []*int32 `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
@@ -199,9 +199,9 @@ func (s *ListInvoiceCandidateRequest) Validate() error {
 }
 
 type ListInvoiceCandidateRequestEcIdAccountIds struct {
-	// List of accounts to access. If empty, all accounts under the current entity ID are selected.
+	// The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// Enterprise entity ID.
+	// The enterprise entity ID.
 	//
 	// example:
 	//

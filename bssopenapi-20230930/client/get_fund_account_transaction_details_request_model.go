@@ -36,99 +36,99 @@ type iGetFundAccountTransactionDetailsRequest interface {
 }
 
 type GetFundAccountTransactionDetailsRequest struct {
-	// Transaction order number
+	// The transaction order number.
 	//
 	// example:
 	//
 	// 2023212312321
 	BillNumber *string `json:"BillNumber,omitempty" xml:"BillNumber,omitempty"`
-	// Transaction channel serial number
+	// The payment reference No.
 	//
 	// example:
 	//
 	// 20250312334312322
 	ChannelTransactionNumber *string `json:"ChannelTransactionNumber,omitempty" xml:"ChannelTransactionNumber,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Query end timestamp (milliseconds)
+	// The end timestamp for the query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1735664561000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Fund account ID. If not specified, the account ID owned by the current account (owner) is used by default.
+	// The ID of the fund account. If you do not specify this parameter, the ID of the account owned by the current user is used by default.
 	//
 	// example:
 	//
 	// 123221232
 	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
-	// Page size (maximum 200)
+	// The number of entries per page. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Query start timestamp (milliseconds)
+	// The start timestamp for the query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1735664461000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Transaction channel. If specified, the query filters by transaction channel. If not specified, all channels are queried by default.
+	// The list of transaction channels. If you specify this parameter, transactions are queried by channel. If you do not specify this parameter, all channels are queried by default. Valid values:
 	//
-	// User balance: ACCT_CASH.
+	// - ACCT_CASH: User balance.
 	//
-	// Alipay: ALIPAY.
+	// - ALIPAY: Alipay.
 	//
-	// Alipay Zhifutong: ALIPAY_ZHIFUTONG.
+	// - ALIPAY_ZHIFUTONG: Alipay Zhifutong.
 	//
-	// Offline remittance: OFFLINE_REMIT.
+	// - OFFLINE_REMIT: Corporate remittance.
 	//
-	// Credit control quota refund: REFUND.
+	// - REFUND: Credit limit refund.
 	//
-	// Online banking: UNION_PAY_BANK.
+	// - UNION_PAY_BANK: Online banking.
 	//
-	// Credit card: CREDIT_CARD. (International site only)
+	// - CREDIT_CARD: Credit card. Available only on the international site.
 	//
-	// PayPal: PAYPAL. (International site only)
+	// - AYPAL: PayPal. Available only on the international site.
 	TransactionChannelList []*string `json:"TransactionChannelList,omitempty" xml:"TransactionChannelList,omitempty" type:"Repeated"`
-	// Transaction direction: in/out (fund inflow/outflow)
+	// The direction of the transaction.
 	//
 	// example:
 	//
 	// IN
 	TransactionDirection *string `json:"TransactionDirection,omitempty" xml:"TransactionDirection,omitempty"`
-	// Transaction serial number
+	// The transaction number.
 	//
 	// example:
 	//
 	// 543231231
 	TransactionNumber *int64 `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	// Transaction type. If a transaction type is specified, only results of that type are returned. If the specified type does not exist, the result is empty. If not specified, all types are returned by default.
+	// The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
 	//
-	// Top-up: CHARGE.
+	// - CHARGE: Top-up.
 	//
-	// Withdrawal: WITHDRAW.
+	// - WITHDRAW: Withdrawal.
 	//
-	// Refund: REFUND.
+	// - REFUND: Refund.
 	//
-	// Payment: PAY.
+	// - PAY: Payment.
 	//
-	// Transfer: TRANSFER.
+	// - TRANSFER: Transfer.
 	//
-	// Adjustment: ADJUST.
+	// - ADJUST: Adjustment.
 	//
-	// Order expiration refund: PAY_FAILED.
+	// - PAY_FAILED: Refund for failed order.
 	//
 	// example:
 	//
 	// CHARGE
 	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
-	// Transaction type list. Supports querying with multiple parameters.
+	// The list of transaction types. You can specify multiple parameters for a parameter query.
 	TransactionTypeList []*string `json:"TransactionTypeList,omitempty" xml:"TransactionTypeList,omitempty" type:"Repeated"`
 }
 

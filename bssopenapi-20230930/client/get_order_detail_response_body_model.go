@@ -42,7 +42,7 @@ type GetOrderDetailResponseBody struct {
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

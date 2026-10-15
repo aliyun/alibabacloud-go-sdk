@@ -57,7 +57,8 @@ type DescribeCouponShrinkRequest struct {
 	// example:
 	//
 	// 554863270150
-	CouponNo                   *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The list of coupon template IDs.
 	CouponTemplateIdListShrink *string `json:"CouponTemplateIdList,omitempty" xml:"CouponTemplateIdList,omitempty"`
 	// The coupon type.
 	//
@@ -73,49 +74,53 @@ type DescribeCouponShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The enterprise and account list. If this parameter is left empty, the current account is queried.
+	// The list of enterprises and accounts. If this parameter is left empty, the coupons of the current account are queried.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
-	// The effective end time.
+	// The effective end time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1708423156000
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	// The effective start time.
+	// The effective start time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684750028000
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
-	// The expiration end time.
+	// The expiration end time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1708423156000
 	ExpireEndDate *int64 `json:"ExpireEndDate,omitempty" xml:"ExpireEndDate,omitempty"`
-	// The expiration start time.
+	// The expiration start time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684750028000
 	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
-	IncludeShare    *bool  `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
-	MaxResults      *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The primary campaign information.
+	// Specifies whether to include shared coupons.
+	IncludeShare *bool `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
+	// The maximum number of entries to return for a single request.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The first-level site information.
 	//
 	// example:
 	//
 	// 2684201000001
-	Nbid      *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The token for the next query. If this parameter is empty, no more pages are available.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product code.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The status.
 	//

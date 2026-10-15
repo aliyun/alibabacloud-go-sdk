@@ -137,39 +137,39 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// snapshot
 	BillingCommodityCode *string `json:"BillingCommodityCode,omitempty" xml:"BillingCommodityCode,omitempty"`
-	// The deducted commodity name.
+	// The name of the offset commodity.
 	//
 	// example:
 	//
-	// 云服务器ECS-快照
+	// Elastic Compute Service (ECS) - Snapshot
 	BillingCommodityName *string `json:"BillingCommodityName,omitempty" xml:"BillingCommodityName,omitempty"`
-	// The expiration time.
+	// The expiration time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1679036400000
 	BillingEndTime *int64 `json:"BillingEndTime,omitempty" xml:"BillingEndTime,omitempty"`
-	// The deduction instance.
+	// The offset instance.
 	//
 	// example:
 	//
 	// cn-beijing
 	BillingInstanceId *string `json:"BillingInstanceId,omitempty" xml:"BillingInstanceId,omitempty"`
-	// The deduction billable item.
+	// The offset billable item.
 	BillingPriceField *DescribeDeductLogsResponseBodyDataBillingPriceField `json:"BillingPriceField,omitempty" xml:"BillingPriceField,omitempty" type:"Struct"`
-	// The deduction billable item code.
+	// The offset billable item code.
 	//
 	// example:
 	//
 	// Storage
 	BillingPriceFieldCode *string `json:"BillingPriceFieldCode,omitempty" xml:"BillingPriceFieldCode,omitempty"`
-	// The deduction billable item name.
+	// The offset billable item name.
 	//
 	// example:
 	//
-	// 零折使用容量
+	// Zero-discount used capacity
 	BillingPriceFieldName *string `json:"BillingPriceFieldName,omitempty" xml:"BillingPriceFieldName,omitempty"`
-	// The effective period.
+	// The effective period, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 总量恒定型
+	// Fixed total capacity
 	CapacityTypeName *string `json:"CapacityTypeName,omitempty" xml:"CapacityTypeName,omitempty"`
 	// The commodity.
 	Commodity *DescribeDeductLogsResponseBodyDataCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
@@ -237,41 +237,41 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 对象存储OSS资源包(包月)
+	// Object Storage Service (OSS) resource plan (subscription)
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The commitment cycle.
+	// The commitment period.
 	CycleType *DescribeDeductLogsResponseBodyDataCycleType `json:"CycleType,omitempty" xml:"CycleType,omitempty" type:"Struct"`
-	// The commitment cycle code.
+	// The commitment period code.
 	//
 	// example:
 	//
 	// hour
 	CycleTypeCode *string `json:"CycleTypeCode,omitempty" xml:"CycleTypeCode,omitempty"`
-	// The commitment cycle name.
+	// The commitment period name.
 	//
 	// example:
 	//
-	// 小时
+	// Hour
 	CycleTypeName *string `json:"CycleTypeName,omitempty" xml:"CycleTypeName,omitempty"`
-	// The deduction time.
+	// The deduction time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1679039572000
 	DeductTime *int64 `json:"DeductTime,omitempty" xml:"DeductTime,omitempty"`
-	// The deduction factor.
+	// The offset factor.
 	//
 	// example:
 	//
 	// 1
 	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// The ID of the account to which the instance belongs.
+	// The account ID of the instance owner.
 	//
 	// example:
 	//
 	// 1990699401005016
 	InstanceBelongAccountId *int64 `json:"InstanceBelongAccountId,omitempty" xml:"InstanceBelongAccountId,omitempty"`
-	// The name of the account to which the instance belongs.
+	// The account name of the instance owner.
 	//
 	// example:
 	//
@@ -283,37 +283,37 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// OSSBAG-cn-****s
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The display unit of the metering amount after deduction.
+	// The display unit of the metered amount after offset.
 	//
 	// example:
 	//
 	// Byte
 	MeasureAfterDeductViewUnit *string `json:"MeasureAfterDeductViewUnit,omitempty" xml:"MeasureAfterDeductViewUnit,omitempty"`
-	// The display value of the metering amount after deduction.
+	// The display value of the metered amount after offset.
 	//
 	// example:
 	//
 	// 0
 	MeasureAfterDeductViewValue *string `json:"MeasureAfterDeductViewValue,omitempty" xml:"MeasureAfterDeductViewValue,omitempty"`
-	// The display unit of the metering amount before deduction.
+	// The display unit of the metered amount before offset.
 	//
 	// example:
 	//
 	// GB
 	MeasureBeforeDeductViewUnit *string `json:"MeasureBeforeDeductViewUnit,omitempty" xml:"MeasureBeforeDeductViewUnit,omitempty"`
-	// The display value of the metering amount before deduction.
+	// The display value of the metered amount before offset.
 	//
 	// example:
 	//
 	// 16.103515
 	MeasureBeforeDeductViewValue *string `json:"MeasureBeforeDeductViewValue,omitempty" xml:"MeasureBeforeDeductViewValue,omitempty"`
-	// The display unit of the deducted metering amount.
+	// The display unit of the metered offset amount.
 	//
 	// example:
 	//
 	// GB
 	MeasureDeductedViewUnit *string `json:"MeasureDeductedViewUnit,omitempty" xml:"MeasureDeductedViewUnit,omitempty"`
-	// The display value of the deducted metering amount.
+	// The display value of the metered offset amount.
 	//
 	// example:
 	//
@@ -331,15 +331,15 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 对象存储
+	// Object Storage Service
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The deduction account ID.
+	// The ID of the account for deduction.
 	//
 	// example:
 	//
 	// 1990699401005016
 	RelationAccountId *int64 `json:"RelationAccountId,omitempty" xml:"RelationAccountId,omitempty"`
-	// The deduction account name.
+	// The name of the deduction account.
 	//
 	// example:
 	//
@@ -357,7 +357,7 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 标准存储包
+	// Standard storage plan
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -824,7 +824,7 @@ type DescribeDeductLogsResponseBodyDataBillingCommodity struct {
 	//
 	// example:
 	//
-	// 云服务器ECS-快照
+	// Elastic Compute Service (ECS) - Snapshot
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -869,7 +869,7 @@ type DescribeDeductLogsResponseBodyDataBillingPriceField struct {
 	//
 	// example:
 	//
-	// 零折使用容量
+	// Zero-discount used capacity
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -914,7 +914,7 @@ type DescribeDeductLogsResponseBodyDataCapacityType struct {
 	//
 	// example:
 	//
-	// 总量恒定型
+	// Fixed total capacity
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -959,7 +959,7 @@ type DescribeDeductLogsResponseBodyDataCommodity struct {
 	//
 	// example:
 	//
-	// 对象存储OSS资源包(包月)
+	// Object Storage Service (OSS) resource plan (subscription)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -994,17 +994,17 @@ func (s *DescribeDeductLogsResponseBodyDataCommodity) Validate() error {
 }
 
 type DescribeDeductLogsResponseBodyDataCycleType struct {
-	// The commitment cycle code.
+	// The commitment period code.
 	//
 	// example:
 	//
 	// hour
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The commitment cycle name.
+	// The commitment period name.
 	//
 	// example:
 	//
-	// 小时
+	// Hour
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1049,7 +1049,7 @@ type DescribeDeductLogsResponseBodyDataProduct struct {
 	//
 	// example:
 	//
-	// 对象存储
+	// Object Storage Service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1094,7 +1094,7 @@ type DescribeDeductLogsResponseBodyDataTemplate struct {
 	//
 	// example:
 	//
-	// 标准存储包
+	// Standard storage plan
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

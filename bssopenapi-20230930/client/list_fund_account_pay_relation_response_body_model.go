@@ -32,7 +32,7 @@ type ListFundAccountPayRelationResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data list.
 	Data []*ListFundAccountPayRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
@@ -134,17 +134,17 @@ func (s *ListFundAccountPayRelationResponseBody) Validate() error {
 }
 
 type ListFundAccountPayRelationResponseBodyData struct {
-	// The account ID of the user associated with the payment relationship, that is, the account that uses this account for payment.
+	// The account ID of the user associated with the payment relationship, which is the account that uses this account for payment.
 	//
 	// example:
 	//
 	// 32812132121
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The user name.
+	// The username.
 	//
 	// example:
 	//
-	// 云某的名称
+	// Sample username
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The enterprise entity ID of the user associated with the payment relationship.
 	//
@@ -152,7 +152,7 @@ type ListFundAccountPayRelationResponseBodyData struct {
 	//
 	// 213231232
 	Ecid *string `json:"Ecid,omitempty" xml:"Ecid,omitempty"`
-	// The time when the payment relationship takes effect.
+	// The effective period of the payment relationship. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -170,47 +170,41 @@ type ListFundAccountPayRelationResponseBodyData struct {
 	//
 	// 312328912
 	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
-	// The time when the payment relationship expires.
+	// The time when the payment relationship expires. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-01-01 12:12:12
 	IneffectiveTime *string `json:"IneffectiveTime,omitempty" xml:"IneffectiveTime,omitempty"`
-	// The primary marketplace.
+	// The level-1 marketplace.
 	//
 	// example:
 	//
 	// 2684210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The operator name.
-	//
-	// When the operator type is aliyun_pk, the operator name is the Alibaba Cloud nickname.
-	//
-	// When the operator type is system, the operator name is "Alibaba Cloud assistant".
+	// The name of the operator. If the operator type is aliyun_pk, the value is the Alibaba Cloud nickname. If the operator type is system, the value is "Alibaba Cloud Support".
 	//
 	// example:
 	//
-	// 云某的名称
+	// Sample username
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The authorized operator.
-	//
-	// When the operator type is aliyun_pk, operatorNo is the Alibaba Cloud account ID.
+	// The authorized operator. If the operator type is aliyun_pk, the value is the Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 1232343423
 	OperatorNo *string `json:"OperatorNo,omitempty" xml:"OperatorNo,omitempty"`
-	// The type of the authorized operator.
+	// The type of the authorized operator. Valid values:
 	//
-	// aliyun_pk: user.
+	// - aliyun_pk: User.
 	//
-	// system: Alibaba Cloud system.
+	// - system: Alibaba Cloud system.
 	//
 	// example:
 	//
 	// aliyun_pk
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// The relationship type, which can be collection relationship or payment relationship.
+	// The relationship type, which can be a collection relationship or a payment relationship.
 	//
 	// example:
 	//
@@ -222,11 +216,11 @@ type ListFundAccountPayRelationResponseBodyData struct {
 	//
 	// 26842
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	// The relationship status.
+	// The relationship status. Valid values:
 	//
-	// valid: valid.
+	// - valid: Valid.
 	//
-	// expired: invalid.
+	// - expired: Invalid.
 	//
 	// example:
 	//

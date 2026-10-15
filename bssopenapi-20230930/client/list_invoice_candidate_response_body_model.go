@@ -30,9 +30,9 @@ type ListInvoiceCandidateResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of data entries.
+	// The data list.
 	Data []*ListInvoiceCandidateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The metadata of the response.
+	// The response structure metadata.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListInvoiceCandidateResponseBodyData struct {
 	//
 	// example:
 	//
-	// 测试账号
+	// Test account
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle.
 	//
@@ -164,7 +164,7 @@ type ListInvoiceCandidateResponseBodyData struct {
 	//
 	// 202506
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The time when the business event occurred.
+	// The time when the transaction occurred, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -180,15 +180,15 @@ type ListInvoiceCandidateResponseBodyData struct {
 	//
 	// example:
 	//
-	// 性能测试
+	// Performance testing
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The creation time.
+	// The creation time, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-06-91 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the invoice candidate.
+	// The ID of the invoicing object.
 	//
 	// example:
 	//
@@ -228,21 +228,21 @@ type ListInvoiceCandidateResponseBodyData struct {
 	//
 	// example:
 	//
-	// 性能测试
+	// Performance testing
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The ID of the resource owner account.
+	// The resource ownership account ID.
 	//
 	// example:
 	//
 	// 1990699401005016
 	ResourceOwnerAccountId *int64 `json:"ResourceOwnerAccountId,omitempty" xml:"ResourceOwnerAccountId,omitempty"`
-	// The name of the resource owner account.
+	// The resource ownership account name.
 	//
 	// example:
 	//
-	// 测试账号
+	// Test account
 	ResourceOwnerAccountName *string `json:"ResourceOwnerAccountName,omitempty" xml:"ResourceOwnerAccountName,omitempty"`
-	// The status of the invoice candidate.
+	// The invoice object status.
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ type ListInvoiceCandidateResponseBodyData struct {
 	//
 	// 0.01
 	TotalAmount *string `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	// The type of the invoice candidate.
+	// The invoice object type.
 	//
 	// example:
 	//

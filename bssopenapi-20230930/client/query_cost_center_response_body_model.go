@@ -24,7 +24,7 @@ type iQueryCostCenterResponseBody interface {
 }
 
 type QueryCostCenterResponseBody struct {
-	// The list of cost center data.
+	// The data list.
 	CostCenterDtoList []*QueryCostCenterResponseBodyCostCenterDtoList `json:"CostCenterDtoList,omitempty" xml:"CostCenterDtoList,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -32,7 +32,7 @@ type QueryCostCenterResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The metadata of the response struct.
+	// The response metadata.
 	//
 	// example:
 	//
@@ -150,15 +150,15 @@ type QueryCostCenterResponseBodyCostCenterDtoList struct {
 	//
 	// example:
 	//
-	// ResourceGroup
+	// Resource group
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
-	// The level of the cost center node.
+	// The node level of the cost center.
 	//
 	// example:
 	//
 	// loose
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the user who owns the cost center.
+	// The ID of the owner account for the cost center.
 	//
 	// example:
 	//
@@ -177,6 +177,10 @@ type QueryCostCenterResponseBodyCostCenterDtoList struct {
 	// 485996
 	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
 	// The priority of the cost center.
+	//
+	// example:
+	//
+	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 

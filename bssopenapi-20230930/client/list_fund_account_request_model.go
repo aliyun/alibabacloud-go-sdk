@@ -18,15 +18,15 @@ type iListFundAccountRequest interface {
 }
 
 type ListFundAccountRequest struct {
-	// Level-1 marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
+	// The ID of the primary marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
 	//
 	// example:
 	//
 	// 2084210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// Specifies whether to query only the active account list. Default value: false.
+	// Specifies whether to query only in-use accounts. Default value: false.
 	QueryOnlyInUse *bool `json:"QueryOnlyInUse,omitempty" xml:"QueryOnlyInUse,omitempty"`
-	// Specifies whether to query only the managed account list. Default value: false.
+	// Specifies whether to query only managed accounts. Default value: false.
 	QueryOnlyManage *bool `json:"QueryOnlyManage,omitempty" xml:"QueryOnlyManage,omitempty"`
 }
 

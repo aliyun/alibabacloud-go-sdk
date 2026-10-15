@@ -18,15 +18,15 @@ type iCreateInvoiceResponseBody interface {
 }
 
 type CreateInvoiceResponseBody struct {
-	// Data list.
+	// The data list.
 	Data []*CreateInvoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Response metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,35 +83,35 @@ func (s *CreateInvoiceResponseBody) Validate() error {
 }
 
 type CreateInvoiceResponseBodyData struct {
-	// Account ID.
+	// The account ID.
 	//
 	// example:
 	//
 	// 1990699401005016
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Invoice amount.
+	// The invoice amount.
 	//
 	// example:
 	//
 	// 0.01
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 1001
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Invoice issuer.
+	// The invoicing entity.
 	//
 	// example:
 	//
 	// ALIYUN_SERVICE
 	InvoiceIssuer *string `json:"InvoiceIssuer,omitempty" xml:"InvoiceIssuer,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
-	// 不可开票
+	// Not invoiceable
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

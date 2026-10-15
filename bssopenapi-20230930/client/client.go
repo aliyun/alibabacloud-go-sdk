@@ -842,7 +842,7 @@ func (client *Client) CreateFundAccountPayRelation(request *CreateFundAccountPay
 
 // Summary:
 //
-// Creates an account transfer or revocation.
+// Creates a fund allocation or revocation for an account.
 //
 // @param request - CreateFundAccountTransferRequest
 //
@@ -910,7 +910,7 @@ func (client *Client) CreateFundAccountTransferWithOptions(request *CreateFundAc
 
 // Summary:
 //
-// Creates an account transfer or revocation.
+// Creates a fund allocation or revocation for an account.
 //
 // @param request - CreateFundAccountTransferRequest
 //
@@ -928,7 +928,7 @@ func (client *Client) CreateFundAccountTransfer(request *CreateFundAccountTransf
 
 // Summary:
 //
-// # Apply for Invoice
+// Applies for an invoice.
 //
 // @param tmpReq - CreateInvoiceRequest
 //
@@ -1018,7 +1018,7 @@ func (client *Client) CreateInvoiceWithOptions(tmpReq *CreateInvoiceRequest, run
 
 // Summary:
 //
-// # Apply for Invoice
+// Applies for an invoice.
 //
 // @param request - CreateInvoiceRequest
 //
@@ -1036,29 +1036,29 @@ func (client *Client) CreateInvoice(request *CreateInvoiceRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a bill report subscription.
+// Creates a billing report subscription.
 //
 // Description:
 //
 // When you call this operation, note the following items:
 //
-// - You can subscribe to one type of bill file at a time.
+// - You can subscribe to only one type of billing file at a time.
 //
-// - Except for monthly bill PDFs, after you subscribe, the system pushes a bill file that contains full detailed data from the beginning of the current month to the present day starting from the next day. Before the 4th of each month, the system pushes the full bill file for the entire previous billing cycle.
+// - Except for monthly billing PDFs, starting from the day after the subscription is created, a billing file containing all detailed data from the beginning of the current month to the current day is pushed daily. A full billing file for the entire previous billing cycle is pushed before the 4th day of each month.
 //
-// - Monthly bill PDFs are pushed before the 4th of each month for the previous month.
+// - Monthly billing PDFs for the previous month are pushed before the 4th day of each month.
 //
-// - Bill files generated on a daily basis may be delayed. Delayed bills are pushed the day after they are generated and may include bills from before the previous day that were delayed until the previous day. We recommend that you pull the full file for the previous month at the beginning of each month.
+// - Billing files generated on a daily basis may be delayed. Delayed bills are pushed on the day after they are generated and may include bills that were delayed and generated on the previous day. Pull the full files for the previous month at the beginning of each month.
 //
-// > Apply for permissions by following the instructions in [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
+// > Apply for the billing subscription permissions as described in the documentation: [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
 //
-// - This subscription shares the same functionality as the Expenses and Costs - Billing Subscription feature. Subscriptions are synchronized between the two.
+// - This subscription and the billing subscription in the Expenses and Costs console are the same feature, and subscriptions are interoperable.
 //
-// - When you subscribe to a directory under a bucket, make sure the directory name complies with the naming conventions:
+// - When you subscribe to a directory under a bucket, make sure that the directory naming conventions are met:
 //
 //   - Emojis are not allowed. Use valid UTF-8 characters.
 //
-//   - Use / to separate paths and quickly create subdirectories. Do not start with / or \\, and do not use consecutive / characters.
+//   - The forward slash (/) is used to separate paths and create subdirectories. Do not start the path with a forward slash (/) or a backslash (\\), and do not use consecutive forward slashes.
 //
 //   - Subdirectories named .. are not allowed.
 //
@@ -1066,13 +1066,13 @@ func (client *Client) CreateInvoice(request *CreateInvoiceRequest) (_result *Cre
 //
 // - File names:
 //
-//   - Example: **consumeDetailBillV2*	- (billing item bill details)
+//   - Example: **consumeDetailBillV2*	- (billing item details)
 //
-//   - Daily push file name format: `{Account UID}_{Sales site ID}_{Bill type}_{YYYYMM|YYYYMMDD}`, for example: `169**_2688801000001_consumeDetailBillV2_20190312`.
+//   - Format of the file name pushed daily: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMMDD}`. Example: `169**_2688801000001_consumeDetailBillV2_20190312`.
 //
-//   - Full file name format at the beginning of the next month: `{Account UID}_{Sales site ID}_{Bill type}_{YYYYMM|YYYYMM}`, for example: `169**_2688801000001_consumeDetailBillV2_201903`.
+//   - Format of the complete file name pushed at the beginning of the next month: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMM}`. Example: `169**_2688801000001_consumeDetailBillV2_201903`.
 //
-// - Monthly bill PDF files are in .pdf format. All other file types are .csv files. When the data volume is large, the system automatically splits the exported bill into multiple files and compresses them into one or more zip files. The zip file name format remains the same.
+// - Monthly billing PDF files are in the .pdf format, and other files are in the .csv format. When the data volume is large, the system automatically splits an exported bill into multiple files and compresses them into one or more ZIP files. The ZIP file names follow the same format.
 //
 // @param tmpReq - CreateReportDefinitionRequest
 //
@@ -1176,29 +1176,29 @@ func (client *Client) CreateReportDefinitionWithOptions(tmpReq *CreateReportDefi
 
 // Summary:
 //
-// Creates a bill report subscription.
+// Creates a billing report subscription.
 //
 // Description:
 //
 // When you call this operation, note the following items:
 //
-// - You can subscribe to one type of bill file at a time.
+// - You can subscribe to only one type of billing file at a time.
 //
-// - Except for monthly bill PDFs, after you subscribe, the system pushes a bill file that contains full detailed data from the beginning of the current month to the present day starting from the next day. Before the 4th of each month, the system pushes the full bill file for the entire previous billing cycle.
+// - Except for monthly billing PDFs, starting from the day after the subscription is created, a billing file containing all detailed data from the beginning of the current month to the current day is pushed daily. A full billing file for the entire previous billing cycle is pushed before the 4th day of each month.
 //
-// - Monthly bill PDFs are pushed before the 4th of each month for the previous month.
+// - Monthly billing PDFs for the previous month are pushed before the 4th day of each month.
 //
-// - Bill files generated on a daily basis may be delayed. Delayed bills are pushed the day after they are generated and may include bills from before the previous day that were delayed until the previous day. We recommend that you pull the full file for the previous month at the beginning of each month.
+// - Billing files generated on a daily basis may be delayed. Delayed bills are pushed on the day after they are generated and may include bills that were delayed and generated on the previous day. Pull the full files for the previous month at the beginning of each month.
 //
-// > Apply for permissions by following the instructions in [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
+// > Apply for the billing subscription permissions as described in the documentation: [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
 //
-// - This subscription shares the same functionality as the Expenses and Costs - Billing Subscription feature. Subscriptions are synchronized between the two.
+// - This subscription and the billing subscription in the Expenses and Costs console are the same feature, and subscriptions are interoperable.
 //
-// - When you subscribe to a directory under a bucket, make sure the directory name complies with the naming conventions:
+// - When you subscribe to a directory under a bucket, make sure that the directory naming conventions are met:
 //
 //   - Emojis are not allowed. Use valid UTF-8 characters.
 //
-//   - Use / to separate paths and quickly create subdirectories. Do not start with / or \\, and do not use consecutive / characters.
+//   - The forward slash (/) is used to separate paths and create subdirectories. Do not start the path with a forward slash (/) or a backslash (\\), and do not use consecutive forward slashes.
 //
 //   - Subdirectories named .. are not allowed.
 //
@@ -1206,13 +1206,13 @@ func (client *Client) CreateReportDefinitionWithOptions(tmpReq *CreateReportDefi
 //
 // - File names:
 //
-//   - Example: **consumeDetailBillV2*	- (billing item bill details)
+//   - Example: **consumeDetailBillV2*	- (billing item details)
 //
-//   - Daily push file name format: `{Account UID}_{Sales site ID}_{Bill type}_{YYYYMM|YYYYMMDD}`, for example: `169**_2688801000001_consumeDetailBillV2_20190312`.
+//   - Format of the file name pushed daily: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMMDD}`. Example: `169**_2688801000001_consumeDetailBillV2_20190312`.
 //
-//   - Full file name format at the beginning of the next month: `{Account UID}_{Sales site ID}_{Bill type}_{YYYYMM|YYYYMM}`, for example: `169**_2688801000001_consumeDetailBillV2_201903`.
+//   - Format of the complete file name pushed at the beginning of the next month: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMM}`. Example: `169**_2688801000001_consumeDetailBillV2_201903`.
 //
-// - Monthly bill PDF files are in .pdf format. All other file types are .csv files. When the data volume is large, the system automatically splits the exported bill into multiple files and compresses them into one or more zip files. The zip file name format remains the same.
+// - Monthly billing PDF files are in the .pdf format, and other files are in the .csv format. When the data volume is large, the system automatically splits an exported bill into multiple files and compresses them into one or more ZIP files. The ZIP file names follow the same format.
 //
 // @param request - CreateReportDefinitionRequest
 //
@@ -2476,7 +2476,7 @@ func (client *Client) GetFundAccountLowAvailableAmountAlarm(request *GetFundAcco
 
 // Summary:
 //
-// # Query fund account transaction details
+// Queries the transaction details of a fund account.
 //
 // @param tmpReq - GetFundAccountTransactionDetailsRequest
 //
@@ -2576,7 +2576,7 @@ func (client *Client) GetFundAccountTransactionDetailsWithOptions(tmpReq *GetFun
 
 // Summary:
 //
-// # Query fund account transaction details
+// Queries the transaction details of a fund account.
 //
 // @param request - GetFundAccountTransactionDetailsRequest
 //
@@ -2594,7 +2594,7 @@ func (client *Client) GetFundAccountTransactionDetails(request *GetFundAccountTr
 
 // Summary:
 //
-// Queries the details of a specific order for a user or a reseller customer.
+// Queries the details of a specific order for a user or a distribution customer.
 //
 // @param request - GetOrderDetailRequest
 //
@@ -2646,7 +2646,7 @@ func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, 
 
 // Summary:
 //
-// Queries the details of a specific order for a user or a reseller customer.
+// Queries the details of a specific order for a user or a distribution customer.
 //
 // @param request - GetOrderDetailRequest
 //
@@ -2664,7 +2664,7 @@ func (client *Client) GetOrderDetail(request *GetOrderDetailRequest) (_result *G
 
 // Summary:
 //
-// Queries the order list of a user or a reseller customer. By default, orders created within the most recent 1 hour are queried. To query orders over a longer time range, set the CreateTimeStart and CreateTimeEnd parameters.
+// Queries the order list of a user or a distribution customer. By default, this operation queries orders created within the last hour. To query orders within a longer time range, specify the CreateTimeStart and CreateTimeEnd parameters.
 //
 // @param request - GetOrdersRequest
 //
@@ -2748,7 +2748,7 @@ func (client *Client) GetOrdersWithOptions(request *GetOrdersRequest, runtime *d
 
 // Summary:
 //
-// Queries the order list of a user or a reseller customer. By default, orders created within the most recent 1 hour are queried. To query orders over a longer time range, set the CreateTimeStart and CreateTimeEnd parameters.
+// Queries the order list of a user or a distribution customer. By default, this operation queries orders created within the last hour. To query orders within a longer time range, specify the CreateTimeStart and CreateTimeEnd parameters.
 //
 // @param request - GetOrdersRequest
 //
@@ -3082,7 +3082,7 @@ func (client *Client) ListCouponDeductTag(request *ListCouponDeductTagRequest) (
 
 // Summary:
 //
-// # Query fund account list
+// Queries the list of fund accounts.
 //
 // @param request - ListFundAccountRequest
 //
@@ -3136,7 +3136,7 @@ func (client *Client) ListFundAccountWithOptions(request *ListFundAccountRequest
 
 // Summary:
 //
-// # Query fund account list
+// Queries the list of fund accounts.
 //
 // @param request - ListFundAccountRequest
 //
@@ -3154,7 +3154,7 @@ func (client *Client) ListFundAccount(request *ListFundAccountRequest) (_result 
 
 // Summary:
 //
-// # Query payment relationships of an account
+// Queries the payment relationships of an account.
 //
 // @param request - ListFundAccountPayRelationRequest
 //
@@ -3216,7 +3216,7 @@ func (client *Client) ListFundAccountPayRelationWithOptions(request *ListFundAcc
 
 // Summary:
 //
-// # Query payment relationships of an account
+// Queries the payment relationships of an account.
 //
 // @param request - ListFundAccountPayRelationRequest
 //
@@ -3234,7 +3234,7 @@ func (client *Client) ListFundAccountPayRelation(request *ListFundAccountPayRela
 
 // Summary:
 //
-// Query invoice candidate data, which can be used for invoicing.
+// Queries invoice object data that can be used for invoicing.
 //
 // @param tmpReq - ListInvoiceCandidateRequest
 //
@@ -3344,7 +3344,7 @@ func (client *Client) ListInvoiceCandidateWithOptions(tmpReq *ListInvoiceCandida
 
 // Summary:
 //
-// Query invoice candidate data, which can be used for invoicing.
+// Queries invoice object data that can be used for invoicing.
 //
 // @param request - ListInvoiceCandidateRequest
 //
@@ -3362,7 +3362,7 @@ func (client *Client) ListInvoiceCandidate(request *ListInvoiceCandidateRequest)
 
 // Summary:
 //
-// # Query the list of available invoice titles
+// Queries available invoice titles.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3391,7 +3391,7 @@ func (client *Client) ListInvoiceTitleWithOptions(runtime *dara.RuntimeOptions) 
 
 // Summary:
 //
-// # Query the list of available invoice titles
+// Queries available invoice titles.
 //
 // @return ListInvoiceTitleResponse
 func (client *Client) ListInvoiceTitle() (_result *ListInvoiceTitleResponse, _err error) {
@@ -3407,7 +3407,7 @@ func (client *Client) ListInvoiceTitle() (_result *ListInvoiceTitleResponse, _er
 
 // Summary:
 //
-// Queries the list of subscribed reports.
+// # View subscribed report list
 //
 // @param request - ListReportDefinitionsRequest
 //
@@ -3451,7 +3451,7 @@ func (client *Client) ListReportDefinitionsWithOptions(request *ListReportDefini
 
 // Summary:
 //
-// Queries the list of subscribed reports.
+// # View subscribed report list
 //
 // @param request - ListReportDefinitionsRequest
 //
@@ -3815,7 +3815,7 @@ func (client *Client) QueryCostByCostCenter(request *QueryCostByCostCenterReques
 //
 // Description:
 //
-// Queries a parent cost center and its child cost centers.
+// Queries parent cost centers and their child cost centers.
 //
 // @param tmpReq - QueryCostCenterRequest
 //
@@ -3889,7 +3889,7 @@ func (client *Client) QueryCostCenterWithOptions(tmpReq *QueryCostCenterRequest,
 //
 // Description:
 //
-// Queries a parent cost center and its child cost centers.
+// Queries parent cost centers and their child cost centers.
 //
 // @param request - QueryCostCenterRequest
 //
@@ -3907,7 +3907,7 @@ func (client *Client) QueryCostCenter(request *QueryCostCenterRequest) (_result 
 
 // Summary:
 //
-// Queries the list of resource instances that belong to a financial unit of a user. If CostCenterId is set to 0, unallocated primary and sub-resource instances are queried.
+// Queries the resource instances associated with a financial unit. If CostCenterId is set to 0, the operation queries unassigned parent and child resource instances.
 //
 // @param request - QueryCostCenterResourceRequest
 //
@@ -3973,7 +3973,7 @@ func (client *Client) QueryCostCenterResourceWithOptions(request *QueryCostCente
 
 // Summary:
 //
-// Queries the list of resource instances that belong to a financial unit of a user. If CostCenterId is set to 0, unallocated primary and sub-resource instances are queried.
+// Queries the resource instances associated with a financial unit. If CostCenterId is set to 0, the operation queries unassigned parent and child resource instances.
 //
 // @param request - QueryCostCenterResourceRequest
 //
@@ -4739,15 +4739,15 @@ func (client *Client) SetSavingPlanUserDeductRule(request *SetSavingPlanUserDedu
 
 // Summary:
 //
-// Claims SLA compensation coupons for the last two months.
+// Claims SLA compensation coupons for the recent two months.
 //
 // Description:
 //
-// 1. Call QueryMonthlySlaList to retrieve the claimable months and records.
+// 1. Call QueryMonthlySlaList to obtain the claimable months and records.
 //
 // 2. Claim by month or by record.
 //
-// Note: Only compensation for the last two months can be claimed. Historical compensation has been automatically issued.
+// Note: You can only claim compensation for the recent two months. Historical compensation has been automatically issued.
 //
 // @param request - SubmitSlaCouponApplyRequest
 //
@@ -4805,15 +4805,15 @@ func (client *Client) SubmitSlaCouponApplyWithOptions(request *SubmitSlaCouponAp
 
 // Summary:
 //
-// Claims SLA compensation coupons for the last two months.
+// Claims SLA compensation coupons for the recent two months.
 //
 // Description:
 //
-// 1. Call QueryMonthlySlaList to retrieve the claimable months and records.
+// 1. Call QueryMonthlySlaList to obtain the claimable months and records.
 //
 // 2. Claim by month or by record.
 //
-// Note: Only compensation for the last two months can be claimed. Historical compensation has been automatically issued.
+// Note: You can only claim compensation for the recent two months. Historical compensation has been automatically issued.
 //
 // @param request - SubmitSlaCouponApplyRequest
 //

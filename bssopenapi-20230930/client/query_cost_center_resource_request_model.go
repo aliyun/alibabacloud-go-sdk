@@ -44,13 +44,13 @@ type QueryCostCenterResourceRequest struct {
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The token for the next query. If this parameter is empty, no more results exist.
+	// The token for the next query. An empty value indicates that no more results are available.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCmd
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the owner of the financial unit.
+	// The ID of the owner account for the financial unit.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *QueryCostCenterResourceRequest) Validate() error {
 }
 
 type QueryCostCenterResourceRequestEcIdAccountIds struct {
-	// The list of account IDs to access. If this parameter is empty, all accounts under the current entity ID are selected.
+	// The list of accounts to access. If this parameter is empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The ID of the enterprise entity.
 	//

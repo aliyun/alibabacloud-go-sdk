@@ -44,7 +44,7 @@ type CreateFundAccountTransferRequest struct {
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The asset type. Currently, only cash is supported. Valid values:
 	//
-	// - cash: cash.
+	// - cash: Cash.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateFundAccountTransferRequest struct {
 	//
 	// cash
 	FinanceType *string `json:"FinanceType,omitempty" xml:"FinanceType,omitempty"`
-	// The ID of the source account (payer account ID).
+	// The ID of the source account.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type CreateFundAccountTransferRequest struct {
 	//
 	// example:
 	//
-	// 转账的备注
+	// Remarks for the transfer
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the destination account (payee account ID).
+	// The ID of the destination account.
 	//
 	// This parameter is required.
 	//
@@ -78,9 +78,9 @@ type CreateFundAccountTransferRequest struct {
 	ToFundAccountId *int64 `json:"ToFundAccountId,omitempty" xml:"ToFundAccountId,omitempty"`
 	// The transfer type. Valid values:
 	//
-	// - grant: transfer.
+	// - grant: Allocation.
 	//
-	// - recycle: revocation.
+	// - recycle: Revocation.
 	//
 	// This parameter is required.
 	//

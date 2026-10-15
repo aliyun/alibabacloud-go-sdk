@@ -34,9 +34,9 @@ type iListInvoiceCandidateShrinkRequest interface {
 }
 
 type ListInvoiceCandidateShrinkRequest struct {
-	// List of billing cycles.
+	// The list of billing cycles.
 	BillingCyclesShrink *string `json:"BillingCycles,omitempty" xml:"BillingCycles,omitempty"`
-	// List of business document numbers.
+	// The list of business document numbers.
 	BusinessIdsShrink *string `json:"BusinessIds,omitempty" xml:"BusinessIds,omitempty"`
 	// The current page number.
 	//
@@ -44,7 +44,7 @@ type ListInvoiceCandidateShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// List of enterprises and accounts. If empty, the current account itself is queried.
+	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
 	// The end time. Format: yyyy-mm-dd hh:mm:ss.
 	//
@@ -52,9 +52,9 @@ type ListInvoiceCandidateShrinkRequest struct {
 	//
 	// 2025-07-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// List of invoice issuers.
+	// The list of invoice issuers.
 	InvoiceIssuersShrink *string `json:"InvoiceIssuers,omitempty" xml:"InvoiceIssuers,omitempty"`
-	// Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type ListInvoiceCandidateShrinkRequest struct {
 	//
 	// 2025-06-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// List of invoice candidate statuses.
+	// The list of invoice object statuses.
 	StatusShrink *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// List of invoice candidate types.
+	// The list of invoice object types.
 	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 

@@ -24,33 +24,33 @@ type iGetFundAccountTransactionDetailsResponseBody interface {
 }
 
 type GetFundAccountTransactionDetailsResponseBody struct {
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data list
+	// The data list.
 	Data []*GetFundAccountTransactionDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Response structure metadata
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Page size
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -134,145 +134,145 @@ func (s *GetFundAccountTransactionDetailsResponseBody) Validate() error {
 }
 
 type GetFundAccountTransactionDetailsResponseBodyData struct {
-	// Balance after the operation
+	// The balance after the operation.
 	//
 	// example:
 	//
 	// 5
 	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// Order number or bill number
+	// The order number or bill number.
 	//
 	// example:
 	//
 	// 2323203243
 	BillNumber *string `json:"BillNumber,omitempty" xml:"BillNumber,omitempty"`
-	// External transaction serial number
+	// The external transaction serial number.
 	//
 	// example:
 	//
 	// 20244389232
 	ChannelTransactionNumber *string `json:"ChannelTransactionNumber,omitempty" xml:"ChannelTransactionNumber,omitempty"`
-	// Transaction amount currency
+	// The currency of the transaction amount.
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// Enterprise entity ID
+	// The enterprise entity ID.
 	//
 	// example:
 	//
 	// 23473943
 	FundAccountEcid *string `json:"FundAccountEcid,omitempty" xml:"FundAccountEcid,omitempty"`
-	// Account ID
+	// The account ID.
 	//
 	// example:
 	//
 	// 1232121
 	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
-	// Account name
+	// The account name.
 	//
 	// example:
 	//
-	// 云某的名称
+	// Sample account name
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
-	// Alibaba Cloud account ID of the account owner
+	// The Alibaba Cloud account ID of the account owner.
 	//
 	// example:
 	//
 	// 32343231
 	FundAccountOwnerAccountId *int64 `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
-	// Fund type
+	// The fund type.
 	//
 	// example:
 	//
 	// ACCT_BOOK
 	FundType *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	// Primary marketplace
+	// The primary marketplace.
 	//
 	// example:
 	//
 	// 2684210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// Remarks
+	// The remark.
 	//
 	// example:
 	//
-	// 订单备注
+	// Order remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Site
+	// The site.
 	//
 	// example:
 	//
 	// 26842
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	// Corresponding transaction account, such as the Alipay top-up account or the counterparty account for transfers.
+	// The corresponding transaction account, such as the Alipay top-up account or the counterparty account for a transfer.
 	//
 	// example:
 	//
 	// 186****3975
 	TransactionAccount *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
-	// Transaction amount
+	// The transaction amount.
 	//
 	// example:
 	//
 	// 10
 	TransactionAmount *string `json:"TransactionAmount,omitempty" xml:"TransactionAmount,omitempty"`
-	// Transaction channel. If specified, the query filters by transaction channel. If not specified, all channels are queried by default.
+	// The list of transaction channels. If you specify this parameter, transactions are queried by channel. If you do not specify this parameter, all channels are queried by default. Valid values:
 	//
-	// User balance: ACCT_CASH.
+	// - ACCT_CASH: User balance.
 	//
-	// Alipay: ALIPAY.
+	// - ALIPAY: Alipay.
 	//
-	// Alipay Zhifutong: ALIPAY_ZHIFUTONG.
+	// - ALIPAY_ZHIFUTONG: Alipay Zhifutong.
 	//
-	// Offline remittance: OFFLINE_REMIT.
+	// - OFFLINE_REMIT: Corporate remittance.
 	//
-	// Credit control quota refund: REFUND.
+	// - REFUND: Credit limit refund.
 	//
-	// Online banking: UNION_PAY_BANK.
+	// - UNION_PAY_BANK: Online banking.
 	//
-	// Credit card: CREDIT_CARD. (International site only)
+	// - CREDIT_CARD: Credit card. Available only on the international site.
 	//
-	// PayPal: PAYPAL. (International site only)
+	// - AYPAL: PayPal. Available only on the international site.
 	//
 	// example:
 	//
 	// ALIPAY
 	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
-	// Transaction direction: in/out (income/expenditure)
+	// The transaction direction. Valid values: in (income) and out (expense).
 	//
 	// example:
 	//
 	// IN
 	TransactionDirection *string `json:"TransactionDirection,omitempty" xml:"TransactionDirection,omitempty"`
-	// Transaction serial number
+	// The transaction number.
 	//
 	// example:
 	//
 	// 5423121
 	TransactionNumber *int64 `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	// Formatted transaction time string
+	// The formatted string of the transaction time.
 	//
 	// example:
 	//
 	// 2024-12-01 12:00:00
 	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
-	// Transaction type. If a transaction type is specified, only results of that type are returned. If the specified type does not exist, the result is empty. If not specified, all types are returned by default.
+	// The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
 	//
-	// Top-up: CHARGE.
+	// - CHARGE: Top-up.
 	//
-	// Withdrawal: WITHDRAW.
+	// - WITHDRAW: Withdrawal.
 	//
-	// Refund: REFUND.
+	// - REFUND: Refund.
 	//
-	// Payment: PAY.
+	// - PAY: Payment.
 	//
-	// Transfer: TRANSFER.
+	// - TRANSFER: Transfer.
 	//
-	// Adjustment: ADJUST.
+	// - ADJUST: Adjustment.
 	//
-	// Order expiration refund: PAY_FAILED.
+	// - PAY_FAILED: Refund for failed order.
 	//
 	// example:
 	//

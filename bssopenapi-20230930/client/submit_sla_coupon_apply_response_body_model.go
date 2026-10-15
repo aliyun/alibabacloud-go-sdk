@@ -22,13 +22,13 @@ type iSubmitSlaCouponApplyResponseBody interface {
 }
 
 type SubmitSlaCouponApplyResponseBody struct {
-	// The response struct metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The unique request ID, which is used to identify a request and troubleshoot issues.
+	// The unique identifier of the request, which is used to mark the request and facilitate troubleshooting.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type SubmitSlaCouponApplyResponseBody struct {
 	//
 	// 6.4
 	SumCoupon *float64 `json:"SumCoupon,omitempty" xml:"SumCoupon,omitempty"`
-	// The end time.
+	// The end time in the EEE MMM dd HH:mm:ss z yyyy format, such as Mon Apr 27 00:00:00 CST 2026.
 	//
 	// example:
 	//
 	// Mon Apr 27 00:00:00 CST 2026
 	ValidEndTime *string `json:"ValidEndTime,omitempty" xml:"ValidEndTime,omitempty"`
-	// The start time.
+	// The start time in the EEE MMM dd HH:mm:ss z yyyy format, such as Tue Oct 27 13:15:58 CST 2026.
 	//
 	// example:
 	//

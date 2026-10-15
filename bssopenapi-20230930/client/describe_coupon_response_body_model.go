@@ -30,7 +30,7 @@ type DescribeCouponResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data list.
 	Data []*DescribeCouponResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -122,7 +122,8 @@ type DescribeCouponResponseBodyData struct {
 	// example:
 	//
 	// 9929.750000
-	Amount        *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// CertainAmount
 	CertainAmount *string `json:"CertainAmount,omitempty" xml:"CertainAmount,omitempty"`
 	// The coupon ID.
 	//
@@ -146,7 +147,7 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// example:
 	//
-	// 满减券
+	// Threshold discount coupon
 	CouponTypeName *string `json:"CouponTypeName,omitempty" xml:"CouponTypeName,omitempty"`
 	// The currency.
 	//
@@ -154,33 +155,33 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The end time.
+	// The end time in ISO 8601 format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-03-06T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether there is a first purchase restriction.
+	// Indicates whether the coupon is limited to first-time purchases.
 	FirstBuy *bool `json:"FirstBuy,omitempty" xml:"FirstBuy,omitempty"`
-	// The coupon issuance time.
+	// The time when the coupon was issued.
 	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The product code list.
+	// The list of product codes.
 	ItemNames []*string `json:"ItemNames,omitempty" xml:"ItemNames,omitempty" type:"Repeated"`
 	// The amount limit.
 	//
 	// example:
 	//
-	// 无订单金额限制
+	// No order amount limit
 	MoneyLimit *string `json:"MoneyLimit,omitempty" xml:"MoneyLimit,omitempty"`
 	// The order duration limit rule.
 	//
 	// example:
 	//
-	// 预付费规则：购买订单时长大于3600s才能使用
+	// Subscription rule: The coupon can be used only for purchase orders with a duration greater than 3,600 seconds
 	OrderTimeRule *string `json:"OrderTimeRule,omitempty" xml:"OrderTimeRule,omitempty"`
 	// The remaining amount.
 	//
@@ -188,15 +189,15 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// 100.00
 	RemainAmount *string `json:"RemainAmount,omitempty" xml:"RemainAmount,omitempty"`
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//
-	// 新买28号
+	// New purchase on the 28th
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The shared account list.
+	// The list of shared accounts.
 	ShareUidList []*DescribeCouponResponseBodyDataShareUidList `json:"ShareUidList,omitempty" xml:"ShareUidList,omitempty" type:"Repeated"`
-	// Indicates whether to display the tag deduction button.
+	// Specifies whether the tag deduction button is displayed.
 	//
 	// example:
 	//
@@ -212,9 +213,9 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// example:
 	//
-	// 官网自营
+	// Official website direct sales
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The start time.
+	// The start time in ISO 8601 format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -232,19 +233,19 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// 1902671110151254
 	SuitAccount *string `json:"SuitAccount,omitempty" xml:"SuitAccount,omitempty"`
-	// The applicable product type. Valid values: all, which indicates that the coupon is applicable to all products. white, which indicates that the coupon is applicable to specified products. black, which indicates that the coupon is not applicable to specified products.
+	// The applicable product type: all for all products, white for specified applicable products, and black for specified inapplicable products.
 	//
 	// example:
 	//
 	// all
 	SuitItemType *string `json:"SuitItemType,omitempty" xml:"SuitItemType,omitempty"`
-	// The coupon applicable scope.
+	// The application scope of the coupon.
 	//
 	// example:
 	//
 	// UNIVERSAL
 	UniversalType *string `json:"UniversalType,omitempty" xml:"UniversalType,omitempty"`
-	// The list of order types applicable to the coupon.
+	// The list of applicable order types for the coupon.
 	YhOrderTypes []*string `json:"YhOrderTypes,omitempty" xml:"YhOrderTypes,omitempty" type:"Repeated"`
 }
 
@@ -505,7 +506,7 @@ type DescribeCouponResponseBodyDataShareUidList struct {
 	//
 	// example:
 	//
-	// 阿里云计算有限公司
+	// Alibaba Cloud Computing Ltd
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
