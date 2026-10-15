@@ -16,10 +16,14 @@ type iCreateTemplateRegistryAuthConfig interface {
 }
 
 type CreateTemplateRegistryAuthConfig struct {
+	// The logon password or access token for the image repository. The value is encrypted on the server side and is not returned in plaintext when queried.
+	//
 	// example:
 	//
 	// Passw0rd****
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The username for logging on to the image repository.
+	//
 	// example:
 	//
 	// sandbox-puller

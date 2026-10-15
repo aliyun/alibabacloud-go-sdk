@@ -28,31 +28,46 @@ type iPublicUpdateTemplateSandboxConfig interface {
 }
 
 type PublicUpdateTemplateSandboxConfig struct {
+	// The ID of the Container Registry Enterprise instance.
+	//
 	// example:
 	//
 	// cri-abc123
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// The sandbox generation. A value of 1 indicates rund, and a value of 2 indicates micro.
+	//
 	// example:
 	//
 	// 2
 	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+	// The image address.
+	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/my/ns:v1
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The operating system type.
+	//
 	// example:
 	//
 	// linux
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// The readiness probe command for the micro sandbox. Only the second generation supports this parameter.
+	//
 	// example:
 	//
 	// /ready
-	ReadyCommand   *string                             `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
+	ReadyCommand *string `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
+	// The image repository configuration.
 	RegistryConfig *PublicUpdateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
+	// The image repository type.
+	//
 	// example:
 	//
 	// acr
 	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// The startup command for the micro sandbox. Only the second generation supports this parameter.
+	//
 	// example:
 	//
 	// /start-coroutines.sh

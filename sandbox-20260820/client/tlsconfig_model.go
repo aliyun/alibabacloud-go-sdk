@@ -19,7 +19,7 @@ type iTLSConfig interface {
 
 type TLSConfig struct {
 	// The list of allowed TLS cipher suites. If this parameter is not specified, the server default cipher suites are used.
-	CipherSuites []*string `json:"cipherSuites,omitempty" xml:"cipherSuites,omitempty" type:"Repeated"`
+	CipherSuites []*string `json:"cipherSuites" xml:"cipherSuites" type:"Repeated"`
 	// The maximum TLS protocol version allowed. Example values: TLSv1.2 and TLSv1.3. If this parameter is not specified, the server default value is used. Do not pass an empty string.
 	//
 	// example:

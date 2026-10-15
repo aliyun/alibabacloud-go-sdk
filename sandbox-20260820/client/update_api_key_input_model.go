@@ -22,16 +22,28 @@ type iUpdateApiKeyInput interface {
 }
 
 type UpdateApiKeyInput struct {
+	// The new name of the API key. The name can be up to 128 characters in length and can contain letters, digits, spaces, hyphens (-), underscores (_), and periods (.).
+	//
 	// example:
 	//
 	// ci-pipeline-key-v2
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The expiration time of the API key, in UTC, in RFC 3339 format. Leave this parameter empty to indicate that the API key never expires.
+	//
 	// example:
 	//
 	// 2099-12-31T23:59:59Z
-	ExpireTime  *string     `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
-	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The IP blacklist. If specified, the existing blacklist is entirely overwritten. This parameter is mutually exclusive with ipWhitelist.
+	IpBlacklist []*IPConfig `json:"ipBlacklist" xml:"ipBlacklist" type:"Repeated"`
+	// The IP whitelist. If specified, the existing whitelist is entirely overwritten. This parameter is mutually exclusive with ipBlacklist.
+	IpWhitelist []*IPConfig `json:"ipWhitelist" xml:"ipWhitelist" type:"Repeated"`
+	// The new status of the API key. Valid values:
+	//
+	// - active: Enabled.
+	//
+	// - inactive: Disabled.
+	//
 	// example:
 	//
 	// inactive

@@ -28,28 +28,42 @@ type iPublicTemplate interface {
 }
 
 type PublicTemplate struct {
+	// The creation time of the template, in UTC and formatted as RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-20T08:30:00Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The template name, which is unique within the same team.
+	//
 	// example:
 	//
 	// python-data-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the Alibaba Cloud resource group to which the team belongs.
+	//
 	// example:
 	//
 	// rg-****
-	ResourceGroupID *string                      `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	RuntimeConfig   *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
-	Status          *PublicTemplateStatus        `json:"status,omitempty" xml:"status,omitempty"`
+	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	// The runtime configuration of the template, which determines the specifications and environment of sandbox instances created from this template.
+	RuntimeConfig *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
+	// The current status of the template.
+	Status *PublicTemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the team to which the resource belongs, in UUID format.
+	//
 	// example:
 	//
 	// 5f4a2c18-****
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The team name.
+	//
 	// example:
 	//
 	// sandbox-dev
 	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// The sandbox template ID.
+	//
 	// example:
 	//
 	// tm-8f3a2c7b5e14d806

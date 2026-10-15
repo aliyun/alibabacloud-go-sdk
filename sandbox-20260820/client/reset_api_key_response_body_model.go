@@ -32,8 +32,8 @@ type ResetApiKeyResponseBody struct {
 	//
 	// 200
 	Code        *string     `json:"code,omitempty" xml:"code,omitempty"`
-	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
-	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+	IpBlacklist []*IPConfig `json:"ipBlacklist" xml:"ipBlacklist" type:"Repeated"`
+	IpWhitelist []*IPConfig `json:"ipWhitelist" xml:"ipWhitelist" type:"Repeated"`
 	// example:
 	//
 	// success

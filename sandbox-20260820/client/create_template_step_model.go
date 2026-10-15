@@ -16,7 +16,10 @@ type iCreateTemplateStep interface {
 }
 
 type CreateTemplateStep struct {
-	Args []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
+	// The instruction parameter list.
+	Args []*string `json:"args" xml:"args" type:"Repeated"`
+	// The instruction type.
+	//
 	// example:
 	//
 	// RUN

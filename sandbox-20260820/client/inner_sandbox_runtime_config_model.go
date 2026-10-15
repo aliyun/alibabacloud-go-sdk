@@ -69,7 +69,7 @@ type InnerSandboxRuntimeConfigVpcConfig struct {
 	// sg-xxxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	// The vSwitch IDs.
-	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	VSwitchIds []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
 	// The VPC ID.
 	//
 	// example:

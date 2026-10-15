@@ -20,9 +20,14 @@ type iE2BNetwork interface {
 }
 
 type E2BNetwork struct {
-  AllowOut []*string `json:"allowOut,omitempty" xml:"allowOut,omitempty" type:"Repeated"`
+  // The allowlist for outbound access from the sandbox. After configuration, the sandbox can access only the destinations in the list.
+  AllowOut []*string `json:"allowOut" xml:"allowOut" type:"Repeated"`
+  // Specifies whether to allow Direct Internet Access to the sandbox.
   AllowPublicTraffic *bool `json:"allowPublicTraffic,omitempty" xml:"allowPublicTraffic,omitempty"`
-  DenyOut []*string `json:"denyOut,omitempty" xml:"denyOut,omitempty" type:"Repeated"`
+  // The denylist for outbound access from the sandbox. After configuration, the sandbox cannot access the destinations in the list.
+  DenyOut []*string `json:"denyOut" xml:"denyOut" type:"Repeated"`
+  // The domain name used to rewrite the request Host header when accessing the sandbox. If this parameter is not specified, the original Host is retained.
+  // 
   // example:
   // 
   // sandbox.example.com

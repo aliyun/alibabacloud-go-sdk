@@ -26,7 +26,7 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
-	ApiKeys []*ApiKey `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	ApiKeys []*ApiKey `json:"apiKeys" xml:"apiKeys" type:"Repeated"`
 	// example:
 	//
 	// 200

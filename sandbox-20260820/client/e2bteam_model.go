@@ -32,36 +32,68 @@ type iE2BTeam interface {
 }
 
 type E2BTeam struct {
+  // Specifies whether the team name can be modified. The default team does not allow modification.
   AllowUpdateTeamName *bool `json:"allowUpdateTeamName,omitempty" xml:"allowUpdateTeamName,omitempty"`
+  // The creation time of the team in UTC, in RFC 3339 format.
+  // 
   // example:
   // 
   // 2026-08-20T08:30:00Z
   CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+  // The team description.
+  // 
   // example:
   // 
-  // 算法团队的沙箱环境
+  // Sandbox environment for the algorithm team
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // The team plan specification. Valid values:
+  // 
+  // - eco: economy.
+  // 
+  // - std: standard.
+  // 
+  // - pro: professional.
+  // 
+  // - ent: enterprise.
+  // 
   // example:
   // 
   // std
   Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+  // Indicates whether the current caller has read-only access to the team. If the value is true, the team configuration cannot be modified.
   ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+  // The ID of the Alibaba Cloud resource group to which the team belongs.
+  // 
   // example:
   // 
   // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The team status. Valid values:
+  // 
+  // - active: Normal.
+  // 
+  // - deleting: Being deleted.
+  // 
+  // - delete_failed: Failed to delete.
+  // 
   // example:
   // 
   // active
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // The ID of the team to which the resource belongs, in UUID format.
+  // 
   // example:
   // 
   // 5f4a2c18-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // The team name.
+  // 
   // example:
   // 
   // sandbox-dev
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // The user ID of the team creator, in UUID format.
+  // 
   // example:
   // 
   // 9c1d4e72-****

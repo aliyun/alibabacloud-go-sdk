@@ -16,10 +16,14 @@ type iPublicTemplateStatusReason interface {
 }
 
 type PublicTemplateStatusReason struct {
+	// The details of the failure reason.
+	//
 	// example:
 	//
-	// 拉取源镜像失败：认证信息无效
+	// Failed to pull the source image: invalid authentication information
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The identity of the failed step.
+	//
 	// example:
 	//
 	// build-context

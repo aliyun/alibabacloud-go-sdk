@@ -18,7 +18,7 @@ type iUpdateVolumeResponse interface {
 }
 
 type UpdateVolumeResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	Headers    map[string]*string        `json:"headers" xml:"headers"`
 	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 	Body       *UpdateVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }

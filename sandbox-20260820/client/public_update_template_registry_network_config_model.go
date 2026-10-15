@@ -18,14 +18,20 @@ type iPublicUpdateTemplateRegistryNetworkConfig interface {
 }
 
 type PublicUpdateTemplateRegistryNetworkConfig struct {
+	// The ID of the security group used to access the repository.
+	//
 	// example:
 	//
 	// sg-bp1abc123
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The ID of the vSwitch where the repository resides.
+	//
 	// example:
 	//
 	// vsw-bp1abc123
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the VPC where the repository resides.
+	//
 	// example:
 	//
 	// vpc-bp1abc123

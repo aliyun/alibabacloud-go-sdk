@@ -24,20 +24,30 @@ type iCustomDomainResp interface {
 }
 
 type CustomDomainResp struct {
+	// The HTTPS certificate configuration used by the domain name.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The time when the domain name was created. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1755676800000
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The description of the custom domain name.
+	//
 	// example:
 	//
-	// 沙箱预览环境入口域名
+	// Domain name for the sandbox preview environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The custom domain name.
+	//
 	// example:
 	//
 	// sandbox.example.com
-	DomainName *string    `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	TlsConfig  *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The TLS protocol configuration used by the domain name.
+	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The time when the domain name was last updated. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1755763200000

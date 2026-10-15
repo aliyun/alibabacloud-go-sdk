@@ -30,36 +30,52 @@ type iCreateTemplateSandboxConfig interface {
 }
 
 type CreateTemplateSandboxConfig struct {
+	// The ID of the Container Registry Enterprise instance. This parameter is required when registryType is set to acree.
+	//
 	// example:
 	//
 	// cri-****
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// The sandbox generation. Valid values: 1 (first generation) and 2 (second generation). Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+	// The address of the sandbox base image.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/sandbox-demo/python:3.12
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The operating system type of the second-generation sandbox. Valid values: linux-amd64, android-36-osworld, and windows-osworld.
+	//
 	// example:
 	//
 	// linux-amd64
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// The sandbox readiness probe command. A successful execution indicates that the sandbox is ready to accept requests. This parameter is supported only for first-generation sandboxes.
+	//
 	// example:
 	//
 	// curl -sf http://127.0.0.1:49983/health
-	ReadyCommand   *string                       `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
+	ReadyCommand *string `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
+	// The credential, TLS, and network configuration required to access the source image repository.
 	RegistryConfig *CreateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
+	// The image repository type. Valid values: oci (standard OCI repository), acr (Container Registry Personal Edition), and acree (Container Registry Enterprise Edition). If not specified, the type is inferred from the image address.
+	//
 	// example:
 	//
 	// acree
 	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// The startup command for the sandbox container. This parameter is supported only for first-generation sandboxes.
+	//
 	// example:
 	//
 	// /usr/local/bin/start.sh
-	StartCommand *string               `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
-	Steps        []*CreateTemplateStep `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
+	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	// The list of custom build instructions. This is not supported in the current version. Passing a non-empty list returns an error.
+	Steps []*CreateTemplateStep `json:"steps" xml:"steps" type:"Repeated"`
 }
 
 func (s CreateTemplateSandboxConfig) String() string {

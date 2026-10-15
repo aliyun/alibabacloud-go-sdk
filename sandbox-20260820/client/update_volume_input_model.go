@@ -22,11 +22,16 @@ type iUpdateVolumeInput interface {
 }
 
 type UpdateVolumeInput struct {
-	AgenticBucketVolumeConfig *AgenticBucketVolumeConfig              `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
-	AgenticFSVolumeConfig     *UpdateVolumeInputAgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty" type:"Struct"`
-	JuiceFSVolumeConfig       *JuiceFSVolumeConfig                    `json:"juiceFSVolumeConfig,omitempty" xml:"juiceFSVolumeConfig,omitempty"`
-	MountConfig               *UpdateVolumeInputMountConfig           `json:"mountConfig,omitempty" xml:"mountConfig,omitempty" type:"Struct"`
-	OssVolumeConfig           *OSSVolumeConfig                        `json:"ossVolumeConfig,omitempty" xml:"ossVolumeConfig,omitempty"`
+	// The AgenticBucket Volume configuration.
+	AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
+	// The AgenticFS Volume configuration.
+	AgenticFSVolumeConfig *UpdateVolumeInputAgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty" type:"Struct"`
+	// The JuiceFS Volume configuration.
+	JuiceFSVolumeConfig *JuiceFSVolumeConfig `json:"juiceFSVolumeConfig,omitempty" xml:"juiceFSVolumeConfig,omitempty"`
+	// The mount configuration.
+	MountConfig *UpdateVolumeInputMountConfig `json:"mountConfig,omitempty" xml:"mountConfig,omitempty" type:"Struct"`
+	// The OSS Volume configuration.
+	OssVolumeConfig *OSSVolumeConfig `json:"ossVolumeConfig,omitempty" xml:"ossVolumeConfig,omitempty"`
 }
 
 func (s UpdateVolumeInput) String() string {
@@ -112,14 +117,20 @@ func (s *UpdateVolumeInput) Validate() error {
 }
 
 type UpdateVolumeInputAgenticFSVolumeConfig struct {
+	// The group ID of the local directory.
+	//
 	// example:
 	//
 	// 1000
 	GroupID *int32 `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The access point address.
+	//
 	// example:
 	//
 	// ap-xxx.xxx-jnk89.cn-hangzhou.nas.aliyuncs.com:/
 	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
+	// The user ID of the local directory.
+	//
 	// example:
 	//
 	// 1000
@@ -166,10 +177,13 @@ func (s *UpdateVolumeInputAgenticFSVolumeConfig) Validate() error {
 }
 
 type UpdateVolumeInputMountConfig struct {
+	// The permission role.
+	//
 	// example:
 	//
 	// acs:ram::1338904783509062:role/aliyunfcdefaultrole
-	Role      *string                                `json:"role,omitempty" xml:"role,omitempty"`
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The VPC configuration.
 	VpcConfig *UpdateVolumeInputMountConfigVpcConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty" type:"Struct"`
 }
 
@@ -209,11 +223,16 @@ func (s *UpdateVolumeInputMountConfig) Validate() error {
 }
 
 type UpdateVolumeInputMountConfigVpcConfig struct {
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-xxxx
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The vSwitch IDs.
+	VSwitchIds []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxxx

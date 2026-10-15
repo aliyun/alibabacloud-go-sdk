@@ -40,7 +40,7 @@ type ListQuotaResponseBody struct {
 	//
 	// qxGrXje86XMrYQ51aJMy
 	NextToken *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Quotas    []*Quota `json:"quotas,omitempty" xml:"quotas,omitempty" type:"Repeated"`
+	Quotas    []*Quota `json:"quotas" xml:"quotas" type:"Repeated"`
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C

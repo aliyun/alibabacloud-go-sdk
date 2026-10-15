@@ -18,9 +18,12 @@ type iInnerCreateSandboxVolumeMounts interface {
 }
 
 type InnerCreateSandboxVolumeMounts struct {
+	// The AgenticFS mount configuration.
 	AgenticFs *InnerCreateSandboxVolumeMountsAgenticFs `json:"agenticFs,omitempty" xml:"agenticFs,omitempty" type:"Struct"`
-	Named     *InnerCreateSandboxVolumeMountsNamed     `json:"named,omitempty" xml:"named,omitempty" type:"Struct"`
-	Oss       *InnerCreateSandboxVolumeMountsOss       `json:"oss,omitempty" xml:"oss,omitempty" type:"Struct"`
+	// The predefined volume mount configuration.
+	Named *InnerCreateSandboxVolumeMountsNamed `json:"named,omitempty" xml:"named,omitempty" type:"Struct"`
+	// The OSS mount configuration.
+	Oss *InnerCreateSandboxVolumeMountsOss `json:"oss,omitempty" xml:"oss,omitempty" type:"Struct"`
 }
 
 func (s InnerCreateSandboxVolumeMounts) String() string {
@@ -78,11 +81,16 @@ func (s *InnerCreateSandboxVolumeMounts) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsAgenticFs struct {
+	// The group ID for the local mount.
+	//
 	// example:
 	//
 	// 1000
-	GroupID     *int32                                                `json:"groupID,omitempty" xml:"groupID,omitempty"`
-	MountPoints []*InnerCreateSandboxVolumeMountsAgenticFsMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	GroupID *int32 `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The mount point configuration.
+	MountPoints []*InnerCreateSandboxVolumeMountsAgenticFsMountPoints `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
+	// The user ID for the local mount.
+	//
 	// example:
 	//
 	// 1000
@@ -138,10 +146,14 @@ func (s *InnerCreateSandboxVolumeMountsAgenticFs) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsAgenticFsMountPoints struct {
+	// The local mount directory.
+	//
 	// example:
 	//
 	// /mnt/agenticfs
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// The AgenticFS access point address.
+	//
 	// example:
 	//
 	// ap-xxxx.03204sl2qjiax4ocdt2-ljs60.cn-shanghai.nas.aliyuncs.com
@@ -179,7 +191,8 @@ func (s *InnerCreateSandboxVolumeMountsAgenticFsMountPoints) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsNamed struct {
-	MountPoints []*InnerCreateSandboxVolumeMountsNamedMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	// The mount point configuration.
+	MountPoints []*InnerCreateSandboxVolumeMountsNamedMountPoints `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 }
 
 func (s InnerCreateSandboxVolumeMountsNamed) String() string {
@@ -213,10 +226,14 @@ func (s *InnerCreateSandboxVolumeMountsNamed) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsNamedMountPoints struct {
+	// The local mount directory.
+	//
 	// example:
 	//
 	// /mnt/named
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// The volume name.
+	//
 	// example:
 	//
 	// workspace
@@ -254,7 +271,8 @@ func (s *InnerCreateSandboxVolumeMountsNamedMountPoints) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsOss struct {
-	MountPoints []*InnerCreateSandboxVolumeMountsOssMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	// The mount point configuration.
+	MountPoints []*InnerCreateSandboxVolumeMountsOssMountPoints `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 }
 
 func (s InnerCreateSandboxVolumeMountsOss) String() string {
@@ -288,22 +306,36 @@ func (s *InnerCreateSandboxVolumeMountsOss) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsOssMountPoints struct {
+	// The bucket name.
+	//
 	// example:
 	//
 	// oss-bucket-test
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The OSS bucket path to mount.
+	//
 	// example:
 	//
 	// /
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	// The endpoint URL of OSS.
+	//
 	// example:
 	//
 	// https://oss-cn-shenzhen-internal.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The local mount directory.
+	//
 	// example:
 	//
 	// /mnt/oss
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// Specifies whether the mount is read-only. Valid values:
+	//
+	// - true: Read-only.
+	//
+	// - false: Read and write.
+	//
 	// example:
 	//
 	// false

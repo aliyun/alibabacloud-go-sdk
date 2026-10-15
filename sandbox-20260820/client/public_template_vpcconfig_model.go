@@ -20,15 +20,22 @@ type iPublicTemplateVPCConfig interface {
 }
 
 type PublicTemplateVPCConfig struct {
+	// The ARN of the RAM role that the sandbox instance assumes when accessing the VPC. The format is acs:ram::{account ID}:role/{role name}.
+	//
 	// example:
 	//
 	// acs:ram::1234567890123456:role/aliyunfcdefaultrole
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The ID of the security group used by the sandbox instance.
+	//
 	// example:
 	//
 	// sg-****
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The list of vSwitch IDs that the sandbox instance connects to.
+	VSwitchIds []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
+	// The ID of the VPC that the sandbox instance connects to.
+	//
 	// example:
 	//
 	// vpc-****

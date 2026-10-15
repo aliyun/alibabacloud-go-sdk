@@ -22,16 +22,24 @@ type iPublicUpdateTemplateCopyAction interface {
 }
 
 type PublicUpdateTemplateCopyAction struct {
+	// The ID of the destination ACR Enterprise instance.
+	//
 	// example:
 	//
 	// cri-abc123
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Enabled       *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Indicates whether image replication is enabled.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The destination image address for replication.
+	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/my/ns:v2
-	Image          *string                             `json:"image,omitempty" xml:"image,omitempty"`
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The image repository configuration.
 	RegistryConfig *PublicUpdateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
+	// The type of the destination repository.
+	//
 	// example:
 	//
 	// acr

@@ -20,9 +20,14 @@ type iUpdateTemplateInput interface {
 }
 
 type UpdateTemplateInput struct {
+	// The new container image configuration of the template. When passed in, this overwrites the existing configuration entirely.
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
-	LogConfiguration       *LogConfiguration       `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	NetworkConfiguration   *NetworkConfiguration   `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// The new log delivery configuration of the template. When passed in, this overwrites the existing configuration entirely.
+	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// The new network configuration of the template. When passed in, this overwrites the existing configuration entirely.
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// The ID of the team to which the template belongs, in UUID format. This parameter is used to locate the template to be updated.
+	//
 	// example:
 	//
 	// 5f4a2c18-****

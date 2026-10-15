@@ -16,7 +16,9 @@ type iPublicUpdateTemplateInput interface {
 }
 
 type PublicUpdateTemplateInput struct {
-	BuildConfig   *PublicUpdateTemplateBuildConfig   `json:"buildConfig,omitempty" xml:"buildConfig,omitempty"`
+	// The build configuration.
+	BuildConfig *PublicUpdateTemplateBuildConfig `json:"buildConfig,omitempty" xml:"buildConfig,omitempty"`
+	// The runtime configuration.
 	RuntimeConfig *PublicUpdateTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
 }
 

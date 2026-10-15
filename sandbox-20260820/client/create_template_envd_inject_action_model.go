@@ -14,6 +14,7 @@ type iCreateTemplateEnvdInjectAction interface {
 }
 
 type CreateTemplateEnvdInjectAction struct {
+	// Specifies whether to enable the envd injection action. This parameter is required when this action block is specified.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 

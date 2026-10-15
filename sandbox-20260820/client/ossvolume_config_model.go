@@ -20,19 +20,26 @@ type iOSSVolumeConfig interface {
 }
 
 type OSSVolumeConfig struct {
+	// The name of the OSS bucket to mount as a storage volume.
+	//
 	// example:
 	//
 	// sandbox-shared-data
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The path prefix within the bucket to use as the mount source. If this parameter is not specified, the entire bucket is mounted.
+	//
 	// example:
 	//
 	// /workspace/
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	// The OSS service registration address used to access the bucket. Use an internal network address in the same region as the sandboxed container.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	ReadOnly *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// Specifies whether the storage volume is mounted as read-only in the sandboxed container.
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s OSSVolumeConfig) String() string {

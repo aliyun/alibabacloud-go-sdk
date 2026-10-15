@@ -20,15 +20,22 @@ type iPublicUpdateTemplateVPCConfig interface {
 }
 
 type PublicUpdateTemplateVPCConfig struct {
+	// The ARN of the RAM role used to access VPC resources.
+	//
 	// example:
 	//
 	// acs:ram::123456789012:role/sandbox-vpc-role
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-bp1abc123
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The list of vSwitch IDs.
+	VSwitchIds []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
+	// VPC ID
+	//
 	// example:
 	//
 	// vpc-bp1abc123

@@ -20,16 +20,22 @@ type iCreateCustomDomainInput interface {
 }
 
 type CreateCustomDomainInput struct {
+	// The HTTPS certificate configuration used by the domain name.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The description of the custom domain name.
+	//
 	// example:
 	//
-	// 沙箱预览环境入口域名
+	// Entry domain name for the sandbox preview environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The custom domain name.
+	//
 	// example:
 	//
 	// sandbox.example.com
-	DomainName *string    `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	TlsConfig  *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The TLS protocol configuration used by the domain name.
+	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s CreateCustomDomainInput) String() string {

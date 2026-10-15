@@ -16,10 +16,14 @@ type iPublicUpdateTemplateRegistryAuthConfig interface {
 }
 
 type PublicUpdateTemplateRegistryAuthConfig struct {
+	// The repository password.
+	//
 	// example:
 	//
 	// ******
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The repository username.
+	//
 	// example:
 	//
 	// my-user

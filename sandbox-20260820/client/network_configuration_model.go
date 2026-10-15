@@ -20,19 +20,26 @@ type iNetworkConfiguration interface {
 }
 
 type NetworkConfiguration struct {
+	// The network access mode. Valid values: PUBLIC (public network only), PRIVATE (VPC only), PUBLIC_AND_PRIVATE (both public network and VPC are reachable).
+	//
 	// example:
 	//
 	// PUBLIC_AND_PRIVATE
 	NetworkMode *string `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
+	// The ID of the security group used by the sandboxed container instances.
+	//
 	// example:
 	//
 	// sg-****
 	SecurityGroupID *string `json:"securityGroupID,omitempty" xml:"securityGroupID,omitempty"`
+	// The ID of the VPC to which the sandboxed container instances are connected.
+	//
 	// example:
 	//
 	// vpc-****
-	VpcID      *string   `json:"vpcID,omitempty" xml:"vpcID,omitempty"`
-	VswitchIDs []*string `json:"vswitchIDs,omitempty" xml:"vswitchIDs,omitempty" type:"Repeated"`
+	VpcID *string `json:"vpcID,omitempty" xml:"vpcID,omitempty"`
+	// The list of vSwitch IDs to which the sandboxed container instances are connected. Configure vSwitches in multiple zones to improve availability.
+	VswitchIDs []*string `json:"vswitchIDs" xml:"vswitchIDs" type:"Repeated"`
 }
 
 func (s NetworkConfiguration) String() string {

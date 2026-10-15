@@ -44,7 +44,7 @@ type ListVolumesResponseBody struct {
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
 	RequestId *string      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Volumes   []*E2BVolume `json:"volumes,omitempty" xml:"volumes,omitempty" type:"Repeated"`
+	Volumes   []*E2BVolume `json:"volumes" xml:"volumes" type:"Repeated"`
 }
 
 func (s ListVolumesResponseBody) String() string {

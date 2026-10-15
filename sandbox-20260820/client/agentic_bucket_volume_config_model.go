@@ -22,22 +22,36 @@ type iAgenticBucketVolumeConfig interface {
 }
 
 type AgenticBucketVolumeConfig struct {
+	// The name of the AgenticBucket.
+	//
 	// example:
 	//
 	// workspace01
 	AgenticBucket *string `json:"agenticBucket,omitempty" xml:"agenticBucket,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// sandbox-test
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The path of the mounted OSS bucket.
+	//
 	// example:
 	//
 	// /
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	// The OSS endpoint address.
+	//
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// Specifies whether the mount directory has read-only access permissions after the OSS bucket is mounted. Valid values:
+	//
+	// - true: Read-only.
+	//
+	// - false: Read and write.
+	//
 	// example:
 	//
 	// true

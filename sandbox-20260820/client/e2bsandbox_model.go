@@ -66,95 +66,161 @@ type iE2BSandbox interface {
 }
 
 type E2BSandbox struct {
+  // The access endpoint.
+  // 
   // example:
   // 
   // sbx-xxxx.ap-southeast-1.sandbox.aliyun.com
   AccessEndpoint *string `json:"accessEndpoint,omitempty" xml:"accessEndpoint,omitempty"`
+  // Specifies whether the sandbox is allowed to access external networks.
   AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+  // The vCPU specifications.
+  // 
   // example:
   // 
   // 2
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
+  // The ephemeral disk specifications.
+  // 
   // example:
   // 
   // 10240
   DiskSizeMB *int32 `json:"diskSizeMB,omitempty" xml:"diskSizeMB,omitempty"`
+  // The access domain name of the sandbox.
+  // 
   // example:
   // 
   // ap-southeast-1.sandbox.aliyun.com
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+  // The end time.
+  // 
   // example:
   // 
   // 2026-09-04T02:03:43.826Z
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
-  EnvVars map[string]*string `json:"envVars,omitempty" xml:"envVars,omitempty"`
+  // The environment variables.
+  EnvVars map[string]*string `json:"envVars" xml:"envVars"`
+  // The authentication credential for accessing the envd daemon process inside the sandbox, in UUID format. Automatically generated only when secure is set to true.
+  // 
   // example:
   // 
   // 4b1e9d07-****
   EnvdAccessToken *string `json:"envdAccessToken,omitempty" xml:"envdAccessToken,omitempty"`
+  // The Function Compute function name.
+  // 
   // example:
   // 
   // template-d391c80b5d1527de
   FcFunctionName *string `json:"fcFunctionName,omitempty" xml:"fcFunctionName,omitempty"`
+  // The Function Compute instance ID.
+  // 
   // example:
   // 
   // c-6a9d1501-133e6f48-b3f07782dd47
   FcInstanceID *string `json:"fcInstanceID,omitempty" xml:"fcInstanceID,omitempty"`
+  // The Function Compute session ID corresponding to the sandbox, in UUID format. Used to locate the underlying session when pausing, resuming, or deleting the sandbox.
+  // 
   // example:
   // 
   // 3a7ecd09-****
   FcSessionID *string `json:"fcSessionID,omitempty" xml:"fcSessionID,omitempty"`
+  // The sandbox version.
+  // 
   // example:
   // 
   // 2
   Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+  // The memory specifications.
+  // 
   // example:
   // 
   // 2
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
-  Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+  // The metadata configuration.
+  Metadata map[string]*string `json:"metadata" xml:"metadata"`
+  // The network configuration.
   Network *E2BNetwork `json:"network,omitempty" xml:"network,omitempty"`
+  // The resource group ID.
+  // 
   // example:
   // 
   // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The runtime configuration.
   Runtime *InnerSandboxRuntimeConfig `json:"runtime,omitempty" xml:"runtime,omitempty"`
+  // The unique identifier of the sandbox.
+  // 
   // example:
   // 
   // sbx-xxxx
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
+  // The start time.
+  // 
   // example:
   // 
   // 2026-09-04T02:02:43.826Z
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+  // The sandbox status. Valid values:
+  // 
+  // - running: Running.
+  // 
+  // - pausing: Pausing.
+  // 
+  // - paused: Paused.
+  // 
+  // - resuming: Resuming.
+  // 
+  // - pause_fail: Pause failed.
+  // 
+  // - resume_fail: Resume failed.
+  // 
+  // - snapshotting: Creating a snapshot.
+  // 
+  // - snapshot_failed: Snapshot creation failed.
+  // 
+  // - terminated: Terminated.
+  // 
   // example:
   // 
   // running
   State *string `json:"state,omitempty" xml:"state,omitempty"`
+  // The unique identifier of the team.
+  // 
   // example:
   // 
   // eea033af-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // The team name.
+  // 
   // example:
   // 
   // default
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // The QoS version.
+  // 
   // example:
   // 
   // eco
   TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+  // The unique identifier of the template.
+  // 
   // example:
   // 
   // v9vjyzw64bsu83vw0dgs
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+  // The template name.
+  // 
   // example:
   // 
   // base
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+  // The UID of the creator.
+  // 
   // example:
   // 
   // 2000****
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
+  // The mount configuration.
   VolumeMounts *InnerSandboxVolumeMount `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty"`
 }
 

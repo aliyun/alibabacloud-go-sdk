@@ -22,19 +22,28 @@ type iJuiceFSVolumeConfig interface {
 }
 
 type JuiceFSVolumeConfig struct {
-	Args []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
+	// The additional mount parameters.
+	Args []*string `json:"args" xml:"args" type:"Repeated"`
+	// The access point address.
+	//
 	// example:
 	//
 	// http://127.0.0.1:8080
 	BaseURL *string `json:"baseURL,omitempty" xml:"baseURL,omitempty"`
+	// The remote mount directory.
+	//
 	// example:
 	//
 	// /sandbox/workspace
 	RemoteDir *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
+	// The access token.
+	//
 	// example:
 	//
 	// xxxxxx
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The JuiceFS volume name.
+	//
 	// example:
 	//
 	// data

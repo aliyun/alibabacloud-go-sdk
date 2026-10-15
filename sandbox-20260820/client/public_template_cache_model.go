@@ -30,38 +30,56 @@ type iPublicTemplateCache interface {
 }
 
 type PublicTemplateCache struct {
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2026-09-18T10:00:00Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The digest of the cached image.
+	//
 	// example:
 	//
 	// sha256:8f3c2a1b
 	ImageDigest *string `json:"imageDigest,omitempty" xml:"imageDigest,omitempty"`
+	// The size of the cached image, in MB.
+	//
 	// example:
 	//
 	// 512
 	ImageSizeMB *int32 `json:"imageSizeMB,omitempty" xml:"imageSizeMB,omitempty"`
+	// The prefetch progress percentage.
+	//
 	// example:
 	//
 	// 80
 	Progress *int32 `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The ready time in UTC.
+	//
 	// example:
 	//
 	// 2026-09-18T10:05:00Z
 	ReadyTime *string `json:"readyTime,omitempty" xml:"readyTime,omitempty"`
+	// The cache status. Valid values: InProgress, Success, Failed, Deleting, and Evicted.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The reason for the status. This parameter is backfilled when the status is not Success.
+	//
 	// example:
 	//
-	// 镜像预热任务排队中
+	// The image prefetch task is queued
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// The team ID.
+	//
 	// example:
 	//
 	// 13b721e6-8cc8-5df2-af13-80316f7508af
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The unique identifier of the template.
+	//
 	// example:
 	//
 	// us7dxqaezw5uu7aa2cm5

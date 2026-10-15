@@ -44,7 +44,7 @@ type ListTemplateCacheResponseBody struct {
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
 	RequestId      *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TemplateCaches []*PublicTemplateCache `json:"templateCaches,omitempty" xml:"templateCaches,omitempty" type:"Repeated"`
+	TemplateCaches []*PublicTemplateCache `json:"templateCaches" xml:"templateCaches" type:"Repeated"`
 }
 
 func (s ListTemplateCacheResponseBody) String() string {

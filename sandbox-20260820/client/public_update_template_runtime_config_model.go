@@ -26,22 +26,32 @@ type iPublicUpdateTemplateRuntimeConfig interface {
 }
 
 type PublicUpdateTemplateRuntimeConfig struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The system cloud disk size, in MB.
+	//
 	// example:
 	//
 	// 512
-	DiskSize       *int32                         `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	InternetAccess *bool                          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *PublicUpdateTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// Specifies whether the sandbox is allowed to access the Internet.
+	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	// The log configuration.
+	LogConfig *PublicUpdateTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// The memory size, in MB.
+	//
 	// example:
 	//
 	// 2048
-	MemorySize    *int32                             `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The sandbox configuration.
 	SandboxConfig *PublicUpdateTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	VpcConfig     *PublicUpdateTemplateVPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// The VPC network configuration.
+	VpcConfig *PublicUpdateTemplateVPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s PublicUpdateTemplateRuntimeConfig) String() string {

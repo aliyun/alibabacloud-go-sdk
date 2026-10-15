@@ -16,10 +16,14 @@ type iPublicUpdateTemplateLogConfig interface {
 }
 
 type PublicUpdateTemplateLogConfig struct {
+	// The name of the SLS Logstore.
+	//
 	// example:
 	//
 	// my-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the Simple Log Service (SLS) project.
+	//
 	// example:
 	//
 	// my-sls-project

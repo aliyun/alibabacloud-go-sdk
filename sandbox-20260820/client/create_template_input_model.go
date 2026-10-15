@@ -20,12 +20,18 @@ type iCreateTemplateInput interface {
 }
 
 type CreateTemplateInput struct {
+	// The build configuration of the template. The build process is specified in blocks by action. If this parameter is not specified, the service automatically infers the configuration based on the source image: public runtime images are used directly without building, and other images automatically execute copy and envdInject.
 	BuildConfig *CreateTemplateBuildConfig `json:"buildConfig,omitempty" xml:"buildConfig,omitempty"`
+	// The template name, which must be unique within the same team.
+	//
 	// example:
 	//
 	// python-data-analysis
-	Name          *string                      `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The runtime configuration of the template. This configuration determines the specifications and environment of sandbox instances created from this template.
 	RuntimeConfig *CreateTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
+	// The ID of the team to which the template belongs, in UUID format. If this parameter is not specified, the default team of the current account is used.
+	//
 	// example:
 	//
 	// 5f4a2c18-****

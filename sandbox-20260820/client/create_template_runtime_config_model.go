@@ -26,22 +26,32 @@ type iCreateTemplateRuntimeConfig interface {
 }
 
 type CreateTemplateRuntimeConfig struct {
+	// The CPU specification of the sandboxed container instance, in cores.
+	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The disk specification of the sandboxed container instance, in MB.
+	//
 	// example:
 	//
 	// 10240
-	DiskSize       *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	InternetAccess *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *CreateTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// Specifies whether the sandboxed container instance is allowed to access the Internet.
+	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	// The log delivery configuration of the sandboxed container instance.
+	LogConfig *CreateTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// The memory specification of the sandboxed container instance, in MB.
+	//
 	// example:
 	//
 	// 2048
-	MemorySize    *int32                       `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The image and startup configuration of the sandboxed container instance.
 	SandboxConfig *CreateTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	VpcConfig     *CreateTemplateVPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// The VPC configuration of the sandboxed container instance.
+	VpcConfig *CreateTemplateVPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s CreateTemplateRuntimeConfig) String() string {

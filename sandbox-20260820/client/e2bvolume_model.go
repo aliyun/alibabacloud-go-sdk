@@ -42,47 +42,78 @@ type iE2BVolume interface {
 }
 
 type E2BVolume struct {
+  // The AgenticBucket volume configuration.
   AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
+  // The AgenticFS volume configuration.
   AgenticFSVolumeConfig *AgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty"`
+  // The time when the volume was created, in UTC. The time is in the yyyy-MM-ddTHH:mm:ss.SSSSSSZ format, with exactly 6 decimal places for fractional seconds (microsecond precision).
+  // 
   // example:
   // 
   // 2026-09-07T02:12:36.531000Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // The JuiceFS volume configuration.
   JuiceFSVolumeConfig *JuiceFSVolumeConfig `json:"juiceFSVolumeConfig,omitempty" xml:"juiceFSVolumeConfig,omitempty"`
+  // The mount configuration.
   MountConfig *VolumeMountConfig `json:"mountConfig,omitempty" xml:"mountConfig,omitempty"`
+  // The OSS volume configuration.
   OssVolumeConfig *OSSVolumeConfig `json:"ossVolumeConfig,omitempty" xml:"ossVolumeConfig,omitempty"`
+  // The resource group ID.
+  // 
   // example:
   // 
   // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The volume status. Valid values:
+  // 
+  // - AVAILABLE
+  // 
   // example:
   // 
   // AVAILABLE
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // The status reason.
+  // 
   // example:
   // 
-  // 无
+  // None
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+  // The storage type. Valid values:
+  // 
+  // - OSS
+  // 
+  // - AGENTIC_FS
+  // 
   // example:
   // 
   // OSS
   StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+  // The unique identifier of the team.
+  // 
   // example:
   // 
   // 9f5a1fe9-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // The time when the volume was last updated, in UTC. The time is in the yyyy-MM-ddTHH:mm:ss.SSSSSSZ format, with exactly 6 decimal places for fractional seconds (microsecond precision).
+  // 
   // example:
   // 
   // 2026-09-07T03:48:05.274000Z
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+  // The UID of the creator.
+  // 
   // example:
   // 
   // 2000****
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
+  // The unique identifier of the volume.
+  // 
   // example:
   // 
   // 25878d34-****
   VolumeID *string `json:"volumeID,omitempty" xml:"volumeID,omitempty"`
+  // The name, which is unique within the team.
+  // 
   // example:
   // 
   // workspace

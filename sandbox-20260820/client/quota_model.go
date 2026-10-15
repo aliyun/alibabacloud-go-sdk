@@ -20,18 +20,26 @@ type iQuota interface {
 }
 
 type Quota struct {
+	// The vCPU quota. Unit: cores.
+	//
 	// example:
 	//
 	// 100
 	CpuCores *int32 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// The quota for the number of running instances.
+	//
 	// example:
 	//
 	// 100
 	InstanceCount *int32 `json:"instanceCount,omitempty" xml:"instanceCount,omitempty"`
+	// The memory quota. Unit: GB.
+	//
 	// example:
 	//
 	// 200
 	MemoryGB *int32 `json:"memoryGB,omitempty" xml:"memoryGB,omitempty"`
+	// The quota tag value, which is set to the team ID. Quotas are independently calculated based on this dimension.
+	//
 	// example:
 	//
 	// 7696f4cf-****

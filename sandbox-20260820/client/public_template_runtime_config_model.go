@@ -26,22 +26,32 @@ type iPublicTemplateRuntimeConfig interface {
 }
 
 type PublicTemplateRuntimeConfig struct {
+	// The CPU specification of the sandbox instance, in cores.
+	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The disk specification of the sandbox instance, in MB.
+	//
 	// example:
 	//
 	// 10240
-	DiskSize       *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	InternetAccess *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *PublicTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// Specifies whether the sandbox instance is allowed to access the Internet.
+	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	// The log delivery configuration of the sandbox instance.
+	LogConfig *PublicTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// The memory specification of the sandbox instance, in MB.
+	//
 	// example:
 	//
 	// 2048
-	MemorySize    *int32                       `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The image and startup configuration of the sandbox instance.
 	SandboxConfig *PublicTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	VpcConfig     *PublicTemplateVPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// The VPC configuration of the sandbox instance.
+	VpcConfig *PublicTemplateVPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s PublicTemplateRuntimeConfig) String() string {

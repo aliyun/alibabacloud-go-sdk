@@ -18,14 +18,20 @@ type iE2BTemplateTag interface {
 }
 
 type E2BTemplateTag struct {
+  // The ID of the template build output that this label points to, in UUID format.
+  // 
   // example:
   // 
   // b7e21c05-****
   BuildID *string `json:"buildID,omitempty" xml:"buildID,omitempty"`
+  // The creation time of the label, in UTC and RFC 3339 format.
+  // 
   // example:
   // 
   // 2026-08-20T08:35:12Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // The label name.
+  // 
   // example:
   // 
   // latest

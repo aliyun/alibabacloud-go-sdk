@@ -18,14 +18,19 @@ type iContainerConfiguration interface {
 }
 
 type ContainerConfiguration struct {
+	// The instance ID of the Container Registry Enterprise instance. Required when registryType is set to acree.
+	//
 	// example:
 	//
 	// cri-****
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// The base image address of the sandbox.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/sandbox-demo/python:3.12
-	Image              *string                                   `json:"image,omitempty" xml:"image,omitempty"`
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The repository access credentials used to pull the image. Not required when using a public image.
 	RegistryCredential *ContainerConfigurationRegistryCredential `json:"registryCredential,omitempty" xml:"registryCredential,omitempty" type:"Struct"`
 }
 
@@ -74,10 +79,14 @@ func (s *ContainerConfiguration) Validate() error {
 }
 
 type ContainerConfigurationRegistryCredential struct {
+	// The logon password or access token for the image repository. Stored with server-side encryption and not returned in plaintext when queried.
+	//
 	// example:
 	//
 	// Passw0rd****
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The username for logging on to the image repository.
+	//
 	// example:
 	//
 	// sandbox-puller

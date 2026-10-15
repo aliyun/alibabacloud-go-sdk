@@ -14,6 +14,7 @@ type iPublicUpdateTemplateEnvdInjectAction interface {
 }
 
 type PublicUpdateTemplateEnvdInjectAction struct {
+	// Specifies whether envd injection is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 

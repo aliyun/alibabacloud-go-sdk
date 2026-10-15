@@ -16,10 +16,14 @@ type iCreateTemplateCacheInput interface {
 }
 
 type CreateTemplateCacheInput struct {
+	// The team ID.
+	//
 	// example:
 	//
 	// 13b721e6-8cc8-5df2-af13-80316f7508af
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The unique identifier of the template.
+	//
 	// example:
 	//
 	// us7dxqaezw5uu7aa2cm5

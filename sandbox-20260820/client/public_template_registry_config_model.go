@@ -14,6 +14,7 @@ type iPublicTemplateRegistryConfig interface {
 }
 
 type PublicTemplateRegistryConfig struct {
+	// The VPC configuration used to access the image repository.
 	NetworkConfig *PublicTemplateRegistryNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
 }
 

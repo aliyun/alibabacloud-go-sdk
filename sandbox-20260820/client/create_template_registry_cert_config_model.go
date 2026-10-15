@@ -14,6 +14,7 @@ type iCreateTemplateRegistryCertConfig interface {
 }
 
 type CreateTemplateRegistryCertConfig struct {
+	// Specifies whether to skip HTTPS certificate validation for the image repository. Enable this option only for private repositories that use self-signed certificates.
 	Insecure *bool `json:"insecure,omitempty" xml:"insecure,omitempty"`
 }
 

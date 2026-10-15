@@ -14,6 +14,7 @@ type iPublicUpdateTemplateRegistryCertConfig interface {
 }
 
 type PublicUpdateTemplateRegistryCertConfig struct {
+	// Specifies whether to skip repository certificate verification.
 	Insecure *bool `json:"insecure,omitempty" xml:"insecure,omitempty"`
 }
 

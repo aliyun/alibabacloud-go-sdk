@@ -18,12 +18,16 @@ type iUpdateCustomDomainInput interface {
 }
 
 type UpdateCustomDomainInput struct {
+	// The new HTTPS certificate configuration for the domain name. When specified, this overwrites the existing configuration.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The new description of the custom domain name.
+	//
 	// example:
 	//
-	// 沙箱生产环境入口域名
-	Description *string    `json:"description,omitempty" xml:"description,omitempty"`
-	TlsConfig   *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// Entry domain name for the sandbox production environment
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The new TLS protocol configuration for the domain name. When specified, this overwrites the existing configuration.
+	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s UpdateCustomDomainInput) String() string {

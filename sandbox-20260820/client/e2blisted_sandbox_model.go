@@ -44,63 +44,112 @@ type iE2BListedSandbox interface {
 }
 
 type E2BListedSandbox struct {
+  // The number of vCPUs.
+  // 
   // example:
   // 
   // 2
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
+  // The temporary disk specification.
+  // 
   // example:
   // 
   // 10240
   DiskSizeMB *int32 `json:"diskSizeMB,omitempty" xml:"diskSizeMB,omitempty"`
+  // The end time.
+  // 
   // example:
   // 
   // 2026-09-03T02:06:37.932Z
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
+  // The sandbox version.
+  // 
   // example:
   // 
   // 2
   Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+  // The memory specification.
+  // 
   // example:
   // 
   // 2
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
-  Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+  // The metadata.
+  Metadata map[string]*string `json:"metadata" xml:"metadata"`
+  // The resource group ID.
+  // 
   // example:
   // 
   // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The sandbox ID.
+  // 
   // example:
   // 
   // sbx-xxxx
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
+  // The start time.
+  // 
   // example:
   // 
   // 2026-09-03T02:05:37.932Z
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+  // The sandbox status. Valid values:
+  // 
+  // - running: Running.
+  // 
+  // - pausing: Being paused.
+  // 
+  // - paused: Paused.
+  // 
+  // - resuming: Being resumed.
+  // 
+  // - pause_fail: Failed to pause.
+  // 
+  // - resume_fail: Failed to resume.
+  // 
+  // - snapshotting: Creating a snapshot.
+  // 
+  // - snapshot_failed: Failed to create a snapshot.
+  // 
+  // - terminated: Terminated.
+  // 
   // example:
   // 
   // running
   State *string `json:"state,omitempty" xml:"state,omitempty"`
+  // The unique identifier of the team.
+  // 
   // example:
   // 
   // 9f5a1fe9-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // The team name.
+  // 
   // example:
   // 
   // default
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // The QoS version.
+  // 
   // example:
   // 
   // eco
   TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+  // The unique identifier of the template.
+  // 
   // example:
   // 
   // f1l97phhfw6ox18iwcfk
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+  // The template name.
+  // 
   // example:
   // 
   // base
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+  // The UID of the creator.
+  // 
   // example:
   // 
   // 2000****

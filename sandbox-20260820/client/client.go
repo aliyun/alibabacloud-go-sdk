@@ -25,9 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou": dara.String("sandbox-vpc.cn-hangzhou.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err

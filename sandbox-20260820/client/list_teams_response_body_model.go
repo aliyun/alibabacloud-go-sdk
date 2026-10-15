@@ -46,7 +46,7 @@ type ListTeamsResponseBody struct {
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
 	RequestId *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Teams     []*E2BTeam `json:"teams,omitempty" xml:"teams,omitempty" type:"Repeated"`
+	Teams     []*E2BTeam `json:"teams" xml:"teams" type:"Repeated"`
 	// example:
 	//
 	// 65

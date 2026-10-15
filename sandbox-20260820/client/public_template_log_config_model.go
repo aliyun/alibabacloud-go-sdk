@@ -16,10 +16,14 @@ type iPublicTemplateLogConfig interface {
 }
 
 type PublicTemplateLogConfig struct {
+	// The name of the Simple Log Service Logstore that receives sandbox runtime logs.
+	//
 	// example:
 	//
 	// sandbox-runtime
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the Simple Log Service project that receives sandbox runtime logs.
+	//
 	// example:
 	//
 	// sandbox-log-cn-hangzhou

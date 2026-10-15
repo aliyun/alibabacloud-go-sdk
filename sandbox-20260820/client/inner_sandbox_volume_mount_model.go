@@ -18,9 +18,12 @@ type iInnerSandboxVolumeMount interface {
 }
 
 type InnerSandboxVolumeMount struct {
+	// The AgenticFS mount configuration.
 	AgenticFs *InnerSandboxVolumeMountAgenticFs `json:"agenticFs,omitempty" xml:"agenticFs,omitempty" type:"Struct"`
-	Named     *InnerSandboxVolumeMountNamed     `json:"named,omitempty" xml:"named,omitempty" type:"Struct"`
-	Oss       *InnerSandboxVolumeMountOss       `json:"oss,omitempty" xml:"oss,omitempty" type:"Struct"`
+	// The predefined volume mount configuration.
+	Named *InnerSandboxVolumeMountNamed `json:"named,omitempty" xml:"named,omitempty" type:"Struct"`
+	// The OSS mount configuration.
+	Oss *InnerSandboxVolumeMountOss `json:"oss,omitempty" xml:"oss,omitempty" type:"Struct"`
 }
 
 func (s InnerSandboxVolumeMount) String() string {
@@ -78,11 +81,16 @@ func (s *InnerSandboxVolumeMount) Validate() error {
 }
 
 type InnerSandboxVolumeMountAgenticFs struct {
+	// The local mount group ID.
+	//
 	// example:
 	//
 	// 1000
-	GroupID     *int32                                         `json:"groupID,omitempty" xml:"groupID,omitempty"`
-	MountPoints []*InnerSandboxVolumeMountAgenticFsMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	GroupID *int32 `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The AgenticFS mount point configuration.
+	MountPoints []*InnerSandboxVolumeMountAgenticFsMountPoints `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
+	// The local mount user ID.
+	//
 	// example:
 	//
 	// 1000
@@ -138,22 +146,32 @@ func (s *InnerSandboxVolumeMountAgenticFs) Validate() error {
 }
 
 type InnerSandboxVolumeMountAgenticFsMountPoints struct {
+	// The access point ID.
+	//
 	// example:
 	//
 	// ap-xxxx
 	AccessPointID *string `json:"accessPointID,omitempty" xml:"accessPointID,omitempty"`
+	// The AgenticSpace workspace ID.
+	//
 	// example:
 	//
 	// agentic-xxxx
 	AgenticSpaceID *string `json:"agenticSpaceID,omitempty" xml:"agenticSpaceID,omitempty"`
+	// The file system ID.
+	//
 	// example:
 	//
 	// 03204sl2qjiax4oxxxx
 	FileSystemID *string `json:"fileSystemID,omitempty" xml:"fileSystemID,omitempty"`
+	// The local mount directory.
+	//
 	// example:
 	//
 	// /mnt/agenticfs
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// The access point mount address.
+	//
 	// example:
 	//
 	// ap-xxxx.xxxx-ljs60.cn-shanghai.nas.aliyuncs.com
@@ -218,7 +236,8 @@ func (s *InnerSandboxVolumeMountAgenticFsMountPoints) Validate() error {
 }
 
 type InnerSandboxVolumeMountNamed struct {
-	MountPoints []*InnerSandboxVolumeMountNamedMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	// The mount point configuration.
+	MountPoints []*InnerSandboxVolumeMountNamedMountPoints `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 }
 
 func (s InnerSandboxVolumeMountNamed) String() string {
@@ -252,10 +271,14 @@ func (s *InnerSandboxVolumeMountNamed) Validate() error {
 }
 
 type InnerSandboxVolumeMountNamedMountPoints struct {
+	// The local mount directory.
+	//
 	// example:
 	//
 	// /mnt/named
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// The volume name.
+	//
 	// example:
 	//
 	// workspace
@@ -293,7 +316,8 @@ func (s *InnerSandboxVolumeMountNamedMountPoints) Validate() error {
 }
 
 type InnerSandboxVolumeMountOss struct {
-	MountPoints []*InnerSandboxVolumeMountOssMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	// The mount point configuration.
+	MountPoints []*InnerSandboxVolumeMountOssMountPoints `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 }
 
 func (s InnerSandboxVolumeMountOss) String() string {
@@ -327,22 +351,36 @@ func (s *InnerSandboxVolumeMountOss) Validate() error {
 }
 
 type InnerSandboxVolumeMountOssMountPoints struct {
+	// The bucket name.
+	//
 	// example:
 	//
 	// oss-bucket-test
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The OSS bucket path to mount.
+	//
 	// example:
 	//
 	// /
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	// The OSS endpoint address.
+	//
 	// example:
 	//
 	// oss-cn-shenzhen-internal.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The local mount directory.
+	//
 	// example:
 	//
 	// /mnt/oss
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// Specifies whether the mount is read-only. Valid values:
+	//
+	// - **true**: Read-only.
+	//
+	// - **false**: Not read-only.
+	//
 	// example:
 	//
 	// true

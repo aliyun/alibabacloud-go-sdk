@@ -18,11 +18,26 @@ type iPublicTemplateStatus interface {
 }
 
 type PublicTemplateStatus struct {
+	// The time when the template reached the current desired state, in UTC and RFC 3339 format. This parameter is empty when the template is still being built or updated.
+	//
 	// example:
 	//
 	// 2026-08-20T08:35:12Z
-	FinishedAt *string                     `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
-	Reason     *PublicTemplateStatusReason `json:"reason,omitempty" xml:"reason,omitempty"`
+	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
+	// The reason why the template entered a failure state. This parameter is returned only when state is error or updateFailed.
+	Reason *PublicTemplateStatusReason `json:"reason,omitempty" xml:"reason,omitempty"`
+	// The template status. Valid values:
+	//
+	// - building: The template is being built.
+	//
+	// - ready: The template is active.
+	//
+	// - updating: The template is being updated.
+	//
+	// - updateFailed: The template failed to be updated.
+	//
+	// - error: The template failed to be built.
+	//
 	// example:
 	//
 	// ready

@@ -36,38 +36,57 @@ type iInnerCreateSandboxInput interface {
 }
 
 type InnerCreateSandboxInput struct {
+	// Specifies whether the sandbox is allowed to access external networks.
+	//
 	// example:
 	//
 	// true
 	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	// Specifies whether to automatically pause after timeout.
+	//
 	// example:
 	//
 	// true
 	AutoPause *bool `json:"autoPause,omitempty" xml:"autoPause,omitempty"`
+	// Specifies whether to automatically resume.
+	//
 	// example:
 	//
 	// true
-	AutoResume *bool                      `json:"autoResume,omitempty" xml:"autoResume,omitempty"`
-	EnvVars    map[string]*string         `json:"envVars,omitempty" xml:"envVars,omitempty"`
-	Metadata   map[string]*string         `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	Network    *E2BNetwork                `json:"network,omitempty" xml:"network,omitempty"`
-	Runtime    *InnerSandboxRuntimeConfig `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	AutoResume *bool `json:"autoResume,omitempty" xml:"autoResume,omitempty"`
+	// The environment variable configuration.
+	EnvVars map[string]*string `json:"envVars" xml:"envVars"`
+	// The metadata configuration.
+	Metadata map[string]*string `json:"metadata" xml:"metadata"`
+	// The network configuration.
+	Network *E2BNetwork `json:"network,omitempty" xml:"network,omitempty"`
+	// The runtime configuration.
+	Runtime *InnerSandboxRuntimeConfig `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// Specifies whether authentication is required to access the sandbox envd.
+	//
 	// example:
 	//
 	// true
 	Secure *bool `json:"secure,omitempty" xml:"secure,omitempty"`
+	// The unique identifier of the team.
+	//
 	// example:
 	//
 	// 76eeecaa-****
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The unique identifier of the template.
+	//
 	// example:
 	//
 	// v9vjyzw64bsu83vw0dgs
 	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+	// The timeout period. Unit: seconds.
+	//
 	// example:
 	//
 	// 180
-	Timeout      *int32                          `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The volume mount configuration.
 	VolumeMounts *InnerCreateSandboxVolumeMounts `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty"`
 }
 

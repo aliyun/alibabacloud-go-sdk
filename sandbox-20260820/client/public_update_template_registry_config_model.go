@@ -18,8 +18,11 @@ type iPublicUpdateTemplateRegistryConfig interface {
 }
 
 type PublicUpdateTemplateRegistryConfig struct {
-	AuthConfig    *PublicUpdateTemplateRegistryAuthConfig    `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	CertConfig    *PublicUpdateTemplateRegistryCertConfig    `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The image repository authentication configuration.
+	AuthConfig *PublicUpdateTemplateRegistryAuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The image repository certificate configuration.
+	CertConfig *PublicUpdateTemplateRegistryCertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The image repository network configuration.
 	NetworkConfig *PublicUpdateTemplateRegistryNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
 }
 
