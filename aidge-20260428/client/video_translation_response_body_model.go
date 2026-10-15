@@ -42,7 +42,11 @@ type VideoTranslationResponseBody struct {
 	//
 	// req_20260608_jkl012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true (successful) and false (failed).
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
 	//
 	// example:
 	//

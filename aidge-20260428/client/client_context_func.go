@@ -1197,6 +1197,104 @@ func (client *Client) ImageMattingWithContext(ctx context.Context, request *Imag
 
 // Summary:
 //
+// Extracts the salient subject from an image, separates it from the background, and returns the subject image without the background. It also provides multiple background options and custom size options to optimize product display.
+//
+// Description:
+//
+// # Scenarios
+//
+//   - Supports secondary editing of materials: After the image subject is separated from the background, you can further edit the image.
+//
+//   - Improves material processing efficiency: Quickly extracts the subjects from various material images for background replacement, which improves the production efficiency of advertising images and marketing posters.
+//
+// # Features.
+//
+// #### 1. One-click precise subject recognition
+//
+//   - **AI-based automatic recognition**: Based on deep learning models, it intelligently distinguishes foreground subjects (portraits, products, objects, etc.) from the background without manual outlining.
+//
+//   - **Multi-scenario adaptation**: Supports precise segmentation in complex scenarios (such as hair, transparent objects, and fur edges) with an accuracy rate of over 95%.
+//
+// #### 2. Intelligent edge optimization
+//
+//   - **Detail-level processing**: Performs automatic optimization on edge jaggies and semi-transparent areas (such as smoke and glass) to retain natural transition effects.
+//
+// #### 3. Multi-format output and background operations
+//
+//   - **Transparent background export**: Directly generates PNG images with transparent or white backgrounds, which adapts to e-commerce and design scenarios.
+//
+//   - **Supports custom background colors**
+//
+// # Effect comparison
+//
+// | **Original image (input)*	- | **Result image (output)*	- |
+//
+// | --- | --- |
+//
+// | ![Main image 3.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/a2QnV4jwexAy7O4X/img/62b39e16-5b30-469f-88cd-7f31ba790008.jpeg) | ![ae4cd8ce912c4d9fa171dc5217be576d_202605251928_0.5899999737739563.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/a2QnV4jwexAy7O4X/img/bfad041f-a8e0-4d6f-a2bf-999292ea9ebc.jpeg) |
+//
+// | ![Main image 2.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/a2QnV4jwexAy7O4X/img/b201b356-24b8-4f98-babc-c7fe918bdc37.jpeg) | ![52033655bd054737960a87518655d935_202605251926_5.959999978542328.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/a2QnV4jwexAy7O4X/img/8b266603-e80a-42dd-9d3d-6fa9f0948e52.jpeg) |
+//
+// | ![Main image 6.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/a2QnV4jwexAy7O4X/img/d3c0d876-42a0-4294-8ce5-2a20df2deab9.jpeg) | ![abdecd31cc45450f83b33f9baf4499c6_202605251930_7.9700000286102295.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/a2QnV4jwexAy7O4X/img/5677f55e-4fe3-4978-a676-1ce71ad604b0.jpeg) |
+//
+// @param request - ImageMattingAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageMattingAsyncResponse
+func (client *Client) ImageMattingAsyncWithContext(ctx context.Context, request *ImageMattingAsyncRequest, runtime *dara.RuntimeOptions) (_result *ImageMattingAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackGroundType) {
+		query["BackGroundType"] = request.BackGroundType
+	}
+
+	if !dara.IsNil(request.BgColor) {
+		query["BgColor"] = request.BgColor
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.TargetHeight) {
+		query["TargetHeight"] = request.TargetHeight
+	}
+
+	if !dara.IsNil(request.TargetWidth) {
+		query["TargetWidth"] = request.TargetWidth
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageMattingAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageMattingAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Intelligent element recognition.
 //
 // Description:
@@ -1369,6 +1467,174 @@ func (client *Client) ImageRecognitionWithContext(ctx context.Context, tmpReq *I
 
 // Summary:
 //
+// Identifies specific elements in e-commerce images. It analyzes image details to help users quickly identify elements such as text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
+//
+// Description:
+//
+// # Scenarios
+//
+// 1. Intelligent image filtering and optimization:
+//
+// Merchants and platforms can use the intelligent element recognition API to filter images and automatically identify images containing specific elements such as watermarks and logos. After filtering, they can further call the intelligent elimination API to optimize these images, improve image quality, and shorten the product release cycle.
+//
+// 2. Automated image processing and efficiency improvement:
+//
+// Through the intelligent element recognition API, merchants and platforms can automate the image processing workflow and automatically identify and mark image elements that need to be optimized. This workflow reduces manual intervention and improves the efficiency of image processing.
+//
+// # Features
+//
+// **1. Definitions of image subject, image background, text, logo, watermark, and text-containing color block: For details, see the relevant examples in the elimination documentation (reserved text link).**
+//
+//   - Image subject: The core product area in the image.
+//
+//   - Image background: The rest of the image other than the product subject.
+//
+//   - Text: Horizontal, vertical, or diagonal English or Chinese text.
+//
+//   - Logo: A logo or trademark.
+//
+//   - Watermark: Monochrome transparent text, logos, images, URLs, or store names.
+//
+//   - Text-containing color block: A color block containing text outside the subject.
+//
+// **2. The main features of the intelligent element recognition API include:**
+//
+//   - Element recognition: Identifies whether elements such as text, logos, watermarks, and text-containing color blocks exist in the image subject and background.
+//
+//   - Workflow collaboration: Used in combination with the intelligent elimination API. The intelligent element recognition API first identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
+//
+// **3. Technical advantages:**
+//
+//   - Synchronous batch processing: As a synchronous API, the intelligent element recognition API can process a large number of images while maintaining fast response, adapting to business needs of different scales.
+//
+//   - Flexibility: Users can select the types of elements to be recognized as needed, including elements in the subject and non-subject areas, such as watermarks, logos, and text, to meet personalized recognition needs.
+//
+// # Effect comparison
+//
+// | **Original image*	- | **Recognition result*	- |
+//
+// | --- | --- |
+//
+// | ![done-image-30091469-e1be-4d31-85de-18983a358a61.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/vBPlN5j4yM2KVOdG/img/bbd3dbca-9f91-4b57-a382-2701e90c0d46.png) | [Subject]
+//
+//   - Watermark: false
+//
+//   - Logo: false
+//
+//   - Text: false
+//
+//   - Text-containing color block: false
+//
+// [Non-subject]
+//
+//   - Watermark: false
+//
+//   - Logo: true
+//
+//   - Text: true
+//
+//   - Text-containing color block: false |
+//
+// | ![image-1781169602620.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/vBPlN5j4yM2KVOdG/img/6bcbd976-0de1-4b5e-855b-56e20a9c675c.png) | [Subject]
+//
+//   - Watermark: false
+//
+//   - Logo: false
+//
+//   - Text: false
+//
+//   - Text-containing color block: false
+//
+// [Non-subject]
+//
+//   - Watermark: true
+//
+//   - Logo: false
+//
+//   - Text: true
+//
+//   - Text-containing color block: true |
+//
+// @param tmpReq - ImageRecognitionAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageRecognitionAsyncResponse
+func (client *Client) ImageRecognitionAsyncWithContext(ctx context.Context, tmpReq *ImageRecognitionAsyncRequest, runtime *dara.RuntimeOptions) (_result *ImageRecognitionAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ImageRecognitionAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NonObjectDetectElements) {
+		request.NonObjectDetectElementsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NonObjectDetectElements, dara.String("NonObjectDetectElements"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ObjectDetectElements) {
+		request.ObjectDetectElementsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectDetectElements, dara.String("ObjectDetectElements"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.NonObjectDetectElementsShrink) {
+		query["NonObjectDetectElements"] = request.NonObjectDetectElementsShrink
+	}
+
+	if !dara.IsNil(request.ObjectDetectElementsShrink) {
+		query["ObjectDetectElements"] = request.ObjectDetectElementsShrink
+	}
+
+	if !dara.IsNil(request.ReturnBorderPixel) {
+		query["ReturnBorderPixel"] = request.ReturnBorderPixel
+	}
+
+	if !dara.IsNil(request.ReturnCharacter) {
+		query["ReturnCharacter"] = request.ReturnCharacter
+	}
+
+	if !dara.IsNil(request.ReturnCharacterProp) {
+		query["ReturnCharacterProp"] = request.ReturnCharacterProp
+	}
+
+	if !dara.IsNil(request.ReturnProductNum) {
+		query["ReturnProductNum"] = request.ReturnProductNum
+	}
+
+	if !dara.IsNil(request.ReturnProductProp) {
+		query["ReturnProductProp"] = request.ReturnProductProp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageRecognitionAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageRecognitionAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Intelligently erases unwanted elements from e-commerce images, automatically identifying and removing text, specific names, transparent text blocks, and watermarks. Supports specifying objects to erase as needed, enabling efficient and precise batch processing of images to simplify image editing workflows (synchronous/asynchronous).
 //
 // Description:
@@ -1443,6 +1709,82 @@ func (client *Client) ImageRemovalProWithContext(ctx context.Context, request *I
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImageRemovalProResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Erases text, specific names, transparent text blocks, and watermarks from e-commerce images. This feature automatically identifies these elements and allows you to specify objects to be removed, enabling efficient and accurate processing of large batches of images to simplify image editing.
+//
+// Description:
+//
+// ## Scenarios
+//
+//   - **Efficient e-commerce image processing:**
+//
+//     Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
+//
+//   - **Multi-platform product information synchronization:**
+//
+//     When merchants list products on different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+//
+// ## Features
+//
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to be removed, you can choose to remove them from the image subject or the image background. Both API and editor integration methods are supported to meet different types of requirements.
+//
+//  1. Image subject: the core product area in the image.
+//
+//  2. Image background: the rest of the image other than the product subject.
+//
+// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and watermarks. You can refer to the following examples to clarify your usage requirements and perform targeted operations:
+//
+// ## Before and after
+//
+// | **Original image*	- | **Erased image*	- |
+//
+// | --- | --- |
+//
+// | ![Main image 1 - Leopard print large capacity crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
+//
+// | ![Main image 1 - Short half-cover round-tip French false nails with handle.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
+//
+// @param request - ImageRemovalProAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageRemovalProAsyncResponse
+func (client *Client) ImageRemovalProAsyncWithContext(ctx context.Context, request *ImageRemovalProAsyncRequest, runtime *dara.RuntimeOptions) (_result *ImageRemovalProAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageRemovalProAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageRemovalProAsyncResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1653,6 +1995,202 @@ func (client *Client) ImageRemoveWithContext(ctx context.Context, tmpReq *ImageR
 
 // Summary:
 //
+// Provides intelligent image erasure tailored for e-commerce images by automatically identifying and removing text, specific names, transparent text blocks, and unwanted overlays, and allows you to specify objects to remove for efficient and accurate batch processing to simplify image editing.
+//
+// Description:
+//
+// ## Scenarios
+//
+//   - **Efficient processing of e-commerce images:*	-
+//
+// Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
+//
+//   - **Multi-platform product information synchronization:**
+//
+// When merchants synchronize product listings across different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+//
+//   - **Marketing material preparation:**
+//
+// Merchants can easily remove original promotional information and quickly update it with the latest campaign information.
+//
+// > Note: Merchants or platforms can batch remove unwanted elements in images to optimize image quality. We recommend using this feature in combination with the "Intelligent Recognition API" (coming soon) to first filter out images containing text, specific names, transparent text blocks, and watermarks, and then use the "Intelligent Erasure API" for batch removal. The Intelligent Recognition API focuses on "recognition", while the Intelligent Erasure API focuses on "erasure". By calling them in sequence, you can maximize the erasure effect and reduce "false removals" and "false recognitions".
+//
+// ## Features
+//
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose whether the removal scope is the image subject or the image background area. Both API and editor integration methods are supported to meet different types of needs.
+//
+//  1. Image subject: the core product area in the image.
+//
+//  2. Image background: the rest of the image other than the product subject.
+//
+// 2.  Second, the objects to remove support the following three cases:
+//
+//  1. The user selects only the type. You can select text, specific names, transparent text blocks, and watermarks. You can clarify your usage requirements through the following examples for targeted operations.
+//
+//  2. (Upgraded) Provides specified image erasure. Users can specify multiple images at a time.
+//
+//  3. (Upgraded) Provides specified text erasure. Users can specify multiple texts at a time.
+//
+// Processing flow: The user provides the original image URL → OCR and VLM models detect the text or image position → The coordinates of the area to be repaired are determined → AI repairs and generates a clean image → The result image URL is returned.
+//
+// ## Effect comparison
+//
+// | **Objects that can be removed from the image*	- | **Original image*	- | **Image after erasure*	- |
+//
+// | --- | --- | --- |
+//
+// | Text | 	- Involves the image subject area
+//
+//	    ![done-image-4a2a96c2-9ac6-4b35-b76b-a6eac303740f (1).png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/d72a7982-e761-4b45-af1e-f8f90b3f1fc3.png)
+//
+//
+//
+//		- Does not involve the image subject area
+//
+// ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/47428227-7523-432e-89ce-eba263e5ebda.png) | 	- Involves the image subject area
+//
+// ![359ddfcf-a2b1-4e59-ae54-5e76705d0adf.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/d69e38e4-5657-471d-aff6-1e6a4c269455.png)
+//
+//   - Does not involve the image subject area
+//
+// ![c35611f8-dab4-4df2-8942-36d7375ed55f.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/365024b4-4863-46d4-9013-bdd9408ea6b9.png) |
+//
+// | Specific names | 	- Involves the image subject area
+//
+//	    ![done-image-aca80515-aca6-4f4e-9429-47c5dd6b811f.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ac35f8bc-d527-49de-8fba-cdeb71e3b058.png)
+//
+//
+//
+//		- Does not involve the image subject area
+//
+// ![done-image-29a89f03-964a-455e-968c-7c8d5282ebbb.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/2db445c8-6bdd-424e-b6a7-2ddb46e6786d.png) | 	- Involves the image subject area
+//
+// ![fd2db0ab-1b89-4085-b91d-99f40a1aea77.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/36ace8aa-3b3b-4b1c-81e6-b691104262f0.png)
+//
+//   - Does not involve the image subject area
+//
+// ![8726b148-ab74-4409-a6c1-4c50fcac3887.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/a7653a0c-d14e-4f97-9c2f-83327b43203f.png) |
+//
+// | Transparent text blocks | 	- Involves the image subject area
+//
+//	    ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/0f6068f0-168a-47bd-9fcd-c38b9e520506.png)
+//
+//
+//
+//		- Does not involve the image subject area
+//
+// ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c9ac2a4c-0aa3-40ee-8855-62a262364dbe.png) | 	- Involves the image subject area
+//
+// ![8e84a5d6-da8c-4e3e-a705-71a66d0c78a2.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/06ac537f-875a-48e2-8934-a84a79dfd8ff.jpeg)
+//
+//   - Does not involve the image subject area
+//
+// ![b05173e7-2ae5-494e-99d2-7111fc966fd5.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/05759aef-1720-41cd-8800-f7d0801e4d95.jpeg) |
+//
+// | Watermarks | 	- Involves the image subject area
+//
+//	    ![2.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/bf1442f8-a9fa-40d3-bcb0-7a8a41b49b5d.jpeg)
+//
+//
+//
+//		- Does not involve the image subject area
+//
+// ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/0d68612e-845d-466f-8a4a-b85facea095b.png) | 	- Involves the image subject area
+//
+// ![b6ef803f-743f-4e61-b901-d1f68167186f.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/621daadc-454f-41b4-9ac4-752d457034b6.jpeg)
+//
+//   - Does not involve the image subject area
+//
+// ![dee0c7cf-8b0d-4d6d-9677-d5f2e6099834.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/caa6994b-2f97-484d-a807-671a0dc75947.jpeg) |
+//
+// | Specified image element erasure (supports multiple image links) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
+//
+// | Specified text erasure (supports multiple texts) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
+//
+// @param tmpReq - ImageRemoveAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageRemoveAsyncResponse
+func (client *Client) ImageRemoveAsyncWithContext(ctx context.Context, tmpReq *ImageRemoveAsyncRequest, runtime *dara.RuntimeOptions) (_result *ImageRemoveAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ImageRemoveAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NonObjectRemoveElements) {
+		request.NonObjectRemoveElementsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NonObjectRemoveElements, dara.String("NonObjectRemoveElements"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ObjectRemoveElements) {
+		request.ObjectRemoveElementsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectRemoveElements, dara.String("ObjectRemoveElements"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserImage) {
+		request.UserImageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserImage, dara.String("UserImage"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserText) {
+		request.UserTextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserText, dara.String("UserText"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.Mask) {
+		query["Mask"] = request.Mask
+	}
+
+	if !dara.IsNil(request.NonObjectRemoveElementsShrink) {
+		query["NonObjectRemoveElements"] = request.NonObjectRemoveElementsShrink
+	}
+
+	if !dara.IsNil(request.ObjectRemoveElementsShrink) {
+		query["ObjectRemoveElements"] = request.ObjectRemoveElementsShrink
+	}
+
+	if !dara.IsNil(request.Position) {
+		query["Position"] = request.Position
+	}
+
+	if !dara.IsNil(request.UserImageShrink) {
+		query["UserImage"] = request.UserImageShrink
+	}
+
+	if !dara.IsNil(request.UserTextShrink) {
+		query["UserText"] = request.UserTextShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageRemoveAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageRemoveAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Image Translation PLUS is designed specifically for e-commerce images and uses a Mixture of Experts (MOE) architecture. Compared to the Image Translation Lite and Pro editions, it delivers superior translation accuracy for multiple minority languages. We recommend using it for the following 12 language pairs, with more language pairs to be supported in the future.
 //
 // Description:
@@ -1771,6 +2309,126 @@ func (client *Client) ImageTranslationPlusWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Translates e-commerce images by using the Mixture of Experts (MOE) architecture, delivering higher translation accuracy for multiple minor languages than the Lite and Pro editions.
+//
+// Description:
+//
+// ## Scenarios
+//
+// Main images and detail images for cross-border e-commerce.
+//
+// ## Features
+//
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect subject information, such as embedded product names, from being translated.
+//
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
+//
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for processing.
+//
+// ## Supported language pairs
+//
+// | **No.*	- | **Source language*	- |  | **Target language*	- |  |
+//
+// | --- | --- | --- | --- | --- |
+//
+// |  | Language code | Language name | Language code | Language name |
+//
+// | 1 | en | English | ar | Arabic |
+//
+// | 2 | en | English | id | Indonesian |
+//
+// | 3 | en | English | th | Thai |
+//
+// | 4 | en | English | ko | Korean |
+//
+// | 5 | en | English | ja | Japanese |
+//
+// | 6 | en | English | vi | Vietnamese |
+//
+// | 7 | en | English | ru | Russian |
+//
+// | 8 | en | English | tl | Filipino |
+//
+// | 9 | en | English | es | Spanish |
+//
+// | 10 | en | English | fr | French |
+//
+// | 11 | en | English | de | German |
+//
+// | 12 | en | English | pl | Polish |
+//
+// ## Preparations and call process
+//
+// The asynchronous API for Image Translation Plus and other capabilities share the same result retrieval process, RocketMQ subscription rules, message encryption protocol, dependency configurations, and Java consumption and decryption code.
+//
+// For the asynchronous call process, subscription rules, message format and encryption protocol, and detailed integration solutions, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+//
+// @param request - ImageTranslationPlusAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageTranslationPlusAsyncResponse
+func (client *Client) ImageTranslationPlusAsyncWithContext(ctx context.Context, request *ImageTranslationPlusAsyncRequest, runtime *dara.RuntimeOptions) (_result *ImageTranslationPlusAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Glossary) {
+		query["Glossary"] = request.Glossary
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.IncludingProductArea) {
+		query["IncludingProductArea"] = request.IncludingProductArea
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		query["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		query["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.TranslatingBrandInTheProduct) {
+		query["TranslatingBrandInTheProduct"] = request.TranslatingBrandInTheProduct
+	}
+
+	if !dara.IsNil(request.UseImageEditor) {
+		query["UseImageEditor"] = request.UseImageEditor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageTranslationPlusAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageTranslationPlusAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Translates images using the Pro edition, which is designed for e-commerce images. This edition integrates multimodal foundation model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. More than 400 language directions are supported, including bridged directions.
 //
 // Description:
@@ -1865,6 +2523,98 @@ func (client *Client) ImageTranslationProWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Translates images by using Image Translation Pro. This service is designed specifically for e-commerce images, integrates multimodal large language model technology for more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including pivot languages.
+//
+// Description:
+//
+// ## Scenarios
+//
+// E-commerce product images, marketing images, and images in various other scenarios.
+//
+// ## Features
+//
+//   - Product subject information protection: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information, such as embedded product names, from being translated.
+//
+//   - Post-translation editing: Allows you to specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when integrated with an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
+//
+//   - Brand name protection: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
+//
+//   - Translation intervention: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//
+// ## Preparations and call process
+//
+// Image Translation Pro supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Pro](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
+//
+// The asynchronous APIs for text translation and other capabilities share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+//
+// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+//
+// @param request - ImageTranslationProAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageTranslationProAsyncResponse
+func (client *Client) ImageTranslationProAsyncWithContext(ctx context.Context, request *ImageTranslationProAsyncRequest, runtime *dara.RuntimeOptions) (_result *ImageTranslationProAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Glossary) {
+		query["Glossary"] = request.Glossary
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.IncludingProductArea) {
+		query["IncludingProductArea"] = request.IncludingProductArea
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		query["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		query["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.TranslatingBrandInTheProduct) {
+		query["TranslatingBrandInTheProduct"] = request.TranslatingBrandInTheProduct
+	}
+
+	if !dara.IsNil(request.UseImageEditor) {
+		query["UseImageEditor"] = request.UseImageEditor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageTranslationProAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageTranslationProAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Translates text in images with support for over 400 language directions (including bridging). This product is designed specifically for e-commerce images, accurately handling complex text layouts within images and ensuring that translated content matches the image context. It helps e-commerce platforms and developers easily achieve multilingual conversion and rendering of image content. The product also returns layer information such as text position, font, and color, enabling secondary editing of translation results through an image editor.
 //
 // Description:
@@ -1945,6 +2695,98 @@ func (client *Client) ImageTranslationStandardWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImageTranslationStandardResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Translates e-commerce images by supporting over 400 language pairs, including bridged pairs. Accurately processes complex text layouts within images and ensures that translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. The service also returns layer information such as text position, font, and color, facilitating secondary editing of translation results in image editors.
+//
+// Description:
+//
+// ## Scenarios
+//
+// E-commerce product images, marketing images, and images for various other scenarios.
+//
+// ## Features
+//
+//   - **Product subject information protection**: Allows you to specify whether to translate text on the product subject, protecting the subject information and preventing the translation of embedded information such as product names.
+//
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image, protecting brand name information from being translated.
+//
+//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as text position, font, and color. This information can be used to integrate with image editors for secondary editing of translation results. Refer to platform notifications for updates on the availability of the editor SDK.
+//
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. Contact the platform if you need a higher limit.
+//
+// ## Preparations and call process
+//
+//   - Image Translation Standard Edition supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Standard Edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
+//
+//   - The asynchronous APIs for Image Translation Standard Edition and other features share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+//
+//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+//
+// @param request - ImageTranslationStandardAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageTranslationStandardAsyncResponse
+func (client *Client) ImageTranslationStandardAsyncWithContext(ctx context.Context, request *ImageTranslationStandardAsyncRequest, runtime *dara.RuntimeOptions) (_result *ImageTranslationStandardAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Glossary) {
+		query["Glossary"] = request.Glossary
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.IncludingProductArea) {
+		query["IncludingProductArea"] = request.IncludingProductArea
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		query["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		query["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.TranslatingBrandInTheProduct) {
+		query["TranslatingBrandInTheProduct"] = request.TranslatingBrandInTheProduct
+	}
+
+	if !dara.IsNil(request.UseImageEditor) {
+		query["UseImageEditor"] = request.UseImageEditor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageTranslationStandardAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageTranslationStandardAsyncResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3315,6 +4157,296 @@ func (client *Client) SizeChartExtractWithContext(ctx context.Context, tmpReq *S
 
 // Summary:
 //
+// Extracts structured information such as size charts and package weight and dimensions from images by using multimodal large models in asynchronous mode.
+//
+// Description:
+//
+// ## Scenarios
+//
+// Size charts: Extracts size charts for apparel categories into text.
+//
+// Package weight and dimensions: Extracts package weight and dimension information from images.
+//
+// ## Feature description
+//
+// The size chart extraction service is based on multimodal foundation models. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text. Provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList for precise targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
+//
+// Core capabilities: Input an image URL and optional column name configurations to output the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll the task to obtain the final result. This mode is suitable for processing complex images or handling large-scale calls.
+//
+// ## Example results
+//
+// | Input image | Output result |
+//
+// | --- | --- |
+//
+// | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4jKqm0bAebrKLnw1/img/0a914347-2acb-4b94-bf07-86aab2b31279.png) | {
+//
+//	"SizeChart": [
+//
+//	  {
+//
+//	    "尺码": {
+//
+//	      "value": "S"
+//
+//	    },
+//
+//	    "腰围": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 58
+//
+//	    },
+//
+//	    "裙长": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 81
+//
+//	    },
+//
+//	    "体重建议": {
+//
+//	      "unit": "kg",
+//
+//	      "lower_value": 40,
+//
+//	      "upper_value": 47.5
+//
+//	    }
+//
+//	  },
+//
+//	  {
+//
+//	    "尺码": {
+//
+//	      "value": "M"
+//
+//	    },
+//
+//	    "腰围": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 59
+//
+//	    },
+//
+//	    "裙长": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 82
+//
+//	    },
+//
+//	    "体重建议": {
+//
+//	      "unit": "kg",
+//
+//	      "lower_value": 45,
+//
+//	      "upper_value": 52.5
+//
+//	    }
+//
+//	  },
+//
+//	  {
+//
+//	    "尺码": {
+//
+//	      "value": "L"
+//
+//	    },
+//
+//	    "腰围": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 60
+//
+//	    },
+//
+//	    "裙长": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 83
+//
+//	    },
+//
+//	    "体重建议": {
+//
+//	      "unit": "kg",
+//
+//	      "lower_value": 50,
+//
+//	      "upper_value": 57.5
+//
+//	    }
+//
+//	  },
+//
+//	  {
+//
+//	    "尺码": {
+//
+//	      "value": "XL"
+//
+//	    },
+//
+//	    "腰围": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 61
+//
+//	    },
+//
+//	    "裙长": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 84
+//
+//	    },
+//
+//	    "体重建议": {
+//
+//	      "unit": "kg",
+//
+//	      "lower_value": 55,
+//
+//	      "upper_value": 62.5
+//
+//	    }
+//
+//	  },
+//
+//	  {
+//
+//	    "尺码": {
+//
+//	      "value": "2XL"
+//
+//	    },
+//
+//	    "腰围": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 62
+//
+//	    },
+//
+//	    "裙长": {
+//
+//	      "unit": "CM",
+//
+//	      "value": 85
+//
+//	    },
+//
+//	    "体重建议": {
+//
+//	      "unit": "kg",
+//
+//	      "lower_value": 60,
+//
+//	      "upper_value": 67.5
+//
+//	    }
+//
+//	  }
+//
+//	\\],
+//
+//	"SizeChartAttributes": [
+//
+//	  "Size",
+//
+//	  "Skirt length",
+//
+//	  "Waist",
+//
+//	  "Weight recommendation"
+//
+//	\\],
+//
+//	"IntersectionAttributes": [
+//
+//	  "Size",
+//
+//	  "Skirt length",
+//
+//	  "Waist (stretched)",
+//
+//	  "Weight recommendation"
+//
+//	\\]
+//
+// } |
+//
+// @param tmpReq - SizeChartExtractAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SizeChartExtractAsyncResponse
+func (client *Client) SizeChartExtractAsyncWithContext(ctx context.Context, tmpReq *SizeChartExtractAsyncRequest, runtime *dara.RuntimeOptions) (_result *SizeChartExtractAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SizeChartExtractAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ColumnNameList) {
+		request.ColumnNameListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ColumnNameList, dara.String("ColumnNameList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ColumnNameListShrink) {
+		query["ColumnNameList"] = request.ColumnNameListShrink
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.LanguageModel) {
+		query["LanguageModel"] = request.LanguageModel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SizeChartExtractAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SizeChartExtractAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Reviews store photos based on storefront scene recognition and multimodal large model element localization. It outputs storefront scene classifications and confidence details, and localizes storefronts, signboards, entrances, and business signs. It is applicable to store data collection, storefront photo classification, and inspection reviews.
 //
 // Description:
@@ -3659,6 +4791,126 @@ func (client *Client) TextTranslateWithContext(ctx context.Context, tmpReq *Text
 
 // Summary:
 //
+// 文本翻译异步
+//
+// Description:
+//
+// ## 适用场景
+//
+//   - 商品标题：Maas MT大模型翻译可以将商品标题中的短语、关键词、流行词等准确翻译成目标语言，提升商品在电商平台的曝光率。
+//
+//   - 商品详描：商品详描整体文本较长、格式多样且复杂，Maas 大模型翻译支持长文本翻译和 HTML 格式，翻译效果和格式还原能力表现出色。
+//
+//   - 商品属性：商品属性词汇较短，且存在电商专有词（如型号、参数）等。
+//
+//   - 客服对话：在客服场景中，可优化“上下文缺失、打字错误“等问题，并在部分语向上支持礼貌用语。
+//
+//       同时，Maas MT大模型翻译也可以用于通用场景的翻译，如办公、会议、日常对话等。
+//
+// ## 功能介绍
+//
+//   - **超低幻觉率与高速推理*	- Maas MT大模型翻译是在翻译场景上经过偏好对齐的大语言模型，与通用大语言模型相比，翻译推理速度快，幻觉率极低，尤其适合大规模调用的场景。
+//
+//   - **支持翻译的文本格式类型*	- 当前支持 text 和 html 的文本类型。
+//
+//   - **翻译干预能力支持*	- 支持自定义翻译结果，包含不被翻译（ABC-ABC），指定翻译（ABC-DEF），不翻译（ABC-空值）。常用于品牌词保护等场景。只需调用接口时传入相应的干预词表ID，即可实现，可满足您在不同场景下的翻译需求。一般您可以上传10万条干预词，如有更多需要可以联系平台进行处理。
+//
+//   - **翻译效果对比**
+//
+// | **原文*	- | **Aidge译后*	- | **其他翻译产品1*	- | **其他翻译产品2*	- | **Aidge翻译优势*	- |
+//
+// | --- | --- | --- | --- | --- |
+//
+// | 75mm 4Pin 0.38A GA81S2U 12V GTX 960 Cooling Fan for Zotac GTX960 Graphics Card Cooling Fan | 75mm 4Pin 0.38A GA81S2U 12V GTX 960, ventilador de enfriamiento para tarjeta gráfica Zotac GTX960. | Ventilador de refrigeración de 75mm 4Pin 0.38A GA81S2U 12V para la tarjeta gráfica Zotac GTX960 Ventilador de enfriamiento GTX 960. | Ventilador de refrigeración para tarjeta gráfica Zotac GTX960, 75mm, 4 pines, 0,38A, GA81S2U, 12V, GTX 960 | 商品主体更清晰 |
+//
+// | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | 句式更完整，表述更清晰，断句更合理 |
+//
+// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | 产品主体表述更清晰明确，是“钥匙包”而非“钥匙扣”，其它译文容易对产品主体产生歧义 |
+//
+// ## 接入准备与调用流程
+//
+// 文本翻译支持同步和异步两种调用方式。本文介绍异步调用接口，如需使用同步调用，请参阅[《文本翻译-同步接口》](https://api.aliyun.com/document/Aidge/2026-04-28/TextTranslate)。
+//
+// 文本翻译及其他能力的异步接口共用结果获取流程、RocketMQ 订阅规则、消息加密协议、依赖配置，以及 Java 消费与解密代码。
+//
+// 异步调用的接入流程，订阅规则，消息格式与加密协议，以及详细的接入方案请参阅[异步接口调用说明](https://help.aliyun.com/zh/aidge/asynchronous-interface-call-instructions)。
+//
+// @param tmpReq - TextTranslateAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextTranslateAsyncResponse
+func (client *Client) TextTranslateAsyncWithContext(ctx context.Context, tmpReq *TextTranslateAsyncRequest, runtime *dara.RuntimeOptions) (_result *TextTranslateAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &TextTranslateAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SourceTextList) {
+		request.SourceTextListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceTextList, dara.String("SourceTextList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.BizName) {
+		query["BizName"] = request.BizName
+	}
+
+	if !dara.IsNil(request.FormatType) {
+		query["FormatType"] = request.FormatType
+	}
+
+	if !dara.IsNil(request.Glossary) {
+		query["Glossary"] = request.Glossary
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		query["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.SourceTextListShrink) {
+		query["SourceTextList"] = request.SourceTextListShrink
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		query["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.TranslateScene) {
+		query["TranslateScene"] = request.TranslateScene
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TextTranslateAsync"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TextTranslateAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // The e-commerce AI video generation agent is designed for e-commerce merchants and platforms. Based on product main images, titles, and selling points, it automatically generates 5- to 30-second product showcase short videos to help customers efficiently produce and distribute e-commerce content. The product supports multiple resolution outputs such as 720P and 1080P. You can invoke single products quickly and generate multiple products in batches, meeting the needs of daily operations and large-scale product content production. It currently overwrites all clothing categories (tops, pants, skirts, suits, underwear, swimwear, etc.) and is gradually expanding to core e-commerce categories such as skincare, cosmetics, food and beverages, and home appliances.
 //
 // Description:
@@ -3759,41 +5011,41 @@ func (client *Client) VideoGenerationWithContext(ctx context.Context, tmpReq *Vi
 
 // Summary:
 //
-// Translates embedded text in video frames, such as subtitles and selling points, into a target language and erases the original text.
+// Translates embedded text, such as subtitles and selling point text, in video frames into a target language and erases the original text.
 //
 // Description:
 //
-// ## 1. Product introduction
+// ## Product introduction
 //
-// The video translation API translates embedded text in video frames, such as subtitles and selling points, into a target language and erases the original text. It is applicable to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
+// The video translation API translates speech and on-screen text in videos into a target language. You can select speech and subtitle translation, on-screen text translation, or both. This API is suitable for scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
 //
-// The API uses an asynchronous call mode. After you submit a translation task, you obtain a task_id and poll the task status through the query API until the task is completed to obtain the result.
+// The API uses an asynchronous invocation mode. After you submit a translation task, you obtain a `TaskId`. You can poll the task status by using the query API until the task is completed and the results are returned.
 //
-// ## 2. Scenarios
+// ## Scenarios
 //
 //   - **Cross-border e-commerce video localization**: Translates selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
 //
-//   - **International social media marketing**: Localizes text content in video frames with one click for platforms such as TikTok, Instagram, and YouTube to improve comprehension and conversion rates among overseas users.
+//   - **International social media marketing**: Localizes on-screen text in videos for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the corresponding languages based on the delivery regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
 //
-//   - **Training and product instructions**: Translates text in video frames of training courses or product demonstration videos into multiple languages for global teams.
+//   - **Training and product instructions**: Translates on-screen text in training courses or product demonstration videos into multiple languages for global teams.
 //
-// ## 3. Features
+// ## Features
 //
 // | Feature | Identifier | Description |
 //
 // | --- | --- | --- |
 //
-// | Visual translation | visual | Translates embedded text in video frames, such as subtitles and selling points, and erases the original text. |
+// | Speech and subtitle translation | `speech` | Translates video speech into target language dubbing. Does not remove original subtitles or add new subtitles. |
 //
-// ## 4. Developer guide.
+// | On-screen text translation | `visual` | Translates embedded text, such as subtitles and selling point text, in video frames and erases the original text. You can enable quality check for on-screen text processing by using the API. |
 //
-// ### 4.1 Submit a translation task.
+// Speech and subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video and synthesizes it into the video. It does not remove original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
 //
-// #### Request
+// On-screen text translation (`visual`) targets recognizable original text in video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech and subtitle translation first, and the text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// `POST /api/v1/video/translation`
+// When both `speech` and `visual` are selected, the speech and subtitle translation is completed and synthesized into the video first. Then, on-screen text processing is performed on this video. The translated dubbing is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that the speech and subtitle phase does not remove or add subtitles. The subsequent on-screen text processing may still modify the original subtitles.
 //
 // @param tmpReq - VideoTranslationRequest
 //
