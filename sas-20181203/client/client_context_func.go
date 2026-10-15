@@ -23985,7 +23985,7 @@ func (client *Client) DescribeUuidsByVulNamesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the version details of a purchased Security Center instance.
+// Queries the edition details of a purchased Security Center instance.
 //
 // @param request - DescribeVersionConfigRequest
 //
@@ -26317,11 +26317,11 @@ func (client *Client) ExportCustomizeReportWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Exports detection results from various Cloud Security Center features, such as Asset Center, cloud platform configuration check, image security scan, attack analysis, and AK leakage detection, to an Excel file.
+// Exports the detection results of the Asset Center, cloud platform configuration check, image security scan, attack analysis, AccessKey leak detection, and baseline check to an Excel file.
 //
 // Description:
 //
-// After you call this operation, you can call the [DescribeExportInfo](~~DescribeExportInfo~~) operation to query the export progress and retrieve the download URL for the exported Excel file.
+// After you call this operation, you can call the [DescribeExportInfo](~~DescribeExportInfo~~) operation to query the file export progress and obtain the download link for the exported Excel file.
 //
 // @param request - ExportRecordRequest
 //
@@ -26649,7 +26649,11 @@ func (client *Client) ExportVulWithContext(ctx context.Context, request *ExportV
 //
 // Summary:
 //
-// Exports baseline check results.
+// Exports the list of baseline check results. This operation is deprecated.
+//
+// Description:
+//
+// Exports the list of baseline check results. This operation is deprecated. Use [ExportRecord](~~ExportRecord~~) instead.
 //
 // @param request - ExportWarningRequest
 //
@@ -28109,7 +28113,7 @@ func (client *Client) GetBuildRiskDefineRuleConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Checks whether the current user is qualified for the trial use of Security Center.
+// Queries whether you have trial permissions for Security Center.
 //
 // @param request - GetCanTrySasRequest
 //

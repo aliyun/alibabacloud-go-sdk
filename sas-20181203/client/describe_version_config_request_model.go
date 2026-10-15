@@ -24,7 +24,7 @@ type DescribeVersionConfigRequest struct {
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//

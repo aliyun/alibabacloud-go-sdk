@@ -33238,7 +33238,7 @@ func (client *Client) DescribeVendorList() (_result *DescribeVendorListResponse,
 
 // Summary:
 //
-// Queries the version details of a purchased Security Center instance.
+// Queries the edition details of a purchased Security Center instance.
 //
 // @param request - DescribeVersionConfigRequest
 //
@@ -33286,7 +33286,7 @@ func (client *Client) DescribeVersionConfigWithOptions(request *DescribeVersionC
 
 // Summary:
 //
-// Queries the version details of a purchased Security Center instance.
+// Queries the edition details of a purchased Security Center instance.
 //
 // @param request - DescribeVersionConfigRequest
 //
@@ -36698,11 +36698,11 @@ func (client *Client) ExportCustomizeReport(request *ExportCustomizeReportReques
 
 // Summary:
 //
-// Exports detection results from various Cloud Security Center features, such as Asset Center, cloud platform configuration check, image security scan, attack analysis, and AK leakage detection, to an Excel file.
+// Exports the detection results of the Asset Center, cloud platform configuration check, image security scan, attack analysis, AccessKey leak detection, and baseline check to an Excel file.
 //
 // Description:
 //
-// After you call this operation, you can call the [DescribeExportInfo](~~DescribeExportInfo~~) operation to query the export progress and retrieve the download URL for the exported Excel file.
+// After you call this operation, you can call the [DescribeExportInfo](~~DescribeExportInfo~~) operation to query the file export progress and obtain the download link for the exported Excel file.
 //
 // @param request - ExportRecordRequest
 //
@@ -36762,11 +36762,11 @@ func (client *Client) ExportRecordWithOptions(request *ExportRecordRequest, runt
 
 // Summary:
 //
-// Exports detection results from various Cloud Security Center features, such as Asset Center, cloud platform configuration check, image security scan, attack analysis, and AK leakage detection, to an Excel file.
+// Exports the detection results of the Asset Center, cloud platform configuration check, image security scan, attack analysis, AccessKey leak detection, and baseline check to an Excel file.
 //
 // Description:
 //
-// After you call this operation, you can call the [DescribeExportInfo](~~DescribeExportInfo~~) operation to query the export progress and retrieve the download URL for the exported Excel file.
+// After you call this operation, you can call the [DescribeExportInfo](~~DescribeExportInfo~~) operation to query the file export progress and obtain the download link for the exported Excel file.
 //
 // @param request - ExportRecordRequest
 //
@@ -37098,7 +37098,11 @@ func (client *Client) ExportVul(request *ExportVulRequest) (_result *ExportVulRe
 //
 // Summary:
 //
-// Exports baseline check results.
+// Exports the list of baseline check results. This operation is deprecated.
+//
+// Description:
+//
+// Exports the list of baseline check results. This operation is deprecated. Use [ExportRecord](~~ExportRecord~~) instead.
 //
 // @param request - ExportWarningRequest
 //
@@ -37204,7 +37208,11 @@ func (client *Client) ExportWarningWithOptions(request *ExportWarningRequest, ru
 //
 // Summary:
 //
-// Exports baseline check results.
+// Exports the list of baseline check results. This operation is deprecated.
+//
+// Description:
+//
+// Exports the list of baseline check results. This operation is deprecated. Use [ExportRecord](~~ExportRecord~~) instead.
 //
 // @param request - ExportWarningRequest
 //
@@ -39311,7 +39319,7 @@ func (client *Client) GetBuildRiskDefineRuleConfig(request *GetBuildRiskDefineRu
 
 // Summary:
 //
-// Checks whether the current user is qualified for the trial use of Security Center.
+// Queries whether you have trial permissions for Security Center.
 //
 // @param request - GetCanTrySasRequest
 //
@@ -39359,7 +39367,7 @@ func (client *Client) GetCanTrySasWithOptions(request *GetCanTrySasRequest, runt
 
 // Summary:
 //
-// Checks whether the current user is qualified for the trial use of Security Center.
+// Queries whether you have trial permissions for Security Center.
 //
 // @param request - GetCanTrySasRequest
 //
