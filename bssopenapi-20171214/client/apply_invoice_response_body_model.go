@@ -28,21 +28,21 @@ type ApplyInvoiceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *ApplyInvoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *ApplyInvoiceResponseBody) Validate() error {
 }
 
 type ApplyInvoiceResponseBodyData struct {
-	// The ID of the application.
+	// The ID of the invoice application record.
 	//
 	// example:
 	//

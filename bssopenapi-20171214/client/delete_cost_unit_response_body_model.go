@@ -28,7 +28,7 @@ type DeleteCostUnitResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DeleteCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -36,13 +36,13 @@ type DeleteCostUnitResponseBody struct {
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ func (s *DeleteCostUnitResponseBody) Validate() error {
 }
 
 type DeleteCostUnitResponseBodyData struct {
-	// Indicates whether the call is complete.
+	// Indicates whether the operation is complete.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The user ID of the cost center owner.
+	// The ID of the owner of the financial unit.
 	//
 	// example:
 	//
 	// 12431
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the cost center.
+	// The ID of the new financial unit.
 	//
 	// example:
 	//

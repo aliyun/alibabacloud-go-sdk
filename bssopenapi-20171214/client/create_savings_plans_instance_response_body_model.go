@@ -22,32 +22,11 @@ type iCreateSavingsPlansInstanceResponseBody interface {
 }
 
 type CreateSavingsPlansInstanceResponseBody struct {
-	// The status code.
-	//
-	// example:
-	//
-	// PARAM_ERROR
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
-	//
-	// example:
-	//
-	// The parameter must be specified.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 26dabb0c-8ca0-4aa0-8143-30499f3fe304
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSavingsPlansInstanceResponseBody) String() string {
@@ -113,11 +92,6 @@ func (s *CreateSavingsPlansInstanceResponseBody) Validate() error {
 }
 
 type CreateSavingsPlansInstanceResponseBodyData struct {
-	// The ID of the order.
-	//
-	// example:
-	//
-	// 202110260001
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 

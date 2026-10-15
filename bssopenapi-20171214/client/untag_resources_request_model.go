@@ -20,17 +20,17 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags. This parameter is valid only if the TagKey.n parameter is not set. Valid values: true and false.
+	// Specifies whether to remove all tags. This parameter is valid only when `TagKey.N` is not specified. Valid values: `true` and `false`.
 	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The IDs of resources.
+	// The list of resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Specify the savings plan instance as the type of the resource.
+	// The resource type. Set the value to `instance`. This value indicates a savings plan instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UntagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys.
+	// The list of tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

@@ -22,7 +22,7 @@ type iQueryDPUtilizationDetailResponseBody interface {
 }
 
 type QueryDPUtilizationDetailResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type QueryDPUtilizationDetailResponseBody struct {
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,9 +113,8 @@ func (s *QueryDPUtilizationDetailResponseBody) Validate() error {
 }
 
 type QueryDPUtilizationDetailResponseBodyData struct {
-	// The detailed resource plan usage.
 	DetailList *QueryDPUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
-	// The token that is used to retrieve the next page of results. You can set the LastToken parameter to this value in the next request. If null is returned, all results are queried.
+	// The token that specifies the start position of the next query. Pass this value to the LastToken parameter in the next request. If this parameter is returned as null, the query is complete.
 	//
 	// example:
 	//
@@ -193,94 +192,20 @@ func (s *QueryDPUtilizationDetailResponseBodyDataDetailList) Validate() error {
 }
 
 type QueryDPUtilizationDetailResponseBodyDataDetailListDetailList struct {
-	// The deduction date.
-	//
-	// example:
-	//
-	// 2019/5/23 12:00
-	DeductDate *string `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
-	// The total computing capacity or storage capacity of the RI or SCU during the deduction.
-	//
-	// example:
-	//
-	// 1
-	DeductFactorTotal *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
-	// The deduct factor. This parameter is returned only if the CommodityCode parameter is set to ecsRi.
-	//
-	// example:
-	//
-	// 24
-	DeductHours *float32 `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
-	// The original measured amount.
-	//
-	// example:
-	//
-	// 1
-	DeductMeasure *float32 `json:"DeductMeasure,omitempty" xml:"DeductMeasure,omitempty"`
-	// The computing capacity or storage capacity that is deducted in a pay-as-you-go instance.
-	//
-	// example:
-	//
-	// 1
-	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	// The code of the deducted service.
-	//
-	// example:
-	//
-	// rds
-	DeductedCommodityCode *string `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
-	// The ID of the deducted instance.
-	//
-	// example:
-	//
-	// oss-123123
-	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	// The name of the deducted service.
-	//
-	// example:
-	//
-	// ApsaraDB RDS
-	DeductedProductDetail *string `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
-	// The ID of the RI.
-	//
-	// example:
-	//
-	// oss-123123
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance type of the deducted instance.
-	//
-	// example:
-	//
-	// rds.mysql.s3.large
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The region in which the instance resides. This parameter can be left empty.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The billable item.
-	//
-	// example:
-	//
-	// PutRequest
-	ResCode *string `json:"ResCode,omitempty" xml:"ResCode,omitempty"`
-	// The UID of the deducted instance.
-	//
-	// 	- If the deduction is shared, the value of this parameter indicates the UID of the deducted instance.
-	//
-	// 	- If the deduction is not shared, the value of this parameter is the same as that of the uid parameter.
-	//
-	// example:
-	//
-	// 1111111111
-	ShareUid *int64 `json:"ShareUid,omitempty" xml:"ShareUid,omitempty"`
-	// The UID of the deducted instance.
-	//
-	// example:
-	//
-	// 1111111111
-	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	DeductDate            *string  `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
+	DeductFactorTotal     *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
+	DeductHours           *float32 `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
+	DeductMeasure         *float32 `json:"DeductMeasure,omitempty" xml:"DeductMeasure,omitempty"`
+	DeductQuantity        *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
+	DeductedCommodityCode *string  `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
+	DeductedInstanceId    *string  `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
+	DeductedProductDetail *string  `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
+	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSpec          *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	Region                *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResCode               *string  `json:"ResCode,omitempty" xml:"ResCode,omitempty"`
+	ShareUid              *int64   `json:"ShareUid,omitempty" xml:"ShareUid,omitempty"`
+	Uid                   *int64   `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) String() string {

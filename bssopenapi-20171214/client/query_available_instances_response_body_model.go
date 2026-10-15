@@ -22,21 +22,21 @@ type iQueryAvailableInstancesResponseBody interface {
 }
 
 type QueryAvailableInstancesResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryAvailableInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,21 +113,21 @@ func (s *QueryAvailableInstancesResponseBody) Validate() error {
 }
 
 type QueryAvailableInstancesResponseBodyData struct {
-	// The instances returned.
+	// The list of instance information.
 	InstanceList []*QueryAvailableInstancesResponseBodyDataInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -193,83 +193,83 @@ func (s *QueryAvailableInstancesResponseBodyData) Validate() error {
 }
 
 type QueryAvailableInstancesResponseBodyDataInstanceList struct {
-	// The time when the specified instance was created.
+	// The creation time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the instance was expired.
+	// The end time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the specified instance was expected to be released.
+	// The expected release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	ExpectedReleaseTime *string `json:"ExpectedReleaseTime,omitempty" xml:"ExpectedReleaseTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// 1049056
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	// The ID of the instance owner.
+	// The owner ID.
 	//
 	// example:
 	//
 	// 325352345
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the instance was released.
+	// The release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The renewal status of the specified instance. Valid values:
+	// The renewal status. Valid values:
 	//
-	// 	- AutoRenewal: The instance is automatically renewed.
+	// - AutoRenewal: auto-renewal.
 	//
-	// 	- ManualRenewal: The instance is manually renewed.
+	// - ManualRenewal: manual renewal.
 	//
-	// 	- NotRenewal: The instance is not renewed.
+	// - NotRenewal: no renewal.
 	//
 	// example:
 	//
 	// ManualRenewal
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
-	// The number of auto-renewal cycles.
+	// The number of auto-renewal epochs.
 	//
 	// example:
 	//
 	// 1
 	RenewalDuration *int32 `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
-	// The unit of the auto-renewal cycle. Valid values:
+	// The unit of the auto-renewal epoch. Valid values:
 	//
-	// 	- M: month
+	// - M: month.
 	//
-	// 	- Y: year
+	// - Y: year.
 	//
 	// example:
 	//
@@ -281,35 +281,45 @@ type QueryAvailableInstancesResponseBodyDataInstanceList struct {
 	//
 	// 123123123
 	Seller *string `json:"Seller,omitempty" xml:"Seller,omitempty"`
-	// The ID of the seller.
+	// The seller ID.
 	//
 	// example:
 	//
 	// 123123123
 	SellerId *int64 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	// The status of the instance.
+	// The status.
 	//
 	// example:
 	//
-	// Creating: The instance is being created. WaitForExpire: The instance is about to expire. Normal: The instance can properly run. Expired: The instance is expired.
+	// Creating - The resource is being created.
+	//
+	// WaitForExpire - The service is about to be suspended.
+	//
+	// Normal - Normal.
+	//
+	// Expired - The service is suspended
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the specified instance was suspended.
+	// The stop time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// The sub-status of the specified instance.
+	// The sub-status.
 	//
 	// example:
 	//
-	// Normal: The pay-as-you-go module can properly run. WaitForLimit: The pay-as-you-go module is about to be limited due to overdue payments. BandwidthLimited: The pay-as-you-go module is limited due to overdue payments.
+	// Normal - The pay-as-you-go module is normal.
+	//
+	// WaitForLimit - The pay-as-you-go module is about to be restricted due to overdue payments.
+	//
+	// BandwidthLimited - The pay-as-you-go module is restricted due to overdue payments
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//

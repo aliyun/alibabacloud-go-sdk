@@ -28,7 +28,7 @@ type QueryCostUnitResourceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -36,7 +36,7 @@ type QueryCostUnitResourceResponseBody struct {
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ func (s *QueryCostUnitResourceResponseBody) Validate() error {
 }
 
 type QueryCostUnitResourceResponseBodyData struct {
-	// The information about the cost center.
+	// The financial unit information.
 	CostUnit *QueryCostUnitResourceResponseBodyDataCostUnit `json:"CostUnit,omitempty" xml:"CostUnit,omitempty" type:"Struct"`
-	// The statistical information about the cost center.
+	// The statistics information of the financial unit.
 	CostUnitStatisInfo *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo `json:"CostUnitStatisInfo,omitempty" xml:"CostUnitStatisInfo,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource instances.
+	// The list of resource instances.
 	ResourceInstanceDtoList []*QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList `json:"ResourceInstanceDtoList,omitempty" xml:"ResourceInstanceDtoList,omitempty" type:"Repeated"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -225,25 +225,25 @@ func (s *QueryCostUnitResourceResponseBodyData) Validate() error {
 }
 
 type QueryCostUnitResourceResponseBodyDataCostUnit struct {
-	// The user ID of the cost center owner.
+	// The user ID of the financial unit owner.
 	//
 	// example:
 	//
 	// 321432
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	// The ID of the parent financial unit. A value of -1 indicates the root financial unit.
 	//
 	// example:
 	//
 	// 23421
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
-	// The ID of the cost center.
+	// The ID of the financial unit.
 	//
 	// example:
 	//
 	// 123412
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
-	// The name of the cost center.
+	// The name of the financial unit.
 	//
 	// example:
 	//
@@ -300,43 +300,43 @@ func (s *QueryCostUnitResourceResponseBodyDataCostUnit) Validate() error {
 }
 
 type QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo struct {
-	// The number of resource instances in the cost center.
+	// The number of resource instances in the current financial unit.
 	//
 	// example:
 	//
 	// 1
 	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	// The number of resource groups in the cost center.
+	// The number of resource groups in the current financial unit.
 	//
 	// example:
 	//
 	// 1
 	ResourceGroupCount *int64 `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
-	// The number of sub-cost centers in the cost center.
+	// The number of sub-units in the current financial unit.
 	//
 	// example:
 	//
 	// 2
 	SubUnitCount *int64 `json:"SubUnitCount,omitempty" xml:"SubUnitCount,omitempty"`
-	// The total number of resource instances, including resource instances of sub-cost centers, in the cost center.
+	// The total number of resource instances in the current financial unit, including those in sub-financial units.
 	//
 	// example:
 	//
 	// 3
 	TotalResourceCount *int64 `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
-	// The total number of resource groups, including resource groups of sub-cost centers, in the cost center.
+	// The total number of resource groups in the current financial unit, including those in sub-financial units.
 	//
 	// example:
 	//
 	// 2
 	TotalResourceGroupCount *int64 `json:"TotalResourceGroupCount,omitempty" xml:"TotalResourceGroupCount,omitempty"`
-	// The total number of the associated accounts, including associated accounts of sub-cost centers, in the cost center.
+	// The total number of linked accounts in the current financial unit, including those in sub-financial units.
 	//
 	// example:
 	//
 	// 2
 	TotalUserCount *int64 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
-	// The number of sub-cost centers in the cost center.
+	// The number of sub-units in the current financial unit.
 	//
 	// example:
 	//
@@ -420,19 +420,19 @@ func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) Validate() err
 }
 
 type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
-	// The split code of the resource.
+	// The attached resource code.
 	//
 	// example:
 	//
 	// test
 	ApportionCode *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
-	// The split name of the resource.
+	// The attached resource name.
 	//
 	// example:
 	//
 	// test
 	ApportionName *string `json:"ApportionName,omitempty" xml:"ApportionName,omitempty"`
-	// The product code of the resource.
+	// The commodity code of the resource.
 	//
 	// example:
 	//
@@ -444,7 +444,7 @@ type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
 	//
 	// ApsaraDB
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The code of the service. The code is the same as that in Cost Center.
+	// The product code, which is the same as the product code in User Center bills.
 	//
 	// example:
 	//
@@ -460,7 +460,7 @@ type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
 	//
 	// example:
 	//
-	// Default Resource Group
+	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The instance ID of the resource.
 	//
@@ -468,17 +468,17 @@ type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
 	//
 	// OSSBAG-cn-v0h1s4hma018
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The custom name of the resource.
+	// The custom nickname of the resource.
 	//
 	// example:
 	//
 	// testResource
 	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
-	// The source of the resource. Value:
+	// The source of the resource. Valid values:
 	//
-	// - AUTO_ALLOCATE
+	// - AUTO_ALLOCATE: automatic allocation.
 	//
-	// - MANUAL_ALLOCATE
+	// - MANUAL_ALLOCATE: manual allocation.
 	//
 	// example:
 	//
@@ -490,7 +490,7 @@ type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
 	//
 	// Available
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// The tags of the resource.
+	// The tag of the resource.
 	//
 	// example:
 	//

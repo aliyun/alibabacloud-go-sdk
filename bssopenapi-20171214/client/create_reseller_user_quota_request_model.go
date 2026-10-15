@@ -20,18 +20,24 @@ type iCreateResellerUserQuotaRequest interface {
 }
 
 type CreateResellerUserQuotaRequest struct {
+	// The amount in CNY. This parameter is required to activate a quota.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CNY
+	// CNY：人民币。USD：美元。JPY：日元。
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The business transaction ID of the external system.
+	//
 	// example:
 	//
 	// 7ed0bedc-056e-4a71-9249-4581615c028f

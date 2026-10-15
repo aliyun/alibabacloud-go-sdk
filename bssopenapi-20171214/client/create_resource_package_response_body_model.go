@@ -24,27 +24,12 @@ type iCreateResourcePackageResponseBody interface {
 }
 
 type CreateResourcePackageResponseBody struct {
-	// example:
-	//
-	// Success
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *CreateResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// Successful!
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 202407022550621
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// example:
-	//
-	// 6000EE23-274B-4E07-A697-FF2E999520A4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId   *int64                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateResourcePackageResponseBody) String() string {
@@ -119,14 +104,8 @@ func (s *CreateResourcePackageResponseBody) Validate() error {
 }
 
 type CreateResourcePackageResponseBodyData struct {
-	// example:
-	//
-	// OSSBAG-cn-****s
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 202407022550621
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateResourcePackageResponseBodyData) String() string {

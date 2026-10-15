@@ -30,19 +30,19 @@ type DescribeResourceCoverageTotalResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeResourceCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *DescribeResourceCoverageTotalResponseBody) Validate() error {
 }
 
 type DescribeResourceCoverageTotalResponseBodyData struct {
-	// The information about the coverage rate of deduction plans within a period.
+	// The coverage rate by time period.
 	PeriodCoverage []*DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	// The information about the total coverage data of deduction plans.
+	// The total coverage rate.
 	TotalCoverage *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage `json:"TotalCoverage,omitempty" xml:"TotalCoverage,omitempty" type:"Struct"`
 }
 
@@ -164,15 +164,13 @@ func (s *DescribeResourceCoverageTotalResponseBodyData) Validate() error {
 }
 
 type DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage struct {
-	// The coverage rate of deduction plans within the specified period.
+	// The coverage rate.
 	//
 	// example:
 	//
 	// 0.1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The period.
-	//
-	// The value is in the format of yyyyMMddHH.
+	// The time period. Format: yyyyMMddHH.
 	//
 	// example:
 	//
@@ -211,21 +209,25 @@ func (s *DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage) Validate()
 }
 
 type DescribeResourceCoverageTotalResponseBodyDataTotalCoverage struct {
-	// The unit that is used to measure the resources deducted from deduction plans.
+	// The offset unit.
+	//
+	// example:
+	//
+	// Computing power*hours
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	// The total coverage rate of deduction plans.
+	// The total coverage rate.
 	//
 	// example:
 	//
 	// 1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The total amount of the resources deducted from deduction plans.
+	// The total offset amount.
 	//
 	// example:
 	//
 	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	// The total amount of resources consumed.
+	// The total usage.
 	//
 	// example:
 	//

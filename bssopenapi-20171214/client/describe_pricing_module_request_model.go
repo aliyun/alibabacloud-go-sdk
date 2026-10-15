@@ -21,7 +21,7 @@ type iDescribePricingModuleRequest interface {
 
 type DescribePricingModuleRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The service code. You can query the service code by calling the **QueryProductList*	- operation.
+	// The product code. You can call the **QueryProductList*	- operation to query product codes.
 	//
 	// This parameter is required.
 	//
@@ -29,17 +29,19 @@ type DescribePricingModuleRequest struct {
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service. You can query the service type by calling the **QueryProductList*	- operation.
+	// The product type. You can call the **QueryProductList*	- operation to query product types.
+	//
+	// 	Notice: The value must be the same as the product type returned by the **QueryProductList*	- operation.</notice>
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// This parameter is required.
 	//

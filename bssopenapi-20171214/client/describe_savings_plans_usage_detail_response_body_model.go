@@ -28,21 +28,21 @@ type DescribeSavingsPlansUsageDetailResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return data.
+	// The returned data.
 	Data *DescribeSavingsPlansUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,15 +113,15 @@ func (s *DescribeSavingsPlansUsageDetailResponseBody) Validate() error {
 }
 
 type DescribeSavingsPlansUsageDetailResponseBodyData struct {
-	// The data entries.
+	// The data items.
 	Items []*DescribeSavingsPlansUsageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The token of the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// eyJwYWdlTnVtIjoyLCJwYWdlU2ldhsSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries.
+	// The total number of data records.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The used amount of the savings plan.
+	// The amount spent from the savings plan, which is the used commitment.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	//
 	// 2021-08-09 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	//
 	// 29.84
 	PoolValue *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	// The pay-as-you-go cost.
+	// The standard pay-as-you-go cost.
 	//
 	// example:
 	//
 	// 4.2
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	// The amount that is saved.
+	// The net savings amount.
 	//
 	// example:
 	//
@@ -226,29 +226,35 @@ type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	//
 	// 2021-08-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	// The status of the instance.
+	// The current status. Valid values:
 	//
-	// A value of -1 indicates that the payment is overdue. A value of 1 indicates that the instance is active.
+	// - -1: overdue payment.
+	//
+	// - 1: active.
 	//
 	// example:
 	//
 	// -1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the savings plan. Valid values: universal and ECS compute.
+	// The type of the savings plan, such as general-purpose or ECS compute.
+	//
+	// example:
+	//
+	// General-purpose
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The usage.
+	// The usage percentage.
 	//
 	// example:
 	//
 	// 0.9
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 123745698925000
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the account.
+	// The account name.
 	//
 	// example:
 	//

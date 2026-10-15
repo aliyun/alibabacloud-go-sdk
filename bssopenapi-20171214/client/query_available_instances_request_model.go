@@ -38,86 +38,86 @@ type iQueryAvailableInstancesRequest interface {
 }
 
 type QueryAvailableInstancesRequest struct {
-	// The end time when the specified instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time of the creation time range. Specify the time in the ISO 8601 standard in the UTC format.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The start time when the specified instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the creation time range. Specify the time in the ISO 8601 standard in the UTC format.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-05-23T12:00:00Z.
+	// The end time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-05-23T12:00:00Z.
+	// The start time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	EndTimeStart *string `json:"EndTimeStart,omitempty" xml:"EndTimeStart,omitempty"`
-	// The ID of the instance. Separate multiple IDs with commas (,). You can specify a maximum of 100 IDs.
+	// The instance IDs. Separate multiple IDs with commas. You can specify up to 100 IDs.
 	//
 	// example:
 	//
 	// rm-xxxxxxxxxxxx
 	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the service. You can query the service code by calling the **QueryProductList*	- operation or viewing **Codes of Alibaba Cloud services**.
+	// The product code. You can call the **QueryProductList*	- operation to query product codes.
 	//
-	// >This parameter cannot be left empty if the region is specified.
+	// > If the region is specified, this parameter cannot be empty.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The renewal status of the specified instance. Valid values:
+	// The renewal status. Valid values:
 	//
-	// 	- AutoRenewal: The instance is automatically renewed.
+	// - AutoRenewal: auto-renewal.
 	//
-	// 	- ManualRenewal: The instance is manually renewed.
+	// - ManualRenewal: manual renewal.
 	//
-	// 	- NotRenewal: The instance is not renewed.
+	// - NotRenewal: no renewal.
 	//
 	// example:
 	//
 	// AutoRenewal
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type.
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//

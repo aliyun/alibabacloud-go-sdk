@@ -28,21 +28,21 @@ type QueryCustomerAddressListResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryCustomerAddressListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// BBEF51A3-E933-4F40-A534-C673CBDB9C80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,6 @@ func (s *QueryCustomerAddressListResponseBody) Validate() error {
 }
 
 type QueryCustomerAddressListResponseBodyData struct {
-	// The details of addresses to which invoices are mailed.
 	CustomerInvoiceAddressList *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList `json:"CustomerInvoiceAddressList,omitempty" xml:"CustomerInvoiceAddressList,omitempty" type:"Struct"`
 }
 
@@ -178,78 +177,18 @@ func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList) Val
 }
 
 type QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress struct {
-	// The addressee.
-	//
-	// example:
-	//
-	// test
-	Addressee *string `json:"Addressee,omitempty" xml:"Addressee,omitempty"`
-	// The business type.
-	//
-	// example:
-	//
-	// test
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The city to which the invoice is mailed.
-	//
-	// example:
-	//
-	// Hangzhou
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The name of the district to which the invoice is mailed.
-	//
-	// example:
-	//
-	// Test District
-	County *string `json:"County,omitempty" xml:"County,omitempty"`
-	// The detailed address to which the invoice is mailed. This parameter is returned after fields are concatenated.
-	//
-	// example:
-	//
-	// Test Address
+	Addressee       *string `json:"Addressee,omitempty" xml:"Addressee,omitempty"`
+	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	City            *string `json:"City,omitempty" xml:"City,omitempty"`
+	County          *string `json:"County,omitempty" xml:"County,omitempty"`
 	DeliveryAddress *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
-	// The ID.
-	//
-	// example:
-	//
-	// 311601051
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The phone number of the addressee.
-	//
-	// example:
-	//
-	// 138xxxxxxxx
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The postcode.
-	//
-	// example:
-	//
-	// 000000
-	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	// The province to which the invoice is mailed.
-	//
-	// example:
-	//
-	// Zhejiang
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The name of the street to which the invoice is mailed.
-	//
-	// example:
-	//
-	// Test Street
-	Street *string `json:"Street,omitempty" xml:"Street,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 4382956342857
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user.
-	//
-	// example:
-	//
-	// testNick
-	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Phone           *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	PostalCode      *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Street          *string `json:"Street,omitempty" xml:"Street,omitempty"`
+	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick        *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
 func (s QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) String() string {

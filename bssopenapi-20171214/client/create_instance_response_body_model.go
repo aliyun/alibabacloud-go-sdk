@@ -28,15 +28,15 @@ type CreateInstanceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CreateInstanceResponseBody) Validate() error {
 }
 
 type CreateInstanceResponseBodyData struct {
-	// The ID of the instance for which the order was created.
+	// The instance ID associated with the order.
 	//
 	// example:
 	//

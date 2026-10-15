@@ -18,9 +18,9 @@ type iQueryInstanceByTagRequest interface {
 }
 
 type QueryInstanceByTagRequest struct {
-	// The IDs of resources.
+	// A list of resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Specify the savings plan instance as the type of the resource.
+	// The type of the resource. Set this parameter to `instance` to query savings plan instances.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type QueryInstanceByTagRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tag []*QueryInstanceByTagRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

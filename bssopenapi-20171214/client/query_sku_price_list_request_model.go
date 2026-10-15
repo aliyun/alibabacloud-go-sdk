@@ -24,7 +24,7 @@ type iQuerySkuPriceListRequest interface {
 }
 
 type QuerySkuPriceListRequest struct {
-	// The code of the service.
+	// The commodity code. You can call the **QueryCommodityList*	- operation to query the commodity code.
 	//
 	// This parameter is required.
 	//
@@ -32,14 +32,19 @@ type QuerySkuPriceListRequest struct {
 	//
 	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The token that is used to retrieve the next page. You do not need to set this parameter if you query coverage details for the first time. The response returns a token that you can use to query coverage details of the next page. If a null value is returned for the NextPageToken parameter, no more coverage details can be queried.
+	// The language. Default value: zh (Chinese).
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The pagination token. Leave this parameter empty for the first page query. The query result returns a token for the next page. An empty token in the result indicates that all data has been retrieved. You can obtain the next page token from the **NextPageToken*	- field in the query result.
 	//
 	// example:
 	//
 	// 080112060a0422020800180022490a470342000000315333303332363436363336333433393636333136333338333733373333333133373336363336323634363336363337333836333636333636313336363433363332
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The number of entries to be returned on each page. Maximum value: 50.
+	// The number of entries per page. Maximum value: 50.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +52,7 @@ type QuerySkuPriceListRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the pricing object.
+	// The pricing entity code. You can call the **QueryPriceEntityList*	- operation to query the pricing entity code.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +60,7 @@ type QuerySkuPriceListRequest struct {
 	//
 	// instance_type
 	PriceEntityCode *string `json:"PriceEntityCode,omitempty" xml:"PriceEntityCode,omitempty"`
-	// The conditions of the pricing factors.
+	// The collection of pricing factor conditions. You can call the **QueryPriceEntityList*	- operation to query pricing factor codes and pricing factor values.
 	PriceFactorConditionMap map[string][]*string `json:"PriceFactorConditionMap,omitempty" xml:"PriceFactorConditionMap,omitempty"`
 }
 

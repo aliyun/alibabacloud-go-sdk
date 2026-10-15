@@ -20,25 +20,25 @@ type iInquiryPriceRefundInstanceRequest interface {
 }
 
 type InquiryPriceRefundInstanceRequest struct {
-	// This parameter is required for scenarios that need idempotence. The UUID that is used to ensure the idempotence of the request.
+	// Required for idempotent scenarios. A UUID-generated string. This field is used for idempotence. If the same value is passed in multiple calls, the result of the first call is returned.
 	//
 	// example:
 	//
 	// 793F021C-B589-1225-82A9-99232AEBE494
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance. This parameter is required for unsubscription scenarios.
+	// Required for unsubscription scenarios. The instance ID.
 	//
 	// example:
 	//
 	// i-bp1etb69sqxgl4*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The code of the service. This parameter is required for unsubscription scenarios.
+	// Required for unsubscription scenarios. The product code.
 	//
 	// example:
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service. This parameter is required for unsubscription scenarios. Unless otherwise specified, set this parameter to an empty string.
+	// Required for unsubscription scenarios. The product type. Pass an empty string ("") unless otherwise specified.
 	//
 	// example:
 	//

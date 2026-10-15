@@ -16,17 +16,17 @@ type iGetAccountRelationRequest interface {
 }
 
 type GetAccountRelationRequest struct {
-	// The ID of the financial relationship. Value returned by calling the AddAccountRelation operation.
+	// The account linking ID.
 	//
 	// example:
 	//
 	// 1234
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+	// The unique request ID, used to identify the request and facilitate troubleshooting.
 	//
 	// example:
 	//
-	// requestId
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

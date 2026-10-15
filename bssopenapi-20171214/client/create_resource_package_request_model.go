@@ -26,48 +26,16 @@ type iCreateResourcePackageRequest interface {
 }
 
 type CreateResourcePackageRequest struct {
-	// The ID of the resource plan.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 6
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The data returned.
-	//
-	// example:
-	//
-	// 2020-03-03T12:00:00Z
+	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the order.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// FPT_ossbag_absolute_Storage_sh
-	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// example:
-	//
-	// Month
+	PackageType  *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// Indicates whether the request is successful.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ossbag
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the order.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 40
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 

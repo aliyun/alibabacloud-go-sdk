@@ -22,27 +22,27 @@ type iCreateAgAccountResponseBody interface {
 }
 
 type CreateAgAccountResponseBody struct {
-	// The relationship between the account that is used to call the CreateAgAccount operation and the account that is created.
+	// The level 2 relationship between the master account (MPK) and the member account (PK).
 	AgRelationDto *CreateAgAccountResponseBodyAgRelationDto `json:"AgRelationDto,omitempty" xml:"AgRelationDto,omitempty" type:"Struct"`
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// LOGIN_EMAIL_HAS_BEEN_USED
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// loginEmail=685741089H@chinaunicom.cn,has used
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EAE08A27-386C-579E-966D-8853EC3C5D0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ func (s *CreateAgAccountResponseBody) Validate() error {
 }
 
 type CreateAgAccountResponseBodyAgRelationDto struct {
-	// The ID of the account that is used to call the CreateAgAccount operation.
+	// The UID of the master account (MPK).
 	//
 	// example:
 	//
 	// 1785287436011964
 	Mpk *string `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
-	// The ID of the account that is created.
+	// The UID of the member account (PK) that is managed by the master account (MPK).
 	//
 	// example:
 	//
 	// 1728240534507590
 	Pk *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	// The role of the account that is created.
+	// The name of the RAM role.
 	//
 	// example:
 	//
 	// admin-role
 	RamAdminRoleName *string `json:"RamAdminRoleName,omitempty" xml:"RamAdminRoleName,omitempty"`
-	// The type of the relationship.
+	// The type of the account linking relationship.
 	//
 	// example:
 	//

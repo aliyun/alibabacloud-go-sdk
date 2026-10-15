@@ -26,28 +26,47 @@ type iRenewChangeInstanceRequest interface {
 }
 
 type RenewChangeInstanceRequest struct {
+	// Ensures the idempotence of the request.
+	//
 	// example:
 	//
 	// JASIOFKVNVIXXXXXX
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-skjdhaskjdh
-	InstanceId *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId    *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Parameter  []*RenewChangeInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Module list
+	Parameter []*RenewChangeInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
+	// The product code. To obtain it, call **QueryProductList**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Product type
+	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The subscription renewal duration, in months. Valid values:
+	//
+	// - 1-9
+	//
+	// - 12
+	//
+	// - 24
+	//
+	// - 36
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -141,12 +160,16 @@ func (s *RenewChangeInstanceRequest) Validate() error {
 }
 
 type RenewChangeInstanceRequestParameter struct {
+	// The code configuration for the Nth module property. The value of N can be an integer from 1 to 100. If you have multiple module properties, create a separate parameter for each by setting n to 1, 2, 3, and so on.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Bandwidth
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The value configuration for the nth module property. The value of n ranges from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:

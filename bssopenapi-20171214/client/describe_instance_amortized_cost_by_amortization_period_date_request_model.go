@@ -37,48 +37,19 @@ type iDescribeInstanceAmortizedCostByAmortizationPeriodDateRequest interface {
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-05-10
 	AmortizationDateEnd *string `json:"AmortizationDateEnd,omitempty" xml:"AmortizationDateEnd,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-05-10
 	AmortizationDateStart *string   `json:"AmortizationDateStart,omitempty" xml:"AmortizationDateStart,omitempty"`
 	BillOwnerIdList       []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
 	BillUserIdList        []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2023-05
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// example:
-	//
-	// 123#
-	CostUnitCode   *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// example:
-	//
-	// rds
-	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// example:
-	//
-	// Subscription
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	BillingCycle          *string   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	CostUnitCode          *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	InstanceIdList        []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	MaxResults            *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProductCode           *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail         *string   `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	SubscriptionType      *string   `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest) String() string {

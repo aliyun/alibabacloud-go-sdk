@@ -22,21 +22,21 @@ type iQueryUserOmsDataResponseBody interface {
 }
 
 type QueryUserOmsDataResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryUserOmsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,18 +113,19 @@ func (s *QueryUserOmsDataResponseBody) Validate() error {
 }
 
 type QueryUserOmsDataResponseBodyData struct {
-	// The ID of the host.
+	// The host ID.
 	//
 	// example:
 	//
 	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// Indicates that the returned usage data starts from the next page. If no value is returned for this parameter or this parameter is not returned, no data can be queried.
+	// The NextToken field for the start of the next page. If this field is empty or not present, it indicates that no more data is available.
 	//
 	// example:
 	//
 	// NextToken
-	Marker  *string                  `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The OMS data list.
 	OmsData []map[string]interface{} `json:"OmsData,omitempty" xml:"OmsData,omitempty" type:"Repeated"`
 }
 

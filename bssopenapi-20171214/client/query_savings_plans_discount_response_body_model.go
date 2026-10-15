@@ -22,27 +22,27 @@ type iQuerySavingsPlansDiscountResponseBody interface {
 }
 
 type QuerySavingsPlansDiscountResponseBody struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
+	// The returned data.
 	Data *QuerySavingsPlansDiscountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *QuerySavingsPlansDiscountResponseBody) Validate() error {
 }
 
 type QuerySavingsPlansDiscountResponseBodyData struct {
-	// The IP address of the request.
+	// The request IP address.
 	//
 	// example:
 	//
 	// 100.104.180.109
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The information about the discounts on saving plans.
+	// The list of discount information.
 	Items []*QuerySavingsPlansDiscountResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -163,25 +163,25 @@ func (s *QuerySavingsPlansDiscountResponseBodyData) Validate() error {
 }
 
 type QuerySavingsPlansDiscountResponseBodyDataItems struct {
-	// The details of the service.
+	// The product details.
 	//
 	// example:
 	//
-	// Pay-as-you-go Elastic Compute Service (ECS) instance
+	// 云服务器ECS-按量付费
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The contracted discount.
+	// The contract discount rate.
 	//
 	// example:
 	//
 	// 0.85
 	ContractDiscountRate *string `json:"ContractDiscountRate,omitempty" xml:"ContractDiscountRate,omitempty"`
-	// The cycle based on which queries were performed.
+	// The query cycle.
 	//
 	// example:
 	//
 	// 1:Year
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The discount provided by the official website.
+	// The official discount rate.
 	//
 	// example:
 	//
@@ -191,33 +191,33 @@ type QuerySavingsPlansDiscountResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Instance
+	// 实例
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	// The payment mode. Valid values:
+	// The payment mode.
 	//
-	// 	- total: all upfront
+	// - total: All upfront
 	//
-	// 	- half: half upfront
+	// - half: Partial upfront
 	//
-	// 	- zero: no upfront
+	// - zero: No upfront
 	//
 	// example:
 	//
 	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// example:
 	//
-	// cn-zhangjiakou-na62-a01
+	// 张家口
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+	// The ID of the region where the instance resides. For more information, see [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//

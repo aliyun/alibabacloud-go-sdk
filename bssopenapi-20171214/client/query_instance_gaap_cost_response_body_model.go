@@ -22,19 +22,28 @@ type iQueryInstanceGaapCostResponseBody interface {
 }
 
 type QueryInstanceGaapCostResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *QueryInstanceGaapCostResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CCBB1BB9-22F1-4177-867B-7A75D665B488
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,19 +113,28 @@ func (s *QueryInstanceGaapCostResponseBody) Validate() error {
 }
 
 type QueryInstanceGaapCostResponseBodyData struct {
+	// The ID of the host.
+	//
 	// example:
 	//
 	// 1.1.1.1
-	HostId  *string                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// A container for cost details.
 	Modules *QueryInstanceGaapCostResponseBodyDataModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
@@ -220,208 +238,58 @@ func (s *QueryInstanceGaapCostResponseBodyDataModules) Validate() error {
 }
 
 type QueryInstanceGaapCostResponseBodyDataModulesModule struct {
-	AccountingUnit *string `json:"AccountingUnit,omitempty" xml:"AccountingUnit,omitempty"`
-	// example:
-	//
-	// SubscriptionOrder
-	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// example:
-	//
-	// 2020-03
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// example:
-	//
-	// 0
-	DeductedByCashCoupons *string `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	DeductedByCoupons *string `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	DeductedByPrepaidCard *string `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	// example:
-	//
-	// 0
-	GaapDeductedByCashCoupons *string `json:"GaapDeductedByCashCoupons,omitempty" xml:"GaapDeductedByCashCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	GaapDeductedByCoupons *string `json:"GaapDeductedByCoupons,omitempty" xml:"GaapDeductedByCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	GaapDeductedByPrepaidCard *string `json:"GaapDeductedByPrepaidCard,omitempty" xml:"GaapDeductedByPrepaidCard,omitempty"`
-	// example:
-	//
-	// 0
-	GaapPaymentAmount *string `json:"GaapPaymentAmount,omitempty" xml:"GaapPaymentAmount,omitempty"`
-	// example:
-	//
-	// 0
-	GaapPretaxAmount *string `json:"GaapPretaxAmount,omitempty" xml:"GaapPretaxAmount,omitempty"`
-	// example:
-	//
-	// 0
-	GaapPretaxAmountLocal *string `json:"GaapPretaxAmountLocal,omitempty" xml:"GaapPretaxAmountLocal,omitempty"`
-	// example:
-	//
-	// 0
-	GaapPretaxGrossAmount *string `json:"GaapPretaxGrossAmount,omitempty" xml:"GaapPretaxGrossAmount,omitempty"`
-	// example:
-	//
-	// 0
-	GaapPricingDiscount *string `json:"GaapPricingDiscount,omitempty" xml:"GaapPricingDiscount,omitempty"`
-	// example:
-	//
-	// OSSBAG-cn-0xl0xxxxxx
-	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	// example:
-	//
-	// 0.75
-	MonthGaapDeductedByCashCoupons *string `json:"MonthGaapDeductedByCashCoupons,omitempty" xml:"MonthGaapDeductedByCashCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	MonthGaapDeductedByCoupons *string `json:"MonthGaapDeductedByCoupons,omitempty" xml:"MonthGaapDeductedByCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	MonthGaapDeductedByPrepaidCard *string `json:"MonthGaapDeductedByPrepaidCard,omitempty" xml:"MonthGaapDeductedByPrepaidCard,omitempty"`
-	// example:
-	//
-	// 0
-	MonthGaapPaymentAmount *string `json:"MonthGaapPaymentAmount,omitempty" xml:"MonthGaapPaymentAmount,omitempty"`
-	// example:
-	//
-	// 0
-	MonthGaapPretaxAmount *string `json:"MonthGaapPretaxAmount,omitempty" xml:"MonthGaapPretaxAmount,omitempty"`
-	// example:
-	//
-	// 0.99
-	MonthGaapPretaxAmountLocal *string `json:"MonthGaapPretaxAmountLocal,omitempty" xml:"MonthGaapPretaxAmountLocal,omitempty"`
-	// example:
-	//
-	// 0.99
-	MonthGaapPretaxGrossAmount *string `json:"MonthGaapPretaxGrossAmount,omitempty" xml:"MonthGaapPretaxGrossAmount,omitempty"`
-	// example:
-	//
-	// 0,.25
-	MonthGaapPricingDiscount *string `json:"MonthGaapPricingDiscount,omitempty" xml:"MonthGaapPricingDiscount,omitempty"`
-	// example:
-	//
-	// 213123213123
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// example:
-	//
-	// New
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// example:
-	//
-	// 123213123123
-	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// example:
-	//
-	// 2018-06-15 15:59:57
-	PayTime *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
-	// example:
-	//
-	// 23534534
-	PayerAccount *string `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
-	// example:
-	//
-	// 0
-	PaymentAmount *string `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	// example:
-	//
-	// CNY
-	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	// example:
-	//
-	// 123
-	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// example:
-	//
-	// 1
-	PricingDiscount *string `json:"PricingDiscount,omitempty" xml:"PricingDiscount,omitempty"`
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// example:
-	//
-	// 12434345
-	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	// example:
-	//
-	// PayAsYouGo
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// example:
-	//
-	// tag
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// example:
-	//
-	// 0
+	AccountingUnit                   *string `json:"AccountingUnit,omitempty" xml:"AccountingUnit,omitempty"`
+	BillType                         *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	BillingCycle                     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Currency                         *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons            *string `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons                *string `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	DeductedByPrepaidCard            *string `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	GaapDeductedByCashCoupons        *string `json:"GaapDeductedByCashCoupons,omitempty" xml:"GaapDeductedByCashCoupons,omitempty"`
+	GaapDeductedByCoupons            *string `json:"GaapDeductedByCoupons,omitempty" xml:"GaapDeductedByCoupons,omitempty"`
+	GaapDeductedByPrepaidCard        *string `json:"GaapDeductedByPrepaidCard,omitempty" xml:"GaapDeductedByPrepaidCard,omitempty"`
+	GaapPaymentAmount                *string `json:"GaapPaymentAmount,omitempty" xml:"GaapPaymentAmount,omitempty"`
+	GaapPretaxAmount                 *string `json:"GaapPretaxAmount,omitempty" xml:"GaapPretaxAmount,omitempty"`
+	GaapPretaxAmountLocal            *string `json:"GaapPretaxAmountLocal,omitempty" xml:"GaapPretaxAmountLocal,omitempty"`
+	GaapPretaxGrossAmount            *string `json:"GaapPretaxGrossAmount,omitempty" xml:"GaapPretaxGrossAmount,omitempty"`
+	GaapPricingDiscount              *string `json:"GaapPricingDiscount,omitempty" xml:"GaapPricingDiscount,omitempty"`
+	InstanceID                       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	MonthGaapDeductedByCashCoupons   *string `json:"MonthGaapDeductedByCashCoupons,omitempty" xml:"MonthGaapDeductedByCashCoupons,omitempty"`
+	MonthGaapDeductedByCoupons       *string `json:"MonthGaapDeductedByCoupons,omitempty" xml:"MonthGaapDeductedByCoupons,omitempty"`
+	MonthGaapDeductedByPrepaidCard   *string `json:"MonthGaapDeductedByPrepaidCard,omitempty" xml:"MonthGaapDeductedByPrepaidCard,omitempty"`
+	MonthGaapPaymentAmount           *string `json:"MonthGaapPaymentAmount,omitempty" xml:"MonthGaapPaymentAmount,omitempty"`
+	MonthGaapPretaxAmount            *string `json:"MonthGaapPretaxAmount,omitempty" xml:"MonthGaapPretaxAmount,omitempty"`
+	MonthGaapPretaxAmountLocal       *string `json:"MonthGaapPretaxAmountLocal,omitempty" xml:"MonthGaapPretaxAmountLocal,omitempty"`
+	MonthGaapPretaxGrossAmount       *string `json:"MonthGaapPretaxGrossAmount,omitempty" xml:"MonthGaapPretaxGrossAmount,omitempty"`
+	MonthGaapPricingDiscount         *string `json:"MonthGaapPricingDiscount,omitempty" xml:"MonthGaapPricingDiscount,omitempty"`
+	OrderId                          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderType                        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerID                          *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PayTime                          *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
+	PayerAccount                     *string `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
+	PaymentAmount                    *string `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency                  *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PretaxAmount                     *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal                *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount                *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PricingDiscount                  *string `json:"PricingDiscount,omitempty" xml:"PricingDiscount,omitempty"`
+	ProductCode                      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType                      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region                           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup                    *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	SubOrderId                       *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType                 *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	UnallocatedDeductedByCashCoupons *string `json:"UnallocatedDeductedByCashCoupons,omitempty" xml:"UnallocatedDeductedByCashCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	UnallocatedDeductedByCoupons *string `json:"UnallocatedDeductedByCoupons,omitempty" xml:"UnallocatedDeductedByCoupons,omitempty"`
-	// example:
-	//
-	// 0
+	UnallocatedDeductedByCoupons     *string `json:"UnallocatedDeductedByCoupons,omitempty" xml:"UnallocatedDeductedByCoupons,omitempty"`
 	UnallocatedDeductedByPrepaidCard *string `json:"UnallocatedDeductedByPrepaidCard,omitempty" xml:"UnallocatedDeductedByPrepaidCard,omitempty"`
-	// example:
-	//
-	// 0
-	UnallocatedPaymentAmount *string `json:"UnallocatedPaymentAmount,omitempty" xml:"UnallocatedPaymentAmount,omitempty"`
-	// example:
-	//
-	// 0
-	UnallocatedPretaxAmount *string `json:"UnallocatedPretaxAmount,omitempty" xml:"UnallocatedPretaxAmount,omitempty"`
-	// example:
-	//
-	// 0
-	UnallocatedPretaxAmountLocal *string `json:"UnallocatedPretaxAmountLocal,omitempty" xml:"UnallocatedPretaxAmountLocal,omitempty"`
-	// example:
-	//
-	// 0
-	UnallocatedPretaxGrossAmount *string `json:"UnallocatedPretaxGrossAmount,omitempty" xml:"UnallocatedPretaxGrossAmount,omitempty"`
-	// example:
-	//
-	// 0
-	UnallocatedPricingDiscount *string `json:"UnallocatedPricingDiscount,omitempty" xml:"UnallocatedPricingDiscount,omitempty"`
-	// example:
-	//
-	// 2019-05-01 00:00:00
-	UsageEndDate *string `json:"UsageEndDate,omitempty" xml:"UsageEndDate,omitempty"`
-	// example:
-	//
-	// 2019-04-01 00:00:00
-	UsageStartDate *string `json:"UsageStartDate,omitempty" xml:"UsageStartDate,omitempty"`
+	UnallocatedPaymentAmount         *string `json:"UnallocatedPaymentAmount,omitempty" xml:"UnallocatedPaymentAmount,omitempty"`
+	UnallocatedPretaxAmount          *string `json:"UnallocatedPretaxAmount,omitempty" xml:"UnallocatedPretaxAmount,omitempty"`
+	UnallocatedPretaxAmountLocal     *string `json:"UnallocatedPretaxAmountLocal,omitempty" xml:"UnallocatedPretaxAmountLocal,omitempty"`
+	UnallocatedPretaxGrossAmount     *string `json:"UnallocatedPretaxGrossAmount,omitempty" xml:"UnallocatedPretaxGrossAmount,omitempty"`
+	UnallocatedPricingDiscount       *string `json:"UnallocatedPricingDiscount,omitempty" xml:"UnallocatedPricingDiscount,omitempty"`
+	UsageEndDate                     *string `json:"UsageEndDate,omitempty" xml:"UsageEndDate,omitempty"`
+	UsageStartDate                   *string `json:"UsageStartDate,omitempty" xml:"UsageStartDate,omitempty"`
 }
 
 func (s QueryInstanceGaapCostResponseBodyDataModulesModule) String() string {

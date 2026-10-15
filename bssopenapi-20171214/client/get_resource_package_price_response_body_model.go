@@ -130,9 +130,8 @@ type GetResourcePackagePriceResponseBodyData struct {
 	// example:
 	//
 	// 1290240
-	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The details of the discount.
-	Promotions *GetResourcePackagePriceResponseBodyDataPromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Struct"`
+	OriginalPrice *float32                                           `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	Promotions    *GetResourcePackagePriceResponseBodyDataPromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Struct"`
 	// The price at which the transaction is made. Unit: CNY.
 	//
 	// example:
@@ -238,17 +237,7 @@ func (s *GetResourcePackagePriceResponseBodyDataPromotions) Validate() error {
 }
 
 type GetResourcePackagePriceResponseBodyDataPromotionsPromotion struct {
-	// The ID of the promotion.
-	//
-	// example:
-	//
-	// 1000680914
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The description of the discount.
-	//
-	// example:
-	//
-	// A discount of 17% is offered if you purchase a resource plan for six months.
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

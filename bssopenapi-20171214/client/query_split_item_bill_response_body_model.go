@@ -22,27 +22,27 @@ type iQuerySplitItemBillResponseBody interface {
 }
 
 type QuerySplitItemBillResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QuerySplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,39 +113,38 @@ func (s *QuerySplitItemBillResponseBody) Validate() error {
 }
 
 type QuerySplitItemBillResponseBodyData struct {
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 185xxxx3489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The name of the account.
+	// The user account.
 	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The billing cycle, in the YYYY-MM format.
+	// The billing cycle. Format: YYYY-MM.
 	//
 	// example:
 	//
 	// 2020-03
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The details of the bills.
-	Items *QuerySplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page. Default value: 1.
+	BillingCycle *string                                  `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QuerySplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page. Default value: 20. Maximum value: 300.
+	// The number of entries per page. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -268,294 +267,54 @@ func (s *QuerySplitItemBillResponseBodyDataItems) Validate() error {
 }
 
 type QuerySplitItemBillResponseBodyDataItemsItem struct {
-	// The amount deducted by using credit refunds.
-	//
-	// example:
-	//
-	// 0
-	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	// The billing date, in the YYYY-MM-DD format.
-	//
-	// example:
-	//
-	// 2020-01-20
-	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	// The billable item.
-	//
-	// example:
-	//
-	// Other
-	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
-	// The billing type.
-	//
-	// example:
-	//
-	// Other
-	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
-	//
-	// example:
-	//
-	// 0
-	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	// The code of the commodity. The commodity code is the same as that displayed in User Center.
-	//
-	// example:
-	//
-	// rds
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The cost center.
-	//
-	// example:
-	//
-	// Not allocated
-	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	// The type of the currency. Valid values: CNY, USD, and JPY.
-	//
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount deducted by using vouchers.
-	//
-	// example:
-	//
-	// 0
-	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// The amount deducted by using coupons.
-	//
-	// example:
-	//
-	// 0
-	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	// The amount deducted by using prepaid cards.
-	//
-	// example:
-	//
-	// 0
-	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	// The amount deducted by using resource plans.
-	//
-	// example:
-	//
-	// NULL
-	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	// The configurations of the instance.
-	//
-	// example:
-	//
-	// CPU:12
-	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-kjhdskjgshfdlkjfdh
-	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	// The instance type of the instance.
-	//
-	// example:
-	//
-	// ecs.sn1ne.3xlarge
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The public IP address.
-	//
-	// example:
-	//
-	// 34.xx.x.x
-	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	// The private IP address.
-	//
-	// example:
-	//
-	// 192.xx.xx.xx
-	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	// The discount amount.
-	//
-	// example:
-	//
-	// 0
-	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The type of the bill. Valid values: SubscriptionOrder: subscription order PayAsYouGoBill: pay-as-you-go bill Refund: refund Adjustment: reconciliation
-	//
-	// example:
-	//
-	// PayAsYouGoBill
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The unit price. This parameter is returned only if the isBillingItem parameter is set to true.
-	//
-	// example:
-	//
-	// 100
-	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	// The unit of the unit price. This parameter is returned only if the isBillingItem parameter is set to true.
-	//
-	// example:
-	//
-	// CNY
-	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// test
-	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The unsettled amount of the bill.
-	//
-	// example:
-	//
-	// 0
-	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	// The ID of the member. This parameter is returned in a multi-account payment scenario.
-	//
-	// example:
-	//
-	// 169***013
-	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The amount paid in cash.
-	//
-	// example:
-	//
-	// 0
-	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	// The code of the service. The service code is the same as that displayed in User Center.
-	//
-	// example:
-	//
-	// rds
-	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// The pretax amount.
-	//
-	// example:
-	//
-	// 0
-	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// The pretax gross amount.
-	//
-	// example:
-	//
-	// 0
-	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The code of the service.
-	//
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The details of the service.
-	//
-	// example:
-	//
-	// ApsaraDB RDS
-	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// The name of the service.
-	//
-	// example:
-	//
-	// ApsaraDB RDS
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The type of the service.
-	//
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource group.
-	//
-	// example:
-	//
-	// Default resource group
-	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The validity period.
-	//
-	// example:
-	//
-	// 10
-	ServicePeriod *string `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
-	// The unit of the validity period.
-	//
-	// example:
-	//
-	// Seconds
-	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	// The ID of the account to which the split bill belongs.
-	//
-	// example:
-	//
-	// 122
-	SplitAccountID *string `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
-	// The name of the account to which the split item belongs.
-	//
-	// example:
-	//
-	// 12@test.com
-	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	// The month in which the split item is used.
-	//
-	// example:
-	//
-	// 2020-06
-	SplitBillingCycle *string `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
-	// The commodity code of the split item.
-	//
-	// example:
-	//
-	// rds
-	SplitCommodityCode *string `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
-	// The ID of the split item.
-	//
-	// example:
-	//
-	// i-28bycvyb4
-	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	// The name of the split item.
-	//
-	// example:
-	//
-	// iZ28bycvyb4Z
-	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	// The name of the service to which the split item belongs.
-	//
-	// example:
-	//
-	// rds
-	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	// The billing method. Valid values: Subscription: subscription PayAsYouGo: pay-as-you-go This parameter is returned together with the ProductCode parameter.
-	//
-	// example:
-	//
-	// PayAsYouGo
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The tag.
-	//
-	// example:
-	//
-	// tag
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The usage of the split item. This parameter is returned only if the isBillingItem parameter is set to true.
-	//
-	// example:
-	//
-	// 100
-	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The unit of usage. This parameter is returned only if the isBillingItem parameter is set to true.
-	//
-	// example:
-	//
-	// GB
-	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	AdjustAmount              *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
+	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
+	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
+	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
+	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
+	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s QuerySplitItemBillResponseBodyDataItemsItem) String() string {

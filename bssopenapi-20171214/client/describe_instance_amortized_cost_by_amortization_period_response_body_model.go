@@ -22,27 +22,27 @@ type iDescribeInstanceAmortizedCostByAmortizationPeriodResponseBody interface {
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,33 +113,33 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody) Validate
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyData struct {
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 185766xxxx
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The name of the account.
+	// The account.
 	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The data entries returned.
+	// The data entries.
 	Items []*DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of entries returned for the current request.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which the results started to return. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+	// The position from which to start reading the current call. The value of this parameter must be empty or the value of NextToken that is returned in the last call. Otherwise, an error is reported. If this parameter is empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -223,18 +223,25 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyData) Vali
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {
+	// The amount after a discount.
+	//
+	// example:
+	//
+	// 0
 	AfterDiscountAmount *float64 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
-	// The allocation month. Format: YYYYMM.
+	// The amortization month.
+	//
+	// Format: YYYYMM.
 	//
 	// example:
 	//
 	// 202210
 	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
-	// The allocation status. Valid values:
+	// The amortization status. Valid values:
 	//
-	// 	- amortized: allocated
+	// - amortized: amortized
 	//
-	// 	- unAmortized: not allocated
+	// - unAmortized: unamortized
 	//
 	// example:
 	//
@@ -270,7 +277,9 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems stru
 	//
 	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The billing cycle. Format: YYYYMM.
+	// The billing cycle.
+	//
+	// Format: YYYYMM.
 	//
 	// example:
 	//
@@ -280,100 +289,105 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems stru
 	//
 	// example:
 	//
-	// Not allocated
+	// 未分配
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The code of the cost center.
 	//
 	// example:
 	//
 	// 1234
-	CostUnitCode                           *string  `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	// Current amortized amount after discount.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationAfterDiscountAmount *float64 `json:"CurrentAmortizationAfterDiscountAmount,omitempty" xml:"CurrentAmortizationAfterDiscountAmount,omitempty"`
-	// The amount deducted by using vouchers and allocated to the current allocation month.
+	// Current amortized deduction by cash coupons.
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationDeductedByCashCoupons *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
-	// The amount deducted by using coupons and allocated to the current allocation month.
+	// Current amortized deduction by coupons.
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
-	// The amount deducted by using prepaid cards and allocated to the current allocation month.
+	// Current amortized payment by prepaid card.
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationDeductedByPrepaidCard *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
-	// The expenditure amount allocated to the current allocation month. Invoicing is supported.
+	// Current amortized expenditure amount (invoicable).
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationExpenditureAmount *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
-	// The discount amount allocated to the current allocation month.
+	// Current amortized discount amount.
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
-	// The pretax amount allocated to the current allocation month.
+	// Current amortized pretax amount.
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
-	// The pretax gross amount allocated to the current allocation month.
+	// Current amortized list price.
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
-	// The round-off amount allocated to the current allocation month.
+	// Current amortized rounded-down discount.
 	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
-	// The amount deducted by using vouchers.
+	// The amount deducted by cash coupons.
 	//
 	// example:
 	//
 	// 0
 	DeductedByCashCoupons *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// The amount deducted by using coupons.
+	// The amount deducted by coupons.
 	//
 	// example:
 	//
 	// 0
 	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	// The amount deducted by using prepaid cards.
+	// The amount paid with a prepaid card.
 	//
 	// example:
 	//
 	// 0
 	DeductedByPrepaidCard *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	// The expenditure amount. Invoicing is supported.
+	// The expenditure amount (invoicable).
 	//
 	// example:
 	//
 	// 0
 	ExpenditureAmount *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-kjhdskjgshfdlkjfdh
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	// The public IP address of the instance.
+	// The public IP address.
 	//
 	// example:
 	//
 	// 34.xx.x.x
 	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	// The private IP address of the instance.
+	// The internal IP address.
 	//
 	// example:
 	//
@@ -391,197 +405,207 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems stru
 	//
 	// 0
 	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// The pretax gross amount.
+	// The list price.
 	//
 	// example:
 	//
 	// 0
-	PretaxGrossAmount                      *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// Previously amortized amount after discount.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedAfterDiscountAmount *float64 `json:"PreviouslyAmortizedAfterDiscountAmount,omitempty" xml:"PreviouslyAmortizedAfterDiscountAmount,omitempty"`
-	// The amount deducted by using vouchers and allocated before the current allocation month.
+	// Previously amortized deduction by cash coupons.
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedDeductedByCashCoupons *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
-	// The amount deducted by using coupons and allocated before the current allocation month.
+	// Previously amortized deduction by coupons.
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedDeductedByCoupons *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
-	// The amount deducted by using prepaid cards and allocated before the current allocation month.
+	// Previously amortized payment by prepaid card.
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedDeductedByPrepaidCard *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
-	// The expenditure amount allocated before the allocation month. Invoicing is supported.
+	// Previously amortized expenditure amount (invoicable).
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedExpenditureAmount *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
-	// The discount amount allocated before the current allocation month.
+	// Previously amortized discount amount.
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedInvoiceDiscount *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
-	// The pretax amount allocated before the current allocation month.
+	// Previously amortized pretax amount.
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedPretaxAmount *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
-	// The pretax gross amount allocated before the current allocation month.
+	// Previously amortized list price.
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedPretaxGrossAmount *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
-	// The round-off amount allocated before the current allocation month.
+	// Previously amortized rounding discount.
 	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedRoundDownDiscount *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The specific service resource.
+	// The product details.
 	//
 	// example:
 	//
-	// ApsaraDB RDS
+	// 云数据库RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// The code of the specific service resource.
+	// The code of the product details.
 	//
 	// example:
 	//
 	// rds
 	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	// The name of the service.
+	// The product name.
 	//
 	// example:
 	//
-	// ApsaraDB RDS
+	// 云数据库RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The region.
 	//
 	// example:
 	//
-	// China (Hangzhou)
-	Region                                   *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 杭州
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Remaining unamortized amount after discount.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationAfterDiscountAmount *float64 `json:"RemainingAmortizationAfterDiscountAmount,omitempty" xml:"RemainingAmortizationAfterDiscountAmount,omitempty"`
-	// The amount deducted by using vouchers and to be allocated to one or more future allocation months.
+	// Remaining unamortized deduction by cash coupons.
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationDeductedByCashCoupons *float64 `json:"RemainingAmortizationDeductedByCashCoupons,omitempty" xml:"RemainingAmortizationDeductedByCashCoupons,omitempty"`
-	// The amount deducted by using coupons and to be allocated to one or more future allocation months.
+	// Remaining unamortized deduction by coupons.
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationDeductedByCoupons *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
-	// The amount deducted by using prepaid cards and to be allocated to one or more future allocation months.
+	// Remaining unamortized payment by prepaid card.
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationDeductedByPrepaidCard *float64 `json:"RemainingAmortizationDeductedByPrepaidCard,omitempty" xml:"RemainingAmortizationDeductedByPrepaidCard,omitempty"`
-	// The expenditure amount to be allocated to one or more future allocation months. Invoicing is supported.
+	// Remaining unamortized expenditure amount (invoicable).
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationExpenditureAmount *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
-	// The discount amount to be allocated to one or more future allocation months.
+	// Remaining unamortized discount amount.
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationInvoiceDiscount *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
-	// The pretax amount to be allocated to one or more future allocation months.
+	// Remaining unamortized pretax amount.
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationPretaxAmount *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
-	// The pretax gross amount to be allocated to one or more future allocation months.
+	// Remaining unamortized list price.
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationPretaxGrossAmount *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
-	// The round-off amount to be allocated to one or more future allocation months.
+	// Remaining unamortized rounding discount.
 	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationRoundDownDiscount *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
-	// The name of the resource group.
+	// The resource group.
 	//
 	// example:
 	//
-	// Default resource group
+	// 默认资源组
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The round-off amount.
+	// The rounded-down discount.
 	//
 	// example:
 	//
 	// 0
 	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	// The name of the account to which the split item belongs.
+	// The name of the account to which the attached resource belongs.
 	//
 	// example:
 	//
 	// test**1122
 	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	// The ID of the split item.
+	// The ID of the attached resource.
 	//
 	// example:
 	//
 	// i-28bycvyb4
 	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	// The name of the split item.
+	// The name of the attached resource.
 	//
 	// example:
 	//
 	// iZ28bycvyb4Z
 	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	// The name of the specific service resource to which the split item belongs.
+	// The name of the product details for the attached resource.
 	//
 	// example:
 	//
 	// rds
 	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: the subscription billing method
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The tag of the instance.
+	// The tags of the instance.
 	//
 	// example:
 	//
 	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the zone.
+	// The zone.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// 杭州1
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iDeleteCostUnitRequest interface {
 }
 
 type DeleteCostUnitRequest struct {
-	// The user ID of the cost center owner.
+	// The ID of the owner of the financial unit.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCostUnitRequest struct {
 	//
 	// 2135342
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the cost center. A value of -1 indicates the root cost center.
+	// The ID of the financial unit. A value of -1 indicates the root financial unit.
 	//
 	// This parameter is required.
 	//

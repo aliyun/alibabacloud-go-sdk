@@ -27,22 +27,21 @@ type QueryCashCouponsResponseBody struct {
 	// example:
 	//
 	// Success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *QueryCashCouponsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The execution result message.
 	//
 	// example:
 	//
-	// Successful
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 147B566E-DB4C-4E43-BDBB-5DB1D9D268DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call is successful. Valid values: true (the call is successful) and false (the call fails).
 	//
 	// example:
 	//
@@ -147,78 +146,17 @@ func (s *QueryCashCouponsResponseBodyData) Validate() error {
 }
 
 type QueryCashCouponsResponseBodyDataCashCoupon struct {
-	// The service to which the voucher is applicable.
-	//
-	// example:
-	//
-	// All Alibaba Cloud services
-	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
-	// The scenario to which the voucher is applicable.
-	//
-	// example:
-	//
-	// Pay for the pay-as-you-go bills of Alibaba Cloud services or purchase an instance of an Alibaba Cloud service
+	ApplicableProducts  *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
 	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
-	// The remaining quota of the voucher.
-	//
-	// example:
-	//
-	// 100.00
-	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// The ID of the voucher.
-	//
-	// example:
-	//
-	// 34534253254325
-	CashCouponId *int64 `json:"CashCouponId,omitempty" xml:"CashCouponId,omitempty"`
-	// The code of the voucher.
-	//
-	// example:
-	//
-	// Q-b1485def8f04a
-	CashCouponNo *string `json:"CashCouponNo,omitempty" xml:"CashCouponNo,omitempty"`
-	// The description of the voucher.
-	//
-	// example:
-	//
-	// This voucher is used for testing product function
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the voucher took effect.
-	//
-	// example:
-	//
-	// 2018-08-02T15:15:50Z
-	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the voucher expired.
-	//
-	// example:
-	//
-	// 2019-01-29T15:15:50Z
-	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// The time when the voucher was released.
-	//
-	// example:
-	//
-	// 2018-08-02T15:15:50Z
-	GrantedTime *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
-	// The denomination of the voucher.
-	//
-	// example:
-	//
-	// 100.00
-	NominalValue *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
-	// The state of the voucher. Valid values:
-	//
-	// 	- Available: The voucher is valid.
-	//
-	// 	- Expired: The voucher has expired.
-	//
-	// 	- Cancelled: The voucher is canceled.
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Balance             *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	CashCouponId        *int64  `json:"CashCouponId,omitempty" xml:"CashCouponId,omitempty"`
+	CashCouponNo        *string `json:"CashCouponNo,omitempty" xml:"CashCouponNo,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectiveTime       *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExpiryTime          *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	GrantedTime         *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
+	NominalValue        *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryCashCouponsResponseBodyDataCashCoupon) String() string {

@@ -20,7 +20,7 @@ type iQueryCostUnitRequest interface {
 }
 
 type QueryCostUnitRequest struct {
-	// The user ID of the cost center owner.
+	// The owner of the financial unit.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type QueryCostUnitRequest struct {
 	//
 	// 28394563429587
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The page number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. A maximum of 300 entries can be returned per page.
+	// The number of entries per page. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	// The ID of the parent financial unit. A value of -1 indicates the root of the financial unit tree.
 	//
 	// This parameter is required.
 	//

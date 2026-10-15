@@ -14,7 +14,7 @@ type iCreateCostUnitRequest interface {
 }
 
 type CreateCostUnitRequest struct {
-	// The list of cost centers.
+	// The list of financial units.
 	UnitEntityList []*CreateCostUnitRequestUnitEntityList `json:"UnitEntityList,omitempty" xml:"UnitEntityList,omitempty" type:"Repeated"`
 }
 
@@ -49,7 +49,7 @@ func (s *CreateCostUnitRequest) Validate() error {
 }
 
 type CreateCostUnitRequestUnitEntityList struct {
-	// The user ID of the owner of the cost center.
+	// The ID of the owner of the new financial unit.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,7 @@ type CreateCostUnitRequestUnitEntityList struct {
 	//
 	// 982375623
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	// The ID of the parent financial unit. A value of -1 indicates the root financial unit.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type CreateCostUnitRequestUnitEntityList struct {
 	//
 	// -1
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
-	// The name of the cost center.
+	// The name of the financial unit.
 	//
 	// This parameter is required.
 	//

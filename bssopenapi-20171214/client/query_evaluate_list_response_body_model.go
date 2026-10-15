@@ -28,15 +28,15 @@ type QueryEvaluateListResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryEvaluateListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,39 +113,34 @@ func (s *QueryEvaluateListResponseBody) Validate() error {
 }
 
 type QueryEvaluateListResponseBodyData struct {
-	// The data returned.
 	EvaluateList *QueryEvaluateListResponseBodyDataEvaluateList `json:"EvaluateList,omitempty" xml:"EvaluateList,omitempty" type:"Struct"`
 	// The ID of the host.
-	//
-	// example:
-	//
-	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The number of the page returned.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The invoiced amount that meets the query conditions. Unit: Cent.
+	// The total invoiced amount that meets the filter criteria. Unit: cents.
 	//
 	// example:
 	//
-	// 12344
+	// 10000
 	TotalInvoiceAmount *int64 `json:"TotalInvoiceAmount,omitempty" xml:"TotalInvoiceAmount,omitempty"`
-	// The invoiceable amount that meets the query conditions. Unit: Cent.
+	// The total invoiceable amount that meets the filter criteria. Unit: cents.
 	//
 	// example:
 	//
@@ -268,146 +263,27 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateList) Validate() error {
 }
 
 type QueryEvaluateListResponseBodyDataEvaluateListEvaluate struct {
-	// The billing cycle.
-	//
-	// example:
-	//
-	// 202002
-	BillCycle *string `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
-	// The ID of the bill.
-	//
-	// example:
-	//
-	// 234543254325
-	BillId *int64 `json:"BillId,omitempty" xml:"BillId,omitempty"`
-	// The time.
-	//
-	// example:
-	//
-	// 2018-10-10 18:05:44
-	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
-	// The market type in the invoice. Valid values:
-	//
-	// 	- ALIYUN: Alibaba Cloud
-	//
-	// 	- MARKETPLACE: Alibaba Cloud Marketplace
-	//
-	// example:
-	//
-	// ALIYUN
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The invoiceable amount.
-	//
-	// example:
-	//
-	// 123213
-	CanInvoiceAmount *int64 `json:"CanInvoiceAmount,omitempty" xml:"CanInvoiceAmount,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2018-10-10 18:05:44
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
-	//
-	// example:
-	//
-	// 2018-10-10 18:05:44
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the invoice.
-	//
-	// example:
-	//
-	// 1325321532
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The invoiced amount.
-	//
-	// example:
-	//
-	// 10000
-	InvoicedAmount *int64 `json:"InvoicedAmount,omitempty" xml:"InvoicedAmount,omitempty"`
-	// The ID of the item.
-	//
-	// example:
-	//
-	// 23453245
-	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The name of the object to be invoiced.
-	//
-	// example:
-	//
-	// Refund of a voucher with denomination marked
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetCostAmount*	- parameter.
-	//
-	// example:
-	//
-	// 500
-	OffsetAcceptAmount *int64 `json:"OffsetAcceptAmount,omitempty" xml:"OffsetAcceptAmount,omitempty"`
-	// The refund amount used to offset the amount of the invoice. If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetAcceptAmount*	- parameter.
-	//
-	// example:
-	//
-	// 500
-	OffsetCostAmount *int64 `json:"OffsetCostAmount,omitempty" xml:"OffsetCostAmount,omitempty"`
-	// The ID of the external object.
-	//
-	// example:
-	//
-	// 12341
-	OpId *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
-	// The original amount.
-	//
-	// example:
-	//
-	// -10000
-	OriginalAmount *int64 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The ID of the external order.
-	//
-	// example:
-	//
-	// 124324213421
-	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
-	// The balance.
-	//
-	// example:
-	//
-	// -10000
-	PresentAmount *int64 `json:"PresentAmount,omitempty" xml:"PresentAmount,omitempty"`
-	// The status of the invoiceable amount.
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of orders that are queried. Valid values:
-	//
-	// 	- 1: the orders in which the invoiceable amount is negative.
-	//
-	// 	- 2: the orders in which the invoiceable amount is positive.
-	//
-	// 	- 3: the orders in which the invoiceable amount is not 0.
-	//
-	// 	- 4: the orders in which the amount that has been invoiced is greater than 0.
-	//
-	// >  By default, this parameter is left empty. If this parameter is left empty, all orders are queried.
-	//
-	// example:
-	//
-	// 1
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 2738543
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user.
-	//
-	// example:
-	//
-	// test
-	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+	BillCycle          *string `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
+	BillId             *int64  `json:"BillId,omitempty" xml:"BillId,omitempty"`
+	BizTime            *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	BizType            *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CanInvoiceAmount   *int64  `json:"CanInvoiceAmount,omitempty" xml:"CanInvoiceAmount,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InvoicedAmount     *int64  `json:"InvoicedAmount,omitempty" xml:"InvoicedAmount,omitempty"`
+	ItemId             *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OffsetAcceptAmount *int64  `json:"OffsetAcceptAmount,omitempty" xml:"OffsetAcceptAmount,omitempty"`
+	OffsetCostAmount   *int64  `json:"OffsetCostAmount,omitempty" xml:"OffsetCostAmount,omitempty"`
+	OpId               *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
+	OriginalAmount     *int64  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	OutBizId           *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	PresentAmount      *int64  `json:"PresentAmount,omitempty" xml:"PresentAmount,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type               *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId             *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick           *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
 func (s QueryEvaluateListResponseBodyDataEvaluateListEvaluate) String() string {

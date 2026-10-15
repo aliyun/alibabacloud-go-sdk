@@ -28,33 +28,33 @@ type iQueryResourcePackageInstancesResponseBody interface {
 }
 
 type QueryResourcePackageInstancesResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryResourcePackageInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type QueryResourcePackageInstancesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -164,27 +164,26 @@ func (s *QueryResourcePackageInstancesResponseBody) Validate() error {
 }
 
 type QueryResourcePackageInstancesResponseBodyData struct {
-	// The ID of the host.
+	// The host ID.
 	//
 	// example:
 	//
 	// cn
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The details of the instances.
+	HostId    *string                                                 `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	Instances *QueryResourcePackageInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -289,86 +288,20 @@ func (s *QueryResourcePackageInstancesResponseBodyDataInstances) Validate() erro
 }
 
 type QueryResourcePackageInstancesResponseBodyDataInstancesInstance struct {
-	// The services to which the resource plan is applicable.
-	ApplicableProducts *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty" type:"Struct"`
-	// The commodity code.
-	//
-	// example:
-	//
-	// rds
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The deduction type. Example: Absolute.
-	//
-	// example:
-	//
-	// Absolute
-	DeductType *string `json:"DeductType,omitempty" xml:"DeductType,omitempty"`
-	// The time when the resource plan took effect.
-	//
-	// example:
-	//
-	// 2018-09-12T09:51:56Z
-	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the resource plan expired.
-	//
-	// example:
-	//
-	// 2019-03-12T16:00:00Z
-	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// OSSBAG-cn-v0h1s4hma01
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the resource plan.
-	//
-	// example:
-	//
-	// FPT_ossbag_absolute_Storage_sh
-	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The remaining quota.
-	//
-	// example:
-	//
-	// 40.000
-	RemainingAmount *string `json:"RemainingAmount,omitempty" xml:"RemainingAmount,omitempty"`
-	// The unit of the remaining quota.
-	//
-	// example:
-	//
-	// GB
-	RemainingAmountUnit *string `json:"RemainingAmountUnit,omitempty" xml:"RemainingAmountUnit,omitempty"`
-	// The remarks on the resource plan. The remarks must be made in Chinese.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the resource plan. Valid values:
-	//
-	// 	- Available
-	//
-	// 	- Expired
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total quota of the resource plan.
-	//
-	// example:
-	//
-	// 40.000
-	TotalAmount *string `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	// The unit of the total quota.
-	//
-	// example:
-	//
-	// GB
-	TotalAmountUnit *string `json:"TotalAmountUnit,omitempty" xml:"TotalAmountUnit,omitempty"`
+	ApplicableProducts  *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty" type:"Struct"`
+	CommodityCode       *string                                                                           `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	DeductType          *string                                                                           `json:"DeductType,omitempty" xml:"DeductType,omitempty"`
+	EffectiveTime       *string                                                                           `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExpiryTime          *string                                                                           `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	InstanceId          *string                                                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PackageType         *string                                                                           `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	Region              *string                                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
+	RemainingAmount     *string                                                                           `json:"RemainingAmount,omitempty" xml:"RemainingAmount,omitempty"`
+	RemainingAmountUnit *string                                                                           `json:"RemainingAmountUnit,omitempty" xml:"RemainingAmountUnit,omitempty"`
+	Remark              *string                                                                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status              *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalAmount         *string                                                                           `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
+	TotalAmountUnit     *string                                                                           `json:"TotalAmountUnit,omitempty" xml:"TotalAmountUnit,omitempty"`
 }
 
 func (s QueryResourcePackageInstancesResponseBodyDataInstancesInstance) String() string {

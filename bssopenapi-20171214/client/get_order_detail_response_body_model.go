@@ -22,7 +22,7 @@ type iGetOrderDetailResponseBody interface {
 }
 
 type GetOrderDetailResponseBody struct {
-	// The response code.
+	// The status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetOrderDetailResponseBody struct {
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -118,8 +118,7 @@ type GetOrderDetailResponseBodyData struct {
 	// example:
 	//
 	// test
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The orders returned.
+	HostName  *string                                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	OrderList *GetOrderDetailResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -133,7 +132,7 @@ type GetOrderDetailResponseBodyData struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -238,174 +237,36 @@ func (s *GetOrderDetailResponseBodyDataOrderList) Validate() error {
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrder struct {
-	// The aftertaxt amount of the order.
-	//
-	// example:
-	//
-	// 0
-	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	// The billing information about the configurations.
-	BillModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig `json:"BillModuleConfig,omitempty" xml:"BillModuleConfig,omitempty" type:"Struct"`
-	// The commodity code.
-	//
-	// example:
-	//
-	// rds
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The configurations of the main service.
-	//
-	// example:
-	//
-	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The time when the order was created.
-	//
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The currency. Valid values: CNY, USD, and JPY.
-	//
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The additional information about the order.
-	ExtendInfos map[string]*string `json:"ExtendInfos,omitempty" xml:"ExtendInfos,omitempty"`
-	// The instance IDs.
-	//
-	// example:
-	//
-	// ["rm-bp1a2vsr018313t6o"]
-	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
-	// The ID of the Resource Access Management (RAM) user that performs operations on the order. If no RAM user is involved, this parameter is empty.
-	//
-	// example:
-	//
-	// 23424243432
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The order ID.
-	//
-	// example:
-	//
-	// 3453425324
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The type of the suborder. A value of productsuborder indicates service suborder. A value of refundsuborder indicates refund suborder.
-	//
-	// example:
-	//
-	// ProductSubOrder
-	OrderSubType *string `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
-	// The type of the order. Valid values: new, renew, upgrade, and refund.
-	//
-	// example:
-	//
-	// New
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The configuration information that is not formatted.
-	//
-	// example:
-	//
-	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
-	OriginalConfig *string `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
-	// The information about the configurations.
+	AfterTaxAmount       *string                                                           `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	BillModuleConfig     *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig     `json:"BillModuleConfig,omitempty" xml:"BillModuleConfig,omitempty" type:"Struct"`
+	CommodityCode        *string                                                           `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Config               *string                                                           `json:"Config,omitempty" xml:"Config,omitempty"`
+	CreateTime           *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Currency             *string                                                           `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	ExtendInfos          map[string]*string                                                `json:"ExtendInfos,omitempty" xml:"ExtendInfos,omitempty"`
+	InstanceIDs          *string                                                           `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
+	Operator             *string                                                           `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OrderId              *string                                                           `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderSubType         *string                                                           `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
+	OrderType            *string                                                           `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OriginalConfig       *string                                                           `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
 	OriginalModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig `json:"OriginalModuleConfig,omitempty" xml:"OriginalModuleConfig,omitempty" type:"Struct"`
-	// The currency used for payment. Valid values: CNY, USD, and JPY.
-	//
-	// example:
-	//
-	// CNY
-	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// The payment state. Valid values: unpaid, paid, and canceled.
-	//
-	// example:
-	//
-	// Paid
-	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
-	// The time of payment.
-	//
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	// The pretax amount of the order.
-	//
-	// example:
-	//
-	// 0
-	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// The pretax amount of the order in local currency.
-	//
-	// example:
-	//
-	// 0
-	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	// The pretax gross amount of the order.
-	//
-	// example:
-	//
-	// 0
-	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The code of the main service.
-	//
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the main service.
-	//
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The number of main services.
-	//
-	// example:
-	//
-	// 1
-	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the associated order.
-	//
-	// example:
-	//
-	// 4353453534543
-	RelatedOrderId *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
-	// The ID of the suborder.
-	//
-	// example:
-	//
-	// 234343
-	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	// The billing method. Valid values: Subscription and PayAsYouGo.
-	//
-	// example:
-	//
-	// PayAsYouGo
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The tax of the order.
-	//
-	// example:
-	//
-	// 1
-	Tax *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	// The time when the service ends.
-	//
-	// example:
-	//
-	// 2117-06-08T16:00:00Z
-	UsageEndTime *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	// The time when the service starts.
-	//
-	// example:
-	//
-	// 2017-06-08T16:00:00Z
-	UsageStartTime *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
+	PaymentCurrency      *string                                                           `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentStatus        *string                                                           `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
+	PaymentTime          *string                                                           `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PretaxAmount         *string                                                           `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal    *string                                                           `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount    *string                                                           `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	ProductCode          *string                                                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType          *string                                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Quantity             *string                                                           `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	Region               *string                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
+	RelatedOrderId       *string                                                           `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
+	SubOrderId           *string                                                           `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType     *string                                                           `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                  *string                                                           `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	UsageEndTime         *string                                                           `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	UsageStartTime       *string                                                           `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrder) String() string {
@@ -735,26 +596,10 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) Validate(
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig struct {
-	// The API code of the configuration item.
-	//
-	// example:
-	//
-	// datadisk
-	ApiCode *string `json:"ApiCode,omitempty" xml:"ApiCode,omitempty"`
-	// The attributes of the configured item.
+	ApiCode              *string                                                                                           `json:"ApiCode,omitempty" xml:"ApiCode,omitempty"`
 	BillModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties `json:"BillModuleProperties,omitempty" xml:"BillModuleProperties,omitempty" type:"Struct"`
-	// The code of the configuration item.
-	//
-	// example:
-	//
-	// datadisk
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the configuration item.
-	//
-	// example:
-	//
-	// Data disk
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Code                 *string                                                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name                 *string                                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) String() string {
@@ -845,24 +690,9 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleC
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties struct {
-	// The attribute code of the configured item.
-	//
-	// example:
-	//
-	// cloud_ssd
-	AttrApiCode *string `json:"AttrApiCode,omitempty" xml:"AttrApiCode,omitempty"`
-	// The API code of the configured item.
-	//
-	// example:
-	//
-	// cloud_ssd
+	AttrApiCode   *string `json:"AttrApiCode,omitempty" xml:"AttrApiCode,omitempty"`
 	ModuleApiCode *string `json:"ModuleApiCode,omitempty" xml:"ModuleApiCode,omitempty"`
-	// The attribute value of the configuration item.
-	//
-	// example:
-	//
-	// cloud_ssd
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) String() string {
@@ -939,20 +769,9 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) Valid
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig struct {
-	// The code of the configuration item.
-	//
-	// example:
-	//
-	// systemdisk
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attributes of the configured item.
+	Code             *string                                                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	ModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties `json:"ModuleProperties,omitempty" xml:"ModuleProperties,omitempty" type:"Struct"`
-	// The name of the configuration item.
-	//
-	// example:
-	//
-	// System disk
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string                                                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) String() string {
@@ -1034,23 +853,8 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOrigina
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties struct {
-	// The attribute code of the configured item.
-	//
-	// example:
-	//
-	// cloud_efficiency
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attribute name of the configured item.
-	//
-	// example:
-	//
-	// cloud_efficiency
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The attribute value of the configured item.
-	//
-	// example:
-	//
-	// cloud_efficiency
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -28,21 +28,21 @@ type QueryRIUtilizationDetailResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryRIUtilizationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DF58589C-A06C-4224-8615-7797E6474FA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,21 +113,20 @@ func (s *QueryRIUtilizationDetailResponseBody) Validate() error {
 }
 
 type QueryRIUtilizationDetailResponseBodyData struct {
-	// The usage details of the RI.
 	DetailList *QueryRIUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -223,60 +222,15 @@ func (s *QueryRIUtilizationDetailResponseBodyDataDetailList) Validate() error {
 }
 
 type QueryRIUtilizationDetailResponseBodyDataDetailListDetailList struct {
-	// The time when the fees are deducted by using the RI.
-	//
-	// example:
-	//
-	// 2019-05-23 12:00:00
-	DeductDate *string `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
-	// The total amount of computing power of the RI or capacity of SCU in the time period.
-	//
-	// example:
-	//
-	// 1
-	DeductFactorTotal *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
-	// The deduct factor. This parameter is returned only if the RICommodityCode parameter is set to ecsRi.
-	//
-	// example:
-	//
-	// 24
-	DeductHours *string `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
-	// The computing power or capacity of the pay-as-you-go instance whose fees are deducted by using the RI.
-	//
-	// example:
-	//
-	// 1
-	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	// The code of the service whose fees are deducted by using the RI.
-	//
-	// example:
-	//
-	// rds
-	DeductedCommodityCode *string `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
-	// The ID of the instance whose fees are deducted by using the RI.
-	//
-	// example:
-	//
-	// safdffghfgh
-	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	// The name of the service whose fees are deducted by using the RI.
-	//
-	// example:
-	//
-	// ApsaraDB RDS
-	DeductedProductDetail *string `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
-	// The instance type of the instance whose fees are deducted by using the RI.
-	//
-	// example:
-	//
-	// rds.mysql.s3.large
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The ID of the RI.
-	//
-	// example:
-	//
-	// 324253645
-	RIInstanceId *string `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
+	DeductDate            *string  `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
+	DeductFactorTotal     *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
+	DeductHours           *string  `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
+	DeductQuantity        *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
+	DeductedCommodityCode *string  `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
+	DeductedInstanceId    *string  `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
+	DeductedProductDetail *string  `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
+	InstanceSpec          *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	RIInstanceId          *string  `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
 }
 
 func (s QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) String() string {

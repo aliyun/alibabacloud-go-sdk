@@ -22,21 +22,21 @@ type iQueryAccountTransactionsResponseBody interface {
 }
 
 type QueryAccountTransactionsResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryAccountTransactionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,27 +113,26 @@ func (s *QueryAccountTransactionsResponseBody) Validate() error {
 }
 
 type QueryAccountTransactionsResponseBodyData struct {
-	// The name of your Alibaba Cloud account.
+	// The user account.
 	//
 	// example:
 	//
 	// test@test.aliyunid.com
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The information about transactions.
+	AccountName             *string                                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountTransactionsList *QueryAccountTransactionsResponseBodyDataAccountTransactionsList `json:"AccountTransactionsList,omitempty" xml:"AccountTransactionsList,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -238,128 +237,19 @@ func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsList) Valida
 }
 
 type QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList struct {
-	// The amount.
-	//
-	// example:
-	//
-	// 0
-	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The balance of the account.
-	//
-	// example:
-	//
-	// 0
-	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// The billing cycle. Format: YYYY-MM.
-	//
-	// example:
-	//
-	// 2020-03
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The type of transaction payment. Valid values:
-	//
-	// 	- Cash: pay for the transaction in cash.
-	//
-	// 	- Deposit: pay for the transaction with deposit.
-	//
-	// 	- RegularBankCreditRefund: pay for the transaction with credit refund controlled by a bank.
-	//
-	// 	- DirectPay: directly pay for the transaction.
-	//
-	// example:
-	//
-	// Cash
-	FundType *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	// The number of the order or bill.
-	//
-	// example:
-	//
-	// 2020030242
-	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	// The remarks on the transaction.
-	//
-	// example:
-	//
-	// NAT_GW
-	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The transaction account. For example, the account is a recharge account in Alipay or a transfer account.
-	//
-	// example:
-	//
-	// 213562146
-	TransactionAccount *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
-	// The transaction channel.
-	//
-	// 	- AccountBalance
-	//
-	// 	- BankTransfer
-	//
-	// 	- Alipay
-	//
-	// 	- AntCreditPay
-	//
-	// 	- OfflineRemittance
-	//
-	// 	- RegularBankCreditRefund
-	//
-	// 	- CreditCard
-	//
-	// 	- MyBankCredit
-	//
-	// 	- HuaxiaBankCInstallment
-	//
-	// 	- ApplePay
-	//
-	// example:
-	//
-	// AccountBalance
-	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
-	// The serial number of the transaction channel.
-	//
-	// example:
-	//
-	// 1234354325
+	Amount               *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Balance              *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	BillingCycle         *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	FundType             *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	Remarks              *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	TransactionAccount   *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
+	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	// The type of the transaction flow.
-	//
-	// 	- Income
-	//
-	// 	- Expense
-	//
-	// example:
-	//
-	// Expense
-	TransactionFlow *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
-	// The number of the transaction.
-	//
-	// example:
-	//
-	// 43342334
-	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	// The time when the transaction was made.
-	//
-	// example:
-	//
-	// 2020-03-10T02:03:20Z
-	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
-	// The type of the transaction.
-	//
-	// 	- Payment
-	//
-	// 	- Withdraw
-	//
-	// 	- Refund
-	//
-	// 	- Consumption
-	//
-	// 	- Transfer
-	//
-	// 	- Adjust
-	//
-	// example:
-	//
-	// Consumption
-	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
+	TransactionFlow      *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
+	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
+	TransactionTime      *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
+	TransactionType      *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
 func (s QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) String() string {

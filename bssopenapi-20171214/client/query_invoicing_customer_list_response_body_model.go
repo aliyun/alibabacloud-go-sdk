@@ -28,15 +28,15 @@ type QueryInvoicingCustomerListResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryInvoicingCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,7 +113,6 @@ func (s *QueryInvoicingCustomerListResponseBody) Validate() error {
 }
 
 type QueryInvoicingCustomerListResponseBodyData struct {
-	// The information about the invoice.
 	CustomerInvoiceList *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList `json:"CustomerInvoiceList,omitempty" xml:"CustomerInvoiceList,omitempty" type:"Struct"`
 }
 
@@ -178,144 +177,27 @@ func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList) Validate
 }
 
 type QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice struct {
-	// The type of invoice that was changed to.
-	//
-	// example:
-	//
-	// 1
-	AdjustType *int64 `json:"AdjustType,omitempty" xml:"AdjustType,omitempty"`
-	// The bank that issues the invoice.
-	//
-	// example:
-	//
-	// Test Bank
-	Bank *string `json:"Bank,omitempty" xml:"Bank,omitempty"`
-	// The bank account number.
-	//
-	// example:
-	//
-	// 389576348573296349853476
-	BankNo *string `json:"BankNo,omitempty" xml:"BankNo,omitempty"`
-	// The authentication type of Alipay. Valid values:
-	//
-	// 	- 1: individual
-	//
-	// 	- 2: company
-	//
-	// example:
-	//
-	// 1
-	CustomerType *int64 `json:"CustomerType,omitempty" xml:"CustomerType,omitempty"`
-	// The default note that is attached when the title is specified.
-	//
-	// example:
-	//
-	// PO Code: 12984554
-	DefaultRemark *string `json:"DefaultRemark,omitempty" xml:"DefaultRemark,omitempty"`
-	// The time when the payment ended.
-	//
-	// example:
-	//
-	// 202003
-	EndCycle *int64 `json:"EndCycle,omitempty" xml:"EndCycle,omitempty"`
-	// The time when the invoice was created. The time was in the yyyy-mm-dd hh:mm:ss format.
-	//
-	// example:
-	//
-	// 2018-09-07 15:26:20
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the invoice.
-	//
-	// example:
-	//
-	// 239875502738
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The company name in the invoice title.
-	//
-	// example:
-	//
-	// Test Company
-	InvoiceTitle *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
-	// The type of issue.
-	//
-	// example:
-	//
-	// 1
-	IssueType *int64 `json:"IssueType,omitempty" xml:"IssueType,omitempty"`
-	// The address of the business license.
-	//
-	// example:
-	//
-	// XXX, XXX district, XXX city, XXX province
+	AdjustType              *int64  `json:"AdjustType,omitempty" xml:"AdjustType,omitempty"`
+	Bank                    *string `json:"Bank,omitempty" xml:"Bank,omitempty"`
+	BankNo                  *string `json:"BankNo,omitempty" xml:"BankNo,omitempty"`
+	CustomerType            *int64  `json:"CustomerType,omitempty" xml:"CustomerType,omitempty"`
+	DefaultRemark           *string `json:"DefaultRemark,omitempty" xml:"DefaultRemark,omitempty"`
+	EndCycle                *int64  `json:"EndCycle,omitempty" xml:"EndCycle,omitempty"`
+	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InvoiceTitle            *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
+	IssueType               *int64  `json:"IssueType,omitempty" xml:"IssueType,omitempty"`
 	OperatingLicenseAddress *string `json:"OperatingLicenseAddress,omitempty" xml:"OperatingLicenseAddress,omitempty"`
-	// The phone number of the business license.
-	//
-	// example:
-	//
-	// 138xxxxxxxx
-	OperatingLicensePhone *string `json:"OperatingLicensePhone,omitempty" xml:"OperatingLicensePhone,omitempty"`
-	// The tax registration number.
-	//
-	// example:
-	//
-	// 21343245342534
-	RegisterNo *string `json:"RegisterNo,omitempty" xml:"RegisterNo,omitempty"`
-	// The time when the payment started.
-	//
-	// example:
-	//
-	// 202002
-	StartCycle *int64 `json:"StartCycle,omitempty" xml:"StartCycle,omitempty"`
-	// The status of the invoice title.
-	//
-	// example:
-	//
-	// 2
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The path and file name of the scanned copy of the tax registration certificate.
-	//
-	// example:
-	//
-	// taxationLicense.jpg
-	TaxationLicense *string `json:"TaxationLicense,omitempty" xml:"TaxationLicense,omitempty"`
-	// The type of the taxpayer. Valid values:
-	//
-	// 	- 1: general taxpayer
-	//
-	// 	- 2: special taxpayer
-	//
-	// example:
-	//
-	// 1
-	TaxpayerType *int64 `json:"TaxpayerType,omitempty" xml:"TaxpayerType,omitempty"`
-	// The instruction document of the invoice title change.
-	//
-	// example:
-	//
-	// instruction.doc
+	OperatingLicensePhone   *string `json:"OperatingLicensePhone,omitempty" xml:"OperatingLicensePhone,omitempty"`
+	RegisterNo              *string `json:"RegisterNo,omitempty" xml:"RegisterNo,omitempty"`
+	StartCycle              *int64  `json:"StartCycle,omitempty" xml:"StartCycle,omitempty"`
+	Status                  *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaxationLicense         *string `json:"TaxationLicense,omitempty" xml:"TaxationLicense,omitempty"`
+	TaxpayerType            *int64  `json:"TaxpayerType,omitempty" xml:"TaxpayerType,omitempty"`
 	TitleChangeInstructions *string `json:"TitleChangeInstructions,omitempty" xml:"TitleChangeInstructions,omitempty"`
-	// The type of the invoice. Valid values:
-	//
-	// 	- 0: plain value-added tax (VAT) invoice
-	//
-	// 	- 1: special VAT invoice
-	//
-	// example:
-	//
-	// 1
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 34565465675
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user.
-	//
-	// example:
-	//
-	// testNick
-	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+	Type                    *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId                  *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick                *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
 func (s QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) String() string {

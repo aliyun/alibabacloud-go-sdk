@@ -28,15 +28,15 @@ type QueryCostUnitResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,21 +113,21 @@ func (s *QueryCostUnitResponseBody) Validate() error {
 }
 
 type QueryCostUnitResponseBodyData struct {
-	// The cost centers.
+	// The list of financial units.
 	CostUnitDtoList []*QueryCostUnitResponseBodyDataCostUnitDtoList `json:"CostUnitDtoList,omitempty" xml:"CostUnitDtoList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -193,25 +193,25 @@ func (s *QueryCostUnitResponseBodyData) Validate() error {
 }
 
 type QueryCostUnitResponseBodyDataCostUnitDtoList struct {
-	// The user ID of the cost center owner.
+	// The owner of the financial unit.
 	//
 	// example:
 	//
 	// 2343464
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	// The ID of the parent financial unit. A value of -1 indicates the root of the financial unit tree.
 	//
 	// example:
 	//
 	// -1
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
-	// The ID of the cost center.
+	// The ID of the financial unit.
 	//
 	// example:
 	//
 	// 23534
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
-	// The name of the cost center.
+	// The name of the financial unit.
 	//
 	// example:
 	//

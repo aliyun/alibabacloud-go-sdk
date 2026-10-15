@@ -24,7 +24,7 @@ type iConvertChargeTypeRequest interface {
 }
 
 type ConvertChargeTypeRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -33,21 +33,21 @@ type ConvertChargeTypeRequest struct {
 	// rm-kasjgfjshgf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration. Unit: months. This parameter is required if you switch the billing method to subscription. Valid values:
+	// The subscription period in months. If you convert the billing method to subscription, specify the subscription period. Valid values:
 	//
-	// 	- 1 to 9
+	// - 1 to 9.
 	//
-	// 	- 12
+	// - 12.
 	//
-	// 	- 24
+	// - 24.
 	//
-	// 	- 36
+	// - 36.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The code of the service to which the instance belongs.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -55,19 +55,19 @@ type ConvertChargeTypeRequest struct {
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service to which the instance belongs.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The current billing method of the instance. Valid values:
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
-	// >  After the call is successful, the billing method of the instance is switched.
+	// > After a successful call, the resource is changed to the opposite billing method.
 	//
 	// This parameter is required.
 	//

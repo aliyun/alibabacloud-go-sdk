@@ -34,7 +34,7 @@ type iQueryBillRequest interface {
 }
 
 type QueryBillRequest struct {
-	// The ID of the member.
+	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
 	//
 	// example:
 	//
@@ -47,69 +47,64 @@ type QueryBillRequest struct {
 	// example:
 	//
 	// 2018-07
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// Specifies whether to display local currency information in bills. The parameter will be discontinued.
+	BillingCycle           *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
+	// Specifies whether to filter out bills with a original price (PretaxGrossAmount) of 0. Default value: false (compatible with existing logic). Valid values:
 	//
-	// example:
+	// - true: filters out zero-charge bills.
 	//
-	// false
-	IsDisplayLocalCurrency *bool `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
-	// Specifies whether to filter out a bill whose pretax gross amount is 0. By default, a bill whose pretax gross amount is 0 is not filtered out. Valid values:
-	//
-	// 	- true: filters out a bill whose pretax gross amount is 0.
-	//
-	// 	- false: does not filter out a bill whose pretax gross amount is 0.
+	// - false: does not filter out zero-charge bills.
 	//
 	// example:
 	//
 	// true
 	IsHideZeroCharge *bool  `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	OwnerId          *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	// The number of entries per page. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription
+	// - Subscription
 	//
-	// 	- PayAsYouGo
+	// - PayAsYouGo
 	//
-	// This parameter must be used together with the ProductCode parameter.
+	// > This parameter must be used together with the ProductCode parameter.
 	//
 	// example:
 	//
 	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The type of the bill. Valid values:
+	// The type. Valid values:
 	//
-	// 	- SubscriptionOrder
+	// - SubscriptionOrder
 	//
-	// 	- PayAsYouGoBill
+	// - PayAsYouGoBill
 	//
-	// 	- Refund
+	// - Refund
 	//
-	// 	- Adjustment
+	// - Adjustment
 	//
 	// example:
 	//

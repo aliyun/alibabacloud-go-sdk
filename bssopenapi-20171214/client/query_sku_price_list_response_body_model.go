@@ -22,27 +22,27 @@ type iQuerySkuPriceListResponseBody interface {
 }
 
 type QuerySkuPriceListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned data.
 	Data *QuerySkuPriceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *QuerySkuPriceListResponseBody) Validate() error {
 }
 
 type QuerySkuPriceListResponseBodyData struct {
-	// The SKUs of the pricing object.
+	// The pricing entity SKU information.
 	SkuPricePage *QuerySkuPriceListResponseBodyDataSkuPricePage `json:"SkuPricePage,omitempty" xml:"SkuPricePage,omitempty" type:"Struct"`
 }
 
@@ -144,13 +144,13 @@ func (s *QuerySkuPriceListResponseBodyData) Validate() error {
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePage struct {
-	// The token that is used to query the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// 080112060a0422020800180022490a470342000000315333303332363436363336333433393636333136333338333733373333333133373336363336323634363336363337333836333636333636313336363433363332
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The SKUs.
+	// The SKU list.
 	SkuPriceList []*QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList `json:"SkuPriceList,omitempty" xml:"SkuPriceList,omitempty" type:"Repeated"`
 	// The total number of SKUs.
 	//
@@ -209,15 +209,15 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePage) Validate() error {
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList struct {
-	// The prices of the SKUs.
+	// The SKU price list.
 	CskuPriceList []*QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList `json:"CskuPriceList,omitempty" xml:"CskuPriceList,omitempty" type:"Repeated"`
-	// The code of the SKU.
+	// sku code
 	//
 	// example:
 	//
 	// 017c15a31507bc6de22aa93777461adc
 	SkuCode *string `json:"SkuCode,omitempty" xml:"SkuCode,omitempty"`
-	// The values of the pricing factors.
+	// The collection of factor values. Different commodities have their own factors under pricing entities. For example, the instance_type pricing entity of the ECS commodity has factors such as `vm_region_no, iooptimized, vm_os_kind, instance_type`.
 	SkuFactorMap map[string]*string `json:"SkuFactorMap,omitempty" xml:"SkuFactorMap,omitempty"`
 }
 
@@ -270,7 +270,7 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList) Validate() e
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList struct {
-	// The unique code of the SKU price.
+	// The CSKU code, which is the unique price identifier.
 	//
 	// example:
 	//
@@ -294,25 +294,25 @@ type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList stru
 	//
 	// STEP_ARRIVE
 	PriceMode *string `json:"PriceMode,omitempty" xml:"PriceMode,omitempty"`
-	// The pricing type.
+	// The price type.
 	//
 	// example:
 	//
 	// hourPrice
 	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
-	// The unit of the price.
+	// The price unit.
 	//
 	// example:
 	//
-	// USD (per unit)
+	// USD/unit
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
-	// If the PriceMode parameter is set to STEP_ACCUMULATION or STEP_ARRIVE, the value of this field exists and specifies the range. If the PriceMode parameter is set to NORMAL_PRICE, the value of this field is null.
+	// This field has a value when PriceMode is STEP_ACCUMULATION or STEP_ARRIVE, specifying the range. When PriceMode is NORMAL_PRICE, this field is NULL.
 	RangeList []*QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 	// The usage unit.
 	//
 	// example:
 	//
-	// Count
+	// unit
 	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
 }
 
@@ -410,7 +410,7 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList)
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRangeList struct {
-	// The code of the pricing factor.
+	// The factor code.
 	//
 	// example:
 	//
@@ -428,7 +428,7 @@ type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRange
 	//
 	// 1
 	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
-	// The closure type of the interval.
+	// The interval closure type.
 	//
 	// example:
 	//

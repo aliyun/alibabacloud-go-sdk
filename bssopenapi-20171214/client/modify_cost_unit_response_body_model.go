@@ -28,21 +28,21 @@ type ModifyCostUnitResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data []*ModifyCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ModifyCostUnitResponseBody) Validate() error {
 }
 
 type ModifyCostUnitResponseBodyData struct {
-	// Indicates whether the cost center was modified.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The user ID of the cost center owner.
+	// The user ID of the financial unit owner.
 	//
 	// example:
 	//
 	// 823756287
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the cost center.
+	// The ID of the new financial unit.
 	//
 	// example:
 	//

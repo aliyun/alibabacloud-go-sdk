@@ -24,12 +24,12 @@ type iGetPayAsYouGoPriceRequest interface {
 }
 
 type GetPayAsYouGoPriceRequest struct {
-	// The details of pricing modules.
+	// The list of pricing modules.
 	//
 	// This parameter is required.
 	ModuleList []*GetPayAsYouGoPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
 	OwnerId    *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -37,19 +37,19 @@ type GetPayAsYouGoPriceRequest struct {
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The billing method. Set the value to PayAsYouGo.
+	// The subscription type. Valid values: PayAsYouGo.
 	//
 	// This parameter is required.
 	//
@@ -135,9 +135,9 @@ func (s *GetPayAsYouGoPriceRequest) Validate() error {
 }
 
 type GetPayAsYouGoPriceRequestModuleList struct {
-	// The configuration of the Nth pricing module. Valid values of N: 1 to 50. Format: AA:aa,BB:bb. The values of AA and BB are the property IDs of the pricing module. The values of aa and bb are the property values of the pricing module.
+	// The configuration of the Nth pricing module. The value of N ranges from 1 to 50. Format: "AA:aa,BB:bb", where AA and BB are the property codes of the pricing module, and aa and bb are the corresponding property values.
 	//
-	// >  You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the configuration parameters of the pricing module.
+	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
 	//
 	// This parameter is required.
 	//
@@ -145,9 +145,10 @@ type GetPayAsYouGoPriceRequestModuleList struct {
 	//
 	// InstanceType:ecs.g5.xlarge,IoOptimized:IoOptimized,ImageOs:linux
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The code of the Nth pricing module.
+	// The module code of the Nth pricing module.
 	//
-	// >  You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the module code.
+	//
+	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
 	//
 	// This parameter is required.
 	//
@@ -157,15 +158,15 @@ type GetPayAsYouGoPriceRequestModuleList struct {
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	// The price type of the Nth pricing module. Valid values:
 	//
-	// 	- Hour: hourly price
+	// - Hour: hourly price.
 	//
-	// 	- Usage: usage price
+	// - Usage: usage-based price.
 	//
-	// 	- Month: monthly price
+	// - Month: monthly price.
 	//
-	// 	- Year: annual price
+	// - Year: yearly price.
 	//
-	// >  You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the configuration parameters of the pricing module.
+	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
 	//
 	// This parameter is required.
 	//

@@ -24,19 +24,19 @@ type iQueryInstanceByTagResponseBody interface {
 }
 
 type QueryInstanceByTagResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// param is null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the QueryInstanceByTag operation was called.
+	// The token used to query the next page of results. This is the `NextToken` value returned from the previous API call.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type QueryInstanceByTagResponseBody struct {
 	//
 	// 9EC6C0B7-3397-5FAE-9915-8972CDDB1211
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The instances returned.
+	// A list of instance information.
 	TagResource []*QueryInstanceByTagResponseBodyTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
 }
 
@@ -140,13 +140,13 @@ type QueryInstanceByTagResponseBodyTagResource struct {
 	//
 	// spn-xxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. The returned resource type indicates a savings plan instance.
+	// The type of the resource. `instance` indicates a savings plan instance.
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tag []*QueryInstanceByTagResponseBodyTagResourceTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

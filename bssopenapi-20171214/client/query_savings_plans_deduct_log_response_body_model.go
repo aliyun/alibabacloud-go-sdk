@@ -28,17 +28,21 @@ type QuerySavingsPlansDeductLogResponseBody struct {
 	//
 	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return data.
+	// The returned data.
 	Data *QuerySavingsPlansDeductLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
+	//
+	// example:
+	//
+	// 请校验入参正确性
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 61293E7A-3406-4447-8620-EC88B0AA66AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -109,7 +113,7 @@ func (s *QuerySavingsPlansDeductLogResponseBody) Validate() error {
 }
 
 type QuerySavingsPlansDeductLogResponseBodyData struct {
-	// The deduction details.
+	// The list of deduction details.
 	Items []*QuerySavingsPlansDeductLogResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -117,7 +121,7 @@ type QuerySavingsPlansDeductLogResponseBodyData struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -189,19 +193,37 @@ func (s *QuerySavingsPlansDeductLogResponseBodyData) Validate() error {
 }
 
 type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
-	// The billable item for which the fee is deducted.
-	BillModule           *string `json:"BillModule,omitempty" xml:"BillModule,omitempty"`
-	BillingCycle         *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The deducted billable item.
+	//
+	// example:
+	//
+	// 云服务器配置
+	BillModule *string `json:"BillModule,omitempty" xml:"BillModule,omitempty"`
+	// The billing cycle.
+	//
+	// example:
+	//
+	// 202312
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The list price of the deducted bill, in CNY.
+	//
+	// example:
+	//
+	// 375.35
 	BillingOfficialPrice *string `json:"BillingOfficialPrice,omitempty" xml:"BillingOfficialPrice,omitempty"`
-	// The service for which the fee is deducted.
+	// The deducted service.
+	//
+	// example:
+	//
+	// 云服务器ECS-按量付费
 	DeductCommodity *string `json:"DeductCommodity,omitempty" xml:"DeductCommodity,omitempty"`
-	// The deducted amount.
+	// The deducted fee, in CNY.
 	//
 	// example:
 	//
 	// 0.52
 	DeductFee *string `json:"DeductFee,omitempty" xml:"DeductFee,omitempty"`
-	// The ID of the instance for which the fee is deducted.
+	// The ID of the deducted cloud service instance.
 	//
 	// example:
 	//
@@ -212,15 +234,20 @@ type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
 	// example:
 	//
 	// 1.0
-	DeductRate            *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
+	DeductRate *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
+	// The list price of the deducted amount, in CNY.
+	//
+	// example:
+	//
+	// 375.37
 	DeductedOfficialPrice *string `json:"DeductedOfficialPrice,omitempty" xml:"DeductedOfficialPrice,omitempty"`
-	// The discount used for the current deduction.
+	// The discount that is used for the deduction.
 	//
 	// example:
 	//
 	// 0.069
 	DiscountRate *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
-	// The end of the billing cycle for which the fee is deducted.
+	// The end time.
 	//
 	// example:
 	//
@@ -231,31 +258,48 @@ type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
 	// example:
 	//
 	// spn-xxxxxxx
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance type of the deducted instance.
+	//
+	// example:
+	//
+	// ecs.g7.xlarge
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The instance family of the deducted instance.
+	//
+	// example:
+	//
+	// ecs.g7
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	// The ID of the owner.
+	//
 	// example:
 	//
 	// 1906589291020438
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region of the deducted instance.
+	//
+	// example:
+	//
+	// cn-shanghai-eu13-a01
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the savings plan. Valid values:
 	//
-	// 	- universal: general-purpose
+	// - universal: general-purpose
 	//
-	// 	- ecs: ECS compute
+	// - ecs: compute-optimized
 	//
 	// example:
 	//
 	// ecs
 	SavingsType *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
-	// The beginning of the billing cycle for which the fee is deducted. The time is in the format of yyyy-MM-dd HH:mm:ss.
+	// The start time.
 	//
 	// example:
 	//
 	// 2020-12-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

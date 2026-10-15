@@ -22,21 +22,20 @@ type iQueryPrepaidCardsResponseBody interface {
 }
 
 type QueryPrepaidCardsResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *QueryPrepaidCardsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
-	// Successful
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,72 +146,16 @@ func (s *QueryPrepaidCardsResponseBodyData) Validate() error {
 }
 
 type QueryPrepaidCardsResponseBodyDataPrepaidCard struct {
-	// The services to which the prepaid card is applicable.
-	//
-	// example:
-	//
-	// All Alibaba Cloud services
-	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
-	// The scenario to which the prepaid card is applicable.
-	//
-	// example:
-	//
-	// test
+	ApplicableProducts  *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
 	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
-	// The balance of the prepaid card.
-	//
-	// example:
-	//
-	// 100.00
-	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// The time when the prepaid card took effect.
-	//
-	// example:
-	//
-	// 2018-08-03T01:39:11Z
-	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the prepaid card expired.
-	//
-	// example:
-	//
-	// 2019-08-04T01:39:11Z
-	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// The time when the prepaid card was issued.
-	//
-	// example:
-	//
-	// 2018-08-03T01:39:11Z
-	GrantedTime *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
-	// The nominal value of the prepaid card.
-	//
-	// example:
-	//
-	// 100.00
-	NominalValue *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
-	// The ID of the prepaid card.
-	//
-	// example:
-	//
-	// 213432432
-	PrepaidCardId *int64 `json:"PrepaidCardId,omitempty" xml:"PrepaidCardId,omitempty"`
-	// The number of the prepaid card.
-	//
-	// example:
-	//
-	// Q-7edaab979fc9
-	PrepaidCardNo *string `json:"PrepaidCardNo,omitempty" xml:"PrepaidCardNo,omitempty"`
-	// The status of the prepaid card. Valid values:
-	//
-	// 	- Available: The prepaid card is valid.
-	//
-	// 	- Expired: The prepaid card expired.
-	//
-	// 	- Cancelled: The prepaid card is invalid.
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Balance             *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	EffectiveTime       *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExpiryTime          *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	GrantedTime         *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
+	NominalValue        *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
+	PrepaidCardId       *int64  `json:"PrepaidCardId,omitempty" xml:"PrepaidCardId,omitempty"`
+	PrepaidCardNo       *string `json:"PrepaidCardNo,omitempty" xml:"PrepaidCardNo,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryPrepaidCardsResponseBodyDataPrepaidCard) String() string {

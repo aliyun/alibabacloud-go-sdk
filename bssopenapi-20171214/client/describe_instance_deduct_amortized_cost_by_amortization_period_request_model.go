@@ -32,37 +32,16 @@ type iDescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest interface {
 }
 
 type DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest struct {
-	BillOwnerIdList []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
-	BillUserIdList  []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2023-04
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// example:
-	//
-	// 123#
-	CostUnitCode   *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// example:
-	//
-	// rds
-	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// example:
-	//
-	// PayAsYouGo
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	BillOwnerIdList  []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
+	BillUserIdList   []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
+	BillingCycle     *string   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	CostUnitCode     *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	InstanceIdList   []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProductCode      *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail    *string   `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	SubscriptionType *string   `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) String() string {

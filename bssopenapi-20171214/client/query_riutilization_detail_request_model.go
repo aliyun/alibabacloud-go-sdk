@@ -28,13 +28,13 @@ type iQueryRIUtilizationDetailRequest interface {
 }
 
 type QueryRIUtilizationDetailRequest struct {
-	// The ID of the instance whose fees are deducted by using the RI. If this parameter is left empty, the usage details of all instances are queried.
+	// The ID of the deducted instance. If this parameter is left empty, the details of all instances are returned.
 	//
 	// example:
 	//
 	// jsdgfsdhgsdjh
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	// The time when the RI expires. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -42,29 +42,29 @@ type QueryRIUtilizationDetailRequest struct {
 	//
 	// 2019-05-23 12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance type of the RI.
+	// The instance type corresponding to the reserved instance.
 	//
 	// example:
 	//
 	// Instancetyp
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	// The number of entries per page. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the service to which the RI is applied. Default value: ecsRi. Valid values:
+	// Valid values:
 	//
-	// 	- ecsRi: ECS RI.
+	// - ecsRi: ECS reserved instances. This is the default value.
 	//
-	// 	- scu_bag: storage capacity unit (SCU).
+	// - scu_bag: Storage capacity unit (SCU) plans.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type QueryRIUtilizationDetailRequest struct {
 	//
 	// ecsRi
 	RICommodityCode *string `json:"RICommodityCode,omitempty" xml:"RICommodityCode,omitempty"`
-	// The ID of the RI. If this parameter is left empty, the usage details of all RIs are queried.
+	// The instance ID of the reserved instance for the filtered query. If this parameter is left empty, the details of all used reserved instances are returned.
 	//
 	// example:
 	//
 	// dsudfgdsjh
 	RIInstanceId *string `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
-	// The time when the RI was created. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// This parameter is required.
 	//

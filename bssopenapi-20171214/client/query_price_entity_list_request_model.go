@@ -16,7 +16,7 @@ type iQueryPriceEntityListRequest interface {
 }
 
 type QueryPriceEntityListRequest struct {
-	// The code of the service.
+	// The commodity code. You can call the **QueryCommodityList*	- operation to query the commodity code.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,12 @@ type QueryPriceEntityListRequest struct {
 	//
 	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language. Default value: zh (Chinese).
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s QueryPriceEntityListRequest) String() string {

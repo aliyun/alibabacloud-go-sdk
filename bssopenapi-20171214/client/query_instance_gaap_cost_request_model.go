@@ -24,28 +24,44 @@ type iQueryInstanceGaapCostRequest interface {
 }
 
 type QueryInstanceGaapCostRequest struct {
+	// The billing cycle, in the YYYY-MM format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product type.
+	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - `Subscription`: subscription
+	//
+	// - `PayAsYouGo`: pay-as-you-go
+	//
 	// example:
 	//
 	// PayAsYouGo

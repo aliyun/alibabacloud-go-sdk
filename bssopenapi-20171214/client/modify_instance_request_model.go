@@ -28,23 +28,23 @@ type iModifyInstanceRequest interface {
 }
 
 type ModifyInstanceRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
 	//
 	// example:
 	//
 	// JAKSJFHFAKJSF
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance for which you want to modify the configurations.
+	// The instance ID of the instance whose configuration you want to modify.
 	//
 	// example:
 	//
 	// rm-akjhkdsjhfskjfhd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of configuration modifications. Valid values:
+	// The type of configuration change. Valid values:
 	//
-	// 	- Upgrade: upgrades the configurations of the instance.
+	// - Upgrade: upgrade.
 	//
-	// 	- Downgrade: downgrades the configurations of the instance.
+	// - Downgrade: downgrade.
 	//
 	// This parameter is required.
 	//
@@ -53,9 +53,9 @@ type ModifyInstanceRequest struct {
 	// Upgrade
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The details about the parameters.
+	// The list of parameters.
 	Parameter []*ModifyInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
-	// The code of the service to which the instance belongs.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -63,7 +63,7 @@ type ModifyInstanceRequest struct {
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service to which the instance belongs.
+	// The product type.
 	//
 	// example:
 	//
@@ -71,9 +71,9 @@ type ModifyInstanceRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -177,9 +177,9 @@ func (s *ModifyInstanceRequest) Validate() error {
 }
 
 type ModifyInstanceRequestParameter struct {
-	// The code of the parameter n. Valid values of n: 1 to 100. Multiple parameters are concatenated in the order of n.
+	// The code of the nth module property. Valid values of n: 1 to 100. If multiple module properties exist, concatenate the parameters in the format of n=1,2,3…n.
 	//
-	// >  Only the parameters of the attributes that you want to modify for the instance must be configured. For example, if the instance has Attribute A and Attribute B and only Attribute A must be modified, configure only the parameter of Attribute A.
+	// > Specify only the module properties that need to be changed. For example, if only property A needs to be changed among properties A and B, pass only the information related to property A.
 	//
 	// This parameter is required.
 	//
@@ -187,7 +187,7 @@ type ModifyInstanceRequestParameter struct {
 	//
 	// test
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The value of the parameter n. Valid values of n: 1 to 100.
+	// The value of the nth module property. Valid values of n: 1 to 100.
 	//
 	// This parameter is required.
 	//

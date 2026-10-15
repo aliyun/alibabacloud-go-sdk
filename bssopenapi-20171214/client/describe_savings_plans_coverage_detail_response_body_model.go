@@ -26,23 +26,23 @@ type DescribeSavingsPlansCoverageDetailResponseBody struct {
 	//
 	// example:
 	//
-	// Success
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return data.
+	// The returned query data.
 	Data *DescribeSavingsPlansCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message returned for the API call.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the API call was successful.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBody) Validate() error {
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyData struct {
-	// The data entries.
+	// The data items.
 	Items []*DescribeSavingsPlansCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The token of the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeSavingsPlansCoverageDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// 400
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -178,7 +178,7 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) Validate() error {
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
-	// The coverage.
+	// The coverage percentage.
 	//
 	// example:
 	//
@@ -194,26 +194,28 @@ type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 100
+	// 5.5
 	DeductAmount *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 	// The end time.
 	//
 	// example:
 	//
-	// 2021-05-05 15:00:00
+	// 2023-05-01 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
-	// spn-a1fhs54c243hP22
+	// i-bp1d9x623987rlj0dx4xx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The specifications.
+	// The instance type.
 	//
 	// example:
 	//
-	// 7th_generation_X86_group
+	// ecs.sn1ne.3xlarge
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The ID of the owner of the deducted commodity.
+	//
 	// example:
 	//
 	// 1906589291020438
@@ -225,30 +227,34 @@ type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
 	// 200
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
 	// The region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The start time.
 	//
 	// example:
 	//
-	// 2021-05-05 14:00:00
+	// 2023-04-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	// The total expenditure.
 	//
 	// example:
 	//
-	// 100
+	// 6.11
 	TotalAmount *float32 `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	// The ID of the account.
+	// The user ID.
 	//
 	// example:
 	//
-	// 2831685687844416
+	// 1906589291020438
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the account.
+	// The username.
 	//
 	// example:
 	//
-	// tester1@test.aliyun.com
+	// xxx@test.aliyunid.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

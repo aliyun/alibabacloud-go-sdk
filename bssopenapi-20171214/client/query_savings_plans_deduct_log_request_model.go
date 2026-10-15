@@ -26,51 +26,47 @@ type iQuerySavingsPlansDeductLogRequest interface {
 }
 
 type QuerySavingsPlansDeductLogRequest struct {
-	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The end of the time range to query.
 	//
 	// example:
 	//
 	// 2022-01-05 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// spn-XXXXXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance ID based on which the data is queried. Valid values:
+	// The query type. Valid values:
 	//
-	// 	- spn: queries data based on the ID of the savings plan instance.
+	// - spn: savings plan instance
 	//
-	// 	- product: queries data based on the ID of the cloud service instance.
+	// - product: deducted cloud service instance
 	//
 	// example:
 	//
 	// spn
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The language of the return data. Valid values:
-	//
-	// 	- ZH: Chinese
-	//
-	// 	- EN: English
+	// The language of the response. Default value: ZH. Valid values: \\`ZH\\`: Chinese. \\`EN\\`: English.
 	//
 	// example:
 	//
 	// ZH
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The beginning of the time range to query.
 	//
 	// example:
 	//

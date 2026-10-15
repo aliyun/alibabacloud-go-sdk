@@ -22,19 +22,28 @@ type iDescribeProductAmortizedCostByConsumePeriodResponseBody interface {
 }
 
 type DescribeProductAmortizedCostByConsumePeriodResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DescribeProductAmortizedCostByConsumePeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,23 +113,34 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBody) Validate() err
 }
 
 type DescribeProductAmortizedCostByConsumePeriodResponseBodyData struct {
+	// The account ID.
+	//
 	// example:
 	//
 	// 185766xxxx
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// The user account.
+	//
 	// example:
 	//
 	// test@test.aliyunid.com
-	AccountName *string                                                             `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Items       []*DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The data entries.
+	Items []*DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The maximum number of entries returned for the current request.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the position of the next query.
+	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -203,180 +223,308 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyData) Validate()
 }
 
 type DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems struct {
+	// The amount after discount.
+	//
+	// example:
+	//
+	// 0
 	AfterDiscountAmount *float64 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
+	// The amortization month.
+	//
+	// Format: YYYYMM.
+	//
 	// example:
 	//
 	// 202210
 	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
+	// The amortization status. Valid values:
+	//
+	// - amortized: The cost is amortized.
+	//
+	// - unAmortized: The cost is not amortized.
+	//
 	// example:
 	//
 	// amortized
 	AmortizationStatus *string `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
+	// The ID of the account to which the bill belongs.
+	//
 	// example:
 	//
 	// 185xxxxx489
 	BillAccountID *int64 `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// The name of the account to which the bill belongs.
+	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// The ID of the resource owner.
+	//
 	// example:
 	//
 	// 185xxxxx489
 	BillOwnerID *int64 `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
+	// The name of the resource owner.
+	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	BillOwnerName *string `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
+	// The business type.
+	//
 	// example:
 	//
 	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The billing cycle.
+	//
+	// Format: YYYYMM.
+	//
 	// example:
 	//
 	// 202210
-	ConsumePeriod                          *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	// The amortized amount for the current period after discount.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationAfterDiscountAmount *float64 `json:"CurrentAmortizationAfterDiscountAmount,omitempty" xml:"CurrentAmortizationAfterDiscountAmount,omitempty"`
+	// The amount deducted by cash coupons that is amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationDeductedByCashCoupons *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
+	// The amount deducted by coupons that is amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
+	// The amount paid with a prepaid card that is amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationDeductedByPrepaidCard *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
+	// The expenditure amount (which can be invoiced) amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationExpenditureAmount *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
+	// The discount amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
+	// The pretax amount amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
+	// The list price amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
+	// The amount deducted by rounding down that is amortized in the current period.
+	//
 	// example:
 	//
 	// 0
 	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
+	// The amount deducted by cash coupons.
+	//
 	// example:
 	//
 	// 0
 	DeductedByCashCoupons *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// The amount deducted by coupons.
+	//
 	// example:
 	//
 	// 0
 	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// The amount paid with a prepaid card.
+	//
 	// example:
 	//
 	// 0
 	DeductedByPrepaidCard *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// The expenditure amount (which can be invoiced).
+	//
 	// example:
 	//
 	// 0
 	ExpenditureAmount *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
+	// The discount.
+	//
 	// example:
 	//
 	// 0
 	InvoiceDiscount *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// The pretax amount.
+	//
 	// example:
 	//
 	// 0
 	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// The list price.
+	//
 	// example:
 	//
 	// 0
-	PretaxGrossAmount                      *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// The previously amortized amount after discount.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedAfterDiscountAmount *float64 `json:"PreviouslyAmortizedAfterDiscountAmount,omitempty" xml:"PreviouslyAmortizedAfterDiscountAmount,omitempty"`
+	// The previously amortized amount deducted by cash coupons.
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedDeductedByCashCoupons *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
+	// The previously amortized amount deducted by coupons.
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedDeductedByCoupons *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
+	// The previously amortized amount paid with a prepaid card.
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedDeductedByPrepaidCard *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
+	// The previously amortized expenditure amount (which can be invoiced).
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedExpenditureAmount *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
+	// The previously amortized discount.
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedInvoiceDiscount *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
+	// The previously amortized pretax amount.
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedPretaxAmount *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
+	// The previously amortized list price.
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedPretaxGrossAmount *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
+	// The previously amortized amount deducted by rounding down.
+	//
 	// example:
 	//
 	// 0
 	PreviouslyAmortizedRoundDownDiscount *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// rds
-	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product details.
+	//
+	// example:
+	//
+	// 云数据库RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// The code of the product details.
+	//
 	// example:
 	//
 	// rds
-	ProductDetailCode                        *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	ProductName                              *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// 云数据库RDS
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The remaining unamortized amount after discount.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationAfterDiscountAmount *float64 `json:"RemainingAmortizationAfterDiscountAmount,omitempty" xml:"RemainingAmortizationAfterDiscountAmount,omitempty"`
+	// The remaining unamortized amount deducted by cash coupons.
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationDeductedByCashCoupons *float64 `json:"RemainingAmortizationDeductedByCashCoupons,omitempty" xml:"RemainingAmortizationDeductedByCashCoupons,omitempty"`
+	// The remaining unamortized amount deducted by coupons.
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationDeductedByCoupons *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
+	// The remaining unamortized amount paid with a prepaid card.
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationDeductedByPrepaidCard *float64 `json:"RemainingAmortizationDeductedByPrepaidCard,omitempty" xml:"RemainingAmortizationDeductedByPrepaidCard,omitempty"`
+	// The remaining unamortized expenditure amount (which can be invoiced).
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationExpenditureAmount *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
+	// The remaining unamortized discount.
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationInvoiceDiscount *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
+	// The remaining unamortized pretax amount.
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationPretaxAmount *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
+	// The remaining unamortized list price.
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationPretaxGrossAmount *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
+	// The remaining unamortized amount deducted by rounding down.
+	//
 	// example:
 	//
 	// 0
 	RemainingAmortizationRoundDownDiscount *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
+	// The amount deducted by rounding down.
+	//
 	// example:
 	//
 	// 0
 	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	// The subscription type. Valid values:
+	//
+	// - Subscription: subscription.
+	//
+	// - PayAsYouGo: pay-as-you-go.
+	//
 	// example:
 	//
 	// PayAsYouGo

@@ -22,27 +22,27 @@ type iQueryAccountBalanceResponseBody interface {
 }
 
 type QueryAccountBalanceResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryAccountBalanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16176743-6DC7-4CB3-BB25-A13982D8DFAD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,43 +113,43 @@ func (s *QueryAccountBalanceResponseBody) Validate() error {
 }
 
 type QueryAccountBalanceResponseBodyData struct {
-	// The available balance of the account.
+	// The available credit.
 	//
 	// example:
 	//
 	// 10000.00
 	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
-	// The available balance in cash.
+	// The available cash balance.
 	//
 	// example:
 	//
 	// 10000.00
 	AvailableCashAmount *string `json:"AvailableCashAmount,omitempty" xml:"AvailableCashAmount,omitempty"`
-	// The credit balance of the account.
+	// The credit limit.
 	//
 	// example:
 	//
 	// 0.00
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
-	// The type of the currency. Valid values:
+	// The currency. Valid values:
 	//
-	// 	- CNY: Chinese Yuan
+	// - CNY: Chinese Yuan
 	//
-	// 	- USD: US dollar
+	// - USD: US Dollar
 	//
-	// 	- JPY: Japanese Yen
+	// - JPY: Japanese Yen
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The credit line controlled by MYbank.
+	// The credit limit granted by MYbank.
 	//
 	// example:
 	//
 	// 0.00
 	MybankCreditAmount *string `json:"MybankCreditAmount,omitempty" xml:"MybankCreditAmount,omitempty"`
-	// The quota limit for eco customers.
+	// The quota limit for ecosystem customers.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iQueryCostUnitResourceRequest interface {
 }
 
 type QueryCostUnitResourceRequest struct {
-	// The user ID of the cost center owner.
+	// The user ID of the financial unit owner.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type QueryCostUnitResourceRequest struct {
 	//
 	// 23453245
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the cost center.
+	// The ID of the financial unit.
 	//
 	// This parameter is required.
 	//

@@ -37,102 +37,24 @@ type iCreateSavingsPlansInstanceRequest interface {
 
 type CreateSavingsPlansInstanceRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The code of the service.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// savingplan_common_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The service duration. This parameter is used together with the PricingCycle parameter.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2021-12-31T00:00:00Z
+	Duration      *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
-	// The extended parameters.
-	//
 	// if can be null:
 	// true
 	ExtendMap map[string]*string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
-	// The payment mode. Valid values:
-	//
-	// 	- total: all upfront
-	//
-	// 	- half: partial upfront
-	//
-	// 	- zero: no upfront
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	// The contracted amount. unit: CNY
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0.1
 	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	// The unit of the subscription duration. This parameter is used together with Duration. Valid values:
-	//
-	// 	- Year
-	//
-	// 	- Month
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Year
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The ID of the region in which you create the savings plan. You must specify this parameter if the Type parameter is not set to universal.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The specification type. This parameter is used together with the Specification parameter. You must specify this parameter if the Type parameter is not set to universal. Valid values:
-	//
-	// 	- group: specification group
-	//
-	// 	- family: specification family
-	//
-	// example:
-	//
-	// family
-	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The specifications of the savings plan. This parameter is used together with the SpecType parameter.
-	//
-	// example:
-	//
-	// ecs.g6
+	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SpecType      *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The type of the savings plan. Valid values:
-	//
-	// 	- universal: general-purpose type
-	//
-	// 	- ecs: Elastic Compute Service (ECS) compute type
-	//
-	// 	- elasticy: elastic type
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// universal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

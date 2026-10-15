@@ -22,27 +22,27 @@ type iQueryBillOverviewResponseBody interface {
 }
 
 type QueryBillOverviewResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryBillOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// BCB1E1BC-05BF-4217-80EE-BF09A29407BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,26 +113,25 @@ func (s *QueryBillOverviewResponseBody) Validate() error {
 }
 
 type QueryBillOverviewResponseBodyData struct {
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 185766xxxx
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The name of the account.
+	// The account name.
 	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The billing cycle, in the YYYY-MM format.
+	// The billing cycle in the YYYY-MM format.
 	//
 	// example:
 	//
 	// 2020-03
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The details of the bills.
-	Items *QueryBillOverviewResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	BillingCycle *string                                 `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QueryBillOverviewResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QueryBillOverviewResponseBodyData) String() string {
@@ -223,192 +222,34 @@ func (s *QueryBillOverviewResponseBodyDataItems) Validate() error {
 }
 
 type QueryBillOverviewResponseBodyDataItemsItem struct {
-	// The amount deducted by using credit refunds.
-	//
-	// example:
-	//
-	// 0
-	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	// The amount paid after the tax is deducted.
-	//
-	// example:
-	//
-	// 0
-	AfterTaxAmount *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	// The ID of the account to which the bill belongs.
-	//
-	// example:
-	//
-	// 185766xxxx
-	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	// The name of the account to which the bill belongs.
-	//
-	// example:
-	//
-	// test@test.aliyunid.com
-	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	// The business type.
-	//
-	// example:
-	//
-	// trusteeship
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
-	//
-	// example:
-	//
-	// 0
-	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	// The code of the commodity. The commodity code is the same as that displayed in User Center.
-	//
-	// example:
-	//
-	// rds
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The type of the currency. Valid values:
-	//
-	// 	- CNY
-	//
-	// 	- USD
-	//
-	// 	- JPY
-	//
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount deducted by using vouchers.
-	//
-	// example:
-	//
-	// 0
+	AdjustAmount          *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	BillAccountID         *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CashAmount            *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// The amount deducted by using coupons.
-	//
-	// example:
-	//
-	// 0
-	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	// The amount deducted by using prepaid cards.
-	//
-	// example:
-	//
-	// 0
+	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	// The discount amount.
-	//
-	// example:
-	//
-	// 0
-	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The type of the bill. Valid values:
-	//
-	// 	- SubscriptionOrder
-	//
-	// 	- PayAsYouGoBill
-	//
-	// 	- Refund
-	//
-	// 	- Adjustment
-	//
-	// example:
-	//
-	// PayAsYouGoBill
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The unsettled amount or the amount deducted by using credits. This may be an unsettled amount of a regular user or credits consumed by a credit user.
-	//
-	// example:
-	//
-	// 0
-	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	// The ID of the bill owner.
-	//
-	// example:
-	//
-	// 1222
-	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The amount paid in cash. The amount that was deducted by using credit refunds is included.
-	//
-	// example:
-	//
-	// 100
-	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	// The currency used for payment.
-	//
-	// example:
-	//
-	// USD
-	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// The code of the service. The service code is the same as that displayed in User Center.
-	//
-	// example:
-	//
-	// rds
-	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// The pretax amount.
-	//
-	// example:
-	//
-	// 100
-	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// The pretax amount paid in local currency.
-	//
-	// example:
-	//
-	// 0
-	PretaxAmountLocal *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	// The pretax gross amount.
-	//
-	// example:
-	//
-	// 100
-	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The code of the service.
-	//
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The details of the service.
-	//
-	// example:
-	//
-	// NAT Gateway (Pay-As-You-Go)
-	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// The name of the service.
-	//
-	// example:
-	//
-	// NAT Gateway
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The type of the service.
-	//
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The round down discount.
-	//
-	// example:
-	//
-	// 0
-	RoundDownDiscount *string `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- Subscription: the subscription billing method
-	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method
-	//
-	// example:
-	//
-	// Subscription
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The tax.
-	//
-	// example:
-	//
-	// 0
-	Tax *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
 func (s QueryBillOverviewResponseBodyDataItemsItem) String() string {

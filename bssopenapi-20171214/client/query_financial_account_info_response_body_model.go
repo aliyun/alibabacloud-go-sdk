@@ -28,15 +28,15 @@ type QueryFinancialAccountInfoResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data message body.
 	Data *QueryFinancialAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message description.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,37 +113,45 @@ func (s *QueryFinancialAccountInfoResponseBody) Validate() error {
 }
 
 type QueryFinancialAccountInfoResponseBodyData struct {
-	// The type of the financial account. A value of MASTER indicates that the account is a management account. A value of MEMBER indicates that the account is a member.
+	// The enterprise financial account type. Valid values:
+	//
+	// - MASTER: primary account.
+	//
+	// - MEMBER: member accounts.
 	//
 	// example:
 	//
 	// MEMBER
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// Indicates whether the account is a financial account. A value of true indicates that the account is a financial account. A value of false indicates that the account is not a financial account.
+	// Indicates whether the account is an enterprise financial account. Valid values:
+	//
+	// - true: The account is an enterprise financial account.
+	//
+	// - false: The account is not an enterprise financial account.
 	//
 	// example:
 	//
 	// true
 	IsFinancialAccount *bool `json:"IsFinancialAccount,omitempty" xml:"IsFinancialAccount,omitempty"`
-	// The ID of the group to which the member belongs.
+	// The ID of the group to which the member accounts belong.
 	//
 	// example:
 	//
 	// 124
 	MemberGroupId *int64 `json:"MemberGroupId,omitempty" xml:"MemberGroupId,omitempty"`
-	// The name of the group to which the member belongs.
+	// The name of the group to which the member accounts belong.
 	//
 	// example:
 	//
-	// Test group
+	// TestGroup
 	MemberGroupName *string `json:"MemberGroupName,omitempty" xml:"MemberGroupName,omitempty"`
-	// The display name of the member.
+	// The display name of the member accounts.
 	//
 	// example:
 	//
 	// Test
 	MemberNickName *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
-	// The username of the account.
+	// The logon name of the account.
 	//
 	// example:
 	//

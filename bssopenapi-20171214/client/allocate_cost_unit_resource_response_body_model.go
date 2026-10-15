@@ -22,21 +22,21 @@ type iAllocateCostUnitResourceResponseBody interface {
 }
 
 type AllocateCostUnitResourceResponseBody struct {
-	// The status code.
+	// The message code. Example: success.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *AllocateCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,23 +113,23 @@ func (s *AllocateCostUnitResourceResponseBody) Validate() error {
 }
 
 type AllocateCostUnitResourceResponseBodyData struct {
-	// Indicates whether resources are allocated to the specified cost center. Valid values:
+	// Indicates whether the financial unit resource allocation is successful.
 	//
-	// 	- true: The resources are allocated to the specified cost center.
+	// - true: The allocation succeeded.
 	//
-	// 	- false: The resources fail to be allocated to the specified cost center.
+	// - false: The allocation failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the destination cost center.
+	// The ID of the destination financial unit.
 	//
 	// example:
 	//
 	// 32857346527
 	ToUnitId *int64 `json:"ToUnitId,omitempty" xml:"ToUnitId,omitempty"`
-	// The user ID of the owner of the destination cost center.
+	// The ID of the owner of the destination financial unit.
 	//
 	// example:
 	//

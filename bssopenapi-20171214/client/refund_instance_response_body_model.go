@@ -22,13 +22,13 @@ type iRefundInstanceResponseBody interface {
 }
 
 type RefundInstanceResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// ResourceNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// data
 	Data *RefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the execution result.
 	//
@@ -36,13 +36,13 @@ type RefundInstanceResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The Tracing Analysis character string for the execute. Provide this string to the platform when troubleshooting issues.
 	//
 	// example:
 	//
 	// UUID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the call is successful. A value of true indicates that the call is complete. A value of false indicates that an error occurred.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *RefundInstanceResponseBody) Validate() error {
 }
 
 type RefundInstanceResponseBodyData struct {
-	// The site of the execution host.
+	// The site where the execution host resides.
 	//
 	// example:
 	//
 	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the refund order that is returned only if the instance is unsubscribed from.
+	// The refund order ID returned when the unsubscription is successful.
 	//
 	// example:
 	//

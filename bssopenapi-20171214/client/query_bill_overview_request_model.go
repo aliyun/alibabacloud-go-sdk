@@ -22,13 +22,13 @@ type iQueryBillOverviewRequest interface {
 }
 
 type QueryBillOverviewRequest struct {
-	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
 	//
 	// example:
 	//
 	// 1234
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The billing cycle, in the YYYY-MM format.
+	// The billing date in the YYYY-MM format.
 	//
 	// This parameter is required.
 	//
@@ -36,23 +36,23 @@ type QueryBillOverviewRequest struct {
 	//
 	// 2018-07
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: the subscription billing method
+	// - Subscription: upfront.
 	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iRelieveAccountRelationResponseBody interface {
 }
 
 type RelieveAccountRelationResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *RelieveAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// Message returned
+	// 返回消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the request.
 	//
@@ -42,7 +42,7 @@ type RelieveAccountRelationResponseBody struct {
 	//
 	// request_id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *RelieveAccountRelationResponseBody) Validate() error {
 }
 
 type RelieveAccountRelationResponseBodyData struct {
-	// hostid
+	// The ID of the host.
 	//
 	// example:
 	//

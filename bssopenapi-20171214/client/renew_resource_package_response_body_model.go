@@ -24,15 +24,15 @@ type iRenewResourcePackageResponseBody interface {
 }
 
 type RenewResourcePackageResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *RenewResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type RenewResourcePackageResponseBody struct {
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *RenewResourcePackageResponseBody) Validate() error {
 }
 
 type RenewResourcePackageResponseBodyData struct {
-	// The ID of the resource plan.
+	// The ID of the instance.
 	//
 	// example:
 	//

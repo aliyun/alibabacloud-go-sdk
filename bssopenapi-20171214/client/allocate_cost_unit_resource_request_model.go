@@ -22,11 +22,11 @@ type iAllocateCostUnitResourceRequest interface {
 }
 
 type AllocateCostUnitResourceRequest struct {
-	// The ID of the source cost center.
+	// The ID of the source financial unit. This parameter is required.
 	//
-	// 	- A value of 0 indicates that the resources to be transferred have not been allocated to a cost center.
+	// - 0 indicates the unallocated financial unit ID.
 	//
-	// 	- A value greater than 0 indicates the ID of an existing cost center.
+	// - A value greater than 0 indicates an allocated financial unit ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AllocateCostUnitResourceRequest struct {
 	//
 	// 0
 	FromUnitId *int64 `json:"FromUnitId,omitempty" xml:"FromUnitId,omitempty"`
-	// The user ID of the owner of the source cost center.
+	// The ID of the owner of the source financial unit. This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type AllocateCostUnitResourceRequest struct {
 	//
 	// 273394581313325532
 	FromUnitUserId *int64 `json:"FromUnitUserId,omitempty" xml:"FromUnitUserId,omitempty"`
-	// The resource instances to be transferred.
+	// The list of resource instances.
 	//
 	// This parameter is required.
 	ResourceInstanceList []*AllocateCostUnitResourceRequestResourceInstanceList `json:"ResourceInstanceList,omitempty" xml:"ResourceInstanceList,omitempty" type:"Repeated"`
-	// The ID of the destination cost center.
+	// The ID of the destination financial unit. Valid values:
 	//
-	// 	- A value of -1 indicates that the allocated resources are changed to unallocated.
+	// - -1: moves the allocated resource to the unallocated state.
 	//
-	// 	- A value greater than 0 indicates the ID of an existing cost center.
+	// - A value greater than 0: allocates the resource to the specified financial unit.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type AllocateCostUnitResourceRequest struct {
 	//
 	// 186419
 	ToUnitId *int64 `json:"ToUnitId,omitempty" xml:"ToUnitId,omitempty"`
-	// The user ID of the owner of the destination cost center.
+	// The ID of the owner of the destination financial unit.
 	//
 	// This parameter is required.
 	//
@@ -135,17 +135,17 @@ func (s *AllocateCostUnitResourceRequest) Validate() error {
 }
 
 type AllocateCostUnitResourceRequestResourceInstanceList struct {
-	// The split item of the shared instance. This parameter is required only for shared instances.
+	// The attached resource type of the attached-resource-based instance. This parameter is required only for attached-resource-based product instances.
 	//
-	// 	- Eight cloud services support bill splitting. The commodity codes of the eight services are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
+	// - Currently, eight commodities support attached resources. Their commodity codes are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
 	//
-	// 	- You can obtain the split item of a shared instance by calling QueryCostUnitResource operation to obtain all resource instances within a cost center.
+	// - This attached resource field is typically obtained by calling QueryCostUnitResource to retrieve all billing instances (including attached-resource-based instances with attached resource information) under a specific financial unit (including the unallocated unit) of a user.
 	//
 	// example:
 	//
 	// qwer1-cn-beijing
 	ApportionCode *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
-	// The commodity code of the resource instance.
+	// The commodity code of the billing instance. This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -153,7 +153,7 @@ type AllocateCostUnitResourceRequestResourceInstanceList struct {
 	//
 	// oss
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The ID of the resource instance.
+	// The instance ID of the billing instance. This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -161,7 +161,7 @@ type AllocateCostUnitResourceRequestResourceInstanceList struct {
 	//
 	// cn-hangzhou;standard
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The user ID of the resource instance owner.
+	// The ID of the owner of the billing instance. This parameter is required.
 	//
 	// This parameter is required.
 	//

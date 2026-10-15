@@ -130,7 +130,6 @@ func (s *DescribeResourcePackageProductResponseBody) Validate() error {
 }
 
 type DescribeResourcePackageProductResponseBodyData struct {
-	// The details about the resource plans.
 	ResourcePackages *DescribeResourcePackageProductResponseBodyDataResourcePackages `json:"ResourcePackages,omitempty" xml:"ResourcePackages,omitempty" type:"Struct"`
 }
 
@@ -195,26 +194,10 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackages) Validat
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage struct {
-	// The name of the resource plan.
-	//
-	// example:
-	//
-	// Object Storage Service (OSS) resource plan (monthly)
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The types of the resource plans.
+	Name         *string                                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	PackageTypes *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes `json:"PackageTypes,omitempty" xml:"PackageTypes,omitempty" type:"Struct"`
-	// The code of the service.
-	//
-	// example:
-	//
-	// ossbag
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
-	//
-	// example:
-	//
-	// ossbag
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductCode  *string                                                                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType  *string                                                                                    `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) String() string {
@@ -305,21 +288,9 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageType struct {
-	// The code of the resource plan.
-	//
-	// example:
-	//
-	// FPT_ossbag_deadlineAcc_CdnOut_common_sz
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the resource plan type.
-	//
-	// example:
-	//
-	// Back-to-origin traffic plan - China (Shenzhen)
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The properties of the resource plan.
-	Properties *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The specifications of the resource plan.
+	Code           *string                                                                                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name           *string                                                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties     *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties     `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
 	Specifications *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecifications `json:"Specifications,omitempty" xml:"Specifications,omitempty" type:"Struct"`
 }
 
@@ -416,17 +387,7 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypePropertiesProperty struct {
-	// The name of the property.
-	//
-	// example:
-	//
-	// region
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the property.
-	//
-	// example:
-	//
-	// cn-shenzhen
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -495,20 +456,9 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification struct {
-	// The validity periods available for the resource plan.
 	AvailableDurations *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations `json:"AvailableDurations,omitempty" xml:"AvailableDurations,omitempty" type:"Struct"`
-	// The name of the specification.
-	//
-	// example:
-	//
-	// 1TB
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the specification.
-	//
-	// example:
-	//
-	// 1024
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name               *string                                                                                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value              *string                                                                                                                                            `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) String() string {
@@ -590,30 +540,9 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration struct {
-	// The name of the validity period.
-	//
-	// example:
-	//
-	// 6 Month
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unit of the validity period for the resource plan. Valid values:
-	//
-	// 	- Month
-	//
-	// 	- Year
-	//
-	// Default value: Month.
-	//
-	// example:
-	//
-	// Month
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The value of the validity period.
-	//
-	// example:
-	//
-	// 6
-	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Unit  *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration) String() string {

@@ -22,31 +22,31 @@ type iChangeResellerConsumeAmountResponseBody interface {
 }
 
 type ChangeResellerConsumeAmountResponseBody struct {
-	// The error code returned if the call failed. For more information, see the "Error codes" section of the topic.
+	// The error code returned when the call fails. For more information, see Error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The consumption quota for the quota ledger after adjustment.
+	// The consumption quota of the corresponding quota ledger after the update.
 	//
 	// example:
 	//
 	// 300.00
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The additional information about the call result.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+	// Indicates whether the call was successful. A value of true indicates that the call was successful. A value of false indicates that an error occurred.
 	//
 	// example:
 	//

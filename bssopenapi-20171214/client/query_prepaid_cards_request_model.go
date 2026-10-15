@@ -18,27 +18,27 @@ type iQueryPrepaidCardsRequest interface {
 }
 
 type QueryPrepaidCardsRequest struct {
-	// Specifies whether the prepaid card takes effect. Valid values:
+	// Specifies whether the card package is effective. Valid values:
 	//
-	// 	- true
+	// - true: Effective.
 	//
-	// 	- false
+	// - false: Ineffective.
 	//
 	// example:
 	//
 	// true
 	EffectiveOrNot *bool `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
-	// The end of the expiration time of prepaid cards to query. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The end time of card package expiration. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
-	// 2018-08-01T00:00:00Z
+	// 2018-08-01 00:00:00
 	ExpiryTimeEnd *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
-	// The start of the expiration time of prepaid cards to query. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time of card package expiration. Format: yyyy-MM-dd.
 	//
 	// example:
 	//
-	// 2018-08-01T00:00:00Z
+	// 2018-08-01 00:00:00
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 }
 

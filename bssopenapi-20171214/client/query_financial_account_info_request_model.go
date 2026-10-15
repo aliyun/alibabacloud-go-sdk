@@ -14,7 +14,7 @@ type iQueryFinancialAccountInfoRequest interface {
 }
 
 type QueryFinancialAccountInfoRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// This parameter is required.
 	//

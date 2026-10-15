@@ -83,7 +83,7 @@ func (client *Client) AddAccountRelationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Transfers resource instances from the source cost center to the destination cost center.
+// Allocates resource instances (instance-based and attached-resource-based) from a source financial unit to a destination financial unit.
 //
 // @param request - AllocateCostUnitResourceRequest
 //
@@ -143,7 +143,7 @@ func (client *Client) AllocateCostUnitResourceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Submits an application for an invoice.
+// Submits an invoice application.
 //
 // @param request - ApplyInvoiceRequest
 //
@@ -273,6 +273,14 @@ func (client *Client) CancelOrderWithContext(ctx context.Context, request *Cance
 	return _result, _err
 }
 
+// Summary:
+//
+// Deducts user quota consumption.
+//
+// Description:
+//
+// Deducts user quota consumption.
+//
 // @param request - ChangeResellerConsumeAmountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -343,11 +351,13 @@ func (client *Client) ChangeResellerConsumeAmountWithContext(ctx context.Context
 
 // Summary:
 //
-// Confirms the invitation initiated by the master account.
+// Confirms an invitation initiated by the main account for a linked account.
 //
 // Description:
 //
-// 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
+// 1. Currently, only financial management linking is supported. The linked account needs to confirm the invitation only when the real-name verification information of the main account and the linked account is inconsistent.
+//
+// 2. The permissions to be confirmed must be exactly the same as the permissions specified in the invitation initiated by the main account for the confirmation to succeed.
 //
 // @param request - ConfirmRelationRequest
 //
@@ -415,7 +425,7 @@ func (client *Client) ConfirmRelationWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
+// Changes the subscription type for an instance. Currently, this operation supports converting pay-as-you-go instances of SLB, EIP, and NAT Gateway to subscription instances, and converting subscription instances of SLB and EIP to pay-as-you-go instances.
 //
 // @param request - ConvertChargeTypeRequest
 //
@@ -479,11 +489,11 @@ func (client *Client) ConvertChargeTypeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates an account to establish a financial relationship.
+// Creates an account linking relationship.
 //
 // Description:
 //
-// You can call this operation to create an account so as to establish a master-member financial relationship.
+// Creates a master-member relationship for financial management.
 //
 // @param request - CreateAgAccountRequest
 //
@@ -559,7 +569,7 @@ func (client *Client) CreateAgAccountWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a cost center. You can create multiple cost centers at a time.
+// Creates financial units. Batch creation is supported.
 //
 // @param request - CreateCostUnitRequest
 //
@@ -603,7 +613,7 @@ func (client *Client) CreateCostUnitWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
+// Creates an instance resource. This operation creates an order for a new instance resource and completes automatic payment. ECS and RDS product series are not supported.
 //
 // @param request - CreateInstanceRequest
 //
@@ -687,7 +697,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+// Creates a user quota ledger and a quota consumption ledger.
 //
 // @param request - CreateResellerUserQuotaRequest
 //
@@ -743,7 +753,7 @@ func (client *Client) CreateResellerUserQuotaWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a resource plan.
+// 创建资源包
 //
 // @param request - CreateResourcePackageRequest
 //
@@ -811,7 +821,7 @@ func (client *Client) CreateResourcePackageWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
+// 创建节省计划实例
 //
 // @param tmpReq - CreateSavingsPlansInstanceRequest
 //
@@ -905,7 +915,7 @@ func (client *Client) CreateSavingsPlansInstanceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes a cost center.
+// Deletes a financial unit.
 //
 // @param request - DeleteCostUnitRequest
 //
@@ -953,11 +963,11 @@ func (client *Client) DeleteCostUnitWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Query the summary information of the user "Cost Management-Budget".
+// Queries a summary of cost budgets.
 //
 // Description:
 //
-// This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+// This OpenAPI is in beta and available only to whitelisted users. Excessive calls may cause performance issues, such as response timeouts.
 //
 // @param request - DescribeCostBudgetsSummaryRequest
 //
@@ -1017,11 +1027,21 @@ func (client *Client) DescribeCostBudgetsSummaryWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the monthly allocated costs of instances by allocation month.
+// Queries the monthly amortized costs of instances for a specified amortization month.
 //
 // Description:
 //
-// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+// - Amortized costs cannot be used for settlement or reconciliation. They are used to allocate your subscription and pay-as-you-go fees based on specified allocation rules.
+//
+// - The final data for a month is available after 12:00 on the sixth day of the following month. The reason for this delay is that scenarios such as delayed billing, refunds, bill adjustments, and overdue payment write-offs can occur during the month. The data for the current month does not include unsettled pay-as-you-go fees for which bills have not yet been generated.
+//
+// - Amortized cost data from the last 12 months is available.
+//
+// - Data for attached resources is reflected in the amortized costs 48 hours after the split bill is generated. To use this feature, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data for items that are not attached resources is updated 48 hours after the detailed bill is generated.
+//
+// - For months before August 2021, amortized costs are not updated intra-month. They are updated only after 12:00 on the sixth day of the following month. Consequently, specific costs for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available for these months.
+//
+// - Amortized cost data is available for querying 48 hours after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature.
 //
 // @param request - DescribeInstanceAmortizedCostByAmortizationPeriodRequest
 //
@@ -1193,7 +1213,21 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithC
 
 // Summary:
 //
-// 实例账期月摊销成本
+// Queries the monthly amortized cost of an instance by billing cycle.
+//
+// Description:
+//
+// - Amortized costs are not used for settlement or reconciliation. They are used to allocate your cloud expenses, including both subscription and pay-as-you-go fees, based on specified allocation rules.
+//
+// - The final data for a month is available after 12:00 on the sixth day of the following month. This delay accounts for events such as delayed billing, refunds, bill adjustments, and overdue payment write-offs. Data for the current month does not include unsettled pay-as-you-go fees.
+//
+// - Amortized cost data is available for the past 12 months.
+//
+// - Data for attached resources in the amortized costs is updated 48 hours after the split bill is generated. To view the costs of attached resources, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data for other resources is updated 48 hours after the detailed bill is generated.
+//
+// - For months before August 2021, amortized costs are not updated mid-month. They are updated only after 12:00 on the sixth day of the following month. In addition, specific costs for attached resources, such as domain names, buckets, and EIPs, of products such as CDN, OSS, and Internet Shared Bandwidth, are not provided for this period.
+//
+// - Amortized cost data is available only after you enable the [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data becomes available 48 hours after enablement.
 //
 // @param request - DescribeInstanceAmortizedCostByConsumePeriodRequest
 //
@@ -1277,15 +1311,23 @@ func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithContext(ct
 
 // Summary:
 //
-// Queries the billing information about instances or billable items in a billing cycle.
+// Queries the consumption summary of all product instances or billable items for a user within a specific billing cycle.
 //
 // Description:
 //
-//	  Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
+// - The query results for the current month are for reference only and cannot be used as the basis for reconciliation. The final bill for the current month can be viewed or exported after 12:00 on the 3rd day of the next month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, bill adjustments, and overdue payment write-offs.
 //
-//		- The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
+// - The bill data for the current month does not include unsettled pay-as-you-go data that is unbilled or accumulating.
 //
-//		- You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
+// - Data for the last 18 months is supported.
+//
+// - Bill data is updated with a 24-hour delay compared to actual consumption. Information related to the instance ID, such as instance configuration, instance type, instance alias, resource group, public IP address, private IP address, and zone, is updated with a 48-hour delay.
+//
+// - Bill data does not provide the specific costs of individual split items, such as domain names, buckets, and EIPs, for split-type cloud services, such as CDN, OSS, and Internet Shared Bandwidth. To view data that includes split items, go to the split bill page.
+//
+// - For cloud communication products, only detail data from June 2020 onwards is supported. For HiChina products, including domain names and trademarks, only detail data from November 2020 onwards is supported.
+//
+// - The rate limit is 10 requests per second per user. If a timeout occurs, retry the request.
 //
 // @param request - DescribeInstanceBillRequest
 //
@@ -1461,7 +1503,7 @@ func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWit
 
 // Summary:
 //
-// Queries the pricing information about an Alibaba Cloud service.
+// Queries the module information of a specific Alibaba Cloud product.
 //
 // @param request - DescribePricingModuleRequest
 //
@@ -1517,11 +1559,21 @@ func (client *Client) DescribePricingModuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the allocated costs of services by allocation month.
+// Queries the monthly amortized cost of products for a specified month.
 //
 // Description:
 //
-// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+// - Amortized costs are for cost allocation purposes only and cannot be used for settlement or reconciliation. This feature allocates your cloud expenses, including both subscription and pay-as-you-go fees, based on specified allocation rules.
+//
+// - The final data for a month is available after 12:00 on the sixth day of the following month. Data for the current month is not final. This is because it does not include unsettled pay-as-you-go fees and may change due to events such as delayed billing, refunds, bill adjustments, and overdue payment write-offs.
+//
+// - Amortized cost data for the past 12 months is available.
+//
+// - Data for attached resources, which requires you to enable [split bills](https://usercenter2.aliyun.com/finance/split-bill), is updated 48 hours after the split bill is generated. Data for other resources is updated 48 hours after the detailed bill is generated.
+//
+// - For months before August 2021, amortized costs were not updated during the month. They were updated only after 12:00 on the sixth day of the following month. In addition, cost details for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available for this period.
+//
+// - Amortized cost data becomes available 48 hours after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature.
 //
 // @param request - DescribeProductAmortizedCostByAmortizationPeriodRequest
 //
@@ -1601,7 +1653,21 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithContex
 
 // Summary:
 //
-// 产品账期月摊销成本
+// Queries the monthly amortized cost of a product for a specific billing cycle.
+//
+// Description:
+//
+// - Amortized costs are used for cost allocation and cannot be used for settlement or reconciliation. This feature allocates your cloud expenses, including both subscription and pay-as-you-go fees, based on specified rules.
+//
+// - The final data for a given month is available after 12:00 on the sixth day of the following month. This delay ensures that potential mid-month events, such as delayed billing, refunds, bill adjustments, and overdue payment write-offs, are included. Data for the current month does not include unsettled pay-as-you-go fees that have not yet been billed or are still accumulating.
+//
+// - Amortized cost data for the past 12 months is available.
+//
+// - Data related to attached resources is updated in the amortized costs 48 hours after the corresponding split bill is generated. To view the costs of attached resources, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data that is not related to attached resources is updated 48 hours after the detailed bill is generated.
+//
+// - For months before August 2021, amortized costs were not updated mid-month and were only updated after 12:00 on the sixth day of the following month. Additionally, for this period, specific costs for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available.
+//
+// - Amortized cost data is provided only after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data is available 48 hours after you enable it.
 //
 // @param request - DescribeProductAmortizedCostByConsumePeriodRequest
 //
@@ -1681,15 +1747,15 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithContext(ctx
 
 // Summary:
 //
-// Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
+// Queries the coverage details of reserved instances and storage capacity units (SCUs).
 //
 // Description:
 //
-// 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+// 1. The data is consistent with the list data in the Coverage Overview section of the Resource Instance Management menu in the User Center.
 //
-// 2\\. You can call this operation to query the coverage details of RIs or SCUs.
+// 2. Currently, coverage queries are supported for reserved instances (RIs) and storage capacity units (SCUs).
 //
-// 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
+// 3. Coverage queries are provided in three dimensions: hour, day, and month.
 //
 // @param request - DescribeResourceCoverageDetailRequest
 //
@@ -1757,13 +1823,13 @@ func (client *Client) DescribeResourceCoverageDetailWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
+// Queries the coverage summary of reserved instances and storage capacity units (SCUs).
 //
 // Description:
 //
-// The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+// Returns the same summary data as the Coverage Overview in the Resource Instance Management menu of the User Center.
 //
-// You can call this operation to query the total coverage data of RIs or SCUs.
+// Currently, coverage queries are supported for two resource types: reserved instances (RIs) and storage capacity units (SCUs).
 //
 // @param request - DescribeResourceCoverageTotalRequest
 //
@@ -1867,7 +1933,7 @@ func (client *Client) DescribeResourcePackageProductWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
+// Queries the usage details of reserved instances and storage capacity units (SCUs).
 //
 // @param request - DescribeResourceUsageDetailRequest
 //
@@ -1935,7 +2001,7 @@ func (client *Client) DescribeResourceUsageDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the total usage data of reserved instances or storage capacity units (SCUs).
+// Queries the usage summary of reserved instances and storage capacity units (SCUs).
 //
 // @param request - DescribeResourceUsageTotalRequest
 //
@@ -2069,7 +2135,7 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithContext(ctx context.
 
 // Summary:
 //
-// Queries the coverage summary of savings plans.
+// Queries the summary of savings plan coverage.
 //
 // @param tmpReq - DescribeSavingsPlansCoverageTotalRequest
 //
@@ -2279,11 +2345,15 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithContext(ctx context.Cont
 //
 // Description:
 //
-//	  The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+// - The query results for the current month\\"s split bills are for reference only and cannot be used as the basis for reconciliation. The final bill for the current month can be queried after 12:00 on the 4th day of the next month. The split bill data for the current month does not include unsettled pay-as-you-go data (unbilled or being accumulated).
 //
-//		- You can query split bills that were generated within the last 12 months by calling this operation.
+// - Split bill data is available for the last 12 months.
 //
-//		- You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
+// - Split bill data is updated with a 48-hour delay compared to actual expenses. For split cloud services (such as CDN, OSS, and Internet Shared Bandwidth), the specific expenses for each attached resource (such as domain names, buckets, and EIPs) are updated with a 72-hour delay.
+//
+// - Split bill data is available only after you enable the feature on the <props="china">[Split Bill](https://usercenter2.aliyun.com/finance/split-bill)<props="intl">[Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) page in the console. The data becomes available 24 hours after you enable the feature.
+//
+// - The rate limit is 10 requests per second per user. If a timeout occurs, retry the request.
 //
 // @param request - DescribeSplitItemBillRequest
 //
@@ -2383,7 +2453,7 @@ func (client *Client) DescribeSplitItemBillWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of a financial relationship.
+// Queries the details of an account linking.
 //
 // @param request - GetAccountRelationRequest
 //
@@ -2423,7 +2493,7 @@ func (client *Client) GetAccountRelationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the account information about a customer of a virtual network operator (VNO).
+// Queries the account information of an end customer under a partner.
 //
 // @param request - GetCustomerAccountInfoRequest
 //
@@ -2467,7 +2537,7 @@ func (client *Client) GetCustomerAccountInfoWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
+// Queries the details of a specific order for a user or a distribution customer.
 //
 // @param request - GetOrderDetailRequest
 //
@@ -2515,17 +2585,17 @@ func (client *Client) GetOrderDetailWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the pay-as-you-go price of an Alibaba Cloud service.
+// Queries the price of a pay-as-you-go product.
 //
 // Description:
 //
-// ### Usage notes
+// ### Operation description
 //
-// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+// 1. Call QueryProductList to obtain the product code. For more information, see [Query product information](https://help.aliyun.com/document_detail/95984.html).
 //
-// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+// 2. Call the DescribePricingModule operation to obtain the configuration parameters of a product. For more information, see [Query pricing module information](https://help.aliyun.com/document_detail/96469.html).
 //
-// 3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
+// 3. Call this operation with the obtained product configuration parameters to query the price of a pay-as-you-go product.
 //
 // @param request - GetPayAsYouGoPriceRequest
 //
@@ -2665,15 +2735,17 @@ func (client *Client) GetResourcePackagePriceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the subscription price of an Alibaba Cloud service.
+// Queries the prices of subscription products.
 //
 // Description:
 //
-// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+// 1. Call QueryProductList to obtain the product code. For more information, see [Query product information](https://help.aliyun.com/document_detail/95984.html).
 //
-// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+// 2. Call the DescribePricingModule operation to obtain the configuration parameters of the product. For more information, see [Query product module information](https://help.aliyun.com/document_detail/96469.html).
 //
-// 3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
+// 3. Call this operation to query the prices of subscription products based on the obtained product configuration parameters.
+//
+// 4. Concatenate the Config parameter under ModuleList based on the config parameter returned by the DescribePricingModule operation. Do not omit any parameters. Otherwise, an error occurs during the price inquiry.
 //
 // @param request - GetSubscriptionPriceRequest
 //
@@ -2757,15 +2829,15 @@ func (client *Client) GetSubscriptionPriceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the refundable amount for an instance from which you want to unsubscribe.
+// Queries the refund amount for an instance that you want to unsubscribe from.
 //
 // Description:
 //
-// 1.  **Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**
+// 1. **Carefully verify the information about the resource to be unsubscribed, and confirm the unsubscription terms and refund amount. Resources cannot be recovered after unsubscription.**
 //
-// 2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+// 2. Only the actual paid amount is refunded. Used vouchers are not refunded.
 //
-// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/user-guide/refund-rules).
+// 3. For other questions, refer to: <props="china">[Refund rules](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM)<props="intl">[Refund rules for Alibaba Cloud International Website](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules)
 //
 // @param request - InquiryPriceRefundInstanceRequest
 //
@@ -2821,7 +2893,7 @@ func (client *Client) InquiryPriceRefundInstanceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Adds or removes permissions granted to a member in a financial relationship.
+// Adds or deletes permissions for an account linking relationship.
 //
 // @param request - ModifyAccountRelationRequest
 //
@@ -2897,7 +2969,7 @@ func (client *Client) ModifyAccountRelationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies one or more cost centers.
+// Modifies financial units. Batch modification is supported.
 //
 // @param request - ModifyCostUnitRequest
 //
@@ -2941,7 +3013,7 @@ func (client *Client) ModifyCostUnitWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
+// Modifies the resource configuration of an instance. Invoking this operation creates an order for the Upgrade/Downgrade of instance resources and processes automatic payment. This operation does not support configuration changes for ECS or RDS products. Use the dedicated API of the corresponding product to execute the Upgrade/Downgrade.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -3081,15 +3153,21 @@ func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrder
 
 // Summary:
 //
-// Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
+// Queries account spending within a billing cycle and aggregates the data by resource owner.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// - Data for the current month is for reference only. Do not use it for reconciliation. The final bill for the current month is available to view or export after 12:00 on the third day of the next month. This delay accounts for mid-month events such as delayed billing, refunds, bill adjustments, and overdue payment write-offs.
 //
-//   - Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
+// - Data from the last 18 months is available.
 //
-//   - You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
+// - Billing data is updated 24 hours after actual resource consumption. Information related to instance IDs, such as instance configurations, instance types, instance nicknames, resource groups, public IP addresses, private IP addresses, and zones, is updated with a 48-hour delay.
+//
+// - Billing data does not include the costs of attached resources, such as domain names, buckets, and elastic IP addresses (EIPs), for products such as CDN, OSS, and Internet Shared Bandwidth. To view statistics that include data for attached resources, go to Split Bill.
+//
+// - For Alibaba Cloud Communications products, detailed data is available only from June 2020 onwards. For HiChina products, such as Domain Names and trademarks, detailed data is available only from November 2020 onwards.
+//
+// - Each account is limited to 10 queries per second. If a timeout occurs, retry the request.
 //
 // @param request - QueryAccountBillRequest
 //
@@ -3165,7 +3243,7 @@ func (client *Client) QueryAccountBillWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the details of transactions within your account.
+// Queries the income and expenditure details of account transactions.
 //
 // @param request - QueryAccountTransactionDetailsRequest
 //
@@ -3241,7 +3319,7 @@ func (client *Client) QueryAccountTransactionDetailsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries transactions within your Alibaba Cloud account.
+// Queries the transaction records of a user account.
 //
 // @param request - QueryAccountTransactionsRequest
 //
@@ -3321,7 +3399,7 @@ func (client *Client) QueryAccountTransactionsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries available instances.
+// Queries the list of available instances for the user.
 //
 // @param request - QueryAvailableInstancesRequest
 //
@@ -3413,7 +3491,7 @@ func (client *Client) QueryAvailableInstancesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the bills in a billing cycle.
+// Queries the settlement bills of a user within a specific billing cycle.
 //
 // @param request - QueryBillRequest
 //
@@ -3497,7 +3575,7 @@ func (client *Client) QueryBillWithContext(ctx context.Context, request *QueryBi
 
 // Summary:
 //
-// Queries the bill overview information in a billing cycle.
+// Queries the bill overview of a user for a specific billing cycle.
 //
 // @param request - QueryBillOverviewRequest
 //
@@ -3557,7 +3635,7 @@ func (client *Client) QueryBillOverviewWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about vouchers.
+// Queries user voucher information.
 //
 // @param request - QueryCashCouponsRequest
 //
@@ -3609,11 +3687,11 @@ func (client *Client) QueryCashCouponsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about a service based on the service code.
+// Retrieves a list of commodity information based on a product code.
 //
 // Description:
 //
-// You can call this operation to query the information about a service based on the service code.
+// Retrieves a list of commodity information based on a product code.
 //
 // @param request - QueryCommodityListRequest
 //
@@ -3653,7 +3731,7 @@ func (client *Client) QueryCommodityListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
+// Queries all financial unit nodes under the current node of the financial unit tree. If ParentUnitId is set to -1, all financial units are queried.
 //
 // @param request - QueryCostUnitRequest
 //
@@ -3709,7 +3787,7 @@ func (client *Client) QueryCostUnitWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
+// Queries the list of resource instances that belong to a financial unit of a user. When UnitId is set to 0, the query returns unallocated primary and sub-resource instances.
 //
 // @param request - QueryCostUnitResourceRequest
 //
@@ -3765,7 +3843,7 @@ func (client *Client) QueryCostUnitResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the addresses to which invoices are mailed.
+// Queries the Alibaba Cloud invoice mailing address information service.
 //
 // @param request - QueryCustomerAddressListRequest
 //
@@ -3815,7 +3893,7 @@ func (client *Client) QueryCustomerAddressListWithContext(ctx context.Context, r
 //
 // Limits:
 //
-//   - Only the usage records within the past year can be queried.
+// - Only usage records from the past year are supported.
 //
 // @param request - QueryDPUtilizationDetailRequest
 //
@@ -3895,7 +3973,7 @@ func (client *Client) QueryDPUtilizationDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about the orders for which you want to apply for invoices.
+// Queries a list of objects that are eligible for invoicing.
 //
 // @param request - QueryEvaluateListRequest
 //
@@ -3991,7 +4069,7 @@ func (client *Client) QueryEvaluateListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about a financial account.
+// Queries the enterprise financial account information of an account that has primary-subsidiary relationship permissions.
 //
 // @param request - QueryFinancialAccountInfoRequest
 //
@@ -4035,19 +4113,25 @@ func (client *Client) QueryFinancialAccountInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the bills of instances or billable items in a billing cycle.
+// Queries the usage summary of all product instances or billable items for an account in a billing cycle. This operation has been upgraded to DescribeInstanceBill. This operation no longer queries data beyond the 50,000th row.
 //
 // Description:
 //
-// ##
+// ## API description
 //
-//   - This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
+// Note the following when you call this operation:
 //
-//   - Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
+// - The API for instance bills has been upgraded. We recommend that you use the new operation [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html). This operation no longer supports querying data beyond the 50,000th row.
 //
-//   - The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
+// - Instance bills are generated based on split billing data. A delay of about one day may occur.
 //
-//   - You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
+// - Instance information may change within a billing cycle. The instance Config and Spec in the monthly summary reflect the information at the time the record was generated. For more information, see the corresponding detailed bill.
+//
+// - Data for Alibaba Cloud Communications products is available from June 2020. Data for HiChina products is available from November 2020.
+//
+// <props="intl">
+//
+// - For the international site (alibabacloud.com), select Singapore as the endpoint.
 //
 // @param request - QueryInstanceBillRequest
 //
@@ -4135,7 +4219,7 @@ func (client *Client) QueryInstanceBillWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries instances by tag.
+// Queries a list of instances by tags.
 //
 // @param request - QueryInstanceByTagRequest
 //
@@ -4187,7 +4271,7 @@ func (client *Client) QueryInstanceByTagWithContext(ctx context.Context, request
 
 // Summary:
 //
-// The code of the service.
+// This API is deprecated. Use the following APIs to retrieve the amortized cost: `DescribeInstanceAmortizedCostByAmortizationPeriod` - retrieves instance costs by amortization period; `DescribeProductAmortizedCostByAmortizationPeriod` - retrieves product costs by amortization period; `DescribeInstanceAmortizedCostByConsumePeriod` - retrieves instance costs by consume period; `DescribeProductAmortizedCostByConsumePeriod` - retrieves product costs by consume period.
 //
 // @param request - QueryInstanceGaapCostRequest
 //
@@ -4251,7 +4335,7 @@ func (client *Client) QueryInstanceGaapCostWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about invoice titles.
+// Queries the invoicing information of an Alibaba Cloud user.
 //
 // @param request - QueryInvoicingCustomerListRequest
 //
@@ -4295,7 +4379,7 @@ func (client *Client) QueryInvoicingCustomerListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
+// Queries the orders of users or distribution customers. By default, this operation queries orders created within the last hour. To query orders over a longer period, specify the CreateTimeStart and CreateTimeEnd parameters.
 //
 // @param request - QueryOrdersRequest
 //
@@ -4375,7 +4459,7 @@ func (client *Client) QueryOrdersWithContext(ctx context.Context, request *Query
 
 // Summary:
 //
-// Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
+// Queries the permissions for a master-member relationship based on the relationship ID.
 //
 // @param request - QueryPermissionListRequest
 //
@@ -4419,7 +4503,7 @@ func (client *Client) QueryPermissionListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries prepaid cards.
+// Queries user card package information.
 //
 // @param request - QueryPrepaidCardsRequest
 //
@@ -4471,11 +4555,11 @@ func (client *Client) QueryPrepaidCardsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the billable items of a service.
+// Queries the pricing entities under a commodity. A pricing entity is the smallest product capability used for metering and cost calculation.
 //
 // Description:
 //
-// You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+// Queries the pricing entities under a commodity. A pricing entity is the smallest product capability used for metering and cost calculation.
 //
 // @param request - QueryPriceEntityListRequest
 //
@@ -4515,7 +4599,7 @@ func (client *Client) QueryPriceEntityListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about all Alibaba Cloud services.
+// Queries the list of products available for the current account to order. The response includes the product code, product name, and subscription type (subscription or pay-as-you-go).
 //
 // @param request - QueryProductListRequest
 //
@@ -4567,7 +4651,7 @@ func (client *Client) QueryProductListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the usage details of a reserved instance (RI).
+// Queries the usage of reserved instances (RIs).
 //
 // @param request - QueryRIUtilizationDetailRequest
 //
@@ -4639,7 +4723,7 @@ func (client *Client) QueryRIUtilizationDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about a redemption coupon.
+// Queries the redemption ticket information of a user.
 //
 // @param request - QueryRedeemRequest
 //
@@ -4679,7 +4763,7 @@ func (client *Client) QueryRedeemWithContext(ctx context.Context, request *Query
 
 // Summary:
 //
-// Queries the members of a management account.
+// Queries a list of the relationships of member accounts.
 //
 // @param request - QueryRelationListRequest
 //
@@ -4735,7 +4819,7 @@ func (client *Client) QueryRelationListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+// Queries the available quota for a user in a reseller payment scenario.
 //
 // @param request - QueryResellerAvailableQuotaRequest
 //
@@ -4781,9 +4865,9 @@ func (client *Client) QueryResellerAvailableQuotaWithContext(ctx context.Context
 	return _result, _err
 }
 
-// Summary:
+// Description:
 //
-// 查询用户的信控预警阀值,该接口暂未测试启用
+// Queries the alarm thresholds for low quotas.
 //
 // @param request - QueryResellerUserAlarmThresholdRequest
 //
@@ -4831,7 +4915,7 @@ func (client *Client) QueryResellerUserAlarmThresholdWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
+// Queries the instances of a specific resource plan for a user. Only valid resource plans are supported.
 //
 // @param request - QueryResourcePackageInstancesRequest
 //
@@ -4899,7 +4983,7 @@ func (client *Client) QueryResourcePackageInstancesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the deduction details of savings plans.
+// Queries the details of savings plan deductions.
 //
 // @param request - QuerySavingsPlansDeductLogRequest
 //
@@ -4967,7 +5051,7 @@ func (client *Client) QuerySavingsPlansDeductLogWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries discounts on savings plans.
+// Queries the discount information for savings plans.
 //
 // @param request - QuerySavingsPlansDiscountRequest
 //
@@ -5007,7 +5091,7 @@ func (client *Client) QuerySavingsPlansDiscountWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about savings plan instances of the current user.
+// Queries information about your savings plan instances.
 //
 // @param request - QuerySavingsPlansInstanceRequest
 //
@@ -5083,7 +5167,19 @@ func (client *Client) QuerySavingsPlansInstanceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// The code of the service.
+// Queries the settlement bills of a user for a specific billing cycle. Supports domestic accounts with more than 50,000 bill entries.
+//
+// Description:
+//
+// - The query results for the current month are for reference only and cannot be used for reconciliation. The final bill for the current month is available for viewing or export after 12:00 on the 2nd of the following month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, adjustments, and overdue payment write-offs.
+//
+// - Bill data is updated with a 5-hour delay relative to actual cost consumption.
+//
+// - For bills in the "Unsettled" state in historical billing cycles, the status is updated to settled 5 hours after payment. For bills in the "Unsettled" state in the current month, the status is updated to settled when the bill is generated at 12:00 on the 2nd of the following month.
+//
+// - This API supports graceful backoff with a request rate of 600/60(s).
+//
+// - The rate limit per user is 10 requests per second. If a timeout occurs, retry the request.
 //
 // @param request - QuerySettleBillRequest
 //
@@ -5171,7 +5267,7 @@ func (client *Client) QuerySettleBillWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
+// Queries the list of SKUs and their list prices under a specified pricing entity of a commodity. A product feature typically has 1 to multiple SKUs, and some products can have tens of thousands of SKUs. The request parameters support filtered queries based on specific SKU configuration conditions.
 //
 // @param tmpReq - QuerySkuPriceListRequest
 //
@@ -5217,17 +5313,17 @@ func (client *Client) QuerySkuPriceListWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries split bills.
+// Queries split bills. This API has been upgraded. We recommend that you use the new DescribeSplitItemBill operation.
 //
 // Description:
 //
-//	  This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
+// - The API for split bills is upgraded. We recommend that you use the new [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation. This operation no longer supports querying more than 50,000 rows of data.
 //
-//		- The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
+// - The data is consistent with the split bill data for the specified billing cycle in the User Center.
 //
-//		- You can call this operation to query split bills generated within the last 12 months.
+// - You can query split bills that were generated within the last 12 months.
 //
-//		- This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
+// - To use this feature, you must first enable it on the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) page in the console.
 //
 // @param request - QuerySplitItemBillRequest
 //
@@ -5299,19 +5395,19 @@ func (client *Client) QuerySplitItemBillWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the usage data of an Alibaba Cloud service.
+// Queries the metering records for the specified cloud service.
 //
 // Description:
 //
-// You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
+// ## API description
 //
-//   - The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
+// - The specified cloud service parameter must be one of the following cloud service codes. The metering data types include hourly and daily.
 //
-//   - The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+// - The time format must comply with the ISO 8601 standard. Time specification constraints:
 //
-//   - Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
+//   - Due to delays in data push, the data integrity of hourly metering data is guaranteed for the past 24 hours, and the data integrity of daily metering data is guaranteed for the past 2 days.
 //
-//   - You can query the usage data that is recorded in the last quarter.
+//   - The time span can cover the metering data of the most recent quarter.
 //
 // @param request - QueryUserOmsDataRequest
 //
@@ -5383,11 +5479,13 @@ func (client *Client) QueryUserOmsDataWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+// 1. Only the actual paid amount is refunded. Used vouchers are not refunded.
 //
-// 2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
+// 2. Carefully verify the information about the resource to be unsubscribed, and confirm the unsubscription terms and refund amount. Resources cannot be recovered after unsubscription.
 //
-// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/refund-rules).
+// 1. This operation can be called only by direct customers. Reseller customers cannot use this operation.
+//
+// 4. For other questions, refer to: <props="china">[Refund policy](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM)<props="intl">[Refund rules for Alibaba Cloud International site](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules)
 //
 // @param request - RefundInstanceRequest
 //
@@ -5519,7 +5617,7 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Terminates a financial relationship between the management account and a member.
+// Disassociates a RAM user from an Alibaba Cloud account.
 //
 // @param request - RelieveAccountRelationRequest
 //
@@ -5579,7 +5677,7 @@ func (client *Client) RelieveAccountRelationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 续费变配接口
+// Renews an instance and changes its configuration. The configuration change is applied after the renewal order takes effect. Payment is processed automatically. This operation cannot be used to create ECS or RDS instances.
 //
 // @param request - RenewChangeInstanceRequest
 //
@@ -5647,7 +5745,7 @@ func (client *Client) RenewChangeInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
+// Renews a specified instance. This operation does not support renewing ECS, RDS, or Redis instances. To renew these instances, call the dedicated renewal API of the corresponding service.
 //
 // @param request - RenewInstanceRequest
 //
@@ -5711,7 +5809,7 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 
 // Summary:
 //
-// Renews a resource plan.
+// Renews a resource package instance.
 //
 // @param request - RenewResourcePackageRequest
 //
@@ -5889,6 +5987,14 @@ func (client *Client) SetRenewalWithContext(ctx context.Context, request *SetRen
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures low-balance alert rules for quotas.
+//
+// Description:
+//
+// Configures low-balance alert rules for quotas.
+//
 // @param request - SetResellerUserAlarmThresholdRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5940,6 +6046,10 @@ func (client *Client) SetResellerUserAlarmThresholdWithContext(ctx context.Conte
 // Summary:
 //
 // Modify the quota ledger and consumption ledger.
+//
+// Description:
+//
+// 设置用户配额账本的Quota额度
 //
 // @param request - SetResellerUserQuotaRequest
 //
@@ -5993,6 +6103,14 @@ func (client *Client) SetResellerUserQuotaWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the SQL audit feature for users.
+//
+// Description:
+//
+// Sets the status of a reseller\\"s user account, such as frozen or hosted.
+//
 // @param request - SetResellerUserStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6115,63 +6233,63 @@ func (client *Client) SetSavingPlanUserDeductRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
+// Subscribes to bill files by using Object Storage Service (OSS), which stores billing data in a specified OSS bucket.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before calling this operation, note the following information:
 //
-//   - You can subscribe to only one type of bill at a time.
+// - You can subscribe to one type of bill file at a time.
 //
-//   - The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+// - After subscription, the bill file generated on the previous day is pushed daily starting from the next day. On the 4th of each month, the full bill files for the entire billing cycle of the previous month are pushed. The monthly bill PDF is pushed on the 4th of each month for the previous month.
 //
-//   - The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+// - Bill files generated on a daily basis may be delayed. Delayed bills are pushed the day after they are generated and may include bills from earlier days that were delayed until the previous day. Pull the full files for the previous month at the beginning of each month.
 //
-//   - The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+// > To use OSS subscription for the first time, grant the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission to the subscribing user. If the authorization is revoked, the system stops pushing files, and the user must re-authorize.
 //
-//   - The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+// - This subscription is the same feature as "Bill Data Storage" in the Expenses and Costs console. Subscriptions are synchronized between the two.
 //
-//   - To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+// - When subscribing to a directory under a bucket, follow the directory naming conventions:
 //
-// 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
+//   - Emojis are not allowed. Use valid UTF-8 characters.
 //
-// 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
+//   - Use / to separate paths and quickly create subdirectories. Do not start with / or \\, and do not use consecutive / characters.
 //
-// 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
+//   - A subdirectory named .. is not allowed.
 //
-// 4.  4.  The directory name must be 1 to 254 characters in length.
+//   - The total length must be 1 to 254 characters.
 //
-//   - File names:
+// - File names:
 //
-//   - **BillingItemDetailForBillingPeriod*	- (Detailed bills of billable items)
+//   - **BillingItemDetailForBillingPeriod*	- (billing item details)
 //
-//   - File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+//   - Daily push file name format: `UID_BillingItemDetail_YYYYMMDD`, for example, `169**_BillingItemDetail_20190310`.
 //
-//   - File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+//   - Full file name format at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`, for example, `169**_BillingItemDetail_201903`.
 //
-//   - **InstanceDetailForBillingPeriod*	- (Detailed bills of instances)
+//   - **InstanceDetailForBillingPeriod*	- (instance bill details)
 //
-//   - File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+//   - Daily push file name format: `UID_InstanceDetail_YYYYMMDD`, for example, `169**_InstanceDetail_20190310`.
 //
-//   - File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+//   - Full file name format at the beginning of the next month: `UID_InstanceDetail_YYYYMM`, for example, `169**_InstanceDetail_201903`.
 //
-//   - **InstanceDetailMonthly*	- (Instance-based bills summarized by billing cycle)
+//   - **InstanceDetailMonthly*	- (instance bill summary by billing cycle)
 //
-//   - File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//   - Daily push file name format: `UID_InstanceDetailMonthly_YYYYMM`, for example, `169**_InstanceDetailMonthly_201903`. This file is updated daily with full data from the beginning of the month to the current day, until the 4th of the next month.
 //
-//   - **BillingItemDetailMonthly*	- (Billable item-based bills summarized by billing cycle)
+//   - **BillingItemDetailMonthly*	- (billing item summary by billing cycle)
 //
-//   - File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//   - Daily push file name format: `UID_BillingItemDetailMonthly_YYYYMM`, for example, `169**_BillingItemDetailMonthly_201903`. This file is updated daily with full data from the beginning of the month to the current day, until the 4th of the next month.
 //
-//   - **SplitItemDetailDaily*	- (Split bills summarized by day)
+//   - **SplitItemDetailDaily*	- (split bill daily summary)
 //
-//   - File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//   - Daily push file name format: `UID_SplitItemDetailDaily_YYYYMM`, for example, `169**_SplitItemDetailDaily_201903`. This file is updated daily with full data from the beginning of the month to the current day, until the 4th of the next month.
 //
-//   - **MonthBill*	- (Monthly bill in the PDF format)
+//   - **MonthBill*	- (monthly bill PDF)
 //
-//   - File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+//   - Monthly push file name format: `UID_MonthBill_YYYYMM`, for example, `169**_MonthBill_201903`. The file for the previous month is pushed on the 4th of each month.
 //
-//   - The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+// - Except for MonthBill, which is a PDF file, all other file types are CSV files. If the number of rows in a bill file exceeds a certain threshold, the file is automatically split into multiple CSV files, which are then compressed into a single ZIP file. The ZIP file name follows the same format.
 //
 // @param request - SubscribeBillToOSSRequest
 //
@@ -6243,7 +6361,7 @@ func (client *Client) SubscribeBillToOSSWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Add tags to resources.
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -6295,7 +6413,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
+// Cancels a detailed list export subscription.
 //
 // @param request - UnsubscribeBillToOSSRequest
 //

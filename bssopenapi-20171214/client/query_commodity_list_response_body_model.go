@@ -22,7 +22,7 @@ type iQueryCommodityListResponseBody interface {
 }
 
 type QueryCommodityListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type QueryCommodityListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryCommodityListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QueryCommodityListResponseBody struct {
 	//
 	// CC706AAC-75A6-55B5-9AB7-7D171C6C7655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information about the service was queried.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *QueryCommodityListResponseBody) Validate() error {
 }
 
 type QueryCommodityListResponseBodyData struct {
-	// The information about the service.
+	// The commodity list.
 	CommodityList []*QueryCommodityListResponseBodyDataCommodityList `json:"CommodityList,omitempty" xml:"CommodityList,omitempty" type:"Repeated"`
 }
 
@@ -148,23 +148,27 @@ func (s *QueryCommodityListResponseBodyData) Validate() error {
 }
 
 type QueryCommodityListResponseBodyDataCommodityList struct {
-	// The payment type. Valid values: POSTPAY (pay-as-you-go) and PREPAY (subscription).
+	// The billing method. Valid values:
+	//
+	// - POSTPAY: pay-as-you-go.
+	//
+	// - PREPAY: subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The code of the service, which is the same as that on the Billing Management page.
+	// The commodity code, which is the same as the product detail code in Billing Management.
 	//
 	// example:
 	//
 	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The name of the service.
+	// The commodity name.
 	//
 	// example:
 	//
-	// ECS (Pay-As-You-Go)
+	// Elastic Compute Service (Pay-As-You-Go)
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 }
 

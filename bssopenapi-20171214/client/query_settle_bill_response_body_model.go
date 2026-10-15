@@ -22,19 +22,28 @@ type iQuerySettleBillResponseBody interface {
 }
 
 type QuerySettleBillResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *QuerySettleBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AE3F4057-DFC9-4B81-8858-F620651010C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,27 +113,39 @@ func (s *QuerySettleBillResponseBody) Validate() error {
 }
 
 type QuerySettleBillResponseBodyData struct {
+	// The account ID.
+	//
 	// example:
 	//
 	// 185xxxxx489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// The account name.
+	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The billing cycle, in the format of YYYY-MM.
+	//
 	// example:
 	//
 	// 2020-02
 	BillingCycle *string                               `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Items        *QuerySettleBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The maximum number of records returned in this request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that indicates the position where the current call reads to. An empty value indicates that all data has been read.
+	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUQARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 200
@@ -246,140 +267,41 @@ func (s *QuerySettleBillResponseBodyDataItems) Validate() error {
 }
 
 type QuerySettleBillResponseBodyDataItemsItem struct {
-	// example:
-	//
-	// 0
-	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	// example:
-	//
-	// 0
-	AfterTaxAmount *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	// example:
-	//
-	// 185xxxxx489
-	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	// example:
-	//
-	// test@test.aliyunid.com
-	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	// example:
-	//
-	// trusteeship
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// example:
-	//
-	// 0
-	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	// example:
-	//
-	// rds
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// example:
-	//
-	// 0
+	AdjustAmount          *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	BillAccountID         *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CashAmount            *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// example:
-	//
-	// 0
-	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	// example:
-	//
-	// 0
+	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	// example:
-	//
-	// 0
-	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// example:
-	//
-	// SubscriptionOrder
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// example:
-	//
-	// 0
-	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	// example:
-	//
-	// 3532535235
-	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// example:
-	//
-	// 0
-	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	// example:
-	//
-	// USD
-	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// example:
-	//
-	// 2020-03-11 08:00:00
-	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	// example:
-	//
-	// 2O3AADJFEAF2PDKSFAMFCB11918
-	PaymentTransactionID *string `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
-	// example:
-	//
-	// rds
-	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// example:
-	//
-	// 100
-	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxAmountLocal *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// example:
-	//
-	// rds
-	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	ProductName   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// example:
-	//
-	// 2020xxxx5912
-	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	// example:
-	//
-	// 0
-	RoundDownDiscount *string `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	// example:
-	//
-	// PayFinish
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 325345254353
-	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	// example:
-	//
-	// PayAsYouGo
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// example:
-	//
-	// 0
-	Tax *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	// example:
-	//
-	// 2020-03-11 08:00:00
-	UsageEndTime *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	// example:
-	//
-	// 2020-03-11 07:00:00
-	UsageStartTime *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
+	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentTime           *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PaymentTransactionID  *string  `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
+	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RecordID              *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	Status                *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubOrderId            *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	UsageEndTime          *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	UsageStartTime        *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s QuerySettleBillResponseBodyDataItemsItem) String() string {

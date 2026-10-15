@@ -34,23 +34,23 @@ type iGetSubscriptionPriceRequest interface {
 }
 
 type GetSubscriptionPriceRequest struct {
-	// The ID of the instance for which the price is queried. This parameter is required if you upgrade an instance. You can specify this parameter to obtain the pre-upgrade configurations of the instance.
+	// The ID of the instance for which you want to inquire about the price. This parameter is required in upgrade scenarios to obtain the configurations of the instance before the upgrade.
 	//
 	// example:
 	//
 	// i-khkjhxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The information about the pricing module.
+	// The list of pricing modules.
 	//
 	// This parameter is required.
 	ModuleList []*GetSubscriptionPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
-	// The type of the order. Valid values:
+	// The order type. Valid values:
 	//
-	// 	- NewOrder: purchases an instance of an Alibaba Cloud service.
+	// - NewOrder: new purchase.
 	//
-	// 	- Renewal: renews an instance of an Alibaba Cloud service.
+	// - Renewal: renewal.
 	//
-	// 	- Upgrade: upgrades an instance of an Alibaba Cloud service.
+	// - Upgrade: upgrade.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type GetSubscriptionPriceRequest struct {
 	// NewOrder
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the service. For more information about the service code, see **Codes of Alibaba Cloud Services**.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type GetSubscriptionPriceRequest struct {
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service. Specify the parameter based on the pricing document of the specific service.
+	// The product type. Whether this parameter is required depends on the price inquiry documentation of the specific product.
 	//
 	// example:
 	//
@@ -79,29 +79,29 @@ type GetSubscriptionPriceRequest struct {
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The service duration.
+	// The service period.
 	//
 	// example:
 	//
 	// 1
 	ServicePeriodQuantity *int32 `json:"ServicePeriodQuantity,omitempty" xml:"ServicePeriodQuantity,omitempty"`
-	// The unit of the service duration. Valid values:
+	// The unit of the service period. Valid values:
 	//
-	// 	- Year
+	// - Year: years.
 	//
-	// 	- Month
+	// - Month: months.
 	//
 	// example:
 	//
 	// Year
 	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	// The billing method. Set the value to Subscription.
+	// The subscription type. Valid value: Subscription (subscription).
 	//
 	// This parameter is required.
 	//
@@ -232,7 +232,7 @@ func (s *GetSubscriptionPriceRequest) Validate() error {
 }
 
 type GetSubscriptionPriceRequestModuleList struct {
-	// The configurations of the Nth pricing module. Valid values of N: 1 to 50. Format: AA:aa,BB:bb. The values of AA and BB are the property IDs of the pricing module. The values of aa and bb are the property values of the pricing module.
+	// The configuration of the nth pricing module. Valid values of n: 1 to 50. Format: AA:aa,BB:bb. AA and BB are the identifiers of the pricing module attributes, and aa and bb are the attribute values of the pricing module attributes.
 	//
 	// This parameter is required.
 	//
@@ -240,7 +240,7 @@ type GetSubscriptionPriceRequestModuleList struct {
 	//
 	// PackageCode:version_1
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The identifier of the Nth pricing module.
+	// The identifier of the nth pricing module.
 	//
 	// This parameter is required.
 	//
@@ -248,11 +248,11 @@ type GetSubscriptionPriceRequestModuleList struct {
 	//
 	// PackageCode
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The status of the pricing module. This parameter is required only if the order type is Upgrade. Valid values:
+	// The change status of the pricing module for this inquiry. This parameter is required only when the order type is Upgrade. Valid values:
 	//
-	// 	- 1: adds one or more instances.
+	// - 1: add.
 	//
-	// 	- 2: modifies the configurations of an instance. In the upgrade scenario, if the configurations of the pricing module change, you must specify this value for the parameter.
+	// - 2: modify. If the configuration of the pricing module changes in an upgrade scenario, you must explicitly specify this value.
 	//
 	// Default value: 1.
 	//
@@ -260,7 +260,7 @@ type GetSubscriptionPriceRequestModuleList struct {
 	//
 	// 1
 	ModuleStatus *int32 `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
-	// The tag of the specified resource. This parameter is required only if you upgrade or modify the configurations of an Alibaba Cloud service. For example, if you want to modify the configurations of a disk, you can use a tag to identify the ID of the disk.
+	// The identifier of the specified resource. This parameter is required only for the upgrade and configuration change of specific products. For example, if you change the configuration of a cloud disk, you can use Tag to identify the ID of the specific cloud disk.
 	//
 	// example:
 	//

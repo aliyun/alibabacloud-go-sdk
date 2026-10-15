@@ -26,19 +26,19 @@ type iConfirmRelationRequest interface {
 }
 
 type ConfirmRelationRequest struct {
-	// The ID of the Alibaba Cloud account that is used as the member.
+	// The Alibaba Cloud UID of the linked account.
 	//
 	// example:
 	//
 	// 1512996702208737
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
-	// The operation to be performed to confirm the invitation. Valid values:
+	// The confirmation action. Valid values:
 	//
-	// 	- child_agree: The member accepts the invitation.
+	// - child_agree: The linked account agrees.
 	//
-	// 	- child_disagree: The member rejects the invitation.
+	// - child_disagree: The linked account rejects.
 	//
-	// 	- Canceled by the master account: The management account cancels the confirmation.
+	// - 主账号取消确认: The main account cancels the confirmation.
 	//
 	// This parameter is required.
 	//
@@ -46,27 +46,27 @@ type ConfirmRelationRequest struct {
 	//
 	// child_agree
 	ConfirmCode *string `json:"ConfirmCode,omitempty" xml:"ConfirmCode,omitempty"`
-	// The ID of the Alibaba Cloud account that is used as the management account.
+	// The Alibaba Cloud UID of the main account.
 	//
 	// example:
 	//
 	// 1738376485192612
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// The permissions that can be granted to the member. Valid values:
+	// The permissions granted to the linked account. Valid values:
 	//
-	// 	- SYNCHRONIZE_FINANCE_IDENTITY: allows the credit control identity to be shared with the member.
+	// - SYNCHRONIZE_FINANCE_IDENTITY: Allows synchronizing the credit-based payment identity to the linked account.
 	//
-	// 	- SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: allows the discount policy to be shared with the member.
+	// - SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: Allows synchronizing discounts to the linked account.
 	//
-	// 	- FORBID_WITHDRAW_CASH: does not allow the member to withdraw the balance.
+	// - FORBID_WITHDRAW_CASH: Prohibits the linked account from withdrawing cash from the balance.
 	//
-	// 	- FORBID_MANAGE_INVOICE: does not allow the member to manage invoices.
+	// - FORBID_MANAGE_INVOICE: Prohibits the linked account from managing invoices.
 	//
-	// 	- CHECK_FINANCE_INFO: requests to view information about the financial relationship.
+	// - CHECK_FINANCE_INFO: Allows requesting to view the account linking information.
 	//
-	// 	- MANAGE_TARGET_INVOICE: allows the member to manage invoices.
+	// - MANAGE_TARGET_INVOICE: Allows managing invoices of the target account.
 	//
-	// 	- CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+	// - CHECK_TARGET_CONSUMPTION: Allows viewing the consumption information of the linked account.
 	//
 	// This parameter is required.
 	//
@@ -74,19 +74,19 @@ type ConfirmRelationRequest struct {
 	//
 	// SYNCHRONIZE_FINANCE_IDENTITY
 	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
-	// The ID of the financial relationship. Set this parameter to the value of the RelationId response parameter returned by calling the QueryRelationList operation.
+	// The relationship ID. You can obtain the value from the relationId field in the response of the QueryRelationList operation.
 	//
 	// example:
 	//
 	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The type of the financial relationship. Set the value to enterprise_group.
+	// The relationship type. Valid values: enterprise_group.
 	//
 	// example:
 	//
-	// Type of the financial relationship
+	// enterprise_group
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The unique ID of the request.
+	// The unique identifier of the request.
 	//
 	// This parameter is required.
 	//

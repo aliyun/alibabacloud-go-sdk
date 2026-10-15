@@ -34,36 +34,76 @@ type iDescribeInstanceAmortizedCostByConsumePeriodRequest interface {
 }
 
 type DescribeInstanceAmortizedCostByConsumePeriodRequest struct {
+	// The filter for the amortization month.
+	//
+	// Maximum number of elements: 10.
 	AmortizationPeriodFilter []*string `json:"AmortizationPeriodFilter,omitempty" xml:"AmortizationPeriodFilter,omitempty" type:"Repeated"`
-	BillOwnerIdList          []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
-	BillUserIdList           []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
+	// The filter for the ID of the resource owner.
+	//
+	// The resource owner is the account that actually uses the resource.
+	//
+	// Maximum number of elements: 10.
+	BillOwnerIdList []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
+	// The filter for the ID of the bill payer.
+	//
+	// This is the ID of a RAM user. If you specify this parameter, you can view the bills of the RAM user. If you leave this parameter empty, the bills of the current account and all its RAM users are returned.
+	//
+	// Maximum number of elements: 10.
+	BillUserIdList []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
+	// The billing cycle.
+	//
+	// Format: YYYY-MM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The code of the cost center.
+	//
 	// example:
 	//
 	// 123#
-	CostUnitCode   *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	// The filter for the instance ID.
+	//
+	// You can query multiple instances. If you leave this parameter empty, all instances are queried.
+	//
+	// Maximum number of elements: 10.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// The maximum number of data records to return in this call. Default value: 20. Maximum value: 300.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request. You must set the value to the token that is returned in the previous call. If you leave this parameter empty, the query starts from the beginning.
+	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The product code.
+	//
+	// To obtain the value of this parameter, call QueryProductList to query product information, or call DescribeResourcePackageProduct to query information about a specific resource plan.
+	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The details of the product.
+	//
 	// example:
 	//
 	// rds
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// The subscription type. Valid values:
+	//
+	// - Subscription: subscription.
+	//
+	// - PayAsYouGo: pay-as-you-go.
+	//
 	// example:
 	//
 	// Subscription

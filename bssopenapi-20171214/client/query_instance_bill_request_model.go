@@ -36,13 +36,13 @@ type iQueryInstanceBillRequest interface {
 }
 
 type QueryInstanceBillRequest struct {
-	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+	// The ID of the account that owns the resources. This account is the actual user of the resources.
 	//
 	// example:
 	//
 	// 122
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The billing cycle. Format: YYYY-MM.
+	// The billing cycle in YYYY-MM format. Data from the last 18 months is supported.
 	//
 	// This parameter is required.
 	//
@@ -50,29 +50,29 @@ type QueryInstanceBillRequest struct {
 	//
 	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The billing date. This parameter is required only if the **Granularity*	- parameter is set to DAILY. Format: YYYY-MM-DD.
+	// The billing date. This parameter is required only when the **Granularity*	- parameter is set to DAILY. The value must be in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2020-03-03
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	// The granularity at which bills are queried. Valid values:
+	// The granularity at which to query bills. Valid values:
 	//
-	// 	- MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
+	// - MONTHLY: queries bills by month. The data is consistent with the bill details on the Billing Cycle tab of the Bills page in the User Center.
 	//
-	// 	- DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+	// - DAILY: queries bills by day. The data is consistent with the bill details on the By Day tab of the Bills page in the User Center.
 	//
-	// You must set the **BillingDate*	- parameter before you can set the Granularity parameter to DAILY.
+	// If you set this parameter to DAILY, you must also specify the **BillingDate*	- parameter.
 	//
 	// example:
 	//
 	// MONTHLY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// Specifies whether to query data by billable item. Valid values:
+	// Specifies whether to query data by billable item.
 	//
-	// 	- false: does not query data by billable item. The data queried is consistent with the data that is displayed for the specified instance on the Billing Details tab of the Bill Details page in User Center.
+	// - false: The data is consistent with the bill details on the Instance tab of the Bills page in the User Center.
 	//
-	// 	- true: queries data by billable item. The data queried is consistent with the data that is displayed for the specified billable item on the Billing Details tab of the Bill Details page in User Center.
+	// - true: The data is consistent with the bill details on the Billable Item tab of the Bills page in the User Center.
 	//
 	// Default value: false.
 	//
@@ -80,50 +80,48 @@ type QueryInstanceBillRequest struct {
 	//
 	// false
 	IsBillingItem *bool `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
-	// Specifies whether to filter out a bill whose pretax gross amount and pretax amount are 0. Default value: false.*******	- Valid values:
+	// Specifies whether to filter out bills for which the pretax gross amount (**PretaxGrossAmount**) and pretax amount (**PretaxAmount**) are both 0. Valid values:
 	//
-	// 	- false: does not filter the bill.
+	// - false.
 	//
-	// 	- true: filters the bill.
+	// - true.
 	//
 	// example:
 	//
 	// false
 	IsHideZeroCharge *bool  `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	OwnerId          *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	// The number of entries per page. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the service.
+	// The code of the product.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service. This parameter is required if the ProductCode parameter is set to the service code of Alibaba Cloud Marketplace.
+	// The type of the product. Required when the ProductCode parameter is set to the code of an Alibaba Cloud Marketplace product.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: the subscription billing method
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method
+	// - PayAsYouGo: pay-as-you-go.
 	//
-	// **
-	//
-	// ****This parameter must be used together with the **ProductCode*	- parameter.
+	// > This parameter must be used with the **ProductCode*	- parameter.
 	//
 	// example:
 	//

@@ -28,9 +28,9 @@ type QuerySavingsPlansInstanceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return data.
+	// The returned data.
 	Data *QuerySavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QuerySavingsPlansInstanceResponseBody struct {
 	//
 	// 61293E7A-3406-4447-8620-EC88B0AA66AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *QuerySavingsPlansInstanceResponseBody) Validate() error {
 }
 
 type QuerySavingsPlansInstanceResponseBodyData struct {
-	// The details about the instances.
+	// The list of instance information.
 	Items []*QuerySavingsPlansInstanceResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -193,51 +193,67 @@ func (s *QuerySavingsPlansInstanceResponseBodyData) Validate() error {
 }
 
 type QuerySavingsPlansInstanceResponseBodyDataItems struct {
-	// The allocation status. Valid values:
+	// The allocation status.
 	//
-	// 	- unallocated
+	// - unallocated: Not allocated.
 	//
-	// 	- allocated
+	// - allocated: Allocating.
 	//
-	// 	- beAllocated
+	// - beAllocated: Allocated to this account.
 	//
 	// example:
 	//
 	// unallocated
 	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// savingplan_common_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The currency. Valid values: CNY and USD.
+	// The currency. Valid values: CNY: Chinese Yuan. USD: US Dollar.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// For a savings plan with a monthly cycle, this is the commitment for the current cycle. Unit: CNY.
+	//
 	// example:
 	//
 	// 100.0
 	CurrentPoolValue *string `json:"CurrentPoolValue,omitempty" xml:"CurrentPoolValue,omitempty"`
+	// The purchased duration.
+	//
 	// example:
 	//
 	// 1:Year
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// The deduction cycle.
+	//
+	// HOUR: hourly
+	//
+	// DAY: daily
+	//
+	// ONCE: one-time (the total amount decreases over time)
+	//
 	// example:
 	//
 	// HOUR
 	DeductCycleType *string `json:"DeductCycleType,omitempty" xml:"DeductCycleType,omitempty"`
-	// The time when the instance expires. The time is in the format of yyyy-MM-dd HH:mm:ss.
+	// The expiration time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2021-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end timestamp.
+	//
 	// example:
 	//
 	// 1663135741039
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The instance family information. For an instance of the Elastic Compute Service (ECS) compute type, the value indicates the ECS instance family or the ECS instance family package.
+	// For a compute-optimized savings plan, this parameter indicates the corresponding instance family or instance family package.
 	//
 	// example:
 	//
@@ -249,33 +265,37 @@ type QuerySavingsPlansInstanceResponseBodyDataItems struct {
 	//
 	// spn-xxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The total deduction amount in the previous cycle. Unit: CNY.
+	//
 	// example:
 	//
 	// 100.0
 	LastBillTotalUsage *string `json:"LastBillTotalUsage,omitempty" xml:"LastBillTotalUsage,omitempty"`
+	// The utilization in the previous cycle.
+	//
 	// example:
 	//
 	// 0.8
 	LastBillUtilization *string `json:"LastBillUtilization,omitempty" xml:"LastBillUtilization,omitempty"`
-	// The payment type. Valid values:
+	// The payment type.
 	//
-	// 	- total: All Upfront
+	// - total: All Upfront
 	//
-	// 	- half: Partial Upfront
+	// - half: Partial Upfront
 	//
-	// 	- zero: No Upfront
+	// - zero: No Upfront
 	//
 	// example:
 	//
 	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	// The commitment.
+	// The commitment. Unit: CNY.
 	//
 	// example:
 	//
 	// 1.00
 	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	// The prepaid amount.
+	// The upfront payment. Unit: CNY.
 	//
 	// example:
 	//
@@ -287,51 +307,55 @@ type QuerySavingsPlansInstanceResponseBodyDataItems struct {
 	//
 	// cn-zhangjiakou-na62-a01
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// For a flexible savings plan with a monthly or daily commitment, this is the remaining amount in the current cycle. Unit: CNY.
+	//
 	// example:
 	//
 	// 100.0
 	RestPoolValue *string `json:"RestPoolValue,omitempty" xml:"RestPoolValue,omitempty"`
-	// The type of the savings plan. Valid values:
+	// The type of the savings plan.
 	//
-	// 	- universal: general-purpose
+	// - unversal: general-purpose
 	//
-	// 	- ecs: ECS compute
+	// - ecs: compute-optimized
 	//
 	// example:
 	//
 	// ECS
 	SavingsType *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
-	// The time when the instance takes effect. The time is in the format of yyyy-MM-dd HH:mm:ss.
+	// The effective time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2020-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start timestamp.
+	//
 	// example:
 	//
 	// 1663135741039
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The status of the instance. Valid values:
+	// The current status.
 	//
-	// 	- NORMAL: normal
+	// - NORMAL: The instance is active.
 	//
-	// 	- LIMIT: stopped due to overdue payment
+	// - LIMIT: The instance is suspended due to an overdue payment.
 	//
-	// 	- RELEASE: released
+	// - RELEASE: The instance is released.
 	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The details about the tags.
+	// The list of tag information.
 	Tags []*QuerySavingsPlansInstanceResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The total amount that is saved.
+	// The total savings. Unit: CNY.
 	//
 	// example:
 	//
 	// 20.00
 	TotalSave *string `json:"TotalSave,omitempty" xml:"TotalSave,omitempty"`
-	// The total usage.
+	// The total utilization.
 	//
 	// example:
 	//
@@ -577,9 +601,17 @@ func (s *QuerySavingsPlansInstanceResponseBodyDataItems) Validate() error {
 }
 
 type QuerySavingsPlansInstanceResponseBodyDataItemsTags struct {
-	// The key of the tag.
+	// The tag key.
+	//
+	// example:
+	//
+	// 标签1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
+	//
+	// example:
+	//
+	// 标签1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

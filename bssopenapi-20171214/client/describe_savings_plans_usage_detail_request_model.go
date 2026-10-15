@@ -26,26 +26,32 @@ type iDescribeSavingsPlansUsageDetailRequest interface {
 }
 
 type DescribeSavingsPlansUsageDetailRequest struct {
-	// The ID of the account for which you want to query usage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	// The ID of the account. If this parameter is left empty, data of the current account and its trusteeship linked accounts is queried. You can specify a trusteeship linked account ID to query data of that account.
 	//
 	// example:
 	//
 	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The end time. Format: yyyy-MM-dd HH:mm:ss. The query excludes data at this time. If this parameter is left empty, the query covers data up to the current time.
 	//
 	// example:
 	//
 	// 2021-01-02 00:00:00
 	EndPeriod   *string                                            `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	FilterParam *DescribeSavingsPlansUsageDetailRequestFilterParam `json:"FilterParam,omitempty" xml:"FilterParam,omitempty" type:"Struct"`
-	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to return. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 300
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
+	// The time granularity for querying usage details. Valid values:
+	//
+	// - MONTH: monthly granularity.
+	//
+	// - DAY: daily granularity.
+	//
+	// - HOUR: hourly granularity.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +59,7 @@ type DescribeSavingsPlansUsageDetailRequest struct {
 	//
 	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The start time. Format: yyyy-MM-dd HH:mm:ss. The query includes data at this time.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +67,7 @@ type DescribeSavingsPlansUsageDetailRequest struct {
 	//
 	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+	// The pagination token. Leave this parameter empty for the first page. The query result returns the token for the next page. If the returned token is empty, all data has been retrieved.
 	//
 	// example:
 	//

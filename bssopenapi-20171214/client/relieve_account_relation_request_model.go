@@ -22,31 +22,31 @@ type iRelieveAccountRelationRequest interface {
 }
 
 type RelieveAccountRelationRequest struct {
-	// The ID of the Alibaba Cloud account that is used as the member. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+	// The UID of the RAM user. You must specify either the RelationId parameter, or the ParentUserId, ChildUserId, and RelationType parameters.
 	//
 	// example:
 	//
 	// 1512996702208737
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
-	// The ID of the Alibaba Cloud account that is used as the management account. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+	// The UID of the Alibaba Cloud account. You must specify either the RelationId parameter, or the ParentUserId, ChildUserId, and RelationType parameters.
 	//
 	// example:
 	//
 	// 1738376485192612
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// The ID of the financial relationship between the management account and the member. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+	// The ID of the account association. You must specify either the RelationId parameter, or the ParentUserId, ChildUserId, and RelationType parameters.
 	//
 	// example:
 	//
 	// RelationId
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The type of the financial relationship. Set the value to enterprise_group.
+	// The relationship type. Only enterprise_group is supported.
 	//
 	// example:
 	//
 	// enterprise_group
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+	// The unique ID of the request. This ID is used to troubleshoot issues.
 	//
 	// This parameter is required.
 	//

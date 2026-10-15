@@ -28,15 +28,15 @@ type GetSubscriptionPriceResponseBody struct {
 	//
 	// InvalidConfigCod
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the service price.
+	// The product price information.
 	Data *GetSubscriptionPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,33 +113,33 @@ func (s *GetSubscriptionPriceResponseBody) Validate() error {
 }
 
 type GetSubscriptionPriceResponseBodyData struct {
-	// The type of currency. Valid values:
+	// The currency. Valid values:
 	//
-	// 	- CNY: Chinese Yuan
+	// - CNY: Chinese yuan.
 	//
-	// 	- USD: US dollar
+	// - USD: US dollar.
 	//
-	// 	- JPY: Japanese Yen
+	// - JPY: Japanese yen.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount that was applied.
+	// The discount amount.
 	//
 	// example:
 	//
 	// 100
-	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// The price details of the pricing module.
+	DiscountPrice *float32                                           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	ModuleDetails *GetSubscriptionPriceResponseBodyDataModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Struct"`
-	// The original price of the service.
+	// The original price.
 	//
 	// example:
 	//
 	// 900
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The details of the discount.
+	// The parameters for fixed-fee installments.
+	PaymentScheme    *GetSubscriptionPriceResponseBodyDataPaymentScheme    `json:"PaymentScheme,omitempty" xml:"PaymentScheme,omitempty" type:"Struct"`
 	PromotionDetails *GetSubscriptionPriceResponseBodyDataPromotionDetails `json:"PromotionDetails,omitempty" xml:"PromotionDetails,omitempty" type:"Struct"`
 	// The quantity.
 	//
@@ -147,7 +147,7 @@ type GetSubscriptionPriceResponseBodyData struct {
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The discount price.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -177,6 +177,10 @@ func (s *GetSubscriptionPriceResponseBodyData) GetModuleDetails() *GetSubscripti
 
 func (s *GetSubscriptionPriceResponseBodyData) GetOriginalPrice() *float32 {
 	return s.OriginalPrice
+}
+
+func (s *GetSubscriptionPriceResponseBodyData) GetPaymentScheme() *GetSubscriptionPriceResponseBodyDataPaymentScheme {
+	return s.PaymentScheme
 }
 
 func (s *GetSubscriptionPriceResponseBodyData) GetPromotionDetails() *GetSubscriptionPriceResponseBodyDataPromotionDetails {
@@ -211,6 +215,11 @@ func (s *GetSubscriptionPriceResponseBodyData) SetOriginalPrice(v float32) *GetS
 	return s
 }
 
+func (s *GetSubscriptionPriceResponseBodyData) SetPaymentScheme(v *GetSubscriptionPriceResponseBodyDataPaymentScheme) *GetSubscriptionPriceResponseBodyData {
+	s.PaymentScheme = v
+	return s
+}
+
 func (s *GetSubscriptionPriceResponseBodyData) SetPromotionDetails(v *GetSubscriptionPriceResponseBodyDataPromotionDetails) *GetSubscriptionPriceResponseBodyData {
 	s.PromotionDetails = v
 	return s
@@ -229,6 +238,11 @@ func (s *GetSubscriptionPriceResponseBodyData) SetTradePrice(v float32) *GetSubs
 func (s *GetSubscriptionPriceResponseBodyData) Validate() error {
 	if s.ModuleDetails != nil {
 		if err := s.ModuleDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PaymentScheme != nil {
+		if err := s.PaymentScheme.Validate(); err != nil {
 			return err
 		}
 	}
@@ -275,36 +289,11 @@ func (s *GetSubscriptionPriceResponseBodyDataModuleDetails) Validate() error {
 }
 
 type GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail struct {
-	// The discount price.
-	//
-	// example:
-	//
-	// 0
 	CostAfterDiscount *float32 `json:"CostAfterDiscount,omitempty" xml:"CostAfterDiscount,omitempty"`
-	// The discount that was applied.
-	//
-	// example:
-	//
-	// 100
-	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The identifier of the pricing module.
-	//
-	// example:
-	//
-	// PackageCode
-	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The original price of the service.
-	//
-	// example:
-	//
-	// 200
-	OriginalCost *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
-	// The unit price.
-	//
-	// example:
-	//
-	// 0
-	UnitPrice *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+	InvoiceDiscount   *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	ModuleCode        *string  `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OriginalCost      *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
+	UnitPrice         *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) String() string {
@@ -364,6 +353,100 @@ func (s *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) Validate
 	return dara.Validate(s)
 }
 
+type GetSubscriptionPriceResponseBodyDataPaymentScheme struct {
+	// The payable amount for the order, in cents.
+	//
+	// example:
+	//
+	// 35092
+	OrderDownPaymentFee *string `json:"OrderDownPaymentFee,omitempty" xml:"OrderDownPaymentFee,omitempty"`
+	// The payable amount in the settlement currency for the order, in cents.
+	//
+	// example:
+	//
+	// 35092
+	OrderDownPaymentSettleFee *string `json:"OrderDownPaymentSettleFee,omitempty" xml:"OrderDownPaymentSettleFee,omitempty"`
+	// The total payable amount for the order, including the prepayment and installment parts, in cents.
+	//
+	// example:
+	//
+	// 70184
+	OrderTotalFee *string `json:"OrderTotalFee,omitempty" xml:"OrderTotalFee,omitempty"`
+	// The total payable amount in the settlement currency for the order, including the prepayment and installment parts, in cents.
+	//
+	// example:
+	//
+	// 70184
+	OrderTotalSettleFee *string `json:"OrderTotalSettleFee,omitempty" xml:"OrderTotalSettleFee,omitempty"`
+	// The fixed-fee installment type. Valid values:
+	//
+	// - PAYMENT_NORMAL: non-fixed-fee installment products.
+	//
+	// - PAYMENT_PHASED: fixed-fee installment products.
+	//
+	// example:
+	//
+	// PAYMENT_NORMAL
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+}
+
+func (s GetSubscriptionPriceResponseBodyDataPaymentScheme) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetSubscriptionPriceResponseBodyDataPaymentScheme) GoString() string {
+	return s.String()
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) GetOrderDownPaymentFee() *string {
+	return s.OrderDownPaymentFee
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) GetOrderDownPaymentSettleFee() *string {
+	return s.OrderDownPaymentSettleFee
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) GetOrderTotalFee() *string {
+	return s.OrderTotalFee
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) GetOrderTotalSettleFee() *string {
+	return s.OrderTotalSettleFee
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) GetPaymentType() *string {
+	return s.PaymentType
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) SetOrderDownPaymentFee(v string) *GetSubscriptionPriceResponseBodyDataPaymentScheme {
+	s.OrderDownPaymentFee = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) SetOrderDownPaymentSettleFee(v string) *GetSubscriptionPriceResponseBodyDataPaymentScheme {
+	s.OrderDownPaymentSettleFee = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) SetOrderTotalFee(v string) *GetSubscriptionPriceResponseBodyDataPaymentScheme {
+	s.OrderTotalFee = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) SetOrderTotalSettleFee(v string) *GetSubscriptionPriceResponseBodyDataPaymentScheme {
+	s.OrderTotalSettleFee = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) SetPaymentType(v string) *GetSubscriptionPriceResponseBodyDataPaymentScheme {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBodyDataPaymentScheme) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetSubscriptionPriceResponseBodyDataPromotionDetails struct {
 	PromotionDetail []*GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail `json:"PromotionDetail,omitempty" xml:"PromotionDetail,omitempty" type:"Repeated"`
 }
@@ -399,23 +482,8 @@ func (s *GetSubscriptionPriceResponseBodyDataPromotionDetails) Validate() error 
 }
 
 type GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail struct {
-	// The description of the discount.
-	//
-	// example:
-	//
-	// test
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// The ID of the discount.
-	//
-	// example:
-	//
-	// 1021199213
-	PromotionId *int64 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The name of the discount.
-	//
-	// example:
-	//
-	// test
+	PromotionId   *int64  `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 }
 

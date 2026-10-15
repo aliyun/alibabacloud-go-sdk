@@ -22,7 +22,7 @@ type iGetAccountRelationResponseBody interface {
 }
 
 type GetAccountRelationResponseBody struct {
-	// The status code returned.
+	// The request status code.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type GetAccountRelationResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
 	Data *GetAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// Message returned
+	// Message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,63 +113,63 @@ func (s *GetAccountRelationResponseBody) Validate() error {
 }
 
 type GetAccountRelationResponseBodyData struct {
-	// The ID of the Alibaba Cloud account that is used as a member.
+	// The UID of the child account.
 	//
 	// example:
 	//
-	// ID of the Alibaba Cloud account that is used as a member
+	// Alibaba Cloud account UID of the child account
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
-	// The time when the financial relationship between the management account and the member was terminated.
+	// The end time of the account linking, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2021-12-01
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the financial relationship between the management account and the member was modified.
+	// The update time of the account linking.
 	//
 	// example:
 	//
 	// 2021-12-01
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the financial relationship.
+	// The account linking ID.
 	//
 	// example:
 	//
-	// ID of the financial relationship
+	// Account linking ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the Alibaba Cloud account that is used as the management account.
+	// The UID of the parent account.
 	//
 	// example:
 	//
-	// ID of the Alibaba Cloud account that is used as the management account
+	// Alibaba Cloud UID of the main account
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// The time when the financial relationship between the management account and the member was established.
+	// The start time of the account linking, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2021-11-01
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the financial relationship between the management account and the member.
+	// The account linking status. Valid values:
 	//
-	// - RELATED [Association established]
+	// - RELATED: linked.
 	//
-	// - CONFIRMING [To be confirmed by the other party]
+	// - CONFIRMING: pending confirmation from the other party.
 	//
-	// - REJECTED [Refused by the other party]
+	// - REJECTED: rejected by the other party.
 	//
-	// - CONNECTION_CANCELED [Financial sub-account cancel request]
+	// - CONNECTION_CANCELED: application canceled by the child account.
 	//
-	// - CONNECTION_MASTER_CANCEL [Financial master account cancel invitation]
+	// - CONNECTION_MASTER_CANCEL: invitation canceled by the main account.
 	//
-	// - CHANGE_CONFIRMING [Relationship change to be confirmed]
+	// - CHANGE_CONFIRMING: pending confirmation for relationship change.
 	//
-	// - INITIAL [Initial new relationship status]
+	// - INITIAL: initial status of a newly created linking.
 	//
 	// example:
 	//
-	// RELATED
+	// RELATED: linked
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the financial relationship.
+	// The account linking type.
 	//
 	// example:
 	//

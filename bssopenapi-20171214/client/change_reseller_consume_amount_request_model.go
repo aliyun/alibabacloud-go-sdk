@@ -28,7 +28,13 @@ type iChangeResellerConsumeAmountRequest interface {
 }
 
 type ChangeResellerConsumeAmountRequest struct {
-	// The type of the consumption amount adjustment. Valid values: increase: The consumption amount increases because new consumption occurs. decrease: The consumption amount decreases because funds are added to the account. This parameter is required.
+	// The adjustment direction of the consumption amount. Valid values:
+	//
+	// - increase: Increases the consumption amount.
+	//
+	// - decrease: Decreases the consumption amount for user top-ups.
+	//
+	// This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +42,7 @@ type ChangeResellerConsumeAmountRequest struct {
 	//
 	// increase/decrease
 	AdjustType *string `json:"AdjustType,omitempty" xml:"AdjustType,omitempty"`
-	// The amount to be adjusted. Unit: CNY
+	// The adjustment amount in CNY. The amount must be greater than 0.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +50,7 @@ type ChangeResellerConsumeAmountRequest struct {
 	//
 	// 10.00
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The type of the business.
+	// The business type.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +58,7 @@ type ChangeResellerConsumeAmountRequest struct {
 	//
 	// quota_amount_adjust
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The type of the currency.
+	// The currency.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +66,13 @@ type ChangeResellerConsumeAmountRequest struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The extended field of a message.
+	// The extended message fields.
 	//
 	// example:
 	//
 	// {}
 	ExtendMap *string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
-	// The ID of the primary key for external business. The ID is used for idempotence verification.
+	// The external business primary key ID used for idempotence verification.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +82,7 @@ type ChangeResellerConsumeAmountRequest struct {
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
 	// This parameter is required.
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The source of the request. Specify the system name for the parameter.
+	// The request source. Specify the system name.
 	//
 	// This parameter is required.
 	//

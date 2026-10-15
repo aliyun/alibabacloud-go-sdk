@@ -22,31 +22,31 @@ type iUntagResourcesResponseBody interface {
 }
 
 type UntagResourcesResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C7C15585-8349-4C62-BEE4-5A391841B9BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

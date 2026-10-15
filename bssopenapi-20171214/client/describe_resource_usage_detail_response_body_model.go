@@ -22,7 +22,7 @@ type iDescribeResourceUsageDetailResponseBody interface {
 }
 
 type DescribeResourceUsageDetailResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeResourceUsageDetailResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeResourceUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeResourceUsageDetailResponseBody struct {
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -115,19 +115,19 @@ func (s *DescribeResourceUsageDetailResponseBody) Validate() error {
 type DescribeResourceUsageDetailResponseBodyData struct {
 	// The data entries.
 	Items []*DescribeResourceUsageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned on the current page.
+	// The maximum number of entries to return in a single request. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -193,21 +193,25 @@ func (s *DescribeResourceUsageDetailResponseBodyData) Validate() error {
 }
 
 type DescribeResourceUsageDetailResponseBodyDataItems struct {
-	// The unit that is used to measure the resources that are deducted.
+	// The deduction unit.
+	//
+	// example:
+	//
+	// Compute hours
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	// The type of the currency.
+	// The currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount of the deducted resources.
+	// The deducted amount.
 	//
 	// example:
 	//
 	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	// The end of the time range in which the usage details were queried.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -225,7 +229,7 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// ecs.t5-lc2m1.nano
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The equivalent of pay-as-you-go costs.
+	// The equivalent pay-as-you-go cost.
 	//
 	// example:
 	//
@@ -237,27 +241,31 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// 0.13
 	PotentialSavedCost *string `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
-	// The number of deduction plans.
+	// The resource count.
 	//
 	// example:
 	//
 	// 2
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The code of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-dg-a01
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The fee of the deduction plan.
+	// The purchase cost of the resource.
 	//
 	// example:
 	//
 	// 0
 	ReservationCost *string `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
-	// The ID of the deduction plan.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -269,27 +277,31 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// 0.06
 	SavedCost *string `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
-	// The beginning of the time range in which the usage details were queried.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-04-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the deduction plan.
+	// The status.
 	//
 	// example:
 	//
 	// Valid
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the status.
+	// The status name.
+	//
+	// example:
+	//
+	// Active
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	// The total capacity of the deduction plan.
+	// The total number of resources.
 	//
 	// example:
 	//
 	// 2
 	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
-	// The usage rate of the deduction plan.
+	// The usage rate.
 	//
 	// example:
 	//
@@ -301,7 +313,7 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// 123745698925000
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the account.
+	// The account name.
 	//
 	// example:
 	//
@@ -313,7 +325,11 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// cn-hangzhou-i
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	// The code of the zone.
+	// The zone ID.
+	//
+	// example:
+	//
+	// Hangzhou Zone I
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 

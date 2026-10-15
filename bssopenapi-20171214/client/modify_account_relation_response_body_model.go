@@ -22,27 +22,27 @@ type iModifyAccountRelationResponseBody interface {
 }
 
 type ModifyAccountRelationResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *ModifyAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// Message returned
+	// 返回消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the request.
 	//
 	// example:
 	//
-	// request_id
+	// 48602faf-abbe-4d46-8029-654cc5aead5d
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,11 +113,11 @@ func (s *ModifyAccountRelationResponseBody) Validate() error {
 }
 
 type ModifyAccountRelationResponseBodyData struct {
-	// HostId
+	// The source IP address of the request.
 	//
 	// example:
 	//
-	// HostId
+	// 127.0.0.1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
 

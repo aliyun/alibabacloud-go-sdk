@@ -28,21 +28,21 @@ type DescribeInstanceBillResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeInstanceBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,39 +113,39 @@ func (s *DescribeInstanceBillResponseBody) Validate() error {
 }
 
 type DescribeInstanceBillResponseBodyData struct {
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 122
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The name of the account.
+	// The user account.
 	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The billing cycle in the YYYY-MM format.
+	// The billing date. Format: YYYY-MM.
 	//
 	// example:
 	//
 	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The details of the bill.
+	// The bill details.
 	Items []*DescribeInstanceBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of records returned for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position where the query stopped. If this parameter is left empty, all the results are returned. If you perform another call, you must set the NextToken parameter to the value of this parameter.
+	// The token that indicates the position from which the current call resumes reading. An empty value indicates that all data has been read. For the next call, set this value to the NextToken request parameter.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCm
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -238,12 +238,12 @@ func (s *DescribeInstanceBillResponseBodyData) Validate() error {
 }
 
 type DescribeInstanceBillResponseBodyDataItems struct {
-	// The amount deducted with credit refund.
+	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	// The amount after discount, including the payable amount after coupon deduction. Calculation rule: Amount after discount = List price - Discount amount.
 	//
 	// example:
 	//
 	// 0
-	AdjustAmount        *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	AfterDiscountAmount *float32 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
 	//
@@ -257,19 +257,19 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	//
 	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	// The billing date. This parameter is returned only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	// The billing date. This parameter has a value only when Granularity is set to DAILY. Format: YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2020-03-20
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	// The billable item. A value is returned only if the IsBillingItem parameter is set to true.
+	// The billable item. This parameter has a value only when IsBillingItem is set to true.
 	//
 	// example:
 	//
 	// Bandwidth
 	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
-	// The code of the billable item.
+	// The billable item code.
 	//
 	// example:
 	//
@@ -281,79 +281,64 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	//
 	// Other
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	// The type of business.
+	// The business type.
 	//
 	// example:
 	//
 	// trusteeship
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The amount paid in cash. The amount deducted with credit refund is not included.
-	//
-	// example:
-	//
-	// 0
+	BizType    *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	// The code of the commodity. The code is the same as that in Cost Center.
+	// The commodity code, which is the same as the product detail code in the User Center.
 	//
 	// example:
 	//
 	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The cost center.
+	// The cost unit.
 	//
 	// example:
 	//
-	// Not allocated
+	// Unallocated
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	// The type of currency. Valid values:
+	// The currency. Valid values:
 	//
-	// 	- CNY
+	// - CNY
 	//
-	// 	- USD
+	// - USD
 	//
-	// 	- JPY
+	// - JPY
 	//
 	// example:
 	//
 	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount deducted with vouchers.
-	//
-	// example:
-	//
-	// 0.1
+	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// The amount deducted with coupons.
+	// The coupon discount amount.
 	//
 	// example:
 	//
 	// 0.1
-	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	// The amount deducted with prepaid cards.
-	//
-	// example:
-	//
-	// 0.1
+	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	// The amount deducted with resource plans. This parameter is valid only when the isBillingItem parameter is set to true.
+	// The amount deducted by resource plans. This parameter is valid only when isBillingItem is set to true.
 	//
 	// example:
 	//
 	// 0.1
 	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	// The configurations of the instance.
+	// The detailed instance configuration.
 	//
 	// example:
 	//
-	// CPU:12
+	// CPU：12
 	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-dadada
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	// The type of the instance.
+	// The instance specifications.
 	//
 	// example:
 	//
@@ -365,7 +350,7 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	//
 	// 34.xx.x.x
 	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	// The private IP address.
+	// The internal IP address.
 	//
 	// example:
 	//
@@ -377,111 +362,101 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	//
 	// 0.1
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The type of the bill.
+	// The bill type. Valid values:
 	//
-	// 	- SubscriptionOrder: the subscription bill.
+	// - SubscriptionOrder: subscription order
 	//
-	// 	- PayAsYouGoBill: the pay-as-you-go bill,
+	// - PayAsYouGoBill: pay-as-you-go bill
 	//
-	// 	- Refund: the refund.
+	// - Refund: refund
 	//
-	// 	- Adjustment: the adjustment bill.
+	// - Adjustment: adjustment
 	//
 	// example:
 	//
 	// PayAsYouGoBill
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The name of the project.
+	// The item name.
 	//
 	// example:
 	//
 	// iZ28bycvyb4Z
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The unit price of the service. This parameter is valid only when the isBillingItem parameter is set to true.
+	// The unit price. This parameter is valid only when isBillingItem is set to true.
 	//
 	// example:
 	//
 	// 100
 	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	// The unit of the unit price. This parameter is valid only when the isBillingItem parameter is set to true.
+	// The unit of the unit price. This parameter is valid only when isBillingItem is set to true.
 	//
 	// example:
 	//
 	// CNY
 	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	// The name of the instance.
+	// The instance nickname.
 	//
 	// example:
 	//
 	// test
-	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The unsettled amount.
-	//
-	// example:
-	//
-	// 0.1
+	NickName          *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	// The ID of the account that owns the resource. This parameter is returned in multi-account payment scenario.
+	// The account ID of the resource owner in multi-account payment scenarios.
 	//
 	// example:
 	//
 	// 123
-	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The amount paid in cash. The amount deducted with credit refund is not included.
-	//
-	// example:
-	//
-	// 0.1
+	OwnerID       *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	// The code of the service. The code is the same as that in Cost Center.
+	// The product code, which is consistent with the product code in the bills of the User Center.
 	//
 	// example:
 	//
 	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// The pretax amount.
+	// The payable amount.
 	//
 	// example:
 	//
 	// 0.1
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// The pretax gross amount.
+	// The original amount.
 	//
 	// example:
 	//
 	// 0.1
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The details of the service.
+	// The product detail.
 	//
 	// example:
 	//
 	// ApsaraDB RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// The name of the service.
+	// The product name.
 	//
 	// example:
 	//
 	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// Hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the resource group.
+	// The resource group.
 	//
 	// example:
 	//
@@ -497,41 +472,43 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Second
+	// Seconds
 	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: the subscription billing method.
+	// - Subscription: subscription
 	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method.
+	// - PayAsYouGo: pay-as-you-go
 	//
 	// example:
 	//
 	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The tag of the resource.
+	// The resource tag.
 	//
 	// example:
 	//
 	// key:testKey value:testValue; key:testKey1 value:testValues1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The usage of the service. This parameter is valid only when the isBillingItem parameter is set to true. The usage is the total usage in all bills in the billing cycle, not the amount that you purchase. For example, if 1 GB of storage is used and bills are generated every hour, the usage is 1 GB per hour. In this case, the usage is 24 GB per day.
+	// The usage.
+	//
+	// > This parameter is valid only when isBillingItem is set to true. The usage data is the sum of usage across all bills within the cycle, not the actual purchased amount. For example, if 1 GB of storage is used and billed hourly, the hourly usage is 1 GB, and the daily aggregated bill usage is 1 GB × 24 = 24 GB.
 	//
 	// example:
 	//
 	// 100
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The unit of usage. This parameter is valid only when the isBillingItem parameter is set to true.
+	// The usage unit. This parameter is valid only when isBillingItem is set to true.
 	//
 	// example:
 	//
 	// GB
 	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
-	// The ID of the zone.
+	// The zone.
 	//
 	// example:
 	//
-	// Hangzhou Zone B
+	// Hangzhou Zone 1
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 

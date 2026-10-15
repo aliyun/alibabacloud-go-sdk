@@ -28,21 +28,21 @@ type GetPayAsYouGoPriceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetPayAsYouGoPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1537A007-72D7-4165-8A26-8694A38E219A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,21 +113,19 @@ func (s *GetPayAsYouGoPriceResponseBody) Validate() error {
 }
 
 type GetPayAsYouGoPriceResponseBodyData struct {
-	// The type of the currency. Valid values:
+	// The currency. Valid values:
 	//
-	// 	- CNY: Chinese Yuan
+	// - CNY: Chinese Yuan.
 	//
-	// 	- USD: US dollar
+	// - USD: US Dollar.
 	//
-	// 	- JPY: Japanese Yen
+	// - JPY: Japanese Yen.
 	//
 	// example:
 	//
 	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The price details of the pricing module.
-	ModuleDetails *GetPayAsYouGoPriceResponseBodyDataModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Struct"`
-	// The details of the discount.
+	Currency         *string                                             `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	ModuleDetails    *GetPayAsYouGoPriceResponseBodyDataModuleDetails    `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Struct"`
 	PromotionDetails *GetPayAsYouGoPriceResponseBodyDataPromotionDetails `json:"PromotionDetails,omitempty" xml:"PromotionDetails,omitempty" type:"Struct"`
 }
 
@@ -215,36 +213,11 @@ func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetails) Validate() error {
 }
 
 type GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail struct {
-	// The discount price.
-	//
-	// example:
-	//
-	// 100
 	CostAfterDiscount *float32 `json:"CostAfterDiscount,omitempty" xml:"CostAfterDiscount,omitempty"`
-	// The discount that was applied.
-	//
-	// example:
-	//
-	// 20
-	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The code of the pricing module.
-	//
-	// example:
-	//
-	// InstanceType
-	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The original price.
-	//
-	// example:
-	//
-	// 1.77
-	OriginalCost *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
-	// The unit price.
-	//
-	// example:
-	//
-	// 0
-	UnitPrice *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+	InvoiceDiscount   *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	ModuleCode        *string  `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OriginalCost      *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
+	UnitPrice         *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) String() string {
@@ -339,23 +312,8 @@ func (s *GetPayAsYouGoPriceResponseBodyDataPromotionDetails) Validate() error {
 }
 
 type GetPayAsYouGoPriceResponseBodyDataPromotionDetailsPromotionDetail struct {
-	// The description of the discount.
-	//
-	// example:
-	//
-	// This discount allows you to use a service at the minimum price and is provided for testing purposes only.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// The ID of the discount.
-	//
-	// example:
-	//
-	// 10200210
-	PromotionId *int64 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The name of the discount.
-	//
-	// example:
-	//
-	// This discount allows you to use a service at the minimum price and is provided for testing purposes only.
+	PromotionId   *int64  `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 }
 

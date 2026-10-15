@@ -28,7 +28,7 @@ type CancelOrderResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned information.
 	Data *CancelOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -36,13 +36,13 @@ type CancelOrderResponseBody struct {
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 30D2285E-A848-4ECB-AA74-4954C60858A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CancelOrderResponseBody) Validate() error {
 }
 
 type CancelOrderResponseBodyData struct {
-	// The ID of the host.
+	// The host ID.
 	//
 	// example:
 	//

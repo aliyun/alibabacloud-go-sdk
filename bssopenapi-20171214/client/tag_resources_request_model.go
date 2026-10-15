@@ -18,11 +18,11 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The IDs of resources.
+	// The list of resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Specify savings plan instance as the type of the resource.
+	// The resource type. Set the value to instance for savings plan instances.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type TagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The list of tags. You can add 1 to 20 tags at a time.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -85,7 +85,7 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag. You can create N tag keys at a time. Valid values of N: 1 to 20. The value of this parameter can be an empty string.
+	// The tag key. An empty string is allowed.
 	//
 	// This parameter is required.
 	//
@@ -93,7 +93,7 @@ type TagResourcesRequestTag struct {
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag N. Valid values of N: 1 to 20.
+	// The tag value.
 	//
 	// This parameter is required.
 	//

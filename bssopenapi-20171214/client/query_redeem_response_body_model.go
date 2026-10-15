@@ -22,21 +22,21 @@ type iQueryRedeemResponseBody interface {
 }
 
 type QueryRedeemResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryRedeemResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,21 +113,20 @@ func (s *QueryRedeemResponseBody) Validate() error {
 }
 
 type QueryRedeemResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the redemption coupon.
-	Redeem *QueryRedeemResponseBodyDataRedeem `json:"Redeem,omitempty" xml:"Redeem,omitempty" type:"Struct"`
-	// The total number of returned entries.
+	PageSize *int64                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Redeem   *QueryRedeemResponseBodyDataRedeem `json:"Redeem,omitempty" xml:"Redeem,omitempty" type:"Struct"`
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -223,86 +222,16 @@ func (s *QueryRedeemResponseBodyDataRedeem) Validate() error {
 }
 
 type QueryRedeemResponseBodyDataRedeemRedeem struct {
-	// The services to which the redemption coupon is applicable.
-	//
-	// example:
-	//
-	// Elastic Compute Service (ECS)
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
-	// The balance of the redemption coupon.
-	//
-	// example:
-	//
-	// 0
-	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// The time when the redemption coupon took effect.
-	//
-	// example:
-	//
-	// 2018-05-14 20:25:00
-	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the redemption coupon expired.
-	//
-	// example:
-	//
-	// 2018-06-13 20:25:00
-	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// The time when the redemption coupon was issued.
-	//
-	// example:
-	//
-	// 2018-05-14 20:25:00
-	GrantedTime *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
-	// The nominal value of the redemption coupon.
-	//
-	// example:
-	//
-	// 0
-	NominalValue *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
-	// The ID of the redemption coupon.
-	//
-	// example:
-	//
-	// 1342
-	RedeemId *string `json:"RedeemId,omitempty" xml:"RedeemId,omitempty"`
-	// The number of the redemption coupon.
-	//
-	// example:
-	//
-	// 4889*****1610
-	RedeemNo *string `json:"RedeemNo,omitempty" xml:"RedeemNo,omitempty"`
-	// The specifications of the redemption coupon.
-	//
-	// example:
-	//
-	// N/A
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The status of the redemption coupon. Valid values:
-	//
-	// 	- Generated
-	//
-	// 	- CallBack
-	//
-	// 	- RefundPending
-	//
-	// 	- Canceled
-	//
-	// 	- Order_Canceled
-	//
-	// 	- ActivePending
-	//
-	// 	- ActiveSuccess
-	//
-	// 	- ExchangePending
-	//
-	// 	- ExchangeSuccess
-	//
-	// 	- Expired
-	//
-	// example:
-	//
-	// Generated
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Balance            *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	EffectiveTime      *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExpiryTime         *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	GrantedTime        *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
+	NominalValue       *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
+	RedeemId           *string `json:"RedeemId,omitempty" xml:"RedeemId,omitempty"`
+	RedeemNo           *string `json:"RedeemNo,omitempty" xml:"RedeemNo,omitempty"`
+	Specification      *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryRedeemResponseBodyDataRedeemRedeem) String() string {

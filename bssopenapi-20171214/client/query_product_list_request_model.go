@@ -18,7 +18,7 @@ type iQueryProductListRequest interface {
 }
 
 type QueryProductListRequest struct {
-	// The page number of the page to return.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type QueryProductListRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of records per page. Maximum value: 300. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to return the total number of services. Default value: false.
+	// Specifies whether to return the total number of products. Default value: false.
 	//
 	// example:
 	//

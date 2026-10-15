@@ -22,21 +22,21 @@ type iQueryProductListResponseBody interface {
 }
 
 type QueryProductListResponseBody struct {
-	// The HTTP status code returned.
+	// The response status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about all Alibaba Cloud services.
+	// The Alibaba Cloud product information.
 	Data *QueryProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,21 +113,20 @@ func (s *QueryProductListResponseBody) Validate() error {
 }
 
 type QueryProductListResponseBodyData struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page.
+	// The number of records displayed per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The service definitions.
+	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductList *QueryProductListResponseBodyDataProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Struct"`
-	// The total number of services.
+	// The total number of product records.
 	//
 	// example:
 	//
@@ -223,33 +222,9 @@ func (s *QueryProductListResponseBodyDataProductList) Validate() error {
 }
 
 type QueryProductListResponseBodyDataProductListProduct struct {
-	// The code of the service.
-	//
-	// example:
-	//
-	// cdn
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The name of the service.
-	//
-	// example:
-	//
-	// CDN (Pay-as-you-go)
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The type of the service.
-	//
-	// example:
-	//
-	// CDN
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- Subscription: subscription
-	//
-	// 	- PayAsYouGo: pay-as-you-go
-	//
-	// example:
-	//
-	// PayAsYouGo
+	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName      *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 

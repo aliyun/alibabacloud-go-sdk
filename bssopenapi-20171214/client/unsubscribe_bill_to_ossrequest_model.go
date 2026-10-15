@@ -16,11 +16,11 @@ type iUnsubscribeBillToOSSRequest interface {
 }
 
 type UnsubscribeBillToOSSRequest struct {
-	// The type of accounts whose bills are to be pushed if multi-tier accounts are involved. Valid values:
+	// For multi-level accounts, specifies the type of bill to push. Valid values:
 	//
-	// 	- MA: management account.
+	// - MA: Pushes the bill of the main account.
 	//
-	// 	- ACP1: member account of a virtual network operator (VNO).
+	// - ACP1: Pushes the bill of the Partner Platform V2.0 sub-account.
 	//
 	// Default value: MA.
 	//
@@ -28,19 +28,19 @@ type UnsubscribeBillToOSSRequest struct {
 	//
 	// MA
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
-	// The type of the bill to which you want to subscribe. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- BillingItemDetailForBillingPeriod: bills of billable items
+	// - BillingItemDetailForBillingPeriod: billable item-level consumption details.
 	//
-	// 	- InstanceDetailForBillingPeriod: bills of instances
+	// - InstanceDetailForBillingPeriod: instance-level consumption details.
 	//
-	// 	- BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
+	// - BillingItemDetailMonthly: billable item-level consumption summary by billing cycle.
 	//
-	// 	- InstanceDetailMonthly: instance-based bills summarized by billing cycle
+	// - InstanceDetailMonthly: instance-level consumption summary by billing cycle.
 	//
-	// 	- SplitItemDetailDaily: split bills summarized by day
+	// - SplitItemDetailDaily: split bill summarized by day.
 	//
-	// 	- MonthBill: monthly bills in the PDF format You can subscribe to the monthly PDF bills only of the master account.
+	// - MonthBill: monthly bill in PDF format. Only MA subscriptions are supported.
 	//
 	// This parameter is required.
 	//

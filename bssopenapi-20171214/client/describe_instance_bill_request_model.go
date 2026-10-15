@@ -40,15 +40,13 @@ type iDescribeInstanceBillRequest interface {
 }
 
 type DescribeInstanceBillRequest struct {
-	// The ID of the member. If you specify this parameter, the bills of the member are queried. If you do not specify this parameter, the bills of the current account are queried by default.
+	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
 	//
 	// example:
 	//
 	// 122
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The billing cycle. Specify the parameter in the YYYY-MM format.
-	//
-	// Only the latest 18 month billing cycle is supported.
+	// The billing cycle in the YYYY-MM format. Only the last 18 billing cycles are supported.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +54,9 @@ type DescribeInstanceBillRequest struct {
 	//
 	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The billing date. This parameter is required only when the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	// The billing date. This parameter is required only when Granularity is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// > The value of BillingDate must be in the same month as the value of BillingCycle. For example, if BillingCycle is set to 2020-03, BillingDate must be set to 2020-03-DD. If the months are inconsistent, the query results are returned based on the time specified by BillingCycle.
 	//
 	// example:
 	//
@@ -64,80 +64,78 @@ type DescribeInstanceBillRequest struct {
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The granularity at which bills are queried. Valid values:
 	//
-	// 	- MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
+	// - MONTHLY: monthly. The data is consistent with the monthly bills in Expenses and Costs > Bills > Bill Details > Monthly Bills.
 	//
-	// 	- DAILY: queries bills on a daily basis. The data that you query is the same as the data searched by days on the Billing Details tab of the Bill Details page in the User Center console.
+	// - DAILY: daily. The data is consistent with the daily bills in Expenses and Costs > Bills > Bill Details > Daily Bills.
 	//
-	// The BillingDate parameter is required if you set the Granularity parameter to DAILY.
+	// > If you select DAILY, you must specify BillingDate.
 	//
 	// example:
 	//
 	// MONTHLY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// abc
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	// Specifies whether to query data by billable items. Valid values:
+	// Specifies whether to retrieve data by billable item. Valid values:
 	//
-	// 	- false: The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
+	// - false (default): The data is consistent with the instance bills in Expenses and Costs > Bills > Bill Details > Instance Bills.
 	//
-	// 	- true: The data that you query is the same as the data searched by billable items on the Billing Details tab of the Bill Details page in the User Center console.
-	//
-	// Default value: false.
+	// - true: The data is consistent with the billable item bills in Expenses and Costs > Bills > Bill Details > Billable Item Bills.
 	//
 	// example:
 	//
 	// false
 	IsBillingItem *bool `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
-	// Specifies whether to filter bills if both the pretax gross amount and pretax amount are 0. Valid values:
+	// Specifies whether to filter out records where both the original price (PretaxGrossAmount) and the payable amount (PretaxAmount) are 0. Valid values:
 	//
-	// 	- false: does not filter bills.
+	// - false
 	//
-	// 	- true: filters bills.
+	// - true
 	//
 	// example:
 	//
 	// false
 	IsHideZeroCharge *bool `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
-	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to read in the current call. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to indicate the position where the results for the current call start. The parameter must be left empty or set to the value of the NextToken parameter that is returned from the last call. Otherwise, an error is returned. If the parameter is left empty, data is queried from the first item.
+	// The position from which the current call starts to read data. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error occurs. An empty value indicates that the reading starts from the beginning.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCm
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the service. The code is the same as that in Cost Center.
+	// The product code, which is consistent with the product code in the bills of the User Center.
 	//
 	// example:
 	//
 	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: the subscription billing method.
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method.
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//

@@ -44,94 +44,92 @@ type QueryEvaluateListRequest struct {
 	//
 	// example:
 	//
-	// 202003
+	// 202502
 	BillCycle *string `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
-	// The market types in invoices.
-	//
-	// >  By default, this parameter is left empty. If this parameter is left empty, all market types are queried.
+	// The list of invoicing entities to which the invoiceable objects belong.
 	//
 	// example:
 	//
 	// ALIYUN
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// The maximum amount to be queried.
+	// The maximum amount for the query.
 	//
 	// example:
 	//
 	// 1000
 	EndAmount *int64 `json:"EndAmount,omitempty" xml:"EndAmount,omitempty"`
-	// The latest time when an order is paid Specify the time in the yyyy-mm-dd hh:mm:ss format.
+	// The end of the time range to query based on the successful payment time. The format is yyyy-mm-dd hh:mm:ss.
 	//
 	// example:
 	//
-	// 2020-02-02 15:00:00
+	// 2025-03-01 00:00:00
 	EndBizTime *string `json:"EndBizTime,omitempty" xml:"EndBizTime,omitempty"`
 	// The end of the time range to query.
 	//
 	// example:
 	//
-	// 2020-03-02 12:00:00
+	// 2025-03-01 00:00:00
 	EndSearchTime *string `json:"EndSearchTime,omitempty" xml:"EndSearchTime,omitempty"`
-	// The ID of the external order.
+	// The order ID, bill ID, or contract ID.
 	//
 	// example:
 	//
 	// 2387432832696
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the sort. Valid values:
+	// The sorting type. Valid values:
 	//
-	// 	- 1: Sort invoices by ID in descending order.
+	// - 1: sorts the results by ID in descending order.
 	//
-	// 	- 2: Sort invoices by invoice type in descending order, and then sort invoices of the same type by ID in descending order.
+	// - 2: sorts the results by type in descending order, and then by ID in descending order.
 	//
-	// 	- 3: Sort invoices by invoice type in ascending order, and then sort invoices of the same type by ID in descending order.
+	// - 3: sorts the results by type in ascending order, and then by ID in descending order.
 	//
 	// example:
 	//
 	// 1
 	SortType *int32 `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The minimum amount to be queried.
+	// The minimum amount for the query.
 	//
 	// example:
 	//
 	// 100
 	StartAmount *int64 `json:"StartAmount,omitempty" xml:"StartAmount,omitempty"`
-	// The earliest time when an order is paid. Specify the time in the yyyy-mm-dd hh:mm:ss format.
+	// The beginning of the time range to query based on the successful payment time. The format is yyyy-mm-dd hh:mm:ss.
 	//
 	// example:
 	//
-	// 2020-02-02 12:00:00
+	// 2025-02-01 00:00:00
 	StartBizTime *string `json:"StartBizTime,omitempty" xml:"StartBizTime,omitempty"`
-	// The beginning of the time range to query.
+	// The start of the time range to query.
 	//
 	// example:
 	//
-	// 2020-02-02 12:00:00
+	// 2025-02-01 00:00:00
 	StartSearchTime *string `json:"StartSearchTime,omitempty" xml:"StartSearchTime,omitempty"`
-	// The type of orders to be queried. Valid values:
+	// The type. Valid values:
 	//
-	// 	- 1: the orders in which the invoiceable amount is negative.
+	// - 1: queries objects with a negative invoiceable amount.
 	//
-	// 	- 2: the orders in which the invoiceable amount is positive.
+	// - 2: queries objects with a positive invoiceable amount.
 	//
-	// 	- 3: the orders in which the invoiceable amount is not 0.
+	// - 3: queries all objects with a non-zero invoiceable amount.
 	//
-	// 	- 4: the orders in which the amount that has been invoiced is greater than 0.
+	// - 4: queries objects with an invoiced amount greater than 0.
 	//
-	// >  By default, this parameter is left empty. If this parameter is left empty, all orders are queried.
+	// > If you leave this parameter empty, all objects are queried.
 	//
 	// example:
 	//

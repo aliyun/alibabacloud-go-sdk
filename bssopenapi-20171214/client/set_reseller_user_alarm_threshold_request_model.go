@@ -18,10 +18,14 @@ type iSetResellerUserAlarmThresholdRequest interface {
 }
 
 type SetResellerUserAlarmThresholdRequest struct {
+	// The list of user alert rules for this alert type. If this parameter is not specified, no alert threshold is set.
+	//
 	// example:
 	//
 	// [{\\"denominator\\":100,\\"numerator\\":30,\\"thresholdType\\":1}]
 	AlarmThresholds *string `json:"AlarmThresholds,omitempty" xml:"AlarmThresholds,omitempty"`
+	// The alert type. Valid value: quota_low_balance, which indicates a low-balance alert for quotas.
+	//
 	// This parameter is required.
 	//
 	// example:

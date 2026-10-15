@@ -14,7 +14,7 @@ type iModifyCostUnitRequest interface {
 }
 
 type ModifyCostUnitRequest struct {
-	// The cost centers to be modified.
+	// The list of financial units.
 	UnitEntityList []*ModifyCostUnitRequestUnitEntityList `json:"UnitEntityList,omitempty" xml:"UnitEntityList,omitempty" type:"Repeated"`
 }
 
@@ -49,7 +49,7 @@ func (s *ModifyCostUnitRequest) Validate() error {
 }
 
 type ModifyCostUnitRequestUnitEntityList struct {
-	// The new name of the cost center.
+	// The new name of the financial unit.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,7 @@ type ModifyCostUnitRequestUnitEntityList struct {
 	//
 	// newTest
 	NewUnitName *string `json:"NewUnitName,omitempty" xml:"NewUnitName,omitempty"`
-	// The user ID of the cost center owner.
+	// The user ID of the financial unit owner.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type ModifyCostUnitRequestUnitEntityList struct {
 	//
 	// 1321312312
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the cost center.
+	// The ID of the financial unit.
 	//
 	// This parameter is required.
 	//

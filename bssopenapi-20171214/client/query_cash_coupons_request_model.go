@@ -18,27 +18,27 @@ type iQueryCashCouponsRequest interface {
 }
 
 type QueryCashCouponsRequest struct {
-	// Specifies whether the voucher takes effect. Valid values:
+	// Specifies whether the voucher is valid. Valid values:
 	//
-	// 	- true: The voucher takes effect.
+	// - true
 	//
-	// 	- false: The voucher does not take effect.
+	// - false
 	//
 	// example:
 	//
 	// true
 	EffectiveOrNot *bool `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
-	// The end time of the validity period of the voucher. Specify the parameter in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-08-01T00:00:00Z.
+	// The end of the expiration time range for the voucher. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2018-08-01T00:00:00Z
 	ExpiryTimeEnd *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
-	// The start time of the validity period of the voucher. Specify the parameter in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-08-01T00:00:00Z.
+	// The start of the expiration time range for the voucher. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
-	// 2018-08-01T00:00:00Z
+	// 2018-09-01T00:00:00Z
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 }
 

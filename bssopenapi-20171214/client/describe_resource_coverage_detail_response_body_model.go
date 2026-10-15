@@ -30,19 +30,19 @@ type DescribeResourceCoverageDetailResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeResourceCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *DescribeResourceCoverageDetailResponseBody) Validate() error {
 }
 
 type DescribeResourceCoverageDetailResponseBodyData struct {
-	// The data entries.
+	// The data items.
 	Items []*DescribeResourceCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned on the current page.
 	//
@@ -121,13 +121,13 @@ type DescribeResourceCoverageDetailResponseBodyData struct {
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token of the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -193,105 +193,125 @@ func (s *DescribeResourceCoverageDetailResponseBodyData) Validate() error {
 }
 
 type DescribeResourceCoverageDetailResponseBodyDataItems struct {
-	// The unit that is used to measure the resources deducted from deduction plans.
+	// The deduction unit.
+	//
+	// example:
+	//
+	// Compute power × hour
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	// The code of the service.
+	// The code of the product detail.
 	//
 	// example:
 	//
 	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The name and billing method of the service.
+	// The product detail.
+	//
+	// example:
+	//
+	// ECS - Pay-as-you-go
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The coverage rate of a deduction plan.
+	// The coverage percentage.
 	//
 	// example:
 	//
 	// 1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The currency in which deduction plans were priced.
+	// The currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount of the resources deducted from a deduction plan.
+	// The deducted quantity.
 	//
 	// example:
 	//
 	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	// The end of the time range in which the coverage details were queried.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-04-01 01:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of a pay-as-you-go instance.
+	// The pay-as-you-go instance ID.
 	//
 	// example:
 	//
 	// i-bp1d9x623987rlj0dx4xx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The specifications of a deduction plan.
+	// The instance type.
 	//
 	// example:
 	//
 	// ecs.t5-lc2m1.nano
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The amount of the bill.
+	// The bill amount.
 	//
 	// example:
 	//
 	// 0
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The name of the service.
+	// The product name.
+	//
+	// example:
+	//
+	// ECS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The code of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-dg-a01
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The beginning of the time range in which the coverage details were queried.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-04-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total amount of resources consumed.
+	// The total usage.
 	//
 	// example:
 	//
 	// 1
 	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 123745698925000
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the account.
+	// The account name.
 	//
 	// example:
 	//
 	// test13@test.aliyun.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The code of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 	// The zone.
+	//
+	// example:
+	//
+	// Hangzhou Zone I
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 

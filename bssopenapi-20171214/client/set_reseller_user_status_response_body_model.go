@@ -22,19 +22,19 @@ type iSetResellerUserStatusResponseBody interface {
 }
 
 type SetResellerUserStatusResponseBody struct {
-	// The error code returned if the call failed. For more information, see the "Error codes" section of this topic.
+	// The error code returned if the call fails. For more information, see the Error codes section.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type SetResellerUserStatusResponseBody struct {
 	//
 	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+	// Indicates whether the request was successful. `true`: success. `false`: an error occurred.
 	//
 	// example:
 	//

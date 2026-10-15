@@ -22,20 +22,26 @@ type iDescribeSavingsPlansCoverageTotalShrinkRequest interface {
 }
 
 type DescribeSavingsPlansCoverageTotalShrinkRequest struct {
-	// The ID of the account for which you want to query coverage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
 	//
 	// example:
 	//
 	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// Format: yyyy-MM-dd HH:mm:ss. The query excludes this time. If this parameter is left empty, the query covers data up to the current time.
 	//
 	// example:
 	//
 	// 2021-07-20 00:00:00
 	EndPeriod         *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	FilterParamShrink *string `json:"FilterParam,omitempty" xml:"FilterParam,omitempty"`
-	// The time granularity at which coverage summary are queried. Valid values: MONTH, DAY, and HOUR.
+	// Valid values:
+	//
+	// - MONTH: month granularity.
+	//
+	// - DAY: day granularity.
+	//
+	// - HOUR: hour granularity.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +49,7 @@ type DescribeSavingsPlansCoverageTotalShrinkRequest struct {
 	//
 	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// Format: yyyy-MM-dd HH:mm:ss. The query includes this time.
 	//
 	// This parameter is required.
 	//

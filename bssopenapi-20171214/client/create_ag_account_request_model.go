@@ -30,39 +30,39 @@ type iCreateAgAccountRequest interface {
 }
 
 type CreateAgAccountRequest struct {
-	// The attribute of the account. To view the attribute of the account, use the account to log on to the Alibaba Cloud Management Console, move the pointer over the profile picture in the upper-right corner, and then click **Security Settings**.
+	// The properties of the new account. In the console, click Account Properties in the top menu bar to go to the **Security Settings*	- page and view the properties.
 	//
 	// example:
 	//
 	// 1
 	AccountAttr *string `json:"AccountAttr,omitempty" xml:"AccountAttr,omitempty"`
-	// The name of the city.
+	// The name of the city in English.
 	//
 	// example:
 	//
-	// Beijing
+	// 北京
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The name of the enterprise.
+	// The name of the enterprise. This is the enterprise name that corresponds to the Unified Social Credit Code.
 	//
 	// example:
 	//
-	// Dongguan ChuangNeng Electric Appliance Co., Ltd
+	// 阿里云测试有限公司
 	EnterpriseName *string `json:"EnterpriseName,omitempty" xml:"EnterpriseName,omitempty"`
-	// The first name.
+	// The first name of the user under the level 1 category.
 	//
 	// example:
 	//
-	// Zhicheng
+	// 志成
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
-	// The last name.
+	// The last name of the user.
 	//
-	// The last name can be up to 64 characters in length.
+	// Maximum length: 64 characters.
 	//
 	// example:
 	//
-	// Wu
+	// 吴
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
-	// The email address used to log on to the account.
+	// The logon email address of the member account.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateAgAccountRequest struct {
 	//
 	// CN
 	NationCode *string `json:"NationCode,omitempty" xml:"NationCode,omitempty"`
-	// The zip code.
+	// The postal code.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreateAgAccountRequest struct {
 	//
 	// example:
 	//
-	// Beijing
+	// 北京
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 }
 

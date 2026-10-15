@@ -22,11 +22,11 @@ type iQueryRedeemRequest interface {
 }
 
 type QueryRedeemRequest struct {
-	// Specifies whether the redemption coupon takes effect. Valid values:
+	// Specifies whether the redemption ticket is effective. Valid values:
 	//
-	// 	- true
+	// - true: Effective.
 	//
-	// 	- false
+	// - false: Not effective.
 	//
 	// Default value: false.
 	//
@@ -34,25 +34,25 @@ type QueryRedeemRequest struct {
 	//
 	// true
 	EffectiveOrNot *bool `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
-	// The end time when the redemption coupon expires. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The end time of the expiration period. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2018-08-01T00:00:00Z
 	ExpiryTimeEnd *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
-	// The start time when the redemption coupon expires. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time of the expiration period. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2018-08-01T00:00:00Z
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page. The value cannot exceed 300.
 	//
 	// example:
 	//

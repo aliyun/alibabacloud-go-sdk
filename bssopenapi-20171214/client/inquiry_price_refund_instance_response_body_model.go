@@ -22,7 +22,7 @@ type iInquiryPriceRefundInstanceResponseBody interface {
 }
 
 type InquiryPriceRefundInstanceResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type InquiryPriceRefundInstanceResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The Tracing Analysis character string for the execute operation. You can provide this string to the platform for troubleshooting.
 	//
 	// example:
 	//
 	// UUID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the call is successful. A value of true indicates that the call is complete. A value of false indicates that an error occurred.
 	//
 	// example:
 	//
@@ -117,21 +117,21 @@ type InquiryPriceRefundInstanceResponseBodyData struct {
 	//
 	// example:
 	//
-	// CNY. CNY: Chinese Yuan. USD: United States dollar. JPY: Japanese Yen.
+	// The currency of the refund amount: CNY: Chinese Yuan. USD: US Dollar. JPY: Japanese Yen
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The site of the execution host.
+	// The site where the execution host resides.
 	//
 	// example:
 	//
 	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-bp1etb69sqxgl4*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The refundable amount.
+	// The refund amount.
 	//
 	// example:
 	//

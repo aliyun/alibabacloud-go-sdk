@@ -34,7 +34,7 @@ type iApplyInvoiceRequest interface {
 }
 
 type ApplyInvoiceRequest struct {
-	// The ID of the address to which the invoice is delivered. This parameter is required if the invoice is a paper invoice. Set the ID to the value of the AddressId parameter returned by calling the QueryCustomerAddressList operation.
+	// The ID of the mailing address, which corresponds to the ID parameter returned by the QueryCustomerAddressList operation.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ApplyInvoiceRequest struct {
 	//
 	// 237958367
 	AddressId *int64 `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// The nickname of the applicant. The system does not verify the nickname.
+	// The nickname of the applicant. The system does not verify this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ApplyInvoiceRequest struct {
 	//
 	// test
 	ApplyUserNick *string `json:"ApplyUserNick,omitempty" xml:"ApplyUserNick,omitempty"`
-	// The ID of the customer. Set the ID to the value of the CustomerId parameter returned by calling the QueryInvoicingCustomerList operation.
+	// The ID of the invoice title information, which corresponds to the ID parameter returned by the QueryInvoicingCustomerList operation.
 	//
 	// This parameter is required.
 	//
@@ -58,38 +58,42 @@ type ApplyInvoiceRequest struct {
 	//
 	// 124132423
 	CustomerId *int64 `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	// The amount of the invoice. Unit: Cent.
+	// The requested invoice amount, in cents.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 124132
+	// 10000
 	InvoiceAmount *int64 `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
-	// Specifies whether to invoice by amount. A value of true indicates that the user applies for the invoice based on the InvoiceAmount parameter. A value of false indicates that the user applies for the invoice based on the total amount of the invoicing items.
+	// Specifies whether to issue the invoice based on a specified amount. If this parameter is set to true, the invoice is applied for based on the specified InvoiceAmount. Otherwise, the invoice is applied for based on the total amount of the selected objects to be invoiced.
 	//
 	// example:
 	//
 	// true
 	InvoiceByAmount *bool `json:"InvoiceByAmount,omitempty" xml:"InvoiceByAmount,omitempty"`
-	// The type of the invoice. Valid values:
+	// The invoice type. Valid values:
 	//
-	// 	- 0: paper invoice
+	// - 0: VAT special invoice.
 	//
-	// 	- 1: electronic invoice
+	// - 1: VAT general invoice.
 	//
 	// example:
 	//
 	// 1
 	InvoicingType *int32 `json:"InvoicingType,omitempty" xml:"InvoicingType,omitempty"`
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The channel that is used to process the invoice. A value of 0 indicates that the invoice is processed by Alibaba Cloud. A value of 1 indicates that the invoice is processed by the tax platform. Set the value to 1.
+	// The invoicing channel. Set this parameter to 1. Valid values:
+	//
+	// - 0: Processed by Alibaba Cloud.
+	//
+	// - 1: Processed by the tax platform.
 	//
 	// example:
 	//
 	// 1
 	ProcessWay *int32 `json:"ProcessWay,omitempty" xml:"ProcessWay,omitempty"`
-	// The IDs of the selected invoicing items. Set the IDs to the IDs returned by calling the QueryEvaluateList operation.
+	// The list of IDs of the selected objects to be invoiced, which correspond to the ID parameters returned by the QueryEvaluateList operation.
 	//
 	// This parameter is required.
 	//
@@ -97,13 +101,18 @@ type ApplyInvoiceRequest struct {
 	//
 	// 384752367
 	SelectedIds []*int64 `json:"SelectedIds,omitempty" xml:"SelectedIds,omitempty" type:"Repeated"`
-	// The remarks made by the user.
+	// The user remarks.
 	//
 	// example:
 	//
 	// test
 	UserRemark *string `json:"UserRemark,omitempty" xml:"UserRemark,omitempty"`
-	Emails     *string `json:"emails,omitempty" xml:"emails,omitempty"`
+	// The email addresses for receiving the invoice. The maximum length of this field is 200 characters. Separate multiple email addresses with commas (,).
+	//
+	// example:
+	//
+	// aaa@aa.com,bbb@bb.com
+	Emails *string `json:"emails,omitempty" xml:"emails,omitempty"`
 }
 
 func (s ApplyInvoiceRequest) String() string {

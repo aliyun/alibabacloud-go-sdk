@@ -34,11 +34,21 @@ type iDescribeInstanceAmortizedCostByAmortizationPeriodRequest interface {
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodRequest struct {
-	// The ID of the member to which the bill belongs. The member ID is used to filter bills. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account and all members of the current account are queried. You can specify a maximum of 10 IDs.
+	// The filter condition for the account to which the resource belongs.
+	//
+	// The resource ownership account is the account that actually uses the resource.
+	//
+	// Maximum number of elements: 10.
 	BillOwnerIdList []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
-	// The ID of the member that needs to settle the bill. The member ID is used to filter bills. If you specify a value for this parameter, you can query the bills of the specified member account. If you leave this parameter empty, the bills of the current account and all members of the current account are queried by default. You can specify a maximum of 10 IDs.
+	// The filter condition for the ID of the bill owner.
+	//
+	// This parameter specifies the ID of a RAM user. You can set this parameter to query the bills of a RAM user. If you do not set this parameter, the bills of the current account and all RAM users of the current account are queried.
+	//
+	// Maximum number of elements: 10.
 	BillUserIdList []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	// The allocation month. Format: YYYY-MM.
+	// The amortization month.
+	//
+	// Format: YYYY-MM.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +56,9 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodRequest struct {
 	//
 	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The billing cycle that is used to filter bills. You can specify a maximum of 10 billing cycles.
+	// The filter condition for the billing cycle.
+	//
+	// Maximum number of elements: 10.
 	ConsumePeriodFilter []*string `json:"ConsumePeriodFilter,omitempty" xml:"ConsumePeriodFilter,omitempty" type:"Repeated"`
 	// The code of the cost center.
 	//
@@ -54,37 +66,41 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodRequest struct {
 	//
 	// 123#
 	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	// The instance ID that is used to filter bills. You can specify multiple instance IDs to query bills of multiple instances. If you leave this parameter empty, the bills of all instances are queried by default. You can specify a maximum of 10 instance IDs.
+	// The filter condition for the instance ID.
+	//
+	// You can query multiple instances. If you do not set this parameter, all instances are queried.
+	//
+	// Maximum number of elements: 10.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to return. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which the query starts. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+	// The position from which to start reading the current call. The value of this parameter must be empty or the value of NextToken that is returned in the last call. Otherwise, an error is reported. If this parameter is empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The code of the service. You can obtain the value of this parameter by calling the QueryProductList operation or the DescribeResourcePackageProduct operation.
+	// The product code. To obtain the value of this parameter, call QueryProductList or DescribeResourcePackageProduct.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The specific service resource.
+	// The details of the product.
 	//
 	// example:
 	//
 	// rds
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: the subscription billing method
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//

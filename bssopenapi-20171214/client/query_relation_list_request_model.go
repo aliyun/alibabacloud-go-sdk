@@ -20,25 +20,25 @@ type iQueryRelationListRequest interface {
 }
 
 type QueryRelationListRequest struct {
-	// The number of the page to return. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries per page. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The states of the relationships between the management account and its members. The valid values of this parameter are the enumeration members of the RelationshipStatusEnum data type. If you do not specify this parameter, valid relationship states are queried by default.
+	// A list of relationship statuses. The value is an enumeration of RelationshipStatusEnum. If you do not specify this parameter, only relationships that are in effect are queried.
 	//
 	// example:
 	//
 	// RELATED
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The ID of the Alibaba Cloud account.
+	// The UID of the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//

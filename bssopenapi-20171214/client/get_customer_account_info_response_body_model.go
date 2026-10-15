@@ -22,27 +22,27 @@ type iGetCustomerAccountInfoResponseBody interface {
 }
 
 type GetCustomerAccountInfoResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetCustomerAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 94017C56-1725-5DD9-AB41-B3BAE791D600
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+	// Indicates whether the call was successful. A value of true indicates that the call was completed. A value of false indicates that an error occurred.
 	//
 	// example:
 	//
@@ -113,49 +113,57 @@ func (s *GetCustomerAccountInfoResponseBody) Validate() error {
 }
 
 type GetCustomerAccountInfoResponseBodyData struct {
-	// The type of the account. A value of 1 indicates an enterprise account. A value of 0 indicates an individual account.
+	// The account type. Valid values:
+	//
+	// - 1: enterprise account.
+	//
+	// - 0: individual account.
 	//
 	// example:
 	//
 	// 1
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The business status of the customer. Valid values:
+	// The business type of the end user.
 	//
-	// Freeze: The business is frozen.
+	// Valid values:
 	//
-	// Thaw: The business is unfrozen.
+	// 1. Freeze: The user is in a frozen state.
 	//
-	// Trusteeship: The business is hosted.
+	// 2. Thaw: The user is in a thawed state.
 	//
-	// TrusteeshipCancel: The business is not hosted.
+	// 3. Trusteeship: The user is in a trusteeship state.
+	//
+	// 4. TrusteeshipCancel: The user is in a non-trusteeship state.
 	//
 	// example:
 	//
 	// Freeze
 	CreditLimitStatus *string `json:"CreditLimitStatus,omitempty" xml:"CreditLimitStatus,omitempty"`
-	// The hosting status of the credit information and instances of the customer. If the credit information and instances of the customer are managed on Alibaba Cloud, Alibaba Cloud suspends a customer service upon overdue payment. Valid values:
+	// The hosting status. This parameter is provided by the credit control system and indicates whether the instance is managed by Alibaba Cloud. If the instance is managed, Alibaba Cloud handles resource suspension/resumption due to overdue payments.
 	//
-	// FREEZE: The business of the customer is frozen.
+	// Valid values:
 	//
-	// TRUSTEESHIP: The business of the customer is hosted.
+	// 1. FREEZE: The user\\"s business is frozen.
+	//
+	// 2. TRUSTEESHIP: The user\\"s business is under trusteeship.
 	//
 	// example:
 	//
 	// FREEZE
 	HostingStatus *string `json:"HostingStatus,omitempty" xml:"HostingStatus,omitempty"`
-	// Indicates whether the account passes the real-name verification.
+	// The real-name verification status.
 	//
 	// example:
 	//
 	// true
 	IsCertified *bool `json:"IsCertified,omitempty" xml:"IsCertified,omitempty"`
-	// The email address of the customer.
+	// The email address of the end customer.
 	//
 	// example:
 	//
 	// xxxx@aliyun.com
 	LoginEmail *string `json:"LoginEmail,omitempty" xml:"LoginEmail,omitempty"`
-	// The ID of the management account.
+	// The MPK of the parent account.
 	//
 	// example:
 	//

@@ -28,21 +28,21 @@ type QueryOrdersResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The response data.
 	Data *QueryOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 61293E7A-3406-4447-8620-EC88B0AA66AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -118,22 +118,21 @@ type QueryOrdersResponseBodyData struct {
 	// example:
 	//
 	// test
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The orders returned.
+	HostName  *string                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	OrderList *QueryOrdersResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Set this parameter to a maximum of 20. A larger value may cause a timeout.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -238,128 +237,23 @@ func (s *QueryOrdersResponseBodyDataOrderList) Validate() error {
 }
 
 type QueryOrdersResponseBodyDataOrderListOrder struct {
-	// The aftertax amount of the order.
-	//
-	// example:
-	//
-	// 66
-	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	// The service code.
-	//
-	// example:
-	//
-	// ecs
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The time when the order was created.
-	//
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The currency.
-	//
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The ID of the order.
-	//
-	// example:
-	//
-	// 34532532
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The type of the order. Valid values:
-	//
-	// 	- New: purchases an instance.
-	//
-	// 	- Renew: renews an instance.
-	//
-	// 	- Upgrade: upgrades the configurations of an instance.
-	//
-	// 	- Refund: applies for a refund.
-	//
-	// example:
-	//
-	// New
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The currency of payment.
-	//
-	// example:
-	//
-	// CNY
-	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// The status of payment. Valid values for a non-refund order:
-	//
-	// 	- Unpaid: The order is not paid.
-	//
-	// 	- Paid: The order is paid.
-	//
-	// 	- Cancelled: The order is canceled.
-	//
-	// > : The value is NULL for a refund order.
-	//
-	// example:
-	//
-	// Paid
-	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
-	// The time of payment.
-	//
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	// The pretax amount of the order.
-	//
-	// example:
-	//
-	// 0
-	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// The pretax amount of the order in local currency.
-	//
-	// example:
-	//
-	// 0
+	AfterTaxAmount    *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	CommodityCode     *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Currency          *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	OrderId           *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PaymentCurrency   *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentStatus     *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
+	PaymentTime       *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PretaxAmount      *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	// The pretax gross amount of the order.
-	//
-	// example:
-	//
-	// 0
 	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The code of the main service.
-	//
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the main service.
-	//
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the associated order.
-	//
-	// example:
-	//
-	// 234535345345342
-	RelatedOrderId *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- Subscription: subscription
-	//
-	// 	- PayAsYouGo: pay-as-you-go
-	//
-	// example:
-	//
-	// PayAsYouGo
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The tax of the order.
-	//
-	// example:
-	//
-	// 1
-	Tax *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RelatedOrderId    *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
+	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax               *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
 func (s QueryOrdersResponseBodyDataOrderListOrder) String() string {

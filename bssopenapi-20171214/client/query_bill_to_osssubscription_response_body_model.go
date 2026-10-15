@@ -22,7 +22,7 @@ type iQueryBillToOSSSubscriptionResponseBody interface {
 }
 
 type QueryBillToOSSSubscriptionResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type QueryBillToOSSSubscriptionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryBillToOSSSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9EEAE43F-1E4D-4734-AE93-5049878AC103
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,20 +113,19 @@ func (s *QueryBillToOSSSubscriptionResponseBody) Validate() error {
 }
 
 type QueryBillToOSSSubscriptionResponseBodyData struct {
-	// The ID of the account used to perform the query.
+	// The ID of the current query account.
 	//
 	// example:
 	//
 	// 185xxxxx03489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The name of the account used to perform the query.
+	// The name of the current query account.
 	//
 	// example:
 	//
 	// test@test.aliyunid.com
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The details of the subscribed bill.
-	Items *QueryBillToOSSSubscriptionResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	AccountName *string                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Items       *QueryBillToOSSSubscriptionResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QueryBillToOSSSubscriptionResponseBodyData) String() string {
@@ -208,58 +207,13 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItems) Validate() error {
 }
 
 type QueryBillToOSSSubscriptionResponseBodyDataItemsItem struct {
-	// The owner ID of the Object Storage Service (OSS) bucket.
-	//
-	// example:
-	//
-	// 1369168081849304
-	BucketOwnerId *int64 `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
-	// The path in the OSS bucket.
-	//
-	// example:
-	//
-	// Billing/BillingItemDetailMonthly/
-	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
-	// The maximum number of data rows in a single file. If the number of data rows in a bill exceeds the upper limit, the bill is split into multiple files. Then, multiple files are merged and compressed into a package.
-	//
-	// example:
-	//
-	// 300000
-	RowLimitPerFile *int32 `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
-	// The ID of the OSS bucket that stores the subscribed bill.
-	//
-	// example:
-	//
-	// billingtestbucket
-	SubscribeBucket *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
-	// The code of the language.
-	//
-	// Valid values:
-	//
-	// 	- en: English
-	//
-	// 	- zh: Chinese
-	//
-	// example:
-	//
-	// zh
+	BucketOwnerId     *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
+	BucketPath        *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	RowLimitPerFile   *int32  `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
+	SubscribeBucket   *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	SubscribeLanguage *string `json:"SubscribeLanguage,omitempty" xml:"SubscribeLanguage,omitempty"`
-	// The time when the subscribed bill was stored in the OSS bucket. The time is displayed in the YYYY-MM-DD hh:mm:ss format.
-	//
-	// example:
-	//
-	// 2019-10-30 15:40:11
-	SubscribeTime *string `json:"SubscribeTime,omitempty" xml:"SubscribeTime,omitempty"`
-	// The type of the subscribed bill. Valid values:
-	//
-	// 	- BillingItemDetailForBillingPeriod: the bill of a billable item.
-	//
-	// 	- InstanceDetailForBillingPeriod: the bill of an instance.
-	//
-	// example:
-	//
-	// BillingItemDetailForBillingPeriod
-	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
+	SubscribeTime     *string `json:"SubscribeTime,omitempty" xml:"SubscribeTime,omitempty"`
+	SubscribeType     *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
 func (s QueryBillToOSSSubscriptionResponseBodyDataItemsItem) String() string {

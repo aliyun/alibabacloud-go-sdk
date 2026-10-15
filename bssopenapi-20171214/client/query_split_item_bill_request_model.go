@@ -28,13 +28,13 @@ type iQuerySplitItemBillRequest interface {
 }
 
 type QuerySplitItemBillRequest struct {
-	// The ID of the member. If you specify a value for this parameter, you can query the split bills of the specified member. If you leave this parameter empty, the split bills of the current account are queried by default.
+	// The ID of the account that owns the resource. The resource owner is the account that actually uses the resource.
 	//
 	// example:
 	//
 	// 123
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The billing cycle, in the YYYY-MM format.
+	// The billing cycle. Format: YYYY-MM.
 	//
 	// This parameter is required.
 	//
@@ -43,31 +43,37 @@ type QuerySplitItemBillRequest struct {
 	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	// The number of entries per page. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values: Subscription: subscription PayAsYouGo: pay-as-you-go This parameter must be used together with the ProductCode parameter.
+	// The subscription type. Valid values:
+	//
+	// Subscription: subscription.
+	//
+	// PayAsYouGo: pay-as-you-go.
+	//
+	// Note: This parameter must be used with the ProductCode parameter.
 	//
 	// example:
 	//

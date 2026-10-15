@@ -22,7 +22,7 @@ type iDescribeCostBudgetsSummaryResponseBody interface {
 }
 
 type DescribeCostBudgetsSummaryResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeCostBudgetsSummaryResponseBody struct {
 	//
 	// 3BFC23FE-A182-4D96-A1E4-7521B30B8E43
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,27 +113,27 @@ func (s *DescribeCostBudgetsSummaryResponseBody) Validate() error {
 }
 
 type DescribeCostBudgetsSummaryResponseBodyData struct {
-	// The site of the host.
+	// The website.
 	//
 	// example:
 	//
 	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The data that is returned.
+	// The list of items.
 	Items []*DescribeCostBudgetsSummaryResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries that are returned.
+	// The maximum number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6NH0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -208,7 +208,13 @@ func (s *DescribeCostBudgetsSummaryResponseBodyData) Validate() error {
 }
 
 type DescribeCostBudgetsSummaryResponseBodyDataItems struct {
-	// The information about the budget. The BudgetCycleType parameter indicates the cycle of the budget. Valid values: daily, monthly, quarterly, and yearly. The TotalBudgetAmount parameter indicates the total budget. The BudgetMemo parameter indicates the remarks of the budget.
+	// Information about the budget.
+	//
+	// - BudgetCycleType: The budget period. Valid values: daily, monthly, quarterly, and yearly.
+	//
+	// - TotalBudgetAmount: The total budget amount.
+	//
+	// - BudgetMemo: The notes for the budget.
 	//
 	// example:
 	//
@@ -218,7 +224,7 @@ type DescribeCostBudgetsSummaryResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Annual budget
+	// 全年预算
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
 	// The status of the budget.
 	//
@@ -232,13 +238,23 @@ type DescribeCostBudgetsSummaryResponseBodyDataItems struct {
 	//
 	// cost
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	// The information about the estimate-to-actual analysis. The ActualConsumeSum parameter indicates the accumulated actual value. The ActualAddForecastedAmount parameter indicates the sum of accumulated actual value and predicted value. If the BudgetType parameter is set to cost, the sum of actual value and predicted value includes the actual cost incurred from the budget start date to the current date and the predicted cost from the current date to the budget end date. If the BudgetType parameter is set to asset, the sum of actual value and predicted value includes the actual usage or coverage from the budget start date to the budget end date. If the budget end date minus the current date is more than one year, the part that exceeds one year is not included. The ActualAndBudgetComparison parameter indicates the comparison between the actual value and the predicted value. The value of the ActualAndBudgetComparison parameter is calculated based on the following formula: Accumulated actual value/Total budget × 100%.
+	// Information about the estimate-to-actual comparison.
+	//
+	// - ActualConsumeSum: The accumulated actual consumption.
+	//
+	// - ActualAddForecastedAmount: The sum of the accumulated actual value and the predicted value. For a cost budget, this value represents the actual spending to date plus the forecasted spending until the budget period ends.
+	//
+	// - ActualAndBudgetComparison: The comparison of the actual consumption to the budget. This value is calculated using the following formula: (Accumulated actual value / Total budget amount) × 100%.
 	//
 	// example:
 	//
 	// {           "actualConsumeSum": 88.6,           "actualAddForecastedAmount": 89.6,           "actualAndBudgetComparison": "20.73%"         }
 	CalculatedValues map[string]interface{} `json:"CalculatedValues,omitempty" xml:"CalculatedValues,omitempty"`
-	// The information about the billing cycle. The ConsumePeriodBegin parameter indicates the start date of the budget. The ConsumePeriodEnd parameter indicates the end date of the budget.
+	// Information about the billing cycle.
+	//
+	// - ConsumePeriodBegin: The start date of the budget.
+	//
+	// - ConsumePeriodEnd: The end date of the budget.
 	//
 	// example:
 	//

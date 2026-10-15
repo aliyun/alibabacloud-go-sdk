@@ -16,8 +16,13 @@ type iQueryCommodityListRequest interface {
 }
 
 type QueryCommodityListRequest struct {
+	// The language. If this parameter is not specified, the default value zh (Chinese) is used.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// This parameter is required.
 	//

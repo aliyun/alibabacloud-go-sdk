@@ -22,7 +22,7 @@ type iQueryPermissionListResponseBody interface {
 }
 
 type QueryPermissionListResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type QueryPermissionListResponseBody struct {
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F6E29451-A3CD-4705-806D-0112D08F5C49
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ func (s *QueryPermissionListResponseBody) Validate() error {
 }
 
 type QueryPermissionListResponseBodyData struct {
-	// The time when the relationship expired. If no value is returned, the relationship is still valid.
+	// The time when the relationship expires. If this parameter is empty, the relationship has not expired.
 	//
 	// example:
 	//
 	// 2021-03-06T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the management account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 1990699401005016
 	MasterId *int64 `json:"MasterId,omitempty" xml:"MasterId,omitempty"`
-	// The ID of the member.
+	// The ID of the member account.
 	//
 	// example:
 	//
@@ -139,19 +139,19 @@ type QueryPermissionListResponseBodyData struct {
 	//
 	// FinancialManagement
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The time when the relationship was established. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the relationship was established at 20:00:00 on May 23, 2016 (UTC+8).
+	// The time when the relationship was established. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
 	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	SetupTime *string `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
-	// The time when the relationship took effect. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the relationship took effect at 20:00:00 on May 23, 2016 (UTC+8).
+	// The time when the relationship takes effect. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
 	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the relationship. For more information about valid values of this parameter, see the enumeration values of the RelationshipStatusEnum type in the following table.
+	// The status of the relationship. The value is an enumeration member of RelationshipStatusEnum.
 	//
 	// example:
 	//
@@ -253,25 +253,25 @@ func (s *QueryPermissionListResponseBodyData) Validate() error {
 }
 
 type QueryPermissionListResponseBodyDataPermissionList struct {
-	// The time when the permission expired. If no value is returned, the permission is still valid. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the permission expired at 20:00:00 on May 23, 2016 (UTC+8).
+	// The time when the permission expires. If this parameter is empty, the permission is still valid. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
 	//
 	// example:
 	//
 	// 2021-03-05T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The code of the permission.
+	// The permission code.
 	//
 	// example:
 	//
 	// allow_synchronize_finance_identity
 	PermissionCode *string `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
-	// The name of the permission.
+	// The permission name.
 	//
 	// example:
 	//
-	// The management account shares the credit control identity with the member.
+	// 主账号 子账号共享主账号信控身份
 	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
-	// The time when the permission took effect. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the permission took effect at 20:00:00 on May 23, 2016 (UTC+8).
+	// The time when the permission takes effect. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
 	//
 	// example:
 	//

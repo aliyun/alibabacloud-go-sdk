@@ -30,59 +30,95 @@ type iQueryAccountTransactionDetailsRequest interface {
 }
 
 type QueryAccountTransactionDetailsRequest struct {
-	// The end of the creation time range to query.
+	// The end time of creation.
 	//
 	// example:
 	//
 	// 2022-12-20
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The beginning of the creation time range to query.
+	// The start time of creation.
 	//
 	// example:
 	//
 	// 2022-01-20
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// This parameter is invalid.
+	// An invalid parameter.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for paging.
+	// The paging token for the paged query.
 	//
 	// example:
 	//
 	// ABEDSDS124DASA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the order or bill.
+	// The order ID or bill ID.
 	//
 	// example:
 	//
 	// 2022120336190912
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	// The transaction channel.
+	// The transaction channel. If you specify one of the following transaction channel types, the query returns results of the specified type. If no results are found, an empty result is returned. If you do not specify this parameter, all types are returned by default.
+	//
+	// Valid values:
+	//
+	// - AccountBalance: account balance
+	//
+	// - BankTransfer: bank transfer
+	//
+	// - Alipay: Alipay
+	//
+	// - AntCreditPay: Ant Credit Pay
+	//
+	// - OfflineRemittance: offline remittance
+	//
+	// - RegularBankCreditRefund: credit limit refund
+	//
+	// - CreditCard: credit card
+	//
+	// - MyBankCredit: MYbank credit
+	//
+	// - HuaxiaBankCInstallment: Huaxia Bank installment
+	//
+	// - ApplePay: Apple Pay
 	//
 	// example:
 	//
-	// ALIPAY
+	// AccountBalance
 	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
-	// The serial number of the transaction channel.
+	// The payment reference No. of the transaction channel.
 	//
 	// example:
 	//
 	// 2022112122001470591458665933
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	// The number of the transaction.
+	// The transaction number.
 	//
 	// example:
 	//
 	// 410874027490089
 	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	// The type of the transaction.
+	// The transaction type. If you specify one of the following transaction types, the query returns results of the specified type. If no results are found, an empty result is returned. If you do not specify this parameter, all types are returned by default.
+	//
+	// Valid values:
+	//
+	// - Payment: top-up
+	//
+	// - Withdraw: withdrawal
+	//
+	// - Refund: refund
+	//
+	// - Consumption: consumption
+	//
+	// - Transfer: transfer
+	//
+	// - Adjust: adjustment
 	//
 	// example:
 	//
-	// CHARGE
+	// Payment
 	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 

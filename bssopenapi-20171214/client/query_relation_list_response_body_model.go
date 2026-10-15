@@ -22,15 +22,15 @@ type iQueryRelationListResponseBody interface {
 }
 
 type QueryRelationListResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryRelationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -113,21 +113,21 @@ func (s *QueryRelationListResponseBody) Validate() error {
 }
 
 type QueryRelationListResponseBodyData struct {
-	// The relationships.
+	// The list of relationships.
 	FinancialRelationInfoList []*QueryRelationListResponseBodyDataFinancialRelationInfoList `json:"FinancialRelationInfoList,omitempty" xml:"FinancialRelationInfoList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -193,13 +193,13 @@ func (s *QueryRelationListResponseBodyData) Validate() error {
 }
 
 type QueryRelationListResponseBodyDataFinancialRelationInfoList struct {
-	// The ID of the Alibaba Cloud account.
+	// The UID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 1851253838840762
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the account.
+	// The logon name of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -211,43 +211,43 @@ type QueryRelationListResponseBodyDataFinancialRelationInfoList struct {
 	//
 	// test4
 	AccountNickName *string `json:"AccountNickName,omitempty" xml:"AccountNickName,omitempty"`
-	// The type of the account. Valid values: MASTER and MEMBER.
+	// The type of the financial account. Valid values: MASTER and MEMBER.
 	//
 	// example:
 	//
 	// MEMBER
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The time when the relationship became invalid. If no value is returned, the relationship is still valid.
+	// The time when the relationship expires. If this parameter is empty, the relationship does not expire.
 	//
 	// example:
 	//
 	// 2021-03-08T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the relationship.
+	// The relationship ID.
 	//
 	// example:
 	//
 	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The type of the relationship. Valid values: FinancialManagement and FinancialTrusteeship.
+	// The relationship type. `FinancialManagement` indicates Financial Management and `FinancialTrusteeship` indicates finance trusteeship.
 	//
 	// example:
 	//
 	// FinancialManagement
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The time when the relationship was established. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. Example: 2016-05-23T12:00:00Z.
+	// The time when the relationship was established. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	SetupTime *string `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
-	// The time when the relationship became valid. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. Example: 2016-05-23T12:00:00Z.
+	// The time when the relationship takes effect. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The state of the relationship. One of the enumeration members of the RelationshipStatusEnum data type is returned.
+	// The status of the relationship. The value is an enumeration of RelationshipStatusEnum.
 	//
 	// example:
 	//

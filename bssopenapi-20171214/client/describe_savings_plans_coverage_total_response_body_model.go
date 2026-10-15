@@ -28,21 +28,21 @@ type DescribeSavingsPlansCoverageTotalResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return data.
+	// The returned data.
 	Data *DescribeSavingsPlansCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBody) Validate() error {
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBodyData struct {
-	// The coverage in different periods.
+	// The coverage rate by period.
 	PeriodCoverage []*DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	// The coverage summary.
+	// The total coverage rate.
 	TotalCoverage *DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage `json:"TotalCoverage,omitempty" xml:"TotalCoverage,omitempty" type:"Struct"`
 }
 
@@ -164,15 +164,13 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBodyData) Validate() error {
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage struct {
-	// The coverage.
+	// The coverage rate.
 	//
 	// example:
 	//
 	// 1
 	Percentage *float32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The period.
-	//
-	// The value is in the format of yyyyMMddHH.
+	// The period. Format: yyyyMMddHH.
 	//
 	// example:
 	//
@@ -211,13 +209,13 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage) Valida
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage struct {
-	// The total coverage.
+	// The total coverage rate.
 	//
 	// example:
 	//
 	// 1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The total deducted amount.
+	// The total offset amount.
 	//
 	// example:
 	//

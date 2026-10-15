@@ -22,21 +22,28 @@ type iRenewChangeInstanceResponseBody interface {
 }
 
 type RenewChangeInstanceResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
 	Data *RenewChangeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// success=true indicates that the call was successful. success=false indicates that an error occurred.
+	//
 	// example:
 	//
 	// true
@@ -106,10 +113,14 @@ func (s *RenewChangeInstanceResponseBody) Validate() error {
 }
 
 type RenewChangeInstanceResponseBodyData struct {
+	// The site where the host runs.
+	//
 	// example:
 	//
 	// 100.100.64.1:8150
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the successfully created order.
+	//
 	// example:
 	//
 	// 202407022550621

@@ -28,21 +28,21 @@ type CreateCostUnitResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *CreateCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CreateCostUnitResponseBody) Validate() error {
 }
 
 type CreateCostUnitResponseBodyData struct {
-	// The list of cost center entities.
+	// The list of financial unit entities.
 	CostUnitDtoList []*CreateCostUnitResponseBodyDataCostUnitDtoList `json:"CostUnitDtoList,omitempty" xml:"CostUnitDtoList,omitempty" type:"Repeated"`
 }
 
@@ -148,25 +148,25 @@ func (s *CreateCostUnitResponseBodyData) Validate() error {
 }
 
 type CreateCostUnitResponseBodyDataCostUnitDtoList struct {
-	// The user ID of the owner of the cost center.
+	// The ID of the owner of the new financial unit.
 	//
 	// example:
 	//
 	// 26387563
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	// The ID of the parent financial unit. A value of -1 indicates the root financial unit.
 	//
 	// example:
 	//
 	// -1
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
-	// The ID of the cost center.
+	// The ID of the financial unit.
 	//
 	// example:
 	//
 	// 84327659328
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
-	// The name of the cost center.
+	// The name of the financial unit.
 	//
 	// example:
 	//

@@ -22,22 +22,32 @@ type iSetResellerUserAlarmThresholdResponseBody interface {
 }
 
 type SetResellerUserAlarmThresholdResponseBody struct {
+	// The error code returned when the call fails. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The additional information about the call result.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. A value of true indicates that the call was completed. A value of false indicates that an error occurred.
+	//
 	// example:
 	//
 	// true

@@ -30,7 +30,7 @@ type RenewInstanceRequest struct {
 	//
 	// ASKJHKLASJHAFSLKJH
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type RenewInstanceRequest struct {
 	// rm-skjdhaskjdh
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the service to which the instance belongs.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -47,21 +47,21 @@ type RenewInstanceRequest struct {
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The duration of the subscription renewal. Unit: months. Valid values:
+	// The renewal period for the subscription instance. Unit: months. Valid values:
 	//
-	// 	- 1 to 9
+	// - 1 to 9.
 	//
-	// 	- 12
+	// - 12.
 	//
-	// 	- 24
+	// - 24.
 	//
-	// 	- 36
+	// - 36.
 	//
 	// This parameter is required.
 	//

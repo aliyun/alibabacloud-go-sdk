@@ -58,11 +58,11 @@ type GetResourcePackagePriceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the order. Valid values:
 	//
-	// 	- BUY: You place the order to purchase an instance.
+	// - BUY: You place the order to purchase an instance.
 	//
-	// 	- UPGRADE: You place the order to upgrade an instance.
+	// - UPGRADE: You place the order to upgrade an instance.
 	//
-	// 	- RENEW: You place the order to renew an instance.
+	// - RENEW: You place the order to renew an instance.
 	//
 	// Default value: BUY.
 	//
@@ -81,9 +81,9 @@ type GetResourcePackagePriceRequest struct {
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The unit of validity period of the resource plan. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
 	// example:
 	//

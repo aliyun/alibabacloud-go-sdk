@@ -30,8 +30,13 @@ type iQuerySavingsPlansInstanceRequest interface {
 }
 
 type QuerySavingsPlansInstanceRequest struct {
+	// The commodity code.
+	//
+	// example:
+	//
+	// savingplan_common_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The end time. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -43,45 +48,45 @@ type QuerySavingsPlansInstanceRequest struct {
 	//
 	// spn-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the return data. Valid values:
+	// The language of the response.
 	//
-	// 	- ZH: Chinese
+	// - EN: English
 	//
-	// 	- EN: English
+	// - ZH: Chinese
 	//
 	// example:
 	//
 	// ZH
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The start time. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2020-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the Instance.
+	// The status of the instance. Valid values:
 	//
-	// 	- NORMAL
+	// NORMAL: The instance is active.
 	//
-	// 	- RELEASE
+	// RELEASE: The instance is released.
 	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tag elements.
 	Tag []*QuerySavingsPlansInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -188,17 +193,17 @@ func (s *QuerySavingsPlansInstanceRequest) Validate() error {
 }
 
 type QuerySavingsPlansInstanceRequestTag struct {
-	// The key of the tag to query.
+	// The key of the tag.
 	//
 	// example:
 	//
-	// ecs
+	// 测试标签
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag to query.
+	// The value of the tag.
 	//
 	// example:
 	//
-	// 001
+	// 测试标签
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

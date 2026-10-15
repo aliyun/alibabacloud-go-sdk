@@ -22,27 +22,27 @@ type iQueryPriceEntityListResponseBody interface {
 }
 
 type QueryPriceEntityListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned data.
 	Data *QueryPriceEntityListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned.
+	// The response message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *QueryPriceEntityListResponseBody) Validate() error {
 }
 
 type QueryPriceEntityListResponseBodyData struct {
-	// The information about the billable items.
+	// The list of pricing entities.
 	PriceEntityInfoList []*QueryPriceEntityListResponseBodyDataPriceEntityInfoList `json:"PriceEntityInfoList,omitempty" xml:"PriceEntityInfoList,omitempty" type:"Repeated"`
 }
 
@@ -148,19 +148,19 @@ func (s *QueryPriceEntityListResponseBodyData) Validate() error {
 }
 
 type QueryPriceEntityListResponseBodyDataPriceEntityInfoList struct {
-	// The code of the billable item.
+	// The code of the pricing entity.
 	//
 	// example:
 	//
 	// instance_type
 	PriceEntityCode *string `json:"PriceEntityCode,omitempty" xml:"PriceEntityCode,omitempty"`
-	// The name of the billable item.
+	// The name of the pricing entity.
 	//
 	// example:
 	//
-	// Elastic Compute Service (ECS) instance
+	// ECS Instance
 	PriceEntityName *string `json:"PriceEntityName,omitempty" xml:"PriceEntityName,omitempty"`
-	// The factors of the billable item.
+	// The list of pricing factors for the pricing entity.
 	PriceFactorList []*QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList `json:"PriceFactorList,omitempty" xml:"PriceFactorList,omitempty" type:"Repeated"`
 }
 
@@ -213,19 +213,19 @@ func (s *QueryPriceEntityListResponseBodyDataPriceEntityInfoList) Validate() err
 }
 
 type QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList struct {
-	// The code of the factor.
+	// The code of the pricing factor.
 	//
 	// example:
 	//
 	// vm_region_no
 	PriceFactorCode *string `json:"PriceFactorCode,omitempty" xml:"PriceFactorCode,omitempty"`
-	// The name of the factor.
+	// The name of the pricing factor.
 	//
 	// example:
 	//
 	// Region
 	PriceFactorName *string `json:"PriceFactorName,omitempty" xml:"PriceFactorName,omitempty"`
-	// The values of the factor.
+	// The list of pricing factor values.
 	PriceFactorValueList []*string `json:"PriceFactorValueList,omitempty" xml:"PriceFactorValueList,omitempty" type:"Repeated"`
 }
 

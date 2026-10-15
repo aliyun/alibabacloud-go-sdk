@@ -22,15 +22,15 @@ type iDescribeResourceUsageTotalResponseBody interface {
 }
 
 type DescribeResourceUsageTotalResponseBody struct {
-	// The response code.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried data.
+	// The data.
 	Data *DescribeResourceUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *DescribeResourceUsageTotalResponseBody) Validate() error {
 }
 
 type DescribeResourceUsageTotalResponseBodyData struct {
-	// The usage of resource plans in the specified period.
+	// The usage by period.
 	PeriodCoverage []*DescribeResourceUsageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	// The total usage of resource plans.
+	// The total usage.
 	TotalUsage *DescribeResourceUsageTotalResponseBodyDataTotalUsage `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty" type:"Struct"`
 }
 
@@ -170,7 +170,7 @@ type DescribeResourceUsageTotalResponseBodyDataPeriodCoverage struct {
 	//
 	// 2021071500
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The usage of resource plans.
+	// The usage percentage.
 	//
 	// example:
 	//
@@ -209,19 +209,19 @@ func (s *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) Validate() er
 }
 
 type DescribeResourceUsageTotalResponseBodyDataTotalUsage struct {
-	// The total costs of pay-as-you-go instances.
+	// The total cost of pay-as-you-go instances.
 	//
 	// example:
 	//
 	// 200
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	// The total potential savings.
+	// The potential total savings.
 	//
 	// example:
 	//
 	// 100
 	PotentialSavedCost *float32 `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
-	// The fee of purchased resource plans.
+	// The total resource purchase cost.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type DescribeResourceUsageTotalResponseBodyDataTotalUsage struct {
 	//
 	// 100
 	SavedCost *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
-	// The total usage of resource plans.
+	// The total usage.
 	//
 	// example:
 	//

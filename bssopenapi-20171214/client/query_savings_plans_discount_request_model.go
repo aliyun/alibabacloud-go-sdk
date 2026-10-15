@@ -34,7 +34,7 @@ type iQuerySavingsPlansDiscountRequest interface {
 }
 
 type QuerySavingsPlansDiscountRequest struct {
-	// The code of the service.
+	// The commodity code.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type QuerySavingsPlansDiscountRequest struct {
 	//
 	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The cycle based on which queries are performed.
+	// The query cycle.
 	//
 	// This parameter is required.
 	//
@@ -50,37 +50,31 @@ type QuerySavingsPlansDiscountRequest struct {
 	//
 	// 1:Year
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The identifier of the language.
-	//
-	// Valid values:
-	//
-	// 	- EN: English.
-	//
-	// 	- ZH: Chinese.
+	// The language of the response.
 	//
 	// example:
 	//
 	// ZH
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The code of the pricing module.
+	// The code of the module.
 	//
 	// example:
 	//
 	// instance_type
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The payment mode. Valid values: total: all upfront. half: half upfront. zero: no upfront.
+	// The payment mode. Valid values: total: all upfront. half: partial upfront. zero: no upfront.
 	//
 	// This parameter is required.
 	//
@@ -88,20 +82,25 @@ type QuerySavingsPlansDiscountRequest struct {
 	//
 	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//
 	// ecs.g6
-	Spec             *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The commodity code of the savings plan.
+	//
+	// example:
+	//
+	// savingplan_common_public_cn
 	SpnCommodityCode *string `json:"SpnCommodityCode,omitempty" xml:"SpnCommodityCode,omitempty"`
-	// The type of the savings plan. Valid values: ecs: Elastic Compute Service (ECS) compute type. universal: general-purpose type.
+	// The type of the savings plan. Valid values: ecs: compute-optimized. universal: universal.
 	//
 	// This parameter is required.
 	//

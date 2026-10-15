@@ -28,21 +28,21 @@ type DescribePricingModuleResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribePricingModuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C40A8EE0-8084-49FE-B66E-5E1C3B6AE025
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,10 +113,8 @@ func (s *DescribePricingModuleResponseBody) Validate() error {
 }
 
 type DescribePricingModuleResponseBodyData struct {
-	// The module attributes.
 	AttributeList *DescribePricingModuleResponseBodyDataAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Struct"`
-	// The pricing information of modules.
-	ModuleList *DescribePricingModuleResponseBodyDataModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Struct"`
+	ModuleList    *DescribePricingModuleResponseBodyDataModuleList    `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Struct"`
 }
 
 func (s DescribePricingModuleResponseBodyData) String() string {
@@ -194,25 +192,9 @@ func (s *DescribePricingModuleResponseBodyDataAttributeList) Validate() error {
 }
 
 type DescribePricingModuleResponseBodyDataAttributeListAttribute struct {
-	// The code of the attribute.
-	//
-	// example:
-	//
-	// DBInstanceStorage
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the attribute.
-	//
-	// example:
-	//
-	// Capacity
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unit of the attribute.
-	//
-	// example:
-	//
-	// GB
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The attribute values.
+	Code   *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name   *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Unit   *string                                                            `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	Values *DescribePricingModuleResponseBodyDataAttributeListAttributeValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
@@ -304,36 +286,10 @@ func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValues) Vali
 }
 
 type DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue struct {
-	// The attribute value that corresponds to the module code.
-	//
-	// example:
-	//
-	// 2 Cores and 4 GB Memory (Basic Edition)
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the module values.
-	//
-	// example:
-	//
-	// Connections: 4,000 IOPS is related to storage space
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The type of the attribute value that corresponds to the module code. Valid values:
-	//
-	// 	- single_float: single value
-	//
-	// 	- range_float: range value
-	//
-	// example:
-	//
-	// single_string
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The attribute value that corresponds to the module code.
-	//
-	// >  If the Type parameter is set to range_float, the valid values of this parameter range from 1024 to 1024000. A value of 1024 indicates that the step size is 1024.
-	//
-	// example:
-	//
-	// mysql.n2.medium.1
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) String() string {
@@ -420,42 +376,10 @@ func (s *DescribePricingModuleResponseBodyDataModuleList) Validate() error {
 
 type DescribePricingModuleResponseBodyDataModuleListModule struct {
 	ConfigList *DescribePricingModuleResponseBodyDataModuleListModuleConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Struct"`
-	// The currency. Default value: CNY.
-	//
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The code of the pricing module.
-	//
-	// example:
-	//
-	// InstanceType
-	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The name of the pricing module.
-	//
-	// example:
-	//
-	// Instance
-	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	// The price type. Valid values:
-	//
-	// 	- Usage: usage price
-	//
-	// 	- Hour: hourly price
-	//
-	// 	- Day: daily price
-	//
-	// 	- Week: weekly price
-	//
-	// 	- Month: monthly price
-	//
-	// 	- Year: annual price
-	//
-	// example:
-	//
-	// Month
-	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+	Currency   *string                                                          `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	ModuleCode *string                                                          `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleName *string                                                          `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	PriceType  *string                                                          `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 }
 
 func (s DescribePricingModuleResponseBodyDataModuleListModule) String() string {

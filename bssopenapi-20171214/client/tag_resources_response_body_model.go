@@ -22,31 +22,31 @@ type iTagResourcesResponseBody interface {
 }
 
 type TagResourcesResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// InternalError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1537A007-72D7-4165-8A26-8694A38E219A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

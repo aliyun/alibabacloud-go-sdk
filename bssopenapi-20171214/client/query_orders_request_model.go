@@ -32,76 +32,92 @@ type iQueryOrdersRequest interface {
 }
 
 type QueryOrdersRequest struct {
-	// The end time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time of the creation time range. By default, orders created within the last hour are queried. Specify the time in the ISO 8601 standard in the YYYY-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The start time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the creation time range. By default, orders created within the last hour are queried. Specify the time in the ISO 8601 standard in the YYYY-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2016-05-23T13:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// The type of the order. Valid values:
+	// The order type. Valid values:
 	//
-	// 	- New: purchases an instance.
+	// - New: new purchase
 	//
-	// 	- Renew: renews an instance.
+	// - Renew: renewal
 	//
-	// 	- Upgrade: upgrades the configurations of an instance.
+	// - Upgrade: upgrade
 	//
-	// 	- Refund: applies for a refund.
+	// - TempUpgrade: temporary upgrade
+	//
+	// - Downgrade: downgrade
+	//
+	// - Refund: refund
+	//
+	// - Convert: billing method conversion
+	//
+	// - ResizeDisk: disk resizing
+	//
+	// - CompensatoryRenew: compensatory renewal
+	//
+	// - IncreaseUpgrade: bandwidth upgrade
+	//
+	// - Exchange: exchange
+	//
+	// - ChangeOperatingSystem: operating system replacement
 	//
 	// example:
 	//
 	// New
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of payment. Valid values for a non-refund order:
+	// The payment status. For non-refund orders, valid values:
 	//
-	// 	- Unpaid: The order is not paid.
+	// - Unpaid: unpaid
 	//
-	// 	- Paid: The order is paid.
+	// - Paid: paid
 	//
-	// 	- Cancelled: The order is canceled.
+	// - Cancelled: canceled
 	//
-	// > : You can set this parameter to NULL for a refund order.
+	// > For refund orders, this parameter can be set to NULL.
 	//
 	// example:
 	//
 	// Paid
 	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go
 	//
 	// example:
 	//

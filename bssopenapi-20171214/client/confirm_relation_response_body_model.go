@@ -22,21 +22,21 @@ type iConfirmRelationResponseBody interface {
 }
 
 type ConfirmRelationResponseBody struct {
-	// The status code returned.
+	// The backend business status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *ConfirmRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// Message returned
+	// The returned message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *ConfirmRelationResponseBody) Validate() error {
 }
 
 type ConfirmRelationResponseBodyData struct {
-	// HostId
+	// The host ID.
 	//
 	// example:
 	//

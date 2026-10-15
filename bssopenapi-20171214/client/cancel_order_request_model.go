@@ -16,7 +16,7 @@ type iCancelOrderRequest interface {
 }
 
 type CancelOrderRequest struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// This parameter is required.
 	//

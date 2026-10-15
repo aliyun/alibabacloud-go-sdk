@@ -22,31 +22,31 @@ type iGetCustomerListResponseBody interface {
 }
 
 type GetCustomerListResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- **true**: The call is successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The call failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *GetCustomerListResponseBody) Validate() error {
 }
 
 type GetCustomerListResponseBodyData struct {
-	// The list of customer IDs.
+	// The list of user UIDs.
 	UidList []*string `json:"UidList,omitempty" xml:"UidList,omitempty" type:"Repeated"`
 }
 

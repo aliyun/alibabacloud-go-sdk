@@ -22,21 +22,21 @@ type iQueryAccountTransactionDetailsResponseBody interface {
 }
 
 type QueryAccountTransactionDetailsResponseBody struct {
-	// The status code returned.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *QueryAccountTransactionDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The result description.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,27 +113,26 @@ func (s *QueryAccountTransactionDetailsResponseBody) Validate() error {
 }
 
 type QueryAccountTransactionDetailsResponseBodyData struct {
-	// The name of the account.
+	// The account name.
 	//
 	// example:
 	//
 	// yidi
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The details of the transactions within the account.
+	AccountName             *string                                                                `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountTransactionsList *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList `json:"AccountTransactionsList,omitempty" xml:"AccountTransactionsList,omitempty" type:"Struct"`
-	// This parameter is invalid.
+	// An invalid parameter.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for paging.
+	// The pagination token.
 	//
 	// example:
 	//
 	// ASHDADS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -238,90 +237,19 @@ func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList) 
 }
 
 type QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList struct {
-	// The amount of the transaction.
-	//
-	// example:
-	//
-	// 1.00
-	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The balance of the account.
-	//
-	// example:
-	//
-	// 0
-	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// The billing cycle.
-	//
-	// example:
-	//
-	// 2022-10
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The type of transaction payment. Valid values:
-	//
-	// Cash: pay for the transaction in cash. Deposit: pay for the transaction with deposit. RegularBankCreditRefund: pay for the transaction with credit refund controlled by a bank. DirectPay: directly pay for the transaction.
-	//
-	// example:
-	//
-	// Cash
-	FundType *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	// The ID of the order or bill.
-	//
-	// example:
-	//
-	// 2022120336190912
-	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	// The remarks.
-	//
-	// example:
-	//
-	// Test
-	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The transaction account.
-	//
-	// example:
-	//
-	// fortune_test@xxx.com
-	TransactionAccount *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
-	// The transaction channel.
-	//
-	// example:
-	//
-	// ALIPAY
-	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
-	// The serial number of the transaction channel.
-	//
-	// example:
-	//
-	// 123232434343532
+	Amount               *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Balance              *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	BillingCycle         *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	FundType             *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	Remarks              *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	TransactionAccount   *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
+	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	// Indicates whether the transaction is of the income type or the expenditure type. If one of the following types is specified, results for the specific type are returned. If the type that you specified for the parameter does not belong to the following types, no result is returned. If the parameter is left empty, results for transactions of the income and expenditure types are all returned. Valid values:
-	//
-	// Income and Expense.
-	//
-	// example:
-	//
-	// Income
-	TransactionFlow *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
-	// The number of the transaction.
-	//
-	// example:
-	//
-	// 43342334
-	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	// The time when the transaction was made.
-	//
-	// example:
-	//
-	// 2022-10-01
-	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
-	// The type of the transaction. If one of the following transaction types is specified, results for the specified transaction type are returned. If the transaction type that you specified does not belong to the following transaction types, no result is returned. If the parameter is left empty, results for all transaction types are returned. Valid values:
-	//
-	// Payment, Withdraw, Refund, Consumption, Transfer, and Adjust.
-	//
-	// example:
-	//
-	// Consumption
-	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
+	TransactionFlow      *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
+	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
+	TransactionTime      *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
+	TransactionType      *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
 func (s QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) String() string {

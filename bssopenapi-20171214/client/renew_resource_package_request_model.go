@@ -22,7 +22,7 @@ type iRenewResourcePackageRequest interface {
 }
 
 type RenewResourcePackageRequest struct {
-	// The renewal period of the resource plan.
+	// The renewal duration of the resource package.
 	//
 	// This parameter is required.
 	//
@@ -30,15 +30,15 @@ type RenewResourcePackageRequest struct {
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the resource plan takes effect. If you leave this parameter empty, the resource plan immediately takes effect by default.
+	// The time when the resource package takes effect. If you leave this parameter empty, the resource package takes effect immediately.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time zone must be UTC.
 	//
 	// example:
 	//
 	// 2020-02-02T12:00:00Z
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
-	// The ID of the resource plan.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -47,11 +47,11 @@ type RenewResourcePackageRequest struct {
 	// lskd****sljhsdj
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The unit of the validity period for the resource plan. Valid values:
+	// The unit of the renewal duration. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
 	// Default value: Month.
 	//

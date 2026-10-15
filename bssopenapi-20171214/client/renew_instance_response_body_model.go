@@ -28,15 +28,15 @@ type RenewInstanceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *RenewInstanceResponseBody) Validate() error {
 }
 
 type RenewInstanceResponseBodyData struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

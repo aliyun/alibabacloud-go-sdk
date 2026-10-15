@@ -36,49 +36,84 @@ type iQuerySettleBillRequest interface {
 }
 
 type QuerySettleBillRequest struct {
+	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
+	//
 	// example:
 	//
 	// 123
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	// The billing cycle, in the format of YYYY-MM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2018-07
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// example:
+	BillingCycle           *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
+	// Specifies whether to filter based on whether the original price (PretaxGrossAmount) is 0. Default value: false (compatible with existing logic). Valid values:
 	//
-	// false
-	IsDisplayLocalCurrency *bool `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
 	IsHideZeroCharge *bool `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
+	// The maximum number of data records to read in this request. Default value: 20. Maximum value: 300.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the position from which the next query starts. Leave this parameter empty to start from the beginning.
+	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product type.
+	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The order ID or bill ID.
+	//
 	// example:
 	//
 	// 12233
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	// The subscription type. Valid values:
+	//
+	// - Subscription: subscription
+	//
+	// - PayAsYouGo: pay-as-you-go
+	//
+	// >  This parameter must be used together with the ProductCode parameter.
+	//
 	// example:
 	//
 	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// The type. Valid values:
+	//
+	// - SubscriptionOrder: prepaid order
+	//
+	// - PayAsYouGoBill: pay-as-you-go bill
+	//
+	// - Refund: refund bill
+	//
+	// - Adjustment: adjustment bill
+	//
 	// example:
 	//
 	// SubscriptionOrder
