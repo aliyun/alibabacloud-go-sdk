@@ -18,9 +18,12 @@ type iComponentCapacityConstraint interface {
 }
 
 type ComponentCapacityConstraint struct {
+	// The component type.
 	ComponentType *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
-	MaxCapacity   *int32  `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
-	MinCapacity   *int32  `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
+	// The maximum capacity allowed for the component.
+	MaxCapacity *int32 `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
+	// The minimum capacity allowed for the component.
+	MinCapacity *int32 `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
 }
 
 func (s ComponentCapacityConstraint) String() string {

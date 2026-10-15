@@ -131,7 +131,7 @@ func (client *Client) CreateAclGroupWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates the server role required by Milvus to access other cloud products.
+// Creates the service role required by Milvus to access other cloud products.
 //
 // @param headers - map
 //
@@ -419,7 +419,7 @@ func (client *Client) DescribeAccessControlListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Get information about the custom configuration of each component of Milvus.
+// Retrieves the custom configuration information of each Milvus component.
 //
 // @param request - DescribeInstanceConfigsRequest
 //
@@ -564,7 +564,7 @@ func (client *Client) GetInstanceDetailWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves one or more access control list (ACL) groups.
+// Retrieves the group information and content for the current user.
 //
 // @param request - ListAclGroupsRequest
 //
@@ -615,7 +615,7 @@ func (client *Client) ListAclGroupsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Retrieves the list of Milvus instances under the current account.
+// Retrieves a list of Milvus instances under the current account.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -777,22 +777,28 @@ func (client *Client) ListInstancesV2WithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Updates the configuration parameters of various Milvus components.
+// Updates the configuration parameters of Milvus components.
 //
-// @param request - ModifyInstanceConfigRequest
+// @param tmpReq - ModifyInstanceConfigRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceConfigResponse
-func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, request *ModifyInstanceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
+func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, tmpReq *ModifyInstanceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyInstanceConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
@@ -806,9 +812,15 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 		query["UserConfig"] = request.UserConfig
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ModifyInstanceConfig"),
@@ -818,7 +830,7 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
+		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceConfigResponse{}
@@ -1206,7 +1218,7 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Enables or disables public network access for a Milvus instance.
+// Enables or disables public network access for a Milvus cluster.
 //
 // @param request - UpdatePublicNetworkStatusRequest
 //

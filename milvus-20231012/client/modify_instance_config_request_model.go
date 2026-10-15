@@ -15,6 +15,8 @@ type iModifyInstanceConfigRequest interface {
 	GetReason() *string
 	SetUserConfig(v string) *ModifyInstanceConfigRequest
 	GetUserConfig() *string
+	SetBody(v *ModifyInstanceConfigRequestBody) *ModifyInstanceConfigRequest
+	GetBody() *ModifyInstanceConfigRequestBody
 }
 
 type ModifyInstanceConfigRequest struct {
@@ -34,12 +36,14 @@ type ModifyInstanceConfigRequest struct {
 	//
 	// for test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The user-defined configuration.
+	// The custom configuration.
 	//
 	// example:
 	//
 	// dataCoord:\\n  segment:\\n    maxSize: 1024
 	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	// Submits the instance configurations to be updated as a JSON object.
+	Body *ModifyInstanceConfigRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 
 func (s ModifyInstanceConfigRequest) String() string {
@@ -62,6 +66,10 @@ func (s *ModifyInstanceConfigRequest) GetUserConfig() *string {
 	return s.UserConfig
 }
 
+func (s *ModifyInstanceConfigRequest) GetBody() *ModifyInstanceConfigRequestBody {
+	return s.Body
+}
+
 func (s *ModifyInstanceConfigRequest) SetInstanceId(v string) *ModifyInstanceConfigRequest {
 	s.InstanceId = &v
 	return s
@@ -77,6 +85,46 @@ func (s *ModifyInstanceConfigRequest) SetUserConfig(v string) *ModifyInstanceCon
 	return s
 }
 
+func (s *ModifyInstanceConfigRequest) SetBody(v *ModifyInstanceConfigRequestBody) *ModifyInstanceConfigRequest {
+	s.Body = v
+	return s
+}
+
 func (s *ModifyInstanceConfigRequest) Validate() error {
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModifyInstanceConfigRequestBody struct {
+	// The configuration content to write to the instance, formatted as a YAML string.
+	//
+	// example:
+	//
+	// dataCoord:\\n  segment:\\n    maxSize: 1024
+	UserConfig *string `json:"userConfig,omitempty" xml:"userConfig,omitempty"`
+}
+
+func (s ModifyInstanceConfigRequestBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyInstanceConfigRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceConfigRequestBody) GetUserConfig() *string {
+	return s.UserConfig
+}
+
+func (s *ModifyInstanceConfigRequestBody) SetUserConfig(v string) *ModifyInstanceConfigRequestBody {
+	s.UserConfig = &v
+	return s
+}
+
+func (s *ModifyInstanceConfigRequestBody) Validate() error {
 	return dara.Validate(s)
 }

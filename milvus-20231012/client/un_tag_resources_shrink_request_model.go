@@ -22,7 +22,7 @@ type iUnTagResourcesShrinkRequest interface {
 }
 
 type UnTagResourcesShrinkRequest struct {
-	// Specifies whether to remove all tags from the resources. This parameter takes effect only when the TagKey parameter is left empty. Valid values: true and false (default).
+	// Specifies whether to remove all tags from the resources. This parameter takes effect only when the TagKey parameter is left empty. Valid values: true, false, True, and False. Default: false.
 	//
 	// example:
 	//

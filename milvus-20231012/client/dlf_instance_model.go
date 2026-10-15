@@ -22,31 +22,31 @@ type iDlfInstance interface {
 }
 
 type DlfInstance struct {
-	// The unique ID of the DLF instance.
+	// The DLF instance ID.
 	//
 	// example:
 	//
 	// dlf-cn-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The name of the DLF instance.
+	// The DLF instance name.
 	//
 	// example:
 	//
 	// my-dlf-instance
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// The type of the DLF instance.
+	// The instance type.
 	//
 	// example:
 	//
 	// DLF_2_0
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The ID of the region where the DLF instance is located.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The current status of the DLF instance.
+	// The instance status.
 	//
 	// example:
 	//

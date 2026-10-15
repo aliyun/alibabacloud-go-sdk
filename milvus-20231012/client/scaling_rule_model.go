@@ -28,21 +28,25 @@ type iScalingRule interface {
 }
 
 type ScalingRule struct {
-	// The adjustment information of the scaling rule.
+	// The list of target resource configurations for each component.
 	AdjustInfos []*ScalingRuleAdjustInfos `json:"adjustInfos,omitempty" xml:"adjustInfos,omitempty" type:"Repeated"`
-	// The cron expression for the scaling schedule.
+	// The scheduled execution expression of the rule.
 	CronStr *string `json:"cronStr,omitempty" xml:"cronStr,omitempty"`
-	// Indicates whether the scaling rule is disabled.
+	// Indicates whether the rule is disabled.
 	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// The end time of the scaling rule. Unit: milliseconds.
+	// The end time of the effective period for the rule.
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The ID of the scaling rule.
+	// The ID of the elastic scaling rule.
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// The name of the scaling rule.
+	// The name of the elastic scaling rule.
 	ScalingRuleName *string `json:"scalingRuleName,omitempty" xml:"scalingRuleName,omitempty"`
-	// The start time of the scaling rule. Unit: milliseconds.
+	// The start time of the effective period for the rule.
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time zone of the scaling rule.
+	// The time zone used for the execution time of the rule.
+	//
+	// example:
+	//
+	// Asia/Shanghai
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
@@ -140,9 +144,13 @@ func (s *ScalingRule) Validate() error {
 }
 
 type ScalingRuleAdjustInfos struct {
-	// The type of the component to be adjusted.
+	// index  query data proxy streaming mix_coordinator
 	ComponentType *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
-	// The target value for the adjustment.
+	// The target number of nodes for the component after the rule is executed.
+	//
+	// example:
+	//
+	// 2
 	TargetValue *string `json:"targetValue,omitempty" xml:"targetValue,omitempty"`
 }
 

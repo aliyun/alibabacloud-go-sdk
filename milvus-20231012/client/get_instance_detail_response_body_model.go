@@ -26,7 +26,7 @@ type iGetInstanceDetailResponseBody interface {
 }
 
 type GetInstanceDetailResponseBody struct {
-	// The details of the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// ABCD-1234-5678-EFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ func (s *GetInstanceDetailResponseBody) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyData struct {
-	// The public network access control ACL ID.
+	// The ID of the public network access control list (ACL).
 	//
 	// example:
 	//
 	// acl-123xxx
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The start time.
+	// The start time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -179,19 +179,21 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// aliyun-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Indicates whether high availability (HA) is enabled.
+	// Indicates whether high availability is enabled.
 	//
 	// example:
 	//
 	// true
-	EnableHa  *bool   `json:"EnableHa,omitempty" xml:"EnableHa,omitempty"`
+	EnableHa *bool `json:"EnableHa,omitempty" xml:"EnableHa,omitempty"`
+	// The encryption information of the instance.
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The expiration time.
+	// The expiration time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1721664000000
-	ExpireTime       *int64                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The high availability configuration information of the instance.
 	HighAvailability *GetInstanceDetailResponseBodyDataHighAvailability `json:"HighAvailability,omitempty" xml:"HighAvailability,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -201,33 +203,35 @@ type GetInstanceDetailResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - creating: Being created.
+	// - creating: The instance is being created.
 	//
-	// - running: Running.
+	// - running: The instance is running.
 	//
-	// - updating: Being upgraded. This includes specification changes, configuration changes, and public network access toggling.
+	// - updating: The instance is being updated. This includes specification changes, configuration changes, and enabling or disabling public network access.
 	//
-	// - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+	// - disable: The instance is unavailable. The cluster has expired and must be renewed to be activated.
 	//
-	// - deleting: Being deleted.
+	// - deleting: The instance is being deleted.
 	//
-	// - deleted: Deleted.
+	// - deleted: The instance is deleted.
 	//
 	// example:
 	//
 	// running
-	InstanceStatus     *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	KmsKeyId           *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The KMS key ID.
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maintenance window of the instance.
 	MaintainablePeriod *string `json:"MaintainablePeriod,omitempty" xml:"MaintainablePeriod,omitempty"`
 	// The configuration information.
 	MeasureConfig *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
-	// Single,Two,Three
+	// The zone deployment mode of the instance.
 	MultiZoneMode *string `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- perf: compute-optimized instance.
+	// 	- perf: compute-optimized
 	//
-	// 	- cap: storage-optimized.
+	// 	- cap: storage-optimized
 	//
 	// example:
 	//
@@ -239,21 +243,21 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// true
 	OpenPublicNet *bool `json:"OpenPublicNet,omitempty" xml:"OpenPublicNet,omitempty"`
-	// The edition. Valid values:
+	// The edition details. Valid values:
 	//
-	// - trial: Trial Edition.
+	// - trial: starter edition
 	//
-	// - standard: Standard Edition.
+	// - standard: standard edition
 	//
 	// example:
 	//
 	// standard
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The billing type. Valid values:
+	// The billing method. Valid values:
 	//
-	// - 0: pay-as-you-go.
+	// - 0: pay-as-you-go
 	//
-	// - 1: subscription.
+	// - 1: subscription
 	//
 	// example:
 	//
@@ -277,7 +281,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The running time.
+	// The running time of the instance, in seconds.
 	//
 	// example:
 	//
@@ -297,13 +301,14 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// 2.4.1-1.0-0.0.1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The user-defined configuration.
+	// The custom user configuration.
 	//
 	// example:
 	//
 	// dataCoord:\\n  segment:\\n    maxSize: 1024
-	UserConfig *string                                       `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
-	VSwitches  []*GetInstanceDetailResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	// The list of vSwitches associated with the instance.
+	VSwitches []*GetInstanceDetailResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The Milvus version.
 	//
 	// example:
@@ -683,13 +688,13 @@ func (s *GetInstanceDetailResponseBodyData) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataClusterInfo struct {
-	// The Attu component port.
+	// The port of the Attu component.
 	//
 	// example:
 	//
 	// 3000
 	AttuPort *int32 `json:"AttuPort,omitempty" xml:"AttuPort,omitempty"`
-	// The HTTPS download URL of the CA certificate.
+	// The HTTPS download URL for the CA certificate.
 	//
 	// example:
 	//
@@ -715,19 +720,19 @@ type GetInstanceDetailResponseBodyDataClusterInfo struct {
 	IntranetUrl *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
 	// The resource details.
 	MilvusResourceInfoList []*GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList `json:"MilvusResourceInfoList,omitempty" xml:"MilvusResourceInfoList,omitempty" type:"Repeated"`
-	// The OSS storage data size.
+	// The size of data stored in OSS.
 	//
 	// example:
 	//
 	// 125.15 GB
 	OssStorageSize *string `json:"OssStorageSize,omitempty" xml:"OssStorageSize,omitempty"`
-	// The OSS storage metric timestamp.
+	// The time when the OSS storage metric is collected.
 	//
 	// example:
 	//
 	// 1718604000000
 	OssStorageTimestamp *int64 `json:"OssStorageTimestamp,omitempty" xml:"OssStorageTimestamp,omitempty"`
-	// The proxy port.
+	// The port of the proxy.
 	//
 	// example:
 	//
@@ -939,9 +944,9 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	CuNum *int32 `json:"CuNum,omitempty" xml:"CuNum,omitempty"`
 	// The CU specification. Valid values:
 	//
-	// 	- 4: 1 core corresponds to 4 GB.
+	// - 4: 1 core corresponds to 4 GB.
 	//
-	// 	- 8: 1 core corresponds to 8 GB.
+	// - 8: 1 core corresponds to 8 GB.
 	//
 	// example:
 	//
@@ -959,33 +964,36 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	//
 	// essd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	PayType  *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The billing method of the component.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The number of replicas.
 	//
 	// example:
 	//
 	// 2
-	Replica *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	// The ID of the zone where the component is deployed.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// Indicates whether the data cloud disk is enabled.
 	//
 	// example:
 	//
 	// true
 	DataDiskEnabled *bool `json:"dataDiskEnabled,omitempty" xml:"dataDiskEnabled,omitempty"`
-	// The data cloud disk capacity, in GiB.
+	// The capacity of the data cloud disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 100
 	DataDiskSize *int32 `json:"dataDiskSize,omitempty" xml:"dataDiskSize,omitempty"`
-	// The StorageClass of the data cloud disk.
+	// The storage class of the data cloud disk.
 	//
 	// example:
 	//
 	// alicloud-disk-essd-pl1
-	DataDiskStorageClass *string                                                                       `json:"dataDiskStorageClass,omitempty" xml:"dataDiskStorageClass,omitempty"`
-	PodsList             []*GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList `json:"podsList,omitempty" xml:"podsList,omitempty" type:"Repeated"`
+	DataDiskStorageClass *string `json:"dataDiskStorageClass,omitempty" xml:"dataDiskStorageClass,omitempty"`
+	// The list of pods for the component.
+	PodsList []*GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList `json:"podsList,omitempty" xml:"podsList,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) String() string {
@@ -1118,7 +1126,9 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Val
 }
 
 type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList struct {
-	PodId   *string `json:"podId,omitempty" xml:"podId,omitempty"`
+	// The pod ID.
+	PodId *string `json:"podId,omitempty" xml:"podId,omitempty"`
+	// The name of the pod.
 	PodName *string `json:"podName,omitempty" xml:"podName,omitempty"`
 }
 
@@ -1153,9 +1163,13 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsL
 }
 
 type GetInstanceDetailResponseBodyDataHighAvailability struct {
+	// The current active zone.
 	CurrentActiveAZ *string `json:"CurrentActiveAZ,omitempty" xml:"CurrentActiveAZ,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	PrimaryZoneId   *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The high availability pattern.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The ID of the primary zone in the high availability deployment.
+	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The ID of the secondary zone in the high availability deployment.
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 }
 
@@ -1208,7 +1222,7 @@ func (s *GetInstanceDetailResponseBodyDataHighAvailability) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataMeasureConfig struct {
-	// The number of CUs for data nodes.
+	// The number of compute units (CUs) for data nodes.
 	//
 	// example:
 	//
@@ -1220,7 +1234,7 @@ type GetInstanceDetailResponseBodyDataMeasureConfig struct {
 	//
 	// 2
 	DataNodeReplica *int32 `json:"DataNodeReplica,omitempty" xml:"DataNodeReplica,omitempty"`
-	// The number of CUs for index nodes.
+	// The number of compute units (CUs) for index nodes.
 	//
 	// example:
 	//
@@ -1232,7 +1246,7 @@ type GetInstanceDetailResponseBodyDataMeasureConfig struct {
 	//
 	// 2
 	IndexNodeReplica *int32 `json:"IndexNodeReplica,omitempty" xml:"IndexNodeReplica,omitempty"`
-	// The number of CUs for MixCoordinator nodes.
+	// The number of compute units (CUs) for MixCoordinator nodes.
 	//
 	// example:
 	//
@@ -1244,7 +1258,7 @@ type GetInstanceDetailResponseBodyDataMeasureConfig struct {
 	//
 	// 2
 	MixCoodinatorNodeReplica *int32 `json:"MixCoodinatorNodeReplica,omitempty" xml:"MixCoodinatorNodeReplica,omitempty"`
-	// The number of CUs for proxy nodes.
+	// The number of compute units (CUs) for proxy nodes.
 	//
 	// example:
 	//
@@ -1256,7 +1270,7 @@ type GetInstanceDetailResponseBodyDataMeasureConfig struct {
 	//
 	// 2
 	ProxyNodeReplica *int32 `json:"ProxyNodeReplica,omitempty" xml:"ProxyNodeReplica,omitempty"`
-	// The number of CUs for query nodes.
+	// The number of compute units (CUs) for query nodes.
 	//
 	// example:
 	//
@@ -1373,13 +1387,13 @@ func (s *GetInstanceDetailResponseBodyDataMeasureConfig) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -1418,7 +1432,9 @@ func (s *GetInstanceDetailResponseBodyDataTags) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataVSwitches struct {
-	VswId  *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	// The vSwitch ID.
+	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	// The zone ID of the vSwitch.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

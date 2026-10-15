@@ -38,31 +38,31 @@ type iScalingActivity interface {
 }
 
 type ScalingActivity struct {
-	// The types of components involved in the scaling activity.
+	// The types of components involved in the auto scaling activity.
 	ComponentTypes *string `json:"componentTypes,omitempty" xml:"componentTypes,omitempty"`
-	// The description of the scaling activity.
+	// The detailed description of the auto scaling activity, which can be used to identify the cause when the activity fails.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The end time of the scaling activity.
+	// The end time of the auto scaling activity.
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The ID of the instance.
+	// The ID of the Milvus instance.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The type of the scaling policy.
+	// The type of the elastic scaling policy.
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
-	// The ID of the scaling activity.
+	// The ID of the elastic scaling activity.
 	ScalingActivityId *string `json:"scalingActivityId,omitempty" xml:"scalingActivityId,omitempty"`
-	// The state of the scaling activity.
+	// The execution status of the auto scaling activity.
 	ScalingActivityState *string `json:"scalingActivityState,omitempty" xml:"scalingActivityState,omitempty"`
-	// The ID of the scaling policy.
+	// The ID of the elastic scaling policy.
 	ScalingPolicyId *string `json:"scalingPolicyId,omitempty" xml:"scalingPolicyId,omitempty"`
-	// The details of the scaling rule.
+	// The details of the elastic scaling rule.
 	ScalingRuleDetail *string `json:"scalingRuleDetail,omitempty" xml:"scalingRuleDetail,omitempty"`
-	// The ID of the scaling rule.
+	// The ID of the elastic scaling rule.
 	ScalingRuleId *string `json:"scalingRuleId,omitempty" xml:"scalingRuleId,omitempty"`
-	// The name of the scaling rule that triggered the activity.
+	// The name of the rule that triggered the auto scaling activity.
 	ScalingRuleName *string `json:"scalingRuleName,omitempty" xml:"scalingRuleName,omitempty"`
-	// The start time of the scaling activity.
+	// The start time of the auto scaling activity.
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time zone of the scaling activity.
+	// The time zone used by the elastic scaling rule.
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 

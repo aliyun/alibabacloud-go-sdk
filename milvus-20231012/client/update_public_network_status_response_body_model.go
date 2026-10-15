@@ -26,13 +26,13 @@ type iUpdatePublicNetworkStatusResponseBody interface {
 }
 
 type UpdatePublicNetworkStatusResponseBody struct {
-	// Details about the access denied error.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxxx",     "EncodedDiagnosticMessage": "xxxx",     "AuthPrincipalType": "SubUser",     "AuthPrincipalDisplayName": "xxxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type UpdatePublicNetworkStatusResponseBody struct {
 	//
 	// ABCD-1234-5678-EFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iDlfTable interface {
 }
 
 type DlfTable struct {
-	// A description of the table.
+	// The table description.
 	//
 	// example:
 	//
 	// Test table
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The location of the table data, specified as an Object Storage Service (OSS) URI.
+	// The table storage location.
 	//
 	// example:
 	//
 	// oss://bucket/path
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// The table format, such as `PAIMON`.
+	// The table format.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DlfTable struct {
 	//
 	// my_table
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The table type. For example, `MANAGED` indicates that DLF manages the data and metadata lifecycle.
+	// The table type.
 	//
 	// example:
 	//

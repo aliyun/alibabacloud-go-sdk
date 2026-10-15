@@ -58,7 +58,7 @@ type iInstanceDetail interface {
 }
 
 type InstanceDetail struct {
-	// The automatic backup configuration.
+	// The automatic backup.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type InstanceDetail struct {
 	//
 	// 2.5
 	DbVersion *string `json:"dbVersion,omitempty" xml:"dbVersion,omitempty"`
-	// Indicates whether data encryption is enabled.
+	// Specifies whether data encryption is enabled.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type InstanceDetail struct {
 	//
 	// 2025-04-27T02:04:25Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// Indicates whether high availability is enabled.
+	// Specifies whether high availability is enabled.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type InstanceDetail struct {
 	//
 	// milvus-test
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// kms key Id。
+	// The KMS key ID.
 	//
 	// example:
 	//
 	// key-xxx
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
-	// The multi-zone deployment mode.
+	// The multi-zone mode.
 	//
 	// example:
 	//
@@ -140,7 +140,11 @@ type InstanceDetail struct {
 	//
 	// 4751
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	// The billing method. Valid values: PayAsYouGo: pay-as-you-go billing method. Subscription: subscription.
+	// The billing method. Valid values:
+	//
+	// - PayAsYouGo: pay-as-you-go billing method.
+	//
+	// - Subscription: subscription.
 	//
 	// example:
 	//
@@ -168,17 +172,17 @@ type InstanceDetail struct {
 	SecurityGroupIds []*string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty" type:"Repeated"`
 	// The instance status. Valid values:
 	//
-	// - creating: Being created.
+	// - creating: The instance is being created.
 	//
-	// - running: Running.
+	// - running: The instance is running.
 	//
-	// - updating: Being upgraded. This includes specification changes, configuration changes, and public network access changes.
+	// - updating: The instance is being upgraded, such as cluster scaling, configuration changes, and enabling or disabling public network access.
 	//
-	// - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+	// - disable: The instance is unavailable. The cluster has expired and must be renewed for activation.
 	//
-	// - deleting: Being deleted.
+	// - deleting: The instance is being deleted.
 	//
-	// - deleted: Deleted.
+	// - deleted: The instance is deleted.
 	//
 	// example:
 	//
@@ -460,16 +464,19 @@ type InstanceDetailComponents struct {
 	// example:
 	//
 	// general
-	CuType   *string                           `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	CuType *string `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	// The query node data cloud disk configuration.
 	DataDisk *InstanceDetailComponentsDataDisk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Struct"`
-	// The disk size type for the Query Node. Set this parameter to Large for storage-optimized configurations, and to Normal for other configurations.
+	// The disk size type of the query node. The value is Large for storage-optimized configurations, and Normal for other configurations.
 	//
 	// example:
 	//
 	// Normal
-	DiskSizeType *string                             `json:"diskSizeType,omitempty" xml:"diskSizeType,omitempty"`
-	PayType      *string                             `json:"payType,omitempty" xml:"payType,omitempty"`
-	PodsList     []*InstanceDetailComponentsPodsList `json:"podsList,omitempty" xml:"podsList,omitempty" type:"Repeated"`
+	DiskSizeType *string `json:"diskSizeType,omitempty" xml:"diskSizeType,omitempty"`
+	// The billing method of the component.
+	PayType *string `json:"payType,omitempty" xml:"payType,omitempty"`
+	// The pod list of the component.
+	PodsList []*InstanceDetailComponentsPodsList `json:"podsList,omitempty" xml:"podsList,omitempty" type:"Repeated"`
 	// The number of replicas.
 	//
 	// example:
@@ -583,10 +590,14 @@ func (s *InstanceDetailComponents) Validate() error {
 }
 
 type InstanceDetailComponentsDataDisk struct {
-	Enabled          *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Specifies whether to enable the data cloud disk for the query node.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The performance level of the ESSD.
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
-	Size             *int32  `json:"size,omitempty" xml:"size,omitempty"`
-	StorageClass     *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	// The capacity of the data cloud disk, in GiB.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The storage class of the data cloud disk.
+	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
 }
 
 func (s InstanceDetailComponentsDataDisk) String() string {
@@ -638,7 +649,9 @@ func (s *InstanceDetailComponentsDataDisk) Validate() error {
 }
 
 type InstanceDetailComponentsPodsList struct {
-	PodId   *string `json:"podId,omitempty" xml:"podId,omitempty"`
+	// The Pod ID.
+	PodId *string `json:"podId,omitempty" xml:"podId,omitempty"`
+	// The pod name.
 	PodName *string `json:"podName,omitempty" xml:"podName,omitempty"`
 }
 

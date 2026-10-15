@@ -18,19 +18,19 @@ type iRamBindingEntry interface {
 }
 
 type RamBindingEntry struct {
-	// The unique identifier (UID) of the bound RAM user.
+	// The bound Alibaba Cloud UID.
 	//
 	// example:
 	//
 	// 1234567890123456
 	BoundUid *string `json:"boundUid,omitempty" xml:"boundUid,omitempty"`
-	// The bound RAM username.
+	// The name of the bound RAM user.
 	//
 	// example:
 	//
 	// test-user
 	BoundUserName *string `json:"boundUserName,omitempty" xml:"boundUserName,omitempty"`
-	// The Milvus username.
+	// The Milvus database username.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iRamAccount interface {
 }
 
 type RamAccount struct {
-	// Specifies whether the RamAccount can be bound to other resources.
+	// Indicates whether the RAM user can be bound.
 	//
 	// example:
 	//
 	// true
 	Bindable *bool `json:"bindable,omitempty" xml:"bindable,omitempty"`
-	// The display name for the RamAccount, which appears in the console.
+	// The display name.
 	//
 	// example:
 	//
 	// Test User
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The unique identifier for the RamAccount.
+	// The Alibaba Cloud UID.
 	//
 	// example:
 	//
 	// 1234567890123456
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// The user name for the RamAccount.
+	// The RAM username.
 	//
 	// example:
 	//

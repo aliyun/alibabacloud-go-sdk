@@ -20,13 +20,13 @@ type iListAclGroupsResponseBody interface {
 }
 
 type ListAclGroupsResponseBody struct {
-	// Details about the access denial. Returned only for requests denied due to insufficient RAM permissions.
+	// The details of the access denial. This field is returned only when access is denied due to insufficient RAM permissions.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The response data.
+	// The returned result.
 	Data []*ListAclGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -100,9 +100,9 @@ func (s *ListAclGroupsResponseBody) Validate() error {
 }
 
 type ListAclGroupsResponseBodyData struct {
-	// The CIDR blocks in the group.
+	// The CIDR block.
 	Cidrs []*string `json:"cidrs,omitempty" xml:"cidrs,omitempty" type:"Repeated"`
-	// The timestamp of the group\\"s creation.
+	// The creation time in RFC 3339 format.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type ListAclGroupsResponseBodyData struct {
 	//
 	// test
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The group ID.
+	// The audio ID.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type ListAclGroupsResponseBodyData struct {
 	//
 	// c-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The ID of the Alibaba Cloud account. This parameter is read-only.
+	// The ID of the current Alibaba Cloud account. This field is read-only.
 	//
 	// example:
 	//

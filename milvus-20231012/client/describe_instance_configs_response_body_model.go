@@ -26,19 +26,19 @@ type iDescribeInstanceConfigsResponseBody interface {
 }
 
 type DescribeInstanceConfigsResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxxx",     "EncodedDiagnosticMessage": "xxxx",     "AuthPrincipalType": "SubUser",     "AuthPrincipalDisplayName": "xxxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned result.
+	// The returned data.
 	//
 	// example:
 	//
 	// dataCoord:\\n  enableCompaction: true
 	Data []byte `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeInstanceConfigsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

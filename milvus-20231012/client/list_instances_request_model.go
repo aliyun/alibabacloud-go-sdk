@@ -151,13 +151,13 @@ func (s *ListInstancesRequest) Validate() error {
 }
 
 type ListInstancesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iMigrationSource interface {
 type MigrationSource struct {
 	// The authentication information of the migration source.
 	AuthInfo *MigrationSourceAuthInfo `json:"authInfo,omitempty" xml:"authInfo,omitempty" type:"Struct"`
-	// The name of the database to migrate.
+	// The name of the database to be migrated.
 	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint information of the migration source.
 	Endpoint *MigrationSourceEndpoint `json:"endpoint,omitempty" xml:"endpoint,omitempty" type:"Struct"`
@@ -135,7 +135,7 @@ func (s *MigrationSourceAuthInfo) Validate() error {
 }
 
 type MigrationSourceEndpoint struct {
-	// The endpoint address of the migration source.
+	// The endpoint of the migration source.
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// The port number of the migration source.
 	Port *string `json:"port,omitempty" xml:"port,omitempty"`

@@ -28,13 +28,13 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxxx",     "EncodedDiagnosticMessage": "xxxx",     "AuthPrincipalType": "SubUser",     "AuthPrincipalDisplayName": "xxxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned data.
+	// The response data.
 	Data []*ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -60,7 +60,7 @@ type ListInstancesResponseBody struct {
 	//
 	// ABCD-1234-5678-EFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// true
 	AutoBackup *bool `json:"AutoBackup,omitempty" xml:"AutoBackup,omitempty"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// milvus-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The expiration time.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -202,17 +202,17 @@ type ListInstancesResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - creating: Being created.
+	// - creating: The instance is being created.
 	//
-	// - running: Running.
+	// - running: The instance is running.
 	//
-	// - updating: Being upgraded. This includes specification changes, configuration changes, and enabling or disabling public network access.
+	// - updating: The instance is being upgraded, such as cluster specification changes, configuration modifications, and public endpoint toggling.
 	//
-	// - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+	// - disable: The instance is unavailable because the cluster has expired and requires renewal.
 	//
-	// - deleting: Being deleted.
+	// - deleting: The instance is being deleted.
 	//
-	// - deleted: Deleted.
+	// - deleted: The instance is deleted.
 	//
 	// example:
 	//
@@ -224,27 +224,27 @@ type ListInstancesResponseBodyData struct {
 	//
 	// perf
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Indicates whether public network access is enabled.
+	// Indicates whether the public endpoint is enabled.
 	//
 	// example:
 	//
 	// true
 	OpenPublicNet *bool `json:"OpenPublicNet,omitempty" xml:"OpenPublicNet,omitempty"`
-	// The edition. Valid values:
+	// The edition details. Valid values:
 	//
-	// - trial: Trial Edition.
+	// - trial: trial edition
 	//
-	// - standard: Standard Edition.
+	// - standard: standard edition
 	//
 	// example:
 	//
 	// trial
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The billing type. Valid values:
+	// The billing method. Valid values:
 	//
-	// - 0: Pay-as-you-go.
+	// - 0: pay-as-you-go
 	//
-	// - 1: Subscription.
+	// - 1: subscription
 	//
 	// example:
 	//
@@ -268,13 +268,13 @@ type ListInstancesResponseBodyData struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource owner account.
+	// The account ID of the resource owner.
 	//
 	// example:
 	//
 	// 1234567890123456
 	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The running time.
+	// The running duration of the instance, in seconds.
 	//
 	// example:
 	//
@@ -287,9 +287,11 @@ type ListInstancesResponseBodyData struct {
 	// sg-123xxx
 	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
 	// The tag information.
-	Tags            []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateVersion *string                              `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Version         *string                              `json:"Version,omitempty" xml:"Version,omitempty"`
+	Tags []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The software stack version.
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The Milvus version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -570,13 +572,13 @@ type ListInstancesResponseBodyDataClusterInfo struct {
 	//
 	// 19530
 	ProxyPort *int32 `json:"ProxyPort,omitempty" xml:"ProxyPort,omitempty"`
-	// The ID of the resource owner account.
+	// The account ID of the resource owner.
 	//
 	// example:
 	//
 	// 1234567890123456
 	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of CUs.
+	// The number of compute units (CUs).
 	//
 	// example:
 	//
@@ -702,7 +704,7 @@ type ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	//
 	// standalone
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The number of CUs.
+	// The number of compute units (CUs).
 	//
 	// example:
 	//
@@ -786,13 +788,13 @@ func (s *ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList) Validat
 }
 
 type ListInstancesResponseBodyDataTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

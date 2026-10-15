@@ -26,7 +26,7 @@ type UpdatePublicNetworkStatusRequest struct {
 	//
 	// ``192.168.**.**``/24,``172.1.**.**``/16
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The component type. Valid value:
+	// The component type. Valid values:
 	//
 	// - Proxy
 	//
@@ -44,7 +44,7 @@ type UpdatePublicNetworkStatusRequest struct {
 	//
 	// c-123xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to enable public network access.
+	// Specifies whether public network access is enabled.
 	//
 	// This parameter is required.
 	//

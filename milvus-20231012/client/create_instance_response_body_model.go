@@ -24,9 +24,9 @@ type CreateInstanceResponseBody struct {
 	//
 	// ABCD-1234-5678-EFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *CreateInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

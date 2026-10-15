@@ -26,17 +26,17 @@ type iPromotionInfo interface {
 }
 
 type PromotionInfo struct {
-	// The fee that can be covered by the promotion.
+	// The available discount amount.
 	CanPromFee *string `json:"canPromFee,omitempty" xml:"canPromFee,omitempty"`
-	// Indicates whether the promotion is selected.
+	// Specifies whether the promotion is selected.
 	IsSelected *bool `json:"isSelected,omitempty" xml:"isSelected,omitempty"`
-	// The description of the promotion.
+	// The promotion description.
 	PromotionDesc *string `json:"promotionDesc,omitempty" xml:"promotionDesc,omitempty"`
-	// The name of the promotion.
+	// The promotion name.
 	PromotionName *string `json:"promotionName,omitempty" xml:"promotionName,omitempty"`
-	// The code of the promotion option.
+	// The promotion option code.
 	PromotionOptionCode *string `json:"promotionOptionCode,omitempty" xml:"promotionOptionCode,omitempty"`
-	// The number of the promotion option.
+	// The promotion option number.
 	PromotionOptionNo *string `json:"promotionOptionNo,omitempty" xml:"promotionOptionNo,omitempty"`
 	// Indicates whether the promotion is selected.
 	Selected *bool `json:"selected,omitempty" xml:"selected,omitempty"`

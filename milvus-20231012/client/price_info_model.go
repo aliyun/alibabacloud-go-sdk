@@ -28,21 +28,21 @@ type iPriceInfo interface {
 }
 
 type PriceInfo struct {
-	// The currency of the price.
+	// The pricing currency.
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
 	// The discount amount.
 	DiscountAmount *string `json:"discountAmount,omitempty" xml:"discountAmount,omitempty"`
-	// The optional promotions.
+	// The list of optional promotions.
 	OptionalPromotions []*PromotionInfo `json:"optionalPromotions,omitempty" xml:"optionalPromotions,omitempty" type:"Repeated"`
-	// The original price.
+	// The original amount.
 	OriginalAmount *string `json:"originalAmount,omitempty" xml:"originalAmount,omitempty"`
-	// The price modules.
+	// The pricing details by module.
 	PriceModules []*PriceInfoPriceModules `json:"priceModules,omitempty" xml:"priceModules,omitempty" type:"Repeated"`
-	// The pricing rules.
+	// The list of discount rules.
 	Rules []*PriceInfoRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 	// The tax amount.
 	TaxAmount *string `json:"taxAmount,omitempty" xml:"taxAmount,omitempty"`
-	// The actual trade price.
+	// The final transaction amount.
 	TradeAmount *string `json:"tradeAmount,omitempty" xml:"tradeAmount,omitempty"`
 }
 
@@ -158,9 +158,9 @@ func (s *PriceInfo) Validate() error {
 }
 
 type PriceInfoPriceModules struct {
-	// The original amount of the price module.
+	// The original amount of the module.
 	OriginalAmount *string `json:"originalAmount,omitempty" xml:"originalAmount,omitempty"`
-	// The type of the price module.
+	// The type of the pricing module.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -195,11 +195,11 @@ func (s *PriceInfoPriceModules) Validate() error {
 }
 
 type PriceInfoRules struct {
-	// The amount associated with the pricing rule.
+	// The discount amount of the rule.
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The name of the pricing rule.
+	// The name of the discount rule.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the pricing rule.
+	// The ID of the discount rule.
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
 }
 

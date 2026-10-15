@@ -32,13 +32,13 @@ type iDlfFieldSchema interface {
 }
 
 type DlfFieldSchema struct {
-	// A comment for the field.
+	// The field comment.
 	//
 	// example:
 	//
 	// Primary key field
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The dimension of the vector field. This parameter applies only when `isVectorField` is `true`.
+	// The vector dimensions.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DlfFieldSchema struct {
 	//
 	// true
 	IsPrimaryKey *bool `json:"isPrimaryKey,omitempty" xml:"isPrimaryKey,omitempty"`
-	// Indicates whether the DLF field type can be mapped to a Milvus field type.
+	// Indicates whether mapping is supported.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DlfFieldSchema struct {
 	//
 	// false
 	IsVectorField *bool `json:"isVectorField,omitempty" xml:"isVectorField,omitempty"`
-	// The corresponding Milvus field type.
+	// The Milvus field type.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DlfFieldSchema struct {
 	//
 	// true
 	Nullable *bool `json:"nullable,omitempty" xml:"nullable,omitempty"`
-	// The reason the DLF field type is unsupported. This field is present only when `isSupported` is `false`.
+	// The reason mapping is not supported.
 	//
 	// example:
 	//

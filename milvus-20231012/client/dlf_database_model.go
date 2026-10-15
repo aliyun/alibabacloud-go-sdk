@@ -18,19 +18,19 @@ type iDlfDatabase interface {
 }
 
 type DlfDatabase struct {
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// my_database
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	// The description of the database.
+	// The database description.
 	//
 	// example:
 	//
 	// Test database
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The number of tables in the database. Read-only.
+	// The number of tables.
 	//
 	// example:
 	//

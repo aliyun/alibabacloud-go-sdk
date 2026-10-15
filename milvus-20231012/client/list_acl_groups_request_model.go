@@ -16,7 +16,7 @@ type iListAclGroupsRequest interface {
 }
 
 type ListAclGroupsRequest struct {
-	// The instance ID.
+	// The cluster ID.
 	//
 	// example:
 	//
