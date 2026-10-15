@@ -34,17 +34,68 @@ type iQueryRbacRoleResponseBody interface {
 }
 
 type QueryRbacRoleResponseBody struct {
-	AccessDeniedDetail *string                          `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AllowRetry         *bool                            `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName            *string                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode        *string                          `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string                          `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs          []interface{}                    `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module             *QueryRbacRoleResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId          *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootErrorCode      *string                          `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg       *string                          `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	Synchro            *bool                            `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// The detailed reason why access was denied.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed. Valid values:
+	//
+	// - false: Retry is not allowed.
+	//
+	// - true: Retry is allowed.
+	//
+	// example:
+	//
+	// False
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name. The application with this name is queried.
+	//
+	// example:
+	//
+	// spring-cloud-b
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// ERROR-oo1
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message.
+	//
+	// example:
+	//
+	// SYSTEM_ERROR
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The response data.
+	Module *QueryRbacRoleResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6C6B99AC-39EC-5350-874C-204128C905E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// SYSTEM.ERROR
+	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The exception message.
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// True
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s QueryRbacRoleResponseBody) String() string {
@@ -164,12 +215,46 @@ func (s *QueryRbacRoleResponseBody) Validate() error {
 }
 
 type QueryRbacRoleResponseBodyModule struct {
+	// The time when the task was created, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
+	//
+	// example:
+	//
+	// 2026-02-06T10:20:09Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsDefault *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	IsSystem  *bool   `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
-	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scenario ID.
+	//
+	// example:
+	//
+	// 16257
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The default status. Valid values:
+	//
+	// - 0: not default.
+	//
+	// - 1: default.
+	//
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// Indicates whether the approval template is system-defined. Valid values:
+	//
+	// - 1: Yes.
+	//
+	// - 0: No.
+	IsSystem *bool `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// oss://anchashiscan.oss-cn-hangzhou.aliyuncs.com/prodpopscansDZBFBGr
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// 文件名
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s QueryRbacRoleResponseBodyModule) String() string {

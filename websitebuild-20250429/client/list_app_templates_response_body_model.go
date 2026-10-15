@@ -38,19 +38,19 @@ type iListAppTemplatesResponseBody interface {
 }
 
 type ListAppTemplatesResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -62,17 +62,15 @@ type ListAppTemplatesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error arguments.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The number of results returned per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -80,7 +78,7 @@ type ListAppTemplatesResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListAppTemplatesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. This parameter is empty if there is no next query.
 	//
 	// example:
 	//
@@ -102,7 +100,7 @@ type ListAppTemplatesResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -253,7 +251,7 @@ type ListAppTemplatesResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The request results.
 	Data []*ListAppTemplatesResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The decision weight.
 	Next *ListAppTemplatesResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
@@ -275,7 +273,7 @@ type ListAppTemplatesResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of 1000 recent records per query. If the results exceed 1000 records, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// Indicates whether the query result is truncated. In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
 	//
 	// example:
 	//
@@ -415,19 +413,19 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The color.
+	// The color scheme.
 	//
 	// example:
 	//
 	// Red
 	ColorScheme *string `json:"ColorScheme,omitempty" xml:"ColorScheme,omitempty"`
-	// The color name.
+	// The color scheme name.
 	//
 	// example:
 	//
 	// red
 	ColorSchemeName *string `json:"ColorSchemeName,omitempty" xml:"ColorSchemeName,omitempty"`
-	// The actual amount of data copied from the original table during a DMS lock-free schema change.
+	// The actual amount of data copied from the original table during a DMS lock-free change.
 	//
 	// example:
 	//
@@ -439,7 +437,7 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	//
 	// SOAR
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in ISO 8601 format in UTC (Z).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -447,7 +445,7 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	//
 	// 2025-11-20T02:26:38Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The modification time. The time is a UNIX timestamp in milliseconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -461,11 +459,11 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	//
 	// 9953352
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The industry of the file to be analyzed. Default value: **common*	- (general industry). Select an appropriate industry so that the backend matches the applicable algorithm combination. Valid values:
+	// The industry of the file to be analyzed. Default value: **common*	- (general industry). Select an appropriate industry so that the backend can match the applicable algorithm combination. Valid values:
 	//
-	// - **microVideo**: short video industry.
+	// - **microVideo**: short video industry
 	//
-	// - **common**: general industry.
+	// - **common**: general industry
 	//
 	// example:
 	//
@@ -477,7 +475,9 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	//
 	// abc
 	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
-	// The ID of the last modifier.
+	// Specifies whether the template is recommended.
+	IsRecommended *bool `json:"IsRecommended,omitempty" xml:"IsRecommended,omitempty"`
+	// The last modifier ID.
 	//
 	// example:
 	//
@@ -489,9 +489,9 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	//
 	// 100
 	LikeCount *int32 `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
-	// Indicates whether the current user has liked this template.
+	// Indicates whether the current user has liked the item.
 	Liked *bool `json:"Liked,omitempty" xml:"Liked,omitempty"`
-	// The remediation action.
+	// The repair action.
 	//
 	// example:
 	//
@@ -505,15 +505,15 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
 	// The product version. Valid values:
 	//
-	// - **BasicVersion**: Basic edition.
+	// - **BasicVersion**: Basic Edition
 	//
-	// - **EnterpriseVersion**: Enterprise edition.
+	// - **EnterpriseVersion**: Enterprise Edition
 	//
 	// example:
 	//
 	// EnterpriseVersion
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// The Edition name.
+	// The edition name.
 	//
 	// example:
 	//
@@ -539,13 +539,13 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template name.
 	//
-	// - Maximum length: 128.
+	// - The maximum length is 128 characters.
 	//
 	// example:
 	//
 	// cfdna6
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The application thumbnail URL.
+	// The application thumbnail.
 	//
 	// example:
 	//
@@ -615,6 +615,10 @@ func (s *ListAppTemplatesResponseBodyModuleData) GetIndustry() *string {
 
 func (s *ListAppTemplatesResponseBodyModuleData) GetIndustryName() *string {
 	return s.IndustryName
+}
+
+func (s *ListAppTemplatesResponseBodyModuleData) GetIsRecommended() *bool {
+	return s.IsRecommended
 }
 
 func (s *ListAppTemplatesResponseBodyModuleData) GetLastModifier() *string {
@@ -728,6 +732,11 @@ func (s *ListAppTemplatesResponseBodyModuleData) SetIndustryName(v string) *List
 	return s
 }
 
+func (s *ListAppTemplatesResponseBodyModuleData) SetIsRecommended(v bool) *ListAppTemplatesResponseBodyModuleData {
+	s.IsRecommended = &v
+	return s
+}
+
 func (s *ListAppTemplatesResponseBodyModuleData) SetLastModifier(v string) *ListAppTemplatesResponseBodyModuleData {
 	s.LastModifier = &v
 	return s
@@ -809,25 +818,25 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	//
 	// memory
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The BizId of the associated application instance.
+	// The bizId of the associated application instance.
 	//
 	// example:
 	//
 	// WS20260502160409000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The color.
+	// The color scheme.
 	//
 	// example:
 	//
 	// red
 	ColorScheme *string `json:"ColorScheme,omitempty" xml:"ColorScheme,omitempty"`
-	// The color name.
+	// The color scheme name.
 	//
 	// example:
 	//
 	// red
 	ColorSchemeName *string `json:"ColorSchemeName,omitempty" xml:"ColorSchemeName,omitempty"`
-	// The actual amount of data copied from the original table during a DMS lock-free schema change.
+	// The actual amount of data copied from the original table during a DMS lock-free change.
 	//
 	// example:
 	//
@@ -857,11 +866,11 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	//
 	// 1000039405002
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The industry. Default value: **common*	- (general industry). Valid values:
+	// The industry. Default value: **common*	- (General industry). Valid values:
 	//
-	// - **microVideo**: short video industry.
+	// - **microVideo**: Short video industry.
 	//
-	// - **common**: general industry.
+	// - **common**: General industry.
 	//
 	// example:
 	//
@@ -873,6 +882,8 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	//
 	// abc
 	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
+	// Specifies whether the template is recommended.
+	IsRecommended *bool `json:"IsRecommended,omitempty" xml:"IsRecommended,omitempty"`
 	// The ID of the last modifier.
 	//
 	// example:
@@ -885,9 +896,9 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	//
 	// 100
 	LikeCount *int32 `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
-	// Indicates whether the current user has liked this template.
+	// Indicates whether the current user has liked the item.
 	Liked *bool `json:"Liked,omitempty" xml:"Liked,omitempty"`
-	// The remediation content.
+	// The fix details.
 	//
 	// example:
 	//
@@ -901,17 +912,17 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
 	// The product version. Valid values:
 	//
-	// - **BasicVersion**: Basic edition.
+	// - **BasicVersion**: Basic Edition.
 	//
-	// - **EnterpriseVersion**: Enterprise edition.
+	// - **EnterpriseVersion**: Enterprise Edition.
 	//
-	// > This parameter is required only when ProductForm is set to IntegrationForm.
+	// > Specify this parameter only when ProductForm is set to IntegrationForm.
 	//
 	// example:
 	//
 	// BasicVersion
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// The Edition name.
+	// The edition name.
 	//
 	// example:
 	//
@@ -923,7 +934,7 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	//
 	// 100
 	ShareCount *int32 `json:"ShareCount,omitempty" xml:"ShareCount,omitempty"`
-	// Valid values: unknown, init, testing, online.
+	// The status. Valid values: unknown, init, testing, and online.
 	//
 	// example:
 	//
@@ -941,7 +952,7 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	//
 	// iem
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The application thumbnail URL.
+	// The application thumbnail.
 	//
 	// example:
 	//
@@ -1011,6 +1022,10 @@ func (s *ListAppTemplatesResponseBodyModuleNext) GetIndustry() *string {
 
 func (s *ListAppTemplatesResponseBodyModuleNext) GetIndustryName() *string {
 	return s.IndustryName
+}
+
+func (s *ListAppTemplatesResponseBodyModuleNext) GetIsRecommended() *bool {
+	return s.IsRecommended
 }
 
 func (s *ListAppTemplatesResponseBodyModuleNext) GetLastModifier() *string {
@@ -1121,6 +1136,11 @@ func (s *ListAppTemplatesResponseBodyModuleNext) SetIndustry(v string) *ListAppT
 
 func (s *ListAppTemplatesResponseBodyModuleNext) SetIndustryName(v string) *ListAppTemplatesResponseBodyModuleNext {
 	s.IndustryName = &v
+	return s
+}
+
+func (s *ListAppTemplatesResponseBodyModuleNext) SetIsRecommended(v bool) *ListAppTemplatesResponseBodyModuleNext {
+	s.IsRecommended = &v
 	return s
 }
 

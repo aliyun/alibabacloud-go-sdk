@@ -33,6 +33,8 @@ type iListAppInstancesRequest interface {
 	GetPageSize() *int32
 	SetQuery(v string) *ListAppInstancesRequest
 	GetQuery() *string
+	SetQueryMode(v string) *ListAppInstancesRequest
+	GetQueryMode() *string
 	SetStatusList(v []*string) *ListAppInstancesRequest
 	GetStatusList() []*string
 }
@@ -43,15 +45,16 @@ type ListAppInstancesRequest struct {
 	// example:
 	//
 	// WS20250731233102000001
-	BizId  *string   `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The list of business IDs for the application instances.
 	BizIds []*string `json:"BizIds,omitempty" xml:"BizIds,omitempty" type:"Repeated"`
-	// The start of the expiration time range.
+	// The expiration start time.
 	//
 	// example:
 	//
 	// 2025-12-18T14:30:00Z
 	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	// The end of the expiration time range.
+	// The expiration end time.
 	//
 	// example:
 	//
@@ -71,19 +74,19 @@ type ListAppInstancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The field used for sorting.
+	// The sort field.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort type. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
@@ -101,12 +104,18 @@ type ListAppInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query parameter.
+	// The query parameters.
 	//
 	// example:
 	//
 	// {\\"RequestId\\":\\"\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The query mode. A value of CONTENT_CREATION indicates a lightweight query for the content creation site selector, which queries only published sites and does not load aggregated information such as profiles, services, and AI staff.
+	//
+	// example:
+	//
+	// CONTENT_CREATION
+	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
 	// The status range.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
@@ -165,6 +174,10 @@ func (s *ListAppInstancesRequest) GetPageSize() *int32 {
 
 func (s *ListAppInstancesRequest) GetQuery() *string {
 	return s.Query
+}
+
+func (s *ListAppInstancesRequest) GetQueryMode() *string {
+	return s.QueryMode
 }
 
 func (s *ListAppInstancesRequest) GetStatusList() []*string {
@@ -228,6 +241,11 @@ func (s *ListAppInstancesRequest) SetPageSize(v int32) *ListAppInstancesRequest 
 
 func (s *ListAppInstancesRequest) SetQuery(v string) *ListAppInstancesRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *ListAppInstancesRequest) SetQueryMode(v string) *ListAppInstancesRequest {
+	s.QueryMode = &v
 	return s
 }
 

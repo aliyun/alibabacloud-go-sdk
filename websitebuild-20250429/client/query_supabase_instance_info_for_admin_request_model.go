@@ -44,15 +44,23 @@ type QuerySupabaseInstanceInfoForAdminRequest struct {
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The field by which to sort the results.
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values:
+	// The sort order. Valid values: ASC and DESC.
 	//
-	// - ASC: ascending order.
+	// example:
 	//
-	// - DESC: descending order.
+	// ASC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The user ID.
 	//

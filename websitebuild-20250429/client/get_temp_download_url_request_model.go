@@ -14,6 +14,8 @@ type iGetTempDownloadUrlRequest interface {
 }
 
 type GetTempDownloadUrlRequest struct {
+	// The key of the OSS object.
+	//
 	// example:
 	//
 	// backend/detection/objects/r-0008ujvfksltf5j45n81/task-000hckiuwyau0gwn17vq.jpg

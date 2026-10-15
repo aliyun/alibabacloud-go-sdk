@@ -16,10 +16,14 @@ type iGetAppDatabaseTableSchemasRequest interface {
 }
 
 type GetAppDatabaseTableSchemasRequest struct {
+	// The business ID.
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// default.ai_advertising_material_rec_train_v1103

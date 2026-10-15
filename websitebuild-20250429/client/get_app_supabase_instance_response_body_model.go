@@ -34,41 +34,41 @@ type iGetAppSupabaseInstanceResponseBody interface {
 }
 
 type GetAppSupabaseInstanceResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Is retry allowed
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- return parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Task object
+	// The task object.
 	Module *GetAppSupabaseInstanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,19 +76,19 @@ type GetAppSupabaseInstanceResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception.
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Spare parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -213,55 +213,55 @@ func (s *GetAppSupabaseInstanceResponseBody) Validate() error {
 }
 
 type GetAppSupabaseInstanceResponseBodyModule struct {
-	// anonymity key
+	// The anonymous key.
 	//
 	// example:
 	//
 	// 1111
 	AnonKey *string `json:"AnonKey,omitempty" xml:"AnonKey,omitempty"`
-	// application instance business ID
+	// The business ID of the application instance.
 	//
 	// example:
 	//
 	// WS20250915163734000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// database instance ID
+	// The database instance ID.
 	//
 	// example:
 	//
 	// selectdb-cn-2bl4djolb02
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// Database public URL
+	// The public URL of the database.
 	//
 	// example:
 	//
 	// 111
 	DbPublicUrl *string `json:"DbPublicUrl,omitempty" xml:"DbPublicUrl,omitempty"`
-	// instance creation status
+	// The instance creation status.
 	//
 	// example:
 	//
 	// 1111
 	InstanceCreateStatus *string `json:"InstanceCreateStatus,omitempty" xml:"InstanceCreateStatus,omitempty"`
-	// service key
+	// The service key.
 	//
 	// example:
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// trial, draft, live, refunded, expired, released
+	// trial,draft,live,refunded,expired,released
 	//
 	// example:
 	//
 	// NORMAL
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Supabase instance ID
+	// The Supabase instance ID.
 	//
 	// example:
 	//
 	// 1111
 	SupabaseInstanceId *string `json:"SupabaseInstanceId,omitempty" xml:"SupabaseInstanceId,omitempty"`
-	// Supabase public URL
+	// The public URL of the Supabase instance.
 	//
 	// example:
 	//

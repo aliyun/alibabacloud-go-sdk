@@ -34,39 +34,39 @@ type iPublishAppInstanceResponseBody interface {
 }
 
 type PublishAppInstanceResponseBody struct {
-	// Permission denied information
+	// The access denied details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message. Not currently used. Ignore this field.
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Response data
+	// The response data.
 	Module *PublishAppInstanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -74,19 +74,19 @@ type PublishAppInstanceResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The error message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception.
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ func (s *PublishAppInstanceResponseBody) Validate() error {
 }
 
 type PublishAppInstanceResponseBodyModule struct {
-	// Publish order ID
+	// The publish order ID.
 	//
 	// example:
 	//

@@ -76,7 +76,7 @@ type SubmitMaterialTaskResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. The ErrorCode field is not returned if the request is successful. The ErrorCode field is returned if the request fails. For more information, see the error codes in this topic.
+	// The error code. The ErrorCode field is not returned if the request is successful. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type SubmitMaterialTaskResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request was successful.
 	//
@@ -266,6 +266,12 @@ func (s *SubmitMaterialTaskResponseBody) Validate() error {
 }
 
 type SubmitMaterialTaskResponseBodyModule struct {
+	// The business group ID.
+	//
+	// example:
+	//
+	// xxx
+	BizGroupId *string `json:"BizGroupId,omitempty" xml:"BizGroupId,omitempty"`
 	// The task ID.
 	//
 	// example:
@@ -282,8 +288,17 @@ func (s SubmitMaterialTaskResponseBodyModule) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitMaterialTaskResponseBodyModule) GetBizGroupId() *string {
+	return s.BizGroupId
+}
+
 func (s *SubmitMaterialTaskResponseBodyModule) GetTaskId() *string {
 	return s.TaskId
+}
+
+func (s *SubmitMaterialTaskResponseBodyModule) SetBizGroupId(v string) *SubmitMaterialTaskResponseBodyModule {
+	s.BizGroupId = &v
+	return s
 }
 
 func (s *SubmitMaterialTaskResponseBodyModule) SetTaskId(v string) *SubmitMaterialTaskResponseBodyModule {

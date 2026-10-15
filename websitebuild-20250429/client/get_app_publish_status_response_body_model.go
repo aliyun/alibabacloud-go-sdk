@@ -34,13 +34,13 @@ type iGetAppPublishStatusResponseBody interface {
 }
 
 type GetAppPublishStatusResponseBody struct {
-	// The detailed reason why access is denied.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GetAppPublishStatusResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *GetAppPublishStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,7 +84,7 @@ type GetAppPublishStatusResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -223,6 +223,8 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// The code of the current publish step.
+	CurrentStepCode *string `json:"CurrentStepCode,omitempty" xml:"CurrentStepCode,omitempty"`
 	// The deployment channel.
 	//
 	// example:
@@ -241,30 +243,34 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// abc
 	ErrorStep *string `json:"ErrorStep,omitempty" xml:"ErrorStep,omitempty"`
-	// Indicates whether the task is complete.
+	// The code of the publish step where the error occurred.
+	ErrorStepCode *string `json:"ErrorStepCode,omitempty" xml:"ErrorStepCode,omitempty"`
+	// Indicates whether the task is completed.
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
 	// - `true`: The call is successful.
 	//
-	// - `false`: The call failed.
+	// - `false`: The call fails.
 	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The additional description.
+	// The additional information.
 	//
 	// example:
 	//
 	// common notify successfully.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The sort type. Valid values: ASC and DESC.
+	// The sort order.
 	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The code of the publish order type.
+	OrderTypeCode *string `json:"OrderTypeCode,omitempty" xml:"OrderTypeCode,omitempty"`
 	// The task completion percentage.
 	//
 	// example:
@@ -283,7 +289,7 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
-	// The scheduled publish time.
+	// The scheduled publish time in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -297,9 +303,12 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The list of publish step codes.
+	StepCodes []*string `json:"StepCodes,omitempty" xml:"StepCodes,omitempty" type:"Repeated"`
 	// The error level. Valid values: FATAL, ERROR, WARNING, and CRITICAL.
-	Steps      []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
-	Subchannel *string   `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
+	Steps []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	// The publish subchannel.
+	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 }
 
 func (s GetAppPublishStatusResponseBodyModule) String() string {
@@ -318,6 +327,10 @@ func (s *GetAppPublishStatusResponseBodyModule) GetCurrentStep() *string {
 	return s.CurrentStep
 }
 
+func (s *GetAppPublishStatusResponseBodyModule) GetCurrentStepCode() *string {
+	return s.CurrentStepCode
+}
+
 func (s *GetAppPublishStatusResponseBodyModule) GetDeployChannel() *string {
 	return s.DeployChannel
 }
@@ -328,6 +341,10 @@ func (s *GetAppPublishStatusResponseBodyModule) GetDescription() *string {
 
 func (s *GetAppPublishStatusResponseBodyModule) GetErrorStep() *string {
 	return s.ErrorStep
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetErrorStepCode() *string {
+	return s.ErrorStepCode
 }
 
 func (s *GetAppPublishStatusResponseBodyModule) GetIsFinish() *bool {
@@ -344,6 +361,10 @@ func (s *GetAppPublishStatusResponseBodyModule) GetMsg() *string {
 
 func (s *GetAppPublishStatusResponseBodyModule) GetOrderType() *string {
 	return s.OrderType
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetOrderTypeCode() *string {
+	return s.OrderTypeCode
 }
 
 func (s *GetAppPublishStatusResponseBodyModule) GetPercent() *int32 {
@@ -366,6 +387,10 @@ func (s *GetAppPublishStatusResponseBodyModule) GetSiteId() *string {
 	return s.SiteId
 }
 
+func (s *GetAppPublishStatusResponseBodyModule) GetStepCodes() []*string {
+	return s.StepCodes
+}
+
 func (s *GetAppPublishStatusResponseBodyModule) GetSteps() []*string {
 	return s.Steps
 }
@@ -384,6 +409,11 @@ func (s *GetAppPublishStatusResponseBodyModule) SetCurrentStep(v string) *GetApp
 	return s
 }
 
+func (s *GetAppPublishStatusResponseBodyModule) SetCurrentStepCode(v string) *GetAppPublishStatusResponseBodyModule {
+	s.CurrentStepCode = &v
+	return s
+}
+
 func (s *GetAppPublishStatusResponseBodyModule) SetDeployChannel(v string) *GetAppPublishStatusResponseBodyModule {
 	s.DeployChannel = &v
 	return s
@@ -396,6 +426,11 @@ func (s *GetAppPublishStatusResponseBodyModule) SetDescription(v string) *GetApp
 
 func (s *GetAppPublishStatusResponseBodyModule) SetErrorStep(v string) *GetAppPublishStatusResponseBodyModule {
 	s.ErrorStep = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetErrorStepCode(v string) *GetAppPublishStatusResponseBodyModule {
+	s.ErrorStepCode = &v
 	return s
 }
 
@@ -416,6 +451,11 @@ func (s *GetAppPublishStatusResponseBodyModule) SetMsg(v string) *GetAppPublishS
 
 func (s *GetAppPublishStatusResponseBodyModule) SetOrderType(v string) *GetAppPublishStatusResponseBodyModule {
 	s.OrderType = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetOrderTypeCode(v string) *GetAppPublishStatusResponseBodyModule {
+	s.OrderTypeCode = &v
 	return s
 }
 
@@ -441,6 +481,11 @@ func (s *GetAppPublishStatusResponseBodyModule) SetPublishTime(v string) *GetApp
 
 func (s *GetAppPublishStatusResponseBodyModule) SetSiteId(v string) *GetAppPublishStatusResponseBodyModule {
 	s.SiteId = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetStepCodes(v []*string) *GetAppPublishStatusResponseBodyModule {
+	s.StepCodes = v
 	return s
 }
 

@@ -80,13 +80,13 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The root error message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// ORACLE
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The additional information.
+	// The extra information.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	InstanceCreateFinishedTime *string `json:"InstanceCreateFinishedTime,omitempty" xml:"InstanceCreateFinishedTime,omitempty"`
-	// The creation status of the instance.
+	// The instance creation status.
 	//
 	// example:
 	//
@@ -285,9 +285,9 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - 0: paused
+	// - 0: Paused.
 	//
-	// - 1: running
+	// - 1: Running.
 	//
 	// example:
 	//

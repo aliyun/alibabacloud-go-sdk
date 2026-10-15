@@ -16,10 +16,14 @@ type iDeleteAppNotificationSceneRequest interface {
 }
 
 type DeleteAppNotificationSceneRequest struct {
+	// The business ID.
+	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 1000006921

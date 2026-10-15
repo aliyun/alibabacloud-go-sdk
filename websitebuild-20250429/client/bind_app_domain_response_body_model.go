@@ -34,7 +34,7 @@ type iBindAppDomainResponseBody interface {
 }
 
 type BindAppDomainResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -58,25 +58,25 @@ type BindAppDomainResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response element.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The data table module. Valid values:
+	// The data table module.
 	//
 	// - ABTest: experiment data table
 	//
 	// - ExperimentTool: experiment tool table
 	//
-	// - DataDiagnosis: data modeling diagnostics
+	// - DataDiagnosis: data diagnostics
 	Module *BindAppDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// Id of the request
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type BindAppDomainResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -219,8 +219,9 @@ func (s *BindAppDomainResponseBody) Validate() error {
 }
 
 type BindAppDomainResponseBodyModule struct {
+	// The DNS conflict information. This parameter is returned when a conflict is detected during synchronous verification.
 	DnsConflict *BindAppDomainResponseBodyModuleDnsConflict `json:"DnsConflict,omitempty" xml:"DnsConflict,omitempty" type:"Struct"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -264,10 +265,18 @@ func (s *BindAppDomainResponseBodyModule) Validate() error {
 }
 
 type BindAppDomainResponseBodyModuleDnsConflict struct {
-	CanAutoResolve *bool                                                `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
-	HasConflict    *bool                                                `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
-	Message        *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Records        []*BindAppDomainResponseBodyModuleDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// Indicates whether automatic overwrite is supported. A value of true indicates the current Alibaba Cloud account, and a value of false indicates other accounts.
+	CanAutoResolve *bool `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
+	// Indicates whether a conflict exists.
+	HasConflict *bool `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
+	// The user-facing prompt message. Different guidance text is generated based on the scenario.
+	//
+	// example:
+	//
+	// A conflicting DNS record (A 192.0.2.1) exists for the domain name www.example.com. Delete the conflicting record from your DNS provider and try again
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of conflicting DNS records. This reuses the existing AppDomainDnsRecordDTO.
+	Records []*BindAppDomainResponseBodyModuleDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 }
 
 func (s BindAppDomainResponseBodyModuleDnsConflict) String() string {
@@ -328,10 +337,30 @@ func (s *BindAppDomainResponseBodyModuleDnsConflict) Validate() error {
 }
 
 type BindAppDomainResponseBodyModuleDnsConflictRecords struct {
-	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The host record.
+	//
+	// example:
+	//
+	// www
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The record type.
+	//
+	// example:
+	//
+	// A
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The status of the conflicting DNS record. A value of ENABLE indicates that the record is enabled.
+	//
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The record value.
+	//
+	// example:
+	//
+	// 192.0.2.1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s BindAppDomainResponseBodyModuleDnsConflictRecords) String() string {

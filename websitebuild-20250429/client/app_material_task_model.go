@@ -9,6 +9,8 @@ type iAppMaterialTask interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizGroupId(v string) *AppMaterialTask
+	GetBizGroupId() *string
 	SetCompleteTime(v string) *AppMaterialTask
 	GetCompleteTime() *string
 	SetCompleteTimeFormat(v string) *AppMaterialTask
@@ -32,6 +34,12 @@ type iAppMaterialTask interface {
 }
 
 type AppMaterialTask struct {
+	// The business group ID.
+	//
+	// example:
+	//
+	// 111
+	BizGroupId *string `json:"BizGroupId,omitempty" xml:"BizGroupId,omitempty"`
 	// The task completion time.
 	//
 	// example:
@@ -42,13 +50,13 @@ type AppMaterialTask struct {
 	//
 	// example:
 	//
-	// 1分钟前
+	// 1 minute ago
 	CompleteTimeFormat *string `json:"CompleteTimeFormat,omitempty" xml:"CompleteTimeFormat,omitempty"`
 	// The failure reason.
 	//
 	// example:
 	//
-	// 参数不合规
+	// Invalid parameters
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 	// The list of final files.
 	FinalFileUrls []*string `json:"FinalFileUrls,omitempty" xml:"FinalFileUrls,omitempty" type:"Repeated"`
@@ -76,17 +84,17 @@ type AppMaterialTask struct {
 	//
 	// 81d04d62c3483b32bacf1d306d2622b2
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task parameter.
+	// The task parameters.
 	//
 	// example:
 	//
 	// {
 	//
-	//     "brandName": "品牌名称",
+	//     "brandName": "Brand name",
 	//
 	//     "direction": "HORIZONTAL",
 	//
-	//     "userPrompt": "设计要求"
+	//     "userPrompt": "Design requirements"
 	//
 	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
@@ -104,6 +112,10 @@ func (s AppMaterialTask) String() string {
 
 func (s AppMaterialTask) GoString() string {
 	return s.String()
+}
+
+func (s *AppMaterialTask) GetBizGroupId() *string {
+	return s.BizGroupId
 }
 
 func (s *AppMaterialTask) GetCompleteTime() *string {
@@ -144,6 +156,11 @@ func (s *AppMaterialTask) GetTaskParam() *string {
 
 func (s *AppMaterialTask) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *AppMaterialTask) SetBizGroupId(v string) *AppMaterialTask {
+	s.BizGroupId = &v
+	return s
 }
 
 func (s *AppMaterialTask) SetCompleteTime(v string) *AppMaterialTask {

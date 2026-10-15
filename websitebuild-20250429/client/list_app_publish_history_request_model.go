@@ -36,60 +36,61 @@ type iListAppPublishHistoryRequest interface {
 }
 
 type ListAppPublishHistoryRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
-	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The deployment channel.
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
-	// Search keyword
+	// The search keyword.
 	//
 	// example:
 	//
-	// 1_运营支持部_销售运营
+	// 1_Operations Support Department_Sales Operations
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Number of results per query.
-	//
-	// Value range: 10 to 100. Default value: 20.
+	// The maximum number of entries to return for a single query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token indicating the start of the next query. Empty if there is no next query.
+	// The token used to start the next query. This parameter is empty if no next query is available.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size
+	// The page size.
 	//
 	// example:
 	//
 	// 10
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The release environment.
 	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
-	// Sorting method
+	// The sort order.
 	//
 	// example:
 	//
 	// EndTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// Publish status
+	// The release status.
 	//
 	// example:
 	//
 	// NORMAL
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The release subchannel.
 	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
-	// Website domain name
+	// The website domain name.
 	//
 	// example:
 	//

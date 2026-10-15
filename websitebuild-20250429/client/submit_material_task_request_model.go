@@ -9,6 +9,8 @@ type iSubmitMaterialTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizGroupId(v string) *SubmitMaterialTaskRequest
+	GetBizGroupId() *string
 	SetTaskParam(v string) *SubmitMaterialTaskRequest
 	GetTaskParam() *string
 	SetTaskType(v string) *SubmitMaterialTaskRequest
@@ -16,7 +18,13 @@ type iSubmitMaterialTaskRequest interface {
 }
 
 type SubmitMaterialTaskRequest struct {
-	// The parameters of the task.
+	// The business group ID.
+	//
+	// example:
+	//
+	// xxx
+	BizGroupId *string `json:"BizGroupId,omitempty" xml:"BizGroupId,omitempty"`
+	// The task parameters.
 	//
 	// This parameter is required.
 	//
@@ -24,15 +32,15 @@ type SubmitMaterialTaskRequest struct {
 	//
 	// {
 	//
-	//     "brandName": "品牌名称",
+	//     "brandName": "Brand name",
 	//
 	//     "direction": "HORIZONTAL",
 	//
-	//     "userPrompt": "设计要求"
+	//     "userPrompt": "Design requirements"
 	//
 	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// This parameter is required.
 	//
@@ -50,12 +58,21 @@ func (s SubmitMaterialTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitMaterialTaskRequest) GetBizGroupId() *string {
+	return s.BizGroupId
+}
+
 func (s *SubmitMaterialTaskRequest) GetTaskParam() *string {
 	return s.TaskParam
 }
 
 func (s *SubmitMaterialTaskRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *SubmitMaterialTaskRequest) SetBizGroupId(v string) *SubmitMaterialTaskRequest {
+	s.BizGroupId = &v
+	return s
 }
 
 func (s *SubmitMaterialTaskRequest) SetTaskParam(v string) *SubmitMaterialTaskRequest {

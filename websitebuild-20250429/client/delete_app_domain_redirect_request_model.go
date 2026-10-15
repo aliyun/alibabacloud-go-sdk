@@ -11,18 +11,26 @@ type iDeleteAppDomainRedirectRequest interface {
 	GoString() string
 	SetBizId(v string) *DeleteAppDomainRedirectRequest
 	GetBizId() *string
+	SetDomainName(v string) *DeleteAppDomainRedirectRequest
+	GetDomainName() *string
 	SetRecordId(v int64) *DeleteAppDomainRedirectRequest
 	GetRecordId() *int64
 }
 
 type DeleteAppDomainRedirectRequest struct {
-	// Application instance business ID.
+	// The business ID of the application instance.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Domain name redirect record ID.
+	// aliyun.com
+	//
+	// example:
+	//
+	// www.aliyun.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the domain name redirect record.
 	//
 	// example:
 	//
@@ -42,12 +50,21 @@ func (s *DeleteAppDomainRedirectRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *DeleteAppDomainRedirectRequest) GetDomainName() *string {
+	return s.DomainName
+}
+
 func (s *DeleteAppDomainRedirectRequest) GetRecordId() *int64 {
 	return s.RecordId
 }
 
 func (s *DeleteAppDomainRedirectRequest) SetBizId(v string) *DeleteAppDomainRedirectRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *DeleteAppDomainRedirectRequest) SetDomainName(v string) *DeleteAppDomainRedirectRequest {
+	s.DomainName = &v
 	return s
 }
 

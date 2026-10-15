@@ -16,13 +16,13 @@ type iRollbackAppCodeSnapshotRequest interface {
 }
 
 type RollbackAppCodeSnapshotRequest struct {
-	// site ID
+	// The site ID.
 	//
 	// example:
 	//
 	// 1067072706415168
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Target snapshot version number
+	// The target snapshot version number.
 	//
 	// example:
 	//

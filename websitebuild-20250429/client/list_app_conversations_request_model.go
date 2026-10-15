@@ -40,7 +40,7 @@ type ListAppConversationsRequest struct {
 	//
 	// 20201212
 	EndModifyTime *string `json:"EndModifyTime,omitempty" xml:"EndModifyTime,omitempty"`
-	// The maximum number of entries to return per query.
+	// The number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//

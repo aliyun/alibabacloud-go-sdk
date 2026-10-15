@@ -34,17 +34,70 @@ type iDeleteRbacPermissionResponseBody interface {
 }
 
 type DeleteRbacPermissionResponseBody struct {
-	AccessDeniedDetail *string       `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AllowRetry         *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName            *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode        *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs          []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module             *bool         `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId          *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootErrorCode      *string       `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg       *string       `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	Synchro            *bool         `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// The details of the permission verification failure.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed.
+	//
+	// example:
+	//
+	// False
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// dewuApp
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// ERROR-oo1
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
+	//
+	// example:
+	//
+	// SYSTEM_ERROR
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The response data.
+	//
+	// example:
+	//
+	// true
+	Module *bool `json:"Module,omitempty" xml:"Module,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6C6B99AC-39EC-5350-874C-204128C905E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// SYSTEM.ERROR
+	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The exception message.
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// True
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s DeleteRbacPermissionResponseBody) String() string {

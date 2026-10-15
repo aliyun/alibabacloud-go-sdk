@@ -38,55 +38,53 @@ type iListAppPublishHistoryResponseBody interface {
 }
 
 type ListAppPublishHistoryResponseBody struct {
-	// Detailed reason for access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// is retry allowed
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// frontend application Name.
+	// The name of the frontend application.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// dynamic message, not currently used. Please ignore.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// fault parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Number of results per query.
-	//
-	// Value range: 10 to 100. Default Value: 20.
+	// The maximum number of entries to return for a single query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Data Table module.
+	// The data table module. Valid values:
 	//
-	// - ABTest: experiment Data Table
+	// - ABTest: experiment data table
 	//
 	// - ExperimentTool: experiment tool table
 	//
-	// - DataDiagnosis: Data Diagnosis
+	// - DataDiagnosis: data diagnostics
 	Module *ListAppPublishHistoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// Token for the start of the next query. It is empty if there is no next query.
+	// The token used to start the next query. This parameter is empty if no next query is available.
 	//
 	// example:
 	//
@@ -98,19 +96,19 @@ type ListAppPublishHistoryResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -253,31 +251,31 @@ func (s *ListAppPublishHistoryResponseBody) Validate() error {
 }
 
 type ListAppPublishHistoryResponseBodyModule struct {
-	// Current publish order ID
+	// The ID of the current release order.
 	//
 	// example:
 	//
 	// 123
 	CurrentPublishOrderId *int64 `json:"CurrentPublishOrderId,omitempty" xml:"CurrentPublishOrderId,omitempty"`
-	// Indicates whether to display the history of applying the alert template to application groups. Valid values:
+	// Specifies whether to display the history of applying alert templates to application groups. Valid values:
 	//
-	// - true: Display.
+	// - true: displayed.
 	//
-	// - false (default): Do not display.
+	// - false: not displayed. Default value.
 	History []*ListAppPublishHistoryResponseBodyModuleHistory `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
-	// Page number. Default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Paging size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -358,74 +356,81 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	//
 	// true
 	CanQuickRevert *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
-	CommitHash     *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
-	// Current step.
+	// The commit hash of the code.
+	CommitHash *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
+	// The current step number.
 	//
 	// example:
 	//
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
-	// Deployment channel.
+	// The code of the current release step.
+	CurrentStepCode *string `json:"CurrentStepCode,omitempty" xml:"CurrentStepCode,omitempty"`
+	// The deployment channel.
 	//
 	// example:
 	//
 	// PC
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
-	// Application description.
+	// The application description.
 	//
 	// example:
 	//
 	// PSKB
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Publishing procedure.
+	// The release process.
 	//
 	// example:
 	//
 	// error
 	ErrorStep *string `json:"ErrorStep,omitempty" xml:"ErrorStep,omitempty"`
-	// Indicates whether the process is complete.
+	// The code of the release step where the error occurred.
+	ErrorStepCode *string `json:"ErrorStepCode,omitempty" xml:"ErrorStepCode,omitempty"`
+	// Indicates whether the operation is completed.
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
-	// Indicates whether resource allocation to the cost center succeeded.
+	// Indicates whether the resource allocation for the financial unit is successful. Valid values:
 	//
-	// - true indicates success.
+	// - true: successful
 	//
-	// - false indicates failure.
+	// - false: failed
 	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Sorting type: ASC or DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Transcoding progress.
+	// The code of the release order type.
+	OrderTypeCode *string `json:"OrderTypeCode,omitempty" xml:"OrderTypeCode,omitempty"`
+	// The transcoding progress.
 	//
 	// example:
 	//
 	// true
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// Publish number.
+	// The release number.
 	//
 	// example:
 	//
 	// 123
 	PublishNumber *string `json:"PublishNumber,omitempty" xml:"PublishNumber,omitempty"`
-	// Publish order ID.
+	// The release order ID.
 	//
 	// example:
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
-	// Published At.
+	// The release time, in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -433,9 +438,12 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	//
 	// 2026
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// Specific widget configuration.
-	Steps      []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
-	Subchannel *string   `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
+	// The list of release step codes.
+	StepCodes []*string `json:"StepCodes,omitempty" xml:"StepCodes,omitempty" type:"Repeated"`
+	// The specific configurations of the component.
+	Steps []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	// The release subchannel.
+	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 }
 
 func (s ListAppPublishHistoryResponseBodyModuleHistory) String() string {
@@ -458,6 +466,10 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCurrentStep() *strin
 	return s.CurrentStep
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCurrentStepCode() *string {
+	return s.CurrentStepCode
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetDeployChannel() *string {
 	return s.DeployChannel
 }
@@ -468,6 +480,10 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetDescription() *strin
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetErrorStep() *string {
 	return s.ErrorStep
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetErrorStepCode() *string {
+	return s.ErrorStepCode
 }
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetIsFinish() *bool {
@@ -486,6 +502,10 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetOrderType() *string 
 	return s.OrderType
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetOrderTypeCode() *string {
+	return s.OrderTypeCode
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPercent() *int32 {
 	return s.Percent
 }
@@ -500,6 +520,10 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPublishOrderId() *in
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPublishTime() *string {
 	return s.PublishTime
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetStepCodes() []*string {
+	return s.StepCodes
 }
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetSteps() []*string {
@@ -525,6 +549,11 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetCurrentStep(v string
 	return s
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetCurrentStepCode(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.CurrentStepCode = &v
+	return s
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetDeployChannel(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.DeployChannel = &v
 	return s
@@ -537,6 +566,11 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetDescription(v string
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetErrorStep(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.ErrorStep = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetErrorStepCode(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.ErrorStepCode = &v
 	return s
 }
 
@@ -560,6 +594,11 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetOrderType(v string) 
 	return s
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetOrderTypeCode(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.OrderTypeCode = &v
+	return s
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPercent(v int32) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.Percent = &v
 	return s
@@ -577,6 +616,11 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPublishOrderId(v int
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPublishTime(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.PublishTime = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetStepCodes(v []*string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.StepCodes = v
 	return s
 }
 

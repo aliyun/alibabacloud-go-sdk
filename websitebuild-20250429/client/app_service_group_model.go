@@ -20,11 +20,22 @@ type iAppServiceGroup interface {
 }
 
 type AppServiceGroup struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The QR code.
 	QrCode *string `json:"QrCode,omitempty" xml:"QrCode,omitempty"`
-	// 例如：dingtalk、wx 等
+	// The group type, such as dingtalk and wx.
+	//
+	// example:
+	//
+	// dingtalk
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The URL.
+	//
+	// example:
+	//
+	// https://example.com/example.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s AppServiceGroup) String() string {

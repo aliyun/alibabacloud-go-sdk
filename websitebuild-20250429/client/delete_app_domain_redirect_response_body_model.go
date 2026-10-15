@@ -34,7 +34,7 @@ type iDeleteAppDomainRedirectResponseBody interface {
 }
 
 type DeleteAppDomainRedirectResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -46,23 +46,23 @@ type DeleteAppDomainRedirectResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The application name used for the query.
 	//
 	// example:
 	//
 	// watermark
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message.
+	// The dynamic message.
 	//
 	// example:
 	//
-	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/gl3d6l3817id8p1/gl3d6l3817id8p1.diff.zip?Expires=1750392068&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=Bcj3eohy8nmlSQ7AAGdq7JZoLjM%3D
+	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
@@ -84,9 +84,9 @@ type DeleteAppDomainRedirectResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the request was processed synchronously.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ func (s *DeleteAppDomainRedirectResponseBody) Validate() error {
 }
 
 type DeleteAppDomainRedirectResponseBodyModule struct {
-	// Indicates whether the operation is successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

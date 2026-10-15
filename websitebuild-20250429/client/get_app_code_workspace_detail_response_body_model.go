@@ -34,13 +34,13 @@ type iGetAppCodeWorkspaceDetailResponseBody interface {
 }
 
 type GetAppCodeWorkspaceDetailResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Specifies whether retry is allowed. Valid values:
 	//
 	// - false: Retry is not allowed.
 	//
@@ -50,29 +50,29 @@ type GetAppCodeWorkspaceDetailResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message. This value is used to replace the `%s` placeholder in the error message returned in the **ErrMessage*	- parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Faulty parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Application module
+	// The application module.
 	Module *GetAppCodeWorkspaceDetailResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -80,19 +80,19 @@ type GetAppCodeWorkspaceDetailResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -222,8 +222,9 @@ type GetAppCodeWorkspaceDetailResponseBodyModule struct {
 	// example:
 	//
 	// 111
-	ActiveLogicalNumber *int32  `json:"ActiveLogicalNumber,omitempty" xml:"ActiveLogicalNumber,omitempty"`
-	CommitHash          *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
+	ActiveLogicalNumber *int32 `json:"ActiveLogicalNumber,omitempty" xml:"ActiveLogicalNumber,omitempty"`
+	// The code commit hash value.
+	CommitHash *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
 	// true
 	//
 	// example:
@@ -236,13 +237,13 @@ type GetAppCodeWorkspaceDetailResponseBodyModule struct {
 	//
 	// 111
 	MaxLogicalNumber *int32 `json:"MaxLogicalNumber,omitempty" xml:"MaxLogicalNumber,omitempty"`
-	// Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	// The site ID. You can call [ListSites](~~ListSites~~) to retrieve the site ID.
 	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// API Guide information.
+	// The operation description information.
 	Snapshots []*GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 }
 
@@ -322,13 +323,13 @@ func (s *GetAppCodeWorkspaceDetailResponseBodyModule) Validate() error {
 }
 
 type GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots struct {
-	// SDK change log
+	// The SDK change log.
 	//
 	// example:
 	//
 	// - Add Params.
 	ChangeLog *string `json:"ChangeLog,omitempty" xml:"ChangeLog,omitempty"`
-	// Creation UTC time in ISO8601 format.
+	// The creation time in UTC. The time follows the ISO 8601 standard.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -336,7 +337,7 @@ type GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots struct {
 	//
 	// 2025-06-10T09:40:36.562Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Logical value
+	// The logical value.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetAppCodeWorkspaceDetailRequest interface {
 }
 
 type GetAppCodeWorkspaceDetailRequest struct {
-	// Site ID
+	// The site ID.
 	//
 	// example:
 	//

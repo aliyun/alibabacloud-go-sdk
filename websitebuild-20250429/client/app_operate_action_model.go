@@ -20,13 +20,17 @@ type iAppOperateAction interface {
 }
 
 type AppOperateAction struct {
-	// 用于唯一标识一个操作行为
+	// The key used to uniquely identify an action.
+	//
+	// example:
+	//
+	// BeginDialogue
 	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
-	// 用于在界面中展示操作名称
+	// The text used to display the action name in the user interface.
 	ActionText *string `json:"ActionText,omitempty" xml:"ActionText,omitempty"`
-	// 标识该操作是否可用
+	// Indicates whether the action is available.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// 点击操作时跳转的URL地址
+	// The URL to navigate to when the action is clicked.
 	Href *string `json:"Href,omitempty" xml:"Href,omitempty"`
 }
 

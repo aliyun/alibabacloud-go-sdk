@@ -44,7 +44,8 @@ type OperateSupabaseForAdminRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The environment identifier.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The SQL statement.
 	//
 	// example:
@@ -63,13 +64,13 @@ type OperateSupabaseForAdminRequest struct {
 	//
 	// null
 	OrderByClause *string `json:"OrderByClause,omitempty" xml:"OrderByClause,omitempty"`
-	// The field by which to sort the results.
+	// The column used for sorting.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//

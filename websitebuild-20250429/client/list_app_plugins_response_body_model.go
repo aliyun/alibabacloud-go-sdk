@@ -38,19 +38,19 @@ type iListAppPluginsResponseBody interface {
 }
 
 type ListAppPluginsResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name to query.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -62,19 +62,17 @@ type ListAppPluginsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the DtsJobId request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the value of the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error arguments.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -82,7 +80,7 @@ type ListAppPluginsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response object.
 	Module []*ListAppPluginsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	// The token for the next query. This parameter is empty if no more results are available.
+	// The token used to start the next query. If there is no next query, this value is empty.
 	//
 	// example:
 	//
@@ -104,7 +102,7 @@ type ListAppPluginsResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -253,7 +251,7 @@ func (s *ListAppPluginsResponseBody) Validate() error {
 }
 
 type ListAppPluginsResponseBodyModule struct {
-	// The plug-in code.
+	// The code of the plugin.
 	//
 	// example:
 	//
@@ -265,13 +263,13 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// ***
 	ConfigItems *string `json:"ConfigItems,omitempty" xml:"ConfigItems,omitempty"`
-	// The plug-in description.
+	// The description of the plugin.
 	//
 	// example:
 	//
 	// fail to decode json
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The image display mode. Valid values:
+	// The image display setting. Valid values:
 	//
 	// - **0*	- (None): Not displayed.
 	//
@@ -281,9 +279,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// always
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
-	// Specifies whether scheduled delivery of resource snapshots is enabled.
-	//
-	// Valid values:
+	// Specifies whether to enable scheduled delivery of resource snapshots. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -299,7 +295,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// pre
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in seconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -307,7 +303,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The modification time. The value is in the ISO 8601 format and the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -321,7 +317,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// []
 	Hooks *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	// The plug-in description.
+	// The description of the plugin.
 	//
 	// example:
 	//
@@ -333,17 +329,21 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the entry is deleted. Valid values: 0 (no) and 1 (yes).
+	// Indicates whether the plugin is deleted. Valid values:
+	//
+	// - 0: No.
+	//
+	// - 1: Yes.
 	//
 	// example:
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The plug-in name.
+	// The name of the plugin.
 	//
 	// example:
 	//
-	// 文件名
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The skill header information for model selection.
 	//
@@ -351,7 +351,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// header
 	SkillHeader *string `json:"SkillHeader,omitempty" xml:"SkillHeader,omitempty"`
-	// The category labels.
+	// The category tags.
 	//
 	// example:
 	//

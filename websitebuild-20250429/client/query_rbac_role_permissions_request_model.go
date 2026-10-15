@@ -24,12 +24,50 @@ type iQueryRbacRolePermissionsRequest interface {
 }
 
 type QueryRbacRolePermissionsRequest struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business ID.
+	//
+	// example:
+	//
+	// WS20250731233102000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The field by which to sort the results.
+	//
+	// example:
+	//
+	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	OrderType   *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The sort order. Valid values: ASC and DESC.
+	//
+	// example:
+	//
+	// BUY
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The organization role ID, including predefined roles and custom roles:
+	//
+	// - Organization administrator (predefined role): 111111111
+	//
+	// - Permission management administrator (predefined role): 111111112
+	//
+	// - Regular user (predefined role): 111111113
+	//
+	// - Custom role: the role ID of the custom role
+	//
+	// example:
+	//
+	// 75b2f16f-35a5-4e90-949f-295ea14a4dc8
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s QueryRbacRolePermissionsRequest) String() string {

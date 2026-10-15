@@ -34,17 +34,17 @@ type iGetOssUploadPolicyResponseBody interface {
 }
 
 type GetOssUploadPolicyResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed. Valid values:
+	// Indicates whether retry is allowed. Valid values:
 	//
-	// - false: No retry is allowed.
+	// - false: Retry is not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Retry is allowed.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type GetOssUploadPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is synchronously processed.
 	//
@@ -233,7 +233,7 @@ type GetOssUploadPolicyResponseBodyModule struct {
 	//
 	// Accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The Security Token Service (STS) token. This parameter is null in non-STS scenarios.
+	// The Security Token Service (STS) token. This value is null in non-STS scenarios.
 	//
 	// example:
 	//

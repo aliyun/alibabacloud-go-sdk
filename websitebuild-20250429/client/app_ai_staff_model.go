@@ -20,10 +20,21 @@ type iAppAiStaff interface {
 }
 
 type AppAiStaff struct {
-	StaffId   *string `json:"StaffId,omitempty" xml:"StaffId,omitempty"`
+	// The employee ID.
+	//
+	// example:
+	//
+	// 370196
+	StaffId *string `json:"StaffId,omitempty" xml:"StaffId,omitempty"`
+	// The employee name.
 	StaffName *string `json:"StaffName,omitempty" xml:"StaffName,omitempty"`
+	// The employee type.
 	StaffType *string `json:"StaffType,omitempty" xml:"StaffType,omitempty"`
-	// 可能的值：unknown, init, testing, online
+	// Valid values: unknown, init, testing, and online.
+	//
+	// example:
+	//
+	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

@@ -125,7 +125,7 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// WD20250711094503000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Specifies whether the instance is logically deleted.
+	// Indicates whether the instance is logically deleted.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// alliveout.xntv.tv
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end time of the event, in UNIX timestamp format.
+	// The end time of the event. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// 2025-01-01 00:00:00
 	GmtDelete *string `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
-	// The timestamp when the vulnerability was published, in milliseconds.
+	// The timestamp when the vulnerability was published. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -165,13 +165,13 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// example:
 	//
-	// AI建站
+	// AI Website Builder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The website configuration information.
 	//
 	// example:
 	//
-	// 网站配置信息
+	// Website configuration information
 	Profile *SyncAppInstanceForPartnerRequestAppInstanceProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 	// siteId
 	//
@@ -185,7 +185,7 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// 31104757
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The start time of the query. If you do not specify the start time or end time, all historical deployment records of the instance are queried.
+	// The start time of the query. If you do not specify the start time or end time, all historical deployment records of the instance are queried. Specify the time in the ISO 8601 standard in the UTC (Z) time zone.
 	//
 	// example:
 	//
@@ -193,21 +193,21 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The running status of the instance. Valid values:
 	//
-	// - NotRun: not running.
+	// - NotRun: Not running.
 	//
-	// - Running: running.
+	// - Running: Running.
 	//
-	// - WaitTime: waiting for TriggerTime.
+	// - WaitTime: Waiting for the trigger time.
 	//
-	// - CheckingCondition: checking branch conditions.
+	// - CheckingCondition: Checking branch conditions.
 	//
-	// - WaitResource: waiting for resources.
+	// - WaitResource: Waiting for resources.
 	//
-	// - Failure: execution failed.
+	// - Failure: Execution failed.
 	//
-	// - Success: execution succeeded.
+	// - Success: Execution succeeded.
 	//
-	// - Checking: submitted for data quality check.
+	// - Checking: Submitted for data quality check.
 	//
 	// example:
 	//
@@ -395,7 +395,7 @@ type SyncAppInstanceForPartnerRequestAppInstanceProfile struct {
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
-	// The LingXiao instance ID.
+	// The Lingxiao instance ID.
 	//
 	// example:
 	//

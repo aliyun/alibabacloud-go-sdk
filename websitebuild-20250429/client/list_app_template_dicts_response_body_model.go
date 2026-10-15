@@ -38,51 +38,51 @@ type iListAppTemplateDictsResponseBody interface {
 }
 
 type ListAppTemplateDictsResponseBody struct {
-	// Detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// application name; queries the application with this name
+	// The application name to query.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- return parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// faulty parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Number of results per query.
+	// The number of entries per query.
 	//
-	// Value range: 10–100. Default Value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// response Data
+	// The response data.
 	Module []*ListAppTemplateDictsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	// Token for the start of the next query. It is empty when there is no next query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type ListAppTemplateDictsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception.
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// is processing synchronous
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -253,39 +253,39 @@ func (s *ListAppTemplateDictsResponseBody) Validate() error {
 }
 
 type ListAppTemplateDictsResponseBodyModule struct {
-	// Dictionary Code
+	// The dictionary code.
 	//
 	// example:
 	//
 	// abc
 	DictCode *string `json:"DictCode,omitempty" xml:"DictCode,omitempty"`
-	// Dictionary label
+	// The dictionary label.
 	//
 	// example:
 	//
 	// label
 	DictLabel *string `json:"DictLabel,omitempty" xml:"DictLabel,omitempty"`
-	// Enumeration of template dictionary types
+	// The template dictionary type enumeration.
 	//
 	// example:
 	//
 	// product_version
 	DictType *string `json:"DictType,omitempty" xml:"DictType,omitempty"`
-	// Dictionary value
+	// The dictionary value.
 	//
 	// example:
 	//
 	// abc
 	DictValue *string `json:"DictValue,omitempty" xml:"DictValue,omitempty"`
-	// Indicates whether a template exists.
+	// Indicates whether templates exist.
 	HasTemplates *bool `json:"HasTemplates,omitempty" xml:"HasTemplates,omitempty"`
-	// Sorting order. The default is descending.
+	// The sort order. Default value: DESC.
 	//
-	// Enumeration values:
+	// Valid values:
 	//
-	// ASC: ascending.
+	// - ASC: Ascending order.
 	//
-	// DESC: descending.
+	// - DESC: Descending order.
 	//
 	// example:
 	//

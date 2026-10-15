@@ -62,9 +62,9 @@ type ListRbacOrgTreeResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- return parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ListRbacOrgTreeResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// A reserved parameter.
 	//
@@ -255,7 +255,7 @@ type ListRbacOrgTreeResponseBodyModule struct {
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request results.
+	// The query results.
 	Data []*ListRbacOrgTreeResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The next feature ID.
 	Next *ListRbacOrgTreeResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
@@ -277,7 +277,7 @@ type ListRbacOrgTreeResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Indicates whether the server processes a maximum of 1,000 most recent records beyond the pagination limit. If the results exceed 1,000 entries, **ResultLimit*	- is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -405,7 +405,7 @@ func (s *ListRbacOrgTreeResponseBodyModule) Validate() error {
 }
 
 type ListRbacOrgTreeResponseBodyModuleData struct {
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format in the UTC (Z) time zone.
 	//
 	// example:
 	//
@@ -427,7 +427,7 @@ type ListRbacOrgTreeResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// 文件名
+	// FileName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The script path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -491,7 +491,7 @@ func (s *ListRbacOrgTreeResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacOrgTreeResponseBodyModuleNext struct {
-	// The creation date.
+	// The creation date. The time is in ISO 8601 format in the UTC (Z) time zone.
 	//
 	// example:
 	//

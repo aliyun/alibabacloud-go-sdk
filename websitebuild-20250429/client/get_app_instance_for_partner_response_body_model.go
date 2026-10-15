@@ -34,13 +34,13 @@ type iGetAppInstanceForPartnerResponseBody interface {
 }
 
 type GetAppInstanceForPartnerResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type GetAppInstanceForPartnerResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- response parameter.
+	// The dynamic error message used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetAppInstanceForPartnerResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -213,11 +213,11 @@ func (s *GetAppInstanceForPartnerResponseBody) Validate() error {
 }
 
 type GetAppInstanceForPartnerResponseBodyModule struct {
-	// The list of AI staff members associated with the application.
+	// The list of AI staff associated with the application.
 	AiStaffList []*GetAppInstanceForPartnerResponseBodyModuleAiStaffList `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
-	// The design specification associated with the application.
+	// The design order associated with the application.
 	AppDesignSpec *GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec `json:"AppDesignSpec,omitempty" xml:"AppDesignSpec,omitempty" type:"Struct"`
-	// The application operation address.
+	// The application operation URL.
 	AppOperationAddress *GetAppInstanceForPartnerResponseBodyModuleAppOperationAddress `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty" type:"Struct"`
 	// The list of service instances associated with the application.
 	AppServiceList []*GetAppInstanceForPartnerResponseBodyModuleAppServiceList `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
@@ -245,7 +245,7 @@ type GetAppInstanceForPartnerResponseBodyModule struct {
 	//
 	// placeHolder
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	// Indicates whether the instance is deleted.
+	// Indicates whether the item is deleted.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type GetAppInstanceForPartnerResponseBodyModule struct {
 	//
 	// placeHolder
 	DesignSpecBizId *string `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
-	// The ID of the design specification.
+	// The design specification ID.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ type GetAppInstanceForPartnerResponseBodyModule struct {
 	//
 	// stxycw.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end time.
+	// The end time. The value is in ISO 8601 format and uses the UTC (Z) time zone.
 	//
 	// example:
 	//
@@ -317,17 +317,17 @@ type GetAppInstanceForPartnerResponseBodyModule struct {
 	//
 	// placeHolder
 	GmtPublish *string `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
-	// The application icon URL.
+	// The application icon.
 	//
 	// example:
 	//
-	// https://yzm.zshud.com:34901/cloud-phone/养生_1763631730804.png
+	// https://yzm.zshud.com:34901/cloud-phone/Wellness_1763631730804.png
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
 	// The application name.
 	//
 	// example:
 	//
-	// 文件名
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The order ID.
 	//
@@ -335,7 +335,7 @@ type GetAppInstanceForPartnerResponseBodyModule struct {
 	//
 	// 250822465990301
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The partner details.
+	// The details.
 	PartnerDetail *GetAppInstanceForPartnerResponseBodyModulePartnerDetail `json:"PartnerDetail,omitempty" xml:"PartnerDetail,omitempty" type:"Struct"`
 	// The instance configuration.
 	Profile *GetAppInstanceForPartnerResponseBodyModuleProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
@@ -353,13 +353,13 @@ type GetAppInstanceForPartnerResponseBodyModule struct {
 	//
 	// placeHolder
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The source. Example: MARKET_CLOUD_DREAM.
+	// The source type. Valid values: MARKET_CLOUD_DREAM.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time.
+	// The start time in ISO 8601 format in the UTC time zone.
 	//
 	// example:
 	//
@@ -377,7 +377,7 @@ type GetAppInstanceForPartnerResponseBodyModule struct {
 	//
 	// FILE_DOWNLOAD_FAILED
 	StatusText *string `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
-	// The application thumbnail URL.
+	// The application thumbnail.
 	//
 	// example:
 	//
@@ -879,7 +879,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec struct {
 	//
 	// style
 	ColorStyle *string `json:"ColorStyle,omitempty" xml:"ColorStyle,omitempty"`
-	// The company name.
+	// The enterprise name.
 	//
 	// example:
 	//
@@ -959,9 +959,9 @@ type GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec struct {
 	SiteTitle *string `json:"SiteTitle,omitempty" xml:"SiteTitle,omitempty"`
 	// The application type. Valid values:
 	//
-	// - web: Web & H5.
+	// - web: Web and H5.
 	//
-	// - miniapp: mini program.
+	// - miniapp: Mini program.
 	//
 	// - ios: iOS.
 	//
@@ -1163,29 +1163,29 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec) Validate() err
 }
 
 type GetAppInstanceForPartnerResponseBodyModuleAppOperationAddress struct {
-	// The list of console action buttons.
+	// The list of console operation buttons.
 	Actions []*GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The URL for customer service design.
+	// The customer service design URL.
 	//
 	// example:
 	//
 	// placeHolder
 	AiCustomerConfigUrl *string `json:"AiCustomerConfigUrl,omitempty" xml:"AiCustomerConfigUrl,omitempty"`
-	// The URL for AI design.
+	// The AI design URL.
 	//
 	// example:
 	//
 	// placeHolder
 	AiDesignUrl *string `json:"AiDesignUrl,omitempty" xml:"AiDesignUrl,omitempty"`
-	// The URL for application publishing.
+	// The application publishing URL.
 	//
 	// example:
 	//
 	// placeHolder
 	AppPublishUrl *string `json:"AppPublishUrl,omitempty" xml:"AppPublishUrl,omitempty"`
-	// The list of overview page action buttons.
+	// The list of action buttons on the overview page.
 	DashboardActions []*GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressDashboardActions `json:"DashboardActions,omitempty" xml:"DashboardActions,omitempty" type:"Repeated"`
-	// The URL for professional design.
+	// The professional design URL.
 	//
 	// example:
 	//
@@ -1197,19 +1197,19 @@ type GetAppInstanceForPartnerResponseBodyModuleAppOperationAddress struct {
 	//
 	// placeHolder
 	InstanceLoginUrl *string `json:"InstanceLoginUrl,omitempty" xml:"InstanceLoginUrl,omitempty"`
-	// The URL for renewal purchase.
+	// The renewal URL.
 	//
 	// example:
 	//
 	// placeHolder
 	RenewBuyUrl *string `json:"RenewBuyUrl,omitempty" xml:"RenewBuyUrl,omitempty"`
-	// The URL for service delivery.
+	// The service delivery URL.
 	//
 	// example:
 	//
 	// placeHolder
 	ServerDeliveryUrl *string `json:"ServerDeliveryUrl,omitempty" xml:"ServerDeliveryUrl,omitempty"`
-	// The URL for upgrade purchase.
+	// The upgrade URL.
 	//
 	// example:
 	//
@@ -1338,25 +1338,25 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppOperationAddress) Validate
 }
 
 type GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions struct {
-	// The action key that uniquely identifies an operation.
+	// The action key, which uniquely identifies an operation.
 	//
 	// example:
 	//
 	// BeginDialogue
 	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
-	// The display text of the action, which is shown as the action name in the interface.
+	// The display text for the action, which is used to show the action name in the interface.
 	//
 	// example:
 	//
 	// placeHolder
 	ActionText *string `json:"ActionText,omitempty" xml:"ActionText,omitempty"`
-	// Indicates whether the action is enabled.
+	// The enabled status, which indicates whether the action is available.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The URL to which the user is redirected when the action is clicked.
+	// The link URL to which you are redirected when you click the action.
 	//
 	// example:
 	//
@@ -1413,25 +1413,25 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions) V
 }
 
 type GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressDashboardActions struct {
-	// The action key that uniquely identifies an operation.
+	// The action key, which uniquely identifies an operation.
 	//
 	// example:
 	//
 	// CollectedNumber
 	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
-	// The display text of the action, which is shown as the action name in the interface.
+	// The display text for the action, which is used to show the action name in the interface.
 	//
 	// example:
 	//
 	// placeHolder
 	ActionText *string `json:"ActionText,omitempty" xml:"ActionText,omitempty"`
-	// Indicates whether the action is enabled.
+	// The enabled status, which indicates whether the action is available.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The URL to which the user is redirected when the action is clicked.
+	// The link URL to which you are redirected when you click the action.
 	//
 	// example:
 	//
@@ -1500,7 +1500,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceList struct {
 	//
 	// fase
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The end time.
+	// The end time. The value is in ISO 8601 format and uses the UTC (Z) time zone.
 	//
 	// example:
 	//
@@ -1524,7 +1524,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceList struct {
 	//
 	// Tue Sep 09 10:27:49 CST 2025
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The application operation address.
+	// The application operation URL.
 	Group *GetAppInstanceForPartnerResponseBodyModuleAppServiceListGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The associated business ID.
 	//
@@ -1540,7 +1540,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The delivery process.
 	NodeList []*GetAppInstanceForPartnerResponseBodyModuleAppServiceListNodeList `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
-	// The unique identifier of an operation.
+	// The unique identifier for an operation.
 	OperationAddress *GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddress `json:"OperationAddress,omitempty" xml:"OperationAddress,omitempty" type:"Struct"`
 	// The order ID.
 	//
@@ -1548,7 +1548,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceList struct {
 	//
 	// 253790948890026
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The instance service configuration.
+	// The service configuration of the instance.
 	Profile *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 	// The service type.
 	//
@@ -1568,7 +1568,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceList struct {
 	//
 	// Slug
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -1820,7 +1820,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceListGroup struct {
 	//
 	// hive
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The temporary access URL of the image.
+	// The temporary access URL for the image.
 	//
 	// example:
 	//
@@ -1886,7 +1886,7 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListGroup) Validate
 }
 
 type GetAppInstanceForPartnerResponseBodyModuleAppServiceListNodeList struct {
-	// The child folder object.
+	// The child folder objects.
 	Children []interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The sequence number of the last node.
 	//
@@ -1894,7 +1894,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceListNodeList struct {
 	//
 	// FinalStepNo
 	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
-	// The completion timestamp of the baseline instance. This value is returned when FinishStatus is FINISH (completed).
+	// The completion timestamp of the baseline instance. This parameter is returned when the FinishStatus parameter (the completion status of the baseline instance) is FINISH.
 	//
 	// example:
 	//
@@ -1914,11 +1914,11 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceListNodeList struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// <props="china">The name of the matrix.
 	//
-	// <props="intl">This parameter is not available for public use..
+	// <props="intl">This parameter is not available for public use.
 	//
 	// example:
 	//
-	// 单路输出
+	// Single-channel output
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The running status of the node. Valid values:
 	//
@@ -2053,29 +2053,29 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListNodeList) Valid
 }
 
 type GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddress struct {
-	// The list of console action buttons.
+	// The list of console operation buttons.
 	Actions []*GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddressActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The URL for customer service design.
+	// The customer service design URL.
 	//
 	// example:
 	//
 	// AiCustomerConfigUrl
 	AiCustomerConfigUrl *string `json:"AiCustomerConfigUrl,omitempty" xml:"AiCustomerConfigUrl,omitempty"`
-	// The URL for AI design.
+	// The AI design URL.
 	//
 	// example:
 	//
 	// AiDesignUrl
 	AiDesignUrl *string `json:"AiDesignUrl,omitempty" xml:"AiDesignUrl,omitempty"`
-	// The URL for application publishing.
+	// The application publishing URL.
 	//
 	// example:
 	//
 	// AppPublishUrl
 	AppPublishUrl *string `json:"AppPublishUrl,omitempty" xml:"AppPublishUrl,omitempty"`
-	// The list of overview page action buttons.
+	// The list of action buttons on the overview page.
 	DashboardActions []*GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddressDashboardActions `json:"DashboardActions,omitempty" xml:"DashboardActions,omitempty" type:"Repeated"`
-	// The URL for professional design.
+	// The professional design URL.
 	//
 	// example:
 	//
@@ -2087,19 +2087,19 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddress st
 	//
 	// InstanceLoginUrl
 	InstanceLoginUrl *string `json:"InstanceLoginUrl,omitempty" xml:"InstanceLoginUrl,omitempty"`
-	// The URL for renewal purchase.
+	// The renewal URL.
 	//
 	// example:
 	//
 	// renewBuyUrl
 	RenewBuyUrl *string `json:"RenewBuyUrl,omitempty" xml:"RenewBuyUrl,omitempty"`
-	// The URL for service delivery.
+	// The service delivery URL.
 	//
 	// example:
 	//
 	// ServerDeliveryUrl
 	ServerDeliveryUrl *string `json:"ServerDeliveryUrl,omitempty" xml:"ServerDeliveryUrl,omitempty"`
-	// The URL for upgrade purchase.
+	// The upgrade URL.
 	//
 	// example:
 	//
@@ -2228,25 +2228,25 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddres
 }
 
 type GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddressActions struct {
-	// The action key that uniquely identifies an operation.
+	// The action key, which uniquely identifies an operation.
 	//
 	// example:
 	//
 	// CollectedNumber
 	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
-	// The display text of the action, which is shown as the action name in the interface.
+	// The display text for the action, which is used to show the action name in the interface.
 	//
 	// example:
 	//
 	// ActionText
 	ActionText *string `json:"ActionText,omitempty" xml:"ActionText,omitempty"`
-	// Indicates whether the action is enabled.
+	// The enabled status, which indicates whether the action is available.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The URL to which the user is redirected when the action is clicked.
+	// The link URL to which you are redirected when you click the action.
 	//
 	// example:
 	//
@@ -2303,25 +2303,25 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddres
 }
 
 type GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddressDashboardActions struct {
-	// The action key that uniquely identifies an operation.
+	// The action key, which uniquely identifies an operation.
 	//
 	// example:
 	//
 	// AbortDialogue
 	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
-	// The display text of the action, which is shown as the action name in the interface.
+	// The display text for the action, which is used to show the action name in the interface.
 	//
 	// example:
 	//
 	// ActionText
 	ActionText *string `json:"ActionText,omitempty" xml:"ActionText,omitempty"`
-	// Indicates whether the action is enabled.
+	// The enabled status, which indicates whether the action is available.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The URL to which the user is redirected when the action is clicked.
+	// The link URL to which you are redirected when you click the action.
 	//
 	// example:
 	//
@@ -2438,7 +2438,8 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile struct {
 	//
 	// ServiceSpecText
 	ServiceSpecText *string `json:"ServiceSpecText,omitempty" xml:"ServiceSpecText,omitempty"`
-	UpgradeStatus   *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
+	// The upgrade status.
+	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 }
 
 func (s GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) String() string {
@@ -2555,13 +2556,13 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) Valida
 type GetAppInstanceForPartnerResponseBodyModulePartnerDetail struct {
 	// data
 	BindData *GetAppInstanceForPartnerResponseBodyModulePartnerDetailBindData `json:"BindData,omitempty" xml:"BindData,omitempty" type:"Struct"`
-	// The ID of the partner. This is an extended parameter.
+	// The partner ID, which is an extended parameter.
 	//
 	// example:
 	//
 	// 10001
 	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	// Valid values: unknown, init, testing, online.
+	// Valid values: unknown, init, testing, and online.
 	//
 	// example:
 	//
@@ -2620,7 +2621,7 @@ type GetAppInstanceForPartnerResponseBodyModulePartnerDetailBindData struct {
 	//
 	// ***
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	// The external business ID.
+	// The external bizId.
 	//
 	// example:
 	//
@@ -2638,13 +2639,13 @@ type GetAppInstanceForPartnerResponseBodyModulePartnerDetailBindData struct {
 	//
 	// Wed Nov 26 10:15:28 CST 2025
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The user to whom the ICP filing service code belongs.
+	// The owner of the ICP filing service code.
 	//
 	// example:
 	//
 	// grantAliyunPk
 	GrantAliyunPk *string `json:"GrantAliyunPk,omitempty" xml:"GrantAliyunPk,omitempty"`
-	// The mobile phone number.
+	// The phone number.
 	//
 	// example:
 	//
@@ -2656,7 +2657,7 @@ type GetAppInstanceForPartnerResponseBodyModulePartnerDetailBindData struct {
 	//
 	// 1123213
 	ParentPk *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
-	// The external association partner ID.
+	// The external associated partnerId.
 	//
 	// example:
 	//
@@ -2848,17 +2849,17 @@ type GetAppInstanceForPartnerResponseBodyModuleProfile struct {
 	//
 	// {\\"Image\\": []}
 	ImageList *string `json:"ImageList,omitempty" xml:"ImageList,omitempty"`
-	// The Lingxiao instance ID.
+	// The Lx instance ID.
 	//
 	// example:
 	//
 	// placeHolder
 	LxInstanceId *string `json:"LxInstanceId,omitempty" xml:"LxInstanceId,omitempty"`
-	// The order placement time.
+	// The order time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
-	// placeHolder
+	// 2026-09-17 10:30:00
 	OrdTime *string `json:"OrdTime,omitempty" xml:"OrdTime,omitempty"`
 	// The order ID.
 	//
@@ -2866,23 +2867,23 @@ type GetAppInstanceForPartnerResponseBodyModuleProfile struct {
 	//
 	// 256146659280026
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The number of orders.
+	// The order quantity.
 	//
 	// example:
 	//
 	// 1
 	OrderNum *int32 `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	// The channel partner business ID.
+	// The partner business ID.
 	//
 	// example:
 	//
 	// 100086
 	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	// The payment time.
+	// The payment time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
-	// placeHolder
+	// 2026-09-17 10:35:00
 	PayTime *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
 	// The preview URL.
 	//
@@ -2920,7 +2921,7 @@ type GetAppInstanceForPartnerResponseBodyModuleProfile struct {
 	//
 	// edasmsc
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The template ETag identifier.
+	// The template ETag.
 	//
 	// example:
 	//
@@ -2943,7 +2944,8 @@ type GetAppInstanceForPartnerResponseBodyModuleProfile struct {
 	// example:
 	//
 	// https://aloss-recruit-aiinterview.oss-cn-beijing.aliyuncs.com/thumbnail-1753495551714-10000.png
-	Thumbnail     *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// The upgrade status.
 	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 }
 
@@ -3263,7 +3265,7 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList struct {
 	//
 	// placeHolder
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	// Indicates whether the instance is deleted.
+	// Indicates whether the item is deleted.
 	//
 	// example:
 	//
@@ -3281,7 +3283,7 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList struct {
 	//
 	// placeHolder
 	DesignSpecBizId *string `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
-	// The ID of the design specification.
+	// The design specification ID.
 	//
 	// example:
 	//
@@ -3293,7 +3295,7 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList struct {
 	//
 	// shikuntech.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end time.
+	// The end time. The value is in ISO 8601 format and uses the UTC (Z) time zone.
 	//
 	// example:
 	//
@@ -3335,7 +3337,7 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList struct {
 	//
 	// placeHolder
 	GmtPublish *string `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
-	// The application icon URL.
+	// The application icon.
 	//
 	// example:
 	//
@@ -3367,13 +3369,13 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList struct {
 	//
 	// placeHolder
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The source. Example: MARKET_CLOUD_DREAM.
+	// The source type. Valid values: MARKET_CLOUD_DREAM.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time.
+	// The start time in ISO 8601 format in the UTC time zone.
 	//
 	// example:
 	//
@@ -3391,7 +3393,7 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList struct {
 	//
 	// SUCCESS
 	StatusText *string `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
-	// The application thumbnail URL.
+	// The application thumbnail.
 	//
 	// example:
 	//
@@ -3774,17 +3776,17 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile struct
 	//
 	// {\\"Image\\": []}
 	ImageList *string `json:"ImageList,omitempty" xml:"ImageList,omitempty"`
-	// The Lingxiao instance ID.
+	// The Lx instance ID.
 	//
 	// example:
 	//
 	// placeHolder
 	LxInstanceId *string `json:"LxInstanceId,omitempty" xml:"LxInstanceId,omitempty"`
-	// The order placement time.
+	// The order time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
-	// placeHolder
+	// 2026-09-17 10:30:00
 	OrdTime *string `json:"OrdTime,omitempty" xml:"OrdTime,omitempty"`
 	// The order ID.
 	//
@@ -3792,23 +3794,23 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile struct
 	//
 	// 248808934190692
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The number of orders.
+	// The order quantity.
 	//
 	// example:
 	//
 	// 1
 	OrderNum *int32 `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	// The channel partner business ID.
+	// The partner business ID.
 	//
 	// example:
 	//
 	// 100086
 	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	// The payment time.
+	// The payment time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
-	// placeHolder
+	// 2026-09-17 10:35:00
 	PayTime *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
 	// The preview URL.
 	//
@@ -3846,7 +3848,7 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile struct
 	//
 	// 10.71.130.205
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The template ETag identifier.
+	// The template ETag.
 	//
 	// example:
 	//
@@ -3869,7 +3871,8 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile struct
 	// example:
 	//
 	// https://aloss-recruit-aiinterview.oss-cn-beijing.aliyuncs.com/thumbnail-1766456326256-0.png
-	Thumbnail     *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// The upgrade status.
 	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 }
 

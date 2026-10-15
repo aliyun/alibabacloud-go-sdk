@@ -16,7 +16,17 @@ type iCreateRbacPermissionRequest interface {
 }
 
 type CreateRbacPermissionRequest struct {
-	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business ID.
+	//
+	// example:
+	//
+	// WD20250821161210000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The permission parameter.
+	//
+	// example:
+	//
+	// {"resource":"post","action":"read","description":"read post"}
 	PermissionData *string `json:"PermissionData,omitempty" xml:"PermissionData,omitempty"`
 }
 

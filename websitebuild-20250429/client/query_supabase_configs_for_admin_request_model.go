@@ -34,7 +34,8 @@ type QuerySupabaseConfigsForAdminRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The environment identifier.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The field used for sorting.
 	//
 	// example:

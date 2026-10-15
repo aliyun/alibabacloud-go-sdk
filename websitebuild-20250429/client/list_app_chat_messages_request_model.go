@@ -34,15 +34,13 @@ type ListAppChatMessagesRequest struct {
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. This parameter is empty if there is no next query.
 	//
 	// example:
 	//

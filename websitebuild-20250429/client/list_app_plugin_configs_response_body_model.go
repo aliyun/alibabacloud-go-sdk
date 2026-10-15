@@ -38,51 +38,51 @@ type iListAppPluginConfigsResponseBody interface {
 }
 
 type ListAppPluginConfigsResponseBody struct {
-	// The detailed reason why access was denied.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// Application Name. Query the application with this name.
+	// The application name. The application with this name is queried.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- return parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of results returned per query.
+	// The number of entries per query.
 	//
-	// Valid range: 10 to 100. Default Value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// task object
+	// The task object.
 	Module []*ListAppPluginConfigsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	// The token to start the next query. It is empty if there is no next query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type ListAppPluginConfigsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// is synchronous processing enabled
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -253,33 +253,33 @@ func (s *ListAppPluginConfigsResponseBody) Validate() error {
 }
 
 type ListAppPluginConfigsResponseBodyModule struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Indicates whether to display.
+	// Indicates whether the item is displayed.
 	//
 	// example:
 	//
 	// always
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
-	// Indicates whether scheduled delivery of resource snapshots is enabled.
+	// Specifies whether scheduled delivery of resource snapshots is enabled.
 	//
 	// Valid values:
 	//
 	// - true: Enabled.
 	//
-	// - false: Shutdown.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// True
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Extension information
+	// The extension information.
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Creation Time
+	// The creation time. The time is in ISO 8601 format in UTC (Z).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -287,7 +287,7 @@ type ListAppPluginConfigsResponseBodyModule struct {
 	//
 	// 2025-10-11T06:25:13Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Updated At
+	// The modification time. The time is in ISO 8601 format in UTC (Z).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -295,43 +295,43 @@ type ListAppPluginConfigsResponseBodyModule struct {
 	//
 	// 2026-05-20T01:59:17.000Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// primary key
+	// The primary key.
 	//
 	// example:
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Plugin configuration
+	// The plug-in configuration.
 	//
 	// example:
 	//
 	// {}
 	PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
-	// Plugin description
+	// The plug-in description.
 	//
 	// example:
 	//
 	// a simple test plugin
 	PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
-	// Plugin ID
+	// The plug-in ID.
 	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Plugin name
+	// The plug-in name.
 	//
 	// example:
 	//
 	// tf_testaccapigatewayplugin29311
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// Site name
+	// The site name.
 	//
 	// example:
 	//
 	// wkweb.cn
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

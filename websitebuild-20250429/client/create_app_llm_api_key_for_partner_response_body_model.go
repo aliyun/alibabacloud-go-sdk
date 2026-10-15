@@ -34,39 +34,39 @@ type iCreateAppLlmApiKeyForPartnerResponseBody interface {
 }
 
 type CreateAppLlmApiKeyForPartnerResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// watermark
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// dynamic error message.
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// returned error parameters
+	// The error arguments returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// response data
+	// The response data.
 	Module *CreateAppLlmApiKeyForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -74,19 +74,19 @@ type CreateAppLlmApiKeyForPartnerResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.EROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The root error message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception.
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// is processed synchronously
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ func (s *CreateAppLlmApiKeyForPartnerResponseBody) Validate() error {
 }
 
 type CreateAppLlmApiKeyForPartnerResponseBodyModule struct {
-	// ciphertext of the API key encrypted by AES
+	// The AES-encrypted API key ciphertext.
 	//
 	// example:
 	//

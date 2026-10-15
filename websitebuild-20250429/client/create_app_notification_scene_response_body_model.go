@@ -34,7 +34,7 @@ type iCreateAppNotificationSceneResponseBody interface {
 }
 
 type CreateAppNotificationSceneResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type CreateAppNotificationSceneResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The exception message.
+	// The error message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ func (s *CreateAppNotificationSceneResponseBody) Validate() error {
 }
 
 type CreateAppNotificationSceneResponseBodyModule struct {
-	// The ID of the created scenario.
+	// The ID of the newly created scenario.
 	//
 	// example:
 	//

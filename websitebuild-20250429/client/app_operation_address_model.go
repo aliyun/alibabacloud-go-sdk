@@ -32,16 +32,26 @@ type iAppOperationAddress interface {
 }
 
 type AppOperationAddress struct {
-	Actions             []*AppOperateAction `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	AiCustomerConfigUrl *string             `json:"AiCustomerConfigUrl,omitempty" xml:"AiCustomerConfigUrl,omitempty"`
-	AiDesignUrl         *string             `json:"AiDesignUrl,omitempty" xml:"AiDesignUrl,omitempty"`
-	AppPublishUrl       *string             `json:"AppPublishUrl,omitempty" xml:"AppPublishUrl,omitempty"`
-	DashboardActions    []*AppOperateAction `json:"DashboardActions,omitempty" xml:"DashboardActions,omitempty" type:"Repeated"`
-	DesignUrl           *string             `json:"DesignUrl,omitempty" xml:"DesignUrl,omitempty"`
-	InstanceLoginUrl    *string             `json:"InstanceLoginUrl,omitempty" xml:"InstanceLoginUrl,omitempty"`
-	RenewBuyUrl         *string             `json:"RenewBuyUrl,omitempty" xml:"RenewBuyUrl,omitempty"`
-	ServerDeliveryUrl   *string             `json:"ServerDeliveryUrl,omitempty" xml:"ServerDeliveryUrl,omitempty"`
-	UpgradeBuyUrl       *string             `json:"UpgradeBuyUrl,omitempty" xml:"UpgradeBuyUrl,omitempty"`
+	// The operation button list.
+	Actions []*AppOperateAction `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The customer service design URL.
+	AiCustomerConfigUrl *string `json:"AiCustomerConfigUrl,omitempty" xml:"AiCustomerConfigUrl,omitempty"`
+	// The AI design URL.
+	AiDesignUrl *string `json:"AiDesignUrl,omitempty" xml:"AiDesignUrl,omitempty"`
+	// The application publishing URL.
+	AppPublishUrl *string `json:"AppPublishUrl,omitempty" xml:"AppPublishUrl,omitempty"`
+	// The overview page operation button list.
+	DashboardActions []*AppOperateAction `json:"DashboardActions,omitempty" xml:"DashboardActions,omitempty" type:"Repeated"`
+	// The professional design URL.
+	DesignUrl *string `json:"DesignUrl,omitempty" xml:"DesignUrl,omitempty"`
+	// The application instance logon URL.
+	InstanceLoginUrl *string `json:"InstanceLoginUrl,omitempty" xml:"InstanceLoginUrl,omitempty"`
+	// The renewal purchase URL.
+	RenewBuyUrl *string `json:"RenewBuyUrl,omitempty" xml:"RenewBuyUrl,omitempty"`
+	// The service delivery URL.
+	ServerDeliveryUrl *string `json:"ServerDeliveryUrl,omitempty" xml:"ServerDeliveryUrl,omitempty"`
+	// The upgrade purchase URL.
+	UpgradeBuyUrl *string `json:"UpgradeBuyUrl,omitempty" xml:"UpgradeBuyUrl,omitempty"`
 }
 
 func (s AppOperationAddress) String() string {

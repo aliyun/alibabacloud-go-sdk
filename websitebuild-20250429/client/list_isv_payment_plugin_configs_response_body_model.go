@@ -38,51 +38,51 @@ type iListIsvPaymentPluginConfigsResponseBody interface {
 }
 
 type ListIsvPaymentPluginConfigsResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reasons why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The app name.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic code; currently unused. Ignore this field.
+	// The dynamic code. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Number of results per query.
+	// The maximum number of results to return per query.
 	//
-	// Value range: 10–100. Default Value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Response data
+	// The response data.
 	Module []*ListIsvPaymentPluginConfigsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	// Token for starting the next query. It is empty if there is no next query.
+	// The token that is used to start the next query. If no more results are available, this value is empty.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type ListIsvPaymentPluginConfigsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -253,15 +253,15 @@ func (s *ListIsvPaymentPluginConfigsResponseBody) Validate() error {
 }
 
 type ListIsvPaymentPluginConfigsResponseBodyModule struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20250915163734000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Extension information
+	// The extended information.
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Creation Time
+	// The creation time. The value is a UNIX timestamp in seconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -269,7 +269,7 @@ type ListIsvPaymentPluginConfigsResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Updated At
+	// The update time. The value is in the ISO 8601 format and the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -277,43 +277,43 @@ type ListIsvPaymentPluginConfigsResponseBodyModule struct {
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Primary key
+	// The primary key.
 	//
 	// example:
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Plugin configuration
+	// The plugin configuration.
 	//
 	// example:
 	//
 	// {}
 	PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
-	// Plugin description
+	// The plugin description.
 	//
 	// example:
 	//
 	// a simple test plugin
 	PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
-	// Plugin ID
+	// The plugin ID.
 	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Plugin name
+	// The plugin name.
 	//
 	// example:
 	//
 	// tf_testaccapigatewayplugin29311
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// Site name
+	// The site name.
 	//
 	// example:
 	//
 	// jugaocai.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

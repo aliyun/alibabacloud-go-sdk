@@ -24,13 +24,13 @@ type iBatchCheckResourceMeasureRequest interface {
 }
 
 type BatchCheckResourceMeasureRequest struct {
-	// The owner ID, which can be a website ID or an Alibaba Cloud account ID.
+	// The ownership ID, which can be a website ID or an Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
-	// The type of the owner ID. Valid values: siteId and uid.
+	// The type of the ownership ID, such as siteId or uid.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type BatchCheckResourceMeasureRequest struct {
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The order module information. If this parameter is left empty, the information is automatically completed.
+	// The order module information. This parameter is automatically populated when it is empty.
 	//
 	// example:
 	//

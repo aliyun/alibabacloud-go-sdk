@@ -14,7 +14,7 @@ type iGetAppSupabaseInstanceRequest interface {
 }
 
 type GetAppSupabaseInstanceRequest struct {
-	// business ID
+	// The business ID.
 	//
 	// example:
 	//

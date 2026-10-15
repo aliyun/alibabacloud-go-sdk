@@ -24,12 +24,42 @@ type iQueryRbacUserRolesRequest interface {
 }
 
 type QueryRbacUserRolesRequest struct {
+	// The site end-user ID.
+	//
+	// example:
+	//
+	// 11
 	ApplicationUserId *string `json:"ApplicationUserId,omitempty" xml:"ApplicationUserId,omitempty"`
-	BizId             *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	OrderColumn       *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PageNum           *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The business instance ID.
+	//
+	// example:
+	//
+	// WD20250703155602000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The field used for sorting.
+	//
+	// example:
+	//
+	// gmtCreated
+	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// The sort type. Valid values: ASC and DESC.
+	//
+	// example:
+	//
+	// BUY
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryRbacUserRolesRequest) String() string {

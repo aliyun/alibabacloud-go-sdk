@@ -34,17 +34,68 @@ type iCreateRbacPermissionResponseBody interface {
 }
 
 type CreateRbacPermissionResponseBody struct {
-	AccessDeniedDetail *string       `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AllowRetry         *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName            *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode        *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs          []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module             *string       `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId          *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootErrorCode      *string       `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg       *string       `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	Synchro            *bool         `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// The detailed reason why access is denied.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed.
+	//
+	// example:
+	//
+	// False
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// spring-cloud-b
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// ERROR-oo1
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message.
+	//
+	// example:
+	//
+	// SYSTEM_ERROR
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The response data.
+	//
+	// example:
+	//
+	// true
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6C6B99AC-39EC-5350-874C-204128C905E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// SYSTEM.ERROR
+	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// True
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s CreateRbacPermissionResponseBody) String() string {

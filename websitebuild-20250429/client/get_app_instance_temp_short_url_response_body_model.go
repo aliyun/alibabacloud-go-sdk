@@ -34,13 +34,13 @@ type iGetAppInstanceTempShortUrlResponseBody interface {
 }
 
 type GetAppInstanceTempShortUrlResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetAppInstanceTempShortUrlResponseBody struct {
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GetAppInstanceTempShortUrlResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *GetAppInstanceTempShortUrlResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -80,11 +80,11 @@ type GetAppInstanceTempShortUrlResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -211,7 +211,7 @@ func (s *GetAppInstanceTempShortUrlResponseBody) Validate() error {
 }
 
 type GetAppInstanceTempShortUrlResponseBodyModule struct {
-	// The expiration time.
+	// The expiration time in UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -219,7 +219,7 @@ type GetAppInstanceTempShortUrlResponseBodyModule struct {
 	//
 	// 123456
 	ExpireAtTime *string `json:"ExpireAtTime,omitempty" xml:"ExpireAtTime,omitempty"`
-	// The temporary short URL.
+	// The temporary short link.
 	//
 	// example:
 	//

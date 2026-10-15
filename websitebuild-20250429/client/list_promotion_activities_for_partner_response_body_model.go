@@ -102,9 +102,9 @@ type ListPromotionActivitiesForPartnerResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// example:
 	//
-	// IP网段过滤统计
+	// IP segment filtering statistics
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
 	// The activity type.
 	//
@@ -321,7 +321,7 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// 100
 	ConsumedQuota *int64 `json:"ConsumedQuota,omitempty" xml:"ConsumedQuota,omitempty"`
-	// The creation time.
+	// The creation time. The value is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -339,7 +339,7 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// {}
 	EligibilityConfig *string `json:"EligibilityConfig,omitempty" xml:"EligibilityConfig,omitempty"`
-	// The end date.
+	// The end date. The value is in the YYYY-MM-DD HH:mm:ss Z format, where Z is the time zone offset.
 	//
 	// example:
 	//
@@ -363,7 +363,7 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// 10
 	RemainingQuota *int64 `json:"RemainingQuota,omitempty" xml:"RemainingQuota,omitempty"`
-	// The start date.
+	// The start date. The value is in the ISO 8601 format with the time zone set to UTC (Z).
 	//
 	// example:
 	//
@@ -387,7 +387,7 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// {}
 	TouchpointConfig *string `json:"TouchpointConfig,omitempty" xml:"TouchpointConfig,omitempty"`
-	// The update time.
+	// The update time. The value is in the ISO 8601 format with a time zone offset.
 	//
 	// example:
 	//

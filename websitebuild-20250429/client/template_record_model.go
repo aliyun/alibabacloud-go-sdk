@@ -26,15 +26,44 @@ type iTemplateRecord interface {
 }
 
 type TemplateRecord struct {
-	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business ID of the application instance.
+	//
+	// example:
+	//
+	// WS20250915163734000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The replication status.
 	CopyStatus *string `json:"CopyStatus,omitempty" xml:"CopyStatus,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2022-12-21T08:27:03Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The record ID.
+	//
+	// example:
+	//
+	// 9953352
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The template ID.
+	//
+	// example:
+	//
+	// de10bf7d782392a70f293a3b1f7bb8fc
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The user ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s TemplateRecord) String() string {

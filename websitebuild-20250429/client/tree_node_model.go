@@ -32,16 +32,50 @@ type iTreeNode interface {
 }
 
 type TreeNode struct {
-	Children        []*TreeNode `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	FinalStepNo     *int32      `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
-	FinishTime      *int64      `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	IsContainerNode *bool       `json:"IsContainerNode,omitempty" xml:"IsContainerNode,omitempty"`
-	NodeId          *string     `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName        *string     `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeStatus      *string     `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	OperatorRole    *string     `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
-	ParentNodeId    *string     `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
-	StepNo          *int32      `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	// The list of child nodes.
+	Children []*TreeNode `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// The final step number.
+	//
+	// example:
+	//
+	// 1
+	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
+	// The completion time.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Specifies whether the node is a container node.
+	IsContainerNode *bool `json:"IsContainerNode,omitempty" xml:"IsContainerNode,omitempty"`
+	// The node ID.
+	//
+	// example:
+	//
+	// 2927b500-c4e2-4241-bacf-0a2991c4be12
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node name.
+	//
+	// example:
+	//
+	// Single-channel output
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The node status.
+	//
+	// example:
+	//
+	// UP
+	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The operator role.
+	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
+	// The parent node ID.
+	//
+	// example:
+	//
+	// dpYLaezmVNRMGX56Cg4gLjrrVrMqPxX6
+	ParentNodeId *string `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
+	// The step number.
+	//
+	// example:
+	//
+	// 1
+	StepNo *int32 `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
 }
 
 func (s TreeNode) String() string {

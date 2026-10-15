@@ -24,6 +24,7 @@ type iGrantPromotionOfferForPartnerRequest interface {
 }
 
 type GrantPromotionOfferForPartnerRequest struct {
+	// The activity code.
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
 	// The activity ID.
 	//
@@ -49,7 +50,7 @@ type GrantPromotionOfferForPartnerRequest struct {
 	//
 	// WB02409424
 	EmployeeCode *string `json:"EmployeeCode,omitempty" xml:"EmployeeCode,omitempty"`
-	// The operation remarks (audit information).
+	// The operation remark (audit information).
 	//
 	// example:
 	//

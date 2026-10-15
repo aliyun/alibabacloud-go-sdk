@@ -34,17 +34,64 @@ type iQueryRbacUserRolesResponseBody interface {
 }
 
 type QueryRbacUserRolesResponseBody struct {
-	AccessDeniedDetail *string                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AllowRetry         *bool                                 `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName            *string                               `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode        *string                               `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs          []interface{}                         `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module             *QueryRbacUserRolesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId          *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootErrorCode      *string                               `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg       *string                               `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	Synchro            *bool                                 `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// The details of the permission verification failure.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed.
+	//
+	// example:
+	//
+	// False
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// spring-cloud-b
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// ERROR-oo1
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	//
+	// example:
+	//
+	// SYSTEM_ERROR
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The response data.
+	Module *QueryRbacUserRolesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6C6B99AC-39EC-5350-874C-204128C905E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// SYSTEM.ERROR
+	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// System exception
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// True
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s QueryRbacUserRolesResponseBody) String() string {
@@ -164,15 +211,52 @@ func (s *QueryRbacUserRolesResponseBody) Validate() error {
 }
 
 type QueryRbacUserRolesResponseBodyModule struct {
-	CurrentPageNum *int32                                      `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*QueryRbacUserRolesResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *QueryRbacUserRolesResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	NextPage       *bool                                       `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                                       `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	ResultLimit    *bool                                       `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	TotalItemNum   *int32                                      `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                      `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// The request result.
+	Data []*QueryRbacUserRolesResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The next feature ID.
+	Next *QueryRbacUserRolesResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
+	// example:
+	//
+	// False
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The page size.
+	//
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
+	// example:
+	//
+	// False
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Apart from the pagination limit, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	//
+	// example:
+	//
+	// False
+	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryRbacUserRolesResponseBodyModule) String() string {
@@ -283,11 +367,44 @@ func (s *QueryRbacUserRolesResponseBodyModule) Validate() error {
 }
 
 type QueryRbacUserRolesResponseBodyModuleData struct {
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2020-11-27 16:02:28
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	RoleId    *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The primary key.
+	//
+	// example:
+	//
+	// 9953352
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The enterprise identifier, also known as the enterprise ID, in string format. You can obtain it from the Yunxiao access URL, such as https://devops.aliyun.com/organization/【OrgId】.
+	//
+	// example:
+	//
+	// 5ffd468b1e45db3c1cc26ad6
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The preset workspace role ID. Existing roles are overwritten. Valid values:
+	//
+	// - 25: workspace administrator
+	//
+	// - 26: workspace developer
+	//
+	// - 27: workspace analyst
+	//
+	// - 30: workspace viewer
+	//
+	// example:
+	//
+	// 111111112
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The site end-user ID.
+	//
+	// example:
+	//
+	// 123
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryRbacUserRolesResponseBodyModuleData) String() string {
@@ -348,11 +465,36 @@ func (s *QueryRbacUserRolesResponseBodyModuleData) Validate() error {
 }
 
 type QueryRbacUserRolesResponseBodyModuleNext struct {
+	// The creation time. The time is in the ISO 8601 format in UTC (Z).
+	//
+	// example:
+	//
+	// 2025-09-05T02:10:20Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	RoleId    *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The primary key.
+	//
+	// example:
+	//
+	// 1000039405002
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The enterprise organization ID.
+	//
+	// example:
+	//
+	// org_f93535f3d7a94e6093276bcfb35d4801
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The role ID. This is a unique identifier automatically generated by the system.
+	//
+	// example:
+	//
+	// 2113b424-8164-482f-a7a6-ccd0a2ffcb38
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The site end-user ID.
+	//
+	// example:
+	//
+	// 123
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryRbacUserRolesResponseBodyModuleNext) String() string {

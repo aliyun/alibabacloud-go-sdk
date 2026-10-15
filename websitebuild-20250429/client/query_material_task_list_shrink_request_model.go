@@ -9,6 +9,8 @@ type iQueryMaterialTaskListShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizGroupId(v string) *QueryMaterialTaskListShrinkRequest
+	GetBizGroupId() *string
 	SetMaxResults(v int32) *QueryMaterialTaskListShrinkRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *QueryMaterialTaskListShrinkRequest
@@ -28,6 +30,12 @@ type iQueryMaterialTaskListShrinkRequest interface {
 }
 
 type QueryMaterialTaskListShrinkRequest struct {
+	// The ID of the business group.
+	//
+	// example:
+	//
+	// xx
+	BizGroupId *string `json:"BizGroupId,omitempty" xml:"BizGroupId,omitempty"`
 	// The number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
@@ -42,33 +50,33 @@ type QueryMaterialTaskListShrinkRequest struct {
 	//
 	// FFh3Xqm+JgZ/U9Jyb7wdVr9LWk80Tghn5UZjbcWEVEderBcbVF+Y6PS0i8PpCL4PQZ3e0C9oEH0Asd4tJEuGtkl2WuKdiWZpEwadNydQdJPFM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Sort field
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Sort type ASC|DESC
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number. Default value: 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size. Default value: 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Task status list
+	// The list of task statuses.
 	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	// Task type list
+	// The list of task types.
 	TaskTypeListShrink *string `json:"TaskTypeList,omitempty" xml:"TaskTypeList,omitempty"`
 }
 
@@ -78,6 +86,10 @@ func (s QueryMaterialTaskListShrinkRequest) String() string {
 
 func (s QueryMaterialTaskListShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryMaterialTaskListShrinkRequest) GetBizGroupId() *string {
+	return s.BizGroupId
 }
 
 func (s *QueryMaterialTaskListShrinkRequest) GetMaxResults() *int32 {
@@ -110,6 +122,11 @@ func (s *QueryMaterialTaskListShrinkRequest) GetStatusListShrink() *string {
 
 func (s *QueryMaterialTaskListShrinkRequest) GetTaskTypeListShrink() *string {
 	return s.TaskTypeListShrink
+}
+
+func (s *QueryMaterialTaskListShrinkRequest) SetBizGroupId(v string) *QueryMaterialTaskListShrinkRequest {
+	s.BizGroupId = &v
+	return s
 }
 
 func (s *QueryMaterialTaskListShrinkRequest) SetMaxResults(v int32) *QueryMaterialTaskListShrinkRequest {

@@ -26,8 +26,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"public":         dara.String("websitebuild.aliyuncs.com"),
 		"cn-zhangjiakou": dara.String("websitebuild.aliyuncs.com"),
+		"ap-southeast-1": dara.String("websitebuild-intl.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -156,7 +156,11 @@ func (client *Client) AllocateSupabaseForAdmin(request *AllocateSupabaseForAdmin
 
 // Summary:
 //
-// 授予用户角色
+// Grants a role to a user.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - AssignRbacUserRoleRequest
 //
@@ -204,7 +208,11 @@ func (client *Client) AssignRbacUserRoleWithOptions(request *AssignRbacUserRoleR
 
 // Summary:
 //
-// 授予用户角色
+// Grants a role to a user.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - AssignRbacUserRoleRequest
 //
@@ -288,7 +296,7 @@ func (client *Client) AuthorizeAppProxyOps(request *AuthorizeAppProxyOpsRequest)
 //
 // Description:
 //
-// The Supabase instance information corresponding to the operated resources.
+// Manages the Supabase instance information associated with the resources.
 //
 // @param request - BatchCheckResourceMeasureRequest
 //
@@ -356,7 +364,7 @@ func (client *Client) BatchCheckResourceMeasureWithOptions(request *BatchCheckRe
 //
 // Description:
 //
-// The Supabase instance information corresponding to the operated resources.
+// Manages the Supabase instance information associated with the resources.
 //
 // @param request - BatchCheckResourceMeasureRequest
 //
@@ -393,8 +401,16 @@ func (client *Client) BindAppDomainWithOptions(request *BindAppDomainRequest, ru
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.DeployType) {
+		query["DeployType"] = request.DeployType
+	}
+
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.DomainType) {
+		query["DomainType"] = request.DomainType
 	}
 
 	if !dara.IsNil(request.Extend) {
@@ -559,6 +575,10 @@ func (client *Client) CheckResourceMeasureWithOptions(request *CheckResourceMeas
 
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.DesiredTotal) {
+		query["DesiredTotal"] = request.DesiredTotal
 	}
 
 	if !dara.IsNil(request.EspBizId) {
@@ -1221,7 +1241,7 @@ func (client *Client) CreateAppAssistantAgentSsoLogin(request *CreateAppAssistan
 
 // Summary:
 //
-// # Wan Xiaozhi initiates an AI conversation
+// Initiates an AI conversation with WanXiaoZhi.
 //
 // @param request - CreateAppChatRequest
 //
@@ -1236,7 +1256,7 @@ func (client *Client) CreateAppChatWithSSE(request *CreateAppChatRequest, runtim
 
 // Summary:
 //
-// # Wan Xiaozhi initiates an AI conversation
+// Initiates an AI conversation with WanXiaoZhi.
 //
 // @param request - CreateAppChatRequest
 //
@@ -1296,7 +1316,7 @@ func (client *Client) CreateAppChatWithOptions(request *CreateAppChatRequest, ru
 
 // Summary:
 //
-// # Wan Xiaozhi initiates an AI conversation
+// Initiates an AI conversation with WanXiaoZhi.
 //
 // @param request - CreateAppChatRequest
 //
@@ -1514,11 +1534,11 @@ func (client *Client) CreateAppInstanceTicket(request *CreateAppInstanceTicketRe
 
 // Summary:
 //
-// # Create an LLM gateway API key for an application instance
+// Creates an LLM gateway API key for an application instance.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the code generation plugin configuration information.
 //
 // @param request - CreateAppLlmApiKeyForPartnerRequest
 //
@@ -1574,11 +1594,11 @@ func (client *Client) CreateAppLlmApiKeyForPartnerWithOptions(request *CreateApp
 
 // Summary:
 //
-// # Create an LLM gateway API key for an application instance
+// Creates an LLM gateway API key for an application instance.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the code generation plugin configuration information.
 //
 // @param request - CreateAppLlmApiKeyForPartnerRequest
 //
@@ -1617,6 +1637,14 @@ func (client *Client) CreateAppNotificationSceneWithOptions(request *CreateAppNo
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ButlerChannelTypesJson) {
+		query["ButlerChannelTypesJson"] = request.ButlerChannelTypesJson
+	}
+
+	if !dara.IsNil(request.ButlerFieldsJson) {
+		query["ButlerFieldsJson"] = request.ButlerFieldsJson
 	}
 
 	if !dara.IsNil(request.ChannelsJson) {
@@ -1710,6 +1738,116 @@ func (client *Client) CreateAppNotificationScene(request *CreateAppNotificationS
 
 // Summary:
 //
+// Creates an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - CreateAppPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppPluginResponse
+func (client *Client) CreateAppPluginWithOptions(request *CreateAppPluginRequest, runtime *dara.RuntimeOptions) (_result *CreateAppPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DownloadUrl) {
+		query["DownloadUrl"] = request.DownloadUrl
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.Icon) {
+		query["Icon"] = request.Icon
+	}
+
+	if !dara.IsNil(request.OssKey) {
+		query["OssKey"] = request.OssKey
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.PluginName) {
+		query["PluginName"] = request.PluginName
+	}
+
+	if !dara.IsNil(request.PluginVersion) {
+		query["PluginVersion"] = request.PluginVersion
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		query["Visibility"] = request.Visibility
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppPlugin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - CreateAppPluginRequest
+//
+// @return CreateAppPluginResponse
+func (client *Client) CreateAppPlugin(request *CreateAppPluginRequest) (_result *CreateAppPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAppPluginResponse{}
+	_body, _err := client.CreateAppPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Activates the Wanxiaozhi inspiration value service.
 //
 // Description:
@@ -1771,6 +1909,86 @@ func (client *Client) CreateAppTokenService(request *CreateAppTokenServiceReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAppTokenServiceResponse{}
 	_body, _err := client.CreateAppTokenServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Distributes and generates channel drafts.
+//
+// Description:
+//
+// Distributes and generates channel drafts.
+//
+// @param tmpReq - CreateDistributionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDistributionResponse
+func (client *Client) CreateDistributionWithOptions(tmpReq *CreateDistributionRequest, runtime *dara.RuntimeOptions) (_result *CreateDistributionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDistributionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Channels) {
+		request.ChannelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Channels, dara.String("Channels"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArticleId) {
+		query["ArticleId"] = request.ArticleId
+	}
+
+	if !dara.IsNil(request.ChannelsShrink) {
+		query["Channels"] = request.ChannelsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDistribution"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDistributionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Distributes and generates channel drafts.
+//
+// Description:
+//
+// Distributes and generates channel drafts.
+//
+// @param request - CreateDistributionRequest
+//
+// @return CreateDistributionResponse
+func (client *Client) CreateDistribution(request *CreateDistributionRequest) (_result *CreateDistributionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDistributionResponse{}
+	_body, _err := client.CreateDistributionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2010,7 +2228,11 @@ func (client *Client) CreateMaterialDirectory(request *CreateMaterialDirectoryRe
 
 // Summary:
 //
-// 创建组织单元
+// Creates an organizational unit.
+//
+// Description:
+//
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateRbacOrgUnitRequest
 //
@@ -2058,7 +2280,11 @@ func (client *Client) CreateRbacOrgUnitWithOptions(request *CreateRbacOrgUnitReq
 
 // Summary:
 //
-// 创建组织单元
+// Creates an organizational unit.
+//
+// Description:
+//
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateRbacOrgUnitRequest
 //
@@ -2076,7 +2302,11 @@ func (client *Client) CreateRbacOrgUnit(request *CreateRbacOrgUnitRequest) (_res
 
 // Summary:
 //
-// 创建RBAC权限
+// Creates an RBAC permission.
+//
+// Description:
+//
+// Creates an AI conversation session through Wanxiaozhi 2.0.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -2124,7 +2354,11 @@ func (client *Client) CreateRbacPermissionWithOptions(request *CreateRbacPermiss
 
 // Summary:
 //
-// 创建RBAC权限
+// Creates an RBAC permission.
+//
+// Description:
+//
+// Creates an AI conversation session through Wanxiaozhi 2.0.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -2282,7 +2516,7 @@ func (client *Client) DeleteAppDomainCertificate(request *DeleteAppDomainCertifi
 
 // Summary:
 //
-// Deletes 301 redirect records bound to a website.
+// Deletes an HTTP 301 status code redirect record bound to a website.
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -2299,6 +2533,10 @@ func (client *Client) DeleteAppDomainRedirectWithOptions(request *DeleteAppDomai
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
 	}
 
 	if !dara.IsNil(request.RecordId) {
@@ -2330,7 +2568,7 @@ func (client *Client) DeleteAppDomainRedirectWithOptions(request *DeleteAppDomai
 
 // Summary:
 //
-// Deletes 301 redirect records bound to a website.
+// Deletes an HTTP 301 status code redirect record bound to a website.
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -2496,11 +2734,11 @@ func (client *Client) DeleteAppInstanceFile(request *DeleteAppInstanceFileReques
 
 // Summary:
 //
-// 删除消息通知场景
+// Deletes a message notification scenario.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - DeleteAppNotificationSceneRequest
 //
@@ -2548,11 +2786,11 @@ func (client *Client) DeleteAppNotificationSceneWithOptions(request *DeleteAppNo
 
 // Summary:
 //
-// 删除消息通知场景
+// Deletes a message notification scenario.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - DeleteAppNotificationSceneRequest
 //
@@ -2561,6 +2799,146 @@ func (client *Client) DeleteAppNotificationScene(request *DeleteAppNotificationS
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAppNotificationSceneResponse{}
 	_body, _err := client.DeleteAppNotificationSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an application plug-in.
+//
+// @param request - DeleteAppPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppPluginResponse
+func (client *Client) DeleteAppPluginWithOptions(request *DeleteAppPluginRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppPlugin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an application plug-in.
+//
+// @param request - DeleteAppPluginRequest
+//
+// @return DeleteAppPluginResponse
+func (client *Client) DeleteAppPlugin(request *DeleteAppPluginRequest) (_result *DeleteAppPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAppPluginResponse{}
+	_body, _err := client.DeleteAppPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a scenario recipient.
+//
+// Description:
+//
+// Queries application instance information.
+//
+// @param request - DeleteAppSceneRecipientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppSceneRecipientResponse
+func (client *Client) DeleteAppSceneRecipientWithOptions(request *DeleteAppSceneRecipientRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppSceneRecipientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.RecipientId) {
+		query["RecipientId"] = request.RecipientId
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppSceneRecipient"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppSceneRecipientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a scenario recipient.
+//
+// Description:
+//
+// Queries application instance information.
+//
+// @param request - DeleteAppSceneRecipientRequest
+//
+// @return DeleteAppSceneRecipientResponse
+func (client *Client) DeleteAppSceneRecipient(request *DeleteAppSceneRecipientRequest) (_result *DeleteAppSceneRecipientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAppSceneRecipientResponse{}
+	_body, _err := client.DeleteAppSceneRecipientWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2778,7 +3156,11 @@ func (client *Client) DeleteMaterialTask(request *DeleteMaterialTaskRequest) (_r
 
 // Summary:
 //
-// 删除组织单元
+// Deletes an organizational unit.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - DeleteRbacOrgUnitRequest
 //
@@ -2826,7 +3208,11 @@ func (client *Client) DeleteRbacOrgUnitWithOptions(request *DeleteRbacOrgUnitReq
 
 // Summary:
 //
-// 删除组织单元
+// Deletes an organizational unit.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - DeleteRbacOrgUnitRequest
 //
@@ -2844,7 +3230,11 @@ func (client *Client) DeleteRbacOrgUnit(request *DeleteRbacOrgUnitRequest) (_res
 
 // Summary:
 //
-// 删除RBAC权限
+// Deletes an RBAC permission.
+//
+// Description:
+//
+// Creates an AI conversation session for WanXiaoZhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -2892,7 +3282,11 @@ func (client *Client) DeleteRbacPermissionWithOptions(request *DeleteRbacPermiss
 
 // Summary:
 //
-// 删除RBAC权限
+// Deletes an RBAC permission.
+//
+// Description:
+//
+// Creates an AI conversation session for WanXiaoZhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -3426,11 +3820,11 @@ func (client *Client) GetAIStaffPreviewUrl(request *GetAIStaffPreviewUrlRequest)
 
 // Summary:
 //
-// # Retrieve code workspace details
+// Retrieves the details of a code workspace.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the information of an application instance.
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -3474,11 +3868,11 @@ func (client *Client) GetAppCodeWorkspaceDetailWithOptions(request *GetAppCodeWo
 
 // Summary:
 //
-// # Retrieve code workspace details
+// Retrieves the details of a code workspace.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the information of an application instance.
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -3500,7 +3894,7 @@ func (client *Client) GetAppCodeWorkspaceDetail(request *GetAppCodeWorkspaceDeta
 //
 // Description:
 //
-// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
+// The API operation for creating an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationRequest
 //
@@ -3552,7 +3946,7 @@ func (client *Client) GetAppConversationWithOptions(request *GetAppConversationR
 //
 // Description:
 //
-// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
+// The API operation for creating an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationRequest
 //
@@ -3640,11 +4034,11 @@ func (client *Client) GetAppConversationLockStatus(request *GetAppConversationLo
 
 // Summary:
 //
-// 查询数据库表结构
+// Queries the table schema of a database.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - GetAppDatabaseTableSchemasRequest
 //
@@ -3692,11 +4086,11 @@ func (client *Client) GetAppDatabaseTableSchemasWithOptions(request *GetAppDatab
 
 // Summary:
 //
-// 查询数据库表结构
+// Queries the table schema of a database.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - GetAppDatabaseTableSchemasRequest
 //
@@ -3790,6 +4184,10 @@ func (client *Client) GetAppFileContent(request *GetAppFileContentRequest) (_res
 //
 // Queries the details of a website builder application instance.
 //
+// Description:
+//
+// Queries the details of a website builder application instance.
+//
 // @param request - GetAppInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3831,6 +4229,10 @@ func (client *Client) GetAppInstanceWithOptions(request *GetAppInstanceRequest, 
 }
 
 // Summary:
+//
+// Queries the details of a website builder application instance.
+//
+// Description:
 //
 // Queries the details of a website builder application instance.
 //
@@ -3994,11 +4396,11 @@ func (client *Client) GetAppInstanceForAdmin(request *GetAppInstanceForAdminRequ
 
 // Summary:
 //
-// Queries instance details.
+// Queries the details of an instance.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -4042,11 +4444,11 @@ func (client *Client) GetAppInstanceForPartnerWithOptions(request *GetAppInstanc
 
 // Summary:
 //
-// Queries instance details.
+// Queries the details of an instance.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -4064,11 +4466,11 @@ func (client *Client) GetAppInstanceForPartner(request *GetAppInstanceForPartner
 
 // Summary:
 //
-// Retrieves a temporary short URL for an application.
+// Retrieves the temporary short link for an application.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppInstanceTempShortUrlRequest
 //
@@ -4112,11 +4514,11 @@ func (client *Client) GetAppInstanceTempShortUrlWithOptions(request *GetAppInsta
 
 // Summary:
 //
-// Retrieves a temporary short URL for an application.
+// Retrieves the temporary short link for an application.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppInstanceTempShortUrlRequest
 //
@@ -4125,6 +4527,76 @@ func (client *Client) GetAppInstanceTempShortUrl(request *GetAppInstanceTempShor
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAppInstanceTempShortUrlResponse{}
 	_body, _err := client.GetAppInstanceTempShortUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - GetAppPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppPluginResponse
+func (client *Client) GetAppPluginWithOptions(request *GetAppPluginRequest, runtime *dara.RuntimeOptions) (_result *GetAppPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppPlugin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - GetAppPluginRequest
+//
+// @return GetAppPluginResponse
+func (client *Client) GetAppPlugin(request *GetAppPluginRequest) (_result *GetAppPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppPluginResponse{}
+	_body, _err := client.GetAppPluginWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4290,7 +4762,7 @@ func (client *Client) GetAppPublishStatus(request *GetAppPublishStatusRequest) (
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppRecommendedCommoditiesRequest
 //
@@ -4350,7 +4822,7 @@ func (client *Client) GetAppRecommendedCommoditiesWithOptions(request *GetAppRec
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppRecommendedCommoditiesRequest
 //
@@ -4438,11 +4910,11 @@ func (client *Client) GetAppRequirement(request *GetAppRequirementRequest) (_res
 
 // Summary:
 //
-// # Obtain sandbox preview URL
+// Retrieves the sandbox preview URL.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - Obtain site preview URL
+// Wanxiaozhi 2.0 - Retrieves the site preview URL.
 //
 // @param request - GetAppSandboxPreviewUrlRequest
 //
@@ -4490,11 +4962,11 @@ func (client *Client) GetAppSandboxPreviewUrlWithOptions(request *GetAppSandboxP
 
 // Summary:
 //
-// # Obtain sandbox preview URL
+// Retrieves the sandbox preview URL.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - Obtain site preview URL
+// Wanxiaozhi 2.0 - Retrieves the site preview URL.
 //
 // @param request - GetAppSandboxPreviewUrlRequest
 //
@@ -4820,11 +5292,11 @@ func (client *Client) GetAppSupabaseAuthConfig(request *GetAppSupabaseAuthConfig
 
 // Summary:
 //
-// # Obtain Supabase instance information
+// Retrieves information about a Supabase instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - GetAppSupabaseInstanceRequest
 //
@@ -4868,11 +5340,11 @@ func (client *Client) GetAppSupabaseInstanceWithOptions(request *GetAppSupabaseI
 
 // Summary:
 //
-// # Obtain Supabase instance information
+// Retrieves information about a Supabase instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - GetAppSupabaseInstanceRequest
 //
@@ -4964,11 +5436,11 @@ func (client *Client) GetAppSupabaseSecrets(request *GetAppSupabaseSecretsReques
 
 // Summary:
 //
-// # Query template details
+// Queries the details of a template.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of a code generation plug-in.
 //
 // @param request - GetAppTemplateRequest
 //
@@ -5012,11 +5484,11 @@ func (client *Client) GetAppTemplateWithOptions(request *GetAppTemplateRequest, 
 
 // Summary:
 //
-// # Query template details
+// Queries the details of a template.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of a code generation plug-in.
 //
 // @param request - GetAppTemplateRequest
 //
@@ -5665,7 +6137,7 @@ func (client *Client) GetMiniAppBindingForAdmin(request *GetMiniAppBindingForAdm
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -5713,7 +6185,7 @@ func (client *Client) GetOssUploadPolicyWithOptions(request *GetOssUploadPolicyR
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -5731,11 +6203,11 @@ func (client *Client) GetOssUploadPolicy(request *GetOssUploadPolicyRequest) (_r
 
 // Summary:
 //
-// 获取临时下载地址
+// Retrieves a temporary download URL.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetTempDownloadUrlRequest
 //
@@ -5779,11 +6251,11 @@ func (client *Client) GetTempDownloadUrlWithOptions(request *GetTempDownloadUrlR
 
 // Summary:
 //
-// 获取临时下载地址
+// Retrieves a temporary download URL.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetTempDownloadUrlRequest
 //
@@ -6035,6 +6507,80 @@ func (client *Client) GrantPromotionOfferForPartner(request *GrantPromotionOffer
 
 // Summary:
 //
+// Installs an application plug-in to the current user account.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - InstallAppPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallAppPluginResponse
+func (client *Client) InstallAppPluginWithOptions(request *InstallAppPluginRequest, runtime *dara.RuntimeOptions) (_result *InstallAppPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.PluginVersion) {
+		query["PluginVersion"] = request.PluginVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallAppPlugin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallAppPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs an application plug-in to the current user account.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - InstallAppPluginRequest
+//
+// @return InstallAppPluginResponse
+func (client *Client) InstallAppPlugin(request *InstallAppPluginRequest) (_result *InstallAppPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InstallAppPluginResponse{}
+	_body, _err := client.InstallAppPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Introspection analysis of免登 accessToken
 //
 // @param request - IntrospectAppInstanceTicketForPreviewRequest
@@ -6101,11 +6647,11 @@ func (client *Client) IntrospectAppInstanceTicketForPreview(request *IntrospectA
 
 // Summary:
 //
-// Retrieves incremental SSE events for an AI agent conversation.
+// Retrieves incremental Server-Sent Events (SSE) for AI agent conversations.
 //
 // Description:
 //
-// Retrieves the streaming output results of an AI conversation.
+// Wanxiaozhi 2.0 - Retrieves the streaming output results of AI conversations.
 //
 // @param request - ListAIStaffChatEventsRequest
 //
@@ -6163,11 +6709,11 @@ func (client *Client) ListAIStaffChatEventsWithOptions(request *ListAIStaffChatE
 
 // Summary:
 //
-// Retrieves incremental SSE events for an AI agent conversation.
+// Retrieves incremental Server-Sent Events (SSE) for AI agent conversations.
 //
 // Description:
 //
-// Retrieves the streaming output results of an AI conversation.
+// Wanxiaozhi 2.0 - Retrieves the streaming output results of AI conversations.
 //
 // @param request - ListAIStaffChatEventsRequest
 //
@@ -6343,11 +6889,11 @@ func (client *Client) ListAppAssistantAgents(request *ListAppAssistantAgentsRequ
 
 // Summary:
 //
-// Queries the message list of a specified chat.
+// Queries the messages in a specified chat.
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - API for querying AI conversation history.
+// Wanxiaozhi 2.0 - AI conversation history query API.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -6407,11 +6953,11 @@ func (client *Client) ListAppChatMessagesWithOptions(request *ListAppChatMessage
 
 // Summary:
 //
-// Queries the message list of a specified chat.
+// Queries the messages in a specified chat.
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - API for querying AI conversation history.
+// Wanxiaozhi 2.0 - AI conversation history query API.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -6562,11 +7108,11 @@ func (client *Client) ListAppCommoditySpecificationsV2ForPartner(request *ListAp
 
 // Summary:
 //
-// # Paged query of conversation message list
+// Queries the list of conversation messages by paging.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history information query API
+// Wanxiaozhi 2.0 - API for querying AI session history information.
 //
 // @param request - ListAppConversationMessagesRequest
 //
@@ -6630,11 +7176,11 @@ func (client *Client) ListAppConversationMessagesWithOptions(request *ListAppCon
 
 // Summary:
 //
-// # Paged query of conversation message list
+// Queries the list of conversation messages by paging.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history information query API
+// Wanxiaozhi 2.0 - API for querying AI session history information.
 //
 // @param request - ListAppConversationMessagesRequest
 //
@@ -6656,7 +7202,7 @@ func (client *Client) ListAppConversationMessages(request *ListAppConversationMe
 //
 // Description:
 //
-// Creates an AI session by using Wanxiaozhi 2.0.
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - ListAppConversationsRequest
 //
@@ -6732,7 +7278,7 @@ func (client *Client) ListAppConversationsWithOptions(request *ListAppConversati
 //
 // Description:
 //
-// Creates an AI session by using Wanxiaozhi 2.0.
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - ListAppConversationsRequest
 //
@@ -6820,7 +7366,7 @@ func (client *Client) ListAppDomainRedirectRecords(request *ListAppDomainRedirec
 
 // Summary:
 //
-// Queries the list of domain names bound to a website.
+// Queries the domain names bound to a website.
 //
 // @param request - ListAppInstanceDomainsRequest
 //
@@ -6841,6 +7387,10 @@ func (client *Client) ListAppInstanceDomainsWithOptions(request *ListAppInstance
 
 	if !dara.IsNil(request.DomainKeyword) {
 		query["DomainKeyword"] = request.DomainKeyword
+	}
+
+	if !dara.IsNil(request.DomainType) {
+		query["DomainType"] = request.DomainType
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -6865,6 +7415,10 @@ func (client *Client) ListAppInstanceDomainsWithOptions(request *ListAppInstance
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StatusQueryMode) {
+		query["StatusQueryMode"] = request.StatusQueryMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6892,7 +7446,7 @@ func (client *Client) ListAppInstanceDomainsWithOptions(request *ListAppInstance
 
 // Summary:
 //
-// Queries the list of domain names bound to a website.
+// Queries the domain names bound to a website.
 //
 // @param request - ListAppInstanceDomainsRequest
 //
@@ -6910,7 +7464,7 @@ func (client *Client) ListAppInstanceDomains(request *ListAppInstanceDomainsRequ
 
 // Summary:
 //
-// Queries the list of application instances.
+// Queries application instances.
 //
 // @param tmpReq - ListAppInstancesRequest
 //
@@ -6983,6 +7537,10 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 		query["Query"] = request.Query
 	}
 
+	if !dara.IsNil(request.QueryMode) {
+		query["QueryMode"] = request.QueryMode
+	}
+
 	if !dara.IsNil(request.StatusListShrink) {
 		query["StatusList"] = request.StatusListShrink
 	}
@@ -7012,7 +7570,7 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 
 // Summary:
 //
-// Queries the list of application instances.
+// Queries application instances.
 //
 // @param request - ListAppInstancesRequest
 //
@@ -7030,11 +7588,11 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 
 // Summary:
 //
-// # Retrieve the list of Code Farmer plugin configurations
+// Retrieves the list of code generation plug-in configurations.
 //
 // Description:
 //
-// # Retrieve the configuration information of the code generation plugin
+// Retrieves the configuration information of code generation plug-ins.
 //
 // @param request - ListAppPluginConfigsRequest
 //
@@ -7086,11 +7644,11 @@ func (client *Client) ListAppPluginConfigsWithOptions(request *ListAppPluginConf
 
 // Summary:
 //
-// # Retrieve the list of Code Farmer plugin configurations
+// Retrieves the list of code generation plug-in configurations.
 //
 // Description:
 //
-// # Retrieve the configuration information of the code generation plugin
+// Retrieves the configuration information of code generation plug-ins.
 //
 // @param request - ListAppPluginConfigsRequest
 //
@@ -7108,11 +7666,163 @@ func (client *Client) ListAppPluginConfigs(request *ListAppPluginConfigsRequest)
 
 // Summary:
 //
-// Queries the list of code generation plug-ins.
+// Queries the list of application plug-in files.
 //
 // Description:
 //
-// Retrieves the configuration information of code generation plug-ins.
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - ListAppPluginFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppPluginFilesResponse
+func (client *Client) ListAppPluginFilesWithOptions(request *ListAppPluginFilesRequest, runtime *dara.RuntimeOptions) (_result *ListAppPluginFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.PluginVersion) {
+		query["PluginVersion"] = request.PluginVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppPluginFiles"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppPluginFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of application plug-in files.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - ListAppPluginFilesRequest
+//
+// @return ListAppPluginFilesResponse
+func (client *Client) ListAppPluginFiles(request *ListAppPluginFilesRequest) (_result *ListAppPluginFilesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppPluginFilesResponse{}
+	_body, _err := client.ListAppPluginFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of application plug-in versions.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - ListAppPluginVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppPluginVersionsResponse
+func (client *Client) ListAppPluginVersionsWithOptions(request *ListAppPluginVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListAppPluginVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppPluginVersions"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppPluginVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of application plug-in versions.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - ListAppPluginVersionsRequest
+//
+// @return ListAppPluginVersionsResponse
+func (client *Client) ListAppPluginVersions(request *ListAppPluginVersionsRequest) (_result *ListAppPluginVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppPluginVersionsResponse{}
+	_body, _err := client.ListAppPluginVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists application plugins.
+//
+// Description:
+//
+// Retrieves the configuration information of code generation plugins.
 //
 // @param request - ListAppPluginsRequest
 //
@@ -7172,11 +7882,11 @@ func (client *Client) ListAppPluginsWithOptions(request *ListAppPluginsRequest, 
 
 // Summary:
 //
-// Queries the list of code generation plug-ins.
+// Lists application plugins.
 //
 // Description:
 //
-// Retrieves the configuration information of code generation plug-ins.
+// Retrieves the configuration information of code generation plugins.
 //
 // @param request - ListAppPluginsRequest
 //
@@ -7194,11 +7904,11 @@ func (client *Client) ListAppPlugins(request *ListAppPluginsRequest) (_result *L
 
 // Summary:
 //
-// # Query publish history
+// Queries the release history.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the information about application instances.
 //
 // @param request - ListAppPublishHistoryRequest
 //
@@ -7286,11 +7996,11 @@ func (client *Client) ListAppPublishHistoryWithOptions(request *ListAppPublishHi
 
 // Summary:
 //
-// # Query publish history
+// Queries the release history.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the information about application instances.
 //
 // @param request - ListAppPublishHistoryRequest
 //
@@ -7308,11 +8018,11 @@ func (client *Client) ListAppPublishHistory(request *ListAppPublishHistoryReques
 
 // Summary:
 //
-// # Query dictionary list
+// Queries a list of dictionaries.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - ListAppTemplateDictsRequest
 //
@@ -7364,11 +8074,11 @@ func (client *Client) ListAppTemplateDictsWithOptions(request *ListAppTemplateDi
 
 // Summary:
 //
-// # Query dictionary list
+// Queries a list of dictionaries.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - ListAppTemplateDictsRequest
 //
@@ -7386,11 +8096,11 @@ func (client *Client) ListAppTemplateDicts(request *ListAppTemplateDictsRequest)
 
 // Summary:
 //
-// Queries the list of website templates.
+// Queries a list of templates.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListAppTemplatesRequest
 //
@@ -7427,6 +8137,14 @@ func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesReque
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
 	}
 
 	if !dara.IsNil(request.PageNum) {
@@ -7470,11 +8188,11 @@ func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesReque
 
 // Summary:
 //
-// Queries the list of website templates.
+// Queries a list of templates.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListAppTemplatesRequest
 //
@@ -7492,11 +8210,11 @@ func (client *Client) ListAppTemplates(request *ListAppTemplatesRequest) (_resul
 
 // Summary:
 //
-// # Query Alipay ISV plugin configuration
+// Queries the Alipay ISV plugin configuration.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ListIsvPaymentPluginConfigsRequest
 //
@@ -7548,11 +8266,11 @@ func (client *Client) ListIsvPaymentPluginConfigsWithOptions(request *ListIsvPay
 
 // Summary:
 //
-// # Query Alipay ISV plugin configuration
+// Queries the Alipay ISV plugin configuration.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ListIsvPaymentPluginConfigsRequest
 //
@@ -7561,6 +8279,260 @@ func (client *Client) ListIsvPaymentPluginConfigs(request *ListIsvPaymentPluginC
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListIsvPaymentPluginConfigsResponse{}
 	_body, _err := client.ListIsvPaymentPluginConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of application plug-ins in the marketplace.
+//
+// Description:
+//
+// Retrieves the configuration information of code generation plug-ins.
+//
+// @param request - ListMarketplaceAppPluginsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMarketplaceAppPluginsResponse
+func (client *Client) ListMarketplaceAppPluginsWithOptions(request *ListMarketplaceAppPluginsRequest, runtime *dara.RuntimeOptions) (_result *ListMarketplaceAppPluginsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMarketplaceAppPlugins"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMarketplaceAppPluginsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of application plug-ins in the marketplace.
+//
+// Description:
+//
+// Retrieves the configuration information of code generation plug-ins.
+//
+// @param request - ListMarketplaceAppPluginsRequest
+//
+// @return ListMarketplaceAppPluginsResponse
+func (client *Client) ListMarketplaceAppPlugins(request *ListMarketplaceAppPluginsRequest) (_result *ListMarketplaceAppPluginsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMarketplaceAppPluginsResponse{}
+	_body, _err := client.ListMarketplaceAppPluginsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of my application plug-ins.
+//
+// Description:
+//
+// Retrieves the configuration information of code generation plug-ins.
+//
+// @param request - ListMyAppPluginsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMyAppPluginsResponse
+func (client *Client) ListMyAppPluginsWithOptions(request *ListMyAppPluginsRequest, runtime *dara.RuntimeOptions) (_result *ListMyAppPluginsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMyAppPlugins"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMyAppPluginsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of my application plug-ins.
+//
+// Description:
+//
+// Retrieves the configuration information of code generation plug-ins.
+//
+// @param request - ListMyAppPluginsRequest
+//
+// @return ListMyAppPluginsResponse
+func (client *Client) ListMyAppPlugins(request *ListMyAppPluginsRequest) (_result *ListMyAppPluginsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMyAppPluginsResponse{}
+	_body, _err := client.ListMyAppPluginsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of application plug-ins that you have installed.
+//
+// Description:
+//
+// Retrieves the configuration information of code generation plug-ins.
+//
+// @param request - ListMyInstalledAppPluginsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMyInstalledAppPluginsResponse
+func (client *Client) ListMyInstalledAppPluginsWithOptions(request *ListMyInstalledAppPluginsRequest, runtime *dara.RuntimeOptions) (_result *ListMyInstalledAppPluginsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMyInstalledAppPlugins"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMyInstalledAppPluginsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of application plug-ins that you have installed.
+//
+// Description:
+//
+// Retrieves the configuration information of code generation plug-ins.
+//
+// @param request - ListMyInstalledAppPluginsRequest
+//
+// @return ListMyInstalledAppPluginsResponse
+func (client *Client) ListMyInstalledAppPlugins(request *ListMyInstalledAppPluginsRequest) (_result *ListMyInstalledAppPluginsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMyInstalledAppPluginsResponse{}
+	_body, _err := client.ListMyInstalledAppPluginsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7656,7 +8628,7 @@ func (client *Client) ListPromotionActivitiesForPartner(request *ListPromotionAc
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListPromotionOfferRecordsForPartnerRequest
 //
@@ -7732,7 +8704,7 @@ func (client *Client) ListPromotionOfferRecordsForPartnerWithOptions(request *Li
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListPromotionOfferRecordsForPartnerRequest
 //
@@ -8128,6 +9100,10 @@ func (client *Client) ListRbacRoles(request *ListRbacRolesRequest) (_result *Lis
 //
 // Modifies the specifications of a website building application instance.
 //
+// Description:
+//
+// Modifies the specifications of a website building application instance.
+//
 // @param request - ModifyAppInstanceSpecRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8193,6 +9169,10 @@ func (client *Client) ModifyAppInstanceSpecWithOptions(request *ModifyAppInstanc
 }
 
 // Summary:
+//
+// Modifies the specifications of a website building application instance.
+//
+// Description:
 //
 // Modifies the specifications of a website building application instance.
 //
@@ -8582,7 +9562,7 @@ func (client *Client) MoveMaterialFile(request *MoveMaterialFileRequest) (_resul
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - NotifyAppNotificationForAdminRequest
 //
@@ -8642,7 +9622,7 @@ func (client *Client) NotifyAppNotificationForAdminWithOptions(request *NotifyAp
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - NotifyAppNotificationForAdminRequest
 //
@@ -9002,7 +9982,7 @@ func (client *Client) OperateAppTemplateLike(request *OperateAppTemplateLikeRequ
 //
 // Description:
 //
-// The Supabase instance information corresponding to the resource to operate on.
+// Operates on the Supabase instance information corresponding to a resource.
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -9094,7 +10074,7 @@ func (client *Client) OperateSupabaseForAdminWithOptions(request *OperateSupabas
 //
 // Description:
 //
-// The Supabase instance information corresponding to the resource to operate on.
+// Operates on the Supabase instance information corresponding to a resource.
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -9112,11 +10092,11 @@ func (client *Client) OperateSupabaseForAdmin(request *OperateSupabaseForAdminRe
 
 // Summary:
 //
-// # Publish application instance
+// Publishes an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - PublishAppInstanceRequest
 //
@@ -9180,11 +10160,11 @@ func (client *Client) PublishAppInstanceWithOptions(request *PublishAppInstanceR
 
 // Summary:
 //
-// # Publish application instance
+// Publishes an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - PublishAppInstanceRequest
 //
@@ -9304,11 +10284,11 @@ func (client *Client) PushResourceMeasure(request *PushResourceMeasureRequest) (
 
 // Summary:
 //
-// Queries the details of inspiration point acquisition (quota account list, including expiration flags).
+// Queries the acquisition details of inspiration credits (the quota account list, including expiration marks).
 //
 // Description:
 //
-// Queries the Supabase instance information associated with a resource.
+// Queries the Supabase instance information corresponding to the resource.
 //
 // @param request - QueryInspirationAccountDetailsRequest
 //
@@ -9376,11 +10356,11 @@ func (client *Client) QueryInspirationAccountDetailsWithOptions(request *QueryIn
 
 // Summary:
 //
-// Queries the details of inspiration point acquisition (quota account list, including expiration flags).
+// Queries the acquisition details of inspiration credits (the quota account list, including expiration marks).
 //
 // Description:
 //
-// Queries the Supabase instance information associated with a resource.
+// Queries the Supabase instance information corresponding to the resource.
 //
 // @param request - QueryInspirationAccountDetailsRequest
 //
@@ -9398,11 +10378,11 @@ func (client *Client) QueryInspirationAccountDetails(request *QueryInspirationAc
 
 // Summary:
 //
-// Queries the overview of inspiration point balance.
+// Queries the overview of the inspiration value balance.
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the Supabase instance information corresponding to the resource.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -9431,11 +10411,11 @@ func (client *Client) QueryInspirationBalanceWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// Queries the overview of inspiration point balance.
+// Queries the overview of the inspiration value balance.
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the Supabase instance information corresponding to the resource.
 //
 // @return QueryInspirationBalanceResponse
 func (client *Client) QueryInspirationBalance() (_result *QueryInspirationBalanceResponse, _err error) {
@@ -9451,11 +10431,77 @@ func (client *Client) QueryInspirationBalance() (_result *QueryInspirationBalanc
 
 // Summary:
 //
-// Queries the details of inspiration point consumption.
+// Queries the inspiration value for service providers.
+//
+// @param request - QueryInspirationBalanceForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInspirationBalanceForPartnerResponse
+func (client *Client) QueryInspirationBalanceForPartnerWithOptions(request *QueryInspirationBalanceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *QueryInspirationBalanceForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BelongId) {
+		query["BelongId"] = request.BelongId
+	}
+
+	if !dara.IsNil(request.BelongIdType) {
+		query["BelongIdType"] = request.BelongIdType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryInspirationBalanceForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryInspirationBalanceForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the inspiration value for service providers.
+//
+// @param request - QueryInspirationBalanceForPartnerRequest
+//
+// @return QueryInspirationBalanceForPartnerResponse
+func (client *Client) QueryInspirationBalanceForPartner(request *QueryInspirationBalanceForPartnerRequest) (_result *QueryInspirationBalanceForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryInspirationBalanceForPartnerResponse{}
+	_body, _err := client.QueryInspirationBalanceForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the consumption details of inspiration points.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - QueryInspirationConsumeRecordsRequest
 //
@@ -9523,11 +10569,11 @@ func (client *Client) QueryInspirationConsumeRecordsWithOptions(request *QueryIn
 
 // Summary:
 //
-// Queries the details of inspiration point consumption.
+// Queries the consumption details of inspiration points.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - QueryInspirationConsumeRecordsRequest
 //
@@ -9975,7 +11021,11 @@ func (client *Client) QueryMaterialTaskDetail(request *QueryMaterialTaskDetailRe
 
 // Summary:
 //
-// # Query Material Generation Task List
+// Queries the list of material generation tasks.
+//
+// Description:
+//
+// Queries the list of material generation tasks.
 //
 // @param tmpReq - QueryMaterialTaskListRequest
 //
@@ -10000,6 +11050,10 @@ func (client *Client) QueryMaterialTaskListWithOptions(tmpReq *QueryMaterialTask
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizGroupId) {
+		query["BizGroupId"] = request.BizGroupId
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -10057,7 +11111,11 @@ func (client *Client) QueryMaterialTaskListWithOptions(tmpReq *QueryMaterialTask
 
 // Summary:
 //
-// # Query Material Generation Task List
+// Queries the list of material generation tasks.
+//
+// Description:
+//
+// Queries the list of material generation tasks.
 //
 // @param request - QueryMaterialTaskListRequest
 //
@@ -10075,7 +11133,11 @@ func (client *Client) QueryMaterialTaskList(request *QueryMaterialTaskListReques
 
 // Summary:
 //
-// 查询单个RBAC角色
+// Queries a single RBAC role.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -10123,7 +11185,11 @@ func (client *Client) QueryRbacRoleWithOptions(request *QueryRbacRoleRequest, ru
 
 // Summary:
 //
-// 查询单个RBAC角色
+// Queries a single RBAC role.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -10141,7 +11207,11 @@ func (client *Client) QueryRbacRole(request *QueryRbacRoleRequest) (_result *Que
 
 // Summary:
 //
-// 查询角色权限列表
+// Queries the list of role permissions.
+//
+// Description:
+//
+// Creates an AI conversation session for Wan Xiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -10205,7 +11275,11 @@ func (client *Client) QueryRbacRolePermissionsWithOptions(request *QueryRbacRole
 
 // Summary:
 //
-// 查询角色权限列表
+// Queries the list of role permissions.
+//
+// Description:
+//
+// Creates an AI conversation session for Wan Xiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -10223,7 +11297,11 @@ func (client *Client) QueryRbacRolePermissions(request *QueryRbacRolePermissions
 
 // Summary:
 //
-// 查询用户角色绑定
+// Queries user role bindings.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - QueryRbacUserRolesRequest
 //
@@ -10287,7 +11365,11 @@ func (client *Client) QueryRbacUserRolesWithOptions(request *QueryRbacUserRolesR
 
 // Summary:
 //
-// 查询用户角色绑定
+// Queries user role bindings.
+//
+// Description:
+//
+// Queries application instance information.
 //
 // @param request - QueryRbacUserRolesRequest
 //
@@ -10403,11 +11485,11 @@ func (client *Client) QuerySupabaseAuthConfigsForAdmin(request *QuerySupabaseAut
 
 // Summary:
 //
-// Queries the Supabase instance configuration information for a specified resource.
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // Description:
 //
-// Queries the Supabase instance configuration information for a specified resource.
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // @param request - QuerySupabaseConfigsForAdminRequest
 //
@@ -10475,11 +11557,11 @@ func (client *Client) QuerySupabaseConfigsForAdminWithOptions(request *QuerySupa
 
 // Summary:
 //
-// Queries the Supabase instance configuration information for a specified resource.
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // Description:
 //
-// Queries the Supabase instance configuration information for a specified resource.
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // @param request - QuerySupabaseConfigsForAdminRequest
 //
@@ -10497,11 +11579,11 @@ func (client *Client) QuerySupabaseConfigsForAdmin(request *QuerySupabaseConfigs
 
 // Summary:
 //
-// Queries the Supabase instance information for a specified resource.
+// Queries the Supabase instance information corresponding to a resource.
 //
 // Description:
 //
-// Queries the Supabase instance information for a specified resource.
+// Queries the Supabase instance information corresponding to a resource.
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -10569,11 +11651,11 @@ func (client *Client) QuerySupabaseInstanceInfoForAdminWithOptions(request *Quer
 
 // Summary:
 //
-// Queries the Supabase instance information for a specified resource.
+// Queries the Supabase instance information corresponding to a resource.
 //
 // Description:
 //
-// Queries the Supabase instance information for a specified resource.
+// Queries the Supabase instance information corresponding to a resource.
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -10591,11 +11673,11 @@ func (client *Client) QuerySupabaseInstanceInfoForAdmin(request *QuerySupabaseIn
 
 // Summary:
 //
-// Reconnects an AI conversation.
+// Reconnects to an AI conversation.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -10610,11 +11692,11 @@ func (client *Client) ReconnectAppChatWithSSE(request *ReconnectAppChatRequest, 
 
 // Summary:
 //
-// Reconnects an AI conversation.
+// Reconnects to an AI conversation.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -10639,6 +11721,10 @@ func (client *Client) ReconnectAppChatWithOptions(request *ReconnectAppChatReque
 
 	if !dara.IsNil(request.LastEventId) {
 		body["LastEventId"] = request.LastEventId
+	}
+
+	if !dara.IsNil(request.LatestMessageCreateTime) {
+		body["LatestMessageCreateTime"] = request.LatestMessageCreateTime
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -10666,11 +11752,11 @@ func (client *Client) ReconnectAppChatWithOptions(request *ReconnectAppChatReque
 
 // Summary:
 //
-// Reconnects an AI conversation.
+// Reconnects to an AI conversation.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -11062,7 +12148,171 @@ func (client *Client) RenewAppSandbox(request *RenewAppSandboxRequest) (_result 
 
 // Summary:
 //
-// 撤销用户角色
+// Reports the publishing result.
+//
+// Description:
+//
+// Reports the publishing result.
+//
+// @param request - ReportChannelPublishResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReportChannelPublishResultResponse
+func (client *Client) ReportChannelPublishResultWithOptions(request *ReportChannelPublishResultRequest, runtime *dara.RuntimeOptions) (_result *ReportChannelPublishResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelAccountName) {
+		query["ChannelAccountName"] = request.ChannelAccountName
+	}
+
+	if !dara.IsNil(request.DraftId) {
+		query["DraftId"] = request.DraftId
+	}
+
+	if !dara.IsNil(request.ExternalId) {
+		query["ExternalId"] = request.ExternalId
+	}
+
+	if !dara.IsNil(request.ExternalUrl) {
+		query["ExternalUrl"] = request.ExternalUrl
+	}
+
+	if !dara.IsNil(request.FailReason) {
+		query["FailReason"] = request.FailReason
+	}
+
+	if !dara.IsNil(request.Success) {
+		query["Success"] = request.Success
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReportChannelPublishResult"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReportChannelPublishResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Reports the publishing result.
+//
+// Description:
+//
+// Reports the publishing result.
+//
+// @param request - ReportChannelPublishResultRequest
+//
+// @return ReportChannelPublishResultResponse
+func (client *Client) ReportChannelPublishResult(request *ReportChannelPublishResultRequest) (_result *ReportChannelPublishResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReportChannelPublishResultResponse{}
+	_body, _err := client.ReportChannelPublishResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retries a publish operation.
+//
+// Description:
+//
+// Retries a publish operation.
+//
+// @param request - RetryChannelPublishRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryChannelPublishResponse
+func (client *Client) RetryChannelPublishWithOptions(request *RetryChannelPublishRequest, runtime *dara.RuntimeOptions) (_result *RetryChannelPublishResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftId) {
+		query["DraftId"] = request.DraftId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryChannelPublish"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryChannelPublishResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retries a publish operation.
+//
+// Description:
+//
+// Retries a publish operation.
+//
+// @param request - RetryChannelPublishRequest
+//
+// @return RetryChannelPublishResponse
+func (client *Client) RetryChannelPublish(request *RetryChannelPublishRequest) (_result *RetryChannelPublishResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RetryChannelPublishResponse{}
+	_body, _err := client.RetryChannelPublishWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a user role.
+//
+// Description:
+//
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - RevokeRbacUserRoleRequest
 //
@@ -11110,7 +12360,11 @@ func (client *Client) RevokeRbacUserRoleWithOptions(request *RevokeRbacUserRoleR
 
 // Summary:
 //
-// 撤销用户角色
+// Revokes a user role.
+//
+// Description:
+//
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - RevokeRbacUserRoleRequest
 //
@@ -11128,11 +12382,85 @@ func (client *Client) RevokeRbacUserRole(request *RevokeRbacUserRoleRequest) (_r
 
 // Summary:
 //
-// # Code snapshot rollback
+// Rewrites a channel title using AI.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Rewrites a channel title.
+//
+// @param request - RewriteChannelTitleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RewriteChannelTitleResponse
+func (client *Client) RewriteChannelTitleWithOptions(request *RewriteChannelTitleRequest, runtime *dara.RuntimeOptions) (_result *RewriteChannelTitleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftId) {
+		query["DraftId"] = request.DraftId
+	}
+
+	if !dara.IsNil(request.UserRequirement) {
+		query["UserRequirement"] = request.UserRequirement
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RewriteChannelTitle"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RewriteChannelTitleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Rewrites a channel title using AI.
+//
+// Description:
+//
+// Rewrites a channel title.
+//
+// @param request - RewriteChannelTitleRequest
+//
+// @return RewriteChannelTitleResponse
+func (client *Client) RewriteChannelTitle(request *RewriteChannelTitleRequest) (_result *RewriteChannelTitleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RewriteChannelTitleResponse{}
+	_body, _err := client.RewriteChannelTitleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Rolls back a code snapshot.
+//
+// Description:
+//
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -11180,11 +12508,11 @@ func (client *Client) RollbackAppCodeSnapshotWithOptions(request *RollbackAppCod
 
 // Summary:
 //
-// # Code snapshot rollback
+// Rolls back a code snapshot.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -11275,6 +12603,80 @@ func (client *Client) RollbackAppInstancePublish(request *RollbackAppInstancePub
 	runtime := &dara.RuntimeOptions{}
 	_result = &RollbackAppInstancePublishResponse{}
 	_body, _err := client.RollbackAppInstancePublishWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Rolls back the version of an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - RollbackAppPluginVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackAppPluginVersionResponse
+func (client *Client) RollbackAppPluginVersionWithOptions(request *RollbackAppPluginVersionRequest, runtime *dara.RuntimeOptions) (_result *RollbackAppPluginVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.PluginVersion) {
+		query["PluginVersion"] = request.PluginVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackAppPluginVersion"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RollbackAppPluginVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Rolls back the version of an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - RollbackAppPluginVersionRequest
+//
+// @return RollbackAppPluginVersionResponse
+func (client *Client) RollbackAppPluginVersion(request *RollbackAppPluginVersionRequest) (_result *RollbackAppPluginVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RollbackAppPluginVersionResponse{}
+	_body, _err := client.RollbackAppPluginVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11425,6 +12827,102 @@ func (client *Client) SaveAppSupabaseSecrets(request *SaveAppSupabaseSecretsRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &SaveAppSupabaseSecretsResponse{}
 	_body, _err := client.SaveAppSupabaseSecretsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves a channel draft.
+//
+// Description:
+//
+// Saves a channel draft.
+//
+// @param tmpReq - SaveChannelDraftRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveChannelDraftResponse
+func (client *Client) SaveChannelDraftWithOptions(tmpReq *SaveChannelDraftRequest, runtime *dara.RuntimeOptions) (_result *SaveChannelDraftResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SaveChannelDraftShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CoverImages) {
+		request.CoverImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CoverImages, dara.String("CoverImages"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdaptedContent) {
+		query["AdaptedContent"] = request.AdaptedContent
+	}
+
+	if !dara.IsNil(request.AdaptedTitle) {
+		query["AdaptedTitle"] = request.AdaptedTitle
+	}
+
+	if !dara.IsNil(request.ChannelAccountName) {
+		query["ChannelAccountName"] = request.ChannelAccountName
+	}
+
+	if !dara.IsNil(request.CoverImagesShrink) {
+		query["CoverImages"] = request.CoverImagesShrink
+	}
+
+	if !dara.IsNil(request.DraftId) {
+		query["DraftId"] = request.DraftId
+	}
+
+	if !dara.IsNil(request.WebsiteNavName) {
+		query["WebsiteNavName"] = request.WebsiteNavName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveChannelDraft"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveChannelDraftResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves a channel draft.
+//
+// Description:
+//
+// Saves a channel draft.
+//
+// @param request - SaveChannelDraftRequest
+//
+// @return SaveChannelDraftResponse
+func (client *Client) SaveChannelDraft(request *SaveChannelDraftRequest) (_result *SaveChannelDraftResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SaveChannelDraftResponse{}
+	_body, _err := client.SaveChannelDraftWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11802,6 +13300,10 @@ func (client *Client) SubmitAppSeoIndex(request *SubmitAppSeoIndexRequest) (_res
 //
 // Submits a material generation task.
 //
+// Description:
+//
+// Submits a material generation task.
+//
 // @param request - SubmitMaterialTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11815,6 +13317,10 @@ func (client *Client) SubmitMaterialTaskWithOptions(request *SubmitMaterialTaskR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizGroupId) {
+		query["BizGroupId"] = request.BizGroupId
+	}
+
 	if !dara.IsNil(request.TaskParam) {
 		query["TaskParam"] = request.TaskParam
 	}
@@ -11847,6 +13353,10 @@ func (client *Client) SubmitMaterialTaskWithOptions(request *SubmitMaterialTaskR
 }
 
 // Summary:
+//
+// Submits a material generation task.
+//
+// Description:
 //
 // Submits a material generation task.
 //
@@ -12028,6 +13538,76 @@ func (client *Client) SyncAppInstanceForPartner(request *SyncAppInstanceForPartn
 
 // Summary:
 //
+// Translates a channel draft.
+//
+// Description:
+//
+// Translates a channel draft.
+//
+// @param request - TranslateChannelDraftRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateChannelDraftResponse
+func (client *Client) TranslateChannelDraftWithOptions(request *TranslateChannelDraftRequest, runtime *dara.RuntimeOptions) (_result *TranslateChannelDraftResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftId) {
+		query["DraftId"] = request.DraftId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TranslateChannelDraft"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TranslateChannelDraftResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Translates a channel draft.
+//
+// Description:
+//
+// Translates a channel draft.
+//
+// @param request - TranslateChannelDraftRequest
+//
+// @return TranslateChannelDraftResponse
+func (client *Client) TranslateChannelDraft(request *TranslateChannelDraftRequest) (_result *TranslateChannelDraftResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TranslateChannelDraftResponse{}
+	_body, _err := client.TranslateChannelDraftWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Unbinds a domain name from a website and deletes the related DNS records.
 //
 // @param request - UnbindAppDomainRequest
@@ -12094,11 +13674,81 @@ func (client *Client) UnbindAppDomain(request *UnbindAppDomainRequest) (_result 
 
 // Summary:
 //
-// Updates message content.
+// Uninstalls an application plugin from the current user account.
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - API for querying AI conversation history.
+// Retrieves the configuration information of a code generation plugin.
+//
+// @param request - UninstallAppPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallAppPluginResponse
+func (client *Client) UninstallAppPluginWithOptions(request *UninstallAppPluginRequest, runtime *dara.RuntimeOptions) (_result *UninstallAppPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallAppPlugin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallAppPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uninstalls an application plugin from the current user account.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plugin.
+//
+// @param request - UninstallAppPluginRequest
+//
+// @return UninstallAppPluginResponse
+func (client *Client) UninstallAppPlugin(request *UninstallAppPluginRequest) (_result *UninstallAppPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UninstallAppPluginResponse{}
+	_body, _err := client.UninstallAppPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the message content.
+//
+// Description:
+//
+// Queries the AI conversation history for Wanxiaozhi 2.0.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -12154,11 +13804,11 @@ func (client *Client) UpdateAppChatMessageWithOptions(request *UpdateAppChatMess
 
 // Summary:
 //
-// Updates message content.
+// Updates the message content.
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - API for querying AI conversation history.
+// Queries the AI conversation history for Wanxiaozhi 2.0.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -12454,6 +14104,120 @@ func (client *Client) UpdateAppInstance(request *UpdateAppInstanceRequest) (_res
 
 // Summary:
 //
+// Updates an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - UpdateAppPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppPluginResponse
+func (client *Client) UpdateAppPluginWithOptions(request *UpdateAppPluginRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.ConfigItems) {
+		query["ConfigItems"] = request.ConfigItems
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.Hooks) {
+		query["Hooks"] = request.Hooks
+	}
+
+	if !dara.IsNil(request.Icon) {
+		query["Icon"] = request.Icon
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.PluginName) {
+		query["PluginName"] = request.PluginName
+	}
+
+	if !dara.IsNil(request.PluginVersion) {
+		query["PluginVersion"] = request.PluginVersion
+	}
+
+	if !dara.IsNil(request.SkillHeader) {
+		query["SkillHeader"] = request.SkillHeader
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		query["Visibility"] = request.Visibility
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppPlugin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an application plug-in.
+//
+// Description:
+//
+// Retrieves the configuration information of a code generation plug-in.
+//
+// @param request - UpdateAppPluginRequest
+//
+// @return UpdateAppPluginResponse
+func (client *Client) UpdateAppPlugin(request *UpdateAppPluginRequest) (_result *UpdateAppPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppPluginResponse{}
+	_body, _err := client.UpdateAppPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the SEO index status.
 //
 // Description:
@@ -12540,11 +14304,11 @@ func (client *Client) UpdateAppSeoStatus(request *UpdateAppSeoStatusRequest) (_r
 
 // Summary:
 //
-// # Update Supabase authentication configuration
+// Updates the Supabase authentication configuration.
 //
 // Description:
 //
-// # Query the auth configuration information of the Supabase instance corresponding to the resource
+// Queries the Supabase instance authentication configuration information corresponding to a resource.
 //
 // @param request - UpdateAppSupabaseAuthConfigRequest
 //
@@ -12592,11 +14356,11 @@ func (client *Client) UpdateAppSupabaseAuthConfigWithOptions(request *UpdateAppS
 
 // Summary:
 //
-// # Update Supabase authentication configuration
+// Updates the Supabase authentication configuration.
 //
 // Description:
 //
-// # Query the auth configuration information of the Supabase instance corresponding to the resource
+// Queries the Supabase instance authentication configuration information corresponding to a resource.
 //
 // @param request - UpdateAppSupabaseAuthConfigRequest
 //
@@ -12700,7 +14464,7 @@ func (client *Client) UpdateAppSupabaseSecret(request *UpdateAppSupabaseSecretRe
 
 // Summary:
 //
-// # Update miniapp binding information
+// Updates the binding information of a mini program.
 //
 // @param request - UpdateMiniAppBindingRequest
 //
@@ -12756,7 +14520,7 @@ func (client *Client) UpdateMiniAppBindingWithOptions(request *UpdateMiniAppBind
 
 // Summary:
 //
-// # Update miniapp binding information
+// Updates the binding information of a mini program.
 //
 // @param request - UpdateMiniAppBindingRequest
 //
@@ -12774,7 +14538,11 @@ func (client *Client) UpdateMiniAppBinding(request *UpdateMiniAppBindingRequest)
 
 // Summary:
 //
-// 更新组织单元
+// Updates an organizational unit.
+//
+// Description:
+//
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateRbacOrgUnitRequest
 //
@@ -12826,7 +14594,11 @@ func (client *Client) UpdateRbacOrgUnitWithOptions(request *UpdateRbacOrgUnitReq
 
 // Summary:
 //
-// 更新组织单元
+// Updates an organizational unit.
+//
+// Description:
+//
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateRbacOrgUnitRequest
 //
@@ -12913,6 +14685,100 @@ func (client *Client) UpdateRbacRole(request *UpdateRbacRoleRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateRbacRoleResponse{}
 	_body, _err := client.UpdateRbacRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a new version of an application plug-in.
+//
+// Description:
+//
+// Retrieves the code generation plug-in configuration information.
+//
+// @param request - UploadAppPluginVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadAppPluginVersionResponse
+func (client *Client) UploadAppPluginVersionWithOptions(request *UploadAppPluginVersionRequest, runtime *dara.RuntimeOptions) (_result *UploadAppPluginVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Changelog) {
+		query["Changelog"] = request.Changelog
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DownloadUrl) {
+		query["DownloadUrl"] = request.DownloadUrl
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.OssKey) {
+		query["OssKey"] = request.OssKey
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.PluginVersion) {
+		query["PluginVersion"] = request.PluginVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadAppPluginVersion"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadAppPluginVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a new version of an application plug-in.
+//
+// Description:
+//
+// Retrieves the code generation plug-in configuration information.
+//
+// @param request - UploadAppPluginVersionRequest
+//
+// @return UploadAppPluginVersionResponse
+func (client *Client) UploadAppPluginVersion(request *UploadAppPluginVersionRequest) (_result *UploadAppPluginVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadAppPluginVersionResponse{}
+	_body, _err := client.UploadAppPluginVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13014,6 +14880,10 @@ func (client *Client) UploadAppSiteValidationFile(request *UploadAppSiteValidati
 //
 // Uploads a material file.
 //
+// Description:
+//
+// The Supabase instance information corresponding to the operation resource.
+//
 // @param request - UploadMaterialFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13043,6 +14913,10 @@ func (client *Client) UploadMaterialFileWithOptions(request *UploadMaterialFileR
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.OssKey) {
+		query["OssKey"] = request.OssKey
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13070,6 +14944,10 @@ func (client *Client) UploadMaterialFileWithOptions(request *UploadMaterialFileR
 //
 // Uploads a material file.
 //
+// Description:
+//
+// The Supabase instance information corresponding to the operation resource.
+//
 // @param request - UploadMaterialFileRequest
 //
 // @return UploadMaterialFileResponse
@@ -13077,6 +14955,88 @@ func (client *Client) UploadMaterialFile(request *UploadMaterialFileRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &UploadMaterialFileResponse{}
 	_body, _err := client.UploadMaterialFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a material file as an administrator (AI-generated).
+//
+// Description:
+//
+// The Supabase instance information corresponding to the operation resource.
+//
+// @param request - UploadMaterialFileForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadMaterialFileForAdminResponse
+func (client *Client) UploadMaterialFileForAdminWithOptions(request *UploadMaterialFileForAdminRequest, runtime *dara.RuntimeOptions) (_result *UploadMaterialFileForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BelongId) {
+		query["BelongId"] = request.BelongId
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadMaterialFileForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadMaterialFileForAdminResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a material file as an administrator (AI-generated).
+//
+// Description:
+//
+// The Supabase instance information corresponding to the operation resource.
+//
+// @param request - UploadMaterialFileForAdminRequest
+//
+// @return UploadMaterialFileForAdminResponse
+func (client *Client) UploadMaterialFileForAdmin(request *UploadMaterialFileForAdminRequest) (_result *UploadMaterialFileForAdminResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadMaterialFileForAdminResponse{}
+	_body, _err := client.UploadMaterialFileForAdminWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13167,6 +15127,10 @@ func (client *Client) reconnectAppChatWithSSE_opYieldFunc(_yield chan *Reconnect
 
 	if !dara.IsNil(request.LastEventId) {
 		body["LastEventId"] = request.LastEventId
+	}
+
+	if !dara.IsNil(request.LatestMessageCreateTime) {
+		body["LatestMessageCreateTime"] = request.LatestMessageCreateTime
 	}
 
 	req := &openapiutil.OpenApiRequest{

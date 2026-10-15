@@ -34,39 +34,39 @@ type iUpdateAppChatMessageResponseBody interface {
 }
 
 type UpdateAppChatMessageResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not currently used. Ignore this parameter.
+	// The dynamic code. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error arguments.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response object.
 	Module *UpdateAppChatMessageResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -82,11 +82,11 @@ type UpdateAppChatMessageResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is processed synchronously.
 	//
@@ -225,13 +225,13 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 53467af9-8c4e-4498-9032-1f26978007f8
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// The current conversation status.
+	// The current chat status.
 	//
 	// example:
 	//
 	// 123
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
-	// The ID of the data API operation that is called.
+	// The ID of the called data API.
 	//
 	// example:
 	//
@@ -249,7 +249,7 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 872be9bc-3097-433d-b462-596202455102
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in seconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -257,7 +257,7 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The update time in ISO 8601 format in the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -271,13 +271,13 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 471791769135220858
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The business extension metadata in Map format. The value must be a JSON string.
+	// The business extension metadata in map format. The value must be a JSON string.
 	//
 	// example:
 	//
 	// {\\"appId\\":\\"WS20260418211121000001\\",\\"inputTokens\\":273,\\"outputTokens\\":1}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The probability of not wearing a mask, not wearing work clothes, or not wearing a hat.
+	// The probability of not wearing a mask, uniform, or hat.
 	//
 	// example:
 	//
@@ -285,17 +285,17 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
 	// The role of the conversation participant. Valid values:
 	//
-	// - user: user
+	// - user: User
 	//
-	// - assistant: assistant
+	// - assistant: Assistant
 	//
-	// - system: system
+	// - system: System
 	//
-	// - function: function
+	// - function: Function
 	//
-	// - plugin: plug-in
+	// - plugin: Plug-in
 	//
-	// - tool: tool
+	// - tool: Tool
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//

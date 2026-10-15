@@ -17,6 +17,8 @@ type iUploadMaterialFileRequest interface {
 	GetFileUrl() *string
 	SetName(v string) *UploadMaterialFileRequest
 	GetName() *string
+	SetOssKey(v string) *UploadMaterialFileRequest
+	GetOssKey() *string
 }
 
 type UploadMaterialFileRequest struct {
@@ -36,20 +38,24 @@ type UploadMaterialFileRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The path of the file.
-	//
-	// This parameter is required.
+	// The file path.
 	//
 	// example:
 	//
 	// http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/4a7f_209934244261306272_14fd429b731245a79f291c64acf3ac77
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
-	// 测试文件
+	// TestFile
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The OSS object key.
+	//
+	// example:
+	//
+	// backend/detection/objects/r-0008ujvfksltf5j45n81/task-000hckiuwyau0gwn17vq.jpg
+	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
 }
 
 func (s UploadMaterialFileRequest) String() string {
@@ -76,6 +82,10 @@ func (s *UploadMaterialFileRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UploadMaterialFileRequest) GetOssKey() *string {
+	return s.OssKey
+}
+
 func (s *UploadMaterialFileRequest) SetBizId(v string) *UploadMaterialFileRequest {
 	s.BizId = &v
 	return s
@@ -93,6 +103,11 @@ func (s *UploadMaterialFileRequest) SetFileUrl(v string) *UploadMaterialFileRequ
 
 func (s *UploadMaterialFileRequest) SetName(v string) *UploadMaterialFileRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UploadMaterialFileRequest) SetOssKey(v string) *UploadMaterialFileRequest {
+	s.OssKey = &v
 	return s
 }
 

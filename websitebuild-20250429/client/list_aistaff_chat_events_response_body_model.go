@@ -34,19 +34,19 @@ type iListAIStaffChatEventsResponseBody interface {
 }
 
 type ListAIStaffChatEventsResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -58,17 +58,17 @@ type ListAIStaffChatEventsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the ErrMessage response element.
+	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- error message.
 	//
-	// > For example, if ErrMessage returns **The Value of Input Parameter %s is not valid*	- and DynamicMessage returns **DtsJobId**, the DtsJobId request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The invalid parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The response object.
+	// The returned object.
 	Module *ListAIStaffChatEventsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -82,13 +82,13 @@ type ListAIStaffChatEventsResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ func (s *ListAIStaffChatEventsResponseBody) Validate() error {
 }
 
 type ListAIStaffChatEventsResponseBodyModule struct {
-	// The unique ID of a single utterance.
+	// The unique ID of the message.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type ListAIStaffChatEventsResponseBodyModule struct {
 	//
 	// 872be9bc-3097-433d-b462-596202455102
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The event list.
+	// The object ID.
 	Events []*ListAIStaffChatEventsResponseBodyModuleEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	// The ID of the last SSE event.
 	//
@@ -293,7 +293,7 @@ func (s *ListAIStaffChatEventsResponseBodyModule) Validate() error {
 }
 
 type ListAIStaffChatEventsResponseBodyModuleEvents struct {
-	// The fault information.
+	// The error message.
 	//
 	// example:
 	//
@@ -305,11 +305,11 @@ type ListAIStaffChatEventsResponseBodyModuleEvents struct {
 	//
 	// 10426
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The event name.
+	// The website name.
 	//
 	// example:
 	//
-	// 文章素材2026050704
+	// Article material 2026050704
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

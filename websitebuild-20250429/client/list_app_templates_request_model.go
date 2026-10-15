@@ -21,6 +21,10 @@ type iListAppTemplatesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListAppTemplatesRequest
 	GetNextToken() *string
+	SetOrderColumn(v string) *ListAppTemplatesRequest
+	GetOrderColumn() *string
+	SetOrderType(v string) *ListAppTemplatesRequest
+	GetOrderType() *string
 	SetPageNum(v int32) *ListAppTemplatesRequest
 	GetPageNum() *int32
 	SetPageSize(v int32) *ListAppTemplatesRequest
@@ -56,20 +60,26 @@ type ListAppTemplatesRequest struct {
 	//
 	// ${\\"wget JiexJPWT.popscan.xaliyun.com\\"}
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The number of results returned per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. This parameter is empty if there is no next query.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// copyCount
+	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// example:
+	//
+	// DESC
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -82,7 +92,7 @@ type ListAppTemplatesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The Edition.
+	// The edition.
 	//
 	// example:
 	//
@@ -128,6 +138,14 @@ func (s *ListAppTemplatesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListAppTemplatesRequest) GetOrderColumn() *string {
+	return s.OrderColumn
+}
+
+func (s *ListAppTemplatesRequest) GetOrderType() *string {
+	return s.OrderType
+}
+
 func (s *ListAppTemplatesRequest) GetPageNum() *int32 {
 	return s.PageNum
 }
@@ -171,6 +189,16 @@ func (s *ListAppTemplatesRequest) SetMaxResults(v int32) *ListAppTemplatesReques
 
 func (s *ListAppTemplatesRequest) SetNextToken(v string) *ListAppTemplatesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListAppTemplatesRequest) SetOrderColumn(v string) *ListAppTemplatesRequest {
+	s.OrderColumn = &v
+	return s
+}
+
+func (s *ListAppTemplatesRequest) SetOrderType(v string) *ListAppTemplatesRequest {
+	s.OrderType = &v
 	return s
 }
 

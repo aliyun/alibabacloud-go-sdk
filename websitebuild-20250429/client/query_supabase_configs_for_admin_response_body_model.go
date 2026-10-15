@@ -40,11 +40,11 @@ type QuerySupabaseConfigsForAdminResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Indicates whether retries are allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type QuerySupabaseConfigsForAdminResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The task object.
 	Module *QuerySupabaseConfigsForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,11 +84,11 @@ type QuerySupabaseConfigsForAdminResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is synchronously processed.
 	//

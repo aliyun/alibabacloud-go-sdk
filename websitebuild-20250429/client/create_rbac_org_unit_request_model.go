@@ -16,7 +16,17 @@ type iCreateRbacOrgUnitRequest interface {
 }
 
 type CreateRbacOrgUnitRequest struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The site ID.
+	//
+	// example:
+	//
+	// WD20250703155602000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The organization parameters.
+	//
+	// example:
+	//
+	// {"name":"xx","path":"root.shanghai"}
 	OrgUnitData *string `json:"OrgUnitData,omitempty" xml:"OrgUnitData,omitempty"`
 }
 

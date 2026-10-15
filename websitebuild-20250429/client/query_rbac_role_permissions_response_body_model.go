@@ -34,17 +34,64 @@ type iQueryRbacRolePermissionsResponseBody interface {
 }
 
 type QueryRbacRolePermissionsResponseBody struct {
-	AccessDeniedDetail *string                                     `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AllowRetry         *bool                                       `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName            *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode        *string                                     `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string                                     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs          []interface{}                               `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module             *QueryRbacRolePermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId          *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootErrorCode      *string                                     `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg       *string                                     `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	Synchro            *bool                                       `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed.
+	//
+	// example:
+	//
+	// False
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name. The application with this name is queried.
+	//
+	// example:
+	//
+	// spring-cloud-b
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// ERROR-oo1
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	//
+	// example:
+	//
+	// SYSTEM_ERROR
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Indicates whether the operation is successful.
+	Module *QueryRbacRolePermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6C6B99AC-39EC-5350-874C-204128C905E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// SYSTEM.ERROR
+	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Indicates whether the request is synchronously processed.
+	//
+	// example:
+	//
+	// True
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s QueryRbacRolePermissionsResponseBody) String() string {
@@ -164,15 +211,52 @@ func (s *QueryRbacRolePermissionsResponseBody) Validate() error {
 }
 
 type QueryRbacRolePermissionsResponseBodyModule struct {
-	CurrentPageNum *int32                                            `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*QueryRbacRolePermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *QueryRbacRolePermissionsResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	NextPage       *bool                                             `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                                             `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	ResultLimit    *bool                                             `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	TotalItemNum   *int32                                            `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                            `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 12
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// The request result.
+	Data []*QueryRbacRolePermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The next feature ID.
+	Next *QueryRbacRolePermissionsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
+	// example:
+	//
+	// False
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The page size.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
+	// example:
+	//
+	// False
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// The server processes up to 1,000 recent records beyond the pagination limit for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	//
+	// example:
+	//
+	// False
+	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 0
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryRbacRolePermissionsResponseBodyModule) String() string {
@@ -283,10 +367,30 @@ func (s *QueryRbacRolePermissionsResponseBodyModule) Validate() error {
 }
 
 type QueryRbacRolePermissionsResponseBodyModuleData struct {
-	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The operation that you want to perform. Set the value to **DeleteIntegration**.
+	//
+	// example:
+	//
+	// js
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The scenario description.
+	//
+	// example:
+	//
+	// lshm-mysql-coypt
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The scenario ID.
+	//
+	// example:
+	//
+	// 9953352
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The alert rule name.
+	//
+	// example:
+	//
+	// lb-uf6wxzsjwavr2kyq92slf-80-clb4
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s QueryRbacRolePermissionsResponseBodyModuleData) String() string {
@@ -338,10 +442,32 @@ func (s *QueryRbacRolePermissionsResponseBodyModuleData) Validate() error {
 }
 
 type QueryRbacRolePermissionsResponseBodyModuleNext struct {
-	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The operation that you want to perform. Set the value to **GetCreateCustomerInfomation**.
+	//
+	// example:
+	//
+	// accept
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The scenario description.
+	//
+	// example:
+	//
+	// lx_supabase_test_02
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The scenario ID.
+	//
+	// example:
+	//
+	// 1000039405002
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The statistical method for the Warn level.
+	//
+	// The value of `Statistics` varies by cloud service. For more information, see [Cloud service monitoring items](https://help.aliyun.com/document_detail/163515.html).
+	//
+	// example:
+	//
+	// mwaf-apisec0629.wafqax.top-waf
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s QueryRbacRolePermissionsResponseBodyModuleNext) String() string {

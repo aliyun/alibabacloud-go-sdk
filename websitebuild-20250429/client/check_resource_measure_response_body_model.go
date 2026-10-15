@@ -34,13 +34,13 @@ type iCheckResourceMeasureResponseBody interface {
 }
 
 type CheckResourceMeasureResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CheckResourceMeasureResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response element.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The application module.
 	Module *CheckResourceMeasureResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -86,9 +86,9 @@ type CheckResourceMeasureResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -213,18 +213,30 @@ func (s *CheckResourceMeasureResponseBody) Validate() error {
 }
 
 type CheckResourceMeasureResponseBodyModule struct {
-	// The error code when the check fails. This value is null when the check passes.
+	// This field is returned only for APP_WORKSPACE quantity pre-checks. It specifies the final total quantity to be saved, not the current increment. The issue quantity is the sum of common issues and word-of-mouth issues, and the competitor quantity is the total number of competitors after editing. This field is empty for APP and USER checks.
+	//
+	// example:
+	//
+	// 21
+	DesiredTotal *int64 `json:"DesiredTotal,omitempty" xml:"DesiredTotal,omitempty"`
+	// The error code returned when the check fails. This field is null when the check passes.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message when the check fails. This value is null when the check passes.
+	// The error message returned when the check fails. This field is null when the check passes.
 	//
 	// example:
 	//
 	// stream push failed
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// This field is returned only for APP_WORKSPACE quantity pre-checks. It specifies the maximum number of issues or competitors allowed by the current commodity edition, not the remaining quota. This field is empty for APP and USER checks, or when the edition benefits cannot be determined.
+	//
+	// example:
+	//
+	// 20
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// Indicates whether the check is passed.
 	//
 	// example:
@@ -237,6 +249,12 @@ type CheckResourceMeasureResponseBodyModule struct {
 	//
 	// TransitRouterVpcAttachment
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// Indicates whether a purchasable higher edition exists that can accommodate the DesiredTotal. This field is true only when the capacity of the current edition is insufficient and a higher edition meets the requirement. Otherwise, it is false. This field may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
+	//
+	// example:
+	//
+	// true
+	UpgradeAvailable *bool `json:"UpgradeAvailable,omitempty" xml:"UpgradeAvailable,omitempty"`
 }
 
 func (s CheckResourceMeasureResponseBodyModule) String() string {
@@ -247,6 +265,10 @@ func (s CheckResourceMeasureResponseBodyModule) GoString() string {
 	return s.String()
 }
 
+func (s *CheckResourceMeasureResponseBodyModule) GetDesiredTotal() *int64 {
+	return s.DesiredTotal
+}
+
 func (s *CheckResourceMeasureResponseBodyModule) GetErrorCode() *string {
 	return s.ErrorCode
 }
@@ -255,12 +277,25 @@ func (s *CheckResourceMeasureResponseBodyModule) GetErrorMessage() *string {
 	return s.ErrorMessage
 }
 
+func (s *CheckResourceMeasureResponseBodyModule) GetLimit() *int64 {
+	return s.Limit
+}
+
 func (s *CheckResourceMeasureResponseBodyModule) GetPassed() *bool {
 	return s.Passed
 }
 
 func (s *CheckResourceMeasureResponseBodyModule) GetResourceCode() *string {
 	return s.ResourceCode
+}
+
+func (s *CheckResourceMeasureResponseBodyModule) GetUpgradeAvailable() *bool {
+	return s.UpgradeAvailable
+}
+
+func (s *CheckResourceMeasureResponseBodyModule) SetDesiredTotal(v int64) *CheckResourceMeasureResponseBodyModule {
+	s.DesiredTotal = &v
+	return s
 }
 
 func (s *CheckResourceMeasureResponseBodyModule) SetErrorCode(v string) *CheckResourceMeasureResponseBodyModule {
@@ -273,6 +308,11 @@ func (s *CheckResourceMeasureResponseBodyModule) SetErrorMessage(v string) *Chec
 	return s
 }
 
+func (s *CheckResourceMeasureResponseBodyModule) SetLimit(v int64) *CheckResourceMeasureResponseBodyModule {
+	s.Limit = &v
+	return s
+}
+
 func (s *CheckResourceMeasureResponseBodyModule) SetPassed(v bool) *CheckResourceMeasureResponseBodyModule {
 	s.Passed = &v
 	return s
@@ -280,6 +320,11 @@ func (s *CheckResourceMeasureResponseBodyModule) SetPassed(v bool) *CheckResourc
 
 func (s *CheckResourceMeasureResponseBodyModule) SetResourceCode(v string) *CheckResourceMeasureResponseBodyModule {
 	s.ResourceCode = &v
+	return s
+}
+
+func (s *CheckResourceMeasureResponseBodyModule) SetUpgradeAvailable(v bool) *CheckResourceMeasureResponseBodyModule {
+	s.UpgradeAvailable = &v
 	return s
 }
 

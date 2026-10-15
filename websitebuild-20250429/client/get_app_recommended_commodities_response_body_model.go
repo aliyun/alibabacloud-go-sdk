@@ -40,7 +40,7 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,23 +58,23 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message returned by **ErrMessage**.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The data table module. Valid values:
+	// The data table module.
 	//
 	// - ABTest: experiment data table
 	//
 	// - ExperimentTool: experiment tool table
 	//
-	// - DataDiagnosis: data modeling diagnostics
+	// - DataDiagnosis: data diagnosis
 	Module *GetAppRecommendedCommoditiesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -92,7 +92,7 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is processed synchronously.
 	//
@@ -254,21 +254,23 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModule) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
+	// The click action type. Valid values: CONSULT (add WeCom), BUY (purchase), and AUTO (automatic issuance).
+	//
+	// example:
+	//
+	// CONSULT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The commodity code. Applicable to both resource plans and marketing commodities.
+	// The commodity code. This parameter applies to both resource plans and marketing commodities.
 	//
 	// example:
 	//
 	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extension fields, such as unsupportedReason.
+	// The display description of the recommendation.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extended fields, such as unsupportedReason.
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The order type. Valid values:
-	//
-	// - BUY: purchase.
-	//
-	// - UPGRADE: upgrade.
+	// The order type. Valid values: BUY (purchase) and UPGRADE (upgrade).
 	//
 	// example:
 	//
@@ -280,26 +282,32 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The marketing commodity ID. Returned only for new purchases.
+	// The ID of the marketing commodity. This parameter is returned only for new purchases.
 	//
 	// example:
 	//
 	// 12345
 	PromotionCommodityId *string `json:"PromotionCommodityId,omitempty" xml:"PromotionCommodityId,omitempty"`
-	RecommendType        *string `json:"RecommendType,omitempty" xml:"RecommendType,omitempty"`
-	// The redirect URL. Returned when redirection is required, such as for upgrades.
+	// The recommendation type. Valid values: COMMODITY (commodity recommendation) and ACTIVITY (promotion activity recommendation).
+	//
+	// example:
+	//
+	// COMMODITY
+	RecommendType *string `json:"RecommendType,omitempty" xml:"RecommendType,omitempty"`
+	// The redirect URL. This parameter is returned when a redirect is required in scenarios such as upgrades.
 	//
 	// example:
 	//
 	// https://ecs-workbench-disposable.aliyun.com/account/disposable/login/sst/1291612921555690/edvo2gevfh
 	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
-	// The commodity status.
+	// The status of the commodity.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The display title of the recommendation.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetAppRecommendedCommoditiesResponseBodyModuleCommodities) String() string {

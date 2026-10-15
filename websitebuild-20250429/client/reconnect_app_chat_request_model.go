@@ -15,6 +15,8 @@ type iReconnectAppChatRequest interface {
 	GetConversationId() *string
 	SetLastEventId(v int32) *ReconnectAppChatRequest
 	GetLastEventId() *int32
+	SetLatestMessageCreateTime(v string) *ReconnectAppChatRequest
+	GetLatestMessageCreateTime() *string
 }
 
 type ReconnectAppChatRequest struct {
@@ -24,18 +26,16 @@ type ReconnectAppChatRequest struct {
 	//
 	// 20833ba4-d189-4c50-9a44-a6bcbda2c93b
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The ID of the last event.
-	//
-	// example:
-	//
-	// event-71ece53b7d474e01b755a9b5fa5305e6
+	// The last event ID.
 	LastEventId *int32 `json:"LastEventId,omitempty" xml:"LastEventId,omitempty"`
+	// The creation time of the latest message.
+	LatestMessageCreateTime *string `json:"LatestMessageCreateTime,omitempty" xml:"LatestMessageCreateTime,omitempty"`
 }
 
 func (s ReconnectAppChatRequest) String() string {
@@ -58,6 +58,10 @@ func (s *ReconnectAppChatRequest) GetLastEventId() *int32 {
 	return s.LastEventId
 }
 
+func (s *ReconnectAppChatRequest) GetLatestMessageCreateTime() *string {
+	return s.LatestMessageCreateTime
+}
+
 func (s *ReconnectAppChatRequest) SetChatId(v string) *ReconnectAppChatRequest {
 	s.ChatId = &v
 	return s
@@ -70,6 +74,11 @@ func (s *ReconnectAppChatRequest) SetConversationId(v string) *ReconnectAppChatR
 
 func (s *ReconnectAppChatRequest) SetLastEventId(v int32) *ReconnectAppChatRequest {
 	s.LastEventId = &v
+	return s
+}
+
+func (s *ReconnectAppChatRequest) SetLatestMessageCreateTime(v string) *ReconnectAppChatRequest {
+	s.LatestMessageCreateTime = &v
 	return s
 }
 

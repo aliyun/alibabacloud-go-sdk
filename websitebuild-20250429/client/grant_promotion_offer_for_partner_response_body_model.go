@@ -40,7 +40,7 @@ type GrantPromotionOfferForPartnerResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GrantPromotionOfferForPartnerResponseBody struct {
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This parameter is not in use. Ignore it.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GrantPromotionOfferForPartnerResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ type GrantPromotionOfferForPartnerResponseBodyModule struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The benefit summary.
 	//

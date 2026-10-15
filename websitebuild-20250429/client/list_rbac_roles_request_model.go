@@ -32,7 +32,7 @@ type ListRbacRolesRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The number of entries per query.
+	// The maximum number of entries to return per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -52,11 +52,7 @@ type ListRbacRolesRequest struct {
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values:
-	//
-	// - ASC
-	//
-	// - DESC
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//

@@ -26,12 +26,31 @@ type iAppServiceProfile interface {
 }
 
 type AppServiceProfile struct {
-	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	DesignType      *string `json:"DesignType,omitempty" xml:"DesignType,omitempty"`
-	DesignTypeText  *string `json:"DesignTypeText,omitempty" xml:"DesignTypeText,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ServiceSpec     *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// The business ID.
+	//
+	// example:
+	//
+	// WS20250801003834000003
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The design type.
+	DesignType *string `json:"DesignType,omitempty" xml:"DesignType,omitempty"`
+	// The design type description.
+	DesignTypeText *string `json:"DesignTypeText,omitempty" xml:"DesignTypeText,omitempty"`
+	// The Lingxiao instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 256146659280026
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The service specification.
+	//
+	// example:
+	//
+	// 8
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// The service specification description.
 	ServiceSpecText *string `json:"ServiceSpecText,omitempty" xml:"ServiceSpecText,omitempty"`
 }
 

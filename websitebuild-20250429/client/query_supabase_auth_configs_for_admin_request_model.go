@@ -44,18 +44,15 @@ type QuerySupabaseAuthConfigsForAdminRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The environment identifier.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values:
-	//
-	// - ASC: ascending order.
-	//
-	// - DESC: descending order.
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//

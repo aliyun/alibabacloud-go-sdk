@@ -26,7 +26,7 @@ type iQueryInspirationAccountDetailsRequest interface {
 }
 
 type QueryInspirationAccountDetailsRequest struct {
-	// The end time of the query.
+	// The end time of the query. The time is in ISO 8601 format and in the UTC (Z) time zone.
 	//
 	// example:
 	//
@@ -38,11 +38,7 @@ type QueryInspirationAccountDetailsRequest struct {
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values:
-	//
-	// - ASC: ascending order
-	//
-	// - DESC: descending order
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
@@ -60,13 +56,13 @@ type QueryInspirationAccountDetailsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The source type used to filter results, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
+	// The filter for the source type. Examples: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the query.
+	// The start time of the query. The time is in ISO 8601 format and in the UTC (Z) time zone.
 	//
 	// example:
 	//

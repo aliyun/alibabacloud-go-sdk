@@ -58,15 +58,15 @@ type QuerySupabaseInstanceInfoForAdminResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage*	- response element.
+	// The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *QuerySupabaseInstanceInfoForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -82,13 +82,13 @@ type QuerySupabaseInstanceInfoForAdminResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The time when the database instance was created.
+	// The creation time of the database instance.
 	//
 	// example:
 	//
@@ -243,17 +243,13 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 111
 	DbPublicUrl *string `json:"DbPublicUrl,omitempty" xml:"DbPublicUrl,omitempty"`
-	// The database type. Valid values:
-	//
-	// - rds
-	//
-	// - polardb.
+	// The database type (rds/polardb).
 	//
 	// example:
 	//
 	// ORACLE
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The additional information.
+	// The extra information.
 	//
 	// example:
 	//
@@ -265,7 +261,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 111
 	InstanceCreateFinishedTime *string `json:"InstanceCreateFinishedTime,omitempty" xml:"InstanceCreateFinishedTime,omitempty"`
-	// The creation status of the instance.
+	// The instance creation status.
 	//
 	// example:
 	//
@@ -277,7 +273,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The password for accessing the ApsaraDB RDS database.
+	// The access password of the RDS database.
 	//
 	// example:
 	//
@@ -289,7 +285,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// The instance status. Valid values:
+	// The status. Valid values:
 	//
 	// - 0: Paused.
 	//
@@ -311,7 +307,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 1111
 	SupabaseDashboardUserName *string `json:"SupabaseDashboardUserName,omitempty" xml:"SupabaseDashboardUserName,omitempty"`
-	// The time when the Supabase instance was created.
+	// The creation time of the Supabase instance.
 	//
 	// example:
 	//

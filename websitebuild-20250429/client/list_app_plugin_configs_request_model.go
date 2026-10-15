@@ -18,21 +18,21 @@ type iListAppPluginConfigsRequest interface {
 }
 
 type ListAppPluginConfigsRequest struct {
-	// Application instance business ID
+	// The business ID of the application instance.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Number of results per query.
+	// The number of entries per query.
 	//
-	// Valid values: 10 to 100. Default Value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token indicating the start of the next query. It is empty if there is no next query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//

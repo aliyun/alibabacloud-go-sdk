@@ -26,7 +26,7 @@ type ListAIStaffChatEventsRequest struct {
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The chat ID. This parameter is optional. If not specified, the latest chat ID is used.
+	// The chat ID. This parameter is optional. If you do not specify this parameter, the latest chat ID is used.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListAIStaffChatEventsRequest struct {
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The ID of the last event, used for incremental retrieval.
+	// The ID of the last event. This parameter is used to retrieve incremental events.
 	//
 	// example:
 	//

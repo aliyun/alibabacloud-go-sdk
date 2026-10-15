@@ -18,9 +18,24 @@ type iUpdateRbacOrgUnitRequest interface {
 }
 
 type UpdateRbacOrgUnitRequest struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business ID.
+	//
+	// example:
+	//
+	// WD20250703155602000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The organization parameters.
+	//
+	// example:
+	//
+	// {"name":"xx"}
 	OrgUnitData *string `json:"OrgUnitData,omitempty" xml:"OrgUnitData,omitempty"`
-	OrgUnitId   *string `json:"OrgUnitId,omitempty" xml:"OrgUnitId,omitempty"`
+	// The organization ID.
+	//
+	// example:
+	//
+	// f0534aa7-94ec-4368-a34a-310390f66253
+	OrgUnitId *string `json:"OrgUnitId,omitempty" xml:"OrgUnitId,omitempty"`
 }
 
 func (s UpdateRbacOrgUnitRequest) String() string {

@@ -40,13 +40,13 @@ type QueryInspirationConsumeRecordsResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type QueryInspirationConsumeRecordsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not used. Ignore this parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the deletion is successful.
+	// Specifies whether the deletion is successful.
 	Module *QueryInspirationConsumeRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -80,13 +80,13 @@ type QueryInspirationConsumeRecordsResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -217,29 +217,29 @@ type QueryInspirationConsumeRecordsResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The request results.
 	Data []*QueryInspirationConsumeRecordsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the next feature.
 	Next *QueryInspirationConsumeRecordsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Indicates whether a next page exists.
+	// Specifies whether a next page exists.
 	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether a previous page exists.
+	// Specifies whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -363,32 +363,39 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModule) Validate() error {
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModuleData struct {
-	// The number of inspiration points consumed.
+	// The number of consumed inspiration points.
 	//
 	// example:
 	//
 	// 120
-	Amount    *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The exact number of consumed inspiration points. The value is a string that supports decimal display.
+	//
+	// example:
+	//
+	// 120
 	AmountStr *string `json:"AmountStr,omitempty" xml:"AmountStr,omitempty"`
-	// The consumption time.
+	// The consumption time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
+	// The consumption type.
 	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
 	// The extended information in JSON string format.
 	//
 	// example:
 	//
 	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
-	MetaData  *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// The unique identifier of the consumption record.
 	RecordKey *string `json:"RecordKey,omitempty" xml:"RecordKey,omitempty"`
-	// The consumption scenario name, such as AI application development, AI creative illustration, AI video creation, or AI content creation.
+	// The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
 	//
 	// example:
 	//
-	// 家装
+	// Home improvement
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
@@ -468,19 +475,25 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) Validate() error 
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModuleNext struct {
-	// The number of inspiration points consumed.
+	// The number of consumed inspiration points.
 	//
 	// example:
 	//
 	// 2
-	Amount    *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The exact number of consumed inspiration points. The value is a string that supports decimal display.
+	//
+	// example:
+	//
+	// 120
 	AmountStr *string `json:"AmountStr,omitempty" xml:"AmountStr,omitempty"`
-	// The consumption time.
+	// The consumption time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
+	// The consumption type.
 	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
 	// The extended information in JSON string format.
 	//
@@ -488,11 +501,11 @@ type QueryInspirationConsumeRecordsResponseBodyModuleNext struct {
 	//
 	// {\\"MD5\\":\\"1042e65a2b7cdd3059b6a873ee1a3260\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The consumption scenario name, such as AI application development, AI creative illustration, AI video creation, or AI content creation.
+	// The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
 	//
 	// example:
 	//
-	// 家装
+	// Home improvement
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 

@@ -58,9 +58,9 @@ type GetAppSeoStatusResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- return parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetAppSeoStatusResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// A reserved parameter.
 	//
@@ -229,7 +229,7 @@ type GetAppSeoStatusResponseBodyModule struct {
 	//
 	// stxycw.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The time when the output was created.
+	// The creation time of the output artifact. The time is in ISO 8601 format and includes a time zone offset.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -237,7 +237,7 @@ type GetAppSeoStatusResponseBodyModule struct {
 	//
 	// 2025-03-26T13:25:41.119+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the output was last modified.
+	// The modification time. The time is in ISO 8601 format with the time zone set to UTC (Z).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//

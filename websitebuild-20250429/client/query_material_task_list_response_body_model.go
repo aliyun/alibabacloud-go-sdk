@@ -50,11 +50,11 @@ type QueryMaterialTaskListResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Indicates whether a retry is allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: No retry is allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: A retry is allowed.
 	//
 	// example:
 	//
@@ -72,15 +72,15 @@ type QueryMaterialTaskListResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is currently not in use. Ignore this parameter.
+	// The dynamic message. Currently not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The returned error parameters.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. The ErrorCode parameter is not returned if the request is successful. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes section.
+	// The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -114,25 +114,25 @@ type QueryMaterialTaskListResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code.
+	// The root error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The exception message.
+	// The root error message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether synchronous processing is used.
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -308,7 +308,7 @@ type QueryMaterialTaskListResponseBodyModule struct {
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request results.
+	// The request result.
 	Data []*AppMaterialTask `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether a next page exists.
 	//
@@ -328,7 +328,11 @@ type QueryMaterialTaskListResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes up to the 1000 most recent records for the current query. If the results exceed 1000 records, **ResultLimit*	- is set to **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
+	// Apart from pagination limits, the server processes up to 1000 recent records per query. If the results exceed 1000 records, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	//
+	// example:
+	//
+	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//

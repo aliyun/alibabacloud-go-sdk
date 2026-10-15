@@ -34,19 +34,19 @@ type iBatchCheckResourceMeasureResponseBody interface {
 }
 
 type BatchCheckResourceMeasureResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Specifies whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type BatchCheckResourceMeasureResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The response object.
+	// The returned object.
 	Module *BatchCheckResourceMeasureResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,9 +84,9 @@ type BatchCheckResourceMeasureResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Specifies whether synchronous processing is used.
 	//
 	// example:
 	//
@@ -211,9 +211,9 @@ func (s *BatchCheckResourceMeasureResponseBody) Validate() error {
 }
 
 type BatchCheckResourceMeasureResponseBodyModule struct {
-	// Indicates whether all checks passed.
+	// Indicates whether all checks are passed.
 	AllPassed *bool `json:"AllPassed,omitempty" xml:"AllPassed,omitempty"`
-	// The check result for each resource, where the key is resourceCode.
+	// The check results for each resource. The key is the resourceCode.
 	Results map[string]*ModuleResultsValue `json:"Results,omitempty" xml:"Results,omitempty"`
 }
 

@@ -15,6 +15,8 @@ type iCheckResourceMeasureRequest interface {
 	GetBelongIdType() *string
 	SetBizType(v string) *CheckResourceMeasureRequest
 	GetBizType() *string
+	SetDesiredTotal(v int64) *CheckResourceMeasureRequest
+	GetDesiredTotal() *int64
 	SetEspBizId(v string) *CheckResourceMeasureRequest
 	GetEspBizId() *string
 	SetOrderComponentParams(v string) *CheckResourceMeasureRequest
@@ -26,17 +28,13 @@ type iCheckResourceMeasureRequest interface {
 }
 
 type CheckResourceMeasureRequest struct {
-	// The owner ID, which can be a website ID or an Alibaba Cloud account ID.
+	// The owner ID, which can be a website ID or an Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
-	// The type of the owner ID. Valid values:
-	//
-	// - siteId
-	//
-	// - uid.
+	// The owner ID type. Valid values: siteId and uid.
 	//
 	// example:
 	//
@@ -48,13 +46,19 @@ type CheckResourceMeasureRequest struct {
 	//
 	// 1
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is used only for APP_WORKSPACE. It specifies the final total amount of issues or competitors after editing. For legacy APP or USER, it retains the incremental semantics of ResourceValue.
+	//
+	// example:
+	//
+	// 21
+	DesiredTotal *int64 `json:"DesiredTotal,omitempty" xml:"DesiredTotal,omitempty"`
 	// The ESP business ID.
 	//
 	// example:
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The order module information. If this parameter is empty, espBizId and bizType cannot be empty.
+	// The order component parameters. If this parameter is empty, EspBizId and BizType cannot be empty.
 	//
 	// example:
 	//
@@ -66,11 +70,11 @@ type CheckResourceMeasureRequest struct {
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// The resource value. This parameter is empty by default and is required only for feature-type resources. Valid values:
+	// The resource value. This parameter is required only for feature resources and is empty by default. Valid values:
 	//
-	// - 0: not supported
+	// - 0: Not supported.
 	//
-	// - 1: supported.
+	// - 1: Supported.
 	//
 	// example:
 	//
@@ -96,6 +100,10 @@ func (s *CheckResourceMeasureRequest) GetBelongIdType() *string {
 
 func (s *CheckResourceMeasureRequest) GetBizType() *string {
 	return s.BizType
+}
+
+func (s *CheckResourceMeasureRequest) GetDesiredTotal() *int64 {
+	return s.DesiredTotal
 }
 
 func (s *CheckResourceMeasureRequest) GetEspBizId() *string {
@@ -126,6 +134,11 @@ func (s *CheckResourceMeasureRequest) SetBelongIdType(v string) *CheckResourceMe
 
 func (s *CheckResourceMeasureRequest) SetBizType(v string) *CheckResourceMeasureRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *CheckResourceMeasureRequest) SetDesiredTotal(v int64) *CheckResourceMeasureRequest {
+	s.DesiredTotal = &v
 	return s
 }
 

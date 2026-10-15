@@ -80,41 +80,72 @@ type iAppInstanceAggregate interface {
 }
 
 type AppInstanceAggregate struct {
-	AiStaffList         []*AppAiStaff                      `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
-	AppOperationAddress *AppOperationAddress               `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
-	AppServiceList      []*AppServiceAggregate             `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
-	AppSubType          *string                            `json:"AppSubType,omitempty" xml:"AppSubType,omitempty"`
-	AppType             *string                            `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	BizId               *string                            `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BuildType           *string                            `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	CreateTime          *string                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Deleted             *int32                             `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Description         *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	DesignSpecBizId     *string                            `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
-	DesignSpecId        *string                            `json:"DesignSpecId,omitempty" xml:"DesignSpecId,omitempty"`
-	Domain              *string                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime             *string                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EspBizId            *string                            `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	GmtDelete           *string                            `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
-	GmtModified         *string                            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GmtPublish          *string                            `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
-	IconUrl             *string                            `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	Name                *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	PartnerDetail       *AppInstanceAggregatePartnerDetail `json:"PartnerDetail,omitempty" xml:"PartnerDetail,omitempty" type:"Struct"`
-	Profile             *AppInstanceProfile                `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	ResourceGroupId     *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SiteHost            *string                            `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
-	Slug                *string                            `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	SourceType          *string                            `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime           *string                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Valid values: trial, draft, live, refunded, expired, released.
-	Status         *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	AiStaffList []*AppAiStaff `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
+	// The application operation address.
+	AppOperationAddress *AppOperationAddress   `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
+	AppServiceList      []*AppServiceAggregate `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
+	// The application subtype.
+	AppSubType *string `json:"AppSubType,omitempty" xml:"AppSubType,omitempty"`
+	// The application type.
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The business ID of the application instance.
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The build type.
+	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the instance is deleted.
+	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The application description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The business ID of the design specification.
+	DesignSpecBizId *string `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
+	// The design specification ID.
+	DesignSpecId *string `json:"DesignSpecId,omitempty" xml:"DesignSpecId,omitempty"`
+	// The primary domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The end time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the associated delivery order.
+	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
+	// The deletion time.
+	GmtDelete *string `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
+	// The modification time.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The publish time.
+	GmtPublish *string `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
+	// The application icon.
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// The application name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The details.
+	PartnerDetail   *AppInstanceAggregatePartnerDetail `json:"PartnerDetail,omitempty" xml:"PartnerDetail,omitempty" type:"Struct"`
+	Profile         *AppInstanceProfile                `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The website domain name.
+	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
+	// The application identifier.
+	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// MARKET_CLOUD_DREAM
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The start time.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// trial,draft,live,refunded,expired,released
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status text.
 	StatusText     *string                     `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
 	Tags           []*AppInstanceAggregateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TemplateRecord *TemplateRecord             `json:"TemplateRecord,omitempty" xml:"TemplateRecord,omitempty"`
-	ThumbnailUrl   *string                     `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
-	UserId         *string                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Version        *string                     `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The application thumbnail.
+	ThumbnailUrl *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
+	// The user ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AppInstanceAggregate) String() string {
@@ -483,9 +514,11 @@ func (s *AppInstanceAggregate) Validate() error {
 }
 
 type AppInstanceAggregatePartnerDetail struct {
-	BindData  *AppInstanceAggregatePartnerDetailBindData `json:"BindData,omitempty" xml:"BindData,omitempty" type:"Struct"`
-	PartnerId *string                                    `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	Status    *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	// data
+	BindData *AppInstanceAggregatePartnerDetailBindData `json:"BindData,omitempty" xml:"BindData,omitempty" type:"Struct"`
+	// The partner ID.
+	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AppInstanceAggregatePartnerDetail) String() string {
@@ -533,14 +566,24 @@ func (s *AppInstanceAggregatePartnerDetail) Validate() error {
 }
 
 type AppInstanceAggregatePartnerDetailBindData struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The creation time.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	ParentPk    *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
-	PartnerId   *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The record ID.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The mobile phone number.
+	//
+	// example:
+	//
+	// ***********
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The primary key of the parent record.
+	ParentPk *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
+	// The partner ID.
+	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AppInstanceAggregatePartnerDetailBindData) String() string {
@@ -628,7 +671,17 @@ func (s *AppInstanceAggregatePartnerDetailBindData) Validate() error {
 }
 
 type AppInstanceAggregateTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. If this parameter is specified, it cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// Group
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value of the instance. Valid values of N: **1*	- to **20**. If this parameter is specified, it can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

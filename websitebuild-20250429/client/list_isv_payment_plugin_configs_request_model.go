@@ -18,21 +18,21 @@ type iListIsvPaymentPluginConfigsRequest interface {
 }
 
 type ListIsvPaymentPluginConfigsRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250821161210000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Number of results per query.
+	// The maximum number of results to return per query.
 	//
-	// Valid range: 10 to 100. Default Value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token indicating the start of the next query. It is empty when there is no next query.
+	// The token that is used to start the next query. If no more results are available, this value is empty.
 	//
 	// example:
 	//

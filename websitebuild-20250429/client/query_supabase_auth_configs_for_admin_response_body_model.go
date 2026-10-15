@@ -84,7 +84,7 @@ type QuerySupabaseAuthConfigsForAdminResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is synchronously processed.
 	//
@@ -213,7 +213,7 @@ func (s *QuerySupabaseAuthConfigsForAdminResponseBody) Validate() error {
 type QuerySupabaseAuthConfigsForAdminResponseBodyModule struct {
 	// The configuration value. Valid values:
 	//
-	// - cc_rule: HTTP flood mitigation rule.
+	// - cc_rule: HTTP flood protection rule.
 	//
 	// - ddos_dispatch: DDoS interaction scheduling.
 	//

@@ -9,6 +9,8 @@ type iQueryMaterialTaskListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizGroupId(v string) *QueryMaterialTaskListRequest
+	GetBizGroupId() *string
 	SetMaxResults(v int32) *QueryMaterialTaskListRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *QueryMaterialTaskListRequest
@@ -28,6 +30,12 @@ type iQueryMaterialTaskListRequest interface {
 }
 
 type QueryMaterialTaskListRequest struct {
+	// The ID of the business group.
+	//
+	// example:
+	//
+	// xx
+	BizGroupId *string `json:"BizGroupId,omitempty" xml:"BizGroupId,omitempty"`
 	// The number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
@@ -42,33 +50,33 @@ type QueryMaterialTaskListRequest struct {
 	//
 	// FFh3Xqm+JgZ/U9Jyb7wdVr9LWk80Tghn5UZjbcWEVEderBcbVF+Y6PS0i8PpCL4PQZ3e0C9oEH0Asd4tJEuGtkl2WuKdiWZpEwadNydQdJPFM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Sort field
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Sort type ASC|DESC
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number. Default value: 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size. Default value: 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Task status list
+	// The list of task statuses.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// Task type list
+	// The list of task types.
 	TaskTypeList []*string `json:"TaskTypeList,omitempty" xml:"TaskTypeList,omitempty" type:"Repeated"`
 }
 
@@ -78,6 +86,10 @@ func (s QueryMaterialTaskListRequest) String() string {
 
 func (s QueryMaterialTaskListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryMaterialTaskListRequest) GetBizGroupId() *string {
+	return s.BizGroupId
 }
 
 func (s *QueryMaterialTaskListRequest) GetMaxResults() *int32 {
@@ -110,6 +122,11 @@ func (s *QueryMaterialTaskListRequest) GetStatusList() []*string {
 
 func (s *QueryMaterialTaskListRequest) GetTaskTypeList() []*string {
 	return s.TaskTypeList
+}
+
+func (s *QueryMaterialTaskListRequest) SetBizGroupId(v string) *QueryMaterialTaskListRequest {
+	s.BizGroupId = &v
+	return s
 }
 
 func (s *QueryMaterialTaskListRequest) SetMaxResults(v int32) *QueryMaterialTaskListRequest {

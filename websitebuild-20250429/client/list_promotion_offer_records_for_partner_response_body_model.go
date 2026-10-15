@@ -44,7 +44,7 @@ type ListPromotionOfferRecordsForPartnerResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListPromotionOfferRecordsForPartnerResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the %s variable in the ErrMessage response parameter.
+	// The dynamic error message. This message is used to replace the %s variable in the ErrMessage response parameter.
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type ListPromotionOfferRecordsForPartnerResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -337,7 +337,7 @@ type ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords struct {
 	//
 	// example:
 	//
-	// IP网段过滤统计
+	// IP segment filtering statistics
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
 	// The employee code.
 	//
@@ -351,7 +351,7 @@ type ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords struct {
 	//
 	// SYSTEM_ERROR
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	// The issuance time.
+	// The issuance time. Format: YYYY-MM-DD.
 	//
 	// example:
 	//

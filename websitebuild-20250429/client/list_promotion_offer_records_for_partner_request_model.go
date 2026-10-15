@@ -34,7 +34,7 @@ type ListPromotionOfferRecordsForPartnerRequest struct {
 	//
 	// acwfradoj5u
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
-	// The belong ID.
+	// The belonging ID.
 	//
 	// example:
 	//

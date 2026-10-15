@@ -44,22 +44,70 @@ type iAppService interface {
 }
 
 type AppService struct {
-	BizId           *string            `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CreateTime      *string            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Deleted         *int32             `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	EndTime         *string            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EspBizId        *string            `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	GmtModified     *string            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceBizId   *string            `json:"InstanceBizId,omitempty" xml:"InstanceBizId,omitempty"`
-	Name            *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeList        []*TreeNode        `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
-	Profile         *AppServiceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	ServiceType     *string            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	ServiceTypeText *string            `json:"ServiceTypeText,omitempty" xml:"ServiceTypeText,omitempty"`
-	Slug            *string            `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	StartTime       *string            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *string            `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId          *string            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The business ID of the application instance.
+	//
+	// example:
+	//
+	// WS20251211153330000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The creation time in ISO 8601 format in the UTC time zone (Z).
+	//
+	// example:
+	//
+	// 2025-07-30T02:08:40Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion flag.
+	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The end time in ISO 8601 format in the UTC time zone (Z).
+	//
+	// example:
+	//
+	// 2025-07-18T02:23:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// esp bizId
+	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// Tue Sep 09 10:27:49 CST 2025
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The associated business ID.
+	//
+	// example:
+	//
+	// WS20250915163734000001
+	InstanceBizId *string `json:"InstanceBizId,omitempty" xml:"InstanceBizId,omitempty"`
+	// The service name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of flow nodes.
+	NodeList []*TreeNode `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
+	// The application service configuration information.
+	Profile *AppServiceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The service type.
+	//
+	// example:
+	//
+	// WEBSITE_DESIGN
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The service type description.
+	ServiceTypeText *string `json:"ServiceTypeText,omitempty" xml:"ServiceTypeText,omitempty"`
+	// The application identifier.
+	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
+	// The start time as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1754447102000
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status.
+	//
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AppService) String() string {

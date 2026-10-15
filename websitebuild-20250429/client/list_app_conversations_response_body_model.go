@@ -38,13 +38,13 @@ type iListAppConversationsResponseBody interface {
 }
 
 type ListAppConversationsResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAppConversationsResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of entries to return per query.
+	// The number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -102,7 +102,7 @@ type ListAppConversationsResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -351,7 +351,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 799EAC1246C855CAC75B77955E43D841
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The creation time.
+	// The creation time in ISO 8601 format with a time zone offset.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -359,7 +359,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 2026-01-27T17:51:25.415+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The modification time in ISO 8601 format with the UTC (Z) time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -385,7 +385,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 1068725896006128
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The current viewpoint, which is equivalent to the news title.
+	// The current viewpoint, equivalent to the news title.
 	//
 	// example:
 	//

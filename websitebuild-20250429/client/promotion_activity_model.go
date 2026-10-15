@@ -48,24 +48,114 @@ type iPromotionActivity interface {
 }
 
 type PromotionActivity struct {
-	ActivityCode       *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
-	ActivityName       *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	ActivityType       *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	ConsumedQuota      *int64  `json:"ConsumedQuota,omitempty" xml:"ConsumedQuota,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedBy          *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	EligibilityConfig  *string `json:"EligibilityConfig,omitempty" xml:"EligibilityConfig,omitempty"`
-	EndDate            *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	OfferConfig        *string `json:"OfferConfig,omitempty" xml:"OfferConfig,omitempty"`
+	// The campaign code.
+	//
+	// example:
+	//
+	// acwfradoj5u
+	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
+	// The campaign name.
+	//
+	// example:
+	//
+	// IP CIDR block filtering statistics
+	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	// The campaign type.
+	//
+	// example:
+	//
+	// SCALE_IN
+	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	// The consumed quota.
+	//
+	// example:
+	//
+	// 100
+	ConsumedQuota *int64 `json:"ConsumedQuota,omitempty" xml:"ConsumedQuota,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-10-11T21:13:38.164526965+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
+	// example:
+	//
+	// 123414
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The eligibility configuration in JSON format.
+	//
+	// example:
+	//
+	// {}
+	EligibilityConfig *string `json:"EligibilityConfig,omitempty" xml:"EligibilityConfig,omitempty"`
+	// The end date.
+	//
+	// example:
+	//
+	// 2026-04-22 10:18:51 +0800
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The privilege configuration in JSON format.
+	//
+	// example:
+	//
+	// {}
+	OfferConfig *string `json:"OfferConfig,omitempty" xml:"OfferConfig,omitempty"`
+	// The privilege configuration summary.
+	//
+	// example:
+	//
+	// {}
 	OfferConfigSummary *string `json:"OfferConfigSummary,omitempty" xml:"OfferConfigSummary,omitempty"`
-	RemainingQuota     *int64  `json:"RemainingQuota,omitempty" xml:"RemainingQuota,omitempty"`
-	StartDate          *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalQuota         *int64  `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	TouchpointConfig   *string `json:"TouchpointConfig,omitempty" xml:"TouchpointConfig,omitempty"`
-	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdatedBy          *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	WarningThreshold   *int32  `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
+	// The remaining quota.
+	//
+	// example:
+	//
+	// 10
+	RemainingQuota *int64 `json:"RemainingQuota,omitempty" xml:"RemainingQuota,omitempty"`
+	// The start date.
+	//
+	// example:
+	//
+	// 2026-05-12T16:00:00.000Z
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The campaign status.
+	//
+	// example:
+	//
+	// FE_ABORTING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total quota.
+	//
+	// example:
+	//
+	// 10
+	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	// The touchpoint configuration in JSON format.
+	//
+	// example:
+	//
+	// {}
+	TouchpointConfig *string `json:"TouchpointConfig,omitempty" xml:"TouchpointConfig,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2025-10-11T21:13:38.164526965+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The updater.
+	//
+	// example:
+	//
+	// 123414
+	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	// The warning threshold.
+	//
+	// example:
+	//
+	// 0
+	WarningThreshold *int32 `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
 }
 
 func (s PromotionActivity) String() string {

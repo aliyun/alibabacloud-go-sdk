@@ -70,7 +70,7 @@ type ListRbacRolesResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries per query.
+	// The maximum number of entries to return per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -102,7 +102,7 @@ type ListRbacRolesResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -275,7 +275,7 @@ type ListRbacRolesResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Indicates whether the query results exceed the server-side limit of 1,000 records (excluding pagination limits). If the results exceed 1,000 entries, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// Indicates whether the server-side result limit is reached. The server processes up to 1,000 recent records beyond pagination limits. If the results exceed 1,000, **ResultLimit*	- is **true*	- and you must narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -403,7 +403,7 @@ func (s *ListRbacRolesResponseBodyModule) Validate() error {
 }
 
 type ListRbacRolesResponseBodyModuleData struct {
-	// The creation date.
+	// The creation date. The value is in ISO 8601 format with the time zone set to UTC (Z).
 	//
 	// example:
 	//
@@ -425,7 +425,7 @@ type ListRbacRolesResponseBodyModuleData struct {
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether this is a system-defined approval template. Valid values:
+	// Indicates whether the approval template is system-defined. Valid values:
 	//
 	// - 1: Yes.
 	//
@@ -441,7 +441,7 @@ type ListRbacRolesResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// 文件名
+	// FileName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -512,7 +512,7 @@ func (s *ListRbacRolesResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacRolesResponseBodyModuleNext struct {
-	// The time when the task was created.
+	// The time when the task was created. The value is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -524,13 +524,13 @@ type ListRbacRolesResponseBodyModuleNext struct {
 	//
 	// 1000039405002
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether this is the default private gateway.
+	// Indicates whether this is the default dedicated gateway.
 	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether this is a system-defined approval template. Valid values:
+	// Indicates whether the approval template is system-defined. Valid values:
 	//
 	// - 1: Yes.
 	//

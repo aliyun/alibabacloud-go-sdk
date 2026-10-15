@@ -40,17 +40,17 @@ type QueryInspirationAccountDetailsResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed. Valid values:
+	// Indicates whether retries are allowed. Valid values:
 	//
-	// - false: Not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application. The system queries the application with this name.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type QueryInspirationAccountDetailsResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *QueryInspirationAccountDetailsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,11 +84,11 @@ type QueryInspirationAccountDetailsResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is processed synchronously.
 	//
@@ -221,7 +221,7 @@ type QueryInspirationAccountDetailsResponseBodyModule struct {
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The query results.
+	// The request results.
 	Data []*QueryInspirationAccountDetailsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The decision weight.
 	Next *QueryInspirationAccountDetailsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
@@ -231,7 +231,7 @@ type QueryInspirationAccountDetailsResponseBodyModule struct {
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type QueryInspirationAccountDetailsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Indicates whether the result set exceeds the server-side limit of 1,000 records (excluding pagination). If the results exceed 1,000 records, **ResultLimit*	- is **true**. Narrow the time range and search again. If the results do not exceed 1,000 records, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow down the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -367,51 +367,62 @@ func (s *QueryInspirationAccountDetailsResponseBodyModule) Validate() error {
 }
 
 type QueryInspirationAccountDetailsResponseBodyModuleData struct {
-	// The time when the inspiration points were acquired.
+	// The acquisition time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
-	// The remaining balance (initQuota - used).
+	// The balance, which is calculated by subtracting the used amount from the initial quota (initQuota - used).
 	//
 	// example:
 	//
 	// 12
-	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	Balance *int64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	// The exact value of the balance. The value is of the String type to support decimal display.
+	//
+	// example:
+	//
+	// 12
 	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
-	// The time when the quota expires.
+	// The expiration time of the validity period. The time is in the YYYY-MM-DD HH:mm:ss Z format, where Z is the time zone offset.
 	//
 	// example:
 	//
 	// 2025-04-11 10:26:27 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
+	// Indicates whether the quota has expired (endDate < current time). The frontend displays the item in gray based on this value.
 	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The quantity acquired (initial quota).
+	// The acquired amount, which is the initial quota.
 	//
 	// example:
 	//
 	// 123123
-	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	InitQuota *int64 `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	// The exact value of the acquired amount. The value is of the String type to support decimal display.
+	//
+	// example:
+	//
+	// 123123
 	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
-	// The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
+	// The code of the source type. Examples: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The display name of the source type.
+	// The Chinese name of the source type.
 	//
 	// example:
 	//
 	// FREE_TRIAL_GIFT
 	SourceTypeName *string `json:"SourceTypeName,omitempty" xml:"SourceTypeName,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the inspiration credit account.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryInspirationAccountDetailsResponseBodyModuleData) String() string {
@@ -517,45 +528,55 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) Validate() error 
 }
 
 type QueryInspirationAccountDetailsResponseBodyModuleNext struct {
-	// The time when the inspiration points were acquired.
+	// The acquisition time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
-	// The remaining balance (initQuota - used).
+	// The balance, which is calculated by subtracting the used amount from the initial quota (initQuota - used).
 	//
 	// example:
 	//
 	// 12
-	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	Balance *int64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	// The exact value of the balance. The value is of the String type to support decimal display.
+	//
+	// example:
+	//
+	// 12
 	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
-	// The time when the quota expires.
+	// The expiration time of the validity period. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-02-25 10:11:25
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
+	// Indicates whether the quota has expired (endDate < current time). The frontend displays the item in gray based on this value.
 	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The quantity acquired (initial quota).
+	// The acquired amount, which is the initial quota.
 	//
 	// example:
 	//
 	// 123123
-	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	InitQuota *int64 `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	// The exact value of the acquired amount. The value is of the String type to support decimal display.
+	//
+	// example:
+	//
+	// 123123
 	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
-	// The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
+	// The code of the source type. Examples: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The display name of the source type.
+	// The Chinese name of the source type.
 	//
 	// example:
 	//

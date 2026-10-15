@@ -16,7 +16,17 @@ type iDeleteRbacOrgUnitRequest interface {
 }
 
 type DeleteRbacOrgUnitRequest struct {
-	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business ID.
+	//
+	// example:
+	//
+	// WD20250703155602000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The organization ID.
+	//
+	// example:
+	//
+	// f0534aa7-94ec-4368-a34a-310390f66253
 	OrgUnitId *string `json:"OrgUnitId,omitempty" xml:"OrgUnitId,omitempty"`
 }
 

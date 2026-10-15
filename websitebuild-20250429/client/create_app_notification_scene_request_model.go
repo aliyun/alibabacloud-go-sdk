@@ -11,6 +11,10 @@ type iCreateAppNotificationSceneRequest interface {
 	GoString() string
 	SetBizId(v string) *CreateAppNotificationSceneRequest
 	GetBizId() *string
+	SetButlerChannelTypesJson(v string) *CreateAppNotificationSceneRequest
+	GetButlerChannelTypesJson() *string
+	SetButlerFieldsJson(v string) *CreateAppNotificationSceneRequest
+	GetButlerFieldsJson() *string
 	SetChannelsJson(v string) *CreateAppNotificationSceneRequest
 	GetChannelsJson() *string
 	SetDescription(v string) *CreateAppNotificationSceneRequest
@@ -42,6 +46,18 @@ type CreateAppNotificationSceneRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The list of mobile butler delivery platform types in a JSON string array. Valid values: wechat, dingtalk, wecom, and feishu.
+	//
+	// example:
+	//
+	// ["feishu"]
+	ButlerChannelTypesJson *string `json:"ButlerChannelTypesJson,omitempty" xml:"ButlerChannelTypesJson,omitempty"`
+	// The list of mobile butler notification fields in a JSON string array. This parameter is required when the butler channel is selected. A maximum of 10 fields are supported. The butler fields in JSON format.
+	//
+	// example:
+	//
+	// ["id","phone","name","city","message","is_deleted","updated_at","created_at","status","budget"]
+	ButlerFieldsJson *string `json:"ButlerFieldsJson,omitempty" xml:"ButlerFieldsJson,omitempty"`
 	// The notification channels in a JSON array string, such as ["sms","email"].
 	//
 	// example:
@@ -76,7 +92,7 @@ type CreateAppNotificationSceneRequest struct {
 	//
 	// example:
 	//
-	// 设备能力手册
+	// Device Capability Manual
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of SMS recipient IDs in a JSON array string.
 	//
@@ -120,6 +136,14 @@ func (s CreateAppNotificationSceneRequest) GoString() string {
 
 func (s *CreateAppNotificationSceneRequest) GetBizId() *string {
 	return s.BizId
+}
+
+func (s *CreateAppNotificationSceneRequest) GetButlerChannelTypesJson() *string {
+	return s.ButlerChannelTypesJson
+}
+
+func (s *CreateAppNotificationSceneRequest) GetButlerFieldsJson() *string {
+	return s.ButlerFieldsJson
 }
 
 func (s *CreateAppNotificationSceneRequest) GetChannelsJson() *string {
@@ -168,6 +192,16 @@ func (s *CreateAppNotificationSceneRequest) GetTriggerEventsJson() *string {
 
 func (s *CreateAppNotificationSceneRequest) SetBizId(v string) *CreateAppNotificationSceneRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *CreateAppNotificationSceneRequest) SetButlerChannelTypesJson(v string) *CreateAppNotificationSceneRequest {
+	s.ButlerChannelTypesJson = &v
+	return s
+}
+
+func (s *CreateAppNotificationSceneRequest) SetButlerFieldsJson(v string) *CreateAppNotificationSceneRequest {
+	s.ButlerFieldsJson = &v
 	return s
 }
 
