@@ -62,11 +62,11 @@ func (s *GetIntegrationPolicyResponseBody) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicy struct {
-	// The names of all components installed in this policy.
+	// The names of all components installed in the policy.
 	AddonNames []*string `json:"addonNames,omitempty" xml:"addonNames,omitempty" type:"Repeated"`
-	// The bound resource information.
+	// The information about the bound resource.
 	BindResource *GetIntegrationPolicyResponseBodyPolicyBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
-	// The umodel installation status in the container environment.
+	// The installation status of umodel in the container environment.
 	//
 	// example:
 	//
@@ -288,6 +288,12 @@ type GetIntegrationPolicyResponseBodyPolicyBindResource struct {
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	// The UID of the actual owner of the bound resource in cross-account scenarios.
+	//
+	// example:
+	//
+	// 12xxxx
+	EntityUserId *string `json:"entityUserId,omitempty" xml:"entityUserId,omitempty"`
 	// The VPC CIDR block.
 	//
 	// example:
@@ -318,6 +324,10 @@ func (s *GetIntegrationPolicyResponseBodyPolicyBindResource) GetClusterType() *s
 	return s.ClusterType
 }
 
+func (s *GetIntegrationPolicyResponseBodyPolicyBindResource) GetEntityUserId() *string {
+	return s.EntityUserId
+}
+
 func (s *GetIntegrationPolicyResponseBodyPolicyBindResource) GetVpcCidr() *string {
 	return s.VpcCidr
 }
@@ -333,6 +343,11 @@ func (s *GetIntegrationPolicyResponseBodyPolicyBindResource) SetClusterId(v stri
 
 func (s *GetIntegrationPolicyResponseBodyPolicyBindResource) SetClusterType(v string) *GetIntegrationPolicyResponseBodyPolicyBindResource {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *GetIntegrationPolicyResponseBodyPolicyBindResource) SetEntityUserId(v string) *GetIntegrationPolicyResponseBodyPolicyBindResource {
+	s.EntityUserId = &v
 	return s
 }
 
@@ -371,7 +386,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroup struct {
 	EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
 	// The entity rules.
 	EntityRules *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules `json:"entityRules,omitempty" xml:"entityRules,omitempty" type:"Struct"`
-	// Used for querying.
+	// The query.
 	//
 	// example:
 	//
@@ -493,11 +508,11 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
 	EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
 	// The list of property rules.
 	FieldRules []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
-	// The instance IDs.
+	// The instance ID.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	// The IP matching rule.
 	IpMatchRule *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
-	// The labels.
+	// The tags.
 	Labels []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// The list of region IDs.
 	RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
@@ -507,7 +522,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
 	//
 	// rg-aek3aqsuvlv3yyq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tag values.
+	// The tag value.
 	Tags []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -658,7 +673,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations str
 	//
 	// use
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag values.
+	// The tag value.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 

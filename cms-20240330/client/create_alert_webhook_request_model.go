@@ -28,7 +28,7 @@ type iCreateAlertWebhookRequest interface {
 }
 
 type CreateAlertWebhookRequest struct {
-	// The content type of the data. Valid values:
+	// The data content type. Valid values:
 	//
 	// - JSON (default)
 	//

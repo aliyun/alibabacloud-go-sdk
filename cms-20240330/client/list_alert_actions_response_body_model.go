@@ -22,7 +22,7 @@ type iListAlertActionsResponseBody interface {
 }
 
 type ListAlertActionsResponseBody struct {
-	// The list of action integration configurations.
+	// The list of alert action integration configurations.
 	AlertActions []*ListAlertActionsResponseBodyAlertActions `json:"alertActions,omitempty" xml:"alertActions,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -117,13 +117,13 @@ func (s *ListAlertActionsResponseBody) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActions struct {
-	// The unique IDs of the action integrations.
+	// The unique identifiers of the alert action integrations.
 	//
 	// example:
 	//
 	// test
 	AlertActionId *string `json:"alertActionId,omitempty" xml:"alertActionId,omitempty"`
-	// The name of the action integration.
+	// The name of the alert action integration.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListAlertActionsResponseBodyAlertActions struct {
 	PagerDutyParam *ListAlertActionsResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *ListAlertActionsResponseBodyAlertActionsSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The type of the action integration.
+	// The type of the alert action integration.
 	//
 	// example:
 	//
@@ -440,7 +440,7 @@ func (s *ListAlertActionsResponseBodyAlertActionsEssParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsFc3Param struct {
-	// The function name of the Function Compute service.
+	// The name of the function in Function Compute.
 	//
 	// example:
 	//
@@ -500,7 +500,7 @@ func (s *ListAlertActionsResponseBodyAlertActionsFc3Param) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsFcParam struct {
-	// The function name of the Function Compute service.
+	// The name of the function in Function Compute.
 	//
 	// example:
 	//
@@ -560,13 +560,13 @@ func (s *ListAlertActionsResponseBodyAlertActionsFcParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsMnsParam struct {
-	// The resource type of Simple Message Queue (formerly MNS).
+	// The resource type in Simple Message Queue (formerly MNS).
 	//
 	// example:
 	//
 	// queue
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
-	// The resource name.
+	// The name of the resource.
 	//
 	// - If the resource type is queue, the resource name is the queue name.
 	//
@@ -624,13 +624,13 @@ func (s *ListAlertActionsResponseBodyAlertActionsMnsParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsPagerDutyParam struct {
-	// The integration key of PagerDuty.
+	// The integration key for PagerDuty.
 	//
 	// example:
 	//
 	// fsfer4543t5t65g4t4
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook of PagerDuty. V1 and V2 versions are supported.
+	// The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -669,13 +669,13 @@ func (s *ListAlertActionsResponseBodyAlertActionsPagerDutyParam) Validate() erro
 }
 
 type ListAlertActionsResponseBodyAlertActionsSlsParam struct {
-	// The name of the Simple Log Service Logstore.
+	// The name of the Logstore in Simple Log Service.
 	//
 	// example:
 	//
 	// test
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the project in Simple Log Service.
 	//
 	// example:
 	//

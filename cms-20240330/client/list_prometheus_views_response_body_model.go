@@ -120,29 +120,29 @@ func (s *ListPrometheusViewsResponseBody) Validate() error {
 }
 
 type ListPrometheusViewsResponseBodyPrometheusViews struct {
-	// The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
+	// The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2025-07-12T02:18:36Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The instance type:
+	// The instance type. Valid values:
 	//
-	// prom-view: aggregated view of the new version.
+	// - prom-view: new version of the aggregate view
 	//
-	// global-view: aggregated view of the legacy version.
+	// - global-view: legacy version of the aggregate view
 	//
 	// example:
 	//
 	// prom-view
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The billing type. Currently, the fixed value is FREE.
+	// The billing method. The value is fixed to FREE.
 	//
 	// example:
 	//
 	// FREE
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The product to which the Prometheus instance belongs (arms or cms).
+	// The product to which the Prometheus instance belongs, such as ARMS or CMS.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	//
 	// 2
 	PrometheusInstanceCount *int32 `json:"prometheusInstanceCount,omitempty" xml:"prometheusInstanceCount,omitempty"`
-	// The Prometheus view ID.
+	// The ID of the Prometheus view.
 	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
-	// The Prometheus view name.
+	// The name of the Prometheus view.
 	//
 	// example:
 	//
@@ -172,25 +172,25 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The fixed value: PrometheusView.
+	// The resource type. The value is fixed to PrometheusView.
 	//
 	// example:
 	//
 	// PrometheusView
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The backend data storage status.
+	// The status of the backend data storage.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

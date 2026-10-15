@@ -24,25 +24,25 @@ type iQueryAlertRulesShrinkRequest interface {
 type QueryAlertRulesShrinkRequest struct {
 	// The request body for querying alert rules.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The idempotency token.
+	// The client token that is used to ensure idempotence.
 	//
 	// example:
 	//
 	// xxxxx-xxxx-xxxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The maximum number of data records to read in this request.
+	// The maximum number of data records to return in the current read operation.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token that marks the position from which to start reading. Leave this parameter empty to read from the beginning.
+	// The token that specifies the starting position for the current read operation. If this parameter is left empty, the read operation starts from the beginning.
 	//
 	// example:
 	//
 	// 123456
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The query filter condition. The value is a JSON string whose fields have the same semantics as the request body. Supported fields include filter (uuid, displayName, labels, status, enabled, and more. Fields at the same level have an AND relationship), pagination (pageNumber and pageSize), and workspace. Specify either this parameter or the request body. If both are specified, the request body takes precedence.
+	// The query filter conditions in JSON string format. The field semantics are the same as those in the request body. Supported fields include filter (such as uuid, displayName, labels, status, and enabled, where sibling fields use the AND logical operator), pagination (pageNumber and pageSize), and workspace. You must specify either this parameter or the body parameter. If both are specified, the body parameter takes precedence.
 	//
 	// example:
 	//

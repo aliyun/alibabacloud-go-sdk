@@ -619,7 +619,7 @@ func (client *Client) CreateBizTraceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a cloud resource.
+// Creates a cloud resource center.
 //
 // @param headers - map
 //
@@ -2061,7 +2061,7 @@ func (client *Client) DeleteAlertRobotsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Deletes one or more alert webhooks.
+// Deletes a webhook.
 //
 // @param tmpReq - DeleteAlertWebhooksRequest
 //
@@ -2155,7 +2155,7 @@ func (client *Client) DeleteBizTraceWithContext(ctx context.Context, bizTraceId 
 
 // Summary:
 //
-// Deletes a cloud resource.
+// Deletes the Cloud Resource Center.
 //
 // @param headers - map
 //
@@ -4022,7 +4022,7 @@ func (client *Client) GetBizTraceWithContext(ctx context.Context, bizTraceId *st
 
 // Summary:
 //
-// Retrieves information about cloud resources.
+// Queries the cloud resource center.
 //
 // @param headers - map
 //
@@ -4503,7 +4503,7 @@ func (client *Client) GetEntityStoreDataWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// Queries the policy information of the DDoS Access Center.
+// Queries Access Center policy information.
 //
 // @param request - GetIntegrationPolicyRequest
 //
@@ -5751,11 +5751,11 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Queries alert robots.
+// Queries chatbots.
 //
 // Description:
 //
-// Queries the list of alert robots under the current account. Alert robots are webhook receivers for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter results by robot ID, name, type, and workspace.
+// Queries the list of alert chatbots under the current account. Alert chatbots serve as webhook endpoints for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter the results by chatbot ID, name, type, and workspace.
 //
 // @param tmpReq - ListAlertRobotsRequest
 //
@@ -6029,11 +6029,11 @@ func (client *Client) ListContactGroupsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries alert contacts.
+// Queries contacts.
 //
 // Description:
 //
-// This topic provides an example of how to create an alert contact group named `ECS_Group`.
+// This topic provides an example of creating an alert contact group named `ECS_Group`.
 //
 // @param tmpReq - ListContactsRequest
 //
@@ -6407,11 +6407,11 @@ func (client *Client) ListDeliveryTasksWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries the list of access center policies.
+// Queries the list of integration center policies.
 //
 // Description:
 //
-// Queries the integration list.
+// Queries the list of integrations.
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -7327,11 +7327,11 @@ func (client *Client) ListPrometheusInstancesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Queries the list of Prometheus view instances.
+// Queries a list of Prometheus view instances.
 //
 // Description:
 //
-// Queries the list of Prometheus view instances.
+// Queries a list of Prometheus view instances.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -8090,7 +8090,7 @@ func (client *Client) PutWorkspaceWithContext(ctx context.Context, workspaceName
 //
 // Description:
 //
-// This topic provides an example of how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying an alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //

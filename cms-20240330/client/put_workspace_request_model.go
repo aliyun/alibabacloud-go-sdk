@@ -48,7 +48,7 @@ type PutWorkspaceRequest struct {
 	//
 	// sls-project-test-001
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The tags attached to the workspace when it is created.
+	// The tags bound to the workspace when it is created.
 	Tags []*PutWorkspaceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 

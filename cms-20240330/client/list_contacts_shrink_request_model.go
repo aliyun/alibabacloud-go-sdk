@@ -30,21 +30,21 @@ type iListContactsShrinkRequest interface {
 }
 
 type ListContactsShrinkRequest struct {
-	// The IDs of the alert contacts.
+	// The IDs of the contacts.
 	ContactIdsShrink *string `json:"contactIds,omitempty" xml:"contactIds,omitempty"`
-	// The email address of the alert contact.
+	// The email address of the contact.
 	//
 	// example:
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The ID of the contact group to which the alert contact belongs.
+	// The ID of the contact group to which the contact belongs.
 	//
 	// example:
 	//
 	// group-id-123
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The name of the alert contact.
+	// The name of the contact.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type ListContactsShrinkRequest struct {
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The phone number of the alert contact.
+	// The mobile phone number of the contact.
 	//
 	// example:
 	//
 	// 15012345678
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// Specifies whether to query only ungrouped alert contacts.
+	// Specifies whether to query only ungrouped contacts.
 	//
 	// example:
 	//
 	// true
 	QueryUngroupedContacts *bool `json:"queryUngroupedContacts,omitempty" xml:"queryUngroupedContacts,omitempty"`
-	// The workspace name. Format: `default-cms-{accountId}-{region}`. Example: `default-cms-1744108686100472-cn-hangzhou`. You can call the ListWorkspaces API to obtain valid workspace names.
+	// The name of the workspace. Format: `default-cms-{accountId}-{region}`, such as `default-cms-1744108686100472-cn-hangzhou`. You can call the ListWorkspaces API operation to obtain valid workspace names.
 	//
 	// example:
 	//

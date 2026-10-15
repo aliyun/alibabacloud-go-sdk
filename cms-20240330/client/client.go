@@ -872,7 +872,7 @@ func (client *Client) CreateBizTrace(request *CreateBizTraceRequest) (_result *C
 
 // Summary:
 //
-// Creates a cloud resource.
+// Creates a cloud resource center.
 //
 // @param headers - map
 //
@@ -905,7 +905,7 @@ func (client *Client) CreateCloudResourceWithOptions(headers map[string]*string,
 
 // Summary:
 //
-// Creates a cloud resource.
+// Creates a cloud resource center.
 //
 // @return CreateCloudResourceResponse
 func (client *Client) CreateCloudResource() (_result *CreateCloudResourceResponse, _err error) {
@@ -2814,7 +2814,7 @@ func (client *Client) DeleteAlertRobots(request *DeleteAlertRobotsRequest) (_res
 
 // Summary:
 //
-// Deletes one or more alert webhooks.
+// Deletes a webhook.
 //
 // @param tmpReq - DeleteAlertWebhooksRequest
 //
@@ -2867,7 +2867,7 @@ func (client *Client) DeleteAlertWebhooksWithOptions(tmpReq *DeleteAlertWebhooks
 
 // Summary:
 //
-// Deletes one or more alert webhooks.
+// Deletes a webhook.
 //
 // @param request - DeleteAlertWebhooksRequest
 //
@@ -2946,7 +2946,7 @@ func (client *Client) DeleteBizTrace(bizTraceId *string, request *DeleteBizTrace
 
 // Summary:
 //
-// Deletes a cloud resource.
+// Deletes the Cloud Resource Center.
 //
 // @param headers - map
 //
@@ -2979,7 +2979,7 @@ func (client *Client) DeleteCloudResourceWithOptions(headers map[string]*string,
 
 // Summary:
 //
-// Deletes a cloud resource.
+// Deletes the Cloud Resource Center.
 //
 // @return DeleteCloudResourceResponse
 func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceResponse, _err error) {
@@ -5624,7 +5624,7 @@ func (client *Client) GetBizTrace(bizTraceId *string, request *GetBizTraceReques
 
 // Summary:
 //
-// Retrieves information about cloud resources.
+// Queries the cloud resource center.
 //
 // @param headers - map
 //
@@ -5657,7 +5657,7 @@ func (client *Client) GetCloudResourceWithOptions(headers map[string]*string, ru
 
 // Summary:
 //
-// Retrieves information about cloud resources.
+// Queries the cloud resource center.
 //
 // @return GetCloudResourceResponse
 func (client *Client) GetCloudResource() (_result *GetCloudResourceResponse, _err error) {
@@ -6319,7 +6319,7 @@ func (client *Client) GetEntityStoreData(workspace *string, request *GetEntitySt
 
 // Summary:
 //
-// Queries the policy information of the DDoS Access Center.
+// Queries Access Center policy information.
 //
 // @param request - GetIntegrationPolicyRequest
 //
@@ -6360,7 +6360,7 @@ func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, request 
 
 // Summary:
 //
-// Queries the policy information of the DDoS Access Center.
+// Queries Access Center policy information.
 //
 // @param request - GetIntegrationPolicyRequest
 //
@@ -8077,11 +8077,11 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 
 // Summary:
 //
-// Queries alert robots.
+// Queries chatbots.
 //
 // Description:
 //
-// Queries the list of alert robots under the current account. Alert robots are webhook receivers for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter results by robot ID, name, type, and workspace.
+// Queries the list of alert chatbots under the current account. Alert chatbots serve as webhook endpoints for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter the results by chatbot ID, name, type, and workspace.
 //
 // @param tmpReq - ListAlertRobotsRequest
 //
@@ -8158,11 +8158,11 @@ func (client *Client) ListAlertRobotsWithOptions(tmpReq *ListAlertRobotsRequest,
 
 // Summary:
 //
-// Queries alert robots.
+// Queries chatbots.
 //
 // Description:
 //
-// Queries the list of alert robots under the current account. Alert robots are webhook receivers for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter results by robot ID, name, type, and workspace.
+// Queries the list of alert chatbots under the current account. Alert chatbots serve as webhook endpoints for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter the results by chatbot ID, name, type, and workspace.
 //
 // @param request - ListAlertRobotsRequest
 //
@@ -8439,11 +8439,11 @@ func (client *Client) ListContactGroups(request *ListContactGroupsRequest) (_res
 
 // Summary:
 //
-// Queries alert contacts.
+// Queries contacts.
 //
 // Description:
 //
-// This topic provides an example of how to create an alert contact group named `ECS_Group`.
+// This topic provides an example of creating an alert contact group named `ECS_Group`.
 //
 // @param tmpReq - ListContactsRequest
 //
@@ -8528,11 +8528,11 @@ func (client *Client) ListContactsWithOptions(tmpReq *ListContactsRequest, heade
 
 // Summary:
 //
-// Queries alert contacts.
+// Queries contacts.
 //
 // Description:
 //
-// This topic provides an example of how to create an alert contact group named `ECS_Group`.
+// This topic provides an example of creating an alert contact group named `ECS_Group`.
 //
 // @param request - ListContactsRequest
 //
@@ -8939,11 +8939,11 @@ func (client *Client) ListDeliveryTasks(request *ListDeliveryTasksRequest) (_res
 
 // Summary:
 //
-// Queries the list of access center policies.
+// Queries the list of integration center policies.
 //
 // Description:
 //
-// Queries the integration list.
+// Queries the list of integrations.
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -9048,11 +9048,11 @@ func (client *Client) ListIntegrationPoliciesWithOptions(tmpReq *ListIntegration
 
 // Summary:
 //
-// Queries the list of access center policies.
+// Queries the list of integration center policies.
 //
 // Description:
 //
-// Queries the integration list.
+// Queries the list of integrations.
 //
 // @param request - ListIntegrationPoliciesRequest
 //
@@ -10165,11 +10165,11 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 
 // Summary:
 //
-// Queries the list of Prometheus view instances.
+// Queries a list of Prometheus view instances.
 //
 // Description:
 //
-// Queries the list of Prometheus view instances.
+// Queries a list of Prometheus view instances.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -10258,11 +10258,11 @@ func (client *Client) ListPrometheusViewsWithOptions(tmpReq *ListPrometheusViews
 
 // Summary:
 //
-// Queries the list of Prometheus view instances.
+// Queries a list of Prometheus view instances.
 //
 // Description:
 //
-// Queries the list of Prometheus view instances.
+// Queries a list of Prometheus view instances.
 //
 // @param request - ListPrometheusViewsRequest
 //
@@ -11161,7 +11161,7 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 //
 // Description:
 //
-// This topic provides an example of how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying an alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //
@@ -11236,7 +11236,7 @@ func (client *Client) QueryAlertRulesWithOptions(tmpReq *QueryAlertRulesRequest,
 //
 // Description:
 //
-// This topic provides an example of how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying an alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - QueryAlertRulesRequest
 //

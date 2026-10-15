@@ -74,15 +74,15 @@ type AlertRuleV2 struct {
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
 	// The annotations.
 	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	// The Application Real-Time Monitoring Service (ARMS) integration configuration.
+	// The ARMS integration configuration.
 	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	// The business source (read-only, such as managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, or sls).
+	// The business source (read-only, such as managed_service_for_prometheus / umodel / application_insights / cloud_monitoring / sls).
 	//
 	// example:
 	//
-	// Sample value
+	// 示例值
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	// The detection condition configuration aggregation (Prometheus simple, UModel, APM simple, or APM composite).
+	// The detection condition configuration aggregate (Prometheus simple / UModel / APM simple / APM composite).
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
 	// The content template.
 	//
@@ -96,9 +96,9 @@ type AlertRuleV2 struct {
 	//
 	// 1751595283143
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The datasource config aggregation (PROMETHEUS, UMODEL, and APM share a single object, with fields selected based on type).
+	// The datasource configuration aggregate (shared by PROMETHEUS / UMODEL / APM in a single object; fields are selected based on the type).
 	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	// The data source type (read-only, derived).
+	// The datasource type (read-only, derived).
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type AlertRuleV2 struct {
 	//
 	// example:
 	//
-	// CPU usage alert 95%
+	// CPU resource usage alert 95%
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Indicates whether the alert rule is enabled.
+	// Specifies whether the alert rule is enabled.
 	//
 	// example:
 	//
@@ -118,15 +118,15 @@ type AlertRuleV2 struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The labels.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates the rule is created and managed by the corresponding cloud service.
+	// The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates that the rule was created and managed by the corresponding cloud service.
 	//
 	// example:
 	//
 	// integrationCenter
 	ManagedBy *string `json:"managedBy,omitempty" xml:"managedBy,omitempty"`
-	// The notification configuration aggregation (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
+	// The notification configuration aggregate (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
 	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	// The notification policy ID (read-only, derived, the first entry in the notification policy list).
+	// The notification policy ID (read-only, derived from the first entry in the notification policy list).
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ type AlertRuleV2 struct {
 	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Indicates whether the rule takes effect on all resources of this type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
+	// **[Deprecated]*	- Specifies whether the rule applies to all resources of the resource type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
 	//
 	// example:
 	//
 	// true
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	// The list of observable resource IDs (read-only, derived).
+	// The observable resource ID list (read-only, derived).
 	ObserveResourceList []*string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty" type:"Repeated"`
 	// Deprecated
 	//
@@ -156,21 +156,21 @@ type AlertRuleV2 struct {
 	//
 	// example:
 	//
-	// Sample value
+	// 示例值
 	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	// The query configuration aggregation (PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, or APM_MULTI_QUERY).
+	// The query configuration aggregate (PROMETHEUS_SINGLE_QUERY / UMODEL_METRICSET_QUERY / APM_MULTI_QUERY).
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	// The Root Cause Analysis (RCA) configuration.
+	// The RCA (root cause analysis) configuration.
 	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// The region ID (aligned with V1 AlertRule.regionId. Priority: regionId in the request body > callerRegionId from the gateway).
+	// The region ID (aligned with V1 AlertRule.regionId; priority: request body regionId > gateway callerRegionId).
 	//
 	// example:
 	//
 	// example-id-001
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The scheduling configuration aggregation (currently only FIXED is supported).
+	// The scheduling configuration aggregate (currently only FIXED is supported).
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// The severity levels covered by this rule, comma-separated (read-only, derived. Same format as the filter.severityLevels query parameter).
+	// The severity levels covered by this rule, comma-separated (read-only, derived; consistent with the filter.severityLevels query parameter format).
 	//
 	// example:
 	//

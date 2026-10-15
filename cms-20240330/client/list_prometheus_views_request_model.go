@@ -32,7 +32,9 @@ type iListPrometheusViewsRequest interface {
 }
 
 type ListPrometheusViewsRequest struct {
-	// Filters by region ID.
+	// Deprecated
+	//
+	// Filters the results by region ID. Currently, only a single region ID is supported.
 	//
 	// example:
 	//
@@ -62,13 +64,13 @@ type ListPrometheusViewsRequest struct {
 	//
 	// view-xxx
 	PrometheusViewIds *string `json:"prometheusViewIds,omitempty" xml:"prometheusViewIds,omitempty"`
-	// The Prometheus view name.
+	// The name of the Prometheus view.
 	//
 	// example:
 	//
 	// view1
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -82,13 +84,13 @@ type ListPrometheusViewsRequest struct {
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The list of tags.
 	Tag []*ListPrometheusViewsRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The instance version: V1 or V2.
+	// The instance version.
 	//
 	// example:
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

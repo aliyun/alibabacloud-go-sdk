@@ -40,7 +40,7 @@ type iListIntegrationPoliciesShrinkRequest interface {
 }
 
 type ListIntegrationPoliciesShrinkRequest struct {
-	// The addon name.
+	// The add-on name.
 	//
 	// example:
 	//
@@ -52,13 +52,15 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// 622d27c2e87d49debceeebc7c642610e
 	BindResourceId *string `json:"bindResourceId,omitempty" xml:"bindResourceId,omitempty"`
-	// The entity IDs used for filtering. Separate multiple IDs with commas (,).
+	// The entity IDs used for filtering, separated by commas.
 	//
 	// example:
 	//
 	// eg-1,eg-2,eg-3
 	EntityGroupIds *string `json:"entityGroupIds,omitempty" xml:"entityGroupIds,omitempty"`
-	// The region IDs used for region-based queries. Separate multiple region IDs with commas (,).
+	// Deprecated
+	//
+	// The region IDs used for the query, separated by commas.
 	//
 	// example:
 	//
@@ -70,7 +72,7 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token used to retrieve more results. You do not need to specify this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
+	// The token used to retrieve more results. This parameter is not required for the first query. For subsequent queries, use the token returned in the previous response.
 	//
 	// example:
 	//
@@ -100,7 +102,7 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// cmee-622d27c2e87d49debceeebc7c642610e
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// The general query string.
+	// The query string for general queries.
 	//
 	// example:
 	//
@@ -112,7 +114,7 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The workspace.
 	//

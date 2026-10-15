@@ -14,7 +14,7 @@ type iDeleteAlertWebhooksRequest interface {
 }
 
 type DeleteAlertWebhooksRequest struct {
-	// Unique webhook identifiers.
+	// The unique identifiers of the webhooks.
 	//
 	// This parameter is required.
 	WebhookIds []*string `json:"webhookIds,omitempty" xml:"webhookIds,omitempty" type:"Repeated"`

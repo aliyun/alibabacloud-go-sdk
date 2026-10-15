@@ -22,7 +22,15 @@ type iListIntegrationPoliciesResponseBody interface {
 }
 
 type ListIntegrationPoliciesResponseBody struct {
-	// The page size.
+	// The maximum number of entries per page.
+	//
+	// Default value:
+	//
+	// 	50
+	//
+	// Maximum value:
+	//
+	// 	50
 	//
 	// example:
 	//
@@ -117,11 +125,11 @@ func (s *ListIntegrationPoliciesResponseBody) Validate() error {
 }
 
 type ListIntegrationPoliciesResponseBodyPolicies struct {
-	// The names of all components installed in this policy.
+	// The names of all add-ons installed in this policy.
 	AddonNames []*string `json:"addonNames,omitempty" xml:"addonNames,omitempty" type:"Repeated"`
-	// The bound resource information.
+	// The information about the bound resources.
 	BindResource *ListIntegrationPoliciesResponseBodyPoliciesBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
-	// The umodel installation status in the container environment.
+	// The installation status of umodel in the container environment.
 	//
 	// example:
 	//
@@ -135,7 +143,7 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	//
 	// CS_Pro
 	FeePackage *string `json:"feePackage,omitempty" xml:"feePackage,omitempty"`
-	// The policy network management information.
+	// The network management information of the policy.
 	ManagedInfo *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo `json:"managedInfo,omitempty" xml:"managedInfo,omitempty" type:"Struct"`
 	// The policy ID.
 	//
@@ -149,7 +157,7 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	//
 	// 6f5HSsg3AP
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The access center policy type.
+	// The Access Center policy type.
 	//
 	// example:
 	//
@@ -167,7 +175,7 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The sub-release count.
+	// The number of sub-releases.
 	SubAddonRelease *ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease `json:"subAddonRelease,omitempty" xml:"subAddonRelease,omitempty" type:"Struct"`
 	// The user ID.
 	//
@@ -354,13 +362,19 @@ type ListIntegrationPoliciesResponseBodyPoliciesBindResource struct {
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	// The UID of the actual owner of the bound resource in cross-account scenarios.
+	//
+	// example:
+	//
+	// 12xxxx
+	EntityUserId *string `json:"entityUserId,omitempty" xml:"entityUserId,omitempty"`
 	// The VPC CIDR block.
 	//
 	// example:
 	//
 	// 100.100.0.1/16
 	VpcCidr *string `json:"vpcCidr,omitempty" xml:"vpcCidr,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -384,6 +398,10 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesBindResource) GetClusterType
 	return s.ClusterType
 }
 
+func (s *ListIntegrationPoliciesResponseBodyPoliciesBindResource) GetEntityUserId() *string {
+	return s.EntityUserId
+}
+
 func (s *ListIntegrationPoliciesResponseBodyPoliciesBindResource) GetVpcCidr() *string {
 	return s.VpcCidr
 }
@@ -399,6 +417,11 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesBindResource) SetClusterId(v
 
 func (s *ListIntegrationPoliciesResponseBodyPoliciesBindResource) SetClusterType(v string) *ListIntegrationPoliciesResponseBodyPoliciesBindResource {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *ListIntegrationPoliciesResponseBodyPoliciesBindResource) SetEntityUserId(v string) *ListIntegrationPoliciesResponseBodyPoliciesBindResource {
+	s.EntityUserId = &v
 	return s
 }
 
@@ -561,7 +584,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules struct {
 	FieldRules []*ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
 	// The instance IDs.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	// The IP match rule.
+	// The IP address matching rule.
 	IpMatchRule *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
 	// The labels.
 	Labels []*ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
@@ -774,7 +797,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRules
 	//
 	// test
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// The field values. Multiple values are separated by commas (,).
+	// The field values. Separate multiple values with commas (,).
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
 	// The operation to perform.
 	//
@@ -824,13 +847,13 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldR
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatchRule struct {
-	// The IP CIDR block.
+	// The IP address CIDR block.
 	//
 	// example:
 	//
 	// 100.100.1.0/16
 	IpCidr *string `json:"ipCidr,omitempty" xml:"ipCidr,omitempty"`
-	// The key of the IP field.
+	// The key of the IP address field.
 	//
 	// example:
 	//
@@ -981,7 +1004,7 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags) 
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesManagedInfo struct {
-	// The ENI ID of the managed probe. Example: eni-xxxx.
+	// The ID of the elastic network interface (ENI) for the managed probe. Example: eni-xxxx.
 	//
 	// example:
 	//
