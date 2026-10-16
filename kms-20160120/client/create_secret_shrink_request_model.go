@@ -38,7 +38,7 @@ type iCreateSecretShrinkRequest interface {
 }
 
 type CreateSecretShrinkRequest struct {
-	// The ID of the KMS instance.
+	// The instance ID of the KMS instance.
 	//
 	// example:
 	//
@@ -54,9 +54,10 @@ type CreateSecretShrinkRequest struct {
 	//
 	// - true: enables automatic rotation.
 	//
-	// - false (default): disables automatic rotation.
+	// - false: disables automatic rotation. This is the default value.
 	//
-	// > This parameter is valid only if SecretType is set to Rds, PolarDB, Redis, RAMCredentials, or ECS. If SecretType is set to Generic, automatic rotation is not supported. You can call the [PutSecretValue](https://help.aliyun.com/document_detail/154503.html) operation to manually rotate the secret.
+	//
+	// > This parameter takes effect only when SecretType is set to Rds (ApsaraDB RDS secret), PolarDB (PolarDB secret), Redis (Redis secret), RAMCredentials (RAM secret), or ECS (ECS secret). When SecretType is set to Generic (generic secret), automatic rotation is not supported. You can call the [PutSecretValue](https://help.aliyun.com/document_detail/154503.html) operation to manually rotate the secret.
 	//
 	// example:
 	//
@@ -64,107 +65,107 @@ type CreateSecretShrinkRequest struct {
 	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	// The ID of the key used to encrypt the secret value.
 	//
-	// > The key and the secret must be in the same KMS instance. The key must be a symmetric key.
+	// > The key and the secret must belong to the same KMS instance, and the key must be a symmetric key.
 	//
 	// example:
 	//
 	// key-gzz63ff0db5hg3qje****
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
-	// The extended configuration of the secret. This parameter specifies the properties of the secret of a specific type. The value can be up to 1,024 characters in length.
+	// The extended configuration of the secret, which is used to specify the property of a specific secret type. The value can be up to 1,024 characters in length.
 	//
-	// - If SecretType is set to Generic, this parameter is ignored.
+	// - When SecretType is set to Generic (generic secret), this parameter is ignored.
 	//
-	// - If SecretType is set to Rds, you must specify the following parameters in ExtendedConfig:
+	// - When SecretType is set to Rds (ApsaraDB RDS secret), you must specify the following parameters in ExtendedConfig:
 	//
-	//   - SecretSubType (Required): The subtype of the secret. Valid values:
+	//      - SecretSubType (required): the child class of the secret. Valid values:
 	//
-	//     - SingleUser: Secrets Manager manages the RDS secret in single-account mode. When the secret is rotated, the password of the specified account is reset to a new random password.
+	//         - SingleUser: specifies that Secrets Manager manages the ApsaraDB RDS secret in single-account pattern. During secret rotation, the password of the specified account is reset to a new random password.
 	//
-	//     - DoubleUsers: Secrets Manager manages the RDS secret in double-account mode. ACSCurrent and ACSPrevious point to one of the accounts. When the secret is rotated, the password of the account pointed to by ACSPrevious is reset to a new random password. Then, Secrets Manager swaps the accounts that ACSCurrent and ACSPrevious point to.
+	//         - DoubleUsers: specifies that Secrets Manager manages the ApsaraDB RDS secret in dual-account pattern. ACSCurrent and ACSPrevious reference one account each. During secret rotation, the password of the account referenced by ACSPrevious is reset to a new random password, and then Secrets Manager swaps the accounts referenced by ACSCurrent and ACSPrevious.
 	//
-	//   - DBInstanceId (Required): The ID of the RDS instance to which the account belongs.
+	//     - DBInstanceId (required): instance ID of the ApsaraDB RDS instance to which the account belongs.
 	//
-	//   - CustomData (Optional): The custom data. The value is a key-value pair in the JSON format. You can specify up to 10 key-value pairs. Separate multiple key-value pairs with commas (,). Example: `{"Key1": "v1", "fds":"fdsf"}`. The default value is `{}`.
+	//     - CustomData (optional): custom data. The value is a JSON-formatted key-value pair. You can specify up to 10 key-value pairs, separated by commas (,). Example: `{"Key1": "v1", "fds":"fdsf"}`. Default value: `{}`.
 	//
-	// - If SecretType is set to Redis, you must specify the following parameters in ExtendedConfig:
+	// - When SecretType is set to Redis (Redis secret), you must specify the following parameters in ExtendedConfig:
 	//
-	//   - SecretSubType (Required): The subtype of the secret. Valid values:
+	//     - SecretSubType (required): the child class of the secret. Valid values:
 	//
-	//     - DoubleUsers: Secrets Manager manages the Redis secret in double-account mode. ACSCurrent and ACSPrevious point to one of the accounts. When the secret is rotated, the password of the account pointed to by ACSPrevious is reset to a new random password. Then, Secrets Manager swaps the accounts that ACSCurrent and ACSPrevious point to.
+	//         - DoubleUsers: specifies that Secrets Manager manages the Redis secret in dual-account pattern. ACSCurrent and ACSPrevious reference one account each. During secret rotation, the password of the account referenced by ACSPrevious is reset to a new random password, and then Secrets Manager swaps the accounts referenced by ACSCurrent and ACSPrevious.
 	//
-	//   - AccountName (Required): The database username.
+	//     - AccountName (required): the database username.
 	//
-	//   - CloneAccountName (Required): The database username, which is the value of AccountName with the `_clone` suffix.
+	//     - CloneAccountName (required): the database username, which is the value of AccountName appended with the `_clone` suffix.
 	//
-	//   - AccountPrivilege (Required): The permissions to access the database.
+	//     - AccountPrivilege (required): the permissions to access the database.
 	//
-	//   - InstanceId (Required): The ID of the Redis instance.
+	//     - InstanceId (required): instance ID of the Redis instance.
 	//
-	//   - RegionId (Required): The ID of the region where the Redis instance resides.
+	//     - RegionId (required): the region ID of the Redis instance.
 	//
-	//   - CustomData (Optional): The custom data. The value is a key-value pair in the JSON format. You can specify up to 10 key-value pairs. Separate multiple key-value pairs with commas (,). Example: `{"Key1": "v1", "fds":"fdsf"}`. The default value is `{}`.
+	//     - CustomData (optional): custom data. The value is a JSON-formatted key-value pair. You can specify up to 10 key-value pairs, separated by commas (,). Example: `{"Key1": "v1", "fds":"fdsf"}`. Default value: `{}`.
 	//
-	// - If SecretType is set to RAMCredentials, you must specify the following parameters in ExtendedConfig:
+	// - When SecretType is set to RAMCredentials (RAM secret), you must specify the following parameters in ExtendedConfig:
 	//
-	//   - SecretSubType (Required): The subtype of the secret. The value is RamUserAccessKey.
+	//     - SecretSubType (required): the child class of the secret. Valid value: RamUserAccessKey.
 	//
-	//   - UserName (Required): The name of the RAM user.
+	//     - UserName (required): the name of the Resource Access Management (RAM) user.
 	//
-	//   - CustomData (Optional): The custom data. The value is a key-value pair in the JSON format. You can specify up to 10 key-value pairs. Separate multiple key-value pairs with commas (,). The default value is `{}`.
+	//     - CustomData (optional): custom data. The value is a JSON-formatted key-value pair. You can specify up to 10 key-value pairs, separated by commas (,). Default value: `{}`.
 	//
-	// - If SecretType is set to ECS, you must specify the following parameters in ExtendedConfig:
+	// - When SecretType is set to ECS (ECS secret), you must specify the following parameters in ExtendedConfig:
 	//
-	//   - SecretSubType (Required): The subtype of the secret. Valid values:
+	//     - SecretSubType (required): the child class of the secret. Valid values:
 	//
-	//     - Password: an ECS password.
+	//         - Password: ECS password.
 	//
-	//     - SSHKey: an ECS SSH key pair.
+	//         - SSHKey: ECS SSH public and private keys.
 	//
-	//   - RegionId (Required): The ID of the region where the ECS instance resides.
+	//     - RegionId (required): the region ID of the ECS instance.
 	//
-	//   - InstanceId (Required): The ID of the ECS instance.
+	//     - InstanceId (required): instance ID of the ECS instance.
 	//
-	//   - CustomData (Optional): The custom data. The value is a key-value pair in the JSON format. You can specify up to 10 key-value pairs. Separate multiple key-value pairs with commas (,). The default value is `{}`.
+	//     - CustomData (optional): custom data. The value is a JSON-formatted key-value pair. You can specify up to 10 key-value pairs, separated by commas (,). Default value: `{}`.
 	//
-	// - If SecretType is set to PolarDB, you must specify the following parameters in ExtendedConfig:
+	// - When SecretType is set to PolarDB, you must specify the following parameters in ExtendedConfig:
 	//
-	//   - SecretSubType (Required): The fixed value is DoubleUsers.
+	//     - SecretSubType (required): DoubleUsers (fixed value).
 	//
-	//   - RegionId (Required): The region.
+	//     - RegionId (required): the region ID.
 	//
-	//   - DBClusterId (Required): The ID of the PolarDB instance.
+	//     - DBClusterId (required): instance ID of the PolarDB cluster.
 	//
-	//   - DBType (Required): MySQL or PostgreSQL.
+	//     - DBType (required): MySQL or PostgreSQL.
 	//
-	//   - AccountName (Required): The account name.
+	//     - AccountName (required): the account name.
 	//
-	//   - CloneAccountName: The value is AccountName_clone.
+	//     - CloneAccountName: the value of AccountName appended with `_clone`.
 	//
-	//   - AccountType: Only Normal is supported.
+	//     - AccountType: the account type. Only Normal is supported.
 	//
-	//   - AccountPrivilege: This parameter is available only for MySQL.
+	//     - AccountPrivilege: the account permissions. This parameter is available only for MySQL.
 	//
-	//   - DBName: This parameter is available only for MySQL.
+	//     - DBName: the database name. This parameter is available only for MySQL.
 	//
-	//   - CustomData (Optional): The custom data. The value is a key-value pair in the JSON format. You can specify up to 10 key-value pairs. Separate multiple key-value pairs with commas (,). Example: {"Key1": "v1", "fds":"fdsf"}. The default value is {}.
+	//     - CustomData (optional): custom data. The value is a JSON-formatted key-value pair. You can specify up to 10 key-value pairs, separated by commas (,). Example: `{"Key1": "v1", "fds":"fdsf"}`. Default value: `{}`.
 	//
-	// > If SecretType is set to Rds, Redis, PolarDB, RAMCredentials, or ECS, you must configure this parameter.
+	// > When SecretType is set to Rds, Redis, PolarDB, RAMCredentials, or ECS, you must set this parameter.
 	//
 	// example:
 	//
 	// {"SecretSubType":"SingleUser", "DBInstanceId":"rm-bp1b3dd3a506e****" ,"CustomData":{"Key1": "v1", "fds":"fdsf"}}
 	ExtendedConfigShrink *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length.
+	// The content of the access policy in JSON format. The maximum length is 32,768 bytes.
 	//
-	// For more information about secret policies, see [Overview of secret policies](https://help.aliyun.com/document_detail/2716465.html). If you do not specify this parameter, the default secret policy is used.
+	// For more information about secret policies, see [Overview of secret policies](https://help.aliyun.com/document_detail/2716465.html). If you do not specify this parameter, the default access policy is used.
 	//
-	// A secret policy contains the following parts:
+	// The access policy includes the following fields:
 	//
-	// - Version: The version of the secret policy. Only 1 is supported.
+	// - Version: the version of the access policy. Currently, only version 1 is supported.
 	//
-	// - Statement: The statements of the secret policy. Each secret policy can contain one or more statements.
+	// - Statement: the statements in the access policy. Each access policy contains one or more statements.
 	//
-	// The following is the format of a secret policy:
+	// The access policy uses the following format:
 	//
 	// ```
 	//
@@ -206,55 +207,55 @@ type CreateSecretShrinkRequest struct {
 	//
 	// ```
 	//
-	// Details about a statement:
+	// Statement details:
 	//
-	// - Sid: (Optional) The custom identifier of the statement. The value can be up to 128 characters in length and can contain uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), and special characters, including underscores (_), forward slashes (/), plus signs (+), equal signs (=), periods (.), at signs (@), and hyphens (-).
+	// - Sid: optional. The custom statement identifier. The value can be up to 128 characters in length and can contain uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), and special characters (_/+=.@-).
 	//
-	// - Effect: (Required) The effect of the policy statement. Valid values: Allow and Deny.
+	// - Effect: required. Specifies whether to allow or deny the permissions in the policy statement. Valid values: Allow and Deny.
 	//
-	// - Principal: (Required) The principal that is authorized by the policy. You can specify the current Alibaba Cloud account (the account to which the secret belongs), a RAM user or RAM role of the current Alibaba Cloud account, or a RAM user or RAM role of another Alibaba Cloud account.
+	// - Principal: required. The principal to which the policy is attached. You can set this field to the current Alibaba Cloud account (the account to which the secret belongs), a RAM user or RAM role under the current Alibaba Cloud account, or a RAM user or RAM role under another Alibaba Cloud account.
 	//
-	// - Action: (Required) The API operations that are allowed or denied. The value must start with "kms:". For the list of supported operations, see [Overview of secret policies](https://help.aliyun.com/document_detail/2716465.html). If you specify an operation that is not in the list, the setting does not take effect.
+	// - Action: required. The API operations to allow or deny. The value must start with "kms:". For the list of available operations, see [Overview of secret policies](https://help.aliyun.com/document_detail/2716465.html). If you specify an operation that is not in the list, the setting does not take effect.
 	//
-	// - Resource: (Required) The resource. The value can only be \\*, which indicates the current KMS secret.
+	// - Resource: required. The value can only be *, which indicates the current KMS secret.
 	//
-	// - Condition: (Optional) The conditions for the authorization to take effect. You can use conditions to evaluate the context of an API request to determine whether to apply the policy statement. The format is `"Condition": {"condition operator": {"condition key": "condition value"}}`. For more information, see [Overview of secret policies](https://help.aliyun.com/document_detail/2716465.html).
+	// - Condition: optional. The conditions that must be met for the authorization to take effect. You can use conditions to evaluate the context of an API request to determine whether the policy statement applies. The format is `"Condition": {"condition operator": {"condition key": "condition value"}}`. For more information, see [Overview of secret policies](https://help.aliyun.com/document_detail/2716465.html).
 	//
-	// > After you grant permissions to a RAM user or RAM role of another Alibaba Cloud account, you must use the Alibaba Cloud account to which the RAM user or RAM role belongs to grant the RAM user or RAM role the permissions to use the secret in the RAM console. Then, the RAM user or RAM role can use the secret. For more information, see [Custom policies for KMS](https://help.aliyun.com/document_detail/480682.html), [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html), and [Grant permissions to a RAM role](https://help.aliyun.com/document_detail/116147.html).
+	// > After you grant Resource Access Management (RAM) user or RAM role under another Alibaba Cloud account, you must also use the Alibaba Cloud account of the RAM user or RAM role to authorize them to use the secret in the RAM console. Only then can the RAM user or RAM role use the secret. For more information, see [Custom policy examples for Key Management Service](https://help.aliyun.com/document_detail/480682.html), [Grant Resource Access Management (RAM) user](https://help.aliyun.com/document_detail/116146.html), and [Grant permissions to a RAM role](https://help.aliyun.com/document_detail/116147.html).
 	//
 	// example:
 	//
 	// {"Version":"1","Statement": [{"Sid":"kms default secret policy","Effect":"Allow","Principal":{"RAM": ["acs:ram::119285303511****:*"]},"Action":["kms:*"],"Resource": ["*"] }] }
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The interval for automatic rotation. The value is in the range of 6 hours to 8,760 hours (365 days).<br>
+	// The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
 	//
-	// The value is in the `integer[unit]` format. `integer` indicates the interval. `unit` indicates the unit of time.<br>
+	// The value must be in the `integer[unit]` format. `integer` specifies the time length, and `unit` specifies the time unit.
 	//
-	// Valid values for unit: d (day), h (hour), m (minute), and s (second). For example, both 7d and 604,800s indicate a rotation interval of 7 days.<br><br>
+	// Valid values for `unit`: d (days), h (hours), m (minutes), and s (seconds). For example, both 7d and 604,800s indicate a 7-day interval.
 	//
-	// > You must specify this parameter if you set EnableAutomaticRotation to true. You do not need to specify this parameter if you set EnableAutomaticRotation to false.
+	// > You must set this parameter only when EnableAutomaticRotation is set to true.
 	//
 	// example:
 	//
 	// 30d
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	// The value of the secret. The value can be up to 30,720 bytes (30 KB) in length. KMS encrypts the secret value with the specified key and stores the encrypted value in the initial version.
+	// The secret value. The value can be up to 30,720 bytes (30 KB) in length. KMS encrypts the value by using the specified key and stores it in the initial version.
 	//
-	// - If SecretType is set to Generic, you can specify a custom secret value.
+	// - When SecretType is set to Generic (generic secret), you can customize the secret value.
 	//
-	// - If SecretType is set to Rds, the secret value must be in the following format: `{"Accounts":[{"AccountName":"","AccountPassword":""}]}`. In the format, `AccountName` specifies the username of the account for the RDS instance and `AccountPassword` specifies the password of the account.
+	// - When SecretType is set to Rds (ApsaraDB RDS secret), the secret value must be in the following format: `{"Accounts":[{"AccountName":"","AccountPassword":""}]}`. `AccountName` specifies the username of the ApsaraDB RDS instance, and `AccountPassword` specifies the password of the account.
 	//
-	// - If SecretType is set to Redis, set this parameter to `$Auto`.
+	// - When SecretType is set to Redis (Redis secret), set this parameter to `$Auto`.
 	//
-	// - If SecretType is set to RAMCredentials, the secret value must be in the following format: `{"AccessKeys":[{"AccessKeyId":"","AccessKeySecret":""}]}`. In the format, `AccessKeyId` specifies the AccessKey ID and `AccessKeySecret` specifies the AccessKey secret. You must specify all AccessKey pairs of the RAM user.
+	// - When SecretType is set to RAMCredentials (RAM secret), the secret value must be in the following format: `{"AccessKeys":[{"AccessKeyId":"","AccessKeySecret":""}]}`. `AccessKeyId` specifies the AccessKey ID, and `AccessKeySecret` specifies the AccessKey secret. You must specify all AccessKey pairs of the Resource Access Management (RAM) user.
 	//
-	// - If SecretType is set to PolarDB, set this parameter to `$Auto`.
+	// - When SecretType is set to PolarDB, set this parameter to `$Auto`.
 	//
-	// - If SecretType is set to ECS, the secret value must be in one of the following formats:
+	// - When SecretType is set to ECS (ECS secret), the secret value must be in one of the following formats:
 	//
-	//   - If SecretSubType in the ExtendedConfig parameter is set to Password: `{"UserName":"","Password": ""}`. In the format, `UserName` specifies the username used to log on to the ECS instance and `Password` specifies the password used to log on to the ECS instance.
+	//    - When SecretSubType in the ExtendedConfig parameter is set to Password: `{"UserName":"","Password": ""}`. `UserName` specifies the username used to log on to the ECS instance, and `Password` specifies the logon password.
 	//
-	//   - If SecretSubType in the ExtendedConfig parameter is set to SSHKey: `{"UserName":"","PublicKey": "", "PrivateKey": ""}`. In the format, `PublicKey` specifies the SSH-formatted public key used to log on to the ECS instance and `PrivateKey` specifies the private key used to log on to the ECS instance.
+	//    - When SecretSubType in the ExtendedConfig parameter is set to SSHKey: `{"UserName":"","PublicKey": "", "PrivateKey": ""}`. `PublicKey` specifies the SSH public key used to log on to the ECS instance, and `PrivateKey` specifies the private key.
 	//
 	// This parameter is required.
 	//
@@ -264,25 +265,25 @@ type CreateSecretShrinkRequest struct {
 	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	// The type of the secret value. Valid values:
 	//
-	// - text (default): The secret value is a text string.
+	// - text: text. This is the default value.
 	//
-	// - binary: The secret value is a binary string.
+	// - binary: binary data.
 	//
-	// > If SecretType is set to Rds, Redis, PolarDB, RAMCredentials, or ECS, SecretDataType must be set to text.
+	// > When SecretType is set to Rds, Redis, PolarDB, RAMCredentials, or ECS, SecretDataType can only be set to text.
 	//
 	// example:
 	//
 	// text
 	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
-	// The name of the secret. The name must be unique in the same region.
+	// The secret name. The secret name must be unique within the current region.
 	//
-	// The name can be up to 192 characters in length and can contain letters, digits, underscores (_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following limits apply to secret names for different types of secrets:
+	// The name can be up to 192 characters in length and can contain letters, digits, underscores (_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The naming requirements vary based on the secret type:
 	//
-	// - If SecretType is set to Generic, Rds, or Redis, the name cannot start with `acs/`.
+	// - When SecretType is set to Generic (generic secret), Rds (ApsaraDB RDS secret), or Redis (Redis or Tair secret), the name cannot start with `acs/`.
 	//
-	// - If SecretType is set to RAMCredentials, set this parameter to the fixed value `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/` and contains the display name of the RAM user.
+	// - When SecretType is set to RAMCredentials (RAM secret), use the fixed value `$Auto`. In this case, KMS automatically generates the secret name, which starts with `acs/ram/user/` and includes the display name of the Resource Access Management (RAM) user.
 	//
-	// - If SecretType is set to ECS, the name must start with `acs/ecs/`.
+	// - When SecretType is set to ECS (ECS secret), the name must start with `acs/ecs/`.
 	//
 	// This parameter is required.
 	//
@@ -292,37 +293,37 @@ type CreateSecretShrinkRequest struct {
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// The type of the secret. Valid values:
 	//
-	// - Generic (default): a generic secret.
+	// - Generic: generic secret. This is the default value.
 	//
-	// - Rds: an RDS secret.
+	// - Rds: ApsaraDB RDS secret.
 	//
-	// - Redis: a Redis secret.
+	// - Redis: Redis secret.
 	//
-	// - RAMCredentials: a RAM secret.
+	// - RAMCredentials: RAM secret.
 	//
-	// - ECS: an ECS secret.
+	// - ECS: ECS secret.
 	//
-	// - PolarDB: a PolarDB secret.
+	// - PolarDB: PolarDB secret.
 	//
 	// example:
 	//
 	// Rds
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The tags of the secret. Each tag consists of a key-value pair. A tag consists of a tag key and a tag value.
+	// The tags of the secret. Each tag is a key-value pair that consists of a tag key and a tag value.
 	//
-	// The tag key and tag value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	// The tag key and tag value can be up to 128 characters in length and can contain uppercase and lowercase letters, digits, forward slashes (/), backslashes (\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
 	//
-	// - The tag key cannot start with aliyun or acs:.
+	// - A tag key cannot start with aliyun or acs:.
 	//
-	// - You can specify up to 20 key-value pairs for each secret.
+	// - You can add up to 20 tags to each secret.
 	//
 	// example:
 	//
 	// [{\\"TagKey\\":\\"key1\\",\\"TagValue\\":\\"val1\\"},{\\"TagKey\\":\\"key2\\",\\"TagValue\\":\\"val2\\"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The version number of the initial version. The version number must be unique within the secret.
+	// The version ID of the initial version. The version ID must be unique within the secret.
 	//
-	// The version number can be up to 64 characters in length.
+	// The version ID can be up to 64 characters in length.
 	//
 	// This parameter is required.
 	//

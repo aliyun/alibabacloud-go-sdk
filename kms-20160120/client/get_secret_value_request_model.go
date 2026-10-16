@@ -26,17 +26,17 @@ type iGetSecretValueRequest interface {
 type GetSecretValueRequest struct {
 	// Specifies whether to enable DryRun mode. Valid values:
 	//
-	// - true: enables DryRun mode.
+	// - true: Enables DryRun mode.
 	//
-	// - false (default): disables DryRun mode.
+	// - false (default): Disables DryRun mode.
 	//
-	// DryRun mode is used to test API calls and verify whether you have the required permissions on the corresponding resources and whether the request parameters are correctly configured. When DryRun mode is enabled, KMS always returns a failure and provides the failure reason. Failure reasons include:
+	// DryRun mode is used to test API calls, verify whether you have the required permissions on the specified resources, and check whether the request parameters are configured correctly. When DryRun mode is enabled, KMS always returns a failure with the reason for the failure. Possible failure reasons include:
 	//
-	// - DryRunOperationError: The request would succeed without the DryRun parameter.
+	// - DryRunOperationError: The request would succeed if the DryRun parameter were not configured.
 	//
-	// - ValidationError: The parameters specified in the request are invalid.
+	// - ValidationError: A parameter specified in the request is invalid.
 	//
-	// - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
+	// - AccessDeniedError: You do not have permission to perform this operation on the KMS resource.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type GetSecretValueRequest struct {
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to retrieve the extended configuration of the secret. Valid values:
 	//
-	// - true: retrieves the extended configuration.
+	// - true: Retrieves the extended configuration.
 	//
-	// - false (default): does not retrieve the extended configuration.
+	// - false (default): Does not retrieve the extended configuration.
 	//
-	// > Generic secrets do not support extended configurations. This parameter is ignored if specified.
+	// > Generic secrets do not support extended configuration. If you set this parameter, it is ignored.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type GetSecretValueRequest struct {
 	Recipient *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
 	// The secret name or secret Alibaba Cloud Resource Name (ARN).
 	//
-	// >To access a secret in another Alibaba Cloud account, you must specify the secret ARN. The format of the secret ARN is `acs:kms:${region}:${account}:secret/${secret-name}`.
+	// >When accessing a secret in another Alibaba Cloud account, you must enter the secret ARN. The format of the secret ARN is `acs:kms:${region}:${account}:secret/${secret-name}`.
 	//
 	// This parameter is required.
 	//
@@ -70,17 +70,17 @@ type GetSecretValueRequest struct {
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// The version number.
 	//
-	// > ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, RAM secrets, and ECS secrets do not support specifying VersionId. This parameter is ignored if specified.
+	// > Specifying VersionId is not supported for ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, dynamic RAM secrets, or dynamic ECS secrets. If you set this parameter, it is ignored.
 	//
 	// example:
 	//
 	// v1
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// The version stage. Default value: ACSCurrent.
+	// The version status. Default value: ACSCurrent.
 	//
-	// If you specify this parameter, the secret value of the specified version stage is returned. If you do not specify this parameter, the secret value of the ACSCurrent version stage is returned.
+	// If you specify this parameter, the secret value of the specified version status is returned. If you do not specify this parameter, the secret value of the ACSCurrent version status is returned.
 	//
-	// > For ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, RAM secrets, and ECS secrets, you can retrieve only the secret values of the ACSPrevious and ACSCurrent versions.
+	// > For ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, dynamic RAM secrets, and dynamic ECS secrets, only the secret values corresponding to ACSPrevious and ACSCurrent can be retrieved.
 	//
 	// example:
 	//

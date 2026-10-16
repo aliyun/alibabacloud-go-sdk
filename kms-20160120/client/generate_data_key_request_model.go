@@ -24,35 +24,35 @@ type iGenerateDataKeyRequest interface {
 }
 
 type GenerateDataKeyRequest struct {
-	// Specifies whether to enable the DryRun mode.
+	// Specifies whether to enable DryRun mode.
 	//
-	// - true: enables the DryRun mode.
+	// - true: enabled.
 	//
-	// - false (default): disables the DryRun mode.
+	// - false (default): disabled.
 	//
-	// The DryRun mode is used to test the API call. It verifies whether you have the permissions to access the specified resources and whether the request parameters are valid. If you enable the DryRun mode, KMS always returns a failure response and a failure reason. The failure reasons include the following:
+	// DryRun mode is used to test API calls, verify that you have the required permissions on the relevant resources, and check whether request parameters are configured correctly. When DryRun mode is enabled, KMS always returns a failure with a reason. Possible failure reasons include:
 	//
-	// - DryRunOperationError: The request succeeds if the DryRun parameter is not specified.
+	// - DryRunOperationError: The request would succeed if the DryRun parameter were not set.
 	//
-	// - ValidationError: The parameters specified in the request are invalid.
+	// - ValidationError: A parameter specified in the request is invalid.
 	//
-	// - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
+	// - AccessDeniedError: You do not have permission to perform the operation on the KMS resource.
 	//
 	// example:
 	//
 	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// A JSON string that consists of key-value pairs.
+	// A JSON string of key-value pairs.
 	//
-	// If you specify this parameter, you must also specify the same parameter when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
+	// If you specify this parameter, you must provide the same parameter when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	// The ID of the key. You can also specify the alias or the key resource name (ARN) of the key. For more information about aliases, see [Manage aliases](https://help.aliyun.com/document_detail/480655.html).
+	// The ID of the key. You can also specify a key alias or a key Amazon Resource Name (ARN). For more information about aliases, see [Manage key aliases](https://help.aliyun.com/document_detail/480655.html).
 	//
-	// > When you access a key in another Alibaba Cloud account, you must enter the ARN of the key. The key ARN is in the format of `acs:kms:${region}:${account}:key/${keyid}`.
+	// >To access a key in another Alibaba Cloud account, you must specify the key ARN. The key ARN format is `acs:kms:${region}:${account}:key/${keyid}`.
 	//
 	// This parameter is required.
 	//
@@ -60,27 +60,27 @@ type GenerateDataKeyRequest struct {
 	//
 	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The length of the data key to be generated. Valid values:
+	// The length of the data key (DK) to generate. Valid values:
 	//
 	// - AES_256: a 256-bit symmetric key.
 	//
 	// - AES_128: a 128-bit symmetric key.
 	//
-	// > We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If you do not specify either of the parameters, KMS generates a 256-bit data key. If you specify both parameters, KMS ignores the KeySpec parameter.
+	// > Use KeySpec or NumberOfBytes to specify the DK length. If neither is specified, KMS generates a 256-bit DK. If both are specified, KMS ignores the KeySpec parameter.
 	//
 	// example:
 	//
 	// AES_256
 	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	// The length of the data key that you want to generate. Unit: bytes.
+	// The length of the data key (DK) to generate, in bytes.
 	//
 	// Valid values: 1 to 1024.
 	//
-	// Default values:
+	// Default value:
 	//
-	// - If you set KeySpec to AES_256, the default value of NumberOfBytes is 32.
+	// - When KeySpec is set to AES_256, the default value of NumberOfBytes is 32.
 	//
-	// - If you set KeySpec to AES_128, the default value of NumberOfBytes is 16.
+	// - When KeySpec is set to AES_128, the default value of NumberOfBytes is 16.
 	//
 	// example:
 	//
@@ -88,7 +88,13 @@ type GenerateDataKeyRequest struct {
 	NumberOfBytes *int32 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
 	// example:
 	//
-	// { "AttestationDocument":"base64-encoded-attestion-document",  "KeyEncryptionAlgorithm":"RSAES_OAEP_SHA_256" }
+	// {
+	//
+	// "AttestationDocument":"base64-encoded-attestion-document",
+	//
+	// "KeyEncryptionAlgorithm":"RSAES_OAEP_SHA_256"
+	//
+	// }
 	Recipient *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
 }
 
