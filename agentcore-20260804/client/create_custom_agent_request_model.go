@@ -62,13 +62,13 @@ func (s *CreateCustomAgentRequest) Validate() error {
 }
 
 type CreateCustomAgentRequestBody struct {
-	// The list of additional AgenticFS mounts. The total number of AgenticFS and OSS mounts cannot exceed 10. If you omit this parameter or pass an empty array [] during creation, no additional mounts are configured. If you omit this parameter during an update, the original value is retained. If you pass an empty array [], the list is cleared. You cannot pass null.
+	// The list of additional AgenticFS mounts. The total number of AgenticFS and OSS mounts cannot exceed 10. If you omit this parameter or pass an empty array [] during creation, no additional mounts are configured. If you omit this parameter during an update, the original value is retained. If you pass an empty array [], the mounts are cleared. You cannot pass null.
 	AgenticFsMounts []*CreateCustomAgentRequestBodyAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
-	// The deployment artifact configuration. Currently, only ACR container images are supported. Specify container and the service listening port in port, and omit code.
+	// The deployment artifact configuration. Currently, only ACR container images are supported. Specify container and the service listening port port. Omit code.
 	//
 	// This parameter is required.
 	Artifact *CreateCustomAgentRequestBodyArtifact `json:"artifact,omitempty" xml:"artifact,omitempty" type:"Struct"`
-	// The description of the agent purpose. The maximum length is 1,024 characters after leading and trailing whitespace is removed.
+	// The description of the agent\\"s purpose. The maximum length is 1,024 characters after leading and trailing whitespace is removed.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateCustomAgentRequestBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment variable configuration passed to the agent runtime process.
 	Environment *CreateCustomAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The optional HTTP health check configuration. If this object is provided, you must specify port. Unspecified items use default values. If omitted during creation, no health check is configured. If this top-level field is omitted during an update, the original configuration is retained. If null is passed, the health check is removed.
+	// The optional HTTP health check configuration. If this object is provided, port is required, and unspecified items use default values. If omitted during creation, no health check is configured. If this top-level field is omitted during an update, the original configuration is retained. If null is passed, the health check is removed.
 	HealthCheck *CreateCustomAgentRequestBodyHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty" type:"Struct"`
 	// The agent log delivery configuration. You can specify the Simple Log Service project and Logstore. After a successful creation or update, verify that logs are delivered properly.
 	Logging *CreateCustomAgentRequestBodyLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
@@ -90,9 +90,9 @@ type CreateCustomAgentRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network access configuration of the agent. If this object is provided, omitted access items are treated as allowed. The actual accessible range is still limited by the workspace network configuration. To retain the original restrictions during an update, specify both accessInternet and accessVpc.
 	Network *CreateCustomAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The list of OSS mounts. The total number of OSS and AgenticFS mounts cannot exceed 10. You must specify bucketName, path, and mountPath for each item. Mount targets must not be duplicated or overlap. The entire list is replaced during an update. Pass an empty array [] to clear the list.
+	// The list of OSS mounts. The total number of OSS and AgenticFS mounts cannot exceed 10. For each item, you must specify bucketName, path, and mountPath. Mount targets must not be duplicated or overlap. The entire list is replaced during an update. Pass an empty array [] to clear the list.
 	OssMounts []*CreateCustomAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
-	// The list of invocation protocols supported by the agent. Each item includes the protocol type and optional paths and request headers. The entire list is replaced during an update.
+	// The list of invocation protocols supported by the agent. Each item includes the protocol type and optional paths and request headers. When updating, replace the entire list.
 	Protocol []*CreateCustomAgentRequestBodyProtocol `json:"protocol,omitempty" xml:"protocol,omitempty" type:"Repeated"`
 	// The ARN of the RAM role used when the agent accesses user cloud resources. The role must have permissions to access the cloud resources.
 	//
@@ -102,7 +102,7 @@ type CreateCustomAgentRequestBody struct {
 	//
 	// acs:ram::1234567890123456:role/agentcore-runtime-role
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The runtime configuration, including compute specifications, session policies, and an optional elastic policy. Both compute and sessionPolicy must be specified.
+	// The runtime configuration, including compute specifications, session policies, and an optional elastic policy. compute and sessionPolicy must be specified together.
 	//
 	// This parameter is required.
 	Runtime *CreateCustomAgentRequestBodyRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
@@ -292,19 +292,19 @@ type CreateCustomAgentRequestBodyAgenticFsMounts struct {
 	//
 	// /mnt/agenticfs/data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The existing non-empty relative directory under the access point. This parameter is required for each mount item. Root directories, absolute paths, and parent directory traversals are not allowed.
+	// The existing non-empty relative directory under the access point. This parameter is required for each mount item. Root directories, absolute paths, and parent directory references are not allowed.
 	//
 	// example:
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates read-only, and a value of false indicates read and write. If this parameter is omitted, the default value is false.
+	// Specifies whether the mount is read-only. A value of true indicates read-only, and false indicates read and write. If omitted, the default value is false.
 	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The domain name of the access point. This parameter is required for each mount item. Use the DomainName value from the NAS ListAccessPoints response. Do not include the protocol, port, or path.
+	// The access point domain name. This parameter is required for each mount item. Use the DomainName from the NAS ListAccessPoints response. Do not include the protocol, port, or path.
 	//
 	// example:
 	//
@@ -361,7 +361,7 @@ func (s *CreateCustomAgentRequestBodyAgenticFsMounts) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyArtifact struct {
-	// The code package deployment configuration. This feature is currently not supported. Omit this parameter and use artifact.container.
+	// The code package deployment configuration. This is not currently supported. Omit this parameter and use artifact.container.
 	Code *CreateCustomAgentRequestBodyArtifactCode `json:"code,omitempty" xml:"code,omitempty" type:"Struct"`
 	// The ACR container image configuration. You must specify type, instanceId, namespace, repo, and tag. Do not configure code at the same time.
 	Container *CreateCustomAgentRequestBodyArtifactContainer `json:"container,omitempty" xml:"container,omitempty" type:"Struct"`
@@ -425,7 +425,7 @@ func (s *CreateCustomAgentRequestBodyArtifact) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyArtifactCode struct {
-	// The startup entry point of the code package. Code package deployment is currently not supported. Omit this parameter.
+	// The startup entry point of the code package. Code package deployment is not currently supported. Omit this parameter.
 	//
 	// This parameter is required.
 	//
@@ -433,7 +433,7 @@ type CreateCustomAgentRequestBodyArtifactCode struct {
 	//
 	// python app.py
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
-	// The language runtime identifier of the code package. Code package deployment is currently not supported. Omit this parameter.
+	// The language runtime identifier of the code package. Code package deployment is not currently supported. Omit this parameter.
 	//
 	// This parameter is required.
 	//
@@ -441,7 +441,7 @@ type CreateCustomAgentRequestBodyArtifactCode struct {
 	//
 	// python
 	LanguageRuntime *string `json:"languageRuntime,omitempty" xml:"languageRuntime,omitempty"`
-	// The source URI of the code package. Code package deployment is currently not supported. Omit this parameter.
+	// The source URI of the code package. Code package deployment is not currently supported. Omit this parameter.
 	//
 	// This parameter is required.
 	//
@@ -529,7 +529,7 @@ type CreateCustomAgentRequestBodyArtifactContainer struct {
 	//
 	// v1.0.0
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The source type of the image. Currently, only acr is supported, which indicates Alibaba Cloud Container Registry (ACR).
+	// The image source type. Currently, only acr is supported, which indicates Alibaba Cloud Container Registry (ACR).
 	//
 	// This parameter is required.
 	//
@@ -690,7 +690,7 @@ func (s *CreateCustomAgentRequestBodyEnvironmentVariables) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyHealthCheck struct {
-	// This parameter does not take effect. Omit this parameter.
+	// This parameter does not currently take effect. Omit this parameter.
 	//
 	// example:
 	//
@@ -708,7 +708,7 @@ type CreateCustomAgentRequestBodyHealthCheck struct {
 	//
 	// /healthz
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The port accessed for health checks. This parameter is required when configuring health checks. Valid values: 1 to 65535.
+	// The port accessed for health checks. This parameter is required when configuring a health check. Valid values: 1 to 65535.
 	//
 	// example:
 	//
@@ -720,7 +720,7 @@ type CreateCustomAgentRequestBodyHealthCheck struct {
 	//
 	// 2
 	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
-	// The number of consecutive health check failures required to mark the target as unhealthy. It must be a positive integer. If omitted, the default value is 3.
+	// The number of consecutive health check failures required to mark the instance as unhealthy. It must be a positive integer. If omitted, the default value is 3.
 	//
 	// example:
 	//
@@ -826,13 +826,13 @@ func (s *CreateCustomAgentRequestBodyLogging) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyLoggingSls struct {
-	// The name of the Simple Log Service Logstore that receives agent logs.
+	// The name of the Simple Log Service Logstore that receives the agent logs.
 	//
 	// example:
 	//
 	// agent-runtime
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service project that receives agent logs.
+	// The name of the Simple Log Service project that receives the agent logs.
 	//
 	// example:
 	//
@@ -918,7 +918,7 @@ func (s *CreateCustomAgentRequestBodyNetwork) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyNetworkAccessInternet struct {
-	// Specifies whether to allow the agent to access the Internet. A Boolean value must be provided when configuring accessInternet. For this setting to take effect, the workspace must also allow Internet access.
+	// Specifies whether to allow the agent to access the Internet. A Boolean value is required when configuring accessInternet. For this to take effect, the workspace must also allow Internet access.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -944,7 +944,7 @@ func (s *CreateCustomAgentRequestBodyNetworkAccessInternet) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyNetworkAccessVpc struct {
-	// Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value must be provided when configuring accessVpc. For this setting to take effect, the workspace must also allow VPC access.
+	// Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value is required when configuring accessVpc. For this to take effect, the workspace must also allow VPC access.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -982,13 +982,13 @@ type CreateCustomAgentRequestBodyOssMounts struct {
 	//
 	// /mnt/oss/train
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The non-empty object directory prefix in the bucket, such as datasets/train. Leading and trailing forward slashes (/) are removed. Root directories are not supported. Do not use parent directory traversals.
+	// The non-empty object directory prefix in the bucket, such as datasets/train. Leading and trailing forward slashes (/) are removed. Root directories are not supported. Do not use parent directory references.
 	//
 	// example:
 	//
 	// datasets/train
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates read-only, and a value of false indicates read and write. If this parameter is omitted, the default value is false.
+	// Specifies whether the mount is read-only. A value of true indicates read-only, and false indicates read and write. If omitted, the default value is false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1045,13 +1045,7 @@ type CreateCustomAgentRequestBodyProtocol struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The list of API paths corresponding to the current protocol.
 	Paths []*CreateCustomAgentRequestBodyProtocolPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// The invocation protocol type. Valid values:
-	//
-	// - agui: AG-UI protocol.
-	//
-	// - openai-chat-completion: OpenAI Chat Completions compatible protocol.
-	//
-	// - custom: Custom protocol.
+	// The invocation protocol type. Valid values: agui: AG-UI protocol; openai-chat-completion: OpenAI Chat Completions compatible protocol; custom: custom protocol.
 	//
 	// This parameter is required.
 	//
@@ -1224,13 +1218,7 @@ func (s *CreateCustomAgentRequestBodyRuntime) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyRuntimeCompute struct {
-	// The compute specification. Valid values:
-	//
-	// - INTERACTIVE: 1 vCPU and 2 GiB of memory.
-	//
-	// - STANDARD: 2 vCPUs and 4 GiB of memory.
-	//
-	// - HEAVY: 4 vCPUs and 8 GiB of memory.
+	// The compute specification. Valid values: INTERACTIVE: 1 vCPU and 2 GiB of memory; STANDARD: 2 vCPUs and 4 GiB of memory; HEAVY: 4 vCPUs and 8 GiB of memory.
 	//
 	// This parameter is required.
 	//
@@ -1262,35 +1250,29 @@ func (s *CreateCustomAgentRequestBodyRuntimeCompute) Validate() error {
 }
 
 type CreateCustomAgentRequestBodyRuntimeHpa struct {
-	// Specifies whether to enable elastic scaling. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Disabled.
-	//
-	// Default value: false.
+	// Specifies whether to enable elastic scaling. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. When runtime is provided, if this field is omitted, the default value is false.
 	//
 	// This parameter is required.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of concurrent sessions for a single runtime instance. Valid values: 1 to 100. Default value: 100.
+	// The maximum number of concurrent sessions for a single runtime instance. Valid values: 1 to 100. When runtime is provided, if this field is omitted, the default value is 100.
 	//
 	// example:
 	//
 	// 100
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than minSandboxCount. Default value: 10.
+	// The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than minSandboxCount. When runtime is provided, if this field is omitted, the default value is 10.
 	//
 	// example:
 	//
 	// 10
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than maxSandboxCount. Default value: 1.
+	// The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than maxSandboxCount. When runtime is provided, if this field is omitted, the default value is 1.
 	//
 	// example:
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The session idle timeout in seconds. Valid values: 60 to 86400. Default value: 600.
+	// The session idle timeout in seconds. Valid values: 60 to 86400. When runtime is provided, if this field is omitted, the default value is 600.
 	//
 	// example:
 	//
@@ -1362,15 +1344,7 @@ type CreateCustomAgentRequestBodyRuntimeSessionPolicy struct {
 	//
 	// X-Session-Id
 	HeaderName *string `json:"headerName,omitempty" xml:"headerName,omitempty"`
-	// The session policy type. Valid values:
-	//
-	// - AFFINITY: Session affinity.
-	//
-	// - ISOLATED_HEADER_FIELD: Associates sessions by using the request header specified by headerName.
-	//
-	// - ISOLATED_COOKIE: Not recommended.
-	//
-	// - DISABLED: A compatibility option. The response returns AFFINITY.
+	// The session policy type. Valid values: AFFINITY: session affinity; ISOLATED_HEADER_FIELD: associates sessions by using the request header specified by headerName. ISOLATED_COOKIE is not recommended. DISABLED is a compatibility option, and the response returns AFFINITY.
 	//
 	// This parameter is required.
 	//

@@ -24,21 +24,21 @@ type iCreateExternalAgentBootstrapTokenResponseBody interface {
 }
 
 type CreateExternalAgentBootstrapTokenResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request is successful.
+	// The business status code. The value is SUCCESS when the operation is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The bootstrap token and CMS configuration required for connecting the external agent.
+	// The Bootstrap token and CMS configuration required to onboard the external agent.
 	Data *CreateExternalAgentBootstrapTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 is returned if the request is successful.
+	// The HTTP status code. The value is 200 when the operation is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message that indicates the result of the request.
+	// The result message of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateExternalAgentBootstrapTokenResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -132,25 +132,21 @@ type CreateExternalAgentBootstrapTokenResponseBodyData struct {
 	//
 	// agent-1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The bootstrap token used for connecting the external agent.
+	// The Bootstrap token used to onboard the external agent.
 	//
 	// example:
 	//
 	// bootstrap-token
 	BootstrapToken *string `json:"bootstrapToken,omitempty" xml:"bootstrapToken,omitempty"`
-	// The CMS configuration used for connecting the external agent.
+	// The CMS configuration used to onboard the external agent.
 	Cms *CreateExternalAgentBootstrapTokenResponseBodyDataCms `json:"cms,omitempty" xml:"cms,omitempty" type:"Struct"`
-	// The network type for connection. Valid values:
-	//
-	// - INTERNET: public network
-	//
-	// - INTRANET: internal network
+	// The network type for onboarding. Valid values: INTRANET (internal network) and INTERNET (Internet).
 	//
 	// example:
 	//
 	// INTERNET
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The fingerprint of the bootstrap token.
+	// The fingerprint of the Bootstrap token.
 	//
 	// example:
 	//

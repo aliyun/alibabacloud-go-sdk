@@ -30,7 +30,7 @@ type GetModelResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The model details.
+	// The detailed information about the model.
 	Data *GetModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code. A value of 200 indicates success.
 	//
@@ -50,7 +50,7 @@ type GetModelResponseBody struct {
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *GetModelResponseBody) Validate() error {
 }
 
 type GetModelResponseBodyData struct {
-	// The model capability configuration.
+	// The capability configurations of the model.
 	Capabilities *GetModelResponseBodyDataCapabilities `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Struct"`
 	// The model connection ID.
 	//
@@ -134,7 +134,7 @@ type GetModelResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The model context window size, in tokens. The value must be a positive integer.
+	// The context window size of the model, in tokens. It must be a positive integer.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type GetModelResponseBodyData struct {
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The model description, up to 255 characters.
+	// The description of the model, up to 255 characters in length.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The maximum number of output tokens supported per model generation.
+	// The maximum number of output tokens supported by the model in a single generation.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type GetModelResponseBodyData struct {
 	//
 	// model-1
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The upstream model name.
+	// The name of the upstream model.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The region ID to which the resource belongs.
+	// The ID of the region to which the resource belongs.
 	//
 	// example:
 	//
@@ -311,11 +311,11 @@ type GetModelResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model is able to invoke multiple tool calling requests in a single response.
+	// Indicates whether the model supports tool calling and is able to invoke multiple tools in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Indicates whether the model supports streaming tool calling.
+	// Indicates whether the model supports tool calling and is able to invoke tools in a streaming manner.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
 	// Indicates whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`

@@ -50,7 +50,7 @@ type GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBody struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBody) Validate() error
 }
 
 type GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBodyData struct {
-	// The RAM authorization URL. After opening this URL and completing the authorization, call the verification operation.
+	// The RAM authorization URL. After you open the URL and complete the authorization, call the verification API.
 	//
 	// example:
 	//

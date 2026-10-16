@@ -28,49 +28,49 @@ type iListServiceEndpointsRequest interface {
 }
 
 type ListServiceEndpointsRequest struct {
-	// Filters by target agent ID.
+	// Filters the results by target agent ID.
 	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// Filters by target agent version number.
+	// Filters the results by target agent version.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// Filters by collaboration component type. Valid values: MATRIX_CLIENT, MATRIX_FEDERATION, ELEMENT_WEB.
+	// Filters the results by collaboration component type. Valid values: MATRIX_CLIENT, MATRIX_FEDERATION, and ELEMENT_WEB.
 	//
 	// example:
 	//
 	// ELEMENT_WEB
 	CollaborationComponent *string `json:"collaborationComponent,omitempty" xml:"collaborationComponent,omitempty"`
-	// The maximum number of records per page. Valid values: 1 to 100. If this parameter is not specified, 20 records are returned by default.
+	// The maximum number of records to return per page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, set this parameter to the nextToken value returned in the previous response.
+	// The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
 	//
 	// example:
 	//
 	// djE6YWdlbnRjb3JlLnNlcnZpY2UtZW5kcG9pbnQubGlzdDoyMA
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Filters by the workspace resource binding ID of the target collaboration component.
+	// Filters the results by the workspace resource binding ID of the target collaboration component.
 	//
 	// example:
 	//
 	// wrb-123456
 	ResourceBindingId *string `json:"resourceBindingId,omitempty" xml:"resourceBindingId,omitempty"`
-	// Filters by service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, DELETING.
+	// Filters the results by service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Filters by target type. Valid values: AGENT_VERSION, TEAM_COLLABORATION.
+	// Filters the results by target type. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
 	//
 	// example:
 	//

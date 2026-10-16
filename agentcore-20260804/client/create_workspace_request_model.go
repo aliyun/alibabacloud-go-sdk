@@ -16,7 +16,7 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
-	// The request body for creating a workspace.
+	// The workspace creation request body.
 	Body *CreateWorkspaceRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 	// The client idempotency token.
 	//
@@ -62,7 +62,7 @@ func (s *CreateWorkspaceRequest) Validate() error {
 }
 
 type CreateWorkspaceRequestBody struct {
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -72,11 +72,7 @@ type CreateWorkspaceRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceRequestBodyNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The storage type of the workspace. Valid values:
-	//
-	// - PLATFORM: Platform-managed storage.
-	//
-	// - PRIVATE: User-owned private OSS storage.
+	// The workspace storage type. PLATFORM indicates platform-managed storage, and PRIVATE indicates user private OSS storage.
 	//
 	// example:
 	//
@@ -129,9 +125,19 @@ func (s *CreateWorkspaceRequestBody) Validate() error {
 }
 
 type CreateWorkspaceRequestBodyNetworkConfiguration struct {
-	// The VPC network configuration of the user.
+	// Specifies whether to allow public outbound access from the platform. If this parameter is not specified, the default value is true. This setting only controls whether the latest versions of managed and custom agents use the public outbound endpoint of the platform. It does not affect fixed historical versions, model or MCP proxy endpoints, or the public outbound endpoint of the user VPC.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// true
+	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
+	// Specifies whether to allow public inbound access. If this parameter is not specified, the default value is true. If disabled, the public inbound endpoints of all agent endpoints in the workspace are closed, and the original public inbound endpoints are restored when re-enabled. INNER_DIRECT and user VPC endpoints are not affected. Collaboration and Element Web endpoints are not controlled by this parameter.
+	//
+	// example:
+	//
+	// true
+	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
+	// The user VPC network configuration.
 	Vpc *CreateWorkspaceRequestBodyNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -143,8 +149,26 @@ func (s CreateWorkspaceRequestBodyNetworkConfiguration) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWorkspaceRequestBodyNetworkConfiguration) GetPublicEgressEnabled() *bool {
+	return s.PublicEgressEnabled
+}
+
+func (s *CreateWorkspaceRequestBodyNetworkConfiguration) GetPublicIngressEnabled() *bool {
+	return s.PublicIngressEnabled
+}
+
 func (s *CreateWorkspaceRequestBodyNetworkConfiguration) GetVpc() *CreateWorkspaceRequestBodyNetworkConfigurationVpc {
 	return s.Vpc
+}
+
+func (s *CreateWorkspaceRequestBodyNetworkConfiguration) SetPublicEgressEnabled(v bool) *CreateWorkspaceRequestBodyNetworkConfiguration {
+	s.PublicEgressEnabled = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequestBodyNetworkConfiguration) SetPublicIngressEnabled(v bool) *CreateWorkspaceRequestBodyNetworkConfiguration {
+	s.PublicIngressEnabled = &v
+	return s
 }
 
 func (s *CreateWorkspaceRequestBodyNetworkConfiguration) SetVpc(v *CreateWorkspaceRequestBodyNetworkConfigurationVpc) *CreateWorkspaceRequestBodyNetworkConfiguration {
@@ -162,15 +186,15 @@ func (s *CreateWorkspaceRequestBodyNetworkConfiguration) Validate() error {
 }
 
 type CreateWorkspaceRequestBodyNetworkConfigurationVpc struct {
-	// Specifies whether to enable VPC networking.
+	// Specifies whether to enable the VPC network.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
+	// The list of vSwitch IDs. When the VPC network is enabled, the list must contain at least one vSwitch, and all vSwitches must belong to the VPC specified by VpcId.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the user VPC.
+	// The user VPC ID.
 	//
 	// example:
 	//

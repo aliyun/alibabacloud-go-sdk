@@ -18,19 +18,19 @@ type iListTeamsRequest interface {
 }
 
 type ListTeamsRequest struct {
-	// The maximum number of records per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of records to return per page. Valid values: 1 to 100. If this parameter is not specified, 10 records are returned by default.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The filter condition for fuzzy match by team name.
+	// The filter condition for fuzzy matching the team name.
 	//
 	// example:
 	//
 	// team
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned in the previous response.
+	// The pagination token for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned from the previous call.
 	//
 	// example:
 	//

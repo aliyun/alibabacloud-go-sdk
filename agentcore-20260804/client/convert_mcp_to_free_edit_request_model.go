@@ -14,7 +14,7 @@ type iConvertMcpToFreeEditRequest interface {
 }
 
 type ConvertMcpToFreeEditRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure request idempotence.
 	//
 	// example:
 	//

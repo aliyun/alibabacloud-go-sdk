@@ -24,7 +24,7 @@ type iUpdateModelResponseBody interface {
 }
 
 type UpdateModelResponseBody struct {
-	// The business status code. The value is SUCCESS when the request succeeds.
+	// The business status code. The value is SUCCESS when the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type UpdateModelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The updated model information.
 	Data *UpdateModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request succeeds.
+	// The HTTP status code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateModelResponseBody struct {
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -134,13 +134,13 @@ type UpdateModelResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The model context window size, in tokens. The value must be a positive integer.
+	// The context window size of the model, in tokens. The value must be a positive integer.
 	//
 	// example:
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The time when the resource was created, in RFC 3339 UTC format.
+	// The time when the resource was created. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The maximum number of output tokens supported per generation.
+	// The maximum number of output tokens supported for a single generation of the model.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The time when the resource was last updated, in RFC 3339 UTC format.
+	// The time when the resource was last updated. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -296,13 +296,13 @@ type UpdateModelResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model supports invoking multiple tools in a single response.
+	// Indicates whether the model is able to invoke tool calling multiple times in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
-	// Indicates whether the model supports reasoning.
+	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Indicates whether the model supports streaming tool invocation.
+	// Indicates whether the model is able to invoke streaming tool calling.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
-	// Indicates whether the model supports tool invocation.
+	// Indicates whether the model is able to invoke tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`
 	// Indicates whether the model supports video input.
 	Video *bool `json:"video,omitempty" xml:"video,omitempty"`

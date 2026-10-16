@@ -44,19 +44,19 @@ type ListIdentityProvidersResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of external identity providers.
 	Items []*ListIdentityProvidersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that took effect for this query.
+	// The maximum number of records per page that takes effect for the current query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. An error description is returned if the request failed.
+	// The response message. An error description is returned if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This parameter is empty if no more pages are available.
+	// The cursor for the next page. This parameter is empty if no next page exists.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListIdentityProvidersResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of external identity providers that match the query conditions.
+	// The total number of external identity providers that meet the query conditions.
 	//
 	// example:
 	//
@@ -181,43 +181,61 @@ func (s *ListIdentityProvidersResponseBody) Validate() error {
 }
 
 type ListIdentityProvidersResponseBodyItems struct {
-	// The creation time in UTC, formatted according to RFC 3339.
+	// The creation time in UTC format that complies with RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The event subscription callback URL. Configure this URL in the external identity provider application to receive organization change events. An empty string is returned if the user pool has not been activated.
+	// The callback URL for event subscription. You must configure this URL in the application of the external identity provider to receive organization change events. An empty string is returned if the user pool is not activated.
 	//
 	// example:
 	//
 	// http://auth.cn-hangzhou.agentteams.aliyuncs.com/roa/dingtalk/event/up-123456
 	EventSubscriptionCallbackUrl *string `json:"eventSubscriptionCallbackUrl,omitempty" xml:"eventSubscriptionCallbackUrl,omitempty"`
-	// The type of the external identity provider. Valid values: DingTalk, Feishu.
+	// The type of the external identity provider. Valid values: DingTalk and Feishu.
 	//
 	// example:
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// The logon callback URL. Configure this URL in the external identity provider application. An empty string is returned if the user pool has not been activated.
+	// The login callback URL. You must configure this URL in the application of the external identity provider. An empty string is returned if the user pool is not activated.
 	//
 	// example:
 	//
 	// https://signin-cn-hangzhou.aliyunagentid.com/up-123456/dingtalk/callback
 	LoginCallbackUrl *string `json:"loginCallbackUrl,omitempty" xml:"loginCallbackUrl,omitempty"`
-	// Indicates whether workspace users are allowed to log on through this external identity provider.
+	// Indicates whether workspace users are allowed to log on through the external identity provider.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The application configuration of the external identity provider. Application secret configurations are not returned.
+	// The application configurations of the external identity provider. Application secret configurations are not returned.
 	Metadata *ListIdentityProvidersResponseBodyItemsMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// The binding status. Valid values: CONFIGURED (The configuration has been accepted and the user pool is pending activation.), SYNCING (Organization members are being synchronized.), SYNCED (Organization member synchronization is complete.), READY (The binding is active.), SYNC_FAILED (Organization member synchronization failed.), UPDATING (The configuration is being updated.), UPDATE_FAILED (The configuration update failed.), DISCONNECTING (The binding is being removed.), DISCONNECT_FAILED (The unbinding failed.).
+	// The binding status. Valid values:
+	//
+	// - CONFIGURED: The configuration is accepted and the system is waiting for the user pool to be activated.
+	//
+	// - SYNCING: Organization members are being synchronized.
+	//
+	// - SYNCED: Organization members are synchronized.
+	//
+	// - READY: The binding is effective.
+	//
+	// - SYNC_FAILED: The synchronization of organization members failed.
+	//
+	// - UPDATING: The configuration is being updated.
+	//
+	// - UPDATE_FAILED: The configuration update failed.
+	//
+	// - DISCONNECTING: The binding is being removed.
+	//
+	// - DISCONNECT_FAILED: The unbinding failed.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Indicates whether organization member synchronization is enabled. When enabled, the external identity provider synchronizes organization members as workspace users.
+	// Indicates whether organization member synchronization is enabled. After this feature is enabled, organization members are synchronized as workspace users by the external identity provider.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// The time of the last modification in UTC, formatted according to RFC 3339.
+	// The time of the last update in UTC format that complies with RFC 3339.
 	//
 	// example:
 	//
@@ -351,7 +369,7 @@ type ListIdentityProvidersResponseBodyItemsMetadata struct {
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// The CorpId of the DingTalk organization. This parameter is required when the binding type is DingTalk.
+	// The CorpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//

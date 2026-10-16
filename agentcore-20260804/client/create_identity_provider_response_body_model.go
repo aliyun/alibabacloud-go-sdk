@@ -38,7 +38,7 @@ type CreateIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request failed.
+	// The response message. If the request fails, an error description is returned.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateIdentityProviderResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,27 +126,23 @@ func (s *CreateIdentityProviderResponseBody) Validate() error {
 }
 
 type CreateIdentityProviderResponseBodyData struct {
-	// The type of the external identity provider. Valid values:
-	//
-	// - DingTalk
-	//
-	// - Feishu
+	// The type of the external identity provider. Valid values: DingTalk and Feishu.
 	//
 	// example:
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// Specifies whether workspace users are allowed to log on through this external identity provider.
+	// Specifies whether workspace users can log on through the external identity provider.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
 	// The binding status. Valid values:
 	//
-	// - CONFIGURED: The configuration has been accepted and is waiting for user pool provisioning.
+	// - CONFIGURED: The configuration is accepted, and the system is waiting to activate the user pool.
 	//
 	// - SYNCING: Organization members are being synchronized.
 	//
-	// - SYNCED: Organization member synchronization is complete.
+	// - SYNCED: Organization member synchronization is completed.
 	//
-	// - READY: The binding is active.
+	// - READY: The binding is in effect.
 	//
 	// - SYNC_FAILED: Organization member synchronization failed.
 	//
@@ -154,7 +150,7 @@ type CreateIdentityProviderResponseBodyData struct {
 	//
 	// - UPDATE_FAILED: The configuration update failed.
 	//
-	// - DISCONNECTING: The binding is being removed.
+	// - DISCONNECTING: The unbinding is in progress.
 	//
 	// - DISCONNECT_FAILED: The unbinding failed.
 	//
@@ -162,7 +158,7 @@ type CreateIdentityProviderResponseBodyData struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+	// Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized to workspace users from the external identity provider.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
 	// The workspace ID.
 	//

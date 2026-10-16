@@ -53,7 +53,7 @@ type CreateAgentSpecRequestBody struct {
 	//
 	// my-worker
 	AgentSpecName *string `json:"agentSpecName,omitempty" xml:"agentSpecName,omitempty"`
-	// The draft version number. If not specified, the default value is 0.0.1.
+	// Specifies the draft version number. If not specified, the default value is 0.0.1.
 	//
 	// example:
 	//

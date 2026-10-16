@@ -16,7 +16,7 @@ type iUpdateTeamShrinkRequest interface {
 }
 
 type UpdateTeamShrinkRequest struct {
-	// The request body for updating the team.
+	// The request body for updating a team.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 	// Not supported.
 	//

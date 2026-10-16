@@ -18,7 +18,7 @@ type iUpdateAgentIMChannelCredentialRequest interface {
 type UpdateAgentIMChannelCredentialRequest struct {
 	// The request body.
 	Body *UpdateAgentIMChannelCredentialRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// Reserved idempotency token. The backend does not provide persistent idempotence guarantees in the current version.
+	// The reserved idempotence token. The backend does not provide persistent idempotence guarantees in the current phase.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *UpdateAgentIMChannelCredentialRequest) Validate() error {
 }
 
 type UpdateAgentIMChannelCredentialRequestBody struct {
-	// The channel credential. All fields must be provided and field values must be non-empty strings. DingTalk uses clientID and clientSecret. Lark uses appId and appSecret. WeCom uses botId and secret.
+	// The channel credentials. All fields must be provided and the field values must be non-empty strings. For DingTalk, use clientID and clientSecret. For Lark, use appId and appSecret. For WeCom, use botId and secret.
 	//
 	// This parameter is required.
 	Credential map[string]*string `json:"credential,omitempty" xml:"credential,omitempty"`

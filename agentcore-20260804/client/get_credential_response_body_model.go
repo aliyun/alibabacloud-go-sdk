@@ -50,7 +50,7 @@ type GetCredentialResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -128,7 +128,7 @@ func (s *GetCredentialResponseBody) Validate() error {
 type GetCredentialResponseBodyData struct {
 	// The list of agents bound to the credential.
 	BoundAgents []*GetCredentialResponseBodyDataBoundAgents `json:"boundAgents,omitempty" xml:"boundAgents,omitempty" type:"Repeated"`
-	// The creation time in UTC, formatted according to RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetCredentialResponseBodyData struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The masked content of the credential. When credentialType is apiKey, the value of apiKey is returned as asterisks (*) of equal length.
+	// The masked result of the credential content. When credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
 	//
 	// example:
 	//
@@ -152,33 +152,33 @@ type GetCredentialResponseBodyData struct {
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The credential description, up to 256 characters in length.
+	// The credential description, which cannot exceed 256 characters in length.
 	//
 	// example:
 	//
-	// API Key used to call model services in the production environment
+	// API key used for calling model services in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	// The credential name. It must be unique within the workspace, contain only letters, digits, periods (.), underscores (_), and hyphens (-), be 3 to 128 characters in length, and cannot use runtime reserved names.
 	//
 	// example:
 	//
 	// model-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The region ID where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Each item contains resourceType, resourceId, and resourceName. If the resource has been deleted, resourceName is empty.
+	// Each item includes resourceType, resourceId, and resourceName. If the resource is deleted, resourceName is empty.
 	ResourceRefs []*GetCredentialResponseBodyDataResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The scope of resources to which the credential applies.
+	// The application scope of the credential resource.
 	//
 	// example:
 	//
 	// ALL
 	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
-	// The time of the last modification in UTC, formatted according to RFC 3339.
+	// The time of the last modification in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -382,7 +382,7 @@ type GetCredentialResponseBodyDataResourceRefs struct {
 	//
 	// agent-xxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource name. This value is empty if the resource has been deleted.
+	// The resource name. This field is empty if the resource is deleted.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iListIdentityProvidersRequest interface {
 }
 
 type ListIdentityProvidersRequest struct {
-	// The maximum number of records per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of records to return per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned in the previous response.
+	// The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned from the previous call.
 	//
 	// example:
 	//

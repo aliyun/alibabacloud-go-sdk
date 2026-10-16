@@ -14,7 +14,7 @@ type iListAgentTeamsRequest interface {
 }
 
 type ListAgentTeamsRequest struct {
-	// The request parameters for querying the agent team list.
+	// The request parameters for querying the list of agent teams.
 	Body *ListAgentTeamsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 

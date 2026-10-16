@@ -24,7 +24,7 @@ type iGetModelConnectionResponseBody interface {
 }
 
 type GetModelConnectionResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request succeeds.
+	// The business status code. The value is SUCCESS when the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetModelConnectionResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The detailed information about the model connection.
 	Data *GetModelConnectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 is returned if the request succeeds.
+	// The HTTP status code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetModelConnectionResponseBody struct {
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -140,13 +140,13 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The time when the resource was created, in RFC 3339 UTC format.
+	// The time when the resource was created. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Indicates whether access credentials have been configured for the model connection.
+	// Indicates whether access credentials are configured for the model connection.
 	CredentialConfigured *bool `json:"credentialConfigured,omitempty" xml:"credentialConfigured,omitempty"`
 	// The description of the model connection. The description can be up to 255 characters in length.
 	//
@@ -154,7 +154,7 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The absolute HTTP or HTTPS address of the upstream model service. The address can be up to 1024 characters in length.
+	// The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
 	//
 	// example:
 	//
@@ -166,37 +166,37 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The model invocation protocol. Currently, only OpenAI/v1 is supported. If this parameter is not set during model connection creation, this default value is used.
+	// The protocol used to invoke the model. Currently, only OpenAI/v1 is supported. If no Settings are specified during model creation, this default value is used.
 	//
 	// example:
 	//
 	// OpenAI/v1
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The model provider type.
+	// The type of the model provider.
 	//
 	// example:
 	//
 	// qwen
 	ProviderType *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
-	// The region ID of the resource.
+	// The ID of the region to which the resource belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource status. Valid values:
+	// The status of the resource.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The failure summary returned when the model connection fails to be published or fails to be deleted but remains in the Deleting state. This value is empty for other statuses.
+	// The failure summary returned when the model connection fails to be published, or when deletion fails but the resource remains in the deleting state. This field is empty in other states.
 	//
 	// example:
 	//
 	// GatewayOperationException
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The time when the resource was last updated, in RFC 3339 UTC format.
+	// The time when the resource was last updated. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//

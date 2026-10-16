@@ -50,7 +50,7 @@ type UpdateCredentialResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *UpdateCredentialResponseBody) Validate() error {
 }
 
 type UpdateCredentialResponseBodyData struct {
-	// The creation time in UTC, formatted in RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type UpdateCredentialResponseBodyData struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The masked credential content. If credentialType is set to apiKey, the apiKey value is returned as asterisks (*) of equal length.
+	// The desensitized result of the credential content. If credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ type UpdateCredentialResponseBodyData struct {
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The credential description. The description can be up to 256 characters in length.
+	// The credential description, which can be up to 256 characters in length.
 	//
 	// example:
 	//
-	// API Key used for calling model services in the production environment
+	// API key used to call model services in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	// The credential name. The name must be unique within the workspace, can only contain letters, digits, periods (.), underscores (_), and hyphens (-), must be 3 to 128 characters in length, and cannot be a runtime reserved name.
 	//
 	// example:
 	//
@@ -168,15 +168,15 @@ type UpdateCredentialResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Each item contains resourceType, resourceId, and resourceName. resourceName is empty if the resource has been deleted.
+	// Each item includes resourceType, resourceId, and resourceName. resourceName is empty if the resource is deleted.
 	ResourceRefs []*UpdateCredentialResponseBodyDataResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The credential resource scope.
+	// The application scope of the credential resources.
 	//
 	// example:
 	//
 	// ALL
 	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The time of the last modification in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -317,7 +317,7 @@ type UpdateCredentialResponseBodyDataResourceRefs struct {
 	//
 	// agent-xxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource name. This value is empty if the resource has been deleted.
+	// The resource name. This parameter is empty if the resource is deleted.
 	//
 	// example:
 	//

@@ -38,19 +38,19 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The description of the processing result for the request. A value of success indicates that the request was processed successfully.
+	// The processing result message of the request. The value is success when the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
+	// The unique identifier of the request, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. Note that a successful creation, update, or deletion does not mean that the background operation is complete.
+	// Specifies whether the request was processed successfully. A value of true indicates that the request was processed successfully. A successful creation, update, or deletion does not mean that the background operation is complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -134,7 +134,7 @@ type CreateCustomAgentResponseBodyData struct {
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	// The latest submitted list of additional AgenticFS mounts.
 	AgenticFsMounts []*CreateCustomAgentResponseBodyDataAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
-	// The latest submitted deployment artifact configuration, including the service listening port and the ACR container image. To check whether the configuration has taken effect, refer to the latestVersionStatus field.
+	// The latest submitted deployment artifact configuration, including the service listening port and the ACR container image. Check the latestVersionStatus field to determine whether the configuration has taken effect.
 	Artifact *CreateCustomAgentResponseBodyDataArtifact `json:"artifact,omitempty" xml:"artifact,omitempty" type:"Struct"`
 	// The creation method of the agent. The value is CUSTOM for custom agents.
 	//
@@ -148,7 +148,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
+	// The deployment method of the agent. Custom agents are deployed and managed by the platform, and the value is MANAGED.
 	//
 	// example:
 	//
@@ -166,25 +166,25 @@ type CreateCustomAgentResponseBodyData struct {
 	HealthCheck *CreateCustomAgentResponseBodyDataHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty" type:"Struct"`
 	// The waiting or execution error of the latest configuration version. This field is returned only when the version is waiting for a retry or fails to execute.
 	LatestExecutionError *CreateCustomAgentResponseBodyDataLatestExecutionError `json:"latestExecutionError,omitempty" xml:"latestExecutionError,omitempty" type:"Struct"`
-	// The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
+	// The current latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
 	//
 	// example:
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The execution status corresponding to latestSpecVersion. Valid values:
+	// The execution status corresponding to the latestSpecVersion. Valid values:
 	//
 	// - pending: Waiting for execution.
 	//
 	// - processing: Executing.
 	//
-	// - waiting_retry: Waiting for a retry.
+	// - waiting_retry: Waiting for retry.
 	//
 	// - succeeded: Execution succeeded.
 	//
 	// - failed: Execution failed.
 	//
-	// - superseded: Superseded by a subsequent version.
+	// - superseded: Superseded by a later version.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// my-custom-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration of the agent. The actual access scope is also restricted by the network configuration of the workspace.
+	// The network access configuration of the agent. The actual access scope is also restricted by the workspace network configuration.
 	Network *CreateCustomAgentResponseBodyDataNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
 	// The latest submitted list of OSS directory mounts.
 	OssMounts []*CreateCustomAgentResponseBodyDataOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
@@ -216,25 +216,11 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// acs:ram::1234567890123456:role/agentcore-runtime-role
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The runtime configurations of the latest commit, including compute specifications, session policy, and elastic policy.
+	// The latest committed runtime configuration, including compute specifications, session policy, and elastic policy.
 	Runtime *CreateCustomAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The instance counts grouped by runtime instance phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
+	// The statistics of instance counts by running instance phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
-	// The overall status of the agent. Valid values:
-	//
-	// - Creating: The agent is being created.
-	//
-	// - Running: The agent is running.
-	//
-	// - Failed: The agent failed.
-	//
-	// - Updating: The agent is being updated.
-	//
-	// - Deleting: The agent is being deleted.
-	//
-	// - Deleted: The agent is deleted.
-	//
-	// To query the execution progress of the latest configuration, check latestVersionStatus.
+	// The overall status of the agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted. To query the execution progress of the latest configuration, check latestVersionStatus.
 	//
 	// example:
 	//
@@ -557,7 +543,7 @@ type CreateCustomAgentResponseBodyDataAgenticFsMounts struct {
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates that the mount is read-only. A value of false indicates that the mount is readable and writable.
+	// Specifies whether the mount is read-only.
 	//
 	// example:
 	//
@@ -961,7 +947,7 @@ type CreateCustomAgentResponseBodyDataHealthCheck struct {
 	//
 	// 10
 	IntervalSeconds *int32 `json:"intervalSeconds,omitempty" xml:"intervalSeconds,omitempty"`
-	// The HTTP Health Check Path.
+	// The health check path.
 	//
 	// example:
 	//
@@ -1060,13 +1046,13 @@ type CreateCustomAgentResponseBodyDataLatestExecutionError struct {
 	//
 	// AgentExecutionFailed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the reason why the latest configuration is waiting or has failed to execute. Refer to the code and retryable fields to determine what to do next.
+	// The description of the reason why the latest configuration is waiting or failed to execute. Refer to the code and retryable fields to determine what to do next.
 	//
 	// example:
 	//
-	// The agent execution failed. Check the configuration and resubmit
+	// Agent execution failed. Check the configuration and resubmit
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Specifies whether the operation is automatically retried. A value of true indicates that you can query again later. A value of false indicates that you must check and fix the configuration based on the reason, and then resubmit the request.
+	// Specifies whether automatic retry is performed. If the value is true, you can query again later. If the value is false, check and fix the configuration based on the reason, and then resubmit the request.
 	Retryable *bool `json:"retryable,omitempty" xml:"retryable,omitempty"`
 }
 
@@ -1141,13 +1127,13 @@ func (s *CreateCustomAgentResponseBodyDataLogging) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataLoggingSls struct {
-	// The name of the Simple Log Service Logstore that receives agent logs.
+	// The name of the Simple Log Service Logstore that receives the agent logs.
 	//
 	// example:
 	//
 	// agent-runtime
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service project that receives agent logs.
+	// The name of the Simple Log Service project that receives the agent logs.
 	//
 	// example:
 	//
@@ -1186,9 +1172,9 @@ func (s *CreateCustomAgentResponseBodyDataLoggingSls) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataNetwork struct {
-	// The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side, but it is still restricted by the workspace.
+	// The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side but is still restricted by the workspace.
 	AccessInternet *CreateCustomAgentResponseBodyDataNetworkAccessInternet `json:"accessInternet,omitempty" xml:"accessInternet,omitempty" type:"Struct"`
-	// The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side, but it is still restricted by the workspace.
+	// The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side but is still restricted by the workspace.
 	AccessVpc *CreateCustomAgentResponseBodyDataNetworkAccessVpc `json:"accessVpc,omitempty" xml:"accessVpc,omitempty" type:"Struct"`
 }
 
@@ -1297,13 +1283,13 @@ type CreateCustomAgentResponseBodyDataOssMounts struct {
 	//
 	// /mnt/oss/train
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The prefix of the object directory in the mounted bucket.
+	// The object directory prefix in the mounted bucket.
 	//
 	// example:
 	//
 	// datasets/train
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates that the mount is read-only. A value of false indicates that the mount is readable and writable.
+	// Specifies whether the mount is read-only.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1356,17 +1342,11 @@ func (s *CreateCustomAgentResponseBodyDataOssMounts) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataProtocol struct {
-	// The request header configurations for the current protocol. The key is the header name and the value is a string.
+	// The request header configuration for the current protocol. The key is the header name and the value is a string.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The list of API paths corresponding to the current protocol.
 	Paths []*CreateCustomAgentResponseBodyDataProtocolPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// The invocation protocol type. Valid values:
-	//
-	// - agui: AG-UI protocol.
-	//
-	// - openai-chat-completion: OpenAI Chat Completions compatible protocol.
-	//
-	// - custom: Custom protocol.
+	// The invocation protocol type. Valid values: agui: AG-UI protocol; openai-chat-completion: OpenAI Chat Completions compatible protocol; custom: custom protocol.
 	//
 	// This parameter is required.
 	//
@@ -1431,7 +1411,7 @@ type CreateCustomAgentResponseBodyDataProtocolPaths struct {
 	//
 	// AG-UI conversation API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The API path corresponding to the current protocol.
+	// The API path that corresponds to the current protocol.
 	//
 	// This parameter is required.
 	//
@@ -1476,9 +1456,9 @@ type CreateCustomAgentResponseBodyDataRuntime struct {
 	//
 	// This parameter is required.
 	Compute *CreateCustomAgentResponseBodyDataRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
-	// The elastic policy configurations for the agent.
+	// The elastic policy configuration for the agent.
 	Hpa *CreateCustomAgentResponseBodyDataRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
-	// The session policy configurations for the agent.
+	// The session policy configuration for the agent.
 	//
 	// This parameter is required.
 	SessionPolicy *CreateCustomAgentResponseBodyDataRuntimeSessionPolicy `json:"sessionPolicy,omitempty" xml:"sessionPolicy,omitempty" type:"Struct"`
@@ -1539,13 +1519,7 @@ func (s *CreateCustomAgentResponseBodyDataRuntime) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataRuntimeCompute struct {
-	// The compute specification. Valid values:
-	//
-	// - INTERACTIVE: 1 vCPU and 2 GiB of memory.
-	//
-	// - STANDARD: 2 vCPUs and 4 GiB of memory.
-	//
-	// - HEAVY: 4 vCPUs and 8 GiB of memory.
+	// The compute specification. Valid values: INTERACTIVE: 1 vCPU and 2 GiB of memory; STANDARD: 2 vCPUs and 4 GiB of memory; HEAVY: 4 vCPUs and 8 GiB of memory.
 	//
 	// This parameter is required.
 	//
@@ -1577,33 +1551,29 @@ func (s *CreateCustomAgentResponseBodyDataRuntimeCompute) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataRuntimeHpa struct {
-	// Specifies whether elastic scaling is enabled. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Disabled.
+	// Specifies whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled, and a value of false indicates that elastic scaling is disabled.
 	//
 	// This parameter is required.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of concurrent sessions configured for a single runtime instance.
+	// The maximum number of concurrent sessions configured for a single running instance.
 	//
 	// example:
 	//
 	// 100
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of runtime instances configured.
+	// The maximum number of running instances configured.
 	//
 	// example:
 	//
 	// 10
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of runtime instances configured.
+	// The minimum number of running instances configured.
 	//
 	// example:
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The maximum idle time configured for a session, in seconds.
+	// The maximum idle time for a session, in seconds.
 	//
 	// example:
 	//
@@ -1675,15 +1645,7 @@ type CreateCustomAgentResponseBodyDataRuntimeSessionPolicy struct {
 	//
 	// X-Session-Id
 	HeaderName *string `json:"headerName,omitempty" xml:"headerName,omitempty"`
-	// The session policy type. Valid values:
-	//
-	// - AFFINITY: Session affinity.
-	//
-	// - ISOLATED_HEADER_FIELD: Associates sessions by using the request header specified by headerName.
-	//
-	// - ISOLATED_COOKIE: Not recommended.
-	//
-	// Note: The compatibility value DISABLED in a request is returned as AFFINITY.
+	// The type of the session policy. Valid values: AFFINITY (session affinity), ISOLATED_HEADER_FIELD (associates sessions by using the request header specified by headerName), and ISOLATED_COOKIE (not recommended). The compatible value DISABLED in requests is returned as AFFINITY.
 	//
 	// This parameter is required.
 	//

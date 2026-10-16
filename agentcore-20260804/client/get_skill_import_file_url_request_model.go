@@ -14,7 +14,7 @@ type iGetSkillImportFileUrlRequest interface {
 }
 
 type GetSkillImportFileUrlRequest struct {
-	// The Content-Type of the upload file. Default value: application/zip.
+	// The Content-Type of the uploaded file. Default value: application/zip.
 	//
 	// example:
 	//

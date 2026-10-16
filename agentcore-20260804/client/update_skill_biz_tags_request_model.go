@@ -45,7 +45,7 @@ func (s *UpdateSkillBizTagsRequest) Validate() error {
 }
 
 type UpdateSkillBizTagsRequestBody struct {
-	// The business tags as a JSON array string.
+	// The JSON array string of business tags.
 	//
 	// This parameter is required.
 	//

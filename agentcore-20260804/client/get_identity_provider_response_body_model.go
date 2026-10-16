@@ -38,7 +38,7 @@ type GetIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request failed.
+	// The response message. An error description is returned if the request fails.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetIdentityProviderResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,61 +126,61 @@ func (s *GetIdentityProviderResponseBody) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyData struct {
-	// The creation time in UTC, formatted according to RFC 3339.
+	// The creation time in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The event subscription callback URL. Configure this URL in the external identity provider application to receive organization change events. An empty string is returned if the user pool has not been activated.
+	// The event subscription callback URL. You must configure this URL in the application of the external identity provider to receive organization change events. An empty string is returned if the user pool is not activated.
 	//
 	// example:
 	//
 	// http://auth.cn-hangzhou.agentteams.aliyuncs.com/roa/dingtalk/event/up-123456
 	EventSubscriptionCallbackUrl *string `json:"eventSubscriptionCallbackUrl,omitempty" xml:"eventSubscriptionCallbackUrl,omitempty"`
-	// The type of the external identity provider. Valid values: DingTalk, Feishu.
+	// The type of the external identity provider. Valid values: DingTalk and Feishu.
 	//
 	// example:
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// The logon callback URL. Configure this URL in the external identity provider application. An empty string is returned if the user pool has not been activated.
+	// The logon callback URL. You must configure this URL in the application of the external identity provider. An empty string is returned if the user pool is not activated.
 	//
 	// example:
 	//
 	// https://signin-cn-hangzhou.aliyunagentid.com/up-123456/dingtalk/callback
 	LoginCallbackUrl *string `json:"loginCallbackUrl,omitempty" xml:"loginCallbackUrl,omitempty"`
-	// Indicates whether workspace users are allowed to log on through this external identity provider.
+	// Specifies whether workspace users are allowed to log on through this external identity provider.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The application configuration of the external identity provider. Application secret configurations are not returned.
+	// The application configurations of the external identity provider. Application secret configurations are not returned.
 	Metadata *GetIdentityProviderResponseBodyDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
 	// The status. Valid values:
 	//
-	// - CONFIGURED: The configuration has been accepted and is waiting for user pool activation.
+	// - CONFIGURED: The configuration is accepted and waiting for the user pool to be activated.
 	//
 	// - SYNCING: Organization members are being synchronized.
 	//
-	// - SYNCED: Organization member synchronization is complete.
+	// - SYNCED: Organization members are synchronized.
 	//
-	// - READY: The binding is active.
+	// - READY: The binding is in effect.
 	//
-	// - SYNC_FAILED: Organization member synchronization failed.
+	// - SYNC_FAILED: Failed to synchronize organization members.
 	//
 	// - UPDATING: The configuration is being updated.
 	//
-	// - UPDATE_FAILED: The configuration update failed.
+	// - UPDATE_FAILED: Failed to update the configuration.
 	//
-	// - DISCONNECTING: The binding is being removed.
+	// - DISCONNECTING: The binding is being disconnected.
 	//
-	// - DISCONNECT_FAILED: The unbinding failed.
+	// - DISCONNECT_FAILED: Failed to disconnect the binding.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Indicates whether organization member synchronization is enabled. When enabled, the external identity provider synchronizes organization members as workspace users.
+	// Specifies whether organization member synchronization is enabled. After this feature is enabled, organization members are synchronized as workspace users by this external identity provider.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// The time of the last modification in UTC, formatted according to RFC 3339.
+	// The time of the last update in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -302,19 +302,19 @@ func (s *GetIdentityProviderResponseBodyData) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyDataMetadata struct {
-	// The App ID of the Lark application. Required when the binding type is Feishu.
+	// The App ID of the Lark application. This parameter is required when the binding type is Feishu.
 	//
 	// example:
 	//
 	// cli_exampleappid01
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The AppKey of the DingTalk application. Required when the binding type is DingTalk.
+	// The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// The CorpId of the DingTalk enterprise. Required when the binding type is DingTalk.
+	// The CorpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//

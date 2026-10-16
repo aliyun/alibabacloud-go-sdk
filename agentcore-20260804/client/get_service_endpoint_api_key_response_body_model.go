@@ -24,33 +24,33 @@ type iGetServiceEndpointApiKeyResponseBody interface {
 }
 
 type GetServiceEndpointApiKeyResponseBody struct {
-	// The response code. The value is SUCCESS when the request succeeds.
+	// The response code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The currently active API Key information for the service endpoint.
+	// The information about the currently active API key for the service endpoint.
 	Data *GetServiceEndpointApiKeyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request succeeds.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. The value is success when the request succeeds.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, used for troubleshooting and tracing.
+	// The request ID, which is used to troubleshoot and trace the request.
 	//
 	// example:
 	//
 	// req-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. The value is true when the request succeeds.
+	// Indicates whether the request is successful. The value is true if the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,25 +126,25 @@ func (s *GetServiceEndpointApiKeyResponseBody) Validate() error {
 }
 
 type GetServiceEndpointApiKeyResponseBodyData struct {
-	// The currently active API Key for the service endpoint. The service reads this value from the gateway consumer in real time. AgentCore does not persist the plaintext. When calling the service endpoint, include this value in the request header specified by apiKeyName. Do not log this value or expose it in public configurations.
+	// The currently active API key for the service endpoint. The service reads this value from the gateway consumer in real time, and AgentCore does not persist the plaintext. When calling the service endpoint, include this value in the request header specified by apiKeyName. Do not log this value or expose it in public configurations.
 	//
 	// example:
 	//
 	// example-api-key-value
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The API Key fingerprint, which consists of the first 12 lowercase hexadecimal characters of the SHA-256 digest of the API Key. It can be used to identify the key version but cannot replace the API Key for authentication.
+	// The fingerprint of the API key, which consists of the first 12 lowercase hexadecimal characters of the SHA-256 hash of the API key. It can be used to identify the key version but cannot be used in place of the API key for authentication.
 	//
 	// example:
 	//
 	// b2520bf19231
 	ApiKeyFingerprint *string `json:"apiKeyFingerprint,omitempty" xml:"apiKeyFingerprint,omitempty"`
-	// The name of the HTTP request header used to pass the API Key. The value is currently fixed to x-api-key.
+	// The name of the HTTP request header used to pass the API key. The value is fixed to x-api-key.
 	//
 	// example:
 	//
 	// x-api-key
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	// The location where the API Key is passed. The value is currently fixed to Header, indicating that the API Key is passed through an HTTP request header.
+	// The location where the API key is passed. The value is fixed to Header, which indicates that the API key is passed through an HTTP request header.
 	//
 	// example:
 	//
@@ -154,15 +154,15 @@ type GetServiceEndpointApiKeyResponseBodyData struct {
 	//
 	// - NONE: Authentication is not enabled.
 	//
-	// - API_KEY: API Key authentication is used.
+	// - API_KEY: API key authentication is used.
 	//
-	// This operation succeeds only when the authentication type is API_KEY. Therefore, the value API_KEY is always returned in a successful response.
+	// This operation succeeds only when the authentication type is API_KEY. Therefore, a successful response always returns API_KEY.
 	//
 	// example:
 	//
 	// API_KEY
 	AuthenticationType *string `json:"authenticationType,omitempty" xml:"authenticationType,omitempty"`
-	// The service endpoint ID.
+	// The ID of the service endpoint.
 	//
 	// example:
 	//

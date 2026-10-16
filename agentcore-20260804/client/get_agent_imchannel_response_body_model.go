@@ -24,7 +24,7 @@ type iGetAgentIMChannelResponseBody interface {
 }
 
 type GetAgentIMChannelResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request succeeds.
+	// The business status code. The value is SUCCESS if the request succeeds.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetAgentIMChannelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The IM channel details.
 	Data *GetAgentIMChannelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 is returned if the request succeeds.
+	// The HTTP status code. The value is 200 if the request succeeds.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The result message of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetAgentIMChannelResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -134,13 +134,7 @@ type GetAgentIMChannelResponseBodyData struct {
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	// The channel behavior configuration.
 	ChannelConfig *GetAgentIMChannelResponseBodyDataChannelConfig `json:"channelConfig,omitempty" xml:"channelConfig,omitempty" type:"Struct"`
-	// The IM channel type. Valid values:
-	//
-	// - DINGTALK: DingTalk.
-	//
-	// - FEISHU: Lark.
-	//
-	// - WECOM: WeCom.
+	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), and WECOM (WeCom).
 	//
 	// example:
 	//
@@ -152,11 +146,11 @@ type GetAgentIMChannelResponseBodyData struct {
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The channel credential summary. Only non-sensitive fields and the names of configured secret fields are returned. Secret values are not returned.
+	// The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
 	CredentialSummary *GetAgentIMChannelResponseBodyDataCredentialSummary `json:"credentialSummary,omitempty" xml:"credentialSummary,omitempty" type:"Struct"`
-	// Indicates whether the IM channel is enabled. Default value upon creation: true.
+	// Specifies whether the IM channel is enabled. The default value is true upon creation.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The public network access URL of the attached ServiceEndpoint.
+	// The public network access URL of the attached service endpoint.
 	//
 	// example:
 	//
@@ -168,31 +162,19 @@ type GetAgentIMChannelResponseBodyData struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the associated ServiceEndpoint. The endpoint must belong to the specified agent and its current version, and must be ready with a public access URL.
+	// The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint URL.
 	//
 	// example:
 	//
 	// se-1
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The IM channel status. Valid values:
-	//
-	// - CREATING: The channel is being created.
-	//
-	// - READY: The channel is ready.
-	//
-	// - UPDATING: The channel is being updated.
-	//
-	// - FAILED: The channel creation or update failed.
-	//
-	// - DELETING: The channel is being deleted.
-	//
-	// - DELETE_FAILED: The channel deletion failed.
+	// The IM channel status. Valid values: CREATING (Creating), READY (Ready), UPDATING (Updating), FAILED (Failed), DELETING (Deleting), and DELETE_FAILED (Deletion failed).
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the current IM channel status.
+	// The reason for the current status of the IM channel.
 	//
 	// example:
 	//

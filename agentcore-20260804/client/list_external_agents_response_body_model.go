@@ -30,13 +30,13 @@ type iListExternalAgentsResponseBody interface {
 }
 
 type ListExternalAgentsResponseBody struct {
-	// The business status code. The value SUCCESS is returned for a successful request.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value 200 is returned for a successful request.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// example:
 	//
-	// [{"agentId":"agent-1","workspaceId":"ws-1","name":"my-external-agent","description":"A code review agent running in the user environment","status":"Running","latestSpecVersion":1,"effectiveSpecVersion":1,"createMode":"CUSTOM","runtime":"qwenpaw","deployType":"SELF_HOSTED","createdAt":"2026-01-01T00:00:00Z","updatedAt":"2026-01-01T00:00:00Z"}]
+	// [{"agentId":"agent-1","workspaceId":"ws-1","name":"my-external-agent","description":"Code review agent running in the user environment","status":"Running","latestSpecVersion":1,"effectiveSpecVersion":1,"createMode":"CUSTOM","runtime":"qwenpaw","deployType":"SELF_HOSTED","createdAt":"2026-01-01T00:00:00Z","updatedAt":"2026-01-01T00:00:00Z"}]
 	Items []*ListExternalAgentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of entries returned per page for this request.
 	//
@@ -54,13 +54,13 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The message that indicates the result of the request.
+	// The message about the request processing result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates that the last page has been reached.
+	// The token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the query conditions.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ func (s *ListExternalAgentsResponseBody) Validate() error {
 }
 
 type ListExternalAgentsResponseBodyItems struct {
-	// The external agent ID.
+	// The ID of the external agent.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type ListExternalAgentsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// A code review agent running in the user environment
+	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The latest specification version number.
 	//
@@ -237,19 +237,7 @@ type ListExternalAgentsResponseBodyItems struct {
 	//
 	// qwenpaw
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the external agent. Valid values:
-	//
-	// - Creating: The agent is being created.
-	//
-	// - Running: The agent is running.
-	//
-	// - Failed: The agent has failed.
-	//
-	// - Updating: The agent is being updated.
-	//
-	// - Deleting: The agent is being deleted.
-	//
-	// - Deleted: The agent has been deleted.
+	// The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
 	//
 	// example:
 	//

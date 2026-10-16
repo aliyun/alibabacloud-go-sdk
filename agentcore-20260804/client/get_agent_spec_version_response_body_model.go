@@ -66,19 +66,19 @@ type GetAgentSpecVersionResponseBodyData struct {
 	//
 	// example:
 	//
-	// SamplePropertyValue
+	// Sample property value
 	BizTags *string `json:"bizTags,omitempty" xml:"bizTags,omitempty"`
 	// The content.
 	//
 	// example:
 	//
-	// SampleContent
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The description.
 	//
 	// example:
 	//
-	// A sample description that explains the purpose of the resource
+	// Sample description used to explain the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name.
 	//

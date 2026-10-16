@@ -45,7 +45,7 @@ func (s *UploadAgentSpecViaOssRequest) Validate() error {
 }
 
 type UploadAgentSpecViaOssRequestBody struct {
-	// The OSS object name (full path).
+	// The name of the OSS object, including the full path.
 	//
 	// This parameter is required.
 	//
@@ -53,13 +53,13 @@ type UploadAgentSpecViaOssRequestBody struct {
 	//
 	// agentspec/export/user1/ns1/2024-01-01/uuid/123456.zip
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	// Specifies whether to overwrite the existing draft. Default value: false.
+	// Specifies whether to overwrite existing drafts. Default value: false.
 	//
 	// example:
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// Specifies whether to publish directly after upload. Default value: false.
+	// Specifies whether to publish and bring the AgentSpec online immediately after the upload. Default value: false.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type InstallWorkspacePluginResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. Returns an error description when the request fails.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type InstallWorkspacePluginResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

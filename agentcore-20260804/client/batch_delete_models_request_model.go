@@ -18,7 +18,7 @@ type iBatchDeleteModelsRequest interface {
 type BatchDeleteModelsRequest struct {
 	// The request body.
 	Body *BatchDeleteModelsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client token used for idempotence. Not supported.
+	// The client token used for idempotence. This parameter is not currently supported.
 	//
 	// example:
 	//

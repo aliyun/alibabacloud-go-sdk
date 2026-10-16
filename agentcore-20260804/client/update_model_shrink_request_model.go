@@ -16,9 +16,9 @@ type iUpdateModelShrinkRequest interface {
 }
 
 type UpdateModelShrinkRequest struct {
-	// The model update request body. At least one non-null parameter must be provided among description, contextSize, maxTokens, and capabilities.
+	// The model update request body. You must specify at least one non-null parameter among description, contextSize, maxTokens, and capabilities.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token for idempotency. Not currently supported.
+	// The client token used for idempotence. This parameter is not supported.
 	//
 	// example:
 	//

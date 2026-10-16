@@ -24,12 +24,34 @@ type iListPredefinedModelProvidersResponseBody interface {
 }
 
 type ListPredefinedModelProvidersResponseBody struct {
-	Code           *string                                         `json:"code,omitempty" xml:"code,omitempty"`
-	Data           []*ListPredefinedModelProvidersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                                          `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                                         `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
+	// The business status code. The value is SUCCESS if the request is successful.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The list of predefined model providers.
+	Data []*ListPredefinedModelProvidersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code. The value is 200 if the request is successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The message about the request processing result.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// request-1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListPredefinedModelProvidersResponseBody) String() string {
@@ -108,10 +130,30 @@ func (s *ListPredefinedModelProvidersResponseBody) Validate() error {
 }
 
 type ListPredefinedModelProvidersResponseBodyData struct {
+	// The default model service endpoint of the provider.
+	//
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	DefaultEndpoint *string `json:"defaultEndpoint,omitempty" xml:"defaultEndpoint,omitempty"`
+	// The default model invocation protocol of the provider.
+	//
+	// example:
+	//
+	// OpenAI/v1
 	DefaultProtocol *string `json:"defaultProtocol,omitempty" xml:"defaultProtocol,omitempty"`
-	DisplayName     *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	ProviderType    *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
+	// The display name of the model provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud Model Studio
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The model provider type.
+	//
+	// example:
+	//
+	// qwen
+	ProviderType *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
 }
 
 func (s ListPredefinedModelProvidersResponseBodyData) String() string {

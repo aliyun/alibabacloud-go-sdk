@@ -16,9 +16,9 @@ type iListSkillReferencesResponseBody interface {
 }
 
 type ListSkillReferencesResponseBody struct {
-	// The skill reference relationship data returned by the paged query. The data is returned with paging.
+	// The skill reference relationship data returned by the paging query.
 	Data *ListSkillReferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID, which is used for troubleshooting.
+	// The request ID used for troubleshooting.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListSkillReferencesResponseBodyData struct {
 	//
 	// 5
 	PagesAvailable *int32 `json:"pagesAvailable,omitempty" xml:"pagesAvailable,omitempty"`
-	// The total number of reference relationships that match the filter conditions.
+	// The total number of reference relationships that meet the conditions.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListSkillReferencesResponseBodyData) Validate() error {
 }
 
 type ListSkillReferencesResponseBodyDataPageItems struct {
-	// The ID of the referencing entity (the identifier of the Agent or AgentSpec).
+	// The ID of the referencing entity, which is the identifier of the agent or agent spec.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type ListSkillReferencesResponseBodyDataPageItems struct {
 	//
 	// LABEL
 	SelectorType *string `json:"selectorType,omitempty" xml:"selectorType,omitempty"`
-	// The reference selector value, such as latest, a named label, HEAD, or a specific version.
+	// The reference selector value. Valid values: latest, a named label, HEAD, or a specific version.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type ListSkillReferencesResponseBodyDataPageItems struct {
 	//
 	// web-search
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The workspace ID to which the reference belongs.
+	// The ID of the workspace to which the reference belongs.
 	//
 	// example:
 	//

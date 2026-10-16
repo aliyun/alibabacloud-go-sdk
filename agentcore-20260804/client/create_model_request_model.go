@@ -18,7 +18,7 @@ type iCreateModelRequest interface {
 type CreateModelRequest struct {
 	// The request body.
 	Body *CreateModelRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client token for idempotence. Not currently supported.
+	// The client token used for idempotence. This parameter is not supported.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CreateModelRequest) Validate() error {
 }
 
 type CreateModelRequestBody struct {
-	// The model capability configuration.
+	// The model capability configurations.
 	Capabilities *CreateModelRequestBodyCapabilities `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Struct"`
 	// The model connection ID.
 	//
@@ -72,7 +72,7 @@ type CreateModelRequestBody struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The model context window size, in tokens. The value must be a positive integer.
+	// The context window size of the model, in tokens. It must be a positive integer.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type CreateModelRequestBody struct {
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The maximum number of output tokens supported per model generation.
+	// The maximum number of output tokens supported per generation.
 	//
 	// example:
 	//
@@ -176,11 +176,11 @@ type CreateModelRequestBodyCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Specifies whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Specifies whether the model is able to invoke multiple tools in a single response.
+	// Specifies whether the model is able to invoke multiple tool calling operations in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Specifies whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Specifies whether the model supports streaming tool calling.
+	// Specifies whether the model is able to invoke tool calling in a streaming manner.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
 	// Specifies whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`

@@ -24,7 +24,7 @@ type iDeleteManagedAgentResponseBody interface {
 }
 
 type DeleteManagedAgentResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request succeeds.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteManagedAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The summary information of the deleted managed agent.
 	Data *DeleteManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 is returned if the request succeeds.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message returned for the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DeleteManagedAgentResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -158,9 +158,9 @@ type DeleteManagedAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// An agent for code review
+	// Agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The latest specification version number.
+	// The latest specification version.
 	//
 	// example:
 	//

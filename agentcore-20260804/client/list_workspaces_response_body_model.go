@@ -42,9 +42,9 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of workspaces.
+	// The workspace list.
 	Items []*ListWorkspacesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page used in this request.
+	// The maximum number of records per page used for this request.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This parameter is empty if no more pages are available.
+	// The cursor for the next page. This parameter is empty if there is no next page.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListWorkspacesResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of workspaces that match the query conditions.
+	// The total number of workspaces that meet the query conditions.
 	//
 	// example:
 	//
@@ -185,13 +185,13 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItems struct {
-	// The time when the workspace was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-08-06T03:56:56Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//
@@ -199,21 +199,13 @@ type ListWorkspacesResponseBodyItems struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *ListWorkspacesResponseBodyItemsNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The region ID of the workspace.
+	// The ID of the region where the workspace resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The workspace status. Valid values:
-	//
-	// - Initializing
-	//
-	// - Initialized
-	//
-	// - Deleting
-	//
-	// - Deleted.
+	// The workspace status. Valid values: Initializing, Initialized, Deleting, and Deleted.
 	//
 	// example:
 	//
@@ -314,7 +306,19 @@ func (s *ListWorkspacesResponseBodyItems) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsNetworkConfiguration struct {
-	// The VPC network configuration of the user.
+	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This setting only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
+	//
+	// example:
+	//
+	// true
+	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this setting is disabled, the public network ingress for all agent endpoints in the workspace is closed. After it is re-enabled, the original public network ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+	//
+	// example:
+	//
+	// true
+	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
+	// The network configuration of the user VPC.
 	Vpc *ListWorkspacesResponseBodyItemsNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -326,8 +330,26 @@ func (s ListWorkspacesResponseBodyItemsNetworkConfiguration) GoString() string {
 	return s.String()
 }
 
+func (s *ListWorkspacesResponseBodyItemsNetworkConfiguration) GetPublicEgressEnabled() *bool {
+	return s.PublicEgressEnabled
+}
+
+func (s *ListWorkspacesResponseBodyItemsNetworkConfiguration) GetPublicIngressEnabled() *bool {
+	return s.PublicIngressEnabled
+}
+
 func (s *ListWorkspacesResponseBodyItemsNetworkConfiguration) GetVpc() *ListWorkspacesResponseBodyItemsNetworkConfigurationVpc {
 	return s.Vpc
+}
+
+func (s *ListWorkspacesResponseBodyItemsNetworkConfiguration) SetPublicEgressEnabled(v bool) *ListWorkspacesResponseBodyItemsNetworkConfiguration {
+	s.PublicEgressEnabled = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsNetworkConfiguration) SetPublicIngressEnabled(v bool) *ListWorkspacesResponseBodyItemsNetworkConfiguration {
+	s.PublicIngressEnabled = &v
+	return s
 }
 
 func (s *ListWorkspacesResponseBodyItemsNetworkConfiguration) SetVpc(v *ListWorkspacesResponseBodyItemsNetworkConfigurationVpc) *ListWorkspacesResponseBodyItemsNetworkConfiguration {

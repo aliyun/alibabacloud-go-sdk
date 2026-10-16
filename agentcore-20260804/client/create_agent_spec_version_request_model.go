@@ -51,7 +51,7 @@ type CreateAgentSpecVersionRequestBody struct {
 	//
 	// 1.0.0
 	BasedOnVersion *string `json:"basedOnVersion,omitempty" xml:"basedOnVersion,omitempty"`
-	// The version number of the draft. If this parameter is not specified, the version number is automatically incremented.
+	// Specifies the draft version number. If you do not specify this parameter, the version number is automatically incremented.
 	//
 	// example:
 	//

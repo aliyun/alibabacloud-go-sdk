@@ -24,7 +24,7 @@ type iListPredefinedModelsResponseBody interface {
 }
 
 type ListPredefinedModelsResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type ListPredefinedModelsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The list of predefined models.
 	Data []*ListPredefinedModelsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message indicating the request processing result.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListPredefinedModelsResponseBody struct {
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -130,9 +130,9 @@ func (s *ListPredefinedModelsResponseBody) Validate() error {
 }
 
 type ListPredefinedModelsResponseBodyData struct {
-	// The model capability configuration.
+	// The model capability configurations.
 	Capabilities *ListPredefinedModelsResponseBodyDataCapabilities `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Struct"`
-	// The model context window size in tokens. The value must be a positive integer.
+	// The context window size of the model, in tokens. The value must be a positive integer.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListPredefinedModelsResponseBodyData struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model release date in the format of YYYY-MM-DD.
+	// The release date of the model. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -225,11 +225,11 @@ type ListPredefinedModelsResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model is able to invoke multiple tool calling requests in a single response.
+	// Specifies whether the model is able to invoke multiple tool calling in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Indicates whether the model supports streaming tool calling.
+	// Specifies whether the model is able to invoke streaming tool calling.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
 	// Indicates whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`

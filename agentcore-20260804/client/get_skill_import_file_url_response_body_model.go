@@ -16,7 +16,7 @@ type iGetSkillImportFileUrlResponseBody interface {
 }
 
 type GetSkillImportFileUrlResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *GetSkillImportFileUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *GetSkillImportFileUrlResponseBody) Validate() error {
 }
 
 type GetSkillImportFileUrlResponseBodyData struct {
-	// The Content-Type of the upload file.
+	// The Content-Type of the uploaded file.
 	//
 	// example:
 	//
 	// application/zip
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The maximum file size allowed for upload, in bytes.
+	// The maximum allowed file size for upload, in bytes.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetSkillImportFileUrlResponseBodyData struct {
 	//
 	// imports/example.zip
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	// The OSS pre-signed upload URL.
+	// The OSS presigned upload URL.
 	//
 	// example:
 	//

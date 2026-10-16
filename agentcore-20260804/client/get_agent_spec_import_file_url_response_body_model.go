@@ -16,7 +16,7 @@ type iGetAgentSpecImportFileUrlResponseBody interface {
 }
 
 type GetAgentSpecImportFileUrlResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *GetAgentSpecImportFileUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetAgentSpecImportFileUrlResponseBody) Validate() error {
 }
 
 type GetAgentSpecImportFileUrlResponseBodyData struct {
-	// The Content-Type to use for the OSS PUT request.
+	// The Content-Type used for the OSS PUT request.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetAgentSpecImportFileUrlResponseBodyData struct {
 	//
 	// imports/example.zip
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	// The OSS pre-signed upload URL.
+	// The OSS presigned upload URL.
 	//
 	// example:
 	//

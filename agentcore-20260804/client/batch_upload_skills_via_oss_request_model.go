@@ -53,7 +53,7 @@ type BatchUploadSkillsViaOssRequestBody struct {
 	//
 	// skill/import/user123/ns-123456/2026/04/20/uuid/skills.zip
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	// Specifies whether to overwrite an existing Skill. Default value: false.
+	// Specifies whether to overwrite existing skills. Default value: false.
 	//
 	// example:
 	//

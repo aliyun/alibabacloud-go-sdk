@@ -44,7 +44,7 @@ type ListServiceEndpointsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of service endpoints.
 	Items []*ListServiceEndpointsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that takes effect for this query.
+	// The maximum number of records per page that takes effect in this query.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListServiceEndpointsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This value is empty when no more pages are available.
+	// The cursor for the next page. This parameter is empty if no next page exists.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListServiceEndpointsResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of service endpoints that match the query conditions.
+	// The total number of service endpoints that meet the query conditions.
 	//
 	// example:
 	//
@@ -185,19 +185,19 @@ type ListServiceEndpointsResponseBodyItems struct {
 	AccessUrls []*ListServiceEndpointsResponseBodyItemsAccessUrls `json:"accessUrls,omitempty" xml:"accessUrls,omitempty" type:"Repeated"`
 	// The authentication configuration of the service endpoint.
 	Authentication *ListServiceEndpointsResponseBodyItemsAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty" type:"Struct"`
-	// The creation time in UTC, formatted in RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
+	// The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by a user.
 	//
 	// example:
 	//
 	// NAMED
 	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	// The service endpoint name. The name is unique within the workspace and is 1 to 128 characters in length.
+	// The service endpoint name. The name must be unique within the workspace and 1 to 128 characters in length.
 	//
 	// example:
 	//
@@ -215,13 +215,13 @@ type ListServiceEndpointsResponseBodyItems struct {
 	//
 	// se-123456
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, DELETING.
+	// The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the service endpoint status. A specific reason is returned when the status is abnormal.
+	// The reason for the service endpoint status. The specific reason is returned when the status is abnormal.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ type ListServiceEndpointsResponseBodyItems struct {
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	// The target routing configuration of the service endpoint.
 	Target *ListServiceEndpointsResponseBodyItemsTarget `json:"target,omitempty" xml:"target,omitempty" type:"Struct"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The last update time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -383,19 +383,19 @@ func (s *ListServiceEndpointsResponseBodyItems) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsAccessUrls struct {
-	// The access URL type. Valid values: INTERNET, VPC.
+	// The access URL type. Valid values: INTERNET and VPC.
 	//
 	// example:
 	//
 	// INTERNET
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The access URL status. Valid values: CREATING, READY, DEGRADED.
+	// The access URL status. Valid values: CREATING, READY, and DEGRADED.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the access URL status. A specific reason is returned when the status is abnormal.
+	// The reason for the access URL status. The specific reason is returned when the status is abnormal.
 	//
 	// example:
 	//
@@ -458,7 +458,7 @@ func (s *ListServiceEndpointsResponseBodyItemsAccessUrls) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsAuthentication struct {
-	// The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key through the x-api-key request header.
+	// The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the x-api-key request header.
 	//
 	// example:
 	//
@@ -488,31 +488,31 @@ func (s *ListServiceEndpointsResponseBodyItemsAuthentication) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsTarget struct {
-	// The target agent ID. Returned when the target type is AGENT_VERSION.
+	// The target agent ID. This parameter is returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The target agent version number. Returned when the target type is AGENT_VERSION.
+	// The target agent version. This parameter is returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// The collaboration component type. Returned when the target type is TEAM_COLLABORATION.
+	// The collaboration component type. This parameter is returned when the target type is TEAM_COLLABORATION.
 	//
 	// example:
 	//
 	// ELEMENT_WEB
 	CollaborationComponent *string `json:"collaborationComponent,omitempty" xml:"collaborationComponent,omitempty"`
-	// The workspace resource binding ID associated with the target collaboration component. Returned when the target type is TEAM_COLLABORATION.
+	// The workspace resource binding ID associated with the target collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
 	//
 	// example:
 	//
 	// wrb-123456
 	ResourceBindingId *string `json:"resourceBindingId,omitempty" xml:"resourceBindingId,omitempty"`
-	// The target type. Valid values: AGENT_VERSION, TEAM_COLLABORATION.
+	// The target type. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
 	//
 	// example:
 	//

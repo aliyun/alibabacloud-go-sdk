@@ -18,7 +18,7 @@ type iUpdateWorkspaceRequest interface {
 type UpdateWorkspaceRequest struct {
 	// The request body for updating a workspace.
 	Body *UpdateWorkspaceRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client idempotency token.
+	// The client token used to ensure idempotence.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *UpdateWorkspaceRequest) Validate() error {
 }
 
 type UpdateWorkspaceRequestBody struct {
-	// The updated workspace name.
+	// The updated name of the workspace.
 	//
 	// example:
 	//
@@ -108,9 +108,19 @@ func (s *UpdateWorkspaceRequestBody) Validate() error {
 }
 
 type UpdateWorkspaceRequestBodyNetworkConfiguration struct {
-	// The VPC network configuration of the user.
+	// Specifies whether to allow public egress access from the platform. If this parameter is not specified, the original value is retained. Disabling this feature asynchronously cascades to disable the public network switch for agents. Re-enabling this feature does not automatically restore the agent switch. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// true
+	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
+	// Specifies whether to allow public ingress access. If this parameter is not specified, the original value is retained. This parameter can be modified together with PublicEgressEnabled and takes effect asynchronously through a unified task. After this feature is disabled, the public ingress for all agent endpoints in the workspace is closed. After this feature is re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+	//
+	// example:
+	//
+	// true
+	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
+	// The VPC network configuration of the user.
 	Vpc *UpdateWorkspaceRequestBodyNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -122,8 +132,26 @@ func (s UpdateWorkspaceRequestBodyNetworkConfiguration) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateWorkspaceRequestBodyNetworkConfiguration) GetPublicEgressEnabled() *bool {
+	return s.PublicEgressEnabled
+}
+
+func (s *UpdateWorkspaceRequestBodyNetworkConfiguration) GetPublicIngressEnabled() *bool {
+	return s.PublicIngressEnabled
+}
+
 func (s *UpdateWorkspaceRequestBodyNetworkConfiguration) GetVpc() *UpdateWorkspaceRequestBodyNetworkConfigurationVpc {
 	return s.Vpc
+}
+
+func (s *UpdateWorkspaceRequestBodyNetworkConfiguration) SetPublicEgressEnabled(v bool) *UpdateWorkspaceRequestBodyNetworkConfiguration {
+	s.PublicEgressEnabled = &v
+	return s
+}
+
+func (s *UpdateWorkspaceRequestBodyNetworkConfiguration) SetPublicIngressEnabled(v bool) *UpdateWorkspaceRequestBodyNetworkConfiguration {
+	s.PublicIngressEnabled = &v
+	return s
 }
 
 func (s *UpdateWorkspaceRequestBodyNetworkConfiguration) SetVpc(v *UpdateWorkspaceRequestBodyNetworkConfigurationVpc) *UpdateWorkspaceRequestBodyNetworkConfiguration {
@@ -141,15 +169,15 @@ func (s *UpdateWorkspaceRequestBodyNetworkConfiguration) Validate() error {
 }
 
 type UpdateWorkspaceRequestBodyNetworkConfigurationVpc struct {
-	// Specifies whether to enable VPC networking.
+	// Specifies whether to enable the VPC network.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be specified, and all vSwitches must belong to the VPC specified by VpcId.
+	// The list of vSwitch IDs. When the VPC network is enabled, the list must contain at least one vSwitch, and all vSwitches must belong to the VPC specified by VpcId.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID of the user.
+	// The ID of the user VPC.
 	//
 	// example:
 	//

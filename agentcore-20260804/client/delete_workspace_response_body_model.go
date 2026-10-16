@@ -30,7 +30,7 @@ type DeleteWorkspaceResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result of the delete request.
+	// The deletion request result.
 	Data *DeleteWorkspaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//

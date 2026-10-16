@@ -24,21 +24,21 @@ type iGetExternalAgentBootstrapOptionsResponseBody interface {
 }
 
 type GetExternalAgentBootstrapOptionsResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request succeeds.
+	// The business status code. The value is SUCCESS when the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The network access information available for the external agent.
+	// The access network information available for the external agent.
 	Data *GetExternalAgentBootstrapOptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 is returned if the request succeeds.
+	// The HTTP status code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetExternalAgentBootstrapOptionsResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -132,7 +132,7 @@ type GetExternalAgentBootstrapOptionsResponseBodyData struct {
 	//
 	// agent-1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The list of available network access options.
+	// The list of available access networks.
 	NetworkOptions []*GetExternalAgentBootstrapOptionsResponseBodyDataNetworkOptions `json:"networkOptions,omitempty" xml:"networkOptions,omitempty" type:"Repeated"`
 	// The workspace ID.
 	//
@@ -191,13 +191,9 @@ func (s *GetExternalAgentBootstrapOptionsResponseBodyData) Validate() error {
 }
 
 type GetExternalAgentBootstrapOptionsResponseBodyDataNetworkOptions struct {
-	// Indicates whether the network access type is available.
+	// Indicates whether the access network is available.
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
-	// The network type. Valid values:
-	//
-	// - INTRANET: internal network.
-	//
-	// - INTERNET: public network.
+	// The access network type. Valid values: INTRANET (internal network) and INTERNET (public network).
 	//
 	// example:
 	//

@@ -50,7 +50,7 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBody struct {
 	//
 	// 12345678-1234-1234-1234-123456789012
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *VerifyWorkspaceAcrRamAuthorizationResponseBody) Validate() error {
 }
 
 type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
-	// The ACR Enterprise instance ID.
+	// The ID of the ACR Enterprise instance.
 	//
 	// example:
 	//
 	// cri-1234567890abcdef
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The policy attachment status for the target repository.
+	// The current attachment status of the policy for the target repository.
 	//
 	// example:
 	//
 	// UNAUTHORIZED
 	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
-	// The prerequisite status for access. This is not the Secret Ready status.
+	// The access prerequisite status. This does not indicate that the secret is ready.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	//
 	// AcrRamUnauthorized
 	ReasonCode *string `json:"reasonCode,omitempty" xml:"reasonCode,omitempty"`
-	// The human-readable reason. This field is omitted when no reason exists.
+	// The user-readable reason message. This field is omitted when no reason exists.
 	//
 	// example:
 	//
 	// Authorize the Workspace role for this ACR instance.
 	ReasonMessage *string `json:"reasonMessage,omitempty" xml:"reasonMessage,omitempty"`
-	// The shared role name selected by the backend. This value is not editable on the frontend.
+	// The name of the shared role selected by the backend. This field is not editable on the frontend.
 	//
 	// example:
 	//

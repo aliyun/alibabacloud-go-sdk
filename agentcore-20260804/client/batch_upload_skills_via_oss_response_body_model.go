@@ -16,7 +16,7 @@ type iBatchUploadSkillsViaOssResponseBody interface {
 }
 
 type BatchUploadSkillsViaOssResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *BatchUploadSkillsViaOssResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//

@@ -50,7 +50,7 @@ type GetWorkspaceResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetWorkspaceResponseBodyData struct {
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The time when the workspace was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type GetWorkspaceResponseBodyData struct {
 	//
 	// production-agents
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The workspace network configuration.
+	// The network configuration of the workspace.
 	NetworkConfiguration *GetWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
 	// The region ID of the workspace.
 	//
@@ -174,7 +174,7 @@ type GetWorkspaceResponseBodyData struct {
 	//
 	// InitializationFailed: VPC not found
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The workspace storage type.
+	// The storage type of the workspace.
 	//
 	// example:
 	//
@@ -311,13 +311,25 @@ func (s *GetWorkspaceResponseBodyData) Validate() error {
 }
 
 type GetWorkspaceResponseBodyDataNetworkConfiguration struct {
+	// Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the current change failed. This setting only controls the use of the platform public egress for the latest versions of managed and custom agents. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+	//
+	// example:
+	//
+	// true
+	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
 	// The public egress IP address of the workspace.
 	//
 	// example:
 	//
 	// 203.0.113.10
 	PublicEgressIp *string `json:"publicEgressIp,omitempty" xml:"publicEgressIp,omitempty"`
-	// The user VPC network configuration.
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public ingress for all agent endpoints in the workspace is closed. When re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+	//
+	// example:
+	//
+	// true
+	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
+	// The VPC network configuration of the user.
 	Vpc *GetWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -329,16 +341,34 @@ func (s GetWorkspaceResponseBodyDataNetworkConfiguration) GoString() string {
 	return s.String()
 }
 
+func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) GetPublicEgressEnabled() *bool {
+	return s.PublicEgressEnabled
+}
+
 func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) GetPublicEgressIp() *string {
 	return s.PublicEgressIp
+}
+
+func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) GetPublicIngressEnabled() *bool {
+	return s.PublicIngressEnabled
 }
 
 func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) GetVpc() *GetWorkspaceResponseBodyDataNetworkConfigurationVpc {
 	return s.Vpc
 }
 
+func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) SetPublicEgressEnabled(v bool) *GetWorkspaceResponseBodyDataNetworkConfiguration {
+	s.PublicEgressEnabled = &v
+	return s
+}
+
 func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) SetPublicEgressIp(v string) *GetWorkspaceResponseBodyDataNetworkConfiguration {
 	s.PublicEgressIp = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) SetPublicIngressEnabled(v bool) *GetWorkspaceResponseBodyDataNetworkConfiguration {
+	s.PublicIngressEnabled = &v
 	return s
 }
 
@@ -365,7 +395,7 @@ type GetWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The user VPC ID.
+	// The VPC ID of the user.
 	//
 	// example:
 	//

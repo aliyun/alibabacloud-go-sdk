@@ -44,13 +44,13 @@ type UpdateWorkspaceResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *UpdateWorkspaceResponseBody) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyData struct {
-	// The OSS storage authorization status.
+	// The authorization status of OSS storage.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type UpdateWorkspaceResponseBodyData struct {
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ type UpdateWorkspaceResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *UpdateWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The region ID of the workspace.
+	// The ID of the region where the workspace resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The workspace status. Valid values: Initializing, Initialized, Deleting, and Deleted.
+	// The status of the workspace. Valid values: Initializing, Initialized, Deleting, and Deleted.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ type UpdateWorkspaceResponseBodyData struct {
 	//
 	// PRIVATE
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	// The tenant ID to which the workspace belongs.
+	// The ID of the tenant to which the workspace belongs.
 	//
 	// example:
 	//
 	// tenant-123456
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
@@ -281,6 +281,18 @@ func (s *UpdateWorkspaceResponseBodyData) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyDataNetworkConfiguration struct {
+	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+	//
+	// example:
+	//
+	// true
+	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this feature is disabled, the public ingress for all agent endpoints in the workspace is closed. After this feature is re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+	//
+	// example:
+	//
+	// true
+	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
 	// The VPC network configuration of the user.
 	Vpc *UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
@@ -293,8 +305,26 @@ func (s UpdateWorkspaceResponseBodyDataNetworkConfiguration) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) GetPublicEgressEnabled() *bool {
+	return s.PublicEgressEnabled
+}
+
+func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) GetPublicIngressEnabled() *bool {
+	return s.PublicIngressEnabled
+}
+
 func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) GetVpc() *UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc {
 	return s.Vpc
+}
+
+func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) SetPublicEgressEnabled(v bool) *UpdateWorkspaceResponseBodyDataNetworkConfiguration {
+	s.PublicEgressEnabled = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) SetPublicIngressEnabled(v bool) *UpdateWorkspaceResponseBodyDataNetworkConfiguration {
+	s.PublicIngressEnabled = &v
+	return s
 }
 
 func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) SetVpc(v *UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc) *UpdateWorkspaceResponseBodyDataNetworkConfiguration {
@@ -312,7 +342,7 @@ func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
-	// Specifies whether to enable VPC networking.
+	// Specifies whether to enable the VPC network.
 	//
 	// example:
 	//
@@ -320,7 +350,7 @@ type UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID of the user.
+	// The ID of the user VPC.
 	//
 	// example:
 	//

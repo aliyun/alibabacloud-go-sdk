@@ -38,7 +38,7 @@ type GetCustomAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The description of the request processing result. The value is success when the request is successful.
+	// The result message of the request. The value is success when the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetCustomAgentResponseBody struct {
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. A successful creation, update, or deletion does not mean that the background operation is complete.
+	// Indicates whether the request was processed successfully. A value of true indicates success. Note that a successful creation, update, or deletion response does not mean that the background operation is complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -142,13 +142,13 @@ type GetCustomAgentResponseBodyData struct {
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
-	// The time when the agent was created. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The creation time of the agent. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
+	// The deployment method of the agent. Custom agents are deployed and managed by the platform, and the value is MANAGED.
 	//
 	// example:
 	//
@@ -162,29 +162,29 @@ type GetCustomAgentResponseBodyData struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment variable configuration for the agent process.
 	Environment *GetCustomAgentResponseBodyDataEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The HTTP health check configuration of the agent. This field is empty if no health check is configured.
+	// The HTTP health check configuration of the agent. This field is empty if not configured.
 	HealthCheck *GetCustomAgentResponseBodyDataHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty" type:"Struct"`
 	// The waiting or execution error of the latest configuration version. This field is returned only when the version is waiting for a retry or fails to execute.
 	LatestExecutionError *GetCustomAgentResponseBodyDataLatestExecutionError `json:"latestExecutionError,omitempty" xml:"latestExecutionError,omitempty" type:"Struct"`
-	// The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
+	// The current latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
 	//
 	// example:
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The execution status corresponding to the latestSpecVersion field. Valid values:
+	// The execution status corresponding to latestSpecVersion. Valid values:
 	//
-	// - pending: waiting for execution
+	// - pending: Waiting for execution.
 	//
-	// - processing: executing
+	// - processing: Executing.
 	//
-	// - waiting_retry: waiting for a retry
+	// - waiting_retry: Waiting for a retry.
 	//
-	// - succeeded: executed successfully
+	// - succeeded: Executed successfully.
 	//
-	// - failed: execution failed
+	// - failed: Execution failed.
 	//
-	// - superseded: superseded by a subsequent version
+	// - superseded: Superseded by a subsequent version.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type GetCustomAgentResponseBodyData struct {
 	//
 	// my-custom-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration of the agent. The actual access scope is also limited by the workspace network configuration.
+	// The network access configuration of the agent. The actual access scope is also restricted by the workspace network configuration.
 	Network *GetCustomAgentResponseBodyDataNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
 	// The latest submitted list of OSS directory mounts.
 	OssMounts []*GetCustomAgentResponseBodyDataOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
@@ -218,21 +218,21 @@ type GetCustomAgentResponseBodyData struct {
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
 	// The latest committed runtime configuration, including compute specifications, session policy, and elastic policy.
 	Runtime *GetCustomAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The count of instances by runtime phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
+	// The counts by runtime instance phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The overall status of the agent. Valid values:
 	//
-	// - Creating: Creating.
+	// - Creating: The agent is being created.
 	//
-	// - Running: Running.
+	// - Running: The agent is running.
 	//
-	// - Failed: Failed.
+	// - Failed: The agent failed.
 	//
-	// - Updating: Updating.
+	// - Updating: The agent is being updated.
 	//
-	// - Deleting: Deleting.
+	// - Deleting: The agent is being deleted.
 	//
-	// - Deleted: Deleted.
+	// - Deleted: The agent is deleted.
 	//
 	// To check the execution progress of the latest configuration, query latestVersionStatus.
 	//
@@ -240,7 +240,7 @@ type GetCustomAgentResponseBodyData struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time of the agent in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was last updated. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
@@ -545,25 +545,25 @@ func (s *GetCustomAgentResponseBodyData) Validate() error {
 }
 
 type GetCustomAgentResponseBodyDataAgenticFsMounts struct {
-	// The AgenticFS mount directory in the container, which is located under /mnt/agenticfs/.
+	// The AgenticFS mount directory in the container, located under /mnt/agenticfs/.
 	//
 	// example:
 	//
 	// /mnt/agenticfs/data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative directory in the mounted AccessPoint.
+	// The relative directory within the mounted access point.
 	//
 	// example:
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates a read-only mount. A value of false indicates a read-write mount.
+	// Specifies whether the mount is read-only. A value of true indicates a read-only mount, and a value of false indicates a read-write mount.
 	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The AgenticFS AccessPoint domain name used for the mount.
+	// The AgenticFS access point domain name used for the mount.
 	//
 	// example:
 	//
@@ -624,7 +624,7 @@ type GetCustomAgentResponseBodyDataArtifact struct {
 	Code *GetCustomAgentResponseBodyDataArtifactCode `json:"code,omitempty" xml:"code,omitempty" type:"Struct"`
 	// The latest submitted ACR container image configuration.
 	Container *GetCustomAgentResponseBodyDataArtifactContainer `json:"container,omitempty" xml:"container,omitempty" type:"Struct"`
-	// The TCP port listened to by the agent service.
+	// The TCP port listened on by the agent service.
 	//
 	// This parameter is required.
 	//
@@ -961,7 +961,7 @@ type GetCustomAgentResponseBodyDataHealthCheck struct {
 	//
 	// 10
 	IntervalSeconds *int32 `json:"intervalSeconds,omitempty" xml:"intervalSeconds,omitempty"`
-	// The HTTP Health Check Path.
+	// The HTTP health check path.
 	//
 	// example:
 	//
@@ -1054,19 +1054,19 @@ func (s *GetCustomAgentResponseBodyDataHealthCheck) Validate() error {
 }
 
 type GetCustomAgentResponseBodyDataLatestExecutionError struct {
-	// The reason code for the waiting or execution failure of the latest configuration. This code is used to determine the subsequent processing method.
+	// The cause code for the waiting or execution failure of the latest configuration. This code is used to determine the subsequent handling method.
 	//
 	// example:
 	//
 	// AgentExecutionFailed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the reason why the latest configuration failed to execute or is waiting. Check the code and retryable fields to determine what to do next.
+	// The reason why the latest configuration is pending or failed to execute. Determine what to do next based on the code and retryable fields.
 	//
 	// example:
 	//
 	// Agent execution failed. Check the configuration and resubmit
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Specifies whether the system automatically retries. A value of true indicates that you can query again later. A value of false indicates that you must check and fix the configuration based on the reason, and then resubmit the agent.
+	// Specifies whether automatic retries are performed. If the value is true, you can query again later. If the value is false, check and fix the configuration based on the cause, and then resubmit.
 	Retryable *bool `json:"retryable,omitempty" xml:"retryable,omitempty"`
 }
 
@@ -1186,9 +1186,9 @@ func (s *GetCustomAgentResponseBodyDataLoggingSls) Validate() error {
 }
 
 type GetCustomAgentResponseBodyDataNetwork struct {
-	// The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side, but is still limited by the workspace configuration.
+	// The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side but is still restricted by the workspace.
 	AccessInternet *GetCustomAgentResponseBodyDataNetworkAccessInternet `json:"accessInternet,omitempty" xml:"accessInternet,omitempty" type:"Struct"`
-	// The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side, but is still limited by the workspace configuration.
+	// The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side but is still restricted by the workspace.
 	AccessVpc *GetCustomAgentResponseBodyDataNetworkAccessVpc `json:"accessVpc,omitempty" xml:"accessVpc,omitempty" type:"Struct"`
 }
 
@@ -1233,7 +1233,7 @@ func (s *GetCustomAgentResponseBodyDataNetwork) Validate() error {
 }
 
 type GetCustomAgentResponseBodyDataNetworkAccessInternet struct {
-	// Specifies whether Internet access is allowed on the agent side. The actual access is still limited by the workspace configuration.
+	// Specifies whether Internet access is allowed on the agent side. The actual access is still restricted by the workspace.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1259,7 +1259,7 @@ func (s *GetCustomAgentResponseBodyDataNetworkAccessInternet) Validate() error {
 }
 
 type GetCustomAgentResponseBodyDataNetworkAccessVpc struct {
-	// Specifies whether access to the user VPC configured for the workspace is allowed on the agent side. The actual access is still limited by the workspace configuration.
+	// Specifies whether access to the user VPC configured for the workspace is allowed on the agent side. The actual access is still restricted by the workspace.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1291,7 +1291,7 @@ type GetCustomAgentResponseBodyDataOssMounts struct {
 	//
 	// my-agent-data
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The OSS mount directory in the container, which is located under /mnt/oss/.
+	// The OSS mount directory in the container, located under /mnt/oss/.
 	//
 	// example:
 	//
@@ -1303,7 +1303,7 @@ type GetCustomAgentResponseBodyDataOssMounts struct {
 	//
 	// datasets/train
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates a read-only mount. A value of false indicates a read-write mount.
+	// Specifies whether the mount is read-only. A value of true indicates a read-only mount, and a value of false indicates a read-write mount.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1425,7 +1425,7 @@ func (s *GetCustomAgentResponseBodyDataProtocol) Validate() error {
 }
 
 type GetCustomAgentResponseBodyDataProtocolPaths struct {
-	// The purpose description of the current API path.
+	// The usage description of the current API path.
 	//
 	// example:
 	//
@@ -1603,7 +1603,7 @@ type GetCustomAgentResponseBodyDataRuntimeHpa struct {
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The configured session idle timeout limit in seconds.
+	// The configured session idle timeout limit, in seconds.
 	//
 	// example:
 	//
@@ -1679,11 +1679,11 @@ type GetCustomAgentResponseBodyDataRuntimeSessionPolicy struct {
 	//
 	// - AFFINITY: Session affinity.
 	//
-	// - ISOLATED_HEADER_FIELD: Associates sessions by using the request header specified in headerName.
+	// - ISOLATED_HEADER_FIELD: Uses the request header specified by headerName to associate sessions.
 	//
-	// - ISOLATED_COOKIE: Not recommended.
+	// - ISOLATED_COOKIE: Cookie-based session isolation. Not recommended.
 	//
-	// The compatible value DISABLED in requests is returned as AFFINITY.
+	// Note: The compatible value DISABLED in a request is returned as AFFINITY.
 	//
 	// This parameter is required.
 	//

@@ -45,11 +45,7 @@ func (s *CreateIdentityProviderRequest) Validate() error {
 }
 
 type CreateIdentityProviderRequestBody struct {
-	// The type of the external identity provider. Valid values:
-	//
-	// - DingTalk
-	//
-	// - Feishu
+	// The type of the external identity provider. Valid values: DingTalk and Feishu.
 	//
 	// This parameter is required.
 	//
@@ -57,11 +53,11 @@ type CreateIdentityProviderRequestBody struct {
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// Specifies whether workspace users are allowed to log on through this external identity provider.
+	// Specifies whether workspace users can log on through the external identity provider.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The application configuration of the external identity provider. When binding DingTalk, you must provide appKey, appSecret, and corpId. When binding Lark, you must provide appId and appSecret.
+	// The application configuration for the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Feishu, you must provide appId and appSecret.
 	Metadata *CreateIdentityProviderRequestBodyMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+	// Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized to workspace users from the external identity provider.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
 }
 
@@ -131,7 +127,7 @@ type CreateIdentityProviderRequestBodyMetadata struct {
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// Required. The secret of the external identity provider application. This parameter is write-only and is not returned by query operations.
+	// Required. The application secret of the external identity provider. This parameter is used only for write operations and is not returned by query operations.
 	//
 	// example:
 	//
@@ -143,13 +139,13 @@ type CreateIdentityProviderRequestBodyMetadata struct {
 	//
 	// dingexamplecorpid01
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// The data encryption key for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+	// The data encryption key for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
 	//
 	// example:
 	//
 	// example-encrypt-key
 	EncryptKey *string `json:"encryptKey,omitempty" xml:"encryptKey,omitempty"`
-	// The verification token for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+	// The verification token for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
 	//
 	// example:
 	//

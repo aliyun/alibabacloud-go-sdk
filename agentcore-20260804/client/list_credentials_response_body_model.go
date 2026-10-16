@@ -42,9 +42,9 @@ type ListCredentialsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of credentials.
+	// The credential list.
 	Items []*ListCredentialsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that takes effect for this query.
+	// The maximum number of records per page that takes effect in this query.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListCredentialsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This value is empty if there is no next page.
+	// The cursor for the next page. It is empty if there is no next page.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListCredentialsResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of credentials that match the query conditions.
+	// The total number of credentials that meet the query conditions.
 	//
 	// example:
 	//
@@ -181,13 +181,13 @@ func (s *ListCredentialsResponseBody) Validate() error {
 }
 
 type ListCredentialsResponseBodyItems struct {
-	// The number of agents bound to this credential.
+	// The number of agents bound to the credential.
 	//
 	// example:
 	//
 	// 2
 	BoundAgentsCounts *int32 `json:"boundAgentsCounts,omitempty" xml:"boundAgentsCounts,omitempty"`
-	// The creation time in UTC, formatted according to RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListCredentialsResponseBodyItems struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The masked content of the credential. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+	// The masked credential content. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of the same length.
 	//
 	// example:
 	//
@@ -211,19 +211,19 @@ type ListCredentialsResponseBodyItems struct {
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The credential description. The description can be up to 256 characters in length.
+	// The credential description, which cannot exceed 256 characters in length.
 	//
 	// example:
 	//
-	// API Key used for calling model services in the production environment
+	// API key used to call model services in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	// The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 128 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//
 	// model-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The region ID where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//
@@ -231,13 +231,13 @@ type ListCredentialsResponseBodyItems struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The list of resources to which the credential can be applied.
 	ResourceRefs []*ListCredentialsResponseBodyItemsResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The resource scope of the credential.
+	// The application scope of the credential resource.
 	//
 	// example:
 	//
 	// ALL
 	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
-	// The time of the last modification in UTC, formatted according to RFC 3339.
+	// The time of the last modification in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -387,7 +387,7 @@ type ListCredentialsResponseBodyItemsResourceRefs struct {
 	//
 	// agent-xxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource name. This value is empty if the resource has been deleted.
+	// The resource name. It is empty if the resource has been deleted.
 	//
 	// example:
 	//

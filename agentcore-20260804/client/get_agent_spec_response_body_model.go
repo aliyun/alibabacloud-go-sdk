@@ -72,7 +72,7 @@ type GetAgentSpecResponseBodyData struct {
 	//
 	// example:
 	//
-	// A sample description that explains the purpose of the resource
+	// A sample description used to explain the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -80,13 +80,13 @@ type GetAgentSpecResponseBodyData struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The version that is currently being edited.
+	// The version currently being edited.
 	//
 	// example:
 	//
 	// 1.0.0
 	EditingVersion *string `json:"editingVersion,omitempty" xml:"editingVersion,omitempty"`
-	// Indicates whether the AgentSpec is enabled.
+	// Indicates whether it is enabled.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The source.
 	//
@@ -108,7 +108,7 @@ type GetAgentSpecResponseBodyData struct {
 	//
 	// 1
 	OnlineCnt *int32 `json:"onlineCnt,omitempty" xml:"onlineCnt,omitempty"`
-	// The version that is currently under review.
+	// The version currently under review.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetAgentSpecResponseBodyData struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The update time. This value is a UNIX timestamp in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ func (s *GetAgentSpecResponseBodyData) Validate() error {
 }
 
 type GetAgentSpecResponseBodyDataVersions struct {
-	// The version author.
+	// The author of the version.
 	//
 	// example:
 	//
 	// alice
 	Author *string `json:"author,omitempty" xml:"author,omitempty"`
-	// The creation time. This value is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type GetAgentSpecResponseBodyDataVersions struct {
 	//
 	// example:
 	//
-	// A sample description that explains the purpose of the resource
+	// A sample description used to explain the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -305,7 +305,7 @@ type GetAgentSpecResponseBodyDataVersions struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time. This value is a UNIX timestamp in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

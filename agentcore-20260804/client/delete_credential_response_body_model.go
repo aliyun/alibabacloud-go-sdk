@@ -50,7 +50,7 @@ type DeleteCredentialResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -132,7 +132,7 @@ type DeleteCredentialResponseBodyData struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	// The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 128 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//

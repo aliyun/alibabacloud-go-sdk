@@ -50,7 +50,7 @@ type CreateWorkspaceResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *CreateWorkspaceResponseBody) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyData struct {
-	// The AI Registry namespace ID. This value is returned after the related resources are bound. It may be empty during initialization.
+	// The AI Registry namespace ID. It is returned after related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -151,7 +151,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The CloudMonitor workspace ID. This value is returned after the related resources are bound. It may be empty during initialization.
+	// The CloudMonitor workspace ID. It is returned after related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -168,7 +168,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// 2026-08-28T10:00:00+08:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ type CreateWorkspaceResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The region ID of the workspace.
+	// The ID of the region where the workspace resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the resource group to which the workspace belongs. This value may be empty if no resource group is specified.
+	// The ID of the resource group to which the workspace belongs. It may be empty if no resource group is specified.
 	//
 	// if can be null:
 	// true
@@ -191,13 +191,13 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// rg-acfm1234567890
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The workspace status.
+	// The status of the workspace.
 	//
 	// example:
 	//
 	// Initialized
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The supplementary reason for the current workspace status. This value is used to display the specific reason when initialization fails or authorization is pending. It may be empty under normal conditions.
+	// The supplementary reason for the current status of the workspace. It is used to display the specific reason when initialization fails or when waiting for authorization. It may be empty under normal circumstances.
 	//
 	// if can be null:
 	// true
@@ -212,11 +212,11 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// PRIVATE
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	// The list of workspace tags. An empty array is returned if no tags are set.
+	// The list of tags for the workspace. An empty array is returned if no tags are set.
 	//
 	// This parameter is required.
 	Tags []*CreateWorkspaceResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The ID of the tenant to which the workspace belongs.
+	// The ID of the tenant.
 	//
 	// example:
 	//
@@ -392,7 +392,19 @@ func (s *CreateWorkspaceResponseBodyData) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// The VPC network configuration of the user.
+	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public network egress of the user VPC.
+	//
+	// example:
+	//
+	// true
+	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public network ingress for all agent endpoints in the workspace is closed. The original public network ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+	//
+	// example:
+	//
+	// true
+	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
+	// The user VPC network configuration.
 	Vpc *CreateWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -404,8 +416,26 @@ func (s CreateWorkspaceResponseBodyDataNetworkConfiguration) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWorkspaceResponseBodyDataNetworkConfiguration) GetPublicEgressEnabled() *bool {
+	return s.PublicEgressEnabled
+}
+
+func (s *CreateWorkspaceResponseBodyDataNetworkConfiguration) GetPublicIngressEnabled() *bool {
+	return s.PublicIngressEnabled
+}
+
 func (s *CreateWorkspaceResponseBodyDataNetworkConfiguration) GetVpc() *CreateWorkspaceResponseBodyDataNetworkConfigurationVpc {
 	return s.Vpc
+}
+
+func (s *CreateWorkspaceResponseBodyDataNetworkConfiguration) SetPublicEgressEnabled(v bool) *CreateWorkspaceResponseBodyDataNetworkConfiguration {
+	s.PublicEgressEnabled = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyDataNetworkConfiguration) SetPublicIngressEnabled(v bool) *CreateWorkspaceResponseBodyDataNetworkConfiguration {
+	s.PublicIngressEnabled = &v
+	return s
 }
 
 func (s *CreateWorkspaceResponseBodyDataNetworkConfiguration) SetVpc(v *CreateWorkspaceResponseBodyDataNetworkConfigurationVpc) *CreateWorkspaceResponseBodyDataNetworkConfiguration {
@@ -423,7 +453,7 @@ func (s *CreateWorkspaceResponseBodyDataNetworkConfiguration) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
-	// Specifies whether to enable VPC networking.
+	// Specifies whether to enable the VPC network.
 	//
 	// example:
 	//
@@ -431,7 +461,7 @@ type CreateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the user VPC.
+	// The user VPC ID.
 	//
 	// example:
 	//

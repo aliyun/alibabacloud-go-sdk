@@ -24,21 +24,21 @@ type iUpdateAgentIMChannelCredentialResponseBody interface {
 }
 
 type UpdateAgentIMChannelCredentialResponseBody struct {
-	// The business status code. The value is SUCCESS if the request succeeds.
+	// The business status code. The value is SUCCESS when the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The summary of the updated IM channel credential.
+	// The summary of the updated IM channel credentials.
 	Data *UpdateAgentIMChannelCredentialResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 if the request succeeds.
+	// The HTTP status code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The message indicating the request processing result.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateAgentIMChannelCredentialResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *UpdateAgentIMChannelCredentialResponseBody) Validate() error {
 }
 
 type UpdateAgentIMChannelCredentialResponseBodyData struct {
-	// The list of configured secret field names. Secret values are not included.
+	// The list of configured secret field names, excluding the secret values.
 	ConfiguredSecretFields []*string `json:"configuredSecretFields,omitempty" xml:"configuredSecretFields,omitempty" type:"Repeated"`
 	// The non-sensitive credential fields and their values.
 	NonSecretFields map[string]*string `json:"nonSecretFields,omitempty" xml:"nonSecretFields,omitempty"`

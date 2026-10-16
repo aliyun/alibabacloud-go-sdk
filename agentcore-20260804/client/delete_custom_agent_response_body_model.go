@@ -50,7 +50,7 @@ type DeleteCustomAgentResponseBody struct {
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. A successful creation, update, or deletion does not mean that the background operation is complete.
+	// Indicates whether the request was successful. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *DeleteCustomAgentResponseBody) Validate() error {
 }
 
 type DeleteCustomAgentResponseBodyData struct {
-	// The unique identifier of the custom agent. You can retrieve it from the response of CreateCustomAgent or ListCustomAgents.
+	// The unique identifier of the custom agent. You can obtain it from the response of CreateCustomAgent or ListCustomAgents.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment method of the agent. Custom agents are deployed and managed by the platform, and the value is MANAGED.
+	// The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED.
 	//
 	// example:
 	//
@@ -174,7 +174,21 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// STANDARD
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The overall status of the agent. Valid values: Creating: The agent is being created. Running: The agent is running. Failed: The agent failed. Updating: The agent is being updated. Deleting: The agent is being deleted. Deleted: The agent is deleted. To query the execution progress of the latest configuration, call GetCustomAgent.
+	// The overall status of the agent. Valid values:
+	//
+	// - Creating: The agent is being created.
+	//
+	// - Running: The agent is running.
+	//
+	// - Failed: The agent is in a failed state.
+	//
+	// - Updating: The agent is being updated.
+	//
+	// - Deleting: The agent is being deleted.
+	//
+	// - Deleted: The agent has been deleted.
+	//
+	// Call GetCustomAgent to retrieve the latest configuration execution progress.
 	//
 	// example:
 	//

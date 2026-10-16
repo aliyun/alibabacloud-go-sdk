@@ -16,7 +16,7 @@ type iCreateWorkspaceShrinkRequest interface {
 }
 
 type CreateWorkspaceShrinkRequest struct {
-	// The request body for creating a workspace.
+	// The workspace creation request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The client idempotency token.
 	//

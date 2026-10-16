@@ -24,7 +24,7 @@ type iDeleteExternalAgentResponseBody interface {
 }
 
 type DeleteExternalAgentResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request is successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteExternalAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The summary information of the deleted external agent.
 	Data *DeleteExternalAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 is returned if the request is successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message returned for the request processing result.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DeleteExternalAgentResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -154,7 +154,7 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// A code review agent running in the user environment
+	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The latest specification version number.
 	//
@@ -174,19 +174,7 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// qwenpaw
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the external agent. Valid values:
-	//
-	// - Creating: The agent is being created.
-	//
-	// - Running: The agent is running.
-	//
-	// - Failed: The agent has failed.
-	//
-	// - Updating: The agent is being updated.
-	//
-	// - Deleting: The agent is being deleted.
-	//
-	// - Deleted: The agent has been deleted.
+	// The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
 	//
 	// example:
 	//

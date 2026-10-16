@@ -18,7 +18,7 @@ type iCreateAgentIMChannelRequest interface {
 type CreateAgentIMChannelRequest struct {
 	// The request body.
 	Body *CreateAgentIMChannelRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not provide persistent idempotency guarantees in the current phase.
+	// The reserved idempotence token. The backend does not provide persistent idempotence guarantees in the current phase.
 	//
 	// example:
 	//
@@ -64,13 +64,7 @@ func (s *CreateAgentIMChannelRequest) Validate() error {
 type CreateAgentIMChannelRequestBody struct {
 	// The channel behavior configuration.
 	ChannelConfig *CreateAgentIMChannelRequestBodyChannelConfig `json:"channelConfig,omitempty" xml:"channelConfig,omitempty" type:"Struct"`
-	// The IM channel type. Valid values:
-	//
-	// - DINGTALK: DingTalk.
-	//
-	// - FEISHU: Lark.
-	//
-	// - WECOM: WeCom.
+	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), and WECOM (WeCom).
 	//
 	// This parameter is required.
 	//
@@ -78,13 +72,13 @@ type CreateAgentIMChannelRequestBody struct {
 	//
 	// DINGTALK
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// The channel credential. All fields must be provided and field values must be non-empty strings. DingTalk uses clientID and clientSecret. Lark uses appId and appSecret. WeCom uses botId and secret.
+	// The channel credentials. You must pass all fields and ensure that the field values are non-empty strings. For DingTalk, use clientID and clientSecret. For Lark, use appId and appSecret. For WeCom, use botId and secret.
 	//
 	// This parameter is required.
 	Credential map[string]*string `json:"credential,omitempty" xml:"credential,omitempty"`
-	// Specifies whether to enable the IM channel. Default value during creation: true.
+	// Specifies whether to enable the IM channel. Default value: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
+	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, and must be ready and have a public network address.
 	//
 	// This parameter is required.
 	//

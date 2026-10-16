@@ -30,7 +30,7 @@ type CreateCredentialResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The created credential information.
+	// The information about the created credential.
 	Data *CreateCredentialResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type CreateCredentialResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *CreateCredentialResponseBody) Validate() error {
 }
 
 type CreateCredentialResponseBodyData struct {
-	// The creation time in UTC, formatted in RFC 3339.
+	// The time when the credential was created. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type CreateCredentialResponseBodyData struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The masked credential content. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+	// The desensitized result of the credential content. If credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
 	//
 	// example:
 	//
@@ -150,33 +150,33 @@ type CreateCredentialResponseBodyData struct {
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The credential description. The description can be up to 256 characters in length.
+	// The description of the credential. The description can be up to 256 characters in length.
 	//
 	// example:
 	//
-	// API Key used for calling model services in the production environment
+	// API key used to call the model service in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	// The name of the credential. The name must be unique within the workspace, can only contain letters, digits, periods, underscores, and hyphens, and must be 3 to 128 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//
 	// model-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The region ID where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Each item contains resourceType, resourceId, and resourceName. resourceName is empty if the resource has been deleted.
+	// Each item contains resourceType, resourceId, and resourceName. If the resource is deleted, resourceName is empty.
 	ResourceRefs []*CreateCredentialResponseBodyDataResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The credential resource scope.
+	// The application scope of the credential resource.
 	//
 	// example:
 	//
 	// ALL
 	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The time when the credential was last modified. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
@@ -317,13 +317,13 @@ type CreateCredentialResponseBodyDataResourceRefs struct {
 	//
 	// agent-xxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource name. This value is empty if the resource has been deleted.
+	// The name of the resource. This parameter is empty if the resource is deleted.
 	//
 	// example:
 	//
 	// my-agent
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The resource type, such as agent.
+	// The type of the resource, such as agent.
 	//
 	// example:
 	//
