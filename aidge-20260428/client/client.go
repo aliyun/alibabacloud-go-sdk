@@ -8010,25 +8010,25 @@ func (client *Client) VideoGeneration(request *VideoGenerationRequest) (_result 
 
 // Summary:
 //
-// Translates embedded text, such as subtitles and selling point text, in video frames into a target language and erases the original text.
+// Translates embedded text, such as subtitles and selling points, in video frames into a target language and erases the original text.
 //
 // Description:
 //
 // ## Product introduction
 //
-// The video translation API translates speech and on-screen text in videos into a target language. You can select speech and subtitle translation, on-screen text translation, or both. This API is suitable for scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
+// The video translation API translates speech and on-screen text in videos into a target language. You can select speech and subtitle translation, on-screen text translation, or both. This API is suitable for scenarios such as multi-language distribution of e-commerce videos, international social media marketing, and global brand advertising.
 //
-// The API uses an asynchronous invocation mode. After you submit a translation task, you obtain a `TaskId`. You can poll the task status by using the query API until the task is completed and the results are returned.
+// This API uses asynchronous invocation. After you submit a translation task, you obtain a TaskId. You can use the query API to poll the task status until the task is completed and then obtain the result.
 //
 // ## Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
+//   - **Cross-border e-commerce video localization**: Translates selling point text in product introduction videos into the language of the target market to promote products on overseas platforms.
 //
 //   - **International social media marketing**: Localizes on-screen text in videos for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the languages of the delivery regions to reduce manual production costs.
 //
-//   - **Training and product instructions**: Translates on-screen text in training courses or product demonstration videos into multiple languages for global teams.
+//   - **Training and product instructions**: Translates on-screen text in training courses or product demo videos into multiple languages for global teams.
 //
 // ## Features
 //
@@ -8036,15 +8036,15 @@ func (client *Client) VideoGeneration(request *VideoGenerationRequest) (_result 
 //
 // | --- | --- | --- |
 //
-// | Speech and subtitle translation | `speech` | Translates video speech into target language dubbing. Does not remove original subtitles or add new subtitles. |
+// | Speech and subtitle translation | speech | Translates video speech into target language voiceovers. Does not erase original subtitles or add new subtitles. |
 //
-// | On-screen text translation | `visual` | Translates embedded text, such as subtitles and selling point text, in video frames and erases the original text. You can enable quality check for on-screen text processing by using the API. |
+// | On-screen text translation | visual | Translates embedded text in video frames, such as subtitles and selling points, and erases the original text. You can enable quality check for on-screen text processing by using the API. |
 //
-// Speech and subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video and synthesizes it into the video. It does not remove original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
+// Speech and subtitle translation (speech) generates target language voiceovers based on the spoken content in the video and synthesizes them into the video. It does not erase original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
 //
-// On-screen text translation (`visual`) targets recognizable original text in video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech and subtitle translation first, and the text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
+// On-screen text translation (visual) targets recognizable text in the original video language within the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech and subtitle translation first. The text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// When both `speech` and `visual` are selected, the speech and subtitle translation is completed and synthesized into the video first. Then, on-screen text processing is performed on this video. The translated dubbing is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that the speech and subtitle phase does not remove or add subtitles. The subsequent on-screen text processing may still modify the original subtitles.
+// When both speech and visual are selected, the speech and subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video. The translated voiceover is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that the speech and subtitle phase does not erase or add subtitles. The subsequent on-screen text processing may still change the original subtitles.
 //
 // @param tmpReq - VideoTranslationRequest
 //
@@ -8062,6 +8062,19 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.Capabilities) {
 		request.CapabilitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Capabilities, dara.String("Capabilities"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EraseOnly) {
+		query["EraseOnly"] = request.EraseOnly
+	}
+
+	if !dara.IsNil(request.RemoveLogo) {
+		query["RemoveLogo"] = request.RemoveLogo
+	}
+
+	if !dara.IsNil(request.SubtitleMode) {
+		query["SubtitleMode"] = request.SubtitleMode
 	}
 
 	body := map[string]interface{}{}
@@ -8086,7 +8099,8 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("VideoTranslation"),
@@ -8110,25 +8124,25 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 
 // Summary:
 //
-// Translates embedded text, such as subtitles and selling point text, in video frames into a target language and erases the original text.
+// Translates embedded text, such as subtitles and selling points, in video frames into a target language and erases the original text.
 //
 // Description:
 //
 // ## Product introduction
 //
-// The video translation API translates speech and on-screen text in videos into a target language. You can select speech and subtitle translation, on-screen text translation, or both. This API is suitable for scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
+// The video translation API translates speech and on-screen text in videos into a target language. You can select speech and subtitle translation, on-screen text translation, or both. This API is suitable for scenarios such as multi-language distribution of e-commerce videos, international social media marketing, and global brand advertising.
 //
-// The API uses an asynchronous invocation mode. After you submit a translation task, you obtain a `TaskId`. You can poll the task status by using the query API until the task is completed and the results are returned.
+// This API uses asynchronous invocation. After you submit a translation task, you obtain a TaskId. You can use the query API to poll the task status until the task is completed and then obtain the result.
 //
 // ## Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
+//   - **Cross-border e-commerce video localization**: Translates selling point text in product introduction videos into the language of the target market to promote products on overseas platforms.
 //
 //   - **International social media marketing**: Localizes on-screen text in videos for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the languages of the delivery regions to reduce manual production costs.
 //
-//   - **Training and product instructions**: Translates on-screen text in training courses or product demonstration videos into multiple languages for global teams.
+//   - **Training and product instructions**: Translates on-screen text in training courses or product demo videos into multiple languages for global teams.
 //
 // ## Features
 //
@@ -8136,15 +8150,15 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 //
 // | --- | --- | --- |
 //
-// | Speech and subtitle translation | `speech` | Translates video speech into target language dubbing. Does not remove original subtitles or add new subtitles. |
+// | Speech and subtitle translation | speech | Translates video speech into target language voiceovers. Does not erase original subtitles or add new subtitles. |
 //
-// | On-screen text translation | `visual` | Translates embedded text, such as subtitles and selling point text, in video frames and erases the original text. You can enable quality check for on-screen text processing by using the API. |
+// | On-screen text translation | visual | Translates embedded text in video frames, such as subtitles and selling points, and erases the original text. You can enable quality check for on-screen text processing by using the API. |
 //
-// Speech and subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video and synthesizes it into the video. It does not remove original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
+// Speech and subtitle translation (speech) generates target language voiceovers based on the spoken content in the video and synthesizes them into the video. It does not erase original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
 //
-// On-screen text translation (`visual`) targets recognizable original text in video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech and subtitle translation first, and the text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
+// On-screen text translation (visual) targets recognizable text in the original video language within the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech and subtitle translation first. The text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// When both `speech` and `visual` are selected, the speech and subtitle translation is completed and synthesized into the video first. Then, on-screen text processing is performed on this video. The translated dubbing is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that the speech and subtitle phase does not remove or add subtitles. The subsequent on-screen text processing may still modify the original subtitles.
+// When both speech and visual are selected, the speech and subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video. The translated voiceover is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that the speech and subtitle phase does not erase or add subtitles. The subsequent on-screen text processing may still change the original subtitles.
 //
 // @param request - VideoTranslationRequest
 //
