@@ -13,6 +13,8 @@ type iDescribeScansRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeScansRequest
 	GetNextToken() *string
+	SetQuery(v string) *DescribeScansRequest
+	GetQuery() *string
 	SetStatus(v string) *DescribeScansRequest
 	GetStatus() *string
 	SetTaskName(v string) *DescribeScansRequest
@@ -20,31 +22,37 @@ type iDescribeScansRequest interface {
 }
 
 type DescribeScansRequest struct {
-	// The number of entries per page. Default value: 20. Maximum value: 100.
+	// The maximum number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Do not specify this parameter or set it to an empty string for the first page. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken value in the response is empty, the last page has been reached.
+	// The pagination token. To query the first page, leave this parameter empty or do not specify it. To query subsequent pages, pass the nextToken value returned in the previous response. If the nextToken value in the response is empty, the last page is returned.
 	//
 	// example:
 	//
 	// eyJ0IjoiMjAyNi0wNy0xNlQwNzo1MzozOC4wMjFaIiwiaSI6MTAwMDQ0OH0
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The task status. Valid values:
+	// The query string. You can perform a fuzzy match by project name or prompt.
 	//
-	// 	- running: Running.
+	// example:
 	//
-	// 	- completed: Completed.
+	// name
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The status of the task. Valid values:
 	//
-	// 	- failed: Failed.
+	// 	- running: The task is running.
+	//
+	// 	- completed: The task is completed.
+	//
+	// 	- failed: The task failed.
 	//
 	// example:
 	//
 	// completed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
@@ -68,6 +76,10 @@ func (s *DescribeScansRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *DescribeScansRequest) GetQuery() *string {
+	return s.Query
+}
+
 func (s *DescribeScansRequest) GetStatus() *string {
 	return s.Status
 }
@@ -83,6 +95,11 @@ func (s *DescribeScansRequest) SetMaxResults(v int64) *DescribeScansRequest {
 
 func (s *DescribeScansRequest) SetNextToken(v string) *DescribeScansRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeScansRequest) SetQuery(v string) *DescribeScansRequest {
+	s.Query = &v
 	return s
 }
 

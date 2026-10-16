@@ -364,7 +364,7 @@ func (client *Client) CreateScan(projectId *string, request *CreateScanRequest) 
 
 // Summary:
 //
-// 生成 SBOM / 许可证清单的短时下载链接
+// Generates a download link for an SBOM or license manifest that includes producer metadata.
 //
 // @param request - CreateScanSbomExportRequest
 //
@@ -415,7 +415,7 @@ func (client *Client) CreateScanSbomExportWithOptions(projectId *string, scanId 
 
 // Summary:
 //
-// 生成 SBOM / 许可证清单的短时下载链接
+// Generates a download link for an SBOM or license manifest that includes producer metadata.
 //
 // @param request - CreateScanSbomExportRequest
 //
@@ -658,7 +658,7 @@ func (client *Client) DescribeScanResultsByEngine(projectId *string, scanId *str
 
 // Summary:
 //
-// Lists scan tasks under a specified project with pagination.
+// Queries the scan tasks of a specific project in a paginated manner.
 //
 // @param request - DescribeScansRequest
 //
@@ -681,6 +681,10 @@ func (client *Client) DescribeScansWithOptions(projectId *string, request *Descr
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["query"] = request.Query
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -717,7 +721,7 @@ func (client *Client) DescribeScansWithOptions(projectId *string, request *Descr
 
 // Summary:
 //
-// Lists scan tasks under a specified project with pagination.
+// Queries the scan tasks of a specific project in a paginated manner.
 //
 // @param request - DescribeScansRequest
 //

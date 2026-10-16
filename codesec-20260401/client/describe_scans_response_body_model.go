@@ -22,15 +22,15 @@ type iDescribeScansResponseBody interface {
 }
 
 type DescribeScansResponseBody struct {
-	// The task list.
+	// The list of tasks.
 	Items []*DescribeScansResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. An empty value indicates the last page.
+	// The pagination token. An empty value indicates that the last page is returned.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeScansResponseBody) Validate() error {
 }
 
 type DescribeScansResponseBodyItems struct {
-	// The code bundle ID.
+	// The ID of the code package.
 	//
 	// example:
 	//
@@ -129,37 +129,37 @@ type DescribeScansResponseBodyItems struct {
 	//
 	// 2026-07-28T03:36:31.573Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The user ID of the task creator.
+	// The ID of the user who created the task.
 	//
 	// example:
 	//
 	// 11111
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The scan phase. Valid values:
+	// The current scan phase. Valid values:
 	//
-	// 	- threat_model: Threat modeling.
+	// 	- threat_model: threat modeling
 	//
-	// 	- discovery: Vulnerability discovery.
+	// 	- discovery: vulnerability discovery
 	//
-	// 	- panel: Vulnerability review.
+	// 	- panel: vulnerability review
 	//
-	// 	- adversarial: Adversarial verification.
+	// 	- adversarial: adversarial verification
 	//
-	// 	- finalize: Report generation.
+	// 	- finalize: report compilation
 	//
 	// example:
 	//
 	// finalize
 	CurrentPhase *string `json:"currentPhase,omitempty" xml:"currentPhase,omitempty"`
-	// The supported scan types.
+	// The supported types.
 	EngineSnapshot *DescribeScansResponseBodyItemsEngineSnapshot `json:"engineSnapshot,omitempty" xml:"engineSnapshot,omitempty" type:"Struct"`
-	// The time when the scan finished.
+	// The time when the scan ended.
 	//
 	// example:
 	//
 	// 2026-07-28T03:36:31.573Z
 	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
@@ -167,23 +167,23 @@ type DescribeScansResponseBodyItems struct {
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	// The scan type. Valid values:
 	//
-	// 	- full: Full scan.
+	// 	- full: full scan
 	//
-	// 	- incremental: Incremental scan.
+	// 	- incremental: incremental scan
 	//
 	// example:
 	//
 	// full
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// p-n72k9yrkq81ny7z
 	ProjectId *int64 `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The scan result statistics information.
+	// The statistics information of the scan results.
 	ScanMetrics *DescribeScansResponseBodyItemsScanMetrics `json:"scanMetrics,omitempty" xml:"scanMetrics,omitempty" type:"Struct"`
-	// The task progress.
+	// The progress of the task.
 	//
 	// example:
 	//
@@ -195,35 +195,35 @@ type DescribeScansResponseBodyItems struct {
 	//
 	// 2026-07-28T03:36:31.573Z
 	StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// 	- running: Running.
+	// 	- running: The task is running.
 	//
-	// 	- completed: Completed.
+	// 	- completed: The task is completed.
 	//
-	// 	- failed: Failed.
+	// 	- failed: The task failed.
 	//
-	// 	- canceling: Being canceled.
+	// 	- canceling: The task is being canceled.
 	//
-	// 	- canceled: Canceled.
+	// 	- canceled: The task is canceled.
 	//
 	// example:
 	//
 	// completed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
 	// 1648622222394847-ha-cn-lm64p7tby01_dsl_kb_video_1773817008236_full
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The time when the task was last updated.
+	// The time when the task was updated.
 	//
 	// example:
 	//
 	// 2026-07-28T03:36:31.573Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
@@ -461,7 +461,7 @@ type DescribeScansResponseBodyItemsScanMetrics struct {
 	//
 	// 11
 	LinesOfCode *int64 `json:"linesOfCode,omitempty" xml:"linesOfCode,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
