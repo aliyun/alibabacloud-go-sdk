@@ -26,15 +26,43 @@ type iUpdateWorkloadIdentityRequest interface {
 }
 
 type UpdateWorkloadIdentityRequest struct {
+	// The whitelist of consent authorization callback URLs for the workload identity, which restricts the allowed callback URLs in the offline access delegation authorization flow.
 	AllowedConsentCallbackURLs []*string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty" type:"Repeated"`
+	// The list of allowed OAuth2 return URLs.
+	//
 	// if can be null:
 	// false
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
-	Description                     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	IdentityProviderName            *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	RoleArn                         *string   `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	SessionBindingEnabled           *string   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
-	WorkloadIdentityName            *string   `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example agent
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configured identity provider.
+	//
+	// example:
+	//
+	// identity-provider-okta
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::123456:role/agent-101-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// Specifies whether session binding is enabled. If enabled, each session is bound to a specific workload identity instance.
+	//
+	// example:
+	//
+	// false
+	SessionBindingEnabled *string `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	// The unique name of the workload identity.
+	//
+	// example:
+	//
+	// agent-101
+	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 
 func (s UpdateWorkloadIdentityRequest) String() string {

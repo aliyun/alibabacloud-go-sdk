@@ -16,8 +16,14 @@ type iUpdateUserResponseBody interface {
 }
 
 type UpdateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 5EEF5C1D-E951-5C0D-B0BC-5FF1B626CFC6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user information.
+	User *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -56,15 +62,70 @@ func (s *UpdateUserResponseBody) Validate() error {
 }
 
 type UpdateUserResponseBodyUser struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2026-06-25T12:57:03Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user.
+	//
+	// example:
+	//
+	// Senior data analyst
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice Wang
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The email address of the user.
+	//
+	// example:
+	//
+	// alice.wang@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// - Enabled: The user is enabled.
+	//
+	// - Disabled: The user is disabled.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// - Manual: The user is manually created by calling an API operation.
+	//
+	// - JIT: The user is created by using JIT.
+	//
+	// - SYNC_DINGTALK: The user is synchronized from DingTalk.
+	//
+	// example:
+	//
+	// Manual
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2026-06-25T12:57:03Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// user_xxxxxxxxxxxxxxxxxxxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateUserResponseBodyUser) String() string {

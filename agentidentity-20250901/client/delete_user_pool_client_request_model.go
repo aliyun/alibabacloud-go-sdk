@@ -16,7 +16,17 @@ type iDeleteUserPoolClientRequest interface {
 }
 
 type DeleteUserPoolClientRequest struct {
-	ClientName   *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The name of the client to delete.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

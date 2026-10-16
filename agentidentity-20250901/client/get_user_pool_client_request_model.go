@@ -16,7 +16,17 @@ type iGetUserPoolClientRequest interface {
 }
 
 type GetUserPoolClientRequest struct {
-	ClientName   *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The name of the client.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

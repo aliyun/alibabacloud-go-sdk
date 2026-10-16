@@ -14,6 +14,11 @@ type iGetUserPoolRequest interface {
 }
 
 type GetUserPoolRequest struct {
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

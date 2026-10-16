@@ -16,7 +16,23 @@ type iGetGatewayPolicyConfigRequest interface {
 }
 
 type GetGatewayPolicyConfigRequest struct {
-	GatewayArn  *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	// The ARN of the target gateway.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
+	GatewayArn *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	// The gateway type. Valid values:
+	//
+	// - AIGateway: Alibaba Cloud AI gateway.
+	//
+	// - AgentRunMCP: AgentRun MCP tool.
+	//
+	// If this parameter is not specified, the default value is AIGateway.
+	//
+	// example:
+	//
+	// AIGateway
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 }
 

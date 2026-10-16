@@ -16,8 +16,14 @@ type iDeleteAPIKeyCredentialProviderRequest interface {
 }
 
 type DeleteAPIKeyCredentialProviderRequest struct {
+	// The name of the credential provider.
+	//
+	// example:
+	//
+	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
-	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The name of the TokenVault.
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s DeleteAPIKeyCredentialProviderRequest) String() string {

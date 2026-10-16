@@ -14,6 +14,11 @@ type iDeleteUserPoolRequest interface {
 }
 
 type DeleteUserPoolRequest struct {
+	// The name of the user pool to delete.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

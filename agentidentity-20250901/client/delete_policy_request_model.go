@@ -16,7 +16,17 @@ type iDeletePolicyRequest interface {
 }
 
 type DeletePolicyRequest struct {
-	PolicyName    *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy. The name must be unique within the policy set to which it belongs.
+	//
+	// example:
+	//
+	// rate-limit-policy
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

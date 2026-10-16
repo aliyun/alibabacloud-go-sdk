@@ -18,8 +18,23 @@ type iUpdateRoleRequest interface {
 }
 
 type UpdateRoleRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The new description of the role. The description must be 0 to 128 characters in length.
+	//
+	// example:
+	//
+	// Updated role description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the role.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

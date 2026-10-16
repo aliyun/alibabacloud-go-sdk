@@ -20,9 +20,19 @@ type iGetUserRequest interface {
 }
 
 type GetUserRequest struct {
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserPoolId   *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// alice
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

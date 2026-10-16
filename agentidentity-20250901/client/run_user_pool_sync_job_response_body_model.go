@@ -16,7 +16,17 @@ type iRunUserPoolSyncJobResponseBody interface {
 }
 
 type RunUserPoolSyncJobResponseBody struct {
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the created synchronization task. You can call GetUserPoolSyncJob to query the execution details of the task.
+	//
+	// example:
+	//
+	// sync_job_xxxxxxxxxxxxxxxxxxxx
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
 }
 

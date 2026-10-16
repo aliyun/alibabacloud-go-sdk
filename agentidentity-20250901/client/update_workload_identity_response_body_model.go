@@ -14,6 +14,11 @@ type iUpdateWorkloadIdentityResponseBody interface {
 }
 
 type UpdateWorkloadIdentityResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 69469F02-DFA8-5733-960F-AEE7CBC7C436
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

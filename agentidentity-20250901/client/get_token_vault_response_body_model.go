@@ -16,7 +16,13 @@ type iGetTokenVaultResponseBody interface {
 }
 
 type GetTokenVaultResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the token vault.
 	TokenVault *GetTokenVaultResponseBodyTokenVault `json:"TokenVault,omitempty" xml:"TokenVault,omitempty" type:"Struct"`
 }
 
@@ -56,13 +62,44 @@ func (s *GetTokenVaultResponseBody) Validate() error {
 }
 
 type GetTokenVaultResponseBodyTokenVault struct {
-	CreateTime       *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description      *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time in UTC ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The encryption configuration of the token vault.
 	EncryptionConfig *GetTokenVaultResponseBodyTokenVaultEncryptionConfig `json:"EncryptionConfig,omitempty" xml:"EncryptionConfig,omitempty" type:"Struct"`
-	RoleArn          *string                                              `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	TokenVaultArn    *string                                              `json:"TokenVaultArn,omitempty" xml:"TokenVaultArn,omitempty"`
-	TokenVaultName   *string                                              `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	UpdateTime       *string                                              `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ARN of the RAM role used to authorize the AgentIdentity service to access other cloud resources such as KMS.
+	//
+	// example:
+	//
+	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The ARN of the token vault.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:tokenvault/default
+	TokenVaultArn *string `json:"TokenVaultArn,omitempty" xml:"TokenVaultArn,omitempty"`
+	// The name of the token vault. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The update time in UTC ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetTokenVaultResponseBodyTokenVault) String() string {
@@ -146,7 +183,17 @@ func (s *GetTokenVaultResponseBodyTokenVault) Validate() error {
 }
 
 type GetTokenVaultResponseBodyTokenVaultEncryptionConfig struct {
-	KeyType   *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The type of the encryption key. Valid values: SERVICE_MANAGED_KEY (service-managed key) and CUSTOMER_MANAGED_KEY (customer-managed KMS key).
+	//
+	// example:
+	//
+	// SERVICE_MANAGED_KEY
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The ARN of the KMS key used when KeyType is set to CUSTOMER_MANAGED_KEY.
+	//
+	// example:
+	//
+	// acs:kms:cn-beijing:123456:key/key-bjxxxxxxxx
 	KmsKeyArn *string `json:"KmsKeyArn,omitempty" xml:"KmsKeyArn,omitempty"`
 }
 

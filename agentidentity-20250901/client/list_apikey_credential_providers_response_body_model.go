@@ -22,11 +22,32 @@ type iListAPIKeyCredentialProvidersResponseBody interface {
 }
 
 type ListAPIKeyCredentialProvidersResponseBody struct {
+	// The list of API key credential provider summaries.
 	APIKeyCredentialProviders []*ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders `json:"APIKeyCredentialProviders,omitempty" xml:"APIKeyCredentialProviders,omitempty" type:"Repeated"`
-	MaxResults                *int32                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                 *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount                *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The maximum number of results to return per page.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request. For subsequent requests, specify the NextToken value returned in the previous response.
+	//
+	// example:
+	//
+	// AAAAAWbTEdBU0yvszsl8EEXALb8=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 4D51596A-8A87-565B-8EDE-45141A02F11C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of credential providers.
+	//
+	// example:
+	//
+	// 452
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAPIKeyCredentialProvidersResponseBody) String() string {
@@ -96,13 +117,39 @@ func (s *ListAPIKeyCredentialProvidersResponseBody) Validate() error {
 }
 
 type ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders struct {
+	// The name of the credential provider.
+	//
+	// example:
+	//
+	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
-	CreateTime                   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialProviderArn        *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SourcePlatform               *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	UpdateTime                   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-12-18T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ARN of the credential provider.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:tokenvault/default/apikeycredentialprovider/api-key-dash-scope
+	CredentialProviderArn *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
+	// The description of the credential provider.
+	//
+	// example:
+	//
+	// example provider
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// The name of the TokenVault.
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2025-12-18T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) String() string {

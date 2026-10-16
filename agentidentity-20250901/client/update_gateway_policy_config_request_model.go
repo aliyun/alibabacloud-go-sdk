@@ -18,9 +18,34 @@ type iUpdateGatewayPolicyConfigRequest interface {
 }
 
 type UpdateGatewayPolicyConfigRequest struct {
+	// The policy enforcement mode. Valid values:
+	//
+	// - ENFORCE: Intercepts non-compliant requests and allows compliant requests.
+	//
+	// - LOG_ONLY: Only logs non-compliant requests without intercepting them.
+	//
+	// example:
+	//
+	// ENFORCE
 	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	GatewayArn      *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The ARN of the target gateway.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
+	GatewayArn *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	// The gateway type. Valid values:
+	//
+	// - AIGateway: Alibaba Cloud AI gateway.
+	//
+	// - AgentRunMCP: AgentRun MCP tool.
+	//
+	// If you do not specify this parameter, the default value is AIGateway.
+	//
+	// example:
+	//
+	// AIGateway
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 }
 
 func (s UpdateGatewayPolicyConfigRequest) String() string {

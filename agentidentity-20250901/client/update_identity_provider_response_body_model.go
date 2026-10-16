@@ -14,6 +14,11 @@ type iUpdateIdentityProviderResponseBody interface {
 }
 
 type UpdateIdentityProviderResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 8F33FEFD-90E2-5FAC-B2E0-C7504847B5EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

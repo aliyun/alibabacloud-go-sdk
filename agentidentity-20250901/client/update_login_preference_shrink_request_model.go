@@ -19,8 +19,14 @@ type iUpdateLoginPreferenceShrinkRequest interface {
 
 type UpdateLoginPreferenceShrinkRequest struct {
 	AllowedPostLogoutRedirectUrisShrink *string `json:"AllowedPostLogoutRedirectUris,omitempty" xml:"AllowedPostLogoutRedirectUris,omitempty"`
-	LoginPreferenceShrink               *string `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty"`
-	UserPoolName                        *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The logon preference configuration object. It contains the logon configuration fields to be updated.
+	LoginPreferenceShrink *string `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s UpdateLoginPreferenceShrinkRequest) String() string {

@@ -16,8 +16,18 @@ type iGetUserPoolSyncJobRequest interface {
 }
 
 type GetUserPoolSyncJobRequest struct {
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// syncjob_8d713b14a63b4a559753492ab51c31f3
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	UserPoolName         *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// UserpoolName
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s GetUserPoolSyncJobRequest) String() string {

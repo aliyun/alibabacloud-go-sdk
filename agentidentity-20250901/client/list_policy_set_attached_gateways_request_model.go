@@ -20,9 +20,35 @@ type iListPolicySetAttachedGatewaysRequest interface {
 }
 
 type ListPolicySetAttachedGatewaysRequest struct {
-	GatewayType   *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The gateway type. Valid values:
+	//
+	// - AIGateway: Alibaba Cloud AI Gateway
+	//
+	// - AgentRunMCP: AgentRun MCP tool
+	//
+	// Default value: AIGateway.
+	//
+	// example:
+	//
+	// AIGateway
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The maximum number of results to return per page.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used for pagination. You do not need to specify this parameter for the first call. For subsequent calls, pass the NextToken value returned from the previous call.
+	//
+	// example:
+	//
+	// AAAAAdDWBF2
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

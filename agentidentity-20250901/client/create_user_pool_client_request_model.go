@@ -19,6 +19,8 @@ type iCreateUserPoolClientRequest interface {
 	GetRedirectURIs() []*string
 	SetRefreshTokenValidity(v string) *CreateUserPoolClientRequest
 	GetRefreshTokenValidity() *string
+	SetScopes(v []*string) *CreateUserPoolClientRequest
+	GetScopes() []*string
 	SetSecretRequired(v bool) *CreateUserPoolClientRequest
 	GetSecretRequired() *bool
 	SetUserPoolName(v string) *CreateUserPoolClientRequest
@@ -26,13 +28,54 @@ type iCreateUserPoolClientRequest interface {
 }
 
 type CreateUserPoolClientRequest struct {
-	AccessTokenValidity  *string   `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	ClientName           *string   `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	EnforcePKCE          *bool     `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIs         []*string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
-	RefreshTokenValidity *string   `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	SecretRequired       *bool     `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	UserPoolName         *string   `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The validity period of the access token, in seconds. Valid values: 900 to 10800. Default value: 3600.
+	//
+	// example:
+	//
+	// 3600
+	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	// The name of the client. The name must be unique within the same user pool and must be 1 to 64 characters in length.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// Specifies whether to enforce Proof Key for Code Exchange (PKCE). Valid values:
+	//
+	// - true: Enforced. The code_challenge parameter is required in the authorization code flow.
+	//
+	// - false: Not enforced.
+	//
+	// example:
+	//
+	// true
+	EnforcePKCE *bool `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	// The list of OAuth redirect URIs. After authorization is complete, the user\\"s browser is redirected to one of the URIs in the list.
+	RedirectURIs []*string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
+	// The validity period of the refresh token, in seconds. Valid values: 7200 to 31536000 (90 days). Default value: 2592000 (30 days).
+	//
+	// example:
+	//
+	// 86400
+	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
+	// The scopes granted to the application. You can specify multiple scopes.
+	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
+	// Specifies whether an application secret is required. Valid values:
+	//
+	// - true: Required. This value applies to confidential clients such as server-side applications. You must call CreateClientSecret to create a secret.
+	//
+	// - false: Not required. This value applies to public clients such as single-page applications (SPAs) and mobile applications.
+	//
+	// example:
+	//
+	// true
+	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s CreateUserPoolClientRequest) String() string {
@@ -61,6 +104,10 @@ func (s *CreateUserPoolClientRequest) GetRedirectURIs() []*string {
 
 func (s *CreateUserPoolClientRequest) GetRefreshTokenValidity() *string {
 	return s.RefreshTokenValidity
+}
+
+func (s *CreateUserPoolClientRequest) GetScopes() []*string {
+	return s.Scopes
 }
 
 func (s *CreateUserPoolClientRequest) GetSecretRequired() *bool {
@@ -93,6 +140,11 @@ func (s *CreateUserPoolClientRequest) SetRedirectURIs(v []*string) *CreateUserPo
 
 func (s *CreateUserPoolClientRequest) SetRefreshTokenValidity(v string) *CreateUserPoolClientRequest {
 	s.RefreshTokenValidity = &v
+	return s
+}
+
+func (s *CreateUserPoolClientRequest) SetScopes(v []*string) *CreateUserPoolClientRequest {
+	s.Scopes = v
 	return s
 }
 

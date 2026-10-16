@@ -16,8 +16,14 @@ type iGetUserPoolClientResponseBody interface {
 }
 
 type GetUserPoolClientResponseBody struct {
-	Client    *GetUserPoolClientResponseBodyClient `json:"Client,omitempty" xml:"Client,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The client information.
+	Client *GetUserPoolClientResponseBodyClient `json:"Client,omitempty" xml:"Client,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserPoolClientResponseBody) String() string {
@@ -56,18 +62,65 @@ func (s *GetUserPoolClientResponseBody) Validate() error {
 }
 
 type GetUserPoolClientResponseBodyClient struct {
-	AccessTokenValidity  *string                                            `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	ClientId             *string                                            `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientName           *string                                            `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	ClientScopes         []*GetUserPoolClientResponseBodyClientClientScopes `json:"ClientScopes,omitempty" xml:"ClientScopes,omitempty" type:"Repeated"`
-	ClientType           *string                                            `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	CreateTime           *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnforcePKCE          *bool                                              `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIs         []*string                                          `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
-	RefreshTokenValidity *string                                            `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	SecretRequired       *bool                                              `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	UpdateTime           *string                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserPoolName         *string                                            `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The validity period of the access token, in seconds.
+	//
+	// example:
+	//
+	// 3600
+	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	// The client ID.
+	//
+	// example:
+	//
+	// client_xxxxxxxxxxxxxxxxxxxx
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The name of the client.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The list of default client scopes.
+	ClientScopes []*GetUserPoolClientResponseBodyClientClientScopes `json:"ClientScopes,omitempty" xml:"ClientScopes,omitempty" type:"Repeated"`
+	ClientType   *string                                            `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The time when the client was created, in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Specifies whether PKCE is enforced.
+	//
+	// example:
+	//
+	// true
+	EnforcePKCE *bool `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	// The list of OAuth redirect URIs.
+	RedirectURIs []*string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
+	// The validity period of the refresh token, in seconds.
+	//
+	// example:
+	//
+	// 86400
+	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
+	// Specifies whether an application secret is required.
+	//
+	// example:
+	//
+	// true
+	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	// The time when the client was updated, in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s GetUserPoolClientResponseBodyClient) String() string {
@@ -200,8 +253,18 @@ func (s *GetUserPoolClientResponseBodyClient) Validate() error {
 }
 
 type GetUserPoolClientResponseBodyClientClientScopes struct {
+	// The description of the scope.
+	//
+	// example:
+	//
+	// OpenID Connect authentication
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ScopeName   *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
+	// The name of the scope.
+	//
+	// example:
+	//
+	// openid
+	ScopeName *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
 }
 
 func (s GetUserPoolClientResponseBodyClientClientScopes) String() string {

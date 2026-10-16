@@ -16,6 +16,9 @@ type iGetSAMLServiceProviderInfoResponseBody interface {
 }
 
 type GetSAMLServiceProviderInfoResponseBody struct {
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SAMLServiceProviderInfo *GetSAMLServiceProviderInfoResponseBodySAMLServiceProviderInfo `json:"SAMLServiceProviderInfo,omitempty" xml:"SAMLServiceProviderInfo,omitempty" type:"Struct"`
 }
@@ -56,10 +59,22 @@ func (s *GetSAMLServiceProviderInfoResponseBody) Validate() error {
 }
 
 type GetSAMLServiceProviderInfoResponseBodySAMLServiceProviderInfo struct {
-	ACSURL             *string `json:"ACSURL,omitempty" xml:"ACSURL,omitempty"`
-	EntityId           *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// https://signin-cn-beijing.aliyunagentid.com/up_xxxxxxxxxxxxxxxxxxxx/saml/acs
+	ACSURL *string `json:"ACSURL,omitempty" xml:"ACSURL,omitempty"`
+	// example:
+	//
+	// https://signin-cn-beijing.aliyunagentid.com/up_xxxxxxxxxxxxxxxxxxxx
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// <?xml version=\\"1.0\\" encoding=\\"UTF-8\\" standalone=\\"no\\"?>\\n<md:EntityDescriptor entityID=\\"https://signin......
 	SPMetadataDocument *string `json:"SPMetadataDocument,omitempty" xml:"SPMetadataDocument,omitempty"`
-	UserPoolId         *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	// example:
+	//
+	// up_xxxxxxxxxxxxxxxxxxxx
+	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
 }
 
 func (s GetSAMLServiceProviderInfoResponseBodySAMLServiceProviderInfo) String() string {

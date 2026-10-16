@@ -16,7 +16,17 @@ type iDeleteUserRequest interface {
 }
 
 type DeleteUserRequest struct {
-	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The username of the user to delete.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

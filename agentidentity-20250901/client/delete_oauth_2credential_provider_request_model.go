@@ -16,8 +16,14 @@ type iDeleteOAuth2CredentialProviderRequest interface {
 }
 
 type DeleteOAuth2CredentialProviderRequest struct {
+	// The name of the credential provider.
+	//
+	// example:
+	//
+	// oauth2-provider-aliyun
 	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
-	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The name of the TokenVault.
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s DeleteOAuth2CredentialProviderRequest) String() string {

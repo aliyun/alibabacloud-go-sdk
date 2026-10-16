@@ -14,6 +14,11 @@ type iGetTokenVaultRequest interface {
 }
 
 type GetTokenVaultRequest struct {
+	// The name of the token vault. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default
 	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 

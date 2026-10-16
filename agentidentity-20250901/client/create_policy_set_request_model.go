@@ -13,11 +13,29 @@ type iCreatePolicySetRequest interface {
 	GetDescription() *string
 	SetPolicySetName(v string) *CreatePolicySetRequest
 	GetPolicySetName() *string
+	SetSourcePlatform(v string) *CreatePolicySetRequest
+	GetSourcePlatform() *string
 }
 
 type CreatePolicySetRequest struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	// The source platform.
+	//
+	// example:
+	//
+	// Manuel
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
 }
 
 func (s CreatePolicySetRequest) String() string {
@@ -36,6 +54,10 @@ func (s *CreatePolicySetRequest) GetPolicySetName() *string {
 	return s.PolicySetName
 }
 
+func (s *CreatePolicySetRequest) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *CreatePolicySetRequest) SetDescription(v string) *CreatePolicySetRequest {
 	s.Description = &v
 	return s
@@ -43,6 +65,11 @@ func (s *CreatePolicySetRequest) SetDescription(v string) *CreatePolicySetReques
 
 func (s *CreatePolicySetRequest) SetPolicySetName(v string) *CreatePolicySetRequest {
 	s.PolicySetName = &v
+	return s
+}
+
+func (s *CreatePolicySetRequest) SetSourcePlatform(v string) *CreatePolicySetRequest {
+	s.SourcePlatform = &v
 	return s
 }
 

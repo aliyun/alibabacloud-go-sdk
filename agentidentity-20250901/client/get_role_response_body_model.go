@@ -16,8 +16,14 @@ type iGetRoleResponseBody interface {
 }
 
 type GetRoleResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Role      *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The role information.
+	Role *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s GetRoleResponseBody) String() string {
@@ -56,12 +62,42 @@ func (s *GetRoleResponseBody) Validate() error {
 }
 
 type GetRoleResponseBodyRole struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the role.
+	//
+	// example:
+	//
+	// Data analyst role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The role ID.
+	//
+	// example:
+	//
+	// role_xxxxxxxxxxxxxxxxxxxx
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the role.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The type of the role. Default indicates a default role, and Manual indicates a custom role.
+	//
+	// example:
+	//
+	// Manual
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The update time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetRoleResponseBodyRole) String() string {

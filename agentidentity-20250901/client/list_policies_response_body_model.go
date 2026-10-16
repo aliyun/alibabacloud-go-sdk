@@ -22,11 +22,23 @@ type iListPoliciesResponseBody interface {
 }
 
 type ListPoliciesResponseBody struct {
-	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Policies   []*ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2
+	NextToken *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Policies  []*ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPoliciesResponseBody) String() string {
@@ -96,13 +108,31 @@ func (s *ListPoliciesResponseBody) Validate() error {
 }
 
 type ListPoliciesResponseBodyPolicies struct {
-	CreateTime    *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Definition    *Definition `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description   *string     `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyArn     *string     `json:"PolicyArn,omitempty" xml:"PolicyArn,omitempty"`
-	PolicyName    *string     `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicySetName *string     `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
-	UpdateTime    *string     `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	CreateTime *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Definition *Definition `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set/policy/rate-limit-policy
+	PolicyArn *string `json:"PolicyArn,omitempty" xml:"PolicyArn,omitempty"`
+	// example:
+	//
+	// rate-limit-policy
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// example:
+	//
+	// default-policy-set
+	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListPoliciesResponseBodyPolicies) String() string {

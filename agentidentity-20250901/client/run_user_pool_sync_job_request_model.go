@@ -18,9 +18,24 @@ type iRunUserPoolSyncJobRequest interface {
 }
 
 type RunUserPoolSyncJobRequest struct {
+	// The identity provider type. Currently, only DingTalk is supported.
+	//
+	// example:
+	//
+	// DingTalk
 	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	MaxSyncUsers         *string `json:"MaxSyncUsers,omitempty" xml:"MaxSyncUsers,omitempty"`
-	UserPoolName         *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The maximum number of users to synchronize in a single task.
+	//
+	// example:
+	//
+	// 100
+	MaxSyncUsers *string `json:"MaxSyncUsers,omitempty" xml:"MaxSyncUsers,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s RunUserPoolSyncJobRequest) String() string {

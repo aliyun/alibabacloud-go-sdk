@@ -16,7 +16,17 @@ type iCreateUserPoolRequest interface {
 }
 
 type CreateUserPoolRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the user pool. The description must be 0 to 128 characters in length.
+	//
+	// example:
+	//
+	// Sample user pool
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the user pool. The name must be unique within the same Alibaba Cloud account and must be 3 to 64 characters in length.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

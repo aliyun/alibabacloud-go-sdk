@@ -22,11 +22,23 @@ type iListTokenVaultsResponseBody interface {
 }
 
 type ListTokenVaultsResponseBody struct {
-	MaxResults  *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
 	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TokenVaults []*ListTokenVaultsResponseBodyTokenVaults `json:"TokenVaults,omitempty" xml:"TokenVaults,omitempty" type:"Repeated"`
-	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTokenVaultsResponseBody) String() string {
@@ -96,13 +108,31 @@ func (s *ListTokenVaultsResponseBody) Validate() error {
 }
 
 type ListTokenVaultsResponseBodyTokenVaults struct {
-	CreateTime       *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example description
 	Description      *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
 	EncryptionConfig *ListTokenVaultsResponseBodyTokenVaultsEncryptionConfig `json:"EncryptionConfig,omitempty" xml:"EncryptionConfig,omitempty" type:"Struct"`
-	RoleArn          *string                                                 `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	TokenVaultArn    *string                                                 `json:"TokenVaultArn,omitempty" xml:"TokenVaultArn,omitempty"`
-	TokenVaultName   *string                                                 `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	UpdateTime       *string                                                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:tokenvault/default
+	TokenVaultArn *string `json:"TokenVaultArn,omitempty" xml:"TokenVaultArn,omitempty"`
+	// example:
+	//
+	// default
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListTokenVaultsResponseBodyTokenVaults) String() string {
@@ -186,7 +216,13 @@ func (s *ListTokenVaultsResponseBodyTokenVaults) Validate() error {
 }
 
 type ListTokenVaultsResponseBodyTokenVaultsEncryptionConfig struct {
-	KeyType   *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// example:
+	//
+	// SERVICE_MANAGED_KEY
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// example:
+	//
+	// acs:kms:cn-beijing:123456:key/key-bjxxxxxxxx
 	KmsKeyArn *string `json:"KmsKeyArn,omitempty" xml:"KmsKeyArn,omitempty"`
 }
 

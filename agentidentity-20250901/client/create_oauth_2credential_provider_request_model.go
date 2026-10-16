@@ -26,13 +26,41 @@ type iCreateOAuth2CredentialProviderRequest interface {
 }
 
 type CreateOAuth2CredentialProviderRequest struct {
-	CallbackURL                  *string               `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	CredentialProviderVendor     *string               `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
-	Description                  *string               `json:"Description,omitempty" xml:"Description,omitempty"`
-	OAuth2CredentialProviderName *string               `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
-	OAuth2ProviderConfig         *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
-	OAuthType                    *string               `json:"OAuthType,omitempty" xml:"OAuthType,omitempty"`
-	TokenVaultName               *string               `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The unique callback URL assigned to the provider. You must configure this URL in the list of allowed callback URLs of the identity provider.
+	//
+	// Format: https://agentidentitydata.{{region}}.aliyuncs.com/oauth2/callback/{{UUID}}
+	//
+	// If you specify this parameter, the specified value is used.
+	//
+	// If you do not specify this parameter, the server automatically generates a value.
+	//
+	// example:
+	//
+	// https://agentidentitydata.cn-beijing.aliyuncs.com/oauth2/callback/d51171bc-0dae-3219-8e65-6b4cdafa3beb
+	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	// The vendor of the provider, such as AliyunOAuth2, AlibabaCloudOAuth2, DingTalkOAuth2, FeiShuOAuth2, or CustomOAuth2.
+	//
+	// example:
+	//
+	// AliyunOAuth2
+	CredentialProviderVendor *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
+	// The description of the OAuth 2.0 credential provider.
+	//
+	// example:
+	//
+	// example provider
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the credential provider.
+	//
+	// example:
+	//
+	// oauth-provider-aliyun
+	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
+	// The object that contains provider-specific configurations, such as clientId and clientSecret.
+	OAuth2ProviderConfig *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
+	OAuthType            *string               `json:"OAuthType,omitempty" xml:"OAuthType,omitempty"`
+	// The name of the token vault.
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateOAuth2CredentialProviderRequest) String() string {

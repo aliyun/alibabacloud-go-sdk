@@ -24,12 +24,40 @@ type iUpdateOAuth2CredentialProviderShrinkRequest interface {
 }
 
 type UpdateOAuth2CredentialProviderShrinkRequest struct {
-	CallbackURL                  *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	CredentialProviderVendor     *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique callback URL assigned to the provider. You must add this URL to the list of allowed callback URLs of the identity provider.
+	//
+	// Format: https://agentidentitydata.{{region}}.aliyuncs.com/oauth2/callback/{{UUID}}
+	//
+	// If you specify this parameter, the specified value is used.
+	//
+	// If you do not specify this parameter, the server automatically generates a value.
+	//
+	// example:
+	//
+	// https://agentidentitydata.cn-beijing.aliyuncs.com/oauth2/callback/d51171bc-0dae-3219-8e65-6b4cdafa3beb
+	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	// AliyunOAuth2
+	//
+	// example:
+	//
+	// AliyunOAuth2
+	CredentialProviderVendor *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
+	// The description of the OAuth 2.0 credential provider.
+	//
+	// example:
+	//
+	// new example provider
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the credential provider.
+	//
+	// example:
+	//
+	// oauth2-provider-aliyun
 	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
-	OAuth2ProviderConfigShrink   *string `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
-	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The object that contains provider-specific configurations, such as clientId and clientSecret.
+	OAuth2ProviderConfigShrink *string `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
+	// The name of the TokenVault.
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s UpdateOAuth2CredentialProviderShrinkRequest) String() string {

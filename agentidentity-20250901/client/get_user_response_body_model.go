@@ -16,8 +16,14 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user information.
+	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -56,15 +62,45 @@ func (s *GetUserResponseBody) Validate() error {
 }
 
 type GetUserResponseBodyUser struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user.
+	//
+	// example:
+	//
+	// Sample user
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice Wang
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The update time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// user_xxxxxxxxxxxxxxxxxxxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetUserResponseBodyUser) String() string {

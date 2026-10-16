@@ -16,8 +16,14 @@ type iCreateRoleResponseBody interface {
 }
 
 type CreateRoleResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Role      *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The role information.
+	Role *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s CreateRoleResponseBody) String() string {
@@ -56,12 +62,46 @@ func (s *CreateRoleResponseBody) Validate() error {
 }
 
 type CreateRoleResponseBodyRole struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the role was created. The time is displayed in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the role.
+	//
+	// example:
+	//
+	// Data analyst role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the role.
+	//
+	// example:
+	//
+	// role_xxxxxxxxxxxxxxxxxxxx
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the role.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The type of the role. Valid values:
+	//
+	// - Default: the default role that is automatically provisioned when the user pool is created
+	//
+	// - Manual: a custom role that is manually created by calling an API operation
+	//
+	// example:
+	//
+	// Manual
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the role was updated. The time is displayed in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateRoleResponseBodyRole) String() string {

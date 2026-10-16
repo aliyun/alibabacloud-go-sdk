@@ -18,9 +18,16 @@ type iGetLoginPreferenceResponseBody interface {
 }
 
 type GetLoginPreferenceResponseBody struct {
+	// The logon preference configuration.
 	LoginPreference *GetLoginPreferenceResponseBodyLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
-	PasswordPolicy  *GetLoginPreferenceResponseBodyPasswordPolicy  `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The password policy configuration.
+	PasswordPolicy *GetLoginPreferenceResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLoginPreferenceResponseBody) String() string {
@@ -73,6 +80,11 @@ func (s *GetLoginPreferenceResponseBody) Validate() error {
 }
 
 type GetLoginPreferenceResponseBodyLoginPreference struct {
+	// Indicates whether password logon is enabled.
+	//
+	// example:
+	//
+	// true
 	EnablePasswordLogin *bool `json:"EnablePasswordLogin,omitempty" xml:"EnablePasswordLogin,omitempty"`
 }
 
@@ -98,16 +110,66 @@ func (s *GetLoginPreferenceResponseBodyLoginPreference) Validate() error {
 }
 
 type GetLoginPreferenceResponseBodyPasswordPolicy struct {
-	HardExpire                 *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	MaxLoginAttempts           *int64 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
-	MaxPasswordAge             *int64 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	MaxPasswordLength          *int32 `json:"MaxPasswordLength,omitempty" xml:"MaxPasswordLength,omitempty"`
-	MinPasswordLength          *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
-	PasswordNotContainUserName *bool  `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	RequireLowerCaseChars      *bool  `json:"RequireLowerCaseChars,omitempty" xml:"RequireLowerCaseChars,omitempty"`
-	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUpperCaseChars      *bool  `json:"RequireUpperCaseChars,omitempty" xml:"RequireUpperCaseChars,omitempty"`
+	// Indicates whether logon is prohibited after a password expires. A value of true indicates that the password must be reset by an administrator before the user can log on.
+	//
+	// example:
+	//
+	// false
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The maximum number of consecutive logon failures. Default value: 5. This value cannot be modified.
+	//
+	// example:
+	//
+	// 5
+	MaxLoginAttempts *int64 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
+	// The maximum validity period of a password in days. Default value: 7. This value cannot be modified.
+	//
+	// example:
+	//
+	// 7
+	MaxPasswordAge *int64 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The maximum length of the password. Fixed value: 32.
+	//
+	// example:
+	//
+	// 32
+	MaxPasswordLength *int32 `json:"MaxPasswordLength,omitempty" xml:"MaxPasswordLength,omitempty"`
+	// The minimum length of the password. Fixed value: 8.
+	//
+	// example:
+	//
+	// 8
+	MinPasswordLength *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
+	// Indicates whether the password must not contain the username.
+	//
+	// example:
+	//
+	// true
+	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
+	// Indicates whether lowercase letters are required.
+	//
+	// example:
+	//
+	// true
+	RequireLowerCaseChars *bool `json:"RequireLowerCaseChars,omitempty" xml:"RequireLowerCaseChars,omitempty"`
+	// Indicates whether numbers are required.
+	//
+	// example:
+	//
+	// true
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Indicates whether special characters are required.
+	//
+	// example:
+	//
+	// true
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Indicates whether uppercase letters are required.
+	//
+	// example:
+	//
+	// true
+	RequireUpperCaseChars *bool `json:"RequireUpperCaseChars,omitempty" xml:"RequireUpperCaseChars,omitempty"`
 }
 
 func (s GetLoginPreferenceResponseBodyPasswordPolicy) String() string {

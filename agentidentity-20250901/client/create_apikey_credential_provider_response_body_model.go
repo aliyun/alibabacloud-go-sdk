@@ -16,8 +16,14 @@ type iCreateAPIKeyCredentialProviderResponseBody interface {
 }
 
 type CreateAPIKeyCredentialProviderResponseBody struct {
+	// The API key credential provider.
 	APIKeyCredentialProvider *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider `json:"APIKeyCredentialProvider,omitempty" xml:"APIKeyCredentialProvider,omitempty" type:"Struct"`
-	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 0B447F15-7037-512D-8EFC-A4188FC9E9E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAPIKeyCredentialProviderResponseBody) String() string {
@@ -56,12 +62,32 @@ func (s *CreateAPIKeyCredentialProviderResponseBody) Validate() error {
 }
 
 type CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider struct {
+	// The name of the credential provider.
+	//
+	// example:
+	//
+	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
-	CreateTime                   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialProviderArn        *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SourcePlatform               *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-12-18T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ARN of the newly created credential provider.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:tokenvault/default/apikeycredentialprovider/api-key-dash-scope
+	CredentialProviderArn *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
+	// The description of the credential provider.
+	//
+	// example:
+	//
+	// example provider
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) String() string {

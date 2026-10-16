@@ -16,8 +16,14 @@ type iCreateOAuth2CredentialProviderResponseBody interface {
 }
 
 type CreateOAuth2CredentialProviderResponseBody struct {
+	// The credential provider.
 	OAuth2CredentialProvider *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider `json:"OAuth2CredentialProvider,omitempty" xml:"OAuth2CredentialProvider,omitempty" type:"Struct"`
-	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOAuth2CredentialProviderResponseBody) String() string {
@@ -56,17 +62,54 @@ func (s *CreateOAuth2CredentialProviderResponseBody) Validate() error {
 }
 
 type CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider struct {
-	CallbackURL                  *string               `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	CreateTime                   *string               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialProviderArn        *string               `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
-	CredentialProviderVendor     *string               `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
-	Description                  *string               `json:"Description,omitempty" xml:"Description,omitempty"`
-	OAuth2CredentialProviderName *string               `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
-	OAuth2ProviderConfig         *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
-	OAuthType                    *string               `json:"OAuthType,omitempty" xml:"OAuthType,omitempty"`
-	SourcePlatform               *string               `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	TokenVaultName               *string               `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	UpdateTime                   *string               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The unique callback URL assigned to the provider. You must configure this URL in the list of allowed callback URLs of the identity provider.
+	//
+	// example:
+	//
+	// https://agentidentitydata.cn-beijing.aliyuncs.com/oauth2/callback/d51171bc-0dae-3219-8e65-6b4cdafa3beb
+	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-12-18T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ARN of the newly created credential provider.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:tokenvault/default/oauth2credentialprovider/oauth-provider-aliyun
+	CredentialProviderArn *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
+	// The vendor of the provider.
+	//
+	// example:
+	//
+	// AliyunOAuth2
+	CredentialProviderVendor *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
+	// The description of the OAuth 2.0 credential provider.
+	//
+	// example:
+	//
+	// example provider
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the credential provider.
+	//
+	// example:
+	//
+	// oauth-provider-aliyun
+	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
+	// The object that contains provider-specific configurations, such as clientId and clientSecret.
+	OAuth2ProviderConfig *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
+	OAuthType            *string               `json:"OAuthType,omitempty" xml:"OAuthType,omitempty"`
+	SourcePlatform       *string               `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// The name of the token vault.
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2025-12-18T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider) String() string {

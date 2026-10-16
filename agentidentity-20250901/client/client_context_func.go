@@ -57,7 +57,13 @@ func (client *Client) AddSAMLIdentityProviderCertificateWithContext(ctx context.
 
 // Summary:
 //
-// 策略集关联网关
+// Attaches a policy set to a gateway.
+//
+// Description:
+//
+// Attaches a policy set to a target gateway.
+//
+// The attachment relationship is 1:1. A gateway can have only one policy set attached at a time. If you attach a policy set multiple times, the latest attachment takes effect. You can specify the policy enforcement mode by using the EnforcementMode parameter. Valid values: ENFORCE (blocks non-compliant requests) and LOG_ONLY (records non-compliant requests but allows them, which is commonly used for canary release observation).
 //
 // @param request - AttachPolicySetToGatewayRequest
 //
@@ -113,7 +119,7 @@ func (client *Client) AttachPolicySetToGatewayWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建一个 API 密钥凭证提供商
+// Creates an API key credential provider.
 //
 // @param request - CreateAPIKeyCredentialProviderRequest
 //
@@ -169,7 +175,11 @@ func (client *Client) CreateAPIKeyCredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// 创建WorkloadIdentity
+// Creates a workload identity.
+//
+// Description:
+//
+// The response includes the plaintext client secret (ClientSecretValue). For security reasons, the plaintext secret is returned only once upon creation and cannot be retrieved later. Store it securely.
 //
 // @param request - CreateClientSecretRequest
 //
@@ -283,7 +293,7 @@ func (client *Client) CreateIdentityProviderWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建 OAuth2 凭证提供商
+// Creates an OAuth 2.0 credential provider.
 //
 // @param tmpReq - CreateOAuth2CredentialProviderRequest
 //
@@ -357,7 +367,11 @@ func (client *Client) CreateOAuth2CredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// 创建一个权限策略
+// Creates an access policy.
+//
+// Description:
+//
+// Calls the CreatePolicy operation to add a policy to an existing policy set. The policy defines specific control rules, such as throttling thresholds, admission conditions, and allow or block actions, through the Definition field. After a policy set is mounted to a gateway, requests on the gateway are evaluated and controlled based on the merged results of all policies in the policy set.
 //
 // @param tmpReq - CreatePolicyRequest
 //
@@ -419,7 +433,11 @@ func (client *Client) CreatePolicyWithContext(ctx context.Context, tmpReq *Creat
 
 // Summary:
 //
-// 创建一个权限策略集合
+// Creates an access policy set.
+//
+// Description:
+//
+// Calls CreatePolicySet to create a policy set in the current account. A policy set is a container for a group of policies. After a policy set is mounted to a gateway, all policies in the set evaluate requests to the gateway as a whole.
 //
 // @param request - CreatePolicySetRequest
 //
@@ -440,6 +458,10 @@ func (client *Client) CreatePolicySetWithContext(ctx context.Context, request *C
 
 	if !dara.IsNil(request.PolicySetName) {
 		body["PolicySetName"] = request.PolicySetName
+	}
+
+	if !dara.IsNil(request.SourcePlatform) {
+		body["SourcePlatform"] = request.SourcePlatform
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -467,7 +489,13 @@ func (client *Client) CreatePolicySetWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建Role
+// Creates a role.
+//
+// Description:
+//
+// Users in a user pool can be allocated roles to enable quick authorization. Administrators can specify permissions for roles in an access policy.
+//
+// When a user pool is created, the platform automatically provisions a default role, and newly created users are automatically allocated this default role. This operation creates a custom role of the Manual type, which must be explicitly allocated to users by calling CreateRoleAssignment.
 //
 // @param request - CreateRoleRequest
 //
@@ -519,7 +547,13 @@ func (client *Client) CreateRoleWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 策略集关联网关
+// Associates a policy set with a gateway.
+//
+// Description:
+//
+// Users must be assigned roles to complete authorization. When a user is created through JIT, a default role is automatically assigned. Administrators can use this operation to assign additional custom roles to users.
+//
+// PrincipalType currently supports only User. A single identity can have multiple role assignments.
 //
 // @param request - CreateRoleAssignmentRequest
 //
@@ -575,7 +609,13 @@ func (client *Client) CreateRoleAssignmentWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建一个凭证库
+// Creates a token vault.
+//
+// Description:
+//
+// Calls the CreateTokenVault operation to create a token vault within the current Alibaba Cloud account. A token vault is a container used by the AgentIdentity service to securely store sensitive credentials such as OAuth2 tokens and API keys. Each token is encrypted when it is written to the vault.
+//
+// You can specify the encryption configuration when you create the vault. By default, a service-managed key (SERVICE_MANAGED_KEY) is used. For greater control over the key, you can use a customer-managed Key Management Service (KMS) key (CUSTOMER_MANAGED_KEY). To use a customer-managed key, specify the Alibaba Cloud Resource Name (ARN) of the KMS key and use the RoleArn parameter to authorize the AgentIdentity service to access the KMS key.
 //
 // @param tmpReq - CreateTokenVaultRequest
 //
@@ -637,7 +677,11 @@ func (client *Client) CreateTokenVaultWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 创建用户池用户
+// Creates a user in a user pool.
+//
+// Description:
+//
+// Creates a user in a specified user pool. The type of the created user is Manual, and the default status is Enabled. The username must be unique within the user pool and can contain letters, digits, underscores (_), periods (.), and hyphens (-), and must be 3 to 128 characters in length. The email address must be unique within the user pool. After the user is created, you can call the SetUserPassword operation to set a logon password for the user and call the CreateRoleAssignment operation to assign a role to the user.
 //
 // @param request - CreateUserRequest
 //
@@ -701,7 +745,11 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 创建UserPool
+// Creates a user pool.
+//
+// Description:
+//
+// A user pool is a secure and isolated user folder designed by the Agent Identity platform for the AI agent ecosystem. You can create multiple user pools under a single Alibaba Cloud account for the independent user identity management of different AI agents. When you create a user pool, you only need to specify the name (UserPoolName). The description is optional. After the user pool is created, the platform automatically generates a default role for the user pool. Users subsequently created through SAML SSO just-in-time (JIT) synchronization are automatically allocated this default role.
 //
 // @param request - CreateUserPoolRequest
 //
@@ -749,7 +797,11 @@ func (client *Client) CreateUserPoolWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建WorkloadIdentity
+// Creates a WorkloadIdentity.
+//
+// Description:
+//
+// A client represents an application that is integrated with a user pool. When you create a client, you must specify the client name and redirect URIs. You can configure whether an application secret is required, whether to enforce Proof Key for Code Exchange (PKCE), the access token validity period, and the refresh token validity period. The application scopes are generated by the platform by default. If SecretRequired is set to true, you must call CreateClientSecret to create a client secret.
 //
 // @param tmpReq - CreateUserPoolClientRequest
 //
@@ -767,6 +819,10 @@ func (client *Client) CreateUserPoolClientWithContext(ctx context.Context, tmpRe
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.RedirectURIs) {
 		request.RedirectURIsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectURIs, dara.String("RedirectURIs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Scopes) {
+		request.ScopesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scopes, dara.String("Scopes"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -788,6 +844,10 @@ func (client *Client) CreateUserPoolClientWithContext(ctx context.Context, tmpRe
 
 	if !dara.IsNil(request.RefreshTokenValidity) {
 		body["RefreshTokenValidity"] = request.RefreshTokenValidity
+	}
+
+	if !dara.IsNil(request.ScopesShrink) {
+		body["Scopes"] = request.ScopesShrink
 	}
 
 	if !dara.IsNil(request.SecretRequired) {
@@ -823,7 +883,7 @@ func (client *Client) CreateUserPoolClientWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建WorkloadIdentity
+// Create a workload identity for an AI Agent to uniquely identify it.
 //
 // @param tmpReq - CreateWorkloadIdentityRequest
 //
@@ -913,7 +973,7 @@ func (client *Client) CreateWorkloadIdentityWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 删除一个 API 密钥凭证提供商
+// Deletes a specified API key credential provider.
 //
 // @param request - DeleteAPIKeyCredentialProviderRequest
 //
@@ -961,7 +1021,11 @@ func (client *Client) DeleteAPIKeyCredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// 删除IdentityProvider
+// Deletes an identity provider.
+//
+// Description:
+//
+// Deletes a specified client secret by client ID and key ID. The secret becomes invalid immediately after deletion, and all OAuth authentication flows that use this secret will fail.
 //
 // @param request - DeleteClientSecretRequest
 //
@@ -1017,7 +1081,7 @@ func (client *Client) DeleteClientSecretWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除IdentityProvider
+// Deletes a specified identity provider.
 //
 // @param request - DeleteIdentityProviderRequest
 //
@@ -1061,7 +1125,7 @@ func (client *Client) DeleteIdentityProviderWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除 OAuth2 凭证提供商
+// Deletes a specified OAuth 2.0 credential provider.
 //
 // @param request - DeleteOAuth2CredentialProviderRequest
 //
@@ -1109,7 +1173,11 @@ func (client *Client) DeleteOAuth2CredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// 删除一个权限策略
+// Deletes an access policy.
+//
+// Description:
+//
+// Calls DeletePolicy to remove a policy from a specified policy set. The policy becomes invalid immediately after deletion, and gateways that depend on the policy set do not need to be remounted.
 //
 // @param request - DeletePolicyRequest
 //
@@ -1157,7 +1225,13 @@ func (client *Client) DeletePolicyWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除一个权限策略集合
+// Deletes an access policy set.
+//
+// Description:
+//
+// Calls DeletePolicySet to delete a policy set that is no longer in use.
+//
+// Before deleting the policy set, ensure that it is unmounted from all gateways (you can query this by calling ListPolicySetAttachedGateways) and contains no policies. Otherwise, the deletion fails.
 //
 // @param request - DeletePolicySetRequest
 //
@@ -1201,7 +1275,11 @@ func (client *Client) DeletePolicySetWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除Role
+// Deletes a role.
+//
+// Description:
+//
+// Before deletion, the system checks whether the role has any bound users. If role assignments exist, the deletion is rejected. You must call DeleteRoleAssignment to remove the assignments before deleting the role. Default roles (Type=Default) cannot be deleted.
 //
 // @param request - DeleteRoleRequest
 //
@@ -1249,7 +1327,11 @@ func (client *Client) DeleteRoleWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 网关取消关联策略集
+// Disassociates a policy set from a gateway.
+//
+// Description:
+//
+// Removes the role assignment relationship between an identity and a role.
 //
 // @param request - DeleteRoleAssignmentRequest
 //
@@ -1305,7 +1387,11 @@ func (client *Client) DeleteRoleAssignmentWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除WorkloadIdentity
+// Deletes a workload identity.
+//
+// Description:
+//
+// Cleans up expired or unused certificates after certificate rotation is complete. Before deleting the certificate, ensure that it is no longer used for SAML assertion signature verification. Otherwise, SSO logon may fail.
 //
 // @param request - DeleteSAMLIdentityProviderCertificateRequest
 //
@@ -1353,7 +1439,13 @@ func (client *Client) DeleteSAMLIdentityProviderCertificateWithContext(ctx conte
 
 // Summary:
 //
-// 删除一个指定的凭证库。
+// Deletes a specified token vault.
+//
+// Description:
+//
+// Call DeleteTokenVault to delete a token vault that is no longer in use.
+//
+// Before deletion, ensure that the token vault is not referenced by any credential provider. Otherwise, the deletion may cause credentials that depend on the token vault to become unavailable. This operation cannot be undone.
 //
 // @param request - DeleteTokenVaultRequest
 //
@@ -1397,7 +1489,11 @@ func (client *Client) DeleteTokenVaultWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除User
+// Deletes a user.
+//
+// Description:
+//
+// Deleting a user forcibly clears all role assignments of the user in the user pool. This operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteUserRequest
 //
@@ -1445,7 +1541,11 @@ func (client *Client) DeleteUserWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除UserPool
+// Deletes a user pool.
+//
+// Description:
+//
+// Before deleting a user pool, you must clean up all resources in the user pool, including all users, roles, clients, SAML IdPs, and role assignments. Calls to this operation are rejected if the resources are not cleaned up. This operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteUserPoolRequest
 //
@@ -1489,7 +1589,11 @@ func (client *Client) DeleteUserPoolWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除WorkloadIdentity
+// Deletes a WorkloadIdentity.
+//
+// Description:
+//
+// Deleting a client also removes all its associated client secrets. After deletion, the client can no longer be used for OAuth authentication and authorization flows. Proceed with caution.
 //
 // @param request - DeleteUserPoolClientRequest
 //
@@ -1537,7 +1641,7 @@ func (client *Client) DeleteUserPoolClientWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除WorkloadIdentity
+// Deletes a specified workload identity.
 //
 // @param request - DeleteWorkloadIdentityRequest
 //
@@ -1581,7 +1685,11 @@ func (client *Client) DeleteWorkloadIdentityWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 网关取消关联策略集
+// Detaches a policy set from a gateway.
+//
+// Description:
+//
+// Detaches a policy set from a gateway. After the policy set is detached, requests on the gateway are no longer governed by the policies in the policy set.
 //
 // @param request - DetachPolicySetFromGatewayRequest
 //
@@ -1633,7 +1741,7 @@ func (client *Client) DetachPolicySetFromGatewayWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询一个 API 密钥凭证提供商
+// Retrieves the details of a specified API key credential provider.
 //
 // @param request - GetAPIKeyCredentialProviderRequest
 //
@@ -1681,7 +1789,11 @@ func (client *Client) GetAPIKeyCredentialProviderWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询网关策略配置
+// Queries the gateway policy configuration.
+//
+// Description:
+//
+// Calls the GetGatewayPolicyConfig operation to query the currently effective policy configuration of a gateway, including the ARN of the mounted policy set and the enforcement mode.
 //
 // @param request - GetGatewayPolicyConfigRequest
 //
@@ -1773,7 +1885,69 @@ func (client *Client) GetIdentityProviderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取用户池登录相关配置
+// 查询身份源同步范围与统计（已选部门有效性 + 展开部门数/预计人数）
+//
+// Description:
+//
+// 目标用户池需已配置指定类型的身份源。本接口使用已保存的身份源配置，无需传入钉钉或飞书应用密钥。
+//
+// 同步范围支持 AllAuthorized 和 SelectedDepartments。未显式配置范围时默认为 AllAuthorized，表示第三方应用授权可见范围内的全部用户。SelectedDepartments 包含选中部门及其全部后代部门；人员有任一当前所属部门命中展开集合，即命中同步范围。
+//
+// 本接口不修改范围、不创建人员同步任务。查询可能触发后台统计；EstimateStatus 表示范围统计状态，不是人员同步任务状态。统计结果可能复用缓存，也可能来自同一范围最近一次同步结果；跨部门重复用户可能重复计数，不应视为实时、精确去重人数。
+//
+// 对应身份源未配置时返回 EntityNotExists.IdpConfiguration；目录权限或通讯录可见范围不足时，返回 DingTalkApiPermissionDenied 或 FeishuApiPermissionDenied，不会将权限问题当作部门不存在。
+//
+// @param request - GetIdentityProviderSyncScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdentityProviderSyncScopeResponse
+func (client *Client) GetIdentityProviderSyncScopeWithContext(ctx context.Context, request *GetIdentityProviderSyncScopeRequest, runtime *dara.RuntimeOptions) (_result *GetIdentityProviderSyncScopeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderType) {
+		body["IdentityProviderType"] = request.IdentityProviderType
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIdentityProviderSyncScope"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIdentityProviderSyncScopeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the logon-related configurations of a user pool.
+//
+// Description:
+//
+// Retrieves the logon configuration and password policy of a specified user pool. The logon configuration includes preference settings such as whether to enable password logon. The password policy includes rules for password complexity, length limits, and logon failure lockouts. The password policy is read-only and does not support custom modifications.
 //
 // @param request - GetLoginPreferenceRequest
 //
@@ -1817,7 +1991,7 @@ func (client *Client) GetLoginPreferenceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询 OAuth2 凭证提供商
+// Retrieves the details of a specified OAuth 2.0 credential provider.
 //
 // @param request - GetOAuth2CredentialProviderRequest
 //
@@ -1865,7 +2039,11 @@ func (client *Client) GetOAuth2CredentialProviderWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询一个 权限策略
+// Queries an access policy.
+//
+// Description:
+//
+// Calls GetPolicy to retrieve the complete configuration of a single policy, including its definition, associated policy set, and creation and update times.
 //
 // @param request - GetPolicyRequest
 //
@@ -1913,7 +2091,11 @@ func (client *Client) GetPolicyWithContext(ctx context.Context, request *GetPoli
 
 // Summary:
 //
-// 查询一个 权限策略集合
+// Queries an access policy set.
+//
+// Description:
+//
+// Calls GetPolicySet to query the complete configuration of a single policy set, including the ARN, description, creation time, and update time.
 //
 // @param request - GetPolicySetRequest
 //
@@ -1957,7 +2139,11 @@ func (client *Client) GetPolicySetWithContext(ctx context.Context, request *GetP
 
 // Summary:
 //
-// 获取Role
+// Retrieves a role.
+//
+// Description:
+//
+// Returns the complete information about a specified role, including the role ID, name, description, type (Default or Manual), and creation and update times.
 //
 // @param request - GetRoleRequest
 //
@@ -2005,7 +2191,11 @@ func (client *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRe
 
 // Summary:
 //
-// 创建应用
+// Creates an application.
+//
+// Description:
+//
+// Returns the complete configuration of the SAML IdP, including the EntityId, logon URL, X509 certificate list, and the enabling status of SSO and JIT synchronization.
 //
 // @param request - GetSAMLIdentityProviderRequest
 //
@@ -2093,7 +2283,11 @@ func (client *Client) GetSAMLServiceProviderInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取指定的身份提供商
+// Retrieves the specified identity provider.
+//
+// Description:
+//
+// Queries the SSO configuration of a specific type of identity provider in a specified user pool. Returns information such as the enabling status, synchronization callback status, and metadata of the IdP. For security reasons, sensitive fields such as appSecret, encryptKey, and verificationToken are not returned in the response.
 //
 // @param request - GetSpecificIdentityProviderRequest
 //
@@ -2141,7 +2335,11 @@ func (client *Client) GetSpecificIdentityProviderWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取指定凭证库的详细配置。
+// Retrieves the detailed configuration of a specified token vault.
+//
+// Description:
+//
+// Calls GetTokenVault to retrieve the complete configuration of a single token vault, including the encryption method, associated RAM role ARN, creation time, and update time.
 //
 // @param request - GetTokenVaultRequest
 //
@@ -2185,7 +2383,11 @@ func (client *Client) GetTokenVaultWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取用户
+// Retrieves a user.
+//
+// Description:
+//
+// Returns the complete information of a specified user, including the user ID, username, display name, description, and creation and update times.
 //
 // @param request - GetUserRequest
 //
@@ -2241,7 +2443,11 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 
 // Summary:
 //
-// 获取UserPool
+// Retrieves a user pool.
+//
+// Description:
+//
+// Returns the complete configuration information of a specified user pool, including the user pool ID, name, description, creation time, and update time.
 //
 // @param request - GetUserPoolRequest
 //
@@ -2285,7 +2491,11 @@ func (client *Client) GetUserPoolWithContext(ctx context.Context, request *GetUs
 
 // Summary:
 //
-// 创建应用
+// Creates an application.
+//
+// Description:
+//
+// Returns the complete configuration information of a client, including the client ID, name, redirect URIs, token validity periods, SecretRequired and EnforcePKCE settings, and default client scopes.
 //
 // @param request - GetUserPoolClientRequest
 //
@@ -2333,7 +2543,11 @@ func (client *Client) GetUserPoolClientWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取UserPool
+// Retrieves the details of a synchronization task in a user pool.
+//
+// Description:
+//
+// Queries the execution details of a single synchronization task in a specified user pool, including the task status, start and end times, synchronization result statistics (the number of created, updated, deleted, and unchanged users), and error messages.
 //
 // @param request - GetUserPoolSyncJobRequest
 //
@@ -2381,7 +2595,7 @@ func (client *Client) GetUserPoolSyncJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建应用
+// Queries the detailed configuration of a workload identity by name.
 //
 // @param request - GetWorkloadIdentityRequest
 //
@@ -2425,7 +2639,7 @@ func (client *Client) GetWorkloadIdentityWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 列出 API 密钥凭证提供商
+// Lists all API key credential providers in the account.
 //
 // @param request - ListAPIKeyCredentialProvidersRequest
 //
@@ -2477,7 +2691,11 @@ func (client *Client) ListAPIKeyCredentialProvidersWithContext(ctx context.Conte
 
 // Summary:
 //
-// 列出IdentityProvider
+// Lists identity providers.
+//
+// Description:
+//
+// Returns summary information about all secrets of a client, including the client key ID and creation time. For security reasons, the plaintext secret (ClientSecretValue) is not returned in the list.
 //
 // @param request - ListClientSecretsRequest
 //
@@ -2515,6 +2733,74 @@ func (client *Client) ListClientSecretsWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListClientSecretsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询身份源部门树（按层懒加载，供控制台勾选同步范围）
+//
+// Description:
+//
+// 用户池需已配置相应身份源，且应用具有目标部门的通讯录访问权限。本接口使用已保存的身份源配置，无需传入应用密钥。
+//
+// 本接口仅返回指定父部门的直属子部门，不包含父部门本身，不递归返回整棵部门树。未传父部门时，钉钉默认查询根部门1下的直属子部门，飞书默认查询根部门0下的直属子部门。部门浏览受应用授权可见范围限制，不受当前保存的同步范围限制。
+//
+// 本接口不修改同步范围，不触发人员同步。
+//
+// @param request - ListIdentityProviderDepartmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIdentityProviderDepartmentsResponse
+func (client *Client) ListIdentityProviderDepartmentsWithContext(ctx context.Context, request *ListIdentityProviderDepartmentsRequest, runtime *dara.RuntimeOptions) (_result *ListIdentityProviderDepartmentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderType) {
+		body["IdentityProviderType"] = request.IdentityProviderType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ParentDepartmentId) {
+		body["ParentDepartmentId"] = request.ParentDepartmentId
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIdentityProviderDepartments"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIdentityProviderDepartmentsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2573,7 +2859,7 @@ func (client *Client) ListIdentityProvidersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 列出 OAuth2 凭证提供商
+// Lists all OAuth 2.0 credential providers in the account.
 //
 // @param request - ListOAuth2CredentialProvidersRequest
 //
@@ -2677,7 +2963,11 @@ func (client *Client) ListPoliciesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 列出网关策略配置
+// Lists gateway policy configurations.
+//
+// Description:
+//
+// Calls ListPolicySetAttachedGateways to query the gateways to which a specific policy set is currently attached. Call this operation before deleting a policy set to verify that no residual attachments exist.
 //
 // @param request - ListPolicySetAttachedGatewaysRequest
 //
@@ -2845,7 +3135,11 @@ func (client *Client) ListRoleAssignmentsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 列出Roles
+// Lists roles.
+//
+// Description:
+//
+// Returns summary information about all roles in a user pool, including the default role Default and custom roles Manual. The information includes the role ID, name, description, creation time, update time, and role type.
 //
 // @param request - ListRolesRequest
 //
@@ -2897,7 +3191,11 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 
 // Summary:
 //
-// 列出IdentityProvider
+// Lists identity providers.
+//
+// Description:
+//
+// Returns a list of all X.509 certificates under the SAML IdP configuration of the user pool to help administrators manage the certificate lifecycle and perform certificate rotation.
 //
 // @param request - ListSAMLIdentityProviderCertificatesRequest
 //
@@ -2989,7 +3287,11 @@ func (client *Client) ListTokenVaultsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 列出IdentityProvider
+// Lists identity providers.
+//
+// Description:
+//
+// Returns summary information about all clients in a user pool, including the client ID, name, redirect URIs, creation time, and configurations such as PKCE, client secret, and token validity periods.
 //
 // @param request - ListUserPoolClientsRequest
 //
@@ -3093,7 +3395,11 @@ func (client *Client) ListUserPoolSyncJobsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 列出IdentityProvider
+// Lists identity providers.
+//
+// Description:
+//
+// Returns summary information about all user pools within the current account, including the user pool ID, name, description, and creation and update times. Supports pagination by using NextToken.
 //
 // @param request - ListUserPoolsRequest
 //
@@ -3141,7 +3447,11 @@ func (client *Client) ListUserPoolsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 列出用户
+// Lists users.
+//
+// Description:
+//
+// Returns the summary information of all users in a user pool, including the user ID, username, display name, description, creation time, and update time.
 //
 // @param request - ListUsersRequest
 //
@@ -3193,7 +3503,7 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 
 // Summary:
 //
-// 列出IdentityProvider
+// Lists workload identities with pagination.
 //
 // @param request - ListWorkloadIdentitiesRequest
 //
@@ -3241,7 +3551,11 @@ func (client *Client) ListWorkloadIdentitiesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建UserPool
+// Triggers a user synchronization task in a user pool.
+//
+// Description:
+//
+// Creates and immediately executes a user synchronization task in a specified user pool. The system pulls user data from the specified identity provider and synchronizes the data to the user pool. The task runs asynchronously. The operation completes after the task ID is returned. You can call GetUserPoolSyncJob to query the execution progress and results. Only one synchronization task can run in a user pool at a time.
 //
 // @param request - RunUserPoolSyncJobRequest
 //
@@ -3293,7 +3607,11 @@ func (client *Client) RunUserPoolSyncJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建WorkloadIdentity
+// Creates a workload identity.
+//
+// Description:
+//
+// This operation sets or updates the core configurations of a SAML identity provider (IdP), including the IdP identifier (EntityId), logon URL (LoginURL), X.509 certificates, single sign-on (SSO) status, and Just-In-Time (JIT) user provisioning and update settings. If you specify X509Certificates, all existing certificates in the user pool are replaced. To append certificates while retaining the existing ones, use AddSAMLIdentityProviderCertificate.
 //
 // @param tmpReq - SetSAMLIdentityProviderRequest
 //
@@ -3371,7 +3689,11 @@ func (client *Client) SetSAMLIdentityProviderWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 通用IdP配置
+// Configures the SSO settings for a specified type of identity provider in a user pool.
+//
+// Description:
+//
+// Configures a specific type of identity provider for a specified user pool. This operation is used to configure SSO logon and address book synchronization for non-SAML IdPs such as DingTalk. A user pool does not support enabling multiple identity providers at the same time. You must disable other enabled IdPs before enabling a new IdP.
 //
 // @param request - SetSpecificIdentityProviderRequest
 //
@@ -3427,7 +3749,11 @@ func (client *Client) SetSpecificIdentityProviderWithContext(ctx context.Context
 
 // Summary:
 //
-// 修改用户登录密码
+// Modifies the logon password of a user.
+//
+// Description:
+//
+// Sets or resets the logon password for a user in a specified user pool. Two methods are supported: specifying a password (Password) or generating a random password (GenerateRandomPassword). The two methods are mutually exclusive, and you must select exactly one. If you specify a password, it must meet the password policy requirements: a minimum length of 8 characters, containing at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters, and it must not contain the username. Passwords are managed independently of the user creation process and are not passed through CreateUser.
 //
 // @param request - SetUserPasswordRequest
 //
@@ -3483,7 +3809,7 @@ func (client *Client) SetUserPasswordWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 更新一个 API 密钥凭证提供商
+// Updates an existing API key credential provider.
 //
 // @param request - UpdateAPIKeyCredentialProviderRequest
 //
@@ -3539,7 +3865,11 @@ func (client *Client) UpdateAPIKeyCredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询网关策略配置
+// Queries the gateway policy configuration.
+//
+// Description:
+//
+// Calls UpdateGatewayPolicyConfig to adjust the policy enforcement mode on a gateway. Common usage: Use LOG_ONLY for observation and verification during the initial rollout of a policy. After confirming that everything is correct, switch the gateway to ENFORCE to enforce interception. This operation does not modify the attached policy set itself. To replace the policy set, call AttachPolicySetToGateway.
 //
 // @param request - UpdateGatewayPolicyConfigRequest
 //
@@ -3591,7 +3921,7 @@ func (client *Client) UpdateGatewayPolicyConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 更新IdentityProvider
+// Updates the specified identity provider.
 //
 // @param tmpReq - UpdateIdentityProviderRequest
 //
@@ -3653,7 +3983,11 @@ func (client *Client) UpdateIdentityProviderWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 更新用户池登录配置
+// Updates the logon configuration of a user pool.
+//
+// Description:
+//
+// Updates the logon configuration of a specified user pool. Currently, only logon preferences, such as whether password logon is enabled, can be updated. The password policy cannot be modified. Specify only the fields to be updated. Unspecified fields remain unchanged.
 //
 // @param tmpReq - UpdateLoginPreferenceRequest
 //
@@ -3717,7 +4051,7 @@ func (client *Client) UpdateLoginPreferenceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 修改 OAuth2 凭证提供商
+// Updates the configuration of an existing OAuth 2.0 credential provider.
 //
 // @param tmpReq - UpdateOAuth2CredentialProviderRequest
 //
@@ -3787,7 +4121,11 @@ func (client *Client) UpdateOAuth2CredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// 更新一个权限策略
+// Updates an access policy.
+//
+// Description:
+//
+// Calls the UpdatePolicy operation to update the description and definition of an existing policy. The updated definition takes effect immediately for all gateways to which the policy set is mounted.
 //
 // @param tmpReq - UpdatePolicyRequest
 //
@@ -3849,7 +4187,11 @@ func (client *Client) UpdatePolicyWithContext(ctx context.Context, tmpReq *Updat
 
 // Summary:
 //
-// 更新一个权限策略集合
+// Updates an access policy set.
+//
+// Description:
+//
+// Calls UpdatePolicySet to update the description of an existing policy set. To modify specific policies in the policy set, use UpdatePolicy. To change the mount relationship, use AttachPolicySetToGateway or DetachPolicySetFromGateway.
 //
 // @param request - UpdatePolicySetRequest
 //
@@ -3897,7 +4239,11 @@ func (client *Client) UpdatePolicySetWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 更新Role
+// Updates a role.
+//
+// Description:
+//
+// Updates the Description field of a role. The RoleName field serves as a unique identifier and cannot be modified.
 //
 // @param request - UpdateRoleRequest
 //
@@ -3949,7 +4295,11 @@ func (client *Client) UpdateRoleWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// 更新凭证库。
+// Updates a token vault.
+//
+// Description:
+//
+// Updates the description and role configuration of an existing token vault. Note: The encryption configuration (KeyType or KmsKeyArn) of a token vault cannot be changed after it is created.
 //
 // @param request - UpdateTokenVaultRequest
 //
@@ -4001,7 +4351,11 @@ func (client *Client) UpdateTokenVaultWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新用户池用户
+// Updates a user in a user pool.
+//
+// Description:
+//
+// Updates the attribute information of a user in a specified user pool. Specify only the fields that you want to update. Unspecified fields remain unchanged. UserName is the user identifier and cannot be modified. You can update the display name, description, email address, and status. Email addresses must be unique within the user pool.
 //
 // @param request - UpdateUserRequest
 //
@@ -4113,7 +4467,11 @@ func (client *Client) UpdateUserPoolWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 创建应用
+// Creates an application.
+//
+// Description:
+//
+// Updates the callback URLs (RedirectURIs), whether an application secret is required (SecretRequired), whether Proof Key for Code Exchange (PKCE) is enforced (EnforcePKCE), and the validity periods of the access token and refresh token. The client name (ClientName) serves as a unique identifier and cannot be modified.
 //
 // @param tmpReq - UpdateUserPoolClientRequest
 //
@@ -4131,6 +4489,10 @@ func (client *Client) UpdateUserPoolClientWithContext(ctx context.Context, tmpRe
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.RedirectURIs) {
 		request.RedirectURIsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectURIs, dara.String("RedirectURIs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Scopes) {
+		request.ScopesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scopes, dara.String("Scopes"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -4152,6 +4514,10 @@ func (client *Client) UpdateUserPoolClientWithContext(ctx context.Context, tmpRe
 
 	if !dara.IsNil(request.RefreshTokenValidity) {
 		body["RefreshTokenValidity"] = request.RefreshTokenValidity
+	}
+
+	if !dara.IsNil(request.ScopesShrink) {
+		body["Scopes"] = request.ScopesShrink
 	}
 
 	if !dara.IsNil(request.SecretRequired) {
@@ -4187,7 +4553,7 @@ func (client *Client) UpdateUserPoolClientWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建应用
+// Updates the specified workload identity.
 //
 // @param tmpReq - UpdateWorkloadIdentityRequest
 //

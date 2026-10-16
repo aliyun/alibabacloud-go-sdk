@@ -20,10 +20,32 @@ type iCreateRoleAssignmentRequest interface {
 }
 
 type CreateRoleAssignmentRequest struct {
+	// The name of the principal. When PrincipalType is set to User, specify the username.
+	//
+	// example:
+	//
+	// alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The type of the principal. Valid values:
+	//
+	// - User: User. Only this value is currently supported.
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	RoleName      *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	UserPoolName  *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The name of the role to assign.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s CreateRoleAssignmentRequest) String() string {

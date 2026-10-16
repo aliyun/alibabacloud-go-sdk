@@ -19,6 +19,8 @@ type iCreateUserPoolClientShrinkRequest interface {
 	GetRedirectURIsShrink() *string
 	SetRefreshTokenValidity(v string) *CreateUserPoolClientShrinkRequest
 	GetRefreshTokenValidity() *string
+	SetScopesShrink(v string) *CreateUserPoolClientShrinkRequest
+	GetScopesShrink() *string
 	SetSecretRequired(v bool) *CreateUserPoolClientShrinkRequest
 	GetSecretRequired() *bool
 	SetUserPoolName(v string) *CreateUserPoolClientShrinkRequest
@@ -26,13 +28,54 @@ type iCreateUserPoolClientShrinkRequest interface {
 }
 
 type CreateUserPoolClientShrinkRequest struct {
-	AccessTokenValidity  *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	ClientName           *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	EnforcePKCE          *bool   `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIsShrink   *string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty"`
+	// The validity period of the access token, in seconds. Valid values: 900 to 10800. Default value: 3600.
+	//
+	// example:
+	//
+	// 3600
+	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	// The name of the client. The name must be unique within the same user pool and must be 1 to 64 characters in length.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// Specifies whether to enforce Proof Key for Code Exchange (PKCE). Valid values:
+	//
+	// - true: Enforced. The code_challenge parameter is required in the authorization code flow.
+	//
+	// - false: Not enforced.
+	//
+	// example:
+	//
+	// true
+	EnforcePKCE *bool `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	// The list of OAuth redirect URIs. After authorization is complete, the user\\"s browser is redirected to one of the URIs in the list.
+	RedirectURIsShrink *string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty"`
+	// The validity period of the refresh token, in seconds. Valid values: 7200 to 31536000 (90 days). Default value: 2592000 (30 days).
+	//
+	// example:
+	//
+	// 86400
 	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	SecretRequired       *bool   `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	UserPoolName         *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The scopes granted to the application. You can specify multiple scopes.
+	ScopesShrink *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
+	// Specifies whether an application secret is required. Valid values:
+	//
+	// - true: Required. This value applies to confidential clients such as server-side applications. You must call CreateClientSecret to create a secret.
+	//
+	// - false: Not required. This value applies to public clients such as single-page applications (SPAs) and mobile applications.
+	//
+	// example:
+	//
+	// true
+	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s CreateUserPoolClientShrinkRequest) String() string {
@@ -61,6 +104,10 @@ func (s *CreateUserPoolClientShrinkRequest) GetRedirectURIsShrink() *string {
 
 func (s *CreateUserPoolClientShrinkRequest) GetRefreshTokenValidity() *string {
 	return s.RefreshTokenValidity
+}
+
+func (s *CreateUserPoolClientShrinkRequest) GetScopesShrink() *string {
+	return s.ScopesShrink
 }
 
 func (s *CreateUserPoolClientShrinkRequest) GetSecretRequired() *bool {
@@ -93,6 +140,11 @@ func (s *CreateUserPoolClientShrinkRequest) SetRedirectURIsShrink(v string) *Cre
 
 func (s *CreateUserPoolClientShrinkRequest) SetRefreshTokenValidity(v string) *CreateUserPoolClientShrinkRequest {
 	s.RefreshTokenValidity = &v
+	return s
+}
+
+func (s *CreateUserPoolClientShrinkRequest) SetScopesShrink(v string) *CreateUserPoolClientShrinkRequest {
+	s.ScopesShrink = &v
 	return s
 }
 

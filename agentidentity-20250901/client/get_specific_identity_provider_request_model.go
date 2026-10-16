@@ -16,8 +16,18 @@ type iGetSpecificIdentityProviderRequest interface {
 }
 
 type GetSpecificIdentityProviderRequest struct {
+	// The type of the identity provider. Currently, only DingTalk is supported.
+	//
+	// example:
+	//
+	// DingTalk
 	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	UserPoolName         *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s GetSpecificIdentityProviderRequest) String() string {

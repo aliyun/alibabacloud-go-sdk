@@ -20,10 +20,26 @@ type iCreateTokenVaultRequest interface {
 }
 
 type CreateTokenVaultRequest struct {
-	Description      *string           `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the token vault.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The encryption configuration of the token vault. The value is a JSON string.
 	EncryptionConfig *EncryptionConfig `json:"EncryptionConfig,omitempty" xml:"EncryptionConfig,omitempty"`
-	RoleArn          *string           `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	TokenVaultName   *string           `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role used to authorize the AgentIdentity service to access other cloud resources such as KMS.
+	//
+	// example:
+	//
+	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The name of the token vault. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateTokenVaultRequest) String() string {

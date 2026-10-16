@@ -16,7 +16,13 @@ type iUpdateUserPoolRequest interface {
 }
 
 type UpdateUserPoolRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 更新后的用户池描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

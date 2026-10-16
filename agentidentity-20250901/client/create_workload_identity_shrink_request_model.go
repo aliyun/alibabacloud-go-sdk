@@ -32,16 +32,58 @@ type iCreateWorkloadIdentityShrinkRequest interface {
 }
 
 type CreateWorkloadIdentityShrinkRequest struct {
-	AllowedConsentCallbackURLsShrink      *string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty"`
+	// The allowlist of Consent authorization callback URLs for the workload identity, which constrains the allowed redirect addresses during the offline delegation (OfflineAccess) authorization flow.
+	AllowedConsentCallbackURLsShrink *string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty"`
+	// The list of allowed OAuth2 return URLs.
 	AllowedResourceOAuth2ReturnURLsShrink *string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty"`
-	CreateRAMRole                         *bool   `json:"CreateRAMRole,omitempty" xml:"CreateRAMRole,omitempty"`
-	Description                           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IdentityProviderName                  *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	RoleArn                               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	SessionBindingEnabled                 *bool   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
-	SourceAgentArn                        *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
-	SourcePlatform                        *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	WorkloadIdentityName                  *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
+	// Specifies whether to automatically create an associated RAM role. When set to true, the system automatically creates a RAM role with the same name as the workload identity.
+	//
+	// example:
+	//
+	// true
+	CreateRAMRole *bool `json:"CreateRAMRole,omitempty" xml:"CreateRAMRole,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example agent
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configured identity provider.
+	//
+	// example:
+	//
+	// identity-provider-okta
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::123456:role/agent-101-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// Specifies whether to enable session binding. When enabled, each session is bound to a specific workload identity instance.
+	//
+	// example:
+	//
+	// false
+	SessionBindingEnabled *bool `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	// The ARN of the source agent.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:workloadidentity/my-identity
+	SourceAgentArn *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
+	// The source platform.
+	//
+	// example:
+	//
+	// China
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// The unique name of the workload identity.
+	//
+	// example:
+	//
+	// agent-101
+	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 
 func (s CreateWorkloadIdentityShrinkRequest) String() string {

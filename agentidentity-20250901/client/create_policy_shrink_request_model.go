@@ -20,10 +20,26 @@ type iCreatePolicyShrinkRequest interface {
 }
 
 type CreatePolicyShrinkRequest struct {
+	// The policy definition.
 	DefinitionShrink *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName       *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicySetName    *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy. The name must be unique within the policy set to which the policy belongs.
+	//
+	// example:
+	//
+	// rate-limit-policy
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
+	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 
 func (s CreatePolicyShrinkRequest) String() string {

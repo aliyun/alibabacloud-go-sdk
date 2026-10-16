@@ -20,10 +20,34 @@ type iSetSpecificIdentityProviderRequest interface {
 }
 
 type SetSpecificIdentityProviderRequest struct {
-	IDPMetadata          *string `json:"IDPMetadata,omitempty" xml:"IDPMetadata,omitempty"`
+	// The IdP metadata. For the DingTalk type, the metadata is in JSON format and includes fields such as corpId, appKey, appSecret, encryptKey, verificationToken, and syncCallbackStatus.
+	//
+	// example:
+	//
+	// {"corpId":"dingxxxxxxxxxx","appKey":"dingxxxxxxxxxx","appSecret":"your_app_secret","encryptKey":"your_encrypt_key","verificationToken":"your_verification_token","syncCallbackStatus":"Enabled"}
+	IDPMetadata *string `json:"IDPMetadata,omitempty" xml:"IDPMetadata,omitempty"`
+	// The type of the identity provider. Currently, only DingTalk is supported.
+	//
+	// example:
+	//
+	// DingTalk
 	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	SSOStatus            *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	UserPoolName         *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The SSO enabling status. Valid values:
+	//
+	// - Enabled: Enabled.
+	//
+	// - Disabled: Disabled.
+	//
+	// example:
+	//
+	// Enabled
+	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s SetSpecificIdentityProviderRequest) String() string {

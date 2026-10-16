@@ -20,10 +20,26 @@ type iUpdateIdentityProviderRequest interface {
 }
 
 type UpdateIdentityProviderRequest struct {
-	AllowedAudience      []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
-	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DiscoveryURL         *string   `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
-	IdentityProviderName *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// The allowed audiences. A token is allowed if its aud claim contains any of the specified audiences.
+	AllowedAudience []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
+	// The description.
+	//
+	// example:
+	//
+	// example identity provider
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The metadata URL used to retrieve the OpenID configuration or authorization server metadata.
+	//
+	// example:
+	//
+	// https://oauth.aliyun.com/.well-known/openid-configuration
+	DiscoveryURL *string `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
+	// The name of the identity provider.
+	//
+	// example:
+	//
+	// identity-provider-okta
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
 }
 
 func (s UpdateIdentityProviderRequest) String() string {

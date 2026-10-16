@@ -14,6 +14,11 @@ type iUpdateTokenVaultResponseBody interface {
 }
 
 type UpdateTokenVaultResponseBody struct {
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

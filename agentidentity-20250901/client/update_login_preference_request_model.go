@@ -18,9 +18,15 @@ type iUpdateLoginPreferenceRequest interface {
 }
 
 type UpdateLoginPreferenceRequest struct {
-	AllowedPostLogoutRedirectUris []*string                                    `json:"AllowedPostLogoutRedirectUris,omitempty" xml:"AllowedPostLogoutRedirectUris,omitempty" type:"Repeated"`
-	LoginPreference               *UpdateLoginPreferenceRequestLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
-	UserPoolName                  *string                                      `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	AllowedPostLogoutRedirectUris []*string `json:"AllowedPostLogoutRedirectUris,omitempty" xml:"AllowedPostLogoutRedirectUris,omitempty" type:"Repeated"`
+	// The logon preference configuration object. It contains the logon configuration fields to be updated.
+	LoginPreference *UpdateLoginPreferenceRequestLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s UpdateLoginPreferenceRequest) String() string {
@@ -68,6 +74,11 @@ func (s *UpdateLoginPreferenceRequest) Validate() error {
 }
 
 type UpdateLoginPreferenceRequestLoginPreference struct {
+	// Specifies whether to enable password logon for users.
+	//
+	// example:
+	//
+	// true
 	EnablePasswordLogin *bool `json:"EnablePasswordLogin,omitempty" xml:"EnablePasswordLogin,omitempty"`
 }
 

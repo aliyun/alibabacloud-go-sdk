@@ -16,7 +16,13 @@ type iCreateRoleAssignmentResponseBody interface {
 }
 
 type CreateRoleAssignmentResponseBody struct {
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The role assignment.
 	RoleAssignment *CreateRoleAssignmentResponseBodyRoleAssignment `json:"RoleAssignment,omitempty" xml:"RoleAssignment,omitempty" type:"Struct"`
 }
 
@@ -56,13 +62,48 @@ func (s *CreateRoleAssignmentResponseBody) Validate() error {
 }
 
 type CreateRoleAssignmentResponseBodyRoleAssignment struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	PrincipalId   *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The time when the role assignment was created, in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the principal. When PrincipalType is User, this is the user ID.
+	//
+	// example:
+	//
+	// user_xxxxxxxxxxxxxxxxxxxx
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The name of the principal. When PrincipalType is User, this is the username.
+	//
+	// example:
+	//
+	// alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The type of the principal. Only User is currently supported.
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	RoleId        *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName      *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	UserPoolId    *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	// The ID of the role.
+	//
+	// example:
+	//
+	// role_xxxxxxxxxxxxxxxxxxxx
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the role.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The ID of the user pool.
+	//
+	// example:
+	//
+	// up_xxxxxxxxxxxxxxxxxxxx
+	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
 }
 
 func (s CreateRoleAssignmentResponseBodyRoleAssignment) String() string {

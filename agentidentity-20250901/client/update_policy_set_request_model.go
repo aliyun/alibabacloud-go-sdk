@@ -16,7 +16,17 @@ type iUpdatePolicySetRequest interface {
 }
 
 type UpdatePolicySetRequest struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

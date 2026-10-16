@@ -22,11 +22,32 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
-	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Users      []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// The maximum number of entries returned for the current request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to query the next page of data. An empty value indicates that no more data is available.
+	//
+	// example:
+	//
+	// TGlzdFVzZXJzOjoyMA==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of users that meet the conditions.
+	//
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of users.
+	Users []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -96,15 +117,45 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyUsers struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time. The time is in the ISO 8601 format in UTC.
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user.
+	//
+	// example:
+	//
+	// Sample user
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice Wang
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The update time. The time is in the ISO 8601 format in UTC.
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// user_xxxxxxxxxxxxxxxxxxxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsers) String() string {

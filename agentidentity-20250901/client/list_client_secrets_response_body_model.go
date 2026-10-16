@@ -16,8 +16,14 @@ type iListClientSecretsResponseBody interface {
 }
 
 type ListClientSecretsResponseBody struct {
+	// The list of client secrets.
 	ClientSecrets []*ListClientSecretsResponseBodyClientSecrets `json:"ClientSecrets,omitempty" xml:"ClientSecrets,omitempty" type:"Repeated"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClientSecretsResponseBody) String() string {
@@ -60,11 +66,36 @@ func (s *ListClientSecretsResponseBody) Validate() error {
 }
 
 type ListClientSecretsResponseBodyClientSecrets struct {
-	ClientId       *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientName     *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The client ID.
+	//
+	// example:
+	//
+	// client_xxxxxxxxxxxxxxxxxxxx
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client name.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The client key ID.
+	//
+	// example:
+	//
+	// secret_xxxxxxxxxxxxxxxxxxxx
 	ClientSecretId *string `json:"ClientSecretId,omitempty" xml:"ClientSecretId,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UserPoolName   *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The creation time of the client secret in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user pool name.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s ListClientSecretsResponseBodyClientSecrets) String() string {

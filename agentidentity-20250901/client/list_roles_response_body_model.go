@@ -22,11 +22,32 @@ type iListRolesResponseBody interface {
 }
 
 type ListRolesResponseBody struct {
-	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Roles      []*ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The maximum number of entries returned for the current request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to query the next page of data. An empty value indicates that no more data is available.
+	//
+	// example:
+	//
+	// TGlzdFJvbGVzOjoyMA==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of roles.
+	Roles []*ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The total number of roles that meet the query conditions.
+	//
+	// example:
+	//
+	// 8
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -96,12 +117,42 @@ func (s *ListRolesResponseBody) Validate() error {
 }
 
 type ListRolesResponseBodyRoles struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The role description.
+	//
+	// example:
+	//
+	// Data analytics role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The role ID.
+	//
+	// example:
+	//
+	// role_xxxxxxxxxxxxxxxxxxxx
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The role name.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The role type. Default indicates a default role. Manual indicates a custom role.
+	//
+	// example:
+	//
+	// Manual
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The update time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListRolesResponseBodyRoles) String() string {

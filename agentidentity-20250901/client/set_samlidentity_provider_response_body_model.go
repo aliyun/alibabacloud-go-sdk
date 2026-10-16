@@ -16,7 +16,13 @@ type iSetSAMLIdentityProviderResponseBody interface {
 }
 
 type SetSAMLIdentityProviderResponseBody struct {
-	RequestId                        *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The detailed configurations of the identity provider.
 	SSOIdentityProviderConfiguration *SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration `json:"SSOIdentityProviderConfiguration,omitempty" xml:"SSOIdentityProviderConfiguration,omitempty" type:"Struct"`
 }
 
@@ -56,13 +62,44 @@ func (s *SetSAMLIdentityProviderResponseBody) Validate() error {
 }
 
 type SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration struct {
-	EntityId           *string                                                                                `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	JITProvisionStatus *string                                                                                `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
-	JITUpdateStatus    *string                                                                                `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
-	LoginURL           *string                                                                                `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
-	SAMLBindingType    *string                                                                                `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
-	SSOStatus          *string                                                                                `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	X509Certificates   []*SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty" type:"Repeated"`
+	// The IdP identifier.
+	//
+	// example:
+	//
+	// https://idp.example.com/entity
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The enabling status of Just-In-Time (JIT) user provisioning. A value of Enabled indicates that JIT user provisioning is enabled, and a value of Disabled indicates that it is disabled.
+	//
+	// example:
+	//
+	// Enabled
+	JITProvisionStatus *string `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
+	// The enabling status of updating user information through synchronization. A value of Enabled indicates that the update is enabled, and a value of Disabled indicates that it is disabled.
+	//
+	// example:
+	//
+	// Enabled
+	JITUpdateStatus *string `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
+	// The IdP logon URL.
+	//
+	// example:
+	//
+	// https://idp.example.com/sso/saml
+	LoginURL *string `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
+	// The SAML protocol binding type. Valid values: HTTP-Redirect and HTTP-POST.
+	//
+	// example:
+	//
+	// HTTP-Redirect
+	SAMLBindingType *string `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
+	// The enabling status of single sign-on (SSO). A value of Enabled indicates that SSO is enabled, and a value of Disabled indicates that SSO is disabled.
+	//
+	// example:
+	//
+	// Enabled
+	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	// The list of X.509 certificates.
+	X509Certificates []*SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty" type:"Repeated"`
 }
 
 func (s SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration) String() string {
@@ -150,7 +187,21 @@ func (s *SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration) Va
 }
 
 type SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates struct {
-	CertificateId   *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// cert-xxxxxxxxxxxxxxxxxxxx
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The content of the X.509 certificate in PEM format.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIIDdz...
+	//
+	// -----END CERTIFICATE-----
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 

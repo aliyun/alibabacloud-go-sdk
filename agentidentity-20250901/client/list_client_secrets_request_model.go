@@ -16,7 +16,17 @@ type iListClientSecretsRequest interface {
 }
 
 type ListClientSecretsRequest struct {
-	ClientName   *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The client name.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The user pool name.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

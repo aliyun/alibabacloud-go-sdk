@@ -14,6 +14,11 @@ type iDeleteIdentityProviderResponseBody interface {
 }
 
 type DeleteIdentityProviderResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// EE854F60-E275-534A-B102-F75346B6DA38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

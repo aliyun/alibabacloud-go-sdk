@@ -14,6 +14,11 @@ type iDeleteRoleAssignmentResponseBody interface {
 }
 
 type DeleteRoleAssignmentResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

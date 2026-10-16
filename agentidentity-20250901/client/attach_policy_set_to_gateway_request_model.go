@@ -20,10 +20,36 @@ type iAttachPolicySetToGatewayRequest interface {
 }
 
 type AttachPolicySetToGatewayRequest struct {
+	// The policy enforcement mode. Valid values: ENFORCE (blocks non-compliant requests and allows compliant requests) and LOG_ONLY (records non-compliant requests but does not block them).
+	//
+	// example:
+	//
+	// ENFORCE
 	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	GatewayArn      *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	PolicySetName   *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	// The ARN of the target gateway.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
+	GatewayArn *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	// The gateway type. Valid values:
+	//
+	// - AIGateway: Alibaba Cloud AI gateway.
+	//
+	// - AgentRunMCP: AgentRun MCP tool.
+	//
+	// Default value: AIGateway.
+	//
+	// example:
+	//
+	// AIGateway
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
+	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 
 func (s AttachPolicySetToGatewayRequest) String() string {

@@ -16,8 +16,18 @@ type iListUserPoolsRequest interface {
 }
 
 type ListUserPoolsRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return per page. Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to query the next page of data. You do not need to specify this parameter for the first call. If a NextToken is returned in the response of the previous call, specify it in the current call to obtain the next page.
+	//
+	// example:
+	//
+	// TGlzdFVzZXJQb29sczo6MTA=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListUserPoolsRequest) String() string {

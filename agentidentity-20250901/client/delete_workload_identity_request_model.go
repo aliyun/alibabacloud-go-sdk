@@ -14,6 +14,11 @@ type iDeleteWorkloadIdentityRequest interface {
 }
 
 type DeleteWorkloadIdentityRequest struct {
+	// The unique name of the workload identity.
+	//
+	// example:
+	//
+	// agent-101
 	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 

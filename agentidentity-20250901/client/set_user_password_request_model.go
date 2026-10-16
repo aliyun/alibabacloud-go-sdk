@@ -20,10 +20,30 @@ type iSetUserPasswordRequest interface {
 }
 
 type SetUserPasswordRequest struct {
-	GenerateRandomPassword *bool   `json:"GenerateRandomPassword,omitempty" xml:"GenerateRandomPassword,omitempty"`
-	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	UserName               *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserPoolName           *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// Specifies whether to generate a random password. If this parameter is set to true, the system automatically generates a random password that complies with the password policy. This parameter is mutually exclusive with Password.
+	//
+	// example:
+	//
+	// false
+	GenerateRandomPassword *bool `json:"GenerateRandomPassword,omitempty" xml:"GenerateRandomPassword,omitempty"`
+	// The password of the user. The password must comply with the password policy of the user pool and is mutually exclusive with GenerateRandomPassword.
+	//
+	// example:
+	//
+	// P@ssw0rd!2026
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s SetUserPasswordRequest) String() string {

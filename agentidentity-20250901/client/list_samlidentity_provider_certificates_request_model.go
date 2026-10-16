@@ -14,6 +14,11 @@ type iListSAMLIdentityProviderCertificatesRequest interface {
 }
 
 type ListSAMLIdentityProviderCertificatesRequest struct {
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

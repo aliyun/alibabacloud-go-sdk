@@ -18,8 +18,23 @@ type iListUserPoolClientsRequest interface {
 }
 
 type ListUserPoolClientsRequest struct {
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return per page. Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results. You do not need to specify this parameter for the first call. If a NextToken value is returned in the previous response, specify it in the current request to retrieve the next page.
+	//
+	// example:
+	//
+	// TGlzdENsaWVudHM6OjEw
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

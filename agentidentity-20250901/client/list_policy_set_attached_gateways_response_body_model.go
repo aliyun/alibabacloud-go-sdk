@@ -22,11 +22,32 @@ type iListPolicySetAttachedGatewaysResponseBody interface {
 }
 
 type ListPolicySetAttachedGatewaysResponseBody struct {
+	// The list of attached gateways.
 	AttachedGateways []*ListPolicySetAttachedGatewaysResponseBodyAttachedGateways `json:"AttachedGateways,omitempty" xml:"AttachedGateways,omitempty" type:"Repeated"`
-	MaxResults       *int32                                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string                                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount       *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The maximum number of results to return per page.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used for pagination. You do not need to specify this parameter for the first call. For subsequent calls, pass the NextToken value returned from the previous call.
+	//
+	// example:
+	//
+	// AAAAAdDWBF2
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that match the query conditions.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPolicySetAttachedGatewaysResponseBody) String() string {
@@ -96,11 +117,44 @@ func (s *ListPolicySetAttachedGatewaysResponseBody) Validate() error {
 }
 
 type ListPolicySetAttachedGatewaysResponseBodyAttachedGateways struct {
+	// The name of the policy set that is currently in effect on the gateway.
+	//
+	// example:
+	//
+	// default-policy-set
 	AttachedPolicySetName *string `json:"AttachedPolicySetName,omitempty" xml:"AttachedPolicySetName,omitempty"`
-	AttachedTime          *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	EnforcementMode       *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	GatewayArn            *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType           *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The time when the policy set was attached to the gateway, in UTC and ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	// The policy enforcement mode. Valid values:
+	//
+	// - ENFORCE: Blocks non-compliant requests and allows compliant requests.
+	//
+	// - LOG_ONLY: Only logs non-compliant requests without blocking them.
+	//
+	// example:
+	//
+	// ENFORCE
+	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
+	// The ARN of the target gateway.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
+	GatewayArn *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	// The gateway type. Valid values:
+	//
+	// - AIGateway: Alibaba Cloud AI Gateway
+	//
+	// - AgentRunMCP: AgentRun MCP tool
+	//
+	// example:
+	//
+	// AIGateway
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 }
 
 func (s ListPolicySetAttachedGatewaysResponseBodyAttachedGateways) String() string {

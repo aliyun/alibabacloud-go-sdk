@@ -16,8 +16,14 @@ type iCreateUserResponseBody interface {
 }
 
 type CreateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user information.
+	User *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -56,13 +62,60 @@ func (s *CreateUserResponseBody) Validate() error {
 }
 
 type CreateUserResponseBodyUser struct {
+	// The description of the user.
+	//
+	// example:
+	//
+	// Data Analyst
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The email address of the user.
+	//
+	// example:
+	//
+	// alice@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// - Enabled: Enabled.
+	//
+	// - Disabled: Disabled.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// - Manual: The user is manually created by calling an API operation.
+	//
+	// - JIT: The user is created through JIT.
+	//
+	// - SCIM: The user is synchronized through the System for Cross-domain Identity Management protocol.
+	//
+	// - SYNC_DINGTALK: The user is synchronized from DingTalk.
+	//
+	// example:
+	//
+	// Manual
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// user_xxxxxxxxxxxxxxxxxxxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserResponseBodyUser) String() string {

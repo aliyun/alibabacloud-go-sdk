@@ -19,6 +19,8 @@ type iUpdateUserPoolClientShrinkRequest interface {
 	GetRedirectURIsShrink() *string
 	SetRefreshTokenValidity(v string) *UpdateUserPoolClientShrinkRequest
 	GetRefreshTokenValidity() *string
+	SetScopesShrink(v string) *UpdateUserPoolClientShrinkRequest
+	GetScopesShrink() *string
 	SetSecretRequired(v bool) *UpdateUserPoolClientShrinkRequest
 	GetSecretRequired() *bool
 	SetUserPoolName(v string) *UpdateUserPoolClientShrinkRequest
@@ -26,13 +28,46 @@ type iUpdateUserPoolClientShrinkRequest interface {
 }
 
 type UpdateUserPoolClientShrinkRequest struct {
-	AccessTokenValidity  *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	ClientName           *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	EnforcePKCE          *bool   `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIsShrink   *string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty"`
+	// The validity period of the access token, in seconds. Valid values: 900 to 10800. Default value: 3600.
+	//
+	// example:
+	//
+	// 3600
+	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	// The name of the client.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// Specifies whether Proof Key for Code Exchange (PKCE) is enforced.
+	//
+	// example:
+	//
+	// true
+	EnforcePKCE *bool `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	// The new list of OAuth callback URLs. Specifying this parameter replaces all existing callback URLs.
+	RedirectURIsShrink *string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty"`
+	// The validity period of the refresh token, in seconds. Valid values: 7200 to 31536000 (90 days). Default value: 2592000 (30 days).
+	//
+	// example:
+	//
+	// 86400
 	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	SecretRequired       *bool   `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	UserPoolName         *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The scopes granted to the application. You can specify multiple scopes.
+	ScopesShrink *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
+	// Specifies whether an application secret is required. A value of true indicates a confidential client, and a value of false indicates a public client.
+	//
+	// example:
+	//
+	// true
+	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s UpdateUserPoolClientShrinkRequest) String() string {
@@ -61,6 +96,10 @@ func (s *UpdateUserPoolClientShrinkRequest) GetRedirectURIsShrink() *string {
 
 func (s *UpdateUserPoolClientShrinkRequest) GetRefreshTokenValidity() *string {
 	return s.RefreshTokenValidity
+}
+
+func (s *UpdateUserPoolClientShrinkRequest) GetScopesShrink() *string {
+	return s.ScopesShrink
 }
 
 func (s *UpdateUserPoolClientShrinkRequest) GetSecretRequired() *bool {
@@ -93,6 +132,11 @@ func (s *UpdateUserPoolClientShrinkRequest) SetRedirectURIsShrink(v string) *Upd
 
 func (s *UpdateUserPoolClientShrinkRequest) SetRefreshTokenValidity(v string) *UpdateUserPoolClientShrinkRequest {
 	s.RefreshTokenValidity = &v
+	return s
+}
+
+func (s *UpdateUserPoolClientShrinkRequest) SetScopesShrink(v string) *UpdateUserPoolClientShrinkRequest {
+	s.ScopesShrink = &v
 	return s
 }
 

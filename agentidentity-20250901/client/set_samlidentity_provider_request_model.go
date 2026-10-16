@@ -28,14 +28,66 @@ type iSetSAMLIdentityProviderRequest interface {
 }
 
 type SetSAMLIdentityProviderRequest struct {
-	EntityId           *string   `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	JITProvisionStatus *string   `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
-	JITUpdateStatus    *string   `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
-	LoginURL           *string   `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
-	SAMLBindingType    *string   `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
-	SSOStatus          *string   `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	UserPoolName       *string   `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
-	X509Certificates   []*string `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty" type:"Repeated"`
+	// The IdP identifier. This is the EntityID from the SAML metadata of the external IdP.
+	//
+	// example:
+	//
+	// https://idp.example.com/entity
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The enabling status of Just-In-Time (JIT) user synchronization and creation. Valid values:
+	//
+	// - Enabled: Enabled. If a user with the same name does not exist in the user pool during SAML logon, automatic creation is performed.
+	//
+	// - Disabled: Shutdown. If the user is not found, the logon is failed. Default value.
+	//
+	// example:
+	//
+	// Enabled
+	JITProvisionStatus *string `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
+	// The enabling status of updating user information through synchronization. Valid values:
+	//
+	// - Enabled: The update is enabled. If a user with the same name exists during SAML logon, the user information is updated based on the attributes (DisplayName and Description) passed by the IdP.
+	//
+	// - Disabled: The update is disabled. Only the logon state is updated, and user attributes are not updated. Default value.
+	//
+	// example:
+	//
+	// Enabled
+	JITUpdateStatus *string `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
+	// The IdP logon URL. When a user logs on, the browser is redirected to this URL to complete SAML authentication.
+	//
+	// example:
+	//
+	// https://idp.example.com/sso/saml
+	LoginURL *string `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
+	// The SAML protocol binding type. Valid values:
+	//
+	// - HTTP-Redirect: AuthnRequest is sent by using HTTP redirect. Default value.
+	//
+	// - HTTP-POST: AuthnRequest is sent by using HTTP POST.
+	//
+	// example:
+	//
+	// HTTP-Redirect
+	SAMLBindingType *string `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
+	// The enabling status of single sign-on (SSO). Valid values:
+	//
+	// - Enabled: SAML SSO is enabled, and users can log on through an external IdP.
+	//
+	// - Disabled: SAML SSO is disabled, and users cannot log on through the IdP. Default value.
+	//
+	// example:
+	//
+	// Enabled
+	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The list of X.509 certificates in PEM format. If you specify this parameter, all existing certificates are replaced.
+	X509Certificates []*string `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty" type:"Repeated"`
 }
 
 func (s SetSAMLIdentityProviderRequest) String() string {

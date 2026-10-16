@@ -16,8 +16,14 @@ type iCreatePolicySetResponseBody interface {
 }
 
 type CreatePolicySetResponseBody struct {
+	// The policy set details.
 	PolicySet *CreatePolicySetResponseBodyPolicySet `json:"PolicySet,omitempty" xml:"PolicySet,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePolicySetResponseBody) String() string {
@@ -56,10 +62,36 @@ func (s *CreatePolicySetResponseBody) Validate() error {
 }
 
 type CreatePolicySetResponseBodyPolicySet struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicySetArn  *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
+	// The creation time in UTC ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ARN of the policy set.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set
+	PolicySetArn *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	// The source platform.
+	//
+	// example:
+	//
+	// Manuel
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
 }
 
 func (s CreatePolicySetResponseBodyPolicySet) String() string {
@@ -86,6 +118,10 @@ func (s *CreatePolicySetResponseBodyPolicySet) GetPolicySetName() *string {
 	return s.PolicySetName
 }
 
+func (s *CreatePolicySetResponseBodyPolicySet) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *CreatePolicySetResponseBodyPolicySet) SetCreateTime(v string) *CreatePolicySetResponseBodyPolicySet {
 	s.CreateTime = &v
 	return s
@@ -103,6 +139,11 @@ func (s *CreatePolicySetResponseBodyPolicySet) SetPolicySetArn(v string) *Create
 
 func (s *CreatePolicySetResponseBodyPolicySet) SetPolicySetName(v string) *CreatePolicySetResponseBodyPolicySet {
 	s.PolicySetName = &v
+	return s
+}
+
+func (s *CreatePolicySetResponseBodyPolicySet) SetSourcePlatform(v string) *CreatePolicySetResponseBodyPolicySet {
+	s.SourcePlatform = &v
 	return s
 }
 

@@ -22,10 +22,31 @@ type iListWorkloadIdentitiesResponseBody interface {
 }
 
 type ListWorkloadIdentitiesResponseBody struct {
-	MaxResults         *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount         *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The maximum number of results to return per page.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token used to retrieve the next page of results. This field is not returned if no more results are available.
+	//
+	// example:
+	//
+	// AAAAAcCoknY19uiBwPrAe1W7XMikkA6+rCQddIGHccphiDPypD8zCxQkHV2pg8CkZvyRKg==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 173C69C9-9C07-5B25-9477-603A33E5DA32
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of workload identities.
+	//
+	// example:
+	//
+	// 33
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of workload identities.
 	WorkloadIdentities []*ListWorkloadIdentitiesResponseBodyWorkloadIdentities `json:"WorkloadIdentities,omitempty" xml:"WorkloadIdentities,omitempty" type:"Repeated"`
 }
 
@@ -96,18 +117,70 @@ func (s *ListWorkloadIdentitiesResponseBody) Validate() error {
 }
 
 type ListWorkloadIdentitiesResponseBodyWorkloadIdentities struct {
-	AllowedConsentCallbackURLs      []*string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty" type:"Repeated"`
+	// The whitelist of consent authorization callback URLs for the workload identity. This whitelist restricts the allowed callback addresses in the offline delegation (OfflineAccess) authorization flow.
+	AllowedConsentCallbackURLs []*string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty" type:"Repeated"`
+	// The list of allowed OAuth2 return URLs.
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
-	CreateTime                      *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description                     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	IdentityProviderName            *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	RoleArn                         *string   `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	SessionBindingEnabled           *bool     `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
-	SourceAgentArn                  *string   `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
-	SourcePlatform                  *string   `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	UpdateTime                      *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	WorkloadIdentityArn             *string   `json:"WorkloadIdentityArn,omitempty" xml:"WorkloadIdentityArn,omitempty"`
-	WorkloadIdentityName            *string   `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-12-18T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example agent
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configured identity provider.
+	//
+	// example:
+	//
+	// Operations Center single sign-on
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::1953507478506681:role/test-rrsa-cb5ca90a20f854671adbac6ed4559a654
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// Specifies whether session binding is enabled.
+	//
+	// example:
+	//
+	// false
+	SessionBindingEnabled *bool `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	// The ARN of the source agent.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:workloadidentity/my-identity
+	SourceAgentArn *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
+	// The creation source.
+	//
+	// example:
+	//
+	// Manual
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2025-12-18T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ARN of the workload identity.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:workloadidentitydirectory/default/workloadidentity/agent-101
+	WorkloadIdentityArn *string `json:"WorkloadIdentityArn,omitempty" xml:"WorkloadIdentityArn,omitempty"`
+	// The unique name of the workload identity.
+	//
+	// example:
+	//
+	// agent-101
+	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 
 func (s ListWorkloadIdentitiesResponseBodyWorkloadIdentities) String() string {

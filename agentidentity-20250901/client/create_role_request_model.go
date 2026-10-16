@@ -18,8 +18,23 @@ type iCreateRoleRequest interface {
 }
 
 type CreateRoleRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The description of the role. The description must be 0 to 128 characters in length.
+	//
+	// example:
+	//
+	// Data analyst role
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the role. The name must be unique within the user pool and must be 3 to 64 characters in length.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

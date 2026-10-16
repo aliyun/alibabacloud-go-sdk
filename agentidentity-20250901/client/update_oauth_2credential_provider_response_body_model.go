@@ -14,6 +14,11 @@ type iUpdateOAuth2CredentialProviderResponseBody interface {
 }
 
 type UpdateOAuth2CredentialProviderResponseBody struct {
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// D9A9DC39-61BB-53FD-9ADC-B14884F21038
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

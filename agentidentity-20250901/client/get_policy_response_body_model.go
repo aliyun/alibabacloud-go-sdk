@@ -16,8 +16,14 @@ type iGetPolicyResponseBody interface {
 }
 
 type GetPolicyResponseBody struct {
-	Policy    *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The policy details.
+	Policy *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPolicyResponseBody) String() string {
@@ -56,13 +62,44 @@ func (s *GetPolicyResponseBody) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicy struct {
-	CreateTime    *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Definition    *Definition `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description   *string     `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyArn     *string     `json:"PolicyArn,omitempty" xml:"PolicyArn,omitempty"`
-	PolicyName    *string     `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicySetName *string     `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
-	UpdateTime    *string     `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The creation time in UTC ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The policy definition content.
+	Definition *Definition `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ARN of the policy.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set/policy/rate-limit-policy
+	PolicyArn *string `json:"PolicyArn,omitempty" xml:"PolicyArn,omitempty"`
+	// The name of the policy. The name must be unique within the associated policy set.
+	//
+	// example:
+	//
+	// rate-limit-policy
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
+	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	// The update time in UTC ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetPolicyResponseBodyPolicy) String() string {

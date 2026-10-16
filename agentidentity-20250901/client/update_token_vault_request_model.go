@@ -18,8 +18,23 @@ type iUpdateTokenVaultRequest interface {
 }
 
 type UpdateTokenVaultRequest struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleArn        *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ARN of the RAM role used to grant the AgentIdentity service access to other cloud resources such as KMS.
+	//
+	// example:
+	//
+	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The name of the token vault. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default
 	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 

@@ -16,8 +16,14 @@ type iGetUserPoolResponseBody interface {
 }
 
 type GetUserPoolResponseBody struct {
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserPool  *GetUserPoolResponseBodyUserPool `json:"UserPool,omitempty" xml:"UserPool,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user pool information.
+	UserPool *GetUserPoolResponseBodyUserPool `json:"UserPool,omitempty" xml:"UserPool,omitempty" type:"Struct"`
 }
 
 func (s GetUserPoolResponseBody) String() string {
@@ -56,14 +62,54 @@ func (s *GetUserPoolResponseBody) Validate() error {
 }
 
 type GetUserPoolResponseBodyUserPool struct {
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user pool.
+	//
+	// example:
+	//
+	// Sample user pool
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The discovery URL for the OpenID Connect (OIDC) protocol.
+	//
+	// example:
+	//
+	// https://signin-cn-beijing.aliyunagentid.com/up_7b6908bcb9ba4c****c8e187/.well-known/openid-configuration
 	OIDCDiscoveryURL *string `json:"OIDCDiscoveryURL,omitempty" xml:"OIDCDiscoveryURL,omitempty"`
-	SigninBaseURL    *string `json:"SigninBaseURL,omitempty" xml:"SigninBaseURL,omitempty"`
-	SourcePlatform   *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserPoolId       *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
-	UserPoolName     *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The base URL for logon.
+	//
+	// example:
+	//
+	// https://pre-signin-cn-hangzhou.aliyunagentid.com/up_e14d889*****716841
+	SigninBaseURL *string `json:"SigninBaseURL,omitempty" xml:"SigninBaseURL,omitempty"`
+	// The source platform.
+	//
+	// example:
+	//
+	// Manual
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// The update time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user pool.
+	//
+	// example:
+	//
+	// up_xxxxxxxxxxxxxxxxxxxx
+	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s GetUserPoolResponseBodyUserPool) String() string {

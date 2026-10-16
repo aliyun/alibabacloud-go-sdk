@@ -20,10 +20,30 @@ type iDeleteClientSecretRequest interface {
 }
 
 type DeleteClientSecretRequest struct {
-	ClientId       *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientName     *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The client ID. Specify either this parameter or ClientName. If both are specified, ClientId takes precedence.
+	//
+	// example:
+	//
+	// client-xxxxxxxxxxxxxxxxxxxx
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client name. Specify either this parameter or ClientId.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The key ID of the client secret to delete.
+	//
+	// example:
+	//
+	// secret-xxxxxxxxxxxxxxxxxxxx
 	ClientSecretId *string `json:"ClientSecretId,omitempty" xml:"ClientSecretId,omitempty"`
-	UserPoolName   *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The user pool name.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s DeleteClientSecretRequest) String() string {

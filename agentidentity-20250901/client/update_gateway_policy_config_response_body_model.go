@@ -16,8 +16,14 @@ type iUpdateGatewayPolicyConfigResponseBody interface {
 }
 
 type UpdateGatewayPolicyConfigResponseBody struct {
+	// The gateway policy configuration.
 	GatewayPolicyConfig *UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig `json:"GatewayPolicyConfig,omitempty" xml:"GatewayPolicyConfig,omitempty" type:"Struct"`
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateGatewayPolicyConfigResponseBody) String() string {
@@ -56,8 +62,22 @@ func (s *UpdateGatewayPolicyConfigResponseBody) Validate() error {
 }
 
 type UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig struct {
+	// The policy enforcement mode. Valid values:
+	//
+	// - ENFORCE: Intercepts non-compliant requests and allows compliant requests.
+	//
+	// - LOG_ONLY: Only logs non-compliant requests without intercepting them.
+	//
+	// example:
+	//
+	// ENFORCE
 	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	PolicySetArn    *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
+	// The ARN of the policy set.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set
+	PolicySetArn *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
 }
 
 func (s UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig) String() string {

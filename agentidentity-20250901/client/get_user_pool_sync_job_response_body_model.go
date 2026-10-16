@@ -16,7 +16,13 @@ type iGetUserPoolSyncJobResponseBody interface {
 }
 
 type GetUserPoolSyncJobResponseBody struct {
-	RequestId          *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The synchronization task information.
 	SynchronizationJob *GetUserPoolSyncJobResponseBodySynchronizationJob `json:"SynchronizationJob,omitempty" xml:"SynchronizationJob,omitempty" type:"Struct"`
 }
 
@@ -56,14 +62,60 @@ func (s *GetUserPoolSyncJobResponseBody) Validate() error {
 }
 
 type GetUserPoolSyncJobResponseBodySynchronizationJob struct {
-	EndTime              *string                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ErrorMessage         *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	IdentityProviderType *string                                                     `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	JobSummary           *GetUserPoolSyncJobResponseBodySynchronizationJobJobSummary `json:"JobSummary,omitempty" xml:"JobSummary,omitempty" type:"Struct"`
-	StartTime            *string                                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status               *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	SynchronizationJobId *string                                                     `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	TriggerType          *string                                                     `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The end time of the synchronization.
+	//
+	// example:
+	//
+	// 2026-06-25T10:13:35Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// null
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The type of the identity provider.
+	//
+	// example:
+	//
+	// DingTalk
+	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
+	// The synchronization result statistics information.
+	JobSummary *GetUserPoolSyncJobResponseBodySynchronizationJobJobSummary `json:"JobSummary,omitempty" xml:"JobSummary,omitempty" type:"Struct"`
+	// The start time of the synchronization.
+	//
+	// example:
+	//
+	// 2026-06-25T10:13:35Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the synchronization task. Valid values:
+	//
+	// - Pending: The initial state.
+	//
+	// - Running: The task is running.
+	//
+	// - Failed: The task failed.
+	//
+	// - PartialSuccess: The task partially succeeded.
+	//
+	// - Success: The task succeeded.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// syncjob_8d713b14a63b4a559753492ab51c31f3
+	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+	// The trigger type of the synchronization task. Valid values: Manual (manually triggered). Only manual triggering is supported.
+	//
+	// example:
+	//
+	// Manual
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
 func (s GetUserPoolSyncJobResponseBodySynchronizationJob) String() string {
@@ -156,9 +208,29 @@ func (s *GetUserPoolSyncJobResponseBodySynchronizationJob) Validate() error {
 }
 
 type GetUserPoolSyncJobResponseBodySynchronizationJobJobSummary struct {
+	// The statistics of created users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
+	//
+	// example:
+	//
+	// {"total":24,"success":24,"failed":0,"skipped":0}
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The statistics of deleted users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
+	//
+	// example:
+	//
+	// {"total":0,"success":0,"failed":0,"skipped":0}
 	Deleted *string `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Same    *string `json:"Same,omitempty" xml:"Same,omitempty"`
+	// The statistics of unchanged users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
+	//
+	// example:
+	//
+	// {"total":0,"success":0,"failed":0,"skipped":0}
+	Same *string `json:"Same,omitempty" xml:"Same,omitempty"`
+	// The statistics of updated users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
+	//
+	// example:
+	//
+	// {"total":0,"success":0,"failed":0,"skipped":0}
 	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 }
 

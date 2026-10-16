@@ -18,8 +18,29 @@ type iDetachPolicySetFromGatewayRequest interface {
 }
 
 type DetachPolicySetFromGatewayRequest struct {
-	GatewayArn    *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType   *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The ARN of the target gateway.
+	//
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
+	GatewayArn *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	// The gateway type. Valid values:
+	//
+	// - AIGateway: Alibaba Cloud AI Gateway.
+	//
+	// - AgentRunMCP: AgentRun MCP tool.
+	//
+	// Default value: AIGateway.
+	//
+	// example:
+	//
+	// AIGateway
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The name of the policy set. The name must be unique within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

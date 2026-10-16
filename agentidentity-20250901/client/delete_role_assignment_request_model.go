@@ -20,10 +20,30 @@ type iDeleteRoleAssignmentRequest interface {
 }
 
 type DeleteRoleAssignmentRequest struct {
+	// The name of the identity. If PrincipalType is set to User, specify the username.
+	//
+	// example:
+	//
+	// alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The identity type. Currently, only User is supported.
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	RoleName      *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	UserPoolName  *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The name of the role to be removed.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s DeleteRoleAssignmentRequest) String() string {

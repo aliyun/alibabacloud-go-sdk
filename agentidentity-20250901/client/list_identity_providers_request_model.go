@@ -16,8 +16,14 @@ type iListIdentityProvidersRequest interface {
 }
 
 type ListIdentityProvidersRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6m6UfcO+UDmLjng/InRW9IU
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListIdentityProvidersRequest) String() string {

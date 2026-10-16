@@ -22,11 +22,32 @@ type iListUserPoolsResponseBody interface {
 }
 
 type ListUserPoolsResponseBody struct {
-	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserPools  []*ListUserPoolsResponseBodyUserPools `json:"UserPools,omitempty" xml:"UserPools,omitempty" type:"Repeated"`
+	// The maximum number of entries returned for the current request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to query the next page of data. An empty value indicates that no more data is available.
+	//
+	// example:
+	//
+	// TGlzdFVzZXJQb29sczo6MjA=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of user pools that meet the conditions.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of user pools.
+	UserPools []*ListUserPoolsResponseBodyUserPools `json:"UserPools,omitempty" xml:"UserPools,omitempty" type:"Repeated"`
 }
 
 func (s ListUserPoolsResponseBody) String() string {
@@ -96,14 +117,54 @@ func (s *ListUserPoolsResponseBody) Validate() error {
 }
 
 type ListUserPoolsResponseBodyUserPools struct {
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user pool.
+	//
+	// example:
+	//
+	// User pool example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The OpenID Connect (OIDC) discovery URL.
+	//
+	// example:
+	//
+	// https://signin-cn-beijing.aliyunagentid.com/up_7b6908bcb9ba4c****c8e187/.well-known/openid-configuration
 	OIDCDiscoveryURL *string `json:"OIDCDiscoveryURL,omitempty" xml:"OIDCDiscoveryURL,omitempty"`
-	SigninBaseURL    *string `json:"SigninBaseURL,omitempty" xml:"SigninBaseURL,omitempty"`
-	SourcePlatform   *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserPoolId       *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
-	UserPoolName     *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The base sign-in URL.
+	//
+	// example:
+	//
+	// https://pre-signin-cn-hangzhou.aliyunagentid.com/up_e14d889*****716841
+	SigninBaseURL *string `json:"SigninBaseURL,omitempty" xml:"SigninBaseURL,omitempty"`
+	// The creation source.
+	//
+	// example:
+	//
+	// Manual
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// The update time in ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2026-05-07T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user pool.
+	//
+	// example:
+	//
+	// up-xxxxxxxxxxxxxxxxxxxx
+	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s ListUserPoolsResponseBodyUserPools) String() string {

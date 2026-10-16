@@ -16,7 +16,13 @@ type iSetSpecificIdentityProviderResponseBody interface {
 }
 
 type SetSpecificIdentityProviderResponseBody struct {
-	RequestId                             *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configuration information of the identity provider.
 	SpecificIdentityProviderConfiguration *SetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration `json:"SpecificIdentityProviderConfiguration,omitempty" xml:"SpecificIdentityProviderConfiguration,omitempty" type:"Struct"`
 }
 
@@ -56,9 +62,24 @@ func (s *SetSpecificIdentityProviderResponseBody) Validate() error {
 }
 
 type SetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration struct {
-	IDPMetadata          *string `json:"IDPMetadata,omitempty" xml:"IDPMetadata,omitempty"`
+	// The IdP metadata content.
+	//
+	// example:
+	//
+	// {"corpId":"dingxxxxxxxxxx","appKey":"dingxxxxxxxxxx","syncCallbackStatus":"Enabled"}
+	IDPMetadata *string `json:"IDPMetadata,omitempty" xml:"IDPMetadata,omitempty"`
+	// The type of the identity provider.
+	//
+	// example:
+	//
+	// DingTalk
 	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	SSOStatus            *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	// The SSO enabling status.
+	//
+	// example:
+	//
+	// Enabled
+	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
 }
 
 func (s SetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration) String() string {

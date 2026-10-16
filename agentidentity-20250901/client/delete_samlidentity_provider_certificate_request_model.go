@@ -16,8 +16,18 @@ type iDeleteSAMLIdentityProviderCertificateRequest interface {
 }
 
 type DeleteSAMLIdentityProviderCertificateRequest struct {
+	// The ID of the certificate to delete.
+	//
+	// example:
+	//
+	// xxxxxxxxxxxxxxxxxxxx
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	UserPoolName  *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
+	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s DeleteSAMLIdentityProviderCertificateRequest) String() string {

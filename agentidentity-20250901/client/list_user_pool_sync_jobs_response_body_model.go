@@ -22,11 +22,23 @@ type iListUserPoolSyncJobsResponseBody interface {
 }
 
 type ListUserPoolSyncJobsResponseBody struct {
-	MaxResults          *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken           *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SynchronizationJobs []*ListUserPoolSyncJobsResponseBodySynchronizationJobs `json:"SynchronizationJobs,omitempty" xml:"SynchronizationJobs,omitempty" type:"Repeated"`
-	TotalCount          *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListUserPoolSyncJobsResponseBody) String() string {
@@ -96,14 +108,35 @@ func (s *ListUserPoolSyncJobsResponseBody) Validate() error {
 }
 
 type ListUserPoolSyncJobsResponseBodySynchronizationJobs struct {
-	EndTime              *string                                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ErrorMessage         *string                                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 2025-12-15T01:50:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// null
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// DingTalk
 	IdentityProviderType *string                                                        `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
 	JobSummary           *ListUserPoolSyncJobsResponseBodySynchronizationJobsJobSummary `json:"JobSummary,omitempty" xml:"JobSummary,omitempty" type:"Struct"`
-	StartTime            *string                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status               *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	SynchronizationJobId *string                                                        `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	TriggerType          *string                                                        `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 2026-01-13T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// syncjob_8d713b14a63b4a559753492ab51c31f3
+	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+	// example:
+	//
+	// Manual
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
 func (s ListUserPoolSyncJobsResponseBodySynchronizationJobs) String() string {
@@ -196,9 +229,21 @@ func (s *ListUserPoolSyncJobsResponseBodySynchronizationJobs) Validate() error {
 }
 
 type ListUserPoolSyncJobsResponseBodySynchronizationJobsJobSummary struct {
+	// example:
+	//
+	// {"total":0,"success":0,"failed":0,"skipped":0}
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// example:
+	//
+	// {"total":0,"success":0,"failed":0,"skipped":0}
 	Deleted *string `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Same    *string `json:"Same,omitempty" xml:"Same,omitempty"`
+	// example:
+	//
+	// {"total":0,"success":0,"failed":0,"skipped":0}
+	Same *string `json:"Same,omitempty" xml:"Same,omitempty"`
+	// example:
+	//
+	// {"total":0,"success":0,"failed":0,"skipped":0}
 	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 }
 

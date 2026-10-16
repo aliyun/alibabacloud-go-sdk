@@ -16,7 +16,17 @@ type iGetRoleRequest interface {
 }
 
 type GetRoleRequest struct {
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the role.
+	//
+	// example:
+	//
+	// Analyst
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

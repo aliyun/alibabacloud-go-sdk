@@ -18,8 +18,23 @@ type iCreateClientSecretRequest interface {
 }
 
 type CreateClientSecretRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientName   *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The ID of the client. If you specify ClientId, you do not need to specify UserPoolName. Specify either ClientName or ClientId. If both are specified, ClientId takes precedence.
+	//
+	// example:
+	//
+	// client_xxxxxxxxxxxxxxxxxxxx
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The name of the client. Specify either ClientName or ClientId.
+	//
+	// example:
+	//
+	// my-web-app
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

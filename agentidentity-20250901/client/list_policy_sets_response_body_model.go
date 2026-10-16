@@ -22,11 +22,23 @@ type iListPolicySetsResponseBody interface {
 }
 
 type ListPolicySetsResponseBody struct {
-	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2
 	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PolicySets []*ListPolicySetsResponseBodyPolicySets `json:"PolicySets,omitempty" xml:"PolicySets,omitempty" type:"Repeated"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPolicySetsResponseBody) String() string {
@@ -96,11 +108,30 @@ func (s *ListPolicySetsResponseBody) Validate() error {
 }
 
 type ListPolicySetsResponseBodyPolicySets struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicySetArn  *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set
+	PolicySetArn *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
+	// example:
+	//
+	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// Manuel
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// example:
+	//
+	// 2026-05-08T06:19:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListPolicySetsResponseBodyPolicySets) String() string {
@@ -127,6 +158,10 @@ func (s *ListPolicySetsResponseBodyPolicySets) GetPolicySetName() *string {
 	return s.PolicySetName
 }
 
+func (s *ListPolicySetsResponseBodyPolicySets) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *ListPolicySetsResponseBodyPolicySets) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -148,6 +183,11 @@ func (s *ListPolicySetsResponseBodyPolicySets) SetPolicySetArn(v string) *ListPo
 
 func (s *ListPolicySetsResponseBodyPolicySets) SetPolicySetName(v string) *ListPolicySetsResponseBodyPolicySets {
 	s.PolicySetName = &v
+	return s
+}
+
+func (s *ListPolicySetsResponseBodyPolicySets) SetSourcePlatform(v string) *ListPolicySetsResponseBodyPolicySets {
+	s.SourcePlatform = &v
 	return s
 }
 

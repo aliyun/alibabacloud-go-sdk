@@ -16,8 +16,18 @@ type iSetUserPasswordResponseBody interface {
 }
 
 type SetUserPasswordResponseBody struct {
+	// The system-generated random password returned when GenerateRandomPassword is set to true.
+	//
+	// example:
+	//
+	// Xk9mP2vL5nQ8
 	RandomPassword *string `json:"RandomPassword,omitempty" xml:"RandomPassword,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AABD6E03-4B3A-5687-88FF-72232670ED0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetUserPasswordResponseBody) String() string {

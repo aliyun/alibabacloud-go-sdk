@@ -20,10 +20,30 @@ type iUpdateAPIKeyCredentialProviderRequest interface {
 }
 
 type UpdateAPIKeyCredentialProviderRequest struct {
-	APIKey                       *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
+	// The new API key value.
+	//
+	// example:
+	//
+	// new example api key
+	APIKey *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
+	// The name of the credential provider to update.
+	//
+	// example:
+	//
+	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	// The new description of the credential provider.
+	//
+	// example:
+	//
+	// new example provider
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the token vault. Default value: default.
+	//
+	// example:
+	//
+	// default
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s UpdateAPIKeyCredentialProviderRequest) String() string {

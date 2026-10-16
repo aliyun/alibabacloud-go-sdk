@@ -24,11 +24,45 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The description of the user. It must be 0 to 256 characters in length.
+	//
+	// example:
+	//
+	// Data Analyst
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user. It must be 0 to 128 characters in length.
+	//
+	// example:
+	//
+	// Alice
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the user.
+	//
+	// example:
+	//
+	// alice@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// - Enabled: Enabled.
+	//
+	// - Disabled: Disabled.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The username. It can contain letters, digits, underscores (_), periods (.), and hyphens (-), and must be 3 to 128 characters in length.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the user pool.
+	//
+	// example:
+	//
+	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
