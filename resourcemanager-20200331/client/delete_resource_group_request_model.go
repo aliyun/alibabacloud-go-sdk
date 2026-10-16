@@ -14,9 +14,9 @@ type iDeleteResourceGroupRequest interface {
 }
 
 type DeleteResourceGroupRequest struct {
-	// The ID of the resource group.
+	// The resource group ID.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID.
+	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query the resource group ID.
 	//
 	// This parameter is required.
 	//

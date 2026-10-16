@@ -14,7 +14,7 @@ type iCancelHandshakeRequest interface {
 }
 
 type CancelHandshakeRequest struct {
-	// The ID of the invitation.
+	// The handshake ID.
 	//
 	// This parameter is required.
 	//

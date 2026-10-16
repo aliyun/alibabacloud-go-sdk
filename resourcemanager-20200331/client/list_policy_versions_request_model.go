@@ -16,9 +16,9 @@ type iListPolicyVersionsRequest interface {
 }
 
 type ListPolicyVersionsRequest struct {
-	// The name of the permission policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type ListPolicyVersionsRequest struct {
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. Valid values:
+	// The type of the access policy. Valid values:
 	//
-	// 	- Custom
+	// - Custom: custom policy.
 	//
-	// 	- System
+	// - System: system policy.
 	//
 	// This parameter is required.
 	//

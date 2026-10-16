@@ -16,7 +16,7 @@ type iDeregisterDelegatedAdministratorRequest interface {
 }
 
 type DeregisterDelegatedAdministratorRequest struct {
-	// The ID of the member in the resource directory.
+	// The UID of a member account in the resource directory.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeregisterDelegatedAdministratorRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The identifier of the trusted service.
 	//
-	// For more information, see the `Trusted service identifier` column in [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+	// For more information, see the `Trusted Service Identifier` column in [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
 	//
 	// This parameter is required.
 	//

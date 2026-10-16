@@ -16,7 +16,7 @@ type iDeleteServiceLinkedRoleResponseBody interface {
 }
 
 type DeleteServiceLinkedRoleResponseBody struct {
-	// The ID of the deletion task.
+	// The deletion task ID.
 	//
 	// example:
 	//

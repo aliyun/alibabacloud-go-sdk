@@ -16,13 +16,13 @@ type iGetResourceGroupResponseBody interface {
 }
 
 type GetResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2D69A58F-345C-4FDE-88E4-BF5189484043
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource group.
+	// The resource group information.
 	ResourceGroup *GetResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *GetResourceGroupResponseBody) Validate() error {
 }
 
 type GetResourceGroupResponseBodyResourceGroup struct {
-	// The ID of the Alibaba Cloud account to which the resource group belongs.
+	// The Alibaba Cloud account ID to which the resource group belongs.
 	//
 	// example:
 	//
 	// 123456789****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when the resource group was created. The time is displayed in UTC.
+	// The time when the resource group was created (UTC).
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// my-project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-9gLOoK****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The identifier of the resource group.
+	// The unique identifier of the resource group.
 	//
 	// example:
 	//
@@ -95,11 +95,11 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	RegionStatuses *GetResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	// The status of the resource group. Valid values:
 	//
-	// 	- Creating: The resource group is being created.
+	// - Creating: The resource group is being created.
 	//
-	// 	- OK: The resource group is created.
+	// - OK: The resource group is created.
 	//
-	// 	- PendingDelete: The resource group is waiting to be deleted.
+	// - PendingDelete: The resource group is waiting to be deleted.
 	//
 	// example:
 	//

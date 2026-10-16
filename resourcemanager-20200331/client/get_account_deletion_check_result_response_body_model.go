@@ -16,9 +16,9 @@ type iGetAccountDeletionCheckResultResponseBody interface {
 }
 
 type GetAccountDeletionCheckResultResponseBody struct {
-	// The result of the deletion check for the member.
+	// The result of the member deletion check.
 	AccountDeletionCheckResultInfo *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo `json:"AccountDeletionCheckResultInfo,omitempty" xml:"AccountDeletionCheckResultInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,29 +62,29 @@ func (s *GetAccountDeletionCheckResultResponseBody) Validate() error {
 }
 
 type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo struct {
-	// The check items that you can choose to ignore for the member deletion.
+	// The check items that you can choose to abandon and proceed with the member deletion.
 	//
-	// >  This parameter may be returned if the value of AllowDelete is true.
+	// > This parameter may be returned when AllowDelete is set to true.
 	AbandonableChecks []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks `json:"AbandonableChecks,omitempty" xml:"AbandonableChecks,omitempty" type:"Repeated"`
-	// Indicates whether the member can be deleted. Valid values:
+	// Indicates whether the member account can be deleted. Valid values:
 	//
-	// 	- true: The member can be deleted.
+	// - true: The member account can be deleted.
 	//
-	// 	- false: The member cannot be deleted.
+	// - false: The member account cannot be deleted.
 	//
 	// example:
 	//
 	// false
 	AllowDelete *string `json:"AllowDelete,omitempty" xml:"AllowDelete,omitempty"`
-	// The reasons why the member cannot be deleted.
+	// The reasons why the member account cannot be deleted.
 	//
-	// >  This parameter is returned only if the value of AllowDelete is false.
+	// > This parameter is returned only when AllowDelete is set to false.
 	NotAllowReason []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason `json:"NotAllowReason,omitempty" xml:"NotAllowReason,omitempty" type:"Repeated"`
-	// The status of the check. Valid values:
+	// The check status. Valid values:
 	//
-	// 	- PreCheckComplete: The check is complete.
+	// - PreCheckComplete: The check is complete.
 	//
-	// 	- PreChecking: The check is in progress.
+	// - PreChecking: The check is in progress.
 	//
 	// example:
 	//
@@ -165,17 +165,17 @@ type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAban
 	//
 	// NON_SP_cs
 	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The name of the cloud service to which the check item belongs.
+	// The service name of the cloud service to which the check item belongs.
 	//
 	// example:
 	//
-	// Container Service for Kubernetes
+	// Container Service
 	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	// The description of the check item.
 	//
 	// example:
 	//
-	// An instance of a cloud service is running within the member. Submit a ticket to contact Alibaba Cloud technical support.
+	// Cloud service instances are running. Submit a ticket to contact customer service for assistance
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -225,7 +225,7 @@ type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotA
 	//
 	// NON_SP_efc
 	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The name of the cloud service to which the check item belongs.
+	// The service name of the cloud service to which the check item belongs.
 	//
 	// example:
 	//

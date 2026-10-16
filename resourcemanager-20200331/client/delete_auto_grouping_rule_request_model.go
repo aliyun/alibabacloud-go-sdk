@@ -14,7 +14,7 @@ type iDeleteAutoGroupingRuleRequest interface {
 }
 
 type DeleteAutoGroupingRuleRequest struct {
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// This parameter is required.
 	//

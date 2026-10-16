@@ -16,7 +16,7 @@ type iDetachControlPolicyRequest interface {
 }
 
 type DetachControlPolicyRequest struct {
-	// The ID of the access control policy.
+	// The ID of the control policy.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,13 @@ type DetachControlPolicyRequest struct {
 	//
 	// cp-jExXAqIYkwHN****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+	// The ID of the target node. Valid values:
 	//
-	// 	- Root folder
+	// - Root ID: detaches the control policy from the Root resource folder.
 	//
-	// 	- Subfolders of the Root folder
+	// - Resource folder ID: detaches the control policy from a resource folder.
 	//
-	// 	- Members
+	// - Member ID: detaches the control policy from a member.
 	//
 	// This parameter is required.
 	//

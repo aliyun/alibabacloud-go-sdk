@@ -16,9 +16,9 @@ type iUpdateAccountResponseBody interface {
 }
 
 type UpdateAccountResponseBody struct {
-	// The information of the member.
+	// The member information.
 	Account *UpdateAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *UpdateAccountResponseBody) Validate() error {
 }
 
 type UpdateAccountResponseBodyAccount struct {
-	// The ID of the Alibaba Cloud account that corresponds to the member.
+	// The ID of the member.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the Alibaba Cloud account that corresponds to the member.
+	// The name of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ecs-manager@aliyun.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The display name of the member.
+	// The name of the member.
 	//
 	// example:
 	//
@@ -86,23 +86,23 @@ type UpdateAccountResponseBodyAccount struct {
 	//
 	// fd-bVaRIG****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
+	// The method used by the member to join the resource directory. Valid values:
 	//
-	// 	- invited: The member is invited to join the resource directory.
+	// - invited: invited.
 	//
-	// 	- created: The member is directly created in the resource directory.
+	// - created: created.
 	//
 	// example:
 	//
 	// created
 	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member joined the resource directory. The time is displayed in UTC.
+	// The time when the member joined the resource directory (UTC).
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The time when the member was modified. The time is displayed in UTC.
+	// The time when the member was last modified (UTC).
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type UpdateAccountResponseBodyAccount struct {
 	//
 	// rd-k3****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the member. Valid values:
+	// The join status of the member. Valid values:
 	//
-	// 	- CreateSuccess: The member is created.
+	// - CreateSuccess: Created.
 	//
-	// 	- InviteSuccess: The member accepts the invitation.
+	// - InviteSuccess: Invited.
 	//
-	// 	- Removed: The member is removed.
+	// - Removed: Removed.
 	//
-	// 	- SwitchSuccess: The type of the member is switched.
+	// - SwitchSuccess: Switched.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ type UpdateAccountResponseBodyAccount struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the member. Valid values:
 	//
-	// 	- CloudAccount: cloud account
+	// - CloudAccount: cloud account.
 	//
-	// 	- ResourceAccount: resource account
+	// - ResourceAccount: resource account.
 	//
 	// example:
 	//

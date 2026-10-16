@@ -16,7 +16,7 @@ type iCreatePolicyVersionResponseBody interface {
 }
 
 type CreatePolicyVersionResponseBody struct {
-	// The information about the policy version.
+	// The access policy version information.
 	PolicyVersion *CreatePolicyVersionResponseBodyPolicyVersion `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *CreatePolicyVersionResponseBody) Validate() error {
 }
 
 type CreatePolicyVersionResponseBodyPolicyVersion struct {
-	// The time when the policy version was created.
+	// The time when the access policy version was created. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//
-	// 2015-01-23T12:33:18
+	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether the policy version is the default version.
+	// Indicates whether the version is the default version of the access policy.
 	//
 	// example:
 	//
 	// false
 	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	// The ID of the policy version.
+	// The ID of the access policy version.
 	//
 	// example:
 	//

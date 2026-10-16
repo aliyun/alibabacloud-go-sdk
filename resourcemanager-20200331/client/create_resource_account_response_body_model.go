@@ -16,7 +16,7 @@ type iCreateResourceAccountResponseBody interface {
 }
 
 type CreateResourceAccountResponseBody struct {
-	// The information about the member.
+	// The member information.
 	Account *CreateResourceAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,7 +68,7 @@ type CreateResourceAccountResponseBodyAccount struct {
 	//
 	// 112730938585****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The Alibaba Cloud account ID of the member.
+	// The name of the account.
 	//
 	// example:
 	//
@@ -86,23 +86,23 @@ type CreateResourceAccountResponseBodyAccount struct {
 	//
 	// fd-r23M55****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
+	// The method used by the member to join the resource directory. Valid values:
 	//
-	// 	- invited: The member is invited to join the resource directory.
+	// - invited: invited.
 	//
-	// 	- created: The member is directly created in the resource directory.
+	// - created: created.
 	//
 	// example:
 	//
 	// created
 	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member joined the resource directory. The time is displayed in UTC.
+	// The time when the member joined the resource directory (UTC).
 	//
 	// example:
 	//
 	// 2020-12-31T03:37:39.456Z
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The time when the member was modified. The time is displayed in UTC.
+	// The time when the member was last modified (UTC).
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type CreateResourceAccountResponseBodyAccount struct {
 	//
 	// rd-3G****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the member. The value CreateSuccess indicates that the member is created.
+	// The join status of the member. The value CreateSuccess indicates that the member is created.
 	//
 	// example:
 	//
 	// CreateSuccess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the member. The value ResourceAccount indicates that the member is a resource account.
+	// The type of the member. The value ResourceAccount indicates a resource account.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type UpdateRoleResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM role.
+	// The information of the RAM role.
 	Role *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *UpdateRoleResponseBody) Validate() error {
 }
 
 type UpdateRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// The resource descriptor of the RAM role.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type UpdateRoleResponseBodyRole struct {
 	//
 	// { \\"Statement\\": [ { \\"Action\\": \\"sts:AssumeRole\\", \\"Effect\\": \\"Allow\\", \\"Principal\\": { \\"RAM\\": \\"acs:ram::12345678901234****:root\\" } } ], \\"Version\\": \\"1\\" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	// The time when the RAM role was created.
+	// The time when the RAM role was created. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type UpdateRoleResponseBodyRole struct {
 	//
 	// example:
 	//
-	// ECS administrator
+	// ECS management role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum session time of the RAM role.
+	// The maximum session duration of the RAM role.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type UpdateRoleResponseBodyRole struct {
 	//
 	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The name of the RAM role after authorization.
+	// The name of the authorized RAM role.
 	//
 	// example:
 	//
 	// ECSAdmin@role.123456.onaliyunservice.com
 	RolePrincipalName *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
-	// The time when the RAM role was updated.
+	// The time when the RAM role was last updated. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//

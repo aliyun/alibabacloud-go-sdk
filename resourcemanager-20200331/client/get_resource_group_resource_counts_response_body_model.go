@@ -22,7 +22,7 @@ type GetResourceGroupResourceCountsResponseBody struct {
 	//
 	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The numbers of the resources.
+	// The resource count.
 	ResourceCounts []*GetResourceGroupResourceCountsResponseBodyResourceCounts `json:"ResourceCounts,omitempty" xml:"ResourceCounts,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *GetResourceGroupResourceCountsResponseBody) Validate() error {
 }
 
 type GetResourceGroupResourceCountsResponseBodyResourceCounts struct {
-	// The number of the resources.
+	// The resource count.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The dimension by which resources are queried.
+	// The grouping dimension for resource count statistics.
 	//
 	// example:
 	//

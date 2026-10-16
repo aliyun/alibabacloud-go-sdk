@@ -16,7 +16,7 @@ type iRegisterDelegatedAdministratorRequest interface {
 }
 
 type RegisterDelegatedAdministratorRequest struct {
-	// The ID of the member in the resource directory.
+	// The UID of a member account in the resource directory.
 	//
 	// This parameter is required.
 	//

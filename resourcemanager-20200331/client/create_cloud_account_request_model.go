@@ -20,11 +20,11 @@ type iCreateCloudAccountRequest interface {
 }
 
 type CreateCloudAccountRequest struct {
-	// The display name of the member account.
+	// The member name.
 	//
 	// The name must be 2 to 50 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
 	//
-	// The name must be unique in the current resource directory.
+	// The member name must be unique within the resource directory.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateCloudAccountRequest struct {
 	//
 	// fd-bVaRIG****
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	// The ID of the settlement account. If you do not specify this parameter, the current account is used for settlement.
+	// The ID of the settlement account. If this parameter is left empty, the current account is used for settlement.
 	//
 	// example:
 	//

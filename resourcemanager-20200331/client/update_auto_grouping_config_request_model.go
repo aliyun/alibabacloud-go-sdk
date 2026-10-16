@@ -14,11 +14,11 @@ type iUpdateAutoGroupingConfigRequest interface {
 }
 
 type UpdateAutoGroupingConfigRequest struct {
-	// Specifies whether to enable the Transfer Existing Associated Resources feature. Valid values:
+	// Specifies whether to enable existing associated resources to follow the group transfer task. Valid values:
 	//
-	// 	- false
+	// - false: Existing associated resources do not follow the group transfer task.
 	//
-	// 	- true
+	// - true: Existing associated resources follow the group transfer task.
 	//
 	// example:
 	//

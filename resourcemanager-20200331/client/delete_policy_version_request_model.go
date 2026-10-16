@@ -16,9 +16,9 @@ type iDeletePolicyVersionRequest interface {
 }
 
 type DeletePolicyVersionRequest struct {
-	// The name of the permission policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DeletePolicyVersionRequest struct {
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The ID of the policy version.
+	// The ID of the access policy version.
 	//
-	// You can call the [ListPolicyVersions](https://help.aliyun.com/document_detail/159982.html) operation to query the ID.
+	// You can call [ListPolicyVersions](https://help.aliyun.com/document_detail/159982.html) to query access policy version IDs.
 	//
 	// This parameter is required.
 	//

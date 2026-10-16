@@ -17,7 +17,7 @@ type iListControlPolicyAttachmentsForTargetResponseBody interface {
 
 type ListControlPolicyAttachmentsForTargetResponseBody struct {
 	ControlPolicyAttachments *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments `json:"ControlPolicyAttachments,omitempty" xml:"ControlPolicyAttachments,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

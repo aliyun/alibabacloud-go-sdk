@@ -18,19 +18,19 @@ type iGetPayerForAccountResponseBody interface {
 }
 
 type GetPayerForAccountResponseBody struct {
-	// The ID of the settlement account.
+	// The ID of the billing account.
 	//
 	// example:
 	//
 	// 172841235500****
 	PayerAccountId *string `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
-	// The name of the settlement account.
+	// The name of the billing account.
 	//
 	// example:
 	//
 	// Alice
 	PayerAccountName *string `json:"PayerAccountName,omitempty" xml:"PayerAccountName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

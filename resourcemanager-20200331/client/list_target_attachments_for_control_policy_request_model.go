@@ -18,15 +18,15 @@ type iListTargetAttachmentsForControlPolicyRequest interface {
 }
 
 type ListTargetAttachmentsForControlPolicyRequest struct {
-	// The number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//

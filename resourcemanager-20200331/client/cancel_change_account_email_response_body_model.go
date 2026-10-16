@@ -14,7 +14,7 @@ type iCancelChangeAccountEmailResponseBody interface {
 }
 
 type CancelChangeAccountEmailResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

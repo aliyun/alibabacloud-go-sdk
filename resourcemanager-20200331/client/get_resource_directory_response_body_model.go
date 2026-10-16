@@ -16,13 +16,13 @@ type iGetResourceDirectoryResponseBody interface {
 }
 
 type GetResourceDirectoryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CD76D376-2517-4924-92C5-DBC52262F93A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource directory.
+	// The resource directory information.
 	ResourceDirectory *GetResourceDirectoryResponseBodyResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -62,31 +62,31 @@ func (s *GetResourceDirectoryResponseBody) Validate() error {
 }
 
 type GetResourceDirectoryResponseBodyResourceDirectory struct {
-	// The status of the Control Policy feature. Valid values:
+	// The status of the control policy. Valid values:
 	//
-	// 	- Enabled: The feature is enabled.
+	// - Enabled: Enabled.
 	//
-	// 	- PendingEnable: The feature is being enabled.
+	// - PendingEnable: Being enabled.
 	//
-	// 	- Disabled: The feature is disabled.
+	// - Disabled: Disabled.
 	//
-	// 	- PendingDisable: The feature is being disabled.
+	// - PendingDisable: Being disabled.
 	//
 	// example:
 	//
 	// Enabled
 	ControlPolicyStatus *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
-	// The time when the resource directory was enabled.
+	// The time when the resource directory was created. The time is displayed in UTC in RFC 3339 format, indicated by Z.
 	//
 	// example:
 	//
 	// 2019-02-18T15:32:10.473Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The real-name verification information.
+	// The real-name verification information of the member.
 	//
 	// example:
 	//
-	// \\*\\*\\	- Co., Ltd.
+	// ***有限公司
 	IdentityInformation *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
 	// The ID of the management account.
 	//
@@ -100,11 +100,11 @@ type GetResourceDirectoryResponseBodyResourceDirectory struct {
 	//
 	// aliyun-admin
 	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The status of the member deletion feature. Valid values:
+	// Indicates whether member deletion is enabled. Valid values:
 	//
-	// 	- Enabled: The feature is enabled. You can call the [DeleteAccount](https://help.aliyun.com/document_detail/311546.html) operation to delete members of the resource account type.
+	// - Enabled: Enabled. You can call [DeleteAccount](https://help.aliyun.com/document_detail/311546.html) to delete members of the resource account type.
 	//
-	// 	- Disabled: The feature is disabled. You cannot delete members of the resource account type.
+	// - Disabled: Disabled. You cannot delete members of the resource account type.
 	//
 	// example:
 	//

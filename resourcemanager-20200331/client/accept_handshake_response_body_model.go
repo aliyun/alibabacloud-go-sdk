@@ -16,9 +16,9 @@ type iAcceptHandshakeResponseBody interface {
 }
 
 type AcceptHandshakeResponseBody struct {
-	// The information of the invitation.
+	// The handshake information.
 	Handshake *AcceptHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *AcceptHandshakeResponseBody) Validate() error {
 }
 
 type AcceptHandshakeResponseBodyHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
+	// The creation time of the handshake (UTC).
 	//
 	// example:
 	//
 	// 2021-01-06T02:15:40Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
+	// The expiration time of the handshake (UTC).
 	//
 	// example:
 	//
 	// 2021-01-20T02:15:40Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
+	// The handshake ID.
 	//
 	// example:
 	//
@@ -92,41 +92,41 @@ type AcceptHandshakeResponseBodyHandshake struct {
 	//
 	// CompanyA
 	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
+	// The modification time of the handshake (UTC).
 	//
 	// example:
 	//
 	// 2021-01-06T02:16:40Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The comment on the invitation.
+	// The remarks.
 	//
 	// example:
 	//
-	// Welcome
+	// Welcome to join us
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
+	// The resource directory ID.
 	//
 	// example:
 	//
 	// rd-3G****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
+	// The status of the handshake. Valid values:
 	//
-	// 	- Pending: The invitation is waiting for confirmation.
+	// - Pending: waiting for confirmation.
 	//
-	// 	- Accepted: The invitation is accepted.
+	// - Accepted: accepted.
 	//
-	// 	- Cancelled: The invitation is canceled.
+	// - Cancelled: canceled.
 	//
-	// 	- Declined: The invitation is rejected.
+	// - Declined: rejected.
 	//
-	// 	- Expired: The invitation expires.
+	// - Expired: expired.
 	//
 	// example:
 	//
 	// Accepted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited Alibaba Cloud account.
+	// The Alibaba Cloud account ID or logon email address of the invited account.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ type AcceptHandshakeResponseBodyHandshake struct {
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	// The type of the invited Alibaba Cloud account. Valid values:
 	//
-	// 	- Account: indicates the ID of the Alibaba Cloud account.
+	// - Account: Alibaba Cloud account ID.
 	//
-	// 	- Email: indicates the logon email address of the Alibaba Cloud account.
+	// - Email: logon email address of the Alibaba Cloud account.
 	//
 	// example:
 	//

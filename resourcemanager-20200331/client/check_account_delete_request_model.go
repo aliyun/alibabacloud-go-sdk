@@ -14,7 +14,7 @@ type iCheckAccountDeleteRequest interface {
 }
 
 type CheckAccountDeleteRequest struct {
-	// The ID of the member that you want to delete.
+	// The ID of the member account to be deleted.
 	//
 	// This parameter is required.
 	//

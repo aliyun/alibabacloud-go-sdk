@@ -18,7 +18,7 @@ type iUpdateAccountRequest interface {
 }
 
 type UpdateAccountRequest struct {
-	// The ID of the Alibaba Cloud account that corresponds to the member.
+	// The ID of the member.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type UpdateAccountRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The new type of the member. Valid values:
 	//
-	// 	- ResourceAccount: resource account
+	// - ResourceAccount: switches the specified cloud account to a resource account.
 	//
-	// 	- CloudAccount: cloud account
+	// - CloudAccount: switches the specified resource account to a cloud account.
 	//
-	// >  You can configure either the `NewDisplayName` or `NewAccountType` parameter.
+	// > Set either NewDisplayName or NewAccountType. You cannot set both of them at the same time.
 	//
 	// example:
 	//
 	// ResourceAccount
 	NewAccountType *string `json:"NewAccountType,omitempty" xml:"NewAccountType,omitempty"`
-	// The new display name of the member.
+	// The new name of the member.
 	//
-	// >  You can configure either the `NewDisplayName` or `NewAccountType` parameter.
+	// > Set either NewDisplayName or NewAccountType. You cannot set both of them at the same time.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetHandshakeResponseBody interface {
 }
 
 type GetHandshakeResponseBody struct {
-	// The information of the invitation.
+	// The handshake information.
 	Handshake *GetHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,27 +62,27 @@ func (s *GetHandshakeResponseBody) Validate() error {
 }
 
 type GetHandshakeResponseBodyHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
+	// The creation time of the handshake (UTC).
 	//
 	// example:
 	//
 	// 2018-08-10T09:55:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
+	// The expiration time of the handshake (UTC).
 	//
 	// example:
 	//
 	// 2018-08-24T09:55:41Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
+	// The handshake ID.
 	//
 	// example:
 	//
 	// h-ycm4rp****
 	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The real-name verification information of the invitee.
+	// The real-name verification information of the invited account.
 	//
-	// >  This parameter is available only when an invitee calls this operation.
+	// > This parameter is visible only when the invited account calls this operation.
 	//
 	// example:
 	//
@@ -102,41 +102,41 @@ type GetHandshakeResponseBodyHandshake struct {
 	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	// The real-name verification information of the management account of the resource directory.
 	//
-	// >  This parameter is available only when an invitee calls this operation.
+	// > This parameter is visible only when the invited account calls this operation.
 	//
 	// example:
 	//
 	// company
 	MasterAccountRealName *string `json:"MasterAccountRealName,omitempty" xml:"MasterAccountRealName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
+	// The modification time of the handshake (UTC).
 	//
 	// example:
 	//
 	// 2018-08-10T09:55:41Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The comment on the invitation.
+	// The remarks.
 	//
 	// example:
 	//
-	// Welcome
+	// Welcome to join us
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
+	// The resource directory ID.
 	//
 	// example:
 	//
 	// rd-abcdef****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
+	// The status of the handshake. Valid values:
 	//
-	// 	- Pending: The invitation is waiting for confirmation.
+	// - Pending: Waiting for confirmation.
 	//
-	// 	- Accepted: The invitation is accepted.
+	// - Accepted: Accepted.
 	//
-	// 	- Cancelled: The invitation is canceled.
+	// - Cancelled: Cancelled.
 	//
-	// 	- Declined: The invitation is rejected.
+	// - Declined: Rejected.
 	//
-	// 	- Expired: The invitation expires.
+	// - Expired: Expired.
 	//
 	// example:
 	//
@@ -150,9 +150,9 @@ type GetHandshakeResponseBodyHandshake struct {
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	// The type of the invited account. Valid values:
 	//
-	// 	- Account: indicates the ID of the account.
+	// - Account: account ID.
 	//
-	// 	- Email: indicates the logon email address of the account.
+	// - Email: logon email address of the account.
 	//
 	// example:
 	//

@@ -17,7 +17,7 @@ type iListDelegatedServicesForAccountResponseBody interface {
 
 type ListDelegatedServicesForAccountResponseBody struct {
 	DelegatedServices *ListDelegatedServicesForAccountResponseBodyDelegatedServices `json:"DelegatedServices,omitempty" xml:"DelegatedServices,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

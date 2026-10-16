@@ -16,9 +16,9 @@ type iCreateControlPolicyResponseBody interface {
 }
 
 type CreateControlPolicyResponseBody struct {
-	// The details of the access control policy.
+	// The details of the control policy.
 	ControlPolicy *CreateControlPolicyResponseBodyControlPolicy `json:"ControlPolicy,omitempty" xml:"ControlPolicy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,55 +62,55 @@ func (s *CreateControlPolicyResponseBody) Validate() error {
 }
 
 type CreateControlPolicyResponseBodyControlPolicy struct {
-	// The number of times that the access control policy is referenced.
+	// The number of times the control policy is referenced.
 	//
 	// example:
 	//
 	// 0
 	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	// The time when the access control policy was created.
+	// The time when the control policy was created. The time is displayed in UTC in RFC 3339 format, with Z indicating UTC.
 	//
 	// example:
 	//
 	// 2021-03-18T09:24:19Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description of the access control policy.
+	// The description of the control policy.
 	//
 	// example:
 	//
 	// ExampleControlPolicy
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The effective scope of the access control policy.
+	// The effective scope of the control policy.
 	//
-	// The value RAM indicates that the access control policy takes effect only for RAM users and RAM roles.
+	// Valid values: RAM, which indicates that the control policy takes effect only for Resource Access Management (RAM) users or RAM roles.
 	//
 	// example:
 	//
 	// RAM
 	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	// The ID of the access control policy.
+	// The ID of the control policy.
 	//
 	// example:
 	//
 	// cp-jExXAqIYkwHN****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the access control policy.
+	// The Policy Name of the control policy.
 	//
 	// example:
 	//
 	// ExampleControlPolicy
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the access control policy. Valid values:
+	// The type of the control policy. Valid values:
 	//
-	// 	- System: system access control policy
+	// - System: system control policy.
 	//
-	// 	- Custom: custom access control policy
+	// - Custom: custom control policy.
 	//
 	// example:
 	//
 	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The time when the access control policy was updated.
+	// The time when the control policy was last updated. The time is displayed in UTC in RFC 3339 format, with Z indicating UTC.
 	//
 	// example:
 	//

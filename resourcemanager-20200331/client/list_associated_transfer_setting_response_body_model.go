@@ -16,7 +16,7 @@ type iListAssociatedTransferSettingResponseBody interface {
 }
 
 type ListAssociatedTransferSettingResponseBody struct {
-	// The settings of the Transfer Associated Resources feature.
+	// The settings of the associated resource group transfer feature.
 	AssociatedTransferSetting *ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting `json:"AssociatedTransferSetting,omitempty" xml:"AssociatedTransferSetting,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,29 +62,29 @@ func (s *ListAssociatedTransferSettingResponseBody) Validate() error {
 }
 
 type ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 121998723923****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Indicates whether the Transfer Existing Associated Resources feature is enabled. Valid values:
+	// Indicates whether the task for transferring existing associated resources to the same resource group is started. Valid values:
 	//
-	// 	- false
+	// - false: The task is not started.
 	//
-	// 	- true
+	// - true: The task is started.
 	//
 	// example:
 	//
 	// true
 	EnableExistingResourcesTransfer *string `json:"EnableExistingResourcesTransfer,omitempty" xml:"EnableExistingResourcesTransfer,omitempty"`
-	// The settings of transfer rules.
+	// The rule settings of the associated resource group transfer feature.
 	RuleSettings []*ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings `json:"RuleSettings,omitempty" xml:"RuleSettings,omitempty" type:"Repeated"`
-	// The status of the Transfer Associated Resources feature. Valid values:
+	// The status of the associated resource group transfer feature. Valid values:
 	//
-	// 	- Enable: enabled
+	// - Enable: enabled.
 	//
-	// 	- Disable: disabled
+	// - Disable: disabled.
 	//
 	// example:
 	//
@@ -150,35 +150,35 @@ func (s *ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting) Val
 }
 
 type ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings struct {
-	// The type of the associated resource.
+	// The resource type of the associated resource.
 	//
 	// example:
 	//
 	// disk
 	AssociatedResourceType *string `json:"AssociatedResourceType,omitempty" xml:"AssociatedResourceType,omitempty"`
-	// The service code of the associated resource.
+	// The cloud service code of the associated resource.
 	//
 	// example:
 	//
 	// ecs
 	AssociatedService *string `json:"AssociatedService,omitempty" xml:"AssociatedService,omitempty"`
-	// The type of the primary resource.
+	// The resource type of the master resource.
 	//
 	// example:
 	//
 	// instance
 	MasterResourceType *string `json:"MasterResourceType,omitempty" xml:"MasterResourceType,omitempty"`
-	// The service code of the primary resource.
+	// The cloud service code of the master resource.
 	//
 	// example:
 	//
 	// ecs
 	MasterService *string `json:"MasterService,omitempty" xml:"MasterService,omitempty"`
-	// The status of the Transfer Associated Resources feature. Valid values:
+	// The status of the associated resource group transfer feature. Valid values:
 	//
-	// 	- Enable: enabled
+	// - Enable: enabled.
 	//
-	// 	- Disable: disabled
+	// - Disable: disabled.
 	//
 	// example:
 	//

@@ -58,13 +58,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Accepts an invitation.
+// Accepts an invitation by the invited Alibaba Cloud account by calling AcceptHandshake.
 //
 // Description:
 //
-// After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+// After the invited Alibaba Cloud account successfully joins a resource directory, the account becomes a member of the resource directory. The resource directory uses the name of the invited Alibaba Cloud account as the display name and account name of the member by default.
 //
-// This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0****` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
+// This topic provides an example on how the invited Alibaba Cloud account `177242285274****` accepts an invitation from the resource directory `rd-3G****`. The handshake ID is `h-Ih8IuPfvV0t0****`.
 //
 // @param request - AcceptHandshakeRequest
 //
@@ -108,13 +108,13 @@ func (client *Client) AcceptHandshakeWithOptions(request *AcceptHandshakeRequest
 
 // Summary:
 //
-// Accepts an invitation.
+// Accepts an invitation by the invited Alibaba Cloud account by calling AcceptHandshake.
 //
 // Description:
 //
-// After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+// After the invited Alibaba Cloud account successfully joins a resource directory, the account becomes a member of the resource directory. The resource directory uses the name of the invited Alibaba Cloud account as the display name and account name of the member by default.
 //
-// This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0****` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
+// This topic provides an example on how the invited Alibaba Cloud account `177242285274****` accepts an invitation from the resource directory `rd-3G****`. The handshake ID is `h-Ih8IuPfvV0t0****`.
 //
 // @param request - AcceptHandshakeRequest
 //
@@ -132,19 +132,19 @@ func (client *Client) AcceptHandshake(request *AcceptHandshakeRequest) (_result 
 
 // Summary:
 //
-// Attaches an access control policy.
+// Attaches a control policy to a specified target.
 //
 // Description:
 //
-// After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+// After the control policy is attached, the resource folder or member immediately becomes subject to the control policy. Make sure that the result of the attach operation is as expected to avoid affecting your business.
 //
-// By default, the system access control policy FullAliyunAccess is attached to each folder and member.
+// The system attaches the system policy FullAliyunAccess to resource folders and members by default.
 //
-// The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
+// A control policy takes effect on the entire node to which it is attached. A control policy attached to a parent resource folder also takes effect on its child resource folders and members.
 //
-// A maximum of 10 access control policies can be attached to a folder or member.
+// Each node (resource folder or member) can have a maximum of 10 control policies attached.
 //
-// This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN****` to the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to attach the custom policy `cp-jExXAqIYkwHN****` to the resource folder `fd-ZDNPiT****`.
 //
 // @param request - AttachControlPolicyRequest
 //
@@ -192,19 +192,19 @@ func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolic
 
 // Summary:
 //
-// Attaches an access control policy.
+// Attaches a control policy to a specified target.
 //
 // Description:
 //
-// After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+// After the control policy is attached, the resource folder or member immediately becomes subject to the control policy. Make sure that the result of the attach operation is as expected to avoid affecting your business.
 //
-// By default, the system access control policy FullAliyunAccess is attached to each folder and member.
+// The system attaches the system policy FullAliyunAccess to resource folders and members by default.
 //
-// The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
+// A control policy takes effect on the entire node to which it is attached. A control policy attached to a parent resource folder also takes effect on its child resource folders and members.
 //
-// A maximum of 10 access control policies can be attached to a folder or member.
+// Each node (resource folder or member) can have a maximum of 10 control policies attached.
 //
-// This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN****` to the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to attach the custom policy `cp-jExXAqIYkwHN****` to the resource folder `fd-ZDNPiT****`.
 //
 // @param request - AttachControlPolicyRequest
 //
@@ -222,11 +222,7 @@ func (client *Client) AttachControlPolicy(request *AttachControlPolicyRequest) (
 
 // Summary:
 //
-// Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
-//
-// Description:
-//
-// In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK****` resource group.
+// Invokes AttachPolicy to add an access policy to an authorization object (a Resource Access Management (RAM) user, RAM user group, or RAM role), which is authorization. After the authorization is complete, the authorized object obtains access permissions on resources within the specified resource group or Alibaba Cloud account.
 //
 // @param request - AttachPolicyRequest
 //
@@ -286,11 +282,7 @@ func (client *Client) AttachPolicyWithOptions(request *AttachPolicyRequest, runt
 
 // Summary:
 //
-// Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
-//
-// Description:
-//
-// In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK****` resource group.
+// Invokes AttachPolicy to add an access policy to an authorization object (a Resource Access Management (RAM) user, RAM user group, or RAM role), which is authorization. After the authorization is complete, the authorized object obtains access permissions on resources within the specified resource group or Alibaba Cloud account.
 //
 // @param request - AttachPolicyRequest
 //
@@ -308,15 +300,15 @@ func (client *Client) AttachPolicy(request *AttachPolicyRequest) (_result *Attac
 
 // Summary:
 //
-// Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
+// Sets a secure phone number for a member of the resource account type.
 //
 // Description:
 //
-// You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+// This API operation is used only to set a secure phone number for a resource account for the first time. It cannot be used to modify an existing secure phone number.
 //
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+// To ensure that the system can record the specific author of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource folder management permission (AliyunResourceDirectoryFullAccess) to invoke this API operation.
 //
-// This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348****` for security purposes.
+// This topic provides an example of how to set a secure phone number for the member `138660628348****`.
 //
 // @param request - BindSecureMobilePhoneRequest
 //
@@ -368,15 +360,15 @@ func (client *Client) BindSecureMobilePhoneWithOptions(request *BindSecureMobile
 
 // Summary:
 //
-// Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
+// Sets a secure phone number for a member of the resource account type.
 //
 // Description:
 //
-// You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+// This API operation is used only to set a secure phone number for a resource account for the first time. It cannot be used to modify an existing secure phone number.
 //
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+// To ensure that the system can record the specific author of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource folder management permission (AliyunResourceDirectoryFullAccess) to invoke this API operation.
 //
-// This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348****` for security purposes.
+// This topic provides an example of how to set a secure phone number for the member `138660628348****`.
 //
 // @param request - BindSecureMobilePhoneRequest
 //
@@ -394,7 +386,7 @@ func (client *Client) BindSecureMobilePhone(request *BindSecureMobilePhoneReques
 
 // Summary:
 //
-// Cancels the email address change of a member.
+// Cancels the modification of a member account email address.
 //
 // @param request - CancelChangeAccountEmailRequest
 //
@@ -438,7 +430,7 @@ func (client *Client) CancelChangeAccountEmailWithOptions(request *CancelChangeA
 
 // Summary:
 //
-// Cancels the email address change of a member.
+// Cancels the modification of a member account email address.
 //
 // @param request - CancelChangeAccountEmailRequest
 //
@@ -456,7 +448,7 @@ func (client *Client) CancelChangeAccountEmail(request *CancelChangeAccountEmail
 
 // Summary:
 //
-// Cancels the creation of a cloud account.
+// Cancels the creation of a member of the cloud account type in a resource directory.
 //
 // @param request - CancelCreateCloudAccountRequest
 //
@@ -500,7 +492,7 @@ func (client *Client) CancelCreateCloudAccountWithOptions(request *CancelCreateC
 
 // Summary:
 //
-// Cancels the creation of a cloud account.
+// Cancels the creation of a member of the cloud account type in a resource directory.
 //
 // @param request - CancelCreateCloudAccountRequest
 //
@@ -518,11 +510,11 @@ func (client *Client) CancelCreateCloudAccount(request *CancelCreateCloudAccount
 
 // Summary:
 //
-// Cancels an invitation.
+// Cancels a handshake.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp****`.
+// This topic provides an example on how to cancel the handshake whose ID is `h-ycm4rp****`.
 //
 // @param request - CancelHandshakeRequest
 //
@@ -566,11 +558,11 @@ func (client *Client) CancelHandshakeWithOptions(request *CancelHandshakeRequest
 
 // Summary:
 //
-// Cancels an invitation.
+// Cancels a handshake.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp****`.
+// This topic provides an example on how to cancel the handshake whose ID is `h-ycm4rp****`.
 //
 // @param request - CancelHandshakeRequest
 //
@@ -588,7 +580,7 @@ func (client *Client) CancelHandshake(request *CancelHandshakeRequest) (_result 
 
 // Summary:
 //
-// Cancels the upgrade from a resource account to a cloud account.
+// Cancels the upgrade of a resource directory resource account to an Alibaba Cloud account.
 //
 // @param request - CancelPromoteResourceAccountRequest
 //
@@ -632,7 +624,7 @@ func (client *Client) CancelPromoteResourceAccountWithOptions(request *CancelPro
 
 // Summary:
 //
-// Cancels the upgrade from a resource account to a cloud account.
+// Cancels the upgrade of a resource directory resource account to an Alibaba Cloud account.
 //
 // @param request - CancelPromoteResourceAccountRequest
 //
@@ -650,7 +642,7 @@ func (client *Client) CancelPromoteResourceAccount(request *CancelPromoteResourc
 
 // Summary:
 //
-// Changes the email address that is bound to a member.
+// Modifies the email address of a member account by calling ChangeAccountEmail.
 //
 // @param request - ChangeAccountEmailRequest
 //
@@ -698,7 +690,7 @@ func (client *Client) ChangeAccountEmailWithOptions(request *ChangeAccountEmailR
 
 // Summary:
 //
-// Changes the email address that is bound to a member.
+// Modifies the email address of a member account by calling ChangeAccountEmail.
 //
 // @param request - ChangeAccountEmailRequest
 //
@@ -716,13 +708,11 @@ func (client *Client) ChangeAccountEmail(request *ChangeAccountEmailRequest) (_r
 
 // Summary:
 //
-// Performs a member deletion check.
+// Calls CheckAccountDelete to perform a member account deletion check task.
 //
 // Description:
 //
-// Before you delete a member, you must call this API operation to check whether the member can be deleted.
-//
-// This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641****`.
+// Before deleting a member account, call this API to perform a pre-deletion condition check on the target member account.
 //
 // @param request - CheckAccountDeleteRequest
 //
@@ -766,13 +756,11 @@ func (client *Client) CheckAccountDeleteWithOptions(request *CheckAccountDeleteR
 
 // Summary:
 //
-// Performs a member deletion check.
+// Calls CheckAccountDelete to perform a member account deletion check task.
 //
 // Description:
 //
-// Before you delete a member, you must call this API operation to check whether the member can be deleted.
-//
-// This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641****`.
+// Before deleting a member account, call this API to perform a pre-deletion condition check on the target member account.
 //
 // @param request - CheckAccountDeleteRequest
 //
@@ -790,11 +778,11 @@ func (client *Client) CheckAccountDelete(request *CheckAccountDeleteRequest) (_r
 
 // Summary:
 //
-// Creates a transfer rule. Custom transfer rules and transfer rules for associated resources are supported.
+// Creates an automatic allocation rule by calling CreateAutoGroupingRule. Two types are supported: custom allocation rules and attached-resource allocation rules.
 //
 // Description:
 //
-// You can create up to 10 custom transfer rules. Each custom transfer rule can contain up to 10 content records.
+// You can create up to 10 custom allocation rules, and each custom allocation rule supports up to 10 rule content entries.
 //
 // @param request - CreateAutoGroupingRuleRequest
 //
@@ -882,11 +870,11 @@ func (client *Client) CreateAutoGroupingRuleWithOptions(request *CreateAutoGroup
 
 // Summary:
 //
-// Creates a transfer rule. Custom transfer rules and transfer rules for associated resources are supported.
+// Creates an automatic allocation rule by calling CreateAutoGroupingRule. Two types are supported: custom allocation rules and attached-resource allocation rules.
 //
 // Description:
 //
-// You can create up to 10 custom transfer rules. Each custom transfer rule can contain up to 10 content records.
+// You can create up to 10 custom allocation rules, and each custom allocation rule supports up to 10 rule content entries.
 //
 // @param request - CreateAutoGroupingRuleRequest
 //
@@ -904,17 +892,17 @@ func (client *Client) CreateAutoGroupingRule(request *CreateAutoGroupingRuleRequ
 
 // Summary:
 //
-// Creates a cloud account.
+// Creates a member of the cloud account type in a resource directory.
 //
 // Description:
 //
-// A resource directory supports two types of member accounts: resource accounts and cloud accounts.
+// A resource directory contains two types of members: resource accounts and cloud accounts.
 //
-//   - Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
+// - Resource account (recommended): A resource account serves only as a resource container and fully depends on the resource directory. It is a more secure account type that is easier to create. To create a resource account type member, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
 //
-// >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html) .
+// > A resource account can also be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html).
 //
-//   - Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
+// - Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root logon access.
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -970,17 +958,17 @@ func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountR
 
 // Summary:
 //
-// Creates a cloud account.
+// Creates a member of the cloud account type in a resource directory.
 //
 // Description:
 //
-// A resource directory supports two types of member accounts: resource accounts and cloud accounts.
+// A resource directory contains two types of members: resource accounts and cloud accounts.
 //
-//   - Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
+// - Resource account (recommended): A resource account serves only as a resource container and fully depends on the resource directory. It is a more secure account type that is easier to create. To create a resource account type member, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
 //
-// >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html) .
+// > A resource account can also be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html).
 //
-//   - Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
+// - Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root logon access.
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -998,11 +986,11 @@ func (client *Client) CreateCloudAccount(request *CreateCloudAccountRequest) (_r
 
 // Summary:
 //
-// Creates a custom access control policy.
+// Calls CreateControlPolicy to create a custom control policy.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
+// This topic provides an example on how to create a control policy named `ExampleControlPolicy` that prohibits modifications to the ResourceDirectoryAccountAccessRole role and its permissions.
 //
 // @param request - CreateControlPolicyRequest
 //
@@ -1058,11 +1046,11 @@ func (client *Client) CreateControlPolicyWithOptions(request *CreateControlPolic
 
 // Summary:
 //
-// Creates a custom access control policy.
+// Calls CreateControlPolicy to create a custom control policy.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
+// This topic provides an example on how to create a control policy named `ExampleControlPolicy` that prohibits modifications to the ResourceDirectoryAccountAccessRole role and its permissions.
 //
 // @param request - CreateControlPolicyRequest
 //
@@ -1080,13 +1068,13 @@ func (client *Client) CreateControlPolicy(request *CreateControlPolicyRequest) (
 
 // Summary:
 //
-// Creates a folder.
+// Creates a resource folder by calling CreateFolder.
 //
 // Description:
 //
-// >  A maximum of five levels of folders can be created under the root folder.
+// > You can create a maximum of five levels of resource folders.
 //
-// In this example, a folder named `rdFolder` is created under the root folder.
+// This topic provides an example of how to create a resource folder named `rdFolder` under the Root folder.
 //
 // @param request - CreateFolderRequest
 //
@@ -1134,13 +1122,13 @@ func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runt
 
 // Summary:
 //
-// Creates a folder.
+// Creates a resource folder by calling CreateFolder.
 //
 // Description:
 //
-// >  A maximum of five levels of folders can be created under the root folder.
+// > You can create a maximum of five levels of resource folders.
 //
-// In this example, a folder named `rdFolder` is created under the root folder.
+// This topic provides an example of how to create a resource folder named `rdFolder` under the Root folder.
 //
 // @param request - CreateFolderRequest
 //
@@ -1158,7 +1146,7 @@ func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a permission policy.
+// Creates an access policy.
 //
 // @param request - CreatePolicyRequest
 //
@@ -1210,7 +1198,7 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 
 // Summary:
 //
-// Creates a permission policy.
+// Creates an access policy.
 //
 // @param request - CreatePolicyRequest
 //
@@ -1228,7 +1216,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a version for a permission policy.
+// Creates a version of an access policy by calling CreatePolicyVersion.
 //
 // @param request - CreatePolicyVersionRequest
 //
@@ -1280,7 +1268,7 @@ func (client *Client) CreatePolicyVersionWithOptions(request *CreatePolicyVersio
 
 // Summary:
 //
-// Creates a version for a permission policy.
+// Creates a version of an access policy by calling CreatePolicyVersion.
 //
 // @param request - CreatePolicyVersionRequest
 //
@@ -1298,11 +1286,11 @@ func (client *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (
 
 // Summary:
 //
-// Creates a member of the resource account type.
+// Creates a member of the resource account type by calling CreateResourceAccount.
 //
 // Description:
 //
-// A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+// In a resource directory, a member serves as a resource container and is a resource grouping unit. A member typically represents a project or application. Resources in each member are physically isolated from resources in other members.
 //
 // @param request - CreateResourceAccountRequest
 //
@@ -1366,11 +1354,11 @@ func (client *Client) CreateResourceAccountWithOptions(request *CreateResourceAc
 
 // Summary:
 //
-// Creates a member of the resource account type.
+// Creates a member of the resource account type by calling CreateResourceAccount.
 //
 // Description:
 //
-// A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+// In a resource directory, a member serves as a resource container and is a resource grouping unit. A member typically represents a project or application. Resources in each member are physically isolated from resources in other members.
 //
 // @param request - CreateResourceAccountRequest
 //
@@ -1392,7 +1380,7 @@ func (client *Client) CreateResourceAccount(request *CreateResourceAccountReques
 //
 // Description:
 //
-// > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
+// > You can create a maximum of 30 resource groups within an Alibaba Cloud account.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -1448,7 +1436,7 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 //
 // Description:
 //
-// > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
+// > You can create a maximum of 30 resource groups within an Alibaba Cloud account.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -1466,7 +1454,7 @@ func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (
 
 // Summary:
 //
-// Creates a RAM role.
+// Creates a role by calling CreateRole.
 //
 // @param request - CreateRoleRequest
 //
@@ -1522,7 +1510,7 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime 
 
 // Summary:
 //
-// Creates a RAM role.
+// Creates a role by calling CreateRole.
 //
 // @param request - CreateRoleRequest
 //
@@ -1610,7 +1598,7 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 
 // Summary:
 //
-// Rejects an invitation.
+// Declines a handshake invitation by the invited Alibaba Cloud account.
 //
 // @param request - DeclineHandshakeRequest
 //
@@ -1654,7 +1642,7 @@ func (client *Client) DeclineHandshakeWithOptions(request *DeclineHandshakeReque
 
 // Summary:
 //
-// Rejects an invitation.
+// Declines a handshake invitation by the invited Alibaba Cloud account.
 //
 // @param request - DeclineHandshakeRequest
 //
@@ -1672,13 +1660,13 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 
 // Summary:
 //
-// Deletes a member of the resource account type.
+// Deletes a member of the resource account type by calling DeleteAccount.
 //
 // Description:
 //
-// Before you delete a member, we recommend that you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+// Before deleting a member, call [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) to perform a pre-deletion check on the member. Only members that meet the deletion conditions can be successfully deleted by calling DeleteAccount.
 //
-// After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
+// After you successfully submit a member deletion request, you can call [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) to query the deletion status. Once a member is deleted, all resources and data in the member are deleted. You can no longer log on to or use the member, and the data cannot be recovered. Proceed with caution. For more information about member deletion, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
 //
 // @param tmpReq - DeleteAccountRequest
 //
@@ -1732,13 +1720,13 @@ func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, run
 
 // Summary:
 //
-// Deletes a member of the resource account type.
+// Deletes a member of the resource account type by calling DeleteAccount.
 //
 // Description:
 //
-// Before you delete a member, we recommend that you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+// Before deleting a member, call [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) to perform a pre-deletion check on the member. Only members that meet the deletion conditions can be successfully deleted by calling DeleteAccount.
 //
-// After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
+// After you successfully submit a member deletion request, you can call [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) to query the deletion status. Once a member is deleted, all resources and data in the member are deleted. You can no longer log on to or use the member, and the data cannot be recovered. Proceed with caution. For more information about member deletion, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
 //
 // @param request - DeleteAccountRequest
 //
@@ -1756,7 +1744,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a transfer rule.
+// Deletes an automatic group transfer rule.
 //
 // @param request - DeleteAutoGroupingRuleRequest
 //
@@ -1800,7 +1788,7 @@ func (client *Client) DeleteAutoGroupingRuleWithOptions(request *DeleteAutoGroup
 
 // Summary:
 //
-// Deletes a transfer rule.
+// Deletes an automatic group transfer rule.
 //
 // @param request - DeleteAutoGroupingRuleRequest
 //
@@ -1822,9 +1810,9 @@ func (client *Client) DeleteAutoGroupingRule(request *DeleteAutoGroupingRuleRequ
 //
 // Description:
 //
-// If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) operation to detach the policy before you delete it.
+// To delete a custom control policy that is attached to a resource folder or member accounts, invoke [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) to detach the policy first.
 //
-// In this example, the custom control policy `cp-SImPt8GCEwiq****` is deleted.
+// This topic provides an example on how to delete the custom control policy cp-SImPt8GCEwiq****.
 //
 // @param request - DeleteControlPolicyRequest
 //
@@ -1872,9 +1860,9 @@ func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolic
 //
 // Description:
 //
-// If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) operation to detach the policy before you delete it.
+// To delete a custom control policy that is attached to a resource folder or member accounts, invoke [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) to detach the policy first.
 //
-// In this example, the custom control policy `cp-SImPt8GCEwiq****` is deleted.
+// This topic provides an example on how to delete the custom control policy cp-SImPt8GCEwiq****.
 //
 // @param request - DeleteControlPolicyRequest
 //
@@ -1896,7 +1884,7 @@ func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (
 //
 // Description:
 //
-// >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
+// > Before deleting a folder, make sure that the folder does not contain any member accounts or subfolders.
 //
 // @param request - DeleteFolderRequest
 //
@@ -1944,7 +1932,7 @@ func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runt
 //
 // Description:
 //
-// >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
+// > Before deleting a folder, make sure that the folder does not contain any member accounts or subfolders.
 //
 // @param request - DeleteFolderRequest
 //
@@ -1962,15 +1950,13 @@ func (client *Client) DeleteFolder(request *DeleteFolderRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a permission policy.
+// Deletes a specified access policy.
 //
 // Description:
 //
-// >
+// > - Before deleting an access policy, delete all non-default versions of the policy. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
 //
-//   - Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-//
-//   - Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
+// > - Before deleting an access policy, make sure that the policy is not referenced, meaning it is not attached to any Resource Access Management (RAM) user, user group, or RAM role. For information about how to remove an authorization, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
 //
 // @param request - DeletePolicyRequest
 //
@@ -2014,15 +2000,13 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 
 // Summary:
 //
-// Deletes a permission policy.
+// Deletes a specified access policy.
 //
 // Description:
 //
-// >
+// > - Before deleting an access policy, delete all non-default versions of the policy. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
 //
-//   - Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-//
-//   - Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
+// > - Before deleting an access policy, make sure that the policy is not referenced, meaning it is not attached to any Resource Access Management (RAM) user, user group, or RAM role. For information about how to remove an authorization, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
 //
 // @param request - DeletePolicyRequest
 //
@@ -2040,11 +2024,11 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a version of a permission policy.
+// Deletes a version of an access policy.
 //
 // Description:
 //
-// >  The default version of a policy cannot be deleted.
+// > The default version of an access policy cannot be deleted.
 //
 // @param request - DeletePolicyVersionRequest
 //
@@ -2092,11 +2076,11 @@ func (client *Client) DeletePolicyVersionWithOptions(request *DeletePolicyVersio
 
 // Summary:
 //
-// Deletes a version of a permission policy.
+// Deletes a version of an access policy.
 //
 // Description:
 //
-// >  The default version of a policy cannot be deleted.
+// > The default version of an access policy cannot be deleted.
 //
 // @param request - DeletePolicyVersionRequest
 //
@@ -2118,9 +2102,7 @@ func (client *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (
 //
 // Description:
 //
-// >  Before you delete a resource group, you must delete all the resources in it.
-//
-// In this example, the resource group whose ID is `rg-9gLOoK****` is deleted.
+// > Before you delete a resource group, delete all resources in the resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -2168,9 +2150,7 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 //
 // Description:
 //
-// >  Before you delete a resource group, you must delete all the resources in it.
-//
-// In this example, the resource group whose ID is `rg-9gLOoK****` is deleted.
+// > Before you delete a resource group, delete all resources in the resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -2188,7 +2168,7 @@ func (client *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (
 
 // Summary:
 //
-// Deletes a RAM role.
+// Deletes a role.
 //
 // @param request - DeleteRoleRequest
 //
@@ -2232,7 +2212,7 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, runtime 
 
 // Summary:
 //
-// Deletes a RAM role.
+// Deletes a role.
 //
 // @param request - DeleteRoleRequest
 //
@@ -2312,13 +2292,11 @@ func (client *Client) DeleteServiceLinkedRole(request *DeleteServiceLinkedRoleRe
 
 // Summary:
 //
-// Removes a delegated administrator account for a trusted service.
+// Calls the DeregisterDelegatedAdministrator operation to remove the delegated administrator account of a trusted service.
 //
 // Description:
 //
-// >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-//
-// This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690****` for Cloud Firewall.
+// > If the delegated administrator account being removed has historical management tasks in the trusted service, the removal may affect the normal use of the trusted service. Carefully consider the potential impact before performing the removal.
 //
 // @param request - DeregisterDelegatedAdministratorRequest
 //
@@ -2366,13 +2344,11 @@ func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *Dereg
 
 // Summary:
 //
-// Removes a delegated administrator account for a trusted service.
+// Calls the DeregisterDelegatedAdministrator operation to remove the delegated administrator account of a trusted service.
 //
 // Description:
 //
-// >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-//
-// This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690****` for Cloud Firewall.
+// > If the delegated administrator account being removed has historical management tasks in the trusted service, the removal may affect the normal use of the trusted service. Carefully consider the potential impact before performing the removal.
 //
 // @param request - DeregisterDelegatedAdministratorRequest
 //
@@ -2390,17 +2366,15 @@ func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelega
 
 // Summary:
 //
-// Disables a resource directory. This operation cannot be undone. Therefore, exercise caution when you perform it.
+// Closes a resource directory by calling DestroyResourceDirectory. This operation is irreversible. Proceed with caution.
 //
 // Description:
 //
-// Before you disable a resource directory, make sure that the following requirements are met:
+// Before closing a resource directory, make sure that you have completed the following operations:
 //
-//   - All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
+// - All members in the resource directory have been removed. For information about how to remove a member, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
 //
-//   - All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
-//
-// @param request - DestroyResourceDirectoryRequest
+// - All folders except the Root folder in the resource directory have been deleted. For information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2429,15 +2403,15 @@ func (client *Client) DestroyResourceDirectoryWithOptions(runtime *dara.RuntimeO
 
 // Summary:
 //
-// Disables a resource directory. This operation cannot be undone. Therefore, exercise caution when you perform it.
+// Closes a resource directory by calling DestroyResourceDirectory. This operation is irreversible. Proceed with caution.
 //
 // Description:
 //
-// Before you disable a resource directory, make sure that the following requirements are met:
+// Before closing a resource directory, make sure that you have completed the following operations:
 //
-//   - All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
+// - All members in the resource directory have been removed. For information about how to remove a member, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
 //
-//   - All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
+// - All folders except the Root folder in the resource directory have been deleted. For information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
 //
 // @return DestroyResourceDirectoryResponse
 func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirectoryResponse, _err error) {
@@ -2453,15 +2427,15 @@ func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirect
 
 // Summary:
 //
-// Detaches an access control policy.
+// Detaches a control policy from a resource folder or member.
 //
 // Description:
 //
-// After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+// After the control policy is detached, the resource folder or member that was previously associated with the policy immediately loses the governance enforced by the policy. Make sure that the result of the detach operation is as expected to avoid impact on your business.
 //
-// Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
+// Both system policies and custom control policies can be detached. However, the last control policy associated with a resource folder or member cannot be detached.
 //
-// This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN****` from the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to detach the custom policy `cp-jExXAqIYkwHN****` from the resource folder `fd-ZDNPiT****`.
 //
 // @param request - DetachControlPolicyRequest
 //
@@ -2509,15 +2483,15 @@ func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolic
 
 // Summary:
 //
-// Detaches an access control policy.
+// Detaches a control policy from a resource folder or member.
 //
 // Description:
 //
-// After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+// After the control policy is detached, the resource folder or member that was previously associated with the policy immediately loses the governance enforced by the policy. Make sure that the result of the detach operation is as expected to avoid impact on your business.
 //
-// Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
+// Both system policies and custom control policies can be detached. However, the last control policy associated with a resource folder or member cannot be detached.
 //
-// This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN****` from the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to detach the custom policy `cp-jExXAqIYkwHN****` from the resource folder `fd-ZDNPiT****`.
 //
 // @param request - DetachControlPolicyRequest
 //
@@ -2535,7 +2509,7 @@ func (client *Client) DetachControlPolicy(request *DetachControlPolicyRequest) (
 
 // Summary:
 //
-// Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
+// Detaches an access policy from a specified identity. After the policy is detached, the identity loses the permissions to manage resources in the specified resource group or Alibaba Cloud account.
 //
 // @param request - DetachPolicyRequest
 //
@@ -2595,7 +2569,7 @@ func (client *Client) DetachPolicyWithOptions(request *DetachPolicyRequest, runt
 
 // Summary:
 //
-// Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
+// Detaches an access policy from a specified identity. After the policy is detached, the identity loses the permissions to manage resources in the specified resource group or Alibaba Cloud account.
 //
 // @param request - DetachPolicyRequest
 //
@@ -2613,9 +2587,7 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 
 // Summary:
 //
-// Disables the Transfer Associated Resources feature.
-//
-// @param request - DisableAssociatedTransferRequest
+// Disables the attached-resource allocation feature for associated resources.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2644,7 +2616,7 @@ func (client *Client) DisableAssociatedTransferWithOptions(runtime *dara.Runtime
 
 // Summary:
 //
-// Disables the Transfer Associated Resources feature.
+// Disables the attached-resource allocation feature for associated resources.
 //
 // @return DisableAssociatedTransferResponse
 func (client *Client) DisableAssociatedTransfer() (_result *DisableAssociatedTransferResponse, _err error) {
@@ -2660,9 +2632,7 @@ func (client *Client) DisableAssociatedTransfer() (_result *DisableAssociatedTra
 
 // Summary:
 //
-// Disables the Automatic Resource Transfer feature. After the feature is disabled, existing custom transfer rules and existing transfer rules for associated resources are deleted. However, existing relationships between resources and resource groups are not affected. If you still want to use this feature, you can enable it again 1 minute later.
-//
-// @param request - DisableAutoGroupingRequest
+// Disables automatic resource group transfer. After this feature is disabled, the custom condition rules and attached-resource transfer rules that have been configured are deleted. The resource groups of existing resources are not affected. If needed, you can re-enable this feature 1 minute after disabling it.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2691,7 +2661,7 @@ func (client *Client) DisableAutoGroupingWithOptions(runtime *dara.RuntimeOption
 
 // Summary:
 //
-// Disables the Automatic Resource Transfer feature. After the feature is disabled, existing custom transfer rules and existing transfer rules for associated resources are deleted. However, existing relationships between resources and resource groups are not affected. If you still want to use this feature, you can enable it again 1 minute later.
+// Disables automatic resource group transfer. After this feature is disabled, the custom condition rules and attached-resource transfer rules that have been configured are deleted. The resource groups of existing resources are not affected. If needed, you can re-enable this feature 1 minute after disabling it.
 //
 // @return DisableAutoGroupingResponse
 func (client *Client) DisableAutoGrouping() (_result *DisableAutoGroupingResponse, _err error) {
@@ -2707,15 +2677,13 @@ func (client *Client) DisableAutoGrouping() (_result *DisableAutoGroupingRespons
 
 // Summary:
 //
-// Disables the Control Policy feature.
+// Disables the control policy feature.
 //
 // Description:
 //
-// After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
+// After you disable the control policy feature, all control policies that are attached to resource folders and member accounts are automatically detached. However, the control policies are not deleted. They cannot be attached to any target nodes.
 //
-// >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
-//
-// @param request - DisableControlPolicyRequest
+// > Disabling the control policy feature affects the permissions of resource folders and member accounts in the entire resource directory. Proceed with caution.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2744,13 +2712,13 @@ func (client *Client) DisableControlPolicyWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// Disables the Control Policy feature.
+// Disables the control policy feature.
 //
 // Description:
 //
-// After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
+// After you disable the control policy feature, all control policies that are attached to resource folders and member accounts are automatically detached. However, the control policies are not deleted. They cannot be attached to any target nodes.
 //
-// >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
+// > Disabling the control policy feature affects the permissions of resource folders and member accounts in the entire resource directory. Proceed with caution.
 //
 // @return DisableControlPolicyResponse
 func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyResponse, _err error) {
@@ -2766,9 +2734,7 @@ func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyRespo
 
 // Summary:
 //
-// Disables group event notification.
-//
-// @param request - DisableResourceGroupNotificationRequest
+// Disables a resource group event notification that is currently enabled. If the notification is already disabled, the error code `UnsupportedOperation.RepeatDisableResourceGroupNotification` is returned. You can call `EnableResourceGroupNotification` to enable the notification first.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2797,7 +2763,7 @@ func (client *Client) DisableResourceGroupNotificationWithOptions(runtime *dara.
 
 // Summary:
 //
-// Disables group event notification.
+// Disables a resource group event notification that is currently enabled. If the notification is already disabled, the error code `UnsupportedOperation.RepeatDisableResourceGroupNotification` is returned. You can call `EnableResourceGroupNotification` to enable the notification first.
 //
 // @return DisableResourceGroupNotificationResponse
 func (client *Client) DisableResourceGroupNotification() (_result *DisableResourceGroupNotificationResponse, _err error) {
@@ -2813,9 +2779,7 @@ func (client *Client) DisableResourceGroupNotification() (_result *DisableResour
 
 // Summary:
 //
-// Enables the Transfer Associated Resources feature.
-//
-// @param request - EnableAssociatedTransferRequest
+// Enables the attached-resource allocation feature for resource group transfers.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2844,7 +2808,7 @@ func (client *Client) EnableAssociatedTransferWithOptions(runtime *dara.RuntimeO
 
 // Summary:
 //
-// Enables the Transfer Associated Resources feature.
+// Enables the attached-resource allocation feature for resource group transfers.
 //
 // @return EnableAssociatedTransferResponse
 func (client *Client) EnableAssociatedTransfer() (_result *EnableAssociatedTransferResponse, _err error) {
@@ -2860,9 +2824,7 @@ func (client *Client) EnableAssociatedTransfer() (_result *EnableAssociatedTrans
 
 // Summary:
 //
-// Enables the Automatic Resource Transfer feature. After the feature is enabled, you can create, update, delete, and query transfer rules.
-//
-// @param request - EnableAutoGroupingRequest
+// Enables automatic grouping. After automatic grouping is enabled, you can create, update, delete, and query automatic grouping rules.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2891,7 +2853,7 @@ func (client *Client) EnableAutoGroupingWithOptions(runtime *dara.RuntimeOptions
 
 // Summary:
 //
-// Enables the Automatic Resource Transfer feature. After the feature is enabled, you can create, update, delete, and query transfer rules.
+// Enables automatic grouping. After automatic grouping is enabled, you can create, update, delete, and query automatic grouping rules.
 //
 // @return EnableAutoGroupingResponse
 func (client *Client) EnableAutoGrouping() (_result *EnableAutoGroupingResponse, _err error) {
@@ -2907,13 +2869,11 @@ func (client *Client) EnableAutoGrouping() (_result *EnableAutoGroupingResponse,
 
 // Summary:
 //
-// Enables the Control Policy feature.
+// Enables the control policy feature by calling EnableControlPolicy.
 //
 // Description:
 //
-// The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
-//
-// @param request - EnableControlPolicyRequest
+// A resource directory control policy is an access control policy based on the resource structure (resource folders or member accounts). It allows you to centrally manage the access permissions border for resource access at each level of the resource directory and establish overall or localized access control principles for your enterprise. Control policies define only the access permissions border and do not actually grant permissions. You must also set permissions by using Resource Access Management (RAM) in a member account before the corresponding identity can have access permissions to resources. For more information, see [Overview of control policies](https://help.aliyun.com/document_detail/178671.html).
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2942,11 +2902,11 @@ func (client *Client) EnableControlPolicyWithOptions(runtime *dara.RuntimeOption
 
 // Summary:
 //
-// Enables the Control Policy feature.
+// Enables the control policy feature by calling EnableControlPolicy.
 //
 // Description:
 //
-// The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
+// A resource directory control policy is an access control policy based on the resource structure (resource folders or member accounts). It allows you to centrally manage the access permissions border for resource access at each level of the resource directory and establish overall or localized access control principles for your enterprise. Control policies define only the access permissions border and do not actually grant permissions. You must also set permissions by using Resource Access Management (RAM) in a member account before the corresponding identity can have access permissions to resources. For more information, see [Overview of control policies](https://help.aliyun.com/document_detail/178671.html).
 //
 // @return EnableControlPolicyResponse
 func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyResponse, _err error) {
@@ -2966,9 +2926,9 @@ func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyRespons
 //
 // Description:
 //
-// You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
+// You can enable a resource directory by using the current logon account or by creating a new management account. For more information, refer to [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
 //
-// In this example, the current account is used to enable a resource directory.
+// This topic provides an example of how to enable a resource directory by using the current logon account.
 //
 // @param request - EnableResourceDirectoryRequest
 //
@@ -3028,9 +2988,9 @@ func (client *Client) EnableResourceDirectoryWithOptions(request *EnableResource
 //
 // Description:
 //
-// You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
+// You can enable a resource directory by using the current logon account or by creating a new management account. For more information, refer to [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
 //
-// In this example, the current account is used to enable a resource directory.
+// This topic provides an example of how to enable a resource directory by using the current logon account.
 //
 // @param request - EnableResourceDirectoryRequest
 //
@@ -3048,9 +3008,7 @@ func (client *Client) EnableResourceDirectory(request *EnableResourceDirectoryRe
 
 // Summary:
 //
-// Enables group event notification.
-//
-// @param request - EnableResourceGroupNotificationRequest
+// Enables resource group event notifications by calling EnableResourceGroupNotification.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3079,7 +3037,7 @@ func (client *Client) EnableResourceGroupNotificationWithOptions(runtime *dara.R
 
 // Summary:
 //
-// Enables group event notification.
+// Enables resource group event notifications by calling EnableResourceGroupNotification.
 //
 // @return EnableResourceGroupNotificationResponse
 func (client *Client) EnableResourceGroupNotification() (_result *EnableResourceGroupNotificationResponse, _err error) {
@@ -3095,11 +3053,7 @@ func (client *Client) EnableResourceGroupNotification() (_result *EnableResource
 
 // Summary:
 //
-// Queries the information of a member.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690****`.
+// Calls GetAccount to retrieve member account information.
 //
 // @param request - GetAccountRequest
 //
@@ -3147,11 +3101,7 @@ func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime 
 
 // Summary:
 //
-// Queries the information of a member.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690****`.
+// Calls GetAccount to retrieve member account information.
 //
 // @param request - GetAccountRequest
 //
@@ -3169,13 +3119,13 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 
 // Summary:
 //
-// Queries the result of a member deletion check.
+// Queries the result of a member deletion check by calling GetAccountDeletionCheckResult.
 //
 // Description:
 //
-// After you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+// After you call [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) to perform a member deletion check task, you can call GetAccountDeletionCheckResult to query the result of the member deletion check. If the deletion check requirements are met, the member account can be deleted. Otherwise, manually handle the non-compliant items until all requirements are met.
 //
-// This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641****`. The response shows that the member does not meet deletion requirements.
+// This topic provides an example on how to query the deletion check result of the member account `179855839641****` that you want to delete. The response shows that the member account does not meet the deletion requirements.
 //
 // @param request - GetAccountDeletionCheckResultRequest
 //
@@ -3219,13 +3169,13 @@ func (client *Client) GetAccountDeletionCheckResultWithOptions(request *GetAccou
 
 // Summary:
 //
-// Queries the result of a member deletion check.
+// Queries the result of a member deletion check by calling GetAccountDeletionCheckResult.
 //
 // Description:
 //
-// After you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+// After you call [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) to perform a member deletion check task, you can call GetAccountDeletionCheckResult to query the result of the member deletion check. If the deletion check requirements are met, the member account can be deleted. Otherwise, manually handle the non-compliant items until all requirements are met.
 //
-// This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641****`. The response shows that the member does not meet deletion requirements.
+// This topic provides an example on how to query the deletion check result of the member account `179855839641****` that you want to delete. The response shows that the member account does not meet the deletion requirements.
 //
 // @param request - GetAccountDeletionCheckResultRequest
 //
@@ -3243,11 +3193,11 @@ func (client *Client) GetAccountDeletionCheckResult(request *GetAccountDeletionC
 
 // Summary:
 //
-// 获取账号删除状态
+// Queries the deletion status of a member account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551****`. The response shows that the member is deleted.
+// This topic provides an example on how to query the deletion status of the member account `169946124551****`. The response shows that the member account has been successfully deleted.
 //
 // @param request - GetAccountDeletionStatusRequest
 //
@@ -3291,11 +3241,11 @@ func (client *Client) GetAccountDeletionStatusWithOptions(request *GetAccountDel
 
 // Summary:
 //
-// 获取账号删除状态
+// Queries the deletion status of a member account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551****`. The response shows that the member is deleted.
+// This topic provides an example on how to query the deletion status of the member account `169946124551****`. The response shows that the member account has been successfully deleted.
 //
 // @param request - GetAccountDeletionStatusRequest
 //
@@ -3313,7 +3263,7 @@ func (client *Client) GetAccountDeletionStatus(request *GetAccountDeletionStatus
 
 // Summary:
 //
-// Queries the information about a transfer rule.
+// Queries the information about an automatic resource group transfer rule.
 //
 // @param request - GetAutoGroupingRuleRequest
 //
@@ -3357,7 +3307,7 @@ func (client *Client) GetAutoGroupingRuleWithOptions(request *GetAutoGroupingRul
 
 // Summary:
 //
-// Queries the information about a transfer rule.
+// Queries the information about an automatic resource group transfer rule.
 //
 // @param request - GetAutoGroupingRuleRequest
 //
@@ -3375,9 +3325,7 @@ func (client *Client) GetAutoGroupingRule(request *GetAutoGroupingRuleRequest) (
 
 // Summary:
 //
-// Queries the status of the Automatic Resource Transfer feature.
-//
-// @param request - GetAutoGroupingStatusRequest
+// Queries the status of automatic resource group transfer settings by calling GetAutoGroupingStatus.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3406,7 +3354,7 @@ func (client *Client) GetAutoGroupingStatusWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// Queries the status of the Automatic Resource Transfer feature.
+// Queries the status of automatic resource group transfer settings by calling GetAutoGroupingStatus.
 //
 // @return GetAutoGroupingStatusResponse
 func (client *Client) GetAutoGroupingStatus() (_result *GetAutoGroupingStatusResponse, _err error) {
@@ -3422,11 +3370,11 @@ func (client *Client) GetAutoGroupingStatus() (_result *GetAutoGroupingStatusRes
 
 // Summary:
 //
-// Queries the details of an access control policy.
+// Queries the details of a control policy.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq****`.
+// This topic provides an example on how to query the details of the control policy whose ID is `cp-SImPt8GCEwiq****`.
 //
 // @param request - GetControlPolicyRequest
 //
@@ -3474,11 +3422,11 @@ func (client *Client) GetControlPolicyWithOptions(request *GetControlPolicyReque
 
 // Summary:
 //
-// Queries the details of an access control policy.
+// Queries the details of a control policy.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq****`.
+// This topic provides an example on how to query the details of the control policy whose ID is `cp-SImPt8GCEwiq****`.
 //
 // @param request - GetControlPolicyRequest
 //
@@ -3496,9 +3444,7 @@ func (client *Client) GetControlPolicy(request *GetControlPolicyRequest) (_resul
 
 // Summary:
 //
-// Queries the status of the Control Policy feature.
-//
-// @param request - GetControlPolicyEnablementStatusRequest
+// Queries the enabling status of the control policy feature.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3527,7 +3473,7 @@ func (client *Client) GetControlPolicyEnablementStatusWithOptions(runtime *dara.
 
 // Summary:
 //
-// Queries the status of the Control Policy feature.
+// Queries the enabling status of the control policy feature.
 //
 // @return GetControlPolicyEnablementStatusResponse
 func (client *Client) GetControlPolicyEnablementStatus() (_result *GetControlPolicyEnablementStatusResponse, _err error) {
@@ -3543,11 +3489,7 @@ func (client *Client) GetControlPolicyEnablementStatus() (_result *GetControlPol
 
 // Summary:
 //
-// Queries the information of a folder.
-//
-// Description:
-//
-// In this example, the information of the folder `fd-Jyl5U7****` is queried.
+// Calls GetFolder to retrieve the information about a folder.
 //
 // @param request - GetFolderRequest
 //
@@ -3591,11 +3533,7 @@ func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *d
 
 // Summary:
 //
-// Queries the information of a folder.
-//
-// Description:
-//
-// In this example, the information of the folder `fd-Jyl5U7****` is queried.
+// Calls GetFolder to retrieve the information about a folder.
 //
 // @param request - GetFolderRequest
 //
@@ -3613,11 +3551,11 @@ func (client *Client) GetFolder(request *GetFolderRequest) (_result *GetFolderRe
 
 // Summary:
 //
-// Queries the information of an invitation.
+// Retrieves handshake information by calling GetHandshake.
 //
 // Description:
 //
-// In this example, the information of the invitation whose ID is `h-ycm4rp****` is queried.
+// This topic provides an example on how to retrieve the information about the handshake whose ID is `h-ycm4rp****`.
 //
 // @param request - GetHandshakeRequest
 //
@@ -3661,11 +3599,11 @@ func (client *Client) GetHandshakeWithOptions(request *GetHandshakeRequest, runt
 
 // Summary:
 //
-// Queries the information of an invitation.
+// Retrieves handshake information by calling GetHandshake.
 //
 // Description:
 //
-// In this example, the information of the invitation whose ID is `h-ycm4rp****` is queried.
+// This topic provides an example on how to retrieve the information about the handshake whose ID is `h-ycm4rp****`.
 //
 // @param request - GetHandshakeRequest
 //
@@ -3683,7 +3621,7 @@ func (client *Client) GetHandshake(request *GetHandshakeRequest) (_result *GetHa
 
 // Summary:
 //
-// Queries the information of a settlement account.
+// Retrieves the billing account information of a member account by calling GetPayerForAccount.
 //
 // @param request - GetPayerForAccountRequest
 //
@@ -3727,7 +3665,7 @@ func (client *Client) GetPayerForAccountWithOptions(request *GetPayerForAccountR
 
 // Summary:
 //
-// Queries the information of a settlement account.
+// Retrieves the billing account information of a member account by calling GetPayerForAccount.
 //
 // @param request - GetPayerForAccountRequest
 //
@@ -3745,7 +3683,7 @@ func (client *Client) GetPayerForAccount(request *GetPayerForAccountRequest) (_r
 
 // Summary:
 //
-// Queries the information about a permission policy.
+// Retrieves information about a specified access policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -3797,7 +3735,7 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *d
 
 // Summary:
 //
-// Queries the information about a permission policy.
+// Retrieves information about a specified access policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -3815,7 +3753,7 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 
 // Summary:
 //
-// Queries the information about a version of a permission policy.
+// Retrieves a version of an access policy.
 //
 // @param request - GetPolicyVersionRequest
 //
@@ -3867,7 +3805,7 @@ func (client *Client) GetPolicyVersionWithOptions(request *GetPolicyVersionReque
 
 // Summary:
 //
-// Queries the information about a version of a permission policy.
+// Retrieves a version of an access policy.
 //
 // @param request - GetPolicyVersionRequest
 //
@@ -3885,13 +3823,11 @@ func (client *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (_resul
 
 // Summary:
 //
-// Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
+// Queries resource directory information. When called by a management account, returns the details of the resource directory created by the management account. When called by a member, returns the details of the resource directory to which the member belongs.
 //
 // Description:
 //
-// This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
-//
-// @param request - GetResourceDirectoryRequest
+// This topic provides an example of how to use a management account to query the details of the resource directory created by the management account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3920,11 +3856,11 @@ func (client *Client) GetResourceDirectoryWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
+// Queries resource directory information. When called by a management account, returns the details of the resource directory created by the management account. When called by a member, returns the details of the resource directory to which the member belongs.
 //
 // Description:
 //
-// This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
+// This topic provides an example of how to use a management account to query the details of the resource directory created by the management account.
 //
 // @return GetResourceDirectoryResponse
 func (client *Client) GetResourceDirectory() (_result *GetResourceDirectoryResponse, _err error) {
@@ -3940,7 +3876,7 @@ func (client *Client) GetResourceDirectory() (_result *GetResourceDirectoryRespo
 
 // Summary:
 //
-// Queries the information of a resource group.
+// Queries the information about a resource group.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -3988,7 +3924,7 @@ func (client *Client) GetResourceGroupWithOptions(request *GetResourceGroupReque
 
 // Summary:
 //
-// Queries the information of a resource group.
+// Queries the information about a resource group.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -4006,9 +3942,7 @@ func (client *Client) GetResourceGroup(request *GetResourceGroupRequest) (_resul
 
 // Summary:
 //
-// Queries the configurations of a resource group administrator.
-//
-// @param request - GetResourceGroupAdminSettingRequest
+// Queries the administrator settings of a resource group.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4037,7 +3971,7 @@ func (client *Client) GetResourceGroupAdminSettingWithOptions(runtime *dara.Runt
 
 // Summary:
 //
-// Queries the configurations of a resource group administrator.
+// Queries the administrator settings of a resource group.
 //
 // @return GetResourceGroupAdminSettingResponse
 func (client *Client) GetResourceGroupAdminSetting() (_result *GetResourceGroupAdminSettingResponse, _err error) {
@@ -4053,9 +3987,7 @@ func (client *Client) GetResourceGroupAdminSetting() (_result *GetResourceGroupA
 
 // Summary:
 //
-// Queries the notification settings of a resource group.
-//
-// @param request - GetResourceGroupNotificationSettingRequest
+// Queries the notification settings of a resource group by calling GetResourceGroupNotificationSetting.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4084,7 +4016,7 @@ func (client *Client) GetResourceGroupNotificationSettingWithOptions(runtime *da
 
 // Summary:
 //
-// Queries the notification settings of a resource group.
+// Queries the notification settings of a resource group by calling GetResourceGroupNotificationSetting.
 //
 // @return GetResourceGroupNotificationSettingResponse
 func (client *Client) GetResourceGroupNotificationSetting() (_result *GetResourceGroupNotificationSettingResponse, _err error) {
@@ -4100,7 +4032,7 @@ func (client *Client) GetResourceGroupNotificationSetting() (_result *GetResourc
 
 // Summary:
 //
-// Queries the number of resources in a visible resource group.
+// Queries the resource count in visible resource groups.
 //
 // @param request - GetResourceGroupResourceCountsRequest
 //
@@ -4156,7 +4088,7 @@ func (client *Client) GetResourceGroupResourceCountsWithOptions(request *GetReso
 
 // Summary:
 //
-// Queries the number of resources in a visible resource group.
+// Queries the resource count in visible resource groups.
 //
 // @param request - GetResourceGroupResourceCountsRequest
 //
@@ -4174,7 +4106,7 @@ func (client *Client) GetResourceGroupResourceCounts(request *GetResourceGroupRe
 
 // Summary:
 //
-// Queries the information about a RAM role.
+// Queries the information about a role by calling GetRole.
 //
 // @param request - GetRoleRequest
 //
@@ -4222,7 +4154,7 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *dara.
 
 // Summary:
 //
-// Queries the information about a RAM role.
+// Queries the information about a role by calling GetRole.
 //
 // @param request - GetRoleRequest
 //
@@ -4240,7 +4172,7 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 
 // Summary:
 //
-// Queries the status of the task that is used to delete a service-linked role.
+// Queries the status of a task that deletes a service-linked role.
 //
 // @param request - GetServiceLinkedRoleDeletionStatusRequest
 //
@@ -4284,7 +4216,7 @@ func (client *Client) GetServiceLinkedRoleDeletionStatusWithOptions(request *Get
 
 // Summary:
 //
-// Queries the status of the task that is used to delete a service-linked role.
+// Queries the status of a task that deletes a service-linked role.
 //
 // @param request - GetServiceLinkedRoleDeletionStatusRequest
 //
@@ -4302,17 +4234,13 @@ func (client *Client) GetServiceLinkedRoleDeletionStatus(request *GetServiceLink
 
 // Summary:
 //
-// Enables a resource directory. After you enable a resource directory, the system automatically creates a root folder and sets the current account as the enterprise management account of the resource directory. The enterprise management account has all administrative permissions on this resource direc
+// Calls InitResourceDirectory to enable a resource directory. After you enable a resource directory, the system creates a Root folder and sets the current account as the management account. The management account has all permissions to manage the resource directory.
 //
 // Description:
 //
-// >
+// > - Use an account that has passed enterprise real-name verification to enable a resource directory. An account that has passed only individual real-name verification cannot enable a resource directory.
 //
-//   - An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-//
-//   - We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
-//
-// @param request - InitResourceDirectoryRequest
+// > - Use the management account only as the administrator of the resource directory. Do not purchase cloud service resources with the management account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4341,15 +4269,13 @@ func (client *Client) InitResourceDirectoryWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// Enables a resource directory. After you enable a resource directory, the system automatically creates a root folder and sets the current account as the enterprise management account of the resource directory. The enterprise management account has all administrative permissions on this resource direc
+// Calls InitResourceDirectory to enable a resource directory. After you enable a resource directory, the system creates a Root folder and sets the current account as the management account. The management account has all permissions to manage the resource directory.
 //
 // Description:
 //
-// >
+// > - Use an account that has passed enterprise real-name verification to enable a resource directory. An account that has passed only individual real-name verification cannot enable a resource directory.
 //
-//   - An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-//
-//   - We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
+// > - Use the management account only as the administrator of the resource directory. Do not purchase cloud service resources with the management account.
 //
 // @return InitResourceDirectoryResponse
 func (client *Client) InitResourceDirectory() (_result *InitResourceDirectoryResponse, _err error) {
@@ -4365,11 +4291,11 @@ func (client *Client) InitResourceDirectory() (_result *InitResourceDirectoryRes
 
 // Summary:
 //
-// Invites an account to join a resource directory.
+// Invites an external account to join a resource directory.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
+// This topic provides an example on how to invite the external account `someone@example.com` to join a resource directory.
 //
 // @param request - InviteAccountToResourceDirectoryRequest
 //
@@ -4425,11 +4351,11 @@ func (client *Client) InviteAccountToResourceDirectoryWithOptions(request *Invit
 
 // Summary:
 //
-// Invites an account to join a resource directory.
+// Invites an external account to join a resource directory.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
+// This topic provides an example on how to invite the external account `someone@example.com` to join a resource directory.
 //
 // @param request - InviteAccountToResourceDirectoryRequest
 //
@@ -4447,11 +4373,11 @@ func (client *Client) InviteAccountToResourceDirectory(request *InviteAccountToR
 
 // Summary:
 //
-// Queries all the members in a resource directory.
+// Queries the list of all member accounts in a resource directory by calling ListAccounts.
 //
 // Description:
 //
-// You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+// The management account of the resource directory and the delegated administrator accounts of trusted services can call this operation.
 //
 // @param request - ListAccountsRequest
 //
@@ -4507,11 +4433,11 @@ func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runt
 
 // Summary:
 //
-// Queries all the members in a resource directory.
+// Queries the list of all member accounts in a resource directory by calling ListAccounts.
 //
 // Description:
 //
-// You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+// The management account of the resource directory and the delegated administrator accounts of trusted services can call this operation.
 //
 // @param request - ListAccountsRequest
 //
@@ -4529,7 +4455,7 @@ func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListA
 
 // Summary:
 //
-// Queries the information of members in a folder.
+// Queries the list of member accounts in a resource folder by calling ListAccountsForParent.
 //
 // @param request - ListAccountsForParentRequest
 //
@@ -4593,7 +4519,7 @@ func (client *Client) ListAccountsForParentWithOptions(request *ListAccountsForP
 
 // Summary:
 //
-// Queries the information of members in a folder.
+// Queries the list of member accounts in a resource folder by calling ListAccountsForParent.
 //
 // @param request - ListAccountsForParentRequest
 //
@@ -4611,7 +4537,7 @@ func (client *Client) ListAccountsForParent(request *ListAccountsForParentReques
 
 // Summary:
 //
-// Queries the information of all the parent folders of a specified folder. The system returns the information of the folders based on their top-down hierarchy.
+// Queries information about all parent folders of a specified folder. The results are displayed in order from top to bottom.
 //
 // @param request - ListAncestorsRequest
 //
@@ -4655,7 +4581,7 @@ func (client *Client) ListAncestorsWithOptions(request *ListAncestorsRequest, ru
 
 // Summary:
 //
-// Queries the information of all the parent folders of a specified folder. The system returns the information of the folders based on their top-down hierarchy.
+// Queries information about all parent folders of a specified folder. The results are displayed in order from top to bottom.
 //
 // @param request - ListAncestorsRequest
 //
@@ -4673,9 +4599,7 @@ func (client *Client) ListAncestors(request *ListAncestorsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the settings of the Transfer Associated Resources feature.
-//
-// @param request - ListAssociatedTransferSettingRequest
+// Retrieves the settings of the associated resource group transfer feature.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4704,7 +4628,7 @@ func (client *Client) ListAssociatedTransferSettingWithOptions(runtime *dara.Run
 
 // Summary:
 //
-// Queries the settings of the Transfer Associated Resources feature.
+// Retrieves the settings of the associated resource group transfer feature.
 //
 // @return ListAssociatedTransferSettingResponse
 func (client *Client) ListAssociatedTransferSetting() (_result *ListAssociatedTransferSettingResponse, _err error) {
@@ -4720,7 +4644,7 @@ func (client *Client) ListAssociatedTransferSetting() (_result *ListAssociatedTr
 
 // Summary:
 //
-// Queries a list of automatic grouping remediation records.
+// Lists auto-grouping remediation records.
 //
 // @param request - ListAutoGroupingRemediationsRequest
 //
@@ -4796,7 +4720,7 @@ func (client *Client) ListAutoGroupingRemediationsWithOptions(request *ListAutoG
 
 // Summary:
 //
-// Queries a list of automatic grouping remediation records.
+// Lists auto-grouping remediation records.
 //
 // @param request - ListAutoGroupingRemediationsRequest
 //
@@ -4814,7 +4738,7 @@ func (client *Client) ListAutoGroupingRemediations(request *ListAutoGroupingReme
 
 // Summary:
 //
-// Queries a list of transfer rules.
+// Queries the list of automatic group transfer rules.
 //
 // @param request - ListAutoGroupingRulesRequest
 //
@@ -4874,7 +4798,7 @@ func (client *Client) ListAutoGroupingRulesWithOptions(request *ListAutoGrouping
 
 // Summary:
 //
-// Queries a list of transfer rules.
+// Queries the list of automatic group transfer rules.
 //
 // @param request - ListAutoGroupingRulesRequest
 //
@@ -4892,11 +4816,7 @@ func (client *Client) ListAutoGroupingRules(request *ListAutoGroupingRulesReques
 
 // Summary:
 //
-// Queries access control policies.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
+// Queries a list of control policies.
 //
 // @param request - ListControlPoliciesRequest
 //
@@ -4952,11 +4872,7 @@ func (client *Client) ListControlPoliciesWithOptions(request *ListControlPolicie
 
 // Summary:
 //
-// Queries access control policies.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
+// Queries a list of control policies.
 //
 // @param request - ListControlPoliciesRequest
 //
@@ -4974,11 +4890,11 @@ func (client *Client) ListControlPolicies(request *ListControlPoliciesRequest) (
 
 // Summary:
 //
-// Queries the access control policies that are attached to a folder or member.
+// Queries the list of control policies attached to a resource folder or member account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to query the list of control policies attached to the resource folder `fd-ZDNPiT****`.
 //
 // @param request - ListControlPolicyAttachmentsForTargetRequest
 //
@@ -5026,11 +4942,11 @@ func (client *Client) ListControlPolicyAttachmentsForTargetWithOptions(request *
 
 // Summary:
 //
-// Queries the access control policies that are attached to a folder or member.
+// Queries the list of control policies attached to a resource folder or member account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to query the list of control policies attached to the resource folder `fd-ZDNPiT****`.
 //
 // @param request - ListControlPolicyAttachmentsForTargetRequest
 //
@@ -5048,11 +4964,7 @@ func (client *Client) ListControlPolicyAttachmentsForTarget(request *ListControl
 
 // Summary:
 //
-// Queries delegated administrator accounts.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
+// Queries the list of delegated administrator accounts for a trusted service.
 //
 // @param request - ListDelegatedAdministratorsRequest
 //
@@ -5104,11 +5016,7 @@ func (client *Client) ListDelegatedAdministratorsWithOptions(request *ListDelega
 
 // Summary:
 //
-// Queries delegated administrator accounts.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
+// Queries the list of delegated administrator accounts for a trusted service.
 //
 // @param request - ListDelegatedAdministratorsRequest
 //
@@ -5126,11 +5034,7 @@ func (client *Client) ListDelegatedAdministrators(request *ListDelegatedAdminist
 
 // Summary:
 //
-// Queries the trusted services for which a member is specified as a delegated administrator account.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348****` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
+// Queries the trusted services for which a specified member is set as a delegated administrator account.
 //
 // @param request - ListDelegatedServicesForAccountRequest
 //
@@ -5174,11 +5078,7 @@ func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDe
 
 // Summary:
 //
-// Queries the trusted services for which a member is specified as a delegated administrator account.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348****` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
+// Queries the trusted services for which a specified member is set as a delegated administrator account.
 //
 // @param request - ListDelegatedServicesForAccountRequest
 //
@@ -5196,11 +5096,11 @@ func (client *Client) ListDelegatedServicesForAccount(request *ListDelegatedServ
 
 // Summary:
 //
-// Queries the information of all subfolders of a folder.
+// Queries the subfolders of a specified folder.
 //
 // Description:
 //
-// >  You can view the information of only the first-level subfolders of a folder.
+// > You can query only the subfolders at the next level of the specified folder. You cannot query subfolders at deeper levels.
 //
 // @param request - ListFoldersForParentRequest
 //
@@ -5256,11 +5156,11 @@ func (client *Client) ListFoldersForParentWithOptions(request *ListFoldersForPar
 
 // Summary:
 //
-// Queries the information of all subfolders of a folder.
+// Queries the subfolders of a specified folder.
 //
 // Description:
 //
-// >  You can view the information of only the first-level subfolders of a folder.
+// > You can query only the subfolders at the next level of the specified folder. You cannot query subfolders at deeper levels.
 //
 // @param request - ListFoldersForParentRequest
 //
@@ -5278,11 +5178,11 @@ func (client *Client) ListFoldersForParent(request *ListFoldersForParentRequest)
 
 // Summary:
 //
-// Queries the invitations that are associated with an account.
+// Queries the invitation records under the current account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500****`. The response shows that two invitations are associated with the management account.
+// This topic provides an example on how to query the invitation records of the current management account `172841235500****`.
 //
 // @param request - ListHandshakesForAccountRequest
 //
@@ -5330,11 +5230,11 @@ func (client *Client) ListHandshakesForAccountWithOptions(request *ListHandshake
 
 // Summary:
 //
-// Queries the invitations that are associated with an account.
+// Queries the invitation records under the current account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500****`. The response shows that two invitations are associated with the management account.
+// This topic provides an example on how to query the invitation records of the current management account `172841235500****`.
 //
 // @param request - ListHandshakesForAccountRequest
 //
@@ -5352,7 +5252,7 @@ func (client *Client) ListHandshakesForAccount(request *ListHandshakesForAccount
 
 // Summary:
 //
-// Queries invitations in a resource directory.
+// Queries all invitations in a resource directory.
 //
 // @param request - ListHandshakesForResourceDirectoryRequest
 //
@@ -5400,7 +5300,7 @@ func (client *Client) ListHandshakesForResourceDirectoryWithOptions(request *Lis
 
 // Summary:
 //
-// Queries invitations in a resource directory.
+// Queries all invitations in a resource directory.
 //
 // @param request - ListHandshakesForResourceDirectoryRequest
 //
@@ -5418,7 +5318,7 @@ func (client *Client) ListHandshakesForResourceDirectory(request *ListHandshakes
 
 // Summary:
 //
-// Queries a list of permission policies.
+// Calls ListPolicies to query a list of access policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -5474,7 +5374,7 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 
 // Summary:
 //
-// Queries a list of permission policies.
+// Calls ListPolicies to query a list of access policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -5492,17 +5392,17 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// Queries policy attachment records.
+// Queries the list of policy attachments by calling ListPolicyAttachments.
 //
 // Description:
 //
-// You can view the following information:
+// You can query the following information:
 //
-//   - Policy attachment records within an Alibaba Cloud account or a resource group
+// - All authorization records under an Alibaba Cloud account or a resource group.
 //
-//   - Permission policies attached to RAM users, RAM user groups, or RAM roles
+// - All access policies granted to a Resource Access Management (RAM) user, RAM user group, or RAM role.
 //
-//   - RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
+// - RAM users, RAM user groups, and RAM roles that have a specific permission under an Alibaba Cloud account or a resource group.
 //
 // @param request - ListPolicyAttachmentsRequest
 //
@@ -5574,17 +5474,17 @@ func (client *Client) ListPolicyAttachmentsWithOptions(request *ListPolicyAttach
 
 // Summary:
 //
-// Queries policy attachment records.
+// Queries the list of policy attachments by calling ListPolicyAttachments.
 //
 // Description:
 //
-// You can view the following information:
+// You can query the following information:
 //
-//   - Policy attachment records within an Alibaba Cloud account or a resource group
+// - All authorization records under an Alibaba Cloud account or a resource group.
 //
-//   - Permission policies attached to RAM users, RAM user groups, or RAM roles
+// - All access policies granted to a Resource Access Management (RAM) user, RAM user group, or RAM role.
 //
-//   - RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
+// - RAM users, RAM user groups, and RAM roles that have a specific permission under an Alibaba Cloud account or a resource group.
 //
 // @param request - ListPolicyAttachmentsRequest
 //
@@ -5602,7 +5502,7 @@ func (client *Client) ListPolicyAttachments(request *ListPolicyAttachmentsReques
 
 // Summary:
 //
-// Queries a list of versions of a policy.
+// Queries the versions of an access policy.
 //
 // @param request - ListPolicyVersionsRequest
 //
@@ -5650,7 +5550,7 @@ func (client *Client) ListPolicyVersionsWithOptions(request *ListPolicyVersionsR
 
 // Summary:
 //
-// Queries a list of versions of a policy.
+// Queries the versions of an access policy.
 //
 // @param request - ListPolicyVersionsRequest
 //
@@ -5668,7 +5568,7 @@ func (client *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (_r
 
 // Summary:
 //
-// Queries whether a specific resource type or a given cloud service supports resource group events.
+// Lists the capability items of resource groups.
 //
 // @param request - ListResourceGroupCapabilityRequest
 //
@@ -5720,7 +5620,7 @@ func (client *Client) ListResourceGroupCapabilityWithOptions(request *ListResour
 
 // Summary:
 //
-// Queries whether a specific resource type or a given cloud service supports resource group events.
+// Lists the capability items of resource groups.
 //
 // @param request - ListResourceGroupCapabilityRequest
 //
@@ -5738,13 +5638,11 @@ func (client *Client) ListResourceGroupCapability(request *ListResourceGroupCapa
 
 // Summary:
 //
-// Queries resource groups.
+// Queries the list of resource groups.
 //
 // Description:
 //
-// You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
-//
-// This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2****` and `rg-9gLOoK****` within the current account.
+// You can call this operation to query all resource groups under the current account. You can also filter resource groups by resource group status, resource group ID, resource group identifier, or resource group display name.
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -5820,13 +5718,11 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 // Summary:
 //
-// Queries resource groups.
+// Queries the list of resource groups.
 //
 // Description:
 //
-// You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
-//
-// This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2****` and `rg-9gLOoK****` within the current account.
+// You can call this operation to query all resource groups under the current account. You can also filter resource groups by resource group status, resource group ID, resource group identifier, or resource group display name.
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -5844,7 +5740,7 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 
 // Summary:
 //
-// Queries resource groups and their user authorization information.
+// Lists resource groups along with user authorization details.
 //
 // @param request - ListResourceGroupsWithAuthDetailsRequest
 //
@@ -5924,7 +5820,7 @@ func (client *Client) ListResourceGroupsWithAuthDetailsWithOptions(request *List
 
 // Summary:
 //
-// Queries resource groups and their user authorization information.
+// Lists resource groups along with user authorization details.
 //
 // @param request - ListResourceGroupsWithAuthDetailsRequest
 //
@@ -5942,13 +5838,11 @@ func (client *Client) ListResourceGroupsWithAuthDetails(request *ListResourceGro
 
 // Summary:
 //
-// Queries resources that can be accessed by the current account in resource groups.
+// Queries the resources in the resource groups accessible to the current account.
 //
 // Description:
 //
-// >  You can use a RAM role that is not associated with a session policy to call this API operation.
-//
-// This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+// > This API can be called by assuming a RAM role, but session policies for the role are not supported.
 //
 // @param request - ListResourcesRequest
 //
@@ -5963,6 +5857,10 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Count) {
+		query["Count"] = request.Count
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -6020,13 +5918,11 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, ru
 
 // Summary:
 //
-// Queries resources that can be accessed by the current account in resource groups.
+// Queries the resources in the resource groups accessible to the current account.
 //
 // Description:
 //
-// >  You can use a RAM role that is not associated with a session policy to call this API operation.
-//
-// This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+// > This API can be called by assuming a RAM role, but session policies for the role are not supported.
 //
 // @param request - ListResourcesRequest
 //
@@ -6044,7 +5940,7 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries a list of RAM roles.
+// Queries the list of roles by calling ListRoles.
 //
 // @param request - ListRolesRequest
 //
@@ -6096,7 +5992,7 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *d
 
 // Summary:
 //
-// Queries a list of RAM roles.
+// Queries the list of roles by calling ListRoles.
 //
 // @param request - ListRolesRequest
 //
@@ -6114,11 +6010,7 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 
 // Summary:
 //
-// Queries tag keys.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
+// Queries the tag key list of resource directory member accounts by calling ListTagKeys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -6174,11 +6066,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 
 // Summary:
 //
-// Queries tag keys.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
+// Queries the tag key list of resource directory member accounts by calling ListTagKeys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -6196,11 +6084,7 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 
 // Summary:
 //
-// Queries the tags that are added to resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq****`. The response shows that only the `k1:v1` tag is added to the resource group.
+// Queries the tags that are attached to a resource group or a resource directory member.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -6260,11 +6144,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are added to resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq****`. The response shows that only the `k1:v1` tag is added to the resource group.
+// Queries the tags that are attached to a resource group or a resource directory member.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -6282,11 +6162,13 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the tag values of a tag key.
+// Queries the tag values of a specified tag key by calling ListTagValues.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
+// ### Usage notes
+//
+// This topic provides an example on how to query the tag values of the tag key k1. The response shows that the tag value corresponding to the tag key k1 is v1.
 //
 // @param request - ListTagValuesRequest
 //
@@ -6346,11 +6228,13 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 
 // Summary:
 //
-// Queries the tag values of a tag key.
+// Queries the tag values of a specified tag key by calling ListTagValues.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
+// ### Usage notes
+//
+// This topic provides an example on how to query the tag values of the tag key k1. The response shows that the tag value corresponding to the tag key k1 is v1.
 //
 // @param request - ListTagValuesRequest
 //
@@ -6368,11 +6252,7 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the objects to which a specific control policy is attached.
-//
-// Description:
-//
-// In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN****` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
+// Queries the nodes to which a control policy is attached.
 //
 // @param request - ListTargetAttachmentsForControlPolicyRequest
 //
@@ -6424,11 +6304,7 @@ func (client *Client) ListTargetAttachmentsForControlPolicyWithOptions(request *
 
 // Summary:
 //
-// Queries the objects to which a specific control policy is attached.
-//
-// Description:
-//
-// In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN****` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
+// Queries the nodes to which a control policy is attached.
 //
 // @param request - ListTargetAttachmentsForControlPolicyRequest
 //
@@ -6446,13 +6322,11 @@ func (client *Client) ListTargetAttachmentsForControlPolicy(request *ListTargetA
 
 // Summary:
 //
-// Queries the trusted services that are enabled within an enterprise management account or delegated administrator account.
+// Queries the list of trusted services enabled by the management account or a delegated administrator account.
 //
 // Description:
 //
-// >  Only an enterprise management account or delegated administrator account can be used to call this operation.
-//
-// In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
+// > This operation can be called only by the management account or a delegated administrator account.
 //
 // @param request - ListTrustedServiceStatusRequest
 //
@@ -6504,13 +6378,11 @@ func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedSe
 
 // Summary:
 //
-// Queries the trusted services that are enabled within an enterprise management account or delegated administrator account.
+// Queries the list of trusted services enabled by the management account or a delegated administrator account.
 //
 // Description:
 //
-// >  Only an enterprise management account or delegated administrator account can be used to call this operation.
-//
-// In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
+// > This operation can be called only by the management account or a delegated administrator account.
 //
 // @param request - ListTrustedServiceStatusRequest
 //
@@ -6528,7 +6400,7 @@ func (client *Client) ListTrustedServiceStatus(request *ListTrustedServiceStatus
 
 // Summary:
 //
-// Queries the events of resource groups.
+// Queries resource group events.
 //
 // @param request - LookupResourceGroupEventsRequest
 //
@@ -6600,7 +6472,7 @@ func (client *Client) LookupResourceGroupEventsWithOptions(request *LookupResour
 
 // Summary:
 //
-// Queries the events of resource groups.
+// Queries resource group events.
 //
 // @param request - LookupResourceGroupEventsRequest
 //
@@ -6618,7 +6490,7 @@ func (client *Client) LookupResourceGroupEvents(request *LookupResourceGroupEven
 
 // Summary:
 //
-// Moves a member account from a folder to another.
+// Moves a member to another folder.
 //
 // @param request - MoveAccountRequest
 //
@@ -6666,7 +6538,7 @@ func (client *Client) MoveAccountWithOptions(request *MoveAccountRequest, runtim
 
 // Summary:
 //
-// Moves a member account from a folder to another.
+// Moves a member to another folder.
 //
 // @param request - MoveAccountRequest
 //
@@ -6684,13 +6556,13 @@ func (client *Client) MoveAccount(request *MoveAccountRequest) (_result *MoveAcc
 
 // Summary:
 //
-// Moves resources from one resource group to another. You can move multiple resources that reside in different regions, are used by different Alibaba Cloud services, or belong to different resource groups.
+// Calls MoveResources to move resources from one resource group to another.
 //
 // Description:
 //
-// For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the **Supported by the API*	- column in [Alibaba Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
+// Supports batch transfer of resources across regions, cloud services, and resource groups.
 //
-// In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1****` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
+// For cloud services that support resource group transfer, see the **API*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 //
 // @param request - MoveResourcesRequest
 //
@@ -6738,13 +6610,13 @@ func (client *Client) MoveResourcesWithOptions(request *MoveResourcesRequest, ru
 
 // Summary:
 //
-// Moves resources from one resource group to another. You can move multiple resources that reside in different regions, are used by different Alibaba Cloud services, or belong to different resource groups.
+// Calls MoveResources to move resources from one resource group to another.
 //
 // Description:
 //
-// For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the **Supported by the API*	- column in [Alibaba Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
+// Supports batch transfer of resources across regions, cloud services, and resource groups.
 //
-// In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1****` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
+// For cloud services that support resource group transfer, see the **API*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 //
 // @param request - MoveResourcesRequest
 //
@@ -6762,7 +6634,7 @@ func (client *Client) MoveResources(request *MoveResourcesRequest) (_result *Mov
 
 // Summary:
 //
-// Upgrades a resource account to a cloud account.
+// Upgrades a resource account to an Alibaba Cloud account. This is an asynchronous operation.
 //
 // @param request - PromoteResourceAccountRequest
 //
@@ -6810,7 +6682,7 @@ func (client *Client) PromoteResourceAccountWithOptions(request *PromoteResource
 
 // Summary:
 //
-// Upgrades a resource account to a cloud account.
+// Upgrades a resource account to an Alibaba Cloud account. This is an asynchronous operation.
 //
 // @param request - PromoteResourceAccountRequest
 //
@@ -6828,21 +6700,19 @@ func (client *Client) PromoteResourceAccount(request *PromoteResourceAccountRequ
 
 // Summary:
 //
-// Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+// Sets a member account in a resource directory as a delegated administrator account for a trusted service.
 //
 // Description:
 //
-// The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
+// After the settings are complete, the delegated administrator account is granted authorization to access the organizational information of the resource directory, which provides visibility into the organization members and structure. The delegated administrator account executes service-related management operations on behalf of the management account in the specified trusted service.
 //
-// When you call this operation, you must take note of the following limits:
+// Limits:
 //
-//   - Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+// - Only some trusted services support the delegated administrator feature. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
 //
-//   - Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+// - Only the management account of the resource directory and authorized Resource Access Management (RAM) users and RAM roles under the management account can invoke this API operation.
 //
-//   - The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-//
-// This topic provides an example on how to call the API operation to specify the member `181761095690****` as a delegated administrator account of Cloud Firewall.
+// - The maximum number of delegated administrator accounts that can be added is defined by each trusted service.
 //
 // @param request - RegisterDelegatedAdministratorRequest
 //
@@ -6890,21 +6760,19 @@ func (client *Client) RegisterDelegatedAdministratorWithOptions(request *Registe
 
 // Summary:
 //
-// Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+// Sets a member account in a resource directory as a delegated administrator account for a trusted service.
 //
 // Description:
 //
-// The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
+// After the settings are complete, the delegated administrator account is granted authorization to access the organizational information of the resource directory, which provides visibility into the organization members and structure. The delegated administrator account executes service-related management operations on behalf of the management account in the specified trusted service.
 //
-// When you call this operation, you must take note of the following limits:
+// Limits:
 //
-//   - Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+// - Only some trusted services support the delegated administrator feature. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
 //
-//   - Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+// - Only the management account of the resource directory and authorized Resource Access Management (RAM) users and RAM roles under the management account can invoke this API operation.
 //
-//   - The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-//
-// This topic provides an example on how to call the API operation to specify the member `181761095690****` as a delegated administrator account of Cloud Firewall.
+// - The maximum number of delegated administrator accounts that can be added is defined by each trusted service.
 //
 // @param request - RegisterDelegatedAdministratorRequest
 //
@@ -6922,11 +6790,7 @@ func (client *Client) RegisterDelegatedAdministrator(request *RegisterDelegatedA
 
 // Summary:
 //
-// Removes a member of the cloud account type. After you remove a member of the cloud account type, the member is no longer managed by the management account of the resource directory to which the member belonged.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to remove the member `177242285274****` from a resource directory.
+// Removes a member of the cloud account type. After the member is removed, it exists as an independent Alibaba Cloud account and is no longer managed by the management account of the resource directory.
 //
 // @param request - RemoveCloudAccountRequest
 //
@@ -6970,11 +6834,7 @@ func (client *Client) RemoveCloudAccountWithOptions(request *RemoveCloudAccountR
 
 // Summary:
 //
-// Removes a member of the cloud account type. After you remove a member of the cloud account type, the member is no longer managed by the management account of the resource directory to which the member belonged.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to remove the member `177242285274****` from a resource directory.
+// Removes a member of the cloud account type. After the member is removed, it exists as an independent Alibaba Cloud account and is no longer managed by the management account of the resource directory.
 //
 // @param request - RemoveCloudAccountRequest
 //
@@ -6992,7 +6852,7 @@ func (client *Client) RemoveCloudAccount(request *RemoveCloudAccountRequest) (_r
 
 // Summary:
 //
-// Resends an email that is used to confirm the creation of a cloud account.
+// Resends the confirmation email for creating a cloud account.
 //
 // @param request - ResendCreateCloudAccountEmailRequest
 //
@@ -7036,7 +6896,7 @@ func (client *Client) ResendCreateCloudAccountEmailWithOptions(request *ResendCr
 
 // Summary:
 //
-// Resends an email that is used to confirm the creation of a cloud account.
+// Resends the confirmation email for creating a cloud account.
 //
 // @param request - ResendCreateCloudAccountEmailRequest
 //
@@ -7054,7 +6914,7 @@ func (client *Client) ResendCreateCloudAccountEmail(request *ResendCreateCloudAc
 
 // Summary:
 //
-// Resends an email that is used to confirm the upgrade from a resource account to a cloud account.
+// Resends the confirmation email for upgrading a resource account to a cloud account.
 //
 // @param request - ResendPromoteResourceAccountEmailRequest
 //
@@ -7098,7 +6958,7 @@ func (client *Client) ResendPromoteResourceAccountEmailWithOptions(request *Rese
 
 // Summary:
 //
-// Resends an email that is used to confirm the upgrade from a resource account to a cloud account.
+// Resends the confirmation email for upgrading a resource account to a cloud account.
 //
 // @param request - ResendPromoteResourceAccountEmailRequest
 //
@@ -7116,7 +6976,7 @@ func (client *Client) ResendPromoteResourceAccountEmail(request *ResendPromoteRe
 
 // Summary:
 //
-// Resends a verification email for the email address change of a member.
+// Resends the confirmation email for changing the email address of a member account.
 //
 // @param request - RetryChangeAccountEmailRequest
 //
@@ -7160,7 +7020,7 @@ func (client *Client) RetryChangeAccountEmailWithOptions(request *RetryChangeAcc
 
 // Summary:
 //
-// Resends a verification email for the email address change of a member.
+// Resends the confirmation email for changing the email address of a member account.
 //
 // @param request - RetryChangeAccountEmailRequest
 //
@@ -7178,13 +7038,11 @@ func (client *Client) RetryChangeAccountEmail(request *RetryChangeAccountEmailRe
 
 // Summary:
 //
-// Sends a verification code to the mobile phone number that you want to bind to a resource account in a resource directory for security purposes.
+// Sends a verification code to a secure phone number when you set the secure phone number for a member of the resource account type by calling SendVerificationCodeForBindSecureMobilePhone.
 //
 // Description:
 //
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-//
-// In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348****`.
+// To ensure that the system can record the specific operator of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource directory management permission (AliyunResourceDirectoryFullAccess) to call this API operation.
 //
 // @param request - SendVerificationCodeForBindSecureMobilePhoneRequest
 //
@@ -7232,13 +7090,11 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithOptions(re
 
 // Summary:
 //
-// Sends a verification code to the mobile phone number that you want to bind to a resource account in a resource directory for security purposes.
+// Sends a verification code to a secure phone number when you set the secure phone number for a member of the resource account type by calling SendVerificationCodeForBindSecureMobilePhone.
 //
 // Description:
 //
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-//
-// In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348****`.
+// To ensure that the system can record the specific operator of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource directory management permission (AliyunResourceDirectoryFullAccess) to call this API operation.
 //
 // @param request - SendVerificationCodeForBindSecureMobilePhoneRequest
 //
@@ -7256,11 +7112,11 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhone(request *Send
 
 // Summary:
 //
-// Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
+// Sends a verification code to the secure phone number of a new management account when you call SendVerificationCodeForEnableRD to enable a resource directory by creating a new management account.
 //
 // Description:
 //
-// Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+// Each Alibaba Cloud account can send up to 100 verification codes per day.
 //
 // @param request - SendVerificationCodeForEnableRDRequest
 //
@@ -7304,11 +7160,11 @@ func (client *Client) SendVerificationCodeForEnableRDWithOptions(request *SendVe
 
 // Summary:
 //
-// Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
+// Sends a verification code to the secure phone number of a new management account when you call SendVerificationCodeForEnableRD to enable a resource directory by creating a new management account.
 //
 // Description:
 //
-// Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+// Each Alibaba Cloud account can send up to 100 verification codes per day.
 //
 // @param request - SendVerificationCodeForEnableRDRequest
 //
@@ -7326,7 +7182,7 @@ func (client *Client) SendVerificationCodeForEnableRD(request *SendVerificationC
 
 // Summary:
 //
-// Sets a default version for a permission policy.
+// Sets the default version of an access policy.
 //
 // @param request - SetDefaultPolicyVersionRequest
 //
@@ -7374,7 +7230,7 @@ func (client *Client) SetDefaultPolicyVersionWithOptions(request *SetDefaultPoli
 
 // Summary:
 //
-// Sets a default version for a permission policy.
+// Sets the default version of an access policy.
 //
 // @param request - SetDefaultPolicyVersionRequest
 //
@@ -7392,11 +7248,11 @@ func (client *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRe
 
 // Summary:
 //
-// Enables or disables the member deletion feature.
+// Enables or disables the member deletion permission by calling SetMemberDeletionPermission.
 //
 // Description:
 //
-// Members of the resource account type can be deleted only after the member deletion feature is enabled.
+// You can delete members of the resource account type only after the member deletion permission is enabled.
 //
 // @param request - SetMemberDeletionPermissionRequest
 //
@@ -7440,11 +7296,11 @@ func (client *Client) SetMemberDeletionPermissionWithOptions(request *SetMemberD
 
 // Summary:
 //
-// Enables or disables the member deletion feature.
+// Enables or disables the member deletion permission by calling SetMemberDeletionPermission.
 //
 // Description:
 //
-// Members of the resource account type can be deleted only after the member deletion feature is enabled.
+// You can delete members of the resource account type only after the member deletion permission is enabled.
 //
 // @param request - SetMemberDeletionPermissionRequest
 //
@@ -7462,11 +7318,7 @@ func (client *Client) SetMemberDeletionPermission(request *SetMemberDeletionPerm
 
 // Summary:
 //
-// Adds tags to resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq****`.
+// Attaches labels to resource groups or member accounts of a resource directory.
 //
 // @param request - TagResourcesRequest
 //
@@ -7518,11 +7370,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds tags to resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq****`.
+// Attaches labels to resource groups or member accounts of a resource directory.
 //
 // @param request - TagResourcesRequest
 //
@@ -7540,11 +7388,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes tags from resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr****`.
+// Unbinds tags from resource groups or resource directory members.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7600,11 +7444,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr****`.
+// Unbinds tags from resource groups or resource directory members.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7622,17 +7462,17 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Changes the display name of a member, or switches the type of a member.
+// Modifies the name of a member or switches the member type by calling UpdateAccount.
 //
 // Description:
 //
-//	  To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+// ### Before you begin
 //
-//		- Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
+// - To ensure that the system can record the specific operator of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource folder management permission (AliyunResourceDirectoryFullAccess) to invoke this API operation.
 //
-//		- Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
+// - For the conditions that must be met to switch a resource account to a cloud account, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
 //
-// This example provides an example on how to call the API operation to change the display name of the member `12323344****` to `admin`.
+// - For the conditions that must be met to switch a cloud account to a resource account, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
 //
 // @param request - UpdateAccountRequest
 //
@@ -7684,17 +7524,17 @@ func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, ru
 
 // Summary:
 //
-// Changes the display name of a member, or switches the type of a member.
+// Modifies the name of a member or switches the member type by calling UpdateAccount.
 //
 // Description:
 //
-//	  To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+// ### Before you begin
 //
-//		- Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
+// - To ensure that the system can record the specific operator of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource folder management permission (AliyunResourceDirectoryFullAccess) to invoke this API operation.
 //
-//		- Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
+// - For the conditions that must be met to switch a resource account to a cloud account, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
 //
-// This example provides an example on how to call the API operation to change the display name of the member `12323344****` to `admin`.
+// - For the conditions that must be met to switch a cloud account to a resource account, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
 //
 // @param request - UpdateAccountRequest
 //
@@ -7712,11 +7552,11 @@ func (client *Client) UpdateAccount(request *UpdateAccountRequest) (_result *Upd
 
 // Summary:
 //
-// Updates the settings of the Transfer Associated Resources feature.
+// Updates the settings of the associated resource group transfer feature by calling UpdateAssociatedTransferSetting.
 //
 // Description:
 //
-// For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](https://help.aliyun.com/document_detail/606232.html).
+// For cloud resources that support the attached-resource allocation feature, see [Attached-resource allocation](https://help.aliyun.com/document_detail/606232.html).
 //
 // @param request - UpdateAssociatedTransferSettingRequest
 //
@@ -7764,11 +7604,11 @@ func (client *Client) UpdateAssociatedTransferSettingWithOptions(request *Update
 
 // Summary:
 //
-// Updates the settings of the Transfer Associated Resources feature.
+// Updates the settings of the associated resource group transfer feature by calling UpdateAssociatedTransferSetting.
 //
 // Description:
 //
-// For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](https://help.aliyun.com/document_detail/606232.html).
+// For cloud resources that support the attached-resource allocation feature, see [Attached-resource allocation](https://help.aliyun.com/document_detail/606232.html).
 //
 // @param request - UpdateAssociatedTransferSettingRequest
 //
@@ -7786,7 +7626,7 @@ func (client *Client) UpdateAssociatedTransferSetting(request *UpdateAssociatedT
 
 // Summary:
 //
-// Updates the configuration of the Automatic Resource Transfer feature. You can update only the configuration of the Transfer Existing Associated Resources feature.
+// Calls UpdateAutoGroupingConfig to update the automatic group transfer settings. Currently, only the setting for whether to enable existing associated resources to follow the group transfer task is supported.
 //
 // @param request - UpdateAutoGroupingConfigRequest
 //
@@ -7830,7 +7670,7 @@ func (client *Client) UpdateAutoGroupingConfigWithOptions(request *UpdateAutoGro
 
 // Summary:
 //
-// Updates the configuration of the Automatic Resource Transfer feature. You can update only the configuration of the Transfer Existing Associated Resources feature.
+// Calls UpdateAutoGroupingConfig to update the automatic group transfer settings. Currently, only the setting for whether to enable existing associated resources to follow the group transfer task is supported.
 //
 // @param request - UpdateAutoGroupingConfigRequest
 //
@@ -7848,7 +7688,7 @@ func (client *Client) UpdateAutoGroupingConfig(request *UpdateAutoGroupingConfig
 
 // Summary:
 //
-// Updates a transfer rule.
+// Updates an automatic resource group transfer rule by calling UpdateAutoGroupingRule.
 //
 // @param request - UpdateAutoGroupingRuleRequest
 //
@@ -7936,7 +7776,7 @@ func (client *Client) UpdateAutoGroupingRuleWithOptions(request *UpdateAutoGroup
 
 // Summary:
 //
-// Updates a transfer rule.
+// Updates an automatic resource group transfer rule by calling UpdateAutoGroupingRule.
 //
 // @param request - UpdateAutoGroupingRuleRequest
 //
@@ -7954,11 +7794,11 @@ func (client *Client) UpdateAutoGroupingRule(request *UpdateAutoGroupingRuleRequ
 
 // Summary:
 //
-// Updates a custom access control policy.
+// Modifies a custom control policy by calling UpdateControlPolicy.
 //
 // Description:
 //
-// In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN****` is changed to `NewControlPolicy`.
+// This topic provides an example on how to modify the name of the control policy `cp-jExXAqIYkwHN****` to `NewControlPolicy`.
 //
 // @param request - UpdateControlPolicyRequest
 //
@@ -8014,11 +7854,11 @@ func (client *Client) UpdateControlPolicyWithOptions(request *UpdateControlPolic
 
 // Summary:
 //
-// Updates a custom access control policy.
+// Modifies a custom control policy by calling UpdateControlPolicy.
 //
 // Description:
 //
-// In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN****` is changed to `NewControlPolicy`.
+// This topic provides an example on how to modify the name of the control policy `cp-jExXAqIYkwHN****` to `NewControlPolicy`.
 //
 // @param request - UpdateControlPolicyRequest
 //
@@ -8036,7 +7876,7 @@ func (client *Client) UpdateControlPolicy(request *UpdateControlPolicyRequest) (
 
 // Summary:
 //
-// Changes the name of a folder.
+// Modifies the name of a folder by calling UpdateFolder.
 //
 // @param request - UpdateFolderRequest
 //
@@ -8084,7 +7924,7 @@ func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runt
 
 // Summary:
 //
-// Changes the name of a folder.
+// Modifies the name of a folder by calling UpdateFolder.
 //
 // @param request - UpdateFolderRequest
 //
@@ -8102,11 +7942,7 @@ func (client *Client) UpdateFolder(request *UpdateFolderRequest) (_result *Updat
 
 // Summary:
 //
-// Updates the basic information of a resource group.
-//
-// Description:
-//
-// In this example, the display name of the resource group `rg-9gLOoK****` is changed to `project`.
+// Modifies the display name of a resource group.
 //
 // @param request - UpdateResourceGroupRequest
 //
@@ -8154,11 +7990,7 @@ func (client *Client) UpdateResourceGroupWithOptions(request *UpdateResourceGrou
 
 // Summary:
 //
-// Updates the basic information of a resource group.
-//
-// Description:
-//
-// In this example, the display name of the resource group `rg-9gLOoK****` is changed to `project`.
+// Modifies the display name of a resource group.
 //
 // @param request - UpdateResourceGroupRequest
 //
@@ -8176,7 +8008,7 @@ func (client *Client) UpdateResourceGroup(request *UpdateResourceGroupRequest) (
 
 // Summary:
 //
-// Updates the configurations of a resource group administrator.
+// Updates the administrator settings of a resource group by calling UpdateResourceGroupAdminSetting.
 //
 // @param request - UpdateResourceGroupAdminSettingRequest
 //
@@ -8220,7 +8052,7 @@ func (client *Client) UpdateResourceGroupAdminSettingWithOptions(request *Update
 
 // Summary:
 //
-// Updates the configurations of a resource group administrator.
+// Updates the administrator settings of a resource group by calling UpdateResourceGroupAdminSetting.
 //
 // @param request - UpdateResourceGroupAdminSettingRequest
 //
@@ -8238,11 +8070,7 @@ func (client *Client) UpdateResourceGroupAdminSetting(request *UpdateResourceGro
 
 // Summary:
 //
-// Updates the information about a Resource Access Management (RAM) role.
-//
-// Description:
-//
-// In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
+// Updates the information of a RAM role.
 //
 // @param request - UpdateRoleRequest
 //
@@ -8298,11 +8126,7 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime 
 
 // Summary:
 //
-// Updates the information about a Resource Access Management (RAM) role.
-//
-// Description:
-//
-// In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
+// Updates the information of a RAM role.
 //
 // @param request - UpdateRoleRequest
 //

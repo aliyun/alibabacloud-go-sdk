@@ -16,9 +16,9 @@ type iInviteAccountToResourceDirectoryResponseBody interface {
 }
 
 type InviteAccountToResourceDirectoryResponseBody struct {
-	// The information of the invitation.
+	// The invitation information.
 	Handshake *InviteAccountToResourceDirectoryResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *InviteAccountToResourceDirectoryResponseBody) Validate() error {
 }
 
 type InviteAccountToResourceDirectoryResponseBodyHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
+	// The creation time of the invitation (UTC).
 	//
 	// example:
 	//
 	// 2018-08-10T09:55:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
+	// The expiration time of the invitation (UTC).
 	//
 	// example:
 	//
@@ -92,17 +92,17 @@ type InviteAccountToResourceDirectoryResponseBodyHandshake struct {
 	//
 	// Alice
 	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
+	// The modification time of the invitation (UTC).
 	//
 	// example:
 	//
 	// 2018-08-10T09:55:41Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The comment on the invitation.
+	// The remarks.
 	//
 	// example:
 	//
-	// Welcome
+	// Welcome to join
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	// The ID of the resource directory.
 	//
@@ -110,23 +110,23 @@ type InviteAccountToResourceDirectoryResponseBodyHandshake struct {
 	//
 	// rd-abcdef****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation.
+	// The status of the invitation. Valid values:
 	//
-	// 	- Pending: The invitation is waiting for confirmation.
+	// - Pending: Waiting for confirmation.
 	//
-	// 	- Accepted: The invitation is accepted.
+	// - Accepted: Accepted.
 	//
-	// 	- Cancelled: The invitation is canceled.
+	// - Cancelled: Canceled.
 	//
-	// 	- Declined: The invitation is rejected.
+	// - Declined: Rejected.
 	//
-	// 	- Expired: The invitation expires.
+	// - Expired: Expired.
 	//
 	// example:
 	//
 	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited account.
+	// The ID or logon email address of the account that is invited.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ type InviteAccountToResourceDirectoryResponseBodyHandshake struct {
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	// The type of the invited account. Valid values:
 	//
-	// 	- Account: indicates the ID of the account.
+	// - Account: account ID.
 	//
-	// 	- Email: indicates the logon email address of the account.
+	// - Email: logon email address of the account.
 	//
 	// example:
 	//

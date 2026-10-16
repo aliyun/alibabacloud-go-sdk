@@ -16,9 +16,9 @@ type iGetAccountDeletionStatusResponseBody interface {
 }
 
 type GetAccountDeletionStatusResponseBody struct {
-	// The deletion status of the member.
+	// The deletion status of the member account.
 	RdAccountDeletionStatus *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus `json:"RdAccountDeletionStatus,omitempty" xml:"RdAccountDeletionStatus,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *GetAccountDeletionStatusResponseBody) Validate() error {
 }
 
 type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus struct {
-	// The Alibaba Cloud account ID of the member.
+	// The ID of the member account.
 	//
 	// example:
 	//
 	// 169946124551****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The start time of the deletion.
+	// The time when the deletion started, in RFC 3339 format with a UTC offset of +08:00.
 	//
 	// example:
 	//
 	// 2022-08-23T17:05:30+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the deletion.
+	// The time when the deletion ended, in RFC 3339 format with a UTC offset of +08:00.
 	//
 	// This parameter is required.
 	//
@@ -82,29 +82,29 @@ type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus struct {
 	//
 	// 2022-08-23T17:06:01+08:00
 	DeletionTime *string `json:"DeletionTime,omitempty" xml:"DeletionTime,omitempty"`
-	// The type of the deletion. Valid values:
+	// The deletion type. Valid values:
 	//
-	// 	- 0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
+	// - 0: direct deletion. If the member account has no pay-as-you-go resources in the last 30 days, the system directly deletes the member account.
 	//
-	// 	- 1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](https://help.aliyun.com/document_detail/446079.html)
+	// - 1: cool-down period deletion. If the member account has pay-as-you-go resources in the last 30 days, the member account enters a cool-down period. The system starts to delete the member account after the cool-down period ends. For more information about the cool-down period, see [What is the cool-down period for member account deletion](https://help.aliyun.com/document_detail/446079.html).
 	//
 	// example:
 	//
 	// 0
 	DeletionType *string `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
-	// The reasons why the member fails to be deleted.
+	// The reasons for the deletion failure.
 	FailReasonList []*GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList `json:"FailReasonList,omitempty" xml:"FailReasonList,omitempty" type:"Repeated"`
 	// The status. Valid values:
 	//
-	// 	- Success: The member is deleted.
+	// - Success: The member account is deleted.
 	//
-	// 	- Checking: A deletion check is being performed for the member.
+	// - Checking: The check is in progress.
 	//
-	// 	- Deleting: The member is being deleted.
+	// - Deleting: The deletion is in progress.
 	//
-	// 	- CheckFailed: The deletion check for the member fails.
+	// - CheckFailed: The check failed.
 	//
-	// 	- DeleteFailed: The member fails to be deleted.
+	// - DeleteFailed: The deletion failed.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList s
 	//
 	// This account has a payer account. Please release the financial relationship of this account first.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the cloud service to which the check item belongs.
+	// The service name of the cloud service to which the check item belongs.
 	//
 	// example:
 	//

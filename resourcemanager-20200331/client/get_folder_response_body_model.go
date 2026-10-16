@@ -16,9 +16,9 @@ type iGetFolderResponseBody interface {
 }
 
 type GetFolderResponseBody struct {
-	// The information of the folder.
+	// The folder information.
 	Folder *GetFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *GetFolderResponseBody) Validate() error {
 }
 
 type GetFolderResponseBodyFolder struct {
-	// The time when the folder was created.
+	// The time when the folder was created. The time is displayed in UTC in RFC 3339 format, indicated by Z.
 	//
 	// example:
 	//
 	// 2021-06-15T06:39:08.521Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the folder.
+	// The folder ID.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetFolderResponseBodyFolder struct {
 	//
 	// r-Wm****
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	// The path of the folder in the resource directory.
+	// The path ID (RDPath) of the folder in the resource directory.
 	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
 }
 

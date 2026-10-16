@@ -20,7 +20,7 @@ type CancelCreateCloudAccountRequest struct {
 	//
 	// example:
 	//
-	// 06950264-3f0d-4ca9-82dd-6ee7a3d33d6b
+	// 06950264-3f0d-4ca9-82dd-6ee7a3d3****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 }
 

@@ -20,17 +20,17 @@ type iInviteAccountToResourceDirectoryRequest interface {
 }
 
 type InviteAccountToResourceDirectoryRequest struct {
-	// The comment on the invitation.
+	// The remarks.
 	//
-	// The comment can be up to 1,024 characters in length.
+	// Maximum length: 1024 characters.
 	//
 	// example:
 	//
-	// Welcome
+	// Welcome to join
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The tag key and value.
+	// The tags.
 	Tag []*InviteAccountToResourceDirectoryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID or logon email address of the account that you want to invite.
+	// The ID or logon email address of the account that is invited.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type InviteAccountToResourceDirectoryRequest struct {
 	//
 	// someone@example.com
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the account. Valid values:
+	// The type of the account that is invited. Valid values:
 	//
-	// 	- Account: indicates the ID of the account.
+	// - Account: account ID.
 	//
-	// 	- Email: indicates the logon email address of the account.
+	// - Email: logon email address of the account.
 	//
 	// This parameter is required.
 	//
@@ -110,13 +110,13 @@ func (s *InviteAccountToResourceDirectoryRequest) Validate() error {
 }
 
 type InviteAccountToResourceDirectoryRequestTag struct {
-	// A tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A tag value.
+	// The tag value.
 	//
 	// example:
 	//

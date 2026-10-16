@@ -9,6 +9,8 @@ type iListResourcesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCount(v bool) *ListResourcesRequest
+	GetCount() *bool
 	SetPageNumber(v int32) *ListResourcesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListResourcesRequest
@@ -28,9 +30,15 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
+	// Specifies whether to query the total number of resources. Default value: true. Valid values:
+	//
+	// - true: Queries the total number of resources and returns the result in the TotalCount parameter.
+	//
+	// - false: Does not query the total number of resources. The TotalCount parameter returns -1, and the resources are still paginated based on the PageNumber and PageSize parameters.
+	Count *bool `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -64,19 +72,19 @@ type ListResourcesRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
 	//
-	// For more information about the supported resource types, see the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The resource types. A maximum of 50 resource types are supported.
+	// The list of resource types. A maximum of 50 resource types are supported.
 	//
-	// >  If you configure `ResourceTypes`, you must configure both `Service` and `ResourceType`. Otherwise, the configured Service or ResourceType does not take effect.
+	// > If you configure the Settings for ResourceTypes, the Service and ResourceType request parameter specified separately do not take effect.
 	ResourceTypes []*ListResourcesRequestResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The ID of the Alibaba Cloud service.
+	// The code of the cloud service.
 	//
-	// You can obtain the ID from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the code from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
@@ -90,6 +98,10 @@ func (s ListResourcesRequest) String() string {
 
 func (s ListResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListResourcesRequest) GetCount() *bool {
+	return s.Count
 }
 
 func (s *ListResourcesRequest) GetPageNumber() *int32 {
@@ -122,6 +134,11 @@ func (s *ListResourcesRequest) GetResourceTypes() []*ListResourcesRequestResourc
 
 func (s *ListResourcesRequest) GetService() *string {
 	return s.Service
+}
+
+func (s *ListResourcesRequest) SetCount(v bool) *ListResourcesRequest {
+	s.Count = &v
+	return s
 }
 
 func (s *ListResourcesRequest) SetPageNumber(v int32) *ListResourcesRequest {
@@ -182,21 +199,21 @@ type ListResourcesRequestResourceTypes struct {
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// For more information about the supported resource types, see the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
-	// >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
+	// > The Service and ResourceType parameters in ResourceTypes must be specified at the same time. Otherwise, they do not take effect.
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the Alibaba Cloud service.
+	// The code of the cloud service.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// You can obtain the ID from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the code from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
-	// >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
+	// > The Service and ResourceType parameters in ResourceTypes must be specified at the same time. Otherwise, they do not take effect.
 	//
 	// example:
 	//

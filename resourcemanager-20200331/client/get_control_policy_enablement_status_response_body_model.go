@@ -16,21 +16,21 @@ type iGetControlPolicyEnablementStatusResponseBody interface {
 }
 
 type GetControlPolicyEnablementStatusResponseBody struct {
-	// The status of the Control Policy feature. Valid values:
+	// The status of the control policy feature. Valid values:
 	//
-	// 	- Enabled: The Control Policy feature is enabled.
+	// - Enabled: The control policy feature is enabled.
 	//
-	// 	- PendingEnable: The Control Policy feature is being enabled.
+	// - PendingEnable: The control policy feature is being enabled.
 	//
-	// 	- Disabled: The Control Policy feature is disabled.
+	// - Disabled: The control policy feature is disabled.
 	//
-	// 	- PendingDisable: The Control Policy feature is being disabled.
+	// - PendingDisable: The control policy feature is being disabled.
 	//
 	// example:
 	//
 	// Disabled
 	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

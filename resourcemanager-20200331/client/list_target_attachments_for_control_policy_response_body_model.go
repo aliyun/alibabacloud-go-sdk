@@ -22,26 +22,26 @@ type iListTargetAttachmentsForControlPolicyResponseBody interface {
 }
 
 type ListTargetAttachmentsForControlPolicyResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B32BD3D6-1089-41F3-8E70-E0079BC7D760
 	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TargetAttachments *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments `json:"TargetAttachments,omitempty" xml:"TargetAttachments,omitempty" type:"Struct"`
-	// The total number of objects to which the control policy is attached.
+	// The number of target nodes to which the control policy is attached.
 	//
 	// example:
 	//

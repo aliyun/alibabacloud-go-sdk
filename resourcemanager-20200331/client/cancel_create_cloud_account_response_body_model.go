@@ -14,7 +14,7 @@ type iCancelCreateCloudAccountResponseBody interface {
 }
 
 type CancelCreateCloudAccountResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

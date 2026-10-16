@@ -26,23 +26,23 @@ type SetMemberDeletionPermissionResponseBody struct {
 	//
 	// 151266687691****
 	ManagementAccountId *string `json:"ManagementAccountId,omitempty" xml:"ManagementAccountId,omitempty"`
-	// The status of the member deletion feature. Valid values:
+	// The status of the member deletion permission. Valid values:
 	//
-	// 	- Enabled: The feature is enabled.
+	// - Enabled: The member deletion permission is enabled.
 	//
-	// 	- Disabled: The feature is disabled.
+	// - Disabled: The member deletion permission is disabled.
 	//
 	// example:
 	//
 	// Enabled
 	MemberDeletionStatus *string `json:"MemberDeletionStatus,omitempty" xml:"MemberDeletionStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C55A4CAA-9039-1DDF-91CE-FCC134513D29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource directory.
+	// The resource directory ID.
 	//
 	// example:
 	//

@@ -18,17 +18,17 @@ type iCreatePolicyRequest interface {
 }
 
 type CreatePolicyRequest struct {
-	// The description of the permission policy.
+	// The description of the access policy.
 	//
 	// The description must be 1 to 1,024 characters in length.
 	//
 	// example:
 	//
-	// OSS administrator
+	// OSS administrator permissions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The document of the policy.
+	// The content of the access policy.
 	//
-	// The document must be 1 to 6,144 characters in length.
+	// The content must be 1 to 6,144 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type CreatePolicyRequest struct {
 	//
 	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The name of the permission policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//

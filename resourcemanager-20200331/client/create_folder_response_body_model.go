@@ -16,9 +16,9 @@ type iCreateFolderResponseBody interface {
 }
 
 type CreateFolderResponseBody struct {
-	// The information of the folder.
+	// The information about the resource folder.
 	Folder *CreateFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *CreateFolderResponseBody) Validate() error {
 }
 
 type CreateFolderResponseBodyFolder struct {
-	// The time when the folder was created.
+	// The time when the resource folder was created. The time is displayed in UTC in RFC 3339 format, indicated by Z.
 	//
 	// example:
 	//
 	// 2019-02-19T09:34:50.757Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the folder.
+	// The ID of the resource folder.
 	//
 	// example:
 	//
 	// fd-u8B321****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The name of the folder.
+	// The name of the resource folder.
 	//
 	// example:
 	//

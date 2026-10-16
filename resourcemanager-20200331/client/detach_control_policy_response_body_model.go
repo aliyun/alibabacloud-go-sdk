@@ -14,7 +14,7 @@ type iDetachControlPolicyResponseBody interface {
 }
 
 type DetachControlPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

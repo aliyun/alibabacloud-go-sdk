@@ -9,13 +9,13 @@ import (
 
 // Summary:
 //
-// Accepts an invitation.
+// Accepts an invitation by the invited Alibaba Cloud account by calling AcceptHandshake.
 //
 // Description:
 //
-// After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+// After the invited Alibaba Cloud account successfully joins a resource directory, the account becomes a member of the resource directory. The resource directory uses the name of the invited Alibaba Cloud account as the display name and account name of the member by default.
 //
-// This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0****` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
+// This topic provides an example on how the invited Alibaba Cloud account `177242285274****` accepts an invitation from the resource directory `rd-3G****`. The handshake ID is `h-Ih8IuPfvV0t0****`.
 //
 // @param request - AcceptHandshakeRequest
 //
@@ -59,19 +59,19 @@ func (client *Client) AcceptHandshakeWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Attaches an access control policy.
+// Attaches a control policy to a specified target.
 //
 // Description:
 //
-// After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+// After the control policy is attached, the resource folder or member immediately becomes subject to the control policy. Make sure that the result of the attach operation is as expected to avoid affecting your business.
 //
-// By default, the system access control policy FullAliyunAccess is attached to each folder and member.
+// The system attaches the system policy FullAliyunAccess to resource folders and members by default.
 //
-// The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
+// A control policy takes effect on the entire node to which it is attached. A control policy attached to a parent resource folder also takes effect on its child resource folders and members.
 //
-// A maximum of 10 access control policies can be attached to a folder or member.
+// Each node (resource folder or member) can have a maximum of 10 control policies attached.
 //
-// This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN****` to the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to attach the custom policy `cp-jExXAqIYkwHN****` to the resource folder `fd-ZDNPiT****`.
 //
 // @param request - AttachControlPolicyRequest
 //
@@ -119,11 +119,7 @@ func (client *Client) AttachControlPolicyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
-//
-// Description:
-//
-// In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK****` resource group.
+// Invokes AttachPolicy to add an access policy to an authorization object (a Resource Access Management (RAM) user, RAM user group, or RAM role), which is authorization. After the authorization is complete, the authorized object obtains access permissions on resources within the specified resource group or Alibaba Cloud account.
 //
 // @param request - AttachPolicyRequest
 //
@@ -183,15 +179,15 @@ func (client *Client) AttachPolicyWithContext(ctx context.Context, request *Atta
 
 // Summary:
 //
-// Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
+// Sets a secure phone number for a member of the resource account type.
 //
 // Description:
 //
-// You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+// This API operation is used only to set a secure phone number for a resource account for the first time. It cannot be used to modify an existing secure phone number.
 //
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+// To ensure that the system can record the specific author of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource folder management permission (AliyunResourceDirectoryFullAccess) to invoke this API operation.
 //
-// This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348****` for security purposes.
+// This topic provides an example of how to set a secure phone number for the member `138660628348****`.
 //
 // @param request - BindSecureMobilePhoneRequest
 //
@@ -243,7 +239,7 @@ func (client *Client) BindSecureMobilePhoneWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Cancels the email address change of a member.
+// Cancels the modification of a member account email address.
 //
 // @param request - CancelChangeAccountEmailRequest
 //
@@ -287,7 +283,7 @@ func (client *Client) CancelChangeAccountEmailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Cancels the creation of a cloud account.
+// Cancels the creation of a member of the cloud account type in a resource directory.
 //
 // @param request - CancelCreateCloudAccountRequest
 //
@@ -331,11 +327,11 @@ func (client *Client) CancelCreateCloudAccountWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Cancels an invitation.
+// Cancels a handshake.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp****`.
+// This topic provides an example on how to cancel the handshake whose ID is `h-ycm4rp****`.
 //
 // @param request - CancelHandshakeRequest
 //
@@ -379,7 +375,7 @@ func (client *Client) CancelHandshakeWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Cancels the upgrade from a resource account to a cloud account.
+// Cancels the upgrade of a resource directory resource account to an Alibaba Cloud account.
 //
 // @param request - CancelPromoteResourceAccountRequest
 //
@@ -423,7 +419,7 @@ func (client *Client) CancelPromoteResourceAccountWithContext(ctx context.Contex
 
 // Summary:
 //
-// Changes the email address that is bound to a member.
+// Modifies the email address of a member account by calling ChangeAccountEmail.
 //
 // @param request - ChangeAccountEmailRequest
 //
@@ -471,13 +467,11 @@ func (client *Client) ChangeAccountEmailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Performs a member deletion check.
+// Calls CheckAccountDelete to perform a member account deletion check task.
 //
 // Description:
 //
-// Before you delete a member, you must call this API operation to check whether the member can be deleted.
-//
-// This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641****`.
+// Before deleting a member account, call this API to perform a pre-deletion condition check on the target member account.
 //
 // @param request - CheckAccountDeleteRequest
 //
@@ -521,11 +515,11 @@ func (client *Client) CheckAccountDeleteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a transfer rule. Custom transfer rules and transfer rules for associated resources are supported.
+// Creates an automatic allocation rule by calling CreateAutoGroupingRule. Two types are supported: custom allocation rules and attached-resource allocation rules.
 //
 // Description:
 //
-// You can create up to 10 custom transfer rules. Each custom transfer rule can contain up to 10 content records.
+// You can create up to 10 custom allocation rules, and each custom allocation rule supports up to 10 rule content entries.
 //
 // @param request - CreateAutoGroupingRuleRequest
 //
@@ -613,17 +607,17 @@ func (client *Client) CreateAutoGroupingRuleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a cloud account.
+// Creates a member of the cloud account type in a resource directory.
 //
 // Description:
 //
-// A resource directory supports two types of member accounts: resource accounts and cloud accounts.
+// A resource directory contains two types of members: resource accounts and cloud accounts.
 //
-//   - Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
+// - Resource account (recommended): A resource account serves only as a resource container and fully depends on the resource directory. It is a more secure account type that is easier to create. To create a resource account type member, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
 //
-// >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html) .
+// > A resource account can also be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html).
 //
-//   - Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
+// - Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root logon access.
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -679,11 +673,11 @@ func (client *Client) CreateCloudAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a custom access control policy.
+// Calls CreateControlPolicy to create a custom control policy.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
+// This topic provides an example on how to create a control policy named `ExampleControlPolicy` that prohibits modifications to the ResourceDirectoryAccountAccessRole role and its permissions.
 //
 // @param request - CreateControlPolicyRequest
 //
@@ -739,13 +733,13 @@ func (client *Client) CreateControlPolicyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a folder.
+// Creates a resource folder by calling CreateFolder.
 //
 // Description:
 //
-// >  A maximum of five levels of folders can be created under the root folder.
+// > You can create a maximum of five levels of resource folders.
 //
-// In this example, a folder named `rdFolder` is created under the root folder.
+// This topic provides an example of how to create a resource folder named `rdFolder` under the Root folder.
 //
 // @param request - CreateFolderRequest
 //
@@ -793,7 +787,7 @@ func (client *Client) CreateFolderWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a permission policy.
+// Creates an access policy.
 //
 // @param request - CreatePolicyRequest
 //
@@ -845,7 +839,7 @@ func (client *Client) CreatePolicyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a version for a permission policy.
+// Creates a version of an access policy by calling CreatePolicyVersion.
 //
 // @param request - CreatePolicyVersionRequest
 //
@@ -897,11 +891,11 @@ func (client *Client) CreatePolicyVersionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a member of the resource account type.
+// Creates a member of the resource account type by calling CreateResourceAccount.
 //
 // Description:
 //
-// A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+// In a resource directory, a member serves as a resource container and is a resource grouping unit. A member typically represents a project or application. Resources in each member are physically isolated from resources in other members.
 //
 // @param request - CreateResourceAccountRequest
 //
@@ -969,7 +963,7 @@ func (client *Client) CreateResourceAccountWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
+// > You can create a maximum of 30 resource groups within an Alibaba Cloud account.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -1021,7 +1015,7 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a RAM role.
+// Creates a role by calling CreateRole.
 //
 // @param request - CreateRoleRequest
 //
@@ -1129,7 +1123,7 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Rejects an invitation.
+// Declines a handshake invitation by the invited Alibaba Cloud account.
 //
 // @param request - DeclineHandshakeRequest
 //
@@ -1173,13 +1167,13 @@ func (client *Client) DeclineHandshakeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes a member of the resource account type.
+// Deletes a member of the resource account type by calling DeleteAccount.
 //
 // Description:
 //
-// Before you delete a member, we recommend that you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+// Before deleting a member, call [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) to perform a pre-deletion check on the member. Only members that meet the deletion conditions can be successfully deleted by calling DeleteAccount.
 //
-// After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
+// After you successfully submit a member deletion request, you can call [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) to query the deletion status. Once a member is deleted, all resources and data in the member are deleted. You can no longer log on to or use the member, and the data cannot be recovered. Proceed with caution. For more information about member deletion, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
 //
 // @param tmpReq - DeleteAccountRequest
 //
@@ -1233,7 +1227,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, tmpReq *Dele
 
 // Summary:
 //
-// Deletes a transfer rule.
+// Deletes an automatic group transfer rule.
 //
 // @param request - DeleteAutoGroupingRuleRequest
 //
@@ -1281,9 +1275,9 @@ func (client *Client) DeleteAutoGroupingRuleWithContext(ctx context.Context, req
 //
 // Description:
 //
-// If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) operation to detach the policy before you delete it.
+// To delete a custom control policy that is attached to a resource folder or member accounts, invoke [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) to detach the policy first.
 //
-// In this example, the custom control policy `cp-SImPt8GCEwiq****` is deleted.
+// This topic provides an example on how to delete the custom control policy cp-SImPt8GCEwiq****.
 //
 // @param request - DeleteControlPolicyRequest
 //
@@ -1331,7 +1325,7 @@ func (client *Client) DeleteControlPolicyWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
+// > Before deleting a folder, make sure that the folder does not contain any member accounts or subfolders.
 //
 // @param request - DeleteFolderRequest
 //
@@ -1375,15 +1369,13 @@ func (client *Client) DeleteFolderWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a permission policy.
+// Deletes a specified access policy.
 //
 // Description:
 //
-// >
+// > - Before deleting an access policy, delete all non-default versions of the policy. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
 //
-//   - Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-//
-//   - Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
+// > - Before deleting an access policy, make sure that the policy is not referenced, meaning it is not attached to any Resource Access Management (RAM) user, user group, or RAM role. For information about how to remove an authorization, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
 //
 // @param request - DeletePolicyRequest
 //
@@ -1427,11 +1419,11 @@ func (client *Client) DeletePolicyWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a version of a permission policy.
+// Deletes a version of an access policy.
 //
 // Description:
 //
-// >  The default version of a policy cannot be deleted.
+// > The default version of an access policy cannot be deleted.
 //
 // @param request - DeletePolicyVersionRequest
 //
@@ -1483,9 +1475,7 @@ func (client *Client) DeletePolicyVersionWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// >  Before you delete a resource group, you must delete all the resources in it.
-//
-// In this example, the resource group whose ID is `rg-9gLOoK****` is deleted.
+// > Before you delete a resource group, delete all resources in the resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -1529,7 +1519,7 @@ func (client *Client) DeleteResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a RAM role.
+// Deletes a role.
 //
 // @param request - DeleteRoleRequest
 //
@@ -1617,13 +1607,11 @@ func (client *Client) DeleteServiceLinkedRoleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Removes a delegated administrator account for a trusted service.
+// Calls the DeregisterDelegatedAdministrator operation to remove the delegated administrator account of a trusted service.
 //
 // Description:
 //
-// >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-//
-// This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690****` for Cloud Firewall.
+// > If the delegated administrator account being removed has historical management tasks in the trusted service, the removal may affect the normal use of the trusted service. Carefully consider the potential impact before performing the removal.
 //
 // @param request - DeregisterDelegatedAdministratorRequest
 //
@@ -1671,15 +1659,15 @@ func (client *Client) DeregisterDelegatedAdministratorWithContext(ctx context.Co
 
 // Summary:
 //
-// Detaches an access control policy.
+// Detaches a control policy from a resource folder or member.
 //
 // Description:
 //
-// After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+// After the control policy is detached, the resource folder or member that was previously associated with the policy immediately loses the governance enforced by the policy. Make sure that the result of the detach operation is as expected to avoid impact on your business.
 //
-// Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
+// Both system policies and custom control policies can be detached. However, the last control policy associated with a resource folder or member cannot be detached.
 //
-// This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN****` from the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to detach the custom policy `cp-jExXAqIYkwHN****` from the resource folder `fd-ZDNPiT****`.
 //
 // @param request - DetachControlPolicyRequest
 //
@@ -1727,7 +1715,7 @@ func (client *Client) DetachControlPolicyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
+// Detaches an access policy from a specified identity. After the policy is detached, the identity loses the permissions to manage resources in the specified resource group or Alibaba Cloud account.
 //
 // @param request - DetachPolicyRequest
 //
@@ -1791,9 +1779,9 @@ func (client *Client) DetachPolicyWithContext(ctx context.Context, request *Deta
 //
 // Description:
 //
-// You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
+// You can enable a resource directory by using the current logon account or by creating a new management account. For more information, refer to [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
 //
-// In this example, the current account is used to enable a resource directory.
+// This topic provides an example of how to enable a resource directory by using the current logon account.
 //
 // @param request - EnableResourceDirectoryRequest
 //
@@ -1849,11 +1837,7 @@ func (client *Client) EnableResourceDirectoryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information of a member.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690****`.
+// Calls GetAccount to retrieve member account information.
 //
 // @param request - GetAccountRequest
 //
@@ -1901,13 +1885,13 @@ func (client *Client) GetAccountWithContext(ctx context.Context, request *GetAcc
 
 // Summary:
 //
-// Queries the result of a member deletion check.
+// Queries the result of a member deletion check by calling GetAccountDeletionCheckResult.
 //
 // Description:
 //
-// After you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+// After you call [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) to perform a member deletion check task, you can call GetAccountDeletionCheckResult to query the result of the member deletion check. If the deletion check requirements are met, the member account can be deleted. Otherwise, manually handle the non-compliant items until all requirements are met.
 //
-// This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641****`. The response shows that the member does not meet deletion requirements.
+// This topic provides an example on how to query the deletion check result of the member account `179855839641****` that you want to delete. The response shows that the member account does not meet the deletion requirements.
 //
 // @param request - GetAccountDeletionCheckResultRequest
 //
@@ -1951,11 +1935,11 @@ func (client *Client) GetAccountDeletionCheckResultWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取账号删除状态
+// Queries the deletion status of a member account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551****`. The response shows that the member is deleted.
+// This topic provides an example on how to query the deletion status of the member account `169946124551****`. The response shows that the member account has been successfully deleted.
 //
 // @param request - GetAccountDeletionStatusRequest
 //
@@ -1999,7 +1983,7 @@ func (client *Client) GetAccountDeletionStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about a transfer rule.
+// Queries the information about an automatic resource group transfer rule.
 //
 // @param request - GetAutoGroupingRuleRequest
 //
@@ -2043,11 +2027,11 @@ func (client *Client) GetAutoGroupingRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of an access control policy.
+// Queries the details of a control policy.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq****`.
+// This topic provides an example on how to query the details of the control policy whose ID is `cp-SImPt8GCEwiq****`.
 //
 // @param request - GetControlPolicyRequest
 //
@@ -2095,11 +2079,7 @@ func (client *Client) GetControlPolicyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information of a folder.
-//
-// Description:
-//
-// In this example, the information of the folder `fd-Jyl5U7****` is queried.
+// Calls GetFolder to retrieve the information about a folder.
 //
 // @param request - GetFolderRequest
 //
@@ -2143,11 +2123,11 @@ func (client *Client) GetFolderWithContext(ctx context.Context, request *GetFold
 
 // Summary:
 //
-// Queries the information of an invitation.
+// Retrieves handshake information by calling GetHandshake.
 //
 // Description:
 //
-// In this example, the information of the invitation whose ID is `h-ycm4rp****` is queried.
+// This topic provides an example on how to retrieve the information about the handshake whose ID is `h-ycm4rp****`.
 //
 // @param request - GetHandshakeRequest
 //
@@ -2191,7 +2171,7 @@ func (client *Client) GetHandshakeWithContext(ctx context.Context, request *GetH
 
 // Summary:
 //
-// Queries the information of a settlement account.
+// Retrieves the billing account information of a member account by calling GetPayerForAccount.
 //
 // @param request - GetPayerForAccountRequest
 //
@@ -2235,7 +2215,7 @@ func (client *Client) GetPayerForAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the information about a permission policy.
+// Retrieves information about a specified access policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -2287,7 +2267,7 @@ func (client *Client) GetPolicyWithContext(ctx context.Context, request *GetPoli
 
 // Summary:
 //
-// Queries the information about a version of a permission policy.
+// Retrieves a version of an access policy.
 //
 // @param request - GetPolicyVersionRequest
 //
@@ -2339,7 +2319,7 @@ func (client *Client) GetPolicyVersionWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information of a resource group.
+// Queries the information about a resource group.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -2387,7 +2367,7 @@ func (client *Client) GetResourceGroupWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the number of resources in a visible resource group.
+// Queries the resource count in visible resource groups.
 //
 // @param request - GetResourceGroupResourceCountsRequest
 //
@@ -2443,7 +2423,7 @@ func (client *Client) GetResourceGroupResourceCountsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the information about a RAM role.
+// Queries the information about a role by calling GetRole.
 //
 // @param request - GetRoleRequest
 //
@@ -2491,7 +2471,7 @@ func (client *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRe
 
 // Summary:
 //
-// Queries the status of the task that is used to delete a service-linked role.
+// Queries the status of a task that deletes a service-linked role.
 //
 // @param request - GetServiceLinkedRoleDeletionStatusRequest
 //
@@ -2535,11 +2515,11 @@ func (client *Client) GetServiceLinkedRoleDeletionStatusWithContext(ctx context.
 
 // Summary:
 //
-// Invites an account to join a resource directory.
+// Invites an external account to join a resource directory.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
+// This topic provides an example on how to invite the external account `someone@example.com` to join a resource directory.
 //
 // @param request - InviteAccountToResourceDirectoryRequest
 //
@@ -2595,11 +2575,11 @@ func (client *Client) InviteAccountToResourceDirectoryWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries all the members in a resource directory.
+// Queries the list of all member accounts in a resource directory by calling ListAccounts.
 //
 // Description:
 //
-// You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+// The management account of the resource directory and the delegated administrator accounts of trusted services can call this operation.
 //
 // @param request - ListAccountsRequest
 //
@@ -2655,7 +2635,7 @@ func (client *Client) ListAccountsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries the information of members in a folder.
+// Queries the list of member accounts in a resource folder by calling ListAccountsForParent.
 //
 // @param request - ListAccountsForParentRequest
 //
@@ -2719,7 +2699,7 @@ func (client *Client) ListAccountsForParentWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information of all the parent folders of a specified folder. The system returns the information of the folders based on their top-down hierarchy.
+// Queries information about all parent folders of a specified folder. The results are displayed in order from top to bottom.
 //
 // @param request - ListAncestorsRequest
 //
@@ -2763,7 +2743,7 @@ func (client *Client) ListAncestorsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries a list of automatic grouping remediation records.
+// Lists auto-grouping remediation records.
 //
 // @param request - ListAutoGroupingRemediationsRequest
 //
@@ -2839,7 +2819,7 @@ func (client *Client) ListAutoGroupingRemediationsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of transfer rules.
+// Queries the list of automatic group transfer rules.
 //
 // @param request - ListAutoGroupingRulesRequest
 //
@@ -2899,11 +2879,7 @@ func (client *Client) ListAutoGroupingRulesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries access control policies.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
+// Queries a list of control policies.
 //
 // @param request - ListControlPoliciesRequest
 //
@@ -2959,11 +2935,11 @@ func (client *Client) ListControlPoliciesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the access control policies that are attached to a folder or member.
+// Queries the list of control policies attached to a resource folder or member account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT****`.
+// This topic provides an example on how to query the list of control policies attached to the resource folder `fd-ZDNPiT****`.
 //
 // @param request - ListControlPolicyAttachmentsForTargetRequest
 //
@@ -3011,11 +2987,7 @@ func (client *Client) ListControlPolicyAttachmentsForTargetWithContext(ctx conte
 
 // Summary:
 //
-// Queries delegated administrator accounts.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
+// Queries the list of delegated administrator accounts for a trusted service.
 //
 // @param request - ListDelegatedAdministratorsRequest
 //
@@ -3067,11 +3039,7 @@ func (client *Client) ListDelegatedAdministratorsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the trusted services for which a member is specified as a delegated administrator account.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348****` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
+// Queries the trusted services for which a specified member is set as a delegated administrator account.
 //
 // @param request - ListDelegatedServicesForAccountRequest
 //
@@ -3115,11 +3083,11 @@ func (client *Client) ListDelegatedServicesForAccountWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the information of all subfolders of a folder.
+// Queries the subfolders of a specified folder.
 //
 // Description:
 //
-// >  You can view the information of only the first-level subfolders of a folder.
+// > You can query only the subfolders at the next level of the specified folder. You cannot query subfolders at deeper levels.
 //
 // @param request - ListFoldersForParentRequest
 //
@@ -3175,11 +3143,11 @@ func (client *Client) ListFoldersForParentWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the invitations that are associated with an account.
+// Queries the invitation records under the current account.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500****`. The response shows that two invitations are associated with the management account.
+// This topic provides an example on how to query the invitation records of the current management account `172841235500****`.
 //
 // @param request - ListHandshakesForAccountRequest
 //
@@ -3227,7 +3195,7 @@ func (client *Client) ListHandshakesForAccountWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries invitations in a resource directory.
+// Queries all invitations in a resource directory.
 //
 // @param request - ListHandshakesForResourceDirectoryRequest
 //
@@ -3275,7 +3243,7 @@ func (client *Client) ListHandshakesForResourceDirectoryWithContext(ctx context.
 
 // Summary:
 //
-// Queries a list of permission policies.
+// Calls ListPolicies to query a list of access policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -3331,17 +3299,17 @@ func (client *Client) ListPoliciesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries policy attachment records.
+// Queries the list of policy attachments by calling ListPolicyAttachments.
 //
 // Description:
 //
-// You can view the following information:
+// You can query the following information:
 //
-//   - Policy attachment records within an Alibaba Cloud account or a resource group
+// - All authorization records under an Alibaba Cloud account or a resource group.
 //
-//   - Permission policies attached to RAM users, RAM user groups, or RAM roles
+// - All access policies granted to a Resource Access Management (RAM) user, RAM user group, or RAM role.
 //
-//   - RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
+// - RAM users, RAM user groups, and RAM roles that have a specific permission under an Alibaba Cloud account or a resource group.
 //
 // @param request - ListPolicyAttachmentsRequest
 //
@@ -3413,7 +3381,7 @@ func (client *Client) ListPolicyAttachmentsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of versions of a policy.
+// Queries the versions of an access policy.
 //
 // @param request - ListPolicyVersionsRequest
 //
@@ -3461,7 +3429,7 @@ func (client *Client) ListPolicyVersionsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries whether a specific resource type or a given cloud service supports resource group events.
+// Lists the capability items of resource groups.
 //
 // @param request - ListResourceGroupCapabilityRequest
 //
@@ -3513,13 +3481,11 @@ func (client *Client) ListResourceGroupCapabilityWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries resource groups.
+// Queries the list of resource groups.
 //
 // Description:
 //
-// You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
-//
-// This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2****` and `rg-9gLOoK****` within the current account.
+// You can call this operation to query all resource groups under the current account. You can also filter resource groups by resource group status, resource group ID, resource group identifier, or resource group display name.
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -3595,7 +3561,7 @@ func (client *Client) ListResourceGroupsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries resource groups and their user authorization information.
+// Lists resource groups along with user authorization details.
 //
 // @param request - ListResourceGroupsWithAuthDetailsRequest
 //
@@ -3675,13 +3641,11 @@ func (client *Client) ListResourceGroupsWithAuthDetailsWithContext(ctx context.C
 
 // Summary:
 //
-// Queries resources that can be accessed by the current account in resource groups.
+// Queries the resources in the resource groups accessible to the current account.
 //
 // Description:
 //
-// >  You can use a RAM role that is not associated with a session policy to call this API operation.
-//
-// This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+// > This API can be called by assuming a RAM role, but session policies for the role are not supported.
 //
 // @param request - ListResourcesRequest
 //
@@ -3696,6 +3660,10 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Count) {
+		query["Count"] = request.Count
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -3753,7 +3721,7 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries a list of RAM roles.
+// Queries the list of roles by calling ListRoles.
 //
 // @param request - ListRolesRequest
 //
@@ -3805,11 +3773,7 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 
 // Summary:
 //
-// Queries tag keys.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
+// Queries the tag key list of resource directory member accounts by calling ListTagKeys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -3865,11 +3829,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// Queries the tags that are added to resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq****`. The response shows that only the `k1:v1` tag is added to the resource group.
+// Queries the tags that are attached to a resource group or a resource directory member.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3929,11 +3889,13 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the tag values of a tag key.
+// Queries the tag values of a specified tag key by calling ListTagValues.
 //
 // Description:
 //
-// This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
+// ### Usage notes
+//
+// This topic provides an example on how to query the tag values of the tag key k1. The response shows that the tag value corresponding to the tag key k1 is v1.
 //
 // @param request - ListTagValuesRequest
 //
@@ -3993,11 +3955,7 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the objects to which a specific control policy is attached.
-//
-// Description:
-//
-// In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN****` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
+// Queries the nodes to which a control policy is attached.
 //
 // @param request - ListTargetAttachmentsForControlPolicyRequest
 //
@@ -4049,13 +4007,11 @@ func (client *Client) ListTargetAttachmentsForControlPolicyWithContext(ctx conte
 
 // Summary:
 //
-// Queries the trusted services that are enabled within an enterprise management account or delegated administrator account.
+// Queries the list of trusted services enabled by the management account or a delegated administrator account.
 //
 // Description:
 //
-// >  Only an enterprise management account or delegated administrator account can be used to call this operation.
-//
-// In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
+// > This operation can be called only by the management account or a delegated administrator account.
 //
 // @param request - ListTrustedServiceStatusRequest
 //
@@ -4107,7 +4063,7 @@ func (client *Client) ListTrustedServiceStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the events of resource groups.
+// Queries resource group events.
 //
 // @param request - LookupResourceGroupEventsRequest
 //
@@ -4179,7 +4135,7 @@ func (client *Client) LookupResourceGroupEventsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Moves a member account from a folder to another.
+// Moves a member to another folder.
 //
 // @param request - MoveAccountRequest
 //
@@ -4227,13 +4183,13 @@ func (client *Client) MoveAccountWithContext(ctx context.Context, request *MoveA
 
 // Summary:
 //
-// Moves resources from one resource group to another. You can move multiple resources that reside in different regions, are used by different Alibaba Cloud services, or belong to different resource groups.
+// Calls MoveResources to move resources from one resource group to another.
 //
 // Description:
 //
-// For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the **Supported by the API*	- column in [Alibaba Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
+// Supports batch transfer of resources across regions, cloud services, and resource groups.
 //
-// In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1****` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
+// For cloud services that support resource group transfer, see the **API*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 //
 // @param request - MoveResourcesRequest
 //
@@ -4281,7 +4237,7 @@ func (client *Client) MoveResourcesWithContext(ctx context.Context, request *Mov
 
 // Summary:
 //
-// Upgrades a resource account to a cloud account.
+// Upgrades a resource account to an Alibaba Cloud account. This is an asynchronous operation.
 //
 // @param request - PromoteResourceAccountRequest
 //
@@ -4329,21 +4285,19 @@ func (client *Client) PromoteResourceAccountWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+// Sets a member account in a resource directory as a delegated administrator account for a trusted service.
 //
 // Description:
 //
-// The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
+// After the settings are complete, the delegated administrator account is granted authorization to access the organizational information of the resource directory, which provides visibility into the organization members and structure. The delegated administrator account executes service-related management operations on behalf of the management account in the specified trusted service.
 //
-// When you call this operation, you must take note of the following limits:
+// Limits:
 //
-//   - Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+// - Only some trusted services support the delegated administrator feature. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
 //
-//   - Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+// - Only the management account of the resource directory and authorized Resource Access Management (RAM) users and RAM roles under the management account can invoke this API operation.
 //
-//   - The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-//
-// This topic provides an example on how to call the API operation to specify the member `181761095690****` as a delegated administrator account of Cloud Firewall.
+// - The maximum number of delegated administrator accounts that can be added is defined by each trusted service.
 //
 // @param request - RegisterDelegatedAdministratorRequest
 //
@@ -4391,11 +4345,7 @@ func (client *Client) RegisterDelegatedAdministratorWithContext(ctx context.Cont
 
 // Summary:
 //
-// Removes a member of the cloud account type. After you remove a member of the cloud account type, the member is no longer managed by the management account of the resource directory to which the member belonged.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to remove the member `177242285274****` from a resource directory.
+// Removes a member of the cloud account type. After the member is removed, it exists as an independent Alibaba Cloud account and is no longer managed by the management account of the resource directory.
 //
 // @param request - RemoveCloudAccountRequest
 //
@@ -4439,7 +4389,7 @@ func (client *Client) RemoveCloudAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Resends an email that is used to confirm the creation of a cloud account.
+// Resends the confirmation email for creating a cloud account.
 //
 // @param request - ResendCreateCloudAccountEmailRequest
 //
@@ -4483,7 +4433,7 @@ func (client *Client) ResendCreateCloudAccountEmailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Resends an email that is used to confirm the upgrade from a resource account to a cloud account.
+// Resends the confirmation email for upgrading a resource account to a cloud account.
 //
 // @param request - ResendPromoteResourceAccountEmailRequest
 //
@@ -4527,7 +4477,7 @@ func (client *Client) ResendPromoteResourceAccountEmailWithContext(ctx context.C
 
 // Summary:
 //
-// Resends a verification email for the email address change of a member.
+// Resends the confirmation email for changing the email address of a member account.
 //
 // @param request - RetryChangeAccountEmailRequest
 //
@@ -4571,13 +4521,11 @@ func (client *Client) RetryChangeAccountEmailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Sends a verification code to the mobile phone number that you want to bind to a resource account in a resource directory for security purposes.
+// Sends a verification code to a secure phone number when you set the secure phone number for a member of the resource account type by calling SendVerificationCodeForBindSecureMobilePhone.
 //
 // Description:
 //
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-//
-// In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348****`.
+// To ensure that the system can record the specific operator of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource directory management permission (AliyunResourceDirectoryFullAccess) to call this API operation.
 //
 // @param request - SendVerificationCodeForBindSecureMobilePhoneRequest
 //
@@ -4625,11 +4573,11 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithContext(ct
 
 // Summary:
 //
-// Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
+// Sends a verification code to the secure phone number of a new management account when you call SendVerificationCodeForEnableRD to enable a resource directory by creating a new management account.
 //
 // Description:
 //
-// Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+// Each Alibaba Cloud account can send up to 100 verification codes per day.
 //
 // @param request - SendVerificationCodeForEnableRDRequest
 //
@@ -4673,7 +4621,7 @@ func (client *Client) SendVerificationCodeForEnableRDWithContext(ctx context.Con
 
 // Summary:
 //
-// Sets a default version for a permission policy.
+// Sets the default version of an access policy.
 //
 // @param request - SetDefaultPolicyVersionRequest
 //
@@ -4721,11 +4669,11 @@ func (client *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Enables or disables the member deletion feature.
+// Enables or disables the member deletion permission by calling SetMemberDeletionPermission.
 //
 // Description:
 //
-// Members of the resource account type can be deleted only after the member deletion feature is enabled.
+// You can delete members of the resource account type only after the member deletion permission is enabled.
 //
 // @param request - SetMemberDeletionPermissionRequest
 //
@@ -4769,11 +4717,7 @@ func (client *Client) SetMemberDeletionPermissionWithContext(ctx context.Context
 
 // Summary:
 //
-// Adds tags to resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq****`.
+// Attaches labels to resource groups or member accounts of a resource directory.
 //
 // @param request - TagResourcesRequest
 //
@@ -4825,11 +4769,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from resource groups or the members in a resource directory.
-//
-// Description:
-//
-// This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr****`.
+// Unbinds tags from resource groups or resource directory members.
 //
 // @param request - UntagResourcesRequest
 //
@@ -4885,17 +4825,17 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Changes the display name of a member, or switches the type of a member.
+// Modifies the name of a member or switches the member type by calling UpdateAccount.
 //
 // Description:
 //
-//	  To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+// ### Before you begin
 //
-//		- Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
+// - To ensure that the system can record the specific operator of management operations, use a Resource Access Management (RAM) user or RAM role under the management account that has the resource folder management permission (AliyunResourceDirectoryFullAccess) to invoke this API operation.
 //
-//		- Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
+// - For the conditions that must be met to switch a resource account to a cloud account, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
 //
-// This example provides an example on how to call the API operation to change the display name of the member `12323344****` to `admin`.
+// - For the conditions that must be met to switch a cloud account to a resource account, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
 //
 // @param request - UpdateAccountRequest
 //
@@ -4947,11 +4887,11 @@ func (client *Client) UpdateAccountWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Updates the settings of the Transfer Associated Resources feature.
+// Updates the settings of the associated resource group transfer feature by calling UpdateAssociatedTransferSetting.
 //
 // Description:
 //
-// For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](https://help.aliyun.com/document_detail/606232.html).
+// For cloud resources that support the attached-resource allocation feature, see [Attached-resource allocation](https://help.aliyun.com/document_detail/606232.html).
 //
 // @param request - UpdateAssociatedTransferSettingRequest
 //
@@ -4999,7 +4939,7 @@ func (client *Client) UpdateAssociatedTransferSettingWithContext(ctx context.Con
 
 // Summary:
 //
-// Updates the configuration of the Automatic Resource Transfer feature. You can update only the configuration of the Transfer Existing Associated Resources feature.
+// Calls UpdateAutoGroupingConfig to update the automatic group transfer settings. Currently, only the setting for whether to enable existing associated resources to follow the group transfer task is supported.
 //
 // @param request - UpdateAutoGroupingConfigRequest
 //
@@ -5043,7 +4983,7 @@ func (client *Client) UpdateAutoGroupingConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Updates a transfer rule.
+// Updates an automatic resource group transfer rule by calling UpdateAutoGroupingRule.
 //
 // @param request - UpdateAutoGroupingRuleRequest
 //
@@ -5131,11 +5071,11 @@ func (client *Client) UpdateAutoGroupingRuleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Updates a custom access control policy.
+// Modifies a custom control policy by calling UpdateControlPolicy.
 //
 // Description:
 //
-// In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN****` is changed to `NewControlPolicy`.
+// This topic provides an example on how to modify the name of the control policy `cp-jExXAqIYkwHN****` to `NewControlPolicy`.
 //
 // @param request - UpdateControlPolicyRequest
 //
@@ -5191,7 +5131,7 @@ func (client *Client) UpdateControlPolicyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the name of a folder.
+// Modifies the name of a folder by calling UpdateFolder.
 //
 // @param request - UpdateFolderRequest
 //
@@ -5239,11 +5179,7 @@ func (client *Client) UpdateFolderWithContext(ctx context.Context, request *Upda
 
 // Summary:
 //
-// Updates the basic information of a resource group.
-//
-// Description:
-//
-// In this example, the display name of the resource group `rg-9gLOoK****` is changed to `project`.
+// Modifies the display name of a resource group.
 //
 // @param request - UpdateResourceGroupRequest
 //
@@ -5291,7 +5227,7 @@ func (client *Client) UpdateResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Updates the configurations of a resource group administrator.
+// Updates the administrator settings of a resource group by calling UpdateResourceGroupAdminSetting.
 //
 // @param request - UpdateResourceGroupAdminSettingRequest
 //
@@ -5335,11 +5271,7 @@ func (client *Client) UpdateResourceGroupAdminSettingWithContext(ctx context.Con
 
 // Summary:
 //
-// Updates the information about a Resource Access Management (RAM) role.
-//
-// Description:
-//
-// In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
+// Updates the information of a RAM role.
 //
 // @param request - UpdateRoleRequest
 //

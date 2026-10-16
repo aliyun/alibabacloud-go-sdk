@@ -14,9 +14,9 @@ type iAcceptHandshakeRequest interface {
 }
 
 type AcceptHandshakeRequest struct {
-	// The ID of the invitation.
+	// The handshake ID.
 	//
-	// You can call the [ListHandshakesForAccount](https://help.aliyun.com/document_detail/160006.html) operation to obtain the ID.
+	// You can call [ListHandshakesForAccount](https://help.aliyun.com/document_detail/160006.html) to obtain the handshake ID.
 	//
 	// This parameter is required.
 	//

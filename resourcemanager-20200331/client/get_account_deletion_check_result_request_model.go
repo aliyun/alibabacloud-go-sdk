@@ -14,7 +14,7 @@ type iGetAccountDeletionCheckResultRequest interface {
 }
 
 type GetAccountDeletionCheckResultRequest struct {
-	// The ID of the member that you want to delete.
+	// The ID of the member account that you want to delete.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iCancelChangeAccountEmailRequest interface {
 }
 
 type CancelChangeAccountEmailRequest struct {
-	// The Alibaba Cloud account ID of the member.
+	// The member account ID.
 	//
 	// This parameter is required.
 	//

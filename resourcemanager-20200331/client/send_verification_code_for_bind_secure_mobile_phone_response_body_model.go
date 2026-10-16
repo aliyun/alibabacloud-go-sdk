@@ -16,13 +16,13 @@ type iSendVerificationCodeForBindSecureMobilePhoneResponseBody interface {
 }
 
 type SendVerificationCodeForBindSecureMobilePhoneResponseBody struct {
-	// The time when the verification code expires.
+	// The expiration time of the verification code. The time is in RFC 3339 UTC format, indicated by Z for UTC.
 	//
 	// example:
 	//
 	// 2021-12-17T07:38:41.747Z
 	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

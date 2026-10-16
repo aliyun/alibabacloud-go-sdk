@@ -22,7 +22,7 @@ type CreateServiceLinkedRoleResponseBody struct {
 	//
 	// FE58D7CF-03BC-432A-B42D-BC3390C8C2E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the role.
+	// The role information.
 	Role *CreateServiceLinkedRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *CreateServiceLinkedRoleResponseBody) Validate() error {
 }
 
 type CreateServiceLinkedRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// The resource descriptor of the role.
 	//
 	// example:
 	//
 	// acs:ram::177242285274****:role/aliyunserviceroleforpolardb
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The document of the trust policy for the role.
+	// The trust policy of the role.
 	//
 	// example:
 	//
 	// {\\"Statement\\":[{\\"Action\\":\\"sts:AssumeRole\\",\\"Effect\\":\\"Allow\\",\\"Principal\\":{\\"Service\\":[\\"polardb.aliyuncs.com\\"]}}],\\"Version\\":\\"1\\"}
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	// The time when the role was created. The time is displayed in UTC.
+	// The time when the role was created (UTC).
 	//
 	// example:
 	//
@@ -88,27 +88,27 @@ type CreateServiceLinkedRoleResponseBodyRole struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the role is a service-linked role. Valid values:
 	//
-	// 	- true
+	// - true: The role is a service-linked role.
 	//
-	// 	- false
+	// - false: The role is not a service-linked role.
 	//
 	// example:
 	//
 	// true
 	IsServiceLinkedRole *bool `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
-	// The ID of the role.
+	// The role ID.
 	//
 	// example:
 	//
 	// 32833240981067****
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The name of the role.
+	// The role name.
 	//
 	// example:
 	//
 	// AliyunServiceRoleForPolarDB
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The role name that uses a domain name as the suffix.
+	// The role name with the domain name suffix.
 	//
 	// example:
 	//

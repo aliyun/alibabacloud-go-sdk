@@ -16,13 +16,13 @@ type iUpdateResourceGroupResponseBody interface {
 }
 
 type UpdateResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource group.
+	// The resource group information.
 	ResourceGroup *UpdateResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *UpdateResourceGroupResponseBody) Validate() error {
 }
 
 type UpdateResourceGroupResponseBodyResourceGroup struct {
-	// The ID of the Alibaba Cloud account to which the resource group belongs.
+	// The Alibaba Cloud account ID to which the resource group belongs.
 	//
 	// example:
 	//
 	// 123456789****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when the resource group was created. The time is displayed in UTC.
+	// The time when the resource group was created (UTC).
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type UpdateResourceGroupResponseBodyResourceGroup struct {
 	//
 	// project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

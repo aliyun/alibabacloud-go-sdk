@@ -16,7 +16,7 @@ type iCreatePolicyResponseBody interface {
 }
 
 type CreatePolicyResponseBody struct {
-	// The information about the permission policy.
+	// The access policy information.
 	Policy *CreatePolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,35 +62,35 @@ func (s *CreatePolicyResponseBody) Validate() error {
 }
 
 type CreatePolicyResponseBodyPolicy struct {
-	// The time when the permission policy was created.
+	// The time when the access policy was created. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The version number of the permission policy. Default value: v1.
+	// The version number of the access policy. Default value: v1.
 	//
 	// example:
 	//
 	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the permission policy.
+	// The description of the access policy.
 	//
 	// example:
 	//
-	// OSS administrator
+	// OSS administrator permissions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission policy.
+	// The Policy Name of the access policy.
 	//
 	// example:
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. Valid values:
+	// The type of the access policy. Valid values:
 	//
-	// 	- Custom
+	// - Custom: custom policy.
 	//
-	// 	- System
+	// - System: system policy.
 	//
 	// example:
 	//

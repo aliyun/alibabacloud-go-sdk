@@ -16,27 +16,27 @@ type iListControlPolicyAttachmentsForTargetRequest interface {
 }
 
 type ListControlPolicyAttachmentsForTargetRequest struct {
-	// The language in which you want to return the descriptions of the access control policies. Valid values:
+	// The language in which the control policy descriptions are returned. Valid values:
 	//
-	// 	- zh-CN (default value): Chinese
+	// - zh-CN (default): Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese.
 	//
-	// >  This parameter is valid only for system access control policies.
+	// > This parameter is valid only for system control policies.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The ID of the object whose access control policies you want to query. Access control policies can be attached to the following objects:
+	// The target node. Valid values:
 	//
-	// 	- Root folder
+	// - Root ID: queries the control policies attached to the Root node.
 	//
-	// 	- Subfolders of the Root folder
+	// - Resource folder ID: queries the control policies attached to a resource folder.
 	//
-	// 	- Members
+	// - Member ID: queries the control policies attached to a member.
 	//
 	// This parameter is required.
 	//

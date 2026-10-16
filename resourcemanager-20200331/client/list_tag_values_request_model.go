@@ -22,7 +22,7 @@ type iListTagValuesRequest interface {
 }
 
 type ListTagValuesRequest struct {
-	// The maximum number of entries to return for a single request.
+	// The maximum number of entries to return in a single request.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//
@@ -38,7 +38,7 @@ type ListTagValuesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource type.
 	//
-	// The value Account indicates the members of the resource directory.
+	// Set the value to Account, which indicates a member of a resource directory.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ListTagValuesRequest struct {
 	//
 	// Account
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key. This parameter specifies a filter condition for the query.
+	// The tag key that is used as a filter condition for the query.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ListTagValuesRequest struct {
 	//
 	// k1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value for a fuzzy query.
+	// The tag value for fuzzy match.
 	//
 	// example:
 	//

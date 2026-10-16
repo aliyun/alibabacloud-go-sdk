@@ -16,7 +16,7 @@ type iListResourceGroupCapabilityResponseBody interface {
 }
 
 type ListResourceGroupCapabilityResponseBody struct {
-	// Indicates whether a specific resource type or cloud service supports resource group events.
+	// The list of capability items.
 	Capabilities []*ListResourceGroupCapabilityResponseBodyCapabilities `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,27 +66,29 @@ func (s *ListResourceGroupCapabilityResponseBody) Validate() error {
 }
 
 type ListResourceGroupCapabilityResponseBodyCapabilities struct {
+	// The resource center resource type code.
+	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceCenterResourceType *string `json:"ResourceCenterResourceType,omitempty" xml:"ResourceCenterResourceType,omitempty"`
 	// The resource type.
 	//
-	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The service code.
+	// The cloud service code.
 	//
-	// You can obtain the code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the cloud service code from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// ecs
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// Indicates whether a specific resource type or cloud service supports resource group events.
+	// Specifies whether resource group events are supported.
 	//
 	// example:
 	//

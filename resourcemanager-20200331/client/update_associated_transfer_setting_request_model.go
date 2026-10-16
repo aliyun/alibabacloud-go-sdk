@@ -16,17 +16,17 @@ type iUpdateAssociatedTransferSettingRequest interface {
 }
 
 type UpdateAssociatedTransferSettingRequest struct {
-	// Specifies whether to enable the Transfer Existing Associated Resources feature. Valid values:
+	// Specifies whether to start the task for transferring existing associated resources to the resource group. Valid values:
 	//
-	// 	- false
+	// - false: Does not start the task for transferring existing associated resources to the resource group.
 	//
-	// 	- true
+	// - true: Starts the task for transferring existing associated resources to the resource group.
 	//
 	// example:
 	//
 	// false
 	EnableExistingResourcesTransfer *string `json:"EnableExistingResourcesTransfer,omitempty" xml:"EnableExistingResourcesTransfer,omitempty"`
-	// The settings of transfer rules.
+	// The rule settings of the associated resource group transfer feature.
 	RuleSettings []*UpdateAssociatedTransferSettingRequestRuleSettings `json:"RuleSettings,omitempty" xml:"RuleSettings,omitempty" type:"Repeated"`
 }
 
@@ -70,43 +70,43 @@ func (s *UpdateAssociatedTransferSettingRequest) Validate() error {
 }
 
 type UpdateAssociatedTransferSettingRequestRuleSettings struct {
-	// The type of the associated resource.
+	// The resource type of the associated resource.
 	//
-	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// disk
 	AssociatedResourceType *string `json:"AssociatedResourceType,omitempty" xml:"AssociatedResourceType,omitempty"`
-	// The service code of the associated resource.
+	// The cloud service code of the associated resource.
 	//
-	// You can obtain the service code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the cloud service code from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// ecs
 	AssociatedService *string `json:"AssociatedService,omitempty" xml:"AssociatedService,omitempty"`
-	// The type of the primary resource.
+	// The resource type of the master resource.
 	//
-	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// instance
 	MasterResourceType *string `json:"MasterResourceType,omitempty" xml:"MasterResourceType,omitempty"`
-	// The service code of the primary resource.
+	// The cloud service code of the master resource.
 	//
-	// You can obtain the service code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the cloud service code from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// ecs
 	MasterService *string `json:"MasterService,omitempty" xml:"MasterService,omitempty"`
-	// The status of the Transfer Associated Resources feature. Valid values:
+	// The enabling status of the associated resource group transfer feature. Valid values:
 	//
-	// 	- Enable: enabled
+	// - Enable: Enabled.
 	//
-	// 	- Disable: disabled
+	// - Disable: Disabled.
 	//
 	// This parameter is required.
 	//

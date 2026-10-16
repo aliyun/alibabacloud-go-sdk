@@ -16,13 +16,13 @@ type iDeleteResourceGroupResponseBody interface {
 }
 
 type DeleteResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1C488B66-B819-4D14-8711-C4EAAA13AC01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource group.
+	// The resource group information.
 	ResourceGroup *DeleteResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DeleteResourceGroupResponseBody) Validate() error {
 }
 
 type DeleteResourceGroupResponseBodyResourceGroup struct {
-	// The ID of the Alibaba Cloud account to which the resource group belongs.
+	// The Alibaba Cloud account ID to which the resource group belongs.
 	//
 	// example:
 	//
 	// 123456789****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when the resource group was created. The time is displayed in UTC.
+	// The time when the resource group was created (UTC).
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DeleteResourceGroupResponseBodyResourceGroup struct {
 	//
 	// my-project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -95,11 +95,11 @@ type DeleteResourceGroupResponseBodyResourceGroup struct {
 	RegionStatuses *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	// The status of the resource group. Valid values:
 	//
-	// 	- Creating: The resource group is being created.
+	// - Creating: Being created.
 	//
-	// 	- OK: The resource group is created.
+	// - OK: Created.
 	//
-	// 	- PendingDelete: The resource group is waiting to be deleted.
+	// - PendingDelete: Pending deletion.
 	//
 	// example:
 	//

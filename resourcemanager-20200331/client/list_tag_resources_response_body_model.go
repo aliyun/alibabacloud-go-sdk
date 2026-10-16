@@ -18,17 +18,17 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// Indicates whether the next query is required.
+	// Indicates whether the `NextToken` parameter is returned for the next query. Valid values:
 	//
-	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// - If `NextToken` is empty, which is displayed as `"NextToken": ""`, no next query exists.
 	//
-	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// - If `NextToken` is returned with a value, the value is the token that is used to start the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -87,17 +87,17 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The ID of the resource group or member.
+	// The resource group ID or resource directory member ID.
 	//
 	// example:
 	//
 	// rg-aekz6bre2uq****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the object whose tags are queried. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- resourcegroup: resource group
+	// - resourcegroup: resource group.
 	//
-	// 	- Account: member
+	// - Account: resource directory member.
 	//
 	// example:
 	//

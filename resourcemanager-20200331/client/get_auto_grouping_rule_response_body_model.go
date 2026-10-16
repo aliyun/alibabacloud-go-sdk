@@ -22,7 +22,7 @@ type GetAutoGroupingRuleResponseBody struct {
 	//
 	// 9EA4F962-1A2E-4AFE-BE0C-B14736FC46CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the rule.
+	// The rule information.
 	Rule *GetAutoGroupingRuleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
 }
 
@@ -62,25 +62,25 @@ func (s *GetAutoGroupingRuleResponseBody) Validate() error {
 }
 
 type GetAutoGroupingRuleResponseBodyRule struct {
-	// The time when the rule was created.
+	// The time when the rule was created, in RFC 3339 format with a UTC offset of +08:00.
 	//
 	// example:
 	//
 	// 2025-01-01T10:00:00+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The IDs of excluded regions. Multiple IDs are separated by commas (,).
+	// The excluded region IDs. Multiple region IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou,cn-shanghai
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// The IDs of excluded resource groups. Multiple IDs are separated by commas (,).
+	// The excluded resource group IDs. Multiple resource group IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// rg-aekz******4b5ea,rg-aek2******fxykq
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The IDs of excluded resources. Multiple IDs are separated by commas (,).
+	// The excluded resource IDs. Multiple resource IDs are separated by commas (,).
 	//
 	// example:
 	//
@@ -92,61 +92,61 @@ type GetAutoGroupingRuleResponseBodyRule struct {
 	//
 	// ecs.instance,vpc.vpc
 	ExcludeResourceTypesScope *string `json:"ExcludeResourceTypesScope,omitempty" xml:"ExcludeResourceTypesScope,omitempty"`
-	// The time when the rule was modified.
+	// The time when the rule was last modified, in RFC 3339 format with a UTC offset of +08:00.
 	//
 	// example:
 	//
 	// 2025-01-01T10:00:00+08:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The IDs of regions. Multiple IDs are separated by commas (,).
+	// The region IDs in scope. Multiple region IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou,cn-shanghai
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The IDs of resource groups. Multiple IDs are separated by commas (,).
+	// The resource group IDs in scope. Multiple resource group IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// rg-aekz******4b5ea,rg-aek2******fxykq
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The IDs of resources. Multiple IDs are separated by commas (,).
+	// The resource IDs in scope. Multiple resource IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// i-2zee******ym49kfmwis,vpc-5ts6******fnw493g849a
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The resource types. Multiple resource types are separated by commas (,).
+	// The resource types in scope. Multiple resource types are separated by commas (,).
 	//
 	// example:
 	//
 	// ecs.instance,vpc.vpc
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The content records of the rule.
+	// The list of rule contents.
 	RuleContents []*GetAutoGroupingRuleResponseBodyRuleRuleContents `json:"RuleContents,omitempty" xml:"RuleContents,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
-	// Transfer resources to which the {"env": "online"} and {"project": "A"} tags are added to the resource group rg-aek2********qcy.
+	// Transfer resources with tags {"env": "online"} and {"project": "A"} to resource group rg-aek2********qcy
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// gr-acfo******hy6a
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
-	// Custom Transfer Rule for Online Resources of Project A
+	// Automatic group transfer rule for Project A online resources
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- custom_condition: custom transfer rule
+	// - custom_condition: Transfer based on custom rules.
 	//
-	// 	- associated_transfer: transfer rule for associated resources
+	// - associated_transfer: Transfer associated resources together.
 	//
 	// example:
 	//
@@ -311,19 +311,19 @@ func (s *GetAutoGroupingRuleResponseBodyRule) Validate() error {
 }
 
 type GetAutoGroupingRuleResponseBodyRuleRuleContents struct {
-	// The condition for the range of resources that are automatically transferred.
+	// The scope condition for automatic group transfer, which specifies the range of resources to be automatically transferred to a resource group.
 	//
 	// example:
 	//
 	// {"children":[{"desired":"{\\"env\\":\\"online\\", \\"project\\":\\"A\\"}","featurePath":"$.tags","featureSource":"RESOURCE","operator":"TagMatchAll"}],"operator":"and"}
 	AutoGroupingScopeCondition *string `json:"AutoGroupingScopeCondition,omitempty" xml:"AutoGroupingScopeCondition,omitempty"`
-	// The ID of the content record.
+	// The rule content ID.
 	//
 	// example:
 	//
 	// grc-acfo******fwybpq
 	RuleContentId *string `json:"RuleContentId,omitempty" xml:"RuleContentId,omitempty"`
-	// The condition for the destination resource group.
+	// The target resource group condition, which specifies the destination resource group for automatic grouping.
 	//
 	// example:
 	//

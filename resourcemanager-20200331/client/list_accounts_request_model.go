@@ -20,25 +20,25 @@ type iListAccountsRequest interface {
 }
 
 type ListAccountsRequest struct {
-	// Specifies whether to return the information of tags. Valid values:
+	// Specifies whether to return tag information. Valid values:
 	//
-	// 	- false (default value)
+	// - false (default): does not return tag information.
 	//
-	// 	- true
+	// - true: returns tag information.
 	//
 	// example:
 	//
 	// true
 	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//
@@ -46,7 +46,7 @@ type ListAccountsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tag key and value.
+	// The tags used to filter member accounts.
 	Tag []*ListAccountsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -108,13 +108,13 @@ func (s *ListAccountsRequest) Validate() error {
 }
 
 type ListAccountsRequestTag struct {
-	// A tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A tag value.
+	// The tag value.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iLookupResourceGroupEventsResponseBody interface {
 }
 
 type LookupResourceGroupEventsResponseBody struct {
-	// The queried events.
+	// The list of events.
 	Events []*LookupResourceGroupEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *LookupResourceGroupEventsResponseBody) Validate() error {
 }
 
 type LookupResourceGroupEventsResponseBodyEvents struct {
-	// The type of the resource change event.
+	// The change type of the event.
 	//
 	// example:
 	//
 	// Add
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The time when the event was triggered.
+	// The event time in RFC 3339 UTC format, indicated by Z for UTC.
 	//
 	// example:
 	//
@@ -121,15 +121,15 @@ type LookupResourceGroupEventsResponseBodyEvents struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
 	//
-	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the value from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The service code.
+	// The cloud service code.
 	//
-	// You can obtain the code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the value from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type LookupResourceGroupEventsResponseBodyEvents struct {
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	// The source resource group.
 	SourceResourceGroupInfo *LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo `json:"SourceResourceGroupInfo,omitempty" xml:"SourceResourceGroupInfo,omitempty" type:"Struct"`
-	// The destination resource group.
+	// The target resource group.
 	TargetResourceGroupInfo *LookupResourceGroupEventsResponseBodyEventsTargetResourceGroupInfo `json:"TargetResourceGroupInfo,omitempty" xml:"TargetResourceGroupInfo,omitempty" type:"Struct"`
 }
 

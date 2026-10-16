@@ -14,7 +14,7 @@ type iChangeAccountEmailResponseBody interface {
 }
 
 type ChangeAccountEmailResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

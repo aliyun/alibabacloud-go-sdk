@@ -18,13 +18,13 @@ type iListRolesRequest interface {
 }
 
 type ListRolesRequest struct {
-	// The language in which you want to return the descriptions of the RAM roles. Valid values:
+	// The language type. The role description is returned in the specified language. Valid values:
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListRolesRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//

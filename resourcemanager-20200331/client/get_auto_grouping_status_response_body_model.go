@@ -18,25 +18,25 @@ type iGetAutoGroupingStatusResponseBody interface {
 }
 
 type GetAutoGroupingStatusResponseBody struct {
-	// Indicates whether the Transfer Existing Associated Resources feature is enabled. Valid values:
+	// Indicates whether the attached-resource allocation for existing resources is enabled. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Not enabled.
 	//
 	// example:
 	//
 	// true
 	EnableExistedResourcesTransfer *bool `json:"EnableExistedResourcesTransfer,omitempty" xml:"EnableExistedResourcesTransfer,omitempty"`
-	// The status of the Automatic Resource Transfer feature. Valid values:
+	// The status of automatic resource group transfer. Valid values:
 	//
-	// 	- Enabling: The feature is being enabled.
+	// - Enabling: Being enabled.
 	//
-	// 	- Enable: The feature is enabled.
+	// - Enable: Enabled.
 	//
-	// 	- Partial_Enable: The transfer of associated resources is enabled, but custom transfer rule-based resource transfer is disabled. You can call the [EnableAutoGrouping](https://help.aliyun.com/document_detail/2870380.html) operation to enable custom transfer rule-based resource transfer.
+	// - Partial_Enable: Attached-resource allocation is enabled, but custom condition-based resource group transfer is not enabled. To enable custom condition-based resource group transfer, call [EnableAutoGrouping](~~EnableAutoGrouping~~).
 	//
-	// 	- Disable: The feature is disabled.
+	// - Disable: Not enabled.
 	//
 	// example:
 	//

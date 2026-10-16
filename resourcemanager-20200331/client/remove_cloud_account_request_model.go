@@ -14,7 +14,7 @@ type iRemoveCloudAccountRequest interface {
 }
 
 type RemoveCloudAccountRequest struct {
-	// The ID of the member.
+	// The member ID.
 	//
 	// This parameter is required.
 	//

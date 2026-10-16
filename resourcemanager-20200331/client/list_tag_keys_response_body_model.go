@@ -18,23 +18,23 @@ type iListTagKeysResponseBody interface {
 }
 
 type ListTagKeysResponseBody struct {
-	// Indicates whether the next query is required.
+	// Indicates whether a next query token is available. Valid values:
 	//
-	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// - If NextToken is empty, that is, `"NextToken": ""`, no additional results exist.
 	//
-	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// - If NextToken has a value, the value is the token for the next query.
 	//
 	// example:
 	//
 	// TGlzdFJlc291cm****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DC09A6AA-2713-4E10-A2E9-E6C5C43A8842
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the tag keys.
+	// The tag key information.
 	Tags []*ListTagKeysResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

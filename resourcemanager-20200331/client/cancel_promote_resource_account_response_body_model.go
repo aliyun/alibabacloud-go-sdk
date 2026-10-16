@@ -14,7 +14,7 @@ type iCancelPromoteResourceAccountResponseBody interface {
 }
 
 type CancelPromoteResourceAccountResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

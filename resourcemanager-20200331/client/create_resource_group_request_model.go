@@ -20,7 +20,7 @@ type iCreateResourceGroupRequest interface {
 type CreateResourceGroupRequest struct {
 	// The display name of the resource group.
 	//
-	// It must be 1 to 50 characters in length.
+	// The name must be 1 to 50 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateResourceGroupRequest struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The unique identifier of the resource group.
 	//
-	// It must be 2 to 50 characters in length and can contain letters, digits, and hyphens (-). It must start with a letter.
+	// The identifier must be 2 to 50 characters in length and can contain letters, digits, and hyphens (-). It must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// my-project
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*CreateResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -91,17 +91,17 @@ func (s *CreateResourceGroupRequest) Validate() error {
 }
 
 type CreateResourceGroupRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
-	// The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

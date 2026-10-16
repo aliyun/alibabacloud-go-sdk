@@ -14,7 +14,7 @@ type iGetFolderRequest interface {
 }
 
 type GetFolderRequest struct {
-	// The ID of the folder.
+	// The folder ID.
 	//
 	// This parameter is required.
 	//

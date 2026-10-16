@@ -14,7 +14,7 @@ type iDeleteServiceLinkedRoleRequest interface {
 }
 
 type DeleteServiceLinkedRoleRequest struct {
-	// The name of the role.
+	// The role name.
 	//
 	// This parameter is required.
 	//

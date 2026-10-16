@@ -16,9 +16,9 @@ type iDeclineHandshakeResponseBody interface {
 }
 
 type DeclineHandshakeResponseBody struct {
-	// The information of the invitation.
+	// The handshake information.
 	Handshake *DeclineHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,65 +62,65 @@ func (s *DeclineHandshakeResponseBody) Validate() error {
 }
 
 type DeclineHandshakeResponseBodyHandshake struct {
-	// The time when the invitation was created.
+	// The creation time of the handshake in RFC 3339 UTC format, indicated by Z for UTC.
 	//
 	// example:
 	//
 	// 2018-08-10T09:55:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires.
+	// The expiration time of the handshake in RFC 3339 UTC format, indicated by Z for UTC.
 	//
 	// example:
 	//
 	// 2018-08-10T09:55:41Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
+	// The handshake ID.
 	//
 	// example:
 	//
 	// h-ycm4rp****
 	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The ID of the enterprise management account of the resource directory.
+	// The ID of the management account of the resource directory.
 	//
 	// example:
 	//
 	// 172841235500****
 	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the enterprise management account of the resource directory.
+	// The name of the management account of the resource directory.
 	//
 	// example:
 	//
 	// Alice
 	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified.
+	// The modification time of the handshake in RFC 3339 UTC format, indicated by Z for UTC.
 	//
 	// example:
 	//
 	// 2018-08-10T09:55:41Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The invitation note.
+	// The remarks.
 	//
 	// example:
 	//
-	// Welcome
+	// Welcome to join us
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
+	// The resource directory ID.
 	//
 	// example:
 	//
 	// rd-abcdef****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
+	// The handshake status. Valid values:
 	//
-	// 	- Pending: The invitation is waiting for confirmation.
+	// - Pending: Waiting for confirmation.
 	//
-	// 	- Accepted: The invitation is accepted.
+	// - Accepted: Accepted.
 	//
-	// 	- Cancelled: The invitation is canceled.
+	// - Cancelled: Cancelled.
 	//
-	// 	- Declined: The invitation is rejected.
+	// - Declined: Declined.
 	//
-	// 	- Expired: The invitation expired.
+	// - Expired: Expired.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ type DeclineHandshakeResponseBodyHandshake struct {
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	// The type of the invited account. Valid values:
 	//
-	// 	- Account: indicates the ID of the account.
+	// - Account: account ID.
 	//
-	// 	- Email: indicates the logon email address of the account.
+	// - Email: account logon email address.
 	//
 	// example:
 	//

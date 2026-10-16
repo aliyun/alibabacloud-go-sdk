@@ -22,7 +22,7 @@ type CreateAutoGroupingRuleResponseBody struct {
 	//
 	// F7701451-340B-5CB3-AEA7-7D831F7F38C0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//

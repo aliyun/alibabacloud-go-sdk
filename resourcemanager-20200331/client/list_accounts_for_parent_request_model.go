@@ -24,25 +24,25 @@ type iListAccountsForParentRequest interface {
 }
 
 type ListAccountsForParentRequest struct {
-	// Specifies whether to return the information of tags. Valid values:
+	// Specifies whether to return tag information. Valid values:
 	//
-	// false (default value)
+	// - false (default): Does not return tag information.
 	//
-	// true
+	// - true: Returns tag information.
 	//
 	// example:
 	//
 	// true
 	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//
@@ -50,13 +50,13 @@ type ListAccountsForParentRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the folder.
+	// The ID of the resource folder.
 	//
 	// example:
 	//
 	// fd-bVaRIG****
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	// The keyword used for the query, such as the display name of a member.
+	// The query keyword, such as the member name.
 	//
 	// Fuzzy match is supported.
 	//
@@ -64,7 +64,7 @@ type ListAccountsForParentRequest struct {
 	//
 	// admin
 	QueryKeyword *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
-	// The tag key and value.
+	// The tags used to filter member accounts.
 	Tag []*ListAccountsForParentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -144,13 +144,13 @@ func (s *ListAccountsForParentRequest) Validate() error {
 }
 
 type ListAccountsForParentRequestTag struct {
-	// A tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A tag value.
+	// The tag value.
 	//
 	// example:
 	//

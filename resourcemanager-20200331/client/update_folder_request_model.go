@@ -16,7 +16,7 @@ type iUpdateFolderRequest interface {
 }
 
 type UpdateFolderRequest struct {
-	// The ID of the folder.
+	// The folder ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpdateFolderRequest struct {
 	//
 	// fd-u8B321****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The new name of the folder.
+	// The new folder name.
 	//
 	// The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
 	//

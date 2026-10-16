@@ -32,63 +32,63 @@ type iListResourceGroupsWithAuthDetailsRequest interface {
 }
 
 type ListResourceGroupsWithAuthDetailsRequest struct {
-	// The display name of the resource group. This parameter specifies a filter condition for the query. Fuzzy search is supported.
+	// The display name of the resource group. This parameter is used as a filter condition. Fuzzy match is supported.
 	//
-	// The display name can be a maximum of 50 characters in length.
+	// The name can be up to 50 characters in length.
 	//
 	// example:
 	//
 	// TestRG-BVT1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Specifies whether to return the information of tags. Valid values:
+	// Specifies whether to return tag information. Valid values:
 	//
-	// 	- false (default)
+	// - false (default): Does not return tag information.
 	//
-	// 	- true
+	// - true: Returns tag information.
 	//
-	// >  If you set a tag filter condition, the tag information is returned regardless of the `IncludeTags` value.
+	// > If you specify tag-based filter conditions, tag information is always returned regardless of the value of `IncludeTags`.
 	//
 	// example:
 	//
 	// true
 	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
-	// The identifier of the resource group. This parameter specifies a filter condition for the query. Fuzzy search is supported.
+	// The unique identifier of the resource group. This parameter is used as a filter condition. Fuzzy match is supported.
 	//
-	// The identifier can be a maximum of 50 characters in length and can contain letters, digits, and hyphens (-).
+	// The identifier can be up to 50 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// prod-rg
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the resource groups that you want to query.
+	// The list of resource group IDs.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
-	// The ID of the region where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The resource types.
+	// The list of resource types.
 	ResourceTypes []*ListResourceGroupsWithAuthDetailsRequestResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The status of the resource group. This parameter specifies a filter condition for the query. Valid values:
+	// The status of the resource group. This parameter is used as a filter condition. Valid values:
 	//
-	// 	- Creating: The resource group is being created.
+	// - Creating: Being created.
 	//
-	// 	- OK: The resource group is created.
+	// - OK: Created.
 	//
-	// 	- PendingDelete: The resource group is waiting to be deleted.
+	// - PendingDelete: Pending deletion.
 	//
 	// example:
 	//
@@ -221,15 +221,15 @@ func (s *ListResourceGroupsWithAuthDetailsRequest) Validate() error {
 type ListResourceGroupsWithAuthDetailsRequestResourceTypes struct {
 	// The resource type.
 	//
-	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// instance
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	// The service code.
+	// The cloud service code.
 	//
-	// You can obtain the code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the cloud service code from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//

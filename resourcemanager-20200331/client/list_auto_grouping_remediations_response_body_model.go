@@ -28,7 +28,7 @@ type ListAutoGroupingRemediationsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type ListAutoGroupingRemediationsResponseBodyRemediations struct {
 	//
 	// 0028d4****cfe94956ef6708a373f396fbc840e306f
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	// The remediation time.
+	// The remediation time. The format is YYYY-MM-DD HH:mm:ss without a time zone identifier.
 	//
 	// example:
 	//
@@ -128,21 +128,21 @@ type ListAutoGroupingRemediationsResponseBodyRemediations struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
 	//
-	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the Alibaba Cloud service.
+	// The cloud service ID.
 	//
-	// You can obtain the ID from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the cloud service ID from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// ecs
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The information about the new resource group.
+	// The information about the target resource group for remediation.
 	TargetResourceGroupInfo *ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInfo `json:"TargetResourceGroupInfo,omitempty" xml:"TargetResourceGroupInfo,omitempty" type:"Struct"`
 }
 

@@ -16,7 +16,7 @@ type iMoveAccountRequest interface {
 }
 
 type MoveAccountRequest struct {
-	// The ID of the account you want to move.
+	// The ID of the account to be moved.
 	//
 	// This parameter is required.
 	//

@@ -18,21 +18,21 @@ type iGetPolicyRequest interface {
 }
 
 type GetPolicyRequest struct {
-	// The language in which you want to return the description of the system permission policy. Valid values:
+	// The language type. The description of the system access policy is returned in this language. Valid values:
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The name of the permission policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type GetPolicyRequest struct {
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. Valid values:
+	// The type of the access policy. Valid values:
 	//
-	// 	- Custom
+	// - Custom: custom policy.
 	//
-	// 	- System
+	// - System: system policy.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iAttachControlPolicyRequest interface {
 }
 
 type AttachControlPolicyRequest struct {
-	// The ID of the access control policy.
+	// The ID of the control policy.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,13 @@ type AttachControlPolicyRequest struct {
 	//
 	// cp-jExXAqIYkwHN****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The ID of the object to which you want to attach the access control policy. Access control policies can be attached to the following objects:
+	// The target node. Valid values:
 	//
-	// 	- Root folder
+	// - Root ID: attaches the control policy to the Root resource folder.
 	//
-	// 	- Subfolders of the Root folder
+	// - Resource folder ID: attaches the control policy to a resource folder.
 	//
-	// 	- Members
+	// - Member ID: attaches the control policy to a member.
 	//
 	// This parameter is required.
 	//

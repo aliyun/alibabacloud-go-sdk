@@ -16,7 +16,7 @@ type iPromoteResourceAccountRequest interface {
 }
 
 type PromoteResourceAccountRequest struct {
-	// The ID of the resource account you want to upgrade.
+	// The ID of the resource account to upgrade.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type PromoteResourceAccountRequest struct {
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The email address used to log on to the cloud account after the upgrade.
+	// The logon email address of the Alibaba Cloud account after the upgrade.
 	//
 	// This parameter is required.
 	//

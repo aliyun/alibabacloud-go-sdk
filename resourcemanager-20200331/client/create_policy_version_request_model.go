@@ -18,9 +18,9 @@ type iCreatePolicyVersionRequest interface {
 }
 
 type CreatePolicyVersionRequest struct {
-	// The document of the permission policy.
+	// The content of the access policy.
 	//
-	// The document must be 1 to 6,144 characters in length.
+	// The content must be 1 to 6,144 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type CreatePolicyVersionRequest struct {
 	//
 	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The name of the permission policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,13 @@ type CreatePolicyVersionRequest struct {
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// Specifies whether to set the policy version as the default version.
+	// Specifies whether to set the version as the default access policy version.
 	//
-	// 	- false (default)
+	// Valid values:
 	//
-	// 	- true
+	// - false (default): The version is not set as the default access policy version.
+	//
+	// - true: The version is set as the default access policy version.
 	//
 	// example:
 	//

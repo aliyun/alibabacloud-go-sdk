@@ -22,7 +22,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//
@@ -36,19 +36,23 @@ type ListTagResourcesRequest struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource ID.
+	// The resource group ID or resource directory member ID. This parameter is used as a filter condition.
+	//
+	// > To query the tags that are attached to a resource directory member, you must specify both `ResourceId` and `ResourceType`, and set `ResourceType` to `Account`.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the objects whose tags you want to query. This parameter specifies a filter condition for the query. Valid values:
+	// The resource type. This parameter is used as a filter condition. Valid values:
 	//
-	// 	- ResourceGroup: resource group. This is the default value.
+	// - ResourceGroup (default): queries the tags of a resource group.
 	//
-	// 	- Account: member.
+	// - Account: queries the tags of a resource directory member.
 	//
 	// example:
 	//
 	// ResourceGroup
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key and value.
+	// The tags. This parameter is used as a filter condition.
+	//
+	// You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -119,13 +123,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// A tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A tag value.
+	// The tag value.
 	//
 	// example:
 	//

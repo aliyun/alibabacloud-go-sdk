@@ -20,15 +20,9 @@ type iGetResourceGroupResourceCountsRequest interface {
 }
 
 type GetResourceGroupResourceCountsRequest struct {
-	// The dimension by which resources are queried.
+	// The grouping dimension for resource count statistics.
 	//
-	// > If you do not specify a dimension, no results are returned.
-	//
-	// Valid values:
-	//
-	// 	- ResourceGroupId
-	//
-	// 	- ResourceType
+	// > Specify a grouping dimension. If you do not specify a grouping dimension, the response is empty.
 	//
 	// example:
 	//
@@ -36,19 +30,19 @@ type GetResourceGroupResourceCountsRequest struct {
 	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
 	// The resource group ID.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) operation to obtain the ID.
+	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) to obtain the resource group ID.
 	//
 	// example:
 	//
 	// rg-9gLOoK****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The region ID of the resources.
+	// The region to which the resource belongs.
 	//
 	// example:
 	//
 	// cn-shanghai
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The resource types.
+	// The list of resource types.
 	ResourceTypes []*GetResourceGroupResourceCountsRequestResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -112,15 +106,15 @@ func (s *GetResourceGroupResourceCountsRequest) Validate() error {
 type GetResourceGroupResourceCountsRequestResourceTypes struct {
 	// The resource type.
 	//
-	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the resource type from the **Resource Type*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//
 	// instance
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	// The service code.
+	// The cloud service code.
 	//
-	// You can obtain the code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	// You can obtain the cloud service code from the **Cloud Service Code*	- column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
 	//
 	// example:
 	//

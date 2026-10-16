@@ -14,7 +14,7 @@ type iListDelegatedServicesForAccountRequest interface {
 }
 
 type ListDelegatedServicesForAccountRequest struct {
-	// The ID of the member.
+	// The member ID.
 	//
 	// This parameter is required.
 	//

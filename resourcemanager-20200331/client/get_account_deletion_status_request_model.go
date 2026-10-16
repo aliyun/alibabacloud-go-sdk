@@ -14,7 +14,7 @@ type iGetAccountDeletionStatusRequest interface {
 }
 
 type GetAccountDeletionStatusRequest struct {
-	// The Alibaba Cloud account ID of the member.
+	// The ID of the member account.
 	//
 	// This parameter is required.
 	//

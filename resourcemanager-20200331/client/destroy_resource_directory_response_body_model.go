@@ -14,7 +14,7 @@ type iDestroyResourceDirectoryResponseBody interface {
 }
 
 type DestroyResourceDirectoryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type CreateResourceGroupResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource group.
+	// The resource group information.
 	ResourceGroup *CreateResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *CreateResourceGroupResponseBody) Validate() error {
 }
 
 type CreateResourceGroupResponseBodyResourceGroup struct {
-	// The ID of the Alibaba Cloud account to which the resource group belongs.
+	// The Alibaba Cloud account ID to which the resource group belongs.
 	//
 	// example:
 	//
 	// 151266687691****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when the resource group was created. The time is displayed in UTC.
+	// The time when the resource group was created (UTC).
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateResourceGroupResponseBodyResourceGroup struct {
 	//
 	// my-project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -91,14 +91,13 @@ type CreateResourceGroupResponseBodyResourceGroup struct {
 	// example:
 	//
 	// my-project
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the resource group in all regions.
+	Name           *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionStatuses *CreateResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	// The status of the resource group. Valid values:
 	//
-	// 	- Creating: The resource group is being created.
+	// - Creating: Being created.
 	//
-	// 	- OK: The resource group is created.
+	// - OK: Created.
 	//
 	// example:
 	//
@@ -221,22 +220,8 @@ func (s *CreateResourceGroupResponseBodyResourceGroupRegionStatuses) Validate() 
 }
 
 type CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus struct {
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the resource group. Valid values:
-	//
-	// 	- Creating: The resource group is being created.
-	//
-	// 	- OK: The resource group is created.
-	//
-	// example:
-	//
-	// Creating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) String() string {

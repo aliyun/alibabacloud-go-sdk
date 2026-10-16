@@ -16,7 +16,7 @@ type iSendVerificationCodeForBindSecureMobilePhoneRequest interface {
 }
 
 type SendVerificationCodeForBindSecureMobilePhoneRequest struct {
-	// The ID of the resource account.
+	// The account ID of the member.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,18 @@ type SendVerificationCodeForBindSecureMobilePhoneRequest struct {
 	//
 	// 138660628348****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The mobile phone number that you want to bind to the resource account.
+	// The secure phone number.
 	//
-	// Specify the mobile phone number in the \\<Country code>-\\<Mobile phone number> format.
+	// Format: <Country code>-<Phone number>.
 	//
-	// >  Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+	// <props="china">
+	//
+	// > Only phone numbers in the Chinese mainland in the format of `86-<Phone number>` are supported.
+	//
+	//
+	// <props="intl">
+	//
+	// > Phone numbers in the Chinese mainland in the format of `86-<Phone number>` are not supported.
 	//
 	// This parameter is required.
 	//

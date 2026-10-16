@@ -16,7 +16,7 @@ type iGetAccountRequest interface {
 }
 
 type GetAccountRequest struct {
-	// The Alibaba Cloud account ID of the member.
+	// The member account ID.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type GetAccountRequest struct {
 	//
 	// 181761095690****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Specifies whether to return the information of tags. Valid values:
+	// Specifies whether to return tag information. Valid values:
 	//
-	// 	- false (default value)
+	// - false (default): Does not return tag information.
 	//
-	// 	- true
+	// - true: Returns tag information.
 	//
 	// example:
 	//

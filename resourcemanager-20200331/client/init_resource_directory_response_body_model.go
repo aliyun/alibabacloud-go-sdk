@@ -16,13 +16,13 @@ type iInitResourceDirectoryResponseBody interface {
 }
 
 type InitResourceDirectoryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CD76D376-2517-4924-92C5-DBC52262F93A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource directory.
+	// The resource directory information.
 	ResourceDirectory *InitResourceDirectoryResponseBodyResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *InitResourceDirectoryResponseBody) Validate() error {
 }
 
 type InitResourceDirectoryResponseBodyResourceDirectory struct {
-	// The time when the resource directory was enabled.
+	// The time when the resource directory was enabled. The time is displayed in UTC in RFC 3339 format, indicated by Z.
 	//
 	// example:
 	//
 	// 2019-02-18T15:32:10.473Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the enterprise management account.
+	// The ID of the management account.
 	//
 	// example:
 	//
 	// 172841235500****
 	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the enterprise management account.
+	// The name of the management account.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type InitResourceDirectoryResponseBodyResourceDirectory struct {
 	//
 	// rd-Ss****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The ID of the root folder.
+	// The ID of the Root folder.
 	//
 	// example:
 	//

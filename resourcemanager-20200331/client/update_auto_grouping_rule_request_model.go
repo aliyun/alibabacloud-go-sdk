@@ -36,65 +36,65 @@ type iUpdateAutoGroupingRuleRequest interface {
 }
 
 type UpdateAutoGroupingRuleRequest struct {
-	// The IDs of regions to be excluded. Separate multiple IDs with commas (,).
+	// The excluded scope of region IDs. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-beijing,cn-guangzhou
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
+	// The excluded scope of resource group IDs. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekz******zj2oi,rg-aekz******r62ua
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The IDs of resources to be excluded. Separate multiple IDs with commas (,).
+	// The excluded scope of resource IDs. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// pc-uf6p******4h784y,rmq-cn-******ny0y
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The resource types to be excluded. Separate multiple resource types with commas (,).
+	// The excluded scope of resource types. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// mse.cluster,slb.loadbalancer
 	ExcludeResourceTypesScope *string `json:"ExcludeResourceTypesScope,omitempty" xml:"ExcludeResourceTypesScope,omitempty"`
-	// The IDs of regions. Separate multiple IDs with commas (,).
+	// The scope of region IDs. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou,cn-shanghai
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The IDs of resource groups. Separate multiple IDs with commas (,).
+	// The scope of resource group IDs. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekz******4b5ea,rg-aek2******fxykq
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The IDs of resources. Separate multiple IDs with commas (,).
+	// The scope of resource IDs. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// i-2zee******ym49kfmwis,vpc-5ts6******fnw493g849a
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The resource types. Separate multiple resource types with commas (,).
+	// The scope of resource types. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// rds.dbinstance,oss.bucket
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The content records of the rule.
+	// The list of rule contents.
 	//
 	// This parameter is required.
 	RuleContents []*UpdateAutoGroupingRuleRequestRuleContents `json:"RuleContents,omitempty" xml:"RuleContents,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
-	// Transfer resources to which the {"env": "online"} and {"project": "A"} tags are added to the resource group rg-aek2********qcy.
+	// Transfer resources with tags {"env": "online"} and {"project": "A"} to resource group rg-aek2********qcy
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// This parameter is required.
 	//
@@ -102,13 +102,13 @@ type UpdateAutoGroupingRuleRequest struct {
 	//
 	// gr-acfo******hy6a
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Custom Transfer Rule for Online Resources of Project A
+	// Automatic resource group transfer rule for Project A online resources
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -242,19 +242,19 @@ func (s *UpdateAutoGroupingRuleRequest) Validate() error {
 }
 
 type UpdateAutoGroupingRuleRequestRuleContents struct {
-	// The condition for the range of resources that are automatically transferred.
+	// The scope condition for automatic resource group transfer. This parameter specifies the scope of resources that need to be automatically transferred.
 	//
 	// example:
 	//
-	// {"children":[{"desired":"{\\"env\\":\\"online\\", \\"project\\":\\"A\\"}","featurePath":"$.tags","featureSource":"RESOURCE","operator":"TagMatchAll"}],"operator":"and"}
+	// {"children":[{"desired":{"env":"online","project":"A"},"featurePath":"$.tags","featureSource":"RESOURCE","operator":"TagMatchAll"}],"operator":"and"}
 	AutoGroupingScopeCondition *string `json:"AutoGroupingScopeCondition,omitempty" xml:"AutoGroupingScopeCondition,omitempty"`
-	// The ID of the content record.
+	// The rule content ID.
 	//
 	// example:
 	//
 	// grc-acfo******fwybpq
 	RuleContentId *string `json:"RuleContentId,omitempty" xml:"RuleContentId,omitempty"`
-	// The condition for the destination resource group.
+	// The target resource group condition. This parameter specifies the target resource group for automatic resource group transfer.
 	//
 	// This parameter is required.
 	//

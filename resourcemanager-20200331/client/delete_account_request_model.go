@@ -16,11 +16,11 @@ type iDeleteAccountRequest interface {
 }
 
 type DeleteAccountRequest struct {
-	// The ID of a check item that you can choose to ignore for the member deletion.
+	// The ID of the check item that you can choose to abandon and continue with the member deletion.
 	//
-	// You can obtain the ID from the response of the [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) operation.
+	// You can obtain this ID from the AbandonableChecks response parameter of [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html).
 	AbandonableCheckId []*string `json:"AbandonableCheckId,omitempty" xml:"AbandonableCheckId,omitempty" type:"Repeated"`
-	// The Alibaba Cloud account ID of the member that you want to delete.
+	// The ID of the member to delete.
 	//
 	// This parameter is required.
 	//

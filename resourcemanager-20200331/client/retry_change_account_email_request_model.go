@@ -14,7 +14,7 @@ type iRetryChangeAccountEmailRequest interface {
 }
 
 type RetryChangeAccountEmailRequest struct {
-	// The Alibaba Cloud account ID of the member.
+	// The member account ID.
 	//
 	// This parameter is required.
 	//

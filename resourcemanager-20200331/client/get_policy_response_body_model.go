@@ -16,7 +16,7 @@ type iGetPolicyResponseBody interface {
 }
 
 type GetPolicyResponseBody struct {
-	// The information about the permission policy.
+	// The access policy information.
 	Policy *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,53 +62,53 @@ func (s *GetPolicyResponseBody) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicy struct {
-	// The number of references to the permission policy.
+	// The number of references.
 	//
 	// example:
 	//
 	// 0
 	AttachmentCount *int32 `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	// The time when the permission policy was created.
+	// The time when the access policy was created. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The default version of the permission policy.
+	// The default version of the access policy.
 	//
 	// example:
 	//
 	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the permission policy.
+	// The description of the access policy.
 	//
 	// example:
 	//
-	// OSS administrator
+	// OSS administrator permissions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The document of the permission policy.
+	// The content of the access policy.
 	//
 	// example:
 	//
 	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The name of the permission policy.
+	// The Policy Name of the access policy.
 	//
 	// example:
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. Valid values:
+	// The type of the access policy. Valid values:
 	//
-	// 	- Custom
+	// - Custom: custom policy.
 	//
-	// 	- System
+	// - System: system policy.
 	//
 	// example:
 	//
 	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The time when the permission policy was updated.
+	// The time when the access policy was last updated. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//

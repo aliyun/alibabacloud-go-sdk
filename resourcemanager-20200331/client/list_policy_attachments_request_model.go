@@ -28,13 +28,13 @@ type iListPolicyAttachmentsRequest interface {
 }
 
 type ListPolicyAttachmentsRequest struct {
-	// The language in which you want to return the description of the system policy. Valid values:
+	// The language type. The description of the system access policy is returned in the specified language.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListPolicyAttachmentsRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -56,43 +56,43 @@ type ListPolicyAttachmentsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the permission policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// AdministratorAccess
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. If you do not configure this parameter, all types of policies are returned. Valid values:
+	// The type of the access policy. If this parameter is left empty, all types of access policies are listed.
 	//
-	// 	- Custom
+	// - Custom: custom policy.
 	//
-	// 	- System
+	// - System: system policy.
 	//
 	// example:
 	//
 	// System
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The name of the object to which you want to attach the permission policy.
+	// The name of the principal.
 	//
 	// example:
 	//
 	// alice@demo.onaliyun.com
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// The type of the object to which you want to attach the permission policy. If you do not configure this parameter, the system lists all types of objects. Valid values:
+	// The authorization object type. If this parameter is left empty, all types of authorization objects are listed.
 	//
-	// 	- IMSUser: RAM user
+	// - IMSUser: Resource Access Management (RAM) user.
 	//
-	// 	- IMSGroup: RAM user group
+	// - IMSGroup: RAM user group.
 	//
-	// 	- ServiceRole: RAM role
+	// - ServiceRole: RAM role.
 	//
 	// example:
 	//
 	// IMSUser
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not configure this parameter, the system lists all policy attachment records within the current account.
+	// The ID of the resource group or the Alibaba Cloud account ID to which the resource group belongs. If this parameter is left empty, all authorization records under the current account are listed.
 	//
 	// example:
 	//

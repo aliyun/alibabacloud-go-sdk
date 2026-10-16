@@ -16,9 +16,9 @@ type iGetAccountResponseBody interface {
 }
 
 type GetAccountResponseBody struct {
-	// The information of the member.
+	// The member account information.
 	Account *GetAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,33 +62,33 @@ func (s *GetAccountResponseBody) Validate() error {
 }
 
 type GetAccountResponseBodyAccount struct {
-	// The Alibaba Cloud account ID of the member.
+	// The member account ID.
 	//
 	// example:
 	//
 	// 181761095690****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The Alibaba Cloud account name of the member.
+	// The name of the account.
 	//
 	// example:
 	//
 	// someone@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The display name of the member.
+	// The display name of the member account.
 	//
 	// example:
 	//
 	// admin
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The status of the modification for the email address bound to the member. Valid values:
+	// The email status. Valid values:
 	//
-	// 	- WAIT_MODIFY: in progress
+	// - Empty: No email modification record exists.
 	//
-	// 	- CANCELLED: canceled
+	// - WAIT_MODIFY: The modification is in progress.
 	//
-	// 	- EXPIRED: expired
+	// - CANCELLED: The modification is canceled.
 	//
-	// If the value of this parameter is empty, no modification is performed for the email address.
+	// - EXPIRED: The modification has expired.
 	//
 	// example:
 	//
@@ -106,25 +106,25 @@ type GetAccountResponseBodyAccount struct {
 	//
 	// aliyun-admin
 	IdentityInformation *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
+	// The method used by the member account to join the resource directory. Valid values:
 	//
-	// 	- invited: The member is invited to join the resource directory.
+	// - invited: Invited.
 	//
-	// 	- created: The member is directly created in the resource directory.
+	// - created: Created.
 	//
 	// example:
 	//
 	// created
 	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member joined the resource directory.
+	// The time when the member account joined the resource directory. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The location of the member in the resource directory.
+	// The location of the member account in the resource directory.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The time when the member was modified.
+	// The time when the member account was last modified. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
 	//
 	// example:
 	//
@@ -136,35 +136,35 @@ type GetAccountResponseBodyAccount struct {
 	//
 	// rd-k3****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The path of the member in the resource directory.
+	// The path ID (RDPath) of the member account in the resource directory.
 	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
-	// The status of the member. Valid values:
+	// The join status of the member account. Valid values:
 	//
-	// 	- CreateSuccess: The member is created.
+	// - CreateSuccess: Created.
 	//
-	// 	- PromoteVerifying: The upgrade of the member is being confirmed.
+	// - PromoteVerifying: Upgrade is being confirmed.
 	//
-	// 	- PromoteFailed: The upgrade of the member fails.
+	// - PromoteFailed: Upgrade failed.
 	//
-	// 	- PromoteExpired: The upgrade of the member expires.
+	// - PromoteExpired: Upgrade expired.
 	//
-	// 	- PromoteCancelled: The upgrade of the member is canceled.
+	// - PromoteCancelled: Upgrade canceled.
 	//
-	// 	- PromoteSuccess: The member is upgraded.
+	// - PromoteSuccess: Upgrade succeeded.
 	//
-	// 	- InviteSuccess: The member accepts the invitation.
+	// - InviteSuccess: Invitation succeeded.
 	//
 	// example:
 	//
 	// CreateSuccess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the member.
+	// The tags.
 	Tags []*GetAccountResponseBodyAccountTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of the member. Valid values:
+	// The type of the member account. Valid values:
 	//
-	// 	- CloudAccount: cloud account
+	// - CloudAccount: Cloud account.
 	//
-	// 	- ResourceAccount: resource account
+	// - ResourceAccount: Resource account.
 	//
 	// example:
 	//
@@ -329,13 +329,13 @@ func (s *GetAccountResponseBodyAccount) Validate() error {
 }
 
 type GetAccountResponseBodyAccountTags struct {
-	// A tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A tag value.
+	// The tag value.
 	//
 	// example:
 	//

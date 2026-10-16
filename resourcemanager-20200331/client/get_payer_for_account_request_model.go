@@ -14,7 +14,7 @@ type iGetPayerForAccountRequest interface {
 }
 
 type GetPayerForAccountRequest struct {
-	// The ID of the account.
+	// The ID of the member account.
 	//
 	// This parameter is required.
 	//

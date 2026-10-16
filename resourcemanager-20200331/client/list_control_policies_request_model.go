@@ -20,29 +20,29 @@ type iListControlPoliciesRequest interface {
 }
 
 type ListControlPoliciesRequest struct {
-	// The language in which you want to return the descriptions of the access control policies. Valid values:
+	// The language in which you want the description of the control policy to be returned. Valid values:
 	//
-	// - zh-CN (default value): Chinese
+	// - zh-CN (default): Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
-	// - ja: Japanese
+	// - ja: Japanese.
 	//
-	// >  This parameter is valid only for system access control policies.
+	// > This parameter is valid only for system control policies.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
-	// Page start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//
@@ -50,11 +50,11 @@ type ListControlPoliciesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the access control policy. Valid values:
+	// The type of the control policy. Valid values:
 	//
-	// - System: system access control policy
+	// - System: system control policy.
 	//
-	// - Custom: custom access control policy
+	// - Custom: custom control policy.
 	//
 	// example:
 	//

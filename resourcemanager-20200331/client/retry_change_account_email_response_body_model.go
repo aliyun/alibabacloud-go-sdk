@@ -14,7 +14,7 @@ type iRetryChangeAccountEmailResponseBody interface {
 }
 
 type RetryChangeAccountEmailResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

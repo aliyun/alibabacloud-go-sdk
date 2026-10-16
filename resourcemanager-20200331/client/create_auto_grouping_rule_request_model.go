@@ -36,77 +36,77 @@ type iCreateAutoGroupingRuleRequest interface {
 }
 
 type CreateAutoGroupingRuleRequest struct {
-	// The IDs of regions to be excluded. Separate multiple IDs with commas (,).
+	// The region IDs to exclude. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-beijing,cn-guangzhou
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
+	// The resource group IDs to exclude. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekz******zj2oi,rg-aekz******r62ua
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The IDs of resources to be excluded. Separate multiple IDs with commas (,).
+	// The resource IDs to exclude. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// pc-uf6p******4h784y,rmq-cn-******ny0y
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The resource types to be excluded. Separate multiple resource types with commas (,).
+	// The resource types to exclude. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// mse.cluster,slb.loadbalancer
 	ExcludeResourceTypesScope *string `json:"ExcludeResourceTypesScope,omitempty" xml:"ExcludeResourceTypesScope,omitempty"`
-	// The IDs of regions. Separate multiple IDs with commas (,).
+	// The scope of region IDs. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou,cn-shanghai
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The IDs of resource groups. Separate multiple IDs with commas (,).
+	// The scope of resource group IDs. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekz******4b5ea,rg-aek2******fxykq
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The IDs of resources. Separate multiple IDs with commas (,).
+	// The scope of resource IDs. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// i-2zee******ym49kfmwis,vpc-5ts6******fnw493g849a
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The resource types. Separate multiple resource types with commas (,).
+	// The scope of resource types. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// rds.dbinstance,oss.bucket
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The content records of the rule.
+	// The list of rule content entries.
 	//
 	// This parameter is required.
 	RuleContents []*CreateAutoGroupingRuleRequestRuleContents `json:"RuleContents,omitempty" xml:"RuleContents,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
-	// Transfer resources to which the {"env": "online"} and {"project": "A"} tags are added to the resource group rg-aek2********qcy.
+	// Move resources with tags {"env": "online"} and {"project": "A"} to resource group rg-aek2********qcy
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Custom Transfer Rule for Online Resources of Project A
+	// Auto allocation rule for Project A online resources
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- custom_condition: custom transfer rule
+	// - custom_condition: custom allocation rule.
 	//
-	// 	- associated_transfer: transfer rule for associated resources
+	// - associated_transfer: attached-resource allocation rule.
 	//
 	// This parameter is required.
 	//
@@ -246,13 +246,13 @@ func (s *CreateAutoGroupingRuleRequest) Validate() error {
 }
 
 type CreateAutoGroupingRuleRequestRuleContents struct {
-	// The condition for the range of resources to be automatically transferred.
+	// The scope condition for automatic allocation. Specifies the scope of resources to be automatically allocated.
 	//
 	// example:
 	//
 	// {"children":[{"desired":"{\\"env\\":\\"online\\", \\"project\\":\\"A\\"}","featurePath":"$.tags","featureSource":"RESOURCE","operator":"TagMatchAll"}],"operator":"and"}
 	AutoGroupingScopeCondition *string `json:"AutoGroupingScopeCondition,omitempty" xml:"AutoGroupingScopeCondition,omitempty"`
-	// The condition for the destination resource group.
+	// The target resource group condition. Specifies the target resource group for automatic allocation.
 	//
 	// This parameter is required.
 	//

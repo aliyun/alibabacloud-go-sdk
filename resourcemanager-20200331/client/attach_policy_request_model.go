@@ -22,9 +22,9 @@ type iAttachPolicyRequest interface {
 }
 
 type AttachPolicyRequest struct {
-	// The name of the permission policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,11 @@ type AttachPolicyRequest struct {
 	//
 	// AdministratorAccess
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. Valid values:
+	// The type of the access policy. Valid values:
 	//
-	// 	- Custom
+	// - Custom: custom access policy.
 	//
-	// 	- System
+	// - System: system access policy.
 	//
 	// This parameter is required.
 	//
@@ -44,15 +44,15 @@ type AttachPolicyRequest struct {
 	//
 	// System
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The name of the object to which you want to attach the permission policy.
+	// The name of the authorization object. The format varies based on the object type:
 	//
-	// 	- If you want to attach the permission policy to a RAM user, specify the name in the @.onaliyun.com format. indicates the name of the RAM user, and indicates the alias of the Alibaba Cloud account to which the RAM user belongs.
+	// - Resource Access Management (RAM) user: <UserName>@<AccountAlias>.onaliyun.com, where <UserName> is the RAM username and <AccountAlias> is the account alias.
 	//
-	// 	- If you want to attach the permission policy to a RAM user group, specify the name in the @group..onaliyun.com format. indicates the name of the RAM user group, and indicates the alias of the Alibaba Cloud account to which the RAM user group belongs.
+	// - RAM user group: <GroupName>@group.<AccountAlias>.onaliyun.com, where <GroupName> is the RAM user group name and <AccountAlias> is the account alias.
 	//
-	// 	- If you want to attach the permission policy to a RAM role, specify the name in the @role..onaliyunservice.com format. indicates the name of the RAM role, and indicates the alias of the Alibaba Cloud account to which the RAM role belongs.
+	// - RAM role: <RoleName>@role.<AccountAlias>.onaliyunservice.com, where <RoleName> is the RAM role name and <AccountAlias> is the account alias.
 	//
-	// >  The alias of an Alibaba Cloud account is a part of the default domain name. You can call the [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html) operation to obtain the alias of an Alibaba Cloud account.
+	// > The account alias is part of the default domain name. Invoke [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html) to obtain the account alias.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type AttachPolicyRequest struct {
 	//
 	// alice@demo.onaliyun.com
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// The type of the object to which you want to attach the permission policy. Valid values:
+	// The authorization object type. Valid values:
 	//
-	// 	- IMSUser: RAM user
+	// - IMSUser: Resource Access Management (RAM) user.
 	//
-	// 	- IMSGroup: RAM user group
+	// - IMSGroup: RAM user group.
 	//
-	// 	- ServiceRole: RAM role
+	// - ServiceRole: RAM role.
 	//
 	// This parameter is required.
 	//
@@ -74,11 +74,11 @@ type AttachPolicyRequest struct {
 	//
 	// IMSUser
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The effective scope of the permission policy. Valid values:
+	// The authorization scope. Valid values:
 	//
-	// 	- ID of a resource group: indicates that the permission policy takes effect for the resources in the resource group.
+	// - Resource group ID: The permissions take effect within the specified resource group.
 	//
-	// 	- ID of the Alibaba Cloud account to which the authorized object belongs: indicates that the permission policy takes effect for the resources within the Alibaba Cloud account.
+	// - Alibaba Cloud account ID: The ID of the Alibaba Cloud account to which the principal belongs. The permissions take effect within the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//

@@ -17,7 +17,7 @@ type iListAncestorsResponseBody interface {
 
 type ListAncestorsResponseBody struct {
 	Folders *ListAncestorsResponseBodyFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

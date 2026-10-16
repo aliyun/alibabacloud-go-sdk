@@ -22,7 +22,7 @@ type CreateRoleResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the role.
+	// The role information.
 	Role *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *CreateRoleResponseBody) Validate() error {
 }
 
 type CreateRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// The resource descriptor of the role.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The document of the policy in which the entity that can assume the role is specified.
+	// The content of the access policy for assuming the role.
 	//
 	// example:
 	//
 	// { \\"Statement\\": [ { \\"Action\\": \\"sts:AssumeRole\\", \\"Effect\\": \\"Allow\\", \\"Principal\\": { \\"RAM\\": \\"acs:ram::12345678901234****:root\\" } } ], \\"Version\\": \\"1\\" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	// The time when the role was created.
+	// The time when the role was created. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type CreateRoleResponseBodyRole struct {
 	//
 	// example:
 	//
-	// ECS administrator
+	// ECS management role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The maximum session duration of the role.
 	//
@@ -104,7 +104,7 @@ type CreateRoleResponseBodyRole struct {
 	//
 	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The name of the role after authorization.
+	// The name of the authorized role.
 	//
 	// example:
 	//

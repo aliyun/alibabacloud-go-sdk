@@ -28,7 +28,7 @@ type iLookupResourceGroupEventsRequest interface {
 }
 
 type LookupResourceGroupEventsRequest struct {
-	// The end of the time range to query. The time is displayed in UTC.
+	// The end time of the event. The format is YYYY-MM-DD HH:mm:ss and does not include a time zone identifier.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type LookupResourceGroupEventsRequest struct {
 	//
 	// MemberShipChange
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The attributes used for advanced search.
+	// The lookup attributes.
 	LookupAttributes []*LookupResourceGroupEventsRequestLookupAttributes `json:"LookupAttributes,omitempty" xml:"LookupAttributes,omitempty" type:"Repeated"`
 	// The number of entries per page.
 	//
@@ -52,7 +52,7 @@ type LookupResourceGroupEventsRequest struct {
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type LookupResourceGroupEventsRequest struct {
 	//
 	// rg-9gLOoK****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The time is displayed in UTC.
+	// The start time of the event. The format is YYYY-MM-DD HH:mm:ss and does not include a time zone identifier.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ func (s *LookupResourceGroupEventsRequest) Validate() error {
 }
 
 type LookupResourceGroupEventsRequestLookupAttributes struct {
-	// The key of the attribute.
+	// The key of the lookup attribute.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the attribute.
+	// The value of the lookup attribute.
 	//
 	// example:
 	//

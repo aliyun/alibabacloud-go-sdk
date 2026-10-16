@@ -16,7 +16,7 @@ type iGetResourceGroupAdminSettingResponseBody interface {
 }
 
 type GetResourceGroupAdminSettingResponseBody struct {
-	// Indicates whether enable the Use Creator as Administrator feature.
+	// Indicates whether the resource group creator is set as the resource group administrator.
 	//
 	// example:
 	//

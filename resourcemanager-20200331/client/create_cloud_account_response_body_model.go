@@ -16,9 +16,9 @@ type iCreateCloudAccountResponseBody interface {
 }
 
 type CreateCloudAccountResponseBody struct {
-	// The information of the member account.
+	// The member information.
 	Account *CreateCloudAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,41 +62,41 @@ func (s *CreateCloudAccountResponseBody) Validate() error {
 }
 
 type CreateCloudAccountResponseBodyAccount struct {
-	// The ID of the member account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account.
+	// The account name.
 	//
 	// example:
 	//
 	// someone@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The display name of the member account.
+	// The member name.
 	//
 	// example:
 	//
 	// admin-****
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the folder.
+	// The folder ID.
 	//
 	// example:
 	//
 	// fd-bVaRIG****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member account joined the resource directory. Valid values:
+	// The method used by the member to join the resource directory. Valid values:
 	//
-	// 	- invited: The member account is invited to join the resource directory.
+	// - invited: The member is invited to join.
 	//
-	// 	- created: The member account is directly created in the resource directory.
+	// - created: The member is created in the resource directory.
 	//
 	// example:
 	//
 	// created
 	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member account was modified.
+	// The time when the member was last modified. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
 	//
 	// example:
 	//
@@ -108,43 +108,43 @@ type CreateCloudAccountResponseBodyAccount struct {
 	//
 	// 06950264-3f0d-4ca9-82dd-6ee7a3d3****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The ID of the resource directory.
+	// The resource directory ID.
 	//
 	// example:
 	//
 	// rd-k3****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the member account. Valid values:
+	// The status of the member. Valid values:
 	//
-	// 	- CreateSuccess: The member account is created.
+	// - CreateSuccess: The member is created.
 	//
-	// 	- CreateVerifying: The creation of the member account is under confirmation.
+	// - CreateVerifying: The creation is being confirmed.
 	//
-	// 	- CreateFailed: The member account failed to be created.
+	// - CreateFailed: The member failed to be created.
 	//
-	// 	- CreateExpired: The creation of the member account expired.
+	// - CreateExpired: The creation has expired.
 	//
-	// 	- CreateCancelled: The creation of the member account is canceled.
+	// - CreateCancelled: The creation is canceled.
 	//
-	// 	- PromoteVerifying: The upgrade of the member account is under confirmation.
+	// - PromoteVerifying: The upgrade is being confirmed.
 	//
-	// 	- PromoteFailed: The member account failed to be upgraded.
+	// - PromoteFailed: The member failed to be upgraded.
 	//
-	// 	- PromoteExpired: The upgrade of the member account expired.
+	// - PromoteExpired: The upgrade has expired.
 	//
-	// 	- PromoteCancelled: The upgrade of the member account is canceled.
+	// - PromoteCancelled: The upgrade is canceled.
 	//
-	// 	- PromoteSuccess: The member account is upgraded.
+	// - PromoteSuccess: The member is upgraded.
 	//
-	// 	- InviteSuccess: The owner of the member account accepted the invitation.
+	// - InviteSuccess: The member is invited.
 	//
-	// 	- Removed: The member account is removed from the resource directory.
+	// - Removed: The member is removed.
 	//
 	// example:
 	//
 	// CreateVerifying
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the member account. The value CloudAccount indicates that the member account is a cloud account.
+	// The member type. The value CloudAccount indicates a cloud account.
 	//
 	// example:
 	//

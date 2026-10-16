@@ -14,7 +14,7 @@ type iGetHandshakeRequest interface {
 }
 
 type GetHandshakeRequest struct {
-	// The ID of the invitation.
+	// The handshake ID.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iRegisterDelegatedAdministratorResponseBody interface {
 }
 
 type RegisterDelegatedAdministratorResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

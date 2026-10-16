@@ -16,9 +16,9 @@ type iResendPromoteResourceAccountEmailResponseBody interface {
 }
 
 type ResendPromoteResourceAccountEmailResponseBody struct {
-	// The information of the member account.
+	// The member account information.
 	Account *ResendPromoteResourceAccountEmailResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *ResendPromoteResourceAccountEmailResponseBody) Validate() error {
 }
 
 type ResendPromoteResourceAccountEmailResponseBodyAccount struct {
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the account.
+	// The account name.
 	//
 	// example:
 	//
@@ -80,29 +80,29 @@ type ResendPromoteResourceAccountEmailResponseBodyAccount struct {
 	//
 	// admin
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the folder.
+	// The folder ID.
 	//
 	// example:
 	//
 	// fd-bVaRIG****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member account joined the resource directory. Valid values:
+	// The method used by the member account to join the resource directory. Valid values:
 	//
-	// 	- invited: The member account is invited to join the resource directory.
+	// - invited: The member account was invited to join.
 	//
-	// 	- created: The member account is directly created in the resource directory.
+	// - created: The member account was created.
 	//
 	// example:
 	//
 	// created
 	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member account joined the resource directory.
+	// The time when the member account joined the resource directory. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The time when the member account was modified.
+	// The time when the member account was last modified. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type ResendPromoteResourceAccountEmailResponseBodyAccount struct {
 	//
 	// example:
 	//
-	// 16950264-3f0d-4ca9-82dd-6ee7a3d33d6b
+	// 16950264-3f0d-4ca9-82dd-6ee7a3d3****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The ID of the resource directory.
+	// The resource directory ID.
 	//
 	// example:
 	//
@@ -122,29 +122,29 @@ type ResendPromoteResourceAccountEmailResponseBodyAccount struct {
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	// The status of the member account. Valid values:
 	//
-	// 	- CreateSuccess: The member account is created.
+	// - CreateSuccess: The member account is created.
 	//
-	// 	- CreateVerifying: The creation of the member account is under confirmation.
+	// - CreateVerifying: The creation of the member account is being confirmed.
 	//
-	// 	- CreateFailed: The member account failed to be created.
+	// - CreateFailed: The member account failed to be created.
 	//
-	// 	- CreateExpired: The creation of the member account expired.
+	// - CreateExpired: The creation of the member account expired.
 	//
-	// 	- CreateCancelled: The creation of the member account is canceled.
+	// - CreateCancelled: The creation of the member account is canceled.
 	//
-	// 	- PromoteVerifying: The upgrade of the member account is under confirmation.
+	// - PromoteVerifying: The upgrade of the member account is being confirmed.
 	//
-	// 	- PromoteFailed: The member account failed to be upgraded.
+	// - PromoteFailed: The member account failed to be upgraded.
 	//
-	// 	- PromoteExpired: The upgrade of the member account expired.
+	// - PromoteExpired: The upgrade of the member account expired.
 	//
-	// 	- PromoteCancelled: The upgrade of the member account is canceled.
+	// - PromoteCancelled: The upgrade of the member account is canceled.
 	//
-	// 	- PromoteSuccess: The member account is upgraded.
+	// - PromoteSuccess: The member account is upgraded.
 	//
-	// 	- InviteSuccess: The owner of the member account accepted the invitation.
+	// - InviteSuccess: The member account is invited.
 	//
-	// 	- Removed: The member account is removed from the resource directory.
+	// - Removed: The member account is removed.
 	//
 	// example:
 	//
@@ -152,9 +152,9 @@ type ResendPromoteResourceAccountEmailResponseBodyAccount struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the member account. Valid values:
 	//
-	// 	- CloudAccount: cloud account
+	// - CloudAccount: cloud account.
 	//
-	// 	- ResourceAccount: resource account
+	// - ResourceAccount: resource account.
 	//
 	// example:
 	//

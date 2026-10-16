@@ -22,7 +22,7 @@ type GetRoleResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the role.
+	// The role information.
 	Role *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *GetRoleResponseBody) Validate() error {
 }
 
 type GetRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// The resource descriptor of the role.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The document of the policy in which the identity that can assume the role is specified.
+	// The content of the access policy that specifies one or more entities entrusted to assume the role.
 	//
 	// example:
 	//
 	// { \\"Statement\\": [ { \\"Action\\": \\"sts:AssumeRole\\", \\"Effect\\": \\"Allow\\", \\"Principal\\": { \\"RAM\\": \\"acs:ram::12345678901234****:root\\" } } ], \\"Version\\": \\"1\\" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	// The time when the role was created.
+	// The time when the role was created. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetRoleResponseBodyRole struct {
 	//
 	// example:
 	//
-	// ECS administrator
+	// ECS management role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the role is a service-linked role.
 	//
@@ -92,7 +92,7 @@ type GetRoleResponseBodyRole struct {
 	//
 	// true
 	IsServiceLinkedRole *bool `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
-	// The information of the most recent deletion task.
+	// The information about the most recent deletion task.
 	LatestDeletionTask *GetRoleResponseBodyRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
 	// The maximum session duration of the role.
 	//
@@ -112,13 +112,13 @@ type GetRoleResponseBodyRole struct {
 	//
 	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The name of the role after authorization.
+	// The name of the authorized role.
 	//
 	// example:
 	//
 	// ECSAdmin@role.123456.onaliyunservice.com
 	RolePrincipalName *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
-	// The time when the role was updated.
+	// The time when the role was last updated. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ func (s *GetRoleResponseBodyRole) Validate() error {
 }
 
 type GetRoleResponseBodyRoleLatestDeletionTask struct {
-	// The time when the deletion task was created.
+	// The time when the deletion task was created. The time is in RFC 3339 UTC format, indicated by Z.
 	//
 	// example:
 	//

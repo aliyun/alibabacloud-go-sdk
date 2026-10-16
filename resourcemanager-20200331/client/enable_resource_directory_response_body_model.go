@@ -16,13 +16,13 @@ type iEnableResourceDirectoryResponseBody interface {
 }
 
 type EnableResourceDirectoryResponseBody struct {
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 
   // EC2FE94D-A4A2-51A1-A493-5C273A36C46A
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The information of the resource directory.
+  // The resource directory information.
   ResourceDirectory *EnableResourceDirectoryResponseBodyResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *EnableResourceDirectoryResponseBody) Validate() error {
 }
 
 type EnableResourceDirectoryResponseBodyResourceDirectory struct {
-  // The time when the resource directory was enabled.
+  // The time when the resource directory was enabled. The time is displayed in UTC in RFC 3339 format, indicated by Z.
   // 
   // example:
   // 
@@ -86,7 +86,7 @@ type EnableResourceDirectoryResponseBodyResourceDirectory struct {
   // 
   // rd-54****
   ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-  // The ID of the Root folder.
+  // The ID of the root folder.
   // 
   // example:
   // 

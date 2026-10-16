@@ -14,7 +14,7 @@ type iUpdateResourceGroupAdminSettingRequest interface {
 }
 
 type UpdateResourceGroupAdminSettingRequest struct {
-	// Specifies whether to enable the Use Creator as Administrator feature.
+	// Specifies whether to set the resource group creator as the resource group administrator.
 	//
 	// This parameter is required.
 	//

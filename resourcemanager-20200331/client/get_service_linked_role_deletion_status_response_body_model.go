@@ -18,7 +18,7 @@ type iGetServiceLinkedRoleDeletionStatusResponseBody interface {
 }
 
 type GetServiceLinkedRoleDeletionStatusResponseBody struct {
-	// The cause for the failure of the deletion task.
+	// The reason why the deletion task failed.
 	Reason *GetServiceLinkedRoleDeletionStatusResponseBodyReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,17 +26,17 @@ type GetServiceLinkedRoleDeletionStatusResponseBody struct {
 	//
 	// 07194EB1-DB50-4513-A51D-99B30D635AEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the task.
+	// The task status. Valid values:
 	//
-	// 	- SUCCEEDED
+	// - SUCCEEDED: The deletion was successful.
 	//
-	// 	- IN_PROGRESS
+	// - IN_PROGRESS: The deletion is in progress.
 	//
-	// 	- FAILED
+	// - FAILED: The deletion failed.
 	//
-	// 	- NOT_STARTED
+	// - NOT_STARTED: The deletion has not started.
 	//
-	// 	- INTERNAL_ERROR
+	// - INTERNAL_ERROR: An internal error occurred.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ func (s *GetServiceLinkedRoleDeletionStatusResponseBody) Validate() error {
 }
 
 type GetServiceLinkedRoleDeletionStatusResponseBodyReason struct {
-	// The failure information.
+	// The error message.
 	//
 	// example:
 	//
