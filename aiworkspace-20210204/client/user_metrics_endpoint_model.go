@@ -16,8 +16,10 @@ type iUserMetricsEndpoint interface {
 }
 
 type UserMetricsEndpoint struct {
+	// The HTTP path of the metric collection API.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number on which the metric collection service listens.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s UserMetricsEndpoint) String() string {

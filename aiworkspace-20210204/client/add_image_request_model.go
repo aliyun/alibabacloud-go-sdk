@@ -36,9 +36,9 @@ type iAddImageRequest interface {
 type AddImageRequest struct {
 	// The visibility of the image. Valid values:
 	//
-	// - PUBLIC: All members in the current workspace can access the image.
+	// - PUBLIC: All members in the current workspace can manage the image.
 	//
-	// - PRIVATE: Only the creator can access the image.
+	// - PRIVATE: Only the creator can manage the image.
 	//
 	// example:
 	//
@@ -50,13 +50,15 @@ type AddImageRequest struct {
 	//
 	// NLP model compression training image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image ID. If you do not specify this parameter, the system automatically generates one. The format is image- followed by 18 uppercase or lowercase letters or digits.
+	// The ID of the image. If you do not specify this parameter, the system automatically generates an image ID.
+	//
+	// The format is image- followed by 18 uppercase or lowercase letters or digits.
 	//
 	// example:
 	//
 	// image-k83*****cv
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image URI, which can be duplicated. For information about how to view the image URI, see [ListImage](https://help.aliyun.com/document_detail/449118.html).
+	// The URI of the image. The URI can be duplicated. For more information about how to view the image URI, see [ListImage](https://help.aliyun.com/document_detail/449118.html).
 	//
 	// This parameter is required.
 	//
@@ -64,9 +66,9 @@ type AddImageRequest struct {
 	//
 	// registry.cn-hangzhou.aliyuncs.com/pai-compression/nlp:gpu
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// The image labels. This is an array in which each item contains a key field and a value field.
+	// The labels of the image. This parameter is an array, and each item in the array contains the key and value fields.
 	//
-	// Official images have the following label: system.official=true
+	// Official images have the following label: system.official=true.
 	//
 	// The following keys are supported:
 	//
@@ -106,7 +108,7 @@ type AddImageRequest struct {
 	//
 	// - system.supported.dsw
 	Labels []*AddImageRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The image name. Naming rules:
+	// The name of the image. The naming rules are as follows:
 	//
 	// - The name must be 1 to 50 characters in length.
 	//
@@ -120,31 +122,35 @@ type AddImageRequest struct {
 	//
 	// nlp-compression
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The image size, in GB.
+	// The size of the image. Unit: GB.
 	//
 	// example:
 	//
 	// 2
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The image source ID. If the image source type is Build, the source ID corresponds to the image build ID.
+	// The source ID of the image. If the source type of the image is Build, the source ID is the image build ID.
 	//
 	// example:
 	//
 	// build-****ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The image source type. Valid values:
+	// The source type of the image. Valid values:
 	//
-	// - Import: import.
+	// - Import: The image is imported.
 	//
-	// - Build: generate.
+	// - Build: The image is built.
 	//
 	// example:
 	//
 	// Build
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The user ID (UID) of the image creator.
+	//
+	// example:
+	//
+	// 1611******3000
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace to which the image belongs. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The ID of the workspace to which the image belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

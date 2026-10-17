@@ -60,23 +60,39 @@ type Experiment struct {
   GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
   // The time when the experiment was last modified.
   GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-  // The list of labels for the experiment.
+  // The list of experiment labels.
   Labels []*ExperimentLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-  // LatestRun
+  // The information about the latest run associated with the experiment.
   LatestRun *Run `json:"LatestRun,omitempty" xml:"LatestRun,omitempty"`
-  // The name of the experiment.
+  // The experiment name.
   // 
   // example:
   // 
   // exp-test
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
   // The Alibaba Cloud account ID of the experiment owner.
+  // 
+  // example:
+  // 
+  // 1631044****3440
   OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The request ID.
+  // 
+  // example:
+  // 
+  // 0C6835C5-A424-5AFB-ACC2-F1E3CA1ABF7C
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // The default OSS storage path for TensorBoard logs of each trial in the experiment.
+  // 
+  // example:
+  // 
+  // oss://test-bucket.oss-cn-hangzhou.aliyuncs.com/tensorboard/
   TensorboardLogUri *string `json:"TensorboardLogUri,omitempty" xml:"TensorboardLogUri,omitempty"`
   // The user ID of the experiment creator.
+  // 
+  // example:
+  // 
+  // 1557702098******
   UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
   // The ID of the workspace to which the experiment belongs.
   // 

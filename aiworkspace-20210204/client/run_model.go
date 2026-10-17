@@ -42,7 +42,7 @@ type iRun interface {
 }
 
 type Run struct {
-	// The visibility of the run.
+	// The accessibility.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type Run struct {
 	//
 	// exp-1zpfthdx******
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// The time when the run was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the run was last modified.
+	// The modification time.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type Run struct {
 	Labels []*RunLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The list of metrics for the run.
 	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// Name
+	// The name.
 	//
 	// example:
 	//
 	// testrun
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the owner\\"s root account.
+	// The Alibaba Cloud account ID of the owner.
 	//
 	// example:
 	//
@@ -109,6 +109,10 @@ type Run struct {
 	// TrainingService
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The ID of the owner.
+	//
+	// example:
+	//
+	// 1557702098******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The ID of the workspace to which the run belongs.
 	//

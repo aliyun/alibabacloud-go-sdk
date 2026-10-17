@@ -37,6 +37,10 @@ type iTrial interface {
 
 type Trial struct {
 	// Accessibility
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// ExperimentId
 	//
@@ -45,18 +49,42 @@ type Trial struct {
 	// exp-1zpfthdx******
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
 	// GmtCreateTime
+	//
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	// GmtModifiedTime
+	//
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// Labels
 	Labels []map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// Name
+	//
+	// example:
+	//
+	// testrun
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// OwnerId
+	//
+	// example:
+	//
+	// 1631044****3440
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// SourceId
+	//
+	// example:
+	//
+	// train9s0afvjkf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// SourceType
+	//
+	// example:
+	//
+	// TrainingService
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// TrialId
 	//
@@ -67,6 +95,10 @@ type Trial struct {
 	// UserId
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// WorkspaceId
+	//
+	// example:
+	//
+	// 145883
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

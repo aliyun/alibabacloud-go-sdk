@@ -15,56 +15,64 @@ type iListConfigsRequest interface {
 	GetConfigKeys() *string
 	SetLabels(v string) *ListConfigsRequest
 	GetLabels() *string
+	SetOptions(v string) *ListConfigsRequest
+	GetOptions() *string
 	SetVerbose(v string) *ListConfigsRequest
 	GetVerbose() *string
 }
 
 type ListConfigsRequest struct {
-	// The category of the configuration item. The following categories are supported:
+	// The categorization of the configuration item. Valid values:
 	//
-	// - CommonResourceConfig: common resource configuration.
+	// - CommonResourceConfig: general resource configuration
 	//
-	// - DLCAutoRecycle: DLC automatic recycling.
+	// - DLCAutoRecycle: automatic DLC revoke
 	//
-	// - DLCPriorityConfig: DLC priority settings.
+	// - DLCPriorityConfig: DLC priority settings
 	//
-	// - DSWPriorityConfig: DSW priority settings.
+	// - DSWPriorityConfig: DSW priority settings
 	//
-	// - QuotaMaximumDuration: maximum runtime duration configuration for DLC jobs in a quota.
+	// - QuotaMaximumDuration: maximum runtime configuration of DLC nodes for a quota
 	//
-	// - CommonTagConfig: tag settings.
+	// - CommonTagConfig: label settings
 	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The keys of the configuration items. The following keys are supported:
+	// The keys of the configuration items. Valid values:
 	//
-	// - tempStoragePath: the temporary storage path. This ConfigKey can be used only when CategoryName is set to CommonResourceConfig.
+	// - tempStoragePath: Temporary storage path. This key is allowed only when CategoryName is set to CommonResourceConfig.
 	//
-	// - isAutoRecycle: the automatic recycling configuration. This ConfigKey can be used only when CategoryName is set to DLCAutoRecycle.
+	// - isAutoRecycle: Automatic revoke configuration. This key is allowed only when CategoryName is set to DLCAutoRecycle.
 	//
-	// - priorityConfig: the priority configuration. This ConfigKey can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	// - priorityConfig: Priority configuration. This key is allowed only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This ConfigKey can be used only when CategoryName is set to QuotaMaximumDuration.
+	// - quotaMaximumDuration: Maximum runtime configuration of DLC nodes for a quota. This key is allowed only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
+	// - predefinedTags: Preset labels for the workspace. Resources created must have these labels.
 	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKeys *string `json:"ConfigKeys,omitempty" xml:"ConfigKeys,omitempty"`
-	// The labels used as filter conditions. Separate multiple conditions with commas. These conditions are evaluated using a logical AND.
+	// The labels used as filter conditions. Separate multiple conditions with commas. These conditions are combined by using the AND operator.
 	//
 	// example:
 	//
 	// key1=value1,key2=value2
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The additional options. Currently, only ThrowExceptionOnError is supported, which indicates that an error is thrown when an exception occurs.
+	//
+	// example:
+	//
+	// ThrowExceptionOnError
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// Specifies whether to display label information. Valid values:
 	//
-	// - true: Display label information.
+	// - true: Displays label information.
 	//
-	// - false: Do not display label information.
+	// - false: Does not display label information.
 	//
 	// example:
 	//
@@ -92,6 +100,10 @@ func (s *ListConfigsRequest) GetLabels() *string {
 	return s.Labels
 }
 
+func (s *ListConfigsRequest) GetOptions() *string {
+	return s.Options
+}
+
 func (s *ListConfigsRequest) GetVerbose() *string {
 	return s.Verbose
 }
@@ -108,6 +120,11 @@ func (s *ListConfigsRequest) SetConfigKeys(v string) *ListConfigsRequest {
 
 func (s *ListConfigsRequest) SetLabels(v string) *ListConfigsRequest {
 	s.Labels = &v
+	return s
+}
+
+func (s *ListConfigsRequest) SetOptions(v string) *ListConfigsRequest {
+	s.Options = &v
 	return s
 }
 

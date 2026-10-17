@@ -23,10 +23,14 @@ type RunMetric struct {
 	// The metric name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// loss
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The step when the metric was recorded.
+	// The step count at which the metric is generated.
 	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The timestamp when the metric was recorded.
+	// The timestamp at which the metric is generated.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The metric value.
 	//

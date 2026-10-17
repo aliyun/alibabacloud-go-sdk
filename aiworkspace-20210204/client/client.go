@@ -5604,6 +5604,10 @@ func (client *Client) ListConfigsWithOptions(WorkspaceId *string, request *ListC
 		query["Labels"] = request.Labels
 	}
 
+	if !dara.IsNil(request.Options) {
+		query["Options"] = request.Options
+	}
+
 	if !dara.IsNil(request.Verbose) {
 		query["Verbose"] = request.Verbose
 	}

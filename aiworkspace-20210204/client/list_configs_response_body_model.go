@@ -26,7 +26,7 @@ type ListConfigsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A******C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of returned items.
 	//
 	// example:
 	//
@@ -89,17 +89,17 @@ type ListConfigsResponseBodyConfigs struct {
 	//
 	// wc-95******o36ylr
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The key of the configuration item. The following keys are supported:
+	// The key of the configuration item. Valid values:
 	//
-	// - tempStoragePath: the temporary storage path. This ConfigKey can be used only when CategoryName is set to CommonResourceConfig.
+	// - tempStoragePath: Temporary storage path. This key is allowed only when CategoryName is set to CommonResourceConfig.
 	//
-	// - isAutoRecycle: the automatic recycling configuration. This ConfigKey can be used only when CategoryName is set to DLCAutoRecycle.
+	// - isAutoRecycle: Automatic revoke configuration. This key is allowed only when CategoryName is set to DLCAutoRecycle.
 	//
-	// - priorityConfig: the priority configuration. This ConfigKey can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	// - priorityConfig: Priority configuration. This key is allowed only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This ConfigKey can be used only when CategoryName is set to QuotaMaximumDuration.
+	// - quotaMaximumDuration: Maximum runtime configuration of DLC nodes for a quota. This key is allowed only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
+	// - predefinedTags: Preset labels for the workspace. Resources created must have these labels.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type ListConfigsResponseBodyConfigs struct {
 	//
 	// 2026-05-12T07:59:41.000Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The UTC time when the configuration item was last modified.
+	// The UTC time when the configuration item was modified.
 	//
 	// example:
 	//
