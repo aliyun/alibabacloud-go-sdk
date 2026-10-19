@@ -36,25 +36,21 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// dds-bp2235****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+	// Specifies whether to force Secure Sockets Layer (SSL) encryption for connections. Valid values:
 	//
-	// - **1**: Forcibly enable SSL encryption.
+	// - **1**: Forces Secure Sockets Layer (SSL) encryption.
 	//
-	// - **0**: Do not forcibly enable SSL encryption.
-	//
-	// > 	- Forced SSL encryption is supported only for MongoDB 7.0 and 8.0 instances that use cloud disks and meet the following minor engine version requirements:
+	// - **0**: Does not force Secure Sockets Layer (SSL) encryption.
 	//
 	// >
 	//
-	// > 	- - For version 7.0, the minor engine version must be 8.0.13 or later.
+	// > - Forced Secure Sockets Layer (SSL) encryption applies only to MongoDB 7.0 and 8.0 instances that use cloud disks and meet the following minor engine version requirements:
 	//
-	// >
+	// >   - MongoDB 7.0: The minor engine version must be 8.0.13 or later.
 	//
-	// > 	- - For version 8.0, the minor engine version must be 9.0.5 or later.
+	// >   - MongoDB 8.0: The minor engine version must be 9.0.5 or later.
 	//
-	// 	Warning:
-	//
-	// After you enable forced SSL encryption, only SSL connections to the instance are allowed.
+	// 	Warning: After you enable forced Secure Sockets Layer (SSL) encryption, you cannot connect to the instance by using non-SSL connections.</warning>
 	//
 	// example:
 	//
@@ -66,11 +62,11 @@ type ModifyDBInstanceSSLRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The operation to perform on the SSL feature. Valid values:
 	//
-	// - **Open**: Enable SSL encryption.
+	// - **Open**: Enables Secure Sockets Layer (SSL) encryption.
 	//
-	// - **Close**: Disable SSL encryption.
+	// - **Close**: Disables Secure Sockets Layer (SSL) encryption.
 	//
-	// - **Update**: Update the SSL certificate.
+	// - **Update**: Updates the SSL certificate.
 	//
 	// This parameter is required.
 	//
@@ -78,11 +74,11 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// Open
 	SSLAction *string `json:"SSLAction,omitempty" xml:"SSLAction,omitempty"`
-	// The time to modify the SSL configuration of the MongoDB instance. Valid values:
+	// The time when the SSL configuration of the MongoDB instance is modified. Valid values:
 	//
-	// - 0: Modify immediately.
+	// - 0: Modifies the configuration immediately.
 	//
-	// - 1: Modify within the maintenance window.
+	// - 1: Modifies the configuration within the O&M window.
 	//
 	// example:
 	//

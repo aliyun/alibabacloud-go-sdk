@@ -24,13 +24,13 @@ type iDescribeActiveOperationTaskResponseBody interface {
 type DescribeActiveOperationTaskResponseBody struct {
 	// The list of tasks.
 	Items []*DescribeActiveOperationTaskResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned per page. Default value: 30.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeActiveOperationTaskResponseBody struct {
 	//
 	// 6FD47DC4-0750-5524-A89E-E7D559Cxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *DescribeActiveOperationTaskResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTaskResponseBodyItems struct {
-	// The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the O&M task was created. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//
 	// 2024-11-06T13:11:08Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The database type of the instance.
+	// The database type.
 	//
 	// example:
 	//
 	// mongodb
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The deadline before which the time to preform the task can be modified. The time in UTC is displayed in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The latest time within the adjustable range for the execution time of the O&M task. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//
@@ -147,55 +147,55 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// dds-bp12721xxxx9b914
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The time when the task was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the O&M task was modified. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//
 	// 2023-02-24T08:18:53Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The required preparation period between the task start time and the switchover time. The time is displayed in the HH:mm:ss format.
+	// The preparation time required between the start time and the switchover time of the O&M task. The format is HH:mm:ss.
 	//
 	// example:
 	//
 	// 14:00:00
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
-	// The region of the instance.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The result information.
+	// The execution result information.
 	//
 	// example:
 	//
 	// ""
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The time when the task was preformed. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	// The execution time of the O&M task. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//
 	// 2023-03-20T02:40:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The state of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// - 2: The task is waiting for users to specify a switchover time.
+	// - 2: Waiting for the user to specify a time.
 	//
-	// - 3: The task is waiting to be performed.
+	// - 3: Waiting to be processed.
 	//
-	// - 4: The task is being performed. If the task is in this state, the ModifyActiveOperationTask operation cannot be called to modify the scheduled switchover time.
+	// - 4: Processing. After the task enters this state, the scheduled switchover time cannot be modified.
 	//
-	// - 5: The task is performed.
+	// - 5: Succeeded.
 	//
-	// - 6: The task fails.
+	// - 6: Failed.
 	//
-	// - 7: The task is canceled.
+	// - 7: Canceled.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	// The switchover time of the O&M task. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//
@@ -207,15 +207,13 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// ""
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// - rds_apsaradb_ha: master-replica switchover
+	// - rds_apsaradb_ha: primary/secondary node switch.
 	//
-	// - rds_apsaradb_transfer: instance migration
+	// - rds_apsaradb_transfer: instance migration.
 	//
-	// - rds_apsaradb_upgrade: minor version update
-	//
-	// - all: all types
+	// - rds_apsaradb_upgrade: minor version update.
 	//
 	// example:
 	//

@@ -18,17 +18,17 @@ type iCheckRecoveryConditionResponseBody interface {
 }
 
 type CheckRecoveryConditionResponseBody struct {
-	// The instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// dds-bp1378****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Indicates whether the data of the instance can be restored. Valid values:
+	// Indicates whether the restoration conditions are met. Valid values:
 	//
-	// 	- **true**: The data of the instance can be restored.
+	// - **true**: The conditions are met.
 	//
-	// 	- **false**: The data of the instance cannot be restored.
+	// - **false**: The conditions are not met.
 	//
 	// example:
 	//

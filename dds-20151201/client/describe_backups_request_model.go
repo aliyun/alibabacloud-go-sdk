@@ -42,23 +42,23 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
-	// The backup ID.
+	// The instance ID.
 	//
-	// If you specify the ID of a sharded cluster instance for the **DBInstanceId*	- parameter, the number of backup IDs must be the same as the number of shard nodes. Separate the backup IDs with commas (,).
+	// If you set the **DBInstanceId*	- parameter to the ID of a sharded cluster instance, the number of instance IDs is the same as the number of shard nodes. Separate multiple instance IDs with commas (,).
 	//
 	// example:
 	//
 	// 2072****,2072****,2072****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup job ID.
+	// The backup task ID.
 	//
 	// example:
 	//
 	// 775051
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// > If the instance is a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -68,23 +68,24 @@ type DescribeBackupsRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The region where the backup resides.
 	//
-	// > This parameter is required for geo-redundancy.
+	//
+	// > This parameter is required for geo-redundancy backups.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
 	//
-	// > This parameter is invalid if you specify the BackupId parameter.
+	// > This parameter is invalid if BackupId is specified.
 	//
 	// example:
 	//
 	// 2022-01-14T13:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the shard node in the sharded cluster instance.
+	// Instance ID of the shard node in the sharded cluster instance.
 	//
-	// > This parameter is required if you specify the ID of a sharded cluster instance for the **DBInstanceId*	- parameter.
+	// > This parameter is required if you set the **DBInstanceId*	- parameter to instance ID of a sharded cluster instance.
 	//
 	// example:
 	//
@@ -92,15 +93,15 @@ type DescribeBackupsRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than 0 and not greater than the maximum value of the integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -120,19 +121,20 @@ type DescribeBackupsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The region where the instance resides.
 	//
-	// > - This parameter is required to restore a deleted instance.
-	//
 	// >
 	//
-	// > - This parameter is required for geo-redundancy.
+	// > - This parameter is required to restore a deleted instance.
+	//
+	// > - This parameter is required for geo-redundancy backups.
 	//
 	// example:
 	//
 	// cn-beijing
 	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in Coordinated Universal Time (UTC).
+	// The beginning of the time range to query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
 	//
-	// > This parameter is invalid if you specify the BackupId parameter.
+	//
+	// > This parameter is invalid if BackupId is specified.
 	//
 	// example:
 	//

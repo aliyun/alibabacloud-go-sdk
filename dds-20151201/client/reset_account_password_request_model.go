@@ -17,6 +17,8 @@ type iResetAccountPasswordRequest interface {
 	GetCharacterType() *string
 	SetDBInstanceId(v string) *ResetAccountPasswordRequest
 	GetDBInstanceId() *string
+	SetDBName(v string) *ResetAccountPasswordRequest
+	GetDBName() *string
 	SetOwnerAccount(v string) *ResetAccountPasswordRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ResetAccountPasswordRequest
@@ -65,7 +67,13 @@ type ResetAccountPasswordRequest struct {
 	// example:
 	//
 	// dds-bpxxxxxxxx
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// 账号所在库（账号建在/操作于哪个库），缺省 admin；规则：长度1~63，禁 /、\、.、空格、"、$，禁 local
+	//
+	// example:
+	//
+	// admin
+	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -94,6 +102,10 @@ func (s *ResetAccountPasswordRequest) GetCharacterType() *string {
 
 func (s *ResetAccountPasswordRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *ResetAccountPasswordRequest) GetDBName() *string {
+	return s.DBName
 }
 
 func (s *ResetAccountPasswordRequest) GetOwnerAccount() *string {
@@ -129,6 +141,11 @@ func (s *ResetAccountPasswordRequest) SetCharacterType(v string) *ResetAccountPa
 
 func (s *ResetAccountPasswordRequest) SetDBInstanceId(v string) *ResetAccountPasswordRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ResetAccountPasswordRequest) SetDBName(v string) *ResetAccountPasswordRequest {
+	s.DBName = &v
 	return s
 }
 

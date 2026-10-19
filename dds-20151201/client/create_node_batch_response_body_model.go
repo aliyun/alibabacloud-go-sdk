@@ -18,7 +18,7 @@ type iCreateNodeBatchResponseBody interface {
 }
 
 type CreateNodeBatchResponseBody struct {
-	// The ID of the added mongos or shard node.
+	// The ID of the added Mongos or shard node.
 	//
 	// example:
 	//

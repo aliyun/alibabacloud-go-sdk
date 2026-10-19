@@ -94,15 +94,15 @@ type iCreateDBInstanceRequest interface {
 }
 
 type CreateDBInstanceRequest struct {
-	// The password for the root account. The password must meet the following requirements:
+	// The password of the root account. The password must meet the following requirements:
 	//
-	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - Must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - The special characters are !@#$%^&\\*()_+-=
+	// - Special characters include !@#$%^&*()_+-=.
 	//
-	// - It must be 8 to 32 characters long.
+	// - Must be 8 to 32 characters in length.
 	//
-	// > For more information about connection failures caused by special characters in passwords, see [How do I fix a connection failure that is caused by special characters in a password?]().
+	// > For information about how to database connection failures caused by special characters in the password, see [How do I database connection failures caused by special characters in the connection string?](https://help.aliyun.com/document_detail/471568.html).
 	//
 	// example:
 	//
@@ -110,25 +110,25 @@ type CreateDBInstanceRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// - **true**: Enables auto-renewal.
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**: The default value. Disables auto-renewal. You must manually renew the instance.
+	// - **false**: default value. Disables auto-renewal. You must manually renew the instance.
 	//
-	// > This parameter is optional and takes effect only when you set the **ChargeType*	- parameter to **PrePaid**.
+	// > This parameter is available and optional when **ChargeType*	- is set to **PrePaid**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The backup point ID. To query the backup point ID, call the [DescribeBackups]() operation.
+	// The backup ID. You can invoke the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup ID.
 	//
-	// > You must specify this parameter and the **SrcDBInstanceId*	- parameter only when you clone an instance based on a backup point.
+	// > This parameter is required only when you invoke this operation to clone a clone instance from a backup point. You must also configure the **SrcDBInstanceId*	- parameter.
 	//
 	// example:
 	//
 	// 32994****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The business information. This is an optional parameter.
+	// The additional information about the business.
 	//
 	// example:
 	//
@@ -136,17 +136,17 @@ type CreateDBInstanceRequest struct {
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PostPaid**: The default value. Pay-as-you-go.
+	// - **PostPaid**: default value. Pay-as-you-go.
 	//
 	// - **PrePaid**: Subscription.
 	//
-	// > If you set this parameter to **PrePaid**, you must also specify the **Period*	- parameter.
+	// > If you set this parameter to **PrePaid**, you must also configure the **Period*	- parameter.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot be more than 64 characters long.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -155,15 +155,15 @@ type CreateDBInstanceRequest struct {
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null*	- (default): Uses a coupon.
+	// - **default*	- or **null*	- (default): uses a coupon.
 	//
-	// - **youhuiquan_promotion_option_id_for_blank**: Does not use a coupon.
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
 	//
 	// example:
 	//
 	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The instance type. To query instance types, call the [DescribeAvailableResource]() operation.
+	// The instance type. You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query the available instance types.
 	//
 	// This parameter is required.
 	//
@@ -173,19 +173,19 @@ type CreateDBInstanceRequest struct {
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The instance name. The name must meet the following requirements:
 	//
-	// - It must start with a letter or a Chinese character.
+	// - Must start with a Chinese character or a letter.
 	//
-	// - It can contain letters, Chinese characters, digits, underscores (_), periods (.), and hyphens (-).
+	// - Can contain digits, Chinese characters, letters, underscores (_), periods (.), and hyphens (-).
 	//
-	// - It must be 2 to 256 characters long.
+	// - Must be 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The storage space of the instance in GB.
+	// The instance storage capacity. Unit: GB.
 	//
-	// The value of this parameter varies based on the instance type. For more information, see [Replica set instance types]().
+	// The valid values depend on the instance type. For details, see [Replica set instance specifications](https://help.aliyun.com/document_detail/311410.html).
 	//
 	// This parameter is required.
 	//
@@ -193,15 +193,15 @@ type CreateDBInstanceRequest struct {
 	//
 	// 10
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
-	// > When you clone an instance, you can specify this parameter to clone specific databases. If you do not specify this parameter, all databases of the instance are cloned.
+	// > When you invoke this operation to clone a clone instance, you can specify this parameter to clone specific databases. If you do not specify this parameter, all databases are cloned.
 	//
 	// example:
 	//
 	// mongodbtest
 	DatabaseNames *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
-	// Specifies whether to enable disk encryption.
+	// Specifies whether to enable cloud disk encryption.
 	//
 	// example:
 	//
@@ -235,11 +235,9 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **4.0**
 	//
-	// > When you clone an instance or restore an instance from the recycle bin, this parameter must be the same as the engine version of the source instance.
+	// > If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
 	//
-	// 	Warning:
-	//
-	// Versions 3.4 and earlier are discontinued.
+	// 	Warning: Versions 3.4 and earlier are no longer available for purchase.
 	//
 	// This parameter is required.
 	//
@@ -247,55 +245,53 @@ type CreateDBInstanceRequest struct {
 	//
 	// 4.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The global IP address whitelist templates for the instance. Separate multiple templates with commas (,). The templates cannot be repeated. This feature is in canary release.
+	// The global IP whitelist templates for the instance. Separate multiple templates with commas (,). Duplicate templates are not allowed. (This feature is in canary release.)
 	//
 	// example:
 	//
 	// g-qxieqf40xjst1ngpr3jz
 	GlobalSecurityGroupIds *string `json:"GlobalSecurityGroupIds,omitempty" xml:"GlobalSecurityGroupIds,omitempty"`
-	// The zone where the hidden node is deployed. This parameter is used for multi-zone deployment. Valid values:
+	// The zone where the hidden node is deployed to implement multi-zone deployment. Valid values:
 	//
-	// - **cn-hangzhou-g**: Zone G in Hangzhou.
+	// - **cn-hangzhou-g**: Hangzhou Zone G.
 	//
-	// - **cn-hangzhou-h**: Zone H in Hangzhou.
+	// - **cn-hangzhou-h**: Hangzhou Zone H.
 	//
-	// - **cn-hangzhou-i**: Zone I in Hangzhou.
+	// - **cn-hangzhou-i**: Hangzhou Zone I.
 	//
-	// - **cn-hongkong-b**: Zone B in Hong Kong (China).
+	// - **cn-hongkong-b**: Hong Kong (China) Zone B.
 	//
-	// - **cn-hongkong-c**: Zone C in Hong Kong (China).
+	// - **cn-hongkong-c**: Hong Kong (China) Zone C.
 	//
-	// - **cn-hongkong-d**: Zone D in Hong Kong (China).
+	// - **cn-hongkong-d**: Hong Kong (China) Zone D.
 	//
-	// - **cn-wulanchabu-a**: Zone A in Ulanqab.
+	// - **cn-wulanchabu-a**: Ulanqab Zone A.
 	//
-	// - **cn-wulanchabu-b**: Zone B in Ulanqab.
+	// - **cn-wulanchabu-b**: Ulanqab Zone B.
 	//
-	// - **cn-wulanchabu-c**: Zone C in Ulanqab.
+	// - **cn-wulanchabu-c**: Ulanqab Zone C.
 	//
-	// - **ap-southeast-1a**: Zone A in Singapore.
+	// - **ap-southeast-1a**: Singapore Zone A.
 	//
-	// - **ap-southeast-1b**: Zone B in Singapore.
+	// - **ap-southeast-1b**: Singapore Zone B.
 	//
-	// - **ap-southeast-1c**: Zone C in Singapore.
+	// - **ap-southeast-1c**: Singapore Zone C.
 	//
-	// - **ap-southeast-5a**: Zone A in Jakarta.
+	// - **ap-southeast-5a**: Jakarta Zone A.
 	//
-	// - **ap-southeast-5b**: Zone B in Jakarta.
+	// - **ap-southeast-5b**: Jakarta Zone B.
 	//
-	// - **ap-southeast-5c**: Zone C in Jakarta.
+	// - **ap-southeast-5c**: Jakarta Zone C.
 	//
-	// - **eu-central-1a**: Zone A in Frankfurt.
+	// - **eu-central-1a**: Frankfurt Zone A.
 	//
-	// - **eu-central-1b**: Zone B in Frankfurt.
+	// - **eu-central-1b**: Frankfurt Zone B.
 	//
-	// - **eu-central-1c**: Zone C in Frankfurt.
+	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// > 	- This parameter is available when the instance uses disks.
+	// > - This parameter is available when the instance uses cloud disks.
 	//
-	// >
-	//
-	// > 	- The value of this parameter cannot be the same as the value of the **ZoneId*	- or **SecondaryZoneId*	- parameter.
+	// > - The value of this parameter cannot be the same as the values of **ZoneId*	- and **SecondaryZoneId**.
 	//
 	// example:
 	//
@@ -303,7 +299,7 @@ type CreateDBInstanceRequest struct {
 	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// **VPC**: virtual private cloud (VPC).
+	// **VPC**: Virtual Private Cloud.
 	//
 	// example:
 	//
@@ -311,31 +307,31 @@ type CreateDBInstanceRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the instance in months.
+	// The subscription duration of the instance. Unit: months.
 	//
 	// Valid values: **1*	- to **9*	- (integers), **12**, **24**, **36**, and **60**.
 	//
-	// > This parameter is required and takes effect only when you set the **ChargeType*	- parameter to **PrePaid**.
+	// > This parameter is available and required when **ChargeType*	- is set to **PrePaid**.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The provisioned IOPS (input/output operations per second). Valid values: 0 to 50000.
+	// The provisioned performance (IOPS). Valid values: 0 to 50000.
 	//
 	// example:
 	//
 	// 1960
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The number of **read-only nodes*	- in the replica set instance. Valid values are integers from **0*	- to **5**. The default value is **0**.
+	// The **number of read-only nodes*	- in the replica set instance. Valid values: **0*	- to **5*	- (integers). Default value: **0**.
 	//
 	// example:
 	//
 	// 0
 	ReadonlyReplicas *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
-	// The region ID. To query the region ID, call the [DescribeRegions]() operation.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
 	//
-	// > When you clone an instance or restore an instance from the recycle bin, this parameter must be the same as the region ID of the source instance.
+	// > If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
 	//
 	// This parameter is required.
 	//
@@ -343,7 +339,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of **primary and secondary nodes*	- in the replica set instance. Valid values:
+	// The **number of primary and secondary nodes*	- in the replica set instance. Valid values:
 	//
 	// - **3*	- (default)
 	//
@@ -351,9 +347,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **7**
 	//
-	// 	Notice:
-	//
-	// You do not need to specify this parameter for standalone instances.
+	// 	Notice: This parameter is not required for single-node instances.
 	//
 	// example:
 	//
@@ -362,89 +356,85 @@ type CreateDBInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
+	// The point in time to recover the instance to. You can specify any point in time within the last 7 days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > You must specify this parameter and the **SrcDBInstanceId*	- parameter only when you clone an instance based on a point in time.
+	// > This parameter is required only when you invoke this operation to clone a clone instance to a point in time. You must also configure the **SrcDBInstanceId*	- parameter.
 	//
 	// example:
 	//
 	// 2022-03-13T12:11:14Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The method to restore an instance from a backup.
+	// The backup restoration type. Valid values:
 	//
-	// - 0: Restores the instance to a specified backup set.
+	// - 0: recovers the instance to a specified backup set.
 	//
-	// - 1: Restores the instance to a specified point in time.
+	// - 1: recovers the instance to a specified point in time.
 	//
-	// - 2: Restores a released instance to a specified backup set.
+	// - 2: recovers a released instance to a specified backup set.
 	//
-	// - 3: Restores the instance to a specified geo-redundant backup set.
+	// - 3: recovers the instance to a specified geo-redundancy backup set.
 	//
 	// example:
 	//
 	// 0
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The zone where the secondary node is deployed. This parameter is used for multi-zone deployment. Valid values:
+	// The zone where the secondary node is deployed to implement multi-zone deployment. Valid values:
 	//
-	// - **cn-hangzhou-g**: Zone G in Hangzhou.
+	// - **cn-hangzhou-g**: Hangzhou Zone G.
 	//
-	// - **cn-hangzhou-h**: Zone H in Hangzhou.
+	// - **cn-hangzhou-h**: Hangzhou Zone H.
 	//
-	// - **cn-hangzhou-i**: Zone I in Hangzhou.
+	// - **cn-hangzhou-i**: Hangzhou Zone I.
 	//
-	// - **cn-hongkong-b**: Zone B in Hong Kong (China).
+	// - **cn-hongkong-b**: Hong Kong (China) Zone B.
 	//
-	// - **cn-hongkong-c**: Zone C in Hong Kong (China).
+	// - **cn-hongkong-c**: Hong Kong (China) Zone C.
 	//
-	// - **cn-hongkong-d**: Zone D in Hong Kong (China).
+	// - **cn-hongkong-d**: Hong Kong (China) Zone D.
 	//
-	// - **cn-wulanchabu-a**: Zone A in Ulanqab.
+	// - **cn-wulanchabu-a**: Ulanqab Zone A.
 	//
-	// - **cn-wulanchabu-b**: Zone B in Ulanqab.
+	// - **cn-wulanchabu-b**: Ulanqab Zone B.
 	//
-	// - **cn-wulanchabu-c**: Zone C in Ulanqab.
+	// - **cn-wulanchabu-c**: Ulanqab Zone C.
 	//
-	// - **ap-southeast-1a**: Zone A in Singapore.
+	// - **ap-southeast-1a**: Singapore Zone A.
 	//
-	// - **ap-southeast-1b**: Zone B in Singapore.
+	// - **ap-southeast-1b**: Singapore Zone B.
 	//
-	// - **ap-southeast-1c**: Zone C in Singapore.
+	// - **ap-southeast-1c**: Singapore Zone C.
 	//
-	// - **ap-southeast-5a**: Zone A in Jakarta.
+	// - **ap-southeast-5a**: Jakarta Zone A.
 	//
-	// - **ap-southeast-5b**: Zone B in Jakarta.
+	// - **ap-southeast-5b**: Jakarta Zone B.
 	//
-	// - **ap-southeast-5c**: Zone C in Jakarta.
+	// - **ap-southeast-5c**: Jakarta Zone C.
 	//
-	// - **eu-central-1a**: Zone A in Frankfurt.
+	// - **eu-central-1a**: Frankfurt Zone A.
 	//
-	// - **eu-central-1b**: Zone B in Frankfurt.
+	// - **eu-central-1b**: Frankfurt Zone B.
 	//
-	// - **eu-central-1c**: Zone C in Frankfurt.
+	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// > 	- This parameter is available when the instance uses disks.
+	// > - This parameter is available when the instance uses cloud disks.
 	//
-	// >
-	//
-	// > 	- The value of this parameter cannot be the same as the value of the **ZoneId*	- or **HiddenZoneId*	- parameter.
+	// > - The value of this parameter cannot be the same as the values of **ZoneId*	- and **HiddenZoneId**.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Each IP address in the whitelist must be unique. The whitelist can be in one of the following formats:
+	// The IP whitelist of the instance. Separate multiple IP addresses with commas (,). Duplicate IP addresses are not allowed. The following formats are supported:
 	//
 	// - 0.0.0.0/0
 	//
-	// - An IP address, for example, 10.23.12.24.
+	// - IP address format, such as 10.23.12.24.
 	//
-	// - A CIDR block, for example, 10.23.12.0/24. The /24 indicates that the prefix of the CIDR block is 24 bits in length. You can set the prefix to a value from 1 to 32.
+	// - CIDR block format, such as 10.23.12.0/24. In this example, 24 indicates that the prefix of the CIDR block is 24 bits in length. The prefix length ranges from 1 to 32.
 	//
-	// > 	- You can add a maximum of 1,000 IP addresses or CIDR blocks to all IP address whitelists.
+	// > - Each instance supports a maximum of 1,000 IP addresses or CIDR blocks across all IP whitelist groups.
 	//
-	// >
-	//
-	// > 	- If you set the whitelist to 0.0.0.0/0, all IP addresses can access the instance. This is a high-risk setting. Use this with caution.
+	// > - 0.0.0.0/0 allows all IP addresses to access the instance database. This is a high-risk setting. Proceed with caution.
 	//
 	// example:
 	//
@@ -452,15 +442,15 @@ type CreateDBInstanceRequest struct {
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The source instance ID.
 	//
-	// > When you clone an instance, you must specify this parameter and the **BackupId*	- or **RestoreTime*	- parameter. When you restore an instance from the recycle bin, you only need to specify this parameter. You do not need to specify the **BackupId*	- or **RestoreTime*	- parameter.
+	// > If you call this operation to clone clone instance, you must configure this parameter along with the **BackupId*	- or **RestoreTime*	- parameter. If you call this operation to restore clone instance from the recycle bin, you only need to configure this parameter. The **BackupId*	- and **RestoreTime*	- parameters are not required.
 	//
 	// example:
 	//
 	// dds-bp1ee12ad351****
 	SrcDBInstanceId *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
-	// The region where the source instance is located.
+	// The region where the source instance resides.
 	//
-	// > - This parameter is required when RestoreType is set to 2 or 3.
+	// > This parameter is required when the restoration type is 2 or 3.
 	//
 	// example:
 	//
@@ -468,47 +458,39 @@ type CreateDBInstanceRequest struct {
 	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 	// The storage engine of the instance. The value is fixed as **WiredTiger**.
 	//
-	// > - When you clone an instance or restore an instance from the recycle bin, this parameter must be the same as the storage engine of the source instance.
+	// > - If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
 	//
-	// >
-	//
-	// > - For more information about the constraints on storage engines and database versions, see [Versions and storage engines]().
+	// > - For information about the constraints on storage engines and versions, see [Versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
 	//
 	// example:
 	//
 	// WiredTiger
 	StorageEngine *string `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
-	// The storage class. Valid values:
+	// The storage type. Valid values:
 	//
-	// - **cloud_essd1**: ESSD PL1 disk.
+	// - **cloud_essd1**: PL1 ESSD.
 	//
-	// - **cloud_essd2**: ESSD PL2 disk.
+	// - **cloud_essd2**: PL2 ESSD.
 	//
-	// - **cloud_essd3**: ESSD PL3 disk.
+	// - **cloud_essd3**: PL3 ESSD.
 	//
 	// - **cloud_auto**: ESSD AutoPL disk.
 	//
-	// - **local_ssd**: Local SSD.
+	// - **local_ssd**: local SSD.
 	//
-	// > 	- For standalone instances, if you pass the value cloud_essd1, an ESSD disk is used.
+	// > - For single-node instances, if you specify cloud_essd1, the instance uses a cloud_essd disk.
 	//
-	// >
+	// > - ESSD AutoPL disks are currently available only on the China site.
 	//
-	// > 	- ESSD AutoPL disks are available only on the China site (aliyun.com).
+	// > - For instances running version 4.4 or later, the default value is **cloud_essd1**.
 	//
-	// >
-	//
-	// > 	- For instances of version 4.4 or later, the default value is **cloud_essd1**.
-	//
-	// >
-	//
-	// > 	- For instances of version 4.2 or earlier, the default value is **local_ssd**.
+	// > - For instances running version 4.2 or earlier, the default value is **local_ssd**.
 	//
 	// example:
 	//
 	// cloud_essd1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The custom tags.
+	// The user-defined tags.
 	Tag []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -522,7 +504,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID. To query the zone ID, call the [DescribeRegions]() operation.
+	// The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
 	//
 	// example:
 	//
@@ -923,7 +905,7 @@ func (s *CreateDBInstanceRequest) Validate() error {
 type CreateDBInstanceRequestTag struct {
 	// The tag key.
 	//
-	// > - **N*	- specifies the Nth tag. For example, **Tag.1.Key*	- specifies the key of the first tag, and **Tag.2.Key*	- specifies the key of the second tag.
+	// > - **N*	- indicates the sequence number of the tag key. For example, **Tag.1.Key*	- indicates the key of the first tag, and **Tag.2.Key*	- indicates the key of the second tag.
 	//
 	// example:
 	//
@@ -931,7 +913,7 @@ type CreateDBInstanceRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// > **N*	- specifies the Nth tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
+	// > **N*	- indicates the sequence number of the tag value. For example, **Tag.1.Value*	- indicates the value of the first tag, and **Tag.2.Value*	- indicates the value of the second tag.
 	//
 	// example:
 	//

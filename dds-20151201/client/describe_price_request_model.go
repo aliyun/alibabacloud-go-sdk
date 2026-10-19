@@ -38,31 +38,31 @@ type iDescribePriceRequest interface {
 }
 
 type DescribePriceRequest struct {
-	// The business information. This is an additional parameter.
+	// The additional parameter for business information.
 	//
 	// example:
 	//
 	// {"AccountPassword":"Pw123456","DBInstanceDescription":"test"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The commodity code of the instance. Valid values:
+	// The commodity code. Valid values:
 	//
-	// - **dds**: pay-as-you-go ReplicaSet instance.
+	// - **dds**: pay-as-you-go replica set instance
 	//
-	// - **badds**: subscription ReplicaSet instance.
+	// - **badds**: subscription replica set instance
 	//
-	// - **dds_sharding**: pay-as-you-go sharded cluster instance.
+	// - **dds_sharding**: pay-as-you-go sharded cluster instance
 	//
-	// - **badds_sharding**: subscription sharded cluster instance.
+	// - **badds_sharding**: subscription sharded cluster instance
 	//
-	// - **badds_sharding_intl**: subscription sharded cluster instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+	// - **badds_sharding_intl**: subscription sharded cluster instance on the international site
 	//
-	// - **dds_sharding_intl**: pay-as-you-go sharded cluster instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+	// - **dds_sharding_intl**: pay-as-you-go sharded cluster instance on the international site
 	//
-	// - **badds_sharding_jp**: subscription sharded cluster instance on the Alibaba Cloud Japan Website.
+	// - **badds_sharding_jp**: subscription sharded cluster instance on the Japan site
 	//
-	// - **badds_intl**: subscription ReplicaSet instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+	// - **badds_intl**: subscription replica set instance on the international site
 	//
-	// - **dds_intl**: pay-as-you-go ReplicaSet instance on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+	// - **dds_intl**: pay-as-you-go replica set instance on the international site
 	//
 	// example:
 	//
@@ -70,15 +70,15 @@ type DescribePriceRequest struct {
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null*	- (default): A coupon is used.
+	// - **default*	- or **null*	- (default): Use a coupon.
 	//
-	// - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
+	// - **youhuiquan_promotion_option_id_for_blank**: Do not use a coupon.
 	//
 	// example:
 	//
 	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// A JSON string that contains information about the instance. For more information about the parameters and JSON examples, see [DBInstances parameter of the DescribePrice operation](https://help.aliyun.com/document_detail/197291.html).
+	// The JSON-formatted string that contains multiple pieces of information about instances. For metric descriptions and more JSON format examples, see [DBInstances metric description for the DescribePrice operation](https://help.aliyun.com/document_detail/197291.html).
 	//
 	// This parameter is required.
 	//
@@ -86,11 +86,11 @@ type DescribePriceRequest struct {
 	//
 	// [ { "DBInstanceId":"dds-bp1b6e54e7cc****", "RegionId":"cn-hangzhou", "ZoneId":"cn-hangzhou-h", "Engine":"MongoDB", "EngineVersion":" 5.0", "DBInstanceClass":"mdb.shard.2x.xlarge.d", "DBInstanceStorage":30, "ChargeType":"PrePaid", "Period":1, "StorageType":"cloud_essd1" } ]
 	DBInstances *string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty"`
-	// Specifies whether to return the order parameters. Valid values:
+	// Specifies whether to return order parameters. Valid values:
 	//
-	// - **false*	- (default): The order parameters are not returned.
+	// - **false*	- (default): Do not return order parameters.
 	//
-	// - **true**: The order parameters are returned.
+	// - **true**: Return order parameters.
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type DescribePriceRequest struct {
 	OrderParamOut *string `json:"OrderParamOut,omitempty" xml:"OrderParamOut,omitempty"`
 	// The order type. Valid values:
 	//
-	// - **BUY**: Creates an instance.
+	// - **BUY**: Create an instance.
 	//
-	// - **UPGRADE**: Changes the configuration of an instance.
+	// - **UPGRADE**: Upgrade instance configurations.
 	//
-	// - **RENEW**: Renews an instance.
+	// - **RENEW**: Renew an instance.
 	//
 	// This parameter is required.
 	//
@@ -112,19 +112,19 @@ type DescribePriceRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The product code. The default value is **dds**.
+	// The product code. Default value: **dds**.
 	//
 	// example:
 	//
 	// dds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. For more information about resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The resource group ID. For more information about resource groups, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//

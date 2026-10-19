@@ -80,7 +80,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// dds-bp1ea17b41abecf43****.mongodb.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// The instance specification. For more information about valid values, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// Test database
+	// TestDatabase
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//
@@ -104,33 +104,33 @@ type DescribeDBInstancesRequest struct {
 	//
 	// dds-bp199659b178****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance status. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
+	// The instance status. For more details about valid values, see [Instance status table](https://help.aliyun.com/document_detail/63870.html).
 	//
 	// example:
 	//
 	// Running
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The instance architecture. Valid values:
+	// The instance type. Valid values:
 	//
 	// - **sharding**: sharded cluster instance.
 	//
-	// - **replicate**: replica set or standalone instance. This is the default value.
+	// - **replicate**: default value. Replica set instance or single-node instance.
 	//
-	// <props="china">
+	//  <props="china">
 	//
-	// - **serverless**: serverless instance.
+	// - **serverless**: Serverless instance.
 	//
 	// example:
 	//
 	// sharding
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// Filters instances by type. Valid values:
+	// Specifies whether to filter standard or test instances.
 	//
-	// 1. customized: standalone instances and DBFS instances.
+	// 1. Single-node instances and DBFS instances: customized
 	//
-	// 2. standard: standard instances, which include replica set and sharded cluster instances.
+	// 2. Standard instances (replica set and sharded cluster): standard
 	//
-	// 3. default: all instances.
+	// 3. Default (displays all instances): default
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// 4.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the instance. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is used to filter instances that expire on or before the specified time.
+	// The expiration time of the instance in the yyyy-MM-ddTHH:mm:ssZ format (UTC). This parameter is used to filter instances whose expiration time is earlier than or equal to the specified time.
 	//
 	// example:
 	//
@@ -170,9 +170,9 @@ type DescribeDBInstancesRequest struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The expiration status of the instance. Valid values:
 	//
-	// - **true**: The instance is expired.
+	// - **true**: expired.
 	//
-	// - **false**: The instance is not expired.
+	// - **false**: not expired.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// - **Classic**: classic network.
 	//
-	// - **VPC**: virtual private cloud (VPC).
+	// - **VPC**: VPC.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type DescribeDBInstancesRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than 0 and no greater than the maximum value of the integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - **30*	- (default)
 	//
@@ -234,7 +234,7 @@ type DescribeDBInstancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags of the instance.
+	// The tags.
 	Tag []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID of the VPC.
 	//
@@ -512,7 +512,7 @@ func (s *DescribeDBInstancesRequest) Validate() error {
 }
 
 type DescribeDBInstancesRequestTag struct {
-	// The key of tag N. The value of N must be in the range of **1*	- to **20**.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**.
 	//
 	// - The tag key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
@@ -524,9 +524,9 @@ type DescribeDBInstancesRequestTag struct {
 	//
 	// testdatabase
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. The value of N must be in the range of **1*	- to **20**.
+	// The tag value of the instance. Valid values of N: **1*	- to **20**.
 	//
-	// - The tag value cannot start with `aliyun`, `acs`:, `http://`, or `https://`.
+	// - The tag value cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
 	// - The tag value can be up to 128 characters in length.
 	//

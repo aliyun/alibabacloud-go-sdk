@@ -30,7 +30,7 @@ type DeleteNodeResponseBody struct {
 	//
 	// 9F9BDE64-BF30-41F3-BD29-C19CE4AB3404
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

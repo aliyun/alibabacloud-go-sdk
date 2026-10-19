@@ -46,7 +46,7 @@ type iDescribeAuditRecordsRequest interface {
 type DescribeAuditRecordsRequest struct {
 	// The instance ID.
 	//
-	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If you specify a sharded cluster instance ID for this parameter, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,15 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// dds-bp12c5b040dc****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database. By default, all databases are queried.
+	// The name of the database. The default value is all databases.
 	//
 	// example:
 	//
 	// database****
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > The time range between the start time and the end time cannot exceed 24 hours. Otherwise, the operation fails.
+	// > The time range between the end time and the start time cannot exceed 24 hours. If the time range exceeds 24 hours, the call fails.
 	//
 	// This parameter is required.
 	//
@@ -70,37 +70,37 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// 2019-03-13T13:11:14Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The format of the returned audit records. Valid values:
+	// The display format of the returned audit records. Valid values:
 	//
-	// - **File**: Triggers the generation of an audit log file. If you set this parameter to File, only common parameters are returned.
+	// - **File**: Triggers the generation of an audit log file. If you set this parameter to this value, only common parameters are returned.
 	//
 	// - **Stream*	- (default): Returns a data stream.
 	//
-	// > The **File*	- parameter is deprecated.
+	// > The **File*	- value is deprecated.
 	//
 	// example:
 	//
 	// Stream
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The logical operator for the keyword search. The default value is and.
+	// The logical operator for keyword search. The default value is and.
 	//
 	// example:
 	//
 	// and
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
-	// The ID of a Mongos node or a shard node in the sharded cluster instance.
+	// Instance ID of a mongos node or shard node in the sharded cluster instance.
 	//
-	// > This parameter is available only when **DBInstanceId*	- is set to the ID of a sharded cluster instance.
+	// > This parameter is available only when **DBInstanceId*	- is set to instance ID of a sharded cluster instance.
 	//
 	// example:
 	//
 	// d-bp128a003436****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The order in which to sort the returned audit log entries by time. Valid values:
+	// The order in which the queried slow logs are sorted by time. Valid values:
 	//
-	// - **asc**: Sorts the entries in ascending order.
+	// - **asc**: sorts results in ascending order by time.
 	//
-	// - **desc**: Sorts the entries in descending order.
+	// - **desc**: sorts results in descending order by time.
 	//
 	// example:
 	//
@@ -108,19 +108,19 @@ type DescribeAuditRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number to return. The value must be greater than 0 and must not exceed the maximum value of the integer data type. Default value: **1**.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30*	- (default), **50**, and **100**.
+	// The number of records per page. Valid values: **30*	- (default), **50**, and **100**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keywords for the query. You can specify up to 10 keywords. Separate multiple keywords with spaces.
+	// The keywords to query. Separate multiple keywords with spaces. You can specify a maximum of 10 keywords.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeAuditRecordsRequest struct {
 	QueryKeywords        *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +136,7 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// 2019-03-13T12:11:14Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The database account. By default, all accounts are queried.
+	// The database account. The default value is all accounts.
 	//
 	// example:
 	//

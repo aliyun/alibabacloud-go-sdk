@@ -9,6 +9,8 @@ type iModifyDBInstanceSpecRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlignPrimaryZone(v bool) *ModifyDBInstanceSpecRequest
+	GetAlignPrimaryZone() *bool
 	SetAutoPay(v bool) *ModifyDBInstanceSpecRequest
 	GetAutoPay() *bool
 	SetBusinessInfo(v string) *ModifyDBInstanceSpecRequest
@@ -56,20 +58,15 @@ type iModifyDBInstanceSpecRequest interface {
 }
 
 type ModifyDBInstanceSpecRequest struct {
+	// Specifies whether to automatically align the primary node to the primary zone for a multi-zone instance after operations such as configuration changes. If you choose not to align the node, one primary/secondary switchover (transient disconnection) is avoided. Default value: true (aligned).
+	AlignPrimaryZone *bool `json:"AlignPrimaryZone,omitempty" xml:"AlignPrimaryZone,omitempty"`
 	// Specifies whether to enable automatic payment for the instance. Valid values:
 	//
-	// - **true**: enables automatic payment. Make sure that your account has a sufficient balance. This is the default value.
+	// - **true**: enables automatic payment. This is the default value. Make sure that your account has sufficient balance.
 	//
-	// <props="china">
+	// <props="china">- **false**: disables automatic payment. You must manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses*	- > **Expenses and Costs**. In the left-side navigation pane, choose **Orders*	- > **My Orders**. On the **Orders*	- tab, find the order and complete the payment.
 	//
-	// - **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console to pay for the instance. In the upper-right corner of the page, choose **Billing Management*	- > **Billing Management**. In the left-side navigation pane, choose **Orders*	- > **My Orders**. On the **Product Orders*	- tab, find the order and complete the payment.
-	//
-	//
-	//
-	//
-	// <props="intl">
-	//
-	// - **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console to pay for the instance. In the upper-right corner of the page, choose **Billing Management*	- > **Billing Management**. In the left-side navigation pane, click **Orders**. On the **Product Orders*	- page, find the order and complete the payment.
+	// <props="intl">- **false**: disables automatic payment. You must manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses*	- > **Expenses and Costs**. In the left-side navigation pane, click **Order Management**. On the **Orders*	- page, find the order and complete the payment.
 	//
 	// example:
 	//
@@ -83,21 +80,24 @@ type ModifyDBInstanceSpecRequest struct {
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null*	- (default): A coupon is used.
+	// - **default*	- or **null**: uses a coupon. This is the default value.
 	//
-	// - **youhuiquan_promotion_option_id_for_blank**: No coupon is used.
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
 	//
 	// example:
 	//
 	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The instance type. <props="intl">For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). You can also call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query instance types.<props="china">
+	// The instance type. <props="intl"><ph>For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). You can also call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query instance types.</ph>
 	//
-	// - For a standalone instance or a replica set instance, this parameter specifies the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). You can also call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query the instance types of standalone and replica set instances.
+	// <props="china">
 	//
-	// - For a serverless instance, this parameter specifies the computing capacity of the instance. Valid values: 100 to 8000.
+	// - For standalone instances and replica set instances, this parameter specifies the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html). You can also call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query the instance types of standalone instances and replica set instances.
 	//
-	// > You must configure one of the **DBInstanceStorage*	- and DBInstanceClass parameters.
+	// - For serverless instances, this parameter specifies the compute specifications of the instance. Valid values: 100 to 8000.
+	//
+	//
+	// > You must specify at least one of the **DBInstanceClass*	- and **DBInstanceStorage*	- parameters.
 	//
 	// example:
 	//
@@ -111,53 +111,50 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// dds-bp1ea17b41ab****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The storage capacity of the instance. <props="intl">The value must be an integer that is greater than or equal to 10. The value increases in increments of 10. Unit: GB. The values that can be specified for this parameter are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// Instance storage space of the instance. <props="intl"><ph>Valid values: 10 to 3000. Unit: GB. The step size is 10 GB. The valid values are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).</ph>
 	//
 	// <props="china">
 	//
-	// - The storage capacity of a standalone instance or a replica set instance must be a multiple of 10. The valid values are 10 to 3000. Unit: GB. The values that can be specified for this parameter are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// - For standalone instances and replica set instances, valid values are 10 to 3000. Unit: GB. The step size is 10 GB. The valid values are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 	//
-	// - The storage capacity of a serverless instance must be a multiple of 1. The valid values are 1 to 100. Unit: GB.
+	// - For serverless instances, valid values are 1 to 100. Unit: GB. The step size is 1 GB.
 	//
 	//
+	// > - You must specify at least one of the **DBInstanceStorage*	- and **DBInstanceClass*	- parameters.
 	//
-	// > - You must configure one of the **DBInstanceClass*	- and DBInstanceStorage parameters.
-	//
-	// >
-	//
-	// > - You cannot decrease the storage capacity of an instance.
+	// > - You cannot downgrade instance storage space.
 	//
 	// example:
 	//
 	// 50
 	DBInstanceStorage *string `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The effective time of the configuration change. Valid values:
+	// The time when the configuration change takes effect. Valid values:
 	//
-	// - **Immediately**: The configuration change immediately takes effect. This is the default value.
+	// - **Immediately**: takes effect immediately. This is the default value.
 	//
-	// - **MaintainTime**: The configuration change takes effect during the maintenance window of the instance.
+	// - **MaintainTime**: takes effect during the maintenance window of the instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// Additional parameters. Valid values:
+	// The additional parameter. Valid values:
 	//
-	// - **async**: The result is returned after the specification change order is created.
+	// - **async**: returns the result after the configuration change order is created.
 	//
-	// - **sync**: The result is returned after the instance specification change is delivered.
+	// - **sync**: returns the result when the configuration change is delivered after the order is created.
 	//
 	// example:
 	//
 	// async
 	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
-	// The specification change type. Valid values:
+	// The type of configuration change. Valid values:
 	//
-	// - **UPGRADE**: upgrades the specifications. This is the default value.
+	// - **UPGRADE**: upgrades the configurations. This is the default value.
 	//
-	// - **DOWNGRADE**: downgrades the specifications.
+	// - **DOWNGRADE**: downgrades the configurations.
 	//
-	// > This parameter is available only for subscription instances.
+	// > You can specify this parameter only when the instance uses the subscription billing method.
 	//
 	// example:
 	//
@@ -167,9 +164,9 @@ type ModifyDBInstanceSpecRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of read-only nodes. Valid values: **0*	- to **5**.
 	//
-	// If the network type of the instance is set to only **classic network*	- and **VPC**, you need to enable public access or release the classic network endpoint before you can change the **number of read-only nodes**.
+	// If the instance is connected only over the **classic network*	- and a **VPC**, you must enable Internet access or release the classic network before you can change the **number of read-only nodes**.
 	//
-	// > You can log on to the ApsaraDB for MongoDB console and go to the **Database Connections*	- page to view the network types that have been enabled.
+	// > You can log on to the ApsaraDB for MongoDB console and view the enabled network types on the **Database Connections*	- page.
 	//
 	// example:
 	//
@@ -177,13 +174,13 @@ type ModifyDBInstanceSpecRequest struct {
 	ReadonlyReplicas *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	// The number of nodes in the instance. Default value: 3.
 	//
-	// - Valid values for replica set instances: **3**, **5**, and **7**.
+	// - For a replica set instance, valid values are **3**, **5**, and **7**.
 	//
-	// - The value for standalone instances is fixed at **1**.
+	// - For a standalone instance, the value is fixed to **1**.
 	//
-	// - The value for replica set instances with shared storage (available only in the China site) is fixed at **2**.
+	// - For a replica set instance that uses shared storage (supported only on the Alibaba Cloud China site), the value is fixed to **2**.
 	//
-	// > This parameter is not required for serverless instances (available only in the China site).
+	// > You do not need to specify this parameter for a serverless instance (supported only on the Alibaba Cloud China site).
 	//
 	// example:
 	//
@@ -191,41 +188,37 @@ type ModifyDBInstanceSpecRequest struct {
 	ReplicationFactor    *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The specifications of the Search node to be changed.
+	// The specifications of the search node for the configuration change.
 	//
 	// example:
 	//
 	// mdb.shard.2x.xlarge.d
 	SearchNodeClass *string `json:"SearchNodeClass,omitempty" xml:"SearchNodeClass,omitempty"`
-	// The number of Search nodes to be changed.
+	// The number of search nodes for the configuration change.
 	//
 	// example:
 	//
 	// 2
 	SearchNodeCount *int64 `json:"SearchNodeCount,omitempty" xml:"SearchNodeCount,omitempty"`
-	// The capacity of the Search node to be changed.
+	// The storage capacity of the search node for the configuration change.
 	//
 	// example:
 	//
 	// 20
 	SearchNodeStorage *int64 `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
-	// The destination zone for the hidden node when you change the specifications and migrate the instance across zones.
+	// The destination zone for the hidden node when you cloud disk instance across zones and change its configurations at the same time.
 	//
-	// 	Notice: This parameter applies only to cloud disk instances.
+	// 	Notice: This parameter is supported only for instances that use cloud disks.</notice>
 	//
-	// 	Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetSecondaryZoneId parameter.
-	//
-	// > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
+	// 	Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetSecondaryZoneId parameter.</notice>
 	//
 	// >
+	//
+	// > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
 	//
 	// > - This parameter is available only for multi-zone migration.
 	//
-	// >
-	//
-	// > - The destination zone and the current zone must be in the same region.
-	//
-	// >
+	// > - The destination zone and the current zone of the instance must be in the same region.
 	//
 	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
 	//
@@ -233,23 +226,19 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// cn-hangzhou-i
 	TargetHiddenZoneId *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
-	// The destination secondary zone for the secondary node when you change the specifications and migrate the instance across zones.
+	// The destination zone for the secondary node when you cloud disk instance across zones and change its configurations at the same time.
 	//
-	// 	Notice: This parameter applies only to cloud disk instances.
+	// 	Notice: This parameter is supported only for instances that use cloud disks.</notice>
 	//
-	// 	Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetHiddenZoneId parameter.
-	//
-	// > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
+	// 	Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetHiddenZoneId parameter.</notice>
 	//
 	// >
+	//
+	// > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
 	//
 	// > - This parameter is available only for multi-zone migration.
 	//
-	// >
-	//
-	// > - The destination zone and the current zone must be in the same region.
-	//
-	// >
+	// > - The destination zone and the current zone of the instance must be in the same region.
 	//
 	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
 	//
@@ -257,29 +246,27 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// cn-hangzhou-h
 	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
-	// The destination vSwitch ID when you change the specifications and migrate the instance across zones.
+	// The ID of the destination vSwitch when you cloud disk instance across zones and change its configurations at the same time.
 	//
-	// 	Notice: This parameter applies only to cloud disk instances.
+	// 	Notice: This parameter is supported only for instances that use cloud disks.</notice>
 	//
-	// > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
+	// >
+	//
+	// > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
 	//
 	// example:
 	//
 	// vsw-bp1buy0h9myt5i9e7****
 	TargetVswitchId *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
-	// The destination zone to which you want to migrate the instance when you change the specifications and migrate the instance across zones.
+	// The destination zone for instance migration when you migrate the instance across zones and change its configurations at the same time.
 	//
-	// 	Notice: This parameter applies only to cloud disk instances.
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
-	// 	Notice: The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.
+	// 	Notice: The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.</notice>
 	//
-	// > - You must specify this parameter only when you change the specifications and migrate the instance across zones.
+	// > - You must specify this parameter only when you migrate the instance across zones and change its configurations at the same time.
 	//
-	// >
-	//
-	// > - The destination zone and the current zone must be in the same region.
-	//
-	// >
+	// > - The destination zone and the current zone of the instance must be in the same region.
 	//
 	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
 	//
@@ -295,6 +282,10 @@ func (s ModifyDBInstanceSpecRequest) String() string {
 
 func (s ModifyDBInstanceSpecRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetAlignPrimaryZone() *bool {
+	return s.AlignPrimaryZone
 }
 
 func (s *ModifyDBInstanceSpecRequest) GetAutoPay() *bool {
@@ -383,6 +374,11 @@ func (s *ModifyDBInstanceSpecRequest) GetTargetVswitchId() *string {
 
 func (s *ModifyDBInstanceSpecRequest) GetTargetZoneId() *string {
 	return s.TargetZoneId
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetAlignPrimaryZone(v bool) *ModifyDBInstanceSpecRequest {
+	s.AlignPrimaryZone = &v
+	return s
 }
 
 func (s *ModifyDBInstanceSpecRequest) SetAutoPay(v bool) *ModifyDBInstanceSpecRequest {

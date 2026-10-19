@@ -16,13 +16,13 @@ type iTransformInstanceChargeTypeResponseBody interface {
 }
 
 type TransformInstanceChargeTypeResponseBody struct {
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 21084641369****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

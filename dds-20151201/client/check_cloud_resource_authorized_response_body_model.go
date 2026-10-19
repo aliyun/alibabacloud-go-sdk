@@ -18,27 +18,27 @@ type iCheckCloudResourceAuthorizedResponseBody interface {
 }
 
 type CheckCloudResourceAuthorizedResponseBody struct {
-	// Indicates whether KMS keys are authorized to ApsaraDB for MongoDB instances. Valid values:
+	// The authorization status. Valid values:
 	//
-	// - **0**: KMS keys are not authorized.
+	// - **0**: Not authorized.
 	//
-	// - **1**: KMS keys are authorized.
+	// - **1**: Authorized.
 	//
-	// - **2**: KMS is not enabled.
+	// - **2**: The user has not enabled KMS.
 	//
 	// example:
 	//
 	// 1
 	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A0181AC4-F186-46ED-87CA-100C70B86729
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The role information of the authorized Alibaba Resource Name (ARN).
+	// The information about the role that is authorized to access Alibaba Cloud resources.
 	//
-	// > This parameter is returned only when the value of the **AuthorizationState*	- parameter is **1**.
+	// > The response includes this parameter only when the return value of **AuthorizationState*	- is **1**.
 	//
 	// example:
 	//

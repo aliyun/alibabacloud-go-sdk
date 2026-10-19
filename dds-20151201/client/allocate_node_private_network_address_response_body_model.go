@@ -14,7 +14,7 @@ type iAllocateNodePrivateNetworkAddressResponseBody interface {
 }
 
 type AllocateNodePrivateNetworkAddressResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -36,9 +36,9 @@ type CreateNodeRoleTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the shard node.
+	// The shard node ID.
 	//
-	// > - This parameter applies only to sharded cluster instances.
+	// >- This parameter is available only when you create a role tag for a shard node of a sharded cluster instance.
 	//
 	// example:
 	//

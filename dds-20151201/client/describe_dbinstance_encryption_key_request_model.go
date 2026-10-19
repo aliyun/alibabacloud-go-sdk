@@ -13,6 +13,8 @@ type iDescribeDBInstanceEncryptionKeyRequest interface {
 	GetDBInstanceId() *string
 	SetEncryptionKey(v string) *DescribeDBInstanceEncryptionKeyRequest
 	GetEncryptionKey() *string
+	SetEncryptionType(v string) *DescribeDBInstanceEncryptionKeyRequest
+	GetEncryptionType() *string
 	SetOwnerAccount(v string) *DescribeDBInstanceEncryptionKeyRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeDBInstanceEncryptionKeyRequest
@@ -32,12 +34,22 @@ type DescribeDBInstanceEncryptionKeyRequest struct {
 	//
 	// dds-bp2235****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The custom key for the instance. You can call the [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) operation to query the list of custom keys for an ApsaraDB for MongoDB instance.
+	// The custom encryption key of the instance. You can call [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) to query the custom keys of the instance.
 	//
 	// example:
 	//
 	// 2axxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The key scenario to query. Valid values:
+	//
+	// - TDE: Queries transparent data encryption key information.
+	//
+	// - CloudDisk: Queries cloud disk encryption key information.
+	//
+	// example:
+	//
+	// TDE
+	EncryptionType       *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -58,6 +70,10 @@ func (s *DescribeDBInstanceEncryptionKeyRequest) GetDBInstanceId() *string {
 
 func (s *DescribeDBInstanceEncryptionKeyRequest) GetEncryptionKey() *string {
 	return s.EncryptionKey
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) GetEncryptionType() *string {
+	return s.EncryptionType
 }
 
 func (s *DescribeDBInstanceEncryptionKeyRequest) GetOwnerAccount() *string {
@@ -83,6 +99,11 @@ func (s *DescribeDBInstanceEncryptionKeyRequest) SetDBInstanceId(v string) *Desc
 
 func (s *DescribeDBInstanceEncryptionKeyRequest) SetEncryptionKey(v string) *DescribeDBInstanceEncryptionKeyRequest {
 	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetEncryptionType(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.EncryptionType = &v
 	return s
 }
 

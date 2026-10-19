@@ -29,7 +29,7 @@ type DescribeAuditRecordsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The maximum number of records on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeAuditRecordsResponseBody struct {
 	//
 	// 3278BEB8-503B-4E46-8F7E-D26E040C9769
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

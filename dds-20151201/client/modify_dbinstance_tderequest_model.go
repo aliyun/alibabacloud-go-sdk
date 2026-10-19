@@ -32,7 +32,7 @@ type iModifyDBInstanceTDERequest interface {
 }
 
 type ModifyDBInstanceTDERequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyDBInstanceTDERequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the custom key.
 	//
-	// Custom keys are supported only in the following regions. In other regions, the default key is used.
+	// Custom keys are supported only in the following regions. In other regions, the default key is used for encryption.
 	//
 	// - Singapore (ap-southeast-1)
 	//
@@ -54,7 +54,7 @@ type ModifyDBInstanceTDERequest struct {
 	//
 	// - Shenzhen (cn-shenzhen)
 	//
-	// - Hong Kong (cn-hongkong)
+	// - Hong Kong (China) (cn-hongkong)
 	//
 	// - Malaysia (ap-southeast-3)
 	//
@@ -62,9 +62,9 @@ type ModifyDBInstanceTDERequest struct {
 	//
 	// 749c1df7-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The encryption method. Set the value to **aes-256-cbc**.
+	// The encryption method. Valid values: **aes-256-cbc**.
 	//
-	// > This parameter is available only when **TDEStatus*	- is set to **enabled**.
+	// > This parameter is available only when the **TDEStatus*	- parameter is set to **enabled**.
 	//
 	// example:
 	//
@@ -74,31 +74,29 @@ type ModifyDBInstanceTDERequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role. The format is `acs:ram::$accountID:role/$roleName `.
+	// The ARN of the specified role. Format: `acs:ram::$accountID:role/$roleName`.
 	//
-	// > - `$accountID`: The ID of your Alibaba Cloud account. To view the ID, log on to the Alibaba Cloud Management Console, move the pointer over your profile picture in the upper-right corner, and then click Security Settings.
+	// > - `$accountID`: the ID of the Alibaba Cloud account. You can view the ID by logging on to the Alibaba Cloud Management Console, moving the pointer over the profile picture in the upper-right corner, and clicking Security Settings.
 	//
-	// >
-	//
-	// > - `$roleName`: The name of the RAM role. To view the name, log on to the RAM console, click RAM Role Management in the navigation pane on the left, and then view the role name in the RAM Role Name list.
+	// > - `$roleName`: the name of the RAM role. You can view the name by logging on to the Resource Access Management (RAM) console, clicking RAM Roles in the left-side navigation pane, and viewing the RAM role name list.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/adminrole
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
-	// Specifies when to enable TDE. Valid values:
+	// The time to modify the Transparent Data Encryption (TDE) status of the MongoDB instance. Valid values:
 	//
-	// - 0: Enables TDE immediately.
+	// - 0: immediately.
 	//
-	// - 1: Enables TDE during the maintenance window.
+	// - 1: within the O&M window.
 	//
 	// example:
 	//
 	// 0
 	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
-	// The TDE status. Set the value to **enabled*	- to enable TDE.
+	// The TDE status. Valid values: **enabled**, which indicates that TDE is enabled.
 	//
-	// > You cannot disable TDE after you enable it. Enable this feature with caution.
+	// > You cannot disable TDE after it is enabled. Proceed with caution.
 	//
 	// This parameter is required.
 	//

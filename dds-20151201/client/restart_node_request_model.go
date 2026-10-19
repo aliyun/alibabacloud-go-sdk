@@ -30,7 +30,7 @@ type iRestartNodeRequest interface {
 type RestartNodeRequest struct {
 	// The instance ID.
 	//
-	// > If the instance is a sharded cluster instance, also set the `NodeId` parameter.
+	// > If the instance is a sharded cluster instance, you must also specify `NodeId`.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type RestartNodeRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the Mongos, shard, or Configserver node in the sharded cluster instance. Call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
+	// Instance ID of the Mongos node, Shard node, or ConfigServer node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query instance IDs of Mongos nodes, Shard nodes, or ConfigServer nodes.
 	//
-	// > This parameter is required if **DBInstanceId*	- is set to the ID of a sharded cluster instance.
+	// > This parameter is required when **DBInstanceId*	- is set to instance ID of a sharded cluster instance.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type RestartNodeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role ID of the node.
 	//
-	// 1. Call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/468469.html) operation to query the role ID of a node in a replica set instance.
+	// 1.  You can call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/468469.html) operation to query the node IDs of a replica set instance.
 	//
-	// 2. Call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/468472.html) operation to query the role ID of a node in a sharded cluster instance.
+	// 2.  You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/468472.html) operation to query the node IDs of a sharded cluster instance.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +62,13 @@ type RestartNodeRequest struct {
 	//
 	// 6025****
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The time to execute the task. Valid values:
+	// The execution time. Valid values:
 	//
-	// - **0**: The task is executed immediately. This is the default value.
+	// 	- **0**: immediately. This is the default value.
 	//
-	// - **1**: The task is executed during the maintenance window.
+	// 	- **1**: during the maintenance window.
 	//
-	// > Call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
+	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
 	//
 	// example:
 	//

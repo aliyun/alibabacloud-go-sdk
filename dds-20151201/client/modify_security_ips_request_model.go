@@ -9,8 +9,12 @@ type iModifySecurityIpsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *ModifySecurityIpsRequest
+	GetClientToken() *string
 	SetDBInstanceId(v string) *ModifySecurityIpsRequest
 	GetDBInstanceId() *string
+	SetDryRun(v bool) *ModifySecurityIpsRequest
+	GetDryRun() *bool
 	SetModifyMode(v string) *ModifySecurityIpsRequest
 	GetModifyMode() *string
 	SetOwnerAccount(v string) *ModifySecurityIpsRequest
@@ -30,6 +34,12 @@ type iModifySecurityIpsRequest interface {
 }
 
 type ModifySecurityIpsRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. Example: qwertyui1234567
+	//
+	// example:
+	//
+	// qwertyui1234567
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -38,13 +48,22 @@ type ModifySecurityIpsRequest struct {
 	//
 	// dds-bp*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The method that is used to modify the IP address whitelist. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **Cover**: overwrites the original IP address whitelist.
+	// true: performs a dry run without calling the operation. The system checks the request parameters, request format, service limits, and available resources. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
 	//
-	// - **Append**: appends data to the IP address whitelist.
+	// false (default): sends the request. If the check succeeds, the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The modification method. Valid values:
 	//
-	// - **Delete**: deletes the IP address whitelist.
+	// - **Cover**: Overwrites the original whitelist.
+	//
+	// - **Append**: Appends to the whitelist. An error is returned if duplicate IP addresses exist.
+	//
+	// - **Extend**: Appends to the whitelist. Duplicate IP addresses are merged.
+	//
+	// - **Delete**: Deletes the whitelist.
+	//
 	//
 	// Default value: **Cover**.
 	//
@@ -56,25 +75,25 @@ type ModifySecurityIpsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The attribute of the IP address whitelist. It can contain a maximum of 120 characters in length and can contain uppercase letters, lowercase letters, and digits.
+	// The attribute of the whitelist group. The value can contain uppercase letters, lowercase letters, and digits. The maximum length is 120 characters.
 	//
-	// This parameter is empty by default.
+	// Default value: empty string.
 	//
 	// example:
 	//
 	// test
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	// The name of the IP address whitelist that you want to modify. Default value: **default**.
+	// The name of the IP whitelist group to modify. Default value: **default**.
 	//
 	// example:
 	//
 	// allowserver
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	// The IP addresses in the IP address whitelist. Separate multiple IP addresses with commas (,). You can add a maximum of 1,000 different IP addresses to the IP address whitelist. The entries in the IP address whitelist must be in one of the following formats:
+	// The list of IP addresses in the IP whitelist group. Separate multiple IP addresses with commas (,). IP addresses cannot be duplicated. A maximum of 1000 IP addresses are supported. The following two formats are supported:
 	//
-	// - IP addresses, such as 127.0.0.1.
+	// - IP address format, such as 127.0.0.1.
 	//
-	// - CIDR blocks, such as 127.0.0.1/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+	// - CIDR format, such as 127.0.0.1/24 (Classless Inter-Domain Routing, where 24 indicates the length of the prefix in the address. The value ranges from 1 to 32).
 	//
 	// This parameter is required.
 	//
@@ -92,8 +111,16 @@ func (s ModifySecurityIpsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifySecurityIpsRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *ModifySecurityIpsRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *ModifySecurityIpsRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ModifySecurityIpsRequest) GetModifyMode() *string {
@@ -128,8 +155,18 @@ func (s *ModifySecurityIpsRequest) GetSecurityIps() *string {
 	return s.SecurityIps
 }
 
+func (s *ModifySecurityIpsRequest) SetClientToken(v string) *ModifySecurityIpsRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *ModifySecurityIpsRequest) SetDBInstanceId(v string) *ModifySecurityIpsRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifySecurityIpsRequest) SetDryRun(v bool) *ModifySecurityIpsRequest {
+	s.DryRun = &v
 	return s
 }
 

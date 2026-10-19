@@ -23,13 +23,13 @@ type iDescribeParametersResponseBody interface {
 
 type DescribeParametersResponseBody struct {
 	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
-	// The database engine of the instance. Default value: **mongodb**.
+	// The database engine. Default value: **mongodb**.
 	//
 	// example:
 	//
 	// mongodb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version.
 	//
 	// example:
 	//

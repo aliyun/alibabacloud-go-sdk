@@ -18,21 +18,21 @@ type iCreateBackupResponseBody interface {
 }
 
 type CreateBackupResponseBody struct {
-	// The backup ID.
+	// The ID of the backup.
 	//
-	// > This parameter is deprecated. To obtain the backup ID, call the [DescribeBackups](https://help.aliyun.com/document_detail/468441.html) operation.
+	// > **[Deprecated]*	- This parameter will be deprecated soon. To obtain the backup ID, call the [DescribeBackups](https://help.aliyun.com/document_detail/468441.html) operation.
 	//
 	// example:
 	//
 	// 5664****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup job ID.
+	// The ID of the backup job.
 	//
 	// example:
 	//
 	// 775051
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

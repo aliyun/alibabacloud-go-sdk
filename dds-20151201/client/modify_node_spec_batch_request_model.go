@@ -9,6 +9,8 @@ type iModifyNodeSpecBatchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlignPrimaryZone(v bool) *ModifyNodeSpecBatchRequest
+	GetAlignPrimaryZone() *bool
 	SetAutoPay(v bool) *ModifyNodeSpecBatchRequest
 	GetAutoPay() *bool
 	SetBusinessInfo(v string) *ModifyNodeSpecBatchRequest
@@ -46,23 +48,15 @@ type iModifyNodeSpecBatchRequest interface {
 }
 
 type ModifyNodeSpecBatchRequest struct {
+	// Specifies whether to automatically align the primary node to the primary zone after operations such as configuration changes for a multi-zone instance. If you choose not to align the node, one primary/secondary switchover (transient connection) is prevented. Default value: true.
+	AlignPrimaryZone *bool `json:"AlignPrimaryZone,omitempty" xml:"AlignPrimaryZone,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: Automatic payment is enabled. Make sure that your account has a sufficient balance.
+	// - **true**: enables automatic payment. Make sure that your account has sufficient balance.
 	//
-	// <props="china">
+	// <props="china">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Expenses*	- > **Expenses and Costs*	- in the upper-right corner, choose **Orders*	- > **My Orders*	- in the left-side navigation pane, and then find the target order on the **Orders*	- tab to complete the payment.
 	//
-	// - **false**: Manual payment is enabled. Log on to the ApsaraDB for MongoDB console. In the upper-right corner, choose **Expenses*	- > **Expenses and Costs**. In the navigation pane on the left, choose **Subscription Orders*	- > **My Orders**. On the **Product Orders*	- tab, find the target order and pay for it.
-	//
-	//
-	//
-	//
-	// <props="intl">
-	//
-	// - **false**: Manual payment is enabled. Log on to the ApsaraDB for MongoDB console. In the upper-right corner, choose **Expenses*	- > **Expenses and Costs**. In the navigation pane on the left, click **Order Management**. On the **Product Orders*	- page, find the target order and pay for it.
-	//
-	//
-	//
+	// <props="intl">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Expenses*	- > **Expenses and Costs*	- in the upper-right corner, click **Order Management*	- in the left-side navigation pane, and then find the target order on the **Orders*	- page to complete the payment.
 	//
 	// Default value: **true**.
 	//
@@ -76,7 +70,7 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// A client token. It is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the token, but you must ensure that it is unique among different requests. The token can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -84,15 +78,15 @@ type ModifyNodeSpecBatchRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null*	- (default): A coupon is used.
+	// - **default*	- or **null**: uses a coupon. This is the default value.
 	//
-	// - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
 	//
 	// example:
 	//
 	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance for which you want to change configurations.
+	// The instance ID of the instance whose configurations you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -102,15 +96,13 @@ type ModifyNodeSpecBatchRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The effective period of the configuration change. Valid values:
 	//
-	// - **Immediately**: The change takes effect immediately.
+	// - **Immediately**: The configuration change takes effect immediately.
 	//
-	// - **MaintainTime**: The change takes effect during the maintenance window of the instance.
+	// - **MaintainTime**: The configuration change takes effect during the maintenance window of the instance.
 	//
-	// > 	- You can call the [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/62008.html) operation to change the maintenance window of an instance.
+	// > - You can invoke the [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/62008.html) operation to modify the maintenance window of the instance.
 	//
-	// >
-	//
-	// > 	- You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the maintenance window of an instance.
+	// > - You can invoke the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the maintenance window of the instance.
 	//
 	// Default value: **Immediately**.
 	//
@@ -118,7 +110,7 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The instance types of the Mongos and shard nodes that you want to change. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// The specifications of the Mongos or shard nodes to be modified. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 	//
 	// This parameter is required.
 	//
@@ -126,11 +118,11 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// {"Shards":[{"DBInstanceClass":"dds.shard.mid","DBInstanceName":"d-bp14ae4572fd****","Storage":20},{"DBInstanceClass":"dds.shard.mid","DBInstanceName":"d-bp19f4f92dc5****","Storage":30}]}
 	NodesInfo *string `json:"NodesInfo,omitempty" xml:"NodesInfo,omitempty"`
-	// The type of configuration change. Valid values:
+	// The type of the configuration change. Valid values:
 	//
-	// - **UPGRADE**: Upgrades the instance configuration.
+	// - **UPGRADE**: upgrades the configurations.
 	//
-	// - **DOWNGRADE**: Downgrades the instance configuration.
+	// - **DOWNGRADE**: downgrades the configurations.
 	//
 	// > This parameter is available only when the billing method of the instance is subscription.
 	//
@@ -140,7 +132,7 @@ type ModifyNodeSpecBatchRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query available regions.
 	//
 	// example:
 	//
@@ -148,75 +140,55 @@ type ModifyNodeSpecBatchRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination zone of the hidden node for a configuration change that involves a zone migration.
+	// The destination zone of the hidden node when you migrate the instance across zones and change its configurations at the same time.
 	//
-	// 	Notice:
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
-	// This parameter applies only to instances that use disks.
+	// 	Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetSecondaryZoneId parameter.</notice>
 	//
+	// >
 	//
-	//
-	// 	Notice:
-	//
-	// The value of this parameter cannot be the same as the value of the TargetZoneId or TargetSecondaryZoneId parameter.
-	//
-	//
-	//
-	// > - This parameter is required only for a configuration change that involves a zone migration.
+	// > - You must specify this parameter only when you migrate the instance across zones and change its configurations at the same time.
 	//
 	// example:
 	//
 	// cn-hangzhou-e
 	TargetHiddenZoneId *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
-	// The destination zone of the secondary node for a configuration change that involves a zone migration.
+	// The destination zone of the secondary node when you migrate the instance across zones and change its configurations at the same time.
 	//
-	// 	Notice:
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
-	// This parameter applies only to instances that use disks.
+	// 	Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetHiddenZoneId parameter.</notice>
 	//
+	// >
 	//
-	//
-	// 	Notice:
-	//
-	// The value of this parameter cannot be the same as the value of the TargetZoneId or TargetHiddenZoneId parameter.
-	//
-	//
-	//
-	// > - This parameter is required only for a configuration change that involves a zone migration.
+	// > - You must specify this parameter only when you migrate the instance across zones and change its configurations at the same time.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
-	// The ID of the destination virtual switch for a configuration change that involves a zone migration.
+	// The ID of the destination vSwitch when you migrate the instance across zones and change its configurations at the same time.
 	//
-	// 	Notice:
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
-	// This parameter applies only to instances that use disks.
+	// >
 	//
-	//
-	//
-	// > - This parameter is required only for a configuration change that involves a zone migration.
+	// > - You must specify this parameter only when you migrate the instance across zones and change its configurations at the same time.
 	//
 	// example:
 	//
 	// vsw-xxxxxxxx
 	TargetVswitchId *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
-	// The destination zone of the primary node for a configuration change that involves a zone migration.
+	// The destination zone of the primary node when you migrate the instance across zones and change its configurations at the same time.
 	//
-	// 	Notice:
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
-	// This parameter applies only to instances that use disks.
+	// 	Notice: The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.</notice>
 	//
+	// >
 	//
-	//
-	// 	Notice:
-	//
-	// The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.
-	//
-	//
-	//
-	// > - This parameter is required only for a configuration change that involves a zone migration.
+	// > - You must specify this parameter only when you migrate the instance across zones and change its configurations at the same time.
 	//
 	// example:
 	//
@@ -230,6 +202,10 @@ func (s ModifyNodeSpecBatchRequest) String() string {
 
 func (s ModifyNodeSpecBatchRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyNodeSpecBatchRequest) GetAlignPrimaryZone() *bool {
+	return s.AlignPrimaryZone
 }
 
 func (s *ModifyNodeSpecBatchRequest) GetAutoPay() *bool {
@@ -298,6 +274,11 @@ func (s *ModifyNodeSpecBatchRequest) GetTargetVswitchId() *string {
 
 func (s *ModifyNodeSpecBatchRequest) GetTargetZoneId() *string {
 	return s.TargetZoneId
+}
+
+func (s *ModifyNodeSpecBatchRequest) SetAlignPrimaryZone(v bool) *ModifyNodeSpecBatchRequest {
+	s.AlignPrimaryZone = &v
+	return s
 }
 
 func (s *ModifyNodeSpecBatchRequest) SetAutoPay(v bool) *ModifyNodeSpecBatchRequest {

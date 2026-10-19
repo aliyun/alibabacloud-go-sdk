@@ -28,7 +28,7 @@ type DescribeVpcsForMongoDBResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeVpcsForMongoDBResponseBody) Validate() error {
 }
 
 type DescribeVpcsForMongoDBResponseBodyVpcs struct {
-	// This parameter is deprecated. No value is returned.
+	// **[Deprecated]*	- This parameter is deprecated and no value is returned.
 	//
 	// example:
 	//
 	// null
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// This parameter is deprecated. No value is returned.
+	// **[Deprecated]*	- This parameter is deprecated and no value is returned.
 	//
 	// example:
 	//
@@ -131,23 +131,23 @@ type DescribeVpcsForMongoDBResponseBodyVpcs struct {
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	// The CIDR block of the VPC.
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// This parameter is deprecated. No value is returned.
+	// **[Deprecated]*	- This parameter is deprecated and no value is returned.
 	//
 	// example:
 	//
 	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// This parameter is deprecated. No value is returned.
+	// **[Deprecated]*	- This parameter is deprecated and no value is returned.
 	//
 	// example:
 	//
 	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the VPC is the default one. Valid values:
+	// Indicates whether the VPC is the default VPC. Valid values:
 	//
-	// - **true**: The VPC is the default one.
+	// - **true**: Yes.
 	//
-	// - **false**: The VPC is not the default one.
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type DescribeVpcsForMongoDBResponseBodyVpcs struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The status of the VPC. A value of **Available*	- indicates that the VPC is active.
+	// The status of the VPC. **Available*	- indicates that the VPC is available.
 	//
 	// example:
 	//
@@ -304,13 +304,13 @@ func (s *DescribeVpcsForMongoDBResponseBodyVpcs) Validate() error {
 type DescribeVpcsForMongoDBResponseBodyVpcsVSwitchs struct {
 	// The CIDR block of the vSwitch.
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// This parameter is deprecated. No value is returned.
+	// **[Deprecated]*	- This parameter is deprecated and no value is returned.
 	//
 	// example:
 	//
 	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// This parameter is deprecated. No value is returned.
+	// **[Deprecated]*	- This parameter is deprecated and no value is returned.
 	//
 	// example:
 	//
@@ -326,13 +326,13 @@ type DescribeVpcsForMongoDBResponseBodyVpcsVSwitchs struct {
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The zone to which the vSwitch belongs.
+	// The active zone to which the vSwitch belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The status of the vSwitch. A value of **Available*	- indicates that the vSwitch is active.
+	// The status of the vSwitch. **Available*	- indicates that the vSwitch is active.
 	//
 	// example:
 	//

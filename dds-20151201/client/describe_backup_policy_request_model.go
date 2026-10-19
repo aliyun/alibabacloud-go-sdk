@@ -36,7 +36,7 @@ type DescribeBackupPolicyRequest struct {
 	//
 	// dds-bp16cb162771****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance type.
+	// The instance type. Valid values:
 	//
 	// - replicate: replica set instance
 	//
@@ -51,7 +51,7 @@ type DescribeBackupPolicyRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The region where the instance is located.
+	// The region where the instance is deployed.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteGlobalSecurityIPGroupResponseBody interface {
 }
 
 type DeleteGlobalSecurityIPGroupResponseBody struct {
-	// The ID of the request. If you encounter an issue, provide this request ID to our support staff for troubleshooting.
+	// The request ID. If you encounter any issues, provide this request ID to the support team for troubleshooting.
 	//
 	// example:
 	//

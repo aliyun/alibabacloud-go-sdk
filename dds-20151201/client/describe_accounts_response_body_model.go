@@ -100,6 +100,11 @@ type DescribeAccountsResponseBodyAccountsAccount struct {
 	AccountStatus      *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	CharacterType      *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// admin
+	DBName *string                                           `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	Roles  *DescribeAccountsResponseBodyAccountsAccountRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsAccount) String() string {
@@ -130,6 +135,14 @@ func (s *DescribeAccountsResponseBodyAccountsAccount) GetDBInstanceId() *string 
 	return s.DBInstanceId
 }
 
+func (s *DescribeAccountsResponseBodyAccountsAccount) GetDBName() *string {
+	return s.DBName
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccount) GetRoles() *DescribeAccountsResponseBodyAccountsAccountRoles {
+	return s.Roles
+}
+
 func (s *DescribeAccountsResponseBodyAccountsAccount) SetAccountDescription(v string) *DescribeAccountsResponseBodyAccountsAccount {
 	s.AccountDescription = &v
 	return s
@@ -155,6 +168,96 @@ func (s *DescribeAccountsResponseBodyAccountsAccount) SetDBInstanceId(v string) 
 	return s
 }
 
+func (s *DescribeAccountsResponseBodyAccountsAccount) SetDBName(v string) *DescribeAccountsResponseBodyAccountsAccount {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccount) SetRoles(v *DescribeAccountsResponseBodyAccountsAccountRoles) *DescribeAccountsResponseBodyAccountsAccount {
+	s.Roles = v
+	return s
+}
+
 func (s *DescribeAccountsResponseBodyAccountsAccount) Validate() error {
+	if s.Roles != nil {
+		if err := s.Roles.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeAccountsResponseBodyAccountsAccountRoles struct {
+	Role []*DescribeAccountsResponseBodyAccountsAccountRolesRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccountsResponseBodyAccountsAccountRoles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAccountsResponseBodyAccountsAccountRoles) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRoles) GetRole() []*DescribeAccountsResponseBodyAccountsAccountRolesRole {
+	return s.Role
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRoles) SetRole(v []*DescribeAccountsResponseBodyAccountsAccountRolesRole) *DescribeAccountsResponseBodyAccountsAccountRoles {
+	s.Role = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRoles) Validate() error {
+	if s.Role != nil {
+		for _, item := range s.Role {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAccountsResponseBodyAccountsAccountRolesRole struct {
+	// example:
+	//
+	// admin
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// read
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s DescribeAccountsResponseBodyAccountsAccountRolesRole) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAccountsResponseBodyAccountsAccountRolesRole) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRolesRole) GetDBName() *string {
+	return s.DBName
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRolesRole) GetRole() *string {
+	return s.Role
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRolesRole) SetDBName(v string) *DescribeAccountsResponseBodyAccountsAccountRolesRole {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRolesRole) SetRole(v string) *DescribeAccountsResponseBodyAccountsAccountRolesRole {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccountRolesRole) Validate() error {
 	return dara.Validate(s)
 }

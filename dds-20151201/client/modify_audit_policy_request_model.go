@@ -32,17 +32,17 @@ type iModifyAuditPolicyRequest interface {
 }
 
 type ModifyAuditPolicyRequest struct {
-	// The source of the request. Set this parameter to **Console**.
+	// The source of the audit log request. Valid value: **Console**.
 	//
 	// example:
 	//
 	// Console
 	AuditLogSwitchSource *string `json:"AuditLogSwitchSource,omitempty" xml:"AuditLogSwitchSource,omitempty"`
-	// The status of the audit log. Valid values:
+	// The status of audit logging. Valid values:
 	//
-	// - **enable**: Enables the audit log feature.
+	// - **enable**: Enables audit logging.
 	//
-	// - **disabled**: Disables the audit log feature.
+	// - **disabled**: Disables audit logging.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ModifyAuditPolicyRequest struct {
 	//
 	// dds-bp1785659e3f****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// This parameter is effective only for the **V2_Standard*	- (DAS Enterprise Edition (NoSQL Compatible) audit log) edition. It specifies the hot storage duration for the audit log. Valid values: 0 to 7. Unit: days.
+	// This parameter takes effect only in the V2_Standard edition (DAS Enterprise Edition NoSQL-compatible audit logs) and specifies the hot storage duration of audit logs. Valid values: 0 to 7. Unit: days.
 	//
 	// example:
 	//
@@ -68,27 +68,25 @@ type ModifyAuditPolicyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The edition of the audit log. Valid values:
+	// The edition of audit logging. Valid values:
 	//
-	// - **Trial**: Trial Edition.
+	// - **Trial**: Free Trial edition.
 	//
-	// - **Standard**: Standard Edition.
+	// - **Standard**: Standard edition.
 	//
-	// - **V2_Standard**: DAS Enterprise Edition (NoSQL Compatible) audit log.
+	// - **V2_Standard**: DAS Enterprise Edition (NoSQL-compatible) audit logs.
 	//
-	// > 	- The default value of this parameter is **Trial**. Starting from January 6, 2022, the Standard edition is being rolled out across regions, and new applications for the Trial edition are no longer accepted.
+	// > - The default value is **Trial**. Starting from January 6, 2022, the Standard edition of audit logs is gradually rolled out across regions, and applications for the Free Trial edition are no longer accepted.
 	//
-	// >
-	//
-	// > 	- Starting from February 2026, the DAS Enterprise Edition (NoSQL Compatible) audit log will be rolled out across regions, and new applications for the Standard edition will no longer be accepted.
+	// > - Starting from February 2026, DAS Enterprise Edition (NoSQL-compatible) audit logs are gradually rolled out across regions, and applications for the Standard edition are no longer accepted.
 	//
 	// example:
 	//
 	// Standard
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// - For the **Standard*	- edition, this parameter specifies the retention period for the audit log. Valid values: 1 to 365. The default value is 30. Unit: days.
+	// - In the Standard edition, this parameter specifies the retention period of audit logs. Valid values: 1 to 365. Default value: 30. Unit: days.
 	//
-	// - For the **V2_Standard*	- (DAS Enterprise Edition (NoSQL Compatible) audit log) edition, this parameter specifies the cold storage duration for the audit log. Valid values: 30, 180, 365, 1095, and 1825. Unit: days.
+	// - In the V2_Standard edition (DAS Enterprise Edition NoSQL-compatible audit logs), this parameter specifies the cold storage duration of audit logs. Valid values: 30, 180, 365, 1095, and 1825. Unit: days.
 	//
 	// example:
 	//

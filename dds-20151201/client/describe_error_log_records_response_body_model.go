@@ -24,32 +24,32 @@ type iDescribeErrorLogRecordsResponseBody interface {
 }
 
 type DescribeErrorLogRecordsResponseBody struct {
-	// The database engine.
+	// The engine type of the current database.
 	//
 	// example:
 	//
 	// MongoDB
 	Engine *string                                   `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	Items  *DescribeErrorLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 68BCBEC2-1E66-471F-A1A8-E3C60C0A80B0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

@@ -17,7 +17,7 @@ type iModifyDBInstanceConnectionStringResponseBody interface {
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
 	ModifiedConnectionString *string `json:"ModifiedConnectionString,omitempty" xml:"ModifiedConnectionString,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type CheckServiceLinkedRoleResponseBody struct {
 	//
 	// 7BE0D8D2-6702-5639-A9C2-xxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether an SLR is created.
+	// Indicates whether the service-linked role [AliyunServiceRoleForMongoDB](https://help.aliyun.com/document_detail/384051.html) has been created.
 	//
 	// example:
 	//

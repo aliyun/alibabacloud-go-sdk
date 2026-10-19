@@ -14,7 +14,7 @@ type iModifyDBInstanceNetExpireTimeResponseBody interface {
 }
 
 type ModifyDBInstanceNetExpireTimeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

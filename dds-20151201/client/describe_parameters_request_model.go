@@ -28,13 +28,13 @@ type iDescribeParametersRequest interface {
 }
 
 type DescribeParametersRequest struct {
-	// The role of the instance. Valid values:
+	// The role type of the instance. Valid values:
 	//
-	// - db: a shard node.
+	// - db: shard role
 	//
-	// - cs: a Configserver node.
+	// - cs: config server role
 	//
-	// - mongos: a mongos node.
+	// - mongos: mongos role
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeParametersRequest struct {
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The instance ID.
 	//
-	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If you specify the ID of a sharded cluster instance for this parameter, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,15 +50,15 @@ type DescribeParametersRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The parameter that is available in the future.
+	// The extended parameter.
 	//
 	// example:
 	//
 	// terrform
 	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
-	// The ID of the mongos or shard node in the specified sharded cluster instance.
+	// Instance ID of the mongos or shard node in the sharded cluster instance.
 	//
-	// > This parameter is valid when the **DBInstanceId*	- parameter is set to the ID of a sharded cluster instance.
+	// > This parameter is available only when the **DBInstanceId*	- parameter is set to instance ID of a sharded cluster instance.
 	//
 	// example:
 	//

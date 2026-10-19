@@ -17,7 +17,7 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 
 type DescribeDBInstanceAttributeResponseBody struct {
 	DBInstances *DescribeDBInstanceAttributeResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,6 +113,10 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	DBInstanceType              *string                                                                       `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	DestroyTime                 *string                                                                       `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	DisasterRecoveryInfo        *string                                                                       `json:"DisasterRecoveryInfo,omitempty" xml:"DisasterRecoveryInfo,omitempty"`
+	EbsBandwidth                *int32                                                                        `json:"EbsBandwidth,omitempty" xml:"EbsBandwidth,omitempty"`
+	EbsIOPS                     *int32                                                                        `json:"EbsIOPS,omitempty" xml:"EbsIOPS,omitempty"`
+	EcsBandwidth                *int32                                                                        `json:"EcsBandwidth,omitempty" xml:"EcsBandwidth,omitempty"`
+	EcsIOPS                     *int32                                                                        `json:"EcsIOPS,omitempty" xml:"EcsIOPS,omitempty"`
 	Encrypted                   *bool                                                                         `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	EncryptionKey               *string                                                                       `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	Engine                      *string                                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -243,6 +247,22 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetDestro
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetDisasterRecoveryInfo() *string {
 	return s.DisasterRecoveryInfo
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetEbsBandwidth() *int32 {
+	return s.EbsBandwidth
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetEbsIOPS() *int32 {
+	return s.EbsIOPS
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetEcsBandwidth() *int32 {
+	return s.EcsBandwidth
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetEcsIOPS() *int32 {
+	return s.EcsIOPS
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetEncrypted() *bool {
@@ -496,6 +516,26 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDestro
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDisasterRecoveryInfo(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.DisasterRecoveryInfo = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetEbsBandwidth(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.EbsBandwidth = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetEbsIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.EbsIOPS = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetEcsBandwidth(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.EcsBandwidth = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetEcsIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.EcsIOPS = &v
 	return s
 }
 
@@ -1242,6 +1282,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList) 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute struct {
 	ConnectString        *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
+	EbsBandwidth         *int32  `json:"EbsBandwidth,omitempty" xml:"EbsBandwidth,omitempty"`
+	EbsIOPS              *int32  `json:"EbsIOPS,omitempty" xml:"EbsIOPS,omitempty"`
+	EcsBandwidth         *int32  `json:"EcsBandwidth,omitempty" xml:"EcsBandwidth,omitempty"`
+	EcsIOPS              *int32  `json:"EcsIOPS,omitempty" xml:"EcsIOPS,omitempty"`
 	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	MaxConnections       *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	MaxDiskMbps          *string `json:"MaxDiskMbps,omitempty" xml:"MaxDiskMbps,omitempty"`
@@ -1270,6 +1314,22 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListSh
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) GetCurrentKernelVersion() *string {
 	return s.CurrentKernelVersion
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) GetEbsBandwidth() *int32 {
+	return s.EbsBandwidth
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) GetEbsIOPS() *int32 {
+	return s.EbsIOPS
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) GetEcsBandwidth() *int32 {
+	return s.EcsBandwidth
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) GetEcsIOPS() *int32 {
+	return s.EcsIOPS
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) GetLockMode() *string {
@@ -1327,6 +1387,26 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListSh
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetCurrentKernelVersion(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
 	s.CurrentKernelVersion = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetEbsBandwidth(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
+	s.EbsBandwidth = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetEbsIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
+	s.EbsIOPS = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetEcsBandwidth(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
+	s.EcsBandwidth = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetEcsIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
+	s.EcsIOPS = &v
 	return s
 }
 

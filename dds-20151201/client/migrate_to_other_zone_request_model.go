@@ -28,19 +28,19 @@ type iMigrateToOtherZoneRequest interface {
 }
 
 type MigrateToOtherZoneRequest struct {
-	// The time when the instance is migrated to the destination zone. Valid values:
+	// The effective period for the zone migration. Valid values:
 	//
-	// - **Immediately*	- (default): The instance is migrated immediately.
+	// - **Immediately*	- (default): The migration becomes active immediately.
 	//
-	// - **MaintainTime**: The instance is migrated during its maintenance window.
+	// - **MaintainTime**: The migration becomes active within the O&M window of the instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// > If the network type of the instance is VPC, you must specify the **Vswitch*	- parameter .
+	// > If the network type of the instance is VPC, you must also specify the **VSwitchId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,17 @@ type MigrateToOtherZoneRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the vSwitch in the destination zone.
 	//
-	// > This parameter is valid and required only when the network type of the instance is VPC.
+	// > This parameter is available and required only when the network type of the instance is VPC.
 	//
 	// example:
 	//
 	// vsw-bp67ac****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the destination zone to which you want to migrate the ApsaraDB for MongoDB instance.
+	// The ID of the destination zone.
 	//
-	// > - The destination and source zones must be in one region.
+	// > - The destination zone must be in the same region as the current zone of the instance.
 	//
-	// >
-	//
-	// > - You can call [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) to query the zone IDs.
+	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
 	//
 	// This parameter is required.
 	//

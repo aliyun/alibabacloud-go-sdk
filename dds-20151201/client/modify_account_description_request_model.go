@@ -17,6 +17,8 @@ type iModifyAccountDescriptionRequest interface {
 	GetCharacterType() *string
 	SetDBInstanceId(v string) *ModifyAccountDescriptionRequest
 	GetDBInstanceId() *string
+	SetDBName(v string) *ModifyAccountDescriptionRequest
+	GetDBName() *string
 	SetOwnerAccount(v string) *ModifyAccountDescriptionRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyAccountDescriptionRequest
@@ -69,7 +71,11 @@ type ModifyAccountDescriptionRequest struct {
 	// example:
 	//
 	// dds-bp2356****
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// admin
+	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -98,6 +104,10 @@ func (s *ModifyAccountDescriptionRequest) GetCharacterType() *string {
 
 func (s *ModifyAccountDescriptionRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *ModifyAccountDescriptionRequest) GetDBName() *string {
+	return s.DBName
 }
 
 func (s *ModifyAccountDescriptionRequest) GetOwnerAccount() *string {
@@ -133,6 +143,11 @@ func (s *ModifyAccountDescriptionRequest) SetCharacterType(v string) *ModifyAcco
 
 func (s *ModifyAccountDescriptionRequest) SetDBInstanceId(v string) *ModifyAccountDescriptionRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyAccountDescriptionRequest) SetDBName(v string) *ModifyAccountDescriptionRequest {
+	s.DBName = &v
 	return s
 }
 

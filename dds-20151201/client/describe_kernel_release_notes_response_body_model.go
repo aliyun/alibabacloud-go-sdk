@@ -17,7 +17,7 @@ type iDescribeKernelReleaseNotesResponseBody interface {
 
 type DescribeKernelReleaseNotesResponseBody struct {
 	ReleaseNotes *DescribeKernelReleaseNotesResponseBodyReleaseNotes `json:"ReleaseNotes,omitempty" xml:"ReleaseNotes,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

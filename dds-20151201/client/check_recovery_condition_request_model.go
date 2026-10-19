@@ -40,61 +40,63 @@ type iCheckRecoveryConditionRequest interface {
 }
 
 type CheckRecoveryConditionRequest struct {
-	// The backup ID.
+	// The ID of the backup set.
 	//
-	// > 	- You can call the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup ID.
+	// > - You can call the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup ID.
 	//
-	// > 	- You must specify one of the **RestoreTime*	- and BackupId parameters.
+	// > - You must specify either this parameter or the **RestoreTime*	- parameter.
 	//
-	// > 	- This parameter is not applicable to sharded cluster instances.
+	// > - This parameter is not supported for sharded cluster instances.
 	//
 	// example:
 	//
 	// 5664****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The name of the source database. The value is a JSON array.
+	// The names of the databases to be restored. The value is a JSON array.
 	//
-	// >  If you do not specify this parameter, all databases are restored by default.
+	// > If you do not specify this parameter, all databases are restored by default.
 	//
 	// example:
 	//
 	// ["db1","db2"]
 	DatabaseNames *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
-	// The region of the backup set used for the cross-region backup and restoration.
+	// The area where the backup set resides during geo-redundancy recover.
 	//
-	// >  This parameter is required when you set the RestoreType parameter to 3.
+	// > This parameter is required when the backup recover type is geo-redundancy cloning.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	// The database engine version of the instance.
+	// The database version. Valid values:
 	//
-	// 	- **6.0**
+	// - **8.0**
 	//
-	// 	- **5.0**
+	// - **7.0**
 	//
-	// 	- **4.4**
+	// - **6.0**
 	//
-	// 	- **4.2**
+	// - **5.0**
 	//
-	// 	- **4.0**
+	// - **4.4**
 	//
-	// 	- **3.4**
+	// - **4.2**
+	//
+	// - **4.0**
 	//
 	// example:
 	//
 	// 4.2
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance architecture. Valid values:
+	// The instance type. Valid values:
 	//
-	// 	- replicate
+	// - replicate
 	//
-	// 	- sharding
+	// - sharding
 	//
-	// > 	- This parameter is required when you set the RestoreType parameter to 2.
+	// >- This parameter is required when the backup recover type is rebuilding a deleted instance.
 	//
-	// > 	- This parameter is required when you set the RestoreType parameter to 3.
+	// >- This parameter is required when the backup recover type is geo-redundancy cloning.
 	//
 	// example:
 	//
@@ -102,7 +104,7 @@ type CheckRecoveryConditionRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -110,41 +112,41 @@ type CheckRecoveryConditionRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to which the instance is restored. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The point in time to which you want to restore the instance. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// > 	- The time can be a point in time within the past seven days. The time must be earlier than the current time, but later than the time when the instance was created.
+	// > - The value can be any point in time within the last seven days. The value must be earlier than the current time and later than the creation time of the instance.
 	//
-	// > 	- You must specify one of the RestoreTime and **BackupId*	- parameters.
+	// > - You must specify either this parameter or the **BackupId*	- parameter.
 	//
 	// example:
 	//
 	// 2022-08-22T08:00:00Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The restoration type.
+	// The backup recover type. Valid values:
 	//
-	// > 	- 0: The data of the source instance is restored to a new instance in the same region.
+	// >- 0: local backup recover
 	//
-	// > 	- 1: The data of the source instance is restored to an earlier point in time.
+	// >- 1: local point-in-time recover
 	//
-	// > 	- 2: The data of a deleted instance is restored to a new instance from the backup set.
+	// >- 2: backup recover of a deleted instance using a backup set
 	//
-	// > 	- 3: The data of a deleted instance is restored to a new instance in another region from the backup set.
+	// >- 3: geo-redundancy backup recover using a backup set
 	//
 	// example:
 	//
 	// 0
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The ID of the source instance.
+	// The instance ID of the source instance to recover.
 	//
 	// example:
 	//
 	// dds-bp1378****
 	SourceDBInstance *string `json:"SourceDBInstance,omitempty" xml:"SourceDBInstance,omitempty"`
-	// The region where the source instance resides.
+	// The area where the source instance resides.
 	//
-	// > 	- This parameter is required when you set the RestoreType parameter to 2.
+	// >- This parameter is required when the backup recover type is rebuilding a deleted instance.
 	//
-	// > 	- This parameter is required when you set the RestoreType parameter to 3.
+	// >- This parameter is required when the backup recover type is geo-redundancy cloning.
 	//
 	// example:
 	//

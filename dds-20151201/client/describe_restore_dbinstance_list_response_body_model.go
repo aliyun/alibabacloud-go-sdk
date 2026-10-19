@@ -29,7 +29,7 @@ type DescribeRestoreDBInstanceListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRestoreDBInstanceListResponseBody struct {
 	//
 	// 1AF0AD89-ED4F-44AD-B65F-BFC1D5Cxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of instances in the query results.
+	// The total number of instances returned in the query result.
 	//
 	// example:
 	//

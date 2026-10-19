@@ -20,17 +20,17 @@ type iEvaluateResourceResponseBody interface {
 }
 
 type EvaluateResourceResponseBody struct {
-  // Indicates whether resources are available in the current region. Valid values:
+  // Indicates whether sufficient resources are available in the current region. Valid values:
   // 
-  // - **1**: Resources are sufficient.
+  // - **1**: Sufficient resources are available.
   // 
-  // - **0**: Resources are insufficient.
+  // - **0**: Insufficient resources are available.
   // 
   // example:
   // 
   // 1
   DBInstanceAvailable *string `json:"DBInstanceAvailable,omitempty" xml:"DBInstanceAvailable,omitempty"`
-  // The database engine. The value is fixed to MongoDB.
+  // The database engine. The value is fixed as MongoDB.
   // 
   // example:
   // 

@@ -30,23 +30,21 @@ type iAllocateNodePrivateNetworkAddressRequest interface {
 }
 
 type AllocateNodePrivateNetworkAddressRequest struct {
-	// The username of the account.
+	// The username.
 	//
-	// >
+	// > - The username must start with a lowercase letter and be 4 to 16 characters in length. It can contain lowercase letters, digits, and underscores (_).
 	//
-	// - The username must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). The username must start with a lowercase letter.
+	// > - You need to set the username and password only when you apply for an endpoint for a shard or Configserver node for the first time. All shard and Configserver nodes use the username and password set during the first application.
 	//
-	// - You must configure the account and password only when you apply for the endpoint of a shard or Configserver node for the first time. The account and password are required for all shard and Configserver nodes.
-	//
-	// - The permissions of this account are fixed to read-only.
+	// > - The account has fixed read-only permissions.
 	//
 	// example:
 	//
 	// shardcsaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password for the account.
+	// The password.
 	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & 	- ( ) _ + - =`
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
 	//
 	// - The password must be 8 to 32 characters in length.
 	//
@@ -54,7 +52,7 @@ type AllocateNodePrivateNetworkAddressRequest struct {
 	//
 	// Test123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The ID of the sharded cluster instance.
+	// The instance ID of the sharded cluster.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +74,7 @@ type AllocateNodePrivateNetworkAddressRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the zone to which the instance belongs.
+	// The zone ID of the instance.
 	//
 	// > You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the zone ID of the instance.
 	//

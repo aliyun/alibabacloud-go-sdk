@@ -11,8 +11,12 @@ type iDescribeAccountsRequest interface {
 	GoString() string
 	SetAccountName(v string) *DescribeAccountsRequest
 	GetAccountName() *string
+	SetCharacterType(v string) *DescribeAccountsRequest
+	GetCharacterType() *string
 	SetDBInstanceId(v string) *DescribeAccountsRequest
 	GetDBInstanceId() *string
+	SetDBName(v string) *DescribeAccountsRequest
+	GetDBName() *string
 	SetOwnerAccount(v string) *DescribeAccountsRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeAccountsRequest
@@ -24,12 +28,18 @@ type iDescribeAccountsRequest interface {
 }
 
 type DescribeAccountsRequest struct {
-	// The name of the account. Set the value to **root**.
+	// The account name.
 	//
 	// example:
 	//
 	// root
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The account type.
+	//
+	// example:
+	//
+	// normal
+	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -37,7 +47,13 @@ type DescribeAccountsRequest struct {
 	// example:
 	//
 	// dds-bp1fd530f271****
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The database to which the account belongs.
+	//
+	// example:
+	//
+	// admin
+	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -56,8 +72,16 @@ func (s *DescribeAccountsRequest) GetAccountName() *string {
 	return s.AccountName
 }
 
+func (s *DescribeAccountsRequest) GetCharacterType() *string {
+	return s.CharacterType
+}
+
 func (s *DescribeAccountsRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *DescribeAccountsRequest) GetDBName() *string {
+	return s.DBName
 }
 
 func (s *DescribeAccountsRequest) GetOwnerAccount() *string {
@@ -81,8 +105,18 @@ func (s *DescribeAccountsRequest) SetAccountName(v string) *DescribeAccountsRequ
 	return s
 }
 
+func (s *DescribeAccountsRequest) SetCharacterType(v string) *DescribeAccountsRequest {
+	s.CharacterType = &v
+	return s
+}
+
 func (s *DescribeAccountsRequest) SetDBInstanceId(v string) *DescribeAccountsRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeAccountsRequest) SetDBName(v string) *DescribeAccountsRequest {
+	s.DBName = &v
 	return s
 }
 

@@ -36,11 +36,11 @@ type iTransformInstanceChargeTypeRequest interface {
 }
 
 type TransformInstanceChargeTypeRequest struct {
-	// Specifies whether to enable automatic payment. Valid values:
+	// Specifies whether automatic payment is enabled for the order. Valid values:
 	//
-	// - **true**
+	// - **true**: enables automatic payment for the order.
 	//
-	// - **false**
+	// - **false**: requires manual payment for the order.
 	//
 	// > Default value: **true**.
 	//
@@ -48,11 +48,11 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal upon expiration. Valid values:
 	//
-	// - **true**
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**
+	// - **false**: disables auto-renewal.
 	//
 	// > Default value: **false**.
 	//
@@ -60,7 +60,7 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The business information. This is an additional parameter.
+	// The additional parameter for business information.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type TransformInstanceChargeTypeRequest struct {
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PrePaid:*	- subscription.
+	// - **PrePaid**: subscription.
 	//
-	// - **PostPaid:*	- pay-as-you-go.
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -78,13 +78,17 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - **default*	- or **null*	- (default): uses a coupon.
+	//
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
 	//
 	// example:
 	//
 	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +98,11 @@ type TransformInstanceChargeTypeRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9**\\*\\*\\*\\*, **12**, **24**, and **36**.
+	// The subscription duration. Valid values:
+	//
+	// - If PricingCycle is set to Month: **1*	- to **9**.
+	//
+	// - If PricingCycle is set to Year: **1**, **2**, **3**, and **5**.
 	//
 	// example:
 	//
@@ -102,9 +110,9 @@ type TransformInstanceChargeTypeRequest struct {
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the subscription duration. Valid values:
 	//
-	// - **Month**: month.
+	// - **Month**: months.
 	//
-	// - **Year**: year.
+	// - **Year**: years.
 	//
 	// Default value: Month.
 	//

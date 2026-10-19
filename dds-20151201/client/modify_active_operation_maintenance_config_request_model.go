@@ -30,33 +30,33 @@ type iModifyActiveOperationMaintenanceConfigRequest interface {
 }
 
 type ModifyActiveOperationMaintenanceConfigRequest struct {
-	// The day of the cycle.
+	// The list of days in the O&M cycle, separated by commas (,).
 	//
-	// - If CycleType is set to Month, enter a number from 1 to 28 to specify the day of the month. Use a comma (,) to separate multiple days.
+	// - If CycleType is set to Month, each item is an integer from 1 to 28, which represents a day of the month.
 	//
-	// - If CycleType is set to Week, enter a number from 1 to 7 to specify the day of the week. Use a comma (,) to separate multiple days.
+	// - If CycleType is set to Week, each item is an integer from 1 to 7, which represents a day of the week.
 	//
 	// example:
 	//
 	// 1,2,3
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	// The cycle type.
+	// The cycle type. Valid values:
 	//
-	// - Month: monthly
+	// - Month: Monthly.
 	//
-	// - Week: weekly
+	// - Week: Weekly.
 	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the O\\&M window for the instance. The time is in the HH:mmZ format and is in UTC.
+	// The end time of the instance O&M window. The time is in the HH:mmZ format and in UTC.
 	//
 	// example:
 	//
 	// 22:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the O\\&M window for the instance. The time is in the HH:mmZ format and is in UTC.
+	// The start time of the instance O&M window. The time is in the HH:mmZ format and in UTC.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type ModifyActiveOperationMaintenanceConfigRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether the configuration is enabled.
+	// Specifies whether the configuration takes effect. Valid values:
 	//
-	// - 1: enabled
+	// - 1: Effective.
 	//
-	// - 2: disabled
+	// - 2: Invalid.
 	//
 	// example:
 	//

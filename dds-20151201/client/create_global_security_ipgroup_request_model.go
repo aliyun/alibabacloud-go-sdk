@@ -30,7 +30,7 @@ type iCreateGlobalSecurityIPGroupRequest interface {
 type CreateGlobalSecurityIPGroupRequest struct {
 	// The IP addresses in the whitelist template.
 	//
-	// > Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP address whitelists.
+	// > Separate multiple IP addresses with commas (,). A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP whitelists in total.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type CreateGlobalSecurityIPGroupRequest struct {
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// - It can contain lowercase letters, digits, and underscores (_).
+	// - It can contain only lowercase letters, digits, and underscores (_).
 	//
-	// - It must start with a letter and end with a letter or digit.
+	// - It must start with a letter and end with a letter or a digit.
 	//
 	// - It must be 2 to 120 characters in length.
 	//
@@ -54,7 +54,7 @@ type CreateGlobalSecurityIPGroupRequest struct {
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) to query regions.
 	//
 	// This parameter is required.
 	//

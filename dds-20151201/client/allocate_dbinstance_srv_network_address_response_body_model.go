@@ -14,7 +14,7 @@ type iAllocateDBInstanceSrvNetworkAddressResponseBody interface {
 }
 
 type AllocateDBInstanceSrvNetworkAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

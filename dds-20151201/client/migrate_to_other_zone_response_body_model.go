@@ -14,7 +14,7 @@ type iMigrateToOtherZoneResponseBody interface {
 }
 
 type MigrateToOtherZoneResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -36,53 +36,53 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	//
 	// 123456
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The scheduled time when the key for the instance will be deleted. If the parameter is left empty, the key will not be deleted.
+	// The scheduled deletion time of the instance key. If this value is empty, the key is not automatically deleted.
 	//
 	// example:
 	//
 	// 2020-07-06T18:22:03Z
 	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The description of the key for the instance.
+	// The description of the instance key.
 	//
 	// example:
 	//
 	// key description example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The key for the instance.
+	// The instance key.
 	//
 	// example:
 	//
 	// 2axxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// Indicates whether the key for the instance is enabled. Valid values:
+	// The status of the instance key. Valid values:
 	//
-	// - **Enabled**
+	// - **Enabled**: The instance key is available.
 	//
-	// - **Disabled**
+	// - **Disabled**: The instance key is unavailable.
 	//
 	// example:
 	//
 	// Enabled
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
-	// The purpose of the key for the instance.
+	// The purpose of the instance key.
 	//
 	// example:
 	//
 	// ENCRYPT/DECRYPT
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The expiration time of the key for the instance. The time is displayed in UTC. If the parameter is left empty, the key for the instance will not expire.
+	// The expiration time of the key (UTC). If this value is empty, the key does not expire.
 	//
 	// example:
 	//
 	// 2020-07-06T18:22:03Z
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The source of the key for the instance.
+	// The source of the instance key.
 	//
 	// example:
 	//
 	// Aliyun_KMS
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

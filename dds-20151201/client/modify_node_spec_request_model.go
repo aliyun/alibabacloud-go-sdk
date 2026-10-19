@@ -9,6 +9,8 @@ type iModifyNodeSpecRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlignPrimaryZone(v bool) *ModifyNodeSpecRequest
+	GetAlignPrimaryZone() *bool
 	SetAutoPay(v bool) *ModifyNodeSpecRequest
 	GetAutoPay() *bool
 	SetBusinessInfo(v string) *ModifyNodeSpecRequest
@@ -54,23 +56,25 @@ type iModifyNodeSpecRequest interface {
 }
 
 type ModifyNodeSpecRequest struct {
+	// Specifies whether to automatically align the primary node to the primary zone after operations such as specification changes for multi-zone instances. If you choose not to align the node, one primary/secondary switchover (transient disconnection) is avoided. Default value: true.
+	AlignPrimaryZone *bool `json:"AlignPrimaryZone,omitempty" xml:"AlignPrimaryZone,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true*	- (default): Enables automatic payment. Make sure that your account has a sufficient balance.
+	// - **true*	- (default): Automatic payment is enabled. Make sure that your account has sufficient balance.
 	//
-	// - **false**: Disables automatic payment. You must manually pay for the order.
+	// - **false**: Manual payment is enabled.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The business information. This is an additional parameter.
+	// The additional parameter that contains business information.
 	//
 	// example:
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. Make sure that the value is unique across different requests and contains a maximum of 64 ASCII characters. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -78,9 +82,9 @@ type ModifyNodeSpecRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null*	- (default): A coupon is used.
+	// - **default*	- or **null*	- (default): Use a coupon.
 	//
-	// - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
+	// - **youhuiquan_promotion_option_id_for_blank**: Do not use a coupon.
 	//
 	// example:
 	//
@@ -94,11 +98,11 @@ type ModifyNodeSpecRequest struct {
 	//
 	// dds-bp1c0b990184****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The effective time of the configuration change. Valid values:
+	// The effective period of the configuration change. Valid values:
 	//
-	// - **Immediately*	- (default): The change takes effect immediately.
+	// - **Immediately*	- (default): The configuration change takes effect immediately.
 	//
-	// - **MaintainTime**: The change takes effect during the O\\&M window of the instance.
+	// - **MaintainTime**: The configuration change takes effect within the maintenance window of the instance.
 	//
 	// example:
 	//
@@ -106,23 +110,23 @@ type ModifyNodeSpecRequest struct {
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The source of the request. Valid values:
 	//
-	// - **OpenApi**: The request is from OpenAPI.
+	// - **OpenApi**: The request is sent from OpenAPI.
 	//
-	// - **mongo_buy**: The request is from the console.
+	// - **mongo_buy**: The request is sent from the console.
 	//
 	// example:
 	//
 	// OpenApi
 	FromApp *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
-	// The instance type of the shard or Mongos node. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// The specifications of the shard or mongos node. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
 	//
 	// example:
 	//
 	// dds.mongos.standard
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The ID of the shard or Mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
+	// The ID of the shard or mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
 	//
-	// > If you set this parameter to the ID of a shard node, you must also specify the **NodeStorage*	- parameter.
+	// > If the value is a shard node ID, you must also specify the **NodeStorage*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -130,11 +134,11 @@ type ModifyNodeSpecRequest struct {
 	//
 	// s-bp143e1b1637****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage space of the shard node. The step size is 10. Unit: GB.
+	// The storage space of the shard node. The step size is 10 GB.
 	//
-	// - SSD local disk: **10*	- to **2000**.
+	// - For local SSDs, valid values: **10*	- to **2000**.
 	//
-	// - ESSD PL1 disk: **20*	- to **16000**.
+	// - For PL1 ESSDs, valid values: **20*	- to **16000**.
 	//
 	// example:
 	//
@@ -142,9 +146,9 @@ type ModifyNodeSpecRequest struct {
 	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
 	// The order type. Valid values:
 	//
-	// - **UPGRADE**: upgrades the instance configuration.
+	// - **UPGRADE**: Upgrade.
 	//
-	// - **DOWNGRADE**: downgrades the instance configuration.
+	// - **DOWNGRADE**: Downgrade.
 	//
 	// example:
 	//
@@ -162,49 +166,41 @@ type ModifyNodeSpecRequest struct {
 	ReadonlyReplicas     *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The time when the configuration change takes effect. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The time when the configuration change is executed. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > This parameter is deprecated. Use the EffectiveTime parameter instead.
+	// > **[Deprecated]*	- This parameter is deprecated. Use the EffectiveTime parameter instead.
 	//
 	// example:
 	//
 	// 2022-01-05T03:18:53Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The hidden zone to which you want to migrate the instance.
+	// The destination hidden zone for zone migration.
 	//
-	// 	Notice:
-	//
-	// This parameter is applicable only to instances that use disks.
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	TargetHiddenZoneId *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
-	// The secondary zone to which you want to migrate the instance.
+	// The destination secondary zone for zone migration.
 	//
-	// 	Notice:
-	//
-	// This parameter is applicable only to instances that use disks.
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
 	// example:
 	//
 	// cn-hangzhou-e
 	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
-	// The ID of the vSwitch in the destination zone.
+	// The ID of the destination vSwitch for zone migration.
 	//
-	// 	Notice:
-	//
-	// This parameter is applicable only to instances that use disks.
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
 	// example:
 	//
 	// vsw-xxxxxxxx
 	TargetVswitchId *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
-	// The primary zone to which you want to migrate the instance.
+	// The destination primary zone for zone migration.
 	//
-	// 	Notice:
-	//
-	// This parameter is applicable only to instances that use disks.
+	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
 	// example:
 	//
@@ -218,6 +214,10 @@ func (s ModifyNodeSpecRequest) String() string {
 
 func (s ModifyNodeSpecRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyNodeSpecRequest) GetAlignPrimaryZone() *bool {
+	return s.AlignPrimaryZone
 }
 
 func (s *ModifyNodeSpecRequest) GetAutoPay() *bool {
@@ -302,6 +302,11 @@ func (s *ModifyNodeSpecRequest) GetTargetVswitchId() *string {
 
 func (s *ModifyNodeSpecRequest) GetTargetZoneId() *string {
 	return s.TargetZoneId
+}
+
+func (s *ModifyNodeSpecRequest) SetAlignPrimaryZone(v bool) *ModifyNodeSpecRequest {
+	s.AlignPrimaryZone = &v
+	return s
 }
 
 func (s *ModifyNodeSpecRequest) SetAutoPay(v bool) *ModifyNodeSpecRequest {

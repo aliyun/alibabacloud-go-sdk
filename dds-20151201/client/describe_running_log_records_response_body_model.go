@@ -24,7 +24,7 @@ type iDescribeRunningLogRecordsResponseBody interface {
 }
 
 type DescribeRunningLogRecordsResponseBody struct {
-	// The database engine.
+	// The engine type of the current database.
 	//
 	// example:
 	//

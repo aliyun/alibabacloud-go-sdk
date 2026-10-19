@@ -19,6 +19,8 @@ type iRestartDBInstanceRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *RestartDBInstanceRequest
 	GetOwnerId() *int64
+	SetParallelRestartMongos(v bool) *RestartDBInstanceRequest
+	GetParallelRestartMongos() *bool
 	SetResourceOwnerAccount(v string) *RestartDBInstanceRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *RestartDBInstanceRequest
@@ -36,24 +38,26 @@ type RestartDBInstanceRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of a shard or Mongos node in a sharded cluster instance.
+	// The ID of the shard or mongos node in the sharded cluster instance.
 	//
-	// > If you do not specify this parameter for a sharded cluster instance, the entire instance is restarted.
+	// > If you do not specify this parameter for a sharded cluster instance, the entire sharded cluster instance is restarted.
 	//
 	// example:
 	//
 	// d-bpxxxxxxxx
-	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeType             *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The time to restart the instance. Valid values:
+	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to restart mongos nodes in parallel. This parameter takes effect only when you restart multiple mongos nodes at a time.
+	ParallelRestartMongos *bool   `json:"ParallelRestartMongos,omitempty" xml:"ParallelRestartMongos,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The time when the instance is restarted. Valid values:
 	//
-	// - 0: The instance is restarted immediately.
+	// - 0: Immediately.
 	//
-	// - 1: The instance is restarted within the maintenance window.
+	// - 1: Within the O&M window.
 	//
 	// example:
 	//
@@ -87,6 +91,10 @@ func (s *RestartDBInstanceRequest) GetOwnerAccount() *string {
 
 func (s *RestartDBInstanceRequest) GetOwnerId() *int64 {
 	return s.OwnerId
+}
+
+func (s *RestartDBInstanceRequest) GetParallelRestartMongos() *bool {
+	return s.ParallelRestartMongos
 }
 
 func (s *RestartDBInstanceRequest) GetResourceOwnerAccount() *string {
@@ -123,6 +131,11 @@ func (s *RestartDBInstanceRequest) SetOwnerAccount(v string) *RestartDBInstanceR
 
 func (s *RestartDBInstanceRequest) SetOwnerId(v int64) *RestartDBInstanceRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *RestartDBInstanceRequest) SetParallelRestartMongos(v bool) *RestartDBInstanceRequest {
+	s.ParallelRestartMongos = &v
 	return s
 }
 

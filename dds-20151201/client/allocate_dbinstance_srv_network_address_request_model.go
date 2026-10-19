@@ -26,7 +26,7 @@ type iAllocateDBInstanceSrvNetworkAddressRequest interface {
 }
 
 type AllocateDBInstanceSrvNetworkAddressRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type AllocateDBInstanceSrvNetworkAddressRequest struct {
 	//
 	// dds-2ze5eb9514e31364
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of a mongos or shard node in a sharded cluster instance.
+	// The ID of the Mongos or shard node in a sharded cluster instance.
 	//
-	// > This parameter is not currently required.
+	// > You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type AllocateDBInstanceSrvNetworkAddressRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of SRV connection string to enable.
+	// The type of the SRV address to apply for. Valid values:
 	//
-	// - `vpc`: SRV connection string for the VPC.
+	// - **vpc**: VPC SRV address.
 	//
-	// - `public`: Public SRV connection string.
+	// - **public**: Public SRV address.
 	//
-	// > The default is the VPC connection string.
+	// > The default is the private SRV address.
 	//
 	// example:
 	//

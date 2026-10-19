@@ -24,11 +24,11 @@ type iDescribePriceResponseBody interface {
 }
 
 type DescribePriceResponseBody struct {
-	// The list of order information.
+	// The order information list.
 	Order *DescribePriceResponseBodyOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
 	// The order parameters.
 	//
-	// > This parameter is returned only when **OrderParamOut*	- is set to **true**.
+	// >This parameter is returned only when the **OrderParamOut*	- parameter is set to **true**.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// ""
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether a contract promotion is matched.
+	// Indicates whether a contract discount is applied.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// Information about the price reduction.
+	// The price reduction information.
 	DepreciateInfo *DescribePriceResponseBodyOrderDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	// The discount amount of the order.
 	//
@@ -159,13 +159,13 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// 322.4
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Indicates whether a contract promotion is matched.
+	// Indicates whether a contract discount is applied.
 	//
 	// example:
 	//
 	// false
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// The order information.
+	// The order message.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// example:
 	//
-	// "[{\\"activityCategory\\":\\"discount\\",\\"activityExtInfo\\":{\\"noUseYouhuiquan\\":\\"true\\",\\"activityId\\":\\"191156098xxxx\\",\\"activityExtraAttr\\":\\"{\\\\\\"forbiddenCpsProfit\\\\\\":\\\\\\"true\\\\\\",\\\\\\"forbiddenCouponsRestricted\\\\\\":\\\\\\"true\\\\\\",\\\\\\"forbiddenAmbassadorProfit\\\\\\":\\\\\\"true\\\\\\"}\\",\\"isActivityIdFromWanHuaTong\\":\\"true\\",\\"isContractActivity\\":\\"false\\"},\\"canPromFee\\":906130,\\"optionCode\\":\\"wanhua_activity\\",\\"promotionName\\":\\"FY24--MongoDB 副本集--首购--1年*折--ft首购权益\\",\\"promotionOptionNo\\":\\"19115609882xxxx\\",\\"promotionRuleIdList\\":[2091xxxx],\\"selected\\":true,\\"targetArticleItemCodes\\":[]},{\\"activityCategory\\":\\"discount\\",\\"activityExtInfo\\":{\\"activityId\\":\\"1018040010xxxxx\\",\\"wanHuaOrderExpireSec\\":\\"604800\\",\\"isActivityIdFromWanHuaTong\\":\\"true\\",\\"isContractActivity\\":\\"false\\"},\\"canPromFee\\":339799,\\"optionCode\\":\\"wanhua_activity\\",\\"promotionName\\":\\"FY24--MongoDB年付折扣\\",\\"promotionOptionNo\\":\\"10180400107xxxxx\\",\\"promotionRuleIdList\\":[xxxxx],\\"selected\\":false,\\"targetArticleItemCodes\\":[]}]"
+	// "[{\\"activityCategory\\":\\"discount\\",\\"activityExtInfo\\":{\\"noUseYouhuiquan\\":\\"true\\",\\"activityId\\":\\"191156098xxxx\\",\\"activityExtraAttr\\":\\"{\\\\\\"forbiddenCpsProfit\\\\\\":\\\\\\"true\\\\\\",\\\\\\"forbiddenCouponsRestricted\\\\\\":\\\\\\"true\\\\\\",\\\\\\"forbiddenAmbassadorProfit\\\\\\":\\\\\\"true\\\\\\"}\\",\\"isActivityIdFromWanHuaTong\\":\\"true\\",\\"isContractActivity\\":\\"false\\"},\\"canPromFee\\":906130,\\"optionCode\\":\\"wanhua_activity\\",\\"promotionName\\":\\"FY24--MongoDB replica set--first purchase--1-year 	- discount--ft first purchase benefit\\",\\"promotionOptionNo\\":\\"19115609882xxxx\\",\\"promotionRuleIdList\\":[2091xxxx],\\"selected\\":true,\\"targetArticleItemCodes\\":[]},{\\"activityCategory\\":\\"discount\\",\\"activityExtInfo\\":{\\"activityId\\":\\"1018040010xxxxx\\",\\"wanHuaOrderExpireSec\\":\\"604800\\",\\"isActivityIdFromWanHuaTong\\":\\"true\\",\\"isContractActivity\\":\\"false\\"},\\"canPromFee\\":339799,\\"optionCode\\":\\"wanhua_activity\\",\\"promotionName\\":\\"FY24--MongoDB annual discount\\",\\"promotionOptionNo\\":\\"10180400107xxxxx\\",\\"promotionRuleIdList\\":[xxxxx],\\"selected\\":false,\\"targetArticleItemCodes\\":[]}]"
 	OptionalPromotions *string `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty"`
 	// The original price of the order.
 	//
@@ -187,28 +187,28 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// example:
 	//
-	// [{\\"finalPromFee\\":90xxx,\\"optionCode\\":\\"wanhua_activity\\",\\"promType\\":\\"discount\\",\\"promotionId\\":2091xxxx,\\"promotionName\\":\\"新用户购买云数据库 MongoDB 副本集1年享*折优惠，限1台\\"}]"
+	// [{\\"finalPromFee\\":90xxx,\\"optionCode\\":\\"wanhua_activity\\",\\"promType\\":\\"discount\\",\\"promotionId\\":2091xxxx,\\"promotionName\\":\\"New users purchasing ApsaraDB for MongoDB replica set for 1 year enjoy 	- discount, limited to 1 instance\\"}]"
 	PromDetailList *string                                `json:"PromDetailList,omitempty" xml:"PromDetailList,omitempty"`
 	RuleIds        *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// Indicates whether to show the discount information.
+	// Indicates whether the discount information is displayed.
 	//
 	// example:
 	//
 	// true
 	ShowDiscountInfo *bool `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
-	// The discount price.
+	// The discounted price.
 	//
 	// example:
 	//
 	// 0
 	StandDiscountPrice *float64 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The discount price.
+	// The standard discounted price.
 	//
 	// example:
 	//
 	// 0
 	StandPrice *float64 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	// The aggregate price of the order.
+	// The aggregated price of the order.
 	//
 	// example:
 	//
@@ -582,21 +582,21 @@ func (s *DescribePriceResponseBodyOrderCouponsCouponPromotionRuleIdList) Validat
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfo struct {
-	// The price reduction percentage.
+	// The price reduction ratio.
 	//
 	// example:
 	//
 	// 30%
 	CheapRate *float64 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The total price after the price reduction.
+	// The total price on the official website after the price reduction.
 	//
 	// example:
 	//
 	// 9*
 	CheapStandAmount *float64 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// The contract promotion.
+	// The contract discount.
 	ContractActivity *DescribePriceResponseBodyOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
-	// The price difference discount. This is displayed in the total price of the order.
+	// The price difference discount (displayed in the total order price).
 	//
 	// example:
 	//
@@ -608,13 +608,13 @@ type DescribePriceResponseBodyOrderDepreciateInfo struct {
 	//
 	// XXXXX
 	DifferentialName *string `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
-	// Indicates whether a contract promotion is matched.
+	// Indicates whether a contract discount is applied.
 	//
 	// example:
 	//
 	// false
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// Indicates whether to show the price reduction.
+	// Indicates whether the price reduction margin is displayed.
 	//
 	// example:
 	//
@@ -626,13 +626,13 @@ type DescribePriceResponseBodyOrderDepreciateInfo struct {
 	//
 	// 1*
 	ListPrice *float64 `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	// The monthly price.
+	// The equivalent monthly price.
 	//
 	// example:
 	//
 	// **
 	MonthPrice *float64 `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
-	// The original total price.
+	// The original total price on the official website.
 	//
 	// example:
 	//
@@ -748,19 +748,19 @@ func (s *DescribePriceResponseBodyOrderDepreciateInfo) Validate() error {
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
-	// The promotion ID.
+	// The activity ID.
 	//
 	// example:
 	//
 	// 41120065996xxxxx
 	ActivityId *int64 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// The promotion name.
+	// The activity name.
 	//
 	// example:
 	//
-	// 合同优惠_整单_xxx折
+	// Contract discount_entire order_xxx% off
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The price after the discount.
+	// The price after discount.
 	//
 	// example:
 	//
