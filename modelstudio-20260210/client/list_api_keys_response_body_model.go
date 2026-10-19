@@ -30,7 +30,7 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
-	// The list of API keys.
+	// The list of API Keys.
 	ApiKeys []*ListApiKeysResponseBodyApiKeys `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
 	// The response status code.
 	//
@@ -68,7 +68,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// E4C14AE6-E987-5C2F-9230-9960AB48F4F2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API call was successful. Valid values:
+	// Indicates whether the API call was successful.
 	//
 	// - true: Successful.
 	//
@@ -195,7 +195,7 @@ type ListApiKeysResponseBodyApiKeys struct {
 	//
 	// 2965964
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The value of the API key.
+	// The value of the API Key.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ type ListApiKeysResponseBodyApiKeys struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the API key is disabled. Valid values:
+	// Indicates whether the API Key is disabled.
 	//
 	// - **0**: Active.
 	//
@@ -237,6 +237,8 @@ type ListApiKeysResponseBodyApiKeys struct {
 	//
 	// ws-950f9aca7e76c816
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// workspace_test
@@ -346,7 +348,7 @@ type ListApiKeysResponseBodyApiKeysAuth struct {
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
 	// The model access scope.
 	ModelAccessScope *ListApiKeysResponseBodyApiKeysAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
-	// All: all permissions. Custom: custom permissions.
+	// All: full permissions. Custom: custom permissions.
 	//
 	// example:
 	//
@@ -401,7 +403,7 @@ func (s *ListApiKeysResponseBodyApiKeysAuth) Validate() error {
 type ListApiKeysResponseBodyApiKeysAuthModelAccessScope struct {
 	// The list of accessible models.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	// Indicates whether access to all models with inference permissions in the workspace is allowed.
+	// Indicates whether all models with inference permissions granted in the workspace are accessible.
 	//
 	// example:
 	//

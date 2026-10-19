@@ -50,15 +50,15 @@ type CreateWorkspaceResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The request was successful.
 	//
-	// - false: Failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The business workspace information.
+	// The workspace information.
 	Workspace *CreateWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
 }
 
@@ -158,13 +158,13 @@ type CreateWorkspaceResponseBodyWorkspace struct {
 	//
 	// global
 	ServiceSite *string `json:"serviceSite,omitempty" xml:"serviceSite,omitempty"`
-	// The business workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// ws-ac3ef438bec22dc5
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The name of the business workspace.
+	// The workspace name.
 	//
 	// example:
 	//

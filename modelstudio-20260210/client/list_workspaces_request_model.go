@@ -20,23 +20,25 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
+	// The token used to retrieve additional results. You do not need to provide this parameter for the first request. Obtain the token for subsequent requests from the response of the previous request.
 	//
 	// example:
 	//
 	// uwCwQ5FFCDo=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-32klhjk2312334jkh
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The keyword for fuzzy match by business workspace name.
+	// Filters workspaces by name using a fuzzy keyword match.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListModelLimitsRequest interface {
 }
 
 type ListModelLimitsRequest struct {
-	// The maximum number of results to return. Valid values: 0 to 200.
+	// The maximum number of results. Valid values: 0 to 200.
 	//
 	// example:
 	//
-	// 20
+	// 30
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The model for exact match.
+	// The single model for exact match.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListModelLimitsRequest struct {
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token.
+	// The page token.
 	//
 	// example:
 	//

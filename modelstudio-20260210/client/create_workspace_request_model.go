@@ -16,11 +16,13 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
+	// The service deployment scope (the deployment scope for services that depend on GPU resources, such as inference, training, and deployment). The Beijing and Singapore regions are not supported.
+	//
 	// example:
 	//
 	// global
 	ServiceSite *string `json:"serviceSite,omitempty" xml:"serviceSite,omitempty"`
-	// The name of the business workspace.
+	// The workspace name.
 	//
 	// This parameter is required.
 	//

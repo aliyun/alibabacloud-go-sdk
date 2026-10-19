@@ -50,11 +50,11 @@ type GetApiKeyResponseBody struct {
 	//
 	// DFD55E7B-0615-5343-BDA0-FBEE86F29935
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Succeeded.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type GetApiKeyResponseBodyApiKey struct {
 	//
 	// 0
 	Disabled *int32 `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// The time when the API key was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -182,6 +182,8 @@ type GetApiKeyResponseBodyApiKey struct {
 	//
 	// ws-b2d30f148c236908
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// workspace_test
@@ -289,9 +291,13 @@ func (s *GetApiKeyResponseBodyApiKey) Validate() error {
 type GetApiKeyResponseBodyApiKeyAuth struct {
 	// The IP access whitelist.
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
-	// The model access scope.
+	// The model access scope. If configured, only the selected models can be called.
 	ModelAccessScope *GetApiKeyResponseBodyApiKeyAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
-	// All: all permissions. Custom: custom permissions.
+	// The permission type. Valid values:
+	//
+	// - All: all permissions.
+	//
+	// - Custom: custom permissions.
 	//
 	// example:
 	//
@@ -346,7 +352,7 @@ func (s *GetApiKeyResponseBodyApiKeyAuth) Validate() error {
 type GetApiKeyResponseBodyApiKeyAuthModelAccessScope struct {
 	// The list of accessible models.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	// Indicates whether all models with granted inference permissions in the workspace can be accessed. Valid values:
+	// Indicates whether all models with inference permissions granted in the specified workspace are accessible. Valid values:
 	//
 	// - true
 	//

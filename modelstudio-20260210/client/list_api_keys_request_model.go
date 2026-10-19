@@ -26,7 +26,7 @@ type iListApiKeysRequest interface {
 }
 
 type ListApiKeysRequest struct {
-	// The API key ID for exact match.
+	// The API Key ID for exact match.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListApiKeysRequest struct {
 	//
 	// ASC
 	Order *string `json:"order,omitempty" xml:"order,omitempty"`
-	// The field by which to sort results. Valid values:
+	// The field by which to sort the results. Valid values:
 	//
 	// - apiKeyId (default)
 	//

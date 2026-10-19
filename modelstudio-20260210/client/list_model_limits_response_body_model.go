@@ -50,7 +50,7 @@ type ListModelLimitsResponseBody struct {
 	HttpStatusCode *int64 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The model throttling information.
 	Limits []*ListModelLimitsResponseBodyLimits `json:"limits,omitempty" xml:"limits,omitempty" type:"Repeated"`
-	// The maximum number of records returned in a single request.
+	// The maximum number of records to return in a single call.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListModelLimitsResponseBody struct {
 	//
 	// 36045E0A-551D-592D-B1BC-4C56596CE59E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API call was successful.
+	// Indicates whether the API call succeeded.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type ListModelLimitsResponseBodyLimits struct {
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// The model throttling configuration for the current user account.
+	// The model throttling for the current user account.
 	ModelLimit *ListModelLimitsResponseBodyLimitsModelLimit `json:"modelLimit,omitempty" xml:"modelLimit,omitempty" type:"Struct"`
 	// The model name.
 	//
@@ -199,7 +199,13 @@ type ListModelLimitsResponseBodyLimits struct {
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The custom model throttling configuration for the current workspace.
+	// The workspace ID.
+	//
+	// example:
+	//
+	// ws_123xxx
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The custom model throttling for the current workspace.
 	WorkspaceLimit *ListModelLimitsResponseBodyLimitsWorkspaceLimit `json:"workspaceLimit,omitempty" xml:"workspaceLimit,omitempty" type:"Struct"`
 }
 
@@ -223,6 +229,10 @@ func (s *ListModelLimitsResponseBodyLimits) GetName() *string {
 	return s.Name
 }
 
+func (s *ListModelLimitsResponseBodyLimits) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListModelLimitsResponseBodyLimits) GetWorkspaceLimit() *ListModelLimitsResponseBodyLimitsWorkspaceLimit {
 	return s.WorkspaceLimit
 }
@@ -239,6 +249,11 @@ func (s *ListModelLimitsResponseBodyLimits) SetModelLimit(v *ListModelLimitsResp
 
 func (s *ListModelLimitsResponseBodyLimits) SetName(v string) *ListModelLimitsResponseBodyLimits {
 	s.Name = &v
+	return s
+}
+
+func (s *ListModelLimitsResponseBodyLimits) SetWorkspaceId(v string) *ListModelLimitsResponseBodyLimits {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -262,13 +277,13 @@ func (s *ListModelLimitsResponseBodyLimits) Validate() error {
 }
 
 type ListModelLimitsResponseBodyLimitsModelLimit struct {
-	// The maximum concurrency.
+	// The maximum number of concurrent requests.
 	//
 	// example:
 	//
 	// 10
 	AsyncUserConcurrencyLimit *int64 `json:"asyncUserConcurrencyLimit,omitempty" xml:"asyncUserConcurrencyLimit,omitempty"`
-	// The queue size.
+	// The number of queued requests.
 	//
 	// example:
 	//
@@ -280,7 +295,7 @@ type ListModelLimitsResponseBodyLimitsModelLimit struct {
 	//
 	// 10
 	RequestLimit *int64 `json:"requestLimit,omitempty" xml:"requestLimit,omitempty"`
-	// The time period for request throttling, in seconds.
+	// The time period for request throttling. Unit: seconds.
 	//
 	// example:
 	//
@@ -298,7 +313,7 @@ type ListModelLimitsResponseBodyLimitsModelLimit struct {
 	//
 	// 10
 	UsageLimitField *string `json:"usageLimitField,omitempty" xml:"usageLimitField,omitempty"`
-	// The time period for usage throttling, in seconds.
+	// The time period for usage throttling. Unit: seconds.
 	//
 	// example:
 	//
@@ -382,13 +397,13 @@ func (s *ListModelLimitsResponseBodyLimitsModelLimit) Validate() error {
 }
 
 type ListModelLimitsResponseBodyLimitsWorkspaceLimit struct {
-	// The maximum concurrency.
+	// The maximum number of concurrent requests.
 	//
 	// example:
 	//
 	// 10
 	AsyncUserConcurrencyLimit *int64 `json:"asyncUserConcurrencyLimit,omitempty" xml:"asyncUserConcurrencyLimit,omitempty"`
-	// The queue size.
+	// The number of queued requests.
 	//
 	// example:
 	//
@@ -400,7 +415,7 @@ type ListModelLimitsResponseBodyLimitsWorkspaceLimit struct {
 	//
 	// 10
 	RequestLimit *int64 `json:"requestLimit,omitempty" xml:"requestLimit,omitempty"`
-	// The time period for request throttling, in seconds.
+	// The time period for request throttling. Unit: seconds.
 	//
 	// example:
 	//
@@ -418,7 +433,7 @@ type ListModelLimitsResponseBodyLimitsWorkspaceLimit struct {
 	//
 	// token
 	UsageLimitField *string `json:"usageLimitField,omitempty" xml:"usageLimitField,omitempty"`
-	// The time period for usage throttling, in seconds.
+	// The time period for usage throttling. Unit: seconds.
 	//
 	// example:
 	//

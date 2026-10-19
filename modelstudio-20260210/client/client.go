@@ -526,7 +526,7 @@ func (client *Client) CreateTokenPlanKey(request *CreateTokenPlanKeyRequest) (_r
 
 // Summary:
 //
-// Creates a business workspace.
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -577,7 +577,7 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 
 // Summary:
 //
-// Creates a business workspace.
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -1602,7 +1602,7 @@ func (client *Client) GetTokenPlanOrgInviteConfig(request *GetTokenPlanOrgInvite
 
 // Summary:
 //
-// Retrieves a list of API key information for authentication credentials.
+// Retrieves a list of API Key authentication credentials.
 //
 // @param request - ListApiKeysRequest
 //
@@ -1673,7 +1673,7 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, header
 
 // Summary:
 //
-// Retrieves a list of API key information for authentication credentials.
+// Retrieves a list of API Key authentication credentials.
 //
 // @param request - ListApiKeysRequest
 //
@@ -1692,7 +1692,7 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// Queries model throttling configurations for a workspace.
+// Queries model throttling for a workspace.
 //
 // @param request - ListModelLimitsRequest
 //
@@ -1755,7 +1755,7 @@ func (client *Client) ListModelLimitsWithOptions(request *ListModelLimitsRequest
 
 // Summary:
 //
-// Queries model throttling configurations for a workspace.
+// Queries model throttling for a workspace.
 //
 // @param request - ListModelLimitsRequest
 //
@@ -2160,7 +2160,7 @@ func (client *Client) ListSubscriptionSharedPackages(request *ListSubscriptionSh
 
 // Summary:
 //
-// Retrieves the list of business workspaces.
+// Retrieves the list of workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -2219,7 +2219,7 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// Retrieves the list of business workspaces.
+// Retrieves the list of workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -2580,7 +2580,7 @@ func (client *Client) SetTokenPlanOrgInviteConfig(request *SetTokenPlanOrgInvite
 
 // Summary:
 //
-// Edits the information of an authentication credential API key.
+// Edits the information of an API Key authentication credential.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -2633,7 +2633,7 @@ func (client *Client) UpdateApiKeyWithOptions(apiKeyId *string, request *UpdateA
 
 // Summary:
 //
-// Edits the information of an authentication credential API key.
+// Edits the information of an API Key authentication credential.
 //
 // @param request - UpdateApiKeyRequest
 //

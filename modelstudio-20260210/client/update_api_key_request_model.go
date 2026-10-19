@@ -16,9 +16,9 @@ type iUpdateApiKeyRequest interface {
 }
 
 type UpdateApiKeyRequest struct {
-	// The API key permission settings.
+	// The API Key permission settings.
 	//
-	// > Do not fill in this section or fill it in completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
+	// > Do not specify this parameter or specify it completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
 	Auth *UpdateApiKeyRequestAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -72,9 +72,9 @@ type UpdateApiKeyRequestAuth struct {
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
 	// The model access scope.
 	ModelAccessScope *UpdateApiKeyRequestAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
-	// Valid values:
+	// The permission type. Valid values:
 	//
-	// - All: all permissions.
+	// - All: full permissions.
 	//
 	// - Custom: custom permissions.
 	//
@@ -131,9 +131,9 @@ func (s *UpdateApiKeyRequestAuth) Validate() error {
 type UpdateApiKeyRequestAuthModelAccessScope struct {
 	// The list of accessible models.
 	//
-	// 	Notice: The content takes effect only when allowAllModels is set to false.
+	// 	Notice: The specified content takes effect only when allowAllModels is set to false.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	// Specifies whether to allow access to all models with granted inference permissions in the workspace. Valid values:
+	// Specifies whether all models with inference permissions in the workspace are accessible. Valid values:
 	//
 	// - true
 	//

@@ -349,7 +349,7 @@ func (client *Client) CreateTokenPlanKeyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a business workspace.
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -1108,7 +1108,7 @@ func (client *Client) GetTokenPlanOrgInviteConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves a list of API key information for authentication credentials.
+// Retrieves a list of API Key authentication credentials.
 //
 // @param request - ListApiKeysRequest
 //
@@ -1179,7 +1179,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
-// Queries model throttling configurations for a workspace.
+// Queries model throttling for a workspace.
 //
 // @param request - ListModelLimitsRequest
 //
@@ -1536,7 +1536,7 @@ func (client *Client) ListSubscriptionSharedPackagesWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves the list of business workspaces.
+// Retrieves the list of workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -1834,7 +1834,7 @@ func (client *Client) SetTokenPlanOrgInviteConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Edits the information of an authentication credential API key.
+// Edits the information of an API Key authentication credential.
 //
 // @param request - UpdateApiKeyRequest
 //

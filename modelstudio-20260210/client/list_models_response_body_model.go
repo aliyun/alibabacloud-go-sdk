@@ -504,6 +504,10 @@ type ListModelsResponseBodyModelsPricesPrices struct {
 	//
 	// Per 1M tokens
 	PriceUnit *string `json:"priceUnit,omitempty" xml:"priceUnit,omitempty"`
+	// example:
+	//
+	// standard
+	TimeBand *string `json:"timeBand,omitempty" xml:"timeBand,omitempty"`
 }
 
 func (s ListModelsResponseBodyModelsPricesPrices) String() string {
@@ -526,6 +530,10 @@ func (s *ListModelsResponseBodyModelsPricesPrices) GetPriceUnit() *string {
 	return s.PriceUnit
 }
 
+func (s *ListModelsResponseBodyModelsPricesPrices) GetTimeBand() *string {
+	return s.TimeBand
+}
+
 func (s *ListModelsResponseBodyModelsPricesPrices) SetPrice(v string) *ListModelsResponseBodyModelsPricesPrices {
 	s.Price = &v
 	return s
@@ -538,6 +546,11 @@ func (s *ListModelsResponseBodyModelsPricesPrices) SetPriceName(v string) *ListM
 
 func (s *ListModelsResponseBodyModelsPricesPrices) SetPriceUnit(v string) *ListModelsResponseBodyModelsPricesPrices {
 	s.PriceUnit = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyModelsPricesPrices) SetTimeBand(v string) *ListModelsResponseBodyModelsPricesPrices {
+	s.TimeBand = &v
 	return s
 }
 

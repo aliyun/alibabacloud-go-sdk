@@ -42,7 +42,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
+	// The token used to retrieve additional results. You do not need to provide this parameter for the first request. Obtain the token for subsequent requests from the response of the previous request.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 149
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// The list of business workspaces.
+	// The list of workspaces.
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
 }
 
@@ -207,19 +207,19 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The service deployment scope. For more information, see [documentation](https://www.alibabacloud.com/help/zh/model-studio/regions/).
+	// The service deployment scope. For details, [view the documentation](https://www.alibabacloud.com/help/zh/model-studio/regions/).
 	//
 	// example:
 	//
 	// global
 	ServiceSite *string `json:"serviceSite,omitempty" xml:"serviceSite,omitempty"`
-	// The business workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// ws-0759e7b7ea7f585b
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The business workspace name.
+	// The workspace name.
 	//
 	// example:
 	//
