@@ -24,7 +24,7 @@ type GetSubscriptionAttributesRequest struct {
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	// The name of the topic to which the subscription belongs.
+	// The name of the subscribed topic.
 	//
 	// This parameter is required.
 	//

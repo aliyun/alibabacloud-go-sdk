@@ -157,7 +157,7 @@ func (client *Client) CreateEventRuleWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Creates a queue.
+// Calls the CreateQueue operation to create a queue.
 //
 // @param tmpReq - CreateQueueRequest
 //
@@ -569,7 +569,44 @@ func (client *Client) EnableEndpointWithContext(ctx context.Context, request *En
 
 // Summary:
 //
-// Queries the attributes of an endpoint.
+// Retrieves the log configuration of a user.
+//
+// @param request - GetAccountAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountAttributesResponse
+func (client *Client) GetAccountAttributesWithContext(ctx context.Context, request *GetAccountAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetAccountAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAccountAttributes"),
+		Version:     dara.String("2022-01-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAccountAttributesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the attributes of an endpoint.
 //
 // @param request - GetEndpointAttributeRequest
 //
@@ -661,13 +698,13 @@ func (client *Client) GetEventRuleWithContext(ctx context.Context, request *GetE
 
 // Summary:
 //
-// Retrieves the attributes of a created queue.
+// Retrieves the attributes of a specified queue.
 //
 // Description:
 //
 //	Warning:
 //
-// <p>For optimization of service performance, Simple Message Queue (formerly MNS) will offline the return values of the following fields (the default value will be 0):
+// <p>To optimize service performance, Simple Message Queue will soon deprecate the return values of the following fields, which will default to 0:
 //
 //   - ActiveMessages
 //
@@ -677,21 +714,21 @@ func (client *Client) GetEventRuleWithContext(ctx context.Context, request *GetE
 //
 //     </p>
 //
-//     <p>Use the following alternatives to obtain replacement solutions:</p>
+//     <p>Use the following methods to obtain alternatives:</p>
 //
 //     <ul>
 //
-//     <li>Use the CloudMonitor OpenAPI to retrieve queue monitoring metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=ap-southeast-1&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a></li>
+//     <li>Use the CloudMonitor OpenAPI to retrieve queue metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=cn-hangzhou&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a>.</li>
 //
-//     <li> <a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor monitoring metrics documentation</a>. The mapping between deprecated fields and monitoring metrics:
+//     <li><a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor metrics documentation</a>. The mapping of deprecated fields to alternative metrics is as follows:
 //
 //     <ul>
 //
-//     <li>ActiveMessages → monitoring metric NumberOfMessagesVisible</li>
+//     <li>ActiveMessages → CloudMonitor metric NumberOfMessagesVisible</li>
 //
-//     <li>InactiveMessages → monitoring metric NumberOfMessagesInvisible</li>
+//     <li>InactiveMessages → CloudMonitor metric NumberOfMessagesInvisible</li>
 //
-//     <li>DelayMessages → monitoring metric NumberOfMessagesDelayed</li>
+//     <li>DelayMessages → CloudMonitor metric NumberOfMessagesDelayed</li>
 //
 //     </ul>
 //
@@ -747,7 +784,7 @@ func (client *Client) GetQueueAttributesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the properties of a subscription.
+// Retrieves the attributes of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -795,7 +832,7 @@ func (client *Client) GetSubscriptionAttributesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the attributes of a topic.
+// Retrieves the attributes of a topic.
 //
 // @param request - GetTopicAttributesRequest
 //
@@ -1049,7 +1086,7 @@ func (client *Client) ListSubscriptionByTopicWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of topics under an Alibaba Cloud account with paginated results.
+// Queries the topics under an Alibaba Cloud account. The query results can be paginated.
 //
 // @param request - ListTopicRequest
 //
@@ -1167,7 +1204,67 @@ func (client *Client) RevokeEndpointAclWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Calls the SetQueueAttributes operation to modify queue attributes.
+// Sets the user log configuration.
+//
+// @param request - SetAccountAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccountAttributesResponse
+func (client *Client) SetAccountAttributesWithContext(ctx context.Context, request *SetAccountAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetAccountAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.LogEnabled) {
+		query["LogEnabled"] = request.LogEnabled
+	}
+
+	if !dara.IsNil(request.LogStoreName) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !dara.IsNil(request.MessageTraceEnabled) {
+		query["MessageTraceEnabled"] = request.MessageTraceEnabled
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAccountAttributes"),
+		Version:     dara.String("2022-01-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAccountAttributesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the attributes of a queue by calling the SetQueueAttributes operation.
 //
 // @param tmpReq - SetQueueAttributesRequest
 //

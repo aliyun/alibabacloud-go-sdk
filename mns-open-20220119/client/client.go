@@ -25,37 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("mns-open.us-west-1.aliyuncs.com"),
-		"us-east-1":             dara.String("mns-open.us-east-1.aliyuncs.com"),
-		"me-east-1":             dara.String("mns-open.me-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("mns-open.me-central-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("mns-open.eu-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("mns-open.eu-central-1.aliyuncs.com"),
-		"cn-zhengzhou-jva":      dara.String("mns-open.cn-zhengzhou-jva.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("mns-open.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("mns-open.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("mns-open.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("mns-open.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("mns-open.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("mns-open.cn-shanghai.aliyuncs.com"),
-		"cn-qingdao":            dara.String("mns-open.cn-qingdao.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("mns-open.cn-huhehaote.aliyuncs.com"),
-		"cn-hongkong":           dara.String("mns-open.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan-acdr-1":      dara.String("mns-open.cn-heyuan-acdr-1.aliyuncs.com"),
-		"cn-heyuan":             dara.String("mns-open.cn-heyuan.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("mns-open.cn-hangzhou-finance.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("mns-open.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("mns-open.cn-guangzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("mns-open.cn-chengdu.aliyuncs.com"),
-		"cn-beijing":            dara.String("mns-open.cn-beijing.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("mns-open.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("mns-open.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("mns-open.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("mns-open.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2":        dara.String("mns-open.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("mns-open.ap-northeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -273,7 +242,7 @@ func (client *Client) CreateEventRule(request *CreateEventRuleRequest) (_result 
 
 // Summary:
 //
-// Creates a queue.
+// Calls the CreateQueue operation to create a queue.
 //
 // @param tmpReq - CreateQueueRequest
 //
@@ -383,7 +352,7 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 
 // Summary:
 //
-// Creates a queue.
+// Calls the CreateQueue operation to create a queue.
 //
 // @param request - CreateQueueRequest
 //
@@ -811,7 +780,62 @@ func (client *Client) EnableEndpoint(request *EnableEndpointRequest) (_result *E
 
 // Summary:
 //
-// Queries the attributes of an endpoint.
+// Retrieves the log configuration of a user.
+//
+// @param request - GetAccountAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountAttributesResponse
+func (client *Client) GetAccountAttributesWithOptions(request *GetAccountAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetAccountAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAccountAttributes"),
+		Version:     dara.String("2022-01-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAccountAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the log configuration of a user.
+//
+// @param request - GetAccountAttributesRequest
+//
+// @return GetAccountAttributesResponse
+func (client *Client) GetAccountAttributes(request *GetAccountAttributesRequest) (_result *GetAccountAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAccountAttributesResponse{}
+	_body, _err := client.GetAccountAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the attributes of an endpoint.
 //
 // @param request - GetEndpointAttributeRequest
 //
@@ -855,7 +879,7 @@ func (client *Client) GetEndpointAttributeWithOptions(request *GetEndpointAttrib
 
 // Summary:
 //
-// Queries the attributes of an endpoint.
+// Retrieves the attributes of an endpoint.
 //
 // @param request - GetEndpointAttributeRequest
 //
@@ -939,13 +963,13 @@ func (client *Client) GetEventRule(request *GetEventRuleRequest) (_result *GetEv
 
 // Summary:
 //
-// Retrieves the attributes of a created queue.
+// Retrieves the attributes of a specified queue.
 //
 // Description:
 //
 //	Warning:
 //
-// <p>For optimization of service performance, Simple Message Queue (formerly MNS) will offline the return values of the following fields (the default value will be 0):
+// <p>To optimize service performance, Simple Message Queue will soon deprecate the return values of the following fields, which will default to 0:
 //
 //   - ActiveMessages
 //
@@ -955,21 +979,21 @@ func (client *Client) GetEventRule(request *GetEventRuleRequest) (_result *GetEv
 //
 //     </p>
 //
-//     <p>Use the following alternatives to obtain replacement solutions:</p>
+//     <p>Use the following methods to obtain alternatives:</p>
 //
 //     <ul>
 //
-//     <li>Use the CloudMonitor OpenAPI to retrieve queue monitoring metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=ap-southeast-1&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a></li>
+//     <li>Use the CloudMonitor OpenAPI to retrieve queue metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=cn-hangzhou&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a>.</li>
 //
-//     <li> <a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor monitoring metrics documentation</a>. The mapping between deprecated fields and monitoring metrics:
+//     <li><a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor metrics documentation</a>. The mapping of deprecated fields to alternative metrics is as follows:
 //
 //     <ul>
 //
-//     <li>ActiveMessages → monitoring metric NumberOfMessagesVisible</li>
+//     <li>ActiveMessages → CloudMonitor metric NumberOfMessagesVisible</li>
 //
-//     <li>InactiveMessages → monitoring metric NumberOfMessagesInvisible</li>
+//     <li>InactiveMessages → CloudMonitor metric NumberOfMessagesInvisible</li>
 //
-//     <li>DelayMessages → monitoring metric NumberOfMessagesDelayed</li>
+//     <li>DelayMessages → CloudMonitor metric NumberOfMessagesDelayed</li>
 //
 //     </ul>
 //
@@ -1025,13 +1049,13 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 
 // Summary:
 //
-// Retrieves the attributes of a created queue.
+// Retrieves the attributes of a specified queue.
 //
 // Description:
 //
 //	Warning:
 //
-// <p>For optimization of service performance, Simple Message Queue (formerly MNS) will offline the return values of the following fields (the default value will be 0):
+// <p>To optimize service performance, Simple Message Queue will soon deprecate the return values of the following fields, which will default to 0:
 //
 //   - ActiveMessages
 //
@@ -1041,21 +1065,21 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 //
 //     </p>
 //
-//     <p>Use the following alternatives to obtain replacement solutions:</p>
+//     <p>Use the following methods to obtain alternatives:</p>
 //
 //     <ul>
 //
-//     <li>Use the CloudMonitor OpenAPI to retrieve queue monitoring metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=ap-southeast-1&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a></li>
+//     <li>Use the CloudMonitor OpenAPI to retrieve queue metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=cn-hangzhou&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a>.</li>
 //
-//     <li> <a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor monitoring metrics documentation</a>. The mapping between deprecated fields and monitoring metrics:
+//     <li><a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor metrics documentation</a>. The mapping of deprecated fields to alternative metrics is as follows:
 //
 //     <ul>
 //
-//     <li>ActiveMessages → monitoring metric NumberOfMessagesVisible</li>
+//     <li>ActiveMessages → CloudMonitor metric NumberOfMessagesVisible</li>
 //
-//     <li>InactiveMessages → monitoring metric NumberOfMessagesInvisible</li>
+//     <li>InactiveMessages → CloudMonitor metric NumberOfMessagesInvisible</li>
 //
-//     <li>DelayMessages → monitoring metric NumberOfMessagesDelayed</li>
+//     <li>DelayMessages → CloudMonitor metric NumberOfMessagesDelayed</li>
 //
 //     </ul>
 //
@@ -1081,7 +1105,7 @@ func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_r
 
 // Summary:
 //
-// Retrieves the properties of a subscription.
+// Retrieves the attributes of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -1129,7 +1153,7 @@ func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscript
 
 // Summary:
 //
-// Retrieves the properties of a subscription.
+// Retrieves the attributes of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -1147,7 +1171,7 @@ func (client *Client) GetSubscriptionAttributes(request *GetSubscriptionAttribut
 
 // Summary:
 //
-// Queries the attributes of a topic.
+// Retrieves the attributes of a topic.
 //
 // @param request - GetTopicAttributesRequest
 //
@@ -1195,7 +1219,7 @@ func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesR
 
 // Summary:
 //
-// Queries the attributes of a topic.
+// Retrieves the attributes of a topic.
 //
 // @param request - GetTopicAttributesRequest
 //
@@ -1473,7 +1497,7 @@ func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRe
 
 // Summary:
 //
-// Queries the list of topics under an Alibaba Cloud account with paginated results.
+// Queries the topics under an Alibaba Cloud account. The query results can be paginated.
 //
 // @param request - ListTopicRequest
 //
@@ -1533,7 +1557,7 @@ func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *d
 
 // Summary:
 //
-// Queries the list of topics under an Alibaba Cloud account with paginated results.
+// Queries the topics under an Alibaba Cloud account. The query results can be paginated.
 //
 // @param request - ListTopicRequest
 //
@@ -1627,7 +1651,85 @@ func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_res
 
 // Summary:
 //
-// Calls the SetQueueAttributes operation to modify queue attributes.
+// Sets the user log configuration.
+//
+// @param request - SetAccountAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccountAttributesResponse
+func (client *Client) SetAccountAttributesWithOptions(request *SetAccountAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetAccountAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.LogEnabled) {
+		query["LogEnabled"] = request.LogEnabled
+	}
+
+	if !dara.IsNil(request.LogStoreName) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !dara.IsNil(request.MessageTraceEnabled) {
+		query["MessageTraceEnabled"] = request.MessageTraceEnabled
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAccountAttributes"),
+		Version:     dara.String("2022-01-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAccountAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the user log configuration.
+//
+// @param request - SetAccountAttributesRequest
+//
+// @return SetAccountAttributesResponse
+func (client *Client) SetAccountAttributes(request *SetAccountAttributesRequest) (_result *SetAccountAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetAccountAttributesResponse{}
+	_body, _err := client.SetAccountAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the attributes of a queue by calling the SetQueueAttributes operation.
 //
 // @param tmpReq - SetQueueAttributesRequest
 //
@@ -1729,7 +1831,7 @@ func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRe
 
 // Summary:
 //
-// Calls the SetQueueAttributes operation to modify queue attributes.
+// Modifies the attributes of a queue by calling the SetQueueAttributes operation.
 //
 // @param request - SetQueueAttributesRequest
 //

@@ -42,9 +42,9 @@ type iCreateQueueShrinkRequest interface {
 }
 
 type CreateQueueShrinkRequest struct {
-	// The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses. Unit: seconds.
+	// The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses.
 	//
-	// Valid values: 0 to 604800.
+	// Valid values: 0 to 604800. Unit: seconds.
 	//
 	// Default value: 0.
 	//
@@ -54,7 +54,7 @@ type CreateQueueShrinkRequest struct {
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
 	// The dead-letter policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
-	// Specifies whether to enable the log management feature. Valid values:
+	// Specifies whether to enable the Log Management feature. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -68,9 +68,9 @@ type CreateQueueShrinkRequest struct {
 	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
 	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
 	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The maximum size of a message body that can be sent to the queue. Unit: bytes.
+	// The maximum size of a message body that can be sent to the queue.
 	//
-	// Valid values: 1024 to 65536.
+	// Valid values: 1024 to 65536. Unit: bytes.
 	//
 	// Default value: 65536.
 	//
@@ -78,9 +78,9 @@ type CreateQueueShrinkRequest struct {
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified duration elapses from the time the message is sent to the queue, the message is deleted regardless of whether it has been consumed. Unit: seconds.
+	// The maximum duration for which a message is retained in the queue. After the specified duration elapses since a message is sent to the queue, the message is deleted regardless of whether it has been consumed.
 	//
-	// Valid values: 60 to 604800.
+	// Valid values: 60 to 604800. Unit: seconds.
 	//
 	// Default value: 345600.
 	//
@@ -88,9 +88,9 @@ type CreateQueueShrinkRequest struct {
 	//
 	// 345600
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The maximum wait time for a ReceiveMessage request when the queue is empty. Unit: seconds.
+	// The maximum duration for which a ReceiveMessage request waits when the queue has no messages.
 	//
-	// Valid values: 0 to 30.
+	// Valid values: 0 to 30. Unit: seconds.
 	//
 	// Default value: 0.
 	//
@@ -120,11 +120,11 @@ type CreateQueueShrinkRequest struct {
 	SseType      *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
 	// The list of resource tags.
 	Tag []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The rate limiting policy.
+	// The throttling policy.
 	TenantRateLimitPolicyShrink *string `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
-	// The duration for which a consumed message stays in the Inactive state after it is changed from the Active state. Unit: seconds.
+	// The duration for which a message stays in the Inactive state after it is consumed from the queue and changes from the Active state to the Inactive state.
 	//
-	// Valid values: 1 to 43200.
+	// Valid values: 1 to 43200. Unit: seconds.
 	//
 	// Default value: 30.
 	//

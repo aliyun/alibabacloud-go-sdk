@@ -50,7 +50,7 @@ type GetSubscriptionAttributesResponseBody struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetSubscriptionAttributesResponseBody) Validate() error {
 }
 
 type GetSubscriptionAttributesResponseBodyData struct {
-	// The time when the subscription was created. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
+	// The time when the subscription was created. The value is a UNIX timestamp in seconds in UTC.
 	//
 	// example:
 	//
@@ -138,27 +138,25 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The dead-letter queue policy.
 	DlqPolicy *GetSubscriptionAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
-	// The endpoint of the subscription.
+	// The endpoint address of the subscription.
 	//
 	// example:
 	//
 	// http://example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The tag used for message filtering. Only messages that have a matching tag are pushed.
+	// The tag used for message filtering in the subscription. Only messages with matching tags are pushed.
 	//
 	// example:
 	//
 	// important
 	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
-	// The time when the subscription properties were last modified. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
+	// The time when the subscription attributes were last modified. The value is a UNIX timestamp in seconds in UTC.
 	//
 	// example:
 	//
 	// 1449554962
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The format of the message content that is pushed to an endpoint.
-	//
-	// Valid values:
+	// The format of the message content pushed to the endpoint. Valid values:
 	//
 	// - XML
 	//
@@ -170,7 +168,7 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	// The retry policy that is used when a message fails to be pushed to an endpoint. Valid values:
+	// The retry strategy used when an error occurs while pushing messages to the endpoint. Valid values:
 	//
 	// - BACKOFF_RETRY: backoff retry.
 	//
@@ -185,15 +183,16 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	// example:
 	//
 	// MySubscription
-	SubscriptionName      *string                                                         `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The throttling policy.
 	TenantRateLimitPolicy *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
-	// The name of the topic to which the subscription belongs.
+	// The name of the subscribed topic.
 	//
 	// example:
 	//
 	// MyTopic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// The AccountId of the owner of the topic to which the subscription belongs.
+	// The account ID of the owner of the subscribed topic.
 	//
 	// example:
 	//
@@ -323,7 +322,7 @@ func (s *GetSubscriptionAttributesResponseBodyData) Validate() error {
 }
 
 type GetSubscriptionAttributesResponseBodyDataDlqPolicy struct {
-	// The target queue to which dead-letter messages are delivered.
+	// The destination queue for dead-letter message delivery.
 	//
 	// example:
 	//
@@ -368,7 +367,17 @@ func (s *GetSubscriptionAttributesResponseBodyDataDlqPolicy) Validate() error {
 }
 
 type GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy struct {
-	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Indicates whether throttling is enabled. Valid values: true or false.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The maximum number of messages received per second.
+	//
+	// example:
+	//
+	// 0
 	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
 }
 

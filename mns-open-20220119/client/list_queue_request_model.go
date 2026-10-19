@@ -22,21 +22,13 @@ type iListQueueRequest interface {
 }
 
 type ListQueueRequest struct {
-	// The page number of the results to return.
-	//
-	// Valid values: 1 to 100000000.
-	//
-	// If you set this parameter to a value less than 1, the system uses 1 by default. If you set this parameter to a value greater than 100000000, the system uses 100000000 by default.
+	// The page number of the returned results. Valid values: 1 to 100000000. If the specified value is less than 1, the system defaults to 1. If the specified value is greater than 100000000, the system defaults to 100000000.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 10 to 50.
-	//
-	// If you set this parameter to a value less than 10, the system uses 10 by default. If you set this parameter to a value greater than 50, the system uses 50 by default.
+	// The number of entries to return on each page. Valid values: 10 to 50. If the specified value is less than 10, the system defaults to 10. If the specified value is greater than 50, the system defaults to 50.
 	//
 	// example:
 	//
@@ -129,13 +121,13 @@ func (s *ListQueueRequest) Validate() error {
 }
 
 type ListQueueRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

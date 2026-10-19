@@ -38,7 +38,7 @@ type iSetQueueAttributesShrinkRequest interface {
 }
 
 type SetQueueAttributesShrinkRequest struct {
-	// The delay time for all messages sent to this queue. Messages sent to the queue can be consumed only after the delay time specified by this parameter has elapsed.
+	// The delay time for all messages sent to the queue. Messages sent to the queue become consumable only after the delay time specified by this parameter elapses.
 	//
 	// Valid values: 0 to 604800. Unit: seconds.
 	//
@@ -50,7 +50,7 @@ type SetQueueAttributesShrinkRequest struct {
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
 	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
-	// Specifies whether to enable the log management feature. Valid values:
+	// Specifies whether to enable the Log Management feature. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -64,7 +64,7 @@ type SetQueueAttributesShrinkRequest struct {
 	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
 	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
 	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The maximum length of the message body sent to this queue.
+	// The maximum length of the message body sent to the queue.
 	//
 	// Valid values: 1024 to 65536. Unit: bytes.
 	//
@@ -74,7 +74,7 @@ type SetQueueAttributesShrinkRequest struct {
 	//
 	// 1024
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in this queue. After the time specified by this parameter has elapsed since the message was sent to the queue, the message is deleted regardless of whether it has been consumed.
+	// The maximum lifetime of a message in the queue. After the time specified by this parameter elapses since the message is sent to the queue, the message is deleted regardless of whether it has been consumed.
 	//
 	// Valid values: 60 to 604800. Unit: seconds.
 	//
@@ -84,7 +84,7 @@ type SetQueueAttributesShrinkRequest struct {
 	//
 	// 120
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The maximum wait time for a ReceiveMessage request on this queue when no messages are available in the queue.
+	// The maximum wait time for a ReceiveMessage request on the queue when no messages are available in the queue.
 	//
 	// Valid values: 0 to 30. Unit: seconds.
 	//

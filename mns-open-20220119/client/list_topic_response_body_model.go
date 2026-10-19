@@ -50,7 +50,7 @@ type ListTopicResponseBody struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ListTopicResponseBodyData struct {
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of results returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -210,32 +210,47 @@ func (s *ListTopicResponseBodyData) Validate() error {
 }
 
 type ListTopicResponseBodyDataPageData struct {
-	// The time when the subscription was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the topic was created. The value is a UTC UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1449554962
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableSSE         *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
-	EncryptionEnabled *bool   `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
-	KmsKeyId          *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The time when the subscription attributes were last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Specifies whether server-side encryption is enabled. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
+	EnableSSE *bool `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	// Indicates whether server-side encryption is enabled.
+	//
+	// example:
+	//
+	// true
+	EncryptionEnabled *bool `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
+	// The KMS key ID.
+	//
+	// example:
+	//
+	// key-xxx
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The time when the topic attributes were last modified. The value is a UTC UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1449554962
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// Indicates whether the Log Management feature is enabled. Valid values:
+	// Indicates whether the log management feature is enabled. Valid values:
 	//
-	// - True: Enabled.
+	// - True: enabled
 	//
-	// - False: Disabled.
+	// - False: disabled
 	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	// The maximum length of the message body sent to the topic. Unit: bytes.
+	// The maximum length of the message body that can be sent to the topic. Unit: bytes.
 	//
 	// example:
 	//
@@ -247,14 +262,24 @@ type ListTopicResponseBodyDataPageData struct {
 	//
 	// 0
 	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
-	// The maximum duration for which a message is retained in the topic. After the time specified by this parameter elapses since the message is sent to the topic, the message is deleted regardless of whether it has been successfully pushed to the user. Unit: seconds.
+	// The maximum retention period of messages in the topic. After the specified period elapses from the time a message is sent to the topic, the message is deleted regardless of whether it is successfully pushed to users. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	SseAlgorithm           *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
-	SseType                *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The server-side encryption algorithm. Currently, AES-256-GCM is supported. If this parameter is not specified, the default algorithm is used.
+	//
+	// example:
+	//
+	// AES-256-GCM
+	SseAlgorithm *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	// The server-side encryption method. Valid values: SMQ and KMS.
+	//
+	// example:
+	//
+	// KMS
+	SseType *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
 	// The list of resource tags.
 	Tags []*ListTopicResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The internal URL of the topic.

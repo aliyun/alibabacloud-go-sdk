@@ -44,13 +44,13 @@ type GetEndpointAttributeResponseBody struct {
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the response.
+	// The response status.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -180,9 +180,9 @@ func (s *GetEndpointAttributeResponseBodyData) Validate() error {
 }
 
 type GetEndpointAttributeResponseBodyDataCidrList struct {
-	// The access control list (ACL) policy. Valid value:
+	// The ACL policy. Valid values:
 	//
-	// - **allow**: The endpoint allows access from the specified CIDR block. This is the only supported value.
+	// - **allow**: The endpoint allows access from the corresponding CIDR block. Currently, only allow is supported.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type GetEndpointAttributeResponseBodyDataCidrList struct {
 	//
 	// 172.18.0.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The time when the CIDR block was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

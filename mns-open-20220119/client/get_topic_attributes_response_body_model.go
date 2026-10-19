@@ -38,13 +38,13 @@ type GetTopicAttributesResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
@@ -130,22 +130,37 @@ func (s *GetTopicAttributesResponseBody) Validate() error {
 }
 
 type GetTopicAttributesResponseBodyData struct {
-	// The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the topic was created. The value is a UNIX timestamp in seconds in UTC.
 	//
 	// example:
 	//
 	// 1449554277
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableSSE         *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
-	EncryptionEnabled *bool   `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
-	KmsKeyId          *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The most recent time when the topic attributes were modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether storage encryption is enabled. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
+	EnableSSE *bool `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	// Indicates whether storage encryption is enabled.
+	//
+	// example:
+	//
+	// true
+	EncryptionEnabled *bool `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
+	// The KMS key ID.
+	//
+	// example:
+	//
+	// key-xxx
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The time when the topic attributes were last modified. The value is a UNIX timestamp in seconds in UTC.
 	//
 	// example:
 	//
 	// 1449554460
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// Indicates whether the Log Management feature is enabled. Valid values:
+	// Indicates whether the log management feature is enabled. Valid values:
 	//
 	// - True: Enabled.
 	//
@@ -155,7 +170,7 @@ type GetTopicAttributesResponseBodyData struct {
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	// The maximum length of the message body sent to the topic. Unit: bytes.
+	// The maximum size of a message body sent to the topic. Unit: bytes.
 	//
 	// example:
 	//
@@ -167,19 +182,31 @@ type GetTopicAttributesResponseBodyData struct {
 	//
 	// 0
 	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
-	// The maximum duration for which a message is retained in the topic. After the period of time specified by this parameter elapses since the message is sent to the topic, the message is deleted regardless of whether it is successfully pushed to the user. Unit: seconds.
+	// The maximum retention period of a message in the topic. After the specified period elapses from the time the message is sent to the topic, the message is deleted regardless of whether it was successfully pushed to users. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	SseAlgorithm           *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
-	SseType                *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
-	// The list of resource tags.
-	Tags []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The storage encryption algorithm. Currently, only AES-256-GCM is supported. If this parameter is not specified, the default algorithm is used.
+	//
 	// example:
 	//
-	// http:// 111111111****.mns.us-west-1-internal.aliyuncs.com/topics/testTopic
+	// AES-256-GCM
+	SseAlgorithm *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	// The storage encryption type. Valid values: SMQ and KMS.
+	//
+	// example:
+	//
+	// KMS
+	SseType *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The list of resource tags.
+	Tags []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The internal access URL of the topic.
+	//
+	// example:
+	//
+	// http://111111111****.mns.us-west-1-internal.aliyuncs.com/topics/testTopic
 	TopicInnerUrl *string `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
 	// The name of the topic.
 	//
@@ -187,19 +214,21 @@ type GetTopicAttributesResponseBodyData struct {
 	//
 	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// The type of the topic. Valid values:
+	// The topic type. Valid values:
 	//
-	//    	- normal: normal topic
+	// - normal: Normal topic.
 	//
-	//    	- fifo: FIFO topic
+	// - fifo: FIFO topic.
 	//
 	// example:
 	//
 	// normal
 	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
+	// The public network access URL of the topic.
+	//
 	// example:
 	//
-	// http:// 111111111****.mns.us-west-1.aliyuncs.com/topics/testTopic
+	// http://111111111****.mns.us-west-1.aliyuncs.com/topics/testTopic
 	TopicUrl *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
 }
 
@@ -369,13 +398,13 @@ func (s *GetTopicAttributesResponseBodyData) Validate() error {
 }
 
 type GetTopicAttributesResponseBodyDataTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
