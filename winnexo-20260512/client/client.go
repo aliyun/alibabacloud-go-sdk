@@ -245,6 +245,190 @@ func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (
 
 // Summary:
 //
+// # BatchCancelTodos
+//
+// Description:
+//
+// 按待办ID集合批量作废；已完结/不存在不报错（幂等）
+//
+// @param tmpReq - BatchCancelTodosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCancelTodosResponse
+func (client *Client) BatchCancelTodosWithOptions(tmpReq *BatchCancelTodosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchCancelTodosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCancelTodosShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TodoIds) {
+		request.TodoIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TodoIds, dara.String("todoIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TodoIdsShrink) {
+		body["todoIds"] = request.TodoIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCancelTodos"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/batchCancelTodos"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCancelTodosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # BatchCancelTodos
+//
+// Description:
+//
+// 按待办ID集合批量作废；已完结/不存在不报错（幂等）
+//
+// @param request - BatchCancelTodosRequest
+//
+// @return BatchCancelTodosResponse
+func (client *Client) BatchCancelTodos(request *BatchCancelTodosRequest) (_result *BatchCancelTodosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchCancelTodosResponse{}
+	_body, _err := client.BatchCancelTodosWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # BatchOperateWorkItems
+//
+// Description:
+//
+// 有效成员批量排产、暂停、恢复或删除工作项；单项失败不回滚其他项
+//
+// @param tmpReq - BatchOperateWorkItemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchOperateWorkItemsResponse
+func (client *Client) BatchOperateWorkItemsWithOptions(tmpReq *BatchOperateWorkItemsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchOperateWorkItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchOperateWorkItemsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WorkItemIds) {
+		request.WorkItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkItemIds, dara.String("workItemIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		body["idempotencyKey"] = request.IdempotencyKey
+	}
+
+	if !dara.IsNil(request.WorkItemIdsShrink) {
+		body["workItemIds"] = request.WorkItemIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchOperateWorkItems"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/batchOperateWorkItems"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchOperateWorkItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # BatchOperateWorkItems
+//
+// Description:
+//
+// 有效成员批量排产、暂停、恢复或删除工作项；单项失败不回滚其他项
+//
+// @param request - BatchOperateWorkItemsRequest
+//
+// @return BatchOperateWorkItemsResponse
+func (client *Client) BatchOperateWorkItems(request *BatchOperateWorkItemsRequest) (_result *BatchOperateWorkItemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchOperateWorkItemsResponse{}
+	_body, _err := client.BatchOperateWorkItemsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Batch cancels digital employee precise object type subscriptions.
 //
 // Description:
@@ -343,6 +527,288 @@ func (client *Client) BatchRemoveOperatingObjectFavorites(request *BatchRemoveOp
 
 // Summary:
 //
+// # CancelTodo
+//
+// Description:
+//
+// 作废待办；todoId 定位不存在返回 404，按 workItemId 批量尽力而为
+//
+// @param request - CancelTodoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelTodoResponse
+func (client *Client) CancelTodoWithOptions(request *CancelTodoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelTodoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TodoId) {
+		body["todoId"] = request.TodoId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelTodo"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/cancelTodo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelTodoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CancelTodo
+//
+// Description:
+//
+// 作废待办；todoId 定位不存在返回 404，按 workItemId 批量尽力而为
+//
+// @param request - CancelTodoRequest
+//
+// @return CancelTodoResponse
+func (client *Client) CancelTodo(request *CancelTodoRequest) (_result *CancelTodoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelTodoResponse{}
+	_body, _err := client.CancelTodoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查应用内资源权限
+//
+// Description:
+//
+// 本人需 APP/VIEW，代查他人需 APP/MANAGE。
+//
+// @param request - CheckAppResourcePermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAppResourcePermissionResponse
+func (client *Client) CheckAppResourcePermissionWithOptions(request *CheckAppResourcePermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckAppResourcePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Permission) {
+		body["permission"] = request.Permission
+	}
+
+	if !dara.IsNil(request.ResourceKey) {
+		body["resourceKey"] = request.ResourceKey
+	}
+
+	if !dara.IsNil(request.ResourceTenantId) {
+		body["resourceTenantId"] = request.ResourceTenantId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TargetUserId) {
+		body["targetUserId"] = request.TargetUserId
+	}
+
+	if !dara.IsNil(request.TargetUserTenantId) {
+		body["targetUserTenantId"] = request.TargetUserTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckAppResourcePermission"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/checkAppResourcePermission"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckAppResourcePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查应用内资源权限
+//
+// Description:
+//
+// 本人需 APP/VIEW，代查他人需 APP/MANAGE。
+//
+// @param request - CheckAppResourcePermissionRequest
+//
+// @return CheckAppResourcePermissionResponse
+func (client *Client) CheckAppResourcePermission(request *CheckAppResourcePermissionRequest) (_result *CheckAppResourcePermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckAppResourcePermissionResponse{}
+	_body, _err := client.CheckAppResourcePermissionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量检查应用内资源权限
+//
+// Description:
+//
+// 整批逐应用鉴权后，复用 service 的常数级查询。
+//
+// @param tmpReq - CheckAppResourcePermissionsBatchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAppResourcePermissionsBatchResponse
+func (client *Client) CheckAppResourcePermissionsBatchWithOptions(tmpReq *CheckAppResourcePermissionsBatchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckAppResourcePermissionsBatchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CheckAppResourcePermissionsBatchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Checks) {
+		request.ChecksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Checks, dara.String("checks"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChecksShrink) {
+		body["checks"] = request.ChecksShrink
+	}
+
+	if !dara.IsNil(request.ResourceTenantId) {
+		body["resourceTenantId"] = request.ResourceTenantId
+	}
+
+	if !dara.IsNil(request.TargetUserId) {
+		body["targetUserId"] = request.TargetUserId
+	}
+
+	if !dara.IsNil(request.TargetUserTenantId) {
+		body["targetUserTenantId"] = request.TargetUserTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckAppResourcePermissionsBatch"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/checkAppResourcePermissionsBatch"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckAppResourcePermissionsBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量检查应用内资源权限
+//
+// Description:
+//
+// 整批逐应用鉴权后，复用 service 的常数级查询。
+//
+// @param request - CheckAppResourcePermissionsBatchRequest
+//
+// @return CheckAppResourcePermissionsBatchResponse
+func (client *Client) CheckAppResourcePermissionsBatch(request *CheckAppResourcePermissionsBatchRequest) (_result *CheckAppResourcePermissionsBatchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckAppResourcePermissionsBatchResponse{}
+	_body, _err := client.CheckAppResourcePermissionsBatchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a service health check.
 //
 // @param request - CheckHealthRequest
@@ -400,6 +866,94 @@ func (client *Client) CheckHealth(request *CheckHealthRequest) (_result *CheckHe
 	headers := make(map[string]*string)
 	_result = &CheckHealthResponse{}
 	_body, _err := client.CheckHealthWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按类型或全部清空自动记忆
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - ClearAutoMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearAutoMemoryResponse
+func (client *Client) ClearAutoMemoryWithOptions(request *ClearAutoMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ClearAutoMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OwnerType) {
+		body["ownerType"] = request.OwnerType
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClearAutoMemory"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/clearAutoMemory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClearAutoMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按类型或全部清空自动记忆
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - ClearAutoMemoryRequest
+//
+// @return ClearAutoMemoryResponse
+func (client *Client) ClearAutoMemory(request *ClearAutoMemoryRequest) (_result *ClearAutoMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ClearAutoMemoryResponse{}
+	_body, _err := client.ClearAutoMemoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -488,6 +1042,170 @@ func (client *Client) ClearOperatingObjectFavorites(request *ClearOperatingObjec
 	headers := make(map[string]*string)
 	_result = &ClearOperatingObjectFavoritesResponse{}
 	_body, _err := client.ClearOperatingObjectFavoritesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CloseWorkflowTodos
+//
+// Description:
+//
+// 按工作流批量关闭待办；命中该空间该工作流 run 的全部 PENDING 待办（幂等）
+//
+// @param request - CloseWorkflowTodosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseWorkflowTodosResponse
+func (client *Client) CloseWorkflowTodosWithOptions(request *CloseWorkflowTodosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloseWorkflowTodosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.SourceWorkflowId) {
+		body["sourceWorkflowId"] = request.SourceWorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloseWorkflowTodos"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/closeWorkflowTodos"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloseWorkflowTodosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CloseWorkflowTodos
+//
+// Description:
+//
+// 按工作流批量关闭待办；命中该空间该工作流 run 的全部 PENDING 待办（幂等）
+//
+// @param request - CloseWorkflowTodosRequest
+//
+// @return CloseWorkflowTodosResponse
+func (client *Client) CloseWorkflowTodos(request *CloseWorkflowTodosRequest) (_result *CloseWorkflowTodosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CloseWorkflowTodosResponse{}
+	_body, _err := client.CloseWorkflowTodosWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CountTodos
+//
+// Description:
+//
+// 统计当前用户的待办角标（待处理数与未读数）
+//
+// @param request - CountTodosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CountTodosResponse
+func (client *Client) CountTodosWithOptions(request *CountTodosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CountTodosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CountTodos"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/countTodos"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CountTodosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CountTodos
+//
+// Description:
+//
+// 统计当前用户的待办角标（待处理数与未读数）
+//
+// @param request - CountTodosRequest
+//
+// @return CountTodosResponse
+func (client *Client) CountTodos(request *CountTodosRequest) (_result *CountTodosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CountTodosResponse{}
+	_body, _err := client.CountTodosWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4989,6 +5707,124 @@ func (client *Client) CreateTenantDirectory(request *CreateTenantDirectoryReques
 
 // Summary:
 //
+// # CreateTodo
+//
+// Description:
+//
+// 创建待办（sourceType 仅接受 OPEN_API）；处理人不校验存在性，由调用方保证映射正确
+//
+// @param tmpReq - CreateTodoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTodoResponse
+func (client *Client) CreateTodoWithOptions(tmpReq *CreateTodoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTodoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateTodoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssigneeUserIds) {
+		request.AssigneeUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssigneeUserIds, dara.String("assigneeUserIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Questions) {
+		request.QuestionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Questions, dara.String("questions"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SourceContext) {
+		request.SourceContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceContext, dara.String("sourceContext"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssigneeUserIdsShrink) {
+		body["assigneeUserIds"] = request.AssigneeUserIdsShrink
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.QuestionsShrink) {
+		body["questions"] = request.QuestionsShrink
+	}
+
+	if !dara.IsNil(request.SourceContextShrink) {
+		body["sourceContext"] = request.SourceContextShrink
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		body["sourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTodo"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createTodo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTodoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateTodo
+//
+// Description:
+//
+// 创建待办（sourceType 仅接受 OPEN_API）；处理人不校验存在性，由调用方保证映射正确
+//
+// @param request - CreateTodoRequest
+//
+// @return CreateTodoResponse
+func (client *Client) CreateTodo(request *CreateTodoRequest) (_result *CreateTodoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTodoResponse{}
+	_body, _err := client.CreateTodoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a user and adds the user to a tenant.
 //
 // Description:
@@ -5353,6 +6189,434 @@ func (client *Client) CreateUserWithGroups(request *CreateUserWithGroupsRequest)
 
 // Summary:
 //
+// # CreateWorkItem
+//
+// Description:
+//
+// 有效成员创建 Workflow 工作项并复制模板执行快照；仅接受 WORKFLOW 类型
+//
+// @param tmpReq - CreateWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkItemResponse
+func (client *Client) CreateWorkItemWithOptions(tmpReq *CreateWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateWorkItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Attachments) {
+		request.AttachmentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attachments, dara.String("attachments"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CollaboratorUserIds) {
+		request.CollaboratorUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CollaboratorUserIds, dara.String("collaboratorUserIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WorkflowTemplateIds) {
+		request.WorkflowTemplateIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowTemplateIds, dara.String("workflowTemplateIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptanceCriteria) {
+		body["acceptanceCriteria"] = request.AcceptanceCriteria
+	}
+
+	if !dara.IsNil(request.AttachmentsShrink) {
+		body["attachments"] = request.AttachmentsShrink
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.CollaboratorUserIdsShrink) {
+		body["collaboratorUserIds"] = request.CollaboratorUserIdsShrink
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["conversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ItemType) {
+		body["itemType"] = request.ItemType
+	}
+
+	if !dara.IsNil(request.OwnerUserId) {
+		body["ownerUserId"] = request.OwnerUserId
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkflowTemplateIdsShrink) {
+		body["workflowTemplateIds"] = request.WorkflowTemplateIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateWorkItem
+//
+// Description:
+//
+// 有效成员创建 Workflow 工作项并复制模板执行快照；仅接受 WORKFLOW 类型
+//
+// @param request - CreateWorkItemRequest
+//
+// @return CreateWorkItemResponse
+func (client *Client) CreateWorkItem(request *CreateWorkItemRequest) (_result *CreateWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkItemResponse{}
+	_body, _err := client.CreateWorkItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 幂等创建工作流实例
+//
+// Description:
+//
+// 组合既有创建与排产，不旁路工作项权限或运行准入。
+//
+// @param tmpReq - CreateWorkflowInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkflowInstanceResponse
+func (client *Client) CreateWorkflowInstanceWithOptions(tmpReq *CreateWorkflowInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkflowInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateWorkflowInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Variables) {
+		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, dara.String("variables"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptanceCriteria) {
+		body["acceptanceCriteria"] = request.AcceptanceCriteria
+	}
+
+	if !dara.IsNil(request.BusinessId) {
+		body["businessId"] = request.BusinessId
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Initiator) {
+		body["initiator"] = request.Initiator
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.VariablesShrink) {
+		body["variables"] = request.VariablesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkflowInstance"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createWorkflowInstance"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkflowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 幂等创建工作流实例
+//
+// Description:
+//
+// 组合既有创建与排产，不旁路工作项权限或运行准入。
+//
+// @param request - CreateWorkflowInstanceRequest
+//
+// @return CreateWorkflowInstanceResponse
+func (client *Client) CreateWorkflowInstance(request *CreateWorkflowInstanceRequest) (_result *CreateWorkflowInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkflowInstanceResponse{}
+	_body, _err := client.CreateWorkflowInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateWorkflowTemplate
+//
+// Description:
+//
+// 有效成员保存全新工作流模板；同名模板不会覆盖
+//
+// @param tmpReq - CreateWorkflowTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkflowTemplateResponse
+func (client *Client) CreateWorkflowTemplateWithOptions(tmpReq *CreateWorkflowTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkflowTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateWorkflowTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Definition) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, dara.String("definition"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.DefinitionShrink) {
+		body["definition"] = request.DefinitionShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkflowTemplate"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createWorkflowTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkflowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateWorkflowTemplate
+//
+// Description:
+//
+// 有效成员保存全新工作流模板；同名模板不会覆盖
+//
+// @param request - CreateWorkflowTemplateRequest
+//
+// @return CreateWorkflowTemplateResponse
+func (client *Client) CreateWorkflowTemplate(request *CreateWorkflowTemplateRequest) (_result *CreateWorkflowTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkflowTemplateResponse{}
+	_body, _err := client.CreateWorkflowTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除应用内资源权限
+//
+// Description:
+//
+// 逐应用通过 MANAGE 校验后，调用原有原子删除能力。
+//
+// @param tmpReq - DeleteAppResourcePermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppResourcePermissionsResponse
+func (client *Client) DeleteAppResourcePermissionsWithOptions(tmpReq *DeleteAppResourcePermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAppResourcePermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAppResourcePermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Items) {
+		request.ItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Items, dara.String("items"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ItemsShrink) {
+		body["items"] = request.ItemsShrink
+	}
+
+	if !dara.IsNil(request.ResourceTenantId) {
+		body["resourceTenantId"] = request.ResourceTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppResourcePermissions"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/deleteAppResourcePermissions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppResourcePermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除应用内资源权限
+//
+// Description:
+//
+// 逐应用通过 MANAGE 校验后，调用原有原子删除能力。
+//
+// @param request - DeleteAppResourcePermissionsRequest
+//
+// @return DeleteAppResourcePermissionsResponse
+func (client *Client) DeleteAppResourcePermissions(request *DeleteAppResourcePermissionsRequest) (_result *DeleteAppResourcePermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAppResourcePermissionsResponse{}
+	_body, _err := client.DeleteAppResourcePermissionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a session.
 //
 // Description:
@@ -5647,6 +6911,174 @@ func (client *Client) DeleteTenantDirectory(request *DeleteTenantDirectoryReques
 
 // Summary:
 //
+// # DeleteWorkItem
+//
+// Description:
+//
+// 有效成员删除非处理中工作项；级联清理待办、节点话题与运行时
+//
+// @param request - DeleteWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkItemResponse
+func (client *Client) DeleteWorkItemWithOptions(request *DeleteWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/deleteWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteWorkItem
+//
+// Description:
+//
+// 有效成员删除非处理中工作项；级联清理待办、节点话题与运行时
+//
+// @param request - DeleteWorkItemRequest
+//
+// @return DeleteWorkItemResponse
+func (client *Client) DeleteWorkItem(request *DeleteWorkItemRequest) (_result *DeleteWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWorkItemResponse{}
+	_body, _err := client.DeleteWorkItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteWorkflowTemplate
+//
+// Description:
+//
+// 有效成员物理删除工作流模板及其步骤；不执行工作项依赖校验
+//
+// @param request - DeleteWorkflowTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkflowTemplateResponse
+func (client *Client) DeleteWorkflowTemplateWithOptions(request *DeleteWorkflowTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkflowTemplate"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/deleteWorkflowTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkflowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteWorkflowTemplate
+//
+// Description:
+//
+// 有效成员物理删除工作流模板及其步骤；不执行工作项依赖校验
+//
+// @param request - DeleteWorkflowTemplateRequest
+//
+// @return DeleteWorkflowTemplateResponse
+func (client *Client) DeleteWorkflowTemplate(request *DeleteWorkflowTemplateRequest) (_result *DeleteWorkflowTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWorkflowTemplateResponse{}
+	_body, _err := client.DeleteWorkflowTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables an API token.
 //
 // Description:
@@ -5854,6 +7286,276 @@ func (client *Client) EnableToken(request *EnableTokenRequest) (_result *EnableT
 	headers := make(map[string]*string)
 	_result = &EnableTokenResponse{}
 	_body, _err := client.EnableTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ExportWorkflowTemplate
+//
+// Description:
+//
+// 有效成员导出可回流导入的精简模板定义
+//
+// @param request - ExportWorkflowTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportWorkflowTemplateResponse
+func (client *Client) ExportWorkflowTemplateWithOptions(request *ExportWorkflowTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportWorkflowTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportWorkflowTemplate"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/exportWorkflowTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportWorkflowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ExportWorkflowTemplate
+//
+// Description:
+//
+// 有效成员导出可回流导入的精简模板定义
+//
+// @param request - ExportWorkflowTemplateRequest
+//
+// @return ExportWorkflowTemplateResponse
+func (client *Client) ExportWorkflowTemplate(request *ExportWorkflowTemplateRequest) (_result *ExportWorkflowTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExportWorkflowTemplateResponse{}
+	_body, _err := client.ExportWorkflowTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GenerateWorkflowTemplateDraft
+//
+// Description:
+//
+// 有效成员调用 LLM 生成非持久化模板草稿；消耗租户 LLM 配额
+//
+// @param tmpReq - GenerateWorkflowTemplateDraftRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateWorkflowTemplateDraftResponse
+func (client *Client) GenerateWorkflowTemplateDraftWithOptions(tmpReq *GenerateWorkflowTemplateDraftRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateWorkflowTemplateDraftResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GenerateWorkflowTemplateDraftShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PreviousDraft) {
+		request.PreviousDraftShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PreviousDraft, dara.String("previousDraft"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.PreviousDraftShrink) {
+		body["previousDraft"] = request.PreviousDraftShrink
+	}
+
+	if !dara.IsNil(request.Requirement) {
+		body["requirement"] = request.Requirement
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateWorkflowTemplateDraft"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/generateWorkflowTemplateDraft"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateWorkflowTemplateDraftResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GenerateWorkflowTemplateDraft
+//
+// Description:
+//
+// 有效成员调用 LLM 生成非持久化模板草稿；消耗租户 LLM 配额
+//
+// @param request - GenerateWorkflowTemplateDraftRequest
+//
+// @return GenerateWorkflowTemplateDraftResponse
+func (client *Client) GenerateWorkflowTemplateDraft(request *GenerateWorkflowTemplateDraftRequest) (_result *GenerateWorkflowTemplateDraftResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateWorkflowTemplateDraftResponse{}
+	_body, _err := client.GenerateWorkflowTemplateDraftWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetAgentWorkLog
+//
+// Description:
+//
+// 查询工作流 Agent 工作日志
+//
+// @param request - GetAgentWorkLogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentWorkLogResponse
+func (client *Client) GetAgentWorkLogWithOptions(request *GetAgentWorkLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAgentWorkLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NodeId) {
+		body["nodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentWorkLog"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getAgentWorkLog"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentWorkLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetAgentWorkLog
+//
+// Description:
+//
+// 查询工作流 Agent 工作日志
+//
+// @param request - GetAgentWorkLogRequest
+//
+// @return GetAgentWorkLogResponse
+func (client *Client) GetAgentWorkLog(request *GetAgentWorkLogRequest) (_result *GetAgentWorkLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAgentWorkLogResponse{}
+	_body, _err := client.GetAgentWorkLogWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6622,6 +8324,262 @@ func (client *Client) GetKnowledgeBaseSource(request *GetKnowledgeBaseSourceRequ
 	headers := make(map[string]*string)
 	_result = &GetKnowledgeBaseSourceResponse{}
 	_body, _err := client.GetKnowledgeBaseSourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自动记忆拾取开关
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - GetMemoryAutoExtractionSwitchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryAutoExtractionSwitchResponse
+func (client *Client) GetMemoryAutoExtractionSwitchWithOptions(request *GetMemoryAutoExtractionSwitchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryAutoExtractionSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OwnerType) {
+		body["ownerType"] = request.OwnerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryAutoExtractionSwitch"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getMemoryAutoExtractionSwitch"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryAutoExtractionSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自动记忆拾取开关
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - GetMemoryAutoExtractionSwitchRequest
+//
+// @return GetMemoryAutoExtractionSwitchResponse
+func (client *Client) GetMemoryAutoExtractionSwitch(request *GetMemoryAutoExtractionSwitchRequest) (_result *GetMemoryAutoExtractionSwitchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoryAutoExtractionSwitchResponse{}
+	_body, _err := client.GetMemoryAutoExtractionSwitchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询个人或协作空间记忆详情
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - GetMemoryDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryDetailResponse
+func (client *Client) GetMemoryDetailWithOptions(request *GetMemoryDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OwnerType) {
+		body["ownerType"] = request.OwnerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryDetail"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getMemoryDetail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询个人或协作空间记忆详情
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - GetMemoryDetailRequest
+//
+// @return GetMemoryDetailResponse
+func (client *Client) GetMemoryDetail(request *GetMemoryDetailRequest) (_result *GetMemoryDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoryDetailResponse{}
+	_body, _err := client.GetMemoryDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetNodeDetail
+//
+// Description:
+//
+// 查询实例节点完整详情
+//
+// @param request - GetNodeDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNodeDetailResponse
+func (client *Client) GetNodeDetailWithOptions(request *GetNodeDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNodeDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["nodeId"] = request.NodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNodeDetail"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getNodeDetail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNodeDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetNodeDetail
+//
+// Description:
+//
+// 查询实例节点完整详情
+//
+// @param request - GetNodeDetailRequest
+//
+// @return GetNodeDetailResponse
+func (client *Client) GetNodeDetail(request *GetNodeDetailRequest) (_result *GetNodeDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetNodeDetailResponse{}
+	_body, _err := client.GetNodeDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7516,6 +9474,174 @@ func (client *Client) GetSourceUploadSignature(request *GetSourceUploadSignature
 
 // Summary:
 //
+// # GetTodo
+//
+// Description:
+//
+// 查询待办（无已读副作用）；todoId/workItemId/messageId 三选一，优先级 todoId > workItemId > messageId
+//
+// @param request - GetTodoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTodoResponse
+func (client *Client) GetTodoWithOptions(request *GetTodoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTodoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MessageId) {
+		body["messageId"] = request.MessageId
+	}
+
+	if !dara.IsNil(request.TodoId) {
+		body["todoId"] = request.TodoId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTodo"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getTodo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTodoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetTodo
+//
+// Description:
+//
+// 查询待办（无已读副作用）；todoId/workItemId/messageId 三选一，优先级 todoId > workItemId > messageId
+//
+// @param request - GetTodoRequest
+//
+// @return GetTodoResponse
+func (client *Client) GetTodo(request *GetTodoRequest) (_result *GetTodoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTodoResponse{}
+	_body, _err := client.GetTodoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetTodoDetail
+//
+// Description:
+//
+// 查询待办详情；当前调用者为 PENDING 处理人时自动填充 readAt（已读副作用）
+//
+// @param request - GetTodoDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTodoDetailResponse
+func (client *Client) GetTodoDetailWithOptions(request *GetTodoDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTodoDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TodoId) {
+		body["todoId"] = request.TodoId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTodoDetail"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getTodoDetail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTodoDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetTodoDetail
+//
+// Description:
+//
+// 查询待办详情；当前调用者为 PENDING 处理人时自动填充 readAt（已读副作用）
+//
+// @param request - GetTodoDetailRequest
+//
+// @return GetTodoDetailResponse
+func (client *Client) GetTodoDetail(request *GetTodoDetailRequest) (_result *GetTodoDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTodoDetailResponse{}
+	_body, _err := client.GetTodoDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves an API token and ensures that it is active.
 //
 // Description:
@@ -8142,6 +10268,426 @@ func (client *Client) GetUserInfo(request *GetUserInfoRequest) (_result *GetUser
 
 // Summary:
 //
+// # GetWorkItem
+//
+// Description:
+//
+// 有效成员读取当前空间可见工作项详情
+//
+// @param request - GetWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkItemResponse
+func (client *Client) GetWorkItemWithOptions(request *GetWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetWorkItem
+//
+// Description:
+//
+// 有效成员读取当前空间可见工作项详情
+//
+// @param request - GetWorkItemRequest
+//
+// @return GetWorkItemResponse
+func (client *Client) GetWorkItem(request *GetWorkItemRequest) (_result *GetWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemResponse{}
+	_body, _err := client.GetWorkItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetWorkItemArtifactAccess
+//
+// Description:
+//
+// 校验调用者工作项权限后 302 跳转到产物短期签名下载地址
+//
+// @param request - GetWorkItemArtifactAccessRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkItemArtifactAccessResponse
+func (client *Client) GetWorkItemArtifactAccessWithOptions(request *GetWorkItemArtifactAccessRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkItemArtifactAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactId) {
+		query["artifactId"] = request.ArtifactId
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		query["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		query["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkItemArtifactAccess"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkItemArtifactAccess"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkItemArtifactAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetWorkItemArtifactAccess
+//
+// Description:
+//
+// 校验调用者工作项权限后 302 跳转到产物短期签名下载地址
+//
+// @param request - GetWorkItemArtifactAccessRequest
+//
+// @return GetWorkItemArtifactAccessResponse
+func (client *Client) GetWorkItemArtifactAccess(request *GetWorkItemArtifactAccessRequest) (_result *GetWorkItemArtifactAccessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemArtifactAccessResponse{}
+	_body, _err := client.GetWorkItemArtifactAccessWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetWorkItemAttachmentAccess
+//
+// Description:
+//
+// 校验调用者工作项权限后 302 跳转到输入附件短期预览地址
+//
+// @param request - GetWorkItemAttachmentAccessRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkItemAttachmentAccessResponse
+func (client *Client) GetWorkItemAttachmentAccessWithOptions(request *GetWorkItemAttachmentAccessRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkItemAttachmentAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttachmentId) {
+		query["attachmentId"] = request.AttachmentId
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		query["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		query["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkItemAttachmentAccess"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkItemAttachmentAccess"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkItemAttachmentAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetWorkItemAttachmentAccess
+//
+// Description:
+//
+// 校验调用者工作项权限后 302 跳转到输入附件短期预览地址
+//
+// @param request - GetWorkItemAttachmentAccessRequest
+//
+// @return GetWorkItemAttachmentAccessResponse
+func (client *Client) GetWorkItemAttachmentAccess(request *GetWorkItemAttachmentAccessRequest) (_result *GetWorkItemAttachmentAccessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemAttachmentAccessResponse{}
+	_body, _err := client.GetWorkItemAttachmentAccessWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工作流实例详情
+//
+// Description:
+//
+// 以当前成员和工作项可见性读取实例。
+//
+// @param request - GetWorkflowInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowInstanceResponse
+func (client *Client) GetWorkflowInstanceWithOptions(request *GetWorkflowInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkflowInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflowInstance"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkflowInstance"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工作流实例详情
+//
+// Description:
+//
+// 以当前成员和工作项可见性读取实例。
+//
+// @param request - GetWorkflowInstanceRequest
+//
+// @return GetWorkflowInstanceResponse
+func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (_result *GetWorkflowInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkflowInstanceResponse{}
+	_body, _err := client.GetWorkflowInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetWorkflowTemplate
+//
+// Description:
+//
+// 有效成员读取协作空间工作流模板当前配置
+//
+// @param request - GetWorkflowTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowTemplateResponse
+func (client *Client) GetWorkflowTemplateWithOptions(request *GetWorkflowTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkflowTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflowTemplate"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkflowTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetWorkflowTemplate
+//
+// Description:
+//
+// 有效成员读取协作空间工作流模板当前配置
+//
+// @param request - GetWorkflowTemplateRequest
+//
+// @return GetWorkflowTemplateResponse
+func (client *Client) GetWorkflowTemplate(request *GetWorkflowTemplateRequest) (_result *GetWorkflowTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkflowTemplateResponse{}
+	_body, _err := client.GetWorkflowTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Grants authorization to authorized users or user groups to use a digital human.
 //
 // Description:
@@ -8267,6 +10813,96 @@ func (client *Client) GrantAgentUsers(request *GrantAgentUsersRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &GrantAgentUsersResponse{}
 	_body, _err := client.GrantAgentUsersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ImportWorkflowTemplate
+//
+// Description:
+//
+// 有效成员导入可移植模板 JSON 并创建新模板；无论名称是否相同都新建
+//
+// @param tmpReq - ImportWorkflowTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportWorkflowTemplateResponse
+func (client *Client) ImportWorkflowTemplateWithOptions(tmpReq *ImportWorkflowTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ImportWorkflowTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ImportWorkflowTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Template) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, dara.String("template"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateShrink) {
+		body["template"] = request.TemplateShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportWorkflowTemplate"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/importWorkflowTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportWorkflowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ImportWorkflowTemplate
+//
+// Description:
+//
+// 有效成员导入可移植模板 JSON 并创建新模板；无论名称是否相同都新建
+//
+// @param request - ImportWorkflowTemplateRequest
+//
+// @return ImportWorkflowTemplateResponse
+func (client *Client) ImportWorkflowTemplate(request *ImportWorkflowTemplateRequest) (_result *ImportWorkflowTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ImportWorkflowTemplateResponse{}
+	_body, _err := client.ImportWorkflowTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8795,6 +11431,238 @@ func (client *Client) ListAliDingMinutes(request *ListAliDingMinutesRequest) (_r
 	headers := make(map[string]*string)
 	_result = &ListAliDingMinutesResponse{}
 	_body, _err := client.ListAliDingMinutesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用内全部原始资源授权
+//
+// Description:
+//
+// APP/MANAGE 授权后按安全应用前缀分页。
+//
+// @param tmpReq - ListAppResourcePermissionRecordsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppResourcePermissionRecordsResponse
+func (client *Client) ListAppResourcePermissionRecordsWithOptions(tmpReq *ListAppResourcePermissionRecordsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAppResourcePermissionRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAppResourcePermissionRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Permissions) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, dara.String("permissions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GranteeId) {
+		body["granteeId"] = request.GranteeId
+	}
+
+	if !dara.IsNil(request.GranteeTenantId) {
+		body["granteeTenantId"] = request.GranteeTenantId
+	}
+
+	if !dara.IsNil(request.GranteeType) {
+		body["granteeType"] = request.GranteeType
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PermissionsShrink) {
+		body["permissions"] = request.PermissionsShrink
+	}
+
+	if !dara.IsNil(request.ResourceKeyPrefix) {
+		body["resourceKeyPrefix"] = request.ResourceKeyPrefix
+	}
+
+	if !dara.IsNil(request.ResourceTenantId) {
+		body["resourceTenantId"] = request.ResourceTenantId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppResourcePermissionRecords"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listAppResourcePermissionRecords"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppResourcePermissionRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用内全部原始资源授权
+//
+// Description:
+//
+// APP/MANAGE 授权后按安全应用前缀分页。
+//
+// @param request - ListAppResourcePermissionRecordsRequest
+//
+// @return ListAppResourcePermissionRecordsResponse
+func (client *Client) ListAppResourcePermissionRecords(request *ListAppResourcePermissionRecordsRequest) (_result *ListAppResourcePermissionRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAppResourcePermissionRecordsResponse{}
+	_body, _err := client.ListAppResourcePermissionRecordsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户应用内有效资源权限
+//
+// Description:
+//
+// 强制应用前缀，本人需 VIEW，代查他人需 MANAGE。
+//
+// @param tmpReq - ListAppResourceUserPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppResourceUserPermissionsResponse
+func (client *Client) ListAppResourceUserPermissionsWithOptions(tmpReq *ListAppResourceUserPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAppResourceUserPermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAppResourceUserPermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Permissions) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, dara.String("permissions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PermissionsShrink) {
+		body["permissions"] = request.PermissionsShrink
+	}
+
+	if !dara.IsNil(request.ResourceKeyPrefix) {
+		body["resourceKeyPrefix"] = request.ResourceKeyPrefix
+	}
+
+	if !dara.IsNil(request.ResourceTenantId) {
+		body["resourceTenantId"] = request.ResourceTenantId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TargetUserId) {
+		body["targetUserId"] = request.TargetUserId
+	}
+
+	if !dara.IsNil(request.TargetUserTenantId) {
+		body["targetUserTenantId"] = request.TargetUserTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppResourceUserPermissions"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listAppResourceUserPermissions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppResourceUserPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户应用内有效资源权限
+//
+// Description:
+//
+// 强制应用前缀，本人需 VIEW，代查他人需 MANAGE。
+//
+// @param request - ListAppResourceUserPermissionsRequest
+//
+// @return ListAppResourceUserPermissionsResponse
+func (client *Client) ListAppResourceUserPermissions(request *ListAppResourceUserPermissionsRequest) (_result *ListAppResourceUserPermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAppResourceUserPermissionsResponse{}
+	_body, _err := client.ListAppResourceUserPermissionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9870,6 +12738,90 @@ func (client *Client) ListGroupDirectory(request *ListGroupDirectoryRequest) (_r
 
 // Summary:
 //
+// # ListInstanceNodes
+//
+// Description:
+//
+// 查询实例节点列表
+//
+// @param request - ListInstanceNodesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceNodesResponse
+func (client *Client) ListInstanceNodesWithOptions(request *ListInstanceNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceNodes"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listInstanceNodes"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListInstanceNodes
+//
+// Description:
+//
+// 查询实例节点列表
+//
+// @param request - ListInstanceNodesRequest
+//
+// @return ListInstanceNodesResponse
+func (client *Client) ListInstanceNodes(request *ListInstanceNodesRequest) (_result *ListInstanceNodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceNodesResponse{}
+	_body, _err := client.ListInstanceNodesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the category directory tree of an enterprise knowledge base. Sorting by a specified field is supported.
 //
 // Description:
@@ -10090,26 +13042,40 @@ func (client *Client) ListOperatingObjectFavorites(request *ListOperatingObjectF
 //
 // - The `tenant_id` or `user_id` values passed in the request body by the caller are ignored. This information is derived only from the authenticated identity.
 //
-// @param request - ListOutputFilesRequest
+// @param tmpReq - ListOutputFilesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOutputFilesResponse
-func (client *Client) ListOutputFilesWithOptions(request *ListOutputFilesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOutputFilesResponse, _err error) {
+func (client *Client) ListOutputFilesWithOptions(tmpReq *ListOutputFilesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOutputFilesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListOutputFilesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TenantId) {
 		query["tenantId"] = request.TenantId
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		body["bizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
 	if !dara.IsNil(request.ItemType) {
 		body["itemType"] = request.ItemType
 	}
@@ -10130,8 +13096,16 @@ func (client *Client) ListOutputFilesWithOptions(request *ListOutputFilesRequest
 		body["pageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
 	if !dara.IsNil(request.SharedOnly) {
 		body["sharedOnly"] = request.SharedOnly
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["tags"] = request.TagsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -10848,6 +13822,144 @@ func (client *Client) ListTenantDirectory(request *ListTenantDirectoryRequest) (
 
 // Summary:
 //
+// # ListTodos
+//
+// Description:
+//
+// 分页查询当前用户的待办列表；筛选组内并集、组间交集，全不传 = 全部
+//
+// @param tmpReq - ListTodosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTodosResponse
+func (client *Client) ListTodosWithOptions(tmpReq *ListTodosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTodosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListTodosShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Priorities) {
+		request.PrioritiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Priorities, dara.String("priorities"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ReadStatus) {
+		request.ReadStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReadStatus, dara.String("readStatus"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SourceTypes) {
+		request.SourceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceTypes, dara.String("sourceTypes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Statuses) {
+		request.StatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Statuses, dara.String("statuses"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PrioritiesShrink) {
+		body["priorities"] = request.PrioritiesShrink
+	}
+
+	if !dara.IsNil(request.ReadStatusShrink) {
+		body["readStatus"] = request.ReadStatusShrink
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["sortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SourceTypesShrink) {
+		body["sourceTypes"] = request.SourceTypesShrink
+	}
+
+	if !dara.IsNil(request.StatusesShrink) {
+		body["statuses"] = request.StatusesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTodos"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listTodos"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTodosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListTodos
+//
+// Description:
+//
+// 分页查询当前用户的待办列表；筛选组内并集、组间交集，全不传 = 全部
+//
+// @param request - ListTodosRequest
+//
+// @return ListTodosResponse
+func (client *Client) ListTodos(request *ListTodosRequest) (_result *ListTodosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTodosResponse{}
+	_body, _err := client.ListTodosWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Returns the multi-level user group tree for the current tenant.
 //
 // Description:
@@ -11507,6 +14619,522 @@ func (client *Client) ListVisibleKnowledgeBases(request *ListVisibleKnowledgeBas
 
 // Summary:
 //
+// # ListWorkItemArtifacts
+//
+// Description:
+//
+// 有效成员列出有权访问工作项的全部历史产物
+//
+// @param request - ListWorkItemArtifactsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkItemArtifactsResponse
+func (client *Client) ListWorkItemArtifactsWithOptions(request *ListWorkItemArtifactsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkItemArtifactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkItemArtifacts"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listWorkItemArtifacts"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkItemArtifactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListWorkItemArtifacts
+//
+// Description:
+//
+// 有效成员列出有权访问工作项的全部历史产物
+//
+// @param request - ListWorkItemArtifactsRequest
+//
+// @return ListWorkItemArtifactsResponse
+func (client *Client) ListWorkItemArtifacts(request *ListWorkItemArtifactsRequest) (_result *ListWorkItemArtifactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkItemArtifactsResponse{}
+	_body, _err := client.ListWorkItemArtifactsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListWorkItems
+//
+// Description:
+//
+// 有效成员分页筛选当前空间可见工作项；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+//
+// @param tmpReq - ListWorkItemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkItemsResponse
+func (client *Client) ListWorkItemsWithOptions(tmpReq *ListWorkItemsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListWorkItemsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BusinessStatuses) {
+		request.BusinessStatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessStatuses, dara.String("businessStatuses"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ItemTypes) {
+		request.ItemTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemTypes, dara.String("itemTypes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Priorities) {
+		request.PrioritiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Priorities, dara.String("priorities"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessStatusesShrink) {
+		body["businessStatuses"] = request.BusinessStatusesShrink
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.ItemTypesShrink) {
+		body["itemTypes"] = request.ItemTypesShrink
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PrioritiesShrink) {
+		body["priorities"] = request.PrioritiesShrink
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["scope"] = request.Scope
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkItems"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listWorkItems"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListWorkItems
+//
+// Description:
+//
+// 有效成员分页筛选当前空间可见工作项；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+//
+// @param request - ListWorkItemsRequest
+//
+// @return ListWorkItemsResponse
+func (client *Client) ListWorkItems(request *ListWorkItemsRequest) (_result *ListWorkItemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkItemsResponse{}
+	_body, _err := client.ListWorkItemsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页筛选工作流实例
+//
+// Description:
+//
+// 复用详情投影，避免工作项列表与实例状态混用。
+//
+// @param request - ListWorkflowInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowInstancesResponse
+func (client *Client) ListWorkflowInstancesWithOptions(request *ListWorkflowInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessId) {
+		body["businessId"] = request.BusinessId
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Initiator) {
+		body["initiator"] = request.Initiator
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["sortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		body["sortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkflowInstances"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listWorkflowInstances"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkflowInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页筛选工作流实例
+//
+// Description:
+//
+// 复用详情投影，避免工作项列表与实例状态混用。
+//
+// @param request - ListWorkflowInstancesRequest
+//
+// @return ListWorkflowInstancesResponse
+func (client *Client) ListWorkflowInstances(request *ListWorkflowInstancesRequest) (_result *ListWorkflowInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkflowInstancesResponse{}
+	_body, _err := client.ListWorkflowInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListWorkflowTemplates
+//
+// Description:
+//
+// 有效成员分页搜索当前协作空间的有效模板；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+//
+// @param request - ListWorkflowTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowTemplatesResponse
+func (client *Client) ListWorkflowTemplatesWithOptions(request *ListWorkflowTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkflowTemplates"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listWorkflowTemplates"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkflowTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListWorkflowTemplates
+//
+// Description:
+//
+// 有效成员分页搜索当前协作空间的有效模板；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+//
+// @param request - ListWorkflowTemplatesRequest
+//
+// @return ListWorkflowTemplatesResponse
+func (client *Client) ListWorkflowTemplates(request *ListWorkflowTemplatesRequest) (_result *ListWorkflowTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkflowTemplatesResponse{}
+	_body, _err := client.ListWorkflowTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # MarkTodosRead
+//
+// Description:
+//
+// 标记当前用户的待办已读；markAllRead 优先于 todoIds，两者皆空不报错
+//
+// @param tmpReq - MarkTodosReadRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MarkTodosReadResponse
+func (client *Client) MarkTodosReadWithOptions(tmpReq *MarkTodosReadRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MarkTodosReadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MarkTodosReadShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TodoIds) {
+		request.TodoIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TodoIds, dara.String("todoIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MarkAllRead) {
+		body["markAllRead"] = request.MarkAllRead
+	}
+
+	if !dara.IsNil(request.TodoIdsShrink) {
+		body["todoIds"] = request.TodoIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MarkTodosRead"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/markTodosRead"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MarkTodosReadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # MarkTodosRead
+//
+// Description:
+//
+// 标记当前用户的待办已读；markAllRead 优先于 todoIds，两者皆空不报错
+//
+// @param request - MarkTodosReadRequest
+//
+// @return MarkTodosReadResponse
+func (client *Client) MarkTodosRead(request *MarkTodosReadRequest) (_result *MarkTodosReadResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &MarkTodosReadResponse{}
+	_body, _err := client.MarkTodosReadWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves a resource within a collaboration space.
 //
 // Description:
@@ -11930,6 +15558,90 @@ func (client *Client) OfflineAnnouncement(request *OfflineAnnouncementRequest) (
 	headers := make(map[string]*string)
 	_result = &OfflineAnnouncementResponse{}
 	_body, _err := client.OfflineAnnouncementWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # PauseWorkItem
+//
+// Description:
+//
+// 有效成员暂停工作项绑定的整个 Workflow
+//
+// @param request - PauseWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseWorkItemResponse
+func (client *Client) PauseWorkItemWithOptions(request *PauseWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PauseWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/pauseWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # PauseWorkItem
+//
+// Description:
+//
+// 有效成员暂停工作项绑定的整个 Workflow
+//
+// @param request - PauseWorkItemRequest
+//
+// @return PauseWorkItemResponse
+func (client *Client) PauseWorkItem(request *PauseWorkItemRequest) (_result *PauseWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PauseWorkItemResponse{}
+	_body, _err := client.PauseWorkItemWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12540,6 +16252,136 @@ func (client *Client) QuerySyncResult(request *QuerySyncResultRequest) (_result 
 
 // Summary:
 //
+// # QueryWorkItemFeed
+//
+// Description:
+//
+// 有效成员查询工作项 feed 分组视图；服务端游标分页（cursor/pageSize）
+//
+// @param tmpReq - QueryWorkItemFeedRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWorkItemFeedResponse
+func (client *Client) QueryWorkItemFeedWithOptions(tmpReq *QueryWorkItemFeedRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryWorkItemFeedResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryWorkItemFeedShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BusinessStatuses) {
+		request.BusinessStatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessStatuses, dara.String("businessStatuses"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ItemTypes) {
+		request.ItemTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemTypes, dara.String("itemTypes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Priorities) {
+		request.PrioritiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Priorities, dara.String("priorities"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessStatusesShrink) {
+		body["businessStatuses"] = request.BusinessStatusesShrink
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Cursor) {
+		body["cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.ItemTypesShrink) {
+		body["itemTypes"] = request.ItemTypesShrink
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PrioritiesShrink) {
+		body["priorities"] = request.PrioritiesShrink
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.SourceTaskId) {
+		body["sourceTaskId"] = request.SourceTaskId
+	}
+
+	if !dara.IsNil(request.View) {
+		body["view"] = request.View
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryWorkItemFeed"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/queryWorkItemFeed"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryWorkItemFeedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # QueryWorkItemFeed
+//
+// Description:
+//
+// 有效成员查询工作项 feed 分组视图；服务端游标分页（cursor/pageSize）
+//
+// @param request - QueryWorkItemFeedRequest
+//
+// @return QueryWorkItemFeedResponse
+func (client *Client) QueryWorkItemFeed(request *QueryWorkItemFeedRequest) (_result *QueryWorkItemFeedResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryWorkItemFeedResponse{}
+	_body, _err := client.QueryWorkItemFeedWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates next-step recommendations for a session.
 //
 // Description:
@@ -12647,6 +16489,96 @@ func (client *Client) RecommendNextActions(request *RecommendNextActionsRequest)
 	headers := make(map[string]*string)
 	_result = &RecommendNextActionsResponse{}
 	_body, _err := client.RecommendNextActionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量注册应用内资源权限
+//
+// Description:
+//
+// 先检查全部应用的 MANAGE 权限，再执行一次原子批量注册。
+//
+// @param tmpReq - RegisterAppResourcePermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterAppResourcePermissionsResponse
+func (client *Client) RegisterAppResourcePermissionsWithOptions(tmpReq *RegisterAppResourcePermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RegisterAppResourcePermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RegisterAppResourcePermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Items) {
+		request.ItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Items, dara.String("items"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ItemsShrink) {
+		body["items"] = request.ItemsShrink
+	}
+
+	if !dara.IsNil(request.ResourceTenantId) {
+		body["resourceTenantId"] = request.ResourceTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RegisterAppResourcePermissions"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/registerAppResourcePermissions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RegisterAppResourcePermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量注册应用内资源权限
+//
+// Description:
+//
+// 先检查全部应用的 MANAGE 权限，再执行一次原子批量注册。
+//
+// @param request - RegisterAppResourcePermissionsRequest
+//
+// @return RegisterAppResourcePermissionsResponse
+func (client *Client) RegisterAppResourcePermissions(request *RegisterAppResourcePermissionsRequest) (_result *RegisterAppResourcePermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RegisterAppResourcePermissionsResponse{}
+	_body, _err := client.RegisterAppResourcePermissionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13500,6 +17432,94 @@ func (client *Client) ReplaceKnowledgeBaseSourceFile(request *ReplaceKnowledgeBa
 
 // Summary:
 //
+// 覆盖或清空手动记忆
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - ReplaceManualMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplaceManualMemoryResponse
+func (client *Client) ReplaceManualMemoryWithOptions(request *ReplaceManualMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReplaceManualMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["content"] = request.Content
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OwnerType) {
+		body["ownerType"] = request.OwnerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReplaceManualMemory"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/replaceManualMemory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReplaceManualMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 覆盖或清空手动记忆
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - ReplaceManualMemoryRequest
+//
+// @return ReplaceManualMemoryResponse
+func (client *Client) ReplaceManualMemory(request *ReplaceManualMemoryRequest) (_result *ReplaceManualMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReplaceManualMemoryResponse{}
+	_body, _err := client.ReplaceManualMemoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Replaces all object binding information under a specified data source.
 //
 // Description:
@@ -13713,6 +17733,94 @@ func (client *Client) ReplaceSourceFile(request *ReplaceSourceFileRequest) (_res
 	headers := make(map[string]*string)
 	_result = &ReplaceSourceFileResponse{}
 	_body, _err := client.ReplaceSourceFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # RerunNodeAI
+//
+// Description:
+//
+// 重跑失败的工作流节点
+//
+// @param request - RerunNodeAIRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RerunNodeAIResponse
+func (client *Client) RerunNodeAIWithOptions(request *RerunNodeAIRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RerunNodeAIResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["nodeId"] = request.NodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RerunNodeAI"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/rerunNodeAI"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RerunNodeAIResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # RerunNodeAI
+//
+// Description:
+//
+// 重跑失败的工作流节点
+//
+// @param request - RerunNodeAIRequest
+//
+// @return RerunNodeAIResponse
+func (client *Client) RerunNodeAI(request *RerunNodeAIRequest) (_result *RerunNodeAIResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RerunNodeAIResponse{}
+	_body, _err := client.RerunNodeAIWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13941,6 +18049,266 @@ func (client *Client) ResetToken(request *ResetTokenRequest) (_result *ResetToke
 	headers := make(map[string]*string)
 	_result = &ResetTokenResponse{}
 	_body, _err := client.ResetTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ResolveWorkItemArtifactAccess
+//
+// Description:
+//
+// 有效成员解析工作项产物短期签名下载地址
+//
+// @param request - ResolveWorkItemArtifactAccessRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResolveWorkItemArtifactAccessResponse
+func (client *Client) ResolveWorkItemArtifactAccessWithOptions(request *ResolveWorkItemArtifactAccessRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResolveWorkItemArtifactAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactId) {
+		body["artifactId"] = request.ArtifactId
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResolveWorkItemArtifactAccess"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/resolveWorkItemArtifactAccess"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResolveWorkItemArtifactAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ResolveWorkItemArtifactAccess
+//
+// Description:
+//
+// 有效成员解析工作项产物短期签名下载地址
+//
+// @param request - ResolveWorkItemArtifactAccessRequest
+//
+// @return ResolveWorkItemArtifactAccessResponse
+func (client *Client) ResolveWorkItemArtifactAccess(request *ResolveWorkItemArtifactAccessRequest) (_result *ResolveWorkItemArtifactAccessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResolveWorkItemArtifactAccessResponse{}
+	_body, _err := client.ResolveWorkItemArtifactAccessWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ResolveWorkItemAttachmentAccess
+//
+// Description:
+//
+// 有效成员解析工作项输入附件短期预览地址
+//
+// @param request - ResolveWorkItemAttachmentAccessRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResolveWorkItemAttachmentAccessResponse
+func (client *Client) ResolveWorkItemAttachmentAccessWithOptions(request *ResolveWorkItemAttachmentAccessRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResolveWorkItemAttachmentAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AttachmentId) {
+		body["attachmentId"] = request.AttachmentId
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResolveWorkItemAttachmentAccess"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/resolveWorkItemAttachmentAccess"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResolveWorkItemAttachmentAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ResolveWorkItemAttachmentAccess
+//
+// Description:
+//
+// 有效成员解析工作项输入附件短期预览地址
+//
+// @param request - ResolveWorkItemAttachmentAccessRequest
+//
+// @return ResolveWorkItemAttachmentAccessResponse
+func (client *Client) ResolveWorkItemAttachmentAccess(request *ResolveWorkItemAttachmentAccessRequest) (_result *ResolveWorkItemAttachmentAccessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResolveWorkItemAttachmentAccessResponse{}
+	_body, _err := client.ResolveWorkItemAttachmentAccessWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ResumeWorkItem
+//
+// Description:
+//
+// 有效成员从当前 Plan 暂停点恢复工作项
+//
+// @param request - ResumeWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeWorkItemResponse
+func (client *Client) ResumeWorkItemWithOptions(request *ResumeWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumeWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/resumeWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ResumeWorkItem
+//
+// Description:
+//
+// 有效成员从当前 Plan 暂停点恢复工作项
+//
+// @param request - ResumeWorkItemRequest
+//
+// @return ResumeWorkItemResponse
+func (client *Client) ResumeWorkItem(request *ResumeWorkItemRequest) (_result *ResumeWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeWorkItemResponse{}
+	_body, _err := client.ResumeWorkItemWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15194,6 +19562,94 @@ func (client *Client) SaveOutputFileToResource(request *SaveOutputFileToResource
 
 // Summary:
 //
+// # ScheduleWorkItem
+//
+// Description:
+//
+// 有效成员幂等排产工作项并物化固定 Plan
+//
+// @param request - ScheduleWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScheduleWorkItemResponse
+func (client *Client) ScheduleWorkItemWithOptions(request *ScheduleWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ScheduleWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		body["idempotencyKey"] = request.IdempotencyKey
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ScheduleWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/scheduleWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ScheduleWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ScheduleWorkItem
+//
+// Description:
+//
+// 有效成员幂等排产工作项并物化固定 Plan
+//
+// @param request - ScheduleWorkItemRequest
+//
+// @return ScheduleWorkItemResponse
+func (client *Client) ScheduleWorkItem(request *ScheduleWorkItemRequest) (_result *ScheduleWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ScheduleWorkItemResponse{}
+	_body, _err := client.ScheduleWorkItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Winnexo 轻量工作台搜索阿里钉群聊。
 //
 // Description:
@@ -15298,11 +19754,11 @@ func (client *Client) SearchAliDingGroupChats(request *SearchAliDingGroupChatsRe
 
 // Summary:
 //
-// Sends a session message asynchronously.
+// Asynchronously sends a session message.
 //
 // Description:
 //
-// Sends a session message asynchronously.
+// Asynchronously sends a session message.
 //
 // @param tmpReq - SendAsyncChatMessageRequest
 //
@@ -15413,11 +19869,11 @@ func (client *Client) SendAsyncChatMessageWithOptions(tmpReq *SendAsyncChatMessa
 
 // Summary:
 //
-// Sends a session message asynchronously.
+// Asynchronously sends a session message.
 //
 // Description:
 //
-// Sends a session message asynchronously.
+// Asynchronously sends a session message.
 //
 // @param request - SendAsyncChatMessageRequest
 //
@@ -15631,6 +20087,94 @@ func (client *Client) SendChatMessage(request *SendChatMessageRequest) (_result 
 
 // Summary:
 //
+// # SetWorkItemPinned
+//
+// Description:
+//
+// 有效成员设置工作项个人置顶
+//
+// @param request - SetWorkItemPinnedRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWorkItemPinnedResponse
+func (client *Client) SetWorkItemPinnedWithOptions(request *SetWorkItemPinnedRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SetWorkItemPinnedResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Pinned) {
+		body["pinned"] = request.Pinned
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetWorkItemPinned"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/setWorkItemPinned"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetWorkItemPinnedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # SetWorkItemPinned
+//
+// Description:
+//
+// 有效成员设置工作项个人置顶
+//
+// @param request - SetWorkItemPinnedRequest
+//
+// @return SetWorkItemPinnedResponse
+func (client *Client) SetWorkItemPinned(request *SetWorkItemPinnedRequest) (_result *SetWorkItemPinnedResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetWorkItemPinnedResponse{}
+	_body, _err := client.SetWorkItemPinnedWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops conversation generation.
 //
 // @param request - StopChatMessageRequest
@@ -15800,6 +20344,96 @@ func (client *Client) StreamChatMessage(messageId *string, request *StreamChatMe
 
 // Summary:
 //
+// # SubmitTodo
+//
+// Description:
+//
+// 提交待办作答结果；本人重复提交幂等返回首次结果，他人抢先返回 409 AlreadyCompleted
+//
+// @param tmpReq - SubmitTodoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitTodoResponse
+func (client *Client) SubmitTodoWithOptions(tmpReq *SubmitTodoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitTodoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitTodoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Answers) {
+		request.AnswersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Answers, dara.String("answers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AnswersShrink) {
+		body["answers"] = request.AnswersShrink
+	}
+
+	if !dara.IsNil(request.TodoId) {
+		body["todoId"] = request.TodoId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitTodo"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/submitTodo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitTodoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # SubmitTodo
+//
+// Description:
+//
+// 提交待办作答结果；本人重复提交幂等返回首次结果，他人抢先返回 409 AlreadyCompleted
+//
+// @param request - SubmitTodoRequest
+//
+// @return SubmitTodoResponse
+func (client *Client) SubmitTodo(request *SubmitTodoRequest) (_result *SubmitTodoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitTodoResponse{}
+	_body, _err := client.SubmitTodoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Pushes organizational structure synchronization.
 //
 // Description:
@@ -15933,6 +20567,94 @@ func (client *Client) SyncOrgStructure(request *SyncOrgStructureRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &SyncOrgStructureResponse{}
 	_body, _err := client.SyncOrgStructureWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # TerminateInstance
+//
+// Description:
+//
+// 终止当前工作流实例
+//
+// @param request - TerminateInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminateInstanceResponse
+func (client *Client) TerminateInstanceWithOptions(request *TerminateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TerminateInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Reason) {
+		body["reason"] = request.Reason
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TerminateInstance"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/terminateInstance"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TerminateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # TerminateInstance
+//
+// Description:
+//
+// 终止当前工作流实例
+//
+// @param request - TerminateInstanceRequest
+//
+// @return TerminateInstanceResponse
+func (client *Client) TerminateInstance(request *TerminateInstanceRequest) (_result *TerminateInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TerminateInstanceResponse{}
+	_body, _err := client.TerminateInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16318,6 +21040,100 @@ func (client *Client) TranscribeChatVoiceAdvance(request *TranscribeChatVoiceAdv
 	}
 
 	_result = transcribeChatVoiceResp
+	return _result, _err
+}
+
+// Summary:
+//
+// # TransferTodo
+//
+// Description:
+//
+// 转办待办给指定用户；目标剔除操作人本人，整单原子校验
+//
+// @param tmpReq - TransferTodoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferTodoResponse
+func (client *Client) TransferTodoWithOptions(tmpReq *TransferTodoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TransferTodoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &TransferTodoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TargetUserIds) {
+		request.TargetUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetUserIds, dara.String("targetUserIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.TargetUserIdsShrink) {
+		body["targetUserIds"] = request.TargetUserIdsShrink
+	}
+
+	if !dara.IsNil(request.TodoId) {
+		body["todoId"] = request.TodoId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TransferTodo"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/transferTodo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TransferTodoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # TransferTodo
+//
+// Description:
+//
+// 转办待办给指定用户；目标剔除操作人本人，整单原子校验
+//
+// @param request - TransferTodoRequest
+//
+// @return TransferTodoResponse
+func (client *Client) TransferTodo(request *TransferTodoRequest) (_result *TransferTodoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TransferTodoResponse{}
+	_body, _err := client.TransferTodoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -17275,6 +22091,98 @@ func (client *Client) UpdateKnowledgeBaseSourceTags(request *UpdateKnowledgeBase
 
 // Summary:
 //
+// 更新自动记忆拾取开关
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - UpdateMemoryAutoExtractionSwitchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryAutoExtractionSwitchResponse
+func (client *Client) UpdateMemoryAutoExtractionSwitchWithOptions(request *UpdateMemoryAutoExtractionSwitchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryAutoExtractionSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClearExisting) {
+		body["clearExisting"] = request.ClearExisting
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OwnerType) {
+		body["ownerType"] = request.OwnerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemoryAutoExtractionSwitch"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateMemoryAutoExtractionSwitch"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemoryAutoExtractionSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自动记忆拾取开关
+//
+// Description:
+//
+// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+//
+// @param request - UpdateMemoryAutoExtractionSwitchRequest
+//
+// @return UpdateMemoryAutoExtractionSwitchResponse
+func (client *Client) UpdateMemoryAutoExtractionSwitch(request *UpdateMemoryAutoExtractionSwitchRequest) (_result *UpdateMemoryAutoExtractionSwitchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMemoryAutoExtractionSwitchResponse{}
+	_body, _err := client.UpdateMemoryAutoExtractionSwitchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a scheduled task.
 //
 // Description:
@@ -17978,6 +22886,238 @@ func (client *Client) UpdateUserInfo(request *UpdateUserInfoRequest) (_result *U
 	headers := make(map[string]*string)
 	_result = &UpdateUserInfoResponse{}
 	_body, _err := client.UpdateUserInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateWorkItem
+//
+// Description:
+//
+// 有效成员按乐观版本编辑工作项；workflowTemplateIds 未传保持绑定
+//
+// @param tmpReq - UpdateWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkItemResponse
+func (client *Client) UpdateWorkItemWithOptions(tmpReq *UpdateWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateWorkItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Attachments) {
+		request.AttachmentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attachments, dara.String("attachments"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CollaboratorUserIds) {
+		request.CollaboratorUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CollaboratorUserIds, dara.String("collaboratorUserIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WorkflowTemplateIds) {
+		request.WorkflowTemplateIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowTemplateIds, dara.String("workflowTemplateIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptanceCriteria) {
+		body["acceptanceCriteria"] = request.AcceptanceCriteria
+	}
+
+	if !dara.IsNil(request.AttachmentsShrink) {
+		body["attachments"] = request.AttachmentsShrink
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.CollaboratorUserIdsShrink) {
+		body["collaboratorUserIds"] = request.CollaboratorUserIdsShrink
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["conversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.OwnerUserId) {
+		body["ownerUserId"] = request.OwnerUserId
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	if !dara.IsNil(request.WorkflowTemplateIdsShrink) {
+		body["workflowTemplateIds"] = request.WorkflowTemplateIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateWorkItem
+//
+// Description:
+//
+// 有效成员按乐观版本编辑工作项；workflowTemplateIds 未传保持绑定
+//
+// @param request - UpdateWorkItemRequest
+//
+// @return UpdateWorkItemResponse
+func (client *Client) UpdateWorkItem(request *UpdateWorkItemRequest) (_result *UpdateWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkItemResponse{}
+	_body, _err := client.UpdateWorkItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateWorkflowTemplate
+//
+// Description:
+//
+// 有效成员整体覆盖更新工作流模板；最后一次保存生效
+//
+// @param tmpReq - UpdateWorkflowTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkflowTemplateResponse
+func (client *Client) UpdateWorkflowTemplateWithOptions(tmpReq *UpdateWorkflowTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateWorkflowTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Definition) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, dara.String("definition"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.DefinitionShrink) {
+		body["definition"] = request.DefinitionShrink
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkflowTemplate"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateWorkflowTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkflowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateWorkflowTemplate
+//
+// Description:
+//
+// 有效成员整体覆盖更新工作流模板；最后一次保存生效
+//
+// @param request - UpdateWorkflowTemplateRequest
+//
+// @return UpdateWorkflowTemplateResponse
+func (client *Client) UpdateWorkflowTemplate(request *UpdateWorkflowTemplateRequest) (_result *UpdateWorkflowTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkflowTemplateResponse{}
+	_body, _err := client.UpdateWorkflowTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

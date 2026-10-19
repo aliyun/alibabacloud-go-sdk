@@ -46,13 +46,13 @@ type CheckHealthResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The name of the currently effective digital employee. This value is empty if not configured.
+	// The name of the currently effective digital employee. This field is empty if not configured.
 	//
 	// example:
 	//
 	// pcitc-magent
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
