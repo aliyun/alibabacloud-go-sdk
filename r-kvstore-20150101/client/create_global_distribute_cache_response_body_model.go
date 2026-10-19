@@ -18,13 +18,13 @@ type iCreateGlobalDistributeCacheResponseBody interface {
 }
 
 type CreateGlobalDistributeCacheResponseBody struct {
-	// The ID of the distributed instance.
+	// The distributed instance ID.
 	//
 	// example:
 	//
 	// gr-8vbzg1y6m****t38p
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

@@ -16,11 +16,11 @@ type iCheckCloudResourceAuthorizedResponseBody interface {
 }
 
 type CheckCloudResourceAuthorizedResponseBody struct {
-	// Indicates whether the instance is authorized to use KMS. Valid values:
+	// The authorization status. Valid values:
 	//
-	// 	- **0**: The instance is authorized to use KMS.
+	// 	- **0**: Not authorized.
 	//
-	// 	- **1**: The instance is not authorized to use KMS.
+	// 	- **1**: Authorized.
 	//
 	// 	- **2**: KMS is not activated. For more information, see [Activate KMS](https://help.aliyun.com/document_detail/153781.html).
 	//
@@ -28,7 +28,7 @@ type CheckCloudResourceAuthorizedResponseBody struct {
 	//
 	// 1
 	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

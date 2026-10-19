@@ -34,19 +34,17 @@ type iSwitchNetworkRequest interface {
 }
 
 type SwitchNetworkRequest struct {
-	// The retention period of the classic network endpoint. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
+	// The retention period of the classic network connectivity endpoint. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
 	//
-	// >
+	// > 	- This parameter is active and required only when **RetainClassic*	- is set to **True**.
 	//
-	// 	- This parameter is available and required only when the **RetainClassic*	- parameter is set to **True**.
-	//
-	// 	- After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](https://help.aliyun.com/document_detail/473793.html) operation to modify the retention period of the classic network endpoint.
+	// > 	- After the switchover is complete, you can invoke [ModifyInstanceNetExpireTime](https://help.aliyun.com/document_detail/473793.html) to modify the retention period of the classic network connectivity endpoint.
 	//
 	// example:
 	//
 	// 30
 	ClassicExpiredDays *string `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+	// The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,40 +56,38 @@ type SwitchNetworkRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to retain the original classic network endpoint after you switch the instance from classic network to VPC. Default value: False. Valid values:
+	// Specifies whether to retain the classic network connectivity endpoint when you switch the instance from the classic network to a VPC. Valid values:
 	//
-	// 	- **True**: retains the classic network endpoint.
+	// 	- **True**: The classic network endpoint is retained.
 	//
-	// 	- **False**: does not retain the classic network endpoint.
+	// 	- **False**: The classic network endpoint is not retained. This is the default value.
 	//
-	// > This parameter is available only when the network type of the instance is classic network.
+	// > This parameter is active only when the network type of the instance is classic network.
 	//
 	// example:
 	//
 	// True
 	RetainClassic *string `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The network type to which you want to switch. If you want to switch to VPC network, Set the value to **VPC**.
+	// The network type to which you want to switch. Set the value to **VPC**.
 	//
 	// example:
 	//
 	// VPC
 	TargetNetworkType *string `json:"TargetNetworkType,omitempty" xml:"TargetNetworkType,omitempty"`
-	// The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the vSwitch ID.
+	// The ID of the vSwitch in the destination VPC. You can call [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) to query vSwitch IDs.
 	//
-	// >  The vSwitch and the instance must be deployed in the same zone.
+	// > The vSwitch must be in the same zone as the instance.
 	//
 	// example:
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the VPC ID.
+	// The ID of the VPC to which you want to switch. You can call [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) to query VPC IDs.
 	//
-	// >
+	// > 	- The VPC must be in the same region as the instance.
 	//
-	// 	- The VPC and the instance must be deployed in the same region.
-	//
-	// 	- After you set this parameter, you must also set the **VSwitchId*	- parameter.
+	// > 	- After you specify this parameter, you must also specify the **VSwitchId*	- parameter.
 	//
 	// example:
 	//

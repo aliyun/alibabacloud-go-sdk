@@ -18,7 +18,7 @@ type iUnlockDBInstanceWriteResponseBody interface {
 }
 
 type UnlockDBInstanceWriteResponseBody struct {
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//

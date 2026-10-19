@@ -28,17 +28,17 @@ type iRestartInstanceRequest interface {
 }
 
 type RestartInstanceRequest struct {
-	// The time when you want to restart the instance. Default value: Immediately. Valid values:
+	// The time when the instance is restarted. Valid values:
 	//
-	// 	- **Immediately**: immediately restarts the instance.
+	// 	- **Immediately**: The instance is restarted immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: restarts the instance during the maintenance window.
+	// 	- **MaintainTime**: The instance is restarted during the maintenance window.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -51,13 +51,13 @@ type RestartInstanceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to update to the latest minor version when the instance is restarted. Valid values:
+	// Specifies whether to upgrade the minor version to the latest version when the instance is restarted. Valid values:
 	//
-	// 	- **true**: updates the minor version.
+	// 	- **true**: Upgrades the minor version.
 	//
-	// 	- **false**: does not update the minor version.
+	// 	- **false**: Does not upgrade the minor version.
 	//
-	// > The default value is **true**.
+	// > Default value: **true**.
 	//
 	// example:
 	//

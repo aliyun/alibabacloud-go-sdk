@@ -42,21 +42,21 @@ type iDescribeAuditRecordsRequest interface {
 }
 
 type DescribeAuditRecordsRequest struct {
-	// The username of the account. If you do not specify this parameter, all accounts of the instance are queried.
+	// The name of the account. If you do not specify this parameter, the audit logs of all accounts are queried.
 	//
 	// example:
 	//
 	// demo
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The name of the database in the instance. If you do not specify this parameter, all databases are queried. Valid values: 0 to 255. 0 specifies database 0.
+	// The database in the instance. If you do not specify this parameter, the audit logs of all databases are queried. Valid values: 0 to 255. For example, 0 indicates database 0.
 	//
 	// example:
 	//
 	// 0
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > We recommend that you specify a time range of 10 minutes or less because audit logs contain a great number of entries. Do not specify a time range that is longer than one day.
+	// > Because audit logs contain a large number of entries, specify a time range of up to 10 minutes and a maximum of 1 day.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// 2019-03-25T12:10:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IP address of the client. If you do not specify this parameter, this call applies to all clients.
+	// The IP address of the client. If you do not specify this parameter, the audit logs of all IP addresses are queried.
 	//
 	// example:
 	//
@@ -78,13 +78,11 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node in the instance. You can set this parameter to query the monitoring data of a specified node.
+	// The ID of the node in the instance. Specify this parameter to query the monitoring information of a specific node.
 	//
-	// >
+	// > 	- This parameter is available only when the instance uses the read/write splitting or cluster architecture.
 	//
-	// 	- This parameter is available only for read/write splitting and cluster instances.
-	//
-	// 	- You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to query node IDs.
+	// > 	- You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to query the node ID.
 	//
 	// example:
 	//
@@ -92,21 +90,21 @@ type DescribeAuditRecordsRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword based on which the audit logs are queried. You can specify a command as a keyword to query logs. By default, all commands are queried.
+	// The keyword used to query audit logs based on a specific command. By default, the audit logs of all executed commands are queried.
 	//
-	// > You can specify only a single keyword in each call.
+	// > You can specify only one keyword.
 	//
 	// example:
 	//
@@ -115,7 +113,7 @@ type DescribeAuditRecordsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

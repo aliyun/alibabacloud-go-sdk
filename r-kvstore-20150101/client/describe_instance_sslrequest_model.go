@@ -24,7 +24,7 @@ type iDescribeInstanceSSLRequest interface {
 }
 
 type DescribeInstanceSSLRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

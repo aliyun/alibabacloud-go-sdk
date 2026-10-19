@@ -30,7 +30,7 @@ type ModifyInstanceSSLResponseBody struct {
 	//
 	// AD7E16AA-6B23-43BF-979C-07D957FB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

@@ -58,19 +58,19 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The detailed configuration of the instance.
+	// The detailed configurations of the instance.
 	//
 	// example:
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The internal endpoint of the Redis instance.
+	// The internal network connection endpoint of the Redis instance.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx**.redis.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections supported by the instance.
+	// The maximum number of connections to the instance.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// apitest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The current status of the instance. The return value is fixed as Creating.
+	// The current status of the instance. The value is fixed as Creating.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The queries per second (QPS). This value is the theoretical value for the current instance specifications.
+	// The queries per second (QPS). This is the theoretical value for the current instance specifications.
 	//
 	// example:
 	//
 	// 100000
 	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance is deployed.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// 5DEA3CC9-F81D-4387-8E97-CEA40F09****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task flow that is executed for the creation.
+	// The ID of the task flow executed for creation.
 	//
 	// example:
 	//
 	// 1111
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The zone ID of the instance.
+	// The ID of the zone where the instance is deployed.
 	//
 	// example:
 	//

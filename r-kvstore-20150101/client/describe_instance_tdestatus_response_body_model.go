@@ -16,7 +16,7 @@ type iDescribeInstanceTDEStatusResponseBody interface {
 }
 
 type DescribeInstanceTDEStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type DescribeInstanceTDEStatusResponseBody struct {
 	//
 	// 	- **Enabled**: TDE is enabled.
 	//
-	// 	- **Disable**: TDE is disabled.
+	// 	- **Disabled**: TDE is disabled.
 	//
 	// example:
 	//

@@ -17,7 +17,7 @@ type iDescribeParameterModificationHistoryResponseBody interface {
 
 type DescribeParameterModificationHistoryResponseBody struct {
 	HistoricalParameters *DescribeParameterModificationHistoryResponseBodyHistoricalParameters `json:"HistoricalParameters,omitempty" xml:"HistoricalParameters,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

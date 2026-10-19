@@ -14,7 +14,7 @@ type iSwitchInstanceProxyResponseBody interface {
 }
 
 type SwitchInstanceProxyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

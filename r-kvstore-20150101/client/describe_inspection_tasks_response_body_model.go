@@ -18,11 +18,16 @@ type iDescribeInspectionTasksResponseBody interface {
 }
 
 type DescribeInspectionTasksResponseBody struct {
+	// The task data.
 	Data *DescribeInspectionTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D9F3768-EDA9-4811-943E-42C8006E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,15 +79,22 @@ func (s *DescribeInspectionTasksResponseBody) Validate() error {
 }
 
 type DescribeInspectionTasksResponseBodyData struct {
+	// The list of tasks.
 	Items []*DescribeInspectionTasksResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6
@@ -147,46 +159,86 @@ func (s *DescribeInspectionTasksResponseBodyData) Validate() error {
 }
 
 type DescribeInspectionTasksResponseBodyDataItems struct {
+	// The time when the task was created.
+	//
+	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2024-07-01T02:06:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time of the task.
+	//
+	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2025-09-23T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The completion time of the task.
+	//
+	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2026-01-09T02:13:01Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The specified inspection items. The following inspection items are supported:
+	//
+	// - RESOURCE_USAGE
+	//
+	// - BIGKEY
+	//
+	// - HOTKEY
+	//
+	// - PERFORMANCE_METRICS
+	//
+	// - SLOWLOG
+	//
 	// example:
 	//
 	// PERFORMANCE_METRICS
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
+	// The list of associated instance IDs.
+	//
 	// example:
 	//
 	// r-uf6ns8txov3mp9jxxx
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The language of the report.
+	//
 	// example:
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The ID of the scheduled task.
+	//
 	// example:
 	//
 	// sch-4dfb08ddf9f84855bacca35axxx
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The source of the task.
+	//
 	// example:
 	//
 	// scheduler|
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The start time of the task.
+	//
+	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2026-05-30T02:11:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// SUCCEEDED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// tit-dca42f85c73644e0ab5c80ef641xxx

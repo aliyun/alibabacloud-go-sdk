@@ -14,7 +14,7 @@ type iModifyInstanceTDEResponseBody interface {
 }
 
 type ModifyInstanceTDEResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

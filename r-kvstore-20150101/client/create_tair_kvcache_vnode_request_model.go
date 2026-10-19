@@ -64,7 +64,7 @@ type iCreateTairKVCacheVNodeRequest interface {
 }
 
 type CreateTairKVCacheVNodeRequest struct {
-	// Specifies whether to automatically complete the payment. The value must be **true**.
+	// Specifies whether to enable automatic payment. Set the value to **true**.
 	//
 	// example:
 	//
@@ -72,15 +72,15 @@ type CreateTairKVCacheVNodeRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: Enables auto-renewal.
+	// 	- **true**: enables auto-renewal.
 	//
-	// - **false*	- (default): Disables auto-renewal.
+	// 	- **false*	- (default): disables auto-renewal.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period, in months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+	// The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
 	//
 	// > This parameter is required when the **AutoRenew*	- parameter is set to **true**.
 	//
@@ -88,31 +88,31 @@ type CreateTairKVCacheVNodeRequest struct {
 	//
 	// 1
 	AutoRenewPeriod *string `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// Specifies whether to use a coupon. Valid values:
+	// Specifies whether to use a voucher. Valid values:
 	//
-	// - **true**: Use a coupon.
+	// 	- **true**: uses a voucher.
 	//
-	// - **false*	- (default): Do not use a coupon.
+	// 	- **false*	- (default): does not use a voucher.
 	//
 	// example:
 	//
 	// false
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// Additional business information, such as a promotion ID.
+	// The extended information, such as the campaign ID and business information.
 	//
 	// example:
 	//
 	// 000000000
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The billing method for the instance. Valid value:
+	// The billing method. Valid values:
 	//
-	// - **PrePaid**: Subscription. If you specify this value, you must also specify the **Period*	- parameter.
+	// 	- **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period*	- parameter.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// A client-generated token that ensures request idempotence. This token must be unique across requests, is case-sensitive, and cannot exceed 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -132,19 +132,18 @@ type CreateTairKVCacheVNodeRequest struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run on the instance creation request. Valid values:
 	//
-	// - **true**: Performs a dry run and does not create the instance. The system checks the request parameters, request format, business limits, and available inventory. If the check fails, the system returns the corresponding error. If the check passes, the system returns the `DryRunOperation` error code.
+	// 	- **true**: performs a dry run without creating the instance. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the `DryRunOperation` error code.
 	//
-	// - **false*	- (default): Sends a normal request. If the check passes, the system creates the instance.
+	// 	- **false*	- (default): sends the request. If the request passes the dry run, the instance is created.
 	//
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// This parameter is no longer used.
+	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	ElasticTimeRange *string `json:"ElasticTimeRange,omitempty" xml:"ElasticTimeRange,omitempty"`
-	// The instance specification.
+	// The instance type.
 	//
 	// This parameter is required.
 	//
@@ -152,7 +151,7 @@ type CreateTairKVCacheVNodeRequest struct {
 	//
 	// kvcache.cu.g4b.2
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The name of the new instance. The name must be 2 to 80 characters long and must start with a letter (case-insensitive) or a Chinese character. Spaces and the following special characters are not supported: `@/:=”<>{[]}`.
+	// The name of the new instance. The name must be 2 to 80 characters in length and start with a letter or a Chinese character. It cannot contain spaces or the following special characters: `@/:=”<>{[]}`.
 	//
 	// example:
 	//
@@ -160,7 +159,7 @@ type CreateTairKVCacheVNodeRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription period in months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
+	// The subscription duration. Unit: months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
 	//
 	// > This parameter is required when the **ChargeType*	- parameter is set to **PrePaid**.
 	//
@@ -168,7 +167,7 @@ type CreateTairKVCacheVNodeRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region where you want to create the instance.
+	// The region ID. Specifies the region where you want to create the instance.
 	//
 	// This parameter is required.
 	//
@@ -176,13 +175,11 @@ type CreateTairKVCacheVNodeRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance will belong.
+	// The ID of the destination resource group.
 	//
-	// > - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or view resource group IDs in the console. For more information, see [View the basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// > 	- You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or go to the console to obtain the resource group ID list. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
-	// >
-	//
-	// > - Before changing the resource group of an instance, call the [ListResources](158866) API to view the current resource group of the instance.
+	// > 	- Before you change the resource group to which the instance belongs, you can invoke the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
 	//
 	// example:
 	//
@@ -191,13 +188,15 @@ type CreateTairKVCacheVNodeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tags to add to the instance. You can specify a maximum of five tags.
+	// The tag information of the instance.
 	Tag []*CreateTairKVCacheVNodeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// This parameter is no longer used.
-	VNodeType *string `json:"VNodeType,omitempty" xml:"VNodeType,omitempty"`
-	// The ID of the vSwitch for the instance. The vSwitch must belong to the VPC that is associated with the specified virtual cluster. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to obtain the vSwitch ID.
+	// example:
 	//
-	// > The vSwitch must be in the same zone as the instance.
+	// fixed
+	VNodeType *string `json:"VNodeType,omitempty" xml:"VNodeType,omitempty"`
+	// The vSwitch ID of the instance. The vSwitch must belong to the VPC associated with the specified VCluster virtual cluster. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation of the VPC API to query the vSwitch ID.
+	//
+	// > The zone of the vSwitch must be the same as the zone of the instance.
 	//
 	// This parameter is required.
 	//
@@ -205,7 +204,7 @@ type CreateTairKVCacheVNodeRequest struct {
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual cluster that hosts the VNode.
+	// The instance ID of the VCluster virtual cluster where the VNode resides.
 	//
 	// This parameter is required.
 	//
@@ -213,7 +212,7 @@ type CreateTairKVCacheVNodeRequest struct {
 	//
 	// tk-2ze4bba3c8fe****
 	VkName *string `json:"VkName,omitempty" xml:"VkName,omitempty"`
-	// The ID of the zone where you want to create the instance.
+	// The zone ID. Specifies the zone where you want to create the instance.
 	//
 	// This parameter is required.
 	//
@@ -479,7 +478,7 @@ func (s *CreateTairKVCacheVNodeRequest) Validate() error {
 }
 
 type CreateTairKVCacheVNodeRequestTag struct {
-	// The tag key.
+	// The tag key. A tag key and a tag value form a tag key-value pair.
 	//
 	// > You can specify up to 5 tag key-value pairs at a time.
 	//
@@ -489,7 +488,7 @@ type CreateTairKVCacheVNodeRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// > **N*	- represents the index of a tag, starting from 1. For example, **Tag.1.Value*	- is the value of the first tag.
+	// > **N*	- specifies the sequence number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//
 	// example:
 	//

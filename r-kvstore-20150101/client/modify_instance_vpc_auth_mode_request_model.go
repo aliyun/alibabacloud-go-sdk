@@ -26,7 +26,7 @@ type iModifyInstanceVpcAuthModeRequest interface {
 }
 
 type ModifyInstanceVpcAuthModeRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -39,13 +39,13 @@ type ModifyInstanceVpcAuthModeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to disable password-free access. Valid values:
+	// The authentication mode in a VPC. Valid values:
 	//
-	// 	- **Open**: disables password-free access.
+	// 	- **Open**: Uses password authentication.
 	//
-	// 	- **Close**: enables password-free access.
+	// 	- **Close**: Disables password authentication and enables password-free access.
 	//
-	// >  Default value: **Open**.
+	// > Default value: **Open**.
 	//
 	// This parameter is required.
 	//

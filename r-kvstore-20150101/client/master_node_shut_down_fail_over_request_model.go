@@ -26,39 +26,29 @@ type iMasterNodeShutDownFailOverRequest interface {
 }
 
 type MasterNodeShutDownFailOverRequest struct {
-	// The resource category. Set the value to instance.
+	// The resource type. Set the value to `instance`.
 	//
 	// example:
 	//
 	// instance
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 	- Specify: This mode allows you to specify a database node to use.
+	// - **Specify**: Specifies the data nodes.
 	//
-	// 	- Random: In this mode, a random database node is selected when no database node is specified.
+	// - **Random**: The system randomly simulates a failure for one-fourth of the data nodes (rounded up to the nearest integer, with a minimum of 1). This parameter takes effect only when no data nodes are specified.
 	//
 	// example:
 	//
 	// Random
 	DBFaultMode *string `json:"DBFaultMode,omitempty" xml:"DBFaultMode,omitempty"`
-	// The IDs of the database nodes.
+	// The specified data nodes.
 	//
 	// example:
 	//
 	// r-rdsdavinx01003-db-0,r-rdsdavinx01003-db-1
 	DBNodes *string `json:"DBNodes,omitempty" xml:"DBNodes,omitempty"`
-	// 	- **Hard**: stimulates a hardware failure that cannot be recovered. In this case, a high-availability switchover is triggered.
+	// - **Hard**: Simulates an unrecoverable hardware failure. A switchover (HA) is directly triggered.
 	//
-	// 	- **Soft*	- (default): stimulates a hardware failure that can be recovered. In this case, the system first attempts to recover the faulty node. If the attempt fails, a high-availability switchover is triggered.
-	//
-	// Valid values:
-	//
-	// 	- Safe
-	//
-	// 	- UnSafe
-	//
-	// 	- Hard
-	//
-	// 	- Soft
+	// - **Soft*	- (default): Simulates a recoverable hardware failure. The system preferentially attempts to recover the failed node. If the recovery fails, a switchover (HA) is triggered.
 	//
 	// example:
 	//
@@ -70,15 +60,15 @@ type MasterNodeShutDownFailOverRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 	- Specify: This mode allows you to specify a proxy node to use.
+	// - **Specify**: Specifies the proxy nodes.
 	//
-	// 	- Random: In this mode, a random proxy node is selected when no proxy node is specified.
+	// - **Random**: The system randomly simulates a failure for one-fourth of the proxy nodes (rounded up to the nearest integer, with a minimum of 1). This parameter takes effect only when no proxy nodes are specified.
 	//
 	// example:
 	//
 	// Specify
 	ProxyFaultMode *string `json:"ProxyFaultMode,omitempty" xml:"ProxyFaultMode,omitempty"`
-	// The IDs of the proxy nodes.
+	// The specified proxy nodes.
 	//
 	// example:
 	//

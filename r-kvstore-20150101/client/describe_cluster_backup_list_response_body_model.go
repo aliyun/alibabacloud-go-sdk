@@ -28,43 +28,45 @@ type iDescribeClusterBackupListResponseBody interface {
 }
 
 type DescribeClusterBackupListResponseBody struct {
-	// The backup sets of the instance. A backup contains the backup sets of all shards in the instance.
+	// The list of cluster backup sets. A cluster backup set contains the backup sets of all nodes in the cluster.
 	ClusterBackups []*DescribeClusterBackupListResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
-	// This parameter does not take effect. Ignore this parameter.
+	// <props="china">The free backup quota of the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see the notice on backup commercialization. Full backups and log backups share this free quota. When you change the instance type, the free quota of the instance changes accordingly.
+	//
+	// <props="intl">This parameter is not in effect. Ignore this parameter.
 	//
 	// example:
 	//
 	// 100000
 	FreeSize *int64 `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
-	// The size of the full backup file of the instance. Unit: bytes. Full backups originate from scheduled backups, manual backups, and backups generated during cache analysis.
+	// The size of full backup files for the current instance. Unit: bytes. Full backups are generated from daily scheduled backups, manual backups, and backups generated during cache analysis.
 	//
-	// >  The value of this parameter is independent of the number and size of returned backup sets. Instead, it represents the size of all valid full backups of the instance.
+	// > This value is independent of the number and size of backup sets returned in the current request. It represents the total size of all valid full backups for the instance.
 	//
 	// example:
 	//
 	// 1000
 	FullStorageSize *int64 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
-	// The size of the log backup file of the instance. Unit: bytes. This parameter is valid only when flashback is enabled.
+	// The size of the instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
 	//
-	// >  The value of this parameter is independent of the number and size of returned backup sets. Instead, it represents the size of all valid log backups of the instance.
+	// > This value is independent of the number and size of backup sets in the current response. It represents the total size of all valid instance log backups for the current instance.
 	//
 	// example:
 	//
 	// 5000
 	LogStorageSize *int64 `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
-	// The maximum number of entries returned.
+	// The maximum number of records returned by the current request.
 	//
 	// example:
 	//
 	// 4
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The page number.
+	// The page number, which is the same as the request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of records per page, which is the same as the request parameter.
 	//
 	// example:
 	//
@@ -172,69 +174,69 @@ func (s *DescribeClusterBackupListResponseBody) Validate() error {
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackups struct {
-	// The backup sets of all shards in the instance.
+	// The collection of backup sets for all child nodes under a single cluster backup set.
 	Backups []*DescribeClusterBackupListResponseBodyClusterBackupsBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
-	// The end time of the backup.
+	// The end time of the cluster backup. The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2024-01-10T17:21:55Z
 	ClusterBackupEndTime *string `json:"ClusterBackupEndTime,omitempty" xml:"ClusterBackupEndTime,omitempty"`
-	// The ID of the backup set.
+	// The cluster backup set ID.
 	//
 	// example:
 	//
 	// cb-zmdqj2m3xyxjtdt0
 	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
-	// The backup mode.
+	// The cluster backup mode.
 	//
 	// example:
 	//
 	// Automated
 	ClusterBackupMode *string `json:"ClusterBackupMode,omitempty" xml:"ClusterBackupMode,omitempty"`
-	// The size of the backup set.
+	// The size of the cluster backup set.
 	//
 	// example:
 	//
 	// 2048
 	ClusterBackupSize *string `json:"ClusterBackupSize,omitempty" xml:"ClusterBackupSize,omitempty"`
-	// The start time of the backup.
+	// The start time of the cluster backup. The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2024-01-10T17:21:25Z
 	ClusterBackupStartTime *string `json:"ClusterBackupStartTime,omitempty" xml:"ClusterBackupStartTime,omitempty"`
-	// The status of the backup set.
+	// The status of the cluster backup set. Valid values:
 	//
-	// 	- OK
+	// - OK: The backup is successful.
 	//
-	// 	- RUNNING
+	// - RUNNING: The backup is in progress.
 	//
-	// 	- Failed
+	// - Other values: The backup failed.
 	//
 	// example:
 	//
 	// OK
 	ClusterBackupStatus *string `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
-	// The time-to-live (TTL) of the backup set, in the format yyyy-MM-ddTHH:mmZ (UTC time).
+	// The expiration time of the backup set. The time is in the yyyy-MM-ddTHH:mmZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-06-01T21:51:22Z
 	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
-	// Indicates whether the backup set is valid. A value of 0 indicates that shard-level backups failed or have not been completed.
+	// Indicates whether the cluster backup set is valid. The value is 0 if the backup sets of child nodes are incomplete or failed.
 	//
 	// example:
 	//
 	// 1
 	IsAvail *int32 `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	// The backup progress. The system displays only the progress of running backup tasks.
+	// The backup progress. This parameter is returned only for backups that are in progress.
 	//
 	// example:
 	//
 	// 100%
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The memory size of a single shard during a full backup. Unit: MB.
+	// The memory size of a single DB node when the full backup is created. Unit: MB.
 	//
 	// example:
 	//
@@ -369,7 +371,7 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	//
 	// http://rdsbakbucket-huhehaote-v2.oss-cn-huhehaote.aliyuncs.com/custins424747958/hins100322105_data_20240110012135.rdb
 	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// The end time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time of the backup. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format and displayed in UTC.
 	//
 	// example:
 	//
@@ -383,13 +385,13 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The internal download URL of the backup file.
 	//
-	// >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the Tair (Redis OSS-compatible) instance. The ECS instance must reside in the same virtual private cloud (VPC) as the Tair (Redis OSS-compatible) instance.
+	// > You can use this URL to download the backup file from an ECS instance that is connected to the current instance. Both instances must reside in the same VPC.
 	//
 	// example:
 	//
 	// http://rdsbakbucket-huhehaote-v2.oss-cn-huhehaote-internal.aliyuncs.com/custins424747958/hins100322105_data_20240110012135.rdb
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	// The name of the backup.
+	// The backup name.
 	//
 	// example:
 	//
@@ -401,23 +403,23 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	//
 	// 1024
 	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time of the backup. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2024-01-09T17:21:30Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The status of the backup. Valid values:
+	// The backup status. Valid values:
 	//
-	// 	- **OK**
+	// 	- **OK**: The backup is successful.
 	//
-	// 	- **ERROR**
+	// 	- **ERROR**: The backup failed.
 	//
 	// example:
 	//
 	// OK
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The database engine. The return value is **redis**.
+	// The database engine type. The value is fixed as **redis**.
 	//
 	// example:
 	//
@@ -425,7 +427,7 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The additional information.
 	ExtraInfo *DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -433,15 +435,15 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Indicates whether the backup set is available. Valid values:
 	//
-	// 	- **0**: unavailable
+	// 	- **0**: unavailable.
 	//
-	// 	- **1**: available
+	// 	- **1**: available.
 	//
 	// example:
 	//
 	// 1
 	IsAvail *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	// This parameter does not take effect. Ignore this parameter.
+	// This parameter is not in effect. Ignore this parameter.
 	//
 	// example:
 	//
@@ -584,7 +586,7 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) Validate() 
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo struct {
-	// The engine version.
+	// The database engine version.
 	//
 	// example:
 	//

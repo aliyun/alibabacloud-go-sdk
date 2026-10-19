@@ -20,16 +20,15 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 type DescribeDBInstanceNetInfoResponseBody struct {
 	// The network type. Valid values:
 	//
-	// - **CLASSIC**: Classic Network.
+	// 	- **CLASSIC**: classic network.
 	//
-	// - **VPC**: VPC.
+	// 	- **VPC**: virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// CLASSIC
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// Details about the instance\\"s network connections.
-	NetInfoItems *DescribeDBInstanceNetInfoResponseBodyNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Struct"`
+	InstanceNetworkType *string                                            `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	NetInfoItems        *DescribeDBInstanceNetInfoResponseBodyNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:

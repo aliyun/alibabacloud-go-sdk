@@ -18,11 +18,16 @@ type iDescribeInspectionSchedulesResponseBody interface {
 }
 
 type DescribeInspectionSchedulesResponseBody struct {
+	// The data.
 	Data *DescribeInspectionSchedulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A501A191-BD70-5E50-98A9-C2A486A82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -74,15 +79,22 @@ func (s *DescribeInspectionSchedulesResponseBody) Validate() error {
 }
 
 type DescribeInspectionSchedulesResponseBodyData struct {
+	// The array of scheduled task configurations.
 	Items []*DescribeInspectionSchedulesResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 3
@@ -147,54 +159,90 @@ func (s *DescribeInspectionSchedulesResponseBodyData) Validate() error {
 }
 
 type DescribeInspectionSchedulesResponseBodyDataItems struct {
+	// The time when the scheduled task configuration was created.
+	//
+	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	//
 	// example:
 	//
 	// 2026-04-21T02:26:18Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 0 3 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// Indicates whether the task is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *int64 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The inspection items.
+	//
+	// >
+	//
+	// > - Supported inspection items include RESOURCE_USAGE, BIGKEY, HOTKEY, PERFORMANCE_METRICS, and SLOWLOG.
+	//
 	// example:
 	//
 	// HOTKEY
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
+	// The time window.
+	//
 	// example:
 	//
 	// 1h
 	InspectionWindow *string `json:"InspectionWindow,omitempty" xml:"InspectionWindow,omitempty"`
+	// The list of associated instance IDs.
+	//
 	// example:
 	//
 	// r-2zed6typz5j6djmb2x
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The next time the task is scheduled to run.
+	//
+	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	//
 	// example:
 	//
 	// 2026-07-29T10:00:00Z
 	NextFireTime *string `json:"NextFireTime,omitempty" xml:"NextFireTime,omitempty"`
+	// The notification configuration.
+	//
 	// example:
 	//
 	// {}
 	NotifyConfig *string `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty"`
+	// The language of the report.
+	//
 	// example:
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The ID of the timed scheduling.
+	//
 	// example:
 	//
 	// sch-b45811bf4bba46c8b6d233551da9xxxx
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The name of the timed scheduling.
+	//
 	// example:
 	//
 	// sch-test
 	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The update time.
+	//
+	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	//
 	// example:
 	//
 	// 2026-07-29T06:50:04Z

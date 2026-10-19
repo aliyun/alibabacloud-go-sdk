@@ -30,8 +30,13 @@ type iDescribeGlobalSecurityIPGroupRequest interface {
 }
 
 type DescribeGlobalSecurityIPGroupRequest struct {
+	// The database engine type. Valid values: redis (Redis engine) and memcache (Memcache engine).
+	//
+	// example:
+	//
+	// redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the global IP whitelist template.
+	// The ID of the IP whitelist template.
 	//
 	// example:
 	//
@@ -39,7 +44,7 @@ type DescribeGlobalSecurityIPGroupRequest struct {
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

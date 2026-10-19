@@ -18,11 +18,16 @@ type iDescribeInspectionTaskReportResponseBody interface {
 }
 
 type DescribeInspectionTaskReportResponseBody struct {
+	// The task report.
 	Data *DescribeInspectionTaskReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 561AFBF1-BE20-44DB-9BD1-6988B53E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,20 +79,30 @@ func (s *DescribeInspectionTaskReportResponseBody) Validate() error {
 }
 
 type DescribeInspectionTaskReportResponseBodyData struct {
+	// The list of associated instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The Markdown text of the report details.
+	//
 	// example:
 	//
-	// # Tair 智能巡检报告\\n\\n## 总览...
+	// # Tair Intelligent Inspection Report\\n\\n## Overview..
 	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
+	// The report language.
+	//
 	// example:
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// SUCCEEDED
-	Status  *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The summary.
 	Summary *DescribeInspectionTaskReportResponseBodyDataSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
+	// The task ID.
+	//
 	// example:
 	//
 	// tit-dca42f85c73644e0ab5c80ef6412xxx
@@ -166,18 +181,26 @@ func (s *DescribeInspectionTaskReportResponseBodyData) Validate() error {
 }
 
 type DescribeInspectionTaskReportResponseBodyDataSummary struct {
+	// The number of high-risk items.
+	//
 	// example:
 	//
 	// 0
 	Error *int64 `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The number of failed items.
+	//
 	// example:
 	//
 	// 0
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The number of normal items.
+	//
 	// example:
 	//
 	// 1
 	Normal *int64 `json:"Normal,omitempty" xml:"Normal,omitempty"`
+	// The number of warning items.
+	//
 	// example:
 	//
 	// 0

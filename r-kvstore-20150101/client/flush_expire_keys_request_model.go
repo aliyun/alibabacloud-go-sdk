@@ -26,19 +26,19 @@ type iFlushExpireKeysRequest interface {
 }
 
 type FlushExpireKeysRequest struct {
-	// The time when you want to delete the expired keys. Default value: Immediately. Valid values:
+	// The execution time. Valid values:
 	//
-	// 	- **Immediately**: deletes the keys immediately.
+	// 	- **Immediately**: Executes the operation immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: deletes the keys during the maintenance window.
+	// 	- **MaintainTime**: Executes the operation during the maintenance window.
 	//
-	// >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of an instance.
+	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

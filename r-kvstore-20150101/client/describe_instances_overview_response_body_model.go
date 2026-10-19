@@ -18,7 +18,7 @@ type iDescribeInstancesOverviewResponseBody interface {
 }
 
 type DescribeInstancesOverviewResponseBody struct {
-	// The list of instances.
+	// The array of instances.
 	Instances []*DescribeInstancesOverviewResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -89,7 +89,7 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// 	- **standard**: Standard Edition.
 	//
-	// 	- **rwsplit**: read/write splitting edition.
+	// 	- **rwsplit**: read/write splitting Edition.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	// CLASSIC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	NodeType    *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (internal endpoint) to connect to the instance.
+	// The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (the internal endpoint) to connect to the instance.
 	//
 	// > - This parameter is not returned if the network type of the instance is classic network.
 	//

@@ -24,7 +24,7 @@ type iDestroyInstanceRequest interface {
 }
 
 type DestroyInstanceRequest struct {
-	// The ID of the instance in the recycle bin.
+	// The instance ID of the instance to revoke from the recycle bin.
 	//
 	// This parameter is required.
 	//

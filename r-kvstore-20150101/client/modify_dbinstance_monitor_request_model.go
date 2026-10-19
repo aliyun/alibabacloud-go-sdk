@@ -26,7 +26,7 @@ type iModifyDBInstanceMonitorRequest interface {
 }
 
 type ModifyDBInstanceMonitorRequest struct {
-	// The instance ID.
+	// The ID of the Tair instance. This operation is used only to modify the monitoring collection granularity of a Tair instance.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,9 @@ type ModifyDBInstanceMonitorRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// This parameter is deprecated. The monitoring granularity is fixed at 60 seconds.
+	// **[Deprecated]*	- This parameter is deprecated and uses a fixed value of 60.
+	//
+	// The collection granularity of monitoring data. Unit: seconds. Default value: 60.
 	//
 	// This parameter is required.
 	//

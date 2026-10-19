@@ -18,9 +18,9 @@ type iDescribeTagsResponseBody interface {
 }
 
 type DescribeTagsResponseBody struct {
-	// The pagination token to use in the next request to get the next page. If this field is empty, there are no more results.
+	// The token used to start the next query.
 	//
-	// > If not all results are returned in one query, this parameter is returned. You can pass in the returned value of this parameter for the next query.
+	// > This parameter is returned if a single query does not return all results. You can pass the value of this parameter in a subsequent query to continue the query.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DescribeTagsResponseBody struct {
 	//
 	// F3F44BE3-5419-4B61-9BAC-E66E295A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the tags.
+	// The tag information.
 	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -85,7 +85,7 @@ func (s *DescribeTagsResponseBody) Validate() error {
 }
 
 type DescribeTagsResponseBodyTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//

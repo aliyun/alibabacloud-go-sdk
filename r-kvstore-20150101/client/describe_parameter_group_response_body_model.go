@@ -16,7 +16,7 @@ type iDescribeParameterGroupResponseBody interface {
 }
 
 type DescribeParameterGroupResponseBody struct {
-	// The information about the parameter template.
+	// The parameter template object.
 	ParameterGroup *DescribeParameterGroupResponseBodyParameterGroup `json:"ParameterGroup,omitempty" xml:"ParameterGroup,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,11 +62,11 @@ func (s *DescribeParameterGroupResponseBody) Validate() error {
 }
 
 type DescribeParameterGroupResponseBodyParameterGroup struct {
-	// The service category. Valid values:
+	// The product category. Valid values:
 	//
-	// 	- **0**: Redis Open-Source Edition
+	// - **0**: Redis Community Edition.
 	//
-	// 	- **1**: Tair (Enterprise Edition)
+	// - **1**: Tair (Enterprise Edition).
 	//
 	// example:
 	//
@@ -78,19 +78,13 @@ type DescribeParameterGroupResponseBodyParameterGroup struct {
 	//
 	// 2023-04-18 16:32:45
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The engine type. Valid values:
-	//
-	// 	- *redis*: Redis or Tair DRAM-based instance
-	//
-	// 	- *tair_pena*: Tair persistent memory-optimized instance
-	//
-	// 	- *tair_pdb*: Tair ESSD-based instance
+	// The engine of the parameter template.
 	//
 	// example:
 	//
 	// redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The compatible engine version.
+	// The engine-compatible version.
 	//
 	// example:
 	//
@@ -102,7 +96,7 @@ type DescribeParameterGroupResponseBodyParameterGroup struct {
 	//
 	// 2023-04-18 16:32:45
 	Modified *string `json:"Modified,omitempty" xml:"Modified,omitempty"`
-	// The parameter template ID, which is globally unique.
+	// The globally unique ID of the parameter template.
 	//
 	// example:
 	//
@@ -227,13 +221,13 @@ func (s *DescribeParameterGroupResponseBodyParameterGroup) Validate() error {
 }
 
 type DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails struct {
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// timeout
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	//
 	// example:
 	//

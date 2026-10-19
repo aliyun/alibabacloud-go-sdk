@@ -18,12 +18,16 @@ type iDeleteInspectionScheduleRequest interface {
 }
 
 type DeleteInspectionScheduleRequest struct {
+	// The instance ID of the AI assistant.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ta-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scheduling ID of the timed scheduling.
+	//
 	// example:
 	//
 	// scheduleId-202604141xxxx

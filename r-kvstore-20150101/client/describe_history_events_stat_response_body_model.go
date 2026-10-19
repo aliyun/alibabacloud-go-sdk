@@ -16,7 +16,7 @@ type iDescribeHistoryEventsStatResponseBody interface {
 }
 
 type DescribeHistoryEventsStatResponseBody struct {
-	// The queried events.
+	// The event list.
 	Items []*DescribeHistoryEventsStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,21 +66,21 @@ func (s *DescribeHistoryEventsStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsStatResponseBodyItems struct {
-	// The system event category. Valid values:
+	// The system event categorization. Valid values:
 	//
-	// 	- **Exception**: abnormal events
+	// - **Exception**: Exception event.
 	//
-	// 	- **Optimize**: optimization events.
+	// - **Optimize**: Optimization events.
 	//
-	// 	- **Notification**: notification events.
+	// - **Notification**: Notification event.
 	//
-	// 	- **Maintenance**: scheduled maintenance events.
+	// - **Maintenance**: Scheduled maintenance event.
 	//
 	// example:
 	//
 	// Exception
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The total number of returned events.
+	// The total number of records.
 	//
 	// example:
 	//

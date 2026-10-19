@@ -24,32 +24,58 @@ type iCreateInspectionTaskRequest interface {
 }
 
 type CreateInspectionTaskRequest struct {
+	// The end time of the inspection time range.
+	//
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and in UTC.
+	//
 	// example:
 	//
 	// 2026-07-29T06:59:26Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The specified inspection items. Valid values:
+	//
+	// - RESOURCE_USAGE
+	//
+	// - BIGKEY
+	//
+	// - HOTKEY
+	//
+	// - PERFORMANCE_METRICS
+	//
+	// - SLOWLOG
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RESOURCE_USAGE
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
+	// The ID of the assistant instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ta-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of associated instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The language of the report.
+	//
 	// example:
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The start time of the inspection time range.
+	//
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and in UTC.
+	//
 	// example:
 	//
 	// 2026-07-29T05:59:26Z

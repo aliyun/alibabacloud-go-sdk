@@ -28,7 +28,7 @@ type ModifyEventInfoResponseBody struct {
 	//
 	// mst.errorcode.success.errormessage
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The IDs of the events that failed to be processed.
+	// The error event IDs.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ModifyEventInfoResponseBody struct {
 	//
 	// 6C9E114C-217C-4118-83C0-B4070222****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of events that were successfully processed.
+	// The number of successful records.
 	//
 	// example:
 	//
 	// 2
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The IDs of the events that were successfully processed.
+	// The success event IDs.
 	//
 	// example:
 	//

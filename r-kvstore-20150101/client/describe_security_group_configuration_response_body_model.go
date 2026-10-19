@@ -17,7 +17,7 @@ type iDescribeSecurityGroupConfigurationResponseBody interface {
 
 type DescribeSecurityGroupConfigurationResponseBody struct {
 	Items *DescribeSecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

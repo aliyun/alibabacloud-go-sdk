@@ -30,20 +30,20 @@ type iDescribeSlowLogRecordsResponseBody interface {
 }
 
 type DescribeSlowLogRecordsResponseBody struct {
-	// The database engine that the instance runs.
+	// The database engine.
 	//
 	// example:
 	//
 	// Redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// r-bp10n********
 	InstanceId *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Items      *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -69,11 +69,13 @@ type DescribeSlowLogRecordsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query.
 	//
+	// The time is in the YYYY-MM-DDTHH:mmZ format and displayed in UTC.
+	//
 	// example:
 	//
 	// 2019-03-10T14:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of returned log entries.
+	// The total number of log entries.
 	//
 	// example:
 	//

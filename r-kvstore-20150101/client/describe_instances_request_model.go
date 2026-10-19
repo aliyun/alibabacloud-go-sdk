@@ -68,11 +68,11 @@ type iDescribeInstancesRequest interface {
 type DescribeInstancesRequest struct {
 	// The architecture type. Valid values:
 	//
-	// 	- **cluster**: cluster.
+	// 	- **cluster**: cluster edition
 	//
-	// 	- **standard**: standard.
+	// 	- **standard**: standard edition
 	//
-	// 	- **rwsplit**: read/write splitting.
+	// 	- **rwsplit**: read/write splitting edition
 	//
 	// example:
 	//
@@ -80,19 +80,19 @@ type DescribeInstancesRequest struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription.
+	// 	- **PrePaid**: subscription
 	//
-	// 	- **PostPaid**: pay-as-you-go.
+	// 	- **PostPaid**: pay-as-you-go
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The edition of the instance. Valid values:
+	// The edition type of the instance. Valid values:
 	//
-	// 	- **Community**: ApsaraDB for Redis Community Edition.
+	// 	- **Community**: open-source Redis
 	//
-	// 	- **Enterprise**: Tair Enhanced Edition.
+	// 	- **Enterprise**: Tair Enterprise Edition
 	//
 	// example:
 	//
@@ -106,33 +106,33 @@ type DescribeInstancesRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration status of the instance. Valid values:
 	//
-	// 	- **true**: expired.
+	// 	- **true**: The instance has expired.
 	//
-	// 	- **false**: not expired.
+	// 	- **false**: The instance has not expired.
 	//
 	// example:
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Specifies whether to filter child instances of distributed instances from the returned instance list. Valid values:
+	// Specifies whether to filter child instances of distributed instances in the returned instance list. Valid values:
 	//
-	// 	- **true**: returns only child instance information.
+	// 	- **true**: Only child instance information is returned.
 	//
-	// 	- **false**: does not return child instance information.
+	// 	- **false**: Child instance information is not returned.
 	//
 	// example:
 	//
 	// true
 	GlobalInstance *bool `json:"GlobalInstance,omitempty" xml:"GlobalInstance,omitempty"`
-	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
+	// The instance specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/107984.html).
 	//
 	// example:
 	//
 	// redis.master.small.default
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The IDs of the instances to query.
+	// The IDs of the instances to be queried.
 	//
-	// > To specify multiple instance IDs, separate them with commas (,). A maximum of 30 instance IDs can be specified in a single request.
+	// > To specify multiple instance IDs, separate the IDs with commas (,). You can specify up to 30 instance IDs in a single request.
 	//
 	// example:
 	//
@@ -140,31 +140,31 @@ type DescribeInstancesRequest struct {
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// 	- **Normal**: normal.
+	// 	- **Normal**: normal
 	//
-	// 	- **Creating**: being created.
+	// 	- **Creating**: creating
 	//
-	// 	- **Changing**: being changed.
+	// 	- **Changing**: changing
 	//
-	// 	- **Inactive**: disabled.
+	// 	- **Inactive**: disabled
 	//
-	// 	- **Flushing**: being flushed.
+	// 	- **Flushing**: purge in progress
 	//
-	// 	- **Released**: released.
+	// 	- **Released**: released
 	//
-	// 	- **Transforming**: being transformed.
+	// 	- **Transforming**: transforming
 	//
-	// 	- **Migrating**: being migrated.
+	// 	- **Migrating**: migrating
 	//
-	// 	- **BackupRecovering**: being restored from a backup.
+	// 	- **BackupRecovering**: recovering from backup
 	//
-	// 	- **MinorVersionUpgrading**: minor version being upgraded.
+	// 	- **MinorVersionUpgrading**: minor version upgrade in progress
 	//
-	// 	- **NetworkModifying**: network type being changed.
+	// 	- **NetworkModifying**: changing the network type
 	//
-	// 	- **SSLModifying**: SSL being changed.
+	// 	- **SSLModifying**: changing SSL configurations
 	//
-	// 	- **MajorVersionUpgrading**: major version being upgraded. The instance can be accessed normally.
+	// 	- **MajorVersionUpgrading**: major engine version upgrade in progress, during which the instance remains accessible
 	//
 	// > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
@@ -172,23 +172,23 @@ type DescribeInstancesRequest struct {
 	//
 	// Normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The category of the instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// 	- **Tair**: Tair (Enhanced Edition)
+	// 	- **Tair**: Tair (Enterprise Edition)
 	//
-	// 	- **Redis**: ApsaraDB for Redis Community Edition
+	// 	- **Redis**: open-source Redis
 	//
-	// 	- **Memcache**
+	// 	- **Memcache**: Memcache
 	//
 	// example:
 	//
 	// Redis
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The network type of the instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **CLASSIC**: classic network.
+	// 	- **CLASSIC**: classic network
 	//
-	// 	- **VPC**: virtual private cloud (VPC).
+	// 	- **VPC**: VPC
 	//
 	// example:
 	//
@@ -196,13 +196,13 @@ type DescribeInstancesRequest struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **MASTER_SLAVE**: high availability (dual-replica)
+	// 	- **MASTER_SLAVE**: high-availability (dual-replica)
 	//
-	// 	- **STAND_ALONE**: single replica
+	// 	- **STAND_ALONE**: single-replica
 	//
 	// 	- **double**: dual-replica
 	//
-	// 	- **single**: single replica
+	// 	- **single**: single-replica
 	//
 	// > For cloud-native instances, select **MASTER_SLAVE*	- or **STAND_ALONE**. For classic instances, select **double*	- or **single**.
 	//
@@ -218,13 +218,13 @@ type DescribeInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page. Maximum value: **50**. Default value: **30**.
+	// The number of entries per page. Maximum value: **50**. Default value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The private IP address of the VPC.
+	// The private IP address in the VPC.
 	//
 	// example:
 	//
@@ -232,15 +232,15 @@ type DescribeInstancesRequest struct {
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
 	// The region ID of the instance.
 	//
-	// > When calling this API, if the **Tag*	- parameter is specified, this parameter is required.
+	// > When you call this operation, if the **Tag*	- parameter is specified, this parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
-	// > You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) API or use the console to obtain the list of resource group IDs. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the list of resource group IDs. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -248,22 +248,22 @@ type DescribeInstancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The keyword used for fuzzy search by instance name or instance ID.
+	// The search keyword. Fuzzy match is supported for instance names and instance IDs.
 	//
 	// example:
 	//
 	// apitest
 	SearchKey     *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tags of the instance.
+	// The tag information of the instance.
 	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -542,19 +542,19 @@ func (s *DescribeInstancesRequest) Validate() error {
 }
 
 type DescribeInstancesRequestTag struct {
-	// The key of the tag. The tag key and value together form a key-value pair.
+	// The tag key. It forms a key-value pair with the tag value.
 	//
-	// > A maximum of 5 tag key-value pairs can be specified at a time.
+	// > You can specify up to 5 tag key-value pairs in a single request.
 	//
 	// example:
 	//
-	// 存储类型
+	// Storage type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The tag value and key together form a key-value pair.
+	// The tag value. It forms a key-value pair with the tag key.
 	//
 	// example:
 	//
-	// 开发
+	// Development
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

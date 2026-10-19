@@ -44,7 +44,7 @@ type iDescribeAvailableResourceRequest interface {
 }
 
 type DescribeAvailableResourceRequest struct {
-	// The display language of the response. Valid values:
+	// The language of the response. Valid values:
 	//
 	// 	- **zh-CN**: Chinese. This is the default value.
 	//
@@ -54,11 +54,11 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The database engine of the instance. Valid values:
+	// The engine type. Valid values:
 	//
-	// 	- **Redis**
+	// 	- **Redis**: Redis engine
 	//
-	// 	- **Memcache**
+	// 	- **Memcache**: Memcache engine
 	//
 	// example:
 	//
@@ -74,25 +74,29 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// > This parameter is available and required only if the **OrderType*	- parameter is set to **UPGRADE*	- or **DOWNGRADE**.
+	// > This parameter is available and required only when **OrderType*	- is set to **UPGRADE*	- or **DOWNGRADE**.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The edition of the instance. Valid values:
+	// The product series. Valid values:
 	//
-	// 	- **professional**: Standard Edition. This edition supports the standalone, master-replica, read /write splitting, and cluster architectures and provides high scalability.
+	// - **professional**: Professional Edition. This edition supports the standalone, primary/secondary, read/write splitting, and cluster architectures, and provides high scalability.
+	//
+	//  <props="china">
+	//
+	// -  **economical**: Economical Edition. This edition supports only the primary/secondary architecture and is cost-effective. For more information, see [YiTian RDS instances](https://help.aliyun.com/document_detail/2489678.html).
 	//
 	// example:
 	//
 	// professional
 	InstanceScene *string `json:"InstanceScene,omitempty" xml:"InstanceScene,omitempty"`
-	// The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\\*\\*\\*\\*-db-0.
+	// The data node ID. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to obtain the data node ID. For the obtained data node ID, you must remove the number sign (`#`) and the content that follows it. For example, retain only r-bp10noxlhcoim2****-db-0.
 	//
-	// > Before you specify this parameter, you must set the **InstanceId*	- parameter to the ID of an instance that uses the cluster or read/write splitting architecture.
+	// > Before you specify this parameter, you must also specify the **InstanceId*	- parameter, and the instance must use the cluster or read/write splitting architecture.
 	//
 	// example:
 	//
@@ -100,11 +104,11 @@ type DescribeAvailableResourceRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The order type. Valid values:
 	//
-	// 	- **BUY*	- (default): orders that are used to create instances
+	// 	- **BUY*	- (default): new purchase
 	//
-	// 	- **UPGRADE**: orders that are used to upgrade instances
+	// 	- **UPGRADE**: upgrade instance type
 	//
-	// 	- **DOWNGRADE**: orders that are used to downgrade instances
+	// 	- **DOWNGRADE**: downgrade instance type
 	//
 	// example:
 	//
@@ -112,25 +116,25 @@ type DescribeAvailableResourceRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The instance type. Default value: Local. Valid values:
+	// The product type. Valid values:
 	//
-	// 	- **Local**: classic Redis Open-Source Edition instance or classic DRAM-based instance
+	// - **Local*	- (default): Redis Community Edition instance (classic architecture) or memory-optimized instance (classic architecture).
 	//
-	// 	- **Tair_rdb**: cloud-native DRAM-based instance
+	// - **Tair_rdb**: memory-optimized instance (cloud-native architecture).
 	//
-	// 	- **Tair_scm**: persistent memory-optimized instance
+	// - **Tair_scm**: persistent memory-optimized instance.
 	//
-	// 	- **Tair_essd**: ESSD/SSD-based instance
+	// - **Tair_essd**: disk-optimized instance.
 	//
-	// 	- **OnECS**: cloud-native Redis Open-Source Edition instance
+	// - **OnECS**: Redis Community Edition instance (cloud-native architecture).
 	//
-	// >  The default value of this parameter is Local. To query disk resources, you must specify the instance type that provides the required disk resources.
+	// > The default value is Local. If you want to query cloud disk resources, you must specify the product type that corresponds to the required cloud disk resources.
 	//
 	// example:
 	//
 	// Local
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -138,9 +142,9 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the IDs of resource groups.
+	// The resource group ID. You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the resource group ID.
 	//
-	// >  You can also query the IDs of resource groups in the Resource Management console. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// > You can also obtain the resource group ID in the console. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -149,7 +153,7 @@ type DescribeAvailableResourceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the most recent zone list.
+	// The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the zone ID.
 	//
 	// example:
 	//

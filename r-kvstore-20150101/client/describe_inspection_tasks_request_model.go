@@ -22,21 +22,33 @@ type iDescribeInspectionTasksRequest interface {
 }
 
 type DescribeInspectionTasksRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ta-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	PageSize      *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The task type.
+	//
+	// - 1: manual task
+	//
+	// - 2: scheduled task
+	//
 	// example:
 	//
 	// 1

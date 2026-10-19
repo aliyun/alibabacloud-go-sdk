@@ -32,17 +32,17 @@ type iModifyInstanceAutoRenewalAttributeRequest interface {
 type ModifyInstanceAutoRenewalAttributeRequest struct {
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: Enabled.
 	//
-	// 	- **false**
+	// 	- **false**: Disabled.
 	//
-	// >  The default value is **false**.
+	// > Default value: **false**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the instance. Separate multiple instance IDs with commas (,).
+	// The instance ID. Separate multiple instance IDs with commas (,).
 	//
 	// > You can specify up to 30 instance IDs.
 	//
@@ -52,9 +52,9 @@ type ModifyInstanceAutoRenewalAttributeRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The auto-renewal period. Valid values: **1*	- to **12**. Unit: months. When the instance is about to expire, the instance is automatically renewed based on the number of months specified by this parameter.
+	// The auto-renewal cycle. Valid values: **1*	- to **12**. Unit: months. When the instance is about to expire, the system automatically renews the instance for the specified duration.
 	//
-	// > This parameter is available and required only if the **AutoRenew*	- parameter is set to **true**.
+	// > This parameter is available and required only when **AutoRenew*	- is set to **true**.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyInstanceAutoRenewalAttributeRequest struct {
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The service. Set the value to kvstore.
+	// The product. Set the value to kvstore.
 	//
 	// example:
 	//

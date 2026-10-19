@@ -16,11 +16,14 @@ type iSwitchInstanceToTargetZoneResponseBody interface {
 }
 
 type SwitchInstanceToTargetZoneResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// 5D622714-AEDD-4609-9167-F5DDD3D1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SwitchInstanceToTargetZoneResponseBody) String() string {

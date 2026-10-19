@@ -54,7 +54,7 @@ type DescribeRunningLogRecordsRequest struct {
 	//
 	// 	- **cs**: config server node
 	//
-	// >  If you set this parameter, you must also set the **NodeId*	- parameter.
+	// > If you specify this parameter, you must also specify the **NodeId*	- parameter.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeRunningLogRecordsRequest struct {
 	//
 	// 0
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you specify 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time, and the time span between the start time and end time cannot exceed one day. We recommend that you set the time span to one hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type DescribeRunningLogRecordsRequest struct {
 	//
 	// 2018-12-03T08:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -82,19 +82,17 @@ type DescribeRunningLogRecordsRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node in the instance. You can set this parameter to query the operational logs of a specified node.
+	// The ID of the node in the instance. Specify this parameter to query the running logs of a specific node.
 	//
-	// >
+	// > 	- This parameter is available only when the instance uses the read/write splitting or cluster architecture.
 	//
-	// 	- This parameter is available only for read/write splitting and cluster instances.
-	//
-	// 	- If you set this parameter, you must also set the **CharacterType*	- parameter.
+	// > 	- If you specify this parameter, you must also specify the **CharacterType*	- parameter.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The method that is used to sort the returned log entries. Valid values:
+	// The sort order of the query results. Valid values:
 	//
 	// 	- **asc**: ascending order
 	//
@@ -106,19 +104,19 @@ type DescribeRunningLogRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0*	- and less than or equal to the maximum value supported by the integer data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+	// The maximum number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword that is used to query operational logs.
+	// The keyword used to query the running logs.
 	//
 	// example:
 	//
@@ -132,18 +130,18 @@ type DescribeRunningLogRecordsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The role of the data shard. Default value: master. Valid values:
+	// The role type of the data shard. Valid values:
 	//
-	// 	- **master**: master node
+	// 	- **master*	- (default): primary node
 	//
-	// 	- **slave**: replica node
+	// 	- **slave**: secondary node
 	//
 	// example:
 	//
 	// master
 	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time of the query. You can view the running logs generated within the last 72 hours. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

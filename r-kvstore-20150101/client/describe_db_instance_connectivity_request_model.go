@@ -26,7 +26,7 @@ type iDescribeDbInstanceConnectivityRequest interface {
 }
 
 type DescribeDbInstanceConnectivityRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type DescribeDbInstanceConnectivityRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The IP address of the client.
+	// The source IP address of the user.
 	//
 	// This parameter is required.
 	//

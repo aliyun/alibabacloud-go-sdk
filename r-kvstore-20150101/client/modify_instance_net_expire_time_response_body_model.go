@@ -18,14 +18,14 @@ type iModifyInstanceNetExpireTimeResponseBody interface {
 }
 
 type ModifyInstanceNetExpireTimeResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId   *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NetInfoItems *ModifyInstanceNetExpireTimeResponseBodyNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

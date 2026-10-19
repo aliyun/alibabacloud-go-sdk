@@ -18,6 +18,8 @@ type iCancelInspectionTaskRequest interface {
 }
 
 type CancelInspectionTaskRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

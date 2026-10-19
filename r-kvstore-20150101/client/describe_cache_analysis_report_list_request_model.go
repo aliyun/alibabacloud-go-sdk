@@ -32,15 +32,15 @@ type iDescribeCacheAnalysisReportListRequest interface {
 }
 
 type DescribeCacheAnalysisReportListRequest struct {
-	// The time range to query. Default value: 7. Unit: days.
+	// The number of days within which analysis results are queried. By default, analysis results of the last 7 days are queried.
 	//
-	// > If daily automatic analysis has not started and manual analysis is not performed, no records are returned.
+	// > If the automatic analysis for the current day has not started when you query and no manual analysis task has been initiated, no records exist for the current day.
 	//
 	// example:
 	//
 	// 7
 	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type DescribeCacheAnalysisReportListRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the child node in the cluster instance.
+	// The child node ID of a cluster instance.
 	//
-	// >  If you do not specify this parameter, the analysis results of all child nodes in the instance are returned.
+	// > If you do not specify this parameter, the analysis results of all child nodes are returned.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeCacheAnalysisReportListRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number to return.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeCacheAnalysisReportListRequest struct {
 	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
 	//
-	// > The default value is **30**.
+	// > Default value: **30**.
 	//
 	// example:
 	//

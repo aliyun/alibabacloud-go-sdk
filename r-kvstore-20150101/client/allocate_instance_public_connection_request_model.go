@@ -28,9 +28,9 @@ type iAllocateInstancePublicConnectionRequest interface {
 }
 
 type AllocateInstancePublicConnectionRequest struct {
-	// The prefix of the public endpoint. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix can be 8 to 40 characters in length.
+	// The prefix of the public endpoint. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix must be 8 to 40 characters in length.
 	//
-	// >  The endpoint is in the `<prefix>.redis.rds.aliyuncs.com` format.
+	// > The public endpoint is in the format of `<prefix>.redis.rds.aliyuncs.com`.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type AllocateInstancePublicConnectionRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

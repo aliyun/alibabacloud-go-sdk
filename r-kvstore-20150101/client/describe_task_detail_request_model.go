@@ -24,7 +24,7 @@ type DescribeTaskDetailRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The task ID.
+	// The node ID.
 	//
 	// This parameter is required.
 	//

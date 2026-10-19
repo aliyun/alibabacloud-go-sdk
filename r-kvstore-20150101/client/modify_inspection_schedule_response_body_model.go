@@ -14,6 +14,8 @@ type iModifyInspectionScheduleResponseBody interface {
 }
 
 type ModifyInspectionScheduleResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// AD7E16AA-6B23-43BF-979C-07D957FB****

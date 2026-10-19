@@ -32,7 +32,7 @@ type iDescribeParameterModificationHistoryRequest interface {
 }
 
 type DescribeParameterModificationHistoryRequest struct {
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeParameterModificationHistoryRequest struct {
 	//
 	// 2022-09-05T09:49:27Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type DescribeParameterModificationHistoryRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
-	// > You can set this parameter to query the parameter settings of the specified node in a cluster instance.
+	// > Specify this parameter to query the parameter settings of a specific node in a cluster instance.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeParameterModificationHistoryRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
@@ -67,7 +67,7 @@ type DescribeParameterModificationHistoryRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// This parameter is required.
 	//

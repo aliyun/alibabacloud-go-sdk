@@ -44,49 +44,49 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// The filter condition that is used to return events based on the settings of event cancellation. Default value: -1. Valid values:
+	// Specifies whether the event can be canceled. Default value: -1. Valid values:
 	//
-	// 	- **-1**: returns all events.
+	// - **-1**: all events.
 	//
-	// 	- **0**: returns only O\\&M events that cannot be canceled.
+	// - **0**: returns only O&M events that cannot be canceled.
 	//
-	// 	- **1**: returns only O\\&M events that can be canceled.
+	// - **1**: returns only O&M events that can be canceled.
 	//
 	// example:
 	//
 	// 1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// The filter condition that is used to return events based on the settings of the switching time. Default value: -1. Valid values:
+	// Specifies whether the event time can be modified. Default value: -1. Valid values:
 	//
-	// 	- **-1**: returns all events.
+	// - **-1**: all events.
 	//
-	// 	- **0**: returns only O\\&M events for which the switching time cannot be changed.
+	// - **0**: returns only O&M events whose time cannot be modified.
 	//
-	// 	- **-1**: returns only O\\&M events for which the switching time can be changed.
+	// - **1**: returns only O&M events whose time can be modified.
 	//
 	// example:
 	//
 	// -1
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The type of task configuration change. Valid values:
+	// The change level. Default value: all. Valid values:
 	//
-	// 	- **all*	- (default): The configurations of all O\\&M tasks are changed.
+	// - **all**: all levels including exception recovery and system O&M.
 	//
-	// 	- **S0**: The configurations of tasks initiated to fix exceptions are changed.
+	// - **S0**: exception recovery.
 	//
-	// 	- **S1**: The configurations of system O\\&M tasks are changed.
+	// - **S1**: system O&M.
 	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// The database type. Valid values: **redis**
+	// The database type. Set this parameter to **redis**.
 	//
 	// example:
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The name of the instance. You can leave this parameter empty. If you configure this parameter, you can specify the name only of one instance.
+	// The instance name. This parameter is optional. If specified, only one instance name is allowed.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeActiveOperationTasksRequest struct {
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be greater than 0. Default value: 1.
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For Redis instances, set the value to Redis.
+	// The product name. Valid values: RDS, POLARDB, MongoDB, and Redis. For Redis instances, set this parameter to Redis.
 	//
 	// example:
 	//
 	// Redis
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID of the O&M task. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID of the pending event. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query available region IDs.
 	//
-	// > A value of **all*	- indicates all region IDs.
+	// > Set this parameter to **all*	- to query events in all regions.
 	//
 	// example:
 	//
@@ -123,43 +123,25 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The status of an O\\&M event. This parameter is used to filter returned tasks. Valid values:
+	// The status of the O&M event. This parameter is used to filter the returned events. Valid values:
 	//
-	// 	- **-1**: filters all events.
+	// 	- **-1**: all events.
 	//
-	// 	- **3**: filters pending events.
+	// 	- **3**: pending events.
 	//
-	// 	- **4**: filters in-progress events.
+	// 	- **4**: events being processed.
 	//
-	// 	- **5**: filters successful events.
+	// 	- **5**: events that ended successfully.
 	//
-	// 	- **6**: filters failed events.
+	// 	- **6**: events that ended with failures.
 	//
-	// 	- **7**: filters canceled events.
+	// 	- **7**: canceled events.
 	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the O\\&M event. If this parameter is not specified, all types of O\\&M events are queried.
-	//
-	// Valid values:
-	//
-	// 	- rds_apsradb_upgrade: minor version update
-	//
-	// 	- rds_apsaradb_ha: primary/secondary switchover
-	//
-	// 	- rds_apsaradb_ssl_update: SSL certificate update
-	//
-	// 	- rds_apsaradb_major_upgrade: major version upgrade
-	//
-	// 	- rds_apsradb_transfer: instance migration
-	//
-	// 	- rds_apsaradb_modify_config: network upgrade
-	//
-	// 	- rds_apsaradb_modify_config: instance parameter adjustment
-	//
-	// 	- rds_apsaradb_maxscale: proxy minor version update
+	// The event type of the O&M event. If this parameter is left empty, all types are queried.
 	//
 	// example:
 	//

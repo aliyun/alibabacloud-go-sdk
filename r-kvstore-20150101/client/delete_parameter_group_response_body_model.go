@@ -16,13 +16,13 @@ type iDeleteParameterGroupResponseBody interface {
 }
 
 type DeleteParameterGroupResponseBody struct {
-	// The parameter template ID, which is globally unique.
+	// The parameter template ID.
 	//
 	// example:
 	//
 	// rpg-sys-00*****
 	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

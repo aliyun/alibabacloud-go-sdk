@@ -16,7 +16,7 @@ type iDescribeSecurityIpsResponseBody interface {
 }
 
 type DescribeSecurityIpsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

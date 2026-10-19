@@ -14,7 +14,7 @@ type iFlushInstanceResponseBody interface {
 }
 
 type FlushInstanceResponseBody struct {
-	// The operation that you want to perform. Set the value to **FlushInstance**.
+	// The request ID.
 	//
 	// example:
 	//

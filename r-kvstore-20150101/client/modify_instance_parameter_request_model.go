@@ -30,7 +30,7 @@ type iModifyInstanceParameterRequest interface {
 }
 
 type ModifyInstanceParameterRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ModifyInstanceParameterRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The parameter template ID.
 	//
-	// > You can view the list of parameter templates in the target region, including the parameter template ID, through the DescribeParameterGroups interface.
+	// > You can call the DescribeParameterGroups operation to query the list of parameter templates in the target region, including parameter template IDs.
 	//
 	// example:
 	//
 	// g-idhwofwofewhf****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The information about parameters.
+	// The parameter information.
 	//
 	// example:
 	//

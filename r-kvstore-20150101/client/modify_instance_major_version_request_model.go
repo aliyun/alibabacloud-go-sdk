@@ -28,19 +28,19 @@ type iModifyInstanceMajorVersionRequest interface {
 }
 
 type ModifyInstanceMajorVersionRequest struct {
-	// The time when you want to upgrade the major version. Valid values:
+	// The time when the upgrade is performed. Valid values:
 	//
-	// 	- **Immediately*	- (default): immediately upgrades the major version.
+	// 	- **Immediately**: The upgrade is performed immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: upgrades the major version within the maintenance window.
+	// 	- **MaintainTime**: The upgrade is performed during the maintenance window.
 	//
-	// >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of an instance.
+	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,13 @@ type ModifyInstanceMajorVersionRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The major version to which you want to upgrade the instance. Valid values: **4.0*	- and **5.0**.
+	// The major version to which the instance is upgraded.
+	//
+	// - Valid values for cloud-native instances: 6.0 or 7.0.
+	//
+	// - Valid values for classic instances: 4.0 (not recommended) or 5.0.
+	//
+	// > Only upgrades to the same deployment mode are supported.
 	//
 	// This parameter is required.
 	//

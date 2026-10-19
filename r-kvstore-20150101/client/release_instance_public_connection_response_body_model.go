@@ -14,7 +14,7 @@ type iReleaseInstancePublicConnectionResponseBody interface {
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

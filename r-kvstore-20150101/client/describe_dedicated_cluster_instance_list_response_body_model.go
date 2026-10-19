@@ -22,27 +22,27 @@ type iDescribeDedicatedClusterInstanceListResponseBody interface {
 }
 
 type DescribeDedicatedClusterInstanceListResponseBody struct {
-	// Details about the instances.
+	// The list of instance information.
 	Instances []*DescribeDedicatedClusterInstanceListResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 712CCF2A-16BD-411B-93F7-E978BEF2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,65 +117,65 @@ func (s *DescribeDedicatedClusterInstanceListResponseBody) Validate() error {
 }
 
 type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
-	// The default bandwidth of the instance. Unit: Mbit/s.
+	// The default bandwidth of the instance. Unit: MB/s.
 	//
 	// example:
 	//
 	// 24
 	BandWidth *int64 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// The architecture of the instance. Valid values:
+	// The architecture type. Valid values:
 	//
-	// 	- **logic**: cluster
+	// 	- **logic**: Cluster architecture.
 	//
-	// 	- **normal**: standard
+	// 	- **normal**: Standard architecture.
 	//
 	// example:
 	//
 	// logic
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The ID of the dedicated cluster to which the instance belongs.
+	// The dedicated cluster ID.
 	//
 	// example:
 	//
 	// dhg-rx71fc5ndh9o****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the dedicated cluster to which the instance belongs.
+	// The dedicated cluster name.
 	//
 	// example:
 	//
 	// testname
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The private endpoint of the instance.
+	// The direct connection endpoint.
 	//
 	// example:
 	//
 	// r-t4ncdi1dgi0ja8****.redis.hangzhou.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the instance was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-05-06T07:09:40Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The current bandwidth of the instance, which is the sum of the default bandwidth and any extra bandwidth that is purchased. Unit: Mbit/s.
+	// The current bandwidth of the instance. Unit: MB/s. The value is the sum of the default bandwidth and the increased bandwidth.
 	//
 	// example:
 	//
 	// 50
 	CurrentBandWidth *int64 `json:"CurrentBandWidth,omitempty" xml:"CurrentBandWidth,omitempty"`
-	// An internal parameter used for the maintenance and management of instances.
+	// An internal parameter used for instance maintenance.
 	//
 	// example:
 	//
 	// 4652****
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	// The database engine. The return value is **redis**.
+	// The database engine. The value is fixed as **redis**.
 	//
 	// example:
 	//
 	// redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. The return value is **5.0**.
+	// The database engine version. The value is fixed as **5.0**.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	//
 	// redis.cluster.sharding.common.ce
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -199,51 +199,51 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	//
 	// testdb
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details about the nodes.
+	// The list of node information.
 	InstanceNodeList []*DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList `json:"InstanceNodeList,omitempty" xml:"InstanceNodeList,omitempty" type:"Repeated"`
-	// The state of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- **Normal**: The instance is normal.
+	// 	- **Normal**: Normal.
 	//
-	// 	- **Creating**: The instance is being created.
+	// 	- **Creating**: Creating.
 	//
-	// 	- **Changing**: The configurations of the instance are being changed.
+	// 	- **Changing**: Changing.
 	//
-	// 	- **Inactive**: The instance is disabled.
+	// 	- **Inactive**: Disabled.
 	//
-	// 	- **Flushing**: The instance is being released.
+	// 	- **Flushing**: Purge in progress.
 	//
-	// 	- **Released**: The instance is released.
+	// 	- **Released**: Released.
 	//
-	// 	- **Transforming**: The billing method of the instance is being changed.
+	// 	- **Transforming**: Transforming.
 	//
-	// 	- **Unavailable**: The instance is unavailable.
+	// 	- **Unavailable**: Unavailable.
 	//
-	// 	- **Error**: The instance failed to be created.
+	// 	- **Error**: Creation failed.
 	//
-	// 	- **Migrating**: The instance is being migrated.
+	// 	- **Migrating**: Migrating.
 	//
-	// 	- **BackupRecovering**: The instance is being restored from a backup.
+	// 	- **BackupRecovering**: Restoring from backup.
 	//
-	// 	- **MinorVersionUpgrading**: The minor version of the instance is being updated.
+	// 	- **MinorVersionUpgrading**: Minor version upgrade in progress.
 	//
-	// 	- **NetworkModifying**: The network type of the instance is being changed.
+	// 	- **NetworkModifying**: Changing the network.
 	//
-	// 	- **SSLModifying**: The SSL configurations of the instance are being changed.
+	// 	- **SSLModifying**: Changing SSL configurations.
 	//
-	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
+	// 	- **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance remains accessible.
 	//
 	// example:
 	//
 	// Normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+	// The end time of the maintenance window. The time is in the <i>HH:mm</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 17:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+	// The start time of the maintenance window. The time is in the <i>HH:mm</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -251,31 +251,29 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The number of proxy nodes.
 	//
-	// >
+	// > 	- A value of **0*	- indicates that the proxy mode is disabled for the instance. A value greater than **0*	- (such as **1**) indicates that the proxy mode is enabled for the instance.
 	//
-	// 	- If the return value is **0**, the proxy mode is disabled for the instance. If the return value is an integer greater than **0**, such as **1**, the proxy mode is enabled for the instance.
-	//
-	// 	- This parameter is returned only when the instance is a [cluster](https://help.aliyun.com/document_detail/52228.html) instance.
+	// > 	- This parameter is returned only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
 	//
 	// example:
 	//
 	// 1
 	ProxyCount *int32 `json:"ProxyCount,omitempty" xml:"ProxyCount,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of shards.
+	// The number of data shards.
 	//
-	// >  This parameter is returned only when the instance is a [cluster](https://help.aliyun.com/document_detail/52228.html) instance.
+	// > This parameter is returned only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
 	//
 	// example:
 	//
 	// 3
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The storage type of the instance. The return value is LOCAL_SSD, which indicates [enhanced SSDs (ESSDs)](https://help.aliyun.com/document_detail/122389.html).
+	// The storage type. The value is fixed as LOCAL_SSD ([ESSD cloud disk (standard SSD)](https://help.aliyun.com/document_detail/122389.html)).
 	//
 	// example:
 	//
@@ -539,13 +537,13 @@ func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) Validate() e
 }
 
 type DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList struct {
-	// The ID of the host in the dedicated cluster.
+	// The host ID in the dedicated cluster.
 	//
 	// example:
 	//
 	// ch-bp13vf0y9gx3c****
 	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -565,33 +563,33 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList s
 	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **db**: data node.
+	// 	- **db**: Data node.
 	//
-	// 	- **proxy**: proxy node.
+	// 	- **proxy**: Proxy node.
 	//
-	// 	- **normal**: regular node. This value is returned when the instance runs in the standard architecture.
+	// 	- **normal**: Regular node. This value is returned for instances that use the standard architecture.
 	//
 	// example:
 	//
 	// normal
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port number that is used to connect to the node.
+	// The port of the node.
 	//
 	// example:
 	//
 	// 3001
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The role of the node. Valid values:
+	// The node role. Valid values:
 	//
-	// 	- **master**: master node
+	// 	- **master**: Primary node.
 	//
-	// 	- **slave**: replica node
+	// 	- **slave**: Secondary node.
 	//
 	// example:
 	//
 	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The zone ID of the node.
+	// The zone to which the node belongs.
 	//
 	// example:
 	//

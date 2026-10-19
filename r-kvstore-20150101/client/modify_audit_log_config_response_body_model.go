@@ -14,7 +14,7 @@ type iModifyAuditLogConfigResponseBody interface {
 }
 
 type ModifyAuditLogConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

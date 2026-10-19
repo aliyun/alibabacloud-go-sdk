@@ -34,7 +34,7 @@ type iDescribeCacheAnalysisReportRequest interface {
 }
 
 type DescribeCacheAnalysisReportRequest struct {
-	// The type of analytics. Set the value to **BigKey**.
+	// The analysis type. Set the value to **BigKey**.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeCacheAnalysisReportRequest struct {
 	//
 	// BigKey
 	AnalysisType *string `json:"AnalysisType,omitempty" xml:"AnalysisType,omitempty"`
-	// The date to query. You can query the report for one day each time. Specify the date in the *yyyy-MM-dd*Z format. The time must be in UTC.
+	// The date to query. You can query the offline full key analysis results for one day at a time. The format is <i>yyyy-MM-dd</i>Z (UTC time).
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeCacheAnalysisReportRequest struct {
 	//
 	// 2019-08-05Z
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type DescribeCacheAnalysisReportRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the child node in the cluster instance.
+	// The ID of the child node in a cluster instance.
 	//
-	// >  If you do not specify this parameter, the analysis results of all child nodes in the instance are returned.
+	// > This parameter is required for cluster instances.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeCacheAnalysisReportRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return.
 	//
-	// > If the parameter value exceeds the maximum number of the returned pages, an empty large key list is returned.
+	// > If the value is greater than the maximum number of pages in the returned result, the returned big key results are empty.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeCacheAnalysisReportRequest struct {
 	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
 	//
-	// > The default value is **30**.
+	// > Default value: **30**.
 	//
 	// example:
 	//

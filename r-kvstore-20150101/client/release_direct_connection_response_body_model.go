@@ -14,7 +14,7 @@ type iReleaseDirectConnectionResponseBody interface {
 }
 
 type ReleaseDirectConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iModifyInstanceBandwidthResponseBody interface {
 }
 
 type ModifyInstanceBandwidthResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 236934422960904
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

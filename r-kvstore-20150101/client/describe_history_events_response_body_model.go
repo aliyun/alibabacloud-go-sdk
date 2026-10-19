@@ -22,7 +22,7 @@ type iDescribeHistoryEventsResponseBody interface {
 }
 
 type DescribeHistoryEventsResponseBody struct {
-	// A list of events.
+	// The list of events.
 	Items []*DescribeHistoryEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,19 +30,19 @@ type DescribeHistoryEventsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 27B911BF-4E17-5F8A-A932-79DF2D3F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned events.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeHistoryEventsResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyItems struct {
-	// The data returned.
+	// The data overview.
 	Data *DescribeHistoryEventsResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the task.
 	//
@@ -125,7 +125,7 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// 4309
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// loanBill
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The database engine version.
+	// The database version.
 	//
 	// example:
 	//
@@ -149,13 +149,13 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// Qitian
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// The amount of time that has elapsed from the start time of the query. Unit: seconds.
+	// The running duration of the query task. Unit: seconds.
 	//
 	// example:
 	//
 	// 1734919325126
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The type of the event.
+	// The event type.
 	//
 	// example:
 	//
@@ -253,17 +253,17 @@ func (s *DescribeHistoryEventsResponseBodyItems) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyItemsData struct {
-	// The cloud service type of the application group. Valid values:
+	// The type of the cloud service for the application group. Valid values:
 	//
-	// 	- **web**: web application.
+	// - **web**: Web applications.
 	//
-	// 	- **native**: local application.
+	// - **native**: Native applications.
 	//
 	// example:
 	//
 	// web
 	CmsProduct *string `json:"CmsProduct,omitempty" xml:"CmsProduct,omitempty"`
-	// The database type.
+	// The type of the database.
 	//
 	// example:
 	//
@@ -281,33 +281,35 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// xxxx
 	DetailReason *string `json:"DetailReason,omitempty" xml:"DetailReason,omitempty"`
-	// The time when the alert was closed.
+	// The end time of the alert.
+	//
+	// Specify the time in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2023-03-06T11:46:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The system event category. Valid values:
+	// The category of the system event. Valid values:
 	//
-	// 	- **Exception**: abnormal events
+	// - **Exception**: Exception events.
 	//
-	// 	- **Optimize**: optimization events.
+	// - **Optimize**: Optimization events.
 	//
-	// 	- **Notification**: notification events.
+	// - **Notification**: Notification events.
 	//
-	// 	- **Maintenance**: scheduled maintenance events.
+	// - **Maintenance**: Scheduled O&M events.
 	//
 	// example:
 	//
 	// Exception
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The event code.
+	// The code of the event.
 	//
 	// example:
 	//
 	// ENT000014
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// The event details.
+	// The details of the event.
 	//
 	// example:
 	//
@@ -319,25 +321,25 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 669036
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event impact.
+	// The impact overview of the event.
 	//
 	// example:
 	//
 	// xxxxx
 	EventImpact *string `json:"EventImpact,omitempty" xml:"EventImpact,omitempty"`
-	// The level of the event. Valid values:
+	// The event level. Valid values:
 	//
-	// 	- **INFO**
+	// - **INFO**: Information.
 	//
-	// 	- **WARN**
+	// - **WARN**: Warning.
 	//
-	// 	- **CRITICAL**
+	// - **CRITICAL**: Critical.
 	//
 	// example:
 	//
 	// INFO
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The event source.
+	// The source of the event operation.
 	//
 	// example:
 	//
@@ -345,61 +347,61 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// 	- **Inquiring**
+	// - **Inquiring**: Inquiring.
 	//
-	// 	- **Scheduled**
+	// - **Scheduled**: Scheduled.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Canceled.
 	//
 	// example:
 	//
 	// Succeed
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The type of the system event. Valid values:
+	// The system event type. Valid values:
 	//
-	// 	- **SystemMaintenance.Reboot**: The instance was restarted due to system maintenance.
+	// - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
 	//
-	// 	- **SystemMaintenance.Redeploy**: The instance was redeployed due to system maintenance.
+	// - **SystemMaintenance.Redeploy**: Redeployment of the instance due to system maintenance.
 	//
-	// 	- **SystemFailure.Reboot**: The instance was restarted due to system failures.
+	// - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
 	//
-	// 	- **SystemFailure.Redeploy**: The instance was redeployed due to system failures.
+	// - **SystemFailure.Redeploy**: Redeployment of the instance due to a system fault.
 	//
-	// 	- **SystemFailure.Delete**: The instance was released due to an instance creation failure.
+	// - **SystemFailure.Delete**: The instance is released due to a failed creation.
 	//
-	// 	- **InstanceFailure.Reboot**: The instance was restarted due to an instance error.
+	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
 	//
-	// 	- **InstanceExpiration.Stop**: The subscription instance was stopped due to expiration.
+	// - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
 	//
-	// 	- **InstanceExpiration.Delete**: The subscription instance was released due to expiration.
+	// - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
 	//
-	// 	- **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
+	// - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
 	//
-	// 	- **AccountUnbalanced.Delete**: The pay-as-you-go instance was released due to an overdue payment.
+	// - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
 	//
 	// example:
 	//
 	// StatusNotification
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The time when the event was created.
+	// The creation time of the event.
 	//
 	// example:
 	//
 	// 2024-12-13 05:34:23
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the event was updated.
+	// The update time of the event.
 	//
 	// example:
 	//
 	// 2025-03-05 10:41:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The status of the event. Valid values:
+	// The handling status.
 	//
 	// example:
 	//
@@ -411,13 +413,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// false
 	HasLifeCycle *int32 `json:"HasLifeCycle,omitempty" xml:"HasLifeCycle,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// r-bp15kjsoovqjam****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -425,9 +427,9 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Indicates whether the event is closed. Valid values:
 	//
-	// 	- **0**: closed.
+	// - **0**: Closed.
 	//
-	// 	- **1**: not closed.
+	// - **1**: Open.
 	//
 	// example:
 	//
@@ -445,13 +447,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type of the instance. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// 	- **Instance**: instance resources.
+	// - **Instance**: Instance resources.
 	//
-	// 	- **Host**: host resources.
+	// - **Host**: Host resources.
 	//
-	// 	- **User**: user resources.
+	// - **User**: User resources.
 	//
 	// example:
 	//
@@ -463,13 +465,15 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// MSE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the event.
+	// The start time.
+	//
+	// Specify the time in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2025-09-30T21:13Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the user to which the resources belong.
+	// The ID of the user to which the resource belongs.
 	//
 	// example:
 	//

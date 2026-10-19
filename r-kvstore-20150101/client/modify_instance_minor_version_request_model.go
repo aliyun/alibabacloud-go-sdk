@@ -28,19 +28,19 @@ type iModifyInstanceMinorVersionRequest interface {
 }
 
 type ModifyInstanceMinorVersionRequest struct {
-	// The time when you want to update the minor version. Valid values:
+	// The time when the upgrade is performed. Valid values:
 	//
-	// 	- **Immediately*	- (default): immediately updates the minor version.
+	// 	- **Immediately**: Performs the upgrade immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: updates the minor version during the maintenance window.
+	// 	- **MaintainTime**: Performs the upgrade during the maintenance window.
 	//
-	// >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of an instance.
+	// > You can call [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) to change the maintenance window of the instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ModifyInstanceMinorVersionRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The minor version to which you want to update. Default value: **latest_version**.
+	// The minor version to which you want to upgrade. Default value: **latest_version**, which indicates the latest version.
 	//
 	// example:
 	//

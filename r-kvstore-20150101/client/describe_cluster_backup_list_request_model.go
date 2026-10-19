@@ -38,13 +38,13 @@ type iDescribeClusterBackupListRequest interface {
 }
 
 type DescribeClusterBackupListRequest struct {
-	// The backup set ID.
+	// The cluster backup set ID.
 	//
 	// example:
 	//
 	// cb-hyxdof5x9kqbtust
 	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -60,17 +60,11 @@ type DescribeClusterBackupListRequest struct {
 	//
 	// r-t4nj72oug5r5646qog
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to show backup set information for shards in the instance.
+	// Specifies whether to display the details of the backup sets for cluster nodes. Valid values:
 	//
-	// 	- **true**: does not show backup set information for shards in the instance.
+	// 	- **false*	- (default): displays the backup set information of cluster nodes.
 	//
-	// 	- **false*	- (default): shows backup set information for shards in the instance.
-	//
-	// Valid values:
-	//
-	// 	- True
-	//
-	// 	- False
+	// 	- **true**: does not display the backup set information of cluster nodes.
 	//
 	// example:
 	//
@@ -78,39 +72,19 @@ type DescribeClusterBackupListRequest struct {
 	NoShardBackup *string `json:"NoShardBackup,omitempty" xml:"NoShardBackup,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// Valid values:
-	//
-	// 	- 30
-	//
-	// 	- 50
-	//
-	// 	- 100
-	//
-	// 	- 200
-	//
-	// 	- 300
-	//
-	// 	- 5
-	//
-	// 	- 10
-	//
-	// 	- 15
-	//
-	// 	- 20
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -121,7 +95,7 @@ type DescribeClusterBackupListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

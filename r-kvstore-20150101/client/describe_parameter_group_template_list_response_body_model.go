@@ -18,17 +18,15 @@ type iDescribeParameterGroupTemplateListResponseBody interface {
 }
 
 type DescribeParameterGroupTemplateListResponseBody struct {
-	// The compatible engine version. Valid values:
-	//
-	// Redis Open Source Edition: 5.0, 6.0, and 7.0. Tair DRAM-based instances: 5.0 and 6.0. Tair persistent memory-optimized instances: 6.0. Tair ESSD-based instances: 4.0.
+	// The compatible version.
 	//
 	// example:
 	//
 	// 5
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The information about parameters.
+	// The list of parameter details.
 	Parameters []*DescribeParameterGroupTemplateListResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -85,29 +83,33 @@ func (s *DescribeParameterGroupTemplateListResponseBody) Validate() error {
 }
 
 type DescribeParameterGroupTemplateListResponseBodyParameters struct {
-	// The regular expression used to validate input.
+	// The value range of the parameter.
 	//
 	// example:
 	//
 	// [0|1]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the modification takes effect. Valid values: 0 and 1. A value of 0 indicates that the modification does not take effect. A value of 1 indicates that the modification takes effect.
+	// Indicates whether the parameter has taken effect. Valid values:
+	//
+	// 	- **0**: No.
+	//
+	// 	- **1**: Yes.
 	//
 	// example:
 	//
 	// 1
 	Effective *int64 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+	// The divisor factor. For integer and byte type parameters, the parameter value must not only fall within the valid range but also be a multiple of Factor (when Factor is not 0).
 	//
 	// example:
 	//
 	// 1
 	Factor *int64 `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// The description of the parameter.
+	// The parameter description.
 	//
 	// example:
 	//
-	// 开启Aof持久化模式。
+	// Enable AOF persistence mode
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The parameter name.
 	//
@@ -123,21 +125,31 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 	// Indicates whether the parameter can be modified. Valid values:
 	//
-	// 	- **0: The parameter cannot be modified.**
+	// - **0**: The parameter cannot be modified.
 	//
-	// 	- **1**: The parameter can be modified.
+	// - **1**: The parameter can be modified.
 	//
 	// example:
 	//
 	// 0
 	Revisable *int64 `json:"Revisable,omitempty" xml:"Revisable,omitempty"`
-	// Indicates whether the minor version can be changed. Valid values: true and false.
+	// Indicates whether modification for minor versions is supported. Valid values:
+	//
+	// 	- **true**: Supported.
+	//
+	// 	- **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	SupportModifyForMinorVersion *bool `json:"SupportModifyForMinorVersion,omitempty" xml:"SupportModifyForMinorVersion,omitempty"`
-	// The unit of the parameter value. Valid values: INT (ordinary integer), STRING (fixed string), and B (byte).
+	// The unit of the parameter value. Valid values:
+	//
+	// 	- **INT**: a common integer.
+	//
+	// 	- **STRING**: a fixed string.
+	//
+	// 	- **B**: bytes.
 	//
 	// example:
 	//

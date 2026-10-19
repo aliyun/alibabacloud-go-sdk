@@ -24,7 +24,7 @@ type iDescribeInstanceSSLResponseBody interface {
 }
 
 type DescribeInstanceSSLResponseBody struct {
-	// The common name of the CA certificate. The default value is the internal endpoint of the instance.
+	// The common name of the CA certificate. The default value is the internal network endpoint of the instance.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeInstanceSSLResponseBody struct {
 	//
 	// https://apsaradb-public.oss-ap-sout****-1.aliy****.com/ApsaraDB-CA-Chain.zip
 	CertDownloadURL *string `json:"CertDownloadURL,omitempty" xml:"CertDownloadURL,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -50,15 +50,17 @@ type DescribeInstanceSSLResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the TLS (SSL) encryption feature. Valid values:
 	//
-	// 	- **Enable**: SSL encryption is enabled.
+	// 	- **Enable**: Enabled.
 	//
-	// 	- **Disable**: SSL encryption is disabled.
+	// 	- **Disable**: Disabled.
 	//
 	// example:
 	//
 	// Enable
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The time when the CA certificate expires.
+	// The expiration time of the CA certificate.
+	//
+	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//

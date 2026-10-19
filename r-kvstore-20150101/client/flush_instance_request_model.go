@@ -24,7 +24,7 @@ type iFlushInstanceRequest interface {
 }
 
 type FlushInstanceRequest struct {
-	// The ID of the request.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

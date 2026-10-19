@@ -30,37 +30,67 @@ type iCreateInspectionScheduleRequest interface {
 }
 
 type CreateInspectionScheduleRequest struct {
+	// The cron expression for the periodic scheduling.
+	//
 	// example:
 	//
 	// 0 0 2 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The specified inspection items. The following inspection items are supported:
+	//
+	// - RESOURCE_USAGE
+	//
+	// - BIGKEY
+	//
+	// - HOTKEY
+	//
+	// - PERFORMANCE_METRICS
+	//
+	// - SLOWLOG
+	//
 	// example:
 	//
 	// RESOURCE_USAGE
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
+	// The time window.
+	//
 	// example:
 	//
 	// 1h
 	InspectionWindow *string `json:"InspectionWindow,omitempty" xml:"InspectionWindow,omitempty"`
+	// The O&M Assistant instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ta-bp11iljddg37xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of associated instance IDs.
+	//
+	// >
+	//
+	// > - Separate multiple instances with commas (,).
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The report language.
+	//
 	// example:
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The name of the timed scheduling.
+	//
 	// example:
 	//
 	// test-sche
 	ScheduleName  *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai

@@ -22,7 +22,7 @@ type iDescribeDBNodeDirectVipInfoRequest interface {
 }
 
 type DescribeDBNodeDirectVipInfoRequest struct {
-	// The instance ID.
+	// The instance ID. Only cloud-native instances are supported.
 	//
 	// This parameter is required.
 	//

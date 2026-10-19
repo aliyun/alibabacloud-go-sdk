@@ -26,13 +26,13 @@ type iDescribeEncryptionKeyRequest interface {
 }
 
 type DescribeEncryptionKeyRequest struct {
-	// The ID of the custom key. You can call the [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/473860.html) operation to query the ID of the key.
+	// The ID of the custom key for the instance. You can call [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/473860.html) to query the key ID.
 	//
 	// example:
 	//
 	// ad463061-992d-4195-8a94-ed63********
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+	// The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//

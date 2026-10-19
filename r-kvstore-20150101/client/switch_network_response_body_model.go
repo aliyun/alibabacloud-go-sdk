@@ -16,13 +16,13 @@ type iSwitchNetworkResponseBody interface {
 }
 
 type SwitchNetworkResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F0997EE8-F4C2-4503-9168-85177ED78C70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

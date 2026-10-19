@@ -24,13 +24,13 @@ type ModifyInstanceParameterResponseBody struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 561AFBF1-BE20-44DB-9BD1-6988B53E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

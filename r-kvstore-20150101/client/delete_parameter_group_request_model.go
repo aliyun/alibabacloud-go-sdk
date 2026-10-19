@@ -26,7 +26,7 @@ type iDeleteParameterGroupRequest interface {
 type DeleteParameterGroupRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the parameter template.
+	// The parameter template ID.
 	//
 	// This parameter is required.
 	//

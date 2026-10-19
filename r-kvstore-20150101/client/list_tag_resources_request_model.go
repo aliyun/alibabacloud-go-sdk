@@ -30,9 +30,9 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token used to start the next query to retrieve more results.
+	// The token used to start the next query to return more results.
 	//
-	// > This parameter is not required in the first query. If not all results are returned in one query, you can specify the **NextToken*	- value returned for the query to perform the next query.
+	// > You do not need to provide this parameter for the first query. If a query does not return all results, you can pass the **NextToken*	- value returned from the previous query in subsequent queries to continue the query.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
-	// > 	- You must specify this parameter or the **Tag*	- parameter.
+	// > 	- You must specify at least one of this parameter and the **Tag*	- parameter.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListTagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the instance. You must specify this parameter or the **ResourceId*	- parameter.
+	// The tag information of the instance. You must specify at least one of this parameter and the **ResourceId*	- parameter.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -173,13 +173,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The keys of the tags associated with the instances you want to query.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// demokey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the tags associated with the instances you want to query.
+	// The value of the tag.
 	//
 	// example:
 	//

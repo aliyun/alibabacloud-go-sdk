@@ -32,29 +32,29 @@ type iDeleteShardingNodeRequest interface {
 }
 
 type DeleteShardingNodeRequest struct {
-	// The time when you want to delete the proxy nodes for instance in the proxy mode. Valid values:
+	// The time when the proxy deletion takes effect if proxy nodes are deleted when you delete shards from a cluster instance in proxy mode. Valid values:
 	//
-	// - **0 or Immediately*	- (default): immediately delete the proxy nodes.
+	// 	- **0 or Immediately**: Takes effect immediately. This is the default value.
 	//
-	// - **1 or MaintainTime**: delete the proxy nodes during the maintenance window.
+	// 	- **1 or MaintainTime**: Takes effect during the maintenance window.
 	//
-	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of an instance.
+	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// Specifies whether to enable forced transmission during a configuration change. Valid values:
+	// Specifies whether to enable forced migration. Valid values:
 	//
-	// - **false*	- (default): Before the configuration change, the system checks the minor version of the instance. If the minor version of the instance is outdated, an error is reported. You must update the minor version of the instance and try again.
+	// - **false*	- (default): Before the upgrade/downgrade, the system checks the current minor engine version of the instance. If the kernel version is too low, an error is reported. You must upgrade the minor engine version and retry.
 	//
-	// - **true**: The system skips the version check and directly performs the configuration change.
+	// - **true**: Skips the checks and directly executes the upgrade/downgrade operation.
 	//
 	// example:
 	//
 	// false
 	ForceTrans *bool `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type DeleteShardingNodeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the data shard that you want to remove. You can specify multiple IDs at a time. Separate multiple IDs with commas (,).
+	// The ID of the data shard node to be deleted. To specify multiple shard node IDs, separate them with commas (,).
 	//
-	// > If you specify both the NodeId and ShardCount parameters, the system prioritizes the NodeId parameter.
+	// > If both the NodeId and ShardCount parameters are specified, the NodeId parameter takes precedence.
 	//
 	// example:
 	//
@@ -77,9 +77,9 @@ type DeleteShardingNodeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of data shards that you want to remove. Shard removal starts from the end of the shard list.
+	// The number of shards to be deleted. The system deletes the specified number of shard nodes starting from the end.
 	//
-	// > For example, the instance has the following data shards: db-0, db-1, db-2, db-3, and db-4. In this case, if you set this parameter to 2, db-3 and db-4 are removed.
+	// > For example, if an instance has five shard nodes: db-0, db-1, db-2, db-3, and db-4, and you set this parameter to 2, the db-3 and db-4 nodes are deleted.
 	//
 	// example:
 	//

@@ -11,20 +11,23 @@ type iDescribeHistoryMonitorValuesResponseBody interface {
 	GoString() string
 	SetMonitorHistory(v string) *DescribeHistoryMonitorValuesResponseBody
 	GetMonitorHistory() *string
+	SetMonitorLegend(v string) *DescribeHistoryMonitorValuesResponseBody
+	GetMonitorLegend() *string
 	SetRequestId(v string) *DescribeHistoryMonitorValuesResponseBody
 	GetRequestId() *string
 }
 
 type DescribeHistoryMonitorValuesResponseBody struct {
-	// The monitoring data returned as a JSON-formatted string. For more information, see [Monitoring parameters](https://help.aliyun.com/document_detail/122091.html).
+	// The monitoring information returned in JSON format. For more information, see [Monitoring parameter description](https://help.aliyun.com/document_detail/122091.html).
 	//
-	// > To improve data transfer efficiency, the system returns only monitoring data for metrics with non-zero values. If a metric is not returned, its value is **0**.
+	// > To improve data transmission efficiency, only non-zero monitoring data is returned. All other monitoring data that is not displayed has a default value of **0**.
 	//
 	// example:
 	//
 	// "{\\"2022-11-06T00:00:00Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:05Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:10Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:15Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:20Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:25Z\\":{\\"memoryUsage\\":\\"6.67\\"}}"
 	MonitorHistory *string `json:"MonitorHistory,omitempty" xml:"MonitorHistory,omitempty"`
-	// The ID of the request.
+	MonitorLegend  *string `json:"MonitorLegend,omitempty" xml:"MonitorLegend,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -44,12 +47,21 @@ func (s *DescribeHistoryMonitorValuesResponseBody) GetMonitorHistory() *string {
 	return s.MonitorHistory
 }
 
+func (s *DescribeHistoryMonitorValuesResponseBody) GetMonitorLegend() *string {
+	return s.MonitorLegend
+}
+
 func (s *DescribeHistoryMonitorValuesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *DescribeHistoryMonitorValuesResponseBody) SetMonitorHistory(v string) *DescribeHistoryMonitorValuesResponseBody {
 	s.MonitorHistory = &v
+	return s
+}
+
+func (s *DescribeHistoryMonitorValuesResponseBody) SetMonitorLegend(v string) *DescribeHistoryMonitorValuesResponseBody {
+	s.MonitorLegend = &v
 	return s
 }
 

@@ -30,7 +30,7 @@ type iDescribeRoleZoneInfoRequest interface {
 }
 
 type DescribeRoleZoneInfoRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance IDs.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,27 +40,26 @@ type DescribeRoleZoneInfoRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than **0*	- and less than or equal to the maximum value supported by the integer data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **10**, **20**, and **50**. Default value: **10**.
+	// The number of entries to return on each page. Valid values: **10**, **20**, and **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the node to query. Default value: 1. Valid values:
+	// The type of the target node to query. Valid values:
 	//
-	// 	- **0**: proxy node
+	// 	- **0**: proxy node.
 	//
-	//     **
+	//   > This parameter is supported only by instances that use the cluster or read/write splitting architecture.
 	//
-	//     **Note*	- This parameter is supported only for cluster instances and read/write splitting instances.
 	//
-	// 	- **1**: data node
+	// 	- **1**: data node. This is the default value.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyInstanceAttributeResponseBody interface {
 }
 
 type ModifyInstanceAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

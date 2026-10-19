@@ -14,7 +14,7 @@ type iAllocateDirectConnectionResponseBody interface {
 }
 
 type AllocateDirectConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -26,11 +26,11 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	// The display language of the zone names to return. Valid values:
+	// The language of the zone names in the response. Valid values:
 	//
-	// 	- **zh-CN*	- (default): Chinese
+	// 	- **zh-CN*	- (default): Chinese.
 	//
-	// 	- **en-US**: English
+	// 	- **en-US**: English.
 	//
 	// example:
 	//

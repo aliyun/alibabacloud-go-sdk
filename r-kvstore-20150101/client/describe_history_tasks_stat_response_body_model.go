@@ -66,21 +66,21 @@ func (s *DescribeHistoryTasksStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksStatResponseBodyItems struct {
-	// The task state.
+	// The task status. Valid values:
 	//
-	// 	- **Scheduled**
+	// - **Scheduled**: Waiting to be executed.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed.
 	//
-	// 	- **Cancelling**
+	// - **Cancelling**: Being stopped.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Stopped.
 	//
-	// 	- **Waiting**
+	// - **Waiting**: Waiting for the scheduled time.
 	//
 	// example:
 	//

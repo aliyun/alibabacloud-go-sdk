@@ -14,7 +14,7 @@ type iRebootProxyResponseBody interface {
 }
 
 type RebootProxyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -30,11 +30,11 @@ type iDescribeParameterGroupTemplateListRequest interface {
 }
 
 type DescribeParameterGroupTemplateListRequest struct {
-	// The service category. Valid values:
+	// The product category. Valid values:
 	//
-	// 	- **standard**: Redis Open-Source Edition
+	// - **standard**: Redis Community Edition.
 	//
-	// 	- **enterprise**: Tair (Enterprise Edition)
+	// - **enterprise**: Tair (Enhanced Edition).
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,17 @@ type DescribeParameterGroupTemplateListRequest struct {
 	//
 	// standard
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The role of the instance. Valid values: logic: logical instance. db: database instance. proxy: proxy node. cs: ConfigServer node. normal: master-replica database instance.
+	// The role type of the instance. Valid values:
+	//
+	// 	- **logic**: cluster logical instance.
+	//
+	// 	- **db**: cluster DB instance.
+	//
+	// 	- **proxy**: cluster proxy instance.
+	//
+	// 	- **cs**: cluster CS instance.
+	//
+	// 	- **normal**: primary/secondary DB instance.
 	//
 	// example:
 	//
@@ -50,11 +60,11 @@ type DescribeParameterGroupTemplateListRequest struct {
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The engine type. Valid values:
 	//
-	// 	- **redis**: Redis Open-Source Edition or Tair (In-Memory)
+	// - **redis**: Redis Community Edition or Tair memory-optimized.
 	//
-	// 	- **tair_pena**: Tair (On NVM)
+	// - **tair_pena**: Tair persistent memory-optimized.
 	//
-	// 	- **tair_pdb**: Tair (On Disk)
+	// - **tair_pdb**: Tair disk-based (ESSD/SSD).
 	//
 	// This parameter is required.
 	//
@@ -62,15 +72,15 @@ type DescribeParameterGroupTemplateListRequest struct {
 	//
 	// redis
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The compatible engine version. Valid values:
+	// The compatible version. Valid values:
 	//
-	// 	- For Redis Open-Source Edition instances, set the parameter to **5.0**, **6.0**, or **7.0**.
+	// 	- Redis Community Edition supports **5.0**, **6.0**, and **7.0**.
 	//
-	// 	- For Tair DRAM-based instances that are compatible with Redis 5.0, 6.0, or 7.0, set the parameter to **5.0**, **6.0**, or **7.0**.
+	// 	- Tair memory-optimized instances are compatible with Redis 5.0, 6.0, and 7.0 protocols. Set this parameter to **5.0**, **6.0**, or **7.0**.
 	//
-	// 	- For Tair persistent memory-optimized instances that are compatible with Redis 6.0, set the parameter to **1.0**.
+	// 	- Tair persistent memory-optimized instances are compatible with the Redis 6.0 protocol. Set this parameter to **1.0**.
 	//
-	// 	- For Tair ESSD-based instances that are compatible with Redis 6.0, set the parameter to **1.0**. For Tair SSD-based instances that are compatible with Redis 6.0, set the parameter to **2.0**.
+	// 	- Tair disk-based (ESSD/SSD) instances are compatible with the Redis 6.0 protocol. To create an ESSD-based parameter template, set this parameter to **1.0**. To create an SSD-based parameter template, set this parameter to **2.0**.
 	//
 	// This parameter is required.
 	//

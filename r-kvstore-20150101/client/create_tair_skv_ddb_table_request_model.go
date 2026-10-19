@@ -48,7 +48,7 @@ type CreateTairSkvDdbTableRequest struct {
 	//
 	// cb-hyxdof5x9kqb**
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and cannot exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain up to 64 ASCII characters.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateTairSkvDdbTableRequest struct {
 	// {"AttributeDefinitions":[{"AttributeType":"S","AttributeName":"pk"},{"AttributeType":"S","AttributeName":"sk"}],"KeySchema":[{"KeyType":"HASH","AttributeName":"pk"},{"KeyType":"RANGE","AttributeName":"sk"}]}
 	Schema        *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// To create an instance from a backup set of an existing instance, specify the source instance ID in this parameter.
+	// To create an instance from a backup set of an existing instance, specify the ID of the source instance in this parameter.
 	//
 	// > This parameter must be used together with BackupId.
 	//

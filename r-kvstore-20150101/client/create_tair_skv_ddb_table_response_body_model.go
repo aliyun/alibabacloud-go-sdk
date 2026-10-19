@@ -100,7 +100,7 @@ type CreateTairSkvDdbTableResponseBody struct {
 	//
 	// 6379
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The queries per second (QPS). This value is the theoretical maximum for the current instance specifications.
+	// The queries per second (QPS). This value is the theoretical value for the current instance specification.
 	//
 	// example:
 	//

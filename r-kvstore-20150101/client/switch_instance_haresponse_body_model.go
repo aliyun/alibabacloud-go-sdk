@@ -22,6 +22,8 @@ type SwitchInstanceHAResponseBody struct {
 	//
 	// 5D622714-AEDD-4609-9167-F5DDD3D1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 674546459

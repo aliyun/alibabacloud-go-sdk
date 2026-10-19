@@ -19,13 +19,13 @@ type iCreateInstancesResponseBody interface {
 
 type CreateInstancesResponseBody struct {
 	InstanceIds *CreateInstancesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 20905403119****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iSwitchInstanceProxyRequest interface {
 }
 
 type SwitchInstanceProxyRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+	// The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//

@@ -24,12 +24,16 @@ type iCreateInstanceMultiVIPRequest interface {
 }
 
 type CreateInstanceMultiVIPRequest struct {
+	// The number of LBs to add.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AddCount *string `json:"AddCount,omitempty" xml:"AddCount,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

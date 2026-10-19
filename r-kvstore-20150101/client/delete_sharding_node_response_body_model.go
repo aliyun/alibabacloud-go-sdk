@@ -16,13 +16,13 @@ type iDeleteShardingNodeResponseBody interface {
 }
 
 type DeleteShardingNodeResponseBody struct {
-	// The ID of the order. On the Orders page in the Billing Management console, you can obtain the details of the order based on the order ID.
+	// The order ID. You can use this order ID to obtain the detailed information about the order in the Orders section of the User Center.
 	//
 	// example:
 	//
 	// 22179******0904
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

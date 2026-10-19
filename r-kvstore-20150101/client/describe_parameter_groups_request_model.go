@@ -30,20 +30,21 @@ type iDescribeParameterGroupsRequest interface {
 type DescribeParameterGroupsRequest struct {
 	// The engine type. Valid values:
 	//
-	// - **redis**: Redis Community Edition or Tair (Enhanced Edition) in-memory type.
+	// - **redis**: open-source Redis or Tair (Memory-optimized).
 	//
-	// - **tair_pena**: Tair (Enhanced Edition) persistent memory type.
+	// - **tair_pena**: Tair (Persistent Memory-optimized).
 	//
-	// - **tair_pdb**: Tair (Enhanced Edition) cloud disk type (ESSD/SSD).
+	// - **tair_pdb**: Tair (Disk-optimized, ESSD/SSD).
 	//
 	// example:
 	//
 	// redis
-	DbType        *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The compatible engine version.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

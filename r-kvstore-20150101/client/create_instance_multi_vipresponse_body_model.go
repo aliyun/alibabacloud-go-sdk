@@ -14,6 +14,8 @@ type iCreateInstanceMultiVIPResponseBody interface {
 }
 
 type CreateInstanceMultiVIPResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// 52D901ED-E0A5-42FB-B9DB-39C295C3****

@@ -18,11 +18,20 @@ type iCreateInspectionTaskResponseBody interface {
 }
 
 type CreateInspectionTaskResponseBody struct {
+	// The task data.
 	Data *CreateInspectionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9A931CE5-C926-5E09-B0EC-6299C4A6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -74,10 +83,14 @@ func (s *CreateInspectionTaskResponseBody) Validate() error {
 }
 
 type CreateInspectionTaskResponseBodyData struct {
+	// The task status.
+	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// tit-dca42f85c73644e0ab5c80ef641xxxx

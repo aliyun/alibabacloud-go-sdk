@@ -23,7 +23,7 @@ type iDescribeRoleZoneInfoResponseBody interface {
 
 type DescribeRoleZoneInfoResponseBody struct {
 	Node *DescribeRoleZoneInfoResponseBodyNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRoleZoneInfoResponseBody struct {
 	//
 	// 224B97FB-A275-4EAC-86E9-8922FEA2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

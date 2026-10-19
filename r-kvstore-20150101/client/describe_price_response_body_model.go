@@ -22,9 +22,9 @@ type iDescribePriceResponseBody interface {
 }
 
 type DescribePriceResponseBody struct {
-	// The information about the order.
+	// The order information.
 	Order *DescribePriceResponseBodyOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The parameters of the order. When OrderParamOut is set to `true`, this parameter is returned.
+	// The order parameters. This parameter is returned when OrderParamOut is set to `true`.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type DescribePriceResponseBodyOrder struct {
 	// ""
 	Code    *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Coupons *DescribePriceResponseBodyOrderCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	// The currency used for payment. A value of CNY is used when the order was generated on the China site (aliyun.com), and a value of USD is used when the order was generated on the international site (alibabacloud.com).
+	// The currency. The value is CNY (Chinese Yuan) for the China site and USD (US Dollar) for the international site.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The activity information.
+	// The promotion information.
 	DepreciateInfo *DescribePriceResponseBodyOrderDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	// The discount amount of the order.
 	//
@@ -134,19 +134,19 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// 0.21
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// The service fees of the order.
+	// The service fee.
 	//
 	// example:
 	//
 	// 0.1
 	HandlingFeeAmount *string `json:"HandlingFeeAmount,omitempty" xml:"HandlingFeeAmount,omitempty"`
-	// Indicates whether eligibility for the contracted discount is met.
+	// Indicates whether a contract-based discount is applied.
 	//
 	// example:
 	//
 	// false
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// The information about the order.
+	// The order information.
 	//
 	// example:
 	//
@@ -159,9 +159,9 @@ type DescribePriceResponseBodyOrder struct {
 	// 0.21
 	OriginalAmount *string                                `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	RuleIds        *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// Indicates whether the discount information is displayed.
+	// Indicates whether discount information is displayed.
 	ShowDiscountInfo *bool `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
-	// The discount.
+	// The discount price.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// 0
 	StandPrice *int64 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	// The transaction price of the order.
+	// The actual transaction price of the order.
 	//
 	// example:
 	//
@@ -424,39 +424,39 @@ func (s *DescribePriceResponseBodyOrderCouponsCoupon) Validate() error {
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfo struct {
-	// The price reduction rate.
+	// The price reduction ratio.
 	//
 	// example:
 	//
 	// 30%
 	CheapRate *int64 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The new total price displayed on the official website.
+	// The total price on the official website after the price reduction.
 	//
 	// example:
 	//
 	// 9*
 	CheapStandAmount *int64 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// The activity information.
+	// The promotion information.
 	ContractActivity *DescribePriceResponseBodyOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
-	// The promotional offer (displayed in the total order amount).
+	// The price difference discount, displayed in the order total.
 	//
 	// example:
 	//
 	// **
 	Differential *int64 `json:"Differential,omitempty" xml:"Differential,omitempty"`
-	// The name of the promotional offer.
+	// The name of the price difference discount.
 	//
 	// example:
 	//
 	// XXXXX
 	DifferentialName *string `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
-	// Indicates whether eligibility for the contracted discount is met.
+	// Indicates whether a contract-based discount is applied.
 	//
 	// example:
 	//
 	// false
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// Indicates whether the price reduction rate is displayed.
+	// Indicates whether the price reduction is displayed.
 	//
 	// example:
 	//
@@ -468,13 +468,13 @@ type DescribePriceResponseBodyOrderDepreciateInfo struct {
 	//
 	// 1*
 	ListPrice *int64 `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	// The monthly price.
+	// The equivalent monthly price.
 	//
 	// example:
 	//
 	// **
 	MonthPrice *int64 `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
-	// The original total price displayed on the official website.
+	// The original total price on the official website.
 	//
 	// example:
 	//
@@ -590,23 +590,23 @@ func (s *DescribePriceResponseBodyOrderDepreciateInfo) Validate() error {
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
-	// The activity ID.
+	// The promotion ID.
 	//
 	// example:
 	//
 	// ****
 	ActivityId *int64 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// The activity name.
+	// The promotion name.
 	//
 	// example:
 	//
-	// 合同优惠_整单_xxx折
+	// Contract_Discount_Order_xxxOff
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The preferential price.
+	// The price after the discount.
 	FinalFee *float64 `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
 	// The total discount amount.
 	FinalPromFee *float64 `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
-	// The promotion code.
+	// The discount ID.
 	//
 	// example:
 	//

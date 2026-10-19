@@ -14,7 +14,7 @@ type iRemoveSubInstanceResponseBody interface {
 }
 
 type RemoveSubInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

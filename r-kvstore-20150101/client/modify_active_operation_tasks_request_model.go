@@ -28,7 +28,7 @@ type iModifyActiveOperationTasksRequest interface {
 }
 
 type ModifyActiveOperationTasksRequest struct {
-	// The IDs of the O\\&M events. Separate multiple event IDs with commas (,).
+	// The O&M event IDs. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,17 @@ type ModifyActiveOperationTasksRequest struct {
 	//
 	// 1111721,1111718
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// Specifies whether to immediately start scheduling. Valid values:
+	// Specifies whether to immediately start execution scheduling.
 	//
-	// 	- 0 (default): Scheduling is not started immediately.
+	// - 0: No. (Default)
 	//
-	// 	- 1: Scheduling is started immediately.
+	// - 1: Yes.
 	//
-	// >  If you set this parameter to 0, the SwitchTime parameter takes effect. If you set this parameter to 1, the SwitchTime parameter does not take effect. In this case, the start time of the event is set to the current time, and the system determines the switching time based on the start time. Scheduling is started immediately, which is a prerequisite for the switchover. Then, the switchover is performed. You can call the DescribeActiveOperationTasks operation to query the preparation time that is returned for the PrepareInterval parameter.
+	// >
+	//
+	// > If the value is 0, SwitchTime takes effect. If the value is 1, SwitchTime does not take effect. The event start time is set to the current time, and the switchover time is automatically calculated based on the new start time.
+	//
+	// The event immediately enters execution scheduling (not an immediate switchover). Pre-switchover preparations begin, and the switchover is performed after the preparations are complete. Call DescribeActiveOperationTasks and check the value of the PrepareInterval response parameter to obtain the preparation time.
 	//
 	// example:
 	//
@@ -53,9 +57,11 @@ type ModifyActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The scheduled switching time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The planned switchover time to set. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
-	// >  The time that is specified by the SwitchTime parameter cannot be later than the time that is specified by the Deadline parameter. You can call the DescribeActiveOperationTasks operation to query the latest switching time that is returned for the Deadline parameter.
+	// >
+	//
+	// >  The time cannot be later than the deadline. Call DescribeActiveOperationTasks and check the value of the Deadline response parameter to obtain the deadline.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iModifySecurityGroupConfigurationResponseBody interface {
 }
 
 type ModifySecurityGroupConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -41,9 +41,9 @@ type DescribeBackupPolicyResponseBody struct {
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// Indicates whether the backup service is enabled for the instance. Valid values:
 	//
-	// 	- **1**: enabled.
+	// 	- **1**: Enabled.
 	//
-	// 	- **0**: disabled.
+	// 	- **0**: Disabled.
 	//
 	// example:
 	//
@@ -51,9 +51,9 @@ type DescribeBackupPolicyResponseBody struct {
 	DbsInstance *string `json:"DbsInstance,omitempty" xml:"DbsInstance,omitempty"`
 	// Indicates whether incremental backup is enabled. Valid values:
 	//
-	// 	- **1**: enabled.
+	// 	- **1**: Enabled.
 	//
-	// 	- **0**: disabled.
+	// 	- **0**: Disabled.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyInstanceMinorVersionResponseBody interface {
 }
 
 type ModifyInstanceMinorVersionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

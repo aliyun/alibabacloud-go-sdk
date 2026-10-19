@@ -34,9 +34,9 @@ type UntagResourcesRequest struct {
 	//
 	// 	- **true**: removes all tags from the instance.
 	//
-	// 	- **false*	- (default): does not remove all tags from the instance.
+	// 	- **false**: does not remove all tags from the instance. This is the default value.
 	//
-	// > If you specify both this parameter and the **TagKey.N*	- parameter, this parameter does not take effect.
+	// > If both **TagKey.N*	- and this parameter are specified, this parameter does not take effect.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type UntagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UntagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Set the value to **INSTANCE**.
+	// The resource type. Valid value: **INSTANCE**.
 	//
 	// This parameter is required.
 	//

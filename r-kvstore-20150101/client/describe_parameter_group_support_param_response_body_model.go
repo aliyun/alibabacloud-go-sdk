@@ -22,7 +22,7 @@ type DescribeParameterGroupSupportParamResponseBody struct {
 	//
 	// BB73740C-23E2-4392-9DA4-2660C74C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters.
+	// The list of parameters.
 	ResourceList []*DescribeParameterGroupSupportParamResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeParameterGroupSupportParamResponseBody) Validate() error {
 }
 
 type DescribeParameterGroupSupportParamResponseBodyResourceList struct {
-	// The service category.
+	// The product category.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type DescribeParameterGroupSupportParamResponseBodyResourceList struct {
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The engine version.
+	// The compatible engine version.
 	//
 	// example:
 	//
 	// 5.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The name of the parameter.
+	// The configurable parameter.
 	//
 	// example:
 	//

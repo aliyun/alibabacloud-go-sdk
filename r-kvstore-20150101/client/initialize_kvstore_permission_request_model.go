@@ -26,7 +26,7 @@ type iInitializeKvstorePermissionRequest interface {
 type InitializeKvstorePermissionRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

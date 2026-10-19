@@ -24,7 +24,7 @@ type iDescribeSecurityGroupConfigurationRequest interface {
 }
 
 type DescribeSecurityGroupConfigurationRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

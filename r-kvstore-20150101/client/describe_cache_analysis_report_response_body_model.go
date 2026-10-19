@@ -26,13 +26,13 @@ type iDescribeCacheAnalysisReportResponseBody interface {
 }
 
 type DescribeCacheAnalysisReportResponseBody struct {
-	// Details of the large keys.
+	// The list of big keys.
 	BigKeys []map[string]interface{} `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Repeated"`
-	// Details of the hotkeys.
+	// The list of hot keys.
 	//
-	// > This parameter is not returned because Tair (Redis OSS-compatible) does not support hotkey analytics.
+	// > Hot key analysis is not supported. No value is returned.
 	HotKeys []map[string]interface{} `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type DescribeCacheAnalysisReportResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A057C066-C3F5-4CC9-9FE4-A8D8B0DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries returned across all pages.
 	//
 	// example:
 	//

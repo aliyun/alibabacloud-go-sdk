@@ -16,9 +16,9 @@ type iDescribeClusterMemberInfoResponseBody interface {
 }
 
 type DescribeClusterMemberInfoResponseBody struct {
-	// Details about data nodes in the cluster instance.
+	// The list of data node information for the cluster instance.
 	ClusterChildren []*DescribeClusterMemberInfoResponseBodyClusterChildren `json:"ClusterChildren,omitempty" xml:"ClusterChildren,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,73 +66,75 @@ func (s *DescribeClusterMemberInfoResponseBody) Validate() error {
 }
 
 type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
-	// The maximum bandwidth of the node. Unit: MB/s.
+	// The bandwidth of the node. Unit: MB/s.
 	//
-	// > This parameter is returned only if the return value of **Service*	- is **redis**, which indicates a data node.
+	// > This parameter is returned only when the **Service*	- parameter is set to **redis**, which indicates that the node is a data node.
 	//
 	// example:
 	//
 	// 96
 	BandWidth *int64 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// The retention period of binlogs.
+	// The number of days for which binary logs are retained.
 	//
 	// example:
 	//
 	// 7
 	BinlogRetentionDays *int32 `json:"BinlogRetentionDays,omitempty" xml:"BinlogRetentionDays,omitempty"`
-	// The type of workload. The return value is **ALIYUN**.
+	// The business type. The value is fixed as **ALIYUN**.
 	//
 	// example:
 	//
 	// ALIYUN
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The maximum memory capacity per data node. Unit: MB.
+	// The maximum memory capacity of a single data node. Unit: MB.
 	//
-	// > This parameter is returned only if the return value of **Service*	- is **redis**, which indicates a data node.
+	// > This parameter is returned only when the **Service*	- parameter is set to **redis**, which indicates that the node is a data node.
 	//
 	// example:
 	//
 	// 1024
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The specifications of the data node. For more information, see [Community Edition instances that use cloud disks](https://help.aliyun.com/document_detail/164477.html).
+	// The specifications of the data node. For more information, see [Cloud-native instance specifications](https://help.aliyun.com/document_detail/164477.html).
 	//
 	// example:
 	//
 	// redis.shard.small.ce
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The maximum number of connections supported by the data node.
+	// The maximum number of connections for the data node.
 	//
 	// example:
 	//
 	// 20000
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The current bandwidth of the data node, which is the sum of the default bandwidth and any extra bandwidth that is purchased. Unit: Mbit/s.
+	// The current bandwidth of the node. Unit: MB/s. The value is the sum of the default bandwidth and the increased bandwidth of the node.
+	//
+	// <props="china">This parameter is returned only when the instance is created in a dedicated cluster.
 	//
 	// example:
 	//
 	// 100
 	CurrentBandWidth *int64 `json:"CurrentBandWidth,omitempty" xml:"CurrentBandWidth,omitempty"`
-	// The storage capacity of the [enhanced SSD (ESSD)](https://help.aliyun.com/document_detail/122389.html) that is used by the data node. Unit: MB.
+	// The storage space of the [ESSD cloud disk](https://help.aliyun.com/document_detail/122389.html) for the data node. Unit: MB.
 	//
-	// > The ESSD is used only to store system operating data, such as Persistent Memory (PMEM). It is not used as a medium to write and read data.
+	// > The ESSD cloud disk is used only for system operations, such as data persistence, and is not used as a medium for data access.
 	//
 	// example:
 	//
 	// 4096
 	DiskSizeMB *int32 `json:"DiskSizeMB,omitempty" xml:"DiskSizeMB,omitempty"`
-	// The ID of the replica set in the node.
+	// The replica set ID of the node.
 	//
 	// example:
 	//
 	// 501791111
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data node.
+	// The name of the node.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****-db-0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of replica nodes.
+	// The number of child nodes.
 	//
 	// example:
 	//
@@ -146,9 +148,9 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **redis**: data node
+	// 	- **redis**: data node.
 	//
-	// 	- **redis_cs**: config server
+	// 	- **redis_cs**: configuration server node.
 	//
 	// example:
 	//
@@ -160,7 +162,7 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	//
 	// 5.0
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

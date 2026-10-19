@@ -18,19 +18,19 @@ type iDescribeAuditLogConfigResponseBody interface {
 }
 
 type DescribeAuditLogConfigResponseBody struct {
-	// Indicates whether the audit log feature is enabled. Valid values:
+	// Indicates whether audit logging is enabled. Valid values:
 	//
-	// 	- **true**: enabled
+	// 	- **true**: Enabled.
 	//
-	// 	- **false**: disabled
+	// 	- **false**: Disabled.
 	//
-	// > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) operation to enable or disable the audit log feature for a Tair (Redis OSS-compatible) instance.
+	// > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) operation to enable or disable audit logging for the instance.
 	//
 	// example:
 	//
 	// true
 	DbAudit *string `json:"DbAudit,omitempty" xml:"DbAudit,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type CreateParameterGroupResponseBody struct {
 	//
 	// g-51ii2ienn0dg0xi8****
 	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

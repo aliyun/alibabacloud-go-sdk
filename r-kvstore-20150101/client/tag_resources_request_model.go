@@ -38,7 +38,7 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type TagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the instance.
+	// The tags of the instances.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -156,11 +156,11 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag associated with the instance.
+	// The key of the label.
 	//
-	// > 	- **N*	- specifies the serial number of the tag. For example, **Tag.1.Key*	- specifies the key of the first tag and **Tag.2.Key*	- specifies the key of the second tag.
+	// > 	- **N*	- specifies the sequence number of the label key. For example, **Tag.1.Key*	- specifies the key of the first label, and **Tag.2.Key*	- specifies the key of the second label.
 	//
-	// > 	- If the key of the tag does not exist, the key is automatically created.
+	// > 	- If the label key does not exist, automatic creation of the key is performed.
 	//
 	// This parameter is required.
 	//
@@ -168,9 +168,9 @@ type TagResourcesRequestTag struct {
 	//
 	// demokey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag associated with the instance.
+	// The value of the tag.
 	//
-	// > **N*	- specifies the serial number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag and **Tag.2.Value*	- specifies the value of the second tag.
+	// > **N*	- specifies the sequence number of the tag value. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//
 	// This parameter is required.
 	//

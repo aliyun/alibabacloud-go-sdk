@@ -16,7 +16,7 @@ type iModifyParameterGroupResponseBody interface {
 }
 
 type ModifyParameterGroupResponseBody struct {
-	// The parameter template ID.
+	// The ID of the parameter template.
 	//
 	// example:
 	//

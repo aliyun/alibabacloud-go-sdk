@@ -22,15 +22,15 @@ type iDescribeHistoryTasksResponseBody interface {
 }
 
 type DescribeHistoryTasksResponseBody struct {
-	// The queried task objects.
+	// The list of task objects.
 	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeHistoryTasksResponseBody struct {
 	//
 	// 5D622714-AEDD-4609-9167-F5DDD3D1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of tasks that meet these constraints without taking pagination into account.
+	// The total number of tasks that meet the query conditions, regardless of pagination.
 	//
 	// example:
 	//
@@ -117,61 +117,65 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
-	// A set of allowed actions that can be taken on the task. The system matches the current step name and status of the task to the available actions specified by ActionInfo. If no matching action is found, the current status of the task does not support any action. Example:
+	// The allowed operation information. When used, the operation Action is matched based on currentStepName and status in this information. If no Action is matched, the task does not support operations in its current state. Example:
 	//
-	//     {"steps": [
+	// ```
 	//
-	//         {
+	// {"steps": [
 	//
-	//           "step_name": "exec_task", // The name of the step, which matches CurrentStepName.
+	//     {
 	//
-	//           "action_info": {    // The actions supported for this step.
+	//       "step_name": "exec_task", // Step name, matched with currentStepName
 	//
-	//             "Waiting": [      // The status, which matches Status.
+	//       "action_info": {    // Operations supported by the step
 	//
-	//               "modifySwitchTime" // The action. Multiple actions are supported.
+	//         "Waiting": [      // Status, matched with status
 	//
-	//             ]
+	//           "modifySwitchTime" // Operation Action, may have multiple values, indicating multiple supported operations
 	//
-	//           }
+	//         ]
 	//
-	//         },
+	//       }
 	//
-	//         {
+	//     },
 	//
-	//           "step_name": "init_task", // The name of the step.
+	//     {
 	//
-	//           "action_info": {    // The actions supported for this step.
+	//       "step_name": "init_task", // Step name
 	//
-	//             "Running": [      // The status.
+	//       "action_info": {    // Operations supported by the step
 	//
-	//               "cancel",       // The action.
+	//         "Running": [      // Status
 	//
-	//               "pause"
+	//           "cancel",       // Operation
 	//
-	//             ]
+	//           "pause"
 	//
-	//           }
+	//         ]
 	//
-	//         }
-	//
-	//       ]
+	//       }
 	//
 	//     }
 	//
-	// The system may support the following actions:
+	//   ]
 	//
-	// 	- **retry**
+	// }
 	//
-	// 	- **cancel**
+	// ```
 	//
-	// 	- **modifySwitchTime**: changes the switching or restoration time.
+	// Operations that the system may support:
+	//
+	// 	- **retry**: Retry.
+	//
+	// 	- **cancel**: Cancel.
+	//
+	// 	- **modifySwitchTime**: Modify the switchover time or recovery time.
 	//
 	// example:
 	//
 	// {"steps":[{"action_info":{"Waiting":["modifySwitchTime"]},"step_name":"exec_task"}]}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	// The ID of the user who made the request. If CallerSource is set to User, CallerUid indicates the unique ID (UID) of the user.
+	// The request user ID. When callerSource is User, this value represents the user UID.
 	//
 	// example:
 	//
@@ -179,27 +183,27 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
 	// The request source. Valid values:
 	//
-	// 	- **System**
+	// 	- **System**: Automatically initiated by the system.
 	//
-	// 	- **User**
+	// 	- **User**: Initiated by a user.
 	//
 	// example:
 	//
 	// User
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The name of the current step. If this parameter is left empty, the task is not started.
+	// The name of the current step being executed. An empty value indicates that the task has not started.
 	//
 	// example:
 	//
 	// exec_task
 	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
-	// The database type. The return value is redis.
+	// The database type. The value is fixed as redis.
 	//
 	// example:
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The end time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The end time of the task in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -217,19 +221,19 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// dba-tair-test-qcloud
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance type. The return value is Instance.
+	// The instance type. The value is fixed as Instance.
 	//
 	// example:
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The product. The return value is kvstore.
+	// The product. The value is fixed as kvstore.
 	//
 	// example:
 	//
 	// kvstore
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The task progress. Valid values: 0 to 100.
+	// The current progress. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -247,39 +251,39 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The estimated amount of time remaining to complete the task. Unit: seconds. A value of 0 indicates that the task is completed.
+	// The estimated remaining execution time. Unit: seconds. A value of 0 indicates that the execution is complete.
 	//
 	// example:
 	//
 	// 1000
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	// The start time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time of the task in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
 	// 2022-02-03T11:31:03Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status.
+	// The task status. Valid values:
 	//
-	// 	- **Scheduled**
+	// - **Scheduled**: Waiting for execution.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed.
 	//
-	// 	- **Cancelling**
+	// - **Cancelling**: Being stopped.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Stopped.
 	//
-	// 	- **Waiting**
+	// - **Waiting**: Waiting for the scheduled time.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task details. The details vary based on the task type.
+	// The task details. Different task types correspond to different outputs.
 	//
 	// example:
 	//
@@ -291,27 +295,27 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// t-83br18hloy3faf****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type.
+	// The task type. Valid values:
 	//
-	// 	- **ModifyInsSpec**
+	// - **ModifyInsSpec**: Specification change or migration.
 	//
-	// 	- **DeleteInsNode**
+	// - **DeleteInsNode**: Shard deletion.
 	//
-	// 	- **AddInsNode**
+	// - **AddInsNode**: Shard addition.
 	//
-	// 	- **HaSwitch**
+	// - **HaSwitch**: Primary/secondary switchover.
 	//
-	// 	- **RestartIns**
+	// - **RestartIns**: Instance restart.
 	//
-	// 	- **CreateIns**
+	// - **CreateIns**: Instance creation.
 	//
-	// 	- **ModifyInsConfig**
+	// - **ModifyInsConfig**: Configuration change.
 	//
 	// example:
 	//
 	// ModifyInsSpec
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The ID of the user to which the resources belong.
+	// The user ID of the resource owner.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iRetryInspectionTaskResponseBody interface {
 }
 
 type RetryInspectionTaskResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// 794120D1-E0CF-4713-BAE4-EBAEA04506AF

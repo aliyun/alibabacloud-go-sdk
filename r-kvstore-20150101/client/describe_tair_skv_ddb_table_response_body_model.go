@@ -95,10 +95,11 @@ func (s *DescribeTairSkvDdbTableResponseBodyTables) Validate() error {
 }
 
 type DescribeTairSkvDdbTableResponseBodyTablesTable struct {
-	Bandwidth   *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Connections *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	TableId     *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Bandwidth                *int64                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Connections              *int64                                                                  `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	GlobalSecondaryIndexList *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList `json:"GlobalSecondaryIndexList,omitempty" xml:"GlobalSecondaryIndexList,omitempty" type:"Struct"`
+	TableId                  *string                                                                 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName                *string                                                                 `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeTairSkvDdbTableResponseBodyTablesTable) String() string {
@@ -115,6 +116,10 @@ func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) GetBandwidth() *int64 {
 
 func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) GetConnections() *int64 {
 	return s.Connections
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) GetGlobalSecondaryIndexList() *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList {
+	return s.GlobalSecondaryIndexList
 }
 
 func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) GetTableId() *string {
@@ -135,6 +140,11 @@ func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) SetConnections(v int64)
 	return s
 }
 
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) SetGlobalSecondaryIndexList(v *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList) *DescribeTairSkvDdbTableResponseBodyTablesTable {
+	s.GlobalSecondaryIndexList = v
+	return s
+}
+
 func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) SetTableId(v string) *DescribeTairSkvDdbTableResponseBodyTablesTable {
 	s.TableId = &v
 	return s
@@ -146,5 +156,85 @@ func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) SetTableName(v string) 
 }
 
 func (s *DescribeTairSkvDdbTableResponseBodyTablesTable) Validate() error {
+	if s.GlobalSecondaryIndexList != nil {
+		if err := s.GlobalSecondaryIndexList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList struct {
+	GlobalSecondaryIndex []*DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex `json:"GlobalSecondaryIndex,omitempty" xml:"GlobalSecondaryIndex,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList) GetGlobalSecondaryIndex() []*DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex {
+	return s.GlobalSecondaryIndex
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList) SetGlobalSecondaryIndex(v []*DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList {
+	s.GlobalSecondaryIndex = v
+	return s
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexList) Validate() error {
+	if s.GlobalSecondaryIndex != nil {
+		for _, item := range s.GlobalSecondaryIndex {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex struct {
+	// example:
+	//
+	// tt-gsi-xxxxxxxxx
+	GsiId *string `json:"GsiId,omitempty" xml:"GsiId,omitempty"`
+	// example:
+	//
+	// indexKey1
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+}
+
+func (s DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) GetGsiId() *string {
+	return s.GsiId
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) GetIndexName() *string {
+	return s.IndexName
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) SetGsiId(v string) *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex {
+	s.GsiId = &v
+	return s
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) SetIndexName(v string) *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex {
+	s.IndexName = &v
+	return s
+}
+
+func (s *DescribeTairSkvDdbTableResponseBodyTablesTableGlobalSecondaryIndexListGlobalSecondaryIndex) Validate() error {
 	return dara.Validate(s)
 }

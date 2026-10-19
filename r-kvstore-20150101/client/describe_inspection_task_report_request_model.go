@@ -20,10 +20,14 @@ type iDescribeInspectionTaskReportRequest interface {
 }
 
 type DescribeInspectionTaskReportRequest struct {
+	// The ID of the inspection instance.
+	//
 	// example:
 	//
 	// r-bp19f4f6994813xxx
 	InspectionInsId *string `json:"InspectionInsId,omitempty" xml:"InspectionInsId,omitempty"`
+	// The assistant instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31,6 +35,8 @@ type DescribeInspectionTaskReportRequest struct {
 	// ta-bp19f4f6994813xxx
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

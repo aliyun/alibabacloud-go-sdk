@@ -32,25 +32,25 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The number of days for which you want to retain data backup files. Valid values: 7 to 730. Default value: 7.
+	// The number of days for which data backups are retained. Default value: 7. Valid values: 7 to 730.
 	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Specifies whether to enable the data flashback feature for the instance. Valid values:
+	// Specifies whether to enable the data flashback feature. Valid values:
 	//
-	// 	- **1**: enables the data flashback feature. You must also enable append-only file (AOF) persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
+	// 	- **1**: Enabled. Make sure that append-only file (AOF) persistence is enabled in the parameter settings of the instance (`appendonly` is set to `yes`). The data flashback feature is available only after AOF persistence is enabled.
 	//
-	// 	- **0*	- (default): disables the data flashback feature.
+	// 	- **0**: Disabled. This is the default value.
 	//
-	// >  This parameter is available only for Tair (Enterprise Edition) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/148479.html).
+	// > This parameter is supported only by Tair (Enterprise Edition) memory-optimized and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/148479.html).
 	//
 	// example:
 	//
 	// 1
 	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ModifyBackupPolicyRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The days of the week to back up data. Valid values:
+	// The backup cycle. Valid values:
 	//
 	// 	- **Monday**
 	//
@@ -76,7 +76,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **Sunday**
 	//
-	// > Separate multiple options with commas (,).
+	// > You can specify multiple values. Separate them with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -84,9 +84,9 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Tuesday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The time range to back up data. Specify the time in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
+	// The backup time. Specify the time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
 	//
-	// > The beginning and end of the time range must be on the hour. The duration must be an hour.
+	// > The time must be on the hour, and the interval must be 1 hour.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iModifyIntranetAttributeResponseBody interface {
 }
 
 type ModifyIntranetAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

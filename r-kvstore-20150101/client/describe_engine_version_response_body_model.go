@@ -46,85 +46,85 @@ type iDescribeEngineVersionResponseBody interface {
 }
 
 type DescribeEngineVersionResponseBody struct {
-	// The latest minor version to which the instance can be updated.
+	// The information about the latest minor version to which the instance can be upgraded.
 	DBLatestMinorVersion *DescribeEngineVersionResponseBodyDBLatestMinorVersion `json:"DBLatestMinorVersion,omitempty" xml:"DBLatestMinorVersion,omitempty" type:"Struct"`
-	// The release notes for the minor version of the instance, including the release date, minor version number, release type such as new feature, and description.
+	// The update notes for the minor version of the instance, including the release time, minor version number, type (such as new feature), and detailed description.
 	//
 	// example:
 	//
-	// {\\"releaseInfo\\":{\\"createTime\\":\\"2021-07-27\\",\\"level\\":1,\\"releaseVersion\\":\\"0.5.4\\",\\"releaseNote\\":\\"功能更新：增强稳定性。\\"}],\\"versionChangesLevel\\":2}
+	// {\\"releaseInfo\\":{\\"createTime\\":\\"2021-07-27\\",\\"level\\":1,\\"releaseVersion\\":\\"0.5.4\\",\\"releaseNote\\":\\"Feature update: Enhanced stability.\\"}],\\"versionChangesLevel\\":2}
 	DBVersionRelease *string `json:"DBVersionRelease,omitempty" xml:"DBVersionRelease,omitempty"`
-	// Indicates whether the instance major version can be upgraded. Valid values:
+	// Indicates whether the major version of the instance can be upgraded. Valid values:
 	//
 	// 	- **true**: The major version can be upgraded.
 	//
-	// 	- **false**: The major version is the latest version and cannot be upgraded.
+	// 	- **false**: The major version cannot be upgraded, usually because it is already the latest version.
 	//
-	// >  To upgrade the major version, call the [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/473776.html) operation.
+	// > To upgrade the major version, call the [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/473776.html) operation.
 	//
 	// example:
 	//
 	// true
 	EnableUpgradeMajorVersion *bool `json:"EnableUpgradeMajorVersion,omitempty" xml:"EnableUpgradeMajorVersion,omitempty"`
-	// Indicates whether the instance minor version can be updated. Valid values:
+	// Indicates whether the minor version of the instance can be upgraded. Valid values:
 	//
-	// 	- **true**: The minor version can be updated.
+	// 	- **true**: The minor version can be upgraded.
 	//
-	// 	- **false**: The minor version is the latest version and cannot be updated.
+	// 	- **false**: The minor version is already the latest and cannot be upgraded.
 	//
-	// >  To update the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/473777.html) operation.
+	// > To upgrade the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/473777.html) operation.
 	//
 	// example:
 	//
 	// true
 	EnableUpgradeMinorVersion *bool `json:"EnableUpgradeMinorVersion,omitempty" xml:"EnableUpgradeMinorVersion,omitempty"`
-	// The database engine. Valid values: **redis*	- and **memcache**.
+	// The database engine type. Valid values: **redis*	- and **memcache**.
 	//
 	// example:
 	//
 	// redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Indicates whether automatic minor version update is enabled. Valid values:
+	// Indicates whether automatic minor version upgrade is enabled. Valid values:
 	//
-	// 	- **0**: Automatic minor version update is disabled.
+	// - **0**: Disabled.
 	//
-	// 	- **1**: Automatic minor version update is enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	IsAutoUpgradeOpen *string `json:"IsAutoUpgradeOpen,omitempty" xml:"IsAutoUpgradeOpen,omitempty"`
-	// Indicates whether the instance uses the latest minor version. Valid values:
+	// Indicates whether the minor version of the instance is the latest. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: Yes.
 	//
-	// 	- **false**
+	// 	- **false**: No.
 	//
 	// example:
 	//
 	// false
 	IsLatestVersion *bool `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	// Indicates whether Transport Layer Security (TLS) is enabled. Valid values:
+	// Indicates whether the new TLS version is supported. Valid values:
 	//
-	// 	- **1**: TLS is enabled.
+	// 	- **1**: Enabled.
 	//
-	// 	- **0**: TLS is disabled.
+	// 	- **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	IsNewSSLMode *string `json:"IsNewSSLMode,omitempty" xml:"IsNewSSLMode,omitempty"`
-	// Indicates whether the NGLB mode is enabled. Valid values:
+	// Indicates whether NGLB mode is enabled. Valid values:
 	//
-	// 	- **0**: The NGLB mode is disabled.
+	// 	- **0**: Disabled.
 	//
-	// 	- **1**: The NGLB mode is enabled.
+	// 	- **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	IsOpenNGLB *string `json:"IsOpenNGLB,omitempty" xml:"IsOpenNGLB,omitempty"`
-	// Indicates whether the instance runs a Redis version.
+	// Indicates whether the instance is a Redis-compatible version.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type DescribeEngineVersionResponseBody struct {
 	IsRedisCompatibleVersion *string `json:"IsRedisCompatibleVersion,omitempty" xml:"IsRedisCompatibleVersion,omitempty"`
 	// Indicates whether SSL is enabled. Valid values:
 	//
-	// 	- **1**: SSL is enabled.
+	// 	- **1**: Enabled.
 	//
-	// 	- **0**: TLS is disabled.
+	// 	- **0**: Disabled.
 	//
 	// example:
 	//
@@ -152,25 +152,25 @@ type DescribeEngineVersionResponseBody struct {
 	//
 	// redis-5.0_0.5.0
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The latest minor version to which the proxy node can be updated.
+	// The information about the latest minor version to which the proxy node can be upgraded.
 	ProxyLatestMinorVersion *DescribeEngineVersionResponseBodyProxyLatestMinorVersion `json:"ProxyLatestMinorVersion,omitempty" xml:"ProxyLatestMinorVersion,omitempty" type:"Struct"`
 	// The current minor version of the proxy node.
 	//
-	// >  This parameter is returned only for cluster and read/write splitting instances.
+	// > This parameter is returned only for instances of the cluster or read/write splitting architecture.
 	//
 	// example:
 	//
 	// 6.6.0
 	ProxyMinorVersion *string `json:"ProxyMinorVersion,omitempty" xml:"ProxyMinorVersion,omitempty"`
-	// The release notes for the minor version of proxy nodes. The release notes include the release date, minor version number, release type such as new feature, and description.
+	// The update notes for the minor version of the proxy node, including the release time, minor version number, type (such as new feature), and detailed description.
 	//
-	// >  This parameter is returned only for cluster and read/write splitting instances.
+	// > This parameter is returned only for instances of the cluster or read/write splitting architecture.
 	//
 	// example:
 	//
-	// {\\"releaseInfo\\":[{\\"createTime\\":\\"2021-06-08\\",\\"level\\":0,\\"releaseVersion\\":\\"6.6.2\\",\\"releaseNote\\":\\"新特性：增加对部分内部命令的支持。\\"}],\\"versionChangesLevel\\":2}
+	// {\\"releaseInfo\\":[{\\"createTime\\":\\"2021-06-08\\",\\"level\\":0,\\"releaseVersion\\":\\"6.6.2\\",\\"releaseNote\\":\\"New feature: Added support for some internal commands.\\"}],\\"versionChangesLevel\\":2}
 	ProxyVersionRelease *string `json:"ProxyVersionRelease,omitempty" xml:"ProxyVersionRelease,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -354,13 +354,13 @@ func (s *DescribeEngineVersionResponseBody) Validate() error {
 }
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersion struct {
-	// The version update level. Valid values:
+	// The importance level of the version change. Valid values:
 	//
-	// 	- **0**: regular
+	// 	- **0**: Normal.
 	//
-	// 	- **1**: recommended
+	// 	- **1**: Important.
 	//
-	// 	- **2**: critical
+	// 	- **2**: Critical.
 	//
 	// example:
 	//
@@ -372,7 +372,7 @@ type DescribeEngineVersionResponseBodyDBLatestMinorVersion struct {
 	//
 	// 7.0.1.4
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The version update path from the current minor version to the latest minor version of the instance, which is consistent with the version documentation. For more detailed information, you can directly refer to the release notes.
+	// The version evolution path from the current minor version of the instance to the latest minor version. This is consistent with the version documentation. You can refer to the version release notes for more detailed information.
 	VersionRelease *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease `json:"VersionRelease,omitempty" xml:"VersionRelease,omitempty" type:"Struct"`
 }
 
@@ -422,13 +422,13 @@ func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersion) Validate() error
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease struct {
 	ReleaseInfo *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty" type:"Struct"`
-	// The version update level, which indicates how strongly the update is recommended. Valid values:
+	// The importance level of the version upgrade (recommended upgrade level). Valid values:
 	//
-	// 	- 0: regular
+	// 	- 0: Normal.
 	//
-	// 	- 1: recommended
+	// 	- 1: Important.
 	//
-	// 	- 2: critical
+	// 	- 2: Critical.
 	//
 	// example:
 	//
@@ -571,13 +571,13 @@ func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseRele
 }
 
 type DescribeEngineVersionResponseBodyProxyLatestMinorVersion struct {
-	// The version update level. Valid values:
+	// The importance level of the version change. Valid values:
 	//
-	// 	- **0**: regular
+	// 	- **0**: Normal.
 	//
-	// 	- **1**: recommended
+	// 	- **1**: Important.
 	//
-	// 	- **2**: critical
+	// 	- **2**: Critical.
 	//
 	// example:
 	//
@@ -589,7 +589,7 @@ type DescribeEngineVersionResponseBodyProxyLatestMinorVersion struct {
 	//
 	// 7.0.6
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The version update path from the current minor version to the latest minor version of the instance, which is consistent with the version documentation. For more detailed information, you can directly refer to the release notes.
+	// The version evolution path from the current minor version of the instance to the latest minor version. This is consistent with the version documentation. You can refer to the version release notes for more detailed information.
 	VersionRelease *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease `json:"VersionRelease,omitempty" xml:"VersionRelease,omitempty" type:"Struct"`
 }
 
@@ -639,13 +639,13 @@ func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) Validate() er
 
 type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease struct {
 	ReleaseInfo *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty" type:"Struct"`
-	// The version update level, which indicates how strongly the update is recommended. Valid values:
+	// The importance level of the version upgrade (recommended upgrade level). Valid values:
 	//
-	// 	- 0: regular
+	// 	- 0: Normal.
 	//
-	// 	- 1: recommended
+	// 	- 1: Important.
 	//
-	// 	- 2: critical
+	// 	- 2: Critical.
 	//
 	// example:
 	//

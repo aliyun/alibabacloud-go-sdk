@@ -24,24 +24,34 @@ type iDescribeInspectionSchedulesRequest interface {
 }
 
 type DescribeInspectionSchedulesRequest struct {
+	// Specifies whether the scheduled task is enabled.
+	//
 	// example:
 	//
 	// 1
 	Enabled *int64 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The instance ID of the assistant.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ta-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the timed scheduling.
+	//
 	// example:
 	//
 	// scheduleId-202604141xxxx

@@ -20,18 +20,28 @@ type iModifyAccountParameterRequest interface {
 }
 
 type ModifyAccountParameterRequest struct {
+	// The account name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1s4h3oosz5y8ilc7
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The account parameters to modify, in JSON format. The modified values overwrite the original values. For example, if you want to modify only the access-db-id parameter to 1, pass in {"access-db-id":"1"}.
+	//
+	// Only two parameters are supported: access-db-id (accessible DB ID) and cu-limit (CU Limit).
+	//
+	// 	Notice: Currently, only Tair Serverless KV instances are supported.
+	//
 	// This parameter is required.
 	//
 	// example:

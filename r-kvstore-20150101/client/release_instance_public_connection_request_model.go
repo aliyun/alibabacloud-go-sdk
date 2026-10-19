@@ -34,7 +34,7 @@ type ReleaseInstancePublicConnectionRequest struct {
 	//
 	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

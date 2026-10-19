@@ -14,6 +14,8 @@ type iCreateInspectionScheduleResponseBody interface {
 }
 
 type CreateInspectionScheduleResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// 561AFBF1-BE20-44DB-9BD1-6988B53E****

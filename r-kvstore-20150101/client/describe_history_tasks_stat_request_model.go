@@ -34,13 +34,13 @@ type iDescribeHistoryTasksStatRequest interface {
 }
 
 type DescribeHistoryTasksStatRequest struct {
-	// The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. Default value: 0. This value indicates that the minimum execution duration is unlimited.
+	// The minimum execution duration used to filter tasks whose execution duration is greater than this value. Unit: seconds. Default value: 0, which indicates no restriction.
 	//
 	// example:
 	//
 	// 0
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	// The beginning of the time range to query. The time must be in UTC and formatted as *yyyy-MM-dd*t*hh:mm*Z.
+	// The beginning of the query time range. Specify the time in the <i>yyyy-mm-dd</i>t<i>hh:mm</i>z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -64,47 +64,47 @@ type DescribeHistoryTasksStatRequest struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task status. Valid values:
+	// The task status. This parameter is used to filter tasks by status. Valid values:
 	//
-	// 	- **Scheduled**
+	// - **Scheduled**: Waiting to be executed.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed.
 	//
-	// 	- **Cancelling**
+	// - **Cancelling**: Being stopped.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Stopped.
 	//
-	// 	- **Waiting**
+	// - **Waiting**: Waiting for the scheduled time.
 	//
-	// >  This parameter is empty by default, which indicates that tasks in all states are queried. Separate multiple states with commas (,).
+	// > By default, this parameter is empty, which indicates that tasks in all statuses are queried. To specify multiple statuses, separate them with commas (,).
 	//
 	// example:
 	//
 	// Scheduled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task IDs. You can specify this parameter to query specific tasks. This parameter is empty by default, which indicates that all tasks are queried. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs.
+	// The task ID. This parameter is used to query a task with a known ID. By default, this parameter is empty, which indicates no restriction. To specify multiple task IDs, separate them with commas (,). A maximum of 30 task IDs are supported.
 	//
 	// example:
 	//
 	// t-0mq1yyhm3ffl2bxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
 	// all
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// Maximum task execution time. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. Default value: 0. This value indicates that the minimum execution duration is unlimited.
+	// The maximum execution duration used to filter tasks whose execution duration is not less than this value. Unit: seconds. Default value: 0, which indicates no restriction.
 	//
 	// example:
 	//
 	// 0
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	// The end of the time range to query. The time must be in UTC and formatted as *yyyy-MM-dd*t*hh:mm*Z.
+	// The end of the query time range. Specify the time in the <i>yyyy-mm-dd</i>t<i>hh:mm</i>z format (UTC).
 	//
 	// This parameter is required.
 	//

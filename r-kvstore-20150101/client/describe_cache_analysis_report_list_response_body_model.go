@@ -19,13 +19,13 @@ type iDescribeCacheAnalysisReportListResponseBody interface {
 
 type DescribeCacheAnalysisReportListResponseBody struct {
 	DailyTasks *DescribeCacheAnalysisReportListResponseBodyDailyTasks `json:"DailyTasks,omitempty" xml:"DailyTasks,omitempty" type:"Struct"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// 1041xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

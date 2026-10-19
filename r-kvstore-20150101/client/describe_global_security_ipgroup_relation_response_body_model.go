@@ -24,7 +24,7 @@ type DescribeGlobalSecurityIPGroupRelationResponseBody struct {
 	//
 	// r-t4n885e834f6****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The information about the associated global IP whitelist template.
+	// The information about the associated global IP whitelist templates.
 	GlobalSecurityIPGroupRel []*DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,9 +83,9 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponseBody) Validate() error {
 }
 
 type DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel struct {
-	// The IP address in the IP whitelist template.
+	// The IP addresses in the whitelist template.
 	//
-	// >  Multiple IP addresses are separated by commas (,).
+	// > Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//

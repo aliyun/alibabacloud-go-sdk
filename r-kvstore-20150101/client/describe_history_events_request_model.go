@@ -52,45 +52,45 @@ type iDescribeHistoryEventsRequest interface {
 }
 
 type DescribeHistoryEventsRequest struct {
-	// The status of the event. Valid values:
+	// The archive status of the event. Valid values:
 	//
-	// 	- **Archived**
+	// - **Archived**: The event is archived.
 	//
-	// 	- **UnArchived**
+	// - **UnArchived**: The event is not archived.
 	//
-	// 	- **All**
+	// - **All**: All events.
 	//
 	// example:
 	//
 	// Archived
 	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	// The system event category. Valid values:
+	// The category of the system event. Valid values:
 	//
-	// 	- **Exception**: abnormal events.
+	// - **Exception**: Exception events.
 	//
-	// 	- **Optimize**: optimization events.
+	// - **Optimize**: Optimization events.
 	//
-	// 	- **Notification**: Notification events.
+	// - **Notification**: Notification events.
 	//
-	// 	- **Maintenance**: scheduled maintenance events.
+	// - **Maintenance**: Scheduled O&M events.
 	//
 	// example:
 	//
 	// Exception
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// 5345398
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The level of the event. Valid values:
+	// The event level. Valid values:
 	//
-	// 	- **INFO**
+	// - **INFO**: Information.
 	//
-	// 	- **WARN**
+	// - **WARN**: Warning.
 	//
-	// 	- **CRITICAL**
+	// - **CRITICAL**: Critical.
 	//
 	// example:
 	//
@@ -98,53 +98,53 @@ type DescribeHistoryEventsRequest struct {
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// 	- **Inquiring**
+	// - **Inquiring**: Inquiring.
 	//
-	// 	- **Scheduled**: Planned
+	// - **Scheduled**: Scheduled.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Canceled.
 	//
-	// > Separate multiple states with commas (,).
+	// > To query events in multiple statuses, separate the statuses with commas (,).
 	//
 	// example:
 	//
 	// Scheduled
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The system event type. This parameter takes effect only when InstanceEventType.N is not specified. Valid values:
+	// The type of the system event. The EventType parameter is valid only when the InstanceEventType.N parameter is not specified. Valid values:
 	//
-	// 	- SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+	// - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
 	//
-	// 	- SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
+	// - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
 	//
-	// 	- SystemFailure.Reboot: The instance is restarted due to a system error.
+	// - SystemFailure.Reboot: The instance is restarted due to a system failure.
 	//
-	// 	- SystemFailure.Redeploy: The instance is redeployed due to a system error.
+	// - SystemFailure.Redeploy: The instance is redeployed due to a system failure.
 	//
-	// 	- SystemFailure.Delete: The instance is released due to an instance creation failure.
+	// - SystemFailure.Delete: The instance is released due to a creation failure.
 	//
-	// 	- InstanceFailure.Reboot: The instance is restarted due to an instance error.
+	// - InstanceFailure.Reboot: The instance is restarted due to an instance failure.
 	//
-	// 	- InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
+	// - InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
 	//
-	// 	- InstanceExpiration.Delete: The subscription instance is released due to expiration.
+	// - InstanceExpiration.Delete: The subscription instance is released due to expiration.
 	//
-	// 	- AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
+	// - AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
 	//
-	// 	- AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
+	// - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
 	//
-	// > For more information about event types, see [Overview of system events](https://help.aliyun.com/document_detail/66574.html). The values of this parameter are applicable only to instance system events, but not to disk system events.
+	// > For more information about event types, see [Overview of system events](https://help.aliyun.com/document_detail/66574.html). The value of this parameter can only be an instance system event, not a cloud disk system event.
 	//
 	// example:
 	//
 	// SystemFailure.Reboot
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The earliest start time of the query task. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -158,25 +158,25 @@ type DescribeHistoryEventsRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be greater than 0 and less than or equal to the maximum integer value. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to return on each page. Default value: 10.
+	// The number of entries to return on each page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -186,26 +186,26 @@ type DescribeHistoryEventsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// 	- **Instance**: instance resources.
+	// - **Instance**: Instance resources.
 	//
-	// 	- **Host**: host resources.
+	// - **Host**: Host resources.
 	//
-	// 	- **User**: user resources
+	// - **User**: User resources.
 	//
-	// > If you do not specify this parameter, events of all resource types are queried.
+	// > If you do not specify this parameter, all resource types are queried.
 	//
 	// example:
 	//
 	// Instance
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task IDs.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 578678678
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Only events that have a start time earlier than or equal to the time specified by this parameter are queried.
+	// The latest start time of the query task. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC and later than the earliest start time of the task.
 	//
 	// example:
 	//

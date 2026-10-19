@@ -62,7 +62,7 @@ type DescribeInstancesOverviewRequest struct {
 	//
 	// 	- **standard**: Standard Edition.
 	//
-	// 	- **rwsplit**: read/write splitting edition.
+	// 	- **rwsplit**: read/write splitting Edition.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type DescribeInstancesOverviewRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	//
-	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID. Related operations, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID. Related operations: see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//

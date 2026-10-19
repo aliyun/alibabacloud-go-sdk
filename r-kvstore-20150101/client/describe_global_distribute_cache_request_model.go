@@ -30,7 +30,7 @@ type iDescribeGlobalDistributeCacheRequest interface {
 }
 
 type DescribeGlobalDistributeCacheRequest struct {
-	// The ID of the distributed instance.
+	// The distributed instance ID.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type DescribeGlobalDistributeCacheRequest struct {
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+	// The page number. Set the value to a number that is greater than **0*	- and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -53,7 +53,7 @@ type DescribeGlobalDistributeCacheRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the child instance that is attached to the distributed instance.
+	// The child instance ID.
 	//
 	// example:
 	//

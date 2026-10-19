@@ -56,9 +56,9 @@ type iDescribeTairKVCacheInferInstancesRequest interface {
 type DescribeTairKVCacheInferInstancesRequest struct {
 	// The billing method of the instance. Valid values:
 	//
-	// - **PrePaid**: subscription.
+	// - **PrePaid**: Subscription.
 	//
-	// - **PostPaid**: pay-as-you-go.
+	// - **PostPaid**: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The expiration status of the instance. Valid values:
 	//
-	// 	- **true**: expired.
+	// 	- **true**: Expired.
 	//
-	// 	- **false**: not expired.
+	// 	- **false**: Not expired.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	//
 	// kvcache.cu.g4c.2
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The IDs of the instances that you want to query.
+	// The IDs of the instances to query.
 	//
-	// > To specify multiple instance IDs, separate them with commas (,). You can specify up to 30 instance IDs in a single request.
+	// > If you specify multiple instance IDs, separate them with commas (,). You can specify up to 30 instance IDs in a single request.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	//
 	// 	- **Normal**: Normal.
 	//
-	// 	- **Creating**: The instance is being created.
+	// 	- **Creating**: Creating.
 	//
-	// > For more information about instance statuses, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+	// > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC). This is the default value.
+	// 	- **VPC**: Virtual Private Cloud (VPC). This is the default value.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value starts from 1. Default value: 1.
+	// The page number of the instance list. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The private IP address in the VPC. This parameter is deprecated.
+	// **[Deprecated]*	- The private IP address of the VPC.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The keyword used for fuzzy search by instance name or instance ID.
+	// The search keyword. You can use this parameter to perform a fuzzy search by instance name or instance ID.
 	//
 	// example:
 	//
@@ -384,15 +384,15 @@ func (s *DescribeTairKVCacheInferInstancesRequest) Validate() error {
 }
 
 type DescribeTairKVCacheInferInstancesRequestTag struct {
-	// The key of the tag. The key and value of a tag form a key-value pair.
+	// The tag key. A tag key and a tag value form a key-value pair.
 	//
-	// > You can specify up to 5 key-value pairs of tags in a single request.
+	// > You can specify up to 5 tag key-value pairs in a single request.
 	//
 	// example:
 	//
 	// key1_test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// > **N*	- specifies the sequence number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//

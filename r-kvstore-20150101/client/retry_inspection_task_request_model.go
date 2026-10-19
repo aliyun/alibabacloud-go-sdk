@@ -18,6 +18,8 @@ type iRetryInspectionTaskRequest interface {
 }
 
 type RetryInspectionTaskRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,6 +30,8 @@ type iDescribeAuditRecordsResponseBody interface {
 type DescribeAuditRecordsResponseBody struct {
 	// The end time of the query.
 	//
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
+	//
 	// example:
 	//
 	// 2019-03-25T12:10:00Z
@@ -41,13 +43,13 @@ type DescribeAuditRecordsResponseBody struct {
 	// r-bp1zxszhcgatnx****
 	InstanceName *string                                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Items        *DescribeAuditRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
@@ -61,11 +63,13 @@ type DescribeAuditRecordsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query.
 	//
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
+	//
 	// example:
 	//
 	// 2019-03-24T12:10:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//

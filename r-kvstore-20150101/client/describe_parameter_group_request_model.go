@@ -28,7 +28,7 @@ type iDescribeParameterGroupRequest interface {
 type DescribeParameterGroupRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the parameter template.
+	// The parameter template ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeParameterGroupRequest struct {
 	//
 	// rpg-sys-00*****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

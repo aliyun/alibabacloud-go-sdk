@@ -44,11 +44,11 @@ type iEnableAdditionalBandwidthRequest interface {
 }
 
 type EnableAdditionalBandwidthRequest struct {
-  // Specifies whether to enable auto-payment. Valid values:
+  // Specifies whether to enable automatic payment. Valid values:
   // 
-  // - **true**: Enables auto-payment. This is the default. Ensure that your account has a sufficient balance.
+  // 	- **true**: enables automatic payment. This is the default value. Make sure that your account has sufficient balance.
   // 
-  // - **false**: Disables auto-payment. You must manually complete the payment.
+  // 	- **false**: disables automatic payment. You must manually complete the payment.
   // 
   // example:
   // 
@@ -56,9 +56,9 @@ type EnableAdditionalBandwidthRequest struct {
   AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
   // Specifies whether to enable auto-renewal. Valid values:
   // 
-  // - **true**: Enables auto-renewal.
+  // 	- **true**: enables auto-renewal.
   // 
-  // - **false**: Disables auto-renewal. This is the default.
+  // 	- **false**: disables auto-renewal. This is the default value.
   // 
   // example:
   // 
@@ -66,24 +66,25 @@ type EnableAdditionalBandwidthRequest struct {
   AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
   // The auto-renewal period, in months. Valid values: **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**, **12**, **24**, **36**, and **60**.
   // 
-  // > - This parameter is required only when **AutoRenew*	- is set to **true**.
+  // > 	- This parameter is available and required only when the **AutoRenew*	- parameter is set to **true**.
   // 
-  // >
-  // 
-  // > - After you set this parameter, you cannot query its value by calling API operations. To check this setting, go to the console. In the top navigation bar, choose **Billing*	- > **Renewal Management**. Then, in the **Instance ID*	- field, enter the instance ID followed by the `-bw` suffix (for example, r-bp1zxszhcgatnx\\*\\*\\*\\*-bw).
+  // > 	- After this parameter is configured, it cannot be queried by calling API operations. To query the auto-renewal period, choose **Billing*	- > **Renewal Management*	- in the top navigation bar of the console, and then enter the instance ID with the `-bw` suffix (for example, r-bp1zxszhcgatnx****-bw) in the **Instance ID*	- text box.
   // 
   // example:
   // 
   // 1
   AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+  // Specifies whether to enable burstable (second-level) elastic bandwidth. After elastic scaling for bandwidth is enabled, burstable (second-level) elastic bandwidth cannot be enabled, and vice versa.
+  // 
+  // example:
+  // 
+  // false
   BandWidthBurst *bool `json:"BandWidthBurst,omitempty" xml:"BandWidthBurst,omitempty"`
-  // The amount of bandwidth to add, in MB/s. The value must be an integer greater than or equal to **0**. The maximum value is six times the default bandwidth of the instance type or a single data shard, with an upper limit of 192 MB/s. For example, if the default bandwidth of an instance is 10 MB/s, the valid values for this parameter are **0*	- to **60**.
+  // The bandwidth to be increased, in MB/s. The value must be an integer greater than or equal to **0**. The maximum value is six times the default bandwidth of the instance (or a single shard) specifications, but the upper limit of the increase is 192 MB/s. For example, if the default bandwidth of the instance is 10 MB/s, the value range is **0*	- to **60**.
   // 
-  // > - You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation and check the value of the **DefaultBandWidth*	- parameter in the response to get the default maximum bandwidth. For more information about instance types, see [Instance types](https://help.aliyun.com/document_detail/26350.html).
+  // > 	- You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation and use the **DefaultBandWidth*	- response parameter to obtain the default maximum bandwidth. For more information about instance specifications, see [Overview of instance specifications](https://help.aliyun.com/document_detail/26350.html).
   // 
-  // >
-  // 
-  // > - If you specified multiple data shard IDs for the **NodeId*	- parameter, the bandwidth values that you specify for this parameter must correspond to the order of the data shard IDs. Separate multiple bandwidth values with commas (,).
+  // > 	- If multiple data shard IDs are specified in the **NodeId*	- request parameter, the bandwidth values specified in this parameter must correspond to the order of the shard IDs. Separate multiple bandwidth values with commas (,).
   // 
   // example:
   // 
@@ -91,21 +92,21 @@ type EnableAdditionalBandwidthRequest struct {
   Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
   // The billing method for the additional bandwidth. Valid values:
   // 
-  // - **PrePaid**: subscription.
+  // 	- **PrePaid**: subscription.
   // 
-  // - **PostPaid**: pay-as-you-go. This is the only supported billing method.
+  // 	- **PostPaid**: pay-as-you-go. Currently, only this billing method is supported.
   // 
   // example:
   // 
   // PrePaid
   ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-  // The coupon ID.
+  // The ID of the coupon.
   // 
   // example:
   // 
   // youhuiquan_promotion_option_id_for_blank
   CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-  // The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+  // The ID of the instance. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to obtain the instance ID.
   // 
   // This parameter is required.
   // 
@@ -113,9 +114,9 @@ type EnableAdditionalBandwidthRequest struct {
   // 
   // r-bp1zxszhcgatnx****
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The ID of the data shard. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to query data shard IDs. Separate multiple data shard IDs with commas (,). You can also set this parameter to **All*	- to specify all data shards.
+  // The ID of the data shard. You can call [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) to obtain the shard ID. Separate multiple shard IDs with commas (,). You can also set this parameter to **All*	- to specify all data shards.
   // 
-  // > This parameter is required only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or the [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html).
+  // > This parameter is available and required only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html).
   // 
   // example:
   // 
@@ -134,7 +135,7 @@ type EnableAdditionalBandwidthRequest struct {
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
   SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-  // The source of the call. This parameter is used for internal maintenance. Do not specify it.
+  // The source of the call. This parameter is used only for internal maintenance and does not need to be specified.
   // 
   // example:
   // 

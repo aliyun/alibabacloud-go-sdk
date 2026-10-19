@@ -22,20 +22,28 @@ type iDescribeInspectionScheduleReportsRequest interface {
 }
 
 type DescribeInspectionScheduleReportsRequest struct {
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ta-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 10
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the timed scheduling.
+	//
 	// example:
 	//
 	// scheduleId-202604141xxxx

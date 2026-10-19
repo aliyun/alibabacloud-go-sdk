@@ -18,11 +18,20 @@ type iDescribeInspectionScheduleReportsResponseBody interface {
 }
 
 type DescribeInspectionScheduleReportsResponseBody struct {
+	// The task data.
 	Data *DescribeInspectionScheduleReportsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A057C066-C3F5-4CC9-9FE4-A8D8B0DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -74,15 +83,22 @@ func (s *DescribeInspectionScheduleReportsResponseBody) Validate() error {
 }
 
 type DescribeInspectionScheduleReportsResponseBodyData struct {
+	// The task items.
 	Items []*DescribeInspectionScheduleReportsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size. Default value: 25.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 3
@@ -147,34 +163,58 @@ func (s *DescribeInspectionScheduleReportsResponseBodyData) Validate() error {
 }
 
 type DescribeInspectionScheduleReportsResponseBodyDataItems struct {
+	// The creation time of the task.
+	//
+	// The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1773211755000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time of the task.
+	//
+	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	//
 	// example:
 	//
 	// 2026-06-29T02:12:02Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The completion time of the task.
+	//
+	// The time is displayed in the ISO 8601 format with an explicit time zone offset.
+	//
 	// example:
 	//
 	// 2026-06-16T13:52:35+08:00
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The summary of risk levels in the inspection results.
+	//
 	// example:
 	//
 	// {\\"Normal\\":10,\\"Warning\\":0,\\"Error\\":0,\\"Failed\\":0}
 	LevelSummary *string `json:"LevelSummary,omitempty" xml:"LevelSummary,omitempty"`
+	// The language of the report.
+	//
 	// example:
 	//
 	// en-US
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The start time of the task.
+	//
+	// The time is displayed in the YYYY-MM-DDTHH:mmZ format in UTC.
+	//
 	// example:
 	//
 	// 2025-09-26T21:10Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the inspection task.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// t-0mqomahp4o4uf3aicu

@@ -17,7 +17,7 @@ type iDescribeAvailableResourceResponseBody interface {
 
 type DescribeAvailableResourceResponseBody struct {
 	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

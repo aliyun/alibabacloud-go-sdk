@@ -64,9 +64,9 @@ type DescribePriceRequest struct {
 	//
 	// 000000000000
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The storage capacity of the instance. Unit: MB. This parameter is used only to query Redis Open-Source Edition instances that are deployed in classic mode. We recommend that you use the **InstanceClass*	- parameter to specify an exact instance type.
+	// The storage capacity used to specify the instance type, in MB. This parameter is used only to query Redis Community Edition instances in classic deployment mode. We recommend that you use the **InstanceClass*	- parameter to specify an exact instance type.
 	//
-	// >  If you specify the **InstanceClass*	- parameter, you do not need to specify the Capacity parameter.
+	// > After you specify the **InstanceClass*	- parameter, you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -74,53 +74,57 @@ type DescribePriceRequest struct {
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **PostPaid*	- (default): pay-as-you-go
+	// 	- **PostPaid*	- (default): pay-as-you-go.
 	//
-	// 	- **PrePaid**: subscription
+	// 	- **PrePaid**: subscription.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The coupon code. Default value: youhuiquan_promotion_option_id_for_blank. This value indicates that no coupon code is available.
+	// The coupon code. Default value: youhuiquan_promotion_option_id_for_blank, which indicates that no coupon code is used.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The engine version of the instance. Valid values: **2.8**, **4.0**, and **5.0**.
+	// <props="china">Database engine version of the Redis instance. Valid values: **2.8**, **4.0**, **5.0**, and **6.0**.
+	//
+	// <props="intl">Database engine version of the Redis instance. Valid values: **2.8**, **4.0**, and **5.0**.
+	//
+	// <props="partner">Database engine version of the Redis instance. Valid values: **2.8**, **4.0**, and **5.0**.
 	//
 	// example:
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Specifies whether to forcefully change the configurations of the instance. Valid values:
+	// Specifies whether to forcibly change the configuration. Valid values:
 	//
-	// 	- **false**: forcefully changes the configurations.
+	// 	- **false**: yes.
 	//
-	// 	- **true*	- (default): does not forcefully change the configurations.
+	// 	- **true*	- (default): no.
 	//
 	// example:
 	//
 	// true
 	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
-	// The instance type.***	- **To view the instance type, perform the following steps:**
+	// The instance type specified by using the **InstanceClass*	- code. To find the **InstanceClass*	- code:
 	//
-	// 1.  In the [Instance specifications](https://help.aliyun.com/document_detail/26350.html) topic, click the link in the **References for instance specifications*	- column corresponding to the instance type that you want to view.
+	// 1. In the [instance type navigation](https://help.aliyun.com/document_detail/26350.html), select the desired instance type and click the value in the **Architecture*	- column to open the specification document.
 	//
-	// 2.  In the instance type table of the specification documentation, find the instance type in the **InstanceClass*	- column.
+	// 2. In the instance type table of the specification document, find the desired instance type and locate the code in the **InstanceClass*	- column.
 	//
-	// >  If you want to query new instances, in addition to key parameters, you must also specify at least the following parameters:
+	// > The following example describes the parameters required for querying the price of a new instance. In addition to other key parameters, specify at least the following parameters:
 	//
-	// 	- To query a classic instance, specify this parameter.
+	// > 	- Classic Edition instance: specify this parameter.
 	//
-	// 	- To query a cloud-native standard instance, specify this parameter.
+	// > 	- Cloud-native Edition standard architecture instance: specify this parameter.
 	//
-	// 	- To query a cloud-native cluster instance, specify this parameter and the **ShardCount*	- parameter.
+	// > 	- Cloud-native Edition cluster architecture instance: specify this parameter and the **ShardCount*	- parameter.
 	//
-	// 	- To query a cloud-native read/write splitting instance, specify this parameter and the **Instances*	- parameter.
+	// > 	- Cloud-native Edition read/write splitting architecture instance: specify this parameter and the **Instances*	- parameter.
 	//
-	// 	- To query multiple instances of different specifications or to query a Tair ESSD-based instance that has a custom storage type and storage capacity, specify the Instances parameter. In this case, you do not need to specify the InstanceClass parameter.
+	// > 	- Multiple instances of different types, or Tair ESSD-based instances (custom storage type and storage capacity): specify the Instances parameter (this parameter is not required).
 	//
 	// example:
 	//
@@ -128,13 +132,13 @@ type DescribePriceRequest struct {
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The instance ID.
 	//
-	// >  This parameter is required when the **OrderType*	- parameter is set to **UPGRADE*	- or **RENEW**.
+	// > This parameter is required when **OrderType*	- is set to **UPGRADE*	- or **RENEW**.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// If you want to query cloud-native read/write splitting instances, Tair ESSD-based instances, or instances of different specifications, you must specify this parameter as a JSON string. For more information, see the **Additional description of the Instances parameter*	- section.
+	// If you want to query the price of cloud-native read/write splitting architecture instances, Tair ESSD-based instances, or multiple instances of different types, specify this parameter. The value is a JSON-formatted string. For more information, see **Additional description of the Instances parameter*	- below.
 	//
 	// example:
 	//
@@ -142,19 +146,19 @@ type DescribePriceRequest struct {
 	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **STAND_ALONE**: standalone
+	// - **STAND_ALONE**: standalone (single replica).
 	//
-	// 	- **MASTER_SLAVE*	- (default): high availability (master-replica)
+	// - **MASTER_SLAVE*	- (default): high availability (dual replicas).
 	//
 	// example:
 	//
 	// MASTER_SLAVE
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Specifies whether to return parameters related to the order. Valid values:
+	// Specifies whether to return order parameters. Valid values:
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not return order parameters.
 	//
-	// 	- **true**
+	// 	- **true**: returns order parameters.
 	//
 	// example:
 	//
@@ -162,13 +166,13 @@ type DescribePriceRequest struct {
 	OrderParamOut *string `json:"OrderParamOut,omitempty" xml:"OrderParamOut,omitempty"`
 	// The order type. Valid values:
 	//
-	// 	- **BUY**: specifies the orders that are used to purchase instances.
+	// 	- **BUY**: new purchase.
 	//
-	// 	- **UPGRADE**: specifies the orders that are used to change the configurations of instances.
+	// 	- **UPGRADE**: configuration change.
 	//
-	// 	- **RENEW**: specifies the orders that are used to renew instances.
+	// 	- **RENEW**: renewal.
 	//
-	// 	- **CONVERT**: specifies the orders that are used to change the billing methods of instances.
+	// 	- **CONVERT**: billing method conversion.
 	//
 	// This parameter is required.
 	//
@@ -178,19 +182,19 @@ type DescribePriceRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration. Unit: month. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, and **36**.
+	// The subscription duration, in months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
 	//
 	// example:
 	//
 	// 3
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The number of instances that you want to purchase. Valid values: **1*	- to **30**. Default value: **1**.
+	// The number of instances to purchase. Valid values: **1*	- to **30**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query available regions.
 	//
 	// example:
 	//
@@ -198,22 +202,22 @@ type DescribePriceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the secondary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) API to query it.
+	// The secondary zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query available zones.
 	//
-	// > The values passed for this parameter and the ZoneId parameter must be different.
+	// > The value of this parameter must be different from the value of the ZoneId parameter.
 	//
 	// example:
 	//
 	// cn-hangzhou-g
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of data shards in the cloud-native cluster instance.
+	// The number of data shard nodes in a cloud-native cluster instance.
 	//
 	// example:
 	//
 	// 2
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the zone ID.
+	// The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query available zones.
 	//
 	// example:
 	//

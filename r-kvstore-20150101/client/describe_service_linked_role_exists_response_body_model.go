@@ -16,17 +16,17 @@ type iDescribeServiceLinkedRoleExistsResponseBody interface {
 }
 
 type DescribeServiceLinkedRoleExistsResponseBody struct {
-	// Indicates whether the service-linked role is created for Tair (Redis OSS-compatible) in the current account. Valid values:
+	// Indicates whether the service-linked role has been authorized for the current account. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Authorized.
 	//
-	// 	- **false**
+	// - **false**: Not authorized.
 	//
 	// example:
 	//
 	// true
 	ExistsServiceLinkedRole *bool `json:"ExistsServiceLinkedRole,omitempty" xml:"ExistsServiceLinkedRole,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

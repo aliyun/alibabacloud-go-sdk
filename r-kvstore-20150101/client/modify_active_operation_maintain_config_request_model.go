@@ -32,33 +32,33 @@ type iModifyActiveOperationMaintainConfigRequest interface {
 }
 
 type ModifyActiveOperationMaintainConfigRequest struct {
-	// The days of the cycle.
+	// The cycle time.
 	//
-	// - If `CycleType` is `Month`, specify the days of the month (1 to 28). Separate multiple days with a comma (,).
+	// - If CycleType is set to Month, the value is a number from 1 to 28, which indicates the day of the month. Multiple values are separated by commas (,). If the configuration does not take effect, the value is 0.
 	//
-	// - If `CycleType` is `Week`, specify the days of the week (1 to 7). Separate multiple days with a comma (,).
+	// - If CycleType is set to Week, the value is a number from 1 to 7, which indicates the day of the week. Multiple values are separated by commas (,). If the configuration does not take effect, the value is 0.
 	//
 	// example:
 	//
 	// 1,2,3,4,5
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	// The cycle type of the maintenance window. Valid values:
+	// The cycle type. Valid values:
 	//
-	// - `Month`
+	// - Month: Monthly.
 	//
-	// - `Week`
+	// - Week: Weekly.
 	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the maintenance window, specified in *HH:mm:ss*Z format (UTC time).
+	// The end time of the O&M time window. The time is in the HH:mm:ssZ format (UTC time).
 	//
 	// example:
 	//
 	// 20:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window, specified in *HH:mm:ss*Z format (UTC time).
+	// The start time of the O&M time window. The time is in the <i>HH:mm:ss</i>Z format (UTC time).
 	//
 	// example:
 	//
@@ -69,11 +69,11 @@ type ModifyActiveOperationMaintainConfigRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether the configuration is enabled. Valid values:
+	// Specifies whether the configuration takes effect. Valid values:
 	//
-	// - 1: enabled
+	// - 1: Effective.
 	//
-	// - 2: disabled
+	// - 2: Ineffective.
 	//
 	// example:
 	//

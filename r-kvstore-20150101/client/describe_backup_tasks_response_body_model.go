@@ -20,7 +20,7 @@ type iDescribeBackupTasksResponseBody interface {
 }
 
 type DescribeBackupTasksResponseBody struct {
-	// The following parameters are no longer used. Ignore the parameters.
+	// **[Deprecated]*	- This group of parameters is deprecated. Ignore these parameters.
 	AccessDeniedDetail *DescribeBackupTasksResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The details of the backup tasks.
 	BackupJobs []*DescribeBackupTasksResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Repeated"`
@@ -30,7 +30,7 @@ type DescribeBackupTasksResponseBody struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -101,43 +101,43 @@ func (s *DescribeBackupTasksResponseBody) Validate() error {
 }
 
 type DescribeBackupTasksResponseBodyAccessDeniedDetail struct {
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
@@ -227,19 +227,19 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	//
 	// 29****10
 	BackupJobID *int64 `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
-	// The state of the backup task. Valid values:
+	// The status of the backup task. Valid values:
 	//
-	// 	- **NoStart**: The backup task is not started.
+	// 	- **NoStart**: not started
 	//
-	// 	- **Preparing**: The backup task is being prepared.
+	// 	- **Preparing**: preparing
 	//
-	// 	- **Waiting**: The backup task is pending.
+	// 	- **Waiting**: waiting
 	//
-	// 	- **Uploading**: The system is uploading the backup file.
+	// 	- **Uploading**: uploading
 	//
-	// 	- **Checking**: The system is checking the uploaded backup file.
+	// 	- **Checking**: checking
 	//
-	// 	- **Finished**: The backup task is completed.
+	// 	- **Finished**: completed
 	//
 	// example:
 	//
@@ -247,9 +247,9 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	BackupProgressStatus *string `json:"BackupProgressStatus,omitempty" xml:"BackupProgressStatus,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// 	- **Automated**: automatic backup
+	// 	- **Automated**: automatic backup.
 	//
-	// 	- **Manual**: manual backup
+	// 	- **Manual**: manual backup.
 	//
 	// example:
 	//
@@ -261,19 +261,19 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	//
 	// ****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The progress of the backup task in percentage.
+	// The progress percentage of the backup task. This parameter is not recommended. Refer to the **Progress*	- parameter.
 	//
 	// example:
 	//
 	// 0
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The backup progress.
+	// The progress percentage of the backup. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 27
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The start time of the backup task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time of the backup task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -281,9 +281,9 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type of the backup task. Valid values:
 	//
-	// 	- **TempBackupTask**: The backup task was manually performed.
+	// 	- **TempBackupTask**: temporary backup task, which indicates a manual backup.
 	//
-	// 	- **NormalBackupTask**: The backup task was automatically performed.
+	// 	- **NormalBackupTask**: normal backup task, which indicates an automatic backup.
 	//
 	// example:
 	//

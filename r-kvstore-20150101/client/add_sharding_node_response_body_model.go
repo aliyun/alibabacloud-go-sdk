@@ -18,15 +18,15 @@ type iAddShardingNodeResponseBody interface {
 }
 
 type AddShardingNodeResponseBody struct {
-	// The IDs of the data shards.
+	// The list of data shard node IDs.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 20741011111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -32,44 +32,74 @@ type iModifyInspectionScheduleRequest interface {
 }
 
 type ModifyInspectionScheduleRequest struct {
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 0 2 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// Specifies whether to start the scheduled task. Default value: true.
+	//
 	// example:
 	//
 	// false
 	Enabled *int64 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The specified inspection items. The following inspection items are supported:
+	//
+	// - RESOURCE_USAGE
+	//
+	// - BIGKEY
+	//
+	// - HOTKEY
+	//
+	// - PERFORMANCE_METRICS
+	//
+	// - SLOWLOG
+	//
 	// example:
 	//
 	// HOTKEY
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
+	// 1h
+	//
 	// example:
 	//
 	// 1h
 	InspectionWindow *string `json:"InspectionWindow,omitempty" xml:"InspectionWindow,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of associated instance IDs.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The report language.
+	//
 	// example:
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The ID of the timed scheduling.
+	//
 	// example:
 	//
 	// sch-4dfb08ddf9f84855bacca35axxx
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The name of the timed scheduling.
+	//
 	// example:
 	//
 	// test-sche
 	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai

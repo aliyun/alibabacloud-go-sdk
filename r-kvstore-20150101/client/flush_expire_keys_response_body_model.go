@@ -18,19 +18,19 @@ type iFlushExpireKeysResponseBody interface {
 }
 
 type FlushExpireKeysResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 82E30AB7-E3A4-46AC-88A0-3E4DCDC5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

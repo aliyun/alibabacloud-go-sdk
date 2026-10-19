@@ -30,32 +30,32 @@ type iDescribeRunningLogRecordsResponseBody interface {
 }
 
 type DescribeRunningLogRecordsResponseBody struct {
-	// The type of the database engine.
+	// The database engine.
 	//
 	// example:
 	//
 	// Redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Items      *DescribeRunningLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log entries returned on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 5
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The maximum number of entries returned on each page.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
@@ -67,13 +67,13 @@ type DescribeRunningLogRecordsResponseBody struct {
 	//
 	// 093B8579-9264-43A0-ABA9-AA86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query. The time is in the YYYY-MM-DDTHH:mmZ format and is in UTC.
 	//
 	// example:
 	//
 	// 2018-12-03T07:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
