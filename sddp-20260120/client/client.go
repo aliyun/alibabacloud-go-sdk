@@ -1687,13 +1687,13 @@ func (client *Client) ListMiniEngineVersions(request *ListMiniEngineVersionsRequ
 
 // Summary:
 //
-// Queries the regions where assets reside.
+// Queries the regions where assets are located.
 //
 // Description:
 //
-// Queries the list of regions where the current account has assets. You can use the returned region IDs as the RegionId parameter for subsequent region-specific API operations. You can filter regions by whether audit or detection is enabled. The returned region list is not equivalent to the full list of regions supported by all Alibaba Cloud services.
+// Queries the list of regions where the assets owned by the current account are located. You can use this list to select the RegionId for subsequent region-specific API operations. You can filter the regions based on whether auditing or detection is enabled. The returned region list is not the same as the list of all regions supported by Alibaba Cloud services.
 //
-// The parameter examples are provided only to illustrate the format. Replace them with the actual region IDs, resource identifiers, and configuration values obtained from your account.
+// The parameter examples are for format illustration only. When you call this operation, replace them with the regions, resource identifiers, and configuration values queried from the current account.
 //
 // @param request - ListRegionsRequest
 //
@@ -1718,6 +1718,10 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.LoadAll) {
+		query["LoadAll"] = request.LoadAll
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1745,13 +1749,13 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 
 // Summary:
 //
-// Queries the regions where assets reside.
+// Queries the regions where assets are located.
 //
 // Description:
 //
-// Queries the list of regions where the current account has assets. You can use the returned region IDs as the RegionId parameter for subsequent region-specific API operations. You can filter regions by whether audit or detection is enabled. The returned region list is not equivalent to the full list of regions supported by all Alibaba Cloud services.
+// Queries the list of regions where the assets owned by the current account are located. You can use this list to select the RegionId for subsequent region-specific API operations. You can filter the regions based on whether auditing or detection is enabled. The returned region list is not the same as the list of all regions supported by Alibaba Cloud services.
 //
-// The parameter examples are provided only to illustrate the format. Replace them with the actual region IDs, resource identifiers, and configuration values obtained from your account.
+// The parameter examples are for format illustration only. When you call this operation, replace them with the regions, resource identifiers, and configuration values queried from the current account.
 //
 // @param request - ListRegionsRequest
 //

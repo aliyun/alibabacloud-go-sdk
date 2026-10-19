@@ -16,9 +16,9 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
-	// The list of regions where assets reside.
+	// The list of regions where the assets are located.
 	RegionList []*ListRegionsResponseBodyRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	// The request ID, which can be used to locate this API call.
+	// The request ID. You can use this ID to locate the API call.
 	//
 	// example:
 	//
@@ -66,17 +66,17 @@ func (s *ListRegionsResponseBody) Validate() error {
 }
 
 type ListRegionsResponseBodyRegionList struct {
-	// The region ID where the assets reside.
+	// The ID of the region where the assets are located.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region where the assets reside.
+	// The name of the region where the assets are located.
 	//
 	// example:
 	//
-	// China North 3 (Zhangjiakou)
+	// China (Zhangjiakou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 

@@ -15,23 +15,23 @@ type iListRegionsRequest interface {
 	GetIdentified() *bool
 	SetLang(v string) *ListRegionsRequest
 	GetLang() *string
+	SetLoadAll(v bool) *ListRegionsRequest
+	GetLoadAll() *bool
 }
 
 type ListRegionsRequest struct {
-	// Specifies whether to filter regions by assets that have audit enabled. A value of true indicates that audit is enabled. A value of false indicates that audit is not enabled. If you do not specify this parameter, this filter condition is not applied.
+	// Specifies whether to filter regions by assets with auditing enabled. Valid values: true: Enabled. false: Disabled. If you do not specify this parameter, this filter condition is not applied.
 	Audited *bool `json:"Audited,omitempty" xml:"Audited,omitempty"`
-	// Specifies whether to filter regions by assets that have detection enabled. A value of true indicates that detection is enabled. A value of false indicates that detection is not enabled. If you do not specify this parameter, this filter condition is not applied.
+	// Specifies whether to filter regions by assets with detection enabled. Valid values: true: Enabled. false: Disabled. If you do not specify this parameter, this filter condition is not applied.
 	Identified *bool `json:"Identified,omitempty" xml:"Identified,omitempty"`
-	// The language of the response description. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response. Valid values: zh: Chinese. en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to retrieve all regions.
+	LoadAll *bool `json:"LoadAll,omitempty" xml:"LoadAll,omitempty"`
 }
 
 func (s ListRegionsRequest) String() string {
@@ -54,6 +54,10 @@ func (s *ListRegionsRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ListRegionsRequest) GetLoadAll() *bool {
+	return s.LoadAll
+}
+
 func (s *ListRegionsRequest) SetAudited(v bool) *ListRegionsRequest {
 	s.Audited = &v
 	return s
@@ -66,6 +70,11 @@ func (s *ListRegionsRequest) SetIdentified(v bool) *ListRegionsRequest {
 
 func (s *ListRegionsRequest) SetLang(v string) *ListRegionsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ListRegionsRequest) SetLoadAll(v bool) *ListRegionsRequest {
+	s.LoadAll = &v
 	return s
 }
 
