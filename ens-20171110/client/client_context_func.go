@@ -401,6 +401,68 @@ func (client *Client) AssociateHaVipWithContext(ctx context.Context, request *As
 
 // Summary:
 //
+// Adds a secondary CIDR block to a network.
+//
+// Description:
+//
+// The maximum number of secondary CIDR blocks that you can add to a network is as follows:
+//
+// - A network supports up to five secondary IPv4 CIDR blocks.
+//
+// @param request - AssociateNetworkCidrBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateNetworkCidrBlockResponse
+func (client *Client) AssociateNetworkCidrBlockWithContext(ctx context.Context, request *AssociateNetworkCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AssociateNetworkCidrBlockResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpVersion) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !dara.IsNil(request.Ipv6Isp) {
+		query["Ipv6Isp"] = request.Ipv6Isp
+	}
+
+	if !dara.IsNil(request.NetworkId) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !dara.IsNil(request.SecondaryCidrBlock) {
+		query["SecondaryCidrBlock"] = request.SecondaryCidrBlock
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociateNetworkCidrBlock"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociateNetworkCidrBlockResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches a disk to an Edge Node Service (ENS) instance.
 //
 // @param request - AttachDiskRequest
@@ -1467,9 +1529,9 @@ func (client *Client) CreateClassicNetworkWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// - Single-user call frequency: 10 calls per second.
+// - Rate limit per user: 10 calls per second.
 //
-// - Creating a cluster is an asynchronous operation. After the API call returns, wait 10 to 20 minutes for the cluster to finish initialization. During this process, call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
+// - Cluster creation is an asynchronous operation. After you call this operation, you must wait 10 to 20 minutes for the cluster to be initialized. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -3243,13 +3305,13 @@ func (client *Client) CreateNatGatewayWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Call CreateNetwork to create a virtual private cloud (VPC).
+// Creates a VPC.
 //
 // Description:
 //
-// - API call frequency: 100 calls per second.
+// - API rate limit: 100 calls per second.
 //
-// - Per-user call frequency: 5 calls per second.
+// - Rate limit per user: 5 calls per second.
 //
 // @param request - CreateNetworkRequest
 //
@@ -3941,7 +4003,7 @@ func (client *Client) CreateStorageVolumeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a VSwitch.
+// Creates a vSwitch.
 //
 // @param request - CreateVSwitchRequest
 //
@@ -4255,13 +4317,13 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// You can call the DeleteClusterNodePool operation to delete a node pool that you no longer need. When you delete a node pool, all pods on its nodes are also deleted. This action may trigger descheduling. If the pods cannot be rescheduled, your services may be affected. Before you delete the node pool, ensure that the cluster has sufficient resources for rescheduling.
+// Deletes an unused node pool. When a node pool is deleted, all pods on the nodes in the node pool are deleted. This may trigger rescheduling. If rescheduling fails, your services may be affected. Make sure that the cluster has sufficient resources for rescheduling.
 //
 // Description:
 //
-// - Each user is limited to 10 calls per second.
+// - Call frequency per user: 10 calls per second.
 //
-// - Cluster creation is an asynchronous operation. After the API call is successful, wait 10 to 20 minutes for the cluster to initialize. During this time, you can call the DescribeClustersV1 operation to check the cluster status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster\\"s kubeconfig file.
+// - Creating a cluster is an asynchronous operation. After the API call returns, wait 10 to 20 minutes for the cluster initialization to complete. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param request - DeleteClusterNodePoolRequest
 //
@@ -6351,7 +6413,7 @@ func (client *Client) DescribeClusterAttachScriptsWithContext(ctx context.Contex
 //
 // Description:
 //
-// - Per-user call frequency: 100 calls per second.
+// - Rate limit per user: 100 calls per second.
 //
 // @param request - DescribeClusterDetailRequest
 //
@@ -6559,11 +6621,11 @@ func (client *Client) DescribeClusterNodesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// A kubeconfig file contains the credentials required for a client to access an Elastic Container instance on Kubernetes (ECK) cluster. The file includes identity and authentication data for accessing the destination cluster. To manage a cluster using kubectl, you must first connect to the cluster with its kubeconfig file. You can call the DescribeClusterUserKubeconfig operation to query the kubeconfig file for a specific cluster.
+// Retrieves the KubeConfig of a specified cluster. KubeConfig is used to configure access credentials for an ECK cluster on the client side, including identity and authentication data for accessing the target cluster. When you use kubectl for cluster management, you must first connect to the cluster by using KubeConfig. You can invoke the DescribeClusterUserKubeconfig operation to query the KubeConfig of the specified cluster.
 //
 // Description:
 //
-// - A single user is limited to 100 calls per second.
+// - Rate limit per user: 100 calls per second.
 //
 // @param request - DescribeClusterUserKubeconfigRequest
 //
@@ -9993,13 +10055,13 @@ func (client *Client) DescribeNetworkAclsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Use DescribeNetworkAttribute to query the configuration of a specific network.
+// Queries the configuration information of a specified network.
 //
 // Description:
 //
-// - API rate limit: 100 calls/sec.
+// - API call rate: 100 calls per second.
 //
-// - Per-user rate limit: 10 calls/sec.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeNetworkAttributeRequest
 //
@@ -10207,13 +10269,13 @@ func (client *Client) DescribeNetworkPeerConnectionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Call DescribeNetworks to retrieve a list of networks.
+// Queries a list of networks.
 //
 // Description:
 //
-// - API call frequency: 100 calls per second.
+// - API call rate: 100 calls per second.
 //
-// - Per-user call frequency: 10 calls per second.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeNetworksRequest
 //
@@ -11529,7 +11591,7 @@ func (client *Client) DescribeUserBandWidthDataWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Call the DescribeVSwitchAttributes operation to query the configuration of a specified vSwitch.
+// Queries the configuration information of a specified vSwitch.
 //
 // @param request - DescribeVSwitchAttributesRequest
 //
@@ -11573,7 +11635,7 @@ func (client *Client) DescribeVSwitchAttributesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Call the DescribeVSwitches operation to retrieve information about VSwitches. You use VSwitches to configure private networks.
+// Queries information about vSwitches available for networking. Internal networks are organized by vSwitch.
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -12711,13 +12773,13 @@ func (client *Client) ImportKeyPairWithContext(ctx context.Context, request *Imp
 
 // Summary:
 //
-// To enhance the capabilities of Kubernetes, Edge Kubernetes (ECK) clusters support a variety of components, such as managed core components, applications, logging and monitoring, networking, storage, and security components. You can call the InstallClusterAddons operation to install components by specifying their names and versions.
+// Installs components in an ECK cluster to enhance Kubernetes capabilities. ECK clusters support various components, such as managed core components, as well as application, logging and monitoring, networking, storage, and security components. You can call the InstallClusterAddons operation to install components by specifying the component name and version.
 //
 // Description:
 //
-// - The call frequency for a single user is limited to 10 calls per second.
+// - The rate limit is 10 calls per second per user.
 //
-// - Cluster creation is an asynchronous operation. After the API call returns, the cluster requires 10 to 20 minutes to complete initialization. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
+// - Cluster creation is an asynchronous operation. After the API call returns, wait 10 to 20 minutes for the cluster initialization to complete. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - InstallClusterAddonsRequest
 //
@@ -13581,13 +13643,13 @@ func (client *Client) ModifyClusterAddonWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Modifies the node configurations in a cluster node pool, such as kubelet configurations and node rotation configurations. Modifying node configurations changes node configurations and restarts kubelet in batches, which may affect node operations and workload execution. Perform this operation during off-peak hours.
+// Modifies the node configuration in a cluster node pool, such as kubelet configurations and node rotation configurations. Modifying node configurations changes the configurations in batches and restarts kubelet, which may affect node and workload operations. Perform this operation during off-peak hours.
 //
 // Description:
 //
-// - Single-user call frequency: 10 calls per second.
+// - Rate limit per user: 10 calls per second.
 //
-// - Creating a cluster is an asynchronous operation. After the API call returns, wait 10 to 20 minutes for the cluster to finish initialization. During this process, call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
+// - Cluster creation is an asynchronous operation. After you call the API operation, you must wait 10 to 20 minutes for the cluster initialization to complete. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - ModifyClusterNodePoolRequest
 //
@@ -14811,13 +14873,13 @@ func (client *Client) ModifySnatEntryWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Call ModifyVSwitchAttribute to modify network information.
+// Modifies the attributes of a vSwitch.
 //
 // Description:
 //
-// - API call frequency: 100 calls per second.
+// - API rate limit: 100 calls per second.
 //
-// - Per-user call frequency: 5 calls per second.
+// - Rate limit per user: 5 calls per second.
 //
 // @param request - ModifyVSwitchAttributeRequest
 //
@@ -18645,6 +18707,62 @@ func (client *Client) UnassociateNetworkAclWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Deletes a secondary CIDR block from a network.
+//
+// Description:
+//
+// Before deleting a secondary CIDR block from a network, delete the vSwitches created in the secondary CIDR block.
+//
+// @param request - UnassociateNetworkCidrBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnassociateNetworkCidrBlockResponse
+func (client *Client) UnassociateNetworkCidrBlockWithContext(ctx context.Context, request *UnassociateNetworkCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *UnassociateNetworkCidrBlockResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ipv6CidrBlock) {
+		query["Ipv6CidrBlock"] = request.Ipv6CidrBlock
+	}
+
+	if !dara.IsNil(request.NetworkId) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !dara.IsNil(request.SecondaryCidrBlock) {
+		query["SecondaryCidrBlock"] = request.SecondaryCidrBlock
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnassociateNetworkCidrBlock"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnassociateNetworkCidrBlockResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Calls UnloadRegionSDG to delete preloaded data.
 //
 // @param tmpReq - UnloadRegionSDGRequest
@@ -19027,13 +19145,13 @@ func (client *Client) UpgradeApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Call the UpgradeClusterAddons operation to upgrade cluster component instances.
+// Upgrades the versions of cluster add-on instances.
 //
 // Description:
 //
-// - Each user can call this operation up to 10 times per second.
+// - The maximum call frequency per user is 10 calls per second.
 //
-// - Creating a cluster is an asynchronous operation. After calling the operation, wait 10 to 20 minutes for the cluster to initialize. During this time, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
+// - Creating a cluster is an asynchronous operation. After the API call returns, you must wait 10 to 20 minutes for the cluster initialization to complete. During this process, you can call the DescribeClustersV1 operation to query the cluster creation status. After the cluster is created, you can call the DescribeClusterUserKubeconfig operation to obtain the cluster certificate.
 //
 // @param tmpReq - UpgradeClusterAddonsRequest
 //

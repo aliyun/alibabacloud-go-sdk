@@ -14,7 +14,7 @@ type iDescribeVSwitchAttributesRequest interface {
 }
 
 type DescribeVSwitchAttributesRequest struct {
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iDescribeClusterDetailRequest interface {
 type DescribeClusterDetailRequest struct {
 	// The cluster ID.
 	//
-	// Only ECK cluster IDs with the eck- prefix are accepted. Legacy short hexadecimal cluster IDs are not supported. Call DescribeClustersV1 to obtain the ID. When listing clusters, pass in the Name parameter.
+	// Only ECK cluster IDs with the eck- prefix are accepted. Legacy short hexadecimal cluster IDs are not supported. You can call DescribeClustersV1 to obtain the ID. The Name parameter must be specified when listing clusters.
 	//
 	// This parameter is required.
 	//

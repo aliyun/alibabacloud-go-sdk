@@ -16,7 +16,7 @@ type iShareAICImageShrinkRequest interface {
 }
 
 type ShareAICImageShrinkRequest struct {
-	// The image name.
+	// The ID of the AIC image. You can call DescribeAICImages to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ShareAICImageShrinkRequest struct {
 	//
 	// mykey
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The user group.
+	// The user groups.
 	//
 	// This parameter is required.
 	UsersShrink *string `json:"Users,omitempty" xml:"Users,omitempty"`

@@ -14,7 +14,7 @@ type iDescribeNetworkAttributeRequest interface {
 }
 
 type DescribeNetworkAttributeRequest struct {
-	// The ID of the network.
+	// The network ID.
 	//
 	// This parameter is required.
 	//

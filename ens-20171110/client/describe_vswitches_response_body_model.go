@@ -22,13 +22,13 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The page number.
+	// The page number of the current query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in the current query.
 	//
 	// example:
 	//
@@ -40,14 +40,13 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
 	// 3
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A collection of VSwitches.
-	VSwitches *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VSwitches  *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {

@@ -22,7 +22,7 @@ type InstallClusterAddonsResponseBody struct {
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

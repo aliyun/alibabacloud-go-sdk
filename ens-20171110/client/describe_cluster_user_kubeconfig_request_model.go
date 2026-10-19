@@ -24,7 +24,7 @@ type DescribeClusterUserKubeconfigRequest struct {
 	//
 	// eck-xxxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to use the internal access address. The default value is false.
+	// Specifies whether the internal-facing access address of the private network is used. Default value: false.
 	//
 	// example:
 	//

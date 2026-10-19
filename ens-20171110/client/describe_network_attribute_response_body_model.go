@@ -63,7 +63,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	// 10.0.0.0/24
 	CidrBlock      *string                                             `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	CloudResources *DescribeNetworkAttributeResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Struct"`
-	// The time at which the network was created. The time is in UTC and is formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -75,7 +75,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ENS node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
@@ -133,9 +133,9 @@ type DescribeNetworkAttributeResponseBody struct {
 	SecondaryCidrBlocks *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 	// The status of the network. Valid values:
 	//
-	// - Pending: The network is being configured.
+	// - Pending: Configuring.
 	//
-	// - Available: The network is ready for use.
+	// - Available: Available.
 	//
 	// example:
 	//

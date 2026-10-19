@@ -23,25 +23,25 @@ type iDescribeNetworksResponseBody interface {
 
 type DescribeNetworksResponseBody struct {
 	Networks *DescribeNetworksResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
-	// Current page number.
+	// The page number of the current query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page in the current query.
+	// The number of entries per page in the current query.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

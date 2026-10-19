@@ -16,7 +16,7 @@ type iInstallClusterAddonsRequest interface {
 }
 
 type InstallClusterAddonsRequest struct {
-	// The component information.
+	// The add-on information.
 	//
 	// This parameter is required.
 	Addons []*InstallClusterAddonsRequestAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
@@ -72,7 +72,7 @@ func (s *InstallClusterAddonsRequest) Validate() error {
 type InstallClusterAddonsRequestAddons struct {
 	// The schema for the custom parameters of the component.
 	ConfigSchema []*InstallClusterAddonsRequestAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
-	// The plug-in name.
+	// The add-on name.
 	//
 	// example:
 	//

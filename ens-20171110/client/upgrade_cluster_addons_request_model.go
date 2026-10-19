@@ -16,7 +16,7 @@ type iUpgradeClusterAddonsRequest interface {
 }
 
 type UpgradeClusterAddonsRequest struct {
-	// The component information.
+	// The add-on information.
 	Addons []*UpgradeClusterAddonsRequestAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
@@ -68,9 +68,9 @@ func (s *UpgradeClusterAddonsRequest) Validate() error {
 }
 
 type UpgradeClusterAddonsRequestAddons struct {
-	// The schema of the custom parameters for the component.
+	// The schema of the custom parameters for the add-on.
 	ConfigSchema []*UpgradeClusterAddonsRequestAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
-	// The component name.
+	// The add-on name.
 	//
 	// example:
 	//
@@ -145,13 +145,13 @@ type UpgradeClusterAddonsRequestAddonsConfigSchema struct {
 	//
 	// 4155709cd12a09bdb8cbaca71bf03233
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
-	// The component name.
+	// The add-on name.
 	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The custom parameters for the component.
+	// The custom parameters of the add-on.
 	//
 	// example:
 	//

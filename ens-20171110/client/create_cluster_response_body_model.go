@@ -22,7 +22,7 @@ type CreateClusterResponseBody struct {
 	//
 	// c34b69b095f8241c5a91cc2252dceb976
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

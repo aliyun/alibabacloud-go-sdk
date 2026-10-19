@@ -22,22 +22,35 @@ type iModifyVSwitchAttributeRequest interface {
 }
 
 type ModifyVSwitchAttributeRequest struct {
-	// Description.
+	// The description.
 	//
-	// - Must be 2 to 256 characters in length and can contain English or Chinese characters.
+	// - The description must be 2 to 256 characters in length.
 	//
-	// - Cannot start with http\\:// or https\\://.
+	// - It cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// this is my first vswitch
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableIPv6  *bool   `json:"EnableIPv6,omitempty" xml:"EnableIPv6,omitempty"`
+	// Specifies whether to enable IPv6 for the vSwitch. Valid values:
+	//
+	// - true: enables IPv6. The VPC to which the vSwitch belongs must have IPv6 enabled, and you must also specify Ipv6CidrBlock to assign an IPv6 CIDR block to the vSwitch.
+	//
+	// - false (default): disables IPv6. Before you disable IPv6 for the vSwitch, make sure that no IPv6 addresses are in use, and do not specify Ipv6CidrBlock at the same time.
+	//
+	// example:
+	//
+	// false
+	EnableIPv6 *bool `json:"EnableIPv6,omitempty" xml:"EnableIPv6,omitempty"`
+	// The IPv6 CIDR block of the vSwitch.
+	//
+	// > You can specify this parameter to assign an IPv6 CIDR block to the vSwitch only when IPv6 is enabled for the VPC to which the vSwitch belongs. After the IPv6 CIDR block is assigned, it cannot be changed. Make sure that the IPv6 CIDR block does not overlap with the CIDR blocks of other vSwitches in the same VPC.
+	//
 	// example:
 	//
 	// 2408:XXXX:0:a600::/110
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// vSwitch ID.
+	// The vSwitch ID.
 	//
 	// This parameter is required.
 	//
@@ -45,11 +58,11 @@ type ModifyVSwitchAttributeRequest struct {
 	//
 	// n-****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// vSwitch name.
+	// The vSwitch name.
 	//
-	// - Must be 2 to 128 characters long. Can contain letters, digits, Chinese characters, underscores (_), and hyphens (-).
+	// - The name must be 2 to 128 characters in length.
 	//
-	// - Must start with a letter or a Chinese character. Cannot start with http\\:// or https\\://.
+	// - It must start with a letter or a Chinese character and cannot start with http:// or https://.
 	//
 	// example:
 	//

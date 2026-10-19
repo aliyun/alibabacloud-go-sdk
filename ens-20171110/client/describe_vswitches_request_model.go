@@ -30,42 +30,53 @@ type iDescribeVSwitchesRequest interface {
 }
 
 type DescribeVSwitchesRequest struct {
+	// Specifies whether to query vSwitches with IPv6 CIDR blocks enabled. Valid values:
+	//
+	// - true: Queries vSwitches with IPv6 CIDR blocks enabled in the specified region.
+	//
+	// - false: Does not query vSwitches with IPv6 CIDR blocks enabled in the specified region.
+	//
+	// If you do not specify this parameter, the system queries all vSwitches by default.
+	//
+	// example:
+	//
+	// false
 	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
-	// The ID of the ENS node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of the ENS nodes. You can specify 1 to 100 IDs.
+	// The array of ENS edge zone IDs. Array length: 1 to 100.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the VSwitch belongs.
+	// The ID of the VPC to which the vSwitch to be queried belongs.
 	//
 	// example:
 	//
 	// vpc-25cdvfeq58pl****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the VSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-5m9xhlq8oh***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The IDs of the vSwitches. You can specify 1 to 100 IDs.
+	// The array of vSwitch IDs. Array length: 1 to 100.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The name of the VSwitch.
+	// The vSwitch name.
 	//
 	// example:
 	//

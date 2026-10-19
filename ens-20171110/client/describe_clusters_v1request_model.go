@@ -22,25 +22,35 @@ type iDescribeClustersV1Request interface {
 }
 
 type DescribeClustersV1Request struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster type. Valid values: Kubernetes and ManagedKubernetes. A value of Kubernetes indicates an ECK cluster. A value of ManagedKubernetes indicates a serverless virtual cluster. This parameter must be used together with the profile parameter.
+	//
+	// example:
+	//
+	// Kubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The ENS region ID where the cluster resides.
+	// The ENS region ID of the cluster.
 	//
 	// example:
 	//
 	// cn-hangzhou-58
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The cluster name.
+	// The name of the cluster.
 	//
 	// example:
 	//
 	// test-eck-name
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cluster profile. Valid values: Default and Serverless. A value of Default indicates an ECK cluster. A value of Serverless indicates a serverless virtual cluster. This parameter must be used together with the cluster_type parameter.
+	//
+	// example:
+	//
+	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

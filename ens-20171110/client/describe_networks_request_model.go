@@ -26,35 +26,35 @@ type iDescribeNetworksRequest interface {
 }
 
 type DescribeNetworksRequest struct {
-	// ENS node ID.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
 	// cn-beijing-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// Array of ENS edge zone IDs. Array length: 1–100.
+	// The array of ENS edge zone IDs. Array length: 1 to 100.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// Network ID.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-5***
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// Array of network IDs. Array length: 1–100.
+	// The array of network IDs. Array length: 1 to 100.
 	NetworkIds []*string `json:"NetworkIds,omitempty" xml:"NetworkIds,omitempty" type:"Repeated"`
-	// Network name.
+	// The network name.
 	//
 	// example:
 	//
 	// example
 	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	// Page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//

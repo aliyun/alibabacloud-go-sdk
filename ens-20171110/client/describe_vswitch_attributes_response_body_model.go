@@ -56,7 +56,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// 10.0.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time when the vSwitch was created. This value uses UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
+	// The creation time. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// This is my vswitch.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ENS edge zone.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
@@ -76,20 +76,22 @@ type DescribeVSwitchAttributesResponseBody struct {
 	EnsRegionId *string                                           `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	HaVipIds    *DescribeVSwitchAttributesResponseBodyHaVipIds    `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
 	InstanceIds *DescribeVSwitchAttributesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// The IPv6 CIDR block of the vSwitch.
+	//
 	// example:
 	//
 	// 2408:XXXX:0:a600::/110
 	Ipv6CidrBlock   *string                                               `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	LoadBalancerIds *DescribeVSwitchAttributesResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
 	NatGatewayIds   *DescribeVSwitchAttributesResponseBodyNatGatewayIds   `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-257gqcdfvx6n****
 	NetworkId           *string                                                   `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkInterfaceIds *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -99,7 +101,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// - Pending: The vSwitch is being configured.
 	//
-	// - Available: The vSwitch is active.
+	// - Available: The vSwitch is available.
 	//
 	// - Releasing: The vSwitch is being released.
 	//
@@ -107,13 +109,13 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the vSwitch.
+	// The vSwitch name.
 	//
 	// example:
 	//

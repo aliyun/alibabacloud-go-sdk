@@ -112,7 +112,7 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	//     client-key-data: x
 	Config interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The CIDR block for pods.
+	// The pod CIDR block.
 	//
 	// example:
 	//
@@ -120,7 +120,10 @@ type DescribeClusterDetailResponseBody struct {
 	ContainerCidr *string `json:"ContainerCidr,omitempty" xml:"ContainerCidr,omitempty"`
 	// The control plane configuration.
 	ControlPlaneConfig *DescribeClusterDetailResponseBodyControlPlaneConfig `json:"ControlPlaneConfig,omitempty" xml:"ControlPlaneConfig,omitempty" type:"Struct"`
-	ControlPlaneMeta   *DescribeClusterDetailResponseBodyControlPlaneMeta   `json:"ControlPlaneMeta,omitempty" xml:"ControlPlaneMeta,omitempty" type:"Struct"`
+	// The control plane metadata.
+	ControlPlaneMeta *DescribeClusterDetailResponseBodyControlPlaneMeta `json:"ControlPlaneMeta,omitempty" xml:"ControlPlaneMeta,omitempty" type:"Struct"`
+	// The time when the cluster was created.
+	//
 	// example:
 	//
 	// 2025-04-07T09:57:26+08:00
@@ -131,23 +134,25 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// cn-fuzhou-23
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ISP information.
+	//
 	// example:
 	//
 	// unicom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The authentication token for cluster access.
+	// The authentication token for joining the cluster.
 	//
 	// example:
 	//
 	// xxxx.yyy
 	JoinToken *string `json:"JoinToken,omitempty" xml:"JoinToken,omitempty"`
-	// The cluster version, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
+	// The cluster version, which aligns with the Kubernetes community baseline version. Select the latest version. If not specified, the latest version is used by default.
 	//
 	// example:
 	//
 	// 1.32.1.aliyunedge.1
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
-	// The CLB instance ID of the API server.
+	// The ID of the Classic Load Balancer (CLB) instance for the API server.
 	//
 	// example:
 	//
@@ -159,13 +164,17 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// your-cluster-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the NAT gateway.
+	//
 	// example:
 	//
 	// nat-5tawjw5j7sgd2deujxuk0****
-	NatGatewayId *string                                     `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NodeCount    *DescribeClusterDetailResponseBodyNodeCount `json:"NodeCount,omitempty" xml:"NodeCount,omitempty" type:"Struct"`
-	PodStatus    *DescribeClusterDetailResponseBodyPodStatus `json:"PodStatus,omitempty" xml:"PodStatus,omitempty" type:"Struct"`
-	// The vSwitch IDs for pods.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The number of nodes in the cluster.
+	NodeCount *DescribeClusterDetailResponseBodyNodeCount `json:"NodeCount,omitempty" xml:"NodeCount,omitempty" type:"Struct"`
+	// The pod status information of the cluster.
+	PodStatus *DescribeClusterDetailResponseBodyPodStatus `json:"PodStatus,omitempty" xml:"PodStatus,omitempty" type:"Struct"`
+	// The pod vSwitch IDs.
 	PodVswitchIds []*string `json:"PodVswitchIds,omitempty" xml:"PodVswitchIds,omitempty" type:"Repeated"`
 	// Indicates whether public network access is enabled.
 	//
@@ -173,27 +182,27 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// true
 	PublicAccess *bool `json:"PublicAccess,omitempty" xml:"PublicAccess,omitempty"`
-	// Id of the request。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The CIDR block for services.
+	// The service CIDR block.
 	//
 	// example:
 	//
 	// 172.19.0.0/20
 	ServiceCidr *string `json:"ServiceCidr,omitempty" xml:"ServiceCidr,omitempty"`
-	// The cluster status. Valid values:
+	// The cluster state. Valid values:
 	//
-	// - **initial**: Being created.
+	// - **initial**: Creating.
 	//
 	// - **failed**: Creation failed.
 	//
 	// - **running**: Running.
 	//
-	// - **deleting**: Being released.
+	// - **deleting**: Releasing.
 	//
 	// example:
 	//
@@ -205,7 +214,7 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// n-xxxxxxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The vSwitch IDs of the cluster nodes.
+	// The vSwitch IDs where the cluster nodes reside.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
@@ -449,19 +458,19 @@ func (s *DescribeClusterDetailResponseBody) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
-	// The container runtime type.
+	// The runtime type.
 	//
 	// example:
 	//
 	// containerd
 	ContainerRuntime *string `json:"ContainerRuntime,omitempty" xml:"ContainerRuntime,omitempty"`
-	// The image ID of the control plane virtual machine.
+	// The ID of the control plane virtual machine image.
 	//
 	// example:
 	//
 	// m-5ul335umat4e2y9ynwi84p3f9
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The node instance type.
+	// The instance type of the node.
 	//
 	// example:
 	//
@@ -479,7 +488,7 @@ type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
 	//
 	// 3
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The system cloud disk type of the node.
+	// The system cloud disk category of the node.
 	//
 	// example:
 	//
@@ -569,8 +578,10 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneConfig) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneMeta struct {
+	// The master node information.
 	MasterInstances []*DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances `json:"MasterInstances,omitempty" xml:"MasterInstances,omitempty" type:"Repeated"`
-	MasterUrl       *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl         `json:"MasterUrl,omitempty" xml:"MasterUrl,omitempty" type:"Struct"`
+	// The API server address.
+	MasterUrl *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl `json:"MasterUrl,omitempty" xml:"MasterUrl,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterDetailResponseBodyControlPlaneMeta) String() string {
@@ -618,14 +629,20 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneMeta) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-573utia8wbecrbgsm6o8fx132
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance IP address.
+	//
 	// example:
 	//
 	// 10.10.0.2
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// i-573utia8wbecrbgsm6o8fx132
@@ -672,10 +689,14 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances) Valid
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl struct {
+	// The private endpoint of the API server.
+	//
 	// example:
 	//
 	// https://10.0.0.1:6443
 	PrivateUrl *string `json:"PrivateUrl,omitempty" xml:"PrivateUrl,omitempty"`
+	// The public address of the API server.
+	//
 	// example:
 	//
 	// https://0.0.0.0:6443
@@ -713,10 +734,14 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl) Validate() 
 }
 
 type DescribeClusterDetailResponseBodyNodeCount struct {
+	// The number of ready nodes.
+	//
 	// example:
 	//
 	// 3
 	Ready *int32 `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The total number of nodes.
+	//
 	// example:
 	//
 	// 3
@@ -754,10 +779,14 @@ func (s *DescribeClusterDetailResponseBodyNodeCount) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyPodStatus struct {
+	// The number of pods in the Running state.
+	//
 	// example:
 	//
 	// 10
 	Running *int32 `json:"Running,omitempty" xml:"Running,omitempty"`
+	// The total number of pods.
+	//
 	// example:
 	//
 	// 10

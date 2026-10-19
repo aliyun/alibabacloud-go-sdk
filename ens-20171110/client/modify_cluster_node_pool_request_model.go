@@ -22,7 +22,7 @@ type iModifyClusterNodePoolRequest interface {
 type ModifyClusterNodePoolRequest struct {
 	// The cluster ID.
 	//
-	// Only ECK cluster IDs with the eck- prefix are supported. You can obtain the ID by calling the DescribeClustersV1 operation. Serverless cluster IDs returned by the DescribeCluster operation are not supported. The cluster must be in the running state. After creation, it typically takes 10 to 20 minutes to complete initialization.
+	// Only ECK cluster IDs with the eck- prefix are supported. You can obtain the ID by calling the DescribeClustersV1 operation. Serverless cluster IDs returned by the DescribeCluster operation are not supported. The cluster must be in the running state. After creation, it usually takes 10 to 20 minutes to complete initialization.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +104,13 @@ func (s *ModifyClusterNodePoolRequest) Validate() error {
 }
 
 type ModifyClusterNodePoolRequestKubernetesConfig struct {
-	// The script to run after instance creation but before joining the cluster. The content must be Base64-encoded.
+	// The script to be executed after the instance is created and before it joins the cluster. The content must be Base64-encoded.
 	//
 	// example:
 	//
 	// ZWNobyBvawo=
 	PreUserData *string `json:"PreUserData,omitempty" xml:"PreUserData,omitempty"`
-	// The script to run after instance creation and after joining the cluster. The content must be Base64-encoded.
+	// The script to be executed after the instance is created and after it joins the cluster. The content must be Base64-encoded.
 	//
 	// example:
 	//
@@ -149,11 +149,13 @@ func (s *ModifyClusterNodePoolRequestKubernetesConfig) Validate() error {
 }
 
 type ModifyClusterNodePoolRequestNodepoolInfo struct {
+	// The name of the node pool.
+	//
 	// example:
 	//
 	// test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The node pool ID.
+	// The ID of the node pool.
 	//
 	// This parameter is required.
 	//
@@ -196,13 +198,13 @@ func (s *ModifyClusterNodePoolRequestNodepoolInfo) Validate() error {
 type ModifyClusterNodePoolRequestScalingGroup struct {
 	// The data cloud disk information.
 	DataDisks []*ModifyClusterNodePoolRequestScalingGroupDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// The instance image ID.
+	// The ID of the instance image.
 	//
 	// example:
 	//
 	// m-68bysm5a8gkm7oik7ngacf0in
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance billing type.
+	// The billing method of the instance.
 	//
 	// example:
 	//
@@ -210,31 +212,31 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance types.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The instance key pair. This parameter is mutually exclusive with password.
+	// The name of the instance key pair. This parameter and Password are mutually exclusive.
 	//
 	// example:
 	//
 	// tf-testAcc
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The instance password. This parameter is mutually exclusive with key_pair_name.
+	// The instance password. This parameter and key_pair_name are mutually exclusive.
 	//
 	// example:
 	//
 	// @AN5Ejx1YyzzK
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The system cloud disk type.
+	// The category of the system cloud disk.
 	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The system cloud disk size.
+	// The size of the system cloud disk.
 	//
 	// example:
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The vSwitches used by instances.
+	// The vSwitches used by the instances.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
@@ -341,13 +343,13 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) Validate() error {
 }
 
 type ModifyClusterNodePoolRequestScalingGroupDataDisks struct {
-	// The data cloud disk type.
+	// The category of the data cloud disk.
 	//
 	// example:
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The data cloud disk size.
+	// The size of the data cloud disk.
 	//
 	// example:
 	//
