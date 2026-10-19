@@ -146,6 +146,12 @@ type RetrievalKnowledgeBaseResponseBodyResults struct {
 	//
 	// 0.8
 	SimilarityScore *float64 `json:"SimilarityScore,omitempty" xml:"SimilarityScore,omitempty"`
+	// The URI of the source document.
+	//
+	// example:
+	//
+	// https://example.com/source.pdf
+	SourceUri *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
 }
 
 func (s RetrievalKnowledgeBaseResponseBodyResults) String() string {
@@ -200,6 +206,10 @@ func (s *RetrievalKnowledgeBaseResponseBodyResults) GetSimilarityScore() *float6
 	return s.SimilarityScore
 }
 
+func (s *RetrievalKnowledgeBaseResponseBodyResults) GetSourceUri() *string {
+	return s.SourceUri
+}
+
 func (s *RetrievalKnowledgeBaseResponseBodyResults) SetCaptions(v []*string) *RetrievalKnowledgeBaseResponseBodyResults {
 	s.Captions = v
 	return s
@@ -252,6 +262,11 @@ func (s *RetrievalKnowledgeBaseResponseBodyResults) SetShardIndex(v int32) *Retr
 
 func (s *RetrievalKnowledgeBaseResponseBodyResults) SetSimilarityScore(v float64) *RetrievalKnowledgeBaseResponseBodyResults {
 	s.SimilarityScore = &v
+	return s
+}
+
+func (s *RetrievalKnowledgeBaseResponseBodyResults) SetSourceUri(v string) *RetrievalKnowledgeBaseResponseBodyResults {
+	s.SourceUri = &v
 	return s
 }
 

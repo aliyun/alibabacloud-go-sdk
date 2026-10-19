@@ -57,6 +57,10 @@ type VerifyAgenticDBTenantApiKeyResponseBody struct {
 	// - Expired: The API key has expired.
 	//
 	// - Revoked: The API key has been revoked.
+	//
+	// example:
+	//
+	// NotFound
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region ID.
 	//

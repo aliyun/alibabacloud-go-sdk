@@ -281,6 +281,12 @@ type DescribeKnowledgeBaseAnswerResponseBodySources struct {
 	//
 	// 1
 	SourceId *int32 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The URI of the original document.
+	//
+	// example:
+	//
+	// https://example.com/source.pdf
+	SourceUri *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
 }
 
 func (s DescribeKnowledgeBaseAnswerResponseBodySources) String() string {
@@ -335,6 +341,10 @@ func (s *DescribeKnowledgeBaseAnswerResponseBodySources) GetSourceId() *int32 {
 	return s.SourceId
 }
 
+func (s *DescribeKnowledgeBaseAnswerResponseBodySources) GetSourceUri() *string {
+	return s.SourceUri
+}
+
 func (s *DescribeKnowledgeBaseAnswerResponseBodySources) SetChunkMetadata(v map[string]interface{}) *DescribeKnowledgeBaseAnswerResponseBodySources {
 	s.ChunkMetadata = v
 	return s
@@ -387,6 +397,11 @@ func (s *DescribeKnowledgeBaseAnswerResponseBodySources) SetSimilarityScore(v fl
 
 func (s *DescribeKnowledgeBaseAnswerResponseBodySources) SetSourceId(v int32) *DescribeKnowledgeBaseAnswerResponseBodySources {
 	s.SourceId = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseAnswerResponseBodySources) SetSourceUri(v string) *DescribeKnowledgeBaseAnswerResponseBodySources {
+	s.SourceUri = &v
 	return s
 }
 

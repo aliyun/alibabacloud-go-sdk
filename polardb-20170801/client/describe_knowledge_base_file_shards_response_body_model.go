@@ -156,6 +156,12 @@ type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
 	//
 	// 1
 	ShardIndex *int32 `json:"ShardIndex,omitempty" xml:"ShardIndex,omitempty"`
+	// The URI of the source document.
+	//
+	// example:
+	//
+	// https://example.com/source.pdf
+	SourceUri *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
 }
 
 func (s DescribeKnowledgeBaseFileShardsResponseBodyShards) String() string {
@@ -194,6 +200,10 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetShardIndex() *int
 	return s.ShardIndex
 }
 
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetSourceUri() *string {
+	return s.SourceUri
+}
+
 func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetCaptions(v []*string) *DescribeKnowledgeBaseFileShardsResponseBodyShards {
 	s.Captions = v
 	return s
@@ -226,6 +236,11 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetShardContent(v st
 
 func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetShardIndex(v int32) *DescribeKnowledgeBaseFileShardsResponseBodyShards {
 	s.ShardIndex = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetSourceUri(v string) *DescribeKnowledgeBaseFileShardsResponseBodyShards {
+	s.SourceUri = &v
 	return s
 }
 
