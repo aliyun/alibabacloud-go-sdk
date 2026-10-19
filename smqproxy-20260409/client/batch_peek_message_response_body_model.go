@@ -14,6 +14,7 @@ type iBatchPeekMessageResponseBody interface {
 }
 
 type BatchPeekMessageResponseBody struct {
+	// The message list.
 	Messages []*BatchPeekMessageResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
 }
 
@@ -48,38 +49,56 @@ func (s *BatchPeekMessageResponseBody) Validate() error {
 }
 
 type BatchPeekMessageResponseBodyMessages struct {
+	// The total number of times the message has been consumed.
+	//
 	// example:
 	//
 	// 5
 	DequeueCount *int64 `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
+	// The time when the message was sent to the queue. The value is a UNIX timestamp that starts from 1970-01-01 00:00:00.000.
+	//
 	// example:
 	//
 	// 1250700979248
 	EnqueueTime *int64 `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
+	// The time when the message was first consumed. The value is a UNIX timestamp in milliseconds that starts from 1970-01-01 00:00:00.000. If DequeueCount is 0, this value is the same as EnqueueTime.
+	//
 	// example:
 	//
 	// 1250700979348
 	FirstDequeueTime *int64 `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
+	// The message body.
+	//
 	// example:
 	//
 	// This is a test message
 	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// The MD5 hash of the message body.
+	//
 	// example:
 	//
 	// F9360F391579E71CA77BC5D50242****
 	MessageBodyMD5 *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
+	// The message group ID (FIFO queues only).
+	//
 	// example:
 	//
 	// test-group
 	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// C0A80255D7D1163042EA3F2814D055F1
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The priority. Valid values: 1 to 16. Default value: 8. A value of 1 indicates the highest priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The user-defined properties (JSON-formatted string).
+	//
 	// example:
 	//
 	// {"properties1":"value"}

@@ -16,8 +16,18 @@ type iChangeMessageVisibilityResponseBody interface {
 }
 
 type ChangeMessageVisibilityResponseBody struct {
-	NextVisibleTime *int64  `json:"NextVisibleTime,omitempty" xml:"NextVisibleTime,omitempty"`
-	ReceiptHandle   *string `json:"ReceiptHandle,omitempty" xml:"ReceiptHandle,omitempty"`
+	// The time when the message can be consumed again (millisecond-level timestamp).
+	//
+	// example:
+	//
+	// 1250700979348
+	NextVisibleTime *int64 `json:"NextVisibleTime,omitempty" xml:"NextVisibleTime,omitempty"`
+	// The new temporary handle. Use this new handle for subsequent delete or modification operations. This handle is valid before NextVisibleTime.
+	//
+	// example:
+	//
+	// TbZj6wDWli+9CEauMZc8ZRv37sIW2iJKq3M9Mx/TS1
+	ReceiptHandle *string `json:"ReceiptHandle,omitempty" xml:"ReceiptHandle,omitempty"`
 }
 
 func (s ChangeMessageVisibilityResponseBody) String() string {

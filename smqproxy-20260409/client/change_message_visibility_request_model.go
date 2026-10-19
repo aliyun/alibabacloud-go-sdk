@@ -16,8 +16,18 @@ type iChangeMessageVisibilityRequest interface {
 }
 
 type ChangeMessageVisibilityRequest struct {
-	ReceiptHandle     *string `json:"receiptHandle,omitempty" xml:"receiptHandle,omitempty"`
-	VisibilityTimeout *int32  `json:"visibilityTimeout,omitempty" xml:"visibilityTimeout,omitempty"`
+	// The temporary handle of the message returned after the last consumption.
+	//
+	// example:
+	//
+	// 1-ODU4OTkzNDU5My0xNDMyNzI3ODI3LTItOA==
+	ReceiptHandle *string `json:"receiptHandle,omitempty" xml:"receiptHandle,omitempty"`
+	// The countdown from the current moment until the message becomes Active again. Valid values: 1 to 43200. Unit: seconds (1 second to 12 hours).
+	//
+	// example:
+	//
+	// 50
+	VisibilityTimeout *int32 `json:"visibilityTimeout,omitempty" xml:"visibilityTimeout,omitempty"`
 }
 
 func (s ChangeMessageVisibilityRequest) String() string {

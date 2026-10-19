@@ -14,6 +14,7 @@ type iBatchSendMessageRequest interface {
 }
 
 type BatchSendMessageRequest struct {
+	// The message list.
 	Messages []*BatchSendMessageRequestMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
 }
 
@@ -48,18 +49,26 @@ func (s *BatchSendMessageRequest) Validate() error {
 }
 
 type BatchSendMessageRequestMessages struct {
+	// The delay in seconds before the message becomes consumable.
+	//
 	// example:
 	//
 	// 60
 	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The message body.
+	//
 	// example:
 	//
 	// This is test message 1.
 	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// The message group ID. Messages within the same group are delivered in order. This parameter is valid only for FIFO queues.
+	//
 	// example:
 	//
 	// group1
 	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// The priority. A smaller value indicates a higher priority. The value 1 represents the highest priority.
+	//
 	// example:
 	//
 	// 1

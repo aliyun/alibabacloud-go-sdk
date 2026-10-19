@@ -22,22 +22,32 @@ type iSendMessageRequest interface {
 }
 
 type SendMessageRequest struct {
+	// The delay period after which the message can be consumed. Unit: seconds. Maximum value: 7 days.
+	//
 	// example:
 	//
 	// 0
 	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The message body. We recommend that you Base64-encode the message body in advance to avoid issues with special characters.
+	//
 	// example:
 	//
 	// "Hello MNS"
 	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// The message group ID. Messages within the same group are delivered in order. This parameter is valid only for FIFO queues.
+	//
 	// example:
 	//
 	// group-123
 	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// The message priority. A smaller value indicates a higher priority. The value 1 indicates the highest priority.
+	//
 	// example:
 	//
 	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The user-defined properties.
+	//
 	// example:
 	//
 	// {"key1":"value1", "key2":"value2"}

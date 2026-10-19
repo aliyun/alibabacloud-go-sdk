@@ -14,6 +14,7 @@ type iBatchDeleteMessageRequest interface {
 }
 
 type BatchDeleteMessageRequest struct {
+	// The ReceiptHandle values of multiple messages.
 	ReceiptHandles []*string `json:"ReceiptHandles,omitempty" xml:"ReceiptHandles,omitempty" type:"Repeated"`
 }
 

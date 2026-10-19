@@ -16,11 +16,14 @@ type iBatchPeekMessageRequest interface {
 }
 
 type BatchPeekMessageRequest struct {
+	// The maximum number of messages to peek at in this BatchPeekMessage request.
+	//
 	// example:
 	//
 	// 16
 	NumOfMessages *int32 `json:"numOfMessages,omitempty" xml:"numOfMessages,omitempty"`
-	Peekonly      *bool  `json:"peekonly,omitempty" xml:"peekonly,omitempty"`
+	// Indicates that this request only peeks at messages at the top of the queue without changing the message status. Fixed value: true.
+	Peekonly *bool `json:"peekonly,omitempty" xml:"peekonly,omitempty"`
 }
 
 func (s BatchPeekMessageRequest) String() string {

@@ -16,10 +16,14 @@ type iBatchReceiveMessageRequest interface {
 }
 
 type BatchReceiveMessageRequest struct {
+	// The maximum number of messages to receive in this request.
+	//
 	// example:
 	//
 	// 10
 	NumOfMessages *int32 `json:"numOfMessages,omitempty" xml:"numOfMessages,omitempty"`
+	// The maximum polling wait time for this request, in seconds. Set to 0 for an immediate return.
+	//
 	// example:
 	//
 	// 0

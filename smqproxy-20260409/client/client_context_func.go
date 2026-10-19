@@ -9,7 +9,21 @@ import (
 
 // Summary:
 //
-// 批量删除消息
+// Deletes messages from a queue in a batch. A maximum of 16 messages can be deleted at a time.
+//
+// Description:
+//
+// ## Request description
+//
+// - Use this operation together with BatchReceiveMessage.
+//
+// - The result of a batch operation may contain both successful and failed sub-requests. The HTTP status code is 204 only when all sub-requests succeed.
+//
+// - A maximum of 16 messages can be deleted per request.
+//
+// - Provide the list of `ReceiptHandle` values returned from the previous consumption to identify the messages to delete.
+//
+// - This operation succeeds only when executed before `NextVisibleTime`. After the timeout, the message becomes Active again, the ReceiptHandle becomes invalid, and you must consume the message again to obtain a new handle.
 //
 // @param request - BatchDeleteMessageRequest
 //
@@ -56,23 +70,23 @@ func (client *Client) BatchDeleteMessageWithContext(ctx context.Context, queueNa
 
 // Summary:
 //
-// 批量查看消息
+// Batch peeks at messages in a queue without changing the message status.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于批量查看指定队列中的消息，一次最多可以查看16条消息。
+// - This operation batch peeks at messages in a specified queue. You can peek at up to 16 messages at a time.
 //
-// - 使用此接口不会改变消息的状态，消息仍保持为Active状态。
+// - This operation does not change the message status. Messages remain in the Active state.
 //
-// - 不支持长轮询功能。
+// - Long polling is not supported.
 //
-// - 需要提供`queueName`作为路径参数，并通过查询参数设置`peekonly=true`及指定要查看的消息数量`numOfMessages`（范围在1到16之间）。
+// - Provide `queueName` as a path parameter, and set the query parameter `peekonly=true` along with `numOfMessages` (range: 1 to 16) to specify the number of messages to peek at.
 //
-// - 成功响应将返回一个包含所请求消息详细信息的数组，包括但不限于消息ID、正文、入队时间等。
+// - A successful response returns an array containing the details of the requested messages, including but not limited to the message ID, body, and enqueue time.
 //
-// - 如果指定的队列不存在或队列中没有可见消息，则会返回相应的错误码。
+// - If the specified queue does not exist or no visible messages are in the queue, the corresponding error code is returned.
 //
 // @param request - BatchPeekMessageRequest
 //
@@ -123,19 +137,19 @@ func (client *Client) BatchPeekMessageWithContext(ctx context.Context, queueName
 
 // Summary:
 //
-// 批量消费消息
+// Batch receives up to 16 messages from a specified queue for consumption.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该操作会将取得的消息状态变为 Inactive，Inactive 持续时间由队列属性 `VisibilityTimeout` 决定。
+// - This operation changes the status of received messages to Inactive. The Inactive duration is determined by the `VisibilityTimeout` attribute of the queue.
 //
-// - 消费者需在 VisibilityTimeout 时间内调用 DeleteMessage 删除消息，否则消息会重新变为 Active。
+// - Consumers must call DeleteMessage to delete messages within the VisibilityTimeout period. Otherwise, messages become Active again.
 //
-// - 支持长轮询（Long Polling）：设置 `waitseconds > 0` 后，若队列为空则等待至有消息到达或超时返回。
+// - Long polling is supported: if you set `waitseconds > 0` and the queue is empty, the request waits until a message arrives or the timeout expires.
 //
-//	Notice: 进入长轮询后，建议您降低外部调用长轮询的并发数，选择合适的长轮询时间。目前服务端会根据长轮询数量、长轮询等待时间、访问 IP 数量等因素动态调整长轮询防攻击的并发上限值。当队列无消息时，超过长轮询上限值的请求将无法被监听到，并直接返回 404 MessageNotExist（按请求量正常计费）。如果您有临时提升长轮询上限值的需求，请及时提交工单。
+//	Notice: After long polling is enabled, reduce the concurrency of external long polling calls and select an appropriate long polling duration. The server dynamically adjusts the concurrency limit for long polling based on factors such as the number of long polling requests, long polling wait time, and number of access IP addresses. When the queue has no messages, requests that exceed the long polling limit cannot be listened to and directly return 404 MessageNotExist (billed normally by request count). If you need to temporarily increase the long polling limit, submit a ticket promptly.
 //
 // @param request - BatchReceiveMessageRequest
 //
@@ -186,21 +200,21 @@ func (client *Client) BatchReceiveMessageWithContext(ctx context.Context, queueN
 
 // Summary:
 //
-// 批量发送消息
+// Sends a batch of up to 16 messages to a specified queue, with a total size not exceeding 64 KB.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 一次 Batch 请求的消息总大小不得超过 64 KB。
+// - The total size of messages in a single batch request must not exceed 64 KB.
 //
-// - `BatchSendMessage` 与 `SendMessage` 使用相同的 URL 路径，通过 Body 结构区分：包含 `Messages` 数组即为批量发送，否则为单条发送。
+// - `BatchSendMessage` and `SendMessage` use the same URL path. They are distinguished by the body structure: if the body contains a `Messages` array, it is a batch send operation. Otherwise, it is a single message send operation.
 //
-// - 批量操作的返回结果可能同时包含成功和失败的子消息。
+// - The response of a batch operation may contain both successful and failed sub-messages.
 //
-// - 每次请求中可以包含多个消息对象，每个消息对象可以设置不同的延迟时间和优先级。
+// - Each request can contain multiple message objects. Each message object can have a different delay time and priority.
 //
-// - 对于 FIFO 队列，可以通过 `MessageGroupId` 参数来指定消息分组 ID。
+// - For FIFO queues, you can use the `MessageGroupId` parameter to specify a message group ID.
 //
 // @param request - BatchSendMessageRequest
 //
@@ -247,7 +261,19 @@ func (client *Client) BatchSendMessageWithContext(ctx context.Context, queueName
 
 // Summary:
 //
-// 修改消息下次可消费时间
+// Extends or shortens the invisibility period of a message that is in the Inactive state.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation allows you to modify the VisibilityTimeout of a message that has been consumed and is currently in the Inactive state. The VisibilityTimeout is the countdown from the current moment until the message becomes Active again.
+//
+// - A successful invocation returns a new `ReceiptHandle`. Use this new handle for subsequent delete or visibility timeout modification operations on this message.
+//
+// - This operation can only be invoked successfully before `NextVisibleTime`. Otherwise, a fault is returned.
+//
+// - Common scenarios include when a consumer requires a longer processing time and needs to extend the VisibilityTimeout to prevent the message from being consumed again.
 //
 // @param request - ChangeMessageVisibilityRequest
 //
@@ -298,19 +324,19 @@ func (client *Client) ChangeMessageVisibilityWithContext(ctx context.Context, qu
 
 // Summary:
 //
-// 发布消息
+// Publishes a message to a specified topic. The message is pushed to all subscribed endpoints.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 消息发布后会被推送到该 Topic 下所有 Subscription 的 Endpoint。
+// - After a message is published, it is pushed to the endpoints of all subscriptions under the topic.
 //
-// - 推送到 Queue 和 HTTP Endpoint 时不需要设置 `MessageAttributes`。
+// - You do not need to set `MessageAttributes` when pushing messages to queues or HTTP endpoints.
 //
-// - 推送到邮件、短信或移动推送时需要设置对应的 `MessageAttributes` 子属性。
+// - You must set the corresponding `MessageAttributes` sub-properties when pushing messages to email, SMS, or mobile push endpoints.
 //
-// - 消息内容建议事先进行 Base64 编码以避免特殊字符问题。
+// - Base64-encode the message content beforehand to avoid special character issues.
 //
 // @param request - PublishMessageRequest
 //
@@ -369,23 +395,23 @@ func (client *Client) PublishMessageWithContext(ctx context.Context, topicName *
 
 // Summary:
 //
-// 发送消息
+// Sends a message to a specified queue with support for delay and priority settings.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - **SendMessage*	- 接口用于将消息发送至指定队列。
+// - The **SendMessage*	- operation sends a message to a specified queue.
 //
-// - 消息可以立即被消费或通过设置 `DelaySeconds` 参数来延迟消费。
+// - Messages can be consumed immediately or delayed by setting the `DelaySeconds` parameter.
 //
-// - 发送的消息可以指定优先级，数值越小表示优先级越高。
+// - You can specify a priority for the message. A smaller value indicates a higher priority.
 //
-// - 对于 FIFO 队列，可以通过 `MessageGroupId` 来保证同一分组内消息的顺序投递。
+// - For FIFO queues, use `MessageGroupId` to ensure ordered delivery of messages within the same group.
 //
-// - 用户还可以自定义属性 `UserProperties`，以 JSON 格式字符串形式提供额外信息。
+// - You can also set custom attributes in `UserProperties` as a JSON-formatted string to provide additional information.
 //
-// - 当 `DelaySeconds` 大于 0 时，API 返回的 `ReceiptHandle` 可用来在消息变为 Active 状态前删除该延迟消息。
+// - When `DelaySeconds` is greater than 0, the `ReceiptHandle` returned by the API can be used to delete the delayed message before it becomes Active.
 //
 // @param request - SendMessageRequest
 //

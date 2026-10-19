@@ -20,12 +20,21 @@ type iPublishMessageRequest interface {
 }
 
 type PublishMessageRequest struct {
+	// **Message attributes**. You do not need to set this parameter when pushing messages to queues or HTTP endpoints.
 	MessageAttributes *PublishMessageRequestMessageAttributes `json:"MessageAttributes,omitempty" xml:"MessageAttributes,omitempty" type:"Struct"`
+	// **Message content**. Base64-encode the content beforehand.
+	//
+	// Maximum size: 64 KB.
+	//
 	// example:
 	//
 	// hello topic
 	MessageBody    *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
 	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// **Message tag**, used for message filtering on subscriptions.
+	//
+	// Maximum length: 64 characters.
+	//
 	// example:
 	//
 	// order-event
@@ -86,17 +95,23 @@ func (s *PublishMessageRequest) Validate() error {
 }
 
 type PublishMessageRequestMessageAttributes struct {
+	// **Email push attributes*	- (JSON-formatted string).
+	//
 	// example:
 	//
-	// 详见 https://help.aliyun.com/zh/direct-mail/singlesendmail
+	// For more information, see https://www.alibabacloud.com/help/en/direct-mail/singlesendmail.
 	DirectMail *string `json:"DirectMail,omitempty" xml:"DirectMail,omitempty"`
+	// SMS push attributes (JSON-formatted string), including `FreeSignName`, `TemplateCode`, `Type`, `Receiver`, and `SmsParams`.
+	//
 	// example:
 	//
-	// {"FreeSignName":"阿里云","TemplateCode":"SMS_123456","Type":"singleContent","Receiver":"13800000000","SmsParams":"{\\"code\\":\\"1234\\"}"}
+	// {"FreeSignName":"Alibaba Cloud","TemplateCode":"SMS_123456","Type":"singleContent","Receiver":"13800000000","SmsParams":"{\\"code\\":\\"1234\\"}"}
 	DirectSMS *string `json:"DirectSMS,omitempty" xml:"DirectSMS,omitempty"`
+	// Mobile push attributes (JSON-formatted string).
+	//
 	// example:
 	//
-	// 移动推送属性示例值
+	// Sample mobile push attributes value.
 	Push *string `json:"Push,omitempty" xml:"Push,omitempty"`
 }
 
