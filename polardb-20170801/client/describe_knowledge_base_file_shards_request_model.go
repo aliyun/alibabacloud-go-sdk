@@ -30,7 +30,7 @@ type DescribeKnowledgeBaseFileShardsRequest struct {
 	//
 	// xxxx-xxxx-xxxx-xxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeKnowledgeBaseFileShardsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

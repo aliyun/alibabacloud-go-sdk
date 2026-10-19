@@ -30,7 +30,7 @@ type DescribeAvailableModelsResponseBody struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -134,33 +134,75 @@ func (s *DescribeAvailableModelsResponseBody) Validate() error {
 }
 
 type DescribeAvailableModelsResponseBodyItems struct {
-	// The custom model registration key.
+	// The container startup environment variables registered for the custom model.
+	//
+	// example:
+	//
+	// {"HF_HOME":"/cache/hf"}
+	ContainerEnv map[string]*string `json:"ContainerEnv,omitempty" xml:"ContainerEnv,omitempty"`
+	// The source image address registered by the customer.
+	//
+	// example:
+	//
+	// registry.example.com/customer/model:v1
+	CustomImageSource *string `json:"CustomImageSource,omitempty" xml:"CustomImageSource,omitempty"`
+	// The registration key of the custom model.
 	//
 	// example:
 	//
 	// Qwen3-32B
 	CustomModelName *string `json:"CustomModelName,omitempty" xml:"CustomModelName,omitempty"`
+	// The deployment specifications registered for the custom model.
+	//
+	// example:
+	//
+	// polardb.gpu.gn8is.4xlarge
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The direct startup command registered for the custom model.
+	//
+	// example:
+	//
+	// python -m vllm.entrypoints.openai.api_server
+	DirectCommand *string `json:"DirectCommand,omitempty" xml:"DirectCommand,omitempty"`
 	// The display name of the model.
 	//
 	// example:
 	//
 	// My Qwen3 32B
 	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
-	// The last modified time of the registration.
+	// The time when the registration was last modified.
 	//
 	// example:
 	//
 	// 2026-09-07 20:57:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The supported GPU types.
+	// The supported GPU models.
 	GpuRequired []*DescribeAvailableModelsResponseBodyItemsGpuRequired `json:"GpuRequired,omitempty" xml:"GpuRequired,omitempty" type:"Repeated"`
-	// The minimum number of CPUs.
+	// The image import status. Valid values: Importing, Available, and Failed.
+	//
+	// example:
+	//
+	// Available
+	ImageImportStatus *string `json:"ImageImportStatus,omitempty" xml:"ImageImportStatus,omitempty"`
+	// The model service image address registered by the customer.
+	//
+	// example:
+	//
+	// registry.example.com/customer/model:v1
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The inference engine registered for the custom model.
+	//
+	// example:
+	//
+	// vllm
+	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
+	// The minimum CPU requirement.
 	//
 	// example:
 	//
 	// 8
 	MinimumCpu *int64 `json:"MinimumCpu,omitempty" xml:"MinimumCpu,omitempty"`
-	// The minimum memory size.
+	// The minimum memory requirement.
 	//
 	// example:
 	//
@@ -172,6 +214,12 @@ type DescribeAvailableModelsResponseBodyItems struct {
 	//
 	// Qwen3-32B-GPTQ-Int4
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The startup parameters registered for the custom model.
+	//
+	// example:
+	//
+	// {"--max-model-len":"32768"}
+	ModelParams map[string]*string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	// The model series.
 	//
 	// example:
@@ -192,7 +240,12 @@ type DescribeAvailableModelsResponseBodyItems struct {
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
 	// The supported GPU models.
 	SupportedGpuModels []*string `json:"SupportedGpuModels,omitempty" xml:"SupportedGpuModels,omitempty" type:"Repeated"`
-	TuneArch           *string   `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
+	// The model fine-tuning architecture.
+	//
+	// example:
+	//
+	// swift
+	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 }
 
 func (s DescribeAvailableModelsResponseBodyItems) String() string {
@@ -203,8 +256,24 @@ func (s DescribeAvailableModelsResponseBodyItems) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAvailableModelsResponseBodyItems) GetContainerEnv() map[string]*string {
+	return s.ContainerEnv
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetCustomImageSource() *string {
+	return s.CustomImageSource
+}
+
 func (s *DescribeAvailableModelsResponseBodyItems) GetCustomModelName() *string {
 	return s.CustomModelName
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetDBInstanceClass() *string {
+	return s.DBInstanceClass
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetDirectCommand() *string {
+	return s.DirectCommand
 }
 
 func (s *DescribeAvailableModelsResponseBodyItems) GetDisplayModelName() *string {
@@ -219,6 +288,18 @@ func (s *DescribeAvailableModelsResponseBodyItems) GetGpuRequired() []*DescribeA
 	return s.GpuRequired
 }
 
+func (s *DescribeAvailableModelsResponseBodyItems) GetImageImportStatus() *string {
+	return s.ImageImportStatus
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetImageName() *string {
+	return s.ImageName
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetInferenceEngine() *string {
+	return s.InferenceEngine
+}
+
 func (s *DescribeAvailableModelsResponseBodyItems) GetMinimumCpu() *int64 {
 	return s.MinimumCpu
 }
@@ -229,6 +310,10 @@ func (s *DescribeAvailableModelsResponseBodyItems) GetMinimumMemory() *int64 {
 
 func (s *DescribeAvailableModelsResponseBodyItems) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetModelParams() map[string]*string {
+	return s.ModelParams
 }
 
 func (s *DescribeAvailableModelsResponseBodyItems) GetModelSeries() *string {
@@ -251,8 +336,28 @@ func (s *DescribeAvailableModelsResponseBodyItems) GetTuneArch() *string {
 	return s.TuneArch
 }
 
+func (s *DescribeAvailableModelsResponseBodyItems) SetContainerEnv(v map[string]*string) *DescribeAvailableModelsResponseBodyItems {
+	s.ContainerEnv = v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetCustomImageSource(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.CustomImageSource = &v
+	return s
+}
+
 func (s *DescribeAvailableModelsResponseBodyItems) SetCustomModelName(v string) *DescribeAvailableModelsResponseBodyItems {
 	s.CustomModelName = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetDBInstanceClass(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetDirectCommand(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.DirectCommand = &v
 	return s
 }
 
@@ -271,6 +376,21 @@ func (s *DescribeAvailableModelsResponseBodyItems) SetGpuRequired(v []*DescribeA
 	return s
 }
 
+func (s *DescribeAvailableModelsResponseBodyItems) SetImageImportStatus(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.ImageImportStatus = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetImageName(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetInferenceEngine(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.InferenceEngine = &v
+	return s
+}
+
 func (s *DescribeAvailableModelsResponseBodyItems) SetMinimumCpu(v int64) *DescribeAvailableModelsResponseBodyItems {
 	s.MinimumCpu = &v
 	return s
@@ -283,6 +403,11 @@ func (s *DescribeAvailableModelsResponseBodyItems) SetMinimumMemory(v int64) *De
 
 func (s *DescribeAvailableModelsResponseBodyItems) SetModelName(v string) *DescribeAvailableModelsResponseBodyItems {
 	s.ModelName = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetModelParams(v map[string]*string) *DescribeAvailableModelsResponseBodyItems {
+	s.ModelParams = v
 	return s
 }
 

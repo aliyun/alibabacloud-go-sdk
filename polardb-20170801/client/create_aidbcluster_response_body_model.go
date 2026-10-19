@@ -20,13 +20,13 @@ type iCreateAIDBClusterResponseBody interface {
 }
 
 type CreateAIDBClusterResponseBody struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// pc-******************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateAIDBClusterResponseBody struct {
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

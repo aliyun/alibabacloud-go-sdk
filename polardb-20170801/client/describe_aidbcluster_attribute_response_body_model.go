@@ -13,8 +13,12 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetAiNodeType() *string
 	SetApiKey(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetApiKey() *string
+	SetCommand(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetCommand() *string
 	SetCreationTime(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetCreationTime() *string
+	SetCurrentCapacity(v int64) *DescribeAIDBClusterAttributeResponseBody
+	GetCurrentCapacity() *int64
 	SetCustomOssPath(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetCustomOssPath() *string
 	SetDBClusterDescription(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -96,11 +100,11 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 type DescribeAIDBClusterAttributeResponseBody struct {
 	// The node type. Valid values:
 	//
-	// - vnode: managed by ACK
+	// - vnode: ACK-managed.
 	//
-	// - container: loginable container
+	// - container: Logon-enabled container.
 	//
-	// - maas: model service
+	// - maas: Model service.
 	//
 	// example:
 	//
@@ -112,21 +116,33 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// x********
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The startup command currently used by the model service.
+	//
+	// example:
+	//
+	// python -m vllm.entrypoints.openai.api_server
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The time when the cluster was created.
 	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The custom model OSS path currently used by the instance.
+	// The current measured model capacity of the instance. The abstract capacity unit is 1000, which is equivalent to one L20N card.
+	//
+	// example:
+	//
+	// 8000
+	CurrentCapacity *int64 `json:"CurrentCapacity,omitempty" xml:"CurrentCapacity,omitempty"`
+	// The custom OSS path of the model currently used by the instance.
 	//
 	// example:
 	//
 	// /my-model-bucket/models/qwen3
 	CustomOssPath *string `json:"CustomOssPath,omitempty" xml:"CustomOssPath,omitempty"`
-	// The cluster description. Fuzzy match is supported.
+	// The description of the cluster. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -138,7 +154,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The cluster status. Valid values:
+	// The status of the cluster. Valid values:
 	//
 	// - **Creating**: The cluster is being created.
 	//
@@ -146,13 +162,13 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// - **Deleting**: The cluster is being released.
 	//
-	// - **DBNodeCreating**: A node is being added.
+	// - **DBNodeCreating**: Nodes are being added.
 	//
-	// - **DBNodeDeleting**: A node is being deleted.
+	// - **DBNodeDeleting**: Nodes are being deleted.
 	//
 	// - **ClassChanging**: The node specifications are being changed.
 	//
-	// - **Deleted**: The cluster has been released.
+	// - **Deleted**: The cluster is released.
 	//
 	// example:
 	//
@@ -180,13 +196,13 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// sg-xxxxxx
 	EcsSecurityGroupId *string `json:"EcsSecurityGroupId,omitempty" xml:"EcsSecurityGroupId,omitempty"`
-	// The list of network endpoints of the instance.
+	// The list of network endpoints for the instance.
 	EndpointList []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
-	// > Only clusters with the billing method of **Prepaid*	- (subscription) return a specific value. **Postpaid*	- (pay-as-you-go) clusters return an empty value.
+	// > A specific value is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned.
 	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -194,9 +210,9 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired. Valid values:
 	//
-	// - **true**
+	// - **true**: The cluster has expired.
 	//
-	// - **false**
+	// - **false**: The cluster has not expired.
 	//
 	// example:
 	//
@@ -222,7 +238,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// xxxxxxxxxxxxxxxxxxxxxxx
 	KubeClusterId *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
-	// The lock mode of the instance. The value is **lock**, which indicates that the instance is automatically expired or has an overdue payment.
+	// The lock mode of the instance. Valid value: **lock**. This value indicates that the instance is automatically locked due to expiration or overdue payments.
 	//
 	// example:
 	//
@@ -250,15 +266,15 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: Pay-as-you-go.
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: Subscription.
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The custom model OSS path before the last change.
+	// The custom OSS path of the model before the last change.
 	//
 	// example:
 	//
@@ -284,21 +300,21 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The architecture type. Valid values:
 	//
-	// - container: AI container
+	// - container: AI container.
 	//
-	// - ainode: AI node
+	// - ainode: AI node.
 	//
 	// example:
 	//
 	// container
 	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
-	// Valid values for Enterprise Edition storage type:
+	// The storage type. Valid values for Enterprise Edition:
 	//
 	// - **PSL5**
 	//
 	// - **PSL4**
 	//
-	// Valid values for Standard Edition storage type:
+	// Valid values for Standard Edition:
 	//
 	// - **ESSDPL0**
 	//
@@ -316,7 +332,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	StorageType    *string                                                 `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	TimeSlicesInfo *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo `json:"TimeSlicesInfo,omitempty" xml:"TimeSlicesInfo,omitempty" type:"Struct"`
 	TimeSlicesType *string                                                 `json:"TimeSlicesType,omitempty" xml:"TimeSlicesType,omitempty"`
-	// The VPC ID that can be specified for cross-zone switchover.
+	// The ID of the VPC specified for zone switchover.
 	//
 	// example:
 	//
@@ -339,7 +355,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// cn-hangzhou-d
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone ID.
+	// The zone IDs.
 	//
 	// example:
 	//
@@ -363,8 +379,16 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetApiKey() *string {
 	return s.ApiKey
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBody) GetCommand() *string {
+	return s.Command
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBody) GetCreationTime() *string {
 	return s.CreationTime
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetCurrentCapacity() *int64 {
+	return s.CurrentCapacity
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetCustomOssPath() *string {
@@ -529,8 +553,18 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetApiKey(v string) *Describe
 	return s
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBody) SetCommand(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.Command = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBody) SetCreationTime(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetCurrentCapacity(v int64) *DescribeAIDBClusterAttributeResponseBody {
+	s.CurrentCapacity = &v
 	return s
 }
 
@@ -768,27 +802,33 @@ func (s *DescribeAIDBClusterAttributeResponseBody) Validate() error {
 type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	// The list of data cloud disks.
 	ChildVolumes []*DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes `json:"ChildVolumes,omitempty" xml:"ChildVolumes,omitempty" type:"Repeated"`
+	// The startup command currently used by the model. If no record exists, an empty string is returned.
+	//
+	// example:
+	//
+	// python -m vllm.entrypoints.openai.api_server
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The number of CPU cores of the node.
 	//
 	// example:
 	//
 	// 2
 	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// The creation time.
+	// The time when the node was created.
 	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cluster specifications.
+	// The node specifications.
 	//
 	// example:
 	//
 	// polar.pg.g8.8xlarge.gu30
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The node description.
+	// The description of the node.
 	//
 	// example:
 	//
@@ -800,7 +840,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// pi-****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The node status. Valid values:
+	// The status of the node. Valid values:
 	//
 	// 	- **Creating**: The node is being created.
 	//
@@ -808,15 +848,15 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 	- **Deleting**: The node is being deleted.
 	//
-	// 	- **Rebooting**: The node is being restarted.
+	// 	- **Rebooting**: The node is restarting.
 	//
-	// 	- **DBNodeCreating**: A node is being added.
+	// 	- **DBNodeCreating**: Nodes are being added.
 	//
-	// 	- **DBNodeDeleting**: A node is being deleted.
+	// 	- **DBNodeDeleting**: Nodes are being deleted.
 	//
 	// 	- **ClassChanging**: The node specifications are being changed.
 	//
-	// 	- **MinorVersionUpgrading**: A minor engine version update is in progress.
+	// 	- **MinorVersionUpgrading**: The minor version is being upgraded.
 	//
 	// 	- **Maintaining**: The instance is under maintenance.
 	//
@@ -826,7 +866,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	// The number of GPU cards.
+	// The number of GPUs.
 	//
 	// example:
 	//
@@ -838,6 +878,12 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 10.*.*12
 	LinkIP *string `json:"LinkIP,omitempty" xml:"LinkIP,omitempty"`
+	// The log indexing of the worker node.
+	//
+	// example:
+	//
+	// worker-0
+	LogIndex *string `json:"LogIndex,omitempty" xml:"LogIndex,omitempty"`
 	// The memory size of the node. Unit: MB.
 	//
 	// example:
@@ -845,6 +891,12 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	// 8192
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	ModelName  *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The name of the workspace to which the model belongs.
+	//
+	// example:
+	//
+	// my-model-space
+	ModelSpaceName *string `json:"ModelSpaceName,omitempty" xml:"ModelSpaceName,omitempty"`
 	// The public IP address.
 	//
 	// example:
@@ -853,7 +905,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// The supported APIs.
 	SupportedApis []*DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis `json:"SupportedApis,omitempty" xml:"SupportedApis,omitempty" type:"Repeated"`
-	// The Kubernetes virtual node ID.
+	// The ID of the Kubernetes virtual node.
 	//
 	// example:
 	//
@@ -891,6 +943,10 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetChildVolumes() []*D
 	return s.ChildVolumes
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetCommand() *string {
+	return s.Command
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetCpuCores() *string {
 	return s.CpuCores
 }
@@ -923,12 +979,20 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetLinkIP() *string {
 	return s.LinkIP
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetLogIndex() *string {
+	return s.LogIndex
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetMemorySize() *string {
 	return s.MemorySize
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetModelSpaceName() *string {
+	return s.ModelSpaceName
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetPublicIp() *string {
@@ -957,6 +1021,11 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetZoneId() *string {
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetChildVolumes(v []*DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
 	s.ChildVolumes = v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetCommand(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.Command = &v
 	return s
 }
 
@@ -1000,6 +1069,11 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetLinkIP(v string) *D
 	return s
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetLogIndex(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.LogIndex = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
 	s.MemorySize = &v
 	return s
@@ -1007,6 +1081,11 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetModelName(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
 	s.ModelName = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetModelSpaceName(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.ModelSpaceName = &v
 	return s
 }
 
@@ -1075,7 +1154,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes struct {
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The storage disk size.
+	// The size of the cloud disk.
 	//
 	// example:
 	//
@@ -1153,12 +1232,12 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) Validate()
 }
 
 type DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis struct {
-	// The API name supported by the database node.
+	// The name of the API supported by the database node.
 	ApiName        *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	GenerationMode *string `json:"GenerationMode,omitempty" xml:"GenerationMode,omitempty"`
-	// The supported API path.
+	// The path of the supported API.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The supported API protocol type.
+	// The protocol type of the supported API.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -1211,7 +1290,7 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) Validate(
 }
 
 type DescribeAIDBClusterAttributeResponseBodyEndpointList struct {
-	// The list of network information of the instance.
+	// The list of network information for the instance.
 	NetInfoItems []*DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Repeated"`
 }
 
@@ -1254,11 +1333,11 @@ type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// 	- **Public**: public endpoint
+	// 	- **Public**: Public network endpoint.
 	//
-	// 	- **Private**: private endpoint
+	// 	- **Private**: Private network endpoint.
 	//
-	// 	- **Inner**: private endpoint (classic network)
+	// 	- **Inner**: Private network endpoint (classic network).
 	//
 	// example:
 	//
@@ -1514,7 +1593,7 @@ func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) Va
 }
 
 type DescribeAIDBClusterAttributeResponseBodyVolumes struct {
-	// The mount path inside the container.
+	// The mount path in the container.
 	//
 	// example:
 	//

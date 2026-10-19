@@ -128,13 +128,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The application description.
+	// The description of the application.
 	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The NAT mapping: the list of DNAT mapping entries.
+	// The list of DNAT mapping entries for NAT mapping.
 	DnatMappings []*DescribeApplicationAttributeResponseBodyDnatMappings `json:"DnatMappings,omitempty" xml:"DnatMappings,omitempty" type:"Repeated"`
 	// The list of endpoints for the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
@@ -168,9 +168,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - Unlock: Unlocked.
+	// - Unlock: The application is not locked.
 	//
-	// - Lock: Locked.
+	// - Lock: The application is locked.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// pc-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This parameter refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
+	// The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
 	//
 	// example:
 	//
@@ -218,9 +218,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The attributes of the PolarClaw application.
+	// The PolarClaw application attributes.
 	PolarClawApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute `json:"PolarClawApplicationAttribute,omitempty" xml:"PolarClawApplicationAttribute,omitempty" type:"Struct"`
-	// The attributes of the PolarClaw SaaS application.
+	// The PolarClaw SaaS application attributes.
 	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
 	// The instance ID of the PolarFS Cold Storage Edition or High-performance Edition.
 	//
@@ -274,11 +274,11 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// - MinorVersionUpgrading: The minor version of the application is being upgraded.
 	//
-	// - NetCreating: The endpoint is being created.
+	// - NetCreating: The endpoint of the application is being created.
 	//
-	// - NetDeleting: The endpoint is being deleted.
+	// - NetDeleting: The endpoint of the application is being deleted.
 	//
-	// - NetModifying: The endpoint is being modified.
+	// - NetModifying: The endpoint of the application is being modified.
 	//
 	// - Restarting: The application is being restarted.
 	//
@@ -296,7 +296,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage resources.
 	Storages []*DescribeApplicationAttributeResponseBodyStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
-	// Indicates whether an upgrade is available.
+	// Specifies whether an upgrade is available.
 	//
 	// example:
 	//
@@ -773,13 +773,13 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The description of the application subcomponent specifications.
+	// The description of the specifications for the application subcomponent.
 	//
 	// example:
 	//
 	// 2C4GB
 	ComponentClassDescription *string `json:"ComponentClassDescription,omitempty" xml:"ComponentClassDescription,omitempty"`
-	// The subcomponent ID.
+	// The ID of the subcomponent.
 	//
 	// example:
 	//
@@ -797,7 +797,7 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The replica group name of the application subcomponent.
+	// The name of the replica group for the application subcomponent.
 	//
 	// example:
 	//
@@ -817,7 +817,7 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// If the whitelist at the subcomponent level is the same as that at the application level, this return value is omitted.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The component status. The valid values are the same as the application status.
+	// The status of the component. The valid values are the same as those of the application status.
 	//
 	// example:
 	//
@@ -976,13 +976,13 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-*******************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//
@@ -1129,7 +1129,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays) Val
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
-	// The list of topology child node IDs or child node subcomponent types for the current application subcomponent.
+	// The list of topology child node IDs for the current application subcomponent, or the list of subcomponent types of the child nodes.
 	Children []*string `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The topology layer of the topology information for the current application subcomponent.
 	//
@@ -1137,7 +1137,7 @@ type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
 	//
 	// 0
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The list of topology parent node IDs or parent node subcomponent types for the current application subcomponent.
+	// The list of topology parent node IDs for the current application subcomponent, or the list of subcomponent types of the parent nodes.
 	Parents []*string `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
 }
 
@@ -1181,7 +1181,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsTopology) Validate() 
 }
 
 type DescribeApplicationAttributeResponseBodyDnatMappings struct {
-	// The access address in the NatIp:FrontPort format. It can be directly used on the office network.
+	// The access address in the NatIp:FrontPort format, which can be directly used on the office network.
 	//
 	// example:
 	//
@@ -1193,7 +1193,7 @@ type DescribeApplicationAttributeResponseBodyDnatMappings struct {
 	//
 	// 8787
 	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	// The DNAT entry ID.
+	// The ID of the DNAT entry.
 	//
 	// example:
 	//
@@ -1205,13 +1205,13 @@ type DescribeApplicationAttributeResponseBodyDnatMappings struct {
 	//
 	// 10001
 	FrontPort *int32 `json:"FrontPort,omitempty" xml:"FrontPort,omitempty"`
-	// The port name. Valid values: webui, hermesagent, dashboard, and ssh.
+	// The name of the port. Valid values: webui, hermesagent, dashboard, and ssh.
 	//
 	// example:
 	//
 	// webui
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// The entry status.
+	// The status of the entry.
 	//
 	// example:
 	//
@@ -1293,7 +1293,7 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	// myendpoint
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The endpoint ID.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
@@ -1305,11 +1305,11 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// 172.31.95.252
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The endpoint type. Valid values:
+	// The type of the endpoint. Valid values:
 	//
 	// - Private: VPC address.
 	//
-	// - Public: Internet address.
+	// - Public: public network address.
 	//
 	// example:
 	//
@@ -1321,7 +1321,7 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// 8080
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The port description.
+	// The description of the port.
 	//
 	// example:
 	//
@@ -1405,13 +1405,13 @@ func (s *DescribeApplicationAttributeResponseBodyEndpoints) Validate() error {
 }
 
 type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// test-database-name
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The embedder model name.
+	// The name of the embedder model.
 	//
 	// example:
 	//
@@ -1423,19 +1423,31 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// qwen3-max
 	GraphLlmModelName *string `json:"GraphLlmModelName,omitempty" xml:"GraphLlmModelName,omitempty"`
-	// The LLM model name.
+	// The name of the LLM model.
 	//
 	// example:
 	//
 	// qwen3-max
 	LlmModelName *string `json:"LlmModelName,omitempty" xml:"LlmModelName,omitempty"`
-	// The project name, which corresponds to the schema where project data is stored in the database.
+	// The active memory type.
+	//
+	// example:
+	//
+	// MULTIMODAL_TEXT
+	MemoryType *string `json:"MemoryType,omitempty" xml:"MemoryType,omitempty"`
+	// Indicates whether the multimodal feature is enabled.
+	//
+	// example:
+	//
+	// true
+	MultimodalEnabled *bool `json:"MultimodalEnabled,omitempty" xml:"MultimodalEnabled,omitempty"`
+	// The name of the project, which corresponds to the schema in the database where project data is stored.
 	//
 	// example:
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The reranker model name.
+	// The name of the reranker model.
 	//
 	// example:
 	//
@@ -1449,6 +1461,26 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// test-user
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The current dimensions of the VisualEmbedder.
+	//
+	// example:
+	//
+	// 2560
+	VisualEmbedderDimensions *int32 `json:"VisualEmbedderDimensions,omitempty" xml:"VisualEmbedderDimensions,omitempty"`
+	// The current VisualEmbedder model.
+	//
+	// example:
+	//
+	// qwen3.7-text-embedding
+	VisualEmbedderModelName *string `json:"VisualEmbedderModelName,omitempty" xml:"VisualEmbedderModelName,omitempty"`
+	// The currently enabled understanding modalities.
+	VisualLlmModalities []*string `json:"VisualLlmModalities,omitempty" xml:"VisualLlmModalities,omitempty" type:"Repeated"`
+	// The current VisualLLM model.
+	//
+	// example:
+	//
+	// qwen3.6-flash
+	VisualLlmModelName *string `json:"VisualLlmModelName,omitempty" xml:"VisualLlmModelName,omitempty"`
 }
 
 func (s DescribeApplicationAttributeResponseBodyMemApplicationAttribute) String() string {
@@ -1475,6 +1507,14 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetLlm
 	return s.LlmModelName
 }
 
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetMemoryType() *string {
+	return s.MemoryType
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetMultimodalEnabled() *bool {
+	return s.MultimodalEnabled
+}
+
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetProjectName() *string {
 	return s.ProjectName
 }
@@ -1489,6 +1529,22 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetSes
 
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetUserName() *string {
 	return s.UserName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetVisualEmbedderDimensions() *int32 {
+	return s.VisualEmbedderDimensions
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetVisualEmbedderModelName() *string {
+	return s.VisualEmbedderModelName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetVisualLlmModalities() []*string {
+	return s.VisualLlmModalities
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetVisualLlmModelName() *string {
+	return s.VisualLlmModelName
 }
 
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetDbName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
@@ -1511,6 +1567,16 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetLlm
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetMemoryType(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.MemoryType = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetMultimodalEnabled(v bool) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.MultimodalEnabled = &v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetProjectName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
 	s.ProjectName = &v
 	return s
@@ -1528,6 +1594,26 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetSes
 
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetUserName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
 	s.UserName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetVisualEmbedderDimensions(v int32) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.VisualEmbedderDimensions = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetVisualEmbedderModelName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.VisualEmbedderModelName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetVisualLlmModalities(v []*string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.VisualLlmModalities = v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetVisualLlmModelName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.VisualLlmModelName = &v
 	return s
 }
 
@@ -1821,13 +1907,13 @@ type DescribeApplicationAttributeResponseBodySecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//

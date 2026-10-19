@@ -24,7 +24,7 @@ type DescribeAvailableModelsRequest struct {
 	//
 	// aideploy
 	KubeType *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
-	// The model type. Valid values: custom or public. If this parameter is not specified, all models are returned.
+	// The model type. Valid values: custom and public. If you do not specify this parameter, all models are returned.
 	//
 	// example:
 	//

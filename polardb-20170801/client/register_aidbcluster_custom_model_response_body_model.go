@@ -13,6 +13,8 @@ type iRegisterAIDBClusterCustomModelResponseBody interface {
 	GetCreated() *bool
 	SetDisplayModelName(v string) *RegisterAIDBClusterCustomModelResponseBody
 	GetDisplayModelName() *string
+	SetImageImportStatus(v string) *RegisterAIDBClusterCustomModelResponseBody
+	GetImageImportStatus() *string
 	SetModelId(v int64) *RegisterAIDBClusterCustomModelResponseBody
 	GetModelId() *int64
 	SetModelName(v string) *RegisterAIDBClusterCustomModelResponseBody
@@ -26,18 +28,24 @@ type iRegisterAIDBClusterCustomModelResponseBody interface {
 }
 
 type RegisterAIDBClusterCustomModelResponseBody struct {
-	// Indicates whether the registration is newly created. A value of false indicates that an existing registration was updated.
+	// Indicates whether a new registration is created. A value of false indicates that an existing registration is updated.
 	//
 	// example:
 	//
 	// true
 	Created *bool `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The display name and initial client-facing invocation name.
+	// The display name and the initial invocation name for clients.
 	//
 	// example:
 	//
 	// my-qwen3
 	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
+	// The image import status. The initial value is Importing after an image is registered.
+	//
+	// example:
+	//
+	// Importing
+	ImageImportStatus *string `json:"ImageImportStatus,omitempty" xml:"ImageImportStatus,omitempty"`
 	// The model registration ID.
 	//
 	// example:
@@ -86,6 +94,10 @@ func (s *RegisterAIDBClusterCustomModelResponseBody) GetDisplayModelName() *stri
 	return s.DisplayModelName
 }
 
+func (s *RegisterAIDBClusterCustomModelResponseBody) GetImageImportStatus() *string {
+	return s.ImageImportStatus
+}
+
 func (s *RegisterAIDBClusterCustomModelResponseBody) GetModelId() *int64 {
 	return s.ModelId
 }
@@ -113,6 +125,11 @@ func (s *RegisterAIDBClusterCustomModelResponseBody) SetCreated(v bool) *Registe
 
 func (s *RegisterAIDBClusterCustomModelResponseBody) SetDisplayModelName(v string) *RegisterAIDBClusterCustomModelResponseBody {
 	s.DisplayModelName = &v
+	return s
+}
+
+func (s *RegisterAIDBClusterCustomModelResponseBody) SetImageImportStatus(v string) *RegisterAIDBClusterCustomModelResponseBody {
+	s.ImageImportStatus = &v
 	return s
 }
 

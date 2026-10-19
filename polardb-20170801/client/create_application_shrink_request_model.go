@@ -144,7 +144,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// x86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The authentication provider.
+	// The authentication service provider.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// xxx
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies if automatic creation is enabled and the instance will attach and associate with an EIP.
+	// Specifies whether automatic creation is enabled and the instance will attach and associate with an EIP.
 	AutoAllocatePublicEip *bool `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
-	// Specifies whether to automatically create a Polarlakebase cold storage instance. Valid values:
+	// Specifies whether to automatically create a Polarlakebase cold storage edition instance. Valid values:
 	//
-	// 	- false: Does not automatically create the instance. This is the default value.
+	// 	- false (default): Do not automatically create the instance.
 	//
-	// 	- true: Automatically creates the instance.
+	// 	- true: Automatically create the instance.
 	//
 	// example:
 	//
@@ -176,9 +176,9 @@ type CreateApplicationShrinkRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// - true: Uses coupons. This is the default value.
+	// 	- true (default): Use coupons.
 	//
-	// - false: Does not use coupons.
+	// 	- false: Do not use coupons.
 	//
 	// example:
 	//
@@ -198,15 +198,15 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expected list of DNAT entries for NAT mapping. This parameter must be specified together with VpcNatGatewayId. It can be left empty, which indicates that no DNAT entries are created.
+	// The expected list of DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. Leave this parameter empty if you do not want to create DNAT entries.
 	DnatEntriesShrink *string `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty"`
-	// The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the NAT gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is associated with the vSwitch where the application resides.
+	// The dedicated NAT IP address allocated for DNAT mapping, which is separate from the SNAT IP address. The IP address must belong to the gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
 	//
 	// example:
 	//
 	// 10.64.0.10
 	DnatIpAddress *string `json:"DnatIpAddress,omitempty" xml:"DnatIpAddress,omitempty"`
-	// Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, the system only checks the parameters and resources without actually creating the resources.
+	// Specifies whether to perform a dry run. Default value: false. If you set this parameter to true, only parameter and resource validations are performed, and no resources are actually created.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type CreateApplicationShrinkRequest struct {
 	KnowledgeApplicationSpecShrink *string `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty"`
 	// Required for mem0 applications.
 	MemApplicationSpecShrink *string `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty"`
-	// The model API. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// sk-xxxxxx
 	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
-	// The base URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The endpoint of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// bailian
 	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
-	// The model name. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -268,7 +268,9 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the Polarlakebase cold storage or high-performance instance. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application. This parameter is supported only for the following applications:
+	// The instance ID of the Polarlakebase cold storage or high-performance edition. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
+	//
+	// Currently, only the following applications are supported:
 	//
 	// - supabase
 	//
@@ -302,13 +304,13 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// sg-********************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the IP address whitelist group. Default value: `default`.
+	// The name of the IP address whitelist group. Default value: default.
 	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+	// The IP address whitelist. If you do not specify this parameter, the default value 127.0.0.1 is used.
 	//
 	// example:
 	//
@@ -320,13 +322,13 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// ipv4
 	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
-	// The skill template ID.
+	// The ID of the skill template.
 	//
 	// example:
 	//
 	// xxx
 	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
-	// The list of storage resources for the application.
+	// The list of application storages.
 	//
 	// example:
 	//
@@ -358,7 +360,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// NAT mapping: the user-created VPC NAT gateway ID. If you specify this parameter, NAT mapping is enabled when the instance is created. The NAT gateway must reside in the same VPC as the application, be of the private network (intranet) type, and be in the active state.
+	// The NAT gateway ID of the self-managed VPC NAT gateway for NAT mapping. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must be in the same VPC as the application, use the private network (intranet) type, and be active.
 	//
 	// example:
 	//

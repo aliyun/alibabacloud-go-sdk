@@ -15,6 +15,8 @@ type iCreateAIDBClusterRequest interface {
 	GetAutoRenew() *string
 	SetAutoUseCoupon(v bool) *CreateAIDBClusterRequest
 	GetAutoUseCoupon() *bool
+	SetCapacity(v int64) *CreateAIDBClusterRequest
+	GetCapacity() *int64
 	SetClientToken(v string) *CreateAIDBClusterRequest
 	GetClientToken() *string
 	SetCreatePublicEndpoint(v string) *CreateAIDBClusterRequest
@@ -90,13 +92,13 @@ type CreateAIDBClusterRequest struct {
 	AckAdmin *string `json:"AckAdmin,omitempty" xml:"AckAdmin,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: Auto-renewal is enabled.
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**: Auto-renewal is not enabled.
+	// - **false**: disables auto-renewal.
 	//
 	// Default value: **false**.
 	//
-	// > This parameter takes effect only when **PayType*	- is set to **Prepaid**.
+	// > This parameter takes effect only when the **PayType*	- parameter is set to **Prepaid**.
 	//
 	// example:
 	//
@@ -104,28 +106,34 @@ type CreateAIDBClusterRequest struct {
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// 	- true (default): Use coupons.
+	// 	- true (default): uses coupons.
 	//
-	// 	- false: Do not use coupons.
+	// 	- false: does not use coupons.
 	//
 	// example:
 	//
 	// false
-	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// The initial model capacity of the instance. The value must be a positive integer. A capacity unit of 1000 is equivalent to one L20N equivalent card.
+	//
+	// example:
+	//
+	// 4000
+	Capacity    *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to create a public endpoint.
 	//
 	// example:
 	//
 	// ON
 	CreatePublicEndpoint *string `json:"CreatePublicEndpoint,omitempty" xml:"CreatePublicEndpoint,omitempty"`
-	// The cluster description. Fuzzy match is supported.
+	// The description of the cluster. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The instance ID of the PolarDB instance on which the application depends.
+	// The PolarDB instance ID on which the application depends.
 	//
 	// example:
 	//
@@ -149,7 +157,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// sglang
 	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
-	// The ACK cluster ID.
+	// The ID of the ACK cluster.
 	//
 	// example:
 	//
@@ -161,7 +169,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// xxx
 	KubeConfig *string `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
-	// The Kubernetes cluster management mode.
+	// The management mode of the Kubernetes cluster.
 	//
 	// example:
 	//
@@ -185,7 +193,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// ack
 	ManagementMode *string `json:"ManagementMode,omitempty" xml:"ManagementMode,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
@@ -217,17 +225,17 @@ type CreateAIDBClusterRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// This parameter is required to pass parameter when **PayType*	- is set to **Prepaid**. Specifies the unit of the upfront payment duration for the subscription cluster.
+	// If the billing method is **Prepaid**, you must pass parameter. Specifies the upfront cluster as yearly or monthly. Valid values:
 	//
-	// - **Year**: The subscription duration is measured in years.
+	// - **Year**: yearly. The unit is year.
 	//
-	// - **Month**: The subscription duration is measured in months.
+	// - **Month**: monthly. The unit is month.
 	//
 	// example:
 	//
 	// 5
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The coupon code. If this parameter is not specified, the default coupon is used.
+	// The coupon code. If you do not specify this parameter, the default coupon is used.
 	//
 	// example:
 	//
@@ -243,7 +251,7 @@ type CreateAIDBClusterRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
@@ -261,19 +269,19 @@ type CreateAIDBClusterRequest struct {
 	//
 	// essdpl0
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The pay-as-you-go time intervals.
+	// The pay-as-you-go time ranges.
 	TimeSlices []*CreateAIDBClusterRequestTimeSlices `json:"TimeSlices,omitempty" xml:"TimeSlices,omitempty" type:"Repeated"`
-	// This parameter is required when **PayType*	- is set to **Prepaid**.
+	// The subscription duration. This parameter is required when the billing method is set to **Prepaid**.
 	//
-	// - If **Period*	- is set to **Month**, the valid values of **UsedTime*	- are integers in the range of `[1-9]`.
+	// - If **Period*	- is set to **Month**, the value of **UsedTime*	- is an integer ranging from `1` to `9`.
 	//
-	// - If **Period*	- is set to **Year**, the valid values of **UsedTime*	- are integers in the range of `[1-3]`.
+	// - If **Period*	- is set to **Year**, the value of **UsedTime*	- is an integer ranging from `1` to `3`.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The VPC ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// This parameter is required.
 	//
@@ -281,7 +289,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// This parameter is required.
 	//
@@ -315,6 +323,10 @@ func (s *CreateAIDBClusterRequest) GetAutoRenew() *string {
 
 func (s *CreateAIDBClusterRequest) GetAutoUseCoupon() *bool {
 	return s.AutoUseCoupon
+}
+
+func (s *CreateAIDBClusterRequest) GetCapacity() *int64 {
+	return s.Capacity
 }
 
 func (s *CreateAIDBClusterRequest) GetClientToken() *string {
@@ -457,6 +469,11 @@ func (s *CreateAIDBClusterRequest) SetAutoRenew(v string) *CreateAIDBClusterRequ
 
 func (s *CreateAIDBClusterRequest) SetAutoUseCoupon(v bool) *CreateAIDBClusterRequest {
 	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateAIDBClusterRequest) SetCapacity(v int64) *CreateAIDBClusterRequest {
+	s.Capacity = &v
 	return s
 }
 
@@ -634,13 +651,13 @@ func (s *CreateAIDBClusterRequest) Validate() error {
 }
 
 type CreateAIDBClusterRequestTimeSlices struct {
-	// The start time of the task. The time is in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+	// The start time of the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 1758729600
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The end time of the query. The end time must be later than the start time. The time is in the `YYYY-MM-DDThh:mmZ` format (UTC).
+	// The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
 	//
 	// example:
 	//

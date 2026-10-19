@@ -9,8 +9,6 @@ type iDeleteAIDBClusterCustomModelRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDBClusterId(v string) *DeleteAIDBClusterCustomModelRequest
-	GetDBClusterId() *string
 	SetModelName(v string) *DeleteAIDBClusterCustomModelRequest
 	GetModelName() *string
 	SetRegionId(v string) *DeleteAIDBClusterCustomModelRequest
@@ -18,15 +16,7 @@ type iDeleteAIDBClusterCustomModelRequest interface {
 }
 
 type DeleteAIDBClusterCustomModelRequest struct {
-	// The ID of the PolarDB AI 3.0 logical instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// pm-2ze4x2mwo81knj08a
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The key of the custom model registration to delete.
+	// The custom model registration key to delete.
 	//
 	// This parameter is required.
 	//
@@ -52,21 +42,12 @@ func (s DeleteAIDBClusterCustomModelRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAIDBClusterCustomModelRequest) GetDBClusterId() *string {
-	return s.DBClusterId
-}
-
 func (s *DeleteAIDBClusterCustomModelRequest) GetModelName() *string {
 	return s.ModelName
 }
 
 func (s *DeleteAIDBClusterCustomModelRequest) GetRegionId() *string {
 	return s.RegionId
-}
-
-func (s *DeleteAIDBClusterCustomModelRequest) SetDBClusterId(v string) *DeleteAIDBClusterCustomModelRequest {
-	s.DBClusterId = &v
-	return s
 }
 
 func (s *DeleteAIDBClusterCustomModelRequest) SetModelName(v string) *DeleteAIDBClusterCustomModelRequest {

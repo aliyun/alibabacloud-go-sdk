@@ -144,7 +144,7 @@ type CreateApplicationRequest struct {
 	//
 	// x86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The authentication provider.
+	// The authentication service provider.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type CreateApplicationRequest struct {
 	//
 	// xxx
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies if automatic creation is enabled and the instance will attach and associate with an EIP.
+	// Specifies whether automatic creation is enabled and the instance will attach and associate with an EIP.
 	AutoAllocatePublicEip *bool `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
-	// Specifies whether to automatically create a Polarlakebase cold storage instance. Valid values:
+	// Specifies whether to automatically create a Polarlakebase cold storage edition instance. Valid values:
 	//
-	// 	- false: Does not automatically create the instance. This is the default value.
+	// 	- false (default): Do not automatically create the instance.
 	//
-	// 	- true: Automatically creates the instance.
+	// 	- true: Automatically create the instance.
 	//
 	// example:
 	//
@@ -176,9 +176,9 @@ type CreateApplicationRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// - true: Uses coupons. This is the default value.
+	// 	- true (default): Use coupons.
 	//
-	// - false: Does not use coupons.
+	// 	- false: Do not use coupons.
 	//
 	// example:
 	//
@@ -198,15 +198,15 @@ type CreateApplicationRequest struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expected list of DNAT entries for NAT mapping. This parameter must be specified together with VpcNatGatewayId. It can be left empty, which indicates that no DNAT entries are created.
+	// The expected list of DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. Leave this parameter empty if you do not want to create DNAT entries.
 	DnatEntries []*CreateApplicationRequestDnatEntries `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty" type:"Repeated"`
-	// The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the NAT gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is associated with the vSwitch where the application resides.
+	// The dedicated NAT IP address allocated for DNAT mapping, which is separate from the SNAT IP address. The IP address must belong to the gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
 	//
 	// example:
 	//
 	// 10.64.0.10
 	DnatIpAddress *string `json:"DnatIpAddress,omitempty" xml:"DnatIpAddress,omitempty"`
-	// Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, the system only checks the parameters and resources without actually creating the resources.
+	// Specifies whether to perform a dry run. Default value: false. If you set this parameter to true, only parameter and resource validations are performed, and no resources are actually created.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type CreateApplicationRequest struct {
 	KnowledgeApplicationSpec *CreateApplicationRequestKnowledgeApplicationSpec `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty" type:"Struct"`
 	// Required for mem0 applications.
 	MemApplicationSpec *CreateApplicationRequestMemApplicationSpec `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
-	// The model API. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreateApplicationRequest struct {
 	//
 	// sk-xxxxxx
 	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
-	// The base URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The endpoint of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type CreateApplicationRequest struct {
 	//
 	// bailian
 	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
-	// The model name. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -268,7 +268,9 @@ type CreateApplicationRequest struct {
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the Polarlakebase cold storage or high-performance instance. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application. This parameter is supported only for the following applications:
+	// The instance ID of the Polarlakebase cold storage or high-performance edition. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
+	//
+	// Currently, only the following applications are supported:
 	//
 	// - supabase
 	//
@@ -302,13 +304,13 @@ type CreateApplicationRequest struct {
 	//
 	// sg-********************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the IP address whitelist group. Default value: `default`.
+	// The name of the IP address whitelist group. Default value: default.
 	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+	// The IP address whitelist. If you do not specify this parameter, the default value 127.0.0.1 is used.
 	//
 	// example:
 	//
@@ -320,13 +322,13 @@ type CreateApplicationRequest struct {
 	//
 	// ipv4
 	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
-	// The skill template ID.
+	// The ID of the skill template.
 	//
 	// example:
 	//
 	// xxx
 	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
-	// The list of storage resources for the application.
+	// The list of application storages.
 	//
 	// example:
 	//
@@ -358,7 +360,7 @@ type CreateApplicationRequest struct {
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// NAT mapping: the user-created VPC NAT gateway ID. If you specify this parameter, NAT mapping is enabled when the instance is created. The NAT gateway must reside in the same VPC as the application, be of the private network (intranet) type, and be in the active state.
+	// The NAT gateway ID of the self-managed VPC NAT gateway for NAT mapping. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must be in the same VPC as the application, use the private network (intranet) type, and be active.
 	//
 	// example:
 	//
@@ -984,13 +986,15 @@ type CreateApplicationRequestComponents struct {
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The type of the application subcomponent. Valid values for supabase:
+	// The type of the application subcomponent.
+	//
+	// For supabase, valid values:
 	//
 	// - gateway
 	//
 	// - backend
 	//
-	// Valid values for raycluster:
+	// For raycluster, valid values:
 	//
 	// - head
 	//
@@ -1143,7 +1147,7 @@ func (s *CreateApplicationRequestComponents) Validate() error {
 }
 
 type CreateApplicationRequestDnatEntries struct {
-	// The frontend port. This parameter is optional. By default, the control system automatically allocates a port, avoiding ports already occupied by the gateway. You can query the allocation result by calling the DescribeApplicationAttribute operation.
+	// The frontend port. This parameter is optional. By default, the system automatically assigns a port that is not occupied by the gateway. You can call the DescribeApplicationAttribute operation to query the assigned port.
 	//
 	// example:
 	//
@@ -1188,7 +1192,7 @@ func (s *CreateApplicationRequestDnatEntries) Validate() error {
 }
 
 type CreateApplicationRequestEndpoints struct {
-	// The description of the service endpoint.
+	// The remark of the service endpoint.
 	//
 	// example:
 	//
@@ -1327,7 +1331,13 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// qwen3-max
 	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
-	// The project name, which corresponds to the database schema that stores project data.
+	// The memory type, such as multimodal.
+	//
+	// example:
+	//
+	// MULTIMODAL_TEXT
+	MemoryType *string `json:"MemoryType,omitempty" xml:"MemoryType,omitempty"`
+	// The project name, which corresponds to the schema in the database where project data is stored.
 	//
 	// example:
 	//
@@ -1345,6 +1355,26 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// 1
 	Shard *int32 `json:"Shard,omitempty" xml:"Shard,omitempty"`
+	// The name of the visual embedder model.
+	//
+	// example:
+	//
+	// qwen3.7-text-embedding
+	VisualEmbedderModel *string `json:"VisualEmbedderModel,omitempty" xml:"VisualEmbedderModel,omitempty"`
+	// The vector dimensions of the visual embedder.
+	//
+	// example:
+	//
+	// 2560
+	VisualEmbedderModelDimension *int32 `json:"VisualEmbedderModelDimension,omitempty" xml:"VisualEmbedderModelDimension,omitempty"`
+	// The list of modalities for the visual LLM, such as image.
+	VisualLlmModalities []*string `json:"VisualLlmModalities,omitempty" xml:"VisualLlmModalities,omitempty" type:"Repeated"`
+	// The name of the visual LLM model.
+	//
+	// example:
+	//
+	// qwen3.6-flash
+	VisualLlmModel *string `json:"VisualLlmModel,omitempty" xml:"VisualLlmModel,omitempty"`
 }
 
 func (s CreateApplicationRequestMemApplicationSpec) String() string {
@@ -1383,6 +1413,10 @@ func (s *CreateApplicationRequestMemApplicationSpec) GetLlmModel() *string {
 	return s.LlmModel
 }
 
+func (s *CreateApplicationRequestMemApplicationSpec) GetMemoryType() *string {
+	return s.MemoryType
+}
+
 func (s *CreateApplicationRequestMemApplicationSpec) GetProjectName() *string {
 	return s.ProjectName
 }
@@ -1393,6 +1427,22 @@ func (s *CreateApplicationRequestMemApplicationSpec) GetRerankerModel() *string 
 
 func (s *CreateApplicationRequestMemApplicationSpec) GetShard() *int32 {
 	return s.Shard
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetVisualEmbedderModel() *string {
+	return s.VisualEmbedderModel
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetVisualEmbedderModelDimension() *int32 {
+	return s.VisualEmbedderModelDimension
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetVisualLlmModalities() []*string {
+	return s.VisualLlmModalities
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetVisualLlmModel() *string {
+	return s.VisualLlmModel
 }
 
 func (s *CreateApplicationRequestMemApplicationSpec) SetDbName(v string) *CreateApplicationRequestMemApplicationSpec {
@@ -1430,6 +1480,11 @@ func (s *CreateApplicationRequestMemApplicationSpec) SetLlmModel(v string) *Crea
 	return s
 }
 
+func (s *CreateApplicationRequestMemApplicationSpec) SetMemoryType(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.MemoryType = &v
+	return s
+}
+
 func (s *CreateApplicationRequestMemApplicationSpec) SetProjectName(v string) *CreateApplicationRequestMemApplicationSpec {
 	s.ProjectName = &v
 	return s
@@ -1442,6 +1497,26 @@ func (s *CreateApplicationRequestMemApplicationSpec) SetRerankerModel(v string) 
 
 func (s *CreateApplicationRequestMemApplicationSpec) SetShard(v int32) *CreateApplicationRequestMemApplicationSpec {
 	s.Shard = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetVisualEmbedderModel(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.VisualEmbedderModel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetVisualEmbedderModelDimension(v int32) *CreateApplicationRequestMemApplicationSpec {
+	s.VisualEmbedderModelDimension = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetVisualLlmModalities(v []*string) *CreateApplicationRequestMemApplicationSpec {
+	s.VisualLlmModalities = v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetVisualLlmModel(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.VisualLlmModel = &v
 	return s
 }
 

@@ -40,13 +40,13 @@ type DescribeKnowledgeBaseAnswerResponseBody struct {
 	//
 	// ******
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The answer content.
+	// The content of the answer.
 	//
 	// example:
 	//
-	// The financial report summary is as follows: ******
+	// The content of the financial report is summarized as follows: ******
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The cumulative number of tokens generated for completion.
+	// The cumulative number of completion tokens generated.
 	//
 	// example:
 	//
@@ -64,19 +64,19 @@ type DescribeKnowledgeBaseAnswerResponseBody struct {
 	//
 	// not_found
 	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
-	// The large language model ID.
+	// The ID of the large language model.
 	//
 	// example:
 	//
 	// OO1A6p8B******_xPUC
 	LLMModelId *string `json:"LLMModelId,omitempty" xml:"LLMModelId,omitempty"`
-	// The cumulative number of tokens consumed by the prompt.
+	// The cumulative number of prompt tokens consumed.
 	//
 	// example:
 	//
 	// 2459
 	PromptTokens *int32 `json:"PromptTokens,omitempty" xml:"PromptTokens,omitempty"`
-	// The unique ID of the Q&A task.
+	// The unique identifier of the Q&A task.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type DescribeKnowledgeBaseAnswerResponseBody struct {
 	Sources []*DescribeKnowledgeBaseAnswerResponseBodySources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The status of the Q&A task. Valid values:
 	//
-	// - RUNNING: In progress.
+	// - RUNNING: The task is in progress.
 	//
-	// - COMPLETED: Completed.
+	// - COMPLETED: The task is completed.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ func (s *DescribeKnowledgeBaseAnswerResponseBody) Validate() error {
 }
 
 type DescribeKnowledgeBaseAnswerResponseBodySources struct {
-	// The chunk metadata.
+	// The shard metadata.
 	//
 	// example:
 	//
@@ -239,11 +239,11 @@ type DescribeKnowledgeBaseAnswerResponseBodySources struct {
 	//
 	// example:
 	//
-	// FinancialReport.pdf
+	// Financial_Report.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The list of image resources associated with the referenced chunk in the Q&A.
+	// The list of image resources associated with the shard referenced in the Q&A.
 	ImageResources []*DescribeKnowledgeBaseAnswerResponseBodySourcesImageResources `json:"ImageResources,omitempty" xml:"ImageResources,omitempty" type:"Repeated"`
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base.
 	//
 	// example:
 	//
@@ -255,15 +255,15 @@ type DescribeKnowledgeBaseAnswerResponseBodySources struct {
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The list of page numbers to which the chunk belongs.
+	// The list of page numbers to which the shard belongs.
 	PageNumbers []*int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty" type:"Repeated"`
-	// The chunk content.
+	// The shard content.
 	//
 	// example:
 	//
-	// FinancialReport
+	// Financial report
 	ShardContent *string `json:"ShardContent,omitempty" xml:"ShardContent,omitempty"`
-	// The chunk ID.
+	// The shard ID.
 	//
 	// example:
 	//
@@ -410,7 +410,7 @@ type DescribeKnowledgeBaseAnswerResponseBodySourcesImageResources struct {
 	//
 	// 0
 	DocumentIndex *int32 `json:"DocumentIndex,omitempty" xml:"DocumentIndex,omitempty"`
-	// The unique ID of the image resource.
+	// The unique identifier of the image resource.
 	//
 	// example:
 	//
@@ -422,7 +422,7 @@ type DescribeKnowledgeBaseAnswerResponseBodySourcesImageResources struct {
 	//
 	// #/pictures/1
 	ItemRef *string `json:"ItemRef,omitempty" xml:"ItemRef,omitempty"`
-	// The media type of the image resource.
+	// The MIME type of the image resource.
 	//
 	// example:
 	//

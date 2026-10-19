@@ -18,7 +18,7 @@ type iDescribeKnowledgeBaseAnswerRequest interface {
 }
 
 type DescribeKnowledgeBaseAnswerRequest struct {
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeKnowledgeBaseAnswerRequest struct {
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The unique ID of the Q&A task.
+	// The unique identifier of the Q&A task.
 	//
 	// This parameter is required.
 	//

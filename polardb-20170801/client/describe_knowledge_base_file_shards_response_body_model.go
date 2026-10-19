@@ -30,13 +30,13 @@ type DescribeKnowledgeBaseFileShardsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 10
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries per page in a paged query.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeKnowledgeBaseFileShardsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The shard information.
 	Shards []*DescribeKnowledgeBaseFileShardsResponseBodyShards `json:"Shards,omitempty" xml:"Shards,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBody) Validate() error {
 type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
 	// The list of figure or table captions associated with the shard.
 	Captions []*string `json:"Captions,omitempty" xml:"Captions,omitempty" type:"Repeated"`
-	// The list of Docling source document structured element references associated with the shard. You can use these references to precisely locate original document elements.
+	// The list of structured element references in the Docling source document associated with the shard, which can be used to precisely locate the original elements.
 	DocItems []*string `json:"DocItems,omitempty" xml:"DocItems,omitempty" type:"Repeated"`
-	// The chain of section headings to which the shard belongs.
+	// The section heading chain to which the shard belongs.
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
 	// The list of image resources referenced by the shard.
 	ImageResources []*DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources `json:"ImageResources,omitempty" xml:"ImageResources,omitempty" type:"Repeated"`
@@ -249,7 +249,7 @@ type DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources struct {
 	//
 	// 0
 	DocumentIndex *int32 `json:"DocumentIndex,omitempty" xml:"DocumentIndex,omitempty"`
-	// The unique ID of the image resource.
+	// The unique identifier of the image resource.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ type DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources struct {
 	//
 	// #/pictures/1
 	ItemRef *string `json:"ItemRef,omitempty" xml:"ItemRef,omitempty"`
-	// The media type of the image resource.
+	// The MIME type of the image resource.
 	//
 	// example:
 	//
