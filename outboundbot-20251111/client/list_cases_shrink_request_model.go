@@ -96,7 +96,7 @@ type ListCasesShrinkRequest struct {
 	DispositionCodesShrink *string `json:"DispositionCodes,omitempty" xml:"DispositionCodes,omitempty"`
 	// The list of disposition reasons.
 	DispositionReasonsShrink *string `json:"DispositionReasons,omitempty" xml:"DispositionReasons,omitempty"`
-	// Specifies whether the version is a draft version.
+	// Specifies whether it is a draft version.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ListCasesShrinkRequest struct {
 	//
 	// a5fc6490-ef1e-4666-870a-07a4e586c414
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The label search condition.
+	// The label search criteria.
 	LabelSearchShrink *string `json:"LabelSearch,omitempty" xml:"LabelSearch,omitempty"`
 	// The maximum ringing duration.
 	//
@@ -188,7 +188,7 @@ type ListCasesShrinkRequest struct {
 	//
 	// 1578965079000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The list of case states.
+	// The list of case statuses.
 	StatesShrink *string `json:"States,omitempty" xml:"States,omitempty"`
 }
 

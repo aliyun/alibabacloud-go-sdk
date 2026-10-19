@@ -32,7 +32,7 @@ type ListCasesResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The paged data.
+	// The paginated data.
 	Data *ListCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -46,7 +46,7 @@ type ListCasesResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pass-through parameters.
+	// The pass-through parameter.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -54,7 +54,7 @@ type ListCasesResponseBody struct {
 	//
 	// C377C5FF-4F94-1B23-89D0-50C560623EE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ func (s *ListCasesResponseBody) Validate() error {
 }
 
 type ListCasesResponseBodyData struct {
-	// The list of cases.
+	// The case list.
 	List []*ListCasesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -223,7 +223,7 @@ func (s *ListCasesResponseBodyData) Validate() error {
 }
 
 type ListCasesResponseBodyDataList struct {
-	// The number of dial attempts.
+	// The number of call attempts.
 	//
 	// example:
 	//
@@ -253,7 +253,7 @@ type ListCasesResponseBodyDataList struct {
 	//
 	// 00ed0dd9-c5a4-40e4-a8cd-822f0af859b9
 	CaseId *string `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
-	// The time when the case was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ type ListCasesResponseBodyDataList struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The list of labels.
 	Labels []*ListCasesResponseBodyDataListLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The time of the last dial attempt.
+	// The time of the last call attempt.
 	//
 	// example:
 	//
@@ -303,7 +303,7 @@ type ListCasesResponseBodyDataList struct {
 	//
 	// 18512345678
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The priority of the case.
+	// The priority.
 	//
 	// example:
 	//
@@ -337,7 +337,7 @@ type ListCasesResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Scenario Name
+	// Sample scenario name
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	// The session ID of the last call.
 	//
@@ -345,18 +345,24 @@ type ListCasesResponseBodyDataList struct {
 	//
 	// SESSION_ID_312986372_7295954260941888
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The case state.
+	// The case status.
 	//
 	// example:
 	//
 	// Executing
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The talk time.
+	// The call duration.
 	//
 	// example:
 	//
 	// 10
 	TalkTime *int64 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
+	// The number of dialogue turns.
+	//
+	// example:
+	//
+	// 1
+	TalkTurns *int32 `json:"TalkTurns,omitempty" xml:"TalkTurns,omitempty"`
 }
 
 func (s ListCasesResponseBodyDataList) String() string {
@@ -457,6 +463,10 @@ func (s *ListCasesResponseBodyDataList) GetState() *string {
 
 func (s *ListCasesResponseBodyDataList) GetTalkTime() *int64 {
 	return s.TalkTime
+}
+
+func (s *ListCasesResponseBodyDataList) GetTalkTurns() *int32 {
+	return s.TalkTurns
 }
 
 func (s *ListCasesResponseBodyDataList) SetAttemptedCount(v int32) *ListCasesResponseBodyDataList {
@@ -574,6 +584,11 @@ func (s *ListCasesResponseBodyDataList) SetTalkTime(v int64) *ListCasesResponseB
 	return s
 }
 
+func (s *ListCasesResponseBodyDataList) SetTalkTurns(v int32) *ListCasesResponseBodyDataList {
+	s.TalkTurns = &v
+	return s
+}
+
 func (s *ListCasesResponseBodyDataList) Validate() error {
 	if s.Labels != nil {
 		for _, item := range s.Labels {
@@ -590,7 +605,7 @@ func (s *ListCasesResponseBodyDataList) Validate() error {
 type ListCasesResponseBodyDataListLabels struct {
 	// The candidate values of the label.
 	CandidateValues []*string `json:"CandidateValues,omitempty" xml:"CandidateValues,omitempty" type:"Repeated"`
-	// Indicates whether the item is collected.
+	// Indicates whether the label is collected.
 	//
 	// example:
 	//
@@ -600,7 +615,7 @@ type ListCasesResponseBodyDataListLabels struct {
 	//
 	// example:
 	//
-	// Description content
+	// Sample description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The matched value of the label.
 	//
@@ -612,9 +627,9 @@ type ListCasesResponseBodyDataListLabels struct {
 	//
 	// example:
 	//
-	// 软包装企业打电话_20251022_165548
+	// Flexible packaging enterprise call_20251022_165548
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The system label.
+	// Indicates whether the label is a system label.
 	//
 	// example:
 	//

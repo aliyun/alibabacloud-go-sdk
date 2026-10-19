@@ -96,7 +96,7 @@ type ListCasesRequest struct {
 	DispositionCodes []*string `json:"DispositionCodes,omitempty" xml:"DispositionCodes,omitempty" type:"Repeated"`
 	// The list of disposition reasons.
 	DispositionReasons []*string `json:"DispositionReasons,omitempty" xml:"DispositionReasons,omitempty" type:"Repeated"`
-	// Specifies whether the version is a draft version.
+	// Specifies whether it is a draft version.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ListCasesRequest struct {
 	//
 	// a5fc6490-ef1e-4666-870a-07a4e586c414
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The label search condition.
+	// The label search criteria.
 	LabelSearch map[string]*string `json:"LabelSearch,omitempty" xml:"LabelSearch,omitempty"`
 	// The maximum ringing duration.
 	//
@@ -188,7 +188,7 @@ type ListCasesRequest struct {
 	//
 	// 1578965079000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The list of case states.
+	// The list of case statuses.
 	States []*string `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
 }
 
