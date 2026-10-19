@@ -2075,11 +2075,11 @@ func (client *Client) GetCertificateDetailWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Queries the number of CA certificates (including root CA certificates and subordinate CA certificates) that you have created.
+// This operation queries the number of CA certificates that you have created, including root CA certificates and subordinate CA certificates.
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - GetCertificatePackageCountRequest
 //
@@ -3088,7 +3088,11 @@ func (client *Client) ListCsrWithContext(ctx context.Context, request *ListCsrRe
 
 // Summary:
 //
-// Retrieves a list of deployment tasks after you create a deployment task.
+// Queries the list of deployment tasks.
+//
+// Description:
+//
+// After a task is created, it is in the editing state. You must call the UpdateDeploymentJobStatus operation to change the state to pending. Otherwise, the task will not be executed.
 //
 // @param request - ListDeploymentJobRequest
 //
@@ -3103,8 +3107,16 @@ func (client *Client) ListDeploymentJobWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertId) {
+		query["CertId"] = request.CertId
+	}
+
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !dara.IsNil(request.JobType) {

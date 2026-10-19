@@ -30,7 +30,7 @@ type GetCertificatePackageCountResponseBody struct {
 	//
 	// {TotalCount=189, RemainCount=94, UsedCount=95}
 	NoticeCountDetail *string `json:"NoticeCountDetail,omitempty" xml:"NoticeCountDetail,omitempty"`
-	// The details of certificate brand products.
+	// The product details of certificate brands.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type GetCertificatePackageCountResponseBody struct {
 	//
 	// ]
 	ProductCountList *string `json:"ProductCountList,omitempty" xml:"ProductCountList,omitempty"`
-	// The acceleration gateway forwarding quota.
+	// The forwarding quota of the acceleration gateway.
 	//
 	// example:
 	//
 	// {TotalCount=116900, RemainCount=90448, AutoPay=0, AutoPayCount=5000, UsedCount=26452}
 	ProxyCountDetail *string `json:"ProxyCountDetail,omitempty" xml:"ProxyCountDetail,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 08F45EA0-66A7-4504-9B31-3589F5CE308D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of domain names bound to certificates.
+	// The total number of domain names bound to the certificates.
 	//
 	// example:
 	//
