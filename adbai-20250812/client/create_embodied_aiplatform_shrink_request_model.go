@@ -34,7 +34,7 @@ type CreateEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ontology count.
+	// The device count.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The webserver specification of the platform.
+	// The Webserver specification of the platform.
 	//
 	// example:
 	//

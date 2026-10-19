@@ -26,7 +26,7 @@ type iModifyEmbodiedAIPlatformShrinkRequest interface {
 }
 
 type ModifyEmbodiedAIPlatformShrinkRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -34,10 +34,15 @@ type ModifyEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
-	// The name of the embodied intelligence multimodal data platform.
+	// The total number of devices.
 	//
-	// > The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+	// example:
+	//
+	// 3
+	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// The name of the embodied AI multimodal data platform.
+	//
+	// > The name must be 1 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit.
 	//
 	// This parameter is required.
 	//
@@ -45,8 +50,9 @@ type ModifyEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// eap_platform
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	// The Ray specification information of the platform.
-	RayConfigShrink      *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	// The Ray specifications of the platform.
+	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	// The configuration of development and training resources.
 	RayTrainConfigShrink *string `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty"`
 	// The region ID.
 	//

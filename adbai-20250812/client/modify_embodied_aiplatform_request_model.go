@@ -26,7 +26,7 @@ type iModifyEmbodiedAIPlatformRequest interface {
 }
 
 type ModifyEmbodiedAIPlatformRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -34,10 +34,15 @@ type ModifyEmbodiedAIPlatformRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
-	// The name of the embodied intelligence multimodal data platform.
+	// The total number of devices.
 	//
-	// > The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+	// example:
+	//
+	// 3
+	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// The name of the embodied AI multimodal data platform.
+	//
+	// > The name must be 1 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit.
 	//
 	// This parameter is required.
 	//
@@ -45,8 +50,9 @@ type ModifyEmbodiedAIPlatformRequest struct {
 	//
 	// eap_platform
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	// The Ray specification information of the platform.
-	RayConfig      *ModifyEmbodiedAIPlatformRequestRayConfig      `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
+	// The Ray specifications of the platform.
+	RayConfig *ModifyEmbodiedAIPlatformRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
+	// The configuration of development and training resources.
 	RayTrainConfig *ModifyEmbodiedAIPlatformRequestRayTrainConfig `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -154,7 +160,7 @@ func (s *ModifyEmbodiedAIPlatformRequest) Validate() error {
 type ModifyEmbodiedAIPlatformRequestRayConfig struct {
 	// The type of the Ray cluster. Valid values:
 	//
-	// - BASIC: basic type, which does not support high availability.
+	// - BASIC: basic type, non-high-availability.
 	//
 	// - HIGH_AVAILABILITY: high-availability type.
 	//
@@ -168,7 +174,7 @@ type ModifyEmbodiedAIPlatformRequestRayConfig struct {
 	//
 	// xlarge
 	HeadSpec *string `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
-	// The configuration information of Ray worker groups.
+	// The configuration of the Ray worker groups.
 	WorkerGroups []*ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
 
@@ -245,7 +251,7 @@ type ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups struct {
 	//
 	// 1
 	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
-	// The disk size of the worker node.
+	// The disk capacity of the worker node.
 	//
 	// example:
 	//
@@ -341,11 +347,15 @@ func (s *ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups) Validate() error 
 }
 
 type ModifyEmbodiedAIPlatformRequestRayTrainConfig struct {
+	// The number of CPU ACUs.
+	//
 	// example:
 	//
 	// 10
-	CpuAcu         *int64                                                       `json:"CpuAcu,omitempty" xml:"CpuAcu,omitempty"`
-	GpuSpecs       []*ModifyEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs     `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
+	CpuAcu *int64 `json:"CpuAcu,omitempty" xml:"CpuAcu,omitempty"`
+	// The list of GPU types to purchase.
+	GpuSpecs []*ModifyEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
+	// The configuration of the development machine.
 	TerminalConfig *ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig `json:"TerminalConfig,omitempty" xml:"TerminalConfig,omitempty" type:"Struct"`
 }
 
@@ -403,14 +413,20 @@ func (s *ModifyEmbodiedAIPlatformRequestRayTrainConfig) Validate() error {
 }
 
 type ModifyEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs struct {
+	// The allocation unit.
+	//
 	// example:
 	//
 	// "1"
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The GPU model.
+	//
 	// example:
 	//
 	// ADB.MLTensor.2
@@ -457,6 +473,7 @@ func (s *ModifyEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) Validate() error
 }
 
 type ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig struct {
+	// The configuration of the image repository.
 	AcrConfig *ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig `json:"AcrConfig,omitempty" xml:"AcrConfig,omitempty" type:"Struct"`
 }
 
@@ -487,11 +504,16 @@ func (s *ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) Validate()
 }
 
 type ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig struct {
+	// The instance ID of the image repository.
+	//
 	// example:
 	//
 	// i-8vb32jdd306b50rodza7
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// The address of the image repository instance.
+	//
 	// example:
 	//
 	// example-vpc.example-region.cr.aliyuncs.com

@@ -242,11 +242,11 @@ func (client *Client) CreateEmbodiedAIPlatform(request *CreateEmbodiedAIPlatform
 
 // Summary:
 //
-// Creates an AnalyticDB multimodal knowledge base.
+// Creates an AnalyticDB for MySQL multimodal knowledge base.
 //
 // Description:
 //
-// Creates an AnalyticDB multimodal knowledge base.
+// Creates an AnalyticDB for MySQL multimodal knowledge base.
 //
 // @param request - CreateMultiModelKnowledgeBaseRequest
 //
@@ -271,6 +271,10 @@ func (client *Client) CreateMultiModelKnowledgeBaseWithOptions(request *CreateMu
 
 	if !dara.IsNil(request.DbClusterAcu) {
 		query["DbClusterAcu"] = request.DbClusterAcu
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.LakeStorageBucketName) {
@@ -326,11 +330,11 @@ func (client *Client) CreateMultiModelKnowledgeBaseWithOptions(request *CreateMu
 
 // Summary:
 //
-// Creates an AnalyticDB multimodal knowledge base.
+// Creates an AnalyticDB for MySQL multimodal knowledge base.
 //
 // Description:
 //
-// Creates an AnalyticDB multimodal knowledge base.
+// Creates an AnalyticDB for MySQL multimodal knowledge base.
 //
 // @param request - CreateMultiModelKnowledgeBaseRequest
 //
@@ -566,11 +570,11 @@ func (client *Client) DeleteMultiModalKnowledgeBase(request *DeleteMultiModalKno
 
 // Summary:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // Description:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -585,11 +589,11 @@ func (client *Client) DescribeChatMessageWithSSE(request *DescribeChatMessageReq
 
 // Summary:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // Description:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -649,11 +653,11 @@ func (client *Client) DescribeChatMessageWithOptions(request *DescribeChatMessag
 
 // Summary:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // Description:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -847,7 +851,7 @@ func (client *Client) DescribeEmbodiedAIPlatforms(request *DescribeEmbodiedAIPla
 
 // Summary:
 //
-// Queries the resource usage information of an embodied intelligence platform.
+// Queries the resource usage information of the Embodied platform.
 //
 // @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
 //
@@ -907,7 +911,7 @@ func (client *Client) GetEmbodiedAIPlatformResourceUsageInfoWithOptions(request 
 
 // Summary:
 //
-// Queries the resource usage information of an embodied intelligence platform.
+// Queries the resource usage information of the Embodied platform.
 //
 // @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
 //
@@ -1075,7 +1079,7 @@ func (client *Client) ModifyAgentPlatform(request *ModifyAgentPlatformRequest) (
 
 // Summary:
 //
-// Modifies the specifications of an embodied intelligence platform.
+// Modifies the specifications of the embodied AI platform.
 //
 // @param tmpReq - ModifyEmbodiedAIPlatformRequest
 //
@@ -1153,7 +1157,7 @@ func (client *Client) ModifyEmbodiedAIPlatformWithOptions(tmpReq *ModifyEmbodied
 
 // Summary:
 //
-// Modifies the specifications of an embodied intelligence platform.
+// Modifies the specifications of the embodied AI platform.
 //
 // @param request - ModifyEmbodiedAIPlatformRequest
 //

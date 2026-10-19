@@ -26,16 +26,17 @@ type iGetEmbodiedAIPlatformResourceUsageInfoResponseBody interface {
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBody struct {
+	// The number of ACUs for each component of the Embodied platform.
 	AcuDetails *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails `json:"AcuDetails,omitempty" xml:"AcuDetails,omitempty" type:"Struct"`
-	// The GPU usage details.
+	// The GPU usage.
 	GpuDetails []*GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails `json:"GpuDetails,omitempty" xml:"GpuDetails,omitempty" type:"Repeated"`
-	// The maximum number of embodiments that can be registered.
+	// The maximum number of registered devices.
 	//
 	// example:
 	//
 	// 3
 	MaxRegisteredDevices *int64 `json:"MaxRegisteredDevices,omitempty" xml:"MaxRegisteredDevices,omitempty"`
-	// The number of registered embodiments.
+	// The number of registered devices.
 	//
 	// example:
 	//
@@ -153,10 +154,30 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) Validate() error {
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails struct {
+	// The number of ACUs for the EAP web server.
+	//
+	// example:
+	//
+	// 0
 	EapWebserverACUCount *float64 `json:"EapWebserverACUCount,omitempty" xml:"EapWebserverACUCount,omitempty"`
-	RayHeadACUCount      *float64 `json:"RayHeadACUCount,omitempty" xml:"RayHeadACUCount,omitempty"`
-	RayWorkerACUCount    *float64 `json:"RayWorkerACUCount,omitempty" xml:"RayWorkerACUCount,omitempty"`
-	TotalACUCount        *float64 `json:"TotalACUCount,omitempty" xml:"TotalACUCount,omitempty"`
+	// The number of ACUs for the Ray head node.
+	//
+	// example:
+	//
+	// 0
+	RayHeadACUCount *float64 `json:"RayHeadACUCount,omitempty" xml:"RayHeadACUCount,omitempty"`
+	// The number of ACUs for the Ray worker node.
+	//
+	// example:
+	//
+	// 0
+	RayWorkerACUCount *float64 `json:"RayWorkerACUCount,omitempty" xml:"RayWorkerACUCount,omitempty"`
+	// The total number of ACUs.
+	//
+	// example:
+	//
+	// 0
+	TotalACUCount *float64 `json:"TotalACUCount,omitempty" xml:"TotalACUCount,omitempty"`
 }
 
 func (s GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) String() string {
@@ -220,7 +241,7 @@ type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails struct {
 	//
 	// ADB.MLLarge.2
 	GpuModel *string `json:"GpuModel,omitempty" xml:"GpuModel,omitempty"`
-	// The number of GPUs of this model currently in use.
+	// The current number of GPUs in use for this model.
 	//
 	// example:
 	//
@@ -268,13 +289,13 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) Validate(
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic struct {
-	// The upstream bandwidth traffic over the public network. Unit: bytes.
+	// The inbound Internet traffic, in bytes.
 	//
 	// example:
 	//
 	// 0
 	TotalBytesIn *int64 `json:"TotalBytesIn,omitempty" xml:"TotalBytesIn,omitempty"`
-	// The downstream bandwidth traffic over the public network. Unit: bytes.
+	// The outbound Internet traffic, in bytes.
 	//
 	// example:
 	//
@@ -360,7 +381,7 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage) Validat
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas struct {
-	// The NAS standard storage usage. Unit: bytes.
+	// The NAS standard storage usage, in bytes.
 	//
 	// example:
 	//
@@ -390,7 +411,7 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas) Vali
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageOss struct {
-	// The OSS standard storage usage. Unit: bytes.
+	// The OSS standard storage usage, in bytes.
 	//
 	// example:
 	//

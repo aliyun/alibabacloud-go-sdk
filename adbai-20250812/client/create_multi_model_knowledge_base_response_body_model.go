@@ -18,8 +18,18 @@ type iCreateMultiModelKnowledgeBaseResponseBody interface {
 }
 
 type CreateMultiModelKnowledgeBaseResponseBody struct {
+	// The ID of the created AnalyticDB for MySQL cluster.
+	//
+	// example:
+	//
+	// amv-***
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	MmkbName    *string `json:"MmkbName,omitempty" xml:"MmkbName,omitempty"`
+	// The name of the created multimodal knowledge engine service.
+	//
+	// example:
+	//
+	// mmkb-***
+	MmkbName *string `json:"MmkbName,omitempty" xml:"MmkbName,omitempty"`
 	// Id of the request
 	//
 	// example:

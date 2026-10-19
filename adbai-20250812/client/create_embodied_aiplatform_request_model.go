@@ -34,7 +34,7 @@ type CreateEmbodiedAIPlatformRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ontology count.
+	// The device count.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateEmbodiedAIPlatformRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The webserver specification of the platform.
+	// The Webserver specification of the platform.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type CreateEmbodiedAIPlatformRequestRayConfig struct {
 	//
 	// BASIC
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The node specifications of the head node.
+	// The head node specifications.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups struct {
 	//
 	// 1
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
-	// The name of the worker group.
+	// The worker group name.
 	//
 	// example:
 	//
@@ -257,13 +257,13 @@ type CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups struct {
 	//
 	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
-	// The node specifications of the worker node.
+	// The worker node specifications.
 	//
 	// example:
 	//
 	// xlarge
 	WorkerSpecName *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
-	// The resource type of the worker node.
+	// The worker node resource type.
 	//
 	// example:
 	//
@@ -349,7 +349,7 @@ func (s *CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups) Validate() error 
 type CreateEmbodiedAIPlatformRequestRayTrainConfig struct {
 	// The number of CPU ACUs to purchase.
 	CpuAcu *int64 `json:"CpuAcu,omitempty" xml:"CpuAcu,omitempty"`
-	// The list of GPU model specifications to purchase.
+	// The list of GPU model types to purchase.
 	GpuSpecs []*CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
 	// The development machine configuration.
 	TerminalConfig *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig `json:"TerminalConfig,omitempty" xml:"TerminalConfig,omitempty" type:"Struct"`
@@ -500,15 +500,15 @@ func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) Validate()
 }
 
 type CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig struct {
-	// The instance ID of the image repository.
+	// The image repository instance ID.
 	//
 	// example:
 	//
 	// cri-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of namespaces.
+	// The namespace list.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// The address of the image repository instance.
+	// The image repository instance address.
 	//
 	// example:
 	//

@@ -154,11 +154,11 @@ func (client *Client) CreateEmbodiedAIPlatformWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Creates an AnalyticDB multimodal knowledge base.
+// Creates an AnalyticDB for MySQL multimodal knowledge base.
 //
 // Description:
 //
-// Creates an AnalyticDB multimodal knowledge base.
+// Creates an AnalyticDB for MySQL multimodal knowledge base.
 //
 // @param request - CreateMultiModelKnowledgeBaseRequest
 //
@@ -183,6 +183,10 @@ func (client *Client) CreateMultiModelKnowledgeBaseWithContext(ctx context.Conte
 
 	if !dara.IsNil(request.DbClusterAcu) {
 		query["DbClusterAcu"] = request.DbClusterAcu
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.LakeStorageBucketName) {
@@ -398,11 +402,11 @@ func (client *Client) DeleteMultiModalKnowledgeBaseWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // Description:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -417,11 +421,11 @@ func (client *Client) DescribeChatMessageWithSSECtx(ctx context.Context, request
 
 // Summary:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // Description:
 //
-// Queries multi-turn conversations for instance kernel diagnostics.
+// Retrieves multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -617,7 +621,7 @@ func (client *Client) DescribeEmbodiedAIPlatformsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the resource usage information of an embodied intelligence platform.
+// Queries the resource usage information of the Embodied platform.
 //
 // @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
 //
@@ -791,7 +795,7 @@ func (client *Client) ModifyAgentPlatformWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Modifies the specifications of an embodied intelligence platform.
+// Modifies the specifications of the embodied AI platform.
 //
 // @param tmpReq - ModifyEmbodiedAIPlatformRequest
 //

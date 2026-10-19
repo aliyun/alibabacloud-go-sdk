@@ -22,13 +22,13 @@ type iDescribeChatMessageRequest interface {
 }
 
 type DescribeChatMessageRequest struct {
-	// The question statement submitted by the user.
+	// The question asked by the user.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// How to set reasonable annual plan goals?
+	// How to set reasonable annual planning goals?
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The Alibaba Cloud region ID.
 	//

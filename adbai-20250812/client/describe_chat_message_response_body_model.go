@@ -66,7 +66,7 @@ type DescribeChatMessageResponseBody struct {
 	CompletedAt *string `json:"CompletedAt,omitempty" xml:"CompletedAt,omitempty"`
 	// The task content.
 	Content []*DescribeChatMessageResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// The creation time.
+	// The creation time, in ISO 8601 format and UTC.
 	//
 	// example:
 	//
@@ -539,19 +539,19 @@ func (s *DescribeChatMessageResponseBodyContent) Validate() error {
 }
 
 type DescribeChatMessageResponseBodyContentData struct {
-	// The ID of the data API operation that is called.
+	// The ID of the invoked data API.
 	//
 	// example:
 	//
 	// call_e0e9ee423c7e4ba88d058fd6
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// The name of the data API operation that is called.
+	// The name of the invoked data API.
 	//
 	// example:
 	//
 	// describeScalingRecommendation
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output of the data API operation that is called.
+	// The output of the invoked data API.
 	//
 	// example:
 	//
@@ -599,25 +599,25 @@ func (s *DescribeChatMessageResponseBodyContentData) Validate() error {
 }
 
 type DescribeChatMessageResponseBodyData struct {
-	// The parameters of the data API operation that is called.
+	// The parameters of the invoked data API.
 	//
 	// example:
 	//
 	// {"instanceName": "amv-bp1b9y9xhvpzm9p0", "pageNumber": 1, "pageSize": 10}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	// The ID of the data API operation that is called.
+	// The ID of the invoked data API.
 	//
 	// example:
 	//
 	// call_1891f1689bc44ab292aadff3
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// The name of the data API operation that is called.
+	// The name of the invoked data API.
 	//
 	// example:
 	//
 	// describeScalingRecommendation
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output of the data API operation that is called.
+	// The output of the invoked data API.
 	//
 	// example:
 	//

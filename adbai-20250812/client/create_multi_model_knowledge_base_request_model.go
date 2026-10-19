@@ -15,6 +15,8 @@ type iCreateMultiModelKnowledgeBaseRequest interface {
 	GetDBClusterId() *string
 	SetDbClusterAcu(v int32) *CreateMultiModelKnowledgeBaseRequest
 	GetDbClusterAcu() *int32
+	SetDescription(v string) *CreateMultiModelKnowledgeBaseRequest
+	GetDescription() *string
 	SetLakeStorageBucketName(v string) *CreateMultiModelKnowledgeBaseRequest
 	GetLakeStorageBucketName() *string
 	SetRegionId(v string) *CreateMultiModelKnowledgeBaseRequest
@@ -32,14 +34,35 @@ type iCreateMultiModelKnowledgeBaseRequest interface {
 }
 
 type CreateMultiModelKnowledgeBaseRequest struct {
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// None
 	AdbInstanceName *string `json:"AdbInstanceName,omitempty" xml:"AdbInstanceName,omitempty"`
-	// The instance cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
-	DBClusterId           *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DbClusterAcu          *int32  `json:"DbClusterAcu,omitempty" xml:"DbClusterAcu,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The number of ACUs for the AnalyticDB for MySQL instance resources.
+	//
+	// example:
+	//
+	// 24
+	DbClusterAcu *int32 `json:"DbClusterAcu,omitempty" xml:"DbClusterAcu,omitempty"`
+	// The description of the multimodal knowledge base instance.
+	//
+	// example:
+	//
+	// None
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// None
 	LakeStorageBucketName *string `json:"LakeStorageBucketName,omitempty" xml:"LakeStorageBucketName,omitempty"`
 	// The region ID.
 	//
@@ -48,12 +71,37 @@ type CreateMultiModelKnowledgeBaseRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceAcuMax *int32  `json:"ResourceAcuMax,omitempty" xml:"ResourceAcuMax,omitempty"`
-	ResourceAcuMin *int32  `json:"ResourceAcuMin,omitempty" xml:"ResourceAcuMin,omitempty"`
-	VSwitchId      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The maximum number of ACUs for the multimodal knowledge base resources.
+	//
+	// example:
+	//
+	// 128
+	ResourceAcuMax *int32 `json:"ResourceAcuMax,omitempty" xml:"ResourceAcuMax,omitempty"`
+	// The minimum number of ACUs for the multimodal knowledge base resources.
+	//
+	// example:
+	//
+	// 32
+	ResourceAcuMin *int32 `json:"ResourceAcuMin,omitempty" xml:"ResourceAcuMin,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bp1ak7shaq72ywiah****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC.
+	//
+	// example:
+	//
+	// vpc-uf66oesmrqge1t2gs****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone to which the instance belongs.
+	//
+	// example:
+	//
+	// cn-shanghai-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateMultiModelKnowledgeBaseRequest) String() string {
@@ -74,6 +122,10 @@ func (s *CreateMultiModelKnowledgeBaseRequest) GetDBClusterId() *string {
 
 func (s *CreateMultiModelKnowledgeBaseRequest) GetDbClusterAcu() *int32 {
 	return s.DbClusterAcu
+}
+
+func (s *CreateMultiModelKnowledgeBaseRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *CreateMultiModelKnowledgeBaseRequest) GetLakeStorageBucketName() *string {
@@ -116,6 +168,11 @@ func (s *CreateMultiModelKnowledgeBaseRequest) SetDBClusterId(v string) *CreateM
 
 func (s *CreateMultiModelKnowledgeBaseRequest) SetDbClusterAcu(v int32) *CreateMultiModelKnowledgeBaseRequest {
 	s.DbClusterAcu = &v
+	return s
+}
+
+func (s *CreateMultiModelKnowledgeBaseRequest) SetDescription(v string) *CreateMultiModelKnowledgeBaseRequest {
+	s.Description = &v
 	return s
 }
 
