@@ -18,19 +18,19 @@ type iFindBestMatchSecurityStrategyRequest interface {
 }
 
 type FindBestMatchSecurityStrategyRequest struct {
-	// Control module, used to match the security policy type.
+	// The control module used to match the security policy type.
 	//
 	// example:
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
-	// Control sub-module, used to match the security policy type.
+	// The control submodule used to match the security policy type.
 	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	// **Workspace ID**, used to precisely match workspace-level policies.
+	// The **workspace ID*	- used for exact match of the workspace-level policy.
 	//
 	// example:
 	//

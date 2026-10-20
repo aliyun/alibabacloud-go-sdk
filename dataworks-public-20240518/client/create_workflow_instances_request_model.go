@@ -38,7 +38,7 @@ type iCreateWorkflowInstancesRequest interface {
 }
 
 type CreateWorkflowInstancesRequest struct {
-	// Specifies whether to run the instance immediately after it is created. Default value: true.
+	// Specifies whether to run the workflow instance immediately after it is created. Default value: true.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type CreateWorkflowInstancesRequest struct {
 	DefaultRunProperties *CreateWorkflowInstancesRequestDefaultRunProperties `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty" type:"Struct"`
 	// The project environment. Valid values:
 	//
-	// - Prod: production.
+	// - Prod: production
 	//
-	// - Dev: development.
+	// - Dev: development
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The tag creation policy.
+	// The tag creation policy. Valid values:
 	//
-	// - Append: Append mode. Inherits existing tags from the manual business process and appends new tags.
+	// - Append: Append mode. Inherits existing tags from the manual workflow and appends new tags.
 	//
-	// - Overwrite: Overwrite mode. Does not inherit existing tags from the manual business process and directly creates tags.
+	// - Overwrite: Overwrite mode. Does not inherit existing tags from the manual workflow and directly creates tags.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type CreateWorkflowInstancesRequest struct {
 	TagCreationPolicy *string `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
 	// The list of task tags.
 	Tags []*CreateWorkflowInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The task parameters. You can use this parameter to set parameters for specific tasks. The value is in JSON format. The key is the task ID. For the format of the value, refer to the task script parameters (Task.Script.Parameter in the response of the GetTask operation).
+	// The node parameters, which are used to set parameters for specific nodes. The value is in JSON format. The key is the node ID, and the value format refers to the node script parameters (Task.Script.Parameter in the response of the GetTask operation).
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type CreateWorkflowInstancesRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// - SupplementData: data backfill. The methods for specifying RootTaskIds and IncludeTaskIds vary based on the data backfill pattern. For more information, see the parameter description of DefaultRunProperties.Mode.
+	// - SupplementData: data backfill. The methods for specifying RootTaskIds and IncludeTaskIds vary based on the data backfill mode. For more information, see the parameter description of DefaultRunProperties.Mode.
 	//
-	// - ManualWorkflow: manual workflow. You must set WorkflowId to the ID of the manual workflow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manual workflow is used.
+	// - ManualWorkflow: manually triggered workflow. You must set WorkflowId to the ID of the manually triggered workflow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
 	//
-	// - Manual: manual task. You only need to specify RootTaskIds, which is the list of manual tasks to be run.
+	// - Manual: manually triggered node. You only need to specify RootTaskIds, which is the list of manually triggered nodes to be run.
 	//
-	// - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test tasks to be run.
+	// - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test nodes to be run.
 	//
-	// - TriggerWorkflow: trigger-based workflow. You must set WorkflowId to the ID of the trigger-based workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
+	// - TriggerWorkflow: event-triggered workflow. You must set WorkflowId to the ID of the event-triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// SupplementData
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the task belongs. The WorkflowId of a periodic task is always 1.
+	// The ID of the workflow to which the node belongs. The WorkflowId of a periodic node is always 1.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// 1
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or a trigger-based workflow, the format is key=value, and the priority is lower than that of task parameters. For a manual workflow, the format is JSON, and the priority is higher than that of task parameters.
+	// The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is key=value, and the priority is lower than that of node parameters. For a manually triggered workflow, the format is JSON, and the priority is higher than that of node parameters.
 	//
 	// example:
 	//
@@ -297,23 +297,25 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
 	// The analysis configurations. This parameter is required when Type is set to SupplementData.
 	Analysis *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	// The list of project IDs not to be run.
+	// The data source name mappings for data backfill runs. The key of the map is DataSource.Name in the node definition, and the value is DataSource.Name used during data backfill runs. This parameter takes effect only when Type is set to SupplementData. If this parameter is not configured, an empty map is passed, or the key is not matched, the node continues to use the original data source. Currently, only EMR Spark SQL, EMR Shell, and EMR Spark nodes are supported.
+	DataSourceNameMappings map[string]*string `json:"DataSourceNameMappings,omitempty" xml:"DataSourceNameMappings,omitempty"`
+	// The list of project IDs to exclude from the run.
 	ExcludeProjectIds []*int64 `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
-	// The list of task IDs not to be run.
+	// The list of node IDs to exclude from the run.
 	ExcludeTaskIds []*int64 `json:"ExcludeTaskIds,omitempty" xml:"ExcludeTaskIds,omitempty" type:"Repeated"`
-	// The list of project IDs to be run.
+	// The list of project IDs to include in the run.
 	IncludeProjectIds []*int64 `json:"IncludeProjectIds,omitempty" xml:"IncludeProjectIds,omitempty" type:"Repeated"`
-	// The list of task IDs to be run.
+	// The list of node IDs to include in the run.
 	IncludeTaskIds []*int64 `json:"IncludeTaskIds,omitempty" xml:"IncludeTaskIds,omitempty" type:"Repeated"`
 	// The data backfill mode. Default value: ManualSelection. This parameter is required when Type is set to SupplementData. Valid values:
 	//
-	// - General: general mode. You can specify only one ID in RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the tasks in RootTaskIds are included by default.
+	// - General: general mode. You can specify only one value for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the value of RootTaskIds is included by default.
 	//
-	// - ManualSelection: manual selection mode. You can specify multiple IDs in RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the tasks in RootTaskIds are included by default.
+	// - ManualSelection: manual selection mode. You can specify multiple values for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the values of RootTaskIds are included by default.
 	//
-	// - Chain: chain mode. RootTaskIds must be left empty. You must specify two IDs in IncludeTaskIds, which are the start and end tasks.
+	// - Chain: chain mode. RootTaskIds must be left empty. You must specify two IDs for IncludeTaskIds, which are the start and end nodes.
 	//
-	// - AllDownstream: all downstream mode. You can specify only one ID in RootTaskIds.
+	// - AllDownstream: all downstream mode. You can specify only one value for RootTaskIds.
 	//
 	// example:
 	//
@@ -321,49 +323,49 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The run order. Default value: Asc. Valid values:
 	//
-	// - Asc: ascending order by business date.
+	// - Asc: ascending order by business date
 	//
-	// - Desc: descending order by business date.
+	// - Desc: descending order by business date
 	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of parallel tasks. A value from 2 to 10 indicates the parallelism. A value of 1 indicates serial execution. This parameter is required when Type is set to SupplementData.
+	// The number of parallel nodes. A value of 2 to 10 indicates the parallelism, and a value of 1 indicates serial execution. This parameter is required when Type is set to SupplementData.
 	//
 	// example:
 	//
 	// 2
 	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// The run priority. Valid values: 1 to 11. A larger value indicates a higher priority. These parameter settings are supported only for manual workflows and trigger-based workflows.
+	// The run priority. Valid values: 1 to 11. A larger value indicates a higher priority. These parameter settings are supported only for manually triggered workflows and event-triggered workflows.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The priority weight policy. These parameter settings are supported only for manual workflows and trigger-based workflows. Valid values:
+	// The priority weight policy. These parameter settings are supported only for manually triggered workflows and event-triggered workflows. Valid values:
 	//
 	// - Disable: disabled. This is the default value.
 	//
-	// - Upstream: calculates the sum of the weights of the upstream nodes of the current node. A deeper hierarchy indicates a higher weight.
+	// - Upstream: calculates the sum of weights of upstream nodes for the current node. A deeper hierarchy indicates a higher weight.
 	//
 	// example:
 	//
 	// Upstream
 	PriorityWeightStrategy *string `json:"PriorityWeightStrategy,omitempty" xml:"PriorityWeightStrategy,omitempty"`
-	// The list of root task IDs.
+	// The list of root node IDs.
 	//
 	// - When Type is set to SupplementData, RootTaskIds is required except when Mode is set to Chain.
 	//
-	// - When Type is set to ManualWorkflow, RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manual workflow is used.
+	// - When Type is set to ManualWorkflow, RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
 	//
-	// - When Type is set to Manual, RootTaskIds is required and specifies the list of manual tasks to be run.
+	// - When Type is set to Manual, RootTaskIds is required and specifies the list of manually triggered nodes to be run.
 	//
-	// - When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test tasks to be run.
+	// - When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test nodes to be run.
 	RootTaskIds []*int64 `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
-	// The run policy. If this field is left empty, the task configuration is used.
+	// The run policy. If this field is left empty, the node configuration is used.
 	RunPolicy *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy `json:"RunPolicy,omitempty" xml:"RunPolicy,omitempty" type:"Struct"`
-	// The identifier of the custom scheduling resource group. If this field is left empty, the task configuration is used.
+	// The identifier of the custom scheduling resource group. If this field is left empty, the node configuration is used.
 	//
 	// example:
 	//
@@ -385,6 +387,10 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) GetAlert() *CreateW
 
 func (s *CreateWorkflowInstancesRequestDefaultRunProperties) GetAnalysis() *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis {
 	return s.Analysis
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) GetDataSourceNameMappings() map[string]*string {
+	return s.DataSourceNameMappings
 }
 
 func (s *CreateWorkflowInstancesRequestDefaultRunProperties) GetExcludeProjectIds() []*int64 {
@@ -442,6 +448,11 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetAlert(v *CreateW
 
 func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetAnalysis(v *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) *CreateWorkflowInstancesRequestDefaultRunProperties {
 	s.Analysis = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetDataSourceNameMappings(v map[string]*string) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.DataSourceNameMappings = v
 	return s
 }
 
@@ -527,11 +538,11 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) Validate() error {
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
 	// The notification method. Valid values:
 	//
-	// - Sms: text message only.
+	// - Sms: text message only
 	//
-	// - Mail: email only.
+	// - Mail: email only
 	//
-	// - SmsMail: text message and email.
+	// - SmsMail: text message and email
 	//
 	// example:
 	//
@@ -539,11 +550,11 @@ type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
 	// The alert policy. Valid values:
 	//
-	// - Success: alerts on success.
+	// - Success: alerts on success
 	//
-	// - Failure: alerts on failure.
+	// - Failure: alerts on failure
 	//
-	// - SuccessFailure: alerts on both success and failure.
+	// - SuccessFailure: alerts on both success and failure
 	//
 	// example:
 	//
@@ -627,19 +638,19 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) Validate() 
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
-	// The end time of the run. Format: `hh:mm:ss` in 24-hour format. This field is required if you configure a run policy.
+	// The end time of the run. Specify the time in the hh:mm:ss format based on the 24-hour clock. This field is required if you configure a run policy.
 	//
 	// example:
 	//
 	// 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether the run can be started immediately if the scheduled run time is in the future. Default value: false.
+	// Specifies whether the run can be started immediately if the run time is in the future. Default value: false.
 	//
 	// example:
 	//
 	// false
 	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	// The start time of the run. Format: `hh:mm:ss` in 24-hour format. This field is required if you configure a run policy.
+	// The start time of the run. Specify the time in the hh:mm:ss format based on the 24-hour clock. This field is required if you configure a run policy.
 	//
 	// example:
 	//
@@ -647,9 +658,9 @@ type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The period type. This field is required if you configure a run policy. Valid values:
 	//
-	// - Daily: every day.
+	// - Daily: every day
 	//
-	// - Weekend: weekends only.
+	// - Weekend: weekends only
 	//
 	// example:
 	//
@@ -710,17 +721,17 @@ type CreateWorkflowInstancesRequestPeriods struct {
 	//
 	// This parameter is required.
 	BizDates []*CreateWorkflowInstancesRequestPeriodsBizDates `json:"BizDates,omitempty" xml:"BizDates,omitempty" type:"Repeated"`
-	// The end time of the period. Format: `hh:mm:ss` in 24-hour format. Default value: 23:59:59.
+	// The end time of the period. Specify the time in the hh:mm:ss format based on the 24-hour clock. Default value: 23:59:59.
 	//
-	// If you specify this field, you must also specify the StartTime field.
+	// If you specify this field, you must also specify StartTime.
 	//
 	// example:
 	//
 	// 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the period. Format: `hh:mm:ss` in 24-hour format. Default value: 00:00:00.
+	// The start time of the period. Specify the time in the hh:mm:ss format based on the 24-hour clock. Default value: 00:00:00.
 	//
-	// If you specify this field, you must also specify the EndTime field.
+	// If you specify this field, you must also specify EndTime.
 	//
 	// example:
 	//
@@ -777,7 +788,7 @@ func (s *CreateWorkflowInstancesRequestPeriods) Validate() error {
 }
 
 type CreateWorkflowInstancesRequestPeriodsBizDates struct {
-	// The end business date. Format: `yyyy-mm-dd`.
+	// The end business date. Format: yyyy-mm-dd.
 	//
 	// This parameter is required.
 	//
@@ -785,7 +796,7 @@ type CreateWorkflowInstancesRequestPeriodsBizDates struct {
 	//
 	// 2024-11-24
 	EndBizDate *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
-	// The start business date. Format: `yyyy-mm-dd`.
+	// The start business date. Format: yyyy-mm-dd.
 	//
 	// This parameter is required.
 	//

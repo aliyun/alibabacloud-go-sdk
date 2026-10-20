@@ -1897,6 +1897,130 @@ func (client *Client) CreateBusiness(request *CreateBusinessRequest) (_result *C
 
 // Summary:
 //
+// Creates a scheduling calendar.
+//
+// Description:
+//
+// You must purchase DataWorks Enterprise Edition to use this feature.
+//
+// @param tmpReq - CreateCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCalendarResponse
+func (client *Client) CreateCalendarWithOptions(tmpReq *CreateCalendarRequest, runtime *dara.RuntimeOptions) (_result *CreateCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCalendarShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ProjectIds) {
+		request.ProjectIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProjectIds, dara.String("ProjectIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SchedulePolicy) {
+		request.SchedulePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SchedulePolicy, dara.String("SchedulePolicy"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllProjects) {
+		body["AllProjects"] = request.AllProjects
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ExpirationReminder) {
+		body["ExpirationReminder"] = request.ExpirationReminder
+	}
+
+	if !dara.IsNil(request.FallbackPolicy) {
+		body["FallbackPolicy"] = request.FallbackPolicy
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OverduePolicy) {
+		body["OverduePolicy"] = request.OverduePolicy
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ProjectIdsShrink) {
+		body["ProjectIds"] = request.ProjectIdsShrink
+	}
+
+	if !dara.IsNil(request.SchedulePolicyShrink) {
+		body["SchedulePolicy"] = request.SchedulePolicyShrink
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCalendar"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a scheduling calendar.
+//
+// Description:
+//
+// You must purchase DataWorks Enterprise Edition to use this feature.
+//
+// @param request - CreateCalendarRequest
+//
+// @return CreateCalendarResponse
+func (client *Client) CreateCalendar(request *CreateCalendarRequest) (_result *CreateCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCalendarResponse{}
+	_body, _err := client.CreateCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a component.
 //
 // Description:
@@ -6967,11 +7091,11 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 
 // Summary:
 //
-// Creates a workflow instance based on the specified configurations, such as a data backfill workflow instance.
+// Creates a workflow instance based on configurations, such as a data backfill workflow instance.
 //
 // Description:
 //
-// DataWorks Basic Edition or later is required.
+// You must purchase DataWorks Basic Edition or a later edition to use this feature.
 //
 // @param tmpReq - CreateWorkflowInstancesRequest
 //
@@ -7077,11 +7201,11 @@ func (client *Client) CreateWorkflowInstancesWithOptions(tmpReq *CreateWorkflowI
 
 // Summary:
 //
-// Creates a workflow instance based on the specified configurations, such as a data backfill workflow instance.
+// Creates a workflow instance based on configurations, such as a data backfill workflow instance.
 //
 // Description:
 //
-// DataWorks Basic Edition or later is required.
+// You must purchase DataWorks Basic Edition or a later edition to use this feature.
 //
 // @param request - CreateWorkflowInstancesRequest
 //
@@ -7296,6 +7420,80 @@ func (client *Client) DeleteBusiness(request *DeleteBusinessRequest) (_result *D
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteBusinessResponse{}
 	_body, _err := client.DeleteBusinessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a scheduling calendar.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required.
+//
+// You cannot delete a scheduling calendar that is referenced by nodes. Remove the node references first.
+//
+// @param request - DeleteCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCalendarResponse
+func (client *Client) DeleteCalendarWithOptions(request *DeleteCalendarRequest, runtime *dara.RuntimeOptions) (_result *DeleteCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCalendar"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a scheduling calendar.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required.
+//
+// You cannot delete a scheduling calendar that is referenced by nodes. Remove the node references first.
+//
+// @param request - DeleteCalendarRequest
+//
+// @return DeleteCalendarResponse
+func (client *Client) DeleteCalendar(request *DeleteCalendarRequest) (_result *DeleteCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCalendarResponse{}
+	_body, _err := client.DeleteCalendarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11610,13 +11808,13 @@ func (client *Client) ExecuteAdhocWorkflowInstance(request *ExecuteAdhocWorkflow
 
 // Summary:
 //
-// Find the security policy that best matches the given conditions.
+// Queries the best-matching security policy based on specified conditions.
 //
 // Description:
 //
-// ## Request Description
+// ## Operation description
 //
-// This API is used to find the most suitable security policy based on the provided control module, sub-module, and workspace ID. If a workspace ID is provided, the policy at the specified workspace level is matched first; otherwise, the tenant-level policy is returned. Note that system policies cannot be deleted or modified.
+// This API operation queries the most suitable security policy based on the provided control module, submodule, and workspace ID. If a workspace ID is provided, the system preferentially matches policies at the specified workspace level. Otherwise, tenant-level policies are returned. Note that system policies cannot be deleted or modified.
 //
 // @param request - FindBestMatchSecurityStrategyRequest
 //
@@ -11668,13 +11866,13 @@ func (client *Client) FindBestMatchSecurityStrategyWithOptions(request *FindBest
 
 // Summary:
 //
-// Find the security policy that best matches the given conditions.
+// Queries the best-matching security policy based on specified conditions.
 //
 // Description:
 //
-// ## Request Description
+// ## Operation description
 //
-// This API is used to find the most suitable security policy based on the provided control module, sub-module, and workspace ID. If a workspace ID is provided, the policy at the specified workspace level is matched first; otherwise, the tenant-level policy is returned. Note that system policies cannot be deleted or modified.
+// This API operation queries the most suitable security policy based on the provided control module, submodule, and workspace ID. If a workspace ID is provided, the system preferentially matches policies at the specified workspace level. Otherwise, tenant-level policies are returned. Note that system policies cannot be deleted or modified.
 //
 // @param request - FindBestMatchSecurityStrategyRequest
 //
@@ -12213,6 +12411,76 @@ func (client *Client) GetBusiness(request *GetBusinessRequest) (_result *GetBusi
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetBusinessResponse{}
 	_body, _err := client.GetBusinessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current configuration of a specified scheduling calendar.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required to use this API.
+//
+// @param request - GetCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCalendarResponse
+func (client *Client) GetCalendarWithOptions(request *GetCalendarRequest, runtime *dara.RuntimeOptions) (_result *GetCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCalendar"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current configuration of a specified scheduling calendar.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required to use this API.
+//
+// @param request - GetCalendarRequest
+//
+// @return GetCalendarResponse
+func (client *Client) GetCalendar(request *GetCalendarRequest) (_result *GetCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCalendarResponse{}
+	_body, _err := client.GetCalendarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16089,19 +16357,19 @@ func (client *Client) GetSchema(request *GetSchemaRequest) (_result *GetSchemaRe
 
 // Summary:
 //
-// Retrieves the details of a security policy by its ID. This operation requires both DataWorks tenant administrator and security administrator permissions.
+// Retrieves the details of a security policy based on the provided security policy ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves the complete configuration information for a security policy by its ID.
+// - This API retrieves all configuration information of a specific security policy by using the specified security policy ID.
 //
-// - The API returns an error message if the provided `Id` is invalid or does not exist.
+// - Ensure that the provided `Id` parameter value is valid and exists. Otherwise, an error message is returned.
 //
-// - The response includes basic policy information, such as its name and description, and policy details, such as control items and their settings.
+// - The returned data structure includes the basic information of the policy, such as the name and description, and the detailed policy content, such as control items and their settings.
 //
-// - Note: Some fields in a system default policy cannot be modified or deleted.
+// - Note: Some fields of system default policies may be protected from modification or deletion.
 //
 // @param request - GetSecurityStrategyRequest
 //
@@ -16145,19 +16413,19 @@ func (client *Client) GetSecurityStrategyWithOptions(request *GetSecurityStrateg
 
 // Summary:
 //
-// Retrieves the details of a security policy by its ID. This operation requires both DataWorks tenant administrator and security administrator permissions.
+// Retrieves the details of a security policy based on the provided security policy ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves the complete configuration information for a security policy by its ID.
+// - This API retrieves all configuration information of a specific security policy by using the specified security policy ID.
 //
-// - The API returns an error message if the provided `Id` is invalid or does not exist.
+// - Ensure that the provided `Id` parameter value is valid and exists. Otherwise, an error message is returned.
 //
-// - The response includes basic policy information, such as its name and description, and policy details, such as control items and their settings.
+// - The returned data structure includes the basic information of the policy, such as the name and description, and the detailed policy content, such as control items and their settings.
 //
-// - Note: Some fields in a system default policy cannot be modified or deleted.
+// - Note: Some fields of system default policies may be protected from modification or deletion.
 //
 // @param request - GetSecurityStrategyRequest
 //
@@ -18043,6 +18311,174 @@ func (client *Client) ListBusiness(request *ListBusinessRequest) (_result *ListB
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListBusinessResponse{}
 	_body, _err := client.ListBusinessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the versions of a specified scheduling calendar.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required.
+//
+// @param request - ListCalendarVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCalendarVersionsResponse
+func (client *Client) ListCalendarVersionsWithOptions(request *ListCalendarVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListCalendarVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCalendarVersions"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCalendarVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the versions of a specified scheduling calendar.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required.
+//
+// @param request - ListCalendarVersionsRequest
+//
+// @return ListCalendarVersionsResponse
+func (client *Client) ListCalendarVersions(request *ListCalendarVersionsRequest) (_result *ListCalendarVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCalendarVersionsResponse{}
+	_body, _err := client.ListCalendarVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of scheduling calendars.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required.
+//
+// @param request - ListCalendarsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCalendarsResponse
+func (client *Client) ListCalendarsWithOptions(request *ListCalendarsRequest, runtime *dara.RuntimeOptions) (_result *ListCalendarsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCalendars"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCalendarsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of scheduling calendars.
+//
+// Description:
+//
+// DataWorks Enterprise Edition is required.
+//
+// @param request - ListCalendarsRequest
+//
+// @return ListCalendarsResponse
+func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *ListCalendarsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCalendarsResponse{}
+	_body, _err := client.ListCalendarsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23786,11 +24222,11 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 
 // Summary:
 //
-// Queries the details of workspace roles with pagination.
+// Queries the details of workspace roles by paging.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param tmpReq - ListProjectRolesRequest
 //
@@ -23864,11 +24300,11 @@ func (client *Client) ListProjectRolesWithOptions(tmpReq *ListProjectRolesReques
 
 // Summary:
 //
-// Queries the details of workspace roles with pagination.
+// Queries the details of workspace roles by paging.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param request - ListProjectRolesRequest
 //
@@ -24466,19 +24902,19 @@ func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSch
 
 // Summary:
 //
-// Retrieves a paginated list of security policies based on specified conditions. This operation requires DataWorks tenant administrator or security administrator permissions.
+// Retrieves a paginated list of security policies in the system based on specified conditions. This operation requires DataWorks tenant administrator and security administrator permissions.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves a paginated list of configured security policies.
+// - This operation retrieves the configured security policies in the system in pages.
 //
-// - The `ControlModule` and `ControlSubModule` parameters filter policies by a specific module or submodule.
+// - You can use the `ControlModule` and `ControlSubModule` parameters to filter policies under specific modules or submodules.
 //
-// - The `PageNum` and `PageSize` parameters control pagination. `PageNum` specifies the page number to retrieve (default: 1), and `PageSize` specifies the number of policies to return per page (default: 20).
+// - The pagination parameters include `PageNum` and `PageSize`, which indicate the page number and the number of entries per page. The default values are 1 and 20.
 //
-// - Use the `MaxResults` and `NextToken` private parameters for advanced pagination.
+// - If you need further pagination control, you can use the `MaxResults` and `NextToken` parameters (private parameters).
 //
 // @param request - ListSecurityStrategiesRequest
 //
@@ -24534,19 +24970,19 @@ func (client *Client) ListSecurityStrategiesWithOptions(request *ListSecurityStr
 
 // Summary:
 //
-// Retrieves a paginated list of security policies based on specified conditions. This operation requires DataWorks tenant administrator or security administrator permissions.
+// Retrieves a paginated list of security policies in the system based on specified conditions. This operation requires DataWorks tenant administrator and security administrator permissions.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves a paginated list of configured security policies.
+// - This operation retrieves the configured security policies in the system in pages.
 //
-// - The `ControlModule` and `ControlSubModule` parameters filter policies by a specific module or submodule.
+// - You can use the `ControlModule` and `ControlSubModule` parameters to filter policies under specific modules or submodules.
 //
-// - The `PageNum` and `PageSize` parameters control pagination. `PageNum` specifies the page number to retrieve (default: 1), and `PageSize` specifies the number of policies to return per page (default: 20).
+// - The pagination parameters include `PageNum` and `PageSize`, which indicate the page number and the number of entries per page. The default values are 1 and 20.
 //
-// - Use the `MaxResults` and `NextToken` private parameters for advanced pagination.
+// - If you need further pagination control, you can use the `MaxResults` and `NextToken` parameters (private parameters).
 //
 // @param request - ListSecurityStrategiesRequest
 //
@@ -25234,11 +25670,11 @@ func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the list of data tables in DataWorks Data Map. For types that do not support the schema level, you can query data tables under a specified database. For types that support the schema level, you can query data tables under a specified database, MaxCompute project, or schema. The response contains only basic table information and does not include technical metadata or business metadata.
+// Queries the tables in Data Map. For types that do not support the schema level, this operation queries the tables in a specified database. For types that support the schema level, this operation queries the tables in a specified database, MaxCompute project, or schema. The response contains only basic table information and does not include technical or business metadata. For non-MaxCompute types, the response is not real-time and may be delayed by up to 1 hour compared to the metadata collection results.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. You must purchase DataWorks Basic Edition or later to use this API.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -25284,11 +25720,11 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 
 // Summary:
 //
-// Queries the list of data tables in DataWorks Data Map. For types that do not support the schema level, you can query data tables under a specified database. For types that support the schema level, you can query data tables under a specified database, MaxCompute project, or schema. The response contains only basic table information and does not include technical metadata or business metadata.
+// Queries the tables in Data Map. For types that do not support the schema level, this operation queries the tables in a specified database. For types that support the schema level, this operation queries the tables in a specified database, MaxCompute project, or schema. The response contains only basic table information and does not include technical or business metadata. For non-MaxCompute types, the response is not real-time and may be delayed by up to 1 hour compared to the metadata collection results.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. You must purchase DataWorks Basic Edition or later to use this API.
 //
 // @param request - ListTablesRequest
 //
@@ -29785,6 +30221,134 @@ func (client *Client) UpdateBusiness(request *UpdateBusinessRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateBusinessResponse{}
 	_body, _err := client.UpdateBusinessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a scheduling calendar. This is a full update that requires you to submit the complete editable configuration.
+//
+// Description:
+//
+// You must purchase DataWorks Enterprise Edition to use this feature.
+//
+// The calendar name cannot be modified. Unsubmitted dates are not retained.
+//
+// @param tmpReq - UpdateCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCalendarResponse
+func (client *Client) UpdateCalendarWithOptions(tmpReq *UpdateCalendarRequest, runtime *dara.RuntimeOptions) (_result *UpdateCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateCalendarShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ProjectIds) {
+		request.ProjectIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProjectIds, dara.String("ProjectIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SchedulePolicy) {
+		request.SchedulePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SchedulePolicy, dara.String("SchedulePolicy"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllProjects) {
+		body["AllProjects"] = request.AllProjects
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ExpirationReminder) {
+		body["ExpirationReminder"] = request.ExpirationReminder
+	}
+
+	if !dara.IsNil(request.FallbackPolicy) {
+		body["FallbackPolicy"] = request.FallbackPolicy
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OverduePolicy) {
+		body["OverduePolicy"] = request.OverduePolicy
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ProjectIdsShrink) {
+		body["ProjectIds"] = request.ProjectIdsShrink
+	}
+
+	if !dara.IsNil(request.SchedulePolicyShrink) {
+		body["SchedulePolicy"] = request.SchedulePolicyShrink
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCalendar"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a scheduling calendar. This is a full update that requires you to submit the complete editable configuration.
+//
+// Description:
+//
+// You must purchase DataWorks Enterprise Edition to use this feature.
+//
+// The calendar name cannot be modified. Unsubmitted dates are not retained.
+//
+// @param request - UpdateCalendarRequest
+//
+// @return UpdateCalendarResponse
+func (client *Client) UpdateCalendar(request *UpdateCalendarRequest) (_result *UpdateCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCalendarResponse{}
+	_body, _err := client.UpdateCalendarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

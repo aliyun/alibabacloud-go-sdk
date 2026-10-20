@@ -28,7 +28,7 @@ type ListProjectRolesRequest struct {
 	Codes []*string `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
 	// The list of workspace role names.
 	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
-	// The requested page number. Used for pagination.
+	// The page number of the requested data.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListProjectRolesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
 	//
-	// This parameter specifies the DataWorks workspace to use for this API call.
+	// This parameter specifies the DataWorks workspace for the current API call.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type ListProjectRolesRequest struct {
 	//
 	// 21229
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The role type of the workspace. Valid values:
+	// The type of the workspace role. Valid values:
 	//
-	// - UserCustom: user-defined role
+	// - UserCustom: Custom role.
 	//
-	// - System: system role
+	// - System: System role.
 	//
 	// example:
 	//

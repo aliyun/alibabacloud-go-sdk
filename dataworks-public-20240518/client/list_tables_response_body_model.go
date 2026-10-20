@@ -18,7 +18,7 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
-	// The pagination result.
+	// The paging information.
 	PagingInfo *ListTablesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListTablesResponseBody struct {
 	//
 	// E25887B7-579C-54A5-9C4F-83A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -85,13 +85,13 @@ type ListTablesResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of data tables.
+	// The list of tables.
 	Tables []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//

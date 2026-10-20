@@ -16,9 +16,9 @@ type iFindBestMatchSecurityStrategyResponseBody interface {
 }
 
 type FindBestMatchSecurityStrategyResponseBody struct {
-	// Data object.
+	// The data object.
 	Data *FindBestMatchSecurityStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// **API request ID**
+	// The **API request ID**.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *FindBestMatchSecurityStrategyResponseBody) Validate() error {
 }
 
 type FindBestMatchSecurityStrategyResponseBodyData struct {
-	// Purchased DataWorks edition.
+	// The purchased DataWorks edition.
 	//
 	// example:
 	//
 	// STANDARD
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// Purchased DataWorks edition name.
+	// The name of the purchased DataWorks edition.
 	//
 	// example:
 	//
 	// Standard Edition
 	EditionDisplayName *string `json:"EditionDisplayName,omitempty" xml:"EditionDisplayName,omitempty"`
-	// Security policy.
+	// The security policy.
 	SecurityStrategy *FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy `json:"SecurityStrategy,omitempty" xml:"SecurityStrategy,omitempty" type:"Struct"`
 }
 
@@ -123,87 +123,87 @@ func (s *FindBestMatchSecurityStrategyResponseBodyData) Validate() error {
 }
 
 type FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy struct {
-	// **Policy content**. Refer to the StrategyContent definition.
+	// The **policy content**. For more information, see the StrategyContent definition.
 	Content *FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// **Control scope*	- (Workspace/Tenant).
+	// The **control scope*	- (Workspace/Tenant).
 	//
 	// example:
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
-	// **Control module**
+	// The **control module**.
 	//
 	// example:
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
-	// **Control sub-module**
+	// The **control submodule**.
 	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	// Creation time.
+	// The creation time in the YYYY-MM-DDTHH:mm:ss format. The time zone is not specified in the current document.
 	//
 	// example:
 	//
 	// 2026-05-25T20:46:19
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Creator user ID.
+	// The user ID of the creator.
 	//
 	// example:
 	//
 	// 203322746501002787
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// **Policy description**
+	// The **policy description**.
 	//
 	// example:
 	//
-	// Controls the security behavior of query results in the Data Analysis module.
+	// Controls the security behavior of query results in the Data Analysis module
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// **Whether enabled**
+	// Indicates whether the policy is **enabled**.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// **Policy ID**
+	// The **policy ID**.
 	//
 	// example:
 	//
 	// 16
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// **Policy name**
+	// The **policy name**.
 	//
 	// example:
 	//
-	// Default Data Analysis Policy
+	// Default Data Analysis policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// System default policy source ID.
+	// The source ID of the system default policy.
 	//
 	// example:
 	//
 	// 12
 	OriginPolicyId *int64 `json:"OriginPolicyId,omitempty" xml:"OriginPolicyId,omitempty"`
-	// **Schema template name**
+	// The **schema template name**.
 	//
 	// example:
 	//
 	// DataQuerySecurityStrategySchema
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// Update time.
+	// The update time in the YYYY-MM-DDTHH:mm:ss format. The time zone is not specified in the current document.
 	//
 	// example:
 	//
 	// 2026-05-25T20:46:19
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Last updater user ID.
+	// The user ID of the last updater.
 	//
 	// example:
 	//
 	// 207947397706614297
 	Updater *string `json:"Updater,omitempty" xml:"Updater,omitempty"`
-	// **Associated workspace ID list**
+	// The **list of associated workspace IDs**.
 	Workspaces []*int64 `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -360,53 +360,53 @@ func (s *FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy) Validate
 }
 
 type FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContent struct {
-	// **Control scope**
+	// The **control scope**.
 	//
 	// example:
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
-	// **Control module**
+	// The **control module**.
 	//
 	// example:
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
-	// **Control sub-module**
+	// The **control submodule**.
 	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	// Controller list.
+	// The list of control items.
 	//
-	// Note: Valid controllers depend on the selected Schema. Refer to the Controller definition and the controller list of each Schema.
+	// Note: Valid control items depend on the selected schema. For more information, see the Controller definition and the control item list for each schema.
 	Controllers []*FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContentControllers `json:"Controllers,omitempty" xml:"Controllers,omitempty" type:"Repeated"`
-	// **Display name**
+	// The **display name**.
 	//
 	// example:
 	//
 	// Data Analysis
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// **English display name**
+	// The **English display name**.
 	//
 	// example:
 	//
 	// Data Query
 	DisplayNameEn *string `json:"DisplayNameEn,omitempty" xml:"DisplayNameEn,omitempty"`
-	// **Schema name**
+	// The **schema name**.
 	//
 	// example:
 	//
 	// DataQuerySecurityStrategySchema
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// System policy display name.
+	// The display name of the system policy.
 	//
 	// example:
 	//
 	// Default system generate data query policy
 	SystemPolicyDisplayName *string `json:"SystemPolicyDisplayName,omitempty" xml:"SystemPolicyDisplayName,omitempty"`
-	// System policy name (when not empty, the system automatically creates a default policy).
+	// The system policy name. If this parameter is not empty, automatic creation of a default policy is triggered.
 	//
 	// example:
 	//
@@ -517,69 +517,69 @@ func (s *FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContent) V
 }
 
 type FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContentControllers struct {
-	// **Basic Edition default value**
+	// The **default value for Basic Edition**.
 	//
 	// example:
 	//
 	// 0
 	BasicEditionDefaultValue interface{} `json:"BasicEditionDefaultValue,omitempty" xml:"BasicEditionDefaultValue,omitempty"`
-	// Basic Edition valid value range [min, max].
+	// The valid value range [min, max] for Basic Edition.
 	BasicEditionIntervalValue []*int32 `json:"BasicEditionIntervalValue,omitempty" xml:"BasicEditionIntervalValue,omitempty" type:"Repeated"`
-	// Controller identifier. For values, see the controller list of each Schema.
+	// The identifier of the control item. For valid values, see the control item list for each schema.
 	//
 	// example:
 	//
 	// viewCount
 	Controller *string `json:"Controller,omitempty" xml:"Controller,omitempty"`
-	// **Value type (Boolean/Integer/Long/String)**
+	// The **value type (Boolean/Integer/Long/String)**.
 	//
 	// example:
 	//
 	// Integer
 	ControllerValueType *string `json:"ControllerValueType,omitempty" xml:"ControllerValueType,omitempty"`
-	// Display name.
+	// The display name.
 	//
 	// example:
 	//
-	// Query Results - Single Display Record Limit
+	// Query results - Maximum number of records displayed at a time
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// **English display name**
+	// The **English display name**.
 	//
 	// example:
 	//
 	// Query Results - Single Display Record Limit
 	DisplayNameEn *string `json:"DisplayNameEn,omitempty" xml:"DisplayNameEn,omitempty"`
-	// **Whether this controller is enabled**
+	// Indicates whether the control item is **enabled**.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Enterprise Edition default value.
+	// The default value for Enterprise Edition.
 	//
 	// example:
 	//
 	// 500000
 	EnterpriseEditionDefaultValue interface{} `json:"EnterpriseEditionDefaultValue,omitempty" xml:"EnterpriseEditionDefaultValue,omitempty"`
-	// Enterprise Edition valid value range [min, max].
+	// The valid value range [min, max] for Enterprise Edition.
 	EnterpriseEditionIntervalValue []*int32 `json:"EnterpriseEditionIntervalValue,omitempty" xml:"EnterpriseEditionIntervalValue,omitempty" type:"Repeated"`
-	// Professional Edition default value.
+	// The default value for Professional Edition.
 	//
 	// example:
 	//
 	// 200000
 	ProfessionalEditionDefaultValue interface{} `json:"ProfessionalEditionDefaultValue,omitempty" xml:"ProfessionalEditionDefaultValue,omitempty"`
-	// Professional Edition valid value range [min, max].
+	// The valid value range [min, max] for Professional Edition.
 	ProfessionalEditionIntervalValue []*int32 `json:"ProfessionalEditionIntervalValue,omitempty" xml:"ProfessionalEditionIntervalValue,omitempty" type:"Repeated"`
-	// **Standard Edition default value**
+	// The **default value for Standard Edition**.
 	//
 	// example:
 	//
 	// 10000
 	StandardEditionDefaultValue interface{} `json:"StandardEditionDefaultValue,omitempty" xml:"StandardEditionDefaultValue,omitempty"`
-	// Standard Edition valid value range [min, max].
+	// The valid value range [min, max] for Standard Edition.
 	StandardEditionIntervalValue []*int32 `json:"StandardEditionIntervalValue,omitempty" xml:"StandardEditionIntervalValue,omitempty" type:"Repeated"`
-	// **User-configured value. The type depends on ControllerValueType.**
+	// The **user-configured value. The data type depends on the ControllerValueType**.
 	//
 	// example:
 	//

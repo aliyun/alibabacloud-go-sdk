@@ -32,13 +32,13 @@ type ListSecurityStrategiesRequest struct {
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	// The page number. Starts from 1. Default: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//

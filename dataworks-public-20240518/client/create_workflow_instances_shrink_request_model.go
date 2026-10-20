@@ -38,7 +38,7 @@ type iCreateWorkflowInstancesShrinkRequest interface {
 }
 
 type CreateWorkflowInstancesShrinkRequest struct {
-	// Specifies whether to run the instance immediately after it is created. Default value: true.
+	// Specifies whether to run the workflow instance immediately after it is created. Default value: true.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	DefaultRunPropertiesShrink *string `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty"`
 	// The project environment. Valid values:
 	//
-	// - Prod: production.
+	// - Prod: production
 	//
-	// - Dev: development.
+	// - Dev: development
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The tag creation policy.
+	// The tag creation policy. Valid values:
 	//
-	// - Append: Append mode. Inherits existing tags from the manual business process and appends new tags.
+	// - Append: Append mode. Inherits existing tags from the manual workflow and appends new tags.
 	//
-	// - Overwrite: Overwrite mode. Does not inherit existing tags from the manual business process and directly creates tags.
+	// - Overwrite: Overwrite mode. Does not inherit existing tags from the manual workflow and directly creates tags.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	TagCreationPolicy *string `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
 	// The list of task tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The task parameters. You can use this parameter to set parameters for specific tasks. The value is in JSON format. The key is the task ID. For the format of the value, refer to the task script parameters (Task.Script.Parameter in the response of the GetTask operation).
+	// The node parameters, which are used to set parameters for specific nodes. The value is in JSON format. The key is the node ID, and the value format refers to the node script parameters (Task.Script.Parameter in the response of the GetTask operation).
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// - SupplementData: data backfill. The methods for specifying RootTaskIds and IncludeTaskIds vary based on the data backfill pattern. For more information, see the parameter description of DefaultRunProperties.Mode.
+	// - SupplementData: data backfill. The methods for specifying RootTaskIds and IncludeTaskIds vary based on the data backfill mode. For more information, see the parameter description of DefaultRunProperties.Mode.
 	//
-	// - ManualWorkflow: manual workflow. You must set WorkflowId to the ID of the manual workflow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manual workflow is used.
+	// - ManualWorkflow: manually triggered workflow. You must set WorkflowId to the ID of the manually triggered workflow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
 	//
-	// - Manual: manual task. You only need to specify RootTaskIds, which is the list of manual tasks to be run.
+	// - Manual: manually triggered node. You only need to specify RootTaskIds, which is the list of manually triggered nodes to be run.
 	//
-	// - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test tasks to be run.
+	// - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test nodes to be run.
 	//
-	// - TriggerWorkflow: trigger-based workflow. You must set WorkflowId to the ID of the trigger-based workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
+	// - TriggerWorkflow: event-triggered workflow. You must set WorkflowId to the ID of the event-triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// SupplementData
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the task belongs. The WorkflowId of a periodic task is always 1.
+	// The ID of the workflow to which the node belongs. The WorkflowId of a periodic node is always 1.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// 1
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or a trigger-based workflow, the format is key=value, and the priority is lower than that of task parameters. For a manual workflow, the format is JSON, and the priority is higher than that of task parameters.
+	// The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is key=value, and the priority is lower than that of node parameters. For a manually triggered workflow, the format is JSON, and the priority is higher than that of node parameters.
 	//
 	// example:
 	//
