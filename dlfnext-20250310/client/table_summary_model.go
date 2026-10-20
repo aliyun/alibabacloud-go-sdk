@@ -19,6 +19,8 @@ type iTableSummary interface {
 	GetLastAccessTime() *int64
 	SetLastRequester(v string) *TableSummary
 	GetLastRequester() *string
+	SetLatestSnapshotDataSizeInBytes(v int64) *TableSummary
+	GetLatestSnapshotDataSizeInBytes() *int64
 	SetObjTypeArchiveSize(v int64) *TableSummary
 	GetObjTypeArchiveSize() *int64
 	SetObjTypeColdArchiveSize(v int64) *TableSummary
@@ -64,122 +66,163 @@ type iTableSummary interface {
 }
 
 type TableSummary struct {
-	// The timestamp, in milliseconds, indicating when the table was created.
+	// The table creation time.
 	//
 	// example:
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// default
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	// The generation date of the storage summary.
+	// The update date of the storage overview data.
 	//
 	// example:
 	//
 	// 2025-06-01
 	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
-	// The timestamp, in milliseconds, indicating when the table data was last accessed.
+	// The last data access time of the table.
 	//
 	// example:
 	//
 	// 1744970111419
-	LastAccessTime *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	LastRequester  *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
-	// The total size of data files in the Archive storage class, in bytes.
+	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	// The last requester.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	LastRequester *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
+	// The storage size of the latest snapshot, in bytes.
+	//
+	// example:
+	//
+	// 1024
+	LatestSnapshotDataSizeInBytes *int64 `json:"latestSnapshotDataSizeInBytes,omitempty" xml:"latestSnapshotDataSizeInBytes,omitempty"`
+	// The storage size of archive data files.
 	//
 	// example:
 	//
 	// 10240
 	ObjTypeArchiveSize *int64 `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
-	// The total size of data files in the Cold Archive storage class, in bytes.
+	// The storage size of cold archive data files.
 	//
 	// example:
 	//
 	// 10240
 	ObjTypeColdArchiveSize *int64 `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
-	// The total size of data files in the Infrequent Access storage class, in bytes.
+	// The storage size of infrequent access data files.
 	//
 	// example:
 	//
 	// 10240
 	ObjTypeIaSize *int64 `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
-	// The total size of data files in the Standard storage class, in bytes.
+	// The storage size of standard data files.
 	//
 	// example:
 	//
 	// 10240
 	ObjTypeStandardSize *int64 `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
-	// The total number of partitions in the table.
+	// The total number of partitions.
 	//
 	// example:
 	//
 	// 10
 	PartitionCount *int64 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
-	// The storage location of the table.
+	// The storage location.
 	//
 	// example:
 	//
 	// oss://clg-xxxx/db-xxxx/tbl-xxxx
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 	// The storage action parameters.
-	StorageActionParams    map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
-	StorageActionTimestamp *int64             `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageActionParams map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
+	// The storage class transition time.
+	//
+	// example:
+	//
+	// 1767491579459
+	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
 	// The storage class.
+	//
+	// example:
+	//
+	// STANDARD
 	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// table1
-	TableName    *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// The top requester of the day.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
 	TopRequester *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
-	// Total file access count.
+	// The total number of file accesses.
+	//
+	// example:
+	//
+	// 10
 	TotalFileAccessNum *int64 `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
-	// Total file access count over the last 30 days.
+	// The total number of file accesses in the last 7 days.
+	//
+	// example:
+	//
+	// 100
 	TotalFileAccessNum30d *int64 `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
-	// Total file access count over the last 7 days.
+	// The total number of file accesses in the last 30 days.
+	//
+	// example:
+	//
+	// 30
 	TotalFileAccessNum7d *int64 `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
-	// The total number of files in the table.
+	// The total number of table files.
 	//
 	// example:
 	//
 	// 100
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
-	// The total storage capacity of the table, in bytes.
+	// The table storage capacity, in bytes.
 	//
 	// example:
 	//
 	// 1024
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	// The total number of metadata files.
+	// The number of metadata files.
 	//
 	// example:
 	//
 	// 10
 	TotalMetaFileCount *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
-	// The total size of metadata files, in bytes.
+	// The storage size of metadata files.
 	//
 	// example:
 	//
 	// 10240
 	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
-	// The number of Standard or Infrequent Access partitions unaccessed in the last 180 days.
+	// The number of standard or infrequent access partitions that have not been accessed in the last 180 days.
 	//
 	// example:
 	//
 	// 0
 	UnaccessedStdIaPartitionCount180d *int64 `json:"unaccessedStdIaPartitionCount180d,omitempty" xml:"unaccessedStdIaPartitionCount180d,omitempty"`
-	// The number of Standard partitions unaccessed in the last 30 days.
+	// The number of standard storage partitions that have not been accessed in the last 30 days.
 	//
 	// example:
 	//
 	// 1
 	UnaccessedStdPartitionCount30d *int64 `json:"unaccessedStdPartitionCount30d,omitempty" xml:"unaccessedStdPartitionCount30d,omitempty"`
 	// The update time.
+	//
+	// example:
+	//
+	// 1764555981383
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
@@ -209,6 +252,10 @@ func (s *TableSummary) GetLastAccessTime() *int64 {
 
 func (s *TableSummary) GetLastRequester() *string {
 	return s.LastRequester
+}
+
+func (s *TableSummary) GetLatestSnapshotDataSizeInBytes() *int64 {
+	return s.LatestSnapshotDataSizeInBytes
 }
 
 func (s *TableSummary) GetObjTypeArchiveSize() *int64 {
@@ -317,6 +364,11 @@ func (s *TableSummary) SetLastAccessTime(v int64) *TableSummary {
 
 func (s *TableSummary) SetLastRequester(v string) *TableSummary {
 	s.LastRequester = &v
+	return s
+}
+
+func (s *TableSummary) SetLatestSnapshotDataSizeInBytes(v int64) *TableSummary {
+	s.LatestSnapshotDataSizeInBytes = &v
 	return s
 }
 

@@ -20,9 +20,13 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the resources. This parameter and TagKey are mutually exclusive.
+	// Specifies whether to delete all tags from the resources. This parameter and the TagKey parameter are mutually exclusive.
+	//
+	// example:
+	//
+	// true
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// The list of data catalog IDs from which to remove tags. The value is a JSON array. Maximum: 50.
+	// The list of resource IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	//
@@ -30,15 +34,15 @@ type UntagResourcesRequest struct {
 	//
 	// ["clg-paimon-0424965be0c240acb4159688c9e2c4b6"]
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// The resource type. Valid value: CATALOGRESOURCE.
+	// The resource type. Valid value: catalog.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CATALOGRESOURCE
+	// catalog
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The list of tag keys to remove. The value is a JSON array. This parameter and All are mutually exclusive.
+	// The list of tag keys. This parameter and the All parameter are mutually exclusive.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iTagResource interface {
 }
 
 type TagResource struct {
-	// The resource ID, which is the data catalog ID.
+	// The resource ID, which is the catalog ID.
 	//
 	// example:
 	//

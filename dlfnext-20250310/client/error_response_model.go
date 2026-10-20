@@ -20,9 +20,29 @@ type iErrorResponse interface {
 }
 
 type ErrorResponse struct {
+  // The error code.
+  // 
+  // example:
+  // 
+  // 404
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+  // The error message.
+  // 
+  // example:
+  // 
+  // Resource not found
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
+  // The name of the resource involved in the error.
+  // 
+  // example:
+  // 
+  // my_table
   ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+  // The type of the resource involved in the error.
+  // 
+  // example:
+  // 
+  // table
   ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 

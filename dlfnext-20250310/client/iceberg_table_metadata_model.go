@@ -22,12 +22,13 @@ type iIcebergTableMetadata interface {
 }
 
 type IcebergTableMetadata struct {
-	// The latest snapshot of the Iceberg table.
+	// The latest Iceberg snapshot.
 	CurrentSnapshot *IcebergSnapshot `json:"currentSnapshot,omitempty" xml:"currentSnapshot,omitempty"`
-	// The fields.
-	Fields             []*IcebergNestedField `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	IdentifierFieldIds []*int32              `json:"identifierFieldIds,omitempty" xml:"identifierFieldIds,omitempty" type:"Repeated"`
-	// The partition fields.
+	// The column fields.
+	Fields []*IcebergNestedField `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The list of field IDs for the Iceberg identifier fields. The array elements are the integer IDs of the identifier fields in the Iceberg schema.
+	IdentifierFieldIds []*int32 `json:"identifierFieldIds,omitempty" xml:"identifierFieldIds,omitempty" type:"Repeated"`
+	// The list of partition fields.
 	PartitionFields []*IcebergPartitionField `json:"partitionFields,omitempty" xml:"partitionFields,omitempty" type:"Repeated"`
 	// The properties.
 	Properties map[string]*string `json:"properties,omitempty" xml:"properties,omitempty"`

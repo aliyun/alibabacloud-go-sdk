@@ -32,32 +32,37 @@ type iShare interface {
 }
 
 type Share struct {
-	// The comment for the share.
+	// The comment information of the share.
 	//
 	// example:
 	//
 	// demo
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The time when the share was created.
+	// The creation time of the share.
 	//
 	// example:
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The user who created the share.
+	// The creator.
 	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
-	CreatedBy   *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
-	// The resource descriptor of the share owner.
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// Specifies whether write operations are allowed on shared resources.
+	//
+	// example:
+	//
+	// false
+	EnableWrite *bool `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	// The owner of the share.
 	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The provider\\"s account ID.
+	// The account ID of the provider.
 	//
 	// example:
 	//
@@ -75,13 +80,13 @@ type Share struct {
 	//
 	// share_name
 	ShareName *string `json:"shareName,omitempty" xml:"shareName,omitempty"`
-	// The time when the share was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 1744970111419
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the share.
+	// The updater.
 	//
 	// example:
 	//

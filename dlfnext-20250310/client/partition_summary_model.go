@@ -44,27 +44,31 @@ type iPartitionSummary interface {
 }
 
 type PartitionSummary struct {
-	// The creation timestamp for the partition.
+	// The partition creation time.
 	//
 	// example:
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// default
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	// The last access timestamp for the partition\\"s data.
+	// The last data access time.
 	//
 	// example:
 	//
 	// 1744970111419
 	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
 	// The last requester.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
 	LastRequester *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
-	// The name of the partition.
+	// The partition name.
 	//
 	// example:
 	//
@@ -72,37 +76,61 @@ type PartitionSummary struct {
 	PartitionName *string `json:"partitionName,omitempty" xml:"partitionName,omitempty"`
 	// The storage action parameters.
 	StorageActionParams map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
-	// The storage action timestamp.
-	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	// The storage class.
-	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	// The name of the table.
+	// The storage class transition time.
 	//
 	// example:
 	//
-	// table1
+	// 1764556155852
+	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	// The storage class.
+	//
+	// example:
+	//
+	// STANDARD
+	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	// The table name.
+	//
+	// example:
+	//
+	// table_name
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The top requester.
+	// The top requester of the day.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
 	TopRequester *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
-	// Total file access count.
+	// The total number of file accesses.
+	//
+	// example:
+	//
+	// 10
 	TotalFileAccessNum *int64 `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
-	// Total file access count over the last 30 days.
+	// The total number of file accesses in the last 30 days.
+	//
+	// example:
+	//
+	// 100
 	TotalFileAccessNum30d *int64 `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
-	// Total file access count over the last 7 days.
+	// The total number of file accesses in the last 7 days.
+	//
+	// example:
+	//
+	// 70
 	TotalFileAccessNum7d *int64 `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
-	// The total number of files in the partition.
+	// The total number of files.
 	//
 	// example:
 	//
 	// 2
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
-	// The total size, in bytes, of all files in the partition.
+	// The storage capacity in bytes.
 	//
 	// example:
 	//
 	// 2048
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	// The last update timestamp for the partition.
+	// The last update time.
 	//
 	// example:
 	//

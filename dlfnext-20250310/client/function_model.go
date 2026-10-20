@@ -38,19 +38,68 @@ type iFunction interface {
 }
 
 type Function struct {
-	Comment       *string                        `json:"comment,omitempty" xml:"comment,omitempty"`
-	CreatedAt     *int64                         `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy     *string                        `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Definitions   map[string]*FunctionDefinition `json:"definitions,omitempty" xml:"definitions,omitempty"`
-	Deterministic *bool                          `json:"deterministic,omitempty" xml:"deterministic,omitempty"`
-	Id            *string                        `json:"id,omitempty" xml:"id,omitempty"`
-	InputParams   []*DataField                   `json:"inputParams,omitempty" xml:"inputParams,omitempty" type:"Repeated"`
-	Name          *string                        `json:"name,omitempty" xml:"name,omitempty"`
-	Options       map[string]*string             `json:"options,omitempty" xml:"options,omitempty"`
-	Owner         *string                        `json:"owner,omitempty" xml:"owner,omitempty"`
-	ReturnParams  []*DataField                   `json:"returnParams,omitempty" xml:"returnParams,omitempty" type:"Repeated"`
-	UpdatedAt     *int64                         `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy     *string                        `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The comment information.
+	//
+	// example:
+	//
+	// comment
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1741266704867
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The creator.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The function metadata definitions.
+	Definitions map[string]*FunctionDefinition `json:"definitions,omitempty" xml:"definitions,omitempty"`
+	// Specifies whether the same input always returns the same output.
+	//
+	// example:
+	//
+	// true
+	Deterministic *bool `json:"deterministic,omitempty" xml:"deterministic,omitempty"`
+	// ID
+	//
+	// example:
+	//
+	// db-xxxx
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The field input parameters.
+	InputParams []*DataField `json:"inputParams,omitempty" xml:"inputParams,omitempty" type:"Repeated"`
+	// The function name.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The extension options.
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// The owner.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The return fields of the function.
+	ReturnParams []*DataField `json:"returnParams,omitempty" xml:"returnParams,omitempty" type:"Repeated"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1764556033696
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The updater.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Function) String() string {

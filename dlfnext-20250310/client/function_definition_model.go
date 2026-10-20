@@ -24,17 +24,38 @@ type iFunctionDefinition interface {
 }
 
 type FunctionDefinition struct {
-	// Required in FileFunctionDefinition.
+	// required in FileFunctionDefinition
+	//
+	// example:
+	//
+	// com.aliyun.pai.flinkjob.udf.CtrKV
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
-	// Required in SQLFunctionDefinition and LambdaFunctionDefinition.
+	// required in SQLFunctionDefinition/LambdaFunctionDefinition
+	//
+	// example:
+	//
+	// {}
 	Definition *string `json:"definition,omitempty" xml:"definition,omitempty"`
-	// Required in FileFunctionDefinition.
+	// required in FileFunctionDefinition
 	FileResources []*FunctionFileResource `json:"fileResources,omitempty" xml:"fileResources,omitempty" type:"Repeated"`
-	// Required in FileFunctionDefinition.
+	// required in FileFunctionDefinition
+	//
+	// example:
+	//
+	// function_name
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// Required in LambdaFunctionDefinition and FileFunctionDefinition.
+	// required in LambdaFunctionDefinition/FileFunctionDefinition
+	//
+	// example:
+	//
+	// zh-CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// PAIMON
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FunctionDefinition) String() string {

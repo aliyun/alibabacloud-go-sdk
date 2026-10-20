@@ -24,16 +24,41 @@ type iViewChange interface {
 }
 
 type ViewChange struct {
+	// The type of the view change operation.
+	//
+	// example:
+	//
+	// updateComment
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// required in UpdateComment
+	// The view comment. Required when you perform the updateComment operation.
+	//
+	// example:
+	//
+	// View update description
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// required in AddDialect/UpdateDialect/DropDialect
+	// The dialect used in the view query statement. Required when you perform the addDialect, updateDialect, or dropDialect operation.
+	//
+	// example:
+	//
+	// flink
 	Dialect *string `json:"dialect,omitempty" xml:"dialect,omitempty"`
-	// required in SetOption/RemoveOption
+	// The key of the view property. Required when you perform the setOption or removeOption operation.
+	//
+	// example:
+	//
+	// view_option
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// required in AddDialect/UpdateDialect
+	// The view query statement. Required when you perform the addDialect or updateDialect operation.
+	//
+	// example:
+	//
+	// SELECT region, SUM(amount) AS total_amount FROM sales GROUP BY region
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// required in SetOption
+	// The value of the view property. Required when you perform the setOption operation.
+	//
+	// example:
+	//
+	// enabled
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

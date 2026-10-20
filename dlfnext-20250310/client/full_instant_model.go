@@ -18,9 +18,24 @@ type iFullInstant interface {
 }
 
 type FullInstant struct {
-	SnapshotId *int64  `json:"snapshotId,omitempty" xml:"snapshotId,omitempty"`
-	TagName    *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The snapshot ID.
+	//
+	// example:
+	//
+	// 1
+	SnapshotId *int64 `json:"snapshotId,omitempty" xml:"snapshotId,omitempty"`
+	// The tag name.
+	//
+	// example:
+	//
+	// test_tag
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	// The location method type.
+	//
+	// example:
+	//
+	// snapshot
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FullInstant) String() string {

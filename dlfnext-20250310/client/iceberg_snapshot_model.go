@@ -32,18 +32,23 @@ type iIcebergSnapshot interface {
 }
 
 type IcebergSnapshot struct {
-	// Number of added rows.
+	// The number of added rows.
 	//
 	// example:
 	//
 	// 20
 	AddedRows *int64 `json:"addedRows,omitempty" xml:"addedRows,omitempty"`
-	// The snapshot ID.
+	// id
 	//
 	// example:
 	//
 	// 2443368274334000657
-	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The string representation of the snapshot ID.
+	//
+	// example:
+	//
+	// 2443368274334000657
 	IdString *string `json:"idString,omitempty" xml:"idString,omitempty"`
 	// The operation.
 	//
@@ -51,12 +56,17 @@ type IcebergSnapshot struct {
 	//
 	// append
 	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
-	// Parent ID.
+	// The parent ID.
 	//
 	// example:
 	//
 	// 0
-	ParentId       *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The string representation of the parent snapshot ID.
+	//
+	// example:
+	//
+	// 0
 	ParentIdString *string `json:"parentIdString,omitempty" xml:"parentIdString,omitempty"`
 	// The schema ID.
 	//

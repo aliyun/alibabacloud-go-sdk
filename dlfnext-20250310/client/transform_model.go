@@ -20,10 +20,18 @@ type iTransform interface {
 }
 
 type Transform struct {
-	CastType *FullDataType     `json:"castType,omitempty" xml:"castType,omitempty"`
-	FieldRef *FieldRef         `json:"fieldRef,omitempty" xml:"fieldRef,omitempty"`
-	Inputs   []*TransformInput `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
-	Name     *string           `json:"name,omitempty" xml:"name,omitempty"`
+	// The target data type.
+	CastType *FullDataType `json:"castType,omitempty" xml:"castType,omitempty"`
+	// The field reference object.
+	FieldRef *FieldRef `json:"fieldRef,omitempty" xml:"fieldRef,omitempty"`
+	// The input parameters.
+	Inputs []*TransformInput `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
+	// The name of the transformation function.
+	//
+	// example:
+	//
+	// transform_name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s Transform) String() string {

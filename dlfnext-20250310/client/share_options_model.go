@@ -20,10 +20,30 @@ type iShareOptions interface {
 }
 
 type ShareOptions struct {
-	CatalogSizeLimit       *int32 `json:"catalogSizeLimit,omitempty" xml:"catalogSizeLimit,omitempty"`
-	ReceiverSizeLimit      *int32 `json:"receiverSizeLimit,omitempty" xml:"receiverSizeLimit,omitempty"`
+	// The maximum number of catalogs.
+	//
+	// example:
+	//
+	// 100
+	CatalogSizeLimit *int32 `json:"catalogSizeLimit,omitempty" xml:"catalogSizeLimit,omitempty"`
+	// The maximum number of recipients.
+	//
+	// example:
+	//
+	// 100
+	ReceiverSizeLimit *int32 `json:"receiverSizeLimit,omitempty" xml:"receiverSizeLimit,omitempty"`
+	// The maximum shared resource count.
+	//
+	// example:
+	//
+	// 100
 	ShareResourceSizeLimit *int32 `json:"shareResourceSizeLimit,omitempty" xml:"shareResourceSizeLimit,omitempty"`
-	ShareSizeLimit         *int32 `json:"shareSizeLimit,omitempty" xml:"shareSizeLimit,omitempty"`
+	// The maximum number of shares.
+	//
+	// example:
+	//
+	// 100
+	ShareSizeLimit *int32 `json:"shareSizeLimit,omitempty" xml:"shareSizeLimit,omitempty"`
 }
 
 func (s ShareOptions) String() string {

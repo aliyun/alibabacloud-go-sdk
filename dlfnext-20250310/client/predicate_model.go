@@ -22,11 +22,24 @@ type iPredicate interface {
 }
 
 type Predicate struct {
-	Children  []*Predicate  `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
-	Function  *string       `json:"function,omitempty" xml:"function,omitempty"`
-	Kind      *string       `json:"kind,omitempty" xml:"kind,omitempty"`
-	Literals  []interface{} `json:"literals,omitempty" xml:"literals,omitempty" type:"Repeated"`
-	Transform *Transform    `json:"transform,omitempty" xml:"transform,omitempty"`
+	// The list of child nodes.
+	Children []*Predicate `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	// The assertion function.
+	//
+	// example:
+	//
+	// {}
+	Function *string `json:"function,omitempty" xml:"function,omitempty"`
+	// The assertion type.
+	//
+	// example:
+	//
+	// EXPRESSION
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The list of literal values.
+	Literals []interface{} `json:"literals,omitempty" xml:"literals,omitempty" type:"Repeated"`
+	// The transform rule.
+	Transform *Transform `json:"transform,omitempty" xml:"transform,omitempty"`
 }
 
 func (s Predicate) String() string {

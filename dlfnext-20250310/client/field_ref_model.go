@@ -18,19 +18,19 @@ type iFieldRef interface {
 }
 
 type FieldRef struct {
-	// Text sequence
+	// The data sequence of the field.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// Table name
+	// The field name.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// File type
+	// The data type of the field.
 	Type *FullDataType `json:"type,omitempty" xml:"type,omitempty"`
 }
 

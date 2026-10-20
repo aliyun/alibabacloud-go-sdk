@@ -39,17 +39,29 @@ type Permission struct {
 	// example:
 	//
 	// DROP
-	Access        *string                `json:"access,omitempty" xml:"access,omitempty"`
+	Access *string `json:"access,omitempty" xml:"access,omitempty"`
+	// The column masking transformation rules mapped by column name. The key is the column name, and the value is the corresponding masking transformation configuration.
 	ColumnMasking map[string]*ColumnMask `json:"columnMasking,omitempty" xml:"columnMasking,omitempty"`
-	Columns       *PermissionColumns     `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
+	// The custom columns.
+	Columns *PermissionColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
 	// The database name.
 	//
 	// example:
 	//
 	// database_name
-	Database   *string `json:"database,omitempty" xml:"database,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
+	// The expiration time.
+	//
+	// example:
+	//
+	// 1762398431157
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	Function   *string `json:"function,omitempty" xml:"function,omitempty"`
+	// The function name.
+	//
+	// example:
+	//
+	// function_name
+	Function *string `json:"function,omitempty" xml:"function,omitempty"`
 	// The user resource descriptor.
 	//
 	// example:
@@ -61,15 +73,21 @@ type Permission struct {
 	// example:
 	//
 	// CATALOG
-	ResourceType *string    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	RowFilter    *RowFilter `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The row filter.
+	RowFilter *RowFilter `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
 	// The table name.
 	//
 	// example:
 	//
 	// table_name
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
-	View  *string `json:"view,omitempty" xml:"view,omitempty"`
+	// The view name.
+	//
+	// example:
+	//
+	// view_name
+	View *string `json:"view,omitempty" xml:"view,omitempty"`
 }
 
 func (s Permission) String() string {
@@ -194,7 +212,9 @@ func (s *Permission) Validate() error {
 }
 
 type PermissionColumns struct {
-	ColumnNames         []*string `json:"columnNames,omitempty" xml:"columnNames,omitempty" type:"Repeated"`
+	// The list of included column names.
+	ColumnNames []*string `json:"columnNames,omitempty" xml:"columnNames,omitempty" type:"Repeated"`
+	// The list of excluded column names.
 	ExcludedColumnNames []*string `json:"excludedColumnNames,omitempty" xml:"excludedColumnNames,omitempty" type:"Repeated"`
 }
 

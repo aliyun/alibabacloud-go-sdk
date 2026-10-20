@@ -24,16 +24,37 @@ type iFunctionChange interface {
 }
 
 type FunctionChange struct {
+	// The change type.
+	//
+	// example:
+	//
+	// setOption
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 	// required in UpdateFunctionComment
+	//
+	// example:
+	//
+	// Function configuration update
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// required in AddDefinition/UpdateDefinition
 	Definition *FunctionDefinition `json:"definition,omitempty" xml:"definition,omitempty"`
 	// required in SetFunctionOption/RemoveFunctionOption
+	//
+	// example:
+	//
+	// namespaceSchema
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// required in AddDefinition/UpdateDefinition/DropDefinition
+	//
+	// example:
+	//
+	// my_function
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// required in SetFunctionOption
+	//
+	// example:
+	//
+	// IDC_MOVE
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

@@ -20,7 +20,7 @@ type iListDatabaseDetailsRequest interface {
 }
 
 type ListDatabaseDetailsRequest struct {
-	// The SQL-style right fuzzy match pattern for database names. The percent sign (%) wildcard is supported.
+	// The SQL-style right fuzzy match pattern for database names. The percent sign (%) is supported.
 	//
 	// example:
 	//
@@ -28,21 +28,30 @@ type ListDatabaseDetailsRequest struct {
 	DatabaseNamePattern *string `json:"databaseNamePattern,omitempty" xml:"databaseNamePattern,omitempty"`
 	// The page size.
 	//
-	// Default value: 1000.
+	// Default value:
 	//
-	// Maximum value: 1000.
+	// 	1000
+	//
+	// Maximum value:
+	//
+	// 	1000
 	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results. If the response does not include this token, pass an empty string ("") or an empty character (\\"\\").
+	// The pagination token used to retrieve the next page of results. If no token is provided in the response, pass an empty string ("") or an empty character (\\"\\").
 	//
 	// example:
 	//
 	// ""
 	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The filter for the database deletion status. active indicates a normal database, and retained indicates a soft-deleted database that is still retained in the recycle bin.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDatabaseDetailsRequest) String() string {

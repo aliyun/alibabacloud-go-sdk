@@ -16,8 +16,18 @@ type iRowFilter interface {
 }
 
 type RowFilter struct {
+	// The expression.
+	//
+	// example:
+	//
+	// {}
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	Predicate  *string `json:"predicate,omitempty" xml:"predicate,omitempty"`
+	// The predicate.
+	//
+	// example:
+	//
+	// {}
+	Predicate *string `json:"predicate,omitempty" xml:"predicate,omitempty"`
 }
 
 func (s RowFilter) String() string {

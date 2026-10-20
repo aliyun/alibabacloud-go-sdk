@@ -30,15 +30,56 @@ type iNamespace interface {
 }
 
 type Namespace struct {
-	CreatedAt *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id        *string            `json:"id,omitempty" xml:"id,omitempty"`
-	Location  *string            `json:"location,omitempty" xml:"location,omitempty"`
-	Name      *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Options   map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	Owner     *string            `json:"owner,omitempty" xml:"owner,omitempty"`
-	UpdatedAt *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The creation time, represented as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1741266704867
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The user who created the namespace.
+	//
+	// example:
+	//
+	// acs:ram:1234567:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The namespace ID.
+	//
+	// example:
+	//
+	// namespace_id
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The storage path of the namespace.
+	//
+	// example:
+	//
+	// oss://example-bucket/example-namespace/
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// default
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The extension options for the namespace.
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// The namespace owner.
+	//
+	// example:
+	//
+	// acs:ram:1234567:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The update time, represented as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1741266704867
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who updated the namespace.
+	//
+	// example:
+	//
+	// acs:ram:1045689747920334:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Namespace) String() string {

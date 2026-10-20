@@ -32,33 +32,33 @@ type GetQueryResponseBody struct {
 	//
 	// 1744970111419
 	CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// The creation time of the task.
+	// The creation time of the task, which is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The query ID, used for subsequent polling of results.
+	// The query ID used to poll for subsequent results.
 	//
 	// example:
 	//
 	// d7b21d1ec4f441e79d5ba917c3283200
 	QueryId *string `json:"queryId,omitempty" xml:"queryId,omitempty"`
-	// The result list.
+	// The list of results.
 	Results []*StatementResult `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// The SQL text. Multiple statements separated by semicolons are supported and executed sequentially within the same session.
+	// The SQL text, which supports multiple statements separated by semicolons that are executed sequentially within the same session.
 	//
 	// example:
 	//
 	// select 	- from table_name;
 	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
-	// The task running status.
+	// The running status of the task.
 	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The execution specifications. Default value: standard.
+	// The execution tier. Default value: standard.
 	//
 	// example:
 	//

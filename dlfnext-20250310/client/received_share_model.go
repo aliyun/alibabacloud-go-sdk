@@ -40,7 +40,7 @@ type ReceivedShare struct {
 	//
 	// catalog_name
 	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
-	// The comment of the share.
+	// The comment on the share.
 	//
 	// example:
 	//
@@ -52,20 +52,25 @@ type ReceivedShare struct {
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The creator of the share.
+	// The creator.
 	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
-	CreatedBy   *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// Specifies whether write operations are allowed on the shared resources.
+	//
+	// example:
+	//
+	// false
+	EnableWrite *bool `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
 	// The share owner.
 	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The provider\\"s account ID.
+	// The account ID of the provider.
 	//
 	// example:
 	//
@@ -89,7 +94,7 @@ type ReceivedShare struct {
 	//
 	// 1744970111419
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the share.
+	// The updater.
 	//
 	// example:
 	//

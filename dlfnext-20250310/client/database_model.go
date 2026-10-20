@@ -71,9 +71,19 @@ type Database struct {
 	// example:
 	//
 	// acs:ram::[accountId]:root
-	Owner      *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
-	TableCount *int64  `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The status of the database.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The number of tables in the database.
+	//
+	// example:
+	//
+	// 0
+	TableCount *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
 	// The update time.
 	//
 	// example:

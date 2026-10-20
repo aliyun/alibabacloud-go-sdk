@@ -46,44 +46,45 @@ type iTable interface {
 }
 
 type Table struct {
-	// The time when the table was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1741266704867
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The creator of the table.
+	// The creator.
 	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
-	CreatedBy            *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The Iceberg table metadata.
 	IcebergTableMetadata *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
-	// The UUID of the table.
+	// The table UUID.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the table is an external table.
+	// Specifies whether the table is an external table.
 	//
 	// example:
 	//
 	// true
 	IsExternal *bool `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// table_test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The owner of the table.
+	// The table owner.
 	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The path of the table.
+	// The table path.
 	//
 	// example:
 	//
@@ -91,24 +92,49 @@ type Table struct {
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 	// The table schema information.
 	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The ID of the table schema.
+	// The table schema ID.
 	//
 	// example:
 	//
 	// 1
-	SchemaId               *int64  `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
-	StorageAction          *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
-	StorageActionTimestamp *int64  `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	StorageClass           *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	Type                   *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the table was last updated.
+	SchemaId *int64 `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	// The table status. A value of active indicates that the table is normal. A value of retained indicates that the table is soft-deleted but still retained in the recycle bin. A value of releasing indicates that the table is about to be permanently purged.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The storage class transition status.
+	//
+	// example:
+	//
+	// None
+	StorageAction *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	// The storage class transition time.
+	//
+	// example:
+	//
+	// 1764556155852
+	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	// The storage class.
+	//
+	// example:
+	//
+	// STANDARD
+	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// PAIMON
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The update time.
 	//
 	// example:
 	//
 	// 1741266704867
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the table.
+	// The updater.
 	//
 	// example:
 	//

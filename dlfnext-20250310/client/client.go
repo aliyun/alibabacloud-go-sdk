@@ -1306,7 +1306,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Deletes a data lake data catalog. The deletion fails unless the following conditions are met: all tables and self-managed databases under the catalog have been deleted, and the databases and tables have been deleted for at least 24 hours.
+// Deletes a DLF catalog. The deletion fails unless the following conditions are met: all tables and databases under the catalog have been deleted, and the databases and tables have been deleted for at least 24 hours.
 //
 // @param headers - map
 //
@@ -1339,7 +1339,7 @@ func (client *Client) DropCatalogWithOptions(catalog *string, headers map[string
 
 // Summary:
 //
-// Deletes a data lake data catalog. The deletion fails unless the following conditions are met: all tables and self-managed databases under the catalog have been deleted, and the databases and tables have been deleted for at least 24 hours.
+// Deletes a DLF catalog. The deletion fails unless the following conditions are met: all tables and databases under the catalog have been deleted, and the databases and tables have been deleted for at least 24 hours.
 //
 // @return DropCatalogResponse
 func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse, _err error) {
@@ -1556,7 +1556,7 @@ func (client *Client) DropTable(catalogId *string, database *string, table *stri
 
 // Summary:
 //
-// Retrieves the details of a data catalog.
+// Retrieves the details of a catalog.
 //
 // @param headers - map
 //
@@ -1589,7 +1589,7 @@ func (client *Client) GetCatalogWithOptions(catalog *string, headers map[string]
 
 // Summary:
 //
-// Retrieves the details of a data catalog.
+// Retrieves the details of a catalog.
 //
 // @return GetCatalogResponse
 func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, _err error) {
@@ -1606,7 +1606,7 @@ func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, 
 
 // Summary:
 //
-// Retrieves the details of a data catalog.
+// Retrieves the details of a catalog.
 //
 // @param headers - map
 //
@@ -1639,7 +1639,7 @@ func (client *Client) GetCatalogByIdWithOptions(id *string, headers map[string]*
 
 // Summary:
 //
-// Retrieves the details of a data catalog.
+// Retrieves the details of a catalog.
 //
 // @return GetCatalogByIdResponse
 func (client *Client) GetCatalogById(id *string) (_result *GetCatalogByIdResponse, _err error) {
@@ -1790,7 +1790,7 @@ func (client *Client) GetCatalogSummary(catalogId *string, request *GetCatalogSu
 
 // Summary:
 //
-// Retrieves the storage overview trend for a catalog.
+// Retrieves the storage overview trends of the data catalog.
 //
 // @param request - GetCatalogSummaryTrendRequest
 //
@@ -1841,7 +1841,7 @@ func (client *Client) GetCatalogSummaryTrendWithOptions(catalogId *string, reque
 
 // Summary:
 //
-// Retrieves the storage overview trend for a catalog.
+// Retrieves the storage overview trends of the data catalog.
 //
 // @param request - GetCatalogSummaryTrendRequest
 //
@@ -1960,7 +1960,7 @@ func (client *Client) GetDatabase(catalogId *string, database *string) (_result 
 
 // Summary:
 //
-// You can view an inventory overview.
+// Retrieves the database storage overview.
 //
 // @param request - GetDatabaseSummaryRequest
 //
@@ -2007,7 +2007,7 @@ func (client *Client) GetDatabaseSummaryWithOptions(catalogId *string, database 
 
 // Summary:
 //
-// You can view an inventory overview.
+// Retrieves the database storage overview.
 //
 // @param request - GetDatabaseSummaryRequest
 //
@@ -2552,7 +2552,7 @@ func (client *Client) GetTableSnapshot(catalogId *string, database *string, tabl
 
 // Summary:
 //
-// Retrieves the storage summary for a table.
+// Retrieves the table storage overview.
 //
 // @param request - GetTableSummaryRequest
 //
@@ -2599,7 +2599,7 @@ func (client *Client) GetTableSummaryWithOptions(catalogId *string, database *st
 
 // Summary:
 //
-// Retrieves the storage summary for a table.
+// Retrieves the table storage overview.
 //
 // @param request - GetTableSummaryRequest
 //
@@ -2870,7 +2870,7 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 
 // Summary:
 //
-// Queries the list of data catalogs.
+// Queries the list of catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -2925,7 +2925,7 @@ func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, head
 
 // Summary:
 //
-// Queries the list of data catalogs.
+// Queries the list of catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -2944,7 +2944,11 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 
 // Summary:
 //
-// Lists databases in a data lake with paged query support.
+// Queries the list of databases in the data lake by using a paged query with paging.
+//
+// Description:
+//
+// This operation returns the DLF data access role and KMS key policy authorization statements required to configure BYOK SSE KMS. The customer master key is configured at the catalog level by using oss.sse.kms.key-id. When you create a table, you can enable SSE KMS for the table by setting the table property oss.sse.kms.enabled to true. Tables with KMS encryption enabled and tables without encryption can coexist in the same catalog.
 //
 // @param request - ListDatabaseDetailsRequest
 //
@@ -3003,7 +3007,11 @@ func (client *Client) ListDatabaseDetailsWithOptions(catalogId *string, request 
 
 // Summary:
 //
-// Lists databases in a data lake with paged query support.
+// Queries the list of databases in the data lake by using a paged query with paging.
+//
+// Description:
+//
+// This operation returns the DLF data access role and KMS key policy authorization statements required to configure BYOK SSE KMS. The customer master key is configured at the catalog level by using oss.sse.kms.key-id. When you create a table, you can enable SSE KMS for the table by setting the table property oss.sse.kms.enabled to true. Tables with KMS encryption enabled and tables without encryption can coexist in the same catalog.
 //
 // @param request - ListDatabaseDetailsRequest
 //
@@ -3388,7 +3396,7 @@ func (client *Client) ListIcebergTableDetails(catalogId *string, namespace *stri
 
 // Summary:
 //
-// Retrieves storage overview for partitions.
+// Retrieves the partition storage overview list.
 //
 // @param request - ListPartitionSummariesRequest
 //
@@ -3443,7 +3451,7 @@ func (client *Client) ListPartitionSummariesWithOptions(catalogId *string, datab
 
 // Summary:
 //
-// Retrieves storage overview for partitions.
+// Retrieves the partition storage overview list.
 //
 // @param request - ListPartitionSummariesRequest
 //

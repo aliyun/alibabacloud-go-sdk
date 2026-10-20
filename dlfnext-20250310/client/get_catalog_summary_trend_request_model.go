@@ -16,7 +16,7 @@ type iGetCatalogSummaryTrendRequest interface {
 }
 
 type GetCatalogSummaryTrendRequest struct {
-	// The end date, in yyyy-MM-dd format.
+	// The end date in the yyyy-MM-dd format. The result includes the end date.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCatalogSummaryTrendRequest struct {
 	//
 	// 2025-06-01
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// The start date, in yyyy-MM-dd format.
+	// The start date in the yyyy-MM-dd format. The result includes the start date.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iGetDatabaseSummaryRequest interface {
 }
 
 type GetDatabaseSummaryRequest struct {
-	// The date of the storage overview.
+	// The date of the storage overview, in the YYYY-MM-DD format.
 	//
 	// example:
 	//

@@ -26,19 +26,43 @@ type iTableSnapshot interface {
 }
 
 type TableSnapshot struct {
-	// The total number of files in the snapshot.
+	// The number of files.
+	//
+	// example:
+	//
+	// 63
 	FileCount *int64 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
-	// The total size of all files in the snapshot, in bytes.
+	// The file size.
+	//
+	// example:
+	//
+	// 645631581
 	FileSizeInBytes *int64 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
-	// The creation time of the most recent file in the snapshot, as a Unix timestamp in milliseconds.
+	// The creation time of the latest file.
+	//
+	// example:
+	//
+	// 1761704112024
 	LastFileCreationTime *int64 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
-	// The total number of partitions in the table.
+	// The number of partitions.
+	//
+	// example:
+	//
+	// 10
 	PartitionCount *int64 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
-	// The total number of records in the snapshot.
+	// The number of records.
+	//
+	// example:
+	//
+	// 16627
 	RecordCount *int64 `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
-	// Contains detailed information about the snapshot.
+	// The name of the snapshot.
 	Snapshot *Snapshot `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
-	// The total number of buckets in the table.
+	// The total number of buckets.
+	//
+	// example:
+	//
+	// 64
 	TotalBuckets *int32 `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
 }
 

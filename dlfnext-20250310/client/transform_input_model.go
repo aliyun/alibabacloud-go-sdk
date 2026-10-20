@@ -16,8 +16,18 @@ type iTransformInput interface {
 }
 
 type TransformInput struct {
+	// The input content.
+	//
+	// example:
+	//
+	// INPUT
 	Input interface{} `json:"input,omitempty" xml:"input,omitempty"`
-	Type  *string     `json:"type,omitempty" xml:"type,omitempty"`
+	// The input type.
+	//
+	// example:
+	//
+	// LITERAL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TransformInput) String() string {

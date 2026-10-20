@@ -54,30 +54,129 @@ type iSnapshot interface {
 }
 
 type Snapshot struct {
+	// The file name of the base manifest list.
+	//
+	// example:
+	//
+	// manifest-list-0c6fcaa1-b6bc-413d-9634-6471cce4f37e-2
 	BaseManifestList *string `json:"baseManifestList,omitempty" xml:"baseManifestList,omitempty"`
+	// The file name of the manifest list that records all changelogs generated for the snapshot.
+	//
 	// if can be null:
 	// true
-	ChangelogManifestList *string            `json:"changelogManifestList,omitempty" xml:"changelogManifestList,omitempty"`
-	ChangelogRecordCount  *int64             `json:"changelogRecordCount,omitempty" xml:"changelogRecordCount,omitempty"`
-	CommitIdentifier      *int64             `json:"commitIdentifier,omitempty" xml:"commitIdentifier,omitempty"`
-	CommitKind            *string            `json:"commitKind,omitempty" xml:"commitKind,omitempty"`
-	CommitUser            *string            `json:"commitUser,omitempty" xml:"commitUser,omitempty"`
-	DeltaManifestList     *string            `json:"deltaManifestList,omitempty" xml:"deltaManifestList,omitempty"`
-	DeltaRecordCount      *int64             `json:"deltaRecordCount,omitempty" xml:"deltaRecordCount,omitempty"`
-	Id                    *int64             `json:"id,omitempty" xml:"id,omitempty"`
-	IdString              *string            `json:"idString,omitempty" xml:"idString,omitempty"`
-	IndexManifest         *string            `json:"indexManifest,omitempty" xml:"indexManifest,omitempty"`
-	LogOffsets            map[string]*int64  `json:"logOffsets,omitempty" xml:"logOffsets,omitempty"`
-	ParentIdString        *string            `json:"parentIdString,omitempty" xml:"parentIdString,omitempty"`
-	SchemaId              *int64             `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	SequenceNumber        *int64             `json:"sequenceNumber,omitempty" xml:"sequenceNumber,omitempty"`
-	Statistics            *string            `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	Summary               map[string]*string `json:"summary,omitempty" xml:"summary,omitempty"`
-	TimeMillis            *int64             `json:"timeMillis,omitempty" xml:"timeMillis,omitempty"`
-	TotalRecordCount      *int64             `json:"totalRecordCount,omitempty" xml:"totalRecordCount,omitempty"`
+	//
+	// example:
+	//
+	// manifest-list-0c6fcaa1-b6bc-413d-9634-6471cce4f37e-4
+	ChangelogManifestList *string `json:"changelogManifestList,omitempty" xml:"changelogManifestList,omitempty"`
+	// The number of changelog records generated for the snapshot.
+	//
+	// example:
+	//
+	// 100
+	ChangelogRecordCount *int64 `json:"changelogRecordCount,omitempty" xml:"changelogRecordCount,omitempty"`
+	// The transaction ID of the streaming write.
+	//
+	// example:
+	//
+	// 9223372036854775807
+	CommitIdentifier *int64 `json:"commitIdentifier,omitempty" xml:"commitIdentifier,omitempty"`
+	// The streaming write type. Valid values: APPEND, COMPACT, OVERWRITE, and ANALYZE.
+	//
+	// example:
+	//
+	// COMPACT
+	CommitKind *string `json:"commitKind,omitempty" xml:"commitKind,omitempty"`
+	// The commit user, which is typically a UUID used to resume streaming writes.
+	//
+	// example:
+	//
+	// 446aac61-bd5c-4fa0-8b14-846fa8810651
+	CommitUser *string `json:"commitUser,omitempty" xml:"commitUser,omitempty"`
+	// The file name of the manifest list that records all new changes in the snapshot.
+	//
+	// example:
+	//
+	// manifest-list-0c6fcaa1-b6bc-413d-9634-6471cce4f37e-3
+	DeltaManifestList *string `json:"deltaManifestList,omitempty" xml:"deltaManifestList,omitempty"`
+	// The number of new change records in the snapshot.
+	//
+	// example:
+	//
+	// 10
+	DeltaRecordCount *int64 `json:"deltaRecordCount,omitempty" xml:"deltaRecordCount,omitempty"`
+	// The snapshot ID.
+	//
+	// example:
+	//
+	// 6
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The string representation of the snapshot ID.
+	//
+	// example:
+	//
+	// 6
+	IdString *string `json:"idString,omitempty" xml:"idString,omitempty"`
+	// The file name of the manifest that records all index files of the table.
+	//
+	// example:
+	//
+	// index-manifest-7cbdaa47-9578-43ac-ae6e-a7ec0486bba8-0
+	IndexManifest *string `json:"indexManifest,omitempty" xml:"indexManifest,omitempty"`
+	// The log offsets at the time of the commit.
+	LogOffsets map[string]*int64 `json:"logOffsets,omitempty" xml:"logOffsets,omitempty"`
+	// The string representation of the parent snapshot ID.
+	//
+	// example:
+	//
+	// 0
+	ParentIdString *string `json:"parentIdString,omitempty" xml:"parentIdString,omitempty"`
+	// The schema ID of the table when the snapshot was generated.
+	//
+	// example:
+	//
+	// 0
+	SchemaId *int64 `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	// The snapshot sequence number.
+	//
+	// example:
+	//
+	// 1
+	SequenceNumber *int64 `json:"sequenceNumber,omitempty" xml:"sequenceNumber,omitempty"`
+	// The file name of the table statistics information.
+	//
+	// example:
+	//
+	// stat-82c50592-2179-447b-906b-6fdb10ef32c6-0
+	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
+	// The summary.
+	Summary map[string]*string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// The commit time, which is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1741701564261
+	TimeMillis *int64 `json:"timeMillis,omitempty" xml:"timeMillis,omitempty"`
+	// The total number of records for all changes in the snapshot.
+	//
+	// example:
+	//
+	// 1024
+	TotalRecordCount *int64 `json:"totalRecordCount,omitempty" xml:"totalRecordCount,omitempty"`
+	// The file format version of the snapshot. The current version is 3.
+	//
 	// if can be null:
 	// true
-	Version   *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	//
+	// example:
+	//
+	// 3
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	// The watermark value.
+	//
+	// example:
+	//
+	// -9223372036854775808
 	Watermark *int64 `json:"watermark,omitempty" xml:"watermark,omitempty"`
 }
 

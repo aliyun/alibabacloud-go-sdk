@@ -16,8 +16,18 @@ type iColumnMask interface {
 }
 
 type ColumnMask struct {
+	// The column masking expression.
+	//
+	// example:
+	//
+	// CONCAT(\\"***-**-****\\")
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	Transform  *string `json:"transform,omitempty" xml:"transform,omitempty"`
+	// The column masking transform method.
+	//
+	// example:
+	//
+	// {"name":"CONCAT","inputs":["***-",{"index":1,"name":"phone","type":"STRING"}]}
+	Transform *string `json:"transform,omitempty" xml:"transform,omitempty"`
 }
 
 func (s ColumnMask) String() string {
