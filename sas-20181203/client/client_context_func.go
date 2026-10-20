@@ -382,7 +382,7 @@ func (client *Client) AddClientUserDefineRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Adds multi-cloud asset configuration information.
+// Creates multi-cloud asset configuration information.
 //
 // @param request - AddCloudVendorAccountAKRequest
 //
@@ -11949,7 +11949,7 @@ func (client *Client) DescribeCloudCenterInstancesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the multi-cloud assets added to Security Center.
+// Queries the list of multi-cloud asset configurations.
 //
 // @param request - DescribeCloudVendorAccountAKListRequest
 //
@@ -15073,7 +15073,7 @@ func (client *Client) DescribeExposedStatisticsDetailWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the statistics information of servers in your assets.
+// Queries the statistics information of servers in assets.
 //
 // @param request - DescribeFieldStatisticsRequest
 //
@@ -15697,7 +15697,7 @@ func (client *Client) DescribeGroupedVulWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries information about a baseline risk export, such as the file name and download link.
+// Queries the file name, download URL, and other information about a baseline export.
 //
 // @param request - DescribeHcExportInfoRequest
 //
@@ -17317,7 +17317,7 @@ func (client *Client) DescribeImageListByBuildRiskWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries information about images affected by sensitive files.
+// Queries the information about images affected by sensitive files.
 //
 // @param tmpReq - DescribeImageListBySensitiveFileRequest
 //
@@ -17775,7 +17775,7 @@ func (client *Client) DescribeImageSecurityScanCountWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the sensitive files of an image.
+// Queries sensitive files in an image.
 //
 // @param tmpReq - DescribeImageSensitiveFileByKeyRequest
 //
@@ -23173,7 +23173,7 @@ func (client *Client) DescribeSyncAssetTaskListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of IDC scan tasks for asset synchronization.
+// Queries the details of an IDC scan task for an asset synchronization task.
 //
 // @param request - DescribeSyncAssetTaskLogDetailRequest
 //
@@ -29269,7 +29269,7 @@ func (client *Client) GetConsoleFuncGrayStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of a non-image process defense rule.
+// Retrieves the details of a non-image program defense rule.
 //
 // @param request - GetContainerDefenseRuleDetailRequest
 //
@@ -31366,7 +31366,7 @@ func (client *Client) GetOpaPluginStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the details of the rule that is used to block at-risk images.
+// Queries the details of a risky image blocking policy.
 //
 // @param request - GetOpaStrategyDetailNewRequest
 //
@@ -31598,7 +31598,7 @@ func (client *Client) GetSasContainerWebDefenseRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves the application list for container file defense configurations.
+// Retrieves the list of applications for container file defense configurations.
 //
 // @param request - GetSasContainerWebDefenseRuleApplicationRequest
 //
@@ -37982,11 +37982,11 @@ func (client *Client) ListMaliciousFileWhitelistConfigsWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the multi-account authorization assignment list under multi-account authorization management.
+// Queries the list of multi-account authorization assignments under multi-account authorization management.
 //
 // Description:
 //
-// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set logical relationships between different search conditions to search for assets that meet multiple search conditions.
+// You can search for assets by conditions such as the instance ID, instance name, VPC ID, region, and public IP address. You can also configure logical relationships between different search conditions to find assets that meet multiple conditions.
 //
 // @param request - ListMultiUserInstancesRequest
 //
@@ -39560,7 +39560,7 @@ func (client *Client) ListUnknownThreatDetectMachineWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the process list of intelligent behavior analytics.
+// Queries the process list for intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectProcessRequest
 //
@@ -39752,7 +39752,7 @@ func (client *Client) ListUserVpcWithContext(ctx context.Context, request *ListU
 
 // Summary:
 //
-// Queries the list of Serverless instance UUIDs by application ID.
+// Queries the UUIDs of Serverless instances by application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -41232,7 +41232,7 @@ func (client *Client) ModifyClientUserDefineRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the authorization and authentication configuration of multi-cloud assets.
+// Modifies the authorization and authentication configuration information of multi-cloud assets.
 //
 // @param request - ModifyCloudVendorAccountAKRequest
 //

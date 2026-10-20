@@ -561,7 +561,7 @@ func (client *Client) AddClientUserDefineRule(request *AddClientUserDefineRuleRe
 
 // Summary:
 //
-// Adds multi-cloud asset configuration information.
+// Creates multi-cloud asset configuration information.
 //
 // @param request - AddCloudVendorAccountAKRequest
 //
@@ -653,7 +653,7 @@ func (client *Client) AddCloudVendorAccountAKWithOptions(request *AddCloudVendor
 
 // Summary:
 //
-// Adds multi-cloud asset configuration information.
+// Creates multi-cloud asset configuration information.
 //
 // @param request - AddCloudVendorAccountAKRequest
 //
@@ -16348,7 +16348,7 @@ func (client *Client) DescribeCloudProductFieldStatistics() (_result *DescribeCl
 
 // Summary:
 //
-// Queries the multi-cloud assets added to Security Center.
+// Queries the list of multi-cloud asset configurations.
 //
 // @param request - DescribeCloudVendorAccountAKListRequest
 //
@@ -16420,7 +16420,7 @@ func (client *Client) DescribeCloudVendorAccountAKListWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the multi-cloud assets added to Security Center.
+// Queries the list of multi-cloud asset configurations.
 //
 // @param request - DescribeCloudVendorAccountAKListRequest
 //
@@ -20800,7 +20800,7 @@ func (client *Client) DescribeExposedStatisticsDetail(request *DescribeExposedSt
 
 // Summary:
 //
-// Queries the statistics information of servers in your assets.
+// Queries the statistics information of servers in assets.
 //
 // @param request - DescribeFieldStatisticsRequest
 //
@@ -20852,7 +20852,7 @@ func (client *Client) DescribeFieldStatisticsWithOptions(request *DescribeFieldS
 
 // Summary:
 //
-// Queries the statistics information of servers in your assets.
+// Queries the statistics information of servers in assets.
 //
 // @param request - DescribeFieldStatisticsRequest
 //
@@ -21631,7 +21631,7 @@ func (client *Client) DescribeGroupedVul(request *DescribeGroupedVulRequest) (_r
 
 // Summary:
 //
-// Queries information about a baseline risk export, such as the file name and download link.
+// Queries the file name, download URL, and other information about a baseline export.
 //
 // @param request - DescribeHcExportInfoRequest
 //
@@ -21675,7 +21675,7 @@ func (client *Client) DescribeHcExportInfoWithOptions(request *DescribeHcExportI
 
 // Summary:
 //
-// Queries information about a baseline risk export, such as the file name and download link.
+// Queries the file name, download URL, and other information about a baseline export.
 //
 // @param request - DescribeHcExportInfoRequest
 //
@@ -23782,7 +23782,7 @@ func (client *Client) DescribeImageListByBuildRisk(request *DescribeImageListByB
 
 // Summary:
 //
-// Queries information about images affected by sensitive files.
+// Queries the information about images affected by sensitive files.
 //
 // @param tmpReq - DescribeImageListBySensitiveFileRequest
 //
@@ -23872,7 +23872,7 @@ func (client *Client) DescribeImageListBySensitiveFileWithOptions(tmpReq *Descri
 
 // Summary:
 //
-// Queries information about images affected by sensitive files.
+// Queries the information about images affected by sensitive files.
 //
 // @param request - DescribeImageListBySensitiveFileRequest
 //
@@ -24438,7 +24438,7 @@ func (client *Client) DescribeImageSecurityScanCount(request *DescribeImageSecur
 
 // Summary:
 //
-// Queries the sensitive files of an image.
+// Queries sensitive files in an image.
 //
 // @param tmpReq - DescribeImageSensitiveFileByKeyRequest
 //
@@ -24508,7 +24508,7 @@ func (client *Client) DescribeImageSensitiveFileByKeyWithOptions(tmpReq *Describ
 
 // Summary:
 //
-// Queries the sensitive files of an image.
+// Queries sensitive files in an image.
 //
 // @param request - DescribeImageSensitiveFileByKeyRequest
 //
@@ -31994,7 +31994,7 @@ func (client *Client) DescribeSyncAssetTaskList(request *DescribeSyncAssetTaskLi
 
 // Summary:
 //
-// Queries the details of IDC scan tasks for asset synchronization.
+// Queries the details of an IDC scan task for an asset synchronization task.
 //
 // @param request - DescribeSyncAssetTaskLogDetailRequest
 //
@@ -32058,7 +32058,7 @@ func (client *Client) DescribeSyncAssetTaskLogDetailWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the details of IDC scan tasks for asset synchronization.
+// Queries the details of an IDC scan task for an asset synchronization task.
 //
 // @param request - DescribeSyncAssetTaskLogDetailRequest
 //
@@ -40938,7 +40938,7 @@ func (client *Client) GetConsoleFuncGrayStatus(request *GetConsoleFuncGrayStatus
 
 // Summary:
 //
-// Retrieves the details of a non-image process defense rule.
+// Retrieves the details of a non-image program defense rule.
 //
 // @param request - GetContainerDefenseRuleDetailRequest
 //
@@ -40986,7 +40986,7 @@ func (client *Client) GetContainerDefenseRuleDetailWithOptions(request *GetConta
 
 // Summary:
 //
-// Retrieves the details of a non-image process defense rule.
+// Retrieves the details of a non-image program defense rule.
 //
 // @param request - GetContainerDefenseRuleDetailRequest
 //
@@ -44132,7 +44132,7 @@ func (client *Client) GetOpaPluginStatus(request *GetOpaPluginStatusRequest) (_r
 
 // Summary:
 //
-// Retrieves the details of the rule that is used to block at-risk images.
+// Queries the details of a risky image blocking policy.
 //
 // @param request - GetOpaStrategyDetailNewRequest
 //
@@ -44176,7 +44176,7 @@ func (client *Client) GetOpaStrategyDetailNewWithOptions(request *GetOpaStrategy
 
 // Summary:
 //
-// Retrieves the details of the rule that is used to block at-risk images.
+// Queries the details of a risky image blocking policy.
 //
 // @param request - GetOpaStrategyDetailNewRequest
 //
@@ -44687,7 +44687,7 @@ func (client *Client) GetSasContainerWebDefenseRule(request *GetSasContainerWebD
 
 // Summary:
 //
-// Retrieves the application list for container file defense configurations.
+// Retrieves the list of applications for container file defense configurations.
 //
 // @param request - GetSasContainerWebDefenseRuleApplicationRequest
 //
@@ -44731,7 +44731,7 @@ func (client *Client) GetSasContainerWebDefenseRuleApplicationWithOptions(reques
 
 // Summary:
 //
-// Retrieves the application list for container file defense configurations.
+// Retrieves the list of applications for container file defense configurations.
 //
 // @param request - GetSasContainerWebDefenseRuleApplicationRequest
 //
@@ -53497,11 +53497,11 @@ func (client *Client) ListMaliciousFileWhitelistConfigs(request *ListMaliciousFi
 
 // Summary:
 //
-// Queries the multi-account authorization assignment list under multi-account authorization management.
+// Queries the list of multi-account authorization assignments under multi-account authorization management.
 //
 // Description:
 //
-// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set logical relationships between different search conditions to search for assets that meet multiple search conditions.
+// You can search for assets by conditions such as the instance ID, instance name, VPC ID, region, and public IP address. You can also configure logical relationships between different search conditions to find assets that meet multiple conditions.
 //
 // @param request - ListMultiUserInstancesRequest
 //
@@ -53549,11 +53549,11 @@ func (client *Client) ListMultiUserInstancesWithOptions(request *ListMultiUserIn
 
 // Summary:
 //
-// Queries the multi-account authorization assignment list under multi-account authorization management.
+// Queries the list of multi-account authorization assignments under multi-account authorization management.
 //
 // Description:
 //
-// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set logical relationships between different search conditions to search for assets that meet multiple search conditions.
+// You can search for assets by conditions such as the instance ID, instance name, VPC ID, region, and public IP address. You can also configure logical relationships between different search conditions to find assets that meet multiple conditions.
 //
 // @param request - ListMultiUserInstancesRequest
 //
@@ -55769,7 +55769,7 @@ func (client *Client) ListUnknownThreatDetectMachine(request *ListUnknownThreatD
 
 // Summary:
 //
-// Queries the process list of intelligent behavior analytics.
+// Queries the process list for intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectProcessRequest
 //
@@ -55857,7 +55857,7 @@ func (client *Client) ListUnknownThreatDetectProcessWithOptions(request *ListUnk
 
 // Summary:
 //
-// Queries the process list of intelligent behavior analytics.
+// Queries the process list for intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectProcessRequest
 //
@@ -56015,7 +56015,7 @@ func (client *Client) ListUserVpc(request *ListUserVpcRequest) (_result *ListUse
 
 // Summary:
 //
-// Queries the list of Serverless instance UUIDs by application ID.
+// Queries the UUIDs of Serverless instances by application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -56079,7 +56079,7 @@ func (client *Client) ListUuidsByAppIdWithOptions(request *ListUuidsByAppIdReque
 
 // Summary:
 //
-// Queries the list of Serverless instance UUIDs by application ID.
+// Queries the UUIDs of Serverless instances by application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -57943,7 +57943,7 @@ func (client *Client) ModifyClientUserDefineRule(request *ModifyClientUserDefine
 
 // Summary:
 //
-// Modifies the authorization and authentication configuration of multi-cloud assets.
+// Modifies the authorization and authentication configuration information of multi-cloud assets.
 //
 // @param request - ModifyCloudVendorAccountAKRequest
 //
@@ -58035,7 +58035,7 @@ func (client *Client) ModifyCloudVendorAccountAKWithOptions(request *ModifyCloud
 
 // Summary:
 //
-// Modifies the authorization and authentication configuration of multi-cloud assets.
+// Modifies the authorization and authentication configuration information of multi-cloud assets.
 //
 // @param request - ModifyCloudVendorAccountAKRequest
 //

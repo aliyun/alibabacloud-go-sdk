@@ -34,7 +34,7 @@ type iDescribeImageListBySensitiveFileShrinkRequest interface {
 }
 
 type DescribeImageListBySensitiveFileShrinkRequest struct {
-	// The page number of the current page to return. Minimum value: 1. Default value: 1.
+	// The page number of the current page returned. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -42,23 +42,23 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The image digest.
 	//
-	// > Fuzzy search is supported.
+	// > Fuzzy match is supported.
 	//
 	// example:
 	//
 	// v005
 	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// Sets the language type for request and response messages. Default value: **zh**. Valid values:
+	// Specifies the language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paginated query. Default value: 20.
+	// The maximum number of entries returned per page in a paged query. Default value: 20.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
 	// The name of the image repository.
 	//
-	// > Fuzzy search is supported.
+	// > Fuzzy match is supported.
 	//
 	// example:
 	//
 	// harbor-image-v001
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace of the image repository.
+	// The name of the image repository namespace.
 	//
-	// > Fuzzy search is supported.
+	// > Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -90,31 +90,31 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	// The risk level of the file. Separate multiple levels with commas (,). Valid values:
 	//
-	// - **high**: High risk.
+	// - **high**: high
 	//
-	// - **medium**: Medium risk.
+	// - **medium**: medium
 	//
-	// - **low**: Low risk.
+	// - **low**: low
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The collection of scan scopes. Valid values:
+	// The scan scope collection. Valid values:
 	//
-	// - **image**: Image.
+	// - **image**: image
 	//
-	// - **container**: Container.
+	// - **container**: container
 	ScanRangeShrink *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
-	// The type of sensitive file alert. Valid values:
+	// The alerting type for sensitive files. Valid values:
 	//
 	// - **npm_token**: NPM access token
 	//
 	// - **ftp_cfg**: FTP configuration
 	//
-	// - **google_oauth_key**: Google OAuth Key
+	// - **google_oauth_key**: Google OAuth key
 	//
-	// - **planetscale_passwd**: Planetscale password
+	// - **planetscale_passwd**: PlanetScale password
 	//
 	// - **github_ssh_key**: GitHub SSH key
 	//
@@ -124,31 +124,31 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	//
 	// - **ssh_private_key**: SSH private key
 	//
-	// - **aws_cli**: AWS CLI credentials
+	// - **aws_cli**: AWS CLI credential
 	//
-	// - **cpanel_proftpd**: cPanel ProFTPd credentials
+	// - **cpanel_proftpd**: cPanel ProFTPd credential
 	//
 	// - **postgresql_passwd**: PostgreSQL password file
 	//
-	// - **discord_client_cred**: Discord client credentials
+	// - **discord_client_cred**: Discord client credential
 	//
 	// - **rails_database**: Rails database configuration
 	//
-	// - **aws_access_key**: AWS Access Key
+	// - **aws_access_key**: AWS access key
 	//
 	// - **esmtp_cfg**: ESMTP mail server configuration
 	//
-	// - **docker_registry_cfg**: Docker image registry configuration
+	// - **docker_registry_cfg**: Docker image repository configuration
 	//
 	// - **pem**: PEM
 	//
-	// - **common_cred**: Common credentials
+	// - **common_cred**: common credential
 	//
 	// - **sftp_cfg**: SFTP connection configuration
 	//
 	// - **grafana_token**: Grafana token
 	//
-	// - **slack_token**: Slack Token
+	// - **slack_token**: Slack token
 	//
 	// - **ec_private_key**: EC private key
 	//
@@ -166,27 +166,27 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	//
 	// - **openssh_private_key**: OpenSSH private key
 	//
-	// - **square_oauth**: Square OAuth credentials
+	// - **square_oauth**: Square OAuth credential
 	//
 	// - **typeform_token**: Typeform token
 	//
-	// - **common_database_cfg**: Common database connection configuration
+	// - **common_database_cfg**: common database connection configuration
 	//
 	// - **wordpress_database_cfg**: WordPress database configuration
 	//
-	// - **googlecloud_api_key**: Google Cloud API Key
+	// - **googlecloud_api_key**: Google Cloud API key
 	//
 	// - **vscode_sftp**: VSCode SFTP configuration
 	//
 	// - **apache_htpasswd**: Apache htpasswd
 	//
-	// - **planetscale_token**: Planetscale token
+	// - **planetscale_token**: PlanetScale token
 	//
-	// - **contentful_preview_token**: Contentful Preview token
+	// - **contentful_preview_token**: Contentful preview token
 	//
 	// - **php_database_cfg**: PHP application database password
 	//
-	// - **atom_remote_sync**: Atom remote sync configuration
+	// - **atom_remote_sync**: Atom remote synchronization configuration
 	//
 	// - **aws_session_token**: AWS session token
 	//
@@ -194,57 +194,57 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	//
 	// - **asana_client_private_key**: Asana project management platform client key
 	//
-	// - **tencentcloud_ak**: Third-party cloud SecretId
+	// - **tencentcloud_ak**: SecretId of other cloud providers
 	//
 	// - **rsa_private_key**: RSA private key
 	//
-	// - **github_personal_token**: GitHub Personal access token
+	// - **github_personal_token**: GitHub personal access token
 	//
-	// - **pgp**: PGP encrypted file
+	// - **pgp**: PGP ciphertext file
 	//
-	// - **stripe_skpk**: Stripe Secret Key
+	// - **stripe_skpk**: Stripe secret key
 	//
 	// - **square_token**: Square access token
 	//
-	// - **rails_carrierwave**: Rails Carrierwave file upload credentials
+	// - **rails_carrierwave**: Rails Carrierwave file upload credential
 	//
 	// - **dbeaver_database_cfg**: DBeaver database configuration
 	//
-	// - **robomongo_cred**: Robomongo credentials
+	// - **robomongo_cred**: Robomongo credential
 	//
 	// - **github_oauth_token**: GitHub OAuth access token
 	//
 	// - **pulumi_token**: Pulumi token
 	//
-	// - **ventrilo_voip**: Ventrilo VoIP Server configuration
+	// - **ventrilo_voip**: Ventrilo VoIP server configuration
 	//
-	// - **macos_keychain**: macOS Keychain
+	// - **macos_keychain**: macOS keychain
 	//
-	// - **amazon_mws_token**: Amazon MWS Token
+	// - **amazon_mws_token**: Amazon MWS token
 	//
 	// - **dynatrace_token**: Dynatrace token
 	//
-	// - **java_keystore**: Java Keystore
+	// - **java_keystore**: Java keystore
 	//
 	// - **microsoft_sdf**: Microsoft SQL CE database
 	//
-	// - **kubernetes_dashboard_cred**: Kubernetes Dashboard user credentials
+	// - **kubernetes_dashboard_cred**: Kubernetes Dashboard user credential
 	//
 	// - **atlassian_token**: Atlassian token
 	//
-	// - **rdp**: Remote Desktop Connection RDP
+	// - **rdp**: Remote Desktop Protocol (RDP) connection
 	//
-	// - **mailgun_key**: Mailgun Webhook Signing Key
+	// - **mailgun_key**: Mailgun webhook signing key
 	//
-	// - **mailchimp_api_key**: Mailchimp API Key
+	// - **mailchimp_api_key**: Mailchimp API key
 	//
 	// - **netrc_cfg**: .netrc configuration file
 	//
 	// - **openvpn_cfg**: OpenVPN client configuration
 	//
-	// - **github_refresh_token**: GitHub Refresh Token
+	// - **github_refresh_token**: GitHub refresh token
 	//
-	// - **salesforce**: Salesforce credentials
+	// - **salesforce**: Salesforce credential
 	//
 	// - **sendinblue**: Sendinblue token
 	//
@@ -256,19 +256,19 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	//
 	// - **databricks_token**: Databricks token
 	//
-	// - **gitLab_personal_token**: GitLab Personal access token
+	// - **gitLab_personal_token**: GitLab personal access token
 	//
-	// - **rails_master_key**: Rails Master Key
+	// - **rails_master_key**: Rails master key
 	//
 	// - **sqlite**: SQLite3/SQLite database
 	//
-	// - **firefox_logins**: Firefox login configuration
+	// - **firefox_logins**: Firefox logon configuration
 	//
-	// - **mailgun_private_token**: Mailgun Private token
+	// - **mailgun_private_token**: Mailgun private token
 	//
 	// - **joomla_cfg**: Joomla configuration
 	//
-	// - **hashicorp_terraform_token**: HashiCorp Terraform Token
+	// - **hashicorp_terraform_token**: HashiCorp Terraform token
 	//
 	// - **jetbrains_ides**: JetBrains IDEs configuration
 	//
@@ -276,33 +276,33 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	//
 	// - **messagebird_token**: MessageBird token
 	//
-	// - **github_app_token**: GitHub App Token
+	// - **github_app_token**: GitHub app token
 	//
-	// - **hashicorp_vault_token**: HashiCorp Vault Token
+	// - **hashicorp_vault_token**: HashiCorp Vault token
 	//
 	// - **pgp_private_key**: PGP private key
 	//
 	// - **sshpasswd**: SSH password
 	//
-	// - **huaweicloud_ak**: Third-party cloud Secret Access Key
+	// - **huaweicloud_ak**: Secret Access Key of other cloud providers
 	//
 	// - **aws_s3cmd**: AWS S3cmd configuration
 	//
 	// - **php_config**: PHP configuration
 	//
-	// - **common_private_key**: Common private key type
+	// - **common_private_key**: common private key type
 	//
 	// - **microsoft_mdf**: Microsoft SQL database
 	//
 	// - **mediawiki_cfg**: MediaWiki configuration
 	//
-	// - **jenkins_cred**: Jenkins credentials
+	// - **jenkins_cred**: Jenkins credential
 	//
-	// - **rubygems_cred**: RubyGems credentials
+	// - **rubygems_cred**: RubyGems credential
 	//
 	// - **clojars_token**: Clojars token
 	//
-	// - **phoenix_web_passwd**: Phoenix Web credentials
+	// - **phoenix_web_passwd**: Phoenix web credential
 	//
 	// - **puttygen_private_key**: PuTTYgen private key
 	//
@@ -310,27 +310,27 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	//
 	// - **rubyonrails_cfg**: Ruby on Rails database configuration
 	//
-	// - **lob_api_key**: Lob API Key
+	// - **lob_api_key**: Lob API key
 	//
 	// - **pkcs_cred**: PKCS#12 certificate
 	//
 	// - **otr_private_key**: OTR private key
 	//
-	// - **contentful_delivery_token**: Contentful Delivery token
+	// - **contentful_delivery_token**: Contentful delivery token
 	//
-	// - **digital_ocean_tugboat**: Digital Ocean Tugboat configuration
+	// - **digital_ocean_tugboat**: DigitalOcean Tugboat configuration
 	//
 	// - **dsa_private_key**: DSA private key
 	//
-	// - **rails_app_token**: Rails App token
+	// - **rails_app_token**: Rails app token
 	//
-	// - **git_cred**: Git user credentials
+	// - **git_cred**: Git user credential
 	//
-	// - **newrelic_api_key**: New Relic User API Key
+	// - **newrelic_api_key**: New Relic user API key
 	//
-	// - **github_hub**: Hub configuration storing GitHub tokens
+	// - **github_hub**: hub configuration that stores GitHub tokens
 	//
-	// - **rubygem**: RubyGem token
+	// - **rubygem**: RubyGems token
 	//
 	// example:
 	//
@@ -338,11 +338,11 @@ type DescribeImageListBySensitiveFileShrinkRequest struct {
 	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
 	// The status of the sensitive file. Valid values:
 	//
-	// - **0**: Unhandled.
+	// - **0**: unhandled
 	//
-	// - **1**: Ignored.
+	// - **1**: ignored
 	//
-	// - **2**: False positive.
+	// - **2**: false positive
 	//
 	// example:
 	//

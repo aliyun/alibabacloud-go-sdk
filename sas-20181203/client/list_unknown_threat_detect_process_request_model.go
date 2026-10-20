@@ -46,19 +46,19 @@ type ListUnknownThreatDetectProcessRequest struct {
 	//
 	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
-	// The page number of the current page when using paged query. This is used for paging.
+	// The page number of the current page returned during paging for a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range during which the process was first detected. The value is a timestamp in milliseconds.
+	// The end time of the time range during which the process was first detected. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1768891966345
 	FirstTimeEnd *int64 `json:"FirstTimeEnd,omitempty" xml:"FirstTimeEnd,omitempty"`
-	// The start of the time range during which the process was first detected. The value is a timestamp in milliseconds.
+	// The start time of the time range during which the process was first detected. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListUnknownThreatDetectProcessRequest struct {
 	//
 	// 0552c44e243abdea1729d4507bce****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The maximum number of entries per page when using paged query. This is used for paging.
+	// The maximum number of entries to return on each page during paging for a paged query.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type ListUnknownThreatDetectProcessRequest struct {
 	//
 	// f204693a7d2ce99d6c4434e550d985ee1c7be7cb5dd9a76094369af0d2******
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
-	// The label.
+	// The tag.
 	//
 	// example:
 	//

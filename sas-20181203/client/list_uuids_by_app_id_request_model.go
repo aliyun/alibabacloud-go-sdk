@@ -24,7 +24,7 @@ type iListUuidsByAppIdRequest interface {
 }
 
 type ListUuidsByAppIdRequest struct {
-	// The SAE application ID.
+	// The ID of the SAE application.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListUuidsByAppIdRequest struct {
 	//
 	// cn-hangzhou
 	AppRegionId *string `json:"AppRegionId,omitempty" xml:"AppRegionId,omitempty"`
-	// The page number of the current page in a paged query. Paging starts from page 1.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type ListUuidsByAppIdRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page in a paged query. Paging is performed based on this value.
+	// The number of entries to return on each page in a paging query.
 	//
 	// example:
 	//

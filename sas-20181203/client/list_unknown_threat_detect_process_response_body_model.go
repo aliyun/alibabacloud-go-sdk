@@ -86,25 +86,29 @@ func (s *ListUnknownThreatDetectProcessResponseBody) Validate() error {
 type ListUnknownThreatDetectProcessResponseBodyData struct {
 	// The analysis result. Valid values:
 	//
-	// - **black**: Malicious process.
+	// - **black**: malicious process
 	//
-	// - **white**: Normal process.
+	// - **white**: normal process
 	//
-	// - **abnormal**: Abnormal process.
+	// - **abnormal**: abnormal process
 	//
 	// example:
 	//
 	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
+	// The English description of the process behavior.
+	//
 	// example:
 	//
 	// Normal system process
 	ExplanationEn *string `json:"ExplanationEn,omitempty" xml:"ExplanationEn,omitempty"`
+	// The Chinese description of the process behavior.
+	//
 	// example:
 	//
 	// 正常系统进程
 	ExplanationZh *string `json:"ExplanationZh,omitempty" xml:"ExplanationZh,omitempty"`
-	// The timestamp when the process was first detected.
+	// The timestamp of the first occurrence.
 	//
 	// example:
 	//
@@ -128,7 +132,7 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	//
 	// /usr/bin/tar
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//
@@ -140,7 +144,7 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	//
 	// 3a6fed5fc11392b3ee9f81caf017b48640d7458766a8eb0382899a605b41****
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
-	// The process labels.
+	// The process tags.
 	Tags []*ListUnknownThreatDetectProcessResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -256,13 +260,13 @@ func (s *ListUnknownThreatDetectProcessResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectProcessResponseBodyDataTags struct {
-	// The English label of the process.
+	// The English tag of the process.
 	//
 	// example:
 	//
 	// System Process
 	TagEn *string `json:"TagEn,omitempty" xml:"TagEn,omitempty"`
-	// The Chinese label of the process.
+	// The Chinese tag of the process.
 	//
 	// example:
 	//
@@ -301,19 +305,19 @@ func (s *ListUnknownThreatDetectProcessResponseBodyDataTags) Validate() error {
 }
 
 type ListUnknownThreatDetectProcessResponseBodyPageInfo struct {
-	// The number of entries on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 2
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page in a paged query. This is used for paging.
+	// The page number of the current page returned during paging for a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page in a paged query. This is used for paging.
+	// The maximum number of entries returned on each page during paging for a paged query.
 	//
 	// example:
 	//
