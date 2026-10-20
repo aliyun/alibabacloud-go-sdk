@@ -24,37 +24,37 @@ type iBatchUpdateFileTagResponseBody interface {
 }
 
 type BatchUpdateFileTagResponseBody struct {
-	// The response code. A value of Success indicates that the call was successful.
+	// The error status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned by the operation.
+	// The business data returned by the operation.
 	Data *BatchUpdateFileTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The error message.
 	//
 	// example:
 	//
 	// Required parameter(FileId) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code returned for the request.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was accepted. Check `UpdateFileTagResultList` for the status of each file. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The request was accepted.
+	// - true: Successful.
 	//
-	// - false: The request failed, for example, due to an invalid parameter.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *BatchUpdateFileTagResponseBody) Validate() error {
 }
 
 type BatchUpdateFileTagResponseBodyData struct {
-	// A list of the tag update results.
+	// The list of tag update results.
 	UpdateFileTagResultList []*BatchUpdateFileTagResponseBodyDataUpdateFileTagResultList `json:"UpdateFileTagResultList,omitempty" xml:"UpdateFileTagResultList,omitempty" type:"Repeated"`
 }
 
@@ -169,13 +169,13 @@ func (s *BatchUpdateFileTagResponseBodyData) Validate() error {
 }
 
 type BatchUpdateFileTagResponseBodyDataUpdateFileTagResultList struct {
-	// The error code. This parameter is returned only if Success is false.
+	// The error code. This parameter is returned only when Success is false.
 	//
 	// example:
 	//
 	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. This parameter is returned only if Success is false.
+	// The error message. This parameter is returned only when Success is false.
 	//
 	// example:
 	//
@@ -187,11 +187,11 @@ type BatchUpdateFileTagResponseBodyDataUpdateFileTagResultList struct {
 	//
 	// file_f40f2a32205d44b4a93b11617113da15_10045951
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Indicates whether the tags for the specific file were updated. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The tags were updated successfully.
+	// - true: Successful.
 	//
-	// - false: The tag update failed.
+	// - false: Failed.
 	//
 	// example:
 	//

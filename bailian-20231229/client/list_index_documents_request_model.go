@@ -24,7 +24,7 @@ type iListIndexDocumentsRequest interface {
 }
 
 type ListIndexDocumentsRequest struct {
-	// Filters the returned file list by file name (without the file extension). Default value: empty, which means no filtering by file name.
+	// Filters the returned file list by file name (excluding the file extension). Default value: empty, which means no filtering by file name.
 	//
 	// example:
 	//
@@ -32,17 +32,17 @@ type ListIndexDocumentsRequest struct {
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
 	// Filters the returned file list by file import status. Valid values:
 	//
-	// - INSERT_ERROR: failed to import to the index.
+	// - INSERT_ERROR: Failed to import to the index.
 	//
-	// - RUNNING: index building in progress.
+	// - RUNNING: Index building in progress.
 	//
-	// - DELETED: deleted.
+	// - DELETED: Deleted.
 	//
-	// - FINISH: index building succeeded.
+	// - FINISH: Index building succeeded.
 	//
-	// - PARSE_FAILED: parsing failed.
+	// - PARSE_FAILED: Parsing failed.
 	//
-	// - DOC_PARSING: parsing in progress.
+	// - DOC_PARSING: Parsing in progress.
 	//
 	// Default value: empty, which means no filtering by file import status.
 	//
@@ -54,7 +54,7 @@ type ListIndexDocumentsRequest struct {
 	//
 	// - true: Performs fuzzy matching on the returned file list based on the file name.
 	//
-	// - false: Performs exact matching on the returned file list based on the file name.
+	// - false: Performs exact matching based on the file name.
 	//
 	// Default value: false.
 	//
@@ -70,7 +70,7 @@ type ListIndexDocumentsRequest struct {
 	//
 	// 79c0alxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The page number. Minimum value: 1. Default value: 1.
+	// The page number to query. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//

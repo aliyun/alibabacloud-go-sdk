@@ -30,9 +30,9 @@ type GetAvailableParserTypesResponseBody struct {
 	//
 	// DataCenter.Throttling
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The business data returned upon a successful request.
 	Data *GetAvailableParserTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message that is returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type GetAvailableParserTypesResponseBody struct {
 	//
 	// 17204B98-7734-4F9A-8464-2446XXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *GetAvailableParserTypesResponseBody) Validate() error {
 }
 
 type GetAvailableParserTypesResponseBodyData struct {
-	// The file type, which is the same as the FileType in the input parameter.
+	// The file type, which is the same as the FileType input parameter.
 	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The list of supported parsers
+	// The list of parsers supported for the specified file type.
 	ParserList []*GetAvailableParserTypesResponseBodyDataParserList `json:"ParserList,omitempty" xml:"ParserList,omitempty" type:"Repeated"`
 }
 
@@ -188,17 +188,17 @@ type GetAvailableParserTypesResponseBodyDataParserList struct {
 	//
 	// example:
 	//
-	// 智能文档解析
+	// Intelligent Document Parsing
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The parser code. Valid values:
 	//
-	// 	- DOCMIND (Intelligent parsing)
+	// - DOCMIND: Intelligent Document Parsing.
 	//
-	// 	- DOCMIND_DIGITAL (Digital parsing)
+	// - DOCMIND_DIGITAL: Electronic Document Parsing.
 	//
-	// 	- DOCMIND_LLM_VERSION (LLM parsing)
+	// - DOCMIND_LLM_VERSION: LLM-based Document Parsing.
 	//
-	// 	- DASH_QWEN_VL_PARSER (Qwen VL parsing)
+	// - DASH_QWEN_VL_PARSER: Qwen-VL Parsing.
 	//
 	// example:
 	//

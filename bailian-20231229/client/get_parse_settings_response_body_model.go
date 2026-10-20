@@ -24,13 +24,13 @@ type iGetParseSettingsResponseBody interface {
 }
 
 type GetParseSettingsResponseBody struct {
-	// The status code.
+	// The error code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data fields.
+	// The business data returned when the request is successful.
 	Data []*GetParseSettingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type GetParseSettingsResponseBody struct {
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -138,33 +138,33 @@ func (s *GetParseSettingsResponseBody) Validate() error {
 }
 
 type GetParseSettingsResponseBodyData struct {
-	// The file type. Valid values are: pdf, docx, doc, etc. All supported file types in the category are listed here.
+	// The file type, specified as a file extension. Valid values include pdf, docx, and doc. All file types supported in the current category are listed.
 	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The parser used for files of the current type. Valid values:
+	// The parser used to parse files of the current type under this category. Valid values:
 	//
-	// 	- DOCMIND (Intelligent parsing)
+	// - DOCMIND: Intelligent Document Parsing.
 	//
-	// 	- DOCMIND_DIGITAL (Digital parsing)
+	// - DOCMIND_DIGITAL: Electronic Document Parsing.
 	//
-	// 	- DOCMIND_LLM_VERSION (LLM parsing)
+	// - DOCMIND_LLM_VERSION: LLM-based Document Parsing.
 	//
-	// 	- DASH_QWEN_VL_PARSER (Qwen VL parsing)
+	// - DASH_QWEN_VL_PARSER: Qwen VL Parsing.
 	//
 	// example:
 	//
 	// DOCMIND
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// The parser configuration. Currently, this is available only for Qwen VL parsing.
+	// The parser configuration. This parameter is returned only when the type is set to Qwen VL parsing.
 	ParserConfig *GetParseSettingsResponseBodyDataParserConfig `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty" type:"Struct"`
 	// The display name of the parsing method.
 	//
 	// example:
 	//
-	// 电子文档解析
+	// Electronic Document Parsing
 	ParserDisplayName *string `json:"ParserDisplayName,omitempty" xml:"ParserDisplayName,omitempty"`
 }
 
@@ -228,17 +228,17 @@ type GetParseSettingsResponseBodyDataParserConfig struct {
 	//
 	// qwen-vl-max
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The prompt used for parsing.
+	// The prompt used when calling Qwen VL parsing.
 	//
 	// example:
 	//
-	// #角色
+	// # Role
 	//
-	// 你是一个专业的图片内容标注人员，擅长识别并描述出图片中的内容。
+	// You are a professional image content annotator who excels at identifying and describing the content in images.
 	//
-	// # 任务目标
+	// # Task Objective
 	//
-	// 请结合输入图片，详细描述图片中的内容。
+	// Based on the input image, describe the content in the image in detail
 	ModelPrompt *string `json:"ModelPrompt,omitempty" xml:"ModelPrompt,omitempty"`
 }
 

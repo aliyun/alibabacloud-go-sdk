@@ -24,7 +24,7 @@ type iListFileResponseBody interface {
 }
 
 type ListFileResponseBody struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
@@ -136,17 +136,17 @@ func (s *ListFileResponseBody) Validate() error {
 type ListFileResponseBodyData struct {
 	// The list of files in the category.
 	FileList []*ListFileResponseBodyDataFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	// Indicates whether there is a next page of category data that matches the query conditions. Valid values:
+	// Indicates whether a next page exists for the category data that matches the query conditions. Valid values:
 	//
-	// - true: Yes.
+	// - true: A next page exists.
 	//
-	// - false: No.
+	// - false: No next page exists.
 	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// The number of entries per page for paging.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListFileResponseBodyData struct {
 	//
 	// 4jzbJk9J6lNeuXD9hP0viA==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries in the returned results.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type ListFileResponseBodyDataFileList struct {
 	//
 	// docx
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The reason for parsing failure.
+	// The reason for the parsing failure.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type ListFileResponseBodyDataFileList struct {
 	//
 	// DASHSCOPE_DOCMIND
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// The file size in bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
@@ -285,11 +285,11 @@ type ListFileResponseBodyDataFileList struct {
 	SizeInBytes *int64 `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
 	// The file parsing status. Valid values:
 	//
-	// - INIT: Initialization state. Waiting to be scheduled.
+	// - INIT: Initialization. The file is waiting to be scheduled.
 	//
 	// - PARSING: Parsing in progress.
 	//
-	// - PARSE_SUCCESS: Parsing completed.
+	// - PARSE_SUCCESS: Parsing succeeded.
 	//
 	// - PARSE_FAILED: Parsing failed.
 	//

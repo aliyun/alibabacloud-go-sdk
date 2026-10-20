@@ -68,15 +68,15 @@ type ChangeParseSettingRequest struct {
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	// The parser identifier code. Different parsers are applicable to different scenarios. For more information, see "Knowledge Base". Valid values:
 	//
-	// - DOCMIND (Intelligent Document Parsing)
+	// - DOCMIND (intelligent document parsing)
 	//
-	// - DOCMIND_DIGITAL (Electronic Document Parsing)
+	// - DOCMIND_DIGITAL (electronic document parsing)
 	//
-	// - DOCMIND_LLM_VERSION (Large Model Document Parsing)
+	// - DOCMIND_LLM_VERSION (large model document parsing)
 	//
-	// - DASH_QWEN_VL_PARSER (Qwen VL Parsing)
+	// - DASH_QWEN_VL_PARSER (Qwen VL parsing)
 	//
-	// - DOCMIND_LLM_VERSION_MEDIA (Audio/Video Parsing)
+	// - DOCMIND_LLM_VERSION_MEDIA (audio and video parsing)
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type ChangeParseSettingRequest struct {
 	//
 	// DOCMIND
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// The parser configuration. This parameter is required only when the parser is set to Qwen VL Parsing.
+	// The parser configuration. This parameter is required only when the parser is set to Qwen VL parsing.
 	ParserConfig *ChangeParseSettingRequestParserConfig `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty" type:"Struct"`
 }
 
@@ -148,17 +148,17 @@ type ChangeParseSettingRequestParserConfig struct {
 	//
 	// qwen-vl-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The prompt used when calling Qwen VL Parsing.
+	// The prompt used when calling Qwen VL parsing.
 	//
 	// example:
 	//
-	// #角色
+	// # Role
 	//
-	// 你是一个专业的图片内容标注人员，擅长识别并描述出图片中的内容。
+	// You are a professional image content annotator who excels at identifying and describing the content in images.
 	//
-	// # 任务目标
+	// # Task Objective
 	//
-	// 请结合输入图片，详细描述图片中的内容。
+	// Based on the input image, describe the content in the image in detail
 	ModelPrompt *string `json:"modelPrompt,omitempty" xml:"modelPrompt,omitempty"`
 }
 

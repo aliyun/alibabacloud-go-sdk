@@ -44,17 +44,17 @@ type DeleteFilesResponseBody struct {
 	//
 	// 17204B98-7734-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code returned by the API.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the API call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: The call was successful.
 	//
-	// - false: The call fails.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -177,11 +177,11 @@ type DeleteFilesResponseBodyDataDeleteFileResultList struct {
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The file deletion status. Valid values:
 	//
-	// - DELETED: The file is deleted.
+	// - DELETED: The file was deleted.
 	//
-	// - FAILED: The file fails to be deleted.
+	// - FAILED: The file failed to be deleted.
 	//
-	// - NOT_FOUND: The file is not found.
+	// - NOT_FOUND: The file was not found.
 	//
 	// example:
 	//

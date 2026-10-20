@@ -24,13 +24,13 @@ type iAddConnectorResponseBody interface {
 }
 
 type AddConnectorResponseBody struct {
-	// The error code. A value of `Success` indicates that the request succeeded.
+	// The error code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned by the operation.
+	// The business data field returned by the operation.
 	Data *AddConnectorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -38,23 +38,23 @@ type AddConnectorResponseBody struct {
 	//
 	// Current file status does not support delete.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 35A267BF-FBFA-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *AddConnectorResponseBody) Validate() error {
 }
 
 type AddConnectorResponseBodyData struct {
-	// The ID of the connector.
+	// The connector ID.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type ListMemoriesResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The long-term memory entity list.
+	// The list of long-term memory entities.
 	Memories []*ListMemoriesResponseBodyMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
 	// The pagination token returned in this call.
 	//
@@ -50,7 +50,7 @@ type ListMemoriesResponseBody struct {
 	//
 	// 105
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// The ID of the workspace to which the long-term memory entity list belongs.
+	// The workspace ID to which the long-term memory list belongs.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ListMemoriesResponseBodyMemories struct {
 	//
 	// example:
 	//
-	// 我的大模型应用$APP_ID关于A用户的长期记忆体
+	// Long-term memory of user A for my large model application $APP_ID
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The long-term memory ID.
 	//

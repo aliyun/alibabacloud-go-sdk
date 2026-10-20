@@ -24,13 +24,13 @@ type iApplyFileUploadLeaseResponseBody interface {
 }
 
 type ApplyFileUploadLeaseResponseBody struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The business data field of the operation.
 	Data *ApplyFileUploadLeaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type ApplyFileUploadLeaseResponseBody struct {
 	//
 	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code returned.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the API call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: Successful.
 	//
-	// - false: The call failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ApplyFileUploadLeaseResponseBody) Validate() error {
 }
 
 type ApplyFileUploadLeaseResponseBodyData struct {
-	// The unique ID of the lease. You need to use this parameter when you call the **AddFile*	- API.
+	// The unique ID of the lease. This parameter is required when calling the **AddFile*	- operation.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type ApplyFileUploadLeaseResponseBodyData struct {
 	FileUploadLeaseId *string `json:"FileUploadLeaseId,omitempty" xml:"FileUploadLeaseId,omitempty"`
 	// The HTTP request parameters for uploading the file.
 	Param *ApplyFileUploadLeaseResponseBodyDataParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	// The upload method of the file. Valid values:
+	// The upload method for the file. Valid values:
 	//
 	// - OSS.PreSignedURL
 	//
@@ -199,9 +199,9 @@ func (s *ApplyFileUploadLeaseResponseBodyData) Validate() error {
 }
 
 type ApplyFileUploadLeaseResponseBodyDataParam struct {
-	// Key-value pairs that need to be included in the header. Both keys and values are strings.
+	// The key-value pairs to include in the request header. Both keys and values are strings.
 	//
-	// > The returned Content-Type may be empty. You can upload the file with the empty value.
+	// > The returned Content-Type may be empty. Use the empty value as-is when uploading.
 	//
 	// example:
 	//
@@ -219,9 +219,9 @@ type ApplyFileUploadLeaseResponseBodyDataParam struct {
 	//
 	// PUT
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The upload URL of the file.
+	// The upload URL for the file.
 	//
-	// > This URL is a pre-signed URL. FormData upload is not supported. You must upload the file in binary mode.
+	// > This URL is a pre-signed URL. It does not support FormData uploads. Use binary upload instead.
 	//
 	// example:
 	//

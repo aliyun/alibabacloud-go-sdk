@@ -50,7 +50,7 @@ type ListIndicesResponseBody struct {
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -136,13 +136,13 @@ func (s *ListIndicesResponseBody) Validate() error {
 type ListIndicesResponseBodyData struct {
 	// The list of knowledge bases.
 	Indices []*ListIndicesResponseBodyDataIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
-	// The specified page number.
+	// The page number returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The specified number of entries per page.
+	// The number of entries per page returned.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ func (s *ListIndicesResponseBodyData) Validate() error {
 }
 
 type ListIndicesResponseBodyDataIndices struct {
-	// The estimated chunk size. Valid values: 1 to 2048.
+	// The estimated chunk size. Valid value range: [1-2048].
 	//
 	// example:
 	//
@@ -230,15 +230,15 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// recommend
 	ConfgModel *string `json:"ConfgModel,omitempty" xml:"ConfgModel,omitempty"`
-	// The knowledge base description.
+	// The description of the knowledge base.
 	//
 	// example:
 	//
-	// Products in this list are mainly for overseas customers
+	// Products in this catalog are mainly for overseas customers
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of file IDs.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
-	// The embedding model name. Valid values:
+	// The name of the embedding model. Valid values:
 	//
 	// <props="china">
 	//
@@ -274,25 +274,43 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// lecxr5xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The knowledge base name.
+	// The name of the knowledge base.
 	//
 	// example:
 	//
-	// XXXX Product List
+	// Product Catalog
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The chunk overlap size. Valid values: 0 to 1024.
+	// The chunk overlap size. Valid value range: [0-1024].
 	//
 	// example:
 	//
 	// 10
 	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
-	// The similarity threshold. Valid values: 0.01 to 1.00.
+	// The compute unit (CU) specification of the commercial knowledge base. This parameter is valid only for Enterprise Edition.
+	//
+	// example:
+	//
+	// 1
+	PipelineCommercialCu *int32 `json:"PipelineCommercialCu,omitempty" xml:"PipelineCommercialCu,omitempty"`
+	// The commercial knowledge base edition.
+	//
+	// example:
+	//
+	// standard
+	PipelineCommercialType *string `json:"PipelineCommercialType,omitempty" xml:"PipelineCommercialType,omitempty"`
+	// The storage usage of the knowledge base. Unit: GB.
+	//
+	// example:
+	//
+	// 0.03
+	PipelineStorageUsage *float64 `json:"PipelineStorageUsage,omitempty" xml:"PipelineStorageUsage,omitempty"`
+	// The similarity threshold. Valid value range: [0.01-1.00].
 	//
 	// example:
 	//
 	// 0.01
 	RerankMinScore *string `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
-	// The rerank model name. Valid values:
+	// The name of the rerank model. Valid values:
 	//
 	// <props="china">
 	//
@@ -387,14 +405,15 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// DATA_CENTER_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The knowledge base type. Valid values:
+	// The type of the knowledge base. Valid values:
 	//
 	// - UNSTRUCTURED: document search.
 	//
 	// example:
 	//
 	// UNSTRUCTURED
-	StructureType         *string                                                    `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	StructureType *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	// The index configuration for data query or image Q&A knowledge bases.
 	StructuredIndexConfig []*ListIndicesResponseBodyDataIndicesStructuredIndexConfig `json:"StructuredIndexConfig,omitempty" xml:"StructuredIndexConfig,omitempty" type:"Repeated"`
 }
 
@@ -440,6 +459,18 @@ func (s *ListIndicesResponseBodyDataIndices) GetName() *string {
 
 func (s *ListIndicesResponseBodyDataIndices) GetOverlapSize() *int32 {
 	return s.OverlapSize
+}
+
+func (s *ListIndicesResponseBodyDataIndices) GetPipelineCommercialCu() *int32 {
+	return s.PipelineCommercialCu
+}
+
+func (s *ListIndicesResponseBodyDataIndices) GetPipelineCommercialType() *string {
+	return s.PipelineCommercialType
+}
+
+func (s *ListIndicesResponseBodyDataIndices) GetPipelineStorageUsage() *float64 {
+	return s.PipelineStorageUsage
 }
 
 func (s *ListIndicesResponseBodyDataIndices) GetRerankMinScore() *string {
@@ -523,6 +554,21 @@ func (s *ListIndicesResponseBodyDataIndices) SetOverlapSize(v int32) *ListIndice
 	return s
 }
 
+func (s *ListIndicesResponseBodyDataIndices) SetPipelineCommercialCu(v int32) *ListIndicesResponseBodyDataIndices {
+	s.PipelineCommercialCu = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetPipelineCommercialType(v string) *ListIndicesResponseBodyDataIndices {
+	s.PipelineCommercialType = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetPipelineStorageUsage(v float64) *ListIndicesResponseBodyDataIndices {
+	s.PipelineStorageUsage = &v
+	return s
+}
+
 func (s *ListIndicesResponseBodyDataIndices) SetRerankMinScore(v string) *ListIndicesResponseBodyDataIndices {
 	s.RerankMinScore = &v
 	return s
@@ -582,10 +628,30 @@ func (s *ListIndicesResponseBodyDataIndices) Validate() error {
 }
 
 type ListIndicesResponseBodyDataIndicesStructuredIndexConfig struct {
-	IsRecall *bool   `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
-	IsSearch *bool   `json:"IsSearch,omitempty" xml:"IsSearch,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Specifies whether this field participates in model responses. A value of **true*	- indicates that the retrieval results of this column are used as input for the large language model to generate answers.
+	//
+	// example:
+	//
+	// true
+	IsRecall *bool `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
+	// Specifies whether this field participates in knowledge base retrieval. A value of **true*	- indicates that the knowledge base can search within the data of this column.
+	//
+	// example:
+	//
+	// true
+	IsSearch *bool `json:"IsSearch,omitempty" xml:"IsSearch,omitempty"`
+	// The name of the index field.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the index field.
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListIndicesResponseBodyDataIndicesStructuredIndexConfig) String() string {

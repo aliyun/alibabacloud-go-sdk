@@ -20,7 +20,7 @@ type CreateMemoryResponseBody struct {
 	//
 	// > Store this value properly. It is required for all subsequent API operations related to this long-term memory.
 	//
-	// >.
+	// >
 	//
 	// example:
 	//

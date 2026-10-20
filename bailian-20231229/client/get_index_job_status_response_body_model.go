@@ -24,13 +24,13 @@ type iGetIndexJobStatusResponseBody interface {
 }
 
 type GetIndexJobStatusResponseBody struct {
-	// The error status code.
+	// The error code.
 	//
 	// example:
 	//
 	// Index.Forbidden
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data field returned by the operation.
+	// The business data field of the operation.
 	Data *GetIndexJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -50,11 +50,11 @@ type GetIndexJobStatusResponseBody struct {
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The call was successful.
 	//
-	// - false: Failed.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -134,23 +134,23 @@ func (s *GetIndexJobStatusResponseBody) Validate() error {
 }
 
 type GetIndexJobStatusResponseBodyData struct {
-	// The list of files imported in this job.
+	// The list of files imported in this task.
 	Documents []*GetIndexJobStatusResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
-	// The job ID.
+	// The job task ID.
 	//
 	// example:
 	//
 	// 66122af12a4e45ddae6bd6c84555xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The current status of the knowledge base job. Valid values:
+	// The current status of the knowledge base job task. Valid values:
 	//
-	// - COMPLETED: Execution succeeded.
+	// - COMPLETED: The task is executed successfully.
 	//
-	// - FAILED: Execution failed.
+	// - FAILED: The task failed to be executed.
 	//
-	// - RUNNING: Execution in progress.
+	// - RUNNING: The task is being executed.
 	//
-	// - PENDING: Waiting for execution.
+	// - PENDING: The task is pending execution.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ func (s *GetIndexJobStatusResponseBodyData) Validate() error {
 }
 
 type GetIndexJobStatusResponseBodyDataDocuments struct {
-	// The error status code.
+	// The error code.
 	//
 	// example:
 	//
@@ -223,9 +223,14 @@ type GetIndexJobStatusResponseBodyDataDocuments struct {
 	//
 	// example:
 	//
-	// XXX产品介绍
-	DocName     *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// XXX Product Introduction
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// The time when the file was last modified. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1782209511000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The error message.
 	//
 	// example:
@@ -234,17 +239,17 @@ type GetIndexJobStatusResponseBodyDataDocuments struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The file import status. Valid values:
 	//
-	// - INSERT_ERROR: Failed to import into the index.
+	// - INSERT_ERROR: The index import failed.
 	//
-	// - RUNNING: Index building in progress.
+	// - RUNNING: The index is being built.
 	//
-	// - DELETED: Deleted.
+	// - DELETED: The file is deleted.
 	//
-	// - FINISH: Index building succeeded.
+	// - FINISH: The index is built successfully.
 	//
-	// - PARSE_FAILED: Parsing failed.
+	// - PARSE_FAILED: The parsing failed.
 	//
-	// - DOC_PARSING: Parsing in progress.
+	// - DOC_PARSING: The file is being parsed.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type DeleteFileResponseBody struct {
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The business data field of the API response.
+	// The business data field of the operation.
 	Data *DeleteFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -38,23 +38,23 @@ type DeleteFileResponseBody struct {
 	//
 	// Current file status does not support delete.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code returned by the API.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the API call succeeded. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// - true: Succeeded.
+	// - true: The call succeeded.
 	//
-	// - false: Failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

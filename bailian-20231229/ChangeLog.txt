@@ -1,3 +1,10 @@
+2026-10-20 Version: v2.14.4
+- Update API DescribeFile: add response parameters Body.Data.OriginFileDownloadUrl.
+- Update API ListIndices: add response parameters Body.Data.Indices.$.PipelineCommercialCu.
+- Update API ListIndices: add response parameters Body.Data.Indices.$.PipelineCommercialType.
+- Update API ListIndices: add response parameters Body.Data.Indices.$.PipelineStorageUsage.
+
+
 2026-08-04 Version: v2.14.3
 - Update API ListIndices: add response parameters Body.Data.Indices.$.StructuredIndexConfig.
 

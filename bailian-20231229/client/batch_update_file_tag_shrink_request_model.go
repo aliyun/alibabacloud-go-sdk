@@ -16,11 +16,11 @@ type iBatchUpdateFileTagShrinkRequest interface {
 }
 
 type BatchUpdateFileTagShrinkRequest struct {
-	// A list of files to update.
+	// The list of documents to update.
 	//
 	// This parameter is required.
 	FileInfosShrink *string `json:"FileInfos,omitempty" xml:"FileInfos,omitempty"`
-	// The update mode. Valid values are APPEND and OVERWRITE.
+	// The update mode. Valid values: APPEND (append) and OVERWRITE (overwrite).
 	//
 	// example:
 	//

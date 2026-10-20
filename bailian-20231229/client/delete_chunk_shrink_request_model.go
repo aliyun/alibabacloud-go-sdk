@@ -16,7 +16,7 @@ type iDeleteChunkShrinkRequest interface {
 }
 
 type DeleteChunkShrinkRequest struct {
-	// The list of text chunks to delete. A maximum of 10 text chunk IDs can be specified in a single request.
+	// The list of text chunk IDs to delete. A maximum of 10 text chunk IDs can be passed in a single request.
 	//
 	// This parameter is required.
 	ChunkIdsShrink *string `json:"ChunkIds,omitempty" xml:"ChunkIds,omitempty"`

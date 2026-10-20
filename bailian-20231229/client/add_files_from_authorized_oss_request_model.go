@@ -26,7 +26,7 @@ type iAddFilesFromAuthorizedOssRequest interface {
 }
 
 type AddFilesFromAuthorizedOssRequest struct {
-	// The ID of the category to which the files are imported. This is the `CategoryId` returned by the AddCategory operation. You can also obtain the category ID by clicking the ID icon next to the category name on the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files tab<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab. You can pass in `default` to use the system-created default category.
+	// The ID of the destination category for the imported files. This is the CategoryId returned by the AddCategory operation. You can also obtain the category ID by clicking the ID icon next to the category name on the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) > Files tab<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) > Files tab. You can set this parameter to default to use the default category created by the system.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type AddFilesFromAuthorizedOssRequest struct {
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee35xxxxxxxx
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The category type. Optional. Default value: UNSTRUCTURED. Valid values:
+	// The category type. This parameter is optional. Default value: UNSTRUCTURED. Valid values:
 	//
-	// - UNSTRUCTURED: category for building knowledge base scenarios.
+	// - UNSTRUCTURED: category, used for building knowledge bases.
 	//
 	// <props="china">
 	//
-	// > This operation does not support importing SESSION_FILE for agent application [conversation interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction). Use the **AddFile*	- operation to upload SESSION_FILE from a local source.
+	// > This operation does not support importing SESSION_FILE for [session interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction) in agent applications. Use the **AddFile*	- operation to upload SESSION_FILE from your local machine.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type AddFilesFromAuthorizedOssRequest struct {
 	//
 	// UNSTRUCTURED
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// The list of files to import. A maximum of 10 files can be uploaded at a time.
+	// The list of files to import. You can upload up to 10 files at a time.
 	//
-	// > A maximum of 10 files can be uploaded at a time.
+	// > You can upload up to 10 files at a time.
 	//
 	// >
 	//
 	// This parameter is required.
 	FileDetails []*AddFilesFromAuthorizedOssRequestFileDetails `json:"FileDetails,omitempty" xml:"FileDetails,omitempty" type:"Repeated"`
-	// The name of the OSS bucket. For more information, see [Buckets](https://help.aliyun.com/document_detail/177682.html).
+	// The name of the OSS bucket. For more information, see [Buckets](https://help.aliyun.com/document_detail/177682.html). Before you import data from OSS for the first time, you must complete the authorization as prompted in the Model Studio console and add a tag with the key bailian-datahub-access and the value read to the destination bucket. You must also authorize the OSS service-linked role as prompted in the Model Studio console (service name: datahub.sfm.aliyuncs.com).
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type AddFilesFromAuthorizedOssRequest struct {
 	//
 	// bucketNamexxxxx
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The region ID of the OSS bucket. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	// The region ID of the OSS bucket. For more information about how to obtain the ID, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type AddFilesFromAuthorizedOssRequest struct {
 	//
 	// cn-beijing
 	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
-	// Specifies whether to overwrite files with the same OssKey in the category. Default value: false, which means files are not overwritten.
+	// Specifies whether to overwrite identical files in the category based on the OssKey. Default value: false, which means identical files are not overwritten.
 	//
 	// example:
 	//
 	// false
 	OverWriteFileByOssKey *bool `json:"OverWriteFileByOssKey,omitempty" xml:"OverWriteFileByOssKey,omitempty"`
-	// The list of tags associated with the file. Default value: empty, which means the file is not associated with any tags. A maximum of 10 tags can be specified.
+	// The list of tags associated with the file. Default value: empty, which means the file is not associated with any tags. You can specify up to 10 tags.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -167,17 +167,17 @@ func (s *AddFilesFromAuthorizedOssRequest) Validate() error {
 }
 
 type AddFilesFromAuthorizedOssRequestFileDetails struct {
-	// The name of the file to import. The file name must include the file format extension.
+	// The name of the file to import. Make sure that the file name extension is included.
 	//
 	// - Supported formats: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, and gif.
 	//
 	// - The file name must be 4 to 128 characters in length.
 	//
-	// - For file upload requirements and limits, see [Knowledge base quotas and limits](https://help.aliyun.com/document_detail/2880605.html).
+	// - For more information about the limits on file uploads, see [Knowledge base quotas and limits](https://help.aliyun.com/document_detail/2880605.html).
 	//
-	// 	Notice: If the name of the imported file is the same as an existing file in the knowledge base, the operation still returns a `Status` of `SUCCESS`, but the file is not actually imported. The existing file with the same name remains unchanged. Make sure that each imported file name is unique.
+	// 	Notice: If the name of the imported file is the same as the name of an existing file in the knowledge base, the operation still returns SUCCESS for Status, but the file is not actually imported into the knowledge base and the existing file with the same name remains unchanged. Make sure that the name of each imported file is unique.</notice>
 	//
-	// > To create a data table and upload data, use the Model Studio console. This is not supported through the API.
+	// > To add a data table and upload data, use the Alibaba Cloud Model Studio console. This is not supported by the API.
 	//
 	// This parameter is required.
 	//
@@ -185,7 +185,7 @@ type AddFilesFromAuthorizedOssRequestFileDetails struct {
 	//
 	// this_is_temp_xxxx.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The key of the file in the OSS bucket. For more information, see [Object naming conventions](https://help.aliyun.com/document_detail/273129.html).
+	// The key of the imported file in the OSS bucket. For more information, see [Object naming](https://help.aliyun.com/document_detail/273129.html).
 	//
 	// This parameter is required.
 	//
@@ -195,17 +195,17 @@ type AddFilesFromAuthorizedOssRequestFileDetails struct {
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
 	// The parser type. Valid values:
 	//
-	// - DOCMIND: intelligent document parsing.
+	// - DOCMIND (Intelligent document parsing)
 	//
-	// - DOCMIND_DIGITAL: electronic document parsing.
+	// - DOCMIND_DIGITAL (Electronic document parsing)
 	//
-	// - DOCMIND_LLM_VERSION: LLM-based document parsing.
+	// - DOCMIND_LLM_VERSION (Large model document parsing)
 	//
-	// - DASH_QWEN_VL_PARSER: Qwen VL parsing.
+	// - DASH_QWEN_VL_PARSER (Qwen VL parsing)
 	//
-	// - DOCMIND_LLM_VERSION_MEDIA: audio and video parsing.
+	// - DOCMIND_LLM_VERSION_MEDIA (Audio and video parsing)
 	//
-	// - AUTO_SELECT: automatic parser selection.
+	// - AUTO_SELECT (Automatic parser selection)
 	//
 	// <props="intl">
 	//
@@ -214,9 +214,9 @@ type AddFilesFromAuthorizedOssRequestFileDetails struct {
 	//
 	// <props="china">
 	//
-	// <note>When CategoryType is UNSTRUCTURED, the parser parses the uploaded file based on the data parsing settings of the current category.</note>
+	// <note>If CategoryType is set to UNSTRUCTURED, the file is parsed based on the data parsing settings of the current category.</note>
 	//
-	// <note>When CategoryType is SESSION_FILE, the system uses the default method (which cannot be changed) to parse the file content.</note>
+	// <note>If CategoryType is set to SESSION_FILE, the system parses the file content by using the default method, which cannot be changed.</note>
 	//
 	// example:
 	//
@@ -290,13 +290,13 @@ type AddFilesFromAuthorizedOssRequestFileDetailsParserConfig struct {
 	//
 	// example:
 	//
-	// #角色
+	// # Role
 	//
-	// 你是一个专业的图片内容标注人员，擅长识别并描述出图片中的内容。
+	// You are a professional image content annotator, skilled at identifying and describing the content in images.
 	//
-	// # 任务目标
+	// # Task objective
 	//
-	// 请结合输入图片，详细描述图片中的内容。
+	// Based on the input image, describe the content in the image in detail
 	ModelPrompt *string `json:"ModelPrompt,omitempty" xml:"ModelPrompt,omitempty"`
 }
 

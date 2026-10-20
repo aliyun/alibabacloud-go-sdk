@@ -30,7 +30,7 @@ type ListIndexDocumentsResponseBody struct {
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data field returned by the operation.
+	// The business data field of the operation.
 	Data *ListIndexDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -235,7 +235,7 @@ type ListIndexDocumentsResponseBodyDataDocuments struct {
 	//
 	// 110002
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
+	// The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, EXCEL.
 	//
 	// example:
 	//

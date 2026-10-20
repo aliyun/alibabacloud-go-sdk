@@ -24,13 +24,13 @@ type iListCategoryResponseBody interface {
 }
 
 type ListCategoryResponseBody struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response payload.
+	// The business data field of the operation.
 	Data *ListCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type ListCategoryResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code for the request.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The request succeeded.
+	// - true: Successful.
 	//
-	// - `false`: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,31 +134,31 @@ func (s *ListCategoryResponseBody) Validate() error {
 }
 
 type ListCategoryResponseBodyData struct {
-	// The list of categories.
+	// The category list.
 	CategoryList []*ListCategoryResponseBodyDataCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
-	// Indicates whether more results are available for retrieval. Valid values:
+	// Indicates whether a next page of category data that matches the query conditions exists. Valid values:
 	//
-	// - `true`: More results are available.
+	// - true: Yes.
 	//
-	// - `false`: This is the last page of results.
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// The maximum number of results to return per page.
+	// The number of categories per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. This parameter is omitted when no more results are available.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAALHWGpGoYCcYMxiFfmlhvh7Z4G8jiXR6IjHYd+M9WQVJ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of matching categories.
+	// The total number of categories in the returned results.
 	//
 	// example:
 	//
@@ -243,29 +243,29 @@ type ListCategoryResponseBodyDataCategoryList struct {
 	//
 	// example:
 	//
-	// 类目1
+	// Category1
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The category type. The only valid value is:
+	// The category type. Valid values:
 	//
-	// - `UNSTRUCTURED`: A standard category.
+	// - UNSTRUCTURED: category.
 	//
 	// example:
 	//
 	// UNSTRUCTURED
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// Indicates whether the category is the default. Valid values:
+	// Indicates whether the category is a default category. Valid values:
 	//
-	// - `true`: The category is the default.
+	// - true: Yes.
 	//
-	// - `false`: The category is not the default.
+	// - false: No.
 	//
-	// You cannot delete the default category.
+	// Default categories cannot be deleted.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The parent category ID.
+	// The category ID of the parent category.
 	//
 	// example:
 	//

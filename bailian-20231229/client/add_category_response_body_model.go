@@ -30,7 +30,7 @@ type AddCategoryResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data field returned by the operation.
 	Data *AddCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -38,23 +38,23 @@ type AddCategoryResponseBody struct {
 	//
 	// Requests throttling triggered.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The call was successful.
 	//
-	// - false: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -134,17 +134,17 @@ func (s *AddCategoryResponseBody) Validate() error {
 }
 
 type AddCategoryResponseBodyData struct {
-	// The ID of the category. Save this ID for future API calls that use this category.
+	// The category ID. Store this value properly because it is required for all subsequent API operations related to this category.
 	//
 	// example:
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3xxxxxxxx
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
-	// 类目名称
+	// CategoryName
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 }
 

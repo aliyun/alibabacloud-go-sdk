@@ -24,13 +24,13 @@ type iAddFileResponseBody interface {
 }
 
 type AddFileResponseBody struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data field returned by the operation.
+	// The business data field of the operation.
 	Data *AddFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -50,11 +50,11 @@ type AddFileResponseBody struct {
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The call was successful.
+	// - true: Successful.
 	//
-	// - false: The call failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type AddFileResponseBodyData struct {
 	//
 	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The parser type used to parse the file. Valid values:
+	// The parser type used to parse this file. Valid values:
 	//
 	// - DASHSCOPE_DOCMIND: Alibaba Cloud intelligent document parsing.
 	//

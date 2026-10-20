@@ -25,14 +25,22 @@ type iDeleteChunkResponseBody interface {
 
 type DeleteChunkResponseBody struct {
 	// The error status code.
+	//
+	// example:
+	//
+	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The business data returned upon a successful request.
+	// The business data returned when the request succeeds.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -46,11 +54,11 @@ type DeleteChunkResponseBody struct {
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The call was successful.
+	// - true: The operation was successful.
 	//
-	// - false: The call failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

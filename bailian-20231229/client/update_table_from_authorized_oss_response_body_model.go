@@ -24,33 +24,33 @@ type iUpdateTableFromAuthorizedOssResponseBody interface {
 }
 
 type UpdateTableFromAuthorizedOssResponseBody struct {
-	// Error status code.
+	// The error status code.
 	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data field of the response.
+	// The data field returned by the operation.
 	Data *UpdateTableFromAuthorizedOssResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 7BA8ADD9-53D6-53F0-918F-A1E776AD230E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code returned by the operation.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the operation succeeded.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *UpdateTableFromAuthorizedOssResponseBody) Validate() error {
 }
 
 type UpdateTableFromAuthorizedOssResponseBodyData struct {
-	// Current table status. After upload, the status usually changes to TO_IMPORT. This means the system has accepted the uploaded file and is waiting to schedule it into the data table.
+	// The current table status. After upload, the status typically changes to TO_IMPORT, indicating the system has received the uploaded file and is waiting to schedule the write to the data table.
 	//
 	// example:
 	//
 	// TO_IMPORT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Same as the input TableId parameter.
+	// The table ID, which is the same as the input parameter TableId.
 	//
 	// example:
 	//

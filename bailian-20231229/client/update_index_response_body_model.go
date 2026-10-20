@@ -30,7 +30,7 @@ type UpdateIndexResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data field returned by the operation.
 	Data *UpdateIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type UpdateIndexResponseBody struct {
 	//
 	// 17204B98-7734-4F9A-8464-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code returned by the API.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// true: The request was successful.
+	// true: The call was successful.
 	//
-	// false: The request failed.
+	// false: The call failed.
 	//
 	// example:
 	//

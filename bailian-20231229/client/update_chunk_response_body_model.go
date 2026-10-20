@@ -25,14 +25,22 @@ type iUpdateChunkResponseBody interface {
 
 type UpdateChunkResponseBody struct {
 	// The error status code.
+	//
+	// example:
+	//
+	// Index.InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The business data returned upon a successful request.
+	// The business data returned when the request succeeds.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Required parameter missing or invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -48,7 +56,7 @@ type UpdateChunkResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: Succeeded.
+	// - true: Successful.
 	//
 	// - false: Failed.
 	//

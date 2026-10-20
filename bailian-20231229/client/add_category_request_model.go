@@ -20,17 +20,17 @@ type iAddCategoryRequest interface {
 }
 
 type AddCategoryRequest struct {
-	// The name of the category. The name must be 1 to 20 characters long. It can contain Unicode letters, such as English letters and Chinese characters, along with digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The category name. The name must be 1 to 20 characters in length and can contain characters in the Unicode letter category, including letters, Chinese characters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 产品清单
+	// ProductList
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The type of the category. Valid value:
+	// The category type. Valid values:
 	//
-	// - UNSTRUCTURED: A category.
+	// - UNSTRUCTURED: category.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type AddCategoryRequest struct {
 	//
 	// UNSTRUCTURED
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// The ID of the connector instance. You can obtain the ID from the Alibaba Cloud Model Studio console.
+	// The instance ID of the data connector (Connector). Obtain this value from the Model Studio console.
 	//
 	// example:
 	//
 	// conn_xxxx
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The ID of the parent category under which the new category is created. If you leave this parameter empty, a top-level category is created.
+	// The ID of the parent category. The new category is created under this parent category. If this parameter is left empty, a first-level category is created.
 	//
 	// example:
 	//

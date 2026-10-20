@@ -30,7 +30,7 @@ type DeleteCategoryResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data field returned by the operation.
+	// The business data field of the operation.
 	Data *DeleteCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//

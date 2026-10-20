@@ -30,7 +30,7 @@ type AddFilesFromAuthorizedOssResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data field returned by the operation.
+	// The business data field of the operation.
 	Data *AddFilesFromAuthorizedOssResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -50,11 +50,11 @@ type AddFilesFromAuthorizedOssResponseBody struct {
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The operation is successful.
 	//
-	// - false: Failed.
+	// - false: The operation fails.
 	//
 	// example:
 	//
@@ -169,13 +169,13 @@ func (s *AddFilesFromAuthorizedOssResponseBodyData) Validate() error {
 }
 
 type AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList struct {
-	// The file ID. Keep this value safe because it is required for all subsequent API operations related to this file.
+	// The file ID. Keep this value secure because it is used for all subsequent API operations related to this file.
 	//
 	// example:
 	//
 	// file_809f469a59ac449586ec692576xxxxx_102248XXX
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The error message returned when the file import fails.
+	// The error message returned when the file fails to be imported.
 	//
 	// example:
 	//
@@ -189,11 +189,11 @@ type AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList struct {
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
 	// The file import status. Valid values:
 	//
-	// - SUCCESS: The import to application data is complete.
+	// - SUCCESS: The application data is imported.
 	//
-	// - FAILED: The import to application data failed.
+	// - FAILED: The application data fails to be imported.
 	//
-	// > Only files with a SUCCESS status can be used to create or update a knowledge base.
+	// > Only files whose status is SUCCESS can be used to create or update knowledge bases.
 	//
 	// >
 	//

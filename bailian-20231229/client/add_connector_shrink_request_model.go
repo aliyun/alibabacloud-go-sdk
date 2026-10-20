@@ -36,15 +36,15 @@ type AddConnectorShrinkRequest struct {
 	//
 	// FILE
 	ConnectorType *string `json:"ConnectorType,omitempty" xml:"ConnectorType,omitempty"`
-	// The description for the connector.
+	// The description of the connector.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 文件连接器
+	// File connector
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameters for the file connector.
+	// The configuration parameters for the file connector.
 	FileConnectorConfigShrink *string `json:"FileConnectorConfig,omitempty" xml:"FileConnectorConfig,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type iChangeParseSettingResponseBody interface {
 }
 
 type ChangeParseSettingResponseBody struct {
-	// The error status code.
+	// The error code.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ChangeParseSettingResponseBody) Validate() error {
 }
 
 type ChangeParseSettingResponseBodyData struct {
-	// Indicates whether the configuration was changed. Valid values:
+	// Indicates whether the configuration was changed.
 	//
 	// - true: The configuration was updated.
 	//
