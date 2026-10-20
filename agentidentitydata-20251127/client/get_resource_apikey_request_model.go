@@ -11,19 +11,16 @@ type iGetResourceAPIKeyRequest interface {
 	GoString() string
 	SetResourceCredentialProviderName(v string) *GetResourceAPIKeyRequest
 	GetResourceCredentialProviderName() *string
+	SetTokenVaultName(v string) *GetResourceAPIKeyRequest
+	GetTokenVaultName() *string
 	SetWorkloadAccessToken(v string) *GetResourceAPIKeyRequest
 	GetWorkloadAccessToken() *string
 }
 
 type GetResourceAPIKeyRequest struct {
-	// example:
-	//
-	// test-api-key-provider
 	ResourceCredentialProviderName *string `json:"ResourceCredentialProviderName,omitempty" xml:"ResourceCredentialProviderName,omitempty"`
-	// example:
-	//
-	// eyAgImFsZyI6ICJSUzI1N****
-	WorkloadAccessToken *string `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
+	TokenVaultName                 *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	WorkloadAccessToken            *string `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
 }
 
 func (s GetResourceAPIKeyRequest) String() string {
@@ -38,12 +35,21 @@ func (s *GetResourceAPIKeyRequest) GetResourceCredentialProviderName() *string {
 	return s.ResourceCredentialProviderName
 }
 
+func (s *GetResourceAPIKeyRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *GetResourceAPIKeyRequest) GetWorkloadAccessToken() *string {
 	return s.WorkloadAccessToken
 }
 
 func (s *GetResourceAPIKeyRequest) SetResourceCredentialProviderName(v string) *GetResourceAPIKeyRequest {
 	s.ResourceCredentialProviderName = &v
+	return s
+}
+
+func (s *GetResourceAPIKeyRequest) SetTokenVaultName(v string) *GetResourceAPIKeyRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

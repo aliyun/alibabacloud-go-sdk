@@ -20,21 +20,9 @@ type iAssumeRoleForWorkloadIdentityRequest interface {
 }
 
 type AssumeRoleForWorkloadIdentityRequest struct {
-	// example:
-	//
-	// 3600
-	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
-	// example:
-	//
-	// {"Statement": [{"Action": ["*"],"Effect": "Allow","Resource": ["*"]}],"Version":"1"}
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// session-name
-	RoleSessionName *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
-	// example:
-	//
-	// eyAgImFsZyI6ICJSUzI1NiIsIC****
+	DurationSeconds     *int64  `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RoleSessionName     *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
 	WorkloadAccessToken *string `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
 }
 

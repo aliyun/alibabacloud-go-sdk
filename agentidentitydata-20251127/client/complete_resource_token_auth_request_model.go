@@ -16,9 +16,6 @@ type iCompleteResourceTokenAuthRequest interface {
 }
 
 type CompleteResourceTokenAuthRequest struct {
-	// example:
-	//
-	// urn:ietf:params:oauth:request_uri:3030cabc-****-****-****-d0054944102a
 	SessionURI     *string                                         `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
 	UserIdentifier *CompleteResourceTokenAuthRequestUserIdentifier `json:"UserIdentifier,omitempty" xml:"UserIdentifier,omitempty" type:"Struct"`
 }
@@ -59,13 +56,7 @@ func (s *CompleteResourceTokenAuthRequest) Validate() error {
 }
 
 type CompleteResourceTokenAuthRequestUserIdentifier struct {
-	// example:
-	//
-	// externalUser
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// example:
-	//
-	// eyAgImFsZyI6ICJSU****
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserJWT *string `json:"UserJWT,omitempty" xml:"UserJWT,omitempty"`
 }
 

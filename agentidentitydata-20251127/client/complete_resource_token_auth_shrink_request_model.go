@@ -16,9 +16,6 @@ type iCompleteResourceTokenAuthShrinkRequest interface {
 }
 
 type CompleteResourceTokenAuthShrinkRequest struct {
-	// example:
-	//
-	// urn:ietf:params:oauth:request_uri:3030cabc-****-****-****-d0054944102a
 	SessionURI           *string `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
 	UserIdentifierShrink *string `json:"UserIdentifier,omitempty" xml:"UserIdentifier,omitempty"`
 }

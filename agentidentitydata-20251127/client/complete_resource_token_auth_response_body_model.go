@@ -14,9 +14,6 @@ type iCompleteResourceTokenAuthResponseBody interface {
 }
 
 type CompleteResourceTokenAuthResponseBody struct {
-	// example:
-	//
-	// 6A3344F3-BFA1-5BCB-B5F5-17572C0D5586
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

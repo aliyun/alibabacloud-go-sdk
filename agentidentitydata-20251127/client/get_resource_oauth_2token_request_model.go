@@ -9,6 +9,8 @@ type iGetResourceOAuth2TokenRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAudience(v string) *GetResourceOAuth2TokenRequest
+	GetAudience() *string
 	SetCustomParameters(v map[string]interface{}) *GetResourceOAuth2TokenRequest
 	GetCustomParameters() map[string]interface{}
 	SetCustomState(v string) *GetResourceOAuth2TokenRequest
@@ -25,6 +27,8 @@ type iGetResourceOAuth2TokenRequest interface {
 	GetScopes() []*string
 	SetSessionURI(v string) *GetResourceOAuth2TokenRequest
 	GetSessionURI() *string
+	SetTokenVaultName(v string) *GetResourceOAuth2TokenRequest
+	GetTokenVaultName() *string
 	SetWorkloadAccessToken(v string) *GetResourceOAuth2TokenRequest
 	GetWorkloadAccessToken() *string
 }
@@ -32,37 +36,18 @@ type iGetResourceOAuth2TokenRequest interface {
 type GetResourceOAuth2TokenRequest struct {
 	// example:
 	//
-	// {"param1": "test-param", "param2": "test-param2"}
-	CustomParameters map[string]interface{} `json:"CustomParameters,omitempty" xml:"CustomParameters,omitempty"`
-	// example:
-	//
-	// user-defined-value
-	CustomState *string `json:"CustomState,omitempty" xml:"CustomState,omitempty"`
-	// example:
-	//
-	// False
-	ForceAuthentication *bool `json:"ForceAuthentication,omitempty" xml:"ForceAuthentication,omitempty"`
-	// example:
-	//
-	// USER_FEDERATION
-	OAuth2Flow *string `json:"OAuth2Flow,omitempty" xml:"OAuth2Flow,omitempty"`
-	// example:
-	//
-	// oauth_credential_provider
-	ResourceCredentialProviderName *string `json:"ResourceCredentialProviderName,omitempty" xml:"ResourceCredentialProviderName,omitempty"`
-	// example:
-	//
-	// https://example.com
-	ResourceOAuth2ReturnURL *string   `json:"ResourceOAuth2ReturnURL,omitempty" xml:"ResourceOAuth2ReturnURL,omitempty"`
-	Scopes                  []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// urn:ietf:params:oauth:request_uri:43b7df1a-****-****-****-709375a44d8a
-	SessionURI *string `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
-	// example:
-	//
-	// eyAgImFsZyI6ICJSUzI1N****
-	WorkloadAccessToken *string `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
+	// app
+	Audience                       *string                `json:"Audience,omitempty" xml:"Audience,omitempty"`
+	CustomParameters               map[string]interface{} `json:"CustomParameters,omitempty" xml:"CustomParameters,omitempty"`
+	CustomState                    *string                `json:"CustomState,omitempty" xml:"CustomState,omitempty"`
+	ForceAuthentication            *bool                  `json:"ForceAuthentication,omitempty" xml:"ForceAuthentication,omitempty"`
+	OAuth2Flow                     *string                `json:"OAuth2Flow,omitempty" xml:"OAuth2Flow,omitempty"`
+	ResourceCredentialProviderName *string                `json:"ResourceCredentialProviderName,omitempty" xml:"ResourceCredentialProviderName,omitempty"`
+	ResourceOAuth2ReturnURL        *string                `json:"ResourceOAuth2ReturnURL,omitempty" xml:"ResourceOAuth2ReturnURL,omitempty"`
+	Scopes                         []*string              `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
+	SessionURI                     *string                `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
+	TokenVaultName                 *string                `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	WorkloadAccessToken            *string                `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
 }
 
 func (s GetResourceOAuth2TokenRequest) String() string {
@@ -71,6 +56,10 @@ func (s GetResourceOAuth2TokenRequest) String() string {
 
 func (s GetResourceOAuth2TokenRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetResourceOAuth2TokenRequest) GetAudience() *string {
+	return s.Audience
 }
 
 func (s *GetResourceOAuth2TokenRequest) GetCustomParameters() map[string]interface{} {
@@ -105,8 +94,17 @@ func (s *GetResourceOAuth2TokenRequest) GetSessionURI() *string {
 	return s.SessionURI
 }
 
+func (s *GetResourceOAuth2TokenRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *GetResourceOAuth2TokenRequest) GetWorkloadAccessToken() *string {
 	return s.WorkloadAccessToken
+}
+
+func (s *GetResourceOAuth2TokenRequest) SetAudience(v string) *GetResourceOAuth2TokenRequest {
+	s.Audience = &v
+	return s
 }
 
 func (s *GetResourceOAuth2TokenRequest) SetCustomParameters(v map[string]interface{}) *GetResourceOAuth2TokenRequest {
@@ -146,6 +144,11 @@ func (s *GetResourceOAuth2TokenRequest) SetScopes(v []*string) *GetResourceOAuth
 
 func (s *GetResourceOAuth2TokenRequest) SetSessionURI(v string) *GetResourceOAuth2TokenRequest {
 	s.SessionURI = &v
+	return s
+}
+
+func (s *GetResourceOAuth2TokenRequest) SetTokenVaultName(v string) *GetResourceOAuth2TokenRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

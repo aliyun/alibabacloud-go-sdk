@@ -16,13 +16,7 @@ type iGetWorkloadAccessTokenForUserIdRequest interface {
 }
 
 type GetWorkloadAccessTokenForUserIdRequest struct {
-	// example:
-	//
-	// externalUser1
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// example:
-	//
-	// test-workload-identity
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 

@@ -16,13 +16,7 @@ type iGetWorkloadAccessTokenForJWTRequest interface {
 }
 
 type GetWorkloadAccessTokenForJWTRequest struct {
-	// example:
-	//
-	// eyAgImFsZyI6ICJSUzI1NiIsI*******
-	UserToken *string `json:"UserToken,omitempty" xml:"UserToken,omitempty"`
-	// example:
-	//
-	// test-workload-identity
+	UserToken            *string `json:"UserToken,omitempty" xml:"UserToken,omitempty"`
 	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 

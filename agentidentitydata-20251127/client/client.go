@@ -223,6 +223,10 @@ func (client *Client) GetResourceAPIKeyWithOptions(request *GetResourceAPIKeyReq
 		body["ResourceCredentialProviderName"] = request.ResourceCredentialProviderName
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	if !dara.IsNil(request.WorkloadAccessToken) {
 		body["WorkloadAccessToken"] = request.WorkloadAccessToken
 	}
@@ -295,6 +299,10 @@ func (client *Client) GetResourceOAuth2TokenWithOptions(tmpReq *GetResourceOAuth
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Audience) {
+		body["Audience"] = request.Audience
+	}
+
 	if !dara.IsNil(request.CustomParametersShrink) {
 		body["CustomParameters"] = request.CustomParametersShrink
 	}
@@ -325,6 +333,10 @@ func (client *Client) GetResourceOAuth2TokenWithOptions(tmpReq *GetResourceOAuth
 
 	if !dara.IsNil(request.SessionURI) {
 		body["SessionURI"] = request.SessionURI
+	}
+
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
 	}
 
 	if !dara.IsNil(request.WorkloadAccessToken) {

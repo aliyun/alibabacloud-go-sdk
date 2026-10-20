@@ -14,9 +14,6 @@ type iGetWorkloadAccessTokenRequest interface {
 }
 
 type GetWorkloadAccessTokenRequest struct {
-	// example:
-	//
-	// test-workload-identity
 	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 

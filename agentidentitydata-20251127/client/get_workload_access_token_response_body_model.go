@@ -13,17 +13,14 @@ type iGetWorkloadAccessTokenResponseBody interface {
 	GetRequestId() *string
 	SetWorkloadAccessToken(v string) *GetWorkloadAccessTokenResponseBody
 	GetWorkloadAccessToken() *string
+	SetWorkloadIdentityArn(v string) *GetWorkloadAccessTokenResponseBody
+	GetWorkloadIdentityArn() *string
 }
 
 type GetWorkloadAccessTokenResponseBody struct {
-	// example:
-	//
-	// 1E85BA86-0955-5841-9679-9C33867E460D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// eyAgImFsZyI6ICJSUzI1N****
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WorkloadAccessToken *string `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
+	WorkloadIdentityArn *string `json:"WorkloadIdentityArn,omitempty" xml:"WorkloadIdentityArn,omitempty"`
 }
 
 func (s GetWorkloadAccessTokenResponseBody) String() string {
@@ -42,6 +39,10 @@ func (s *GetWorkloadAccessTokenResponseBody) GetWorkloadAccessToken() *string {
 	return s.WorkloadAccessToken
 }
 
+func (s *GetWorkloadAccessTokenResponseBody) GetWorkloadIdentityArn() *string {
+	return s.WorkloadIdentityArn
+}
+
 func (s *GetWorkloadAccessTokenResponseBody) SetRequestId(v string) *GetWorkloadAccessTokenResponseBody {
 	s.RequestId = &v
 	return s
@@ -49,6 +50,11 @@ func (s *GetWorkloadAccessTokenResponseBody) SetRequestId(v string) *GetWorkload
 
 func (s *GetWorkloadAccessTokenResponseBody) SetWorkloadAccessToken(v string) *GetWorkloadAccessTokenResponseBody {
 	s.WorkloadAccessToken = &v
+	return s
+}
+
+func (s *GetWorkloadAccessTokenResponseBody) SetWorkloadIdentityArn(v string) *GetWorkloadAccessTokenResponseBody {
+	s.WorkloadIdentityArn = &v
 	return s
 }
 

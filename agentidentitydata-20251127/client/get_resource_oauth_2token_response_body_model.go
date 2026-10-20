@@ -13,6 +13,8 @@ type iGetResourceOAuth2TokenResponseBody interface {
 	GetAccessToken() *string
 	SetAuthorizationURL(v string) *GetResourceOAuth2TokenResponseBody
 	GetAuthorizationURL() *string
+	SetExpiresIn(v int64) *GetResourceOAuth2TokenResponseBody
+	GetExpiresIn() *int64
 	SetRequestId(v string) *GetResourceOAuth2TokenResponseBody
 	GetRequestId() *string
 	SetSessionStatus(v string) *GetResourceOAuth2TokenResponseBody
@@ -22,26 +24,12 @@ type iGetResourceOAuth2TokenResponseBody interface {
 }
 
 type GetResourceOAuth2TokenResponseBody struct {
-	// example:
-	//
-	// 66a1a2****0b93v3
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// example:
-	//
-	// https://agentidentity.cn-beijing.aliyuncs.com/*****
+	AccessToken      *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	AuthorizationURL *string `json:"AuthorizationURL,omitempty" xml:"AuthorizationURL,omitempty"`
-	// example:
-	//
-	// 173C69C9-9C07-5B25-9477-603A33E5DA32
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// IN_PROGRESS
-	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// example:
-	//
-	// urn:ietf:params:oauth:request_uri:43b7df1a-****-****-****-709375a44d8a
-	SessionURI *string `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
+	ExpiresIn        *int64  `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionStatus    *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	SessionURI       *string `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
 }
 
 func (s GetResourceOAuth2TokenResponseBody) String() string {
@@ -58,6 +46,10 @@ func (s *GetResourceOAuth2TokenResponseBody) GetAccessToken() *string {
 
 func (s *GetResourceOAuth2TokenResponseBody) GetAuthorizationURL() *string {
 	return s.AuthorizationURL
+}
+
+func (s *GetResourceOAuth2TokenResponseBody) GetExpiresIn() *int64 {
+	return s.ExpiresIn
 }
 
 func (s *GetResourceOAuth2TokenResponseBody) GetRequestId() *string {
@@ -79,6 +71,11 @@ func (s *GetResourceOAuth2TokenResponseBody) SetAccessToken(v string) *GetResour
 
 func (s *GetResourceOAuth2TokenResponseBody) SetAuthorizationURL(v string) *GetResourceOAuth2TokenResponseBody {
 	s.AuthorizationURL = &v
+	return s
+}
+
+func (s *GetResourceOAuth2TokenResponseBody) SetExpiresIn(v int64) *GetResourceOAuth2TokenResponseBody {
+	s.ExpiresIn = &v
 	return s
 }
 

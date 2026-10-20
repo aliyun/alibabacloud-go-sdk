@@ -16,13 +16,7 @@ type iGetResourceAPIKeyResponseBody interface {
 }
 
 type GetResourceAPIKeyResponseBody struct {
-	// example:
-	//
-	// sk-ds*****
-	APIKey *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
-	// example:
-	//
-	// 6E444C1B-1106-56A8-81E0-E3B049BF44AD
+	APIKey    *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

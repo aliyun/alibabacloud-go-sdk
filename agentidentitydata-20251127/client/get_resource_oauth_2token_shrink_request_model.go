@@ -9,6 +9,8 @@ type iGetResourceOAuth2TokenShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAudience(v string) *GetResourceOAuth2TokenShrinkRequest
+	GetAudience() *string
 	SetCustomParametersShrink(v string) *GetResourceOAuth2TokenShrinkRequest
 	GetCustomParametersShrink() *string
 	SetCustomState(v string) *GetResourceOAuth2TokenShrinkRequest
@@ -25,6 +27,8 @@ type iGetResourceOAuth2TokenShrinkRequest interface {
 	GetScopesShrink() *string
 	SetSessionURI(v string) *GetResourceOAuth2TokenShrinkRequest
 	GetSessionURI() *string
+	SetTokenVaultName(v string) *GetResourceOAuth2TokenShrinkRequest
+	GetTokenVaultName() *string
 	SetWorkloadAccessToken(v string) *GetResourceOAuth2TokenShrinkRequest
 	GetWorkloadAccessToken() *string
 }
@@ -32,37 +36,18 @@ type iGetResourceOAuth2TokenShrinkRequest interface {
 type GetResourceOAuth2TokenShrinkRequest struct {
 	// example:
 	//
-	// {"param1": "test-param", "param2": "test-param2"}
-	CustomParametersShrink *string `json:"CustomParameters,omitempty" xml:"CustomParameters,omitempty"`
-	// example:
-	//
-	// user-defined-value
-	CustomState *string `json:"CustomState,omitempty" xml:"CustomState,omitempty"`
-	// example:
-	//
-	// False
-	ForceAuthentication *bool `json:"ForceAuthentication,omitempty" xml:"ForceAuthentication,omitempty"`
-	// example:
-	//
-	// USER_FEDERATION
-	OAuth2Flow *string `json:"OAuth2Flow,omitempty" xml:"OAuth2Flow,omitempty"`
-	// example:
-	//
-	// oauth_credential_provider
+	// app
+	Audience                       *string `json:"Audience,omitempty" xml:"Audience,omitempty"`
+	CustomParametersShrink         *string `json:"CustomParameters,omitempty" xml:"CustomParameters,omitempty"`
+	CustomState                    *string `json:"CustomState,omitempty" xml:"CustomState,omitempty"`
+	ForceAuthentication            *bool   `json:"ForceAuthentication,omitempty" xml:"ForceAuthentication,omitempty"`
+	OAuth2Flow                     *string `json:"OAuth2Flow,omitempty" xml:"OAuth2Flow,omitempty"`
 	ResourceCredentialProviderName *string `json:"ResourceCredentialProviderName,omitempty" xml:"ResourceCredentialProviderName,omitempty"`
-	// example:
-	//
-	// https://example.com
-	ResourceOAuth2ReturnURL *string `json:"ResourceOAuth2ReturnURL,omitempty" xml:"ResourceOAuth2ReturnURL,omitempty"`
-	ScopesShrink            *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
-	// example:
-	//
-	// urn:ietf:params:oauth:request_uri:43b7df1a-****-****-****-709375a44d8a
-	SessionURI *string `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
-	// example:
-	//
-	// eyAgImFsZyI6ICJSUzI1N****
-	WorkloadAccessToken *string `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
+	ResourceOAuth2ReturnURL        *string `json:"ResourceOAuth2ReturnURL,omitempty" xml:"ResourceOAuth2ReturnURL,omitempty"`
+	ScopesShrink                   *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
+	SessionURI                     *string `json:"SessionURI,omitempty" xml:"SessionURI,omitempty"`
+	TokenVaultName                 *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	WorkloadAccessToken            *string `json:"WorkloadAccessToken,omitempty" xml:"WorkloadAccessToken,omitempty"`
 }
 
 func (s GetResourceOAuth2TokenShrinkRequest) String() string {
@@ -71,6 +56,10 @@ func (s GetResourceOAuth2TokenShrinkRequest) String() string {
 
 func (s GetResourceOAuth2TokenShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetResourceOAuth2TokenShrinkRequest) GetAudience() *string {
+	return s.Audience
 }
 
 func (s *GetResourceOAuth2TokenShrinkRequest) GetCustomParametersShrink() *string {
@@ -105,8 +94,17 @@ func (s *GetResourceOAuth2TokenShrinkRequest) GetSessionURI() *string {
 	return s.SessionURI
 }
 
+func (s *GetResourceOAuth2TokenShrinkRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *GetResourceOAuth2TokenShrinkRequest) GetWorkloadAccessToken() *string {
 	return s.WorkloadAccessToken
+}
+
+func (s *GetResourceOAuth2TokenShrinkRequest) SetAudience(v string) *GetResourceOAuth2TokenShrinkRequest {
+	s.Audience = &v
+	return s
 }
 
 func (s *GetResourceOAuth2TokenShrinkRequest) SetCustomParametersShrink(v string) *GetResourceOAuth2TokenShrinkRequest {
@@ -146,6 +144,11 @@ func (s *GetResourceOAuth2TokenShrinkRequest) SetScopesShrink(v string) *GetReso
 
 func (s *GetResourceOAuth2TokenShrinkRequest) SetSessionURI(v string) *GetResourceOAuth2TokenShrinkRequest {
 	s.SessionURI = &v
+	return s
+}
+
+func (s *GetResourceOAuth2TokenShrinkRequest) SetTokenVaultName(v string) *GetResourceOAuth2TokenShrinkRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

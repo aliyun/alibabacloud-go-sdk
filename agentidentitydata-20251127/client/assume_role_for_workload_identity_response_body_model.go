@@ -20,11 +20,8 @@ type iAssumeRoleForWorkloadIdentityResponseBody interface {
 }
 
 type AssumeRoleForWorkloadIdentityResponseBody struct {
-	AssumedRoleUser *AssumeRoleForWorkloadIdentityResponseBodyAssumedRoleUser `json:"AssumedRoleUser,omitempty" xml:"AssumedRoleUser,omitempty" type:"Struct"`
-	Credentials     *AssumeRoleForWorkloadIdentityResponseBodyCredentials     `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
-	// example:
-	//
-	// B7F68680-F3FE-5BF1-A824-4DE0B1AC9B23
+	AssumedRoleUser     *AssumeRoleForWorkloadIdentityResponseBodyAssumedRoleUser     `json:"AssumedRoleUser,omitempty" xml:"AssumedRoleUser,omitempty" type:"Struct"`
+	Credentials         *AssumeRoleForWorkloadIdentityResponseBodyCredentials         `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
 	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WorkloadContextInfo *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfo `json:"WorkloadContextInfo,omitempty" xml:"WorkloadContextInfo,omitempty" type:"Struct"`
 }
@@ -93,13 +90,7 @@ func (s *AssumeRoleForWorkloadIdentityResponseBody) Validate() error {
 }
 
 type AssumeRoleForWorkloadIdentityResponseBodyAssumedRoleUser struct {
-	// example:
-	//
-	// acs:ram::113511544585****:role/testoidc/TestOidcAssumedRoleSession
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// example:
-	//
-	// 33157794895460****
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 }
 
@@ -134,22 +125,10 @@ func (s *AssumeRoleForWorkloadIdentityResponseBodyAssumedRoleUser) Validate() er
 }
 
 type AssumeRoleForWorkloadIdentityResponseBodyCredentials struct {
-	// example:
-	//
-	// STS.NTTcrF2UNgeshFRTj9i7hpkah
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// example:
-	//
-	// 3fNFJk4UA6KLEG2GXiBe9ZE43ejFRJsea1yT1rguTVY6
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	// example:
-	//
-	// 2025-04-28T03:06:19Z
-	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// example:
-	//
-	// CAIShwJ1q6Ft5B2yfSjIr5bSEsj4g7BihPWGWHz****
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s AssumeRoleForWorkloadIdentityResponseBodyCredentials) String() string {
@@ -201,11 +180,8 @@ func (s *AssumeRoleForWorkloadIdentityResponseBodyCredentials) Validate() error 
 }
 
 type AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfo struct {
-	UserContext *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:1778*****8462:workloadidentitydirectory/default/workloadidentity/workload-bc7***
-	WorkloadIdentityArn *string `json:"WorkloadIdentityArn,omitempty" xml:"WorkloadIdentityArn,omitempty"`
+	UserContext         *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
+	WorkloadIdentityArn *string                                                                  `json:"WorkloadIdentityArn,omitempty" xml:"WorkloadIdentityArn,omitempty"`
 }
 
 func (s AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfo) String() string {
@@ -245,10 +221,7 @@ func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfo) Validate(
 
 type AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext struct {
 	JwtClaims *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims `json:"JwtClaims,omitempty" xml:"JwtClaims,omitempty" type:"Struct"`
-	// example:
-	//
-	// externalUser
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId    *string                                                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext) String() string {
@@ -287,18 +260,10 @@ func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext
 }
 
 type AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims struct {
-	// example:
-	//
-	// ["test-aud","test-aud-2"]
 	Audiences *string `json:"Audiences,omitempty" xml:"Audiences,omitempty"`
-	// example:
-	//
-	// https://oauth.aliyun.com
-	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// example:
-	//
-	// externalUser
-	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	Issuer    *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	JTI       *string `json:"JTI,omitempty" xml:"JTI,omitempty"`
+	Subject   *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 
 func (s AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims) String() string {
@@ -317,6 +282,10 @@ func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext
 	return s.Issuer
 }
 
+func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims) GetJTI() *string {
+	return s.JTI
+}
+
 func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims) GetSubject() *string {
 	return s.Subject
 }
@@ -328,6 +297,11 @@ func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext
 
 func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims) SetIssuer(v string) *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims {
 	s.Issuer = &v
+	return s
+}
+
+func (s *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims) SetJTI(v string) *AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims {
+	s.JTI = &v
 	return s
 }
 
