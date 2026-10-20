@@ -138,223 +138,86 @@ type iTask interface {
 }
 
 type Task struct {
-	// The --archives parameter.
-	Archives []*string `json:"archives,omitempty" xml:"archives,omitempty" type:"Repeated"`
-	// The temporary URL for accessing the resource file.
-	ArtifactUrl *string `json:"artifactUrl,omitempty" xml:"artifactUrl,omitempty"`
-	// The business ID.
-	//
+	Archives    []*string `json:"archives,omitempty" xml:"archives,omitempty" type:"Repeated"`
+	ArtifactUrl *string   `json:"artifactUrl,omitempty" xml:"artifactUrl,omitempty"`
 	// This parameter is required.
-	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// The category business ID.
+	BizId         *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
 	CategoryBizId *string `json:"categoryBizId,omitempty" xml:"categoryBizId,omitempty"`
-	// The Spark job content.
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The creator UID.
-	//
+	Content       *string `json:"content,omitempty" xml:"content,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 150978934701****
-	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The direct upload information for OSS.
-	Credential *TaskCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// The default catalog ID.
-	DefaultCatalogId *string `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
-	// The default database.
-	//
-	// example:
-	//
-	// default
-	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	// The ID of the default task queue.
-	DefaultResourceQueueId *string `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
-	// The default SQL session ID.
-	DefaultSqlComputeId *string `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
-	// The deployment ID of the streaming task.
-	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	// The environment ID.
-	//
-	// example:
-	//
-	// env-cpv569tlhtgndjl8****
-	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The IDs of additional Spark resources.
-	ExtraArtifactIds []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
-	// The custom Spark submit parameters.
-	ExtraSparkSubmitParams *string `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
-	// The --files parameter.
-	Files []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// The Fusion status.
-	//
-	// example:
-	//
-	// false
-	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The creation time.
-	//
+	Creator                *int64          `json:"creator,omitempty" xml:"creator,omitempty"`
+	Credential             *TaskCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
+	DefaultCatalogId       *string         `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
+	DefaultDatabase        *string         `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
+	DefaultResourceQueueId *string         `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
+	DefaultSqlComputeId    *string         `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
+	DeploymentId           *string         `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	EnvironmentId          *string         `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	ExtraArtifactIds       []*string       `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
+	ExtraSparkSubmitParams *string         `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
+	Files                  []*string       `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	Fusion                 *bool           `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2025-03-10T02:02:41.000+00:00
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	// The last modified time.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2025-03-10T02:02:41.000+00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The change status after the last commit.
-	HasChanged *bool `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
-	// The commit status.
-	//
+	HasChanged  *bool   `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
 	// This parameter is required.
-	HasCommited *bool `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
-	// The streaming task status.
-	IsStreaming *bool `json:"isStreaming,omitempty" xml:"isStreaming,omitempty"`
-	// The --jars parameter.
-	Jars     []*string `json:"jars,omitempty" xml:"jars,omitempty" type:"Repeated"`
-	KernelId *string   `json:"kernelId,omitempty" xml:"kernelId,omitempty"`
-	// The ID of the resource queue for the last run.
-	LastRunResourceQueueId *string `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
-	// The UID of the last updater.
-	//
+	HasCommited            *bool     `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
+	IsStreaming            *bool     `json:"isStreaming,omitempty" xml:"isStreaming,omitempty"`
+	Jars                   []*string `json:"jars,omitempty" xml:"jars,omitempty" type:"Repeated"`
+	KernelId               *string   `json:"kernelId,omitempty" xml:"kernelId,omitempty"`
+	LastRunResourceQueueId *string   `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 150978934701****
 	Modifier *int64 `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// The task name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ods_transform_task
-	Name   *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// The PyFiles for PySpark dependencies.
-	PyFiles                  []*string `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
-	RayActiveDeadlineSeconds *int64    `json:"rayActiveDeadlineSeconds,omitempty" xml:"rayActiveDeadlineSeconds,omitempty"`
-	RayBackoffLimit          *int32    `json:"rayBackoffLimit,omitempty" xml:"rayBackoffLimit,omitempty"`
-	RayEntrypoint            *string   `json:"rayEntrypoint,omitempty" xml:"rayEntrypoint,omitempty"`
-	RayEntrypointMemory      *string   `json:"rayEntrypointMemory,omitempty" xml:"rayEntrypointMemory,omitempty"`
-	RayEntrypointNumCpus     *string   `json:"rayEntrypointNumCpus,omitempty" xml:"rayEntrypointNumCpus,omitempty"`
-	RayEntrypointNumGpus     *string   `json:"rayEntrypointNumGpus,omitempty" xml:"rayEntrypointNumGpus,omitempty"`
-	RayEntrypointResources   *string   `json:"rayEntrypointResources,omitempty" xml:"rayEntrypointResources,omitempty"`
-	RayExtraParam            *string   `json:"rayExtraParam,omitempty" xml:"rayExtraParam,omitempty"`
-	// The Ray cluster head node parameters.
-	RayHeadSpec                 *TaskRayHeadSpec `json:"rayHeadSpec,omitempty" xml:"rayHeadSpec,omitempty" type:"Struct"`
-	RayMetadataJson             *string          `json:"rayMetadataJson,omitempty" xml:"rayMetadataJson,omitempty"`
-	RayNetworkServiceName       *string          `json:"rayNetworkServiceName,omitempty" xml:"rayNetworkServiceName,omitempty"`
-	RayRuntimeEnvJson           *string          `json:"rayRuntimeEnvJson,omitempty" xml:"rayRuntimeEnvJson,omitempty"`
-	RayShutdownAfterJobFinishes *bool            `json:"rayShutdownAfterJobFinishes,omitempty" xml:"rayShutdownAfterJobFinishes,omitempty"`
-	RaySubmissionMode           *string          `json:"raySubmissionMode,omitempty" xml:"raySubmissionMode,omitempty"`
-	RayTtlSecondsAfterFinished  *int64           `json:"rayTtlSecondsAfterFinished,omitempty" xml:"rayTtlSecondsAfterFinished,omitempty"`
-	// The database engine version of the Ray DPI engine.
-	//
-	// example:
-	//
-	// err-1.3.0 (Ray 2.55.1, Python 3.12)
-	RayVersion   *string   `json:"rayVersion,omitempty" xml:"rayVersion,omitempty"`
-	RayVolumeIds []*string `json:"rayVolumeIds,omitempty" xml:"rayVolumeIds,omitempty" type:"Repeated"`
-	// The list of worker node parameters for the Ray cluster. A maximum of 50 groups are supported.
-	RayWorkerSpec []*TaskRayWorkerSpec `json:"rayWorkerSpec,omitempty" xml:"rayWorkerSpec,omitempty" type:"Repeated"`
-	RayWorkingDir *string              `json:"rayWorkingDir,omitempty" xml:"rayWorkingDir,omitempty"`
-	// The interactive job session ID.
-	//
-	// example:
-	//
-	// 1234abcd-12ab-34cd-56ef-1234567890ab
-	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
-	// The Spark parameters.
-	//
+	Name                        *string              `json:"name,omitempty" xml:"name,omitempty"`
+	Params                      map[string]*string   `json:"params,omitempty" xml:"params,omitempty"`
+	PyFiles                     []*string            `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
+	RayActiveDeadlineSeconds    *int64               `json:"rayActiveDeadlineSeconds,omitempty" xml:"rayActiveDeadlineSeconds,omitempty"`
+	RayBackoffLimit             *int32               `json:"rayBackoffLimit,omitempty" xml:"rayBackoffLimit,omitempty"`
+	RayEntrypoint               *string              `json:"rayEntrypoint,omitempty" xml:"rayEntrypoint,omitempty"`
+	RayEntrypointMemory         *string              `json:"rayEntrypointMemory,omitempty" xml:"rayEntrypointMemory,omitempty"`
+	RayEntrypointNumCpus        *string              `json:"rayEntrypointNumCpus,omitempty" xml:"rayEntrypointNumCpus,omitempty"`
+	RayEntrypointNumGpus        *string              `json:"rayEntrypointNumGpus,omitempty" xml:"rayEntrypointNumGpus,omitempty"`
+	RayEntrypointResources      *string              `json:"rayEntrypointResources,omitempty" xml:"rayEntrypointResources,omitempty"`
+	RayExtraParam               *string              `json:"rayExtraParam,omitempty" xml:"rayExtraParam,omitempty"`
+	RayHeadSpec                 *TaskRayHeadSpec     `json:"rayHeadSpec,omitempty" xml:"rayHeadSpec,omitempty" type:"Struct"`
+	RayMetadataJson             *string              `json:"rayMetadataJson,omitempty" xml:"rayMetadataJson,omitempty"`
+	RayNetworkServiceName       *string              `json:"rayNetworkServiceName,omitempty" xml:"rayNetworkServiceName,omitempty"`
+	RayRuntimeEnvJson           *string              `json:"rayRuntimeEnvJson,omitempty" xml:"rayRuntimeEnvJson,omitempty"`
+	RayShutdownAfterJobFinishes *bool                `json:"rayShutdownAfterJobFinishes,omitempty" xml:"rayShutdownAfterJobFinishes,omitempty"`
+	RaySubmissionMode           *string              `json:"raySubmissionMode,omitempty" xml:"raySubmissionMode,omitempty"`
+	RayTtlSecondsAfterFinished  *int64               `json:"rayTtlSecondsAfterFinished,omitempty" xml:"rayTtlSecondsAfterFinished,omitempty"`
+	RayVersion                  *string              `json:"rayVersion,omitempty" xml:"rayVersion,omitempty"`
+	RayVolumeIds                []*string            `json:"rayVolumeIds,omitempty" xml:"rayVolumeIds,omitempty" type:"Repeated"`
+	RayWorkerSpec               []*TaskRayWorkerSpec `json:"rayWorkerSpec,omitempty" xml:"rayWorkerSpec,omitempty" type:"Repeated"`
+	RayWorkingDir               *string              `json:"rayWorkingDir,omitempty" xml:"rayWorkingDir,omitempty"`
+	SessionClusterId            *string              `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
 	// example:
 	//
 	// 100
-	SparkArgs *string `json:"sparkArgs,omitempty" xml:"sparkArgs,omitempty"`
-	// The Spark configuration list.
+	SparkArgs *string      `json:"sparkArgs,omitempty" xml:"sparkArgs,omitempty"`
 	SparkConf []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
-	// The number of Spark driver cores.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
-	// The Spark driver memory.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1073741824
-	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
-	// The Spark entry point.
-	SparkEntrypoint *string `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
-	// The number of Spark executor cores.
-	//
+	SparkDriverMemory *int64  `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
+	SparkEntrypoint   *string `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
-	// The Spark executor memory.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1073741824
 	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
-	// The Spark log level.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// INFO
 	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
-	// The Spark log path.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// oss://your_bucket/path/to/your/log
-	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
-	// The Spark submit statement.
+	SparkLogPath      *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
 	SparkSubmitClause *string `json:"sparkSubmitClause,omitempty" xml:"sparkSubmitClause,omitempty"`
-	// The Spark version.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// esr-4.1.1
-	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
-	// The task tags.
-	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The task timeout.
-	//
-	// example:
-	//
-	// 1200
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The task type.
-	//
+	SparkVersion *string            `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
+	Tags         map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	Timeout      *int32             `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// SQL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -966,22 +829,14 @@ func (s *Task) Validate() error {
 }
 
 type TaskCredential struct {
-	// access id
-	AccessId *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
-	// The access URL.
-	AccessUrl *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
-	// The expiration time.
-	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
-	// The domain name.
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The path.
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// policy
-	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
-	// security token
+	AccessId      *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	AccessUrl     *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
+	Expire        *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	Host          *string `json:"host,omitempty" xml:"host,omitempty"`
+	Path          *string `json:"path,omitempty" xml:"path,omitempty"`
+	Policy        *string `json:"policy,omitempty" xml:"policy,omitempty"`
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
-	// The signature.
-	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	Signature     *string `json:"signature,omitempty" xml:"signature,omitempty"`
 }
 
 func (s TaskCredential) String() string {
@@ -1069,66 +924,25 @@ func (s *TaskCredential) Validate() error {
 }
 
 type TaskRayHeadSpec struct {
-	// The number of CPU cores.
-	//
-	// example:
-	//
-	// 2
-	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// Specifies whether to enable auto scaling for worker nodes.
-	//
-	// example:
-	//
-	// false
-	EnableAutoScaling *bool `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
-	// The environment variables for Ray nodes.
-	//
+	Cpu               *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	EnableAutoScaling *bool   `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
 	// example:
 	//
 	// MY_ENV=123456
-	Env *string `json:"env,omitempty" xml:"env,omitempty"`
-	// The GPU instance type.
-	//
-	// example:
-	//
-	// ecs.gn6i-c4g1.xlarge
-	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The idle timeout period for worker nodes after auto scaling is enabled, in seconds.
-	//
-	// example:
-	//
-	// 60
-	IdleTimeoutSeconds *int64 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
-	// The memory size, in GiB.
-	//
-	// example:
-	//
-	// 8Gi
-	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The queue name.
-	//
-	// example:
-	//
-	// root_queue
-	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The Ray startup parameters.
-	//
+	Env                *string `json:"env,omitempty" xml:"env,omitempty"`
+	GpuSpec            *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	IdleTimeoutSeconds *int64  `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
+	Memory             *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	QueueName          *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
 	// example:
 	//
 	// --num-cpus=0
 	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
-	// The database engine version of the Ray DPI engine.
-	//
 	// example:
 	//
 	// err-1.3.0 (Ray 2.55.1, Python 3.12)
 	RayVersion *string `json:"rayVersion,omitempty" xml:"rayVersion,omitempty"`
-	// The number of head nodes.
-	//
-	// example:
-	//
-	// 1
-	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	Replica    *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
 }
 
 func (s TaskRayHeadSpec) String() string {
@@ -1234,72 +1048,26 @@ func (s *TaskRayHeadSpec) Validate() error {
 }
 
 type TaskRayWorkerSpec struct {
-	// The number of CPU cores.
-	//
-	// example:
-	//
-	// 4
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The environment variables for Ray.
-	//
 	// example:
 	//
 	// MY_ENV=123456
-	Env *string `json:"env,omitempty" xml:"env,omitempty"`
-	// The GPU instance type.
-	//
-	// example:
-	//
-	// ecs.gn6i-c4g1.xlarge
-	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The worker group name.
-	//
-	// example:
-	//
-	// WorkerGroup1
-	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The maximum number of worker nodes after auto scaling is enabled.
-	//
-	// example:
-	//
-	// 10
-	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size, in GiB.
-	//
-	// example:
-	//
-	// 16Gi
-	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum number of worker nodes after auto scaling is enabled.
-	//
-	// example:
-	//
-	// 1
-	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
-	// The queue name.
-	//
-	// example:
-	//
-	// root_queue
-	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The Ray startup parameters.
-	//
+	Env        *string `json:"env,omitempty" xml:"env,omitempty"`
+	GpuSpec    *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	GroupName  *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	MaxReplica *int32  `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
+	Memory     *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	MinReplica *int32  `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
+	QueueName  *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
 	// example:
 	//
 	// --num-cpus=0
 	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
-	// The database engine version of the Ray DPI engine.
-	//
 	// example:
 	//
 	// err-1.3.0 (Ray 2.55.1, Python 3.12)
 	RayVersion *string `json:"rayVersion,omitempty" xml:"rayVersion,omitempty"`
-	// The number of worker nodes.
-	//
-	// example:
-	//
-	// 2
-	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	Replica    *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
 }
 
 func (s TaskRayWorkerSpec) String() string {
