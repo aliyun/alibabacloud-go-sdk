@@ -34,7 +34,7 @@ type ListAllInstancesResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data []*ListAllInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListAllInstancesResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message of the request.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
 	// instance not exists
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token.
+	// The pagination cursor.
 	//
 	// > A non-empty value indicates that more data is available.
 	//
@@ -281,13 +281,13 @@ type ListAllInstancesResponseBodyData struct {
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" xml:"resourceGroupName,omitempty"`
 	// The running status of the instance. Valid values:
 	//
-	// - **Running**: Running.
+	// - **Running**: The instance is running.
 	//
-	// - **Offline**: Offline.
+	// - **Offline**: The instance is offline.
 	//
 	//
 	//
-	// > An instance in the Offline status indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
+	// > An instance in the Offline state indicates that the heartbeat from the node to the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
 	//
 	// example:
 	//

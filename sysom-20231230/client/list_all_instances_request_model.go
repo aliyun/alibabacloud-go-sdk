@@ -36,7 +36,7 @@ type ListAllInstancesRequest struct {
 	//
 	// 1
 	Current *string `json:"current,omitempty" xml:"current,omitempty"`
-	// The list of filter conditions.
+	// The list of filters.
 	//
 	// example:
 	//
@@ -54,21 +54,21 @@ type ListAllInstancesRequest struct {
 	//
 	// managed
 	ManagedType *string `json:"managedType,omitempty" xml:"managedType,omitempty"`
-	// The maximum number of entries to return in a single request.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token.
+	// The pagination cursor.
 	//
-	// > If this parameter is not empty, more data is available.
+	// > If this parameter is not empty, it indicates that more data is available.
 	//
 	// example:
 	//
 	// U+w1wv2R4ZWR5oZLXD0+Dp4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. Default value: 10.
 	//
 	// example:
 	//

@@ -1575,6 +1575,61 @@ func (client *Client) GetCopilotHistoryWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Queries the hotfixes and compatible packages for a CVE.
+//
+// Description:
+//
+// Queries published hotfixes in batches by CVE ID. You can filter the results by full kernel version.
+//
+// @param request - GetCveHotfixRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCveHotfixResponse
+func (client *Client) GetCveHotfixWithContext(ctx context.Context, request *GetCveHotfixRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCveHotfixResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CveIds) {
+		body["cveIds"] = request.CveIds
+	}
+
+	if !dara.IsNil(request.KernelVersions) {
+		body["kernelVersions"] = request.KernelVersions
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCveHotfix"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/hotfixManager/hotfixes/cve"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCveHotfixResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves diagnostic results.
 //
 // Description:
@@ -3805,7 +3860,7 @@ func (client *Client) ListAlertStrategiesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves a list of managed and unmanaged instances along with their instance information.
+// Queries a list of managed and unmanaged instances along with their details.
 //
 // @param request - ListAllInstancesRequest
 //
