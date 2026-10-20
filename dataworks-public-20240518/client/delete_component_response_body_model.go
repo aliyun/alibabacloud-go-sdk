@@ -22,7 +22,7 @@ type DeleteComponentResponseBody struct {
 	//
 	// 0000-ABCD-EF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

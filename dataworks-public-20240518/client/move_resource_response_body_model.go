@@ -16,17 +16,17 @@ type iMoveResourceResponseBody interface {
 }
 
 type MoveResourceResponseBody struct {
-	// The request ID.
+	// The ID of the request. You can use the ID to troubleshoot errors.
 	//
 	// example:
 	//
 	// F332BED4-DD73-5972-A9C2-642BA6CFXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful.
 	//
-	// - true
+	// - true: The call is successful.
 	//
-	// - false
+	// - false: The call fails.
 	//
 	// example:
 	//

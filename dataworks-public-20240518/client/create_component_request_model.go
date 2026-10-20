@@ -18,7 +18,7 @@ type iCreateComponentRequest interface {
 }
 
 type CreateComponentRequest struct {
-	// A reserved field.
+	// The reserved field.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateComponentRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The FlowSpec information that describes the workflow. For more information about the specification, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
+	// The FlowSpec information that describes the workflow. For more information about the specifications, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
 	//
 	// This parameter is required.
 	//
