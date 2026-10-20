@@ -16,11 +16,11 @@ type iDescribeExternalAgentRequest interface {
 }
 
 type DescribeExternalAgentRequest struct {
-	// The permission mode of the agent. Valid values:
+	// The agent permission mode. Valid values:
 	//
-	// admin: administrator mode with full permissions.
+	// - admin: Administrator mode. Grants all permissions.
 	//
-	// restricted: restricted mode with limited permissions.
+	// - restricted: Restricted mode. Grants only partial permissions.
 	//
 	// Default value: admin.
 	//
@@ -28,11 +28,11 @@ type DescribeExternalAgentRequest struct {
 	//
 	// admin
 	AgentMode *string `json:"AgentMode,omitempty" xml:"AgentMode,omitempty"`
-	// Specifies whether to obtain internal network access credentials.
+	// Specifies whether to obtain internal network access credentials. Valid values:
 	//
-	// - `true`: obtains only internal network connection credentials.
+	// - `true`: Obtains only internal network connection credentials.
 	//
-	// - `false`: obtains only public network connection credentials.
+	// - `false`: Obtains only public network connection credentials.
 	//
 	// Default value: `false`.
 	//

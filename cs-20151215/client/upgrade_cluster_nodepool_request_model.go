@@ -58,11 +58,11 @@ type UpgradeClusterNodepoolRequest struct {
 	//
 	// 1.6.36
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
-	// Specifies whether to use disk replacement for the upgrade. Valid values:
+	// Specifies whether to use system cloud disk replacement for the upgrade. Valid values:
 	//
-	// - true: Uses disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as logon method, labels, taints, operating system image, and runtime version.
+	// - true: Uses system cloud disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as the logon method, labels, taints, operating system image, and runtime version.
 	//
-	// - false: Does not use disk replacement.
+	// - false: Does not use system cloud disk replacement.
 	//
 	// Default value: false.
 	//
@@ -178,7 +178,7 @@ type UpgradeClusterNodepoolRequestRollingPolicy struct {
 	//
 	// 0
 	MaxFailedNodes *int32 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
-	// The maximum number of nodes that can be updated in parallel per batch. Node pool updates are performed in batches.
+	// Nodes in the node pool are updated in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
 	//
 	// Valid values: [1,10].
 	//
@@ -188,7 +188,7 @@ type UpgradeClusterNodepoolRequestRollingPolicy struct {
 	//
 	// 2
 	MaxParallelism *int32 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
-	// The automatic pause policy during node upgrades. Valid values:
+	// The automatic pause policy during the node upgrade. Valid values:
 	//
 	// - FirstBatch: Pauses after the first batch is complete.
 	//

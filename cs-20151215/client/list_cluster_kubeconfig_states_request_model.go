@@ -18,11 +18,13 @@ type iListClusterKubeconfigStatesRequest interface {
 }
 
 type ListClusterKubeconfigStatesRequest struct {
-	// Specifies whether to query the KubeConfig list of cloud service roles in the cluster. Valid values:
+	// Specifies whether to query the list of KubeConfigs for cloud service roles in the cluster.
 	//
-	// - true: queries the KubeConfig list of cloud service roles in the cluster.
+	// Valid values:
 	//
-	// - false: queries the KubeConfig list of Resource Access Management (RAM) users or roles in the cluster.
+	// - true: Queries the list of KubeConfigs for cloud service roles in the cluster.
+	//
+	// - false: Queries the list of KubeConfigs for Resource Access Management (RAM) users or roles in the cluster.
 	//
 	// example:
 	//
@@ -30,19 +32,19 @@ type ListClusterKubeconfigStatesRequest struct {
 	CloudServiceKubeConfig *bool `json:"cloudServiceKubeConfig,omitempty" xml:"cloudServiceKubeConfig,omitempty"`
 	// The page number.
 	//
-	// - Valid values: 1 or greater.
+	// Valid values: integers greater than or equal to 1.
 	//
-	// - Default value: 1.
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
-	// - Valid values: 1 to 50.
+	// Valid values: 1 to 50.
 	//
-	// - Default value: 10.
+	// Default value: 10.
 	//
 	// example:
 	//

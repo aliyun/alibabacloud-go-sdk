@@ -49,9 +49,9 @@ func (s *GrantPermissionsRequest) Validate() error {
 }
 
 type GrantPermissionsRequestBody struct {
-	// The ID of the cluster to be authorized.
+	// The ID of the target cluster for authorization.
 	//
-	// - If the value of the `role_type` parameter is `all-clusters`, set this parameter to an empty string.
+	// - If the `role_type` parameter is set to `all-clusters`, set this parameter to an empty string.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type GrantPermissionsRequestBody struct {
 	//
 	// c796c60***
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// Specifies whether the authorization is a custom authorization, which means `role_name` uses a custom ClusterRole name.
+	// Specifies whether the authorization is a custom authorization (the `role_name` parameter uses a custom ClusterRole name).
 	//
 	// example:
 	//
@@ -77,7 +77,7 @@ type GrantPermissionsRequestBody struct {
 	//
 	// test
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the preset role. Valid values:
+	// The preset role name. Valid values:
 	//
 	// - `admin`: administrator.
 	//
@@ -96,8 +96,6 @@ type GrantPermissionsRequestBody struct {
 	// - `admin`, `admin-view`, `ops`: cannot be granted at the namespace level.
 	//
 	// - `admin-view`: cannot be granted at the all-clusters level.
-	//
-	// .
 	//
 	// This parameter is required.
 	//

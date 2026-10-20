@@ -70,7 +70,7 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// example:
 	//
-	// 华东1（杭州）
+	// China (Hangzhou)
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
 	// The region ID.
 	//

@@ -49,13 +49,13 @@ func (s *CheckServiceRoleResponseBody) Validate() error {
 }
 
 type CheckServiceRoleResponseBodyRoles struct {
-	// Indicates whether the service role has been granted.
+	// Indicates whether the role has been authorized.
 	//
 	// example:
 	//
 	// true
 	Granted *bool `json:"granted,omitempty" xml:"granted,omitempty"`
-	// The prompt message returned when the service role is not granted.
+	// The message returned when the role is not authorized.
 	//
 	// example:
 	//

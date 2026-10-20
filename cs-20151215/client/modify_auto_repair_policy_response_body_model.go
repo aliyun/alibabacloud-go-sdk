@@ -14,7 +14,7 @@ type iModifyAutoRepairPolicyResponseBody interface {
 }
 
 type ModifyAutoRepairPolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -16,13 +16,16 @@ type iRunNodeOperationRequest interface {
 }
 
 type RunNodeOperationRequest struct {
+	// The name of the O&M action to execute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// restart.kubelet
-	OperationAction *string   `json:"operationAction,omitempty" xml:"operationAction,omitempty"`
-	OperationArgs   []*string `json:"operationArgs,omitempty" xml:"operationArgs,omitempty" type:"Repeated"`
+	OperationAction *string `json:"operationAction,omitempty" xml:"operationAction,omitempty"`
+	// The list of parameters accepted by the O&M action.
+	OperationArgs []*string `json:"operationArgs,omitempty" xml:"operationArgs,omitempty" type:"Repeated"`
 }
 
 func (s RunNodeOperationRequest) String() string {

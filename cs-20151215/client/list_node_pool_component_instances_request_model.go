@@ -16,10 +16,14 @@ type iListNodePoolComponentInstancesRequest interface {
 }
 
 type ListNodePoolComponentInstancesRequest struct {
+	// The maximum number of results to return. Default value: 200.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// 5c0a1c0f91c14c6****

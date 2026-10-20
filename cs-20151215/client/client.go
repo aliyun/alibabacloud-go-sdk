@@ -56,46 +56,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("cs.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("cs.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("cs.aliyuncs.com"),
-		"cn-beijing":                  dara.String("cs.cn-beijing.aliyuncs.com"),
-		"cn-zhengzhou-jva":            dara.String("cs.cn-zhengzhou-jva.aliyuncs.com"),
-		"cn-heyuan":                   dara.String("cs.cn-heyuan.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("cs.cn-zhangjiakou.aliyuncs.com"),
-		"ap-northeast-2":              dara.String("cs.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("cs.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("cs.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("cs.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("cs.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("cs.ap-southeast-7.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("cs.cn-wulanchabu.aliyuncs.com"),
-		"cn-qingdao":                  dara.String("cs.cn-qingdao.aliyuncs.com"),
-		"cn-wuhan-lr":                 dara.String("cs.cn-wuhan-lr.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("cs.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("cs.cn-hongkong.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("cs.cn-shenzhen.aliyuncs.com"),
-		"cn-nanjing":                  dara.String("cs.cn-nanjing.aliyuncs.com"),
-		"cn-fuzhou":                   dara.String("cs.cn-fuzhou.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("cs.cn-chengdu.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("cs.cn-guangzhou.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("cs.cn-huhehaote.aliyuncs.com"),
-		"cn-hangzhou":                 dara.String("cs.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("cs.ap-southeast-8.aliyuncs.com"),
-		"cn-zhongwei":                 dara.String("cs.cn-zhongwei.aliyuncs.com"),
-		"eu-west-2":                   dara.String("cs.eu-west-2.aliyuncs.com"),
-		"na-south-1":                  dara.String("cs.na-south-1.aliyuncs.com"),
-		"us-west-1":                   dara.String("cs.us-west-1.aliyuncs.com"),
-		"us-east-1":                   dara.String("cs.us-east-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("cs.eu-central-1.aliyuncs.com"),
-		"eu-west-1":                   dara.String("cs.eu-west-1.aliyuncs.com"),
-		"us-southeast-1":              dara.String("cs.us-southeast-1.aliyuncs.com"),
-		"me-central-1":                dara.String("cs.me-central-1.aliyuncs.com"),
-		"me-east-1":                   dara.String("cs.me-east-1.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("cs.cn-north-2-gov-1.aliyuncs.com"),
-		"cn-heyuan-acdr-1":            dara.String("cs.cn-heyuan-acdr-1.aliyuncs.com"),
-		"cn-wulanchabu-gic-1":         dara.String("cs.cn-wulanchabu-gic-1.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("cs.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("cs.cn-beijing-finance-1.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("cs.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("cs.cn-hangzhou-finance.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -130,7 +90,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster. You can call the AttachInstances operation to add ECS instances to an ACK cluster as worker nodes after purchasing the instances, or to re-add node instances to a node pool after they are removed.
+// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster. You can call this operation to add ECS instances as worker nodes to an ACK cluster after purchasing them, or to re-add node instances to a node pool after they have been removed.
 //
 // Description:
 //
@@ -229,7 +189,7 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 
 // Summary:
 //
-// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster. You can call the AttachInstances operation to add ECS instances to an ACK cluster as worker nodes after purchasing the instances, or to re-add node instances to a node pool after they are removed.
+// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster. You can call this operation to add ECS instances as worker nodes to an ACK cluster after purchasing them, or to re-add node instances to a node pool after they have been removed.
 //
 // Description:
 //
@@ -252,7 +212,7 @@ func (client *Client) AttachInstances(ClusterId *string, request *AttachInstance
 
 // Summary:
 //
-// Adds existing ECS instances to a node pool in an ACK cluster. You can call this operation to add existing ECS instances as worker nodes to an ACK cluster or to re-add node instances to a node pool after they have been removed.
+// Adds existing ECS instances to a node pool in an ACK cluster. You can call this operation to add existing ECS instances as worker nodes to an ACK cluster or re-add node instances to a node pool after they are removed.
 //
 // @param request - AttachInstancesToNodePoolRequest
 //
@@ -311,7 +271,7 @@ func (client *Client) AttachInstancesToNodePoolWithOptions(ClusterId *string, No
 
 // Summary:
 //
-// Adds existing ECS instances to a node pool in an ACK cluster. You can call this operation to add existing ECS instances as worker nodes to an ACK cluster or to re-add node instances to a node pool after they have been removed.
+// Adds existing ECS instances to a node pool in an ACK cluster. You can call this operation to add existing ECS instances as worker nodes to an ACK cluster or re-add node instances to a node pool after they are removed.
 //
 // @param request - AttachInstancesToNodePoolRequest
 //
@@ -440,7 +400,7 @@ func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *str
 
 // Summary:
 //
-// Cancels an existing but unexecuted automated O&M task execution plan by calling CancelOperationPlan.
+// Cancels an existing but unexecuted automated O&M task execution plan.
 //
 // @param headers - map
 //
@@ -473,7 +433,7 @@ func (client *Client) CancelOperationPlanWithOptions(planId *string, headers map
 
 // Summary:
 //
-// Cancels an existing but unexecuted automated O&M task execution plan by calling CancelOperationPlan.
+// Cancels an existing but unexecuted automated O&M task execution plan.
 //
 // @return CancelOperationPlanResponse
 func (client *Client) CancelOperationPlan(planId *string) (_result *CancelOperationPlanResponse, _err error) {
@@ -540,7 +500,7 @@ func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _
 
 // Summary:
 //
-// Queries the log configuration of control plane components for an ACK managed cluster. Control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager. You can call the CheckControlPlaneLogEnable operation to query the current log configuration of control plane components, including the log retention period and the components from which logs are collected.
+// Queries the log configuration of control plane components for an ACK managed cluster. ACK managed clusters support collecting control plane component logs and delivering them to your Simple Log Service (SLS) Log Project. Control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, Cloud Controller Manager, and other core components. You can call the CheckControlPlaneLogEnable operation to query the current log configuration of control plane components, including the log retention period and the components from which logs are collected.
 //
 // @param headers - map
 //
@@ -573,7 +533,7 @@ func (client *Client) CheckControlPlaneLogEnableWithOptions(ClusterId *string, h
 
 // Summary:
 //
-// Queries the log configuration of control plane components for an ACK managed cluster. Control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager. You can call the CheckControlPlaneLogEnable operation to query the current log configuration of control plane components, including the log retention period and the components from which logs are collected.
+// Queries the log configuration of control plane components for an ACK managed cluster. ACK managed clusters support collecting control plane component logs and delivering them to your Simple Log Service (SLS) Log Project. Control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, Cloud Controller Manager, and other core components. You can call the CheckControlPlaneLogEnable operation to query the current log configuration of control plane components, including the log retention period and the components from which logs are collected.
 //
 // @return CheckControlPlaneLogEnableResponse
 func (client *Client) CheckControlPlaneLogEnable(ClusterId *string) (_result *CheckControlPlaneLogEnableResponse, _err error) {
@@ -738,15 +698,15 @@ func (client *Client) CleanClusterUserPermissions(ClusterId *string, Uid *string
 
 // Summary:
 //
-// Cleans up KubeConfig credentials and revokes RBAC permissions for a specified user. If you want to clean up KubeConfig credentials and revoke authorization for risky users such as those who have left the organization or whose accounts have been frozen, call CleanUserPermissions to clean up the issued KubeConfig credentials and RBAC permissions for the specified user.
+// Cleans up KubeConfig credentials and RBAC permissions for a specified user. If you want to clean up and revoke KubeConfig for risky users (such as those who have left the company or whose accounts are frozen), you can call CleanUserPermissions to clean up the issued KubeConfig credentials and RBAC permissions for the specified user.
 //
 // Description:
 //
-// >- You must have full access permissions on Container Service for Kubernetes (ACK) (AliyunCSFullAccess).
+// >- You must have the permission to manage Container Service for Kubernetes (ACK) (AliyunCSFullAccess).
 //
 // >- Cleaning up permissions of an Alibaba Cloud account is not supported.
 //
-// >- Cleaning up the permissions of the user who performs this operation is not supported.
+// >- Cleaning up the permissions of the user who performs the operation is not supported.
 //
 // @param tmpReq - CleanUserPermissionsRequest
 //
@@ -803,15 +763,15 @@ func (client *Client) CleanUserPermissionsWithOptions(Uid *string, tmpReq *Clean
 
 // Summary:
 //
-// Cleans up KubeConfig credentials and revokes RBAC permissions for a specified user. If you want to clean up KubeConfig credentials and revoke authorization for risky users such as those who have left the organization or whose accounts have been frozen, call CleanUserPermissions to clean up the issued KubeConfig credentials and RBAC permissions for the specified user.
+// Cleans up KubeConfig credentials and RBAC permissions for a specified user. If you want to clean up and revoke KubeConfig for risky users (such as those who have left the company or whose accounts are frozen), you can call CleanUserPermissions to clean up the issued KubeConfig credentials and RBAC permissions for the specified user.
 //
 // Description:
 //
-// >- You must have full access permissions on Container Service for Kubernetes (ACK) (AliyunCSFullAccess).
+// >- You must have the permission to manage Container Service for Kubernetes (ACK) (AliyunCSFullAccess).
 //
 // >- Cleaning up permissions of an Alibaba Cloud account is not supported.
 //
-// >- Cleaning up the permissions of the user who performs this operation is not supported.
+// >- Cleaning up the permissions of the user who performs the operation is not supported.
 //
 // @param request - CleanUserPermissionsRequest
 //
@@ -834,7 +794,7 @@ func (client *Client) CleanUserPermissions(Uid *string, request *CleanUserPermis
 //
 // Description:
 //
-//	Notice: This API is not yet available. Stay tuned..
+//	Notice: This API is not yet available. Stay tuned.</notice>
 //
 // @param request - CreateAutoRepairPolicyRequest
 //
@@ -897,7 +857,7 @@ func (client *Client) CreateAutoRepairPolicyWithOptions(clusterId *string, reque
 //
 // Description:
 //
-//	Notice: This API is not yet available. Stay tuned..
+//	Notice: This API is not yet available. Stay tuned.</notice>
 //
 // @param request - CreateAutoRepairPolicyRequest
 //
@@ -916,7 +876,7 @@ func (client *Client) CreateAutoRepairPolicy(clusterId *string, request *CreateA
 
 // Summary:
 //
-// Creates an elastic scaling configuration that allows the system to automatically increase or decrease compute resources based on the configured scaling rules to meet the workload demands of your cluster. During the creation procedure, you can specify scaling metrics and thresholds, scale-out order, cool-down period, and more.
+// Creates an elastic scaling configuration that enables the system to automatically increase or decrease compute resources based on the configured scaling rules to meet the workload demands of your cluster. During the creation procedure, you can specify scaling metrics and thresholds, scale-out order, cool-down period, and more.
 //
 // @param request - CreateAutoscalingConfigRequest
 //
@@ -1023,7 +983,7 @@ func (client *Client) CreateAutoscalingConfigWithOptions(ClusterId *string, requ
 
 // Summary:
 //
-// Creates an elastic scaling configuration that allows the system to automatically increase or decrease compute resources based on the configured scaling rules to meet the workload demands of your cluster. During the creation procedure, you can specify scaling metrics and thresholds, scale-out order, cool-down period, and more.
+// Creates an elastic scaling configuration that enables the system to automatically increase or decrease compute resources based on the configured scaling rules to meet the workload demands of your cluster. During the creation procedure, you can specify scaling metrics and thresholds, scale-out order, cool-down period, and more.
 //
 // @param request - CreateAutoscalingConfigRequest
 //
@@ -1046,9 +1006,9 @@ func (client *Client) CreateAutoscalingConfig(ClusterId *string, request *Create
 //
 // Description:
 //
-// ### Generate OpenAPI request parameters through the console
+// ### Generate OpenAPI request parameters by using the console
 //
-// When you call the CreateCluster operation to create a cluster, if the call fails due to an incorrect combination of request parameters, you can use the console to generate the required request parameter combination for creating a cluster. Perform the following steps:
+// When you call the CreateCluster operation to create a cluster, if the API call fails due to incorrect combinations of request parameters, you can use the console to generate the required request parameter combinations. Perform the following steps:
 //
 // 1. Log on to the [Container Service for Kubernetes (ACK) console](https://csnew.console.aliyun.com) and choose **Clusters*	- in the left-side navigation pane.
 //
@@ -1056,9 +1016,9 @@ func (client *Client) CreateAutoscalingConfig(ClusterId *string, request *Create
 //
 // 1. In the dialog box, select the cluster type that you want to create, click Create, and then configure the cluster information on the cluster configuration page.
 //
-// 1. After the configuration is complete, on the **Confirm Configuration*	- page, click **Equivalent Code*	- in the upper-right corner. The dialog box displays the parameter combination required for creating the cluster. You can copy and use the parameters.
+// 1. After the configuration is complete, on the **Confirm Configuration*	- page, click **Equivalent Code*	- in the upper-right corner. The dialog box displays the parameter combinations required for creating the cluster. You can copy and use them.
 //
-//	Notice: Starting from July 04, 2026, some request parameters will no longer take effect. For details about the changes and alternative parameters, see [Notice on changes to OpenAPI request and response parameters and deprecation of OpenAPIs related to ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
+//	Notice: Starting from July 04, 2026, some request parameters will no longer take effect. For details about the changes and replacement parameter descriptions, see [Notice on changes to OpenAPI request and response parameters for ACK cluster management and OpenAPI offline](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - CreateClusterRequest
 //
@@ -1109,6 +1069,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !dara.IsNil(request.CisEnabled) {
 		body["cis_enabled"] = request.CisEnabled
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["client_token"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.CloudMonitorFlags) {
@@ -1517,9 +1481,9 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 //
 // Description:
 //
-// ### Generate OpenAPI request parameters through the console
+// ### Generate OpenAPI request parameters by using the console
 //
-// When you call the CreateCluster operation to create a cluster, if the call fails due to an incorrect combination of request parameters, you can use the console to generate the required request parameter combination for creating a cluster. Perform the following steps:
+// When you call the CreateCluster operation to create a cluster, if the API call fails due to incorrect combinations of request parameters, you can use the console to generate the required request parameter combinations. Perform the following steps:
 //
 // 1. Log on to the [Container Service for Kubernetes (ACK) console](https://csnew.console.aliyun.com) and choose **Clusters*	- in the left-side navigation pane.
 //
@@ -1527,9 +1491,9 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 //
 // 1. In the dialog box, select the cluster type that you want to create, click Create, and then configure the cluster information on the cluster configuration page.
 //
-// 1. After the configuration is complete, on the **Confirm Configuration*	- page, click **Equivalent Code*	- in the upper-right corner. The dialog box displays the parameter combination required for creating the cluster. You can copy and use the parameters.
+// 1. After the configuration is complete, on the **Confirm Configuration*	- page, click **Equivalent Code*	- in the upper-right corner. The dialog box displays the parameter combinations required for creating the cluster. You can copy and use them.
 //
-//	Notice: Starting from July 04, 2026, some request parameters will no longer take effect. For details about the changes and alternative parameters, see [Notice on changes to OpenAPI request and response parameters and deprecation of OpenAPIs related to ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
+//	Notice: Starting from July 04, 2026, some request parameters will no longer take effect. For details about the changes and replacement parameter descriptions, see [Notice on changes to OpenAPI request and response parameters for ACK cluster management and OpenAPI offline](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - CreateClusterRequest
 //
@@ -1901,7 +1865,7 @@ func (client *Client) CreateKubernetesTrigger(request *CreateKubernetesTriggerRe
 
 // Summary:
 //
-// 安装节点组件
+// Installs node components.
 //
 // @param request - CreateNodePoolComponentInstancesRequest
 //
@@ -1956,7 +1920,7 @@ func (client *Client) CreateNodePoolComponentInstancesWithOptions(clusterId *str
 
 // Summary:
 //
-// 安装节点组件
+// Installs node components.
 //
 // @param request - CreateNodePoolComponentInstancesRequest
 //
@@ -1975,7 +1939,7 @@ func (client *Client) CreateNodePoolComponentInstances(clusterId *string, nodepo
 
 // Summary:
 //
-// An orchestration template defines and describes a set of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. You can use these templates to automate the deployment and cluster management of resources, such as Pods, Services, Deployments, ConfigMaps, and PersistentVolumes. You can invoke the CreateTemplate operation to create an orchestration template.
+// An orchestration template defines and describes a set of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. You can use these templates to automate the deployment and cluster management of resources such as Pods, Services, Deployments, ConfigMaps, and PersistentVolumes. You can invoke the CreateTemplate operation to create an orchestration template.
 //
 // @param request - CreateTemplateRequest
 //
@@ -2038,7 +2002,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// An orchestration template defines and describes a set of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. You can use these templates to automate the deployment and cluster management of resources, such as Pods, Services, Deployments, ConfigMaps, and PersistentVolumes. You can invoke the CreateTemplate operation to create an orchestration template.
+// An orchestration template defines and describes a set of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. You can use these templates to automate the deployment and cluster management of resources such as Pods, Services, Deployments, ConfigMaps, and PersistentVolumes. You can invoke the CreateTemplate operation to create an orchestration template.
 //
 // @param request - CreateTemplateRequest
 //
@@ -2061,7 +2025,7 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 //
 // Description:
 //
-// > Creating a trigger only supports pod redeployment.
+// > Creating a trigger supports only pod redeployment.
 //
 // @param request - CreateTriggerRequest
 //
@@ -2124,7 +2088,7 @@ func (client *Client) CreateTriggerWithOptions(clusterId *string, request *Creat
 //
 // Description:
 //
-// > Creating a trigger only supports pod redeployment.
+// > Creating a trigger supports only pod redeployment.
 //
 // @param request - CreateTriggerRequest
 //
@@ -2143,7 +2107,7 @@ func (client *Client) CreateTrigger(clusterId *string, request *CreateTriggerReq
 
 // Summary:
 //
-// Deletes alert contacts from ACK.
+// Deletes ACK alert contacts.
 //
 // @param tmpReq - DeleteAlertContactRequest
 //
@@ -2196,7 +2160,7 @@ func (client *Client) DeleteAlertContactWithOptions(tmpReq *DeleteAlertContactRe
 
 // Summary:
 //
-// Deletes alert contacts from ACK.
+// Deletes ACK alert contacts.
 //
 // @param request - DeleteAlertContactRequest
 //
@@ -2215,7 +2179,7 @@ func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_r
 
 // Summary:
 //
-// # Delete ACK alert contact group
+// Deletes alert contact groups in ACK.
 //
 // @param tmpReq - DeleteAlertContactGroupRequest
 //
@@ -2268,7 +2232,7 @@ func (client *Client) DeleteAlertContactGroupWithOptions(tmpReq *DeleteAlertCont
 
 // Summary:
 //
-// # Delete ACK alert contact group
+// Deletes alert contact groups in ACK.
 //
 // @param request - DeleteAlertContactGroupRequest
 //
@@ -2287,11 +2251,11 @@ func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRe
 
 // Summary:
 //
-// Deletes an automatic fault recovery rule.
+// Deletes a self-healing rule.
 //
 // Description:
 //
-//	Notice: This API is not yet available. Stay tuned..
+//	Notice: This API is not yet available. Stay tuned.</notice>
 //
 // @param headers - map
 //
@@ -2324,11 +2288,11 @@ func (client *Client) DeleteAutoRepairPolicyWithOptions(clusterId *string, polic
 
 // Summary:
 //
-// Deletes an automatic fault recovery rule.
+// Deletes a self-healing rule.
 //
 // Description:
 //
-//	Notice: This API is not yet available. Stay tuned..
+//	Notice: This API is not yet available. Stay tuned.</notice>
 //
 // @return DeleteAutoRepairPolicyResponse
 func (client *Client) DeleteAutoRepairPolicy(clusterId *string, policyId *string) (_result *DeleteAutoRepairPolicyResponse, _err error) {
@@ -2345,21 +2309,21 @@ func (client *Client) DeleteAutoRepairPolicy(clusterId *string, policyId *string
 
 // Summary:
 //
-// If you no longer need a cluster, delete the cluster and choose whether to delete or retain the associated resources. Before you delete a cluster, manually clean up workloads (Deployments, StatefulSets, Jobs, and CronJobs). Otherwise, the cluster deletion may fail.
+// Deletes a cluster and specifies whether to delete or retain the associated resources of the cluster. Before deleting a cluster, manually clean up workloads (Deployments, StatefulSets, Jobs, and CronJobs). Otherwise, the cluster deletion may fail.
 //
 // Description:
 //
 // Risk notice:
 //
-// - Subscription ECS instances, Lingjun compute nodes, and other subscription resources in the cluster cannot be subject to automatic release. To avoid unnecessary billing, perform manual release of these resources. For more information, refer to Cluster deletion and node release rules.
+// - Subscription ECS instances, Lingjun AI Computing Service compute nodes, and other subscription resources in the cluster cannot be subject to automatic release. To avoid unnecessary billing, perform manual release. For more information, see Cluster deletion and node release rules.
 //
-// - Subscription APIServer SLB resources cannot be subject to automatic release. To avoid unnecessary billing, perform manual release of these resources.
+// - Subscription APIServer SLB resources cannot be subject to automatic release. To avoid unnecessary billing, perform manual release.
 //
-// - VPCs, vSwitches, security groups, and RAM roles that are used by other resources cannot be deleted and are retained by default. Perform manual release of these resources.
+// - VPCs, vSwitches, security groups, and RAM roles that are used by other resources cannot be deleted and are retained by default. Perform manual release.
 //
-// - Elastic Container Instances (ECIs) created through virtual nodes are subject to automatic release.
+// - Elastic Container Instance (ECI) instances created through virtual nodes are subject to automatic release.
 //
-// - Some cloud resources created through the cluster are not subject to automatic release when the cluster is deleted. These resources continue to incur billing after the cluster is deleted. Release or retain them as needed. These resources include: Simple Log Service (SLS) projects automatically created by the cluster, and cloud disks purchased through dynamic storage volumes.
+// - Some cloud resources created through the cluster are not subject to automatic release when the cluster is deleted. These resources continue to incur billing after the cluster is deleted. Release or retain them as needed. These resources include: Simple Log Service (SLS) projects automatically created by the cluster, and cloud disks purchased through dynamically provisioned storage volumes.
 //
 // @param tmpReq - DeleteClusterRequest
 //
@@ -2428,21 +2392,21 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, tmpReq *Delete
 
 // Summary:
 //
-// If you no longer need a cluster, delete the cluster and choose whether to delete or retain the associated resources. Before you delete a cluster, manually clean up workloads (Deployments, StatefulSets, Jobs, and CronJobs). Otherwise, the cluster deletion may fail.
+// Deletes a cluster and specifies whether to delete or retain the associated resources of the cluster. Before deleting a cluster, manually clean up workloads (Deployments, StatefulSets, Jobs, and CronJobs). Otherwise, the cluster deletion may fail.
 //
 // Description:
 //
 // Risk notice:
 //
-// - Subscription ECS instances, Lingjun compute nodes, and other subscription resources in the cluster cannot be subject to automatic release. To avoid unnecessary billing, perform manual release of these resources. For more information, refer to Cluster deletion and node release rules.
+// - Subscription ECS instances, Lingjun AI Computing Service compute nodes, and other subscription resources in the cluster cannot be subject to automatic release. To avoid unnecessary billing, perform manual release. For more information, see Cluster deletion and node release rules.
 //
-// - Subscription APIServer SLB resources cannot be subject to automatic release. To avoid unnecessary billing, perform manual release of these resources.
+// - Subscription APIServer SLB resources cannot be subject to automatic release. To avoid unnecessary billing, perform manual release.
 //
-// - VPCs, vSwitches, security groups, and RAM roles that are used by other resources cannot be deleted and are retained by default. Perform manual release of these resources.
+// - VPCs, vSwitches, security groups, and RAM roles that are used by other resources cannot be deleted and are retained by default. Perform manual release.
 //
-// - Elastic Container Instances (ECIs) created through virtual nodes are subject to automatic release.
+// - Elastic Container Instance (ECI) instances created through virtual nodes are subject to automatic release.
 //
-// - Some cloud resources created through the cluster are not subject to automatic release when the cluster is deleted. These resources continue to incur billing after the cluster is deleted. Release or retain them as needed. These resources include: Simple Log Service (SLS) projects automatically created by the cluster, and cloud disks purchased through dynamic storage volumes.
+// - Some cloud resources created through the cluster are not subject to automatic release when the cluster is deleted. These resources continue to incur billing after the cluster is deleted. Release or retain them as needed. These resources include: Simple Log Service (SLS) projects automatically created by the cluster, and cloud disks purchased through dynamically provisioned storage volumes.
 //
 // @param request - DeleteClusterRequest
 //
@@ -2577,21 +2541,21 @@ func (client *Client) DeleteClusterNodepool(ClusterId *string, NodepoolId *strin
 
 // Summary:
 //
-// When you no longer need cluster nodes to continue working, you can call the DeleteClusterNodes operation to remove nodes from the cluster. When removing nodes, you can choose whether to simultaneously release the ECS instances and whether to automatically drain the nodes.
+// Removes nodes from a cluster. When you no longer need cluster nodes to continue working, you can call the DeleteClusterNodes operation to remove nodes from the cluster. When removing nodes, you can choose whether to release the associated ECS instances and whether to automatically drain the nodes.
 //
 // Description:
 //
-// - When removing nodes, use this API or the [Container Service console](https://cs.console.aliyun.com) to perform standardized operations. Do not manually remove nodes by using the `kubectl delete node` command.
+// - When removing nodes, perform standardized operations through this operation or the [Container Service console](https://cs.console.aliyun.com). Do not manually remove nodes by running `kubectl delete node`.
 //
-// - Do not directly release nodes, remove instances in the ECS or ESS console (or through related APIs), or allow nodes to be passively released due to the expiration of subscription instances. In these cases, the nodes will be directly shut down and automatically removed from the Container Service management console.
+// - Do not directly release nodes or remove instances in the ECS or ESS console (or through related API operations), or allow nodes to be passively released when a subscription instance expires. In these cases, the nodes are directly stopped and automatically removed from the Container Service console.
 //
-// - If the node pool has a desired number of nodes configured, the node pool will automatically scale out other instances according to the corresponding configuration to always maintain the node count at the desired number.
+// - If the node pool has a desired number of nodes configured, the node pool automatically scales out other instances based on the corresponding configuration to maintain the node count at the desired number.
 //
-// - Removing nodes involves Pod migration, which may affect your business. Perform this operation during off-peak hours. Unexpected risks may exist during the operation, so back up relevant data in advance.
+// - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up your data in advance.
 //
-// - When removing nodes, ACK performs a drain operation. Ensure that the resources on other nodes in the cluster are sufficient to prevent business Pods from being unable to be scheduled.
+// - When removing nodes, ACK executes a drain operation. Make sure that the remaining nodes in the cluster have sufficient resources to avoid application pods that cannot be scheduling.
 //
-// - Check the node affinity rules and scheduling policies of the Pods on the nodes to be removed to ensure that Pods can still be scheduled to other nodes after node removal.
+// - Check the node affinity rules and scheduling policies of the Pods on the nodes to be removed to make sure that the Pods can be scheduled to other nodes after the nodes are removed.
 //
 // @param request - DeleteClusterNodesRequest
 //
@@ -2646,21 +2610,21 @@ func (client *Client) DeleteClusterNodesWithOptions(ClusterId *string, request *
 
 // Summary:
 //
-// When you no longer need cluster nodes to continue working, you can call the DeleteClusterNodes operation to remove nodes from the cluster. When removing nodes, you can choose whether to simultaneously release the ECS instances and whether to automatically drain the nodes.
+// Removes nodes from a cluster. When you no longer need cluster nodes to continue working, you can call the DeleteClusterNodes operation to remove nodes from the cluster. When removing nodes, you can choose whether to release the associated ECS instances and whether to automatically drain the nodes.
 //
 // Description:
 //
-// - When removing nodes, use this API or the [Container Service console](https://cs.console.aliyun.com) to perform standardized operations. Do not manually remove nodes by using the `kubectl delete node` command.
+// - When removing nodes, perform standardized operations through this operation or the [Container Service console](https://cs.console.aliyun.com). Do not manually remove nodes by running `kubectl delete node`.
 //
-// - Do not directly release nodes, remove instances in the ECS or ESS console (or through related APIs), or allow nodes to be passively released due to the expiration of subscription instances. In these cases, the nodes will be directly shut down and automatically removed from the Container Service management console.
+// - Do not directly release nodes or remove instances in the ECS or ESS console (or through related API operations), or allow nodes to be passively released when a subscription instance expires. In these cases, the nodes are directly stopped and automatically removed from the Container Service console.
 //
-// - If the node pool has a desired number of nodes configured, the node pool will automatically scale out other instances according to the corresponding configuration to always maintain the node count at the desired number.
+// - If the node pool has a desired number of nodes configured, the node pool automatically scales out other instances based on the corresponding configuration to maintain the node count at the desired number.
 //
-// - Removing nodes involves Pod migration, which may affect your business. Perform this operation during off-peak hours. Unexpected risks may exist during the operation, so back up relevant data in advance.
+// - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up your data in advance.
 //
-// - When removing nodes, ACK performs a drain operation. Ensure that the resources on other nodes in the cluster are sufficient to prevent business Pods from being unable to be scheduled.
+// - When removing nodes, ACK executes a drain operation. Make sure that the remaining nodes in the cluster have sufficient resources to avoid application pods that cannot be scheduling.
 //
-// - Check the node affinity rules and scheduling policies of the Pods on the nodes to be removed to ensure that Pods can still be scheduled to other nodes after node removal.
+// - Check the node affinity rules and scheduling policies of the Pods on the nodes to be removed to make sure that the Pods can be scheduled to other nodes after the nodes are removed.
 //
 // @param request - DeleteClusterNodesRequest
 //
@@ -2681,7 +2645,7 @@ func (client *Client) DeleteClusterNodes(ClusterId *string, request *DeleteClust
 //
 // Summary:
 //
-// Deletes an application trigger by trigger ID.
+// Deletes an application trigger based on the application trigger ID.
 //
 // @param headers - map
 //
@@ -2716,7 +2680,7 @@ func (client *Client) DeleteKubernetesTriggerWithOptions(Id *string, headers map
 //
 // Summary:
 //
-// Deletes an application trigger by trigger ID.
+// Deletes an application trigger based on the application trigger ID.
 //
 // @return DeleteKubernetesTriggerResponse
 // Deprecated
@@ -2734,7 +2698,7 @@ func (client *Client) DeleteKubernetesTrigger(Id *string) (_result *DeleteKubern
 
 // Summary:
 //
-// 卸载节点组件
+// Uninstalls a node component.
 //
 // @param tmpReq - DeleteNodePoolComponentInstanceRequest
 //
@@ -2803,7 +2767,7 @@ func (client *Client) DeleteNodePoolComponentInstanceWithOptions(clusterId *stri
 
 // Summary:
 //
-// 卸载节点组件
+// Uninstalls a node component.
 //
 // @param request - DeleteNodePoolComponentInstanceRequest
 //
@@ -2888,7 +2852,7 @@ func (client *Client) DeletePolicyInstance(clusterId *string, policyName *string
 
 // Summary:
 //
-// Deletes an orchestration template when you no longer need it.
+// Deletes an orchestration template when it is no longer needed.
 //
 // @param headers - map
 //
@@ -2921,7 +2885,7 @@ func (client *Client) DeleteTemplateWithOptions(TemplateId *string, headers map[
 
 // Summary:
 //
-// Deletes an orchestration template when you no longer need it.
+// Deletes an orchestration template when it is no longer needed.
 //
 // @return DeleteTemplateResponse
 func (client *Client) DeleteTemplate(TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
@@ -2988,7 +2952,7 @@ func (client *Client) DeleteTrigger(clusterId *string, Id *string) (_result *Del
 
 // Summary:
 //
-// Deploys a policy instance in a specified namespace of a specified cluster. You can select a security policy type in an ACK cluster, configure the governance action (alerting or blocking) and the namespace scope for the policy instance to create and deploy a policy instance.
+// Deploys a policy instance in a specified namespace of a cluster. You can select a security policy type in an ACK cluster, configure the governance action (alert or block) of the policy instance, specify the namespace scope, and then create and deploy a policy instance.
 //
 // @param request - DeployPolicyInstanceRequest
 //
@@ -3043,7 +3007,7 @@ func (client *Client) DeployPolicyInstanceWithOptions(clusterId *string, policyN
 
 // Summary:
 //
-// Deploys a policy instance in a specified namespace of a specified cluster. You can select a security policy type in an ACK cluster, configure the governance action (alerting or blocking) and the namespace scope for the policy instance to create and deploy a policy instance.
+// Deploys a policy instance in a specified namespace of a cluster. You can select a security policy type in an ACK cluster, configure the governance action (alert or block) of the policy instance, specify the namespace scope, and then create and deploy a policy instance.
 //
 // @param request - DeployPolicyInstanceRequest
 //
@@ -3062,7 +3026,7 @@ func (client *Client) DeployPolicyInstance(clusterId *string, policyName *string
 
 // Summary:
 //
-// Invokes the DescribeAddon operation to perform a parameter query for information about a specified component based on parameters such as region, cluster type, cluster child class (profile), cluster version, and component name. The returned information includes whether the component is managed, the component categorization, the schema of supported custom parameters, compatible operating system architectures, and the minimum cluster version required by the component version.
+// Queries information about a specified component based on parameters such as region, cluster type, cluster subtype (profile), cluster version, and component name. The returned information includes whether the component is managed, the component category, the schema of supported custom parameters, compatible operating system architectures, and the minimum cluster version required by the component version.
 //
 // @param request - DescribeAddonRequest
 //
@@ -3133,7 +3097,7 @@ func (client *Client) DescribeAddonWithOptions(addonName *string, request *Descr
 
 // Summary:
 //
-// Invokes the DescribeAddon operation to perform a parameter query for information about a specified component based on parameters such as region, cluster type, cluster child class (profile), cluster version, and component name. The returned information includes whether the component is managed, the component categorization, the schema of supported custom parameters, compatible operating system architectures, and the minimum cluster version required by the component version.
+// Queries information about a specified component based on parameters such as region, cluster type, cluster subtype (profile), cluster version, and component name. The returned information includes whether the component is managed, the component category, the schema of supported custom parameters, compatible operating system architectures, and the minimum cluster version required by the component version.
 //
 // @param request - DescribeAddonRequest
 //
@@ -3239,7 +3203,7 @@ func (client *Client) DescribeAddons(request *DescribeAddonsRequest) (_result *D
 
 // Summary:
 //
-// Queries an auto-repair rule.
+// Queries self-healing rules.
 //
 // Description:
 //
@@ -3276,7 +3240,7 @@ func (client *Client) DescribeAutoRepairPolicyWithOptions(clusterId *string, pol
 
 // Summary:
 //
-// Queries an auto-repair rule.
+// Queries self-healing rules.
 //
 // Description:
 //
@@ -3299,7 +3263,7 @@ func (client *Client) DescribeAutoRepairPolicy(clusterId *string, policyId *stri
 //
 // Summary:
 //
-// Calls DescribeClusterAddonInstance to query information about an installed cluster component, such as its version, status, and configuration.
+// Queries information about an installed cluster component, such as its version, status, and configuration.
 //
 // @param headers - map
 //
@@ -3334,7 +3298,7 @@ func (client *Client) DescribeClusterAddonInstanceWithOptions(ClusterID *string,
 //
 // Summary:
 //
-// Calls DescribeClusterAddonInstance to query information about an installed cluster component, such as its version, status, and configuration.
+// Queries information about an installed cluster component, such as its version, status, and configuration.
 //
 // @return DescribeClusterAddonInstanceResponse
 // Deprecated
@@ -3354,7 +3318,7 @@ func (client *Client) DescribeClusterAddonInstance(ClusterID *string, AddonName 
 //
 // Summary:
 //
-// Queries the version information of a specified component that can be used in a specific cluster, including the component version and configurable parameters.
+// Queries the version information of a specified component available for a specific cluster, including the component version and configurable parameters.
 //
 // @param request - DescribeClusterAddonMetadataRequest
 //
@@ -3403,7 +3367,7 @@ func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string,
 //
 // Summary:
 //
-// Queries the version information of a specified component that can be used in a specific cluster, including the component version and configurable parameters.
+// Queries the version information of a specified component available for a specific cluster, including the component version and configurable parameters.
 //
 // @param request - DescribeClusterAddonMetadataRequest
 //
@@ -3425,7 +3389,7 @@ func (client *Client) DescribeClusterAddonMetadata(clusterId *string, componentI
 //
 // Summary:
 //
-// Queries the upgrade status of a cluster component by calling DescribeClusterAddonUpgradeStatus.
+// Queries the upgrade status of cluster add-ons.
 //
 // @param headers - map
 //
@@ -3460,7 +3424,7 @@ func (client *Client) DescribeClusterAddonUpgradeStatusWithOptions(ClusterId *st
 //
 // Summary:
 //
-// Queries the upgrade status of a cluster component by calling DescribeClusterAddonUpgradeStatus.
+// Queries the upgrade status of cluster add-ons.
 //
 // @return DescribeClusterAddonUpgradeStatusResponse
 // Deprecated
@@ -3480,7 +3444,7 @@ func (client *Client) DescribeClusterAddonUpgradeStatus(ClusterId *string, Compo
 //
 // Summary:
 //
-// Queries the upgrade status of a component by component name.
+// Queries the upgrade status of a component by name.
 //
 // @param tmpReq - DescribeClusterAddonsUpgradeStatusRequest
 //
@@ -3535,7 +3499,7 @@ func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *s
 //
 // Summary:
 //
-// Queries the upgrade status of a component by component name.
+// Queries the upgrade status of a component by name.
 //
 // @param request - DescribeClusterAddonsUpgradeStatusRequest
 //
@@ -3610,7 +3574,7 @@ func (client *Client) DescribeClusterAddonsVersion(ClusterId *string) (_result *
 
 // Summary:
 //
-// If you need to add existing ECS instances to an ACK cluster as worker nodes, or re-add node instances to a node pool after they are removed, ACK allows you to manually add existing nodes to a node pool. Calls the DescribeClusterAttachScripts operation to obtain the script for adding existing nodes.
+// Retrieves the script for adding existing nodes to a cluster node pool. If you need to add existing ECS instances to an ACK cluster as worker nodes, or re-add node instances to a node pool after removal, ACK supports manually adding existing nodes to a node pool. You can call the DescribeClusterAttachScripts operation to obtain the script for adding existing nodes.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -3685,7 +3649,7 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(ClusterId *string,
 
 // Summary:
 //
-// If you need to add existing ECS instances to an ACK cluster as worker nodes, or re-add node instances to a node pool after they are removed, ACK allows you to manually add existing nodes to a node pool. Calls the DescribeClusterAttachScripts operation to obtain the script for adding existing nodes.
+// Retrieves the script for adding existing nodes to a cluster node pool. If you need to add existing ECS instances to an ACK cluster as worker nodes, or re-add node instances to a node pool after removal, ACK supports manually adding existing nodes to a node pool. You can call the DescribeClusterAttachScripts operation to obtain the script for adding existing nodes.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -3754,7 +3718,7 @@ func (client *Client) DescribeClusterDetail(ClusterId *string) (_result *Describ
 
 // Summary:
 //
-// Cluster operation events include cluster creation, cluster modification, node pool creation, node pool scale-out, addon installation, and cluster upgrade. You can call the DescribeClusterEvents operation to retrieve the list of events that occurred in a specified cluster and query event details, including the event level, event status, and event time.
+// Queries the events of a specified cluster. Cluster operation events include cluster creation, cluster modification, node pool creation, node pool scale-out, add-on installation, and cluster upgrade. This operation retrieves a list of events that occurred in the specified cluster and provides event details, such as the event level, event status, and event time.
 //
 // @param request - DescribeClusterEventsRequest
 //
@@ -3817,7 +3781,7 @@ func (client *Client) DescribeClusterEventsWithOptions(ClusterId *string, reques
 
 // Summary:
 //
-// Cluster operation events include cluster creation, cluster modification, node pool creation, node pool scale-out, addon installation, and cluster upgrade. You can call the DescribeClusterEvents operation to retrieve the list of events that occurred in a specified cluster and query event details, including the event level, event status, and event time.
+// Queries the events of a specified cluster. Cluster operation events include cluster creation, cluster modification, node pool creation, node pool scale-out, add-on installation, and cluster upgrade. This operation retrieves a list of events that occurred in the specified cluster and provides event details, such as the event level, event status, and event time.
 //
 // @param request - DescribeClusterEventsRequest
 //
@@ -3942,13 +3906,13 @@ func (client *Client) DescribeClusterNodePoolDetail(ClusterId *string, NodepoolI
 //
 // - When removing nodes, perform standardized operations through this API or the [Container Service console](https://cs.console.aliyun.com). Do not manually remove nodes by using `kubectl delete node`.
 //
-// - Do not directly release nodes, remove instances in the ECS or ESS console (or through related APIs), or allow nodes to be passively released due to subscription instance expires. In these cases, nodes are directly stopped and automatically removed from the Container Service console.
+// - Do not directly release nodes, remove instances in the ECS or ESS console (or through related APIs), or allow nodes to be passively released due to subscription instance expires. In these cases, the node is directly stopped and automatically removed from the Container Service console.
 //
 // - If the node pool has a desired number of nodes configured, the node pool automatically scales out other instances based on the corresponding configuration to maintain the node count at the desired number.
 //
-// - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up relevant data in advance.
+// - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up your data in advance.
 //
-// - When removing nodes, ACK executes a drain operation. Ensure that other nodes in the cluster have sufficient resources to avoid application pods being unable to be scheduling.
+// - When removing nodes, ACK executes a drain operation. Make sure that other nodes in the cluster have sufficient resources to avoid application pods from being unable to be scheduled for scheduling.
 //
 // - Check the node affinity rules and scheduling policies of Pods on the nodes to be removed to ensure that Pods are not unschedulable on other nodes after the node is removed.
 //
@@ -4003,13 +3967,13 @@ func (client *Client) DescribeClusterNodePoolsWithOptions(ClusterId *string, req
 //
 // - When removing nodes, perform standardized operations through this API or the [Container Service console](https://cs.console.aliyun.com). Do not manually remove nodes by using `kubectl delete node`.
 //
-// - Do not directly release nodes, remove instances in the ECS or ESS console (or through related APIs), or allow nodes to be passively released due to subscription instance expires. In these cases, nodes are directly stopped and automatically removed from the Container Service console.
+// - Do not directly release nodes, remove instances in the ECS or ESS console (or through related APIs), or allow nodes to be passively released due to subscription instance expires. In these cases, the node is directly stopped and automatically removed from the Container Service console.
 //
 // - If the node pool has a desired number of nodes configured, the node pool automatically scales out other instances based on the corresponding configuration to maintain the node count at the desired number.
 //
-// - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up relevant data in advance.
+// - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up your data in advance.
 //
-// - When removing nodes, ACK executes a drain operation. Ensure that other nodes in the cluster have sufficient resources to avoid application pods being unable to be scheduling.
+// - When removing nodes, ACK executes a drain operation. Make sure that other nodes in the cluster have sufficient resources to avoid application pods from being unable to be scheduled for scheduling.
 //
 // - Check the node affinity rules and scheduling policies of Pods on the nodes to be removed to ensure that Pods are not unschedulable on other nodes after the node is removed.
 //
@@ -4030,7 +3994,7 @@ func (client *Client) DescribeClusterNodePools(ClusterId *string, request *Descr
 
 // Summary:
 //
-// Queries the list of nodes that meet the specified conditions in a cluster.
+// Queries the list of nodes that meet the specified conditions.
 //
 // @param request - DescribeClusterNodesRequest
 //
@@ -4105,7 +4069,7 @@ func (client *Client) DescribeClusterNodesWithOptions(ClusterId *string, request
 
 // Summary:
 //
-// Queries the list of nodes that meet the specified conditions in a cluster.
+// Queries the list of nodes that meet the specified conditions.
 //
 // @param request - DescribeClusterNodesRequest
 //
@@ -4124,7 +4088,7 @@ func (client *Client) DescribeClusterNodes(ClusterId *string, request *DescribeC
 
 // Summary:
 //
-// When you use Container Service for Kubernetes (ACK), you also use resources from other associated Alibaba Cloud services. You can call the DescribeClusterResources operation to query the associated resources of a specified cluster, such as VPCs and SLBs. To query node pool or node resources, call the DescribeClusterNodePools or DescribeClusterNodes operation.
+// When you use Container Service for Kubernetes (ACK), you also use resources from other associated Alibaba Cloud services. Calls the DescribeClusterResources operation to query the associated resources of a specified cluster, such as VPCs and SLBs. To query node pool or node resources, call the DescribeClusterNodePools or DescribeClusterNodes operation.
 //
 // @param request - DescribeClusterResourcesRequest
 //
@@ -4171,7 +4135,7 @@ func (client *Client) DescribeClusterResourcesWithOptions(ClusterId *string, req
 
 // Summary:
 //
-// When you use Container Service for Kubernetes (ACK), you also use resources from other associated Alibaba Cloud services. You can call the DescribeClusterResources operation to query the associated resources of a specified cluster, such as VPCs and SLBs. To query node pool or node resources, call the DescribeClusterNodePools or DescribeClusterNodes operation.
+// When you use Container Service for Kubernetes (ACK), you also use resources from other associated Alibaba Cloud services. Calls the DescribeClusterResources operation to query the associated resources of a specified cluster, such as VPCs and SLBs. To query node pool or node resources, call the DescribeClusterNodePools or DescribeClusterNodes operation.
 //
 // @param request - DescribeClusterResourcesRequest
 //
@@ -4190,7 +4154,7 @@ func (client *Client) DescribeClusterResources(ClusterId *string, request *Descr
 
 // Summary:
 //
-// Queries the task list of a cluster by calling the DescribeClusterTasks operation.
+// Queries the task list of a cluster.
 //
 // @param request - DescribeClusterTasksRequest
 //
@@ -4249,7 +4213,7 @@ func (client *Client) DescribeClusterTasksWithOptions(clusterId *string, request
 
 // Summary:
 //
-// Queries the task list of a cluster by calling the DescribeClusterTasks operation.
+// Queries the task list of a cluster.
 //
 // @param request - DescribeClusterTasksRequest
 //
@@ -4425,7 +4389,7 @@ func (client *Client) DescribeClusterV2UserKubeconfig(ClusterId *string, request
 
 // Summary:
 //
-// You can call the DescribeClusterVuls operation to query the details of security vulnerabilities in a cluster by cluster ID, including vulnerability names, types, and severity levels. Regularly scan your cluster for security vulnerabilities to improve cluster security.
+// Queries the details of security vulnerabilities in a cluster by cluster ID, including vulnerability names, types, and severity levels. Regularly scan your cluster for security vulnerabilities to improve cluster security.
 //
 // @param headers - map
 //
@@ -4458,7 +4422,7 @@ func (client *Client) DescribeClusterVulsWithOptions(clusterId *string, headers 
 
 // Summary:
 //
-// You can call the DescribeClusterVuls operation to query the details of security vulnerabilities in a cluster by cluster ID, including vulnerability names, types, and severity levels. Regularly scan your cluster for security vulnerabilities to improve cluster security.
+// Queries the details of security vulnerabilities in a cluster by cluster ID, including vulnerability names, types, and severity levels. Regularly scan your cluster for security vulnerabilities to improve cluster security.
 //
 // @return DescribeClusterVulsResponse
 func (client *Client) DescribeClusterVuls(clusterId *string) (_result *DescribeClusterVulsResponse, _err error) {
@@ -4477,7 +4441,7 @@ func (client *Client) DescribeClusterVuls(clusterId *string) (_result *DescribeC
 //
 // Summary:
 //
-// View all clusters created in Container Service (including Swarm and Kubernetes clusters).
+// Queries all clusters created in Container Service, including Swarm and Kubernetes clusters.
 //
 // @param request - DescribeClustersRequest
 //
@@ -4534,7 +4498,7 @@ func (client *Client) DescribeClustersWithOptions(request *DescribeClustersReque
 //
 // Summary:
 //
-// View all clusters created in Container Service (including Swarm and Kubernetes clusters).
+// Queries all clusters created in Container Service, including Swarm and Kubernetes clusters.
 //
 // @param request - DescribeClustersRequest
 //
@@ -4644,7 +4608,7 @@ func (client *Client) DescribeClustersForRegion(regionId *string, request *Descr
 
 // Summary:
 //
-// You can invoke the DescribeClustersV1 operation to query the list of ACK clusters that meet conditional criteria (such as cluster type and cluster specification) under the current account.
+// Queries a list of ACK clusters that match specified conditions, such as cluster type and cluster specifications, under the current account.
 //
 // @param request - DescribeClustersV1Request
 //
@@ -4719,7 +4683,7 @@ func (client *Client) DescribeClustersV1WithOptions(request *DescribeClustersV1R
 
 // Summary:
 //
-// You can invoke the DescribeClustersV1 operation to query the list of ACK clusters that meet conditional criteria (such as cluster type and cluster specification) under the current account.
+// Queries a list of ACK clusters that match specified conditions, such as cluster type and cluster specifications, under the current account.
 //
 // @param request - DescribeClustersV1Request
 //
@@ -4738,7 +4702,7 @@ func (client *Client) DescribeClustersV1(request *DescribeClustersV1Request) (_r
 
 // Summary:
 //
-// Cluster operation events include cluster creation, cluster modification, node pool creation, node pool scale-out, addon installation, and cluster upgrade. You can call the DescribeEvents operation to query the details of a specific type of event, including the event level, event status, and event time.
+// Queries the details of cluster operation events, such as cluster creation, cluster modification, node pool creation, node pool scale-out, add-on installation, and cluster upgrade. This operation allows you to query the details of specific events, including the event level, status, and occurrence time.
 //
 // @param request - DescribeEventsRequest
 //
@@ -4805,7 +4769,7 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 
 // Summary:
 //
-// Cluster operation events include cluster creation, cluster modification, node pool creation, node pool scale-out, addon installation, and cluster upgrade. You can call the DescribeEvents operation to query the details of a specific type of event, including the event level, event status, and event time.
+// Queries the details of cluster operation events, such as cluster creation, cluster modification, node pool creation, node pool scale-out, add-on installation, and cluster upgrade. This operation allows you to query the details of specific events, including the event level, status, and occurrence time.
 //
 // @param request - DescribeEventsRequest
 //
@@ -4824,7 +4788,7 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 
 // Summary:
 //
-// Queries all events in a specified region.
+// Queries the list of all events in a specified region.
 //
 // @param request - DescribeEventsForRegionRequest
 //
@@ -4887,7 +4851,7 @@ func (client *Client) DescribeEventsForRegionWithOptions(regionId *string, reque
 
 // Summary:
 //
-// Queries all events in a specified region.
+// Queries the list of all events in a specified region.
 //
 // @param request - DescribeEventsForRegionRequest
 //
@@ -4908,7 +4872,7 @@ func (client *Client) DescribeEventsForRegion(regionId *string, request *Describ
 //
 // Summary:
 //
-// Queries the agent configuration for a registered cluster by cluster ID.
+// Queries the agent configuration of a registered cluster based on the cluster ID.
 //
 // Description:
 //
@@ -4965,7 +4929,7 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, reques
 //
 // Summary:
 //
-// Queries the agent configuration for a registered cluster by cluster ID.
+// Queries the agent configuration of a registered cluster based on the cluster ID.
 //
 // Description:
 //
@@ -4989,7 +4953,7 @@ func (client *Client) DescribeExternalAgent(ClusterId *string, request *Describe
 
 // Summary:
 //
-// You can call the DescribeKubernetesVersionMetadata operation to query detailed information about Kubernetes versions, including version information, release dates and expiration dates, compatible operating systems, and container runtimes.
+// Queries the details of Kubernetes versions, including version information, release dates, expiration dates, compatible operating systems, and supported runtimes.
 //
 // @param request - DescribeKubernetesVersionMetadataRequest
 //
@@ -5060,7 +5024,7 @@ func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *Desc
 
 // Summary:
 //
-// You can call the DescribeKubernetesVersionMetadata operation to query detailed information about Kubernetes versions, including version information, release dates and expiration dates, compatible operating systems, and container runtimes.
+// Queries the details of Kubernetes versions, including version information, release dates, expiration dates, compatible operating systems, and supported runtimes.
 //
 // @param request - DescribeKubernetesVersionMetadataRequest
 //
@@ -5079,7 +5043,7 @@ func (client *Client) DescribeKubernetesVersionMetadata(request *DescribeKuberne
 
 // Summary:
 //
-// Queries the security vulnerability details of a node pool by node pool ID by calling the DescribeNodePoolVuls operation. The details include vulnerability names and severity levels. Regularly scan node pools for security vulnerabilities to improve cluster security.
+// Queries the security vulnerability details of a node pool by node pool ID by calling the DescribeNodePoolVuls operation. The details include vulnerability names and severity levels. Scan node pool vulnerabilities regularly to improve cluster security.
 //
 // @param request - DescribeNodePoolVulsRequest
 //
@@ -5126,7 +5090,7 @@ func (client *Client) DescribeNodePoolVulsWithOptions(clusterId *string, nodepoo
 
 // Summary:
 //
-// Queries the security vulnerability details of a node pool by node pool ID by calling the DescribeNodePoolVuls operation. The details include vulnerability names and severity levels. Regularly scan node pools for security vulnerabilities to improve cluster security.
+// Queries the security vulnerability details of a node pool by node pool ID by calling the DescribeNodePoolVuls operation. The details include vulnerability names and severity levels. Scan node pool vulnerabilities regularly to improve cluster security.
 //
 // @param request - DescribeNodePoolVulsRequest
 //
@@ -5145,7 +5109,7 @@ func (client *Client) DescribeNodePoolVuls(clusterId *string, nodepoolId *string
 
 // Summary:
 //
-// ACK cluster container security policies provide a comprehensive built-in rule library that includes Compliance, Infra, K8s-general, and PSP categories to ensure the secure operation of containers in production environments. You can call the DescribePolicies operation to query the list of policy governance rule libraries.
+// The container security policies for ACK clusters provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, designed to ensure the secure operation of containers in production environments. You can call the DescribePolicies operation to query the list of policy governance rule libraries.
 //
 // @param headers - map
 //
@@ -5178,7 +5142,7 @@ func (client *Client) DescribePoliciesWithOptions(headers map[string]*string, ru
 
 // Summary:
 //
-// ACK cluster container security policies provide a comprehensive built-in rule library that includes Compliance, Infra, K8s-general, and PSP categories to ensure the secure operation of containers in production environments. You can call the DescribePolicies operation to query the list of policy governance rule libraries.
+// The container security policies for ACK clusters provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, designed to ensure the secure operation of containers in production environments. You can call the DescribePolicies operation to query the list of policy governance rule libraries.
 //
 // @return DescribePoliciesResponse
 func (client *Client) DescribePolicies() (_result *DescribePoliciesResponse, _err error) {
@@ -5195,7 +5159,7 @@ func (client *Client) DescribePolicies() (_result *DescribePoliciesResponse, _er
 
 // Summary:
 //
-// ACK cluster container security policies provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, to ensure the secure operation of containers in production environments. You can call the DescribePolicyDetails operation to query the details of a specified policy governance rule, such as the rule template description, governance action, and governance severity level.
+// ACK cluster container security policies provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, to ensure the secure running of containers in production environments. You can call the DescribePolicyDetails operation to query the details of a specified policy governance rule, such as the rule template description, rule governance action, and rule governance severity.
 //
 // @param headers - map
 //
@@ -5228,7 +5192,7 @@ func (client *Client) DescribePolicyDetailsWithOptions(policyName *string, heade
 
 // Summary:
 //
-// ACK cluster container security policies provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, to ensure the secure operation of containers in production environments. You can call the DescribePolicyDetails operation to query the details of a specified policy governance rule, such as the rule template description, governance action, and governance severity level.
+// ACK cluster container security policies provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, to ensure the secure running of containers in production environments. You can call the DescribePolicyDetails operation to query the details of a specified policy governance rule, such as the rule template description, rule governance action, and rule governance severity.
 //
 // @return DescribePolicyDetailsResponse
 func (client *Client) DescribePolicyDetails(policyName *string) (_result *DescribePolicyDetailsResponse, _err error) {
@@ -5245,7 +5209,7 @@ func (client *Client) DescribePolicyDetails(policyName *string) (_result *Descri
 
 // Summary:
 //
-// ACK cluster container security policies provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, to ensure the secure operation of containers in production environments. You can call the DescribePolicyGovernanceInCluster operation to query detailed policy governance information for a specified cluster, such as the count of enabled policies at different severity levels, policy governance audit logs, and interception and alert details.
+// Queries the details of policy governance in a specified ACK cluster. Container security policies for ACK clusters provide a comprehensive built-in rule library that includes Compliance, Infra, K8s-general, and PSP to ensure the secure operation of containers in production environments. This operation retrieves details such as the counts of enabled policies at different severity levels, policy governance audit logs, and interception and alerting statistics.
 //
 // @param headers - map
 //
@@ -5278,7 +5242,7 @@ func (client *Client) DescribePolicyGovernanceInClusterWithOptions(clusterId *st
 
 // Summary:
 //
-// ACK cluster container security policies provide a rich set of built-in rule libraries, including Compliance, Infra, K8s-general, and PSP, to ensure the secure operation of containers in production environments. You can call the DescribePolicyGovernanceInCluster operation to query detailed policy governance information for a specified cluster, such as the count of enabled policies at different severity levels, policy governance audit logs, and interception and alert details.
+// Queries the details of policy governance in a specified ACK cluster. Container security policies for ACK clusters provide a comprehensive built-in rule library that includes Compliance, Infra, K8s-general, and PSP to ensure the secure operation of containers in production environments. This operation retrieves details such as the counts of enabled policies at different severity levels, policy governance audit logs, and interception and alerting statistics.
 //
 // @return DescribePolicyGovernanceInClusterResponse
 func (client *Client) DescribePolicyGovernanceInCluster(clusterId *string) (_result *DescribePolicyGovernanceInClusterResponse, _err error) {
@@ -5295,7 +5259,7 @@ func (client *Client) DescribePolicyGovernanceInCluster(clusterId *string) (_res
 
 // Summary:
 //
-// You can select a security policy type in an ACK cluster, configure the related enforcement actions and scope, and create and deploy a policy instance. You can call the DescribePolicyInstances operation to retrieve the details of specified policy instances in a cluster, such as the policy description and governance level.
+// You can select a security policy type in an ACK cluster, configure the related enforcement actions and scope, and create and deploy a policy instance. You can call the DescribePolicyInstances operation to query the details of specified policy rule instances in a cluster, such as the policy description and governance level.
 //
 // @param request - DescribePolicyInstancesRequest
 //
@@ -5346,7 +5310,7 @@ func (client *Client) DescribePolicyInstancesWithOptions(clusterId *string, requ
 
 // Summary:
 //
-// You can select a security policy type in an ACK cluster, configure the related enforcement actions and scope, and create and deploy a policy instance. You can call the DescribePolicyInstances operation to retrieve the details of specified policy instances in a cluster, such as the policy description and governance level.
+// You can select a security policy type in an ACK cluster, configure the related enforcement actions and scope, and create and deploy a policy instance. You can call the DescribePolicyInstances operation to query the details of specified policy rule instances in a cluster, such as the policy description and governance level.
 //
 // @param request - DescribePolicyInstancesRequest
 //
@@ -5365,7 +5329,7 @@ func (client *Client) DescribePolicyInstances(clusterId *string, request *Descri
 
 // Summary:
 //
-// Queries the deployment status of policy instances for different policy types in a cluster, including the number of enabled instances for each policy rule and the number of enabled policy types at different governance levels.
+// Queries the instance deployment status for different policy types in a cluster, including the number of enabled instances for each policy rule and the number of enabled policy types at different governance levels.
 //
 // @param headers - map
 //
@@ -5398,7 +5362,7 @@ func (client *Client) DescribePolicyInstancesStatusWithOptions(clusterId *string
 
 // Summary:
 //
-// Queries the deployment status of policy instances for different policy types in a cluster, including the number of enabled instances for each policy rule and the number of enabled policy types at different governance levels.
+// Queries the instance deployment status for different policy types in a cluster, including the number of enabled instances for each policy rule and the number of enabled policy types at different governance levels.
 //
 // @return DescribePolicyInstancesStatusResponse
 func (client *Client) DescribePolicyInstancesStatus(clusterId *string) (_result *DescribePolicyInstancesStatusResponse, _err error) {
@@ -5489,7 +5453,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries whether deletion protection is enabled for a specified resource in a cluster. Resources that support deletion protection include namespaces and services.
+// Queries whether deletion protection is enabled for specified resources in a cluster. Supported resources include namespaces and services.
 //
 // @param request - DescribeResourcesDeleteProtectionRequest
 //
@@ -5540,7 +5504,7 @@ func (client *Client) DescribeResourcesDeleteProtectionWithOptions(ClusterId *st
 
 // Summary:
 //
-// Queries whether deletion protection is enabled for a specified resource in a cluster. Resources that support deletion protection include namespaces and services.
+// Queries whether deletion protection is enabled for specified resources in a cluster. Supported resources include namespaces and services.
 //
 // @param request - DescribeResourcesDeleteProtectionRequest
 //
@@ -5559,7 +5523,7 @@ func (client *Client) DescribeResourcesDeleteProtection(ClusterId *string, Resou
 
 // Summary:
 //
-// As a cluster permission management administrator, you can use an Alibaba Cloud account to issue KubeConfig credentials that contain identity information for a specified Resource Access Management (RAM) user or RAM role within the account. These credentials are used to connect to ACK clusters. You can invoke the DescribeSubaccountK8sClusterUserConfig operation to issue or retrieve the KubeConfig for any RAM user or role within the account.
+// As a cluster permission management administrator, you can use an Alibaba Cloud account to issue KubeConfig credentials that contain identity information for a specified Resource Access Management (RAM) user or RAM role within the account. These credentials are used to connect to ACK clusters. You can invoke the DescribeSubaccountK8sClusterUserConfig operation to issue or retrieve the KubeConfig of any RAM user or role within the account.
 //
 // Description:
 //
@@ -5614,7 +5578,7 @@ func (client *Client) DescribeSubaccountK8sClusterUserConfigWithOptions(ClusterI
 
 // Summary:
 //
-// As a cluster permission management administrator, you can use an Alibaba Cloud account to issue KubeConfig credentials that contain identity information for a specified Resource Access Management (RAM) user or RAM role within the account. These credentials are used to connect to ACK clusters. You can invoke the DescribeSubaccountK8sClusterUserConfig operation to issue or retrieve the KubeConfig for any RAM user or role within the account.
+// As a cluster permission management administrator, you can use an Alibaba Cloud account to issue KubeConfig credentials that contain identity information for a specified Resource Access Management (RAM) user or RAM role within the account. These credentials are used to connect to ACK clusters. You can invoke the DescribeSubaccountK8sClusterUserConfig operation to issue or retrieve the KubeConfig of any RAM user or role within the account.
 //
 // Description:
 //
@@ -5753,7 +5717,7 @@ func (client *Client) DescribeTemplateAttribute(TemplateId *string, request *Des
 
 // Summary:
 //
-// An orchestration template defines and describes a set of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. You can call the DescribeTemplates operation to retrieve a list of created orchestration templates and query detailed information about the templates, including access permissions, YAML content, and tags.
+// An orchestration template defines and describes a group of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. Calls the DescribeTemplates operation to retrieve a list of created orchestration templates and query their details, including access permissions, YAML content, and tags.
 //
 // @param request - DescribeTemplatesRequest
 //
@@ -5808,7 +5772,7 @@ func (client *Client) DescribeTemplatesWithOptions(request *DescribeTemplatesReq
 
 // Summary:
 //
-// An orchestration template defines and describes a set of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. You can call the DescribeTemplates operation to retrieve a list of created orchestration templates and query detailed information about the templates, including access permissions, YAML content, and tags.
+// An orchestration template defines and describes a group of Kubernetes cluster resources in a declarative manner, specifying how applications should run or be configured. Calls the DescribeTemplates operation to retrieve a list of created orchestration templates and query their details, including access permissions, YAML content, and tags.
 //
 // @param request - DescribeTemplatesRequest
 //
@@ -5905,7 +5869,7 @@ func (client *Client) DescribeTrigger(clusterId *string, request *DescribeTrigge
 
 // Summary:
 //
-// In ACK clusters, you can use Kubernetes namespaces to achieve logically isolated permissions and resources for cluster users. Users who are granted RBAC permissions only for a specified namespace cannot access resources in other namespaces of the cluster. You can invoke the DescribeUserClusterNamespaces operation to query the namespaces for which the current Resource Access Management (RAM) user or role has been granted RBAC access permissions in a specified ACK cluster.
+// In an ACK cluster, you can use Kubernetes namespaces to achieve logically isolated permissions and resources for cluster users. Users who are granted RBAC permissions only in specified namespaces cannot access resources in other namespaces of the cluster. You can invoke the DescribeUserClusterNamespaces operation to query the namespaces in which the current Resource Access Management (RAM) user or role is granted RBAC access permissions in a specified ACK cluster.
 //
 // @param headers - map
 //
@@ -5938,7 +5902,7 @@ func (client *Client) DescribeUserClusterNamespacesWithOptions(ClusterId *string
 
 // Summary:
 //
-// In ACK clusters, you can use Kubernetes namespaces to achieve logically isolated permissions and resources for cluster users. Users who are granted RBAC permissions only for a specified namespace cannot access resources in other namespaces of the cluster. You can invoke the DescribeUserClusterNamespaces operation to query the namespaces for which the current Resource Access Management (RAM) user or role has been granted RBAC access permissions in a specified ACK cluster.
+// In an ACK cluster, you can use Kubernetes namespaces to achieve logically isolated permissions and resources for cluster users. Users who are granted RBAC permissions only in specified namespaces cannot access resources in other namespaces of the cluster. You can invoke the DescribeUserClusterNamespaces operation to query the namespaces in which the current Resource Access Management (RAM) user or role is granted RBAC access permissions in a specified ACK cluster.
 //
 // @return DescribeUserClusterNamespacesResponse
 func (client *Client) DescribeUserClusterNamespaces(ClusterId *string) (_result *DescribeUserClusterNamespacesResponse, _err error) {
@@ -5955,13 +5919,13 @@ func (client *Client) DescribeUserClusterNamespaces(ClusterId *string) (_result 
 
 // Summary:
 //
-// In ACK clusters, you can create and assign different access permissions to different Resource Access Management (RAM) users or roles to ensure secure access control and resource isolation. You can invoke the DescribeUserPermission operation to query the details of cluster permissions granted to a RAM user or role, including accessible resources, permission scope, preset role types, and permission sources.
+// In ACK clusters, you can create and assign different access permissions to different Resource Access Management (RAM) users or roles to ensure secure access control and resource isolation. You can invoke the DescribeUserPermission operation to query the details of cluster permissions granted to a Resource Access Management (RAM) user or role, including accessible resources, permission scope, preset role types, and permission sources.
 //
 // Description:
 //
-// *Before you begin**:
+// *Precautions**:
 //
-// - If the account that invokes this API operation is a Resource Access Management (RAM) user or RAM role, the API operation returns only the permissions for clusters in which the calling account has RBAC administrator permissions. To list permissions for all clusters, the calling account must have RBAC administrator permissions on all clusters.
+// - If the account that invokes this API operation is a Resource Access Management (RAM) user or RAM role, the API operation returns only the permissions for clusters on which the calling account has RBAC administrator permissions. To list permissions for all clusters, the calling account must have RBAC administrator permissions on all clusters.
 //
 // @param headers - map
 //
@@ -5994,13 +5958,13 @@ func (client *Client) DescribeUserPermissionWithOptions(uid *string, headers map
 
 // Summary:
 //
-// In ACK clusters, you can create and assign different access permissions to different Resource Access Management (RAM) users or roles to ensure secure access control and resource isolation. You can invoke the DescribeUserPermission operation to query the details of cluster permissions granted to a RAM user or role, including accessible resources, permission scope, preset role types, and permission sources.
+// In ACK clusters, you can create and assign different access permissions to different Resource Access Management (RAM) users or roles to ensure secure access control and resource isolation. You can invoke the DescribeUserPermission operation to query the details of cluster permissions granted to a Resource Access Management (RAM) user or role, including accessible resources, permission scope, preset role types, and permission sources.
 //
 // Description:
 //
-// *Before you begin**:
+// *Precautions**:
 //
-// - If the account that invokes this API operation is a Resource Access Management (RAM) user or RAM role, the API operation returns only the permissions for clusters in which the calling account has RBAC administrator permissions. To list permissions for all clusters, the calling account must have RBAC administrator permissions on all clusters.
+// - If the account that invokes this API operation is a Resource Access Management (RAM) user or RAM role, the API operation returns only the permissions for clusters on which the calling account has RBAC administrator permissions. To list permissions for all clusters, the calling account must have RBAC administrator permissions on all clusters.
 //
 // @return DescribeUserPermissionResponse
 func (client *Client) DescribeUserPermission(uid *string) (_result *DescribeUserPermissionResponse, _err error) {
@@ -6067,15 +6031,15 @@ func (client *Client) DescribeUserQuota() (_result *DescribeUserQuotaResponse, _
 
 // Summary:
 //
-// Alibaba Cloud security products periodically scan ECS nodes for security vulnerabilities and provide corresponding remediation suggestions and methods. Some CVE fixes may require node restarts. Ensure that the cluster has sufficient nodes for drain operations. You can call the FixNodePoolVuls operation to fix node security vulnerabilities in a specified cluster node pool and improve the security of cluster nodes.
+// Alibaba Cloud security products periodically scan for security vulnerabilities on ECS nodes and provide corresponding remediation suggestions and methods. Some CVE fixes may require node restarts. Ensure that the cluster has sufficient nodes for drain operations. You can call the FixNodePoolVuls operation to fix node security vulnerabilities in a specified cluster node pool and improve the security of cluster nodes.
 //
 // Description:
 //
-// - CVE compatibility is ensured by Security Center. Make sure that you have activated the Ultimate edition of Security Center or [purchased vulnerability fixing (pay-as-you-go)](https://help.aliyun.com/document_detail/42308.html).
+// - CVE compatibility is guaranteed by Security Center. Ensure that you have activated the Ultimate edition of Security Center or [purchased the vulnerability fixing feature (pay-as-you-go)](https://help.aliyun.com/document_detail/42308.html).
 //
-// - Some CVE fixes require node restarts. Container Service drains the node before restarting it. Ensure that the cluster has sufficient spare node resources for draining. For example, scale out the node pool in advance.
+// - Some CVE fixes require node restarts. Container Service drains the node before restarting it. Ensure that the cluster has sufficient spare node resources for drain operations. For example, scale out the node pool in advance.
 //
-// - Pay attention to the compatibility between your applications and CVEs. CVE fixes are performed in batches. During the CVE fix process, you can pause or cancel the task. After you pause or cancel the task, batches that have already been dispatched continue to run until completion. Batches that have not been dispatched are paused or canceled.
+// - Pay attention to the compatibility between your applications and CVEs. CVE fixes are performed in batches. During the CVE fixing process, you can pause or cancel the task. After you pause or cancel the task, batches that have already been dispatched continue to run until completion. Batches that have not been dispatched are paused or canceled.
 //
 // @param request - FixNodePoolVulsRequest
 //
@@ -6134,15 +6098,15 @@ func (client *Client) FixNodePoolVulsWithOptions(clusterId *string, nodepoolId *
 
 // Summary:
 //
-// Alibaba Cloud security products periodically scan ECS nodes for security vulnerabilities and provide corresponding remediation suggestions and methods. Some CVE fixes may require node restarts. Ensure that the cluster has sufficient nodes for drain operations. You can call the FixNodePoolVuls operation to fix node security vulnerabilities in a specified cluster node pool and improve the security of cluster nodes.
+// Alibaba Cloud security products periodically scan for security vulnerabilities on ECS nodes and provide corresponding remediation suggestions and methods. Some CVE fixes may require node restarts. Ensure that the cluster has sufficient nodes for drain operations. You can call the FixNodePoolVuls operation to fix node security vulnerabilities in a specified cluster node pool and improve the security of cluster nodes.
 //
 // Description:
 //
-// - CVE compatibility is ensured by Security Center. Make sure that you have activated the Ultimate edition of Security Center or [purchased vulnerability fixing (pay-as-you-go)](https://help.aliyun.com/document_detail/42308.html).
+// - CVE compatibility is guaranteed by Security Center. Ensure that you have activated the Ultimate edition of Security Center or [purchased the vulnerability fixing feature (pay-as-you-go)](https://help.aliyun.com/document_detail/42308.html).
 //
-// - Some CVE fixes require node restarts. Container Service drains the node before restarting it. Ensure that the cluster has sufficient spare node resources for draining. For example, scale out the node pool in advance.
+// - Some CVE fixes require node restarts. Container Service drains the node before restarting it. Ensure that the cluster has sufficient spare node resources for drain operations. For example, scale out the node pool in advance.
 //
-// - Pay attention to the compatibility between your applications and CVEs. CVE fixes are performed in batches. During the CVE fix process, you can pause or cancel the task. After you pause or cancel the task, batches that have already been dispatched continue to run until completion. Batches that have not been dispatched are paused or canceled.
+// - Pay attention to the compatibility between your applications and CVEs. CVE fixes are performed in batches. During the CVE fixing process, you can pause or cancel the task. After you pause or cancel the task, batches that have already been dispatched continue to run until completion. Batches that have not been dispatched are paused or canceled.
 //
 // @param request - FixNodePoolVulsRequest
 //
@@ -6161,7 +6125,7 @@ func (client *Client) FixNodePoolVuls(clusterId *string, nodepoolId *string, req
 
 // Summary:
 //
-// Queries the details of a specified component instance in a cluster, including the version, parameter settings, and logging feature status of the component instance.
+// Queries the details of a specified component instance in a cluster, including the version, parameter settings, and logging status of the component instance.
 //
 // @param headers - map
 //
@@ -6194,7 +6158,7 @@ func (client *Client) GetClusterAddonInstanceWithOptions(clusterId *string, inst
 
 // Summary:
 //
-// Queries the details of a specified component instance in a cluster, including the version, parameter settings, and logging feature status of the component instance.
+// Queries the details of a specified component instance in a cluster, including the version, parameter settings, and logging status of the component instance.
 //
 // @return GetClusterAddonInstanceResponse
 func (client *Client) GetClusterAddonInstance(clusterId *string, instanceName *string) (_result *GetClusterAddonInstanceResponse, _err error) {
@@ -6261,7 +6225,7 @@ func (client *Client) GetClusterAuditProject(clusterid *string) (_result *GetClu
 
 // Summary:
 //
-// The intelligent O&M platform for containers provides comprehensive Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. You can call the GetClusterCheck operation to query information about a specified check task based on the cluster ID and check task ID, such as the check status, specific check items, and check creation and completion time.
+// Queries the details of a specific check task for a Kubernetes cluster. The intelligent O&M platform for containers provides comprehensive cluster check capabilities, including cluster upgrade, cluster migration, component installation, component upgrade, and node pool checks. You can retrieve information such as the check status, specific check items, and the creation and completion time of the check task.
 //
 // @param headers - map
 //
@@ -6294,7 +6258,7 @@ func (client *Client) GetClusterCheckWithOptions(clusterId *string, checkId *str
 
 // Summary:
 //
-// The intelligent O&M platform for containers provides comprehensive Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. You can call the GetClusterCheck operation to query information about a specified check task based on the cluster ID and check task ID, such as the check status, specific check items, and check creation and completion time.
+// Queries the details of a specific check task for a Kubernetes cluster. The intelligent O&M platform for containers provides comprehensive cluster check capabilities, including cluster upgrade, cluster migration, component installation, component upgrade, and node pool checks. You can retrieve information such as the check status, specific check items, and the creation and completion time of the check task.
 //
 // @return GetClusterCheckResponse
 func (client *Client) GetClusterCheck(clusterId *string, checkId *string) (_result *GetClusterCheckResponse, _err error) {
@@ -6585,7 +6549,7 @@ func (client *Client) GetClusterInspectReportDetail(clusterId *string, reportId 
 //
 // Summary:
 //
-// Queries the triggers of an application by application name.
+// Queries the triggers of an application by name.
 //
 // @param request - GetKubernetesTriggerRequest
 //
@@ -6646,7 +6610,7 @@ func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request
 //
 // Summary:
 //
-// Queries the triggers of an application by application name.
+// Queries the triggers of an application by name.
 //
 // @param request - GetKubernetesTriggerRequest
 //
@@ -6721,13 +6685,13 @@ func (client *Client) GetUpgradeStatus(ClusterId *string) (_result *GetUpgradeSt
 
 // Summary:
 //
-// By default, Resource Access Management (RAM) users or roles that are not cluster creators and have not been granted access permissions across all cluster dimensions do not have any RBAC permissions in a cluster. You can invoke the GrantPermissions operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scope, and preset role types, to better manage cluster management security and access control.
+// By default, Resource Access Management (RAM) users or roles that are not cluster creators and have not been granted access permissions on all cluster dimensions do not have any RBAC permissions in a cluster. You can invoke the GrantPermissions operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scope, and preset role types, to better manage cluster management security access control.
 //
 // Description:
 //
-// - If the account that invokes this API operation is a RAM user, make sure that the account has been granted the permission to modify the RBAC authorization information of other Resource Access Management (RAM) users or RAM roles. Otherwise, the API operation returns the `StatusForbidden` or `ForbiddenGrantPermissions` fault. For more information, see [Grant RBAC permissions to a RAM user](https://help.aliyun.com/document_detail/119035.html).
+// - If the account that invokes this API operation is a Resource Access Management (RAM) user, make sure that the account has been granted permissions to modify the cluster authorization information of other RAM users or RAM roles. Otherwise, the API returns the `StatusForbidden` or `ForbiddenGrantPermissions` fault code. For more information, see [Grant RBAC authorization to other RAM users](https://help.aliyun.com/document_detail/119035.html).
 //
-// - The operation of fully updating the RBAC authorization information of a RAM user or RAM role overwrites the existing cluster permissions of the target RAM user or RAM role. Include all permission configurations that you want to grant to the target RAM user or RAM role in the request.
+// - The operation of updating all RBAC permissions of a RAM user or RAM role overwrites the existing cluster permissions of the target RAM user or RAM role. The request must include all permission configurations that you want to grant to the target RAM user or RAM role.
 //
 // @param request - GrantPermissionsRequest
 //
@@ -6769,13 +6733,13 @@ func (client *Client) GrantPermissionsWithOptions(uid *string, request *GrantPer
 
 // Summary:
 //
-// By default, Resource Access Management (RAM) users or roles that are not cluster creators and have not been granted access permissions across all cluster dimensions do not have any RBAC permissions in a cluster. You can invoke the GrantPermissions operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scope, and preset role types, to better manage cluster management security and access control.
+// By default, Resource Access Management (RAM) users or roles that are not cluster creators and have not been granted access permissions on all cluster dimensions do not have any RBAC permissions in a cluster. You can invoke the GrantPermissions operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scope, and preset role types, to better manage cluster management security access control.
 //
 // Description:
 //
-// - If the account that invokes this API operation is a RAM user, make sure that the account has been granted the permission to modify the RBAC authorization information of other Resource Access Management (RAM) users or RAM roles. Otherwise, the API operation returns the `StatusForbidden` or `ForbiddenGrantPermissions` fault. For more information, see [Grant RBAC permissions to a RAM user](https://help.aliyun.com/document_detail/119035.html).
+// - If the account that invokes this API operation is a Resource Access Management (RAM) user, make sure that the account has been granted permissions to modify the cluster authorization information of other RAM users or RAM roles. Otherwise, the API returns the `StatusForbidden` or `ForbiddenGrantPermissions` fault code. For more information, see [Grant RBAC authorization to other RAM users](https://help.aliyun.com/document_detail/119035.html).
 //
-// - The operation of fully updating the RBAC authorization information of a RAM user or RAM role overwrites the existing cluster permissions of the target RAM user or RAM role. Include all permission configurations that you want to grant to the target RAM user or RAM role in the request.
+// - The operation of updating all RBAC permissions of a RAM user or RAM role overwrites the existing cluster permissions of the target RAM user or RAM role. The request must include all permission configurations that you want to grant to the target RAM user or RAM role.
 //
 // @param request - GrantPermissionsRequest
 //
@@ -6855,7 +6819,7 @@ func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallCl
 
 // Summary:
 //
-// Installs components on nodes. You can configure and specify nodes on which to install components.
+// Installs node components on specified nodes with custom configurations.
 //
 // @param request - InstallNodePoolComponentsRequest
 //
@@ -6910,7 +6874,7 @@ func (client *Client) InstallNodePoolComponentsWithOptions(clusterId *string, no
 
 // Summary:
 //
-// Installs components on nodes. You can configure and specify nodes on which to install components.
+// Installs node components on specified nodes with custom configurations.
 //
 // @param request - InstallNodePoolComponentsRequest
 //
@@ -6929,7 +6893,7 @@ func (client *Client) InstallNodePoolComponents(clusterId *string, nodePoolId *s
 
 // Summary:
 //
-// Queries the list of available components based on specified parameters such as region, cluster type, cluster subtype (profile), and cluster version. You can also retrieve detailed component information, including whether a component is managed, the schema of supported custom parameters, and compatible operating system architectures.
+// Invokes the ListAddons operation to retrieve a list of active components based on specified parameters such as region, cluster type, cluster child class (profile), and cluster version. You can also query detailed information about each component, including whether it is managed, the schema of supported custom parameters, and compatible operating system architectures.
 //
 // @param request - ListAddonsRequest
 //
@@ -6996,7 +6960,7 @@ func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, headers 
 
 // Summary:
 //
-// Queries the list of available components based on specified parameters such as region, cluster type, cluster subtype (profile), and cluster version. You can also retrieve detailed component information, including whether a component is managed, the schema of supported custom parameters, and compatible operating system architectures.
+// Invokes the ListAddons operation to retrieve a list of active components based on specified parameters such as region, cluster type, cluster child class (profile), and cluster version. You can also query detailed information about each component, including whether it is managed, the schema of supported custom parameters, and compatible operating system architectures.
 //
 // @param request - ListAddonsRequest
 //
@@ -7015,7 +6979,7 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 
 // Summary:
 //
-// Retrieves the list of auto-repair policies.
+// Retrieves a list of self-healing rules.
 //
 // Description:
 //
@@ -7052,7 +7016,7 @@ func (client *Client) ListAutoRepairPoliciesWithOptions(clusterId *string, heade
 
 // Summary:
 //
-// Retrieves the list of auto-repair policies.
+// Retrieves a list of self-healing rules.
 //
 // Description:
 //
@@ -7123,7 +7087,7 @@ func (client *Client) ListClusterAddonInstanceResources(clusterId *string, insta
 
 // Summary:
 //
-// Lists the component instances installed in a specified cluster and queries related information about the component instances, such as the component version and status.
+// Queries the list of component instances installed in a specified cluster and retrieves related information, including the component version and status.
 //
 // @param headers - map
 //
@@ -7156,7 +7120,7 @@ func (client *Client) ListClusterAddonInstancesWithOptions(clusterId *string, he
 
 // Summary:
 //
-// Lists the component instances installed in a specified cluster and queries related information about the component instances, such as the component version and status.
+// Queries the list of component instances installed in a specified cluster and retrieves related information, including the component version and status.
 //
 // @return ListClusterAddonInstancesResponse
 func (client *Client) ListClusterAddonInstances(clusterId *string) (_result *ListClusterAddonInstancesResponse, _err error) {
@@ -7173,7 +7137,7 @@ func (client *Client) ListClusterAddonInstances(clusterId *string) (_result *Lis
 
 // Summary:
 //
-// The intelligent O&M platform for containers provides comprehensive Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. You can call the ListClusterChecks operation to query the list of cluster checks and related information by cluster ID, such as check type, status, creation time, and completion time.
+// Queries the list of cluster checks and related information, such as the check type, status, creation time, and completion time, based on the cluster ID. The container intelligent O&M platform provides comprehensive Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks.
 //
 // @param request - ListClusterChecksRequest
 //
@@ -7224,7 +7188,7 @@ func (client *Client) ListClusterChecksWithOptions(clusterId *string, request *L
 
 // Summary:
 //
-// The intelligent O&M platform for containers provides comprehensive Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. You can call the ListClusterChecks operation to query the list of cluster checks and related information by cluster ID, such as check type, status, creation time, and completion time.
+// Queries the list of cluster checks and related information, such as the check type, status, creation time, and completion time, based on the cluster ID. The container intelligent O&M platform provides comprehensive Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks.
 //
 // @param request - ListClusterChecksRequest
 //
@@ -7243,7 +7207,7 @@ func (client *Client) ListClusterChecks(clusterId *string, request *ListClusterC
 
 // Summary:
 //
-// Retrieves a list of cluster inspection reports.
+// Retrieves the list of cluster inspection reports.
 //
 // @param request - ListClusterInspectReportsRequest
 //
@@ -7294,7 +7258,7 @@ func (client *Client) ListClusterInspectReportsWithOptions(clusterId *string, re
 
 // Summary:
 //
-// Retrieves a list of cluster inspection reports.
+// Retrieves the list of cluster inspection reports.
 //
 // @param request - ListClusterInspectReportsRequest
 //
@@ -7313,13 +7277,13 @@ func (client *Client) ListClusterInspectReports(clusterId *string, request *List
 
 // Summary:
 //
-// Queries the list and status of KubeConfigs that have been issued to users in a specified cluster. You can call this operation to view the access control status of the current cluster.
+// Queries the list and status of user KubeConfigs issued for the current cluster.
 //
 // Description:
 //
-// > - To call this operation, you must have the ram:ListUsers and ram:ListRoles permissions.
+// > - You must have the ram:ListUsers and ram:ListRoles permissions.
 //
-// > - To call this operation, you must have full access to Container Service for Kubernetes (ACK) (AliyunCSFullAccess).
+// > - You must have the permissions to manage Container Service for Kubernetes (CS) (AliyunCSFullAccess).
 //
 // @param request - ListClusterKubeconfigStatesRequest
 //
@@ -7374,13 +7338,13 @@ func (client *Client) ListClusterKubeconfigStatesWithOptions(ClusterId *string, 
 
 // Summary:
 //
-// Queries the list and status of KubeConfigs that have been issued to users in a specified cluster. You can call this operation to view the access control status of the current cluster.
+// Queries the list and status of user KubeConfigs issued for the current cluster.
 //
 // Description:
 //
-// > - To call this operation, you must have the ram:ListUsers and ram:ListRoles permissions.
+// > - You must have the ram:ListUsers and ram:ListRoles permissions.
 //
-// > - To call this operation, you must have full access to Container Service for Kubernetes (ACK) (AliyunCSFullAccess).
+// > - You must have the permissions to manage Container Service for Kubernetes (CS) (AliyunCSFullAccess).
 //
 // @param request - ListClusterKubeconfigStatesRequest
 //
@@ -7399,7 +7363,7 @@ func (client *Client) ListClusterKubeconfigStates(ClusterId *string, request *Li
 
 // Summary:
 //
-// 查询节点组件在节点上的状态
+// Queries the status of node components on nodes.
 //
 // @param tmpReq - ListNodePoolComponentInstanceNodesRequest
 //
@@ -7468,7 +7432,7 @@ func (client *Client) ListNodePoolComponentInstanceNodesWithOptions(clusterId *s
 
 // Summary:
 //
-// 查询节点组件在节点上的状态
+// Queries the status of node components on nodes.
 //
 // @param request - ListNodePoolComponentInstanceNodesRequest
 //
@@ -7487,7 +7451,7 @@ func (client *Client) ListNodePoolComponentInstanceNodes(clusterId *string, node
 
 // Summary:
 //
-// 查询节点组件实例列表
+// Queries node component instances.
 //
 // @param request - ListNodePoolComponentInstancesRequest
 //
@@ -7538,7 +7502,7 @@ func (client *Client) ListNodePoolComponentInstancesWithOptions(clusterId *strin
 
 // Summary:
 //
-// 查询节点组件实例列表
+// Queries node component instances.
 //
 // @param request - ListNodePoolComponentInstancesRequest
 //
@@ -7557,7 +7521,7 @@ func (client *Client) ListNodePoolComponentInstances(clusterId *string, nodepool
 
 // Summary:
 //
-// 查询节点池可安装的节点组件
+// Queries the node components that can be installed in a node pool.
 //
 // @param tmpReq - ListNodePoolComponentsRequest
 //
@@ -7634,7 +7598,7 @@ func (client *Client) ListNodePoolComponentsWithOptions(clusterId *string, tmpRe
 
 // Summary:
 //
-// 查询节点池可安装的节点组件
+// Queries the node components that can be installed in a node pool.
 //
 // @param request - ListNodePoolComponentsRequest
 //
@@ -7723,7 +7687,7 @@ func (client *Client) ListOperationPlans(request *ListOperationPlansRequest) (_r
 
 // Summary:
 //
-// Queries the most recent 100 automated O&M execution plans in a specified region. When features such as cluster intelligent managed mode (Auto Mode), automatic cluster upgrade, or node pool automated O&M are enabled, you can call this operation to query the O&M plans automatically generated by the system and their execution status, such as cluster upgrades and node pool CVE fixes.
+// Queries the latest 100 automated O&M execution plans in a specified region. When features such as Auto Mode for intelligent cluster management, automatic cluster upgrades, and automated O&M for node pools are enabled, you can use this operation to query system-generated O&M plans and their execution status, such as cluster upgrades and node pool CVE fixes.
 //
 // @param request - ListOperationPlansForRegionRequest
 //
@@ -7778,7 +7742,7 @@ func (client *Client) ListOperationPlansForRegionWithOptions(regionId *string, r
 
 // Summary:
 //
-// Queries the most recent 100 automated O&M execution plans in a specified region. When features such as cluster intelligent managed mode (Auto Mode), automatic cluster upgrade, or node pool automated O&M are enabled, you can call this operation to query the O&M plans automatically generated by the system and their execution status, such as cluster upgrades and node pool CVE fixes.
+// Queries the latest 100 automated O&M execution plans in a specified region. When features such as Auto Mode for intelligent cluster management, automatic cluster upgrades, and automated O&M for node pools are enabled, you can use this operation to query system-generated O&M plans and their execution status, such as cluster upgrades and node pool CVE fixes.
 //
 // @param request - ListOperationPlansForRegionRequest
 //
@@ -7797,7 +7761,7 @@ func (client *Client) ListOperationPlansForRegion(regionId *string, request *Lis
 
 // Summary:
 //
-// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can classify and manage clusters more flexibly, and better support requirements such as monitoring, cost analysis, and multi-tenant data isolation. You can call the ListTagResources operation to obtain a list of resource tags and query detailed tag information, such as key-value pairs and associated clusters.
+// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can more flexibly classify and manage clusters, and better support requirements such as monitoring, cost analysis, and multi-tenant data isolation. Calls the ListTagResources operation to retrieve a list of resource tags and query detailed tag information, such as key-value pairs and associated clusters.
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -7870,7 +7834,7 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 
 // Summary:
 //
-// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can classify and manage clusters more flexibly, and better support requirements such as monitoring, cost analysis, and multi-tenant data isolation. You can call the ListTagResources operation to obtain a list of resource tags and query detailed tag information, such as key-value pairs and associated clusters.
+// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can more flexibly classify and manage clusters, and better support requirements such as monitoring, cost analysis, and multi-tenant data isolation. Calls the ListTagResources operation to retrieve a list of resource tags and query detailed tag information, such as key-value pairs and associated clusters.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7889,7 +7853,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the KubeConfig status list of all clusters for the current user. If you want to view the KubeConfig issuance status of each cluster for the current user, you can call this operation to retrieve the KubeConfig status list of all clusters.
+// Queries the KubeConfig status list of all clusters for the current user. You can call this operation to view the KubeConfig issuance status of each cluster for the current user.
 //
 // Description:
 //
@@ -7944,7 +7908,7 @@ func (client *Client) ListUserKubeConfigStatesWithOptions(Uid *string, request *
 
 // Summary:
 //
-// Queries the KubeConfig status list of all clusters for the current user. If you want to view the KubeConfig issuance status of each cluster for the current user, you can call this operation to retrieve the KubeConfig status list of all clusters.
+// Queries the KubeConfig status list of all clusters for the current user. You can call this operation to view the KubeConfig issuance status of each cluster for the current user.
 //
 // Description:
 //
@@ -7967,11 +7931,11 @@ func (client *Client) ListUserKubeConfigStates(Uid *string, request *ListUserKub
 
 // Summary:
 //
-// ACK ACK clusters are an evolution of ACK Basic clusters, inheriting all the advantages of managed clusters, such as managed control planes and high-availability control planes. ACK ACK clusters further enhance cluster reliability, security, and scheduling capabilities, and support SLAs with compensation standards. ACK ACK clusters are suitable for enterprise customers who run large-scale workloads in production environments and have high requirements for stability and security. You can call the MigrateCluster operation to migrate an ACK Basic cluster to an ACK ACK cluster.
+// Migrates a cluster.
 //
 // Description:
 //
-// After you migrate an ACK managed Basic cluster to an ACK managed Pro cluster, a [cluster management fee](https://help.aliyun.com/document_detail/462278.html) charged by ACK is added. Billing for other cloud resources remains unchanged.
+// After you migrate an ACK basic managed cluster to an ACK Pro managed cluster, a [cluster management fee](https://help.aliyun.com/document_detail/462278.html) charged by ACK is added. The billing of other cloud resources remains unchanged.
 //
 // @param request - MigrateClusterRequest
 //
@@ -8022,11 +7986,11 @@ func (client *Client) MigrateClusterWithOptions(clusterId *string, request *Migr
 
 // Summary:
 //
-// ACK ACK clusters are an evolution of ACK Basic clusters, inheriting all the advantages of managed clusters, such as managed control planes and high-availability control planes. ACK ACK clusters further enhance cluster reliability, security, and scheduling capabilities, and support SLAs with compensation standards. ACK ACK clusters are suitable for enterprise customers who run large-scale workloads in production environments and have high requirements for stability and security. You can call the MigrateCluster operation to migrate an ACK Basic cluster to an ACK ACK cluster.
+// Migrates a cluster.
 //
 // Description:
 //
-// After you migrate an ACK managed Basic cluster to an ACK managed Pro cluster, a [cluster management fee](https://help.aliyun.com/document_detail/462278.html) charged by ACK is added. Billing for other cloud resources remains unchanged.
+// After you migrate an ACK basic managed cluster to an ACK Pro managed cluster, a [cluster management fee](https://help.aliyun.com/document_detail/462278.html) charged by ACK is added. The billing of other cloud resources remains unchanged.
 //
 // @param request - MigrateClusterRequest
 //
@@ -8049,7 +8013,7 @@ func (client *Client) MigrateCluster(clusterId *string, request *MigrateClusterR
 //
 // Description:
 //
-//	Notice: This API is not yet available. Stay tuned..
+//	Notice: This API is not yet available. Stay tuned.
 //
 // @param request - ModifyAutoRepairPolicyRequest
 //
@@ -8104,7 +8068,7 @@ func (client *Client) ModifyAutoRepairPolicyWithOptions(clusterId *string, polic
 //
 // Description:
 //
-//	Notice: This API is not yet available. Stay tuned..
+//	Notice: This API is not yet available. Stay tuned.
 //
 // @param request - ModifyAutoRepairPolicyRequest
 //
@@ -8127,7 +8091,7 @@ func (client *Client) ModifyAutoRepairPolicy(clusterId *string, policyId *string
 //
 // Description:
 //
-// <notice>Starting July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to OpenAPI request and response parameters and OpenAPI deprecation for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
+// <notice>Starting from July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to OpenAPI request and response parameters and OpenAPI deprecation for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - ModifyClusterRequest
 //
@@ -8258,7 +8222,7 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 //
 // Description:
 //
-// <notice>Starting July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to OpenAPI request and response parameters and OpenAPI deprecation for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
+// <notice>Starting from July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to OpenAPI request and response parameters and OpenAPI deprecation for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - ModifyClusterRequest
 //
@@ -8277,17 +8241,17 @@ func (client *Client) ModifyCluster(ClusterId *string, request *ModifyClusterReq
 
 // Summary:
 //
-// Modifies the configuration of an installed cluster component instance. Modifying configurations may affect your services. Evaluate the impact before performing this operation during off-peak hours and back up relevant data in advance.
+// Modifies the configuration of an installed cluster component instance. Modifying the configuration may affect your services. Evaluate the impact before performing this operation during off-peak hours and back up relevant data in advance.
 //
 // Description:
 //
-// You can call this API operation to modify the configuration of common clusters components and the control plane parameter settings of ACK Pro clusters:
+// You can use this API operation to modify the configuration of common clusters components and the control plane parameter settings of ACK Pro clusters:
 //
 // - To query the configurable parameters of common components, call the DescribeClusterAddonMetadata API operation. For details, see [Query cluster component version metadata](https://help.aliyun.com/document_detail/2667944.html).
 //
-// - For the configurable control plane parameter settings of ACK Pro clusters, see [Customize control plane parameters of ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
+// - For the configurable control plane parameter settings of ACK Pro clusters, see [Customize control plane parameters of an ACK Pro cluster](https://help.aliyun.com/document_detail/199588.html).
 //
-// Modifying configurations may cause the component to be redeployed and restarted. Evaluate the impact before performing this operation.
+// Modifying the configuration may cause the component to be redeployed and restarted. Evaluate the impact before performing this operation.
 //
 // @param request - ModifyClusterAddonRequest
 //
@@ -8334,17 +8298,17 @@ func (client *Client) ModifyClusterAddonWithOptions(clusterId *string, component
 
 // Summary:
 //
-// Modifies the configuration of an installed cluster component instance. Modifying configurations may affect your services. Evaluate the impact before performing this operation during off-peak hours and back up relevant data in advance.
+// Modifies the configuration of an installed cluster component instance. Modifying the configuration may affect your services. Evaluate the impact before performing this operation during off-peak hours and back up relevant data in advance.
 //
 // Description:
 //
-// You can call this API operation to modify the configuration of common clusters components and the control plane parameter settings of ACK Pro clusters:
+// You can use this API operation to modify the configuration of common clusters components and the control plane parameter settings of ACK Pro clusters:
 //
 // - To query the configurable parameters of common components, call the DescribeClusterAddonMetadata API operation. For details, see [Query cluster component version metadata](https://help.aliyun.com/document_detail/2667944.html).
 //
-// - For the configurable control plane parameter settings of ACK Pro clusters, see [Customize control plane parameters of ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
+// - For the configurable control plane parameter settings of ACK Pro clusters, see [Customize control plane parameters of an ACK Pro cluster](https://help.aliyun.com/document_detail/199588.html).
 //
-// Modifying configurations may cause the component to be redeployed and restarted. Evaluate the impact before performing this operation.
+// Modifying the configuration may cause the component to be redeployed and restarted. Evaluate the impact before performing this operation.
 //
 // @param request - ModifyClusterAddonRequest
 //
@@ -8367,7 +8331,7 @@ func (client *Client) ModifyClusterAddon(clusterId *string, componentId *string,
 //
 // Description:
 //
-// <notice>Starting July 04, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to input and output parameters of OpenAPI operations related to ACK cluster management and the deprecation of specific OpenAPI operations](https://help.aliyun.com/document_detail/2932733.html).</notice>
+// <notice>Starting July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to input and output parameters of ACK cluster management OpenAPI operations and deprecation of OpenAPI operations](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - ModifyClusterNodePoolRequest
 //
@@ -8450,7 +8414,7 @@ func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, Nodepo
 //
 // Description:
 //
-// <notice>Starting July 04, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to input and output parameters of OpenAPI operations related to ACK cluster management and the deprecation of specific OpenAPI operations](https://help.aliyun.com/document_detail/2932733.html).</notice>
+// <notice>Starting July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to input and output parameters of ACK cluster management OpenAPI operations and deprecation of OpenAPI operations](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - ModifyClusterNodePoolRequest
 //
@@ -8469,11 +8433,11 @@ func (client *Client) ModifyClusterNodePool(ClusterId *string, NodepoolId *strin
 
 // Summary:
 //
-// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can categorize and manage clusters more flexibly, and better support requirements such as monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify cluster tags.
+// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can categorize and manage clusters more flexibly, and better support requirements such as monitoring, cost analysis, and tenant isolation. Calls the ModifyClusterTags operation to update cluster tags.
 //
 // Description:
 //
-// - This operation performs a full update. When you call this operation, specify all target tags as input parameters to avoid losing existing tags. To perform an incremental update, use [TagResources to bind tags to a cluster](https://help.aliyun.com/document_detail/2667969.html).
+// - This operation performs a full update. Specify the complete set of target tags as input parameters to avoid losing existing tags. To perform an incremental update, use [TagResources to bind tags to a cluster](https://help.aliyun.com/document_detail/2667969.html).
 //
 // @param request - ModifyClusterTagsRequest
 //
@@ -8515,11 +8479,11 @@ func (client *Client) ModifyClusterTagsWithOptions(ClusterId *string, request *M
 
 // Summary:
 //
-// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can categorize and manage clusters more flexibly, and better support requirements such as monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify cluster tags.
+// You can add tag key-value pairs to clusters so that cluster developers or O&M engineers can categorize and manage clusters more flexibly, and better support requirements such as monitoring, cost analysis, and tenant isolation. Calls the ModifyClusterTags operation to update cluster tags.
 //
 // Description:
 //
-// - This operation performs a full update. When you call this operation, specify all target tags as input parameters to avoid losing existing tags. To perform an incremental update, use [TagResources to bind tags to a cluster](https://help.aliyun.com/document_detail/2667969.html).
+// - This operation performs a full update. Specify the complete set of target tags as input parameters to avoid losing existing tags. To perform an incremental update, use [TagResources to bind tags to a cluster](https://help.aliyun.com/document_detail/2667969.html).
 //
 // @param request - ModifyClusterTagsRequest
 //
@@ -8628,7 +8592,7 @@ func (client *Client) ModifyNodePoolNodeConfig(ClusterId *string, NodepoolId *st
 
 // Summary:
 //
-// Updates a policy rule instance in a specified cluster. You can modify the governance action (alert or block) and the scope of namespaces to which the policy instance applies.
+// Updates a policy rule instance in a specified cluster, such as the governance action (alert or block) and the scope of namespaces to which the policy instance applies.
 //
 // @param request - ModifyPolicyInstanceRequest
 //
@@ -8687,7 +8651,7 @@ func (client *Client) ModifyPolicyInstanceWithOptions(clusterId *string, policyN
 
 // Summary:
 //
-// Updates a policy rule instance in a specified cluster. You can modify the governance action (alert or block) and the scope of namespaces to which the policy instance applies.
+// Updates a policy rule instance in a specified cluster, such as the governance action (alert or block) and the scope of namespaces to which the policy instance applies.
 //
 // @param request - ModifyPolicyInstanceRequest
 //
@@ -8786,7 +8750,7 @@ func (client *Client) OpenAckService(request *OpenAckServiceRequest) (_result *O
 //
 // Summary:
 //
-// Pauses a cluster upgrade.
+// Pauses the upgrade of a user cluster.
 //
 // @param headers - map
 //
@@ -8821,7 +8785,7 @@ func (client *Client) PauseClusterUpgradeWithOptions(ClusterId *string, headers 
 //
 // Summary:
 //
-// Pauses a cluster upgrade.
+// Pauses the upgrade of a user cluster.
 //
 // @return PauseClusterUpgradeResponse
 // Deprecated
@@ -8894,7 +8858,7 @@ func (client *Client) PauseComponentUpgrade(clusterid *string, componentid *stri
 
 // Summary:
 //
-// You can call the PauseTask operation to pause a running cluster task.
+// Pauses a running cluster task.
 //
 // @param headers - map
 //
@@ -8927,7 +8891,7 @@ func (client *Client) PauseTaskWithOptions(taskId *string, headers map[string]*s
 
 // Summary:
 //
-// You can call the PauseTask operation to pause a running cluster task.
+// Pauses a running cluster task.
 //
 // @return PauseTaskResponse
 func (client *Client) PauseTask(taskId *string) (_result *PauseTaskResponse, _err error) {
@@ -9023,7 +8987,7 @@ func (client *Client) RemoveClusterNodes(ClusterId *string, request *RemoveClust
 
 // Summary:
 //
-// Removes nodes from a node pool in a cluster and adjusts the expected number of nodes. When removing nodes, you can specify whether to release the associated ECS instances and whether to drain the nodes. Removing nodes involves pod migration, which may affect your services. Perform this operation during off-peak hours and back up your data in advance.
+// Removes nodes from a node pool in a cluster and adjusts the expected number of nodes when you no longer need the cluster nodes. When removing nodes, you can choose whether to release the associated ECS instances and whether to automatically drain the nodes. Removing nodes involves pod migration, which may affect your services. Perform this operation during off-peak hours and back up your data in advance.
 //
 // Description:
 //
@@ -9035,7 +8999,7 @@ func (client *Client) RemoveClusterNodes(ClusterId *string, request *RemoveClust
 //
 // - This operation removes only worker nodes, not master nodes.
 //
-//   - Even if you choose to release nodes (nodes for which `release_node` is set to `true`), subscription nodes are not released. After removing the nodes, release them in the [ECS console](https://ecs.console.aliyun.com/).
+//   - Even if you choose to release nodes (nodes with `release_node` set to `true`), subscription nodes are not released. After removing the nodes, release them in the [ECS console](https://ecs.console.aliyun.com/).
 //
 // @param tmpReq - RemoveNodePoolNodesRequest
 //
@@ -9108,7 +9072,7 @@ func (client *Client) RemoveNodePoolNodesWithOptions(ClusterId *string, Nodepool
 
 // Summary:
 //
-// Removes nodes from a node pool in a cluster and adjusts the expected number of nodes. When removing nodes, you can specify whether to release the associated ECS instances and whether to drain the nodes. Removing nodes involves pod migration, which may affect your services. Perform this operation during off-peak hours and back up your data in advance.
+// Removes nodes from a node pool in a cluster and adjusts the expected number of nodes when you no longer need the cluster nodes. When removing nodes, you can choose whether to release the associated ECS instances and whether to automatically drain the nodes. Removing nodes involves pod migration, which may affect your services. Perform this operation during off-peak hours and back up your data in advance.
 //
 // Description:
 //
@@ -9120,7 +9084,7 @@ func (client *Client) RemoveNodePoolNodesWithOptions(ClusterId *string, Nodepool
 //
 // - This operation removes only worker nodes, not master nodes.
 //
-//   - Even if you choose to release nodes (nodes for which `release_node` is set to `true`), subscription nodes are not released. After removing the nodes, release them in the [ECS console](https://ecs.console.aliyun.com/).
+//   - Even if you choose to release nodes (nodes with `release_node` set to `true`), subscription nodes are not released. After removing the nodes, release them in the [ECS console](https://ecs.console.aliyun.com/).
 //
 // @param request - RemoveNodePoolNodesRequest
 //
@@ -9215,7 +9179,7 @@ func (client *Client) RepairClusterNodePool(clusterId *string, nodepoolId *strin
 //
 // Summary:
 //
-// Calls ResumeComponentUpgrade to restart a paused component upgrade task.
+// Resumes a paused component upgrade task.
 //
 // @param headers - map
 //
@@ -9250,7 +9214,7 @@ func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, compo
 //
 // Summary:
 //
-// Calls ResumeComponentUpgrade to restart a paused component upgrade task.
+// Resumes a paused component upgrade task.
 //
 // @return ResumeComponentUpgradeResponse
 // Deprecated
@@ -9423,7 +9387,7 @@ func (client *Client) RevokeK8sClusterKubeConfig(ClusterId *string) (_result *Re
 
 // Summary:
 //
-// The intelligent O&M platform for containers provides a wide range of Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. Before an upgrade, migration, or installation operation is performed, the platform automatically triggers a check. You can perform the change operation only after the check is passed. You can also manually call the RunClusterCheck operation to perform a cluster check. Periodically check and maintain your clusters to prevent security risks.
+// The Container Intelligence O&M platform provides a wide range of Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. Before an upgrade, migration, or installation operation is performed, the Container Intelligence O&M platform automatically triggers a check. You can perform the change operation only after the check passes. You can also manually call the RunClusterCheck operation to perform a cluster check. Regularly check and maintain your clusters to prevent security risks.
 //
 // @param request - RunClusterCheckRequest
 //
@@ -9478,7 +9442,7 @@ func (client *Client) RunClusterCheckWithOptions(clusterId *string, request *Run
 
 // Summary:
 //
-// The intelligent O&M platform for containers provides a wide range of Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. Before an upgrade, migration, or installation operation is performed, the platform automatically triggers a check. You can perform the change operation only after the check is passed. You can also manually call the RunClusterCheck operation to perform a cluster check. Periodically check and maintain your clusters to prevent security risks.
+// The Container Intelligence O&M platform provides a wide range of Kubernetes cluster check capabilities, including cluster upgrade checks, cluster migration checks, component installation checks, component upgrade checks, and node pool checks. Before an upgrade, migration, or installation operation is performed, the Container Intelligence O&M platform automatically triggers a check. You can perform the change operation only after the check passes. You can also manually call the RunClusterCheck operation to perform a cluster check. Regularly check and maintain your clusters to prevent security risks.
 //
 // @param request - RunClusterCheckRequest
 //
@@ -9563,7 +9527,7 @@ func (client *Client) RunClusterInspect(clusterId *string, request *RunClusterIn
 
 // Summary:
 //
-// 执行节点上的运维操作
+// Executes O&M operations on a node.
 //
 // @param request - RunNodeOperationRequest
 //
@@ -9614,7 +9578,7 @@ func (client *Client) RunNodeOperationWithOptions(clusterId *string, nodepoolId 
 
 // Summary:
 //
-// 执行节点上的运维操作
+// Executes O&M operations on a node.
 //
 // @param request - RunNodeOperationRequest
 //
@@ -9845,7 +9809,7 @@ func (client *Client) ScaleOutCluster(ClusterId *string, request *ScaleOutCluste
 
 // Summary:
 //
-// You can call the ScanClusterVuls operation to scan for potential security vulnerabilities in an ACK cluster, including container workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows operating system vulnerabilities. Regularly scan your cluster for security vulnerabilities to improve cluster security.
+// Scans for potential security vulnerabilities in an ACK cluster, including container workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows operating system vulnerabilities. Regularly scan your cluster for security vulnerabilities to improve cluster security.
 //
 // @param headers - map
 //
@@ -9878,7 +9842,7 @@ func (client *Client) ScanClusterVulsWithOptions(clusterId *string, headers map[
 
 // Summary:
 //
-// You can call the ScanClusterVuls operation to scan for potential security vulnerabilities in an ACK cluster, including container workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows operating system vulnerabilities. Regularly scan your cluster for security vulnerabilities to improve cluster security.
+// Scans for potential security vulnerabilities in an ACK cluster, including container workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows operating system vulnerabilities. Regularly scan your cluster for security vulnerabilities to improve cluster security.
 //
 // @return ScanClusterVulsResponse
 func (client *Client) ScanClusterVuls(clusterId *string) (_result *ScanClusterVulsResponse, _err error) {
@@ -10035,7 +9999,7 @@ func (client *Client) StopAlert(ClusterId *string, request *StopAlertRequest) (_
 
 // Summary:
 //
-// Synchronizes a cluster node pool, including node pool metadata and information about the nodes in the node pool.
+// Synchronizes a cluster node pool, including node pool metadata and node information within the node pool.
 //
 // @param headers - map
 //
@@ -10068,7 +10032,7 @@ func (client *Client) SyncClusterNodePoolWithOptions(ClusterId *string, headers 
 
 // Summary:
 //
-// Synchronizes a cluster node pool, including node pool metadata and information about the nodes in the node pool.
+// Synchronizes a cluster node pool, including node pool metadata and node information within the node pool.
 //
 // @return SyncClusterNodePoolResponse
 func (client *Client) SyncClusterNodePool(ClusterId *string) (_result *SyncClusterNodePoolResponse, _err error) {
@@ -10085,7 +10049,7 @@ func (client *Client) SyncClusterNodePool(ClusterId *string) (_result *SyncClust
 
 // Summary:
 //
-// Adds tag key-value pairs to clusters so that cluster developers or O&M engineers can categorize and manage clusters more flexibly, and better support monitoring, cost analysis, and tenant isolation requirements. You can call the TagResources operation to attach tags to clusters.
+// Adds tag key-value pairs to clusters so that cluster developers or O&M engineers can more flexibly categorize and manage clusters, and better support monitoring, cost analysis, and tenant isolation requirements. Calls the TagResources operation to attach tags to clusters.
 //
 // @param request - TagResourcesRequest
 //
@@ -10144,7 +10108,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Adds tag key-value pairs to clusters so that cluster developers or O&M engineers can categorize and manage clusters more flexibly, and better support monitoring, cost analysis, and tenant isolation requirements. You can call the TagResources operation to attach tags to clusters.
+// Adds tag key-value pairs to clusters so that cluster developers or O&M engineers can more flexibly categorize and manage clusters, and better support monitoring, cost analysis, and tenant isolation requirements. Calls the TagResources operation to attach tags to clusters.
 //
 // @param request - TagResourcesRequest
 //
@@ -10163,7 +10127,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Uninstalls specified components from a cluster when they are no longer needed, with the option to delete associated Alibaba Cloud resources.
+// Uninstalls specified components from a cluster when they are no longer needed. You can call this operation to specify component names, delete components, and choose whether to delete associated Alibaba Cloud resources.
 //
 // @param request - UnInstallClusterAddonsRequest
 //
@@ -10205,7 +10169,7 @@ func (client *Client) UnInstallClusterAddonsWithOptions(ClusterId *string, reque
 
 // Summary:
 //
-// Uninstalls specified components from a cluster when they are no longer needed, with the option to delete associated Alibaba Cloud resources.
+// Uninstalls specified components from a cluster when they are no longer needed. You can call this operation to specify component names, delete components, and choose whether to delete associated Alibaba Cloud resources.
 //
 // @param request - UnInstallClusterAddonsRequest
 //
@@ -10224,7 +10188,7 @@ func (client *Client) UnInstallClusterAddons(ClusterId *string, request *UnInsta
 
 // Summary:
 //
-// Deletes resource tags when you no longer need the tag key-value pairs for a cluster. You can call the UntagResources operation to delete resource tags.
+// Deletes resource tags when you no longer need the tag key-value pairs of a cluster.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -10297,7 +10261,7 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 
 // Summary:
 //
-// Deletes resource tags when you no longer need the tag key-value pairs for a cluster. You can call the UntagResources operation to delete resource tags.
+// Deletes resource tags when you no longer need the tag key-value pairs of a cluster.
 //
 // @param request - UntagResourcesRequest
 //
@@ -10316,7 +10280,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// When you need to record Kubernetes API requests and their results to trace cluster operation history or troubleshoot cluster issues, you can invoke the UpdateClusterAuditLogConfig operation to enable or shutdown the audit log feature for a specified ACK cluster and update the audit log configuration.
+// When you need to record Kubernetes API requests and their results to trace cluster operation history and troubleshoot cluster issues, you can invoke the UpdateClusterAuditLogConfig operation to enable or shutdown the audit log feature of a specified ACK cluster and update the audit log configuration.
 //
 // Description:
 //
@@ -10371,7 +10335,7 @@ func (client *Client) UpdateClusterAuditLogConfigWithOptions(clusterid *string, 
 
 // Summary:
 //
-// When you need to record Kubernetes API requests and their results to trace cluster operation history or troubleshoot cluster issues, you can invoke the UpdateClusterAuditLogConfig operation to enable or shutdown the audit log feature for a specified ACK cluster and update the audit log configuration.
+// When you need to record Kubernetes API requests and their results to trace cluster operation history and troubleshoot cluster issues, you can invoke the UpdateClusterAuditLogConfig operation to enable or shutdown the audit log feature of a specified ACK cluster and update the audit log configuration.
 //
 // Description:
 //
@@ -10546,7 +10510,7 @@ func (client *Client) UpdateContactGroupForAlert(ClusterId *string, request *Upd
 
 // Summary:
 //
-// ACK managed clusters support collecting control plane component logs and delivering them to your Simple Log Service (SLS) Log Project. Control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, Cloud Controller Manager, and other core components. You can call the UpdateControlPlaneLog operation to modify the control plane component log configuration, such as the log retention period and the components from which logs are collected.
+// ACK managed clusters support collecting control plane component logs and delivering them to your Simple Log Service (SLS) Log Project. Control plane components include core components such as Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager. You can call the UpdateControlPlaneLog operation to modify the control plane component log configuration, such as the log retention period and the components from which logs are collected.
 //
 // @param request - UpdateControlPlaneLogRequest
 //
@@ -10605,7 +10569,7 @@ func (client *Client) UpdateControlPlaneLogWithOptions(ClusterId *string, reques
 
 // Summary:
 //
-// ACK managed clusters support collecting control plane component logs and delivering them to your Simple Log Service (SLS) Log Project. Control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, Cloud Controller Manager, and other core components. You can call the UpdateControlPlaneLog operation to modify the control plane component log configuration, such as the log retention period and the components from which logs are collected.
+// ACK managed clusters support collecting control plane component logs and delivering them to your Simple Log Service (SLS) Log Project. Control plane components include core components such as Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager. You can call the UpdateControlPlaneLog operation to modify the control plane component log configuration, such as the log retention period and the components from which logs are collected.
 //
 // @param request - UpdateControlPlaneLogRequest
 //
@@ -10624,13 +10588,13 @@ func (client *Client) UpdateControlPlaneLog(ClusterId *string, request *UpdateCo
 
 // Summary:
 //
-// The default expiration time of the KubeConfig issued by an ACK cluster is 3 years. You can use an Alibaba Cloud account to customize the configuration by invoking the UpdateK8sClusterUserConfigExpire operation to specify the expiration time (1 to 876,000 hours) of the KubeConfig issued to a Resource Access Management (RAM) user or role in an ACK cluster.
+// Updates the custom expiration time of a KubeConfig credential issued by an ACK cluster. The default expiration time of a KubeConfig credential issued by an ACK cluster is 3 years. You can use an Alibaba Cloud account to invoke the UpdateK8sClusterUserConfigExpire operation to specify the expiration time (1 to 876,000 hours) of a KubeConfig credential issued to a Resource Access Management (RAM) user or role in an ACK cluster.
 //
 // Description:
 //
 // - This operation can be called only by an Alibaba Cloud account.
 //
-// - If you revoke the KubeConfig credential used in the cluster, the custom expiration time configured for the KubeConfig of the cluster is also reset. You must call this operation to reconfigure the expiration time.
+// - If you revoke the KubeConfig credential used in the cluster, the custom expiration time configured for the KubeConfig credential in the cluster is also reset. You must call this operation to reconfigure the expiration time.
 //
 // @param request - UpdateK8sClusterUserConfigExpireRequest
 //
@@ -10681,13 +10645,13 @@ func (client *Client) UpdateK8sClusterUserConfigExpireWithOptions(ClusterId *str
 
 // Summary:
 //
-// The default expiration time of the KubeConfig issued by an ACK cluster is 3 years. You can use an Alibaba Cloud account to customize the configuration by invoking the UpdateK8sClusterUserConfigExpire operation to specify the expiration time (1 to 876,000 hours) of the KubeConfig issued to a Resource Access Management (RAM) user or role in an ACK cluster.
+// Updates the custom expiration time of a KubeConfig credential issued by an ACK cluster. The default expiration time of a KubeConfig credential issued by an ACK cluster is 3 years. You can use an Alibaba Cloud account to invoke the UpdateK8sClusterUserConfigExpire operation to specify the expiration time (1 to 876,000 hours) of a KubeConfig credential issued to a Resource Access Management (RAM) user or role in an ACK cluster.
 //
 // Description:
 //
 // - This operation can be called only by an Alibaba Cloud account.
 //
-// - If you revoke the KubeConfig credential used in the cluster, the custom expiration time configured for the KubeConfig of the cluster is also reset. You must call this operation to reconfigure the expiration time.
+// - If you revoke the KubeConfig credential used in the cluster, the custom expiration time configured for the KubeConfig credential in the cluster is also reset. You must call this operation to reconfigure the expiration time.
 //
 // @param request - UpdateK8sClusterUserConfigExpireRequest
 //
@@ -10706,15 +10670,15 @@ func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, reques
 
 // Summary:
 //
-// Updates the Secret encryption at rest configuration for a specified cluster by cluster ID.
+// Updates the encryption at rest configuration for Secrets in a specified cluster.
 //
 // Description:
 //
-// While enabling or disabling encryption at rest and after the feature is enabled, do not disable or delete the KMS key used by this feature in the KMS console or through OpenAPI. Otherwise, the cluster API Server becomes unavailable, which prevents normal retrieval of objects such as Secrets and ServiceAccounts and affects the normal operation of business applications. For more information, see [Encrypt Secrets at rest by using China KMS](https://help.aliyun.com/document_detail/177372.html).
+// Do not use the KMS console or OpenAPI to disable or delete the KMS key used for this feature while enabling or disabling encryption at rest, or after the feature is successfully enabled. Otherwise, the cluster API server becomes unavailable, which prevents you from retrieving objects such as Secrets and ServiceAccounts and affects the normal operation of your applications. For more information, see [Use Alibaba Cloud KMS to encrypt Secrets at rest](https://help.aliyun.com/document_detail/177372.html).
 //
-//   - The user or role that calls this API operation must be granted additional cluster RBAC permissions (O&M engineer or administrator permissions). Otherwise, the ForbiddenUpdateKMSState error code is returned.
+//   - The user or role that calls this API must be granted the required cluster RBAC permissions, such as O&M engineer or administrator permissions. Otherwise, the ForbiddenUpdateKMSState error code is returned.
 //
-//   - After this API operation is successfully called, the cluster status changes to updating. After the update is complete, the cluster status changes back to running. After a change is complete for a cluster, wait at least 5 minutes before calling this API operation again. Otherwise, HTTP status code 409 is returned.
+//   - After this API is successfully called, the cluster status changes to Updating. After the update is complete, the cluster status changes back to Running. You must wait at least 5 minutes after an update is complete before you can call this API again for the same cluster. Otherwise, the 409 status code is returned.
 //
 // @param request - UpdateKMSEncryptionRequest
 //
@@ -10765,15 +10729,15 @@ func (client *Client) UpdateKMSEncryptionWithOptions(ClusterId *string, request 
 
 // Summary:
 //
-// Updates the Secret encryption at rest configuration for a specified cluster by cluster ID.
+// Updates the encryption at rest configuration for Secrets in a specified cluster.
 //
 // Description:
 //
-// While enabling or disabling encryption at rest and after the feature is enabled, do not disable or delete the KMS key used by this feature in the KMS console or through OpenAPI. Otherwise, the cluster API Server becomes unavailable, which prevents normal retrieval of objects such as Secrets and ServiceAccounts and affects the normal operation of business applications. For more information, see [Encrypt Secrets at rest by using China KMS](https://help.aliyun.com/document_detail/177372.html).
+// Do not use the KMS console or OpenAPI to disable or delete the KMS key used for this feature while enabling or disabling encryption at rest, or after the feature is successfully enabled. Otherwise, the cluster API server becomes unavailable, which prevents you from retrieving objects such as Secrets and ServiceAccounts and affects the normal operation of your applications. For more information, see [Use Alibaba Cloud KMS to encrypt Secrets at rest](https://help.aliyun.com/document_detail/177372.html).
 //
-//   - The user or role that calls this API operation must be granted additional cluster RBAC permissions (O&M engineer or administrator permissions). Otherwise, the ForbiddenUpdateKMSState error code is returned.
+//   - The user or role that calls this API must be granted the required cluster RBAC permissions, such as O&M engineer or administrator permissions. Otherwise, the ForbiddenUpdateKMSState error code is returned.
 //
-//   - After this API operation is successfully called, the cluster status changes to updating. After the update is complete, the cluster status changes back to running. After a change is complete for a cluster, wait at least 5 minutes before calling this API operation again. Otherwise, HTTP status code 409 is returned.
+//   - After this API is successfully called, the cluster status changes to Updating. After the update is complete, the cluster status changes back to Running. You must wait at least 5 minutes after an update is complete before you can call this API again for the same cluster. Otherwise, the 409 status code is returned.
 //
 // @param request - UpdateKMSEncryptionRequest
 //
@@ -10878,7 +10842,7 @@ func (client *Client) UpdateNodePoolComponent(clusterId *string, nodepoolId *str
 
 // Summary:
 //
-// 更新节点组件
+// Updates a node component.
 //
 // @param request - UpdateNodePoolComponentInstanceRequest
 //
@@ -10941,7 +10905,7 @@ func (client *Client) UpdateNodePoolComponentInstanceWithOptions(clusterId *stri
 
 // Summary:
 //
-// 更新节点组件
+// Updates a node component.
 //
 // @param request - UpdateNodePoolComponentInstanceRequest
 //
@@ -10960,9 +10924,7 @@ func (client *Client) UpdateNodePoolComponentInstance(clusterId *string, nodepoo
 
 // Summary:
 //
-// Updates the deletion protection status of a specified resource. Currently supported resource types include namespaces and services.
-//
-// You can call this operation to enable deletion protection for namespaces or services that involve critical business or sensitive data to avoid maintenance costs caused by accidental deletion.
+// Updates the deletion protection status of a specified resource. Currently supported resource types include namespaces and services. You can use this operation to enable deletion protection for namespaces or services that involve critical business or sensitive data to avoid maintenance costs caused by accidental deletion.
 //
 // Description:
 //
@@ -11025,9 +10987,7 @@ func (client *Client) UpdateResourcesDeleteProtectionWithOptions(ClusterId *stri
 
 // Summary:
 //
-// Updates the deletion protection status of a specified resource. Currently supported resource types include namespaces and services.
-//
-// You can call this operation to enable deletion protection for namespaces or services that involve critical business or sensitive data to avoid maintenance costs caused by accidental deletion.
+// Updates the deletion protection status of a specified resource. Currently supported resource types include namespaces and services. You can use this operation to enable deletion protection for namespaces or services that involve critical business or sensitive data to avoid maintenance costs caused by accidental deletion.
 //
 // Description:
 //
@@ -11132,7 +11092,7 @@ func (client *Client) UpdateTemplate(TemplateId *string, request *UpdateTemplate
 
 // Summary:
 //
-// In an ACK cluster, non-cluster creators, Resource Access Management (RAM) users, and RAM roles have no RBAC permissions by default. You can invoke the UpdateUserPermissions operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scope, and preset role types, to better manage cluster management and secure access control.
+// Updates the RBAC permissions of a specified Resource Access Management (RAM) user or RAM role in ACK clusters. In an ACK cluster, non-cluster creators, RAM users, and RAM roles have no RBAC permissions by default. You can invoke this operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scopes, and preset role types, to better manage secure access control for cluster management.
 //
 // Description:
 //
@@ -11184,7 +11144,7 @@ func (client *Client) UpdateUserPermissionsWithOptions(uid *string, request *Upd
 
 // Summary:
 //
-// In an ACK cluster, non-cluster creators, Resource Access Management (RAM) users, and RAM roles have no RBAC permissions by default. You can invoke the UpdateUserPermissions operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scope, and preset role types, to better manage cluster management and secure access control.
+// Updates the RBAC permissions of a specified Resource Access Management (RAM) user or RAM role in ACK clusters. In an ACK cluster, non-cluster creators, RAM users, and RAM roles have no RBAC permissions by default. You can invoke this operation to update the RBAC access permissions of a RAM user or role, including accessible resources, permission scopes, and preset role types, to better manage secure access control for cluster management.
 //
 // Description:
 //
@@ -11207,7 +11167,7 @@ func (client *Client) UpdateUserPermissions(uid *string, request *UpdateUserPerm
 
 // Summary:
 //
-// To avoid potential security and stability risks of expired cluster versions and to use new features of the latest cluster versions, upgrade your clusters in accordance with the ACK cluster version release schedule. You can call the UpgradeCluster operation to manually upgrade a cluster.
+// Upgrades an ACK cluster. To avoid potential security and stability risks of expired cluster versions and to use new features of new cluster versions, upgrade your cluster in a timely manner following the ACK cluster version release schedule. You can call the UpgradeCluster operation to manually upgrade a cluster.
 //
 // Description:
 //
@@ -11219,9 +11179,9 @@ func (client *Client) UpdateUserPermissions(uid *string, request *UpdateUserPerm
 //
 // - [Call ResumeTask to resume a paused task](https://help.aliyun.com/document_detail/2667987.html)
 //
-// - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html).
+// - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html)
 //
-//	Notice: Starting July 4, 2026, the request parameters rolling_policy and rolling_policy.max_parallelism will no longer take effect. Use [UpgradeClusterNodepool](https://help.aliyun.com/document_detail/2667922.html) to upgrade worker nodes instead. For more information about the changes, see [Notice on changes to ACK cluster management OpenAPI request and response parameters and OpenAPI deprecation](https://help.aliyun.com/document_detail/2932733.html).</notice>.
+//	Notice: Starting from July 04, 2026, the request parameters rolling_policy and rolling_policy.max_parallelism will no longer take effect. Use [UpgradeClusterNodepool](https://help.aliyun.com/document_detail/2667922.html) to upgrade worker nodes instead. For more information about the changes, see [Notice on changes to request and response parameters of ACK cluster management OpenAPI operations and deprecation of OpenAPI operations](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - UpgradeClusterRequest
 //
@@ -11284,7 +11244,7 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 
 // Summary:
 //
-// To avoid potential security and stability risks of expired cluster versions and to use new features of the latest cluster versions, upgrade your clusters in accordance with the ACK cluster version release schedule. You can call the UpgradeCluster operation to manually upgrade a cluster.
+// Upgrades an ACK cluster. To avoid potential security and stability risks of expired cluster versions and to use new features of new cluster versions, upgrade your cluster in a timely manner following the ACK cluster version release schedule. You can call the UpgradeCluster operation to manually upgrade a cluster.
 //
 // Description:
 //
@@ -11296,9 +11256,9 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 //
 // - [Call ResumeTask to resume a paused task](https://help.aliyun.com/document_detail/2667987.html)
 //
-// - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html).
+// - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html)
 //
-//	Notice: Starting July 4, 2026, the request parameters rolling_policy and rolling_policy.max_parallelism will no longer take effect. Use [UpgradeClusterNodepool](https://help.aliyun.com/document_detail/2667922.html) to upgrade worker nodes instead. For more information about the changes, see [Notice on changes to ACK cluster management OpenAPI request and response parameters and OpenAPI deprecation](https://help.aliyun.com/document_detail/2932733.html).</notice>.
+//	Notice: Starting from July 04, 2026, the request parameters rolling_policy and rolling_policy.max_parallelism will no longer take effect. Use [UpgradeClusterNodepool](https://help.aliyun.com/document_detail/2667922.html) to upgrade worker nodes instead. For more information about the changes, see [Notice on changes to request and response parameters of ACK cluster management OpenAPI operations and deprecation of OpenAPI operations](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - UpgradeClusterRequest
 //
@@ -11321,11 +11281,11 @@ func (client *Client) UpgradeCluster(ClusterId *string, request *UpgradeClusterR
 //
 // Description:
 //
-// - Upgrading cluster component instance versions may affect your services. Assess the impact before performing the upgrade during off-peak hours, and back up relevant data in advance.
+// - Upgrading cluster component instance versions may affect your business. Assess the impact before performing the operation during off-peak hours and back up relevant data in advance.
 //
 // - Before upgrading a component, refer to [Component release notes](https://help.aliyun.com/document_detail/176087.html) to learn about the changes and their impact for the specified component.
 //
-// - Upgrade components one at a time. Confirm that one component has been upgraded successfully before upgrading the next one.
+// - Upgrade components one at a time. Confirm that one component has been successfully upgraded before upgrading the next.
 //
 // @param request - UpgradeClusterAddonsRequest
 //
@@ -11371,11 +11331,11 @@ func (client *Client) UpgradeClusterAddonsWithOptions(ClusterId *string, request
 //
 // Description:
 //
-// - Upgrading cluster component instance versions may affect your services. Assess the impact before performing the upgrade during off-peak hours, and back up relevant data in advance.
+// - Upgrading cluster component instance versions may affect your business. Assess the impact before performing the operation during off-peak hours and back up relevant data in advance.
 //
 // - Before upgrading a component, refer to [Component release notes](https://help.aliyun.com/document_detail/176087.html) to learn about the changes and their impact for the specified component.
 //
-// - Upgrade components one at a time. Confirm that one component has been upgraded successfully before upgrading the next one.
+// - Upgrade components one at a time. Confirm that one component has been successfully upgraded before upgrading the next.
 //
 // @param request - UpgradeClusterAddonsRequest
 //
@@ -11398,7 +11358,7 @@ func (client *Client) UpgradeClusterAddons(ClusterId *string, request *UpgradeCl
 //
 // Description:
 //
-// Upgrades the Kubernetes version, operating system version, or container runtime version of nodes in a specified cluster node pool. After you successfully call the UpgradeClusterNodepool operation, the API returns a `task_id` for the upgrade task. You can manage the task by calling the following task-related API operations:
+// Upgrades the Kubernetes version, operating system version, or container runtime version of nodes in a specified cluster node pool. After you successfully call the UpgradeClusterNodepool operation, the API returns a `task_id` for the upgrade task. You can manage the task by calling the following task API operations:
 //
 // - [Call DescribeTaskInfo to query task details](https://help.aliyun.com/document_detail/2667985.html)
 //
@@ -11485,7 +11445,7 @@ func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, Nodep
 //
 // Description:
 //
-// Upgrades the Kubernetes version, operating system version, or container runtime version of nodes in a specified cluster node pool. After you successfully call the UpgradeClusterNodepool operation, the API returns a `task_id` for the upgrade task. You can manage the task by calling the following task-related API operations:
+// Upgrades the Kubernetes version, operating system version, or container runtime version of nodes in a specified cluster node pool. After you successfully call the UpgradeClusterNodepool operation, the API returns a `task_id` for the upgrade task. You can manage the task by calling the following task API operations:
 //
 // - [Call DescribeTaskInfo to query task details](https://help.aliyun.com/document_detail/2667985.html)
 //

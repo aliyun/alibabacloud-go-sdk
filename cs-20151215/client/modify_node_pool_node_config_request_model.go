@@ -160,7 +160,7 @@ type ModifyNodePoolNodeConfigRequestRollingPolicy struct {
 	//
 	// 0
 	MaxFailedNodes *int64 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
-	// The node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
+	// Node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
 	//
 	// Valid values: [1,10].
 	//

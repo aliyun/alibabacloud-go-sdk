@@ -22,13 +22,20 @@ type iUpdateNodePoolComponentInstanceRequest interface {
 }
 
 type UpdateNodePoolComponentInstanceRequest struct {
+	// The node component configuration.
 	Config *UpdateNodePoolComponentInstanceRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// Specifies whether to disable the rolling update. Default value: false. Updating the baseline configuration triggers a rolling update of the nodes.
+	//
 	// example:
 	//
 	// false
-	DisableRolling *bool                                                `json:"disable_rolling,omitempty" xml:"disable_rolling,omitempty"`
-	NodeNames      []*string                                            `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
-	RollingPolicy  *UpdateNodePoolComponentInstanceRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
+	DisableRolling *bool `json:"disable_rolling,omitempty" xml:"disable_rolling,omitempty"`
+	// The list of nodes to be updated in a rolling manner. By default, all nodes are updated.
+	NodeNames []*string `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
+	// The rolling update configuration.
+	RollingPolicy *UpdateNodePoolComponentInstanceRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
+	// The node component version.
+	//
 	// example:
 	//
 	// 1.33.3-aliyun.1
@@ -103,11 +110,14 @@ func (s *UpdateNodePoolComponentInstanceRequest) Validate() error {
 }
 
 type UpdateNodePoolComponentInstanceRequestConfig struct {
+	// The custom configuration of the node component.
+	//
 	// example:
 	//
 	// {"cpuManagerPolicy":"static"}
-	CustomConfig map[string]interface{}                              `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
-	Envs         []*UpdateNodePoolComponentInstanceRequestConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
+	CustomConfig map[string]interface{} `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	// The environment variables of the node component.
+	Envs []*UpdateNodePoolComponentInstanceRequestConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
 func (s UpdateNodePoolComponentInstanceRequestConfig) String() string {
@@ -150,10 +160,14 @@ func (s *UpdateNodePoolComponentInstanceRequestConfig) Validate() error {
 }
 
 type UpdateNodePoolComponentInstanceRequestConfigEnvs struct {
+	// The name of the environment variable.
+	//
 	// example:
 	//
 	// LOG_LEVEL
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the environment variable.
+	//
 	// example:
 	//
 	// info
@@ -191,18 +205,26 @@ func (s *UpdateNodePoolComponentInstanceRequestConfigEnvs) Validate() error {
 }
 
 type UpdateNodePoolComponentInstanceRequestRollingPolicy struct {
+	// The upgrade interval between batches, in seconds. Default value: 0.
+	//
 	// example:
 	//
 	// 10
 	BatchInterval *int64 `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
+	// The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
+	//
 	// example:
 	//
 	// 0
 	MaxFailedNodes *int64 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
+	// The maximum number of parallel updates per batch. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
+	// The auto-pause policy during the node upgrade process. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
+	//
 	// example:
 	//
 	// NotPause

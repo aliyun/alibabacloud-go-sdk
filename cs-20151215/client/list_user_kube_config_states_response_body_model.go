@@ -73,7 +73,7 @@ type ListUserKubeConfigStatesResponseBodyPage struct {
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of records returned per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListUserKubeConfigStatesResponseBodyStates struct {
 	//
 	// - Unknown: The status is unknown.
 	//
-	// - Removed: The certificate has been revoked. An issuance record exists for the certificate.
+	// - Removed: The certificate has been removed (an issuance record exists for the certificate).
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListUserKubeConfigStatesResponseBodyStates struct {
 	//
 	// cluster-demo
 	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
-	// The cluster status. Valid values:
+	// The running status of the cluster. Valid values:
 	//
 	// - `initial`: The cluster is being created.
 	//

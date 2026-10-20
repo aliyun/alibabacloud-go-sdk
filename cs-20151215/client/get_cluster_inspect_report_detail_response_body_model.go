@@ -30,7 +30,7 @@ type iGetClusterInspectReportDetailResponseBody interface {
 type GetClusterInspectReportDetailResponseBody struct {
 	// The list of results.
 	CheckItemResults []*GetClusterInspectReportDetailResponseBodyCheckItemResults `json:"checkItemResults,omitempty" xml:"checkItemResults,omitempty" type:"Repeated"`
-	// The completion time of the inspection report.
+	// The completion time of the inspection report in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetClusterInspectReportDetailResponseBody struct {
 	//
 	// 49511F2D-D56A-5C24-B9AE-C8491E09B***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The start time of the inspection report.
+	// The start time of the inspection report in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ type GetClusterInspectReportDetailResponseBody struct {
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The generation status of the inspection report. Valid values:
 	//
-	// - completed: Completed.
+	// - completed: The generation is completed.
 	//
-	// - running: In progress.
+	// - running: The generation is in progress.
 	//
 	// example:
 	//
 	// completed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The inspection report summary.
+	// The summary of the inspection report.
 	Summary *GetClusterInspectReportDetailResponseBodySummary `json:"summary,omitempty" xml:"summary,omitempty" type:"Struct"`
 }
 
@@ -183,7 +183,7 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	//
 	// - limitation: service limits
 	//
-	// - cost: cost optimization.
+	// - cost: cost optimization
 	//
 	// example:
 	//
@@ -199,23 +199,23 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	//
 	// example:
 	//
-	// 集群API Server负载均衡实例异常会影响集群可用性，请检查负载均衡实例状态是否正常。
+	// Cluster API Server load balancer instance failures affect cluster availability. Check whether the load balancer instance status is normal.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The fix suggestion.
+	// The remediation suggestion.
 	//
 	// example:
 	//
-	// 请提交工单处理。
+	// Submit a ticket
 	Fix *string `json:"fix,omitempty" xml:"fix,omitempty"`
 	// The level of the inspection item. Valid values:
 	//
-	// - advice: suggestion
+	// - advice: advice
 	//
-	// - warning: low-risk
+	// - warning: low risk
 	//
-	// - error: medium-risk
+	// - error: medium risk
 	//
-	// - critical: high-risk.
+	// - critical: high risk
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	//
 	// example:
 	//
-	// API Server CLB 实例状态异常
+	// Abnormal API server CLB instance status
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The check result. Valid values:
 	//
@@ -233,7 +233,7 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	//
 	// - false: The check item is normal.
 	//
-	// - disable: The check item is not enabled.
+	// - disable: The check item is disabled.
 	//
 	// example:
 	//
@@ -343,7 +343,7 @@ func (s *GetClusterInspectReportDetailResponseBodyCheckItemResults) Validate() e
 }
 
 type GetClusterInspectReportDetailResponseBodySummary struct {
-	// The number of check items with a result of advice.
+	// The number of check items whose result is advice.
 	//
 	// example:
 	//
@@ -355,19 +355,19 @@ type GetClusterInspectReportDetailResponseBodySummary struct {
 	//
 	// warning
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of check items with a result of error.
+	// The number of check items whose result is error.
 	//
 	// example:
 	//
 	// 0
 	ErrorCount *int32 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	// The number of check items with a result of normal.
+	// The number of check items whose result is normal.
 	//
 	// example:
 	//
 	// 10
 	NormalCount *int32 `json:"normalCount,omitempty" xml:"normalCount,omitempty"`
-	// The number of check items with a result of warning.
+	// The number of check items whose result is warning.
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type iInstallNodePoolComponentsRequest interface {
 type InstallNodePoolComponentsRequest struct {
 	// The list of node components.
 	Components []*InstallNodePoolComponentsRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The list of node names for the rolling operation. By default, all nodes are included.
+	// The list of node names specified for the rolling update. Default value: all nodes.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
-	// The rolling policy configuration.
+	// The rolling update configuration.
 	RollingPolicy *InstallNodePoolComponentsRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
 }
 
@@ -80,9 +80,9 @@ func (s *InstallNodePoolComponentsRequest) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestComponents struct {
-	// The component configuration.
+	// The configuration of the component.
 	Config *InstallNodePoolComponentsRequestComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The component name.
+	// The name of the component.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type InstallNodePoolComponentsRequestComponents struct {
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The component version.
+	// The version of the component.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type InstallNodePoolComponentsRequestComponentsConfig struct {
 	//
 	// {"cpuManagerPolicy":"static"}
 	CustomConfig map[string]interface{} `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
-	// The environment variables of the node component.
+	// The environment variables for the node component.
 	Envs []*InstallNodePoolComponentsRequestComponentsConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
@@ -238,13 +238,13 @@ func (s *InstallNodePoolComponentsRequestComponentsConfigEnvs) Validate() error 
 }
 
 type InstallNodePoolComponentsRequestRollingPolicy struct {
-	// The upgrade interval between batches. Unit: seconds.
+	// The upgrade interval between batches, in seconds.
 	//
 	// example:
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
-	// The maximum number of nodes that are allowed to fail during the rolling process. Default value: 0, which indicates that the task is considered failed if any node fails. If the value is greater than 0, the task is considered failed and stops when the cumulative number of failed nodes exceeds this value.
+	// The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
 	//
 	// example:
 	//

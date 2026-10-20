@@ -14,7 +14,7 @@ type iListAddonsResponseBody interface {
 }
 
 type ListAddonsResponseBody struct {
-	// The list of available components.
+	// The list of available add-on components.
 	Addons []*ListAddonsResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 }
 
@@ -65,7 +65,7 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// - application: application component.
 	//
-	// An empty value indicates that the component belongs to another category.
+	// An empty value indicates that the component belongs to another categorization.
 	//
 	// example:
 	//

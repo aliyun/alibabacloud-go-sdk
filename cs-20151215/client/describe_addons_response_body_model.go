@@ -68,7 +68,7 @@ type DescribeAddonsResponseBodyComponentGroups struct {
 	//
 	// storage
 	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
-	// The component names included in this group.
+	// The names of the components in the group.
 	Items []*DescribeAddonsResponseBodyComponentGroupsItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -112,7 +112,7 @@ func (s *DescribeAddonsResponseBodyComponentGroups) Validate() error {
 }
 
 type DescribeAddonsResponseBodyComponentGroupsItems struct {
-	// The component name.
+	// The name of the component.
 	//
 	// example:
 	//

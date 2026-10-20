@@ -26,7 +26,7 @@ type iListAddonsRequest interface {
 type ListAddonsRequest struct {
 	// The cluster ID.
 	//
-	// If you specify a cluster ID, the system queries the list of available components for the specified cluster, and all other parameters are ignored.
+	// If you specify a cluster ID, the available add-on components for the cluster are returned, and all other parameters are ignored.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListAddonsRequest struct {
 	//
 	// Default
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// If cluster_id is specified, this parameter is ignored.
 	//

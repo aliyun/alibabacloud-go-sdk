@@ -34,7 +34,7 @@ type GetClusterCheckResponseBody struct {
 	CheckId *string `json:"check_id,omitempty" xml:"check_id,omitempty"`
 	// The check items.
 	CheckItems map[string][]map[string]interface{} `json:"check_items,omitempty" xml:"check_items,omitempty"`
-	// The creation time.
+	// The creation time in ISO 8601 format with time zone information.
 	//
 	// example:
 	//

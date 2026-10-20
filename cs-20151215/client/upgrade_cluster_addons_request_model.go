@@ -57,13 +57,13 @@ type UpgradeClusterAddonsRequestBody struct {
 	//
 	// coredns
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
-	// The custom parameters of the component, encoded as a JSON string.
+	// The custom component parameters, encoded as a JSON string.
 	//
 	// example:
 	//
 	// {"CpuRequest":"800m"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The target version to which you want to upgrade. You can call the `DescribeAddon` operation to query the versions to which the component can be upgraded.
+	// The target version to upgrade to. You can call the `DescribeAddon` operation to query the upgradable versions of a component.
 	//
 	// This parameter is required.
 	//
@@ -73,9 +73,9 @@ type UpgradeClusterAddonsRequestBody struct {
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	// The component upgrade policy. Valid values:
 	//
-	// - overwrite: overwrites the existing version.
+	// - overwrite: overwrite upgrade.
 	//
-	// - canary: performs a canary upgrade.
+	// - canary: canary upgrade.
 	//
 	// example:
 	//

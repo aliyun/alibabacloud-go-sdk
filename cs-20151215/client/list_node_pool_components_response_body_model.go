@@ -18,11 +18,16 @@ type iListNodePoolComponentsResponseBody interface {
 }
 
 type ListNodePoolComponentsResponseBody struct {
+	// The list of node components.
 	Components []*ListNodePoolComponentsResponseBodyComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	// The maximum number of results to return. Default value: 200.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// 5c0a1c0f91c14c6****
@@ -78,14 +83,20 @@ func (s *ListNodePoolComponentsResponseBody) Validate() error {
 }
 
 type ListNodePoolComponentsResponseBodyComponents struct {
+	// The parameter schema of the node component, including custom parameters and system parameters.
+	//
 	// example:
 	//
 	// "{\\"$schema\\": \\"\\",\\"properties\\": {}"
 	ConfigSchema *string `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
+	// The name of the node component.
+	//
 	// example:
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The version of the node component.
+	//
 	// example:
 	//
 	// 1.28.9-aliyun.1

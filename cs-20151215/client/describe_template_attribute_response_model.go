@@ -72,71 +72,71 @@ func (s *DescribeTemplateAttributeResponse) Validate() error {
 }
 
 type DescribeTemplateAttributeResponseBody struct {
-	// 编排模板ID，每次变更都会有一个模板ID。
+	// The orchestration template ID. A new ID is generated each time the template is modified.
 	//
 	// example:
 	//
 	// 72d20cf8-a533-4ea9-a10d-e7630d3d****
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 编排模板的访问权限，取值：
+	// The access permissions of the orchestration template. Valid values:
 	//
-	// - `private`：私有。
+	// - `private`: private.
 	//
-	// - `public`：公共。
+	// - `public`: public.
 	//
-	// - `shared`：可共享。
+	// - `shared`: shared.
 	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// 编排模板名称。
+	// The name of the orchestration template.
 	//
 	// example:
 	//
 	// web
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 编排模板YAML内容。
+	// The YAML content of the orchestration template.
 	//
 	// example:
 	//
 	// apiVersion: V1\\n***
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 模板类型。
+	// The templatetype.
 	//
-	// - 当取值为kubernetes时将在控制台的编排模板页面展示该模板。
+	// - If the value is kubernetes, the template is displayed on the Orchestration Templates page in the console.
 	//
-	// - 该参数不填写或者取值为其他值时，控制台的编排模板页面将不会展示该模板。
+	// - If this parameter is not set or is set to other values, the template is not displayed on the Orchestration Templates page in the console.
 	//
 	// example:
 	//
 	// kubernetes
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
-	// 编排模板描述信息。
+	// The description of the orchestration template.
 	//
 	// example:
 	//
 	// test template
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 部署模板的标签。
+	// The tags of the deployment template.
 	//
 	// example:
 	//
 	// sa
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// 编排模板唯一ID，不随模板更新而改变。
+	// The unique ID of the orchestration template. This ID does not change when the template is updated.
 	//
 	// example:
 	//
 	// 874ec485-e7e6-4373-8a3b-47bde8ae****
 	TemplateWithHistId *string `json:"template_with_hist_id,omitempty" xml:"template_with_hist_id,omitempty"`
-	// 编排模板创建时间。
+	// The time when the orchestration template was created.
 	//
 	// example:
 	//
 	// 2025-04-25T16:56:33+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// 编排模板更新时间。
+	// The time when the orchestration template was last updated.
 	//
 	// example:
 	//

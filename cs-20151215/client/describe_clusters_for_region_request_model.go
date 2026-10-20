@@ -32,7 +32,7 @@ type DescribeClustersForRegionRequest struct {
 	//
 	// c8155823d057948c69a****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// Queries clusters of a specified specification. Valid values:
+	// The specification of the cluster to query. Valid values:
 	//
 	// - `ack.standard`: Basic
 	//
@@ -44,15 +44,15 @@ type DescribeClustersForRegionRequest struct {
 	//
 	// - `ack.pro.4xlarge`: Pro 4XL (contact customer service to add your account to the whitelist)
 	//
-	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and Pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain at a deterministic high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
 	//
-	// For information about cluster management fees for Pro and Provisioned Control Plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+	// For information about cluster management fees for Pro and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
 	// ack.standard
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// Queries clusters of a specified type. Valid values:
+	// The type of cluster to query. Valid values:
 	//
 	// - Kubernetes: ACK dedicated cluster.
 	//
@@ -64,7 +64,7 @@ type DescribeClustersForRegionRequest struct {
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// Fuzzy search by cluster name.
+	// Fuzzy matches clusters by cluster name.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeClustersForRegionRequest struct {
 	//
 	// 3
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// Queries clusters of a specified subtype. Valid values:
+	// The subtype of cluster to query. Valid values:
 	//
 	// - Default: ACK managed cluster, including ACK Pro and ACK Basic.
 	//

@@ -19,8 +19,9 @@ type iDescribeEventsForRegionResponseBody interface {
 
 type DescribeEventsForRegionResponseBody struct {
 	// The list of events.
-	Events    []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	NextToken *string                                      `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	Events []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// The pagination token.
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeEventsForRegionResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -105,7 +106,7 @@ type DescribeEventsForRegionResponseBodyEvents struct {
 	//
 	// npdd89dc2b76c04f14b06774883b******
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The time when the event occurred.
+	// The time when the event was generated. The time follows the ISO 8601 standard and includes time zone information.
 	//
 	// example:
 	//
@@ -266,7 +267,7 @@ type DescribeEventsForRegionResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of results displayed on each page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//

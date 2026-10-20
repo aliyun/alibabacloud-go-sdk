@@ -34,19 +34,19 @@ type DescribeClusterAddonInstanceResponseBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The component status. Valid values:
 	//
-	// - initial: installing
+	// - initial: Installing.
 	//
-	// - active: installed
+	// - active: Installed.
 	//
-	// - unhealthy: abnormal
+	// - unhealthy: Unhealthy.
 	//
-	// - upgrading: upgrading
+	// - upgrading: Upgrading.
 	//
-	// - updating: updating
+	// - updating: Updating.
 	//
-	// - deleting: uninstalling
+	// - deleting: Uninstalling.
 	//
-	// - deleted: deleted.
+	// - deleted: Deleted.
 	//
 	// example:
 	//

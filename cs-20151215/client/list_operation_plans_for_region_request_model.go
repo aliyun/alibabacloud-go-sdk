@@ -18,19 +18,19 @@ type iListOperationPlansForRegionRequest interface {
 }
 
 type ListOperationPlansForRegionRequest struct {
-	// Filters results by cluster ID.
+	// Filters the results by cluster ID.
 	//
 	// example:
 	//
 	// c02b3e03be10643e8a644a843ffcb****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// Filters results by execution plan state.
+	// Filters the results by execution plan state.
 	//
 	// example:
 	//
 	// Scheduled
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// Filters results by execution plan type.
+	// Filters the results by execution plan type.
 	//
 	// example:
 	//

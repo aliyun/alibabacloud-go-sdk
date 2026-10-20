@@ -32,7 +32,7 @@ type DescribeSubaccountK8sClusterUserConfigRequest struct {
 	//
 	// Valid values: [15, 4320], which is up to 3 days.
 	//
-	// > If this parameter is not set, the system automatically determines a longer validity period. The specific expiration time is indicated by the value of the expiration field in the response.
+	// > If you do not set this parameter, the system automatically determines a longer validity period. The specific expiration time is indicated by the value of the expiration field in the response.
 	//
 	// example:
 	//

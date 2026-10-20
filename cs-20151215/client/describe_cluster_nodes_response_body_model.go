@@ -67,19 +67,19 @@ func (s *DescribeClusterNodesResponseBody) Validate() error {
 }
 
 type DescribeClusterNodesResponseBodyNodes struct {
-	// The time when the node was created.
+	// The time when the node was created. The time follows the ISO 8601 standard and includes the time zone.
 	//
 	// example:
 	//
 	// 2025-04-16T07:28:00Z
 	CreationTime *string `json:"creation_time,omitempty" xml:"creation_time,omitempty"`
-	// The error message generated when the node was created.
+	// The error message returned when the node was created.
 	//
 	// example:
 	//
 	// error***
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
-	// The time when the node expires.
+	// The time when the node expires. The time follows the ISO 8601 standard and includes the time zone.
 	//
 	// example:
 	//
@@ -119,27 +119,27 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// worker-k8s-for-cs-c5cdf7e3938bc4f8eb0e44b21a80f****
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// The role type of the node. Valid values:
+	// The role of the node. Valid values:
 	//
-	// - Master: a master node of the cluster.
+	// - Master: the master node of the cluster.
 	//
-	// - Worker: a worker node of the cluster.
+	// - Worker: the worker node of the cluster.
 	//
 	// example:
 	//
 	// Worker
 	InstanceRole *string `json:"instance_role,omitempty" xml:"instance_role,omitempty"`
-	// The ECS status of the node. Valid values:
+	// The ECS instance status of the node. Valid values:
 	//
-	// - `Pending`: being created.
+	// - `Pending`: the instance is being created.
 	//
-	// - `Running`: running.
+	// - `Running`: the instance is running.
 	//
-	// - `Starting`: being started.
+	// - `Starting`: the instance is starting.
 	//
-	// - `Stopping`: being stopped.
+	// - `Stopping`: the instance is stopping.
 	//
-	// - `Stopped`: stopped.
+	// - `Stopped`: the instance is stopped.
 	//
 	// example:
 	//
@@ -159,31 +159,31 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	InstanceTypeFamily *string `json:"instance_type_family,omitempty" xml:"instance_type_family,omitempty"`
 	// The IP addresses of the node.
 	IpAddress []*string `json:"ip_address,omitempty" xml:"ip_address,omitempty" type:"Repeated"`
-	// Indicates whether the node is an Alibaba Cloud instance. Valid values:
+	// Specifies whether the node is an Alibaba Cloud instance. Valid values:
 	//
-	// - `true`: The node is an Alibaba Cloud instance.
+	// - `true`: the node is an Alibaba Cloud instance.
 	//
-	// - `false`: The node is not an Alibaba Cloud instance.
+	// - `false`: the node is not an Alibaba Cloud instance.
 	//
 	// example:
 	//
 	// true
 	IsAliyunNode *bool `json:"is_aliyun_node,omitempty" xml:"is_aliyun_node,omitempty"`
-	// The node name, which is the identifier of the node in the cluster.
+	// The name of the node, which is the node identifier in the cluster.
 	//
 	// example:
 	//
 	// cn-chengdu.192.168xx.xx
 	NodeName *string `json:"node_name,omitempty" xml:"node_name,omitempty"`
-	// Indicates whether the node is ready. Valid values:
+	// Specifies whether the node is ready. Valid values:
 	//
-	// - `Ready`: The node is ready.
+	// - `Ready`: the node is ready.
 	//
-	// - `NotReady`: The node is not ready.
+	// - `NotReady`: the node is not ready.
 	//
-	// - `Unknown`: The node status is unknown.
+	// - `Unknown`: the status is unknown.
 	//
-	// - `Offline`: The node is offline.
+	// - `Offline`: the node is offline.
 	//
 	// example:
 	//
@@ -195,35 +195,35 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// np0794239424a84eb7a95327369d56****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The method used to initialize the node, such as manual creation or Resource Orchestration Service (ROS) creation.
+	// The method used to initialize the node, such as manual creation or creation by Resource Orchestration Service (ROS).
 	//
 	// example:
 	//
 	// ess
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The spot instance type. Valid values:
+	// The type of the spot instance. Valid values:
 	//
-	// - NoSpot: a non-spot instance.
+	// - NoSpot: the instance is not a spot instance.
 	//
-	// - SpotWithPriceLimit: a spot instance with a price limit.
+	// - SpotWithPriceLimit: the instance is a spot instance with a maximum price limit.
 	//
-	// - SpotAsPriceGo: a spot instance priced at the market price at the time of purchase.
+	// - SpotAsPriceGo: the instance is a spot instance whose price is automatically set based on the current market price.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	// The running status of the node. Valid values:
+	// The running state of the node. Valid values:
 	//
-	// - `pending`: being created.
+	// - `pending`: the node is being created.
 	//
-	// - `running`: running.
+	// - `running`: the node is running.
 	//
-	// - `starting`: being started.
+	// - `starting`: the node is starting.
 	//
-	// - `stopping`: being stopped.
+	// - `stopping`: the node is stopping.
 	//
-	// - `stopped`: stopped.
+	// - `stopped`: the node is stopped.
 	//
 	// example:
 	//
@@ -430,7 +430,7 @@ type DescribeClusterNodesResponseBodyPage struct {
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of records that can be displayed on each page.
+	// The maximum number of records to return per page.
 	//
 	// example:
 	//

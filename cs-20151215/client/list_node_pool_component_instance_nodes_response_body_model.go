@@ -20,15 +20,22 @@ type iListNodePoolComponentInstanceNodesResponseBody interface {
 }
 
 type ListNodePoolComponentInstanceNodesResponseBody struct {
+	// The maximum number of records returned in a single response for pagination.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination cursor. Do not specify this parameter for the first request. For subsequent requests, specify the token returned in the previous response.
+	//
 	// example:
 	//
 	// 5c0a1c0f91c14c6****
-	NextToken *string                                                   `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	NodeList  []*ListNodePoolComponentInstanceNodesResponseBodyNodeList `json:"node_list,omitempty" xml:"node_list,omitempty" type:"Repeated"`
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// The list of nodes.
+	NodeList []*ListNodePoolComponentInstanceNodesResponseBodyNodeList `json:"node_list,omitempty" xml:"node_list,omitempty" type:"Repeated"`
+	// The total number of nodes.
+	//
 	// example:
 	//
 	// 50
@@ -93,11 +100,16 @@ func (s *ListNodePoolComponentInstanceNodesResponseBody) Validate() error {
 }
 
 type ListNodePoolComponentInstanceNodesResponseBodyNodeList struct {
+	// The details of the component on the node.
 	Component *ListNodePoolComponentInstanceNodesResponseBodyNodeListComponent `json:"component,omitempty" xml:"component,omitempty" type:"Struct"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-bp1xxxxx
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// cn-hangzhou.10.91.xx.xx
@@ -149,15 +161,22 @@ func (s *ListNodePoolComponentInstanceNodesResponseBodyNodeList) Validate() erro
 }
 
 type ListNodePoolComponentInstanceNodesResponseBodyNodeListComponent struct {
+	// The configuration of the node component.
 	Config *ListNodePoolComponentInstanceNodesResponseBodyNodeListComponentConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The custom configuration version number of the component on the node.
+	//
 	// example:
 	//
 	// 1
 	ConfigRevision *string `json:"config_revision,omitempty" xml:"config_revision,omitempty"`
+	// The name of the component on the node.
+	//
 	// example:
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The version of the component on the node.
+	//
 	// example:
 	//
 	// 1.28.9-aliyun.1
@@ -218,6 +237,7 @@ func (s *ListNodePoolComponentInstanceNodesResponseBodyNodeListComponent) Valida
 }
 
 type ListNodePoolComponentInstanceNodesResponseBodyNodeListComponentConfig struct {
+	// The custom configuration of the node component.
 	CustomConfig map[string]interface{} `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
 }
 

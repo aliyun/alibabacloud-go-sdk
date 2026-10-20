@@ -28,20 +28,26 @@ type iDescribeClusterNodesRequest interface {
 }
 
 type DescribeClusterNodesRequest struct {
-	// The instance IDs of nodes. Separate multiple IDs with commas (,).
+	// The list of node instance IDs. Separate multiple values with commas (,).
 	//
 	// example:
 	//
 	// "i-bp11xjhwkj8k966u****,i-bp1dmhc2bu5igkyq****"
 	InstanceIds *string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty"`
+	// The list of node IP addresses used for filtering. Separate multiple values with commas (,).
+	//
 	// example:
 	//
 	// 192.168.0.1
 	NodeIps *string `json:"nodeIps,omitempty" xml:"nodeIps,omitempty"`
+	// The node labels used for filtering. Specify the labels as key=value pairs separated by commas (,). Multiple labels are evaluated with the AND operator. Only nodes that match all specified labels are returned.
+	//
 	// example:
 	//
 	// nodeLabels=app=nginx,env=prod
 	NodeLabels *string `json:"nodeLabels,omitempty" xml:"nodeLabels,omitempty"`
+	// The list of node names used for filtering. Separate multiple values with commas (,).
+	//
 	// example:
 	//
 	// cn-hangzhou.192.168.0.1
@@ -60,7 +66,7 @@ type DescribeClusterNodesRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The maximum number of records that can be displayed on each page. Valid values: [1, 100].
+	// The maximum number of records to return per page. Valid values: 1 to 100.
 	//
 	// Default value: 10.
 	//
@@ -68,17 +74,17 @@ type DescribeClusterNodesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The status of cluster nodes. Used to filter by node running status. Valid values:
+	// The running states of the cluster nodes used for filtering. Valid values:
 	//
-	// - `all`: does not filter by running status. All nodes are returned.
+	// - `all`: does not filter nodes by running state and queries nodes in all states.
 	//
-	// - `running`: running nodes.
+	// - `running`: the cluster nodes that are running.
 	//
-	// - `removing`: nodes that are being removed.
+	// - `removing`: the cluster nodes that are being removed.
 	//
-	// - `initial`: nodes that are being initialized.
+	// - `initial`: the cluster nodes that are being initialized.
 	//
-	// - `failed`: nodes that failed to be created.
+	// - `failed`: the cluster nodes that failed to be created.
 	//
 	// Default value: `all`.
 	//

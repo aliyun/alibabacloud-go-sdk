@@ -44,7 +44,7 @@ type iCreateAutoscalingConfigRequest interface {
 }
 
 type CreateAutoscalingConfigRequest struct {
-	// The scale-down trigger delay. The time interval between detecting a scale-down need (reaching the scale-down threshold) and actually performing the scale-down operation (reducing the number of Pods).
+	// The scale-in trigger delay, which is the time interval between when a scale-in need is detected (the scale-in threshold is reached) and when the scale-in operation (reducing the number of Pods) is actually performed.
 	//
 	// Valid values: [1,60]. Unit: minutes.
 	//
@@ -54,11 +54,11 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// 10
 	CoolDownDuration *string `json:"cool_down_duration,omitempty" xml:"cool_down_duration,omitempty"`
-	// Specifies whether cluster-autoscaler evicts DaemonSet Pods on nodes during scale-down. Valid values:
+	// Specifies whether cluster-autoscaler evicts DaemonSet Pods on a node during scale-in. Valid values:
 	//
-	// - `true`: DaemonSet Pods are evicted.
+	// - `true`: Eviction is performed.
 	//
-	// - `false`: DaemonSet Pods are not evicted.
+	// - `false`: Eviction is not performed.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// - `least-waste`: The default policy. If multiple node pools are available for scale-out, the node pool with the least resource waste is selected.
 	//
-	// - `random`: The random policy. If multiple node pools are available for scale-out, a random node pool is selected.
+	// - `random`: The random policy. If multiple node pools are available for scale-out, a node pool is randomly selected.
 	//
-	// - `priority`: The priority policy. If multiple node pools are available for scale-out, the node pool with the highest priority is selected based on the custom scaling group order you defined. Node pool priorities are defined by the `priorities` parameter.
+	// - `priority`: The priority policy. If multiple node pools are available for scale-out, the node pool with the highest priority based on your custom scaling group order is selected. Node pool priorities are defined by the `priorities` parameter.
 	//
 	// example:
 	//
 	// least-waste
 	Expander *string `json:"expander,omitempty" xml:"expander,omitempty"`
-	// The GPU scale-down threshold. The ratio of requested resources to total resources on a node.
+	// The GPU scale-in threshold, which is the ratio of requested resources to total resources on a node.
 	//
-	// A GPU node can be scaled down only when this ratio falls below the configured threshold, meaning the CPU, memory, and GPU utilization of the node are all below the GPU scale-down threshold.
+	// A GPU node can be scaled in only when this ratio falls below the configured threshold, meaning the CPU, memory, and GPU resource utilization of the node are all below the GPU scale-in threshold.
 	//
 	// Valid values: [0.1~1].
 	//
@@ -88,7 +88,7 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// 0.3
 	GpuUtilizationThreshold *string `json:"gpu_utilization_threshold,omitempty" xml:"gpu_utilization_threshold,omitempty"`
-	// The timeout period that cluster-autoscaler waits for Pod termination during node draining in scale-down scenarios.
+	// The timeout period for cluster-autoscaler to wait for Pod termination during node draining in a scale-in scenario.
 	//
 	// Unit: seconds.
 	//
@@ -98,7 +98,7 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// 14400
 	MaxGracefulTerminationSec *int32 `json:"max_graceful_termination_sec,omitempty" xml:"max_graceful_termination_sec,omitempty"`
-	// The minimum number of Pods allowed in each ReplicaSet before a node can be scaled down.
+	// The minimum number of Pods allowed in each ReplicaSet before a node can be scaled in.
 	//
 	// Default value: 0.
 	//
@@ -106,25 +106,25 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// 0
 	MinReplicaCount *int32 `json:"min_replica_count,omitempty" xml:"min_replica_count,omitempty"`
-	// The priority configuration for automatic scaling. After you create a node pool with auto scaling enabled, you can choose whether to configure a priority policy and priority settings by using [Enable node auto scaling](https://help.aliyun.com/document_detail/119099.html) to assign priorities to the scaling groups of specified auto scaling node pools.
+	// The priority configuration for auto scaling. After you create a node pool with elastic scaling enabled, you can configure priority policies and priority settings for the scaling groups of specified auto scaling node pools by using [Enable node auto scaling](https://help.aliyun.com/document_detail/119099.html).
 	//
 	// Valid values: [1, 100]. The value must be a positive integer. A larger value indicates a higher priority.
 	Priorities map[string][]*string `json:"priorities,omitempty" xml:"priorities,omitempty"`
-	// Specifies whether to delete the corresponding Kubernetes Node object after a node is successfully scaled down in swift mode. For more information about swift mode, see [Scaling modes](https://help.aliyun.com/document_detail/119099.html). Default value: false. Valid values:
+	// Specifies whether to delete the corresponding Kubernetes Node object after a node in rapid mode is successfully scaled in. For more information about rapid mode, see [Scaling modes](https://help.aliyun.com/document_detail/119099.html). Default value: false. Valid values:
 	//
-	// - `true`: The Kubernetes Node object is deleted after the node is stopped in swift mode. Setting this parameter to true is not recommended because it may cause Kubernetes object data inconsistency.
+	// - `true`: The Kubernetes Node object is deleted after the node in rapid mode is stopped. Setting this parameter to true is not recommended because it may cause data inconsistency in Kubernetes objects.
 	//
-	// - `false`: The Kubernetes Node object is retained after the node is stopped in swift mode.
+	// - `false`: The Kubernetes Node object is retained after the node in rapid mode is stopped.
 	//
 	// example:
 	//
 	// false
 	RecycleNodeDeletionEnabled *bool `json:"recycle_node_deletion_enabled,omitempty" xml:"recycle_node_deletion_enabled,omitempty"`
-	// Specifies whether to allow node scale-down. Valid values:
+	// Specifies whether to allow node scale-in. Valid values:
 	//
-	// - `true`: Scale-down is allowed.
+	// - `true`: Scale-in is allowed.
 	//
-	// - `false`: Scale-down is not allowed.
+	// - `false`: Scale-in is prohibited.
 	//
 	// example:
 	//
@@ -140,19 +140,19 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// true
 	ScaleUpFromZero *bool `json:"scale_up_from_zero,omitempty" xml:"scale_up_from_zero,omitempty"`
-	// The type of the auto scaling component. For clusters of version 1.24 and later, the default value is goatscaler. For earlier versions, the default value is cluster-autoscaler. Valid values:
+	// The elastic component type. For clusters running version 1.24 or later, the default value is goatscaler. For earlier versions, the default value is cluster-autoscaler. Valid values:
 	//
-	// - `goatscaler`: instant scaling.
+	// - `goatscaler`: Instant scaling.
 	//
-	// - `cluster-autoscaler`: automatic scaling.
+	// - `cluster-autoscaler`: Auto scaling.
 	//
 	// example:
 	//
 	// goatscaler
 	ScalerType *string `json:"scaler_type,omitempty" xml:"scaler_type,omitempty"`
-	// The scaling sensitivity, which adjusts the interval at which the system evaluates scaling decisions.
+	// The scaling sensitivity, which adjusts the interval for the system to evaluate scaling decisions.
 	//
-	// Valid values: 15, 30, 60, 120, 180, and 300. Unit: seconds.
+	// Valid values: 15, 30, 60, 120, 180, 300. Unit: seconds.
 	//
 	// Default value: 60.
 	//
@@ -160,27 +160,27 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// 30
 	ScanInterval *string `json:"scan_interval,omitempty" xml:"scan_interval,omitempty"`
-	// Specifies whether cluster-autoscaler skips scaling down nodes that run Pods with local storage (such as EmptyDir or HostPath). Valid values:
+	// Specifies whether cluster-autoscaler skips scale-in for nodes that run Pods with local storage (such as EmptyDir or HostPath). Valid values:
 	//
-	// - `true`: Nodes are not scaled down.
+	// - `true`: Scale-in is skipped.
 	//
-	// - `false`: Nodes are scaled down.
+	// - `false`: Scale-in is performed.
 	//
 	// example:
 	//
 	// false
 	SkipNodesWithLocalStorage *bool `json:"skip_nodes_with_local_storage,omitempty" xml:"skip_nodes_with_local_storage,omitempty"`
-	// Specifies whether cluster-autoscaler skips scaling down nodes that run Pods in the kube-system namespace. This feature does not apply to DaemonSet Pods or Mirror Pods. Valid values:
+	// Specifies whether cluster-autoscaler skips scale-in for nodes that run Pods in the kube-system namespace. This feature does not apply to DaemonSet Pods or Mirror Pods. Valid values:
 	//
-	// - `true`: Nodes are not scaled down.
+	// - `true`: Scale-in is skipped.
 	//
-	// - `false`: Nodes are scaled down.
+	// - `false`: Scale-in is performed.
 	//
 	// example:
 	//
 	// true
 	SkipNodesWithSystemPods *bool `json:"skip_nodes_with_system_pods,omitempty" xml:"skip_nodes_with_system_pods,omitempty"`
-	// The cool-down period. The time interval after the most recent scale-out during which the auto scaling component does not perform scale-down operations. Nodes added during scale-out can only be evaluated for scale-down after the cool-down period expires.
+	// The cool-down period. The time interval after the most recent scale-out event during which the elastic component does not perform scale-in operations. A node that is scaled out can be considered for scale-in only after the cool-down period elapses.
 	//
 	// Valid values: [1,60]. Unit: minutes.
 	//
@@ -190,9 +190,9 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// 10
 	UnneededDuration *string `json:"unneeded_duration,omitempty" xml:"unneeded_duration,omitempty"`
-	// The scale-down threshold. The ratio of requested resources to total resources on a node.
+	// The scale-in threshold, which is the ratio of requested resources to total resources on a node.
 	//
-	// A node can be scaled down only when this ratio falls below the configured threshold, meaning both the CPU and memory resources utilization of the node are below the scale-down threshold.
+	// A node can be scaled in only when this ratio falls below the configured threshold, meaning both the CPU and memory resources utilization of the node are below the scale-in threshold.
 	//
 	// Valid values: [0.1~1].
 	//

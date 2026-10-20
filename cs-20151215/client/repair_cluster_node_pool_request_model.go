@@ -20,7 +20,7 @@ type iRepairClusterNodePoolRequest interface {
 type RepairClusterNodePoolRequest struct {
 	// Deprecated
 	//
-	// [This field is deprecated] Specifies whether to allow instance restart.
+	// **[Deprecated]*	- Specifies whether to allow instance restart.
 	//
 	// example:
 	//
@@ -85,21 +85,21 @@ type RepairClusterNodePoolRequestOperations struct {
 	Args []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
 	// The repair operation ID. Valid values:
 	//
-	// - restart.kubelet: restart kubelet.
+	// - restart.kubelet: Restarts kubelet.
 	//
-	// - restart.docker: restart Docker.
+	// - restart.docker: Restarts Docker.
 	//
-	// - restart.containerd: restart Containerd.
+	// - restart.containerd: Restarts Containerd.
 	//
-	// - restart.ntp: restart ntpd or chronyd.
+	// - restart.ntp: Restarts ntpd or chronyd.
 	//
-	// - remove.containerdContainerInSandbox: delete a specified sandbox container under Containerd.
+	// - remove.containerdContainerInSandbox: Removes a specified sandbox container under Containerd.
 	//
-	// - remove.dockerContainerInSandbox: delete a specified sandbox container under Docker.
+	// - remove.dockerContainerInSandbox: Removes a specified sandbox container under Docker.
 	//
-	// - remove.containerdContainer: delete a specified container under Containerd.
+	// - remove.containerdContainer: Removes a specified container under Containerd.
 	//
-	// - remove.dockerContainer: delete a specified container under Docker.
+	// - remove.dockerContainer: Removes a specified container under Docker.
 	//
 	// example:
 	//

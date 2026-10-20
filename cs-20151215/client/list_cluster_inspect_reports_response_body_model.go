@@ -83,7 +83,7 @@ func (s *ListClusterInspectReportsResponseBody) Validate() error {
 }
 
 type ListClusterInspectReportsResponseBodyReports struct {
-	// The completion time of the inspection report.
+	// The completion time of the inspection report, in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListClusterInspectReportsResponseBodyReports struct {
 	//
 	// 782df89346054a0000562063a6****
 	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
-	// The start time of the inspection report.
+	// The start time of the inspection report, in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ func (s *ListClusterInspectReportsResponseBodyReports) Validate() error {
 }
 
 type ListClusterInspectReportsResponseBodyReportsSummary struct {
-	// The number of check items with a result of advice.
+	// The number of check items whose result is advice.
 	//
 	// example:
 	//
@@ -186,19 +186,19 @@ type ListClusterInspectReportsResponseBodyReportsSummary struct {
 	//
 	// warning
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of check items with a result of error.
+	// The number of check items whose result is error.
 	//
 	// example:
 	//
 	// 0
 	ErrorCount *int32 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	// The number of check items with a result of normal.
+	// The number of check items whose result is normal.
 	//
 	// example:
 	//
 	// 1
 	NormalCount *int32 `json:"normalCount,omitempty" xml:"normalCount,omitempty"`
-	// The number of check items with a result of warning.
+	// The number of check items whose result is warning.
 	//
 	// example:
 	//

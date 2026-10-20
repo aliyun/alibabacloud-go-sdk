@@ -16,7 +16,7 @@ type iOpenAckServiceResponseBody interface {
 }
 
 type OpenAckServiceResponseBody struct {
-	// The order ID of the service activation.
+	// The order ID for activating the service.
 	//
 	// example:
 	//

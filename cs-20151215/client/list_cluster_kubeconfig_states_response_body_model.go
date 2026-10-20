@@ -73,13 +73,13 @@ type ListClusterKubeconfigStatesResponseBodyPage struct {
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of records per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of results.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -127,25 +127,27 @@ func (s *ListClusterKubeconfigStatesResponseBodyPage) Validate() error {
 }
 
 type ListClusterKubeconfigStatesResponseBodyStates struct {
-	// The display name of the Resource Access Management (RAM) user or the role name.
+	// The display name of the Resource Access Management (RAM) user or the name of the RAM role.
 	//
 	// example:
 	//
 	// tom
 	AccountDisplayName *string `json:"account_display_name,omitempty" xml:"account_display_name,omitempty"`
-	// The Alibaba Cloud account, Resource Access Management (RAM) user, or role ID.
+	// The ID of the Alibaba Cloud account, Resource Access Management (RAM) user, or RAM role.
 	//
 	// example:
 	//
 	// 22855*****************
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty"`
-	// The logon name of the Resource Access Management (RAM) user or the role name.
+	// The logon name of the Resource Access Management (RAM) user or the name of the RAM role.
 	//
 	// example:
 	//
 	// tom
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty"`
-	// The account status. Valid values:
+	// The account state.
+	//
+	// Valid values:
 	//
 	// - Active: The account is active.
 	//
@@ -157,7 +159,9 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	//
 	// Active
 	AccountState *string `json:"account_state,omitempty" xml:"account_state,omitempty"`
-	// The account type. Valid values:
+	// The account type.
+	//
+	// Valid values:
 	//
 	// - RootAccount: Alibaba Cloud account.
 	//
@@ -169,19 +173,21 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	//
 	// RamUser
 	AccountType *string `json:"account_type,omitempty" xml:"account_type,omitempty"`
-	// The expiration time of the KubeConfig client certificate.
+	// The expiration time of the KubeConfig client certificate. The time is displayed in ISO 8601 format and includes time zone information.
 	//
 	// example:
 	//
 	// 2027-07-15T01:32:20Z
 	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
-	// The status of the KubeConfig client certificate. Valid values:
+	// The state of the KubeConfig client certificate.
 	//
-	// - Unexpired: The certificate has not expired.
+	// Valid values:
 	//
-	// - Expired: The certificate has expired.
+	// - Unexpired: The certificate is not expired.
 	//
-	// - Unknown: The certificate status is unknown (abnormal state).
+	// - Expired: The certificate is expired.
+	//
+	// - Unknown: The certificate state is unknown (abnormal state).
 	//
 	// example:
 	//
@@ -193,9 +199,9 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	//
 	// cs/ecs/sls
 	CloudServiceName *string `json:"cloud_service_name,omitempty" xml:"cloud_service_name,omitempty"`
-	// The list of cluster roles associated with the cloud service role.
+	// The list of cluster roles associated with the cloud service role in the cluster.
 	CloudServiceRoles []*ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles `json:"cloud_service_roles,omitempty" xml:"cloud_service_roles,omitempty" type:"Repeated"`
-	// Indicates whether the KubeConfig client certificate can be revoked.
+	// Specifies whether the KubeConfig client certificate can be revoked.
 	//
 	// example:
 	//
@@ -315,25 +321,27 @@ func (s *ListClusterKubeconfigStatesResponseBodyStates) Validate() error {
 }
 
 type ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles struct {
-	// Indicates whether the content matches the default cluster role template. Valid values:
+	// Specifies whether the content is consistent with the default cluster role template.
 	//
-	// - true: The content matches the default template.
+	// Valid values:
 	//
-	// - false: The content does not match the default template.
+	// - true: The content is consistent with the default cluster role template.
+	//
+	// - false: The content is inconsistent with the default cluster role template.
 	IsDefaultTemplate *bool `json:"is_default_template,omitempty" xml:"is_default_template,omitempty"`
-	// The name of the cluster role associated with the cloud service role.
+	// The name of the cluster role associated with the cloud service role in the cluster.
 	//
 	// example:
 	//
 	// cluster-admin
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
-	// The namespace of the cluster role associated with the cloud service role.
+	// The namespace of the cluster role associated with the cloud service role in the cluster.
 	//
 	// example:
 	//
 	// kube-system
 	RoleNamespace *string `json:"role_namespace,omitempty" xml:"role_namespace,omitempty"`
-	// The type of the cluster role associated with the cloud service role.
+	// The type of the cluster role associated with the cloud service role in the cluster.
 	//
 	// example:
 	//

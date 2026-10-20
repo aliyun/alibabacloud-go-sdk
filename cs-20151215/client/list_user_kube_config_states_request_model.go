@@ -26,7 +26,7 @@ type ListUserKubeConfigStatesRequest struct {
 	//
 	// 2
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of results returned per page.
+	// The number of results per page.
 	//
 	// - Valid values: 1 to 100.
 	//

@@ -36,13 +36,13 @@ type GetClusterInspectReportDetailRequest struct {
 	//
 	// - limitation: service limits
 	//
-	// - cost: cost optimization.
+	// - cost: cost optimization
 	//
 	// example:
 	//
 	// cost
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Specifies whether to filter check items. If set to true, only abnormal check items with result=true are returned.
+	// Specifies whether to filter inspection items. If set to true, only abnormal inspection items with a result of true are returned.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetClusterInspectReportDetailRequest struct {
 	//
 	// - zh_CN
 	//
-	// - en_US.
+	// - en_US
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type GetClusterInspectReportDetailRequest struct {
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
 	// The level of the inspection item. Valid values:
 	//
-	// - advice: suggestion
+	// - advice: advice
 	//
-	// - warning: low-risk
+	// - warning: low risk
 	//
-	// - error: medium-risk
+	// - error: medium risk
 	//
-	// - critical: high-risk.
+	// - critical: high risk
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetClusterInspectReportDetailRequest struct {
 	//
 	// bb41e2bcb47b747389dce6c0d2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The object type of the inspection target. Only check items that match the specified targetType are returned.
+	// The object type. Only check items that match the object type are returned.
 	//
 	// example:
 	//

@@ -121,7 +121,7 @@ func (s *ModifyAutoRepairPolicyRequestRules) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRulesIncidents struct {
-	// The fault name.
+	// The name of the fault.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *ModifyAutoRepairPolicyRequestRulesIncidents) Validate() error {
 type ModifyAutoRepairPolicyRequestRulesRepairProcedure struct {
 	// The parameter settings of the flow.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The configuration for manual intervention in the procedure.
+	// The configuration for the manual intervention procedure.
 	Intervention *ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
 	// The name of the procedure.
 	//
@@ -223,7 +223,7 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedure) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention struct {
-	// The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to perform the operations in this phase. After completing the phase operations, ACK automatically removes the authorization inquiry and authorization confirmation labels for this phase. If you do not promptly add the following labels for authorization, ACK does not perform the actions in this phase or subsequent phases, and the node may remain in a damaged state.
+	// The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to execute the operation for this stage. After completing the operation for this stage, ACK automatically removes the authorization inquiry and authorization confirmation labels corresponding to this stage. If you do not promptly add the following labels to grant authorization, ACK will not execute the action for this stage and subsequent actions, and the node may remain in a damaged state.
 	ApprovedLabel *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
 	// Specifies whether to enable manual approval.
 	//
@@ -231,7 +231,7 @@ type ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The label configuration for authorization inquiry. When this phase is reached, ACK adds the following labels to your node and waits for you to authorize the execution of the phase action.
+	// The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the action for this stage.
 	InquiringLabel *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
 	// The type of approval.
 	//
@@ -300,13 +300,13 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention) Validate
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel struct {
-	// The label key value.
+	// The key value of the label.
 	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The label value.
+	// The value of the label.
 	//
 	// example:
 	//
@@ -345,13 +345,13 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLa
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel struct {
-	// The label key value.
+	// The key value of the label.
 	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The label value.
+	// The value of the label.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iUpdateClusterAuditLogConfigRequest interface {
 type UpdateClusterAuditLogConfigRequest struct {
 	// Specifies whether to disable the cluster audit log feature. Valid values:
 	//
-	// - false: enables the audit log feature or updates the audit log configuration.
+	// - false: Enables the audit log feature or updates the audit log configuration.
 	//
-	// - true: disables the audit log feature.
+	// - true: Disables the audit log feature.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDescribeEventsResponseBody interface {
 type DescribeEventsResponseBody struct {
 	// The event details.
 	Events []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// The query token. This value is the next_token value returned by the previous API call.
+	// The pagination token. Set this parameter to the next_token value returned from the previous API call.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeEventsResponseBodyEvents struct {
 	//
 	// np6a5c86f4ecae436f8f4a3dc034a7****
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The event start time.
+	// The start time of the event in ISO 8601 format, including the time zone.
 	//
 	// example:
 	//
@@ -118,37 +118,37 @@ type DescribeEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - `cluster_create`: creates a cluster.
+	// - `cluster_create`: Cluster creation.
 	//
-	// - `cluster_scaleout`: scales out a cluster.
+	// - `cluster_scaleout`: Cluster scale-out.
 	//
-	// - `cluster_attach`: adds existing nodes.
+	// - `cluster_attach`: Addition of existing nodes.
 	//
-	// - `cluster_delete`: deletes a cluster.
+	// - `cluster_delete`: Cluster deletion.
 	//
-	// - `cluster_upgrade`: upgrades a cluster.
+	// - `cluster_upgrade`: Cluster upgrade.
 	//
-	// - `cluster_migrate`: migrates a cluster.
+	// - `cluster_migrate`: Cluster migration.
 	//
-	// - `cluster_node_delete`: removes nodes.
+	// - `cluster_node_delete`: Node removal.
 	//
-	// - `cluster_node_drain`: drains nodes.
+	// - `cluster_node_drain`: Node draining.
 	//
-	// - `cluster_modify`: modifies a cluster.
+	// - `cluster_modify`: Cluster modification.
 	//
-	// - `cluster_configuration_modify`: modifies cluster management configurations.
+	// - `cluster_configuration_modify`: Cluster control configuration modification.
 	//
-	// - `cluster_addon_install`: installs a component.
+	// - `cluster_addon_install`: Add-on installation.
 	//
-	// - `cluster_addon_upgrade`: upgrades a component.
+	// - `cluster_addon_upgrade`: Add-on upgrade.
 	//
-	// - `cluster_addon_uninstall`: uninstalls a component.
+	// - `cluster_addon_uninstall`: Add-on uninstallation.
 	//
-	// - `runtime_upgrade`: upgrades the runtime.
+	// - `runtime_upgrade`: Runtime upgrade.
 	//
-	// - `nodepool_upgrade`: upgrades a node pool.
+	// - `nodepool_upgrade`: Node pool upgrade.
 	//
-	// - `nodepool_update`: updates a node pool.
+	// - `nodepool_update`: Node pool update.
 	//
 	// example:
 	//
@@ -239,11 +239,11 @@ func (s *DescribeEventsResponseBodyEvents) Validate() error {
 type DescribeEventsResponseBodyEventsData struct {
 	// The event level. Valid values:
 	//
-	// - info: informational.
+	// - info: Information.
 	//
-	// - warning: warning.
+	// - warning: Warning.
 	//
-	// - error: error.
+	// - error: Error.
 	//
 	// example:
 	//
@@ -303,13 +303,13 @@ func (s *DescribeEventsResponseBodyEventsData) Validate() error {
 }
 
 type DescribeEventsResponseBodyPageInfo struct {
-	// The page number for the paged query.
+	// The page number for paging in the paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of results per page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//

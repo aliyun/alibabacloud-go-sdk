@@ -42,7 +42,7 @@ type UpdateControlPlaneLogRequest struct {
 	//
 	// k8s-log-c5b5e80b0b64a4bf6939d2d8fbbc5****
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The retention period of logs in the SLS Logstore. Valid values: 1 to 3000. Unit: days.
+	// The log retention period in the SLS Logstore. Valid values: 1 to 3000. Unit: days.
 	//
 	// Default value: 30 days.
 	//

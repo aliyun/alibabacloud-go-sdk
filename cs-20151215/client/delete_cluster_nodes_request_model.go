@@ -18,11 +18,11 @@ type iDeleteClusterNodesRequest interface {
 }
 
 type DeleteClusterNodesRequest struct {
-	// Whether to automatically drain Pods on the node. Valid values:
+	// Specifies whether to automatically drain Pods on the nodes. Valid values:
 	//
-	// - `true`: Automatically drain Pods on the node.
+	// - `true`: Automatically drains Pods on the nodes.
 	//
-	// - `false`: Do not automatically drain Pods on the node.
+	// - `false`: Does not automatically drain Pods on the nodes.
 	//
 	// Default value: `false`.
 	//
@@ -30,19 +30,19 @@ type DeleteClusterNodesRequest struct {
 	//
 	// false
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
-	// List of nodes to remove. The node names must be the names of the nodes in the cluster, for example: `cn-hangzhou.192.168.xx.xx`.
+	// The list of nodes to remove. The node name must be the name of the node in the cluster, such as `cn-hangzhou.192.168.xx.xx`.
 	//
 	// This parameter is required.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// Whether to simultaneously remove ECS instances. Valid values:
+	// Specifies whether to release the ECS instances at the same time. Valid values:
 	//
-	// - `true`: Simultaneously remove ECS instances.
+	// - `true`: Releases the ECS instances at the same time.
 	//
-	// - `false`: Retain ECS instances.
+	// - `false`: Retains the ECS instances.
 	//
 	// Default value: `false`.
 	//
-	// > Simultaneous removal of ECS instances is not supported when the nodes are subscription instances.
+	// > Releasing ECS instances at the same time is not supported when the nodes are subscription instances.
 	//
 	// example:
 	//

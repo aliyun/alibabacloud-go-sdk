@@ -16,9 +16,9 @@ type iDescribeTemplateAttributeRequest interface {
 type DescribeTemplateAttributeRequest struct {
 	// The templatetype.
 	//
-	// - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
+	// - If the value is set to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
 	//
-	// - If you leave this parameter empty or set it to other values, the template is not displayed on the Orchestration Templates page in the console.
+	// - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
 	//
 	// Settings this parameter to `kubernetes` is recommended.
 	//

@@ -18,14 +18,20 @@ type iDeleteNodePoolComponentInstanceResponseBody interface {
 }
 
 type DeleteNodePoolComponentInstanceResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c846d7d529e34413c9ab1****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EB022AB1-4CF7-5BB6-B44A-38****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// T-696de321273bb00****

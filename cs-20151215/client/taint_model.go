@@ -20,11 +20,11 @@ type iTaint interface {
 type Taint struct {
 	// The scheduling policy. Valid values:
 	//
-	// 	- `NoSchedule`: This taint is not tolerated. However, pods that are already scheduled to the node are not affected.
+	// - `NoSchedule`: Not tolerated. This affects only the scheduling process. Already scheduled pods are not affected. This applies only to newly added pods.
 	//
-	// 	- `NoExecute`: Pods that do not tolerate this taint are evicted after this taint is added to the node.
+	// - `NoExecute`: Not tolerated. When the taint changes, the pod is evicted.
 	//
-	// 	- `PreferNoSchedule`: This value specifies a soft limit on pods. Existing pods on the node are not affected. The scheduler attempts to avoid scheduling pods that cannot tolerate the taint to the node.
+	// - `PreferNoSchedule`: Soft constraint. Existing pods on the node are not affected. The scheduler tries to avoid scheduling pods that do not tolerate the taint to the node.
 	//
 	// Default value: `NoSchedule`.
 	//
@@ -32,13 +32,13 @@ type Taint struct {
 	//
 	// NoSchedule
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// The `key` of the taint.
+	// The key of the taint.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The `value` of the taint.
+	// The value of the taint.
 	//
 	// example:
 	//

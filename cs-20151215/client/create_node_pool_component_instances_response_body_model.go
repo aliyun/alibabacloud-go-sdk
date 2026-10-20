@@ -18,14 +18,20 @@ type iCreateNodePoolComponentInstancesResponseBody interface {
 }
 
 type CreateNodePoolComponentInstancesResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c2230fxxxxx
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// T-xxxx

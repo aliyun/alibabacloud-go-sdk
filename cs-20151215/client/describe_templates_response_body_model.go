@@ -79,7 +79,7 @@ type DescribeTemplatesResponseBodyPageInfo struct {
 	//
 	// 3
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ func (s *DescribeTemplatesResponseBodyPageInfo) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyTemplates struct {
-	// The access permissions for the deployment template. Valid values:
+	// The access permissions of the deployment template. Valid values:
 	//
-	// - `private`: private.
+	// - `private`: Private.
 	//
-	// - `public`: public.
+	// - `public`: Public.
 	//
-	// - `shared`: shared.
+	// - `shared`: Shared.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ type DescribeTemplatesResponseBodyTemplates struct {
 	//
 	// a web server
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the orchestration template.
+	// The orchestration template ID.
 	//
 	// example:
 	//
 	// 874ec485-e7e6-4373-8a3b-47bde8******
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the orchestration template.
+	// The orchestration template name.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type DescribeTemplatesResponseBodyTemplates struct {
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
 	// The templatetype.
 	//
-	// - If the value is set to kubernetes, the template is displayed on the Orchestration Templates page in the console.
+	// - If the value is kubernetes, the template is displayed on the Orchestration Templates page in the console.
 	//
 	// - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
 	//
@@ -185,7 +185,7 @@ type DescribeTemplatesResponseBodyTemplates struct {
 	//
 	// kubernetes
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
-	// The ID of the parent template associated with the template. This parameter is used to implement template versioning. Different versions of the same template share the same `template_with_hist_id` value.
+	// The ID of the parent template associated with the template. This parameter is used to implement the multi-version feature for templates. Different versions of the same template share the same `template_with_hist_id` value.
 	//
 	// example:
 	//

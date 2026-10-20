@@ -26,38 +26,38 @@ type iDescribeUserQuotaResponseBody interface {
 }
 
 type DescribeUserQuotaResponseBody struct {
-	// The quota for managed clusters. Default value: 20. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
+	// The quota of managed clusters. Default value: 20. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
 	//
 	// example:
 	//
 	// 20
 	AmkClusterQuota *int64 `json:"amk_cluster_quota,omitempty" xml:"amk_cluster_quota,omitempty"`
-	// The quota for ASK clusters. Default value: 20. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
+	// The quota of ASK clusters. Default value: 20. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
 	//
 	// example:
 	//
 	// 3
 	AskClusterQuota *int64 `json:"ask_cluster_quota,omitempty" xml:"ask_cluster_quota,omitempty"`
-	// The node pool quota per cluster. Default value: 20. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
+	// The node pool quota per cluster. Default value: 20. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
 	//
 	// example:
 	//
 	// 10
 	ClusterNodepoolQuota *int64 `json:"cluster_nodepool_quota,omitempty" xml:"cluster_nodepool_quota,omitempty"`
-	// The total cluster quota per account. Default value: 50. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
+	// The total cluster quota per account. Default value: 50. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
 	//
 	// example:
 	//
 	// 50
 	ClusterQuota              *int64                                                  `json:"cluster_quota,omitempty" xml:"cluster_quota,omitempty"`
 	EdgeImprovedNodepoolQuota *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota `json:"edge_improved_nodepool_quota,omitempty" xml:"edge_improved_nodepool_quota,omitempty" type:"Struct"`
-	// The node quota per cluster. Default value: 100. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
+	// The node quota per cluster. Default value: 100. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
 	//
 	// example:
 	//
 	// 100
 	NodeQuota *int64 `json:"node_quota,omitempty" xml:"node_quota,omitempty"`
-	// The new quota items. If this field is returned, the values in this field take precedence.
+	// The new quota items. If this field exists, the values in this field take precedence.
 	Quotas map[string]*QuotasValue `json:"quotas,omitempty" xml:"quotas,omitempty"`
 }
 

@@ -19,8 +19,9 @@ type iDescribeClusterEventsResponseBody interface {
 
 type DescribeClusterEventsResponseBody struct {
 	// The list of events.
-	Events    []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	NextToken *string                                    `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	Events []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// The pagination token.
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeClusterEventsResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -79,33 +80,33 @@ func (s *DescribeClusterEventsResponseBody) Validate() error {
 }
 
 type DescribeClusterEventsResponseBodyEvents struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The event description.
+	// The description of the event.
 	Data *DescribeClusterEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// e-9ad04f72-8ee7-46bf-a02c-e4a06b39****
 	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
-	// The event source.
+	// The source of the event.
 	//
 	// example:
 	//
 	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The object associated with the event.
+	// The operation object associated with the event.
 	//
 	// example:
 	//
 	// npdd89dc2b76c04f14b06774883b******
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The time when the event started.
+	// The start time of the event. The time is in ISO 8601 format and includes time zone information.
 	//
 	// example:
 	//
@@ -113,37 +114,37 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - cluster_create: creates a cluster.
+	// - cluster_create: Creates a cluster.
 	//
-	// - cluster_scaleout: scales out a cluster.
+	// - cluster_scaleout: Scales out a cluster.
 	//
-	// - cluster_attach: adds existing nodes.
+	// - cluster_attach: Adds existing nodes.
 	//
-	// - cluster_delete: deletes a cluster.
+	// - cluster_delete: Deletes a cluster.
 	//
-	// - cluster_upgrade: upgrades a cluster.
+	// - cluster_upgrade: Upgrades a cluster.
 	//
-	// - cluster_migrate: migrates a cluster.
+	// - cluster_migrate: Migrates a cluster.
 	//
-	// - cluster_node_delete: removes nodes.
+	// - cluster_node_delete: Removes a node.
 	//
-	// - cluster_node_drain: drains nodes.
+	// - cluster_node_drain: Drains a node.
 	//
-	// - cluster_modify: modifies a cluster.
+	// - cluster_modify: Modifies a cluster.
 	//
-	// - cluster_configuration_modify: modifies cluster management configurations.
+	// - cluster_configuration_modify: Modifies the control configurations of a cluster.
 	//
-	// - cluster_addon_install: installs a component.
+	// - cluster_addon_install: Installs a component.
 	//
-	// - cluster_addon_upgrade: upgrades a component.
+	// - cluster_addon_upgrade: Upgrades a component.
 	//
-	// - cluster_addon_uninstall: uninstalls a component.
+	// - cluster_addon_uninstall: Uninstalls a component.
 	//
-	// - runtime_upgrade: upgrades the runtime.
+	// - runtime_upgrade: Upgrades the runtime.
 	//
-	// - nodepool_upgrade: upgrades a node pool.
+	// - nodepool_upgrade: Upgrades a node pool.
 	//
-	// - nodepool_update: updates a node pool.
+	// - nodepool_update: Updates a node pool.
 	//
 	// example:
 	//
@@ -238,13 +239,13 @@ type DescribeClusterEventsResponseBodyEventsData struct {
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The event details.
+	// The details of the event.
 	//
 	// example:
 	//
 	// Start to upgrade NodePool nodePool/npdd89dc2b76c04f14b06774883b******
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The event status.
+	// The status of the event.
 	//
 	// example:
 	//
@@ -298,7 +299,7 @@ type DescribeClusterEventsResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of results returned per page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//

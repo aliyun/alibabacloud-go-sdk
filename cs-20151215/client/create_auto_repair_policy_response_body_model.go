@@ -16,7 +16,7 @@ type iCreateAutoRepairPolicyResponseBody interface {
 }
 
 type CreateAutoRepairPolicyResponseBody struct {
-	// The self-healing rule ID.
+	// The ID of the self-healing rule.
 	//
 	// example:
 	//

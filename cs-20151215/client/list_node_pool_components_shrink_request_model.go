@@ -26,30 +26,44 @@ type iListNodePoolComponentsShrinkRequest interface {
 }
 
 type ListNodePoolComponentsShrinkRequest struct {
+	// The image ID of the node pool. Either this parameter or image_type is required if nodepool_id is not specified.
+	//
 	// example:
 	//
 	// aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// The image type of the node pool. Either this parameter or image_id is required if nodepool_id is not specified.
+	//
 	// example:
 	//
 	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	// The instance types of the node pool. This parameter is required if nodepool_id is not specified.
+	//
 	// example:
 	//
 	// ["ecs.c6.xlarge"]
 	InstanceTypesShrink *string `json:"instance_types,omitempty" xml:"instance_types,omitempty"`
+	// The maximum number of results to return. Default value: 200.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// 5c0a1c0f91c14c6****
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// The node pool ID. If you specify a node pool ID, the system queries the list of components available for the node pool and ignores other parameters.
+	//
 	// example:
 	//
 	// np1855b102ac434f5990d87b77a****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	// The node pool type. This parameter is required if nodepool_id is not specified.
+	//
 	// example:
 	//
 	// ess

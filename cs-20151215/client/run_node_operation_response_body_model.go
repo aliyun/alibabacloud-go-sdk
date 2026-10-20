@@ -18,14 +18,20 @@ type iRunNodeOperationResponseBody interface {
 }
 
 type RunNodeOperationResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c2230fxxxxx
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// T-xxxx

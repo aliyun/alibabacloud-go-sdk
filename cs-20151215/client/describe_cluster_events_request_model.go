@@ -22,8 +22,10 @@ type iDescribeClusterEventsRequest interface {
 }
 
 type DescribeClusterEventsRequest struct {
-	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
-	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// The maximum number of results to return for a single request.
+	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination token. The value is the next_token parameter returned by the previous API call.
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -32,7 +34,7 @@ type DescribeClusterEventsRequest struct {
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
 	// The maximum number of results to return per page.
 	//
-	// Valid values: [1,100].
+	// Valid values: 1 to 100.
 	//
 	// Default value: 50.
 	//

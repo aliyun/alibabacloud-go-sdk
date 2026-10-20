@@ -38,7 +38,7 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// enforce
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The rule templatetype.
+	// The templatetype of the rule.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DescribePolicyDetailsResponseBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the rule is deleted. Valid values:
 	//
-	// - 0: The rule is not deleted.
+	// - 0: not deleted.
 	//
-	// - 1: The rule is deleted.
+	// - 1: deleted.
 	//
 	// example:
 	//
@@ -66,17 +66,17 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// ACKAllowedRepos
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether policy configuration is required. Valid values:
+	// Indicates whether the policy requires configuration. Valid values:
 	//
-	// - 0: Parameter settings are required.
+	// - 0: parameter settings required.
 	//
-	// - 1: No parameter settings are required.
+	// - 1: no parameter settings required.
 	//
 	// example:
 	//
 	// 0
 	NoConfig *int32 `json:"no_config,omitempty" xml:"no_config,omitempty"`
-	// The governance severity level of the rule. Valid values:
+	// The governance severity of the rule. Valid values:
 	//
 	// 	- `high`: high risk.
 	//
@@ -92,7 +92,7 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// example:
 	//
-	// 详情请参见请求示例
+	// For more information, see the request example
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
 }
 

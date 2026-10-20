@@ -16,13 +16,13 @@ type iDescribePolicyInstancesStatusResponseBody interface {
 }
 
 type DescribePolicyInstancesStatusResponseBody struct {
-	// The number of policy instances deployed in the cluster at different governance levels.
+	// The number of policy instances deployed at different governance levels in the cluster.
 	//
 	// example:
 	//
 	// { "high": 11,     "medium": 1  }
 	InstancesSeverityCount map[string]interface{} `json:"instances_severity_count,omitempty" xml:"instances_severity_count,omitempty"`
-	// The list of policy instance counts for different policy types.
+	// The list of policy instance counts by policy type.
 	PolicyInstances []*DescribePolicyInstancesStatusResponseBodyPolicyInstances `json:"policy_instances,omitempty" xml:"policy_instances,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribePolicyInstancesStatusResponseBody) Validate() error {
 }
 
 type DescribePolicyInstancesStatusResponseBodyPolicyInstances struct {
-	// The policy type. For more information about supported policy types and their descriptions, see [Container security policy rule library](https://help.aliyun.com/document_detail/359819.html).
+	// The policy type. For more information about supported policy types and their descriptions, see [Container security policy rules](https://help.aliyun.com/document_detail/359819.html).
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribePolicyInstancesStatusResponseBodyPolicyInstances struct {
 	//
 	// ACKRestrictRoleBindings
 	PolicyName *string `json:"policy_name,omitempty" xml:"policy_name,omitempty"`
-	// The governance level of the policy.
+	// The policy governance level.
 	//
 	// example:
 	//

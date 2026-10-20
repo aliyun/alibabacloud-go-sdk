@@ -51,13 +51,7 @@ func (s *DescribeClusterVulsResponseBody) Validate() error {
 type DescribeClusterVulsResponseBodyVulRecords struct {
 	// The list of CVEs.
 	CveList []*string `json:"cve_list,omitempty" xml:"cve_list,omitempty" type:"Repeated"`
-	// The severity level of the vulnerability. Valid values:
-	//
-	// - nntf: low
-	//
-	// - later: medium
-	//
-	// - asap: high.
+	// The vulnerability severity level.
 	//
 	// example:
 	//
@@ -75,37 +69,25 @@ type DescribeClusterVulsResponseBodyVulRecords struct {
 	//
 	// np0156da1082b54fa987e32618dd******
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The name of the node pool.
+	// The node pool name.
 	//
 	// example:
 	//
 	// test
 	NodepoolName *string `json:"nodepool_name,omitempty" xml:"nodepool_name,omitempty"`
-	// The alias of the vulnerability.
+	// The vulnerability alias.
 	//
 	// example:
 	//
-	// CVE-2022-xxxx:rsync 安全漏洞
+	// CVE-2022-xxxx:rsync security vulnerability
 	VulAliasName *string `json:"vul_alias_name,omitempty" xml:"vul_alias_name,omitempty"`
-	// The name of the vulnerability.
+	// The vulnerability name.
 	//
 	// example:
 	//
 	// oval:com.redhat.rhsa:def:xxxxxxx
 	VulName *string `json:"vul_name,omitempty" xml:"vul_name,omitempty"`
-	// The type of the vulnerability. Valid values:
-	//
-	// - app: application vulnerability
-	//
-	// - sca: application vulnerability (Software Composition Analysis)
-	//
-	// - cve: Linux vulnerability
-	//
-	// - cms: WebCMS vulnerability
-	//
-	// - sys: Windows vulnerability
-	//
-	// - emg: emergency vulnerability.
+	// The vulnerability type.
 	//
 	// example:
 	//

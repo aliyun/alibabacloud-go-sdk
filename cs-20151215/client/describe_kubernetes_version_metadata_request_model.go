@@ -30,7 +30,7 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// - `Kubernetes`: ACK dedicated cluster.
 	//
-	// - `ManagedKubernetes`: ACK managed cluster, including ACK Pro cluster, ACK Basic cluster, ACK Serverless Pro cluster, ACK Serverless Basic cluster, ACK Edge Pro cluster, and ACK Edge Basic cluster.
+	// - `ManagedKubernetes`: ACK managed cluster, including ACK Pro clusters, ACK basic clusters, ACK Serverless Pro clusters, ACK Serverless basic clusters, ACK Edge Pro clusters, and ACK Edge basic clusters.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// Kubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The cluster version, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
+	// The Kubernetes version of the cluster. This version is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
 	//
-	// For more information about the Kubernetes versions supported by ACK, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
+	// For more information about the Kubernetes versions supported by ACK, see [Overview of Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
@@ -48,25 +48,25 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
 	// The query mode. Valid values:
 	//
-	// - `supported`: queries supported versions.
+	// - `supported`: Supported versions.
 	//
-	// - `creatable`: queries creatable versions.
+	// - `creatable`: Versions available for cluster creation.
 	//
-	// If you specify `KubernetesVersion`, the query mode is ignored.
+	// If you specify KubernetesVersion, the system ignores the query mode.
 	//
-	// If you do not specify the query mode, creatable versions are returned by default.
+	// If you do not specify a query mode, the system returns versions available for cluster creation by default.
 	//
 	// example:
 	//
 	// supported
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The cluster type for specific scenarios. Valid values:
+	// The cluster profile. Valid values:
 	//
-	// - `Default`: non-edge scenario cluster.
+	// - `Default`: cluster for non-edge scenarios.
 	//
-	// - `Edge`: edge scenario cluster.
+	// - `Edge`: cluster for edge scenarios.
 	//
-	// - `Serverless`: ACK Serverless cluster.
+	// - `Serverless`: ASK cluster.
 	//
 	// Default value: `Default`.
 	//
@@ -74,11 +74,11 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// Specifies whether to query upgradable versions for the specified cluster version. This parameter takes effect only when the KubernetesVersion parameter is specified.
+	// Specifies whether to query the upgradable versions of the cluster version. This parameter takes effect only when the KubernetesVersion parameter is specified. Valid values:
 	//
-	// - true: queries upgradable versions.
+	// - true: Queries upgradable versions.
 	//
-	// - false: does not query upgradable versions.
+	// - false: Does not query upgradable versions.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The runtime type. You can specify the runtime type to filter the system images that are supported by the runtime. Valid values:
+	// The runtime type. You can specify a runtime type to filter system images supported by the runtime. Valid values:
 	//
 	// - `docker`: Docker runtime.
 	//
@@ -100,9 +100,9 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// - `Sandboxed-Container.runv`: sandboxed container.
 	//
-	// If you specify the runtime type, the image versions supported by the specified runtime are returned.
+	// If you specify a runtime type, the system returns the image versions supported by the specified runtime.
 	//
-	// If you do not specify the runtime type, all images are returned by default.
+	// If you do not specify a runtime type, the system returns all images by default.
 	//
 	// example:
 	//

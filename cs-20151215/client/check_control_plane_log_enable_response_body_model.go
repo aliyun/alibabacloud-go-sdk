@@ -30,7 +30,7 @@ type CheckControlPlaneLogEnableResponseBody struct {
 	//
 	// This parameter is required.
 	Components []*string `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The name of the Simple Log Service (SLS) project that stores the control plane component logs.
+	// The name of the SLS project that stores the control plane component logs.
 	//
 	// Default value: k8s-log-$Cluster ID.
 	//

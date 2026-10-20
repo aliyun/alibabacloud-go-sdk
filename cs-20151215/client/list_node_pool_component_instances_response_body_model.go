@@ -18,11 +18,16 @@ type iListNodePoolComponentInstancesResponseBody interface {
 }
 
 type ListNodePoolComponentInstancesResponseBody struct {
+	// The list of node component instances.
 	ComponentInstances []*ListNodePoolComponentInstancesResponseBodyComponentInstances `json:"component_instances,omitempty" xml:"component_instances,omitempty" type:"Repeated"`
+	// The maximum number of results to return. Default value: 200.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// 5c0a1c0f91c14c6****
@@ -78,19 +83,28 @@ func (s *ListNodePoolComponentInstancesResponseBody) Validate() error {
 }
 
 type ListNodePoolComponentInstancesResponseBodyComponentInstances struct {
+	// The configuration of the component.
 	Config *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The version number of the component configuration.
+	//
 	// example:
 	//
 	// 1
 	ConfigRevision *string `json:"config_revision,omitempty" xml:"config_revision,omitempty"`
+	// The name of the component.
+	//
 	// example:
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The state of the component.
+	//
 	// example:
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The version of the component.
+	//
 	// example:
 	//
 	// 1.33.3-aliyun.1
@@ -160,11 +174,14 @@ func (s *ListNodePoolComponentInstancesResponseBodyComponentInstances) Validate(
 }
 
 type ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig struct {
+	// The custom configuration of the component.
+	//
 	// example:
 	//
 	// {"cpuManagerPolicy":"static"}
-	CustomConfig map[string]interface{}                                                    `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
-	Envs         []*ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
+	CustomConfig map[string]interface{} `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	// The environment variables of the node component.
+	Envs []*ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
 func (s ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) String() string {
@@ -207,10 +224,14 @@ func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) Val
 }
 
 type ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs struct {
+	// The name of the environment variable.
+	//
 	// example:
 	//
 	// LOG_LEVEL
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the environment variable.
+	//
 	// example:
 	//
 	// info

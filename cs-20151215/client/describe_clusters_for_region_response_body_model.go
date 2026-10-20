@@ -89,11 +89,11 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// - `ack.pro.2xlarge`: Pro 2XL
 	//
-	// - `ack.pro.4xlarge`: Pro 4XL (contact customer service to add your account to the whitelist)
+	// - `ack.pro.4xlarge`: Pro 4XL (Contact customer service to add your account to the whitelist.)
 	//
-	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and Pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
 	//
-	// For information about cluster management fees for Pro and Provisioned Control Plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+	// For information about the cluster management fees for Pro and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// The pod CIDR block of the cluster.
+	// The CIDR block used by the cluster pods.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// - true: Deletion protection is enabled. The cluster cannot be deleted in the console or by calling API operations.
 	//
-	// - false: Deletion protection is not enabled. The cluster can be deleted in the console or by calling API operations.
+	// - false: Deletion protection is disabled. The cluster can be deleted in the console or by calling API operations.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// ipv4
 	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
-	// The cluster name.
+	// The name of the cluster.
 	//
 	// example:
 	//
@@ -189,13 +189,13 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// cn-beijing-a
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The resource group ID of the cluster.
+	// The ID of the resource group to which the cluster belongs.
 	//
 	// example:
 	//
 	// rg-acfmyvw3wjm****
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	// The security group ID of the cluster.
+	// The ID of the security group associated with the cluster.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// 2
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// The running state of the cluster. Valid values:
+	// The running status of the cluster. Valid values:
 	//
 	// - `initial`: The cluster is being created.
 	//
@@ -265,13 +265,13 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// 2020-12-08T15:37:00+08:00
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
-	// The VPC ID of the cluster.
+	// The ID of the VPC where the cluster is deployed.
 	//
 	// example:
 	//
 	// vpc-2zeg8nf1ukc0fcmvq****
 	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
-	// The list of vSwitches for the cluster control plane.
+	// The list of vSwitches used by the cluster control plane.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 

@@ -27,6 +27,8 @@ type iCreateClusterRequest interface {
 	GetChargeType() *string
 	SetCisEnabled(v bool) *CreateClusterRequest
 	GetCisEnabled() *bool
+	SetClientToken(v string) *CreateClusterRequest
+	GetClientToken() *string
 	SetCloudMonitorFlags(v bool) *CreateClusterRequest
 	GetCloudMonitorFlags() *bool
 	SetClusterDomain(v string) *CreateClusterRequest
@@ -220,39 +222,41 @@ type iCreateClusterRequest interface {
 type CreateClusterRequest struct {
 	// Deprecated
 	//
-	// **[Deprecated]*	- The access control list for the API Server SLB of the registered cluster.
+	// **[Deprecated]*	- The access control list (ACL) of the SLB instance for the API server of a registered cluster.
 	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
-	// The list of cluster components. When you create a cluster, specify the components to install by using `addons`.
+	// The list of cluster components. When you create a cluster, use `addons` to specify the components that you want to install.
 	//
 	// **Network component**: Required. Two network types are available: Flannel and Terway. Select one when you create a cluster:
 	//
-	// - Flannel network: [{"name":"flannel","config":""}\\].
+	// - Flannel: [{"name":"flannel","config":""}\\].
 	//
-	// - Terway network: [{"name": "terway-eniip","config": ""}\\].
+	// - Terway: [{"name": "terway-eniip","config": ""}\\].
 	//
 	// **Storage component**: Optional. Only the `csi` type is supported:
 	//
 	// `csi`: [{"name":"csi-plugin","config": ""},{"name": "csi-provisioner","config": ""}\\].
 	//
-	// **Log component**: Optional. We recommend that you enable this component. If you do not enable the log service, the cluster audit feature is unavailable.
+	// **Log component**: Optional. We recommend that you enable this component. If you do not enable the log service, you cannot use the cluster auditing feature.
 	//
 	// - Use an existing `SLS Project`: [{"name": "loongcollector","config": "{\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your_sls_project_name\\"}"}\\].
 	//
 	// - Create a new `SLS Project`: [{"name": "loongcollector","config": "{\\"IngressDashboardEnabled\\":\\"true\\"}"}\\].
 	//
-	// **Ingress component**: Optional. ACK dedicated clusters install the Ingress component `nginx-ingress-controller` by default.
+	// **Ingress component**: Optional. By default, the Ingress component `nginx-ingress-controller` is installed for ACK dedicated clusters.
 	//
 	// - Install Ingress and enable Internet access: [{"name":"nginx-ingress-controller","config":"{\\"IngressSlbNetworkType\\":\\"internet\\"}"}\\].
 	//
-	// - Do not install Ingress by default: [{"name": "nginx-ingress-controller","config": "","disabled": true}\\].
+	// - Disable default Ingress installation: [{"name": "nginx-ingress-controller","config": "","disabled": true}\\].
 	//
-	// **Event center**: Optional. Enabled by default.
+	// **Event Center**: Optional. Enabled by default.
 	//
-	// The event center provides capabilities such as storage, query, and alerting for Kubernetes events. The Logstore associated with the Kubernetes event center is free of charge for 90 days. For more information about the free policy, see [Create and use a Kubernetes event center](https://help.aliyun.com/document_detail/150476.html).
+	// Event Center provides the capabilities to store, query, and alert on Kubernetes events. The Logstore associated with Kubernetes Event Center is free of charge for 90 days. For more information about the free policy, see [Create and use Kubernetes Event Center](https://help.aliyun.com/document_detail/150476.html).
 	//
-	// Example of enabling the event center: [{"name":"ack-node-problem-detector","config":"{\\"sls_project_name\\":\\"your_sls_project_name\\"}"}\\].
+	// Example of enabling Event Center: [{"name":"ack-node-problem-detector","config":"{\\"sls_project_name\\":\\"your_sls_project_name\\"}"}\\].
 	Addons []*Addon `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
-	// A ServiceAccount is the access credential for communication between a pod and the cluster API server. The `api-audiences` parameter specifies the valid request `token` identities used by the `apiserver` to authenticate whether a request `token` is valid. You can configure multiple `audience` values separated by commas (,).
+	// A ServiceAccount is the access credential used by a pod to communicate with the cluster API server. The `api-audiences` parameter specifies the valid request `token` identities used by the `apiserver` to authenticate whether request `tokens` are legitimate. You can configure multiple `audiences` separated by commas (,).
+	//
+	// For more information about `ServiceAccount`, see [Deploy service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
 	//
 	// example:
 	//
@@ -266,13 +270,13 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]**
 	//
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when charge_type is set to PrePaid. Valid values:
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
 	//
-	// - true: Auto-renewal is enabled.
+	// - `true`: Enable auto-renewal.
 	//
-	// - false: Auto-renewal is not enabled.
+	// - `false`: Disable auto-renewal.
 	//
-	// Default value: false.
+	// Default value: `false`.
 	//
 	// This parameter was changed on October 15, 2024. For more information, see [Notice on behavior changes of the CreateCluster parameter](https://help.aliyun.com/document_detail/2849194.html).
 	//
@@ -284,7 +288,7 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]**
 	//
-	// The auto-renewal period. This parameter takes effect only when the subscription billing method and auto-renewal are selected. When `PeriodUnit=Month`, valid values: {1, 2, 3, 6, 12}.
+	// The auto-renewal epoch. This parameter takes effect only when the billing method is subscription and auto-renewal is enabled. When `PeriodUnit=Month`, valid values: {1, 2, 3, 6, 12}.
 	//
 	// Default value: 1.
 	//
@@ -298,23 +302,23 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]**
 	//
-	// The billing method of the Classic Load Balancer (CLB) instance used by the API server. Default value: PostPaid. Valid values:
+	// The billing method of the CLB instance used by the API server. Default value: PostPaid. Valid values:
 	//
 	// - PostPaid: pay-as-you-go.
 	//
-	// - PrePaid: subscription. This billing method is no longer supported for new CLB instances. Existing instances are not affected.
+	// - PrePaid: subscription. The subscription billing method is no longer supported for newly created CLB instances. Existing instances are not affected.
 	//
 	// 	Notice:
 	//
 	// - This parameter was changed on October 15, 2024. For more information, see [Notice on behavior changes of the CreateCluster parameter](https://help.aliyun.com/document_detail/2849194.html).
 	//
-	// - Starting from December 1, 2024, the subscription billing method is no longer supported for newly created CLB instances, and an instance fee is charged.
+	// - Starting from December 01, 2024, newly created CLB instances no longer support the subscription billing method, and an instance fee will be charged.
 	//
 	// </notice>
 	//
-	// <props="china">For more information, see [Notice on canceling subscription billing for API server CLB instances in new clusters](https://help.aliyun.com/document_detail/2851191.html) and [Notice on billing item changes for CLB](https://help.aliyun.com/document_detail/2839797.html).
+	// <props="china">For more information, see [Service notices: Notice on canceling subscription billing for CLB load balancing instances of cluster API servers](https://help.aliyun.com/document_detail/2851191.html) and [Notice on billing item changes for Classic Load Balancer (CLB)](https://help.aliyun.com/document_detail/2839797.html).
 	//
-	// <props="intl">For more information, see [Notice on billing item changes for CLB](https://help.aliyun.com/document_detail/2839797.html).
+	// <props="intl">For more information, see [Notice on billing item changes for Classic Load Balancer (CLB)](https://help.aliyun.com/document_detail/2839797.html).
 	//
 	// example:
 	//
@@ -328,9 +332,15 @@ type CreateClusterRequest struct {
 	//
 	// false
 	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
+	// The client token.
+	//
+	// example:
+	//
+	// 0a287651-1277-4c0d-80d2-623a4*****
+	ClientToken *string `json:"client_token,omitempty" xml:"client_token,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For cluster control plane node configuration, use the `cloud_monitor_flags` parameter under `control_plane_config` instead. For node pool configuration, use the `cms_enabled` parameter under `kubernetes_config` in the nodepool instead.
+	// **[Deprecated]*	- For cluster control plane node configuration, use the `cloud_monitor_flags` parameter under `control_plane_config` instead. For node pool configuration, use the `cms_enabled` parameter under `kubernetes_config` in nodepool instead.
 	//
 	// Specifies whether to install the CloudMonitor agent on the cluster. Valid values:
 	//
@@ -346,13 +356,15 @@ type CreateClusterRequest struct {
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
 	// The cluster local domain name.
 	//
+	// Naming rules: A domain name consists of one or more parts separated by periods (.). Each part can be up to 63 characters long and can contain lowercase letters, digits, and hyphens (-). Each part must start and end with a lowercase letter or digit.
+	//
 	// example:
 	//
 	// cluster.local
 	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
 	// After you set `cluster_type` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification. Valid values:
 	//
-	// - `ack.standard`: Basic Edition (selected by default if the value is left empty)
+	// - `ack.standard`: Basic Edition (selected by default if the value is empty)
 	//
 	// - `ack.pro.small`: Pro Edition
 	//
@@ -360,11 +372,11 @@ type CreateClusterRequest struct {
 	//
 	// - `ack.pro.2xlarge`: Pro 2XL
 	//
-	// - `ack.pro.4xlarge`: Pro 4XL (contact customer service to be added to the whitelist)
+	// - `ack.pro.4xlarge`: Pro 4XL (requires contacting customer service to enable the whitelist)
 	//
-	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These tiers pre-allocate and lock control plane resources to ensure that API concurrency and pod scheduling capabilities remain at a deterministic high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain at a deterministic high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
 	//
-	// For information about cluster management fees for Pro Edition and Provisioned Control Plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+	// For information about the cluster management fees for Pro Edition and Provisioned Control Plane editions, see <props="china">[Cluster management fee](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fee](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
@@ -372,13 +384,17 @@ type CreateClusterRequest struct {
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
 	// - `Kubernetes`: ACK dedicated cluster.
 	//
+	// - `ManagedKubernetes`: ACK managed cluster types, including ACK managed clusters (Pro and Basic editions), ACK Serverless clusters (Pro and Basic editions), ACK Edge clusters (Pro and Basic editions), and ACK Lingjun clusters (Pro Edition).
+	//
+	// - `ExternalKubernetes`: registered cluster.
+	//
 	// example:
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// The pod CIDR block. The value must be a valid private CIDR block, which includes the following CIDR blocks and their subnets: 10.0.0.0/8, 172.16-31.0.0/12-16, and 192.168.0.0/16. The pod CIDR block cannot overlap with the CIDR block of the VPC or the CIDR blocks used by existing Kubernetes clusters in the VPC. You cannot modify the pod CIDR block after the cluster is created.
+	// The pod network CIDR block. It must be a valid private CIDR block, specifically the following CIDR blocks and their subnets: 10.0.0.0/8, 172.16-31.0.0/12-16, and 192.168.0.0/16. It cannot overlap with the CIDR blocks used by the VPC or existing Kubernetes clusters in the VPC. This value cannot be modified after the cluster is created.
 	//
-	// For more information about cluster network planning, see [Network planning for ACK managed clusters](https://help.aliyun.com/document_detail/86500.html).
+	// For more information about cluster network planning, see [ACK managed cluster network planning](https://help.aliyun.com/document_detail/86500.html).
 	//
 	// > This parameter is required for Flannel clusters.
 	//
@@ -388,17 +404,19 @@ type CreateClusterRequest struct {
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
 	// The control plane configuration for ACK dedicated clusters.
 	ControlPlaneConfig *CreateClusterRequestControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
-	// The cluster connection configuration.
+	// The cluster endpoint configuration.
 	ControlPlaneEndpointsConfig *CreateClusterRequestControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
 	// The list of component names that specifies which control plane components to collect logs from.
+	//
+	// By default, logs are collected from kube-apiserver, kube-controller-manager, kube-scheduler, and cloud-controller-manager.
 	ControlplaneLogComponents []*string `json:"controlplane_log_components,omitempty" xml:"controlplane_log_components,omitempty" type:"Repeated"`
-	// The Simple Log Service project for control plane component logs. You can use an existing project for log storage or allow the system to use automatic creation of a project. If you choose automatic creation, a Simple Log Service project named `k8s-log-{ClusterID}` is created.
+	// The Simple Log Service project for control plane component logs. You can use an existing project for log storage or allow the system to automatically create a project. If you choose automatic creation, a Simple Log Service project named `k8s-log-{ClusterID}` is created.
 	//
 	// example:
 	//
 	// k8s-log-xxx
 	ControlplaneLogProject *string `json:"controlplane_log_project,omitempty" xml:"controlplane_log_project,omitempty"`
-	// The number of days for control plane component log retention.
+	// The log retention period for control plane component logs, in days.
 	//
 	// example:
 	//
@@ -406,7 +424,15 @@ type CreateClusterRequest struct {
 	ControlplaneLogTtl *string `json:"controlplane_log_ttl,omitempty" xml:"controlplane_log_ttl,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For cluster control plane configuration, use the `cpu_policy` parameter under `control_plane_config` instead. For node pool configuration, use the `cpu_policy` parameter under `kubernetes_config` in `nodepool` instead.
+	// **[Deprecated]*	- Use the `cpu_policy` parameter under `control_plane_config` for cluster control plane configuration, or use the `cpu_policy` parameter under `kubernetes_config` in `nodepool` for node pool configuration.
+	//
+	// The CPU management policy for nodes. The following policies are supported for clusters of version 1.12.6 or later:
+	//
+	// - `static`: Allows pods with certain resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
+	//
+	// - `none`: Uses the existing default CPU affinity scheme.
+	//
+	// Default value: `none`.
 	//
 	// example:
 	//
@@ -416,15 +442,17 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]*	- Use the `extra_sans` parameter instead.
 	//
+	// The custom certificate Subject Alternative Name (SAN). Separate multiple IP addresses or domain names with commas (,).
+	//
 	// example:
 	//
 	// cs.aliyun.com
 	CustomSan *string `json:"custom_san,omitempty" xml:"custom_san,omitempty"`
-	// Specifies whether to enable deletion protection for the cluster. Deletion protection prevents the cluster from being accidentally deleted in the console or by calling API operations. Valid values:
+	// Specifies whether to enable cluster deletion protection, which prevents the cluster from being accidentally deleted in the console or by calling API operations. Valid values:
 	//
-	// - `true`: Enables deletion protection. The cluster cannot be deleted in the console or by calling API operations.
+	// - `true`: Enables cluster deletion protection. The cluster cannot be deleted in the console or by calling API operations.
 	//
-	// - `false`: Disables deletion protection. The cluster can be deleted in the console or by calling API operations.
+	// - `false`: Disables cluster deletion protection. The cluster can be deleted in the console or by calling API operations.
 	//
 	// Default value: `false`.
 	//
@@ -434,7 +462,16 @@ type CreateClusterRequest struct {
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- When cluster creation fails, rollback is not performed by default. You must manually clean up the failed cluster.
+	// **[Deprecated]*	- When cluster creation fails, no rollback is performed by default. You must manually clean up the failed cluster.
+	//
+	// Specifies whether to roll back the cluster if creation fails. Valid values:
+	//
+	// - `true`: Rolls back the cluster when creation fails.
+	//
+	// - `false`: Does not roll back the cluster when creation fails.
+	//
+	//
+	// Default value: `true`.
 	//
 	// example:
 	//
@@ -442,21 +479,19 @@ type CreateClusterRequest struct {
 	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the rrsa_config parameter instead.
+	// **[Deprecated]*	- Use the `rrsa_config` parameter instead.
 	//
-	// Specifies whether to enable the China RRSA feature.
+	// Specifies whether to enable the RRSA feature.
 	//
-	// Valid values:
+	// - true: Enables the feature.
 	//
-	// - true: Enable RRSA.
-	//
-	// - false: Do not enable RRSA.
+	// - false: Does not enable the feature.
 	//
 	// example:
 	//
 	// false
 	EnableRrsa *bool `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
-	// The KMS key ID. This key is used to encrypt data cloud disks. For more information, see [Key Management Service](https://help.aliyun.com/document_detail/28935.html).
+	// The ID of the Key Management Service (KMS) key used to encrypt cloud disks. For more information, see [Key Management Service](https://help.aliyun.com/document_detail/28935.html).
 	//
 	// > This feature takes effect only in ACK Pro clusters.
 	//
@@ -464,17 +499,37 @@ type CreateClusterRequest struct {
 	//
 	// 0fe64791-55eb-4fc7-84c5-c6c7cdca****
 	EncryptionProviderKey *string `json:"encryption_provider_key,omitempty" xml:"encryption_provider_key,omitempty"`
-	// Specifies whether to public network access. The API Server is exposed through an EIP to public network access to the cluster.
+	// Specifies whether to enable public network access. An Elastic IP Address (EIP) is used to expose the API Server for public network access to the cluster.
+	//
+	// - `true`: Enables public network access.
+	//
+	// - `false`: Disables public network access. If you select this option, the cluster API Server cannot be accessed over the Internet.
+	//
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// true
 	EndpointPublicAccess *bool `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
-	// The custom API Server certificate SAN (Subject Alternative Name).
+	// The custom Subject Alternative Name (SAN) for the API Server certificate.
 	ExtraSans []*string `json:"extra_sans,omitempty" xml:"extra_sans,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- Selecting existing nodes during cluster creation is not supported. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+	//
+	// Specifies whether to mount data disks to existing instances when creating a cluster with existing instances. Valid values:
+	//
+	// - `true`: Stores containers and images on data disks. Existing data on the data disks will be lost. Back up your data in advance.
+	//
+	// - `false`: Does not store containers and images on data disks.
+	//
+	// Default value: `false`.
+	//
+	// Data disk mounting rules:
+	//
+	// - If the ECS instance has data disks attached and the file system of the last data disk is not initialized, the system automatically formats the data disk as ext4 to store /var/lib/docker and /var/lib/kubelet.
+	//
+	// - If the ECS instance has no data disks attached, no new data disks are mounted.
 	//
 	// example:
 	//
@@ -483,6 +538,8 @@ type CreateClusterRequest struct {
 	// Deprecated
 	//
 	// **[Deprecated]*	- For cluster control plane configuration, use the `image_id` parameter under `control_plane_config` instead. For node pool configuration, use the `image_id` parameter under `scaling_group` in `nodepool` instead.
+	//
+	// The custom image for nodes. The system image is used by default. When a custom image is selected, it replaces the default system image. For more information, see [Custom images](https://help.aliyun.com/document_detail/146647.html).
 	//
 	// example:
 	//
@@ -520,19 +577,32 @@ type CreateClusterRequest struct {
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Creating a cluster with existing nodes is not supported. To add existing nodes to a cluster, create a node pool first, and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+	// **[Deprecated]*	- Selecting existing nodes during cluster creation is not supported. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
 	//
-	// The list of ECS instances to use as worker nodes when creating a cluster with existing nodes.
 	//
-	// > This parameter is required when you create a cluster with existing instances.
+	// The list of ECS instances to use when creating a cluster with existing nodes. These instances are added to the cluster as worker nodes.
+	//
+	// > This field is required when you create a cluster with existing instances.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 	// The IP protocol stack of the cluster.
 	//
 	// example:
 	//
 	// Valid values:
+	//
+	// ipv4 (single stack)
+	//
+	// dual (dual stack). Default value: ipv4
 	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
 	// Specifies whether to enable automatic creation of an advanced security group. This parameter takes effect when `security_group_id` is empty.
+	//
+	// > When a basic security group is used, the total number of nodes and Terway pods in the cluster cannot exceed 2,000. Therefore, when creating a Terway network type cluster, use an advanced security group.
+	//
+	// - `true`: Creates and uses an advanced security group.
+	//
+	// - `false`: Uses a basic security group.
+	//
+	// Default value: `true`.
 	//
 	// example:
 	//
@@ -542,27 +612,41 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]*	- Selecting existing nodes during cluster creation is not supported. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
 	//
+	// Specifies whether to retain instance names when creating a cluster with existing instances.
+	//
+	// - `true`: Retains the instance names.
+	//
+	// - `false`: Does not retain the instance names. The names are replaced based on system rules.
+	//
+	// Default value: `true`.
+	//
 	// example:
 	//
 	// true
 	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For cluster control plane configurations, use the `key_pair` parameter under `control_plane_config` instead. For node pool configurations, use the `key_pair` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `key_pair` parameter under `control_plane_config` instead. For node pool configuration, use the `key_pair` parameter under `scaling_group` in `nodepool` instead.
 	//
-	// The name of the key pair. You must specify one of this parameter or `login_password`.
+	// The name of the key pair. Mutually exclusive with `login_password`.
 	//
 	// example:
 	//
 	// security-key
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// The cluster version, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
+	// The cluster version, which is consistent with the Kubernetes community baseline version. Use the latest version. If you do not specify this parameter, the latest version is used by default.
+	//
+	// You can create clusters of the three most recent versions. Call the [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) operation to query supported cluster versions.
+	//
+	// For more information about Kubernetes versions supported by ACK, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
 	// 1.32.1-aliyun.1
 	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
-	// The CLB instance ID used for API Server access. When this parameter is specified, automatic creation of the API Server CLB is skipped.
+	// The Classic Load Balancer (CLB) instance ID used for API Server access. If this parameter is specified, automatic creation of an API Server CLB instance is skipped.
+	//
+	// > Ensure that the CLB instance has no other dependencies such as listeners or backend servers. Shared and Internet-facing CLB instances are not supported.
 	//
 	// example:
 	//
@@ -570,7 +654,23 @@ type CreateClusterRequest struct {
 	LoadBalancerId *string `json:"load_balancer_id,omitempty" xml:"load_balancer_id,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- CLB is billed on a pay-by-usage basis. This parameter does not take effect.
+	// **[Deprecated]*	- CLB uses pay-by-usage billing. This parameter does not take effect.
+	//
+	// The load balancing specification. Valid values:
+	//
+	// - slb.s1.small
+	//
+	// - slb.s2.small
+	//
+	// - slb.s2.medium
+	//
+	// - slb.s3.small
+	//
+	// - slb.s3.medium
+	//
+	// - slb.s3.large
+	//
+	// Default value: `slb.s2.small`.
 	//
 	// example:
 	//
@@ -586,19 +686,27 @@ type CreateClusterRequest struct {
 	LoggingType *string `json:"logging_type,omitempty" xml:"logging_type,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For cluster control plane configurations, use the `login_password` parameter under `control_plane_config` instead. For node pool configurations, use the `login_password` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `login_password` parameter under `control_plane_config` instead. For node pool configuration, use the `login_password` parameter under `scaling_group` in `nodepool` instead.
 	//
-	// The SSH logon password. You must specify this parameter or `key_pair`. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// The SSH logon password. Mutually exclusive with `key_pair`. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// example:
 	//
 	// null
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// The cluster maintenance window.
+	// The cluster O&M window.
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- For cluster control plane configuration, use the `auto_renew` parameter under `control_plane_config` instead.
+	//
+	// Specifies whether to enable auto-renewal for master nodes. This parameter takes effect only when `master_instance_charge_type` is set to `PrePaid`. Valid values:
+	//
+	// - `true`: Enables auto-renewal.
+	//
+	// - `false`: Disables auto-renewal.
+	//
+	// Default value: `true`.
 	//
 	// example:
 	//
@@ -608,19 +716,21 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]*	- For cluster control plane configuration, use the `auto_renew_period` parameter under `control_plane_config` instead.
 	//
+	// The auto-renewal epoch for master nodes. This parameter takes effect and is required only when the subscription billing method is selected.
+	//
+	// Valid values: {1, 2, 3, 6, 12}.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	MasterAutoRenewPeriod *int64 `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the `size` parameter under `control_plane_config` instead to configure the cluster control plane.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `size` parameter under `control_plane_config` instead.
 	//
-	// The number of master nodes. Valid values:
-	//
-	// - 3
-	//
-	// - 5
+	// The number of master nodes. Valid values: `3` or `5`.
 	//
 	// Default value: `3`.
 	//
@@ -632,21 +742,29 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]*	- For cluster control plane configuration, use the `instance_charge_type` parameter under `control_plane_config` instead.
 	//
+	// The billing method for master nodes. Valid values:
+	//
+	// - `PrePaid`: Subscription.
+	//
+	// - `PostPaid`: Pay-as-you-go.
+	//
+	// Default value: `PostPaid`.
+	//
 	// example:
 	//
 	// PrePaid
 	MasterInstanceChargeType *string `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the `instance_types` parameter under `control_plane_config` for cluster control plane configuration instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `instance_types` parameter under `control_plane_config` instead.
 	//
-	// The instance types of master nodes. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance types for master nodes. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	MasterInstanceTypes []*string `json:"master_instance_types,omitempty" xml:"master_instance_types,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the `unit` parameter under `control_plane_config` for cluster control plane configuration instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `unit` parameter under `control_plane_config` instead.
 	//
-	// The subscription duration of master nodes. This parameter takes effect and is required only when `master_instance_charge_type` is set to `PrePaid`.
+	// The subscription duration for master nodes. This parameter takes effect and is required only when `master_instance_charge_type` is set to `PrePaid`.
 	//
 	// Valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	//
@@ -658,11 +776,11 @@ type CreateClusterRequest struct {
 	MasterPeriod *int64 `json:"master_period,omitempty" xml:"master_period,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the `period_unit` parameter under `control_plane_config` for cluster control plane configuration instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `period_unit` parameter under `control_plane_config` instead.
 	//
-	// The billing cycle of master nodes. This parameter is required when the billing method is set to `PrePaid`.
+	// The subscription period unit for master nodes. This parameter is required when the billing method is `PrePaid`.
 	//
-	// Valid values: `Month`. Currently, only monthly billing cycles are supported.
+	// Valid values: `Month`. Currently, only monthly billing is supported.
 	//
 	// example:
 	//
@@ -672,6 +790,16 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]*	- For cluster control plane configuration, use the `system_disk_category` parameter under `control_plane_config` instead.
 	//
+	// The system cloud disk type for master nodes. Valid values:
+	//
+	// - `cloud_efficiency`: Ultra cloud disk.
+	//
+	// - `cloud_ssd`: Standard SSD.
+	//
+	// - `cloud_essd`: Enterprise SSD (ESSD).
+	//
+	// Default value: `cloud_ssd`. The default value may vary by zone.
+	//
 	// example:
 	//
 	// cloud_ssd
@@ -680,15 +808,17 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]*	- For cluster control plane configuration, use the `system_disk_performance_level` parameter under `control_plane_config` instead.
 	//
+	// The performance level of the system cloud disk for master nodes. This parameter takes effect only for ESSD cloud disks. The performance level is related to the disk size. For more information, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
+	//
 	// example:
 	//
 	// PL1
 	MasterSystemDiskPerformanceLevel *string `json:"master_system_disk_performance_level,omitempty" xml:"master_system_disk_performance_level,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the `system_disk_size` parameter under `control_plane_config` for cluster control plane configuration instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `system_disk_size` parameter under `control_plane_config` instead.
 	//
-	// The system disk size of master nodes. Valid values: [40,500\\]. Unit: GiB.
+	// The system cloud disk size for master nodes. Valid values: [40,500\\]. Unit: GiB.
 	//
 	// Default value: `120`.
 	//
@@ -698,9 +828,9 @@ type CreateClusterRequest struct {
 	MasterSystemDiskSize *int64 `json:"master_system_disk_size,omitempty" xml:"master_system_disk_size,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the system_disk_snapshot_policy_id parameter under control_plane_config for cluster control plane configuration instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the `system_disk_snapshot_policy_id` parameter under `control_plane_config` instead.
 	//
-	// The ID of the automatic snapshot policy used by the system cloud disks of master nodes.
+	// The ID of the automatic snapshot policy for master node system cloud disks.
 	//
 	// example:
 	//
@@ -709,8 +839,12 @@ type CreateClusterRequest struct {
 	// Deprecated
 	//
 	// **[Deprecated]*	- Use the `vswitch_ids` parameter instead.
+	//
+	// The list of vSwitch IDs for master nodes. The number of vSwitches must be in the range of [1,3\\]. To ensure high availability, select three vSwitches distributed across different zones.
+	//
+	// The number of specified instance types must match the value of `master_count` and correspond one-to-one with the elements in `master_vswitch_ids`.
 	MasterVswitchIds []*string `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
-	// The custom cluster name. The name must be 1 to 63 characters in length and can contain digits, Chinese characters, letters, and hyphens (-). It cannot start with a hyphen (-).
+	// The custom cluster name. The name can contain digits, Chinese characters, letters, and hyphens (-). The name must be 1 to 63 characters in length and cannot start with a hyphen (-).
 	//
 	// This parameter is required.
 	//
@@ -726,7 +860,9 @@ type CreateClusterRequest struct {
 	//
 	// true
 	NatGateway *bool `json:"nat_gateway,omitempty" xml:"nat_gateway,omitempty"`
-	// The number of node IP addresses, determined by specifying the network CIDR block. This parameter takes effect only for Flannel network type clusters.
+	// The number of IP addresses per node, determined by specifying the network CIDR block. This parameter takes effect only for Flannel network type clusters.
+	//
+	// Default value: `26`.
 	//
 	// example:
 	//
@@ -756,7 +892,7 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]*	- Use the desired_size parameter under scaling_group in nodepool instead.
 	//
-	// The number of worker nodes. Valid values: [0, 100\\].
+	// The number of worker nodes. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -766,7 +902,7 @@ type CreateClusterRequest struct {
 	OperationPolicy *CreateClusterRequestOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For cluster control plane node configuration, use the `image_type` parameter under `control_plane_config` instead. For node pool configuration, use the `image_type` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- For cluster control plane node configuration, use the image_type parameter under control_plane_config instead. For node pool configuration, use the image_type parameter under scaling_group in nodepool instead.
 	//
 	// The operating system platform type. Valid values:
 	//
@@ -790,7 +926,7 @@ type CreateClusterRequest struct {
 	//
 	// Default value: 1.
 	//
-	// This parameter was changed on October 15, 2024. For more information, see [Notice on the behavior changes of parameters in the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
+	// This parameter was changed on October 15, 2024. For more information, see [Notice on behavior changes of the CreateCluster API parameters](https://help.aliyun.com/document_detail/2849194.html).
 	//
 	// example:
 	//
@@ -800,13 +936,11 @@ type CreateClusterRequest struct {
 	//
 	// **[Deprecated]**
 	//
-	// The billing cycle unit. This parameter is required when the billing type is set to PrePaid.
+	// The billing cycle. This parameter is required when the billing method is set to PrePaid.
 	//
-	// Valid values:
+	// Valid values: Month. Currently, only monthly billing cycles are supported.
 	//
-	// - Month: Currently, only monthly billing cycles are supported.
-	//
-	// This parameter was changed on October 15, 2024. For more information, see [Notice on behavior changes of the CreateCluster parameter in the cluster creation operation](https://help.aliyun.com/document_detail/2849194.html).
+	// This parameter was changed on October 15, 2024. For more information, see [Notice on behavior changes of the CreateCluster API parameters](https://help.aliyun.com/document_detail/2849194.html).
 	//
 	// example:
 	//
@@ -814,7 +948,7 @@ type CreateClusterRequest struct {
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the `platform` parameter under `scaling_group` in `nodepool` instead for node pool configuration.
+	// **[Deprecated]*	- For node pool configuration, use the platform parameter under scaling_group in nodepool instead.
 	//
 	// The operating system distribution. Valid values:
 	//
@@ -838,17 +972,35 @@ type CreateClusterRequest struct {
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The vSwitches that are used to assign IP addresses to pods when the Terway network plugin is selected. Each pod vSwitch corresponds to a vSwitch of a worker node. The pod vSwitch and the worker node vSwitch must be in the same zone.
+	// **[Deprecated]*	- When the Terway network plugin is selected, specify vSwitches for Pod IP address allocation. Each Pod vSwitch corresponds to a worker node vSwitch, and the zones of the Pod vSwitch and the worker node vSwitch must be the same.
 	//
-	// > The subnet mask of the pod vSwitch CIDR block must be no longer than 19 bits and no longer than 25 bits. Otherwise, the number of Pod IP addresses available in the cluster network is very limited, which affects the normal use of the cluster.
+	// > The CIDR block mask of the Pod vSwitch should not exceed 19 and must not exceed 25. Otherwise, the number of Pod IP addresses available in the cluster network is very limited, which affects normal cluster usage.
 	PodVswitchIds []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
-	// If you set `cluster_type` to `ManagedKubernetes`, which indicates an ACK managed cluster, you can further specify the cluster subtype.
+	// When `cluster_type` is set to `ManagedKubernetes` (ACK managed clusters), you can further specify the cluster subtype.
+	//
+	// - `Default`: ACK managed cluster, including ACK clusters (Pro and Basic editions).
+	//
+	// - `Edge`: ACK Edge cluster, including ACK Edge clusters (Pro and Basic editions).
+	//
+	// - `Serverless`: ACK Serverless cluster, including ACK Serverless clusters (Pro and Basic editions).
+	//
+	// - `Lingjun`: ACK Lingjun cluster, available in Pro edition.
 	//
 	// example:
 	//
 	// Default
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// The kube-proxy proxy mode.
+	// The kube-proxy mode.
+	//
+	// - `iptables`: A mature and stable kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using iptables rules. Performance is moderate and affected by cluster scale. This mode is suitable for clusters with a small number of Services.
+	//
+	// - `ipvs`: A high-performance kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using the Linux IPVS module. This mode is suitable for clusters with a large number of Services that require high load balancing performance.
+	//
+	// - `nftables`: A next-generation kube-proxy mode that implements Service discovery and load balancing based on Linux nftables. It is a modern replacement for iptables. Compared with iptables, nftables delivers better network performance, more efficient rule updates, and improved performance in large-scale Service scenarios.
+	//
+	// Only supported for clusters running version 1.35 or later. The Kubernetes community deprecated IPVS starting from version 1.35. For new clusters, use nftables for longer-term community support.
+	//
+	// Default value: `ipvs`.
 	//
 	// example:
 	//
@@ -856,11 +1008,11 @@ type CreateClusterRequest struct {
 	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configurations, use the rds_instances parameter under scaling_group in nodepool instead.
+	// **[Deprecated]*	- For node pool configuration, use the rds_instances parameter under scaling_group in nodepool instead.
 	//
-	// The list of ApsaraDB RDS instances to which you want to add whitelist entries. We recommend that you add the container pod CIDR block and node CIDR block in the ApsaraDB RDS console. If you specify RDS instances here, the configuration may fail because the instances are not in the Running state.
+	// The list of ApsaraDB RDS instances to which you want to add the cluster nodes to the whitelist. Add the container Pod CIDR block and node CIDR block to the RDS whitelist directly. Setting RDS instances may fail if the instances are not in a running state.
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// The region ID of the cluster. For details, see [Regions supported by container service](https://help.aliyun.com/document_detail/216938.html).
+	// The ID of the region where the cluster is deployed. For details, see [Regions supported by container service](https://help.aliyun.com/document_detail/216938.html).
 	//
 	// This parameter is required.
 	//
@@ -868,19 +1020,23 @@ type CreateClusterRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The resource group ID of the cluster, which is used to isolate different resources.
+	// The ID of the resource group to which the cluster belongs. Use this parameter to isolate different resources.
 	//
 	// example:
 	//
 	// rg-acfm3mkrure****
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	// The RAM Roles for Service Accounts (RRSA) feature configuration.
+	// The RRSA feature configuration.
 	RrsaConfig *CreateClusterRequestRrsaConfig `json:"rrsa_config,omitempty" xml:"rrsa_config,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// The container runtime of the cluster. Supported runtimes include containerd, sandboxed containers, and Docker.
+	// The container runtime used by the cluster. Supported runtimes include containerd, sandboxed containers, and Docker.
+	//
+	// > Kubernetes 1.24 no longer supports Docker as a built-in container runtime.
+	//
+	// For more information, see [Comparison of Docker, containerd, and sandboxed container runtimes](https://help.aliyun.com/document_detail/160313.html).
 	Runtime *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The security group ID. Specify this parameter when you use an existing security group to create a cluster. This parameter is mutually exclusive with `is_enterprise_security_group`. Cluster nodes are automatically added to this security group.
+	// The ID of an existing security group. This parameter is mutually exclusive with `is_enterprise_security_group`. Cluster nodes are automatically added to this security group.
 	//
 	// example:
 	//
@@ -888,19 +1044,31 @@ type CreateClusterRequest struct {
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For cluster control plane configuration, use the `security_hardening_os` parameter under `control_plane_config` instead. For node pool configuration, use the `security_hardening_os` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- For cluster control plane configuration, use the security_hardening_os parameter under control_plane_config instead. For node pool configuration, use the security_hardening_os parameter under scaling_group in nodepool instead.
+	//
+	// Alibaba Cloud OS security hardening. Valid values:
+	//
+	// - `true`: Enables Alibaba Cloud OS security hardening.
+	//
+	// - `false`: Does not enable Alibaba Cloud OS security hardening.
+	//
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
-	// A ServiceAccount is the access credential for communication between a pod and the cluster API server. The `service-account-issuer` is the issuer identity in the `serviceaccount token`, which is the `iss` field in the `token payload`.
+	// A ServiceAccount is the access credential used for communication between a Pod and the cluster API Server. The `service-account-issuer` is the issuer identity in the `serviceaccount token`, which is the `iss` field in the `token payload`.
+	//
+	// For more information about `ServiceAccount`, see [Deploy service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
 	//
 	// example:
 	//
 	// kubernetes.default.svc
 	ServiceAccountIssuer *string `json:"service_account_issuer,omitempty" xml:"service_account_issuer,omitempty"`
-	// The Service network CIDR block. Valid ranges: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24.
+	// The CIDR block for the Service network. Valid ranges: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or CIDR blocks used by existing Kubernetes clusters in the VPC. This value cannot be modified after the cluster is created.
+	//
+	// Default value: 172.19.0.0/20.
 	//
 	// example:
 	//
@@ -908,21 +1076,21 @@ type CreateClusterRequest struct {
 	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The type of service discovery within the cluster. This parameter is used to specify the service discovery method in `ACK Serverless` clusters.
+	// **[Deprecated]*	- The service discovery type within the cluster, used to specify the service discovery method in `ACK Serverless` clusters.
 	//
-	// - `CoreDNS`: Uses the Kubernetes-native standard service discovery component CoreDNS. A group of containers must be deployed in the cluster for DNS resolution. By default, two ECI instances with 0.25 Core and 512 MiB specifications are used.
+	// - `CoreDNS`: Uses the Kubernetes-native standard service discovery component CoreDNS. A set of containers must be deployed in the cluster for DNS resolution. By default, two ECI instances with 0.25 Core and 512 MiB specifications are used.
 	//
-	// - `PrivateZone`: Uses Alibaba Cloud PrivateZone to provide service discovery capabilities. The PrivateZone service must be enabled.
+	// - `PrivateZone`: Uses Alibaba Cloud PrivateZone to provide service discovery capabilities. The PrivateZone service must be activated.
 	//
-	// Default value: disabled.
+	// Default value: not enabled.
 	ServiceDiscoveryTypes []*string `json:"service_discovery_types,omitempty" xml:"service_discovery_types,omitempty" type:"Repeated"`
 	// Specifies whether to configure SNAT for the VPC. Valid values:
 	//
-	// - `true`: Automatically creates a NAT gateway and configures SNAT rules. Set this to `true` if nodes and applications in the cluster need to access the Internet.
+	// - `true`: Automatic creation of a NAT gateway and automatic configuration of SNAT rules. Settings this to `true` if nodes and applications in the cluster need to access the Internet.
 	//
 	// - `false`: Does not create a NAT gateway or SNAT rules. Nodes and applications in the cluster cannot access the Internet.
 	//
-	// > If this feature is not enabled during cluster creation and Internet access is required later, you can [manually enable it](https://help.aliyun.com/document_detail/178480.html).
+	// > If this is not enabled during cluster creation and Internet access is required later, you can [manually enable it](https://help.aliyun.com/document_detail/178480.html).
 	//
 	// Default value: `false`.
 	//
@@ -932,7 +1100,7 @@ type CreateClusterRequest struct {
 	SnatEntry *bool `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For cluster control plane node configuration, use the `soc_enabled` parameter under `control_plane_config` instead. For node pool configuration, use the `soc_enabled` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- For cluster control plane node configurations, use the `soc_enabled` parameter under `control_plane_config` instead. For node pool configurations, use the `soc_enabled` parameter under `scaling_group` in `nodepool` instead.
 	//
 	// MLPS 2.0 security hardening. For more information, see [China Chinese China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China
 	//
@@ -940,11 +1108,11 @@ type CreateClusterRequest struct {
 	//
 	// false
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	// Specifies whether to enable public SSH logon. This parameter is used to log on to master nodes of ACK dedicated clusters. This parameter does not take effect for managed clusters.
+	// Specifies whether to enable public network SSH logon. This parameter is used to log on to the master nodes of ACK dedicated clusters. This parameter does not take effect for managed clusters.
 	//
 	// - `true`: Enabled.
 	//
-	// - `false`: Disabled.
+	// - `false`: Not enabled.
 	//
 	// Default value: `false`.
 	//
@@ -952,21 +1120,23 @@ type CreateClusterRequest struct {
 	//
 	// true
 	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
-	// The node labels. Label rules:
+	// The node tags. Tag definition rules:
 	//
-	// - Labels are case-sensitive key-value pairs. You can add up to 20 labels.
+	// - Tags are case-sensitive key-value pairs. You can settings up to 20 tags.
 	//
-	// - Label keys must be unique and can be up to 64 characters in length. Label values can be empty and can be up to 128 characters in length. Label keys and values cannot start with "aliyun", "acs:", "https://", or "http://". For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+	// - Tag keys cannot be duplicated and can be up to 64 characters in length. Tag values can be empty and can be up to 128 characters in length. Tag keys and tag values cannot start with "aliyun", "acs:", "https://", or "http://". For details, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configuration, use the `taints` parameter under `kubernetes_config` in `nodepool` instead.
+	// **[Deprecated]*	- For node pool configuration, use the taints parameter under kubernetes_config in nodepool instead.
+	//
+	// The node taint information. Taints and tolerations work together to prevent Pods from being allocated to inappropriate nodes. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- If a cluster fails to be created, the system does not roll back the cluster by default. You must manually clean up the failed cluster.
+	// **[Deprecated]*	- When cluster creation fails, the system does not perform a rollback by default. You must manually clean up the failed cluster.
 	//
-	// The timeout period for creating a cluster. Unit: minutes.
+	// The cluster creation timeout period, in minutes.
 	//
 	// Default value: `60`.
 	//
@@ -994,17 +1164,25 @@ type CreateClusterRequest struct {
 	//
 	// IyEvdXNyL2Jpbi9iYXNoCmVjaG8gIkhlbGxvIEFD****
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	// The VPC used by the cluster. You must provide a VPC when you create a cluster.
+	// The VPC used by the cluster. You must provide a VPC when creating a cluster.
 	//
 	// example:
 	//
 	// vpc-2zeik9h3ahvv2zz95****
 	Vpcid *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
-	// The vSwitches for cluster nodes. This field is required when you create a managed cluster with zero nodes.
+	// The vSwitches where the cluster nodes reside. This parameter is required when creating a zero-node managed cluster.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configuration, use the `auto_renew` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- For node pool configuration, use the auto_renew parameter under scaling_group in nodepool instead.
+	//
+	// Specifies whether to enable auto-renewal for worker nodes. This parameter takes effect only when `worker_instance_charge_type` is set to `PrePaid`. Valid values:
+	//
+	// - `true`: Enables auto-renewal.
+	//
+	// - `false`: Does not enable auto-renewal.
+	//
+	// Default value: `true`.
 	//
 	// example:
 	//
@@ -1012,7 +1190,11 @@ type CreateClusterRequest struct {
 	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configuration, use the `auto_renew_period` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- For node pool configuration, use the auto_renew_period parameter under scaling_group in nodepool instead.
+	//
+	// The Unified Auto Renewal Cycle for worker nodes. This parameter takes effect and is required only when the subscription billing method is selected.
+	//
+	// Valid values: 1, 2, 3, 6, and 12.
 	//
 	// example:
 	//
@@ -1020,13 +1202,21 @@ type CreateClusterRequest struct {
 	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the data_disks parameter in scaling_group under nodepool instead.
+	// **[Deprecated]*	- Use the data_disks parameter under scaling_group in nodepool instead for node pool configurations.
 	//
-	// The configurations of data cloud disks for worker nodes, including the disk type and size.
+	// The combination of data cloud disk type, size, and other configurations for worker nodes.
 	WorkerDataDisks []*CreateClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configuration, use the `instance_charge_type` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- Use the instance_charge_type parameter under scaling_group in nodepool instead for node pool configurations.
+	//
+	// The billing method for worker nodes. Valid values:
+	//
+	// - `PrePaid`: subscription.
+	//
+	// - `PostPaid`: pay-as-you-go.
+	//
+	// Default value: pay-as-you-go.
 	//
 	// example:
 	//
@@ -1034,17 +1224,17 @@ type CreateClusterRequest struct {
 	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the instance_types parameter in scaling_group under nodepool instead.
+	// **[Deprecated]*	- Use the instance_types parameter under scaling_group in nodepool instead for node pool configurations.
 	//
-	// The instance types of worker nodes.
+	// The instance configurations for worker nodes.
 	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the `period` parameter in `scaling_group` under `nodepool` for node pool configuration instead.
+	// **[Deprecated]*	- Use the period parameter under scaling_group in nodepool instead for node pool configurations.
 	//
-	// The subscription duration of worker nodes. This parameter takes effect and is required only when `worker_instance_charge_type` is set to `PrePaid`.
+	// The subscription duration for worker nodes. This parameter takes effect and is required only when `worker_instance_charge_type` is set to `PrePaid`.
 	//
-	// Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	// Valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	//
 	// Default value: 1.
 	//
@@ -1054,11 +1244,11 @@ type CreateClusterRequest struct {
 	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the period_unit parameter in scaling_group under nodepool instead.
+	// **[Deprecated]*	- Use the period_unit parameter under scaling_group in nodepool instead for node pool configurations.
 	//
-	// The billing cycle of worker nodes. This parameter is required when the billing method is set to `PrePaid`.
+	// The billing period unit for worker nodes. This parameter is required when the billing method is `PrePaid`.
 	//
-	// Valid values: `Month`. Only monthly billing cycles are supported.
+	// Valid values: `Month`. Currently, only monthly billing is supported.
 	//
 	// example:
 	//
@@ -1066,7 +1256,18 @@ type CreateClusterRequest struct {
 	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configuration, use the `system_disk_category` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- Use the system_disk_category parameter under scaling_group in nodepool instead for node pool configurations.
+	//
+	// The system cloud disk type for worker nodes. For more information, see [Block storage overview](https://help.aliyun.com/document_detail/63136.html).
+	//
+	// Valid values:
+	//
+	// - `cloud_efficiency`: ultra cloud disk.
+	//
+	// - `cloud_ssd`: standard SSD.
+	//
+	//
+	// Default value: `cloud_ssd`.
 	//
 	// example:
 	//
@@ -1074,9 +1275,9 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configurations, use the `system_disk_performance_level` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- Use the system_disk_performance_level parameter under scaling_group in nodepool instead for node pool configurations.
 	//
-	// When the system cloud disk is an ESSD, you can set the performance level (PL) of the ESSD. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
+	// The performance level (PL) of the system cloud disk when the system cloud disk is an ESSD. For more information, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// Valid values:
 	//
@@ -1094,7 +1295,15 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskPerformanceLevel *string `json:"worker_system_disk_performance_level,omitempty" xml:"worker_system_disk_performance_level,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- For node pool configuration, use the `system_disk_size` parameter under `scaling_group` in `nodepool` instead.
+	// **[Deprecated]*	- Use the system_disk_size parameter under scaling_group in nodepool instead for node pool configurations.
+	//
+	// The system cloud disk size for worker nodes. Unit: GiB.
+	//
+	// Valid values: [40,500\\].
+	//
+	// The value of this parameter must be greater than or equal to max{40, ImageSize}.
+	//
+	// Default value: `120`.
 	//
 	// example:
 	//
@@ -1102,9 +1311,9 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the system_disk_snapshot_policy_id parameter in scaling_group under nodepool instead.
+	// **[Deprecated]*	- Use the system_disk_snapshot_policy_id parameter under scaling_group in nodepool instead for node pool configurations.
 	//
-	// The ID of the automatic snapshot policy used by the system cloud disk of worker nodes.
+	// The ID of the automatic snapshot policy used by the system cloud disks of worker nodes.
 	//
 	// example:
 	//
@@ -1112,25 +1321,25 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskSnapshotPolicyId *string `json:"worker_system_disk_snapshot_policy_id,omitempty" xml:"worker_system_disk_snapshot_policy_id,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Use the vswitch_ids parameter in the scaling_group section of the nodepool configuration instead.
+	// **[Deprecated]*	- Use the vswitch_ids parameter under scaling_group in nodepool instead for node pool configurations.
 	//
 	// The list of vSwitches used by cluster nodes. Each node corresponds to one value.
 	//
-	// When you create a managed cluster with zero nodes, the worker_vswitch_ids parameter is not required, but you must specify vswitch_ids.
+	// When you create a managed cluster with zero nodes, the `worker_vswitch_ids` field is not required, but you must provide `vswitch_ids`.
 	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- Use the `zone_ids` parameter instead.
 	//
-	// The zone ID of the region where the cluster resides. This parameter is specific to ACK managed clusters.
+	// The active zone ID of the region to which the cluster belongs. This parameter is specific to ACK managed clusters.
 	//
-	// When you create an ACK managed cluster, if `vpc_id` and `vswitch_ids` are not specified, you must specify `zone_id` for the cluster so that VPC network resources are automatically created in the specified zone. If `vpc_id` and `vswitch_ids` are specified, this parameter does not take effect.
+	// When you create an ACK managed cluster without specifying `vpc_id` and `vswitch_ids`, you must specify `zone_id` for the cluster to automatically create a VPC and related network resources in the specified zone. This parameter is ignored when `vpc_id` and `vswitch_ids` are specified.
 	//
 	// example:
 	//
 	// cn-beiji****
 	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
-	// The zone IDs of the cluster region. This parameter is specific to ACK managed clusters.
+	// The IDs of multiple zones in the region to which the cluster belongs. This parameter is specific to ACK managed clusters.
 	ZoneIds []*string `json:"zone_ids,omitempty" xml:"zone_ids,omitempty" type:"Repeated"`
 }
 
@@ -1176,6 +1385,10 @@ func (s *CreateClusterRequest) GetChargeType() *string {
 
 func (s *CreateClusterRequest) GetCisEnabled() *bool {
 	return s.CisEnabled
+}
+
+func (s *CreateClusterRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateClusterRequest) GetCloudMonitorFlags() *bool {
@@ -1596,6 +1809,11 @@ func (s *CreateClusterRequest) SetChargeType(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetCisEnabled(v bool) *CreateClusterRequest {
 	s.CisEnabled = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetClientToken(v string) *CreateClusterRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -2159,7 +2377,11 @@ func (s *CreateClusterRequest) Validate() error {
 }
 
 type CreateClusterRequestAuditLogConfig struct {
-	// Specifies whether to enable the cluster audit log feature.
+	// Specifies whether to enable the cluster audit log feature. Valid values:
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
 	//
 	// example:
 	//
@@ -2208,7 +2430,11 @@ func (s *CreateClusterRequestAuditLogConfig) Validate() error {
 }
 
 type CreateClusterRequestAutoMode struct {
-	// Specifies whether to enable intelligent managed mode.
+	// Specifies whether to enable intelligent managed mode. Valid values:
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
 	//
 	// example:
 	//
@@ -2238,13 +2464,11 @@ func (s *CreateClusterRequestAutoMode) Validate() error {
 }
 
 type CreateClusterRequestControlPlaneConfig struct {
-	// Specifies whether to enable auto-renewal for control plane nodes. This parameter takes effect only when the billing method is set to `PrePaid`.
+	// Specifies whether to enable auto-renewal for control plane nodes. This parameter takes effect only when the billing method is set to `PrePaid`. Valid values:
 	//
-	// Valid values:
+	// - true: Enables auto-renewal.
 	//
-	// - true: Enable auto-renewal.
-	//
-	// - false: Disable auto-renewal.
+	// - false: Disables auto-renewal.
 	//
 	// Default value: true.
 	//
@@ -2252,19 +2476,23 @@ type CreateClusterRequestControlPlaneConfig struct {
 	//
 	// true
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	// The auto-renewal duration of control plane nodes.
+	// The auto-renewal period for control plane nodes.
+	//
+	// Valid values: {1, 2, 3, 6, 12}. Unit: months.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	// The billing method of control plane nodes.
+	// The billing method for control plane nodes.
 	//
-	// - PrePaid: subscription.
+	// - `PrePaid`: subscription.
 	//
-	// - PostPaid: pay-as-you-go.
+	// - `PostPaid`: pay-as-you-go.
 	//
-	// Default value: PostPaid.
+	// Default value: `PostPaid`.
 	//
 	// example:
 	//
@@ -2272,17 +2500,21 @@ type CreateClusterRequestControlPlaneConfig struct {
 	ChargeType *string `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
 	// Specifies whether to install CloudMonitor on nodes.
 	//
+	// - true: Installs the CloudMonitor agent.
+	//
+	// - false: Does not install the CloudMonitor agent.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// The CPU management policy for the node.
-	//
-	// Valid values:
+	// The CPU management policy for nodes.
 	//
 	// - static: Allows pods with certain resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
 	//
-	// - none: The existing default CPU affinity scheme is enabled.
+	// - none: Uses the existing default CPU affinity scheme.
 	//
 	// Default value: none.
 	//
@@ -2310,15 +2542,15 @@ type CreateClusterRequestControlPlaneConfig struct {
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// The instance metadata access configuration for ECS instances.
 	InstanceMetadataOptions *InstanceMetadataOptions `json:"instance_metadata_options,omitempty" xml:"instance_metadata_options,omitempty"`
-	// The node instance types.
+	// The instance types for nodes.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// The name of the key pair. Specify either this parameter or login_password.
+	// The name of the key pair. You must set this parameter or login_password.
 	//
 	// example:
 	//
 	// ack
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// The SSH logon password. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Specify either this parameter or key_pair.
+	// The SSH logon password. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. You must set this parameter or key_pair.
 	//
 	// example:
 	//
@@ -2330,21 +2562,27 @@ type CreateClusterRequestControlPlaneConfig struct {
 	//
 	// 30000-32767
 	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// The subscription duration of control plane nodes. This parameter is valid and required only when the billing method is set to `PrePaid`.
+	// The subscription duration for control plane nodes. This parameter is required and takes effect only when the billing method is set to `PrePaid`.
+	//
+	// Valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}. Unit: months.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// The unit of the subscription duration of control plane nodes. This parameter is valid and required only when the billing method is set to `PrePaid`.
+	// The unit of the subscription duration for control plane nodes. This parameter is required and takes effect only when the billing method is set to `PrePaid`.
+	//
+	// Valid value: `Month`. Currently, only month-based billing cycles are supported.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	// **[Deprecated]*	- The runtime name of control plane nodes. Valid values:
+	// **[Deprecated]*	- The runtime name for control plane nodes. Valid values:
 	//
-	// containerd: Containerd runtime. Supported by all cluster versions.
+	// containerd: The Containerd runtime, which is supported by all cluster versions.
 	//
 	// example:
 	//
@@ -2352,11 +2590,19 @@ type CreateClusterRequestControlPlaneConfig struct {
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// Specifies whether to enable Alibaba Cloud OS security hardening.
 	//
+	// - true: Enables Alibaba Cloud OS security hardening.
+	//
+	// - false: Disables Alibaba Cloud OS security hardening.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
 	// The number of control plane nodes.
+	//
+	// Valid values: `3` or `5`.
 	//
 	// example:
 	//
@@ -2364,17 +2610,29 @@ type CreateClusterRequestControlPlaneConfig struct {
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// Specifies whether to enable MLPS security hardening.
 	//
+	// - true: Enables MLPS 2.0 security hardening.
+	//
+	// - false: Disables MLPS 2.0 security hardening.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	// Specifies whether to enable burst (performance burst) for the node system cloud disk.
+	// Specifies whether to enable burst performance for node system cloud disks.
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
+	// This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
 	//
 	// example:
 	//
 	// true
 	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	// The system cloud disk type of the node.
+	// The type of the node system cloud disk.
 	//
 	// - `cloud_efficiency`: ultra cloud disk.
 	//
@@ -2384,9 +2642,9 @@ type CreateClusterRequestControlPlaneConfig struct {
 	//
 	// - `cloud_auto`: ESSD AutoPL cloud disk.
 	//
-	// - `cloud_essd_entry`: ESSD Entry disk.
+	// - `cloud_essd_entry`: ESSD Entry cloud disk.
 	//
-	// Default value: `cloud_ssd`. The default value may vary based on the zone.
+	// Default value: `cloud_ssd`. The default value may vary by zone.
 	//
 	// example:
 	//
@@ -2394,13 +2652,15 @@ type CreateClusterRequestControlPlaneConfig struct {
 	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
 	// The performance level of the node system cloud disk. This parameter takes effect only for ESSD cloud disks.
 	//
+	// The performance level varies based on the cloud disk size. For more information, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
+	//
 	// example:
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	// The provisioned read/write IOPS of the node system cloud disk.
+	// The provisioned read/write IOPS for node system cloud disks.
 	//
-	// Valid values: 0 to min{50,000, 1000\\*capacity-baseline performance}. Baseline performance=min{1,800+50\\*capacity, 50000}.
+	// Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50000}.
 	//
 	// This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
 	//
@@ -2408,13 +2668,17 @@ type CreateClusterRequestControlPlaneConfig struct {
 	//
 	// 1000
 	SystemDiskProvisionedIops *int64 `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	// The system cloud disk size of nodes.
+	// The size of the node system cloud disk.
+	//
+	// Valid values: [40, 500]. Unit: GiB.
+	//
+	// Default value: `120`.
 	//
 	// example:
 	//
 	// 120
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	// The automatic snapshot policy for nodes.
+	// The automatic snapshot policy for node system cloud disks.
 	//
 	// example:
 	//
@@ -2665,11 +2929,9 @@ func (s *CreateClusterRequestControlPlaneConfig) Validate() error {
 }
 
 type CreateClusterRequestControlPlaneEndpointsConfig struct {
-	// The internal DNS configuration for the cluster. Applicable to ACK managed clusters. The internal domain name is used by node-side system components such as kubelet and kube-proxy to access the API Server. If the internal domain name access is not enabled, node-side system components access the API Server through the CLB IP address.
+	// The internal DNS configuration for the cluster. This parameter applies to ACK managed clusters. The internal domain name is used by node-side system components such as kubelet and kube-proxy to access the API Server. If the internal domain name access is not enabled, node-side system components access the API Server through the CLB IP address.
 	InternalDnsConfig *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig `json:"internal_dns_config,omitempty" xml:"internal_dns_config,omitempty" type:"Struct"`
-	// The cluster connection configuration. When this field is specified, the endpoint_public_access and load_balancer_id parameters do not take effect.
-	//
-	// ACK supports only automatic creation of NLB instances. To specify a CLB or NLB instance, use load_balancers_config to specify the corresponding instance ID.
+	// The cluster endpoint configuration. When this parameter is specified, the endpoint_public_access and load_balancer_id parameters do not take effect. ACK supports only automatic creation of NLB instances. To specify a CLB or NLB instance, use load_balancers_config to specify the corresponding instance ID.
 	LoadBalancersConfig []*CreateClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig `json:"load_balancers_config,omitempty" xml:"load_balancers_config,omitempty" type:"Repeated"`
 }
 
@@ -2718,7 +2980,7 @@ func (s *CreateClusterRequestControlPlaneEndpointsConfig) Validate() error {
 }
 
 type CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig struct {
-	// The VPCs in which the internal domain name record resolution takes effect.
+	// The VPCs where the internal DNS records of the cluster take effect.
 	BindVpcs []*string `json:"bind_vpcs,omitempty" xml:"bind_vpcs,omitempty" type:"Repeated"`
 }
 
@@ -2789,7 +3051,7 @@ func (s *CreateClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig) Val
 }
 
 type CreateClusterRequestOperationPolicy struct {
-	// The cluster auto-upgrade configuration.
+	// The cluster auto upgrade configuration.
 	ClusterAutoUpgrade *CreateClusterRequestOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
 }
 
@@ -2820,19 +3082,23 @@ func (s *CreateClusterRequestOperationPolicy) Validate() error {
 }
 
 type CreateClusterRequestOperationPolicyClusterAutoUpgrade struct {
-	// The frequency of automatic cluster upgrades. Valid values:
+	// The cluster auto upgrade frequency. Valid values:
 	//
-	// - patch: automatically upgrades to the latest patch version within the current minor version when available. New Kubernetes versions do not contain breaking changes.
+	// - patch: Automatically upgrades to the latest available patch version within the current minor version. The new Kubernetes version does not contain breaking changes.
 	//
-	// - stable: automatically upgrades to the latest patch version of the second-latest minor version. New Kubernetes versions may involve changes to APIs and features, but their stability has been extensively validated.
+	// - stable: Automatically upgrades to the latest patch version of the second-latest minor version. The new Kubernetes version may involve API and feature changes, but its stability has been extensively validated.
 	//
-	// - rapid: automatically upgrades to the latest patch version of the latest minor version to obtain new Kubernetes community features more quickly.
+	// - rapid: Automatically upgrades to the latest patch version of the latest minor version, allowing faster access to new features from the Kubernetes community.
 	//
 	// example:
 	//
 	// stable
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Specifies whether to enable cluster auto-upgrade.
+	// Specifies whether to enable cluster auto upgrade.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
 	//
 	// example:
 	//
@@ -2873,6 +3139,10 @@ func (s *CreateClusterRequestOperationPolicyClusterAutoUpgrade) Validate() error
 type CreateClusterRequestRrsaConfig struct {
 	// Specifies whether to enable the RRSA feature.
 	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
 	// example:
 	//
 	// true
@@ -2901,7 +3171,7 @@ func (s *CreateClusterRequestRrsaConfig) Validate() error {
 }
 
 type CreateClusterRequestWorkerDataDisks struct {
-	// The data disk type.
+	// The data cloud disk type.
 	//
 	// This parameter is required.
 	//
@@ -2921,13 +3191,13 @@ type CreateClusterRequestWorkerDataDisks struct {
 	//
 	// true
 	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// The performance level of the node data cloud disk. This parameter takes effect only for [standard SSDs](https://help.aliyun.com/document_detail/122389.html).
+	// The performance level (PL) of node data cloud disks. This parameter takes effect only for [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"performance_level,omitempty" xml:"performance_level,omitempty"`
-	// The data disk size. Valid values: 40 to 32767. Unit: GiB.
+	// The data cloud disk size. Valid values: 40 to 32767. Unit: GiB.
 	//
 	// This parameter is required.
 	//

@@ -72,23 +72,23 @@ func (s *DeleteAlertContactGroupResponse) Validate() error {
 }
 
 type DeleteAlertContactGroupResponseBody struct {
-	// Deletion status.
+	// The deletion status. Valid values:
 	//
-	// 	- true: Deletion successful.
+	// 	- true: Deleted.
 	//
-	// 	- false: Deletion failed.
+	// 	- false: Failed to delete.
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"status,omitempty" xml:"status,omitempty"`
-	// The message returned when execution fails.
+	// The message returned when the operation fails.
 	//
 	// example:
 	//
 	// Delete contact group resource failed.
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Alert contact group ID.
+	// The alert contact group ID.
 	//
 	// example:
 	//

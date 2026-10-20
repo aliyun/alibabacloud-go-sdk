@@ -18,7 +18,7 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// Filters the results by language (Chinese or English).
+	// Filters the returned results by language (Chinese or English).
 	//
 	// example:
 	//

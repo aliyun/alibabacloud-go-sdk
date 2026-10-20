@@ -72,67 +72,67 @@ func (s *DescribeUserPermissionResponse) Validate() error {
 }
 
 type DescribeUserPermissionResponseBody struct {
-	// 集群访问配置，格式为：
+	// The cluster access configuration. The format varies based on the authorization scope:
 	//
-	// - 当是集群维度授权时，格式为：`{cluster_id}`。
+	// - Cluster-level authorization: `{cluster_id}`.
 	//
-	// - 当是命名空间维度授权时，格式为：`{cluster_id}/{namespace}`。
+	// - Namespace-level authorization: `{cluster_id}/{namespace}`.
 	//
-	// - 当是所有集群授权时，值固定为：`all-clusters`。
+	// - All-cluster authorization: `all-clusters`.
 	//
 	// example:
 	//
 	// c1b542****
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
-	// 授权类型，取值：
+	// The authorization type. Valid values:
 	//
-	// - `cluster`：集群维度。
+	// - `cluster`: cluster-level.
 	//
-	// - `namespace`：命名空间维度。
+	// - `namespace`: namespace-level.
 	//
-	// - `console`：所有集群维度的授权。
+	// - `console`: all-cluster-level authorization.
 	//
 	// example:
 	//
 	// cluster
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// 自定义角色名称，当授权自定义角色时，该字段为指定的自定义集群管理角色名称。
+	// The custom role name. When a custom role is authorized, this field specifies the name of the custom cluster management role.
 	//
 	// example:
 	//
 	// terway-pod-reader
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
-	// 预置的角色类型，取值：
+	// The preset role type. Valid values:
 	//
-	// - `admin`：管理员。
+	// - `admin`: Administrator.
 	//
-	// - `ops`：运维人员。
+	// - `ops`: O&M engineer.
 	//
-	// - `dev`：开发人员。
+	// - `dev`: Developer.
 	//
-	// - `restricted`：受限用户。
+	// - `restricted`: Restricted user.
 	//
-	// - `custom`：使用自定义的集群管理角色。
+	// - `custom`: Custom cluster management role.
 	//
 	// example:
 	//
 	// admin
 	RoleType *string `json:"role_type,omitempty" xml:"role_type,omitempty"`
-	// 是否为集群创建者的授权，取值：
+	// Indicates whether the authorization belongs to the cluster creator. Valid values:
 	//
-	// - `0`：代表不是集群创建者的授权记录。
+	// - `0`: The authorization record does not belong to the cluster creator.
 	//
-	// - `1`：代表该授权记录为集群创建者的管理员权限。
+	// - `1`: The authorization record represents the administrator permissions of the cluster creator.
 	//
 	// example:
 	//
 	// 1
 	IsOwner *int64 `json:"is_owner,omitempty" xml:"is_owner,omitempty"`
-	// 是否为RAM角色授权，取值：
+	// Indicates whether the authorization is for a RAM role. Valid values:
 	//
-	// - `0`：代表当前记录不是RAM角色授权。
+	// - `0`: The record is not a RAM role authorization.
 	//
-	// - `1`：代表当前记录是RAM角色授权。
+	// - `1`: The record is a RAM role authorization.
 	//
 	// example:
 	//

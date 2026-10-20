@@ -22,22 +22,32 @@ type iListNodePoolComponentInstanceNodesShrinkRequest interface {
 }
 
 type ListNodePoolComponentInstanceNodesShrinkRequest struct {
+	// Filters nodes by the specified configuration version number of the node component.
+	//
 	// example:
 	//
 	// 1
 	ConfigRevision *string `json:"config_revision,omitempty" xml:"config_revision,omitempty"`
+	// The maximum number of records to return in a single response for pagination. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination cursor. Do not specify this parameter for the first request. For subsequent requests, specify the token returned in the previous response.
+	//
 	// example:
 	//
 	// 5c0a1c0f91c14c6****
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// Specifies the list of node names to query.
+	//
 	// example:
 	//
 	// ["cn-hangzhou.10.91.xx.xx"]
 	NodeNamesShrink *string `json:"node_names,omitempty" xml:"node_names,omitempty"`
+	// Filters nodes by the specified node component version.
+	//
 	// example:
 	//
 	// 1.28.9-aliyun.1

@@ -22,7 +22,7 @@ type iCreateKubernetesTriggerResponseBody interface {
 }
 
 type CreateKubernetesTriggerResponseBody struct {
-	// The trigger action. For example, `redeploy`: redeploy.
+	// The action of the trigger. Example: `redeploy`: Redeployment.
 	//
 	// example:
 	//
@@ -40,19 +40,17 @@ type CreateKubernetesTriggerResponseBody struct {
 	//
 	// 111
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The trigger project name.
+	// The project name of the trigger.
 	//
 	// example:
 	//
 	// default/test-app
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// The trigger type.
+	// The type of the trigger. Valid values:
 	//
-	// Valid values:
+	// - `deployment`: The trigger for stateless applications.
 	//
-	// - `deployment`: a trigger for stateless applications.
-	//
-	// - `application`: a trigger for Application Center applications.
+	// - `application`: The trigger for Hybrid Cloud Application Center applications.
 	//
 	// example:
 	//

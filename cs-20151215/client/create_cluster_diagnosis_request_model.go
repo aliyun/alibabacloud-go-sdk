@@ -16,7 +16,7 @@ type iCreateClusterDiagnosisRequest interface {
 }
 
 type CreateClusterDiagnosisRequest struct {
-	// The parameters that specify the diagnosis target. The following examples show the parameters for different diagnosis types:
+	// The parameters used to specify the diagnosis target. The following examples show the parameters for different diagnosis types:
 	//
 	// node:
 	//
@@ -54,7 +54,7 @@ type CreateClusterDiagnosisRequest struct {
 	//
 	// ```
 	//
-	// {"node":"ap-southeast-1.172.16.9.240"}
+	// {"node":"cn-hangzhou.172.16.9.240"}
 	//
 	// ```
 	//
@@ -64,7 +64,7 @@ type CreateClusterDiagnosisRequest struct {
 	//
 	// {"namespace": "kube-system", "name": "nginx-ingress-lb"}
 	//
-	// ```.
+	// ```
 	//
 	// example:
 	//

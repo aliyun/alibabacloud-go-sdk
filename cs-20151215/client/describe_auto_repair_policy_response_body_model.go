@@ -24,33 +24,33 @@ type iDescribeAutoRepairPolicyResponseBody interface {
 }
 
 type DescribeAutoRepairPolicyResponseBody struct {
-	// The auto-repair rule ID.
+	// The self-healing rule ID.
 	//
 	// example:
 	//
 	// r-xxx
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the auto-repair rule.
+	// The name of the self-healing rule.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of resources associated with the auto-repair rule.
+	// The list of resources bound to the self-healing rule.
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
-	// The sub-type of resource associated with the auto-repair rule.
+	// The subtype of the resource bound to the self-healing rule.
 	//
 	// example:
 	//
 	// ess
 	ResourceSubType *string `json:"resource_sub_type,omitempty" xml:"resource_sub_type,omitempty"`
-	// The type of resource associated with the auto-repair rule.
+	// The type of resource bound to the self-healing rule.
 	//
 	// example:
 	//
 	// nodepool
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of auto-repair sub-rules.
+	// The list of self-healing sub-rules.
 	Rules []*DescribeAutoRepairPolicyResponseBodyRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 }
 
@@ -130,7 +130,7 @@ func (s *DescribeAutoRepairPolicyResponseBody) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRules struct {
-	// The list of identified faults.
+	// The list of identified incidents.
 	Incidents []*DescribeAutoRepairPolicyResponseBodyRulesIncidents `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
 	// The repair procedure.
 	RepairProcedure []*DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure `json:"repair_procedure,omitempty" xml:"repair_procedure,omitempty" type:"Repeated"`
@@ -185,13 +185,13 @@ func (s *DescribeAutoRepairPolicyResponseBodyRules) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesIncidents struct {
-	// The fault name.
+	// The name of the incident.
 	//
 	// example:
 	//
 	// Node.FaultNeedReboot.HOST
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The fault type.
+	// The type of the incident.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) Validate() error {
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure struct {
 	// The configuration parameters of the procedure.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The configuration for manual intervention in the procedure.
+	// The configuration of the manual intervention procedure.
 	Intervention *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
 	// The name of the procedure.
 	//
@@ -287,15 +287,15 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure) Validate() er
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention struct {
-	// The label configuration for authorization approval. When you add the following label to the node, you authorize ACK to perform the action of this stage. After completing the action, ACK automatically removes the authorization inquiry and approval labels for this stage. If you do not add the following label for authorization in a timely manner, ACK will not perform the action of this stage or subsequent actions, and the node may remain in a damaged state.
+	// The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels for this stage. If you do not add the following labels promptly, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in a damaged state.
 	ApprovedLabel *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
-	// Specifies whether to enable manual approval.
+	// Indicates whether manual approval is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The label configuration for authorization inquiry. When this stage is reached, ACK adds the following label to your node and waits for your authorization to perform the action of this stage.
+	// The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the actions in this stage.
 	InquiringLabel *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
 	// The type of manual approval.
 	//
@@ -364,7 +364,7 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) V
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel struct {
-	// The key of the label.
+	// The `key` of the label.
 	//
 	// example:
 	//

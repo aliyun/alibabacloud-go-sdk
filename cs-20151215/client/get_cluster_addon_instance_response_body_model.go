@@ -28,7 +28,7 @@ type GetClusterAddonInstanceResponseBody struct {
 	//
 	// {"sls_project_name":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The logging feature status of the component.
+	// The logging status of the component.
 	Logging *GetClusterAddonInstanceResponseBodyLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
 	// The component instance name.
 	//
@@ -38,13 +38,13 @@ type GetClusterAddonInstanceResponseBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The component status. Valid values:
 	//
-	// - active: installed.
+	// - active: The component is installed.
 	//
-	// - updating: being modified.
+	// - updating: The component is being modified.
 	//
-	// - upgrading: being upgraded.
+	// - upgrading: The component is being upgraded.
 	//
-	// - deleting: being uninstalled.
+	// - deleting: The component is being uninstalled.
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type GetClusterAddonInstanceResponseBodyLogging struct {
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The Log Service project used by the logging feature of the component.
+	// The log project used by the logging feature of the component.
 	//
 	// example:
 	//
 	// k8s-log-c02b3e03be10643e8a644a843ffcb****
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The Log Service Logstore used by the logging feature of the component.
+	// The Logstore used by the logging feature of the component.
 	//
 	// example:
 	//

@@ -72,7 +72,7 @@ func (s *DescribeKubernetesVersionMetadataResponse) Validate() error {
 }
 
 type DescribeKubernetesVersionMetadataResponseBody struct {
-	// The feature capabilities of the Kubernetes version.
+	// The features of the Kubernetes version.
 	//
 	// example:
 	//
@@ -102,25 +102,25 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	MetaData map[string]interface{} `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
 	// The container runtime configurations.
 	Runtimes []*Runtime `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
-	// The Kubernetes version released by ACK. For more information about versions, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
+	// The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
 	// 1.31.1-aliyun.1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The release date of the Kubernetes version.
+	// The release time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
 	//
 	// example:
 	//
 	// 2025-01-30T00:00:00Z
 	ReleaseDate *string `json:"release_date,omitempty" xml:"release_date,omitempty"`
-	// The expiration date of the Kubernetes version.
+	// The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
 	//
 	// example:
 	//
 	// 2026-01-30T00:00:00Z
 	ExpirationDate *string `json:"expiration_date,omitempty" xml:"expiration_date,omitempty"`
-	// Indicates whether the Kubernetes version can be used to create clusters.
+	// Indicates whether the Kubernetes version can be created.
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// 3.2104
 	OsVersion *string `json:"os_version,omitempty" xml:"os_version,omitempty"`
-	// The type of the operating system distribution. We recommend that you use this field to specify the node operating system. Valid values:
+	// The operating system distribution type. Use this field to specify the operating system for nodes. Valid values:
 	//
 	// - `CentOS`
 	//
@@ -308,15 +308,15 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// Linux
 	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
-	// The image category. Partial valid values:
+	// The image category. Some valid values:
 	//
-	// - `system`: public image.
+	// - `system`: public images.
 	//
-	// - `self`: custom image.
+	// - `self`: your custom images.
 	//
-	// - `others`: shared image from other users.
+	// - `others`: public images from other users.
 	//
-	// - `marketplace`: Alibaba Cloud Marketplace image.
+	// - `marketplace`: Alibaba Cloud Marketplace images.
 	//
 	// example:
 	//

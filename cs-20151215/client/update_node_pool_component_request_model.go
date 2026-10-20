@@ -26,7 +26,7 @@ type iUpdateNodePoolComponentRequest interface {
 type UpdateNodePoolComponentRequest struct {
 	// The configuration of the node component.
 	Config *UpdateNodePoolComponentRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// Specifies whether to disable log rotation. Default value: false. Updating the baseline configuration triggers log rotation on nodes.
+	// Specifies whether to disable rolling updates. Default value: false. When set to false, updating the baseline configuration triggers a rolling update of nodes.
 	DisableRolling *bool `json:"disableRolling,omitempty" xml:"disableRolling,omitempty"`
 	// The name of the node component.
 	//
@@ -34,9 +34,9 @@ type UpdateNodePoolComponentRequest struct {
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of nodes for log rotation. By default, all nodes are included.
+	// The list of nodes to include in the rolling update. By default, all nodes are included.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
-	// The log rotation configuration.
+	// The rolling update configuration.
 	RollingPolicy *UpdateNodePoolComponentRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
 	// The version of the node component.
 	//
@@ -218,7 +218,7 @@ func (s *UpdateNodePoolComponentRequestConfigEnvs) Validate() error {
 }
 
 type UpdateNodePoolComponentRequestRollingPolicy struct {
-	// The upgrade interval between batches. Unit: seconds.
+	// The interval between batches during the upgrade, in seconds.
 	//
 	// example:
 	//
@@ -230,13 +230,13 @@ type UpdateNodePoolComponentRequestRollingPolicy struct {
 	//
 	// 0
 	MaxFailedNodes *int64 `json:"maxFailedNodes,omitempty" xml:"maxFailedNodes,omitempty"`
-	// The maximum number of parallel operations per batch. Default value: 1.
+	// The maximum number of nodes that can be updated in parallel per batch. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"maxParallelism,omitempty" xml:"maxParallelism,omitempty"`
-	// The automatic pause policy during node upgrade.
+	// The automatic pause policy during node upgrades.
 	//
 	// example:
 	//

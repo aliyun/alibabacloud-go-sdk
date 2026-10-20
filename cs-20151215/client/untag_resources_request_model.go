@@ -24,9 +24,9 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to delete all custom tags. This parameter takes effect only when `tag_keys` is empty. Valid values:
 	//
-	// - `true`: Delete all tags.
+	// - `true`: Deletes all tags.
 	//
-	// - `false`: Do not delete all tags.
+	// - `false`: Does not delete all tags.
 	//
 	// example:
 	//

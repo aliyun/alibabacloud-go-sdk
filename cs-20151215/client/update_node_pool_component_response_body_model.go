@@ -30,7 +30,7 @@ type UpdateNodePoolComponentResponseBody struct {
 	//
 	// 49511F2D-D56A-5C24-B9AE-C8491E09B***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The asynchronous task ID.
+	// The ID of the asynchronous task.
 	//
 	// example:
 	//

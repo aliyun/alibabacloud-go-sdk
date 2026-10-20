@@ -24,7 +24,7 @@ type DescribeClustersRequest struct {
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-	// Perform a fuzzy match query based on the cluster name.
+	// Specifies the cluster name for fuzzy matching.
 	//
 	// example:
 	//

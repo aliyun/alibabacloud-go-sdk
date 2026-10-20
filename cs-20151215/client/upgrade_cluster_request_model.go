@@ -24,23 +24,23 @@ type iUpgradeClusterRequest interface {
 type UpgradeClusterRequest struct {
 	// Deprecated
 	//
-	// [This parameter is deprecated] No value is required.
+	// **[Deprecated]*	- You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// null
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
-	// Specifies whether to upgrade only the control plane. Valid values:
+	// Specifies whether to upgrade only the control plane.
 	//
-	// - true: upgrades only the control plane.
+	// - true: Upgrades only the control plane.
 	//
-	// - false: upgrades both the control plane and worker nodes.
+	// - false: Upgrades both the control plane and worker nodes.
 	//
 	// example:
 	//
 	// true
 	MasterOnly *bool `json:"master_only,omitempty" xml:"master_only,omitempty"`
-	// The target version to which the cluster is upgraded.
+	// The target version for the cluster upgrade.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type UpgradeClusterRequest struct {
 	RollingPolicy *UpgradeClusterRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// [This parameter is deprecated] Use the `next_version` parameter instead.
+	// **[Deprecated]*	- Use the `next_version` parameter instead.
 	//
 	// example:
 	//

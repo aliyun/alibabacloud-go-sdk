@@ -55,7 +55,7 @@ type ListClusterChecksResponseBodyChecks struct {
 	//
 	// 1697100584236600453-ce0da5a1d627e4e9e9f96cae8ad07****-clustercheck-lboto
 	CheckId *string `json:"check_id,omitempty" xml:"check_id,omitempty"`
-	// The creation time.
+	// The creation time in ISO 8601 format, including time zone information.
 	//
 	// example:
 	//

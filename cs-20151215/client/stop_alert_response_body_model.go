@@ -24,7 +24,7 @@ type StopAlertResponseBody struct {
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	// The execution result status. Valid values:
 	//
-	// - True: The execution is successful.
+	// - True: The execution succeeded.
 	//
 	// - False: The execution failed.
 	//

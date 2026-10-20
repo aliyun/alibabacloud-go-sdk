@@ -18,7 +18,7 @@ type iDescribeNodePoolVulsResponseBody interface {
 type DescribeNodePoolVulsResponseBody struct {
 	// The list of node pool vulnerabilities.
 	VulRecords []*DescribeNodePoolVulsResponseBodyVulRecords `json:"vul_records,omitempty" xml:"vul_records,omitempty" type:"Repeated"`
-	// Indicates whether the Security Center CVE fix service has been purchased.
+	// Indicates whether the China Cloud Security CVE fix service has been purchased.
 	//
 	// - true: Purchased.
 	//

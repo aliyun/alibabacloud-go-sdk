@@ -48,11 +48,11 @@ type RemoveNodePoolNodesShrinkRequest struct {
 	InstanceIdsShrink *string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty"`
 	// Deprecated
 	//
-	// [This parameter is deprecated]
+	// **[Deprecated]**
 	//
 	// The list of nodes to remove.
 	//
-	// 	Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>.
+	// 	Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
 	NodesShrink *string `json:"nodes,omitempty" xml:"nodes,omitempty"`
 	// Specifies whether to release the nodes. Valid values:
 	//

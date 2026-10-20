@@ -92,7 +92,7 @@ type UpdateUserPermissionsRequestBody struct {
 	//
 	// false
 	IsCustom *bool `json:"is_custom,omitempty" xml:"is_custom,omitempty"`
-	// Specifies whether the authorization is for a RAM role.
+	// Indicates whether the authorization is for a RAM role.
 	//
 	// - true: The authorization is for a RAM role.
 	//
@@ -102,7 +102,7 @@ type UpdateUserPermissionsRequestBody struct {
 	//
 	// false
 	IsRamRole *bool `json:"is_ram_role,omitempty" xml:"is_ram_role,omitempty"`
-	// The namespace name. This parameter is empty by default for cluster-level authorization.
+	// The namespace name. This parameter is empty by default for cluster-scoped authorization.
 	//
 	// example:
 	//
@@ -120,12 +120,12 @@ type UpdateUserPermissionsRequestBody struct {
 	//
 	// - `restricted`: restricted user.
 	//
-	// - A custom ClusterRole name.
+	// - Custom ClusterRole name.
 	//
 	//
-	// > - `admin`, `admin-view`, `ops`: These roles cannot be granted at the **namespace*	- level.
+	// > - `admin`, `admin-view`, `ops`: These roles do not support authorization at the **namespace*	- scope.
 	//
-	// > - `admin-view`: This role cannot be granted at the **all-clusters*	- level.
+	// > - `admin-view`: This role does not support authorization at the **all-clusters*	- scope.
 	//
 	// example:
 	//
@@ -133,11 +133,11 @@ type UpdateUserPermissionsRequestBody struct {
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// - `cluster`: cluster level.
+	// - `cluster`: cluster scope.
 	//
-	// - `namespace`: namespace level.
+	// - `namespace`: namespace scope.
 	//
-	// - `all-clusters`: all-clusters level.
+	// - `all-clusters`: all-clusters scope.
 	//
 	// example:
 	//

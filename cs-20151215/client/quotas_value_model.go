@@ -20,7 +20,7 @@ type iQuotasValue interface {
 }
 
 type QuotasValue struct {
-	// The quota value. To request a quota increase beyond the current value, submit a request on the [Quota Center](https://quotas.console.aliyun.com/products/csk/quotas) page.
+	// The quota value. If you need to exceed the quota, submit a request on the [Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
 	//
 	// example:
 	//

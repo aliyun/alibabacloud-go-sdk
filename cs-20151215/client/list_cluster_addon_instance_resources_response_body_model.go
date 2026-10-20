@@ -16,7 +16,7 @@ type iListClusterAddonInstanceResourcesResponseBody interface {
 }
 
 type ListClusterAddonInstanceResourcesResponseBody struct {
-	// The Helm release instance information of the component.
+	// The Helm release instance information corresponding to the component.
 	HelmRelease *ListClusterAddonInstanceResourcesResponseBodyHelmRelease `json:"helm_release,omitempty" xml:"helm_release,omitempty" type:"Struct"`
 	// The list of Kubernetes objects contained in the component.
 	KubernetesObjects []*ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects `json:"kubernetes_objects,omitempty" xml:"kubernetes_objects,omitempty" type:"Repeated"`
@@ -67,13 +67,13 @@ func (s *ListClusterAddonInstanceResourcesResponseBody) Validate() error {
 }
 
 type ListClusterAddonInstanceResourcesResponseBodyHelmRelease struct {
-	// The Helm chart name of the component.
+	// The name of the Helm chart corresponding to the component.
 	//
 	// example:
 	//
 	// ack-node-problem-detector
 	ChartName *string `json:"chart_name,omitempty" xml:"chart_name,omitempty"`
-	// The Helm chart version of the component.
+	// The version of the Helm chart corresponding to the component.
 	//
 	// example:
 	//

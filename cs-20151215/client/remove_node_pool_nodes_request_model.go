@@ -48,11 +48,11 @@ type RemoveNodePoolNodesRequest struct {
 	InstanceIds []*string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [This parameter is deprecated]
+	// **[Deprecated]**
 	//
 	// The list of nodes to remove.
 	//
-	// 	Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>.
+	// 	Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	// Specifies whether to release the nodes. Valid values:
 	//

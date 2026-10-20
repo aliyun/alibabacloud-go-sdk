@@ -16,7 +16,7 @@ type iUpdateContactGroupForAlertResponseBody interface {
 }
 
 type UpdateContactGroupForAlertResponseBody struct {
-	// The message returned when the operation failed.
+	// The message returned when the operation fails.
 	//
 	// example:
 	//

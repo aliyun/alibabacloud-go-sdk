@@ -44,9 +44,11 @@ type DescribeAddonsRequest struct {
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	// Valid values:
+	//
 	// - `Kubernetes`: ACK dedicated cluster.
 	//
-	// - `ManagedKubernetes`: ACK managed cluster types, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
+	// - `ManagedKubernetes`: ACK ACK cluster types, including ACK ACK clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
 	//
 	// - `ExternalKubernetes`: registered cluster.
 	//

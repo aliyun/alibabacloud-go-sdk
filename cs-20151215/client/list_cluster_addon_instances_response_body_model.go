@@ -59,11 +59,11 @@ type ListClusterAddonInstancesResponseBodyAddons struct {
 	//
 	// - active: installed
 	//
-	// - updating: being modified
+	// - updating: being updated
 	//
 	// - upgrading: being upgraded
 	//
-	// - deleting: being uninstalled.
+	// - deleting: being uninstalled
 	//
 	// example:
 	//
