@@ -56,7 +56,7 @@ type iExperimentRecord interface {
 }
 
 type ExperimentRecord struct {
-  // The completion time in milliseconds.
+  // The completion timestamp in milliseconds.
   // 
   // example:
   // 
@@ -80,7 +80,7 @@ type ExperimentRecord struct {
   // 
   // dataset-123456
   DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
-  // The SLS project where the dataset is located.
+  // The Simple Log Service (SLS) project where the dataset is located.
   // 
   // example:
   // 
@@ -93,6 +93,10 @@ type ExperimentRecord struct {
   // Model invocation timeout
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
   // The ID of the associated evaluation task.
+  // 
+  // example:
+  // 
+  // eval-task-6bec93bfa03740dd86ce2bf1496e65fb
   EvaluationTaskId *string `json:"evaluationTaskId,omitempty" xml:"evaluationTaskId,omitempty"`
   // The list of evaluators.
   // 
@@ -100,7 +104,7 @@ type ExperimentRecord struct {
   // 
   // [{"name":"Builtin.agent_correctness"}]
   Evaluators []*Evaluator `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
-  // The execution time in milliseconds.
+  // The execution timestamp in milliseconds.
   // 
   // example:
   // 
@@ -113,6 +117,10 @@ type ExperimentRecord struct {
   // [{"label":"A","name":"baseline","modelName":"qwen-max"}]
   ExperimentConfig []*ExperimentConfig `json:"experimentConfig,omitempty" xml:"experimentConfig,omitempty" type:"Repeated"`
   // The ID of the associated experiment plan.
+  // 
+  // example:
+  // 
+  // exp-plan-0242d983f5d340fd8479cf2c19eb279e
   ExperimentPlanId *string `json:"experimentPlanId,omitempty" xml:"experimentPlanId,omitempty"`
   // The number of failed tasks.
   // 
@@ -151,6 +159,10 @@ type ExperimentRecord struct {
   // level > 2
   QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
   // The experiment record ID.
+  // 
+  // example:
+  // 
+  // exp-run-f6d419b0ed3d43a7b585948a55efc07b
   RecordId *string `json:"recordId,omitempty" xml:"recordId,omitempty"`
   // The experiment record name.
   // 

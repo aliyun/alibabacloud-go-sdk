@@ -2898,7 +2898,7 @@ func (client *Client) GetExperimentRun(agentSpace *string, recordId *string, req
 
 // Summary:
 //
-// 查询优化任务执行详情
+// Queries the status, errors, execution progress, type-related results, and artifact references of a specified run.
 //
 // @param request - GetOptimizeRunRequest
 //
@@ -2939,7 +2939,7 @@ func (client *Client) GetOptimizeRunWithOptions(agentSpace *string, optimizeTask
 
 // Summary:
 //
-// 查询优化任务执行详情
+// Queries the status, errors, execution progress, type-related results, and artifact references of a specified run.
 //
 // @param request - GetOptimizeRunRequest
 //
@@ -2958,7 +2958,7 @@ func (client *Client) GetOptimizeRun(agentSpace *string, optimizeTaskName *strin
 
 // Summary:
 //
-// 查询优化任务
+// Queries the type, status, configuration, and scheduling checkpoint of a specified optimization task.
 //
 // @param request - GetOptimizeTaskRequest
 //
@@ -2999,7 +2999,7 @@ func (client *Client) GetOptimizeTaskWithOptions(agentSpace *string, optimizeTas
 
 // Summary:
 //
-// 查询优化任务
+// Queries the type, status, configuration, and scheduling checkpoint of a specified optimization task.
 //
 // @param request - GetOptimizeTaskRequest
 //
@@ -3138,7 +3138,7 @@ func (client *Client) GetPipelineRun(agentSpace *string, pipelineName *string, r
 
 // Summary:
 //
-// Queries pipeline run statistics.
+// Queries the pipeline run statistics.
 //
 // @param request - GetPipelineStatsRequest
 //
@@ -3193,7 +3193,7 @@ func (client *Client) GetPipelineStatsWithOptions(agentSpace *string, pipelineNa
 
 // Summary:
 //
-// Queries pipeline run statistics.
+// Queries the pipeline run statistics.
 //
 // @param request - GetPipelineStatsRequest
 //
@@ -4794,7 +4794,7 @@ func (client *Client) SearchContext(agentSpace *string, contextStoreName *string
 
 // Summary:
 //
-// Stops a pipeline.
+// Terminates a pipeline.
 //
 // @param request - TerminatePipelineRequest
 //
@@ -4841,7 +4841,7 @@ func (client *Client) TerminatePipelineWithOptions(agentSpace *string, pipelineN
 
 // Summary:
 //
-// Stops a pipeline.
+// Terminates a pipeline.
 //
 // @param request - TerminatePipelineRequest
 //
@@ -5744,7 +5744,7 @@ func (client *Client) UpdateOptimizeRun(agentSpace *string, optimizeTaskName *st
 
 // Summary:
 //
-// 更新优化任务
+// Updates the status and type-related configurations of a specified optimization task.
 //
 // @param request - UpdateOptimizeTaskRequest
 //
@@ -5801,7 +5801,7 @@ func (client *Client) UpdateOptimizeTaskWithOptions(agentSpace *string, optimize
 
 // Summary:
 //
-// 更新优化任务
+// Updates the status and type-related configurations of a specified optimization task.
 //
 // @param request - UpdateOptimizeTaskRequest
 //

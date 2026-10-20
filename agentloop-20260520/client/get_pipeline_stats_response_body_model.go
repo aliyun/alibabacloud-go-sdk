@@ -26,10 +26,14 @@ type iGetPipelineStatsResponseBody interface {
 }
 
 type GetPipelineStatsResponseBody struct {
+	// The end time of the statistical window in UNIX seconds.
+	//
 	// example:
 	//
 	// 1735660800
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The statistical granularity.
+	//
 	// example:
 	//
 	// Hour
@@ -40,17 +44,21 @@ type GetPipelineStatsResponseBody struct {
 	//
 	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The request ID, which is used to locate the request during troubleshooting.
+	// The request ID used to locate the request during troubleshooting.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The start time of the statistical window in UNIX seconds.
+	//
 	// example:
 	//
 	// 1735574400
-	StartTime  *int64                                    `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Summary    *GetPipelineStatsResponseBodySummary      `json:"summary,omitempty" xml:"summary,omitempty" type:"Struct"`
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The aggregation summary.
+	Summary *GetPipelineStatsResponseBodySummary `json:"summary,omitempty" xml:"summary,omitempty" type:"Struct"`
+	// The time series data.
 	TimeSeries []*GetPipelineStatsResponseBodyTimeSeries `json:"timeSeries,omitempty" xml:"timeSeries,omitempty" type:"Repeated"`
 }
 
@@ -144,50 +152,74 @@ func (s *GetPipelineStatsResponseBody) Validate() error {
 }
 
 type GetPipelineStatsResponseBodySummary struct {
+	// The average execution duration in milliseconds.
+	//
 	// example:
 	//
 	// 2500
 	AvgElapsedMs *int64 `json:"avgElapsedMs,omitempty" xml:"avgElapsedMs,omitempty"`
+	// The number of cancelled runs.
+	//
 	// example:
 	//
 	// 0
 	CancelledRuns *int64 `json:"cancelledRuns,omitempty" xml:"cancelledRuns,omitempty"`
+	// The committed watermark in UNIX seconds.
+	//
 	// example:
 	//
 	// 1735660800
 	CommittedWatermark *int64 `json:"committedWatermark,omitempty" xml:"committedWatermark,omitempty"`
+	// The number of failed runs.
+	//
 	// example:
 	//
 	// 0
 	FailedRuns *int64 `json:"failedRuns,omitempty" xml:"failedRuns,omitempty"`
+	// The schedule lag in seconds, calculated as the current time minus the watermark.
+	//
 	// example:
 	//
 	// 120
 	ScheduleLagSeconds *int64 `json:"scheduleLagSeconds,omitempty" xml:"scheduleLagSeconds,omitempty"`
+	// The number of succeeded runs.
+	//
 	// example:
 	//
 	// 44
 	SucceededRuns *int64 `json:"succeededRuns,omitempty" xml:"succeededRuns,omitempty"`
+	// The success rate, ranging from 0 to 1.
+	//
 	// example:
 	//
 	// 1.0
 	SuccessRate *float64 `json:"successRate,omitempty" xml:"successRate,omitempty"`
+	// The total number of output bytes.
+	//
 	// example:
 	//
 	// 3221225472
 	TotalOutputBytes *int64 `json:"totalOutputBytes,omitempty" xml:"totalOutputBytes,omitempty"`
+	// The total number of output rows.
+	//
 	// example:
 	//
 	// 1200000
 	TotalOutputRows *int64 `json:"totalOutputRows,omitempty" xml:"totalOutputRows,omitempty"`
+	// The total number of processed bytes.
+	//
 	// example:
 	//
 	// 5368709120
 	TotalProcessedBytes *int64 `json:"totalProcessedBytes,omitempty" xml:"totalProcessedBytes,omitempty"`
+	// The total number of processed rows.
+	//
 	// example:
 	//
 	// 1500000
 	TotalProcessedRows *int64 `json:"totalProcessedRows,omitempty" xml:"totalProcessedRows,omitempty"`
+	// The total number of runs in the window.
+	//
 	// example:
 	//
 	// 44
@@ -315,34 +347,50 @@ func (s *GetPipelineStatsResponseBodySummary) Validate() error {
 }
 
 type GetPipelineStatsResponseBodyTimeSeries struct {
+	// The average execution duration in milliseconds.
+	//
 	// example:
 	//
 	// 2500
 	AvgElapsedMs *int64 `json:"avgElapsedMs,omitempty" xml:"avgElapsedMs,omitempty"`
+	// The number of output bytes.
+	//
 	// example:
 	//
 	// 322122547
 	OutputBytes *int64 `json:"outputBytes,omitempty" xml:"outputBytes,omitempty"`
+	// The number of output rows.
+	//
 	// example:
 	//
 	// 80000
 	OutputRows *int64 `json:"outputRows,omitempty" xml:"outputRows,omitempty"`
+	// The number of processed bytes.
+	//
 	// example:
 	//
 	// 536870912
 	ProcessedBytes *int64 `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
+	// The number of processed rows.
+	//
 	// example:
 	//
 	// 100000
 	ProcessedRows *int64 `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
+	// The number of runs.
+	//
 	// example:
 	//
 	// 5
 	Runs *int64 `json:"runs,omitempty" xml:"runs,omitempty"`
+	// The number of succeeded runs.
+	//
 	// example:
 	//
 	// 5
 	SucceededRuns *int64 `json:"succeededRuns,omitempty" xml:"succeededRuns,omitempty"`
+	// The start timestamp of the time bucket in UNIX seconds.
+	//
 	// example:
 	//
 	// 1735574400

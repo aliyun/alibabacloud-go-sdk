@@ -20,12 +20,13 @@ type iListDatasetsShrinkRequest interface {
 }
 
 type ListDatasetsShrinkRequest struct {
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// product_faq_dataset
-	DatasetName  *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// Filters datasets by labels.
 	LabelsShrink *string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The maximum number of results to return.
 	//
@@ -33,7 +34,7 @@ type ListDatasetsShrinkRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. You do not need to set this parameter for the first request. For subsequent requests, set this parameter to the nextToken value returned in the previous response.
+	// The next token. You do not need to set this parameter for the first request. For subsequent requests, pass the nextToken value returned in the previous response.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListContextStoreAPIKeysResponseBody interface {
 }
 
 type ListContextStoreAPIKeysResponseBody struct {
-	// The maximum number of entries per page that was specified in the request. This value is echoed back.
+	// The maximum number of results per page specified in the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListContextStoreAPIKeysResponseBody struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID, which is used to locate the request for troubleshooting.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListContextStoreAPIKeysResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The list of API keys.
 	Results []*ListContextStoreAPIKeysResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// The total number of API keys that match the query conditions.
+	// The total number of API keys that meet the query conditions.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListContextStoreAPIKeysResponseBodyResults struct {
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The full value of the API key. The plaintext value is returned only when the API key is created. In list scenarios, the value is masked based on business rules.
+	// The full value of the API key. The plaintext value is returned only when the API key is created. In list scenarios, the value is masked based on business conventions.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListContextStoreAPIKeysResponseBodyResults struct {
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
-	// The time when the API key was created, in ISO 8601 UTC format.
+	// The time when the API key was created. The time is in the ISO 8601 standard in the UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//

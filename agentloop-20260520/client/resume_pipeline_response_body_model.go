@@ -24,7 +24,7 @@ type iResumePipelineResponseBody interface {
 }
 
 type ResumePipelineResponseBody struct {
-	// The name of the AgentSpace where the pipeline is located.
+	// The name of the AgentSpace.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ResumePipelineResponseBody struct {
 	//
 	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID used to locate the request during troubleshooting.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The scheduling status. The value is fixed to Active.
+	// The scheduling status, which is fixed to Active.
 	//
 	// example:
 	//

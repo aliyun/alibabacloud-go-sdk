@@ -14,6 +14,8 @@ type iTerminatePipelineRequest interface {
 }
 
 type TerminatePipelineRequest struct {
+	// The reason for termination.
+	//
 	// example:
 	//
 	// project deprecated

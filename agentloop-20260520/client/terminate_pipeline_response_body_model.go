@@ -24,28 +24,40 @@ type iTerminatePipelineResponseBody interface {
 }
 
 type TerminatePipelineResponseBody struct {
+	// The name of the AgentSpace where the pipeline is located.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpaceName *string `json:"agentSpaceName,omitempty" xml:"agentSpaceName,omitempty"`
+	// The name of the pipeline.
+	//
 	// example:
 	//
 	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The request ID, which is used to locate the request during troubleshooting.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The scheduling status. The value is fixed to Terminated, which is an irreversible desired state.
+	//
 	// example:
 	//
 	// Terminated
 	ScheduleStatus *string `json:"scheduleStatus,omitempty" xml:"scheduleStatus,omitempty"`
+	// The termination time in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00.000Z
 	TerminateTime *string `json:"terminateTime,omitempty" xml:"terminateTime,omitempty"`
+	// The reason for termination.
+	//
 	// example:
 	//
 	// project deprecated

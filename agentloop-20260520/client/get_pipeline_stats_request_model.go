@@ -18,14 +18,20 @@ type iGetPipelineStatsRequest interface {
 }
 
 type GetPipelineStatsRequest struct {
+	// The end time of the statistical window in UNIX seconds. Default value: now.
+	//
 	// example:
 	//
 	// 1735660800
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The statistical granularity. Valid values: Hour, Day, Week, and Month. Default value: automatically inferred.
+	//
 	// example:
 	//
 	// Hour
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// The start time of the statistical window in UNIX seconds. Default value: now - 86400.
+	//
 	// example:
 	//
 	// 1735574400

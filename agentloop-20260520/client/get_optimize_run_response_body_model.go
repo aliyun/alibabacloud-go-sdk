@@ -50,72 +50,108 @@ type iGetOptimizeRunResponseBody interface {
 }
 
 type GetOptimizeRunResponseBody struct {
+	// The number of executed attempts.
+	//
 	// example:
 	//
 	// 1
 	AttemptCount *int32 `json:"attemptCount,omitempty" xml:"attemptCount,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-08-12T10:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The current execution stage.
+	//
 	// example:
 	//
 	// attribution
 	CurrentStage *string `json:"currentStage,omitempty" xml:"currentStage,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// InternalError
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The optimize run failed.
-	ErrorMessage *string                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Extra        map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The type-related information and immutable result references. For efficiency analysis, frozen outputBindings and tokenPublication release receipts are returned.
+	Extra map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	// The completion time.
+	//
 	// example:
 	//
 	// 2026-08-12T10:01:00Z
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	// The maximum number of attempts.
+	//
 	// example:
 	//
 	// 3
 	MaxAttempts *int32 `json:"maxAttempts,omitempty" xml:"maxAttempts,omitempty"`
+	// The ID of the execution instance.
+	//
 	// example:
 	//
 	// or-20260812-0001
 	OptimizeRunId *string `json:"optimizeRunId,omitempty" xml:"optimizeRunId,omitempty"`
+	// The name of the optimization task.
+	//
 	// example:
 	//
 	// efficiency-analysis
-	OptimizeTaskName *string                `json:"optimizeTaskName,omitempty" xml:"optimizeTaskName,omitempty"`
-	Progress         map[string]interface{} `json:"progress,omitempty" xml:"progress,omitempty"`
+	OptimizeTaskName *string `json:"optimizeTaskName,omitempty" xml:"optimizeTaskName,omitempty"`
+	// The current execution progress. The fields are defined by the task type.
+	Progress map[string]interface{} `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The initial start time.
+	//
 	// example:
 	//
 	// 2026-08-12T10:00:01Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The execution status.
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The number of analysis trajectories.
+	//
 	// example:
 	//
 	// 100
 	TrajectoryCount *int64 `json:"trajectoryCount,omitempty" xml:"trajectoryCount,omitempty"`
+	// The trigger type.
+	//
 	// example:
 	//
 	// Scheduled
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// The task type snapshot.
+	//
 	// example:
 	//
 	// EfficiencyAnalysis
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The end time of the analysis window, in UNIX seconds.
+	//
 	// example:
 	//
 	// 1786432690000
 	WindowEndTime *int64 `json:"windowEndTime,omitempty" xml:"windowEndTime,omitempty"`
+	// The start time of the analysis window, in UNIX seconds.
+	//
 	// example:
 	//
 	// 1786432688000

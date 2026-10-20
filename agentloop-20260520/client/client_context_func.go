@@ -2091,7 +2091,7 @@ func (client *Client) GetExperimentRunWithContext(ctx context.Context, agentSpac
 
 // Summary:
 //
-// 查询优化任务执行详情
+// Queries the status, errors, execution progress, type-related results, and artifact references of a specified run.
 //
 // @param request - GetOptimizeRunRequest
 //
@@ -2132,7 +2132,7 @@ func (client *Client) GetOptimizeRunWithContext(ctx context.Context, agentSpace 
 
 // Summary:
 //
-// 查询优化任务
+// Queries the type, status, configuration, and scheduling checkpoint of a specified optimization task.
 //
 // @param request - GetOptimizeTaskRequest
 //
@@ -2255,7 +2255,7 @@ func (client *Client) GetPipelineRunWithContext(ctx context.Context, agentSpace 
 
 // Summary:
 //
-// Queries pipeline run statistics.
+// Queries the pipeline run statistics.
 //
 // @param request - GetPipelineStatsRequest
 //
@@ -3505,7 +3505,7 @@ func (client *Client) SearchContextWithContext(ctx context.Context, agentSpace *
 
 // Summary:
 //
-// Stops a pipeline.
+// Terminates a pipeline.
 //
 // @param request - TerminatePipelineRequest
 //
@@ -4238,7 +4238,7 @@ func (client *Client) UpdateOptimizeRunWithContext(ctx context.Context, agentSpa
 
 // Summary:
 //
-// 更新优化任务
+// Updates the status and type-related configurations of a specified optimization task.
 //
 // @param request - UpdateOptimizeTaskRequest
 //

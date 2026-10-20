@@ -32,39 +32,58 @@ type iGetOptimizeTaskResponseBody interface {
 }
 
 type GetOptimizeTaskResponseBody struct {
+	// The scheduling checkpoint, which stores states such as the general scheduling watermark.
 	Checkpoint map[string]interface{} `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
+	// The type-specific configuration. Optional prompts for ExperienceMining or SkillOptimize support only inline Markdown. The body is saved to inputs.prompt.content, which must be a non-empty UTF-8 string of up to 16 KiB.
+	//
 	// example:
 	//
 	// {"ioVersion":2,"inputs":{"experienceLibrary":{"type":"dataset","dataset":"experiences"},"trajectory":{"type":"sls","project":"my-project","logstore":"agent-trajectory","format":"atif"},"prompt":{"type":"inline","format":"markdown","content":"# Guidance\\\\nExtract evidence-backed tool contracts."}},"outputs":{"changePlan":{"type":"dataset","dataset":"experience-plans"}},"operators":["tool_contract"],"application":{"mode":"manual"}}
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-08-12T10:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The next scheduling trigger time.
+	//
 	// example:
 	//
 	// 2026-08-13T16:00:00Z
 	NextTriggerTime *string `json:"nextTriggerTime,omitempty" xml:"nextTriggerTime,omitempty"`
+	// The optimization task name.
+	//
 	// example:
 	//
 	// efficiency-analysis
 	OptimizeTaskName *string `json:"optimizeTaskName,omitempty" xml:"optimizeTaskName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The task status. Valid values: Enabled, Disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The optimization task type.
+	//
 	// example:
 	//
 	// EfficiencyAnalysis
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2026-08-12T10:00:00Z

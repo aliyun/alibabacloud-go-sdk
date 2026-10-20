@@ -18,7 +18,7 @@ type iCreateContextStoreAPIKeyResponseBody interface {
 }
 
 type CreateContextStoreAPIKeyResponseBody struct {
-	// The complete API key value.
+	// The full value of the API key.
 	//
 	// example:
 	//

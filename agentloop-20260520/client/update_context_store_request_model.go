@@ -24,13 +24,13 @@ type iUpdateContextStoreRequest interface {
 }
 
 type UpdateContextStoreRequest struct {
-	// The description of the policy change. A new policy version is created when policy fields in the configuration are modified.
+	// The description of the policy change. A new policy version is written when policy fields in the configuration change.
 	//
 	// example:
 	//
 	// Relax similarity threshold
 	ChangeNote *string `json:"changeNote,omitempty" xml:"changeNote,omitempty"`
-	// The context library configuration. If provided, it fully overwrites the existing configuration. If omitted, the original configuration is retained.
+	// The context library configuration. If specified, the entire configuration is overwritten. If not specified, the original configuration is retained.
 	Config *UpdateContextStoreRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// The context library type. This field is typically immutable after creation and is provided only for exception correction.
 	//
@@ -44,7 +44,7 @@ type UpdateContextStoreRequest struct {
 	//
 	// My context library
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The running status. For the memory type, valid values are Active (running) and Paused (data source consumption and extraction paused). For the experience type, it indicates the mining status of the experience library. The specific valid values and combination constraints are defined by the server.
+	// The running status. Valid values: Active and Paused. For the memory type, pausing stops data source reading and extraction. For the experience Dataset follow type, pausing retains submitted and in-flight checkpoints, and resuming continues processing new records without skipping history from the current time. If you update only the status, you do not need to pass back the source.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type UpdateContextStoreRequestConfig struct {
 	Audit *UpdateContextStoreRequestConfigAudit `json:"audit,omitempty" xml:"audit,omitempty" type:"Struct"`
 	// The extraction policy for the memory type.
 	ExtractionPolicy *UpdateContextStoreRequestConfigExtractionPolicy `json:"extractionPolicy,omitempty" xml:"extractionPolicy,omitempty" type:"Struct"`
-	// The metadata field mapping. The key is the business field, and the value is the storage field.
+	// The metadata field mapping. The key is the business field and the value is the storage field.
 	//
 	// example:
 	//
@@ -240,13 +240,13 @@ func (s *UpdateContextStoreRequestConfig) Validate() error {
 }
 
 type UpdateContextStoreRequestConfigAudit struct {
-	// Specifies whether to write item events for dropped recall candidates. Default value: false.
+	// Specifies whether to write item events for dropped candidates during retrieval. Default value: false.
 	//
 	// example:
 	//
 	// false
 	DroppedCandidates *bool `json:"droppedCandidates,omitempty" xml:"droppedCandidates,omitempty"`
-	// The recording mode for recall queries. Valid values: raw (plaintext) and hash (HMAC only). Default value: raw.
+	// The recording mode for retrieval queries. Valid values: raw (plaintext) and hash (HMAC only). Default value: raw.
 	//
 	// example:
 	//
@@ -316,7 +316,7 @@ type UpdateContextStoreRequestConfigExtractionPolicy struct {
 	//
 	// example:
 	//
-	// ["Password","ID number"]
+	// ["Password", "ID number"]
 	ExcludeRules []*string `json:"excludeRules,omitempty" xml:"excludeRules,omitempty" type:"Repeated"`
 	// The extraction model configuration.
 	Model *UpdateContextStoreRequestConfigExtractionPolicyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
@@ -421,7 +421,7 @@ func (s *UpdateContextStoreRequestConfigExtractionPolicyModel) Validate() error 
 }
 
 type UpdateContextStoreRequestConfigScopePolicy struct {
-	// The list of scope fields where at least one must be non-empty. Valid element values: userId, agentId, appId, and runId.
+	// The list of scope fields where at least one must be non-empty. Valid values for elements: userId, agentId, appId, and runId.
 	//
 	// example:
 	//
@@ -451,7 +451,7 @@ func (s *UpdateContextStoreRequestConfigScopePolicy) Validate() error {
 }
 
 type UpdateContextStoreRequestConfigSource struct {
-	// The AgentSpace where the trace data source is located. Cross-AgentSpace is not supported in the current phase. If provided, it must be equal to the path AgentSpace. Otherwise, a 400 parameter error is returned. The AgentSpace cannot be changed after creation.
+	// The AgentSpace where the trace data source is located. Cross-AgentSpace is not supported in the current phase. If specified, it must be equal to the path AgentSpace; otherwise, a 400 parameter error is returned. The AgentSpace cannot be changed after creation.
 	//
 	// example:
 	//
@@ -459,7 +459,7 @@ type UpdateContextStoreRequestConfigSource struct {
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
 	// The updatable items for the Dataset data source. The datasetName cannot be changed after creation.
 	Dataset *UpdateContextStoreRequestConfigSourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The start time for data backfill, in ISO 8601 UTC format.
+	// The start time for data backfill in ISO 8601 UTC format.
 	//
 	// example:
 	//
@@ -528,7 +528,7 @@ func (s *UpdateContextStoreRequestConfigSource) Validate() error {
 }
 
 type UpdateContextStoreRequestConfigSourceDataset struct {
-	// The list of custom field declarations. If provided, it fully overwrites the existing declarations.
+	// The list of custom field declarations. If specified, the entire list is overwritten.
 	CustomFields []*UpdateContextStoreRequestConfigSourceDatasetCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
 	// The row filter conditions.
 	Filter *UpdateContextStoreRequestConfigSourceDatasetFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
@@ -600,7 +600,7 @@ type UpdateContextStoreRequestConfigSourceDatasetCustomFields struct {
 	//
 	// Customer tier
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether the field is a sensitive field.
+	// Specifies whether the field is sensitive.
 	//
 	// example:
 	//
@@ -612,7 +612,7 @@ type UpdateContextStoreRequestConfigSourceDatasetCustomFields struct {
 	//
 	// customerTier
 	SourceField *string `json:"sourceField,omitempty" xml:"sourceField,omitempty"`
-	// The target write path, such as metadata.customerTier.
+	// The target path for writing, such as metadata.customerTier.
 	//
 	// example:
 	//
@@ -714,7 +714,7 @@ func (s *UpdateContextStoreRequestConfigSourceDatasetFilter) Validate() error {
 }
 
 type UpdateContextStoreRequestConfigSourceTrajectory struct {
-	// The trajectory filter conditions. Conditions are combined with AND, while items within a list are combined with OR.
+	// The trajectory filter conditions. Conditions are combined with AND, and elements within a list are combined with OR.
 	Filter *UpdateContextStoreRequestConfigSourceTrajectoryFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
 	// The name of the trajectory Logstore. Default value: agent-trajectory. This parameter cannot be modified after creation.
 	//
@@ -728,7 +728,7 @@ type UpdateContextStoreRequestConfigSourceTrajectory struct {
 	//
 	// 300
 	PollIntervalSeconds *int32 `json:"pollIntervalSeconds,omitempty" xml:"pollIntervalSeconds,omitempty"`
-	// The scope field mapping. The value must be a JSONPath expression. Only the $.a.b and $.a[0] formats are supported.
+	// The scope field mapping. The value is a JSONPath expression. Only the $.a.b and $.a[0] formats are supported.
 	ScopeMapping *UpdateContextStoreRequestConfigSourceTrajectoryScopeMapping `json:"scopeMapping,omitempty" xml:"scopeMapping,omitempty" type:"Struct"`
 }
 
@@ -803,19 +803,19 @@ type UpdateContextStoreRequestConfigSourceTrajectoryFilter struct {
 	//
 	// false
 	ExcludeDegraded *bool `json:"excludeDegraded,omitempty" xml:"excludeDegraded,omitempty"`
-	// The minimum number of steps, which must be greater than or equal to 0.
+	// The minimum number of steps. The value must be greater than or equal to 0.
 	//
 	// example:
 	//
 	// 2
 	MinStepCount *int32 `json:"minStepCount,omitempty" xml:"minStepCount,omitempty"`
-	// The native SLS query statement. This statement is combined with the preceding conditions by using the AND operator.
+	// The native Simple Log Service (SLS) query statement, which is ANDed with the preceding conditions.
 	//
 	// example:
 	//
 	// tool_names:"search_order"
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The list of service names. A single trailing asterisk (*) is supported. Specifying an explicitly empty list returns a 400 error.
+	// The list of service names. A single trailing asterisk (*) is supported. An explicitly empty list returns a 400 error.
 	//
 	// example:
 	//
@@ -881,25 +881,25 @@ func (s *UpdateContextStoreRequestConfigSourceTrajectoryFilter) Validate() error
 }
 
 type UpdateContextStoreRequestConfigSourceTrajectoryScopeMapping struct {
-	// The JSONPath expression for the agentId field. Default value: $.agent_name.
+	// The JSONPath expression for agentId. Default value: $.agent_name.
 	//
 	// example:
 	//
 	// $.agent_name
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The JSONPath expression for the appId field. Default value: $.service_names[0].
+	// The JSONPath expression for appId. Default value: $.service_names[0].
 	//
 	// example:
 	//
 	// $.service_names[0]
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The JSONPath expression for the runId field. Default value: $.trajectory_id.
+	// The JSONPath expression for runId. Default value: $.trajectory_id.
 	//
 	// example:
 	//
 	// $.trajectory_id
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The JSONPath expression for the userId field. By default, this field is not mapped.
+	// The JSONPath expression for userId. By default, this field is not mapped.
 	//
 	// example:
 	//
@@ -956,19 +956,19 @@ func (s *UpdateContextStoreRequestConfigSourceTrajectoryScopeMapping) Validate()
 }
 
 type UpdateContextStoreRequestConfigStoragePolicy struct {
-	// The allowed storage actions. By default, all actions are allowed: ADD, UPDATE, MERGE, and DELETE.
+	// The allowed storage actions. Default value: all actions, including ADD, UPDATE, MERGE, and DELETE.
 	//
 	// example:
 	//
 	// ["ADD","UPDATE","MERGE","DELETE"]
 	AllowedActions []*string `json:"allowedActions,omitempty" xml:"allowedActions,omitempty" type:"Repeated"`
-	// Specifies whether to deduplicate events in event mode. Default value: true.
+	// Specifies whether to enable deduplication in event mode. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Dedupe *bool `json:"dedupe,omitempty" xml:"dedupe,omitempty"`
-	// Specifies whether to enable human edit protection. Default value: true. When this feature is enabled, automatic extraction does not overwrite manually modified memories.
+	// Specifies whether to enable manual edit protection. Default value: true. When enabled, automatic extraction does not overwrite manually modified memories.
 	//
 	// example:
 	//
@@ -980,7 +980,7 @@ type UpdateContextStoreRequestConfigStoragePolicy struct {
 	//
 	// semantic
 	MergeKey *string `json:"mergeKey,omitempty" xml:"mergeKey,omitempty"`
-	// The storage mode. Valid values: event (append events) and upsert (merge and update). Default value: upsert.
+	// The storage mode. Valid values: event (event append) and upsert (merge update). Default value: upsert.
 	//
 	// example:
 	//
@@ -992,7 +992,7 @@ type UpdateContextStoreRequestConfigStoragePolicy struct {
 	//
 	// 0.4
 	SimilarityThreshold *float64 `json:"similarityThreshold,omitempty" xml:"similarityThreshold,omitempty"`
-	// The number of days before the memory expires. A value of 0 indicates that the memory never expires.
+	// The number of days before a memory expires. A value of 0 indicates that the memory never expires.
 	//
 	// example:
 	//

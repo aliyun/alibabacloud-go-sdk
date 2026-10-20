@@ -40,19 +40,19 @@ type GetContextStoreResponseBody struct {
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
 	// The context library configuration.
 	Config *GetContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The name of the context store.
+	// The context store name.
 	//
 	// example:
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
-	// The type of the context store, such as experience (experience store) or memory (memory store).
+	// The context store type, such as experience for experience store and memory for memory store.
 	//
 	// example:
 	//
 	// experience
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	// The time when the context store was created, in ISO 8601 UTC format.
+	// The context store creation time in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -60,7 +60,7 @@ type GetContextStoreResponseBody struct {
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the context store.
+	// The context store description.
 	//
 	// example:
 	//
@@ -72,19 +72,19 @@ type GetContextStoreResponseBody struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The request ID, which is used to locate the request when troubleshooting.
+	// The request ID used to locate the request during troubleshooting.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The status of the context store. Valid values: ACTIVE, INITIALIZING, and FAILED.
+	// The context store status. Valid values: ACTIVE, INITIALIZING, and FAILED.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the context store was last updated, in ISO 8601 UTC format.
+	// The last update time of the context store in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -208,7 +208,7 @@ type GetContextStoreResponseBodyConfig struct {
 	ExtractionPolicy *GetContextStoreResponseBodyConfigExtractionPolicy `json:"extractionPolicy,omitempty" xml:"extractionPolicy,omitempty" type:"Struct"`
 	// The system-assigned coordinates of the event Logstore for the memory type, located in the Simple Log Service (SLS) project bound to the AgentSpace.
 	InnerSource *GetContextStoreResponseBodyConfigInnerSource `json:"innerSource,omitempty" xml:"innerSource,omitempty" type:"Struct"`
-	// The metadata field mapping. The key is the business field and the value is the storage field.
+	// The metadata field mapping, where the key is the business field and the value is the storage field.
 	//
 	// example:
 	//
@@ -220,13 +220,19 @@ type GetContextStoreResponseBodyConfig struct {
 	//
 	// 1d
 	MiningInterval *string `json:"miningInterval,omitempty" xml:"miningInterval,omitempty"`
+	// The name of the internal running task associated with the server. Continuous libraries use this for read-only viewing of consumption records, while manual libraries can run limited mining. This is not inferred by the client and cannot replace the ingestion and retrieval criteria of the native experience library.
+	//
+	// example:
+	//
+	// experience-review-library
+	MiningTaskName *string `json:"miningTaskName,omitempty" xml:"miningTaskName,omitempty"`
 	// The coordinates of observability resources for the memory type.
 	Observability *GetContextStoreResponseBodyConfigObservability `json:"observability,omitempty" xml:"observability,omitempty" type:"Struct"`
 	// The location of the memory output dataset for the memory type.
 	OutputDataset *GetContextStoreResponseBodyConfigOutputDataset `json:"outputDataset,omitempty" xml:"outputDataset,omitempty" type:"Struct"`
 	// The scope constraint policy.
 	ScopePolicy *GetContextStoreResponseBodyConfigScopePolicy `json:"scopePolicy,omitempty" xml:"scopePolicy,omitempty" type:"Struct"`
-	// The list of service names, used in conjunction with source.agentSpace to locate the trace data source. This parameter cannot be modified in the current phase.
+	// The list of service names, which are used together with source.agentSpace to locate the trace data source. This parameter cannot be modified in the current phase.
 	//
 	// example:
 	//
@@ -234,11 +240,11 @@ type GetContextStoreResponseBodyConfig struct {
 	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
 	// The datasource config provided by the user, which serves only as the root identity for the data source.
 	Source *GetContextStoreResponseBodyConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
-	// The running status of the data source for the memory type.
+	// The data source running status for memory type and experience Dataset follow mode. The experience store submits a checkpoint only after successful publishing and automatic application. Pausing and restarting retain the checkpoint.
 	SourceStatus *GetContextStoreResponseBodyConfigSourceStatus `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty" type:"Struct"`
 	// The storage policy for the memory type.
 	StoragePolicy *GetContextStoreResponseBodyConfigStoragePolicy `json:"storagePolicy,omitempty" xml:"storagePolicy,omitempty" type:"Struct"`
-	// The version number of the currently effective strategy for the memory type.
+	// The current effective strategy version number for the memory type.
 	//
 	// example:
 	//
@@ -272,6 +278,10 @@ func (s *GetContextStoreResponseBodyConfig) GetMetadataField() map[string]*strin
 
 func (s *GetContextStoreResponseBodyConfig) GetMiningInterval() *string {
 	return s.MiningInterval
+}
+
+func (s *GetContextStoreResponseBodyConfig) GetMiningTaskName() *string {
+	return s.MiningTaskName
 }
 
 func (s *GetContextStoreResponseBodyConfig) GetObservability() *GetContextStoreResponseBodyConfigObservability {
@@ -328,6 +338,11 @@ func (s *GetContextStoreResponseBodyConfig) SetMetadataField(v map[string]*strin
 
 func (s *GetContextStoreResponseBodyConfig) SetMiningInterval(v string) *GetContextStoreResponseBodyConfig {
 	s.MiningInterval = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfig) SetMiningTaskName(v string) *GetContextStoreResponseBodyConfig {
+	s.MiningTaskName = &v
 	return s
 }
 
@@ -421,13 +436,13 @@ func (s *GetContextStoreResponseBodyConfig) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigAudit struct {
-	// Specifies whether to write item events for dropped candidates during recall. Default value: false.
+	// Specifies whether to write item events for candidates dropped during retrieval. Default value: false.
 	//
 	// example:
 	//
 	// false
 	DroppedCandidates *bool `json:"droppedCandidates,omitempty" xml:"droppedCandidates,omitempty"`
-	// The recording mode for recall queries. Valid values: raw (plaintext) and hash (HMAC only). Default value: raw.
+	// The recording mode for retrieval queries. Valid values: raw (plaintext) and hash (HMAC only). Default value: raw.
 	//
 	// example:
 	//
@@ -487,7 +502,7 @@ type GetContextStoreResponseBodyConfigExtractionPolicy struct {
 	//
 	// ["preference","profile"]
 	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// The custom extraction instructions. This parameter is required when preset is set to custom. Length: 1 to 8000 characters.
+	// The custom extraction instructions. This parameter is required when preset is set to custom. Length: 1 to 8,000 characters.
 	//
 	// example:
 	//
@@ -497,7 +512,7 @@ type GetContextStoreResponseBodyConfigExtractionPolicy struct {
 	//
 	// example:
 	//
-	// ["Password", "ID number"]
+	// ["Password","ID number"]
 	ExcludeRules []*string `json:"excludeRules,omitempty" xml:"excludeRules,omitempty" type:"Repeated"`
 	// The extraction model configuration.
 	Model *GetContextStoreResponseBodyConfigExtractionPolicyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
@@ -782,7 +797,7 @@ func (s *GetContextStoreResponseBodyConfigOutputDataset) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigScopePolicy struct {
-	// At least one of the specified scope fields must be non-empty. Valid values for elements: userId, agentId, appId, and runId.
+	// At least one of the specified scope fields must be non-empty. Valid element values: userId, agentId, appId, and runId.
 	//
 	// example:
 	//
@@ -812,14 +827,38 @@ func (s *GetContextStoreResponseBodyConfigScopePolicy) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigSource struct {
-	// The AgentSpace where the trace data source is located. This must be consistent with the associated AgentSpace at the time of creation.
+	// The AgentSpace where the trace data source resides. It must be the same as the AgentSpace specified during creation.
 	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The dataset datasource config. This parameter is required when source.type is set to dataset.
+	// The DatasetBinding v1 shared with optimization tasks, which retains fixed column validation, supplementary column usage, and all/window selection.
+	//
+	// example:
+	//
+	// {"version":1,"selection":{"mode":"all"}}
+	Binding map[string]interface{} `json:"binding,omitempty" xml:"binding,omitempty"`
+	// The Dataset datasource config for the memory type. This parameter is required when the type is memory and source.type is dataset.
 	Dataset *GetContextStoreResponseBodyConfigSourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The name of the source Dataset for the experience type in the current AgentSpace.
+	//
+	// example:
+	//
+	// reviewed_trajectories
+	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// The input format of the Dataset. For Datasets from the experience library, the value is atif.
+	//
+	// example:
+	//
+	// atif
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The maximum number of records to read from the Dataset at a time. Valid values: 1 to 1000.
+	//
+	// example:
+	//
+	// 1000
+	MaxRecords *int32 `json:"maxRecords,omitempty" xml:"maxRecords,omitempty"`
 	// The start time for data backfill in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -828,14 +867,16 @@ type GetContextStoreResponseBodyConfigSource struct {
 	//
 	// 2026-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The trajectory datasource config. This parameter is required when source.type is set to trajectory.
+	// The trajectory datasource config for the memory type. This parameter is required when the type is memory and source.type is trajectory.
 	Trajectory *GetContextStoreResponseBodyConfigSourceTrajectory `json:"trajectory,omitempty" xml:"trajectory,omitempty" type:"Struct"`
-	// The type of the memory data source. Valid values: trajectory and dataset. If not specified, the value defaults to manual (written only by AddContexts). This parameter cannot be modified after creation.
+	// The source type, which can be trajectory or dataset. For experience, if not specified, it inherits the trajectory configuration. For Dataset, it uses the datasetName, format, and binding at this level. The default is manual. If versionPolicy.mode is follow, it continuously processes and automatically applies changes to this experience store. For memory, if not specified, it indicates manual, meaning only AddContexts writes data. Otherwise, it uses the sub-configuration of the trajectory or dataset with the same name. This property cannot be modified after creation.
 	//
 	// example:
 	//
-	// trajectory
+	// dataset
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The continuous consumption configuration for the native experience store Dataset. The default is manual. The follow mode only allows binding.selection.mode=all and consumes by append sequence. This cannot be changed after creation.
+	VersionPolicy *GetContextStoreResponseBodyConfigSourceVersionPolicy `json:"versionPolicy,omitempty" xml:"versionPolicy,omitempty" type:"Struct"`
 }
 
 func (s GetContextStoreResponseBodyConfigSource) String() string {
@@ -850,8 +891,24 @@ func (s *GetContextStoreResponseBodyConfigSource) GetAgentSpace() *string {
 	return s.AgentSpace
 }
 
+func (s *GetContextStoreResponseBodyConfigSource) GetBinding() map[string]interface{} {
+	return s.Binding
+}
+
 func (s *GetContextStoreResponseBodyConfigSource) GetDataset() *GetContextStoreResponseBodyConfigSourceDataset {
 	return s.Dataset
+}
+
+func (s *GetContextStoreResponseBodyConfigSource) GetDatasetName() *string {
+	return s.DatasetName
+}
+
+func (s *GetContextStoreResponseBodyConfigSource) GetFormat() *string {
+	return s.Format
+}
+
+func (s *GetContextStoreResponseBodyConfigSource) GetMaxRecords() *int32 {
+	return s.MaxRecords
 }
 
 func (s *GetContextStoreResponseBodyConfigSource) GetStartTime() *string {
@@ -866,13 +923,37 @@ func (s *GetContextStoreResponseBodyConfigSource) GetType() *string {
 	return s.Type
 }
 
+func (s *GetContextStoreResponseBodyConfigSource) GetVersionPolicy() *GetContextStoreResponseBodyConfigSourceVersionPolicy {
+	return s.VersionPolicy
+}
+
 func (s *GetContextStoreResponseBodyConfigSource) SetAgentSpace(v string) *GetContextStoreResponseBodyConfigSource {
 	s.AgentSpace = &v
 	return s
 }
 
+func (s *GetContextStoreResponseBodyConfigSource) SetBinding(v map[string]interface{}) *GetContextStoreResponseBodyConfigSource {
+	s.Binding = v
+	return s
+}
+
 func (s *GetContextStoreResponseBodyConfigSource) SetDataset(v *GetContextStoreResponseBodyConfigSourceDataset) *GetContextStoreResponseBodyConfigSource {
 	s.Dataset = v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigSource) SetDatasetName(v string) *GetContextStoreResponseBodyConfigSource {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigSource) SetFormat(v string) *GetContextStoreResponseBodyConfigSource {
+	s.Format = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigSource) SetMaxRecords(v int32) *GetContextStoreResponseBodyConfigSource {
+	s.MaxRecords = &v
 	return s
 }
 
@@ -891,6 +972,11 @@ func (s *GetContextStoreResponseBodyConfigSource) SetType(v string) *GetContextS
 	return s
 }
 
+func (s *GetContextStoreResponseBodyConfigSource) SetVersionPolicy(v *GetContextStoreResponseBodyConfigSourceVersionPolicy) *GetContextStoreResponseBodyConfigSource {
+	s.VersionPolicy = v
+	return s
+}
+
 func (s *GetContextStoreResponseBodyConfigSource) Validate() error {
 	if s.Dataset != nil {
 		if err := s.Dataset.Validate(); err != nil {
@@ -902,19 +988,24 @@ func (s *GetContextStoreResponseBodyConfigSource) Validate() error {
 			return err
 		}
 	}
+	if s.VersionPolicy != nil {
+		if err := s.VersionPolicy.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type GetContextStoreResponseBodyConfigSourceDataset struct {
 	// The list of custom field declarations.
 	CustomFields []*GetContextStoreResponseBodyConfigSourceDatasetCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
-	// The name of the dataset in the same AgentSpace. This parameter cannot be modified after creation.
+	// The name of the Dataset in the same AgentSpace. This parameter cannot be modified after creation.
 	//
 	// example:
 	//
 	// trajectory-with-crm-profile
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
-	// The row filter condition.
+	// The row filter conditions.
 	Filter *GetContextStoreResponseBodyConfigSourceDatasetFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
 	// The polling interval in seconds. Valid values: 60 to 3600. Default value: 300.
 	//
@@ -922,13 +1013,13 @@ type GetContextStoreResponseBodyConfigSourceDataset struct {
 	//
 	// 300
 	PollIntervalSeconds *int32 `json:"pollIntervalSeconds,omitempty" xml:"pollIntervalSeconds,omitempty"`
-	// The row schema contract of the dataset. The value is fixed to MemorySourceV1 in the current phase.
+	// The row schema contract of the Dataset. The value is fixed to MemorySourceV1 in the current phase.
 	//
 	// example:
 	//
 	// MemorySourceV1
 	SchemaContract *string `json:"schemaContract,omitempty" xml:"schemaContract,omitempty"`
-	// The version consumption policy of the dataset.
+	// The version consumption policy of the Dataset.
 	VersionPolicy *GetContextStoreResponseBodyConfigSourceDatasetVersionPolicy `json:"versionPolicy,omitempty" xml:"versionPolicy,omitempty" type:"Struct"`
 }
 
@@ -1018,7 +1109,7 @@ func (s *GetContextStoreResponseBodyConfigSourceDataset) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigSourceDatasetCustomFields struct {
-	// The description of the field. This parameter is required when usage is set to extraction-input and is appended to the extraction prompt.
+	// The description of the field. This parameter is required when usage is extraction-input and is appended to the extraction prompt.
 	//
 	// example:
 	//
@@ -1036,13 +1127,17 @@ type GetContextStoreResponseBodyConfigSourceDatasetCustomFields struct {
 	//
 	// customerTier
 	SourceField *string `json:"sourceField,omitempty" xml:"sourceField,omitempty"`
-	// The target write path, such as metadata.customerTier.
+	// The target path for writing data, such as metadata.customerTier.
 	//
 	// example:
 	//
 	// metadata.customerTier
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
-	// The usage of the field. Valid values: extraction-input (participates in extraction) and ignore (ignored).
+	// The usage of the field. Valid values:
+	//
+	// - extraction-input: Participates in extraction.
+	//
+	// - ignore: Ignored.
 	//
 	// example:
 	//
@@ -1108,7 +1203,7 @@ func (s *GetContextStoreResponseBodyConfigSourceDatasetCustomFields) Validate() 
 }
 
 type GetContextStoreResponseBodyConfigSourceDatasetFilter struct {
-	// The subset of the pipeline where clause, which is pushed down to SQL.
+	// The subset of the Pipeline where clause, which is pushed down to SQL.
 	//
 	// example:
 	//
@@ -1138,19 +1233,23 @@ func (s *GetContextStoreResponseBodyConfigSourceDatasetFilter) Validate() error 
 }
 
 type GetContextStoreResponseBodyConfigSourceDatasetVersionPolicy struct {
-	// The consumption mode. Valid values: follow (incremental consumption based on __dataset_seq) and fixed (full consumption of the specified ACTIVE version once).
+	// The consumption mode. Valid values:
+	//
+	// - follow: Consumes data incrementally based on __dataset_seq.
+	//
+	// - fixed: Consumes the specified ACTIVE version in full at once.
 	//
 	// example:
 	//
 	// follow
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The starting __dataset_seq in follow mode.
+	// The starting __dataset_seq for the follow mode.
 	//
 	// example:
 	//
 	// 0
 	StartSeq *int64 `json:"startSeq,omitempty" xml:"startSeq,omitempty"`
-	// The dataset version specified in fixed mode.
+	// The Dataset version specified for the fixed mode.
 	//
 	// example:
 	//
@@ -1198,7 +1297,7 @@ func (s *GetContextStoreResponseBodyConfigSourceDatasetVersionPolicy) Validate()
 }
 
 type GetContextStoreResponseBodyConfigSourceTrajectory struct {
-	// The trajectory filter conditions. Conditions are combined with AND, and items within a list are combined with OR.
+	// The trajectory filter conditions. Conditions are combined with AND, while items within a list are combined with OR.
 	Filter *GetContextStoreResponseBodyConfigSourceTrajectoryFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
 	// The name of the trajectory Logstore. Default value: agent-trajectory. This parameter cannot be modified after creation.
 	//
@@ -1212,7 +1311,7 @@ type GetContextStoreResponseBodyConfigSourceTrajectory struct {
 	//
 	// 300
 	PollIntervalSeconds *int32 `json:"pollIntervalSeconds,omitempty" xml:"pollIntervalSeconds,omitempty"`
-	// The scope field mapping. The value is a JSONPath expression, and only the $.a.b and $.a[0] formats are supported.
+	// The scope field mapping. The value is a JSONPath expression. Only the $.a.b and $.a[0] formats are supported.
 	ScopeMapping *GetContextStoreResponseBodyConfigSourceTrajectoryScopeMapping `json:"scopeMapping,omitempty" xml:"scopeMapping,omitempty" type:"Struct"`
 	// The start time for trajectory consumption in ISO 8601 UTC format. If not specified, the default value is the creation time.
 	//
@@ -1304,7 +1403,7 @@ type GetContextStoreResponseBodyConfigSourceTrajectoryFilter struct {
 	//
 	// false
 	ExcludeDegraded *bool `json:"excludeDegraded,omitempty" xml:"excludeDegraded,omitempty"`
-	// The minimum number of steps, which must be greater than or equal to 0.
+	// The minimum number of steps. The value must be greater than or equal to 0.
 	//
 	// example:
 	//
@@ -1382,25 +1481,25 @@ func (s *GetContextStoreResponseBodyConfigSourceTrajectoryFilter) Validate() err
 }
 
 type GetContextStoreResponseBodyConfigSourceTrajectoryScopeMapping struct {
-	// The JSONPath for agentId. Default value: $.agent_name.
+	// The JSONPath expression for agentId. Default value: $.agent_name.
 	//
 	// example:
 	//
 	// $.agent_name
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The JSONPath for appId. Default value: $.service_names[0].
+	// The JSONPath expression for appId. Default value: $.service_names[0].
 	//
 	// example:
 	//
 	// $.service_names[0]
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The JSONPath for runId. Default value: $.trajectory_id.
+	// The JSONPath expression for runId. Default value: $.trajectory_id.
 	//
 	// example:
 	//
 	// $.trajectory_id
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The JSONPath for userId. By default, this field is not mapped.
+	// The JSONPath expression for userId. By default, this field is not mapped.
 	//
 	// example:
 	//
@@ -1456,28 +1555,81 @@ func (s *GetContextStoreResponseBodyConfigSourceTrajectoryScopeMapping) Validate
 	return dara.Validate(s)
 }
 
-type GetContextStoreResponseBodyConfigSourceStatus struct {
-	// The consumption progress. The format varies by type: trajectory uses {processTimeNs, watermarkMs}, dataset uses {seq}, and manual uses {}.
-	Checkpoint map[string]interface{} `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
-	// The most recent error message. This field is empty when the status is normal.
+type GetContextStoreResponseBodyConfigSourceVersionPolicy struct {
+	// The continuous consumption mode, which is fixed to follow.
 	//
 	// example:
 	//
-	// Data source read timeout
+	// follow
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The initial consumed append sequence, which is a decimal string of a non-negative int64. The default is 0. It uses __dataset_seq. Business timestamps are not used as consumption checkpoints.
+	//
+	// example:
+	//
+	// 0
+	StartSeq *string `json:"startSeq,omitempty" xml:"startSeq,omitempty"`
+}
+
+func (s GetContextStoreResponseBodyConfigSourceVersionPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetContextStoreResponseBodyConfigSourceVersionPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetContextStoreResponseBodyConfigSourceVersionPolicy) GetMode() *string {
+	return s.Mode
+}
+
+func (s *GetContextStoreResponseBodyConfigSourceVersionPolicy) GetStartSeq() *string {
+	return s.StartSeq
+}
+
+func (s *GetContextStoreResponseBodyConfigSourceVersionPolicy) SetMode(v string) *GetContextStoreResponseBodyConfigSourceVersionPolicy {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigSourceVersionPolicy) SetStartSeq(v string) *GetContextStoreResponseBodyConfigSourceVersionPolicy {
+	s.StartSeq = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigSourceVersionPolicy) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetContextStoreResponseBodyConfigSourceStatus struct {
+	// The processing progress. For memory trajectory, it includes processTimeNs and watermarkMs. For dataset, it includes seq. For manual, it is empty. For experience Dataset follow mode, seq uses an exact int64 decimal string.
+	Checkpoint map[string]interface{} `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
+	// The current scheduled sequence window for experience Dataset follow mode, including after, until, and runId. All sequences are decimal strings. Failures do not advance the submitted checkpoint.
+	CurrentWindow map[string]*string `json:"currentWindow,omitempty" xml:"currentWindow,omitempty"`
+	// The desensitized latest error message. It is empty when the status is normal.
+	//
+	// example:
+	//
+	// Timeout reading the data source
 	LastError *string `json:"lastError,omitempty" xml:"lastError,omitempty"`
-	// The time of the most recent window processing, in ISO 8601 UTC format.
+	// The run ID of the last successful automatic application to the native experience store. This is for audit purposes only.
+	//
+	// example:
+	//
+	// opr-example
+	LastRunId *string `json:"lastRunId,omitempty" xml:"lastRunId,omitempty"`
+	// The last window processing time in ISO 8601 UTC format.
 	//
 	// example:
 	//
 	// 2026-10-01T08:00:00Z
 	LastWindowAt *string `json:"lastWindowAt,omitempty" xml:"lastWindowAt,omitempty"`
-	// The number of consecutive retries.
+	// The consecutive retry count.
 	//
 	// example:
 	//
 	// 0
 	RetryCount *int32 `json:"retryCount,omitempty" xml:"retryCount,omitempty"`
-	// The status of the data source. Valid values: Validating, Ready, Running, Retrying, Paused, SourceSchemaChanged, and Failed.
+	// The data source status. Valid values: Validating, Ready, Running, Retrying, Paused, SourceSchemaChanged, and Failed.
 	//
 	// example:
 	//
@@ -1497,8 +1649,16 @@ func (s *GetContextStoreResponseBodyConfigSourceStatus) GetCheckpoint() map[stri
 	return s.Checkpoint
 }
 
+func (s *GetContextStoreResponseBodyConfigSourceStatus) GetCurrentWindow() map[string]*string {
+	return s.CurrentWindow
+}
+
 func (s *GetContextStoreResponseBodyConfigSourceStatus) GetLastError() *string {
 	return s.LastError
+}
+
+func (s *GetContextStoreResponseBodyConfigSourceStatus) GetLastRunId() *string {
+	return s.LastRunId
 }
 
 func (s *GetContextStoreResponseBodyConfigSourceStatus) GetLastWindowAt() *string {
@@ -1518,8 +1678,18 @@ func (s *GetContextStoreResponseBodyConfigSourceStatus) SetCheckpoint(v map[stri
 	return s
 }
 
+func (s *GetContextStoreResponseBodyConfigSourceStatus) SetCurrentWindow(v map[string]*string) *GetContextStoreResponseBodyConfigSourceStatus {
+	s.CurrentWindow = v
+	return s
+}
+
 func (s *GetContextStoreResponseBodyConfigSourceStatus) SetLastError(v string) *GetContextStoreResponseBodyConfigSourceStatus {
 	s.LastError = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigSourceStatus) SetLastRunId(v string) *GetContextStoreResponseBodyConfigSourceStatus {
+	s.LastRunId = &v
 	return s
 }
 
@@ -1543,43 +1713,43 @@ func (s *GetContextStoreResponseBodyConfigSourceStatus) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigStoragePolicy struct {
-	// The allowed storage actions. By default, all actions are allowed. Valid values: ADD, UPDATE, MERGE, and DELETE.
+	// The allowed storage actions. The default is all: ADD, UPDATE, MERGE, and DELETE.
 	//
 	// example:
 	//
 	// ["ADD","UPDATE","MERGE","DELETE"]
 	AllowedActions []*string `json:"allowedActions,omitempty" xml:"allowedActions,omitempty" type:"Repeated"`
-	// Indicates whether deduplication is enabled in event mode. Default value: true.
+	// Specifies whether to deduplicate in event mode. The default is true.
 	//
 	// example:
 	//
 	// true
 	Dedupe *bool `json:"dedupe,omitempty" xml:"dedupe,omitempty"`
-	// Indicates whether human edit protection is enabled. Default value: true. When enabled, automatic extraction does not overwrite manually modified memories.
+	// The human edit protection. The default is true. When enabled, automatic extraction does not overwrite manually modified memories.
 	//
 	// example:
 	//
 	// true
 	HumanEditProtection *bool `json:"humanEditProtection,omitempty" xml:"humanEditProtection,omitempty"`
-	// The merge key for upsert operations. Valid values: factKey, semantic, and both. Default value: semantic.
+	// The upsert merge key. Valid values: factKey, semantic, and both. The default is semantic.
 	//
 	// example:
 	//
 	// semantic
 	MergeKey *string `json:"mergeKey,omitempty" xml:"mergeKey,omitempty"`
-	// The storage mode. Valid values: event (append events) and upsert (merge updates). Default value: upsert.
+	// The storage mode. Valid values: event for event appending, and upsert for merge updating. The default is upsert.
 	//
 	// example:
 	//
 	// upsert
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The similarity threshold for semantic merging. Valid values: 0 to 1. Default value: 0.4.
+	// The semantic merge similarity threshold. Valid values: 0 to 1. The default is 0.4.
 	//
 	// example:
 	//
 	// 0.4
 	SimilarityThreshold *float64 `json:"similarityThreshold,omitempty" xml:"similarityThreshold,omitempty"`
-	// The number of days after which memories expire. A value of 0 indicates that memories do not expire.
+	// The memory expiration days. A value of 0 indicates no expiration.
 	//
 	// example:
 	//

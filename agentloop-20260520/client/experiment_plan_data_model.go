@@ -34,7 +34,7 @@ type iExperimentPlanData interface {
 }
 
 type ExperimentPlanData struct {
-  // The creation time in milliseconds.
+  // The creation time, in milliseconds.
   // 
   // example:
   // 
@@ -50,7 +50,7 @@ type ExperimentPlanData struct {
   // 
   // example:
   // 
-  // Offline evaluation plan for customer service Q&A
+  // Customer service Q&A offline evaluation plan
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // The number of experiment executions under this plan.
   // 
@@ -58,19 +58,23 @@ type ExperimentPlanData struct {
   // 
   // 3
   ExperimentCount *int32 `json:"experimentCount,omitempty" xml:"experimentCount,omitempty"`
-  // The experiment type. Valid values: offline (offline experiment) and online (online experiment).
+  // The experiment type: offline (offline experiment) or online (online experiment).
   // 
   // example:
   // 
   // offline
   ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
-  // The name of the associated data processing pipeline. This field is empty if no pipeline is associated. After association, when an experiment under this plan completes and writes results to a Logstore, the system filters by the trace ID of the experiment trace and calls PreviewPipeline to write the pipeline-processed results.
+  // The name of the associated data processing pipeline. This field is empty if no pipeline is associated. After a pipeline is associated, when an experiment under this plan completes and writes experiment results to the Logstore, the system filters by the traceId of the current experiment trace and calls PreviewPipeline to write the results processed by the pipeline.
   // 
   // example:
   // 
   // trace-process-pipeline
   PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
   // The experiment plan ID.
+  // 
+  // example:
+  // 
+  // exp-plan-e95bff54685a4ae29ff3a834c1008a71
   PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
   // The experiment plan name.
   // 
@@ -84,13 +88,13 @@ type ExperimentPlanData struct {
   // 
   // level > 2
   QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
-  // The status. Valid values: pending, running, and stopped.
+  // The status: pending, running, or stopped.
   // 
   // example:
   // 
   // pending
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
-  // The update time in milliseconds.
+  // The update time, in milliseconds.
   // 
   // example:
   // 

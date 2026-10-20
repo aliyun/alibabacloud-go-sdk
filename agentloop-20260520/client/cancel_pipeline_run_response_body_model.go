@@ -20,7 +20,7 @@ type iCancelPipelineRunResponseBody interface {
 }
 
 type CancelPipelineRunResponseBody struct {
-	// The time when the cancellation was completed, in ISO 8601 UTC format.
+	// The time when the cancellation is completed, in the ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -28,7 +28,7 @@ type CancelPipelineRunResponseBody struct {
 	//
 	// 2026-01-01T00:00:05.000Z
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID, which is used to locate the request during troubleshooting.
 	//
 	// example:
 	//

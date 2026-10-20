@@ -32,7 +32,7 @@ type iGetDatasetResponseBody interface {
 }
 
 type GetDatasetResponseBody struct {
-	// The agent space name.
+	// The name of the agent space.
 	//
 	// example:
 	//
@@ -46,20 +46,22 @@ type GetDatasetResponseBody struct {
 	//
 	// 2026-06-15T10:30:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// product_faq_dataset
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
-	// The dataset description.
+	// The description of the dataset.
 	//
 	// example:
 	//
 	// Product FAQ dataset for semantic search
-	Description *string              `json:"description,omitempty" xml:"description,omitempty"`
-	IsFavorite  *bool                `json:"isFavorite,omitempty" xml:"isFavorite,omitempty"`
-	Labels      map[string][]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the dataset is added to favorites.
+	IsFavorite *bool `json:"isFavorite,omitempty" xml:"isFavorite,omitempty"`
+	// The labels of the dataset.
+	Labels map[string][]*string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The region ID.
 	//
 	// example:
