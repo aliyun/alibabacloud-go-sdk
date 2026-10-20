@@ -34,13 +34,13 @@ type DescribeHttpDDoSIntelligentRateLimitRulesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of rules.
+	// The list of rule information.
 	RuleInfos []*DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
 	// The total number of rules.
 	//
@@ -117,31 +117,31 @@ func (s *DescribeHttpDDoSIntelligentRateLimitRulesResponseBody) Validate() error
 }
 
 type DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos struct {
-	// The action to perform.
+	// The action to be performed.
 	//
 	// example:
 	//
 	// js
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The conditions that trigger the rule.
+	// The trigger condition of the rule.
 	//
 	// example:
 	//
 	// {"$and":[{"key":"URI","opValue":"prefix-match","values":"/"}]}
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The ID of the protection rule for log records.
+	// The ID of the protection rule (used for log records).
 	//
 	// example:
 	//
 	// 100030
 	LogRuleId *int64 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
-	// The duration of the penalty in seconds.
+	// The block duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	PunishTime *int64 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
-	// The frequency information.
+	// The rate limit information.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos struct {
 	//
 	// inner_cc_client_ip_ratelimit
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The statistics.
+	// The statistics information.
 	//
 	// example:
 	//

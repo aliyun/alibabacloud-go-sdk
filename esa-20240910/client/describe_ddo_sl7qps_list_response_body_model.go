@@ -26,43 +26,39 @@ type iDescribeDDoSL7QpsListResponseBody interface {
 }
 
 type DescribeDDoSL7QpsListResponseBody struct {
-	// The time granularity of the queried data, in seconds.
+	// The time granularity of the queried data. Unit: seconds.
 	//
 	// example:
 	//
 	// 300
 	DataInterval *int32 `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// Application layer time trend data list.
+	// The list of application-layer time-series data.
 	DataModule []*DescribeDDoSL7QpsListResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
-	// The end time of the query.
-	//
-	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The end time of the query. The time is displayed in UTC and formatted based on ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-04-19T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Record ID.
+	// The record ID.
 	//
 	// example:
 	//
 	// 86510927836942****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Site ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time of the query.
-	//
-	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -155,25 +151,25 @@ func (s *DescribeDDoSL7QpsListResponseBody) Validate() error {
 }
 
 type DescribeDDoSL7QpsListResponseBodyDataModule struct {
-	// Attack QPS.
+	// The attack QPS.
 	//
 	// example:
 	//
 	// 5
 	Attack *int64 `json:"Attack,omitempty" xml:"Attack,omitempty"`
-	// Normal QPS.
+	// The normal QPS.
 	//
 	// example:
 	//
 	// 4
 	Normal *int64 `json:"Normal,omitempty" xml:"Normal,omitempty"`
-	// Data time, following ISO8601 notation and using UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The data timestamp. The time is displayed in UTC and formatted based on ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-04-19T16:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// Total QPS.
+	// The total QPS.
 	//
 	// example:
 	//

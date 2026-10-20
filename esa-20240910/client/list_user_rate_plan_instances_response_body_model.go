@@ -24,9 +24,9 @@ type iListUserRatePlanInstancesResponseBody interface {
 }
 
 type ListUserRatePlanInstancesResponseBody struct {
-	// The plan instances that match the specified conditions under the user.
+	// The plan instances that meet the query conditions under the user.
 	InstanceInfo []*ListUserRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	// The current page number, same as the PageNumber request parameter.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// PREPAY
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	// If empty, the plan does not include a bot protection instance. If a value is returned, the plan includes a bot protection instance. Valid values:
+	// If this parameter is empty, no bot protection instance is purchased for the plan. If a value is returned, a bot protection instance is purchased for the plan. Valid values:
 	//
 	// - enterprise_bot: Web edition.
 	//
@@ -154,49 +154,49 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// enterprise_bot
 	BotInstanceLevel *string `json:"BotInstanceLevel,omitempty" xml:"BotInstanceLevel,omitempty"`
-	// The prepaid bot protection requests included in the plan (in units of 10,000).
+	// The prepaid number of bot requests in the plan. Unit: 10,000 requests.
 	//
 	// example:
 	//
 	// 100
 	BotRequest *string `json:"BotRequest,omitempty" xml:"BotRequest,omitempty"`
-	// The acceleration coverage areas for sites that can be bound to this plan instance. Multiple values are separated by commas (,). Valid values:
+	// The acceleration regions where the site can be bound. Multiple regions are separated by commas (,). Valid values:
 	//
-	// - **domestic**: China or the Chinese mainland.
+	// - **domestic**: Chinese mainland.
 	//
-	// - **overseas**: Global (excluding China or the Chinese mainland).
+	// - **overseas**: Global (excluding the Chinese mainland).
 	//
-	// - **global**: Global (including China or the Chinese mainland).
+	// - **global**: Global (including the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic,overseas
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The purchase time of the plan instance. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The prepaid China network acceleration traffic (GB) included in the plan.
+	// The prepaid China network acceleration traffic in the plan. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	CrossborderTraffic *string `json:"CrossborderTraffic,omitempty" xml:"CrossborderTraffic,omitempty"`
-	// The Anti-DDoS instance specification for the Chinese mainland included in the plan.
+	// The specifications of the Anti-DDoS instance in the plan for the Chinese mainland.
 	//
 	// example:
 	//
 	// cn_300
 	DdosBurstableDomesticProtection *string `json:"DdosBurstableDomesticProtection,omitempty" xml:"DdosBurstableDomesticProtection,omitempty"`
-	// The Anti-DDoS instance specification outside the Chinese mainland included in the plan.
+	// The specifications of the Anti-DDoS instance in the plan for regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// overseas_300
 	DdosBurstableOverseasProtection *string `json:"DdosBurstableOverseasProtection,omitempty" xml:"DdosBurstableOverseasProtection,omitempty"`
-	// If empty, the plan does not include an Anti-DDoS instance. If a value is returned, the plan includes an Anti-DDoS instance. The value is `esa_ddos_instance`.
+	// If this parameter is empty, no Anti-DDoS instance is purchased for the plan. If a value is returned, an Anti-DDoS instance is purchased for the plan, and the value is `esa_ddos_instance`.
 	//
 	// example:
 	//
@@ -208,60 +208,60 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The prepaid Edge Routine (ER) requests included in the plan (in units of 10,000).
+	// The prepaid number of Edge Routine (ER) requests in the plan. Unit: 10,000 requests.
 	//
 	// example:
 	//
 	// 100
 	EdgeRoutineRquest *string `json:"EdgeRoutineRquest,omitempty" xml:"EdgeRoutineRquest,omitempty"`
-	// The prepaid WAF requests included in the plan (in units of 10,000).
+	// The prepaid number of Web Application Firewall (WAF) requests in the plan. Unit: 10,000 requests.
 	//
 	// example:
 	//
 	// 100
 	EdgeWafRequest *string `json:"EdgeWafRequest,omitempty" xml:"EdgeWafRequest,omitempty"`
-	// The expiration time of the plan instance. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The expiration time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The plan instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The prepaid Layer 4 proxy traffic (GB) included in the plan - Chinese mainland.
+	// The prepaid Layer 4 proxy traffic in the plan for the Chinese mainland. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	Layer4Traffic *string `json:"Layer4Traffic,omitempty" xml:"Layer4Traffic,omitempty"`
-	// The prepaid Layer 4 proxy traffic (GB) included in the plan - outside the Chinese mainland.
+	// The prepaid Layer 4 proxy traffic in the plan for regions outside the Chinese mainland. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	Layer4TrafficIntl *string `json:"Layer4TrafficIntl,omitempty" xml:"Layer4TrafficIntl,omitempty"`
 	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The plan name associated with the plan instance.
+	// The name of the plan corresponding to the plan instance.
 	//
 	// example:
 	//
 	// basic
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The prepaid Layer 7 acceleration traffic (GB) included in the plan.
+	// The prepaid Layer 7 acceleration traffic in the plan. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	PlanTraffic *string `json:"PlanTraffic,omitempty" xml:"PlanTraffic,omitempty"`
-	// The plan type associated with the plan instance. Valid values:
+	// The type of the plan corresponding to the plan instance. Valid values:
 	//
-	// - **normal**: Fixed edition plan.
+	// - **normal**: Fixed plan.
 	//
-	// - **enterprise**: Enterprise edition plan.
+	// - **enterprise**: Enterprise plan.
 	//
 	// example:
 	//
@@ -277,9 +277,9 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// - nomal: Normal.
 	//
-	// - auto_renewal: Auto-renewal enabled.
+	// - auto_renewal: Auto-renewal.
 	//
-	// - not_renewal: Auto-renewal disabled.
+	// - not_renewal: Non-renewal.
 	//
 	// example:
 	//
@@ -287,7 +287,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 	ResourceOwner *int64  `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	ShareType     *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The site quota for the plan instance.
+	// The quota for the number of sites under the plan instance.
 	//
 	// example:
 	//
@@ -295,13 +295,13 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	SiteQuota *string `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
 	// The list of sites bound to the current plan instance.
 	Sites []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	// The prepaid smart routing requests included in the plan (in units of 10,000).
+	// The prepaid number of smart routing requests in the plan. Unit: 10,000 requests.
 	//
 	// example:
 	//
 	// 100
 	SmartRoutingRequest *string `json:"SmartRoutingRequest,omitempty" xml:"SmartRoutingRequest,omitempty"`
-	// The prepaid HTTP requests included in the plan (in units of 10,000).
+	// The prepaid number of HTTP requests in the plan. Unit: 10,000 requests.
 	//
 	// example:
 	//
@@ -309,29 +309,29 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	StaticRequest *string `json:"StaticRequest,omitempty" xml:"StaticRequest,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **online**: Normal service status.
+	// - **online**: The instance is in normal service status.
 	//
-	// - **offline**: Expired but not overdue, in an inactive state.
+	// - **offline**: The instance has expired but is not overdue, and is in an inactive state.
 	//
-	// - **disable**: Released.
+	// - **disable**: The instance is released.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The plan subscription type. Valid values:
+	// The subscription type of the plan. Valid values:
 	//
-	// - Free Edition (Chinese mainland): entranceplan
+	// - entranceplan: Free Edition (Chinese mainland).
 	//
-	// - Free Edition (International): entranceplan_intl
+	// - entranceplan_intl: Free Edition (International).
 	//
-	// - Basic Edition: basicplan
+	// - basicplan: Basic Edition.
 	//
-	// - Standard Edition: standardplan
+	// - standardplan: Standard Edition.
 	//
-	// - Premium Edition: advancedplan
+	// - advancedplan: Advanced Edition.
 	//
-	// - Enterprise Edition: enterpriseplan
+	// - enterpriseplan: Enterprise Edition.
 	//
 	// example:
 	//
@@ -631,19 +631,19 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) Validate() error {
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {
-	// The site ID.
+	// The ID of the site.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The site name.
+	// The name of the site.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The site status. Valid values:
+	// The status of the site. Valid values:
 	//
 	// - **pending**: The site is pending configuration.
 	//
@@ -651,7 +651,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {
 	//
 	// - **offline**: The site is offline.
 	//
-	// - **moved**: The site has been superseded.
+	// - **moved**: The site is replaced.
 	//
 	// example:
 	//

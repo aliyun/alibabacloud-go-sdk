@@ -18,11 +18,11 @@ type iSetRoutineEnvironmentVariablesRequest interface {
 }
 
 type SetRoutineEnvironmentVariablesRequest struct {
-	// The environment name. Valid values:
+	// The name of the environment. Valid values:
 	//
-	// - `staging`: staging environment.
+	// - `staging`: staging environment
 	//
-	// - `production`: production environment.
+	// - `production`: production environment
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type SetRoutineEnvironmentVariablesRequest struct {
 	//
 	// production
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The dictionary of environment variables. The key is the environment variable name, and the value is the environment variable value.
+	// The environment variable dictionary. The key is the environment variable name, and the value is the environment variable value.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type SetRoutineEnvironmentVariablesRequest struct {
 	//
 	//     }
 	EnvironmentVariables map[string]*EnvironmentVariablesValue `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	// The function name.
+	// The name of the function.
 	//
 	// This parameter is required.
 	//

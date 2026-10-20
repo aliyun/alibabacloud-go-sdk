@@ -21,8 +21,12 @@ type iApplyCertificateRequest interface {
 
 type ApplyCertificateRequest struct {
 	// The algorithm type.
+	//
+	// example:
+	//
+	// RSA
 	AlgType *string `json:"AlgType,omitempty" xml:"AlgType,omitempty"`
-	// The list of domain names, separated by commas.
+	// The list of domain names. Separate multiple domain names with commas.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +44,11 @@ type ApplyCertificateRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The certificate type. Valid values:
 	//
-	// - lets_encrypt: Let\\"s Encrypt certificate.
+	// - lets_encrypt: Let\\"s Encrypt certificate
 	//
-	// - digicert_single: DigiCert single-domain certificate.
+	// - digicert_single: DigiCert single-domain certificate
 	//
-	// - digicert_wildcard: DigiCert wildcard domain certificate.
+	// - digicert_wildcard: DigiCert wildcard certificate
 	//
 	// example:
 	//

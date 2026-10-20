@@ -134,9 +134,9 @@ func (s *ListPostpaidRatePlanInstancesResponseBody) Validate() error {
 }
 
 type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
-	// The billing method. Valid values:
+	// The Billable methods. Valid values:
 	//
-	// - dps_month95: Monthly 95th Percentile.
+	// - dps_month95: monthly 95th percentile billing.
 	//
 	// example:
 	//
@@ -144,31 +144,31 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	BillingMethod *string `json:"BillingMethod,omitempty" xml:"BillingMethod,omitempty"`
 	// The billing mode. Valid values:
 	//
-	//  	- POSTPAY: Pay-as-you-go.
+	//  	- POSTPAY: pay-as-you-go.
 	//
 	// example:
 	//
 	// POSTPAY
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	// The acceleration regions to which the instance can bindable sites. Multiple values are separated by commas (,). Valid values:
+	// The acceleration regions for sites that can be bound to the instance. Multiple values are separated by commas (,). Valid values:
 	//
-	// - domestic: The Chinese mainland.
+	// - domestic: the Chinese mainland.
 	//
-	// - overseas: Global (excluding the Chinese mainland).
+	// - overseas: global (excluding the Chinese mainland).
 	//
-	// - global: Global (including the Chinese mainland).
+	// - global: global (including the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The time when the instance was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The scheduled specification change time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The scheduled time for upgrade or downgrade. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -187,17 +187,17 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// basic
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The Chinese name of the plan.
+	// The plan name in Chinese.
 	//
 	// example:
 	//
 	// test-plan
 	PlanNameCn *string `json:"PlanNameCn,omitempty" xml:"PlanNameCn,omitempty"`
-	// The plan type of the instance. Valid values:
+	// The plan type corresponding to the plan instance. Valid values:
 	//
-	// - normal: Fixed edition plan.
+	// - normal: fixed plan.
 	//
-	// - enterprise: Enterprise edition plan.
+	// - enterprise: enterprise plan.
 	//
 	// example:
 	//
@@ -388,7 +388,7 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites struct {
 	//
 	// - offline: The site is offline.
 	//
-	// - moved: The site has been superseded.
+	// - moved: The site has been replaced.
 	//
 	// example:
 	//

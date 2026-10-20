@@ -48,19 +48,19 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The time when the task was created, in ISO 8601 format (for example, 2024-01-01T00:00:00+08:00).
+	// The time when the task was created. The time is displayed in the ISO 8601 format, such as 2024-01-01T00:00:00+08:00.
 	//
 	// example:
 	//
 	// 2023-06-05T10:04:20+0800
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The list of domain names for prefetch.
+	// The list of prefetched domain names.
 	//
 	// example:
 	//
 	// testurl.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// The error message. Multiple faults are separated by commas. Valid values:
+	// The error message. Multiple error messages are separated by commas. Valid values:
 	//
 	// - **InvalidUrl**: The URL format is invalid.
 	//
@@ -68,19 +68,19 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// - **QuotaExcess**: The quota limit is exceeded.
 	//
-	// - **OtherErrors**: Other faults.
+	// - **OtherErrors**: Other errors.
 	//
 	// example:
 	//
 	// InvalidDomain
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The OSS address of the failed file.
+	// The OSS URL of the failed file.
 	//
 	// example:
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The URL list file ID, which is used for download.
+	// The file ID of the URL list. This ID is used when you download the file.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The number of URLs that have been submitted to the system for prefetch.
+	// The number of URLs that have been submitted to the system for prefetch tasks.
 	//
 	// example:
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type (refresh/prefetch).
+	// The task type, such as refresh or prefetch.
 	//
 	// example:
 	//

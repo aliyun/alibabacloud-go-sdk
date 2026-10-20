@@ -38,9 +38,9 @@ type iListUserRatePlanInstancesRequest interface {
 }
 
 type ListUserRatePlanInstancesRequest struct {
-	// Specifies whether to filter plan instances that have remaining site quota. Valid values:
+	// Specifies whether to filter plan instances that have remaining site quotas. Valid values:
 	//
-	// - **true**: Filters plan instances that have remaining site quota.
+	// - **true**: Filters plan instances that have remaining site quotas.
 	//
 	// - **false**: Queries all plan instances under the user.
 	//
@@ -48,59 +48,59 @@ type ListUserRatePlanInstancesRequest struct {
 	//
 	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
-	// The plan instance ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Instance ID of the plan instance. You can obtain instance ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IsShared   *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	// The page number settings for paging. Default value: **1**. Valid values: **1 to 100000**.
+	// The page number Settings for a paging query. Default value: **1**. Valid values: **1*	- to **100000**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Valid values: 1 to 500.
+	// The number of entries per page for a paging query. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 500
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plan name (English).
+	// The name of the plan in English.
 	//
 	// example:
 	//
 	// entranceplan
 	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
-	// The plan type. Valid values:
+	// The type of the plan. Valid values:
 	//
-	// - normal: fixed edition plan
+	// - normal: Fixed plan.
 	//
-	// - enterprise: enterprise edition plan
+	// - enterprise: Enterprise plan.
 	//
 	// example:
 	//
 	// enterprise
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	// Queries plan instances whose remaining validity period is within the specified number of days. The value must be a positive integer. Unit: days.
+	// Queries plan instances whose remaining validity period is less than or equal to the specified number of days. The value must be a positive integer. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	RemainingExpireDays *int32 `json:"RemainingExpireDays,omitempty" xml:"RemainingExpireDays,omitempty"`
 	ResourceOwner       *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	// The sort field. By default, results are sorted by purchase time. Valid values:
+	// The field by which to sort the results. By default, the results are sorted by creation time. Valid values:
 	//
-	// - **CreateTime**: Purchase time.
+	// - **CreateTime**: Sorts by creation time.
 	//
-	// - **ExpireTime**: Expiration time.
+	// - **ExpireTime**: Sorts by expiration time.
 	//
 	// example:
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sort order. Default value: desc. Valid values:
+	// The sort order. By default, the results are sorted in descending order. Valid values:
 	//
 	// - **asc**: Ascending order.
 	//
@@ -112,13 +112,13 @@ type ListUserRatePlanInstancesRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **online**: Normal service status.
+	// - **online**: The instance is in normal service status.
 	//
-	// - **offline**: Expired but not overdue, in an inactive state.
+	// - **offline**: The instance has expired but is not overdue, and is in an inactive state.
 	//
-	// - **disable**: Released.
+	// - **disable**: The instance is released.
 	//
-	// - **overdue**: Overdue payment.
+	// - **overdue**: The instance has an overdue payment.
 	//
 	// if can be null:
 	// false
@@ -127,19 +127,19 @@ type ListUserRatePlanInstancesRequest struct {
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The plan subscription type. Valid values:
+	// The subscription type of the plan. Valid values:
 	//
-	// - Free Edition (Chinese mainland): entranceplan
+	// - entranceplan: Free Edition (Chinese mainland)
 	//
-	// - Free Edition (International): entranceplan_intl
+	// - entranceplan_intl: Free Edition (International)
 	//
-	// - Basic Edition: basicplan
+	// - basicplan: Basic Edition
 	//
-	// - Standard Edition: standardplan
+	// - standardplan: Standard Edition
 	//
-	// - Premium Edition: advancedplan
+	// - advancedplan: Advanced Edition
 	//
-	// - Enterprise Edition: enterpriseplan
+	// - enterpriseplan: Enterprise Edition
 	//
 	// example:
 	//

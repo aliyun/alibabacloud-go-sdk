@@ -26,7 +26,7 @@ type iUpdateHttpResponseHeaderModificationRuleShrinkRequest interface {
 }
 
 type UpdateHttpResponseHeaderModificationRuleShrinkRequest struct {
-	// The configuration ID. You can call the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation to obtain the configuration ID.
+	// The configuration ID. You can obtain the ID by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -34,41 +34,41 @@ type UpdateHttpResponseHeaderModificationRuleShrinkRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The response header modifications. Three operation types are supported: add, delete, and modify.
+	// The response header modifications. You can add, delete, or modify response headers.
 	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
-	// The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+	// The rule content, which uses a conditional expression to match user requests. You do not need to specify this parameter when you add a global configuration. This parameter applies to the following two scenarios:
 	//
-	// - Match all incoming requests: set the value to true.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. This parameter is not required when you add a global configuration. Valid values:
+	// The rule switch. You do not need to specify this parameter when you add a global configuration. Valid values:
 	//
-	// - on: enabled.
+	// - on: enabled
 	//
-	// - off: disabled.
+	// - off: disabled
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required when you add a global configuration.
+	// The name of the rule. You do not need to specify this parameter when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order. A smaller value indicates a higher priority.
+	// The execution sequence of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The ID of the site. You can obtain the ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//

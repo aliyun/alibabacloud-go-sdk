@@ -52,7 +52,7 @@ type iCreateWaitingRoomEventRequest interface {
 }
 
 type CreateWaitingRoomEventRequest struct {
-	// The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
+	// The custom content of the waiting room page. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type CreateWaitingRoomEventRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to disable session renewal. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Disables session renewal.
 	//
-	// - **off**: disabled.
+	// - **off**: Enables session renewal.
 	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// The waiting room switch. Valid values:
+	// Specifies whether to enable the waiting room. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The event end timestamp, such as 1705044735.
+	// The end timestamp of the event. Example: 1705044735.
 	//
 	// This parameter is required.
 	//
@@ -94,11 +94,11 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 1719849600
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
+	// Specifies whether to enable JSON responses. If this feature is enabled and the Accept request header contains "application/json", JSON data is returned. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
@@ -134,15 +134,15 @@ type CreateWaitingRoomEventRequest struct {
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
 	// Specifies whether to enable pre-queuing. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
-	// The pre-queuing start timestamp, which must be at least 5 minutes earlier than the event start timestamp, such as 1705044735.
+	// The start timestamp of pre-queuing. The time must be at least 5 minutes earlier than the event start timestamp. Example: 1705044735.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ type CreateWaitingRoomEventRequest struct {
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// - **random**: random.
+	// - **random**: Random.
 	//
-	// - **fifo**: first-in, first-out.
+	// - **fifo**: First-in, first-out (FIFO).
 	//
-	// - **passthrough**: passthrough.
+	// - **passthrough**: Passthrough.
 	//
-	// - **reject-all**: reject all.
+	// - **reject-all**: Reject all.
 	//
 	// This parameter is required.
 	//
@@ -164,13 +164,13 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The waiting room status code. Valid values:
+	// The HTTP status code of the waiting room. Valid values:
 	//
 	// - **200**
 	//
 	// - **202**
 	//
-	// - **429**.
+	// - **429**
 	//
 	// This parameter is required.
 	//
@@ -180,15 +180,15 @@ type CreateWaitingRoomEventRequest struct {
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// Specifies whether to enable random pre-queuing. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
-	// The session duration, in minutes.
+	// The session duration in minutes.
 	//
 	// This parameter is required.
 	//
@@ -196,7 +196,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The ID of the site. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -204,7 +204,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The event start timestamp, such as 1705044735.
+	// The start timestamp of the event. Example: 1705044735.
 	//
 	// This parameter is required.
 	//
@@ -220,7 +220,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 100
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
-	// The waiting room ID. You can call the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the waiting room ID. The waiting room must belong to the site specified by SiteId.
+	// The ID of the waiting room. You can obtain the waiting room ID by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation. The waiting room must belong to the site specified by the SiteId parameter.
 	//
 	// example:
 	//
@@ -228,9 +228,9 @@ type CreateWaitingRoomEventRequest struct {
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// - **default**: default type.
+	// - **default**: Default type.
 	//
-	// - **custom**: custom type.
+	// - **custom**: Custom type.
 	//
 	// This parameter is required.
 	//

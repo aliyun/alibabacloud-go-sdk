@@ -22,11 +22,11 @@ type iUpdateWaitingRoomRuleRequest interface {
 }
 
 type UpdateWaitingRoomRuleRequest struct {
-	// The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+	// The rule content. A conditional expression is used to match user requests. You do not need to specify this parameter when adding global Settings. Two scenarios are supported:
 	//
-	// - Match all incoming requests: set the value to true.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// For the complete syntax of rule expressions, refer to
 	//
@@ -40,11 +40,11 @@ type UpdateWaitingRoomRuleRequest struct {
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+	// Specifies whether to enable the rule. You do not need to specify this parameter when adding a global configuration. Valid values:
 	//
-	// - on: enabled.
+	// - on: enables the rule.
 	//
-	// - off: disabled.
+	// - off: disables the rule.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UpdateWaitingRoomRuleRequest struct {
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required when you add a global configuration.
+	// The rule name. You do not need to specify this parameter when adding a global configuration.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type UpdateWaitingRoomRuleRequest struct {
 	//
 	// test1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type UpdateWaitingRoomRuleRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The ID of the waiting room bypass rule to update. You can obtain this ID after creating a rule by calling CreateWaitingRoomRule, or by calling the [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) operation.
+	// The ID of the waiting room bypass rule to be updated. You can obtain the rule ID after creating a rule by using CreateWaitingRoomRule or by calling the [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) operation.
 	//
 	// This parameter is required.
 	//

@@ -30,13 +30,13 @@ type ListPagesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The array of custom response pages. Each object in the array contains the details of a page.
+	// The array of custom response pages. Each object in the array contains the specific information of a page.
 	Pages []*ListPagesResponseBodyPages `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -44,7 +44,7 @@ type ListPagesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of custom response pages after filtering.
+	// The total number of custom response pages after filtering.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListPagesResponseBodyPages struct {
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom response page. You can obtain the ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	// The ID of the custom response page. You can obtain it by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type ListPagesResponseBodyPages struct {
 	//
 	// custom
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The content moderation result.
+	// The content security moderation result.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type ListPagesResponseBodyPages struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The last modification time of the custom response page.
 	//
-	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	// Format: RFC 3339/ISO 8601, UTC standard time zone (ending with Z).
 	//
 	// Example: 2026-06-10T14:23:45Z
 	//

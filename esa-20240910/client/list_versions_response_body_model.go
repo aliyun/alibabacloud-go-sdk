@@ -22,7 +22,7 @@ type ListVersionsResponseBody struct {
 	//
 	// 7EBEC214-805D-5FE9-AEED-258FE0F8850F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version list of the site.
+	// The list of versions for the site.
 	SiteVersionList []*ListVersionsResponseBodySiteVersionList `json:"SiteVersionList,omitempty" xml:"SiteVersionList,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *ListVersionsResponseBody) Validate() error {
 }
 
 type ListVersionsResponseBodySiteVersionList struct {
-	// The creation time.
+	// The creation time. The time follows the ISO 8601 standard and includes a time zone offset. Example: 2024-06-15T17:41:27+08:00.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type ListVersionsResponseBodySiteVersionList struct {
 	//
 	// example:
 	//
-	// 站点A使用多个环境。
+	// Site A uses multiple environments
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment list of the site version. The version may have no environment or one or more environments configured, such as the default environment or environment 2.
+	// The list of environments for the site version. No environment is configured, or one or more environments are configured, such as the default environment and Environment 2.
 	EnvironmentNameList []*string `json:"EnvironmentNameList,omitempty" xml:"EnvironmentNameList,omitempty" type:"Repeated"`
 	// The parent version of the site version.
 	//
@@ -86,7 +86,7 @@ type ListVersionsResponseBodySiteVersionList struct {
 	//
 	// 1
 	ParentSiteVersion *int32 `json:"ParentSiteVersion,omitempty" xml:"ParentSiteVersion,omitempty"`
-	// Indicates whether the version is read-only. Default value: false.
+	// Specifies whether the version is read-only. Default value: false.
 	//
 	// example:
 	//
@@ -100,17 +100,17 @@ type ListVersionsResponseBodySiteVersionList struct {
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	// The status. Valid values:
 	//
-	// - **online**: active.
+	// - **online**: Available.
 	//
-	// - **configuring**: being configured.
+	// - **configuring**: Configuring.
 	//
-	// - **configure_faild**: configuration failed.
+	// - **configure_faild**: Configuration failed.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The update time. The time follows the ISO 8601 standard and includes a time zone offset. Example: 2024-06-15T17:41:27+08:00.
 	//
 	// example:
 	//

@@ -1707,7 +1707,7 @@ func (client *Client) CreateCustomResponseCodeRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates a user-level custom scene policy. After you associate the policy with one or more sites, the policy applies to those sites.
+// Creates a user-level scenario-specific policy and executes the corresponding policy after the policy is associated with sites.
 //
 // @param request - CreateCustomScenePolicyRequest
 //
@@ -3801,15 +3801,15 @@ func (client *Client) CreateRoutineBuildConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a percentage-based canary deployment for a Routine code version in a specified environment.
+// Deploys code versions of an Edge Routine to a specified environment by percentage for a canary release.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - When creating a Routine code version deployment, the `Env` parameter only supports `staging` for the staging environment or `production` for the production environment.
+// - When you create an Edge Routine code version deployment, the `Env` parameter only supports the test environment `staging` or the production environment `production`.
 //
-// - The `CodeVersions` parameter supports a maximum of two versions for canary release, and the total percentage of these versions must equal 100%.
+// - The `CodeVersions` parameter supports publishing up to two versions in grayscale, and the sum of the percentages for these versions must be equal to 100%.
 //
 // @param tmpReq - CreateRoutineCodeDeploymentRequest
 //
@@ -4125,7 +4125,7 @@ func (client *Client) CreateScheduledPreloadExecutionsWithContext(ctx context.Co
 
 // Summary:
 //
-// Adds a scheduled prefetch task.
+// Creates a scheduled prefetch task.
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -4189,11 +4189,11 @@ func (client *Client) CreateScheduledPreloadJobWithContext(ctx context.Context, 
 //
 // Description:
 //
-// - Before creating a site, you must have an active plan instance.
+// - Before you create a site, you must have an available plan instance.
 //
-// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid Chinese Internet Content Provider (ICP) filing.
+// - If the acceleration region is set to the Chinese mainland or global, the domain name of the site must have an ICP filing.
 //
-// - Each user can invoke this operation up to 100 times per hour.
+// - Each user can call this API operation up to 100 times per hour.
 //
 // @param request - CreateSiteRequest
 //
@@ -4443,6 +4443,76 @@ func (client *Client) CreateSiteDeliveryTaskWithContext(ctx context.Context, tmp
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSiteDeliveryTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a slider CAPTCHA page.
+//
+// @param tmpReq - CreateSliderCaptchaPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSliderCaptchaPageResponse
+func (client *Client) CreateSliderCaptchaPageWithContext(ctx context.Context, tmpReq *CreateSliderCaptchaPageRequest, runtime *dara.RuntimeOptions) (_result *CreateSliderCaptchaPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSliderCaptchaPageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Configs) {
+		request.ConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configs, dara.String("Configs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SiteIds) {
+		request.SiteIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SiteIds, dara.String("SiteIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigsShrink) {
+		body["Configs"] = request.ConfigsShrink
+	}
+
+	if !dara.IsNil(request.CustomContent) {
+		body["CustomContent"] = request.CustomContent
+	}
+
+	if !dara.IsNil(request.ForceLanguage) {
+		body["ForceLanguage"] = request.ForceLanguage
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SiteIdsShrink) {
+		body["SiteIds"] = request.SiteIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSliderCaptchaPage"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSliderCaptchaPageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5039,7 +5109,7 @@ func (client *Client) CreateWafRulesetWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a waiting room for a website.
+// Creates a waiting room for a site.
 //
 // @param tmpReq - CreateWaitingRoomRequest
 //
@@ -5153,11 +5223,11 @@ func (client *Client) CreateWaitingRoomWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a waiting room event. You can specify the queuing method and type.
+// Creates a waiting room event and allows you to configure the queuing method and type.
 //
 // Description:
 //
-// Your site plan must be Advanced or higher to use this feature. The number of configurations for this feature cannot exceed the quota included in your site plan.
+// To use this feature, the site plan must be the Premium Edition or higher. The number of configurations for this feature cannot exceed the quota allowed by your site plan.
 //
 // @param request - CreateWaitingRoomEventRequest
 //
@@ -5281,7 +5351,7 @@ func (client *Client) CreateWaitingRoomEventWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Your site plan must be Enterprise Edition or higher to use this feature, and the site plan must support this feature.
+// This feature is available only if your site is on the Enterprise plan and the plan supports this feature.
 //
 // @param request - CreateWaitingRoomRuleRequest
 //
@@ -7591,6 +7661,50 @@ func (client *Client) DeleteSiteOriginClientCertificateWithContext(ctx context.C
 
 // Summary:
 //
+// Deletes the slider CAPTCHA page.
+//
+// @param request - DeleteSliderCaptchaPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSliderCaptchaPageResponse
+func (client *Client) DeleteSliderCaptchaPageWithContext(ctx context.Context, request *DeleteSliderCaptchaPageRequest, runtime *dara.RuntimeOptions) (_result *DeleteSliderCaptchaPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSliderCaptchaPage"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSliderCaptchaPageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Transport Layer Application
 //
 // @param request - DeleteTransportLayerApplicationRequest
@@ -8291,7 +8405,7 @@ func (client *Client) DescribeCacheReservePriceGapWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the region information supported by the rules engine, including information in three dimensions: country, region, and ISP.
+// Queries the region information supported by the rule engine, including countries, regions, and ISPs.
 //
 // @param request - DescribeConditionIPBInfoRequest
 //
@@ -8331,7 +8445,7 @@ func (client *Client) DescribeConditionIPBInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the configurations of custom scene policies.
+// Queries the configurations of scenario-specific policies.
 //
 // @param request - DescribeCustomScenePoliciesRequest
 //
@@ -8383,7 +8497,7 @@ func (client *Client) DescribeCustomScenePoliciesWithContext(ctx context.Context
 
 // Summary:
 //
-// Gets a list of DDoS attack events.
+// Queries a list of DDoS attack events.
 //
 // @param request - DescribeDDoSAllEventListRequest
 //
@@ -8579,7 +8693,7 @@ func (client *Client) DescribeDDoSEventMaxWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # DDoS Analysis Layer 7 QPS Trend Chart API
+// Invokes the DescribeDdosL7QpsList operation to query the DDoS application-layer time dimension aggregation statistics information.
 //
 // @param request - DescribeDDoSL7QpsListRequest
 //
@@ -8899,7 +9013,7 @@ func (client *Client) DescribeHttpDDoSAttackProtectionWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries HTTP DDoS attack protection rules.
+// Queries HTTP DDoS attack prevention rules.
 //
 // @param request - DescribeHttpDDoSAttackRulesRequest
 //
@@ -8951,7 +9065,7 @@ func (client *Client) DescribeHttpDDoSAttackRulesWithContext(ctx context.Context
 
 // Summary:
 //
-// Describes the accurate access control rules created by Deep Learning and Protection.
+// Queries the accurate access control rules delivered by deep learning and mitigation.
 //
 // @param request - DescribeHttpDDoSIntelligentAclRulesRequest
 //
@@ -9007,7 +9121,7 @@ func (client *Client) DescribeHttpDDoSIntelligentAclRulesWithContext(ctx context
 
 // Summary:
 //
-// Queries the frequency control rules generated by Deep Learning and Protection.
+// Queries the frequency control rules delivered by deep learning and protection.
 //
 // @param request - DescribeHttpDDoSIntelligentRateLimitRulesRequest
 //
@@ -9063,7 +9177,7 @@ func (client *Client) DescribeHttpDDoSIntelligentRateLimitRulesWithContext(ctx c
 
 // Summary:
 //
-// Queries the details of prefetch tasks. Supports paged query by time, task status, and prefetch URL.
+// Queries the details of prefetch tasks and supports paginated queries by time, task status, and prefetch URL.
 //
 // @param request - DescribePreloadTasksRequest
 //
@@ -13913,6 +14027,50 @@ func (client *Client) GetSiteWafSettingsWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Retrieves the slider CAPTCHA page.
+//
+// @param request - GetSliderCaptchaPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSliderCaptchaPageResponse
+func (client *Client) GetSliderCaptchaPageWithContext(ctx context.Context, request *GetSliderCaptchaPageRequest, runtime *dara.RuntimeOptions) (_result *GetSliderCaptchaPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSliderCaptchaPage"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSliderCaptchaPageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Multi-level Cache Configuration for Site
 //
 // @param request - GetTieredCacheRequest
@@ -14123,11 +14281,11 @@ func (client *Client) GetUserLogDeliveryQuotaWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the maximum value of a numeric quota across all plans under a user account.
+// Queries the maximum value of a numeric quota across all plans under a user.
 //
 // Description:
 //
-// This operation allows you to query the real-time log delivery quota for different business types in your Alibaba Cloud account. You must provide your Alibaba Cloud user ID (aliUid) and the business type (BusinessType). The system returns the remaining quota for the specified business type, helping you understand the current quota usage.
+// This operation allows you to query the real-time log delivery quota for different business types in your Alibaba Cloud account. You must provide your Alibaba Cloud user ID (aliUid) and the business type (BusinessType) of interest. The system returns the remaining quota for the specified business type to help you understand the current quota usage.
 //
 // @param request - GetUserMaxPlanQuotaRequest
 //
@@ -14553,7 +14711,7 @@ func (client *Client) ListAWSRegionInfosWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the list of asynchronous tasks. You can use this operation to query the status of asynchronous tasks triggered by users, such as free certificate applications.
+// Queries a list of asynchronous tasks. You can use this operation to query the status of user-triggered asynchronous tasks, such as free certificate applications.
 //
 // @param request - ListAsyncTasksRequest
 //
@@ -14593,7 +14751,7 @@ func (client *Client) ListAsyncTasksWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the list of Bot security instances.
+// Queries bot security instances.
 //
 // @param request - ListBotInstancesRequest
 //
@@ -14657,7 +14815,7 @@ func (client *Client) ListBotInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the list of cache reserve instances for the current user.
+// Queries the cache reservation instances of the current user.
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -14793,7 +14951,7 @@ func (client *Client) ListCasCertificatesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the certificate list for a specific site.
+// Queries a list of certificates for a specific site.
 //
 // @param request - ListCertificatesRequest
 //
@@ -15209,7 +15367,7 @@ func (client *Client) ListCustomResponseCodeRulesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the list of additionally purchased DDoS security instances.
+// Queries the list of add-on DDoS security instances.
 //
 // @param request - ListDDoSInstancesRequest
 //
@@ -15593,7 +15751,7 @@ func (client *Client) ListEdgeRoutineRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the list of environments for a site.
+// Queries the list of site environments.
 //
 // @param request - ListEnvironmentsRequest
 //
@@ -16577,7 +16735,7 @@ func (client *Client) ListOriginRulesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Lists all custom response pages created by the user. This operation supports pagination and allows you to retrieve the response page list based on page number and page size.
+// Lists all custom response pages created by the user. This operation supports pagination, allowing you to retrieve response pages by page number and page size.
 //
 // @param tmpReq - ListPagesRequest
 //
@@ -16635,11 +16793,11 @@ func (client *Client) ListPagesWithContext(ctx context.Context, tmpReq *ListPage
 
 // Summary:
 //
-// Queries the list of pay-as-you-go plan instances.
+// Queries pay-as-you-go plan instances.
 //
 // Description:
 //
-// This operation queries the list of pay-as-you-go plan instances under your account. You can filter and sort results by multiple conditions.
+// This operation queries pay-as-you-go plan instances under your account and supports filtering and sorting by various conditions.
 //
 // @param request - ListPostpaidRatePlanInstancesRequest
 //
@@ -16928,7 +17086,7 @@ func (client *Client) ListRoutineBuildConfigurationsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves the list of ER build tasks.
+// Queries the list of Edge Routine (ER) build tasks.
 //
 // @param request - ListRoutineBuildsRequest
 //
@@ -17350,7 +17508,7 @@ func (client *Client) ListSiteDeliveryTasksWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the feature configurations of a site. You can query all feature configurations of a site or specify FunctionName to query a specific feature configuration.
+// Queries the feature configurations of a site. You can query all feature configurations of a site or specify the FunctionName parameter to query a specific feature configuration.
 //
 // @param request - ListSiteFunctionsRequest
 //
@@ -17494,7 +17652,7 @@ func (client *Client) ListSiteRoutesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the list of sites under the current user, including site names, statuses, and configurations.
+// Queries a list of sites for the current user, including information such as the site name, status, and configuration.
 //
 // @param tmpReq - ListSitesRequest
 //
@@ -17530,6 +17688,64 @@ func (client *Client) ListSitesWithContext(ctx context.Context, tmpReq *ListSite
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSitesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists slider CAPTCHA pages.
+//
+// @param tmpReq - ListSliderCaptchaPagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSliderCaptchaPagesResponse
+func (client *Client) ListSliderCaptchaPagesWithContext(ctx context.Context, tmpReq *ListSliderCaptchaPagesRequest, runtime *dara.RuntimeOptions) (_result *ListSliderCaptchaPagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSliderCaptchaPagesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.QueryArgs) {
+		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, dara.String("QueryArgs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.QueryArgsShrink) {
+		query["QueryArgs"] = request.QueryArgsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSliderCaptchaPages"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSliderCaptchaPagesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17684,7 +17900,7 @@ func (client *Client) ListTraceTasksWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Query the list of Layer 4 applications for a site.
+// Queries the Layer 4 applications associated with a site.
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -17860,7 +18076,7 @@ func (client *Client) ListUserDeliveryTasksWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the plan instances purchased by the user and their details.
+// Queries the details of the plan instances purchased by the user.
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -18036,7 +18252,7 @@ func (client *Client) ListUserWafRulesetsWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries the version list of a site.
+// Queries the list of versions for a site.
 //
 // @param request - ListVersionsRequest
 //
@@ -19766,9 +19982,7 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Resets the progress of a scheduled prefetch task and restarts the prefetch from the beginning.
-//
-// Before calling this operation, you must first create a scheduled prefetch task by calling CreateScheduledPreloadJob to obtain a valid task ID, and then pass the ID to this operation for resetting.
+// Resets the progress of a scheduled prefetch task to restart prefetching from the beginning. Prerequisite: You must first create a scheduled prefetch task by calling CreateScheduledPreloadJob to obtain a valid task ID, and then pass the ID to this operation to reset the task.
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -19962,7 +20176,7 @@ func (client *Client) RollbackEnvironmentVersionWithContext(ctx context.Context,
 
 // Summary:
 //
-// Configures the automatic frequency control threshold for a site.
+// Sets the intelligent rate limiting threshold for a site.
 //
 // @param request - SetAutomaticFrequencyControlConfigRequest
 //
@@ -20272,7 +20486,7 @@ func (client *Client) SetDdosMaxBurstGbpsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// This operation configures the intelligent HTTP DDoS protection settings for a site.
+// Configures HTTP DDoS deep learning and protection settings.
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -20324,7 +20538,7 @@ func (client *Client) SetHttpDDoSAttackIntelligentProtectionWithContext(ctx cont
 
 // Summary:
 //
-// Configures HTTP DDoS attack protection for a website.
+// Configures the mode of the HTTP DDoS Attack prevention mitigation policies.
 //
 // @param request - SetHttpDDoSAttackProtectionRequest
 //
@@ -20372,7 +20586,7 @@ func (client *Client) SetHttpDDoSAttackProtectionWithContext(ctx context.Context
 
 // Summary:
 //
-// # Set the Protection Action for Specified HTTP DDoS Attack Rules
+// Modifies the protection action Settings for a specified HTTP DDoS attack prevention rule.
 //
 // @param request - SetHttpDDoSAttackRuleActionRequest
 //
@@ -20424,7 +20638,7 @@ func (client *Client) SetHttpDDoSAttackRuleActionWithContext(ctx context.Context
 
 // Summary:
 //
-// # Set the Protection Status of Specified HTTP DDoS Attack Rules
+// Configures the settings for the protection status of specified rules for HTTP DDoS attack prevention.
 //
 // @param request - SetHttpDDoSAttackRuleStatusRequest
 //
@@ -20612,21 +20826,21 @@ func (client *Client) SetOriginClientCertificateHostnamesWithContext(ctx context
 
 // Summary:
 //
-// Sets environment variables for a Routine.
+// Sets the environment variables for a routine.
 //
 // Description:
 //
-// - If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
+// - If you do not specify StartTime and EndTime, this operation returns data for the last 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
-// - The time granularity of returned data varies based on the time range specified by StartTime and EndTime.
+// - The time granularity varies based on the time span between StartTime and EndTime:
 //
-//   - If the time range is less than or equal to 3 hours, data is returned at a 1-minute granularity.
+//   - If the time span is 3 hours or less, data is returned at 1-minute granularity.
 //
-//   - If the time range is greater than 3 hours and less than or equal to 1 day, data is returned at a 5-minute granularity.
+//   - If the time span is greater than 3 hours and less than or equal to 1 day, data is returned at 5-minute granularity.
 //
-//   - If the time range is greater than 1 day and less than or equal to 10 days, data is returned at an hourly granularity.
+//   - If the time span is greater than 1 day and less than or equal to 10 days, data is returned at 1-hour granularity.
 //
-//   - If the time range is greater than 10 days and less than or equal to 31 days, data is returned at a daily granularity.
+//   - If the time span is greater than 10 days and less than or equal to 31 days, data is returned at 1-day granularity.
 //
 // @param tmpReq - SetRoutineEnvironmentVariablesRequest
 //
@@ -21488,7 +21702,7 @@ func (client *Client) UpdateCacheTagWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Modifies the CNAME flattening configuration of a site.
+// Modifies the CNAME flattening configuration for a site.
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -21864,7 +22078,7 @@ func (client *Client) UpdateCustomResponseCodeRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Updates a specified custom scene policy.
+// Modifies the configuration of the specified scenario-specific policy.
 //
 // @param request - UpdateCustomScenePolicyRequest
 //
@@ -24292,7 +24506,7 @@ func (client *Client) UpdateScheduledPreloadExecutionWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the search engine crawler allowlisting configuration for a site.
+// Modifies the configuration for allowing search engine crawlers on a site.
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -24396,7 +24610,7 @@ func (client *Client) UpdateSiteAccessTypeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the acceleration region of a site. Updates the acceleration configuration of a site to adapt to changes in traffic distribution or improve the access experience for users in specific regions.
+// Modifies the acceleration region for a single site. Updates the acceleration configuration of the site to adapt to changes in traffic distribution or improve the access experience for users in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -24670,7 +24884,7 @@ func (client *Client) UpdateSiteInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the exclusive site name configuration. After this feature is enabled, other accounts can no longer create sites or subsites with the same name as the current site.
+// Modifies the exclusive configuration of a site name. After this feature is enabled, other accounts can no longer create sites or subsites with the same name as the current site.
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -24822,7 +25036,81 @@ func (client *Client) UpdateSiteVanityNSWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the multi-level cache configuration of a site.
+// Updates a slider CAPTCHA page.
+//
+// @param tmpReq - UpdateSliderCaptchaPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSliderCaptchaPageResponse
+func (client *Client) UpdateSliderCaptchaPageWithContext(ctx context.Context, tmpReq *UpdateSliderCaptchaPageRequest, runtime *dara.RuntimeOptions) (_result *UpdateSliderCaptchaPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSliderCaptchaPageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Configs) {
+		request.ConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configs, dara.String("Configs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SiteIds) {
+		request.SiteIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SiteIds, dara.String("SiteIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigsShrink) {
+		body["Configs"] = request.ConfigsShrink
+	}
+
+	if !dara.IsNil(request.CustomContent) {
+		body["CustomContent"] = request.CustomContent
+	}
+
+	if !dara.IsNil(request.ForceLanguage) {
+		body["ForceLanguage"] = request.ForceLanguage
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SiteIdsShrink) {
+		body["SiteIds"] = request.SiteIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSliderCaptchaPage"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSliderCaptchaPageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the multi-tier cache configuration for a site.
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -25606,7 +25894,7 @@ func (client *Client) UpdateWaitingRoomWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates the configuration of a waiting room event.
+// Updates the configurations of a waiting room event.
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -25730,7 +26018,7 @@ func (client *Client) UpdateWaitingRoomEventWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Modifies the rule settings of a specific waiting room for a site, including the rule name, enabled status, and rule content.
+// You can call this operation to update the rule settings of a specific waiting room on a site, including the rule name, status, and rule content.
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //

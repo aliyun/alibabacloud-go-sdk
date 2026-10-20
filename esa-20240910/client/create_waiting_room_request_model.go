@@ -54,7 +54,7 @@ type CreateWaitingRoomRequest struct {
 	//
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	// The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
+	// The custom HTML content of the waiting room page. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
 	//
 	// example:
 	//
@@ -88,11 +88,11 @@ type CreateWaitingRoomRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The hostname and path configurations.
+	// The hostnames and paths.
 	//
 	// This parameter is required.
 	HostNameAndPath []*CreateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
-	// Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
+	// Specifies whether to enable JSON responses. If enabled, JSON data is returned when the Accept request header contains "application/json". Valid values:
 	//
 	// - **on**: Enabled.
 	//
@@ -130,7 +130,7 @@ type CreateWaitingRoomRequest struct {
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Specifies whether to queue all visitors. Valid values:
+	// Specifies whether to queue all requests. Valid values:
 	//
 	// - **on**: Enabled.
 	//
@@ -144,7 +144,7 @@ type CreateWaitingRoomRequest struct {
 	//
 	// - **random**: Random.
 	//
-	// - **fifo**: First in, first out.
+	// - **fifo**: First-in, first-out (FIFO).
 	//
 	// - **passthrough**: Passthrough.
 	//
@@ -156,13 +156,13 @@ type CreateWaitingRoomRequest struct {
 	//
 	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The waiting room status code. Valid values:
+	// The HTTP status code of the waiting room. Valid values:
 	//
 	// - **200**
 	//
 	// - **202**
 	//
-	// - **429**.
+	// - **429**
 	//
 	// This parameter is required.
 	//
@@ -170,7 +170,7 @@ type CreateWaitingRoomRequest struct {
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// The session duration, in minutes.
+	// The session duration in minutes.
 	//
 	// This parameter is required.
 	//
@@ -178,7 +178,7 @@ type CreateWaitingRoomRequest struct {
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -196,9 +196,9 @@ type CreateWaitingRoomRequest struct {
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// - **default**: Default type.
+	// - **default**: Default.
 	//
-	// - **custom**: Custom type.
+	// - **custom**: Custom.
 	//
 	// This parameter is required.
 	//

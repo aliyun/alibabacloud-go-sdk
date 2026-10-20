@@ -36,11 +36,17 @@ type ListSiteFunctionsRequest struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
+	// - global: Queries global configurations.
+	//
+	// - rule: Queries rule configurations.
+	//
+	// This parameter is optional. If you do not specify this parameter, global and rule configurations are not distinguished. This parameter takes effect only when the FunctionName parameter is specified.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The function name of the feature.
+	// The name of the feature function.
 	//
 	// example:
 	//
@@ -58,13 +64,13 @@ type ListSiteFunctionsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule name. Filters the rule that matches the specified name. This parameter takes effect only when FunctionName is specified.
+	// The rule name. You can use this parameter to query the rule whose name matches the specified value. This parameter takes effect only when the FunctionName parameter is specified.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +78,7 @@ type ListSiteFunctionsRequest struct {
 	//
 	// 340035003106221
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
+	// The version number of the site. For a site with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

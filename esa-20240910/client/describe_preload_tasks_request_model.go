@@ -26,13 +26,13 @@ type iDescribePreloadTasksRequest interface {
 }
 
 type DescribePreloadTasksRequest struct {
-	// The query content. Exact match is used.
+	// The query content for exact matching.
 	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=2
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The end time. The date is in ISO 8601 format and uses UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -40,25 +40,27 @@ type DescribePreloadTasksRequest struct {
 	//
 	// 2023-03-23T06:23:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. Valid values: **1*	- to **100000**. Default value: **1**.
+	// The page number. Valid values: **1*	- to **100000**.
+	//
+	// Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1*	- to **50**.
+	// The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1*	- to **50**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time. The date is in ISO 8601 format and uses UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -66,11 +68,11 @@ type DescribePreloadTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task execution status. Valid values:
 	//
-	// - **Complte**: Complete.
+	// - **Complte**: Completed.
 	//
-	// - **Refreshing**: Prefetching.
+	// - **Refreshing**: Refreshing.
 	//
-	// - **Failed**: Prefetch failed.
+	// - **Failed**: Failed.
 	//
 	// example:
 	//

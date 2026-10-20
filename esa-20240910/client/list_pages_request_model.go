@@ -24,13 +24,13 @@ type ListPagesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The page size. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query parameters passed in JSON format, which contain various filter conditions.
+	// The query parameters passed in JSON format, which include various filter conditions.
 	QueryArgs *ListPagesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
 }
 
@@ -79,7 +79,7 @@ func (s *ListPagesRequest) Validate() error {
 }
 
 type ListPagesRequestQueryArgs struct {
-	// The Content-Type field in the HTTP header. Example values:
+	// Specifies the Content-Type field in the HTTP header, such as:
 	//
 	// 	- text/html
 	//
@@ -89,7 +89,7 @@ type ListPagesRequestQueryArgs struct {
 	//
 	// application/json
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The fuzzy match string for the name or description of a custom page.
+	// Performs a fuzzy match on the name or description of the custom page.
 	//
 	// example:
 	//

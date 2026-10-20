@@ -22,7 +22,7 @@ type CreateWaitingRoomResponseBody struct {
 	//
 	// 85H66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The waiting room ID.
+	// The ID of the waiting room.
 	//
 	// example:
 	//

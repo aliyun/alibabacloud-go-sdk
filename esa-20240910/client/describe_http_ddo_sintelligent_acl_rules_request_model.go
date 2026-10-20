@@ -40,7 +40,7 @@ type DescribeHttpDDoSIntelligentAclRulesRequest struct {
 	//
 	// acl
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The site ID. To obtain the site ID, call the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
 	//
 	// This parameter is required.
 	//

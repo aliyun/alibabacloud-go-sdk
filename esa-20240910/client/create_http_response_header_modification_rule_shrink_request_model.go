@@ -26,25 +26,25 @@ type iCreateHttpResponseHeaderModificationRuleShrinkRequest interface {
 }
 
 type CreateHttpResponseHeaderModificationRuleShrinkRequest struct {
-	// The response header modifications. Three operation types are supported: add, delete, and modify.
+	// The response header modifications. Add, delete, and modify operations are supported.
 	//
 	// This parameter is required.
 	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
-	// The rule content, which uses conditional expressions to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+	// The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. This parameter is not required when you add a global configuration. Valid values:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enabled.
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateHttpResponseHeaderModificationRuleShrinkRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order. A smaller value indicates a higher priority.
+	// The execution sequence of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateHttpResponseHeaderModificationRuleShrinkRequest struct {
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

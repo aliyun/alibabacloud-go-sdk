@@ -30,21 +30,21 @@ type iUpdateCustomScenePolicyResponseBody interface {
 type UpdateCustomScenePolicyResponseBody struct {
 	// The end time of the policy.
 	//
-	// The time is in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2023-04-03T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A list of associated site IDs.
+	// The list of associated website IDs.
 	//
-	// > This parameter is deprecated. We recommend that you use the `SiteIds` parameter instead.
+	// > **[Deprecated]*	- We recommend that you read the value of SiteIds instead.
 	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
 	// The ID of the policy.
 	//
@@ -52,13 +52,13 @@ type UpdateCustomScenePolicyResponseBody struct {
 	//
 	// 1
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The associated site IDs. Multiple IDs are separated by a comma (,).
+	// The IDs of the websites to associate. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type UpdateCustomScenePolicyResponseBody struct {
 	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
 	// The start time of the policy.
 	//
-	// The time is in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2023-04-03T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the template. Valid value:
+	// The name of the template. Valid values:
 	//
-	// - **promotion**: major promotion
+	// - **promotion**: Important Activity.
 	//
 	// example:
 	//

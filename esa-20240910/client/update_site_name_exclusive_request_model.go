@@ -16,11 +16,11 @@ type iUpdateSiteNameExclusiveRequest interface {
 }
 
 type UpdateSiteNameExclusiveRequest struct {
-	// The feature switch. Valid values:
+	// Specifies whether to enable the feature. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enabled.
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateSiteNameExclusiveRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

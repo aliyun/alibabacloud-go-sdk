@@ -66,19 +66,19 @@ func (s *ListEnvironmentsResponseBody) Validate() error {
 }
 
 type ListEnvironmentsResponseBodyEnvironmentList struct {
-	// The creation time.
+	// The time when the environment was created. The time follows the ISO 8601 standard and is in UTC. Example: 2024-08-15T08:15:30Z.
 	//
 	// example:
 	//
 	// 2024-08-15T08:15:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The environment name.
+	// The name of the environment.
 	//
 	// example:
 	//
 	// yichao-test-yctest
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
-	// Indicates whether this is the default environment.
+	// Indicates whether the environment is the default environment.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type ListEnvironmentsResponseBodyEnvironmentList struct {
 	//
 	// ("ip" eq "1.1.1.1")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The site version number.
+	// The version number of the site.
 	//
 	// example:
 	//
 	// 8
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The update time.
+	// The time when the environment was updated. The time follows the ISO 8601 standard and is in UTC. Example: 2023-09-15T08:16:04Z.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type ListPagesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The page size. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query parameters passed in JSON format, which contain various filter conditions.
+	// The query parameters passed in JSON format, which include various filter conditions.
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
 }
 

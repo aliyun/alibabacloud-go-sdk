@@ -24,31 +24,27 @@ type iDescribeDDoSAllEventListRequest interface {
 }
 
 type DescribeDDoSAllEventListRequest struct {
-	// The end time of the query.
-	//
-	// The time must be in ISO 8601 format and in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`. The time range between `StartTime` and `EndTime` cannot exceed 31 days.
-	//
-	// If this parameter is not specified, it defaults to the current time.
+	// The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The time span between the start time and the end time cannot exceed 31 days. If you do not specify this parameter, the current time is used as the end time.
 	//
 	// example:
 	//
 	// 2023-02-22T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of DDoS attack events to query. Valid values:
+	// The type of the DDoS attack event to query. Valid values:
 	//
-	// - **web-cc**: A web resource exhaustion attack.
+	// - **web-cc**: web resource exhaustion attacks.
 	//
-	// - **cc**: A connection-based attack.
+	// - **cc**: connection flood attacks.
 	//
-	// - **traffic**: A traffic-based attack.
+	// - **traffic**: volumetric traffic attacks.
 	//
-	// If you do not specify this parameter, the operation queries `web-cc` events by default.
+	// If the Settings for this parameter are not specified, web resource exhaustion attack events are queried.
 	//
 	// example:
 	//
 	// web-cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The page number to return. Valid range: **1*	- to **100000**.
+	// The page number. Valid values: **1*	- to **100000**.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +58,7 @@ type DescribeDDoSAllEventListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +66,7 @@ type DescribeDDoSAllEventListRequest struct {
 	//
 	// 7096621098****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time of the query.
-	//
-	// The time must be in ISO 8601 format and in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

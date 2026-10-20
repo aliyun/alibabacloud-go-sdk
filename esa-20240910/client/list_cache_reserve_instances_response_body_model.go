@@ -24,7 +24,7 @@ type iListCacheReserveInstancesResponseBody interface {
 }
 
 type ListCacheReserveInstancesResponseBody struct {
-	// The list of cache reserve instances.
+	// The list of cache reservation instances.
 	InstanceInfo []*ListCacheReserveInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
 	// The page number. Default value: **1**.
 	//
@@ -32,7 +32,7 @@ type ListCacheReserveInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**. Valid values: **1*	- to **500**.
+	// The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
 	//
 	// example:
 	//
@@ -134,29 +134,29 @@ func (s *ListCacheReserveInstancesResponseBody) Validate() error {
 }
 
 type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
-	// The capacity of the cache reserve instance. Unit: GB.
+	// The cache reservation capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 512000
 	CacheReserveCapacity *int64 `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
-	// The region where the cache reserve instance is deployed.
+	// The region where the cache reservation is used.
 	//
 	// example:
 	//
 	// HK
 	CacheReserveRegion *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
-	// The billing type. Valid values:
+	// The billing method. Valid values:
 	//
-	// - PREPAY: subscription.
+	// - PREPAY: Prepaid.
 	//
-	// - POSTPAY: pay-as-you-go.
+	// - POSTPAY: Pay-as-you-go.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The creation time of the instance.
+	// The creation time of the instance. The time is in UTC and formatted in accordance with the ISO 8601 standard, for example, 2024-04-12T05:41:51Z.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
 	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the instance expires.
+	// The time when the instance expires. The time is in UTC and formatted in accordance with the ISO 8601 standard, for example, 2024-10-05T16:00:00Z.
 	//
 	// example:
 	//
@@ -182,13 +182,13 @@ type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **online**: The instance is running normally.
+	// - **online**: Normal service status.
 	//
-	// - **offline**: The instance has expired but has not exceeded the retention period and is unavailable.
+	// - **offline**: Expired but not overdue, and in an inactive state.
 	//
-	// - **disable**: The instance has been released.
+	// - **disable**: Released.
 	//
-	// - **overdue**: The instance is stopped due to an overdue payment.
+	// - **overdue**: Stopped due to an overdue payment.
 	//
 	// example:
 	//

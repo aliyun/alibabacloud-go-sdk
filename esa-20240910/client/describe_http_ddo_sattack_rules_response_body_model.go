@@ -34,13 +34,13 @@ type DescribeHttpDDoSAttackRulesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// D4030CD2-0D9D-5E92-B358-421AE58307C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of rule details.
+	// The list of rule information.
 	RuleInfos []*DescribeHttpDDoSAttackRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -117,7 +117,7 @@ func (s *DescribeHttpDDoSAttackRulesResponseBody) Validate() error {
 }
 
 type DescribeHttpDDoSAttackRulesResponseBodyRuleInfos struct {
-	// The action to perform.
+	// The action.
 	//
 	// example:
 	//
@@ -129,19 +129,19 @@ type DescribeHttpDDoSAttackRulesResponseBodyRuleInfos struct {
 	//
 	// deny
 	DefaultAction *string `json:"DefaultAction,omitempty" xml:"DefaultAction,omitempty"`
-	// The ID of the protection rule used for log records.
+	// The attack prevention rule ID for log records.
 	//
 	// example:
 	//
 	// 100010
 	LogRuleId *int32 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
 	// The HTTP request\\"s Accept header contains invalid features#1
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The ID of the HTTP DDoS protection rule.
+	// The HTTP DDoS rule ID.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type DescribeHttpDDoSAttackRulesResponseBodyRuleInfos struct {
 	//
 	// global_01_s
 	RuleIdInfo *string `json:"RuleIdInfo,omitempty" xml:"RuleIdInfo,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// Illegal request。
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the rule. Valid values:
+	// The rule status. Valid values:
 	//
 	// - **on**: The rule is enabled.
 	//

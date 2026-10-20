@@ -28,9 +28,9 @@ type iCreateCustomScenePolicyResponseBody interface {
 }
 
 type CreateCustomScenePolicyResponseBody struct {
-	// The policy end time.
+	// The end time of the policy.
 	//
-	// The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateCustomScenePolicyResponseBody struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A list of associated site IDs.
+	// The list of IDs of the associated websites.
 	//
-	// > This field is deprecated. Read the value from the `SiteIds` field instead.
+	// > **[Deprecated]*	- This parameter is deprecated. Use the SiteIds parameter instead.
 	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
-	// The policy ID.
+	// The ID of the policy.
 	//
 	// example:
 	//
@@ -58,21 +58,21 @@ type CreateCustomScenePolicyResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The associated site IDs, separated by commas.
+	// The IDs of the associated websites. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// 7096621098****, 7096621099****
 	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
-	// The policy start time.
+	// The start time of the policy.
 	//
-	// The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2021-11-07T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//

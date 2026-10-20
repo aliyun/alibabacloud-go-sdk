@@ -134,7 +134,7 @@ func (s *ListRoutineBuildsResponseBody) Validate() error {
 }
 
 type ListRoutineBuildsResponseBodyData struct {
-	// The static assets directory.
+	// The directory of static resources.
 	//
 	// example:
 	//
@@ -162,9 +162,9 @@ type ListRoutineBuildsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Add static files.
+	// Add static files
 	CommitMessage *string `json:"CommitMessage,omitempty" xml:"CommitMessage,omitempty"`
-	// The creation time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -172,59 +172,59 @@ type ListRoutineBuildsResponseBodyData struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	// The Git account ID.
+	// The ID of the Git account.
 	//
 	// example:
 	//
 	// 162124764031208
 	GitAccountId *int64 `json:"GitAccountId,omitempty" xml:"GitAccountId,omitempty"`
-	// The Git account name.
+	// The name of the Git account.
 	//
 	// example:
 	//
 	// rwa
 	GitAccountName *string `json:"GitAccountName,omitempty" xml:"GitAccountName,omitempty"`
-	// The install command.
+	// The installation command.
 	//
 	// example:
 	//
 	// npm install
 	InstallCommand *string `json:"InstallCommand,omitempty" xml:"InstallCommand,omitempty"`
-	// Indicates whether the repository is private. Valid values:
+	// Specifies whether the repository is private. Valid values:
 	//
-	// - true: The repository is private.
+	// - true: Yes.
 	//
-	// - false: The repository is not private.
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	IsPrivate *bool `json:"IsPrivate,omitempty" xml:"IsPrivate,omitempty"`
-	// The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, `12.x`.
+	// The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, and `12.x`.
 	//
 	// example:
 	//
 	// 22.x
 	NodeVersion *string `json:"NodeVersion,omitempty" xml:"NodeVersion,omitempty"`
-	// The Yunxiao pipeline ID.
+	// The ID of the Yunxiao pipeline.
 	//
 	// example:
 	//
 	// 3850166
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The Yunxiao build task ID.
+	// The ID of the Yunxiao build task.
 	//
 	// example:
 	//
 	// 70
 	PipelineRunId *int64 `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
-	// The production branch name.
+	// The name of the production branch.
 	//
 	// example:
 	//
 	// main
 	ProductionBranch *string `json:"ProductionBranch,omitempty" xml:"ProductionBranch,omitempty"`
-	// The repository name.
+	// The name of the repository.
 	//
 	// example:
 	//
@@ -236,19 +236,19 @@ type ListRoutineBuildsResponseBodyData struct {
 	//
 	// /root/admin
 	RootDirectory *string `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty"`
-	// The ER build task ID.
+	// The ID of the ER build task.
 	//
 	// example:
 	//
 	// 4133325046294912
 	RoutineBuildId *int64 `json:"RoutineBuildId,omitempty" xml:"RoutineBuildId,omitempty"`
-	// The ER entry file path.
+	// The path to the ER entry file.
 	//
 	// example:
 	//
 	// /home
 	RoutineEntry *string `json:"RoutineEntry,omitempty" xml:"RoutineEntry,omitempty"`
-	// The ER name.
+	// The name of the ER.
 	//
 	// example:
 	//
@@ -256,35 +256,35 @@ type ListRoutineBuildsResponseBodyData struct {
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
 	// The status of the build task. Valid values:
 	//
-	// - int: initialization
+	// - int: Initialized.
 	//
-	// - pending: preparing
+	// - pending: Preparing.
 	//
-	// - building: building
+	// - building: Building.
 	//
-	// - succeed: build succeeded
+	// - succeed: Succeeded.
 	//
-	// - failed: build failed
+	// - failed: Failed.
 	//
-	// - canceled: canceled
+	// - canceled: Canceled.
 	//
 	// example:
 	//
 	// succeed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//
 	// test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The modification time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The update time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2026-06-20T00:44:23Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

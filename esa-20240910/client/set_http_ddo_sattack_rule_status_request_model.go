@@ -18,9 +18,9 @@ type iSetHttpDDoSAttackRuleStatusRequest interface {
 }
 
 type SetHttpDDoSAttackRuleStatusRequest struct {
-	// List of rule IDs to be operated on, separated by English commas (,).
+	// The list of rule IDs to be operated on. Separate multiple IDs with commas (,).
 	//
-	// > You can call the [DescribeHttpDDoSAttackRules](~~DescribeHttpDDoSAttackRules~~) interface to get this parameter.
+	// > You can obtain this parameter by calling the [DescribeHttpDDoSAttackRules](~~DescribeHttpDDoSAttackRules~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type SetHttpDDoSAttackRuleStatusRequest struct {
 	//
 	// 87570
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type SetHttpDDoSAttackRuleStatusRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Rule status
+	// The rule status. Valid values:
 	//
-	// - **on**: Enable.
+	// - **on**: Enabled.
 	//
-	// - **off**: Disable.
+	// - **off**: Disabled.
 	//
 	// This parameter is required.
 	//

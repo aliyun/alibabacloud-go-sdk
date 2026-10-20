@@ -18,13 +18,13 @@ type iSetHttpDDoSAttackRuleActionRequest interface {
 }
 
 type SetHttpDDoSAttackRuleActionRequest struct {
-	// Rule action, with values:
+	// The action of the rule. Valid values:
 	//
-	// - **deny**: Block.
+	// - **deny**: Blocks the request.
 	//
-	// - **js**: JS Verification.
+	// - **js**: Performs a JavaScript challenge.
 	//
-	// - **observe**: Observe.
+	// - **observe**: Monitors the request.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type SetHttpDDoSAttackRuleActionRequest struct {
 	//
 	// js
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// List of rule IDs to be operated on, separated by English commas (,).
+	// The IDs of the rules to be managed. Separate multiple IDs with commas (,).
 	//
-	// > You can call the [DescribeHttpDDoSAttackRules](~~DescribeHttpDDoSAttackRules~~) API to get this parameter.
+	// > You can call the [DescribeHttpDDoSAttackRules](~~DescribeHttpDDoSAttackRules~~) operation to query the IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type SetHttpDDoSAttackRuleActionRequest struct {
 	//
 	// 100000
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//

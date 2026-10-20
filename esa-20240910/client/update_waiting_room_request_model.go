@@ -48,13 +48,13 @@ type iUpdateWaitingRoomRequest interface {
 }
 
 type UpdateWaitingRoomRequest struct {
-	// The custom cookie name.
+	// The name of the custom cookie.
 	//
 	// example:
 	//
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	// The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must be in Base64 encoding.
+	// The custom content of the waiting room page. This parameter is required when the waiting room type is custom. The content requires Base64 encoding.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type UpdateWaitingRoomRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to disable session renewal. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: Disables session renewal.
 	//
-	// - **off**: Disabled.
+	// - **off**: Enables session renewal.
 	//
 	// example:
 	//
@@ -78,33 +78,33 @@ type UpdateWaitingRoomRequest struct {
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// The status of the waiting room. Valid values:
 	//
-	//  - **on**: Enabled.
+	//  - **on**: Enables the waiting room.
 	//
-	//  - **off**: Disabled.
+	//  - **off**: Disables the waiting room.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The hostname and path configurations.
+	// The hostnames and paths.
 	HostNameAndPath []*UpdateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
-	// Specifies whether to enable JSON response. If enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
+	// Specifies whether to enable JSON responses. If this feature is enabled and the Accept request header contains "application/json", JSON data is returned. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: Enables the feature.
 	//
-	// - **off**: Disabled.
+	// - **off**: Disables the feature.
 	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. This parameter is required when the waiting room type is set to default. Valid values:
+	// The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
 	//
-	// - **enus**: English.
+	// - **enus**: English
 	//
-	// - **zhcn**: Simplified Chinese.
+	// - **zhcn**: Simplified Chinese
 	//
-	// - **zhhk**: Traditional Chinese.
+	// - **zhhk**: Traditional Chinese
 	//
 	// example:
 	//
@@ -122,11 +122,11 @@ type UpdateWaitingRoomRequest struct {
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Specifies whether to queue all visitors. Valid values:
+	// Specifies whether to queue all users. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: Enables the feature.
 	//
-	// - **off**: Disabled.
+	// - **off**: Disables the feature.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ type UpdateWaitingRoomRequest struct {
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// - **random**: random.
+	// - **random**: random
 	//
-	// - **fifo**: first-in, first-out.
+	// - **fifo**: first in, first out (FIFO)
 	//
-	// - **passthrough**: passthrough.
+	// - **passthrough**: passthrough
 	//
-	// - **reject-all**: reject all.
+	// - **reject-all**: reject all
 	//
 	// example:
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The status code returned by the waiting room. Valid values:
+	// The HTTP status code of the waiting room. Valid values:
 	//
 	// - **200**
 	//
@@ -158,13 +158,13 @@ type UpdateWaitingRoomRequest struct {
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// The session duration in minutes.
+	// The duration of a user session, in minutes.
 	//
 	// example:
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
 	//
 	// This parameter is required.
 	//
@@ -178,7 +178,7 @@ type UpdateWaitingRoomRequest struct {
 	//
 	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
-	// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+	// The ID of the waiting room. You can call the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation to query the waiting room ID.
 	//
 	// This parameter is required.
 	//
@@ -188,9 +188,9 @@ type UpdateWaitingRoomRequest struct {
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// - **default**: default type.
+	// - **default**: default type
 	//
-	// - **custom**: custom type.
+	// - **custom**: custom type
 	//
 	// example:
 	//

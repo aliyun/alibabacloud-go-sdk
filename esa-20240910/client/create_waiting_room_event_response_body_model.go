@@ -16,13 +16,13 @@ type iCreateWaitingRoomEventResponseBody interface {
 }
 
 type CreateWaitingRoomEventResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The waiting room event ID. You can call the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the waiting room event ID.
+	// The ID of the waiting room event. You can obtain the waiting room event ID by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
 	//
 	// example:
 	//

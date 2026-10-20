@@ -38,9 +38,9 @@ type iListSitesShrinkRequest interface {
 type ListSitesShrinkRequest struct {
 	// The access type. Valid values:
 	//
-	// - **NS**: NS-based access.
+	// - **NS**: NS hosting access
 	//
-	// - **CNAME**: CNAME-based access.
+	// - **CNAME**: CNAME access
 	//
 	// example:
 	//
@@ -48,53 +48,53 @@ type ListSitesShrinkRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The acceleration region. Valid values:
 	//
-	// - **domestic**: the Chinese mainland only.
+	// - **domestic**: the Chinese mainland
 	//
-	// - **global**: global.
+	// - **global**: global
 	//
-	// - **overseas**: global (excluding the Chinese mainland).
+	// - **overseas**: global (excluding the Chinese mainland)
 	//
 	// example:
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Specifies whether to query only Enterprise Edition sites. Set this parameter to **true*	- to query only Enterprise Edition sites.
+	// Specifies whether to query only Enterprise Edition sites. If you set this parameter to **true**, only Enterprise Edition sites are queried.
 	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	// The sort field. By default, results are sorted by creation time. Valid values:
+	// The sort field. By default, sites are sorted by creation time. Valid values:
 	//
-	// - gmtCreate: site creation time.
+	// - gmtCreate: site creation time
 	//
-	// - visitTime: site access time.
+	// - visitTime: site access time
 	//
 	// example:
 	//
 	// visitTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number for paging. The value must be greater than or equal to 1.
+	// The page number Settings for paging in a paged query. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Valid values: 1 to 500.
+	// The number of entries per page for paging in a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plan subscription type. Valid values:
+	// The subscription plan type. Valid values:
 	//
-	// - **basicplan**: Basic Edition.
+	// - **basicplan**: basic edition
 	//
-	// - **standardplan**: Standard Edition.
+	// - **standardplan**: standard edition
 	//
-	// - **advancedplan**: Premium Edition.
+	// - **advancedplan**: advanced edition
 	//
-	// - **enterpriseplan**: Enterprise Edition.
+	// - **enterpriseplan**: enterprise edition
 	//
 	// example:
 	//
@@ -112,15 +112,15 @@ type ListSitesShrinkRequest struct {
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The search matching mode for the site name. Default is exact match. Valid values:
+	// The search match mode for the site name. Default value: exact. Valid values:
 	//
-	// - **prefix**: prefix match.
+	// - **prefix**: prefix match
 	//
-	// - **suffix**: suffix match.
+	// - **suffix**: suffix match
 	//
-	// - **exact**: exact match.
+	// - **exact**: exact match
 	//
-	// - **fuzzy**: fuzzy match.
+	// - **fuzzy**: fuzzy match
 	//
 	// example:
 	//

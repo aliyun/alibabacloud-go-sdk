@@ -32,13 +32,13 @@ type ListDDoSInstancesRequest struct {
 	//
 	// esa-ddos-b1e0l80ugfeo
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number for a paged query. The value must be greater than or equal to 1. Default value: **1**.
+	// The page number for paging. The value must be greater than or equal to 1. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
+	// The number of entries per page for paging. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type ListDDoSInstancesRequest struct {
 	//
 	// esa-site-a71k7bw1adf
 	SiteInstanceId *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
-	// The sort field. By default, results are sorted by purchase time. Valid values:
+	// The sort field. By default, instances are sorted by creation time. Valid values:
 	//
-	// - **CreateTime**: purchase time.
+	// - **CreateTime**: the creation time.
 	//
 	// example:
 	//

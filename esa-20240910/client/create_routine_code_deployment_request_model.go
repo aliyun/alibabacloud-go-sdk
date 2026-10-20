@@ -20,17 +20,15 @@ type iCreateRoutineCodeDeploymentRequest interface {
 }
 
 type CreateRoutineCodeDeploymentRequest struct {
-	// The list of percentage-based canary release version configurations. A maximum of two versions are supported, and the total percentage must equal 100.
+	// The list of code version configurations for the percentage-based canary release. You can specify up to two code versions, and the sum of the percentages must be equal to 100.
 	//
 	// This parameter is required.
 	CodeVersions []*CreateRoutineCodeDeploymentRequestCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	// The environment name.
+	// The environment name. Valid values:
 	//
-	// Valid values:
+	// - `staging`: the staging environment.
 	//
-	// - `staging`: staging environment
-	//
-	// - `production`: production environment
+	// - `production`: the production environment.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +36,7 @@ type CreateRoutineCodeDeploymentRequest struct {
 	//
 	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The name of the Edge Function Routine.
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +44,9 @@ type CreateRoutineCodeDeploymentRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The deployment strategy.
+	// The deployment strategy. Valid values:
 	//
-	// Valid values:
-	//
-	// - `percentage`: percentage mode
+	// - `percentage`: percentage mode.
 	//
 	// This parameter is required.
 	//
@@ -126,7 +122,7 @@ type CreateRoutineCodeDeploymentRequestCodeVersions struct {
 	//
 	// 1723599747213377175
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The canary release percentage for the code version. Valid values: 1 to 100.
+	// The traffic percentage for the canary release of the code version. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//

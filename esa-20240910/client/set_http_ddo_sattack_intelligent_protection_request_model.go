@@ -18,11 +18,11 @@ type iSetHttpDDoSAttackIntelligentProtectionRequest interface {
 }
 
 type SetHttpDDoSAttackIntelligentProtectionRequest struct {
-	// The mode for the intelligent HTTP DDoS protection feature. Valid values:
+	// The HTTP DDoS depth learning and defense pattern. Valid values:
 	//
-	// - **observe**: The system generates warnings for attack traffic but does not block it.
+	// - **observe**: Monitor.
 	//
-	// - **defense**: The system blocks detected attack traffic.
+	// - **defense**: Block.
 	//
 	// This parameter is required.
 	//
@@ -30,15 +30,15 @@ type SetHttpDDoSAttackIntelligentProtectionRequest struct {
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
-	// The sensitivity level for the intelligent HTTP DDoS protection feature. Valid values:
+	// The HTTP DDoS deep learning and protection level. Valid values:
 	//
-	// - **level0**: very loose
+	// - **level0**: Very loose.
 	//
-	// - **level30**: loose
+	// - **level30**: Loose.
 	//
-	// - **level60**: normal
+	// - **level60**: Normal.
 	//
-	// - **level90**: strict
+	// - **level90**: Strict.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type SetHttpDDoSAttackIntelligentProtectionRequest struct {
 	//
 	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
-	// The ID of the site. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

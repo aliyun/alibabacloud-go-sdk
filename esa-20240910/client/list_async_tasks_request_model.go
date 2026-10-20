@@ -30,13 +30,13 @@ type ListAsyncTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of tasks to display per page.
+	// The number of tasks to return on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource ID to which the task belongs, such as a site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
+	// The IDs of the resources to which the tasks belong, such as site IDs. You can obtain site IDs by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
@@ -50,17 +50,17 @@ type ListAsyncTasksRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The current status of the task. Valid values:
 	//
-	// - in_progress: in progress.
+	// - in_progress: The task is in progress.
 	//
-	// - success: completed.
+	// - success: The task is completed.
 	//
-	// - fail: failed.
+	// - fail: The task failed.
 	//
 	// example:
 	//
 	// success
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The task type. For example, the task type for applying for a free certificate is free_cert.
+	// The task type. For example, the value for a free certificate application is free_cert.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type ListSitesResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of queried site information.
+	// The list of queried sites.
 	Sites []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
 	// The total number of sites.
 	//
@@ -119,45 +119,45 @@ func (s *ListSitesResponseBody) Validate() error {
 type ListSitesResponseBodySites struct {
 	// The site access type. Valid values:
 	//
-	// - **NS**: NS-based access.
+	// - **NS**: NS access
 	//
-	// - **CNAME**: CNAME-based access.
+	// - **CNAME**: CNAME access
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The CNAME suffix of the site. For sites that use CNAME-based access, this is the CNAME suffix that needs to be configured for records.
+	// The CNAME suffix of the site. For sites accessed through CNAME, this records the CNAME suffix that needs to be configured.
 	//
 	// example:
 	//
 	// example.cname.com
 	CnameZone *string `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
-	// The acceleration region of the site. Valid values:
+	// The site acceleration region. Valid values:
 	//
-	// - **domestic**: the Chinese mainland only.
+	// - **domestic**: the Chinese mainland
 	//
-	// - **global**: global.
+	// - **global**: global
 	//
-	// - **overseas**: global (excluding the Chinese mainland).
+	// - **overseas**: global (excluding the Chinese mainland)
 	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The creation time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time of the site. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID of the plan attached to the site.
+	// The instance ID of the plan that you attach to the site.
 	//
 	// example:
 	//
 	// onBvtlmIyeXLbiDw81F9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of name servers assigned to the site. Multiple values are separated by commas (,).
+	// The list of name servers assigned to the site. Multiple name servers are separated by commas (,).
 	//
 	// example:
 	//
@@ -165,15 +165,15 @@ type ListSitesResponseBodySites struct {
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
 	// The reason why the site is disabled. Valid values:
 	//
-	// - **expiration_ arrears**: The subscription plan has expired or the account has an overdue payment.
+	// - **expiration_ arrears**: The plan you subscribe to has expired or the account has an overdue payment.
 	//
 	// - **internally_disabled**: The site is disabled by the system.
 	//
-	// - **missing_icp**: The domain name does not have an ICP filing.
+	// - **missing_icp**: The domain name lacks an ICP filing.
 	//
-	// - **content_violation**: Content violation.
+	// - **content_violation**: The site is disabled due to a content violation.
 	//
-	// - **proactively_disabled**: You proactively disabled the site or the site is disabled because the usage cap you configured is reached.
+	// - **proactively_disabled**: You proactively disabled the site or the site is disabled because it reached the usage cap Settings.
 	//
 	// example:
 	//
@@ -211,13 +211,13 @@ type ListSitesResponseBodySites struct {
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 	// The site status. Valid values:
 	//
-	// - **pending**: the site is pending configuration.
+	// - **pending**: The site is pending configuration.
 	//
-	// - **active**: the site is activated.
+	// - **active**: The site is activated.
 	//
-	// - **offline**: the site is offline.
+	// - **offline**: The site is offline.
 	//
-	// - **moved**: the site has been superseded.
+	// - **moved**: The site has been replaced.
 	//
 	// example:
 	//
@@ -229,19 +229,19 @@ type ListSitesResponseBodySites struct {
 	//
 	// {"tag1":"value1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The update time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The update time of the site. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The site ownership verification code. When a site uses CNAME-based access, this TXT verification code must be configured.
+	// The site ownership verification code. When a site is accessed through CNAME, this is the TXT verification code that needs to be configured.
 	//
 	// example:
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	// The access time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The access time of the site. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//

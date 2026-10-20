@@ -18,7 +18,7 @@ type iSetHttpDDoSAttackProtectionResponseBody interface {
 }
 
 type SetHttpDDoSAttackProtectionResponseBody struct {
-	// The level of HTTP DDoS attack protection.
+	// The mode of the HTTP DDoS Attack prevention mitigation policies.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type SetHttpDDoSAttackProtectionResponseBody struct {
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//

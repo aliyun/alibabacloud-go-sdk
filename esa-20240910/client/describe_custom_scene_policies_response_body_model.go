@@ -24,7 +24,7 @@ type iDescribeCustomScenePoliciesResponseBody interface {
 }
 
 type DescribeCustomScenePoliciesResponseBody struct {
-	// The configurations of custom scene policies.
+	// The list of configurations for scenario-specific policies.
 	DataModule []*DescribeCustomScenePoliciesResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,13 +32,13 @@ type DescribeCustomScenePoliciesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The maximum number of policies that you can create.
+	// The configuration quota.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeCustomScenePoliciesResponseBody struct {
 	//
 	// 85H66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -134,23 +134,23 @@ func (s *DescribeCustomScenePoliciesResponseBody) Validate() error {
 }
 
 type DescribeCustomScenePoliciesResponseBodyDataModule struct {
-	// The end time of the policy.
+	// The end time of the policy validity period.
 	//
-	// The time is in UTC and follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-03-06T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the custom scene policy.
+	// The name of the scenario-specific policy.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A list of associated site IDs.
+	// The list of associated site IDs.
 	//
-	// > This field is deprecated. We recommend that you use the `SiteIds` field instead.
+	// > **[Deprecated]*	- Read the SiteIds field instead.
 	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
 	// The policy ID.
 	//
@@ -158,15 +158,15 @@ type DescribeCustomScenePoliciesResponseBodyDataModule struct {
 	//
 	// 1234****
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// A comma-separated list of site IDs associated with the policy.
+	// The associated site IDs. Multiple site IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// 123456****,123457****
 	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
-	// The start time of the policy.
+	// The start time of the policy validity period.
 	//
-	// The time is in UTC and follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -174,21 +174,21 @@ type DescribeCustomScenePoliciesResponseBodyDataModule struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The effective status of the policy. Valid values:
 	//
-	// - **disabled**: The policy is disabled.
+	// - **Disabled**: Disabled.
 	//
-	// - **pending**: The policy is waiting to take effect.
+	// - **Pending**: Pending.
 	//
-	// - **running**: The policy is in effect.
+	// - **Running**: Running.
 	//
-	// - **expired**: The policy has expired.
+	// - **Expired**: Expired.
 	//
 	// example:
 	//
 	// Expired
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The template name. Valid value:
+	// The template name. Valid values:
 	//
-	// - **promotion**: A major event.
+	// - **promotion**: Important Activity.
 	//
 	// example:
 	//

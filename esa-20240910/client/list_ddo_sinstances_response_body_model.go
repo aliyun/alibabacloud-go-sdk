@@ -44,7 +44,7 @@ type ListDDoSInstancesResponseBody struct {
 	//
 	// 9F1DC265-BF10-5C9C-B607-760265C5F365
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListDDoSInstancesResponseBody) Validate() error {
 }
 
 type ListDDoSInstancesResponseBodyInstanceInfo struct {
-	// The purchase time of the instance. The time is in ISO 8601 format and displayed in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time of the instance. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -158,13 +158,13 @@ type ListDDoSInstancesResponseBodyInstanceInfo struct {
 	//
 	// sp-ddddxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The scheduled release time. The time is in ISO 8601 format and displayed in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The scheduled release time. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-03-25T16:00:00Z
 	ReserveReleaseTime *string `json:"ReserveReleaseTime,omitempty" xml:"ReserveReleaseTime,omitempty"`
-	// The ID of the associated site plan instance.
+	// The ID of the associated website plan instance.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ type ListDDoSInstancesResponseBodyInstanceInfo struct {
 	SiteInstanceId *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **online**: The instance is running normally.
+	// - **online**: the instance is in normal service status.
 	//
-	// - **offline**: The instance has expired but is not overdue, and is unavailable.
+	// - **offline**: the instance has expired but is not overdue, and is in an unavailable state.
 	//
-	// - **disable**: The instance has been released.
+	// - **disable**: the instance is released.
 	//
-	// - **overdue**: The instance is suspended due to overdue payment.
+	// - **overdue**: the instance is stopped due to an overdue payment.
 	//
 	// example:
 	//

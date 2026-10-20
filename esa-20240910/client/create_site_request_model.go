@@ -26,9 +26,9 @@ type iCreateSiteRequest interface {
 type CreateSiteRequest struct {
 	// The access type of the site. Valid values:
 	//
-	// - **NS**: access by using managed NS records.
+	// - **NS**: hosted NS access
 	//
-	// - **CNAME**: access by configuring a CNAME record.
+	// - **CNAME**: CNAME access
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type CreateSiteRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The acceleration region. Valid values:
 	//
-	// - **domestic**: Chinese mainland only.
+	// - **domestic**: the Chinese mainland
 	//
-	// - **global**: global.
+	// - **global**: global
 	//
-	// - **overseas**: global (excluding the Chinese mainland).
+	// - **overseas**: global (excluding the Chinese mainland)
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateSiteRequest struct {
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The instance ID. You can obtain the instance ID by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. You must specify at least one of InstanceId and SiteId. If both are specified, InstanceId takes precedence.
+	// The instance ID. You can call the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation to obtain the instance ID. You must specify at least one of the instance ID and the site ID. If both are specified, the instance ID takes precedence.
 	//
 	// This parameter is required.
 	//
@@ -58,14 +58,19 @@ type CreateSiteRequest struct {
 	//
 	// dbaudit-cn-nwy349jdb03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The resource group ID. If you do not specify this parameter, the system automatically uses the default resource group ID.
+	// The resource group ID. If you do not specify this parameter, the system automatically uses the ID of the default resource group.
 	//
 	// example:
 	//
 	// rg-acfmw4znnok****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwner   *int64  `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	// The site name.
+	// The UID of the owner of the site plan associated with the site. By default, you do not need to specify this parameter. You only need to specify this parameter when you use a site plan shared across accounts.
+	//
+	// example:
+	//
+	// 122********801267
+	ResourceOwner *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The name of the site.
 	//
 	// This parameter is required.
 	//

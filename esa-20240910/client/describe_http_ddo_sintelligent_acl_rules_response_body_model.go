@@ -40,7 +40,7 @@ type DescribeHttpDDoSIntelligentAclRulesResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of rules.
+	// The list of rule information.
 	RuleInfos []*DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
 	// The total number of rules.
 	//
@@ -117,43 +117,43 @@ func (s *DescribeHttpDDoSIntelligentAclRulesResponseBody) Validate() error {
 }
 
 type DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos struct {
-	// The protection action.
+	// The mitigation action.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The rule trigger condition.
+	// The trigger condition of the rule.
 	//
 	// example:
 	//
 	// {"$and":[{"key":"URI","opValue":"prefix-match","values":"/"}]}
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The ID of the protection rule for log records.
+	// The ID of the mitigation rule used for log records.
 	//
 	// example:
 	//
 	// 1000030
 	LogRuleId *int64 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
-	// The action duration. Unit: seconds.
+	// The punishment duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 1800
 	PunishTime *int64 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
-	// The record name.
+	// The name of the record.
 	//
 	// example:
 	//
 	// test.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
 	// 20569929
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//

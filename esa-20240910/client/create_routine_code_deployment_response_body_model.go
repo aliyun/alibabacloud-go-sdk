@@ -20,21 +20,21 @@ type iCreateRoutineCodeDeploymentResponseBody interface {
 }
 
 type CreateRoutineCodeDeploymentResponseBody struct {
-	// The list of percentage-based canary release code version configurations.
+	// The list of code version configurations for the percentage-based canary release.
 	CodeVersions []*CreateRoutineCodeDeploymentResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	// The deployment record ID.
+	// The ID of the deployment record.
 	//
 	// example:
 	//
 	// 234
 	DeploymentId *string `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The canary release strategy. Fixed value: percentage.
+	// The canary release strategy. The value is fixed as `percentage`.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type CreateRoutineCodeDeploymentResponseBodyCodeVersions struct {
 	//
 	// 1723599747213377175
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The canary release percentage for the code version.
+	// The traffic percentage for the canary release of the code version.
 	//
 	// example:
 	//

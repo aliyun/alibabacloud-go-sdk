@@ -32,7 +32,7 @@ type iUpdateRedirectRuleRequest interface {
 }
 
 type UpdateRedirectRuleRequest struct {
-	// The configuration ID. You can call the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) operation to obtain the configuration ID.
+	// The configuration ID. You can call the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) operation to query the configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to preserve the query string. Valid values:
+	// Specifies whether to retain the query string. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -50,17 +50,17 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	// The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+	// The content of the rule, which uses a conditional expression to match user requests. You do not need to specify this parameter when you add a global configuration. This parameter applies to the following scenarios:
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+	// Specifies whether to enable the rule. You do not need to specify this parameter when you add a global configuration. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -70,19 +70,19 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required when you add a global configuration.
+	// The name of the rule. You do not need to specify this parameter when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution order of the rule. A smaller value indicates a higher priority.
+	// The execution sequence of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The HTTP status code used when the node responds to the client with the redirect address. Valid values:
+	// The HTTP status code used by the node to respond to the client with the redirect address. Valid values:
 	//
 	// - 301
 	//
@@ -106,7 +106,7 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The target URL after the redirect.
+	// The destination URL after the redirect.
 	//
 	// example:
 	//

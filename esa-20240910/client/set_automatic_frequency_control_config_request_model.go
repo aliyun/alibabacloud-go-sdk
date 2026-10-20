@@ -22,13 +22,13 @@ type iSetAutomaticFrequencyControlConfigRequest interface {
 }
 
 type SetAutomaticFrequencyControlConfigRequest struct {
-	// The action to take on requests that trigger the control. Valid values:
+	// The action to perform. Valid values:
 	//
-	// - **observe**: Monitors the requests.
+	// - **observe**: Monitor.
 	//
-	// - **deny**: Blocks the requests.
+	// - **deny**: Block.
 	//
-	// - **js**: Issues a JS challenge.
+	// - **js**: JavaScript Challenge.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type SetAutomaticFrequencyControlConfigRequest struct {
 	//
 	// js
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// Specifies whether to enable automatic frequency control. Valid values:
+	// Specifies whether to enable the feature. Valid values:
 	//
-	// - **on**: Enables automatic frequency control.
+	//  - **on**: Enabled.
 	//
-	// - **off**: Disables automatic frequency control.
+	//  - **off**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type SetAutomaticFrequencyControlConfigRequest struct {
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The protection level. Valid values:
 	//
-	// - **loose**: Loose protection.
+	// - **loose**: Loose.
 	//
-	// - **normal**: Normal protection.
+	// - **normal**: Medium.
 	//
-	// - **strict**: Strict protection.
+	// - **strict**: Strict.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type SetAutomaticFrequencyControlConfigRequest struct {
 	//
 	// normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+	// The ID of the site. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type SetAutomaticFrequencyControlConfigRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the site. For a site with version management enabled, this parameter specifies the version to which the configuration applies. The default value is 0.
+	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version to which the configuration applies. Default value: 0.
 	//
 	// example:
 	//

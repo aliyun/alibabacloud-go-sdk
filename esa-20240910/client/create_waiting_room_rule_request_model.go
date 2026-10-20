@@ -22,13 +22,13 @@ type iCreateWaitingRoomRuleRequest interface {
 }
 
 type CreateWaitingRoomRuleRequest struct {
-	// The rule content. Use a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+	// The rule content. It uses a conditional expression to match user requests. You do not need to specify this parameter when you add a global configuration. Two scenarios are supported:
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: Set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
 	//
-	// For the complete syntax of rule expressions, refer to <props="china">https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/work-with-rules-engine/<props="intl">https://www.alibabacloud.com/help/edge-security-acceleration/esa/user-guide/work-with-rules-engine/
+	// For the complete syntax of rule expressions, refer to <props="china">https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/work-with-rules-engine/<props="intl">https://www.alibabacloud.com/help/edge-security-acceleration/esa/user-guide/work-with-rules-engine/.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type CreateWaitingRoomRuleRequest struct {
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+	// The rule switch. You do not need to specify this parameter when you add a global configuration. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enabled.
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateWaitingRoomRuleRequest struct {
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required when you add a global configuration.
+	// The rule name. You do not need to specify this parameter when you add a global configuration.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateWaitingRoomRuleRequest struct {
 	//
 	// waitingroom_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

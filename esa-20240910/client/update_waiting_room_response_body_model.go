@@ -14,7 +14,7 @@ type iUpdateWaitingRoomResponseBody interface {
 }
 
 type UpdateWaitingRoomResponseBody struct {
-	// The request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//

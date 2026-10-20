@@ -26,13 +26,13 @@ type iListCertificatesResponseBody interface {
 }
 
 type ListCertificatesResponseBody struct {
-	// The page number of the data to return.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListCertificatesResponseBody struct {
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -175,13 +175,13 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The creation time. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2022-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The Domain Control Validation (DCV) information.
+	// The domain control validation (DCV) information.
 	DCV []*ListCertificatesResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
 	// The SHA-256 fingerprint of the certificate.
 	//
@@ -207,7 +207,7 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// GlobalSign Organization Validation CA - SHA256 - G3
 	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
-	// The Keyless server ID. This parameter is valid only when Type is set to keyless.
+	// The Keyless server ID. This parameter is valid only when the Type parameter is set to keyless.
 	//
 	// example:
 	//
@@ -219,13 +219,13 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// The subject alternative name (SAN) of the certificate.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// - Expiring: The certificate is about to expire (within 30 days).
 	//
-	// - Issued: Free certificate - Issued.
+	// - Issued: The free certificate is issued.
 	//
-	// - Applying: Free certificate - Applying.
+	// - Applying: The free certificate is being applied for.
 	//
-	// - ApplyFailed: Free certificate - Application failed.
+	// - ApplyFailed: The application for the free certificate failed.
 	//
-	// - Canceled: Free certificate - Canceled.
+	// - Canceled: The free certificate is canceled.
 	//
 	// example:
 	//
@@ -283,7 +283,7 @@ type ListCertificatesResponseBodyResult struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The certificate type. Valid values:
 	//
-	// - cas: Alibaba Cloud SSL certificate.
+	// - cas: SSL Certificates Service certificate.
 	//
 	// - upload: Custom uploaded certificate.
 	//
@@ -295,7 +295,7 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The update time. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -523,7 +523,7 @@ func (s *ListCertificatesResponseBodyResult) Validate() error {
 }
 
 type ListCertificatesResponseBodyResultDCV struct {
-	// DCV ID。
+	// The DCV ID.
 	//
 	// example:
 	//
@@ -541,7 +541,7 @@ type ListCertificatesResponseBodyResultDCV struct {
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The DCV type. Valid values: DNS, HTTP.
+	// The DCV type. Valid values: DNS and HTTP.
 	//
 	// example:
 	//

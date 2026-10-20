@@ -24,7 +24,7 @@ type iListAsyncTasksResponseBody interface {
 }
 
 type ListAsyncTasksResponseBody struct {
-	// The task list.
+	// The list of tasks.
 	AsyncTasks []*ListAsyncTasksResponseBodyAsyncTasks `json:"AsyncTasks,omitempty" xml:"AsyncTasks,omitempty" type:"Repeated"`
 	// The page number of the returned data.
 	//
@@ -140,7 +140,7 @@ type ListAsyncTasksResponseBodyAsyncTasks struct {
 	//
 	// 2024-09-19 09:36:46
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time.
+	// The last update time.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type ListAsyncTasksResponseBodyAsyncTasks struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The task description.
 	TaskDescription map[string]*string `json:"TaskDescription,omitempty" xml:"TaskDescription,omitempty"`
-	// The custom identifier that is set to associate with this task.
+	// The custom identifier set to associate with the task.
 	//
 	// example:
 	//
@@ -180,11 +180,11 @@ type ListAsyncTasksResponseBodyAsyncTasks struct {
 	TaskKey *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
 	// The current status of the task. Valid values:
 	//
-	// - in_progress: in progress.
+	// - in_progress: The task is in progress.
 	//
-	// - success: completed.
+	// - success: The task is completed.
 	//
-	// - fail: failed.
+	// - fail: The task failed.
 	//
 	// example:
 	//

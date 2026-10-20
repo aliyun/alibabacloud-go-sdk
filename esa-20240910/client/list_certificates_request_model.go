@@ -30,13 +30,13 @@ type ListCertificatesRequest struct {
 	//
 	// example
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number of the data to return.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 3
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -49,8 +49,13 @@ type ListCertificatesRequest struct {
 	// example:
 	//
 	// 1234567890123
-	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The certificate type.
+	//
+	// example:
+	//
+	// free
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Specifies whether to return only valid certificates.
 	//
 	// example:

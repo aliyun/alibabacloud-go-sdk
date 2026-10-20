@@ -22,27 +22,27 @@ type iListTransportLayerApplicationsRequest interface {
 }
 
 type ListTransportLayerApplicationsRequest struct {
-	// The query type for the host record of Layer 4 applications. The following four types are supported, and the default is exact match.
+	// The query type for the host record of the Layer 4 application. Default value: exact. Valid values:
 	//
-	// - fuzzy: Fuzzy match.
+	// - fuzzy: fuzzy match
 	//
-	// - exact: Exact match.
+	// - exact: exact match
 	//
-	// - prefix: Prefix match.
+	// - prefix: prefix match
 	//
-	// - suffix: Suffix match.
+	// - suffix: suffix match
 	//
 	// example:
 	//
 	// fuzzy
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// The page number for paginated queries. The value must be greater than or equal to 1.
+	// The page number Settings for paging in a paged query. Valid values: integers greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paginated queries. Valid values: 1-500.
+	// The number of entries per page for paging in a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListTransportLayerApplicationsRequest struct {
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// Site ID. You can obtain it by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

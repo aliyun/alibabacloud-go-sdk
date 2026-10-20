@@ -20,7 +20,7 @@ type iGetUserMaxPlanQuotaResponseBody interface {
 }
 
 type GetUserMaxPlanQuotaResponseBody struct {
-	// The plan instance ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The plan instance ID. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type GetUserMaxPlanQuotaResponseBody struct {
 	//
 	// - Free Edition: entranceplan
 	//
-	// - Basic: basic
+	// - Basic Edition: basic
 	//
-	// - Standard: medium
+	// - Standard Edition: medium
 	//
-	// - Premium Edition: high
+	// - Advanced Edition: high
 	//
 	//
 	// <props="intl">

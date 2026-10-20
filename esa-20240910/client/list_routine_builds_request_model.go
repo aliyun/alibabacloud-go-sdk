@@ -24,29 +24,29 @@ type iListRoutineBuildsRequest interface {
 }
 
 type ListRoutineBuildsRequest struct {
-	// The page number for a paged query. The value must be greater than or equal to 1.
+	// The page number Settings for paging in a paged query. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries per page for a paged query. Valid values: 1 to 500.
+	// The number of entries per page for paging in a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 500
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ER name.
+	// The name of the Edge Routine (ER).
 	//
 	// example:
 	//
 	// test-routine
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
-	// The field used for sorting. By default, results are sorted by purchase time. Valid values:
+	// The field used for sorting. By default, tasks are sorted by creation time. Valid values:
 	//
-	// - CreateTime: purchase time.
+	// - CreateTime: Creation time.
 	//
-	// - ExpireTime: expiration time.
+	// - ExpireTime: Expiration time.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ListRoutineBuildsRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The sort order. Default value: desc. Valid values:
 	//
-	// - asc: ascending order.
+	// - asc: Ascending order.
 	//
-	// - desc: descending order.
+	// - desc: Descending order.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type ListRoutineBuildsRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The status of the build task. Valid values:
 	//
-	// - int: initialization
+	// - int: Initialized.
 	//
-	// - pending: preparing
+	// - pending: Preparing.
 	//
-	// - building: building
+	// - building: Building.
 	//
-	// - succeed: build succeeded
+	// - succeed: Succeeded.
 	//
-	// - failed: build failed
+	// - failed: Failed.
 	//
-	// - canceled: canceled
+	// - canceled: Canceled.
 	//
 	// example:
 	//

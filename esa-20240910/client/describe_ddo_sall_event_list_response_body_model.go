@@ -24,7 +24,7 @@ type iDescribeDDoSAllEventListResponseBody interface {
 }
 
 type DescribeDDoSAllEventListResponseBody struct {
-	// A list of DDoS attack event details.
+	// The list of DDoS attack events.
 	DataList []*DescribeDDoSAllEventListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,7 +32,7 @@ type DescribeDDoSAllEventListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DescribeDDoSAllEventListResponseBody) Validate() error {
 }
 
 type DescribeDDoSAllEventListResponseBodyDataList struct {
-	// The peak bits per second (Bps) of a volumetric attack.
+	// The peak BPS of volumetric traffic attacks.
 	//
 	// example:
 	//
@@ -142,25 +142,23 @@ type DescribeDDoSAllEventListResponseBodyDataList struct {
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The attack region. Valid values:
 	//
-	// - **domestic**: Chinese mainland.
+	// - **domestic**: the Chinese mainland only.
 	//
-	// - **global**: Global.
+	// - **global**: global.
 	//
-	// - **overseas**: global (excluding Chinese mainland).
+	// - **overseas**: global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The peak connections per second (Cps) of a connection-based attack.
+	// The peak CPS of the connection flood attack.
 	//
 	// example:
 	//
 	// 50
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The end time of the DDoS attack event.
-	//
-	// The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
+	// The end time of the DDoS attack event. The time is displayed in UTC and must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -174,11 +172,11 @@ type DescribeDDoSAllEventListResponseBodyDataList struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The event result. Valid values:
 	//
-	// - **clean**: The attack was successfully cleaned.
+	// - **clean**: traffic scrubbed.
 	//
-	// - **ratelimit**: Rate limiting was applied.
+	// - **ratelimit**: rate limited.
 	//
-	// - **blackhole**: Blackhole filtering was triggered.
+	// - **blackhole**: blackhole filtering.
 	//
 	// example:
 	//
@@ -186,31 +184,29 @@ type DescribeDDoSAllEventListResponseBodyDataList struct {
 	EventResult *string `json:"EventResult,omitempty" xml:"EventResult,omitempty"`
 	// The type of the DDoS attack event. Valid values:
 	//
-	// - **web-cc**: A web resource exhaustion attack.
+	// - **web-cc**: web resource exhaustion attacks.
 	//
-	// - **cc**: A connection-based attack.
+	// - **cc**: connection flood attacks.
 	//
-	// - **traffic**: A volumetric attack.
+	// - **traffic**: volumetric traffic attacks.
 	//
 	// example:
 	//
 	// web-cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The peak packets per second (Pps) of a volumetric attack.
+	// The peak PPS of volumetric traffic attacks.
 	//
 	// example:
 	//
 	// 12000
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The peak queries per second (Qps) of a web resource exhaustion attack.
+	// The peak QPS of the web resource exhaustion attack.
 	//
 	// example:
 	//
 	// 7692
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The start time of the DDoS attack event.
-	//
-	// The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
+	// The start time of the DDoS attack event. The time is displayed in UTC and must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -222,7 +218,7 @@ type DescribeDDoSAllEventListResponseBodyDataList struct {
 	//
 	// example.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The ID of the attack target.
+	// The ID of the attack target for web resource exhaustion.
 	//
 	// example:
 	//

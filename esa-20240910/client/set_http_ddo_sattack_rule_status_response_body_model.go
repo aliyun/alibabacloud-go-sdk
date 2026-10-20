@@ -14,7 +14,7 @@ type iSetHttpDDoSAttackRuleStatusResponseBody interface {
 }
 
 type SetHttpDDoSAttackRuleStatusResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

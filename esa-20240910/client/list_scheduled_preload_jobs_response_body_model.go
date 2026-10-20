@@ -18,7 +18,7 @@ type iListScheduledPreloadJobsResponseBody interface {
 }
 
 type ListScheduledPreloadJobsResponseBody struct {
-	// The list of prefetch task information.
+	// The list of prefetch tasks.
 	Jobs []*ListScheduledPreloadJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListScheduledPreloadJobsResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records after filtering.
+	// The total number of filtered records.
 	//
 	// example:
 	//
@@ -89,25 +89,25 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The task creation time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+	// The time when the task was created. The time follows the ISO 8601 standard, such as 2024-01-01T00:00:00Z.
 	//
 	// example:
 	//
 	// 2024-06-01T08:53:13Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The list of domain names for prefetch.
+	// The list of domain names to prefetch.
 	//
 	// example:
 	//
 	// testurl.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// The fault error message.
+	// The error message.
 	//
 	// example:
 	//
 	// invalid domain:test.com
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The number of prefetch schedules.
+	// The number of prefetch plans.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The URL list file ID, which is used for download.
+	// The ID of the URL list file, which is used for downloading.
 	//
 	// example:
 	//
@@ -131,11 +131,7 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The URL insertion method. Valid values:
-	//
-	// - oss: URLs are imported in bulk from an OSS file.
-	//
-	// - testBox: URLs are entered one by one in a text box.
+	// The method used to insert URLs.
 	//
 	// example:
 	//
@@ -153,19 +149,13 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The number of URLs that have been submitted to the system for prefetch.
+	// The number of URLs submitted to the system for prefetch tasks.
 	//
 	// example:
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type (refresh or prefetch). Valid values:
-	//
-	// - path: Directory refresh.
-	//
-	// - refresh: URL refresh.
-	//
-	// - preload: URL prefetch.
+	// The task type, such as refresh or prefetch.
 	//
 	// example:
 	//

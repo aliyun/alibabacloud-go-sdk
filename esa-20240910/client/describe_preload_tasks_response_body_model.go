@@ -28,7 +28,7 @@ type DescribePreloadTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -123,25 +123,25 @@ type DescribePreloadTasksResponseBodyTasks struct {
 	//
 	// http://a.com/1.jpg?b=2
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The creation time.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-03-28 14:28:57
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error description returned when the prefetch fails. Valid values:
+	// The error description returned when a prefetch task fails. Valid values:
 	//
 	// - **Internal Error**: An internal error occurred.
 	//
 	// - **Origin Timeout**: The origin server response timed out.
 	//
-	// - **Origin Return StatusCode 5XX**: The origin server returned a 5xx error code.
+	// - **Origin Return StatusCode 5XX**: The origin server returned a 5xx status code.
 	//
 	// example:
 	//
 	// Internal Error
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The task completion progress percentage.
+	// The task completion progress in percentage.
 	//
 	// example:
 	//
@@ -149,11 +149,11 @@ type DescribePreloadTasksResponseBodyTasks struct {
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **Complete**: Complete.
+	// - **Complete**: Completed.
 	//
-	// - **Refreshing**: Prefetching.
+	// - **Refreshing**: Refreshing.
 	//
-	// - **Failed**: Prefetch failed.
+	// - **Failed**: Failed.
 	//
 	// example:
 	//
