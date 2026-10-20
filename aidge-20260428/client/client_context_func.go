@@ -9,53 +9,107 @@ import (
 
 // Summary:
 //
-// Virtual Try-On is an AI algorithm-based image generation API service that replaces the clothing on a model with the garment provided by the user based on the input garment image and model image, while preserving the model\\"s other details and scene details without altering the model\\"s pose, facial features, or other attributes, and achieving realistic and well-fitted clothing placement. Users only need to provide the URL of the original product image to obtain a processed clean image.
+// Synchronously adds content to a display knowledge base in batches.
+//
+// @param tmpReq - AddDisplayKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDisplayKnowledgeResponse
+func (client *Client) AddDisplayKnowledgeWithContext(ctx context.Context, tmpReq *AddDisplayKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *AddDisplayKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddDisplayKnowledgeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Records) {
+		request.RecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Records, dara.String("Records"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RagId) {
+		query["RagId"] = request.RagId
+	}
+
+	if !dara.IsNil(request.RecordsShrink) {
+		query["Records"] = request.RecordsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDisplayKnowledge"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDisplayKnowledgeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates virtual try-on images by applying a specified garment to a model image based on AI algorithms. The service preserves the model\\"s pose, facial features, and background details while ensuring a realistic and well-fitted appearance. You only need to provide the URLs of the original model and garment images to obtain the processed image.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - **Virtual try-on for clothing products:**
+// - **Virtual try-on for clothing:**
 //
-// Supports multiple clothing categories including tops, bottoms, jumpsuits, and dresses. After uploading a person image and a product image, the service generates natural and realistic try-on results that intuitively showcase how the clothing looks when worn.
+// Supports various clothing categories such as tops, bottoms, jumpsuits, and dresses. After you upload a model image and a garment image, the service generates natural and realistic try-on effects to visually demonstrate how the garment looks on the model.
 //
 // - **Virtual try-on for shoes and hats:**
 //
-// Supports virtual try-on for shoes, hats, and similar products. The service intelligently matches the product position and proportion based on the person\\"s pose and body parts, producing coordinated and lifelike wearing effects.
+// Supports virtual try-on for accessories such as shoes and hats. The service intelligently matches the position and proportion of the product based on the model\\"s pose and body parts to present a coordinated and realistic wearing effect.
 //
 // - **E-commerce product display and marketing:**
 //
-// Helps merchants quickly generate model try-on images for different products, reducing the costs of traditional photography, outfit changes, and post-production, and improving the production efficiency of product images.
+// Helps merchants quickly generate model try-on images for different products. This reduces the costs of traditional photography, outfit changes, and post-production, and improves the production efficiency of product images.
 //
 // - **Online shopping experience optimization:**
 //
-// Consumers can preview how products look when worn through virtual try-on, gaining a more intuitive understanding of the product\\"s style, coordination, and overall appearance, which assists purchase decisions and enhances the shopping experience.
+// Allows consumers to preview the wearing effect of products through virtual try-on. This provides a more intuitive understanding of the style, matching, and overall effect of the product, which assists in purchase decisions and enhances the shopping experience.
 //
 // ## Features
 //
-// - **First, the user needs to provide a model image and a product image. The system uses the model image as the try-on subject and applies the clothing from the product image onto the model:**
+// - **Provide a model image and a product image. The system uses the model image as the try-on subject and applies the garment from the product image to the model:**
 //
-//   - a. Model image: The person image on which the virtual try-on is performed.
+//   - a. Model image: The image of the person who will wear the garment in the virtual try-on.
 //
-//   - b. Product image: The clothing, shoes, or hat image to be applied onto the model.
+//   - b. Product image: The image of the clothing, shoes, or hat to be worn by the model.
 //
-// - **Second, the user can select the corresponding product type based on the actual product. Supported types include tops, bottoms, jumpsuits, dresses, shoes, and hats:**
+// - **Select the corresponding product type based on the actual product. Supported types include tops, bottoms, jumpsuits, dresses, shoes, and hats:**
 //
-//   - a. Specify product type: The user can directly specify the product type, and the system processes accordingly.
+//   - a. Specify product type: You can directly specify the type of the current product, and the system will process it accordingly.
 //
-//   - b. Automatic type recognition: If the user does not specify a product type, the system automatically identifies the product category from the product image and performs the virtual try-on based on the recognition result.
+//   - b. Automatic type recognition: If you do not specify the product type, the system automatically recognizes the product category in the product image and performs the virtual try-on based on the recognition result.
 //
-// - **Finally, the system combines the model image, product image, and product type to generate a virtual try-on image that showcases how the product looks on the model:**
+// - **The system generates a virtual try-on image by combining the model image, product image, and product type to show the wearing effect of the product on the model:**
 //
-//   - a. Preserve model details: The generation process does not alter the person\\"s appearance, hairstyle, pose, body shape, or other details in the original model image.
+//   - a. Preserve model details: The generation process does not alter the appearance, hairstyle, pose, body shape, or other details of the person in the original model image.
 //
-//   - b. Maintain scene consistency: The background, composition, lighting, and overall visual effect of the original model image remain unchanged. Only the wearing area corresponding to the product is processed.
+//   - b. Maintain image consistency: The background, composition, lighting, and overall visual effect of the original model image remain unchanged. Only the wearing area corresponding to the product is processed.
 //
-//   - c. Generate try-on results: The product is naturally applied onto the model, conforming to the person\\"s pose and body structure, producing a coordinated and realistic virtual try-on image.
+//   - c. Generate try-on effect: The product is naturally applied to the model, fitting the person\\"s pose and body structure to generate a coordinated and realistic virtual try-on image.
 //
-// ## Sample results
+// ## Examples
 //
-// | **Type*	- | **Model image*	- | **Clothing image*	- | **Try-on result*	- |
+// | **Type*	- | **Model image*	- | **Garment image*	- | **Try-on result*	- |
 //
 // | --- | --- | --- | --- |
 //
@@ -597,6 +651,60 @@ func (client *Client) CategoryMatchWithContext(ctx context.Context, request *Cat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CategoryMatchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes display knowledge base content in batches synchronously.
+//
+// @param tmpReq - DeleteDisplayKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDisplayKnowledgeResponse
+func (client *Client) DeleteDisplayKnowledgeWithContext(ctx context.Context, tmpReq *DeleteDisplayKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *DeleteDisplayKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteDisplayKnowledgeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RecordIds) {
+		request.RecordIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordIds, dara.String("RecordIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RagId) {
+		query["RagId"] = request.RagId
+	}
+
+	if !dara.IsNil(request.RecordIdsShrink) {
+		query["RecordIds"] = request.RecordIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDisplayKnowledge"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDisplayKnowledgeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3789,6 +3897,76 @@ func (client *Client) QueryAsyncTaskResultWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Performs a paged query on the content of a display knowledge base with paging (synchronization).
+//
+// @param tmpReq - QueryDisplayKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDisplayKnowledgeResponse
+func (client *Client) QueryDisplayKnowledgeWithContext(ctx context.Context, tmpReq *QueryDisplayKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *QueryDisplayKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryDisplayKnowledgeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Statuses) {
+		request.StatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Statuses, dara.String("Statuses"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RagId) {
+		query["RagId"] = request.RagId
+	}
+
+	if !dara.IsNil(request.SkuId) {
+		query["SkuId"] = request.SkuId
+	}
+
+	if !dara.IsNil(request.SkuName) {
+		query["SkuName"] = request.SkuName
+	}
+
+	if !dara.IsNil(request.StatusesShrink) {
+		query["Statuses"] = request.StatusesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryDisplayKnowledge"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryDisplayKnowledgeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Detects whether an image contains a size chart. (Synchronous)
 //
 // Description:
@@ -4791,49 +4969,49 @@ func (client *Client) TextTranslateWithContext(ctx context.Context, tmpReq *Text
 
 // Summary:
 //
-// 文本翻译异步
+// Translates text by using the Maas MT model, an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs and optimized for e-commerce terms such as brands, models, materials, and attributes. It supports 156 languages, more than 400 language pairs, and automatic language detection for source texts.
 //
 // Description:
 //
-// ## 适用场景
+// ## Scenarios
 //
-//   - 商品标题：Maas MT大模型翻译可以将商品标题中的短语、关键词、流行词等准确翻译成目标语言，提升商品在电商平台的曝光率。
+//   - Product titles: The Maas MT large language model accurately translates phrases, keywords, and trending words in product titles into the target language to increase product exposure on e-commerce platforms.
 //
-//   - 商品详描：商品详描整体文本较长、格式多样且复杂，Maas 大模型翻译支持长文本翻译和 HTML 格式，翻译效果和格式还原能力表现出色。
+//   - Product descriptions: Product descriptions are typically long and have diverse and complex formats. The Maas large language model supports long-text translation and HTML formatting, delivering excellent translation quality and format restoration.
 //
-//   - 商品属性：商品属性词汇较短，且存在电商专有词（如型号、参数）等。
+//   - Product attributes: Product attribute terms are short and contain e-commerce-specific words such as models and parameters.
 //
-//   - 客服对话：在客服场景中，可优化“上下文缺失、打字错误“等问题，并在部分语向上支持礼貌用语。
+//   - Customer service conversations: In customer service scenarios, the model optimizes issues such as missing context and typos, and supports polite expressions in specific language pairs.
 //
-//       同时，Maas MT大模型翻译也可以用于通用场景的翻译，如办公、会议、日常对话等。
+//     The Maas MT large language model can also be used for translation in general scenarios, such as office work, meetings, and daily conversations.
 //
-// ## 功能介绍
+// ## Features
 //
-//   - **超低幻觉率与高速推理*	- Maas MT大模型翻译是在翻译场景上经过偏好对齐的大语言模型，与通用大语言模型相比，翻译推理速度快，幻觉率极低，尤其适合大规模调用的场景。
+//   - **Ultra-low hallucination rate and high-speed inference*	- The Maas MT large language model is aligned with preferences for translation scenarios. Compared with general-purpose large language models, it provides faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
 //
-//   - **支持翻译的文本格式类型*	- 当前支持 text 和 html 的文本类型。
+//   - **Supported text formats*	- The model supports text and HTML formats.
 //
-//   - **翻译干预能力支持*	- 支持自定义翻译结果，包含不被翻译（ABC-ABC），指定翻译（ABC-DEF），不翻译（ABC-空值）。常用于品牌词保护等场景。只需调用接口时传入相应的干预词表ID，即可实现，可满足您在不同场景下的翻译需求。一般您可以上传10万条干预词，如有更多需要可以联系平台进行处理。
+//   - **Translation intervention*	- You can customize translation results, including keeping terms untranslated (ABC-ABC), specifying translations (ABC-DEF), and omitting translations (ABC-null value). This feature is commonly used for brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API. This meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
-//   - **翻译效果对比**
+//   - **Translation quality comparison**
 //
-// | **原文*	- | **Aidge译后*	- | **其他翻译产品1*	- | **其他翻译产品2*	- | **Aidge翻译优势*	- |
+// | **Source text*	- | **Aidge translation*	- | **Other translation product 1*	- | **Other translation product 2*	- | **Aidge translation advantages*	- |
 //
 // | --- | --- | --- | --- | --- |
 //
-// | 75mm 4Pin 0.38A GA81S2U 12V GTX 960 Cooling Fan for Zotac GTX960 Graphics Card Cooling Fan | 75mm 4Pin 0.38A GA81S2U 12V GTX 960, ventilador de enfriamiento para tarjeta gráfica Zotac GTX960. | Ventilador de refrigeración de 75mm 4Pin 0.38A GA81S2U 12V para la tarjeta gráfica Zotac GTX960 Ventilador de enfriamiento GTX 960. | Ventilador de refrigeración para tarjeta gráfica Zotac GTX960, 75mm, 4 pines, 0,38A, GA81S2U, 12V, GTX 960 | 商品主体更清晰 |
+// | 75mm 4Pin 0.38A GA81S2U 12V GTX 960 Cooling Fan for Zotac GTX960 Graphics Card Cooling Fan | 75mm 4Pin 0.38A GA81S2U 12V GTX 960, ventilador de enfriamiento para tarjeta gráfica Zotac GTX960. | Ventilador de refrigeración de 75mm 4Pin 0.38A GA81S2U 12V para la tarjeta gráfica Zotac GTX960 Ventilador de enfriamiento GTX 960. | Ventilador de refrigeración para tarjeta gráfica Zotac GTX960, 75mm, 4 pines, 0,38A, GA81S2U, 12V, GTX 960 | Clearer product subject |
 //
-// | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | 句式更完整，表述更清晰，断句更合理 |
+// | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable punctuation |
 //
-// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | 产品主体表述更清晰明确，是“钥匙包”而非“钥匙扣”，其它译文容易对产品主体产生歧义 |
+// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermeture éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more explicit product subject expression, identifying it as a "key bag" rather than a "keychain", avoiding ambiguity in other translations |
 //
-// ## 接入准备与调用流程
+// ## Preparations and invocation flow
 //
-// 文本翻译支持同步和异步两种调用方式。本文介绍异步调用接口，如需使用同步调用，请参阅[《文本翻译-同步接口》](https://api.aliyun.com/document/Aidge/2026-04-28/TextTranslate)。
+// Text translation supports both synchronous and asynchronous invocation methods. This topic describes the asynchronous invocation API. To use synchronous calls, see [Text Translation - Synchronous API](https://api.aliyun.com/document/Aidge/2026-04-28/TextTranslate).
 //
-// 文本翻译及其他能力的异步接口共用结果获取流程、RocketMQ 订阅规则、消息加密协议、依赖配置，以及 Java 消费与解密代码。
+// The asynchronous APIs for text translation and other features share the same result retrieval flow, RocketMQ subscribe rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// 异步调用的接入流程，订阅规则，消息格式与加密协议，以及详细的接入方案请参阅[异步接口调用说明](https://help.aliyun.com/zh/aidge/asynchronous-interface-call-instructions)。
+// For the asynchronous invocation onboarding flow, subscribe rules, message formats and encryption protocols, and detailed integration solutions, see [Asynchronous API invocation instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param tmpReq - TextTranslateAsyncRequest
 //
@@ -4901,6 +5079,60 @@ func (client *Client) TextTranslateAsyncWithContext(ctx context.Context, tmpReq 
 		BodyType:    dara.String("json"),
 	}
 	_result = &TextTranslateAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Synchronously updates the content of a display knowledge base in batches.
+//
+// @param tmpReq - UpdateDisplayKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDisplayKnowledgeResponse
+func (client *Client) UpdateDisplayKnowledgeWithContext(ctx context.Context, tmpReq *UpdateDisplayKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *UpdateDisplayKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateDisplayKnowledgeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Records) {
+		request.RecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Records, dara.String("Records"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RagId) {
+		query["RagId"] = request.RagId
+	}
+
+	if !dara.IsNil(request.RecordsShrink) {
+		query["Records"] = request.RecordsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDisplayKnowledge"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDisplayKnowledgeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5011,25 +5243,25 @@ func (client *Client) VideoGenerationWithContext(ctx context.Context, tmpReq *Vi
 
 // Summary:
 //
-// Translates embedded text, such as subtitles and selling points, in video frames into a target language and erases the original text.
+// Translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising. The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the task ID and poll the task status by calling the query API until the task is completed and the result is returned.
 //
 // Description:
 //
 // ## Product introduction
 //
-// The video translation API translates speech and on-screen text in videos into a target language. You can select speech and subtitle translation, on-screen text translation, or both. This API is suitable for scenarios such as multi-language distribution of e-commerce videos, international social media marketing, and global brand advertising.
+// The video translation API translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
 //
-// This API uses asynchronous invocation. After you submit a translation task, you obtain a TaskId. You can use the query API to poll the task status until the task is completed and then obtain the result.
+// The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the `TaskId` and poll the task status by calling the query API until the task is completed and the result is returned.
 //
 // ## Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates selling point text in product introduction videos into the language of the target market to promote products on overseas platforms.
+//   - **Cross-border e-commerce video localization**: Translates the selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
 //
-//   - **International social media marketing**: Localizes on-screen text in videos for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
+//   - **International social media marketing**: Localizes the on-screen text in videos for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the languages of the delivery regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
 //
-//   - **Training and product instructions**: Translates on-screen text in training courses or product demo videos into multiple languages for global teams.
+//   - **Training and product instructions**: Translates the on-screen text in training courses or product demo videos into multiple languages for global teams.
 //
 // ## Features
 //
@@ -5037,15 +5269,15 @@ func (client *Client) VideoGenerationWithContext(ctx context.Context, tmpReq *Vi
 //
 // | --- | --- | --- |
 //
-// | Speech and subtitle translation | speech | Translates video speech into target language voiceovers. Does not erase original subtitles or add new subtitles. |
+// | Speech subtitle translation | `speech` | Translates the video speech into target language dubbing. Original subtitles are not removed, and no new subtitles are added. |
 //
-// | On-screen text translation | visual | Translates embedded text in video frames, such as subtitles and selling points, and erases the original text. You can enable quality check for on-screen text processing by using the API. |
+// | On-screen text translation | `visual` | Translates the embedded text (subtitles, selling point text, etc.) in the video frames and erases the original text. You can enable quality check for on-screen text processing by using the API. |
 //
-// Speech and subtitle translation (speech) generates target language voiceovers based on the spoken content in the video and synthesizes them into the video. It does not erase original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
+// Speech subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video and synthesizes it into the video. It does not remove original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
 //
-// On-screen text translation (visual) targets recognizable text in the original video language within the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech and subtitle translation first. The text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
+// On-screen text translation (`visual`) targets the recognizable original language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and the text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// When both speech and visual are selected, the speech and subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video. The translated voiceover is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that the speech and subtitle phase does not erase or add subtitles. The subsequent on-screen text processing may still change the original subtitles.
+// When both `speech` and `visual` are selected, the speech subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video, retaining the translated dubbing and outputting a final video. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are removed or added during the speech subtitle phase. Subsequent on-screen text processing may still alter the original subtitles.
 //
 // @param tmpReq - VideoTranslationRequest
 //

@@ -22,27 +22,31 @@ type iAiTryOnResponseBody interface {
 }
 
 type AiTryOnResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result struct.
+	// The returned result struct.
 	Data *AiTryOnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. Used to uniquely identify a request.
+	// The request ID, which is used to identify a unique request.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true and false.
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -113,7 +117,7 @@ func (s *AiTryOnResponseBody) Validate() error {
 }
 
 type AiTryOnResponseBodyData struct {
-	// The height of the result image, in pixels.
+	// The height of the result image in pixels.
 	//
 	// example:
 	//
@@ -125,7 +129,7 @@ type AiTryOnResponseBodyData struct {
 	//
 	// https://example.com/virtual-try-on-result.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The width of the result image, in pixels.
+	// The width of the result image in pixels.
 	//
 	// example:
 	//
@@ -199,7 +203,7 @@ type AiTryOnResponseBodyDataUsageMap struct {
 	//
 	// 1
 	ProcessedImageCount *int64 `json:"ProcessedImageCount,omitempty" xml:"ProcessedImageCount,omitempty"`
-	// The resolution of the processed image.
+	// The resolution of the processed images.
 	//
 	// example:
 	//

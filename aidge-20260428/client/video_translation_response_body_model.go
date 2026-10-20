@@ -28,9 +28,9 @@ type VideoTranslationResponseBody struct {
 	//
 	// Processing
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result of the asynchronous task.
+	// The result of the asynchronous task submission.
 	Data *VideoTranslationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description message.
+	// The description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type VideoTranslationResponseBody struct {
 	//
 	// req_20260608_jkl012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true (successful) and false (failed).
+	// Indicates whether the call is successful. Valid values: `true` (successful) and `false` (failed).
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *VideoTranslationResponseBody) Validate() error {
 }
 
 type VideoTranslationResponseBodyData struct {
-	// The ID of the asynchronous task, which is used for subsequent queries.
+	// The ID of the asynchronous task. You can use this ID for subsequent queries.
 	//
 	// example:
 	//
