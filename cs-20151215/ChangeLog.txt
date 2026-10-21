@@ -1,3 +1,6 @@
+2026-10-21 Version: v8.2.2
+- Generated golang 2015-12-15 for CS.
+
 2026-10-20 Version: v8.2.1
 - Update API CreateCluster: add request parameters body.client_token.
 
