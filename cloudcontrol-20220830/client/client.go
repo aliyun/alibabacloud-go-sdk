@@ -325,7 +325,7 @@ func (client *Client) DeleteResource(requestPath *string, request *DeleteResourc
 
 // Summary:
 //
-// Queries pricing based on an OpenAPI triplet and input parameters.
+// Queries pricing based on the OpenAPI triplet and request parameters.
 //
 // @param request - GetApiPriceRequest
 //
@@ -367,7 +367,7 @@ func (client *Client) GetApiPriceWithOptions(request *GetApiPriceRequest, header
 
 // Summary:
 //
-// Queries pricing based on an OpenAPI triplet and input parameters.
+// Queries pricing based on the OpenAPI triplet and request parameters.
 //
 // @param request - GetApiPriceRequest
 //

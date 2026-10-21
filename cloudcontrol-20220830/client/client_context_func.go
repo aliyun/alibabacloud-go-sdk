@@ -173,7 +173,7 @@ func (client *Client) DeleteResourceWithContext(ctx context.Context, requestPath
 
 // Summary:
 //
-// Queries pricing based on an OpenAPI triplet and input parameters.
+// Queries pricing based on the OpenAPI triplet and request parameters.
 //
 // @param request - GetApiPriceRequest
 //
