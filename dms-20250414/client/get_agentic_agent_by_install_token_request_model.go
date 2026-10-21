@@ -14,7 +14,13 @@ type iGetAgenticAgentByInstallTokenRequest interface {
 }
 
 type GetAgenticAgentByInstallTokenRequest struct {
+	// The one-time install token issued by IssueAgenticInstallToken. The token starts with dit_ followed by 40 URL-safe Base64 characters, making a total length of 44 characters.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// dit_0123456789abcdefghijklmnopqrstuvwxyzABCD
 	InstallToken *string `json:"InstallToken,omitempty" xml:"InstallToken,omitempty"`
 }
 

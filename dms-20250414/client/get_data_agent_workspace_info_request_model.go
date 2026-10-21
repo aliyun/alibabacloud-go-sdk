@@ -22,7 +22,7 @@ type GetDataAgentWorkspaceInfoRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The ID of the collaborative workspace.
+	// The ID of the workspace.
 	//
 	// example:
 	//

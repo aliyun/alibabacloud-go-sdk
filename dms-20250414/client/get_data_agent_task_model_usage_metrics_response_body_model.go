@@ -22,15 +22,15 @@ type iGetDataAgentTaskModelUsageMetricsResponseBody interface {
 }
 
 type GetDataAgentTaskModelUsageMetricsResponseBody struct {
-	// The list of TPM time series metrics for model usage, returned in chronological order.
+	// The list of time-series TPM metrics for model usage. The usage at each time point is returned in chronological order.
 	Data []*GetDataAgentTaskModelUsageMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned when the request is abnormal.
+	// The error code, which is returned when a request exception occurs.
 	//
 	// example:
 	//
 	// DMS-DA-40411
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message, which is returned when the call fails.
 	//
 	// example:
 	//
@@ -42,11 +42,15 @@ type GetDataAgentTaskModelUsageMetricsResponseBody struct {
 	//
 	// 67E910F2-***7695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -117,19 +121,19 @@ func (s *GetDataAgentTaskModelUsageMetricsResponseBody) Validate() error {
 }
 
 type GetDataAgentTaskModelUsageMetricsResponseBodyData struct {
-	// The start time of the statistical interval for this time series data point. The value is a UNIX timestamp in seconds.
+	// The start time of the statistical interval for the time-series point. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1735660800
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The end time of the statistical interval for this time series data point. The value is a UNIX timestamp in seconds.
+	// The end time of the statistical interval for the time-series point. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1735660860
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The TPM for this time series data point, which is the number of tokens consumed within the statistical interval.
+	// The TPM at the time-series point, which represents the number of tokens consumed in the statistical interval.
 	//
 	// example:
 	//

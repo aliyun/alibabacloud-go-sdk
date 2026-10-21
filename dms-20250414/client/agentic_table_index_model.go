@@ -26,13 +26,50 @@ type iAgenticTableIndex interface {
 }
 
 type AgenticTableIndex struct {
-	ColumnNames     []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
-	Description     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	IndexName       *string   `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	IndexType       *string   `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	Primary         *bool     `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// The list of fields included in the index. Fields with a specified prefix length include a length expression, such as name(10).
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// The index description.
+	//
+	// example:
+	//
+	// Index on user_id
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The index name.
+	//
+	// example:
+	//
+	// idx_user_id
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The index type. Valid values:
+	//
+	// - **Primary**: primary key index
+	//
+	// - **Unique**: unique index
+	//
+	// - **Normal**: normal index
+	//
+	// - **FullText**: full-text index
+	//
+	// - **Spatial**: spatial index
+	//
+	// example:
+	//
+	// Normal
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// Specifies whether the index is a primary key index.
+	//
+	// example:
+	//
+	// false
+	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// The list of actual field names referenced by the index, with prefix length expressions removed from ColumnNames.
 	RealColumnNames []*string `json:"RealColumnNames,omitempty" xml:"RealColumnNames,omitempty" type:"Repeated"`
-	Unique          *bool     `json:"Unique,omitempty" xml:"Unique,omitempty"`
+	// Specifies whether the index is a unique index.
+	//
+	// example:
+	//
+	// false
+	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
 }
 
 func (s AgenticTableIndex) String() string {

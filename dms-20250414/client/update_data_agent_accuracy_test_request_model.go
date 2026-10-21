@@ -57,7 +57,12 @@ type UpdateDataAgentAccuracyTestRequest struct {
 	// example:
 	//
 	// [{\\"DataSourceType\\":\\"database\\",\\"RegionId\\":\\"cn-hangzhou\\",\\"DmsInstanceId\\":\\"27xxxxx\\",\\"DmsDatabaseId\\":\\"752xxxxx\\",\\"Database\\":\\"employees\\",\\"Tables\\":[\\"employees\\",\\"salaries\\",\\"departments\\"]}]
-	Dataset    *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// The data source information.
+	//
+	// example:
+	//
+	// {"DataSourceType":"remote_data_center","DmsDatabaseId":"f-894***01m","FileId":"f-894***01m","Database":"data.csv","Tables":["example"],"TableIds":["aij5***qf8"],"RegionId":"cn-hangzhou"}]
 	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
 	// The description.
 	//
@@ -65,7 +70,7 @@ type UpdateDataAgentAccuracyTestRequest struct {
 	//
 	// null
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
@@ -101,7 +106,7 @@ type UpdateDataAgentAccuracyTestRequest struct {
 	//
 	// test123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether sessions are displayed after analysis. This parameter is not supported.
+	// Specifies whether to display sessions after analysis. This parameter is currently not supported.
 	//
 	// example:
 	//

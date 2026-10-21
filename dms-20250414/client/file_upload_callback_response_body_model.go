@@ -30,7 +30,7 @@ type FileUploadCallbackResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type FileUploadCallbackResponseBody struct {
 	//
 	// 841BC14F-8E21-56B0-A7D6-593C5841AC84
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
 	// - **false**: The request failed.
 	//
@@ -117,7 +117,7 @@ func (s *FileUploadCallbackResponseBody) Validate() error {
 }
 
 type FileUploadCallbackResponseBodyData struct {
-	// The file ID.
+	// The ID of the file.
 	//
 	// example:
 	//

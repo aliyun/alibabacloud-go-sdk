@@ -970,7 +970,7 @@ func (client *Client) CreateAirflowLoginToken(request *CreateAirflowLoginTokenRe
 
 // Summary:
 //
-// Creates a custom agent in a personal or shared workspace.
+// Creates a custom agent in a personal space or workspace.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -1116,7 +1116,7 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 // Summary:
 //
-// Creates a custom agent in a personal or shared workspace.
+// Creates a custom agent in a personal space or workspace.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -2932,7 +2932,7 @@ func (client *Client) DeleteWorkspaceCode(request *DeleteWorkspaceCodeRequest) (
 
 // Summary:
 //
-// Retrieves the details of a custom agent by custom agent ID.
+// Retrieves the detailed description of a custom agent based on the custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2980,7 +2980,7 @@ func (client *Client) DescribeCustomAgentWithOptions(request *DescribeCustomAgen
 
 // Summary:
 //
-// Retrieves the details of a custom agent by custom agent ID.
+// Retrieves the detailed description of a custom agent based on the custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -3608,7 +3608,7 @@ func (client *Client) DescribeSkillFileUploadSignature(request *DescribeSkillFil
 
 // Summary:
 //
-// Calls back after a file is uploaded.
+// Processes the file upload callback.
 //
 // @param request - FileUploadCallbackRequest
 //
@@ -3676,7 +3676,7 @@ func (client *Client) FileUploadCallbackWithOptions(request *FileUploadCallbackR
 
 // Summary:
 //
-// Calls back after a file is uploaded.
+// Processes the file upload callback.
 //
 // @param request - FileUploadCallbackRequest
 //
@@ -3694,7 +3694,11 @@ func (client *Client) FileUploadCallback(request *FileUploadCallbackRequest) (_r
 
 // Summary:
 //
-// Queries agent information by install token.
+// Queries the agent associated with an install token after redemption. Data is empty if the token has not been redeemed.
+//
+// Description:
+//
+// Specify the install token issued by IssueAgenticInstallToken to query the agent generated or reused after the token is redeemed. The request fails if the install token does not exist. If the token has not been redeemed, or the associated credential or agent does not exist, the API call succeeds but Data is empty.
 //
 // @param request - GetAgenticAgentByInstallTokenRequest
 //
@@ -3738,7 +3742,11 @@ func (client *Client) GetAgenticAgentByInstallTokenWithOptions(request *GetAgent
 
 // Summary:
 //
-// Queries agent information by install token.
+// Queries the agent associated with an install token after redemption. Data is empty if the token has not been redeemed.
+//
+// Description:
+//
+// Specify the install token issued by IssueAgenticInstallToken to query the agent generated or reused after the token is redeemed. The request fails if the install token does not exist. If the token has not been redeemed, or the associated credential or agent does not exist, the API call succeeds but Data is empty.
 //
 // @param request - GetAgenticAgentByInstallTokenRequest
 //
@@ -4393,11 +4401,11 @@ func (client *Client) GetDataAgentSubAccountInfo(request *GetDataAgentSubAccount
 
 // Summary:
 //
-// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total call count, total tokens consumed, and peak TPM.
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total number of calls, total tokens consumed, and peak TPM.
 //
 // Description:
 //
-// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total number of model calls, total tokens consumed, and peak TPM. This data is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
 //
 // @param tmpReq - GetDataAgentTaskModelUsageRequest
 //
@@ -4467,11 +4475,11 @@ func (client *Client) GetDataAgentTaskModelUsageWithOptions(tmpReq *GetDataAgent
 
 // Summary:
 //
-// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total call count, total tokens consumed, and peak TPM.
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total number of calls, total tokens consumed, and peak TPM.
 //
 // Description:
 //
-// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total number of model calls, total tokens consumed, and peak TPM. This data is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
 //
 // @param request - GetDataAgentTaskModelUsageRequest
 //
@@ -4489,11 +4497,11 @@ func (client *Client) GetDataAgentTaskModelUsage(request *GetDataAgentTaskModelU
 
 // Summary:
 //
-// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range, returning token consumption at each time point with minute-level granularity.
+// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analysis task model usage within a specified time range, returning token consumption at each time point at a minute-level granularity.
 //
 // Description:
 //
-// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range. The metrics are returned at minute-level granularity, showing the number of tokens consumed in each statistical interval for analyzing model usage trends over time.
+// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analysis task model usage within a specified time range. It returns the number of tokens consumed in each statistical interval at a minute-level granularity to help you analyze the trend of model usage over time.
 //
 // @param tmpReq - GetDataAgentTaskModelUsageMetricsRequest
 //
@@ -4563,11 +4571,11 @@ func (client *Client) GetDataAgentTaskModelUsageMetricsWithOptions(tmpReq *GetDa
 
 // Summary:
 //
-// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range, returning token consumption at each time point with minute-level granularity.
+// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analysis task model usage within a specified time range, returning token consumption at each time point at a minute-level granularity.
 //
 // Description:
 //
-// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range. The metrics are returned at minute-level granularity, showing the number of tokens consumed in each statistical interval for analyzing model usage trends over time.
+// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analysis task model usage within a specified time range. It returns the number of tokens consumed in each statistical interval at a minute-level granularity to help you analyze the trend of model usage over time.
 //
 // @param request - GetDataAgentTaskModelUsageMetricsRequest
 //
@@ -4651,7 +4659,7 @@ func (client *Client) GetDataAgentThemeUploadSignature(request *GetDataAgentThem
 
 // Summary:
 //
-// Retrieves the details of a collaborative workspace.
+// Queries the details of a workspace.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -4699,7 +4707,7 @@ func (client *Client) GetDataAgentWorkspaceInfoWithOptions(request *GetDataAgent
 
 // Summary:
 //
-// Retrieves the details of a collaborative workspace.
+// Queries the details of a workspace.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -5839,6 +5847,218 @@ func (client *Client) ListAgenticDatabase(request *ListAgenticDatabaseRequest) (
 
 // Summary:
 //
+// Queries the SQL execution history within the current tenant and returns the results in descending order of execution start time. Only AGENT_QUERY and WORKFLOW_QUERY are included.
+//
+// @param request - ListAgenticGlobalSqlExecutionHistoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgenticGlobalSqlExecutionHistoriesResponse
+func (client *Client) ListAgenticGlobalSqlExecutionHistoriesWithOptions(request *ListAgenticGlobalSqlExecutionHistoriesRequest, runtime *dara.RuntimeOptions) (_result *ListAgenticGlobalSqlExecutionHistoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActorId) {
+		query["ActorId"] = request.ActorId
+	}
+
+	if !dara.IsNil(request.ActorName) {
+		query["ActorName"] = request.ActorName
+	}
+
+	if !dara.IsNil(request.ActorType) {
+		query["ActorType"] = request.ActorType
+	}
+
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Scenario) {
+		query["Scenario"] = request.Scenario
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.SqlKeyword) {
+		query["SqlKeyword"] = request.SqlKeyword
+	}
+
+	if !dara.IsNil(request.SqlType) {
+		query["SqlType"] = request.SqlType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgenticGlobalSqlExecutionHistories"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgenticGlobalSqlExecutionHistoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the SQL execution history within the current tenant and returns the results in descending order of execution start time. Only AGENT_QUERY and WORKFLOW_QUERY are included.
+//
+// @param request - ListAgenticGlobalSqlExecutionHistoriesRequest
+//
+// @return ListAgenticGlobalSqlExecutionHistoriesResponse
+func (client *Client) ListAgenticGlobalSqlExecutionHistories(request *ListAgenticGlobalSqlExecutionHistoriesRequest) (_result *ListAgenticGlobalSqlExecutionHistoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgenticGlobalSqlExecutionHistoriesResponse{}
+	_body, _err := client.ListAgenticGlobalSqlExecutionHistoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the SQL execution history visible to the current caller, sorted in descending order by execution start time. Only AGENT_QUERY and WORKFLOW_QUERY are included.
+//
+// @param request - ListAgenticSqlExecutionHistoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgenticSqlExecutionHistoriesResponse
+func (client *Client) ListAgenticSqlExecutionHistoriesWithOptions(request *ListAgenticSqlExecutionHistoriesRequest, runtime *dara.RuntimeOptions) (_result *ListAgenticSqlExecutionHistoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActorId) {
+		query["ActorId"] = request.ActorId
+	}
+
+	if !dara.IsNil(request.ActorName) {
+		query["ActorName"] = request.ActorName
+	}
+
+	if !dara.IsNil(request.ActorType) {
+		query["ActorType"] = request.ActorType
+	}
+
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Scenario) {
+		query["Scenario"] = request.Scenario
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.SqlKeyword) {
+		query["SqlKeyword"] = request.SqlKeyword
+	}
+
+	if !dara.IsNil(request.SqlType) {
+		query["SqlType"] = request.SqlType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgenticSqlExecutionHistories"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgenticSqlExecutionHistoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the SQL execution history visible to the current caller, sorted in descending order by execution start time. Only AGENT_QUERY and WORKFLOW_QUERY are included.
+//
+// @param request - ListAgenticSqlExecutionHistoriesRequest
+//
+// @return ListAgenticSqlExecutionHistoriesResponse
+func (client *Client) ListAgenticSqlExecutionHistories(request *ListAgenticSqlExecutionHistoriesRequest) (_result *ListAgenticSqlExecutionHistoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgenticSqlExecutionHistoriesResponse{}
+	_body, _err := client.ListAgenticSqlExecutionHistoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the basic information and engine metadata of tables in a specified database by using paging. You can filter the results by keyword and table type, and specify the sorting method.
 //
 // @param request - ListAgenticTableBaseInfoRequest
@@ -6073,7 +6293,7 @@ func (client *Client) ListAirflows(request *ListAirflowsRequest) (_result *ListA
 
 // Summary:
 //
-// Lists all custom agents in personal and shared workspaces.
+// Lists all custom agents in personal and team workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -6141,7 +6361,7 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 
 // Summary:
 //
-// Lists all custom agents in personal and shared workspaces.
+// Lists all custom agents in personal and team workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -9817,7 +10037,11 @@ func (client *Client) UpdateAgenticDataSource(request *UpdateAgenticDataSourceRe
 
 // Summary:
 //
-// Updates the properties of an Airflow instance.
+// Updates the information of an Airflow instance.
+//
+// Description:
+//
+// Creates an Airflow instance in a workspace.
 //
 // @param tmpReq - UpdateAirflowRequest
 //
@@ -9919,7 +10143,11 @@ func (client *Client) UpdateAirflowWithOptions(tmpReq *UpdateAirflowRequest, run
 
 // Summary:
 //
-// Updates the properties of an Airflow instance.
+// Updates the information of an Airflow instance.
+//
+// Description:
+//
+// Creates an Airflow instance in a workspace.
 //
 // @param request - UpdateAirflowRequest
 //
@@ -9941,7 +10169,7 @@ func (client *Client) UpdateAirflow(request *UpdateAirflowRequest) (_result *Upd
 //
 // Description:
 //
-// Updates the content of an accuracy test item.
+// Updates the accuracy test item.
 //
 // @param request - UpdateDataAgentAccuracyTestRequest
 //
@@ -10041,7 +10269,7 @@ func (client *Client) UpdateDataAgentAccuracyTestWithOptions(request *UpdateData
 //
 // Description:
 //
-// Updates the content of an accuracy test item.
+// Updates the accuracy test item.
 //
 // @param request - UpdateDataAgentAccuracyTestRequest
 //

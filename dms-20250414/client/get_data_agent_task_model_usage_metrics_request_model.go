@@ -24,7 +24,7 @@ type iGetDataAgentTaskModelUsageMetricsRequest interface {
 }
 
 type GetDataAgentTaskModelUsageMetricsRequest struct {
-	// The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
+	// The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended time range is up to one month.
 	//
 	// example:
 	//
@@ -36,14 +36,20 @@ type GetDataAgentTaskModelUsageMetricsRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
+	// The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended time range is up to one month.
 	//
 	// example:
 	//
 	// 1735747200
-	EndTime     *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of billing instance IDs to query.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	PayLevel    *string   `json:"PayLevel,omitempty" xml:"PayLevel,omitempty"`
+	// The billing level.
+	//
+	// example:
+	//
+	// ENTERPRISE
+	PayLevel *string `json:"PayLevel,omitempty" xml:"PayLevel,omitempty"`
 	// The region ID.
 	//
 	// example:

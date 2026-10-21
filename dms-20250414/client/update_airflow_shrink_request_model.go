@@ -40,7 +40,7 @@ type iUpdateAirflowShrinkRequest interface {
 }
 
 type UpdateAirflowShrinkRequest struct {
-	// The unique ID of the Airflow instance.
+	// The unique key ID of the Airflow instance.
 	//
 	// This parameter is required.
 	//
@@ -54,49 +54,53 @@ type UpdateAirflowShrinkRequest struct {
 	//
 	// testairflow
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
-	// The specifications of the Airflow instance.
+	// The specification description of the Airflow instance.
 	//
 	// example:
 	//
 	// SMALL
 	AppSpec *string `json:"AppSpec,omitempty" xml:"AppSpec,omitempty"`
-	// A client token to ensure request idempotence.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// token-****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The directory path where Airflow scans for DAGs.
+	// The DAG directory scanned by Airflow.
 	//
 	// example:
 	//
 	// default/dags
-	DagsDir                 *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	// The list of data mount information.
 	DataMountInfoListShrink *string `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty"`
 	// The description of the Airflow instance.
 	//
 	// example:
 	//
 	// test airflow
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable serverless workers.
+	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
+	// The timeout period for a worker to exit.
+	//
 	// example:
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
-	// The directory path where Airflow scans for plugins.
+	// The plugin directory scanned by Airflow.
 	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
-	// The path to the requirements file for package dependencies.
+	// The installation file for package dependencies.
 	//
 	// example:
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
-	// The path to the startup script for the Airflow instance.
+	// The script loaded at startup of the Airflow instance.
 	//
 	// example:
 	//
@@ -108,7 +112,7 @@ type UpdateAirflowShrinkRequest struct {
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
-	// The Data Management Service (DMS) workspace ID.
+	// The ID of the Data Management (DMS) workspace.
 	//
 	// This parameter is required.
 	//

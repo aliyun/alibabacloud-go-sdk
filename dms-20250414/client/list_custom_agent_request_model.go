@@ -60,7 +60,7 @@ type ListCustomAgentRequest struct {
 	//
 	// Test agent
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The status of the custom agent.
+	// The custom agent status.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type GetDataAgentWorkspaceInfoResponseBody struct {
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *GetDataAgentWorkspaceInfoResponseBody) Validate() error {
 }
 
 type GetDataAgentWorkspaceInfoResponseBodyData struct {
-	// The creation time of the session. Unit: seconds. The value is a UNIX timestamp.
+	// The creation time of the workspace. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -124,9 +124,14 @@ type GetDataAgentWorkspaceInfoResponseBodyData struct {
 	// example:
 	//
 	// 20282*****7591
-	Creator               *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The most recent modification time of the workspace. Unit: seconds. The value is a UNIX timestamp.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Indicates whether sessions are shared within the workspace.
+	//
+	// example:
+	//
+	// true
+	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The last modification time of the workspace. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -144,14 +149,19 @@ type GetDataAgentWorkspaceInfoResponseBodyData struct {
 	//
 	// 11
 	TotalMember *string `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The description of the collaborative workspace.
+	// The type of the workspace.
+	//
+	// example:
+	//
+	// personal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The description of the workspace.
 	//
 	// example:
 	//
 	// space for test
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
-	// The ID of the collaborative workspace.
+	// The ID of the workspace.
 	//
 	// example:
 	//

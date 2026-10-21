@@ -52,14 +52,15 @@ type iCreateCustomAgentShrinkRequest interface {
 type CreateCustomAgentShrinkRequest struct {
 	// The type of the custom agent. Valid values:
 	//
-	// - Default: The built-in custom agent. Each workspace can have at most one agent of this type, and it cannot be deleted.
+	// - Default: the system-built-in custom agent. Each workspace can have at most one Default agent, and it cannot be deleted.
 	//
-	// - Common: A regular custom agent.
+	// - Common: a regular custom agent.
 	//
 	// example:
 	//
 	// Common
-	AgentType            *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The callback feature configuration.
 	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
 	// The current DMS unit.
 	//
@@ -67,29 +68,29 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope in **JSON character string format**.
+	// The specified data scope, in **JSON character string format**.
 	//
-	// - General parameter description:
+	// - General parameter descriptions
 	//
-	//   - tableFlag: Set to true to specify the data scope.
+	//   - tableFlag: true specifies the data scope.
 	//
-	//   - scope: Set to personal as a fixed value.
+	//   - scope: personal is a fixed value.
 	//
-	//   - personal: The parameters for file and database types.
+	//   - personal: the parameters for file and database types.
 	//
-	// **File type**: Pass parameters in the following format:
+	// **File type**: pass parameters in the following format:
 	//
-	// - DataSourceType: Set to remote_data_center as a fixed value.
+	// - DataSourceType: remote_data_center is a fixed value.
 	//
-	// - FileId: The file ID.
+	// - FileId: the file ID.
 	//
-	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
+	// - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
 	//
-	// - Tables: The table names returned by the ListDataCenterTable operation.
+	// - Tables: the table names returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: The table IDs returned by the ListDataCenterTable operation.
+	// - TableIds: the table IDs returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -127,27 +128,27 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// ```
 	//
-	// **Database type**: Pass parameters in the following format:
+	// **Database type**: pass parameters in the following format:
 	//
-	// - DataSourceType: Set to database as a fixed value.
+	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
+	// - DmsInstanceId: the DMS instance ID returned by the data center API.
 	//
-	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
+	// - DmsDatabaseId: the DMS database ID returned by the data center API.
 	//
-	// - FileId: The instance name. (Deprecated)
+	// - FileId: the instance name (**[Deprecated]**).
 	//
-	// - DbName: The database name returned by the data center operation.
+	// - DbName: the database name returned by the data center API.
 	//
-	// - Database: The database name returned by the data center operation.
+	// - Database: the database name returned by the data center API.
 	//
-	// - Tables: The table names returned by the data center operation.
+	// - Tables: the table names returned by the data center API.
 	//
-	// - TableIds: The table IDs returned by the data center operation.
+	// - TableIds: the table IDs returned by the data center API.
 	//
-	// - Engine: The engine type, such as mysql or postgresql.
+	// - Engine: the database engine type, such as mysql or postgresql.
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -207,7 +208,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "Sample table******.xlsx",
+	//     "Database" : "Test table******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -223,48 +224,55 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// Sample agent description
+	// Agent test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
-	// The instructions. Maximum length: 10,000 characters.
+	// The instructions.
+	//
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total sum of order amounts, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume refers to the number of valid daily orders.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Paid orders / UV, reflecting the traffic conversion efficiency
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// The knowledge. Maximum length: 10,000 characters.
+	// The knowledge.
+	//
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total sum of order amounts, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume refers to the number of valid daily orders.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
-	KnowledgeConfigListShrink         *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
+	KnowledgeConfigListShrink *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
+	// The knowledge semantic configuration list.
 	KnowledgeSemanticConfigListShrink *string `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty"`
 	// The name of the custom agent.
 	//
 	// example:
 	//
-	// Sample agent name
+	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of recommended questions. You can configure up to 10 recommended questions.
+	// The list of recommended questions.
+	//
+	// - You can configure up to 10 recommended questions.
 	RecommendQuestionListShrink *string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty"`
 	// The ID of the referenced historical session.
 	//
@@ -278,7 +286,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// For the text report, use Chinese characters for all numbers instead of Arabic numerals
+	// The text report requires that all numbers be written as Chinese numerals instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillListShrink *string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty"`
@@ -286,7 +294,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// For the web report, use Chinese characters for all numbers instead of Arabic numerals
+	// The web report requires that all numbers be written as Chinese numerals instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme.
 	//

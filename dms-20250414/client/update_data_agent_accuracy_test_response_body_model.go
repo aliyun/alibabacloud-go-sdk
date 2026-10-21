@@ -24,13 +24,13 @@ type iUpdateDataAgentAccuracyTestResponseBody interface {
 type UpdateDataAgentAccuracyTestResponseBody struct {
 	// The response struct.
 	Data *UpdateDataAgentAccuracyTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code returned when an exception occurs.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type UpdateDataAgentAccuracyTestResponseBody struct {
 	//
 	// E0D21075-xxx-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -129,14 +129,24 @@ type UpdateDataAgentAccuracyTestResponseBodyData struct {
 	//
 	// cu0cs*******mf
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The data source. We recommend that you configure this parameter in a custom agent.
+	// The evaluation dataset.
 	//
 	// example:
 	//
-	// [{\\"DataSourceType\\":\\"database\\",\\"RegionId\\":\\"cn-hangzhou\\",\\"DmsInstanceId\\":\\"27xxxxx\\",\\"DmsDatabaseId\\":\\"752xxxxx\\",\\"Database\\":\\"employees\\",\\"Tables\\":[\\"employees\\",\\"salaries\\",\\"departments\\"]}]
-	Dataset    *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// ds-9z6***74al
+	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// The data source information.
+	//
+	// example:
+	//
+	// {"DataSourceType":"remote_data_center","DmsDatabaseId":"f-894***01m","FileId":"f-894***01m","Database":"data.csv","Tables":["example"],"TableIds":["aij5***qf8"],"RegionId":"cn-hangzhou"}]
 	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
-	Desc       *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The description of the evaluation item.
+	//
+	// example:
+	//
+	// Customer Agent\\"s Evaluation
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The accuracy evaluation criteria. An empty value indicates the default criteria.
 	//
 	// example:
@@ -148,16 +158,31 @@ type UpdateDataAgentAccuracyTestResponseBodyData struct {
 	// example:
 	//
 	// f-8*******01m
-	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	MaxConcurrent *int32  `json:"MaxConcurrent,omitempty" xml:"MaxConcurrent,omitempty"`
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The maximum concurrency limit for the evaluation task.
+	//
+	// example:
+	//
+	// 15
+	MaxConcurrent *int32 `json:"MaxConcurrent,omitempty" xml:"MaxConcurrent,omitempty"`
 	// The analysis mode.
 	//
 	// example:
 	//
 	// 0
-	Mode       *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedDelete *bool   `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
+	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The name of the evaluation item.
+	//
+	// example:
+	//
+	// Evaluation_for_customagent213
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Reserved.
+	//
+	// example:
+	//
+	// false
+	NeedDelete *bool `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
 	// The workspace ID.
 	//
 	// example:

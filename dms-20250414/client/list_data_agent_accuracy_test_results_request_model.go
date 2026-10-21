@@ -32,19 +32,19 @@ type iListDataAgentAccuracyTestResultsRequest interface {
 }
 
 type ListDataAgentAccuracyTestResultsRequest struct {
-	// The instance ID of the accuracy test.
+	// The instance ID of the accuracy test to which the task belongs.
 	//
 	// example:
 	//
 	// at-106n4rg17gv9fxxxxxxxxxx
 	AccuracyTestInsId *string `json:"AccuracyTestInsId,omitempty" xml:"AccuracyTestInsId,omitempty"`
-	// The result ID used to retrieve a single record.
+	// The ID of the result used to exactly match a single record.
 	//
 	// example:
 	//
 	// at-emhnbwewfngrxxxxxxxxxx
 	AccuracyTestResultId *string `json:"AccuracyTestResultId,omitempty" xml:"AccuracyTestResultId,omitempty"`
-	// The subtask ID used to filter results.
+	// The ID of the subtask used to filter results.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListDataAgentAccuracyTestResultsRequest struct {
 	//
 	// 692abb8f-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	AccuracyTestTaskId *string `json:"AccuracyTestTaskId,omitempty" xml:"AccuracyTestTaskId,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ListDataAgentAccuracyTestResultsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

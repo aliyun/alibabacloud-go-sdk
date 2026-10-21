@@ -22,7 +22,7 @@ type iModifyCustomAgentResponseBody interface {
 }
 
 type ModifyCustomAgentResponseBody struct {
-	// The response struct.
+	// The returned struct.
 	Data *ModifyCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -121,7 +121,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// - Default: The system-built-in custom agent. Each workspace can have at most one Default type, and it cannot be deleted.
 	//
-	// - Common: The common custom agent.
+	// - Common: A common custom agent.
 	//
 	// example:
 	//
@@ -138,7 +138,8 @@ type ModifyCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// 20372822********
-	AliyunUid      *string                                          `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The callback feature configuration.
 	CallbackConfig *ModifyCustomAgentResponseBodyDataCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
 	// The name of the creator.
 	//
@@ -190,7 +191,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Agent test description
+	// Test agent description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -218,11 +219,11 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
 	//
 	// 2. Segment by new and existing customers, channels, and regions to identify growth drivers and weaknesses.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to locate churn points
+	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Indicates whether a scheduled task is configured.
 	//
@@ -242,10 +243,11 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
-	KnowledgeConfigList         []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	KnowledgeConfigList []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	// The knowledge semantic configuration list.
 	KnowledgeSemanticConfigList []*ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The modifier.
 	//
@@ -263,9 +265,11 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Agent test name
+	// Test agent name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The next execution time of the scheduled task in timestamp format.
+	// The next run time of the scheduled task.
+	//
+	// - Timestamp format.
 	//
 	// example:
 	//
@@ -311,7 +315,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The text report requires that all numbers use Chinese numerals instead of Arabic numerals
+	// The text report requires that all numbers be spelled out in words instead of using Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
@@ -319,7 +323,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The web report requires that all numbers use Chinese numerals instead of Arabic numerals
+	// The web report requires that all numbers be spelled out in words instead of using Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//
@@ -327,9 +331,9 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// - journal: Journal.
 	//
-	// - legacy: Classic.
+	// - legacy: Legacy.
 	//
-	// - neobrutalism: Stylized.
+	// - neobrutalism: Neobrutalism.
 	//
 	// - infographic: Infographic.
 	//
@@ -697,11 +701,36 @@ func (s *ModifyCustomAgentResponseBodyData) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataCallbackConfig struct {
-	CallbackArgs   *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	// The parameters to invoke callback tool calling.
+	//
+	// example:
+	//
+	// {"ID":"test"}
+	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	// The prompt for generating parameters to invoke callback tool calling.
+	//
+	// example:
+	//
+	// send web report to 123456@163.com
 	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
-	CallbackTime   *int32  `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
-	ToolId         *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The timing to invoke callback tool calling.
+	//
+	// example:
+	//
+	// 0
+	CallbackTime *int32 `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
+	// The callback tool identifier.
+	//
+	// example:
+	//
+	// Mcp serverId (6te...g7a)
+	ToolId *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
+	// The callback tool type.
+	//
+	// example:
+	//
+	// Mcp
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ModifyCustomAgentResponseBodyDataCallbackConfig) String() string {
@@ -768,7 +797,7 @@ type ModifyCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to disable user prompts during the process.
+	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
 	//
@@ -854,9 +883,9 @@ func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	// The access type. Valid values:
 	//
-	// - mcp: Accessed through MCP.
+	// - mcp: Access through MCP.
 	//
-	// - dms_kb: Accessed through the DMS knowledge base.
+	// - dms_kb: Access through the DMS knowledge base.
 	//
 	// example:
 	//
@@ -868,7 +897,7 @@ type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	//
 	// kb-HZ-6anhdzx7hddf9*******obx
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The MCP server ID.
+	// The ID of the MCP server.
 	//
 	// example:
 	//
@@ -916,10 +945,34 @@ func (s *ModifyCustomAgentResponseBodyDataKnowledgeConfigList) Validate() error 
 }
 
 type ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList struct {
-	DbId          *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The DMS database ID.
+	//
+	// example:
+	//
+	// 69305251
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The DMS instance ID.
+	//
+	// example:
+	//
+	// 2844854
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The knowledge UUID.
+	//
+	// example:
+	//
+	// 7ca8f50d78234******e87
 	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The knowledge semantic type. Valid values:
+	//
+	// - sql_template: SQL template.
+	//
+	// - ossie_model: Ossie semantic view.
+	//
+	// example:
+	//
+	// sql_template
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) String() string {
@@ -971,7 +1024,7 @@ func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) Validate(
 }
 
 type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
-	// The cron expression for scheduled execution.
+	// The cron expression for time-based scheduling.
 	//
 	// example:
 	//

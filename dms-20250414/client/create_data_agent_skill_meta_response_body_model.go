@@ -30,7 +30,7 @@ type CreateDataAgentSkillMetaResponseBody struct {
 	//
 	// InvalidTid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when a system-level request failure occurs.
+	// The error message returned when a system-level request fails.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateDataAgentSkillMetaResponseBody struct {
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *CreateDataAgentSkillMetaResponseBody) Validate() error {
 }
 
 type CreateDataAgentSkillMetaResponseBodyData struct {
-	// The Alibaba Cloud account ID of the parent account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 16738266********
 	AliyunParentUid *string `json:"AliyunParentUid,omitempty" xml:"AliyunParentUid,omitempty"`
-	// The Alibaba Cloud account ID.
+	// The Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 20372822********
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// The creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
@@ -141,7 +141,11 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	//
 	// This is a demo skill description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the skill is available. Valid values: true and false.
+	// Indicates whether the skill is available. Valid values:
+	//
+	// - true: The skill is available.
+	//
+	// - false: The skill is not available.
 	//
 	// example:
 	//
@@ -153,7 +157,7 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -161,7 +165,7 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The skill parsing error message.
 	//
-	// - When the skill status is INVALID, the parsing error message is returned.
+	// - This message is returned when the skill status is INVALID.
 	//
 	// example:
 	//
@@ -193,11 +197,11 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	// The skill status. Valid values:
 	//
-	// - INIT: Not ready.
+	// - INIT: The skill is not ready.
 	//
-	// - ACTIVE: Active.
+	// - ACTIVE: The skill is active.
 	//
-	// - INVALID: Invalid.
+	// - INVALID: The skill is invalid.
 	//
 	// example:
 	//

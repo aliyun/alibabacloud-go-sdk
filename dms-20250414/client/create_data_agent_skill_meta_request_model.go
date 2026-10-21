@@ -22,7 +22,7 @@ type iCreateDataAgentSkillMetaRequest interface {
 type CreateDataAgentSkillMetaRequest struct {
 	// The skill description.
 	//
-	// - By default, this parameter is optional. The backend parses the ZIP package specified by UploadLocation to obtain the skill description.
+	// - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill description.
 	//
 	// example:
 	//
@@ -30,15 +30,15 @@ type CreateDataAgentSkillMetaRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The skill name.
 	//
-	// - By default, this parameter is optional. The backend parses the ZIP package specified by UploadLocation to obtain the skill name.
+	// - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill name.
 	//
 	// example:
 	//
 	// data-query-skill
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	// The full path for uploading the skill ZIP file.
+	// The full path to the uploaded skill ZIP file.
 	//
-	// - Format: The UploadDir field returned by the DescribeSkillFileUploadSignature operation concatenated with the file name.
+	// - Format: Concatenate the file name to the UploadDir value returned by the DescribeSkillFileUploadSignature operation.
 	//
 	// - Example: ${UploadDir}/${Filename}
 	UploadLocation *string `json:"UploadLocation,omitempty" xml:"UploadLocation,omitempty"`

@@ -18,18 +18,23 @@ type iDescribeFileUploadSignatureRequest interface {
 }
 
 type DescribeFileUploadSignatureRequest struct {
-	// The parameter used only by the frontend.
+	// For frontend use only.
 	//
 	// example:
 	//
-	// 仅前端使用
+	// For frontend use only
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
 	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	DmsUnit     *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// yrgug4e*******ypey63v
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

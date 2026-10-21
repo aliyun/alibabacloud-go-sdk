@@ -34,17 +34,88 @@ type iAgenticCatalog interface {
 }
 
 type AgenticCatalog struct {
+	// The business attributes of the catalog, returned as key-value pairs. The following keys may be included:
+	//
+	// - **ALIAS**: the alias of the data source
+	//
+	// - **HOST**: the endpoint of the data source
+	//
+	// - **PORT**: the connection port of the data source
+	//
+	// - **ENV_TYPE**: the environment type of the data source
+	//
+	// - **VERSION**: the database version of the data source
+	//
+	// - **SYNC_ALIAS**: whether automatic synchronization of instance aliases is enabled
 	CatalogBizAttrs map[string]interface{} `json:"CatalogBizAttrs,omitempty" xml:"CatalogBizAttrs,omitempty"`
-	CatalogType     *string                `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	CatalogUuid     *string                `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DataSourceUuid  *string                `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
-	DbType          *string                `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties      map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State           *int32                 `json:"State,omitempty" xml:"State,omitempty"`
-	StorageLocation *string                `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The type of the catalog. Valid values:
+	//
+	// - **JDBC**: relational database catalog
+	//
+	// - **DataLake**: data lake catalog
+	//
+	// - **Dataset**: knowledge base catalog
+	//
+	// example:
+	//
+	// JDBC
+	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	// The unique identifier of the catalog.
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The unique identifier of the data source associated with the catalog.
+	//
+	// example:
+	//
+	// ds-HZ-Xk2Pq9Lm***
+	DataSourceUuid *string `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
+	// The database type of the data source associated with the catalog. The value is the uppercase name of the database type, such as MYSQL.
+	//
+	// example:
+	//
+	// MYSQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The description of the catalog.
+	//
+	// example:
+	//
+	// Order production database
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the catalog.
+	//
+	// example:
+	//
+	// prod_mysql_order
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended properties of the catalog, returned as key-value pairs.
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The region ID of the data source associated with the catalog.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the catalog. Valid values:
+	//
+	// - **0**: Normal. This value is set when the data source is created.
+	//
+	// - **-1**: Deleted. This value is set when the data source is deleted.
+	//
+	// Disabling a data source does not change the status of the catalog.
+	//
+	// example:
+	//
+	// 0
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// The storage location. This property is returned only for catalogs of the DataLake type.
+	//
+	// example:
+	//
+	// oss://examplebucket/datalake/
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 
 func (s AgenticCatalog) String() string {

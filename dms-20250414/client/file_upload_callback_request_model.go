@@ -32,36 +32,48 @@ type FileUploadCallbackRequest struct {
 	//
 	// TrailCenter
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
-	// The file size, in bytes.
+	// The size of the file, in bytes.
 	//
 	// example:
 	//
 	// 8110
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// conversion_metrics.csv
-	Filename  *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// The name of the user\\"s OSS bucket.
+	//
+	// - Specify this parameter to use a file in the user\\"s OSS bucket and register the file as a data center file through the callback.
+	//
+	// example:
+	//
+	// bgc-hangzhou-test-bucket
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	// The full path of the uploaded file.
 	//
-	// - Format: The UploadDir field returned by the DescribeFileUploadSignature operation concatenated with the file name.
+	// - Format: Concatenate the UploadDir field returned by the DescribeFileUploadSignature operation with the file name.
 	//
 	// - Example: ${UploadDir}/${Filename}
 	//
 	// This parameter is required.
 	UploadLocation *string `json:"UploadLocation,omitempty" xml:"UploadLocation,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The ID of the workspace.
+	//
+	// example:
+	//
+	// ccihe433d3*******lxljv
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s FileUploadCallbackRequest) String() string {

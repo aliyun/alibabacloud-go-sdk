@@ -30,13 +30,13 @@ type ListDataCenterDatabaseRequest struct {
 	//
 	// Frontend only
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
-	// The import type.
+	// The import type. Valid values:
 	//
 	//   - FILE
 	//
@@ -50,12 +50,17 @@ type ListDataCenterDatabaseRequest struct {
 	//
 	// Frontend only
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The keyword for fuzzy match of databases.
+	// The keyword used for fuzzy search of databases.
 	//
 	// example:
 	//
 	// testdb
-	SearchKey   *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 8vrxbemhm*******v91y3fjy
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

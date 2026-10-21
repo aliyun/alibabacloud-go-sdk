@@ -24,7 +24,7 @@ type iListDataCenterDatabaseResponseBody interface {
 type ListDataCenterDatabaseResponseBody struct {
 	// The response struct.
 	Data []*ListDataCenterDatabaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code returned when an exception occurs in the request.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type ListDataCenterDatabaseResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	//   - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	//   - **false**: The request fails.
 	//
 	// example:
 	//
@@ -125,11 +125,11 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	//
 	// example:
 	//
-	// This is a sample database.
+	// This is diamonds dataset.
 	DatabaseDesc *string `json:"DatabaseDesc,omitempty" xml:"DatabaseDesc,omitempty"`
 	// The database name.
 	//
-	// - When ImportType is FILE, this parameter indicates the file name.
+	//   - When ImportType is FILE, this parameter indicates the file name.
 	//
 	// example:
 	//
@@ -149,13 +149,13 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	//
 	// csv
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The time when the database description was last updated.
+	// The update time of the database description.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	DescUpdateTime *string `json:"DescUpdateTime,omitempty" xml:"DescUpdateTime,omitempty"`
-	// The ID of the Data Management database that hosts the instance.
+	// The ID of the DMS database where the instance is hosted.
 	//
 	//   - This parameter is not returned when ImportType is FILE.
 	//
@@ -163,22 +163,25 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	//
 	// 73088962
 	DmsDbId *int64 `json:"DmsDbId,omitempty" xml:"DmsDbId,omitempty"`
-	// The ID of the Data Management instance that hosts the instance.
+	// The ID of the DMS instance where the instance is hosted.
 	//
 	//   - This parameter is not returned when ImportType is FILE.
 	//
 	// example:
 	//
 	// 2740966
-	DmsInstanceId *int64  `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
-	DownloadLink  *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The time when the file was created.
+	DmsInstanceId *int64 `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
+	// The public network download link.
+	//
+	//   - **[Deprecated]**
+	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The import type.
+	// The import type. Valid values:
 	//
 	//   - FILE
 	//
@@ -198,31 +201,44 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
 	// The instance name.
 	//
-	// - When ImportType is FILE, this parameter indicates the file ID in the data center.
+	//   - When ImportType is FILE, this parameter indicates the file ID in the data center.
 	//
 	// example:
 	//
 	// f-ean8u5881qk4*********xh5y
-	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The internal network download link.
+	//
+	//   - **[Deprecated]**
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
 	// Indicates whether the dataset is built-in. Valid values:
 	//
-	// - Y: The dataset is built-in.
+	//   - Y: The dataset is built-in.
 	//
-	// - N: The dataset is not built-in.
+	//   - N: The dataset is not built-in.
 	//
 	// example:
 	//
 	// N
 	IsInternal *string `json:"IsInternal,omitempty" xml:"IsInternal,omitempty"`
-	OssBucket  *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The name of the user\\"s OSS bucket.
+	//
+	// example:
+	//
+	// bgc-hangzhou-test-bucket
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	// The file size, in bytes.
 	//
 	// example:
 	//
 	// 999
-	Size             *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	UseUserOssBucket *bool  `json:"UseUserOssBucket,omitempty" xml:"UseUserOssBucket,omitempty"`
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether the user\\"s OSS bucket is used.
+	//
+	// example:
+	//
+	// true
+	UseUserOssBucket *bool `json:"UseUserOssBucket,omitempty" xml:"UseUserOssBucket,omitempty"`
 }
 
 func (s ListDataCenterDatabaseResponseBodyData) String() string {
