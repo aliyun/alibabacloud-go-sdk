@@ -1686,7 +1686,7 @@ func (client *Client) DeleteOIDCProvider(request *DeleteOIDCProviderRequest) (_r
 
 // Summary:
 //
-// Deletes a passkey of a RAM user.
+// Deletes the passkey of a user.
 //
 // @param request - DeletePasskeyRequest
 //
@@ -1734,7 +1734,7 @@ func (client *Client) DeletePasskeyWithOptions(request *DeletePasskeyRequest, ru
 
 // Summary:
 //
-// Deletes a passkey of a RAM user.
+// Deletes the passkey of a user.
 //
 // @param request - DeletePasskeyRequest
 //
@@ -2564,6 +2564,61 @@ func (client *Client) GetAccessKeyPolicy(request *GetAccessKeyPolicyRequest) (_r
 
 // Summary:
 //
+// Queries the account-level AccessKey network access control policy.
+//
+// @param request - GetAccessKeyPolicyForAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessKeyPolicyForAccountResponse
+func (client *Client) GetAccessKeyPolicyForAccountWithOptions(request *GetAccessKeyPolicyForAccountRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyPolicyForAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAccessKeyPolicyForAccount"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAccessKeyPolicyForAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the account-level AccessKey network access control policy.
+//
+// @param request - GetAccessKeyPolicyForAccountRequest
+//
+// @return GetAccessKeyPolicyForAccountResponse
+func (client *Client) GetAccessKeyPolicyForAccount(request *GetAccessKeyPolicyForAccountRequest) (_result *GetAccessKeyPolicyForAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAccessKeyPolicyForAccountResponse{}
+	_body, _err := client.GetAccessKeyPolicyForAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2835,11 +2890,11 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// Queries installation information about a specified installed application.
+// Queries the installation information of a specified installed application.
 //
 // Description:
 //
-// 调用本接口前，目标应用必须已经安装；可先调用 `ProvisionApplication` 安装应用，并使用已安装应用的 `AppId`。仅使用 `CreateApplication` 返回、但尚未安装的应用 ID 调用会失败。
+// Before you call this operation, the target application must be installed. You can call ProvisionApplication to install the application and use the AppId of the installed application. Calling this operation with an application ID returned by CreateApplication for an application that has not been installed will fail.
 //
 // @param request - GetApplicationProvisionInfoRequest
 //
@@ -2883,11 +2938,11 @@ func (client *Client) GetApplicationProvisionInfoWithOptions(request *GetApplica
 
 // Summary:
 //
-// Queries installation information about a specified installed application.
+// Queries the installation information of a specified installed application.
 //
 // Description:
 //
-// 调用本接口前，目标应用必须已经安装；可先调用 `ProvisionApplication` 安装应用，并使用已安装应用的 `AppId`。仅使用 `CreateApplication` 返回、但尚未安装的应用 ID 调用会失败。
+// Before you call this operation, the target application must be installed. You can call ProvisionApplication to install the application and use the AppId of the installed application. Calling this operation with an application ID returned by CreateApplication for an application that has not been installed will fail.
 //
 // @param request - GetApplicationProvisionInfoRequest
 //
@@ -3452,7 +3507,7 @@ func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _
 
 // Summary:
 //
-// Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+// Queries the details of a specified role-based SSO identity provider.
 //
 // @param request - GetSAMLProviderRequest
 //
@@ -3496,7 +3551,7 @@ func (client *Client) GetSAMLProviderWithOptions(request *GetSAMLProviderRequest
 
 // Summary:
 //
-// Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+// Queries the details of a specified role-based SSO identity provider.
 //
 // @param request - GetSAMLProviderRequest
 //
@@ -3868,7 +3923,7 @@ func (client *Client) GetUserSsoSettings() (_result *GetUserSsoSettingsResponse,
 
 // Summary:
 //
-// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
+// Queries the status of the secure phone or security email address of a Resource Access Management (RAM) user.
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -3912,7 +3967,7 @@ func (client *Client) GetVerificationInfoWithOptions(request *GetVerificationInf
 
 // Summary:
 //
-// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
+// Queries the status of the secure phone or security email address of a Resource Access Management (RAM) user.
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -5429,7 +5484,7 @@ func (client *Client) ProvisionExternalApplication(request *ProvisionExternalApp
 //
 // ### Usage notes
 //
-// This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+// This topic provides an example on how to remove the client ID `498469743454717****` from an OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - RemoveClientIdFromOIDCProviderRequest
 //
@@ -5483,7 +5538,7 @@ func (client *Client) RemoveClientIdFromOIDCProviderWithOptions(request *RemoveC
 //
 // ### Usage notes
 //
-// This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+// This topic provides an example on how to remove the client ID `498469743454717****` from an OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - RemoveClientIdFromOIDCProviderRequest
 //
@@ -5834,6 +5889,68 @@ func (client *Client) SetAccessKeyPolicy(request *SetAccessKeyPolicyRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetAccessKeyPolicyResponse{}
 	_body, _err := client.SetAccessKeyPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the account-level AccessKey network access control policy.
+//
+// @param request - SetAccessKeyPolicyForAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccessKeyPolicyForAccountResponse
+func (client *Client) SetAccessKeyPolicyForAccountWithOptions(request *SetAccessKeyPolicyForAccountRequest, runtime *dara.RuntimeOptions) (_result *SetAccessKeyPolicyForAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessKeyPolicy) {
+		query["AccessKeyPolicy"] = request.AccessKeyPolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAccessKeyPolicyForAccount"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAccessKeyPolicyForAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the account-level AccessKey network access control policy.
+//
+// @param request - SetAccessKeyPolicyForAccountRequest
+//
+// @return SetAccessKeyPolicyForAccountResponse
+func (client *Client) SetAccessKeyPolicyForAccount(request *SetAccessKeyPolicyForAccountRequest) (_result *SetAccessKeyPolicyForAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetAccessKeyPolicyForAccountResponse{}
+	_body, _err := client.SetAccessKeyPolicyForAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

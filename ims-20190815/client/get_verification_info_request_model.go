@@ -14,7 +14,7 @@ type iGetVerificationInfoRequest interface {
 }
 
 type GetVerificationInfoRequest struct {
-	// The logon name of the RAM user.
+	// The logon name of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//

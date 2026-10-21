@@ -1193,7 +1193,7 @@ func (client *Client) DeleteOIDCProviderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a passkey of a RAM user.
+// Deletes the passkey of a user.
 //
 // @param request - DeletePasskeyRequest
 //
@@ -1753,6 +1753,43 @@ func (client *Client) GetAccessKeyPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Queries the account-level AccessKey network access control policy.
+//
+// @param request - GetAccessKeyPolicyForAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessKeyPolicyForAccountResponse
+func (client *Client) GetAccessKeyPolicyForAccountWithContext(ctx context.Context, request *GetAccessKeyPolicyForAccountRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyPolicyForAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAccessKeyPolicyForAccount"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAccessKeyPolicyForAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of an application secret.
 //
 // @param request - GetAppSecretRequest
@@ -1849,11 +1886,11 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries installation information about a specified installed application.
+// Queries the installation information of a specified installed application.
 //
 // Description:
 //
-// 调用本接口前，目标应用必须已经安装；可先调用 `ProvisionApplication` 安装应用，并使用已安装应用的 `AppId`。仅使用 `CreateApplication` 返回、但尚未安装的应用 ID 调用会失败。
+// Before you call this operation, the target application must be installed. You can call ProvisionApplication to install the application and use the AppId of the installed application. Calling this operation with an application ID returned by CreateApplication for an application that has not been installed will fail.
 //
 // @param request - GetApplicationProvisionInfoRequest
 //
@@ -2187,7 +2224,7 @@ func (client *Client) GetOIDCProviderWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+// Queries the details of a specified role-based SSO identity provider.
 //
 // @param request - GetSAMLProviderRequest
 //
@@ -2423,7 +2460,7 @@ func (client *Client) GetUserMFAInfoWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
+// Queries the status of the secure phone or security email address of a Resource Access Management (RAM) user.
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -3445,7 +3482,7 @@ func (client *Client) ProvisionExternalApplicationWithContext(ctx context.Contex
 //
 // ### Usage notes
 //
-// This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+// This topic provides an example on how to remove the client ID `498469743454717****` from an OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - RemoveClientIdFromOIDCProviderRequest
 //
@@ -3729,6 +3766,50 @@ func (client *Client) SetAccessKeyPolicyWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetAccessKeyPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the account-level AccessKey network access control policy.
+//
+// @param request - SetAccessKeyPolicyForAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccessKeyPolicyForAccountResponse
+func (client *Client) SetAccessKeyPolicyForAccountWithContext(ctx context.Context, request *SetAccessKeyPolicyForAccountRequest, runtime *dara.RuntimeOptions) (_result *SetAccessKeyPolicyForAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessKeyPolicy) {
+		query["AccessKeyPolicy"] = request.AccessKeyPolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAccessKeyPolicyForAccount"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAccessKeyPolicyForAccountResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

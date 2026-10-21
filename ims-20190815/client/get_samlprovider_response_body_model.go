@@ -22,7 +22,7 @@ type GetSAMLProviderResponseBody struct {
 	//
 	// BAADB995-0C7A-476D-B293-7E94568EEDFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the IdP.
+	// The identity provider information.
 	SAMLProvider *GetSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *GetSAMLProviderResponseBody) Validate() error {
 }
 
 type GetSAMLProviderResponseBodySAMLProvider struct {
-	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	// The ARN of the identity provider.
 	//
 	// example:
 	//
 	// acs:ram::177242285274****:saml-provider/test-provider
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The supported signature algorithm. Valid values:
+	// The signature algorithm supported by the Alibaba Cloud service provider (SP). Valid values:
 	//
 	// - rsa-sha256
 	//
@@ -78,31 +78,31 @@ type GetSAMLProviderResponseBodySAMLProvider struct {
 	//
 	// rsa-sha1
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
-	// The time when the information was created. It is displayed in UTC.
+	// The creation time. Format: RFC 3339 (UTC). Example: 2020-10-22T02:37:05Z.
 	//
 	// example:
 	//
 	// 2020-10-22T02:37:05Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The IdP description.
+	// The description.
 	//
 	// example:
 	//
 	// This is a provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata file, which is Base64-encoded.
+	// The metadata document. The document is Base64-encoded.
 	//
 	// example:
 	//
 	// PD94bWwgdmVy****
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
-	// The IdP name.
+	// The name of the identity provider.
 	//
 	// example:
 	//
 	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The time when the information was last updated. It is displayed in UTC.
+	// The update time. Format: RFC 3339 (UTC). Example: 2020-10-22T02:51:20Z.
 	//
 	// example:
 	//

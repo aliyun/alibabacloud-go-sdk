@@ -24,9 +24,9 @@ type GetVerificationInfoResponseBody struct {
 	//
 	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the email.
+	// The security email address information.
 	SecurityEmailDevice *GetVerificationInfoResponseBodySecurityEmailDevice `json:"SecurityEmailDevice,omitempty" xml:"SecurityEmailDevice,omitempty" type:"Struct"`
-	// The information about the mobile phone.
+	// The secure phone information.
 	SecurityPhoneDevice *GetVerificationInfoResponseBodySecurityPhoneDevice `json:"SecurityPhoneDevice,omitempty" xml:"SecurityPhoneDevice,omitempty" type:"Struct"`
 }
 
@@ -80,17 +80,17 @@ func (s *GetVerificationInfoResponseBody) Validate() error {
 }
 
 type GetVerificationInfoResponseBodySecurityEmailDevice struct {
-	// The email address.
+	// The security email address.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The status of the email. Valid values:
+	// The status of the security email address. Valid values:
 	//
-	// - active: The email is activated.
+	// - active: Activated.
 	//
-	// - pending: The email is pending for activation.
+	// - pending: Pending activation.
 	//
 	// example:
 	//
@@ -129,23 +129,23 @@ func (s *GetVerificationInfoResponseBodySecurityEmailDevice) Validate() error {
 }
 
 type GetVerificationInfoResponseBodySecurityPhoneDevice struct {
-	// The international dialing code.
+	// The area code.
 	//
 	// example:
 	//
 	// 86
 	AreaCode *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
-	// The mobile phone number.
+	// The phone number.
 	//
 	// example:
 	//
 	// 13900001234
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The status of the mobile phone. Valid values:
+	// The status of the secure phone. Valid values:
 	//
-	// - active: The mobile phone is activated.
+	// - active: Activated.
 	//
-	// - pending: The mobile phone is pending for activation.
+	// - pending: Pending activation.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iRemoveClientIdFromOIDCProviderResponseBody interface {
 }
 
 type RemoveClientIdFromOIDCProviderResponseBody struct {
-	// The information about the OIDC IdP.
+	// The OIDC IdP information.
 	OIDCProvider *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *RemoveClientIdFromOIDCProviderResponseBody) Validate() error {
 }
 
 type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
-	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	// The ARN of the OIDC IdP.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	//
 	// 598469743454717****
 	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
@@ -86,25 +86,25 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	//
 	// This is a new OIDC Provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The fingerprints of the HTTPS CA certificate. Multiple fingerprints are separated by commas (,).
+	// The verification fingerprints of the HTTPS CA certificate. Multiple fingerprints are separated by commas (,).
 	//
 	// example:
 	//
 	// 902ef2deeb3c5b13ea4c3d5193629309e231****
 	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	// The time when the OIDC IdP was created. The value is a UNIX timestamp.
+	// The creation time as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1636613763000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the OIDC IdP was last modified. The value is a UNIX timestamp.
+	// The update time as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1636706309000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The earliest time when an external IdP is allowed to issue an ID token. If the iat field in the ID token indicates a time earlier than the current time by more than this value, the request is rejected.
+	// The earliest issuance time allowed for the external IdP to issue an ID token. If the time difference between the `iat` field in the ID token and the current time is greater than this value, the request is rejected.
 	//
 	// Unit: hours. Valid values: 1 to 168.
 	//
@@ -124,7 +124,7 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	//
 	// TestOIDCProvider
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	// The time when the OIDC IdP was last modified. The time is displayed in UTC.
+	// The update time in UTC.
 	//
 	// example:
 	//

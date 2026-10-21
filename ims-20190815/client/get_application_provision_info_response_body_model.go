@@ -16,7 +16,7 @@ type iGetApplicationProvisionInfoResponseBody interface {
 }
 
 type GetApplicationProvisionInfoResponseBody struct {
-	// The installation information about the application.
+	// The application installation information.
 	ApplicationProvisionInfo *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo `json:"ApplicationProvisionInfo,omitempty" xml:"ApplicationProvisionInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,12 +62,18 @@ func (s *GetApplicationProvisionInfoResponseBody) Validate() error {
 }
 
 type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 177242285274****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The application category. Valid values:
+	//
+	// - Official: official applications
+	//
+	// - ThirdParty: regular third-party applications
+	//
 	// example:
 	//
 	// ThirdParty
@@ -84,17 +90,23 @@ type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
 	//
 	// GiteePrd
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application assignment type. Valid values:
+	//
+	// - AllowAll: No assignment is required. All RAM users and roles can access the application.
+	//
+	// - OnDemand: Assignment is required on demand. RAM users and roles can access the application only after it is assigned to them.
+	//
 	// example:
 	//
 	// AllowAll
 	AssignmentType *string `json:"AssignmentType,omitempty" xml:"AssignmentType,omitempty"`
-	// The time when the application was installed. The value is a timestamp.
+	// The installation timestamp.
 	//
 	// example:
 	//
 	// 1603693518000
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the scopes of permissions that are granted to the application.
+	// The application permission scope information.
 	DelegatedScope *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
 	// The display name of the application.
 	//
@@ -102,11 +114,13 @@ type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
 	//
 	// GiteeAliyun
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Indicates whether user authorization is required.
+	//
 	// example:
 	//
 	// true
 	NeedPrincipalConsent *bool `json:"NeedPrincipalConsent,omitempty" xml:"NeedPrincipalConsent,omitempty"`
-	// The update time. The value is a timestamp.
+	// The update timestamp.
 	//
 	// example:
 	//
