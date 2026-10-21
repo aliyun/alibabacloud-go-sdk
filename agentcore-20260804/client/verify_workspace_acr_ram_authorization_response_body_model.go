@@ -26,13 +26,19 @@ type iVerifyWorkspaceAcrRamAuthorizationResponseBody interface {
 type VerifyWorkspaceAcrRamAuthorizationResponseBody struct {
 	// The business status code.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
+	//
+	// This parameter is required.
 	Data *VerifyWorkspaceAcrRamAuthorizationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40,17 +46,23 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The response message.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The request ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789012
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -132,29 +144,41 @@ func (s *VerifyWorkspaceAcrRamAuthorizationResponseBody) Validate() error {
 type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	// The ID of the ACR Enterprise instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cri-1234567890abcdef
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
 	// The current attachment status of the policy for the target repository.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// UNAUTHORIZED
 	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
-	// The access prerequisite status. This does not indicate that the secret is ready.
+	// The access prerequisite status, which does not indicate Secret Ready.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ELIGIBLE
 	EligibilityStatus *string `json:"eligibilityStatus,omitempty" xml:"eligibilityStatus,omitempty"`
-	// The stable reason code for unauthorized or unmet conditions. This field is omitted when no reason exists.
+	// The stable reason code for unauthorized or unmet conditions. This field is omitted if no reason exists.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
 	// AcrRamUnauthorized
 	ReasonCode *string `json:"reasonCode,omitempty" xml:"reasonCode,omitempty"`
-	// The user-readable reason message. This field is omitted when no reason exists.
+	// The user-readable reason. This field is omitted if no reason exists.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -162,17 +186,23 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	ReasonMessage *string `json:"reasonMessage,omitempty" xml:"reasonMessage,omitempty"`
 	// The name of the shared role selected by the backend. This field is not editable on the frontend.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// AliyunAgentCoreWorkspace-ws-1234567890abcdef12345
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
 	// The source of the shared role. This does not indicate that authorization is complete.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// WORKSPACE_SHARED
 	RoleSource *string `json:"roleSource,omitempty" xml:"roleSource,omitempty"`
 	// The workspace ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
